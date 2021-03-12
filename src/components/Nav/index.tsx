@@ -1,38 +1,36 @@
-import { Spin } from 'antd';
-import React, { Suspense } from 'react';
-import { Route, Switch, useLocation } from 'react-router-dom';
-import { routerConfig } from '../../router/config';
+import { Layout } from 'antd';
+import React from 'react';
+import SiderMenu from './SiderMenu';
+import logo from '../../assets/img/logo.png';
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-const Nav: React.FC = (props: any) => {
-  React.useEffect(() => {
-    console.log('mount');
-    return () => {
-      console.log('unmonut');
-    };
-  }, []);
+import './index.less';
+import useStyles from '../../theme';
+import Header from './Header';
 
-  const location = useLocation();
-
-  const currentRouter = routerConfig.find(
-    (item) => item.path === location.pathname
-  );
-
-  if (currentRouter) {
-    return null;
-  }
+const Nav: React.FC = (props) => {
+  const { t } = useTranslation();
+  const styles = useStyles();
 
   return (
-    <div>
-      nav page{props.children}
-      {JSON.stringify(props.routes)}
-      <Switch>
-        <Suspense fallback={<Spin spinning={true} />}>
-          {props.routes.map((route: any) => {
-            return <Route key={route.path} path={route} />;
-          })}
-        </Suspense>
-      </Switch>
-    </div>
+    <Layout className="sqle-layout">
+      <Layout.Sider>
+        <Link to="/">
+          <div className="sqle-nav-title">
+            <img src={logo} alt="" />
+            {t('common.nav.title')}
+          </div>
+        </Link>
+        <SiderMenu />
+      </Layout.Sider>
+      <Layout>
+        <Layout.Header className={`sqle-header ${styles.headerBg}`}>
+          <Header />
+        </Layout.Header>
+        <Layout.Content>{props.children}</Layout.Content>
+      </Layout>
+    </Layout>
   );
 };
 

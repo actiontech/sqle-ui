@@ -1,6 +1,7 @@
 import { ThemeProvider } from '@material-ui/styles';
-import { Spin } from 'antd';
-import React, { Suspense } from 'react';
+import { ConfigProvider } from 'antd';
+import React, { ReactNodeArray } from 'react';
+import { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import {
   BrowserRouter as Router,
@@ -8,33 +9,57 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
+import HeaderProgress from './components/HeaderProgress';
+import Nav from './components/Nav';
+import useChangeTheme from './hooks/useChangeTheme';
+import useLanguage from './hooks/useLanguage';
 import { routerConfig, unAuthRouter } from './router/config';
 import { IReduxState } from './store';
-import lightTheme from './theme/light';
+import { RouterItem } from './types/router.type';
 
 function App() {
-  const username = useSelector((state: IReduxState) => state.user.username);
+  const username = useSelector<IReduxState, string>(
+    (state) => state.user.username
+  );
+  const { antdLocale } = useLanguage();
+  const { currentThemeData } = useChangeTheme();
+
+  const registerRouter = React.useCallback(
+    (config: RouterItem[]): ReactNodeArray => {
+      return config.map((route) => {
+        if (route.components) {
+          return registerRouter(route.components);
+        }
+        return <Route {...route} />;
+      });
+    },
+    []
+  );
+
   return (
-    <ThemeProvider theme={lightTheme}>
-      <Router>
-        <Suspense fallback={<Spin spinning={true} />}>
-          {!username && (
-            <Switch>
-              {unAuthRouter.map((route) => {
-                return <Route path={route.path} component={route.component} />;
-              })}
-              <Redirect to="/login" />
-            </Switch>
-          )}
-          {!!username && (
-            <Switch>
-              {routerConfig.map((route) => {
-                return <Route path={route.path} component={route.component} />;
-              })}
-            </Switch>
-          )}
-        </Suspense>
-      </Router>
+    <ThemeProvider theme={currentThemeData}>
+      <ConfigProvider locale={antdLocale}>
+        <Router>
+          <Suspense fallback={<HeaderProgress />}>
+            {!username && (
+              <Switch>
+                {unAuthRouter.map((route) => {
+                  return <Route {...route} />;
+                })}
+                <Redirect to="/login" />
+              </Switch>
+            )}
+            {!!username && (
+              <Nav>
+                <Switch>
+                  {registerRouter(routerConfig)}
+                  <Redirect to="/" />
+                </Switch>
+              </Nav>
+            )}
+          </Suspense>
+        </Router>
+      </ConfigProvider>
     </ThemeProvider>
   );
 }

@@ -1,0 +1,36 @@
+@import '../../styles/_variable.less';
+
+.sqle-layout {
+  min-height: 100vh;
+  .sqle-nav-title {
+    color: @text-white;
+    padding: 10px @padding;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    img {
+      width: 40px;
+      margin-right: 10px;
+    }
+  }
+
+  .sqle-header {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 @padding;
+    header {
+      .header-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        .menu-wrapper {
+          cursor: pointer;
+          padding: 0 @padding-small;
+          &:hover {
+            background: rgba(0, 0, 0, 0.025);
+          }
+        }
+      }
+    }
+  }
+}

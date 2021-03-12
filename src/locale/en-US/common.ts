@@ -2,4 +2,14 @@
 export default {
   username: 'username',
   password: 'password',
+
+  nav: {
+    title: 'SQLe',
+  },
+
+  form: {
+    rule: {
+      require: 'Please input {{name}}',
+    },
+  },
 };

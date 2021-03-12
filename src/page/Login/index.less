@@ -17,11 +17,40 @@
     z-index: -1;
   }
   &-form-wrapper {
-    background: rgba(@bg-white-rgb, 0.7);
+    border-radius: @border-radius;
     width: 300px;
     padding: 20px;
   }
   &-title {
     text-align: center;
+    margin-top: 10px;
+  }
+  &-powered {
+    display: flex;
+    align-items: center;
+    color: @text-action-blue;
+    font-size: 12px;
+    img {
+      width: 15px;
+      height: 15px;
+    }
+  }
+  &-language-wrapper {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    img {
+      width: 10px;
+      height: 10px;
+      margin-right: 5px;
+    }
+  }
+}
+
+.login-page-language {
+  img {
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
   }
 }
