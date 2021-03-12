@@ -11,9 +11,9 @@ type UserReduxState = {
 };
 
 const initialState: UserReduxState = {
-  username: '',
+  username: LocalStorageWrapper.getOrDefault(StorageKey.Username, ''),
   role: '',
-  token: '',
+  token: LocalStorageWrapper.getOrDefault(StorageKey.Token, ''),
   theme: LocalStorageWrapper.getOrDefault(StorageKey.Theme, SupportTheme.LIGHT),
 };
 
@@ -30,6 +30,8 @@ const user = createSlice({
       state.username = username;
       state.role = role;
       state.token = token;
+      LocalStorageWrapper.set(StorageKey.Username, state.username);
+      LocalStorageWrapper.set(StorageKey.Token, state.token);
     },
     updateTheme: (
       state,

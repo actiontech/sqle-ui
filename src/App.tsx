@@ -51,10 +51,12 @@ function App() {
             )}
             {!!username && (
               <Nav>
-                <Switch>
-                  {registerRouter(routerConfig)}
-                  <Redirect to="/" />
-                </Switch>
+                <Suspense fallback={<HeaderProgress />}>
+                  <Switch>
+                    {registerRouter(routerConfig)}
+                    <Redirect to="/" />
+                  </Switch>
+                </Suspense>
               </Nav>
             )}
           </Suspense>

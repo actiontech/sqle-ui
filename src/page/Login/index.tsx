@@ -28,8 +28,8 @@ const Login = () => {
         .then((res) => {
           dispatch(
             updateUser({
-              username: 'Test',
-              role: 'admin',
+              username: formData.username,
+              role: res.data.data?.is_admin ? 'admin' : '',
               token: res.data.data?.token ?? '',
             })
           );

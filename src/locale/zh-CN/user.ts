@@ -1,6 +1,5 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  powered: 'Action SQLe',
-  pageTitle: 'SQL审核平台',
-  login: '登录',
+  pageTitle: '用户管理',
+  userListTitle: '用户列表',
 };

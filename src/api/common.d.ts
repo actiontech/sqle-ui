@@ -103,6 +103,8 @@ export interface IUserLoginReqV1 {
 }
 
 export interface IUserLoginResV1 {
+  is_admin?: boolean;
+
   token?: string;
 }
 
