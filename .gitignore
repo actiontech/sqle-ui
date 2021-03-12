@@ -7,7 +7,7 @@
 .vscode
 .eslintcache
 yarn.lock
-
+/scripts/api-modeling
 
 # testing
 /coverage
