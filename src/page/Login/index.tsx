@@ -7,10 +7,11 @@ import { Button, Form, Input, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
 import logo from '../../assets/img/logo.png';
 import { useHistory } from 'react-router';
-import { updateUser } from '../../store/user';
+import { updateToken } from '../../store/user';
 import { useDispatch } from 'react-redux';
 import LanguageSelect from '../../components/LanguageSelect';
 import user from '../../api/user';
+import { ResponseCode } from '../../data/common';
 
 const Login = () => {
   const theme = useStyles();
@@ -26,14 +27,10 @@ const Login = () => {
           password: formData.password,
         })
         .then((res) => {
-          dispatch(
-            updateUser({
-              username: formData.username,
-              role: res.data.data?.is_admin ? 'admin' : '',
-              token: res.data.data?.token ?? '',
-            })
-          );
-          history.push('/');
+          if (res.data.code === ResponseCode.SUCCESS) {
+            dispatch(updateToken({ token: res.data.data?.token ?? '' }));
+            history.push('/');
+          }
         });
     },
     [dispatch, history]

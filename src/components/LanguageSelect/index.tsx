@@ -32,7 +32,7 @@ const LanguageSelect: React.FC<{}> = () => {
       {Object.keys(languageData).map((key) => {
         const lng = languageData[key as SupportLanguage];
         return (
-          <Select.Option value={key} className="font-size-small">
+          <Select.Option key={key} value={key} className="font-size-small">
             <Icon component={lng.icon} />
             {lng.label}
           </Select.Option>

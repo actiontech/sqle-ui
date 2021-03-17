@@ -18,9 +18,7 @@ import { IReduxState } from './store';
 import { RouterItem } from './types/router.type';
 
 function App() {
-  const username = useSelector<IReduxState, string>(
-    (state) => state.user.username
-  );
+  const token = useSelector<IReduxState, string>((state) => state.user.token);
   const { antdLocale } = useLanguage();
   const { currentThemeData } = useChangeTheme();
 
@@ -41,7 +39,7 @@ function App() {
       <ConfigProvider locale={antdLocale}>
         <Router>
           <Suspense fallback={<HeaderProgress />}>
-            {!username && (
+            {!token && (
               <Switch>
                 {unAuthRouter.map((route) => {
                   return <Route {...route} />;
@@ -49,7 +47,7 @@ function App() {
                 <Redirect to="/login" />
               </Switch>
             )}
-            {!!username && (
+            {!!token && (
               <Nav>
                 <Suspense fallback={<HeaderProgress />}>
                   <Switch>
