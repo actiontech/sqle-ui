@@ -1,0 +1,113 @@
+import { IUserFormProps } from './index.type';
+import { Form, Input, Select } from 'antd';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { ModalFormLayout } from '../../../../data/common';
+import EmptyBox from '../../../../components/EmptyBox';
+
+const UserForm: React.FC<IUserFormProps> = (props) => {
+  const { t } = useTranslation();
+
+  return (
+    <Form form={props.form} {...ModalFormLayout}>
+      <Form.Item
+        name="username"
+        label={t('user.userForm.username')}
+        rules={[
+          {
+            required: true,
+            message: t('common.form.rule.require', {
+              name: t('user.userForm.username'),
+            }),
+          },
+        ]}
+      >
+        <Input
+          disabled={props.isUpdate}
+          placeholder={t('common.form.placeholder.input', {
+            name: t('user.userForm.username'),
+          })}
+        />
+      </Form.Item>
+      <EmptyBox if={!props.isUpdate}>
+        <Form.Item
+          name="password"
+          label={t('user.userForm.password')}
+          rules={[
+            {
+              required: true,
+              message: t('common.form.rule.require', {
+                name: t('user.userForm.password'),
+              }),
+            },
+          ]}
+        >
+          <Input.Password
+            placeholder={t('common.form.placeholder.input', {
+              name: t('user.userForm.password'),
+            })}
+          />
+        </Form.Item>
+        <Form.Item
+          name="passwordConfirm"
+          label={t('user.userForm.passwordConfirm')}
+          rules={[
+            {
+              required: true,
+              message: t('common.form.rule.require', {
+                name: t('user.userForm.passwordConfirm'),
+              }),
+            },
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                if (!value || getFieldValue('password') === value) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(
+                  new Error(t('common.form.rule.passwordNotMatch'))
+                );
+              },
+            }),
+          ]}
+        >
+          <Input.Password
+            placeholder={t('user.userForm.passwordConfirmPlaceholder')}
+          />
+        </Form.Item>
+      </EmptyBox>
+      <Form.Item
+        name="email"
+        label={t('user.userForm.email')}
+        rules={[
+          {
+            type: 'email',
+            message: t('common.form.rule.email'),
+          },
+        ]}
+      >
+        <Input
+          placeholder={t('common.form.placeholder.input', {
+            name: t('user.userForm.email'),
+          })}
+        />
+      </Form.Item>
+      <Form.Item name="roleNameList" label={t('user.userForm.role')}>
+        <Select
+          mode="multiple"
+          showSearch
+          placeholder={t('common.form.placeholder.select', {
+            name: t('user.userForm.role'),
+          })}
+        >
+          {props.roleNameList.map((role) => (
+            <Select.Option value={role.role_name ?? ''} key={role.role_name}>
+              {role.role_name}
+            </Select.Option>
+          ))}
+        </Select>
+      </Form.Item>
+    </Form>
+  );
+};
+
+export default UserForm;

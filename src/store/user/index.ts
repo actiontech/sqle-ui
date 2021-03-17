@@ -13,7 +13,7 @@ type UserReduxState = {
 const initialState: UserReduxState = {
   username: '',
   role: '',
-  token: '',
+  token: LocalStorageWrapper.getOrDefault(StorageKey.Token, ''),
   theme: LocalStorageWrapper.getOrDefault(StorageKey.Theme, SupportTheme.LIGHT),
 };
 
@@ -24,12 +24,12 @@ const user = createSlice({
     updateUser: (
       state,
       {
-        payload: { username, role, token },
-      }: PayloadAction<{ username: string; role: string; token: string }>
+        payload: { username, role },
+      }: PayloadAction<{ username: string; role: string }>
     ) => {
       state.username = username;
       state.role = role;
-      state.token = token;
+      LocalStorageWrapper.set(StorageKey.Token, state.token);
     },
     updateTheme: (
       state,
@@ -38,9 +38,15 @@ const user = createSlice({
       state.theme = theme;
       LocalStorageWrapper.set(StorageKey.Theme, theme);
     },
+    updateToken: (
+      state,
+      { payload: { token } }: PayloadAction<{ token: string }>
+    ) => {
+      state.token = token;
+    },
   },
 });
 
-export const { updateUser, updateTheme } = user.actions;
+export const { updateUser, updateTheme, updateToken } = user.actions;
 
 export default user.reducer;

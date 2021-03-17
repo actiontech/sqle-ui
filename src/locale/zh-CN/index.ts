@@ -1,6 +1,7 @@
 import common from './common';
 import login from './login';
 import menu from './menu';
+import user from './user';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -8,5 +9,6 @@ export default {
     login,
     common,
     menu,
+    user,
   },
 };

@@ -12,12 +12,14 @@ import Icon, {
   LoadingOutlined,
 } from '@ant-design/icons';
 import LanguageSelect from '../../LanguageSelect';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
   const username = useSelector<IReduxState, string>(
     (state) => state.user.username
   );
   const { changeLoading, currentTheme, changeTheme } = useChangeTheme();
+  const { t } = useTranslation();
 
   const handleThemeChange = React.useCallback(
     (theme: SupportTheme) => {
@@ -40,7 +42,7 @@ const Header = () => {
                 onClick={handleThemeChange.bind(null, SupportTheme.LIGHT)}
               >
                 <Icon component={Sun} />
-                明亮风格
+                {t('common.theme.light')}
                 {changeLoading && <LoadingOutlined />}
               </Menu.Item>
               <Menu.Item
@@ -50,12 +52,12 @@ const Header = () => {
                 onClick={handleThemeChange.bind(null, SupportTheme.DARK)}
               >
                 <Icon component={Moon} />
-                暗黑风格
+                {t('common.theme.dark')}
                 {changeLoading && <LoadingOutlined />}
               </Menu.Item>
               <Menu.Divider />
               <Menu.Item key="logout">
-                <PoweroffOutlined /> 退出登陆
+                <PoweroffOutlined /> {t('common.logout')}
               </Menu.Item>
             </Menu>
           }

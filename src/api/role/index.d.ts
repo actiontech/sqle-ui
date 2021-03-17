@@ -2,7 +2,8 @@ import {
   IGetRoleTipsResV1,
   IGetRolesResV1,
   ICreateRoleReqV1,
-  IBaseRes
+  IBaseRes,
+  IUpdateRoleReqV1
 } from '../common.d';
 
 export interface IGetRoleTipListV1Return extends IGetRoleTipsResV1 {}
@@ -30,3 +31,9 @@ export interface IDeleteRoleV1Params {
 }
 
 export interface IDeleteRoleV1Return extends IBaseRes {}
+
+export interface IUpdateRoleV1Params extends IUpdateRoleReqV1 {
+  role_name: string;
+}
+
+export interface IUpdateRoleV1Return extends IBaseRes {}

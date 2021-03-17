@@ -2,5 +2,5 @@
 export default {
   powered: 'Action SQLe',
   pageTitle: 'SQL审核平台',
-  login: '登陆',
+  login: '登录',
 };

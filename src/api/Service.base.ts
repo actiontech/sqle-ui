@@ -29,6 +29,14 @@ class ServiceBase {
     return ApiBase.put<T>(url, data, options);
   }
 
+  protected patch<T>(
+    url: string,
+    data: any = {},
+    options?: AxiosRequestConfig
+  ) {
+    return ApiBase.patch<T>(url, data, options);
+  }
+
   protected cloneDeep(data: any = {}) {
     return cloneDeep(data);
   }
