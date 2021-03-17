@@ -13,7 +13,9 @@ import {
   ICreateRoleV1Params,
   ICreateRoleV1Return,
   IDeleteRoleV1Params,
-  IDeleteRoleV1Return
+  IDeleteRoleV1Return,
+  IUpdateRoleV1Params,
+  IUpdateRoleV1Return
 } from './index.d';
 
 class RoleService extends ServiceBase {
@@ -50,6 +52,21 @@ class RoleService extends ServiceBase {
     delete paramsData.role_name;
 
     return this.delete<IDeleteRoleV1Return>(
+      `/v1/roles/${role_name}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public updateRoleV1(
+    params: IUpdateRoleV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const role_name = paramsData.role_name;
+    delete paramsData.role_name;
+
+    return this.patch<IUpdateRoleV1Return>(
       `/v1/roles/${role_name}/`,
       paramsData,
       options
