@@ -18,6 +18,9 @@ export default {
   resetAndClose: 'Reset Form And Close',
   operateSuccess: 'Operate successfully',
 
+  expansion: 'Expand',
+  collapse: 'Collapse',
+
   theme: {
     light: 'Light Theme',
     dark: 'Dark Theme',
@@ -37,6 +40,8 @@ export default {
     placeholder: {
       input: 'Please input {{name}}',
       select: 'Please select {{name}}',
+      searchInput: 'Input the {{name}} to search',
+      searchSelect: 'Select the {{name}} to search',
     },
     rule: {
       require: 'Please input {{name}}',

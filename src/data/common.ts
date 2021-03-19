@@ -24,3 +24,14 @@ export const PageFormLayout = {
     md: { span: 10 },
   },
 };
+
+export const FilterFormColLayout = {
+  sm: 12,
+  xl: 8,
+  xxl: 6,
+  xs: 24,
+};
+
+export const FilterFormRowLayout = {
+  gutter: 24,
+};

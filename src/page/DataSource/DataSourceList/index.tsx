@@ -6,9 +6,16 @@ import { Link } from 'react-router-dom';
 import instance from '../../../api/instance';
 import { ResponseCode } from '../../../data/common';
 import { dataSourceColumns } from './columns';
+import DataSourceListFilterForm from './DataSourceListFilterForm';
+import { DataSourceListFilterFields } from './DataSourceListFilterForm/index.type';
 
 const DataSourceList = () => {
   const { t } = useTranslation();
+
+  const [
+    filterInfo,
+    setFilterInfo,
+  ] = React.useState<DataSourceListFilterFields>({});
 
   const {
     data,
@@ -19,10 +26,12 @@ const DataSourceList = () => {
       return instance.getInstanceListV1({
         page_index: current,
         page_size: pageSize,
+        ...filterInfo,
       });
     },
     {
       paginated: true,
+      refreshDeps: [filterInfo],
       formatResult(res) {
         return {
           total: res.data?.total_nums ?? 1,
@@ -66,6 +75,7 @@ const DataSourceList = () => {
         </Link>
       }
     >
+      <DataSourceListFilterForm submit={setFilterInfo} />
       <Table
         loading={loading}
         dataSource={data?.list ?? []}
