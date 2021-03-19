@@ -1,4 +1,5 @@
 import { useBoolean } from 'ahooks';
+import { Select } from 'antd';
 import React from 'react';
 import { IInstanceTipResV1 } from '../../api/common';
 import instance from '../../api/instance';
@@ -29,10 +30,24 @@ const useInstance = () => {
       });
   }, [setFalse, setTrue]);
 
+  const generateInstanceSelectOption = React.useCallback(() => {
+    return instanceList.map((instance) => {
+      return (
+        <Select.Option
+          key={instance.instance_name}
+          value={instance.instance_name ?? ''}
+        >
+          {instance.instance_name}
+        </Select.Option>
+      );
+    });
+  }, [instanceList]);
+
   return {
     instanceList,
     loading,
     updateInstanceList,
+    generateInstanceSelectOption,
   };
 };
 

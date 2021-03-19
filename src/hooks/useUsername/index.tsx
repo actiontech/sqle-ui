@@ -1,4 +1,5 @@
 import { useBoolean } from 'ahooks';
+import { Select } from 'antd';
 import React from 'react';
 import { IUserTipResV1 } from '../../api/common';
 import user from '../../api/user';
@@ -27,10 +28,21 @@ const useUsername = () => {
       });
   }, [setFalse, setTrue]);
 
+  const generateUsernameSelectOption = React.useCallback(() => {
+    return usernameList.map((user) => {
+      return (
+        <Select.Option key={user.user_name} value={user.user_name ?? ''}>
+          {user.user_name}
+        </Select.Option>
+      );
+    });
+  }, [usernameList]);
+
   return {
     usernameList,
     loading,
     updateUsernameList,
+    generateUsernameSelectOption,
   };
 };
 

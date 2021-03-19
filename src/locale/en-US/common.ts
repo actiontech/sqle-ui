@@ -13,6 +13,10 @@ export default {
   delete: 'Delete',
   reset: 'Reset',
   search: 'Search',
+  retry: 'Retry',
+  back: 'Back',
+  resetAndClose: 'Reset Form And Close',
+  operateSuccess: 'Operate successfully',
 
   theme: {
     light: 'Light Theme',
