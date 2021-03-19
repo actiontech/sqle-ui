@@ -13,6 +13,10 @@ export default {
   delete: '删除',
   reset: '重置',
   search: '搜索',
+  retry: '重试',
+  back: '返回',
+  resetAndClose: '重置表单并关闭',
+  operateSuccess: '操作成功',
 
   theme: {
     light: '明亮模式',

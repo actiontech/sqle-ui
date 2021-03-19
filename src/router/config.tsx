@@ -24,6 +24,10 @@ const User = React.lazy(
   () => import(/* webpackChunkName: "User" */ '../page/User')
 );
 
+const DataSource = React.lazy(
+  () => import(/* webpackChunkName: "DataSource" */ '../page/DataSource')
+);
+
 export const unAuthRouter: RouteProps[] = [
   {
     path: '/login',
@@ -65,11 +69,10 @@ export const routerConfig: RouterItem[] = [
       },
       {
         path: '/data',
-        exact: true,
         key: 'data',
         label: 'menu.dataSource',
         icon: <DatabaseOutlined />,
-        component: () => <div>data source</div>,
+        component: DataSource,
       },
       {
         path: '/rule/template',
