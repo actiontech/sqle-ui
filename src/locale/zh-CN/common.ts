@@ -18,6 +18,9 @@ export default {
   resetAndClose: '重置表单并关闭',
   operateSuccess: '操作成功',
 
+  expansion: '展开',
+  collapse: '收起',
+
   theme: {
     light: '明亮模式',
     dark: '暗黑模式',
@@ -37,6 +40,8 @@ export default {
     placeholder: {
       input: '请输入{{name}}',
       select: '请选择{{name}}',
+      searchInput: '请输入要搜索的 {{name}}',
+      searchSelect: '请选择要搜索的 {{name}}',
     },
     rule: {
       require: '必须填写{{name}}',
