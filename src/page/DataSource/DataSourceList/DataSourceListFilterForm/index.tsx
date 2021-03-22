@@ -5,7 +5,9 @@ import { useForm } from 'antd/lib/form/Form';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import {
+  filterFormButtonLayoutFactory,
   FilterFormColLayout,
+  FilterFormLayout,
   FilterFormRowLayout,
 } from '../../../../data/common';
 import useInstance from '../../../../hooks/useInstance';
@@ -59,11 +61,7 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
   }, []);
 
   return (
-    <Form<DataSourceListFilterFields>
-      form={form}
-      labelCol={{ span: 7 }}
-      wrapperCol={{ span: 17 }}
-    >
+    <Form<DataSourceListFilterFields> form={form} {...FilterFormLayout}>
       <Row {...FilterFormRowLayout}>
         <Col {...FilterFormColLayout}>
           <Form.Item
@@ -161,27 +159,32 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
             </Select>
           </Form.Item>
         </Col>
-        <Col {...FilterFormColLayout} className="text-align-right">
-          <Space>
-            <Button onClick={reset}>{t('common.reset')}</Button>
-            <Button type="primary" onClick={submit}>
-              {t('common.search')}
-            </Button>
-            <Typography.Link onClick={collapseChange}>
-              {collapse && (
-                <>
-                  {t('common.expansion')}
-                  <DownOutlined />
-                </>
-              )}
-              {!collapse && (
-                <>
-                  {t('common.collapse')}
-                  <UpOutlined />
-                </>
-              )}
-            </Typography.Link>
-          </Space>
+        <Col
+          {...filterFormButtonLayoutFactory(0, collapse ? 16 : 8)}
+          className="text-align-right"
+        >
+          <Form.Item wrapperCol={{ span: 24 }}>
+            <Space>
+              <Button onClick={reset}>{t('common.reset')}</Button>
+              <Button type="primary" onClick={submit}>
+                {t('common.search')}
+              </Button>
+              <Typography.Link onClick={collapseChange}>
+                {collapse && (
+                  <>
+                    {t('common.expansion')}
+                    <DownOutlined />
+                  </>
+                )}
+                {!collapse && (
+                  <>
+                    {t('common.collapse')}
+                    <UpOutlined />
+                  </>
+                )}
+              </Typography.Link>
+            </Space>
+          </Form.Item>
         </Col>
       </Row>
     </Form>

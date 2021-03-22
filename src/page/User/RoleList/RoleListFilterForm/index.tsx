@@ -2,6 +2,11 @@ import { Button, Col, Form, Row, Select, Space } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import {
+  filterFormButtonLayoutFactory,
+  FilterFormColLayout,
+  FilterFormRowLayout,
+} from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import useInstance from '../../../../hooks/useInstance';
 import useRole from '../../../../hooks/userRole';
@@ -56,8 +61,8 @@ const RoleListFilterForm: React.FC<{
       onFinish={props.updateRoleListFilter}
       className="table-filter-form"
     >
-      <Row gutter={24}>
-        <Col xs={24} sm={6}>
+      <Row {...FilterFormRowLayout}>
+        <Col {...FilterFormColLayout}>
           <Form.Item
             name="filter_role_name"
             label={t('user.roleForm.roleName')}
@@ -77,7 +82,7 @@ const RoleListFilterForm: React.FC<{
             </Select>
           </Form.Item>
         </Col>
-        <Col xs={24} sm={6}>
+        <Col {...FilterFormColLayout}>
           <Form.Item
             name="filter_user_name"
             label={t('user.roleForm.usernames')}
@@ -98,7 +103,7 @@ const RoleListFilterForm: React.FC<{
           </Form.Item>
         </Col>
 
-        <Col xs={24} sm={6}>
+        <Col {...FilterFormColLayout}>
           <Form.Item
             name="filter_instance_name"
             label={t('user.roleForm.databases')}
@@ -118,13 +123,18 @@ const RoleListFilterForm: React.FC<{
             </Select>
           </Form.Item>
         </Col>
-        <Col xs={24} sm={6} className="text-align-right">
-          <Space>
-            <Button onClick={resetForm}>{t('common.reset')}</Button>
-            <Button type="primary" htmlType="submit">
-              {t('common.search')}
-            </Button>
-          </Space>
+        <Col
+          {...filterFormButtonLayoutFactory(0, 16)}
+          className="text-align-right"
+        >
+          <Form.Item>
+            <Space>
+              <Button onClick={resetForm}>{t('common.reset')}</Button>
+              <Button type="primary" htmlType="submit">
+                {t('common.search')}
+              </Button>
+            </Space>
+          </Form.Item>
         </Col>
       </Row>
     </Form>

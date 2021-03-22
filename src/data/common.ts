@@ -25,12 +25,37 @@ export const PageFormLayout = {
   },
 };
 
+export const FilterFormLayout = {
+  labelCol: { span: 7 },
+  wrapperCol: { span: 17 },
+};
+
 export const FilterFormColLayout = {
+  xs: 24,
   sm: 12,
   xl: 8,
   xxl: 6,
-  xs: 24,
 };
+
+export const filterFormButtonLayoutFactory = (
+  smOffset = 0,
+  xlOffset = 0,
+  xxlOffset = 0
+) => ({
+  xs: 24,
+  sm: {
+    span: 12,
+    offset: smOffset,
+  },
+  xl: {
+    span: 8,
+    offset: xlOffset,
+  },
+  xxl: {
+    span: 6,
+    offset: xxlOffset,
+  },
+});
 
 export const FilterFormRowLayout = {
   gutter: 24,
