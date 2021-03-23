@@ -1,3 +1,5 @@
+import { RuleResV1LevelEnum } from './common.enum';
+
 export interface IBaseRes {
   code?: number;
 
@@ -239,7 +241,7 @@ export interface IRoleTipResV1 {
 export interface IRuleResV1 {
   desc?: string;
 
-  level?: string;
+  level?: RuleResV1LevelEnum;
 
   rule_name?: string;
 

@@ -16,7 +16,7 @@ export const ModalFormLayout = {
 export const PageFormLayout = {
   labelCol: {
     xs: { span: 24 },
-    sm: { span: 7 },
+    sm: { span: 8 },
   },
   wrapperCol: {
     xs: { span: 24 },

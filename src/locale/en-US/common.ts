@@ -17,6 +17,8 @@ export default {
   back: 'Back',
   resetAndClose: 'Reset Form And Close',
   operateSuccess: 'Operate successfully',
+  prevStep: 'Prev',
+  nextStep: 'Next',
 
   expansion: 'Expand',
   collapse: 'Collapse',
