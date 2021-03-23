@@ -99,7 +99,8 @@ const UserList = () => {
   const removeUser = React.useCallback(
     (username: string) => {
       const hideLoading = message.loading(
-        t('user.deleteUser.deleting', { username })
+        t('user.deleteUser.deleting', { username }),
+        0
       );
       user
         .deleteUserV1({ user_name: username })
@@ -125,7 +126,6 @@ const UserList = () => {
     return () => {
       EventEmitter.unsubscribe(EmitterKey.Refresh_User_list, refresh);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refreshUserList]);
 
   return (

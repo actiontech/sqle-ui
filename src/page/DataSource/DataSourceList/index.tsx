@@ -44,7 +44,8 @@ const DataSourceList = () => {
   const deleteDatabase = React.useCallback(
     (instanceName: string) => {
       const hideLoading = message.loading(
-        t('dataSource.deleteDatabase.deletingDatabase', { name: instanceName })
+        t('dataSource.deleteDatabase.deletingDatabase', { name: instanceName }),
+        0
       );
       instance
         .deleteInstanceV1({

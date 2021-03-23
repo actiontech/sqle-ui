@@ -28,6 +28,10 @@ const DataSource = React.lazy(
   () => import(/* webpackChunkName: "DataSource" */ '../page/DataSource')
 );
 
+const RuleTemplate = React.lazy(
+  () => import(/* webpackChunkName: "RuleTemplate" */ '../page/RuleTemplate')
+);
+
 export const unAuthRouter: RouteProps[] = [
   {
     path: '/login',
@@ -77,10 +81,9 @@ export const routerConfig: RouterItem[] = [
       {
         path: '/rule/template',
         key: 'ruleTemplate',
-        exact: true,
         label: 'menu.ruleTemplate',
         icon: <AuditOutlined />,
-        component: () => <div>rule template</div>,
+        component: RuleTemplate,
       },
       {
         path: '/progress',

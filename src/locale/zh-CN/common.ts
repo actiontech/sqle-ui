@@ -18,6 +18,9 @@ export default {
   resetAndClose: '重置表单并关闭',
   operateSuccess: '操作成功',
 
+  prevStep: '上一步',
+  nextStep: '下一步',
+
   expansion: '展开',
   collapse: '收起',
 
