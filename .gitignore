@@ -7,7 +7,10 @@
 .vscode
 .eslintcache
 yarn.lock
-/scripts/api-modeling
+/scripts/api-modeling/node_modules
+/scripts/api-modeling/dist
+/scripts/api-modeling/package-lock.json
+/scripts/api-modeling/package-lock.json
 
 # testing
 /coverage
