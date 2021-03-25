@@ -13,11 +13,15 @@ import Icon, {
 } from '@ant-design/icons';
 import LanguageSelect from '../../LanguageSelect';
 import { useTranslation } from 'react-i18next';
+import { updateToken, updateUser } from '../../../store/user';
+import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const username = useSelector<IReduxState, string>(
     (state) => state.user.username
   );
+  const history = useHistory();
   const { changeLoading, currentTheme, changeTheme } = useChangeTheme();
   const { t } = useTranslation();
 
@@ -28,6 +32,12 @@ const Header = () => {
     [changeTheme]
   );
 
+  const logout = React.useCallback(() => {
+    updateToken({ token: '' });
+    updateUser({ username: '', role: '' });
+    history.push('/');
+  }, [history]);
+
   return (
     <header>
       <Space align="center" className="header-wrapper">
@@ -35,6 +45,12 @@ const Header = () => {
         <Dropdown
           overlay={
             <Menu>
+              <Menu.Item>
+                <Link to="/account">
+                  <UserOutlined />
+                  {t('common.account')}
+                </Link>
+              </Menu.Item>
               <Menu.Item
                 hidden={currentTheme === SupportTheme.LIGHT}
                 key="light"
@@ -56,7 +72,7 @@ const Header = () => {
                 {changeLoading && <LoadingOutlined />}
               </Menu.Item>
               <Menu.Divider />
-              <Menu.Item key="logout">
+              <Menu.Item key="logout" onClick={logout}>
                 <PoweroffOutlined /> {t('common.logout')}
               </Menu.Item>
             </Menu>

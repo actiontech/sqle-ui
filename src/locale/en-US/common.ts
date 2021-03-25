@@ -29,6 +29,7 @@ export default {
   },
 
   logout: 'Logout',
+  account: 'Account',
 
   nav: {
     title: 'SQLe',

@@ -17,6 +17,8 @@ export default {
 
   deleteRuleTemplate: {
     tips: 'Are you sure delete this template "{{name}}"?',
+    deleting: 'Deleting template "{{name}}"...',
+    deleteSuccessTips: 'Delete template "{{name}}" successfully',
   },
 
   ruleTemplateForm: {

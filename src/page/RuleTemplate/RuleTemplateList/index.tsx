@@ -71,13 +71,14 @@ const RuleTemplateList = () => {
                 name: templateName,
               })
             );
+            refreshRuleTemplate();
           }
         })
         .finally(() => {
           hideLoading();
         });
     },
-    [t]
+    [refreshRuleTemplate, t]
   );
 
   return (
