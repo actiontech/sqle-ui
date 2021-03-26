@@ -1,6 +1,5 @@
 import useRequest from '@ahooksjs/use-request';
 import { Card, Col, Divider, PageHeader, Row, Tag, Typography } from 'antd';
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import user from '../../api/user';
@@ -22,20 +21,18 @@ const Account = () => {
       },
     }
   );
-  const [a, seta] = useState(1);
 
   return (
     <>
       <PageHeader ghost={false} title={t('account.pageTitle')}>
         {t('account.pageDesc')}
-        <button onClick={() => seta((c) => c + 1)}>a</button>
       </PageHeader>
       <section className="padding-content">
         <Card title={t('account.accountTitle')}>
           <Row>
             <Col sm={3} xs={24}>
               <Typography.Title level={5}>
-                {t('common.username')}
+                {t('user.userForm.username')}
               </Typography.Title>
             </Col>
             <Col sm={21} xs={24}>

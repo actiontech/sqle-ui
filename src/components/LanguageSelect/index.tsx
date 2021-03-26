@@ -34,6 +34,7 @@ const LanguageSelect: React.FC<{}> = () => {
         return (
           <Select.Option key={key} value={key} className="font-size-small">
             <Icon component={lng.icon} />
+            &nbsp;
             {lng.label}
           </Select.Option>
         );
