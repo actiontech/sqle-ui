@@ -18,6 +18,9 @@ const SiderMenu = () => {
         if (Array.isArray(route.role) && !route.role?.includes(userRole)) {
           return null;
         }
+        if (route.hideInSliderMenu) {
+          return null;
+        }
         if (!!route.components) {
           return (
             <Menu.SubMenu

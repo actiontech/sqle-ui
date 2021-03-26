@@ -9,4 +9,5 @@ export type RouterItem = {
   path?: string;
   icon?: ReactNode;
   components?: RouterItem[];
+  hideInSliderMenu?: boolean;
 } & RouteProps;

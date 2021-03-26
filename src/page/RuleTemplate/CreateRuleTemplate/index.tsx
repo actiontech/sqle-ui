@@ -99,7 +99,9 @@ const CreateRuleTemplate = () => {
             }
           />
           <Row justify="center">
-            <Button type="primary">{t('ruleTemplate.backToList')}</Button>
+            <Link to="/rule/template">
+              <Button type="primary">{t('ruleTemplate.backToList')}</Button>
+            </Link>
           </Row>
         </RuleTemplateForm>
       </Card>

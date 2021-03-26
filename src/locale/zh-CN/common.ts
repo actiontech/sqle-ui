@@ -30,6 +30,7 @@ export default {
   },
 
   logout: '退出登录',
+  account: '个人中心',
 
   nav: {
     title: 'SQLe',

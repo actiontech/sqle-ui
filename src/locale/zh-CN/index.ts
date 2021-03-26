@@ -1,3 +1,4 @@
+import account from './account';
 import common from './common';
 import dataSource from './dataSource';
 import login from './login';
@@ -14,5 +15,6 @@ export default {
     user,
     dataSource,
     ruleTemplate,
+    account,
   },
 };

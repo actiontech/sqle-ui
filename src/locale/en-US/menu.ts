@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   dashboard: 'Dashboard',
-  rule: 'rule',
+  rule: 'Rule',
   platformManage: 'Platform Manage',
   user: 'User',
   dataSource: 'Database',

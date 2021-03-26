@@ -32,6 +32,10 @@ const RuleTemplate = React.lazy(
   () => import(/* webpackChunkName: "RuleTemplate" */ '../page/RuleTemplate')
 );
 
+const Account = React.lazy(
+  () => import(/* webpackChunkName: "Account" */ '../page/Account')
+);
+
 export const unAuthRouter: RouteProps[] = [
   {
     path: '/login',
@@ -56,6 +60,14 @@ export const routerConfig: RouterItem[] = [
     component: Home,
     icon: <DesktopOutlined />,
     key: 'rule',
+  },
+  {
+    path: '/account',
+    exact: true,
+    label: 'common.account',
+    component: Account,
+    hideInSliderMenu: true,
+    key: 'account',
   },
   {
     label: 'menu.platformManage',
