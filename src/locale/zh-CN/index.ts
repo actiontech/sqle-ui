@@ -3,6 +3,7 @@ import common from './common';
 import dataSource from './dataSource';
 import login from './login';
 import menu from './menu';
+import rule from './rule';
 import ruleTemplate from './ruleTemplate';
 import user from './user';
 
@@ -16,5 +17,6 @@ export default {
     dataSource,
     ruleTemplate,
     account,
+    rule,
   },
 };

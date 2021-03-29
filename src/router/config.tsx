@@ -24,6 +24,10 @@ const User = React.lazy(
   () => import(/* webpackChunkName: "User" */ '../page/User')
 );
 
+const Rule = React.lazy(
+  () => import(/* webpackChunkName: "Rule" */ '../page/Rule')
+);
+
 const DataSource = React.lazy(
   () => import(/* webpackChunkName: "DataSource" */ '../page/DataSource')
 );
@@ -57,7 +61,7 @@ export const routerConfig: RouterItem[] = [
     path: '/rule',
     exact: true,
     label: 'menu.rule',
-    component: Home,
+    component: Rule,
     icon: <DesktopOutlined />,
     key: 'rule',
   },
