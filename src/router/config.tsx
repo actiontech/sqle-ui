@@ -24,6 +24,10 @@ const User = React.lazy(
   () => import(/* webpackChunkName: "User" */ '../page/User')
 );
 
+const Rule = React.lazy(
+  () => import(/* webpackChunkName: "Rule" */ '../page/Rule')
+);
+
 const DataSource = React.lazy(
   () => import(/* webpackChunkName: "DataSource" */ '../page/DataSource')
 );
@@ -34,6 +38,10 @@ const RuleTemplate = React.lazy(
 
 const Account = React.lazy(
   () => import(/* webpackChunkName: "Account" */ '../page/Account')
+);
+
+const Workflow = React.lazy(
+  () => import(/* webpackChunkName: "Workflow" */ '../page/workflow')
 );
 
 export const unAuthRouter: RouteProps[] = [
@@ -57,9 +65,18 @@ export const routerConfig: RouterItem[] = [
     path: '/rule',
     exact: true,
     label: 'menu.rule',
-    component: Home,
+    component: Rule,
     icon: <DesktopOutlined />,
     key: 'rule',
+  },
+  {
+    path: '/workflow',
+    exact: true,
+    label: 'menu.workflow',
+    component: Workflow,
+    icon: <DesktopOutlined />,
+    key: 'workflow',
+    hideInSliderMenu: true,
   },
   {
     path: '/account',

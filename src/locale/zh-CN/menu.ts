@@ -8,4 +8,5 @@ export default {
   ruleTemplate: '模版管理',
   progressManage: '流程管理',
   systemSetting: '系统设置',
+  workflow: '工单',
 };

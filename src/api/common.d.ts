@@ -1,9 +1,48 @@
-import { RuleResV1LevelEnum } from './common.enum';
+import {
+  AuditTaskResV1StatusEnum,
+  RuleResV1LevelEnum,
+  WorkFlowStepTemplateReqV1TypeEnum,
+  WorkflowDetailResV1CurrentStepTypeEnum,
+  WorkflowDetailResV1StatusEnum,
+  WorkflowDetailResV1TaskStatusEnum,
+  WorkflowResV1StatusEnum,
+  WorkflowStepResV1StateEnum
+} from './common.enum';
 
 export interface IBaseRes {
   code?: number;
 
   message?: string;
+}
+
+export interface IAuditTaskResV1 {
+  instance_name?: string;
+
+  instance_schema?: string;
+
+  pass_rate?: number;
+
+  status?: AuditTaskResV1StatusEnum;
+
+  task_id?: number;
+}
+
+export interface IAuditTaskSQLResV1 {
+  audit_level?: string;
+
+  audit_result?: string;
+
+  audit_status?: string;
+
+  exec_result?: string;
+
+  exec_sql?: string;
+
+  exec_status?: string;
+
+  number?: number;
+
+  rollback_sql?: string;
 }
 
 export interface ICreateInstanceReqV1 {
@@ -54,6 +93,42 @@ export interface ICreateUserReqV1 {
   user_name?: string;
 
   user_password?: string;
+}
+
+export interface ICreateWorkflowReqV1 {
+  desc?: string;
+
+  task_id?: string;
+
+  workflow_subject?: string;
+}
+
+export interface ICreateWorkflowTemplateReqV1 {
+  desc?: string;
+
+  instance_name_list?: string[];
+
+  workflow_step_template_list?: IWorkFlowStepTemplateReqV1[];
+
+  workflow_template_name?: string;
+}
+
+export interface IGetAuditTaskResV1 {
+  code?: number;
+
+  data?: IAuditTaskResV1;
+
+  message?: string;
+}
+
+export interface IGetAuditTaskSQLsResV1 {
+  code?: number;
+
+  data?: IAuditTaskSQLResV1[];
+
+  message?: string;
+
+  total_nums?: number;
 }
 
 export interface IGetInstanceConnectableReqV1 {
@@ -194,7 +269,53 @@ export interface IGetUsersResV1 {
   total_nums?: number;
 }
 
+export interface IGetWorkflowResV1 {
+  code?: number;
+
+  data?: IWorkflowResV1;
+
+  message?: string;
+}
+
+export interface IGetWorkflowTemplateResV1 {
+  code?: number;
+
+  data?: IWorkflowTemplateDetailResV1;
+
+  message?: string;
+}
+
+export interface IGetWorkflowTemplateTipResV1 {
+  code?: number;
+
+  data?: IWorkflowTemplateTipResV1[];
+
+  message?: string;
+}
+
+export interface IGetWorkflowTemplatesResV1 {
+  code?: number;
+
+  data?: IWorkflowTemplateResV1[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
+export interface IGetWorkflowsResV1 {
+  code?: number;
+
+  data?: IWorkflowDetailResV1[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
 export interface IInstanceConnectableResV1 {
+  connect_error_message?: string;
+
   is_instance_connectable?: boolean;
 }
 
@@ -222,6 +343,10 @@ export interface IInstanceSchemaResV1 {
 
 export interface IInstanceTipResV1 {
   instance_name?: string;
+}
+
+export interface IRejectWorkflowReqV1 {
+  reason?: string;
 }
 
 export interface IRoleResV1 {
@@ -302,6 +427,14 @@ export interface IUpdateUserReqV1 {
   role_name_list?: string[];
 }
 
+export interface IUpdateWorkflowTemplateReqV1 {
+  desc?: string;
+
+  instance_name_list?: string[];
+
+  workflow_step_template_list?: IWorkFlowStepTemplateReqV1[];
+}
+
 export interface IUserDetailResV1 {
   email?: string;
 
@@ -332,4 +465,106 @@ export interface IUserResV1 {
 
 export interface IUserTipResV1 {
   user_name?: string;
+}
+
+export interface IWorkFlowStepTemplateReqV1 {
+  assignee_user_name_list?: string[];
+
+  desc?: string;
+
+  type?: WorkFlowStepTemplateReqV1TypeEnum;
+}
+
+export interface IWorkFlowStepTemplateResV1 {
+  assignee_user_name_list?: string[];
+
+  desc?: string;
+
+  number?: number;
+
+  type?: string;
+}
+
+export interface IWorkflowDetailResV1 {
+  create_time?: string;
+
+  create_user_name?: string;
+
+  current_step_assignee_user_name_list?: string[];
+
+  current_step_type?: WorkflowDetailResV1CurrentStepTypeEnum;
+
+  desc?: string;
+
+  status?: WorkflowDetailResV1StatusEnum;
+
+  subject?: string;
+
+  task_instance_name?: string;
+
+  task_instance_schema?: string;
+
+  task_pass_rate?: number;
+
+  task_status?: WorkflowDetailResV1TaskStatusEnum;
+
+  workflow_id?: number;
+}
+
+export interface IWorkflowResV1 {
+  create_time?: string;
+
+  create_user_name?: string;
+
+  current_step_number?: number;
+
+  desc?: string;
+
+  status?: WorkflowResV1StatusEnum;
+
+  subject?: string;
+
+  task_id?: number;
+
+  workflow_id?: number;
+
+  workflow_step_list?: IWorkflowStepResV1[];
+}
+
+export interface IWorkflowStepResV1 {
+  assignee_user_name_list?: string[];
+
+  desc?: string;
+
+  number?: number;
+
+  operation_time?: string;
+
+  operation_user_name?: string;
+
+  reason?: string;
+
+  state?: WorkflowStepResV1StateEnum;
+
+  type?: string;
+}
+
+export interface IWorkflowTemplateDetailResV1 {
+  desc?: string;
+
+  instance_name_list?: string[];
+
+  workflow_step_template_list?: IWorkFlowStepTemplateResV1[];
+
+  workflow_template_name?: string;
+}
+
+export interface IWorkflowTemplateResV1 {
+  desc?: string;
+
+  workflow_template_name?: string;
+}
+
+export interface IWorkflowTemplateTipResV1 {
+  workflow_template_name?: string;
 }
