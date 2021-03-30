@@ -7,6 +7,7 @@ import {
   IBaseRes,
   IGetInstanceResV1,
   IUpdateInstanceReqV1,
+  IGetRulesResV1,
   IGetInstanceSchemaResV1
 } from '../common.d';
 
@@ -68,6 +69,12 @@ export interface ICheckInstanceIsConnectableByNameV1Params {
 
 export interface ICheckInstanceIsConnectableByNameV1Return
   extends IGetInstanceConnectableResV1 {}
+
+export interface IGetInstanceRuleListV1Params {
+  instance_name: string;
+}
+
+export interface IGetInstanceRuleListV1Return extends IGetRulesResV1 {}
 
 export interface IGetInstanceSchemasV1Params {
   instance_name: string;

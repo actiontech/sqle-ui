@@ -22,6 +22,8 @@ import {
   IUpdateInstanceV1Return,
   ICheckInstanceIsConnectableByNameV1Params,
   ICheckInstanceIsConnectableByNameV1Return,
+  IGetInstanceRuleListV1Params,
+  IGetInstanceRuleListV1Return,
   IGetInstanceSchemasV1Params,
   IGetInstanceSchemasV1Return
 } from './index.d';
@@ -126,6 +128,21 @@ class InstanceService extends ServiceBase {
 
     return this.get<ICheckInstanceIsConnectableByNameV1Return>(
       `/v1/instances/${instance_name}/connection`,
+      paramsData,
+      options
+    );
+  }
+
+  public getInstanceRuleListV1(
+    params: IGetInstanceRuleListV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const instance_name = paramsData.instance_name;
+    delete paramsData.instance_name;
+
+    return this.get<IGetInstanceRuleListV1Return>(
+      `/v1/instances/${instance_name}/rules`,
       paramsData,
       options
     );
