@@ -40,6 +40,10 @@ const Account = React.lazy(
   () => import(/* webpackChunkName: "Account" */ '../page/Account')
 );
 
+const Workflow = React.lazy(
+  () => import(/* webpackChunkName: "Workflow" */ '../page/workflow')
+);
+
 export const unAuthRouter: RouteProps[] = [
   {
     path: '/login',
@@ -64,6 +68,15 @@ export const routerConfig: RouterItem[] = [
     component: Rule,
     icon: <DesktopOutlined />,
     key: 'rule',
+  },
+  {
+    path: '/workflow',
+    exact: true,
+    label: 'menu.workflow',
+    component: Workflow,
+    icon: <DesktopOutlined />,
+    key: 'workflow',
+    hideInSliderMenu: true,
   },
   {
     path: '/account',

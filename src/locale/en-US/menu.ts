@@ -8,4 +8,5 @@ export default {
   ruleTemplate: 'Rule Template',
   progressManage: 'Progress',
   systemSetting: 'System Setting',
+  workflow: 'Workflow',
 };

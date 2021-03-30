@@ -1,14 +1,40 @@
 import useRequest from '@ahooksjs/use-request';
-import { Card, Col, PageHeader, Row, Select, Space } from 'antd';
-import React from 'react';
+import {
+  Card,
+  Col,
+  Descriptions,
+  Divider,
+  PageHeader,
+  Row,
+  Select,
+  Space,
+} from 'antd';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import instance from '../../api/instance';
 import ruleTemplate from '../../api/rule_template';
+import EmptyBox from '../../components/EmptyBox';
 import RuleList from '../../components/RuleList';
 import useInstance from '../../hooks/useInstance';
 
 const Rule = () => {
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
   const { t } = useTranslation();
+  const [instanceName, setInstanceName] = useState<string | undefined>(
+    undefined
+  );
+  const { data: instanceRules, run: getInstanceRules } = useRequest(
+    () =>
+      instance.getInstanceRuleListV1({
+        instance_name: instanceName ?? '',
+      }),
+    {
+      manual: true,
+      formatResult(res) {
+        return res.data?.data ?? [];
+      },
+    }
+  );
 
   const { data: allRules } = useRequest(
     ruleTemplate.getRuleListV1.bind(ruleTemplate),
@@ -18,6 +44,22 @@ const Rule = () => {
       },
     }
   );
+
+  const disableRules = React.useMemo(() => {
+    if (!instanceRules) {
+      return allRules ?? [];
+    }
+    const all = allRules ?? [];
+    return all.filter(
+      (e) => !instanceRules.find((item) => item.rule_name === e.rule_name)
+    );
+  }, [allRules, instanceRules]);
+
+  React.useEffect(() => {
+    if (instanceName !== undefined) {
+      getInstanceRules();
+    }
+  }, [getInstanceRules, instanceName]);
 
   React.useEffect(() => {
     updateInstanceList();
@@ -36,6 +78,8 @@ const Rule = () => {
               <Col span={3}>{t('rule.form.instance')}</Col>
               <Col span={5}>
                 <Select
+                  value={instanceName}
+                  onChange={setInstanceName}
                   placeholder={t('common.form.placeholder.select')}
                   className="full-width-element"
                   allowClear
@@ -45,9 +89,24 @@ const Rule = () => {
               </Col>
             </Row>
           </Card>
-          <Card title={t('rule.allRules')}>
-            <RuleList list={allRules ?? []} />
-          </Card>
+          <EmptyBox if={!instanceName}>
+            <Card title={t('rule.allRules')}>
+              <RuleList list={allRules ?? []} />
+            </Card>
+          </EmptyBox>
+          <EmptyBox if={!!instanceName}>
+            <Card title={t('rule.instanceRuleList')}>
+              <Descriptions
+                title={t('rule.activeRules', { name: instanceName })}
+              />
+              <RuleList list={instanceRules ?? []} />
+              <Divider dashed />
+              <Descriptions
+                title={t('rule.disableRules', { name: instanceName })}
+              />
+              <RuleList list={disableRules ?? []} />
+            </Card>
+          </EmptyBox>
         </Space>
       </section>
     </>

@@ -5,6 +5,9 @@ export default {
     '你可以在这里查看所有的审核规则，或者查看某一个数据源启用的所有审核规则',
 
   allRules: '全部规则',
+  instanceRuleList: '实例规则列表',
+  activeRules: '实例{{name}}启用的规则',
+  disableRules: '实例{{name}}禁用的规则',
   form: {
     instance: '选择要查看的数据源',
   },
