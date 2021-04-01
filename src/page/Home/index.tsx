@@ -6,6 +6,8 @@ const Home = () => {
     <div>
       home page
       <Link to="/workflow">workflow</Link>
+      <Link to="/order/1">workflow 1</Link>
+      <Link to="/order/2">workflow 2</Link>
       <Button>123</Button>
     </div>
   );

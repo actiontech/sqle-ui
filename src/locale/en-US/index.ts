@@ -4,6 +4,7 @@ import common from './common';
 import dataSource from './dataSource';
 import login from './login';
 import menu from './menu';
+import order from './order';
 import rule from './rule';
 import ruleTemplate from './ruleTemplate';
 import user from './user';
@@ -22,5 +23,6 @@ export default {
     rule,
     workflow,
     audit,
+    order,
   },
 };

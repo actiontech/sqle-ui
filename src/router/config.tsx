@@ -44,6 +44,10 @@ const Workflow = React.lazy(
   () => import(/* webpackChunkName: "Workflow" */ '../page/workflow')
 );
 
+const Order = React.lazy(
+  () => import(/* webpackChunkName: "Order" */ '../page/Order')
+);
+
 export const unAuthRouter: RouteProps[] = [
   {
     path: '/login',
@@ -85,6 +89,14 @@ export const routerConfig: RouterItem[] = [
     component: Account,
     hideInSliderMenu: true,
     key: 'account',
+  },
+  {
+    path: '/order/:orderId',
+    exact: true,
+    label: 'menu.orderDetail',
+    component: Order,
+    hideInSliderMenu: true,
+    key: 'order',
   },
   {
     label: 'menu.platformManage',

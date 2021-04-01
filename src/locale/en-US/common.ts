@@ -4,6 +4,7 @@ export default {
   password: 'password',
 
   unknownError: 'Unknown Error',
+  unknownStatus: 'Unknown Status',
 
   ok: 'Ok',
   cancel: 'Cancel',
