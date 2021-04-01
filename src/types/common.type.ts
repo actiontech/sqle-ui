@@ -1,4 +1,4 @@
-import { ColumnGroupType, ColumnType } from 'antd/lib/table';
+import { ColumnGroupType, ColumnType, TableProps } from 'antd/lib/table';
 
 export type Dictionary = {
   [key: string]: string | number | boolean | Dictionary;
@@ -13,3 +13,7 @@ export type TableColumn<RecordType = unknown, OtherColumnKes = ''> = Array<
     dataIndex: keyof RecordType | OtherColumnKes;
   }
 >;
+
+export type TableChange<RecordType = unknown> = Required<
+  TableProps<RecordType>
+>['onChange'];

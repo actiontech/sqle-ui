@@ -19,6 +19,16 @@ const useChangeTheme = () => {
     }
   }, [theme]);
 
+  const currentEditorTheme = React.useMemo(() => {
+    switch (theme) {
+      case SupportTheme.DARK:
+        return 'vs-dark';
+      case SupportTheme.LIGHT:
+      default:
+        return 'vs';
+    }
+  }, [theme]);
+
   const changeThemeStyle = React.useCallback((theme: SupportTheme) => {
     let newId = 'light-theme';
     let styleTagId = '#dark-theme';
@@ -72,6 +82,7 @@ const useChangeTheme = () => {
   return {
     changeLoading,
     currentTheme: theme,
+    currentEditorTheme,
     currentThemeData,
     changeTheme,
   };

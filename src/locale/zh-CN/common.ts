@@ -12,9 +12,11 @@ export default {
   edit: '编辑',
   delete: '删除',
   reset: '重置',
+  resetAll: '重置所有内容',
   search: '搜索',
   retry: '重试',
   back: '返回',
+  upload: '选择文件上传',
   resetAndClose: '重置表单并关闭',
   operateSuccess: '操作成功',
 

@@ -1,4 +1,5 @@
 import useRequest from '@ahooksjs/use-request';
+import { useTheme } from '@material-ui/styles';
 import {
   Card,
   Col,
@@ -16,6 +17,7 @@ import ruleTemplate from '../../api/rule_template';
 import EmptyBox from '../../components/EmptyBox';
 import RuleList from '../../components/RuleList';
 import useInstance from '../../hooks/useInstance';
+import { Theme } from '../../types/theme.type';
 
 const Rule = () => {
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
@@ -23,6 +25,7 @@ const Rule = () => {
   const [instanceName, setInstanceName] = useState<string | undefined>(
     undefined
   );
+  const theme = useTheme<Theme>();
   const { data: instanceRules, run: getInstanceRules } = useRequest(
     () =>
       instance.getInstanceRuleListV1({
@@ -72,7 +75,11 @@ const Rule = () => {
         {t('rule.pageDesc')}
       </PageHeader>
       <section className="padding-content">
-        <Space size={24} direction="vertical" className="full-width-element">
+        <Space
+          size={theme.common.padding}
+          direction="vertical"
+          className="full-width-element"
+        >
           <Card>
             <Row align="middle">
               <Col span={3}>{t('rule.form.instance')}</Col>
