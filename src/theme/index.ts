@@ -21,6 +21,9 @@ const useStyles = makeStyles<Theme>((theme) => ({
     backgroundColor: theme.header.background,
     color: theme.header.color,
   },
+  editor: {
+    border: theme.editor.border,
+  },
 }));
 
 export { SupportTheme, ThemeData };
