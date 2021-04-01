@@ -4,6 +4,7 @@ export default {
   password: '密码',
 
   unknownError: '未知错误...',
+  unknownStatus: '未知状态...',
 
   ok: '确认',
   cancel: '取消',
