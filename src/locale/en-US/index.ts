@@ -1,6 +1,7 @@
 import account from './account';
 import audit from './audit';
 import common from './common';
+import dashboard from './dashboard';
 import dataSource from './dataSource';
 import login from './login';
 import menu from './menu';
@@ -24,5 +25,6 @@ export default {
     workflow,
     audit,
     order,
+    dashboard,
   },
 };

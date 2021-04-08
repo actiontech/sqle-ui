@@ -2,6 +2,10 @@ export enum ResponseCode {
   SUCCESS = 0,
 }
 
+export enum SystemRole {
+  admin = 'admin',
+}
+
 export const ModalFormLayout = {
   labelCol: {
     xs: { span: 24 },

@@ -78,7 +78,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
           {generateRuleTemplateSelectOption()}
         </Select>
       </Form.Item>
-      <Form.Item
+      {/* <Form.Item
         label={t('dataSource.dataSourceForm.workflow')}
         name="workflow"
       >
@@ -88,10 +88,9 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
             name: t('dataSource.dataSourceForm.workflow'),
           })}
         >
-          {/* TODO: 接口未实现 */}
           <Select.Option value={1}>1</Select.Option>
         </Select>
-      </Form.Item>
+      </Form.Item> */}
     </Form>
   );
 };

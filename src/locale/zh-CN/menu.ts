@@ -8,6 +8,8 @@ export default {
   ruleTemplate: '模版管理',
   progressManage: '流程管理',
   systemSetting: '系统设置',
-  workflow: '工单',
+  workflow: '工单创建',
+  order: '工单',
+  orderList: '工单列表',
   orderDetail: '工单详情',
 };

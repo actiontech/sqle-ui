@@ -1,11 +1,23 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   pageTitle: '工单详情',
+  orderList: {
+    pageTitle: '工单列表',
+    pageDesc: '工单列表中只会展示与您相关的工单。',
+
+    allOrderAboutMe: '所有与我相关的工单',
+  },
   order: {
     name: '工单名称',
     createUser: '创建人',
+    assignee: '待操作人',
     createTime: '创建时间',
     desc: '工单描述',
+    status: '工单状态',
+    stepType: '当前步骤类型',
+    sqlTaskStatus: 'Sql审核状态',
+    instanceName: '数据源',
+    passRate: '审核通过率',
   },
 
   status: {
@@ -13,6 +25,14 @@ export default {
     finished: '已上线',
     process: '待审核',
     reject: '已驳回',
+  },
+
+  sqlTaskStatus: {
+    initialized: '等待审核',
+    audited: '审核完成',
+    executing: '执行中',
+    execSuccess: '执行成功',
+    execFailed: '执行失败',
   },
 
   operator: {
@@ -25,5 +45,9 @@ export default {
     rejectDetail: '{{name}}驳回了当前工单，驳回原因为',
     sqlExecute: '执行上线',
     unknown: '未知步骤',
+
+    approveSuccessTips: '审批通过',
+    rejectSuccessTips: '驳回成功',
+    rejectReason: '驳回原因',
   },
 };

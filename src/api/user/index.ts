@@ -10,6 +10,8 @@ import {
   ILoginV1Params,
   ILoginV1Return,
   IGetCurrentUserV1Return,
+  IUpdateCurrentUserV1Params,
+  IUpdateCurrentUserV1Return,
   IGetUserTipListV1Return,
   IGetUserListV1Params,
   IGetUserListV1Return,
@@ -35,6 +37,18 @@ class UserService extends ServiceBase {
 
   public getCurrentUserV1(options?: AxiosRequestConfig) {
     return this.get<IGetCurrentUserV1Return>('/v1/user', undefined, options);
+  }
+
+  public updateCurrentUserV1(
+    params: IUpdateCurrentUserV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.patch<IUpdateCurrentUserV1Return>(
+      '/v1/user',
+      paramsData,
+      options
+    );
   }
 
   public getUserTipListV1(options?: AxiosRequestConfig) {

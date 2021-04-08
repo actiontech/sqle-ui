@@ -1,15 +1,15 @@
 import { TimelineItemProps } from 'antd';
-import { IWorkflowStepResV1 } from '../../../api/common.d';
-import { WorkflowStepResV1StateEnum } from '../../../api/common.enum';
-import { I18nKey } from '../../../types/common.type';
+import { IWorkflowStepResV1 } from '../../../../api/common.d';
+import { WorkflowStepResV1StateEnum } from '../../../../api/common.enum';
+import { I18nKey } from '../../../../types/common.type';
 
 export type OrderStepsProps = {
   currentStep?: number;
   stepList: IWorkflowStepResV1[];
   createUser?: string;
   createTime?: string;
-  pass: () => void;
-  reject: () => void;
+  pass: () => Promise<void>;
+  reject: (reason: string) => Promise<void>;
 };
 
 export type StepStateStatus = {

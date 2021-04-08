@@ -35,7 +35,7 @@ const AddDataSource = () => {
         instance_name: values.name,
         role_name_list: values.role,
         rule_template_name_list: values.ruleTemplate,
-        workflow_template_name: values.workflow,
+        // workflow_template_name: values.workflow,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {

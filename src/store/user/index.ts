@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { SystemRole } from '../../data/common';
 import StorageKey from '../../data/StorageKey';
 import { SupportTheme } from '../../theme';
 import LocalStorageWrapper from '../../utils/LocalStorageWrapper';
 
 type UserReduxState = {
   username: string;
-  role: string;
+  role: SystemRole | '';
   token: string;
   theme: string;
 };
@@ -25,7 +26,7 @@ const user = createSlice({
       state,
       {
         payload: { username, role },
-      }: PayloadAction<{ username: string; role: string }>
+      }: PayloadAction<{ username: string; role: SystemRole | '' }>
     ) => {
       state.username = username;
       state.role = role;

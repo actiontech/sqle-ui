@@ -1,7 +1,7 @@
 import React from 'react';
 
 const EmptyBox: React.FC<{
-  if: boolean;
+  if?: boolean;
   defaultNode?: React.ReactElement | JSX.Element | string;
 }> = (props) => {
   if (!props.if) {

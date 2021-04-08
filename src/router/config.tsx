@@ -8,9 +8,10 @@ import {
   UserOutlined,
   DatabaseOutlined,
   AuditOutlined,
-  NodeIndexOutlined,
-  SettingOutlined,
+  ConsoleSqlOutlined,
+  BarsOutlined,
 } from '@ant-design/icons';
+import { SystemRole } from '../data/common';
 
 const Home = React.lazy(
   () => import(/* webpackChunkName: "Home" */ '../page/Home')
@@ -44,8 +45,12 @@ const Workflow = React.lazy(
   () => import(/* webpackChunkName: "Workflow" */ '../page/workflow')
 );
 
-const Order = React.lazy(
-  () => import(/* webpackChunkName: "Order" */ '../page/Order')
+const OrderDetail = React.lazy(
+  () => import(/* webpackChunkName: "OrderDetail" */ '../page/Order/Detail')
+);
+
+const OrderList = React.lazy(
+  () => import(/* webpackChunkName: "Order" */ '../page/Order/List')
 );
 
 export const unAuthRouter: RouteProps[] = [
@@ -91,16 +96,31 @@ export const routerConfig: RouterItem[] = [
     key: 'account',
   },
   {
-    path: '/order/:orderId',
-    exact: true,
-    label: 'menu.orderDetail',
-    component: Order,
-    hideInSliderMenu: true,
+    label: 'menu.order',
     key: 'order',
+    icon: <ConsoleSqlOutlined />,
+    components: [
+      {
+        path: '/order',
+        exact: true,
+        label: 'menu.orderList',
+        icon: <BarsOutlined />,
+        component: OrderList,
+        key: 'orderList',
+      },
+      {
+        path: '/order/:orderId',
+        exact: true,
+        label: 'menu.orderDetail',
+        hideInSliderMenu: true,
+        component: OrderDetail,
+        key: 'orderDetail',
+      },
+    ],
   },
   {
     label: 'menu.platformManage',
-    role: ['admin'],
+    role: [SystemRole.admin],
     key: 'platformManage',
     icon: <ContainerOutlined />,
     components: [
@@ -126,22 +146,22 @@ export const routerConfig: RouterItem[] = [
         icon: <AuditOutlined />,
         component: RuleTemplate,
       },
-      {
-        path: '/progress',
-        exact: true,
-        key: 'progress',
-        label: 'menu.progressManage',
-        icon: <NodeIndexOutlined />,
-        component: () => <div>progress manage</div>,
-      },
-      {
-        path: '/system',
-        exact: true,
-        key: 'system',
-        label: 'menu.systemSetting',
-        icon: <SettingOutlined />,
-        component: () => <div>system setting</div>,
-      },
+      // {
+      //   path: '/progress',
+      //   exact: true,
+      //   key: 'progress',
+      //   label: 'menu.progressManage',
+      //   icon: <NodeIndexOutlined />,
+      //   component: () => <div>progress manage</div>,
+      // },
+      // {
+      //   path: '/system',
+      //   exact: true,
+      //   key: 'system',
+      //   label: 'menu.systemSetting',
+      //   icon: <SettingOutlined />,
+      //   component: () => <div>system setting</div>,
+      // },
     ],
   },
 ];
