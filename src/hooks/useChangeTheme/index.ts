@@ -32,11 +32,11 @@ const useChangeTheme = () => {
   const changeThemeStyle = React.useCallback((theme: SupportTheme) => {
     let newId = 'light-theme';
     let styleTagId = '#dark-theme';
-    let href = '/antd.min.css';
+    let href = '/static/css/antd.min.css';
     if (theme === SupportTheme.DARK) {
       newId = 'dark-theme';
       styleTagId = '#light-theme';
-      href = '/antd.dark.min.css';
+      href = '/static/css/antd.dark.min.css';
       if (!!document.querySelector(`#${newId}`)) {
         return;
       }
