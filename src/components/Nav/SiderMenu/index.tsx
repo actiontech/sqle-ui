@@ -7,6 +7,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { RouterItem } from '../../../types/router.type';
 import { useTranslation } from 'react-i18next';
 import { SystemRole } from '../../../data/common';
+import { StringDictionary } from '../../../types/common.type';
 
 const SiderMenu = () => {
   const userRole = useSelector<IReduxState, SystemRole | ''>(
@@ -46,13 +47,13 @@ const SiderMenu = () => {
   );
 
   const selectMenu = React.useCallback(
-    (config: RouterItem[]): string[] => {
+    (config: RouterItem[], pathname: string): string[] => {
       for (const route of config) {
-        if (route.path === location.pathname) {
+        if (route.path === pathname) {
           return [route.key];
         }
         if (!!route.components) {
-          const key = selectMenu(route.components);
+          const key = selectMenu(route.components, pathname);
           if (key.length > 0) {
             return key;
           }
@@ -60,12 +61,28 @@ const SiderMenu = () => {
       }
       return [];
     },
-    [location.pathname]
+    []
   );
+
+  const selectMenuWrapper = React.useCallback((): string[] => {
+    let pathname = location.pathname;
+    let selectKey: string[] = [];
+    while (pathname.length > 1) {
+      selectKey = selectMenu(routerConfig, pathname);
+      if (selectKey.length !== 0) {
+        return selectKey;
+      } else {
+        const temp = pathname.split('/');
+        temp.pop();
+        pathname = temp.join('/');
+      }
+    }
+    return selectKey;
+  }, [location.pathname, selectMenu]);
 
   return (
     <Menu
-      defaultSelectedKeys={selectMenu(routerConfig)}
+      defaultSelectedKeys={selectMenuWrapper()}
       defaultOpenKeys={['platformManage', 'order']}
       mode="inline"
       theme="dark"

@@ -144,6 +144,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
             ) : undefined;
           return (
             <Timeline.Item
+              key={step.operation_time}
               dot={icon}
               color={stepStateStatus[step.state ?? 'unknown'].color}
             >
