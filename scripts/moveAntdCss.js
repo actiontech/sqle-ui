@@ -9,7 +9,7 @@ const lightCssMap = path.resolve(antdStyle, './antd.min.css.map');
 const darkCss = path.resolve(antdStyle, './antd.dark.min.css');
 const darkCssMap = path.resolve(antdStyle, './antd.dark.min.css.map');
 
-const publicPath = path.resolve(cwd, './public');
+const publicPath = path.resolve(cwd, './public/static/css');
 
 const pathSet = [lightCss, lightCssMap, darkCss, darkCssMap, publicPath];
 

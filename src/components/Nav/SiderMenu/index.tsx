@@ -7,7 +7,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { RouterItem } from '../../../types/router.type';
 import { useTranslation } from 'react-i18next';
 import { SystemRole } from '../../../data/common';
-import { StringDictionary } from '../../../types/common.type';
 
 const SiderMenu = () => {
   const userRole = useSelector<IReduxState, SystemRole | ''>(
