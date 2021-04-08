@@ -5,6 +5,10 @@ export type Dictionary = {
   [key: string]: string | number | boolean | Dictionary;
 };
 
+export type StringDictionary = {
+  [key: string]: string;
+};
+
 export type ModalStatus = {
   [key: string]: boolean;
 };

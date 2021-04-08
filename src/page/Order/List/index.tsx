@@ -52,6 +52,7 @@ const OrderList = () => {
             submit={submitFilter}
           />
           <Table
+            className="table-row-cursor"
             rowKey="workflow_id"
             loading={loading}
             columns={orderListColumn()}

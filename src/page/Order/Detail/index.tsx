@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
 import task from '../../../api/task';
 import workflow from '../../../api/workflow';
+import BackButton from '../../../components/BackButton';
 import EmptyBox from '../../../components/EmptyBox';
 import OrderStatusTag from '../../../components/OrderStatusTag';
 import { ResponseCode } from '../../../data/common';
@@ -97,6 +98,7 @@ const Order = () => {
           </Space>
         }
         ghost={false}
+        extra={[<BackButton key="back" />]}
       >
         <Descriptions>
           <Descriptions.Item label={t('order.order.name')}>

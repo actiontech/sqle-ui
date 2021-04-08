@@ -66,6 +66,7 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
     >
       <FilterForm form={filterForm} submit={submitFilter} reset={resetFilter} />
       <Table
+        rowKey="number"
         loading={loading}
         columns={orderAuditResultColumn()}
         dataSource={data?.list}
