@@ -4,7 +4,7 @@ import useChangeTheme from '../../../hooks/useChangeTheme';
 import { SupportTheme } from '../../../theme';
 import { ReactComponent as Moon } from '../../../assets/img/moon.svg';
 import { ReactComponent as Sun } from '../../../assets/img/sun.svg';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IReduxState } from '../../../store';
 import Icon, {
   UserOutlined,
@@ -22,6 +22,7 @@ const Header = () => {
     (state) => state.user.username
   );
   const history = useHistory();
+  const dispatch = useDispatch();
   const { changeLoading, currentTheme, changeTheme } = useChangeTheme();
   const { t } = useTranslation();
 
@@ -33,10 +34,10 @@ const Header = () => {
   );
 
   const logout = React.useCallback(() => {
-    updateToken({ token: '' });
-    updateUser({ username: '', role: '' });
+    dispatch(updateToken({ token: '' }));
+    dispatch(updateUser({ username: '', role: '' }));
     history.push('/');
-  }, [history]);
+  }, [dispatch, history]);
 
   return (
     <header>

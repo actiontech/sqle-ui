@@ -66,7 +66,7 @@ const SiderMenu = () => {
   const selectMenuWrapper = React.useCallback((): string[] => {
     let pathname = location.pathname;
     let selectKey: string[] = [];
-    while (pathname.length > 1) {
+    while (pathname.length > 0) {
       selectKey = selectMenu(routerConfig, pathname);
       if (selectKey.length !== 0) {
         return selectKey;
@@ -81,7 +81,7 @@ const SiderMenu = () => {
 
   return (
     <Menu
-      defaultSelectedKeys={selectMenuWrapper()}
+      selectedKeys={selectMenuWrapper()}
       defaultOpenKeys={['platformManage', 'order']}
       mode="inline"
       theme="dark"
