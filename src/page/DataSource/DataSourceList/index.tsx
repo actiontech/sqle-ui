@@ -78,6 +78,7 @@ const DataSourceList = () => {
     >
       <DataSourceListFilterForm submit={setFilterInfo} />
       <Table
+        rowKey="instance_name"
         loading={loading}
         dataSource={data?.list ?? []}
         columns={dataSourceColumns(deleteDatabase)}

@@ -25,6 +25,9 @@ export default {
   expansion: 'Expand',
   collapse: 'Collapse',
 
+  showAll: 'Show All',
+  showDetail: 'Show Detail',
+
   theme: {
     light: 'Light Theme',
     dark: 'Dark Theme',

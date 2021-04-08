@@ -6,9 +6,12 @@ import { routerConfig } from '../../../router/config';
 import { Link, useLocation } from 'react-router-dom';
 import { RouterItem } from '../../../types/router.type';
 import { useTranslation } from 'react-i18next';
+import { SystemRole } from '../../../data/common';
 
 const SiderMenu = () => {
-  const userRole = useSelector<IReduxState, string>((state) => state.user.role);
+  const userRole = useSelector<IReduxState, SystemRole | ''>(
+    (state) => state.user.role
+  );
   const { t } = useTranslation();
   const location = useLocation();
 
@@ -50,7 +53,7 @@ const SiderMenu = () => {
         }
         if (!!route.components) {
           const key = selectMenu(route.components);
-          if (!!key) {
+          if (key.length > 0) {
             return key;
           }
         }
@@ -62,8 +65,8 @@ const SiderMenu = () => {
 
   return (
     <Menu
-      selectedKeys={selectMenu(routerConfig)}
-      defaultOpenKeys={['platformManage']}
+      defaultSelectedKeys={selectMenu(routerConfig)}
+      defaultOpenKeys={['platformManage', 'order']}
       mode="inline"
       theme="dark"
     >

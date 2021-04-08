@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import useStyles from '../../theme';
 import Header from './Header';
 import { useRequest } from 'ahooks';
-import { ResponseCode } from '../../data/common';
+import { ResponseCode, SystemRole } from '../../data/common';
 import { updateUser, updateToken } from '../../store/user';
 import user from '../../api/user';
 import EmptyBox from '../EmptyBox';
@@ -41,7 +41,7 @@ const Nav: React.FC = (props) => {
         dispatch(
           updateUser({
             username: data?.user_name ?? '',
-            role: data?.is_admin ? 'admin' : '',
+            role: data?.is_admin ? SystemRole.admin : '',
           })
         );
       } else {

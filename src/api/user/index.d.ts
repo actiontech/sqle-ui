@@ -2,10 +2,11 @@ import {
   IUserLoginReqV1,
   IGetUserLoginResV1,
   IGetUserDetailResV1,
+  IUpdateCurrentUserReqV1,
+  IBaseRes,
   IGetUserTipsResV1,
   IGetUsersResV1,
   ICreateUserReqV1,
-  IBaseRes,
   IUpdateUserReqV1
 } from '../common.d';
 
@@ -14,6 +15,10 @@ export interface ILoginV1Params extends IUserLoginReqV1 {}
 export interface ILoginV1Return extends IGetUserLoginResV1 {}
 
 export interface IGetCurrentUserV1Return extends IGetUserDetailResV1 {}
+
+export interface IUpdateCurrentUserV1Params extends IUpdateCurrentUserReqV1 {}
+
+export interface IUpdateCurrentUserV1Return extends IBaseRes {}
 
 export interface IGetUserTipListV1Return extends IGetUserTipsResV1 {}
 

@@ -31,4 +31,9 @@ export default {
 
     audit: '审核',
   },
+
+  workflowStatus: {
+    review: '待审核',
+    exec: '待上线',
+  },
 };

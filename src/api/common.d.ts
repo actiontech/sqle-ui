@@ -113,6 +113,10 @@ export interface ICreateWorkflowTemplateReqV1 {
   workflow_template_name?: string;
 }
 
+export interface IDashboardResV1 {
+  workflow_statistics?: IWorkflowStatisticsResV1;
+}
+
 export interface IGetAuditTaskResV1 {
   code?: number;
 
@@ -129,6 +133,14 @@ export interface IGetAuditTaskSQLsResV1 {
   message?: string;
 
   total_nums?: number;
+}
+
+export interface IGetDashboardResV1 {
+  code?: number;
+
+  data?: IDashboardResV1;
+
+  message?: string;
 }
 
 export interface IGetInstanceConnectableReqV1 {
@@ -387,6 +399,10 @@ export interface IRuleTemplateTipResV1 {
   rule_template_name?: string;
 }
 
+export interface IUpdateCurrentUserReqV1 {
+  email?: string;
+}
+
 export interface IUpdateInstanceReqV1 {
   db_host?: string;
 
@@ -529,6 +545,16 @@ export interface IWorkflowResV1 {
   workflow_id?: number;
 
   workflow_step_list?: IWorkflowStepResV1[];
+}
+
+export interface IWorkflowStatisticsResV1 {
+  my_on_process_workflow_number?: number;
+
+  my_rejected_workflow_number?: number;
+
+  need_me_to_execute_workflow_number?: number;
+
+  need_me_to_review_workflow_number?: number;
 }
 
 export interface IWorkflowStepResV1 {

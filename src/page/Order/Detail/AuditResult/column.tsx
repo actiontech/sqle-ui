@@ -1,6 +1,6 @@
-import { IAuditTaskSQLResV1 } from '../../../api/common';
-import i18n from '../../../locale';
-import { TableColumn } from '../../../types/common.type';
+import { IAuditTaskSQLResV1 } from '../../../../api/common';
+import i18n from '../../../../locale';
+import { TableColumn } from '../../../../types/common.type';
 
 export const orderAuditResultColumn = (): TableColumn<IAuditTaskSQLResV1> => {
   return [

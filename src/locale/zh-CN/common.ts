@@ -27,6 +27,9 @@ export default {
   expansion: '展开',
   collapse: '收起',
 
+  showAll: '查看所有',
+  showDetail: '查看详情',
+
   theme: {
     light: '明亮模式',
     dark: '暗黑模式',

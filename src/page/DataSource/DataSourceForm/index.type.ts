@@ -9,7 +9,7 @@ export type DataSourceFormField = {
   password: string;
   role?: string[];
   ruleTemplate?: string[];
-  workflow?: string;
+  // workflow?: string;
 };
 
 export type IDataSourceFormProps = {

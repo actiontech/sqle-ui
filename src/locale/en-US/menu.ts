@@ -9,5 +9,6 @@ export default {
   progressManage: 'Progress',
   systemSetting: 'System Setting',
   workflow: 'Workflow',
+  order: 'Order List',
   orderDetail: 'Order Detail',
 };

@@ -9,6 +9,7 @@ import rule from './rule';
 import ruleTemplate from './ruleTemplate';
 import user from './user';
 import workflow from './workflow';
+import dashboard from './dashboard';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -24,5 +25,6 @@ export default {
     workflow,
     audit,
     order,
+    dashboard,
   },
 };
