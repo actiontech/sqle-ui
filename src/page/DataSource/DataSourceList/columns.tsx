@@ -1,12 +1,14 @@
-import { Button, Divider, Popconfirm } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+import { Button, Divider, Dropdown, Menu, Popconfirm } from 'antd';
 import { Link } from 'react-router-dom';
 import { IInstanceResV1 } from '../../../api/common';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 
 export const dataSourceColumns = (
-  deleteDatabase: (instanceName: string) => void
-): TableColumn<IInstanceResV1, 'operate' | 'address'> => {
+  deleteDatabase: (instanceName: string) => void,
+  testDatabaseConnection: (instanceName: string) => void
+): TableColumn<IInstanceResV1, 'operate' | 'address' | 'connect'> => {
   return [
     {
       dataIndex: 'instance_name',
@@ -37,10 +39,11 @@ export const dataSourceColumns = (
         return value?.join(',');
       },
     },
-    {
-      dataIndex: 'workflow_template_name',
-      title: () => i18n.t('dataSource.databaseList.workflow'),
-    },
+    // {
+    //   dataIndex: 'workflow_template_name',
+    //   title: () => i18n.t('dataSource.databaseList.workflow'),
+    // },
+
     {
       dataIndex: 'operate',
       render: (_, record) => {
@@ -60,6 +63,26 @@ export const dataSourceColumns = (
                 {i18n.t('common.delete')}
               </Button>
             </Popconfirm>
+            <Divider type="vertical" />
+            <Dropdown
+              overlay={
+                <Menu>
+                  <Menu.Item
+                    onClick={testDatabaseConnection.bind(
+                      null,
+                      record.instance_name ?? ''
+                    )}
+                  >
+                    {i18n.t('dataSource.dataSourceForm.testDatabaseConnection')}
+                  </Menu.Item>
+                </Menu>
+              }
+            >
+              <Button type="link">
+                {i18n.t('common.more')}
+                <DownOutlined />
+              </Button>
+            </Dropdown>
           </>
         );
       },

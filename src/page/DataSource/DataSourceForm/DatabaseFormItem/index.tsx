@@ -1,18 +1,9 @@
-import { CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons';
 import { useBoolean } from 'ahooks';
-import {
-  Button,
-  Form,
-  FormInstance,
-  Input,
-  InputNumber,
-  Space,
-  Typography,
-} from 'antd';
+import { Form, FormInstance, Input, InputNumber } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import instance from '../../../../api/instance';
-import EmptyBox from '../../../../components/EmptyBox';
+import TestDatabaseConnectButton from '../../../../components/TestDatabaseConnectButton';
 import { ResponseCode } from '../../../../data/common';
 import { DataSourceFormField } from '../index.type';
 
@@ -26,6 +17,7 @@ const DatabaseFormItem: React.FC<{
   ] = useBoolean();
 
   const [connectAble, { toggle: setConnectAble }] = useBoolean();
+  const [connectErrorMessage, setConnectErrorMessage] = React.useState('');
   const [initHide, { setFalse: setInitHideFalse }] = useBoolean(true);
 
   const testDatabaseConnect = React.useCallback(async () => {
@@ -46,6 +38,7 @@ const DatabaseFormItem: React.FC<{
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           setConnectAble(!!res.data.data?.is_instance_connectable);
+          setConnectErrorMessage(res.data.data?.connect_error_message ?? '');
         }
       })
       .finally(() => {
@@ -138,30 +131,13 @@ const DatabaseFormItem: React.FC<{
         />
       </Form.Item>
       <Form.Item label=" " colon={false}>
-        <Space>
-          <Button onClick={testDatabaseConnect} loading={loading}>
-            {t('dataSource.dataSourceForm.testDatabaseConnection')}
-          </Button>
-          <EmptyBox if={!initHide}>
-            {loading && (
-              <Typography.Link>
-                {t('dataSource.dataSourceForm.testing')}
-              </Typography.Link>
-            )}
-            {!loading && connectAble && (
-              <Typography.Text type="success">
-                {t('dataSource.dataSourceForm.testSuccess')}
-                <CheckCircleFilled />
-              </Typography.Text>
-            )}
-            {!loading && !connectAble && (
-              <Typography.Text type="danger">
-                {t('dataSource.dataSourceForm.testFailed')}
-                <CloseCircleFilled />
-              </Typography.Text>
-            )}
-          </EmptyBox>
-        </Space>
+        <TestDatabaseConnectButton
+          initHide={initHide}
+          onClickTestButton={testDatabaseConnect}
+          loading={loading}
+          connectAble={connectAble}
+          connectDisableReason={connectErrorMessage}
+        />
       </Form.Item>
     </>
   );

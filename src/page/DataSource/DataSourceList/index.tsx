@@ -1,5 +1,5 @@
 import { useRequest } from 'ahooks';
-import { Button, Card, message, Table } from 'antd';
+import { Button, Card, message, Modal, Table } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -67,6 +67,34 @@ const DataSourceList = () => {
     [t]
   );
 
+  const testDatabaseConnection = React.useCallback(
+    (instanceName: string) => {
+      const hide = message.loading(t('dataSource.dataSourceForm.testing'), 0);
+      instance
+        .checkInstanceIsConnectableByNameV1({
+          instance_name: instanceName,
+        })
+        .then((res) => {
+          hide();
+          if (res.data.code === ResponseCode.SUCCESS) {
+            if (res.data.data?.is_instance_connectable) {
+              message.success(t('dataSource.dataSourceForm.testSuccess'));
+            } else {
+              Modal.error({
+                title: t('dataSource.testConnectModal.errorTitle', {
+                  instanceName,
+                }),
+                content:
+                  res.data.data?.connect_error_message ??
+                  t('common.unknownError'),
+              });
+            }
+          }
+        });
+    },
+    [t]
+  );
+
   return (
     <Card
       title={t('dataSource.databaseListTitle')}
@@ -81,7 +109,7 @@ const DataSourceList = () => {
         rowKey="instance_name"
         loading={loading}
         dataSource={data?.list ?? []}
-        columns={dataSourceColumns(deleteDatabase)}
+        columns={dataSourceColumns(deleteDatabase, testDatabaseConnection)}
         pagination={{
           total,
         }}

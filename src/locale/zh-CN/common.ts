@@ -17,6 +17,7 @@ export default {
   search: '搜索',
   retry: '重试',
   back: '返回',
+  more: '更多',
   upload: '选择文件上传',
   resetAndClose: '重置表单并关闭',
   operateSuccess: '操作成功',

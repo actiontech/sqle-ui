@@ -12,8 +12,10 @@ import { RcFile } from 'antd/lib/upload/interface';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import MonacoEditor from 'react-monaco-editor';
+import instance from '../../../api/instance';
 import EmptyBox from '../../../components/EmptyBox';
-import { PageFormLayout } from '../../../data/common';
+import TestDatabaseConnectButton from '../../../components/TestDatabaseConnectButton';
+import { PageFormLayout, ResponseCode } from '../../../data/common';
 import useChangeTheme from '../../../hooks/useChangeTheme';
 import useInstance from '../../../hooks/useInstance';
 import useInstanceSchema from '../../../hooks/useInstanceSchema';
@@ -41,6 +43,13 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
     { setTrue: startSubmit, setFalse: submitFinish },
   ] = useBoolean();
 
+  const [connectAble, { toggle: setConnectAble }] = useBoolean();
+  const [
+    testLoading,
+    { setTrue: testStart, setFalse: testFinish },
+  ] = useBoolean();
+  const [connectErrorMessage, setConnectErrorMessage] = React.useState('');
+
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
   const { generateInstanceSchemaSelectOption } = useInstanceSchema(
     instanceName
@@ -52,6 +61,23 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
     },
     []
   );
+
+  const testDatabaseConnect = React.useCallback(async () => {
+    testStart();
+    instance
+      .checkInstanceIsConnectableByNameV1({
+        instance_name: props.form.getFieldInstance('instanceName'),
+      })
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          setConnectAble(!!res.data.data?.is_instance_connectable);
+          setConnectErrorMessage(res.data.data?.connect_error_message ?? '');
+        }
+      })
+      .finally(() => {
+        testFinish();
+      });
+  }, [props.form, setConnectAble, testFinish, testStart]);
 
   const beforeUpload = React.useCallback(
     (file: RcFile) => {
@@ -90,6 +116,8 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
     updateInstanceList();
   }, [updateInstanceList]);
 
+  const testConnectVisible = !!props.form.getFieldValue('instanceName');
+
   return (
     <>
       <Card title={t('workflow.sqlInfo.title')}>
@@ -112,6 +140,14 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
             >
               {generateInstanceSelectOption()}
             </Select>
+          </Form.Item>
+          <Form.Item label=" " colon={false} hidden={!testConnectVisible}>
+            <TestDatabaseConnectButton
+              onClickTestButton={testDatabaseConnect}
+              loading={testLoading}
+              connectAble={connectAble}
+              connectDisableReason={connectErrorMessage}
+            />
           </Form.Item>
           <Form.Item
             name="instanceSchema"
