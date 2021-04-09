@@ -12,7 +12,7 @@ const QuickLink = () => {
   );
 
   const links = [
-    <Link key="workflow" to="/workflow">
+    <Link key="workflow" to="/order/create">
       {t('menu.workflow')}
     </Link>,
     <Link key="order" to="/order">

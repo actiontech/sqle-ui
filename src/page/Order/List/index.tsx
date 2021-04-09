@@ -1,7 +1,8 @@
 import { useRequest } from 'ahooks';
-import { Card, PageHeader, Table } from 'antd';
+import { Button, Card, PageHeader, Table } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import workflow from '../../../api/workflow';
 import useTable from '../../../hooks/useTable';
 import { orderListColumn } from './column';
@@ -41,7 +42,15 @@ const OrderList = () => {
 
   return (
     <>
-      <PageHeader title={t('order.orderList.pageTitle')} ghost={false}>
+      <PageHeader
+        title={t('order.orderList.pageTitle')}
+        ghost={false}
+        extra={[
+          <Link to="/order/create" key="createOrder">
+            <Button type="primary">{t('order.createOrder.title')}</Button>
+          </Link>,
+        ]}
+      >
         {t('order.orderList.pageDesc')}
       </PageHeader>
       <section className="padding-content">

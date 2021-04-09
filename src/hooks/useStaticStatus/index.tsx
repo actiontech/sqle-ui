@@ -77,13 +77,13 @@ const useStaticStatus = () => {
           key={getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}
           value={getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}
         >
-          {t('workflow.workflowStatus.review')}
+          {t('order.workflowStatus.review')}
         </Select.Option>
         <Select.Option
           key={getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}
           value={getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}
         >
-          {t('workflow.workflowStatus.exec')}
+          {t('order.workflowStatus.exec')}
         </Select.Option>
       </>
     );

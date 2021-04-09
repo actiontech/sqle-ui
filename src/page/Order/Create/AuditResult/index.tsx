@@ -3,14 +3,14 @@ import { SyncOutlined } from '@ant-design/icons';
 import { Button, Card, Col, Form, Input, Row, Space, Table } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import task from '../../../api/task';
-import { getAuditTaskSQLsV1FilterAuditStatusEnum } from '../../../api/task/index.enum';
+import task from '../../../../api/task';
+import { getAuditTaskSQLsV1FilterAuditStatusEnum } from '../../../../api/task/index.enum';
 import {
   filterFormButtonLayoutFactory,
   FilterFormColLayout,
   FilterFormRowLayout,
-} from '../../../data/common';
-import useTable from '../../../hooks/useTable';
+} from '../../../../data/common';
+import useTable from '../../../../hooks/useTable';
 import { auditResultColumn } from './column';
 import { AuditResultProps } from './index.type';
 
