@@ -84,18 +84,20 @@ const RuleTemplateList = () => {
   return (
     <>
       <Card
-        title={t('ruleTemplate.ruleTemplateListTitle')}
-        extra={[
-          <Space key="button-wrapper">
+        title={
+          <Space>
+            {t('ruleTemplate.ruleTemplateListTitle')}
             <Button onClick={refreshRuleTemplate}>
               <SyncOutlined spin={loading} />
             </Button>
-            <Link to="/rule/template/create">
-              <Button type="primary">
-                {t('ruleTemplate.createRuleTemplate.button')}
-              </Button>
-            </Link>
-          </Space>,
+          </Space>
+        }
+        extra={[
+          <Link to="/rule/template/create" key="createRuleTemplate">
+            <Button type="primary">
+              {t('ruleTemplate.createRuleTemplate.button')}
+            </Button>
+          </Link>,
         ]}
       >
         <List

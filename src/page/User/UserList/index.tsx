@@ -1,3 +1,4 @@
+import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import {
   message,
@@ -130,7 +131,14 @@ const UserList = () => {
 
   return (
     <Card
-      title={t('user.userListTitle')}
+      title={
+        <Space>
+          {t('user.userListTitle')}
+          <Button onClick={refreshUserList}>
+            <SyncOutlined spin={loading} />
+          </Button>
+        </Space>
+      }
       extra={[
         <Button key="create-user" type="primary" onClick={addUser}>
           {t('user.createUser.button')}
