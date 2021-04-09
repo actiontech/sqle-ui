@@ -26,8 +26,7 @@ const useInputChange = (params: UseInputChangeParams) => {
           return;
         }
       }
-      const res = await user.updateUserV1({
-        user_name: params.userInfo?.user_name ?? '',
+      const res = await user.updateCurrentUserV1({
         email,
       });
       if (res.data.code === ResponseCode.SUCCESS) {
