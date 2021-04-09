@@ -16,6 +16,7 @@ export default {
   search: 'Search',
   retry: 'Retry',
   back: 'Back',
+  more: 'More',
   upload: 'Upload',
   resetAndClose: 'Reset Form And Close',
   operateSuccess: 'Operate successfully',

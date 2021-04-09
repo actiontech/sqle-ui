@@ -41,6 +41,10 @@ export default {
     testFailed: '未能成功链接到数据库',
   },
 
+  testConnectModal: {
+    errorTitle: '数据库{{instanceName}}连通性测试失败',
+  },
+
   deleteDatabase: {
     confirmMessage: '确认删除数据库 "{{name}}"?',
     deletingDatabase: '正在删除数据库 "{{name}}"...',
