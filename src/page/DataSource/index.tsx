@@ -17,7 +17,7 @@ const DataSource = () => {
       <section className="padding-content">
         <Switch>
           <Route path="/data" exact={true} component={DataSourceList} />
-          <Route path="/data/add" component={AddDataSource} />
+          <Route path="/data/create" component={AddDataSource} />
           <Route
             path="/data/update/:instanceName"
             component={UpdateDataSource}
