@@ -8,7 +8,7 @@ import {
   Select,
   Upload,
 } from 'antd';
-import { UploadFile } from 'antd/lib/upload/interface';
+import { RcFile } from 'antd/lib/upload/interface';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import MonacoEditor from 'react-monaco-editor';
@@ -54,7 +54,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   );
 
   const beforeUpload = React.useCallback(
-    (file: UploadFile) => {
+    (file: RcFile) => {
       props.form.setFieldsValue({
         sqlFile: [file],
       });
