@@ -15,17 +15,17 @@ import { useForm } from 'antd/lib/form/Form';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { IAuditTaskResV1 } from '../../api/common';
-import task from '../../api/task';
-import workflow from '../../api/workflow';
-import EmptyBox from '../../components/EmptyBox';
-import { PageFormLayout, ResponseCode } from '../../data/common';
-import { Theme } from '../../types/theme.type';
+import { IAuditTaskResV1 } from '../../../api/common';
+import task from '../../../api/task';
+import workflow from '../../../api/workflow';
+import EmptyBox from '../../../components/EmptyBox';
+import { ResponseCode, PageFormLayout } from '../../../data/common';
+import { Theme } from '../../../types/theme.type';
 import AuditResult from './AuditResult';
 import SqlInfoForm from './SqlInfoForm';
 import { SqlInfoFormFields } from './SqlInfoForm/index.type';
 
-const Workflow = () => {
+const CreateOrder = () => {
   const { t } = useTranslation();
   const theme = useTheme<Theme>();
   const [baseForm] = useForm();
@@ -89,8 +89,8 @@ const Workflow = () => {
 
   return (
     <>
-      <PageHeader title={t('workflow.baseInfo.title')} ghost={false}>
-        {t('workflow.pageDesc')}
+      <PageHeader title={t('order.baseInfo.title')} ghost={false}>
+        {t('order.createOrder.pageDesc')}
       </PageHeader>
       <section className="padding-content">
         <Space
@@ -98,11 +98,11 @@ const Workflow = () => {
           className="full-width-element"
           direction="vertical"
         >
-          <Card title={t('workflow.baseInfo.title')}>
+          <Card title={t('order.baseInfo.title')}>
             <Form form={baseForm} {...PageFormLayout}>
               <Form.Item
                 name="name"
-                label={t('workflow.baseInfo.name')}
+                label={t('order.baseInfo.name')}
                 rules={[
                   {
                     required: true,
@@ -111,21 +111,18 @@ const Workflow = () => {
               >
                 <Input
                   placeholder={t('common.form.placeholder.input', {
-                    name: t('workflow.baseInfo.name'),
+                    name: t('order.baseInfo.name'),
                   })}
                 />
               </Form.Item>
-              <Form.Item
-                name="describe"
-                label={t('workflow.baseInfo.describe')}
-              >
+              <Form.Item name="describe" label={t('order.baseInfo.describe')}>
                 <Input.TextArea
                   autoSize={{
                     maxRows: 10,
                     minRows: 3,
                   }}
                   placeholder={t('common.form.placeholder.input', {
-                    name: t('workflow.baseInfo.describe'),
+                    name: t('order.baseInfo.describe'),
                   })}
                 />
               </Form.Item>
@@ -141,7 +138,7 @@ const Workflow = () => {
                 {t('common.resetAll')}
               </Button>
               <Button type="primary" onClick={create} loading={createLoading}>
-                {t('workflow.createOrder')}
+                {t('order.createOrder.title')}
               </Button>
             </Space>
           </Card>
@@ -155,10 +152,10 @@ const Workflow = () => {
       >
         <Result
           status="success"
-          title={t('workflow.create.success')}
+          title={t('order.create.success')}
           subTitle={
             <Link to="/data">
-              {t('workflow.create.guide')} {'>'}
+              {t('order.create.guide')} {'>'}
             </Link>
           }
           extra={[
@@ -179,4 +176,4 @@ const Workflow = () => {
   );
 };
 
-export default Workflow;
+export default CreateOrder;

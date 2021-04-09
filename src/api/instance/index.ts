@@ -25,7 +25,7 @@ import {
   IGetInstanceRuleListV1Params,
   IGetInstanceRuleListV1Return,
   IGetInstanceSchemasV1Params,
-  IGetInstanceSchemasV1Return
+  IGetInstanceSchemasV1Return,
 } from './index.d';
 
 class InstanceService extends ServiceBase {
@@ -125,7 +125,7 @@ class InstanceService extends ServiceBase {
     const paramsData = this.cloneDeep(params);
     const instance_name = paramsData.instance_name;
     delete paramsData.instance_name;
-
+    console.log(params, instance_name);
     return this.get<ICheckInstanceIsConnectableByNameV1Return>(
       `/v1/instances/${instance_name}/connection`,
       paramsData,

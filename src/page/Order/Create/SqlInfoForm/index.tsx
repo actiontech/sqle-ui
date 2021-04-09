@@ -12,14 +12,14 @@ import { RcFile } from 'antd/lib/upload/interface';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import MonacoEditor from 'react-monaco-editor';
-import instance from '../../../api/instance';
-import EmptyBox from '../../../components/EmptyBox';
-import TestDatabaseConnectButton from '../../../components/TestDatabaseConnectButton';
-import { PageFormLayout, ResponseCode } from '../../../data/common';
-import useChangeTheme from '../../../hooks/useChangeTheme';
-import useInstance from '../../../hooks/useInstance';
-import useInstanceSchema from '../../../hooks/useInstanceSchema';
-import useStyles from '../../../theme';
+import instance from '../../../../api/instance';
+import EmptyBox from '../../../../components/EmptyBox';
+import TestDatabaseConnectButton from '../../../../components/TestDatabaseConnectButton';
+import { ResponseCode, PageFormLayout } from '../../../../data/common';
+import useChangeTheme from '../../../../hooks/useChangeTheme';
+import useInstance from '../../../../hooks/useInstance';
+import useInstanceSchema from '../../../../hooks/useInstanceSchema';
+import useStyles from '../../../../theme';
 import { SqlInfoFormFields, SqlInfoFormProps } from './index.type';
 
 export enum SQLInputType {
@@ -66,7 +66,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
     testStart();
     instance
       .checkInstanceIsConnectableByNameV1({
-        instance_name: props.form.getFieldInstance('instanceName'),
+        instance_name: props.form.getFieldValue('instanceName'),
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -120,11 +120,11 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
 
   return (
     <>
-      <Card title={t('workflow.sqlInfo.title')}>
+      <Card title={t('order.sqlInfo.title')}>
         <Form form={props.form} {...PageFormLayout} onFinish={submit}>
           <Form.Item
             name="instanceName"
-            label={t('workflow.sqlInfo.instanceName')}
+            label={t('order.sqlInfo.instanceName')}
             rules={[
               {
                 required: true,
@@ -135,7 +135,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
               onChange={setInstanceName}
               showSearch
               placeholder={t('common.form.placeholder.select', {
-                name: t('workflow.sqlInfo.instanceName'),
+                name: t('order.sqlInfo.instanceName'),
               })}
             >
               {generateInstanceSelectOption()}
@@ -151,7 +151,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
           </Form.Item>
           <Form.Item
             name="instanceSchema"
-            label={t('workflow.sqlInfo.instanceSchema')}
+            label={t('order.sqlInfo.instanceSchema')}
           >
             <Select
               placeholder={t('common.form.placeholder.select')}
@@ -162,23 +162,23 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
             </Select>
           </Form.Item>
           <Form.Item
-            label={t('workflow.sqlInfo.uploadType')}
+            label={t('order.sqlInfo.uploadType')}
             name="sqlInputType"
             initialValue={SQLInputType.manualInput}
           >
             <Radio.Group onChange={currentSQLInputTypeChange}>
               <Radio value={SQLInputType.manualInput}>
-                {t('workflow.sqlInfo.manualInput')}
+                {t('order.sqlInfo.manualInput')}
               </Radio>
               <Radio value={SQLInputType.uploadFile}>
-                {t('workflow.sqlInfo.uploadFile')}
+                {t('order.sqlInfo.uploadFile')}
               </Radio>
             </Radio.Group>
           </Form.Item>
           <EmptyBox if={currentSQLInputType === SQLInputType.manualInput}>
             <Form.Item
               name="sql"
-              label={t('workflow.sqlInfo.sql')}
+              label={t('order.sqlInfo.sql')}
               initialValue="/* input your sql */"
               wrapperCol={{
                 ...PageFormLayout.wrapperCol,
@@ -198,7 +198,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
           </EmptyBox>
           <EmptyBox if={currentSQLInputType === SQLInputType.uploadFile}>
             <Form.Item
-              label={t('workflow.sqlInfo.sqlFile')}
+              label={t('order.sqlInfo.sqlFile')}
               valuePropName="fileList"
               name="sqlFile"
               getValueFromEvent={getFile}
@@ -214,7 +214,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
           </EmptyBox>
           <Form.Item label=" " colon={false}>
             <Button htmlType="submit" type="primary" loading={submitLoading}>
-              {t('workflow.sqlInfo.audit')}
+              {t('order.sqlInfo.audit')}
             </Button>
           </Form.Item>
         </Form>

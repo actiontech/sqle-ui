@@ -41,8 +41,8 @@ const Account = React.lazy(
   () => import(/* webpackChunkName: "Account" */ '../page/Account')
 );
 
-const Workflow = React.lazy(
-  () => import(/* webpackChunkName: "Workflow" */ '../page/workflow')
+const CreateOrder = React.lazy(
+  () => import(/* webpackChunkName: "CreateOrder" */ '../page/Order/Create')
 );
 
 const OrderDetail = React.lazy(
@@ -79,15 +79,6 @@ export const routerConfig: RouterItem[] = [
     key: 'rule',
   },
   {
-    path: '/workflow',
-    exact: true,
-    label: 'menu.workflow',
-    component: Workflow,
-    icon: <DesktopOutlined />,
-    key: 'workflow',
-    hideInSliderMenu: true,
-  },
-  {
     path: '/account',
     exact: true,
     label: 'common.account',
@@ -107,6 +98,15 @@ export const routerConfig: RouterItem[] = [
         icon: <BarsOutlined />,
         component: OrderList,
         key: 'orderList',
+      },
+      {
+        path: '/order/create',
+        exact: true,
+        label: 'menu.workflow',
+        component: CreateOrder,
+        icon: <DesktopOutlined />,
+        key: 'orderList',
+        hideInSliderMenu: true,
       },
       {
         path: '/order/:orderId',

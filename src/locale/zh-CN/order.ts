@@ -7,6 +7,10 @@ export default {
 
     allOrderAboutMe: '所有与我相关的工单',
   },
+  createOrder: {
+    title: '创建工单',
+    pageDesc: '您可以在这里选择数据源进行创建SQL审核工单',
+  },
   order: {
     name: '工单名称',
     createUser: '创建人',
@@ -49,5 +53,37 @@ export default {
     approveSuccessTips: '审批通过',
     rejectSuccessTips: '驳回成功',
     rejectReason: '驳回原因',
+  },
+
+  create: {
+    success: '工单创建成功',
+    guide: '去工单详情查看刚刚创建的工单',
+  },
+
+  baseInfo: {
+    title: '工单基本信息',
+
+    name: '工单名称',
+    describe: '工单描述',
+  },
+
+  sqlInfo: {
+    title: '审核SQL语句信息',
+
+    instanceName: '数据源',
+    instanceSchema: '数据库',
+    sql: 'SQL语句',
+    sqlFile: 'SQL文件',
+
+    uploadType: '选择审核SQL语句上传方式',
+    manualInput: '输入SQL语句',
+    uploadFile: '上传SQL文件',
+
+    audit: '审核',
+  },
+
+  workflowStatus: {
+    review: '待审核',
+    exec: '待上线',
   },
 };

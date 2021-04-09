@@ -99,7 +99,7 @@ const DataSourceList = () => {
     <Card
       title={t('dataSource.databaseListTitle')}
       extra={
-        <Link to="/data/add">
+        <Link to="/data/create">
           <Button type="primary">{t('dataSource.addDatabase')}</Button>
         </Link>
       }
