@@ -1,5 +1,6 @@
+import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
-import { Button, Card, message, Modal, Table } from 'antd';
+import { Button, Card, message, Modal, Space, Table } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -21,6 +22,7 @@ const DataSourceList = () => {
     data,
     loading,
     pagination: { total },
+    refresh,
   } = useRequest(
     ({ current, pageSize }) => {
       return instance.getInstanceListV1({
@@ -97,7 +99,14 @@ const DataSourceList = () => {
 
   return (
     <Card
-      title={t('dataSource.databaseListTitle')}
+      title={
+        <Space>
+          {t('dataSource.databaseListTitle')}
+          <Button onClick={refresh}>
+            <SyncOutlined spin={loading} />
+          </Button>
+        </Space>
+      }
       extra={
         <Link to="/data/create">
           <Button type="primary">{t('dataSource.addDatabase')}</Button>

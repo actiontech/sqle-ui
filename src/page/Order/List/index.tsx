@@ -1,5 +1,6 @@
+import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
-import { Button, Card, PageHeader, Table } from 'antd';
+import { Button, Card, PageHeader, Space, Table } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -22,7 +23,7 @@ const OrderList = () => {
     tableChange,
   } = useTable<OrderListFilterFormFields>();
 
-  const { data: orderList, loading } = useRequest(
+  const { data: orderList, loading, refresh } = useRequest(
     () =>
       workflow.getWorkflowListV1({
         page_index: pagination.pageIndex,
@@ -54,7 +55,16 @@ const OrderList = () => {
         {t('order.orderList.pageDesc')}
       </PageHeader>
       <section className="padding-content">
-        <Card title={t('order.orderList.allOrderAboutMe')}>
+        <Card
+          title={
+            <Space>
+              {t('order.orderList.allOrderAboutMe')}
+              <Button onClick={refresh}>
+                <SyncOutlined spin={loading} />
+              </Button>
+            </Space>
+          }
+        >
           <OrderListFilterForm
             form={filterForm}
             reset={resetFilter}
