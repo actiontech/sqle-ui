@@ -9,6 +9,10 @@ export const auditResultColumn = (): TableColumn<IAuditTaskSQLResV1> => {
       title: () => i18n.t('audit.table.number'),
     },
     {
+      dataIndex: 'exec_sql',
+      title: () => i18n.t('audit.table.execSql'),
+    },
+    {
       dataIndex: 'audit_level',
       title: () => i18n.t('audit.table.auditLevel'),
     },
@@ -19,6 +23,10 @@ export const auditResultColumn = (): TableColumn<IAuditTaskSQLResV1> => {
     {
       dataIndex: 'audit_result',
       title: () => i18n.t('audit.table.auditResult'),
+    },
+    {
+      dataIndex: 'rollback_sql',
+      title: () => i18n.t('audit.table.rollback'),
     },
   ];
 };

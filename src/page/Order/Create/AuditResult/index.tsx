@@ -1,6 +1,6 @@
 import useRequest from '@ahooksjs/use-request';
 import { SyncOutlined } from '@ant-design/icons';
-import { Button, Card, Col, Form, Input, Row, Space, Table } from 'antd';
+import { Button, Card, Col, Form, Row, Select, Space, Table } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import task from '../../../../api/task';
@@ -10,12 +10,14 @@ import {
   FilterFormColLayout,
   FilterFormRowLayout,
 } from '../../../../data/common';
+import useStaticStatus from '../../../../hooks/useStaticStatus';
 import useTable from '../../../../hooks/useTable';
 import { auditResultColumn } from './column';
 import { AuditResultProps } from './index.type';
 
 const AuditResult: React.FC<AuditResultProps> = (props) => {
   const { t } = useTranslation();
+  const { generateAuditStatusSelectOption } = useStaticStatus();
   const {
     filterInfo,
     pagination,
@@ -70,8 +72,13 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
               name="filter_audit_status"
               label={t('audit.table.auditStatus')}
             >
-              {/* TODO: audit status should have enum */}
-              <Input />
+              <Select
+                placeholder={t('common.form.placeholder.searchSelect', {
+                  name: t('audit.table.auditStatus'),
+                })}
+              >
+                {generateAuditStatusSelectOption()}
+              </Select>
             </Form.Item>
           </Col>
           <Col
