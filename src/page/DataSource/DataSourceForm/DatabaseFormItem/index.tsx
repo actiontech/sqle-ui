@@ -1,16 +1,22 @@
+import { InfoCircleOutlined } from '@ant-design/icons';
+import { useTheme } from '@material-ui/styles';
 import { useBoolean } from 'ahooks';
-import { Form, FormInstance, Input, InputNumber } from 'antd';
+import { Form, FormInstance, Input, InputNumber, Space, Tooltip } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import instance from '../../../../api/instance';
+import EmptyBox from '../../../../components/EmptyBox';
 import TestDatabaseConnectButton from '../../../../components/TestDatabaseConnectButton';
 import { ResponseCode } from '../../../../data/common';
+import { Theme } from '../../../../types/theme.type';
 import { DataSourceFormField } from '../index.type';
 
 const DatabaseFormItem: React.FC<{
   form: FormInstance<DataSourceFormField>;
+  isUpdate?: boolean;
 }> = (props) => {
   const { t } = useTranslation();
+  const theme = useTheme<Theme>();
   const [
     loading,
     { setTrue: setLoadingTrue, setFalse: setLoadingFalse },
@@ -113,11 +119,24 @@ const DatabaseFormItem: React.FC<{
         />
       </Form.Item>
       <Form.Item
-        label={t('dataSource.dataSourceForm.password')}
+        label={
+          <Space>
+            <EmptyBox if={props.isUpdate}>
+              <Tooltip overlay={t('dataSource.dataSourceForm.passwordTips')}>
+                <InfoCircleOutlined
+                  style={{
+                    color: theme.common.color.warning,
+                  }}
+                />
+              </Tooltip>
+            </EmptyBox>
+            {t('dataSource.dataSourceForm.password')}
+          </Space>
+        }
         name="password"
         rules={[
           {
-            required: true,
+            required: !props.isUpdate,
             message: t('common.form.rule.require', {
               name: t('dataSource.dataSourceForm.password'),
             }),

@@ -3,6 +3,9 @@ import { Theme } from '../types/theme.type';
 const lightTheme: Theme = {
   common: {
     padding: 24,
+    color: {
+      warning: '#faad14',
+    },
   },
   loginFormBg: 'rgba(255,255,255,0.7)',
 

@@ -52,7 +52,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
           })}
         />
       </Form.Item>
-      <DatabaseFormItem form={props.form} />
+      <DatabaseFormItem isUpdate={props.isUpdate} form={props.form} />
       <Form.Item label={t('dataSource.dataSourceForm.role')} name="role">
         <Select
           mode="multiple"
