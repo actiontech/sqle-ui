@@ -154,7 +154,7 @@ const CreateOrder = () => {
           status="success"
           title={t('order.create.success')}
           subTitle={
-            <Link to="/data">
+            <Link to="/order">
               {t('order.create.guide')} {'>'}
             </Link>
           }

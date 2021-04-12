@@ -16,8 +16,8 @@ import { OrderListFilterFormProps } from './index.type';
 
 const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
   const { t } = useTranslation();
-  const { generateUsernameSelectOption } = useUsername();
-  const { generateInstanceSelectOption } = useInstance();
+  const { updateUsernameList, generateUsernameSelectOption } = useUsername();
+  const { updateInstanceList, generateInstanceSelectOption } = useInstance();
 
   const [collapse, { toggle: toggleCollapse }] = useBoolean(true);
 
@@ -32,6 +32,12 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
       props.submit();
     }
   }, [collapse, props, toggleCollapse]);
+
+  React.useEffect(() => {
+    updateUsernameList();
+    updateInstanceList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const {
     generateWorkflowStepTypeSelectOption,

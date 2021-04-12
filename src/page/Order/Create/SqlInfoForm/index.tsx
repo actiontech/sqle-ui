@@ -158,7 +158,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
               showSearch
               allowClear
             >
-              {generateInstanceSchemaSelectOption}
+              {generateInstanceSchemaSelectOption()}
             </Select>
           </Form.Item>
           <Form.Item

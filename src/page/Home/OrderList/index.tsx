@@ -4,6 +4,7 @@ import { useRequest } from 'ahooks';
 import { Button, Card, Col, Row, Space, Spin, Typography } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import workflow from '../../../api/workflow';
 import EmptyBox from '../../../components/EmptyBox';
 import { Theme } from '../../../types/theme.type';
@@ -58,9 +59,9 @@ const OrderList: React.FC<OrderListProps> = (props) => {
                   <Card
                     title={order.subject}
                     actions={[
-                      <Button type="link" key="showDetail">
-                        {t('common.showDetail')}
-                      </Button>,
+                      <Link key="showDetail" to={`/order/${order.workflow_id}`}>
+                        <Button type="link">{t('common.showDetail')}</Button>,
+                      </Link>,
                     ]}
                   >
                     <Typography.Paragraph
