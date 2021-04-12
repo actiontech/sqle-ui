@@ -1,6 +1,9 @@
 export type Theme = {
   common: {
     padding: number;
+    color: {
+      warning: string;
+    };
   };
   loginFormBg: string;
   header: {

@@ -3,6 +3,9 @@ import { Theme } from '../types/theme.type';
 const darkTheme: Theme = {
   common: {
     padding: 24,
+    color: {
+      warning: '#faad14',
+    },
   },
   loginFormBg: 'rgba(0,0,0,0.7)',
   header: {

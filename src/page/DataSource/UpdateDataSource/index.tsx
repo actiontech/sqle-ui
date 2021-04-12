@@ -14,6 +14,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useParams } from 'react-router-dom';
 import instance from '../../../api/instance';
+import { IUpdateInstanceV1Params } from '../../../api/instance/index.d';
 import BackButton from '../../../components/BackButton';
 import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode } from '../../../data/common';
@@ -38,18 +39,21 @@ const UpdateDataSource = () => {
   const updateDatabase = React.useCallback(async () => {
     const values = await form.validateFields();
     setLoadingTrue();
+    const params: IUpdateInstanceV1Params = {
+      db_host: values.ip,
+      db_port: `${values.port}`,
+      db_user: values.user,
+      desc: values.describe,
+      instance_name: values.name,
+      role_name_list: values.role,
+      rule_template_name_list: values.ruleTemplate,
+      // workflow_template_name: values.workflow,
+    };
+    if (!!values.password) {
+      params.db_password = values.password;
+    }
     instance
-      .updateInstanceV1({
-        db_host: values.ip,
-        db_password: values.password,
-        db_port: `${values.port}`,
-        db_user: values.user,
-        desc: values.describe,
-        instance_name: values.name,
-        role_name_list: values.role,
-        rule_template_name_list: values.ruleTemplate,
-        // workflow_template_name: values.workflow,
-      })
+      .updateInstanceV1(params)
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           message.success(
@@ -76,7 +80,7 @@ const UpdateDataSource = () => {
             name: instance?.instance_name,
             describe: instance?.desc,
             ip: instance?.db_host,
-            port: Number.parseInt(instance?.db_port ?? '3306'),
+            port: Number.parseInt(instance?.db_port ?? ''),
             user: instance?.db_user,
             role: instance?.role_name_list,
             ruleTemplate: instance?.rule_template_name_list,
