@@ -54,7 +54,7 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
     props.submit({});
   }, [form, props]);
 
-  React.useCallback(() => {
+  React.useEffect(() => {
     updateInstanceList();
     updateRuleTemplateList();
     updateRoleList();
