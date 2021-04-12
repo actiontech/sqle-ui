@@ -41,7 +41,7 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
     if (!collapse) {
       form.setFieldsValue({
         filter_db_user: undefined,
-        filter_workflow_template_name: undefined,
+        // filter_workflow_template_name: undefined,
         filter_rule_template_name: undefined,
         filter_role_name: undefined,
       });
@@ -50,8 +50,9 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
   }, [collapse, form, submit, toggleCollapse]);
 
   const reset = React.useCallback(() => {
+    form.resetFields();
     props.submit({});
-  }, [props]);
+  }, [form, props]);
 
   React.useCallback(() => {
     updateInstanceList();
@@ -115,7 +116,7 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
             />
           </Form.Item>
         </Col>
-        <Col {...FilterFormColLayout} hidden={collapse}>
+        {/* <Col {...FilterFormColLayout} hidden={collapse}>
           <Form.Item
             name="filter_workflow_template_name"
             label={t('dataSource.dataSourceForm.workflow')}
@@ -126,7 +127,7 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
               })}
             />
           </Form.Item>
-        </Col>
+        </Col> */}
         <Col {...FilterFormColLayout} hidden={collapse}>
           <Form.Item
             name="filter_rule_template_name"
@@ -160,7 +161,11 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
           </Form.Item>
         </Col>
         <Col
-          {...filterFormButtonLayoutFactory(0, collapse ? 16 : 8)}
+          {...filterFormButtonLayoutFactory(
+            0,
+            collapse ? 16 : 8,
+            collapse ? 0 : 6
+          )}
           className="text-align-right"
         >
           <Form.Item wrapperCol={{ span: 24 }}>
