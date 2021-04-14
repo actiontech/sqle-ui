@@ -31,10 +31,6 @@ class UserService extends ServiceBase {
     return this.post<ILoginV1Return>('/v1/login', paramsData, options);
   }
 
-  public testV1(options?: AxiosRequestConfig) {
-    return this.get<string>('/v1/test', undefined, options);
-  }
-
   public getCurrentUserV1(options?: AxiosRequestConfig) {
     return this.get<IGetCurrentUserV1Return>('/v1/user', undefined, options);
   }
