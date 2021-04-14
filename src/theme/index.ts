@@ -23,6 +23,7 @@ const useStyles = makeStyles<Theme>((theme) => ({
   },
   editor: {
     border: theme.editor.border,
+    paddingRight: 1,
   },
 }));
 

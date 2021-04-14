@@ -21,6 +21,7 @@ export default {
   upload: '选择文件上传',
   resetAndClose: '重置表单并关闭',
   operateSuccess: '操作成功',
+  operate: '操作',
 
   prevStep: '上一步',
   nextStep: '下一步',

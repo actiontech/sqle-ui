@@ -20,6 +20,7 @@ export default {
   upload: 'Upload',
   resetAndClose: 'Reset Form And Close',
   operateSuccess: 'Operate successfully',
+  operate: 'Operate',
   prevStep: 'Prev',
   nextStep: 'Next',
 

@@ -60,7 +60,7 @@ const OrderList: React.FC<OrderListProps> = (props) => {
                     title={order.subject}
                     actions={[
                       <Link key="showDetail" to={`/order/${order.workflow_id}`}>
-                        <Button type="link">{t('common.showDetail')}</Button>,
+                        <Button type="link">{t('common.showDetail')}</Button>
                       </Link>,
                     ]}
                   >

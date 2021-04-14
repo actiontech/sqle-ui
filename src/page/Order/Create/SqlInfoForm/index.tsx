@@ -183,9 +183,6 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
               wrapperCol={{
                 ...PageFormLayout.wrapperCol,
                 className: theme.editor,
-                style: {
-                  paddingRight: 1,
-                },
               }}
             >
               <MonacoEditor

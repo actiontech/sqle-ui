@@ -11,4 +11,5 @@ export default {
   workflow: 'Workflow',
   order: 'Order List',
   orderDetail: 'Order Detail',
+  whitelist:'Whitelist'
 };
