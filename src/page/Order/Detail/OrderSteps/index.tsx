@@ -15,15 +15,21 @@ import { useForm } from 'antd/lib/form/Form';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { WorkflowStepResV1StateEnum } from '../../../../api/common.enum';
+import {
+  WorkflowStepResV1StateEnum,
+  WorkFlowStepTemplateReqV1TypeEnum,
+} from '../../../../api/common.enum';
 import { ModalFormLayout } from '../../../../data/common';
 import { IReduxState } from '../../../../store';
 import { formatTime } from '../../../../utils/Common';
 import { OrderStepsProps, StepStateStatus, StepTypeStatus } from './index.type';
 
 const stepTypeStatus: StepTypeStatus = {
-  sql_execute: {
+  [WorkFlowStepTemplateReqV1TypeEnum.sql_execute]: {
     label: 'order.operator.sqlExecute',
+  },
+  [WorkFlowStepTemplateReqV1TypeEnum.sql_review]: {
+    label: 'order.operator',
   },
   unknown: {
     label: 'order.operator.unknown',
@@ -108,7 +114,12 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
           let operator: JSX.Element | string = (
             <Space>
               <Button type="primary" onClick={pass} loading={passLoading}>
-                {t(stepTypeStatus[step.type ?? 'unknown'].label)}
+                {t(
+                  stepTypeStatus[
+                    (step.type as WorkFlowStepTemplateReqV1TypeEnum) ??
+                      'unknown'
+                  ].label
+                )}
               </Button>
               <Button onClick={openRejectModal} danger loading={rejectLoading}>
                 {t('order.operator.reject')}

@@ -1,6 +1,9 @@
 import { TimelineItemProps } from 'antd';
 import { IWorkflowStepResV1 } from '../../../../api/common.d';
-import { WorkflowStepResV1StateEnum } from '../../../../api/common.enum';
+import {
+  WorkflowStepResV1StateEnum,
+  WorkFlowStepTemplateReqV1TypeEnum,
+} from '../../../../api/common.enum';
 import { I18nKey } from '../../../../types/common.type';
 
 export type OrderStepsProps = {
@@ -19,10 +22,7 @@ export type StepStateStatus = {
 };
 
 export type StepTypeStatus = {
-  unknown: {
-    label: I18nKey;
-  };
-  [key: string]: {
+  [key in WorkFlowStepTemplateReqV1TypeEnum | 'unknown']: {
     label: I18nKey;
   };
 };
