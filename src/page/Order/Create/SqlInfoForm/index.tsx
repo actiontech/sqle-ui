@@ -106,10 +106,10 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   );
 
   const getFile = (e: any) => {
-    if (Array.isArray(e)) {
-      return e;
+    if (e.file) {
+      return [e.file];
     }
-    return e && e.fileList;
+    return [];
   };
 
   React.useEffect(() => {
