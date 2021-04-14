@@ -48,6 +48,7 @@ export default {
     wait: '正在等待用户{{username}}进行操作',
     rejectDetail: '{{name}}驳回了当前工单，驳回原因为',
     sqlExecute: '执行上线',
+    sqlReview: '审核通过',
     unknown: '未知步骤',
 
     approveSuccessTips: '审批通过',
