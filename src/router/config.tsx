@@ -10,6 +10,7 @@ import {
   AuditOutlined,
   ConsoleSqlOutlined,
   BarsOutlined,
+  ProfileOutlined,
 } from '@ant-design/icons';
 import { SystemRole } from '../data/common';
 
@@ -51,6 +52,10 @@ const OrderDetail = React.lazy(
 
 const OrderList = React.lazy(
   () => import(/* webpackChunkName: "Order" */ '../page/Order/List')
+);
+
+const Whitelist = React.lazy(
+  () => import(/* webpackChunkName: "Whitelist" */ '../page/Whitelist')
 );
 
 export const unAuthRouter: RouteProps[] = [
@@ -146,6 +151,13 @@ export const routerConfig: RouterItem[] = [
         icon: <AuditOutlined />,
         component: RuleTemplate,
       },
+      {
+        path: '/whitelist',
+        key: 'Whitelist',
+        label: 'menu.whitelist',
+        component: Whitelist,
+        icon: <ProfileOutlined />
+      }
       // {
       //   path: '/progress',
       //   exact: true,
