@@ -45,6 +45,20 @@ export interface IAuditTaskSQLResV1 {
   rollback_sql?: string;
 }
 
+export interface IAuditWhitelistResV1 {
+  audit_whitelist_id?: number;
+
+  desc?: string;
+
+  value?: string;
+}
+
+export interface ICreateAuditWhitelistReqV1 {
+  desc?: string;
+
+  value?: string;
+}
+
 export interface ICreateInstanceReqV1 {
   db_host?: string;
 
@@ -129,6 +143,16 @@ export interface IGetAuditTaskSQLsResV1 {
   code?: number;
 
   data?: IAuditTaskSQLResV1[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
+export interface IGetAuditWhitelistResV1 {
+  code?: number;
+
+  data?: IAuditWhitelistResV1[];
 
   message?: string;
 
@@ -397,6 +421,12 @@ export interface IRuleTemplateDetailResV1 {
 
 export interface IRuleTemplateTipResV1 {
   rule_template_name?: string;
+}
+
+export interface IUpdateAuditWhitelistReqV1 {
+  desc?: string;
+
+  value?: string;
 }
 
 export interface IUpdateCurrentUserReqV1 {
