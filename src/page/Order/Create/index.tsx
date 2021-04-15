@@ -54,27 +54,31 @@ const CreateOrder = () => {
   }, []);
 
   const create = React.useCallback(async () => {
-    const values = await baseForm.validateFields();
-    await sqlInfoForm.validateFields();
-    if (!taskInfo) {
-      message.error('您必须先对您的SQL进行审核才能进行创建工单');
-      return;
+    try {
+      const values = await baseForm.validateFields();
+      await sqlInfoForm.validateFields();
+      if (!taskInfo) {
+        message.error('您必须先对您的SQL进行审核才能进行创建工单');
+        return;
+      }
+      startCreate();
+      workflow
+        .createWorkflowV1({
+          task_id: `${taskInfo.task_id}`,
+          desc: values.describe,
+          workflow_subject: values.name,
+        })
+        .then((res) => {
+          if (res.data.code === ResponseCode.SUCCESS) {
+            openModal();
+          }
+        })
+        .finally(() => {
+          createFinish();
+        });
+    } catch (error) {
+      baseForm.scrollToField('name');
     }
-    startCreate();
-    workflow
-      .createWorkflowV1({
-        task_id: `${taskInfo.task_id}`,
-        desc: values.describe,
-        workflow_subject: values.name,
-      })
-      .then((res) => {
-        if (res.data.code === ResponseCode.SUCCESS) {
-          openModal();
-        }
-      })
-      .finally(() => {
-        createFinish();
-      });
   }, [baseForm, createFinish, openModal, sqlInfoForm, startCreate, taskInfo]);
 
   const resetAllForm = React.useCallback(() => {
@@ -100,7 +104,7 @@ const CreateOrder = () => {
           direction="vertical"
         >
           <Card title={t('order.baseInfo.title')}>
-            <Form form={baseForm} {...PageFormLayout}>
+            <Form form={baseForm} {...PageFormLayout} scrollToFirstError>
               <Form.Item
                 name="name"
                 label={t('order.baseInfo.name')}
@@ -140,7 +144,12 @@ const CreateOrder = () => {
               <Button onClick={closeModalAndResetForm}>
                 {t('common.resetAll')}
               </Button>
-              <Button type="primary" onClick={create} loading={createLoading}>
+              <Button
+                htmlType="submit"
+                type="primary"
+                onClick={create}
+                loading={createLoading}
+              >
                 {t('order.createOrder.title')}
               </Button>
             </Space>
