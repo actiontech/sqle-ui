@@ -18,7 +18,7 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
     props.form.resetFields();
   }, [props.form, props.isUpdate]);
 
-  React.useCallback(() => {
+  React.useEffect(() => {
     updateInstanceList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
