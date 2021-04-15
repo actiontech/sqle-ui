@@ -3,6 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { PageFormLayout } from '../../../../data/common';
 import useInstance from '../../../../hooks/useInstance';
+import { nameRule } from '../../../../utils/FormRule';
 import { RuleTemplateBaseInfoFormProps } from './index.type';
 
 const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
@@ -31,6 +32,7 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
           {
             required: true,
           },
+          ...nameRule(),
         ]}
       >
         <Input

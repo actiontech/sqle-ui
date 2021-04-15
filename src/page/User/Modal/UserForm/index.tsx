@@ -4,6 +4,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalFormLayout } from '../../../../data/common';
 import EmptyBox from '../../../../components/EmptyBox';
+import { nameRule } from '../../../../utils/FormRule';
 
 const UserForm: React.FC<IUserFormProps> = (props) => {
   const { t } = useTranslation();
@@ -13,6 +14,7 @@ const UserForm: React.FC<IUserFormProps> = (props) => {
       <Form.Item
         name="username"
         label={t('user.userForm.username')}
+        validateFirst={true}
         rules={[
           {
             required: true,
@@ -20,6 +22,7 @@ const UserForm: React.FC<IUserFormProps> = (props) => {
               name: t('user.userForm.username'),
             }),
           },
+          ...nameRule(),
         ]}
       >
         <Input

@@ -1,5 +1,6 @@
 import { ColumnGroupType, ColumnType, TableProps } from 'antd/lib/table';
 import { useTranslation } from 'react-i18next';
+import { ValidatorRule } from 'rc-field-form/lib/interface';
 
 export type Dictionary = {
   [key: string]: string | number | boolean | Dictionary;
@@ -24,3 +25,5 @@ export type TableChange<RecordType = unknown> = Required<
 >['onChange'];
 
 export type I18nKey = Parameters<ReturnType<typeof useTranslation>['t']>[0];
+
+export type FormValidatorRule = ValidatorRule['validator'];

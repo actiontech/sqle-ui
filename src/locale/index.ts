@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import StorageKey from '../data/StorageKey';
+import { Dictionary, I18nKey } from '../types/common.type';
 import LocalStorageWrapper from '../utils/LocalStorageWrapper';
 import enUS from './en-US';
 import zhCn from './zh-CN';
@@ -25,5 +26,9 @@ i18n.use(initReactI18next).init({
   },
 });
 
-export { SupportLanguage };
+const translation = (key: I18nKey, dic?: Dictionary) => {
+  return i18n.t(key, dic);
+};
+
+export { SupportLanguage, translation };
 export default i18n;

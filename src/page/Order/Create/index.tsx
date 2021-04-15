@@ -21,6 +21,7 @@ import workflow from '../../../api/workflow';
 import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode, PageFormLayout } from '../../../data/common';
 import { Theme } from '../../../types/theme.type';
+import { nameRule } from '../../../utils/FormRule';
 import AuditResult from './AuditResult';
 import SqlInfoForm from './SqlInfoForm';
 import { SqlInfoFormFields } from './SqlInfoForm/index.type';
@@ -107,6 +108,7 @@ const CreateOrder = () => {
                   {
                     required: true,
                   },
+                  ...nameRule(),
                 ]}
               >
                 <Input
