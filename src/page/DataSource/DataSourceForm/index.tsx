@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { PageFormLayout } from '../../../data/common';
 import useRole from '../../../hooks/userRole';
 import useRuleTemplate from '../../../hooks/userRuleTemplate';
+import { nameRule } from '../../../utils/FormRule';
 import DatabaseFormItem from './DatabaseFormItem';
 import { IDataSourceFormProps } from './index.type';
 
@@ -26,6 +27,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
       <Form.Item
         label={t('dataSource.dataSourceForm.name')}
         name="name"
+        validateFirst={true}
         rules={[
           {
             required: true,
@@ -33,6 +35,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
               name: t('dataSource.dataSourceForm.name'),
             }),
           },
+          ...nameRule(),
         ]}
       >
         <Input

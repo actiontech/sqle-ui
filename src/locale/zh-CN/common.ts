@@ -59,6 +59,8 @@ export default {
       require: '必须填写{{name}}',
       passwordNotMatch: '两次密码输入不一致',
       email: '请输入有效的邮箱地址',
+      startWithLetter: '必须要以字母开头',
+      onlyLetterAndNumber: '只能包含字母、数字、中划线和下划线',
     },
   },
 };

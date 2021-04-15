@@ -2,6 +2,7 @@ import { Form, Input, Select } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalFormLayout } from '../../../../data/common';
+import { nameRule } from '../../../../utils/FormRule';
 import { IRoleFormProps } from './index.type';
 
 const RoleForm: React.FC<IRoleFormProps> = (props) => {
@@ -12,6 +13,7 @@ const RoleForm: React.FC<IRoleFormProps> = (props) => {
       <Form.Item
         name="roleName"
         label={t('user.roleForm.roleName')}
+        validateFirst={true}
         rules={[
           {
             required: true,
@@ -19,6 +21,7 @@ const RoleForm: React.FC<IRoleFormProps> = (props) => {
               name: t('user.roleForm.roleName'),
             }),
           },
+          ...nameRule(),
         ]}
       >
         <Input
