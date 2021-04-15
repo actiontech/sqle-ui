@@ -13,6 +13,7 @@ const RoleForm: React.FC<IRoleFormProps> = (props) => {
       <Form.Item
         name="roleName"
         label={t('user.roleForm.roleName')}
+        validateFirst={true}
         rules={[
           {
             required: true,

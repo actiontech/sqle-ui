@@ -29,7 +29,7 @@ const stepTypeStatus: StepTypeStatus = {
     label: 'order.operator.sqlExecute',
   },
   [WorkFlowStepTemplateReqV1TypeEnum.sql_review]: {
-    label: 'order.operator',
+    label: 'order.operator.sqlReview',
   },
   unknown: {
     label: 'order.operator.unknown',
@@ -93,7 +93,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
   return (
     <>
       <Timeline>
-        <Timeline.Item>
+        <Timeline.Item color="green">
           <Row>
             <Col span={5}>
               <Col span={24}>
@@ -130,6 +130,29 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
             operator = t('order.operator.wait', {
               username: step.assignee_user_name_list?.join(','),
             });
+          } else if (
+            step.state === WorkflowStepResV1StateEnum.approved &&
+            step.type === WorkFlowStepTemplateReqV1TypeEnum.sql_review
+          ) {
+            operator = t('order.operator.approved', {
+              username: step.operation_user_name,
+            });
+          } else if (
+            step.state === WorkflowStepResV1StateEnum.approved &&
+            step.type === WorkFlowStepTemplateReqV1TypeEnum.sql_execute
+          ) {
+            operator = t('order.operator.executed', {
+              username: step.operation_user_name,
+            });
+          }
+          if (props.currentStep && (step.number ?? 0) > props.currentStep) {
+            operator = t('order.operator.notArrival');
+          }
+          if (
+            props.currentStep === undefined &&
+            step.state === WorkflowStepResV1StateEnum.initialized
+          ) {
+            operator = t('order.operator.alreadyRejected');
           }
           if (
             props.currentStep === undefined &&
@@ -166,7 +189,8 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
                     {formatTime(step.operation_time, '--')}
                   </Col>
                   <Col span={24}>
-                    {t('order.operator.user')}:{step.operation_user_name}
+                    {t('order.operator.user')}:
+                    {step.operation_user_name ?? '--'}
                   </Col>
                 </Col>
                 <Col span={19}>{operator}</Col>

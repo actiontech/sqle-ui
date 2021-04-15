@@ -27,6 +27,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
       <Form.Item
         label={t('dataSource.dataSourceForm.name')}
         name="name"
+        validateFirst={true}
         rules={[
           {
             required: true,

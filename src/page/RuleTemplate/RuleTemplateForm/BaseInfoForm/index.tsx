@@ -28,6 +28,7 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
       <Form.Item
         label={t('ruleTemplate.ruleTemplateForm.templateName')}
         name="templateName"
+        validateFirst={true}
         rules={[
           {
             required: true,

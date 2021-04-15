@@ -104,6 +104,7 @@ const CreateOrder = () => {
               <Form.Item
                 name="name"
                 label={t('order.baseInfo.name')}
+                validateFirst={true}
                 rules={[
                   {
                     required: true,
