@@ -287,6 +287,18 @@ export interface IGetRulesResV1 {
   message?: string;
 }
 
+export interface IGetSMTPConfigurationResV1 {
+  code?: number;
+
+  message?: string;
+
+  smtp_host?: string;
+
+  smtp_port?: string;
+
+  smtp_username?: string;
+}
+
 export interface IGetUserDetailResV1 {
   code?: number;
 
@@ -481,6 +493,16 @@ export interface IUpdateRuleTemplateReqV1 {
   instance_name_list?: string[];
 
   rule_name_list?: string[];
+}
+
+export interface IUpdateSMTPConfigurationReqV1 {
+  smtp_host?: string;
+
+  smtp_password?: string;
+
+  smtp_port?: string;
+
+  smtp_username?: string;
 }
 
 export interface IUpdateUserReqV1 {
