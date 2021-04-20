@@ -188,46 +188,54 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
           if (props.currentStep && (step.number ?? 0) > props.currentStep) {
             operator = t('order.operator.notArrival');
           }
-          if (
-            props.currentStep === undefined &&
-            step.state === WorkflowStepResV1StateEnum.initialized
-          ) {
-            operator = t('order.operator.alreadyRejected');
-          }
-          if (
-            props.currentStep === undefined &&
-            step.state === WorkflowStepResV1StateEnum.rejected
-          ) {
-            operator = (
-              <>
-                <div>
-                  <Typography.Text>
-                    {t('order.operator.rejectDetail', {
-                      name: step.operation_user_name,
-                    })}
-                  </Typography.Text>
-                </div>
-                <Typography.Text type="danger">
-                  {t('order.operator.rejectReason')}:{step.reason}
-                </Typography.Text>
-                <div>
+          if (props.currentStep === undefined) {
+            if (
+              props.currentOrderStatus ===
+                WorkflowRecordResV1StatusEnum.canceled &&
+              step.state === WorkflowStepResV1StateEnum.initialized
+            ) {
+              operator = t('order.operator.alreadyClosed');
+            } else if (step.state === WorkflowStepResV1StateEnum.initialized) {
+              operator = t('order.operator.alreadyRejected');
+            } else if (step.state === WorkflowStepResV1StateEnum.rejected) {
+              operator = (
+                <>
+                  <div>
+                    <Typography.Text>
+                      {t('order.operator.rejectDetail', {
+                        name: step.operation_user_name,
+                      })}
+                    </Typography.Text>
+                  </div>
                   <Typography.Text type="danger">
-                    ({t('order.operator.rejectTips')})
+                    {t('order.operator.rejectReason')}:{step.reason}
                   </Typography.Text>
-                </div>
-              </>
-            );
+                  <div>
+                    <Typography.Text type="danger">
+                      ({t('order.operator.rejectTips')})
+                    </Typography.Text>
+                  </div>
+                </>
+              );
+            }
           }
 
           const icon =
             props.currentStep === step.number ? (
               <ClockCircleOutlined className="timeline-clock-icon" />
             ) : undefined;
+          let color = stepStateStatus[step.state ?? 'unknown'].color;
+          if (
+            step.type === WorkflowStepResV1TypeEnum.create_workflow ||
+            step.type === WorkflowStepResV1TypeEnum.update_workflow
+          ) {
+            color = stepStateStatus.approved.color;
+          }
           return (
             <Timeline.Item
               key={step.workflow_step_id || step.operation_time}
               dot={icon}
-              color={stepStateStatus[step.state ?? 'unknown'].color}
+              color={color}
             >
               <Row>
                 <Col span={5}>

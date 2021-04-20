@@ -11,6 +11,10 @@ export default {
     title: '创建工单',
     pageDesc: '您可以在这里选择数据源进行创建SQL审核工单',
   },
+  closeOrder: {
+    button: '关闭工单',
+    closeConfirm: '您确认关闭当前工单？',
+  },
   order: {
     name: '工单名称',
     createUser: '创建人',
@@ -54,6 +58,7 @@ export default {
     executed: '{{username}}对当前工单进行了上线操作',
     rejectDetail: '{{name}}驳回了当前工单，驳回原因为',
     alreadyRejected: '工单已被驳回',
+    alreadyClosed: '工单已被关闭',
     modifySql: '修改审核语句',
     waitModifySql: '等待用户{{username}}修改审核语句',
     sqlExecute: '执行上线',
