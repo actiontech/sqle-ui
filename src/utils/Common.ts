@@ -15,3 +15,10 @@ export const formatTime = (timeString?: string, defaultVal = ''): string => {
   }
   return moment(timeString).format('YYYY-MM-DD HH:mm:ss');
 };
+
+export const getFileFromUploadChangeEvent = (e: any) => {
+  if (e.file && e.file.status !== 'removed') {
+    return [e.file];
+  }
+  return [];
+};

@@ -1,6 +1,14 @@
 import { useTheme } from '@material-ui/styles';
-import { useRequest } from 'ahooks';
-import { Card, Descriptions, message, PageHeader, Space } from 'antd';
+import { useBoolean, useRequest } from 'ahooks';
+import {
+  Button,
+  Card,
+  Descriptions,
+  message,
+  PageHeader,
+  Popconfirm,
+  Space,
+} from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
@@ -13,7 +21,9 @@ import { ResponseCode } from '../../../data/common';
 import { Theme } from '../../../types/theme.type';
 import { formatTime } from '../../../utils/Common';
 import AuditResult from './AuditResult';
+import ModifySqlModal from './Modal/ModifySqlModal';
 import OrderSteps from './OrderSteps';
+import useModifySql from './useModifySql';
 
 const Order = () => {
   const urlParams = useParams<{ orderId: string }>();
@@ -33,9 +43,10 @@ const Order = () => {
   );
 
   const { data: taskInfo, refresh: refreshTask } = useRequest(
-    () => task.getAuditTaskV1({ task_id: `${orderInfo?.task_id}` }),
+    () => task.getAuditTaskV1({ task_id: `${orderInfo?.record?.task_id}` }),
     {
       ready: !!orderInfo,
+      refreshDeps: [orderInfo?.record?.task_id],
       formatResult(res) {
         return res.data.data;
       },
@@ -46,47 +57,82 @@ const Order = () => {
     return workflow
       .approveWorkflowV1({
         workflow_id: `${orderInfo?.workflow_id}`,
-        workflow_step_number: `${orderInfo?.current_step_number}`,
+        workflow_step_id: `${orderInfo?.record?.current_step_number}`,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           message.success(t('order.operator.approveSuccessTips'));
           refreshOrder();
-          refreshTask();
         }
       });
   }, [
-    orderInfo?.current_step_number,
+    orderInfo?.record?.current_step_number,
     orderInfo?.workflow_id,
     refreshOrder,
-    refreshTask,
     t,
   ]);
 
   const reject = React.useCallback(
-    async (reason: string) => {
+    async (reason: string, stepId: number) => {
       return workflow
         .rejectWorkflowV1({
           workflow_id: `${orderInfo?.workflow_id}`,
-          workflow_step_number: `${orderInfo?.current_step_number}`,
+          workflow_step_id: `${stepId}`,
           reason,
         })
         .then((res) => {
           if (res.data.code === ResponseCode.SUCCESS) {
             message.success(t('order.operator.rejectSuccessTips'));
             refreshOrder();
-            refreshTask();
           }
         });
     },
-    [
-      orderInfo?.current_step_number,
-      orderInfo?.workflow_id,
-      refreshOrder,
-      refreshTask,
-      t,
-    ]
+    [orderInfo?.workflow_id, refreshOrder, t]
   );
+
+  const {
+    visible,
+    tempTaskId,
+    tempPassRate,
+    openModifySqlModal,
+    closeModifySqlModal,
+    modifySqlSubmit,
+    resetAllState,
+  } = useModifySql();
+
+  const [
+    updateLoading,
+    { setTrue: startUpdateSQL, setFalse: updateSqlFinish },
+  ] = useBoolean();
+
+  const updateOrderSql = React.useCallback(() => {
+    startUpdateSQL();
+    workflow
+      .updateWorkflowV1({
+        task_id: `${tempTaskId}`,
+        workflow_id: `${orderInfo?.workflow_id}`,
+      })
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          resetAllState();
+          refreshOrder();
+        }
+      })
+      .finally(() => {
+        updateSqlFinish();
+      });
+  }, [
+    orderInfo?.workflow_id,
+    refreshOrder,
+    resetAllState,
+    startUpdateSQL,
+    tempTaskId,
+    updateSqlFinish,
+  ]);
+
+  const giveUpModify = () => {
+    resetAllState();
+  };
 
   return (
     <>
@@ -94,7 +140,7 @@ const Order = () => {
         title={
           <Space>
             {t('order.pageTitle')}
-            <OrderStatusTag status={orderInfo?.status} />
+            <OrderStatusTag status={orderInfo?.record?.status} />
           </Space>
         }
         ghost={false}
@@ -122,22 +168,55 @@ const Order = () => {
           size={theme.common.padding}
         >
           <AuditResult
-            taskId={orderInfo?.task_id}
+            taskId={orderInfo?.record?.task_id}
             passRate={taskInfo?.pass_rate}
           />
           <EmptyBox if={!!orderInfo}>
             <Card title={t('order.operator.title')}>
               <OrderSteps
-                stepList={orderInfo?.workflow_step_list ?? []}
-                currentStep={orderInfo?.current_step_number}
-                createUser={orderInfo?.create_user_name}
-                createTime={formatTime(orderInfo?.create_time)}
+                stepList={orderInfo?.record?.workflow_step_list ?? []}
+                currentStep={orderInfo?.record?.current_step_number}
+                currentOrderStatus={orderInfo?.record?.status}
                 pass={pass}
                 reject={reject}
+                modifySql={openModifySqlModal}
               />
             </Card>
           </EmptyBox>
+          <EmptyBox if={!!tempTaskId}>
+            <Card>
+              <Space>
+                <Popconfirm
+                  title={t('order.modifySql.updateOrderConfirmTips')}
+                  onConfirm={updateOrderSql}
+                  disabled={updateLoading}
+                >
+                  <Button type="primary" loading={updateLoading}>
+                    {t('order.modifySql.updateOrder')}
+                  </Button>
+                </Popconfirm>
+                <Popconfirm
+                  title={t('order.modifySql.giveUpUpdateConfirmTips')}
+                  disabled={updateLoading}
+                  onConfirm={giveUpModify}
+                >
+                  <Button type="primary" danger disabled={updateLoading}>
+                    {t('order.modifySql.giveUpUpdate')}
+                  </Button>
+                </Popconfirm>
+              </Space>
+            </Card>
+          </EmptyBox>
+          <EmptyBox if={!!tempTaskId}>
+            <AuditResult taskId={tempTaskId} passRate={tempPassRate} />
+          </EmptyBox>
         </Space>
+        <ModifySqlModal
+          cancel={closeModifySqlModal}
+          submit={modifySqlSubmit}
+          visible={visible}
+          currentOrderTask={taskInfo}
+        />
       </section>
     </>
   );

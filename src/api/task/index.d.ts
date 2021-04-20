@@ -1,4 +1,8 @@
-import { IGetAuditTaskResV1, IGetAuditTaskSQLsResV1 } from '../common.d';
+import {
+  IGetAuditTaskResV1,
+  IGetAuditTaskSQLContentResV1,
+  IGetAuditTaskSQLsResV1
+} from '../common.d';
 
 import {
   getAuditTaskSQLsV1FilterExecStatusEnum,
@@ -22,6 +26,13 @@ export interface IGetAuditTaskV1Params {
 }
 
 export interface IGetAuditTaskV1Return extends IGetAuditTaskResV1 {}
+
+export interface IGetAuditTaskSQLContentV1Params {
+  task_id: string;
+}
+
+export interface IGetAuditTaskSQLContentV1Return
+  extends IGetAuditTaskSQLContentResV1 {}
 
 export interface IDownloadAuditTaskSQLFileV1Params {
   task_id: string;

@@ -24,6 +24,8 @@ import {
   ICreateWorkflowV1Return,
   IGetWorkflowV1Params,
   IGetWorkflowV1Return,
+  IUpdateWorkflowV1Params,
+  IUpdateWorkflowV1Return,
   ICancelWorkflowV1Params,
   ICancelWorkflowV1Return,
   IApproveWorkflowV1Params,
@@ -149,6 +151,21 @@ class WorkflowService extends ServiceBase {
     );
   }
 
+  public updateWorkflowV1(
+    params: IUpdateWorkflowV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const workflow_id = paramsData.workflow_id;
+    delete paramsData.workflow_id;
+
+    return this.patch<IUpdateWorkflowV1Return>(
+      `/v1/workflows/${workflow_id}/`,
+      paramsData,
+      options
+    );
+  }
+
   public cancelWorkflowV1(
     params: ICancelWorkflowV1Params,
     options?: AxiosRequestConfig
@@ -172,11 +189,11 @@ class WorkflowService extends ServiceBase {
     const workflow_id = paramsData.workflow_id;
     delete paramsData.workflow_id;
 
-    const workflow_step_number = paramsData.workflow_step_number;
-    delete paramsData.workflow_step_number;
+    const workflow_step_id = paramsData.workflow_step_id;
+    delete paramsData.workflow_step_id;
 
     return this.post<IApproveWorkflowV1Return>(
-      `/v1/workflows/${workflow_id}/steps/${workflow_step_number}/approve`,
+      `/v1/workflows/${workflow_id}/steps/${workflow_step_id}/approve`,
       paramsData,
       options
     );
@@ -190,11 +207,11 @@ class WorkflowService extends ServiceBase {
     const workflow_id = paramsData.workflow_id;
     delete paramsData.workflow_id;
 
-    const workflow_step_number = paramsData.workflow_step_number;
-    delete paramsData.workflow_step_number;
+    const workflow_step_id = paramsData.workflow_step_id;
+    delete paramsData.workflow_step_id;
 
     return this.post<IRejectWorkflowV1Return>(
-      `/v1/workflows/${workflow_id}/steps/${workflow_step_number}/reject`,
+      `/v1/workflows/${workflow_id}/steps/${workflow_step_id}/reject`,
       paramsData,
       options
     );

@@ -8,6 +8,7 @@ import {
   IGetWorkflowsResV1,
   ICreateWorkflowReqV1,
   IGetWorkflowResV1,
+  IUpdateWorkflowReqV1,
   IRejectWorkflowReqV1
 } from '../common.d';
 
@@ -84,6 +85,12 @@ export interface IGetWorkflowV1Params {
 
 export interface IGetWorkflowV1Return extends IGetWorkflowResV1 {}
 
+export interface IUpdateWorkflowV1Params extends IUpdateWorkflowReqV1 {
+  workflow_id: string;
+}
+
+export interface IUpdateWorkflowV1Return extends IBaseRes {}
+
 export interface ICancelWorkflowV1Params {
   workflow_id: string;
 }
@@ -93,7 +100,7 @@ export interface ICancelWorkflowV1Return extends IBaseRes {}
 export interface IApproveWorkflowV1Params {
   workflow_id: string;
 
-  workflow_step_number: string;
+  workflow_step_id: string;
 }
 
 export interface IApproveWorkflowV1Return extends IBaseRes {}
@@ -101,7 +108,7 @@ export interface IApproveWorkflowV1Return extends IBaseRes {}
 export interface IRejectWorkflowV1Params extends IRejectWorkflowReqV1 {
   workflow_id: string;
 
-  workflow_step_number: string;
+  workflow_step_id: string;
 }
 
 export interface IRejectWorkflowV1Return extends IBaseRes {}

@@ -3,6 +3,8 @@ export default {
   result: '审核结果',
   passRage: '审核通过率',
   duplicate: '是否去重',
+  downloadSql: '下载SQL语句',
+  downloadReport: '下载审核报告',
   table: {
     number: '序号',
     auditLevel: '规则等级',

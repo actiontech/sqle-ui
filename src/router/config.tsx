@@ -58,11 +58,12 @@ const Whitelist = React.lazy(
   () => import(/* webpackChunkName: "Whitelist" */ '../page/Whitelist')
 );
 
-export const unAuthRouter: RouteProps[] = [
+export const unAuthRouter: Array<RouteProps & { key: string }> = [
   {
     path: '/login',
     component: Login,
     exact: true,
+    key: 'login',
   },
 ];
 
@@ -110,7 +111,7 @@ export const routerConfig: RouterItem[] = [
         label: 'menu.workflow',
         component: CreateOrder,
         icon: <DesktopOutlined />,
-        key: 'orderList',
+        key: 'orderCreate',
         hideInSliderMenu: true,
       },
       {
@@ -156,8 +157,8 @@ export const routerConfig: RouterItem[] = [
         key: 'Whitelist',
         label: 'menu.whitelist',
         component: Whitelist,
-        icon: <ProfileOutlined />
-      }
+        icon: <ProfileOutlined />,
+      },
       // {
       //   path: '/progress',
       //   exact: true,

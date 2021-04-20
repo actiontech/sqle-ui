@@ -1,12 +1,14 @@
 import {
+  AuditTaskResV1SqlSourceEnum,
   AuditTaskResV1StatusEnum,
   RuleResV1LevelEnum,
   WorkFlowStepTemplateReqV1TypeEnum,
   WorkflowDetailResV1CurrentStepTypeEnum,
   WorkflowDetailResV1StatusEnum,
   WorkflowDetailResV1TaskStatusEnum,
-  WorkflowResV1StatusEnum,
-  WorkflowStepResV1StateEnum
+  WorkflowRecordResV1StatusEnum,
+  WorkflowStepResV1StateEnum,
+  WorkflowStepResV1TypeEnum
 } from './common.enum';
 
 export interface IBaseRes {
@@ -22,9 +24,15 @@ export interface IAuditTaskResV1 {
 
   pass_rate?: number;
 
+  sql_source?: AuditTaskResV1SqlSourceEnum;
+
   status?: AuditTaskResV1StatusEnum;
 
   task_id?: number;
+}
+
+export interface IAuditTaskSQLContentResV1 {
+  sql?: string;
 }
 
 export interface IAuditTaskSQLResV1 {
@@ -135,6 +143,14 @@ export interface IGetAuditTaskResV1 {
   code?: number;
 
   data?: IAuditTaskResV1;
+
+  message?: string;
+}
+
+export interface IGetAuditTaskSQLContentResV1 {
+  code?: number;
+
+  data?: IAuditTaskSQLContentResV1;
 
   message?: string;
 }
@@ -473,6 +489,10 @@ export interface IUpdateUserReqV1 {
   role_name_list?: string[];
 }
 
+export interface IUpdateWorkflowReqV1 {
+  task_id?: string;
+}
+
 export interface IUpdateWorkflowTemplateReqV1 {
   desc?: string;
 
@@ -557,24 +577,30 @@ export interface IWorkflowDetailResV1 {
   workflow_id?: number;
 }
 
+export interface IWorkflowRecordResV1 {
+  current_step_number?: number;
+
+  status?: WorkflowRecordResV1StatusEnum;
+
+  task_id?: number;
+
+  workflow_step_list?: IWorkflowStepResV1[];
+}
+
 export interface IWorkflowResV1 {
   create_time?: string;
 
   create_user_name?: string;
 
-  current_step_number?: number;
-
   desc?: string;
 
-  status?: WorkflowResV1StatusEnum;
+  record?: IWorkflowRecordResV1;
+
+  record_history_list?: IWorkflowRecordResV1[];
 
   subject?: string;
 
-  task_id?: number;
-
   workflow_id?: number;
-
-  workflow_step_list?: IWorkflowStepResV1[];
 }
 
 export interface IWorkflowStatisticsResV1 {
@@ -602,7 +628,9 @@ export interface IWorkflowStepResV1 {
 
   state?: WorkflowStepResV1StateEnum;
 
-  type?: string;
+  type?: WorkflowStepResV1TypeEnum;
+
+  workflow_step_id?: number;
 }
 
 export interface IWorkflowTemplateDetailResV1 {
