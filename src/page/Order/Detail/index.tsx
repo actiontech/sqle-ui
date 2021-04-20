@@ -8,10 +8,12 @@ import {
   PageHeader,
   Popconfirm,
   Space,
+  Typography,
 } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
+import { WorkflowRecordResV1StatusEnum } from '../../../api/common.enum';
 import task from '../../../api/task';
 import workflow from '../../../api/workflow';
 import BackButton from '../../../components/BackButton';
@@ -42,7 +44,7 @@ const Order = () => {
     }
   );
 
-  const { data: taskInfo, refresh: refreshTask } = useRequest(
+  const { data: taskInfo } = useRequest(
     () => task.getAuditTaskV1({ task_id: `${orderInfo?.record?.task_id}` }),
     {
       ready: !!orderInfo,
@@ -134,17 +136,58 @@ const Order = () => {
     resetAllState();
   };
 
+  const [
+    closeOrderLoading,
+    { setTrue: startCloseOrder, setFalse: closeOrderFinish },
+  ] = useBoolean();
+  const closeOrder = React.useCallback(() => {
+    startCloseOrder();
+    workflow
+      .cancelWorkflowV1({
+        workflow_id: `${orderInfo?.workflow_id}`,
+      })
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          refreshOrder();
+        }
+      })
+      .finally(() => {
+        closeOrderFinish();
+      });
+  }, [closeOrderFinish, orderInfo?.workflow_id, refreshOrder, startCloseOrder]);
+
   return (
     <>
       <PageHeader
         title={
           <Space>
-            {t('order.pageTitle')}
+            <Typography.Text ellipsis>
+              {orderInfo?.subject ?? t('order.pageTitle')}
+            </Typography.Text>
             <OrderStatusTag status={orderInfo?.record?.status} />
           </Space>
         }
         ghost={false}
-        extra={[<BackButton key="back" />]}
+        extra={[
+          <Popconfirm
+            title={t('order.closeOrder.closeConfirm')}
+            onConfirm={closeOrder}
+            disabled={closeOrderLoading}
+          >
+            <Button
+              key="close-order"
+              danger
+              loading={closeOrderLoading}
+              hidden={
+                orderInfo?.record?.status ===
+                WorkflowRecordResV1StatusEnum.canceled
+              }
+            >
+              {t('order.closeOrder.button')}
+            </Button>
+          </Popconfirm>,
+          <BackButton key="back" />,
+        ]}
       >
         <Descriptions>
           <Descriptions.Item label={t('order.order.name')}>
