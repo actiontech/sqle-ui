@@ -24,6 +24,7 @@ import { Theme } from '../../../types/theme.type';
 import { formatTime } from '../../../utils/Common';
 import AuditResult from './AuditResult';
 import ModifySqlModal from './Modal/ModifySqlModal';
+import OrderHistory from './Modal/OrderHistory';
 import OrderSteps from './OrderSteps';
 import useModifySql from './useModifySql';
 
@@ -31,6 +32,10 @@ const Order = () => {
   const urlParams = useParams<{ orderId: string }>();
   const theme = useTheme<Theme>();
   const { t } = useTranslation();
+  const [
+    historyVisible,
+    { setTrue: showHistory, setFalse: closeHistory },
+  ] = useBoolean();
 
   const { data: orderInfo, refresh: refreshOrder } = useRequest(
     () =>
@@ -55,24 +60,22 @@ const Order = () => {
     }
   );
 
-  const pass = React.useCallback(async () => {
-    return workflow
-      .approveWorkflowV1({
-        workflow_id: `${orderInfo?.workflow_id}`,
-        workflow_step_id: `${orderInfo?.record?.current_step_number}`,
-      })
-      .then((res) => {
-        if (res.data.code === ResponseCode.SUCCESS) {
-          message.success(t('order.operator.approveSuccessTips'));
-          refreshOrder();
-        }
-      });
-  }, [
-    orderInfo?.record?.current_step_number,
-    orderInfo?.workflow_id,
-    refreshOrder,
-    t,
-  ]);
+  const pass = React.useCallback(
+    async (stepId: number) => {
+      return workflow
+        .approveWorkflowV1({
+          workflow_id: `${orderInfo?.workflow_id}`,
+          workflow_step_id: `${stepId}`,
+        })
+        .then((res) => {
+          if (res.data.code === ResponseCode.SUCCESS) {
+            message.success(t('order.operator.approveSuccessTips'));
+            refreshOrder();
+          }
+        });
+    },
+    [orderInfo?.workflow_id, refreshOrder, t]
+  );
 
   const reject = React.useCallback(
     async (reason: string, stepId: number) => {
@@ -174,17 +177,21 @@ const Order = () => {
             onConfirm={closeOrder}
             disabled={closeOrderLoading}
           >
-            <Button
-              key="close-order"
-              danger
-              loading={closeOrderLoading}
-              hidden={
-                orderInfo?.record?.status ===
-                WorkflowRecordResV1StatusEnum.canceled
-              }
-            >
-              {t('order.closeOrder.button')}
-            </Button>
+            {!!orderInfo && (
+              <Button
+                key="close-order"
+                danger
+                loading={closeOrderLoading}
+                hidden={
+                  orderInfo?.record?.status ===
+                    WorkflowRecordResV1StatusEnum.canceled ||
+                  orderInfo?.record?.status ===
+                    WorkflowRecordResV1StatusEnum.finished
+                }
+              >
+                {t('order.closeOrder.button')}
+              </Button>
+            )}
           </Popconfirm>,
           <BackButton key="back" />,
         ]}
@@ -215,7 +222,16 @@ const Order = () => {
             passRate={taskInfo?.pass_rate}
           />
           <EmptyBox if={!!orderInfo}>
-            <Card title={t('order.operator.title')}>
+            <Card
+              title={t('order.operator.title')}
+              extra={[
+                Array.isArray(orderInfo?.record_history_list) && (
+                  <Button type="primary" onClick={showHistory} key="history">
+                    查看工单操作历史
+                  </Button>
+                ),
+              ]}
+            >
               <OrderSteps
                 stepList={orderInfo?.record?.workflow_step_list ?? []}
                 currentStep={orderInfo?.record?.current_step_number}
@@ -259,6 +275,11 @@ const Order = () => {
           submit={modifySqlSubmit}
           visible={visible}
           currentOrderTask={taskInfo}
+        />
+        <OrderHistory
+          visible={historyVisible}
+          history={orderInfo?.record_history_list ?? []}
+          close={closeHistory}
         />
       </section>
     </>

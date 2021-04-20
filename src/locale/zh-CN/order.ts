@@ -15,6 +15,9 @@ export default {
     button: '关闭工单',
     closeConfirm: '您确认关闭当前工单？',
   },
+  history: {
+    title: '工单操作历史',
+  },
   order: {
     name: '工单名称',
     createUser: '创建人',

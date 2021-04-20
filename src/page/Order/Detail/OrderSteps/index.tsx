@@ -81,9 +81,9 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     { setTrue: rejectStart, setFalse: rejectFinish },
   ] = useBoolean();
 
-  const pass = () => {
+  const pass = (stepId: number) => {
     passStart();
-    props.pass().finally(passFinish);
+    props.pass(stepId).finally(passFinish);
   };
 
   const handleClickRejectButton = (stepId: number) => {
@@ -111,7 +111,11 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
         {props.stepList.map((step) => {
           let operator: JSX.Element | string = (
             <Space>
-              <Button type="primary" onClick={pass} loading={passLoading}>
+              <Button
+                type="primary"
+                onClick={pass.bind(null, step.workflow_step_id ?? 0)}
+                loading={passLoading}
+              >
                 {t(stepTypeStatus[step.type ?? 'unknown'].label)}
               </Button>
               <Button
@@ -158,7 +162,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
                 {t('order.operator.createOrder', {
                   name: step.operation_user_name,
                 })}
-                {modifySqlNode}
+                {props.readonly ? null : modifySqlNode}
               </>
             );
           } else if (step.type === WorkflowStepResV1TypeEnum.update_workflow) {
@@ -167,7 +171,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
                 {t('order.operator.updateOrder', {
                   name: step.operation_user_name,
                 })}
-                {modifySqlNode}
+                {props.readonly ? null : modifySqlNode}
               </>
             );
           } else if (
