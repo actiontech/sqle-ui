@@ -11,9 +11,10 @@ export type OrderStepsProps = {
   currentStep?: number;
   stepList: IWorkflowStepResV1[];
   currentOrderStatus?: WorkflowRecordResV1StatusEnum;
-  pass: () => Promise<void>;
+  pass: (stepId: number) => Promise<void>;
   reject: (reason: string, stepId: number) => Promise<void>;
   modifySql: () => void;
+  readonly?: boolean;
 };
 
 export type StepStateStatus = {

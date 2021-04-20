@@ -8,6 +8,7 @@ export enum SystemRole {
 
 export enum ModalSize {
   big = 1000,
+  mid = 800,
 }
 
 export const ModalFormLayout = {

@@ -34,7 +34,7 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
       }),
     {
       ready: !!props.taskId,
-      refreshDeps: [pagination, filterInfo, duplicate],
+      refreshDeps: [pagination, filterInfo, duplicate, props.taskId],
       formatResult(res) {
         return {
           list: res.data.data,
