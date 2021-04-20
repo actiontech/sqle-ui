@@ -12,24 +12,32 @@ import {
   Typography,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import {
+  WorkflowRecordResV1StatusEnum,
   WorkflowStepResV1StateEnum,
-  WorkFlowStepTemplateReqV1TypeEnum,
+  WorkflowStepResV1TypeEnum,
 } from '../../../../api/common.enum';
+import EmptyBox from '../../../../components/EmptyBox';
 import { ModalFormLayout } from '../../../../data/common';
 import { IReduxState } from '../../../../store';
 import { formatTime } from '../../../../utils/Common';
 import { OrderStepsProps, StepStateStatus, StepTypeStatus } from './index.type';
 
 const stepTypeStatus: StepTypeStatus = {
-  [WorkFlowStepTemplateReqV1TypeEnum.sql_execute]: {
+  [WorkflowStepResV1TypeEnum.sql_execute]: {
     label: 'order.operator.sqlExecute',
   },
-  [WorkFlowStepTemplateReqV1TypeEnum.sql_review]: {
+  [WorkflowStepResV1TypeEnum.sql_review]: {
     label: 'order.operator.sqlReview',
+  },
+  [WorkflowStepResV1TypeEnum.create_workflow]: {
+    label: 'order.operator.unknown',
+  },
+  [WorkflowStepResV1TypeEnum.update_workflow]: {
+    label: 'order.operator.unknown',
   },
   unknown: {
     label: 'order.operator.unknown',
@@ -57,6 +65,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     (state) => state.user.username
   );
   const [form] = useForm();
+  const [rejectStepId, setRejectStepId] = useState(0);
 
   const [
     rejectModalVisible,
@@ -77,11 +86,17 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     props.pass().finally(passFinish);
   };
 
+  const handleClickRejectButton = (stepId: number) => {
+    openRejectModal();
+    setRejectStepId(stepId);
+  };
+
   const reject = (values: { reason: string }) => {
     rejectStart();
-    props.reject(values.reason).finally(() => {
+    props.reject(values.reason, rejectStepId).finally(() => {
       rejectFinish();
       closeRejectModal();
+      setRejectStepId(0);
     });
   };
 
@@ -93,53 +108,78 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
   return (
     <>
       <Timeline>
-        <Timeline.Item color="green">
-          <Row>
-            <Col span={5}>
-              <Col span={24}>
-                {t('order.operator.time')}:{formatTime(props.createTime, '--')}
-              </Col>
-              <Col span={24}>
-                {t('order.operator.user')}:{props.createUser}
-              </Col>
-            </Col>
-            <Col span={19}>
-              {t('order.operator.createOrder', {
-                name: props.createUser,
-              })}
-            </Col>
-          </Row>
-        </Timeline.Item>
         {props.stepList.map((step) => {
           let operator: JSX.Element | string = (
             <Space>
               <Button type="primary" onClick={pass} loading={passLoading}>
-                {t(
-                  stepTypeStatus[
-                    (step.type as WorkFlowStepTemplateReqV1TypeEnum) ??
-                      'unknown'
-                  ].label
-                )}
+                {t(stepTypeStatus[step.type ?? 'unknown'].label)}
               </Button>
-              <Button onClick={openRejectModal} danger loading={rejectLoading}>
+              <Button
+                onClick={handleClickRejectButton.bind(
+                  null,
+                  step.workflow_step_id ?? 0
+                )}
+                danger
+                loading={rejectLoading}
+              >
                 {t('order.operator.reject')}
               </Button>
             </Space>
           );
-          if (!step.assignee_user_name_list?.includes(username)) {
+          const modifySqlNode = (
+            <EmptyBox
+              if={
+                props.currentOrderStatus ===
+                WorkflowRecordResV1StatusEnum.rejected
+              }
+            >
+              <EmptyBox
+                if={username === step.operation_user_name}
+                defaultNode={t('order.operator.waitModifySql')}
+              >
+                <div>
+                  <Button type="primary" onClick={props.modifySql}>
+                    {t('order.operator.modifySql')}
+                  </Button>
+                </div>
+              </EmptyBox>
+            </EmptyBox>
+          );
+          if (
+            props.currentStep === step.number &&
+            !step.assignee_user_name_list?.includes(username)
+          ) {
             operator = t('order.operator.wait', {
               username: step.assignee_user_name_list?.join(','),
             });
+          } else if (step.type === WorkflowStepResV1TypeEnum.create_workflow) {
+            operator = (
+              <>
+                {t('order.operator.createOrder', {
+                  name: step.operation_user_name,
+                })}
+                {modifySqlNode}
+              </>
+            );
+          } else if (step.type === WorkflowStepResV1TypeEnum.update_workflow) {
+            operator = (
+              <>
+                {t('order.operator.updateOrder', {
+                  name: step.operation_user_name,
+                })}
+                {modifySqlNode}
+              </>
+            );
           } else if (
             step.state === WorkflowStepResV1StateEnum.approved &&
-            step.type === WorkFlowStepTemplateReqV1TypeEnum.sql_review
+            step.type === WorkflowStepResV1TypeEnum.sql_review
           ) {
             operator = t('order.operator.approved', {
               username: step.operation_user_name,
             });
           } else if (
             step.state === WorkflowStepResV1StateEnum.approved &&
-            step.type === WorkFlowStepTemplateReqV1TypeEnum.sql_execute
+            step.type === WorkflowStepResV1TypeEnum.sql_execute
           ) {
             operator = t('order.operator.executed', {
               username: step.operation_user_name,
@@ -167,7 +207,14 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
                     })}
                   </Typography.Text>
                 </div>
-                <Typography.Text type="danger">{step.reason}</Typography.Text>
+                <Typography.Text type="danger">
+                  {t('order.operator.rejectReason')}:{step.reason}
+                </Typography.Text>
+                <div>
+                  <Typography.Text type="danger">
+                    ({t('order.operator.rejectTips')})
+                  </Typography.Text>
+                </div>
               </>
             );
           }
@@ -178,7 +225,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
             ) : undefined;
           return (
             <Timeline.Item
-              key={step.operation_time}
+              key={step.workflow_step_id || step.operation_time}
               dot={icon}
               color={stepStateStatus[step.state ?? 'unknown'].color}
             >

@@ -1,5 +1,5 @@
 import { useBoolean, useRequest } from 'ahooks';
-import { Card, Space, Switch, Table, Typography } from 'antd';
+import { Button, Card, Space, Switch, Table, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
 import task from '../../../../api/task';
 import EmptyBox from '../../../../components/EmptyBox';
@@ -44,6 +44,18 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
     }
   );
 
+  const downloadSql = () => {
+    task.downloadAuditTaskSQLFileV1({
+      task_id: `${props.taskId}`,
+    });
+  };
+
+  const downloadReport = () => {
+    task.downloadAuditTaskSQLReportV1({
+      task_id: `${props.taskId}`,
+    });
+  };
+
   return (
     <Card
       title={
@@ -59,6 +71,8 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
       }
       extra={[
         <Space key="duplicate">
+          <Button onClick={downloadReport}>{t('audit.downloadReport')}</Button>
+          <Button onClick={downloadSql}>{t('audit.downloadSql')}</Button>
           {t('audit.duplicate')}
           <Switch onChange={toggleDuplicate} />
         </Space>,
@@ -68,6 +82,9 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
       <Table
         rowKey="number"
         loading={loading}
+        pagination={{
+          showSizeChanger: true,
+        }}
         columns={orderAuditResultColumn()}
         dataSource={data?.list}
         onChange={tableChange}

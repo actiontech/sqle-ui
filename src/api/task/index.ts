@@ -11,6 +11,8 @@ import {
   ICreateAndAuditTaskV1Return,
   IGetAuditTaskV1Params,
   IGetAuditTaskV1Return,
+  IGetAuditTaskSQLContentV1Params,
+  IGetAuditTaskSQLContentV1Return,
   IDownloadAuditTaskSQLFileV1Params,
   IDownloadAuditTaskSQLReportV1Params,
   IGetAuditTaskSQLsV1Params,
@@ -65,6 +67,21 @@ class TaskService extends ServiceBase {
 
     return this.get<IGetAuditTaskV1Return>(
       `/v1/tasks/audits/${task_id}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public getAuditTaskSQLContentV1(
+    params: IGetAuditTaskSQLContentV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const task_id = paramsData.task_id;
+    delete paramsData.task_id;
+
+    return this.get<IGetAuditTaskSQLContentV1Return>(
+      `/v1/tasks/audits/${task_id}/sql_content`,
       paramsData,
       options
     );

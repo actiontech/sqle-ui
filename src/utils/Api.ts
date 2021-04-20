@@ -5,6 +5,7 @@ import { createBrowserHistory } from 'history';
 import { ResponseCode } from '../data/common';
 import { notification } from 'antd';
 import i18n from '../locale';
+import Download from './Download';
 
 const ApiBase = axios.create();
 
@@ -19,6 +20,13 @@ ApiBase.interceptors.response.use(
   (res) => {
     if (res.status === 401) {
       authInvalid();
+    } else if (res.headers?.['content-disposition']?.includes('attachment')) {
+      const disposition: string = res.headers?.['content-disposition'];
+      const flag = 'filename=';
+      const startIndex = disposition.indexOf(flag);
+      const filename = disposition.slice(startIndex + flag.length);
+      Download.downloadByCreateElementA(res.data, filename);
+      return res;
     } else if (
       (res.status === 200 && res?.data?.code !== ResponseCode.SUCCESS) ||
       res.status !== 200

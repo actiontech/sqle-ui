@@ -42,7 +42,7 @@ function App() {
             {!token && (
               <Switch>
                 {unAuthRouter.map((route) => {
-                  return <Route {...route} />;
+                  return <Route {...route} key={route.key} />;
                 })}
                 <Redirect to="/login" />
               </Switch>

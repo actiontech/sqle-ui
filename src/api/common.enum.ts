@@ -1,3 +1,9 @@
+export enum AuditTaskResV1SqlSourceEnum {
+  'form_data' = 'form_data',
+
+  'sql_file' = 'sql_file'
+}
+
 export enum AuditTaskResV1StatusEnum {
   'initialized' = 'initialized',
 
@@ -54,7 +60,7 @@ export enum WorkflowDetailResV1TaskStatusEnum {
   'exec_failed' = 'exec_failed'
 }
 
-export enum WorkflowResV1StatusEnum {
+export enum WorkflowRecordResV1StatusEnum {
   'on_process' = 'on_process',
 
   'finished' = 'finished',
@@ -70,4 +76,14 @@ export enum WorkflowStepResV1StateEnum {
   'approved' = 'approved',
 
   'rejected' = 'rejected'
+}
+
+export enum WorkflowStepResV1TypeEnum {
+  'create_workflow' = 'create_workflow',
+
+  'update_workflow' = 'update_workflow',
+
+  'sql_review' = 'sql_review',
+
+  'sql_execute' = 'sql_execute'
 }

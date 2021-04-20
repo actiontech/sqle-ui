@@ -5,7 +5,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import auditWhitelist from '../../../../../api/audit_whitelist';
-import { ResponseCode } from '../../../../../data/common';
+import { ModalSize, ResponseCode } from '../../../../../data/common';
 import EmitterKey from '../../../../../data/EmitterKey';
 import { ModalName } from '../../../../../data/ModalName';
 import { IReduxState } from '../../../../../store';
@@ -59,7 +59,7 @@ const AddWhitelist = () => {
       title={t('whitelist.modal.add.title')}
       visible={visible}
       closable={false}
-      width={1000}
+      width={ModalSize.big}
       footer={
         <>
           <Button onClick={closeModal} disabled={createLoading}>

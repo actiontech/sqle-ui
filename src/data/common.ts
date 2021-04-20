@@ -6,6 +6,10 @@ export enum SystemRole {
   admin = 'admin',
 }
 
+export enum ModalSize {
+  big = 1000,
+}
+
 export const ModalFormLayout = {
   labelCol: {
     xs: { span: 24 },
