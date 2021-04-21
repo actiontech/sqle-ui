@@ -11,6 +11,7 @@ export default {
   submit: 'Submit',
   close: 'Close',
   edit: 'Edit',
+  modify: 'Modify',
   delete: 'Delete',
   reset: 'Reset',
   search: 'Search',

@@ -8,6 +8,7 @@ import menu from './menu';
 import order from './order';
 import rule from './rule';
 import ruleTemplate from './ruleTemplate';
+import system from './system';
 import user from './user';
 import whitelist from './whitelist';
 
@@ -26,5 +27,6 @@ export default {
     order,
     dashboard,
     whitelist,
+    system,
   },
 };

@@ -54,6 +54,7 @@ const UserForm: React.FC<IUserFormProps> = (props) => {
         <Form.Item
           name="passwordConfirm"
           label={t('user.userForm.passwordConfirm')}
+          dependencies={['password']}
           rules={[
             {
               required: true,

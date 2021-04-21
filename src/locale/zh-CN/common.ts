@@ -11,6 +11,7 @@ export default {
   submit: '提交',
   close: '关闭',
   edit: '编辑',
+  modify: '修改',
   delete: '删除',
   reset: '重置',
   resetAll: '重置所有内容',

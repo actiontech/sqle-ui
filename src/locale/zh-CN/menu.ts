@@ -12,5 +12,6 @@ export default {
   order: '工单',
   orderList: '工单列表',
   orderDetail: '工单详情',
-  whitelist: '白名单管理'
+  whitelist: '白名单管理',
+  system: '系统设置',
 };
