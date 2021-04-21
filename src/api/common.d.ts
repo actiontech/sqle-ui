@@ -290,13 +290,9 @@ export interface IGetRulesResV1 {
 export interface IGetSMTPConfigurationResV1 {
   code?: number;
 
+  data?: ISMTPConfigurationResV1;
+
   message?: string;
-
-  smtp_host?: string;
-
-  smtp_port?: string;
-
-  smtp_username?: string;
 }
 
 export interface IGetUserDetailResV1 {
@@ -449,6 +445,14 @@ export interface IRuleTemplateDetailResV1 {
 
 export interface IRuleTemplateTipResV1 {
   rule_template_name?: string;
+}
+
+export interface ISMTPConfigurationResV1 {
+  smtp_host?: string;
+
+  smtp_port?: string;
+
+  smtp_username?: string;
 }
 
 export interface IUpdateAuditWhitelistReqV1 {

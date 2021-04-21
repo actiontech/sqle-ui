@@ -10,6 +10,7 @@ import rule from './rule';
 import ruleTemplate from './ruleTemplate';
 import user from './user';
 import whitelist from './whitelist';
+import system from './system';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -26,5 +27,6 @@ export default {
     order,
     dashboard,
     whitelist,
+    system,
   },
 };
