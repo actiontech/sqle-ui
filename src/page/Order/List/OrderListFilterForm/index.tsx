@@ -19,11 +19,19 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
   const { updateUsernameList, generateUsernameSelectOption } = useUsername();
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
 
-  const [collapse, { toggle: toggleCollapse }] = useBoolean(true);
+  const [collapse, { toggle: toggleCollapse }] = useBoolean(
+    props.collapse ?? true
+  );
 
   const collapseChange = React.useCallback(() => {
-    toggleCollapse(!collapse);
-    if (!collapse) {
+    const nextCollapse =
+      props.collapse === undefined ? !collapse : !props.collapse;
+    if (props.collapse === undefined) {
+      toggleCollapse(nextCollapse);
+    } else {
+      props.collapseChange?.(nextCollapse);
+    }
+    if (nextCollapse) {
       props.form.setFieldsValue({
         filter_current_step_assignee_user_name: undefined,
         filter_task_status: undefined,
@@ -45,6 +53,8 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
     generateSqlTaskStatusSelectOption,
   } = useStaticStatus();
 
+  const currentCollapse =
+    props.collapse === undefined ? collapse : props.collapse;
   return (
     <Form className="table-filter-form" form={props.form} {...FilterFormLayout}>
       <Row {...FilterFormRowLayout}>
@@ -87,7 +97,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
             </Select>
           </Form.Item>
         </Col>
-        <Col {...FilterFormColLayout} hidden={collapse}>
+        <Col {...FilterFormColLayout} hidden={currentCollapse}>
           <Form.Item
             name="filter_current_step_assignee_user_name"
             label={t('order.order.assignee')}
@@ -101,7 +111,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
             </Select>
           </Form.Item>
         </Col>
-        <Col {...FilterFormColLayout} hidden={collapse}>
+        <Col {...FilterFormColLayout} hidden={currentCollapse}>
           <Form.Item
             name="filter_task_status"
             label={t('order.order.sqlTaskStatus')}
@@ -115,7 +125,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
             </Select>
           </Form.Item>
         </Col>
-        <Col {...FilterFormColLayout} hidden={collapse}>
+        <Col {...FilterFormColLayout} hidden={currentCollapse}>
           <Form.Item
             name="filter_task_instance_name"
             label={t('order.order.instanceName')}
@@ -130,7 +140,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
           </Form.Item>
         </Col>
         <Col
-          {...filterFormButtonLayoutFactory(12, 16, collapse ? 0 : 6)}
+          {...filterFormButtonLayoutFactory(12, 16, currentCollapse ? 0 : 6)}
           className="text-align-right"
         >
           <Form.Item className="clear-margin-right" wrapperCol={{ span: 24 }}>
@@ -140,13 +150,13 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
                 {t('common.search')}
               </Button>
               <Typography.Link onClick={collapseChange}>
-                {collapse && (
+                {currentCollapse && (
                   <>
                     {t('common.expansion')}
                     <DownOutlined />
                   </>
                 )}
-                {!collapse && (
+                {!currentCollapse && (
                   <>
                     {t('common.collapse')}
                     <UpOutlined />

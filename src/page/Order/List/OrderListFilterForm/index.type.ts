@@ -10,4 +10,6 @@ export type OrderListFilterFormProps = {
   form: FormInstance<OrderListFilterFormFields>;
   submit: () => void;
   reset: () => void;
+  collapse?: boolean;
+  collapseChange?: (collapse: boolean) => void;
 };

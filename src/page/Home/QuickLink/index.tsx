@@ -35,6 +35,12 @@ const QuickLink = () => {
         <Link key="ruleTemplate" to="/rule/template">
           {t('menu.ruleTemplate')}
         </Link>,
+        <Link key="whitelist" to="/whitelist">
+          {t('menu.whitelist')}
+        </Link>,
+        <Link key="system" to="/system">
+          {t('menu.systemSetting')}
+        </Link>,
       ]
     );
   }

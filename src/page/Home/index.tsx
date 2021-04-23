@@ -45,7 +45,13 @@ const Home = () => {
                 cardProps={{
                   title: t('dashboard.title.needMeReview'),
                   extra: [
-                    <Link to="/order" key="all">
+                    <Link
+                      to={{
+                        pathname: `/order`,
+                        search: `?currentStepAssignee=${username}&currentStepType=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}&status=${getWorkflowListV1FilterStatusEnum.on_process}`,
+                      }}
+                      key="all"
+                    >
                       <Button type="link">{t('common.showAll')}</Button>
                     </Link>,
                   ],
@@ -61,7 +67,13 @@ const Home = () => {
                 cardProps={{
                   title: t('dashboard.title.needMeExec'),
                   extra: [
-                    <Link to="/order" key="all">
+                    <Link
+                      to={{
+                        pathname: '/order',
+                        search: `?currentStepAssignee=${username}&currentStepType=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}&status=${getWorkflowListV1FilterStatusEnum.on_process}`,
+                      }}
+                      key="all"
+                    >
                       <Button type="link">{t('common.showAll')}</Button>
                     </Link>,
                   ],
