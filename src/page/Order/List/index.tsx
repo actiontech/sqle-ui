@@ -1,24 +1,34 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Button, Card, PageHeader, Space, Table } from 'antd';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import workflow from '../../../api/workflow';
+import {
+  getWorkflowListV1FilterCurrentStepTypeEnum,
+  getWorkflowListV1FilterStatusEnum,
+} from '../../../api/workflow/index.enum';
 import useTable from '../../../hooks/useTable';
 import { orderListColumn } from './column';
+import { OrderListUrlParamsKey } from './index.data';
 import OrderListFilterForm from './OrderListFilterForm';
 import { OrderListFilterFormFields } from './OrderListFilterForm/index.type';
 
 const OrderList = () => {
   const history = useHistory();
   const { t } = useTranslation();
+  const location = useLocation();
 
   const {
     pagination,
     filterForm,
     filterInfo,
+    collapse,
+    collapseChange,
     resetFilter,
+    setFilterInfo,
     submitFilter,
     tableChange,
   } = useTable<OrderListFilterFormFields>();
@@ -40,6 +50,33 @@ const OrderList = () => {
       },
     }
   );
+
+  React.useEffect(() => {
+    const searchStr = new URLSearchParams(location.search);
+    const filter: OrderListFilterFormFields = {};
+    if (searchStr.has(OrderListUrlParamsKey.currentStepAssignee)) {
+      filter.filter_current_step_assignee_user_name = searchStr.get(
+        OrderListUrlParamsKey.currentStepAssignee
+      ) as string;
+    }
+    if (searchStr.has(OrderListUrlParamsKey.currentStepType)) {
+      filter.filter_current_step_type = searchStr.get(
+        OrderListUrlParamsKey.currentStepType
+      ) as getWorkflowListV1FilterCurrentStepTypeEnum;
+    }
+    if (searchStr.has(OrderListUrlParamsKey.status)) {
+      filter.filter_status = searchStr.get(
+        OrderListUrlParamsKey.status
+      ) as getWorkflowListV1FilterStatusEnum;
+    }
+    if (Object.keys(filter).length > 0) {
+      collapseChange(false);
+      filterForm.setFieldsValue(filter);
+      setFilterInfo(filter);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -69,6 +106,8 @@ const OrderList = () => {
             form={filterForm}
             reset={resetFilter}
             submit={submitFilter}
+            collapse={collapse}
+            collapseChange={collapseChange}
           />
           <Table
             className="table-row-cursor"

@@ -167,7 +167,7 @@ export const routerConfig: RouterItem[] = [
       {
         path: '/system',
         key: 'System',
-        label: 'menu.system',
+        label: 'menu.systemSetting',
         exact: true,
         component: System,
         icon: <SettingOutlined />,

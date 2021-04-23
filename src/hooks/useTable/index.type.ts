@@ -4,6 +4,7 @@ export type UseTableOption = {
   defaultPageIndex?: number;
   defaultPageSize?: number;
   defaultFilterInfo?: Dictionary;
+  defaultFilterFormCollapse?: boolean;
 };
 
 export type TablePagination = {
