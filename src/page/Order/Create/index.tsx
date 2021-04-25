@@ -1,5 +1,5 @@
 import { useTheme } from '@material-ui/styles';
-import { useBoolean } from 'ahooks';
+import { useBoolean, useToggle } from 'ahooks';
 import {
   Button,
   Card,
@@ -8,6 +8,7 @@ import {
   message,
   Modal,
   PageHeader,
+  Popconfirm,
   Result,
   Space,
 } from 'antd';
@@ -16,6 +17,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { IAuditTaskResV1 } from '../../../api/common';
+import { AuditTaskResV1SqlSourceEnum } from '../../../api/common.enum';
 import task from '../../../api/task';
 import workflow from '../../../api/workflow';
 import EmptyBox from '../../../components/EmptyBox';
@@ -31,6 +33,7 @@ const CreateOrder = () => {
   const theme = useTheme<Theme>();
   const [baseForm] = useForm();
   const [sqlInfoForm] = useForm<SqlInfoFormFields>();
+  const [hasDirtyData, { toggle: toggleHasDirtyData }] = useToggle(false);
   const [
     createLoading,
     { setTrue: startCreate, setFalse: createFinish },
@@ -47,6 +50,7 @@ const CreateOrder = () => {
       instance_schema: values.instanceSchema,
       sql: values.sql,
       input_sql_file: values.sqlFile?.[0],
+      input_mybatis_xml_file: values.mybatisFile?.[0],
     });
     if (res.data.code === ResponseCode.SUCCESS) {
       setTaskInfo(res.data.data);
@@ -57,8 +61,14 @@ const CreateOrder = () => {
     try {
       const values = await baseForm.validateFields();
       await sqlInfoForm.validateFields();
+      if (
+        taskInfo?.sql_source === AuditTaskResV1SqlSourceEnum.mybatis_xml_file
+      ) {
+        message.error(t('order.createOrder.unsupportMybatisTips'));
+        return;
+      }
       if (!taskInfo) {
-        message.error('您必须先对您的SQL进行审核才能进行创建工单');
+        message.error(t('order.createOrder.mustAuditTips'));
         return;
       }
       startCreate();
@@ -79,7 +89,15 @@ const CreateOrder = () => {
     } catch (error) {
       baseForm.scrollToField('name');
     }
-  }, [baseForm, createFinish, openModal, sqlInfoForm, startCreate, taskInfo]);
+  }, [
+    baseForm,
+    createFinish,
+    openModal,
+    sqlInfoForm,
+    startCreate,
+    t,
+    taskInfo,
+  ]);
 
   const resetAllForm = React.useCallback(() => {
     baseForm.resetFields();
@@ -135,7 +153,11 @@ const CreateOrder = () => {
               </Form.Item>
             </Form>
           </Card>
-          <SqlInfoForm form={sqlInfoForm} submit={auditSql} />
+          <SqlInfoForm
+            form={sqlInfoForm}
+            submit={auditSql}
+            updateDirtyData={toggleHasDirtyData}
+          />
           <EmptyBox if={!!taskInfo}>
             <AuditResult task={taskInfo} />
           </EmptyBox>
@@ -144,14 +166,35 @@ const CreateOrder = () => {
               <Button onClick={closeModalAndResetForm}>
                 {t('common.resetAll')}
               </Button>
-              <Button
-                htmlType="submit"
-                type="primary"
-                onClick={create}
-                loading={createLoading}
+              <EmptyBox
+                if={hasDirtyData}
+                defaultNode={
+                  <Button
+                    htmlType="submit"
+                    type="primary"
+                    onClick={create}
+                    loading={createLoading}
+                  >
+                    {t('order.createOrder.title')}
+                  </Button>
+                }
               >
-                {t('order.createOrder.title')}
-              </Button>
+                <Popconfirm
+                  title={t('order.createOrder.dirtyDataTips')}
+                  onConfirm={create}
+                  overlayClassName="popconfirm-small"
+                  disabled={createLoading}
+                  placement="topRight"
+                >
+                  <Button
+                    htmlType="submit"
+                    type="primary"
+                    loading={createLoading}
+                  >
+                    {t('order.createOrder.title')}
+                  </Button>
+                </Popconfirm>
+              </EmptyBox>
             </Space>
           </Card>
         </Space>

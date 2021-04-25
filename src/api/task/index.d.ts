@@ -17,6 +17,8 @@ export interface ICreateAndAuditTaskV1Params {
   sql?: string;
 
   input_sql_file?: any;
+
+  input_mybatis_xml_file?: any;
 }
 
 export interface ICreateAndAuditTaskV1Return extends IGetAuditTaskResV1 {}

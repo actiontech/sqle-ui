@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import instance from '../../../api/instance';
 import BackButton from '../../../components/BackButton';
-import { ResponseCode } from '../../../data/common';
+import { PageFormLayout, ResponseCode } from '../../../data/common';
 import DataSourceForm from '../DataSourceForm';
 
 const AddDataSource = () => {
@@ -63,7 +63,10 @@ const AddDataSource = () => {
     >
       <DataSourceForm form={form} />
       <Row>
-        <Col xs={{ offset: 0 }} sm={{ offset: 7 }}>
+        <Col
+          xs={{ offset: 24 - PageFormLayout.labelCol.xs.span }}
+          sm={{ offset: PageFormLayout.labelCol.sm.span }}
+        >
           <Space>
             <Button onClick={reset}>{t('common.reset')}</Button>
             <Button type="primary" onClick={addDatabase} loading={loading}>

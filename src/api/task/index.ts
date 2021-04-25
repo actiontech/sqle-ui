@@ -50,6 +50,13 @@ class TaskService extends ServiceBase {
       paramsData.append('input_sql_file', params.input_sql_file as any);
     }
 
+    if (params.input_mybatis_xml_file != undefined) {
+      paramsData.append(
+        'input_mybatis_xml_file',
+        params.input_mybatis_xml_file as any
+      );
+    }
+
     return this.post<ICreateAndAuditTaskV1Return>(
       '/v1/tasks/audits',
       paramsData,

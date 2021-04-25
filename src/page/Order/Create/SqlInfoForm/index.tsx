@@ -8,8 +8,7 @@ import {
   Select,
   Upload,
 } from 'antd';
-import { RcFile } from 'antd/lib/upload/interface';
-import React from 'react';
+import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import MonacoEditor from 'react-monaco-editor';
 import instance from '../../../../api/instance';
@@ -20,17 +19,20 @@ import useChangeTheme from '../../../../hooks/useChangeTheme';
 import useInstance from '../../../../hooks/useInstance';
 import useInstanceSchema from '../../../../hooks/useInstanceSchema';
 import useStyles from '../../../../theme';
+import { getFileFromUploadChangeEvent } from '../../../../utils/Common';
 import { SqlInfoFormFields, SqlInfoFormProps } from './index.type';
 
 export enum SQLInputType {
   manualInput,
   uploadFile,
+  uploadMybatisFile,
 }
 
 const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   const { t } = useTranslation();
   const { currentEditorTheme } = useChangeTheme();
   const theme = useStyles();
+  const alreadySubmit = useRef(false);
 
   const [currentSQLInputType, setCurrentSQLInputTYpe] = React.useState(
     SQLInputType.manualInput
@@ -58,8 +60,9 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   const currentSQLInputTypeChange = React.useCallback(
     (event: RadioChangeEvent) => {
       setCurrentSQLInputTYpe(event.target.value);
+      props.form.resetFields(['sql', 'sqlFile', 'mybatisFile']);
     },
-    []
+    [props.form]
   );
 
   const testDatabaseConnect = React.useCallback(async () => {
@@ -79,38 +82,35 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
       });
   }, [props.form, setConnectAble, testFinish, testStart]);
 
-  const beforeUpload = React.useCallback(
-    (file: RcFile) => {
+  const removeFile = React.useCallback(
+    (fileName: keyof SqlInfoFormFields) => {
       props.form.setFieldsValue({
-        sqlFile: [file],
+        [fileName]: [],
       });
-      return false;
     },
     [props.form]
   );
 
-  const removeFile = React.useCallback(() => {
-    props.form.setFieldsValue({
-      sqlFile: [],
-    });
-  }, [props.form]);
-
   const submit = React.useCallback(
     (values: SqlInfoFormFields) => {
       startSubmit();
-      props.submit(values).finally(() => {
-        submitFinish();
-      });
+      props
+        .submit(values)
+        .then(() => {
+          alreadySubmit.current = true;
+        })
+        .finally(() => {
+          submitFinish();
+        });
     },
     [props, startSubmit, submitFinish]
   );
 
-  const getFile = (e: any) => {
-    if (e.file) {
-      return [e.file];
+  const formValueChange = React.useCallback(() => {
+    if (alreadySubmit.current) {
+      props.updateDirtyData(true);
     }
-    return [];
-  };
+  }, [alreadySubmit, props]);
 
   React.useEffect(() => {
     updateInstanceList();
@@ -121,7 +121,12 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   return (
     <>
       <Card title={t('order.sqlInfo.title')}>
-        <Form form={props.form} {...PageFormLayout} onFinish={submit}>
+        <Form
+          form={props.form}
+          {...PageFormLayout}
+          onFinish={submit}
+          onValuesChange={formValueChange}
+        >
           <Form.Item
             name="instanceName"
             label={t('order.sqlInfo.instanceName')}
@@ -173,6 +178,9 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
               <Radio value={SQLInputType.uploadFile}>
                 {t('order.sqlInfo.uploadFile')}
               </Radio>
+              <Radio value={SQLInputType.uploadMybatisFile}>
+                {t('order.sqlInfo.updateMybatisFile')}
+              </Radio>
             </Radio.Group>
           </Form.Item>
           <EmptyBox if={currentSQLInputType === SQLInputType.manualInput}>
@@ -184,6 +192,11 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
                 ...PageFormLayout.wrapperCol,
                 className: theme.editor,
               }}
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
             >
               <MonacoEditor
                 theme={currentEditorTheme}
@@ -198,12 +211,38 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
               label={t('order.sqlInfo.sqlFile')}
               valuePropName="fileList"
               name="sqlFile"
-              getValueFromEvent={getFile}
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+              getValueFromEvent={getFileFromUploadChangeEvent}
             >
               <Upload
                 accept=".sql"
-                beforeUpload={beforeUpload}
-                onRemove={removeFile}
+                beforeUpload={() => false}
+                onRemove={removeFile.bind(null, 'sqlFile')}
+              >
+                <Button>{t('common.upload')}</Button>
+              </Upload>
+            </Form.Item>
+          </EmptyBox>
+          <EmptyBox if={currentSQLInputType === SQLInputType.uploadMybatisFile}>
+            <Form.Item
+              label={t('order.sqlInfo.updateMybatisFile')}
+              valuePropName="fileList"
+              name="mybatisFile"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+              getValueFromEvent={getFileFromUploadChangeEvent}
+            >
+              <Upload
+                accept=".xml"
+                beforeUpload={() => false}
+                onRemove={removeFile.bind(null, 'mybatisFile')}
               >
                 <Button>{t('common.upload')}</Button>
               </Upload>

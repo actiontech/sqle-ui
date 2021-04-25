@@ -10,6 +10,10 @@ export default {
   createOrder: {
     title: '创建工单',
     pageDesc: '您可以在这里选择数据源进行创建SQL审核工单',
+    dirtyDataTips:
+      '检测到您在审核SQL语句之后,又修改了‘审核SQL语句信息’表单中的内容并且没有再点击审核，现在会使用当前审核结果表格中的SQL语句进行创建工单，您确认这样做么？',
+    unsupportMybatisTips: '暂时不支持创建SQL语句类型为Mybatis的工单',
+    mustAuditTips: '您必须先对您的SQL进行审核才能进行创建工单',
   },
   closeOrder: {
     button: '关闭工单',
@@ -96,6 +100,7 @@ export default {
     uploadType: '选择审核SQL语句上传方式',
     manualInput: '输入SQL语句',
     uploadFile: '上传SQL文件',
+    updateMybatisFile: '上传Mybatis的XML文件',
 
     audit: '审核',
   },
