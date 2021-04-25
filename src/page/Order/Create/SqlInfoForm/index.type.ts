@@ -4,6 +4,7 @@ import { SQLInputType } from '.';
 export type SqlInfoFormProps = {
   form: FormInstance<SqlInfoFormFields>;
   submit: (values: SqlInfoFormFields) => Promise<void>;
+  updateDirtyData: (dirtyDataStatus: boolean) => void;
 };
 
 export type SqlInfoFormFields = {
@@ -12,4 +13,5 @@ export type SqlInfoFormFields = {
   sqlInputType: SQLInputType;
   sql: string;
   sqlFile: File[];
+  mybatisFile: File[];
 };
