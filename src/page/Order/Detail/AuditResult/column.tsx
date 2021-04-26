@@ -1,4 +1,13 @@
 import { IAuditTaskSQLResV1 } from '../../../../api/common';
+import {
+  getAuditTaskSQLsV1FilterAuditStatusEnum,
+  getAuditTaskSQLsV1FilterExecStatusEnum,
+} from '../../../../api/task/index.enum';
+import AuditResultErrorMessage from '../../../../components/AuditResultErrorMessage';
+import {
+  auditStatusDictionary,
+  execStatusDictionary,
+} from '../../../../hooks/useStaticStatus/index.data';
 import i18n from '../../../../locale';
 import { TableColumn } from '../../../../types/common.type';
 
@@ -11,10 +20,16 @@ export const orderAuditResultColumn = (): TableColumn<IAuditTaskSQLResV1> => {
     {
       dataIndex: 'audit_status',
       title: () => i18n.t('audit.table.auditStatus'),
+      render: (status: getAuditTaskSQLsV1FilterAuditStatusEnum) => {
+        return status ? i18n.t(auditStatusDictionary[status]) : '';
+      },
     },
     {
       dataIndex: 'audit_result',
       title: () => i18n.t('audit.table.auditResult'),
+      render: (errorMessage) => {
+        return <AuditResultErrorMessage resultErrorMessage={errorMessage} />;
+      },
     },
     {
       dataIndex: 'exec_sql',
@@ -23,6 +38,9 @@ export const orderAuditResultColumn = (): TableColumn<IAuditTaskSQLResV1> => {
     {
       dataIndex: 'exec_status',
       title: () => i18n.t('audit.table.execStatus'),
+      render: (status: getAuditTaskSQLsV1FilterExecStatusEnum) => {
+        return status ? i18n.t(execStatusDictionary[status]) : '';
+      },
     },
     {
       dataIndex: 'exec_result',

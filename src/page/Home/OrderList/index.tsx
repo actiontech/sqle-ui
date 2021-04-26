@@ -53,9 +53,9 @@ const OrderList: React.FC<OrderListProps> = (props) => {
           }
         >
           <Row gutter={theme.common.padding}>
-            <Col span={8}>
-              {data?.map((order) => {
-                return (
+            {data?.map((order) => {
+              return (
+                <Col span={8}>
                   <Card
                     title={order.subject}
                     actions={[
@@ -90,9 +90,9 @@ const OrderList: React.FC<OrderListProps> = (props) => {
                       {t('order.order.desc')}: {order.desc || '--'}
                     </Typography.Paragraph>
                   </Card>
-                );
-              })}
-            </Col>
+                </Col>
+              );
+            })}
           </Row>
         </EmptyBox>
       </Spin>

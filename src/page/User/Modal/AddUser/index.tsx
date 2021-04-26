@@ -13,7 +13,7 @@ import EmitterKey from '../../../../data/EmitterKey';
 import user from '../../../../api/user';
 import UserForm from '../UserForm';
 import { IUserFormFields } from '../UserForm/index.type';
-import useRole from '../../../../hooks/userRole';
+import useRole from '../../../../hooks/useRole';
 
 const AddUser = () => {
   const [form] = useForm<IUserFormFields>();

@@ -9,7 +9,7 @@ import {
 } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import useInstance from '../../../../hooks/useInstance';
-import useRole from '../../../../hooks/userRole';
+import useRole from '../../../../hooks/useRole';
 import useUsername from '../../../../hooks/useUsername';
 import EventEmitter from '../../../../utils/EventEmitter';
 import { RoleListFilter } from '../index.type';

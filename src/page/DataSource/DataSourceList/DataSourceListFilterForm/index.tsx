@@ -11,8 +11,8 @@ import {
   FilterFormRowLayout,
 } from '../../../../data/common';
 import useInstance from '../../../../hooks/useInstance';
-import useRole from '../../../../hooks/userRole';
-import useRuleTemplate from '../../../../hooks/userRuleTemplate';
+import useRole from '../../../../hooks/useRole';
+import useRuleTemplate from '../../../../hooks/useRuleTemplate';
 import {
   DataSourceListFilterFields,
   DataSourceListFilterFormProps,

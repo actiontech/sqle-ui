@@ -79,7 +79,7 @@ export default {
 
   create: {
     success: '工单创建成功',
-    guide: '去工单详情查看刚刚创建的工单',
+    guide: '去工单列表查看刚刚创建的工单',
   },
 
   baseInfo: {
