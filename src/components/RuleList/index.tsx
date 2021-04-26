@@ -20,7 +20,7 @@ const RuleList: React.FC<RuleListProps> = (props) => {
             title={item.rule_name}
             description={item.desc}
           />
-          <Col flex={1}>
+          <Col flex="20%">
             {item.value && (
               <>
                 <div>{t('ruleTemplate.ruleTemplateForm.ruleValue')}</div>

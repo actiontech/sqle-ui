@@ -7,6 +7,8 @@ import {
 import { Tooltip, Space, Typography } from 'antd';
 import { RuleResV1LevelEnum } from '../../../api/common.enum';
 
+import './index.less';
+
 const RuleLevelIcon: React.FC<{ ruleLevel?: string }> = (props) => {
   let icon: React.ReactNode;
   const ruleLevel = props.ruleLevel ?? RuleResV1LevelEnum.normal;
@@ -31,7 +33,12 @@ const RuleLevelIcon: React.FC<{ ruleLevel?: string }> = (props) => {
 
   return (
     <Tooltip overlay={`告警等级: ${ruleLevel}(${text})`} placement="topLeft">
-      <Space direction="vertical" size={1} className="sqle-rule-icon">
+      <Space
+        direction="vertical"
+        size={1}
+        className="sqle-rule-icon"
+        align="center"
+      >
         <div>{icon}</div>
         <Typography.Text type="secondary">{ruleLevel}</Typography.Text>
       </Space>

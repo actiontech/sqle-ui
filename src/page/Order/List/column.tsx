@@ -1,7 +1,9 @@
 import { Typography } from 'antd';
 import i18next from 'i18next';
 import { IWorkflowDetailResV1 } from '../../../api/common';
+import { getWorkflowListV1FilterCurrentStepTypeEnum } from '../../../api/workflow/index.enum';
 import OrderStatusTag from '../../../components/OrderStatusTag';
+import { WorkflowStepTypeDictionary } from '../../../hooks/useStaticStatus/index.data';
 import { TableColumn } from '../../../types/common.type';
 import { formatTime } from '../../../utils/Common';
 
@@ -39,6 +41,9 @@ export const orderListColumn = (): TableColumn<IWorkflowDetailResV1> => {
     {
       dataIndex: 'current_step_type',
       title: () => i18next.t('order.order.stepType'),
+      render: (status: getWorkflowListV1FilterCurrentStepTypeEnum) => {
+        return status ? i18next.t(WorkflowStepTypeDictionary[status]) : '';
+      },
     },
     {
       dataIndex: 'current_step_assignee_user_name_list',

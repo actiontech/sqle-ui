@@ -8,7 +8,7 @@ import {
   FilterFormRowLayout,
 } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
-import useRole from '../../../../hooks/userRole';
+import useRole from '../../../../hooks/useRole';
 import useUsername from '../../../../hooks/useUsername';
 import EventEmitter from '../../../../utils/EventEmitter';
 import { UserListFilter } from '../index.type';

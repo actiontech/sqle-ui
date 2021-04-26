@@ -10,6 +10,13 @@ import {
   getWorkflowListV1FilterStatusEnum,
   getWorkflowListV1FilterTaskStatusEnum,
 } from '../../api/workflow/index.enum';
+import {
+  auditStatusDictionary,
+  execStatusDictionary,
+  orderStatusDictionary,
+  sqlTaskStatusDictionary,
+  WorkflowStepTypeDictionary,
+} from './index.data';
 
 const useStaticStatus = () => {
   const { t } = useTranslation();
@@ -21,25 +28,37 @@ const useStaticStatus = () => {
           value={getAuditTaskSQLsV1FilterExecStatusEnum.initialized}
           key={getAuditTaskSQLsV1FilterExecStatusEnum.initialized}
         >
-          {t('audit.execStatus.initialized')}
+          {t(
+            execStatusDictionary[
+              getAuditTaskSQLsV1FilterExecStatusEnum.initialized
+            ]
+          )}
         </Select.Option>
         <Select.Option
           value={getAuditTaskSQLsV1FilterExecStatusEnum.doing}
           key={getAuditTaskSQLsV1FilterExecStatusEnum.doing}
         >
-          {t('audit.execStatus.doing')}
+          {t(
+            execStatusDictionary[getAuditTaskSQLsV1FilterExecStatusEnum.doing]
+          )}
         </Select.Option>
         <Select.Option
           value={getAuditTaskSQLsV1FilterExecStatusEnum.succeeded}
           key={getAuditTaskSQLsV1FilterExecStatusEnum.succeeded}
         >
-          {t('audit.execStatus.succeeded')}
+          {t(
+            execStatusDictionary[
+              getAuditTaskSQLsV1FilterExecStatusEnum.succeeded
+            ]
+          )}
         </Select.Option>
         <Select.Option
           value={getAuditTaskSQLsV1FilterExecStatusEnum.failed}
           key={getAuditTaskSQLsV1FilterExecStatusEnum.failed}
         >
-          {t('audit.execStatus.failed')}
+          {t(
+            execStatusDictionary[getAuditTaskSQLsV1FilterExecStatusEnum.failed]
+          )}
         </Select.Option>
       </>
     );
@@ -52,19 +71,29 @@ const useStaticStatus = () => {
           value={getAuditTaskSQLsV1FilterAuditStatusEnum.initialized}
           key={getAuditTaskSQLsV1FilterAuditStatusEnum.initialized}
         >
-          {t('audit.auditStatus.initialized')}
+          {t(
+            auditStatusDictionary[
+              getAuditTaskSQLsV1FilterAuditStatusEnum.initialized
+            ]
+          )}
         </Select.Option>
         <Select.Option
           value={getAuditTaskSQLsV1FilterAuditStatusEnum.doing}
           key={getAuditTaskSQLsV1FilterAuditStatusEnum.doing}
         >
-          {t('audit.auditStatus.doing')}
+          {t(
+            auditStatusDictionary[getAuditTaskSQLsV1FilterAuditStatusEnum.doing]
+          )}
         </Select.Option>
         <Select.Option
           value={getAuditTaskSQLsV1FilterAuditStatusEnum.finished}
           key={getAuditTaskSQLsV1FilterAuditStatusEnum.finished}
         >
-          {t('audit.auditStatus.finished')}
+          {t(
+            auditStatusDictionary[
+              getAuditTaskSQLsV1FilterAuditStatusEnum.finished
+            ]
+          )}
         </Select.Option>
       </>
     );
@@ -77,13 +106,21 @@ const useStaticStatus = () => {
           key={getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}
           value={getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}
         >
-          {t('order.workflowStatus.review')}
+          {t(
+            WorkflowStepTypeDictionary[
+              getWorkflowListV1FilterCurrentStepTypeEnum.sql_review
+            ]
+          )}
         </Select.Option>
         <Select.Option
           key={getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}
           value={getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}
         >
-          {t('order.workflowStatus.exec')}
+          {t(
+            WorkflowStepTypeDictionary[
+              getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute
+            ]
+          )}
         </Select.Option>
       </>
     );
@@ -96,25 +133,27 @@ const useStaticStatus = () => {
           key={getWorkflowListV1FilterStatusEnum.on_process}
           value={getWorkflowListV1FilterStatusEnum.on_process}
         >
-          {t('order.status.process')}
+          {t(
+            orderStatusDictionary[getWorkflowListV1FilterStatusEnum.on_process]
+          )}
         </Select.Option>
         <Select.Option
           key={getWorkflowListV1FilterStatusEnum.finished}
           value={getWorkflowListV1FilterStatusEnum.finished}
         >
-          {t('order.status.finished')}
+          {t(orderStatusDictionary[getWorkflowListV1FilterStatusEnum.finished])}
         </Select.Option>
         <Select.Option
           key={getWorkflowListV1FilterStatusEnum.rejected}
           value={getWorkflowListV1FilterStatusEnum.rejected}
         >
-          {t('order.status.reject')}
+          {t(orderStatusDictionary[getWorkflowListV1FilterStatusEnum.rejected])}
         </Select.Option>
         <Select.Option
           key={getWorkflowListV1FilterStatusEnum.canceled}
           value={getWorkflowListV1FilterStatusEnum.canceled}
         >
-          {t('order.status.canceled')}
+          {t(orderStatusDictionary[getWorkflowListV1FilterStatusEnum.canceled])}
         </Select.Option>
       </>
     );
@@ -127,31 +166,51 @@ const useStaticStatus = () => {
           key={getWorkflowListV1FilterTaskStatusEnum.initialized}
           value={getWorkflowListV1FilterTaskStatusEnum.initialized}
         >
-          {t('order.sqlTaskStatus.initialized')}
+          {t(
+            sqlTaskStatusDictionary[
+              getWorkflowListV1FilterTaskStatusEnum.initialized
+            ]
+          )}
         </Select.Option>
         <Select.Option
           key={getWorkflowListV1FilterTaskStatusEnum.audited}
           value={getWorkflowListV1FilterTaskStatusEnum.audited}
         >
-          {t('order.sqlTaskStatus.audited')}
+          {t(
+            sqlTaskStatusDictionary[
+              getWorkflowListV1FilterTaskStatusEnum.audited
+            ]
+          )}
         </Select.Option>
         <Select.Option
           key={getWorkflowListV1FilterTaskStatusEnum.executing}
           value={getWorkflowListV1FilterTaskStatusEnum.executing}
         >
-          {t('order.sqlTaskStatus.executing')}
+          {t(
+            sqlTaskStatusDictionary[
+              getWorkflowListV1FilterTaskStatusEnum.executing
+            ]
+          )}
         </Select.Option>
         <Select.Option
           key={getWorkflowListV1FilterTaskStatusEnum.exec_success}
           value={getWorkflowListV1FilterTaskStatusEnum.exec_success}
         >
-          {t('order.sqlTaskStatus.execSuccess')}
+          {t(
+            sqlTaskStatusDictionary[
+              getWorkflowListV1FilterTaskStatusEnum.exec_success
+            ]
+          )}
         </Select.Option>
         <Select.Option
           key={getWorkflowListV1FilterTaskStatusEnum.exec_failed}
           value={getWorkflowListV1FilterTaskStatusEnum.exec_failed}
         >
-          {t('order.sqlTaskStatus.execFailed')}
+          {t(
+            sqlTaskStatusDictionary[
+              getWorkflowListV1FilterTaskStatusEnum.exec_failed
+            ]
+          )}
         </Select.Option>
       </>
     );
