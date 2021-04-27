@@ -15,11 +15,13 @@ import instance from '../../../../api/instance';
 import EmptyBox from '../../../../components/EmptyBox';
 import TestDatabaseConnectButton from '../../../../components/TestDatabaseConnectButton';
 import { ResponseCode, PageFormLayout } from '../../../../data/common';
+import EmitterKey from '../../../../data/EmitterKey';
 import useChangeTheme from '../../../../hooks/useChangeTheme';
 import useInstance from '../../../../hooks/useInstance';
 import useInstanceSchema from '../../../../hooks/useInstanceSchema';
 import useStyles from '../../../../theme';
 import { getFileFromUploadChangeEvent } from '../../../../utils/Common';
+import EventEmitter from '../../../../utils/EventEmitter';
 import { SqlInfoFormFields, SqlInfoFormProps } from './index.type';
 
 export enum SQLInputType {
@@ -98,6 +100,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
         .submit(values)
         .then(() => {
           alreadySubmit.current = true;
+          props.updateDirtyData(false);
         })
         .finally(() => {
           submitFinish();
@@ -115,6 +118,22 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   React.useEffect(() => {
     updateInstanceList();
   }, [updateInstanceList]);
+
+  React.useEffect(() => {
+    const resetAlreadySubmit = () => {
+      alreadySubmit.current = false;
+    };
+    EventEmitter.subscribe(
+      EmitterKey.Reset_Create_Order_Form,
+      resetAlreadySubmit
+    );
+    return () => {
+      EventEmitter.unsubscribe(
+        EmitterKey.Reset_Create_Order_Form,
+        resetAlreadySubmit
+      );
+    };
+  }, []);
 
   const testConnectVisible = !!props.form.getFieldValue('instanceName');
 

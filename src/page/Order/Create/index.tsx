@@ -22,7 +22,9 @@ import task from '../../../api/task';
 import workflow from '../../../api/workflow';
 import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode, PageFormLayout } from '../../../data/common';
+import EmitterKey from '../../../data/EmitterKey';
 import { Theme } from '../../../types/theme.type';
+import EventEmitter from '../../../utils/EventEmitter';
 import { nameRule } from '../../../utils/FormRule';
 import AuditResult from './AuditResult';
 import SqlInfoForm from './SqlInfoForm';
@@ -103,7 +105,9 @@ const CreateOrder = () => {
     baseForm.resetFields();
     sqlInfoForm.resetFields();
     setTaskInfo(undefined);
-  }, [baseForm, sqlInfoForm]);
+    toggleHasDirtyData(false);
+    EventEmitter.emit(EmitterKey.Reset_Create_Order_Form);
+  }, [baseForm, sqlInfoForm, toggleHasDirtyData]);
 
   const closeModalAndResetForm = React.useCallback(() => {
     closeModal();
