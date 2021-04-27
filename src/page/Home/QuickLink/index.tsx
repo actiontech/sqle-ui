@@ -47,7 +47,7 @@ const QuickLink = () => {
 
   return (
     <Card title={t('dashboard.title.quickLink')}>
-      <Space>{links}</Space>
+      <Space wrap={true}>{links}</Space>
     </Card>
   );
 };

@@ -83,6 +83,7 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
         rowKey="number"
         loading={loading}
         pagination={{
+          total: data?.total,
           showSizeChanger: true,
         }}
         columns={orderAuditResultColumn()}
