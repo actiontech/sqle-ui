@@ -55,7 +55,7 @@ const OrderList: React.FC<OrderListProps> = (props) => {
           <Row gutter={theme.common.padding}>
             {data?.map((order) => {
               return (
-                <Col span={8}>
+                <Col span={8} style={{ marginBottom: theme.common.padding }}>
                   <Card
                     title={order.subject}
                     actions={[
