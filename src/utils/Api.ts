@@ -23,8 +23,13 @@ ApiBase.interceptors.response.use(
     } else if (res.headers?.['content-disposition']?.includes('attachment')) {
       const disposition: string = res.headers?.['content-disposition'];
       const flag = 'filename=';
-      const startIndex = disposition.indexOf(flag);
-      const filename = disposition.slice(startIndex + flag.length);
+      let filename = '';
+      if (disposition.includes("''")) {
+        filename = decodeURI(disposition.split("''")[1]);
+      } else {
+        const startIndex = disposition.indexOf(flag);
+        filename = disposition.slice(startIndex + flag.length);
+      }
       Download.downloadByCreateElementA(res.data, filename);
       return res;
     } else if (
