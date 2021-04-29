@@ -49,6 +49,10 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
 
   const [connectAble, { toggle: setConnectAble }] = useBoolean();
   const [
+    connectInitHide,
+    { setTrue: setConnectInitHideTrue, setFalse: setConnectInitHideFalse },
+  ] = useBoolean(true);
+  const [
     testLoading,
     { setTrue: testStart, setFalse: testFinish },
   ] = useBoolean();
@@ -80,9 +84,16 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
         }
       })
       .finally(() => {
+        setConnectInitHideFalse();
         testFinish();
       });
-  }, [props.form, setConnectAble, testFinish, testStart]);
+  }, [
+    props.form,
+    setConnectAble,
+    setConnectInitHideFalse,
+    testFinish,
+    testStart,
+  ]);
 
   const removeFile = React.useCallback(
     (fileName: keyof SqlInfoFormFields) => {
@@ -122,6 +133,8 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   React.useEffect(() => {
     const resetAlreadySubmit = () => {
       alreadySubmit.current = false;
+      setInstanceName(undefined);
+      setConnectInitHideTrue();
     };
     EventEmitter.subscribe(
       EmitterKey.Reset_Create_Order_Form,
@@ -133,9 +146,10 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
         resetAlreadySubmit
       );
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const testConnectVisible = !!props.form.getFieldValue('instanceName');
+  const testConnectVisible = !!instanceName;
 
   return (
     <>
@@ -167,6 +181,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
           </Form.Item>
           <Form.Item label=" " colon={false} hidden={!testConnectVisible}>
             <TestDatabaseConnectButton
+              initHide={connectInitHide}
               onClickTestButton={testDatabaseConnect}
               loading={testLoading}
               connectAble={connectAble}
