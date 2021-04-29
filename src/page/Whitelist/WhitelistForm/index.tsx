@@ -13,15 +13,7 @@ const WhitelistForm: React.FC<WhitelistFormProps> = (props) => {
 
   return (
     <Form form={props.form} {...ModalFormLayout}>
-      <Form.Item
-        label={t('whitelist.table.desc')}
-        name="desc"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
+      <Form.Item label={t('whitelist.table.desc')} name="desc">
         <Input.TextArea
           className="textarea-no-resize"
           autoSize={{
@@ -39,6 +31,11 @@ const WhitelistForm: React.FC<WhitelistFormProps> = (props) => {
           ...ModalFormLayout.wrapperCol,
           className: styles.editor,
         }}
+        rules={[
+          {
+            required: true,
+          },
+        ]}
       >
         <MonacoEditor
           theme={currentEditorTheme}
