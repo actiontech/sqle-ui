@@ -22,8 +22,7 @@ const UpdateRuleTemplate = () => {
   const urlParams = useParams<{ templateName: string }>();
 
   const baseInfoFormSubmit = React.useCallback(async () => {
-    const a = await form.validateFields();
-    console.log(a);
+    await form.validateFields();
     setStep(step + 1);
   }, [form, step]);
 
