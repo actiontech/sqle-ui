@@ -22,7 +22,8 @@ const UpdateRuleTemplate = () => {
   const urlParams = useParams<{ templateName: string }>();
 
   const baseInfoFormSubmit = React.useCallback(async () => {
-    await form.validateFields();
+    const a = await form.validateFields();
+    console.log(a);
     setStep(step + 1);
   }, [form, step]);
 
@@ -46,7 +47,7 @@ const UpdateRuleTemplate = () => {
       .updateRuleTemplateV1({
         rule_template_name: baseInfo.templateName,
         desc: baseInfo.templateDesc,
-        instance_name_list: baseInfo.instances,
+        instance_name_list: baseInfo.instances ?? [],
         rule_name_list: activeRule.map((e) => e.rule_name ?? ''),
       })
       .then((res) => {
