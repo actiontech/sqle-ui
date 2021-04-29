@@ -23,8 +23,15 @@ ApiBase.interceptors.response.use(
     } else if (res.headers?.['content-disposition']?.includes('attachment')) {
       const disposition: string = res.headers?.['content-disposition'];
       const flag = 'filename=';
-      const startIndex = disposition.indexOf(flag);
-      const filename = disposition.slice(startIndex + flag.length);
+      const flagCharset = 'filename*=';
+      let filename = '';
+      if (disposition.includes(flagCharset)) {
+        const tempArr = disposition.split("'");
+        filename = decodeURI(tempArr[tempArr.length - 1]);
+      } else {
+        const startIndex = disposition.indexOf(flag);
+        filename = disposition.slice(startIndex + flag.length);
+      }
       Download.downloadByCreateElementA(res.data, filename);
       return res;
     } else if (
@@ -42,10 +49,13 @@ ApiBase.interceptors.response.use(
     if (error?.response?.status === 401) {
       authInvalid();
     } else if (error?.response?.status !== 200) {
+      const response = error?.response;
       notification.error({
         message: i18n.t('common.request.noticeFailTitle'),
         description:
-          error?.response?.statusText ?? i18n.t('common.unknownError'),
+          response?.data?.message ??
+          response?.statusText ??
+          i18n.t('common.unknownError'),
       });
     }
     return Promise.reject(error);

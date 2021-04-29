@@ -46,7 +46,7 @@ const UpdateRuleTemplate = () => {
       .updateRuleTemplateV1({
         rule_template_name: baseInfo.templateName,
         desc: baseInfo.templateDesc,
-        instance_name_list: baseInfo.instances,
+        instance_name_list: baseInfo.instances ?? [],
         rule_name_list: activeRule.map((e) => e.rule_name ?? ''),
       })
       .then((res) => {

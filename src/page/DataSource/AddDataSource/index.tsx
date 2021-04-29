@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import instance from '../../../api/instance';
 import BackButton from '../../../components/BackButton';
 import { PageFormLayout, ResponseCode } from '../../../data/common';
+import EmitterKey from '../../../data/EmitterKey';
+import EventEmitter from '../../../utils/EventEmitter';
 import DataSourceForm from '../DataSourceForm';
 
 const AddDataSource = () => {
@@ -50,9 +52,11 @@ const AddDataSource = () => {
   const resetAndCloseResultModal = React.useCallback(() => {
     form.resetFields();
     closeResultModal();
+    EventEmitter.emit(EmitterKey.Reset_Test_Data_Source_Connect);
   }, [closeResultModal, form]);
 
   const reset = React.useCallback(() => {
+    EventEmitter.emit(EmitterKey.Reset_Test_Data_Source_Connect);
     form.resetFields();
   }, [form]);
 

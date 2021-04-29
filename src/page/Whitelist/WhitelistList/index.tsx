@@ -31,6 +31,7 @@ const WhitelistList = () => {
         page_size: `${pagination.pageSize}`,
       }),
     {
+      refreshDeps: [pagination],
       formatResult(res) {
         return {
           list: res.data?.data ?? [],
@@ -114,7 +115,7 @@ const WhitelistList = () => {
           title={
             <Space>
               {t('whitelist.allWhitelist')}
-              <Button>
+              <Button onClick={refresh}>
                 <SyncOutlined spin={loading} />
               </Button>
             </Space>

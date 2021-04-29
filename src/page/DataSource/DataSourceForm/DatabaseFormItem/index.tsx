@@ -8,7 +8,9 @@ import instance from '../../../../api/instance';
 import EmptyBox from '../../../../components/EmptyBox';
 import TestDatabaseConnectButton from '../../../../components/TestDatabaseConnectButton';
 import { ResponseCode } from '../../../../data/common';
+import EmitterKey from '../../../../data/EmitterKey';
 import { Theme } from '../../../../types/theme.type';
+import EventEmitter from '../../../../utils/EventEmitter';
 import { DataSourceFormField } from '../index.type';
 
 const DatabaseFormItem: React.FC<{
@@ -24,7 +26,10 @@ const DatabaseFormItem: React.FC<{
 
   const [connectAble, { toggle: setConnectAble }] = useBoolean();
   const [connectErrorMessage, setConnectErrorMessage] = React.useState('');
-  const [initHide, { setFalse: setInitHideFalse }] = useBoolean(true);
+  const [
+    initHide,
+    { setFalse: setInitHideFalse, setTrue: setInitHideTrue },
+  ] = useBoolean(true);
 
   const testDatabaseConnect = React.useCallback(async () => {
     const values = await props.form.validateFields([
@@ -58,6 +63,22 @@ const DatabaseFormItem: React.FC<{
     setLoadingFalse,
     setLoadingTrue,
   ]);
+
+  React.useEffect(() => {
+    const resetConnectAbleStatus = () => {
+      setInitHideTrue();
+    };
+    EventEmitter.subscribe(
+      EmitterKey.Reset_Test_Data_Source_Connect,
+      resetConnectAbleStatus
+    );
+    return () => {
+      EventEmitter.unsubscribe(
+        EmitterKey.Reset_Test_Data_Source_Connect,
+        resetConnectAbleStatus
+      );
+    };
+  });
 
   return (
     <>
