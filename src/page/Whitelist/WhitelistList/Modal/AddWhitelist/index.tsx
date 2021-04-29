@@ -46,6 +46,7 @@ const AddWhitelist = () => {
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           EventEmitter.emit(EmitterKey.Refresh_Whitelist_List);
+          form.resetFields();
           closeModal();
         }
       })
