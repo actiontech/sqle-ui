@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyBox should render children by props of "if" 1`] = `<div />`;
+
+exports[`EmptyBox should render children by props of "if" 2`] = `
+<div>
+  visible
+</div>
+`;
+
+exports[`EmptyBox should render default node when "if" is falsy and "defaultNode" is truthy 1`] = `
+<div>
+  show default node
+</div>
+`;
+
+exports[`EmptyBox should render default node when "if" is falsy and "defaultNode" is truthy 2`] = `
+<div>
+  visible
+</div>
+`;

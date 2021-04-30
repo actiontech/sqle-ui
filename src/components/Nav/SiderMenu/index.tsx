@@ -48,7 +48,7 @@ const SiderMenu = () => {
   const selectMenu = React.useCallback(
     (config: RouterItem[], pathname: string): string[] => {
       for (const route of config) {
-        if (route.path === pathname) {
+        if (route.path === pathname && route.hideInSliderMenu !== true) {
           return [route.key];
         }
         if (!!route.components) {

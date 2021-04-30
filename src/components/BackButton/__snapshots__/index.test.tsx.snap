@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BackButton should render a button 1`] = `
+<div>
+  <button
+    class="ant-btn ant-btn-primary"
+    type="button"
+  >
+    <span>
+      common.back
+    </span>
+  </button>
+</div>
+`;
