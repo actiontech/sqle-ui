@@ -57,7 +57,9 @@ export const orderListColumn = (): TableColumn<IWorkflowDetailResV1> => {
       dataIndex: 'task_pass_rate',
       title: () => i18next.t('order.order.passRate'),
       render: (passRate) => {
-        return passRate ? `${Number.parseFloat(passRate) * 100}%` : '--';
+        return passRate !== undefined
+          ? `${Number.parseFloat(passRate ?? 0) * 100}%`
+          : '--';
       },
     },
   ];

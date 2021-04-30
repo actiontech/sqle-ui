@@ -21,6 +21,7 @@ import { ResponseCode, SystemRole } from './data/common';
 import { updateUser, updateToken } from './store/user';
 import user from './api/user';
 import { useDispatch } from 'react-redux';
+import EmptyBox from './components/EmptyBox';
 
 function App() {
   const token = useSelector<IReduxState, string>((state) => state.user.token);
@@ -60,24 +61,36 @@ function App() {
     );
   };
 
-  const { loading } = useRequest(user.getCurrentUserV1.bind(user), {
-    onSuccess: (res) => {
-      if (res.data.code === ResponseCode.SUCCESS) {
-        const data = res.data.data;
-        dispatch(
-          updateUser({
-            username: data?.user_name ?? '',
-            role: data?.is_admin ? SystemRole.admin : '',
-          })
-        );
-      } else {
+  const { loading, run: getUserInfo } = useRequest(
+    user.getCurrentUserV1.bind(user),
+    {
+      manual: true,
+      onSuccess: (res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          const data = res.data.data;
+          dispatch(
+            updateUser({
+              username: data?.user_name ?? '',
+              role: data?.is_admin ? SystemRole.admin : '',
+            })
+          );
+        } else {
+          clearUserInfo();
+        }
+      },
+      ready: !!token,
+      refreshDeps: [token],
+      onError: () => {
         clearUserInfo();
-      }
-    },
-    onError: () => {
-      clearUserInfo();
-    },
-  });
+      },
+    }
+  );
+
+  React.useEffect(() => {
+    if (!!token) {
+      getUserInfo();
+    }
+  }, [getUserInfo, token]);
 
   return (
     <ThemeProvider theme={currentThemeData}>
@@ -94,13 +107,15 @@ function App() {
                 </Switch>
               </>
             )}
-            {!loading && !!token && (
+            {!!token && (
               <Nav>
                 <Suspense fallback={<HeaderProgress />}>
-                  <Switch>
-                    {registerRouter(routerConfig)}
-                    <Redirect to="/" />
-                  </Switch>
+                  <EmptyBox if={!loading}>
+                    <Switch>
+                      {registerRouter(routerConfig)}
+                      <Redirect to="/" />
+                    </Switch>
+                  </EmptyBox>
                 </Suspense>
               </Nav>
             )}
