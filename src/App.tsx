@@ -79,8 +79,6 @@ function App() {
     },
   });
 
-  console.log(111, loading, user.getCurrentUserV1, token, role);
-
   return (
     <ThemeProvider theme={currentThemeData}>
       <ConfigProvider locale={antdLocale}>
