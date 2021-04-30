@@ -60,7 +60,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
       <Row {...FilterFormRowLayout}>
         <Col {...FilterFormColLayout}>
           <Form.Item
-            name="filter_user_name"
+            name="filter_create_user_name"
             label={t('order.order.createUser')}
           >
             <Select
