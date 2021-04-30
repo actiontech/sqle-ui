@@ -53,6 +53,7 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
   const downloadReport = () => {
     task.downloadAuditTaskSQLReportV1({
       task_id: `${props.taskId}`,
+      no_duplicate: duplicate,
     });
   };
 
