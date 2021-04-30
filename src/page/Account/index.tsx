@@ -1,20 +1,15 @@
 import useRequest from '@ahooksjs/use-request';
 import { Card, Col, Divider, PageHeader, Row, Tag, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import user from '../../api/user';
 import EmptyBox from '../../components/EmptyBox';
-import { IReduxState } from '../../store';
 import UserEmail from './UserEmail';
 
 const Account = () => {
   const { t } = useTranslation();
-  const username = useSelector<IReduxState, string>(
-    (state) => state.user.username
-  );
 
   const { data: userInfo, refresh } = useRequest(
-    () => user.getUserV1({ user_name: username }),
+    () => user.getCurrentUserV1(),
     {
       formatResult(res) {
         return res.data.data ?? {};
