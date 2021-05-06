@@ -28,9 +28,10 @@ export const mockUseSelector = (store?: Dictionary) => {
 };
 
 export const mockUseDispatch = () => {
+  const scopeDispatch = jest.fn();
   const spy = jest.spyOn(redux, 'useDispatch');
-  spy.mockReturnValue((): any => void 0);
-  return spy;
+  spy.mockImplementation(() => scopeDispatch);
+  return { spy, scopeDispatch };
 };
 
 export const CustomProvider: React.FC<{ initStore: Dictionary }> = (props) => {

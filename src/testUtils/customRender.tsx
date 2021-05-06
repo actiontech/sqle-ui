@@ -32,7 +32,7 @@ export const renderWithServerRouter = (
 };
 
 export const renderWithMemoryRouter = (
-  ...[ui, option, props]: [...RenderParams, MemoryRouterProps]
+  ...[ui, option, props]: [...RenderParams, MemoryRouterProps?]
 ) => {
   return render(<MemoryRouter {...props}>{ui}</MemoryRouter>, option);
 };

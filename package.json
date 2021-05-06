@@ -24,7 +24,7 @@
     "antd": "^4.13.1",
     "axios": "^0.21.1",
     "craco-less": "^1.17.1",
-    "enzyme": "3.10.0",
+    "enzyme": "^3.11.0",
     "i18next": "^19.8.4",
     "jest-canvas-mock": "^2.3.1",
     "lodash": "^4.17.21",
