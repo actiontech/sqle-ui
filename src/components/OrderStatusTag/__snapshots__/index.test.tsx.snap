@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderStatusTag should render username by redux state 1`] = `
+<div>
+  <span
+    class="ant-tag"
+  >
+    common.unknownStatus
+  </span>
+</div>
+`;
+
+exports[`OrderStatusTag should render username by redux state 2`] = `
+<div>
+  <span
+    class="ant-tag ant-tag-red"
+  >
+    order.status.canceled
+  </span>
+</div>
+`;
+
+exports[`OrderStatusTag should render username by redux state 3`] = `
+<div>
+  <span
+    class="ant-tag ant-tag-green"
+  >
+    order.status.finished
+  </span>
+</div>
+`;
+
+exports[`OrderStatusTag should render username by redux state 4`] = `
+<div>
+  <span
+    class="ant-tag ant-tag-blue"
+  >
+    order.status.process
+  </span>
+</div>
+`;
+
+exports[`OrderStatusTag should render username by redux state 5`] = `
+<div>
+  <span
+    class="ant-tag ant-tag-orange"
+  >
+    order.status.reject
+  </span>
+</div>
+`;
