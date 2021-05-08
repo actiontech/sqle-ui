@@ -1,3 +1,5 @@
+import { AxiosResponse } from 'axios';
+
 export const successData = (data: any) => {
   return {
     code: 0,
@@ -44,7 +46,7 @@ export const resolveThreeSecond = (
   data: any,
   { status = 200, headers = {}, config = {}, statusText = '' } = {}
 ) => {
-  return new Promise((res) => {
+  return new Promise<AxiosResponse<any>>((res) => {
     setTimeout(() => {
       res({
         status,
@@ -61,7 +63,7 @@ export const resolveErrorThreeSecond = (
   data: any,
   { status = 200, headers = {}, config = {}, statusText = '' } = {}
 ) => {
-  return new Promise((res) => {
+  return new Promise<AxiosResponse<any>>((res) => {
     setTimeout(() => {
       res({
         status,
@@ -78,7 +80,7 @@ export const rejectThreeSecond = (
   data: any,
   { status = 200, headers = {}, config = {}, statusText = '' } = {}
 ) => {
-  return new Promise((_, rej) => {
+  return new Promise<AxiosResponse<any>>((_, rej) => {
     setTimeout(() => {
       rej({
         status,

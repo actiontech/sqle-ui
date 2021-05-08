@@ -23,6 +23,10 @@ const useTable = <T = Dictionary>(option?: UseTableOption) => {
     setFilterInfo(values);
   }, [form]);
 
+  /**
+   * TODO:
+   * form resetFields will set value to initValue. but setFilterInfo will always set filterInfo to empty object
+   */
   const resetFilter = React.useCallback(() => {
     form.resetFields();
     setFilterInfo({} as any);

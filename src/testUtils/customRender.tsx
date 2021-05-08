@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import {
   BrowserRouter,
   Router,
@@ -23,6 +24,18 @@ export const renderWithRedux = (
     <Provider store={storeFactory(initStore)}>{ui}</Provider>,
     option
   );
+};
+
+export const renderHooksWithRedux = <TProps, TResult>(
+  hooks: (props: TProps) => TResult,
+  storeState: Dictionary = {}
+) => {
+  return renderHook(hooks, {
+    wrapper: Provider,
+    initialProps: {
+      store: storeFactory(storeState),
+    },
+  } as any);
 };
 
 export const renderWithServerRouter = (

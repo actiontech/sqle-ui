@@ -4,7 +4,7 @@ import { SupportLanguage } from '../../locale';
 import moment from 'moment';
 import zhCN from 'antd/lib/locale/zh_CN';
 import en from 'antd/lib/locale/en_US';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IReduxState } from '../../store';
 import { updateLanguage } from '../../store/locale';
 import { ReactComponent as zhCNSvg } from '../../assets/img/zh-cn.svg';
@@ -34,6 +34,7 @@ const useLanguage = () => {
     (state) => state.locale.language
   );
   const { i18n } = useTranslation();
+  const dispatch = useDispatch();
 
   const antdLocale = React.useMemo(() => {
     let currentLanguage = SupportLanguage.zhCN;
@@ -45,12 +46,12 @@ const useLanguage = () => {
 
   React.useEffect(() => {
     if (!assertLanguage(language)) {
-      updateLanguage({ language: SupportLanguage.zhCN });
+      dispatch(updateLanguage({ language: SupportLanguage.zhCN }));
       return;
     }
     i18n.changeLanguage(language);
     moment.locale(languageData[language].moment);
-  }, [language, i18n]);
+  }, [language, i18n, dispatch]);
 
   return {
     antdLocale,
