@@ -3,7 +3,7 @@ import { message } from 'antd';
 import { shallow } from 'enzyme';
 import UserEmail from '.';
 import user from '../../../api/user';
-import { getByClassName } from '../../../testUtils/customQuery';
+import { getBySelector } from '../../../testUtils/customQuery';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 
 describe('UserEmail', () => {
@@ -62,8 +62,8 @@ describe('UserEmail', () => {
         userInfo={{ email: 'aaaa@bbb.cc' }}
       />
     );
-    fireEvent.click(getByClassName('.anticon-edit'));
-    expect(getByClassName('.ant-input')).toHaveFocus();
+    fireEvent.click(getBySelector('.anticon-edit'));
+    expect(getBySelector('.ant-input')).toHaveFocus();
   });
 
   test('should exit edit mode when user press "esc" key', () => {
@@ -73,22 +73,22 @@ describe('UserEmail', () => {
         userInfo={{ email: 'aaaa@bbb.cc' }}
       />
     );
-    const input = getByClassName('.ant-input');
+    const input = getBySelector('.ant-input');
     expect(
-      getByClassName('.ant-input-affix-wrapper').parentNode
+      getBySelector('.ant-input-affix-wrapper').parentNode
     ).toHaveAttribute('hidden');
 
-    fireEvent.click(getByClassName('.anticon-edit'));
+    fireEvent.click(getBySelector('.anticon-edit'));
 
     expect(
-      getByClassName('.ant-input-affix-wrapper').parentNode
+      getBySelector('.ant-input-affix-wrapper').parentNode
     ).not.toHaveAttribute('hidden');
     expect(input).toHaveFocus();
 
     fireEvent.keyDown(input, { key: 'esc' });
 
     expect(
-      getByClassName('.ant-input-affix-wrapper').parentNode
+      getBySelector('.ant-input-affix-wrapper').parentNode
     ).toHaveAttribute('hidden');
     // expect(input).not.toHaveFocus();
   });
@@ -102,12 +102,12 @@ describe('UserEmail', () => {
         userInfo={{ email: 'aaaa@bbb.cc' }}
       />
     );
-    const input = getByClassName('.ant-input');
+    const input = getBySelector('.ant-input');
     expect(
-      getByClassName('.ant-input-affix-wrapper').parentNode
+      getBySelector('.ant-input-affix-wrapper').parentNode
     ).toHaveAttribute('hidden');
 
-    fireEvent.click(getByClassName('.anticon-edit'));
+    fireEvent.click(getBySelector('.anticon-edit'));
     fireEvent.input(input, { target: { value: 'aaa@@@@@mmmm.' } });
     fireEvent.keyDown(input, { key: 'enter' });
 
@@ -124,12 +124,12 @@ describe('UserEmail', () => {
         userInfo={{ email: 'aaaa@bbb.cc' }}
       />
     );
-    const input = getByClassName('.ant-input');
+    const input = getBySelector('.ant-input');
     expect(
-      getByClassName('.ant-input-affix-wrapper').parentNode
+      getBySelector('.ant-input-affix-wrapper').parentNode
     ).toHaveAttribute('hidden');
 
-    fireEvent.click(getByClassName('.anticon-edit'));
+    fireEvent.click(getBySelector('.anticon-edit'));
     fireEvent.input(input, { target: { value: 'aaaa@bbb.cc' } });
     fireEvent.keyDown(input, { key: 'enter' });
 
@@ -150,16 +150,16 @@ describe('UserEmail', () => {
         userInfo={{ email: 'aaaa@bbb.cc' }}
       />
     );
-    const input = getByClassName('.ant-input');
+    const input = getBySelector('.ant-input');
     expect(
-      getByClassName('.ant-input-affix-wrapper').parentNode
+      getBySelector('.ant-input-affix-wrapper').parentNode
     ).toHaveAttribute('hidden');
 
-    fireEvent.click(getByClassName('.anticon-edit'));
+    fireEvent.click(getBySelector('.anticon-edit'));
     fireEvent.input(input, { target: { value: 'test@gmail.com' } });
     fireEvent.keyDown(input, { key: 'enter' });
     expect(
-      getByClassName('.ant-input-affix-wrapper').parentNode
+      getBySelector('.ant-input-affix-wrapper').parentNode
     ).not.toHaveAttribute('hidden');
 
     expect(requestSpy).toBeCalledTimes(1);
@@ -170,7 +170,7 @@ describe('UserEmail', () => {
     expect(successMessageSyp).toBeCalledWith('account.updateEmailSuccess');
     expect(refreshUserInfoMock).toBeCalledTimes(1);
     expect(
-      getByClassName('.ant-input-affix-wrapper').parentNode
+      getBySelector('.ant-input-affix-wrapper').parentNode
     ).toHaveAttribute('hidden');
 
     jest.useRealTimers();

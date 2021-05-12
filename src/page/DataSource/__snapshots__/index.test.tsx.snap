@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataSource should render page title and page describe 1`] = `
+<article
+  className="data-source-page-namespace"
+>
+  <PageHeader
+    ghost={false}
+    title="dataSource.pageTitle"
+  >
+    dataSource.pageDesc
+  </PageHeader>
+  <section
+    className="padding-content"
+  >
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/data"
+      />
+      <Route
+        component={[Function]}
+        path="/data/create"
+      />
+      <Route
+        component={[Function]}
+        path="/data/update/:instanceName"
+      />
+      <Redirect
+        to="/data"
+      />
+    </Switch>
+  </section>
+</article>
+`;

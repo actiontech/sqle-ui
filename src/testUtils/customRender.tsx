@@ -10,8 +10,13 @@ import {
 import { Provider } from 'react-redux';
 import { Dictionary } from '../types/common.type';
 import { storeFactory } from './mockRedux';
+import lightTheme from '../theme/light';
+import { ThemeProvider } from '@material-ui/styles';
+import { mount, shallow } from 'enzyme';
 
 type RenderParams = Parameters<typeof render>;
+type MountParams = Parameters<typeof mount>;
+type ShallowParams = Parameters<typeof shallow>;
 
 export const renderWithRouter = (...[ui, option]: [...RenderParams]) => {
   return render(<BrowserRouter>{ui}</BrowserRouter>, option);
@@ -48,4 +53,39 @@ export const renderWithMemoryRouter = (
   ...[ui, option, props]: [...RenderParams, MemoryRouterProps?]
 ) => {
   return render(<MemoryRouter {...props}>{ui}</MemoryRouter>, option);
+};
+
+export const renderWithTheme = (...[ui, option]: [...RenderParams]) => {
+  return render(<ThemeProvider theme={lightTheme}>{ui}</ThemeProvider>, option);
+};
+
+export const renderWithThemeAndRouter = (
+  ...[ui, option]: [...RenderParams]
+) => {
+  return render(
+    <MemoryRouter>
+      <ThemeProvider theme={lightTheme}>{ui}</ThemeProvider>
+    </MemoryRouter>,
+    option
+  );
+};
+
+export const mountWithTheme = (...[ui, option]: [...MountParams]) => {
+  return mount(ui, {
+    ...option,
+    wrappingComponent: ThemeProvider,
+    wrappingComponentProps: {
+      theme: lightTheme,
+    },
+  });
+};
+
+export const shallowWithTheme = (...[ui, option]: [...ShallowParams]) => {
+  return shallow(ui, {
+    ...option,
+    wrappingComponent: ThemeProvider,
+    wrappingComponentProps: {
+      theme: lightTheme,
+    },
+  });
 };

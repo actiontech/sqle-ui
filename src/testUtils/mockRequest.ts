@@ -1,4 +1,8 @@
 import { AxiosResponse } from 'axios';
+import instance from '../api/instance';
+import role from '../api/role';
+import ruleTemplate from '../api/rule_template';
+import user from '../api/user';
 
 export const successData = (data: any) => {
   return {
@@ -100,4 +104,42 @@ export const throwErrorThreeSecond = (
   return new Promise((res) => {
     throw new Error(error);
   });
+};
+
+export const mockUseInstance = () => {
+  const spy = jest.spyOn(instance, 'getInstanceTipListV1');
+  spy.mockImplementation(() =>
+    resolveThreeSecond([{ instance_name: 'instance1' }])
+  );
+  return spy;
+};
+
+export const mockUseInstanceSchema = () => {
+  const spy = jest.spyOn(instance, 'getInstanceSchemasV1');
+  spy.mockImplementation(() => resolveThreeSecond(['schema1']));
+  return spy;
+};
+
+export const mockUseRole = () => {
+  const spy = jest.spyOn(role, 'getRoleTipListV1');
+  spy.mockImplementation(() =>
+    resolveThreeSecond([{ role_name: 'role_name1' }])
+  );
+  return spy;
+};
+
+export const mockUseRuleTemplate = () => {
+  const spy = jest.spyOn(ruleTemplate, 'getRuleTemplateTipsV1');
+  spy.mockImplementation(() =>
+    resolveThreeSecond([{ rule_template_name: 'rule_template_name1' }])
+  );
+  return spy;
+};
+
+export const mockUsername = () => {
+  const spy = jest.spyOn(user, 'getUserTipListV1');
+  spy.mockImplementation(() =>
+    resolveThreeSecond([{ user_name: 'user_name1' }])
+  );
+  return spy;
 };
