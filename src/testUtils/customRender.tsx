@@ -80,12 +80,9 @@ export const mountWithTheme = (...[ui, option]: [...MountParams]) => {
   });
 };
 
-export const shallowWithTheme = (...[ui, option]: [...ShallowParams]) => {
+export const shallowWithRouter = (...[ui, option]: [...ShallowParams]) => {
   return shallow(ui, {
     ...option,
-    wrappingComponent: ThemeProvider,
-    wrappingComponentProps: {
-      theme: lightTheme,
-    },
+    wrappingComponent: MemoryRouter,
   });
 };

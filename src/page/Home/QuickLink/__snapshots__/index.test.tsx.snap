@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home/QuickLink should render quick link when user role is admin 1`] = `
+<div>
+  <div
+    class="ant-card ant-card-bordered"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          dashboard.title.quickLink
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="ant-space ant-space-horizontal ant-space-align-center"
+        style="flex-wrap: wrap; margin-bottom: -8px;"
+      >
+        <div
+          class="ant-space-item"
+          style="margin-right: 8px; padding-bottom: 8px;"
+        >
+          <a
+            href="/order/create"
+          >
+            menu.workflow
+          </a>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-right: 8px; padding-bottom: 8px;"
+        >
+          <a
+            href="/order"
+          >
+            menu.order
+          </a>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-right: 8px; padding-bottom: 8px;"
+        >
+          <a
+            href="/rule"
+          >
+            menu.rule
+          </a>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-right: 8px; padding-bottom: 8px;"
+        >
+          <a
+            href="/user"
+          >
+            menu.user
+          </a>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-right: 8px; padding-bottom: 8px;"
+        >
+          <a
+            href="/data"
+          >
+            menu.dataSource
+          </a>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-right: 8px; padding-bottom: 8px;"
+        >
+          <a
+            href="/rule/template"
+          >
+            menu.ruleTemplate
+          </a>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-right: 8px; padding-bottom: 8px;"
+        >
+          <a
+            href="/whitelist"
+          >
+            menu.whitelist
+          </a>
+        </div>
+        <div
+          class="ant-space-item"
+          style="padding-bottom: 8px;"
+        >
+          <a
+            href="/system"
+          >
+            menu.systemSetting
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Home/QuickLink should render quick link when user role is not admin 1`] = `
+<div>
+  <div
+    class="ant-card ant-card-bordered"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          dashboard.title.quickLink
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="ant-space ant-space-horizontal ant-space-align-center"
+        style="flex-wrap: wrap; margin-bottom: -8px;"
+      >
+        <div
+          class="ant-space-item"
+          style="margin-right: 8px; padding-bottom: 8px;"
+        >
+          <a
+            href="/order/create"
+          >
+            menu.workflow
+          </a>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-right: 8px; padding-bottom: 8px;"
+        >
+          <a
+            href="/order"
+          >
+            menu.order
+          </a>
+        </div>
+        <div
+          class="ant-space-item"
+          style="padding-bottom: 8px;"
+        >
+          <a
+            href="/rule"
+          >
+            menu.rule
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

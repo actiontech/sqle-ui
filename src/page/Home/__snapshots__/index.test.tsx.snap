@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home should render page base element with username 1`] = `
+<Fragment>
+  <PageHeader
+    ghost={false}
+    title="dashboard.pageTitle"
+  >
+    Hi, 
+    admin
+    <div>
+      <Text
+        type="secondary"
+      >
+        dashboard.pageTips.before
+        <Link
+          to="/order"
+        >
+           
+          menu.order
+           
+        </Link>
+        dashboard.pageTips.after
+      </Text>
+    </div>
+  </PageHeader>
+  <section
+    className="padding-content sqle-home-content"
+  >
+    <Row
+      gutter={24}
+    >
+      <Col
+        span={16}
+      >
+        <Space
+          className="full-width-element"
+          direction="vertical"
+          size={24}
+        >
+          <OrderList
+            cardProps={
+              Object {
+                "extra": Array [
+                  <Link
+                    to={
+                      Object {
+                        "pathname": "/order",
+                        "search": "?currentStepAssignee=admin&currentStepType=sql_review&status=on_process",
+                      }
+                    }
+                  >
+                    <Button
+                      type="link"
+                    >
+                      common.showAll
+                    </Button>
+                  </Link>,
+                ],
+                "title": "dashboard.title.needMeReview",
+              }
+            }
+            requestParams={
+              Object {
+                "filter_current_step_assignee_user_name": "admin",
+                "filter_current_step_type": "sql_review",
+                "filter_status": "on_process",
+              }
+            }
+          />
+          <OrderList
+            cardProps={
+              Object {
+                "extra": Array [
+                  <Link
+                    to={
+                      Object {
+                        "pathname": "/order",
+                        "search": "?currentStepAssignee=admin&currentStepType=sql_execute&status=on_process",
+                      }
+                    }
+                  >
+                    <Button
+                      type="link"
+                    >
+                      common.showAll
+                    </Button>
+                  </Link>,
+                ],
+                "title": "dashboard.title.needMeExec",
+              }
+            }
+            requestParams={
+              Object {
+                "filter_current_step_assignee_user_name": "admin",
+                "filter_current_step_type": "sql_execute",
+                "filter_status": "on_process",
+              }
+            }
+          />
+        </Space>
+      </Col>
+      <Col
+        span={8}
+      >
+        <Space
+          className="full-width-element"
+          direction="vertical"
+          size={24}
+        >
+          <MyOrder />
+          <QuickLink />
+        </Space>
+      </Col>
+    </Row>
+  </section>
+</Fragment>
+`;

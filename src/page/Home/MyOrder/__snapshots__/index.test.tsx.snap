@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home/MyOrder should show order num about me by request response 1`] = `
+<div>
+  <div
+    class="ant-card ant-card-bordered"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          dashboard.title.aboutMe
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <h5
+        class="ant-typography"
+      >
+        dashboard.aboutMe.myCreate
+      </h5>
+      <div>
+        <span
+          class="ant-typography"
+        >
+          dashboard.aboutMe.onProgress
+          :
+          --
+        </span>
+      </div>
+      <div>
+        <span
+          class="ant-typography"
+        >
+          dashboard.aboutMe.reject
+          :
+          --
+        </span>
+      </div>
+      <h5
+        class="ant-typography"
+      >
+        dashboard.aboutMe.myOperator
+      </h5>
+      <div>
+        <span
+          class="ant-typography"
+        >
+          dashboard.aboutMe.myReview
+          :
+          --
+        </span>
+      </div>
+      <div>
+        <span
+          class="ant-typography"
+        >
+          dashboard.aboutMe.myExec
+          :
+          --
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Home/MyOrder should show order num about me by request response 2`] = `
+<div>
+  <div
+    class="ant-card ant-card-bordered"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          dashboard.title.aboutMe
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <h5
+        class="ant-typography"
+      >
+        dashboard.aboutMe.myCreate
+      </h5>
+      <div>
+        <span
+          class="ant-typography"
+        >
+          dashboard.aboutMe.onProgress
+          :
+          200
+        </span>
+      </div>
+      <div>
+        <span
+          class="ant-typography"
+        >
+          dashboard.aboutMe.reject
+          :
+          300
+        </span>
+      </div>
+      <h5
+        class="ant-typography"
+      >
+        dashboard.aboutMe.myOperator
+      </h5>
+      <div>
+        <span
+          class="ant-typography"
+        >
+          dashboard.aboutMe.myReview
+          :
+          2300
+        </span>
+      </div>
+      <div>
+        <span
+          class="ant-typography"
+        >
+          dashboard.aboutMe.myExec
+          :
+          900
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
