@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import QuickLink from '.';
 import { SystemRole } from '../../../data/common';
 import { renderWithRouter } from '../../../testUtils/customRender';
