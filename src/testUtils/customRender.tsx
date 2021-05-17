@@ -59,6 +59,18 @@ export const renderWithTheme = (...[ui, option]: [...RenderParams]) => {
   return render(<ThemeProvider theme={lightTheme}>{ui}</ThemeProvider>, option);
 };
 
+export const renderWithThemeAndServerRouter = (
+  ...[ui, option, props]: [...RenderParams, RouterProps]
+) => {
+  return render(
+    <Router {...props}>
+      {' '}
+      <ThemeProvider theme={lightTheme}>{ui}</ThemeProvider>
+    </Router>,
+    option
+  );
+};
+
 export const renderWithThemeAndRouter = (
   ...[ui, option]: [...RenderParams]
 ) => {
