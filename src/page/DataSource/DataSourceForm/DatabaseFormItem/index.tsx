@@ -19,17 +19,13 @@ const DatabaseFormItem: React.FC<{
 }> = (props) => {
   const { t } = useTranslation();
   const theme = useTheme<Theme>();
-  const [
-    loading,
-    { setTrue: setLoadingTrue, setFalse: setLoadingFalse },
-  ] = useBoolean();
+  const [loading, { setTrue: setLoadingTrue, setFalse: setLoadingFalse }] =
+    useBoolean();
 
   const [connectAble, { toggle: setConnectAble }] = useBoolean();
   const [connectErrorMessage, setConnectErrorMessage] = React.useState('');
-  const [
-    initHide,
-    { setFalse: setInitHideFalse, setTrue: setInitHideTrue },
-  ] = useBoolean(true);
+  const [initHide, { setFalse: setInitHideFalse, setTrue: setInitHideTrue }] =
+    useBoolean(true);
 
   const testDatabaseConnect = React.useCallback(async () => {
     const values = await props.form.validateFields([

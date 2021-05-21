@@ -136,7 +136,7 @@ export const mockUseRuleTemplate = () => {
   return spy;
 };
 
-export const mockUsername = () => {
+export const mockUseUsername = () => {
   const spy = jest.spyOn(user, 'getUserTipListV1');
   spy.mockImplementation(() =>
     resolveThreeSecond([{ user_name: 'user_name1' }])

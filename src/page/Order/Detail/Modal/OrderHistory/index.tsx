@@ -1,4 +1,5 @@
 import { Button, Divider, Modal } from 'antd';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalSize } from '../../../../../data/common';
 import OrderSteps from '../../OrderSteps';
@@ -21,7 +22,7 @@ const OrderHistory: React.FC<OrderHistoryProps> = (props) => {
     >
       {props.history.map((step, index) => {
         return (
-          <>
+          <React.Fragment key={step.task_id}>
             <OrderSteps
               stepList={step.workflow_step_list ?? []}
               currentStep={step.current_step_number}
@@ -34,7 +35,7 @@ const OrderHistory: React.FC<OrderHistoryProps> = (props) => {
             {index < props.history.length - 1 && (
               <Divider className="clear-margin-top" />
             )}
-          </>
+          </React.Fragment>
         );
       })}
     </Modal>

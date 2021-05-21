@@ -32,10 +32,8 @@ const Order = () => {
   const urlParams = useParams<{ orderId: string }>();
   const theme = useTheme<Theme>();
   const { t } = useTranslation();
-  const [
-    historyVisible,
-    { setTrue: showHistory, setFalse: closeHistory },
-  ] = useBoolean();
+  const [historyVisible, { setTrue: showHistory, setFalse: closeHistory }] =
+    useBoolean();
 
   const { data: orderInfo, refresh: refreshOrder } = useRequest(
     () =>
@@ -173,6 +171,7 @@ const Order = () => {
         ghost={false}
         extra={[
           <Popconfirm
+            key="close-confirm"
             title={t('order.closeOrder.closeConfirm')}
             onConfirm={closeOrder}
             disabled={closeOrderLoading}
@@ -227,7 +226,7 @@ const Order = () => {
               extra={[
                 Array.isArray(orderInfo?.record_history_list) && (
                   <Button type="primary" onClick={showHistory} key="history">
-                    查看工单操作历史
+                    {t('order.history.showHistory')}
                   </Button>
                 ),
               ]}

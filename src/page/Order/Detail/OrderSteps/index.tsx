@@ -72,14 +72,10 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     { setTrue: openRejectModal, setFalse: closeRejectModal },
   ] = useBoolean();
 
-  const [
-    passLoading,
-    { setTrue: passStart, setFalse: passFinish },
-  ] = useBoolean();
-  const [
-    rejectLoading,
-    { setTrue: rejectStart, setFalse: rejectFinish },
-  ] = useBoolean();
+  const [passLoading, { setTrue: passStart, setFalse: passFinish }] =
+    useBoolean();
+  const [rejectLoading, { setTrue: rejectStart, setFalse: rejectFinish }] =
+    useBoolean();
 
   const pass = (stepId: number) => {
     passStart();

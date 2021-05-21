@@ -15,10 +15,8 @@ import { ModifySqlFormFields } from './ModifySqlForm/index.type';
 const ModifySqlModal: React.FC<ModifySqlModalProps> = (props) => {
   const { t } = useTranslation();
   const [form] = useForm<ModifySqlFormFields>();
-  const [
-    submitLoading,
-    { setTrue: startSubmit, setFalse: submitFinish },
-  ] = useBoolean();
+  const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
+    useBoolean();
 
   const submit = React.useCallback(async () => {
     const values = await form.validateFields();
