@@ -116,7 +116,9 @@ export const mockUseInstance = () => {
 
 export const mockUseInstanceSchema = () => {
   const spy = jest.spyOn(instance, 'getInstanceSchemasV1');
-  spy.mockImplementation(() => resolveThreeSecond(['schema1']));
+  spy.mockImplementation(() =>
+    resolveThreeSecond({ schema_name_list: ['schema1'] })
+  );
   return spy;
 };
 
@@ -136,7 +138,7 @@ export const mockUseRuleTemplate = () => {
   return spy;
 };
 
-export const mockUsername = () => {
+export const mockUseUsername = () => {
   const spy = jest.spyOn(user, 'getUserTipListV1');
   spy.mockImplementation(() =>
     resolveThreeSecond([{ user_name: 'user_name1' }])

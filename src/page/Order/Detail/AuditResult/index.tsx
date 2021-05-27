@@ -1,5 +1,6 @@
 import { useBoolean, useRequest } from 'ahooks';
 import { Button, Card, Space, Switch, Table, Typography } from 'antd';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import task from '../../../../api/task';
 import EmptyBox from '../../../../components/EmptyBox';
@@ -23,7 +24,11 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
     resetFilter,
   } = useTable<OrderAuditResultFilterFields>();
 
-  const { data, loading } = useRequest(
+  const {
+    data,
+    loading,
+    run: getAuditTaskSql,
+  } = useRequest(
     () =>
       task.getAuditTaskSQLsV1({
         task_id: `${props.taskId}`,
@@ -33,8 +38,7 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
         no_duplicate: duplicate,
       }),
     {
-      ready: !!props.taskId,
-      refreshDeps: [pagination, filterInfo, duplicate, props.taskId],
+      manual: true,
       formatResult(res) {
         return {
           list: res.data.data,
@@ -56,6 +60,12 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
       no_duplicate: duplicate,
     });
   };
+
+  useEffect(() => {
+    if (props.taskId !== undefined) {
+      getAuditTaskSql();
+    }
+  }, [pagination, filterInfo, duplicate, props.taskId, getAuditTaskSql]);
 
   return (
     <Card

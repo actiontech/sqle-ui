@@ -72,14 +72,10 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     { setTrue: openRejectModal, setFalse: closeRejectModal },
   ] = useBoolean();
 
-  const [
-    passLoading,
-    { setTrue: passStart, setFalse: passFinish },
-  ] = useBoolean();
-  const [
-    rejectLoading,
-    { setTrue: rejectStart, setFalse: rejectFinish },
-  ] = useBoolean();
+  const [passLoading, { setTrue: passStart, setFalse: passFinish }] =
+    useBoolean();
+  const [rejectLoading, { setTrue: rejectStart, setFalse: rejectFinish }] =
+    useBoolean();
 
   const pass = (stepId: number) => {
     passStart();
@@ -124,7 +120,6 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
                   step.workflow_step_id ?? 0
                 )}
                 danger
-                loading={rejectLoading}
               >
                 {t('order.operator.reject')}
               </Button>
@@ -278,7 +273,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
           </Form.Item>
           <Form.Item label=" " colon={false}>
             <Space>
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" htmlType="submit" loading={rejectLoading}>
                 {t('order.operator.reject')}
               </Button>
               <Button onClick={resetAndCloseRejectModal}>

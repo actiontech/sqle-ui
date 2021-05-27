@@ -12,10 +12,8 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
   const { t } = useTranslation();
 
   const { updateRoleList, generateRoleSelectOption } = useRole();
-  const {
-    updateRuleTemplateList,
-    generateRuleTemplateSelectOption,
-  } = useRuleTemplate();
+  const { updateRuleTemplateList, generateRuleTemplateSelectOption } =
+    useRuleTemplate();
 
   React.useEffect(() => {
     updateRoleList();

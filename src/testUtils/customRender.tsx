@@ -64,7 +64,6 @@ export const renderWithThemeAndServerRouter = (
 ) => {
   return render(
     <Router {...props}>
-      {' '}
       <ThemeProvider theme={lightTheme}>{ui}</ThemeProvider>
     </Router>,
     option

@@ -1,5 +1,5 @@
 import { SyncOutlined } from '@ant-design/icons';
-import { useRequest } from 'ahooks';
+import { useBoolean, useRequest } from 'ahooks';
 import { Button, Card, PageHeader, Space, Table } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -20,6 +20,8 @@ const OrderList = () => {
   const history = useHistory();
   const { t } = useTranslation();
   const location = useLocation();
+  const [resolveUrlParamFlag, { toggle: setResolveUrlParamFlag }] =
+    useBoolean();
 
   const {
     pagination,
@@ -33,7 +35,11 @@ const OrderList = () => {
     tableChange,
   } = useTable<OrderListFilterFormFields>();
 
-  const { data: orderList, loading, refresh } = useRequest(
+  const {
+    data: orderList,
+    loading,
+    refresh,
+  } = useRequest(
     () =>
       workflow.getWorkflowListV1({
         page_index: pagination.pageIndex,
@@ -41,6 +47,7 @@ const OrderList = () => {
         ...filterInfo,
       }),
     {
+      ready: resolveUrlParamFlag,
       refreshDeps: [pagination, filterInfo],
       formatResult(res) {
         return {
@@ -74,6 +81,7 @@ const OrderList = () => {
       filterForm.setFieldsValue(filter);
       setFilterInfo(filter);
     }
+    setResolveUrlParamFlag(true);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

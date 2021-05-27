@@ -21,6 +21,7 @@ export default {
   },
   history: {
     title: '工单操作历史',
+    showHistory: '查看工单操作历史',
   },
   order: {
     name: '工单名称',
