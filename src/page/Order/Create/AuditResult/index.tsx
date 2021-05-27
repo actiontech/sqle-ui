@@ -25,9 +25,10 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
     filterForm,
     submitFilter,
     resetFilter,
-  } = useTable<{
-    filter_audit_status: getAuditTaskSQLsV1FilterAuditStatusEnum;
-  }>();
+  } =
+    useTable<{
+      filter_audit_status: getAuditTaskSQLsV1FilterAuditStatusEnum;
+    }>();
 
   const { data, loading, refresh } = useRequest(
     () =>
@@ -102,6 +103,7 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
           total: data?.total,
           showSizeChanger: true,
         }}
+        rowKey="number"
         dataSource={data?.list}
         columns={auditResultColumn()}
         onChange={tableChange}

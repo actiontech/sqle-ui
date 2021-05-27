@@ -120,7 +120,6 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
                   step.workflow_step_id ?? 0
                 )}
                 danger
-                loading={rejectLoading}
               >
                 {t('order.operator.reject')}
               </Button>
@@ -274,7 +273,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
           </Form.Item>
           <Form.Item label=" " colon={false}>
             <Space>
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" htmlType="submit" loading={rejectLoading}>
                 {t('order.operator.reject')}
               </Button>
               <Button onClick={resetAndCloseRejectModal}>

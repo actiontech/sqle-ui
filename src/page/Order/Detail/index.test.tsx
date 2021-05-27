@@ -102,7 +102,7 @@ describe('Order/Detail', () => {
     });
     expect(getTaskSpy).toBeCalledTimes(1);
     expect(getTaskSpy).toBeCalledWith({
-      task_id: String(order.record.task_id),
+      task_id: String(order.record?.task_id),
     });
 
     expect(container).toMatchSnapshot();
@@ -122,7 +122,7 @@ describe('Order/Detail', () => {
     });
     expect(getTaskSpy).toBeCalledTimes(1);
     expect(getTaskSpy).toBeCalledWith({
-      task_id: String(orderCancel.record.task_id),
+      task_id: String(orderCancel.record?.task_id),
     });
     expect(
       screen.queryByText('order.closeOrder.button')?.parentNode
@@ -144,7 +144,7 @@ describe('Order/Detail', () => {
     });
     expect(getTaskSpy).toBeCalledTimes(1);
     expect(getTaskSpy).toBeCalledWith({
-      task_id: String(orderReject.record.task_id),
+      task_id: String(orderReject.record?.task_id),
     });
 
     expect(screen.queryByText('order.closeOrder.button')).toBeInTheDocument();
@@ -165,7 +165,7 @@ describe('Order/Detail', () => {
     });
     expect(getTaskSpy).toBeCalledTimes(1);
     expect(getTaskSpy).toBeCalledWith({
-      task_id: String(orderPass.record.task_id),
+      task_id: String(orderPass.record?.task_id),
     });
     expect(
       screen.queryByText('order.closeOrder.button')?.parentNode
@@ -217,8 +217,9 @@ describe('Order/Detail', () => {
     expect(resolveOrderSpy).toBeCalledWith({
       workflow_id: String(order.workflow_id),
       workflow_step_id: String(
-        order.record.workflow_step_list[order.record.current_step_number - 1]
-          .workflow_step_id
+        order.record?.workflow_step_list?.[
+          order.record?.current_step_number ?? 0 - 1
+        ].workflow_step_id
       ),
     });
 
@@ -272,8 +273,9 @@ describe('Order/Detail', () => {
       reason: 'test reason',
       workflow_id: String(order.workflow_id),
       workflow_step_id: String(
-        order.record.workflow_step_list[order.record.current_step_number - 1]
-          .workflow_step_id
+        order.record?.workflow_step_list?.[
+          order.record?.current_step_number ?? 0 - 1
+        ].workflow_step_id
       ),
     });
 
@@ -290,7 +292,7 @@ describe('Order/Detail', () => {
   test('should get new sql audit result when update audit sql', async () => {
     const getWorkflowSpy = mockGetWorkflow();
     getWorkflowSpy.mockImplementation(() => resolveThreeSecond(orderReject));
-    const getTaskSpy = mockGetTask();
+    mockGetTask();
     const createTaskSpy = mockCreateTask();
     const getTaskSqlSpy = mockGetTaskSqls();
     const getSqlContentSpy = mockGetSqlContent();
@@ -317,33 +319,139 @@ describe('Order/Detail', () => {
     fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
       target: { value: 'new sql' },
     });
+    expect(getTaskSqlSpy).toBeCalledTimes(1);
     act(() => {
       fireEvent.click(screen.getByText('common.submit'));
     });
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(getTaskSqlSpy).toBeCalledTimes(1);
     expect(createTaskSpy).toBeCalledWith({
       instance_name: 'db1',
       sql: 'new sql',
     });
-    await waitFor(() => {
-      jest.runOnlyPendingTimers();
-    });
     expect(screen.getByText('common.submit').parentNode).toHaveClass(
       'ant-btn-loading'
     );
-    expect(getTaskSqlSpy).toBeCalledTimes(1);
 
-    expect(getTaskSqlSpy).toBeCalledTimes(2);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    // Modal shouldComponentUpdate return false, so this case can't pass;
     // expect(screen.getByText('common.submit').parentNode).not.toHaveClass(
     //   'ant-btn-loading'
     // );
-    expect(getTaskSqlSpy).toBeCalledTimes(1);
+    expect(getTaskSqlSpy).toBeCalledTimes(2);
+
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    expect(getTaskSqlSpy).toBeCalledTimes(1);
     expect(container).toMatchSnapshot();
+  });
+
+  test('should update order when click update order button', async () => {
+    const getWorkflowSpy = mockGetWorkflow();
+    getWorkflowSpy.mockImplementation(() => resolveThreeSecond(orderReject));
+
+    const workflowUpdateSpy = jest.spyOn(workflow, 'updateWorkflowV1');
+    workflowUpdateSpy.mockImplementation(() => resolveThreeSecond({}));
+
+    mockGetTask();
+    mockCreateTask();
+    mockGetTaskSqls();
+    mockGetSqlContent();
+    renderWithThemeAndRouter(<Order />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.click(screen.getByText('order.operator.modifySql'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    act(() => {
+      fireEvent.click(screen.getByText('common.submit'));
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(screen.getByText('order.modifySql.updateOrder')).toBeInTheDocument();
+    expect(
+      screen.getByText('order.modifySql.giveUpUpdate')
+    ).toBeInTheDocument();
+    fireEvent.click(screen.getByText('order.modifySql.updateOrder'));
+    await waitFor(() => {
+      jest.runOnlyPendingTimers();
+    });
+    fireEvent.click(screen.getByText('OK'));
+    expect(workflowUpdateSpy).toBeCalledTimes(1);
+    expect(workflowUpdateSpy).toBeCalledWith({
+      task_id: '33',
+      workflow_id: `${orderReject.workflow_id}`,
+    });
+    expect(screen.getByText('order.modifySql.updateOrder')).toBeInTheDocument();
+    expect(
+      screen.getByText('order.modifySql.updateOrder').parentNode
+    ).toHaveClass('ant-btn-loading');
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.queryByText('order.modifySql.updateOrder')
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('order.modifySql.giveUpUpdate')
+    ).not.toBeInTheDocument();
+  });
+
+  test('should give up order when click give up modify button', async () => {
+    const getWorkflowSpy = mockGetWorkflow();
+    getWorkflowSpy.mockImplementation(() => resolveThreeSecond(orderReject));
+
+    mockGetTask();
+    mockCreateTask();
+    mockGetTaskSqls();
+    mockGetSqlContent();
+    renderWithThemeAndRouter(<Order />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.click(screen.getByText('order.operator.modifySql'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    act(() => {
+      fireEvent.click(screen.getByText('common.submit'));
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(screen.getByText('order.modifySql.updateOrder')).toBeInTheDocument();
+    expect(
+      screen.getByText('order.modifySql.giveUpUpdate')
+    ).toBeInTheDocument();
+    fireEvent.click(screen.getByText('order.modifySql.giveUpUpdate'));
+    await waitFor(() => {
+      jest.runOnlyPendingTimers();
+    });
+    fireEvent.click(screen.getByText('OK'));
+    expect(
+      screen.queryByText('order.modifySql.updateOrder')
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('order.modifySql.giveUpUpdate')
+    ).not.toBeInTheDocument();
   });
 });

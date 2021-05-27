@@ -1,0 +1,266 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order/Detail/Modal/ModifySqlModal should match snapshot 1`] = `
+<body>
+  <div />
+</body>
+`;
+
+exports[`Order/Detail/Modal/ModifySqlModal should send sql file when user upload sql file 1`] = `
+<body
+  class="ant-scrolling-effect"
+  style="width: calc(100% - 0px); overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
+>
+  <style>
+    
+      [ant-click-animating-without-extra-node='true']::after, .ant-click-animating-node {
+        --antd-wave-shadow-color: buttonface;
+      }
+  </style>
+  <div />
+  <div>
+    <div
+      class="ant-modal-root"
+    >
+      <div
+        class="ant-modal-mask"
+      />
+      <div
+        aria-labelledby="rcDialogTitle4"
+        class="ant-modal-wrap"
+        role="dialog"
+        tabindex="-1"
+      >
+        <div
+          class="ant-modal"
+          role="document"
+          style="width: 1000px;"
+        >
+          <div
+            aria-hidden="true"
+            style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+            tabindex="0"
+          />
+          <div
+            class="ant-modal-content"
+          >
+            <div
+              class="ant-modal-header"
+            >
+              <div
+                class="ant-modal-title"
+                id="rcDialogTitle4"
+              >
+                order.modifySql.title
+              </div>
+            </div>
+            <div
+              class="ant-modal-body"
+            >
+              <form
+                class="ant-form ant-form-horizontal"
+              >
+                <div
+                  class="ant-row ant-form-item ant-form-item-has-success"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                  >
+                    <label
+                      class=""
+                      for="sqlInputType"
+                      title="order.sqlInfo.uploadType"
+                    >
+                      order.sqlInfo.uploadType
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <div
+                          class="ant-radio-group ant-radio-group-outline"
+                          id="sqlInputType"
+                        >
+                          <label
+                            class="ant-radio-wrapper"
+                          >
+                            <span
+                              class="ant-radio"
+                            >
+                              <input
+                                checked=""
+                                class="ant-radio-input"
+                                type="radio"
+                                value="0"
+                              />
+                              <span
+                                class="ant-radio-inner"
+                              />
+                            </span>
+                            <span>
+                              order.sqlInfo.manualInput
+                            </span>
+                          </label>
+                          <label
+                            class="ant-radio-wrapper ant-radio-wrapper-checked"
+                          >
+                            <span
+                              class="ant-radio ant-radio-checked"
+                            >
+                              <input
+                                class="ant-radio-input"
+                                type="radio"
+                                value="1"
+                              />
+                              <span
+                                class="ant-radio-inner"
+                              />
+                            </span>
+                            <span>
+                              order.sqlInfo.uploadFile
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-row ant-form-item"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                  >
+                    <label
+                      class="ant-form-item-required"
+                      for="sqlFile"
+                      title="order.sqlInfo.sqlFile"
+                    >
+                      order.sqlInfo.sqlFile
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <span
+                          class=""
+                        >
+                          <div
+                            class="ant-upload ant-upload-select ant-upload-select-text"
+                          >
+                            <span
+                              class="ant-upload"
+                              role="button"
+                              tabindex="0"
+                            >
+                              <input
+                                accept=".sql"
+                                id="sqlFile"
+                                style="display: none;"
+                                type="file"
+                              />
+                              <button
+                                class="ant-btn"
+                                type="button"
+                              >
+                                <span>
+                                  common.upload
+                                </span>
+                              </button>
+                            </span>
+                          </div>
+                          <div
+                            class="ant-upload-list ant-upload-list-text"
+                          />
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-form-item-extra"
+                    >
+                      order.modifySql.sqlFileTips
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div
+              class="ant-modal-footer"
+            >
+              <div
+                class="ant-space ant-space-horizontal ant-space-align-center"
+              >
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
+                >
+                  <div
+                    class="ant-alert ant-alert-warning ant-alert-no-icon"
+                    data-show="true"
+                    role="alert"
+                  >
+                    <div
+                      class="ant-alert-content"
+                    >
+                      <div
+                        class="ant-alert-message"
+                      >
+                        order.modifySql.submitTips
+                      </div>
+                      <div
+                        class="ant-alert-description"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
+                >
+                  <button
+                    class="ant-btn"
+                    type="button"
+                  >
+                    <span>
+                      common.close
+                    </span>
+                  </button>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  <button
+                    class="ant-btn ant-btn-primary"
+                    type="button"
+                  >
+                    <span>
+                      common.submit
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-hidden="true"
+            style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+            tabindex="0"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

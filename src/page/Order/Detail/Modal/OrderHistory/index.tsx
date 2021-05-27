@@ -15,7 +15,7 @@ const OrderHistory: React.FC<OrderHistoryProps> = (props) => {
       title={t('order.history.title')}
       footer={
         <Button type="primary" onClick={props.close}>
-          确定
+          {t('common.ok')}
         </Button>
       }
       onCancel={props.close}

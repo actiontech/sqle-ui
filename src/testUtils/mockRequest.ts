@@ -116,7 +116,9 @@ export const mockUseInstance = () => {
 
 export const mockUseInstanceSchema = () => {
   const spy = jest.spyOn(instance, 'getInstanceSchemasV1');
-  spy.mockImplementation(() => resolveThreeSecond(['schema1']));
+  spy.mockImplementation(() =>
+    resolveThreeSecond({ schema_name_list: ['schema1'] })
+  );
   return spy;
 };
 
