@@ -12,13 +12,6 @@ module.exports = {
       ],
     },
   },
-  jest: {
-    configure: {
-      moduleNameMapper: {
-        'monaco-editor': '<rootDir>/node_modules/react-monaco-editor',
-      },
-    },
-  },
   plugins: [
     {
       plugin: CracoLessPlugin,

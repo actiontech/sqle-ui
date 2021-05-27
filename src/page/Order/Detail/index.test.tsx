@@ -218,7 +218,7 @@ describe('Order/Detail', () => {
       workflow_id: String(order.workflow_id),
       workflow_step_id: String(
         order.record?.workflow_step_list?.[
-          order.record?.current_step_number ?? 0 - 1
+          (order.record?.current_step_number ?? 0) - 1
         ].workflow_step_id
       ),
     });
@@ -274,7 +274,7 @@ describe('Order/Detail', () => {
       workflow_id: String(order.workflow_id),
       workflow_step_id: String(
         order.record?.workflow_step_list?.[
-          order.record?.current_step_number ?? 0 - 1
+          (order.record?.current_step_number ?? 0) - 1
         ].workflow_step_id
       ),
     });
