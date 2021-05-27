@@ -22,9 +22,8 @@ import { Theme } from '../../types/theme.type';
 const Rule = () => {
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
   const { t } = useTranslation();
-  const [instanceName, setInstanceName] = useState<string | undefined>(
-    undefined
-  );
+  const [instanceName, setInstanceName] =
+    useState<string | undefined>(undefined);
   const theme = useTheme<Theme>();
   const { data: instanceRules, run: getInstanceRules } = useRequest(
     () =>
@@ -85,6 +84,7 @@ const Rule = () => {
               <Col span={3}>{t('rule.form.instance')}</Col>
               <Col span={5}>
                 <Select
+                  data-testid="instance-name"
                   value={instanceName}
                   onChange={setInstanceName}
                   placeholder={t('common.form.placeholder.select')}
