@@ -60,7 +60,7 @@ const Whitelist = React.lazy(
 );
 
 const System = React.lazy(
-  () => import(/* webpackChunkName: "System" */ '../page/Syetem')
+  () => import(/* webpackChunkName: "System" */ '../page/System')
 );
 
 export const unAuthRouter: Array<RouteProps & { key: string }> = [
