@@ -1,5 +1,5 @@
 import { useTheme } from '@material-ui/styles';
-import { Button, Col, Divider, Row, Space, Steps } from 'antd';
+import { Button, Col, Divider, InputNumber, Row, Space, Steps } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Theme } from '../../../types/theme.type';
@@ -35,14 +35,14 @@ const RuleTemplateForm: React.FC<RuleTemplateFormProps> = (props) => {
             </Steps>
           </Col>
         </Row>
-        <div hidden={props.step !== 0}>
+        <div hidden={props.step !== 0} data-testid="base-form">
           <BaseInfoForm
             isUpdate={props.isUpdate}
             form={props.form}
             submit={props.baseInfoSubmit}
           />
         </div>
-        <div hidden={props.step !== 1}>
+        <div hidden={props.step !== 1} data-testid="rule-list">
           <RuleSelect
             allRules={props.allRules}
             listLoading={props.ruleListLoading}
@@ -65,7 +65,9 @@ const RuleTemplateForm: React.FC<RuleTemplateFormProps> = (props) => {
             </Space>
           </Row>
         </div>
-        <div hidden={props.step !== 2}>{props.children}</div>
+        <div hidden={props.step !== 2} data-testid="submit-result">
+          {props.children}
+        </div>
       </Space>
     </>
   );

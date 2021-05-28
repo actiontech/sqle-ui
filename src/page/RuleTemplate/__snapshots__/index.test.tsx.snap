@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RuleTemplate should render page header and describe 1`] = `
+<article
+  className="rule-template-page-namespace"
+>
+  <PageHeader
+    ghost={false}
+    title="ruleTemplate.pageTitle"
+  >
+    ruleTemplate.pageDescribe
+  </PageHeader>
+  <section
+    className="padding-content"
+  >
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/rule/template"
+      />
+      <Route
+        component={[Function]}
+        path="/rule/template/create"
+      />
+      <Route
+        component={[Function]}
+        path="/rule/template/update/:templateName"
+      />
+      <Redirect
+        to="/rule/template"
+      />
+    </Switch>
+  </section>
+</article>
+`;
