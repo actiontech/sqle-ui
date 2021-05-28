@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`System should match snapshot 1`] = `
+<Fragment>
+  <PageHeader
+    ghost={false}
+    title="system.pageTitle"
+  >
+    system.pageDesc
+  </PageHeader>
+  <section
+    className="padding-content"
+  >
+    <Space
+      className="full-width-element"
+      direction="vertical"
+    >
+      <SMTPSetting />
+    </Space>
+  </section>
+</Fragment>
+`;
