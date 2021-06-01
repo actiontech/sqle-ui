@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Whitelist/WhitelistList/Modal/UpdateWhitelist should match snapshot 1`] = `
+<body
+  class="ant-scrolling-effect"
+  style="width: calc(100% - 0px); overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
+>
+  <div />
+  <div>
+    <div
+      class="ant-modal-root"
+    >
+      <div
+        class="ant-modal-mask"
+      />
+      <div
+        aria-labelledby="rcDialogTitle0"
+        class="ant-modal-wrap"
+        role="dialog"
+        tabindex="-1"
+      >
+        <div
+          class="ant-modal"
+          role="document"
+          style="width: 1000px;"
+        >
+          <div
+            aria-hidden="true"
+            style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+            tabindex="0"
+          />
+          <div
+            class="ant-modal-content"
+          >
+            <div
+              class="ant-modal-header"
+            >
+              <div
+                class="ant-modal-title"
+                id="rcDialogTitle0"
+              >
+                whitelist.modal.update.title
+              </div>
+            </div>
+            <div
+              class="ant-modal-body"
+            >
+              <form
+                class="ant-form ant-form-horizontal"
+              >
+                <div
+                  class="ant-row ant-form-item ant-form-item-has-success"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                  >
+                    <label
+                      class=""
+                      for="desc"
+                      title="whitelist.table.desc"
+                    >
+                      whitelist.table.desc
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <textarea
+                          class="ant-input textarea-no-resize"
+                          id="desc"
+                          placeholder="common.form.placeholder.input"
+                          style="height: -40px; min-height: -12px; max-height: -40px; overflow-y: hidden; resize: none; overflow-x: hidden;"
+                        >
+                          123
+                        </textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-row ant-form-item ant-form-item-has-success"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                  >
+                    <label
+                      class="ant-form-item-required"
+                      for="sql"
+                      title="order.sqlInfo.sql"
+                    >
+                      order.sqlInfo.sql
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control makeStyles-editor-3 ant-col-xs-24 ant-col-sm-13"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <textarea
+                          height="500"
+                          id="sql"
+                          language="sql"
+                          theme="vs"
+                          width="100%"
+                        >
+                          /* input your sql */
+use aaa;
+                        </textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div
+              class="ant-modal-footer"
+            >
+              <button
+                class="ant-btn"
+                type="button"
+              >
+                <span>
+                  common.close
+                </span>
+              </button>
+              <button
+                class="ant-btn ant-btn-primary"
+                type="button"
+              >
+                <span>
+                  common.submit
+                </span>
+              </button>
+            </div>
+          </div>
+          <div
+            aria-hidden="true"
+            style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+            tabindex="0"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <textarea
+    aria-hidden="true"
+    style="letter-spacing:normal;line-height:normal;padding-top:2px;padding-bottom:2px;font-family:-webkit-small-control;font-weight:;font-size:;font-variant:;text-rendering:auto;text-transform:none;width:;text-indent:0;padding-left:2px;padding-right:2px;border-width:1px;box-sizing:;
+  min-height:0 !important;
+  max-height:none !important;
+  height:0 !important;
+  visibility:hidden !important;
+  overflow:hidden !important;
+  position:absolute !important;
+  z-index:-1000 !important;
+  top:0 !important;
+  right:0 !important
+"
+    tab-index="-1"
+  />
+</body>
+`;
+
+exports[`Whitelist/WhitelistList/Modal/UpdateWhitelist should match snapshot 2`] = `
+<body
+  class=""
+  style=""
+>
+  <textarea
+    aria-hidden="true"
+    style="letter-spacing:normal;line-height:normal;padding-top:2px;padding-bottom:2px;font-family:-webkit-small-control;font-weight:;font-size:;font-variant:;text-rendering:auto;text-transform:none;width:;text-indent:0;padding-left:2px;padding-right:2px;border-width:1px;box-sizing:;
+  min-height:0 !important;
+  max-height:none !important;
+  height:0 !important;
+  visibility:hidden !important;
+  overflow:hidden !important;
+  position:absolute !important;
+  z-index:-1000 !important;
+  top:0 !important;
+  right:0 !important
+"
+    tab-index="-1"
+  />
+  <div />
+</body>
+`;

@@ -26,19 +26,18 @@ const UpdateWhitelist = () => {
     IAuditWhitelistResV1 | null
   >((state) => state.whitelist.selectWhitelist);
   const dispatch = useDispatch();
-  const [
-    createLoading,
-    { setTrue: startCreate, setFalse: createFinish },
-  ] = useBoolean();
+  const [createLoading, { setTrue: startCreate, setFalse: createFinish }] =
+    useBoolean();
 
   const closeModal = React.useCallback(() => {
+    form.resetFields();
     dispatch(
       updateWhitelistModalStatus({
         modalName: ModalName.Update_Whitelist,
         status: false,
       })
     );
-  }, [dispatch]);
+  }, [dispatch, form]);
 
   const submit = React.useCallback(async () => {
     const values = await form.validateFields();
@@ -52,7 +51,6 @@ const UpdateWhitelist = () => {
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           EventEmitter.emit(EmitterKey.Refresh_Whitelist_List);
-          form.resetFields();
           closeModal();
         }
       })
