@@ -145,7 +145,7 @@ const UserList = () => {
         </Button>,
       ]}
     >
-      <UserListFilterForm updateRoleListFilter={setUserListFilter} />
+      <UserListFilterForm updateUserListFilter={setUserListFilter} />
       <List
         loading={loading}
         dataSource={data?.list}

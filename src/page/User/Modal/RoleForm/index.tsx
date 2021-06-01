@@ -25,6 +25,7 @@ const RoleForm: React.FC<IRoleFormProps> = (props) => {
         ]}
       >
         <Input
+          disabled={props.isUpdate}
           placeholder={t('common.form.placeholder.input', {
             name: t('user.roleForm.roleName'),
           })}

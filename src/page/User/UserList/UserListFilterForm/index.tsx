@@ -14,7 +14,7 @@ import EventEmitter from '../../../../utils/EventEmitter';
 import { UserListFilter } from '../index.type';
 
 const UserListFilterForm: React.FC<{
-  updateRoleListFilter: (filter: UserListFilter) => void;
+  updateUserListFilter: (filter: UserListFilter) => void;
 }> = (props) => {
   const [form] = useForm();
   const { t } = useTranslation();
@@ -23,7 +23,7 @@ const UserListFilterForm: React.FC<{
 
   const resetFilter = React.useCallback(() => {
     form.resetFields();
-    props.updateRoleListFilter({});
+    props.updateUserListFilter({});
   }, [form, props]);
 
   React.useEffect(() => {
@@ -55,7 +55,7 @@ const UserListFilterForm: React.FC<{
     <Form<UserListFilter>
       form={form}
       className="table-filter-form"
-      onFinish={props.updateRoleListFilter}
+      onFinish={props.updateUserListFilter}
     >
       <Row {...FilterFormRowLayout}>
         <Col {...FilterFormColLayout}>
