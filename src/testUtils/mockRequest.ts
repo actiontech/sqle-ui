@@ -4,11 +4,12 @@ import role from '../api/role';
 import ruleTemplate from '../api/rule_template';
 import user from '../api/user';
 
-export const successData = (data: any) => {
+export const successData = (data: any, otherData?: any) => {
   return {
     code: 0,
     message: '',
     data,
+    ...otherData,
   };
 };
 
@@ -48,7 +49,13 @@ export const rejectImmediately = (
 
 export const resolveThreeSecond = (
   data: any,
-  { status = 200, headers = {}, config = {}, statusText = '' } = {}
+  {
+    status = 200,
+    headers = {},
+    config = {},
+    statusText = '',
+    otherData = {},
+  } = {}
 ) => {
   return new Promise<AxiosResponse<any>>((res) => {
     setTimeout(() => {
@@ -57,7 +64,7 @@ export const resolveThreeSecond = (
         headers,
         config,
         statusText,
-        data: successData(data),
+        data: successData(data, otherData),
       });
     }, 3000);
   });

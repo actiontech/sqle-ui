@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ValidatorRule } from 'rc-field-form/lib/interface';
 
 export type Dictionary = {
-  [key: string]: string | number | boolean | Dictionary;
+  [key: string]: string | number | boolean | Dictionary | string[];
 };
 
 export type StringDictionary = {

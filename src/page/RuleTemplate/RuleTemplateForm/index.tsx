@@ -1,5 +1,5 @@
 import { useTheme } from '@material-ui/styles';
-import { Button, Col, Divider, InputNumber, Row, Space, Steps } from 'antd';
+import { Button, Col, Divider, Row, Space, Steps } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Theme } from '../../../types/theme.type';

@@ -104,6 +104,7 @@ const UpdateRole = () => {
       }
     >
       <RoleForm
+        isUpdate={true}
         form={form}
         instanceList={instanceList}
         usernameList={usernameList}

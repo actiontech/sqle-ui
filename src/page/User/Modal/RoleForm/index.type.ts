@@ -12,4 +12,5 @@ export interface IRoleFormProps {
   form: FormInstance<IRoleFormFields>;
   instanceList: IInstanceTipResV1[];
   usernameList: IUserTipResV1[];
+  isUpdate?: boolean;
 }
