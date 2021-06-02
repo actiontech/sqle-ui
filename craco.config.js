@@ -12,6 +12,20 @@ module.exports = {
       ],
     },
   },
+  jest: {
+    configure: {
+      collectCoverageFrom: [
+        'src/**/*.{ts,tsx}',
+        '!src/api/**/*.{ts,tsx}',
+        '!src/**/*.d.{ts,tsx}',
+        '!src/**/*.type.{ts,tsx}',
+        '!src/locale/**/*.{ts,tsx}',
+        '!src/testUtils/**/*.{ts,tsx}',
+        '!src/data/**/*.{ts,tsx}',
+        '!src/reportWebVitals.ts',
+      ],
+    },
+  },
   plugins: [
     {
       plugin: CracoLessPlugin,
