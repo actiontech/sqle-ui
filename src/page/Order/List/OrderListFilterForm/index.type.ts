@@ -3,8 +3,13 @@ import { IGetWorkflowListV1Params } from '../../../../api/workflow/index.d';
 
 export type OrderListFilterFormFields = Omit<
   IGetWorkflowListV1Params,
-  'page_index' | 'page_size'
->;
+  | 'page_index'
+  | 'page_size'
+  | 'filter_create_time_from'
+  | 'filter_create_time_to'
+> & {
+  filter_order_createTime?: moment.Moment[];
+};
 
 export type OrderListFilterFormProps = {
   form: FormInstance<OrderListFilterFormFields>;

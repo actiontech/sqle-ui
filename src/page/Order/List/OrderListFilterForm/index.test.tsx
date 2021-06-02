@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { useForm } from 'antd/lib/form/Form';
-import { act } from 'react-dom/test-utils';
+import { isEqual } from 'lodash';
 import OrderListFilterForm from '.';
 import { getBySelector } from '../../../../testUtils/customQuery';
 import {
@@ -170,11 +170,15 @@ describe('Order/List', () => {
     });
 
     expect(setValueSpy).toBeCalledTimes(1);
-    expect(setValueSpy).toBeCalledWith({
-      filter_current_step_assignee_user_name: undefined,
-      filter_task_status: undefined,
-      filter_task_instance_name: undefined,
-    });
+    expect(
+      isEqual(setValueSpy.mock.calls[0][0], {
+        filter_current_step_assignee_user_name: undefined,
+        filter_task_status: undefined,
+        filter_task_instance_name: undefined,
+        filter_subject: undefined,
+        filter_order_createTime: undefined,
+      })
+    ).toBeTruthy();
     expect(submitMock).toBeCalledTimes(1);
   });
 
