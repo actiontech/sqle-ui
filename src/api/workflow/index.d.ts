@@ -56,6 +56,12 @@ export interface IUpdateWorkflowTemplateV1Params
 export interface IUpdateWorkflowTemplateV1Return extends IBaseRes {}
 
 export interface IGetWorkflowListV1Params {
+  filter_subject?: string;
+
+  filter_create_time_from?: string;
+
+  filter_create_time_to?: string;
+
   filter_create_user_name?: string;
 
   filter_current_step_type?: getWorkflowListV1FilterCurrentStepTypeEnum;

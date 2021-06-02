@@ -18,6 +18,12 @@ export enum AuditTaskResV1StatusEnum {
   'exec_failed' = 'exec_failed'
 }
 
+export enum CreateAuditWhitelistReqV1MatchTypeEnum {
+  'exact_match' = 'exact_match',
+
+  'fp_match' = 'fp_match'
+}
+
 export enum RuleResV1LevelEnum {
   'normal' = 'normal',
 
@@ -26,6 +32,12 @@ export enum RuleResV1LevelEnum {
   'warn' = 'warn',
 
   'error' = 'error'
+}
+
+export enum UpdateAuditWhitelistReqV1MatchTypeEnum {
+  'exact_match' = 'exact_match',
+
+  'fp_match' = 'fp_match'
 }
 
 export enum WorkFlowStepTemplateReqV1TypeEnum {

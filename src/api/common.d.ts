@@ -1,7 +1,9 @@
 import {
   AuditTaskResV1SqlSourceEnum,
   AuditTaskResV1StatusEnum,
+  CreateAuditWhitelistReqV1MatchTypeEnum,
   RuleResV1LevelEnum,
+  UpdateAuditWhitelistReqV1MatchTypeEnum,
   WorkFlowStepTemplateReqV1TypeEnum,
   WorkflowDetailResV1CurrentStepTypeEnum,
   WorkflowDetailResV1StatusEnum,
@@ -58,11 +60,15 @@ export interface IAuditWhitelistResV1 {
 
   desc?: string;
 
+  match_type?: string;
+
   value?: string;
 }
 
 export interface ICreateAuditWhitelistReqV1 {
   desc?: string;
+
+  match_type?: CreateAuditWhitelistReqV1MatchTypeEnum;
 
   value?: string;
 }
@@ -295,6 +301,14 @@ export interface IGetSMTPConfigurationResV1 {
   message?: string;
 }
 
+export interface IGetSystemVariablesResV1 {
+  code?: number;
+
+  data?: ISystemVariablesResV1;
+
+  message?: string;
+}
+
 export interface IGetUserDetailResV1 {
   code?: number;
 
@@ -455,8 +469,14 @@ export interface ISMTPConfigurationResV1 {
   smtp_username?: string;
 }
 
+export interface ISystemVariablesResV1 {
+  workflow_expired_hours?: number;
+}
+
 export interface IUpdateAuditWhitelistReqV1 {
   desc?: string;
+
+  match_type?: UpdateAuditWhitelistReqV1MatchTypeEnum;
 
   value?: string;
 }
@@ -507,6 +527,10 @@ export interface IUpdateSMTPConfigurationReqV1 {
   smtp_port?: string;
 
   smtp_username?: string;
+}
+
+export interface IUpdateSystemVariablesReqV1 {
+  workflow_expired_hours?: number;
 }
 
 export interface IUpdateUserReqV1 {
