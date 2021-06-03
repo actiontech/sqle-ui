@@ -1,6 +1,17 @@
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
 import { useBoolean } from 'ahooks';
-import { Form, Row, Col, Space, Button, Select, Typography } from 'antd';
+import {
+  Form,
+  Row,
+  Col,
+  Space,
+  Button,
+  Select,
+  Typography,
+  DatePicker,
+  Input,
+} from 'antd';
+import moment from 'moment';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -36,6 +47,8 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
         filter_current_step_assignee_user_name: undefined,
         filter_task_status: undefined,
         filter_task_instance_name: undefined,
+        filter_order_createTime: undefined,
+        filter_subject: undefined,
       });
       props.submit();
     }
@@ -46,6 +59,10 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
     updateInstanceList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const computeDisabledDate = (current: moment.Moment) => {
+    return current && current > moment().endOf('day');
+  };
 
   const {
     generateWorkflowStepTypeSelectOption,
@@ -137,6 +154,27 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
             >
               {generateInstanceSelectOption()}
             </Select>
+          </Form.Item>
+        </Col>
+        <Col {...FilterFormColLayout} hidden={currentCollapse}>
+          <Form.Item name="filter_subject" label={t('order.order.name')}>
+            <Input
+              placeholder={t('common.form.placeholder.searchInput', {
+                name: t('order.order.name'),
+              })}
+            />
+          </Form.Item>
+        </Col>
+        <Col xs={24} xl={16} xxl={12} hidden={currentCollapse}>
+          <Form.Item
+            name="filter_order_createTime"
+            label={t('order.order.createTime')}
+            labelCol={{ style: { flex: '0 0 14%' } }}
+          >
+            <DatePicker.RangePicker
+              disabledDate={computeDisabledDate}
+              showTime
+            />
           </Form.Item>
         </Col>
         <Col

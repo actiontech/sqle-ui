@@ -5,7 +5,8 @@ export const emailValidate = (email: string): boolean => {
     return false;
   }
 
-  const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const reg =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return reg.test(email);
 };
 
@@ -15,6 +16,20 @@ export const formatTime = (timeString?: string, defaultVal = ''): string => {
   }
   return moment(timeString).format('YYYY-MM-DD HH:mm:ss');
 };
+
+export function translateTimeForRequest(time: undefined): undefined;
+export function translateTimeForRequest(time: moment.Moment): string;
+export function translateTimeForRequest(
+  time: moment.Moment | undefined
+): string | undefined;
+export function translateTimeForRequest(
+  time?: moment.Moment
+): string | undefined {
+  if (!time) {
+    return;
+  }
+  return time.format('YYYY-MM-DDTHH:mm:ssZ');
+}
 
 export const getFileFromUploadChangeEvent = (e: any) => {
   if (e.file && e.file.status !== 'removed') {

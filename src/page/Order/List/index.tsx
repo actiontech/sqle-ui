@@ -11,6 +11,7 @@ import {
   getWorkflowListV1FilterStatusEnum,
 } from '../../../api/workflow/index.enum';
 import useTable from '../../../hooks/useTable';
+import { translateTimeForRequest } from '../../../utils/Common';
 import { orderListColumn } from './column';
 import { OrderListUrlParamsKey } from './index.data';
 import OrderListFilterForm from './OrderListFilterForm';
@@ -40,12 +41,20 @@ const OrderList = () => {
     loading,
     refresh,
   } = useRequest(
-    () =>
-      workflow.getWorkflowListV1({
+    () => {
+      const { filter_order_createTime, ...otherFilterInfo } = filterInfo;
+      return workflow.getWorkflowListV1({
         page_index: pagination.pageIndex,
         page_size: pagination.pageSize,
-        ...filterInfo,
-      }),
+        filter_create_time_from: translateTimeForRequest(
+          filter_order_createTime?.[0]
+        ),
+        filter_create_time_to: translateTimeForRequest(
+          filter_order_createTime?.[1]
+        ),
+        ...otherFilterInfo,
+      });
+    },
     {
       ready: resolveUrlParamFlag,
       refreshDeps: [pagination, filterInfo],
