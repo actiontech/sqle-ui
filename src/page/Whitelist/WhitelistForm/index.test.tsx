@@ -1,6 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { useForm } from 'antd/lib/form/Form';
 import WhitelistForm from '.';
+import { CreateAuditWhitelistReqV1MatchTypeEnum } from '../../../api/common.enum';
 import { renderWithTheme } from '../../../testUtils/customRender';
 import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
 import { SupportTheme } from '../../../theme';
@@ -27,11 +28,13 @@ describe('Whitelist/WhitelistForm', () => {
     );
     expect(container).toMatchSnapshot();
     expect(Object.keys(result.current[0].getFieldsValue())).toEqual([
+      'matchType',
       'desc',
       'sql',
     ]);
     expect(result.current[0].getFieldsValue()).toEqual({
       sql: '/* input your sql */',
+      matchType: CreateAuditWhitelistReqV1MatchTypeEnum.exact_match,
     });
   });
 });

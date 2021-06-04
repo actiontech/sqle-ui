@@ -12,6 +12,7 @@ import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import EmitterKey from '../../../../../data/EmitterKey';
 import { WhitelistData } from '../../../__testData__';
+import { UpdateAuditWhitelistReqV1MatchTypeEnum } from '../../../../../api/common.enum';
 
 // https://github.com/react-monaco-editor/react-monaco-editor/issues/176
 jest.mock('react-monaco-editor', () => {
@@ -100,6 +101,7 @@ describe('Whitelist/WhitelistList/Modal/UpdateWhitelist', () => {
     expect(createAuditWhitelistSpy).toBeCalledWith({
       audit_whitelist_id: `${WhitelistData[0].audit_whitelist_id}`,
       desc: 'whitelist desc',
+      match_type: UpdateAuditWhitelistReqV1MatchTypeEnum.fp_match,
       value: 'select * from table1;',
     });
 

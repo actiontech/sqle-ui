@@ -6,6 +6,10 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import auditWhitelist from '../../../../../api/audit_whitelist';
 import { IAuditWhitelistResV1 } from '../../../../../api/common.d';
+import {
+  CreateAuditWhitelistReqV1MatchTypeEnum,
+  UpdateAuditWhitelistReqV1MatchTypeEnum,
+} from '../../../../../api/common.enum';
 import { ModalSize, ResponseCode } from '../../../../../data/common';
 import EmitterKey from '../../../../../data/EmitterKey';
 import { ModalName } from '../../../../../data/ModalName';
@@ -47,6 +51,9 @@ const UpdateWhitelist = () => {
         audit_whitelist_id: `${currentWhitelist?.audit_whitelist_id}`,
         value: values.sql,
         desc: values.desc,
+        // emmmm... update enum should be same with create enum
+        match_type:
+          values.matchType as any as UpdateAuditWhitelistReqV1MatchTypeEnum,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -70,6 +77,8 @@ const UpdateWhitelist = () => {
       form.setFieldsValue({
         sql: currentWhitelist?.value,
         desc: currentWhitelist?.desc,
+        matchType:
+          currentWhitelist?.match_type as CreateAuditWhitelistReqV1MatchTypeEnum,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

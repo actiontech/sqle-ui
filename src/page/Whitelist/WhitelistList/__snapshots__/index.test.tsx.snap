@@ -157,6 +157,11 @@ exports[`Whitelist/WhitelistList should init modal state at component init 1`] =
                           <th
                             class="ant-table-cell"
                           >
+                            whitelist.table.matchType
+                          </th>
+                          <th
+                            class="ant-table-cell"
+                          >
                             common.operate
                           </th>
                         </tr>
@@ -169,7 +174,7 @@ exports[`Whitelist/WhitelistList should init modal state at component init 1`] =
                         >
                           <td
                             class="ant-table-cell"
-                            colspan="3"
+                            colspan="4"
                           >
                             <div
                               class="ant-empty ant-empty-normal"
@@ -368,6 +373,11 @@ exports[`Whitelist/WhitelistList should init modal state at component init 2`] =
                           <th
                             class="ant-table-cell"
                           >
+                            whitelist.table.matchType
+                          </th>
+                          <th
+                            class="ant-table-cell"
+                          >
                             common.operate
                           </th>
                         </tr>
@@ -389,6 +399,11 @@ use aaa;
                             class="ant-table-cell"
                           >
                             123
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
+                            whitelist.matchType.fingerPrint
                           </td>
                           <td
                             class="ant-table-cell"
@@ -443,6 +458,9 @@ use aaa;
                           </td>
                           <td
                             class="ant-table-cell"
+                          />
+                          <td
+                            class="ant-table-cell"
                           >
                             <div
                               class="ant-space ant-space-horizontal ant-space-align-center"
@@ -494,6 +512,11 @@ use aaa;
                             class="ant-table-cell"
                           >
                             
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
+                            whitelist.matchType.fingerPrint
                           </td>
                           <td
                             class="ant-table-cell"
@@ -552,6 +575,11 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
+                            whitelist.matchType.fingerPrint
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
                             <div
                               class="ant-space ant-space-horizontal ant-space-align-center"
                             >
@@ -602,6 +630,11 @@ use aaa;
                             class="ant-table-cell"
                           >
                             
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
+                            whitelist.matchType.exact
                           </td>
                           <td
                             class="ant-table-cell"
@@ -659,6 +692,9 @@ use aaa;
                           </td>
                           <td
                             class="ant-table-cell"
+                          />
+                          <td
+                            class="ant-table-cell"
                           >
                             <div
                               class="ant-space ant-space-horizontal ant-space-align-center"
@@ -710,6 +746,11 @@ use aaa;
                             class="ant-table-cell"
                           >
                             
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
+                            whitelist.matchType.exact
                           </td>
                           <td
                             class="ant-table-cell"
@@ -768,6 +809,11 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
+                            whitelist.matchType.exact
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
                             <div
                               class="ant-space ant-space-horizontal ant-space-align-center"
                             >
@@ -822,6 +868,11 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
+                            whitelist.matchType.exact
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
                             <div
                               class="ant-space ant-space-horizontal ant-space-align-center"
                             >
@@ -872,6 +923,11 @@ use aaa;
                             class="ant-table-cell"
                           >
                             
+                          </td>
+                          <td
+                            class="ant-table-cell"
+                          >
+                            whitelist.matchType.exact
                           </td>
                           <td
                             class="ant-table-cell"
