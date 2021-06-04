@@ -3,10 +3,10 @@ export default {
   pageTitle: '数据源',
   pageDesc: '你可以在这里注册需要进行SQL审核的数据库。',
 
-  databaseListTitle: '数据库列表',
+  databaseListTitle: '数据源列表',
 
   databaseList: {
-    instanceName: '数据库名',
+    instanceName: '数据源名',
     address: '地址',
     describe: '描述',
     role: '角色',
@@ -15,18 +15,18 @@ export default {
   },
 
   addDatabase: '添加数据源',
-  addDatabaseSuccess: '添加数据库成功',
-  addDatabaseSuccessGuide: '到数据源列表查看刚刚添加的数据库',
+  addDatabaseSuccess: '添加数据源成功',
+  addDatabaseSuccessGuide: '到数据源列表查看刚刚添加的数据源',
 
   updateDatabase: {
-    getDatabaseInfoError: '获取数据库实例信息失败了',
+    getDatabaseInfoError: '获取数据源信息失败了',
     updateDatabaseTitle: '更新数据源',
-    updateDatabaseSuccess: '数据库"{{name}}"更新成功',
+    updateDatabaseSuccess: '数据源"{{name}}"更新成功',
   },
 
   dataSourceForm: {
-    name: '数据库名称',
-    describe: '数据库描述',
+    name: '数据源名称',
+    describe: '数据源描述',
     ip: '数据库IP',
     port: '数据库端口',
     user: '链接用户',
@@ -48,8 +48,8 @@ export default {
   },
 
   deleteDatabase: {
-    confirmMessage: '确认删除数据库 "{{name}}"?',
-    deletingDatabase: '正在删除数据库 "{{name}}"...',
-    deleteSuccessTips: '删除数据库"{{name}}"成功',
+    confirmMessage: '确认删除数据源 "{{name}}"?',
+    deletingDatabase: '正在删除数据源 "{{name}}"...',
+    deleteSuccessTips: '删除数据源"{{name}}"成功',
   },
 };
