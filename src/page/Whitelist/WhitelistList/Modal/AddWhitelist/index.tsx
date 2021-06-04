@@ -41,6 +41,7 @@ const AddWhitelist = () => {
       .createAuditWhitelistV1({
         value: values.sql,
         desc: values.desc,
+        match_type: values.matchType,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {

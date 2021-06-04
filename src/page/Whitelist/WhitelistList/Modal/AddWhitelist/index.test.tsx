@@ -11,6 +11,7 @@ import audit_whitelist from '../../../../../api/audit_whitelist';
 import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import EmitterKey from '../../../../../data/EmitterKey';
+import { CreateAuditWhitelistReqV1MatchTypeEnum } from '../../../../../api/common.enum';
 
 // https://github.com/react-monaco-editor/react-monaco-editor/issues/176
 jest.mock('react-monaco-editor', () => {
@@ -89,6 +90,7 @@ describe('Whitelist/WhitelistList/Modal/AddWhitelist', () => {
     expect(createAuditWhitelistSpy).toBeCalledTimes(1);
     expect(createAuditWhitelistSpy).toBeCalledWith({
       desc: 'whitelist desc',
+      match_type: CreateAuditWhitelistReqV1MatchTypeEnum.exact_match,
       value: 'select * from table1;',
     });
 

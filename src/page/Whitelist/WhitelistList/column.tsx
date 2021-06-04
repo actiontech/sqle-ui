@@ -1,7 +1,9 @@
 import { Space, Typography, Divider, Popconfirm } from 'antd';
 import { IAuditWhitelistResV1 } from '../../../api/common.d';
+import { CreateAuditWhitelistReqV1MatchTypeEnum } from '../../../api/common.enum';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
+import { WhitelistMatchTypeLabel } from '../WhitelistForm';
 
 export const WhitelistColumn = (
   updateWhitelist: (whitelist: IAuditWhitelistResV1) => void,
@@ -15,6 +17,13 @@ export const WhitelistColumn = (
     {
       dataIndex: 'desc',
       title: () => i18n.t('whitelist.table.desc'),
+    },
+    {
+      dataIndex: 'match_type',
+      title: () => i18n.t('whitelist.table.matchType'),
+      render: (matchType?: CreateAuditWhitelistReqV1MatchTypeEnum) => {
+        return matchType ? i18n.t(WhitelistMatchTypeLabel[matchType]) : null;
+      },
     },
     {
       dataIndex: 'operate',

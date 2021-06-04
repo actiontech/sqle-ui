@@ -8,6 +8,12 @@ export default {
   table: {
     sql: 'SQL语句',
     desc: '白名单描述',
+    matchType: '匹配模式',
+  },
+
+  matchType: {
+    exact: '字符串匹配',
+    fingerPrint: 'sql指纹匹配',
   },
 
   operate: {

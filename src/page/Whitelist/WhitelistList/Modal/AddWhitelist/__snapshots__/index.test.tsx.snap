@@ -56,6 +56,77 @@ exports[`Whitelist/WhitelistList/Modal/AddWhitelist should match snapshot 1`] = 
                   >
                     <label
                       class=""
+                      for="matchType"
+                      title="whitelist.table.matchType"
+                    >
+                      whitelist.table.matchType
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <div
+                          class="ant-radio-group ant-radio-group-outline"
+                          id="matchType"
+                        >
+                          <label
+                            class="ant-radio-wrapper ant-radio-wrapper-checked"
+                          >
+                            <span
+                              class="ant-radio ant-radio-checked"
+                            >
+                              <input
+                                checked=""
+                                class="ant-radio-input"
+                                type="radio"
+                                value="exact_match"
+                              />
+                              <span
+                                class="ant-radio-inner"
+                              />
+                            </span>
+                            <span>
+                              whitelist.matchType.exact
+                            </span>
+                          </label>
+                          <label
+                            class="ant-radio-wrapper"
+                          >
+                            <span
+                              class="ant-radio"
+                            >
+                              <input
+                                class="ant-radio-input"
+                                type="radio"
+                                value="fp_match"
+                              />
+                              <span
+                                class="ant-radio-inner"
+                              />
+                            </span>
+                            <span>
+                              whitelist.matchType.fingerPrint
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-row ant-form-item"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                  >
+                    <label
+                      class=""
                       for="desc"
                       title="whitelist.table.desc"
                     >
