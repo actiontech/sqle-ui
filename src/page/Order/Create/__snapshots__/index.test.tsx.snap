@@ -588,29 +588,69 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                   <div
                     class="ant-space-item"
                   >
+                    <span
+                      class="ant-typography ant-typography-secondary font-size-small"
+                    >
+                      audit.passRage
+                      0
+                      %
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-card-extra"
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
                     <button
                       class="ant-btn"
                       type="button"
                     >
-                      <span
-                        aria-label="sync"
-                        class="anticon anticon-sync"
-                        role="img"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          data-icon="sync"
-                          fill="currentColor"
-                          focusable="false"
-                          height="1em"
-                          viewBox="64 64 896 896"
-                          width="1em"
-                        >
-                          <path
-                            d="M168 504.2c1-43.7 10-86.1 26.9-126 17.3-41 42.1-77.7 73.7-109.4S337 212.3 378 195c42.4-17.9 87.4-27 133.9-27s91.5 9.1 133.8 27A341.5 341.5 0 01755 268.8c9.9 9.9 19.2 20.4 27.8 31.4l-60.2 47a8 8 0 003 14.1l175.7 43c5 1.2 9.9-2.6 9.9-7.7l.8-180.9c0-6.7-7.7-10.5-12.9-6.3l-56.4 44.1C765.8 155.1 646.2 92 511.8 92 282.7 92 96.3 275.6 92 503.8a8 8 0 008 8.2h60c4.4 0 7.9-3.5 8-7.8zm756 7.8h-60c-4.4 0-7.9 3.5-8 7.8-1 43.7-10 86.1-26.9 126-17.3 41-42.1 77.8-73.7 109.4A342.45 342.45 0 01512.1 856a342.24 342.24 0 01-243.2-100.8c-9.9-9.9-19.2-20.4-27.8-31.4l60.2-47a8 8 0 00-3-14.1l-175.7-43c-5-1.2-9.9 2.6-9.9 7.7l-.7 181c0 6.7 7.7 10.5 12.9 6.3l56.4-44.1C258.2 868.9 377.8 932 512.2 932c229.2 0 415.5-183.7 419.8-411.8a8 8 0 00-8-8.2z"
-                          />
-                        </svg>
+                      <span>
+                        audit.downloadReport
                       </span>
+                    </button>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <button
+                      class="ant-btn"
+                      type="button"
+                    >
+                      <span>
+                        audit.downloadSql
+                      </span>
+                    </button>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    audit.duplicate
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <button
+                      aria-checked="false"
+                      class="ant-switch"
+                      role="switch"
+                      type="button"
+                    >
+                      <div
+                        class="ant-switch-handle"
+                      />
+                      <span
+                        class="ant-switch-inner"
+                      />
                     </button>
                   </div>
                 </div>
@@ -621,7 +661,7 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
             class="ant-card-body"
           >
             <form
-              class="ant-form ant-form-horizontal table-filter-form"
+              class="ant-form ant-form-horizontal"
             >
               <div
                 class="ant-row"
@@ -635,7 +675,7 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                     class="ant-row ant-form-item"
                   >
                     <div
-                      class="ant-col ant-form-item-label"
+                      class="ant-col ant-col-7 ant-form-item-label"
                     >
                       <label
                         class=""
@@ -646,7 +686,7 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                       </label>
                     </div>
                     <div
-                      class="ant-col ant-form-item-control"
+                      class="ant-col ant-col-17 ant-form-item-control"
                     >
                       <div
                         class="ant-form-item-control-input"
@@ -655,7 +695,7 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <div
-                            class="ant-select ant-select-single ant-select-show-arrow"
+                            class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
                           >
                             <div
                               class="ant-select-selector"
@@ -672,11 +712,8 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                                   autocomplete="off"
                                   class="ant-select-selection-search-input"
                                   id="filter_audit_status"
-                                  readonly=""
                                   role="combobox"
-                                  style="opacity: 0;"
                                   type="search"
-                                  unselectable="on"
                                   value=""
                                 />
                               </span>
@@ -719,14 +756,102 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                   </div>
                 </div>
                 <div
-                  class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-0 ant-col-xl-8 ant-col-xl-offset-8 ant-col-xxl-6 ant-col-xxl-offset-12"
+                  class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
                   style="padding-left: 12px; padding-right: 12px;"
                 >
                   <div
-                    class="ant-row ant-form-item clear-margin-right"
+                    class="ant-row ant-form-item"
                   >
                     <div
-                      class="ant-col ant-form-item-control"
+                      class="ant-col ant-col-7 ant-form-item-label"
+                    >
+                      <label
+                        class=""
+                        for="filter_exec_status"
+                        title="audit.table.execStatus"
+                      >
+                        audit.table.execStatus
+                      </label>
+                    </div>
+                    <div
+                      class="ant-col ant-col-17 ant-form-item-control"
+                    >
+                      <div
+                        class="ant-form-item-control-input"
+                      >
+                        <div
+                          class="ant-form-item-control-input-content"
+                        >
+                          <div
+                            class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
+                          >
+                            <div
+                              class="ant-select-selector"
+                            >
+                              <span
+                                class="ant-select-selection-search"
+                              >
+                                <input
+                                  aria-activedescendant="filter_exec_status_list_0"
+                                  aria-autocomplete="list"
+                                  aria-controls="filter_exec_status_list"
+                                  aria-haspopup="listbox"
+                                  aria-owns="filter_exec_status_list"
+                                  autocomplete="off"
+                                  class="ant-select-selection-search-input"
+                                  id="filter_exec_status"
+                                  role="combobox"
+                                  type="search"
+                                  value=""
+                                />
+                              </span>
+                              <span
+                                class="ant-select-selection-placeholder"
+                              >
+                                common.form.placeholder.searchSelect
+                              </span>
+                            </div>
+                            <span
+                              aria-hidden="true"
+                              class="ant-select-arrow"
+                              style="user-select: none;"
+                              unselectable="on"
+                            >
+                              <span
+                                aria-label="down"
+                                class="anticon anticon-down ant-select-suffix"
+                                role="img"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="down"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                                  />
+                                </svg>
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-0 ant-col-xxl-6 ant-col-xxl-offset-6"
+                  style="padding-left: 12px; padding-right: 12px;"
+                >
+                  <div
+                    class="ant-row ant-form-item"
+                  >
+                    <div
+                      class="ant-col ant-col-24 ant-form-item-control"
                     >
                       <div
                         class="ant-form-item-control-input"
@@ -755,7 +880,7 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                             >
                               <button
                                 class="ant-btn ant-btn-primary"
-                                type="submit"
+                                type="button"
                               >
                                 <span>
                                   common.search
@@ -804,17 +929,27 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                               <th
                                 class="ant-table-cell"
                               >
-                                audit.table.execSql
-                              </th>
-                              <th
-                                class="ant-table-cell"
-                              >
                                 audit.table.auditStatus
                               </th>
                               <th
                                 class="ant-table-cell"
                               >
                                 audit.table.auditResult
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                audit.table.execSql
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                audit.table.execStatus
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                audit.table.execResult
                               </th>
                               <th
                                 class="ant-table-cell"
@@ -834,12 +969,6 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                                 class="ant-table-cell"
                               >
                                 1
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                /* input your sql */
-use aaab;
                               </td>
                               <td
                                 class="ant-table-cell"
@@ -918,6 +1047,22 @@ use aaab;
                               </td>
                               <td
                                 class="ant-table-cell"
+                              >
+                                /* input your sql */
+use aaab;
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                audit.execStatus.initialized
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                
+                              </td>
+                              <td
+                                class="ant-table-cell"
                               />
                             </tr>
                             <tr
@@ -928,11 +1073,6 @@ use aaab;
                                 class="ant-table-cell"
                               >
                                 2
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                use bbbbe;
                               </td>
                               <td
                                 class="ant-table-cell"
@@ -1008,6 +1148,21 @@ use aaab;
                                     </div>
                                   </div>
                                 </div>
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                use bbbbe;
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                audit.execStatus.initialized
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                
                               </td>
                               <td
                                 class="ant-table-cell"

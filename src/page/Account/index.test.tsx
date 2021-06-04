@@ -25,6 +25,7 @@ describe('Account', () => {
   afterEach(() => {
     jest.useRealTimers();
     jest.clearAllMocks();
+    jest.clearAllTimers();
   });
 
   test('should render user Info when request is success', async () => {

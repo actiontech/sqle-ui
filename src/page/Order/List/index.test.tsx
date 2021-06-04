@@ -11,8 +11,6 @@ import {
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
 import { createMemoryHistory } from 'history';
-import { getBySelector } from '../../../testUtils/customQuery';
-import { act } from 'react-dom/test-utils';
 
 describe('Order/List', () => {
   beforeEach(() => {

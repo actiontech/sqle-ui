@@ -6,6 +6,10 @@ import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
 import { allRules } from '../../Rule/__testData__';
 
 describe('RuleTemplate/RuleTemplateForm', () => {
+  afterAll(() => {
+    jest.clearAllTimers();
+  });
+
   test('should match snapshot', () => {
     const { result } = renderHook(() => useForm());
     const { container } = renderWithThemeAndRouter(
