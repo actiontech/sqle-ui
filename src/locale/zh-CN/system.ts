@@ -5,6 +5,7 @@ export default {
 
   title: {
     smtp: 'SMTP',
+    global: '全局配置',
   },
 
   smtp: {
@@ -13,5 +14,9 @@ export default {
     username: 'SMTP用户名',
     password: 'SMTP密码',
     passwordConfirm: '确认SMTP密码',
+  },
+
+  global: {
+    orderExpiredHours: '已完成的工单回收周期',
   },
 };

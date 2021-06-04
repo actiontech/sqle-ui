@@ -1,5 +1,6 @@
 import { PageHeader, Space } from 'antd';
 import { useTranslation } from 'react-i18next';
+import GlobalSetting from './GlobalSetting';
 import SMTPSetting from './SMTPSetting';
 
 const System = () => {
@@ -13,6 +14,7 @@ const System = () => {
       <section className="padding-content">
         <Space direction="vertical" className="full-width-element">
           <SMTPSetting />
+          <GlobalSetting />
         </Space>
       </section>
     </>
