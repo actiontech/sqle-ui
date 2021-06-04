@@ -1,5 +1,5 @@
 import { FormInstance } from 'antd';
-import { IGetAuditTaskSQLsV1Params } from '../../../../../api/task/index.d';
+import { IGetAuditTaskSQLsV1Params } from '../../../../api/task/index.d';
 
 export type FilterFormProps = {
   form: FormInstance<OrderAuditResultFilterFields>;

@@ -26,7 +26,7 @@ import EmitterKey from '../../../data/EmitterKey';
 import { Theme } from '../../../types/theme.type';
 import EventEmitter from '../../../utils/EventEmitter';
 import { nameRule } from '../../../utils/FormRule';
-import AuditResult from './AuditResult';
+import AuditResult from '../AuditResult';
 import SqlInfoForm from './SqlInfoForm';
 import { SqlInfoFormFields } from './SqlInfoForm/index.type';
 
@@ -36,15 +36,12 @@ const CreateOrder = () => {
   const [baseForm] = useForm();
   const [sqlInfoForm] = useForm<SqlInfoFormFields>();
   const [hasDirtyData, { toggle: toggleHasDirtyData }] = useToggle(false);
-  const [
-    createLoading,
-    { setTrue: startCreate, setFalse: createFinish },
-  ] = useBoolean();
+  const [createLoading, { setTrue: startCreate, setFalse: createFinish }] =
+    useBoolean();
   const [visible, { setTrue: openModal, setFalse: closeModal }] = useBoolean();
 
-  const [taskInfo, setTaskInfo] = React.useState<IAuditTaskResV1 | undefined>(
-    undefined
-  );
+  const [taskInfo, setTaskInfo] =
+    React.useState<IAuditTaskResV1 | undefined>(undefined);
 
   const auditSql = React.useCallback(async (values: SqlInfoFormFields) => {
     const res = await task.createAndAuditTaskV1({
@@ -163,7 +160,10 @@ const CreateOrder = () => {
             updateDirtyData={toggleHasDirtyData}
           />
           <EmptyBox if={!!taskInfo}>
-            <AuditResult task={taskInfo} />
+            <AuditResult
+              taskId={taskInfo?.task_id}
+              passRate={taskInfo?.pass_rate}
+            />
           </EmptyBox>
           <Card className="text-align-right">
             <Space>

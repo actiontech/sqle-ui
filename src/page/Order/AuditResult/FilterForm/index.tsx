@@ -6,17 +6,15 @@ import {
   FilterFormRowLayout,
   FilterFormColLayout,
   filterFormButtonLayoutFactory,
-} from '../../../../../data/common';
-import useStaticStatus from '../../../../../hooks/useStaticStatus';
+} from '../../../../data/common';
+import useStaticStatus from '../../../../hooks/useStaticStatus';
 import { FilterFormProps, OrderAuditResultFilterFields } from './index.type';
 
 const FilterForm: React.FC<FilterFormProps> = (props) => {
   const { t } = useTranslation();
 
-  const {
-    generateAuditStatusSelectOption,
-    generateExecStatusSelectOption,
-  } = useStaticStatus();
+  const { generateAuditStatusSelectOption, generateExecStatusSelectOption } =
+    useStaticStatus();
 
   return (
     <Form<OrderAuditResultFilterFields> {...FilterFormLayout} form={props.form}>

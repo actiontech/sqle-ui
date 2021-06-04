@@ -1,15 +1,15 @@
-import { IAuditTaskSQLResV1 } from '../../../../api/common';
+import { IAuditTaskSQLResV1 } from '../../../api/common';
 import {
   getAuditTaskSQLsV1FilterAuditStatusEnum,
   getAuditTaskSQLsV1FilterExecStatusEnum,
-} from '../../../../api/task/index.enum';
-import AuditResultErrorMessage from '../../../../components/AuditResultErrorMessage';
+} from '../../../api/task/index.enum';
+import AuditResultErrorMessage from '../../../components/AuditResultErrorMessage';
 import {
   auditStatusDictionary,
   execStatusDictionary,
-} from '../../../../hooks/useStaticStatus/index.data';
-import i18n from '../../../../locale';
-import { TableColumn } from '../../../../types/common.type';
+} from '../../../hooks/useStaticStatus/index.data';
+import i18n from '../../../locale';
+import { TableColumn } from '../../../types/common.type';
 
 export const orderAuditResultColumn = (): TableColumn<IAuditTaskSQLResV1> => {
   return [

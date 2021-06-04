@@ -22,7 +22,7 @@ import OrderStatusTag from '../../../components/OrderStatusTag';
 import { ResponseCode } from '../../../data/common';
 import { Theme } from '../../../types/theme.type';
 import { formatTime } from '../../../utils/Common';
-import AuditResult from './AuditResult';
+import AuditResult from '../AuditResult';
 import ModifySqlModal from './Modal/ModifySqlModal';
 import OrderHistory from './Modal/OrderHistory';
 import OrderSteps from './OrderSteps';

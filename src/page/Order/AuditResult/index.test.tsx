@@ -1,9 +1,9 @@
 import { fireEvent, render, waitFor, screen } from '@testing-library/react';
 import AuditResult from '.';
-import task from '../../../../api/task';
-import { getBySelector } from '../../../../testUtils/customQuery';
-import { resolveThreeSecond } from '../../../../testUtils/mockRequest';
-import { taskSqls } from '../__testData__';
+import task from '../../../api/task';
+import { getBySelector } from '../../../testUtils/customQuery';
+import { resolveThreeSecond } from '../../../testUtils/mockRequest';
+import { taskSqls } from '../Detail/__testData__';
 
 describe('Order/Detail/AuditResult', () => {
   beforeEach(() => {

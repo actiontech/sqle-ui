@@ -57,7 +57,7 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
   test('should jump to next step when use input all require fields', async () => {
     const createTemplateSpy = mockCreateTemplate();
     const history = createMemoryHistory();
-    const { container, debug } = renderWithThemeAndServerRouter(
+    const { container } = renderWithThemeAndServerRouter(
       <CreateRuleTemplate />,
       undefined,
       {
