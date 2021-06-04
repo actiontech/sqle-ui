@@ -49,6 +49,10 @@ export default {
     noticeFailTitle: '请求错误',
   },
 
+  time: {
+    hour: '小时',
+  },
+
   form: {
     placeholder: {
       input: '请输入{{name}}',

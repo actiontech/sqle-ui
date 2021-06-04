@@ -16,6 +16,7 @@ exports[`System should match snapshot 1`] = `
       direction="vertical"
     >
       <SMTPSetting />
+      <GlobalSetting />
     </Space>
   </section>
 </Fragment>
