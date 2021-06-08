@@ -15,11 +15,6 @@ import { SupportTheme } from '../../../theme';
 import EventEmitter from '../../../utils/EventEmitter';
 import { taskInfo, taskSqls } from '../Detail/__testData__';
 
-// https://github.com/react-monaco-editor/react-monaco-editor/issues/176
-jest.mock('react-monaco-editor', () => {
-  return (props: any) => <input {...props} />;
-});
-
 describe('Order/Create', () => {
   beforeEach(() => {
     jest.useFakeTimers();

@@ -19,6 +19,7 @@ import EmitterKey from '../../../../data/EmitterKey';
 import useChangeTheme from '../../../../hooks/useChangeTheme';
 import useInstance from '../../../../hooks/useInstance';
 import useInstanceSchema from '../../../../hooks/useInstanceSchema';
+import useMonacoEditor from '../../../../hooks/useMonacoEditor';
 import useStyles from '../../../../theme';
 import { getFileFromUploadChangeEvent } from '../../../../utils/Common';
 import EventEmitter from '../../../../utils/EventEmitter';
@@ -39,29 +40,25 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   const [currentSQLInputType, setCurrentSQLInputTYpe] = React.useState(
     SQLInputType.manualInput
   );
-  const [instanceName, setInstanceName] = React.useState<string | undefined>(
-    undefined
-  );
-  const [
-    submitLoading,
-    { setTrue: startSubmit, setFalse: submitFinish },
-  ] = useBoolean();
+  const [instanceName, setInstanceName] =
+    React.useState<string | undefined>(undefined);
+  const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
+    useBoolean();
 
   const [connectAble, { toggle: setConnectAble }] = useBoolean();
   const [
     connectInitHide,
     { setTrue: setConnectInitHideTrue, setFalse: setConnectInitHideFalse },
   ] = useBoolean(true);
-  const [
-    testLoading,
-    { setTrue: testStart, setFalse: testFinish },
-  ] = useBoolean();
+  const [testLoading, { setTrue: testStart, setFalse: testFinish }] =
+    useBoolean();
   const [connectErrorMessage, setConnectErrorMessage] = React.useState('');
 
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
-  const { generateInstanceSchemaSelectOption } = useInstanceSchema(
-    instanceName
-  );
+  const { generateInstanceSchemaSelectOption } =
+    useInstanceSchema(instanceName);
+
+  const { editorDidMount } = useMonacoEditor(props.form, { formName: 'sql' });
 
   const currentSQLInputTypeChange = React.useCallback(
     (event: RadioChangeEvent) => {
@@ -237,6 +234,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
                 width="100%"
                 height="500"
                 language="sql"
+                editorDidMount={editorDidMount}
               />
             </Form.Item>
           </EmptyBox>

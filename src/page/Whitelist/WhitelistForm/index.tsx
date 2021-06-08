@@ -7,6 +7,7 @@ import useStyles from '../../../theme';
 import { WhitelistFormProps } from './index.type';
 import { CreateAuditWhitelistReqV1MatchTypeEnum } from '../../../api/common.enum';
 import { I18nKey } from '../../../types/common.type';
+import useMonacoEditor from '../../../hooks/useMonacoEditor';
 
 export const WhitelistMatchTypeLabel: {
   [key in CreateAuditWhitelistReqV1MatchTypeEnum]: I18nKey;
@@ -21,6 +22,8 @@ const WhitelistForm: React.FC<WhitelistFormProps> = (props) => {
   const { t } = useTranslation();
   const styles = useStyles();
   const { currentEditorTheme } = useChangeTheme();
+
+  const { editorDidMount } = useMonacoEditor(props.form, { formName: 'sql' });
 
   return (
     <Form form={props.form} {...ModalFormLayout}>
@@ -75,6 +78,7 @@ const WhitelistForm: React.FC<WhitelistFormProps> = (props) => {
           width="100%"
           height="500"
           language="sql"
+          editorDidMount={editorDidMount}
         />
       </Form.Item>
     </Form>

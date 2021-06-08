@@ -18,11 +18,6 @@ import {
 import { SupportTheme } from '../../../../theme';
 import EventEmitter from '../../../../utils/EventEmitter';
 
-// https://github.com/react-monaco-editor/react-monaco-editor/issues/176
-jest.mock('react-monaco-editor', () => {
-  return (props: any) => <input {...props} />;
-});
-
 describe('order/create/sqlInfoForm', () => {
   beforeEach(() => {
     jest.useFakeTimers();
