@@ -29,11 +29,6 @@ jest.mock('react-router', () => {
   };
 });
 
-// https://github.com/react-monaco-editor/react-monaco-editor/issues/176
-jest.mock('react-monaco-editor', () => {
-  return (props: any) => <input {...props} />;
-});
-
 describe('Order/Detail', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
 

@@ -16,7 +16,10 @@ import { UpdateAuditWhitelistReqV1MatchTypeEnum } from '../../../../../api/commo
 
 // https://github.com/react-monaco-editor/react-monaco-editor/issues/176
 jest.mock('react-monaco-editor', () => {
-  return (props: any) => <textarea {...props} />;
+  return (props: any) => {
+    const { editorDidMount, ...otherProps } = props;
+    return <textarea {...otherProps} />;
+  };
 });
 
 describe('Whitelist/WhitelistList/Modal/UpdateWhitelist', () => {

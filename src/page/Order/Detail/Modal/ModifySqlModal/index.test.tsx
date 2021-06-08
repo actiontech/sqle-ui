@@ -12,11 +12,6 @@ import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
 import { SupportTheme } from '../../../../../theme';
 import { taskInfo } from '../../__testData__';
 
-// https://github.com/react-monaco-editor/react-monaco-editor/issues/176
-jest.mock('react-monaco-editor', () => {
-  return (props: any) => <input {...props} />;
-});
-
 describe('Order/Detail/Modal/ModifySqlModal', () => {
   beforeEach(() => {
     jest.useFakeTimers();

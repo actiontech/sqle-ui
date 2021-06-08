@@ -24,6 +24,9 @@ module.exports = {
         '!src/data/**/*.{ts,tsx}',
         '!src/reportWebVitals.ts',
       ],
+      moduleNameMapper: {
+        'monaco-editor': '<rootDir>/src/testUtils/mockEditor.jsx',
+      },
     },
   },
   plugins: [

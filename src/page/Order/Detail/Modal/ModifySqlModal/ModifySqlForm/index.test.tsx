@@ -11,11 +11,6 @@ import {
 } from '../../../../../../testUtils/mockRedux';
 import { SupportTheme } from '../../../../../../theme';
 
-// https://github.com/react-monaco-editor/react-monaco-editor/issues/176
-jest.mock('react-monaco-editor', () => {
-  return (props: any) => <input {...props} />;
-});
-
 describe('Order/Detail/Modal/ModifySqlModal/ModifySqlForm', () => {
   let tempWarnConsole: typeof console.warn;
 

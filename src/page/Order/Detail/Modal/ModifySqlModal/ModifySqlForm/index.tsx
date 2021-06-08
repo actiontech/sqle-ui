@@ -5,6 +5,7 @@ import MonacoEditor from 'react-monaco-editor';
 import EmptyBox from '../../../../../../components/EmptyBox';
 import { ModalFormLayout } from '../../../../../../data/common';
 import useChangeTheme from '../../../../../../hooks/useChangeTheme';
+import useMonacoEditor from '../../../../../../hooks/useMonacoEditor';
 import useStyles from '../../../../../../theme';
 import { getFileFromUploadChangeEvent } from '../../../../../../utils/Common';
 import { SQLInputType } from '../../../../Create/SqlInfoForm';
@@ -17,6 +18,8 @@ const ModifySqlForm: React.FC<ModifySqlFormProps> = (props) => {
   const [currentSQLInputType, setCurrentSQLInputTYpe] = React.useState(
     SQLInputType.manualInput
   );
+
+  const { editorDidMount } = useMonacoEditor(props.form, { formName: 'sql' });
 
   const currentSQLInputTypeChange = React.useCallback(
     (event: RadioChangeEvent) => {
@@ -67,6 +70,7 @@ const ModifySqlForm: React.FC<ModifySqlFormProps> = (props) => {
             width="100%"
             height="500"
             language="sql"
+            editorDidMount={editorDidMount}
           />
         </Form.Item>
       </EmptyBox>
