@@ -3,6 +3,7 @@ import { IAuditWhitelistResV1 } from '../../../api/common.d';
 import { CreateAuditWhitelistReqV1MatchTypeEnum } from '../../../api/common.enum';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
+import HighlightCode from '../../../utils/HighlightCode';
 import { WhitelistMatchTypeLabel } from '../WhitelistForm';
 
 export const WhitelistColumn = (
@@ -13,6 +14,18 @@ export const WhitelistColumn = (
     {
       dataIndex: 'value',
       title: () => i18n.t('whitelist.table.sql'),
+      render: (sql?: string) => {
+        if (!!sql) {
+          return (
+            <pre
+              dangerouslySetInnerHTML={{
+                __html: HighlightCode.highlightSql(sql),
+              }}
+            />
+          );
+        }
+        return null;
+      },
     },
     {
       dataIndex: 'desc',
