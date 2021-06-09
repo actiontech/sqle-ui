@@ -69,7 +69,7 @@ export enum WorkflowDetailResV1TaskStatusEnum {
 
   'executing' = 'executing',
 
-  'exec_success' = 'exec_success',
+  'exec_succeeded' = 'exec_succeeded',
 
   'exec_failed' = 'exec_failed'
 }

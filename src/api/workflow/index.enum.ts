@@ -23,7 +23,7 @@ export enum getWorkflowListV1FilterTaskStatusEnum {
 
   'executing' = 'executing',
 
-  'exec_success' = 'exec_success',
+  'exec_succeeded' = 'exec_succeeded',
 
   'exec_failed' = 'exec_failed'
 }
