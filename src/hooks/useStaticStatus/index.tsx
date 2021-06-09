@@ -193,12 +193,12 @@ const useStaticStatus = () => {
           )}
         </Select.Option>
         <Select.Option
-          key={getWorkflowListV1FilterTaskStatusEnum.exec_success}
-          value={getWorkflowListV1FilterTaskStatusEnum.exec_success}
+          key={getWorkflowListV1FilterTaskStatusEnum.exec_succeeded}
+          value={getWorkflowListV1FilterTaskStatusEnum.exec_succeeded}
         >
           {t(
             sqlTaskStatusDictionary[
-              getWorkflowListV1FilterTaskStatusEnum.exec_success
+              getWorkflowListV1FilterTaskStatusEnum.exec_succeeded
             ]
           )}
         </Select.Option>
