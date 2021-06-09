@@ -392,8 +392,15 @@ exports[`Whitelist/WhitelistList should init modal state at component init 2`] =
                           <td
                             class="ant-table-cell"
                           >
-                            /* input your sql */
+                            <pre>
+                              <span
+                                class="hljs-comment"
+                              >
+                                /* input your sql */
+                              </span>
+                              
 use aaa;
+                            </pre>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -449,7 +456,18 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
-                            /* input your sql */123123
+                            <pre>
+                              <span
+                                class="hljs-comment"
+                              >
+                                /* input your sql */
+                              </span>
+                              <span
+                                class="hljs-number"
+                              >
+                                123123
+                              </span>
+                            </pre>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -503,10 +521,12 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
-                            
+                            <pre>
+                              
 use aaa;
 
 use aaa;
+                            </pre>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -562,10 +582,12 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
-                            
+                            <pre>
+                              
 use aaa;
 
 use aaa;
+                            </pre>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -621,10 +643,12 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
-                            
+                            <pre>
+                              
 use aaa;
 
 use aaa;
+                            </pre>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -680,10 +704,12 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
-                            
+                            <pre>
+                              
 use aaa;
 
 use aaa;
+                            </pre>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -737,10 +763,12 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
-                            
+                            <pre>
+                              
 use aaa;
 
 use aaa;
+                            </pre>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -796,10 +824,12 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
-                            
+                            <pre>
+                              
 use aaa;
 
 use aaa;
+                            </pre>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -855,10 +885,12 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
-                            
+                            <pre>
+                              
 use aaa;
 
 use aaa;
+                            </pre>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -914,10 +946,12 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
-                            
+                            <pre>
+                              
 use aaa;
 
 use aaa;
+                            </pre>
                           </td>
                           <td
                             class="ant-table-cell"

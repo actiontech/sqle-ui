@@ -331,4 +331,27 @@ export const taskSqls = [
     exec_result: '',
     exec_status: 'initialized',
   },
+  {
+    number: 3,
+    exec_sql: `CREATE TABLE \`tasks\` (
+      \`id\` int(10) unsigned NOT NULL AUTO_INCREMENT,
+      \`created_at\` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+      \`updated_at\` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      \`deleted_at\` timestamp NULL DEFAULT NULL,
+      \`instance_id\` int(10) unsigned DEFAULT NULL,
+      \`instance_schema\` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      \`pass_rate\` double DEFAULT NULL,
+      \`sql_type\` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      \`sql_source\` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      \`status\` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'initialized',
+      \`create_user_id\` int(10) unsigned DEFAULT NULL,
+      PRIMARY KEY (\`id\`),
+      KEY \`idx_tasks_deleted_at\` (\`deleted_at\`)
+      ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`,
+    audit_result: '[error]schema bbbbe 不存在',
+    audit_level: 'error',
+    audit_status: 'finished',
+    exec_result: '',
+    exec_status: 'initialized',
+  },
 ];

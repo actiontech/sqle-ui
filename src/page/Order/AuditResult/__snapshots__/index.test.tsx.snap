@@ -975,8 +975,15 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
                         <td
                           class="ant-table-cell"
                         >
-                          /* input your sql */
+                          <pre>
+                            <span
+                              class="hljs-comment"
+                            >
+                              /* input your sql */
+                            </span>
+                            
 use aaab;
+                          </pre>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1079,7 +1086,485 @@ use aaab;
                         <td
                           class="ant-table-cell"
                         >
-                          use bbbbe;
+                          <pre>
+                            use bbbbe;
+                          </pre>
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          audit.execStatus.initialized
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        />
+                      </tr>
+                      <tr
+                        class="ant-table-row ant-table-row-level-0"
+                        data-row-key="3"
+                      >
+                        <td
+                          class="ant-table-cell"
+                        >
+                          3
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          audit.auditStatus.finished
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          <div
+                            class="ant-space ant-space-vertical audit-result-error-message-wrapper"
+                          >
+                            <div
+                              class="ant-space-item"
+                            >
+                              <div
+                                class="ant-row ant-row-no-wrap"
+                              >
+                                <div
+                                  class="ant-col"
+                                  style="flex: 0 0 50px;"
+                                >
+                                  <div
+                                    class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                                  >
+                                    <div
+                                      class="ant-space-item"
+                                      style="margin-bottom: 1px;"
+                                    >
+                                      <div>
+                                        <span
+                                          aria-label="info-circle"
+                                          class="anticon anticon-info-circle"
+                                          role="img"
+                                          style="font-size: 25px; color: rgb(240, 0, 0);"
+                                        >
+                                          <svg
+                                            aria-hidden="true"
+                                            data-icon="info-circle"
+                                            fill="currentColor"
+                                            focusable="false"
+                                            height="1em"
+                                            viewBox="64 64 896 896"
+                                            width="1em"
+                                          >
+                                            <path
+                                              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                            />
+                                            <path
+                                              d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                            />
+                                          </svg>
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="ant-space-item"
+                                    >
+                                      <span
+                                        class="ant-typography ant-typography-secondary"
+                                      >
+                                        error
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="ant-col message"
+                                  style="flex: 1 1 auto;"
+                                >
+                                  schema bbbbe 不存在
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          <pre>
+                            <span
+                              class="hljs-keyword"
+                            >
+                              CREATE
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              TABLE
+                            </span>
+                             \`tasks\` (
+      \`id\` 
+                            <span
+                              class="hljs-type"
+                            >
+                              int
+                            </span>
+                            (
+                            <span
+                              class="hljs-number"
+                            >
+                              10
+                            </span>
+                            ) unsigned 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              NOT
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              NULL
+                            </span>
+                             AUTO_INCREMENT,
+      \`created_at\` 
+                            <span
+                              class="hljs-type"
+                            >
+                              timestamp
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              NULL
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              DEFAULT
+                            </span>
+                             
+                            <span
+                              class="hljs-built_in"
+                            >
+                              CURRENT_TIMESTAMP
+                            </span>
+                            ,
+      \`updated_at\` 
+                            <span
+                              class="hljs-type"
+                            >
+                              timestamp
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              NULL
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              DEFAULT
+                            </span>
+                             
+                            <span
+                              class="hljs-built_in"
+                            >
+                              CURRENT_TIMESTAMP
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              ON
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              UPDATE
+                            </span>
+                             
+                            <span
+                              class="hljs-built_in"
+                            >
+                              CURRENT_TIMESTAMP
+                            </span>
+                            ,
+      \`deleted_at\` 
+                            <span
+                              class="hljs-type"
+                            >
+                              timestamp
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              NULL
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              DEFAULT
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              NULL
+                            </span>
+                            ,
+      \`instance_id\` 
+                            <span
+                              class="hljs-type"
+                            >
+                              int
+                            </span>
+                            (
+                            <span
+                              class="hljs-number"
+                            >
+                              10
+                            </span>
+                            ) unsigned 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              DEFAULT
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              NULL
+                            </span>
+                            ,
+      \`instance_schema\` 
+                            <span
+                              class="hljs-type"
+                            >
+                              varchar
+                            </span>
+                            (
+                            <span
+                              class="hljs-number"
+                            >
+                              255
+                            </span>
+                            ) 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              COLLATE
+                            </span>
+                             utf8mb4_unicode_ci 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              DEFAULT
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              NULL
+                            </span>
+                            ,
+      \`pass_rate\` 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              double
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              DEFAULT
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              NULL
+                            </span>
+                            ,
+      \`sql_type\` 
+                            <span
+                              class="hljs-type"
+                            >
+                              varchar
+                            </span>
+                            (
+                            <span
+                              class="hljs-number"
+                            >
+                              255
+                            </span>
+                            ) 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              COLLATE
+                            </span>
+                             utf8mb4_unicode_ci 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              DEFAULT
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              NULL
+                            </span>
+                            ,
+      \`sql_source\` 
+                            <span
+                              class="hljs-type"
+                            >
+                              varchar
+                            </span>
+                            (
+                            <span
+                              class="hljs-number"
+                            >
+                              255
+                            </span>
+                            ) 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              COLLATE
+                            </span>
+                             utf8mb4_unicode_ci 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              DEFAULT
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              NULL
+                            </span>
+                            ,
+      \`status\` 
+                            <span
+                              class="hljs-type"
+                            >
+                              varchar
+                            </span>
+                            (
+                            <span
+                              class="hljs-number"
+                            >
+                              255
+                            </span>
+                            ) 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              COLLATE
+                            </span>
+                             utf8mb4_unicode_ci 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              DEFAULT
+                            </span>
+                             
+                            <span
+                              class="hljs-string"
+                            >
+                              'initialized'
+                            </span>
+                            ,
+      \`create_user_id\` 
+                            <span
+                              class="hljs-type"
+                            >
+                              int
+                            </span>
+                            (
+                            <span
+                              class="hljs-number"
+                            >
+                              10
+                            </span>
+                            ) unsigned 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              DEFAULT
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              NULL
+                            </span>
+                            ,
+      
+                            <span
+                              class="hljs-keyword"
+                            >
+                              PRIMARY
+                            </span>
+                             KEY (\`id\`),
+      KEY \`idx_tasks_deleted_at\` (\`deleted_at\`)
+      ) ENGINE
+                            <span
+                              class="hljs-operator"
+                            >
+                              =
+                            </span>
+                            InnoDB AUTO_INCREMENT
+                            <span
+                              class="hljs-operator"
+                            >
+                              =
+                            </span>
+                            <span
+                              class="hljs-number"
+                            >
+                              4
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              DEFAULT
+                            </span>
+                             CHARSET
+                            <span
+                              class="hljs-operator"
+                            >
+                              =
+                            </span>
+                            utf8mb4 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              COLLATE
+                            </span>
+                            <span
+                              class="hljs-operator"
+                            >
+                              =
+                            </span>
+                            utf8mb4_unicode_ci
+                          </pre>
                         </td>
                         <td
                           class="ant-table-cell"
