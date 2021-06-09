@@ -10,6 +10,7 @@ import {
 } from '../../../hooks/useStaticStatus/index.data';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
+import HighlightCode from '../../../utils/HighlightCode';
 
 export const orderAuditResultColumn = (): TableColumn<IAuditTaskSQLResV1> => {
   return [
@@ -34,6 +35,18 @@ export const orderAuditResultColumn = (): TableColumn<IAuditTaskSQLResV1> => {
     {
       dataIndex: 'exec_sql',
       title: () => i18n.t('audit.table.execSql'),
+      render: (sql?: string) => {
+        if (!!sql) {
+          return (
+            <pre
+              dangerouslySetInnerHTML={{
+                __html: HighlightCode.highlightSql(sql),
+              }}
+            ></pre>
+          );
+        }
+        return null;
+      },
     },
     {
       dataIndex: 'exec_status',
@@ -49,6 +62,18 @@ export const orderAuditResultColumn = (): TableColumn<IAuditTaskSQLResV1> => {
     {
       dataIndex: 'rollback_sql',
       title: () => i18n.t('audit.table.rollback'),
+      render: (sql?: string) => {
+        if (!!sql) {
+          return (
+            <pre
+              dangerouslySetInnerHTML={{
+                __html: HighlightCode.highlightSql(sql),
+              }}
+            ></pre>
+          );
+        }
+        return null;
+      },
     },
   ];
 };

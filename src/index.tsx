@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import './locale';
 
+import './utils/HighlightCode';
 import './index.less';
 
 ReactDOM.render(
