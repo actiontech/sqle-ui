@@ -17,7 +17,7 @@ import instance from '../../../api/instance';
 import { IUpdateInstanceV1Params } from '../../../api/instance/index.d';
 import BackButton from '../../../components/BackButton';
 import EmptyBox from '../../../components/EmptyBox';
-import { ResponseCode } from '../../../data/common';
+import { PageFormLayout, ResponseCode } from '../../../data/common';
 import DataSourceForm from '../DataSourceForm';
 import { DataSourceFormField } from '../DataSourceForm/index.type';
 import { UpdateDataSourceUrlParams } from './index.type';
@@ -31,10 +31,8 @@ const UpdateDataSource = () => {
   const [initError, setInitError] = React.useState('');
   const [retryLoading, { toggle: setRetryLoading }] = useBoolean(false);
 
-  const [
-    loading,
-    { setTrue: setLoadingTrue, setFalse: setLoadingFalse },
-  ] = useBoolean();
+  const [loading, { setTrue: setLoadingTrue, setFalse: setLoadingFalse }] =
+    useBoolean();
 
   const updateDatabase = React.useCallback(async () => {
     const values = await form.validateFields();
@@ -130,7 +128,10 @@ const UpdateDataSource = () => {
       >
         <DataSourceForm form={form} isUpdate={true} />
         <Row>
-          <Col xs={{ offset: 0 }} sm={{ offset: 7 }}>
+          <Col
+            xs={{ offset: 0 }}
+            sm={{ offset: PageFormLayout.labelCol.sm.span }}
+          >
             <Space>
               <Button type="primary" onClick={updateDatabase} loading={loading}>
                 {t('common.submit')}
