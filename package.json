@@ -62,5 +62,8 @@
       "last 1 safari version"
     ]
   },
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "proxy": "http://10.186.62.5:10000"
 }
