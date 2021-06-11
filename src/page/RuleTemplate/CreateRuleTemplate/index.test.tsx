@@ -37,16 +37,23 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
     return spy;
   };
 
-  test('should render base form at init', () => {
+  test('should render base form at init', async () => {
     const { container } = renderWithThemeAndRouter(<CreateRuleTemplate />);
+    expect(container).toMatchSnapshot();
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
     expect(container).toMatchSnapshot();
   });
 
-  test('should jump to /rule/template when user click back btn', () => {
+  test('should jump to /rule/template when user click back btn', async () => {
     const history = createMemoryHistory();
 
     renderWithThemeAndServerRouter(<CreateRuleTemplate />, undefined, {
       history,
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
     });
     expect(history.location.pathname).toBe('/');
     expect(screen.getByText('common.back')).toBeInTheDocument();
@@ -54,7 +61,7 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
     expect(history.location.pathname).toBe('/rule/template');
   });
 
-  test('should jump to next step when use input all require fields', async () => {
+  test('should jump to next step when user input all require fields', async () => {
     const createTemplateSpy = mockCreateTemplate();
     const history = createMemoryHistory();
     const { container } = renderWithThemeAndServerRouter(
@@ -138,6 +145,7 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
       instance_name_list: ['instance1'],
       rule_name_list: resultRuleName,
     });
+    jest.advanceTimersByTime(0);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
