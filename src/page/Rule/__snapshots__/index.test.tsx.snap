@@ -200,47 +200,6 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                 <div
                   class="ant-spin-container"
                 >
-                  <div
-                    class="ant-list-empty-text"
-                  >
-                    ruleTemplate.ruleTemplateForm.emptyRule
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="ant-divider ant-divider-horizontal ant-divider-dashed"
-              role="separator"
-            />
-            <div
-              class="ant-descriptions"
-            >
-              <div
-                class="ant-descriptions-header"
-              >
-                <div
-                  class="ant-descriptions-title"
-                >
-                  rule.disableRules
-                </div>
-              </div>
-              <div
-                class="ant-descriptions-view"
-              >
-                <table>
-                  <tbody />
-                </table>
-              </div>
-            </div>
-            <div
-              class="ant-list ant-list-split"
-            >
-              <div
-                class="ant-spin-nested-loading"
-              >
-                <div
-                  class="ant-spin-container"
-                >
                   <ul
                     class="ant-list-items"
                   >
@@ -4020,6 +3979,46 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                         style="flex: 0 0 20%;"
                       />
                     </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-divider ant-divider-horizontal ant-divider-dashed"
+              role="separator"
+            />
+            <div
+              class="ant-descriptions"
+            >
+              <div
+                class="ant-descriptions-header"
+              >
+                <div
+                  class="ant-descriptions-title"
+                >
+                  rule.disableRules
+                </div>
+              </div>
+              <div
+                class="ant-descriptions-view"
+              >
+                <table>
+                  <tbody />
+                </table>
+              </div>
+            </div>
+            <div
+              class="ant-list ant-list-split"
+            >
+              <div
+                class="ant-spin-nested-loading"
+              >
+                <div
+                  class="ant-spin-container"
+                >
+                  <ul
+                    class="ant-list-items"
+                  >
                     <li
                       class="ant-list-item"
                     >

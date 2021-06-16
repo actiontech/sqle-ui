@@ -3,7 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { IRuleResV1 } from '../../../../api/common';
 import RuleList from '../../../../components/RuleList';
-import { RuleSelectProps } from './index.typ';
+import { RuleSelectProps } from './index.type';
 
 const RuleSelect: React.FC<RuleSelectProps> = (props) => {
   const { t } = useTranslation();

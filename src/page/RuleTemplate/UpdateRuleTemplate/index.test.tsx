@@ -1,6 +1,7 @@
-import CreateRuleTemplate from '.';
+import { waitFor, screen, fireEvent } from '@testing-library/react';
+import { useParams } from 'react-router-dom';
+import UpdateRuleTemplate from '.';
 import rule_template from '../../../api/rule_template';
-import { fireEvent, screen, waitFor } from '@testing-library/react';
 import {
   renderWithThemeAndRouter,
   renderWithThemeAndServerRouter,
@@ -9,14 +10,25 @@ import {
   mockUseInstance,
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
+import { ruleTemplateData } from '../__testData__';
 import { createMemoryHistory } from 'history';
 import { allRules } from '../../Rule/__testData__';
 
-describe('RuleTemplate/CreateRuleTemplate', () => {
+jest.mock('react-router', () => {
+  return {
+    ...jest.requireActual('react-router'),
+    useParams: jest.fn(),
+  };
+});
+
+describe('UpdateRuleTemplate', () => {
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
   beforeEach(() => {
     jest.useFakeTimers();
-    mockUseInstance();
+    useParamsMock.mockReturnValue({ templateName: 'template_name1' });
+    mockGetRuleTemplate();
     mockGetAllRules();
+    mockUseInstance();
   });
 
   afterEach(() => {
@@ -31,14 +43,20 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
     return spy;
   };
 
-  const mockCreateTemplate = () => {
-    const spy = jest.spyOn(rule_template, 'createRuleTemplateV1');
+  const mockGetRuleTemplate = () => {
+    const spy = jest.spyOn(rule_template, 'getRuleTemplateV1');
+    spy.mockImplementation(() => resolveThreeSecond(ruleTemplateData));
+    return spy;
+  };
+
+  const mockUpdateRuleTemplate = () => {
+    const spy = jest.spyOn(rule_template, 'updateRuleTemplateV1');
     spy.mockImplementation(() => resolveThreeSecond({}));
     return spy;
   };
 
   test('should render base form at init', async () => {
-    const { container } = renderWithThemeAndRouter(<CreateRuleTemplate />);
+    const { container } = renderWithThemeAndRouter(<UpdateRuleTemplate />);
     expect(container).toMatchSnapshot();
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -49,7 +67,7 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
   test('should jump to /rule/template when user click back btn', async () => {
     const history = createMemoryHistory();
 
-    renderWithThemeAndServerRouter(<CreateRuleTemplate />, undefined, {
+    renderWithThemeAndServerRouter(<UpdateRuleTemplate />, undefined, {
       history,
     });
     await waitFor(() => {
@@ -62,8 +80,8 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
   });
 
   test('should jump to next step when user input all require fields', async () => {
-    const createTemplateSpy = mockCreateTemplate();
-    const { container } = renderWithThemeAndRouter(<CreateRuleTemplate />);
+    const updateTemplateSpy = mockUpdateRuleTemplate();
+    renderWithThemeAndRouter(<UpdateRuleTemplate />);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -129,31 +147,19 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
 
     fireEvent.click(screen.getByText('common.submit'));
 
-    expect(createTemplateSpy).toBeCalledTimes(1);
+    expect(updateTemplateSpy).toBeCalledTimes(1);
     const resultRuleName = allRules.map((e) => e.rule_name);
     resultRuleName.shift();
-    expect(createTemplateSpy).toBeCalledWith({
+    expect(updateTemplateSpy).toBeCalledWith({
       rule_template_name: 'testRuleTemplateId',
       desc: 'rule template desc',
       instance_name_list: ['instance1'],
       rule_name_list: resultRuleName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    expect(screen.getByTestId('rule-list')).toHaveAttribute('hidden');
-    expect(screen.getByTestId('submit-result')).not.toHaveAttribute('hidden');
-    // fireEvent.click(screen.getByText('ruleTemplate.backToList'));
-    // expect(history.location.pathname).toBe('/rule/template');
-
-    fireEvent.click(
-      screen.getByText('ruleTemplate.createRuleTemplate.createNew')
-    );
-
-    expect(screen.getByTestId('base-form')).not.toHaveAttribute('hidden');
-    expect(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName')
-    ).toHaveValue('');
-    expect(container).toMatchSnapshot();
+    // await waitFor(() => {
+    //   jest.advanceTimersByTime(3000);
+    // });
+    // expect(screen.getByTestId('rule-list')).toHaveAttribute('hidden');
+    // expect(screen.getByTestId('submit-result')).not.toHaveAttribute('hidden');
   });
 });

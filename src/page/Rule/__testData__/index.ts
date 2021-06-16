@@ -1,5 +1,3 @@
-import { IRuleResV1 } from '../../../api/common';
-
 export const allRules = [
   {
     rule_name: 'all_check_where_is_invalid',
