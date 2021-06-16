@@ -63,6 +63,9 @@ describe('Rule', () => {
 
     expect(getInstanceRuleSpy).toBeCalledTimes(1);
     expect(getInstanceRuleSpy).toBeCalledWith({ instance_name: 'instance1' });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
     expect(container).toMatchSnapshot();
   });
 });

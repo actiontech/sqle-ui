@@ -27,6 +27,7 @@ describe('App test', () => {
 
   afterEach(() => {
     jest.clearAllMocks();
+    jest.clearAllTimers();
     jest.useRealTimers();
   });
 

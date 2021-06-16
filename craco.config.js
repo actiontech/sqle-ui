@@ -27,7 +27,7 @@ module.exports = {
         '!src/index.tsx',
       ],
       moduleNameMapper: {
-        'monaco-editor': '<rootDir>/src/testUtils/mockEditor.jsx',
+        'react-monaco-editor': '<rootDir>/src/testUtils/mockEditor.jsx',
       },
     },
   },
