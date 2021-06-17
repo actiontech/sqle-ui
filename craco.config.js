@@ -25,6 +25,7 @@ module.exports = {
         '!src/page/Login/LoginBackground/**/*.{ts,tsx}',
         '!src/reportWebVitals.ts',
         '!src/index.tsx',
+        '!src/router/config.tsx',
       ],
       moduleNameMapper: {
         'react-monaco-editor': '<rootDir>/src/testUtils/mockEditor.jsx',
