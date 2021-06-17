@@ -30,7 +30,6 @@ const user = createSlice({
     ) => {
       state.username = username;
       state.role = role;
-      LocalStorageWrapper.set(StorageKey.Token, state.token);
     },
     updateTheme: (
       state,
@@ -44,6 +43,7 @@ const user = createSlice({
       { payload: { token } }: PayloadAction<{ token: string }>
     ) => {
       state.token = token;
+      LocalStorageWrapper.set(StorageKey.Token, token);
     },
   },
 });
