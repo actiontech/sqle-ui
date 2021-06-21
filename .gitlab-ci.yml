@@ -1,0 +1,7 @@
+docker-be-code-check:
+  script:
+    - make test
+  only:
+    - merge_request
+  tags:
+    - docker
