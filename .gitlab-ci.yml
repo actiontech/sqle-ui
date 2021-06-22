@@ -1,6 +1,11 @@
 docker-be-code-check:
   script:
     - make test
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - junit.xml
   only:
     - merge_request
   tags:

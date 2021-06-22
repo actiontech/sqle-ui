@@ -30,6 +30,7 @@
     "highlight.js": "^11.0.1",
     "i18next": "^19.8.4",
     "jest-canvas-mock": "^2.3.1",
+    "jest-junit": "^12.2.0",
     "lodash": "^4.17.21",
     "monaco-editor-webpack-plugin": "^3.0.1",
     "msw": "^0.29.0",
