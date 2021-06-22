@@ -1,2 +1,2 @@
 test:
-	docker run --rm -v $PWD:/app docker-registry:5000/actiontech/yarn_build_v15 -c "cd /app && yarn test"
+	docker run --rm -v ${shell pwd}:/app docker-registry:5000/actiontech/sqle-ui-unit-test
