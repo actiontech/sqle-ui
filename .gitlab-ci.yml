@@ -1,6 +1,6 @@
 unit-test:
   script:
-    - 'sudo chown -R go: .'
+    # - 'sudo chown -R go: .'
     - make test
   artifacts:
     when: always
