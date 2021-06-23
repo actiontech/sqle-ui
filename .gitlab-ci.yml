@@ -1,5 +1,6 @@
-docker-be-code-check:
+unit-test:
   script:
+    - sudo chown -R go: .
     - make test
   artifacts:
     when: always
