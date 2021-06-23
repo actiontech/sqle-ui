@@ -3,6 +3,7 @@ unit-test:
     - 'sudo chown -R go: .'
     - make test
   artifacts:
+    when: always
     reports:
       junit:
         - junit.xml
