@@ -1,12 +1,6 @@
 unit-test:
   script:
     - make test
-  cache:
-    - key:
-        files:
-          - yarn.lock
-      paths:
-        - .yarn-cache/
   only:
     - merge_request
   tags:
