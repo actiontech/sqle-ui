@@ -1,9 +1,13 @@
 import { waitFor } from '@testing-library/react';
 import WorkflowTemplateDetail from '.';
 import workflow from '../../../api/workflow';
-import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
+import {
+  renderWithThemeAndRouter,
+  renderWithThemeAndServerRouter,
+} from '../../../testUtils/customRender';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import { workflowData } from '../__testData__';
+import { createMemoryHistory } from 'history';
 import { useParams } from 'react-router-dom';
 jest.mock('react-router', () => {
   return {
@@ -30,11 +34,18 @@ describe('WorkflowTemplate/WorkflowTemplateDetail', () => {
     jest.useRealTimers();
   });
 
+  test('should jump to progress when url params is not have workflowName', async () => {
+    const history = createMemoryHistory();
+    useParamsMock.mockReturnValue({});
+    history.push('/progress/detail/default');
+    renderWithThemeAndServerRouter(<WorkflowTemplateDetail />, undefined, {
+      history,
+    });
+    expect(history.location.pathname).toBe('/progress');
+  });
+
   test('should match snapshot', async () => {
-    const { container } = renderWithThemeAndRouter(
-      <WorkflowTemplateDetail />,
-      undefined
-    );
+    const { container } = renderWithThemeAndRouter(<WorkflowTemplateDetail />);
     expect(container).toMatchSnapshot();
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
