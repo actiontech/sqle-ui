@@ -68,10 +68,8 @@ const WorkflowTemplateDetail = () => {
     <Card
       title={t('workflowTemplate.detail.title.wrapper')}
       extra={[
-        <Link to="/progress">
-          <Button type="primary" key="go-back">
-            {t('common.back')}
-          </Button>
+        <Link to="/progress" key="bo-back">
+          <Button type="primary">{t('common.back')}</Button>
         </Link>,
       ]}
     >

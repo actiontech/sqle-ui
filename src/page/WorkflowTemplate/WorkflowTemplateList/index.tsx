@@ -1,5 +1,6 @@
+import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
-import { Button, Card, message, Table } from 'antd';
+import { Button, Card, message, Space, Table } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { Link, useHistory } from 'react-router-dom';
 import workflow from '../../../api/workflow';
@@ -13,7 +14,7 @@ const WorkflowTemplateList = () => {
   const history = useHistory();
   const { pagination, tableChange } = useTable();
 
-  const { data, refresh } = useRequest(
+  const { data, loading, refresh } = useRequest(
     () =>
       workflow.getWorkflowTemplateListV1({
         page_index: pagination.pageIndex,
@@ -59,7 +60,14 @@ const WorkflowTemplateList = () => {
   return (
     <article>
       <Card
-        title={t('workflowTemplate.list.title.listTable')}
+        title={
+          <Space>
+            {t('workflowTemplate.list.title.listTable')}
+            <Button onClick={refresh}>
+              <SyncOutlined spin={loading} />
+            </Button>
+          </Space>
+        }
         extra={[
           <Link key="create-workflow-template" to="/progress/create">
             <Button type="primary">
@@ -69,6 +77,7 @@ const WorkflowTemplateList = () => {
         ]}
       >
         <Table
+          loading={loading}
           className="table-row-cursor"
           pagination={{
             total: data?.total,
