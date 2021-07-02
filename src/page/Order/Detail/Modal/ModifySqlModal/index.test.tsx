@@ -158,10 +158,10 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
     });
     fireEvent.click(screen.getByText('order.sqlInfo.uploadFile'));
     expect(baseElement).toMatchSnapshot();
-    const sqlFile = new File(
-      [new Blob(['select * from table_test'], { type: 'text/plain' })],
-      'test.sql'
-    );
+    const sqlFile = {
+      name: 'test.sql',
+      uid: '',
+    };
     fireEvent.change(screen.getByLabelText('order.sqlInfo.sqlFile'), {
       target: { files: [sqlFile] },
     });
@@ -179,7 +179,16 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
     expect(createTaskSpy).toBeCalledWith({
       instance_name: tempTask.instance_name,
       instance_schema: tempTask.instance_schema,
-      input_sql_file: sqlFile,
+      input_sql_file: {
+        lastModified: undefined,
+        lastModifiedDate: undefined,
+        name: 'test.sql',
+        originFileObj: sqlFile,
+        percent: 0,
+        size: undefined,
+        type: undefined,
+        uid: sqlFile.uid,
+      },
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);

@@ -186,10 +186,10 @@ describe('order/create/sqlInfoForm', () => {
     });
 
     fireEvent.click(screen.getByText('order.sqlInfo.uploadFile'));
-    const sqlFile = new File(
-      [new Blob(['select * from table_test'], { type: 'text/plain' })],
-      'test.sql'
-    );
+    const sqlFile = {
+      name: 'test.sql',
+      uid: '',
+    };
     fireEvent.change(screen.getByLabelText('order.sqlInfo.sqlFile'), {
       target: { files: [sqlFile] },
     });
@@ -205,13 +205,23 @@ describe('order/create/sqlInfoForm', () => {
     expect(screen.getByText('order.sqlInfo.audit').parentNode).toHaveClass(
       'ant-btn-loading'
     );
-
     expect(submitMock).toBeCalledTimes(1);
     expect(submitMock).toBeCalledWith({
       instanceName: 'instance1',
       instanceSchema: undefined,
       sqlInputType: SQLInputType.uploadFile,
-      sqlFile: [sqlFile],
+      sqlFile: [
+        {
+          lastModified: undefined,
+          lastModifiedDate: undefined,
+          name: 'test.sql',
+          originFileObj: sqlFile,
+          percent: 0,
+          size: undefined,
+          type: undefined,
+          uid: sqlFile.uid,
+        },
+      ],
     });
   });
 
@@ -245,19 +255,10 @@ describe('order/create/sqlInfoForm', () => {
 
     fireEvent.click(screen.getByText('order.sqlInfo.updateMybatisFile'));
 
-    const mybatisFile = new File(
-      [
-        new Blob(
-          [
-            '<mapper namespace="com.mybatis.test.User"><select>select * from table1 where id = #{id}</select></mapper>',
-          ],
-          {
-            type: 'text/plain',
-          }
-        ),
-      ],
-      'mybatis.xml'
-    );
+    const mybatisFile = {
+      name: 'mybatis.xml',
+      uid: '',
+    };
     const mybatisFileElement = screen.getAllByLabelText(
       'order.sqlInfo.updateMybatisFile'
     )[1];
@@ -283,7 +284,18 @@ describe('order/create/sqlInfoForm', () => {
       instanceName: 'instance1',
       instanceSchema: undefined,
       sqlInputType: SQLInputType.uploadMybatisFile,
-      mybatisFile: [mybatisFile],
+      mybatisFile: [
+        {
+          lastModified: undefined,
+          lastModifiedDate: undefined,
+          name: 'mybatis.xml',
+          originFileObj: mybatisFile,
+          percent: 0,
+          size: undefined,
+          type: undefined,
+          uid: mybatisFile.uid,
+        },
+      ],
     });
   });
 });
