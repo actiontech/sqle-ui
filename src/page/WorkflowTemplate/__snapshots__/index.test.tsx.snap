@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WorkflowTemplate should match snapshot 1`] = `
+<article>
+  <PageHeader
+    ghost={false}
+    title="workflowTemplate.pageTitle"
+  >
+    workflowTemplate.pageDesc
+  </PageHeader>
+  <section
+    className="padding-content"
+  >
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/progress"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/progress/detail/:workflowName"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/progress/create"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/progress/update/:workflowName"
+      />
+      <Redirect
+        to="/progress"
+      />
+    </Switch>
+  </section>
+</article>
+`;

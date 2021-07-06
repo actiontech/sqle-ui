@@ -12,6 +12,7 @@ import {
   BarsOutlined,
   ProfileOutlined,
   SettingOutlined,
+  NodeIndexOutlined,
 } from '@ant-design/icons';
 import { SystemRole } from '../data/common';
 
@@ -61,6 +62,13 @@ const Whitelist = React.lazy(
 
 const System = React.lazy(
   () => import(/* webpackChunkName: "System" */ '../page/System')
+);
+
+const WorkflowTemplate = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "WorkflowTemplate" */ '../page/WorkflowTemplate'
+    )
 );
 
 export const unAuthRouter: Array<RouteProps & { key: string }> = [
@@ -172,14 +180,13 @@ export const routerConfig: RouterItem[] = [
         component: System,
         icon: <SettingOutlined />,
       },
-      // {
-      //   path: '/progress',
-      //   exact: true,
-      //   key: 'progress',
-      //   label: 'menu.progressManage',
-      //   icon: <NodeIndexOutlined />,
-      //   component: () => <div>progress manage</div>,
-      // },
+      {
+        path: '/progress',
+        key: 'progress',
+        label: 'menu.progressManage',
+        icon: <NodeIndexOutlined />,
+        component: WorkflowTemplate,
+      },
     ],
   },
 ];
