@@ -1,8 +1,12 @@
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import WorkflowTemplateList from '.';
 import workflow from '../../../api/workflow';
-import { renderWithRouter } from '../../../testUtils/customRender';
+import {
+  renderWithRouter,
+  renderWithServerRouter,
+} from '../../../testUtils/customRender';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
+import { createMemoryHistory } from 'history';
 
 describe('WorkflowTemplateList', () => {
   let getWorkflowTemplateListSpy: jest.SpyInstance;
@@ -67,5 +71,20 @@ describe('WorkflowTemplateList', () => {
       screen.queryByText('workflowTemplate.delete.successTips')
     ).toBeInTheDocument();
     expect(getWorkflowTemplateListSpy).toBeCalledTimes(2);
+  });
+
+  test('should stay in current page when user click cancel delete button', async () => {
+    const history = createMemoryHistory();
+    renderWithServerRouter(<WorkflowTemplateList />, undefined, { history });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(history.location.pathname).toBe('/');
+    fireEvent.click(screen.getAllByText('common.delete')[0]);
+    expect(
+      screen.queryByText('workflowTemplate.delete.confirm')
+    ).toBeInTheDocument();
+    fireEvent.click(screen.getByText('Cancel'));
+    expect(history.location.pathname).toBe('/');
   });
 });

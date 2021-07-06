@@ -346,28 +346,29 @@ exports[`WorkflowTemplateList should match snapshot 2`] = `
                           <td
                             class="ant-table-cell"
                           >
-                            <div
-                              class="ant-space ant-space-horizontal ant-space-align-center"
-                            >
+                            <div>
                               <div
-                                class="ant-space-item"
-                                style="margin-right: 8px;"
+                                class="ant-space ant-space-horizontal ant-space-align-center"
                               >
-                                <a
-                                  class="ant-typography"
-                                  href="/progress/update/default"
+                                <div
+                                  class="ant-space-item"
+                                  style="margin-right: 8px;"
                                 >
-                                  common.edit
-                                </a>
-                              </div>
-                              <div
-                                class="ant-space-item"
-                              >
-                                <a
-                                  class="ant-typography ant-typography-danger"
+                                  <a
+                                    href="/progress/update/default"
+                                  >
+                                    common.edit
+                                  </a>
+                                </div>
+                                <div
+                                  class="ant-space-item"
                                 >
-                                  common.delete
-                                </a>
+                                  <a
+                                    class="ant-typography ant-typography-danger"
+                                  >
+                                    common.delete
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </td>
@@ -389,28 +390,29 @@ exports[`WorkflowTemplateList should match snapshot 2`] = `
                           <td
                             class="ant-table-cell"
                           >
-                            <div
-                              class="ant-space ant-space-horizontal ant-space-align-center"
-                            >
+                            <div>
                               <div
-                                class="ant-space-item"
-                                style="margin-right: 8px;"
+                                class="ant-space ant-space-horizontal ant-space-align-center"
                               >
-                                <a
-                                  class="ant-typography"
-                                  href="/progress/update/db1"
+                                <div
+                                  class="ant-space-item"
+                                  style="margin-right: 8px;"
                                 >
-                                  common.edit
-                                </a>
-                              </div>
-                              <div
-                                class="ant-space-item"
-                              >
-                                <a
-                                  class="ant-typography ant-typography-danger"
+                                  <a
+                                    href="/progress/update/db1"
+                                  >
+                                    common.edit
+                                  </a>
+                                </div>
+                                <div
+                                  class="ant-space-item"
                                 >
-                                  common.delete
-                                </a>
+                                  <a
+                                    class="ant-typography ant-typography-danger"
+                                  >
+                                    common.delete
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </td>

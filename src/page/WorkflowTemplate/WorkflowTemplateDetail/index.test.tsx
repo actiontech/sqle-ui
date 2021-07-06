@@ -1,13 +1,9 @@
 import { waitFor } from '@testing-library/react';
 import WorkflowTemplateDetail from '.';
 import workflow from '../../../api/workflow';
-import {
-  renderWithThemeAndRouter,
-  renderWithThemeAndServerRouter,
-} from '../../../testUtils/customRender';
+import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import { workflowData } from '../__testData__';
-import { createMemoryHistory } from 'history';
 import { useParams } from 'react-router-dom';
 jest.mock('react-router', () => {
   return {
@@ -17,6 +13,7 @@ jest.mock('react-router', () => {
 });
 describe('WorkflowTemplate/WorkflowTemplateDetail', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
+  let getWorkflowTemplateDetail!: jest.SpyInstance;
 
   const mockGetWorkflowTemplateDetail = () => {
     const spy = jest.spyOn(workflow, 'getWorkflowTemplateV1');
@@ -27,26 +24,19 @@ describe('WorkflowTemplate/WorkflowTemplateDetail', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     useParamsMock.mockReturnValue({ workflowName: 'default' });
-    mockGetWorkflowTemplateDetail();
+    getWorkflowTemplateDetail = mockGetWorkflowTemplateDetail();
   });
 
   afterEach(() => {
     jest.useRealTimers();
   });
 
-  test('should jump to progress when url params is not have workflowName', async () => {
-    const history = createMemoryHistory();
-    useParamsMock.mockReturnValue({});
-    history.push('/progress/detail/default');
-    renderWithThemeAndServerRouter(<WorkflowTemplateDetail />, undefined, {
-      history,
-    });
-    expect(history.location.pathname).toBe('/progress');
-  });
-
   test('should match snapshot', async () => {
     const { container } = renderWithThemeAndRouter(<WorkflowTemplateDetail />);
     expect(container).toMatchSnapshot();
+    expect(getWorkflowTemplateDetail).toBeCalledWith({
+      workflow_template_name: 'default',
+    });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });

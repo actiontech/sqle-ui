@@ -247,6 +247,7 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
                               className="full-width-element"
                               mode="multiple"
                               placeholder={t('common.form.placeholder.select')}
+                              data-testid={`review-user-${index}`}
                             >
                               {generateUsernameSelectOption()}
                             </Select>
@@ -262,6 +263,7 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
                               onChange={updateDesc.bind(null, index)}
                               className="textarea-no-resize"
                               placeholder={t('common.form.placeholder.input')}
+                              data-testid={`review-desc-${index}`}
                             />
                           </Col>
                         </Row>
@@ -280,6 +282,7 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
                         <Button
                           type="link"
                           onClick={upMoveProgressItem.bind(null, index)}
+                          data-testid="move-up"
                         >
                           <Tooltip
                             overlay={t(
@@ -294,6 +297,7 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
                         <Button
                           type="link"
                           onClick={downMoveProgressItem.bind(null, index)}
+                          data-testid="move-down"
                         >
                           <Tooltip
                             overlay={t(
@@ -339,6 +343,7 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
                             className="full-width-element"
                             mode="multiple"
                             placeholder={t('common.form.placeholder.select')}
+                            data-testid="exec-user-select"
                           >
                             {generateUsernameSelectOption()}
                           </Select>
@@ -354,6 +359,7 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
                             onChange={updateExecDesc}
                             className="textarea-no-resize"
                             placeholder={t('common.form.placeholder.input')}
+                            data-testid="exec-user-desc"
                           />
                         </Col>
                       </Row>

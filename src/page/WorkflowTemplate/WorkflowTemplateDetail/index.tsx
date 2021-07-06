@@ -12,14 +12,13 @@ import {
 } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { IWorkFlowStepTemplateResV1 } from '../../../api/common';
 import workflow from '../../../api/workflow';
 import { Theme } from '../../../types/theme.type';
 
 const WorkflowTemplateDetail = () => {
   const urlParams = useParams<{ workflowName: string }>();
-  const history = useHistory();
   const { t } = useTranslation();
   const theme = useTheme<Theme>();
   const [reviewSteps, setReviewSteps] = useState<IWorkFlowStepTemplateResV1[]>(
@@ -57,12 +56,6 @@ const WorkflowTemplateDetail = () => {
       }
     }
   }, [workflowTemplate]);
-
-  useEffect(() => {
-    if (!urlParams.workflowName) {
-      history.replace('/progress');
-    }
-  }, [history, urlParams]);
 
   return (
     <Card

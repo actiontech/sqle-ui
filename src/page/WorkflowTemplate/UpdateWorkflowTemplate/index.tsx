@@ -47,9 +47,7 @@ const UpdateWorkflowTemplate = () => {
   };
 
   useEffect(() => {
-    if (!urlParams.workflowName) {
-      history.replace('/progress');
-    } else {
+    if (!!urlParams.workflowName) {
       getWorkflowProgress();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
