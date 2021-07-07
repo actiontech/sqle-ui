@@ -1,5 +1,10 @@
-import { fireEvent, render, waitFor, screen } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import {
+  fireEvent,
+  render,
+  waitFor,
+  screen,
+  act,
+} from '@testing-library/react';
 import UserList from '.';
 import user from '../../../api/user';
 import EmitterKey from '../../../data/EmitterKey';
@@ -30,6 +35,7 @@ describe('User/UserList', () => {
     jest.clearAllTimers();
     jest.clearAllMocks();
     jest.useRealTimers();
+    jest.restoreAllMocks();
   });
 
   const mockGetRoleList = () => {
@@ -149,7 +155,7 @@ describe('User/UserList', () => {
 
     expect(deleteUserSpy).toBeCalledTimes(1);
     expect(deleteUserSpy).toBeCalledWith({
-      user_name: UserListData[0].user_name,
+      user_name: UserListData[1].user_name,
     });
     expect(screen.getByText('user.deleteUser.deleting')).toBeInTheDocument();
     await waitFor(() => {
@@ -169,11 +175,6 @@ describe('User/UserList', () => {
       page_index: 1,
       page_size: 10,
     });
-
-    await waitFor(() => {
-      jest.advanceTimersByTime(300);
-    });
-    emitSpy.mockRestore();
   });
 
   test('should refresh table data when receive "Refresh_User_list" event', async () => {

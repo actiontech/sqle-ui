@@ -1,3 +1,4 @@
+import { waitFor } from '@testing-library/react';
 import Nav from '.';
 import { SupportLanguage } from '../../locale';
 import { renderWithRouter } from '../../testUtils/customRender';
@@ -14,14 +15,19 @@ describe('Nav', () => {
     });
     mockUseStyle();
     mockUseDispatch();
+    jest.useFakeTimers();
   });
 
   afterEach(() => {
     jest.clearAllMocks();
+    jest.useRealTimers();
   });
 
   test('should render page by props of username', async () => {
     const { container } = renderWithRouter(<Nav>show</Nav>);
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
     expect(container).toMatchSnapshot();
 
     useSelectorSpy.mockClear();
@@ -32,7 +38,9 @@ describe('Nav', () => {
     const { container: notShowContainer } = renderWithRouter(
       <Nav>notshow</Nav>
     );
-
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
     expect(notShowContainer).toMatchSnapshot();
   });
 });

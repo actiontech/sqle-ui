@@ -1,6 +1,7 @@
 import { act, render, waitFor, screen } from '@testing-library/react';
 import Account from '.';
 import user from '../../api/user';
+import { mockUseDispatch } from '../../testUtils/mockRedux';
 import { resolveThreeSecond } from '../../testUtils/mockRequest';
 
 describe('Account', () => {
@@ -19,6 +20,7 @@ describe('Account', () => {
         user_name: 'user_test1',
       })
     );
+    mockUseDispatch();
     jest.useFakeTimers();
   });
 

@@ -6,88 +6,76 @@ import {
 } from '../../../testUtils/customRender';
 import { mockUseSelector } from '../../../testUtils/mockRedux';
 import { createMemoryHistory } from 'history';
+import { waitFor } from '@testing-library/react';
+import { getBySelector } from '../../../testUtils/customQuery';
 
 describe('SiderMenu', () => {
   let useSelectorSpy: jest.SpyInstance;
 
   beforeEach(() => {
     useSelectorSpy = mockUseSelector();
+    jest.useFakeTimers();
   });
 
   afterEach(() => {
     jest.clearAllMocks();
+    jest.clearAllTimers();
+    jest.useRealTimers();
   });
 
-  test('should render menu by user role', () => {
+  test('should render menu by user role', async () => {
     useSelectorSpy.mockReturnValue('');
     const { container: normalMenu } = renderWithRouter(<SiderMenu />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
     expect(normalMenu).toMatchSnapshot();
 
     useSelectorSpy.mockReturnValue(SystemRole.admin);
     const { container: adminMenu } = renderWithRouter(<SiderMenu />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
     expect(adminMenu).toMatchSnapshot();
   });
 
-  test('should render active menu by router pathname', () => {
+  test('should render active menu by router pathname', async () => {
     useSelectorSpy.mockReturnValue(SystemRole.admin);
-    const { container: dashboard } = renderWithRouter(<SiderMenu />);
-    expect(dashboard).toMatchSnapshot();
-
     let history = createMemoryHistory();
-    history.push('/rule');
-    const { container: rule } = renderWithServerRouter(
-      <SiderMenu />,
-      undefined,
-      { history }
+    renderWithServerRouter(<SiderMenu />, undefined, { history });
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(getBySelector('.ant-menu-item-selected')).toHaveTextContent(
+      'menu.dashboard'
     );
-    expect(rule).toMatchSnapshot();
-
     history.push('/order');
-    const { container: order } = renderWithServerRouter(
-      <SiderMenu />,
-      undefined,
-      { history }
+    expect(getBySelector('.ant-menu-item-selected')).toHaveTextContent(
+      'menu.order'
     );
-    expect(order).toMatchSnapshot();
-
     history.push('/user');
-    const { container: user } = renderWithServerRouter(
-      <SiderMenu />,
-      undefined,
-      { history }
+    expect(getBySelector('.ant-menu-item-selected')).toHaveTextContent(
+      'menu.user'
     );
-    expect(user).toMatchSnapshot();
-
     history.push('/data');
-    const { container: data } = renderWithServerRouter(
-      <SiderMenu />,
-      undefined,
-      { history }
+    expect(getBySelector('.ant-menu-item-selected')).toHaveTextContent(
+      'menu.dataSource'
     );
-    expect(data).toMatchSnapshot();
-
     history.push('/rule/template');
-    const { container: ruleTemplate } = renderWithServerRouter(
-      <SiderMenu />,
-      undefined,
-      { history }
+    expect(getBySelector('.ant-menu-item-selected')).toHaveTextContent(
+      'menu.ruleTemplate'
     );
-    expect(ruleTemplate).toMatchSnapshot();
-
     history.push('/whitelist');
-    const { container: whitelist } = renderWithServerRouter(
-      <SiderMenu />,
-      undefined,
-      { history }
+    expect(getBySelector('.ant-menu-item-selected')).toHaveTextContent(
+      'menu.whitelist'
     );
-    expect(whitelist).toMatchSnapshot();
-
     history.push('/system');
-    const { container: system } = renderWithServerRouter(
-      <SiderMenu />,
-      undefined,
-      { history }
+    expect(getBySelector('.ant-menu-item-selected')).toHaveTextContent(
+      'menu.system'
     );
-    expect(system).toMatchSnapshot();
+    history.push('/progress');
+    expect(getBySelector('.ant-menu-item-selected')).toHaveTextContent(
+      'menu.progress'
+    );
   });
 });
