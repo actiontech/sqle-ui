@@ -222,7 +222,10 @@ const UserList = () => {
                   placement="bottomRight"
                   overlay={
                     <Menu>
-                      <Menu.Item onClick={updateUserPassword.bind(null, item)}>
+                      <Menu.Item
+                        onClick={updateUserPassword.bind(null, item)}
+                        key="update-user-password"
+                      >
                         {t('user.updateUserPassword.button')}
                       </Menu.Item>
                     </Menu>

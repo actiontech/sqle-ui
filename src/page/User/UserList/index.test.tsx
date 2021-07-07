@@ -8,6 +8,7 @@ import {
 import UserList from '.';
 import user from '../../../api/user';
 import EmitterKey from '../../../data/EmitterKey';
+import { ModalName } from '../../../data/ModalName';
 import { getBySelector } from '../../../testUtils/customQuery';
 import { mockUseDispatch } from '../../../testUtils/mockRedux';
 import {
@@ -132,6 +133,33 @@ describe('User/UserList', () => {
     expect(dispatchMock).nthCalledWith(2, {
       payload: {
         modalName: 'Update_User',
+        status: true,
+      },
+      type: 'user/updateModalStatus',
+    });
+  });
+
+  test('should dispatch open modify password modal event and set select user data when user click update user password button', async () => {
+    render(<UserList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    fireEvent.mouseEnter(screen.getAllByText('common.more')[0]);
+    await waitFor(() => {
+      jest.advanceTimersByTime(300);
+    });
+    fireEvent.click(screen.getByText('user.updateUserPassword.button'));
+    expect(dispatchMock).toBeCalledTimes(2);
+    expect(dispatchMock).nthCalledWith(1, {
+      payload: {
+        user: UserListData[1],
+      },
+      type: 'user/updateSelectUser',
+    });
+    expect(dispatchMock).nthCalledWith(2, {
+      payload: {
+        modalName: ModalName.Update_User_Password,
         status: true,
       },
       type: 'user/updateModalStatus',
