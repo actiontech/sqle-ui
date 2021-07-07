@@ -481,6 +481,12 @@ export interface IUpdateAuditWhitelistReqV1 {
   value?: string;
 }
 
+export interface IUpdateCurrentUserPasswordReqV1 {
+  new_password?: string;
+
+  password?: string;
+}
+
 export interface IUpdateCurrentUserReqV1 {
   email?: string;
 }
@@ -501,6 +507,10 @@ export interface IUpdateInstanceReqV1 {
   rule_template_name_list?: string[];
 
   workflow_template_name?: string;
+}
+
+export interface IUpdateOtherUserPasswordReqV1 {
+  password?: string;
 }
 
 export interface IUpdateRoleReqV1 {
