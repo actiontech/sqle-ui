@@ -15,7 +15,6 @@ import LanguageSelect from '../../LanguageSelect';
 import { useTranslation } from 'react-i18next';
 import { updateToken, updateUser } from '../../../store/user';
 import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
 
 const Header = () => {
   const username = useSelector<IReduxState, string>(
@@ -46,12 +45,13 @@ const Header = () => {
         <Dropdown
           overlay={
             <Menu>
-              <Menu.Item>
-                <Link to="/account">
-                  <UserOutlined />
-                  {t('common.account')}
-                </Link>
+              {/* https://github.com/ant-design/ant-design/issues/31025 */}
+              {/* <Link to="/account"> */}
+              <Menu.Item key="account" onClick={() => history.push('/account')}>
+                <UserOutlined />
+                {t('common.account')}
               </Menu.Item>
+              {/* </Link> */}
               <Menu.Item
                 hidden={currentTheme === SupportTheme.LIGHT}
                 key="light"
