@@ -22,6 +22,7 @@ const User = () => {
           [ModalName.Add_User]: false,
           [ModalName.Update_Role]: false,
           [ModalName.Update_User]: false,
+          [ModalName.Update_User_Password]: false,
         },
       })
     );

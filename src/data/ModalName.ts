@@ -5,6 +5,7 @@ export enum ModalName {
 
   Add_User = 'ADD_USER',
   Update_User = 'Update_User',
+  Update_User_Password = 'Update_User_Password',
 
   // whitelist manage
   Add_Whitelist = 'ADD_WHITELIST',
@@ -12,4 +13,7 @@ export enum ModalName {
 
   // order
   Modify_Sql = 'Modify_Sql',
+
+  // account
+  Modify_Password = 'Modify_Password',
 }

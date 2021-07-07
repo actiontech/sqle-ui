@@ -1,12 +1,27 @@
 import useRequest from '@ahooksjs/use-request';
-import { Card, Col, Divider, PageHeader, Row, Tag, Typography } from 'antd';
+import {
+  Button,
+  Card,
+  Col,
+  Divider,
+  PageHeader,
+  Row,
+  Tag,
+  Typography,
+} from 'antd';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import user from '../../api/user';
 import EmptyBox from '../../components/EmptyBox';
+import { ModalName } from '../../data/ModalName';
+import ModifyPasswordModal from './Modal/ModifyPassword';
 import UserEmail from './UserEmail';
 
 const Account = () => {
   const { t } = useTranslation();
+  const [modalStatus, setModalStatus] = useState({
+    [ModalName.Modify_Password]: false,
+  });
 
   const { data: userInfo, refresh } = useRequest(
     () => user.getCurrentUserV1(),
@@ -16,6 +31,20 @@ const Account = () => {
       },
     }
   );
+
+  const handleChangeModalStatus = (modalName: ModalName, status: boolean) => {
+    if (!Object.prototype.hasOwnProperty.call(modalStatus, modalName)) {
+      return;
+    }
+    setModalStatus({
+      ...modalStatus,
+      [modalName]: status,
+    });
+  };
+
+  const openModifyPasswordModal = () => {
+    handleChangeModalStatus(ModalName.Modify_Password, true);
+  };
 
   return (
     <>
@@ -49,9 +78,18 @@ const Account = () => {
                 </EmptyBox>
               </Typography.Text>
             </Col>
+            <Col span={24}>
+              <Button type="primary" onClick={openModifyPasswordModal}>
+                {t('account.modifyPassword.button')}
+              </Button>
+            </Col>
           </Row>
         </Card>
       </section>
+      <ModifyPasswordModal
+        visible={modalStatus[ModalName.Modify_Password]}
+        setModalStatus={handleChangeModalStatus}
+      />
     </>
   );
 };
