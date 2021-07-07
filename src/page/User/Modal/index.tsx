@@ -1,5 +1,6 @@
 import AddRole from './AddRole';
 import AddUser from './AddUser';
+import ModifyUserPassword from './ModifyUserPassword';
 import UpdateRole from './UpdateRole';
 import UpdateUser from './UpdateUser';
 
@@ -10,6 +11,7 @@ const UserManageModal = () => {
       <UpdateRole />
       <AddUser />
       <UpdateUser />
+      <ModifyUserPassword />
     </>
   );
 };

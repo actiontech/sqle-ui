@@ -4,6 +4,7 @@ import toJson from 'enzyme-to-json';
 import User from '.';
 import role from '../../api/role';
 import user from '../../api/user';
+import { ModalName } from '../../data/ModalName';
 import { mockUseDispatch, mockUseSelector } from '../../testUtils/mockRedux';
 import {
   mockUseInstance,
@@ -61,6 +62,7 @@ describe('User', () => {
           ADD_USER: false,
           UPDATE_ROLE: false,
           Update_User: false,
+          [ModalName.Update_User_Password]: false,
         },
       },
       type: 'user/initModalStatus',

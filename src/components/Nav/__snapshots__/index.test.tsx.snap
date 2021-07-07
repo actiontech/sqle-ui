@@ -26,13 +26,17 @@ exports[`Nav should render page by props of username 1`] = `
           </div>
         </a>
         <ul
-          class="ant-menu ant-menu-dark ant-menu-root ant-menu-inline"
+          class="ant-menu ant-menu-root ant-menu-inline ant-menu-dark"
+          data-menu-list="true"
           role="menu"
+          tabindex="0"
         >
           <li
             class="ant-menu-item ant-menu-item-selected"
+            data-menu-id="rc-menu-uuid-test-dashboard"
             role="menuitem"
             style="padding-left: 24px;"
+            tabindex="-1"
           >
             <span
               aria-label="pie-chart"
@@ -53,7 +57,9 @@ exports[`Nav should render page by props of username 1`] = `
                 />
               </svg>
             </span>
-            <span>
+            <span
+              class="ant-menu-title-content"
+            >
               <a
                 href="/"
               >
@@ -63,8 +69,10 @@ exports[`Nav should render page by props of username 1`] = `
           </li>
           <li
             class="ant-menu-item"
+            data-menu-id="rc-menu-uuid-test-rule"
             role="menuitem"
             style="padding-left: 24px;"
+            tabindex="-1"
           >
             <span
               aria-label="desktop"
@@ -85,7 +93,9 @@ exports[`Nav should render page by props of username 1`] = `
                 />
               </svg>
             </span>
-            <span>
+            <span
+              class="ant-menu-title-content"
+            >
               <a
                 href="/rule"
               >
@@ -95,19 +105,21 @@ exports[`Nav should render page by props of username 1`] = `
           </li>
           <li
             class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open"
-            role="menuitem"
+            role="none"
           >
             <div
+              aria-controls="rc-menu-uuid-test-order-popup"
               aria-expanded="true"
               aria-haspopup="true"
-              aria-owns="order$Menu"
               class="ant-menu-submenu-title"
-              role="button"
+              data-menu-id="rc-menu-uuid-test-order"
+              role="menuitem"
               style="padding-left: 24px;"
+              tabindex="-1"
             >
               <span
                 aria-label="console-sql"
-                class="anticon anticon-console-sql"
+                class="anticon anticon-console-sql ant-menu-item-icon"
                 role="img"
               >
                 <svg
@@ -133,7 +145,9 @@ exports[`Nav should render page by props of username 1`] = `
                   />
                 </svg>
               </span>
-              <span>
+              <span
+                class="ant-menu-title-content"
+              >
                 menu.order
               </span>
               <i
@@ -142,13 +156,15 @@ exports[`Nav should render page by props of username 1`] = `
             </div>
             <ul
               class="ant-menu ant-menu-sub ant-menu-inline"
-              id="order$Menu"
-              role="menu"
+              data-menu-list="true"
+              id="rc-menu-uuid-test-order-popup"
             >
               <li
                 class="ant-menu-item"
+                data-menu-id="rc-menu-uuid-test-orderList"
                 role="menuitem"
                 style="padding-left: 48px;"
+                tabindex="-1"
               >
                 <span
                   aria-label="bars"
@@ -169,7 +185,9 @@ exports[`Nav should render page by props of username 1`] = `
                     />
                   </svg>
                 </span>
-                <span>
+                <span
+                  class="ant-menu-title-content"
+                >
                   <a
                     href="/order"
                   >
@@ -180,6 +198,10 @@ exports[`Nav should render page by props of username 1`] = `
             </ul>
           </li>
         </ul>
+        <div
+          aria-hidden="true"
+          style="display: none;"
+        />
       </div>
     </aside>
     <section
@@ -348,13 +370,17 @@ exports[`Nav should render page by props of username 2`] = `
           </div>
         </a>
         <ul
-          class="ant-menu ant-menu-dark ant-menu-root ant-menu-inline"
+          class="ant-menu ant-menu-root ant-menu-inline ant-menu-dark"
+          data-menu-list="true"
           role="menu"
+          tabindex="0"
         >
           <li
             class="ant-menu-item ant-menu-item-selected"
+            data-menu-id="rc-menu-uuid-test-dashboard"
             role="menuitem"
             style="padding-left: 24px;"
+            tabindex="-1"
           >
             <span
               aria-label="pie-chart"
@@ -375,7 +401,9 @@ exports[`Nav should render page by props of username 2`] = `
                 />
               </svg>
             </span>
-            <span>
+            <span
+              class="ant-menu-title-content"
+            >
               <a
                 href="/"
               >
@@ -385,8 +413,10 @@ exports[`Nav should render page by props of username 2`] = `
           </li>
           <li
             class="ant-menu-item"
+            data-menu-id="rc-menu-uuid-test-rule"
             role="menuitem"
             style="padding-left: 24px;"
+            tabindex="-1"
           >
             <span
               aria-label="desktop"
@@ -407,7 +437,9 @@ exports[`Nav should render page by props of username 2`] = `
                 />
               </svg>
             </span>
-            <span>
+            <span
+              class="ant-menu-title-content"
+            >
               <a
                 href="/rule"
               >
@@ -417,19 +449,21 @@ exports[`Nav should render page by props of username 2`] = `
           </li>
           <li
             class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open"
-            role="menuitem"
+            role="none"
           >
             <div
+              aria-controls="rc-menu-uuid-test-order-popup"
               aria-expanded="true"
               aria-haspopup="true"
-              aria-owns="order$Menu"
               class="ant-menu-submenu-title"
-              role="button"
+              data-menu-id="rc-menu-uuid-test-order"
+              role="menuitem"
               style="padding-left: 24px;"
+              tabindex="-1"
             >
               <span
                 aria-label="console-sql"
-                class="anticon anticon-console-sql"
+                class="anticon anticon-console-sql ant-menu-item-icon"
                 role="img"
               >
                 <svg
@@ -455,7 +489,9 @@ exports[`Nav should render page by props of username 2`] = `
                   />
                 </svg>
               </span>
-              <span>
+              <span
+                class="ant-menu-title-content"
+              >
                 menu.order
               </span>
               <i
@@ -464,13 +500,15 @@ exports[`Nav should render page by props of username 2`] = `
             </div>
             <ul
               class="ant-menu ant-menu-sub ant-menu-inline"
-              id="order$Menu"
-              role="menu"
+              data-menu-list="true"
+              id="rc-menu-uuid-test-order-popup"
             >
               <li
                 class="ant-menu-item"
+                data-menu-id="rc-menu-uuid-test-orderList"
                 role="menuitem"
                 style="padding-left: 48px;"
+                tabindex="-1"
               >
                 <span
                   aria-label="bars"
@@ -491,7 +529,9 @@ exports[`Nav should render page by props of username 2`] = `
                     />
                   </svg>
                 </span>
-                <span>
+                <span
+                  class="ant-menu-title-content"
+                >
                   <a
                     href="/order"
                   >
@@ -502,6 +542,10 @@ exports[`Nav should render page by props of username 2`] = `
             </ul>
           </li>
         </ul>
+        <div
+          aria-hidden="true"
+          style="display: none;"
+        />
       </div>
     </aside>
     <section

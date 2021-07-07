@@ -68,6 +68,7 @@ export const dataSourceColumns = (
               overlay={
                 <Menu>
                   <Menu.Item
+                    key="test-connection"
                     onClick={testDatabaseConnection.bind(
                       null,
                       record.instance_name ?? ''

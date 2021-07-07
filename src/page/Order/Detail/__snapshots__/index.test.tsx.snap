@@ -22,7 +22,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
               style="margin-right: 8px;"
             >
               <span
-                class="ant-typography ant-typography-ellipsis ant-typography-ellipsis-single-line"
+                class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
               >
                 testccc
               </span>
@@ -2879,7 +2879,7 @@ exports[`Order/Detail should render on process order info by request 1`] = `
               style="margin-right: 8px;"
             >
               <span
-                class="ant-typography ant-typography-ellipsis ant-typography-ellipsis-single-line"
+                class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
               >
                 order.pageTitle
               </span>
@@ -3511,7 +3511,7 @@ exports[`Order/Detail should render on process order info by request 2`] = `
               style="margin-right: 8px;"
             >
               <span
-                class="ant-typography ant-typography-ellipsis ant-typography-ellipsis-single-line"
+                class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
               >
                 order123
               </span>

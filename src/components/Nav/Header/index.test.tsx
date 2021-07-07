@@ -49,8 +49,12 @@ describe('Header', () => {
     await waitFor(() => screen.getByText('common.logout'));
 
     expect(baseElement).toMatchSnapshot();
-    expect(screen.getByText('common.theme.light')).toHaveAttribute('hidden');
-    expect(screen.getByText('common.theme.dark')).not.toHaveAttribute('hidden');
+    expect(screen.getByText('common.theme.light').parentNode).toHaveAttribute(
+      'hidden'
+    );
+    expect(
+      screen.getByText('common.theme.dark').parentNode
+    ).not.toHaveAttribute('hidden');
   });
 
   test('should render theme change button by current theme', async () => {
@@ -61,8 +65,12 @@ describe('Header', () => {
     renderWithMemoryRouter(<Header />);
     fireEvent.mouseEnter(screen.getByText('admin'));
     await waitFor(() => screen.getByText(/common.logout/i));
-    expect(screen.getByText('common.theme.light')).toHaveAttribute('hidden');
-    expect(screen.getByText('common.theme.dark')).not.toHaveAttribute('hidden');
+    expect(screen.getByText('common.theme.light').parentNode).toHaveAttribute(
+      'hidden'
+    );
+    expect(
+      screen.getByText('common.theme.dark').parentNode
+    ).not.toHaveAttribute('hidden');
     cleanup();
     mockUseSelector({
       user: { username: 'admin', theme: SupportTheme.DARK },
@@ -71,10 +79,12 @@ describe('Header', () => {
     renderWithMemoryRouter(<Header />);
     fireEvent.mouseEnter(screen.getByText('admin'));
     await waitFor(() => screen.getByText(/common.logout/i));
-    expect(screen.getByText('common.theme.light')).not.toHaveAttribute(
+    expect(
+      screen.getByText('common.theme.light').parentNode
+    ).not.toHaveAttribute('hidden');
+    expect(screen.getByText('common.theme.dark').parentNode).toHaveAttribute(
       'hidden'
     );
-    expect(screen.getByText('common.theme.dark')).toHaveAttribute('hidden');
   });
 
   test('should clean user info and jump to "/" router when click the logout button', async () => {

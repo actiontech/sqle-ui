@@ -48,6 +48,21 @@ class Template {
       }
       currentUrl = urlArray.join('/');
     }
+    if (currentUrl.includes('/:')) {
+      const urlArray = currentUrl.split('/');
+      for (let i = 0; i < urlArray.length; i++) {
+        if (urlArray[i].startsWith(':')) {
+          urlArray[i] = urlArray[i].slice(1);
+          const paramsName = urlArray[i];
+          urlArray[i] = `$\{${urlArray[i]}}`;
+          pathParamsDeleteCode += `
+            const ${paramsName} = paramsData.${paramsName};
+            delete paramsData.${paramsName};
+          `;
+        }
+      }
+      currentUrl = urlArray.join('/');
+    }
     for (let [key, value] of paramsMap) {
       switch (value) {
         case 'header':

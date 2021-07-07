@@ -1,8 +1,14 @@
-import { fireEvent, render, waitFor, screen } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import {
+  fireEvent,
+  render,
+  waitFor,
+  screen,
+  act,
+} from '@testing-library/react';
 import UserList from '.';
 import user from '../../../api/user';
 import EmitterKey from '../../../data/EmitterKey';
+import { ModalName } from '../../../data/ModalName';
 import { getBySelector } from '../../../testUtils/customQuery';
 import { mockUseDispatch } from '../../../testUtils/mockRedux';
 import {
@@ -30,6 +36,7 @@ describe('User/UserList', () => {
     jest.clearAllTimers();
     jest.clearAllMocks();
     jest.useRealTimers();
+    jest.restoreAllMocks();
   });
 
   const mockGetRoleList = () => {
@@ -132,6 +139,33 @@ describe('User/UserList', () => {
     });
   });
 
+  test('should dispatch open modify password modal event and set select user data when user click update user password button', async () => {
+    render(<UserList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    fireEvent.mouseEnter(screen.getAllByText('common.more')[0]);
+    await waitFor(() => {
+      jest.advanceTimersByTime(300);
+    });
+    fireEvent.click(screen.getByText('user.updateUserPassword.button'));
+    expect(dispatchMock).toBeCalledTimes(2);
+    expect(dispatchMock).nthCalledWith(1, {
+      payload: {
+        user: UserListData[1],
+      },
+      type: 'user/updateSelectUser',
+    });
+    expect(dispatchMock).nthCalledWith(2, {
+      payload: {
+        modalName: ModalName.Update_User_Password,
+        status: true,
+      },
+      type: 'user/updateModalStatus',
+    });
+  });
+
   test('should send delete user when user confirm delete user', async () => {
     const deleteUserSpy = jest.spyOn(user, 'deleteUserV1');
     deleteUserSpy.mockImplementation(() => resolveThreeSecond({}));
@@ -149,7 +183,7 @@ describe('User/UserList', () => {
 
     expect(deleteUserSpy).toBeCalledTimes(1);
     expect(deleteUserSpy).toBeCalledWith({
-      user_name: UserListData[0].user_name,
+      user_name: UserListData[1].user_name,
     });
     expect(screen.getByText('user.deleteUser.deleting')).toBeInTheDocument();
     await waitFor(() => {
@@ -169,11 +203,6 @@ describe('User/UserList', () => {
       page_index: 1,
       page_size: 10,
     });
-
-    await waitFor(() => {
-      jest.advanceTimersByTime(300);
-    });
-    emitSpy.mockRestore();
   });
 
   test('should refresh table data when receive "Refresh_User_list" event', async () => {

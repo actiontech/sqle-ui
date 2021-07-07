@@ -352,21 +352,21 @@ exports[`Home/OrderList should render order list when response is not empty 2`] 
                   class="ant-card-body"
                 >
                   <div
-                    class="ant-typography ant-typography-ellipsis ant-typography-ellipsis-single-line clear-margin"
+                    class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line clear-margin"
                   >
                     order.order.createUser
                     :
                     admin
                   </div>
                   <div
-                    class="ant-typography ant-typography-ellipsis ant-typography-ellipsis-single-line clear-margin"
+                    class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line clear-margin"
                   >
                     order.order.createTime
                     :
                     2021-04-29 13:41:24
                   </div>
                   <div
-                    class="ant-typography ant-typography-ellipsis ant-typography-ellipsis-single-line clear-margin"
+                    class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line clear-margin"
                   >
                     order.order.desc
                     : 

@@ -16,6 +16,13 @@ export default {
     updateSuccessTips: '更新用户 "{{name}}" 成功',
   },
 
+  updateUserPassword: {
+    button: '修改该用户密码',
+    title: '修改{{name}}用户密码',
+
+    successTips: '修改{{name}}用户密码成功',
+  },
+
   userForm: {
     username: '用户名',
     password: '密码',

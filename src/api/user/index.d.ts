@@ -4,9 +4,11 @@ import {
   IGetUserDetailResV1,
   IUpdateCurrentUserReqV1,
   IBaseRes,
+  IUpdateCurrentUserPasswordReqV1,
   IGetUserTipsResV1,
   IGetUsersResV1,
   ICreateUserReqV1,
+  IUpdateOtherUserPasswordReqV1,
   IUpdateUserReqV1
 } from '../common.d';
 
@@ -19,6 +21,11 @@ export interface IGetCurrentUserV1Return extends IGetUserDetailResV1 {}
 export interface IUpdateCurrentUserV1Params extends IUpdateCurrentUserReqV1 {}
 
 export interface IUpdateCurrentUserV1Return extends IBaseRes {}
+
+export interface IUpdateCurrentUserPasswordV1Params
+  extends IUpdateCurrentUserPasswordReqV1 {}
+
+export interface IUpdateCurrentUserPasswordV1Return extends IBaseRes {}
 
 export interface IGetUserTipListV1Return extends IGetUserTipsResV1 {}
 
@@ -37,6 +44,13 @@ export interface IGetUserListV1Return extends IGetUsersResV1 {}
 export interface ICreateUserV1Params extends ICreateUserReqV1 {}
 
 export interface ICreateUserV1Return extends IBaseRes {}
+
+export interface IUpdateOtherUserPasswordV1Params
+  extends IUpdateOtherUserPasswordReqV1 {
+  user_name: string;
+}
+
+export interface IUpdateOtherUserPasswordV1Return extends IBaseRes {}
 
 export interface IGetUserV1Params {
   user_name: string;

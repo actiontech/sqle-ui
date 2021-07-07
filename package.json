@@ -22,7 +22,7 @@
     "@types/react-router-dom": "^5.1.6",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.1",
     "ahooks": "^2.9.6",
-    "antd": "4.13.1",
+    "antd": "^4.16.6",
     "axios": "^0.21.1",
     "craco-less": "^1.17.1",
     "enzyme": "^3.11.0",

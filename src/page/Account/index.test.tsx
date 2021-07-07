@@ -1,6 +1,13 @@
-import { act, render, waitFor, screen } from '@testing-library/react';
+import {
+  act,
+  render,
+  waitFor,
+  screen,
+  fireEvent,
+} from '@testing-library/react';
 import Account from '.';
 import user from '../../api/user';
+import { mockUseDispatch } from '../../testUtils/mockRedux';
 import { resolveThreeSecond } from '../../testUtils/mockRequest';
 
 describe('Account', () => {
@@ -8,7 +15,7 @@ describe('Account', () => {
     const spy = jest.spyOn(user, 'getCurrentUserV1');
     return spy;
   };
-
+  let dispatchMock: jest.Mock;
   beforeEach(() => {
     const userSpy = mockRequest();
     userSpy.mockImplementation(() =>
@@ -19,6 +26,8 @@ describe('Account', () => {
         user_name: 'user_test1',
       })
     );
+    const { scopeDispatch } = mockUseDispatch();
+    dispatchMock = scopeDispatch;
     jest.useFakeTimers();
   });
 
@@ -36,5 +45,13 @@ describe('Account', () => {
     });
     await waitFor(() => screen.findByText('user_test1'));
     expect(container).toMatchSnapshot();
+  });
+
+  test('should open modify password modal when user click modify password button', () => {
+    render(<Account />);
+    fireEvent.click(screen.getByText('account.modifyPassword.button'));
+    expect(
+      screen.queryByText('account.modifyPassword.title')
+    ).toBeInTheDocument();
   });
 });

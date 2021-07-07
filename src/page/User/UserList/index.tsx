@@ -1,4 +1,4 @@
-import { SyncOutlined } from '@ant-design/icons';
+import { DownOutlined, SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import {
   message,
@@ -10,6 +10,8 @@ import {
   Space,
   Divider,
   Popconfirm,
+  Menu,
+  Dropdown,
 } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -90,6 +92,23 @@ const UserList = () => {
       dispatch(
         updateUserManageModalStatus({
           modalName: ModalName.Update_User,
+          status: true,
+        })
+      );
+    },
+    [dispatch]
+  );
+
+  const updateUserPassword = React.useCallback(
+    (user: IUserResV1) => {
+      dispatch(
+        updateSelectUser({
+          user,
+        })
+      );
+      dispatch(
+        updateUserManageModalStatus({
+          modalName: ModalName.Update_User_Password,
           status: true,
         })
       );
@@ -183,20 +202,41 @@ const UserList = () => {
               >
                 {t('common.edit')}
               </Typography.Link>
-              <Divider type="vertical" />
-              <Popconfirm
-                title={t('user.deleteUser.confirmTitle', {
-                  username: item.user_name,
-                })}
-                placement="topRight"
-                okText={t('common.ok')}
-                cancelText={t('common.cancel')}
-                onConfirm={removeUser.bind(null, item.user_name ?? '')}
-              >
-                <Typography.Text type="danger" className="pointer">
-                  {t('common.delete')}
-                </Typography.Text>
-              </Popconfirm>
+              <EmptyBox if={item.user_name !== 'admin'}>
+                <Divider type="vertical" />
+                <Popconfirm
+                  title={t('user.deleteUser.confirmTitle', {
+                    username: item.user_name,
+                  })}
+                  placement="topRight"
+                  okText={t('common.ok')}
+                  cancelText={t('common.cancel')}
+                  onConfirm={removeUser.bind(null, item.user_name ?? '')}
+                >
+                  <Typography.Text type="danger" className="pointer">
+                    {t('common.delete')}
+                  </Typography.Text>
+                </Popconfirm>
+                <Divider type="vertical" />
+                <Dropdown
+                  placement="bottomRight"
+                  overlay={
+                    <Menu>
+                      <Menu.Item
+                        onClick={updateUserPassword.bind(null, item)}
+                        key="update-user-password"
+                      >
+                        {t('user.updateUserPassword.button')}
+                      </Menu.Item>
+                    </Menu>
+                  }
+                >
+                  <Typography.Link className="pointer">
+                    {t('common.more')}
+                    <DownOutlined />
+                  </Typography.Link>
+                </Dropdown>
+              </EmptyBox>
             </Space>
           </List.Item>
         )}

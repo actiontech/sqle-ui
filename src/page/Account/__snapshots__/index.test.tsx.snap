@@ -171,6 +171,18 @@ exports[`Account should render user Info when request is success 1`] = `
               --
             </span>
           </div>
+          <div
+            class="ant-col ant-col-24"
+          >
+            <button
+              class="ant-btn ant-btn-primary"
+              type="button"
+            >
+              <span>
+                account.modifyPassword.button
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -357,6 +369,18 @@ exports[`Account should render user Info when request is success 2`] = `
                 role2
               </span>
             </span>
+          </div>
+          <div
+            class="ant-col ant-col-24"
+          >
+            <button
+              class="ant-btn ant-btn-primary"
+              type="button"
+            >
+              <span>
+                account.modifyPassword.button
+              </span>
+            </button>
           </div>
         </div>
       </div>
