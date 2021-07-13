@@ -11,6 +11,8 @@ export enum ModalSize {
   mid = 800,
 }
 
+export const RuleListDefaultTabKey = 'ALL';
+
 export const ModalFormLayout = {
   labelCol: {
     xs: { span: 24 },

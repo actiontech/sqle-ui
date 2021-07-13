@@ -3,6 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { IRuleResV1 } from '../../../../api/common';
 import RuleList from '../../../../components/RuleList';
+import useSyncRuleListTab from '../../../../components/RuleList/useSyncRuleListTab';
 import { RuleSelectProps } from './index.type';
 
 const RuleSelect: React.FC<RuleSelectProps> = (props) => {
@@ -43,6 +44,8 @@ const RuleSelect: React.FC<RuleSelectProps> = (props) => {
     [props]
   );
 
+  const { tabKey, allTypes, tabChange } = useSyncRuleListTab(props.allRules);
+
   return (
     <>
       <Descriptions
@@ -62,6 +65,9 @@ const RuleSelect: React.FC<RuleSelectProps> = (props) => {
       <RuleList
         list={props.activeRule ?? []}
         listProps={{ loading: props.listLoading }}
+        allRuleTabs={allTypes}
+        tabChange={tabChange}
+        currentTab={tabKey}
         actions={(item) => {
           return [
             <Button
@@ -92,6 +98,9 @@ const RuleSelect: React.FC<RuleSelectProps> = (props) => {
       <RuleList
         list={disableRule}
         listProps={{ loading: props.listLoading }}
+        allRuleTabs={allTypes}
+        tabChange={tabChange}
+        currentTab={tabKey}
         actions={(item) => {
           return [
             <Button
