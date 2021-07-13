@@ -3,462 +3,1114 @@
 exports[`RuleList should render rule list when list is not empty array 1`] = `
 <div>
   <div
-    class="ant-list ant-list-split"
+    class="ant-tabs ant-tabs-top"
   >
     <div
-      class="ant-spin-nested-loading"
+      class="ant-tabs-nav"
+      role="tablist"
     >
       <div
-        class="ant-spin-container"
+        class="ant-tabs-nav-wrap"
       >
-        <ul
-          class="ant-list-items"
+        <div
+          class="ant-tabs-nav-list"
+          style="transform: translate(0px, 0px);"
         >
-          <li
-            class="ant-list-item"
+          <div
+            class="ant-tabs-tab"
           >
             <div
-              class="ant-list-item-meta"
+              aria-controls="rc-tabs-test-panel-ALL"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-ALL"
+              role="tab"
+              tabindex="0"
             >
-              <div
-                class="ant-list-item-meta-avatar"
-              >
-                <div
-                  class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
-                >
-                  <div
-                    class="ant-space-item"
-                    style="margin-bottom: 1px;"
-                  >
-                    <div>
-                      <span
-                        aria-label="audit"
-                        class="anticon anticon-audit"
-                        role="img"
-                        style="font-size: 25px;"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          data-icon="audit"
-                          fill="currentColor"
-                          focusable="false"
-                          height="1em"
-                          viewBox="64 64 896 896"
-                          width="1em"
-                        >
-                          <path
-                            d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                  <div
-                    class="ant-space-item"
-                  >
-                    <span
-                      class="ant-typography ant-typography-secondary"
-                    >
-                      normal
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="ant-list-item-meta-content"
-              >
-                <h4
-                  class="ant-list-item-meta-title"
-                >
-                  name1
-                </h4>
-                <div
-                  class="ant-list-item-meta-description"
-                >
-                  desc1
-                </div>
-              </div>
+              ALL
             </div>
-            <div
-              class="ant-col"
-              style="flex: 0 0 20%;"
-            />
-          </li>
-          <li
-            class="ant-list-item"
+          </div>
+          <div
+            class="ant-tabs-tab"
           >
             <div
-              class="ant-list-item-meta"
+              aria-controls="rc-tabs-test-panel-type1"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-type1"
+              role="tab"
+              tabindex="0"
             >
-              <div
-                class="ant-list-item-meta-avatar"
-              >
-                <div
-                  class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
-                >
-                  <div
-                    class="ant-space-item"
-                    style="margin-bottom: 1px;"
-                  >
-                    <div>
-                      <span
-                        aria-label="audit"
-                        class="anticon anticon-audit"
-                        role="img"
-                        style="font-size: 25px;"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          data-icon="audit"
-                          fill="currentColor"
-                          focusable="false"
-                          height="1em"
-                          viewBox="64 64 896 896"
-                          width="1em"
-                        >
-                          <path
-                            d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                  <div
-                    class="ant-space-item"
-                  >
-                    <span
-                      class="ant-typography ant-typography-secondary"
-                    >
-                      normal
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="ant-list-item-meta-content"
-              >
-                <h4
-                  class="ant-list-item-meta-title"
-                >
-                  name2
-                </h4>
-                <div
-                  class="ant-list-item-meta-description"
-                >
-                  desc2
-                </div>
-              </div>
+              type1
             </div>
-            <div
-              class="ant-col"
-              style="flex: 0 0 20%;"
-            >
-              <div>
-                ruleTemplate.ruleTemplateForm.ruleValue
-              </div>
-              <div>
-                123
-              </div>
-            </div>
-          </li>
-          <li
-            class="ant-list-item"
+          </div>
+          <div
+            class="ant-tabs-tab"
           >
             <div
-              class="ant-list-item-meta"
+              aria-controls="rc-tabs-test-panel-type2"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-type2"
+              role="tab"
+              tabindex="0"
             >
-              <div
-                class="ant-list-item-meta-avatar"
-              >
-                <div
-                  class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
-                >
-                  <div
-                    class="ant-space-item"
-                    style="margin-bottom: 1px;"
-                  >
-                    <div>
-                      <span
-                        aria-label="info-circle"
-                        class="anticon anticon-info-circle"
-                        role="img"
-                        style="font-size: 25px; color: rgb(50, 130, 230);"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          data-icon="info-circle"
-                          fill="currentColor"
-                          focusable="false"
-                          height="1em"
-                          viewBox="64 64 896 896"
-                          width="1em"
-                        >
-                          <path
-                            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                          />
-                          <path
-                            d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                  <div
-                    class="ant-space-item"
-                  >
-                    <span
-                      class="ant-typography ant-typography-secondary"
-                    >
-                      notice
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="ant-list-item-meta-content"
-              >
-                <h4
-                  class="ant-list-item-meta-title"
-                >
-                  name3
-                </h4>
-                <div
-                  class="ant-list-item-meta-description"
-                >
-                  desc3
-                </div>
-              </div>
+              type2
             </div>
-            <div
-              class="ant-col"
-              style="flex: 0 0 20%;"
-            />
-          </li>
-          <li
-            class="ant-list-item"
+          </div>
+          <div
+            class="ant-tabs-tab ant-tabs-tab-active"
           >
             <div
-              class="ant-list-item-meta"
+              aria-controls="rc-tabs-test-panel-type3"
+              aria-selected="true"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-type3"
+              role="tab"
+              tabindex="0"
             >
-              <div
-                class="ant-list-item-meta-avatar"
-              >
-                <div
-                  class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
-                >
-                  <div
-                    class="ant-space-item"
-                    style="margin-bottom: 1px;"
-                  >
-                    <div>
-                      <span
-                        aria-label="warning"
-                        class="anticon anticon-warning"
-                        role="img"
-                        style="font-size: 25px; color: rgb(255, 140, 0);"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          data-icon="warning"
-                          fill="currentColor"
-                          focusable="false"
-                          height="1em"
-                          viewBox="64 64 896 896"
-                          width="1em"
-                        >
-                          <path
-                            d="M464 720a48 48 0 1096 0 48 48 0 10-96 0zm16-304v184c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V416c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8zm475.7 440l-416-720c-6.2-10.7-16.9-16-27.7-16s-21.6 5.3-27.7 16l-416 720C56 877.4 71.4 904 96 904h832c24.6 0 40-26.6 27.7-48zm-783.5-27.9L512 239.9l339.8 588.2H172.2z"
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                  <div
-                    class="ant-space-item"
-                  >
-                    <span
-                      class="ant-typography ant-typography-secondary"
-                    >
-                      warn
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="ant-list-item-meta-content"
-              >
-                <h4
-                  class="ant-list-item-meta-title"
-                >
-                  name4
-                </h4>
-                <div
-                  class="ant-list-item-meta-description"
-                >
-                  desc4
-                </div>
-              </div>
+              type3
             </div>
-            <div
-              class="ant-col"
-              style="flex: 0 0 20%;"
+          </div>
+          <div
+            class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
+          />
+        </div>
+      </div>
+      <div
+        class="ant-tabs-nav-operations ant-tabs-nav-operations-hidden"
+      >
+        <button
+          aria-controls="rc-tabs-test-more-popup"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-hidden="true"
+          class="ant-tabs-nav-more"
+          id="rc-tabs-test-more"
+          style="visibility: hidden; order: 1;"
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            aria-label="ellipsis"
+            class="anticon anticon-ellipsis"
+            role="img"
+          >
+            <svg
+              aria-hidden="true"
+              data-icon="ellipsis"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
             >
-              <div>
-                ruleTemplate.ruleTemplateForm.ruleValue
-              </div>
-              <div>
-                333
-              </div>
-            </div>
-          </li>
-          <li
-            class="ant-list-item"
+              <path
+                d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="ant-tabs-content-holder"
+    >
+      <div
+        class="ant-tabs-content ant-tabs-content-top"
+      >
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-ALL"
+          class="ant-tabs-tabpane"
+          id="rc-tabs-test-panel-ALL"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        >
+          <div
+            class="ant-list ant-list-split"
           >
             <div
-              class="ant-list-item-meta"
+              class="ant-spin-nested-loading"
             >
               <div
-                class="ant-list-item-meta-avatar"
+                class="ant-spin-container"
               >
-                <div
-                  class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                <ul
+                  class="ant-list-items"
                 >
-                  <div
-                    class="ant-space-item"
-                    style="margin-bottom: 1px;"
+                  <li
+                    class="ant-list-item"
                   >
-                    <div>
-                      <span
-                        aria-label="audit"
-                        class="anticon anticon-audit"
-                        role="img"
-                        style="font-size: 25px;"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          data-icon="audit"
-                          fill="currentColor"
-                          focusable="false"
-                          height="1em"
-                          viewBox="64 64 896 896"
-                          width="1em"
-                        >
-                          <path
-                            d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                  <div
-                    class="ant-space-item"
-                  >
-                    <span
-                      class="ant-typography ant-typography-secondary"
+                    <div
+                      class="ant-list-item-meta"
                     >
-                      normal
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="ant-list-item-meta-content"
-              >
-                <h4
-                  class="ant-list-item-meta-title"
-                >
-                  name4
-                </h4>
-                <div
-                  class="ant-list-item-meta-description"
-                >
-                  desc4
-                </div>
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="audit"
+                                class="anticon anticon-audit"
+                                role="img"
+                                style="font-size: 25px;"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="audit"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              normal
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          name1
+                        </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          desc1
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="audit"
+                                class="anticon anticon-audit"
+                                role="img"
+                                style="font-size: 25px;"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="audit"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              normal
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          name2
+                        </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          desc2
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    >
+                      <div>
+                        ruleTemplate.ruleTemplateForm.ruleValue
+                      </div>
+                      <div>
+                        123
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(50, 130, 230);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              notice
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          name3
+                        </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          desc3
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="warning"
+                                class="anticon anticon-warning"
+                                role="img"
+                                style="font-size: 25px; color: rgb(255, 140, 0);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="warning"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M464 720a48 48 0 1096 0 48 48 0 10-96 0zm16-304v184c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V416c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8zm475.7 440l-416-720c-6.2-10.7-16.9-16-27.7-16s-21.6 5.3-27.7 16l-416 720C56 877.4 71.4 904 96 904h832c24.6 0 40-26.6 27.7-48zm-783.5-27.9L512 239.9l339.8 588.2H172.2z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              warn
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          name4
+                        </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          desc4
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    >
+                      <div>
+                        ruleTemplate.ruleTemplateForm.ruleValue
+                      </div>
+                      <div>
+                        1
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="audit"
+                                class="anticon anticon-audit"
+                                role="img"
+                                style="font-size: 25px;"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="audit"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              normal
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          name4
+                        </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          desc4
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="audit"
+                                class="anticon anticon-audit"
+                                role="img"
+                                style="font-size: 25px;"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="audit"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              normal
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          name4
+                        </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          desc4
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    >
+                      <div>
+                        ruleTemplate.ruleTemplateForm.ruleValue
+                      </div>
+                      <div>
+                        4444
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
-            <div
-              class="ant-col"
-              style="flex: 0 0 20%;"
-            />
-          </li>
-          <li
-            class="ant-list-item"
+          </div>
+        </div>
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-type1"
+          class="ant-tabs-tabpane"
+          id="rc-tabs-test-panel-type1"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        >
+          <div
+            class="ant-list ant-list-split"
           >
             <div
-              class="ant-list-item-meta"
+              class="ant-spin-nested-loading"
             >
               <div
-                class="ant-list-item-meta-avatar"
+                class="ant-spin-container"
               >
-                <div
-                  class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                <ul
+                  class="ant-list-items"
                 >
-                  <div
-                    class="ant-space-item"
-                    style="margin-bottom: 1px;"
+                  <li
+                    class="ant-list-item"
                   >
-                    <div>
-                      <span
-                        aria-label="audit"
-                        class="anticon anticon-audit"
-                        role="img"
-                        style="font-size: 25px;"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          data-icon="audit"
-                          fill="currentColor"
-                          focusable="false"
-                          height="1em"
-                          viewBox="64 64 896 896"
-                          width="1em"
-                        >
-                          <path
-                            d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                  <div
-                    class="ant-space-item"
-                  >
-                    <span
-                      class="ant-typography ant-typography-secondary"
+                    <div
+                      class="ant-list-item-meta"
                     >
-                      normal
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="ant-list-item-meta-content"
-              >
-                <h4
-                  class="ant-list-item-meta-title"
-                >
-                  name4
-                </h4>
-                <div
-                  class="ant-list-item-meta-description"
-                >
-                  desc4
-                </div>
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="audit"
+                                class="anticon anticon-audit"
+                                role="img"
+                                style="font-size: 25px;"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="audit"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              normal
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          name1
+                        </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          desc1
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="audit"
+                                class="anticon anticon-audit"
+                                role="img"
+                                style="font-size: 25px;"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="audit"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              normal
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          name4
+                        </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          desc4
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    >
+                      <div>
+                        ruleTemplate.ruleTemplateForm.ruleValue
+                      </div>
+                      <div>
+                        4444
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
+          </div>
+        </div>
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-type2"
+          class="ant-tabs-tabpane"
+          id="rc-tabs-test-panel-type2"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        >
+          <div
+            class="ant-list ant-list-split"
+          >
             <div
-              class="ant-col"
-              style="flex: 0 0 20%;"
+              class="ant-spin-nested-loading"
             >
-              <div>
-                ruleTemplate.ruleTemplateForm.ruleValue
-              </div>
-              <div>
-                4444
+              <div
+                class="ant-spin-container"
+              >
+                <ul
+                  class="ant-list-items"
+                >
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="audit"
+                                class="anticon anticon-audit"
+                                role="img"
+                                style="font-size: 25px;"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="audit"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              normal
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          name2
+                        </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          desc2
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    >
+                      <div>
+                        ruleTemplate.ruleTemplateForm.ruleValue
+                      </div>
+                      <div>
+                        123
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="audit"
+                                class="anticon anticon-audit"
+                                role="img"
+                                style="font-size: 25px;"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="audit"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              normal
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          name4
+                        </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          desc4
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                  </li>
+                </ul>
               </div>
             </div>
-          </li>
-        </ul>
+          </div>
+        </div>
+        <div
+          aria-hidden="false"
+          aria-labelledby="rc-tabs-test-tab-type3"
+          class="ant-tabs-tabpane ant-tabs-tabpane-active"
+          id="rc-tabs-test-panel-type3"
+          role="tabpanel"
+          style=""
+          tabindex="0"
+        >
+          <div
+            class="ant-list ant-list-split"
+          >
+            <div
+              class="ant-spin-nested-loading"
+            >
+              <div
+                class="ant-spin-container"
+              >
+                <ul
+                  class="ant-list-items"
+                >
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(50, 130, 230);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              notice
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          name3
+                        </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          desc3
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="warning"
+                                class="anticon anticon-warning"
+                                role="img"
+                                style="font-size: 25px; color: rgb(255, 140, 0);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="warning"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M464 720a48 48 0 1096 0 48 48 0 10-96 0zm16-304v184c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V416c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8zm475.7 440l-416-720c-6.2-10.7-16.9-16-27.7-16s-21.6 5.3-27.7 16l-416 720C56 877.4 71.4 904 96 904h832c24.6 0 40-26.6 27.7-48zm-783.5-27.9L512 239.9l339.8 588.2H172.2z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              warn
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          name4
+                        </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          desc4
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    >
+                      <div>
+                        ruleTemplate.ruleTemplateForm.ruleValue
+                      </div>
+                      <div>
+                        1
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
