@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useWorkflowTemplate should get workflow template when updateWorkflowTemplate is called 1`] = `
+<Select
+  className=""
+  clearIcon={<ForwardRef(CloseCircleFilled) />}
+  dropdownClassName=""
+  inputIcon={[Function]}
+  listHeight={256}
+  listItemHeight={24}
+  menuItemSelectedIcon={null}
+  notFoundContent={
+    <Context.Consumer>
+      [Function]
+    </Context.Consumer>
+  }
+  prefixCls="ant-select"
+  removeIcon={<ForwardRef(CloseOutlined) />}
+  transitionName="ant-slide-up"
+/>
+`;
+
+exports[`useWorkflowTemplate should get workflow template when updateWorkflowTemplate is called 2`] = `
+<Select
+  className=""
+  clearIcon={<ForwardRef(CloseCircleFilled) />}
+  dropdownClassName=""
+  inputIcon={[Function]}
+  listHeight={256}
+  listItemHeight={24}
+  menuItemSelectedIcon={null}
+  notFoundContent={
+    <Context.Consumer>
+      [Function]
+    </Context.Consumer>
+  }
+  prefixCls="ant-select"
+  removeIcon={<ForwardRef(CloseOutlined) />}
+  transitionName="ant-slide-up"
+>
+  <Option
+    key="workflow-template-name-1"
+    value="workflow-template-name-1"
+  >
+    workflow-template-name-1
+  </Option>
+</Select>
+`;
