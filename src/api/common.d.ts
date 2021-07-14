@@ -444,6 +444,8 @@ export interface IRuleResV1 {
 
   rule_name?: string;
 
+  type?: string;
+
   value?: string;
 }
 

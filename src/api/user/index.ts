@@ -19,14 +19,14 @@ import {
   IGetUserListV1Return,
   ICreateUserV1Params,
   ICreateUserV1Return,
-  IUpdateOtherUserPasswordV1Params,
-  IUpdateOtherUserPasswordV1Return,
   IGetUserV1Params,
   IGetUserV1Return,
   IDeleteUserV1Params,
   IDeleteUserV1Return,
   IUpdateUserV1Params,
-  IUpdateUserV1Return
+  IUpdateUserV1Return,
+  IUpdateOtherUserPasswordV1Params,
+  IUpdateOtherUserPasswordV1Return
 } from './index.d';
 
 class UserService extends ServiceBase {
@@ -87,21 +87,6 @@ class UserService extends ServiceBase {
     return this.post<ICreateUserV1Return>('/v1/users', paramsData, options);
   }
 
-  public UpdateOtherUserPasswordV1(
-    params: IUpdateOtherUserPasswordV1Params,
-    options?: AxiosRequestConfig
-  ) {
-    const paramsData = this.cloneDeep(params);
-    const user_name = paramsData.user_name;
-    delete paramsData.user_name;
-
-    return this.patch<IUpdateOtherUserPasswordV1Return>(
-      `/v1/users/${user_name}/password`,
-      paramsData,
-      options
-    );
-  }
-
   public getUserV1(params: IGetUserV1Params, options?: AxiosRequestConfig) {
     const paramsData = this.cloneDeep(params);
     const user_name = paramsData.user_name;
@@ -139,6 +124,21 @@ class UserService extends ServiceBase {
 
     return this.patch<IUpdateUserV1Return>(
       `/v1/users/${user_name}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public UpdateOtherUserPasswordV1(
+    params: IUpdateOtherUserPasswordV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const user_name = paramsData.user_name;
+    delete paramsData.user_name;
+
+    return this.patch<IUpdateOtherUserPasswordV1Return>(
+      `/v1/users/${user_name}/password`,
       paramsData,
       options
     );

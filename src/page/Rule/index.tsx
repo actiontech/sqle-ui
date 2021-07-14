@@ -16,14 +16,17 @@ import instance from '../../api/instance';
 import ruleTemplate from '../../api/rule_template';
 import EmptyBox from '../../components/EmptyBox';
 import RuleList from '../../components/RuleList';
+import useSyncRuleListTab from '../../components/RuleList/useSyncRuleListTab';
 import useInstance from '../../hooks/useInstance';
 import { Theme } from '../../types/theme.type';
 
 const Rule = () => {
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
   const { t } = useTranslation();
-  const [instanceName, setInstanceName] =
-    useState<string | undefined>(undefined);
+  const [instanceName, setInstanceName] = useState<string | undefined>(
+    undefined
+  );
+
   const theme = useTheme<Theme>();
   const { data: instanceRules, run: getInstanceRules } = useRequest(
     () =>
@@ -68,6 +71,8 @@ const Rule = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const { tabKey, allTypes, tabChange } = useSyncRuleListTab(allRules);
+
   return (
     <>
       <PageHeader title={t('rule.pageTitle')} ghost={false}>
@@ -106,12 +111,22 @@ const Rule = () => {
               <Descriptions
                 title={t('rule.activeRules', { name: instanceName })}
               />
-              <RuleList list={instanceRules ?? []} />
+              <RuleList
+                list={instanceRules ?? []}
+                allRuleTabs={allTypes}
+                currentTab={tabKey}
+                tabChange={tabChange}
+              />
               <Divider dashed />
               <Descriptions
                 title={t('rule.disableRules', { name: instanceName })}
               />
-              <RuleList list={disableRules ?? []} />
+              <RuleList
+                list={disableRules ?? []}
+                allRuleTabs={allTypes}
+                currentTab={tabKey}
+                tabChange={tabChange}
+              />
             </Card>
           </EmptyBox>
         </Space>
