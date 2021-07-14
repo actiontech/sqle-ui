@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { PageFormLayout } from '../../../data/common';
 import useRole from '../../../hooks/useRole';
 import useRuleTemplate from '../../../hooks/useRuleTemplate';
+import useWorkflowTemplate from '../../../hooks/useWorkflowTemplate';
 import { nameRule } from '../../../utils/FormRule';
 import DatabaseFormItem from './DatabaseFormItem';
 import { IDataSourceFormProps } from './index.type';
@@ -15,10 +16,14 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
   const { updateRuleTemplateList, generateRuleTemplateSelectOption } =
     useRuleTemplate();
 
+  const { updateWorkflowTemplate, generateWorkflowSelectOptions } =
+    useWorkflowTemplate();
+
   React.useEffect(() => {
     updateRoleList();
     updateRuleTemplateList();
-  }, [updateRoleList, updateRuleTemplateList]);
+    updateWorkflowTemplate();
+  }, [updateRoleList, updateRuleTemplateList, updateWorkflowTemplate]);
 
   return (
     <Form form={props.form} {...PageFormLayout}>
@@ -79,7 +84,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
           {generateRuleTemplateSelectOption()}
         </Select>
       </Form.Item>
-      {/* <Form.Item
+      <Form.Item
         label={t('dataSource.dataSourceForm.workflow')}
         name="workflow"
       >
@@ -89,9 +94,9 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
             name: t('dataSource.dataSourceForm.workflow'),
           })}
         >
-          <Select.Option value={1}>1</Select.Option>
+          {generateWorkflowSelectOptions()}
         </Select>
-      </Form.Item> */}
+      </Form.Item>
     </Form>
   );
 };

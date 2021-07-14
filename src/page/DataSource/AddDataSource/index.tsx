@@ -15,14 +15,10 @@ const AddDataSource = () => {
   const { t } = useTranslation();
   const [form] = useForm();
 
-  const [
-    loading,
-    { setTrue: setLoadingTrue, setFalse: setLoadingFalse },
-  ] = useBoolean();
-  const [
-    visible,
-    { setTrue: openResultModal, setFalse: closeResultModal },
-  ] = useBoolean();
+  const [loading, { setTrue: setLoadingTrue, setFalse: setLoadingFalse }] =
+    useBoolean();
+  const [visible, { setTrue: openResultModal, setFalse: closeResultModal }] =
+    useBoolean();
 
   const addDatabase = React.useCallback(async () => {
     const values = await form.validateFields();
@@ -37,7 +33,7 @@ const AddDataSource = () => {
         instance_name: values.name,
         role_name_list: values.role,
         rule_template_name_list: values.ruleTemplate,
-        // workflow_template_name: values.workflow,
+        workflow_template_name: values.workflow,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
