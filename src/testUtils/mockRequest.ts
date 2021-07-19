@@ -3,6 +3,7 @@ import instance from '../api/instance';
 import role from '../api/role';
 import ruleTemplate from '../api/rule_template';
 import user from '../api/user';
+import workflow from '../api/workflow';
 
 export const successData = (data: any, otherData?: any) => {
   return {
@@ -149,6 +150,14 @@ export const mockUseUsername = () => {
   const spy = jest.spyOn(user, 'getUserTipListV1');
   spy.mockImplementation(() =>
     resolveThreeSecond([{ user_name: 'user_name1' }])
+  );
+  return spy;
+};
+
+export const mockUseWorkflowTemplate = () => {
+  const spy = jest.spyOn(workflow, 'getWorkflowTemplateTipsV1');
+  spy.mockImplementation(() =>
+    resolveThreeSecond([{ workflow_template_name: 'workflow-template-name-1' }])
   );
   return spy;
 };

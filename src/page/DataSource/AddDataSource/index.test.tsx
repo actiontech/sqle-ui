@@ -10,6 +10,7 @@ import {
 import {
   mockUseRole,
   mockUseRuleTemplate,
+  mockUseWorkflowTemplate,
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
@@ -19,6 +20,7 @@ describe('AddDataSource', () => {
     jest.useFakeTimers();
     mockUseRuleTemplate();
     mockUseRole();
+    mockUseWorkflowTemplate();
   });
 
   afterEach(() => {
@@ -94,6 +96,15 @@ describe('AddDataSource', () => {
     expect(instanceOption).toHaveClass('ant-select-item-option-content');
     fireEvent.click(instanceOption);
 
+    fireEvent.mouseDown(
+      screen.getByLabelText('dataSource.dataSourceForm.workflow')
+    );
+    await screen.findAllByText('workflow-template-name-1');
+    const allWorkflowOptions = screen.getAllByText('workflow-template-name-1');
+    const workflowOption = allWorkflowOptions[1];
+    expect(workflowOption).toHaveClass('ant-select-item-option-content');
+    fireEvent.click(workflowOption);
+
     await waitFor(() => {
       fireEvent.click(screen.getByText('common.submit'));
     });
@@ -108,6 +119,7 @@ describe('AddDataSource', () => {
       instance_name: 'instance_name1',
       role_name_list: ['role_name1'],
       rule_template_name_list: ['rule_template_name1'],
+      workflow_template_name: 'workflow-template-name-1',
     });
 
     await waitFor(() => {

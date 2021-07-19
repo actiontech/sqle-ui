@@ -45,7 +45,7 @@ const UpdateDataSource = () => {
       instance_name: values.name,
       role_name_list: values.role,
       rule_template_name_list: values.ruleTemplate,
-      // workflow_template_name: values.workflow,
+      workflow_template_name: values.workflow,
     };
     if (!!values.password) {
       params.db_password = values.password;
@@ -82,7 +82,7 @@ const UpdateDataSource = () => {
             user: instance?.db_user,
             role: instance?.role_name_list,
             ruleTemplate: instance?.rule_template_name_list,
-            // workflow: instance?.workflow_template_name,
+            workflow: instance?.workflow_template_name,
           });
           setInitError('');
         } else {

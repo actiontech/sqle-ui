@@ -8,6 +8,7 @@ import {
 import {
   mockUseRole,
   mockUseRuleTemplate,
+  mockUseWorkflowTemplate,
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
 import { useParams } from 'react-router-dom';
@@ -29,6 +30,7 @@ describe('UpdateDataSource', () => {
     mockUseRuleTemplate();
     mockUseRole();
     mockGetInstance();
+    mockUseWorkflowTemplate();
   });
 
   afterEach(() => {
@@ -140,6 +142,7 @@ describe('UpdateDataSource', () => {
       instance_name: 'instance_name1',
       role_name_list: ['role_name1'],
       rule_template_name_list: ['rule_template_name1'],
+      workflow_template_name: 'default',
     });
 
     await waitFor(() => {
