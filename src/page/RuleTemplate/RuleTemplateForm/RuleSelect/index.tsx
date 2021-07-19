@@ -6,25 +6,15 @@ import { IRuleResV1 } from '../../../../api/common';
 import RuleList from '../../../../components/RuleList';
 import useSyncRuleListTab from '../../../../components/RuleList/useSyncRuleListTab';
 import { RuleSelectProps } from './index.type';
-import { useForm } from 'antd/lib/form/Form';
-import RuleManagerModal from './ruleManagerModal'
-import { RuleResV1LevelEnum } from "../../../../api/common.enum";
+import RuleManagerModal from './RuleManagerModal';
 
 const RuleSelect: React.FC<RuleSelectProps> = (props) => {
   const { t } = useTranslation();
-  const [form] = useForm<IRuleResV1>();
-  const [ 
-    visible ,
-    {setTrue: setVisibleTrue, setFalse: setVisibleFalse} 
-  ] = useBoolean();
-
-  const [ruleData, setRuleData] = React.useState<IRuleResV1>({
-    level: RuleResV1LevelEnum.normal,
-    value: '',
-    desc:'',
-    type:'',
-    rule_name:''
-  })
+  const [visible, { setTrue: setVisibleTrue, setFalse: setVisibleFalse }] =
+    useBoolean();
+  const [ruleData, setRuleData] = React.useState<IRuleResV1 | undefined>(
+    undefined
+  );
   const { tabKey, allTypes, tabChange } = useSyncRuleListTab(props.allRules);
 
   const disableRule = React.useMemo(() => {
@@ -51,22 +41,30 @@ const RuleSelect: React.FC<RuleSelectProps> = (props) => {
     [props]
   );
 
-  const editRule = React.useCallback((ruleItem: IRuleResV1) => {
-    setRuleData(ruleItem)
-    setVisibleTrue();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[props, setVisibleTrue, visible])
+  const editRule = React.useCallback(
+    (ruleItem: IRuleResV1) => {
+      setRuleData(ruleItem);
+      setVisibleTrue();
+    },
+    [setVisibleTrue]
+  );
 
-  const submit = React.useCallback(async () => {
-    const values = await form.validateFields();
-    const index: number = props.activeRule.findIndex(e => e.rule_name === values.rule_name)
-    let temp: IRuleResV1[] = [];
-    temp = props.activeRule;
-    temp.splice(index,1,values)
-    props.updateActiveRule(temp);
-    setVisibleFalse()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[form, props, visible, ruleData, setVisibleFalse,])
+  const submit = React.useCallback(
+    async (values: IRuleResV1) => {
+      let temp: IRuleResV1[] = [];
+      temp = props.activeRule.map((e: IRuleResV1) => {
+        if (e.rule_name === values.rule_name) {
+          return values;
+        } else {
+          return e;
+        }
+      });
+      props.updateActiveRule(temp);
+      setVisibleFalse();
+      setRuleData(undefined);
+    },
+    [props, setVisibleFalse]
+  );
 
   const updateAllRule = React.useCallback(
     (active: boolean) => {
@@ -117,7 +115,7 @@ const RuleSelect: React.FC<RuleSelectProps> = (props) => {
               danger
             >
               {t('ruleTemplate.ruleTemplateForm.disableRule')}
-            </Button>
+            </Button>,
           ];
         }}
       />
@@ -158,8 +156,7 @@ const RuleSelect: React.FC<RuleSelectProps> = (props) => {
         submit={submit}
         setVisibleFalse={setVisibleFalse}
         ruleData={ruleData}
-        form={form}
-       />
+      />
     </>
   );
 };

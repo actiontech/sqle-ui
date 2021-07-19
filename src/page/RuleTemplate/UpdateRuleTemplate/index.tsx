@@ -39,16 +39,16 @@ const UpdateRuleTemplate = () => {
   const submit = React.useCallback(() => {
     updateLoading(true);
     const baseInfo = form.getFieldsValue();
-    const activeRuleWithNewField = activeRule.map(rule => {
+    const activeRuleWithNewField = activeRule.map((rule) => {
       return {
         name: rule.rule_name,
         level: rule.level,
         desc: rule.desc,
         type: rule.type,
         value: rule.value,
-        db_type: rule.db_type
-      }
-    })
+        db_type: rule.db_type,
+      };
+    });
     ruleTemplate
       .updateRuleTemplateV1({
         rule_template_name: baseInfo.templateName,
@@ -79,7 +79,7 @@ const UpdateRuleTemplate = () => {
             templateDesc: template?.desc || undefined,
             instances: template?.instance_name_list ?? [],
           });
-          setActiveRule(template?.rule_list as  Array<IRuleResV1>)
+          setActiveRule((template?.rule_list as Array<IRuleResV1>) ?? []);
         }
       });
   }, [form, urlParams.templateName]);

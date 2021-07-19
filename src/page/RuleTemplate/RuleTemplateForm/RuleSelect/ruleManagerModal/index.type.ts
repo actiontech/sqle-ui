@@ -1,10 +1,8 @@
 import { IRuleResV1 } from '../../../../../api/common';
-import { FormInstance } from 'antd';
 
 export type RuleManagerFormProps = {
   visible: boolean;
-  ruleData: IRuleResV1;
-  setVisibleFalse:() => void
-  submit: () => void;
-  form: FormInstance<IRuleResV1>;
-}
+  ruleData?: IRuleResV1 | undefined;
+  setVisibleFalse: () => void;
+  submit: (values: IRuleResV1) => void;
+};

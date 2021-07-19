@@ -53,7 +53,7 @@ const RuleList: React.FC<RuleListProps> = (props) => {
   useEffect(() => {
     generateTabRule();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props]);
+  }, [props.list, props.allRuleTabs]);
 
   useEffect(() => {
     if (props.currentTab) {

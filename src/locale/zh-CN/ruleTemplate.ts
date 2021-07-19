@@ -40,7 +40,7 @@ export default {
     disableRuleTitle: '已禁用规则',
     disableAllRules: '禁用全部规则',
     disableRule: '禁用该规则',
-    editRule:'编辑该规则',
+    editRule: '编辑该规则',
 
     emptyRule: '没有找到对应规则',
     ruleValue: '规则值',
@@ -58,20 +58,20 @@ export default {
     successTitle: '更新审核规则模版成功',
   },
 
-  editModal:{
-    title:'编辑',
-    ruleLevelLabel:'规则等级',
-    ruleLevelValue:'预设值',
-    ruleLevelLabelPlace:'请选择规则对应的等级',
-    ruleLevelValuePlace:'请填写规则的默认值',
-    ruleDescLabel:'规则描述',
-    ruleTypeLabel:'规则类型',
-    ruleNameLabel:'规则名称'
+  editModal: {
+    title: '编辑规则',
+    ruleLevelLabel: '规则等级',
+    ruleLevelValue: '预设值',
+    ruleLevelLabelPlace: '请选择规则对应的等级',
+    ruleLevelValuePlace: '请填写规则的默认值',
+    ruleDescLabel: '规则描述',
+    ruleTypeLabel: '规则类型',
+    ruleNameLabel: '规则名称',
   },
-  ruleLevel:{
-    normal:'普通',
-    error:'错误',
-    warn:'告警',
-    notice:'提示'
-  }
+  ruleLevel: {
+    normal: '普通',
+    error: '错误',
+    warn: '告警',
+    notice: '提示',
+  },
 };
