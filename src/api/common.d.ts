@@ -65,6 +65,18 @@ export interface IAuditWhitelistResV1 {
   value?: string;
 }
 
+export interface IBatchCancelWorkflowsReqV1 {
+  workflow_ids?: string[];
+}
+
+export interface ICloneRuleTemplateReqV1 {
+  desc?: string;
+
+  instance_name_list?: string[];
+
+  rule_template_name?: string;
+}
+
 export interface ICreateAuditWhitelistReqV1 {
   desc?: string;
 
@@ -79,6 +91,8 @@ export interface ICreateInstanceReqV1 {
   db_password?: string;
 
   db_port?: string;
+
+  db_type?: string;
 
   db_user?: string;
 
@@ -108,7 +122,7 @@ export interface ICreateRuleTemplateReqV1 {
 
   instance_name_list?: string[];
 
-  rule_name_list?: string[];
+  rule_list?: IRuleReqV1[];
 
   rule_template_name?: string;
 }
@@ -143,6 +157,10 @@ export interface ICreateWorkflowTemplateReqV1 {
 
 export interface IDashboardResV1 {
   workflow_statistics?: IWorkflowStatisticsResV1;
+}
+
+export interface IDriversResV1 {
+  driver_name_list?: string[];
 }
 
 export interface IGetAuditTaskResV1 {
@@ -189,7 +207,17 @@ export interface IGetDashboardResV1 {
   message?: string;
 }
 
+export interface IGetDriversResV1 {
+  code?: number;
+
+  data?: IDriversResV1;
+
+  message?: string;
+}
+
 export interface IGetInstanceConnectableReqV1 {
+  db_type?: string;
+
   host?: string;
 
   password?: string;
@@ -278,7 +306,7 @@ export interface IGetRuleTemplateTipsResV1 {
 export interface IGetRuleTemplatesResV1 {
   code?: number;
 
-  data?: IRuleTemplateDetailResV1[];
+  data?: IRuleTemplateResV1[];
 
   message?: string;
 
@@ -398,6 +426,8 @@ export interface IInstanceResV1 {
 
   db_port?: string;
 
+  db_type?: string;
+
   db_user?: string;
 
   desc?: string;
@@ -437,7 +467,17 @@ export interface IRoleTipResV1 {
   role_name?: string;
 }
 
+export interface IRuleReqV1 {
+  level?: string;
+
+  name?: string;
+
+  value?: string;
+}
+
 export interface IRuleResV1 {
+  db_type?: string;
+
   desc?: string;
 
   level?: RuleResV1LevelEnum;
@@ -454,7 +494,15 @@ export interface IRuleTemplateDetailResV1 {
 
   instance_name_list?: string[];
 
-  rule_name_list?: string[];
+  rule_list?: IRuleResV1[];
+
+  rule_template_name?: string;
+}
+
+export interface IRuleTemplateResV1 {
+  desc?: string;
+
+  instance_name_list?: string[];
 
   rule_template_name?: string;
 }
@@ -500,6 +548,8 @@ export interface IUpdateInstanceReqV1 {
 
   db_port?: string;
 
+  db_type?: string;
+
   db_user?: string;
 
   desc?: string;
@@ -528,7 +578,7 @@ export interface IUpdateRuleTemplateReqV1 {
 
   instance_name_list?: string[];
 
-  rule_name_list?: string[];
+  rule_list?: IRuleReqV1[];
 }
 
 export interface IUpdateSMTPConfigurationReqV1 {

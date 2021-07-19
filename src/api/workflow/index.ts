@@ -22,6 +22,8 @@ import {
   IGetWorkflowListV1Return,
   ICreateWorkflowV1Params,
   ICreateWorkflowV1Return,
+  IBatchCancelWorkflowsV1Params,
+  IBatchCancelWorkflowsV1Return,
   IGetWorkflowV1Params,
   IGetWorkflowV1Return,
   IUpdateWorkflowV1Params,
@@ -131,6 +133,18 @@ class WorkflowService extends ServiceBase {
     const paramsData = this.cloneDeep(params);
     return this.post<ICreateWorkflowV1Return>(
       '/v1/workflows',
+      paramsData,
+      options
+    );
+  }
+
+  public batchCancelWorkflowsV1(
+    params: IBatchCancelWorkflowsV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.post<IBatchCancelWorkflowsV1Return>(
+      '/v1/workflows/cancel',
       paramsData,
       options
     );

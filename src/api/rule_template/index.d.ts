@@ -5,6 +5,7 @@ import {
   IBaseRes,
   IGetRuleTemplateResV1,
   IUpdateRuleTemplateReqV1,
+  ICloneRuleTemplateReqV1,
   IGetRulesResV1
 } from '../common.d';
 
@@ -42,5 +43,9 @@ export interface IUpdateRuleTemplateV1Params extends IUpdateRuleTemplateReqV1 {
 }
 
 export interface IUpdateRuleTemplateV1Return extends IBaseRes {}
+
+export interface ICloneRuleTemplateV1Params extends ICloneRuleTemplateReqV1 {}
+
+export interface ICloneRuleTemplateV1Return extends IBaseRes {}
 
 export interface IGetRuleListV1Return extends IGetRulesResV1 {}

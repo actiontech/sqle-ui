@@ -41,12 +41,22 @@ const CreateRuleTemplate = () => {
   const submit = React.useCallback(() => {
     updateCreateLoading(true);
     const baseInfo = form.getFieldsValue();
+    const activeRuleWithNewField = activeRule.map(rule => {
+      return {
+        name: rule.rule_name,
+        level: rule.level,
+        desc: rule.desc,
+        type: rule.type,
+        value: rule.value,
+        db_type: rule.db_type
+      }
+    })
     ruleTemplate
       .createRuleTemplateV1({
         rule_template_name: baseInfo.templateName,
         desc: baseInfo.templateDesc,
         instance_name_list: baseInfo.instances,
-        rule_name_list: activeRule.map((e) => e.rule_name ?? ''),
+        rule_list: activeRuleWithNewField,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {

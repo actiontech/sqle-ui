@@ -22,6 +22,8 @@ export interface IGetInstanceTipListV1Return extends IGetInstanceTipsResV1 {}
 export interface IGetInstanceListV1Params {
   filter_instance_name?: string;
 
+  filter_db_type?: string;
+
   filter_db_host?: string;
 
   filter_db_port?: string;

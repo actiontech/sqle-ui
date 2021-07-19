@@ -10,12 +10,14 @@ import {
   getWorkflowListV1FilterStatusEnum,
   getWorkflowListV1FilterTaskStatusEnum,
 } from '../../api/workflow/index.enum';
+import { RuleResV1LevelEnum } from "../../api/common.enum";
 import {
   auditStatusDictionary,
   execStatusDictionary,
   orderStatusDictionary,
   sqlTaskStatusDictionary,
   WorkflowStepTypeDictionary,
+  ruleLevelDictionary
 } from './index.data';
 
 const useStaticStatus = () => {
@@ -216,12 +218,43 @@ const useStaticStatus = () => {
     );
   }, [t]);
 
+  const getRuleLevelStatusSelectOption = React.useCallback(
+    () => {
+      return(
+        <>
+          <Select.Option
+            value={RuleResV1LevelEnum.normal}
+            key={RuleResV1LevelEnum.normal}>
+              {t(ruleLevelDictionary[RuleResV1LevelEnum.normal])}
+          </Select.Option>
+          <Select.Option
+            value={RuleResV1LevelEnum.notice}
+            key={RuleResV1LevelEnum.notice}>
+              {t(ruleLevelDictionary[RuleResV1LevelEnum.notice])}
+          </Select.Option>
+          <Select.Option
+            value={RuleResV1LevelEnum.warn}
+            key={RuleResV1LevelEnum.warn}>
+              {t(ruleLevelDictionary[RuleResV1LevelEnum.warn])}
+          </Select.Option>
+          <Select.Option
+            value={RuleResV1LevelEnum.error}
+            key={RuleResV1LevelEnum.error}>
+              {t(ruleLevelDictionary[RuleResV1LevelEnum.error])}
+          </Select.Option>
+        </>
+      )
+    },
+    [t],
+  )
+
   return {
     generateAuditStatusSelectOption,
     generateExecStatusSelectOption,
     generateWorkflowStepTypeSelectOption,
     generateOrderStatusSelectOption,
     generateSqlTaskStatusSelectOption,
+    getRuleLevelStatusSelectOption
   };
 };
 

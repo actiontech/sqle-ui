@@ -1,13 +1,31 @@
 import { Button, Descriptions, Divider } from 'antd';
 import React from 'react';
+import { useBoolean } from 'ahooks';
 import { useTranslation } from 'react-i18next';
 import { IRuleResV1 } from '../../../../api/common';
 import RuleList from '../../../../components/RuleList';
 import useSyncRuleListTab from '../../../../components/RuleList/useSyncRuleListTab';
 import { RuleSelectProps } from './index.type';
+import { useForm } from 'antd/lib/form/Form';
+import RuleManagerModal from './ruleManagerModal'
+import { RuleResV1LevelEnum } from "../../../../api/common.enum";
 
 const RuleSelect: React.FC<RuleSelectProps> = (props) => {
   const { t } = useTranslation();
+  const [form] = useForm<IRuleResV1>();
+  const [ 
+    visible ,
+    {setTrue: setVisibleTrue, setFalse: setVisibleFalse} 
+  ] = useBoolean();
+
+  const [ruleData, setRuleData] = React.useState<IRuleResV1>({
+    level: RuleResV1LevelEnum.normal,
+    value: '',
+    desc:'',
+    type:'',
+    rule_name:''
+  })
+  const { tabKey, allTypes, tabChange } = useSyncRuleListTab(props.allRules);
 
   const disableRule = React.useMemo(() => {
     return (
@@ -33,6 +51,23 @@ const RuleSelect: React.FC<RuleSelectProps> = (props) => {
     [props]
   );
 
+  const editRule = React.useCallback((ruleItem: IRuleResV1) => {
+    setRuleData(ruleItem)
+    setVisibleTrue();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[props, setVisibleTrue, visible])
+
+  const submit = React.useCallback(async () => {
+    const values = await form.validateFields();
+    const index: number = props.activeRule.findIndex(e => e.rule_name === values.rule_name)
+    let temp: IRuleResV1[] = [];
+    temp = props.activeRule;
+    temp.splice(index,1,values)
+    props.updateActiveRule(temp);
+    setVisibleFalse()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[form, props, visible, ruleData, setVisibleFalse,])
+
   const updateAllRule = React.useCallback(
     (active: boolean) => {
       if (active) {
@@ -43,8 +78,6 @@ const RuleSelect: React.FC<RuleSelectProps> = (props) => {
     },
     [props]
   );
-
-  const { tabKey, allTypes, tabChange } = useSyncRuleListTab(props.allRules);
 
   return (
     <>
@@ -71,13 +104,20 @@ const RuleSelect: React.FC<RuleSelectProps> = (props) => {
         actions={(item) => {
           return [
             <Button
+              onClick={editRule.bind(null, item)}
+              key={`${item.rule_name}-edit-item`}
+              type="link"
+            >
+              {t('ruleTemplate.ruleTemplateForm.editRule')}
+            </Button>,
+            <Button
               onClick={updateRule.bind(null, item, true)}
               key={`${item.rule_name}-disable-item`}
               type="link"
               danger
             >
               {t('ruleTemplate.ruleTemplateForm.disableRule')}
-            </Button>,
+            </Button>
           ];
         }}
       />
@@ -113,6 +153,13 @@ const RuleSelect: React.FC<RuleSelectProps> = (props) => {
           ];
         }}
       />
+      <RuleManagerModal
+        visible={visible}
+        submit={submit}
+        setVisibleFalse={setVisibleFalse}
+        ruleData={ruleData}
+        form={form}
+       />
     </>
   );
 };

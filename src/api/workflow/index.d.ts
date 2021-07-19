@@ -7,6 +7,7 @@ import {
   IUpdateWorkflowTemplateReqV1,
   IGetWorkflowsResV1,
   ICreateWorkflowReqV1,
+  IBatchCancelWorkflowsReqV1,
   IGetWorkflowResV1,
   IUpdateWorkflowReqV1,
   IRejectWorkflowReqV1
@@ -84,6 +85,11 @@ export interface IGetWorkflowListV1Return extends IGetWorkflowsResV1 {}
 export interface ICreateWorkflowV1Params extends ICreateWorkflowReqV1 {}
 
 export interface ICreateWorkflowV1Return extends IBaseRes {}
+
+export interface IBatchCancelWorkflowsV1Params
+  extends IBatchCancelWorkflowsReqV1 {}
+
+export interface IBatchCancelWorkflowsV1Return extends IBaseRes {}
 
 export interface IGetWorkflowV1Params {
   workflow_id: number;
