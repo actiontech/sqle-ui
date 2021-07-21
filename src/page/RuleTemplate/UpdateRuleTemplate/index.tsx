@@ -79,7 +79,7 @@ const UpdateRuleTemplate = () => {
             templateDesc: template?.desc || undefined,
             instances: template?.instance_name_list ?? [],
           });
-          setActiveRule((template?.rule_list as Array<IRuleResV1>) ?? []);
+          setActiveRule(template?.rule_list ?? []);
         }
       });
   }, [form, urlParams.templateName]);

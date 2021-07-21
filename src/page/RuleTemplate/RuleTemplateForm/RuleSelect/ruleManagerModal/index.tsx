@@ -13,7 +13,7 @@ const RuleManagerModal: React.FC<RuleManagerFormProps> = (props) => {
   const [form] = useForm<IRuleResV1>();
   React.useEffect(() => {
     props.ruleData &&
-      form?.setFieldsValue({
+      form.setFieldsValue({
         level: props.ruleData?.level,
         value: props.ruleData?.value,
         desc: props.ruleData?.desc,
