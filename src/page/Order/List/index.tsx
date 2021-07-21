@@ -1,6 +1,14 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useBoolean, useRequest } from 'ahooks';
-import { Button, Card, PageHeader, Space, Table } from 'antd';
+import {
+  Button,
+  Card,
+  PageHeader,
+  Space,
+  Table,
+  Popconfirm,
+  message,
+} from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router';
@@ -16,14 +24,26 @@ import { orderListColumn } from './column';
 import { OrderListUrlParamsKey } from './index.data';
 import OrderListFilterForm from './OrderListFilterForm';
 import { OrderListFilterFormFields } from './OrderListFilterForm/index.type';
+import { IWorkflowDetailResV1 } from '../../../api/common.d';
+import useRole from '../../../hooks/useCurrentUser';
+import { ResponseCode } from '../../../data/common';
+import { WorkflowDetailResV1StatusEnum } from '../../../api/common.enum';
+import { Theme } from '../../../types/theme.type';
+import { useTheme } from '@material-ui/styles';
+import { TableRowSelection } from 'antd/lib/table/interface';
 
 const OrderList = () => {
   const history = useHistory();
   const { t } = useTranslation();
   const location = useLocation();
+  const theme = useTheme<Theme>();
   const [resolveUrlParamFlag, { toggle: setResolveUrlParamFlag }] =
     useBoolean();
-
+  const { isAdmin } = useRole();
+  const [selectedRowKeys, setSelectedRowKeys] = React.useState<string[]>([]);
+  const [confirmLoading, setConfirmLoading] = React.useState<boolean>(false);
+  const [visible, { setTrue: setVisibleTrue, setFalse: setVisibleFalse }] =
+    useBoolean(false);
   const {
     pagination,
     filterForm,
@@ -91,9 +111,51 @@ const OrderList = () => {
       setFilterInfo(filter);
     }
     setResolveUrlParamFlag(true);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: (selectedRowKeys: string[]) => {
+      setSelectedRowKeys(selectedRowKeys);
+    },
+  };
+
+  const batchCancel = React.useCallback(() => {
+    const canCancel: boolean = selectedRowKeys.every((e) => {
+      const status = orderList?.list.filter(
+        (data) => `${data.workflow_id}` === e
+      )[0]?.status;
+      return (
+        status === WorkflowDetailResV1StatusEnum.on_process ||
+        status === WorkflowDetailResV1StatusEnum.rejected
+      );
+    });
+    if (canCancel) {
+      setConfirmLoading(true);
+      workflow
+        .batchCancelWorkflowsV1({
+          workflow_ids: selectedRowKeys,
+        })
+        .then((res) => {
+          if (res.data.code === ResponseCode.SUCCESS) {
+            setSelectedRowKeys([]);
+            refresh();
+          }
+        })
+        .finally(() => {
+          setConfirmLoading(false);
+        });
+    } else {
+      message.warning(
+        t('order.batchCancel.messageWarn', {
+          process: t('order.status.process'),
+          reject: t('order.status.reject'),
+        })
+      );
+    }
+    setVisibleFalse();
+  }, [orderList, selectedRowKeys, t, setVisibleFalse, refresh]);
 
   return (
     <>
@@ -119,30 +181,67 @@ const OrderList = () => {
             </Space>
           }
         >
-          <OrderListFilterForm
-            form={filterForm}
-            reset={resetFilter}
-            submit={submitFilter}
-            collapse={collapse}
-            collapseChange={collapseChange}
-          />
-          <Table
-            className="table-row-cursor"
-            rowKey="workflow_id"
-            loading={loading}
-            columns={orderListColumn()}
-            dataSource={orderList?.list}
-            pagination={{
-              total: orderList?.total,
-              showSizeChanger: true,
-            }}
-            onChange={tableChange}
-            onRow={(record) => ({
-              onClick() {
-                history.push(`/order/${record.workflow_id}`);
-              },
-            })}
-          />
+          <Space
+            className="full-width-element"
+            direction="vertical"
+            size={theme.common.padding}
+          >
+            <OrderListFilterForm
+              form={filterForm}
+              reset={resetFilter}
+              submit={submitFilter}
+              collapse={collapse}
+              collapseChange={collapseChange}
+            />
+            {isAdmin && (
+              <Popconfirm
+                title={t('order.batchCancel.cancelPopTitle')}
+                okText={t('common.ok')}
+                cancelText={t('common.cancel')}
+                onConfirm={batchCancel}
+                onCancel={() => {
+                  setVisibleFalse();
+                }}
+                okButtonProps={{ loading: confirmLoading }}
+                visible={visible}
+              >
+                <Button
+                  danger
+                  disabled={selectedRowKeys?.length === 0}
+                  onClick={() => {
+                    setVisibleTrue();
+                  }}
+                >
+                  {t('order.batchCancel.batchDelete')}
+                </Button>
+              </Popconfirm>
+            )}
+
+            <Table
+              className="table-row-cursor"
+              rowKey={(record: IWorkflowDetailResV1) => {
+                return `${record?.workflow_id}`;
+              }}
+              loading={loading}
+              columns={orderListColumn()}
+              dataSource={orderList?.list}
+              pagination={{
+                total: orderList?.total,
+                showSizeChanger: true,
+              }}
+              onChange={tableChange}
+              onRow={(record) => ({
+                onClick() {
+                  history.push(`/order/${record.workflow_id}`);
+                },
+              })}
+              rowSelection={
+                isAdmin
+                  ? (rowSelection as TableRowSelection<IWorkflowDetailResV1>)
+                  : undefined
+              }
+            />
+          </Space>
         </Card>
       </section>
     </>
