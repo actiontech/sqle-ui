@@ -8,6 +8,7 @@ import {
   getWorkflowListV1FilterTaskStatusEnum,
 } from '../../api/workflow/index.enum';
 import { StaticEnumDictionary } from './index.type';
+import { RuleResV1LevelEnum } from "../../api/common.enum";
 
 export const WorkflowStepTypeDictionary: StaticEnumDictionary<getWorkflowListV1FilterCurrentStepTypeEnum> =
   {
@@ -57,3 +58,9 @@ export const sqlTaskStatusDictionary: StaticEnumDictionary<getWorkflowListV1Filt
     [getWorkflowListV1FilterTaskStatusEnum.executing]:
       'order.sqlTaskStatus.executing',
   };
+export const ruleLevelDictionary: StaticEnumDictionary<RuleResV1LevelEnum> = {
+  [RuleResV1LevelEnum.normal]: 'ruleTemplate.ruleLevel.normal',
+  [RuleResV1LevelEnum.notice]: 'ruleTemplate.ruleLevel.notice',
+  [RuleResV1LevelEnum.warn]: 'ruleTemplate.ruleLevel.warn',
+  [RuleResV1LevelEnum.error]: 'ruleTemplate.ruleLevel.error',
+  }

@@ -12,7 +12,6 @@ const RuleList: React.FC<RuleListProps> = (props) => {
     props.currentTab ?? RuleListDefaultTabKey
   );
   const [tabRules, setTabRules] = useState<TabRuleItem[]>([]);
-
   const tabChange = (activeKey: string) => {
     if (props.tabChange) {
       props.tabChange(activeKey);
@@ -78,7 +77,6 @@ const RuleList: React.FC<RuleListProps> = (props) => {
                 <List.Item actions={props.actions?.(item)}>
                   <List.Item.Meta
                     avatar={<RuleLevelIcon ruleLevel={item.level} />}
-                    title={item.rule_name}
                     description={item.desc}
                   />
                   <Col flex="20%">

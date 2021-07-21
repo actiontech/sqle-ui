@@ -7,6 +7,7 @@ import ServiceBase from '../Service.base';
 import { AxiosRequestConfig } from 'axios';
 
 import {
+  IGetDriversV1Return,
   IGetSMTPConfigurationV1Return,
   IUpdateSMTPConfigurationV1Params,
   IUpdateSMTPConfigurationV1Return,
@@ -16,6 +17,14 @@ import {
 } from './index.d';
 
 class ConfigurationService extends ServiceBase {
+  public getDriversV1(options?: AxiosRequestConfig) {
+    return this.get<IGetDriversV1Return>(
+      '/v1/configurations/drivers',
+      undefined,
+      options
+    );
+  }
+
   public getSMTPConfigurationV1(options?: AxiosRequestConfig) {
     return this.get<IGetSMTPConfigurationV1Return>(
       '/v1/configurations/smtp',

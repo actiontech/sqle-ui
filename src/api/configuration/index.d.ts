@@ -1,10 +1,13 @@
 import {
+  IGetDriversResV1,
   IGetSMTPConfigurationResV1,
   IUpdateSMTPConfigurationReqV1,
   IBaseRes,
   IGetSystemVariablesResV1,
   IUpdateSystemVariablesReqV1
 } from '../common.d';
+
+export interface IGetDriversV1Return extends IGetDriversResV1 {}
 
 export interface IGetSMTPConfigurationV1Return
   extends IGetSMTPConfigurationResV1 {}

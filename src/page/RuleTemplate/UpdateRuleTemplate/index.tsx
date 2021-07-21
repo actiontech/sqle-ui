@@ -16,9 +16,6 @@ const UpdateRuleTemplate = () => {
   const [form] = useForm<RuleTemplateBaseInfoFields>();
   const [updateTemplateLoading, { toggle: updateLoading }] = useBoolean();
   const [activeRule, setActiveRule] = React.useState<IRuleResV1[]>([]);
-  const [activeRuleNames, setActiveRuleNames] = React.useState<string[] | null>(
-    null
-  );
   const urlParams = useParams<{ templateName: string }>();
 
   const baseInfoFormSubmit = React.useCallback(async () => {
@@ -42,12 +39,22 @@ const UpdateRuleTemplate = () => {
   const submit = React.useCallback(() => {
     updateLoading(true);
     const baseInfo = form.getFieldsValue();
+    const activeRuleWithNewField = activeRule.map((rule) => {
+      return {
+        name: rule.rule_name,
+        level: rule.level,
+        desc: rule.desc,
+        type: rule.type,
+        value: rule.value,
+        db_type: rule.db_type,
+      };
+    });
     ruleTemplate
       .updateRuleTemplateV1({
         rule_template_name: baseInfo.templateName,
         desc: baseInfo.templateDesc,
         instance_name_list: baseInfo.instances ?? [],
-        rule_name_list: activeRule.map((e) => e.rule_name ?? ''),
+        rule_list: activeRuleWithNewField,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -72,18 +79,10 @@ const UpdateRuleTemplate = () => {
             templateDesc: template?.desc || undefined,
             instances: template?.instance_name_list ?? [],
           });
-          setActiveRuleNames(template?.rule_name_list ?? []);
+          setActiveRule(template?.rule_list ?? []);
         }
       });
   }, [form, urlParams.templateName]);
-
-  React.useEffect(() => {
-    if (!!allRules && allRules?.length > 0 && activeRuleNames != null) {
-      setActiveRule(
-        allRules.filter((e) => activeRuleNames.includes(e.rule_name ?? ''))
-      );
-    }
-  }, [activeRuleNames, allRules]);
 
   return (
     <>

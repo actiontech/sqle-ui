@@ -18,6 +18,8 @@ import {
   IDeleteRuleTemplateV1Return,
   IUpdateRuleTemplateV1Params,
   IUpdateRuleTemplateV1Return,
+  ICloneRuleTemplateV1Params,
+  ICloneRuleTemplateV1Return,
   IGetRuleListV1Return
 } from './index.d';
 
@@ -94,6 +96,21 @@ class RuleTemplateService extends ServiceBase {
 
     return this.patch<IUpdateRuleTemplateV1Return>(
       `/v1/rule_templates/${rule_template_name}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public CloneRuleTemplateV1(
+    params: ICloneRuleTemplateV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const rule_template_name = paramsData.rule_template_name;
+    delete paramsData.rule_template_name;
+
+    return this.post<ICloneRuleTemplateV1Return>(
+      `/v1/rule_templates/${rule_template_name}/clone`,
       paramsData,
       options
     );
