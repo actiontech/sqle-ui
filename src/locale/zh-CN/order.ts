@@ -122,4 +122,10 @@ export default {
     review: '待审核',
     exec: '待上线',
   },
+  batchCancel: {
+    batchDelete: '批量关闭',
+    cancelPopTitle: '您确认关闭所选工单吗？',
+    messageWarn:
+      '您所选的工单包含不可关闭的工单!（只有工单状态为“{{process}}”和“{{reject}}”的工单可以关闭。）',
+  },
 };
