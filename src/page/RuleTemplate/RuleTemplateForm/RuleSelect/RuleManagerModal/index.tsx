@@ -43,7 +43,7 @@ const RuleManagerModal: React.FC<RuleManagerFormProps> = (props) => {
         onCancel={onCancel}
         onOk={submit}
       >
-        <Form {...ModalFormLayout} form={form}>
+        <Form {...ModalFormLayout} form={form} data-testid="base-form">
           <Form.Item
             label={t('ruleTemplate.editModal.ruleNameLabel')}
             name="rule_name"
@@ -71,6 +71,7 @@ const RuleManagerModal: React.FC<RuleManagerFormProps> = (props) => {
             name="value"
             validateFirst={true}
             hidden={!props?.ruleData?.value}
+            data-testid="hidden-form-item"
           >
             <Input
               placeholder={t('ruleTemplate.editModal.ruleLevelValuePlace')}

@@ -63,6 +63,7 @@ export default {
     ruleLevelLabel: '规则等级',
     ruleLevelValue: '预设值',
     ruleLevelLabelPlace: '请选择规则对应的等级',
+
     ruleLevelValuePlace: '请填写规则的默认值',
     ruleDescLabel: '规则描述',
     ruleTypeLabel: '规则类型',
