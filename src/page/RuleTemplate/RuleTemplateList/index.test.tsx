@@ -1,14 +1,25 @@
-import { fireEvent, waitFor, screen } from '@testing-library/react';
+import { fireEvent, waitFor, screen, act } from '@testing-library/react';
 import RuleTemplateList from '.';
 import rule_template from '../../../api/rule_template';
+import EmitterKey from '../../../data/EmitterKey';
 import { renderWithRouter } from '../../../testUtils/customRender';
+import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
+import EventEmitter from '../../../utils/EventEmitter';
 import { ruleTemplateListData } from '../__testData__';
 
 describe('RuleTemplate/RuleTemplateList', () => {
+  let mockDispatch: jest.Mock;
+  let getRuleTemplateListSpy: jest.SpyInstance;
+
   beforeEach(() => {
     jest.useFakeTimers();
-    mockGetRuleTemplateList();
+    getRuleTemplateListSpy = mockGetRuleTemplateList();
+    const { scopeDispatch } = mockUseDispatch();
+    mockUseSelector({
+      ruleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
+    });
+    mockDispatch = scopeDispatch;
   });
 
   afterEach(() => {
@@ -36,6 +47,14 @@ describe('RuleTemplate/RuleTemplateList', () => {
     expect(container).toMatchSnapshot();
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
+    });
+    expect(mockDispatch).toBeCalledWith({
+      payload: {
+        modalStatus: {
+          CLONE_RULE_TEMPLATE: false,
+        },
+      },
+      type: 'ruleTemplate/initModalStatus',
     });
     expect(container).toMatchSnapshot();
   });
@@ -70,5 +89,48 @@ describe('RuleTemplate/RuleTemplateList', () => {
       screen.queryByText('ruleTemplate.deleteRuleTemplate.deleting')
     ).not.toBeInTheDocument();
     expect(getListSpy).toBeCalledTimes(2);
+  });
+
+  test('should open clone rule template modal when use click clone this template', async () => {
+    renderWithRouter(<RuleTemplateList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    mockDispatch.mockClear();
+    fireEvent.mouseEnter(screen.getAllByText('common.more')[0]);
+    await waitFor(() => {
+      jest.advanceTimersByTime(300);
+    });
+
+    expect(
+      screen.queryByText('ruleTemplate.cloneRuleTemplate.button')
+    ).toBeInTheDocument();
+    fireEvent.click(screen.getByText('ruleTemplate.cloneRuleTemplate.button'));
+    expect(mockDispatch).toBeCalledTimes(2);
+    expect(mockDispatch).nthCalledWith(1, {
+      payload: {
+        ruleTemplate: ruleTemplateListData[0],
+      },
+      type: 'ruleTemplate/updateSelectRuleTemplate',
+    });
+    expect(mockDispatch).nthCalledWith(2, {
+      payload: {
+        modalName: 'CLONE_RULE_TEMPLATE',
+        status: true,
+      },
+      type: 'ruleTemplate/updateModalStatus',
+    });
+  });
+
+  test('should refresh list when receive "Refresh_Rule_Template_List" event', async () => {
+    renderWithRouter(<RuleTemplateList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(getRuleTemplateListSpy).toBeCalledTimes(1);
+    act(() => {
+      EventEmitter.emit(EmitterKey.Refresh_Rule_Template_List);
+    });
+    expect(getRuleTemplateListSpy).toBeCalledTimes(2);
   });
 });
