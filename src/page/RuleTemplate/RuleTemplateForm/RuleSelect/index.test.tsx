@@ -5,6 +5,13 @@ import { IRuleResV1 } from '../../../../api/common';
 import { allRules } from '../../../Rule/__testData__';
 
 describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   test('should render rule by active rules and all rules', () => {
     const { container, rerender } = render(
       <RuleSelect
