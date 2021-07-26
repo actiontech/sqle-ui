@@ -68,6 +68,16 @@ export default {
     ruleTypeLabel: '规则类型',
     ruleNameLabel: '规则名称',
   },
+
+  cloneRuleTemplate: {
+    button: '克隆规则模版',
+    title: '克隆规则模版',
+    cloneDesc:
+      '克隆的规则模版只会继承源模版所有启用的规则、以及变更过的规则等级和阈值。克隆出的新规则模版的模版名称等基本信息需要手动填写。',
+    currentTemplateTips: '正在克隆审核规则模版',
+    successTips: '克隆规则模版 "{{name}}" 成功',
+  },
+
   ruleLevel: {
     normal: '普通',
     error: '错误',
