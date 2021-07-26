@@ -6,7 +6,7 @@ import {
   render,
   cleanup,
 } from '@testing-library/react';
-import { ruleData, ruleDataNoValue } from './__testData__';
+import { ruleData, ruleDataNoValue, editRuleData } from './__testData__';
 
 describe('RuleSelect/RuleManagerModal', () => {
   beforeEach(() => {
@@ -18,12 +18,13 @@ describe('RuleSelect/RuleManagerModal', () => {
     cleanup();
   });
   test('should render base form at init', async () => {
+    const submitFunction = jest.fn();
     const { baseElement } = render(
       <RuleManagerModal
         visible={true}
         ruleData={ruleData}
         setVisibleFalse={jest.fn()}
-        submit={jest.fn()}
+        submit={submitFunction}
       />
     );
     expect(baseElement).toMatchSnapshot();
@@ -80,6 +81,8 @@ describe('RuleSelect/RuleManagerModal', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    expect(submitFunction).toBeCalledTimes(1);
+    expect(submitFunction).toBeCalledWith(editRuleData);
   });
 
   test('should not show value input while ruleData not have value', () => {
@@ -100,11 +103,12 @@ describe('RuleSelect/RuleManagerModal', () => {
     );
   });
   test('should resetFiled while click close', async () => {
+    const setVisibleFalse = jest.fn();
     const { baseElement } = render(
       <RuleManagerModal
         visible={true}
         ruleData={ruleData}
-        setVisibleFalse={jest.fn()}
+        setVisibleFalse={setVisibleFalse}
         submit={jest.fn()}
       />
     );
@@ -150,5 +154,6 @@ describe('RuleSelect/RuleManagerModal', () => {
     expect(
       screen.getByLabelText('ruleTemplate.editModal.ruleLevelValue')
     ).toHaveValue('');
+    expect(setVisibleFalse).toBeCalledTimes(1);
   });
 });
