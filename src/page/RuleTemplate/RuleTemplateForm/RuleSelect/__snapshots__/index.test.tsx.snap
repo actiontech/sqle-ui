@@ -368,11 +368,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          all_check_where_is_invalid
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -455,11 +450,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_alter_table_need_merge
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -542,11 +532,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_collation_database
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -636,11 +621,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_blob_default_is_not_null
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -723,11 +703,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_blob_notice
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -810,11 +785,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_blob_with_not_null
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -897,11 +867,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_char_length
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -984,11 +949,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_enum_notice
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -1071,11 +1031,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_set_notice
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -1158,11 +1113,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_timestamp_without_default
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -1245,11 +1195,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_varchar_max
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -1332,11 +1277,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_without_comment
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -1419,11 +1359,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_without_default
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -1506,11 +1441,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_composite_index_max
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -1600,11 +1530,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_database_suffix
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -1687,11 +1612,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_decimal_type_column
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -1774,11 +1694,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_index_column_with_blob
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -1861,11 +1776,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_index_count
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -1955,11 +1865,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_index_option
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -2049,11 +1954,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_index_prefix
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -2136,11 +2036,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_indexes_exist_before_creat_constraints
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -2223,11 +2118,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_is_exist_limit_offset
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -2310,11 +2200,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_object_name_length
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -2397,11 +2282,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_object_name_using_cn
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -2484,11 +2364,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_object_name_using_keyword
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -2571,11 +2446,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_pk_name
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -2658,11 +2528,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_pk_not_exist
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -2745,11 +2610,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_pk_prohibit_auto_increment
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -2832,11 +2692,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_pk_without_auto_increment
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -2919,11 +2774,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_pk_without_bigint_unsigned
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -3006,11 +2856,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_table_partition
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -3093,11 +2938,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_table_without_comment
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -3180,11 +3020,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_table_without_if_not_exists
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -3267,11 +3102,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_table_without_innodb_utf8mb4
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -3354,11 +3184,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_transaction_isolation_level
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -3441,11 +3266,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_unique_index
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -3528,11 +3348,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_unique_index_prefix
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -3615,11 +3430,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_disable_drop_statement
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -3702,11 +3512,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_disable_fk
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -3786,11 +3591,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_osc_min_size
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -3880,11 +3680,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_batch_insert_lists_max
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -3974,11 +3769,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_fuzzy_search
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -4061,11 +3851,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_insert_columns_exist
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -4148,11 +3933,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_is_after_union_distinct
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -4235,11 +4015,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_limit_must_exist
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -4322,11 +4097,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_needless_func
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -4416,11 +4186,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_number_of_join_tables
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -4510,11 +4275,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_select_for_update
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -4597,11 +4357,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_where_exist_func
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -4684,11 +4439,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_where_exist_implicit_conversion
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -4771,11 +4521,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_where_exist_not
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -4858,11 +4603,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_where_exist_null
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -4945,11 +4685,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_where_exist_scalar_sub_queries
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -5032,11 +4767,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_with_limit
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -5119,11 +4849,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_with_order_by
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -5206,11 +4931,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_disable_select_all_column
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -5293,11 +5013,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_rollback_max_rows
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -5669,11 +5384,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          all_check_where_is_invalid
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -5756,11 +5466,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_alter_table_need_merge
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -5843,11 +5548,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_collation_database
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -5937,11 +5637,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_blob_default_is_not_null
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -6024,11 +5719,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_blob_notice
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -6111,11 +5801,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_blob_with_not_null
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -6198,11 +5883,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_char_length
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -6285,11 +5965,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_enum_notice
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -6372,11 +6047,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_set_notice
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -6459,11 +6129,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_timestamp_without_default
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -6546,11 +6211,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_varchar_max
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -6633,11 +6293,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_without_comment
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -6720,11 +6375,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_without_default
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -6807,11 +6457,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_composite_index_max
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -6901,11 +6546,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_database_suffix
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -6988,11 +6628,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_decimal_type_column
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -7075,11 +6710,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_index_column_with_blob
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -7162,11 +6792,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_index_count
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -7256,11 +6881,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_index_option
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -7350,11 +6970,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_index_prefix
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -7437,11 +7052,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_indexes_exist_before_creat_constraints
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -7524,11 +7134,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_is_exist_limit_offset
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -7611,11 +7216,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_object_name_length
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -7698,11 +7298,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_object_name_using_cn
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -7785,11 +7380,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_object_name_using_keyword
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -7872,11 +7462,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_pk_name
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -7959,11 +7544,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_pk_not_exist
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -8046,11 +7626,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_pk_prohibit_auto_increment
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -8133,11 +7708,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_pk_without_auto_increment
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -8220,11 +7790,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_pk_without_bigint_unsigned
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -8307,11 +7872,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_table_partition
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -8394,11 +7954,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_table_without_comment
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -8481,11 +8036,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_table_without_if_not_exists
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -8568,11 +8118,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_table_without_innodb_utf8mb4
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -8655,11 +8200,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_transaction_isolation_level
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -8742,11 +8282,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_unique_index
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -8829,11 +8364,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_unique_index_prefix
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -8916,11 +8446,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_disable_drop_statement
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -9003,11 +8528,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_disable_fk
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -9087,11 +8607,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_osc_min_size
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -9181,11 +8696,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_batch_insert_lists_max
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -9275,11 +8785,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_fuzzy_search
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -9362,11 +8867,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_insert_columns_exist
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -9449,11 +8949,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_is_after_union_distinct
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -9536,11 +9031,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_limit_must_exist
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -9623,11 +9113,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_needless_func
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -9717,11 +9202,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_number_of_join_tables
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -9811,11 +9291,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_select_for_update
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -9898,11 +9373,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_where_exist_func
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -9985,11 +9455,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_where_exist_implicit_conversion
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -10072,11 +9537,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_where_exist_not
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -10159,11 +9619,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_where_exist_null
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -10246,11 +9701,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_where_exist_scalar_sub_queries
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -10333,11 +9783,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_with_limit
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -10420,11 +9865,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_with_order_by
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -10507,11 +9947,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_disable_select_all_column
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -10594,11 +10029,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_rollback_max_rows
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -10828,11 +10258,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          all_check_where_is_invalid
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -10849,91 +10274,17 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     >
                       <li>
                         <button
-                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          class="ant-btn ant-btn-link"
                           type="button"
                         >
                           <span>
-                            ruleTemplate.ruleTemplateForm.disableRule
+                            ruleTemplate.ruleTemplateForm.editRule
                           </span>
                         </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
                       </li>
-                    </ul>
-                  </li>
-                  <li
-                    class="ant-list-item"
-                  >
-                    <div
-                      class="ant-list-item-meta"
-                    >
-                      <div
-                        class="ant-list-item-meta-avatar"
-                      >
-                        <div
-                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
-                        >
-                          <div
-                            class="ant-space-item"
-                            style="margin-bottom: 1px;"
-                          >
-                            <div>
-                              <span
-                                aria-label="info-circle"
-                                class="anticon anticon-info-circle"
-                                role="img"
-                                style="font-size: 25px; color: rgb(50, 130, 230);"
-                              >
-                                <svg
-                                  aria-hidden="true"
-                                  data-icon="info-circle"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="1em"
-                                  viewBox="64 64 896 896"
-                                  width="1em"
-                                >
-                                  <path
-                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                                  />
-                                  <path
-                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                                  />
-                                </svg>
-                              </span>
-                            </div>
-                          </div>
-                          <div
-                            class="ant-space-item"
-                          >
-                            <span
-                              class="ant-typography ant-typography-secondary"
-                            >
-                              notice
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="ant-list-item-meta-content"
-                      >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_alter_table_need_merge
-                        </h4>
-                        <div
-                          class="ant-list-item-meta-description"
-                        >
-                          存在多条对同一个表的修改语句，建议合并成一个ALTER语句
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="ant-col"
-                      style="flex: 0 0 20%;"
-                    />
-                    <ul
-                      class="ant-list-item-action"
-                    >
                       <li>
                         <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
@@ -11002,11 +10353,101 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
+                        <div
+                          class="ant-list-item-meta-description"
                         >
-                          ddl_check_collation_database
-                        </h4>
+                          存在多条对同一个表的修改语句，建议合并成一个ALTER语句
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.disableRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(50, 130, 230);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              notice
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -11030,6 +10471,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     >
                       <li>
                         <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
                           type="button"
                         >
@@ -11096,11 +10550,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_blob_default_is_not_null
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -11117,6 +10566,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     >
                       <li>
                         <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
                           type="button"
                         >
@@ -11183,11 +10645,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_blob_notice
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -11204,6 +10661,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     >
                       <li>
                         <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
                           type="button"
                         >
@@ -11270,11 +10740,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_blob_with_not_null
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -11291,6 +10756,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     >
                       <li>
                         <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
                           type="button"
                         >
@@ -11357,11 +10835,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_char_length
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -11378,6 +10851,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     >
                       <li>
                         <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
                           type="button"
                         >
@@ -11444,11 +10930,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_enum_notice
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -11465,6 +10946,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     >
                       <li>
                         <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
                           type="button"
                         >
@@ -11531,11 +11025,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_set_notice
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -11552,6 +11041,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     >
                       <li>
                         <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
                           type="button"
                         >
@@ -11618,11 +11120,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_timestamp_without_default
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -11639,6 +11136,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     >
                       <li>
                         <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
                           type="button"
                         >
@@ -11705,11 +11215,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_varchar_max
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -11726,6 +11231,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     >
                       <li>
                         <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
                           type="button"
                         >
@@ -11792,11 +11310,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_without_comment
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -11811,6 +11324,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <ul
                       class="ant-list-item-action"
                     >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
                       <li>
                         <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
@@ -11879,11 +11405,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_column_without_default
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -11898,6 +11419,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <ul
                       class="ant-list-item-action"
                     >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
                       <li>
                         <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
@@ -11966,11 +11500,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_composite_index_max
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -11994,91 +11523,17 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     >
                       <li>
                         <button
-                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          class="ant-btn ant-btn-link"
                           type="button"
                         >
                           <span>
-                            ruleTemplate.ruleTemplateForm.disableRule
+                            ruleTemplate.ruleTemplateForm.editRule
                           </span>
                         </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
                       </li>
-                    </ul>
-                  </li>
-                  <li
-                    class="ant-list-item"
-                  >
-                    <div
-                      class="ant-list-item-meta"
-                    >
-                      <div
-                        class="ant-list-item-meta-avatar"
-                      >
-                        <div
-                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
-                        >
-                          <div
-                            class="ant-space-item"
-                            style="margin-bottom: 1px;"
-                          >
-                            <div>
-                              <span
-                                aria-label="info-circle"
-                                class="anticon anticon-info-circle"
-                                role="img"
-                                style="font-size: 25px; color: rgb(50, 130, 230);"
-                              >
-                                <svg
-                                  aria-hidden="true"
-                                  data-icon="info-circle"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="1em"
-                                  viewBox="64 64 896 896"
-                                  width="1em"
-                                >
-                                  <path
-                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                                  />
-                                  <path
-                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                                  />
-                                </svg>
-                              </span>
-                            </div>
-                          </div>
-                          <div
-                            class="ant-space-item"
-                          >
-                            <span
-                              class="ant-typography ant-typography-secondary"
-                            >
-                              notice
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="ant-list-item-meta-content"
-                      >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_database_suffix
-                        </h4>
-                        <div
-                          class="ant-list-item-meta-description"
-                        >
-                          数据库名称建议以"_DB"结尾
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="ant-col"
-                      style="flex: 0 0 20%;"
-                    />
-                    <ul
-                      class="ant-list-item-action"
-                    >
                       <li>
                         <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
@@ -12147,11 +11602,101 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
+                        <div
+                          class="ant-list-item-meta-description"
                         >
-                          ddl_check_decimal_type_column
-                        </h4>
+                          数据库名称建议以"_DB"结尾
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.disableRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(50, 130, 230);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              notice
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -12166,6 +11711,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <ul
                       class="ant-list-item-action"
                     >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
                       <li>
                         <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
@@ -12234,11 +11792,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_index_column_with_blob
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -12253,6 +11806,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <ul
                       class="ant-list-item-action"
                     >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
                       <li>
                         <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
@@ -12321,11 +11887,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_index_count
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -12349,6 +11910,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     >
                       <li>
                         <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
                           type="button"
                         >
@@ -12415,11 +11989,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_index_option
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -12443,6 +12012,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     >
                       <li>
                         <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
                           type="button"
                         >
@@ -12509,11 +12091,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_index_prefix
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -12530,6 +12107,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     >
                       <li>
                         <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
                           type="button"
                         >
@@ -12596,11 +12186,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_indexes_exist_before_creat_constraints
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -12617,6 +12202,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     >
                       <li>
                         <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
                           type="button"
                         >
@@ -12683,11 +12281,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_is_exist_limit_offset
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -12704,6 +12297,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     >
                       <li>
                         <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
                           type="button"
                         >
@@ -12770,11 +12376,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_object_name_length
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -12791,91 +12392,17 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     >
                       <li>
                         <button
-                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          class="ant-btn ant-btn-link"
                           type="button"
                         >
                           <span>
-                            ruleTemplate.ruleTemplateForm.disableRule
+                            ruleTemplate.ruleTemplateForm.editRule
                           </span>
                         </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
                       </li>
-                    </ul>
-                  </li>
-                  <li
-                    class="ant-list-item"
-                  >
-                    <div
-                      class="ant-list-item-meta"
-                    >
-                      <div
-                        class="ant-list-item-meta-avatar"
-                      >
-                        <div
-                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
-                        >
-                          <div
-                            class="ant-space-item"
-                            style="margin-bottom: 1px;"
-                          >
-                            <div>
-                              <span
-                                aria-label="info-circle"
-                                class="anticon anticon-info-circle"
-                                role="img"
-                                style="font-size: 25px; color: rgb(240, 0, 0);"
-                              >
-                                <svg
-                                  aria-hidden="true"
-                                  data-icon="info-circle"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="1em"
-                                  viewBox="64 64 896 896"
-                                  width="1em"
-                                >
-                                  <path
-                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                                  />
-                                  <path
-                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                                  />
-                                </svg>
-                              </span>
-                            </div>
-                          </div>
-                          <div
-                            class="ant-space-item"
-                          >
-                            <span
-                              class="ant-typography ant-typography-secondary"
-                            >
-                              error
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="ant-list-item-meta-content"
-                      >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_object_name_using_cn
-                        </h4>
-                        <div
-                          class="ant-list-item-meta-description"
-                        >
-                          数据库对象命名禁止使用中文
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="ant-col"
-                      style="flex: 0 0 20%;"
-                    />
-                    <ul
-                      class="ant-list-item-action"
-                    >
                       <li>
                         <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
@@ -12944,11 +12471,101 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
+                        <div
+                          class="ant-list-item-meta-description"
                         >
-                          ddl_check_object_name_using_keyword
-                        </h4>
+                          数据库对象命名禁止使用中文
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.disableRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(240, 0, 0);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              error
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -12963,6 +12580,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <ul
                       class="ant-list-item-action"
                     >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
                       <li>
                         <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
@@ -13031,11 +12661,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_pk_name
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -13052,91 +12677,17 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     >
                       <li>
                         <button
-                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          class="ant-btn ant-btn-link"
                           type="button"
                         >
                           <span>
-                            ruleTemplate.ruleTemplateForm.disableRule
+                            ruleTemplate.ruleTemplateForm.editRule
                           </span>
                         </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
                       </li>
-                    </ul>
-                  </li>
-                  <li
-                    class="ant-list-item"
-                  >
-                    <div
-                      class="ant-list-item-meta"
-                    >
-                      <div
-                        class="ant-list-item-meta-avatar"
-                      >
-                        <div
-                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
-                        >
-                          <div
-                            class="ant-space-item"
-                            style="margin-bottom: 1px;"
-                          >
-                            <div>
-                              <span
-                                aria-label="info-circle"
-                                class="anticon anticon-info-circle"
-                                role="img"
-                                style="font-size: 25px; color: rgb(240, 0, 0);"
-                              >
-                                <svg
-                                  aria-hidden="true"
-                                  data-icon="info-circle"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="1em"
-                                  viewBox="64 64 896 896"
-                                  width="1em"
-                                >
-                                  <path
-                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                                  />
-                                  <path
-                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                                  />
-                                </svg>
-                              </span>
-                            </div>
-                          </div>
-                          <div
-                            class="ant-space-item"
-                          >
-                            <span
-                              class="ant-typography ant-typography-secondary"
-                            >
-                              error
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="ant-list-item-meta-content"
-                      >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_pk_not_exist
-                        </h4>
-                        <div
-                          class="ant-list-item-meta-description"
-                        >
-                          表必须有主键
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="ant-col"
-                      style="flex: 0 0 20%;"
-                    />
-                    <ul
-                      class="ant-list-item-action"
-                    >
                       <li>
                         <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
@@ -13205,11 +12756,101 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
+                        <div
+                          class="ant-list-item-meta-description"
                         >
-                          ddl_check_pk_prohibit_auto_increment
-                        </h4>
+                          表必须有主键
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.disableRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(240, 0, 0);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              error
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -13224,6 +12865,19 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <ul
                       class="ant-list-item-action"
                     >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
                       <li>
                         <button
                           class="ant-btn ant-btn-link ant-btn-dangerous"
@@ -13431,11 +13085,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_pk_without_auto_increment
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -13518,11 +13167,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_pk_without_bigint_unsigned
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -13605,11 +13249,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_table_partition
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -13692,11 +13331,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_table_without_comment
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -13779,11 +13413,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_table_without_if_not_exists
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -13866,11 +13495,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_table_without_innodb_utf8mb4
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -13953,11 +13577,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_transaction_isolation_level
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -14040,11 +13659,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_unique_index
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -14127,11 +13741,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_check_unique_index_prefix
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -14214,11 +13823,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_disable_drop_statement
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -14301,11 +13905,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_disable_fk
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -14385,11 +13984,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          ddl_osc_min_size
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -14479,11 +14073,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_batch_insert_lists_max
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -14573,11 +14162,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_fuzzy_search
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -14660,11 +14244,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_insert_columns_exist
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -14747,11 +14326,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_is_after_union_distinct
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -14834,11 +14408,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_limit_must_exist
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -14921,11 +14490,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_needless_func
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -15015,11 +14579,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_number_of_join_tables
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -15109,11 +14668,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_select_for_update
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -15196,11 +14750,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_where_exist_func
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -15283,11 +14832,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_where_exist_implicit_conversion
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -15370,11 +14914,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_where_exist_not
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -15457,11 +14996,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_where_exist_null
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -15544,11 +15078,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_where_exist_scalar_sub_queries
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -15631,11 +15160,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_with_limit
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -15718,11 +15242,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_check_with_order_by
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -15805,11 +15324,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_disable_select_all_column
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >
@@ -15892,11 +15406,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <h4
-                          class="ant-list-item-meta-title"
-                        >
-                          dml_rollback_max_rows
-                        </h4>
                         <div
                           class="ant-list-item-meta-description"
                         >

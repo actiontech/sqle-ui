@@ -148,13 +148,20 @@ describe('UpdateRuleTemplate', () => {
     fireEvent.click(screen.getByText('common.submit'));
 
     expect(updateTemplateSpy).toBeCalledTimes(1);
-    const resultRuleName = allRules.map((e) => e.rule_name);
+    const resultRuleName = allRules.map((rule) => {
+      return {
+        name: rule.rule_name,
+        level: rule.level,
+        desc: rule.desc,
+        value: rule.value,
+      };
+    });
     resultRuleName.shift();
     expect(updateTemplateSpy).toBeCalledWith({
       rule_template_name: 'testRuleTemplateId',
       desc: 'rule template desc',
       instance_name_list: ['instance1'],
-      rule_name_list: resultRuleName,
+      rule_list: resultRuleName,
     });
     // await waitFor(() => {
     //   jest.advanceTimersByTime(3000);

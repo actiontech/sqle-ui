@@ -667,11 +667,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                all_check_where_is_invalid
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -754,11 +749,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_alter_table_need_merge
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -841,11 +831,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_collation_database
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -935,11 +920,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_column_blob_default_is_not_null
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -1022,11 +1002,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_column_blob_notice
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -1109,11 +1084,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_column_blob_with_not_null
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -1196,11 +1166,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_column_char_length
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -1283,11 +1248,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_column_enum_notice
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -1370,11 +1330,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_column_set_notice
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -1457,11 +1412,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_column_timestamp_without_default
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -1544,11 +1494,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_column_varchar_max
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -1631,11 +1576,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_column_without_comment
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -1718,11 +1658,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_column_without_default
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -1805,11 +1740,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_composite_index_max
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -1899,11 +1829,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_database_suffix
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -1986,11 +1911,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_decimal_type_column
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -2073,11 +1993,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_index_column_with_blob
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -2160,11 +2075,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_index_count
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -2254,11 +2164,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_index_option
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -2348,11 +2253,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_index_prefix
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -2435,11 +2335,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_indexes_exist_before_creat_constraints
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -2522,11 +2417,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_is_exist_limit_offset
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -2609,11 +2499,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_object_name_length
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -2696,11 +2581,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_object_name_using_cn
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -2783,11 +2663,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_object_name_using_keyword
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -2870,11 +2745,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_pk_name
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -2957,11 +2827,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_pk_not_exist
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -3044,11 +2909,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_pk_prohibit_auto_increment
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -3131,11 +2991,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_pk_without_auto_increment
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -3218,11 +3073,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_pk_without_bigint_unsigned
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -3305,11 +3155,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_table_partition
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -3392,11 +3237,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_table_without_comment
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -3479,11 +3319,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_table_without_if_not_exists
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -3566,11 +3401,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_table_without_innodb_utf8mb4
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -3653,11 +3483,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_transaction_isolation_level
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -3740,11 +3565,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_unique_index
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -3827,11 +3647,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_check_unique_index_prefix
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -3914,11 +3729,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_disable_drop_statement
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -4001,11 +3811,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_disable_fk
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -4085,11 +3890,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                ddl_osc_min_size
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -4179,11 +3979,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                dml_check_batch_insert_lists_max
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -4273,11 +4068,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                dml_check_fuzzy_search
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -4360,11 +4150,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                dml_check_insert_columns_exist
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -4447,11 +4232,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                dml_check_is_after_union_distinct
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -4534,11 +4314,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                dml_check_limit_must_exist
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -4621,11 +4396,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                dml_check_needless_func
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -4715,11 +4485,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                dml_check_number_of_join_tables
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -4809,11 +4574,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                dml_check_select_for_update
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -4896,11 +4656,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                dml_check_where_exist_func
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -4983,11 +4738,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                dml_check_where_exist_implicit_conversion
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -5070,11 +4820,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                dml_check_where_exist_not
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -5157,11 +4902,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                dml_check_where_exist_null
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -5244,11 +4984,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                dml_check_where_exist_scalar_sub_queries
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -5331,11 +5066,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                dml_check_with_limit
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -5418,11 +5148,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                dml_check_with_order_by
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -5505,11 +5230,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                dml_disable_select_all_column
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
@@ -5592,11 +5312,6 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <h4
-                                class="ant-list-item-meta-title"
-                              >
-                                dml_rollback_max_rows
-                              </h4>
                               <div
                                 class="ant-list-item-meta-description"
                               >
