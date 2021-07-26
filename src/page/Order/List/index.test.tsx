@@ -1,4 +1,4 @@
-import { waitFor, screen } from '@testing-library/react';
+import { waitFor, screen, cleanup, fireEvent } from '@testing-library/react';
 import OrderList from '.';
 import workflow from '../../../api/workflow';
 import {
@@ -11,6 +11,9 @@ import {
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
 import { createMemoryHistory } from 'history';
+import { CustomProvider } from '../../../testUtils/mockRedux';
+import { SystemRole } from '../../../data/common';
+import { getAllBySelector } from '../../../testUtils/customQuery';
 
 describe('Order/List', () => {
   beforeEach(() => {
@@ -23,6 +26,7 @@ describe('Order/List', () => {
     jest.clearAllMocks();
     jest.useRealTimers();
     jest.clearAllTimers();
+    cleanup();
   });
 
   const mockRequest = () => {
@@ -48,9 +52,23 @@ describe('Order/List', () => {
     return spy;
   };
 
+  const mockBatchCancelOrder = () => {
+    const spy = jest.spyOn(workflow, 'batchCancelWorkflowsV1');
+    spy.mockImplementation(() => resolveThreeSecond({}));
+    return spy;
+  };
+
   test('should render order list by response data', async () => {
     const request = mockRequest();
-    const { container } = renderWithRouter(<OrderList />);
+    const { container } = renderWithRouter(
+      <CustomProvider
+        initStore={{
+          user: { role: SystemRole.admin },
+        }}
+      >
+        <OrderList />
+      </CustomProvider>
+    );
     expect(container).toMatchSnapshot();
     expect(request).toBeCalledTimes(1);
     expect(request).toBeCalledWith({
@@ -69,9 +87,19 @@ describe('Order/List', () => {
     history.push(
       '/order?currentStepAssignee=admin&currentStepType=sql_execute&status=on_process'
     );
-    renderWithServerRouter(<OrderList />, undefined, {
-      history,
-    });
+    renderWithServerRouter(
+      <CustomProvider
+        initStore={{
+          user: { role: SystemRole.admin },
+        }}
+      >
+        <OrderList />
+      </CustomProvider>,
+      undefined,
+      {
+        history,
+      }
+    );
     expect(request).toBeCalledTimes(1);
     expect(request).toBeCalledWith({
       filter_current_step_assignee_user_name: 'admin',
@@ -90,5 +118,50 @@ describe('Order/List', () => {
     expect(screen.getByText('order.workflowStatus.exec')).toHaveClass(
       'ant-select-selection-item'
     );
+  });
+  test('should can batch close order', async () => {
+    const batchCancelSpy = mockBatchCancelOrder();
+    const request = mockRequest();
+    const { container, baseElement } = renderWithRouter(
+      <CustomProvider
+        initStore={{
+          user: { role: SystemRole.admin },
+        }}
+      >
+        <OrderList />
+      </CustomProvider>
+    );
+    expect(container).toMatchSnapshot();
+    expect(baseElement).toMatchSnapshot();
+    expect(request).toBeCalledTimes(1);
+    expect(request).toBeCalledWith({
+      page_index: 1,
+      page_size: 10,
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    const batchCancel = screen.getAllByText('order.batchCancel.batchDelete')[0];
+    expect(batchCancel.parentNode).toBeDisabled();
+    expect(getAllBySelector('.ant-checkbox-input')[0]).toBeEnabled();
+    fireEvent.click(getAllBySelector('.ant-checkbox-input')[0]);
+    expect(
+      screen.getAllByText('order.batchCancel.batchDelete')[0]
+    ).toBeEnabled();
+    fireEvent.click(screen.getAllByText('order.batchCancel.batchDelete')[0]);
+    expect(
+      screen.queryByText('order.batchCancel.cancelPopTitle')
+    ).toBeInTheDocument();
+    fireEvent.click(screen.getAllByText('common.ok')[0]);
+    expect(batchCancelSpy).toBeCalledTimes(1);
+    expect(batchCancelSpy).toBeCalledWith({ workflow_ids: ['1'] });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(request).toBeCalledTimes(2);
+    expect(request).toBeCalledWith({
+      page_index: 1,
+      page_size: 10,
+    });
   });
 });

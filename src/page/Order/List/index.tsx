@@ -184,7 +184,7 @@ const OrderList = () => {
           <Space
             className="full-width-element"
             direction="vertical"
-            size={theme.common.padding}
+            size={theme?.common.padding}
           >
             <OrderListFilterForm
               form={filterForm}
