@@ -11,6 +11,7 @@ import {
   Typography,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -41,7 +42,7 @@ const CloneRuleTemplateModal = () => {
     IRuleTemplateResV1 | null
   >((state) => state.ruleTemplate.selectRuleTemplate);
 
-  const { generateInstanceSelectOption } = useInstance();
+  const { generateInstanceSelectOption, updateInstanceList } = useInstance();
 
   const close = () => {
     form.resetFields();
@@ -59,7 +60,8 @@ const CloneRuleTemplateModal = () => {
     ruleTemplate
       .CloneRuleTemplateV1({
         rule_template_name: currentRuleTemplate?.rule_template_name ?? '',
-        desc: value.templateName,
+        new_rule_template_name: value.templateName,
+        desc: value.templateDesc,
         instance_name_list: value.instances,
       })
       .then((res) => {
@@ -77,6 +79,13 @@ const CloneRuleTemplateModal = () => {
         requestFinished();
       });
   };
+
+  useEffect(() => {
+    if (visible) {
+      updateInstanceList();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible]);
 
   return (
     <Modal
