@@ -44,7 +44,9 @@ export interface IUpdateRuleTemplateV1Params extends IUpdateRuleTemplateReqV1 {
 
 export interface IUpdateRuleTemplateV1Return extends IBaseRes {}
 
-export interface ICloneRuleTemplateV1Params extends ICloneRuleTemplateReqV1 {}
+export interface ICloneRuleTemplateV1Params extends ICloneRuleTemplateReqV1 {
+  rule_template_name: string;
+}
 
 export interface ICloneRuleTemplateV1Return extends IBaseRes {}
 

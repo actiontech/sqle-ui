@@ -16,4 +16,7 @@ export enum ModalName {
 
   // account
   Modify_Password = 'Modify_Password',
+
+  // rule template
+  Clone_Rule_Template = 'CLONE_RULE_TEMPLATE',
 }
