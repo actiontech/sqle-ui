@@ -42,6 +42,7 @@ export const orderAuditResultColumn = (): TableColumn<IAuditTaskSQLResV1> => {
               dangerouslySetInnerHTML={{
                 __html: HighlightCode.highlightSql(sql),
               }}
+              className="pre-warp-break-all"
             ></pre>
           );
         }
@@ -69,6 +70,7 @@ export const orderAuditResultColumn = (): TableColumn<IAuditTaskSQLResV1> => {
               dangerouslySetInnerHTML={{
                 __html: HighlightCode.highlightSql(sql),
               }}
+              className="pre-warp-break-all"
             ></pre>
           );
         }
