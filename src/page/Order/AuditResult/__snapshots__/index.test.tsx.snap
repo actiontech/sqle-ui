@@ -975,7 +975,9 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
                         <td
                           class="ant-table-cell"
                         >
-                          <pre>
+                          <pre
+                            class="pre-warp-break-all"
+                          >
                             <span
                               class="hljs-comment"
                             >
@@ -1086,7 +1088,9 @@ use aaab;
                         <td
                           class="ant-table-cell"
                         >
-                          <pre>
+                          <pre
+                            class="pre-warp-break-all"
+                          >
                             use bbbbe;
                           </pre>
                         </td>
@@ -1191,7 +1195,9 @@ use aaab;
                         <td
                           class="ant-table-cell"
                         >
-                          <pre>
+                          <pre
+                            class="pre-warp-break-all"
+                          >
                             <span
                               class="hljs-keyword"
                             >

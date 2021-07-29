@@ -392,7 +392,9 @@ exports[`Whitelist/WhitelistList should init modal state at component init 2`] =
                           <td
                             class="ant-table-cell"
                           >
-                            <pre>
+                            <pre
+                              class="pre-warp-break-all"
+                            >
                               <span
                                 class="hljs-comment"
                               >
@@ -456,7 +458,9 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
-                            <pre>
+                            <pre
+                              class="pre-warp-break-all"
+                            >
                               <span
                                 class="hljs-comment"
                               >
@@ -521,7 +525,9 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
-                            <pre>
+                            <pre
+                              class="pre-warp-break-all"
+                            >
                               
 use aaa;
 
@@ -582,7 +588,9 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
-                            <pre>
+                            <pre
+                              class="pre-warp-break-all"
+                            >
                               
 use aaa;
 
@@ -643,7 +651,9 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
-                            <pre>
+                            <pre
+                              class="pre-warp-break-all"
+                            >
                               
 use aaa;
 
@@ -704,7 +714,9 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
-                            <pre>
+                            <pre
+                              class="pre-warp-break-all"
+                            >
                               
 use aaa;
 
@@ -763,7 +775,9 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
-                            <pre>
+                            <pre
+                              class="pre-warp-break-all"
+                            >
                               
 use aaa;
 
@@ -824,7 +838,9 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
-                            <pre>
+                            <pre
+                              class="pre-warp-break-all"
+                            >
                               
 use aaa;
 
@@ -885,7 +901,9 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
-                            <pre>
+                            <pre
+                              class="pre-warp-break-all"
+                            >
                               
 use aaa;
 
@@ -946,7 +964,9 @@ use aaa;
                           <td
                             class="ant-table-cell"
                           >
-                            <pre>
+                            <pre
+                              class="pre-warp-break-all"
+                            >
                               
 use aaa;
 
