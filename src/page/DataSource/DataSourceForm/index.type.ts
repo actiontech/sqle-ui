@@ -10,6 +10,7 @@ export type DataSourceFormField = {
   role?: string[];
   ruleTemplate?: string[];
   workflow?: string;
+  type?: string;
 };
 
 export type IDataSourceFormProps = {

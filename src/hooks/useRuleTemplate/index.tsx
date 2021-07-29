@@ -30,18 +30,23 @@ const useRuleTemplate = () => {
       });
   }, [setFalse, setTrue]);
 
-  const generateRuleTemplateSelectOption = React.useCallback(() => {
-    return ruleTemplateList.map((template) => {
-      return (
-        <Select.Option
-          key={template.rule_template_name}
-          value={template.rule_template_name ?? ''}
-        >
-          {template.rule_template_name}
-        </Select.Option>
-      );
-    });
-  }, [ruleTemplateList]);
+  const generateRuleTemplateSelectOption = React.useCallback(
+    (db_type: string = 'mysql') => {
+      return ruleTemplateList
+        .filter((t) => t.db_type === db_type)
+        .map((template) => {
+          return (
+            <Select.Option
+              key={template.rule_template_name}
+              value={template.rule_template_name ?? ''}
+            >
+              {template.rule_template_name}
+            </Select.Option>
+          );
+        });
+    },
+    [ruleTemplateList]
+  );
 
   return {
     ruleTemplateList,

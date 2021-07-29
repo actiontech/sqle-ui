@@ -16,17 +16,8 @@ const UpdateRuleTemplate = () => {
   const [form] = useForm<RuleTemplateBaseInfoFields>();
   const [updateTemplateLoading, { toggle: updateLoading }] = useBoolean();
   const [activeRule, setActiveRule] = React.useState<IRuleResV1[]>([]);
+  const [databaseRule, setDatabaseRule] = React.useState<IRuleResV1[]>([]);
   const urlParams = useParams<{ templateName: string }>();
-
-  const baseInfoFormSubmit = React.useCallback(async () => {
-    await form.validateFields();
-    setStep(step + 1);
-  }, [form, step]);
-
-  const prevStep = React.useCallback(() => {
-    setStep(step - 1);
-  }, [step]);
-
   const { data: allRules, loading: getAllRulesLoading } = useRequest(
     ruleTemplate.getRuleListV1.bind(ruleTemplate),
     {
@@ -35,6 +26,18 @@ const UpdateRuleTemplate = () => {
       },
     }
   );
+
+  const baseInfoFormSubmit = React.useCallback(async () => {
+    const values = await form.validateFields();
+    setDatabaseRule(
+      allRules?.filter((e) => e.db_type === values.db_type) ?? []
+    );
+    setStep(step + 1);
+  }, [form, step, allRules]);
+
+  const prevStep = React.useCallback(() => {
+    setStep(step - 1);
+  }, [step]);
 
   const submit = React.useCallback(() => {
     updateLoading(true);
@@ -53,7 +56,7 @@ const UpdateRuleTemplate = () => {
       .updateRuleTemplateV1({
         rule_template_name: baseInfo.templateName,
         desc: baseInfo.templateDesc,
-        instance_name_list: baseInfo.instances ?? [],
+        instance_name_list: baseInfo.instances,
         rule_list: activeRuleWithNewField,
       })
       .then((res) => {
@@ -77,7 +80,8 @@ const UpdateRuleTemplate = () => {
           form.setFieldsValue({
             templateName: template?.rule_template_name,
             templateDesc: template?.desc || undefined,
-            instances: template?.instance_name_list ?? [],
+            instances: template?.instance_name_list,
+            db_type: template?.db_type,
           });
           setActiveRule(template?.rule_list ?? []);
         }
@@ -97,7 +101,7 @@ const UpdateRuleTemplate = () => {
         <RuleTemplateForm
           form={form}
           activeRule={activeRule}
-          allRules={allRules ?? []}
+          allRules={databaseRule ?? []}
           ruleListLoading={getAllRulesLoading}
           submitLoading={updateTemplateLoading}
           step={step}

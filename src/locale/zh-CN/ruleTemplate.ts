@@ -32,6 +32,7 @@ export default {
 
     templateName: '模版名称',
     templateDesc: '模版描述',
+    databaseType: '数据库类型',
     instances: '应用的数据库',
 
     activeRuleTitle: '已启用规则',

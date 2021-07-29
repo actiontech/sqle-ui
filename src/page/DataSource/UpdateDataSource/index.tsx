@@ -38,6 +38,7 @@ const UpdateDataSource = () => {
     const values = await form.validateFields();
     setLoadingTrue();
     const params: IUpdateInstanceV1Params = {
+      db_type: values.type,
       db_host: values.ip,
       db_port: `${values.port}`,
       db_user: values.user,
@@ -77,6 +78,7 @@ const UpdateDataSource = () => {
           form.setFieldsValue({
             name: instance?.instance_name,
             describe: instance?.desc,
+            type: instance?.db_type,
             ip: instance?.db_host,
             port: Number.parseInt(instance?.db_port ?? ''),
             user: instance?.db_user,

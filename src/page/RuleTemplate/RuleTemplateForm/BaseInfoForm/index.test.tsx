@@ -3,7 +3,12 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useForm } from 'antd/lib/form/Form';
 import { act } from 'react-dom/test-utils';
 import BaseInfoForm from '.';
-import { mockUseInstance } from '../../../../testUtils/mockRequest';
+import {
+  mockUseInstance,
+  resolveThreeSecond,
+} from '../../../../testUtils/mockRequest';
+import configuration from '../../../../api/configuration';
+import instance from '../../../../api/instance';
 
 describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
   beforeEach(() => {
@@ -17,12 +22,22 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
     jest.clearAllTimers();
   });
 
+  const mockDriver = () => {
+    const spy = jest.spyOn(configuration, 'getDriversV1');
+    spy.mockImplementation(() =>
+      resolveThreeSecond({ driver_name_list: ['oracle', 'mysql'] })
+    );
+    return spy;
+  };
+
   test('should reset all fields when user click reset button and isUpdate of props is not true', async () => {
     const { result } = renderHook(() => useForm());
+    const mockDriverSpy = mockDriver();
     render(<BaseInfoForm form={result.current[0]} submit={jest.fn()} />);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    expect(mockDriverSpy).toBeCalledTimes(1);
     fireEvent.input(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName'),
       { target: { value: 'templateName' } }
@@ -31,6 +46,16 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateDesc'),
       { target: { value: 'template describe' } }
     );
+    fireEvent.mouseDown(
+      screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const databaseTypeOption = screen.getAllByText('mysql')[1];
+    expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
+    fireEvent.click(databaseTypeOption);
+
     fireEvent.mouseDown(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
     );
@@ -56,6 +81,7 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
 
   test('should reset desc and instance fields when user click reset button and isUpdate of props is true', async () => {
     const { result } = renderHook(() => useForm());
+    const mockDriverSpy = mockDriver();
     render(
       <BaseInfoForm
         form={result.current[0]}
@@ -66,6 +92,7 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    expect(mockDriverSpy).toBeCalledTimes(1);
     act(() => {
       result.current[0].setFieldsValue({ templateName: 'name1' });
     });
@@ -80,6 +107,17 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateDesc'),
       { target: { value: 'template describe' } }
     );
+
+    fireEvent.mouseDown(
+      screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const databaseTypeOption = screen.getAllByText('mysql')[1];
+    expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
+    fireEvent.click(databaseTypeOption);
+
     fireEvent.mouseDown(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
     );
@@ -100,6 +138,9 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
     ).toHaveValue('');
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
+    ).toHaveValue('');
+    expect(
+      screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
     ).toHaveValue('');
   });
 });

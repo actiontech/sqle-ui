@@ -11,6 +11,7 @@ import {
   mockUseRole,
   mockUseRuleTemplate,
   mockUseWorkflowTemplate,
+  mockDriver,
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
@@ -21,6 +22,7 @@ describe('AddDataSource', () => {
     mockUseRuleTemplate();
     mockUseRole();
     mockUseWorkflowTemplate();
+    mockDriver();
   });
 
   afterEach(() => {
@@ -62,6 +64,17 @@ describe('AddDataSource', () => {
         target: { value: 'desc1' },
       }
     );
+
+    fireEvent.mouseDown(
+      screen.getByLabelText('dataSource.dataSourceForm.type')
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const databaseTypeOption = screen.getAllByText('mysql')[1];
+    expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
+    fireEvent.click(databaseTypeOption);
+
     fireEvent.input(screen.getByLabelText('dataSource.dataSourceForm.ip'), {
       target: { value: '1.1.1.1' },
     });
@@ -111,6 +124,7 @@ describe('AddDataSource', () => {
 
     expect(create).toBeCalledTimes(1);
     expect(create).toBeCalledWith({
+      db_type: 'mysql',
       db_host: '1.1.1.1',
       db_password: '123456',
       db_port: '4444',

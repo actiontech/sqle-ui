@@ -4,6 +4,7 @@ import role from '../api/role';
 import ruleTemplate from '../api/rule_template';
 import user from '../api/user';
 import workflow from '../api/workflow';
+import configuration from '../api/configuration';
 
 export const successData = (data: any, otherData?: any) => {
   return {
@@ -117,7 +118,7 @@ export const throwErrorThreeSecond = (
 export const mockUseInstance = () => {
   const spy = jest.spyOn(instance, 'getInstanceTipListV1');
   spy.mockImplementation(() =>
-    resolveThreeSecond([{ instance_name: 'instance1' }])
+    resolveThreeSecond([{ instance_name: 'instance1', instance_type: 'mysql' }])
   );
   return spy;
 };
@@ -141,7 +142,9 @@ export const mockUseRole = () => {
 export const mockUseRuleTemplate = () => {
   const spy = jest.spyOn(ruleTemplate, 'getRuleTemplateTipsV1');
   spy.mockImplementation(() =>
-    resolveThreeSecond([{ rule_template_name: 'rule_template_name1' }])
+    resolveThreeSecond([
+      { rule_template_name: 'rule_template_name1', db_type: 'mysql' },
+    ])
   );
   return spy;
 };
@@ -158,6 +161,14 @@ export const mockUseWorkflowTemplate = () => {
   const spy = jest.spyOn(workflow, 'getWorkflowTemplateTipsV1');
   spy.mockImplementation(() =>
     resolveThreeSecond([{ workflow_template_name: 'workflow-template-name-1' }])
+  );
+  return spy;
+};
+
+export const mockDriver = () => {
+  const spy = jest.spyOn(configuration, 'getDriversV1');
+  spy.mockImplementation(() =>
+    resolveThreeSecond({ driver_name_list: ['oracle', 'mysql'] })
   );
   return spy;
 };

@@ -27,6 +27,7 @@ export default {
   dataSourceForm: {
     name: '数据源名称',
     describe: '数据源描述',
+    type: '数据库类型',
     ip: '数据库IP',
     port: '数据库端口',
     user: '链接用户',

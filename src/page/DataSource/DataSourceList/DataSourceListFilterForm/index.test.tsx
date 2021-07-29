@@ -108,6 +108,7 @@ describe('DataSource/DataSourceList/DataSourceListFilterForm', () => {
         filter_db_user: undefined,
         filter_rule_template_name: undefined,
         filter_role_name: undefined,
+        filter_db_type: undefined,
       })
     ).toBe(true);
   });

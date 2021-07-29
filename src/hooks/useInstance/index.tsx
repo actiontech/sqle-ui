@@ -30,18 +30,23 @@ const useInstance = () => {
       });
   }, [setFalse, setTrue]);
 
-  const generateInstanceSelectOption = React.useCallback(() => {
-    return instanceList.map((instance) => {
-      return (
-        <Select.Option
-          key={instance.instance_name}
-          value={instance.instance_name ?? ''}
-        >
-          {instance.instance_name}
-        </Select.Option>
-      );
-    });
-  }, [instanceList]);
+  const generateInstanceSelectOption = React.useCallback(
+    (instance_type: string = 'mysql') => {
+      return instanceList
+        .filter((i) => i.instance_type === instance_type)
+        .map((instance) => {
+          return (
+            <Select.Option
+              key={instance.instance_name}
+              value={instance.instance_name ?? ''}
+            >
+              {instance.instance_name}
+            </Select.Option>
+          );
+        });
+    },
+    [instanceList]
+  );
 
   return {
     instanceList,

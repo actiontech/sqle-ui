@@ -1,5 +1,5 @@
 import { Form, Input, Select } from 'antd';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PageFormLayout } from '../../../data/common';
 import useRole from '../../../hooks/useRole';
@@ -11,13 +11,28 @@ import { IDataSourceFormProps } from './index.type';
 
 const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
   const { t } = useTranslation();
-
+  const [databaseType, setDatabaseType] = React.useState<string>(
+    props.form.getFieldValue('type')
+  );
   const { updateRoleList, generateRoleSelectOption } = useRole();
   const { updateRuleTemplateList, generateRuleTemplateSelectOption } =
     useRuleTemplate();
 
   const { updateWorkflowTemplate, generateWorkflowSelectOptions } =
     useWorkflowTemplate();
+
+  const databaseTypeChange = useCallback(
+    (value) => {
+      setDatabaseType(value ?? '');
+      props.form.setFields([
+        {
+          name: 'ruleTemplate',
+          value: [],
+        },
+      ]);
+    },
+    [props.form]
+  );
 
   React.useEffect(() => {
     updateRoleList();
@@ -58,7 +73,11 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
           })}
         />
       </Form.Item>
-      <DatabaseFormItem isUpdate={props.isUpdate} form={props.form} />
+      <DatabaseFormItem
+        isUpdate={props.isUpdate}
+        form={props.form}
+        databaseTypeChange={databaseTypeChange}
+      />
       <Form.Item label={t('dataSource.dataSourceForm.role')} name="role">
         <Select
           mode="multiple"
@@ -81,7 +100,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
             name: t('dataSource.dataSourceForm.ruleTemplate'),
           })}
         >
-          {generateRuleTemplateSelectOption()}
+          {generateRuleTemplateSelectOption(databaseType)}
         </Select>
       </Form.Item>
       <Form.Item

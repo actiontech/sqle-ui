@@ -6,65 +6,54 @@ import {
   act as reactAct,
   cleanup,
 } from '@testing-library/react';
-import useInstance from '.';
-import instance from '../../api/instance';
 import {
   rejectThreeSecond,
   resolveErrorThreeSecond,
   resolveThreeSecond,
 } from '../../testUtils/mockRequest';
 import { Select } from 'antd';
+import useDatabaseType from '.';
+import configuration from '../../api/configuration';
 
-describe('useInstance', () => {
+describe('hooks/useDatabaseType', () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });
-
   afterEach(() => {
     jest.useRealTimers();
   });
 
   const mockRequest = () => {
-    const spy = jest.spyOn(instance, 'getInstanceTipListV1');
+    const spy = jest.spyOn(configuration, 'getDriversV1');
     return spy;
   };
-
-  test('should get instance data from request', async () => {
+  test('should get driver from request', async () => {
     const requestSpy = mockRequest();
     requestSpy.mockImplementation(() =>
-      resolveThreeSecond([
-        { instance_name: 'instance_test_name', instance_type: 'mysql' },
-      ])
+      resolveThreeSecond({ driver_name_list: ['mysql'] })
     );
-    const { result, waitForNextUpdate } = renderHook(() => useInstance());
-    expect(result.current.loading).toBe(false);
-    expect(result.current.instanceList).toEqual([]);
+    const { result, waitForNextUpdate } = renderHook(() => useDatabaseType());
+    expect(result.current.loading).toBeFalsy();
+    expect(result.current.driverNameList).toEqual([]);
     const { baseElement } = render(
-      <Select>{result.current.generateInstanceSelectOption()}</Select>
+      <Select>{result.current.generateDriverSelectOptions()}</Select>
     );
     expect(baseElement).toMatchSnapshot();
 
     act(() => {
-      result.current.updateInstanceList();
+      result.current.updateDriverNameList();
     });
-
-    expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.instanceList).toEqual([]);
-
+    expect(result.current.loading).toBeTruthy();
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
-
-    expect(result.current.loading).toBe(false);
+    expect(result.current.loading).toBeFalsy();
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.instanceList).toEqual([
-      { instance_name: 'instance_test_name', instance_type: 'mysql' },
-    ]);
+    expect(result.current.driverNameList).toEqual(['mysql']);
     cleanup();
-
     const { baseElement: baseElementWithOptions } = render(
       <Select data-testid="testId" value="value1">
-        {result.current.generateInstanceSelectOption()}
+        {result.current.generateDriverSelectOptions()}
       </Select>
     );
     expect(baseElementWithOptions).toMatchSnapshot();
@@ -74,110 +63,92 @@ describe('useInstance', () => {
       jest.runAllTimers();
     });
 
-    await screen.findAllByText('instance_test_name');
+    await screen.findAllByText('mysql');
     expect(baseElementWithOptions).toMatchSnapshot();
   });
 
   test('should set list to empty array when response code is not equal success code', async () => {
     const requestSpy = mockRequest();
     requestSpy.mockImplementation(() =>
-      resolveThreeSecond([
-        { instance_name: 'instance_test_name', instance_type: 'mysql' },
-      ])
+      resolveThreeSecond({ driver_name_list: ['mysql'] })
     );
-    const { result, waitForNextUpdate } = renderHook(() => useInstance());
+    const { result, waitForNextUpdate } = renderHook(() => useDatabaseType());
     expect(result.current.loading).toBe(false);
-    expect(result.current.instanceList).toEqual([]);
+    expect(result.current.driverNameList).toEqual([]);
 
     act(() => {
-      result.current.updateInstanceList();
+      result.current.updateDriverNameList();
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.instanceList).toEqual([]);
+    expect(result.current.driverNameList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.instanceList).toEqual([
-      { instance_name: 'instance_test_name', instance_type: 'mysql' },
-    ]);
+    expect(result.current.driverNameList).toEqual(['mysql']);
     requestSpy.mockClear();
     requestSpy.mockImplementation(() =>
-      resolveErrorThreeSecond([
-        { instance_name: 'instance_test_name', instance_type: 'mysql' },
-      ])
+      resolveErrorThreeSecond({ driver_name_list: ['mysql'] })
     );
 
     act(() => {
-      result.current.updateInstanceList();
+      result.current.updateDriverNameList();
     });
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.instanceList).toEqual([
-      {
-        instance_name: 'instance_test_name',
-        instance_type: 'mysql',
-      },
-    ]);
+    expect(result.current.driverNameList).toEqual(['mysql']);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.instanceList).toEqual([]);
+    expect(result.current.driverNameList).toEqual([]);
   });
-
   test('should set list to empty array when response throw error', async () => {
     const requestSpy = mockRequest();
     requestSpy.mockImplementation(() =>
-      resolveThreeSecond([{ instance_name: 'instance_test_name' }])
+      resolveThreeSecond({ driver_name_list: ['mysql'] })
     );
-    const { result, waitForNextUpdate } = renderHook(() => useInstance());
+    const { result, waitForNextUpdate } = renderHook(() => useDatabaseType());
     expect(result.current.loading).toBe(false);
-    expect(result.current.instanceList).toEqual([]);
+    expect(result.current.driverNameList).toEqual([]);
 
     act(() => {
-      result.current.updateInstanceList();
+      result.current.updateDriverNameList();
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.instanceList).toEqual([]);
+    expect(result.current.driverNameList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.instanceList).toEqual([
-      { instance_name: 'instance_test_name' },
-    ]);
+    expect(result.current.driverNameList).toEqual(['mysql']);
     requestSpy.mockClear();
     requestSpy.mockImplementation(() =>
-      rejectThreeSecond([{ instance_name: 'instance_test_name' }])
+      rejectThreeSecond({ driver_name_list: ['mysql'] })
     );
 
     act(() => {
-      result.current.updateInstanceList();
+      result.current.updateDriverNameList();
     });
-    expect(result.current.loading).toBe(true);
+    expect(result.current.loading).toBeTruthy();
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.instanceList).toEqual([
-      {
-        instance_name: 'instance_test_name',
-      },
-    ]);
+    expect(result.current.driverNameList).toEqual(['mysql']);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.instanceList).toEqual([]);
+    expect(result.current.driverNameList).toEqual([]);
   });
 });

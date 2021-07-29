@@ -74,7 +74,7 @@ export interface ICloneRuleTemplateReqV1 {
 
   instance_name_list?: string[];
 
-  rule_template_name?: string;
+  new_rule_template_name?: string;
 }
 
 export interface ICreateAuditWhitelistReqV1 {
@@ -118,6 +118,8 @@ export interface ICreateRoleReqV1 {
 }
 
 export interface ICreateRuleTemplateReqV1 {
+  db_type?: string;
+
   desc?: string;
 
   instance_name_list?: string[];
@@ -447,6 +449,8 @@ export interface IInstanceSchemaResV1 {
 
 export interface IInstanceTipResV1 {
   instance_name?: string;
+
+  instance_type?: string;
 }
 
 export interface IRejectWorkflowReqV1 {
@@ -490,6 +494,8 @@ export interface IRuleResV1 {
 }
 
 export interface IRuleTemplateDetailResV1 {
+  db_type?: string;
+
   desc?: string;
 
   instance_name_list?: string[];
@@ -500,6 +506,8 @@ export interface IRuleTemplateDetailResV1 {
 }
 
 export interface IRuleTemplateResV1 {
+  db_type?: string;
+
   desc?: string;
 
   instance_name_list?: string[];
@@ -508,6 +516,8 @@ export interface IRuleTemplateResV1 {
 }
 
 export interface IRuleTemplateTipResV1 {
+  db_type?: string;
+
   rule_template_name?: string;
 }
 

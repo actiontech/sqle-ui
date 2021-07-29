@@ -1,7 +1,15 @@
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { useTheme } from '@material-ui/styles';
 import { useBoolean } from 'ahooks';
-import { Form, FormInstance, Input, InputNumber, Space, Tooltip } from 'antd';
+import {
+  Form,
+  FormInstance,
+  Input,
+  InputNumber,
+  Space,
+  Tooltip,
+  Select,
+} from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import instance from '../../../../api/instance';
@@ -12,11 +20,15 @@ import EmitterKey from '../../../../data/EmitterKey';
 import { Theme } from '../../../../types/theme.type';
 import EventEmitter from '../../../../utils/EventEmitter';
 import { DataSourceFormField } from '../index.type';
+import useDatabaseType from '../../../../hooks/useDatabaseType';
 
 const DatabaseFormItem: React.FC<{
   form: FormInstance<DataSourceFormField>;
   isUpdate?: boolean;
+  databaseTypeChange?: (values: string) => void;
 }> = (props) => {
+  const { updateDriverNameList, generateDriverSelectOptions } =
+    useDatabaseType();
   const { t } = useTranslation();
   const theme = useTheme<Theme>();
   const [loading, { setTrue: setLoadingTrue, setFalse: setLoadingFalse }] =
@@ -33,6 +45,7 @@ const DatabaseFormItem: React.FC<{
       'password',
       'port',
       'user',
+      'type',
     ]);
     setLoadingTrue();
     instance
@@ -40,6 +53,7 @@ const DatabaseFormItem: React.FC<{
         host: values.ip,
         port: `${values.port}`,
         user: values.user,
+        db_type: values.type,
         password: values.password,
       })
       .then((res) => {
@@ -75,9 +89,23 @@ const DatabaseFormItem: React.FC<{
       );
     };
   });
+  React.useEffect(() => {
+    updateDriverNameList();
+  }, [updateDriverNameList]);
 
   return (
     <>
+      <Form.Item label={t('dataSource.dataSourceForm.type')} name="type">
+        <Select
+          placeholder={t('common.form.placeholder.select', {
+            name: t('dataSource.dataSourceForm.type'),
+          })}
+          allowClear
+          onChange={props.databaseTypeChange}
+        >
+          {generateDriverSelectOptions()}
+        </Select>
+      </Form.Item>
       <Form.Item
         label={t('dataSource.dataSourceForm.ip')}
         name="ip"

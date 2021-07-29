@@ -16,16 +16,7 @@ const CreateRuleTemplate = () => {
   const [form] = useForm<RuleTemplateBaseInfoFields>();
   const [createLoading, { toggle: updateCreateLoading }] = useBoolean();
   const [activeRule, setActiveRule] = React.useState<IRuleResV1[]>([]);
-
-  const baseInfoFormSubmit = React.useCallback(async () => {
-    await form.validateFields();
-    setStep(step + 1);
-  }, [form, step]);
-
-  const prevStep = React.useCallback(() => {
-    setStep(step - 1);
-  }, [step]);
-
+  const [databaseRule, setDatabaseRule] = React.useState<IRuleResV1[]>([]);
   const { data: allRules, loading: getAllRulesLoading } = useRequest(
     ruleTemplate.getRuleListV1.bind(ruleTemplate),
     {
@@ -38,19 +29,31 @@ const CreateRuleTemplate = () => {
     }
   );
 
+  const baseInfoFormSubmit = React.useCallback(async () => {
+    const values = await form.validateFields();
+    setDatabaseRule(
+      allRules?.filter((e) => e.db_type === values.db_type) ?? []
+    );
+    setStep(step + 1);
+  }, [form, step, allRules]);
+
+  const prevStep = React.useCallback(() => {
+    setStep(step - 1);
+  }, [step]);
+
   const submit = React.useCallback(() => {
     updateCreateLoading(true);
     const baseInfo = form.getFieldsValue();
-    const activeRuleWithNewField = activeRule.map(rule => {
+    const activeRuleWithNewField = activeRule.map((rule) => {
       return {
         name: rule.rule_name,
         level: rule.level,
         desc: rule.desc,
         type: rule.type,
         value: rule.value,
-        db_type: rule.db_type
-      }
-    })
+        db_type: rule.db_type,
+      };
+    });
     ruleTemplate
       .createRuleTemplateV1({
         rule_template_name: baseInfo.templateName,
@@ -86,7 +89,7 @@ const CreateRuleTemplate = () => {
         <RuleTemplateForm
           form={form}
           activeRule={activeRule}
-          allRules={allRules ?? []}
+          allRules={databaseRule ?? []}
           ruleListLoading={getAllRulesLoading}
           submitLoading={createLoading}
           step={step}
