@@ -3,6 +3,7 @@ import locale from './locale';
 import user from './user';
 import userManage from './userManage';
 import whitelist from './whitelist';
+import ruleTemplate from './ruleTemplate';
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     user,
     userManage,
     whitelist,
+    ruleTemplate,
   },
 });
 

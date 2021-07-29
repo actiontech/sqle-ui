@@ -1,25 +1,39 @@
-import { SyncOutlined } from '@ant-design/icons';
+import { DownOutlined, SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import {
   Button,
   Card,
   Col,
   Divider,
+  Dropdown,
   List,
+  Menu,
   message,
   Popconfirm,
   Space,
   Typography,
 } from 'antd';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { IRuleTemplateResV1 } from '../../../api/common';
 import ruleTemplate from '../../../api/rule_template';
 import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode } from '../../../data/common';
+import EmitterKey from '../../../data/EmitterKey';
+import { ModalName } from '../../../data/ModalName';
+import {
+  initRuleTemplateListModalStatus,
+  updateRuleTemplateListModalStatus,
+  updateSelectRuleTemplate,
+} from '../../../store/ruleTemplate';
+import EventEmitter from '../../../utils/EventEmitter';
+import RuleTemplateListModal from './Modal';
 
 const RuleTemplateList = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const {
     data,
@@ -80,6 +94,44 @@ const RuleTemplateList = () => {
     },
     [refreshRuleTemplate, t]
   );
+
+  const openCloneRuleTemplateModal = (ruleTemplate: IRuleTemplateResV1) => {
+    dispatch(
+      updateSelectRuleTemplate({
+        ruleTemplate,
+      })
+    );
+    dispatch(
+      updateRuleTemplateListModalStatus({
+        modalName: ModalName.Clone_Rule_Template,
+        status: true,
+      })
+    );
+  };
+
+  useEffect(() => {
+    dispatch(
+      initRuleTemplateListModalStatus({
+        modalStatus: {
+          [ModalName.Clone_Rule_Template]: false,
+        },
+      })
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const scopeRefresh = () => {
+      refreshRuleTemplate();
+    };
+    EventEmitter.subscribe(EmitterKey.Refresh_Rule_Template_List, scopeRefresh);
+    return () => {
+      EventEmitter.unsubscribe(
+        EmitterKey.Refresh_Rule_Template_List,
+        scopeRefresh
+      );
+    };
+  }, [refreshRuleTemplate]);
 
   return (
     <>
@@ -153,12 +205,32 @@ const RuleTemplateList = () => {
                       {t('common.delete')}
                     </Typography.Text>
                   </Popconfirm>
+                  <Divider type="vertical" />
+                  <Dropdown
+                    placement="bottomRight"
+                    overlay={
+                      <Menu>
+                        <Menu.Item
+                          key="update-user-password"
+                          onClick={openCloneRuleTemplateModal.bind(null, item)}
+                        >
+                          {t('ruleTemplate.cloneRuleTemplate.button')}
+                        </Menu.Item>
+                      </Menu>
+                    }
+                  >
+                    <Typography.Link className="pointer">
+                      {t('common.more')}
+                      <DownOutlined />
+                    </Typography.Link>
+                  </Dropdown>
                 </Space>
               </Col>
             </List.Item>
           )}
         />
       </Card>
+      <RuleTemplateListModal />
     </>
   );
 };
