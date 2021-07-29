@@ -21,6 +21,7 @@ export const WhitelistColumn = (
               dangerouslySetInnerHTML={{
                 __html: HighlightCode.highlightSql(sql),
               }}
+              className="pre-warp-break-all"
             />
           );
         }
