@@ -28,3 +28,25 @@ export const nameRuleValidator = (): FormValidatorRule => {
     return Promise.resolve();
   };
 };
+
+export const whiteSpaceSql = (): Rule[] => {
+  return [
+    {
+      validator: whiteSpaceSqlValidator(),
+    },
+  ];
+};
+
+export const whiteSpaceSqlValidator = (): FormValidatorRule => {
+  return (_, values) => {
+    const placeholder = '/* input your sql */';
+    if (values === placeholder) {
+      return Promise.reject(
+        translation('common.form.rule.require', {
+          name: translation('whitelist.table.sql'),
+        })
+      );
+    }
+    return Promise.resolve();
+  };
+};

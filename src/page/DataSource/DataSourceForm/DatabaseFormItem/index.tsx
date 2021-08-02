@@ -88,14 +88,24 @@ const DatabaseFormItem: React.FC<{
         resetConnectAbleStatus
       );
     };
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   React.useEffect(() => {
     updateDriverNameList();
   }, [updateDriverNameList]);
 
   return (
     <>
-      <Form.Item label={t('dataSource.dataSourceForm.type')} name="type">
+      <Form.Item
+        label={t('dataSource.dataSourceForm.type')}
+        name="type"
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      >
         <Select
           placeholder={t('common.form.placeholder.select', {
             name: t('dataSource.dataSourceForm.type'),

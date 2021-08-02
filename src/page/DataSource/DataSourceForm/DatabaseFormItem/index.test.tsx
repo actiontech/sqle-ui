@@ -142,7 +142,7 @@ describe('DatabaseFormItem', () => {
       </Form>
     );
 
-    expect(subscribe).toBeCalledTimes(2);
+    expect(subscribe).toBeCalledTimes(1);
     expect(subscribe).toBeCalledWith(
       EmitterKey.Reset_Test_Data_Source_Connect,
       subTemp
@@ -150,7 +150,7 @@ describe('DatabaseFormItem', () => {
     act(() => {
       wrapper.unmount();
     });
-    expect(unsubscribe).toBeCalledTimes(2);
+    expect(unsubscribe).toBeCalledTimes(1);
     expect(unsubscribe).toBeCalledWith(
       EmitterKey.Reset_Test_Data_Source_Connect,
       subTemp

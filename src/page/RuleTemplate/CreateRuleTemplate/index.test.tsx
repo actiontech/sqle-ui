@@ -1,6 +1,5 @@
 import CreateRuleTemplate from '.';
 import rule_template from '../../../api/rule_template';
-import configuration from '../../../api/configuration';
 import instance from '../../../api/instance';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import {
@@ -13,6 +12,7 @@ import {
 } from '../../../testUtils/mockRequest';
 import { createMemoryHistory } from 'history';
 import { allRulesWithType } from '../../Rule/__testData__';
+import { mockDriver, mockInstanceTip } from '../../../testUtils/mockRequest';
 
 describe('RuleTemplate/CreateRuleTemplate', () => {
   beforeEach(() => {
@@ -36,31 +36,6 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
   const mockCreateTemplate = () => {
     const spy = jest.spyOn(rule_template, 'createRuleTemplateV1');
     spy.mockImplementation(() => resolveThreeSecond({}));
-    return spy;
-  };
-
-  const mockDriver = () => {
-    const spy = jest.spyOn(configuration, 'getDriversV1');
-    spy.mockImplementation(() =>
-      resolveThreeSecond({ driver_name_list: ['oracle', 'mysql'] })
-    );
-    return spy;
-  };
-
-  const mockInstanceTip = () => {
-    const spy = jest.spyOn(instance, 'getInstanceTipListV1');
-    spy.mockImplementation(() =>
-      resolveThreeSecond([
-        {
-          instance_name: 'mysql-test',
-          instance_type: 'mysql',
-        },
-        {
-          instance_name: 'oracle-test',
-          instance_type: 'oracle',
-        },
-      ])
-    );
     return spy;
   };
 

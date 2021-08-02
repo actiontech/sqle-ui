@@ -3,12 +3,8 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useForm } from 'antd/lib/form/Form';
 import { act } from 'react-dom/test-utils';
 import BaseInfoForm from '.';
-import {
-  mockUseInstance,
-  resolveThreeSecond,
-} from '../../../../testUtils/mockRequest';
-import configuration from '../../../../api/configuration';
-import instance from '../../../../api/instance';
+import { mockUseInstance } from '../../../../testUtils/mockRequest';
+import { mockDriver } from '../../../../testUtils/mockRequest';
 
 describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
   beforeEach(() => {
@@ -21,14 +17,6 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
     jest.clearAllMocks();
     jest.clearAllTimers();
   });
-
-  const mockDriver = () => {
-    const spy = jest.spyOn(configuration, 'getDriversV1');
-    spy.mockImplementation(() =>
-      resolveThreeSecond({ driver_name_list: ['oracle', 'mysql'] })
-    );
-    return spy;
-  };
 
   test('should reset all fields when user click reset button and isUpdate of props is not true', async () => {
     const { result } = renderHook(() => useForm());

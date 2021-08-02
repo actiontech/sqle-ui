@@ -12,6 +12,8 @@ export enum ModalSize {
 }
 
 export const RuleListDefaultTabKey = 'ALL';
+export const instanceListDefaultKey = 'all';
+export const ruleTemplateListDefaultKey = 'all';
 
 export const ModalFormLayout = {
   labelCol: {

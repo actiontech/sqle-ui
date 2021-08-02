@@ -4,6 +4,7 @@ import React from 'react';
 import { IInstanceTipResV1 } from '../../api/common';
 import instance from '../../api/instance';
 import { ResponseCode } from '../../data/common';
+import { instanceListDefaultKey } from '../../data/common';
 
 const useInstance = () => {
   const [instanceList, setInstanceList] = React.useState<IInstanceTipResV1[]>(
@@ -31,19 +32,25 @@ const useInstance = () => {
   }, [setFalse, setTrue]);
 
   const generateInstanceSelectOption = React.useCallback(
-    (instance_type: string = 'mysql') => {
-      return instanceList
-        .filter((i) => i.instance_type === instance_type)
-        .map((instance) => {
-          return (
-            <Select.Option
-              key={instance.instance_name}
-              value={instance.instance_name ?? ''}
-            >
-              {instance.instance_name}
-            </Select.Option>
-          );
-        });
+    (instance_type: string = instanceListDefaultKey) => {
+      let filterInstanceList: IInstanceTipResV1[] = [];
+      if (instance_type !== instanceListDefaultKey) {
+        filterInstanceList = instanceList.filter(
+          (i) => i.instance_type === instance_type
+        );
+      } else {
+        filterInstanceList = instanceList;
+      }
+      return filterInstanceList.map((instance) => {
+        return (
+          <Select.Option
+            key={instance.instance_name}
+            value={instance.instance_name ?? ''}
+          >
+            {instance.instance_name}
+          </Select.Option>
+        );
+      });
     },
     [instanceList]
   );

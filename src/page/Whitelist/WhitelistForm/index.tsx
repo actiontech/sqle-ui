@@ -8,6 +8,7 @@ import { WhitelistFormProps } from './index.type';
 import { CreateAuditWhitelistReqV1MatchTypeEnum } from '../../../api/common.enum';
 import { I18nKey } from '../../../types/common.type';
 import useMonacoEditor from '../../../hooks/useMonacoEditor';
+import { whiteSpaceSql } from '../../../utils/FormRule';
 
 export const WhitelistMatchTypeLabel: {
   [key in CreateAuditWhitelistReqV1MatchTypeEnum]: I18nKey;
@@ -71,6 +72,7 @@ const WhitelistForm: React.FC<WhitelistFormProps> = (props) => {
           {
             required: true,
           },
+          ...whiteSpaceSql(),
         ]}
       >
         <MonacoEditor

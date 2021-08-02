@@ -172,3 +172,20 @@ export const mockDriver = () => {
   );
   return spy;
 };
+
+export const mockInstanceTip = () => {
+  const spy = jest.spyOn(instance, 'getInstanceTipListV1');
+  spy.mockImplementation(() =>
+    resolveThreeSecond([
+      {
+        instance_name: 'mysql-test',
+        instance_type: 'mysql',
+      },
+      {
+        instance_name: 'oracle-test',
+        instance_type: 'oracle',
+      },
+    ])
+  );
+  return spy;
+};

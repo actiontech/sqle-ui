@@ -180,4 +180,50 @@ describe('useInstance', () => {
     expect(requestSpy).toBeCalledTimes(1);
     expect(result.current.instanceList).toEqual([]);
   });
+
+  test('should show one database type which your choose', async () => {
+    const requestSpy = mockRequest();
+    requestSpy.mockImplementation(() =>
+      resolveThreeSecond([
+        { instance_name: 'mysql_instance_test_name', instance_type: 'mysql' },
+        { instance_name: 'oracle_instance_test_name', instance_type: 'oracle' },
+      ])
+    );
+    const { result, waitForNextUpdate } = renderHook(() => useInstance());
+    expect(result.current.loading).toBe(false);
+    expect(result.current.instanceList).toEqual([]);
+
+    act(() => {
+      result.current.updateInstanceList();
+    });
+
+    expect(result.current.loading).toBe(true);
+    expect(requestSpy).toBeCalledTimes(1);
+    expect(result.current.instanceList).toEqual([]);
+
+    jest.advanceTimersByTime(3000);
+    await waitForNextUpdate();
+
+    expect(result.current.loading).toBe(false);
+    expect(requestSpy).toBeCalledTimes(1);
+    expect(result.current.instanceList).toEqual([
+      { instance_name: 'mysql_instance_test_name', instance_type: 'mysql' },
+      { instance_name: 'oracle_instance_test_name', instance_type: 'oracle' },
+    ]);
+    cleanup();
+    const { baseElement: baseElementWithOptions } = render(
+      <Select data-testid="testId" value="oracle_instance_test_name">
+        {result.current.generateInstanceSelectOption('oracle')}
+      </Select>
+    );
+    expect(baseElementWithOptions).toMatchSnapshot();
+
+    reactAct(() => {
+      fireEvent.mouseDown(screen.getByText('oracle_instance_test_name'));
+      jest.runAllTimers();
+    });
+
+    await screen.findAllByText('oracle_instance_test_name');
+    expect(baseElementWithOptions).toMatchSnapshot();
+  });
 });

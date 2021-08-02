@@ -32,9 +32,6 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
   const { updateRuleTemplateList, generateRuleTemplateSelectOption } =
     useRuleTemplate();
   const { updateRoleList, generateRoleSelectOption } = useRole();
-  const [databaseType, setDatabaseType] = React.useState<string>(
-    form.getFieldValue('filter_db_type')
-  );
   const submit = React.useCallback(() => {
     props.submit(form.getFieldsValue());
   }, [form, props]);
@@ -57,19 +54,6 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
     form.resetFields();
     props.submit({});
   }, [form, props]);
-
-  const databaseTypeChange = React.useCallback(
-    (value) => {
-      setDatabaseType(value ?? '');
-      form.setFields([
-        {
-          name: 'filter_rule_template_name',
-          value: [],
-        },
-      ]);
-    },
-    [form]
-  );
 
   React.useEffect(() => {
     updateInstanceList();
@@ -156,7 +140,6 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
                 name: t('dataSource.dataSourceForm.type'),
               })}
               allowClear
-              onChange={databaseTypeChange}
             >
               {generateDriverSelectOptions()}
             </Select>
@@ -174,7 +157,7 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
                 name: t('dataSource.dataSourceForm.ruleTemplate'),
               })}
             >
-              {generateRuleTemplateSelectOption(databaseType)}
+              {generateRuleTemplateSelectOption()}
             </Select>
           </Form.Item>
         </Col>
@@ -198,7 +181,7 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
           {...filterFormButtonLayoutFactory(
             0,
             collapse ? 16 : 8,
-            collapse ? 0 : 6
+            collapse ? 0 : 18
           )}
           className="text-align-right"
         >

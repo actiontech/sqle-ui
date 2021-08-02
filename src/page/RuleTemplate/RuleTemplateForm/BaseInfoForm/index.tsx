@@ -6,6 +6,7 @@ import useInstance from '../../../../hooks/useInstance';
 import { nameRule } from '../../../../utils/FormRule';
 import { RuleTemplateBaseInfoFormProps } from './index.type';
 import useDatabaseType from '../../../../hooks/useDatabaseType';
+import { instanceListDefaultKey } from '../../../../data/common';
 
 const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
   const { t } = useTranslation();
@@ -13,7 +14,7 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
   const { updateDriverNameList, generateDriverSelectOptions } =
     useDatabaseType();
   const [databaseType, setDatabaseType] = React.useState<string>(
-    props.form.getFieldValue('db_type') ?? []
+    props.form.getFieldValue('db_type') ?? instanceListDefaultKey
   );
 
   const reset = React.useCallback(() => {
@@ -32,7 +33,7 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
 
   const databaseTypeChange = React.useCallback(
     (value) => {
-      setDatabaseType(value ?? '');
+      setDatabaseType(value ?? instanceListDefaultKey);
       props.form.setFields([
         {
           name: 'instances',

@@ -8,11 +8,12 @@ import useWorkflowTemplate from '../../../hooks/useWorkflowTemplate';
 import { nameRule } from '../../../utils/FormRule';
 import DatabaseFormItem from './DatabaseFormItem';
 import { IDataSourceFormProps } from './index.type';
+import { ruleTemplateListDefaultKey } from '../../../data/common';
 
 const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
   const { t } = useTranslation();
   const [databaseType, setDatabaseType] = React.useState<string>(
-    props.form.getFieldValue('type')
+    props.form.getFieldValue('type') ?? ruleTemplateListDefaultKey
   );
   const { updateRoleList, generateRoleSelectOption } = useRole();
   const { updateRuleTemplateList, generateRuleTemplateSelectOption } =
@@ -23,7 +24,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
 
   const databaseTypeChange = useCallback(
     (value) => {
-      setDatabaseType(value ?? '');
+      setDatabaseType(value ?? ruleTemplateListDefaultKey);
       props.form.setFields([
         {
           name: 'ruleTemplate',
@@ -94,7 +95,6 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
         name="ruleTemplate"
       >
         <Select
-          mode="multiple"
           allowClear
           placeholder={t('common.form.placeholder.select', {
             name: t('dataSource.dataSourceForm.ruleTemplate'),

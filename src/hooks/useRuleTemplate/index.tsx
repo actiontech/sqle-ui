@@ -4,6 +4,7 @@ import { IRuleTemplateTipResV1 } from '../../api/common';
 import { ResponseCode } from '../../data/common';
 import ruleTemplate from '../../api/rule_template';
 import { Select } from 'antd';
+import { ruleTemplateListDefaultKey } from '../../data/common';
 
 const useRuleTemplate = () => {
   const [ruleTemplateList, setRuleTemplate] = React.useState<
@@ -31,19 +32,25 @@ const useRuleTemplate = () => {
   }, [setFalse, setTrue]);
 
   const generateRuleTemplateSelectOption = React.useCallback(
-    (db_type: string = 'mysql') => {
-      return ruleTemplateList
-        .filter((t) => t.db_type === db_type)
-        .map((template) => {
-          return (
-            <Select.Option
-              key={template.rule_template_name}
-              value={template.rule_template_name ?? ''}
-            >
-              {template.rule_template_name}
-            </Select.Option>
-          );
-        });
+    (db_type: string = ruleTemplateListDefaultKey) => {
+      let filterRuleTemplateList: IRuleTemplateTipResV1[] = [];
+      if (db_type !== ruleTemplateListDefaultKey) {
+        filterRuleTemplateList = ruleTemplateList.filter(
+          (i) => i.db_type === db_type
+        );
+      } else {
+        filterRuleTemplateList = ruleTemplateList;
+      }
+      return filterRuleTemplateList.map((template) => {
+        return (
+          <Select.Option
+            key={template.rule_template_name}
+            value={template.rule_template_name ?? ''}
+          >
+            {template.rule_template_name}
+          </Select.Option>
+        );
+      });
     },
     [ruleTemplateList]
   );
