@@ -5,6 +5,7 @@ import {
   mockUseInstance,
   mockUseRole,
   mockUseRuleTemplate,
+  mockDriver,
 } from '../../../../testUtils/mockRequest';
 
 describe('DataSource/DataSourceList/DataSourceListFilterForm', () => {
@@ -13,6 +14,7 @@ describe('DataSource/DataSourceList/DataSourceListFilterForm', () => {
     mockUseInstance();
     mockUseRuleTemplate();
     mockUseRole();
+    mockDriver();
   });
 
   afterEach(() => {
