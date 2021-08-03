@@ -15,6 +15,7 @@ import UserForm from '../UserForm';
 import { IUserFormFields } from '../UserForm/index.type';
 import useRole from '../../../../hooks/useRole';
 import { IUserResV1 } from '../../../../api/common';
+import { IUpdateUserV1Params } from '../../../../api/user/index.d';
 
 const UpdateUser = () => {
   const [form] = useForm<IUserFormFields>();
@@ -41,13 +42,16 @@ const UpdateUser = () => {
 
   const updateUser = React.useCallback(async () => {
     const values = await form.validateFields();
+    const params: IUpdateUserV1Params = {
+      user_name: values.username,
+      role_name_list: values.roleNameList,
+    };
+    if (!!values.email) {
+      params.email = values.email;
+    }
     setTrue();
     user
-      .updateUserV1({
-        user_name: values.username,
-        email: values.email,
-        role_name_list: values.roleNameList,
-      })
+      .updateUserV1(params)
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           close();

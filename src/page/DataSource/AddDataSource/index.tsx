@@ -29,10 +29,11 @@ const AddDataSource = () => {
         db_password: values.password,
         db_port: `${values.port}`,
         db_user: values.user,
+        db_type: values.type,
         desc: values.describe,
         instance_name: values.name,
         role_name_list: values.role,
-        rule_template_name_list: values.ruleTemplate,
+        rule_template_name_list: [values.ruleTemplate],
         workflow_template_name: values.workflow,
       })
       .then((res) => {

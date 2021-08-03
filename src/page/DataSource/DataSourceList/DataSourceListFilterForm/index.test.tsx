@@ -5,6 +5,7 @@ import {
   mockUseInstance,
   mockUseRole,
   mockUseRuleTemplate,
+  mockDriver,
 } from '../../../../testUtils/mockRequest';
 
 describe('DataSource/DataSourceList/DataSourceListFilterForm', () => {
@@ -13,6 +14,7 @@ describe('DataSource/DataSourceList/DataSourceListFilterForm', () => {
     mockUseInstance();
     mockUseRuleTemplate();
     mockUseRole();
+    mockDriver();
   });
 
   afterEach(() => {
@@ -108,6 +110,7 @@ describe('DataSource/DataSourceList/DataSourceListFilterForm', () => {
         filter_db_user: undefined,
         filter_rule_template_name: undefined,
         filter_role_name: undefined,
+        filter_db_type: undefined,
       })
     ).toBe(true);
   });

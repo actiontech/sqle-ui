@@ -10,6 +10,7 @@ import RuleSelect from './RuleSelect';
 const RuleTemplateForm: React.FC<RuleTemplateFormProps> = (props) => {
   const { t } = useTranslation();
   const theme = useTheme<Theme>();
+
   return (
     <>
       <Space

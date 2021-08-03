@@ -449,6 +449,8 @@ export interface IInstanceSchemaResV1 {
 
 export interface IInstanceTipResV1 {
   instance_name?: string;
+
+  instance_type?: string;
 }
 
 export interface IRejectWorkflowReqV1 {
@@ -492,6 +494,8 @@ export interface IRuleResV1 {
 }
 
 export interface IRuleTemplateDetailResV1 {
+  db_type?: string;
+
   desc?: string;
 
   instance_name_list?: string[];

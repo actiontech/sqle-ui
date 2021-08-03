@@ -7,12 +7,13 @@ import {
   renderWithThemeAndServerRouter,
 } from '../../../testUtils/customRender';
 import {
-  mockUseInstance,
   resolveThreeSecond,
+  mockDriver,
+  mockInstanceTip,
 } from '../../../testUtils/mockRequest';
 import { ruleTemplateData } from '../__testData__';
 import { createMemoryHistory } from 'history';
-import { allRules } from '../../Rule/__testData__';
+import { allRulesWithType } from '../../Rule/__testData__';
 
 jest.mock('react-router', () => {
   return {
@@ -28,7 +29,8 @@ describe('UpdateRuleTemplate', () => {
     useParamsMock.mockReturnValue({ templateName: 'template_name1' });
     mockGetRuleTemplate();
     mockGetAllRules();
-    mockUseInstance();
+    mockDriver();
+    mockInstanceTip();
   });
 
   afterEach(() => {
@@ -39,7 +41,7 @@ describe('UpdateRuleTemplate', () => {
 
   const mockGetAllRules = () => {
     const spy = jest.spyOn(rule_template, 'getRuleListV1');
-    spy.mockImplementation(() => resolveThreeSecond(allRules));
+    spy.mockImplementation(() => resolveThreeSecond(allRulesWithType));
     return spy;
   };
 
@@ -66,7 +68,6 @@ describe('UpdateRuleTemplate', () => {
 
   test('should jump to /rule/template when user click back btn', async () => {
     const history = createMemoryHistory();
-
     renderWithThemeAndServerRouter(<UpdateRuleTemplate />, undefined, {
       history,
     });
@@ -99,13 +100,23 @@ describe('UpdateRuleTemplate', () => {
       }
     );
     fireEvent.mouseDown(
+      screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const databaseTypeOption = screen.getAllByText('oracle')[1];
+    expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
+    fireEvent.click(databaseTypeOption);
+
+    fireEvent.mouseDown(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
     );
 
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
-    const option = screen.getAllByText('instance1')[1];
+    const option = screen.getAllByText('oracle-test')[1];
     expect(option).toHaveClass('ant-select-item-option-content');
     fireEvent.click(option);
 
@@ -148,19 +159,23 @@ describe('UpdateRuleTemplate', () => {
     fireEvent.click(screen.getByText('common.submit'));
 
     expect(updateTemplateSpy).toBeCalledTimes(1);
-    const resultRuleName = allRules.map((rule) => {
-      return {
-        name: rule.rule_name,
-        level: rule.level,
-        desc: rule.desc,
-        value: rule.value,
-      };
-    });
+    const resultRuleName = allRulesWithType
+      .filter((e) => e.db_type === 'oracle')
+      .map((rule) => {
+        return {
+          db_type: rule.db_type,
+          name: rule.rule_name,
+          level: rule.level,
+          desc: rule.desc,
+          type: rule.type,
+          value: rule.value,
+        };
+      });
     resultRuleName.shift();
     expect(updateTemplateSpy).toBeCalledWith({
       rule_template_name: 'testRuleTemplateId',
       desc: 'rule template desc',
-      instance_name_list: ['instance1'],
+      instance_name_list: ['oracle-test'],
       rule_list: resultRuleName,
     });
     // await waitFor(() => {

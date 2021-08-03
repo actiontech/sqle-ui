@@ -5,14 +5,21 @@ import { PageFormLayout } from '../../../../data/common';
 import useInstance from '../../../../hooks/useInstance';
 import { nameRule } from '../../../../utils/FormRule';
 import { RuleTemplateBaseInfoFormProps } from './index.type';
+import useDatabaseType from '../../../../hooks/useDatabaseType';
+import { instanceListDefaultKey } from '../../../../data/common';
 
 const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
   const { t } = useTranslation();
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
+  const { updateDriverNameList, generateDriverSelectOptions } =
+    useDatabaseType();
+  const [databaseType, setDatabaseType] = React.useState<string>(
+    props.form.getFieldValue('db_type') ?? instanceListDefaultKey
+  );
 
   const reset = React.useCallback(() => {
     if (props.isUpdate) {
-      props.form.resetFields(['templateDesc', 'instances']);
+      props.form.resetFields(['templateDesc', 'instances', 'db_type']);
       return;
     }
     props.form.resetFields();
@@ -20,8 +27,22 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
 
   React.useEffect(() => {
     updateInstanceList();
+    updateDriverNameList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const databaseTypeChange = React.useCallback(
+    (value) => {
+      setDatabaseType(value ?? instanceListDefaultKey);
+      props.form.setFields([
+        {
+          name: 'instances',
+          value: [],
+        },
+      ]);
+    },
+    [props.form]
+  );
 
   return (
     <Form {...PageFormLayout} form={props.form}>
@@ -55,6 +76,25 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
         />
       </Form.Item>
       <Form.Item
+        label={t('ruleTemplate.ruleTemplateForm.databaseType')}
+        name="db_type"
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      >
+        <Select
+          placeholder={t('common.form.placeholder.select', {
+            name: t('ruleTemplate.ruleTemplateForm.databaseType'),
+          })}
+          allowClear
+          onChange={databaseTypeChange}
+        >
+          {generateDriverSelectOptions()}
+        </Select>
+      </Form.Item>
+      <Form.Item
         label={t('ruleTemplate.ruleTemplateForm.instances')}
         name="instances"
       >
@@ -66,7 +106,7 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
             name: t('ruleTemplate.ruleTemplateForm.instances'),
           })}
         >
-          {generateInstanceSelectOption()}
+          {generateInstanceSelectOption(databaseType)}
         </Select>
       </Form.Item>
       <Form.Item label=" " colon={false}>

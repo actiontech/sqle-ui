@@ -2351,7 +2351,7 @@ exports[`Order/List should render order list by response data 1`] = `
         >
           <div
             class="ant-space-item"
-            style="margin-bottom: 8px;"
+            style="margin-bottom: 24px;"
           >
             <form
               class="ant-form ant-form-horizontal table-filter-form"
@@ -3149,7 +3149,7 @@ exports[`Order/List should render order list by response data 1`] = `
           </div>
           <div
             class="ant-space-item"
-            style="margin-bottom: 8px;"
+            style="margin-bottom: 24px;"
           >
             <span
               class="ant-popover-disabled-compatible-wrapper"
@@ -3473,7 +3473,7 @@ exports[`Order/List should render order list by response data 2`] = `
         >
           <div
             class="ant-space-item"
-            style="margin-bottom: 8px;"
+            style="margin-bottom: 24px;"
           >
             <form
               class="ant-form ant-form-horizontal table-filter-form"
@@ -4271,7 +4271,7 @@ exports[`Order/List should render order list by response data 2`] = `
           </div>
           <div
             class="ant-space-item"
-            style="margin-bottom: 8px;"
+            style="margin-bottom: 24px;"
           >
             <span
               class="ant-popover-disabled-compatible-wrapper"

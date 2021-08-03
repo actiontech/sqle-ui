@@ -17,21 +17,21 @@ import {
   DataSourceListFilterFields,
   DataSourceListFilterFormProps,
 } from './index.type';
+import useDatabaseType from '../../../../hooks/useDatabaseType';
 
 const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
   props
 ) => {
+  const { updateDriverNameList, generateDriverSelectOptions } =
+    useDatabaseType();
   const { t } = useTranslation();
   const [collapse, { toggle: toggleCollapse }] = useBoolean(true);
 
   const [form] = useForm<DataSourceListFilterFields>();
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
-  const {
-    updateRuleTemplateList,
-    generateRuleTemplateSelectOption,
-  } = useRuleTemplate();
+  const { updateRuleTemplateList, generateRuleTemplateSelectOption } =
+    useRuleTemplate();
   const { updateRoleList, generateRoleSelectOption } = useRole();
-
   const submit = React.useCallback(() => {
     props.submit(form.getFieldsValue());
   }, [form, props]);
@@ -44,6 +44,7 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
         // filter_workflow_template_name: undefined,
         filter_rule_template_name: undefined,
         filter_role_name: undefined,
+        filter_db_type: undefined,
       });
       submit();
     }
@@ -58,6 +59,7 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
     updateInstanceList();
     updateRuleTemplateList();
     updateRoleList();
+    updateDriverNameList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -130,6 +132,21 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
         </Col> */}
         <Col {...FilterFormColLayout} hidden={collapse}>
           <Form.Item
+            label={t('dataSource.dataSourceForm.type')}
+            name="filter_db_type"
+          >
+            <Select
+              placeholder={t('common.form.placeholder.select', {
+                name: t('dataSource.dataSourceForm.type'),
+              })}
+              allowClear
+            >
+              {generateDriverSelectOptions()}
+            </Select>
+          </Form.Item>
+        </Col>
+        <Col {...FilterFormColLayout} hidden={collapse}>
+          <Form.Item
             name="filter_rule_template_name"
             label={t('dataSource.dataSourceForm.ruleTemplate')}
           >
@@ -164,7 +181,7 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
           {...filterFormButtonLayoutFactory(
             0,
             collapse ? 16 : 8,
-            collapse ? 0 : 6
+            collapse ? 0 : 18
           )}
           className="text-align-right"
         >

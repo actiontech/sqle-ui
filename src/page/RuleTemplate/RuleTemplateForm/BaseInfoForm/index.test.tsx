@@ -1,14 +1,14 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { useForm } from 'antd/lib/form/Form';
-import { act } from 'react-dom/test-utils';
 import BaseInfoForm from '.';
-import { mockUseInstance } from '../../../../testUtils/mockRequest';
+import { mockUseInstance, mockDriver } from '../../../../testUtils/mockRequest';
 
 describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockUseInstance();
+    mockDriver();
   });
 
   afterEach(() => {
@@ -32,13 +32,24 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
       { target: { value: 'template describe' } }
     );
     fireEvent.mouseDown(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
+      screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
     );
-    const option = screen.getAllByText('instance1')[0];
-    fireEvent.click(option);
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
+    const databaseTypeOption = screen.getAllByText('mysql')[1];
+    expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
+    fireEvent.click(databaseTypeOption);
+
+    fireEvent.mouseDown(
+      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const option = screen.getAllByText('instance1')[0];
+    fireEvent.click(option);
+
     fireEvent.click(screen.getByText('common.reset'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
@@ -66,9 +77,7 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    act(() => {
-      result.current[0].setFieldsValue({ templateName: 'name1' });
-    });
+    result.current[0].setFieldsValue({ templateName: 'name1' });
 
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName')
@@ -80,9 +89,22 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateDesc'),
       { target: { value: 'template describe' } }
     );
+
+    fireEvent.mouseDown(
+      screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const databaseTypeOption = screen.getAllByText('mysql')[1];
+    expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
+    fireEvent.click(databaseTypeOption);
     fireEvent.mouseDown(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
     );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
     const option = screen.getAllByText('instance1')[0];
     fireEvent.click(option);
     await waitFor(() => {
@@ -100,6 +122,9 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
     ).toHaveValue('');
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
+    ).toHaveValue('');
+    expect(
+      screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
     ).toHaveValue('');
   });
 });

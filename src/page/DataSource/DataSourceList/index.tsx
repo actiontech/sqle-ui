@@ -13,10 +13,8 @@ import { DataSourceListFilterFields } from './DataSourceListFilterForm/index.typ
 const DataSourceList = () => {
   const { t } = useTranslation();
 
-  const [
-    filterInfo,
-    setFilterInfo,
-  ] = React.useState<DataSourceListFilterFields>({});
+  const [filterInfo, setFilterInfo] =
+    React.useState<DataSourceListFilterFields>({});
 
   const {
     data,

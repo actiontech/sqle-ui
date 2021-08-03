@@ -8,6 +8,7 @@ import {
   mockUseRole,
   mockUseRuleTemplate,
   resolveThreeSecond,
+  mockDriver,
 } from '../../../testUtils/mockRequest';
 import { dataSourceList } from '../__testData__';
 
@@ -18,6 +19,7 @@ describe('DataSource/DataSourceList', () => {
     mockUseRuleTemplate();
     mockUseRole();
     mockUseInstance();
+    mockDriver();
   });
 
   afterEach(() => {

@@ -38,13 +38,14 @@ const UpdateDataSource = () => {
     const values = await form.validateFields();
     setLoadingTrue();
     const params: IUpdateInstanceV1Params = {
+      db_type: values.type,
       db_host: values.ip,
       db_port: `${values.port}`,
       db_user: values.user,
       desc: values.describe,
       instance_name: values.name,
       role_name_list: values.role,
-      rule_template_name_list: values.ruleTemplate,
+      rule_template_name_list: [values.ruleTemplate ?? ''],
       workflow_template_name: values.workflow,
     };
     if (!!values.password) {
@@ -77,11 +78,14 @@ const UpdateDataSource = () => {
           form.setFieldsValue({
             name: instance?.instance_name,
             describe: instance?.desc,
+            type: instance?.db_type,
             ip: instance?.db_host,
             port: Number.parseInt(instance?.db_port ?? ''),
             user: instance?.db_user,
             role: instance?.role_name_list,
-            ruleTemplate: instance?.rule_template_name_list,
+            ruleTemplate: Array.isArray(instance?.rule_template_name_list)
+              ? instance?.rule_template_name_list[0]
+              : '',
             workflow: instance?.workflow_template_name,
           });
           setInitError('');

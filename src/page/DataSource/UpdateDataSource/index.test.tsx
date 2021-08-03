@@ -13,6 +13,7 @@ import {
 } from '../../../testUtils/mockRequest';
 import { useParams } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
+import { mockDriver } from '../../../testUtils/mockRequest';
 
 jest.mock('react-router', () => {
   return {
@@ -31,6 +32,7 @@ describe('UpdateDataSource', () => {
     mockUseRole();
     mockGetInstance();
     mockUseWorkflowTemplate();
+    mockDriver();
   });
 
   afterEach(() => {
@@ -53,8 +55,9 @@ describe('UpdateDataSource', () => {
         db_host: '20.20.20.2',
         db_port: '3306',
         db_user: 'root',
+        db_type: 'mysql',
         desc: '',
-        workflow_template_name: 'default',
+        workflow_template_name: 'workflow-template-name-1',
       })
     );
     return spy;
@@ -94,6 +97,16 @@ describe('UpdateDataSource', () => {
         target: { value: 'desc1' },
       }
     );
+
+    fireEvent.mouseDown(
+      screen.getByLabelText('dataSource.dataSourceForm.type')
+    );
+    const mysqlDatabaseTypeOption = screen.getAllByText('mysql')[2];
+    expect(mysqlDatabaseTypeOption).toHaveClass(
+      'ant-select-item-option-content'
+    );
+    fireEvent.click(mysqlDatabaseTypeOption);
+
     fireEvent.input(screen.getByLabelText('dataSource.dataSourceForm.ip'), {
       target: { value: '1.1.1.1' },
     });
@@ -128,6 +141,14 @@ describe('UpdateDataSource', () => {
     expect(instanceOption).toHaveClass('ant-select-item-option-content');
     fireEvent.click(instanceOption);
 
+    fireEvent.mouseDown(
+      screen.getByLabelText('dataSource.dataSourceForm.workflow')
+    );
+    expect(screen.getAllByText('workflow-template-name-1')[2]).toHaveClass(
+      'ant-select-item-option-content'
+    );
+    fireEvent.click(screen.getAllByText('workflow-template-name-1')[2]);
+
     await waitFor(() => {
       fireEvent.click(screen.getByText('common.submit'));
     });
@@ -138,11 +159,12 @@ describe('UpdateDataSource', () => {
       db_password: '123456',
       db_port: '4444',
       db_user: 'root',
+      db_type: 'mysql',
       desc: 'desc1',
       instance_name: 'instance_name1',
       role_name_list: ['role_name1'],
       rule_template_name_list: ['rule_template_name1'],
-      workflow_template_name: 'default',
+      workflow_template_name: 'workflow-template-name-1',
     });
 
     await waitFor(() => {

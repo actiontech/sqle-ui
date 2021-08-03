@@ -4,6 +4,8 @@ import workflow from '../../../api/workflow';
 import {
   renderWithRouter,
   renderWithServerRouter,
+  renderWithThemeAndRouter,
+  renderWithThemeAndServerRouter,
 } from '../../../testUtils/customRender';
 import {
   mockUseInstance,
@@ -14,12 +16,14 @@ import { createMemoryHistory } from 'history';
 import { CustomProvider } from '../../../testUtils/mockRedux';
 import { SystemRole } from '../../../data/common';
 import { getAllBySelector } from '../../../testUtils/customQuery';
+import { mockUseSelector } from '../../../testUtils/mockRedux';
 
 describe('Order/List', () => {
   beforeEach(() => {
     mockUseInstance();
     mockUseUsername();
     jest.useFakeTimers();
+    mockUseSelector({ user: { role: SystemRole.admin } });
   });
 
   afterEach(() => {
@@ -60,15 +64,7 @@ describe('Order/List', () => {
 
   test('should render order list by response data', async () => {
     const request = mockRequest();
-    const { container } = renderWithRouter(
-      <CustomProvider
-        initStore={{
-          user: { role: SystemRole.admin },
-        }}
-      >
-        <OrderList />
-      </CustomProvider>
-    );
+    const { container } = renderWithThemeAndRouter(<OrderList />);
     expect(container).toMatchSnapshot();
     expect(request).toBeCalledTimes(1);
     expect(request).toBeCalledWith({
@@ -87,19 +83,9 @@ describe('Order/List', () => {
     history.push(
       '/order?currentStepAssignee=admin&currentStepType=sql_execute&status=on_process'
     );
-    renderWithServerRouter(
-      <CustomProvider
-        initStore={{
-          user: { role: SystemRole.admin },
-        }}
-      >
-        <OrderList />
-      </CustomProvider>,
-      undefined,
-      {
-        history,
-      }
-    );
+    renderWithThemeAndServerRouter(<OrderList />, undefined, {
+      history,
+    });
     expect(request).toBeCalledTimes(1);
     expect(request).toBeCalledWith({
       filter_current_step_assignee_user_name: 'admin',

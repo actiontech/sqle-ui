@@ -5,7 +5,10 @@ import DatabaseFormItem from '.';
 import instance from '../../../../api/instance';
 import EmitterKey from '../../../../data/EmitterKey';
 import { mountWithTheme } from '../../../../testUtils/customRender';
-import { resolveThreeSecond } from '../../../../testUtils/mockRequest';
+import {
+  resolveThreeSecond,
+  mockDriver,
+} from '../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../utils/EventEmitter';
 
 describe('DatabaseFormItem', () => {
@@ -22,6 +25,7 @@ describe('DatabaseFormItem', () => {
 
   beforeEach(() => {
     jest.useFakeTimers();
+    mockDriver();
   });
 
   afterEach(() => {
@@ -84,6 +88,7 @@ describe('DatabaseFormItem', () => {
         password: '123456',
         user: 'root',
         port: '4444',
+        type: 'mysql',
       })
     );
     const wrapper = mountWithTheme(
@@ -122,6 +127,7 @@ describe('DatabaseFormItem', () => {
         password: '123456',
         user: 'root',
         port: '4444',
+        type: 'mysql',
       })
     );
 
