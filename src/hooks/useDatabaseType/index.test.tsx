@@ -21,6 +21,8 @@ describe('hooks/useDatabaseType', () => {
   });
   afterEach(() => {
     jest.useRealTimers();
+    jest.clearAllMocks();
+    jest.clearAllTimers();
   });
 
   const mockRequest = () => {

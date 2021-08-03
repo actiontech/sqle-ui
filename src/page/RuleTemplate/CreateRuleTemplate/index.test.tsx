@@ -1,24 +1,24 @@
 import CreateRuleTemplate from '.';
 import rule_template from '../../../api/rule_template';
-import instance from '../../../api/instance';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import {
   renderWithThemeAndRouter,
   renderWithThemeAndServerRouter,
 } from '../../../testUtils/customRender';
 import {
-  mockUseInstance,
   resolveThreeSecond,
+  mockDriver,
+  mockInstanceTip,
 } from '../../../testUtils/mockRequest';
 import { createMemoryHistory } from 'history';
 import { allRulesWithType } from '../../Rule/__testData__';
-import { mockDriver, mockInstanceTip } from '../../../testUtils/mockRequest';
 
 describe('RuleTemplate/CreateRuleTemplate', () => {
   beforeEach(() => {
     jest.useFakeTimers();
-    mockUseInstance();
     mockGetAllRules();
+    mockDriver();
+    mockInstanceTip();
   });
 
   afterEach(() => {
@@ -67,15 +67,11 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
 
   test('should jump to next step when user input all require fields', async () => {
     const createTemplateSpy = mockCreateTemplate();
-    const mockDriverSpy = mockDriver();
-    const mockInstanceTipSpy = mockInstanceTip();
     renderWithThemeAndRouter(<CreateRuleTemplate />);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
     expect(screen.getByTestId('base-form')).not.toHaveAttribute('hidden');
-    expect(mockDriverSpy).toBeCalledTimes(1);
-    expect(mockInstanceTipSpy).toBeCalledTimes(1);
     fireEvent.input(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName'),
       {

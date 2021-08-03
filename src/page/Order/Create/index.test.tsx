@@ -10,6 +10,7 @@ import {
   mockUseInstance,
   mockUseInstanceSchema,
   resolveThreeSecond,
+  mockDriver,
 } from '../../../testUtils/mockRequest';
 import { SupportTheme } from '../../../theme';
 import EventEmitter from '../../../utils/EventEmitter';
@@ -22,6 +23,7 @@ describe('Order/Create', () => {
     mockUseDispatch();
     mockUseInstance();
     mockUseInstanceSchema();
+    mockDriver();
   });
 
   afterEach(() => {

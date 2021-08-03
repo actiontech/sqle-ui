@@ -45,7 +45,7 @@ const UpdateDataSource = () => {
       desc: values.describe,
       instance_name: values.name,
       role_name_list: values.role,
-      rule_template_name_list: [values.ruleTemplate as any],
+      rule_template_name_list: [values.ruleTemplate ?? ''],
       workflow_template_name: values.workflow,
     };
     if (!!values.password) {
@@ -83,7 +83,9 @@ const UpdateDataSource = () => {
             port: Number.parseInt(instance?.db_port ?? ''),
             user: instance?.db_user,
             role: instance?.role_name_list,
-            ruleTemplate: instance?.rule_template_name_list,
+            ruleTemplate: Array.isArray(instance?.rule_template_name_list)
+              ? instance?.rule_template_name_list[0]
+              : '',
             workflow: instance?.workflow_template_name,
           });
           setInitError('');

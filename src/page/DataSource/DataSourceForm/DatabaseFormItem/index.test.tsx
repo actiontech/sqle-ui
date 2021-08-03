@@ -88,6 +88,7 @@ describe('DatabaseFormItem', () => {
         password: '123456',
         user: 'root',
         port: '4444',
+        type: 'mysql',
       })
     );
     const wrapper = mountWithTheme(
@@ -126,6 +127,7 @@ describe('DatabaseFormItem', () => {
         password: '123456',
         user: 'root',
         port: '4444',
+        type: 'mysql',
       })
     );
 

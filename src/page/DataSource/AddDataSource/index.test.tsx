@@ -93,7 +93,9 @@ describe('AddDataSource', () => {
     fireEvent.mouseDown(
       screen.getByLabelText('dataSource.dataSourceForm.role')
     );
-
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
     await screen.findAllByText('role_name1');
     const allRoleOptions = screen.getAllByText('role_name1');
     const roleOption = allRoleOptions[1];
@@ -103,6 +105,9 @@ describe('AddDataSource', () => {
     fireEvent.mouseDown(
       screen.getByLabelText('dataSource.dataSourceForm.ruleTemplate')
     );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
     await screen.findAllByText('rule_template_name1');
     const allInstanceOptions = screen.getAllByText('rule_template_name1');
     const instanceOption = allInstanceOptions[1];
@@ -112,6 +117,9 @@ describe('AddDataSource', () => {
     fireEvent.mouseDown(
       screen.getByLabelText('dataSource.dataSourceForm.workflow')
     );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
     await screen.findAllByText('workflow-template-name-1');
     const allWorkflowOptions = screen.getAllByText('workflow-template-name-1');
     const workflowOption = allWorkflowOptions[1];

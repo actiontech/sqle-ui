@@ -8,7 +8,7 @@ export type DataSourceFormField = {
   user: string;
   password: string;
   role?: string[];
-  ruleTemplate?: string[];
+  ruleTemplate?: string;
   workflow?: string;
   type?: string;
 };
