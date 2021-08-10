@@ -9,29 +9,25 @@ import { ResponseCode } from '../../../data/common';
 import { dataSourceColumns } from './columns';
 import DataSourceListFilterForm from './DataSourceListFilterForm';
 import { DataSourceListFilterFields } from './DataSourceListFilterForm/index.type';
+import useTable from '../../../hooks/useTable';
 
 const DataSourceList = () => {
   const { t } = useTranslation();
 
-  const [filterInfo, setFilterInfo] =
-    React.useState<DataSourceListFilterFields>({});
+  const { pagination, filterInfo, setFilterInfo, tableChange } =
+    useTable<DataSourceListFilterFields>();
 
-  const {
-    data,
-    loading,
-    pagination: { total },
-    refresh,
-  } = useRequest(
-    ({ current, pageSize }) => {
+  const { data, loading, refresh } = useRequest(
+    () => {
       return instance.getInstanceListV1({
-        page_index: current,
-        page_size: pageSize,
+        page_index: pagination.pageIndex,
+        page_size: pagination.pageSize,
         ...filterInfo,
       });
     },
     {
       paginated: true,
-      refreshDeps: [filterInfo],
+      refreshDeps: [filterInfo, pagination],
       formatResult(res) {
         return {
           total: res.data?.total_nums ?? 1,
@@ -118,8 +114,9 @@ const DataSourceList = () => {
         dataSource={data?.list ?? []}
         columns={dataSourceColumns(deleteDatabase, testDatabaseConnection)}
         pagination={{
-          total,
+          total: data?.total,
         }}
+        onChange={tableChange}
       />
     </Card>
   );

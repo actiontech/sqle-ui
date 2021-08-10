@@ -45,7 +45,7 @@ const UpdateDataSource = () => {
       desc: values.describe,
       instance_name: values.name,
       role_name_list: values.role,
-      rule_template_name_list: [values.ruleTemplate ?? ''],
+      rule_template_name_list: values.ruleTemplate ? [values.ruleTemplate] : [],
       workflow_template_name: values.workflow,
     };
     if (!!values.password) {
