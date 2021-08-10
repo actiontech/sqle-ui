@@ -10,10 +10,11 @@ import { PageFormLayout, ResponseCode } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import EventEmitter from '../../../utils/EventEmitter';
 import DataSourceForm from '../DataSourceForm';
+import { DataSourceFormField } from '../DataSourceForm/index.type';
 
 const AddDataSource = () => {
   const { t } = useTranslation();
-  const [form] = useForm();
+  const [form] = useForm<DataSourceFormField>();
 
   const [loading, { setTrue: setLoadingTrue, setFalse: setLoadingFalse }] =
     useBoolean();
@@ -33,9 +34,9 @@ const AddDataSource = () => {
         desc: values.describe,
         instance_name: values.name,
         role_name_list: values.role,
-        rule_template_name_list: Array.isArray(values.ruleTemplate)
-          ? values.ruleTemplate
-          : [values.ruleTemplate],
+        rule_template_name_list: values.ruleTemplate
+          ? [values.ruleTemplate]
+          : [],
         workflow_template_name: values.workflow,
       })
       .then((res) => {

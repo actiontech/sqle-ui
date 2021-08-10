@@ -28,7 +28,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
       props.form.setFields([
         {
           name: 'ruleTemplate',
-          value: [],
+          value: null,
         },
       ]);
     },

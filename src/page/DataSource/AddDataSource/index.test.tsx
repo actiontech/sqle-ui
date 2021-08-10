@@ -101,7 +101,9 @@ describe('AddDataSource', () => {
     const roleOption = allRoleOptions[1];
     expect(roleOption).toHaveClass('ant-select-item-option-content');
     fireEvent.click(roleOption);
-
+    expect(
+      screen.getByLabelText('dataSource.dataSourceForm.ruleTemplate')
+    ).toHaveValue('');
     fireEvent.mouseDown(
       screen.getByLabelText('dataSource.dataSourceForm.ruleTemplate')
     );
@@ -189,5 +191,8 @@ describe('AddDataSource', () => {
     expect(screen.getByLabelText('dataSource.dataSourceForm.port')).toHaveValue(
       '3306'
     );
+    expect(
+      screen.getByLabelText('dataSource.dataSourceForm.ruleTemplate')
+    ).toHaveValue('');
   });
 });
