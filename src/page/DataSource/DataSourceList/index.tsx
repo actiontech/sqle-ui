@@ -19,7 +19,7 @@ const DataSourceList = () => {
   const {
     data,
     loading,
-    pagination: { total },
+    pagination: { total, changeCurrent },
     refresh,
   } = useRequest(
     ({ current, pageSize }) => {
@@ -94,6 +94,9 @@ const DataSourceList = () => {
     },
     [t]
   );
+  const pageChange = (page: number) => {
+    changeCurrent(page);
+  };
 
   return (
     <Card
@@ -119,6 +122,7 @@ const DataSourceList = () => {
         columns={dataSourceColumns(deleteDatabase, testDatabaseConnection)}
         pagination={{
           total,
+          onChange: pageChange,
         }}
       />
     </Card>
