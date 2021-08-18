@@ -1,6 +1,7 @@
 import { useBoolean, useRequest } from 'ahooks';
 import { Button, Card, Result, Row, Typography } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
+import { cloneDeep } from 'lodash';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -23,17 +24,15 @@ const CreateRuleTemplate = () => {
       formatResult(res) {
         return res.data.data ?? [];
       },
-      onSuccess(res) {
-        setActiveRule(res);
-      },
     }
   );
 
   const baseInfoFormSubmit = React.useCallback(async () => {
     const values = await form.validateFields();
-    setDatabaseRule(
-      allRules?.filter((e) => e.db_type === values.db_type) ?? []
-    );
+    const tempAllRules =
+      allRules?.filter((e) => e.db_type === values.db_type) ?? [];
+    setDatabaseRule(tempAllRules);
+    setActiveRule(cloneDeep(tempAllRules));
     setStep(step + 1);
   }, [form, step, allRules]);
 
