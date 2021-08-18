@@ -975,11 +975,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -1057,11 +1057,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 存在多条对同一个表的修改语句，建议合并成一个ALTER语句
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -1139,11 +1139,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 建议使用规定的数据库排序规则
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -1228,11 +1228,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 BLOB 和 TEXT 类型的字段不可指定非 NULL 的默认值
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -1310,11 +1310,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 不建议使用 BLOB 或 TEXT 类型
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -1392,11 +1392,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 BLOB 和 TEXT 类型的字段不建议设置为 NOT NULL
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -1474,11 +1474,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 char长度大于20时，必须使用varchar类型
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -1556,11 +1556,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 不建议使用 ENUM 类型
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -1638,11 +1638,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 不建议使用 SET 类型
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -1720,11 +1720,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 timestamp 类型的列必须添加默认值
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -1802,11 +1802,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 禁止使用 varchar(max)
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -1884,11 +1884,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 列建议添加注释
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -1966,11 +1966,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 除了自增列及大字段列之外，每个列都必须添加默认值
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -2048,11 +2048,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 复合索引的列数量不建议超过阈值
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -2137,11 +2137,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 禁止使用自定义函数
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -2219,11 +2219,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 禁止使用存储过程
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -2301,11 +2301,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 禁止使用触发器
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -2383,11 +2383,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 禁止使用视图
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -2465,11 +2465,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 数据库名称建议以"_DB"结尾
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -2547,11 +2547,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 精确浮点数建议使用DECIMAL
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -2629,11 +2629,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 禁止将blob类型的列加入索引
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -2711,11 +2711,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 索引个数建议不超过阈值
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -2800,11 +2800,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 建议选择可选性超过阈值字段作为索引
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -2889,11 +2889,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 普通索引必须要以"idx_"为前缀
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -2971,11 +2971,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 建议创建约束前,先行创建索引
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -3053,11 +3053,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 使用LIMIT分页时,避免使用LIMIT M,N
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -3135,11 +3135,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 表名、列名、索引名的长度不能大于64字节
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -3217,11 +3217,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 数据库对象命名不能使用英文、下划线、数字之外的字符
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -3299,11 +3299,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 数据库对象命名禁止使用关键字
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -3381,11 +3381,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 建议主键命名为"PK_表名"
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -3463,11 +3463,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 表必须有主键
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -3545,11 +3545,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 主键禁止使用自增
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -3627,11 +3627,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 主键建议使用自增
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -3709,11 +3709,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 主键建议使用 bigint 无符号类型，即 bigint unsigned
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -3791,11 +3791,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 不建议使用分区表相关功能
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -3873,11 +3873,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 表建议添加注释
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -3955,11 +3955,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 新建表必须加入if not exists create，保证重复执行不报错
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -4037,11 +4037,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 建议使用Innodb引擎,utf8mb4字符集
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -4119,11 +4119,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 事物隔离级别建议设置成RC
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -4201,11 +4201,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 unique索引名必须使用 IDX_UK_表名_字段名
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -4283,11 +4283,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 unique索引必须要以"uniq_"为前缀
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -4365,11 +4365,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 禁止除索引外的drop操作
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -4447,11 +4447,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 禁止使用外键
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -4526,11 +4526,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 改表时，表空间超过指定大小(MB)审核时输出osc改写建议
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -4615,11 +4615,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 单条insert语句，建议批量插入不超过阈值
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -4701,11 +4701,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 查询的扫描不建议超过指定行数（默认值：10000）
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -4787,11 +4787,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 该查询使用了文件排序
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -4866,11 +4866,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 该查询使用了临时表
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -4948,11 +4948,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 禁止使用全模糊搜索或左模糊搜索
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -5030,11 +5030,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 insert 语句必须指定column
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -5112,11 +5112,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 建议使用UNION ALL,替代UNION
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -5194,11 +5194,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 delete/update 语句必须有limit条件
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -5276,11 +5276,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 避免使用不必要的内置函数
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -5365,11 +5365,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 使用JOIN连接表查询建议不超过阈值
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -5454,11 +5454,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 建议避免使用select for update
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -5536,11 +5536,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 避免对条件字段使用函数操作
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -5618,11 +5618,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 条件字段存在数值和字符的隐式转换
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -5700,11 +5700,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 不建议对条件字段使用负向查询
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -5782,11 +5782,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 不建议对条件字段使用 NULL 值判断
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -5864,11 +5864,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 避免使用标量子查询
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -5946,11 +5946,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 delete/update 语句不能有limit条件
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -6028,11 +6028,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 delete/update 语句不能有order by
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -6110,11 +6110,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 不建议使用select *
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div
@@ -6192,11 +6192,11 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                             <div
                               class="ant-list-item-meta-content"
                             >
-                              <div
-                                class="ant-list-item-meta-description"
+                              <h4
+                                class="ant-list-item-meta-title"
                               >
                                 在 DML 语句中预计影响行数超过指定值则不回滚
-                              </div>
+                              </h4>
                             </div>
                           </div>
                           <div

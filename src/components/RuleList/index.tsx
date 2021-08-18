@@ -77,7 +77,7 @@ const RuleList: React.FC<RuleListProps> = (props) => {
                 <List.Item actions={props.actions?.(item)}>
                   <List.Item.Meta
                     avatar={<RuleLevelIcon ruleLevel={item.level} />}
-                    description={item.desc}
+                    title={item.desc}
                   />
                   <Col flex="20%">
                     {item.value && (
