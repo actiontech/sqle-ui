@@ -17,15 +17,20 @@ import ruleTemplate from '../../api/rule_template';
 import EmptyBox from '../../components/EmptyBox';
 import RuleList from '../../components/RuleList';
 import useSyncRuleListTab from '../../components/RuleList/useSyncRuleListTab';
+import { ResponseCode } from '../../data/common';
+import useDatabaseType from '../../hooks/useDatabaseType';
 import useInstance from '../../hooks/useInstance';
 import { Theme } from '../../types/theme.type';
 
 const Rule = () => {
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
+  const { updateDriverNameList, driverNameList, generateDriverSelectOptions } =
+    useDatabaseType();
   const { t } = useTranslation();
   const [instanceName, setInstanceName] = useState<string | undefined>(
     undefined
   );
+  const [dbType, setDbType] = useState<string | undefined>(undefined);
 
   const theme = useTheme<Theme>();
   const { data: instanceRules, run: getInstanceRules } = useRequest(
@@ -41,9 +46,14 @@ const Rule = () => {
     }
   );
 
-  const { data: allRules } = useRequest(
-    ruleTemplate.getRuleListV1.bind(ruleTemplate),
+  const { data: allRules, loading: getRulesLoading } = useRequest(
+    () =>
+      ruleTemplate.getRuleListV1({
+        filter_db_type: dbType,
+      }),
     {
+      ready: !!dbType,
+      refreshDeps: [dbType],
       formatResult(res) {
         return res.data?.data ?? [];
       },
@@ -62,14 +72,29 @@ const Rule = () => {
 
   React.useEffect(() => {
     if (instanceName !== undefined) {
-      getInstanceRules();
+      instance
+        .getInstanceV1({ instance_name: instanceName ?? '' })
+        .then((res) => {
+          if (res.data.code === ResponseCode.SUCCESS) {
+            setDbType(res.data.data?.db_type);
+            getInstanceRules();
+          }
+        });
     }
   }, [getInstanceRules, instanceName]);
 
   React.useEffect(() => {
     updateInstanceList();
+    updateDriverNameList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  React.useEffect(() => {
+    if (driverNameList.length > 0 && !dbType) {
+      setDbType(driverNameList[0]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [driverNameList]);
 
   const { tabKey, allTypes, tabChange } = useSyncRuleListTab(allRules);
 
@@ -86,24 +111,44 @@ const Rule = () => {
         >
           <Card>
             <Row align="middle">
-              <Col span={3}>{t('rule.form.instance')}</Col>
-              <Col span={5}>
-                <Select
-                  data-testid="instance-name"
-                  value={instanceName}
-                  onChange={setInstanceName}
-                  placeholder={t('common.form.placeholder.select')}
-                  className="full-width-element"
-                  allowClear
-                >
-                  {generateInstanceSelectOption()}
-                </Select>
+              <Col span={7}>
+                <Space>
+                  {t('rule.form.instance')}
+                  <Select
+                    data-testid="instance-name"
+                    value={instanceName}
+                    onChange={setInstanceName}
+                    placeholder={t('common.form.placeholder.select')}
+                    className="middle-select"
+                    allowClear
+                  >
+                    {generateInstanceSelectOption()}
+                  </Select>
+                </Space>
+              </Col>
+              <Col span={7}>
+                <Space>
+                  {t('rule.form.dbType')}
+                  <Select
+                    data-testid="database-type"
+                    value={dbType}
+                    onChange={setDbType}
+                    placeholder={t('common.form.placeholder.select')}
+                    className="middle-select"
+                    disabled={!!instanceName}
+                  >
+                    {generateDriverSelectOptions()}
+                  </Select>
+                </Space>
               </Col>
             </Row>
           </Card>
           <EmptyBox if={!instanceName}>
             <Card title={t('rule.allRules')}>
-              <RuleList list={allRules ?? []} />
+              <RuleList
+                list={allRules ?? []}
+                listProps={{ loading: getRulesLoading }}
+              />
             </Card>
           </EmptyBox>
           <EmptyBox if={!!instanceName}>
@@ -116,6 +161,7 @@ const Rule = () => {
                 allRuleTabs={allTypes}
                 currentTab={tabKey}
                 tabChange={tabChange}
+                listProps={{ loading: getRulesLoading }}
               />
               <Divider dashed />
               <Descriptions
@@ -126,6 +172,7 @@ const Rule = () => {
                 allRuleTabs={allTypes}
                 currentTab={tabKey}
                 tabChange={tabChange}
+                listProps={{ loading: getRulesLoading }}
               />
             </Card>
           </EmptyBox>
