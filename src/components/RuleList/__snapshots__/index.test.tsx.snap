@@ -193,11 +193,11 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <div
-                          class="ant-list-item-meta-description"
+                        <h4
+                          class="ant-list-item-meta-title"
                         >
                           desc1
-                        </div>
+                        </h4>
                       </div>
                     </div>
                     <div
@@ -258,11 +258,11 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <div
-                          class="ant-list-item-meta-description"
+                        <h4
+                          class="ant-list-item-meta-title"
                         >
                           desc2
-                        </div>
+                        </h4>
                       </div>
                     </div>
                     <div
@@ -333,11 +333,11 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <div
-                          class="ant-list-item-meta-description"
+                        <h4
+                          class="ant-list-item-meta-title"
                         >
                           desc3
-                        </div>
+                        </h4>
                       </div>
                     </div>
                     <div
@@ -398,11 +398,11 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <div
-                          class="ant-list-item-meta-description"
+                        <h4
+                          class="ant-list-item-meta-title"
                         >
                           desc4
-                        </div>
+                        </h4>
                       </div>
                     </div>
                     <div
@@ -470,11 +470,11 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <div
-                          class="ant-list-item-meta-description"
+                        <h4
+                          class="ant-list-item-meta-title"
                         >
                           desc4
-                        </div>
+                        </h4>
                       </div>
                     </div>
                     <div
@@ -535,11 +535,11 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <div
-                          class="ant-list-item-meta-description"
+                        <h4
+                          class="ant-list-item-meta-title"
                         >
                           desc4
-                        </div>
+                        </h4>
                       </div>
                     </div>
                     <div
@@ -633,11 +633,11 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <div
-                          class="ant-list-item-meta-description"
+                        <h4
+                          class="ant-list-item-meta-title"
                         >
                           desc1
-                        </div>
+                        </h4>
                       </div>
                     </div>
                     <div
@@ -698,11 +698,11 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <div
-                          class="ant-list-item-meta-description"
+                        <h4
+                          class="ant-list-item-meta-title"
                         >
                           desc4
-                        </div>
+                        </h4>
                       </div>
                     </div>
                     <div
@@ -796,11 +796,11 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <div
-                          class="ant-list-item-meta-description"
+                        <h4
+                          class="ant-list-item-meta-title"
                         >
                           desc2
-                        </div>
+                        </h4>
                       </div>
                     </div>
                     <div
@@ -868,11 +868,11 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <div
-                          class="ant-list-item-meta-description"
+                        <h4
+                          class="ant-list-item-meta-title"
                         >
                           desc4
-                        </div>
+                        </h4>
                       </div>
                     </div>
                     <div
@@ -962,11 +962,11 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <div
-                          class="ant-list-item-meta-description"
+                        <h4
+                          class="ant-list-item-meta-title"
                         >
                           desc3
-                        </div>
+                        </h4>
                       </div>
                     </div>
                     <div
@@ -1027,11 +1027,11 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                       <div
                         class="ant-list-item-meta-content"
                       >
-                        <div
-                          class="ant-list-item-meta-description"
+                        <h4
+                          class="ant-list-item-meta-title"
                         >
                           desc4
-                        </div>
+                        </h4>
                       </div>
                     </div>
                     <div
