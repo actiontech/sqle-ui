@@ -50,4 +50,8 @@ export interface ICloneRuleTemplateV1Params extends ICloneRuleTemplateReqV1 {
 
 export interface ICloneRuleTemplateV1Return extends IBaseRes {}
 
+export interface IGetRuleListV1Params {
+  filter_db_type?: string;
+}
+
 export interface IGetRuleListV1Return extends IGetRulesResV1 {}
