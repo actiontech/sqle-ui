@@ -10,9 +10,10 @@ import {
   Typography,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useParams } from 'react-router-dom';
+import { IInstanceResV1 } from '../../../api/common';
 import instance from '../../../api/instance';
 import { IUpdateInstanceV1Params } from '../../../api/instance/index.d';
 import BackButton from '../../../components/BackButton';
@@ -30,6 +31,7 @@ const UpdateDataSource = () => {
 
   const [initError, setInitError] = React.useState('');
   const [retryLoading, { toggle: setRetryLoading }] = useBoolean(false);
+  const [instanceInfo, setInstanceInfo] = useState<IInstanceResV1>();
 
   const [loading, { setTrue: setLoadingTrue, setFalse: setLoadingFalse }] =
     useBoolean();
@@ -75,19 +77,7 @@ const UpdateDataSource = () => {
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           const instance = res.data.data;
-          form.setFieldsValue({
-            name: instance?.instance_name,
-            describe: instance?.desc,
-            type: instance?.db_type,
-            ip: instance?.db_host,
-            port: Number.parseInt(instance?.db_port ?? ''),
-            user: instance?.db_user,
-            role: instance?.role_name_list,
-            ruleTemplate: Array.isArray(instance?.rule_template_name_list)
-              ? instance?.rule_template_name_list[0]
-              : '',
-            workflow: instance?.workflow_template_name,
-          });
+          setInstanceInfo(instance);
           setInitError('');
         } else {
           setInitError(res.data.message ?? t('common.unknownError'));
@@ -96,7 +86,7 @@ const UpdateDataSource = () => {
       .finally(() => {
         setRetryLoading(false);
       });
-  }, [form, setRetryLoading, t, urlParams.instanceName]);
+  }, [setRetryLoading, t, urlParams.instanceName]);
 
   React.useEffect(() => {
     getInstanceInfo();
@@ -130,7 +120,7 @@ const UpdateDataSource = () => {
           </Empty>
         }
       >
-        <DataSourceForm form={form} isUpdate={true} />
+        <DataSourceForm form={form} defaultData={instanceInfo} />
         <Row>
           <Col
             xs={{ offset: 0 }}

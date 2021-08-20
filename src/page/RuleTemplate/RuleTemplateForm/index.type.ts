@@ -1,10 +1,10 @@
 import { FormInstance } from 'antd';
-import { IRuleResV1 } from '../../../api/common';
+import { IRuleResV1, IRuleTemplateDetailResV1 } from '../../../api/common';
 import { RuleTemplateBaseInfoFields } from './BaseInfoForm/index.type';
 
 export type RuleTemplateFormProps = {
   form: FormInstance<RuleTemplateBaseInfoFields>;
-  isUpdate?: boolean;
+  defaultData?: IRuleTemplateDetailResV1;
   activeRule: IRuleResV1[];
   allRules: IRuleResV1[];
   ruleListLoading: boolean;

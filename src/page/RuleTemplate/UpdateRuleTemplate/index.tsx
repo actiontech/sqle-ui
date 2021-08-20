@@ -4,8 +4,8 @@ import { useForm } from 'antd/lib/form/Form';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
-import { IRuleResV1 } from '../../../api/common';
-import ruleTemplate from '../../../api/rule_template';
+import { IRuleResV1, IRuleTemplateDetailResV1 } from '../../../api/common';
+import ruleTemplateService from '../../../api/rule_template';
 import { ResponseCode } from '../../../data/common';
 import RuleTemplateForm from '../RuleTemplateForm';
 import { RuleTemplateBaseInfoFields } from '../RuleTemplateForm/BaseInfoForm/index.type';
@@ -17,9 +17,12 @@ const UpdateRuleTemplate = () => {
   const [updateTemplateLoading, { toggle: updateLoading }] = useBoolean();
   const [activeRule, setActiveRule] = React.useState<IRuleResV1[]>([]);
   const [databaseRule, setDatabaseRule] = React.useState<IRuleResV1[]>([]);
+  const [ruleTemplate, setRuleTemplate] = React.useState<
+    IRuleTemplateDetailResV1 | undefined
+  >();
   const urlParams = useParams<{ templateName: string }>();
   const { data: allRules, loading: getAllRulesLoading } = useRequest(
-    ruleTemplate.getRuleListV1.bind(ruleTemplate),
+    ruleTemplateService.getRuleListV1.bind(ruleTemplate),
     {
       formatResult(res) {
         return res.data.data ?? [];
@@ -52,7 +55,7 @@ const UpdateRuleTemplate = () => {
         db_type: rule.db_type,
       };
     });
-    ruleTemplate
+    ruleTemplateService
       .updateRuleTemplateV1({
         rule_template_name: baseInfo.templateName,
         desc: baseInfo.templateDesc,
@@ -70,23 +73,18 @@ const UpdateRuleTemplate = () => {
   }, [activeRule, form, step, updateLoading]);
 
   React.useEffect(() => {
-    ruleTemplate
+    ruleTemplateService
       .getRuleTemplateV1({
         rule_template_name: urlParams.templateName,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           const template = res.data.data;
-          form.setFieldsValue({
-            templateName: template?.rule_template_name,
-            templateDesc: template?.desc || undefined,
-            instances: template?.instance_name_list,
-            db_type: template?.db_type,
-          });
+          setRuleTemplate(template);
           setActiveRule(template?.rule_list ?? []);
         }
       });
-  }, [form, urlParams.templateName]);
+  }, [urlParams.templateName]);
 
   return (
     <>
@@ -109,7 +107,7 @@ const UpdateRuleTemplate = () => {
           baseInfoSubmit={baseInfoFormSubmit}
           prevStep={prevStep}
           submit={submit}
-          isUpdate={true}
+          defaultData={ruleTemplate}
         >
           <Result
             status="success"

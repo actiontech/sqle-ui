@@ -99,15 +99,9 @@ describe('UpdateRuleTemplate', () => {
         target: { value: 'rule template desc' },
       }
     );
-    fireEvent.mouseDown(
+    expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
-    );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    const databaseTypeOption = screen.getAllByText('oracle')[1];
-    expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(databaseTypeOption);
+    ).toBeDisabled();
 
     fireEvent.mouseDown(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
@@ -116,7 +110,8 @@ describe('UpdateRuleTemplate', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
-    const option = screen.getAllByText('oracle-test')[1];
+    const option = screen.getAllByText('mysql-test')[1];
+    expect(screen.queryByText('oracle-test')).not.toBeInTheDocument();
     expect(option).toHaveClass('ant-select-item-option-content');
     fireEvent.click(option);
 
@@ -160,7 +155,7 @@ describe('UpdateRuleTemplate', () => {
 
     expect(updateTemplateSpy).toBeCalledTimes(1);
     const resultRuleName = allRulesWithType
-      .filter((e) => e.db_type === 'oracle')
+      .filter((e) => e.db_type === 'mysql')
       .map((rule) => {
         return {
           db_type: rule.db_type,
@@ -175,7 +170,7 @@ describe('UpdateRuleTemplate', () => {
     expect(updateTemplateSpy).toBeCalledWith({
       rule_template_name: 'testRuleTemplateId',
       desc: 'rule template desc',
-      instance_name_list: ['oracle-test'],
+      instance_name_list: ['db1', 'mysql-test'],
       rule_list: resultRuleName,
     });
     // await waitFor(() => {

@@ -111,6 +111,7 @@ const DatabaseFormItem: React.FC<{
             name: t('dataSource.dataSourceForm.type'),
           })}
           allowClear
+          disabled={props.isUpdate}
           onChange={props.databaseTypeChange}
         >
           {generateDriverSelectOptions()}

@@ -1,4 +1,5 @@
 import { FormInstance } from 'antd';
+import { IInstanceResV1 } from '../../../api/common';
 
 export type DataSourceFormField = {
   name: string;
@@ -15,5 +16,5 @@ export type DataSourceFormField = {
 
 export type IDataSourceFormProps = {
   form: FormInstance<DataSourceFormField>;
-  isUpdate?: boolean;
+  defaultData?: IInstanceResV1;
 };

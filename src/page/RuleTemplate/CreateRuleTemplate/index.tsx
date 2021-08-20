@@ -5,7 +5,7 @@ import { cloneDeep } from 'lodash';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { IRuleResV1 } from '../../../api/common';
+import { IRuleReqV1, IRuleResV1 } from '../../../api/common';
 import ruleTemplate from '../../../api/rule_template';
 import { ResponseCode } from '../../../data/common';
 import RuleTemplateForm from '../RuleTemplateForm';
@@ -43,7 +43,7 @@ const CreateRuleTemplate = () => {
   const submit = React.useCallback(() => {
     updateCreateLoading(true);
     const baseInfo = form.getFieldsValue();
-    const activeRuleWithNewField = activeRule.map((rule) => {
+    const activeRuleWithNewField: IRuleReqV1[] = activeRule.map((rule) => {
       return {
         name: rule.rule_name,
         level: rule.level,
@@ -58,6 +58,7 @@ const CreateRuleTemplate = () => {
         rule_template_name: baseInfo.templateName,
         desc: baseInfo.templateDesc,
         instance_name_list: baseInfo.instances,
+        db_type: baseInfo.db_type,
         rule_list: activeRuleWithNewField,
       })
       .then((res) => {

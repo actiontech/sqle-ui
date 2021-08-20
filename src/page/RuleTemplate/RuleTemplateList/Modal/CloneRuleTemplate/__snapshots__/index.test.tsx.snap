@@ -60,10 +60,10 @@ exports[`RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal should match
                     >
                       ruleTemplate.cloneRuleTemplate.currentTemplateTips
                       <a
-                        href="/rule/template/update/default"
+                        href="/rule/template/update/default_mysql"
                         target="_blank"
                       >
-                        default
+                        default_mysql
                       </a>
                     </div>
                     <div

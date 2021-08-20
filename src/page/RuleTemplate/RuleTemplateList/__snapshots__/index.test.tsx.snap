@@ -362,7 +362,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                     <h4
                       class="ant-list-item-meta-title"
                     >
-                      default
+                      default_mysql
                     </h4>
                     <div
                       class="ant-list-item-meta-description"
@@ -378,11 +378,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                   <div>
                     ruleTemplate.ruleTemplateList.instance
                   </div>
-                  <span
-                    class="ant-typography ant-typography-disabled"
-                  >
-                    ruleTemplate.ruleTemplateList.instanceEmpty
-                  </span>
+                  db1
                 </div>
                 <div
                   class="ant-col"
@@ -396,7 +392,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                       style="margin-right: 8px;"
                     >
                       <a
-                        href="/rule/template/update/default"
+                        href="/rule/template/update/default_mysql"
                       >
                         common.edit
                       </a>
@@ -472,7 +468,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                     <h4
                       class="ant-list-item-meta-title"
                     >
-                      default2
+                      default_oracle
                     </h4>
                     <div
                       class="ant-list-item-meta-description"
@@ -488,11 +484,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                   <div>
                     ruleTemplate.ruleTemplateList.instance
                   </div>
-                  <span
-                    class="ant-typography ant-typography-disabled"
-                  >
-                    ruleTemplate.ruleTemplateList.instanceEmpty
-                  </span>
+                  db2
                 </div>
                 <div
                   class="ant-col"
@@ -506,7 +498,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                       style="margin-right: 8px;"
                     >
                       <a
-                        href="/rule/template/update/default2"
+                        href="/rule/template/update/default_oracle"
                       >
                         common.edit
                       </a>
