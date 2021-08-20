@@ -113,7 +113,7 @@ describe('RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal', () => {
       desc: 'desc1',
       instance_name_list: ['instance1'],
       new_rule_template_name: 'name1',
-      rule_template_name: 'default',
+      rule_template_name: 'default_mysql',
     });
     expect(screen.getByText('OK').parentNode).toHaveClass('ant-btn-loading');
     expect(screen.getByText('Cancel').parentNode).toHaveAttribute('disabled');

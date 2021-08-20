@@ -98,14 +98,9 @@ describe('UpdateDataSource', () => {
       }
     );
 
-    fireEvent.mouseDown(
+    expect(
       screen.getByLabelText('dataSource.dataSourceForm.type')
-    );
-    const mysqlDatabaseTypeOption = screen.getAllByText('mysql')[2];
-    expect(mysqlDatabaseTypeOption).toHaveClass(
-      'ant-select-item-option-content'
-    );
-    fireEvent.click(mysqlDatabaseTypeOption);
+    ).toBeDisabled();
 
     fireEvent.input(screen.getByLabelText('dataSource.dataSourceForm.ip'), {
       target: { value: '1.1.1.1' },
@@ -136,6 +131,7 @@ describe('UpdateDataSource', () => {
       screen.getByLabelText('dataSource.dataSourceForm.ruleTemplate')
     );
     await screen.findAllByText('rule_template_name1');
+    expect(screen.queryByText('role_template_name2')).not.toBeInTheDocument();
     const allInstanceOptions = screen.getAllByText('rule_template_name1');
     const instanceOption = allInstanceOptions[1];
     expect(instanceOption).toHaveClass('ant-select-item-option-content');

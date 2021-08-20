@@ -155,6 +155,7 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
       });
     resultRuleName.shift();
     expect(createTemplateSpy).toBeCalledWith({
+      db_type: 'oracle',
       rule_template_name: 'testRuleTemplateId',
       desc: 'rule template desc',
       instance_name_list: ['oracle-test'],

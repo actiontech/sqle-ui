@@ -144,6 +144,7 @@ export const mockUseRuleTemplate = () => {
   spy.mockImplementation(() =>
     resolveThreeSecond([
       { rule_template_name: 'rule_template_name1', db_type: 'mysql' },
+      { rule_template_name: 'rule_template_name2', db_type: 'oracle' },
     ])
   );
   return spy;

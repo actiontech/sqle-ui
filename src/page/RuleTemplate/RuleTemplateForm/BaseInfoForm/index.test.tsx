@@ -70,14 +70,17 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
     render(
       <BaseInfoForm
         form={result.current[0]}
-        isUpdate={true}
         submit={jest.fn()}
+        defaultData={{}}
       />
     );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    result.current[0].setFieldsValue({ templateName: 'name1' });
+    result.current[0].setFieldsValue({
+      templateName: 'name1',
+      db_type: 'mysql',
+    });
 
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName')
@@ -85,20 +88,16 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName')
     ).toHaveValue('name1');
+    expect(
+      screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
+    ).toHaveAttribute('disabled');
+    expect(screen.getByText('mysql')).toBeInTheDocument();
+
     fireEvent.input(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateDesc'),
       { target: { value: 'template describe' } }
     );
 
-    fireEvent.mouseDown(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
-    );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    const databaseTypeOption = screen.getAllByText('mysql')[1];
-    expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(databaseTypeOption);
     fireEvent.mouseDown(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
     );
