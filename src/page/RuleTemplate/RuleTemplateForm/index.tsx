@@ -38,9 +38,9 @@ const RuleTemplateForm: React.FC<RuleTemplateFormProps> = (props) => {
         </Row>
         <div hidden={props.step !== 0} data-testid="base-form">
           <BaseInfoForm
-            isUpdate={props.isUpdate}
             form={props.form}
             submit={props.baseInfoSubmit}
+            defaultData={props.defaultData}
           />
         </div>
         <div hidden={props.step !== 1} data-testid="rule-list">

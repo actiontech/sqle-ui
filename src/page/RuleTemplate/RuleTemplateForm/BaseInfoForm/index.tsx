@@ -16,14 +16,18 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
   const [databaseType, setDatabaseType] = React.useState<string>(
     props.form.getFieldValue('db_type') ?? instanceListDefaultKey
   );
+  const isUpdate = React.useMemo(
+    () => !!props.defaultData,
+    [props.defaultData]
+  );
 
   const reset = React.useCallback(() => {
-    if (props.isUpdate) {
-      props.form.resetFields(['templateDesc', 'instances', 'db_type']);
+    if (isUpdate) {
+      props.form.resetFields(['templateDesc', 'instances']);
       return;
     }
     props.form.resetFields();
-  }, [props.form, props.isUpdate]);
+  }, [props.form, isUpdate]);
 
   React.useEffect(() => {
     updateInstanceList();
@@ -44,6 +48,19 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
     [props.form]
   );
 
+  React.useEffect(() => {
+    if (!!props.defaultData) {
+      setDatabaseType(props.defaultData.db_type ?? instanceListDefaultKey);
+      props.form.setFieldsValue({
+        templateName: props.defaultData.rule_template_name,
+        templateDesc: props.defaultData.desc,
+        db_type: props.defaultData.db_type,
+        instances: props.defaultData.instance_name_list ?? [],
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.defaultData]);
+
   return (
     <Form {...PageFormLayout} form={props.form}>
       <Form.Item
@@ -58,7 +75,7 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
         ]}
       >
         <Input
-          disabled={props.isUpdate}
+          disabled={isUpdate}
           placeholder={t('common.form.placeholder.input', {
             name: t('ruleTemplate.ruleTemplateForm.templateName'),
           })}
@@ -90,6 +107,7 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
           })}
           allowClear
           onChange={databaseTypeChange}
+          disabled={isUpdate}
         >
           {generateDriverSelectOptions()}
         </Select>

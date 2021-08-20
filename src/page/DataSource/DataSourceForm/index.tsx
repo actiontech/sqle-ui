@@ -12,8 +12,12 @@ import { ruleTemplateListDefaultKey } from '../../../data/common';
 
 const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
   const { t } = useTranslation();
+  const isUpdate = React.useMemo<boolean>(
+    () => !!props.defaultData,
+    [props.defaultData]
+  );
   const [databaseType, setDatabaseType] = React.useState<string>(
-    props.form.getFieldValue('type') ?? ruleTemplateListDefaultKey
+    ruleTemplateListDefaultKey
   );
   const { updateRoleList, generateRoleSelectOption } = useRole();
   const { updateRuleTemplateList, generateRuleTemplateSelectOption } =
@@ -41,6 +45,26 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
     updateWorkflowTemplate();
   }, [updateRoleList, updateRuleTemplateList, updateWorkflowTemplate]);
 
+  React.useEffect(() => {
+    if (!!props.defaultData) {
+      props.form.setFieldsValue({
+        name: props.defaultData.instance_name,
+        describe: props.defaultData.desc,
+        type: props.defaultData.db_type,
+        ip: props.defaultData.db_host,
+        port: Number.parseInt(props.defaultData.db_port ?? ''),
+        user: props.defaultData.db_user,
+        role: props.defaultData.role_name_list,
+        ruleTemplate: Array.isArray(props.defaultData.rule_template_name_list)
+          ? props.defaultData.rule_template_name_list[0]
+          : '',
+        workflow: props.defaultData.workflow_template_name,
+      });
+      setDatabaseType(props.defaultData.db_type ?? ruleTemplateListDefaultKey);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.defaultData]);
+
   return (
     <Form form={props.form} {...PageFormLayout}>
       <Form.Item
@@ -58,7 +82,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
         ]}
       >
         <Input
-          disabled={props.isUpdate}
+          disabled={isUpdate}
           placeholder={t('common.form.placeholder.input', {
             name: t('dataSource.dataSourceForm.name'),
           })}
@@ -75,7 +99,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
         />
       </Form.Item>
       <DatabaseFormItem
-        isUpdate={props.isUpdate}
+        isUpdate={isUpdate}
         form={props.form}
         databaseTypeChange={databaseTypeChange}
       />

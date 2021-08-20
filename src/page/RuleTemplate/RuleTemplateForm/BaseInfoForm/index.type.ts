@@ -1,4 +1,5 @@
 import { FormInstance } from 'antd';
+import { IRuleTemplateDetailResV1 } from '../../../../api/common';
 
 export type RuleTemplateBaseInfoFields = {
   templateName: string;
@@ -9,6 +10,6 @@ export type RuleTemplateBaseInfoFields = {
 
 export type RuleTemplateBaseInfoFormProps = {
   form: FormInstance<RuleTemplateBaseInfoFields>;
-  isUpdate?: boolean;
+  defaultData?: IRuleTemplateDetailResV1;
   submit: () => void;
 };
