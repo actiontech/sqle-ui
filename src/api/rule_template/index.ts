@@ -20,6 +20,7 @@ import {
   IUpdateRuleTemplateV1Return,
   ICloneRuleTemplateV1Params,
   ICloneRuleTemplateV1Return,
+  IGetRuleListV1Params,
   IGetRuleListV1Return
 } from './index.d';
 
@@ -116,8 +117,12 @@ class RuleTemplateService extends ServiceBase {
     );
   }
 
-  public getRuleListV1(options?: AxiosRequestConfig) {
-    return this.get<IGetRuleListV1Return>('/v1/rules', undefined, options);
+  public getRuleListV1(
+    params: IGetRuleListV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.get<IGetRuleListV1Return>('/v1/rules', paramsData, options);
   }
 }
 

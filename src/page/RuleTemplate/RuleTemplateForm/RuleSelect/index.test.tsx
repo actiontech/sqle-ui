@@ -2,7 +2,7 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { cloneDeep } from 'lodash';
 import RuleSelect from '.';
 import { IRuleResV1 } from '../../../../api/common';
-import { allRules } from '../../../Rule/__testData__';
+import { allRulesWithType } from '../../../Rule/__testData__';
 
 describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
   beforeEach(() => {
@@ -16,7 +16,7 @@ describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
     const { container, rerender } = render(
       <RuleSelect
         listLoading={true}
-        allRules={allRules as IRuleResV1[]}
+        allRules={allRulesWithType as IRuleResV1[]}
         activeRule={[]}
         updateActiveRule={jest.fn()}
       />
@@ -25,7 +25,7 @@ describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
     rerender(
       <RuleSelect
         listLoading={false}
-        allRules={allRules as IRuleResV1[]}
+        allRules={allRulesWithType as IRuleResV1[]}
         activeRule={[]}
         updateActiveRule={jest.fn()}
       />
@@ -34,9 +34,12 @@ describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
     rerender(
       <RuleSelect
         listLoading={false}
-        allRules={allRules as IRuleResV1[]}
+        allRules={allRulesWithType as IRuleResV1[]}
         activeRule={
-          allRules.slice(0, Math.floor(allRules.length / 2)) as IRuleResV1[]
+          allRulesWithType.slice(
+            0,
+            Math.floor(allRulesWithType.length / 2)
+          ) as IRuleResV1[]
         }
         updateActiveRule={jest.fn()}
       />
@@ -49,7 +52,7 @@ describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
     const { rerender } = render(
       <RuleSelect
         listLoading={false}
-        allRules={allRules as IRuleResV1[]}
+        allRules={allRulesWithType as IRuleResV1[]}
         activeRule={[]}
         updateActiveRule={updateActiveRuleMock}
       />
@@ -57,7 +60,7 @@ describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
     fireEvent.click(
       screen.getAllByText('ruleTemplate.ruleTemplateForm.activeRule')[0]
     );
-    const active = [allRules[0]];
+    const active = [allRulesWithType[0]];
     expect(updateActiveRuleMock).toBeCalledTimes(1);
     expect(updateActiveRuleMock).toBeCalledWith(active);
 
@@ -65,13 +68,13 @@ describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
       screen.getByText('ruleTemplate.ruleTemplateForm.activeAllRules')
     );
     expect(updateActiveRuleMock).toBeCalledTimes(2);
-    expect(updateActiveRuleMock).toBeCalledWith(allRules);
+    expect(updateActiveRuleMock).toBeCalledWith(allRulesWithType);
 
     rerender(
       <RuleSelect
         listLoading={false}
-        allRules={allRules as IRuleResV1[]}
-        activeRule={allRules as IRuleResV1[]}
+        allRules={allRulesWithType as IRuleResV1[]}
+        activeRule={allRulesWithType as IRuleResV1[]}
         updateActiveRule={updateActiveRuleMock}
       />
     );
@@ -86,8 +89,8 @@ describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
     fireEvent.click(
       screen.getAllByText('ruleTemplate.ruleTemplateForm.disableRule')[0]
     );
-    const temp = cloneDeep(allRules);
-    allRules.shift();
+    const temp = cloneDeep(allRulesWithType);
+    allRulesWithType.shift();
     expect(updateActiveRuleMock).toBeCalledTimes(4);
     expect(updateActiveRuleMock).toBeCalledWith(temp);
   });
@@ -97,8 +100,8 @@ describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
     render(
       <RuleSelect
         listLoading={false}
-        allRules={allRules as IRuleResV1[]}
-        activeRule={allRules as IRuleResV1[]}
+        allRules={allRulesWithType as IRuleResV1[]}
+        activeRule={allRulesWithType as IRuleResV1[]}
         updateActiveRule={updateActiveRuleFunction}
       />
     );
@@ -117,6 +120,6 @@ describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
       jest.advanceTimersByTime(3000);
     });
     expect(updateActiveRuleFunction).toBeCalledTimes(1);
-    expect(updateActiveRuleFunction).toBeCalledWith(allRules);
+    expect(updateActiveRuleFunction).toBeCalledWith(allRulesWithType);
   });
 });

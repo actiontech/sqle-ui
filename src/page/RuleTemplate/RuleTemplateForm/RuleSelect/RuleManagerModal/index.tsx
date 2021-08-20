@@ -19,6 +19,7 @@ const RuleManagerModal: React.FC<RuleManagerFormProps> = (props) => {
         desc: props.ruleData?.desc,
         type: props.ruleData?.type,
         rule_name: props.ruleData?.rule_name,
+        db_type: props.ruleData?.db_type,
       });
   }, [props.ruleData, form, props.visible]);
 
@@ -65,6 +66,13 @@ const RuleManagerModal: React.FC<RuleManagerFormProps> = (props) => {
             >
               {getRuleLevelStatusSelectOption()}
             </Select>
+          </Form.Item>
+          <Form.Item
+            noStyle
+            label={t('ruleTemplate.editModal.ruleDbType')}
+            name="db_type"
+          >
+            <Input disabled value={props.ruleData?.db_type} />
           </Form.Item>
           <Form.Item
             label={t('ruleTemplate.editModal.ruleLevelValue')}

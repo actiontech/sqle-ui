@@ -69,6 +69,7 @@ export default {
     ruleDescLabel: '规则描述',
     ruleTypeLabel: '规则类型',
     ruleNameLabel: '规则名称',
+    ruleDbType: '数据库类型',
   },
 
   cloneRuleTemplate: {
