@@ -9,6 +9,10 @@ import {
   IGetRulesResV1
 } from '../common.d';
 
+export interface IGetRuleTemplateTipsV1Params {
+  filter_db_type?: string;
+}
+
 export interface IGetRuleTemplateTipsV1Return
   extends IGetRuleTemplateTipsResV1 {}
 

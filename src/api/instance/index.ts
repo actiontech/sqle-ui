@@ -9,6 +9,7 @@ import { AxiosRequestConfig } from 'axios';
 import {
   ICheckInstanceIsConnectableV1Params,
   ICheckInstanceIsConnectableV1Return,
+  IGetInstanceTipListV1Params,
   IGetInstanceTipListV1Return,
   IGetInstanceListV1Params,
   IGetInstanceListV1Return,
@@ -41,10 +42,14 @@ class InstanceService extends ServiceBase {
     );
   }
 
-  public getInstanceTipListV1(options?: AxiosRequestConfig) {
+  public getInstanceTipListV1(
+    params: IGetInstanceTipListV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
     return this.get<IGetInstanceTipListV1Return>(
       '/v1/instance_tips',
-      undefined,
+      paramsData,
       options
     );
   }

@@ -3,7 +3,9 @@ export enum AuditTaskResV1SqlSourceEnum {
 
   'sql_file' = 'sql_file',
 
-  'mybatis_xml_file' = 'mybatis_xml_file'
+  'mybatis_xml_file' = 'mybatis_xml_file',
+
+  'audit_plan' = 'audit_plan'
 }
 
 export enum AuditTaskResV1StatusEnum {

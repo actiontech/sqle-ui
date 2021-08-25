@@ -17,6 +17,10 @@ export interface ICheckInstanceIsConnectableV1Params
 export interface ICheckInstanceIsConnectableV1Return
   extends IGetInstanceConnectableResV1 {}
 
+export interface IGetInstanceTipListV1Params {
+  filter_db_type?: string;
+}
+
 export interface IGetInstanceTipListV1Return extends IGetInstanceTipsResV1 {}
 
 export interface IGetInstanceListV1Params {

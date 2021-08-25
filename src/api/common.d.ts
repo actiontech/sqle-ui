@@ -19,6 +19,56 @@ export interface IBaseRes {
   message?: string;
 }
 
+export interface IAuditPlanReportDetailResV1 {
+  audit_plan_report_audit_result?: string;
+
+  audit_plan_report_sql_fingerprint?: string;
+
+  audit_plan_report_sql_last_receive_text?: string;
+
+  audit_plan_report_timestamp?: string;
+}
+
+export interface IAuditPlanReportResV1 {
+  audit_plan_report_id?: string;
+
+  audit_plan_report_timestamp?: string;
+}
+
+export interface IAuditPlanResV1 {
+  audit_plan_cron?: string;
+
+  audit_plan_db_type?: string;
+
+  audit_plan_instance_database?: string;
+
+  audit_plan_instance_name?: string;
+
+  audit_plan_name?: string;
+
+  audit_plan_token?: string;
+}
+
+export interface IAuditPlanSQLReqV1 {
+  audit_plan_sql_counter?: string;
+
+  audit_plan_sql_fingerprint?: string;
+
+  audit_plan_sql_last_receive_text?: string;
+
+  audit_plan_sql_last_receive_timestamp?: string;
+}
+
+export interface IAuditPlanSQLResV1 {
+  audit_plan_sql_counter?: string;
+
+  audit_plan_sql_fingerprint?: string;
+
+  audit_plan_sql_last_receive_text?: string;
+
+  audit_plan_sql_last_receive_timestamp?: string;
+}
+
 export interface IAuditTaskResV1 {
   instance_name?: string;
 
@@ -75,6 +125,18 @@ export interface ICloneRuleTemplateReqV1 {
   instance_name_list?: string[];
 
   new_rule_template_name?: string;
+}
+
+export interface ICreateAuditPlanReqV1 {
+  audit_plan_cron?: string;
+
+  audit_plan_instance_database?: string;
+
+  audit_plan_instance_name?: string;
+
+  audit_plan_instance_type?: string;
+
+  audit_plan_name?: string;
 }
 
 export interface ICreateAuditWhitelistReqV1 {
@@ -163,6 +225,50 @@ export interface IDashboardResV1 {
 
 export interface IDriversResV1 {
   driver_name_list?: string[];
+}
+
+export interface IFullSyncAuditPlanSQLsReqV1 {
+  audit_plan_sql_list?: IAuditPlanSQLReqV1[];
+}
+
+export interface IGetAuditPlanReportResV1 {
+  code?: number;
+
+  data?: IAuditPlanReportDetailResV1[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
+export interface IGetAuditPlanReportsResV1 {
+  code?: number;
+
+  data?: IAuditPlanReportResV1[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
+export interface IGetAuditPlanSQLsResV1 {
+  code?: number;
+
+  data?: IAuditPlanSQLResV1[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
+export interface IGetAuditPlansResV1 {
+  code?: number;
+
+  data?: IAuditPlanResV1[];
+
+  message?: string;
+
+  total_nums?: number;
 }
 
 export interface IGetAuditTaskResV1 {
@@ -453,6 +559,10 @@ export interface IInstanceTipResV1 {
   instance_type?: string;
 }
 
+export interface IPartialSyncAuditPlanSQLsReqV1 {
+  audit_plan_sql_list?: IAuditPlanSQLReqV1[];
+}
+
 export interface IRejectWorkflowReqV1 {
   reason?: string;
 }
@@ -531,6 +641,14 @@ export interface ISMTPConfigurationResV1 {
 
 export interface ISystemVariablesResV1 {
   workflow_expired_hours?: number;
+}
+
+export interface IUpdateAuditPlanReqV1 {
+  audit_plan_cron?: string;
+
+  audit_plan_instance_database?: string;
+
+  audit_plan_instance_name?: string;
 }
 
 export interface IUpdateAuditWhitelistReqV1 {
