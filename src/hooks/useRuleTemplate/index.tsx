@@ -15,7 +15,7 @@ const useRuleTemplate = () => {
   const updateRuleTemplateList = React.useCallback(() => {
     setTrue();
     ruleTemplate
-      .getRuleTemplateTipsV1()
+      .getRuleTemplateTipsV1({})
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           setRuleTemplate(res.data?.data ?? []);

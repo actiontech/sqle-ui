@@ -33,6 +33,12 @@ export default {
   showAll: '查看所有',
   showDetail: '查看详情',
 
+  in: '在',
+  on: '的',
+  and: '且',
+  at: '中',
+  preview: '预览',
+
   theme: {
     light: '明亮模式',
     dark: '暗黑模式',
@@ -51,6 +57,13 @@ export default {
 
   time: {
     hour: '小时',
+    year: '年',
+    month: '月',
+    day: '天',
+    no: '日',
+    week: '星期',
+    minute: '分钟',
+    per: '每',
   },
 
   form: {
@@ -67,6 +80,18 @@ export default {
       email: '请输入有效的邮箱地址',
       startWithLetter: '必须要以字母开头',
       onlyLetterAndNumber: '只能包含字母、数字、中划线和下划线',
+    },
+  },
+
+  cron: {
+    errorMessage: {
+      invalid: '无效的cron表达式',
+      mustBeString: 'cron表达式必须是一个字符串',
+      mustBeArray: '变更的值必须是一个数组',
+      lenMustBeFive: 'cron表达式必须只包含（分钟 小时 日期 月份 星期）5个元素',
+      onlyHaveValidChar: 'cron表达式只能包含数字中划线(-),斜线(/),和逗号(,)',
+      limit:
+        '您的表达式中包含不合法的数值范围， minute(0-59), hour(0-23), day(1,31), month(1-12), week(0-6)',
     },
   },
 };

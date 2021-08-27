@@ -15,7 +15,7 @@ const useInstance = () => {
   const updateInstanceList = React.useCallback(() => {
     setTrue();
     instance
-      .getInstanceTipListV1()
+      .getInstanceTipListV1({})
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           setInstanceList(res.data?.data ?? []);

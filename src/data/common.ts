@@ -38,6 +38,18 @@ export const PageFormLayout = {
   },
 };
 
+export const PageBigFormLayout = {
+  labelCol: {
+    xs: { span: 24 },
+    sm: { span: 6 },
+  },
+  wrapperCol: {
+    xs: { span: 24 },
+    sm: { span: 14 },
+    // md: { span: 1 },
+  },
+};
+
 export const FilterFormLayout = {
   labelCol: { span: 7 },
   wrapperCol: { span: 17 },

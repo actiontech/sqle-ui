@@ -1,0 +1,34 @@
+.cron-input-wrapper {
+  .cron-user-select {
+    > div {
+      margin-left: 5px;
+      &:last-child {
+        margin-left: 0;
+      }
+    }
+  }
+  .cron-inline-select {
+    min-width: 80px;
+    width: auto !important;
+    max-width: 145px;
+  }
+  .cron-every-select {
+    max-width: 200px;
+    width: auto !important;
+    min-width: 50px;
+  }
+}
+
+.cron-inline-select-dropdown {
+  max-width: 300px;
+  .rc-virtual-list-holder-inner {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+  }
+  .cron-inline-select-option {
+    flex: 0 0 30px;
+  }
+  .anticon-check {
+    display: none;
+  }
+}

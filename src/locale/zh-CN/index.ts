@@ -12,6 +12,7 @@ import system from './system';
 import user from './user';
 import whitelist from './whitelist';
 import workflowTemplate from './workflowTemplate';
+import auditPlan from './auditPlan';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -30,5 +31,6 @@ export default {
     whitelist,
     system,
     workflowTemplate,
+    auditPlan,
   },
 };
