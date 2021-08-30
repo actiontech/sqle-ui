@@ -10,6 +10,8 @@ enum EmitterKey {
   Reset_Test_Data_Source_Connect = 'RESET_TEST_DATA_SOURCE_CONNECT',
 
   Reset_Workflow_Template_Form = 'RESET_WORKFLOW_TEMPLATE_FORM',
+
+  Rest_Audit_Plan_Form = 'REST_AUDIT_PLAN_FORM',
 }
 
 export default EmitterKey;

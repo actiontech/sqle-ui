@@ -5,3 +5,8 @@ export type PlanFormField = {
   dbType: string;
   cron: string;
 };
+
+export type PlanFormProps = {
+  submit: (data: PlanFormField) => Promise<void>;
+  defaultValue?: any;
+};

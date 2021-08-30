@@ -230,6 +230,9 @@ export const parseToCronItemFromNumber = (
   if (numbersAfterSort.length === 1) {
     return res;
   }
+  if (numbersAfterSort.length === 2) {
+    return numbersAfterSort.join(',');
+  }
 
   const step = numbersAfterSort[1] - numbersAfterSort[0];
   let isArithmeticSequence = true;

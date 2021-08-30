@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import CreateAuditPlan from './CreatePlan';
 import PlanList from './PlanList';
+import UpdateAuditPlan from './UpdatePlan';
 
 const AuditPlan = () => {
   const { t } = useTranslation();
@@ -17,6 +18,10 @@ const AuditPlan = () => {
         <Switch>
           <Route path="/auditPlan" exact={true} component={PlanList} />
           <Route path="/auditPlan/create" component={CreateAuditPlan} />
+          <Route
+            path="/auditPlan/update/:auditPlanName"
+            component={UpdateAuditPlan}
+          />
           <Redirect to="/auditPlan" />
         </Switch>
       </section>

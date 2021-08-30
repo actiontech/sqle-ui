@@ -59,7 +59,6 @@ const CronInput: React.FC<CronInputProps> = (props) => {
   }, [props.value]);
 
   useEffect(() => {
-    console.log(111, props.onChange, props.value, value);
     if (props.onChange) {
       props.onChange(value);
     }
@@ -92,7 +91,7 @@ const CronInput: React.FC<CronInputProps> = (props) => {
             dropdownClassName="cron-inline-select-dropdown"
             className="cron-inline-select"
             virtual={false}
-            placeholder={t('common.time.month')}
+            placeholder={`${t('common.time.per')}${t('common.time.month')}`}
             dropdownMatchSelectWidth={false}
             maxTagCount={1}
             maxTagPlaceholder="..."
@@ -119,7 +118,7 @@ const CronInput: React.FC<CronInputProps> = (props) => {
             style={{ width: '100%' }}
             dropdownClassName="cron-inline-select-dropdown"
             className="cron-inline-select"
-            placeholder={t('common.time.day')}
+            placeholder={`${t('common.time.per')}${t('common.time.day')}`}
             maxTagCount={1}
             dropdownMatchSelectWidth={false}
             maxTagPlaceholder="..."
@@ -148,7 +147,7 @@ const CronInput: React.FC<CronInputProps> = (props) => {
             style={{ width: '100%' }}
             dropdownClassName="cron-inline-select-dropdown"
             className="cron-inline-select"
-            placeholder={t('common.time.week')}
+            placeholder={`${t('common.time.per')}${t('common.time.day')}`}
             maxTagCount={1}
             dropdownMatchSelectWidth={false}
             maxTagPlaceholder="..."
@@ -176,7 +175,7 @@ const CronInput: React.FC<CronInputProps> = (props) => {
             dropdownClassName="cron-inline-select-dropdown"
             maxTagCount={1}
             className="cron-inline-select"
-            placeholder={t('common.time.hour')}
+            placeholder={`${t('common.time.per')}${t('common.time.hour')}`}
             dropdownMatchSelectWidth={false}
             maxTagPlaceholder="..."
             virtual={false}
@@ -204,7 +203,7 @@ const CronInput: React.FC<CronInputProps> = (props) => {
             dropdownClassName="cron-inline-select-dropdown"
             maxTagCount={1}
             className="cron-inline-select"
-            placeholder={t('common.time.minute')}
+            placeholder={`${t('common.time.per')}${t('common.time.minute')}`}
             virtual={false}
             dropdownMatchSelectWidth={false}
             maxTagPlaceholder="..."

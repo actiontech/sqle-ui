@@ -1,5 +1,3 @@
-import { everyStatic } from './index.data';
-
 export enum CronMode {
   Manual = 'Manual',
   Select = 'Select',

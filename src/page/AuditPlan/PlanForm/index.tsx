@@ -1,17 +1,21 @@
+import { useBoolean } from 'ahooks';
 import { Button, Form, Input, Select, Space } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import instance from '../../../api/instance';
+import { IGetInstanceTipListV1Params } from '../../../api/instance/index.d';
 import CronInput from '../../../components/CronInput';
 import { PageBigFormLayout, ResponseCode } from '../../../data/common';
+import EmitterKey from '../../../data/EmitterKey';
 import useDatabaseType from '../../../hooks/useDatabaseType';
 import useInstance from '../../../hooks/useInstance';
 import useInstanceSchema from '../../../hooks/useInstanceSchema';
+import EventEmitter from '../../../utils/EventEmitter';
 import { nameRule } from '../../../utils/FormRule';
-import { PlanFormField } from './index.type';
+import { PlanFormField, PlanFormProps } from './index.type';
 
-const PlanForm = () => {
+const PlanForm: React.FC<PlanFormProps> = (props) => {
   const { t } = useTranslation();
 
   const [dataSource, setDataSource] = useState('');
@@ -19,6 +23,14 @@ const PlanForm = () => {
 
   const { updateDriverNameList, generateDriverSelectOptions } =
     useDatabaseType();
+
+  const getInstanceParams = useMemo<IGetInstanceTipListV1Params>(() => {
+    if (!!props.defaultValue) {
+      return { filter_db_type: props.defaultValue.audit_plan_db_type };
+    }
+    return {};
+  }, [props.defaultValue]);
+
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
   const { generateInstanceSchemaSelectOption } = useInstanceSchema(dataSource);
 
@@ -35,13 +47,56 @@ const PlanForm = () => {
     }
   };
 
+  const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
+    useBoolean();
+
   const submit = (values: PlanFormField) => {
-    console.log(111, values);
+    startSubmit();
+    props.submit(values).finally(() => {
+      submitFinish();
+    });
+  };
+
+  const resetForm = () => {
+    setDataSource('');
+    if (!!props.defaultValue) {
+      form.resetFields(['databaseName', 'cron', 'schema']);
+    } else {
+      form.resetFields();
+    }
   };
 
   useEffect(() => {
+    if (props.defaultValue) {
+      form.setFieldsValue({
+        name: props.defaultValue.audit_plan_name,
+        databaseName: props.defaultValue.audit_plan_instance_name,
+        schema: props.defaultValue.audit_plan_instance_database,
+        cron: props.defaultValue.audit_plan_cron,
+        dbType: props.defaultValue.audit_plan_db_type,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.defaultValue]);
+
+  useEffect(() => {
     updateDriverNameList();
-    updateInstanceList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    updateInstanceList(getInstanceParams);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [getInstanceParams]);
+
+  useEffect(() => {
+    const reset = () => {
+      resetForm();
+    };
+    EventEmitter.subscribe(EmitterKey.Rest_Audit_Plan_Form, reset);
+    return () => {
+      EventEmitter.unsubscribe(EmitterKey.Rest_Audit_Plan_Form, reset);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -57,7 +112,10 @@ const PlanForm = () => {
           ...nameRule(),
         ]}
       >
-        <Input placeholder={t('common.form.placeholder.input')} />
+        <Input
+          disabled={!!props.defaultValue}
+          placeholder={t('common.form.placeholder.input')}
+        />
       </Form.Item>
       <Form.Item
         label={t('auditPlan.planForm.databaseName')}
@@ -86,7 +144,7 @@ const PlanForm = () => {
         ]}
       >
         <Select
-          disabled={!!dataSource}
+          disabled={!!dataSource || !!props.defaultValue}
           placeholder={t('common.form.placeholder.select')}
         >
           {generateDriverSelectOptions()}
@@ -103,12 +161,14 @@ const PlanForm = () => {
       >
         <CronInput />
       </Form.Item>
-      <Form.Item label=" " colon={false}>
+      <Form.Item label=" " colon={false} initialValue="* * * * *">
         <Space>
-          <Button htmlType="submit" type="primary">
+          <Button htmlType="submit" type="primary" loading={submitLoading}>
             {t('common.submit')}
           </Button>
-          <Button>{t('common.reset')}</Button>
+          <Button onClick={resetForm} disabled={submitLoading}>
+            {t('common.reset')}
+          </Button>
         </Space>
       </Form.Item>
     </Form>
