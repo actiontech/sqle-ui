@@ -15,8 +15,8 @@ import {
   IDeleteAuditPlanV1Return,
   IUpdateAuditPlanV1Params,
   IUpdateAuditPlanV1Return,
-  IGetAuditPlanReportDetailV1Params,
-  IGetAuditPlanReportDetailV1Return,
+  IGetAuditPlanReportSQLsV1Params,
+  IGetAuditPlanReportSQLsV1Return,
   IGetAuditPlanReportsV1Params,
   IGetAuditPlanReportsV1Return,
   IGetAuditPlanSQLsV1Params,
@@ -84,8 +84,8 @@ class AuditPlanService extends ServiceBase {
     );
   }
 
-  public getAuditPlanReportDetailV1(
-    params: IGetAuditPlanReportDetailV1Params,
+  public getAuditPlanReportSQLsV1(
+    params: IGetAuditPlanReportSQLsV1Params,
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
@@ -95,7 +95,7 @@ class AuditPlanService extends ServiceBase {
     const audit_plan_report_id = paramsData.audit_plan_report_id;
     delete paramsData.audit_plan_report_id;
 
-    return this.get<IGetAuditPlanReportDetailV1Return>(
+    return this.get<IGetAuditPlanReportSQLsV1Return>(
       `/v1/audit_plans/${audit_plan_name}/report/${audit_plan_report_id}/`,
       paramsData,
       options

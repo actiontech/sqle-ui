@@ -19,20 +19,20 @@ export interface IBaseRes {
   message?: string;
 }
 
-export interface IAuditPlanReportDetailResV1 {
-  audit_plan_report_audit_result?: string;
+export interface IAuditPlanReportResV1 {
+  audit_plan_report_id?: string;
+
+  audit_plan_report_timestamp?: string;
+}
+
+export interface IAuditPlanReportSQLResV1 {
+  audit_plan_report_sql_audit_result?: string;
 
   audit_plan_report_sql_fingerprint?: string;
 
   audit_plan_report_sql_last_receive_text?: string;
 
-  audit_plan_report_timestamp?: string;
-}
-
-export interface IAuditPlanReportResV1 {
-  audit_plan_report_id?: string;
-
-  audit_plan_report_timestamp?: string;
+  audit_plan_report_sql_last_receive_timestamp?: string;
 }
 
 export interface IAuditPlanResV1 {
@@ -231,10 +231,10 @@ export interface IFullSyncAuditPlanSQLsReqV1 {
   audit_plan_sql_list?: IAuditPlanSQLReqV1[];
 }
 
-export interface IGetAuditPlanReportResV1 {
+export interface IGetAuditPlanReportSQLsResV1 {
   code?: number;
 
-  data?: IAuditPlanReportDetailResV1[];
+  data?: IAuditPlanReportSQLResV1[];
 
   message?: string;
 
