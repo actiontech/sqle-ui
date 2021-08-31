@@ -76,6 +76,11 @@ const AuditPlan = React.lazy(
   () => import(/* webpackChunkName: "AuditPlan" */ '../page/AuditPlan')
 );
 
+const AuditPlanDetail = React.lazy(
+  () =>
+    import(/* webpackChunkName: "PlanDetail" */ '../page/AuditPlan/PlanDetail')
+);
+
 export const unAuthRouter: Array<RouteProps & { key: string }> = [
   {
     path: '/login',
@@ -195,9 +200,17 @@ export const routerConfig: RouterItem[] = [
       {
         path: '/auditPlan',
         key: 'auditPlan',
+        exact: true,
         label: 'menu.auditPlane',
         icon: <CiCircleOutlined />,
         component: AuditPlan,
+      },
+      {
+        path: '/auditPlan/detail/:auditPlanName',
+        key: 'auditPlanDetail',
+        label: 'menu.auditPlane',
+        hideInSliderMenu: true,
+        component: AuditPlanDetail,
       },
     ],
   },

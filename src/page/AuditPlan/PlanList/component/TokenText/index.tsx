@@ -7,7 +7,7 @@ const TokenText: React.FC<{ token: string }> = (props) => {
     useBoolean();
 
   return (
-    <Row align="middle">
+    <Row align="middle" onClick={(e) => e.stopPropagation()}>
       <Tooltip overlay={tokenVisible ? props.token : ''} placement="bottom">
         <Typography.Text
           copyable={{ text: props.token }}

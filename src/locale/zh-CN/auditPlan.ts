@@ -45,4 +45,36 @@ export default {
     cron: '计划执行周期',
     schema: '数据库',
   },
+
+  detailPage: {
+    pageTitle: '审核计划: {{name}}',
+    pageDesc:
+      '您可以在这个查看当前审核计划的SQL语句池中的语句，以及当前审核计划的审核记录',
+  },
+
+  sqlPool: {
+    title: '当前审核计划SQL语句池',
+
+    table: {
+      fingerprint: 'SQL指纹',
+      lastReceiveText: '最后一次匹配到该指纹的语句',
+      lastReceiveTime: '最后一次匹配到该指纹的时间',
+      count: '匹配到该指纹的语句数量',
+    },
+  },
+
+  planTaskRecord: {
+    title: '审核记录',
+  },
+
+  report: {
+    title: '审核报告: {{id}}',
+
+    table: {
+      fingerprint: 'SQL指纹',
+      lastReceiveText: '最后一次匹配到该指纹的语句',
+      lastReceiveTime: '最后一次匹配到该指纹的时间',
+      result: '审核结果',
+    },
+  },
 };

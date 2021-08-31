@@ -83,6 +83,7 @@ const PlanList = () => {
       <Table
         columns={planListTableHeader(removeAuditPlan)}
         dataSource={data?.list ?? []}
+        rowKey="audit_plan_name"
         pagination={{
           total: data?.total,
           showSizeChanger: true,
@@ -90,7 +91,7 @@ const PlanList = () => {
         loading={loading}
         onRow={(record) => ({
           onClick: () => {
-            history.push(`/auditPlan/${record.audit_plan_name}`);
+            history.push(`/auditPlan/detail/${record.audit_plan_name}`);
           },
         })}
         onChange={tableChange}
