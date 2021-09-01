@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuditPlan should match snapshot 1`] = `
+<Fragment>
+  <PageHeader
+    ghost={false}
+    title="auditPlan.pageTitle"
+  >
+    auditPlan.pageDesc
+  </PageHeader>
+  <section
+    className="padding-content"
+  >
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/auditPlan"
+      />
+      <Route
+        component={[Function]}
+        path="/auditPlan/create"
+      />
+      <Route
+        component={[Function]}
+        path="/auditPlan/update/:auditPlanName"
+      />
+      <Redirect
+        to="/auditPlan"
+      />
+    </Switch>
+  </section>
+</Fragment>
+`;
