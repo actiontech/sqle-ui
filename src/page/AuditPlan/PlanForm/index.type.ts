@@ -1,3 +1,5 @@
+import { IAuditPlanResV1 } from '../../../api/common';
+
 export type PlanFormField = {
   name: string;
   databaseName?: string;
@@ -8,5 +10,5 @@ export type PlanFormField = {
 
 export type PlanFormProps = {
   submit: (data: PlanFormField) => Promise<void>;
-  defaultValue?: any;
+  defaultValue?: IAuditPlanResV1;
 };

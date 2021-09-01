@@ -27,7 +27,7 @@ const CronInput: React.FC<CronInputProps> = (props) => {
   const { t } = useTranslation();
   const [cronMode, setCronMode] = useState(CronMode.Select);
 
-  const [every, setEvery] = useState<string>(props.everyDefault ?? 'day');
+  const [every, setEvery] = useState<string>(props.everyDefault ?? 'year');
   const mode = useMemo<CronMode>(() => {
     if (props.mode !== undefined) {
       return props.mode;
