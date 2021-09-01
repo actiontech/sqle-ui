@@ -84,6 +84,10 @@ export default {
   },
 
   cron: {
+    mode: {
+      select: '可视化选择',
+      manual: '手工填写',
+    },
     errorMessage: {
       invalid: '无效的cron表达式',
       mustBeString: 'cron表达式必须是一个字符串',

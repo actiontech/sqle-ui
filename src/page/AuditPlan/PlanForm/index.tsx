@@ -8,6 +8,7 @@ import { IGetInstanceTipListV1Params } from '../../../api/instance/index.d';
 import CronInput from '../../../components/CronInput';
 import { PageBigFormLayout, ResponseCode } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
+import { checkCron } from '../../../hooks/useCron/cron.tool';
 import useDatabaseType from '../../../hooks/useDatabaseType';
 import useInstance from '../../../hooks/useInstance';
 import useInstanceSchema from '../../../hooks/useInstanceSchema';
@@ -157,11 +158,20 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
           {
             required: true,
           },
+          {
+            validator(_, value) {
+              const error = checkCron(value);
+              if (error === '') {
+                return Promise.resolve();
+              }
+              return Promise.reject(t(error));
+            },
+          },
         ]}
       >
         <CronInput />
       </Form.Item>
-      <Form.Item label=" " colon={false} initialValue="* * * * *">
+      <Form.Item label=" " colon={false}>
         <Space>
           <Button htmlType="submit" type="primary" loading={submitLoading}>
             {t('common.submit')}

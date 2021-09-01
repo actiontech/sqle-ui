@@ -8,5 +8,6 @@ export type CronInputProps = {
   value?: string;
   onChange?: (value: string) => void;
   mode?: CronMode;
+  modeChange?: (mode: CronMode) => void;
   updateErrorMessage?: (errorMessage: string) => void;
 };

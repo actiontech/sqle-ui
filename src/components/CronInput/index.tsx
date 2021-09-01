@@ -1,4 +1,4 @@
-import { Select, Input } from 'antd';
+import { Select, Input, Radio, RadioChangeEvent } from 'antd';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import useCron from '../../hooks/useCron';
@@ -25,11 +25,15 @@ const CronInput: React.FC<CronInputProps> = (props) => {
   } = useCron();
 
   const { t } = useTranslation();
+  const [cronMode, setCronMode] = useState(CronMode.Select);
 
   const [every, setEvery] = useState<string>(props.everyDefault ?? 'day');
   const mode = useMemo<CronMode>(() => {
-    return props.mode ? props.mode : CronMode.Select;
-  }, [props.mode]);
+    if (props.mode !== undefined) {
+      return props.mode;
+    }
+    return cronMode;
+  }, [props.mode, cronMode]);
 
   const handleEveryChange = (nextEvery: string) => {
     if (error !== '') {
@@ -43,6 +47,15 @@ const CronInput: React.FC<CronInputProps> = (props) => {
     }
     setEvery(nextEvery);
     updateCron(temp.join(' '));
+  };
+
+  const handleCronModeChange = (e: RadioChangeEvent) => {
+    const tempMode = e.target.value;
+    if (props.mode !== undefined) {
+      props.modeChange?.(tempMode);
+    } else {
+      setCronMode(tempMode);
+    }
   };
 
   useEffect(() => {
@@ -67,6 +80,12 @@ const CronInput: React.FC<CronInputProps> = (props) => {
 
   return (
     <div className="cron-input-wrapper">
+      <div style={{ lineHeight: '32px' }}>
+        <Radio.Group value={cronMode} onChange={handleCronModeChange}>
+          <Radio value={CronMode.Select}>{t('common.cron.mode.select')}</Radio>
+          <Radio value={CronMode.Manual}>{t('common.cron.mode.manual')}</Radio>
+        </Radio.Group>
+      </div>
       <div className="cron-user-select" hidden={mode === CronMode.Manual}>
         {t('common.time.per')}
         <Select
