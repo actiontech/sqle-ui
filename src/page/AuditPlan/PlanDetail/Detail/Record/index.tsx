@@ -1,11 +1,13 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Button, Card, List, Space } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import audit_plan from '../../../../../api/audit_plan';
+import EmitterKey from '../../../../../data/EmitterKey';
 import { formatTime } from '../../../../../utils/Common';
+import EventEmitter from '../../../../../utils/EventEmitter';
 
 const PlanAuditRecord: React.FC<{ auditPlanName: string }> = (props) => {
   const { t } = useTranslation();
@@ -46,6 +48,19 @@ const PlanAuditRecord: React.FC<{ auditPlanName: string }> = (props) => {
       });
     }
   };
+
+  useEffect(() => {
+    const refreshEvent = () => {
+      refresh();
+    };
+    EventEmitter.subscribe(EmitterKey.Refresh_Audit_Plan_Record, refreshEvent);
+    return () => {
+      EventEmitter.unsubscribe(
+        EmitterKey.Refresh_Audit_Plan_Record,
+        refreshEvent
+      );
+    };
+  }, [refresh]);
 
   return (
     <Card

@@ -121,6 +121,7 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
       <Form.Item
         label={t('auditPlan.planForm.databaseName')}
         name="databaseName"
+        tooltip={t('auditPlan.planForm.databaseNameTips')}
       >
         <Select
           allowClear

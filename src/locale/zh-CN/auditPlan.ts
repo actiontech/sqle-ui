@@ -44,6 +44,9 @@ export default {
     databaseName: '数据源名称',
     cron: '计划执行周期',
     schema: '数据库',
+
+    databaseNameTips:
+      '如果您没有指定数据源，那么该审核计划将使用您所选择的数据库类型的默认规则模版进行静态审核',
   },
 
   detailPage: {
@@ -60,6 +63,13 @@ export default {
       lastReceiveText: '最后一次匹配到该指纹的语句',
       lastReceiveTime: '最后一次匹配到该指纹的时间',
       count: '匹配到该指纹的语句数量',
+    },
+
+    action: {
+      trigger: '立即审核',
+
+      loading: '正在触发审核...',
+      triggerSuccess: '审核触发成功',
     },
   },
 
