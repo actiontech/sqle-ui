@@ -11,6 +11,8 @@ import {
   IGetAuditPlansV1Return,
   ICreateAuditPlanV1Params,
   ICreateAuditPlanV1Return,
+  IGetAuditPlanV1Params,
+  IGetAuditPlanV1Return,
   IDeleteAuditPlanV1Params,
   IDeleteAuditPlanV1Return,
   IUpdateAuditPlanV1Params,
@@ -49,6 +51,21 @@ class AuditPlanService extends ServiceBase {
     const paramsData = this.cloneDeep(params);
     return this.post<ICreateAuditPlanV1Return>(
       '/v1/audit_plans',
+      paramsData,
+      options
+    );
+  }
+
+  public getAuditPlanV1(
+    params: IGetAuditPlanV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const audit_plan_name = paramsData.audit_plan_name;
+    delete paramsData.audit_plan_name;
+
+    return this.get<IGetAuditPlanV1Return>(
+      `/v1/audit_plans/${audit_plan_name}/`,
       paramsData,
       options
     );

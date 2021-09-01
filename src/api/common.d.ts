@@ -251,6 +251,14 @@ export interface IGetAuditPlanReportsResV1 {
   total_nums?: number;
 }
 
+export interface IGetAuditPlanResV1 {
+  code?: number;
+
+  data?: IAuditPlanResV1;
+
+  message?: string;
+}
+
 export interface IGetAuditPlanSQLsResV1 {
   code?: number;
 

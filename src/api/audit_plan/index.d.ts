@@ -2,6 +2,7 @@ import {
   IGetAuditPlansResV1,
   ICreateAuditPlanReqV1,
   IBaseRes,
+  IGetAuditPlanResV1,
   IUpdateAuditPlanReqV1,
   IGetAuditPlanReportSQLsResV1,
   IGetAuditPlanReportsResV1,
@@ -23,6 +24,12 @@ export interface IGetAuditPlansV1Return extends IGetAuditPlansResV1 {}
 export interface ICreateAuditPlanV1Params extends ICreateAuditPlanReqV1 {}
 
 export interface ICreateAuditPlanV1Return extends IBaseRes {}
+
+export interface IGetAuditPlanV1Params {
+  audit_plan_name: string;
+}
+
+export interface IGetAuditPlanV1Return extends IGetAuditPlanResV1 {}
 
 export interface IDeleteAuditPlanV1Params {
   audit_plan_name: string;
