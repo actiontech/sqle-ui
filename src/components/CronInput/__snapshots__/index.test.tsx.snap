@@ -84,9 +84,9 @@ exports[`CronInput should call update cron mode of props when user pass this pro
           </span>
           <span
             class="ant-select-selection-item"
-            title="common.time.day"
+            title="common.time.year"
           >
-            common.time.day
+            common.time.year
           </span>
         </div>
         <span
@@ -116,9 +116,7 @@ exports[`CronInput should call update cron mode of props when user pass this pro
           </span>
         </span>
       </div>
-      <span
-        hidden=""
-      >
+      <span>
         common.in
         <div
           class="ant-select cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
@@ -173,9 +171,7 @@ exports[`CronInput should call update cron mode of props when user pass this pro
         </div>
         common.time.month
       </span>
-      <span
-        hidden=""
-      >
+      <span>
         common.on
         <div
           class="ant-select cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
@@ -497,9 +493,9 @@ exports[`CronInput should call update cron mode of props when user pass this pro
           </span>
           <span
             class="ant-select-selection-item"
-            title="common.time.day"
+            title="common.time.year"
           >
-            common.time.day
+            common.time.year
           </span>
         </div>
         <span
@@ -529,9 +525,7 @@ exports[`CronInput should call update cron mode of props when user pass this pro
           </span>
         </span>
       </div>
-      <span
-        hidden=""
-      >
+      <span>
         common.in
         <div
           class="ant-select cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
@@ -586,9 +580,7 @@ exports[`CronInput should call update cron mode of props when user pass this pro
         </div>
         common.time.month
       </span>
-      <span
-        hidden=""
-      >
+      <span>
         common.on
         <div
           class="ant-select cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
@@ -4192,9 +4184,9 @@ exports[`CronInput should render input with "* * * * *" value by default 1`] = `
           </span>
           <span
             class="ant-select-selection-item"
-            title="common.time.day"
+            title="common.time.year"
           >
-            common.time.day
+            common.time.year
           </span>
         </div>
         <span
@@ -4224,9 +4216,7 @@ exports[`CronInput should render input with "* * * * *" value by default 1`] = `
           </span>
         </span>
       </div>
-      <span
-        hidden=""
-      >
+      <span>
         common.in
         <div
           class="ant-select cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
@@ -4281,9 +4271,7 @@ exports[`CronInput should render input with "* * * * *" value by default 1`] = `
         </div>
         common.time.month
       </span>
-      <span
-        hidden=""
-      >
+      <span>
         common.on
         <div
           class="ant-select cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
@@ -4605,9 +4593,9 @@ exports[`CronInput should set value to equal props.value 1`] = `
           </span>
           <span
             class="ant-select-selection-item"
-            title="common.time.day"
+            title="common.time.year"
           >
-            common.time.day
+            common.time.year
           </span>
         </div>
         <span
@@ -4637,9 +4625,7 @@ exports[`CronInput should set value to equal props.value 1`] = `
           </span>
         </span>
       </div>
-      <span
-        hidden=""
-      >
+      <span>
         common.in
         <div
           class="ant-select cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
@@ -4755,9 +4741,7 @@ exports[`CronInput should set value to equal props.value 1`] = `
         </div>
         common.time.month
       </span>
-      <span
-        hidden=""
-      >
+      <span>
         common.on
         <div
           class="ant-select cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
@@ -5324,9 +5308,9 @@ exports[`CronInput should switch cron mode when component controller mode 1`] = 
           </span>
           <span
             class="ant-select-selection-item"
-            title="common.time.day"
+            title="common.time.year"
           >
-            common.time.day
+            common.time.year
           </span>
         </div>
         <span
@@ -5356,9 +5340,7 @@ exports[`CronInput should switch cron mode when component controller mode 1`] = 
           </span>
         </span>
       </div>
-      <span
-        hidden=""
-      >
+      <span>
         common.in
         <div
           class="ant-select cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
@@ -5413,9 +5395,7 @@ exports[`CronInput should switch cron mode when component controller mode 1`] = 
         </div>
         common.time.month
       </span>
-      <span
-        hidden=""
-      >
+      <span>
         common.on
         <div
           class="ant-select cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
@@ -5736,9 +5716,9 @@ exports[`CronInput should switch cron mode when component controller mode 2`] = 
           </span>
           <span
             class="ant-select-selection-item"
-            title="common.time.day"
+            title="common.time.year"
           >
-            common.time.day
+            common.time.year
           </span>
         </div>
         <span
@@ -5768,9 +5748,7 @@ exports[`CronInput should switch cron mode when component controller mode 2`] = 
           </span>
         </span>
       </div>
-      <span
-        hidden=""
-      >
+      <span>
         common.in
         <div
           class="ant-select cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
@@ -5825,9 +5803,7 @@ exports[`CronInput should switch cron mode when component controller mode 2`] = 
         </div>
         common.time.month
       </span>
-      <span
-        hidden=""
-      >
+      <span>
         common.on
         <div
           class="ant-select cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
@@ -6149,9 +6125,9 @@ exports[`CronInput should switch cron mode when user select cron mode 1`] = `
           </span>
           <span
             class="ant-select-selection-item"
-            title="common.time.day"
+            title="common.time.year"
           >
-            common.time.day
+            common.time.year
           </span>
         </div>
         <span
@@ -6181,9 +6157,7 @@ exports[`CronInput should switch cron mode when user select cron mode 1`] = `
           </span>
         </span>
       </div>
-      <span
-        hidden=""
-      >
+      <span>
         common.in
         <div
           class="ant-select cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
@@ -6238,9 +6212,7 @@ exports[`CronInput should switch cron mode when user select cron mode 1`] = `
         </div>
         common.time.month
       </span>
-      <span
-        hidden=""
-      >
+      <span>
         common.on
         <div
           class="ant-select cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
@@ -6563,9 +6535,9 @@ exports[`CronInput should switch cron mode when user select cron mode 2`] = `
           </span>
           <span
             class="ant-select-selection-item"
-            title="common.time.day"
+            title="common.time.year"
           >
-            common.time.day
+            common.time.year
           </span>
         </div>
         <span
@@ -6595,9 +6567,7 @@ exports[`CronInput should switch cron mode when user select cron mode 2`] = `
           </span>
         </span>
       </div>
-      <span
-        hidden=""
-      >
+      <span>
         common.in
         <div
           class="ant-select cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
@@ -6652,9 +6622,7 @@ exports[`CronInput should switch cron mode when user select cron mode 2`] = `
         </div>
         common.time.month
       </span>
-      <span
-        hidden=""
-      >
+      <span>
         common.on
         <div
           class="ant-select cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"

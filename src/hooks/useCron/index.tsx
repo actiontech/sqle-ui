@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { I18nKey } from '../../types/common.type';
 import {
   checkCron,
   checkNumber,
@@ -41,12 +42,21 @@ const useCron = (options?: CronOptions) => {
     setMinute(parseToNumberFromCronItem(minute, CronItemType.Minute));
   };
 
+  const updateError = (errorMessage: I18nKey | ''): boolean => {
+    if (errorMessage !== '') {
+      setError(t(errorMessage) as string);
+      return false;
+    }
+    if (error !== '') {
+      setError('');
+    }
+    return true;
+  };
+
   const updateMinute = (minutes: number[]) => {
     minutes.sort((a, b) => a - b);
-    const error = checkNumber(minutes, CronItemType.Minute);
-    if (error !== '') {
-      setError(t(error) as string);
-    } else {
+    const tempError = checkNumber(minutes, CronItemType.Minute);
+    if (updateError(tempError)) {
       setMinute(minutes);
       updateCronByNumber(minutes, Hour, Day, Month, Week);
     }
@@ -54,10 +64,8 @@ const useCron = (options?: CronOptions) => {
 
   const updateHour = (hours: number[]) => {
     hours.sort((a, b) => a - b);
-    const error = checkNumber(hours, CronItemType.Hour);
-    if (error !== '') {
-      setError(t(error) as string);
-    } else {
+    const tempError = checkNumber(hours, CronItemType.Hour);
+    if (updateError(tempError)) {
       setHour(hours);
       updateCronByNumber(Minute, hours, Day, Month, Week);
     }
@@ -65,11 +73,8 @@ const useCron = (options?: CronOptions) => {
 
   const updateDay = (days: number[]) => {
     days.sort((a, b) => a - b);
-
-    const error = checkNumber(days, CronItemType.Day);
-    if (error !== '') {
-      setError(t(error) as string);
-    } else {
+    const tempError = checkNumber(days, CronItemType.Day);
+    if (updateError(tempError)) {
       setDay(days);
       updateCronByNumber(Minute, Hour, days, Month, Week);
     }
@@ -77,10 +82,8 @@ const useCron = (options?: CronOptions) => {
 
   const updateMonth = (months: number[]) => {
     months.sort((a, b) => a - b);
-    const error = checkNumber(months, CronItemType.Month);
-    if (error !== '') {
-      setError(t(error) as string);
-    } else {
+    const tempError = checkNumber(months, CronItemType.Month);
+    if (updateError(tempError)) {
       setMonth(months);
       updateCronByNumber(Minute, Hour, Day, months, Week);
     }
@@ -88,10 +91,8 @@ const useCron = (options?: CronOptions) => {
 
   const updateWeek = (weeks: number[]) => {
     weeks.sort((a, b) => a - b);
-    const error = checkNumber(weeks, CronItemType.Week);
-    if (error !== '') {
-      setError(t(error) as string);
-    } else {
+    const tempError = checkNumber(weeks, CronItemType.Week);
+    if (updateError(tempError)) {
       setWeek(weeks);
       updateCronByNumber(Minute, Hour, Day, Month, weeks);
     }
