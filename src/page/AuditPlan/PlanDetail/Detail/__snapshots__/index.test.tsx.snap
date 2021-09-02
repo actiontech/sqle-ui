@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlanDetail should should match snapshot with report 1`] = `
+<Fragment>
+  <Row
+    gutter={24}
+    hidden={true}
+  >
+    <Col
+      sm={24}
+      style={
+        Object {
+          "marginBottom": 24,
+        }
+      }
+      xxl={16}
+    >
+      <SqlPool
+        auditPlanName="auditPlanName1"
+      />
+    </Col>
+    <Col
+      sm={24}
+      xxl={8}
+    >
+      <PlanAuditRecord
+        auditPlanName="auditPlanName1"
+      />
+    </Col>
+  </Row>
+  <Route
+    component={[Function]}
+    path="/auditPlan/detail/:auditPlanName/report/:reportId"
+  />
+</Fragment>
+`;
+
+exports[`PlanDetail should should match snapshot without report 1`] = `
+<Fragment>
+  <Row
+    gutter={24}
+    hidden={false}
+  >
+    <Col
+      sm={24}
+      style={
+        Object {
+          "marginBottom": 24,
+        }
+      }
+      xxl={16}
+    >
+      <SqlPool
+        auditPlanName="auditPlanName1"
+      />
+    </Col>
+    <Col
+      sm={24}
+      xxl={8}
+    >
+      <PlanAuditRecord
+        auditPlanName="auditPlanName1"
+      />
+    </Col>
+  </Row>
+  <Route
+    component={[Function]}
+    path="/auditPlan/detail/:auditPlanName/report/:reportId"
+  />
+</Fragment>
+`;
