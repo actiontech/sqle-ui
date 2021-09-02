@@ -3,6 +3,7 @@ import { Select } from 'antd';
 import React from 'react';
 import { IInstanceTipResV1 } from '../../api/common';
 import instance from '../../api/instance';
+import { IGetInstanceTipListV1Params } from '../../api/instance/index.d';
 import { ResponseCode } from '../../data/common';
 import { instanceListDefaultKey } from '../../data/common';
 
@@ -12,24 +13,27 @@ const useInstance = () => {
   );
   const [loading, { setTrue, setFalse }] = useBoolean();
 
-  const updateInstanceList = React.useCallback(() => {
-    setTrue();
-    instance
-      .getInstanceTipListV1()
-      .then((res) => {
-        if (res.data.code === ResponseCode.SUCCESS) {
-          setInstanceList(res.data?.data ?? []);
-        } else {
+  const updateInstanceList = React.useCallback(
+    (params?: IGetInstanceTipListV1Params) => {
+      setTrue();
+      instance
+        .getInstanceTipListV1(params ?? {})
+        .then((res) => {
+          if (res.data.code === ResponseCode.SUCCESS) {
+            setInstanceList(res.data?.data ?? []);
+          } else {
+            setInstanceList([]);
+          }
+        })
+        .catch(() => {
           setInstanceList([]);
-        }
-      })
-      .catch(() => {
-        setInstanceList([]);
-      })
-      .finally(() => {
-        setFalse();
-      });
-  }, [setFalse, setTrue]);
+        })
+        .finally(() => {
+          setFalse();
+        });
+    },
+    [setFalse, setTrue]
+  );
 
   const generateInstanceSelectOption = React.useCallback(
     (instance_type: string = instanceListDefaultKey) => {

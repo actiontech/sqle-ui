@@ -13,6 +13,7 @@ import {
   ProfileOutlined,
   SettingOutlined,
   NodeIndexOutlined,
+  CiCircleOutlined,
 } from '@ant-design/icons';
 import { SystemRole } from '../data/common';
 
@@ -69,6 +70,15 @@ const WorkflowTemplate = React.lazy(
     import(
       /* webpackChunkName: "WorkflowTemplate" */ '../page/WorkflowTemplate'
     )
+);
+
+const AuditPlan = React.lazy(
+  () => import(/* webpackChunkName: "AuditPlan" */ '../page/AuditPlan')
+);
+
+const AuditPlanDetail = React.lazy(
+  () =>
+    import(/* webpackChunkName: "PlanDetail" */ '../page/AuditPlan/PlanDetail')
 );
 
 export const unAuthRouter: Array<RouteProps & { key: string }> = [
@@ -186,6 +196,20 @@ export const routerConfig: RouterItem[] = [
         label: 'menu.progressManage',
         icon: <NodeIndexOutlined />,
         component: WorkflowTemplate,
+      },
+      {
+        path: '/auditPlan/detail/:auditPlanName',
+        key: 'auditPlanDetail',
+        label: 'menu.auditPlane',
+        hideInSliderMenu: true,
+        component: AuditPlanDetail,
+      },
+      {
+        path: '/auditPlan',
+        key: 'auditPlan',
+        label: 'menu.auditPlane',
+        icon: <CiCircleOutlined />,
+        component: AuditPlan,
       },
     ],
   },

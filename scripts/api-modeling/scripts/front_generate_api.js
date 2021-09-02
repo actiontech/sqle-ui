@@ -9,7 +9,7 @@ const core = new core_1.default(
   path.resolve(__dirname, '../../../src/api')
 );
 
-let branch = '1.2.0';
+let branch = '1.3.0';
 
 const branchArgv = process.argv.find(
   (e) =>

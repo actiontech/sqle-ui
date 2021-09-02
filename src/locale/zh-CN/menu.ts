@@ -13,4 +13,5 @@ export default {
   orderList: '工单列表',
   orderDetail: '工单详情',
   whitelist: '白名单管理',
+  auditPlane: '审核计划',
 };
