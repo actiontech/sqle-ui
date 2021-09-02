@@ -17,7 +17,6 @@ import {
 } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 import { dataSourceInstance } from '../../DataSource/__testData__';
-import { AuditPlan } from '../PlanList/__testData__';
 
 describe('PlanForm', () => {
   let warningSpy!: jest.SpyInstance;
