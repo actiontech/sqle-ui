@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlanDetail should match snapshot 1`] = `
+<Fragment>
+  <PageHeader
+    extra={
+      Array [
+        <BackButton />,
+      ]
+    }
+    ghost={false}
+    title="auditPlan.detailPage.pageTitle"
+  >
+    auditPlan.detailPage.pageDesc
+  </PageHeader>
+  <section
+    className="padding-content"
+  >
+    <Switch>
+      <Route
+        component={[Function]}
+        path="/auditPlan/detail/:auditPlanName"
+      />
+      <Redirect
+        to="/auditPlan"
+      />
+    </Switch>
+  </section>
+</Fragment>
+`;

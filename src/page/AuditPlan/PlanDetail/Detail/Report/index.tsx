@@ -35,6 +35,7 @@ const AuditPlanReport: React.FC = () => {
   return (
     <Card title={t('auditPlan.report.title', { id: urlParams.reportId })}>
       <Table
+        rowKey="audit_plan_report_sql_fingerprint"
         loading={loading}
         dataSource={data?.list ?? []}
         columns={AuditPlanReportTableHeader()}

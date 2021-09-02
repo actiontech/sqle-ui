@@ -90,7 +90,7 @@ const PlanAuditRecord: React.FC<{ auditPlanName: string }> = (props) => {
                   <span className="text-blue">{item.audit_plan_report_id}</span>
                 </Link>
               }
-              description={`生成时间${formatTime(
+              description={`${t('auditPlan.record.generateTime')}${formatTime(
                 item.audit_plan_report_timestamp,
                 '--'
               )}`}

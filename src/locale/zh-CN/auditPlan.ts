@@ -73,6 +73,10 @@ export default {
     },
   },
 
+  record: {
+    generateTime: '生成时间',
+  },
+
   planTaskRecord: {
     title: '审核记录',
   },
