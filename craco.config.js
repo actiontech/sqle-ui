@@ -46,13 +46,13 @@ module.exports = {
   ],
   devServer: (config, { proxy }) => {
     config.proxy = {
-      '/v1/audit_': {
-        target: 'http://localhost:4200',
-        secure: false,
-        changeOrigin: true,
-        ws: true,
-        xfwd: true,
-      },
+      // '/v1/audit_': {
+      //   target: 'http://localhost:4200',
+      //   secure: false,
+      //   changeOrigin: true,
+      //   ws: true,
+      //   xfwd: true,
+      // },
       '/v1': {
         target: 'http://10.186.62.5:10000',
         secure: false,
