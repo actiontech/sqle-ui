@@ -76,6 +76,9 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
         cron: props.defaultValue.audit_plan_cron,
         dbType: props.defaultValue.audit_plan_db_type,
       });
+      if (!!props.defaultValue.audit_plan_instance_name) {
+        setDataSource(props.defaultValue.audit_plan_instance_name);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.defaultValue]);
