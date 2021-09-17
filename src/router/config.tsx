@@ -56,13 +56,9 @@ const OrderDetail = React.lazy(
 const OrderList = React.lazy(
   () => import(/* webpackChunkName: "Order" */ '../page/Order/List')
 );
-
+/* IFTRUE_isEE */
 const Whitelist = React.lazy(
   () => import(/* webpackChunkName: "Whitelist" */ '../page/Whitelist')
-);
-
-const System = React.lazy(
-  () => import(/* webpackChunkName: "System" */ '../page/System')
 );
 
 const WorkflowTemplate = React.lazy(
@@ -70,6 +66,11 @@ const WorkflowTemplate = React.lazy(
     import(
       /* webpackChunkName: "WorkflowTemplate" */ '../page/WorkflowTemplate'
     )
+);
+/* FITRUE_isEE */
+
+const System = React.lazy(
+  () => import(/* webpackChunkName: "System" */ '../page/System')
 );
 
 const AuditPlan = React.lazy(
@@ -148,6 +149,27 @@ export const routerConfig: RouterItem[] = [
     ],
   },
   {
+    label: 'menu.auditPlane',
+    key: 'plane',
+    icon: <CiCircleOutlined />,
+    components: [
+      {
+        path: '/auditPlan/detail/:auditPlanName',
+        key: 'auditPlanDetail',
+        label: 'menu.auditPlane',
+        hideInSliderMenu: true,
+        component: AuditPlanDetail,
+      },
+      {
+        path: '/auditPlan',
+        key: 'auditPlan',
+        label: 'menu.auditPlaneList',
+        icon: <CiCircleOutlined />,
+        component: AuditPlan,
+      },
+    ],
+  },
+  {
     label: 'menu.platformManage',
     role: [SystemRole.admin],
     key: 'platformManage',
@@ -176,19 +198,20 @@ export const routerConfig: RouterItem[] = [
         component: RuleTemplate,
       },
       {
-        path: '/whitelist',
-        key: 'Whitelist',
-        label: 'menu.whitelist',
-        component: Whitelist,
-        icon: <ProfileOutlined />,
-      },
-      {
         path: '/system',
         key: 'System',
         label: 'menu.systemSetting',
         exact: true,
         component: System,
         icon: <SettingOutlined />,
+      },
+      /* IFTRUE_isEE */
+      {
+        path: '/whitelist',
+        key: 'Whitelist',
+        label: 'menu.whitelist',
+        component: Whitelist,
+        icon: <ProfileOutlined />,
       },
       {
         path: '/progress',
@@ -197,20 +220,7 @@ export const routerConfig: RouterItem[] = [
         icon: <NodeIndexOutlined />,
         component: WorkflowTemplate,
       },
-      {
-        path: '/auditPlan/detail/:auditPlanName',
-        key: 'auditPlanDetail',
-        label: 'menu.auditPlane',
-        hideInSliderMenu: true,
-        component: AuditPlanDetail,
-      },
-      {
-        path: '/auditPlan',
-        key: 'auditPlan',
-        label: 'menu.auditPlane',
-        icon: <CiCircleOutlined />,
-        component: AuditPlan,
-      },
+      /* FITRUE_isEE */
     ],
   },
 ];

@@ -7433,6 +7433,13 @@ jest@26.6.0:
     import-local "^3.0.2"
     jest-cli "^26.6.0"
 
+js-conditional-compile-loader@^1.0.14:
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/js-conditional-compile-loader/-/js-conditional-compile-loader-1.0.14.tgz#eaa41907c9701fcdc5b3bd6db525d1af4303247f"
+  integrity sha512-+a1nCeNpcNqv15lWnX5cWlV27fh44yfhPv4AjoUxscFkKSBIpc9EZwaMYa8GdA5oOmMNDGW1hf/wptkeFuMQuA==
+  dependencies:
+    loader-utils "^1.2.3"
+
 js-cookie@^2.2.1:
   version "2.2.1"
   resolved "https://registry.nlark.com/js-cookie/download/js-cookie-2.2.1.tgz#69e106dc5d5806894562902aa5baec3744e9b2b8"
