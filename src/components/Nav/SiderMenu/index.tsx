@@ -82,7 +82,7 @@ const SiderMenu = () => {
   return (
     <Menu
       selectedKeys={selectMenuWrapper()}
-      defaultOpenKeys={['platformManage', 'order']}
+      defaultOpenKeys={['platformManage', 'order', 'plane']}
       mode="inline"
       theme="dark"
     >

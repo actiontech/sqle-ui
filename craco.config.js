@@ -1,5 +1,11 @@
 const CracoLessPlugin = require('craco-less');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const { getLoaders, loaderByName } = require('@craco/craco');
+
+process.env.isEE =
+  process.argv.includes('--ee') || process.env.NODE_ENV === 'test';
+
+console.log(`current mode: ${process.env.isEE === 'true' ? 'ee' : 'ce'}`);
 
 module.exports = {
   webpack: {
@@ -10,6 +16,31 @@ module.exports = {
           features: ['smartSelect'],
         }),
       ],
+    },
+    configure: (config) => {
+      const babelLoaders = getLoaders(config, loaderByName('babel-loader'));
+      if (babelLoaders.hasFoundAny) {
+        babelLoaders.matches.forEach((item) => {
+          if (item.loader.test.test('aaa.tsx')) {
+            const { loader, options } = item.loader;
+            delete item.loader.loader;
+            delete item.loader.options;
+            item.loader.use = [
+              {
+                loader,
+                options,
+              },
+              {
+                loader: 'js-conditional-compile-loader',
+                options: {
+                  isEE: process.env.isEE === 'true',
+                },
+              },
+            ];
+          }
+        });
+      }
+      return config;
     },
   },
   jest: {

@@ -35,9 +35,11 @@ const QuickLink = () => {
         <Link key="ruleTemplate" to="/rule/template">
           {t('menu.ruleTemplate')}
         </Link>,
+        /* IFTRUE_isEE */
         <Link key="whitelist" to="/whitelist">
           {t('menu.whitelist')}
         </Link>,
+        /* FITRUE_isEE */
         <Link key="system" to="/system">
           {t('menu.systemSetting')}
         </Link>,
