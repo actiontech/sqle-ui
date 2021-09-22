@@ -22,7 +22,7 @@ jobs:
           cmd: install # will run `yarn install` command
       - uses: borales/actions-yarn@v2.3.0
         with:
-          cmd: test --coverage --watchAll=false --ci --coverageReporters="text" --coverageReporters="text-summary" --silent
+          cmd: test --coverage --watchAll=false --ci --coverageReporters="text" --coverageReporters="text-summary" --silent --outputFile="report.json"
       - uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
