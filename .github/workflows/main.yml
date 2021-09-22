@@ -20,6 +20,5 @@ jobs:
       - uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          skip-step: all
           test-script: yarn test --coverage --watchAll=false --ci --coverageReporters="text" --coverageReporters="text-summary" --silent --outputFile="report.json"
           package-manager: yarn
