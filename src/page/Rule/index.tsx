@@ -9,6 +9,7 @@ import {
   Row,
   Select,
   Space,
+  Form
 } from 'antd';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -17,7 +18,7 @@ import ruleTemplate from '../../api/rule_template';
 import EmptyBox from '../../components/EmptyBox';
 import RuleList from '../../components/RuleList';
 import useSyncRuleListTab from '../../components/RuleList/useSyncRuleListTab';
-import { ResponseCode } from '../../data/common';
+import { ResponseCode,FilterFormColLayout ,FilterFormRowLayout,FilterFormLayout} from '../../data/common';
 import useDatabaseType from '../../hooks/useDatabaseType';
 import useInstance from '../../hooks/useInstance';
 import { Theme } from '../../types/theme.type';
@@ -110,38 +111,39 @@ const Rule = () => {
           className="full-width-element"
         >
           <Card>
-            <Row align="middle">
-              <Col span={7}>
-                <Space>
-                  {t('rule.form.instance')}
-                  <Select
-                    data-testid="instance-name"
-                    value={instanceName}
-                    onChange={setInstanceName}
-                    placeholder={t('common.form.placeholder.select')}
-                    className="middle-select"
-                    allowClear
-                  >
-                    {generateInstanceSelectOption()}
-                  </Select>
-                </Space>
-              </Col>
-              <Col span={7}>
-                <Space>
-                  {t('rule.form.dbType')}
-                  <Select
-                    data-testid="database-type"
-                    value={dbType}
-                    onChange={setDbType}
-                    placeholder={t('common.form.placeholder.select')}
-                    className="middle-select"
-                    disabled={!!instanceName}
-                  >
-                    {generateDriverSelectOptions()}
-                  </Select>
-                </Space>
-              </Col>
-            </Row>
+            <Form {...FilterFormLayout}>
+              <Row align="middle"   {...FilterFormRowLayout}>
+                <Col {...FilterFormColLayout}>
+                  <Form.Item
+                  label={t('rule.form.instance')} >
+                    <Select
+                      data-testid="instance-name"
+                      value={instanceName}
+                      onChange={setInstanceName}
+                      placeholder={t('common.form.placeholder.select')}
+                      className="middle-select"
+                      allowClear
+                    >
+                      {generateInstanceSelectOption()}
+                    </Select>
+                  </Form.Item>
+                </Col>
+                <Col {...FilterFormColLayout}>
+                  <Form.Item label= {t('rule.form.dbType')} >
+                    <Select
+                      data-testid="database-type"
+                      value={dbType}
+                      onChange={setDbType}
+                      placeholder={t('common.form.placeholder.select')}
+                      className="middle-select"
+                      disabled={!!instanceName}
+                    >
+                      {generateDriverSelectOptions()}
+                    </Select>
+                  </Form.Item>
+                </Col>
+              </Row>
+            </Form>
           </Card>
           <EmptyBox if={!instanceName}>
             <Card title={t('rule.allRules')}>
