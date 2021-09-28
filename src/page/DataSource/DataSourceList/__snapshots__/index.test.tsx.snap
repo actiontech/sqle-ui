@@ -713,6 +713,11 @@ exports[`DataSource/DataSourceList should match snapshot 1`] = `
                         </th>
                         <th
                           class="ant-table-cell"
+                        >
+                          dataSource.databaseList.workflow
+                        </th>
+                        <th
+                          class="ant-table-cell"
                         />
                       </tr>
                     </thead>
@@ -724,7 +729,7 @@ exports[`DataSource/DataSourceList should match snapshot 1`] = `
                       >
                         <td
                           class="ant-table-cell"
-                          colspan="6"
+                          colspan="7"
                         >
                           <div
                             class="ant-empty ant-empty-normal"
@@ -1478,6 +1483,11 @@ exports[`DataSource/DataSourceList should match snapshot 2`] = `
                         </th>
                         <th
                           class="ant-table-cell"
+                        >
+                          dataSource.databaseList.workflow
+                        </th>
+                        <th
+                          class="ant-table-cell"
                         />
                       </tr>
                     </thead>
@@ -1509,6 +1519,11 @@ exports[`DataSource/DataSourceList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         />
+                        <td
+                          class="ant-table-cell"
+                        >
+                          default
+                        </td>
                         <td
                           class="ant-table-cell"
                         >

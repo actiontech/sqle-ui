@@ -39,10 +39,10 @@ export const dataSourceColumns = (
         return value?.join(',');
       },
     },
-    // {
-    //   dataIndex: 'workflow_template_name',
-    //   title: () => i18n.t('dataSource.databaseList.workflow'),
-    // },
+    {
+      dataIndex: 'workflow_template_name',
+      title: () => i18n.t('dataSource.databaseList.workflow'),
+    },
 
     {
       dataIndex: 'operate',
