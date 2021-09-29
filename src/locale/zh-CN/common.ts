@@ -48,7 +48,7 @@ export default {
   account: '个人中心',
 
   nav: {
-    title: 'SQLe',
+    title: 'SQLE',
   },
 
   request: {

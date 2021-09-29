@@ -22,7 +22,7 @@ const UpdateRuleTemplate = () => {
   >();
   const urlParams = useParams<{ templateName: string }>();
   const { data: allRules, loading: getAllRulesLoading } = useRequest(
-    ruleTemplateService.getRuleListV1.bind(ruleTemplate),
+    () => ruleTemplateService.getRuleListV1({}),
     {
       formatResult(res) {
         return res.data.data ?? [];

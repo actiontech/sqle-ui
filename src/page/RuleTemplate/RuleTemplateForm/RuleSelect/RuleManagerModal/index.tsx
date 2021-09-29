@@ -68,7 +68,6 @@ const RuleManagerModal: React.FC<RuleManagerFormProps> = (props) => {
             </Select>
           </Form.Item>
           <Form.Item
-            noStyle
             label={t('ruleTemplate.editModal.ruleDbType')}
             name="db_type"
           >
