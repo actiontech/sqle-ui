@@ -176,13 +176,40 @@ exports[`RuleSelect/RuleManagerModal should not show value input while ruleData 
                     </div>
                   </div>
                 </div>
-                <input
-                  class="ant-input ant-input-disabled"
-                  disabled=""
-                  id="db_type"
-                  type="text"
-                  value=""
-                />
+                <div
+                  class="ant-row ant-form-item"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                  >
+                    <label
+                      class=""
+                      for="db_type"
+                      title="ruleTemplate.editModal.ruleDbType"
+                    >
+                      ruleTemplate.editModal.ruleDbType
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <input
+                          class="ant-input ant-input-disabled"
+                          disabled=""
+                          id="db_type"
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div
                   class="ant-row ant-form-item ant-form-item-hidden"
                   data-testid="hidden-form-item"
@@ -491,13 +518,40 @@ exports[`RuleSelect/RuleManagerModal should render base form at init 1`] = `
                     </div>
                   </div>
                 </div>
-                <input
-                  class="ant-input ant-input-disabled"
-                  disabled=""
-                  id="db_type"
-                  type="text"
-                  value=""
-                />
+                <div
+                  class="ant-row ant-form-item"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                  >
+                    <label
+                      class=""
+                      for="db_type"
+                      title="ruleTemplate.editModal.ruleDbType"
+                    >
+                      ruleTemplate.editModal.ruleDbType
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <input
+                          class="ant-input ant-input-disabled"
+                          disabled=""
+                          id="db_type"
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div
                   class="ant-row ant-form-item ant-form-item-has-success"
                   data-testid="hidden-form-item"
@@ -812,13 +866,40 @@ exports[`RuleSelect/RuleManagerModal should resetFiled while click close 1`] = `
                     </div>
                   </div>
                 </div>
-                <input
-                  class="ant-input ant-input-disabled"
-                  disabled=""
-                  id="db_type"
-                  type="text"
-                  value=""
-                />
+                <div
+                  class="ant-row ant-form-item"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                  >
+                    <label
+                      class=""
+                      for="db_type"
+                      title="ruleTemplate.editModal.ruleDbType"
+                    >
+                      ruleTemplate.editModal.ruleDbType
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <input
+                          class="ant-input ant-input-disabled"
+                          disabled=""
+                          id="db_type"
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div
                   class="ant-row ant-form-item ant-form-item-has-success"
                   data-testid="hidden-form-item"
