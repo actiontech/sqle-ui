@@ -9,6 +9,7 @@ import { CreateAuditWhitelistReqV1MatchTypeEnum } from '../../../api/common.enum
 import { I18nKey } from '../../../types/common.type';
 import useMonacoEditor from '../../../hooks/useMonacoEditor';
 import { whiteSpaceSql } from '../../../utils/FormRule';
+import React from 'react';
 
 export const WhitelistMatchTypeLabel: {
   [key in CreateAuditWhitelistReqV1MatchTypeEnum]: I18nKey;
@@ -23,8 +24,20 @@ const WhitelistForm: React.FC<WhitelistFormProps> = (props) => {
   const { t } = useTranslation();
   const styles = useStyles();
   const { currentEditorTheme } = useChangeTheme();
+  const [editorHeight, setEditorHeight] = React.useState(450);
 
   const { editorDidMount } = useMonacoEditor(props.form, { formName: 'sql' });
+
+  React.useEffect(() => {
+    const bodyHeight = window.screen.height;
+    if (bodyHeight >= 1000) {
+      setEditorHeight(450);
+    } else if (bodyHeight < 1080 && bodyHeight >= 900) {
+      setEditorHeight(320);
+    } else if (bodyHeight < 900 && bodyHeight >= 700) {
+      setEditorHeight(220);
+    }
+  }, [])
 
   return (
     <Form form={props.form} {...ModalFormLayout}>
@@ -37,14 +50,14 @@ const WhitelistForm: React.FC<WhitelistFormProps> = (props) => {
           <Radio value={CreateAuditWhitelistReqV1MatchTypeEnum.exact_match}>
             {t(
               WhitelistMatchTypeLabel[
-                CreateAuditWhitelistReqV1MatchTypeEnum.exact_match
+              CreateAuditWhitelistReqV1MatchTypeEnum.exact_match
               ]
             )}
           </Radio>
           <Radio value={CreateAuditWhitelistReqV1MatchTypeEnum.fp_match}>
             {t(
               WhitelistMatchTypeLabel[
-                CreateAuditWhitelistReqV1MatchTypeEnum.fp_match
+              CreateAuditWhitelistReqV1MatchTypeEnum.fp_match
               ]
             )}
           </Radio>
@@ -78,7 +91,7 @@ const WhitelistForm: React.FC<WhitelistFormProps> = (props) => {
         <MonacoEditor
           theme={currentEditorTheme}
           width="100%"
-          height="500"
+          height={editorHeight}
           language="sql"
           editorDidMount={editorDidMount}
         />
