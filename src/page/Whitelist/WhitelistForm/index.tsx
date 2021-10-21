@@ -34,7 +34,7 @@ const WhitelistForm: React.FC<WhitelistFormProps> = (props) => {
       setEditorHeight(450);
     } else if (bodyHeight < 1080 && bodyHeight >= 900) {
       setEditorHeight(320);
-    } else if (bodyHeight < 900 && bodyHeight >= 700) {
+    } else if (bodyHeight < 900) {
       setEditorHeight(220);
     }
   }, [])
