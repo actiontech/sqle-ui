@@ -178,7 +178,7 @@ exports[`Whitelist/WhitelistList/Modal/UpdateWhitelist should match snapshot 1`]
                         class="ant-form-item-control-input-content"
                       >
                         <textarea
-                          height="220"
+                          height="500"
                           id="sql"
                           language="sql"
                           theme="vs"
