@@ -29,7 +29,7 @@ export default {
   create: {
     title: '创建审核计划',
     successTitle: '创建审核计划成功',
-    successGuide: '到审核计划列表查看刚昂添加的数据源',
+    successGuide: '到审核计划列表查看刚刚添加的审核计划',
   },
 
   update: {
