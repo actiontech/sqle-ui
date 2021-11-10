@@ -1,15 +1,28 @@
-const config = require('../config/envConfig');
-const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 const core_1 = require('../dist/core');
+const { Octokit } = require('@octokit/core');
+
+const argv = process.argv;
+
+let token = argv.find((item) => item.startsWith('-token='));
+
+if (!token) {
+  throw new Error('Token is required');
+}
+
+token = token.split('=')[1];
+
+const octokit = new Octokit({
+  auth: token,
+});
 
 const core = new core_1.default(
   path.resolve(__dirname, '../swagger.json'),
   path.resolve(__dirname, '../../../src/api')
 );
 
-let branch = '1.3.0';
+let branch = 'main-ee';
 
 const branchArgv = process.argv.find(
   (e) =>
@@ -21,20 +34,20 @@ const branchArgv = process.argv.find(
 if (branchArgv) {
   branch = branchArgv.split('=')[1];
 }
+const getFile = async () => {
+  try {
+    const value = await octokit.request(
+      `GET /repos/{owner}/{repo}/contents/{path}?ref=${branch}`,
+      {
+        owner: 'actiontech',
+        repo: 'sqle-ee',
+        path: `/sqle/docs/swagger.json`,
+      }
+    );
 
-axios
-  .get(
-    `http://10.186.18.21/api/v4/projects/234/repository/files/sqle%2Fdocs%2Fswagger.json/raw?ref=${branch}`,
-    {
-      headers: {
-        'PRIVATE-TOKEN': config.access_token,
-      },
-    }
-  )
-  .then((res) => {
     fs.writeFile(
       path.resolve(__dirname, '../swagger.json'),
-      JSON.stringify(res.data),
+      Buffer.from(value.data.content, 'base64').toString(),
       function(err, data) {
         if (err) {
           console.log(err);
@@ -43,7 +56,9 @@ axios
         }
       }
     );
-  })
-  .catch((err) => {
-    console.log(err, '获取文件失败！');
-  });
+  } catch (error) {
+    console.error('get swagger.json error', error);
+  }
+};
+
+getFile();
