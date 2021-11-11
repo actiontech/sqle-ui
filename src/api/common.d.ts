@@ -385,6 +385,14 @@ export interface IGetInstancesResV1 {
   total_nums?: number;
 }
 
+export interface IGetLDAPConfigurationResV1 {
+  code?: number;
+
+  data?: ILDAPConfigurationResV1;
+
+  message?: string;
+}
+
 export interface IGetRoleTipsResV1 {
   code?: number;
 
@@ -567,6 +575,40 @@ export interface IInstanceTipResV1 {
   instance_type?: string;
 }
 
+export interface ILDAPConfigurationReqV1 {
+  enable_ldap?: boolean;
+
+  ldap_connect_dn?: string;
+
+  ldap_connect_pwd?: string;
+
+  ldap_search_base_dn?: string;
+
+  ldap_server_host?: string;
+
+  ldap_server_port?: string;
+
+  ldap_user_email_rdn_key?: string;
+
+  ldap_user_name_rdn_key?: string;
+}
+
+export interface ILDAPConfigurationResV1 {
+  enable_ldap?: boolean;
+
+  ldap_connect_dn?: string;
+
+  ldap_search_base_dn?: string;
+
+  ldap_server_host?: string;
+
+  ldap_server_port?: string;
+
+  ldap_user_email_rdn_key?: string;
+
+  ldap_user_name_rdn_key?: string;
+}
+
 export interface IPartialSyncAuditPlanSQLsReqV1 {
   audit_plan_sql_list?: IAuditPlanSQLReqV1[];
 }
@@ -649,6 +691,14 @@ export interface ISMTPConfigurationResV1 {
 
 export interface ISystemVariablesResV1 {
   workflow_expired_hours?: number;
+}
+
+export interface ITriggerAuditPlanResV1 {
+  code?: number;
+
+  data?: IAuditPlanReportResV1;
+
+  message?: string;
 }
 
 export interface IUpdateAuditPlanReqV1 {

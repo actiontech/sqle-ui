@@ -8,7 +8,8 @@ import {
   IGetAuditPlanReportsResV1,
   IGetAuditPlanSQLsResV1,
   IFullSyncAuditPlanSQLsReqV1,
-  IPartialSyncAuditPlanSQLsReqV1
+  IPartialSyncAuditPlanSQLsReqV1,
+  ITriggerAuditPlanResV1
 } from '../common.d';
 
 export interface IGetAuditPlansV1Params {
@@ -95,4 +96,4 @@ export interface ITriggerAuditPlanV1Params {
   audit_plan_name: string;
 }
 
-export interface ITriggerAuditPlanV1Return extends IBaseRes {}
+export interface ITriggerAuditPlanV1Return extends ITriggerAuditPlanResV1 {}
