@@ -23,6 +23,7 @@ export default {
   resetAndClose: '重置表单并关闭',
   operateSuccess: '操作成功',
   operate: '操作',
+  open: '开启',
 
   prevStep: '上一步',
   nextStep: '下一步',
@@ -80,6 +81,8 @@ export default {
       email: '请输入有效的邮箱地址',
       startWithLetter: '必须要以字母开头',
       onlyLetterAndNumber: '只能包含字母、数字、中划线和下划线',
+      onlyNumber: '只能包含数字',
+      portRange: '端口号范围为{{min}}-{{max}}',
     },
   },
 

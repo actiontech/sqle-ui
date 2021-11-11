@@ -1,6 +1,7 @@
 import { PageHeader, Space } from 'antd';
 import { useTranslation } from 'react-i18next';
 import GlobalSetting from './GlobalSetting';
+import LDAPSetting from './LDAPSetting';
 import SMTPSetting from './SMTPSetting';
 
 const System = () => {
@@ -15,6 +16,7 @@ const System = () => {
         <Space direction="vertical" className="full-width-element">
           <SMTPSetting />
           <GlobalSetting />
+          <LDAPSetting />
         </Space>
       </section>
     </>
