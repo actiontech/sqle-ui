@@ -17,6 +17,7 @@ exports[`System should match snapshot 1`] = `
     >
       <SMTPSetting />
       <GlobalSetting />
+      <LDAPSetting />
     </Space>
   </section>
 </Fragment>
