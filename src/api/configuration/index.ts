@@ -8,6 +8,9 @@ import { AxiosRequestConfig } from 'axios';
 
 import {
   IGetDriversV1Return,
+  IGetLDAPConfigurationV1Return,
+  IUpdateLDAPConfigurationV1Params,
+  IUpdateLDAPConfigurationV1Return,
   IGetSMTPConfigurationV1Return,
   IUpdateSMTPConfigurationV1Params,
   IUpdateSMTPConfigurationV1Return,
@@ -21,6 +24,26 @@ class ConfigurationService extends ServiceBase {
     return this.get<IGetDriversV1Return>(
       '/v1/configurations/drivers',
       undefined,
+      options
+    );
+  }
+
+  public getLDAPConfigurationV1(options?: AxiosRequestConfig) {
+    return this.get<IGetLDAPConfigurationV1Return>(
+      '/v1/configurations/ldap',
+      undefined,
+      options
+    );
+  }
+
+  public updateLDAPConfigurationV1(
+    params: IUpdateLDAPConfigurationV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.patch<IUpdateLDAPConfigurationV1Return>(
+      '/v1/configurations/ldap',
+      paramsData,
       options
     );
   }

@@ -1,0 +1,1747 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`System/LdapConfig should get ldap setting from origin 1`] = `
+<div>
+  <div
+    class="ant-card ant-card-loading ant-card-bordered"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          system.title.ldap
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="ant-card-loading-content"
+      >
+        <div
+          class="ant-row"
+          style="margin-left: -4px; margin-right: -4px;"
+        >
+          <div
+            class="ant-col ant-col-22"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+        </div>
+        <div
+          class="ant-row"
+          style="margin-left: -4px; margin-right: -4px;"
+        >
+          <div
+            class="ant-col ant-col-8"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+          <div
+            class="ant-col ant-col-15"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+        </div>
+        <div
+          class="ant-row"
+          style="margin-left: -4px; margin-right: -4px;"
+        >
+          <div
+            class="ant-col ant-col-6"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+          <div
+            class="ant-col ant-col-18"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+        </div>
+        <div
+          class="ant-row"
+          style="margin-left: -4px; margin-right: -4px;"
+        >
+          <div
+            class="ant-col ant-col-13"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+          <div
+            class="ant-col ant-col-9"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+        </div>
+        <div
+          class="ant-row"
+          style="margin-left: -4px; margin-right: -4px;"
+        >
+          <div
+            class="ant-col ant-col-4"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+          <div
+            class="ant-col ant-col-3"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+          <div
+            class="ant-col ant-col-16"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`System/LdapConfig should get ldap setting from origin 2`] = `
+<div>
+  <div
+    class="ant-card ant-card-bordered"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          system.title.ldap
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <section>
+        <div
+          class="ant-descriptions"
+        >
+          <div
+            class="ant-descriptions-view"
+          >
+            <table>
+              <tbody>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-label"
+                      >
+                        system.ldap.enableLadp
+                      </span>
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        common.close
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-label"
+                      >
+                        system.ldap.ldapServerHost
+                      </span>
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        1
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-label"
+                      >
+                        system.ldap.ldapServerPort
+                      </span>
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        1
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-label"
+                      >
+                        system.ldap.ldapConnectDn
+                      </span>
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        1
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-label"
+                      >
+                        system.ldap.ldapSearchBaseDn
+                      </span>
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        1
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-label"
+                      >
+                        system.ldap.ldapUserNameRdnKey
+                      </span>
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        1
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-label"
+                      >
+                        system.ldap.ldapUserEmailRdnKey
+                      </span>
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        1
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        <button
+                          class="ant-btn ant-btn-primary"
+                          type="button"
+                        >
+                          <span>
+                            common.modify
+                          </span>
+                        </button>
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <form
+        class="ant-form ant-form-horizontal"
+        hidden=""
+      >
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="enable_ldap"
+              title="system.ldap.enableLadp"
+            >
+              system.ldap.enableLadp
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <button
+                  aria-checked="false"
+                  class="ant-switch"
+                  id="enable_ldap"
+                  role="switch"
+                  type="button"
+                >
+                  <div
+                    class="ant-switch-handle"
+                  />
+                  <span
+                    class="ant-switch-inner"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="ldap_server_host"
+              title="system.ldap.ldapServerHost"
+            >
+              system.ldap.ldapServerHost
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <input
+                  class="ant-input"
+                  id="ldap_server_host"
+                  placeholder="common.form.placeholder.input"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="ldap_server_port"
+              title="system.ldap.ldapServerPort"
+            >
+              system.ldap.ldapServerPort
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <input
+                  class="ant-input"
+                  id="ldap_server_port"
+                  placeholder="common.form.placeholder.input"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="ldap_connect_dn"
+              title=""
+            >
+              <div
+                class="ant-space ant-space-horizontal ant-space-align-center"
+              >
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
+                >
+                  <span
+                    aria-label="info-circle"
+                    class="anticon anticon-info-circle text-orange"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="info-circle"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                      />
+                      <path
+                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  system.ldap.ldapConnectDn
+                </div>
+              </div>
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <input
+                  class="ant-input"
+                  id="ldap_connect_dn"
+                  placeholder="common.form.placeholder.input"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="ldap_connect_pwd"
+              title="system.ldap.ldapConnectPwd"
+            >
+              system.ldap.ldapConnectPwd
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <span
+                  class="ant-input-affix-wrapper ant-input-password"
+                >
+                  <input
+                    action="click"
+                    class="ant-input"
+                    id="ldap_connect_pwd"
+                    placeholder="common.form.placeholder.input"
+                    type="password"
+                    value=""
+                  />
+                  <span
+                    class="ant-input-suffix"
+                  >
+                    <span
+                      aria-label="eye-invisible"
+                      class="anticon anticon-eye-invisible ant-input-password-icon"
+                      role="img"
+                      tabindex="-1"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="eye-invisible"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
+                        />
+                        <path
+                          d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
+                        />
+                      </svg>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="ldap_search_base_dn"
+              title=""
+            >
+              <div
+                class="ant-space ant-space-horizontal ant-space-align-center"
+              >
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
+                >
+                  <span
+                    aria-label="info-circle"
+                    class="anticon anticon-info-circle text-orange"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="info-circle"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                      />
+                      <path
+                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  system.ldap.ldapSearchBaseDn
+                </div>
+              </div>
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <input
+                  class="ant-input"
+                  id="ldap_search_base_dn"
+                  placeholder="common.form.placeholder.input"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="ldap_user_name_rdn_key"
+              title=""
+            >
+              <div
+                class="ant-space ant-space-horizontal ant-space-align-center"
+              >
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
+                >
+                  <span
+                    aria-label="info-circle"
+                    class="anticon anticon-info-circle text-orange"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="info-circle"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                      />
+                      <path
+                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  system.ldap.ldapUserNameRdnKey
+                </div>
+              </div>
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <input
+                  class="ant-input"
+                  id="ldap_user_name_rdn_key"
+                  placeholder="common.form.placeholder.input"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="ldap_user_email_rdn_key"
+              title=""
+            >
+              <div
+                class="ant-space ant-space-horizontal ant-space-align-center"
+              >
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
+                >
+                  <span
+                    aria-label="info-circle"
+                    class="anticon anticon-info-circle text-orange"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="info-circle"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                      />
+                      <path
+                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  system.ldap.ldapUserEmailRdnKey
+                </div>
+              </div>
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <input
+                  class="ant-input"
+                  id="ldap_user_email_rdn_key"
+                  placeholder="common.form.placeholder.input"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class="ant-form-item-no-colon"
+              title=" "
+            >
+               
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <button
+                      class="ant-btn ant-btn-primary"
+                      type="submit"
+                    >
+                      <span>
+                        common.submit
+                      </span>
+                    </button>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <button
+                      class="ant-btn"
+                      type="button"
+                    >
+                      <span>
+                        common.cancel
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`System/LdapConfig should update ldap setting after user update from 1`] = `
+<div>
+  <div
+    class="ant-card ant-card-bordered"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          system.title.ldap
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <section
+        hidden=""
+      >
+        <div
+          class="ant-descriptions"
+        >
+          <div
+            class="ant-descriptions-view"
+          >
+            <table>
+              <tbody>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-label"
+                      >
+                        system.ldap.enableLadp
+                      </span>
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        common.close
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-label"
+                      >
+                        system.ldap.ldapServerHost
+                      </span>
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        1
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-label"
+                      >
+                        system.ldap.ldapServerPort
+                      </span>
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        1
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-label"
+                      >
+                        system.ldap.ldapConnectDn
+                      </span>
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        1
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-label"
+                      >
+                        system.ldap.ldapSearchBaseDn
+                      </span>
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        1
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-label"
+                      >
+                        system.ldap.ldapUserNameRdnKey
+                      </span>
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        1
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-label"
+                      >
+                        system.ldap.ldapUserEmailRdnKey
+                      </span>
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        1
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        <button
+                          ant-click-animating-without-extra-node="false"
+                          class="ant-btn ant-btn-primary"
+                          type="button"
+                        >
+                          <span>
+                            common.modify
+                          </span>
+                        </button>
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <form
+        class="ant-form ant-form-horizontal"
+      >
+        <div
+          class="ant-row ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="enable_ldap"
+              title="system.ldap.enableLadp"
+            >
+              system.ldap.enableLadp
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <button
+                  aria-checked="false"
+                  class="ant-switch"
+                  id="enable_ldap"
+                  role="switch"
+                  type="button"
+                >
+                  <div
+                    class="ant-switch-handle"
+                  />
+                  <span
+                    class="ant-switch-inner"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="ldap_server_host"
+              title="system.ldap.ldapServerHost"
+            >
+              system.ldap.ldapServerHost
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <input
+                  class="ant-input"
+                  id="ldap_server_host"
+                  placeholder="common.form.placeholder.input"
+                  type="text"
+                  value="1"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="ldap_server_port"
+              title="system.ldap.ldapServerPort"
+            >
+              system.ldap.ldapServerPort
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <input
+                  class="ant-input"
+                  id="ldap_server_port"
+                  placeholder="common.form.placeholder.input"
+                  type="text"
+                  value="1"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="ldap_connect_dn"
+              title=""
+            >
+              <div
+                class="ant-space ant-space-horizontal ant-space-align-center"
+              >
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
+                >
+                  <span
+                    aria-label="info-circle"
+                    class="anticon anticon-info-circle text-orange"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="info-circle"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                      />
+                      <path
+                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  system.ldap.ldapConnectDn
+                </div>
+              </div>
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <input
+                  class="ant-input"
+                  id="ldap_connect_dn"
+                  placeholder="common.form.placeholder.input"
+                  type="text"
+                  value="1"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="ldap_connect_pwd"
+              title="system.ldap.ldapConnectPwd"
+            >
+              system.ldap.ldapConnectPwd
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <span
+                  class="ant-input-affix-wrapper ant-input-password"
+                >
+                  <input
+                    action="click"
+                    class="ant-input"
+                    id="ldap_connect_pwd"
+                    placeholder="common.form.placeholder.input"
+                    type="password"
+                    value=""
+                  />
+                  <span
+                    class="ant-input-suffix"
+                  >
+                    <span
+                      aria-label="eye-invisible"
+                      class="anticon anticon-eye-invisible ant-input-password-icon"
+                      role="img"
+                      tabindex="-1"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="eye-invisible"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
+                        />
+                        <path
+                          d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
+                        />
+                      </svg>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="ldap_search_base_dn"
+              title=""
+            >
+              <div
+                class="ant-space ant-space-horizontal ant-space-align-center"
+              >
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
+                >
+                  <span
+                    aria-label="info-circle"
+                    class="anticon anticon-info-circle text-orange"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="info-circle"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                      />
+                      <path
+                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  system.ldap.ldapSearchBaseDn
+                </div>
+              </div>
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <input
+                  class="ant-input"
+                  id="ldap_search_base_dn"
+                  placeholder="common.form.placeholder.input"
+                  type="text"
+                  value="1"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="ldap_user_name_rdn_key"
+              title=""
+            >
+              <div
+                class="ant-space ant-space-horizontal ant-space-align-center"
+              >
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
+                >
+                  <span
+                    aria-label="info-circle"
+                    class="anticon anticon-info-circle text-orange"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="info-circle"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                      />
+                      <path
+                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  system.ldap.ldapUserNameRdnKey
+                </div>
+              </div>
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <input
+                  class="ant-input"
+                  id="ldap_user_name_rdn_key"
+                  placeholder="common.form.placeholder.input"
+                  type="text"
+                  value="1"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="ldap_user_email_rdn_key"
+              title=""
+            >
+              <div
+                class="ant-space ant-space-horizontal ant-space-align-center"
+              >
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
+                >
+                  <span
+                    aria-label="info-circle"
+                    class="anticon anticon-info-circle text-orange"
+                    role="img"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="info-circle"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                      />
+                      <path
+                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  system.ldap.ldapUserEmailRdnKey
+                </div>
+              </div>
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <input
+                  class="ant-input"
+                  id="ldap_user_email_rdn_key"
+                  placeholder="common.form.placeholder.input"
+                  type="text"
+                  value="1"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class="ant-form-item-no-colon"
+              title=" "
+            >
+               
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <button
+                      class="ant-btn ant-btn-primary"
+                      type="submit"
+                    >
+                      <span>
+                        common.submit
+                      </span>
+                    </button>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <button
+                      class="ant-btn"
+                      type="button"
+                    >
+                      <span>
+                        common.cancel
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`System/LdapConfig should update ldap setting after user update from 2`] = `
+<div>
+  <div
+    class="ant-card ant-card-loading ant-card-bordered"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          system.title.ldap
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="ant-card-loading-content"
+      >
+        <div
+          class="ant-row"
+          style="margin-left: -4px; margin-right: -4px;"
+        >
+          <div
+            class="ant-col ant-col-22"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+        </div>
+        <div
+          class="ant-row"
+          style="margin-left: -4px; margin-right: -4px;"
+        >
+          <div
+            class="ant-col ant-col-8"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+          <div
+            class="ant-col ant-col-15"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+        </div>
+        <div
+          class="ant-row"
+          style="margin-left: -4px; margin-right: -4px;"
+        >
+          <div
+            class="ant-col ant-col-6"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+          <div
+            class="ant-col ant-col-18"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+        </div>
+        <div
+          class="ant-row"
+          style="margin-left: -4px; margin-right: -4px;"
+        >
+          <div
+            class="ant-col ant-col-13"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+          <div
+            class="ant-col ant-col-9"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+        </div>
+        <div
+          class="ant-row"
+          style="margin-left: -4px; margin-right: -4px;"
+        >
+          <div
+            class="ant-col ant-col-4"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+          <div
+            class="ant-col ant-col-3"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+          <div
+            class="ant-col ant-col-16"
+            style="padding-left: 4px; padding-right: 4px;"
+          >
+            <div
+              class="ant-card-loading-block"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

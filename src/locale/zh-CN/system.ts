@@ -6,6 +6,7 @@ export default {
   title: {
     smtp: 'SMTP',
     global: '全局配置',
+    ldap: 'LDAP',
   },
 
   smtp: {
@@ -18,5 +19,20 @@ export default {
 
   global: {
     orderExpiredHours: '已完成的工单回收周期',
+  },
+
+  ldap: {
+    enableLadp: '是否启用LDAP服务',
+    ldapServerHost: 'LDAP服务器地址',
+    ldapServerPort: 'LDAP服务器端口',
+    ldapConnectDn: '连接用户DN',
+    ldapConnectDnTips: '通过此用户登录ldap查询login界面登录用户的信息',
+    ldapConnectPwd: '连接用户密码',
+    ldapSearchBaseDn: '查询根DN',
+    ldapSearchBaseDnTips: '查询根DN, 描述: 查询时会以此目录作为根目录进行查询',
+    ldapUserNameRdnKey: '用户名属性名',
+    ldapUserNameRdnKeyTips: 'SQLE绑定的用户名在LDAP中对应的属性名',
+    ldapUserEmailRdnKey: '用户邮箱属性名',
+    ldapUserEmailRdnKeyTips: 'SQLE绑定的用户邮箱在LDAP中对应的属性名',
   },
 };
