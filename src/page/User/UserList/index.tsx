@@ -19,7 +19,7 @@ import { useDispatch } from 'react-redux';
 import { IUserResV1 } from '../../../api/common';
 import user from '../../../api/user';
 import EmptyBox from '../../../components/EmptyBox';
-import { ResponseCode } from '../../../data/common';
+import { LoginTypeEnum, ResponseCode } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { ModalName } from '../../../data/ModalName';
 import {
@@ -217,25 +217,27 @@ const UserList = () => {
                     {t('common.delete')}
                   </Typography.Text>
                 </Popconfirm>
-                <Divider type="vertical" />
-                <Dropdown
-                  placement="bottomRight"
-                  overlay={
-                    <Menu>
-                      <Menu.Item
-                        onClick={updateUserPassword.bind(null, item)}
-                        key="update-user-password"
-                      >
-                        {t('user.updateUserPassword.button')}
-                      </Menu.Item>
-                    </Menu>
-                  }
-                >
-                  <Typography.Link className="pointer">
-                    {t('common.more')}
-                    <DownOutlined />
-                  </Typography.Link>
-                </Dropdown>
+                <EmptyBox if={item?.login_type !== LoginTypeEnum.ldap}>
+                  <Divider type="vertical" />
+                  <Dropdown
+                    placement="bottomRight"
+                    overlay={
+                      <Menu>
+                        <Menu.Item
+                          onClick={updateUserPassword.bind(null, item)}
+                          key="update-user-password"
+                        >
+                          {t('user.updateUserPassword.button')}
+                        </Menu.Item>
+                      </Menu>
+                    }
+                  >
+                    <Typography.Link className="pointer">
+                      {t('common.more')}
+                      <DownOutlined />
+                    </Typography.Link>
+                  </Dropdown>
+                </EmptyBox>
               </EmptyBox>
             </Space>
           </List.Item>

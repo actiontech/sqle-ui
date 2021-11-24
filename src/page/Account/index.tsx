@@ -13,6 +13,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import user from '../../api/user';
 import EmptyBox from '../../components/EmptyBox';
+import { LoginTypeEnum } from '../../data/common';
 import { ModalName } from '../../data/ModalName';
 import ModifyPasswordModal from './Modal/ModifyPassword';
 import UserEmail from './UserEmail';
@@ -79,7 +80,12 @@ const Account = () => {
               </Typography.Text>
             </Col>
             <Col span={24}>
-              <Button type="primary" onClick={openModifyPasswordModal}>
+              <Button
+                disabled={userInfo?.login_type === LoginTypeEnum.ldap}
+                type="primary"
+                onClick={openModifyPasswordModal}
+                data-testid="accountModifyPasswordBtn"
+              >
                 {t('account.modifyPassword.button')}
               </Button>
             </Col>
