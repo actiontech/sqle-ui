@@ -804,6 +804,8 @@ export interface IUserDetailResV1 {
 
   is_admin?: boolean;
 
+  login_type?: string;
+
   role_name_list?: string[];
 
   user_name?: string;
@@ -821,6 +823,8 @@ export interface IUserLoginResV1 {
 
 export interface IUserResV1 {
   email?: string;
+
+  login_type?: string;
 
   role_name_list?: string[];
 
