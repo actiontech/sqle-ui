@@ -85,3 +85,8 @@ export const filterFormButtonLayoutFactory = (
 export const FilterFormRowLayout = {
   gutter: 24,
 };
+
+export enum LoginTypeEnum{
+  'ldap'='ldap',
+  'sqle'='sqle',
+}

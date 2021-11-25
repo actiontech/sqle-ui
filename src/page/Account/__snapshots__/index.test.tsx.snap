@@ -176,6 +176,7 @@ exports[`Account should render user Info when request is success 1`] = `
           >
             <button
               class="ant-btn ant-btn-primary"
+              data-testid="accountModifyPasswordBtn"
               type="button"
             >
               <span>
@@ -375,6 +376,7 @@ exports[`Account should render user Info when request is success 2`] = `
           >
             <button
               class="ant-btn ant-btn-primary"
+              data-testid="accountModifyPasswordBtn"
               type="button"
             >
               <span>

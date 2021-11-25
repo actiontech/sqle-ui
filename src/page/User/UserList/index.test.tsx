@@ -224,4 +224,13 @@ describe('User/UserList', () => {
       page_size: 10,
     });
   });
+
+  test('should not be rendered delete and more when the username is admin and do not render more when user login type is ldap', async () => {
+    render(<UserList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(screen.getAllByText('common.more').length).toBe(UserListData.length - 2);
+    expect(screen.getAllByText('common.delete').length).toBe(UserListData.length - 1);
+  });
 });
