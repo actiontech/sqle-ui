@@ -9,7 +9,6 @@ import {
   IRuleResV1,
   IRuleTemplateDetailResV1,
 } from '../../../api/common';
-import { RuleParamResV1TypeEnum } from '../../../api/common.enum';
 import ruleTemplateService from '../../../api/rule_template';
 import { ResponseCode } from '../../../data/common';
 import RuleTemplateForm from '../RuleTemplateForm';

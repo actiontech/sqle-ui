@@ -764,7 +764,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          utf8mb4_0900_ai_ci
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -1666,7 +1675,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          3
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -2322,7 +2340,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          5
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -2404,7 +2431,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          0.7
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -4123,7 +4159,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          16
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -4205,7 +4250,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          5000
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -4284,7 +4338,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          10000
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -4852,7 +4915,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          sha(),sqrt(),md5()
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -4934,7 +5006,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          3
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -5754,7 +5835,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          1000
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -6558,7 +6648,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          utf8mb4_0900_ai_ci
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -7460,7 +7559,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          3
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -8116,7 +8224,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          5
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -8198,7 +8315,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          0.7
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -9917,7 +10043,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          16
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -9999,7 +10134,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          5000
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -10078,7 +10222,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          10000
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -10646,7 +10799,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          sha(),sqrt(),md5()
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -10728,7 +10890,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          3
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -11548,7 +11719,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          1000
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -12098,7 +12278,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          utf8mb4_0900_ai_ci
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -13143,7 +13332,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          3
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -13903,7 +14101,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          5
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -13998,7 +14205,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          0.7
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -16124,7 +16340,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          16
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -16206,7 +16431,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          5000
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -16285,7 +16519,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          10000
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -16853,7 +17096,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          sha(),sqrt(),md5()
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -16935,7 +17187,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          3
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >
@@ -17755,7 +18016,16 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          1000
+                        </span>
+                      </div>
+                    </div>
                     <ul
                       class="ant-list-item-action"
                     >

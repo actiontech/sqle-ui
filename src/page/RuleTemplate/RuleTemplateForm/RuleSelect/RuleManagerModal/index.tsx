@@ -130,6 +130,7 @@ const RuleManagerModal: React.FC<RuleManagerFormProps> = (props) => {
               if (item.type === RuleParamResV1TypeEnum.bool) {
                 return (
                   <Form.Item
+                    key={item.key}
                     name={item.key}
                     label={item.desc}
                     valuePropName="checked"
@@ -141,6 +142,7 @@ const RuleManagerModal: React.FC<RuleManagerFormProps> = (props) => {
               if (item.type === RuleParamResV1TypeEnum.int) {
                 return (
                   <Form.Item
+                    key={item.key}
                     label={item.desc ?? ''}
                     name={item.key}
                     rules={[
@@ -157,7 +159,11 @@ const RuleManagerModal: React.FC<RuleManagerFormProps> = (props) => {
                 );
               }
               return (
-                <Form.Item label={item.desc ?? ''} name={item.key}>
+                <Form.Item
+                  key={item.key}
+                  label={item.desc ?? ''}
+                  name={item.key}
+                >
                   <Input />
                 </Form.Item>
               );

@@ -694,7 +694,16 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    utf8mb4_0900_ai_ci
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                             <li
                               class="ant-list-item"
@@ -1442,7 +1451,16 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    3
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                             <li
                               class="ant-list-item"
@@ -1714,7 +1732,16 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    5
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                             <li
                               class="ant-list-item"
@@ -1782,7 +1809,16 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    0.7
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                             <li
                               class="ant-list-item"
@@ -3207,7 +3243,16 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    16
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                             <li
                               class="ant-list-item"
@@ -3275,7 +3320,16 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    5000
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                             <li
                               class="ant-list-item"
@@ -3615,7 +3669,16 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    sha(),sqrt(),md5()
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                             <li
                               class="ant-list-item"
@@ -3683,7 +3746,16 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    3
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                             <li
                               class="ant-list-item"
@@ -4558,7 +4630,16 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    10000
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                             <li
                               class="ant-list-item"
@@ -5922,7 +6003,16 @@ exports[`Rule should render page header 2`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    1000
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                           </ul>
                         </div>
@@ -7123,7 +7213,16 @@ exports[`Rule should render rules by select database type 2`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    1000
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                           </ul>
                         </div>
@@ -7804,7 +7903,16 @@ exports[`Rule should render rules by select database type 3`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    utf8mb4_0900_ai_ci
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                             <li
                               class="ant-list-item"
@@ -8552,7 +8660,16 @@ exports[`Rule should render rules by select database type 3`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    3
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                             <li
                               class="ant-list-item"
@@ -9096,7 +9213,16 @@ exports[`Rule should render rules by select database type 3`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    5
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                             <li
                               class="ant-list-item"
@@ -9164,7 +9290,16 @@ exports[`Rule should render rules by select database type 3`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    0.7
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                             <li
                               class="ant-list-item"
@@ -10589,7 +10724,16 @@ exports[`Rule should render rules by select database type 3`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    16
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                             <li
                               class="ant-list-item"
@@ -10657,7 +10801,16 @@ exports[`Rule should render rules by select database type 3`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    5000
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                             <li
                               class="ant-list-item"
@@ -10722,7 +10875,16 @@ exports[`Rule should render rules by select database type 3`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    10000
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                             <li
                               class="ant-list-item"
@@ -11192,7 +11354,16 @@ exports[`Rule should render rules by select database type 3`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    sha(),sqrt(),md5()
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                             <li
                               class="ant-list-item"
@@ -11260,7 +11431,16 @@ exports[`Rule should render rules by select database type 3`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              />
+                              >
+                                <div>
+                                  <span>
+                                    desc: 
+                                  </span>
+                                  <span>
+                                    3
+                                  </span>
+                                </div>
+                              </div>
                             </li>
                             <li
                               class="ant-list-item"

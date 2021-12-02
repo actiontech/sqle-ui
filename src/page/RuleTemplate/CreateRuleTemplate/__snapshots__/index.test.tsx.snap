@@ -1,0 +1,4658 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user input all require fields 1`] = `
+<div
+  data-testid="rule-list"
+>
+  <div
+    class="ant-descriptions"
+  >
+    <div
+      class="ant-descriptions-header"
+    >
+      <div
+        class="ant-descriptions-title"
+      >
+        ruleTemplate.ruleTemplateForm.activeRuleTitle
+      </div>
+      <div
+        class="ant-descriptions-extra"
+      >
+        <button
+          class="ant-btn ant-btn-primary ant-btn-dangerous"
+          type="button"
+        >
+          <span>
+            ruleTemplate.ruleTemplateForm.disableAllRules
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="ant-descriptions-view"
+    >
+      <table>
+        <tbody />
+      </table>
+    </div>
+  </div>
+  <div
+    class="ant-tabs ant-tabs-top"
+  >
+    <div
+      class="ant-tabs-nav"
+      role="tablist"
+    >
+      <div
+        class="ant-tabs-nav-wrap"
+      >
+        <div
+          class="ant-tabs-nav-list"
+          style="transform: translate(0px, 0px);"
+        >
+          <div
+            class="ant-tabs-tab ant-tabs-tab-active"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-ALL"
+              aria-selected="true"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-ALL"
+              role="tab"
+              tabindex="0"
+            >
+              ALL
+            </div>
+          </div>
+          <div
+            class="ant-tabs-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-DML规范"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-DML规范"
+              role="tab"
+              tabindex="0"
+            >
+              DML规范
+            </div>
+          </div>
+          <div
+            class="ant-tabs-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-全局配置"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-全局配置"
+              role="tab"
+              tabindex="0"
+            >
+              全局配置
+            </div>
+          </div>
+          <div
+            class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
+            style="left: 0px; width: 0px;"
+          />
+        </div>
+      </div>
+      <div
+        class="ant-tabs-nav-operations ant-tabs-nav-operations-hidden"
+      >
+        <button
+          aria-controls="rc-tabs-test-more-popup"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-hidden="true"
+          class="ant-tabs-nav-more"
+          id="rc-tabs-test-more"
+          style="visibility: hidden; order: 1;"
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            aria-label="ellipsis"
+            class="anticon anticon-ellipsis"
+            role="img"
+          >
+            <svg
+              aria-hidden="true"
+              data-icon="ellipsis"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="ant-tabs-content-holder"
+    >
+      <div
+        class="ant-tabs-content ant-tabs-content-top"
+      >
+        <div
+          aria-hidden="false"
+          aria-labelledby="rc-tabs-test-tab-ALL"
+          class="ant-tabs-tabpane ant-tabs-tabpane-active"
+          id="rc-tabs-test-panel-ALL"
+          role="tabpanel"
+          tabindex="0"
+        >
+          <div
+            class="ant-list ant-list-split rule-list-namespace"
+          >
+            <div
+              class="ant-spin-nested-loading"
+            >
+              <div
+                class="ant-spin-container"
+              >
+                <ul
+                  class="ant-list-items"
+                >
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(50, 130, 230);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              notice
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          不建议对条件字段使用 NULL 值判断
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.disableRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(50, 130, 230);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              notice
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          避免使用标量子查询
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.disableRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(240, 0, 0);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              error
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          delete/update 语句不能有limit条件
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.disableRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(240, 0, 0);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              error
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          delete/update 语句不能有order by
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.disableRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(50, 130, 230);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              notice
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          不建议使用select *
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.disableRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(50, 130, 230);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              notice
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          在 DML 语句中预计影响行数超过指定值则不回滚
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          1000
+                        </span>
+                      </div>
+                    </div>
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.disableRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-DML规范"
+          class="ant-tabs-tabpane"
+          id="rc-tabs-test-panel-DML规范"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-全局配置"
+          class="ant-tabs-tabpane"
+          id="rc-tabs-test-panel-全局配置"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    class="ant-divider ant-divider-horizontal ant-divider-dashed"
+    role="separator"
+  />
+  <div
+    class="ant-descriptions"
+  >
+    <div
+      class="ant-descriptions-header"
+    >
+      <div
+        class="ant-descriptions-title"
+      >
+        ruleTemplate.ruleTemplateForm.disableRuleTitle
+      </div>
+      <div
+        class="ant-descriptions-extra"
+      >
+        <button
+          class="ant-btn ant-btn-primary"
+          disabled=""
+          type="button"
+        >
+          <span>
+            ruleTemplate.ruleTemplateForm.activeAllRules
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="ant-descriptions-view"
+    >
+      <table>
+        <tbody />
+      </table>
+    </div>
+  </div>
+  <div
+    class="ant-tabs ant-tabs-top"
+  >
+    <div
+      class="ant-tabs-nav"
+      role="tablist"
+    >
+      <div
+        class="ant-tabs-nav-wrap"
+      >
+        <div
+          class="ant-tabs-nav-list"
+          style="transform: translate(0px, 0px);"
+        >
+          <div
+            class="ant-tabs-tab ant-tabs-tab-active"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-ALL"
+              aria-selected="true"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-ALL"
+              role="tab"
+              tabindex="0"
+            >
+              ALL
+            </div>
+          </div>
+          <div
+            class="ant-tabs-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-DML规范"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-DML规范"
+              role="tab"
+              tabindex="0"
+            >
+              DML规范
+            </div>
+          </div>
+          <div
+            class="ant-tabs-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-全局配置"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-全局配置"
+              role="tab"
+              tabindex="0"
+            >
+              全局配置
+            </div>
+          </div>
+          <div
+            class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
+            style="left: 0px; width: 0px;"
+          />
+        </div>
+      </div>
+      <div
+        class="ant-tabs-nav-operations ant-tabs-nav-operations-hidden"
+      >
+        <button
+          aria-controls="rc-tabs-test-more-popup"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-hidden="true"
+          class="ant-tabs-nav-more"
+          id="rc-tabs-test-more"
+          style="visibility: hidden; order: 1;"
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            aria-label="ellipsis"
+            class="anticon anticon-ellipsis"
+            role="img"
+          >
+            <svg
+              aria-hidden="true"
+              data-icon="ellipsis"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="ant-tabs-content-holder"
+    >
+      <div
+        class="ant-tabs-content ant-tabs-content-top"
+      >
+        <div
+          aria-hidden="false"
+          aria-labelledby="rc-tabs-test-tab-ALL"
+          class="ant-tabs-tabpane ant-tabs-tabpane-active"
+          id="rc-tabs-test-panel-ALL"
+          role="tabpanel"
+          tabindex="0"
+        >
+          <div
+            class="ant-list ant-list-split rule-list-namespace"
+          >
+            <div
+              class="ant-spin-nested-loading"
+            >
+              <div
+                class="ant-spin-container"
+              >
+                <div
+                  class="ant-list-empty-text"
+                >
+                  ruleTemplate.ruleTemplateForm.emptyRule
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-DML规范"
+          class="ant-tabs-tabpane"
+          id="rc-tabs-test-panel-DML规范"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-全局配置"
+          class="ant-tabs-tabpane"
+          id="rc-tabs-test-panel-全局配置"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    class="ant-divider ant-divider-horizontal ant-divider-dashed"
+    role="separator"
+  />
+  <div
+    class="ant-row ant-row-end"
+  >
+    <div
+      class="ant-space ant-space-horizontal ant-space-align-center"
+    >
+      <div
+        class="ant-space-item"
+        style="margin-right: 8px;"
+      >
+        <button
+          ant-click-animating-without-extra-node="true"
+          class="ant-btn"
+          type="button"
+        >
+          <span>
+            common.prevStep
+          </span>
+        </button>
+      </div>
+      <div
+        class="ant-space-item"
+      >
+        <button
+          class="ant-btn ant-btn-primary"
+          type="button"
+        >
+          <span>
+            common.submit
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user input all require fields 2`] = `
+<div
+  data-testid="rule-list"
+>
+  <div
+    class="ant-descriptions"
+  >
+    <div
+      class="ant-descriptions-header"
+    >
+      <div
+        class="ant-descriptions-title"
+      >
+        ruleTemplate.ruleTemplateForm.activeRuleTitle
+      </div>
+      <div
+        class="ant-descriptions-extra"
+      >
+        <button
+          ant-click-animating-without-extra-node="false"
+          class="ant-btn ant-btn-primary ant-btn-dangerous"
+          disabled=""
+          type="button"
+        >
+          <span>
+            ruleTemplate.ruleTemplateForm.disableAllRules
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="ant-descriptions-view"
+    >
+      <table>
+        <tbody />
+      </table>
+    </div>
+  </div>
+  <div
+    class="ant-tabs ant-tabs-top"
+  >
+    <div
+      class="ant-tabs-nav"
+      role="tablist"
+    >
+      <div
+        class="ant-tabs-nav-wrap"
+      >
+        <div
+          class="ant-tabs-nav-list"
+          style="transform: translate(0px, 0px);"
+        >
+          <div
+            class="ant-tabs-tab ant-tabs-tab-active"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-ALL"
+              aria-selected="true"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-ALL"
+              role="tab"
+              tabindex="0"
+            >
+              ALL
+            </div>
+          </div>
+          <div
+            class="ant-tabs-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-DML规范"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-DML规范"
+              role="tab"
+              tabindex="0"
+            >
+              DML规范
+            </div>
+          </div>
+          <div
+            class="ant-tabs-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-全局配置"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-全局配置"
+              role="tab"
+              tabindex="0"
+            >
+              全局配置
+            </div>
+          </div>
+          <div
+            class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
+            style="left: 0px; width: 0px;"
+          />
+        </div>
+      </div>
+      <div
+        class="ant-tabs-nav-operations ant-tabs-nav-operations-hidden"
+      >
+        <button
+          aria-controls="rc-tabs-test-more-popup"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-hidden="true"
+          class="ant-tabs-nav-more"
+          id="rc-tabs-test-more"
+          style="visibility: hidden; order: 1;"
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            aria-label="ellipsis"
+            class="anticon anticon-ellipsis"
+            role="img"
+          >
+            <svg
+              aria-hidden="true"
+              data-icon="ellipsis"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="ant-tabs-content-holder"
+    >
+      <div
+        class="ant-tabs-content ant-tabs-content-top"
+      >
+        <div
+          aria-hidden="false"
+          aria-labelledby="rc-tabs-test-tab-ALL"
+          class="ant-tabs-tabpane ant-tabs-tabpane-active"
+          id="rc-tabs-test-panel-ALL"
+          role="tabpanel"
+          tabindex="0"
+        >
+          <div
+            class="ant-list ant-list-split rule-list-namespace"
+          >
+            <div
+              class="ant-spin-nested-loading"
+            >
+              <div
+                class="ant-spin-container"
+              >
+                <div
+                  class="ant-list-empty-text"
+                >
+                  ruleTemplate.ruleTemplateForm.emptyRule
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-DML规范"
+          class="ant-tabs-tabpane"
+          id="rc-tabs-test-panel-DML规范"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-全局配置"
+          class="ant-tabs-tabpane"
+          id="rc-tabs-test-panel-全局配置"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    class="ant-divider ant-divider-horizontal ant-divider-dashed"
+    role="separator"
+  />
+  <div
+    class="ant-descriptions"
+  >
+    <div
+      class="ant-descriptions-header"
+    >
+      <div
+        class="ant-descriptions-title"
+      >
+        ruleTemplate.ruleTemplateForm.disableRuleTitle
+      </div>
+      <div
+        class="ant-descriptions-extra"
+      >
+        <button
+          class="ant-btn ant-btn-primary"
+          type="button"
+        >
+          <span>
+            ruleTemplate.ruleTemplateForm.activeAllRules
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="ant-descriptions-view"
+    >
+      <table>
+        <tbody />
+      </table>
+    </div>
+  </div>
+  <div
+    class="ant-tabs ant-tabs-top"
+  >
+    <div
+      class="ant-tabs-nav"
+      role="tablist"
+    >
+      <div
+        class="ant-tabs-nav-wrap"
+      >
+        <div
+          class="ant-tabs-nav-list"
+          style="transform: translate(0px, 0px);"
+        >
+          <div
+            class="ant-tabs-tab ant-tabs-tab-active"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-ALL"
+              aria-selected="true"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-ALL"
+              role="tab"
+              tabindex="0"
+            >
+              ALL
+            </div>
+          </div>
+          <div
+            class="ant-tabs-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-DML规范"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-DML规范"
+              role="tab"
+              tabindex="0"
+            >
+              DML规范
+            </div>
+          </div>
+          <div
+            class="ant-tabs-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-全局配置"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-全局配置"
+              role="tab"
+              tabindex="0"
+            >
+              全局配置
+            </div>
+          </div>
+          <div
+            class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
+            style="left: 0px; width: 0px;"
+          />
+        </div>
+      </div>
+      <div
+        class="ant-tabs-nav-operations ant-tabs-nav-operations-hidden"
+      >
+        <button
+          aria-controls="rc-tabs-test-more-popup"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-hidden="true"
+          class="ant-tabs-nav-more"
+          id="rc-tabs-test-more"
+          style="visibility: hidden; order: 1;"
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            aria-label="ellipsis"
+            class="anticon anticon-ellipsis"
+            role="img"
+          >
+            <svg
+              aria-hidden="true"
+              data-icon="ellipsis"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="ant-tabs-content-holder"
+    >
+      <div
+        class="ant-tabs-content ant-tabs-content-top"
+      >
+        <div
+          aria-hidden="false"
+          aria-labelledby="rc-tabs-test-tab-ALL"
+          class="ant-tabs-tabpane ant-tabs-tabpane-active"
+          id="rc-tabs-test-panel-ALL"
+          role="tabpanel"
+          tabindex="0"
+        >
+          <div
+            class="ant-list ant-list-split rule-list-namespace"
+          >
+            <div
+              class="ant-spin-nested-loading"
+            >
+              <div
+                class="ant-spin-container"
+              >
+                <ul
+                  class="ant-list-items"
+                >
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(50, 130, 230);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              notice
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          不建议对条件字段使用 NULL 值判断
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.activeRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(50, 130, 230);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              notice
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          避免使用标量子查询
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.activeRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(240, 0, 0);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              error
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          delete/update 语句不能有limit条件
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.activeRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(240, 0, 0);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              error
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          delete/update 语句不能有order by
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.activeRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(50, 130, 230);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              notice
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          不建议使用select *
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.activeRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(50, 130, 230);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              notice
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          在 DML 语句中预计影响行数超过指定值则不回滚
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          1000
+                        </span>
+                      </div>
+                    </div>
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.activeRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-DML规范"
+          class="ant-tabs-tabpane"
+          id="rc-tabs-test-panel-DML规范"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-全局配置"
+          class="ant-tabs-tabpane"
+          id="rc-tabs-test-panel-全局配置"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    class="ant-divider ant-divider-horizontal ant-divider-dashed"
+    role="separator"
+  />
+  <div
+    class="ant-row ant-row-end"
+  >
+    <div
+      class="ant-space ant-space-horizontal ant-space-align-center"
+    >
+      <div
+        class="ant-space-item"
+        style="margin-right: 8px;"
+      >
+        <button
+          ant-click-animating-without-extra-node="true"
+          class="ant-btn"
+          type="button"
+        >
+          <span>
+            common.prevStep
+          </span>
+        </button>
+      </div>
+      <div
+        class="ant-space-item"
+      >
+        <button
+          class="ant-btn ant-btn-primary"
+          type="button"
+        >
+          <span>
+            common.submit
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user input all require fields 3`] = `
+<div
+  data-testid="rule-list"
+>
+  <div
+    class="ant-descriptions"
+  >
+    <div
+      class="ant-descriptions-header"
+    >
+      <div
+        class="ant-descriptions-title"
+      >
+        ruleTemplate.ruleTemplateForm.activeRuleTitle
+      </div>
+      <div
+        class="ant-descriptions-extra"
+      >
+        <button
+          ant-click-animating-without-extra-node="false"
+          class="ant-btn ant-btn-primary ant-btn-dangerous"
+          type="button"
+        >
+          <span>
+            ruleTemplate.ruleTemplateForm.disableAllRules
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="ant-descriptions-view"
+    >
+      <table>
+        <tbody />
+      </table>
+    </div>
+  </div>
+  <div
+    class="ant-tabs ant-tabs-top"
+  >
+    <div
+      class="ant-tabs-nav"
+      role="tablist"
+    >
+      <div
+        class="ant-tabs-nav-wrap"
+      >
+        <div
+          class="ant-tabs-nav-list"
+          style="transform: translate(0px, 0px);"
+        >
+          <div
+            class="ant-tabs-tab ant-tabs-tab-active"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-ALL"
+              aria-selected="true"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-ALL"
+              role="tab"
+              tabindex="0"
+            >
+              ALL
+            </div>
+          </div>
+          <div
+            class="ant-tabs-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-DML规范"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-DML规范"
+              role="tab"
+              tabindex="0"
+            >
+              DML规范
+            </div>
+          </div>
+          <div
+            class="ant-tabs-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-全局配置"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-全局配置"
+              role="tab"
+              tabindex="0"
+            >
+              全局配置
+            </div>
+          </div>
+          <div
+            class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
+            style="left: 0px; width: 0px;"
+          />
+        </div>
+      </div>
+      <div
+        class="ant-tabs-nav-operations ant-tabs-nav-operations-hidden"
+      >
+        <button
+          aria-controls="rc-tabs-test-more-popup"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-hidden="true"
+          class="ant-tabs-nav-more"
+          id="rc-tabs-test-more"
+          style="visibility: hidden; order: 1;"
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            aria-label="ellipsis"
+            class="anticon anticon-ellipsis"
+            role="img"
+          >
+            <svg
+              aria-hidden="true"
+              data-icon="ellipsis"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="ant-tabs-content-holder"
+    >
+      <div
+        class="ant-tabs-content ant-tabs-content-top"
+      >
+        <div
+          aria-hidden="false"
+          aria-labelledby="rc-tabs-test-tab-ALL"
+          class="ant-tabs-tabpane ant-tabs-tabpane-active"
+          id="rc-tabs-test-panel-ALL"
+          role="tabpanel"
+          tabindex="0"
+        >
+          <div
+            class="ant-list ant-list-split rule-list-namespace"
+          >
+            <div
+              class="ant-spin-nested-loading"
+            >
+              <div
+                class="ant-spin-container"
+              >
+                <ul
+                  class="ant-list-items"
+                >
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(50, 130, 230);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              notice
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          不建议对条件字段使用 NULL 值判断
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.disableRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(50, 130, 230);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              notice
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          避免使用标量子查询
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.disableRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(240, 0, 0);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              error
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          delete/update 语句不能有limit条件
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.disableRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(240, 0, 0);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              error
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          delete/update 语句不能有order by
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.disableRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(50, 130, 230);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              notice
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          不建议使用select *
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    />
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.disableRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li
+                    class="ant-list-item"
+                  >
+                    <div
+                      class="ant-list-item-meta"
+                    >
+                      <div
+                        class="ant-list-item-meta-avatar"
+                      >
+                        <div
+                          class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 1px;"
+                          >
+                            <div>
+                              <span
+                                aria-label="info-circle"
+                                class="anticon anticon-info-circle"
+                                role="img"
+                                style="font-size: 25px; color: rgb(50, 130, 230);"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="info-circle"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                  />
+                                  <path
+                                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span
+                              class="ant-typography ant-typography-secondary"
+                            >
+                              notice
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-list-item-meta-content"
+                      >
+                        <h4
+                          class="ant-list-item-meta-title"
+                        >
+                          在 DML 语句中预计影响行数超过指定值则不回滚
+                        </h4>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col"
+                      style="flex: 0 0 20%;"
+                    >
+                      <div>
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          1000
+                        </span>
+                      </div>
+                    </div>
+                    <ul
+                      class="ant-list-item-action"
+                    >
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.editRule
+                          </span>
+                        </button>
+                        <em
+                          class="ant-list-item-action-split"
+                        />
+                      </li>
+                      <li>
+                        <button
+                          class="ant-btn ant-btn-link ant-btn-dangerous"
+                          type="button"
+                        >
+                          <span>
+                            ruleTemplate.ruleTemplateForm.disableRule
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-DML规范"
+          class="ant-tabs-tabpane"
+          id="rc-tabs-test-panel-DML规范"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-全局配置"
+          class="ant-tabs-tabpane"
+          id="rc-tabs-test-panel-全局配置"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    class="ant-divider ant-divider-horizontal ant-divider-dashed"
+    role="separator"
+  />
+  <div
+    class="ant-descriptions"
+  >
+    <div
+      class="ant-descriptions-header"
+    >
+      <div
+        class="ant-descriptions-title"
+      >
+        ruleTemplate.ruleTemplateForm.disableRuleTitle
+      </div>
+      <div
+        class="ant-descriptions-extra"
+      >
+        <button
+          ant-click-animating-without-extra-node="false"
+          class="ant-btn ant-btn-primary"
+          disabled=""
+          type="button"
+        >
+          <span>
+            ruleTemplate.ruleTemplateForm.activeAllRules
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="ant-descriptions-view"
+    >
+      <table>
+        <tbody />
+      </table>
+    </div>
+  </div>
+  <div
+    class="ant-tabs ant-tabs-top"
+  >
+    <div
+      class="ant-tabs-nav"
+      role="tablist"
+    >
+      <div
+        class="ant-tabs-nav-wrap"
+      >
+        <div
+          class="ant-tabs-nav-list"
+          style="transform: translate(0px, 0px);"
+        >
+          <div
+            class="ant-tabs-tab ant-tabs-tab-active"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-ALL"
+              aria-selected="true"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-ALL"
+              role="tab"
+              tabindex="0"
+            >
+              ALL
+            </div>
+          </div>
+          <div
+            class="ant-tabs-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-DML规范"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-DML规范"
+              role="tab"
+              tabindex="0"
+            >
+              DML规范
+            </div>
+          </div>
+          <div
+            class="ant-tabs-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-全局配置"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-全局配置"
+              role="tab"
+              tabindex="0"
+            >
+              全局配置
+            </div>
+          </div>
+          <div
+            class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
+            style="left: 0px; width: 0px;"
+          />
+        </div>
+      </div>
+      <div
+        class="ant-tabs-nav-operations ant-tabs-nav-operations-hidden"
+      >
+        <button
+          aria-controls="rc-tabs-test-more-popup"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-hidden="true"
+          class="ant-tabs-nav-more"
+          id="rc-tabs-test-more"
+          style="visibility: hidden; order: 1;"
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            aria-label="ellipsis"
+            class="anticon anticon-ellipsis"
+            role="img"
+          >
+            <svg
+              aria-hidden="true"
+              data-icon="ellipsis"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="ant-tabs-content-holder"
+    >
+      <div
+        class="ant-tabs-content ant-tabs-content-top"
+      >
+        <div
+          aria-hidden="false"
+          aria-labelledby="rc-tabs-test-tab-ALL"
+          class="ant-tabs-tabpane ant-tabs-tabpane-active"
+          id="rc-tabs-test-panel-ALL"
+          role="tabpanel"
+          tabindex="0"
+        >
+          <div
+            class="ant-list ant-list-split rule-list-namespace"
+          >
+            <div
+              class="ant-spin-nested-loading"
+            >
+              <div
+                class="ant-spin-container"
+              >
+                <div
+                  class="ant-list-empty-text"
+                >
+                  ruleTemplate.ruleTemplateForm.emptyRule
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-DML规范"
+          class="ant-tabs-tabpane"
+          id="rc-tabs-test-panel-DML规范"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-全局配置"
+          class="ant-tabs-tabpane"
+          id="rc-tabs-test-panel-全局配置"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    class="ant-divider ant-divider-horizontal ant-divider-dashed"
+    role="separator"
+  />
+  <div
+    class="ant-row ant-row-end"
+  >
+    <div
+      class="ant-space ant-space-horizontal ant-space-align-center"
+    >
+      <div
+        class="ant-space-item"
+        style="margin-right: 8px;"
+      >
+        <button
+          ant-click-animating-without-extra-node="true"
+          class="ant-btn"
+          type="button"
+        >
+          <span>
+            common.prevStep
+          </span>
+        </button>
+      </div>
+      <div
+        class="ant-space-item"
+      >
+        <button
+          class="ant-btn ant-btn-primary"
+          type="button"
+        >
+          <span>
+            common.submit
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RuleTemplate/CreateRuleTemplate should render base form at init 1`] = `
+<div>
+  <div
+    class="ant-card ant-card-bordered"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          ruleTemplate.createRuleTemplate.title
+        </div>
+        <div
+          class="ant-card-extra"
+        >
+          <a
+            href="/rule/template"
+          >
+            <button
+              class="ant-btn ant-btn-primary"
+              type="button"
+            >
+              <span>
+                common.back
+              </span>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="ant-space ant-space-vertical full-width-element"
+      >
+        <div
+          class="ant-space-item"
+          style="margin-bottom: 24px;"
+        >
+          <div
+            class="ant-row"
+          >
+            <div
+              class="ant-col ant-col-12 ant-col-offset-6"
+            >
+              <div
+                class="ant-steps ant-steps-horizontal ant-steps-label-horizontal"
+              >
+                <div
+                  class="ant-steps-item ant-steps-item-process ant-steps-item-active"
+                >
+                  <div
+                    class="ant-steps-item-container"
+                  >
+                    <div
+                      class="ant-steps-item-tail"
+                    />
+                    <div
+                      class="ant-steps-item-icon"
+                    >
+                      <span
+                        class="ant-steps-icon"
+                      >
+                        1
+                      </span>
+                    </div>
+                    <div
+                      class="ant-steps-item-content"
+                    >
+                      <div
+                        class="ant-steps-item-title"
+                      >
+                        ruleTemplate.ruleTemplateForm.baseInfoTitle
+                      </div>
+                      <div
+                        class="ant-steps-item-description"
+                      >
+                        ruleTemplate.ruleTemplateForm.baseInfoDesc
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-steps-item ant-steps-item-wait"
+                >
+                  <div
+                    class="ant-steps-item-container"
+                  >
+                    <div
+                      class="ant-steps-item-tail"
+                    />
+                    <div
+                      class="ant-steps-item-icon"
+                    >
+                      <span
+                        class="ant-steps-icon"
+                      >
+                        2
+                      </span>
+                    </div>
+                    <div
+                      class="ant-steps-item-content"
+                    >
+                      <div
+                        class="ant-steps-item-title"
+                      >
+                        ruleTemplate.ruleTemplateForm.ruleTitle
+                      </div>
+                      <div
+                        class="ant-steps-item-description"
+                      >
+                        ruleTemplate.ruleTemplateForm.ruleDesc
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-steps-item ant-steps-item-wait"
+                >
+                  <div
+                    class="ant-steps-item-container"
+                  >
+                    <div
+                      class="ant-steps-item-tail"
+                    />
+                    <div
+                      class="ant-steps-item-icon"
+                    >
+                      <span
+                        class="ant-steps-icon"
+                      >
+                        3
+                      </span>
+                    </div>
+                    <div
+                      class="ant-steps-item-content"
+                    >
+                      <div
+                        class="ant-steps-item-title"
+                      >
+                        ruleTemplate.ruleTemplateForm.result
+                      </div>
+                      <div
+                        class="ant-steps-item-description"
+                      >
+                        ruleTemplate.ruleTemplateForm.resultDesc
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-bottom: 24px;"
+        >
+          <div
+            data-testid="base-form"
+          >
+            <form
+              class="ant-form ant-form-horizontal"
+            >
+              <div
+                class="ant-row ant-form-item"
+              >
+                <div
+                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                >
+                  <label
+                    class="ant-form-item-required"
+                    for="templateName"
+                    title="ruleTemplate.ruleTemplateForm.templateName"
+                  >
+                    ruleTemplate.ruleTemplateForm.templateName
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                >
+                  <div
+                    class="ant-form-item-control-input"
+                  >
+                    <div
+                      class="ant-form-item-control-input-content"
+                    >
+                      <input
+                        class="ant-input"
+                        id="templateName"
+                        placeholder="common.form.placeholder.input"
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-row ant-form-item"
+              >
+                <div
+                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                >
+                  <label
+                    class=""
+                    for="templateDesc"
+                    title="ruleTemplate.ruleTemplateForm.templateDesc"
+                  >
+                    ruleTemplate.ruleTemplateForm.templateDesc
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                >
+                  <div
+                    class="ant-form-item-control-input"
+                  >
+                    <div
+                      class="ant-form-item-control-input-content"
+                    >
+                      <textarea
+                        class="ant-input textarea-no-resize"
+                        id="templateDesc"
+                        placeholder="common.form.placeholder.input"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-row ant-form-item"
+              >
+                <div
+                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                >
+                  <label
+                    class="ant-form-item-required"
+                    for="db_type"
+                    title="ruleTemplate.ruleTemplateForm.databaseType"
+                  >
+                    ruleTemplate.ruleTemplateForm.databaseType
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                >
+                  <div
+                    class="ant-form-item-control-input"
+                  >
+                    <div
+                      class="ant-form-item-control-input-content"
+                    >
+                      <div
+                        class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow"
+                      >
+                        <div
+                          class="ant-select-selector"
+                        >
+                          <span
+                            class="ant-select-selection-search"
+                          >
+                            <input
+                              aria-activedescendant="db_type_list_0"
+                              aria-autocomplete="list"
+                              aria-controls="db_type_list"
+                              aria-haspopup="listbox"
+                              aria-owns="db_type_list"
+                              autocomplete="off"
+                              class="ant-select-selection-search-input"
+                              id="db_type"
+                              readonly=""
+                              role="combobox"
+                              style="opacity: 0;"
+                              type="search"
+                              unselectable="on"
+                              value=""
+                            />
+                          </span>
+                          <span
+                            class="ant-select-selection-placeholder"
+                          >
+                            common.form.placeholder.select
+                          </span>
+                        </div>
+                        <span
+                          aria-hidden="true"
+                          class="ant-select-arrow"
+                          style="user-select: none;"
+                          unselectable="on"
+                        >
+                          <span
+                            aria-label="down"
+                            class="anticon anticon-down ant-select-suffix"
+                            role="img"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="down"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                              />
+                            </svg>
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-row ant-form-item"
+              >
+                <div
+                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                >
+                  <label
+                    class=""
+                    for="instances"
+                    title="ruleTemplate.ruleTemplateForm.instances"
+                  >
+                    ruleTemplate.ruleTemplateForm.instances
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                >
+                  <div
+                    class="ant-form-item-control-input"
+                  >
+                    <div
+                      class="ant-form-item-control-input-content"
+                    >
+                      <div
+                        class="ant-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
+                      >
+                        <div
+                          class="ant-select-selector"
+                        >
+                          <div
+                            class="ant-select-selection-overflow"
+                          >
+                            <div
+                              class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
+                              style="opacity: 1;"
+                            >
+                              <div
+                                class="ant-select-selection-search"
+                                style="width: 0px;"
+                              >
+                                <input
+                                  aria-activedescendant="instances_list_0"
+                                  aria-autocomplete="list"
+                                  aria-controls="instances_list"
+                                  aria-haspopup="listbox"
+                                  aria-owns="instances_list"
+                                  autocomplete="off"
+                                  class="ant-select-selection-search-input"
+                                  id="instances"
+                                  readonly=""
+                                  role="combobox"
+                                  style="opacity: 0;"
+                                  type="search"
+                                  unselectable="on"
+                                  value=""
+                                />
+                                <span
+                                  aria-hidden="true"
+                                  class="ant-select-selection-search-mirror"
+                                >
+                                  
+                                   
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <span
+                            class="ant-select-selection-placeholder"
+                          >
+                            common.form.placeholder.select
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-row ant-form-item"
+              >
+                <div
+                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                >
+                  <label
+                    class="ant-form-item-no-colon"
+                    title=" "
+                  >
+                     
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                >
+                  <div
+                    class="ant-form-item-control-input"
+                  >
+                    <div
+                      class="ant-form-item-control-input-content"
+                    >
+                      <div
+                        class="ant-space ant-space-horizontal ant-space-align-center"
+                      >
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 8px;"
+                        >
+                          <button
+                            class="ant-btn"
+                            type="button"
+                          >
+                            <span>
+                              common.reset
+                            </span>
+                          </button>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                        >
+                          <button
+                            class="ant-btn ant-btn-primary"
+                            type="button"
+                          >
+                            <span>
+                              common.nextStep
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-bottom: 24px;"
+        >
+          <div
+            data-testid="rule-list"
+            hidden=""
+          >
+            <div
+              class="ant-descriptions"
+            >
+              <div
+                class="ant-descriptions-header"
+              >
+                <div
+                  class="ant-descriptions-title"
+                >
+                  ruleTemplate.ruleTemplateForm.activeRuleTitle
+                </div>
+                <div
+                  class="ant-descriptions-extra"
+                >
+                  <button
+                    class="ant-btn ant-btn-primary ant-btn-dangerous"
+                    disabled=""
+                    type="button"
+                  >
+                    <span>
+                      ruleTemplate.ruleTemplateForm.disableAllRules
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="ant-descriptions-view"
+              >
+                <table>
+                  <tbody />
+                </table>
+              </div>
+            </div>
+            <div
+              class="ant-tabs ant-tabs-top"
+            >
+              <div
+                class="ant-tabs-nav"
+                role="tablist"
+              >
+                <div
+                  class="ant-tabs-nav-wrap"
+                >
+                  <div
+                    class="ant-tabs-nav-list"
+                    style="transform: translate(0px, 0px);"
+                  >
+                    <div
+                      class="ant-tabs-tab ant-tabs-tab-active"
+                    >
+                      <div
+                        aria-controls="rc-tabs-test-panel-ALL"
+                        aria-selected="true"
+                        class="ant-tabs-tab-btn"
+                        id="rc-tabs-test-tab-ALL"
+                        role="tab"
+                        tabindex="0"
+                      >
+                        ALL
+                      </div>
+                    </div>
+                    <div
+                      class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-tabs-nav-operations ant-tabs-nav-operations-hidden"
+                >
+                  <button
+                    aria-controls="rc-tabs-test-more-popup"
+                    aria-expanded="false"
+                    aria-haspopup="listbox"
+                    aria-hidden="true"
+                    class="ant-tabs-nav-more"
+                    id="rc-tabs-test-more"
+                    style="visibility: hidden; order: 1;"
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <span
+                      aria-label="ellipsis"
+                      class="anticon anticon-ellipsis"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="ellipsis"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="ant-tabs-content-holder"
+              >
+                <div
+                  class="ant-tabs-content ant-tabs-content-top"
+                >
+                  <div
+                    aria-hidden="false"
+                    aria-labelledby="rc-tabs-test-tab-ALL"
+                    class="ant-tabs-tabpane ant-tabs-tabpane-active"
+                    id="rc-tabs-test-panel-ALL"
+                    role="tabpanel"
+                    tabindex="0"
+                  >
+                    <div
+                      class="ant-list ant-list-split ant-list-loading rule-list-namespace"
+                    >
+                      <div
+                        class="ant-spin-nested-loading"
+                      >
+                        <div>
+                          <div
+                            class="ant-spin ant-spin-spinning"
+                          >
+                            <span
+                              class="ant-spin-dot ant-spin-dot-spin"
+                            >
+                              <i
+                                class="ant-spin-dot-item"
+                              />
+                              <i
+                                class="ant-spin-dot-item"
+                              />
+                              <i
+                                class="ant-spin-dot-item"
+                              />
+                              <i
+                                class="ant-spin-dot-item"
+                              />
+                            </span>
+                          </div>
+                        </div>
+                        <div
+                          class="ant-spin-container ant-spin-blur"
+                        >
+                          <div
+                            style="min-height: 53px;"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-divider ant-divider-horizontal ant-divider-dashed"
+              role="separator"
+            />
+            <div
+              class="ant-descriptions"
+            >
+              <div
+                class="ant-descriptions-header"
+              >
+                <div
+                  class="ant-descriptions-title"
+                >
+                  ruleTemplate.ruleTemplateForm.disableRuleTitle
+                </div>
+                <div
+                  class="ant-descriptions-extra"
+                >
+                  <button
+                    class="ant-btn ant-btn-primary"
+                    disabled=""
+                    type="button"
+                  >
+                    <span>
+                      ruleTemplate.ruleTemplateForm.activeAllRules
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="ant-descriptions-view"
+              >
+                <table>
+                  <tbody />
+                </table>
+              </div>
+            </div>
+            <div
+              class="ant-tabs ant-tabs-top"
+            >
+              <div
+                class="ant-tabs-nav"
+                role="tablist"
+              >
+                <div
+                  class="ant-tabs-nav-wrap"
+                >
+                  <div
+                    class="ant-tabs-nav-list"
+                    style="transform: translate(0px, 0px);"
+                  >
+                    <div
+                      class="ant-tabs-tab ant-tabs-tab-active"
+                    >
+                      <div
+                        aria-controls="rc-tabs-test-panel-ALL"
+                        aria-selected="true"
+                        class="ant-tabs-tab-btn"
+                        id="rc-tabs-test-tab-ALL"
+                        role="tab"
+                        tabindex="0"
+                      >
+                        ALL
+                      </div>
+                    </div>
+                    <div
+                      class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-tabs-nav-operations ant-tabs-nav-operations-hidden"
+                >
+                  <button
+                    aria-controls="rc-tabs-test-more-popup"
+                    aria-expanded="false"
+                    aria-haspopup="listbox"
+                    aria-hidden="true"
+                    class="ant-tabs-nav-more"
+                    id="rc-tabs-test-more"
+                    style="visibility: hidden; order: 1;"
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <span
+                      aria-label="ellipsis"
+                      class="anticon anticon-ellipsis"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="ellipsis"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="ant-tabs-content-holder"
+              >
+                <div
+                  class="ant-tabs-content ant-tabs-content-top"
+                >
+                  <div
+                    aria-hidden="false"
+                    aria-labelledby="rc-tabs-test-tab-ALL"
+                    class="ant-tabs-tabpane ant-tabs-tabpane-active"
+                    id="rc-tabs-test-panel-ALL"
+                    role="tabpanel"
+                    tabindex="0"
+                  >
+                    <div
+                      class="ant-list ant-list-split ant-list-loading rule-list-namespace"
+                    >
+                      <div
+                        class="ant-spin-nested-loading"
+                      >
+                        <div>
+                          <div
+                            class="ant-spin ant-spin-spinning"
+                          >
+                            <span
+                              class="ant-spin-dot ant-spin-dot-spin"
+                            >
+                              <i
+                                class="ant-spin-dot-item"
+                              />
+                              <i
+                                class="ant-spin-dot-item"
+                              />
+                              <i
+                                class="ant-spin-dot-item"
+                              />
+                              <i
+                                class="ant-spin-dot-item"
+                              />
+                            </span>
+                          </div>
+                        </div>
+                        <div
+                          class="ant-spin-container ant-spin-blur"
+                        >
+                          <div
+                            style="min-height: 53px;"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-divider ant-divider-horizontal ant-divider-dashed"
+              role="separator"
+            />
+            <div
+              class="ant-row ant-row-end"
+            >
+              <div
+                class="ant-space ant-space-horizontal ant-space-align-center"
+              >
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
+                >
+                  <button
+                    class="ant-btn"
+                    type="button"
+                  >
+                    <span>
+                      common.prevStep
+                    </span>
+                  </button>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  <button
+                    class="ant-btn ant-btn-primary"
+                    type="button"
+                  >
+                    <span>
+                      common.submit
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-space-item"
+        >
+          <div
+            data-testid="submit-result"
+            hidden=""
+          >
+            <div
+              class="ant-result ant-result-success"
+            >
+              <div
+                class="ant-result-icon"
+              >
+                <span
+                  aria-label="check-circle"
+                  class="anticon anticon-check-circle"
+                  role="img"
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-icon="check-circle"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm193.5 301.7l-210.6 292a31.8 31.8 0 01-51.7 0L318.5 484.9c-3.8-5.3 0-12.7 6.5-12.7h46.9c10.2 0 19.9 4.9 25.9 13.3l71.2 98.8 157.2-218c6-8.3 15.6-13.3 25.9-13.3H699c6.5 0 10.3 7.4 6.5 12.7z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="ant-result-title"
+              >
+                ruleTemplate.createRuleTemplate.successTitle
+              </div>
+              <div
+                class="ant-result-subtitle"
+              >
+                <a
+                  class="ant-typography ant-typography-secondary pointer"
+                >
+                  ruleTemplate.createRuleTemplate.createNew
+                </a>
+              </div>
+            </div>
+            <div
+              class="ant-row ant-row-center"
+            >
+              <a
+                href="/rule/template"
+              >
+                <button
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    ruleTemplate.backToList
+                  </span>
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RuleTemplate/CreateRuleTemplate should render base form at init 2`] = `
+<div>
+  <div
+    class="ant-card ant-card-bordered"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          ruleTemplate.createRuleTemplate.title
+        </div>
+        <div
+          class="ant-card-extra"
+        >
+          <a
+            href="/rule/template"
+          >
+            <button
+              class="ant-btn ant-btn-primary"
+              type="button"
+            >
+              <span>
+                common.back
+              </span>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="ant-space ant-space-vertical full-width-element"
+      >
+        <div
+          class="ant-space-item"
+          style="margin-bottom: 24px;"
+        >
+          <div
+            class="ant-row"
+          >
+            <div
+              class="ant-col ant-col-12 ant-col-offset-6"
+            >
+              <div
+                class="ant-steps ant-steps-horizontal ant-steps-label-horizontal"
+              >
+                <div
+                  class="ant-steps-item ant-steps-item-process ant-steps-item-active"
+                >
+                  <div
+                    class="ant-steps-item-container"
+                  >
+                    <div
+                      class="ant-steps-item-tail"
+                    />
+                    <div
+                      class="ant-steps-item-icon"
+                    >
+                      <span
+                        class="ant-steps-icon"
+                      >
+                        1
+                      </span>
+                    </div>
+                    <div
+                      class="ant-steps-item-content"
+                    >
+                      <div
+                        class="ant-steps-item-title"
+                      >
+                        ruleTemplate.ruleTemplateForm.baseInfoTitle
+                      </div>
+                      <div
+                        class="ant-steps-item-description"
+                      >
+                        ruleTemplate.ruleTemplateForm.baseInfoDesc
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-steps-item ant-steps-item-wait"
+                >
+                  <div
+                    class="ant-steps-item-container"
+                  >
+                    <div
+                      class="ant-steps-item-tail"
+                    />
+                    <div
+                      class="ant-steps-item-icon"
+                    >
+                      <span
+                        class="ant-steps-icon"
+                      >
+                        2
+                      </span>
+                    </div>
+                    <div
+                      class="ant-steps-item-content"
+                    >
+                      <div
+                        class="ant-steps-item-title"
+                      >
+                        ruleTemplate.ruleTemplateForm.ruleTitle
+                      </div>
+                      <div
+                        class="ant-steps-item-description"
+                      >
+                        ruleTemplate.ruleTemplateForm.ruleDesc
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-steps-item ant-steps-item-wait"
+                >
+                  <div
+                    class="ant-steps-item-container"
+                  >
+                    <div
+                      class="ant-steps-item-tail"
+                    />
+                    <div
+                      class="ant-steps-item-icon"
+                    >
+                      <span
+                        class="ant-steps-icon"
+                      >
+                        3
+                      </span>
+                    </div>
+                    <div
+                      class="ant-steps-item-content"
+                    >
+                      <div
+                        class="ant-steps-item-title"
+                      >
+                        ruleTemplate.ruleTemplateForm.result
+                      </div>
+                      <div
+                        class="ant-steps-item-description"
+                      >
+                        ruleTemplate.ruleTemplateForm.resultDesc
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-bottom: 24px;"
+        >
+          <div
+            data-testid="base-form"
+          >
+            <form
+              class="ant-form ant-form-horizontal"
+            >
+              <div
+                class="ant-row ant-form-item"
+              >
+                <div
+                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                >
+                  <label
+                    class="ant-form-item-required"
+                    for="templateName"
+                    title="ruleTemplate.ruleTemplateForm.templateName"
+                  >
+                    ruleTemplate.ruleTemplateForm.templateName
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                >
+                  <div
+                    class="ant-form-item-control-input"
+                  >
+                    <div
+                      class="ant-form-item-control-input-content"
+                    >
+                      <input
+                        class="ant-input"
+                        id="templateName"
+                        placeholder="common.form.placeholder.input"
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-row ant-form-item"
+              >
+                <div
+                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                >
+                  <label
+                    class=""
+                    for="templateDesc"
+                    title="ruleTemplate.ruleTemplateForm.templateDesc"
+                  >
+                    ruleTemplate.ruleTemplateForm.templateDesc
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                >
+                  <div
+                    class="ant-form-item-control-input"
+                  >
+                    <div
+                      class="ant-form-item-control-input-content"
+                    >
+                      <textarea
+                        class="ant-input textarea-no-resize"
+                        id="templateDesc"
+                        placeholder="common.form.placeholder.input"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-row ant-form-item"
+              >
+                <div
+                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                >
+                  <label
+                    class="ant-form-item-required"
+                    for="db_type"
+                    title="ruleTemplate.ruleTemplateForm.databaseType"
+                  >
+                    ruleTemplate.ruleTemplateForm.databaseType
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                >
+                  <div
+                    class="ant-form-item-control-input"
+                  >
+                    <div
+                      class="ant-form-item-control-input-content"
+                    >
+                      <div
+                        class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow"
+                      >
+                        <div
+                          class="ant-select-selector"
+                        >
+                          <span
+                            class="ant-select-selection-search"
+                          >
+                            <input
+                              aria-activedescendant="db_type_list_0"
+                              aria-autocomplete="list"
+                              aria-controls="db_type_list"
+                              aria-haspopup="listbox"
+                              aria-owns="db_type_list"
+                              autocomplete="off"
+                              class="ant-select-selection-search-input"
+                              id="db_type"
+                              readonly=""
+                              role="combobox"
+                              style="opacity: 0;"
+                              type="search"
+                              unselectable="on"
+                              value=""
+                            />
+                          </span>
+                          <span
+                            class="ant-select-selection-placeholder"
+                          >
+                            common.form.placeholder.select
+                          </span>
+                        </div>
+                        <span
+                          aria-hidden="true"
+                          class="ant-select-arrow"
+                          style="user-select: none;"
+                          unselectable="on"
+                        >
+                          <span
+                            aria-label="down"
+                            class="anticon anticon-down ant-select-suffix"
+                            role="img"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="down"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                              />
+                            </svg>
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-row ant-form-item"
+              >
+                <div
+                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                >
+                  <label
+                    class=""
+                    for="instances"
+                    title="ruleTemplate.ruleTemplateForm.instances"
+                  >
+                    ruleTemplate.ruleTemplateForm.instances
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                >
+                  <div
+                    class="ant-form-item-control-input"
+                  >
+                    <div
+                      class="ant-form-item-control-input-content"
+                    >
+                      <div
+                        class="ant-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
+                      >
+                        <div
+                          class="ant-select-selector"
+                        >
+                          <div
+                            class="ant-select-selection-overflow"
+                          >
+                            <div
+                              class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
+                              style="opacity: 1;"
+                            >
+                              <div
+                                class="ant-select-selection-search"
+                                style="width: 0px;"
+                              >
+                                <input
+                                  aria-activedescendant="instances_list_0"
+                                  aria-autocomplete="list"
+                                  aria-controls="instances_list"
+                                  aria-haspopup="listbox"
+                                  aria-owns="instances_list"
+                                  autocomplete="off"
+                                  class="ant-select-selection-search-input"
+                                  id="instances"
+                                  readonly=""
+                                  role="combobox"
+                                  style="opacity: 0;"
+                                  type="search"
+                                  unselectable="on"
+                                  value=""
+                                />
+                                <span
+                                  aria-hidden="true"
+                                  class="ant-select-selection-search-mirror"
+                                >
+                                  
+                                   
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <span
+                            class="ant-select-selection-placeholder"
+                          >
+                            common.form.placeholder.select
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-row ant-form-item"
+              >
+                <div
+                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                >
+                  <label
+                    class="ant-form-item-no-colon"
+                    title=" "
+                  >
+                     
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                >
+                  <div
+                    class="ant-form-item-control-input"
+                  >
+                    <div
+                      class="ant-form-item-control-input-content"
+                    >
+                      <div
+                        class="ant-space ant-space-horizontal ant-space-align-center"
+                      >
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 8px;"
+                        >
+                          <button
+                            class="ant-btn"
+                            type="button"
+                          >
+                            <span>
+                              common.reset
+                            </span>
+                          </button>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                        >
+                          <button
+                            class="ant-btn ant-btn-primary"
+                            type="button"
+                          >
+                            <span>
+                              common.nextStep
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-bottom: 24px;"
+        >
+          <div
+            data-testid="rule-list"
+            hidden=""
+          >
+            <div
+              class="ant-descriptions"
+            >
+              <div
+                class="ant-descriptions-header"
+              >
+                <div
+                  class="ant-descriptions-title"
+                >
+                  ruleTemplate.ruleTemplateForm.activeRuleTitle
+                </div>
+                <div
+                  class="ant-descriptions-extra"
+                >
+                  <button
+                    class="ant-btn ant-btn-primary ant-btn-dangerous"
+                    disabled=""
+                    type="button"
+                  >
+                    <span>
+                      ruleTemplate.ruleTemplateForm.disableAllRules
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="ant-descriptions-view"
+              >
+                <table>
+                  <tbody />
+                </table>
+              </div>
+            </div>
+            <div
+              class="ant-tabs ant-tabs-top"
+            >
+              <div
+                class="ant-tabs-nav"
+                role="tablist"
+              >
+                <div
+                  class="ant-tabs-nav-wrap"
+                >
+                  <div
+                    class="ant-tabs-nav-list"
+                    style="transform: translate(0px, 0px);"
+                  >
+                    <div
+                      class="ant-tabs-tab ant-tabs-tab-active"
+                    >
+                      <div
+                        aria-controls="rc-tabs-test-panel-ALL"
+                        aria-selected="true"
+                        class="ant-tabs-tab-btn"
+                        id="rc-tabs-test-tab-ALL"
+                        role="tab"
+                        tabindex="0"
+                      >
+                        ALL
+                      </div>
+                    </div>
+                    <div
+                      class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
+                      style="left: 0px; width: 0px;"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-tabs-nav-operations ant-tabs-nav-operations-hidden"
+                >
+                  <button
+                    aria-controls="rc-tabs-test-more-popup"
+                    aria-expanded="false"
+                    aria-haspopup="listbox"
+                    aria-hidden="true"
+                    class="ant-tabs-nav-more"
+                    id="rc-tabs-test-more"
+                    style="visibility: hidden; order: 1;"
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <span
+                      aria-label="ellipsis"
+                      class="anticon anticon-ellipsis"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="ellipsis"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="ant-tabs-content-holder"
+              >
+                <div
+                  class="ant-tabs-content ant-tabs-content-top"
+                >
+                  <div
+                    aria-hidden="false"
+                    aria-labelledby="rc-tabs-test-tab-ALL"
+                    class="ant-tabs-tabpane ant-tabs-tabpane-active"
+                    id="rc-tabs-test-panel-ALL"
+                    role="tabpanel"
+                    tabindex="0"
+                  >
+                    <div
+                      class="ant-list ant-list-split rule-list-namespace"
+                    >
+                      <div
+                        class="ant-spin-nested-loading"
+                      >
+                        <div
+                          class="ant-spin-container"
+                        >
+                          <div
+                            class="ant-list-empty-text"
+                            style=""
+                          >
+                            ruleTemplate.ruleTemplateForm.emptyRule
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-divider ant-divider-horizontal ant-divider-dashed"
+              role="separator"
+            />
+            <div
+              class="ant-descriptions"
+            >
+              <div
+                class="ant-descriptions-header"
+              >
+                <div
+                  class="ant-descriptions-title"
+                >
+                  ruleTemplate.ruleTemplateForm.disableRuleTitle
+                </div>
+                <div
+                  class="ant-descriptions-extra"
+                >
+                  <button
+                    class="ant-btn ant-btn-primary"
+                    disabled=""
+                    type="button"
+                  >
+                    <span>
+                      ruleTemplate.ruleTemplateForm.activeAllRules
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="ant-descriptions-view"
+              >
+                <table>
+                  <tbody />
+                </table>
+              </div>
+            </div>
+            <div
+              class="ant-tabs ant-tabs-top"
+            >
+              <div
+                class="ant-tabs-nav"
+                role="tablist"
+              >
+                <div
+                  class="ant-tabs-nav-wrap"
+                >
+                  <div
+                    class="ant-tabs-nav-list"
+                    style="transform: translate(0px, 0px);"
+                  >
+                    <div
+                      class="ant-tabs-tab ant-tabs-tab-active"
+                    >
+                      <div
+                        aria-controls="rc-tabs-test-panel-ALL"
+                        aria-selected="true"
+                        class="ant-tabs-tab-btn"
+                        id="rc-tabs-test-tab-ALL"
+                        role="tab"
+                        tabindex="0"
+                      >
+                        ALL
+                      </div>
+                    </div>
+                    <div
+                      class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
+                      style="left: 0px; width: 0px;"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-tabs-nav-operations ant-tabs-nav-operations-hidden"
+                >
+                  <button
+                    aria-controls="rc-tabs-test-more-popup"
+                    aria-expanded="false"
+                    aria-haspopup="listbox"
+                    aria-hidden="true"
+                    class="ant-tabs-nav-more"
+                    id="rc-tabs-test-more"
+                    style="visibility: hidden; order: 1;"
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <span
+                      aria-label="ellipsis"
+                      class="anticon anticon-ellipsis"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="ellipsis"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="ant-tabs-content-holder"
+              >
+                <div
+                  class="ant-tabs-content ant-tabs-content-top"
+                >
+                  <div
+                    aria-hidden="false"
+                    aria-labelledby="rc-tabs-test-tab-ALL"
+                    class="ant-tabs-tabpane ant-tabs-tabpane-active"
+                    id="rc-tabs-test-panel-ALL"
+                    role="tabpanel"
+                    tabindex="0"
+                  >
+                    <div
+                      class="ant-list ant-list-split rule-list-namespace"
+                    >
+                      <div
+                        class="ant-spin-nested-loading"
+                      >
+                        <div
+                          class="ant-spin-container"
+                        >
+                          <div
+                            class="ant-list-empty-text"
+                            style=""
+                          >
+                            ruleTemplate.ruleTemplateForm.emptyRule
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-divider ant-divider-horizontal ant-divider-dashed"
+              role="separator"
+            />
+            <div
+              class="ant-row ant-row-end"
+            >
+              <div
+                class="ant-space ant-space-horizontal ant-space-align-center"
+              >
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
+                >
+                  <button
+                    class="ant-btn"
+                    type="button"
+                  >
+                    <span>
+                      common.prevStep
+                    </span>
+                  </button>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  <button
+                    class="ant-btn ant-btn-primary"
+                    type="button"
+                  >
+                    <span>
+                      common.submit
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-space-item"
+        >
+          <div
+            data-testid="submit-result"
+            hidden=""
+          >
+            <div
+              class="ant-result ant-result-success"
+            >
+              <div
+                class="ant-result-icon"
+              >
+                <span
+                  aria-label="check-circle"
+                  class="anticon anticon-check-circle"
+                  role="img"
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-icon="check-circle"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm193.5 301.7l-210.6 292a31.8 31.8 0 01-51.7 0L318.5 484.9c-3.8-5.3 0-12.7 6.5-12.7h46.9c10.2 0 19.9 4.9 25.9 13.3l71.2 98.8 157.2-218c6-8.3 15.6-13.3 25.9-13.3H699c6.5 0 10.3 7.4 6.5 12.7z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="ant-result-title"
+              >
+                ruleTemplate.createRuleTemplate.successTitle
+              </div>
+              <div
+                class="ant-result-subtitle"
+              >
+                <a
+                  class="ant-typography ant-typography-secondary pointer"
+                >
+                  ruleTemplate.createRuleTemplate.createNew
+                </a>
+              </div>
+            </div>
+            <div
+              class="ant-row ant-row-center"
+            >
+              <a
+                href="/rule/template"
+              >
+                <button
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    ruleTemplate.backToList
+                  </span>
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
