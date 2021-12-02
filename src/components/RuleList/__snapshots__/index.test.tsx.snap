@@ -129,7 +129,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
           tabindex="-1"
         >
           <div
-            class="ant-list ant-list-split"
+            class="ant-list ant-list-split rule-list-namespace"
           >
             <div
               class="ant-spin-nested-loading"
@@ -203,7 +203,28 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc1_1: 
+                        </span>
+                        <span />
+                      </div>
+                      <div>
+                        <span />
+                        <span>
+                          true
+                        </span>
+                      </div>
+                      <div>
+                        <span>
+                          desc1_3: 
+                        </span>
+                        <span>
+                          val
+                        </span>
+                      </div>
+                    </div>
                   </li>
                   <li
                     class="ant-list-item"
@@ -268,14 +289,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    >
-                      <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        123
-                      </div>
-                    </div>
+                    />
                   </li>
                   <li
                     class="ant-list-item"
@@ -408,14 +422,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    >
-                      <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        1
-                      </div>
-                    </div>
+                    />
                   </li>
                   <li
                     class="ant-list-item"
@@ -545,14 +552,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    >
-                      <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        4444
-                      </div>
-                    </div>
+                    />
                   </li>
                 </ul>
               </div>
@@ -569,7 +569,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
           tabindex="-1"
         >
           <div
-            class="ant-list ant-list-split"
+            class="ant-list ant-list-split rule-list-namespace"
           >
             <div
               class="ant-spin-nested-loading"
@@ -643,7 +643,28 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    />
+                    >
+                      <div>
+                        <span>
+                          desc1_1: 
+                        </span>
+                        <span />
+                      </div>
+                      <div>
+                        <span />
+                        <span>
+                          true
+                        </span>
+                      </div>
+                      <div>
+                        <span>
+                          desc1_3: 
+                        </span>
+                        <span>
+                          val
+                        </span>
+                      </div>
+                    </div>
                   </li>
                   <li
                     class="ant-list-item"
@@ -708,14 +729,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    >
-                      <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        4444
-                      </div>
-                    </div>
+                    />
                   </li>
                 </ul>
               </div>
@@ -732,7 +746,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
           tabindex="-1"
         >
           <div
-            class="ant-list ant-list-split"
+            class="ant-list ant-list-split rule-list-namespace"
           >
             <div
               class="ant-spin-nested-loading"
@@ -806,14 +820,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    >
-                      <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        123
-                      </div>
-                    </div>
+                    />
                   </li>
                   <li
                     class="ant-list-item"
@@ -895,7 +902,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
           tabindex="0"
         >
           <div
-            class="ant-list ant-list-split"
+            class="ant-list ant-list-split rule-list-namespace"
           >
             <div
               class="ant-spin-nested-loading"
@@ -1037,14 +1044,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                     <div
                       class="ant-col"
                       style="flex: 0 0 20%;"
-                    >
-                      <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        1
-                      </div>
-                    </div>
+                    />
                   </li>
                 </ul>
               </div>

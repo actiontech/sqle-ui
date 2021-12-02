@@ -6,6 +6,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { IRuleReqV1, IRuleResV1 } from '../../../api/common';
+import { RuleParamResV1TypeEnum } from '../../../api/common.enum';
 import ruleTemplate from '../../../api/rule_template';
 import { ResponseCode } from '../../../data/common';
 import RuleTemplateForm from '../RuleTemplateForm';
@@ -47,10 +48,9 @@ const CreateRuleTemplate = () => {
       return {
         name: rule.rule_name,
         level: rule.level,
-        desc: rule.desc,
-        type: rule.type,
-        value: rule.value,
-        db_type: rule.db_type,
+        params: !!rule.params
+          ? rule.params.map((v) => ({ key: v.key, value: v.value }))
+          : [],
       };
     });
     ruleTemplate

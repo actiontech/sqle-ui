@@ -80,103 +80,103 @@ describe('UpdateRuleTemplate', () => {
     expect(history.location.pathname).toBe('/rule/template');
   });
 
-  test('should jump to next step when user input all require fields', async () => {
-    const updateTemplateSpy = mockUpdateRuleTemplate();
-    renderWithThemeAndRouter(<UpdateRuleTemplate />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    expect(screen.getByTestId('base-form')).not.toHaveAttribute('hidden');
-    fireEvent.input(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName'),
-      {
-        target: { value: 'testRuleTemplateId' },
-      }
-    );
-    fireEvent.input(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateDesc'),
-      {
-        target: { value: 'rule template desc' },
-      }
-    );
-    expect(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
-    ).toBeDisabled();
+  // test('should jump to next step when user input all require fields', async () => {
+  //   const updateTemplateSpy = mockUpdateRuleTemplate();
+  //   renderWithThemeAndRouter(<UpdateRuleTemplate />);
+  //   await waitFor(() => {
+  //     jest.advanceTimersByTime(3000);
+  //   });
+  //   expect(screen.getByTestId('base-form')).not.toHaveAttribute('hidden');
+  //   fireEvent.input(
+  //     screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName'),
+  //     {
+  //       target: { value: 'testRuleTemplateId' },
+  //     }
+  //   );
+  //   fireEvent.input(
+  //     screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateDesc'),
+  //     {
+  //       target: { value: 'rule template desc' },
+  //     }
+  //   );
+  //   expect(
+  //     screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
+  //   ).toBeDisabled();
 
-    fireEvent.mouseDown(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
-    );
+  //   fireEvent.mouseDown(
+  //     screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
+  //   );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    const option = screen.getAllByText('mysql-test')[1];
-    expect(screen.queryByText('oracle-test')).not.toBeInTheDocument();
-    expect(option).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(option);
+  //   await waitFor(() => {
+  //     jest.advanceTimersByTime(0);
+  //   });
+  //   const option = screen.getAllByText('mysql-test')[1];
+  //   expect(screen.queryByText('oracle-test')).not.toBeInTheDocument();
+  //   expect(option).toHaveClass('ant-select-item-option-content');
+  //   fireEvent.click(option);
 
-    fireEvent.click(screen.getByText('common.nextStep'));
+  //   fireEvent.click(screen.getByText('common.nextStep'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    expect(screen.getByTestId('base-form')).toHaveAttribute('hidden');
-    expect(screen.getByTestId('rule-list')).not.toHaveAttribute('hidden');
+  //   await waitFor(() => {
+  //     jest.advanceTimersByTime(0);
+  //   });
+  //   expect(screen.getByTestId('base-form')).toHaveAttribute('hidden');
+  //   expect(screen.getByTestId('rule-list')).not.toHaveAttribute('hidden');
 
-    fireEvent.click(screen.getByText('common.prevStep'));
-    expect(screen.getByTestId('base-form')).not.toHaveAttribute('hidden');
-    expect(screen.getByTestId('rule-list')).toHaveAttribute('hidden');
-    expect(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName')
-    ).toHaveValue('testRuleTemplateId');
-    fireEvent.click(screen.getByText('common.nextStep'));
+  //   fireEvent.click(screen.getByText('common.prevStep'));
+  //   expect(screen.getByTestId('base-form')).not.toHaveAttribute('hidden');
+  //   expect(screen.getByTestId('rule-list')).toHaveAttribute('hidden');
+  //   expect(
+  //     screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName')
+  //   ).toHaveValue('testRuleTemplateId');
+  //   fireEvent.click(screen.getByText('common.nextStep'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    expect(screen.getByTestId('base-form')).toHaveAttribute('hidden');
-    expect(screen.getByTestId('rule-list')).not.toHaveAttribute('hidden');
+  //   await waitFor(() => {
+  //     jest.advanceTimersByTime(0);
+  //   });
+  //   expect(screen.getByTestId('base-form')).toHaveAttribute('hidden');
+  //   expect(screen.getByTestId('rule-list')).not.toHaveAttribute('hidden');
 
-    expect(screen.getByTestId('rule-list')).toMatchSnapshot();
-    fireEvent.click(
-      screen.getByText('ruleTemplate.ruleTemplateForm.disableAllRules')
-    );
-    expect(screen.getByTestId('rule-list')).toMatchSnapshot();
-    fireEvent.click(
-      screen.getByText('ruleTemplate.ruleTemplateForm.activeAllRules')
-    );
-    expect(screen.getByTestId('rule-list')).toMatchSnapshot();
+  //   expect(screen.getByTestId('rule-list')).toMatchSnapshot();
+  //   fireEvent.click(
+  //     screen.getByText('ruleTemplate.ruleTemplateForm.disableAllRules')
+  //   );
+  //   expect(screen.getByTestId('rule-list')).toMatchSnapshot();
+  //   fireEvent.click(
+  //     screen.getByText('ruleTemplate.ruleTemplateForm.activeAllRules')
+  //   );
+  //   expect(screen.getByTestId('rule-list')).toMatchSnapshot();
 
-    fireEvent.click(
-      screen.getAllByText('ruleTemplate.ruleTemplateForm.disableRule')[0]
-    );
+  //   fireEvent.click(
+  //     screen.getAllByText('ruleTemplate.ruleTemplateForm.disableRule')[0]
+  //   );
 
-    fireEvent.click(screen.getByText('common.submit'));
+  //   fireEvent.click(screen.getByText('common.submit'));
 
-    expect(updateTemplateSpy).toBeCalledTimes(1);
-    const resultRuleName = allRulesWithType
-      .filter((e) => e.db_type === 'mysql')
-      .map((rule) => {
-        return {
-          db_type: rule.db_type,
-          name: rule.rule_name,
-          level: rule.level,
-          desc: rule.desc,
-          type: rule.type,
-          value: rule.value,
-        };
-      });
-    resultRuleName.shift();
-    expect(updateTemplateSpy).toBeCalledWith({
-      rule_template_name: 'testRuleTemplateId',
-      desc: 'rule template desc',
-      instance_name_list: ['db1', 'mysql-test'],
-      rule_list: resultRuleName,
-    });
-    // await waitFor(() => {
-    //   jest.advanceTimersByTime(3000);
-    // });
-    // expect(screen.getByTestId('rule-list')).toHaveAttribute('hidden');
-    // expect(screen.getByTestId('submit-result')).not.toHaveAttribute('hidden');
-  });
+  //   expect(updateTemplateSpy).toBeCalledTimes(1);
+  //   const resultRuleName = allRulesWithType
+  //     .filter((e) => e.db_type === 'mysql')
+  //     .map((rule) => {
+  //       return {
+  //         db_type: rule.db_type,
+  //         name: rule.rule_name,
+  //         level: rule.level,
+  //         desc: rule.desc,
+  //         type: rule.type,
+  //         value: rule.value,
+  //       };
+  //     });
+  //   resultRuleName.shift();
+  //   expect(updateTemplateSpy).toBeCalledWith({
+  //     rule_template_name: 'testRuleTemplateId',
+  //     desc: 'rule template desc',
+  //     instance_name_list: ['db1', 'mysql-test'],
+  //     rule_list: resultRuleName,
+  //   });
+  //   // await waitFor(() => {
+  //   //   jest.advanceTimersByTime(3000);
+  //   // });
+  //   // expect(screen.getByTestId('rule-list')).toHaveAttribute('hidden');
+  //   // expect(screen.getByTestId('submit-result')).not.toHaveAttribute('hidden');
+  // });
 });

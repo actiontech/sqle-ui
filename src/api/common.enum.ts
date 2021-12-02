@@ -26,6 +26,14 @@ export enum CreateAuditWhitelistReqV1MatchTypeEnum {
   'fp_match' = 'fp_match'
 }
 
+export enum RuleParamResV1TypeEnum {
+  'string' = 'string',
+
+  'int' = 'int',
+
+  'bool' = 'bool'
+}
+
 export enum RuleResV1LevelEnum {
   'normal' = 'normal',
 

@@ -1,7 +1,10 @@
 import RuleList from '.';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { IRuleResV1 } from '../../api/common';
-import { RuleResV1LevelEnum } from '../../api/common.enum';
+import {
+  RuleResV1LevelEnum,
+  RuleParamResV1TypeEnum,
+} from '../../api/common.enum';
 
 const ruleList: IRuleResV1[] = [
   {
@@ -9,12 +12,29 @@ const ruleList: IRuleResV1[] = [
     level: RuleResV1LevelEnum.normal,
     rule_name: 'name1',
     type: 'type1',
+    params: [
+      {
+        key: 'key1_1',
+        desc: 'desc1_1',
+        type: RuleParamResV1TypeEnum.int,
+      },
+      {
+        key: 'key1_2',
+        type: RuleParamResV1TypeEnum.bool,
+        value: 'true',
+      },
+      {
+        key: 'key1_3',
+        desc: 'desc1_3',
+        type: RuleParamResV1TypeEnum.string,
+        value: 'val',
+      },
+    ],
   },
   {
     desc: 'desc2',
     level: RuleResV1LevelEnum.normal,
     rule_name: 'name2',
-    value: '123',
     type: 'type2',
   },
   {
@@ -27,7 +47,6 @@ const ruleList: IRuleResV1[] = [
     desc: 'desc4',
     level: RuleResV1LevelEnum.warn,
     rule_name: 'name4',
-    value: '1',
     type: 'type3',
   },
   {
@@ -38,7 +57,6 @@ const ruleList: IRuleResV1[] = [
   {
     desc: 'desc4',
     rule_name: 'name4',
-    value: '4444',
     type: 'type1',
   },
 ];
@@ -82,5 +100,12 @@ describe('RuleList', () => {
     expect(screen.getByText('type3').parentNode).toHaveClass(
       'ant-tabs-tab-active'
     );
+  });
+  test('should render rule value list when params in the item', () => {
+    render(<RuleList list={ruleList} />);
+    expect(screen.queryByText('desc1_1:')).toBeInTheDocument();
+    expect(screen.queryByText('true')).toBeInTheDocument();
+    expect(screen.queryByText('desc1_3:')).toBeInTheDocument();
+    expect(screen.queryByText('val')).toBeInTheDocument();
   });
 });

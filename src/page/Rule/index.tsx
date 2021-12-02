@@ -9,7 +9,7 @@ import {
   Row,
   Select,
   Space,
-  Form
+  Form,
 } from 'antd';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -18,7 +18,12 @@ import ruleTemplate from '../../api/rule_template';
 import EmptyBox from '../../components/EmptyBox';
 import RuleList from '../../components/RuleList';
 import useSyncRuleListTab from '../../components/RuleList/useSyncRuleListTab';
-import { ResponseCode,FilterFormColLayout ,FilterFormRowLayout,FilterFormLayout} from '../../data/common';
+import {
+  ResponseCode,
+  FilterFormColLayout,
+  FilterFormRowLayout,
+  FilterFormLayout,
+} from '../../data/common';
 import useDatabaseType from '../../hooks/useDatabaseType';
 import useInstance from '../../hooks/useInstance';
 import { Theme } from '../../types/theme.type';
@@ -112,10 +117,9 @@ const Rule = () => {
         >
           <Card>
             <Form {...FilterFormLayout}>
-              <Row align="middle"   {...FilterFormRowLayout}>
+              <Row align="middle" {...FilterFormRowLayout}>
                 <Col {...FilterFormColLayout}>
-                  <Form.Item
-                  label={t('rule.form.instance')} >
+                  <Form.Item label={t('rule.form.instance')}>
                     <Select
                       data-testid="instance-name"
                       value={instanceName}
@@ -129,7 +133,7 @@ const Rule = () => {
                   </Form.Item>
                 </Col>
                 <Col {...FilterFormColLayout}>
-                  <Form.Item label= {t('rule.form.dbType')} >
+                  <Form.Item label={t('rule.form.dbType')}>
                     <Select
                       data-testid="database-type"
                       value={dbType}

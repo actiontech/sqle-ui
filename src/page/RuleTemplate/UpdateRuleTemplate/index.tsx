@@ -4,7 +4,12 @@ import { useForm } from 'antd/lib/form/Form';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
-import { IRuleResV1, IRuleTemplateDetailResV1 } from '../../../api/common';
+import {
+  IRuleReqV1,
+  IRuleResV1,
+  IRuleTemplateDetailResV1,
+} from '../../../api/common';
+import { RuleParamResV1TypeEnum } from '../../../api/common.enum';
 import ruleTemplateService from '../../../api/rule_template';
 import { ResponseCode } from '../../../data/common';
 import RuleTemplateForm from '../RuleTemplateForm';
@@ -45,14 +50,13 @@ const UpdateRuleTemplate = () => {
   const submit = React.useCallback(() => {
     updateLoading(true);
     const baseInfo = form.getFieldsValue();
-    const activeRuleWithNewField = activeRule.map((rule) => {
+    const activeRuleWithNewField: IRuleReqV1[] = activeRule.map((rule) => {
       return {
         name: rule.rule_name,
         level: rule.level,
-        desc: rule.desc,
-        type: rule.type,
-        value: rule.value,
-        db_type: rule.db_type,
+        params: !!rule.params
+          ? rule.params.map((v) => ({ key: v.key, value: v.value }))
+          : [],
       };
     });
     ruleTemplateService

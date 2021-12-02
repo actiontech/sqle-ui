@@ -481,7 +481,7 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="ant-list ant-list-split"
+                      class="ant-list ant-list-split rule-list-namespace"
                     >
                       <div
                         class="ant-spin-nested-loading"
@@ -694,14 +694,7 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  utf8mb4_0900_ai_ci
-                                </div>
-                              </div>
+                              />
                             </li>
                             <li
                               class="ant-list-item"
@@ -1449,14 +1442,7 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  3
-                                </div>
-                              </div>
+                              />
                             </li>
                             <li
                               class="ant-list-item"
@@ -1728,14 +1714,7 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  5
-                                </div>
-                              </div>
+                              />
                             </li>
                             <li
                               class="ant-list-item"
@@ -1803,14 +1782,7 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  0.7
-                                </div>
-                              </div>
+                              />
                             </li>
                             <li
                               class="ant-list-item"
@@ -3235,14 +3207,7 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  16
-                                </div>
-                              </div>
+                              />
                             </li>
                             <li
                               class="ant-list-item"
@@ -3310,14 +3275,7 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  5000
-                                </div>
-                              </div>
+                              />
                             </li>
                             <li
                               class="ant-list-item"
@@ -3657,14 +3615,7 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  sha(),sqrt(),md5()
-                                </div>
-                              </div>
+                              />
                             </li>
                             <li
                               class="ant-list-item"
@@ -3732,14 +3683,7 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  3
-                                </div>
-                              </div>
+                              />
                             </li>
                             <li
                               class="ant-list-item"
@@ -4268,7 +4212,7 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="ant-list ant-list-split"
+                      class="ant-list ant-list-split rule-list-namespace"
                     >
                       <div
                         class="ant-spin-nested-loading"
@@ -4614,14 +4558,7 @@ exports[`Rule should render instance rule when user select a instance 1`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  10000
-                                </div>
-                              </div>
+                              />
                             </li>
                             <li
                               class="ant-list-item"
@@ -5165,7 +5102,7 @@ exports[`Rule should render page header 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="ant-list ant-list-split"
+                      class="ant-list ant-list-split rule-list-namespace"
                     >
                       <div
                         class="ant-spin-nested-loading"
@@ -5568,7 +5505,7 @@ exports[`Rule should render page header 2`] = `
                     tabindex="0"
                   >
                     <div
-                      class="ant-list ant-list-split"
+                      class="ant-list ant-list-split rule-list-namespace"
                     >
                       <div
                         class="ant-spin-nested-loading"
@@ -5985,14 +5922,7 @@ exports[`Rule should render page header 2`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  1000
-                                </div>
-                              </div>
+                              />
                             </li>
                           </ul>
                         </div>
@@ -6373,7 +6303,7 @@ exports[`Rule should render rules by select database type 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="ant-list ant-list-split"
+                      class="ant-list ant-list-split rule-list-namespace"
                     >
                       <div
                         class="ant-spin-nested-loading"
@@ -6776,7 +6706,7 @@ exports[`Rule should render rules by select database type 2`] = `
                     tabindex="0"
                   >
                     <div
-                      class="ant-list ant-list-split"
+                      class="ant-list ant-list-split rule-list-namespace"
                     >
                       <div
                         class="ant-spin-nested-loading"
@@ -7193,14 +7123,7 @@ exports[`Rule should render rules by select database type 2`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  1000
-                                </div>
-                              </div>
+                              />
                             </li>
                           </ul>
                         </div>
@@ -7668,7 +7591,7 @@ exports[`Rule should render rules by select database type 3`] = `
                     tabindex="0"
                   >
                     <div
-                      class="ant-list ant-list-split"
+                      class="ant-list ant-list-split rule-list-namespace"
                     >
                       <div
                         class="ant-spin-nested-loading"
@@ -7881,14 +7804,7 @@ exports[`Rule should render rules by select database type 3`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  utf8mb4_0900_ai_ci
-                                </div>
-                              </div>
+                              />
                             </li>
                             <li
                               class="ant-list-item"
@@ -8636,14 +8552,7 @@ exports[`Rule should render rules by select database type 3`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  3
-                                </div>
-                              </div>
+                              />
                             </li>
                             <li
                               class="ant-list-item"
@@ -9187,14 +9096,7 @@ exports[`Rule should render rules by select database type 3`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  5
-                                </div>
-                              </div>
+                              />
                             </li>
                             <li
                               class="ant-list-item"
@@ -9262,14 +9164,7 @@ exports[`Rule should render rules by select database type 3`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  0.7
-                                </div>
-                              </div>
+                              />
                             </li>
                             <li
                               class="ant-list-item"
@@ -10694,14 +10589,7 @@ exports[`Rule should render rules by select database type 3`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  16
-                                </div>
-                              </div>
+                              />
                             </li>
                             <li
                               class="ant-list-item"
@@ -10769,14 +10657,7 @@ exports[`Rule should render rules by select database type 3`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  5000
-                                </div>
-                              </div>
+                              />
                             </li>
                             <li
                               class="ant-list-item"
@@ -10841,14 +10722,7 @@ exports[`Rule should render rules by select database type 3`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  10000
-                                </div>
-                              </div>
+                              />
                             </li>
                             <li
                               class="ant-list-item"
@@ -11318,14 +11192,7 @@ exports[`Rule should render rules by select database type 3`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  sha(),sqrt(),md5()
-                                </div>
-                              </div>
+                              />
                             </li>
                             <li
                               class="ant-list-item"
@@ -11393,14 +11260,7 @@ exports[`Rule should render rules by select database type 3`] = `
                               <div
                                 class="ant-col"
                                 style="flex: 0 0 20%;"
-                              >
-                                <div>
-                                  ruleTemplate.ruleTemplateForm.ruleValue
-                                </div>
-                                <div>
-                                  3
-                                </div>
-                              </div>
+                              />
                             </li>
                             <li
                               class="ant-list-item"
