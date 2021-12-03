@@ -205,7 +205,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           tabindex="0"
         >
           <div
-            class="ant-list ant-list-split"
+            class="ant-list ant-list-split rule-list-namespace"
           >
             <div
               class="ant-spin-nested-loading"
@@ -1053,7 +1053,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           tabindex="0"
         >
           <div
-            class="ant-list ant-list-split"
+            class="ant-list ant-list-split rule-list-namespace"
           >
             <div
               class="ant-spin-nested-loading"
@@ -1132,10 +1132,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        utf8mb4_0900_ai_ci
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          utf8mb4_0900_ai_ci
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -1713,10 +1715,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        3
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          3
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -2376,10 +2380,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        5
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          5
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -2465,10 +2471,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        0.7
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          0.7
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -4191,10 +4199,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        16
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          16
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -4280,10 +4290,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        5000
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          5000
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -4366,10 +4378,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        10000
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          10000
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -4941,10 +4955,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        sha(),sqrt(),md5()
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          sha(),sqrt(),md5()
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -5030,10 +5046,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        3
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          3
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -5689,7 +5707,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           tabindex="0"
         >
           <div
-            class="ant-list ant-list-split"
+            class="ant-list ant-list-split rule-list-namespace"
           >
             <div
               class="ant-spin-nested-loading"
@@ -5968,7 +5986,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           tabindex="0"
         >
           <div
-            class="ant-list ant-list-split"
+            class="ant-list ant-list-split rule-list-namespace"
           >
             <div
               class="ant-spin-nested-loading"
@@ -6211,10 +6229,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        utf8mb4_0900_ai_ci
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          utf8mb4_0900_ai_ci
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -7120,10 +7140,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        3
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          3
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -7783,10 +7805,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        5
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          5
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -7872,10 +7896,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        0.7
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          0.7
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -9598,10 +9624,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        16
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          16
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -9687,10 +9715,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        5000
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          5000
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -9773,10 +9803,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        10000
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          10000
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -10348,10 +10380,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        sha(),sqrt(),md5()
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          sha(),sqrt(),md5()
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -10437,10 +10471,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        3
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          3
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -11095,7 +11131,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           tabindex="0"
         >
           <div
-            class="ant-list ant-list-split"
+            class="ant-list ant-list-split rule-list-namespace"
           >
             <div
               class="ant-spin-nested-loading"
@@ -11364,10 +11400,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        utf8mb4_0900_ai_ci
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          utf8mb4_0900_ai_ci
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -12416,10 +12454,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        3
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          3
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -13183,10 +13223,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        5
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          5
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -13285,10 +13327,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        0.7
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          0.7
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -15284,10 +15328,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        16
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          16
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -15386,10 +15432,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        5000
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          5000
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -15485,10 +15533,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        10000
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          10000
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -16151,10 +16201,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        sha(),sqrt(),md5()
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          sha(),sqrt(),md5()
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -16253,10 +16305,12 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        3
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          3
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -16936,7 +16990,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           tabindex="0"
         >
           <div
-            class="ant-list ant-list-split"
+            class="ant-list ant-list-split rule-list-namespace"
           >
             <div
               class="ant-spin-nested-loading"
@@ -17632,7 +17686,7 @@ exports[`UpdateRuleTemplate should render base form at init 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="ant-list ant-list-split ant-list-loading"
+                      class="ant-list ant-list-split ant-list-loading rule-list-namespace"
                     >
                       <div
                         class="ant-spin-nested-loading"
@@ -17793,7 +17847,7 @@ exports[`UpdateRuleTemplate should render base form at init 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="ant-list ant-list-split ant-list-loading"
+                      class="ant-list ant-list-split ant-list-loading rule-list-namespace"
                     >
                       <div
                         class="ant-spin-nested-loading"
@@ -18625,7 +18679,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                     tabindex="0"
                   >
                     <div
-                      class="ant-list ant-list-split"
+                      class="ant-list ant-list-split rule-list-namespace"
                     >
                       <div
                         class="ant-spin-nested-loading"
@@ -19363,7 +19417,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                     tabindex="0"
                   >
                     <div
-                      class="ant-list ant-list-split"
+                      class="ant-list ant-list-split rule-list-namespace"
                     >
                       <div
                         class="ant-spin-nested-loading"

@@ -67,9 +67,11 @@ export default {
 
     ruleLevelValuePlace: '请填写规则的默认值',
     ruleDescLabel: '规则描述',
-    ruleTypeLabel: '规则类型',
+    ruleTypeLabel: '规则分类',
     ruleNameLabel: '规则名称',
     ruleDbType: '数据库类型',
+    rule: '规则',
+    ruleValueTypeOnlyNumber: '当前规则值类型只能为数字',
   },
 
   cloneRuleTemplate: {

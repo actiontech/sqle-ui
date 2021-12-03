@@ -12,6 +12,7 @@ import {
 } from '../../../testUtils/mockRequest';
 import { createMemoryHistory } from 'history';
 import { allRulesWithType } from '../../Rule/__testData__';
+import { IRuleReqV1 } from '../../../api/common';
 
 describe('RuleTemplate/CreateRuleTemplate', () => {
   beforeEach(() => {
@@ -141,16 +142,13 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
     fireEvent.click(screen.getByText('common.submit'));
 
     expect(createTemplateSpy).toBeCalledTimes(1);
-    const resultRuleName = allRulesWithType
+    const resultRuleName: IRuleReqV1[] = allRulesWithType
       .filter((e) => e.db_type === 'oracle')
       .map((rule) => {
         return {
-          db_type: rule.db_type,
           name: rule.rule_name,
           level: rule.level,
-          desc: rule.desc,
-          type: rule.type,
-          value: rule.value,
+          params: rule.params.map((v) => ({ key: v.key, value: v.value })),
         };
       });
     resultRuleName.shift();

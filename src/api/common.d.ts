@@ -2,6 +2,7 @@ import {
   AuditTaskResV1SqlSourceEnum,
   AuditTaskResV1StatusEnum,
   CreateAuditWhitelistReqV1MatchTypeEnum,
+  RuleParamResV1TypeEnum,
   RuleResV1LevelEnum,
   UpdateAuditWhitelistReqV1MatchTypeEnum,
   WorkFlowStepTemplateReqV1TypeEnum,
@@ -631,12 +632,28 @@ export interface IRoleTipResV1 {
   role_name?: string;
 }
 
+export interface IRuleParamReqV1 {
+  key?: string;
+
+  value?: string;
+}
+
+export interface IRuleParamResV1 {
+  desc?: string;
+
+  key?: string;
+
+  type?: RuleParamResV1TypeEnum;
+
+  value?: string;
+}
+
 export interface IRuleReqV1 {
   level?: string;
 
   name?: string;
 
-  value?: string;
+  params?: IRuleParamReqV1[];
 }
 
 export interface IRuleResV1 {
@@ -646,11 +663,11 @@ export interface IRuleResV1 {
 
   level?: RuleResV1LevelEnum;
 
+  params?: IRuleParamResV1[];
+
   rule_name?: string;
 
   type?: string;
-
-  value?: string;
 }
 
 export interface IRuleTemplateDetailResV1 {

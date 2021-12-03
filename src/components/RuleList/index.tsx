@@ -67,6 +67,7 @@ const RuleList: React.FC<RuleListProps> = (props) => {
         return (
           <Tabs.TabPane tab={tab.tabTitle} key={tab.tabTitle}>
             <List
+              className="rule-list-namespace"
               itemLayout="horizontal"
               dataSource={tab.rules}
               locale={{
@@ -80,14 +81,13 @@ const RuleList: React.FC<RuleListProps> = (props) => {
                     title={item.desc}
                   />
                   <Col flex="20%">
-                    {item.value && (
-                      <>
-                        <div>
-                          {t('ruleTemplate.ruleTemplateForm.ruleValue')}
+                    {item.params &&
+                      item.params.map((v) => (
+                        <div key={v.key}>
+                          <span>{!!v.desc ? `${v.desc}: ` : ''}</span>
+                          <span>{v.value ?? ''}</span>
                         </div>
-                        <div>{item.value}</div>
-                      </>
-                    )}
+                      ))}
                   </Col>
                 </List.Item>
               )}

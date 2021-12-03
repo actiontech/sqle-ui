@@ -6,3 +6,7 @@ export type RuleManagerFormProps = {
   setVisibleFalse: () => void;
   submit: (values: IRuleResV1) => void;
 };
+
+export interface IRuleManagerForm {
+  [key: string]: string | boolean;
+}

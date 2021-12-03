@@ -3,6 +3,7 @@ export type Theme = {
     padding: number;
     color: {
       warning: string;
+      disabledFont: string;
     };
   };
   loginFormBg: string;

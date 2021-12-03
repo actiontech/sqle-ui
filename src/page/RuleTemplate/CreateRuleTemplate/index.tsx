@@ -47,10 +47,9 @@ const CreateRuleTemplate = () => {
       return {
         name: rule.rule_name,
         level: rule.level,
-        desc: rule.desc,
-        type: rule.type,
-        value: rule.value,
-        db_type: rule.db_type,
+        params: !!rule.params
+          ? rule.params.map((v) => ({ key: v.key, value: v.value }))
+          : [],
       };
     });
     ruleTemplate

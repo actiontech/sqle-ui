@@ -1,12 +1,7 @@
 import RuleManagerModal from '.';
-import {
-  fireEvent,
-  screen,
-  waitFor,
-  render,
-  cleanup,
-} from '@testing-library/react';
-import { ruleData, ruleDataNoValue, editRuleData } from './__testData__';
+import { fireEvent, screen, waitFor, cleanup } from '@testing-library/react';
+import { ruleData, editRuleData } from './__testData__';
+import { renderWithTheme } from '../../../../../testUtils/customRender';
 
 describe('RuleSelect/RuleManagerModal', () => {
   beforeEach(() => {
@@ -19,7 +14,7 @@ describe('RuleSelect/RuleManagerModal', () => {
   });
   test('should render base form at init', async () => {
     const submitFunction = jest.fn();
-    const { baseElement } = render(
+    const { baseElement } = renderWithTheme(
       <RuleManagerModal
         visible={true}
         ruleData={ruleData}
@@ -29,32 +24,44 @@ describe('RuleSelect/RuleManagerModal', () => {
     );
     expect(baseElement).toMatchSnapshot();
 
-    const ruleName: HTMLElement = screen.getByLabelText(
-      'ruleTemplate.editModal.ruleNameLabel'
+    expect(
+      screen.queryByLabelText('ruleTemplate.editModal.ruleNameLabel')
+    ).not.toBeInTheDocument();
+
+    expect(screen.getByLabelText('ruleTemplate.editModal.rule')).toHaveValue(
+      ruleData.desc
     );
-    expect(ruleName).toHaveValue(ruleData.rule_name);
-    expect(ruleName).toBeDisabled();
+    expect(screen.getByLabelText('ruleTemplate.editModal.rule')).toBeDisabled();
+
+    expect(
+      screen.getByLabelText('ruleTemplate.editModal.ruleTypeLabel')
+    ).toHaveValue(ruleData.type);
+    expect(
+      screen.getByLabelText('ruleTemplate.editModal.ruleTypeLabel')
+    ).toBeDisabled();
+
+    expect(
+      screen.getByLabelText('ruleTemplate.editModal.ruleDbType')
+    ).toHaveValue(ruleData.db_type);
+    expect(
+      screen.getByLabelText('ruleTemplate.editModal.ruleDbType')
+    ).toBeDisabled();
 
     expect(screen.getByTitle('ruleTemplate.ruleLevel.error')).toHaveTextContent(
       'ruleTemplate.ruleLevel.error'
     );
+  });
 
-    const ruleDesc: HTMLElement = screen.getByLabelText(
-      'ruleTemplate.editModal.ruleDescLabel'
+  test('should be able to modify the value of level', async () => {
+    const submitFunction = jest.fn();
+    renderWithTheme(
+      <RuleManagerModal
+        visible={true}
+        ruleData={ruleData}
+        setVisibleFalse={jest.fn()}
+        submit={submitFunction}
+      />
     );
-    expect(ruleDesc).toHaveValue(ruleData.desc);
-    expect(ruleDesc).toBeDisabled();
-
-    const ruleType: HTMLElement = screen.getByLabelText(
-      'ruleTemplate.editModal.ruleTypeLabel'
-    );
-    expect(ruleType).toHaveValue(ruleData.type);
-    expect(ruleType).toBeDisabled();
-
-    const ruleValue: HTMLElement = screen.getByLabelText(
-      'ruleTemplate.editModal.ruleLevelValue'
-    );
-    expect(ruleValue).toHaveValue(ruleData.value);
     fireEvent.mouseDown(
       screen.getByLabelText('ruleTemplate.editModal.ruleLevelLabel')
     );
@@ -66,45 +73,81 @@ describe('RuleSelect/RuleManagerModal', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
-    const value = {
-      target: { value: 'test' },
-    };
-    fireEvent.change(ruleValue, value);
-    await waitFor(() => {
-      jest.advanceTimersByTime(1000);
-    });
-    expect(ruleValue).toHaveValue('test');
-    expect(
-      screen.getAllByText('ruleTemplate.ruleLevel.normal')[0]
-    ).toHaveTextContent('ruleTemplate.ruleLevel.normal');
     fireEvent.click(screen.getByText('common.submit'));
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
     expect(submitFunction).toBeCalledTimes(1);
-    expect(submitFunction).toBeCalledWith(editRuleData);
+    expect(submitFunction).toBeCalledWith({
+      rule_name: 'ddl_check_collation_database',
+      desc: '建议使用规定的数据库排序规则',
+      level: 'normal',
+      type: 'DDL规范',
+      db_type: 'mysql',
+      params: undefined,
+    });
   });
 
-  test('should not show value input while ruleData not have value', () => {
-    const { baseElement } = render(
+  test('should be able to modify the value when params are present', async () => {
+    const submitFunction = jest.fn();
+    renderWithTheme(
       <RuleManagerModal
         visible={true}
-        ruleData={ruleDataNoValue}
+        ruleData={editRuleData}
         setVisibleFalse={jest.fn()}
-        submit={jest.fn()}
+        submit={submitFunction}
       />
     );
-    expect(baseElement).toMatchSnapshot();
+
     expect(
-      screen.getByLabelText('ruleTemplate.editModal.ruleLevelValue')
-    ).toHaveValue('');
-    expect(screen.getByTestId('hidden-form-item')).toHaveClass(
-      'ant-form-item-hidden'
+      screen.getByLabelText(editRuleData?.params?.[0].desc ?? '')
+    ).toHaveValue(editRuleData?.params?.[0].value ?? '');
+
+    expect(
+      screen.getByLabelText(editRuleData?.params?.[1].desc ?? '')
+    ).toHaveValue(editRuleData?.params?.[1].value ?? '');
+
+    expect(
+      screen.getByLabelText(editRuleData?.params?.[2].desc ?? '')
+    ).toHaveAttribute('aria-checked', editRuleData?.params?.[2].value);
+
+    fireEvent.change(
+      screen.getByLabelText(editRuleData?.params?.[0].desc ?? ''),
+      { target: { value: 'change_str' } }
     );
+
+    fireEvent.change(
+      screen.getByLabelText(editRuleData?.params?.[1].desc ?? ''),
+      { target: { value: '345' } }
+    );
+
+    fireEvent.click(
+      screen.getByLabelText(editRuleData?.params?.[2].desc ?? '')
+    );
+
+    fireEvent.click(screen.getByText('common.submit'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(submitFunction).toBeCalledTimes(1);
+    expect(submitFunction).toBeCalledWith({
+      ...editRuleData,
+      params: [
+        {
+          value: 'change_str',
+          type: 'string',
+          key: 'str_key',
+          desc: 'str_desc',
+        },
+        { value: '345', type: 'int', key: 'int_key', desc: 'ine_desc' },
+        { value: 'true', type: 'bool', key: 'radio_key', desc: 'radio_desc' },
+      ],
+    });
   });
+
   test('should resetFiled while click close', async () => {
     const setVisibleFalse = jest.fn();
-    const { baseElement } = render(
+    renderWithTheme(
       <RuleManagerModal
         visible={true}
         ruleData={ruleData}
@@ -112,47 +155,24 @@ describe('RuleSelect/RuleManagerModal', () => {
         submit={jest.fn()}
       />
     );
-    expect(baseElement).toMatchSnapshot();
-
-    fireEvent.mouseDown(
-      screen.getByLabelText('ruleTemplate.editModal.ruleLevelLabel')
-    );
-    const option = screen.getAllByText('ruleTemplate.ruleLevel.normal')[0];
-    expect(screen.getAllByText('ruleTemplate.ruleLevel.normal')[0]).toHaveClass(
-      'ant-select-item-option-content'
-    );
-    fireEvent.click(option);
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    const value = {
-      target: { value: 'test' },
-    };
-    fireEvent.change(
-      screen.getByLabelText('ruleTemplate.editModal.ruleLevelValue'),
-      value
-    );
-    await waitFor(() => {
-      jest.advanceTimersByTime(1000);
-    });
     fireEvent.click(screen.getByText('common.close'));
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    expect(
-      screen.getByLabelText('ruleTemplate.editModal.ruleNameLabel')
-    ).toHaveValue('');
-    expect(
-      screen.getByLabelText('ruleTemplate.editModal.ruleDescLabel')
-    ).toHaveValue('');
+    expect(screen.getByLabelText('ruleTemplate.editModal.rule')).toHaveValue(
+      ''
+    );
+
     expect(
       screen.getByLabelText('ruleTemplate.editModal.ruleTypeLabel')
     ).toHaveValue('');
+
     expect(
-      screen.getAllByText('ruleTemplate.editModal.ruleLevelLabelPlace')[0]
-    ).toHaveClass('ant-select-selection-placeholder');
+      screen.getByLabelText('ruleTemplate.editModal.ruleDbType')
+    ).toHaveValue('');
+
     expect(
-      screen.getByLabelText('ruleTemplate.editModal.ruleLevelValue')
+      screen.getByLabelText('ruleTemplate.editModal.ruleLevelLabel')
     ).toHaveValue('');
     expect(setVisibleFalse).toBeCalledTimes(1);
   });

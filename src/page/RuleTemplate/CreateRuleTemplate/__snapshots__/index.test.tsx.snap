@@ -149,7 +149,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
           tabindex="0"
         >
           <div
-            class="ant-list ant-list-split"
+            class="ant-list ant-list-split rule-list-namespace"
           >
             <div
               class="ant-spin-nested-loading"
@@ -703,10 +703,12 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        1000
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          1000
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -913,7 +915,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
           tabindex="0"
         >
           <div
-            class="ant-list ant-list-split"
+            class="ant-list ant-list-split rule-list-namespace"
           >
             <div
               class="ant-spin-nested-loading"
@@ -1143,7 +1145,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
           tabindex="0"
         >
           <div
-            class="ant-list ant-list-split"
+            class="ant-list ant-list-split rule-list-namespace"
           >
             <div
               class="ant-spin-nested-loading"
@@ -1330,7 +1332,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
           tabindex="0"
         >
           <div
-            class="ant-list ant-list-split"
+            class="ant-list ant-list-split rule-list-namespace"
           >
             <div
               class="ant-spin-nested-loading"
@@ -1819,10 +1821,12 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        1000
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          1000
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -2057,7 +2061,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
           tabindex="0"
         >
           <div
-            class="ant-list ant-list-split"
+            class="ant-list ant-list-split rule-list-namespace"
           >
             <div
               class="ant-spin-nested-loading"
@@ -2611,10 +2615,12 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                       style="flex: 0 0 20%;"
                     >
                       <div>
-                        ruleTemplate.ruleTemplateForm.ruleValue
-                      </div>
-                      <div>
-                        1000
+                        <span>
+                          desc: 
+                        </span>
+                        <span>
+                          1000
+                        </span>
                       </div>
                     </div>
                     <ul
@@ -2822,7 +2828,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
           tabindex="0"
         >
           <div
-            class="ant-list ant-list-split"
+            class="ant-list ant-list-split rule-list-namespace"
           >
             <div
               class="ant-spin-nested-loading"
@@ -3482,7 +3488,7 @@ exports[`RuleTemplate/CreateRuleTemplate should render base form at init 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="ant-list ant-list-split ant-list-loading"
+                      class="ant-list ant-list-split ant-list-loading rule-list-namespace"
                     >
                       <div
                         class="ant-spin-nested-loading"
@@ -3643,7 +3649,7 @@ exports[`RuleTemplate/CreateRuleTemplate should render base form at init 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="ant-list ant-list-split ant-list-loading"
+                      class="ant-list ant-list-split ant-list-loading rule-list-namespace"
                     >
                       <div
                         class="ant-spin-nested-loading"
@@ -4376,7 +4382,7 @@ exports[`RuleTemplate/CreateRuleTemplate should render base form at init 2`] = `
                     tabindex="0"
                   >
                     <div
-                      class="ant-list ant-list-split"
+                      class="ant-list ant-list-split rule-list-namespace"
                     >
                       <div
                         class="ant-spin-nested-loading"
@@ -4519,7 +4525,7 @@ exports[`RuleTemplate/CreateRuleTemplate should render base form at init 2`] = `
                     tabindex="0"
                   >
                     <div
-                      class="ant-list ant-list-split"
+                      class="ant-list ant-list-split rule-list-namespace"
                     >
                       <div
                         class="ant-spin-nested-loading"

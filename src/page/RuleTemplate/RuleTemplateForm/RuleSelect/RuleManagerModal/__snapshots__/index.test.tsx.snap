@@ -1,353 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RuleSelect/RuleManagerModal should not show value input while ruleData not have value 1`] = `
-<body
-  class="ant-scrolling-effect"
-  style="width: calc(100% - 0px); overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
->
-  <style>
-    
-      [ant-click-animating-without-extra-node='true']::after, .ant-click-animating-node {
-        --antd-wave-shadow-color: buttonface;
-      }
-  </style>
-  <div />
-  <div>
-    <div
-      class="ant-modal-root"
-    >
-      <div
-        class="ant-modal-mask"
-      />
-      <div
-        aria-labelledby="rcDialogTitle1"
-        class="ant-modal-wrap"
-        role="dialog"
-        tabindex="-1"
-      >
-        <div
-          class="ant-modal"
-          role="document"
-          style="width: 520px;"
-        >
-          <div
-            aria-hidden="true"
-            style="width: 0px; height: 0px; overflow: hidden; outline: none;"
-            tabindex="0"
-          />
-          <div
-            class="ant-modal-content"
-          >
-            <div
-              class="ant-modal-header"
-            >
-              <div
-                class="ant-modal-title"
-                id="rcDialogTitle1"
-              >
-                ruleTemplate.editModal.title
-              </div>
-            </div>
-            <div
-              class="ant-modal-body"
-            >
-              <form
-                class="ant-form ant-form-horizontal"
-                data-testid="base-form"
-              >
-                <div
-                  class="ant-row ant-form-item ant-form-item-has-success"
-                >
-                  <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                  >
-                    <label
-                      class=""
-                      for="rule_name"
-                      title="ruleTemplate.editModal.ruleNameLabel"
-                    >
-                      ruleTemplate.editModal.ruleNameLabel
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-                  >
-                    <div
-                      class="ant-form-item-control-input"
-                    >
-                      <div
-                        class="ant-form-item-control-input-content"
-                      >
-                        <input
-                          class="ant-input ant-input-disabled"
-                          disabled=""
-                          id="rule_name"
-                          type="text"
-                          value="ddl_check_collation_database"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="ant-row ant-form-item ant-form-item-has-success"
-                >
-                  <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                  >
-                    <label
-                      class="ant-form-item-required"
-                      for="level"
-                      title="ruleTemplate.editModal.ruleLevelLabel"
-                    >
-                      ruleTemplate.editModal.ruleLevelLabel
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-                  >
-                    <div
-                      class="ant-form-item-control-input"
-                    >
-                      <div
-                        class="ant-form-item-control-input-content"
-                      >
-                        <div
-                          class="ant-select ant-select-single ant-select-show-arrow"
-                        >
-                          <div
-                            class="ant-select-selector"
-                          >
-                            <span
-                              class="ant-select-selection-search"
-                            >
-                              <input
-                                aria-activedescendant="level_list_0"
-                                aria-autocomplete="list"
-                                aria-controls="level_list"
-                                aria-haspopup="listbox"
-                                aria-owns="level_list"
-                                autocomplete="off"
-                                class="ant-select-selection-search-input"
-                                id="level"
-                                readonly=""
-                                role="combobox"
-                                style="opacity: 0;"
-                                type="search"
-                                unselectable="on"
-                                value=""
-                              />
-                            </span>
-                            <span
-                              class="ant-select-selection-item"
-                              title="ruleTemplate.ruleLevel.error"
-                            >
-                              ruleTemplate.ruleLevel.error
-                            </span>
-                          </div>
-                          <span
-                            aria-hidden="true"
-                            class="ant-select-arrow"
-                            style="user-select: none;"
-                            unselectable="on"
-                          >
-                            <span
-                              aria-label="down"
-                              class="anticon anticon-down ant-select-suffix"
-                              role="img"
-                            >
-                              <svg
-                                aria-hidden="true"
-                                data-icon="down"
-                                fill="currentColor"
-                                focusable="false"
-                                height="1em"
-                                viewBox="64 64 896 896"
-                                width="1em"
-                              >
-                                <path
-                                  d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                                />
-                              </svg>
-                            </span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="ant-row ant-form-item"
-                >
-                  <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                  >
-                    <label
-                      class=""
-                      for="db_type"
-                      title="ruleTemplate.editModal.ruleDbType"
-                    >
-                      ruleTemplate.editModal.ruleDbType
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-                  >
-                    <div
-                      class="ant-form-item-control-input"
-                    >
-                      <div
-                        class="ant-form-item-control-input-content"
-                      >
-                        <input
-                          class="ant-input ant-input-disabled"
-                          disabled=""
-                          id="db_type"
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="ant-row ant-form-item ant-form-item-hidden"
-                  data-testid="hidden-form-item"
-                >
-                  <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                  >
-                    <label
-                      class=""
-                      for="value"
-                      title="ruleTemplate.editModal.ruleLevelValue"
-                    >
-                      ruleTemplate.editModal.ruleLevelValue
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-                  >
-                    <div
-                      class="ant-form-item-control-input"
-                    >
-                      <div
-                        class="ant-form-item-control-input-content"
-                      >
-                        <input
-                          class="ant-input"
-                          id="value"
-                          placeholder="ruleTemplate.editModal.ruleLevelValuePlace"
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="ant-row ant-form-item ant-form-item-has-success"
-                >
-                  <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                  >
-                    <label
-                      class=""
-                      for="desc"
-                      title="ruleTemplate.editModal.ruleDescLabel"
-                    >
-                      ruleTemplate.editModal.ruleDescLabel
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-                  >
-                    <div
-                      class="ant-form-item-control-input"
-                    >
-                      <div
-                        class="ant-form-item-control-input-content"
-                      >
-                        <textarea
-                          class="ant-input ant-input-disabled"
-                          disabled=""
-                          id="desc"
-                        >
-                          建议使用规定的数据库排序规则
-                        </textarea>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="ant-row ant-form-item ant-form-item-has-success"
-                >
-                  <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                  >
-                    <label
-                      class=""
-                      for="type"
-                      title="ruleTemplate.editModal.ruleTypeLabel"
-                    >
-                      ruleTemplate.editModal.ruleTypeLabel
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-                  >
-                    <div
-                      class="ant-form-item-control-input"
-                    >
-                      <div
-                        class="ant-form-item-control-input-content"
-                      >
-                        <input
-                          class="ant-input ant-input-disabled"
-                          disabled=""
-                          id="type"
-                          type="text"
-                          value="DDL规范"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div
-              class="ant-modal-footer"
-            >
-              <button
-                class="ant-btn"
-                type="button"
-              >
-                <span>
-                  common.close
-                </span>
-              </button>
-              <button
-                class="ant-btn ant-btn-primary"
-                type="button"
-              >
-                <span>
-                  common.submit
-                </span>
-              </button>
-            </div>
-          </div>
-          <div
-            aria-hidden="true"
-            style="width: 0px; height: 0px; overflow: hidden; outline: none;"
-            tabindex="0"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-`;
-
 exports[`RuleSelect/RuleManagerModal should render base form at init 1`] = `
 <body
   class="ant-scrolling-effect"
@@ -368,7 +20,7 @@ exports[`RuleSelect/RuleManagerModal should render base form at init 1`] = `
         tabindex="-1"
       >
         <div
-          class="ant-modal"
+          class="ant-modal rule-manager-modal"
           role="document"
           style="width: 520px;"
         >
@@ -398,6 +50,28 @@ exports[`RuleSelect/RuleManagerModal should render base form at init 1`] = `
                 data-testid="base-form"
               >
                 <div
+                  class="ant-row ant-form-item ant-form-item-has-success ant-form-item-hidden"
+                >
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <input
+                          class="ant-input"
+                          id="rule_name"
+                          type="text"
+                          value="ddl_check_collation_database"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
                   class="ant-row ant-form-item ant-form-item-has-success"
                 >
                   <div
@@ -405,10 +79,45 @@ exports[`RuleSelect/RuleManagerModal should render base form at init 1`] = `
                   >
                     <label
                       class=""
-                      for="rule_name"
-                      title="ruleTemplate.editModal.ruleNameLabel"
+                      for="desc"
+                      title="ruleTemplate.editModal.rule"
                     >
-                      ruleTemplate.editModal.ruleNameLabel
+                      ruleTemplate.editModal.rule
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <textarea
+                          class="ant-input ant-input-disabled"
+                          disabled=""
+                          id="desc"
+                          style="color: rgba(0, 0, 0, 0.85);"
+                        >
+                          建议使用规定的数据库排序规则
+                        </textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-row ant-form-item ant-form-item-has-success"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                  >
+                    <label
+                      class=""
+                      for="type"
+                      title="ruleTemplate.editModal.ruleTypeLabel"
+                    >
+                      ruleTemplate.editModal.ruleTypeLabel
                     </label>
                   </div>
                   <div
@@ -423,9 +132,45 @@ exports[`RuleSelect/RuleManagerModal should render base form at init 1`] = `
                         <input
                           class="ant-input ant-input-disabled"
                           disabled=""
-                          id="rule_name"
+                          id="type"
+                          style="color: rgba(0, 0, 0, 0.85);"
                           type="text"
-                          value="ddl_check_collation_database"
+                          value="DDL规范"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-row ant-form-item ant-form-item-has-success"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                  >
+                    <label
+                      class=""
+                      for="db_type"
+                      title="ruleTemplate.editModal.ruleDbType"
+                    >
+                      ruleTemplate.editModal.ruleDbType
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <input
+                          class="ant-input ant-input-disabled"
+                          disabled=""
+                          id="db_type"
+                          style="color: rgba(0, 0, 0, 0.85);"
+                          type="text"
+                          value="mysql"
                         />
                       </div>
                     </div>
@@ -514,491 +259,6 @@ exports[`RuleSelect/RuleManagerModal should render base form at init 1`] = `
                             </span>
                           </span>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="ant-row ant-form-item"
-                >
-                  <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                  >
-                    <label
-                      class=""
-                      for="db_type"
-                      title="ruleTemplate.editModal.ruleDbType"
-                    >
-                      ruleTemplate.editModal.ruleDbType
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-                  >
-                    <div
-                      class="ant-form-item-control-input"
-                    >
-                      <div
-                        class="ant-form-item-control-input-content"
-                      >
-                        <input
-                          class="ant-input ant-input-disabled"
-                          disabled=""
-                          id="db_type"
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="ant-row ant-form-item ant-form-item-has-success"
-                  data-testid="hidden-form-item"
-                >
-                  <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                  >
-                    <label
-                      class=""
-                      for="value"
-                      title="ruleTemplate.editModal.ruleLevelValue"
-                    >
-                      ruleTemplate.editModal.ruleLevelValue
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-                  >
-                    <div
-                      class="ant-form-item-control-input"
-                    >
-                      <div
-                        class="ant-form-item-control-input-content"
-                      >
-                        <input
-                          class="ant-input"
-                          id="value"
-                          placeholder="ruleTemplate.editModal.ruleLevelValuePlace"
-                          type="text"
-                          value="utf8mb4_0900_ai_ci"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="ant-row ant-form-item ant-form-item-has-success"
-                >
-                  <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                  >
-                    <label
-                      class=""
-                      for="desc"
-                      title="ruleTemplate.editModal.ruleDescLabel"
-                    >
-                      ruleTemplate.editModal.ruleDescLabel
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-                  >
-                    <div
-                      class="ant-form-item-control-input"
-                    >
-                      <div
-                        class="ant-form-item-control-input-content"
-                      >
-                        <textarea
-                          class="ant-input ant-input-disabled"
-                          disabled=""
-                          id="desc"
-                        >
-                          建议使用规定的数据库排序规则
-                        </textarea>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="ant-row ant-form-item ant-form-item-has-success"
-                >
-                  <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                  >
-                    <label
-                      class=""
-                      for="type"
-                      title="ruleTemplate.editModal.ruleTypeLabel"
-                    >
-                      ruleTemplate.editModal.ruleTypeLabel
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-                  >
-                    <div
-                      class="ant-form-item-control-input"
-                    >
-                      <div
-                        class="ant-form-item-control-input-content"
-                      >
-                        <input
-                          class="ant-input ant-input-disabled"
-                          disabled=""
-                          id="type"
-                          type="text"
-                          value="DDL规范"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div
-              class="ant-modal-footer"
-            >
-              <button
-                class="ant-btn"
-                type="button"
-              >
-                <span>
-                  common.close
-                </span>
-              </button>
-              <button
-                class="ant-btn ant-btn-primary"
-                type="button"
-              >
-                <span>
-                  common.submit
-                </span>
-              </button>
-            </div>
-          </div>
-          <div
-            aria-hidden="true"
-            style="width: 0px; height: 0px; overflow: hidden; outline: none;"
-            tabindex="0"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-`;
-
-exports[`RuleSelect/RuleManagerModal should resetFiled while click close 1`] = `
-<body
-  class="ant-scrolling-effect"
-  style="width: calc(100% - 0px); overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
->
-  <style>
-    
-      [ant-click-animating-without-extra-node='true']::after, .ant-click-animating-node {
-        --antd-wave-shadow-color: buttonface;
-      }
-  </style>
-  <div />
-  <div>
-    <div
-      class="ant-modal-root"
-    >
-      <div
-        class="ant-modal-mask"
-      />
-      <div
-        aria-labelledby="rcDialogTitle2"
-        class="ant-modal-wrap"
-        role="dialog"
-        tabindex="-1"
-      >
-        <div
-          class="ant-modal"
-          role="document"
-          style="width: 520px;"
-        >
-          <div
-            aria-hidden="true"
-            style="width: 0px; height: 0px; overflow: hidden; outline: none;"
-            tabindex="0"
-          />
-          <div
-            class="ant-modal-content"
-          >
-            <div
-              class="ant-modal-header"
-            >
-              <div
-                class="ant-modal-title"
-                id="rcDialogTitle2"
-              >
-                ruleTemplate.editModal.title
-              </div>
-            </div>
-            <div
-              class="ant-modal-body"
-            >
-              <form
-                class="ant-form ant-form-horizontal"
-                data-testid="base-form"
-              >
-                <div
-                  class="ant-row ant-form-item ant-form-item-has-success"
-                >
-                  <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                  >
-                    <label
-                      class=""
-                      for="rule_name"
-                      title="ruleTemplate.editModal.ruleNameLabel"
-                    >
-                      ruleTemplate.editModal.ruleNameLabel
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-                  >
-                    <div
-                      class="ant-form-item-control-input"
-                    >
-                      <div
-                        class="ant-form-item-control-input-content"
-                      >
-                        <input
-                          class="ant-input ant-input-disabled"
-                          disabled=""
-                          id="rule_name"
-                          type="text"
-                          value="ddl_check_collation_database"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="ant-row ant-form-item ant-form-item-has-success"
-                >
-                  <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                  >
-                    <label
-                      class="ant-form-item-required"
-                      for="level"
-                      title="ruleTemplate.editModal.ruleLevelLabel"
-                    >
-                      ruleTemplate.editModal.ruleLevelLabel
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-                  >
-                    <div
-                      class="ant-form-item-control-input"
-                    >
-                      <div
-                        class="ant-form-item-control-input-content"
-                      >
-                        <div
-                          class="ant-select ant-select-single ant-select-show-arrow"
-                        >
-                          <div
-                            class="ant-select-selector"
-                          >
-                            <span
-                              class="ant-select-selection-search"
-                            >
-                              <input
-                                aria-activedescendant="level_list_0"
-                                aria-autocomplete="list"
-                                aria-controls="level_list"
-                                aria-haspopup="listbox"
-                                aria-owns="level_list"
-                                autocomplete="off"
-                                class="ant-select-selection-search-input"
-                                id="level"
-                                readonly=""
-                                role="combobox"
-                                style="opacity: 0;"
-                                type="search"
-                                unselectable="on"
-                                value=""
-                              />
-                            </span>
-                            <span
-                              class="ant-select-selection-item"
-                              title="ruleTemplate.ruleLevel.error"
-                            >
-                              ruleTemplate.ruleLevel.error
-                            </span>
-                          </div>
-                          <span
-                            aria-hidden="true"
-                            class="ant-select-arrow"
-                            style="user-select: none;"
-                            unselectable="on"
-                          >
-                            <span
-                              aria-label="down"
-                              class="anticon anticon-down ant-select-suffix"
-                              role="img"
-                            >
-                              <svg
-                                aria-hidden="true"
-                                data-icon="down"
-                                fill="currentColor"
-                                focusable="false"
-                                height="1em"
-                                viewBox="64 64 896 896"
-                                width="1em"
-                              >
-                                <path
-                                  d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                                />
-                              </svg>
-                            </span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="ant-row ant-form-item"
-                >
-                  <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                  >
-                    <label
-                      class=""
-                      for="db_type"
-                      title="ruleTemplate.editModal.ruleDbType"
-                    >
-                      ruleTemplate.editModal.ruleDbType
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-                  >
-                    <div
-                      class="ant-form-item-control-input"
-                    >
-                      <div
-                        class="ant-form-item-control-input-content"
-                      >
-                        <input
-                          class="ant-input ant-input-disabled"
-                          disabled=""
-                          id="db_type"
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="ant-row ant-form-item ant-form-item-has-success"
-                  data-testid="hidden-form-item"
-                >
-                  <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                  >
-                    <label
-                      class=""
-                      for="value"
-                      title="ruleTemplate.editModal.ruleLevelValue"
-                    >
-                      ruleTemplate.editModal.ruleLevelValue
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-                  >
-                    <div
-                      class="ant-form-item-control-input"
-                    >
-                      <div
-                        class="ant-form-item-control-input-content"
-                      >
-                        <input
-                          class="ant-input"
-                          id="value"
-                          placeholder="ruleTemplate.editModal.ruleLevelValuePlace"
-                          type="text"
-                          value="utf8mb4_0900_ai_ci"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="ant-row ant-form-item ant-form-item-has-success"
-                >
-                  <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                  >
-                    <label
-                      class=""
-                      for="desc"
-                      title="ruleTemplate.editModal.ruleDescLabel"
-                    >
-                      ruleTemplate.editModal.ruleDescLabel
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-                  >
-                    <div
-                      class="ant-form-item-control-input"
-                    >
-                      <div
-                        class="ant-form-item-control-input-content"
-                      >
-                        <textarea
-                          class="ant-input ant-input-disabled"
-                          disabled=""
-                          id="desc"
-                        >
-                          建议使用规定的数据库排序规则
-                        </textarea>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="ant-row ant-form-item ant-form-item-has-success"
-                >
-                  <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                  >
-                    <label
-                      class=""
-                      for="type"
-                      title="ruleTemplate.editModal.ruleTypeLabel"
-                    >
-                      ruleTemplate.editModal.ruleTypeLabel
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-                  >
-                    <div
-                      class="ant-form-item-control-input"
-                    >
-                      <div
-                        class="ant-form-item-control-input-content"
-                      >
-                        <input
-                          class="ant-input ant-input-disabled"
-                          disabled=""
-                          id="type"
-                          type="text"
-                          value="DDL规范"
-                        />
                       </div>
                     </div>
                   </div>

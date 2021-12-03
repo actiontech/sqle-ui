@@ -5,6 +5,7 @@ const darkTheme: Theme = {
     padding: 24,
     color: {
       warning: '#faad14',
+      disabledFont: 'rgba(255, 255, 255, .85)',
     },
   },
   loginFormBg: 'rgba(0,0,0,0.7)',
