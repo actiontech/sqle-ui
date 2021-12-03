@@ -6,7 +6,6 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { IRuleReqV1, IRuleResV1 } from '../../../api/common';
-import { RuleParamResV1TypeEnum } from '../../../api/common.enum';
 import ruleTemplate from '../../../api/rule_template';
 import { ResponseCode } from '../../../data/common';
 import RuleTemplateForm from '../RuleTemplateForm';

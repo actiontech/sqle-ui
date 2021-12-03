@@ -5,6 +5,7 @@ const lightTheme: Theme = {
     padding: 24,
     color: {
       warning: '#faad14',
+      disabledFont: 'rgba(0, 0, 0, .85)',
     },
   },
   loginFormBg: 'rgba(255,255,255,0.7)',

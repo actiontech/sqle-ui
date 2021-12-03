@@ -10,11 +10,14 @@ import {
   RuleParamResV1TypeEnum,
   RuleResV1LevelEnum,
 } from '../../../../../api/common.enum';
+import { useTheme } from '@material-ui/styles';
+import { Theme } from '../../../../../types/theme.type';
 
 const RuleManagerModal: React.FC<RuleManagerFormProps> = (props) => {
   const { t } = useTranslation();
   const { getRuleLevelStatusSelectOption } = useStaticStatus();
   const [form] = useForm<IRuleManagerForm>();
+  const theme = useTheme<Theme>();
   React.useEffect(() => {
     if (!!props.ruleData) {
       if (!!props.ruleData.params) {
@@ -94,19 +97,31 @@ const RuleManagerModal: React.FC<RuleManagerFormProps> = (props) => {
             <Input />
           </Form.Item>
           <Form.Item label={t('ruleTemplate.editModal.rule')} name="desc">
-            <Input.TextArea disabled value={props.ruleData?.desc} />
+            <Input.TextArea
+              style={{ color: theme.common.color.disabledFont }}
+              disabled
+              value={props.ruleData?.desc}
+            />
           </Form.Item>
           <Form.Item
             label={t('ruleTemplate.editModal.ruleTypeLabel')}
             name="type"
           >
-            <Input disabled value={props.ruleData?.type} />
+            <Input
+              disabled
+              style={{ color: theme.common.color.disabledFont }}
+              value={props.ruleData?.type}
+            />
           </Form.Item>
           <Form.Item
             label={t('ruleTemplate.editModal.ruleDbType')}
             name="db_type"
           >
-            <Input disabled value={props.ruleData?.db_type} />
+            <Input
+              disabled
+              style={{ color: theme.common.color.disabledFont }}
+              value={props.ruleData?.db_type}
+            />
           </Form.Item>
           <Form.Item
             label={t('ruleTemplate.editModal.ruleLevelLabel')}
