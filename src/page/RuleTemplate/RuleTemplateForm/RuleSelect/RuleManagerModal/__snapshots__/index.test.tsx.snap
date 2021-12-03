@@ -98,6 +98,7 @@ exports[`RuleSelect/RuleManagerModal should render base form at init 1`] = `
                           class="ant-input ant-input-disabled"
                           disabled=""
                           id="desc"
+                          style="color: rgba(0, 0, 0, 0.85);"
                         >
                           建议使用规定的数据库排序规则
                         </textarea>
@@ -132,6 +133,7 @@ exports[`RuleSelect/RuleManagerModal should render base form at init 1`] = `
                           class="ant-input ant-input-disabled"
                           disabled=""
                           id="type"
+                          style="color: rgba(0, 0, 0, 0.85);"
                           type="text"
                           value="DDL规范"
                         />
@@ -166,6 +168,7 @@ exports[`RuleSelect/RuleManagerModal should render base form at init 1`] = `
                           class="ant-input ant-input-disabled"
                           disabled=""
                           id="db_type"
+                          style="color: rgba(0, 0, 0, 0.85);"
                           type="text"
                           value="mysql"
                         />

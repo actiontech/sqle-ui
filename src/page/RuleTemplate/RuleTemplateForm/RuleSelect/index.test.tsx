@@ -3,6 +3,9 @@ import { cloneDeep } from 'lodash';
 import RuleSelect from '.';
 import { IRuleResV1 } from '../../../../api/common';
 import { allRulesWithType } from '../../../Rule/__testData__';
+import { renderWithTheme } from '../../../../testUtils/customRender';
+import { ThemeProvider } from '@material-ui/styles';
+import lightTheme from '../../../../theme/light';
 
 describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
   beforeEach(() => {
@@ -13,7 +16,7 @@ describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
   });
 
   test('should render rule by active rules and all rules', () => {
-    const { container, rerender } = render(
+    const { container, rerender } = renderWithTheme(
       <RuleSelect
         listLoading={true}
         allRules={allRulesWithType as IRuleResV1[]}
@@ -23,39 +26,45 @@ describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
     );
     expect(container).toMatchSnapshot();
     rerender(
-      <RuleSelect
-        listLoading={false}
-        allRules={allRulesWithType as IRuleResV1[]}
-        activeRule={[]}
-        updateActiveRule={jest.fn()}
-      />
+      <ThemeProvider theme={lightTheme}>
+        <RuleSelect
+          listLoading={false}
+          allRules={allRulesWithType as IRuleResV1[]}
+          activeRule={[]}
+          updateActiveRule={jest.fn()}
+        />
+      </ThemeProvider>
     );
     expect(container).toMatchSnapshot();
     rerender(
-      <RuleSelect
-        listLoading={false}
-        allRules={allRulesWithType as IRuleResV1[]}
-        activeRule={
-          allRulesWithType.slice(
-            0,
-            Math.floor(allRulesWithType.length / 2)
-          ) as IRuleResV1[]
-        }
-        updateActiveRule={jest.fn()}
-      />
+      <ThemeProvider theme={lightTheme}>
+        <RuleSelect
+          listLoading={false}
+          allRules={allRulesWithType as IRuleResV1[]}
+          activeRule={
+            allRulesWithType.slice(
+              0,
+              Math.floor(allRulesWithType.length / 2)
+            ) as IRuleResV1[]
+          }
+          updateActiveRule={jest.fn()}
+        />
+      </ThemeProvider>
     );
     expect(container).toMatchSnapshot();
   });
 
   test('should call update rules func of props when user active or disable rule', () => {
     const updateActiveRuleMock = jest.fn();
-    const { rerender } = render(
-      <RuleSelect
-        listLoading={false}
-        allRules={allRulesWithType as IRuleResV1[]}
-        activeRule={[]}
-        updateActiveRule={updateActiveRuleMock}
-      />
+    const { rerender } = renderWithTheme(
+      <ThemeProvider theme={lightTheme}>
+        <RuleSelect
+          listLoading={false}
+          allRules={allRulesWithType as IRuleResV1[]}
+          activeRule={[]}
+          updateActiveRule={updateActiveRuleMock}
+        />
+      </ThemeProvider>
     );
     fireEvent.click(
       screen.getAllByText('ruleTemplate.ruleTemplateForm.activeRule')[0]
@@ -71,12 +80,14 @@ describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
     expect(updateActiveRuleMock).toBeCalledWith(allRulesWithType);
 
     rerender(
-      <RuleSelect
-        listLoading={false}
-        allRules={allRulesWithType as IRuleResV1[]}
-        activeRule={allRulesWithType as IRuleResV1[]}
-        updateActiveRule={updateActiveRuleMock}
-      />
+      <ThemeProvider theme={lightTheme}>
+        <RuleSelect
+          listLoading={false}
+          allRules={allRulesWithType as IRuleResV1[]}
+          activeRule={allRulesWithType as IRuleResV1[]}
+          updateActiveRule={updateActiveRuleMock}
+        />
+      </ThemeProvider>
     );
 
     fireEvent.click(
@@ -97,7 +108,7 @@ describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
 
   test('should can render edit rule modal', async () => {
     const updateActiveRuleFunction = jest.fn();
-    render(
+    renderWithTheme(
       <RuleSelect
         listLoading={false}
         allRules={allRulesWithType as IRuleResV1[]}

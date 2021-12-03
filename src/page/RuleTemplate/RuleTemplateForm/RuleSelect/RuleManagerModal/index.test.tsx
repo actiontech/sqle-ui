@@ -1,12 +1,7 @@
 import RuleManagerModal from '.';
-import {
-  fireEvent,
-  screen,
-  waitFor,
-  render,
-  cleanup,
-} from '@testing-library/react';
+import { fireEvent, screen, waitFor, cleanup } from '@testing-library/react';
 import { ruleData, editRuleData } from './__testData__';
+import { renderWithTheme } from '../../../../../testUtils/customRender';
 
 describe('RuleSelect/RuleManagerModal', () => {
   beforeEach(() => {
@@ -19,7 +14,7 @@ describe('RuleSelect/RuleManagerModal', () => {
   });
   test('should render base form at init', async () => {
     const submitFunction = jest.fn();
-    const { baseElement } = render(
+    const { baseElement } = renderWithTheme(
       <RuleManagerModal
         visible={true}
         ruleData={ruleData}
@@ -59,7 +54,7 @@ describe('RuleSelect/RuleManagerModal', () => {
 
   test('should be able to modify the value of level', async () => {
     const submitFunction = jest.fn();
-    render(
+    renderWithTheme(
       <RuleManagerModal
         visible={true}
         ruleData={ruleData}
@@ -95,7 +90,7 @@ describe('RuleSelect/RuleManagerModal', () => {
 
   test('should be able to modify the value when params are present', async () => {
     const submitFunction = jest.fn();
-    render(
+    renderWithTheme(
       <RuleManagerModal
         visible={true}
         ruleData={editRuleData}
@@ -152,7 +147,7 @@ describe('RuleSelect/RuleManagerModal', () => {
 
   test('should resetFiled while click close', async () => {
     const setVisibleFalse = jest.fn();
-    render(
+    renderWithTheme(
       <RuleManagerModal
         visible={true}
         ruleData={ruleData}
