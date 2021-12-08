@@ -1,6 +1,9 @@
 import { FormInstance } from 'antd';
+import React from 'react';
 import { EditorDidMount } from 'react-monaco-editor';
-
+import { IDisposable } from 'monaco-editor';
+import { createDependencyProposals } from './index.data';
+import { IRange } from './index.type';
 const useMonacoEditor = (
   form?: FormInstance,
   {
@@ -8,7 +11,31 @@ const useMonacoEditor = (
     placeholder = '/* input your sql */',
   }: { formName?: string; placeholder?: string } = {}
 ) => {
-  const editorDidMount: EditorDidMount = (editor) => {
+  const monacoProviderRef = React.useRef<IDisposable>();
+  React.useEffect(() => {
+    return () => {
+      monacoProviderRef.current?.dispose();
+    };
+  }, []);
+  const editorDidMount: EditorDidMount = (editor, monaco) => {
+    monacoProviderRef.current = monaco.languages.registerCompletionItemProvider(
+      'sql',
+      {
+        provideCompletionItems: (model, position) => {
+          const word = model.getWordUntilPosition(position);
+          const range: IRange = {
+            startLineNumber: position.lineNumber,
+            endLineNumber: position.lineNumber,
+            startColumn: word.startColumn,
+            endColumn: word.endColumn,
+          };
+          return {
+            suggestions: createDependencyProposals(monaco, range),
+          };
+        },
+      }
+    );
+
     editor.onDidFocusEditorText(() => {
       if (!!form && !!formName) {
         const currentValue = form.getFieldValue(formName);

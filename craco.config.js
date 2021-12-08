@@ -13,7 +13,7 @@ module.exports = {
       add: [
         new MonacoWebpackPlugin({
           languages: ['sql'],
-          features: ['smartSelect'],
+          features: ['smartSelect', 'suggest'],
         }),
       ],
     },
