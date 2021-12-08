@@ -1,5 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 import useMonacoEditor from '.';
+import { createDependencyProposals } from './index.data';
+import { IRange } from './index.type';
 
 describe('userMonacoEditor', () => {
   test('should set value to empty when editor value is equal default placeholder', () => {
@@ -356,5 +358,23 @@ describe('userMonacoEditor', () => {
 
     unmount();
     expect(dispose).toBeCalledTimes(1);
+  });
+
+  test('should match snapshot for createDependencyProposals', () => {
+    const monaco = {
+      languages: {
+        CompletionItemKind: {
+          Function: 'function',
+        },
+      },
+    };
+    const range: IRange = {
+      startLineNumber: 1,
+      endLineNumber: 1,
+      startColumn: 1,
+      endColumn: 1,
+    };
+
+    expect(createDependencyProposals(monaco as any, range)).toMatchSnapshot()
   });
 });
