@@ -9,11 +9,18 @@ describe('userMonacoEditor', () => {
       getValue: jest.fn().mockReturnValue('getValue'),
       setValue: jest.fn(),
     };
-    const { result } = renderHook(() => useMonacoEditor());
-    result.current.editorDidMount(editor as any, {} as any);
+    const dispose = jest.fn();
+    const monaco = {
+      languages: {
+        registerCompletionItemProvider: jest.fn(() => ({ dispose })),
+      },
+    };
+    const { result, unmount } = renderHook(() => useMonacoEditor());
+    result.current.editorDidMount(editor as any, monaco as any);
 
     expect(editor.onDidBlurEditorText).toBeCalledTimes(1);
     expect(editor.onDidFocusEditorText).toBeCalledTimes(1);
+    expect(monaco.languages.registerCompletionItemProvider).toBeCalledTimes(1);
     expect(editor.getValue).toBeCalledTimes(0);
     expect(editor.setValue).toBeCalledTimes(0);
 
@@ -28,6 +35,9 @@ describe('userMonacoEditor', () => {
     expect(editor.getValue).toBeCalledTimes(2);
     expect(editor.setValue).toBeCalledTimes(1);
     expect(editor.setValue).toBeCalledWith('');
+
+    unmount();
+    expect(dispose).toBeCalledTimes(1);
   });
 
   test('should set value to empty when editor value is equal custom placeholder', () => {
@@ -37,13 +47,20 @@ describe('userMonacoEditor', () => {
       getValue: jest.fn().mockReturnValue('getValue'),
       setValue: jest.fn(),
     };
-    const { result } = renderHook(() =>
+    const dispose = jest.fn();
+    const monaco = {
+      languages: {
+        registerCompletionItemProvider: jest.fn(() => ({ dispose })),
+      },
+    };
+    const { result, unmount } = renderHook(() =>
       useMonacoEditor(undefined, { placeholder: 'test aaaa' })
     );
-    result.current.editorDidMount(editor as any, {} as any);
+    result.current.editorDidMount(editor as any, monaco as any);
 
     expect(editor.onDidBlurEditorText).toBeCalledTimes(1);
     expect(editor.onDidFocusEditorText).toBeCalledTimes(1);
+    expect(monaco.languages.registerCompletionItemProvider).toBeCalledTimes(1);
     expect(editor.getValue).toBeCalledTimes(0);
     expect(editor.setValue).toBeCalledTimes(0);
 
@@ -58,6 +75,9 @@ describe('userMonacoEditor', () => {
     expect(editor.getValue).toBeCalledTimes(2);
     expect(editor.setValue).toBeCalledTimes(1);
     expect(editor.setValue).toBeCalledWith('');
+
+    unmount();
+    expect(dispose).toBeCalledTimes(1);
   });
 
   test('should set value to default placeholder when editor is blur and value is empty', () => {
@@ -67,11 +87,18 @@ describe('userMonacoEditor', () => {
       getValue: jest.fn().mockReturnValue('getValue'),
       setValue: jest.fn(),
     };
-    const { result } = renderHook(() => useMonacoEditor());
-    result.current.editorDidMount(editor as any, {} as any);
+    const dispose = jest.fn();
+    const monaco = {
+      languages: {
+        registerCompletionItemProvider: jest.fn(() => ({ dispose })),
+      },
+    };
+    const { result, unmount } = renderHook(() => useMonacoEditor());
+    result.current.editorDidMount(editor as any, monaco as any);
 
     expect(editor.onDidBlurEditorText).toBeCalledTimes(1);
     expect(editor.onDidFocusEditorText).toBeCalledTimes(1);
+    expect(monaco.languages.registerCompletionItemProvider).toBeCalledTimes(1);
     expect(editor.getValue).toBeCalledTimes(0);
     expect(editor.setValue).toBeCalledTimes(0);
 
@@ -87,6 +114,9 @@ describe('userMonacoEditor', () => {
     expect(editor.getValue).toBeCalledTimes(2);
     expect(editor.setValue).toBeCalledTimes(1);
     expect(editor.setValue).toBeCalledWith('/* input your sql */');
+
+    unmount();
+    expect(dispose).toBeCalledTimes(1);
   });
 
   test('should set value to custom placeholder when editor is blur and value is empty', () => {
@@ -96,13 +126,20 @@ describe('userMonacoEditor', () => {
       getValue: jest.fn().mockReturnValue('getValue'),
       setValue: jest.fn(),
     };
-    const { result } = renderHook(() =>
+    const dispose = jest.fn();
+    const monaco = {
+      languages: {
+        registerCompletionItemProvider: jest.fn(() => ({ dispose })),
+      },
+    };
+    const { result, unmount } = renderHook(() =>
       useMonacoEditor(undefined, { placeholder: 'test aaa' })
     );
-    result.current.editorDidMount(editor as any, {} as any);
+    result.current.editorDidMount(editor as any, monaco as any);
 
     expect(editor.onDidBlurEditorText).toBeCalledTimes(1);
     expect(editor.onDidFocusEditorText).toBeCalledTimes(1);
+    expect(monaco.languages.registerCompletionItemProvider).toBeCalledTimes(1);
     expect(editor.getValue).toBeCalledTimes(0);
     expect(editor.setValue).toBeCalledTimes(0);
 
@@ -118,6 +155,9 @@ describe('userMonacoEditor', () => {
     expect(editor.getValue).toBeCalledTimes(2);
     expect(editor.setValue).toBeCalledTimes(1);
     expect(editor.setValue).toBeCalledWith('test aaa');
+
+    unmount();
+    expect(dispose).toBeCalledTimes(1);
   });
 
   test('should set value to empty by form instance when editor value is equal default placeholder', () => {
@@ -127,17 +167,24 @@ describe('userMonacoEditor', () => {
       getValue: jest.fn().mockReturnValue('getValue'),
       setValue: jest.fn(),
     };
+    const dispose = jest.fn();
+    const monaco = {
+      languages: {
+        registerCompletionItemProvider: jest.fn(() => ({ dispose })),
+      },
+    };
     const form = {
       getFieldValue: jest.fn(),
       setFieldsValue: jest.fn(),
     };
-    const { result } = renderHook(() =>
+    const { result, unmount } = renderHook(() =>
       useMonacoEditor(form as any, { formName: 'sql' })
     );
-    result.current.editorDidMount(editor as any, {} as any);
+    result.current.editorDidMount(editor as any, monaco as any);
 
     expect(editor.onDidBlurEditorText).toBeCalledTimes(1);
     expect(editor.onDidFocusEditorText).toBeCalledTimes(1);
+    expect(monaco.languages.registerCompletionItemProvider).toBeCalledTimes(1);
 
     const focusFn = editor.onDidFocusEditorText.mock.calls[0][0];
     focusFn();
@@ -154,6 +201,9 @@ describe('userMonacoEditor', () => {
     expect(form.getFieldValue).lastCalledWith('sql');
     expect(form.setFieldsValue).toBeCalledTimes(1);
     expect(form.setFieldsValue).toBeCalledWith({ sql: '' });
+
+    unmount();
+    expect(dispose).toBeCalledTimes(1);
   });
 
   test('should set value to empty by form instance when editor value is equal custom placeholder', () => {
@@ -163,20 +213,27 @@ describe('userMonacoEditor', () => {
       getValue: jest.fn().mockReturnValue('getValue'),
       setValue: jest.fn(),
     };
+    const dispose = jest.fn();
+    const monaco = {
+      languages: {
+        registerCompletionItemProvider: jest.fn(() => ({ dispose })),
+      },
+    };
     const form = {
       getFieldValue: jest.fn(),
       setFieldsValue: jest.fn(),
     };
-    const { result } = renderHook(() =>
+    const { result, unmount } = renderHook(() =>
       useMonacoEditor(form as any, {
         formName: 'sql',
         placeholder: 'test aaaa',
       })
     );
-    result.current.editorDidMount(editor as any, {} as any);
+    result.current.editorDidMount(editor as any, monaco as any);
 
     expect(editor.onDidBlurEditorText).toBeCalledTimes(1);
     expect(editor.onDidFocusEditorText).toBeCalledTimes(1);
+    expect(monaco.languages.registerCompletionItemProvider).toBeCalledTimes(1);
 
     const focusFn = editor.onDidFocusEditorText.mock.calls[0][0];
     focusFn();
@@ -195,6 +252,9 @@ describe('userMonacoEditor', () => {
     expect(form.setFieldsValue).toBeCalledWith({ sql: '' });
     expect(editor.getValue).toBeCalledTimes(0);
     expect(editor.setValue).toBeCalledTimes(0);
+
+    unmount();
+    expect(dispose).toBeCalledTimes(1);
   });
 
   test('should set value to default placeholder by form instance when editor is blur and value is empty', () => {
@@ -204,17 +264,24 @@ describe('userMonacoEditor', () => {
       getValue: jest.fn().mockReturnValue('getValue'),
       setValue: jest.fn(),
     };
+    const dispose = jest.fn();
+    const monaco = {
+      languages: {
+        registerCompletionItemProvider: jest.fn(() => ({ dispose })),
+      },
+    };
     const form = {
       getFieldValue: jest.fn(),
       setFieldsValue: jest.fn(),
     };
-    const { result } = renderHook(() =>
+    const { result, unmount } = renderHook(() =>
       useMonacoEditor(form as any, { formName: 'sql' })
     );
-    result.current.editorDidMount(editor as any, {} as any);
+    result.current.editorDidMount(editor as any, monaco as any);
 
     expect(editor.onDidBlurEditorText).toBeCalledTimes(1);
     expect(editor.onDidFocusEditorText).toBeCalledTimes(1);
+    expect(monaco.languages.registerCompletionItemProvider).toBeCalledTimes(1);
     expect(editor.getValue).toBeCalledTimes(0);
     expect(editor.setValue).toBeCalledTimes(0);
 
@@ -234,6 +301,9 @@ describe('userMonacoEditor', () => {
     expect(form.getFieldValue).lastCalledWith('sql');
     expect(form.setFieldsValue).toBeCalledTimes(1);
     expect(form.setFieldsValue).toBeCalledWith({ sql: '/* input your sql */' });
+
+    unmount();
+    expect(dispose).toBeCalledTimes(1);
   });
 
   test('should set value to custom placeholder by form instance when editor is blur and value is empty', () => {
@@ -243,20 +313,27 @@ describe('userMonacoEditor', () => {
       getValue: jest.fn().mockReturnValue('getValue'),
       setValue: jest.fn(),
     };
+    const dispose = jest.fn();
+    const monaco = {
+      languages: {
+        registerCompletionItemProvider: jest.fn(() => ({ dispose })),
+      },
+    };
     const form = {
       getFieldValue: jest.fn(),
       setFieldsValue: jest.fn(),
     };
-    const { result } = renderHook(() =>
+    const { result, unmount } = renderHook(() =>
       useMonacoEditor(form as any, {
         formName: 'sql',
         placeholder: 'test aaaa',
       })
     );
-    result.current.editorDidMount(editor as any, {} as any);
+    result.current.editorDidMount(editor as any, monaco as any);
 
     expect(editor.onDidBlurEditorText).toBeCalledTimes(1);
     expect(editor.onDidFocusEditorText).toBeCalledTimes(1);
+    expect(monaco.languages.registerCompletionItemProvider).toBeCalledTimes(1);
     expect(editor.getValue).toBeCalledTimes(0);
     expect(editor.setValue).toBeCalledTimes(0);
 
@@ -276,5 +353,8 @@ describe('userMonacoEditor', () => {
     expect(form.getFieldValue).lastCalledWith('sql');
     expect(form.setFieldsValue).toBeCalledTimes(1);
     expect(form.setFieldsValue).toBeCalledWith({ sql: 'test aaaa' });
+
+    unmount();
+    expect(dispose).toBeCalledTimes(1);
   });
 });
