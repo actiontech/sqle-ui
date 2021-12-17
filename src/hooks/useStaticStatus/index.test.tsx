@@ -75,25 +75,6 @@ describe('useRuleTemplate', () => {
     expect(baseElementWithOptions).toMatchSnapshot();
   });
 
-  test('should render static option for sql task status', async () => {
-    const { result } = renderHook(() => useStaticStatus());
-
-    const { baseElement: baseElementWithOptions } = render(
-      <Select data-testid="testId" value="value1">
-        {result.current.generateSqlTaskStatusSelectOption()}
-      </Select>
-    );
-    expect(baseElementWithOptions).toMatchSnapshot();
-
-    reactAct(() => {
-      fireEvent.mouseDown(screen.getByText('value1'));
-      jest.runAllTimers();
-    });
-
-    await screen.findAllByText('order.sqlTaskStatus.initialized');
-    expect(baseElementWithOptions).toMatchSnapshot();
-  });
-
   test('should render static option for workflow step type', async () => {
     const { result } = renderHook(() => useStaticStatus());
 

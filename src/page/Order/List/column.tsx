@@ -39,6 +39,13 @@ export const orderListColumn = (): TableColumn<IWorkflowDetailResV1> => {
       },
     },
     {
+      dataIndex: 'schedule_time',
+      title: () => i18next.t('order.order.time'),
+      render: (schedule_time) => {
+        return formatTime(schedule_time);
+      },
+    },
+    {
       dataIndex: 'current_step_type',
       title: () => i18next.t('order.order.stepType'),
       render: (status: getWorkflowListV1FilterCurrentStepTypeEnum) => {

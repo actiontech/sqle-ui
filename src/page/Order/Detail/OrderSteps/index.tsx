@@ -1,5 +1,6 @@
 import { ClockCircleOutlined } from '@ant-design/icons';
 import { useBoolean } from 'ahooks';
+import moment from 'moment';
 import {
   Button,
   Col,
@@ -10,6 +11,8 @@ import {
   Space,
   Timeline,
   Typography,
+  DatePicker,
+  Popconfirm,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React, { useState } from 'react';
@@ -24,25 +27,8 @@ import EmptyBox from '../../../../components/EmptyBox';
 import { ModalFormLayout } from '../../../../data/common';
 import { IReduxState } from '../../../../store';
 import { formatTime } from '../../../../utils/Common';
-import { OrderStepsProps, StepStateStatus, StepTypeStatus } from './index.type';
-
-const stepTypeStatus: StepTypeStatus = {
-  [WorkflowStepResV1TypeEnum.sql_execute]: {
-    label: 'order.operator.sqlExecute',
-  },
-  [WorkflowStepResV1TypeEnum.sql_review]: {
-    label: 'order.operator.sqlReview',
-  },
-  [WorkflowStepResV1TypeEnum.create_workflow]: {
-    label: 'order.operator.unknown',
-  },
-  [WorkflowStepResV1TypeEnum.update_workflow]: {
-    label: 'order.operator.unknown',
-  },
-  unknown: {
-    label: 'order.operator.unknown',
-  },
-};
+import { OrderStepsProps, StepStateStatus } from './index.type';
+import OrderStatusTag from '../../../../components/OrderStatusTag';
 
 const stepStateStatus: StepStateStatus = {
   [WorkflowStepResV1StateEnum.initialized]: {
@@ -65,6 +51,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     (state) => state.user.username
   );
   const [form] = useForm();
+  const [timeForm] = useForm();
   const [rejectStepId, setRejectStepId] = useState(0);
 
   const [
@@ -77,6 +64,18 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
   const [rejectLoading, { setTrue: rejectStart, setFalse: rejectFinish }] =
     useBoolean();
 
+  const [
+    scheduleVisible,
+    { setTrue: openScheduleModal, setFalse: closeScheduleModal },
+  ] = useBoolean();
+  const [
+    scheduleLoading,
+    { setTrue: scheduleStart, setFalse: scheduleFinish },
+  ] = useBoolean();
+  const [
+    executingLoading,
+    { setTrue: executingStart, setFalse: executingFinish },
+  ] = useBoolean();
   const pass = (stepId: number) => {
     passStart();
     props.pass(stepId).finally(passFinish);
@@ -100,6 +99,79 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     form.resetFields();
     closeRejectModal();
   };
+  const resetAndCloseScheduleModal = () => {
+    timeForm.resetFields();
+    closeScheduleModal();
+  };
+  const range = (start: number, end: number) => {
+    const result = [];
+    for (let i = start; i < end; i++) {
+      result.push(i);
+    }
+    return result;
+  };
+  const disabledDate = (current: moment.Moment) => {
+    return current && current <= moment().startOf('day');
+  };
+  const disabledDateTime = () => {
+    return {
+      disabledHours: () => range(0, 24).splice(0, moment().hour()),
+      disabledMinutes: () => range(0, 60).splice(0, moment().minutes()),
+    };
+  };
+
+  const execSchedule = (values: { schedule_time: moment.Moment }) => {
+    scheduleStart();
+    props
+      .execSchedule(
+        values.schedule_time.format('YYYY-MM-DDTHH:mm:ssZ').toString()
+      )
+      .finally(() => {
+        scheduleFinish();
+        resetAndCloseScheduleModal();
+      });
+  };
+
+  const cancelExecScheduled = () => {
+    props.execSchedule().finally(() => {
+      scheduleFinish();
+      resetAndCloseScheduleModal();
+    });
+  };
+  const executing = () => {
+    executingStart();
+    props.executing().finally(() => {
+      executingFinish();
+    });
+  };
+
+  const getOperatorTimeElement = (
+    execStartTime?: string,
+    execEndTime?: string,
+    status?: WorkflowRecordResV1StatusEnum
+  ) => {
+    return (
+      <div>
+        <span>
+          {t('order.operator.startTime', {
+            startTime: formatTime(execStartTime),
+          })}
+        </span>
+        <br />
+        <span>
+          {t('order.operator.endTime', {
+            endTime: formatTime(execEndTime),
+          })}
+        </span>
+        <br />
+        <span>
+          {t('order.operator.status')}
+          ：
+          <OrderStatusTag status={status} />
+        </span>
+      </div>
+    );
+  };
 
   return (
     <>
@@ -107,22 +179,80 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
         {props.stepList.map((step) => {
           let operator: JSX.Element | string = (
             <Space>
-              <Button
-                type="primary"
-                onClick={pass.bind(null, step.workflow_step_id ?? 0)}
-                loading={passLoading}
+              <EmptyBox
+                if={
+                  props.currentOrderStatus ===
+                    WorkflowRecordResV1StatusEnum.on_process &&
+                  step.type === WorkflowStepResV1TypeEnum.sql_review
+                }
               >
-                {t(stepTypeStatus[step.type ?? 'unknown'].label)}
-              </Button>
-              <Button
-                onClick={handleClickRejectButton.bind(
-                  null,
-                  step.workflow_step_id ?? 0
-                )}
-                danger
+                <Button
+                  type="primary"
+                  onClick={pass.bind(null, step.workflow_step_id ?? 0)}
+                  loading={passLoading}
+                >
+                  {t('order.operator.sqlReview')}
+                </Button>
+              </EmptyBox>
+              <EmptyBox
+                if={
+                  props.currentOrderStatus ===
+                    WorkflowRecordResV1StatusEnum.on_process &&
+                  step.type === WorkflowStepResV1TypeEnum.sql_execute
+                }
               >
-                {t('order.operator.reject')}
-              </Button>
+                <Space>
+                  <Button type="primary" onClick={openScheduleModal}>
+                    {t('order.operator.onlineRegularly')}
+                  </Button>
+                  <Button
+                    type="primary"
+                    onClick={executing}
+                    loading={executingLoading}
+                  >
+                    {t('order.operator.sqlExecute')}
+                  </Button>
+                </Space>
+              </EmptyBox>
+              <EmptyBox
+                if={
+                  props.currentOrderStatus ===
+                  WorkflowRecordResV1StatusEnum.exec_scheduled
+                }
+              >
+                <div>
+                  {t('order.operator.scheduleExec', {
+                    username: props.scheduledUser,
+                    time: formatTime(props.scheduleTime),
+                  })}
+                </div>
+                <Popconfirm
+                  title={t('order.operator.cancelExecScheduledTip')}
+                  onConfirm={cancelExecScheduled}
+                >
+                  <Button type="primary">
+                    {t('order.operator.cancelExecScheduled')}
+                  </Button>
+                </Popconfirm>
+              </EmptyBox>
+              <EmptyBox
+                if={
+                  !(
+                    props.currentOrderStatus ===
+                    WorkflowRecordResV1StatusEnum.exec_scheduled
+                  )
+                }
+              >
+                <Button
+                  onClick={handleClickRejectButton.bind(
+                    null,
+                    step.workflow_step_id ?? 0
+                  )}
+                  danger
+                >
+                  {t('order.operator.reject')}
+                </Button>
+              </EmptyBox>
             </Space>
           );
           const modifySqlNode = (
@@ -146,12 +276,13 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
           );
           if (
             props.currentStep === step.number &&
-            !step.assignee_user_name_list?.includes(username)
+            !step.assignee_user_name_list?.includes(username) //步骤时当前的步骤，但是该用户没有权限
           ) {
             operator = t('order.operator.wait', {
               username: step.assignee_user_name_list?.join(','),
             });
           } else if (step.type === WorkflowStepResV1TypeEnum.create_workflow) {
+            //如果不是当前步骤，而是创建工单
             operator = (
               <>
                 {t('order.operator.createOrder', {
@@ -161,6 +292,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
               </>
             );
           } else if (step.type === WorkflowStepResV1TypeEnum.update_workflow) {
+            //如果不是当前步骤，而是更新工单
             operator = (
               <>
                 {t('order.operator.updateOrder', {
@@ -170,33 +302,68 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
               </>
             );
           } else if (
-            step.state === WorkflowStepResV1StateEnum.approved &&
-            step.type === WorkflowStepResV1TypeEnum.sql_review
+            step.state === WorkflowStepResV1StateEnum.approved && //approved 审批通过状态
+            step.type === WorkflowStepResV1TypeEnum.sql_review //sql审核类型
           ) {
             operator = t('order.operator.approved', {
               username: step.operation_user_name,
             });
           } else if (
-            step.state === WorkflowStepResV1StateEnum.approved &&
-            step.type === WorkflowStepResV1TypeEnum.sql_execute
+            //**对这个分支添加两个是别人看到定时上线和立即上线的情况下的分支**
+            step.state === WorkflowStepResV1StateEnum.approved && //approved 审批通过状态
+            step.type === WorkflowStepResV1TypeEnum.sql_execute && //sql执行类型
+            props.scheduleTime
           ) {
-            operator = t('order.operator.executed', {
-              username: step.operation_user_name,
-            });
+            operator = (
+              <div>
+                {t('order.operator.scheduleExec', {
+                  username: step.operation_user_name,
+                  time: formatTime(props.scheduleTime),
+                })}
+                {getOperatorTimeElement(
+                  props.execStartTime,
+                  props.execEndTime,
+                  props.currentOrderStatus
+                )}
+              </div>
+            );
+          } else if (
+            step.state === WorkflowStepResV1StateEnum.approved && //approved 审批通过状态
+            step.type === WorkflowStepResV1TypeEnum.sql_execute && //sql执行类型
+            !props.scheduleTime
+          ) {
+            operator = (
+              <div>
+                {t('order.operator.executing', {
+                  username: step.operation_user_name,
+                })}
+                {getOperatorTimeElement(
+                  props.execStartTime,
+                  props.execEndTime,
+                  props.currentOrderStatus
+                )}
+              </div>
+            );
           }
+
           if (props.currentStep && (step.number ?? 0) > props.currentStep) {
+            //当前有步骤且该步骤大于当前步数
             operator = t('order.operator.notArrival');
           }
+
           if (props.currentStep === undefined) {
+            //当前步骤为undefined
             if (
               props.currentOrderStatus ===
-                WorkflowRecordResV1StatusEnum.canceled &&
-              step.state === WorkflowStepResV1StateEnum.initialized
+                WorkflowRecordResV1StatusEnum.canceled && //当前工单状态为驳回
+              step.state === WorkflowStepResV1StateEnum.initialized // 步骤状态是初始化
             ) {
               operator = t('order.operator.alreadyClosed');
             } else if (step.state === WorkflowStepResV1StateEnum.initialized) {
+              // 步骤状态是初始化
               operator = t('order.operator.alreadyRejected');
             } else if (step.state === WorkflowStepResV1StateEnum.rejected) {
+              // 步骤状态是驳回
               operator = (
                 <>
                   <div>
@@ -277,6 +444,47 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
                 {t('order.operator.reject')}
               </Button>
               <Button onClick={resetAndCloseRejectModal}>
+                {t('common.cancel')}
+              </Button>
+            </Space>
+          </Form.Item>
+        </Form>
+      </Modal>
+      <Modal
+        title={t('order.operator.onlineRegularly')}
+        visible={scheduleVisible}
+        closable={false}
+        footer={null}
+      >
+        <Form {...ModalFormLayout} form={timeForm} onFinish={execSchedule}>
+          <Form.Item
+            label={t('order.operator.scheduleTime')}
+            name="schedule_time"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <DatePicker
+              disabledDate={disabledDate}
+              disabledTime={disabledDateTime}
+              showTime
+              showNow={true}
+              data-testid="start-date"
+            />
+          </Form.Item>
+          <Form.Item label=" " colon={false}>
+            <Space>
+              <Button
+                type="primary"
+                htmlType="submit"
+                loading={scheduleLoading}
+                data-testid="confirm-button"
+              >
+                {t('order.operator.onlineRegularly')}
+              </Button>
+              <Button onClick={resetAndCloseScheduleModal}>
                 {t('common.cancel')}
               </Button>
             </Space>

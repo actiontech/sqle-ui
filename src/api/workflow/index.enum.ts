@@ -9,21 +9,15 @@ export enum getWorkflowListV1FilterCurrentStepTypeEnum {
 export enum getWorkflowListV1FilterStatusEnum {
   'on_process' = 'on_process',
 
-  'finished' = 'finished',
-
   'rejected' = 'rejected',
 
-  'canceled' = 'canceled'
-}
+  'canceled' = 'canceled',
 
-export enum getWorkflowListV1FilterTaskStatusEnum {
-  'initialized' = 'initialized',
-
-  'audited' = 'audited',
+  'exec_scheduled' = 'exec_scheduled',
 
   'executing' = 'executing',
 
-  'exec_succeeded' = 'exec_succeeded',
+  'exec_failed' = 'exec_failed',
 
-  'exec_failed' = 'exec_failed'
+  'finished' = 'finished'
 }

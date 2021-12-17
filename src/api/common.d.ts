@@ -8,7 +8,6 @@ import {
   WorkFlowStepTemplateReqV1TypeEnum,
   WorkflowDetailResV1CurrentStepTypeEnum,
   WorkflowDetailResV1StatusEnum,
-  WorkflowDetailResV1TaskStatusEnum,
   WorkflowRecordResV1StatusEnum,
   WorkflowStepResV1StateEnum,
   WorkflowStepResV1TypeEnum
@@ -71,6 +70,10 @@ export interface IAuditPlanSQLResV1 {
 }
 
 export interface IAuditTaskResV1 {
+  exec_end_time?: string;
+
+  exec_start_time?: string;
+
   instance_name?: string;
 
   instance_schema?: string;
@@ -808,6 +811,10 @@ export interface IUpdateWorkflowReqV1 {
   task_id?: string;
 }
 
+export interface IUpdateWorkflowScheduleV1 {
+  schedule_time?: string;
+}
+
 export interface IUpdateWorkflowTemplateReqV1 {
   desc?: string;
 
@@ -881,6 +888,8 @@ export interface IWorkflowDetailResV1 {
 
   desc?: string;
 
+  schedule_time?: string;
+
   status?: WorkflowDetailResV1StatusEnum;
 
   subject?: string;
@@ -891,13 +900,15 @@ export interface IWorkflowDetailResV1 {
 
   task_pass_rate?: number;
 
-  task_status?: WorkflowDetailResV1TaskStatusEnum;
-
   workflow_id?: number;
 }
 
 export interface IWorkflowRecordResV1 {
   current_step_number?: number;
+
+  schedule_time?: string;
+
+  schedule_user?: string;
 
   status?: WorkflowRecordResV1StatusEnum;
 

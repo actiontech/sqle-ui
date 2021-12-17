@@ -11,8 +11,14 @@ export type OrderStepsProps = {
   currentStep?: number;
   stepList: IWorkflowStepResV1[];
   currentOrderStatus?: WorkflowRecordResV1StatusEnum;
+  scheduleTime?: string;
+  scheduledUser?: string;
   pass: (stepId: number) => Promise<void>;
   reject: (reason: string, stepId: number) => Promise<void>;
+  execSchedule: (schedule_time?: string) => Promise<void>;
+  executing: () => Promise<void>;
+  execStartTime?: string;
+  execEndTime?: string;
   modifySql: () => void;
   readonly?: boolean;
 };

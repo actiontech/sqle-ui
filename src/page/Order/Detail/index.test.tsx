@@ -165,7 +165,9 @@ describe('Order/Detail', () => {
     expect(
       screen.queryByText('order.closeOrder.button')?.parentNode
     ).toHaveAttribute('hidden');
-    expect(screen.queryByText('order.status.finished')).toBeInTheDocument();
+    expect(
+      screen.queryAllByText('order.status.finished')[0]
+    ).toBeInTheDocument();
   });
 
   test('should render process order with order step history info by request', async () => {
@@ -197,7 +199,7 @@ describe('Order/Detail', () => {
     mockGetTask();
     mockGetTaskSqls();
 
-    const resolveOrderSpy = jest.spyOn(workflow, 'approveWorkflowV1');
+    const resolveOrderSpy = jest.spyOn(workflow, 'executeTaskOnWorkflowV1');
     resolveOrderSpy.mockImplementation(() => resolveThreeSecond({}));
     renderWithThemeAndRouter(<Order />);
     expect(getWorkflowSpy).toBeCalledTimes(1);
@@ -211,11 +213,6 @@ describe('Order/Detail', () => {
     expect(resolveOrderSpy).toBeCalledTimes(1);
     expect(resolveOrderSpy).toBeCalledWith({
       workflow_id: String(order.workflow_id),
-      workflow_step_id: String(
-        order.record?.workflow_step_list?.[
-          (order.record?.current_step_number ?? 0) - 1
-        ].workflow_step_id
-      ),
     });
 
     await waitFor(() => {
@@ -224,7 +221,7 @@ describe('Order/Detail', () => {
 
     expect(getWorkflowSpy).toBeCalledTimes(2);
     expect(
-      screen.queryByText('order.operator.approveSuccessTips')
+      screen.queryByText('order.operator.executingTips')
     ).toBeInTheDocument();
   });
 

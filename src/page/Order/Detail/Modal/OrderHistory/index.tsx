@@ -29,6 +29,8 @@ const OrderHistory: React.FC<OrderHistoryProps> = (props) => {
               currentOrderStatus={step.status}
               pass={() => Promise.resolve()}
               reject={() => Promise.resolve()}
+              executing={() => Promise.resolve()}
+              execSchedule={() => Promise.resolve()}
               modifySql={() => void 0}
               readonly={true}
             />

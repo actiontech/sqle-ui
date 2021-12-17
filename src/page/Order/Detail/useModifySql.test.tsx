@@ -1,4 +1,3 @@
-import { waitFor } from '@testing-library/react';
 import { act, renderHook } from '@testing-library/react-hooks';
 import useModifySql from './useModifySql';
 

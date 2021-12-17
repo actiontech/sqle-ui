@@ -47,7 +47,7 @@ const Order = () => {
     }
   );
 
-  const { data: taskInfo } = useRequest(
+  const { data: taskInfo, refresh: refreshTask } = useRequest(
     () => task.getAuditTaskV1({ task_id: `${orderInfo?.record?.task_id}` }),
     {
       ready: !!orderInfo,
@@ -57,7 +57,6 @@ const Order = () => {
       },
     }
   );
-
   const pass = React.useCallback(
     async (stepId: number) => {
       return workflow
@@ -74,6 +73,20 @@ const Order = () => {
     },
     [orderInfo?.workflow_id, refreshOrder, t]
   );
+
+  const executing = React.useCallback(async () => {
+    return workflow
+      .executeTaskOnWorkflowV1({
+        workflow_id: `${orderInfo?.workflow_id}`,
+      })
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          message.success(t('order.operator.executingTips'));
+          refreshOrder();
+          refreshTask();
+        }
+      });
+  }, [orderInfo?.workflow_id, refreshOrder, refreshTask, t]);
 
   const reject = React.useCallback(
     async (reason: string, stepId: number) => {
@@ -157,6 +170,23 @@ const Order = () => {
       });
   }, [closeOrderFinish, orderInfo?.workflow_id, refreshOrder, startCloseOrder]);
 
+  const execSchedule = React.useCallback(
+    async (schedule_time: string | undefined) => {
+      return workflow
+        .updateWorkflowScheduleV1({
+          schedule_time,
+          workflow_id: `${orderInfo?.workflow_id}`,
+        })
+        .then((res) => {
+          if (res.data.code === ResponseCode.SUCCESS) {
+            message.success(t('order.operator.execScheduleTips'));
+            refreshOrder();
+          }
+        });
+    },
+    [orderInfo?.workflow_id, refreshOrder, t]
+  );
+
   return (
     <>
       <PageHeader
@@ -235,8 +265,14 @@ const Order = () => {
                 stepList={orderInfo?.record?.workflow_step_list ?? []}
                 currentStep={orderInfo?.record?.current_step_number}
                 currentOrderStatus={orderInfo?.record?.status}
+                scheduleTime={orderInfo?.record?.schedule_time}
+                scheduledUser={orderInfo?.record?.schedule_user}
+                execStartTime={taskInfo?.exec_start_time}
+                execEndTime={taskInfo?.exec_end_time}
                 pass={pass}
+                executing={executing}
                 reject={reject}
+                execSchedule={execSchedule}
                 modifySql={openModifySqlModal}
               />
             </Card>

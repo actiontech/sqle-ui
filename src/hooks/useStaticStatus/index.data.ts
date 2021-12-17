@@ -5,10 +5,9 @@ import {
 import {
   getWorkflowListV1FilterCurrentStepTypeEnum,
   getWorkflowListV1FilterStatusEnum,
-  getWorkflowListV1FilterTaskStatusEnum,
 } from '../../api/workflow/index.enum';
 import { StaticEnumDictionary } from './index.type';
-import { RuleResV1LevelEnum } from "../../api/common.enum";
+import { RuleResV1LevelEnum } from '../../api/common.enum';
 
 export const WorkflowStepTypeDictionary: StaticEnumDictionary<getWorkflowListV1FilterCurrentStepTypeEnum> =
   {
@@ -43,24 +42,15 @@ export const orderStatusDictionary: StaticEnumDictionary<getWorkflowListV1Filter
     [getWorkflowListV1FilterStatusEnum.finished]: 'order.status.finished',
     [getWorkflowListV1FilterStatusEnum.canceled]: 'order.status.canceled',
     [getWorkflowListV1FilterStatusEnum.rejected]: 'order.status.reject',
+    [getWorkflowListV1FilterStatusEnum.exec_scheduled]:
+      'order.status.exec_scheduled',
+    [getWorkflowListV1FilterStatusEnum.exec_failed]: 'order.status.exec_failed',
+    [getWorkflowListV1FilterStatusEnum.executing]: 'order.status.executing',
   };
 
-export const sqlTaskStatusDictionary: StaticEnumDictionary<getWorkflowListV1FilterTaskStatusEnum> =
-  {
-    [getWorkflowListV1FilterTaskStatusEnum.initialized]:
-      'order.sqlTaskStatus.initialized',
-    [getWorkflowListV1FilterTaskStatusEnum.audited]:
-      'order.sqlTaskStatus.audited',
-    [getWorkflowListV1FilterTaskStatusEnum.exec_failed]:
-      'order.sqlTaskStatus.execFailed',
-    [getWorkflowListV1FilterTaskStatusEnum.exec_succeeded]:
-      'order.sqlTaskStatus.execSuccess',
-    [getWorkflowListV1FilterTaskStatusEnum.executing]:
-      'order.sqlTaskStatus.executing',
-  };
 export const ruleLevelDictionary: StaticEnumDictionary<RuleResV1LevelEnum> = {
   [RuleResV1LevelEnum.normal]: 'ruleTemplate.ruleLevel.normal',
   [RuleResV1LevelEnum.notice]: 'ruleTemplate.ruleLevel.notice',
   [RuleResV1LevelEnum.warn]: 'ruleTemplate.ruleLevel.warn',
   [RuleResV1LevelEnum.error]: 'ruleTemplate.ruleLevel.error',
-  }
+};
