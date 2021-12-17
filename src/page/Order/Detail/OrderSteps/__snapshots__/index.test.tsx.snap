@@ -111,16 +111,45 @@ exports[`Order/Detail/OrderSteps should match to snapshot when user is assignee 
               <div
                 class="ant-space-item"
                 style="margin-right: 8px;"
+              />
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <button
-                  class="ant-btn ant-btn-primary"
-                  type="button"
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
                 >
-                  <span>
-                    order.operator.sqlExecute
-                  </span>
-                </button>
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <button
+                      class="ant-btn ant-btn-primary"
+                      type="button"
+                    >
+                      <span>
+                        order.operator.onlineRegularly
+                      </span>
+                    </button>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <button
+                      class="ant-btn ant-btn-primary"
+                      type="button"
+                    >
+                      <span>
+                        order.operator.sqlExecute
+                      </span>
+                    </button>
+                  </div>
+                </div>
               </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              />
               <div
                 class="ant-space-item"
               >
@@ -428,7 +457,28 @@ exports[`Order/Detail/OrderSteps should match to snapshot when user is assignee 
           <div
             class="ant-col ant-col-19"
           >
-            order.operator.executed
+            <div>
+              order.operator.executing
+              <div>
+                <span>
+                  order.operator.startTime
+                </span>
+                <br />
+                <span>
+                  order.operator.endTime
+                </span>
+                <br />
+                <span>
+                  order.operator.status
+                  ：
+                  <span
+                    class="ant-tag ant-tag-blue"
+                  >
+                    order.status.process
+                  </span>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -558,6 +608,14 @@ exports[`Order/Detail/OrderSteps should match to snapshot when user is assignee 
                   </span>
                 </button>
               </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              />
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              />
               <div
                 class="ant-space-item"
               >
@@ -1029,7 +1087,784 @@ exports[`Order/Detail/OrderSteps should match to snapshot when user is assignee 
           <div
             class="ant-col ant-col-19"
           >
-            order.operator.executed
+            <div>
+              order.operator.executing
+              <div>
+                <span>
+                  order.operator.startTime
+                </span>
+                <br />
+                <span>
+                  order.operator.endTime
+                </span>
+                <br />
+                <span>
+                  order.operator.status
+                  ：
+                  <span
+                    class="ant-tag ant-tag-blue"
+                  >
+                    order.status.process
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Order/Detail/OrderSteps should match to snapshot when user is assignee user 9`] = `
+<div>
+  <ul
+    class="ant-timeline"
+  >
+    <li
+      class="ant-timeline-item"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              2021-12-16 20:06:10
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              admin
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            order.operator.createOrder
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="ant-timeline-item ant-timeline-item-last"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-gray"
+      >
+        <span
+          aria-label="clock-circle"
+          class="anticon anticon-clock-circle timeline-clock-icon"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="clock-circle"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+            />
+            <path
+              d="M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z"
+            />
+          </svg>
+        </span>
+      </div>
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              --
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              --
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            <div
+              class="ant-space ant-space-horizontal ant-space-align-center"
+            >
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              />
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <button
+                      class="ant-btn ant-btn-primary"
+                      type="button"
+                    >
+                      <span>
+                        order.operator.onlineRegularly
+                      </span>
+                    </button>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <button
+                      class="ant-btn ant-btn-primary"
+                      type="button"
+                    >
+                      <span>
+                        order.operator.sqlExecute
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              />
+              <div
+                class="ant-space-item"
+              >
+                <button
+                  class="ant-btn ant-btn-dangerous"
+                  type="button"
+                >
+                  <span>
+                    order.operator.reject
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Order/Detail/OrderSteps should match to snapshot when user is assignee user 10`] = `
+<div>
+  <ul
+    class="ant-timeline"
+  >
+    <li
+      class="ant-timeline-item"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              2021-12-16 19:10:02
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              admin
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            order.operator.createOrder
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="ant-timeline-item"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              2021-12-16 19:16:56
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              admin
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            order.operator.approved
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="ant-timeline-item ant-timeline-item-last"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-gray"
+      >
+        <span
+          aria-label="clock-circle"
+          class="anticon anticon-clock-circle timeline-clock-icon"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="clock-circle"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+            />
+            <path
+              d="M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z"
+            />
+          </svg>
+        </span>
+      </div>
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              --
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              --
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            <div
+              class="ant-space ant-space-horizontal ant-space-align-center"
+            >
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              />
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <button
+                      class="ant-btn ant-btn-primary"
+                      type="button"
+                    >
+                      <span>
+                        order.operator.onlineRegularly
+                      </span>
+                    </button>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <button
+                      class="ant-btn ant-btn-primary"
+                      type="button"
+                    >
+                      <span>
+                        order.operator.sqlExecute
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              />
+              <div
+                class="ant-space-item"
+              >
+                <button
+                  class="ant-btn ant-btn-dangerous"
+                  type="button"
+                >
+                  <span>
+                    order.operator.reject
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Order/Detail/OrderSteps should match to snapshot when user is assignee user 11`] = `
+<div>
+  <ul
+    class="ant-timeline"
+  />
+</div>
+`;
+
+exports[`Order/Detail/OrderSteps should match to snapshot when user is assignee user 12`] = `
+<div>
+  <ul
+    class="ant-timeline"
+  >
+    <li
+      class="ant-timeline-item"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              2021-12-16 19:37:02
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              admin
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            order.operator.createOrder
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="ant-timeline-item"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              2021-12-16 19:38:14
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              admin
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            order.operator.approved
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="ant-timeline-item ant-timeline-item-last"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              2021-12-16 19:38:25
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              test
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            <div>
+              order.operator.executing
+              <div>
+                <span>
+                  order.operator.startTime
+                </span>
+                <br />
+                <span>
+                  order.operator.endTime
+                </span>
+                <br />
+                <span>
+                  order.operator.status
+                  ：
+                  <span
+                    class="ant-tag ant-tag-blue"
+                  >
+                    order.status.process
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Order/Detail/OrderSteps should match to snapshot when user is assignee user 13`] = `
+<div>
+  <ul
+    class="ant-timeline"
+  >
+    <li
+      class="ant-timeline-item"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              2021-12-16 20:29:40
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              admin
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            order.operator.createOrder
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="ant-timeline-item"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              2021-12-16 20:29:55
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              admin
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            order.operator.approved
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="ant-timeline-item ant-timeline-item-last"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-gray"
+      >
+        <span
+          aria-label="clock-circle"
+          class="anticon anticon-clock-circle timeline-clock-icon"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="clock-circle"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+            />
+            <path
+              d="M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z"
+            />
+          </svg>
+        </span>
+      </div>
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              --
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              --
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            <div
+              class="ant-space ant-space-horizontal ant-space-align-center"
+            >
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              />
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <button
+                      class="ant-btn ant-btn-primary"
+                      type="button"
+                    >
+                      <span>
+                        order.operator.onlineRegularly
+                      </span>
+                    </button>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <button
+                      class="ant-btn ant-btn-primary"
+                      type="button"
+                    >
+                      <span>
+                        order.operator.sqlExecute
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              />
+              <div
+                class="ant-space-item"
+              >
+                <button
+                  class="ant-btn ant-btn-dangerous"
+                  type="button"
+                >
+                  <span>
+                    order.operator.reject
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1438,7 +2273,28 @@ exports[`Order/Detail/OrderSteps should match to snapshot when user is not assig
           <div
             class="ant-col ant-col-19"
           >
-            order.operator.executed
+            <div>
+              order.operator.executing
+              <div>
+                <span>
+                  order.operator.startTime
+                </span>
+                <br />
+                <span>
+                  order.operator.endTime
+                </span>
+                <br />
+                <span>
+                  order.operator.status
+                  ：
+                  <span
+                    class="ant-tag ant-tag-blue"
+                  >
+                    order.status.process
+                  </span>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -2011,7 +2867,670 @@ exports[`Order/Detail/OrderSteps should match to snapshot when user is not assig
           <div
             class="ant-col ant-col-19"
           >
-            order.operator.executed
+            <div>
+              order.operator.executing
+              <div>
+                <span>
+                  order.operator.startTime
+                </span>
+                <br />
+                <span>
+                  order.operator.endTime
+                </span>
+                <br />
+                <span>
+                  order.operator.status
+                  ：
+                  <span
+                    class="ant-tag ant-tag-blue"
+                  >
+                    order.status.process
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Order/Detail/OrderSteps should match to snapshot when user is not assignee user 9`] = `
+<div>
+  <ul
+    class="ant-timeline"
+  >
+    <li
+      class="ant-timeline-item"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              2021-12-16 20:06:10
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              admin
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            order.operator.createOrder
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="ant-timeline-item ant-timeline-item-last"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-gray"
+      >
+        <span
+          aria-label="clock-circle"
+          class="anticon anticon-clock-circle timeline-clock-icon"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="clock-circle"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+            />
+            <path
+              d="M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z"
+            />
+          </svg>
+        </span>
+      </div>
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              --
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              --
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            order.operator.wait
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Order/Detail/OrderSteps should match to snapshot when user is not assignee user 10`] = `
+<div>
+  <ul
+    class="ant-timeline"
+  >
+    <li
+      class="ant-timeline-item"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              2021-12-16 19:10:02
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              admin
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            order.operator.createOrder
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="ant-timeline-item"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              2021-12-16 19:16:56
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              admin
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            order.operator.approved
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="ant-timeline-item ant-timeline-item-last"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-gray"
+      >
+        <span
+          aria-label="clock-circle"
+          class="anticon anticon-clock-circle timeline-clock-icon"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="clock-circle"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+            />
+            <path
+              d="M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z"
+            />
+          </svg>
+        </span>
+      </div>
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              --
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              --
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            <div
+              class="ant-space ant-space-horizontal ant-space-align-center"
+            >
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              />
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <button
+                      class="ant-btn ant-btn-primary"
+                      type="button"
+                    >
+                      <span>
+                        order.operator.onlineRegularly
+                      </span>
+                    </button>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <button
+                      class="ant-btn ant-btn-primary"
+                      type="button"
+                    >
+                      <span>
+                        order.operator.sqlExecute
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              />
+              <div
+                class="ant-space-item"
+              >
+                <button
+                  class="ant-btn ant-btn-dangerous"
+                  type="button"
+                >
+                  <span>
+                    order.operator.reject
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Order/Detail/OrderSteps should match to snapshot when user is not assignee user 11`] = `
+<div>
+  <ul
+    class="ant-timeline"
+  />
+</div>
+`;
+
+exports[`Order/Detail/OrderSteps should match to snapshot when user is not assignee user 12`] = `
+<div>
+  <ul
+    class="ant-timeline"
+  >
+    <li
+      class="ant-timeline-item"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              2021-12-16 19:37:02
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              admin
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            order.operator.createOrder
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="ant-timeline-item"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              2021-12-16 19:38:14
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              admin
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            order.operator.approved
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="ant-timeline-item ant-timeline-item-last"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              2021-12-16 19:38:25
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              test
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            <div>
+              order.operator.executing
+              <div>
+                <span>
+                  order.operator.startTime
+                </span>
+                <br />
+                <span>
+                  order.operator.endTime
+                </span>
+                <br />
+                <span>
+                  order.operator.status
+                  ：
+                  <span
+                    class="ant-tag ant-tag-blue"
+                  >
+                    order.status.process
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Order/Detail/OrderSteps should match to snapshot when user is not assignee user 13`] = `
+<div>
+  <ul
+    class="ant-timeline"
+  >
+    <li
+      class="ant-timeline-item"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              2021-12-16 20:29:40
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              admin
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            order.operator.createOrder
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="ant-timeline-item"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              2021-12-16 20:29:55
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              admin
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            order.operator.approved
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="ant-timeline-item ant-timeline-item-last"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-gray"
+      >
+        <span
+          aria-label="clock-circle"
+          class="anticon anticon-clock-circle timeline-clock-icon"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="clock-circle"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+            />
+            <path
+              d="M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z"
+            />
+          </svg>
+        </span>
+      </div>
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-5"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              :
+              --
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              :
+              --
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-19"
+          >
+            order.operator.wait
           </div>
         </div>
       </div>

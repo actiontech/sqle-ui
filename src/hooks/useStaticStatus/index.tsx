@@ -8,16 +8,14 @@ import {
 import {
   getWorkflowListV1FilterCurrentStepTypeEnum,
   getWorkflowListV1FilterStatusEnum,
-  getWorkflowListV1FilterTaskStatusEnum,
 } from '../../api/workflow/index.enum';
-import { RuleResV1LevelEnum } from "../../api/common.enum";
+import { RuleResV1LevelEnum } from '../../api/common.enum';
 import {
   auditStatusDictionary,
   execStatusDictionary,
   orderStatusDictionary,
-  sqlTaskStatusDictionary,
   WorkflowStepTypeDictionary,
-  ruleLevelDictionary
+  ruleLevelDictionary,
 } from './index.data';
 
 const useStaticStatus = () => {
@@ -140,6 +138,25 @@ const useStaticStatus = () => {
           )}
         </Select.Option>
         <Select.Option
+          key={getWorkflowListV1FilterStatusEnum.exec_scheduled}
+          value={getWorkflowListV1FilterStatusEnum.exec_scheduled}
+        >
+          {t(
+            orderStatusDictionary[
+              getWorkflowListV1FilterStatusEnum.exec_scheduled
+            ]
+          )}
+        </Select.Option>
+        <Select.Option
+          key={getWorkflowListV1FilterStatusEnum.executing}
+          value={getWorkflowListV1FilterStatusEnum.executing}
+        >
+          {t(
+            orderStatusDictionary[getWorkflowListV1FilterStatusEnum.executing]
+          )}
+        </Select.Option>
+
+        <Select.Option
           key={getWorkflowListV1FilterStatusEnum.finished}
           value={getWorkflowListV1FilterStatusEnum.finished}
         >
@@ -152,6 +169,14 @@ const useStaticStatus = () => {
           {t(orderStatusDictionary[getWorkflowListV1FilterStatusEnum.rejected])}
         </Select.Option>
         <Select.Option
+          key={getWorkflowListV1FilterStatusEnum.exec_failed}
+          value={getWorkflowListV1FilterStatusEnum.exec_failed}
+        >
+          {t(
+            orderStatusDictionary[getWorkflowListV1FilterStatusEnum.exec_failed]
+          )}
+        </Select.Option>
+        <Select.Option
           key={getWorkflowListV1FilterStatusEnum.canceled}
           value={getWorkflowListV1FilterStatusEnum.canceled}
         >
@@ -161,100 +186,101 @@ const useStaticStatus = () => {
     );
   }, [t]);
 
-  const generateSqlTaskStatusSelectOption = React.useCallback(() => {
+  // const generateSqlTaskStatusSelectOption = React.useCallback(() => {
+  //   return (
+  //     <>
+  //       <Select.Option
+  //         key={getWorkflowListV1FilterTaskStatusEnum.initialized}
+  //         value={getWorkflowListV1FilterTaskStatusEnum.initialized}
+  //       >
+  //         {t(
+  //           sqlTaskStatusDictionary[
+  //             getWorkflowListV1FilterTaskStatusEnum.initialized
+  //           ]
+  //         )}
+  //       </Select.Option>
+  //       <Select.Option
+  //         key={getWorkflowListV1FilterTaskStatusEnum.audited}
+  //         value={getWorkflowListV1FilterTaskStatusEnum.audited}
+  //       >
+  //         {t(
+  //           sqlTaskStatusDictionary[
+  //             getWorkflowListV1FilterTaskStatusEnum.audited
+  //           ]
+  //         )}
+  //       </Select.Option>
+  //       <Select.Option
+  //         key={getWorkflowListV1FilterTaskStatusEnum.executing}
+  //         value={getWorkflowListV1FilterTaskStatusEnum.executing}
+  //       >
+  //         {t(
+  //           sqlTaskStatusDictionary[
+  //             getWorkflowListV1FilterTaskStatusEnum.executing
+  //           ]
+  //         )}
+  //       </Select.Option>
+  //       <Select.Option
+  //         key={getWorkflowListV1FilterTaskStatusEnum.exec_succeeded}
+  //         value={getWorkflowListV1FilterTaskStatusEnum.exec_succeeded}
+  //       >
+  //         {t(
+  //           sqlTaskStatusDictionary[
+  //             getWorkflowListV1FilterTaskStatusEnum.exec_succeeded
+  //           ]
+  //         )}
+  //       </Select.Option>
+  //       <Select.Option
+  //         key={getWorkflowListV1FilterTaskStatusEnum.exec_failed}
+  //         value={getWorkflowListV1FilterTaskStatusEnum.exec_failed}
+  //       >
+  //         {t(
+  //           sqlTaskStatusDictionary[
+  //             getWorkflowListV1FilterTaskStatusEnum.exec_failed
+  //           ]
+  //         )}
+  //       </Select.Option>
+  //     </>
+  //   );
+  // }, [t]);
+
+  const getRuleLevelStatusSelectOption = React.useCallback(() => {
     return (
       <>
         <Select.Option
-          key={getWorkflowListV1FilterTaskStatusEnum.initialized}
-          value={getWorkflowListV1FilterTaskStatusEnum.initialized}
+          value={RuleResV1LevelEnum.normal}
+          key={RuleResV1LevelEnum.normal}
         >
-          {t(
-            sqlTaskStatusDictionary[
-              getWorkflowListV1FilterTaskStatusEnum.initialized
-            ]
-          )}
+          {t(ruleLevelDictionary[RuleResV1LevelEnum.normal])}
         </Select.Option>
         <Select.Option
-          key={getWorkflowListV1FilterTaskStatusEnum.audited}
-          value={getWorkflowListV1FilterTaskStatusEnum.audited}
+          value={RuleResV1LevelEnum.notice}
+          key={RuleResV1LevelEnum.notice}
         >
-          {t(
-            sqlTaskStatusDictionary[
-              getWorkflowListV1FilterTaskStatusEnum.audited
-            ]
-          )}
+          {t(ruleLevelDictionary[RuleResV1LevelEnum.notice])}
         </Select.Option>
         <Select.Option
-          key={getWorkflowListV1FilterTaskStatusEnum.executing}
-          value={getWorkflowListV1FilterTaskStatusEnum.executing}
+          value={RuleResV1LevelEnum.warn}
+          key={RuleResV1LevelEnum.warn}
         >
-          {t(
-            sqlTaskStatusDictionary[
-              getWorkflowListV1FilterTaskStatusEnum.executing
-            ]
-          )}
+          {t(ruleLevelDictionary[RuleResV1LevelEnum.warn])}
         </Select.Option>
         <Select.Option
-          key={getWorkflowListV1FilterTaskStatusEnum.exec_succeeded}
-          value={getWorkflowListV1FilterTaskStatusEnum.exec_succeeded}
+          value={RuleResV1LevelEnum.error}
+          key={RuleResV1LevelEnum.error}
         >
-          {t(
-            sqlTaskStatusDictionary[
-              getWorkflowListV1FilterTaskStatusEnum.exec_succeeded
-            ]
-          )}
-        </Select.Option>
-        <Select.Option
-          key={getWorkflowListV1FilterTaskStatusEnum.exec_failed}
-          value={getWorkflowListV1FilterTaskStatusEnum.exec_failed}
-        >
-          {t(
-            sqlTaskStatusDictionary[
-              getWorkflowListV1FilterTaskStatusEnum.exec_failed
-            ]
-          )}
+          {t(ruleLevelDictionary[RuleResV1LevelEnum.error])}
         </Select.Option>
       </>
     );
   }, [t]);
-
-  const getRuleLevelStatusSelectOption = React.useCallback(
-    () => {
-      return(
-        <>
-          <Select.Option
-            value={RuleResV1LevelEnum.normal}
-            key={RuleResV1LevelEnum.normal}>
-              {t(ruleLevelDictionary[RuleResV1LevelEnum.normal])}
-          </Select.Option>
-          <Select.Option
-            value={RuleResV1LevelEnum.notice}
-            key={RuleResV1LevelEnum.notice}>
-              {t(ruleLevelDictionary[RuleResV1LevelEnum.notice])}
-          </Select.Option>
-          <Select.Option
-            value={RuleResV1LevelEnum.warn}
-            key={RuleResV1LevelEnum.warn}>
-              {t(ruleLevelDictionary[RuleResV1LevelEnum.warn])}
-          </Select.Option>
-          <Select.Option
-            value={RuleResV1LevelEnum.error}
-            key={RuleResV1LevelEnum.error}>
-              {t(ruleLevelDictionary[RuleResV1LevelEnum.error])}
-          </Select.Option>
-        </>
-      )
-    },
-    [t],
-  )
 
   return {
     generateAuditStatusSelectOption,
     generateExecStatusSelectOption,
     generateWorkflowStepTypeSelectOption,
     generateOrderStatusSelectOption,
-    generateSqlTaskStatusSelectOption,
-    getRuleLevelStatusSelectOption
+    // generateSqlTaskStatusSelectOption,
+    getRuleLevelStatusSelectOption,
   };
 };
 

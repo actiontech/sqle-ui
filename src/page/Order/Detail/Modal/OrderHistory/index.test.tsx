@@ -1,7 +1,14 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import OrderHistory from '.';
 import { mockUseSelector } from '../../../../../testUtils/mockRedux';
-import { order, orderCancel, orderPass, orderReject } from '../../__testData__';
+import {
+  order,
+  orderCancel,
+  orderPass,
+  orderReject,
+  orderWithExecScheduled,
+  orderWithExecuting,
+} from '../../__testData__';
 
 describe('Order/Detail/OrderHistory', () => {
   beforeEach(() => {
@@ -34,6 +41,12 @@ describe('Order/Detail/OrderHistory', () => {
             {
               ...orderPass.record,
             },
+            {
+              ...orderWithExecScheduled.record,
+            },
+            {
+              ...orderWithExecuting.record,
+            },
           ] as any
         }
         close={close}
@@ -60,6 +73,12 @@ describe('Order/Detail/OrderHistory', () => {
             },
             {
               ...orderPass.record,
+            },
+            {
+              ...orderWithExecScheduled.record,
+            },
+            {
+              ...orderWithExecuting.record,
             },
           ] as any
         }

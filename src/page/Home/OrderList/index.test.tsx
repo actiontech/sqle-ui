@@ -4,13 +4,9 @@ import { IWorkflowDetailResV1 } from '../../../api/common';
 import {
   WorkflowDetailResV1CurrentStepTypeEnum,
   WorkflowDetailResV1StatusEnum,
-  WorkflowDetailResV1TaskStatusEnum,
 } from '../../../api/common.enum';
 import workflow from '../../../api/workflow';
-import {
-  renderWithRouter,
-  renderWithThemeAndRouter,
-} from '../../../testUtils/customRender';
+import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 
 describe('Home/OrderList', () => {
@@ -53,7 +49,6 @@ describe('Home/OrderList', () => {
         task_instance_name: 'db1',
         task_instance_schema: '',
         task_pass_rate: 0,
-        task_status: WorkflowDetailResV1TaskStatusEnum.audited,
         workflow_id: 1,
       },
     ]);

@@ -45,7 +45,6 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
     if (nextCollapse) {
       props.form.setFieldsValue({
         filter_current_step_assignee_user_name: undefined,
-        filter_task_status: undefined,
         filter_task_instance_name: undefined,
         filter_order_createTime: undefined,
         filter_subject: undefined,
@@ -67,7 +66,6 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
   const {
     generateWorkflowStepTypeSelectOption,
     generateOrderStatusSelectOption,
-    generateSqlTaskStatusSelectOption,
   } = useStaticStatus();
 
   const currentCollapse =
@@ -130,20 +128,6 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
         </Col>
         <Col {...FilterFormColLayout} hidden={currentCollapse}>
           <Form.Item
-            name="filter_task_status"
-            label={t('order.order.sqlTaskStatus')}
-          >
-            <Select
-              placeholder={t('common.form.placeholder.searchSelect', {
-                name: t('order.order.sqlTaskStatus'),
-              })}
-            >
-              {generateSqlTaskStatusSelectOption()}
-            </Select>
-          </Form.Item>
-        </Col>
-        <Col {...FilterFormColLayout} hidden={currentCollapse}>
-          <Form.Item
             name="filter_task_instance_name"
             label={t('order.order.instanceName')}
           >
@@ -178,7 +162,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
           </Form.Item>
         </Col>
         <Col
-          {...filterFormButtonLayoutFactory(12, 16, currentCollapse ? 0 : 6)}
+          {...filterFormButtonLayoutFactory(12, 16, currentCollapse ? 0 : 18)}
           className="text-align-right"
         >
           <Form.Item className="clear-margin-right" wrapperCol={{ span: 24 }}>

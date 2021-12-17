@@ -10,13 +10,13 @@ import {
   IBatchCancelWorkflowsReqV1,
   IGetWorkflowResV1,
   IUpdateWorkflowReqV1,
+  IUpdateWorkflowScheduleV1,
   IRejectWorkflowReqV1
 } from '../common.d';
 
 import {
   getWorkflowListV1FilterCurrentStepTypeEnum,
-  getWorkflowListV1FilterStatusEnum,
-  getWorkflowListV1FilterTaskStatusEnum
+  getWorkflowListV1FilterStatusEnum
 } from './index.enum';
 
 export interface IGetWorkflowTemplateTipsV1Return
@@ -71,8 +71,6 @@ export interface IGetWorkflowListV1Params {
 
   filter_current_step_assignee_user_name?: string;
 
-  filter_task_status?: getWorkflowListV1FilterTaskStatusEnum;
-
   filter_task_instance_name?: string;
 
   page_index?: number;
@@ -109,6 +107,13 @@ export interface ICancelWorkflowV1Params {
 
 export interface ICancelWorkflowV1Return extends IBaseRes {}
 
+export interface IUpdateWorkflowScheduleV1Params
+  extends IUpdateWorkflowScheduleV1 {
+  workflow_id: string;
+}
+
+export interface IUpdateWorkflowScheduleV1Return extends IBaseRes {}
+
 export interface IApproveWorkflowV1Params {
   workflow_id: string;
 
@@ -124,3 +129,9 @@ export interface IRejectWorkflowV1Params extends IRejectWorkflowReqV1 {
 }
 
 export interface IRejectWorkflowV1Return extends IBaseRes {}
+
+export interface IExecuteTaskOnWorkflowV1Params {
+  workflow_id: string;
+}
+
+export interface IExecuteTaskOnWorkflowV1Return extends IBaseRes {}

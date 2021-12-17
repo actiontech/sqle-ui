@@ -20,6 +20,18 @@ const statusColor: OrderStatus = {
     color: 'orange',
     label: 'order.status.reject',
   },
+  [WorkflowRecordResV1StatusEnum.exec_scheduled]: {
+    color: 'blue',
+    label: 'order.status.exec_scheduled',
+  },
+  [WorkflowRecordResV1StatusEnum.executing]: {
+    color: 'blue',
+    label: 'order.status.executing',
+  },
+  [WorkflowRecordResV1StatusEnum.exec_failed]: {
+    color: 'orange',
+    label: 'order.status.exec_failed',
+  },
   unknown: {
     color: undefined,
     label: 'common.unknownStatus',

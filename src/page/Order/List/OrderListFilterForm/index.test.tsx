@@ -92,7 +92,6 @@ describe('Order/List', () => {
     fireEvent.click(currentStepTypeOption);
     expect(result.current[0].getFieldsValue()).toEqual({
       filter_current_step_assignee_user_name: undefined,
-      filter_task_status: undefined,
       filter_create_user_name: undefined,
       filter_current_step_type: 'sql_review',
       filter_status: undefined,
@@ -115,26 +114,6 @@ describe('Order/List', () => {
       filter_current_step_type: 'sql_review',
     });
 
-    fireEvent.mouseDown(getBySelector('#filter_task_status'));
-
-    await waitFor(() => {
-      jest.runOnlyPendingTimers();
-    });
-
-    const sqlAuditStateOption = screen.getByText(
-      'order.sqlTaskStatus.initialized'
-    );
-    expect(sqlAuditStateOption).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(sqlAuditStateOption);
-    expect(result.current[0].getFieldsValue()).toEqual({
-      filter_current_step_assignee_user_name: 'user_name1',
-      filter_task_status: 'initialized',
-      filter_create_user_name: undefined,
-      filter_current_step_type: 'sql_review',
-      filter_status: undefined,
-      filter_task_instance_name: undefined,
-    });
-
     fireEvent.mouseDown(getBySelector('#filter_task_instance_name'));
 
     await waitFor(() => {
@@ -148,7 +127,6 @@ describe('Order/List', () => {
     fireEvent.click(taskInstanceNameOption);
     expect(result.current[0].getFieldsValue()).toEqual({
       filter_current_step_assignee_user_name: 'user_name1',
-      filter_task_status: 'initialized',
       filter_create_user_name: undefined,
       filter_current_step_type: 'sql_review',
       filter_status: undefined,
@@ -162,7 +140,6 @@ describe('Order/List', () => {
 
     expect(result.current[0].getFieldsValue()).toEqual({
       filter_current_step_assignee_user_name: undefined,
-      filter_task_status: undefined,
       filter_create_user_name: undefined,
       filter_current_step_type: 'sql_review',
       filter_status: undefined,
@@ -173,7 +150,6 @@ describe('Order/List', () => {
     expect(
       isEqual(setValueSpy.mock.calls[0][0], {
         filter_current_step_assignee_user_name: undefined,
-        filter_task_status: undefined,
         filter_task_instance_name: undefined,
         filter_subject: undefined,
         filter_order_createTime: undefined,

@@ -1,4 +1,5 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import moment from 'moment';
 import { act } from 'react-dom/test-utils';
 import OrderSteps from '.';
 import { IWorkflowResV1 } from '../../../../api/common';
@@ -14,6 +15,11 @@ import {
   orderPass3,
   orderReject,
   orderReject3,
+  orderWithExecScheduled,
+  orderWithExecScheduled3,
+  orderWithExecuting,
+  orderWithExecuting3,
+  execScheduleSubmit3,
 } from '../__testData__';
 
 describe('Order/Detail/OrderSteps', () => {
@@ -24,6 +30,8 @@ describe('Order/Detail/OrderSteps', () => {
 
   afterEach(() => {
     jest.useRealTimers();
+    jest.clearAllMocks();
+    jest.clearAllTimers();
   });
 
   test('should match to snapshot when user is assignee user', () => {
@@ -34,6 +42,8 @@ describe('Order/Detail/OrderSteps', () => {
         pass={jest.fn()}
         reject={jest.fn()}
         modifySql={jest.fn()}
+        executing={jest.fn()}
+        execSchedule={jest.fn()}
         currentOrderStatus={order.record?.status}
       />
     );
@@ -46,15 +56,24 @@ describe('Order/Detail/OrderSteps', () => {
       orderCancel3,
       orderReject3,
       orderPass3,
+      orderWithExecScheduled,
+      orderWithExecScheduled3,
+      orderWithExecuting,
+      orderWithExecuting3,
+      execScheduleSubmit3,
     ];
     data.forEach((item) => {
       rerender(
         <OrderSteps
           currentStep={item.record?.current_step_number}
           stepList={item.record?.workflow_step_list ?? []}
+          scheduleTime={item.record?.schedule_time}
+          scheduledUser={item.record?.schedule_user}
           pass={jest.fn()}
           reject={jest.fn()}
           modifySql={jest.fn()}
+          executing={jest.fn()}
+          execSchedule={jest.fn()}
           currentOrderStatus={order.record?.status}
         />
       );
@@ -68,8 +87,12 @@ describe('Order/Detail/OrderSteps', () => {
       <OrderSteps
         currentStep={order.record?.current_step_number}
         stepList={order.record?.workflow_step_list ?? []}
+        scheduleTime={order.record?.schedule_time}
+        scheduledUser={order.record?.schedule_user}
         pass={jest.fn()}
         reject={jest.fn()}
+        execSchedule={jest.fn()}
+        executing={jest.fn()}
         modifySql={jest.fn()}
         currentOrderStatus={order.record?.status}
       />
@@ -83,15 +106,24 @@ describe('Order/Detail/OrderSteps', () => {
       orderCancel3,
       orderReject3,
       orderPass3,
+      orderWithExecScheduled,
+      orderWithExecScheduled3,
+      orderWithExecuting,
+      orderWithExecuting3,
+      execScheduleSubmit3,
     ];
     data.forEach((item) => {
       rerender(
         <OrderSteps
           currentStep={item.record?.current_step_number}
           stepList={item.record?.workflow_step_list ?? []}
+          scheduleTime={order.record?.schedule_time}
+          scheduledUser={order.record?.schedule_user}
           pass={jest.fn()}
           reject={jest.fn()}
+          executing={jest.fn()}
           modifySql={jest.fn()}
+          execSchedule={jest.fn()}
           currentOrderStatus={order.record?.status}
         />
       );
@@ -105,8 +137,12 @@ describe('Order/Detail/OrderSteps', () => {
       <OrderSteps
         currentStep={order3.record?.current_step_number}
         stepList={order3.record?.workflow_step_list ?? []}
+        scheduleTime={order.record?.schedule_time}
+        scheduledUser={order.record?.schedule_user}
         pass={passMock}
         reject={jest.fn()}
+        executing={jest.fn()}
+        execSchedule={jest.fn()}
         modifySql={jest.fn()}
         currentOrderStatus={order3.record?.status}
       />
@@ -120,7 +156,6 @@ describe('Order/Detail/OrderSteps', () => {
       'ant-btn-loading'
     );
     expect(passMock).toBeCalledTimes(1);
-    expect(passMock).toBeCalledWith(21);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -137,8 +172,12 @@ describe('Order/Detail/OrderSteps', () => {
       <OrderSteps
         currentStep={order3.record?.current_step_number}
         stepList={order3.record?.workflow_step_list ?? []}
+        scheduleTime={order.record?.schedule_time}
+        scheduledUser={order.record?.schedule_user}
         pass={jest.fn()}
         reject={rejectMock}
+        executing={jest.fn()}
+        execSchedule={jest.fn()}
         modifySql={jest.fn()}
         currentOrderStatus={order3.record?.status}
       />
@@ -171,5 +210,103 @@ describe('Order/Detail/OrderSteps', () => {
     });
     expect(rejectSubmit).not.toHaveClass('ant-btn-loading');
     expect(getBySelector('.ant-modal-wrap')).toHaveStyle('display: none');
+  });
+
+  test('should call execSchedule when click execSchedule button', async () => {
+    const execScheduleMock = jest
+      .fn()
+      .mockImplementation(() => resolveThreeSecond({}));
+    render(
+      <OrderSteps
+        currentStep={execScheduleSubmit3.record?.current_step_number}
+        stepList={execScheduleSubmit3.record?.workflow_step_list ?? []}
+        scheduleTime={execScheduleSubmit3.record?.schedule_time}
+        scheduledUser={execScheduleSubmit3.record?.schedule_user}
+        pass={jest.fn()}
+        reject={jest.fn()}
+        executing={jest.fn()}
+        execSchedule={execScheduleMock}
+        modifySql={jest.fn()}
+        currentOrderStatus={execScheduleSubmit3.record?.status}
+      />
+    );
+    expect(
+      screen.queryByText('order.operator.onlineRegularly')
+    ).toBeInTheDocument();
+    act(() => {
+      fireEvent.click(screen.getByText('order.operator.onlineRegularly'));
+    });
+    await waitFor(() => {
+      jest.runOnlyPendingTimers();
+    });
+    expect(getBySelector('.ant-modal')).toBeInTheDocument();
+
+    fireEvent.mouseDown(
+      getBySelector('#schedule_time'),
+      getBySelector('.ant-modal')
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.click(
+      getBySelector('.ant-picker-now-btn'),
+      getBySelector('.ant-modal')
+    );
+    const execScheduleSubmit = getBySelector(
+      '.ant-btn-primary',
+      getBySelector('.ant-modal')
+    );
+    expect(execScheduleSubmit).toHaveTextContent(
+      'order.operator.onlineRegularly'
+    );
+    fireEvent.click(execScheduleSubmit);
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(execScheduleMock).toBeCalledTimes(1);
+    expect(execScheduleMock).toBeCalledWith(
+      moment().format('YYYY-MM-DDTHH:mm:ssZ').toString()
+    );
+    expect(execScheduleSubmit).toHaveClass('ant-btn-loading');
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(execScheduleSubmit).not.toHaveClass('ant-btn-loading');
+    expect(getBySelector('.ant-modal-wrap')).toHaveStyle('display: none');
+  });
+
+  test('should call executing func of props when click executing button', async () => {
+    const executingMock = jest
+      .fn()
+      .mockImplementation(() => resolveThreeSecond({}));
+    render(
+      <OrderSteps
+        currentStep={execScheduleSubmit3.record?.current_step_number}
+        stepList={execScheduleSubmit3.record?.workflow_step_list ?? []}
+        scheduleTime={execScheduleSubmit3.record?.schedule_time}
+        scheduledUser={execScheduleSubmit3.record?.schedule_user}
+        pass={jest.fn()}
+        reject={jest.fn()}
+        executing={executingMock}
+        execSchedule={jest.fn()}
+        modifySql={jest.fn()}
+        currentOrderStatus={execScheduleSubmit3.record?.status}
+      />
+    );
+    expect(screen.queryByText('order.operator.sqlExecute')).toBeInTheDocument();
+    fireEvent.click(screen.getByText('order.operator.sqlExecute'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(
+      screen.getByText('order.operator.sqlExecute').parentNode
+    ).toHaveClass('ant-btn-loading');
+    expect(executingMock).toBeCalledTimes(1);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.getByText('order.operator.sqlExecute').parentNode
+    ).not.toHaveClass('ant-btn-loading');
   });
 });

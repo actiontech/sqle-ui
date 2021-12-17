@@ -110,6 +110,58 @@ export const orderPass = {
   },
 } as IWorkflowResV1;
 
+export const orderWithExecScheduled = {
+  workflow_id: 13,
+  subject: 'testq',
+  create_user_name: 'admin',
+  create_time: '2021-12-16T20:06:10+08:00',
+  record: {
+    task_id: 16,
+    current_step_number: 2,
+    status: 'exec_scheduled',
+    schedule_time: '2021-12-16T20:09:55+08:00',
+    schedule_user: 'admin',
+    workflow_step_list: [
+      {
+        number: 1,
+        type: 'create_workflow',
+        operation_user_name: 'admin',
+        operation_time: '2021-12-16T20:06:10+08:00',
+      },
+      {
+        workflow_step_id: 27,
+        number: 2,
+        type: 'sql_execute',
+        assignee_user_name_list: ['admin'],
+        state: 'initialized',
+      },
+    ],
+  },
+} as IWorkflowResV1;
+
+export const orderWithExecuting = {
+  task_id: 16,
+  current_step_number: 2,
+  status: 'exec_scheduled',
+  schedule_time: '2021-12-16T20:09:55+08:00',
+  schedule_user: 'admin',
+  workflow_step_list: [
+    {
+      number: 1,
+      type: 'create_workflow',
+      operation_user_name: 'admin',
+      operation_time: '2021-12-16T20:06:10+08:00',
+    },
+    {
+      workflow_step_id: 27,
+      number: 2,
+      type: 'sql_execute',
+      assignee_user_name_list: ['admin'],
+      state: 'initialized',
+    },
+  ],
+} as IWorkflowResV1;
+
 export const order3 = {
   workflow_id: 1,
   subject: 'order123',
@@ -131,7 +183,6 @@ export const order3 = {
         number: 2,
         type: 'sql_review',
         assignee_user_name_list: ['admin'],
-        state: 'initialized',
       },
       {
         workflow_step_id: 22,
@@ -139,6 +190,42 @@ export const order3 = {
         type: 'sql_execute',
         assignee_user_name_list: ['admin', 'test'],
         state: 'initialized',
+      },
+    ],
+  },
+} as IWorkflowResV1;
+export const orderPass3 = {
+  workflow_id: 4,
+  subject: 'pass',
+  create_user_name: 'admin',
+  create_time: '2021-05-20T02:57:25Z',
+  record: {
+    task_id: 7,
+    status: 'finished',
+    workflow_step_list: [
+      {
+        number: 1,
+        type: 'create_workflow',
+        operation_user_name: 'admin',
+        operation_time: '2021-05-20T02:57:25Z',
+      },
+      {
+        workflow_step_id: 31,
+        number: 2,
+        type: 'sql_review',
+        assignee_user_name_list: ['admin'],
+        operation_user_name: 'admin',
+        operation_time: '2021-05-20T02:49:09Z',
+        state: 'approved',
+      },
+      {
+        workflow_step_id: 32,
+        number: 3,
+        type: 'sql_execute',
+        assignee_user_name_list: ['admin', 'test'],
+        operation_user_name: 'admin',
+        operation_time: '2021-05-20T02:57:31Z',
+        state: 'approved',
       },
     ],
   },
@@ -215,20 +302,95 @@ export const orderReject3 = {
   },
 } as IWorkflowResV1;
 
-export const orderPass3 = {
+export const orderWithExecScheduled3 = {
   workflow_id: 4,
-  subject: 'pass',
+  subject: 'execScheduled',
   create_user_name: 'admin',
-  create_time: '2021-05-20T02:57:25Z',
+  create_time: '2021-12-16T19:10:02+08:00',
   record: {
-    task_id: 7,
+    task_id: 6,
+    current_step_number: 3,
+    status: 'exec_scheduled',
+    schedule_time: '2021-12-18T19:16:59+08:00',
+    schedule_user: 'admin',
+    workflow_step_list: [
+      {
+        number: 1,
+        type: 'create_workflow',
+        operation_user_name: 'admin',
+        operation_time: '2021-12-16T19:10:02+08:00',
+      },
+      {
+        workflow_step_id: 11,
+        number: 2,
+        type: 'sql_review',
+        assignee_user_name_list: ['admin'],
+        operation_user_name: 'admin',
+        operation_time: '2021-12-16T19:16:56+08:00',
+        state: 'approved',
+      },
+      {
+        workflow_step_id: 12,
+        number: 3,
+        type: 'sql_execute',
+        assignee_user_name_list: ['admin', 'test'],
+        state: 'initialized',
+      },
+    ],
+  },
+} as IWorkflowResV1;
+
+export const orderWithExecuting3 = {
+  workflow_id: 5,
+  subject: 'test_executing3',
+  create_user_name: 'admin',
+  create_time: '2021-12-16T19:37:02+08:00',
+  record: {
+    task_id: 14,
     status: 'finished',
     workflow_step_list: [
       {
         number: 1,
         type: 'create_workflow',
         operation_user_name: 'admin',
-        operation_time: '2021-05-20T02:57:25Z',
+        operation_time: '2021-12-16T19:37:02+08:00',
+      },
+      {
+        workflow_step_id: 23,
+        number: 2,
+        type: 'sql_review',
+        assignee_user_name_list: ['admin'],
+        operation_user_name: 'admin',
+        operation_time: '2021-12-16T19:38:14+08:00',
+        state: 'approved',
+      },
+      {
+        workflow_step_id: 24,
+        number: 3,
+        type: 'sql_execute',
+        assignee_user_name_list: ['test'],
+        operation_user_name: 'test',
+        operation_time: '2021-12-16T19:38:25+08:00',
+        state: 'approved',
+      },
+    ],
+  },
+} as IWorkflowResV1;
+export const execScheduleSubmit3 = {
+  workflow_id: 17,
+  subject: 'testtt',
+  create_user_name: 'admin',
+  create_time: '2021-12-16T20:29:40+08:00',
+  record: {
+    task_id: 23,
+    current_step_number: 3,
+    status: 'on_process',
+    workflow_step_list: [
+      {
+        number: 1,
+        type: 'create_workflow',
+        operation_user_name: 'admin',
+        operation_time: '2021-12-16T20:29:40+08:00',
       },
       {
         workflow_step_id: 31,
@@ -236,17 +398,15 @@ export const orderPass3 = {
         type: 'sql_review',
         assignee_user_name_list: ['admin'],
         operation_user_name: 'admin',
-        operation_time: '2021-05-20T02:49:09Z',
+        operation_time: '2021-12-16T20:29:55+08:00',
         state: 'approved',
       },
       {
         workflow_step_id: 32,
         number: 3,
         type: 'sql_execute',
-        assignee_user_name_list: ['admin', 'test'],
-        operation_user_name: 'admin',
-        operation_time: '2021-05-20T02:57:31Z',
-        state: 'approved',
+        assignee_user_name_list: ['admin'],
+        state: 'initialized',
       },
     ],
   },

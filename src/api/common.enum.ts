@@ -65,33 +65,33 @@ export enum WorkflowDetailResV1CurrentStepTypeEnum {
 export enum WorkflowDetailResV1StatusEnum {
   'on_process' = 'on_process',
 
-  'finished' = 'finished',
-
   'rejected' = 'rejected',
 
-  'canceled' = 'canceled'
-}
+  'canceled' = 'canceled',
 
-export enum WorkflowDetailResV1TaskStatusEnum {
-  'initialized' = 'initialized',
-
-  'audited' = 'audited',
+  'exec_scheduled' = 'exec_scheduled',
 
   'executing' = 'executing',
 
-  'exec_succeeded' = 'exec_succeeded',
+  'exec_failed' = 'exec_failed',
 
-  'exec_failed' = 'exec_failed'
+  'finished' = 'finished'
 }
 
 export enum WorkflowRecordResV1StatusEnum {
   'on_process' = 'on_process',
 
-  'finished' = 'finished',
-
   'rejected' = 'rejected',
 
-  'canceled' = 'canceled'
+  'canceled' = 'canceled',
+
+  'exec_scheduled' = 'exec_scheduled',
+
+  'executing' = 'executing',
+
+  'exec_failed' = 'exec_failed',
+
+  'finished' = 'finished'
 }
 
 export enum WorkflowStepResV1StateEnum {

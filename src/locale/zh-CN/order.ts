@@ -30,6 +30,7 @@ export default {
     createTime: '创建时间',
     desc: '工单描述',
     status: '工单状态',
+    time: '定时时间',
     stepType: '当前步骤类型',
     sqlTaskStatus: 'Sql审核状态',
     instanceName: '数据源',
@@ -38,9 +39,12 @@ export default {
 
   status: {
     canceled: '已关闭',
-    finished: '已上线',
     process: '处理中',
     reject: '已驳回',
+    exec_scheduled: '定时上线',
+    executing: '正在上线',
+    exec_failed: '上线失败',
+    finished: '上线成功',
   },
 
   sqlTaskStatus: {
@@ -69,13 +73,24 @@ export default {
     alreadyClosed: '工单已被关闭',
     modifySql: '修改审核语句',
     waitModifySql: '等待用户{{username}}修改审核语句',
-    sqlExecute: '执行上线',
+    sqlExecute: '立即上线',
     sqlReview: '审核通过',
     unknown: '未知步骤',
 
     approveSuccessTips: '审批通过',
     rejectSuccessTips: '驳回成功',
     rejectReason: '驳回原因',
+    onlineRegularly: '定时上线',
+    scheduleTime: '定时时间',
+    cancelExecScheduled: '取消定时上线',
+    cancelExecScheduledTip: '确定取消定时上线吗？',
+    execScheduleTips: '定时上线设置成功',
+    scheduleExec: '工单由{{username}}设置了{{time}}定时上线 ',
+    executing: '工单由{{username}}立即上线',
+    startTime: '上线开始时间：{{startTime}}',
+    endTime: '上线结束时间：{{endTime}}',
+    status: '上线状态',
+    executingTips: '立即上线设置成功',
   },
 
   create: {
