@@ -131,7 +131,7 @@ const DatabaseFormItem: React.FC<{
       >
         <Input
           placeholder={t('common.form.placeholder.input', {
-            name: t('dataSource.dataSourceForm.ip'),
+            name: t('dataSource.dataSourceForm.ipTips'),
           })}
         />
       </Form.Item>
