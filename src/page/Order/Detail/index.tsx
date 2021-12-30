@@ -215,7 +215,9 @@ const Order = () => {
                   orderInfo?.record?.status ===
                     WorkflowRecordResV1StatusEnum.canceled ||
                   orderInfo?.record?.status ===
-                    WorkflowRecordResV1StatusEnum.finished
+                    WorkflowRecordResV1StatusEnum.finished ||
+                  orderInfo?.record?.status ===
+                    WorkflowRecordResV1StatusEnum.exec_failed
                 }
               >
                 {t('order.closeOrder.button')}
