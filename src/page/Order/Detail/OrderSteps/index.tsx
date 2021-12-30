@@ -113,11 +113,14 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
   const disabledDate = (current: moment.Moment) => {
     return current && current <= moment().startOf('day');
   };
-  const disabledDateTime = () => {
-    return {
-      disabledHours: () => range(0, 24).splice(0, moment().hour()),
-      disabledMinutes: () => range(0, 60).splice(0, moment().minutes()),
-    };
+  const disabledDateTime = (value: moment.MomentInput) => {
+    if (moment(value).format('YYYY-MM-DD') === moment().format('YYYY-MM-DD')) {
+      return {
+        disabledHours: () => range(0, 24).splice(0, moment().hour()),
+        disabledMinutes: () => range(0, 60).splice(0, moment().minutes()),
+      };
+    }
+    return {};
   };
 
   const execSchedule = (values: { schedule_time: moment.Moment }) => {
@@ -309,7 +312,6 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
               username: step.operation_user_name,
             });
           } else if (
-            //**对这个分支添加两个是别人看到定时上线和立即上线的情况下的分支**
             step.state === WorkflowStepResV1StateEnum.approved && //approved 审批通过状态
             step.type === WorkflowStepResV1TypeEnum.sql_execute && //sql执行类型
             props.scheduleTime
@@ -470,7 +472,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
               disabledDate={disabledDate}
               disabledTime={disabledDateTime}
               showTime
-              showNow={true}
+              showNow={false}
               data-testid="start-date"
             />
           </Form.Item>

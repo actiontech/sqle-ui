@@ -240,17 +240,20 @@ describe('Order/Detail/OrderSteps', () => {
       jest.runOnlyPendingTimers();
     });
     expect(getBySelector('.ant-modal')).toBeInTheDocument();
-
-    fireEvent.mouseDown(
-      getBySelector('#schedule_time'),
-      getBySelector('.ant-modal')
-    );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
+    fireEvent.mouseDown(getBySelector('#schedule_time'));
+    fireEvent.input(getBySelector('#schedule_time'), {
+      target: {
+        value: moment()
+          .add(1, 'd')
+          .hour(0)
+          .minute(0)
+          .second(0)
+          .format('YYYY-MM-DD HH:mm:ss')
+          .toString(),
+      },
     });
     fireEvent.click(
-      getBySelector('.ant-picker-now-btn'),
-      getBySelector('.ant-modal')
+      getBySelector('.ant-btn-primary', getBySelector('.ant-picker-footer'))
     );
     const execScheduleSubmit = getBySelector(
       '.ant-btn-primary',
@@ -259,13 +262,28 @@ describe('Order/Detail/OrderSteps', () => {
     expect(execScheduleSubmit).toHaveTextContent(
       'order.operator.onlineRegularly'
     );
+    expect(getBySelector('#schedule_time')).toHaveValue(
+      moment()
+        .add(1, 'd')
+        .hour(0)
+        .minute(0)
+        .second(0)
+        .format('YYYY-MM-DD HH:mm:ss')
+        .toString()
+    );
     fireEvent.click(execScheduleSubmit);
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
     expect(execScheduleMock).toBeCalledTimes(1);
     expect(execScheduleMock).toBeCalledWith(
-      moment().format('YYYY-MM-DDTHH:mm:ssZ').toString()
+      moment()
+        .add(1, 'd')
+        .hour(0)
+        .minute(0)
+        .second(0)
+        .format('YYYY-MM-DDTHH:mm:ssZ')
+        .toString()
     );
     expect(execScheduleSubmit).toHaveClass('ant-btn-loading');
     await waitFor(() => {
