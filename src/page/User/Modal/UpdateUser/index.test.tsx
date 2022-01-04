@@ -120,4 +120,41 @@ describe('User/Modal/AddUser', () => {
       'disabled'
     );
   });
+
+  test('should send update user request when the username is any value', async () => {
+    userRoleSpy.mockClear();
+    mockUseSelector({
+      userManage: {
+        modalStatus: { [ModalName.Update_User]: true },
+        selectUser: {
+          user_name: 'san.zhang',
+          email: 'user@123.com',
+          role_name_list: ['role_name1'],
+        },
+      },
+    });
+    render(<UpdateUser />);
+    expect(userRoleSpy).toBeCalledTimes(1);
+
+    const updateUserSpy = jest.spyOn(user, 'updateUserV1');
+    updateUserSpy.mockImplementation(() => resolveThreeSecond({}));
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.getByLabelText('user.userForm.username')).toHaveValue(
+      'san.zhang'
+    );
+
+    fireEvent.click(screen.getByText('common.submit'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(userRoleSpy).toBeCalledTimes(1);
+    expect(updateUserSpy).toBeCalledWith({
+      email: 'user@123.com',
+      user_name: 'san.zhang',
+      role_name_list: ['role_name1'],
+    });
+  });
 });

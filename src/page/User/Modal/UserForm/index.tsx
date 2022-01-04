@@ -5,9 +5,25 @@ import { useTranslation } from 'react-i18next';
 import { ModalFormLayout } from '../../../../data/common';
 import EmptyBox from '../../../../components/EmptyBox';
 import { nameRule } from '../../../../utils/FormRule';
+import { Rule } from 'antd/lib/form';
 
 const UserForm: React.FC<IUserFormProps> = (props) => {
   const { t } = useTranslation();
+
+  const userNameRules = (): Rule[] => {
+    const baseRules = [
+      {
+        required: true,
+        message: t('common.form.rule.require', {
+          name: t('user.userForm.username'),
+        }),
+      },
+    ];
+    if (props.isUpdate) {
+      return baseRules;
+    }
+    return [...baseRules, ...nameRule()];
+  };
 
   return (
     <Form form={props.form} {...ModalFormLayout}>
@@ -15,15 +31,7 @@ const UserForm: React.FC<IUserFormProps> = (props) => {
         name="username"
         label={t('user.userForm.username')}
         validateFirst={true}
-        rules={[
-          {
-            required: true,
-            message: t('common.form.rule.require', {
-              name: t('user.userForm.username'),
-            }),
-          },
-          ...nameRule(),
-        ]}
+        rules={userNameRules()}
       >
         <Input
           disabled={props.isUpdate}
