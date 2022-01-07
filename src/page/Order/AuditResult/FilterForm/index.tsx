@@ -75,7 +75,7 @@ const FilterForm: React.FC<FilterFormProps> = (props) => {
           </Form.Item>
         </Col>
         <Col
-          {...filterFormButtonLayoutFactory(12, 0, 6)}
+          {...filterFormButtonLayoutFactory(12, 16, 0)}
           className="text-align-right"
         >
           <Form.Item wrapperCol={{ span: 24 }}>
