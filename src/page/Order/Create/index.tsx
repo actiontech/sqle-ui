@@ -169,7 +169,7 @@ const CreateOrder = () => {
               taskId={taskInfo?.task_id}
               passRate={taskInfo?.pass_rate}
               instanceName={taskInfo?.instance_name}
-              setCreateOrderDisabled={setCreateOrderDisabled}
+              setOperatorOrderBtnDisabled={setCreateOrderDisabled}
             />
           </EmptyBox>
           <Card className="text-align-right">

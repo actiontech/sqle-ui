@@ -132,7 +132,7 @@ describe('Order/Detail/AuditResult', () => {
       <AuditResult
         taskId={9999}
         passRate={0.33}
-        setCreateOrderDisabled={mockSetCreateOrderDisabled}
+        setOperatorOrderBtnDisabled={mockSetCreateOrderDisabled}
       />
     );
     expect(getTaskSqlSpy).toBeCalledTimes(1);
@@ -153,7 +153,7 @@ describe('Order/Detail/AuditResult', () => {
         taskId={9999}
         passRate={0.33}
         instanceName={instance_name}
-        setCreateOrderDisabled={mockSetCreateOrderDisabled}
+        setOperatorOrderBtnDisabled={mockSetCreateOrderDisabled}
       />
     );
     expect(getTaskSqlSpy).toBeCalledTimes(1);

@@ -114,6 +114,9 @@ const Order = () => {
     closeModifySqlModal,
     modifySqlSubmit,
     resetAllState,
+    updateOrderDisabled,
+    setUpdateOrderBtnDisabled,
+    instanceName,
   } = useModifySql();
 
   const [
@@ -286,6 +289,7 @@ const Order = () => {
                   title={t('order.modifySql.updateOrderConfirmTips')}
                   onConfirm={updateOrderSql}
                   disabled={updateLoading}
+                  okButtonProps={{ disabled: updateOrderDisabled }}
                 >
                   <Button type="primary" loading={updateLoading}>
                     {t('order.modifySql.updateOrder')}
@@ -304,7 +308,12 @@ const Order = () => {
             </Card>
           </EmptyBox>
           <EmptyBox if={!!tempTaskId}>
-            <AuditResult taskId={tempTaskId} passRate={tempPassRate} />
+            <AuditResult
+              taskId={tempTaskId}
+              passRate={tempPassRate}
+              instanceName={instanceName}
+              setOperatorOrderBtnDisabled={setUpdateOrderBtnDisabled}
+            />
           </EmptyBox>
         </Space>
         <ModifySqlModal

@@ -118,7 +118,7 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
         if (props.instanceName) {
           getInstanceWorkflowTemplate().then((currentLevel) => {
             isExistNotAllowLevel(tableData?.list, currentLevel) &&
-              props.setCreateOrderDisabled?.();
+              props.setOperatorOrderBtnDisabled?.();
           });
         }
       });

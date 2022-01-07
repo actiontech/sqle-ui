@@ -370,7 +370,7 @@ exports[`Order/Detail/AuditResult should get instance workflow when pass task id
             </div>
           </div>
           <div
-            class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-0 ant-col-xxl-6 ant-col-xxl-offset-6"
+            class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-0"
             style="padding-left: 12px; padding-right: 12px;"
           >
             <div
@@ -1734,7 +1734,7 @@ exports[`Order/Detail/AuditResult should get instance workflow when pass task id
             </div>
           </div>
           <div
-            class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-0 ant-col-xxl-6 ant-col-xxl-offset-6"
+            class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-0"
             style="padding-left: 12px; padding-right: 12px;"
           >
             <div
@@ -3076,7 +3076,7 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
             </div>
           </div>
           <div
-            class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-0 ant-col-xxl-6 ant-col-xxl-offset-6"
+            class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-0"
             style="padding-left: 12px; padding-right: 12px;"
           >
             <div
@@ -3653,7 +3653,7 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
             </div>
           </div>
           <div
-            class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-0 ant-col-xxl-6 ant-col-xxl-offset-6"
+            class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-0"
             style="padding-left: 12px; padding-right: 12px;"
           >
             <div

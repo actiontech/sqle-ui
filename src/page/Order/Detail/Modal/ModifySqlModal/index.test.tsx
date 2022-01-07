@@ -36,7 +36,11 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
   const mockCreateTask = () => {
     const spy = jest.spyOn(task, 'createAndAuditTaskV1');
     spy.mockImplementation(() =>
-      resolveThreeSecond({ task_id: 9999, pass_rate: 0.33 })
+      resolveThreeSecond({
+        task_id: 9999,
+        pass_rate: 0.33,
+        instance_name: 'test',
+      })
     );
     return spy;
   };
@@ -188,6 +192,6 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
       'ant-btn-loading'
     );
     expect(propsSubmit).toBeCalledTimes(1);
-    expect(propsSubmit).toBeCalledWith(9999, 0.33);
+    expect(propsSubmit).toBeCalledWith(9999, 0.33, 'test');
   });
 });

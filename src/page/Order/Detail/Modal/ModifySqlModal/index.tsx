@@ -36,8 +36,12 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = (props) => {
       .createAndAuditTaskV1(params)
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
-          const { task_id = 0, pass_rate = 0 } = res.data.data ?? {};
-          props.submit(task_id, pass_rate);
+          const {
+            task_id = 0,
+            pass_rate = 0,
+            instance_name,
+          } = res.data.data ?? {};
+          props.submit(task_id, pass_rate, instance_name);
         }
       })
       .finally(() => {

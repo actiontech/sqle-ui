@@ -2,7 +2,7 @@ import { IAuditTaskResV1 } from '../../../../../api/common.d';
 
 export type ModifySqlModalProps = {
   cancel: () => void;
-  submit: (taskId: number, passRate: number) => void;
+  submit: (taskId: number, passRate: number, instanceName?: string) => void;
   visible: boolean;
   currentOrderTask?: IAuditTaskResV1;
 };
