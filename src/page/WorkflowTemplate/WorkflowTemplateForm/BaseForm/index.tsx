@@ -9,10 +9,12 @@ import useInstance from '../../../../hooks/useInstance';
 import EventEmitter from '../../../../utils/EventEmitter';
 import { nameRule } from '../../../../utils/FormRule';
 import { BaseFormFields, BaseFormProps } from './index.type';
+import useStaticStatus from '../../../../hooks/useStaticStatus';
 
 const BaseForm: React.FC<BaseFormProps> = (props) => {
   const { t } = useTranslation();
   const [form] = useForm<BaseFormFields>();
+  const { getAuditLevelStatusSelectOption } = useStaticStatus();
 
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
 
@@ -115,13 +117,7 @@ const BaseForm: React.FC<BaseFormProps> = (props) => {
             ),
           })}
         >
-          {Object.keys(
-            CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
-          ).map((v) => (
-            <Select.Option key={v} value={v}>
-              {v}
-            </Select.Option>
-          ))}
+          {getAuditLevelStatusSelectOption()}
         </Select>
       </Form.Item>
       <Form.Item

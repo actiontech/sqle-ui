@@ -108,4 +108,11 @@ export default {
       rule5: '单个步骤至少需要添加一个指定人，最多只能添加三个指定人',
     },
   },
+
+  auditLevel: {
+    normal: '普通',
+    error: '错误',
+    warn: '告警',
+    notice: '提示',
+  },
 };

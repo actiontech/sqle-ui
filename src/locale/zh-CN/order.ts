@@ -91,6 +91,8 @@ export default {
     endTime: '上线结束时间：{{endTime}}',
     status: '上线状态',
     executingTips: '立即上线设置成功',
+    disabledOperatorOrderBtnTips:
+      '为当前数据源创建工单时最高只能允许有 {{allowAuditLevel}} 等级的审核错误。但是当前审核结果中最高包含 {{currentAuditLevel}} 等级的审核结果。',
   },
 
   create: {

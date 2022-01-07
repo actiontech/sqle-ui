@@ -9,13 +9,17 @@ import {
   getWorkflowListV1FilterCurrentStepTypeEnum,
   getWorkflowListV1FilterStatusEnum,
 } from '../../api/workflow/index.enum';
-import { RuleResV1LevelEnum } from '../../api/common.enum';
+import {
+  CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
+  RuleResV1LevelEnum,
+} from '../../api/common.enum';
 import {
   auditStatusDictionary,
   execStatusDictionary,
   orderStatusDictionary,
   WorkflowStepTypeDictionary,
   ruleLevelDictionary,
+  auditLevelDictionary,
 } from './index.data';
 
 const useStaticStatus = () => {
@@ -274,6 +278,71 @@ const useStaticStatus = () => {
     );
   }, [t]);
 
+  const getAuditLevelStatusSelectOption = React.useCallback(() => {
+    return (
+      <>
+        <Select.Option
+          value={
+            CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal
+          }
+          key={
+            CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal
+          }
+        >
+          {t(
+            auditLevelDictionary[
+              CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
+                .normal
+            ]
+          )}
+        </Select.Option>
+        <Select.Option
+          value={
+            CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.notice
+          }
+          key={
+            CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.notice
+          }
+        >
+          {t(
+            auditLevelDictionary[
+              CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
+                .notice
+            ]
+          )}
+        </Select.Option>
+        <Select.Option
+          value={
+            CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.warn
+          }
+          key={
+            CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.warn
+          }
+        >
+          {t(
+            auditLevelDictionary[
+              CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.warn
+            ]
+          )}
+        </Select.Option>
+        <Select.Option
+          value={
+            CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.error
+          }
+          key={
+            CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.error
+          }
+        >
+          {t(
+            auditLevelDictionary[
+              CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.error
+            ]
+          )}
+        </Select.Option>
+      </>
+    );
+  }, [t]);
+
   return {
     generateAuditStatusSelectOption,
     generateExecStatusSelectOption,
@@ -281,6 +350,7 @@ const useStaticStatus = () => {
     generateOrderStatusSelectOption,
     // generateSqlTaskStatusSelectOption,
     getRuleLevelStatusSelectOption,
+    getAuditLevelStatusSelectOption,
   };
 };
 

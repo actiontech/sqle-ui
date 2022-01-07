@@ -287,9 +287,9 @@ exports[`CreateWorkflowTemplate should match snapshot 1`] = `
                           </span>
                           <span
                             class="ant-select-selection-item"
-                            title="warn"
+                            title="workflowTemplate.auditLevel.warn"
                           >
-                            warn
+                            workflowTemplate.auditLevel.warn
                           </span>
                         </div>
                         <span

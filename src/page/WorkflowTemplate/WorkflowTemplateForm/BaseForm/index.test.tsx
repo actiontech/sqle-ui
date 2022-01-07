@@ -110,7 +110,7 @@ describe('WorkflowTemplateForm', () => {
       jest.advanceTimersByTime(0);
     });
     const levelOptions = screen.getAllByText(
-      WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.error
+      'workflowTemplate.auditLevel.warn'
     );
     const level = levelOptions[1];
     expect(level).toHaveClass('ant-select-item-option-content');
@@ -135,7 +135,7 @@ describe('WorkflowTemplateForm', () => {
       name: 'name1',
       desc: 'desc',
       allowSubmitWhenLessAuditLevel:
-        WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.error,
+        WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.warn,
       instanceNameList: ['instance1'],
     });
   });

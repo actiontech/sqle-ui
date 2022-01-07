@@ -15,7 +15,6 @@ describe('Order/useModifySql', () => {
     expect(result.current.visible).toBe(false);
     expect(result.current.tempTaskId).toBe(undefined);
     expect(result.current.tempPassRate).toBe(undefined);
-    expect(result.current.instanceName).toBe(undefined);
     expect(result.current.updateOrderDisabled).toBeFalsy();
   });
 
@@ -42,14 +41,12 @@ describe('Order/useModifySql', () => {
     expect(result.current.visible).toBe(true);
     expect(result.current.tempTaskId).toBe(undefined);
     expect(result.current.tempPassRate).toBe(undefined);
-    expect(result.current.instanceName).toBe(undefined);
     act(() => {
       result.current.modifySqlSubmit(111, 222, 'test');
     });
 
     expect(result.current.tempTaskId).toBe(111);
     expect(result.current.tempPassRate).toBe(222);
-    expect(result.current.instanceName).toBe('test');
     expect(result.current.visible).toBe(false);
   });
 
@@ -62,7 +59,6 @@ describe('Order/useModifySql', () => {
     });
     expect(result.current.tempTaskId).toBe(111);
     expect(result.current.tempPassRate).toBe(222);
-    expect(result.current.instanceName).toBe('test');
     expect(result.current.visible).toBe(true);
     act(() => {
       result.current.resetAllState();
@@ -70,6 +66,5 @@ describe('Order/useModifySql', () => {
     expect(result.current.visible).toBe(false);
     expect(result.current.tempTaskId).toBe(undefined);
     expect(result.current.tempPassRate).toBe(undefined);
-    expect(result.current.instanceName).toBe(undefined);
   });
 });

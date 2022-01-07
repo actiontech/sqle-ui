@@ -1,7 +1,10 @@
 import { cleanup, fireEvent, screen, waitFor } from '@testing-library/react';
 import { cloneDeep } from 'lodash';
 import ModifySqlModal from '.';
-import { AuditTaskResV1SqlSourceEnum } from '../../../../../api/common.enum';
+import {
+  AuditTaskResV1SqlSourceEnum,
+  CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
+} from '../../../../../api/common.enum';
 import task from '../../../../../api/task';
 import { renderWithTheme } from '../../../../../testUtils/customRender';
 import {
@@ -40,6 +43,8 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
         task_id: 9999,
         pass_rate: 0.33,
         instance_name: 'test',
+        audit_level:
+          CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.warn,
       })
     );
     return spy;
@@ -192,6 +197,11 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
       'ant-btn-loading'
     );
     expect(propsSubmit).toBeCalledTimes(1);
-    expect(propsSubmit).toBeCalledWith(9999, 0.33, 'test');
+    expect(propsSubmit).toBeCalledWith(
+      9999,
+      0.33,
+      'test',
+      CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.warn
+    );
   });
 });

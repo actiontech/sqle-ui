@@ -11,13 +11,17 @@ import {
   Popconfirm,
   Result,
   Space,
+  Tooltip,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { IAuditTaskResV1 } from '../../../api/common';
-import { AuditTaskResV1SqlSourceEnum } from '../../../api/common.enum';
+import {
+  AuditTaskResV1SqlSourceEnum,
+  CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
+} from '../../../api/common.enum';
 import task from '../../../api/task';
 import workflow from '../../../api/workflow';
 import EmptyBox from '../../../components/EmptyBox';
@@ -27,6 +31,7 @@ import { Theme } from '../../../types/theme.type';
 import EventEmitter from '../../../utils/EventEmitter';
 import { nameRule } from '../../../utils/FormRule';
 import AuditResult from '../AuditResult';
+import { useAllowAuditLevel } from '../hooks/useAllowAuditLevel';
 import SqlInfoForm from './SqlInfoForm';
 import { SqlInfoFormFields } from './SqlInfoForm/index.type';
 
@@ -47,18 +52,36 @@ const CreateOrder = () => {
     { setTrue: setCreateOrderDisabled, setFalse: resetCreateOrderBtnStatus },
   ] = useBoolean(false);
 
-  const auditSql = React.useCallback(async (values: SqlInfoFormFields) => {
-    const res = await task.createAndAuditTaskV1({
-      instance_name: values.instanceName,
-      instance_schema: values.instanceSchema,
-      sql: values.sql,
-      input_sql_file: values.sqlFile?.[0],
-      input_mybatis_xml_file: values.mybatisFile?.[0],
-    });
-    if (res.data.code === ResponseCode.SUCCESS) {
-      setTaskInfo(res.data.data);
-    }
-  }, []);
+  const {
+    disabledOperatorOrderBtnTips,
+    judgeAuditLevel,
+    setDisabledOperatorOrderBtnTips,
+  } = useAllowAuditLevel();
+
+  const auditSql = React.useCallback(
+    async (values: SqlInfoFormFields) => {
+      const res = await task.createAndAuditTaskV1({
+        instance_name: values.instanceName,
+        instance_schema: values.instanceSchema,
+        sql: values.sql,
+        input_sql_file: values.sqlFile?.[0],
+        input_mybatis_xml_file: values.mybatisFile?.[0],
+      });
+      if (res.data.code === ResponseCode.SUCCESS) {
+        setTaskInfo(res.data.data);
+        if (res.data.data?.instance_name) {
+          judgeAuditLevel(
+            res.data.data.instance_name,
+            setCreateOrderDisabled,
+            res.data.data.audit_level as
+              | CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
+              | undefined
+          );
+        }
+      }
+    },
+    [judgeAuditLevel, setCreateOrderDisabled]
+  );
 
   const create = React.useCallback(async () => {
     try {
@@ -114,8 +137,15 @@ const CreateOrder = () => {
     closeModal();
     resetAllForm();
     resetCreateOrderBtnStatus();
-  }, [closeModal, resetAllForm, resetCreateOrderBtnStatus]);
+    setDisabledOperatorOrderBtnTips('');
+  }, [
+    closeModal,
+    resetAllForm,
+    resetCreateOrderBtnStatus,
+    setDisabledOperatorOrderBtnTips,
+  ]);
 
+  // const disabledOperatorOrderBtnTips =
   return (
     <>
       <PageHeader title={t('order.baseInfo.title')} ghost={false}>
@@ -168,8 +198,6 @@ const CreateOrder = () => {
             <AuditResult
               taskId={taskInfo?.task_id}
               passRate={taskInfo?.pass_rate}
-              instanceName={taskInfo?.instance_name}
-              setOperatorOrderBtnDisabled={setCreateOrderDisabled}
             />
           </EmptyBox>
           <Card className="text-align-right">
@@ -180,15 +208,21 @@ const CreateOrder = () => {
               <EmptyBox
                 if={hasDirtyData}
                 defaultNode={
-                  <Button
-                    htmlType="submit"
-                    type="primary"
-                    onClick={create}
-                    disabled={isCreateOrderDisabled}
-                    loading={createLoading}
+                  <Tooltip
+                    title={
+                      isCreateOrderDisabled ? disabledOperatorOrderBtnTips : ''
+                    }
                   >
-                    {t('order.createOrder.title')}
-                  </Button>
+                    <Button
+                      htmlType="submit"
+                      type="primary"
+                      onClick={create}
+                      disabled={isCreateOrderDisabled}
+                      loading={createLoading}
+                    >
+                      {t('order.createOrder.title')}
+                    </Button>
+                  </Tooltip>
                 }
               >
                 <Popconfirm
@@ -198,13 +232,20 @@ const CreateOrder = () => {
                   disabled={createLoading}
                   placement="topRight"
                 >
-                  <Button
-                    htmlType="submit"
-                    type="primary"
-                    loading={createLoading}
+                  <Tooltip
+                    title={
+                      isCreateOrderDisabled ? disabledOperatorOrderBtnTips : ''
+                    }
                   >
-                    {t('order.createOrder.title')}
-                  </Button>
+                    <Button
+                      htmlType="submit"
+                      type="primary"
+                      loading={createLoading}
+                      disabled={isCreateOrderDisabled}
+                    >
+                      {t('order.createOrder.title')}
+                    </Button>
+                  </Tooltip>
                 </Popconfirm>
               </EmptyBox>
             </Space>
