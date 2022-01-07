@@ -70,6 +70,7 @@ export default {
     label: {
       name: '审批流程模版名称',
       desc: '审批流程模版描述',
+      allowSubmitWhenLessAuditLevel: '允许创建工单的最高审核等级',
       instanceNameList: '应用的数据源',
       reviewUser: '审核人',
       reviewDesc: '步骤描述',
@@ -106,5 +107,12 @@ export default {
         '单个流程模版也可以移除所有审核步骤，即工单创建之后即可点击执行上线',
       rule5: '单个步骤至少需要添加一个指定人，最多只能添加三个指定人',
     },
+  },
+
+  auditLevel: {
+    normal: '普通',
+    error: '错误',
+    warn: '告警',
+    notice: '提示',
   },
 };

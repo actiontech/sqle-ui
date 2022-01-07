@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import BaseForm from '.';
+import { WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum } from '../../../../api/common.enum';
 import { mockUseInstance } from '../../../../testUtils/mockRequest';
 
 describe('WorkflowTemplateForm', () => {
@@ -69,6 +70,8 @@ describe('WorkflowTemplateForm', () => {
         defaultData={{
           workflow_template_name: 'name1',
           desc: 'desc1',
+          allow_submit_when_less_audit_level:
+            WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.notice,
           instance_name_list: ['instance1'],
         }}
       />
@@ -99,6 +102,21 @@ describe('WorkflowTemplateForm', () => {
     });
 
     fireEvent.mouseDown(
+      screen.getByLabelText(
+        'workflowTemplate.form.label.allowSubmitWhenLessAuditLevel'
+      )
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const levelOptions = screen.getAllByText(
+      'workflowTemplate.auditLevel.warn'
+    );
+    const level = levelOptions[1];
+    expect(level).toHaveClass('ant-select-item-option-content');
+    fireEvent.click(level);
+
+    fireEvent.mouseDown(
       screen.getByLabelText('workflowTemplate.form.label.instanceNameList')
     );
     await waitFor(() => {
@@ -116,6 +134,8 @@ describe('WorkflowTemplateForm', () => {
     expect(updateBaseInfoFn).toBeCalledWith({
       name: 'name1',
       desc: 'desc',
+      allowSubmitWhenLessAuditLevel:
+        WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.warn,
       instanceNameList: ['instance1'],
     });
   });

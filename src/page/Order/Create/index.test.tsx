@@ -1,5 +1,6 @@
 import { fireEvent, waitFor, screen } from '@testing-library/react';
 import CreateOrder from '.';
+import instance from '../../../api/instance';
 import task from '../../../api/task';
 import workflow from '../../../api/workflow';
 import EmitterKey from '../../../data/EmitterKey';
@@ -14,7 +15,11 @@ import {
 } from '../../../testUtils/mockRequest';
 import { SupportTheme } from '../../../theme';
 import EventEmitter from '../../../utils/EventEmitter';
-import { taskInfo, taskSqls } from '../Detail/__testData__';
+import {
+  instanceWorkflowTemplate,
+  taskInfo,
+  taskSqls,
+} from '../Detail/__testData__';
 
 describe('Order/Create', () => {
   beforeEach(() => {
@@ -50,6 +55,12 @@ describe('Order/Create', () => {
     return spy;
   };
 
+  const mockGetInstanceWorkflowTemplate = () => {
+    const spy = jest.spyOn(instance, 'getInstanceWorkflowTemplateV1');
+    spy.mockImplementation(() => resolveThreeSecond(instanceWorkflowTemplate));
+    return spy;
+  };
+
   test('should render page header', async () => {
     const { baseElement } = renderWithThemeAndRouter(<CreateOrder />);
     expect(baseElement).toMatchSnapshot();
@@ -57,6 +68,7 @@ describe('Order/Create', () => {
 
   test('should audit sql when user click audit button', async () => {
     const createTaskSpy = mockCreateTask();
+    const getInstanceWorkflow = mockGetInstanceWorkflowTemplate();
     mockGetTaskSql();
     const { container } = renderWithThemeAndRouter(<CreateOrder />);
     await waitFor(() => {
@@ -104,6 +116,7 @@ describe('Order/Create', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    expect(getInstanceWorkflow).toBeCalledTimes(1);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -112,6 +125,7 @@ describe('Order/Create', () => {
 
   test('should create order when user input all require fields', async () => {
     mockCreateTask();
+    mockGetInstanceWorkflowTemplate();
     mockGetTaskSql();
     const createOrderSpy = mockCreateOrder();
     renderWithThemeAndRouter(<CreateOrder />);
@@ -206,6 +220,7 @@ describe('Order/Create', () => {
 
   test('should show tips of unsave sql when form have dirty data at click create order', async () => {
     mockCreateTask();
+    mockGetInstanceWorkflowTemplate();
     mockGetTaskSql();
     renderWithThemeAndRouter(<CreateOrder />);
     await waitFor(() => {

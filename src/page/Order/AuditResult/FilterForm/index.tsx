@@ -13,8 +13,11 @@ import { FilterFormProps, OrderAuditResultFilterFields } from './index.type';
 const FilterForm: React.FC<FilterFormProps> = (props) => {
   const { t } = useTranslation();
 
-  const { generateAuditStatusSelectOption, generateExecStatusSelectOption } =
-    useStaticStatus();
+  const {
+    generateAuditStatusSelectOption,
+    generateExecStatusSelectOption,
+    getAuditLevelStatusSelectOption,
+  } = useStaticStatus();
 
   return (
     <Form<OrderAuditResultFilterFields> {...FilterFormLayout} form={props.form}>
@@ -51,8 +54,24 @@ const FilterForm: React.FC<FilterFormProps> = (props) => {
             </Select>
           </Form.Item>
         </Col>
+        <Col {...FilterFormColLayout}>
+          <Form.Item
+            name="filter_audit_level"
+            label={t('audit.table.auditResult')}
+          >
+            <Select
+              showSearch
+              allowClear
+              placeholder={t('common.form.placeholder.searchSelect', {
+                name: t('audit.table.auditResult'),
+              })}
+            >
+              {getAuditLevelStatusSelectOption()}
+            </Select>
+          </Form.Item>
+        </Col>
         <Col
-          {...filterFormButtonLayoutFactory(12, 0, 6)}
+          {...filterFormButtonLayoutFactory(12, 16, 0)}
           className="text-align-right"
         >
           <Form.Item wrapperCol={{ span: 24 }}>

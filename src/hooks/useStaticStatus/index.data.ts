@@ -7,7 +7,10 @@ import {
   getWorkflowListV1FilterStatusEnum,
 } from '../../api/workflow/index.enum';
 import { StaticEnumDictionary } from './index.type';
-import { RuleResV1LevelEnum } from '../../api/common.enum';
+import {
+  CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
+  RuleResV1LevelEnum,
+} from '../../api/common.enum';
 
 export const WorkflowStepTypeDictionary: StaticEnumDictionary<getWorkflowListV1FilterCurrentStepTypeEnum> =
   {
@@ -54,3 +57,15 @@ export const ruleLevelDictionary: StaticEnumDictionary<RuleResV1LevelEnum> = {
   [RuleResV1LevelEnum.warn]: 'ruleTemplate.ruleLevel.warn',
   [RuleResV1LevelEnum.error]: 'ruleTemplate.ruleLevel.error',
 };
+
+export const auditLevelDictionary: StaticEnumDictionary<CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum> =
+  {
+    [CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal]:
+      'workflowTemplate.auditLevel.normal',
+    [CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.notice]:
+      'workflowTemplate.auditLevel.notice',
+    [CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.warn]:
+      'workflowTemplate.auditLevel.warn',
+    [CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.error]:
+      'workflowTemplate.auditLevel.error',
+  };

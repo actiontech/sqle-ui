@@ -10,6 +10,7 @@ import {
   orderCancel,
   orderReject,
   orderPass,
+  instanceWorkflowTemplate,
 } from './__testData__';
 import { waitFor, screen, fireEvent } from '@testing-library/react';
 import { useParams } from 'react-router';
@@ -21,6 +22,7 @@ import {
   getBySelector,
 } from '../../../testUtils/customQuery';
 import { SupportTheme } from '../../../theme';
+import instance from '../../../api/instance';
 
 jest.mock('react-router', () => {
   return {
@@ -36,6 +38,7 @@ describe('Order/Detail', () => {
     useParamsMock.mockReturnValue({ orderId: '1' });
     mockUseSelector({ user: { username: 'admin', theme: SupportTheme.LIGHT } });
     mockUseDispatch();
+    mockGetInstanceWorkflowTemplate();
     jest.useFakeTimers();
   });
 
@@ -43,6 +46,12 @@ describe('Order/Detail', () => {
     jest.useRealTimers();
     jest.clearAllTimers();
   });
+
+  const mockGetInstanceWorkflowTemplate = () => {
+    const spy = jest.spyOn(instance, 'getInstanceWorkflowTemplateV1');
+    spy.mockImplementation(() => resolveThreeSecond(instanceWorkflowTemplate));
+    return spy;
+  };
 
   const mockGetWorkflow = () => {
     const spy = jest.spyOn(workflow, 'getWorkflowV1');

@@ -1,4 +1,9 @@
-import { IAuditTaskResV1, IWorkflowResV1 } from '../../../../api/common';
+import {
+  IAuditTaskResV1,
+  IWorkflowResV1,
+  IWorkflowTemplateDetailResV1,
+} from '../../../../api/common';
+import { WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum } from '../../../../api/common.enum';
 
 export const order = {
   workflow_id: 1,
@@ -515,3 +520,11 @@ export const taskSqls = [
     exec_status: 'initialized',
   },
 ];
+
+export const instanceWorkflowTemplate: IWorkflowTemplateDetailResV1 = {
+  allow_submit_when_less_audit_level:
+    WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.warn,
+  desc: 'mock test data',
+  instance_name_list: ['test'],
+  workflow_template_name: 'test',
+};

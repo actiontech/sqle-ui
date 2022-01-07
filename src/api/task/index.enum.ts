@@ -17,3 +17,13 @@ export enum getAuditTaskSQLsV1FilterAuditStatusEnum {
 
   'finished' = 'finished'
 }
+
+export enum getAuditTaskSQLsV1FilterAuditLevelEnum {
+  'normal' = 'normal',
+
+  'notice' = 'notice',
+
+  'warn' = 'warn',
+
+  'error' = 'error'
+}

@@ -1,5 +1,6 @@
 import { act, fireEvent, screen, waitFor } from '@testing-library/react';
 import WorkflowTemplateForm from '.';
+import { CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum } from '../../../api/common.enum';
 import EmitterKey from '../../../data/EmitterKey';
 import { getBySelector } from '../../../testUtils/customQuery';
 import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
@@ -57,7 +58,11 @@ describe('WorkflowTemplateForm', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
-    expect(updateBaseInfoMock).toBeCalledWith({ name: 'name1' });
+    expect(updateBaseInfoMock).toBeCalledWith({
+      name: 'name1',
+      allowSubmitWhenLessAuditLevel:
+        CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.warn,
+    });
     expect(screen.getByTestId('base-form')).toHaveAttribute('hidden');
     expect(screen.getByTestId('progress-config')).not.toHaveAttribute('hidden');
     expect(screen.getByTestId('submit-result')).toHaveAttribute('hidden');
