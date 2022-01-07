@@ -42,8 +42,10 @@ const CreateOrder = () => {
   const [taskInfo, setTaskInfo] = React.useState<IAuditTaskResV1 | undefined>(
     undefined
   );
-  const [isCreateOrderDisabled, { setTrue: setCreateOrderDisabled }] =
-    useBoolean(false);
+  const [
+    isCreateOrderDisabled,
+    { setTrue: setCreateOrderDisabled, setFalse: resetCreateOrderBtnStatus },
+  ] = useBoolean(false);
 
   const auditSql = React.useCallback(async (values: SqlInfoFormFields) => {
     const res = await task.createAndAuditTaskV1({
@@ -111,7 +113,8 @@ const CreateOrder = () => {
   const closeModalAndResetForm = React.useCallback(() => {
     closeModal();
     resetAllForm();
-  }, [closeModal, resetAllForm]);
+    resetCreateOrderBtnStatus();
+  }, [closeModal, resetAllForm, resetCreateOrderBtnStatus]);
 
   return (
     <>
