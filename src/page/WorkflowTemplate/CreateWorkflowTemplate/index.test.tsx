@@ -1,6 +1,9 @@
 import { shallow } from 'enzyme';
 import CreateWorkflowTemplate from '.';
-import { WorkFlowStepTemplateReqV1TypeEnum } from '../../../api/common.enum';
+import {
+  CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
+  WorkFlowStepTemplateReqV1TypeEnum,
+} from '../../../api/common.enum';
 import workflow from '../../../api/workflow';
 import EmitterKey from '../../../data/EmitterKey';
 import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
@@ -41,6 +44,8 @@ describe('CreateWorkflowTemplate', () => {
     formWrapper.prop<Function>('updateBaseInfo')({
       name: 'name1',
       desc: 'desc1',
+      allowSubmitWhenLessAuditLevel:
+        CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal,
       instanceNameList: ['instanceList1'],
     });
     formWrapper.prop<Function>('submitProgress')([
@@ -63,6 +68,8 @@ describe('CreateWorkflowTemplate', () => {
     expect(createSpy).toBeCalledWith({
       workflow_template_name: 'name1',
       desc: 'desc1',
+      allow_submit_when_less_audit_level:
+        CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal,
       instance_name_list: ['instanceList1'],
       workflow_step_template_list: [
         {

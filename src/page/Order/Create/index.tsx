@@ -39,9 +39,11 @@ const CreateOrder = () => {
   const [createLoading, { setTrue: startCreate, setFalse: createFinish }] =
     useBoolean();
   const [visible, { setTrue: openModal, setFalse: closeModal }] = useBoolean();
-
-  const [taskInfo, setTaskInfo] =
-    React.useState<IAuditTaskResV1 | undefined>(undefined);
+  const [taskInfo, setTaskInfo] = React.useState<IAuditTaskResV1 | undefined>(
+    undefined
+  );
+  const [isCreateOrderDisabled, { setTrue: setCreateOrderDisabled }] =
+    useBoolean(false);
 
   const auditSql = React.useCallback(async (values: SqlInfoFormFields) => {
     const res = await task.createAndAuditTaskV1({
@@ -163,6 +165,8 @@ const CreateOrder = () => {
             <AuditResult
               taskId={taskInfo?.task_id}
               passRate={taskInfo?.pass_rate}
+              instanceName={taskInfo?.instance_name}
+              setCreateOrderDisabled={setCreateOrderDisabled}
             />
           </EmptyBox>
           <Card className="text-align-right">
@@ -177,6 +181,7 @@ const CreateOrder = () => {
                     htmlType="submit"
                     type="primary"
                     onClick={create}
+                    disabled={isCreateOrderDisabled}
                     loading={createLoading}
                   >
                     {t('order.createOrder.title')}

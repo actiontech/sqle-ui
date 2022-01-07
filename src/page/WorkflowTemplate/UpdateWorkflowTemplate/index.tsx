@@ -7,6 +7,7 @@ import {
   IWorkFlowStepTemplateReqV1,
   IWorkflowTemplateDetailResV1,
 } from '../../../api/common';
+import { UpdateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum } from '../../../api/common.enum';
 import workflow from '../../../api/workflow';
 import { IUpdateWorkflowTemplateV1Return } from '../../../api/workflow/index.d';
 import { ResponseCode } from '../../../data/common';
@@ -33,6 +34,10 @@ const UpdateWorkflowTemplate = () => {
       desc: baseFormValue.current?.desc,
       instance_name_list: baseFormValue.current?.instanceNameList,
       workflow_step_template_list: progressConfig,
+      allow_submit_when_less_audit_level: baseFormValue.current
+        ?.allowSubmitWhenLessAuditLevel as
+        | UpdateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
+        | undefined,
     });
   };
 

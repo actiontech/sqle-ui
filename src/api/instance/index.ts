@@ -26,7 +26,9 @@ import {
   IGetInstanceRuleListV1Params,
   IGetInstanceRuleListV1Return,
   IGetInstanceSchemasV1Params,
-  IGetInstanceSchemasV1Return
+  IGetInstanceSchemasV1Return,
+  IGetInstanceWorkflowTemplateV1Params,
+  IGetInstanceWorkflowTemplateV1Return
 } from './index.d';
 
 class InstanceService extends ServiceBase {
@@ -163,6 +165,21 @@ class InstanceService extends ServiceBase {
 
     return this.get<IGetInstanceSchemasV1Return>(
       `/v1/instances/${instance_name}/schemas`,
+      paramsData,
+      options
+    );
+  }
+
+  public getInstanceWorkflowTemplateV1(
+    params: IGetInstanceWorkflowTemplateV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const instance_name = paramsData.instance_name;
+    delete paramsData.instance_name;
+
+    return this.get<IGetInstanceWorkflowTemplateV1Return>(
+      `/v1/instances/${instance_name}/workflow_template`,
       paramsData,
       options
     );

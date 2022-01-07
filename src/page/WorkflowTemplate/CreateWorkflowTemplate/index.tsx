@@ -27,6 +27,8 @@ const CreateWorkflowTemplate = () => {
       desc: baseFormValue.current?.desc,
       instance_name_list: baseFormValue.current?.instanceNameList,
       workflow_step_template_list: progressConfig,
+      allow_submit_when_less_audit_level:
+        baseFormValue.current?.allowSubmitWhenLessAuditLevel,
     });
   };
 

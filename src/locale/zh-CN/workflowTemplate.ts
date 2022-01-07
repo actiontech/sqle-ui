@@ -70,6 +70,7 @@ export default {
     label: {
       name: '审批流程模版名称',
       desc: '审批流程模版描述',
+      allowSubmitWhenLessAuditLevel: '允许创建工单的最高审核等级',
       instanceNameList: '应用的数据源',
       reviewUser: '审核人',
       reviewDesc: '步骤描述',

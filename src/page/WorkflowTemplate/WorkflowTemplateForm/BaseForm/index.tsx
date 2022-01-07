@@ -2,6 +2,7 @@ import { Button, Form, Input, Select, Space } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum } from '../../../../api/common.enum';
 import { PageFormLayout } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import useInstance from '../../../../hooks/useInstance';
@@ -28,7 +29,11 @@ const BaseForm: React.FC<BaseFormProps> = (props) => {
 
   const resetForm = () => {
     if (!!props.defaultData) {
-      form.resetFields(['desc', 'instanceNameList']);
+      form.resetFields([
+        'desc',
+        'allowSubmitWhenLessAuditLevel',
+        'instanceNameList',
+      ]);
     } else {
       form.resetFields();
     }
@@ -56,7 +61,16 @@ const BaseForm: React.FC<BaseFormProps> = (props) => {
       form.setFieldsValue({
         name: props.defaultData.workflow_template_name,
         desc: props.defaultData.desc,
+        allowSubmitWhenLessAuditLevel: props.defaultData
+          .allow_submit_when_less_audit_level as
+          | CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
+          | undefined,
         instanceNameList: props.defaultData.instance_name_list,
+      });
+    } else {
+      form.setFieldsValue({
+        allowSubmitWhenLessAuditLevel:
+          CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.warn,
       });
     }
   }, [form, props.defaultData]);
@@ -89,6 +103,26 @@ const BaseForm: React.FC<BaseFormProps> = (props) => {
           rows={3}
           className="textarea-no-resize"
         />
+      </Form.Item>
+      <Form.Item
+        label={t('workflowTemplate.form.label.allowSubmitWhenLessAuditLevel')}
+        name="allowSubmitWhenLessAuditLevel"
+      >
+        <Select
+          placeholder={t('common.form.placeholder.select', {
+            name: t(
+              'workflowTemplate.form.label.allowSubmitWhenLessAuditLevel'
+            ),
+          })}
+        >
+          {Object.keys(
+            CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
+          ).map((v) => (
+            <Select.Option key={v} value={v}>
+              {v}
+            </Select.Option>
+          ))}
+        </Select>
       </Form.Item>
       <Form.Item
         label={t('workflowTemplate.form.label.instanceNameList')}

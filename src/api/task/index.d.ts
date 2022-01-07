@@ -6,7 +6,8 @@ import {
 
 import {
   getAuditTaskSQLsV1FilterExecStatusEnum,
-  getAuditTaskSQLsV1FilterAuditStatusEnum
+  getAuditTaskSQLsV1FilterAuditStatusEnum,
+  getAuditTaskSQLsV1FilterAuditLevelEnum
 } from './index.enum';
 
 export interface ICreateAndAuditTaskV1Params {
@@ -52,6 +53,8 @@ export interface IGetAuditTaskSQLsV1Params {
   filter_exec_status?: getAuditTaskSQLsV1FilterExecStatusEnum;
 
   filter_audit_status?: getAuditTaskSQLsV1FilterAuditStatusEnum;
+
+  filter_audit_level?: getAuditTaskSQLsV1FilterAuditLevelEnum;
 
   no_duplicate?: boolean;
 

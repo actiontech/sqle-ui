@@ -8,7 +8,8 @@ import {
   IGetInstanceResV1,
   IUpdateInstanceReqV1,
   IGetRulesResV1,
-  IGetInstanceSchemaResV1
+  IGetInstanceSchemaResV1,
+  IGetInstanceWorkflowTemplateResV1
 } from '../common.d';
 
 export interface ICheckInstanceIsConnectableV1Params
@@ -87,3 +88,10 @@ export interface IGetInstanceSchemasV1Params {
 }
 
 export interface IGetInstanceSchemasV1Return extends IGetInstanceSchemaResV1 {}
+
+export interface IGetInstanceWorkflowTemplateV1Params {
+  instance_name: string;
+}
+
+export interface IGetInstanceWorkflowTemplateV1Return
+  extends IGetInstanceWorkflowTemplateResV1 {}

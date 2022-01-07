@@ -1,16 +1,20 @@
 import {
+  AuditTaskResV1AuditLevelEnum,
   AuditTaskResV1SqlSourceEnum,
   AuditTaskResV1StatusEnum,
   CreateAuditWhitelistReqV1MatchTypeEnum,
+  CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
   RuleParamResV1TypeEnum,
   RuleResV1LevelEnum,
   UpdateAuditWhitelistReqV1MatchTypeEnum,
+  UpdateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
   WorkFlowStepTemplateReqV1TypeEnum,
   WorkflowDetailResV1CurrentStepTypeEnum,
   WorkflowDetailResV1StatusEnum,
   WorkflowRecordResV1StatusEnum,
   WorkflowStepResV1StateEnum,
-  WorkflowStepResV1TypeEnum
+  WorkflowStepResV1TypeEnum,
+  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum
 } from './common.enum';
 
 export interface IBaseRes {
@@ -70,6 +74,8 @@ export interface IAuditPlanSQLResV1 {
 }
 
 export interface IAuditTaskResV1 {
+  audit_level?: AuditTaskResV1AuditLevelEnum;
+
   exec_end_time?: string;
 
   exec_start_time?: string;
@@ -214,6 +220,8 @@ export interface ICreateWorkflowReqV1 {
 }
 
 export interface ICreateWorkflowTemplateReqV1 {
+  allow_submit_when_less_audit_level?: CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum;
+
   desc?: string;
 
   instance_name_list?: string[];
@@ -375,6 +383,14 @@ export interface IGetInstanceTipsResV1 {
   code?: number;
 
   data?: IInstanceTipResV1[];
+
+  message?: string;
+}
+
+export interface IGetInstanceWorkflowTemplateResV1 {
+  code?: number;
+
+  data?: IWorkflowTemplateDetailResV1;
 
   message?: string;
 }
@@ -816,6 +832,8 @@ export interface IUpdateWorkflowScheduleV1 {
 }
 
 export interface IUpdateWorkflowTemplateReqV1 {
+  allow_submit_when_less_audit_level?: UpdateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum;
+
   desc?: string;
 
   instance_name_list?: string[];
@@ -964,6 +982,8 @@ export interface IWorkflowStepResV1 {
 }
 
 export interface IWorkflowTemplateDetailResV1 {
+  allow_submit_when_less_audit_level?: WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum;
+
   desc?: string;
 
   instance_name_list?: string[];

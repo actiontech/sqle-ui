@@ -1,6 +1,7 @@
 import { Button, Col, Form, Row, Select, Space } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum } from '../../../../api/common.enum';
 import {
   FilterFormLayout,
   FilterFormRowLayout,
@@ -48,6 +49,28 @@ const FilterForm: React.FC<FilterFormProps> = (props) => {
               })}
             >
               {generateExecStatusSelectOption()}
+            </Select>
+          </Form.Item>
+        </Col>
+        <Col {...FilterFormColLayout}>
+          <Form.Item
+            name="filter_audit_level"
+            label={t('audit.table.auditResult')}
+          >
+            <Select
+              showSearch
+              allowClear
+              placeholder={t('common.form.placeholder.searchSelect', {
+                name: t('audit.table.auditResult'),
+              })}
+            >
+              {Object.keys(
+                CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
+              ).map((v) => (
+                <Select.Option key={v} value={v}>
+                  {v}
+                </Select.Option>
+              ))}
             </Select>
           </Form.Item>
         </Col>

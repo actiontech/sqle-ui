@@ -1,3 +1,13 @@
+export enum AuditTaskResV1AuditLevelEnum {
+  'normal' = 'normal',
+
+  'notice' = 'notice',
+
+  'warn' = 'warn',
+
+  'error' = 'error'
+}
+
 export enum AuditTaskResV1SqlSourceEnum {
   'form_data' = 'form_data',
 
@@ -26,6 +36,16 @@ export enum CreateAuditWhitelistReqV1MatchTypeEnum {
   'fp_match' = 'fp_match'
 }
 
+export enum CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum {
+  'normal' = 'normal',
+
+  'notice' = 'notice',
+
+  'warn' = 'warn',
+
+  'error' = 'error'
+}
+
 export enum RuleParamResV1TypeEnum {
   'string' = 'string',
 
@@ -48,6 +68,16 @@ export enum UpdateAuditWhitelistReqV1MatchTypeEnum {
   'exact_match' = 'exact_match',
 
   'fp_match' = 'fp_match'
+}
+
+export enum UpdateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum {
+  'normal' = 'normal',
+
+  'notice' = 'notice',
+
+  'warn' = 'warn',
+
+  'error' = 'error'
 }
 
 export enum WorkFlowStepTemplateReqV1TypeEnum {
@@ -110,4 +140,14 @@ export enum WorkflowStepResV1TypeEnum {
   'sql_review' = 'sql_review',
 
   'sql_execute' = 'sql_execute'
+}
+
+export enum WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum {
+  'normal' = 'normal',
+
+  'notice' = 'notice',
+
+  'warn' = 'warn',
+
+  'error' = 'error'
 }
