@@ -23,31 +23,28 @@ export const useAllowAuditLevel = () => {
     setCreateOrderDisabled: () => void,
     currentAuditLevel?: CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
   ) => {
-    instance
-      .getInstanceWorkflowTemplateV1({
-        instance_name: instanceName,
-      })
-      .then((res) => {
-        const allow_submit_when_less_audit_level =
-          res.data.data?.allow_submit_when_less_audit_level;
-        if (
-          isExistNotAllowLevel(
-            currentAuditLevel,
-            allow_submit_when_less_audit_level as
-              | CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
-              | undefined
-          )
-        ) {
-          setDisabledOperatorOrderBtnTips(
-            t('order.operator.disabledOperatorOrderBtnTips', {
-              allowAuditLevel: allow_submit_when_less_audit_level,
-              currentAuditLevel: currentAuditLevel,
-            })
-          );
-          setCreateOrderDisabled();
-        }
-      })
-      .catch(() => {});
+    const {
+      data: { data: { allow_submit_when_less_audit_level } = {} },
+    } = await instance.getInstanceWorkflowTemplateV1({
+      instance_name: instanceName,
+    });
+
+    if (
+      isExistNotAllowLevel(
+        currentAuditLevel,
+        allow_submit_when_less_audit_level as
+          | CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
+          | undefined
+      )
+    ) {
+      setDisabledOperatorOrderBtnTips(
+        t('order.operator.disabledOperatorOrderBtnTips', {
+          allowAuditLevel: allow_submit_when_less_audit_level,
+          currentAuditLevel: currentAuditLevel,
+        })
+      );
+      setCreateOrderDisabled();
+    }
   };
 
   const isExistNotAllowLevel = (
