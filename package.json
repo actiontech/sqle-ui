@@ -50,7 +50,7 @@
     "prebuild": "node ./scripts/moveAntdCss.js",
     "build": "craco build",
     "test": "craco test",
-    "test:c": "craco test --watchAll --coverage",
+    "test:c": "craco test --watchAll=false --coverage",
     "eject": "react-scripts eject"
   },
   "browserslist": {

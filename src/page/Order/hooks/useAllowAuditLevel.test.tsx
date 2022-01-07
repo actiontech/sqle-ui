@@ -11,6 +11,8 @@ describe('Order/useAllowAuditLevel', () => {
   });
 
   afterEach(() => {
+    jest.clearAllTimers();
+    jest.clearAllMocks();
     jest.useRealTimers();
   });
 

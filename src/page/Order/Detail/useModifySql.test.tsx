@@ -1,14 +1,26 @@
 import { act, renderHook } from '@testing-library/react-hooks';
+import instance from '../../../api/instance';
+import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import useModifySql from './useModifySql';
+import { instanceWorkflowTemplate } from './__testData__';
 
 describe('Order/useModifySql', () => {
   beforeEach(() => {
     jest.useFakeTimers();
+    mockGetInstanceWorkflowTemplate();
   });
 
   afterEach(() => {
+    jest.clearAllMocks();
+    jest.clearAllTimers();
     jest.useRealTimers();
   });
+
+  const mockGetInstanceWorkflowTemplate = () => {
+    const spy = jest.spyOn(instance, 'getInstanceWorkflowTemplateV1');
+    spy.mockImplementation(() => resolveThreeSecond(instanceWorkflowTemplate));
+    return spy;
+  };
 
   test('should return default value', () => {
     const { result } = renderHook(() => useModifySql());
