@@ -1,4 +1,3 @@
-import { cleanup } from '@testing-library/react';
 import { renderHook, act } from '@testing-library/react-hooks';
 import { CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum } from '../../../api/common.enum';
 import instance from '../../../api/instance';
@@ -50,7 +49,6 @@ describe('Order/useAllowAuditLevel', () => {
       'order.operator.disabledOperatorOrderBtnTips'
     );
 
-    cleanup();
     jest.clearAllMocks();
 
     act(() => {
