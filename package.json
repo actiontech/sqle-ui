@@ -47,7 +47,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "prebuild": "node ./scripts/moveAntdCss.js",
+    "prebuild": "node ./scripts/moveAntdCss.js && node ./scripts/getGitVersion.js",
     "build": "craco build",
     "test": "craco test",
     "test:c": "craco test --watchAll=false --coverage",

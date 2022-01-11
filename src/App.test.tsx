@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import user from './api/user';
 import App from './App';
 import { SystemRole } from './data/common';
+import { ModalName } from './data/ModalName';
 import { SupportLanguage } from './locale';
 import { mockUseDispatch, mockUseSelector } from './testUtils/mockRedux';
 import {
@@ -83,6 +84,7 @@ describe('App test', () => {
     mockUseSelector({
       user: { token: 'testToken', role: '' },
       locale: { language: SupportLanguage.zhCN },
+      nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
     });
     getUserSpy.mockImplementation(() =>
       resolveThreeSecond({ user_name: 'username', is_admin: '' })
@@ -90,7 +92,7 @@ describe('App test', () => {
     expect(scopeDispatch).not.toBeCalled();
     render(<App />);
     await waitFor(() => jest.advanceTimersByTime(3000));
-    expect(scopeDispatch).toBeCalledTimes(1);
+    expect(scopeDispatch).toBeCalledTimes(2);
     expect(scopeDispatch).toBeCalledWith({
       payload: {
         role: '',
@@ -109,7 +111,7 @@ describe('App test', () => {
 
     render(<App />);
     await waitFor(() => jest.advanceTimersByTime(3000));
-    expect(scopeDispatch).toBeCalledTimes(2);
+    expect(scopeDispatch).toBeCalledTimes(3);
     expect(scopeDispatch).toBeCalledWith({
       payload: {
         role: '',

@@ -30,6 +30,7 @@ export default {
 
   showAll: 'Show All',
   showDetail: 'Show Detail',
+  showMore: 'Show More',
 
   theme: {
     light: 'Light Theme',

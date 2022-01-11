@@ -19,4 +19,7 @@ export enum ModalName {
 
   // rule template
   Clone_Rule_Template = 'CLONE_RULE_TEMPLATE',
+
+  // header
+  SHOW_VERSION = 'SHOW_VERSION',
 }

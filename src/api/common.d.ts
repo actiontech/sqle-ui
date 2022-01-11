@@ -473,6 +473,14 @@ export interface IGetSMTPConfigurationResV1 {
   message?: string;
 }
 
+export interface IGetSQLEInfoResV1 {
+  code?: number;
+
+  message?: string;
+
+  version?: string;
+}
+
 export interface IGetSystemVariablesResV1 {
   code?: number;
 
