@@ -4,6 +4,7 @@ import locale from '../store/locale';
 import user from '../store/user';
 import userManage from '../store/userManage';
 import whitelist from '../store/whitelist';
+import nav from '../store/nav';
 import { combineReducers, createStore } from 'redux';
 import React from 'react';
 import { Provider } from 'react-redux';
@@ -13,6 +14,7 @@ const reducers = combineReducers({
   user,
   userManage,
   whitelist,
+  nav,
 });
 
 export const storeFactory = (initStore: Dictionary = {}) => {

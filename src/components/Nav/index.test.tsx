@@ -1,5 +1,6 @@
 import { waitFor } from '@testing-library/react';
 import Nav from '.';
+import { ModalName } from '../../data/ModalName';
 import { SupportLanguage } from '../../locale';
 import { renderWithRouter } from '../../testUtils/customRender';
 import { mockUseDispatch, mockUseSelector } from '../../testUtils/mockRedux';
@@ -12,6 +13,7 @@ describe('Nav', () => {
     useSelectorSpy = mockUseSelector({
       user: { role: '', username: 'test' },
       locale: { language: SupportLanguage.zhCN },
+      nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
     });
     mockUseStyle();
     mockUseDispatch();
@@ -34,6 +36,7 @@ describe('Nav', () => {
     useSelectorSpy = mockUseSelector({
       user: { role: '', username: '' },
       locale: { language: SupportLanguage.zhCN },
+      nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
     });
     const { container: notShowContainer } = renderWithRouter(
       <Nav>notshow</Nav>

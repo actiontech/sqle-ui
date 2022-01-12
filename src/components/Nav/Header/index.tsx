@@ -1,5 +1,5 @@
 import { Dropdown, Menu, Space } from 'antd';
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import useChangeTheme from '../../../hooks/useChangeTheme';
 import { SupportTheme } from '../../../theme';
 import { ReactComponent as Moon } from '../../../assets/img/moon.svg';
@@ -10,11 +10,15 @@ import Icon, {
   UserOutlined,
   PoweroffOutlined,
   LoadingOutlined,
+  QuestionCircleOutlined,
 } from '@ant-design/icons';
 import LanguageSelect from '../../LanguageSelect';
 import { useTranslation } from 'react-i18next';
 import { updateToken, updateUser } from '../../../store/user';
 import { useHistory } from 'react-router';
+import { ModalName } from '../../../data/ModalName';
+import { initNavModalStatus, updateNavModalStatus } from '../../../store/nav';
+import NavModal from './Modal';
 
 const Header = () => {
   const username = useSelector<IReduxState, string>(
@@ -24,6 +28,16 @@ const Header = () => {
   const dispatch = useDispatch();
   const { changeLoading, currentTheme, changeTheme } = useChangeTheme();
   const { t } = useTranslation();
+
+  useEffect(() => {
+    dispatch(
+      initNavModalStatus({
+        modalStatus: {
+          [ModalName.SHOW_VERSION]: false,
+        },
+      })
+    );
+  }, [dispatch]);
 
   const handleThemeChange = React.useCallback(
     (theme: SupportTheme) => {
@@ -37,6 +51,18 @@ const Header = () => {
     dispatch(updateUser({ username: '', role: '' }));
     history.push('/');
   }, [dispatch, history]);
+
+  const openInfoDialog = useCallback(
+    (modalName: ModalName) => {
+      dispatch(
+        updateNavModalStatus({
+          modalName: modalName,
+          status: true,
+        })
+      );
+    },
+    [dispatch]
+  );
 
   return (
     <header>
@@ -84,7 +110,24 @@ const Header = () => {
             {username}
           </Space>
         </Dropdown>
+
+        <Dropdown
+          overlay={
+            <Menu>
+              <Menu.Item
+                key="version"
+                onClick={() => openInfoDialog(ModalName.SHOW_VERSION)}
+              >
+                {t('system.log.version')}
+              </Menu.Item>
+            </Menu>
+          }
+        >
+          <QuestionCircleOutlined data-testid="system-icon" />
+        </Dropdown>
       </Space>
+
+      <NavModal />
     </header>
   );
 };

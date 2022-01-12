@@ -14,6 +14,7 @@ import {
 } from '@testing-library/react';
 import { SupportLanguage } from '../../../locale';
 import { SupportTheme } from '../../../theme';
+import { ModalName } from '../../../data/ModalName';
 
 describe('Header', () => {
   let scopeDispatch: jest.Mock;
@@ -21,6 +22,7 @@ describe('Header', () => {
     mockUseSelector({
       user: { username: 'admin', theme: SupportTheme.LIGHT },
       locale: { language: SupportLanguage.zhCN },
+      nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
     });
     scopeDispatch = mockUseDispatch().scopeDispatch;
   });
@@ -34,9 +36,11 @@ describe('Header', () => {
     const { container, rerender } = render(<Header />);
     expect(container).toMatchSnapshot();
     expect(screen.getByText('admin')).toBeInTheDocument();
+    expect(screen.getByTestId('system-icon')).toBeInTheDocument();
     mockUseSelector({
       user: { username: 'test' },
       locale: { language: SupportLanguage.zhCN },
+      nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
     });
     rerender(<Header />);
     expect(screen.getByText('test')).toBeInTheDocument();
@@ -57,10 +61,26 @@ describe('Header', () => {
     ).not.toHaveAttribute('hidden');
   });
 
+  test('should render version info menu when user hover the icon', async () => {
+    const { baseElement } = renderWithMemoryRouter(<Header />);
+    fireEvent.mouseEnter(screen.getByTestId('system-icon'));
+
+    await waitFor(() => screen.getByText('system.log.version'));
+    expect(baseElement).toMatchSnapshot();
+
+    fireEvent.click(screen.getByText('system.log.version'));
+    expect(scopeDispatch).toBeCalledTimes(2);
+    expect(scopeDispatch.mock.calls[1][0]).toEqual({
+      payload: { modalName: ModalName.SHOW_VERSION, status: true },
+      type: 'nav/updateModalStatus',
+    });
+  });
+
   test('should render theme change button by current theme', async () => {
     mockUseSelector({
       user: { username: 'admin', theme: SupportTheme.LIGHT },
       locale: { language: SupportLanguage.zhCN },
+      nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
     });
     renderWithMemoryRouter(<Header />);
     fireEvent.mouseEnter(screen.getByText('admin'));
@@ -75,6 +95,7 @@ describe('Header', () => {
     mockUseSelector({
       user: { username: 'admin', theme: SupportTheme.DARK },
       locale: { language: SupportLanguage.zhCN },
+      nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
     });
     renderWithMemoryRouter(<Header />);
     fireEvent.mouseEnter(screen.getByText('admin'));
@@ -91,11 +112,12 @@ describe('Header', () => {
     const history = createMemoryHistory();
     history.push('/test');
     renderWithServerRouter(<Header />, undefined, { history });
+    expect(scopeDispatch).toBeCalledTimes(1);
     fireEvent.mouseEnter(screen.getByText('admin'));
     await waitFor(() => screen.getByText(/common.logout/i));
     expect(history.location.pathname).toBe('/test');
     fireEvent.click(screen.getByText('common.logout'));
-    expect(scopeDispatch).toBeCalledTimes(2);
+    expect(scopeDispatch).toBeCalledTimes(3);
     expect(scopeDispatch).toBeCalledWith({
       payload: {
         role: '',

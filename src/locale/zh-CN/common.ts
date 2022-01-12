@@ -33,6 +33,7 @@ export default {
 
   showAll: '查看所有',
   showDetail: '查看详情',
+  showMore: '查看更多',
 
   in: '在',
   on: '的',
