@@ -495,6 +495,7 @@ export const taskSqls = [
     audit_status: 'finished',
     exec_result: '',
     exec_status: 'initialized',
+    description: 'have a describe',
   },
   {
     number: 3,
@@ -518,6 +519,7 @@ export const taskSqls = [
     audit_status: 'finished',
     exec_result: '',
     exec_status: 'initialized',
+    description: 'this is a test',
   },
 ];
 

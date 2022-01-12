@@ -1,7 +1,9 @@
 import {
   IGetAuditTaskResV1,
   IGetAuditTaskSQLContentResV1,
-  IGetAuditTaskSQLsResV1
+  IGetAuditTaskSQLsResV1,
+  IUpdateAuditTaskSQLsReqV1,
+  IBaseRes
 } from '../common.d';
 
 import {
@@ -64,3 +66,12 @@ export interface IGetAuditTaskSQLsV1Params {
 }
 
 export interface IGetAuditTaskSQLsV1Return extends IGetAuditTaskSQLsResV1 {}
+
+export interface IUpdateAuditTaskSQLsV1Params
+  extends IUpdateAuditTaskSQLsReqV1 {
+  task_id: string;
+
+  number: string;
+}
+
+export interface IUpdateAuditTaskSQLsV1Return extends IBaseRes {}

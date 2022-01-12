@@ -1,7 +1,10 @@
 import { fireEvent, render, waitFor, screen } from '@testing-library/react';
 import AuditResult from '.';
 import task from '../../../api/task';
-import { getBySelector } from '../../../testUtils/customQuery';
+import {
+  getAllBySelector,
+  getBySelector,
+} from '../../../testUtils/customQuery';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import { taskSqls } from '../Detail/__testData__';
 
@@ -18,6 +21,12 @@ describe('Order/Detail/AuditResult', () => {
   const mockGetTaskSqls = () => {
     const spy = jest.spyOn(task, 'getAuditTaskSQLsV1');
     spy.mockImplementation(() => resolveThreeSecond(taskSqls));
+    return spy;
+  };
+
+  const mockUpdateTaskSqlDesc = () => {
+    const spy = jest.spyOn(task, 'updateAuditTaskSQLsV1');
+    spy.mockImplementation(() => resolveThreeSecond({}));
     return spy;
   };
 
@@ -90,5 +99,60 @@ describe('Order/Detail/AuditResult', () => {
 
     expect(download).toBeCalledTimes(2);
     expect(download).toBeCalledWith({ task_id: '9999', no_duplicate: true });
+  });
+
+  test('should send update sql describe request when user click update describe in table', async () => {
+    const getSqlSpy = mockGetTaskSqls();
+    const updateTaskSqlSpy = mockUpdateTaskSqlDesc();
+    render(<AuditResult taskId={9999} passRate={0.33} />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.click(getAllBySelector('.ant-typography-edit')[0]);
+    fireEvent.change(getBySelector('.ant-input'), {
+      target: { value: 'new value' },
+    });
+    // ant design will check user press up key is same as press down key....
+    fireEvent.keyDown(getBySelector('.ant-input'), {
+      key: 'Enter',
+      code: 13,
+      keyCode: 13,
+    });
+    fireEvent.keyUp(getBySelector('.ant-input'), {
+      key: 'Enter',
+      code: 13,
+      keyCode: 13,
+    });
+    expect(updateTaskSqlSpy).toBeCalledTimes(1);
+    expect(getSqlSpy).toBeCalledTimes(1);
+    expect(updateTaskSqlSpy).toBeCalledWith({
+      task_id: '9999',
+      description: 'new value',
+      number: '1',
+    });
+
+    fireEvent.click(getAllBySelector('.ant-typography-edit')[0]);
+    fireEvent.change(getBySelector('.ant-input'), {
+      target: { value: 'new value2222' },
+    });
+    // ant design will check user press up key is same as press down key....
+    fireEvent.keyDown(getBySelector('.ant-input'), {
+      key: 'Enter',
+      code: 13,
+      keyCode: 13,
+    });
+    fireEvent.keyUp(getBySelector('.ant-input'), {
+      key: 'Enter',
+      code: 13,
+      keyCode: 13,
+    });
+
+    expect(updateTaskSqlSpy).toBeCalledTimes(1);
+    expect(getSqlSpy).toBeCalledTimes(1);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(getSqlSpy).toBeCalledTimes(2);
   });
 });
