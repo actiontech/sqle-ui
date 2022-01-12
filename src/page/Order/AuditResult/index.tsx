@@ -1,9 +1,10 @@
 import { useBoolean, useRequest } from 'ahooks';
 import { Button, Card, Space, Switch, Table, Typography } from 'antd';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import task from '../../../api/task';
 import EmptyBox from '../../../components/EmptyBox';
+import { ResponseCode } from '../../../data/common';
 import useTable from '../../../hooks/useTable';
 import { orderAuditResultColumn } from './column';
 import FilterForm from './FilterForm';
@@ -61,6 +62,28 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
     });
   };
 
+  const updateSqlDescribeProtect = useRef(false);
+  const updateSqlDescribe = (sqlNum: number, sqlDescribe: string) => {
+    if (updateSqlDescribeProtect.current) {
+      return;
+    }
+    updateSqlDescribeProtect.current = true;
+    task
+      .updateAuditTaskSQLsV1({
+        number: `${sqlNum}`,
+        description: sqlDescribe,
+        task_id: `${props.taskId}`,
+      })
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          getAuditTaskSql();
+        }
+      })
+      .finally(() => {
+        updateSqlDescribeProtect.current = false;
+      });
+  };
+
   useEffect(() => {
     if (props.taskId !== undefined) {
       getAuditTaskSql();
@@ -97,7 +120,7 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
           total: data?.total,
           showSizeChanger: true,
         }}
-        columns={orderAuditResultColumn()}
+        columns={orderAuditResultColumn(updateSqlDescribe)}
         dataSource={data?.list}
         onChange={tableChange}
       />

@@ -104,6 +104,8 @@ export interface IAuditTaskSQLResV1 {
 
   audit_status?: string;
 
+  description?: string;
+
   exec_result?: string;
 
   exec_sql?: string;
@@ -751,6 +753,10 @@ export interface IUpdateAuditPlanReqV1 {
   audit_plan_instance_database?: string;
 
   audit_plan_instance_name?: string;
+}
+
+export interface IUpdateAuditTaskSQLsReqV1 {
+  description?: string;
 }
 
 export interface IUpdateAuditWhitelistReqV1 {

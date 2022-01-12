@@ -14,6 +14,7 @@ export default {
     execStatus: '执行状态',
     execResult: '执行结果',
     rollback: '回滚语句',
+    describe: '说明',
   },
 
   execStatus: {
