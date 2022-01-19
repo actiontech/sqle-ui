@@ -28,8 +28,10 @@ describe('AuditPlanReport', () => {
   });
 
   const mockGetReport = () => {
-    const spy = jest.spyOn(audit_plan, 'getAuditPlanReportSQLsV1');
-    spy.mockImplementation(() => resolveThreeSecond(AuditReport));
+    const spy = jest.spyOn(audit_plan, 'getAuditPlanReportSQLsV2');
+    spy.mockImplementation(() =>
+      resolveThreeSecond(AuditReport, { otherData: { total_nums: 63 } })
+    );
     return spy;
   };
 

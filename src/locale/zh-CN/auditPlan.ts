@@ -87,9 +87,7 @@ export default {
     title: '审核报告: {{id}}',
 
     table: {
-      fingerprint: 'SQL指纹',
-      lastReceiveText: '最后一次匹配到该指纹的语句',
-      lastReceiveTime: '最后一次匹配到该指纹的时间',
+      sql: 'SQL语句',
       result: '审核结果',
     },
   },

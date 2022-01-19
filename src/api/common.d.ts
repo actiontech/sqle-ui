@@ -1093,7 +1093,7 @@ export interface IGetAuditPlanReportSQLsResV2 {
 export interface IGetAuditPlanSQLsResV2 {
   code?: number;
 
-  data?: IAuditPlanSQLResV2[];
+  data?: IAuditPlanSQLResV2;
 
   message?: string;
 
