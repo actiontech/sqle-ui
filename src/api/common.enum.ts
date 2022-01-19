@@ -1,3 +1,11 @@
+export enum AuditPlanParamResV1TypeEnum {
+  'string' = 'string',
+
+  'int' = 'int',
+
+  'bool' = 'bool'
+}
+
 export enum AuditTaskResV1AuditLevelEnum {
   'normal' = 'normal',
 

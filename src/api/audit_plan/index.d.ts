@@ -1,4 +1,5 @@
 import {
+  IGetAuditPlanMetasResV1,
   IGetAuditPlansResV1,
   ICreateAuditPlanReqV1,
   IBaseRes,
@@ -9,8 +10,16 @@ import {
   IGetAuditPlanSQLsResV1,
   IFullSyncAuditPlanSQLsReqV1,
   IPartialSyncAuditPlanSQLsReqV1,
-  ITriggerAuditPlanResV1
+  ITriggerAuditPlanResV1,
+  IGetAuditPlanReportSQLsResV2,
+  IGetAuditPlanSQLsResV2
 } from '../common.d';
+
+export interface IGetAuditPlanMetasV1Params {
+  filter_instance_type?: string;
+}
+
+export interface IGetAuditPlanMetasV1Return extends IGetAuditPlanMetasResV1 {}
 
 export interface IGetAuditPlansV1Params {
   filter_audit_plan_db_type?: string;
@@ -97,3 +106,26 @@ export interface ITriggerAuditPlanV1Params {
 }
 
 export interface ITriggerAuditPlanV1Return extends ITriggerAuditPlanResV1 {}
+
+export interface IGetAuditPlanReportSQLsV2Params {
+  audit_plan_name: string;
+
+  audit_plan_report_id: string;
+
+  page_index?: number;
+
+  page_size?: number;
+}
+
+export interface IGetAuditPlanReportSQLsV2Return
+  extends IGetAuditPlanReportSQLsResV2 {}
+
+export interface IGetAuditPlanSQLsV2Params {
+  audit_plan_name: string;
+
+  page_index?: number;
+
+  page_size?: number;
+}
+
+export interface IGetAuditPlanSQLsV2Return extends IGetAuditPlanSQLsResV2 {}
