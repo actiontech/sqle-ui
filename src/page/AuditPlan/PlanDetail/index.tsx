@@ -1,6 +1,9 @@
-import { PageHeader } from 'antd';
+import { useRequest } from 'ahooks';
+import { PageHeader, Typography } from 'antd';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Redirect, Route, Switch, useParams } from 'react-router-dom';
+import audit_plan from '../../../api/audit_plan';
 import BackButton from '../../../components/BackButton';
 import PlanDetail from './Detail';
 import { PlanDetailUrlParams } from './index.type';
@@ -9,6 +12,23 @@ const PlanDetailPage = () => {
   const urlParams = useParams<PlanDetailUrlParams>();
 
   const { t } = useTranslation();
+
+  const { data: auditTask, run: getAuditTask } = useRequest(
+    () => {
+      return audit_plan.getAuditPlanV1({
+        audit_plan_name: urlParams.auditPlanName,
+      });
+    },
+    {
+      formatResult(res) {
+        return res.data;
+      },
+    }
+  );
+
+  useEffect(() => {
+    getAuditTask();
+  }, [getAuditTask]);
 
   return (
     <>
@@ -19,6 +39,12 @@ const PlanDetailPage = () => {
         })}
         extra={[<BackButton key="goBack" />]}
       >
+        <Typography.Paragraph>
+          {t('auditPlan.detailPage.auditTaskType', {
+            type:
+              auditTask?.data?.audit_plan_meta?.audit_plan_type_desc ?? '--',
+          })}
+        </Typography.Paragraph>
         {t('auditPlan.detailPage.pageDesc')}
       </PageHeader>
       <section className="padding-content">
