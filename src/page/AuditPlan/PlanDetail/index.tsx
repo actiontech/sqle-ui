@@ -1,6 +1,5 @@
 import { useRequest } from 'ahooks';
 import { PageHeader, Typography } from 'antd';
-import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Redirect, Route, Switch, useParams } from 'react-router-dom';
 import audit_plan from '../../../api/audit_plan';
@@ -13,7 +12,7 @@ const PlanDetailPage = () => {
 
   const { t } = useTranslation();
 
-  const { data: auditTask, run: getAuditTask } = useRequest(
+  const { data: auditTask } = useRequest(
     () => {
       return audit_plan.getAuditPlanV1({
         audit_plan_name: urlParams.auditPlanName,
@@ -25,10 +24,6 @@ const PlanDetailPage = () => {
       },
     }
   );
-
-  useEffect(() => {
-    getAuditTask();
-  }, [getAuditTask]);
 
   return (
     <>
