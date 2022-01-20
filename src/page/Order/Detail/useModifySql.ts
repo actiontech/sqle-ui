@@ -32,10 +32,20 @@ const useModifySql = () => {
       setPassRate(passRate);
       closeModifySqlModal();
       if (instanceName) {
-        judgeAuditLevel(instanceName, setUpdateOrderBtnDisabled, audit_level);
+        judgeAuditLevel(
+          instanceName,
+          setUpdateOrderBtnDisabled,
+          resetUpdateOrderBtnStatus,
+          audit_level
+        );
       }
     },
-    [closeModifySqlModal, judgeAuditLevel, setUpdateOrderBtnDisabled]
+    [
+      closeModifySqlModal,
+      judgeAuditLevel,
+      resetUpdateOrderBtnStatus,
+      setUpdateOrderBtnDisabled,
+    ]
   );
 
   const resetAllState = () => {

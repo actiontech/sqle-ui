@@ -85,7 +85,7 @@ module.exports = {
       //   xfwd: true,
       // },
       '/v1': {
-        target: 'http://10.186.62.85:10000',
+        target: 'http://10.186.62.5:10000',
         secure: false,
         changeOrigin: true,
         ws: true,

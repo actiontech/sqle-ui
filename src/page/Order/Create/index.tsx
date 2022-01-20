@@ -73,6 +73,7 @@ const CreateOrder = () => {
           judgeAuditLevel(
             res.data.data.instance_name,
             setCreateOrderDisabled,
+            resetCreateOrderBtnStatus,
             res.data.data.audit_level as
               | CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
               | undefined
@@ -80,7 +81,7 @@ const CreateOrder = () => {
         }
       }
     },
-    [judgeAuditLevel, setCreateOrderDisabled]
+    [judgeAuditLevel, resetCreateOrderBtnStatus, setCreateOrderDisabled]
   );
 
   const create = React.useCallback(async () => {
