@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BackendForm should render form item by params key 1`] = `
+<Fragment>
+  <FormItem
+    key="boolKey"
+    label="boolDesc"
+    name={
+      Array [
+        "params",
+        "boolKey",
+      ]
+    }
+    valuePropName="checked"
+  >
+    <Switch />
+  </FormItem>
+  <FormItem
+    key="intKey"
+    label="intDesc"
+    name={
+      Array [
+        "params",
+        "intKey",
+      ]
+    }
+    rules={
+      Array [
+        Object {
+          "message": "ruleTemplate.editModal.ruleValueTypeOnlyNumber",
+          "pattern": /\\^\\\\d\\+\\$/,
+        },
+      ]
+    }
+  >
+    <Input
+      type="text"
+    />
+  </FormItem>
+  <FormItem
+    key="stringKey"
+    label="stringDesc"
+    name={
+      Array [
+        "params",
+        "stringKey",
+      ]
+    }
+  >
+    <Input
+      type="text"
+    />
+  </FormItem>
+</Fragment>
+`;

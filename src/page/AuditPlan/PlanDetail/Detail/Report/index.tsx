@@ -14,7 +14,7 @@ const AuditPlanReport: React.FC = () => {
 
   const { data, loading } = useRequest(
     () =>
-      audit_plan.getAuditPlanReportSQLsV1({
+      audit_plan.getAuditPlanReportSQLsV2({
         audit_plan_name: urlParams.auditPlanName,
         audit_plan_report_id: urlParams.reportId,
         page_index: pagination.pageIndex,
@@ -35,7 +35,7 @@ const AuditPlanReport: React.FC = () => {
   return (
     <Card title={t('auditPlan.report.title', { id: urlParams.reportId })}>
       <Table
-        rowKey="audit_plan_report_sql_fingerprint"
+        rowKey="audit_plan_report_sql"
         loading={loading}
         dataSource={data?.list ?? []}
         columns={AuditPlanReportTableHeader()}

@@ -77,7 +77,7 @@ module.exports = {
   ],
   devServer: (config, { proxy }) => {
     config.proxy = {
-      // '/v1/audit_': {
+      // '/v2/audit_plans/db1/sqls': {
       //   target: 'http://localhost:4200',
       //   secure: false,
       //   changeOrigin: true,

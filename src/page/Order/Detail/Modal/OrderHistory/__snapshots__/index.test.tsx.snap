@@ -615,7 +615,113 @@ exports[`Order/Detail/OrderHistory should render all order history 1`] = `
               />
               <ul
                 class="ant-timeline"
-              />
+              >
+                <li
+                  class="ant-timeline-item"
+                >
+                  <div
+                    class="ant-timeline-item-tail"
+                  />
+                  <div
+                    class="ant-timeline-item-head ant-timeline-item-head-green"
+                  />
+                  <div
+                    class="ant-timeline-item-content"
+                  >
+                    <div
+                      class="ant-row"
+                    >
+                      <div
+                        class="ant-col ant-col-5"
+                      >
+                        <div
+                          class="ant-col ant-col-24"
+                        >
+                          order.operator.time
+                          :
+                          2021-12-16 20:06:10
+                        </div>
+                        <div
+                          class="ant-col ant-col-24"
+                        >
+                          order.operator.user
+                          :
+                          admin
+                        </div>
+                      </div>
+                      <div
+                        class="ant-col ant-col-19"
+                      >
+                        order.operator.createOrder
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li
+                  class="ant-timeline-item ant-timeline-item-last"
+                >
+                  <div
+                    class="ant-timeline-item-tail"
+                  />
+                  <div
+                    class="ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-gray"
+                  >
+                    <span
+                      aria-label="clock-circle"
+                      class="anticon anticon-clock-circle timeline-clock-icon"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="clock-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-timeline-item-content"
+                  >
+                    <div
+                      class="ant-row"
+                    >
+                      <div
+                        class="ant-col ant-col-5"
+                      >
+                        <div
+                          class="ant-col ant-col-24"
+                        >
+                          order.operator.time
+                          :
+                          --
+                        </div>
+                        <div
+                          class="ant-col ant-col-24"
+                        >
+                          order.operator.user
+                          :
+                          --
+                        </div>
+                      </div>
+                      <div
+                        class="ant-col ant-col-19"
+                      >
+                        order.operator.wait
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
             </div>
             <div
               class="ant-modal-footer"

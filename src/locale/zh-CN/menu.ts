@@ -13,6 +13,6 @@ export default {
   orderList: '工单列表',
   orderDetail: '工单详情',
   whitelist: '白名单管理',
-  auditPlane: '审核计划',
-  auditPlaneList: '审核计划列表',
+  auditPlane: '审核任务',
+  auditPlaneList: '审核任务列表',
 };

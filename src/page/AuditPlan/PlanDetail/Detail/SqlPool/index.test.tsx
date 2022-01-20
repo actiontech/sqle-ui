@@ -1,12 +1,27 @@
+/* eslint-disable no-console */
 import { render, waitFor, screen, fireEvent } from '@testing-library/react';
 import SqlPool from '.';
 import audit_plan from '../../../../../api/audit_plan';
 import EmitterKey from '../../../../../data/EmitterKey';
 import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../../utils/EventEmitter';
-import { AuditPlanSqls } from '../../__testData__';
+import { AuditPlanSqlsRes } from '../../__testData__';
 
 describe('SqlPool', () => {
+  const error = console.error;
+
+  beforeAll(() => {
+    console.error = jest.fn();
+    (console.error as any).mockImplementation((message: any) => {
+      if (
+        message.includes('Each child in a list should have a unique "key" prop')
+      ) {
+        return;
+      }
+      error(message);
+    });
+  });
+
   beforeEach(() => {
     jest.useFakeTimers();
     mockGetSqls();
@@ -18,9 +33,13 @@ describe('SqlPool', () => {
     jest.clearAllTimers();
   });
 
+  afterAll(() => {
+    console.error = error;
+  });
+
   const mockGetSqls = () => {
-    const spy = jest.spyOn(audit_plan, 'getAuditPlanSQLsV1');
-    spy.mockImplementation(() => resolveThreeSecond(AuditPlanSqls));
+    const spy = jest.spyOn(audit_plan, 'getAuditPlanSQLsV2');
+    spy.mockImplementation(() => resolveThreeSecond(AuditPlanSqlsRes));
     return spy;
   };
 

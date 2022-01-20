@@ -1,6 +1,6 @@
 import { Button, Popconfirm, Space } from 'antd';
 import { Link } from 'react-router-dom';
-import { IAuditPlanResV1 } from '../../../api/common';
+import { IAuditPlanMetaV1, IAuditPlanResV1 } from '../../../api/common';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import TokenText from './component/TokenText';
@@ -12,6 +12,13 @@ export const planListTableHeader = (
     {
       dataIndex: 'audit_plan_name',
       title: () => i18n.t('auditPlan.list.table.audit_plan_name'),
+    },
+    {
+      dataIndex: 'audit_plan_meta',
+      title: () => i18n.t('auditPlan.list.table.audit_plan_type'),
+      render: (meta: IAuditPlanMetaV1) => {
+        return meta?.audit_plan_type_desc;
+      },
     },
     {
       dataIndex: 'audit_plan_cron',

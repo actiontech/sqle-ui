@@ -12,6 +12,7 @@ import {
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
+import { auditTaskMetas } from '../PlanForm/__testData__/auditMeta';
 import { AuditPlan } from '../PlanList/__testData__';
 jest.mock('react-router', () => {
   return {
@@ -40,6 +41,7 @@ describe('UpdateAuditPlan', () => {
     mockUseInstance();
     mockUseInstanceSchema();
     mockGetAuditPlan();
+    mockGetAuditMeta();
   });
 
   afterEach(() => {
@@ -61,6 +63,12 @@ describe('UpdateAuditPlan', () => {
   const mockUpdateAuditPlan = () => {
     const spy = jest.spyOn(audit_plan, 'updateAuditPlanV1');
     spy.mockImplementation(() => resolveThreeSecond({}));
+    return spy;
+  };
+
+  const mockGetAuditMeta = () => {
+    const spy = jest.spyOn(audit_plan, 'getAuditPlanMetasV1');
+    spy.mockImplementation(() => resolveThreeSecond(auditTaskMetas));
     return spy;
   };
 
@@ -91,6 +99,8 @@ describe('UpdateAuditPlan', () => {
     expect(schemaOptions[1]).toHaveClass('ant-select-item-option-content');
     fireEvent.click(schemaOptions[1]);
 
+    fireEvent.click(screen.getByText('字段c'));
+
     fireEvent.click(screen.getByText('common.submit'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
@@ -102,6 +112,26 @@ describe('UpdateAuditPlan', () => {
       audit_plan_instance_database: 'schema1',
       audit_plan_instance_name: 'db1',
       audit_plan_name: 'auditPlanName1',
+      audit_plan_params: [
+        {
+          desc: '字段a',
+          key: 'a',
+          type: 'string',
+          value: '123',
+        },
+        {
+          desc: '字段b',
+          key: 'b',
+          type: 'int',
+          value: '123',
+        },
+        {
+          desc: '字段c',
+          key: 'c',
+          type: 'bool',
+          value: 'false',
+        },
+      ],
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);

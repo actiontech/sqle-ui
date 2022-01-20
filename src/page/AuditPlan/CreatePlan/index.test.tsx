@@ -13,6 +13,7 @@ import {
 } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 import { dataSourceInstance } from '../../DataSource/__testData__';
+import { auditTaskMetas } from '../PlanForm/__testData__/auditMeta';
 
 describe('CreatePlan', () => {
   let warningSpy!: jest.SpyInstance;
@@ -33,6 +34,7 @@ describe('CreatePlan', () => {
     mockUseInstance();
     mockUseInstanceSchema();
     mockGetInstance();
+    mockGetAuditMeta();
   });
 
   afterEach(() => {
@@ -54,6 +56,12 @@ describe('CreatePlan', () => {
   const mockCreateAuditPlan = () => {
     const spy = jest.spyOn(audit_plan, 'createAuditPlanV1');
     spy.mockImplementation(() => resolveThreeSecond({}));
+    return spy;
+  };
+
+  const mockGetAuditMeta = () => {
+    const spy = jest.spyOn(audit_plan, 'getAuditPlanMetasV1');
+    spy.mockImplementation(() => resolveThreeSecond(auditTaskMetas));
     return spy;
   };
 
@@ -91,6 +99,24 @@ describe('CreatePlan', () => {
     expect(schemaOptions[1]).toHaveClass('ant-select-item-option-content');
     fireEvent.click(schemaOptions[1]);
 
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    fireEvent.mouseDown(screen.getByLabelText('auditPlan.planForm.taskType'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const auditTaskTypeOptions = screen.getAllByText('普通的SQL审核');
+    expect(auditTaskTypeOptions[0]).toHaveClass(
+      'ant-select-item-option-content'
+    );
+    fireEvent.click(auditTaskTypeOptions[0]);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
     fireEvent.click(screen.getByText('common.submit'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
@@ -103,6 +129,27 @@ describe('CreatePlan', () => {
       audit_plan_instance_name: 'instance1',
       audit_plan_instance_type: 'mysql',
       audit_plan_name: 'planName1',
+      audit_plan_params: [
+        {
+          desc: '字段a',
+          key: 'a',
+          type: 'string',
+          value: '123',
+        },
+        {
+          desc: '字段b',
+          key: 'b',
+          type: 'int',
+          value: '123',
+        },
+        {
+          desc: '字段c',
+          key: 'c',
+          type: 'bool',
+          value: 'true',
+        },
+      ],
+      audit_plan_type: 'normal',
     });
 
     await waitFor(() => {

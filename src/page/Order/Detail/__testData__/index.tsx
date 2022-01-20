@@ -148,26 +148,32 @@ export const orderWithExecScheduled = {
 } as IWorkflowResV1;
 
 export const orderWithExecuting = {
-  task_id: 16,
-  current_step_number: 2,
-  status: 'exec_scheduled',
-  schedule_time: '2021-12-16T20:09:55+08:00',
-  schedule_user: 'admin',
-  workflow_step_list: [
-    {
-      number: 1,
-      type: 'create_workflow',
-      operation_user_name: 'admin',
-      operation_time: '2021-12-16T20:06:10+08:00',
-    },
-    {
-      workflow_step_id: 27,
-      number: 2,
-      type: 'sql_execute',
-      assignee_user_name_list: ['admin'],
-      state: 'initialized',
-    },
-  ],
+  workflow_id: 13,
+  subject: 'testq',
+  create_user_name: 'admin',
+  create_time: '2021-12-16T20:06:10+08:00',
+  record: {
+    task_id: 36,
+    current_step_number: 2,
+    status: 'exec_scheduled',
+    schedule_time: '2021-12-16T20:09:55+08:00',
+    schedule_user: 'admin',
+    workflow_step_list: [
+      {
+        number: 1,
+        type: 'create_workflow',
+        operation_user_name: 'admin',
+        operation_time: '2021-12-16T20:06:10+08:00',
+      },
+      {
+        workflow_step_id: 27,
+        number: 2,
+        type: 'sql_execute',
+        assignee_user_name_list: ['admin'],
+        state: 'initialized',
+      },
+    ],
+  },
 } as IWorkflowResV1;
 
 export const order3 = {
@@ -176,7 +182,7 @@ export const order3 = {
   create_user_name: 'admin',
   create_time: '2021-04-29T05:41:24Z',
   record: {
-    task_id: 3,
+    task_id: 18,
     current_step_number: 2,
     status: 'on_process',
     workflow_step_list: [
@@ -208,7 +214,7 @@ export const orderPass3 = {
   create_user_name: 'admin',
   create_time: '2021-05-20T02:57:25Z',
   record: {
-    task_id: 7,
+    task_id: 19,
     status: 'finished',
     workflow_step_list: [
       {
@@ -245,7 +251,7 @@ export const orderCancel3 = {
   create_user_name: 'admin',
   create_time: '2021-05-20T02:46:32Z',
   record: {
-    task_id: 5,
+    task_id: 20,
     status: 'canceled',
     workflow_step_list: [
       {
@@ -278,7 +284,7 @@ export const orderReject3 = {
   create_user_name: 'admin',
   create_time: '2021-05-20T02:48:57Z',
   record: {
-    task_id: 6,
+    task_id: 21,
     status: 'rejected',
     workflow_step_list: [
       {
@@ -316,7 +322,7 @@ export const orderWithExecScheduled3 = {
   create_user_name: 'admin',
   create_time: '2021-12-16T19:10:02+08:00',
   record: {
-    task_id: 6,
+    task_id: 22,
     current_step_number: 3,
     status: 'exec_scheduled',
     schedule_time: '2021-12-18T19:16:59+08:00',
@@ -354,7 +360,7 @@ export const orderWithExecuting3 = {
   create_user_name: 'admin',
   create_time: '2021-12-16T19:37:02+08:00',
   record: {
-    task_id: 14,
+    task_id: 23,
     status: 'finished',
     workflow_step_list: [
       {
@@ -390,7 +396,7 @@ export const execScheduleSubmit3 = {
   create_user_name: 'admin',
   create_time: '2021-12-16T20:29:40+08:00',
   record: {
-    task_id: 23,
+    task_id: 24,
     current_step_number: 3,
     status: 'on_process',
     workflow_step_list: [
@@ -426,7 +432,7 @@ export const orderWithHistory = {
   create_user_name: 'admin',
   create_time: '2021-04-29T05:41:24Z',
   record: {
-    task_id: 3,
+    task_id: 25,
     current_step_number: 2,
     status: 'on_process',
     workflow_step_list: [
@@ -447,7 +453,7 @@ export const orderWithHistory = {
   },
   record_history_list: [
     {
-      task_id: 2,
+      task_id: 26,
       status: 'rejected',
       workflow_step_list: [
         {
@@ -472,7 +478,7 @@ export const orderWithHistory = {
 };
 
 export const taskInfo: IAuditTaskResV1 = {
-  task_id: 3,
+  task_id: 27,
   instance_name: 'db1',
   instance_schema: '',
   pass_rate: 0,

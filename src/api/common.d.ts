@@ -1,4 +1,5 @@
 import {
+  AuditPlanParamResV1TypeEnum,
   AuditTaskResV1AuditLevelEnum,
   AuditTaskResV1SqlSourceEnum,
   AuditTaskResV1StatusEnum,
@@ -14,13 +15,40 @@ import {
   WorkflowRecordResV1StatusEnum,
   WorkflowStepResV1StateEnum,
   WorkflowStepResV1TypeEnum,
-  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum
+  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
+  AuditPlanSQLHeadV2TypeEnum
 } from './common.enum';
 
 export interface IBaseRes {
   code?: number;
 
   message?: string;
+}
+
+export interface IAuditPlanMetaV1 {
+  audit_plan_params?: IAuditPlanParamResV1[];
+
+  audit_plan_type?: string;
+
+  audit_plan_type_desc?: string;
+
+  instance_type?: string;
+}
+
+export interface IAuditPlanParamReqV1 {
+  key?: string;
+
+  value?: string;
+}
+
+export interface IAuditPlanParamResV1 {
+  desc?: string;
+
+  key?: string;
+
+  type?: AuditPlanParamResV1TypeEnum;
+
+  value?: string;
 }
 
 export interface IAuditPlanReportResV1 {
@@ -47,6 +75,8 @@ export interface IAuditPlanResV1 {
   audit_plan_instance_database?: string;
 
   audit_plan_instance_name?: string;
+
+  audit_plan_meta?: IAuditPlanMetaV1;
 
   audit_plan_name?: string;
 
@@ -149,6 +179,10 @@ export interface ICreateAuditPlanReqV1 {
   audit_plan_instance_type?: string;
 
   audit_plan_name?: string;
+
+  audit_plan_params?: IAuditPlanParamReqV1[];
+
+  audit_plan_type?: string;
 }
 
 export interface ICreateAuditWhitelistReqV1 {
@@ -243,6 +277,14 @@ export interface IDriversResV1 {
 
 export interface IFullSyncAuditPlanSQLsReqV1 {
   audit_plan_sql_list?: IAuditPlanSQLReqV1[];
+}
+
+export interface IGetAuditPlanMetasResV1 {
+  code?: number;
+
+  data?: IAuditPlanMetaV1[];
+
+  message?: string;
 }
 
 export interface IGetAuditPlanReportSQLsResV1 {
@@ -753,6 +795,8 @@ export interface IUpdateAuditPlanReqV1 {
   audit_plan_instance_database?: string;
 
   audit_plan_instance_name?: string;
+
+  audit_plan_params?: IAuditPlanParamReqV1[];
 }
 
 export interface IUpdateAuditTaskSQLsReqV1 {
@@ -1015,4 +1059,46 @@ export interface IWorkflowTemplateResV1 {
 
 export interface IWorkflowTemplateTipResV1 {
   workflow_template_name?: string;
+}
+
+export interface IAuditPlanReportSQLResV2 {
+  audit_plan_report_sql?: string;
+
+  audit_plan_report_sql_audit_result?: string;
+}
+
+export interface IAuditPlanSQLHeadV2 {
+  desc?: string;
+
+  name?: string;
+
+  type?: AuditPlanSQLHeadV2TypeEnum;
+}
+
+export interface IAuditPlanSQLResV2 {
+  head?: IAuditPlanSQLHeadV2[];
+
+  rows?: Array<{
+    [key: string]: string;
+  }>;
+}
+
+export interface IGetAuditPlanReportSQLsResV2 {
+  code?: number;
+
+  data?: IAuditPlanReportSQLResV2[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
+export interface IGetAuditPlanSQLsResV2 {
+  code?: number;
+
+  data?: IAuditPlanSQLResV2;
+
+  message?: string;
+
+  total_nums?: number;
 }

@@ -7,6 +7,8 @@ import ServiceBase from '../Service.base';
 import { AxiosRequestConfig } from 'axios';
 
 import {
+  IGetAuditPlanMetasV1Params,
+  IGetAuditPlanMetasV1Return,
   IGetAuditPlansV1Params,
   IGetAuditPlansV1Return,
   ICreateAuditPlanV1Params,
@@ -28,10 +30,26 @@ import {
   IPartialSyncAuditPlanSQLsV1Params,
   IPartialSyncAuditPlanSQLsV1Return,
   ITriggerAuditPlanV1Params,
-  ITriggerAuditPlanV1Return
+  ITriggerAuditPlanV1Return,
+  IGetAuditPlanReportSQLsV2Params,
+  IGetAuditPlanReportSQLsV2Return,
+  IGetAuditPlanSQLsV2Params,
+  IGetAuditPlanSQLsV2Return
 } from './index.d';
 
 class AuditPlanService extends ServiceBase {
+  public getAuditPlanMetasV1(
+    params: IGetAuditPlanMetasV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.get<IGetAuditPlanMetasV1Return>(
+      '/v1/audit_plan_metas',
+      paramsData,
+      options
+    );
+  }
+
   public getAuditPlansV1(
     params: IGetAuditPlansV1Params,
     options?: AxiosRequestConfig
@@ -189,6 +207,39 @@ class AuditPlanService extends ServiceBase {
 
     return this.post<ITriggerAuditPlanV1Return>(
       `/v1/audit_plans/${audit_plan_name}/trigger`,
+      paramsData,
+      options
+    );
+  }
+
+  public getAuditPlanReportSQLsV2(
+    params: IGetAuditPlanReportSQLsV2Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const audit_plan_name = paramsData.audit_plan_name;
+    delete paramsData.audit_plan_name;
+
+    const audit_plan_report_id = paramsData.audit_plan_report_id;
+    delete paramsData.audit_plan_report_id;
+
+    return this.get<IGetAuditPlanReportSQLsV2Return>(
+      `/v2/audit_plans/${audit_plan_name}/report/${audit_plan_report_id}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public getAuditPlanSQLsV2(
+    params: IGetAuditPlanSQLsV2Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const audit_plan_name = paramsData.audit_plan_name;
+    delete paramsData.audit_plan_name;
+
+    return this.get<IGetAuditPlanSQLsV2Return>(
+      `/v2/audit_plans/${audit_plan_name}/sqls`,
       paramsData,
       options
     );

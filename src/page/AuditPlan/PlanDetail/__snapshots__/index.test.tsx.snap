@@ -11,6 +11,9 @@ exports[`PlanDetail should match snapshot 1`] = `
     ghost={false}
     title="auditPlan.detailPage.pageTitle"
   >
+    <Paragraph>
+      auditPlan.detailPage.auditTaskType
+    </Paragraph>
     auditPlan.detailPage.pageDesc
   </PageHeader>
   <section

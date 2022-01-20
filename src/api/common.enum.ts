@@ -1,3 +1,11 @@
+export enum AuditPlanParamResV1TypeEnum {
+  'string' = 'string',
+
+  'int' = 'int',
+
+  'bool' = 'bool'
+}
+
 export enum AuditTaskResV1AuditLevelEnum {
   'normal' = 'normal',
 
@@ -150,4 +158,8 @@ export enum WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum {
   'warn' = 'warn',
 
   'error' = 'error'
+}
+
+export enum AuditPlanSQLHeadV2TypeEnum {
+  'sql' = 'sql'
 }

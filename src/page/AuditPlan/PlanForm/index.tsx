@@ -1,57 +1,43 @@
 import { useBoolean } from 'ahooks';
-import { Button, Form, Input, Select, Space } from 'antd';
+import { Button, Form, Input, Space } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import instance from '../../../api/instance';
-import { IGetInstanceTipListV1Params } from '../../../api/instance/index.d';
+import { IAuditPlanParamResV1 } from '../../../api/common';
+import useAsyncParams from '../../../components/BackendForm/useAsyncParams';
 import CronInput from '../../../components/CronInput';
-import { PageBigFormLayout, ResponseCode } from '../../../data/common';
+import { PageBigFormLayout } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { checkCron } from '../../../hooks/useCron/cron.tool';
-import useDatabaseType from '../../../hooks/useDatabaseType';
-import useInstance from '../../../hooks/useInstance';
-import useInstanceSchema from '../../../hooks/useInstanceSchema';
 import EventEmitter from '../../../utils/EventEmitter';
 import { nameRule } from '../../../utils/FormRule';
+import { AuditTaskType } from './AuditTaskType';
+import { DataSource } from './DataSource';
 import { PlanFormField, PlanFormProps } from './index.type';
 
 const PlanForm: React.FC<PlanFormProps> = (props) => {
   const { t } = useTranslation();
 
-  const [dataSource, setDataSource] = useState('');
   const [form] = useForm<PlanFormField>();
 
-  const { updateDriverNameList, generateDriverSelectOptions } =
-    useDatabaseType();
-
-  const getInstanceParams = useMemo<IGetInstanceTipListV1Params>(() => {
-    if (!!props.defaultValue) {
-      return { filter_db_type: props.defaultValue.audit_plan_db_type };
-    }
-    return {};
-  }, [props.defaultValue]);
-
-  const { updateInstanceList, generateInstanceSelectOption } = useInstance();
-  const { generateInstanceSchemaSelectOption } = useInstanceSchema(dataSource);
-
-  const handleDataSourceChange = (dataSource: string) => {
-    setDataSource(dataSource);
-    if (!!dataSource) {
-      instance.getInstanceV1({ instance_name: dataSource }).then((res) => {
-        if (res.data.code === ResponseCode.SUCCESS) {
-          form.setFieldsValue({
-            dbType: res.data.data?.db_type,
-          });
-        }
-      });
-    }
-  };
+  const [dbType, setDbType] = useState('');
+  const [dataSource, setDataSource] = useState('');
 
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
     useBoolean();
 
+  const [asyncParams, setAsyncParams] = useState<
+    IAuditPlanParamResV1[] | undefined
+  >([]);
+
+  const { mergeFromValueIntoParams } = useAsyncParams();
+
   const submit = (values: PlanFormField) => {
+    if (values.params && asyncParams) {
+      const params = values.params;
+      delete values.params;
+      values.asyncParams = mergeFromValueIntoParams(params, asyncParams);
+    }
     startSubmit();
     props.submit(values).finally(() => {
       submitFinish();
@@ -79,19 +65,12 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
       if (!!props.defaultValue.audit_plan_instance_name) {
         setDataSource(props.defaultValue.audit_plan_instance_name);
       }
+      if (!!props.defaultValue.audit_plan_db_type) {
+        setDbType(props.defaultValue.audit_plan_db_type);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.defaultValue]);
-
-  useEffect(() => {
-    updateDriverNameList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    updateInstanceList(getInstanceParams);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [getInstanceParams]);
 
   useEffect(() => {
     const reset = () => {
@@ -121,40 +100,19 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
           placeholder={t('common.form.placeholder.input')}
         />
       </Form.Item>
-      <Form.Item
-        label={t('auditPlan.planForm.databaseName')}
-        name="databaseName"
-        tooltip={t('auditPlan.planForm.databaseNameTips')}
-      >
-        <Select
-          allowClear
-          onChange={handleDataSourceChange}
-          placeholder={t('common.form.placeholder.select')}
-        >
-          {generateInstanceSelectOption()}
-        </Select>
-      </Form.Item>
-      <Form.Item label={t('auditPlan.planForm.schema')} name="schema">
-        <Select allowClear placeholder={t('common.form.placeholder.select')}>
-          {generateInstanceSchemaSelectOption()}
-        </Select>
-      </Form.Item>
-      <Form.Item
-        label={t('auditPlan.planForm.dbType')}
-        name="dbType"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Select
-          disabled={!!dataSource || !!props.defaultValue}
-          placeholder={t('common.form.placeholder.select')}
-        >
-          {generateDriverSelectOptions()}
-        </Select>
-      </Form.Item>
+      <DataSource
+        dataSource={dataSource}
+        form={form}
+        dataSourceChange={setDataSource}
+        dbTypeChange={setDbType}
+        defaultValue={props.defaultValue}
+      />
+      <AuditTaskType
+        dbType={dbType}
+        form={form}
+        updateCurrentTypeParams={setAsyncParams}
+        defaultValue={props.defaultValue}
+      />
       <Form.Item
         label={t('auditPlan.planForm.cron')}
         name="cron"

@@ -6,6 +6,7 @@ import {
   act,
 } from '@testing-library/react';
 import PlanForm from '.';
+import audit_plan from '../../../api/audit_plan';
 import instance from '../../../api/instance';
 import EmitterKey from '../../../data/EmitterKey';
 import { getBySelector } from '../../../testUtils/customQuery';
@@ -17,6 +18,7 @@ import {
 } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 import { dataSourceInstance } from '../../DataSource/__testData__';
+import { auditTaskMetas } from './__testData__/auditMeta';
 
 describe('PlanForm', () => {
   let warningSpy!: jest.SpyInstance;
@@ -37,6 +39,7 @@ describe('PlanForm', () => {
     mockUseInstance();
     mockUseInstanceSchema();
     mockGetInstance();
+    mockGetAuditMeta();
   });
 
   afterEach(() => {
@@ -52,6 +55,12 @@ describe('PlanForm', () => {
   const mockGetInstance = () => {
     const spy = jest.spyOn(instance, 'getInstanceV1');
     spy.mockImplementation(() => resolveThreeSecond(dataSourceInstance));
+    return spy;
+  };
+
+  const mockGetAuditMeta = () => {
+    const spy = jest.spyOn(audit_plan, 'getAuditPlanMetasV1');
+    spy.mockImplementation(() => resolveThreeSecond(auditTaskMetas));
     return spy;
   };
 
@@ -100,7 +109,7 @@ describe('PlanForm', () => {
 
   test('should submit form value when user input all required fields and click submit button', async () => {
     const submitFn = jest.fn().mockImplementation(() => resolveThreeSecond({}));
-
+    const getAuditMetasSpy = mockGetAuditMeta();
     const { container } = render(<PlanForm submit={submitFn} />);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -133,6 +142,29 @@ describe('PlanForm', () => {
     expect(schemaOptions[1]).toHaveClass('ant-select-item-option-content');
     fireEvent.click(schemaOptions[1]);
 
+    expect(getAuditMetasSpy).toBeCalledTimes(1);
+    expect(getAuditMetasSpy).toBeCalledWith({
+      filter_instance_type: 'mysql',
+    });
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    fireEvent.mouseDown(screen.getByLabelText('auditPlan.planForm.taskType'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const auditTaskTypeOptions = screen.getAllByText('普通的SQL审核');
+    expect(auditTaskTypeOptions[0]).toHaveClass(
+      'ant-select-item-option-content'
+    );
+    fireEvent.click(auditTaskTypeOptions[0]);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
     fireEvent.click(screen.getByText('common.submit'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
@@ -150,6 +182,27 @@ describe('PlanForm', () => {
       dbType: 'mysql',
       name: 'planName1',
       schema: 'schema1',
+      asyncParams: [
+        {
+          desc: '字段a',
+          key: 'a',
+          type: 'string',
+          value: '123',
+        },
+        {
+          desc: '字段b',
+          key: 'b',
+          type: 'int',
+          value: '123',
+        },
+        {
+          desc: '字段c',
+          key: 'c',
+          type: 'bool',
+          value: 'true',
+        },
+      ],
+      auditTaskType: 'normal',
     });
 
     await waitFor(() => {

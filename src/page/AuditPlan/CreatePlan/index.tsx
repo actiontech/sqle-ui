@@ -23,6 +23,8 @@ const CreateAuditPlan = () => {
         audit_plan_instance_name: values.databaseName,
         audit_plan_instance_type: values.dbType,
         audit_plan_name: values.name,
+        audit_plan_type: values.auditTaskType,
+        audit_plan_params: values.asyncParams,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
