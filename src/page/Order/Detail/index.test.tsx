@@ -11,6 +11,7 @@ import {
   orderReject,
   orderPass,
   instanceWorkflowTemplate,
+  taskInfoErrorAuditLevel,
 } from './__testData__';
 import { waitFor, screen, fireEvent } from '@testing-library/react';
 import { useParams } from 'react-router';
@@ -23,6 +24,7 @@ import {
 } from '../../../testUtils/customQuery';
 import { SupportTheme } from '../../../theme';
 import instance from '../../../api/instance';
+import { AuditTaskResV1AuditLevelEnum } from '../../../api/common.enum';
 
 jest.mock('react-router', () => {
   return {
@@ -77,6 +79,7 @@ describe('Order/Detail', () => {
       resolveThreeSecond({
         pass_rate: 0.2,
         task_id: 33,
+        audit_level: AuditTaskResV1AuditLevelEnum.normal,
       })
     );
     return spy;
@@ -454,5 +457,71 @@ describe('Order/Detail', () => {
     expect(
       screen.queryByText('order.modifySql.giveUpUpdate')
     ).not.toBeInTheDocument();
+  });
+
+  test('should be set update order button to disabled  when the sql audit result level does not conform to the configuration', async () => {
+    const getWorkflowSpy = mockGetWorkflow();
+    getWorkflowSpy.mockImplementation(() => resolveThreeSecond(orderReject));
+
+    const workflowUpdateSpy = jest.spyOn(workflow, 'updateWorkflowV1');
+    workflowUpdateSpy.mockImplementation(() => resolveThreeSecond({}));
+
+    const createTaskSpy = mockCreateTask();
+    createTaskSpy.mockImplementation(() =>
+      resolveThreeSecond(taskInfoErrorAuditLevel)
+    );
+
+    mockGetTask();
+    mockGetTaskSqls();
+    mockGetSqlContent();
+    renderWithThemeAndRouter(<Order />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.click(screen.getByText('order.operator.modifySql'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    act(() => {
+      fireEvent.click(screen.getByText('common.submit'));
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(
+      screen.getByText('order.modifySql.updateOrder').closest('button')
+    ).toHaveAttribute('disabled');
+
+    createTaskSpy.mockImplementation(() => resolveThreeSecond(taskInfo));
+
+    fireEvent.click(screen.getByText('order.operator.modifySql'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    act(() => {
+      fireEvent.click(screen.getByText('common.submit'));
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.getByText('order.modifySql.updateOrder').closest('button')
+    ).not.toHaveAttribute('disabled');
   });
 });

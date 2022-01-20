@@ -3,7 +3,10 @@ import {
   IWorkflowResV1,
   IWorkflowTemplateDetailResV1,
 } from '../../../../api/common';
-import { WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum } from '../../../../api/common.enum';
+import {
+  AuditTaskResV1AuditLevelEnum,
+  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
+} from '../../../../api/common.enum';
 
 export const order = {
   workflow_id: 1,
@@ -475,6 +478,17 @@ export const taskInfo: IAuditTaskResV1 = {
   pass_rate: 0,
   status: 'audited',
   sql_source: 'form_data',
+  audit_level: AuditTaskResV1AuditLevelEnum.normal,
+} as IAuditTaskResV1;
+
+export const taskInfoErrorAuditLevel: IAuditTaskResV1 = {
+  task_id: 3,
+  instance_name: 'db1',
+  instance_schema: '',
+  pass_rate: 0,
+  status: 'audited',
+  sql_source: 'form_data',
+  audit_level: AuditTaskResV1AuditLevelEnum.error,
 } as IAuditTaskResV1;
 
 export const taskSqls = [

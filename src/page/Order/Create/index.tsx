@@ -146,7 +146,6 @@ const CreateOrder = () => {
     setDisabledOperatorOrderBtnTips,
   ]);
 
-  // const disabledOperatorOrderBtnTips =
   return (
     <>
       <PageHeader title={t('order.baseInfo.title')} ghost={false}>
@@ -230,7 +229,7 @@ const CreateOrder = () => {
                   title={t('order.createOrder.dirtyDataTips')}
                   onConfirm={create}
                   overlayClassName="popconfirm-small"
-                  disabled={createLoading}
+                  disabled={createLoading || isCreateOrderDisabled}
                   placement="topRight"
                 >
                   <Tooltip
