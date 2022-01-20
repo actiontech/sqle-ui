@@ -73,6 +73,7 @@ const CreateOrder = () => {
           judgeAuditLevel(
             res.data.data.instance_name,
             setCreateOrderDisabled,
+            resetCreateOrderBtnStatus,
             res.data.data.audit_level as
               | CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
               | undefined
@@ -80,7 +81,7 @@ const CreateOrder = () => {
         }
       }
     },
-    [judgeAuditLevel, setCreateOrderDisabled]
+    [judgeAuditLevel, resetCreateOrderBtnStatus, setCreateOrderDisabled]
   );
 
   const create = React.useCallback(async () => {
@@ -145,7 +146,6 @@ const CreateOrder = () => {
     setDisabledOperatorOrderBtnTips,
   ]);
 
-  // const disabledOperatorOrderBtnTips =
   return (
     <>
       <PageHeader title={t('order.baseInfo.title')} ghost={false}>
@@ -229,7 +229,7 @@ const CreateOrder = () => {
                   title={t('order.createOrder.dirtyDataTips')}
                   onConfirm={create}
                   overlayClassName="popconfirm-small"
-                  disabled={createLoading}
+                  disabled={createLoading || isCreateOrderDisabled}
                   placement="topRight"
                 >
                   <Tooltip

@@ -20,7 +20,8 @@ export const useAllowAuditLevel = () => {
     useState('');
   const judgeAuditLevel = async (
     instanceName: string,
-    setCreateOrderDisabled: () => void,
+    setBtnDisabled: () => void,
+    resetBtnDisabled: () => void,
     currentAuditLevel?: CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
   ) => {
     const {
@@ -43,7 +44,10 @@ export const useAllowAuditLevel = () => {
           currentAuditLevel: currentAuditLevel,
         })
       );
-      setCreateOrderDisabled();
+      setBtnDisabled();
+    } else {
+      resetBtnDisabled();
+      setDisabledOperatorOrderBtnTips('');
     }
   };
 

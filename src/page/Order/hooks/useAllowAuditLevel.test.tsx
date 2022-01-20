@@ -28,7 +28,8 @@ describe('Order/useAllowAuditLevel', () => {
 
   test('should be in line with expectations at judgeAuditLevel', async () => {
     const mockGetInstanceSpy = mockGetInstanceWorkflowTemplate();
-    const setCreateOrderDisabled = jest.fn();
+    const setBtnDisabled = jest.fn();
+    const resetBtnDisabled = jest.fn();
     const { result, waitForNextUpdate } = renderHook(() =>
       useAllowAuditLevel()
     );
@@ -36,7 +37,8 @@ describe('Order/useAllowAuditLevel', () => {
     act(() => {
       result.current.judgeAuditLevel(
         'test',
-        setCreateOrderDisabled,
+        setBtnDisabled,
+        resetBtnDisabled,
         CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.error
       );
     });
@@ -46,7 +48,8 @@ describe('Order/useAllowAuditLevel', () => {
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 
-    expect(setCreateOrderDisabled).toBeCalledTimes(1);
+    expect(setBtnDisabled).toBeCalledTimes(1);
+    expect(resetBtnDisabled).toBeCalledTimes(0);
     expect(result.current.disabledOperatorOrderBtnTips).toEqual(
       'order.operator.disabledOperatorOrderBtnTips'
     );
@@ -57,13 +60,17 @@ describe('Order/useAllowAuditLevel', () => {
       result.current.setDisabledOperatorOrderBtnTips('');
       result.current.judgeAuditLevel(
         'test',
-        setCreateOrderDisabled,
+        setBtnDisabled,
+        resetBtnDisabled,
         CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal
       );
     });
     expect(mockGetInstanceSpy).toBeCalledTimes(1);
     jest.advanceTimersByTime(3000);
-    expect(setCreateOrderDisabled).toBeCalledTimes(0);
+    await waitForNextUpdate();
+
+    expect(setBtnDisabled).toBeCalledTimes(0);
+    expect(resetBtnDisabled).toBeCalledTimes(1);
     expect(result.current.disabledOperatorOrderBtnTips).toEqual('');
   });
 });

@@ -18,6 +18,7 @@ import EventEmitter from '../../../utils/EventEmitter';
 import {
   instanceWorkflowTemplate,
   taskInfo,
+  taskInfoErrorAuditLevel,
   taskSqls,
 } from '../Detail/__testData__';
 
@@ -279,5 +280,93 @@ describe('Order/Create', () => {
     expect(
       screen.queryByText('order.createOrder.dirtyDataTips')
     ).toBeInTheDocument();
+  });
+
+  test('should be set create order button to disabled  when the sql audit result level does not conform to the configuration', async () => {
+    const createTaskSpy = mockCreateTask();
+    createTaskSpy.mockImplementation(() =>
+      resolveThreeSecond(taskInfoErrorAuditLevel)
+    );
+    const createOrderSpy = mockCreateOrder();
+    const getInstanceWorkflowTemplate = mockGetInstanceWorkflowTemplate();
+    mockGetTaskSql();
+    renderWithThemeAndRouter(<CreateOrder />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(getInstanceWorkflowTemplate).toBeCalledTimes(0);
+    expect(createTaskSpy).toBeCalledTimes(0);
+    expect(createOrderSpy).toBeCalledTimes(0);
+
+    fireEvent.input(screen.getByLabelText('order.baseInfo.name'), {
+      target: { value: 'orderName' },
+    });
+
+    fireEvent.mouseDown(screen.getByLabelText('order.sqlInfo.instanceName'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const instanceOptions = screen.getAllByText('instance1');
+    const instance = instanceOptions[1];
+    fireEvent.click(instance);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
+      target: { value: 'select * from table2' },
+    });
+
+    fireEvent.click(screen.getByText('order.sqlInfo.audit'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(getInstanceWorkflowTemplate).toBeCalledTimes(1);
+    expect(createTaskSpy).toBeCalledTimes(1);
+
+    expect(
+      screen.getByText('order.createOrder.title').closest('button')
+    ).toHaveAttribute('disabled');
+
+    fireEvent.click(screen.getByText('order.createOrder.title'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(createOrderSpy).toBeCalledTimes(0);
+
+    fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
+      target: { value: 'select * from table3' },
+    });
+    expect(
+      screen.getByText('order.createOrder.title').closest('button')
+    ).toHaveAttribute('disabled');
+
+    createTaskSpy.mockImplementation(() => resolveThreeSecond(taskInfo));
+    fireEvent.click(screen.getByText('order.sqlInfo.audit'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.getByText('order.createOrder.title').closest('button')
+    ).not.toHaveAttribute('disabled');
+
+    fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
+      target: { value: 'select * from table3' },
+    });
+    expect(
+      screen.getByText('order.createOrder.title').closest('button')
+    ).not.toHaveAttribute('disabled');
   });
 });
