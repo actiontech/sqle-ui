@@ -27,6 +27,7 @@ const UpdateAuditPlan = () => {
         audit_plan_instance_database: values.schema,
         audit_plan_instance_name: values.databaseName,
         audit_plan_name: urlParams.auditPlanName,
+        audit_plan_params: values.asyncParams,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {

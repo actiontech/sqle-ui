@@ -46,6 +46,8 @@ export default {
     cron: '任务审核周期',
     schema: '数据库',
 
+    taskType: '审核任务类型',
+
     databaseNameTips:
       '如果您没有指定数据源，那么该审核任务将使用您所选择的数据库类型的默认规则模版进行静态审核',
   },

@@ -1,4 +1,4 @@
-import { IAuditPlanResV1 } from '../../../api/common';
+import { IAuditPlanParamResV1, IAuditPlanResV1 } from '../../../api/common';
 
 export type PlanFormField = {
   name: string;
@@ -6,6 +6,11 @@ export type PlanFormField = {
   schema?: string;
   dbType: string;
   cron: string;
+  auditTaskType: string;
+  params?: {
+    [key: string]: string | boolean;
+  };
+  asyncParams?: IAuditPlanParamResV1[];
 };
 
 export type PlanFormProps = {
