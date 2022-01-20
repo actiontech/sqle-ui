@@ -159,3 +159,7 @@ export enum WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum {
 
   'error' = 'error'
 }
+
+export enum AuditPlanSQLHeadV2TypeEnum {
+  'sql' = 'sql'
+}

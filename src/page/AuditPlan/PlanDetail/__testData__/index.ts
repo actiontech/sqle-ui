@@ -43,20 +43,20 @@ export const AuditPlanReportList = [
 
 export const AuditPlanSqlsRes = {
   head: [
-    { name: 'a', desc: '列a' },
+    { name: 'a', desc: '列a', type: 'sql' },
     { name: 'b', desc: '列b' },
   ],
   rows: [
-    { a: 'a71', b: 'b72' },
-    { a: 'a73', b: 'b74' },
-    { a: 'a75', b: 'b76' },
-    { a: 'a77', b: 'b78' },
-    { a: 'a79', b: 'b80' },
-    { a: 'a81', b: 'b82' },
-    { a: 'a83', b: 'b84' },
-    { a: 'a85', b: 'b86' },
-    { a: 'a87', b: 'b88' },
-    { a: 'a89', b: 'b90' },
+    { a: 'select * from t1 where 1 = 1', b: 'b72' },
+    { a: 'select * from t1 where 1 = 2', b: 'b74' },
+    { a: 'select * from t1 where 1 = 3', b: 'b76' },
+    { a: 'select * from t1 where 1 = 4', b: 'b78' },
+    { a: 'select * from t1 where 1 = 5', b: 'b80' },
+    { a: 'select * from t1 where 1 = 6', b: 'b82' },
+    { a: 'select * from t1 where 1 = 7', b: 'b84' },
+    { a: 'select * from t1 where 1 = 8', b: 'b86' },
+    { a: 'select * from t1 where 1 = 9', b: 'b88' },
+    { a: 'select * from t1 where 1 = 10', b: 'b90' },
   ],
 };
 export const AuditReport = [

@@ -15,7 +15,8 @@ import {
   WorkflowRecordResV1StatusEnum,
   WorkflowStepResV1StateEnum,
   WorkflowStepResV1TypeEnum,
-  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum
+  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
+  AuditPlanSQLHeadV2TypeEnum
 } from './common.enum';
 
 export interface IBaseRes {
@@ -1070,6 +1071,8 @@ export interface IAuditPlanSQLHeadV2 {
   desc?: string;
 
   name?: string;
+
+  type?: AuditPlanSQLHeadV2TypeEnum;
 }
 
 export interface IAuditPlanSQLResV2 {

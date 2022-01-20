@@ -310,7 +310,51 @@ exports[`SqlPool should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          a71
+                          <pre
+                            class="pre-warp-break-all"
+                          >
+                            <span
+                              class="hljs-keyword"
+                            >
+                              select
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              *
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              from
+                            </span>
+                             t1 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              where
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              1
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              =
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              1
+                            </span>
+                          </pre>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -324,7 +368,51 @@ exports[`SqlPool should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          a73
+                          <pre
+                            class="pre-warp-break-all"
+                          >
+                            <span
+                              class="hljs-keyword"
+                            >
+                              select
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              *
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              from
+                            </span>
+                             t1 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              where
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              1
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              =
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              2
+                            </span>
+                          </pre>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -338,7 +426,51 @@ exports[`SqlPool should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          a75
+                          <pre
+                            class="pre-warp-break-all"
+                          >
+                            <span
+                              class="hljs-keyword"
+                            >
+                              select
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              *
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              from
+                            </span>
+                             t1 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              where
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              1
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              =
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              3
+                            </span>
+                          </pre>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -352,7 +484,51 @@ exports[`SqlPool should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          a77
+                          <pre
+                            class="pre-warp-break-all"
+                          >
+                            <span
+                              class="hljs-keyword"
+                            >
+                              select
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              *
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              from
+                            </span>
+                             t1 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              where
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              1
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              =
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              4
+                            </span>
+                          </pre>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -366,7 +542,51 @@ exports[`SqlPool should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          a79
+                          <pre
+                            class="pre-warp-break-all"
+                          >
+                            <span
+                              class="hljs-keyword"
+                            >
+                              select
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              *
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              from
+                            </span>
+                             t1 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              where
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              1
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              =
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              5
+                            </span>
+                          </pre>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -380,7 +600,51 @@ exports[`SqlPool should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          a81
+                          <pre
+                            class="pre-warp-break-all"
+                          >
+                            <span
+                              class="hljs-keyword"
+                            >
+                              select
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              *
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              from
+                            </span>
+                             t1 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              where
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              1
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              =
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              6
+                            </span>
+                          </pre>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -394,7 +658,51 @@ exports[`SqlPool should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          a83
+                          <pre
+                            class="pre-warp-break-all"
+                          >
+                            <span
+                              class="hljs-keyword"
+                            >
+                              select
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              *
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              from
+                            </span>
+                             t1 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              where
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              1
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              =
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              7
+                            </span>
+                          </pre>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -408,7 +716,51 @@ exports[`SqlPool should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          a85
+                          <pre
+                            class="pre-warp-break-all"
+                          >
+                            <span
+                              class="hljs-keyword"
+                            >
+                              select
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              *
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              from
+                            </span>
+                             t1 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              where
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              1
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              =
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              8
+                            </span>
+                          </pre>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -422,7 +774,51 @@ exports[`SqlPool should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          a87
+                          <pre
+                            class="pre-warp-break-all"
+                          >
+                            <span
+                              class="hljs-keyword"
+                            >
+                              select
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              *
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              from
+                            </span>
+                             t1 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              where
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              1
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              =
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              9
+                            </span>
+                          </pre>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -436,7 +832,51 @@ exports[`SqlPool should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          a89
+                          <pre
+                            class="pre-warp-break-all"
+                          >
+                            <span
+                              class="hljs-keyword"
+                            >
+                              select
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              *
+                            </span>
+                             
+                            <span
+                              class="hljs-keyword"
+                            >
+                              from
+                            </span>
+                             t1 
+                            <span
+                              class="hljs-keyword"
+                            >
+                              where
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              1
+                            </span>
+                             
+                            <span
+                              class="hljs-operator"
+                            >
+                              =
+                            </span>
+                             
+                            <span
+                              class="hljs-number"
+                            >
+                              10
+                            </span>
+                          </pre>
                         </td>
                         <td
                           class="ant-table-cell"

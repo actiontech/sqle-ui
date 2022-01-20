@@ -5,10 +5,13 @@ import { ColumnType } from 'antd/lib/table';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import audit_plan from '../../../../../api/audit_plan';
+import { IAuditPlanSQLHeadV2 } from '../../../../../api/common.d';
+import { AuditPlanSQLHeadV2TypeEnum } from '../../../../../api/common.enum';
 import { ResponseCode } from '../../../../../data/common';
 import EmitterKey from '../../../../../data/EmitterKey';
 import useTable from '../../../../../hooks/useTable';
 import EventEmitter from '../../../../../utils/EventEmitter';
+import HighlightCode from '../../../../../utils/HighlightCode';
 
 const SqlPool: React.FC<{ auditPlanName: string }> = (props) => {
   const { t } = useTranslation();
@@ -37,9 +40,22 @@ const SqlPool: React.FC<{ auditPlanName: string }> = (props) => {
       onSuccess: (res) => {
         const { head = [] } = res;
         setColumns(
-          head.map((item: any) => ({
+          (head as IAuditPlanSQLHeadV2[]).map((item) => ({
             title: item.desc,
             dataIndex: item.name,
+            render: (text) => {
+              if (item.type === AuditPlanSQLHeadV2TypeEnum.sql) {
+                return (
+                  <pre
+                    dangerouslySetInnerHTML={{
+                      __html: HighlightCode.highlightSql(text),
+                    }}
+                    className="pre-warp-break-all"
+                  ></pre>
+                );
+              }
+              return text;
+            },
           }))
         );
       },
