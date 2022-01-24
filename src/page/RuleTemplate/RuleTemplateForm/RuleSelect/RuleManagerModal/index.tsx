@@ -101,6 +101,7 @@ const RuleManagerModal: React.FC<RuleManagerFormProps> = (props) => {
               style={{ color: theme.common.color.disabledFont }}
               disabled
               value={props.ruleData?.desc}
+              autoSize={{ minRows: 1, maxRows: 6 }}
             />
           </Form.Item>
           <Form.Item
@@ -178,6 +179,7 @@ const RuleManagerModal: React.FC<RuleManagerFormProps> = (props) => {
                   key={item.key}
                   label={item.desc ?? ''}
                   name={item.key}
+                  className="wrap-form-item"
                 >
                   <Input />
                 </Form.Item>

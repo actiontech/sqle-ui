@@ -98,7 +98,7 @@ exports[`RuleSelect/RuleManagerModal should render base form at init 1`] = `
                           class="ant-input ant-input-disabled"
                           disabled=""
                           id="desc"
-                          style="color: rgba(0, 0, 0, 0.85);"
+                          style="color: rgba(0, 0, 0, 0.85); height: -24px; min-height: -4px; max-height: -24px; overflow-y: hidden; resize: none; overflow-x: hidden;"
                         >
                           建议使用规定的数据库排序规则
                         </textarea>
@@ -295,5 +295,20 @@ exports[`RuleSelect/RuleManagerModal should render base form at init 1`] = `
       </div>
     </div>
   </div>
+  <textarea
+    aria-hidden="true"
+    style="letter-spacing:normal;line-height:normal;padding-top:2px;padding-bottom:2px;font-family:-webkit-small-control;font-weight:;font-size:;font-variant:;text-rendering:auto;text-transform:none;width:;text-indent:0;padding-left:2px;padding-right:2px;border-width:1px;box-sizing:;
+  min-height:0 !important;
+  max-height:none !important;
+  height:0 !important;
+  visibility:hidden !important;
+  overflow:hidden !important;
+  position:absolute !important;
+  z-index:-1000 !important;
+  top:0 !important;
+  right:0 !important
+"
+    tab-index="-1"
+  />
 </body>
 `;
