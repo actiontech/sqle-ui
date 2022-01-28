@@ -14,10 +14,12 @@ import user from '../../../../../api/user';
 import UserForm from '../UserForm';
 import { IUserFormFields } from '../UserForm/index.type';
 import useRole from '../../../../../hooks/useRole';
+import useUserGroup from '../../../../../hooks/useUserGroup';
 
 const AddUser = () => {
   const [form] = useForm<IUserFormFields>();
   const { roleList, updateRoleList } = useRole();
+  const { userGroupList, updateUserGroupList } = useUserGroup();
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [createLoading, { setTrue, setFalse }] = useBoolean();
@@ -64,8 +66,9 @@ const AddUser = () => {
   React.useEffect(() => {
     if (visible) {
       updateRoleList();
+      updateUserGroupList();
     }
-  }, [updateRoleList, visible]);
+  }, [updateRoleList, updateUserGroupList, visible]);
 
   return (
     <Modal
@@ -83,11 +86,10 @@ const AddUser = () => {
         </>
       }
     >
-      {/* todo: userGroupList */}
       <UserForm
         form={form}
         roleNameList={roleList}
-        userGroupList={['group1']}
+        userGroupList={userGroupList}
       />
     </Modal>
   );

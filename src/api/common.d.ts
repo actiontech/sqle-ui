@@ -553,6 +553,14 @@ export interface IGetUserDetailResV1 {
   message?: string;
 }
 
+export interface IGetUserGroupTipsResV1 {
+  code?: number;
+
+  data?: IUserGroupTipListItem[];
+
+  message?: string;
+}
+
 export interface IGetUserGroupsResV1 {
   code?: number;
 
@@ -951,6 +959,10 @@ export interface IUserGroupListItemResV1 {
   user_group_name?: string;
 
   user_name_list?: string[];
+}
+
+export interface IUserGroupTipListItem {
+  user_group_name?: string;
 }
 
 export interface IUserLoginReqV1 {

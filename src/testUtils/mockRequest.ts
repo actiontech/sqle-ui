@@ -5,6 +5,7 @@ import ruleTemplate from '../api/rule_template';
 import user from '../api/user';
 import workflow from '../api/workflow';
 import configuration from '../api/configuration';
+import user_group from '../api/user_group';
 
 export const successData = (data: any, otherData?: any) => {
   return {
@@ -135,6 +136,14 @@ export const mockUseRole = () => {
   const spy = jest.spyOn(role, 'getRoleTipListV1');
   spy.mockImplementation(() =>
     resolveThreeSecond([{ role_name: 'role_name1' }])
+  );
+  return spy;
+};
+
+export const mockUseUserGroup = () => {
+  const spy = jest.spyOn(user_group, 'getUserGroupTipListV1');
+  spy.mockImplementation(() =>
+    resolveThreeSecond([{ user_group_name: 'user_group_name1' }])
   );
   return spy;
 };

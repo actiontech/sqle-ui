@@ -15,16 +15,19 @@ import {
 } from '../../../../../testUtils/mockRedux';
 import {
   mockUseRole,
+  mockUseUserGroup,
   resolveThreeSecond,
 } from '../../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../../utils/EventEmitter';
 
 describe('User/Modal/AddUser', () => {
   let userRoleSpy: jest.SpyInstance;
+  let useUserGroupSpy: jest.SpyInstance;
   let dispatchSpy: jest.Mock;
 
   beforeEach(() => {
     userRoleSpy = mockUseRole();
+    useUserGroupSpy = mockUseUserGroup();
     mockUseSelector({
       userManage: {
         modalStatus: { [ModalName.Update_User]: true },
@@ -32,6 +35,7 @@ describe('User/Modal/AddUser', () => {
           user_name: 'root',
           email: 'user@123.com',
           role_name_list: ['role_name1'],
+          user_group_name_list: ['user_group_name1'],
         },
       },
     });
@@ -49,16 +53,19 @@ describe('User/Modal/AddUser', () => {
   test('should get instance list and username list when modal is opened', async () => {
     render(<UpdateUser />);
     expect(userRoleSpy).toBeCalledTimes(1);
+    expect(useUserGroupSpy).toBeCalledTimes(1);
     cleanup();
     userRoleSpy.mockClear();
+    useUserGroupSpy.mockClear();
     mockUseSelector({
       userManage: { modalStatus: { [ModalName.Update_User]: false } },
     });
     render(<UpdateUser />);
     expect(userRoleSpy).not.toBeCalled();
+    expect(useUserGroupSpy).not.toBeCalled();
   });
 
-  test('should send create role request when user click submit button', async () => {
+  test('should send update user request when user click submit button', async () => {
     render(<UpdateUser />);
     const updateUserSpy = jest.spyOn(user, 'updateUserV1');
     updateUserSpy.mockImplementation(() => resolveThreeSecond({}));
@@ -79,6 +86,8 @@ describe('User/Modal/AddUser', () => {
       target: { value: 'newuser@163.com' },
     });
 
+    fireEvent.click(screen.getByText('user.userForm.disabled'));
+
     fireEvent.click(screen.getByText('common.submit'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
@@ -93,7 +102,9 @@ describe('User/Modal/AddUser', () => {
     expect(updateUserSpy).toBeCalledWith({
       email: 'newuser@163.com',
       user_name: 'root',
+      is_disabled: true,
       role_name_list: ['role_name1'],
+      user_group_name_list: ['user_group_name1'],
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -154,7 +165,9 @@ describe('User/Modal/AddUser', () => {
     expect(updateUserSpy).toBeCalledWith({
       email: 'user@123.com',
       user_name: 'san.zhang',
+      is_disabled: false,
       role_name_list: ['role_name1'],
+      user_group_name_list: [],
     });
   });
 });

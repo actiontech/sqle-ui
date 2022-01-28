@@ -15,16 +15,19 @@ import {
 } from '../../../../../testUtils/mockRedux';
 import {
   mockUseRole,
+  mockUseUserGroup,
   resolveThreeSecond,
 } from '../../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../../utils/EventEmitter';
 
 describe('User/Modal/AddUser', () => {
   let userRoleSpy: jest.SpyInstance;
+  let useUserGroupSpy: jest.SpyInstance;
   let dispatchSpy: jest.Mock;
 
   beforeEach(() => {
     userRoleSpy = mockUseRole();
+    useUserGroupSpy = mockUseUserGroup();
     mockUseSelector({
       userManage: { modalStatus: { [ModalName.Add_User]: true } },
     });
@@ -42,13 +45,16 @@ describe('User/Modal/AddUser', () => {
   test('should get instance list and username list when modal is opened', async () => {
     render(<AddUser />);
     expect(userRoleSpy).toBeCalledTimes(1);
+    expect(useUserGroupSpy).toBeCalledTimes(1);
     cleanup();
     userRoleSpy.mockClear();
+    useUserGroupSpy.mockClear();
     mockUseSelector({
       userManage: { modalStatus: { [ModalName.Add_User]: false } },
     });
     render(<AddUser />);
     expect(userRoleSpy).not.toBeCalled();
+    expect(useUserGroupSpy).not.toBeCalled();
   });
 
   test('should send create role request when user click submit button', async () => {
@@ -80,6 +86,11 @@ describe('User/Modal/AddUser', () => {
     expect(roleOption).toHaveClass('ant-select-item-option-content');
     fireEvent.click(roleOption);
 
+    fireEvent.mouseDown(screen.getByLabelText('user.userForm.userGroup'));
+    const userGroupOption = screen.getAllByText('user_group_name1')[1];
+    expect(userGroupOption).toHaveClass('ant-select-item-option-content');
+    fireEvent.click(userGroupOption);
+
     fireEvent.click(screen.getByText('common.submit'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
@@ -96,6 +107,7 @@ describe('User/Modal/AddUser', () => {
       user_name: 'username1',
       user_password: '123456',
       role_name_list: ['role_name1'],
+      user_group_name_list: ['user_group_name1'],
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);

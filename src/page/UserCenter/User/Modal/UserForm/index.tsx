@@ -125,8 +125,11 @@ const UserForm: React.FC<IUserFormProps> = (props) => {
           placeholder={t('common.form.placeholder.select')}
         >
           {props.userGroupList.map((group) => (
-            <Select.Option key={group} value={group}>
-              {group}
+            <Select.Option
+              key={group.user_group_name}
+              value={group.user_group_name ?? ''}
+            >
+              {group.user_group_name}
             </Select.Option>
           ))}
         </Select>

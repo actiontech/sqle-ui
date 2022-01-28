@@ -16,10 +16,13 @@ import { IUserFormFields } from '../UserForm/index.type';
 import useRole from '../../../../../hooks/useRole';
 import { IUserResV1 } from '../../../../../api/common';
 import { IUpdateUserV1Params } from '../../../../../api/user/index.d';
+import useUserGroup from '../../../../../hooks/useUserGroup';
 
 const UpdateUser = () => {
   const [form] = useForm<IUserFormFields>();
   const { roleList, updateRoleList } = useRole();
+  const { userGroupList, updateUserGroupList } = useUserGroup();
+
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [updateLoading, { setTrue, setFalse }] = useBoolean();
@@ -45,7 +48,7 @@ const UpdateUser = () => {
     const params: IUpdateUserV1Params = {
       user_name: values.username,
       role_name_list: values.roleNameList,
-      is_disabled: values.disabled,
+      is_disabled: !!values.disabled,
       user_group_name_list: values.userGroupList,
     };
     if (!!values.email) {
@@ -72,14 +75,16 @@ const UpdateUser = () => {
   React.useEffect(() => {
     if (visible) {
       updateRoleList();
+      updateUserGroupList();
       form.setFieldsValue({
         username: currentUser?.user_name,
         email: currentUser?.email,
         roleNameList: currentUser?.role_name_list ?? [],
+        userGroupList: currentUser?.user_group_name_list ?? [],
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [updateRoleList, visible]);
+  }, [updateRoleList, updateUserGroupList, visible]);
 
   return (
     <Modal
@@ -102,7 +107,7 @@ const UpdateUser = () => {
         form={form}
         roleNameList={roleList}
         isUpdate={true}
-        userGroupList={['group1']}
+        userGroupList={userGroupList}
       />
     </Modal>
   );

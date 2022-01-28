@@ -7,6 +7,7 @@ import ServiceBase from '../Service.base';
 import { AxiosRequestConfig } from 'axios';
 
 import {
+  IGetUserGroupTipListV1Return,
   IGetUserGroupListV1Params,
   IGetUserGroupListV1Return,
   ICreateUserGroupV1Params,
@@ -18,6 +19,14 @@ import {
 } from './index.d';
 
 class UserGroupService extends ServiceBase {
+  public getUserGroupTipListV1(options?: AxiosRequestConfig) {
+    return this.get<IGetUserGroupTipListV1Return>(
+      '/v1/user_group_tips',
+      undefined,
+      options
+    );
+  }
+
   public getUserGroupListV1(
     params: IGetUserGroupListV1Params,
     options?: AxiosRequestConfig

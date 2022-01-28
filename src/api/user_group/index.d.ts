@@ -1,8 +1,11 @@
 import {
+  IGetUserGroupTipsResV1,
   IGetUserGroupsResV1,
   ICreateUserGroupReqV1,
   IBaseRes
 } from '../common.d';
+
+export interface IGetUserGroupTipListV1Return extends IGetUserGroupTipsResV1 {}
 
 export interface IGetUserGroupListV1Params {
   filter_user_group_name?: string;

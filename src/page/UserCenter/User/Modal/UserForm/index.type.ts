@@ -1,5 +1,8 @@
 import { FormInstance } from 'antd';
-import { IRoleTipResV1 } from '../../../../../api/common.d';
+import {
+  IRoleTipResV1,
+  IUserGroupTipListItem,
+} from '../../../../../api/common.d';
 
 export interface IUserFormFields {
   username: string;
@@ -14,6 +17,6 @@ export interface IUserFormFields {
 export interface IUserFormProps {
   form: FormInstance<IUserFormFields>;
   roleNameList: IRoleTipResV1[];
-  userGroupList: string[];
+  userGroupList: IUserGroupTipListItem[];
   isUpdate?: boolean;
 }

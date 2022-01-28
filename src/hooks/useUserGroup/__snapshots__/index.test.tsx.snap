@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`useUsername should get username data from request 1`] = `
+exports[`useUserGroup should get group data from request 1`] = `
 <body>
   <div>
     <div
@@ -64,7 +64,7 @@ exports[`useUsername should get username data from request 1`] = `
 </body>
 `;
 
-exports[`useUsername should get username data from request 2`] = `
+exports[`useUserGroup should get group data from request 2`] = `
 <body>
   <div>
     <div
@@ -132,7 +132,7 @@ exports[`useUsername should get username data from request 2`] = `
 </body>
 `;
 
-exports[`useUsername should get username data from request 3`] = `
+exports[`useUserGroup should get group data from request 3`] = `
 <body>
   <div>
     <div
@@ -213,12 +213,12 @@ exports[`useUsername should get username data from request 3`] = `
             style="height: 0px; width: 0px; overflow: hidden;"
           >
             <div
-              aria-label="user_name1"
+              aria-label="group1"
               aria-selected="false"
               id="rc_select_TEST_OR_SSR_list_0"
               role="option"
             >
-              user_name1
+              group1
             </div>
           </div>
           <div
@@ -237,12 +237,12 @@ exports[`useUsername should get username data from request 3`] = `
                   <div
                     aria-selected="false"
                     class="ant-select-item ant-select-item-option"
-                    title="user_name1"
+                    title="group1"
                   >
                     <div
                       class="ant-select-item-option-content"
                     >
-                      user_name1
+                      group1
                     </div>
                     <span
                       aria-hidden="true"
