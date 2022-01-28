@@ -237,10 +237,22 @@ export interface ICreateRuleTemplateReqV1 {
   rule_template_name?: string;
 }
 
+export interface ICreateUserGroupReqV1 {
+  role_name_list?: string[];
+
+  user_group_desc?: string;
+
+  user_group_name?: string;
+
+  user_name_list?: string[];
+}
+
 export interface ICreateUserReqV1 {
   email?: string;
 
   role_name_list?: string[];
+
+  user_group_name_list?: string[];
 
   user_name?: string;
 
@@ -539,6 +551,16 @@ export interface IGetUserDetailResV1 {
   data?: IUserDetailResV1;
 
   message?: string;
+}
+
+export interface IGetUserGroupsResV1 {
+  code?: number;
+
+  data?: IUserGroupListItemResV1[];
+
+  message?: string;
+
+  total_nums?: number;
 }
 
 export interface IGetUserLoginResV1 {
@@ -878,7 +900,11 @@ export interface IUpdateSystemVariablesReqV1 {
 export interface IUpdateUserReqV1 {
   email?: string;
 
+  is_disabled?: boolean;
+
   role_name_list?: string[];
+
+  user_group_name_list?: string[];
 }
 
 export interface IUpdateWorkflowReqV1 {
@@ -904,11 +930,27 @@ export interface IUserDetailResV1 {
 
   is_admin?: boolean;
 
+  is_disabled?: boolean;
+
   login_type?: string;
 
   role_name_list?: string[];
 
+  user_group_name_list?: string[];
+
   user_name?: string;
+}
+
+export interface IUserGroupListItemResV1 {
+  is_disabled?: boolean;
+
+  role_name_list?: string[];
+
+  user_group_desc?: string;
+
+  user_group_name?: string;
+
+  user_name_list?: string[];
 }
 
 export interface IUserLoginReqV1 {
@@ -924,9 +966,13 @@ export interface IUserLoginResV1 {
 export interface IUserResV1 {
   email?: string;
 
+  is_disabled?: boolean;
+
   login_type?: string;
 
   role_name_list?: string[];
+
+  user_group_name_list?: string[];
 
   user_name?: string;
 }
@@ -1083,6 +1129,20 @@ export interface IAuditPlanSQLResV2 {
   }>;
 }
 
+export interface ICreateRoleReqV2 {
+  instance_name_list?: string[];
+
+  operation_code_list?: string[];
+
+  role_desc?: string;
+
+  role_name?: string;
+
+  user_group_name_list?: string[];
+
+  user_name_list?: string[];
+}
+
 export interface IGetAuditPlanReportSQLsResV2 {
   code?: number;
 
@@ -1101,4 +1161,46 @@ export interface IGetAuditPlanSQLsResV2 {
   message?: string;
 
   total_nums?: number;
+}
+
+export interface IGetRolesResV2 {
+  code?: number;
+
+  data?: IRoleResV2[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
+export interface IOperation {
+  operation_code?: string;
+
+  operation_desc?: string;
+}
+
+export interface IRoleResV2 {
+  instance_name_list?: string[];
+
+  operation_list?: IOperation[];
+
+  role_desc?: string;
+
+  role_name?: string;
+
+  user_group_name_list?: string[];
+
+  user_name_list?: string[];
+}
+
+export interface IUpdateRoleReqV2 {
+  instance_name_list?: string[];
+
+  operation_code_list?: string[];
+
+  role_desc?: string;
+
+  user_group_name_list?: string[];
+
+  user_name_list?: string[];
 }
