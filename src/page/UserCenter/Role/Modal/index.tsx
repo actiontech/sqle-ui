@@ -1,7 +1,7 @@
 import AddRole from './AddRole';
 import UpdateRole from './UpdateRole';
 
-const UserManageModal = () => {
+const RoleModal = () => {
   return (
     <>
       <AddRole />
@@ -10,4 +10,4 @@ const UserManageModal = () => {
   );
 };
 
-export default UserManageModal;
+export default RoleModal;

@@ -29,6 +29,10 @@ const User = React.lazy(
   () => import(/* webpackChunkName: "User" */ '../page/UserCenter/User')
 );
 
+const Role = React.lazy(
+  () => import(/* webpackChunkName: "Role" */ '../page/UserCenter/Role')
+);
+
 const Rule = React.lazy(
   () => import(/* webpackChunkName: "Rule" */ '../page/Rule')
 );
@@ -191,7 +195,7 @@ export const routerConfig: RouterItem[] = [
             path: '/user/role',
             exact: true,
             label: 'menu.role',
-            component: User,
+            component: Role,
             key: 'role',
           },
           {

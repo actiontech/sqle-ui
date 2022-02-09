@@ -77,13 +77,24 @@ module.exports = {
   ],
   devServer: (config, { proxy }) => {
     config.proxy = {
-      // '/v2/audit_plans/db1/sqls': {
-      //   target: 'http://localhost:4200',
-      //   secure: false,
-      //   changeOrigin: true,
-      //   ws: true,
-      //   xfwd: true,
-      // },
+      ...(function () {
+        const url = [
+          '/v1/users',
+          '/v1/user_group_tips',
+          '/v2/roles',
+          '/v1/operations',
+        ];
+        return url.reduce((acc, cur) => {
+          acc[cur] = {
+            target: 'http://localhost:4200',
+            secure: false,
+            changeOrigin: true,
+            ws: true,
+            xfwd: true,
+          };
+          return acc;
+        }, {});
+      })(),
       '/v1': {
         target: 'http://10.186.62.5:10000',
         secure: false,

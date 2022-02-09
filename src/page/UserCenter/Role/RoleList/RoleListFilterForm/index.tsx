@@ -65,11 +65,11 @@ const RoleListFilterForm: React.FC<{
         <Col {...FilterFormColLayout}>
           <Form.Item
             name="filter_role_name"
-            label={t('user.roleForm.roleName')}
+            label={t('role.roleForm.roleName')}
           >
             <Select
               showSearch
-              placeholder={t('user.roleListFilter.rolePlaceholder')}
+              placeholder={t('role.roleListFilter.rolePlaceholder')}
             >
               {roleList.map((role) => (
                 <Select.Option
@@ -85,11 +85,11 @@ const RoleListFilterForm: React.FC<{
         <Col {...FilterFormColLayout}>
           <Form.Item
             name="filter_user_name"
-            label={t('user.roleForm.usernames')}
+            label={t('role.roleForm.usernames')}
           >
             <Select
               showSearch
-              placeholder={t('user.roleListFilter.usernamePlaceholder')}
+              placeholder={t('role.roleListFilter.usernamePlaceholder')}
             >
               {usernameList.map((user) => (
                 <Select.Option
@@ -106,11 +106,11 @@ const RoleListFilterForm: React.FC<{
         <Col {...FilterFormColLayout}>
           <Form.Item
             name="filter_instance_name"
-            label={t('user.roleForm.databases')}
+            label={t('role.roleForm.databases')}
           >
             <Select
               showSearch
-              placeholder={t('user.roleListFilter.databasePlaceholder')}
+              placeholder={t('role.roleListFilter.databasePlaceholder')}
             >
               {instanceList.map((instance) => (
                 <Select.Option

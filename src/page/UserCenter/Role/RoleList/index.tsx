@@ -1,21 +1,11 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
-import {
-  Card,
-  Button,
-  List,
-  Typography,
-  Space,
-  Divider,
-  Popconfirm,
-  message,
-} from 'antd';
+import { Card, Button, Space, message, Table } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { IRoleResV1 } from '../../../../api/common';
+import { IRoleResV2 } from '../../../../api/common';
 import role from '../../../../api/role';
-import EmptyBox from '../../../../components/EmptyBox';
 import { ResponseCode } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
@@ -26,6 +16,7 @@ import {
 import EventEmitter from '../../../../utils/EventEmitter';
 import { RoleListFilter } from './index.type';
 import RoleListFilterForm from './RoleListFilterForm';
+import { RoleListColumnFactory } from './tableColumn';
 
 const RoleList = () => {
   const { t } = useTranslation();
@@ -41,7 +32,7 @@ const RoleList = () => {
     pagination: { total, onChange: changePagination, changeCurrent },
   } = useRequest(
     ({ current, pageSize }) =>
-      role.getRoleListV1({
+      role.getRoleListV2({
         page_index: current,
         page_size: pageSize,
         ...roleListFilter,
@@ -78,7 +69,7 @@ const RoleList = () => {
     );
   };
 
-  const updateRole = (role: IRoleResV1) => {
+  const updateRole = (role: IRoleResV2) => {
     dispatch(updateSelectRole({ role }));
     dispatch(
       updateUserManageModalStatus({
@@ -90,7 +81,7 @@ const RoleList = () => {
 
   const deleteRole = (roleName: string) => {
     const hideLoading = message.loading(
-      t('user.deleteRole.deleting', { name: roleName }),
+      t('role.deleteRole.deleting', { name: roleName }),
       0
     );
     role
@@ -100,7 +91,7 @@ const RoleList = () => {
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           message.success(
-            t('user.deleteRole.deleteSuccessTips', { name: roleName })
+            t('role.deleteRole.deleteSuccessTips', { name: roleName })
           );
           EventEmitter.emit(EmitterKey.Refresh_User_list);
           refreshRoleList();
@@ -127,7 +118,7 @@ const RoleList = () => {
     <Card
       title={
         <Space>
-          {t('user.roleListTitle')}
+          {t('role.roleListTitle')}
           <Button onClick={refreshRoleList}>
             <SyncOutlined spin={loading} />
           </Button>
@@ -135,12 +126,12 @@ const RoleList = () => {
       }
       extra={[
         <Button key="create-user" type="primary" onClick={createRole}>
-          {t('user.createRole.button')}
+          {t('role.createRole.button')}
         </Button>,
       ]}
     >
       <RoleListFilterForm updateRoleListFilter={setRoleListFilter} />
-      <List
+      <Table
         loading={loading}
         dataSource={data?.list}
         pagination={{
@@ -149,67 +140,7 @@ const RoleList = () => {
           showSizeChanger: true,
           onChange: pageChange,
         }}
-        renderItem={(item) => (
-          <List.Item className="user-row-wrapper">
-            <List.Item.Meta
-              title={item.role_name}
-              description={
-                item.role_desc || t('user.roleList.roleDescPlaceholder')
-              }
-            />
-            <div className="user-cell">
-              <div>{t('user.roleList.username')}</div>
-              <EmptyBox
-                if={!!item.user_name_list && item.user_name_list.length > 0}
-                defaultNode={
-                  <Typography.Text disabled>
-                    {t('user.roleList.usernamePlaceholder')}
-                  </Typography.Text>
-                }
-              >
-                {item.user_name_list?.join(',')}
-              </EmptyBox>
-            </div>
-            <div className="user-cell">
-              <div>{t('user.roleList.database')}</div>
-              <EmptyBox
-                if={
-                  !!item.instance_name_list &&
-                  item.instance_name_list.length > 0
-                }
-                defaultNode={
-                  <Typography.Text disabled>
-                    {t('user.roleList.databasePlaceholder')}
-                  </Typography.Text>
-                }
-              >
-                {item.instance_name_list?.join(',')}
-              </EmptyBox>
-            </div>
-            <Space className="user-cell flex-end-horizontal">
-              <Typography.Link
-                className="pointer"
-                onClick={updateRole.bind(null, item)}
-              >
-                {t('common.edit')}
-              </Typography.Link>
-              <Divider type="vertical" />
-              <Popconfirm
-                title={t('user.deleteRole.deleteTips', {
-                  name: item.role_name,
-                })}
-                placement="topRight"
-                okText={t('common.ok')}
-                cancelText={t('common.cancel')}
-                onConfirm={deleteRole.bind(null, item.role_name ?? '')}
-              >
-                <Typography.Text type="danger" className="pointer">
-                  {t('common.delete')}
-                </Typography.Text>
-              </Popconfirm>
-            </Space>
-          </List.Item>
-        )}
+        columns={RoleListColumnFactory(updateRole, deleteRole)}
       />
     </Card>
   );

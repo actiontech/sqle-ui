@@ -12,13 +12,13 @@ const RoleForm: React.FC<IRoleFormProps> = (props) => {
     <Form form={props.form} {...ModalFormLayout}>
       <Form.Item
         name="roleName"
-        label={t('user.roleForm.roleName')}
+        label={t('role.roleForm.roleName')}
         validateFirst={true}
         rules={[
           {
             required: true,
             message: t('common.form.rule.require', {
-              name: t('user.roleForm.roleName'),
+              name: t('role.roleForm.roleName'),
             }),
           },
           ...nameRule(),
@@ -27,25 +27,25 @@ const RoleForm: React.FC<IRoleFormProps> = (props) => {
         <Input
           disabled={props.isUpdate}
           placeholder={t('common.form.placeholder.input', {
-            name: t('user.roleForm.roleName'),
+            name: t('role.roleForm.roleName'),
           })}
         />
       </Form.Item>
-      <Form.Item name="roleDesc" label={t('user.roleForm.roleDesc')}>
+      <Form.Item name="roleDesc" label={t('role.roleForm.roleDesc')}>
         <Input.TextArea
           style={{ resize: 'none' }}
           rows={3}
           placeholder={t('common.form.placeholder.input', {
-            name: t('user.roleForm.roleDesc'),
+            name: t('role.roleForm.roleDesc'),
           })}
         />
       </Form.Item>
-      <Form.Item name="databases" label={t('user.roleForm.databases')}>
+      <Form.Item name="databases" label={t('role.roleForm.databases')}>
         <Select
           mode="multiple"
           showSearch
           placeholder={t('common.form.placeholder.select', {
-            name: t('user.roleForm.databases'),
+            name: t('role.roleForm.databases'),
           })}
         >
           {props.instanceList.map((instance) => (
@@ -58,7 +58,7 @@ const RoleForm: React.FC<IRoleFormProps> = (props) => {
           ))}
         </Select>
       </Form.Item>
-      <Form.Item name="usernames" label={t('user.roleForm.usernames')}>
+      <Form.Item name="usernames" label={t('role.roleForm.usernames')}>
         <Select
           mode="multiple"
           showSearch
@@ -67,6 +67,41 @@ const RoleForm: React.FC<IRoleFormProps> = (props) => {
           {props.usernameList.map((user) => (
             <Select.Option value={user.user_name ?? ''} key={user.user_name}>
               {user.user_name}
+            </Select.Option>
+          ))}
+        </Select>
+      </Form.Item>
+      <Form.Item
+        name="operationCodes"
+        label={t('role.roleForm.operationCodes')}
+      >
+        <Select
+          mode="multiple"
+          showSearch
+          placeholder={t('common.form.placeholder.select')}
+        >
+          {props.operationList.map((operation) => (
+            <Select.Option
+              key={operation.op_code}
+              value={operation.op_code ?? ''}
+            >
+              {operation.op_desc}
+            </Select.Option>
+          ))}
+        </Select>
+      </Form.Item>
+      <Form.Item name="userGroups" label={t('role.roleForm.userGroups')}>
+        <Select
+          mode="multiple"
+          showSearch
+          placeholder={t('common.form.placeholder.select')}
+        >
+          {props.userGroupList.map((group) => (
+            <Select.Option
+              key={group.user_group_name}
+              value={group.user_group_name ?? ''}
+            >
+              {group.user_group_name}
             </Select.Option>
           ))}
         </Select>

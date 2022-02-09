@@ -9,6 +9,37 @@
     },
     "basePath": "/",
     "paths": {
+        "/v1/audit_plan_metas": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "get audit plan metas",
+                "tags": [
+                    "audit_plan"
+                ],
+                "summary": "获取审核任务元信息",
+                "operationId": "getAuditPlanMetasV1",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "filter instance type",
+                        "name": "filter_instance_type",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.GetAuditPlanMetasResV1"
+                        }
+                    }
+                }
+            }
+        },
         "/v1/audit_plans": {
             "get": {
                 "security": [
@@ -201,6 +232,7 @@
                 ],
                 "summary": "获取指定审核计划的SQL审核详情",
                 "operationId": "getAuditPlanReportSQLsV1",
+                "deprecated": true,
                 "parameters": [
                     {
                         "type": "string",
@@ -296,6 +328,7 @@
                 ],
                 "summary": "获取指定审核计划的SQLs信息(不包括审核结果)",
                 "operationId": "getAuditPlanSQLsV1",
+                "deprecated": true,
                 "parameters": [
                     {
                         "type": "string",
@@ -582,6 +615,24 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/controller.BaseRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/basic_info": {
+            "get": {
+                "description": "get sqle basic info",
+                "tags": [
+                    "global"
+                ],
+                "summary": "获取 sqle 基本信息",
+                "operationId": "getSQLEInfo",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.GetSQLEInfoResV1"
                         }
                     }
                 }
@@ -1195,6 +1246,38 @@
                 }
             }
         },
+        "/v1/instances/{instance_name}/workflow_template": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "get instance workflow template",
+                "tags": [
+                    "instance"
+                ],
+                "summary": "获取实例应用的工作流程模板",
+                "operationId": "getInstanceWorkflowTemplateV1",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "instance name",
+                        "name": "instance_name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.GetInstanceWorkflowTemplateResV1"
+                        }
+                    }
+                }
+            }
+        },
         "/v1/login": {
             "post": {
                 "description": "user login",
@@ -1219,6 +1302,29 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/v1.GetUserLoginResV1"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/operations": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "get permission operations",
+                "tags": [
+                    "operation"
+                ],
+                "summary": "获取权限动作列表",
+                "operationId": "GetOperationsV1",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.GetOperationsResV1"
                         }
                     }
                 }
@@ -1955,6 +2061,18 @@
                         "in": "query"
                     },
                     {
+                        "enum": [
+                            "normal",
+                            "notice",
+                            "warn",
+                            "error"
+                        ],
+                        "type": "string",
+                        "description": "filter: audit level of task sql",
+                        "name": "filter_audit_level",
+                        "in": "query"
+                    },
+                    {
                         "type": "boolean",
                         "description": "select unique (fingerprint and audit result) for task sql",
                         "name": "no_duplicate",
@@ -1978,6 +2096,57 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/v1.GetAuditTaskSQLsResV1"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/tasks/audits/{task_id}/sqls/{number}": {
+            "patch": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "modify the relevant information of a certain SQL in the audit task",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "task"
+                ],
+                "summary": "修改审核任务中某条SQL的相关信息",
+                "operationId": "updateAuditTaskSQLsV1",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "task id",
+                        "name": "task_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "sql number",
+                        "name": "number",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "modify the relevant information of a certain SQL in the audit task",
+                        "name": "audit_plan",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.UpdateAuditTaskSQLsReqV1"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controller.BaseRes"
                         }
                     }
                 }
@@ -2072,6 +2241,175 @@
                         "schema": {
                             "$ref": "#/definitions/v1.UpdateCurrentUserPasswordReqV1"
                         }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controller.BaseRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/user_group_tips": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "get user group tip list",
+                "tags": [
+                    "user_group"
+                ],
+                "summary": "获取用户组提示列表",
+                "operationId": "getUserGroupTipListV1",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.GetUserGroupTipsResV1"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/user_groups": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "get user group info list",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user_group"
+                ],
+                "summary": "获取用户组列表",
+                "operationId": "getUserGroupListV1",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "filter user group name",
+                        "name": "filter_user_group_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "page index",
+                        "name": "page_index",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "size of per page",
+                        "name": "page_size",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.GetUserGroupsResV1"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "create user group",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user_group"
+                ],
+                "summary": "创建用户组",
+                "operationId": "CreateUserGroupV1",
+                "parameters": [
+                    {
+                        "description": "create user group",
+                        "name": "instance",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.CreateUserGroupReqV1"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controller.BaseRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/user_groups/{user_group_name}/": {
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "delete user group",
+                "tags": [
+                    "user_group"
+                ],
+                "summary": "删除用户组",
+                "operationId": "deleteUserGroupV1",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "user_group_name",
+                        "name": "user_group_name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controller.BaseRes"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "update user group",
+                "tags": [
+                    "user_group"
+                ],
+                "summary": "更新用户组",
+                "operationId": "updateUserGroupV1",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "user_group_name",
+                        "name": "user_group_name",
+                        "in": "path",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -2610,9 +2948,12 @@
                     {
                         "enum": [
                             "on_process",
-                            "finished",
                             "rejected",
-                            "canceled"
+                            "canceled",
+                            "exec_scheduled",
+                            "executing",
+                            "exec_failed",
+                            "finished"
                         ],
                         "type": "string",
                         "description": "filter workflow status",
@@ -2623,19 +2964,6 @@
                         "type": "string",
                         "description": "filter current step assignee user name",
                         "name": "filter_current_step_assignee_user_name",
-                        "in": "query"
-                    },
-                    {
-                        "enum": [
-                            "initialized",
-                            "audited",
-                            "executing",
-                            "exec_succeeded",
-                            "exec_failed"
-                        ],
-                        "type": "string",
-                        "description": "filter task status",
-                        "name": "filter_task_status",
                         "in": "query"
                     },
                     {
@@ -2848,6 +3176,53 @@
                 }
             }
         },
+        "/v1/workflows/{workflow_id}/schedule": {
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "update workflow schedule.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "workflow"
+                ],
+                "summary": "设置工单定时上线时间（设置为空则代表取消定时时间，需要SQL审核流程都通过后才可以设置）",
+                "operationId": "updateWorkflowScheduleV1",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "workflow id",
+                        "name": "workflow_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "update workflow schedule request",
+                        "name": "instance",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.UpdateWorkflowScheduleV1"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controller.BaseRes"
+                        }
+                    }
+                }
+            }
+        },
         "/v1/workflows/{workflow_id}/steps/{workflow_step_id}/approve": {
             "post": {
                 "security": [
@@ -2934,6 +3309,279 @@
                     }
                 }
             }
+        },
+        "/v1/workflows/{workflow_id}/task/execute": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "execute task on workflow",
+                "tags": [
+                    "workflow"
+                ],
+                "summary": "工单提交 SQL 上线",
+                "operationId": "executeTaskOnWorkflowV1",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "workflow id",
+                        "name": "workflow_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controller.BaseRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/audit_plans/{audit_plan_name}/report/{audit_plan_report_id}/": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "get audit plan report SQLs",
+                "tags": [
+                    "audit_plan"
+                ],
+                "summary": "获取指定审核计划的SQL审核详情",
+                "operationId": "getAuditPlanReportSQLsV2",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "audit plan name",
+                        "name": "audit_plan_name",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "audit plan report id",
+                        "name": "audit_plan_report_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "page index",
+                        "name": "page_index",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "size of per page",
+                        "name": "page_size",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v2.GetAuditPlanReportSQLsResV2"
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/audit_plans/{audit_plan_name}/sqls": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "get audit plan SQLs",
+                "tags": [
+                    "audit_plan"
+                ],
+                "summary": "获取指定审核计划的SQLs信息(不包括审核结果)",
+                "operationId": "getAuditPlanSQLsV2",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "audit plan name",
+                        "name": "audit_plan_name",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "page index",
+                        "name": "page_index",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "size of per page",
+                        "name": "page_size",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v2.GetAuditPlanSQLsResV2"
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/roles": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "get role list",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "role"
+                ],
+                "summary": "获取角色列表",
+                "operationId": "getRoleListV2",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "filter role name",
+                        "name": "filter_role_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "filter user name",
+                        "name": "filter_user_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "filter instance name",
+                        "name": "filter_instance_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "page index",
+                        "name": "page_index",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "size of per page",
+                        "name": "page_size",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v2.GetRolesResV2"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "create role",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "role"
+                ],
+                "summary": "创建角色",
+                "operationId": "createRoleV2",
+                "parameters": [
+                    {
+                        "description": "create role",
+                        "name": "instance",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v2.CreateRoleReqV2"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controller.BaseRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/v2/roles/{role_name}/": {
+            "patch": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "update role",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "role"
+                ],
+                "summary": "更新角色信息",
+                "operationId": "updateRoleV2",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "role name",
+                        "name": "role_name",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "update role request",
+                        "name": "instance",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v2.UpdateRoleReqV2"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controller.BaseRes"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -2947,6 +3595,59 @@
                 "message": {
                     "type": "string",
                     "example": "ok"
+                }
+            }
+        },
+        "v1.AuditPlanMetaV1": {
+            "type": "object",
+            "properties": {
+                "audit_plan_params": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.AuditPlanParamResV1"
+                    }
+                },
+                "audit_plan_type": {
+                    "type": "string"
+                },
+                "audit_plan_type_desc": {
+                    "type": "string"
+                },
+                "instance_type": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.AuditPlanParamReqV1": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.AuditPlanParamResV1": {
+            "type": "object",
+            "properties": {
+                "desc": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "string",
+                        "int",
+                        "bool"
+                    ]
+                },
+                "value": {
+                    "type": "string"
                 }
             }
         },
@@ -3003,6 +3704,10 @@
                     "type": "string",
                     "example": "test_mysql"
                 },
+                "audit_plan_meta": {
+                    "type": "object",
+                    "$ref": "#/definitions/v1.AuditPlanMetaV1"
+                },
                 "audit_plan_name": {
                     "type": "string",
                     "example": "audit_for_java_app1"
@@ -3058,6 +3763,21 @@
         "v1.AuditTaskResV1": {
             "type": "object",
             "properties": {
+                "audit_level": {
+                    "type": "string",
+                    "enum": [
+                        "normal",
+                        "notice",
+                        "warn",
+                        "error"
+                    ]
+                },
+                "exec_end_time": {
+                    "type": "string"
+                },
+                "exec_start_time": {
+                    "type": "string"
+                },
                 "instance_name": {
                     "type": "string"
                 },
@@ -3111,6 +3831,9 @@
                     "type": "string"
                 },
                 "audit_status": {
+                    "type": "string"
+                },
+                "description": {
                     "type": "string"
                 },
                 "exec_result": {
@@ -3197,6 +3920,16 @@
                 "audit_plan_name": {
                     "type": "string",
                     "example": "audit_plan_for_java_repo_1"
+                },
+                "audit_plan_params": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.AuditPlanParamReqV1"
+                    }
+                },
+                "audit_plan_type": {
+                    "type": "string",
+                    "example": "slow log"
                 }
             }
         },
@@ -3318,6 +4051,31 @@
                 }
             }
         },
+        "v1.CreateUserGroupReqV1": {
+            "type": "object",
+            "properties": {
+                "role_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "user_group_desc": {
+                    "type": "string",
+                    "example": "this is a group"
+                },
+                "user_group_name": {
+                    "type": "string",
+                    "example": "test"
+                },
+                "user_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
         "v1.CreateUserReqV1": {
             "type": "object",
             "properties": {
@@ -3326,6 +4084,12 @@
                     "example": "test@email.com"
                 },
                 "role_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "user_group_name_list": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -3358,6 +4122,15 @@
         "v1.CreateWorkflowTemplateReqV1": {
             "type": "object",
             "properties": {
+                "allow_submit_when_less_audit_level": {
+                    "type": "string",
+                    "enum": [
+                        "normal",
+                        "notice",
+                        "warn",
+                        "error"
+                    ]
+                },
                 "desc": {
                     "type": "string"
                 },
@@ -3406,6 +4179,25 @@
                     "items": {
                         "$ref": "#/definitions/v1.AuditPlanSQLReqV1"
                     }
+                }
+            }
+        },
+        "v1.GetAuditPlanMetasResV1": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 0
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.AuditPlanMetaV1"
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "example": "ok"
                 }
             }
         },
@@ -3721,6 +4513,23 @@
                 }
             }
         },
+        "v1.GetInstanceWorkflowTemplateResV1": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 0
+                },
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/v1.WorkflowTemplateDetailResV1"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "ok"
+                }
+            }
+        },
         "v1.GetInstancesResV1": {
             "type": "object",
             "properties": {
@@ -3753,6 +4562,25 @@
                 "data": {
                     "type": "object",
                     "$ref": "#/definitions/v1.LDAPConfigurationResV1"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "ok"
+                }
+            }
+        },
+        "v1.GetOperationsResV1": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 0
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.OperationResV1"
+                    }
                 },
                 "message": {
                     "type": "string",
@@ -3895,6 +4723,22 @@
                 }
             }
         },
+        "v1.GetSQLEInfoResV1": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 0
+                },
+                "message": {
+                    "type": "string",
+                    "example": "ok"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
+        },
         "v1.GetSystemVariablesResV1": {
             "type": "object",
             "properties": {
@@ -3926,6 +4770,47 @@
                 "message": {
                     "type": "string",
                     "example": "ok"
+                }
+            }
+        },
+        "v1.GetUserGroupTipsResV1": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 0
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.UserGroupTipListItem"
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "example": "ok"
+                }
+            }
+        },
+        "v1.GetUserGroupsResV1": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 0
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.UserGroupListItemResV1"
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "example": "ok"
+                },
+                "total_nums": {
+                    "type": "integer"
                 }
             }
         },
@@ -4215,6 +5100,17 @@
                 }
             }
         },
+        "v1.OperationResV1": {
+            "type": "object",
+            "properties": {
+                "op_code": {
+                    "type": "integer"
+                },
+                "op_desc": {
+                    "type": "string"
+                }
+            }
+        },
         "v1.PartialSyncAuditPlanSQLsReqV1": {
             "type": "object",
             "properties": {
@@ -4265,6 +5161,39 @@
                 }
             }
         },
+        "v1.RuleParamReqV1": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.RuleParamResV1": {
+            "type": "object",
+            "properties": {
+                "desc": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "string",
+                        "int",
+                        "bool"
+                    ]
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
         "v1.RuleReqV1": {
             "type": "object",
             "properties": {
@@ -4276,9 +5205,11 @@
                     "type": "string",
                     "example": "ddl_check_index_count"
                 },
-                "value": {
-                    "type": "string",
-                    "example": "1"
+                "params": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.RuleParamReqV1"
+                    }
                 }
             }
         },
@@ -4302,15 +5233,18 @@
                     ],
                     "example": "error"
                 },
+                "params": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.RuleParamResV1"
+                    }
+                },
                 "rule_name": {
                     "type": "string"
                 },
                 "type": {
                     "type": "string",
                     "example": "全局配置"
-                },
-                "value": {
-                    "type": "string"
                 }
             }
         },
@@ -4424,6 +5358,20 @@
                 "audit_plan_instance_name": {
                     "type": "string",
                     "example": "test_mysql"
+                },
+                "audit_plan_params": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.AuditPlanParamReqV1"
+                    }
+                }
+            }
+        },
+        "v1.UpdateAuditTaskSQLsReqV1": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
                 }
             }
         },
@@ -4567,7 +5515,7 @@
             "properties": {
                 "smtp_host": {
                     "type": "string",
-                    "example": "smtp.exmail.qq.com"
+                    "example": "smtp.email.qq.com"
                 },
                 "smtp_password": {
                     "type": "string",
@@ -4598,7 +5546,16 @@
                 "email": {
                     "type": "string"
                 },
+                "is_disabled": {
+                    "type": "boolean"
+                },
                 "role_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "user_group_name_list": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -4614,9 +5571,26 @@
                 }
             }
         },
+        "v1.UpdateWorkflowScheduleV1": {
+            "type": "object",
+            "properties": {
+                "schedule_time": {
+                    "type": "string"
+                }
+            }
+        },
         "v1.UpdateWorkflowTemplateReqV1": {
             "type": "object",
             "properties": {
+                "allow_submit_when_less_audit_level": {
+                    "type": "string",
+                    "enum": [
+                        "normal",
+                        "notice",
+                        "warn",
+                        "error"
+                    ]
+                },
                 "desc": {
                     "type": "string"
                 },
@@ -4643,13 +5617,59 @@
                 "is_admin": {
                     "type": "boolean"
                 },
+                "is_disabled": {
+                    "type": "boolean"
+                },
+                "login_type": {
+                    "type": "string"
+                },
                 "role_name_list": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
+                "user_group_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.UserGroupListItemResV1": {
+            "type": "object",
+            "properties": {
+                "is_disabled": {
+                    "type": "boolean"
+                },
+                "role_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "user_group_desc": {
+                    "type": "string"
+                },
+                "user_group_name": {
+                    "type": "string"
+                },
+                "user_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "v1.UserGroupTipListItem": {
+            "type": "object",
+            "properties": {
+                "user_group_name": {
                     "type": "string"
                 }
             }
@@ -4682,7 +5702,19 @@
                 "email": {
                     "type": "string"
                 },
+                "is_disabled": {
+                    "type": "boolean"
+                },
+                "login_type": {
+                    "type": "string"
+                },
                 "role_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "user_group_name_list": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -4767,13 +5799,19 @@
                 "desc": {
                     "type": "string"
                 },
+                "schedule_time": {
+                    "type": "string"
+                },
                 "status": {
                     "type": "string",
                     "enum": [
                         "on_process",
-                        "finished",
                         "rejected",
-                        "canceled"
+                        "canceled",
+                        "exec_scheduled",
+                        "executing",
+                        "exec_failed",
+                        "finished"
                     ]
                 },
                 "subject": {
@@ -4788,16 +5826,6 @@
                 "task_pass_rate": {
                     "type": "number"
                 },
-                "task_status": {
-                    "type": "string",
-                    "enum": [
-                        "initialized",
-                        "audited",
-                        "executing",
-                        "exec_succeeded",
-                        "exec_failed"
-                    ]
-                },
                 "workflow_id": {
                     "type": "integer"
                 }
@@ -4809,13 +5837,22 @@
                 "current_step_number": {
                     "type": "integer"
                 },
+                "schedule_time": {
+                    "type": "string"
+                },
+                "schedule_user": {
+                    "type": "string"
+                },
                 "status": {
                     "type": "string",
                     "enum": [
                         "on_process",
-                        "finished",
                         "rejected",
-                        "canceled"
+                        "canceled",
+                        "exec_scheduled",
+                        "executing",
+                        "exec_failed",
+                        "finished"
                     ]
                 },
                 "task_id": {
@@ -4925,6 +5962,15 @@
         "v1.WorkflowTemplateDetailResV1": {
             "type": "object",
             "properties": {
+                "allow_submit_when_less_audit_level": {
+                    "type": "string",
+                    "enum": [
+                        "normal",
+                        "notice",
+                        "warn",
+                        "error"
+                    ]
+                },
                 "desc": {
                     "type": "string"
                 },
@@ -4961,6 +6007,233 @@
             "properties": {
                 "workflow_template_name": {
                     "type": "string"
+                }
+            }
+        },
+        "v2.AuditPlanReportSQLResV2": {
+            "type": "object",
+            "properties": {
+                "audit_plan_report_sql": {
+                    "type": "string",
+                    "example": "select * from t1 where id = 1"
+                },
+                "audit_plan_report_sql_audit_result": {
+                    "type": "string",
+                    "example": "same format as task audit result"
+                }
+            }
+        },
+        "v2.AuditPlanSQLHeadV2": {
+            "type": "object",
+            "properties": {
+                "desc": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "sql"
+                    ]
+                }
+            }
+        },
+        "v2.AuditPlanSQLResV2": {
+            "type": "object",
+            "properties": {
+                "head": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v2.AuditPlanSQLHeadV2"
+                    }
+                },
+                "rows": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "v2.CreateRoleReqV2": {
+            "type": "object",
+            "properties": {
+                "instance_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "operation_code_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "role_desc": {
+                    "type": "string"
+                },
+                "role_name": {
+                    "type": "string"
+                },
+                "user_group_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "user_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "v2.GetAuditPlanReportSQLsResV2": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 0
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v2.AuditPlanReportSQLResV2"
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "example": "ok"
+                },
+                "total_nums": {
+                    "type": "integer"
+                }
+            }
+        },
+        "v2.GetAuditPlanSQLsResV2": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 0
+                },
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/v2.AuditPlanSQLResV2"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "ok"
+                },
+                "total_nums": {
+                    "type": "integer"
+                }
+            }
+        },
+        "v2.GetRolesResV2": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 0
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v2.RoleResV2"
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "example": "ok"
+                },
+                "total_nums": {
+                    "type": "integer"
+                }
+            }
+        },
+        "v2.Operation": {
+            "type": "object",
+            "properties": {
+                "operation_code": {
+                    "type": "string"
+                },
+                "operation_desc": {
+                    "type": "string"
+                }
+            }
+        },
+        "v2.RoleResV2": {
+            "type": "object",
+            "properties": {
+                "instance_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "operation_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v2.Operation"
+                    }
+                },
+                "role_desc": {
+                    "type": "string"
+                },
+                "role_name": {
+                    "type": "string"
+                },
+                "user_group_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "user_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "v2.UpdateRoleReqV2": {
+            "type": "object",
+            "properties": {
+                "instance_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "operation_code_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "role_desc": {
+                    "type": "string"
+                },
+                "user_group_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "user_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             }
         }

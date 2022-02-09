@@ -61,44 +61,4 @@ export default {
     rolePlaceHolder: '未拥有任何角色',
     role: '拥有角色',
   },
-
-  roleListTitle: '角色列表',
-
-  createRole: {
-    button: '创建角色',
-    modalTitle: '创建角色',
-    createSuccessTips: '创建角色 "{{name}}" 成功',
-  },
-
-  updateRole: {
-    modalTitle: '更新角色',
-    updateSuccessTips: '更新角色 "{{name}}" 成功',
-  },
-
-  deleteRole: {
-    deleteTips: '确认要删除角色 "{{name}}"?',
-    deleting: '正在删除角色 "{{name}}"...',
-    deleteSuccessTips: '删除角色 "{{name}}" 成功',
-  },
-
-  roleForm: {
-    roleName: '角色名',
-    roleDesc: '角色描述',
-    databases: '数据源',
-    usernames: '绑定用户',
-  },
-
-  roleListFilter: {
-    usernamePlaceholder: '请输入要搜索的用户名',
-    rolePlaceholder: '请输入要搜索的角色',
-    databasePlaceholder: '请输入要搜索的数据源',
-  },
-
-  roleList: {
-    roleDescPlaceholder: '未找到角色描述',
-    usernamePlaceholder: '未绑定任何用户',
-    databasePlaceholder: '未绑定任何数据源',
-    username: '绑定用户',
-    database: '绑定数据源',
-  },
 };

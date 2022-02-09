@@ -15,11 +15,15 @@ import EventEmitter from '../../../../../utils/EventEmitter';
 import EmitterKey from '../../../../../data/EmitterKey';
 import useInstance from '../../../../../hooks/useInstance';
 import useUsername from '../../../../../hooks/useUsername';
+import useOperation from '../../../../../hooks/useOperation';
+import useUserGroup from '../../../../../hooks/useUserGroup';
 
 const AddRole = () => {
   const [form] = useForm<IRoleFormFields>();
   const { instanceList, updateInstanceList } = useInstance();
   const { usernameList, updateUsernameList } = useUsername();
+  const { operationList, updateOperationList } = useOperation();
+  const { userGroupList, updateUserGroupList } = useUserGroup();
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [createLoading, { setTrue, setFalse }] = useBoolean();
@@ -41,17 +45,19 @@ const AddRole = () => {
     const values = await form.validateFields();
     setTrue();
     role
-      .createRoleV1({
+      .createRoleV2({
         role_name: values.roleName,
         role_desc: values.roleDesc,
         instance_name_list: values.databases,
         user_name_list: values.usernames,
+        user_group_name_list: values.userGroups,
+        operation_code_list: values.operationCodes,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           close();
           message.success(
-            t('user.createRole.createSuccessTips', { name: values.roleName })
+            t('role.createRole.createSuccessTips', { name: values.roleName })
           );
           EventEmitter.emit(EmitterKey.Refresh_Role_list);
           EventEmitter.emit(EmitterKey.Refresh_User_list);
@@ -66,8 +72,16 @@ const AddRole = () => {
     if (visible) {
       updateInstanceList();
       updateUsernameList();
+      updateOperationList();
+      updateUserGroupList();
     }
-  }, [updateInstanceList, updateUsernameList, visible]);
+  }, [
+    updateInstanceList,
+    updateOperationList,
+    updateUserGroupList,
+    updateUsernameList,
+    visible,
+  ]);
 
   return (
     <Modal
@@ -89,6 +103,8 @@ const AddRole = () => {
         form={form}
         instanceList={instanceList}
         usernameList={usernameList}
+        operationList={operationList}
+        userGroupList={userGroupList}
       />
     </Modal>
   );

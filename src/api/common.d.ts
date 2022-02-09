@@ -469,6 +469,14 @@ export interface IGetLDAPConfigurationResV1 {
   message?: string;
 }
 
+export interface IGetOperationsResV1 {
+  code?: number;
+
+  data?: IOperationResV1[];
+
+  message?: string;
+}
+
 export interface IGetRoleTipsResV1 {
   code?: number;
 
@@ -709,6 +717,12 @@ export interface ILDAPConfigurationResV1 {
   ldap_user_email_rdn_key?: string;
 
   ldap_user_name_rdn_key?: string;
+}
+
+export interface IOperationResV1 {
+  op_code?: number;
+
+  op_desc?: string;
 }
 
 export interface IPartialSyncAuditPlanSQLsReqV1 {
