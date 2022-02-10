@@ -9,13 +9,15 @@ import UpdateRole from '.';
 import role from '../../../../../api/role';
 import EmitterKey from '../../../../../data/EmitterKey';
 import { ModalName } from '../../../../../data/ModalName';
-import { getBySelector } from '../../../../../testUtils/customQuery';
+import { getSelectContentByFormLabel } from '../../../../../testUtils/customQuery';
 import {
   mockUseDispatch,
   mockUseSelector,
 } from '../../../../../testUtils/mockRedux';
 import {
   mockUseInstance,
+  mockUseOperation,
+  mockUseUserGroup,
   mockUseUsername,
   resolveThreeSecond,
 } from '../../../../../testUtils/mockRequest';
@@ -24,11 +26,15 @@ import EventEmitter from '../../../../../utils/EventEmitter';
 describe('User/Modal/AddRole', () => {
   let instanceSpy: jest.SpyInstance;
   let usernameSpy: jest.SpyInstance;
+  let userGroupSpy: jest.SpyInstance;
+  let useOperationSpy: jest.SpyInstance;
   let dispatchSpy: jest.Mock;
 
   beforeEach(() => {
     instanceSpy = mockUseInstance();
     usernameSpy = mockUseUsername();
+    userGroupSpy = mockUseUserGroup();
+    useOperationSpy = mockUseOperation();
     mockUseSelector({
       userManage: {
         modalStatus: { [ModalName.Update_Role]: true },
@@ -37,6 +43,8 @@ describe('User/Modal/AddRole', () => {
           role_desc: 'oldDesc',
           user_name_list: ['user_name1'],
           instance_name_list: ['instance1'],
+          user_group_name_list: ['user_group1'],
+          operation_list: [{ operation_code: '20100' }],
         },
       },
     });
@@ -55,55 +63,67 @@ describe('User/Modal/AddRole', () => {
     render(<UpdateRole />);
     expect(instanceSpy).toBeCalledTimes(1);
     expect(usernameSpy).toBeCalledTimes(1);
+    expect(userGroupSpy).toBeCalledTimes(1);
+    expect(useOperationSpy).toBeCalledTimes(1);
     cleanup();
     instanceSpy.mockClear();
     usernameSpy.mockClear();
+    userGroupSpy.mockClear();
+    useOperationSpy.mockClear();
     mockUseSelector({
       userManage: { modalStatus: { [ModalName.Add_Role]: false } },
     });
     render(<UpdateRole />);
     expect(instanceSpy).not.toBeCalled();
     expect(usernameSpy).not.toBeCalled();
+    expect(userGroupSpy).not.toBeCalled();
+    expect(useOperationSpy).not.toBeCalled();
   });
 
   test('should send create role request when user click submit button', async () => {
     render(<UpdateRole />);
-    const createRoleSpy = jest.spyOn(role, 'updateRoleV1');
+    const createRoleSpy = jest.spyOn(role, 'updateRoleV2');
     createRoleSpy.mockImplementation(() => resolveThreeSecond({}));
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    expect(screen.getByLabelText('user.roleForm.roleName')).toHaveAttribute(
+    expect(screen.getByLabelText('role.roleForm.roleName')).toHaveAttribute(
       'disabled'
     );
-    expect(screen.getByLabelText('user.roleForm.roleName')).toHaveValue(
+    expect(screen.getByLabelText('role.roleForm.roleName')).toHaveValue(
       'oldName'
     );
 
-    expect(screen.getByLabelText('user.roleForm.roleDesc')).toHaveValue(
+    expect(screen.getByLabelText('role.roleForm.roleDesc')).toHaveValue(
       'oldDesc'
     );
 
-    fireEvent.input(screen.getByLabelText('user.roleForm.roleDesc'), {
+    fireEvent.input(screen.getByLabelText('role.roleForm.roleDesc'), {
       target: { value: 'role1 desc' },
     });
 
-    const instanceSelect = getBySelector(
-      '.ant-select-selection-item-content',
-      screen.getByText('user.roleForm.databases').parentNode
-        ?.parentNode as HTMLDivElement
+    const instanceSelect = getSelectContentByFormLabel(
+      'role.roleForm.databases'
     );
     expect(instanceSelect).toBeInTheDocument();
     expect(instanceSelect).toHaveTextContent('instance1');
 
-    const userSelect = getBySelector(
-      '.ant-select-selection-item-content',
-      screen.getByText('user.roleForm.usernames').parentNode
-        ?.parentNode as HTMLDivElement
-    );
+    const userSelect = getSelectContentByFormLabel('role.roleForm.usernames');
     expect(userSelect).toBeInTheDocument();
     expect(userSelect).toHaveTextContent('user_name1');
+
+    const userGroupSelect = getSelectContentByFormLabel(
+      'role.roleForm.userGroups'
+    );
+    expect(userGroupSelect).toBeInTheDocument();
+    expect(userGroupSelect).toHaveTextContent('user_group1');
+
+    const operationCodeSelect = getSelectContentByFormLabel(
+      'role.roleForm.operationCodes'
+    );
+    expect(operationCodeSelect).toBeInTheDocument();
+    expect(operationCodeSelect).toHaveTextContent('查看工单');
 
     fireEvent.click(screen.getByText('common.submit'));
     await waitFor(() => {
@@ -121,17 +141,19 @@ describe('User/Modal/AddRole', () => {
       role_desc: 'role1 desc',
       role_name: 'oldName',
       user_name_list: ['user_name1'],
+      user_group_name_list: ['user_group1'],
+      operation_code_list: ['20100'],
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
     expect(
-      screen.queryByText('user.updateRole.updateSuccessTips')
+      screen.queryByText('role.updateRole.updateSuccessTips')
     ).toBeInTheDocument();
     expect(emitSpy).toBeCalledTimes(2);
     expect(emitSpy).nthCalledWith(1, EmitterKey.Refresh_Role_list);
     expect(emitSpy).nthCalledWith(2, EmitterKey.Refresh_User_list);
-    expect(screen.getByLabelText('user.roleForm.roleName')).toHaveValue('');
+    expect(screen.getByLabelText('role.roleForm.roleName')).toHaveValue('');
     expect(dispatchSpy).toBeCalledTimes(1);
     expect(dispatchSpy).toBeCalledWith({
       payload: {

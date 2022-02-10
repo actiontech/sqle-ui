@@ -85,7 +85,7 @@ const AddRole = () => {
 
   return (
     <Modal
-      title={t('user.createRole.modalTitle')}
+      title={t('role.createRole.modalTitle')}
       visible={visible}
       closable={false}
       footer={

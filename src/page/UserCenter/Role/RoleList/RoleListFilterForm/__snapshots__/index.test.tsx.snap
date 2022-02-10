@@ -22,9 +22,9 @@ exports[`User/RoleList/RoleLIstFilterForm should match snapshot 1`] = `
             <label
               class=""
               for="filter_role_name"
-              title="user.roleForm.roleName"
+              title="role.roleForm.roleName"
             >
-              user.roleForm.roleName
+              role.roleForm.roleName
             </label>
           </div>
           <div
@@ -62,7 +62,7 @@ exports[`User/RoleList/RoleLIstFilterForm should match snapshot 1`] = `
                     <span
                       class="ant-select-selection-placeholder"
                     >
-                      user.roleListFilter.rolePlaceholder
+                      role.roleListFilter.rolePlaceholder
                     </span>
                   </div>
                   <span
@@ -110,9 +110,9 @@ exports[`User/RoleList/RoleLIstFilterForm should match snapshot 1`] = `
             <label
               class=""
               for="filter_user_name"
-              title="user.roleForm.usernames"
+              title="role.roleForm.usernames"
             >
-              user.roleForm.usernames
+              role.roleForm.usernames
             </label>
           </div>
           <div
@@ -150,7 +150,7 @@ exports[`User/RoleList/RoleLIstFilterForm should match snapshot 1`] = `
                     <span
                       class="ant-select-selection-placeholder"
                     >
-                      user.roleListFilter.usernamePlaceholder
+                      role.roleListFilter.usernamePlaceholder
                     </span>
                   </div>
                   <span
@@ -198,9 +198,9 @@ exports[`User/RoleList/RoleLIstFilterForm should match snapshot 1`] = `
             <label
               class=""
               for="filter_instance_name"
-              title="user.roleForm.databases"
+              title="role.roleForm.databases"
             >
-              user.roleForm.databases
+              role.roleForm.databases
             </label>
           </div>
           <div
@@ -238,7 +238,7 @@ exports[`User/RoleList/RoleLIstFilterForm should match snapshot 1`] = `
                     <span
                       class="ant-select-selection-placeholder"
                     >
-                      user.roleListFilter.databasePlaceholder
+                      role.roleListFilter.databasePlaceholder
                     </span>
                   </div>
                   <span

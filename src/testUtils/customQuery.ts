@@ -1,4 +1,5 @@
 import * as domTestingLib from '@testing-library/dom';
+import { screen } from '@testing-library/react';
 
 export const getBySelector = (selector: string, baseElement?: Element) => {
   let temp;
@@ -36,4 +37,11 @@ export const getAllBySelector = (selector: string, baseElement?: Element) => {
     );
   }
   return temp;
+};
+
+export const getSelectContentByFormLabel = (label: string) => {
+  return getBySelector(
+    '.ant-select-selection-item-content',
+    screen.getByText(label).parentNode?.parentNode as HTMLDivElement
+  );
 };

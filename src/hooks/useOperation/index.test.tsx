@@ -12,8 +12,8 @@ import {
   resolveThreeSecond,
 } from '../../testUtils/mockRequest';
 import { Select } from 'antd';
-import role from '../../api/role';
 import useOperation from '.';
+import operation from '../../api/operation';
 
 describe('useOperation', () => {
   beforeEach(() => {
@@ -24,43 +24,49 @@ describe('useOperation', () => {
     jest.useRealTimers();
   });
 
+  const operationCodes = [
+    { op_code: '20100', op_desc: '查看工单' },
+    { op_code: '20150', op_desc: '查看他人创建的工单' },
+    { op_code: '20200', op_desc: '更新工单' },
+    { op_code: '20300', op_desc: '创建工单' },
+    { op_code: '20400', op_desc: '删除工单' },
+  ];
+
   const mockRequest = () => {
-    const spy = jest.spyOn(role, 'getRoleTipListV1');
+    const spy = jest.spyOn(operation, 'GetOperationsV1');
+    spy.mockImplementation(() => resolveThreeSecond(operationCodes));
     return spy;
   };
 
   test('should get role data from request', async () => {
     const requestSpy = mockRequest();
-    requestSpy.mockImplementation(() =>
-      resolveThreeSecond([{ role_name: 'role_name1' }])
-    );
-    const { result, waitForNextUpdate } = renderHook(() => useRole());
+    const { result, waitForNextUpdate } = renderHook(() => useOperation());
     expect(result.current.loading).toBe(false);
-    expect(result.current.roleList).toEqual([]);
+    expect(result.current.operationList).toEqual([]);
     const { baseElement } = render(
-      <Select>{result.current.generateRoleSelectOption()}</Select>
+      <Select>{result.current.generateOperationSelectOption()}</Select>
     );
     expect(baseElement).toMatchSnapshot();
 
     act(() => {
-      result.current.updateRoleList();
+      result.current.updateOperationList();
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.roleList).toEqual([]);
+    expect(result.current.operationList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.roleList).toEqual([{ role_name: 'role_name1' }]);
+    expect(result.current.operationList).toEqual(operationCodes);
     cleanup();
 
     const { baseElement: baseElementWithOptions } = render(
       <Select data-testid="testId" value="value1">
-        {result.current.generateRoleSelectOption()}
+        {result.current.generateOperationSelectOption()}
       </Select>
     );
     expect(baseElementWithOptions).toMatchSnapshot();
@@ -70,101 +76,85 @@ describe('useOperation', () => {
       jest.runAllTimers();
     });
 
-    await screen.findAllByText('role_name1');
+    await screen.findAllByText('查看他人创建的工单');
     expect(baseElementWithOptions).toMatchSnapshot();
   });
 
   test('should set list to empty array when response code is not equal success code', async () => {
     const requestSpy = mockRequest();
-    requestSpy.mockImplementation(() =>
-      resolveThreeSecond([{ role_name: 'role_name1' }])
-    );
-    const { result, waitForNextUpdate } = renderHook(() => useRole());
+    const { result, waitForNextUpdate } = renderHook(() => useOperation());
     expect(result.current.loading).toBe(false);
-    expect(result.current.roleList).toEqual([]);
+    expect(result.current.operationList).toEqual([]);
 
     act(() => {
-      result.current.updateRoleList();
+      result.current.updateOperationList();
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.roleList).toEqual([]);
+    expect(result.current.operationList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.roleList).toEqual([{ role_name: 'role_name1' }]);
+    expect(result.current.operationList).toEqual(operationCodes);
     requestSpy.mockClear();
     requestSpy.mockImplementation(() =>
-      resolveErrorThreeSecond([{ role_name: 'role_name1' }])
+      resolveErrorThreeSecond(operationCodes)
     );
 
     act(() => {
-      result.current.updateRoleList();
+      result.current.updateOperationList();
     });
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.roleList).toEqual([
-      {
-        role_name: 'role_name1',
-      },
-    ]);
+    expect(result.current.operationList).toEqual(operationCodes);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.roleList).toEqual([]);
+    expect(result.current.operationList).toEqual([]);
   });
 
   test('should set list to empty array when response throw error', async () => {
     const requestSpy = mockRequest();
-    requestSpy.mockImplementation(() =>
-      resolveThreeSecond([{ role_name: 'role_name1' }])
-    );
-    const { result, waitForNextUpdate } = renderHook(() => useRole());
+    const { result, waitForNextUpdate } = renderHook(() => useOperation());
     expect(result.current.loading).toBe(false);
-    expect(result.current.roleList).toEqual([]);
+    expect(result.current.operationList).toEqual([]);
 
     act(() => {
-      result.current.updateRoleList();
+      result.current.updateOperationList();
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.roleList).toEqual([]);
+    expect(result.current.operationList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.roleList).toEqual([{ role_name: 'role_name1' }]);
+    expect(result.current.operationList).toEqual(operationCodes);
     requestSpy.mockClear();
-    requestSpy.mockImplementation(() =>
-      rejectThreeSecond([{ role_name: 'role_name1' }])
-    );
+    requestSpy.mockImplementation(() => rejectThreeSecond(operationCodes));
 
     act(() => {
-      result.current.updateRoleList();
+      result.current.updateOperationList();
     });
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.roleList).toEqual([
-      {
-        role_name: 'role_name1',
-      },
-    ]);
+    expect(result.current.operationList).toEqual(operationCodes);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.roleList).toEqual([]);
+    expect(result.current.operationList).toEqual([]);
   });
 });

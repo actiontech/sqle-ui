@@ -132,6 +132,7 @@ const RoleList = () => {
     >
       <RoleListFilterForm updateRoleListFilter={setRoleListFilter} />
       <Table
+        rowKey="role_name"
         loading={loading}
         dataSource={data?.list}
         pagination={{

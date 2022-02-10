@@ -107,7 +107,7 @@ const UpdateRole = () => {
 
   return (
     <Modal
-      title={t('user.updateRole.modalTitle')}
+      title={t('role.updateRole.modalTitle')}
       visible={visible}
       closable={false}
       footer={

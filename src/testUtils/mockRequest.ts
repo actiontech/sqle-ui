@@ -6,6 +6,7 @@ import user from '../api/user';
 import workflow from '../api/workflow';
 import configuration from '../api/configuration';
 import user_group from '../api/user_group';
+import operation from '../api/operation';
 
 export const successData = (data: any, otherData?: any) => {
   return {
@@ -144,6 +145,35 @@ export const mockUseUserGroup = () => {
   const spy = jest.spyOn(user_group, 'getUserGroupTipListV1');
   spy.mockImplementation(() =>
     resolveThreeSecond([{ user_group_name: 'user_group_name1' }])
+  );
+  return spy;
+};
+
+export const mockUseOperation = () => {
+  const spy = jest.spyOn(operation, 'GetOperationsV1');
+  spy.mockImplementation(() =>
+    resolveThreeSecond([
+      {
+        op_code: '20100',
+        op_desc: '查看工单',
+      },
+      {
+        op_code: '20150',
+        op_desc: '查看他人创建的工单',
+      },
+      {
+        op_code: '20200',
+        op_desc: '更新工单',
+      },
+      {
+        op_code: '20300',
+        op_desc: '创建工单',
+      },
+      {
+        op_code: '20400',
+        op_desc: '删除工单',
+      },
+    ])
   );
   return spy;
 };

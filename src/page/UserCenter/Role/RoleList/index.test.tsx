@@ -35,7 +35,7 @@ describe('User/RoleList', () => {
   });
 
   const mockGetRoleList = () => {
-    const spy = jest.spyOn(role, 'getRoleListV1');
+    const spy = jest.spyOn(role, 'getRoleListV2');
     spy.mockImplementation(() =>
       resolveThreeSecond(RoleListData, { otherData: { total_nums: 11 } })
     );
@@ -79,7 +79,7 @@ describe('User/RoleList', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    fireEvent.mouseDown(screen.getByLabelText('user.roleForm.usernames'));
+    fireEvent.mouseDown(screen.getByLabelText('role.roleForm.usernames'));
     const option = screen.getAllByText('user_name1')[1];
     expect(option).toHaveClass('ant-select-item-option-content');
     fireEvent.click(option);
@@ -101,7 +101,7 @@ describe('User/RoleList', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    fireEvent.click(screen.getByText('user.createRole.button'));
+    fireEvent.click(screen.getByText('role.createRole.button'));
     expect(dispatchMock).toBeCalledTimes(1);
     expect(dispatchMock).toBeCalledWith({
       payload: {
@@ -145,7 +145,7 @@ describe('User/RoleList', () => {
     expect(getRoleListSpy).toBeCalledTimes(1);
     fireEvent.click(screen.getAllByText('common.delete')[0]);
     expect(
-      screen.queryByText('user.deleteRole.deleteTips')
+      screen.queryByText('role.deleteRole.deleteTips')
     ).toBeInTheDocument();
     fireEvent.click(screen.getByText('common.ok'));
 
@@ -153,13 +153,13 @@ describe('User/RoleList', () => {
     expect(deleteRoleSpy).toBeCalledWith({
       role_name: RoleListData[0].role_name,
     });
-    expect(screen.getByText('user.deleteRole.deleting')).toBeInTheDocument();
+    expect(screen.getByText('role.deleteRole.deleting')).toBeInTheDocument();
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    expect(screen.getByText('user.deleteRole.deleting')).toBeInTheDocument();
+    expect(screen.getByText('role.deleteRole.deleting')).toBeInTheDocument();
     expect(
-      screen.getByText('user.deleteRole.deleteSuccessTips')
+      screen.getByText('role.deleteRole.deleteSuccessTips')
     ).toBeInTheDocument();
     expect(emitSpy).toBeCalledTimes(1);
     expect(emitSpy).toBeCalledWith(EmitterKey.Refresh_User_list);
@@ -174,7 +174,7 @@ describe('User/RoleList', () => {
       jest.advanceTimersByTime(300);
     });
     expect(
-      screen.queryByText('user.deleteRole.deleting')
+      screen.queryByText('role.deleteRole.deleting')
     ).not.toBeInTheDocument();
     emitSpy.mockRestore();
   });
