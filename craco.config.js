@@ -83,6 +83,7 @@ module.exports = {
           '/v1/user_group_tips',
           '/v2/roles',
           '/v1/operations',
+          '/v1/user_groups',
         ];
         return url.reduce((acc, cur) => {
           acc[cur] = {

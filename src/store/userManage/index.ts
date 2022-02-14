@@ -1,5 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IRoleResV2, IUserResV1 } from '../../api/common';
+import {
+  IRoleResV2,
+  IUserGroupListItemResV1,
+  IUserResV1,
+} from '../../api/common';
 import { ModalStatus } from '../../types/common.type';
 import { commonModalReducer } from '../common';
 
@@ -7,11 +11,13 @@ type UserManageReduxState = {
   modalStatus: ModalStatus;
   selectRole: IRoleResV2 | null;
   selectUser: IUserResV1 | null;
+  selectUserGroup: IUserGroupListItemResV1 | null;
 };
 
 const initialState: UserManageReduxState = {
   selectRole: null,
   selectUser: null,
+  selectUserGroup: null,
   modalStatus: {},
 };
 
@@ -31,6 +37,14 @@ const user = createSlice({
     ) {
       state.selectRole = role;
     },
+    updateSelectUserGroup(
+      state,
+      {
+        payload: { userGroup },
+      }: PayloadAction<{ userGroup: IUserGroupListItemResV1 | null }>
+    ) {
+      state.selectUserGroup = userGroup;
+    },
     ...commonModalReducer(),
   },
 });
@@ -38,6 +52,7 @@ const user = createSlice({
 export const {
   updateSelectRole,
   updateSelectUser,
+  updateSelectUserGroup,
   initModalStatus: initUserManageModalStatus,
   updateModalStatus: updateUserManageModalStatus,
 } = user.actions;
