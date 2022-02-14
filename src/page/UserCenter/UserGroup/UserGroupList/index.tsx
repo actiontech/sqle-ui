@@ -1,11 +1,12 @@
 import { PlusOutlined, SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
-import { Button, Card, Space, Table } from 'antd';
-import { useEffect } from 'react';
+import { Button, Card, message, Space, Table } from 'antd';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { IUserGroupListItemResV1 } from '../../../../api/common';
 import user_group from '../../../../api/user_group';
+import { ResponseCode } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
 import useTable from '../../../../hooks/useTable';
@@ -14,23 +15,25 @@ import {
   updateUserManageModalStatus,
 } from '../../../../store/userManage';
 import EventEmitter from '../../../../utils/EventEmitter';
+import TableFilterForm from './TableFilterForm';
 import { userGroupTableHeaderFactory } from './tableHeader';
 
 const UserGroupList = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const { pagination, tableChange } = useTable();
+  const { pagination, filterInfo, tableChange, setFilterInfo } = useTable();
 
   const { data, loading, refresh } = useRequest(
     () => {
       return user_group.getUserGroupListV1({
         page_index: pagination.pageIndex,
         page_size: pagination.pageSize,
+        ...filterInfo,
       });
     },
     {
-      refreshDeps: [pagination],
+      refreshDeps: [pagination, filterInfo],
       formatResult(res) {
         return {
           list: res.data?.data ?? [],
@@ -63,7 +66,33 @@ const UserGroupList = () => {
     );
   };
 
-  const deleteUserGroup = (userGroupName: string) => {};
+  const deleteLoading = useRef(false);
+  const deleteUserGroup = async (userGroupName: string) => {
+    if (deleteLoading.current) {
+      return;
+    }
+    deleteLoading.current = true;
+    const hideLoading = message.loading(
+      t('userGroup.deleteUserGroup.deleting', { name: userGroupName }),
+      0
+    );
+    try {
+      const res = await user_group.deleteUserGroupV1({
+        user_group_name: userGroupName,
+      });
+      if (res.data.code === ResponseCode.SUCCESS) {
+        refresh();
+        message.success(
+          t('userGroup.deleteUserGroup.deleteSuccess', {
+            name: userGroupName,
+          })
+        );
+      }
+    } finally {
+      deleteLoading.current = false;
+      hideLoading();
+    }
+  };
 
   useEffect(() => {
     const scopeRefresh = () => {
@@ -99,6 +128,7 @@ const UserGroupList = () => {
         </Button>,
       ]}
     >
+      <TableFilterForm updateTableFilter={setFilterInfo} />
       <Table
         loading={loading}
         dataSource={data?.list}

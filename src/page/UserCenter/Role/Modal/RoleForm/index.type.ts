@@ -11,7 +11,7 @@ export interface IRoleFormFields {
   roleDesc?: string;
   databases?: string[];
   usernames?: string[];
-  operationCodes?: string[];
+  operationCodes?: number[];
   userGroups?: string[];
 }
 

@@ -82,9 +82,7 @@ const UpdateRole = () => {
         usernames: currentRole?.user_name_list,
         databases: currentRole?.instance_name_list,
         userGroups: currentRole?.user_group_name_list,
-        operationCodes: currentRole?.operation_list?.map(
-          (e) => e.operation_code ?? ''
-        ),
+        operationCodes: currentRole?.operation_list?.map((e) => e.op_code ?? 0),
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

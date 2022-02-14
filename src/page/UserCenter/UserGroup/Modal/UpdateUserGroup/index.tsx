@@ -44,9 +44,12 @@ const UpdateUserGroup = () => {
     const values = await form.validateFields();
     try {
       startRequest();
-      // todo: update params
       const res = await user_group.updateUserGroupV1({
         user_group_name: values.userGroupName,
+        user_group_desc: values.userGroupDesc,
+        role_name_list: values.roleList,
+        user_name_list: values.userList,
+        is_disabled: values.isDisabled,
       });
       if (res.data.code === ResponseCode.SUCCESS) {
         requestFinish();

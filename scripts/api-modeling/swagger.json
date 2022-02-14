@@ -2410,6 +2410,15 @@
                         "name": "user_group_name",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "description": "update user group",
+                        "name": "instance",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.PatchUserGroupReqV1"
+                        }
                     }
                 ],
                 "responses": {
@@ -5122,6 +5131,30 @@
                 }
             }
         },
+        "v1.PatchUserGroupReqV1": {
+            "type": "object",
+            "properties": {
+                "is_disabled": {
+                    "type": "boolean"
+                },
+                "role_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "user_group_desc": {
+                    "type": "string",
+                    "example": "this is a group"
+                },
+                "user_name_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
         "v1.RejectWorkflowReqV1": {
             "type": "object",
             "properties": {
@@ -6072,7 +6105,7 @@
                 "operation_code_list": {
                     "type": "array",
                     "items": {
-                        "type": "string"
+                        "type": "integer"
                     }
                 },
                 "role_desc": {
@@ -6162,10 +6195,10 @@
         "v2.Operation": {
             "type": "object",
             "properties": {
-                "operation_code": {
-                    "type": "string"
+                "op_code": {
+                    "type": "integer"
                 },
-                "operation_desc": {
+                "op_desc": {
                     "type": "string"
                 }
             }
@@ -6217,7 +6250,7 @@
                 "operation_code_list": {
                     "type": "array",
                     "items": {
-                        "type": "string"
+                        "type": "integer"
                     }
                 },
                 "role_desc": {

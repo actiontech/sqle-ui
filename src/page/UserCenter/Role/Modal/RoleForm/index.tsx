@@ -91,7 +91,7 @@ const RoleForm: React.FC<IRoleFormProps> = (props) => {
         </Select>
       </Form.Item>
       <Form.Item name="userGroups" label={t('role.roleForm.userGroups')}>
-        <Select
+        <Select<number>
           mode="multiple"
           showSearch
           placeholder={t('common.form.placeholder.select')}

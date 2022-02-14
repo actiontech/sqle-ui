@@ -33,5 +33,7 @@ export default {
 
   deleteUserGroup: {
     confirm: '确认要删除用户组: "{{name}}" 吗？',
+    deleting: '正在删除用户组: "{{name}}" ...',
+    deleteSuccess: '删除用户组: "{{name}}" 成功',
   },
 };

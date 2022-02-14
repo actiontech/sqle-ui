@@ -65,7 +65,7 @@ const UserListFilterForm: React.FC<{
           >
             <Select
               showSearch
-              placeholder={t('user.roleListFilter.usernamePlaceholder')}
+              placeholder={t('user.userListFilter.usernamePlaceholder')}
             >
               {usernameList.map((user) => (
                 <Select.Option
@@ -82,7 +82,7 @@ const UserListFilterForm: React.FC<{
           <Form.Item name="filter_role_name" label={t('user.userForm.role')}>
             <Select
               showSearch
-              placeholder={t('user.roleListFilter.rolePlaceholder')}
+              placeholder={t('user.userListFilter.rolePlaceholder')}
             >
               {roleList.map((role) => (
                 <Select.Option

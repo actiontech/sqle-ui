@@ -729,6 +729,16 @@ export interface IPartialSyncAuditPlanSQLsReqV1 {
   audit_plan_sql_list?: IAuditPlanSQLReqV1[];
 }
 
+export interface IPatchUserGroupReqV1 {
+  is_disabled?: boolean;
+
+  role_name_list?: string[];
+
+  user_group_desc?: string;
+
+  user_name_list?: string[];
+}
+
 export interface IRejectWorkflowReqV1 {
   reason?: string;
 }
@@ -1158,7 +1168,7 @@ export interface IAuditPlanSQLResV2 {
 export interface ICreateRoleReqV2 {
   instance_name_list?: string[];
 
-  operation_code_list?: string[];
+  operation_code_list?: number[];
 
   role_desc?: string;
 
@@ -1200,9 +1210,9 @@ export interface IGetRolesResV2 {
 }
 
 export interface IOperation {
-  operation_code?: string;
+  op_code?: number;
 
-  operation_desc?: string;
+  op_desc?: string;
 }
 
 export interface IRoleResV2 {
@@ -1222,7 +1232,7 @@ export interface IRoleResV2 {
 export interface IUpdateRoleReqV2 {
   instance_name_list?: string[];
 
-  operation_code_list?: string[];
+  operation_code_list?: number[];
 
   role_desc?: string;
 

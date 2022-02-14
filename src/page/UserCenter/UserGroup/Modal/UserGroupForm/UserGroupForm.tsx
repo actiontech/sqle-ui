@@ -44,7 +44,10 @@ const UserGroupForm: React.FC<UserGroupFormProps> = (props) => {
         name="roleList"
         label={t('userGroup.userGroupField.roleNameList')}
       >
-        <Select placeholder={t('common.form.placeholder.select')}>
+        <Select
+          mode="multiple"
+          placeholder={t('common.form.placeholder.select')}
+        >
           {roleList?.map((role) => (
             <Select.Option key={role.role_name} value={role.role_name ?? ''}>
               {role.role_name}
@@ -56,7 +59,10 @@ const UserGroupForm: React.FC<UserGroupFormProps> = (props) => {
         name="userList"
         label={t('userGroup.userGroupField.userNameList')}
       >
-        <Select placeholder={t('common.form.placeholder.select')}>
+        <Select
+          mode="multiple"
+          placeholder={t('common.form.placeholder.select')}
+        >
           {userList?.map((user) => (
             <Select.Option key={user.user_name} value={user.user_name ?? ''}>
               {user.user_name}

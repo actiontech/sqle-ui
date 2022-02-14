@@ -58,7 +58,7 @@ export const RoleListColumnFactory = (
           return '';
         }
         return orderBy(list, ['operation_code'], ['asc'])
-          .map((e) => e.operation_desc)
+          .map((e) => e.op_desc)
           .join(',');
       },
     },
