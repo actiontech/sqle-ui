@@ -29,6 +29,7 @@ export default {
     usernames: '绑定用户',
     operationCodes: '动作权限',
     userGroups: '所属用户组',
+    isDisabled: '禁用',
   },
 
   roleListFilter: {
@@ -42,5 +43,6 @@ export default {
     database: '绑定的数据源',
     userGroup: '绑定的用户组',
     operation: '拥有的动作权限',
+    disabled: '是否禁用',
   },
 };

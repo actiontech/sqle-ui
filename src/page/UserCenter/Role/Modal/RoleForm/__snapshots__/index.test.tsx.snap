@@ -467,6 +467,47 @@ exports[`User/Modal/RoleForm should match snapshot when isUpdate is truthy 1`] =
       >
         <label
           class=""
+          for="isDisabled"
+          title="role.roleForm.isDisabled"
+        >
+          role.roleForm.isDisabled
+        </label>
+      </div>
+      <div
+        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <button
+              aria-checked="false"
+              class="ant-switch"
+              id="isDisabled"
+              role="switch"
+              type="button"
+            >
+              <div
+                class="ant-switch-handle"
+              />
+              <span
+                class="ant-switch-inner"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+      >
+        <label
+          class=""
           for="databases"
           title="role.roleForm.databases"
         >

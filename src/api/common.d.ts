@@ -116,6 +116,8 @@ export interface IAuditTaskResV1 {
 
   pass_rate?: number;
 
+  score?: number;
+
   sql_source?: AuditTaskResV1SqlSourceEnum;
 
   status?: AuditTaskResV1StatusEnum;
@@ -1058,6 +1060,8 @@ export interface IWorkflowDetailResV1 {
 
   task_pass_rate?: number;
 
+  task_score?: number;
+
   workflow_id?: number;
 }
 
@@ -1218,6 +1222,8 @@ export interface IOperation {
 export interface IRoleResV2 {
   instance_name_list?: string[];
 
+  is_disabled?: boolean;
+
   operation_list?: IOperation[];
 
   role_desc?: string;
@@ -1231,6 +1237,8 @@ export interface IRoleResV2 {
 
 export interface IUpdateRoleReqV2 {
   instance_name_list?: string[];
+
+  is_disabled?: boolean;
 
   operation_code_list?: number[];
 

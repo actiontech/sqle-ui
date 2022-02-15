@@ -13,6 +13,7 @@ export interface IRoleFormFields {
   usernames?: string[];
   operationCodes?: number[];
   userGroups?: string[];
+  isDisabled?: boolean;
 }
 
 export interface IRoleFormProps {

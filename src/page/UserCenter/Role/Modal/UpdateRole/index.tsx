@@ -58,6 +58,7 @@ const UpdateRole = () => {
         user_name_list: values.usernames,
         user_group_name_list: values.userGroups,
         operation_code_list: values.operationCodes,
+        is_disabled: values.isDisabled,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -83,6 +84,7 @@ const UpdateRole = () => {
         databases: currentRole?.instance_name_list,
         userGroups: currentRole?.user_group_name_list,
         operationCodes: currentRole?.operation_list?.map((e) => e.op_code ?? 0),
+        isDisabled: currentRole?.is_disabled ?? false,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

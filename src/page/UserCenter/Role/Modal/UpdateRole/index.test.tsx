@@ -45,6 +45,7 @@ describe('User/Modal/AddRole', () => {
           instance_name_list: ['instance1'],
           user_group_name_list: ['user_group1'],
           operation_list: [{ op_code: 20100 }],
+          is_disabled: false,
         },
       },
     });
@@ -80,10 +81,10 @@ describe('User/Modal/AddRole', () => {
     expect(useOperationSpy).not.toBeCalled();
   });
 
-  test('should send create role request when user click submit button', async () => {
+  test('should send update role request when user click submit button', async () => {
     render(<UpdateRole />);
-    const createRoleSpy = jest.spyOn(role, 'updateRoleV2');
-    createRoleSpy.mockImplementation(() => resolveThreeSecond({}));
+    const updateRoleSpy = jest.spyOn(role, 'updateRoleV2');
+    updateRoleSpy.mockImplementation(() => resolveThreeSecond({}));
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -135,14 +136,15 @@ describe('User/Modal/AddRole', () => {
     expect(screen.getByText('common.close').parentNode).toHaveAttribute(
       'disabled'
     );
-    expect(createRoleSpy).toBeCalledTimes(1);
-    expect(createRoleSpy).toBeCalledWith({
+    expect(updateRoleSpy).toBeCalledTimes(1);
+    expect(updateRoleSpy).toBeCalledWith({
       instance_name_list: ['instance1'],
       role_desc: 'role1 desc',
       role_name: 'oldName',
       user_name_list: ['user_name1'],
       user_group_name_list: ['user_group1'],
       operation_code_list: [20100],
+      is_disabled: false,
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);

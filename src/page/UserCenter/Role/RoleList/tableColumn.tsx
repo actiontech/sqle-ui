@@ -21,6 +21,19 @@ export const RoleListColumnFactory = (
       },
     },
     {
+      dataIndex: 'is_disabled',
+      title: () => i18n.t('role.roleList.disabled'),
+      render: (isDisabled: boolean) => {
+        return (
+          <Typography.Text type={isDisabled ? 'danger' : undefined}>
+            {isDisabled
+              ? i18n.t('user.userState.disabled')
+              : i18n.t('user.userState.normal')}
+          </Typography.Text>
+        );
+      },
+    },
+    {
       dataIndex: 'user_name_list',
       title: () => i18n.t('role.roleList.username'),
       render: (list: string[]) => {

@@ -1,6 +1,7 @@
-import { Form, Input, Select } from 'antd';
+import { Form, Input, Select, Switch } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import EmptyBox from '../../../../../components/EmptyBox';
 import { ModalFormLayout } from '../../../../../data/common';
 import { nameRule } from '../../../../../utils/FormRule';
 import { IRoleFormProps } from './index.type';
@@ -40,6 +41,15 @@ const RoleForm: React.FC<IRoleFormProps> = (props) => {
           })}
         />
       </Form.Item>
+      <EmptyBox if={props.isUpdate}>
+        <Form.Item
+          name="isDisabled"
+          label={t('role.roleForm.isDisabled')}
+          valuePropName="checked"
+        >
+          <Switch />
+        </Form.Item>
+      </EmptyBox>
       <Form.Item name="databases" label={t('role.roleForm.databases')}>
         <Select
           mode="multiple"

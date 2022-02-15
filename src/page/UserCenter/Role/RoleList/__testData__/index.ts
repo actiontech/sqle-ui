@@ -9,6 +9,7 @@ export const RoleListData = [
     role_name: 'Taylor',
     user_group_name_list: ['group2', 'group1'],
     user_name_list: ['user1', 'user2'],
+    is_disabled: true,
   },
   {
     instance_name_list: ['instance3', 'instance', 'instance2'],
@@ -23,6 +24,7 @@ export const RoleListData = [
     role_name: 'White',
     user_group_name_list: ['group1'],
     user_name_list: ['user2'],
+    is_disabled: false,
   },
   {
     instance_name_list: ['instance'],

@@ -454,6 +454,11 @@ exports[`User/RoleList should match snapshot 1`] = `
                         <th
                           class="ant-table-cell"
                         >
+                          role.roleList.disabled
+                        </th>
+                        <th
+                          class="ant-table-cell"
+                        >
                           role.roleList.username
                         </th>
                         <th
@@ -486,7 +491,7 @@ exports[`User/RoleList should match snapshot 1`] = `
                       >
                         <td
                           class="ant-table-cell"
-                          colspan="7"
+                          colspan="8"
                         >
                           <div
                             class="ant-empty ant-empty-normal"
@@ -981,6 +986,11 @@ exports[`User/RoleList should match snapshot 2`] = `
                         <th
                           class="ant-table-cell"
                         >
+                          role.roleList.disabled
+                        </th>
+                        <th
+                          class="ant-table-cell"
+                        >
                           role.roleList.username
                         </th>
                         <th
@@ -1021,6 +1031,15 @@ exports[`User/RoleList should match snapshot 2`] = `
                           class="ant-table-cell"
                         >
                           陆桂英
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          <span
+                            class="ant-typography ant-typography-danger"
+                          >
+                            user.userState.disabled
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1096,6 +1115,15 @@ exports[`User/RoleList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
+                          <span
+                            class="ant-typography"
+                          >
+                            user.userState.normal
+                          </span>
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
                           user2
                         </td>
                         <td
@@ -1163,6 +1191,15 @@ exports[`User/RoleList should match snapshot 2`] = `
                           class="ant-table-cell"
                         >
                           邱刚
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          <span
+                            class="ant-typography"
+                          >
+                            user.userState.normal
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1238,6 +1275,15 @@ exports[`User/RoleList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
+                          <span
+                            class="ant-typography"
+                          >
+                            user.userState.normal
+                          </span>
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
                           user2
                         </td>
                         <td
@@ -1305,6 +1351,15 @@ exports[`User/RoleList should match snapshot 2`] = `
                           class="ant-table-cell"
                         >
                           傅杰
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          <span
+                            class="ant-typography"
+                          >
+                            user.userState.normal
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1380,6 +1435,15 @@ exports[`User/RoleList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
+                          <span
+                            class="ant-typography"
+                          >
+                            user.userState.normal
+                          </span>
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
                           
                         </td>
                         <td
@@ -1447,6 +1511,15 @@ exports[`User/RoleList should match snapshot 2`] = `
                           class="ant-table-cell"
                         >
                           郝明
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          <span
+                            class="ant-typography"
+                          >
+                            user.userState.normal
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1522,6 +1595,15 @@ exports[`User/RoleList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
+                          <span
+                            class="ant-typography"
+                          >
+                            user.userState.normal
+                          </span>
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
                           user1
                         </td>
                         <td
@@ -1593,6 +1675,15 @@ exports[`User/RoleList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
+                          <span
+                            class="ant-typography"
+                          >
+                            user.userState.normal
+                          </span>
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
                           user1
                         </td>
                         <td
@@ -1660,6 +1751,15 @@ exports[`User/RoleList should match snapshot 2`] = `
                           class="ant-table-cell"
                         >
                           罗杰
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          <span
+                            class="ant-typography"
+                          >
+                            user.userState.normal
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
