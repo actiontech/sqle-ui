@@ -21,7 +21,7 @@ export const storeFactory = (initStore: Dictionary = {}) => {
   return createStore(reducers, initStore);
 };
 
-export const mockUseSelector = (store?: Dictionary) => {
+export const mockUseSelector = (store?: any) => {
   const spy = jest.spyOn(redux, 'useSelector');
   spy.mockImplementation((getFn: Function) => {
     return getFn(store);

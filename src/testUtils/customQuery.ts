@@ -1,4 +1,5 @@
 import * as domTestingLib from '@testing-library/dom';
+import { fireEvent, screen } from '@testing-library/react';
 
 export const getBySelector = (selector: string, baseElement?: Element) => {
   let temp;
@@ -36,4 +37,22 @@ export const getAllBySelector = (selector: string, baseElement?: Element) => {
     );
   }
   return temp;
+};
+
+export const getSelectContentByFormLabel = (label: string) => {
+  return getBySelector(
+    '.ant-select-selection-item-content',
+    screen.getByText(label).parentNode?.parentNode as HTMLDivElement
+  );
+};
+
+export const selectOptionByIndex = (
+  label: string,
+  optionText: string,
+  index = 1
+) => {
+  fireEvent.mouseDown(screen.getByLabelText(label));
+  const option = screen.getAllByText(optionText)[index];
+  expect(option).toHaveClass('ant-select-item-option-content');
+  fireEvent.click(option);
 };

@@ -26,7 +26,16 @@ const Login = React.lazy(
 );
 
 const User = React.lazy(
-  () => import(/* webpackChunkName: "User" */ '../page/User')
+  () => import(/* webpackChunkName: "User" */ '../page/UserCenter/User')
+);
+
+const Role = React.lazy(
+  () => import(/* webpackChunkName: "Role" */ '../page/UserCenter/Role')
+);
+
+const UserGroup = React.lazy(
+  () =>
+    import(/* webpackChunkName: "UserGroup" */ '../page/UserCenter/UserGroup')
 );
 
 const Rule = React.lazy(
@@ -176,12 +185,32 @@ export const routerConfig: RouterItem[] = [
     icon: <ContainerOutlined />,
     components: [
       {
-        path: '/user',
-        exact: true,
-        label: 'menu.user',
-        component: User,
+        label: 'menu.userCenter',
         icon: <UserOutlined />,
-        key: 'user',
+        key: 'userCenter',
+        components: [
+          {
+            path: '/user',
+            exact: true,
+            label: 'menu.user',
+            component: User,
+            key: 'user',
+          },
+          {
+            path: '/user/role',
+            exact: true,
+            label: 'menu.role',
+            component: Role,
+            key: 'role',
+          },
+          {
+            path: '/user/group',
+            exact: true,
+            label: 'menu.userGroup',
+            component: UserGroup,
+            key: 'userGroup',
+          },
+        ],
       },
       {
         path: '/data',

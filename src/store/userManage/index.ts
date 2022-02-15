@@ -1,17 +1,23 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IRoleResV1, IUserResV1 } from '../../api/common';
+import {
+  IRoleResV2,
+  IUserGroupListItemResV1,
+  IUserResV1,
+} from '../../api/common';
 import { ModalStatus } from '../../types/common.type';
 import { commonModalReducer } from '../common';
 
 type UserManageReduxState = {
   modalStatus: ModalStatus;
-  selectRole: IRoleResV1 | null;
+  selectRole: IRoleResV2 | null;
   selectUser: IUserResV1 | null;
+  selectUserGroup: IUserGroupListItemResV1 | null;
 };
 
 const initialState: UserManageReduxState = {
   selectRole: null,
   selectUser: null,
+  selectUserGroup: null,
   modalStatus: {},
 };
 
@@ -27,9 +33,17 @@ const user = createSlice({
     },
     updateSelectRole(
       state,
-      { payload: { role } }: PayloadAction<{ role: IRoleResV1 | null }>
+      { payload: { role } }: PayloadAction<{ role: IRoleResV2 | null }>
     ) {
       state.selectRole = role;
+    },
+    updateSelectUserGroup(
+      state,
+      {
+        payload: { userGroup },
+      }: PayloadAction<{ userGroup: IUserGroupListItemResV1 | null }>
+    ) {
+      state.selectUserGroup = userGroup;
     },
     ...commonModalReducer(),
   },
@@ -38,6 +52,7 @@ const user = createSlice({
 export const {
   updateSelectRole,
   updateSelectUser,
+  updateSelectUserGroup,
   initModalStatus: initUserManageModalStatus,
   updateModalStatus: updateUserManageModalStatus,
 } = user.actions;

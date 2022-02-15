@@ -10,9 +10,11 @@ import rule from './rule';
 import ruleTemplate from './ruleTemplate';
 import system from './system';
 import user from './user';
+import role from './role';
 import whitelist from './whitelist';
 import workflowTemplate from './workflowTemplate';
 import auditPlan from './auditPlan';
+import userGroup from './userGroup';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -32,5 +34,7 @@ export default {
     system,
     workflowTemplate,
     auditPlan,
+    role,
+    userGroup,
   },
 };

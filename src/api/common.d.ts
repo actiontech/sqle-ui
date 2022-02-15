@@ -116,6 +116,8 @@ export interface IAuditTaskResV1 {
 
   pass_rate?: number;
 
+  score?: number;
+
   sql_source?: AuditTaskResV1SqlSourceEnum;
 
   status?: AuditTaskResV1StatusEnum;
@@ -237,10 +239,22 @@ export interface ICreateRuleTemplateReqV1 {
   rule_template_name?: string;
 }
 
+export interface ICreateUserGroupReqV1 {
+  role_name_list?: string[];
+
+  user_group_desc?: string;
+
+  user_group_name?: string;
+
+  user_name_list?: string[];
+}
+
 export interface ICreateUserReqV1 {
   email?: string;
 
   role_name_list?: string[];
+
+  user_group_name_list?: string[];
 
   user_name?: string;
 
@@ -457,6 +471,14 @@ export interface IGetLDAPConfigurationResV1 {
   message?: string;
 }
 
+export interface IGetOperationsResV1 {
+  code?: number;
+
+  data?: IOperationResV1[];
+
+  message?: string;
+}
+
 export interface IGetRoleTipsResV1 {
   code?: number;
 
@@ -539,6 +561,24 @@ export interface IGetUserDetailResV1 {
   data?: IUserDetailResV1;
 
   message?: string;
+}
+
+export interface IGetUserGroupTipsResV1 {
+  code?: number;
+
+  data?: IUserGroupTipListItem[];
+
+  message?: string;
+}
+
+export interface IGetUserGroupsResV1 {
+  code?: number;
+
+  data?: IUserGroupListItemResV1[];
+
+  message?: string;
+
+  total_nums?: number;
 }
 
 export interface IGetUserLoginResV1 {
@@ -681,8 +721,24 @@ export interface ILDAPConfigurationResV1 {
   ldap_user_name_rdn_key?: string;
 }
 
+export interface IOperationResV1 {
+  op_code?: number;
+
+  op_desc?: string;
+}
+
 export interface IPartialSyncAuditPlanSQLsReqV1 {
   audit_plan_sql_list?: IAuditPlanSQLReqV1[];
+}
+
+export interface IPatchUserGroupReqV1 {
+  is_disabled?: boolean;
+
+  role_name_list?: string[];
+
+  user_group_desc?: string;
+
+  user_name_list?: string[];
 }
 
 export interface IRejectWorkflowReqV1 {
@@ -878,7 +934,11 @@ export interface IUpdateSystemVariablesReqV1 {
 export interface IUpdateUserReqV1 {
   email?: string;
 
+  is_disabled?: boolean;
+
   role_name_list?: string[];
+
+  user_group_name_list?: string[];
 }
 
 export interface IUpdateWorkflowReqV1 {
@@ -904,11 +964,31 @@ export interface IUserDetailResV1 {
 
   is_admin?: boolean;
 
+  is_disabled?: boolean;
+
   login_type?: string;
 
   role_name_list?: string[];
 
+  user_group_name_list?: string[];
+
   user_name?: string;
+}
+
+export interface IUserGroupListItemResV1 {
+  is_disabled?: boolean;
+
+  role_name_list?: string[];
+
+  user_group_desc?: string;
+
+  user_group_name?: string;
+
+  user_name_list?: string[];
+}
+
+export interface IUserGroupTipListItem {
+  user_group_name?: string;
 }
 
 export interface IUserLoginReqV1 {
@@ -924,9 +1004,13 @@ export interface IUserLoginResV1 {
 export interface IUserResV1 {
   email?: string;
 
+  is_disabled?: boolean;
+
   login_type?: string;
 
   role_name_list?: string[];
+
+  user_group_name_list?: string[];
 
   user_name?: string;
 }
@@ -975,6 +1059,8 @@ export interface IWorkflowDetailResV1 {
   task_instance_schema?: string;
 
   task_pass_rate?: number;
+
+  task_score?: number;
 
   workflow_id?: number;
 }
@@ -1083,6 +1169,20 @@ export interface IAuditPlanSQLResV2 {
   }>;
 }
 
+export interface ICreateRoleReqV2 {
+  instance_name_list?: string[];
+
+  operation_code_list?: number[];
+
+  role_desc?: string;
+
+  role_name?: string;
+
+  user_group_name_list?: string[];
+
+  user_name_list?: string[];
+}
+
 export interface IGetAuditPlanReportSQLsResV2 {
   code?: number;
 
@@ -1101,4 +1201,50 @@ export interface IGetAuditPlanSQLsResV2 {
   message?: string;
 
   total_nums?: number;
+}
+
+export interface IGetRolesResV2 {
+  code?: number;
+
+  data?: IRoleResV2[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
+export interface IOperation {
+  op_code?: number;
+
+  op_desc?: string;
+}
+
+export interface IRoleResV2 {
+  instance_name_list?: string[];
+
+  is_disabled?: boolean;
+
+  operation_list?: IOperation[];
+
+  role_desc?: string;
+
+  role_name?: string;
+
+  user_group_name_list?: string[];
+
+  user_name_list?: string[];
+}
+
+export interface IUpdateRoleReqV2 {
+  instance_name_list?: string[];
+
+  is_disabled?: boolean;
+
+  operation_code_list?: number[];
+
+  role_desc?: string;
+
+  user_group_name_list?: string[];
+
+  user_name_list?: string[];
 }

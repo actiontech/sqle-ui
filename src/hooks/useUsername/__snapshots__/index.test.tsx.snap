@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`useRole should get role data from request 1`] = `
+exports[`useUsername should get username data from request 1`] = `
 <body>
   <div>
     <div
@@ -64,7 +64,7 @@ exports[`useRole should get role data from request 1`] = `
 </body>
 `;
 
-exports[`useRole should get role data from request 2`] = `
+exports[`useUsername should get username data from request 2`] = `
 <body>
   <div>
     <div
@@ -132,7 +132,7 @@ exports[`useRole should get role data from request 2`] = `
 </body>
 `;
 
-exports[`useRole should get role data from request 3`] = `
+exports[`useUsername should get username data from request 3`] = `
 <body>
   <div>
     <div

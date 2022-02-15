@@ -7,6 +7,9 @@ export enum ModalName {
   Update_User = 'Update_User',
   Update_User_Password = 'Update_User_Password',
 
+  Add_User_Group = 'ADD_USER_GROUP',
+  Update_User_Group = 'Update_User_Group',
+
   // whitelist manage
   Add_Whitelist = 'ADD_WHITELIST',
   Update_Whitelist = 'UPDATE_WHITELIST',

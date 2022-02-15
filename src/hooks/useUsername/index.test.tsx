@@ -15,7 +15,7 @@ import { Select } from 'antd';
 import useUsername from '.';
 import user from '../../api/user';
 
-describe('useRole', () => {
+describe('useUsername', () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });
@@ -29,7 +29,7 @@ describe('useRole', () => {
     return spy;
   };
 
-  test('should get role data from request', async () => {
+  test('should get username data from request', async () => {
     const requestSpy = mockRequest();
     requestSpy.mockImplementation(() =>
       resolveThreeSecond([{ user_name: 'user_name1' }])
