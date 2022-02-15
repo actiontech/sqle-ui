@@ -44,7 +44,7 @@ describe('User/Modal/AddRole', () => {
           user_name_list: ['user_name1'],
           instance_name_list: ['instance1'],
           user_group_name_list: ['user_group1'],
-          operation_list: [{ operation_code: '20100' }],
+          operation_list: [{ op_code: 20100 }],
         },
       },
     });
@@ -142,7 +142,7 @@ describe('User/Modal/AddRole', () => {
       role_name: 'oldName',
       user_name_list: ['user_name1'],
       user_group_name_list: ['user_group1'],
-      operation_code_list: ['20100'],
+      operation_code_list: [20100],
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);

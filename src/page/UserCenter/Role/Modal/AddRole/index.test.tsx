@@ -122,7 +122,7 @@ describe('User/Modal/AddRole', () => {
       role_desc: 'role1 desc',
       role_name: 'role1',
       user_name_list: ['user_name1'],
-      operation_code_list: ['20100'],
+      operation_code_list: [20100],
       user_group_name_list: ['user_group_name1'],
     });
     await waitFor(() => {

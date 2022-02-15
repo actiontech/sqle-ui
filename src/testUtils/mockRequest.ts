@@ -154,23 +154,23 @@ export const mockUseOperation = () => {
   spy.mockImplementation(() =>
     resolveThreeSecond([
       {
-        op_code: '20100',
+        op_code: 20100,
         op_desc: '查看工单',
       },
       {
-        op_code: '20150',
+        op_code: 20150,
         op_desc: '查看他人创建的工单',
       },
       {
-        op_code: '20200',
+        op_code: 20200,
         op_desc: '更新工单',
       },
       {
-        op_code: '20300',
+        op_code: 20300,
         op_desc: '创建工单',
       },
       {
-        op_code: '20400',
+        op_code: 20400,
         op_desc: '删除工单',
       },
     ])

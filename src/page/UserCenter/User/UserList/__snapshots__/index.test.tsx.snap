@@ -130,7 +130,7 @@ exports[`User/UserList should match snapshot 1`] = `
                         <span
                           class="ant-select-selection-placeholder"
                         >
-                          user.roleListFilter.usernamePlaceholder
+                          user.userListFilter.usernamePlaceholder
                         </span>
                       </div>
                       <span
@@ -218,7 +218,7 @@ exports[`User/UserList should match snapshot 1`] = `
                         <span
                           class="ant-select-selection-placeholder"
                         >
-                          user.roleListFilter.rolePlaceholder
+                          user.userListFilter.rolePlaceholder
                         </span>
                       </div>
                       <span
@@ -591,7 +591,7 @@ exports[`User/UserList should match snapshot 2`] = `
                         <span
                           class="ant-select-selection-placeholder"
                         >
-                          user.roleListFilter.usernamePlaceholder
+                          user.userListFilter.usernamePlaceholder
                         </span>
                       </div>
                       <span
@@ -679,7 +679,7 @@ exports[`User/UserList should match snapshot 2`] = `
                         <span
                           class="ant-select-selection-placeholder"
                         >
-                          user.roleListFilter.rolePlaceholder
+                          user.userListFilter.rolePlaceholder
                         </span>
                       </div>
                       <span

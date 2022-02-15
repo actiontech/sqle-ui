@@ -112,7 +112,7 @@ const UserGroupList = () => {
       title={
         <Space>
           {t('userGroup.userGroupList.title')}
-          <Button onClick={refresh}>
+          <Button onClick={refresh} data-testid="refresh-button">
             <SyncOutlined spin={loading} />
           </Button>
         </Space>
@@ -130,6 +130,7 @@ const UserGroupList = () => {
     >
       <TableFilterForm updateTableFilter={setFilterInfo} />
       <Table
+        rowKey="user_group_name"
         loading={loading}
         dataSource={data?.list}
         columns={userGroupTableHeaderFactory(updateUserGroup, deleteUserGroup)}
