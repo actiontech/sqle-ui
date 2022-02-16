@@ -107,9 +107,8 @@ const Order = () => {
   );
 
   const {
+    taskInfo: tempTaskInfo,
     visible,
-    tempTaskId,
-    tempPassRate,
     openModifySqlModal,
     closeModifySqlModal,
     modifySqlSubmit,
@@ -127,7 +126,7 @@ const Order = () => {
     startUpdateSQL();
     workflow
       .updateWorkflowV1({
-        task_id: `${tempTaskId}`,
+        task_id: `${tempTaskInfo?.task_id}`,
         workflow_id: `${orderInfo?.workflow_id}`,
       })
       .then((res) => {
@@ -144,7 +143,7 @@ const Order = () => {
     refreshOrder,
     resetAllState,
     startUpdateSQL,
-    tempTaskId,
+    tempTaskInfo?.task_id,
     updateSqlFinish,
   ]);
 
@@ -253,6 +252,7 @@ const Order = () => {
           <AuditResult
             taskId={orderInfo?.record?.task_id}
             passRate={taskInfo?.pass_rate}
+            auditScore={taskInfo?.score}
           />
           <EmptyBox if={!!orderInfo}>
             <Card
@@ -281,7 +281,7 @@ const Order = () => {
               />
             </Card>
           </EmptyBox>
-          <EmptyBox if={!!tempTaskId}>
+          <EmptyBox if={!!tempTaskInfo}>
             <Card>
               <Space>
                 <Popconfirm
@@ -314,8 +314,12 @@ const Order = () => {
               </Space>
             </Card>
           </EmptyBox>
-          <EmptyBox if={!!tempTaskId}>
-            <AuditResult taskId={tempTaskId} passRate={tempPassRate} />
+          <EmptyBox if={!!tempTaskInfo?.task_id}>
+            <AuditResult
+              taskId={tempTaskInfo?.task_id}
+              passRate={tempTaskInfo?.pass_rate}
+              auditScore={tempTaskInfo?.score}
+            />
           </EmptyBox>
         </Space>
         <ModifySqlModal

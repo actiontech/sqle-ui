@@ -198,6 +198,7 @@ const CreateOrder = () => {
             <AuditResult
               taskId={taskInfo?.task_id}
               passRate={taskInfo?.pass_rate}
+              auditScore={taskInfo?.score}
             />
           </EmptyBox>
           <Card className="text-align-right">

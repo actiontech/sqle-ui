@@ -587,6 +587,7 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                   </div>
                   <div
                     class="ant-space-item"
+                    style="margin-right: 8px;"
                   >
                     <span
                       class="ant-typography ant-typography-secondary font-size-small"
@@ -594,6 +595,16 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                       audit.passRage
                       0
                       %
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <span
+                      class="ant-typography ant-typography-secondary font-size-small"
+                    >
+                      audit.source
+                      30
                     </span>
                   </div>
                 </div>

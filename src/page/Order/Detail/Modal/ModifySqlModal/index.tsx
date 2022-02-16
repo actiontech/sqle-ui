@@ -3,10 +3,7 @@ import { Alert, Button, Modal, Space } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  AuditTaskResV1SqlSourceEnum,
-  CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
-} from '../../../../../api/common.enum';
+import { AuditTaskResV1SqlSourceEnum } from '../../../../../api/common.enum';
 import task from '../../../../../api/task';
 import { ICreateAndAuditTaskV1Params } from '../../../../../api/task/index.d';
 import { ModalSize, ResponseCode } from '../../../../../data/common';
@@ -38,21 +35,8 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = (props) => {
     task
       .createAndAuditTaskV1(params)
       .then((res) => {
-        if (res.data.code === ResponseCode.SUCCESS) {
-          const {
-            task_id = 0,
-            pass_rate = 0,
-            instance_name,
-            audit_level,
-          } = res.data.data ?? {};
-          props.submit(
-            task_id,
-            pass_rate,
-            instance_name,
-            audit_level as
-              | CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
-              | undefined
-          );
+        if (res.data.code === ResponseCode.SUCCESS && res.data.data) {
+          props.submit(res.data.data);
         }
       })
       .finally(() => {

@@ -25,6 +25,7 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
             </div>
             <div
               class="ant-space-item"
+              style="margin-right: 8px;"
             >
               <span
                 class="ant-typography ant-typography-secondary font-size-small"
@@ -32,6 +33,15 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
                 audit.passRage
                 33
                 %
+              </span>
+            </div>
+            <div
+              class="ant-space-item"
+            >
+              <span
+                class="ant-typography ant-typography-secondary font-size-small"
+              >
+                audit.source
               </span>
             </div>
           </div>
@@ -618,6 +628,7 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
             </div>
             <div
               class="ant-space-item"
+              style="margin-right: 8px;"
             >
               <span
                 class="ant-typography ant-typography-secondary font-size-small"
@@ -625,6 +636,15 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
                 audit.passRage
                 33
                 %
+              </span>
+            </div>
+            <div
+              class="ant-space-item"
+            >
+              <span
+                class="ant-typography ant-typography-secondary font-size-small"
+              >
+                audit.source
               </span>
             </div>
           </div>
