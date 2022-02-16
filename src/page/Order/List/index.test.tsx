@@ -3,7 +3,6 @@ import OrderList from '.';
 import workflow from '../../../api/workflow';
 import {
   renderWithRouter,
-  renderWithServerRouter,
   renderWithThemeAndRouter,
   renderWithThemeAndServerRouter,
 } from '../../../testUtils/customRender';
@@ -50,6 +49,7 @@ describe('Order/List', () => {
           task_pass_rate: 0,
           task_status: 'audited',
           workflow_id: 1,
+          task_score: 30,
         },
       ])
     );

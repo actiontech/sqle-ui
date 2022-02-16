@@ -485,6 +485,7 @@ export const taskInfo: IAuditTaskResV1 = {
   status: 'audited',
   sql_source: 'form_data',
   audit_level: AuditTaskResV1AuditLevelEnum.normal,
+  score: 30,
 } as IAuditTaskResV1;
 
 export const taskInfoErrorAuditLevel: IAuditTaskResV1 = {
@@ -495,6 +496,7 @@ export const taskInfoErrorAuditLevel: IAuditTaskResV1 = {
   status: 'audited',
   sql_source: 'form_data',
   audit_level: AuditTaskResV1AuditLevelEnum.error,
+  score: 40,
 } as IAuditTaskResV1;
 
 export const taskSqls = [

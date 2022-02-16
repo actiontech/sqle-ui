@@ -1,11 +1,12 @@
 import { useBoolean } from 'ahooks';
 import { useCallback, useState } from 'react';
+import { IAuditTaskResV1 } from '../../../api/common';
 import { CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum } from '../../../api/common.enum';
 import { useAllowAuditLevel } from '../hooks/useAllowAuditLevel';
 
 const useModifySql = () => {
-  const [tempTaskId, setTempTaskId] = useState<number>();
-  const [tempPassRate, setPassRate] = useState<number>();
+  const [taskInfo, setTaskInfo] = useState<IAuditTaskResV1>();
+
   const [
     updateOrderDisabled,
     { setTrue: setUpdateOrderBtnDisabled, setFalse: resetUpdateOrderBtnStatus },
@@ -22,21 +23,17 @@ const useModifySql = () => {
   } = useAllowAuditLevel();
 
   const modifySqlSubmit = useCallback(
-    async (
-      taskId: number,
-      passRate: number,
-      instanceName?: string,
-      audit_level?: CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
-    ) => {
-      setTempTaskId(taskId);
-      setPassRate(passRate);
+    (task: IAuditTaskResV1) => {
+      setTaskInfo(task);
       closeModifySqlModal();
-      if (instanceName) {
+      if (task.instance_name) {
         judgeAuditLevel(
-          instanceName,
+          task.instance_name,
           setUpdateOrderBtnDisabled,
           resetUpdateOrderBtnStatus,
-          audit_level
+          task.audit_level as
+            | CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
+            | undefined
         );
       }
     },
@@ -49,17 +46,15 @@ const useModifySql = () => {
   );
 
   const resetAllState = () => {
-    setTempTaskId(undefined);
-    setPassRate(undefined);
+    setTaskInfo(undefined);
     setDisabledOperatorOrderBtnTips('');
     closeModifySqlModal();
     resetUpdateOrderBtnStatus();
   };
 
   return {
+    taskInfo,
     visible,
-    tempTaskId,
-    tempPassRate,
     openModifySqlModal,
     closeModifySqlModal,
     modifySqlSubmit,

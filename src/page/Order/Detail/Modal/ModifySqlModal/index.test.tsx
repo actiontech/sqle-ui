@@ -1,10 +1,7 @@
 import { cleanup, fireEvent, screen, waitFor } from '@testing-library/react';
 import { cloneDeep } from 'lodash';
 import ModifySqlModal from '.';
-import {
-  AuditTaskResV1SqlSourceEnum,
-  CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
-} from '../../../../../api/common.enum';
+import { AuditTaskResV1SqlSourceEnum } from '../../../../../api/common.enum';
 import task from '../../../../../api/task';
 import { renderWithTheme } from '../../../../../testUtils/customRender';
 import {
@@ -13,7 +10,7 @@ import {
 } from '../../../../../testUtils/mockRedux';
 import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
 import { SupportTheme } from '../../../../../theme';
-import { taskInfo } from '../../__testData__';
+import { taskInfo, taskInfoErrorAuditLevel } from '../../__testData__';
 
 describe('Order/Detail/Modal/ModifySqlModal', () => {
   beforeEach(() => {
@@ -38,15 +35,7 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
 
   const mockCreateTask = () => {
     const spy = jest.spyOn(task, 'createAndAuditTaskV1');
-    spy.mockImplementation(() =>
-      resolveThreeSecond({
-        task_id: 9999,
-        pass_rate: 0.33,
-        instance_name: 'test',
-        audit_level:
-          CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.warn,
-      })
-    );
+    spy.mockImplementation(() => resolveThreeSecond(taskInfoErrorAuditLevel));
     return spy;
   };
 
@@ -197,11 +186,6 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
       'ant-btn-loading'
     );
     expect(propsSubmit).toBeCalledTimes(1);
-    expect(propsSubmit).toBeCalledWith(
-      9999,
-      0.33,
-      'test',
-      CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.warn
-    );
+    expect(propsSubmit).toBeCalledWith(taskInfoErrorAuditLevel);
   });
 });

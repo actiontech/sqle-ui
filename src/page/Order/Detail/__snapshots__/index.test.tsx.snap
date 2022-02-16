@@ -194,6 +194,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                   </div>
                   <div
                     class="ant-space-item"
+                    style="margin-right: 8px;"
                   >
                     <span
                       class="ant-typography ant-typography-secondary font-size-small"
@@ -201,6 +202,16 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                       audit.passRage
                       0
                       %
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <span
+                      class="ant-typography ant-typography-secondary font-size-small"
+                    >
+                      audit.source
+                      30
                     </span>
                   </div>
                 </div>
@@ -1849,6 +1860,7 @@ use aaab;
                   </div>
                   <div
                     class="ant-space-item"
+                    style="margin-right: 8px;"
                   >
                     <span
                       class="ant-typography ant-typography-secondary font-size-small"
@@ -1856,6 +1868,15 @@ use aaab;
                       audit.passRage
                       20
                       %
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <span
+                      class="ant-typography ant-typography-secondary font-size-small"
+                    >
+                      audit.source
                     </span>
                   </div>
                 </div>
@@ -3471,11 +3492,21 @@ exports[`Order/Detail should render on process order info by request 1`] = `
                   </div>
                   <div
                     class="ant-space-item"
+                    style="margin-right: 8px;"
                   >
                     <span
                       class="ant-typography ant-typography-secondary font-size-small"
                     >
                       audit.passRage
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <span
+                      class="ant-typography ant-typography-secondary font-size-small"
+                    >
+                      audit.source
                     </span>
                   </div>
                 </div>
@@ -4223,11 +4254,21 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                   </div>
                   <div
                     class="ant-space-item"
+                    style="margin-right: 8px;"
                   >
                     <span
                       class="ant-typography ant-typography-secondary font-size-small"
                     >
                       audit.passRage
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <span
+                      class="ant-typography ant-typography-secondary font-size-small"
+                    >
+                      audit.source
                     </span>
                   </div>
                 </div>

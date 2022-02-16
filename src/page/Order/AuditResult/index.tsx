@@ -101,6 +101,12 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
               {(props.passRate ?? 0) * 100}%
             </EmptyBox>
           </Typography.Text>
+          <Typography.Text type="secondary" className="font-size-small">
+            {t('audit.source')}
+            <EmptyBox if={props.auditScore !== undefined}>
+              {props.auditScore ?? 0}
+            </EmptyBox>
+          </Typography.Text>
         </Space>
       }
       extra={[
