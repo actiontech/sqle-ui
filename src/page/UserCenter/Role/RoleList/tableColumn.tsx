@@ -3,6 +3,7 @@ import i18n from '../../../../locale';
 import { TableColumn } from '../../../../types/common.type';
 import { orderBy } from 'lodash';
 import { Space, Typography, Divider, Popconfirm } from 'antd';
+import generateTag from '../../Common/generateTag';
 
 export const RoleListColumnFactory = (
   updateRole: (role: IRoleResV2) => void,
@@ -40,7 +41,7 @@ export const RoleListColumnFactory = (
         if (!Array.isArray(list)) {
           return '';
         }
-        return list.join(',');
+        return generateTag(list);
       },
     },
     {
@@ -50,7 +51,7 @@ export const RoleListColumnFactory = (
         if (!Array.isArray(list)) {
           return '';
         }
-        return list.join(',');
+        return generateTag(list);
       },
     },
     {
@@ -60,7 +61,7 @@ export const RoleListColumnFactory = (
         if (!Array.isArray(list)) {
           return '';
         }
-        return list.join(',');
+        return generateTag(list);
       },
     },
     {

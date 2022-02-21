@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test generateTag should match snapshot for generateTag 1`] = `
+Array [
+  <Tag>
+    group1
+  </Tag>,
+  <Tag>
+    group2
+  </Tag>,
+]
+`;

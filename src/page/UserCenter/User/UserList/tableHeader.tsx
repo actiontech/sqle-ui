@@ -13,6 +13,7 @@ import EmptyBox from '../../../../components/EmptyBox';
 import { LoginTypeEnum } from '../../../../data/common';
 import i18n from '../../../../locale';
 import { TableColumn } from '../../../../types/common.type';
+import generateTag from '../../Common/generateTag';
 
 const tableHeaderFactory = (
   updateUser: (user: IUserResV1) => void,
@@ -49,14 +50,20 @@ const tableHeaderFactory = (
       dataIndex: 'role_name_list',
       title: () => i18n.t('user.userForm.role'),
       render: (roleList?: string[]) => {
-        return roleList?.map((r) => <Tag key={r}>{r}</Tag>);
+        if (!Array.isArray(roleList)) {
+          return '';
+        }
+        return generateTag(roleList);
       },
     },
     {
       dataIndex: 'user_group_name_list',
       title: () => i18n.t('user.userForm.userGroup'),
       render: (userGroupList?: string[]) => {
-        return userGroupList?.join(',');
+        if (!Array.isArray(userGroupList)) {
+          return '';
+        }
+        return generateTag(userGroupList);
       },
     },
     {

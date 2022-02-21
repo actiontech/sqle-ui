@@ -331,13 +331,25 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3,roleName2,roleName
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -402,12 +414,30 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           <td
                             class="ant-table-cell"
                           >
-                            user2
+                            <span
+                              class="ant-tag"
+                            >
+                              user2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3,roleName,roleName2
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -472,12 +502,30 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           <td
                             class="ant-table-cell"
                           >
-                            user2
+                            <span
+                              class="ant-tag"
+                            >
+                              user2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
                           >
-                            roleName,roleName2,roleName3
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -541,13 +589,15 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName2
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -611,14 +661,10 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
@@ -681,13 +727,15 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -752,12 +800,25 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           <td
                             class="ant-table-cell"
                           >
-                            user2
+                            <span
+                              class="ant-tag"
+                            >
+                              user2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3,roleName
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -821,13 +882,20 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName,roleName3
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -891,13 +959,15 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -961,13 +1031,25 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName2,roleName3,roleName
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -1640,13 +1722,25 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3,roleName2,roleName
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -1711,12 +1805,30 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           <td
                             class="ant-table-cell"
                           >
-                            user2
+                            <span
+                              class="ant-tag"
+                            >
+                              user2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3,roleName,roleName2
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -1781,12 +1893,30 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           <td
                             class="ant-table-cell"
                           >
-                            user2
+                            <span
+                              class="ant-tag"
+                            >
+                              user2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
                           >
-                            roleName,roleName2,roleName3
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -1850,13 +1980,15 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName2
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -1920,14 +2052,10 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
@@ -1990,13 +2118,15 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -2061,12 +2191,25 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           <td
                             class="ant-table-cell"
                           >
-                            user2
+                            <span
+                              class="ant-tag"
+                            >
+                              user2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3,roleName
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -2130,13 +2273,20 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName,roleName3
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -2200,13 +2350,15 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -2270,13 +2422,25 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName2,roleName3,roleName
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -3019,13 +3183,25 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3,roleName2,roleName
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -3090,12 +3266,30 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           <td
                             class="ant-table-cell"
                           >
-                            user2
+                            <span
+                              class="ant-tag"
+                            >
+                              user2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3,roleName,roleName2
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -3160,12 +3354,30 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           <td
                             class="ant-table-cell"
                           >
-                            user2
+                            <span
+                              class="ant-tag"
+                            >
+                              user2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
                           >
-                            roleName,roleName2,roleName3
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -3229,13 +3441,15 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName2
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -3299,14 +3513,10 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
@@ -3369,13 +3579,15 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -3440,12 +3652,25 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           <td
                             class="ant-table-cell"
                           >
-                            user2
+                            <span
+                              class="ant-tag"
+                            >
+                              user2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3,roleName
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -3509,13 +3734,20 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName,roleName3
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -3579,13 +3811,15 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -3649,13 +3883,25 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName2,roleName3,roleName
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -4376,13 +4622,25 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3,roleName2,roleName
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -4447,12 +4705,30 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           <td
                             class="ant-table-cell"
                           >
-                            user2
+                            <span
+                              class="ant-tag"
+                            >
+                              user2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3,roleName,roleName2
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -4517,12 +4793,30 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           <td
                             class="ant-table-cell"
                           >
-                            user2
+                            <span
+                              class="ant-tag"
+                            >
+                              user2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
                           >
-                            roleName,roleName2,roleName3
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -4586,13 +4880,15 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName2
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -4656,14 +4952,10 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
@@ -4726,13 +5018,15 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -4797,12 +5091,25 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           <td
                             class="ant-table-cell"
                           >
-                            user2
+                            <span
+                              class="ant-tag"
+                            >
+                              user2
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3,roleName
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -4866,13 +5173,20 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName,roleName3
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -4936,13 +5250,15 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName3
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -5006,13 +5322,25 @@ exports[`UserGroupList should delete a user group when user click delete user gr
                           </td>
                           <td
                             class="ant-table-cell"
-                          >
-                            
-                          </td>
+                          />
                           <td
                             class="ant-table-cell"
                           >
-                            roleName2,roleName3,roleName
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName2
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName3
+                            </span>
+                            <span
+                              class="ant-tag"
+                            >
+                              roleName
+                            </span>
                           </td>
                           <td
                             class="ant-table-cell"
@@ -6085,13 +6413,25 @@ exports[`UserGroupList should match snapshot 2`] = `
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
-                          roleName3,roleName2,roleName
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName3
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName2
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -6156,12 +6496,30 @@ exports[`UserGroupList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          user2
+                          <span
+                            class="ant-tag"
+                          >
+                            user2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
                         >
-                          roleName3,roleName,roleName2
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName3
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -6226,12 +6584,30 @@ exports[`UserGroupList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          user2
+                          <span
+                            class="ant-tag"
+                          >
+                            user2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
                         >
-                          roleName,roleName2,roleName3
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName2
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName3
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -6295,13 +6671,15 @@ exports[`UserGroupList should match snapshot 2`] = `
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
-                          roleName2
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -6365,14 +6743,10 @@ exports[`UserGroupList should match snapshot 2`] = `
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
@@ -6435,13 +6809,15 @@ exports[`UserGroupList should match snapshot 2`] = `
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
-                          roleName3
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName3
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -6506,12 +6882,25 @@ exports[`UserGroupList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          user2
+                          <span
+                            class="ant-tag"
+                          >
+                            user2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
                         >
-                          roleName3,roleName
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName3
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -6575,13 +6964,20 @@ exports[`UserGroupList should match snapshot 2`] = `
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
-                          roleName,roleName3
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName3
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -6645,13 +7041,15 @@ exports[`UserGroupList should match snapshot 2`] = `
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
-                          roleName3
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName3
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -6715,13 +7113,25 @@ exports[`UserGroupList should match snapshot 2`] = `
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
-                          roleName2,roleName3,roleName
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName2
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName3
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            roleName
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
