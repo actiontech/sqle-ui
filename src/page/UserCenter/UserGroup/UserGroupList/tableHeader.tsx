@@ -2,6 +2,7 @@ import { Divider, Popconfirm, Space, Typography } from 'antd';
 import { IUserGroupListItemResV1 } from '../../../../api/common';
 import i18n from '../../../../locale';
 import { TableColumn } from '../../../../types/common.type';
+import generateTag from '../../Common/generateTag';
 
 export const userGroupTableHeaderFactory = (
   updateUserGroup: (data: IUserGroupListItemResV1) => void,
@@ -36,7 +37,7 @@ export const userGroupTableHeaderFactory = (
         if (!Array.isArray(userNameList)) {
           return '';
         }
-        return userNameList.join(',');
+        return generateTag(userNameList);
       },
     },
     {
@@ -46,7 +47,7 @@ export const userGroupTableHeaderFactory = (
         if (!Array.isArray(roleNameList)) {
           return '';
         }
-        return roleNameList.join(',');
+        return generateTag(roleNameList);
       },
     },
     {

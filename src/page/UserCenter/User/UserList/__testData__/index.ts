@@ -52,7 +52,7 @@ export const UserListData = [
     is_disabled: false,
     login_type: 'sqle',
     role_name_list: ['roleName'],
-    user_group_name_list: ['group', 'group'],
+    user_group_name_list: ['group1', 'group2'],
     user_name: '王敏',
   },
   {

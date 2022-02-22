@@ -866,7 +866,11 @@ exports[`User/UserList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          group
+                          <span
+                            class="ant-tag"
+                          >
+                            group
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -929,9 +933,7 @@ exports[`User/UserList should match snapshot 2`] = `
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
@@ -1004,7 +1006,11 @@ exports[`User/UserList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          group
+                          <span
+                            class="ant-tag"
+                          >
+                            group
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1105,9 +1111,7 @@ exports[`User/UserList should match snapshot 2`] = `
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
@@ -1185,7 +1189,11 @@ exports[`User/UserList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          group
+                          <span
+                            class="ant-tag"
+                          >
+                            group
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1281,7 +1289,11 @@ exports[`User/UserList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          group
+                          <span
+                            class="ant-tag"
+                          >
+                            group
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1355,7 +1367,16 @@ exports[`User/UserList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          group,group
+                          <span
+                            class="ant-tag"
+                          >
+                            group1
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            group2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1462,7 +1483,11 @@ exports[`User/UserList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          group
+                          <span
+                            class="ant-tag"
+                          >
+                            group
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1529,9 +1554,7 @@ exports[`User/UserList should match snapshot 2`] = `
                         />
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
@@ -1637,7 +1660,11 @@ exports[`User/UserList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          group
+                          <span
+                            class="ant-tag"
+                          >
+                            group
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"

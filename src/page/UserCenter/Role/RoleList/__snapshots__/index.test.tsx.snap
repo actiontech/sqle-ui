@@ -1044,17 +1044,49 @@ exports[`User/RoleList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          user1,user2
+                          <span
+                            class="ant-tag"
+                          >
+                            user1
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            user2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
                         >
-                          instance3,instance2,instance
+                          <span
+                            class="ant-tag"
+                          >
+                            instance3
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            instance2
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            instance
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
                         >
-                          group2,group1
+                          <span
+                            class="ant-tag"
+                          >
+                            group2
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            group1
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1124,17 +1156,39 @@ exports[`User/RoleList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          user2
+                          <span
+                            class="ant-tag"
+                          >
+                            user2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
                         >
-                          instance3,instance,instance2
+                          <span
+                            class="ant-tag"
+                          >
+                            instance3
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            instance
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            instance2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
                         >
-                          group1
+                          <span
+                            class="ant-tag"
+                          >
+                            group1
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1204,18 +1258,24 @@ exports[`User/RoleList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          user2
+                          <span
+                            class="ant-tag"
+                          >
+                            user2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
                         >
-                          instance
+                          <span
+                            class="ant-tag"
+                          >
+                            instance
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
@@ -1284,18 +1344,34 @@ exports[`User/RoleList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          user2
+                          <span
+                            class="ant-tag"
+                          >
+                            user2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
                         >
-                          instance3,instance,instance2
+                          <span
+                            class="ant-tag"
+                          >
+                            instance3
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            instance
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            instance2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
@@ -1363,19 +1439,19 @@ exports[`User/RoleList should match snapshot 2`] = `
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
-                          instance2
+                          <span
+                            class="ant-tag"
+                          >
+                            instance2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
@@ -1443,18 +1519,39 @@ exports[`User/RoleList should match snapshot 2`] = `
                         </td>
                         <td
                           class="ant-table-cell"
+                        />
+                        <td
+                          class="ant-table-cell"
                         >
-                          
+                          <span
+                            class="ant-tag"
+                          >
+                            instance3
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            instance2
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            instance
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
                         >
-                          instance3,instance2,instance
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          group1,group2
+                          <span
+                            class="ant-tag"
+                          >
+                            group1
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            group2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1524,18 +1621,34 @@ exports[`User/RoleList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          user2
+                          <span
+                            class="ant-tag"
+                          >
+                            user2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
                         >
-                          instance,instance3,instance2
+                          <span
+                            class="ant-tag"
+                          >
+                            instance
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            instance3
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            instance2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
@@ -1604,17 +1717,44 @@ exports[`User/RoleList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          user1
+                          <span
+                            class="ant-tag"
+                          >
+                            user1
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
                         >
-                          instance2,instance,instance3
+                          <span
+                            class="ant-tag"
+                          >
+                            instance2
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            instance
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            instance3
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
                         >
-                          group1,group2
+                          <span
+                            class="ant-tag"
+                          >
+                            group1
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            group2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1684,17 +1824,23 @@ exports[`User/RoleList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          user1
+                          <span
+                            class="ant-tag"
+                          >
+                            user1
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
-                          group1
+                          <span
+                            class="ant-tag"
+                          >
+                            group1
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1764,18 +1910,29 @@ exports[`User/RoleList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          user1,user2
+                          <span
+                            class="ant-tag"
+                          >
+                            user1
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            user2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
                         >
-                          instance3
+                          <span
+                            class="ant-tag"
+                          >
+                            instance3
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
