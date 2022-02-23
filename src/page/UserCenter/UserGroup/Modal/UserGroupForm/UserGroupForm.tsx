@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { UserGroupFormProps } from '.';
 import EmptyBox from '../../../../../components/EmptyBox';
 import { ModalFormLayout } from '../../../../../data/common';
+import { nameRule } from '../../../../../utils/FormRule';
 
 const UserGroupForm: React.FC<UserGroupFormProps> = (props) => {
   const { form, roleList, userList, isUpdate } = props;
@@ -17,6 +18,7 @@ const UserGroupForm: React.FC<UserGroupFormProps> = (props) => {
           {
             required: true,
           },
+          ...nameRule(),
         ]}
       >
         <Input
