@@ -11,6 +11,7 @@ import {
 import {
   mockUseRole,
   mockUseUsername,
+  resolveErrorThreeSecond,
   resolveThreeSecond,
 } from '../../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../../utils/EventEmitter';
@@ -140,6 +141,31 @@ describe('updateUserGroup', () => {
     expect(
       screen.getByLabelText('userGroup.userGroupField.userGroupName')
     ).toHaveValue('');
+    expect(screen.getByText('common.submit').parentNode).not.toHaveClass(
+      'ant-btn-loading'
+    );
+    expect(screen.getByText('common.close').parentNode).not.toBeDisabled();
+  });
+
+  it('should reset submit button state when create request throw error', async () => {
+    const updateSpy = mockUpdateUserGroup();
+    updateSpy.mockImplementation(() => resolveErrorThreeSecond({}));
+    renderWithRedux(<UpdateUserGroup />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    fireEvent.click(screen.getByText('common.submit'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(screen.getByText('common.submit').parentNode).toHaveClass(
+      'ant-btn-loading'
+    );
+    expect(screen.getByText('common.close').parentNode).toBeDisabled();
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
     expect(screen.getByText('common.submit').parentNode).not.toHaveClass(
       'ant-btn-loading'
     );

@@ -12,6 +12,7 @@ import {
 import {
   mockUseRole,
   mockUseUsername,
+  resolveErrorThreeSecond,
   resolveThreeSecond,
 } from '../../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../../utils/EventEmitter';
@@ -155,6 +156,40 @@ describe('AddUserGroup', () => {
     expect(
       screen.getByLabelText('userGroup.userGroupField.userGroupName')
     ).toHaveValue('');
+    expect(screen.getByText('common.submit').parentNode).not.toHaveClass(
+      'ant-btn-loading'
+    );
+    expect(screen.getByText('common.close').parentNode).not.toBeDisabled();
+  });
+
+  it('should reset submit button state when create request throw error', async () => {
+    const createUserSpy = mockCreateUser();
+    createUserSpy.mockImplementation(() => resolveErrorThreeSecond({}));
+    renderWithRedux(<AddUserGroup />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    fireEvent.input(
+      screen.getByLabelText('userGroup.userGroupField.userGroupName'),
+      {
+        target: { value: 'userGroupName1' },
+      }
+    );
+    fireEvent.click(screen.getByText('common.submit'));
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    expect(screen.getByText('common.submit').parentNode).toHaveClass(
+      'ant-btn-loading'
+    );
+    expect(screen.getByText('common.close').parentNode).toBeDisabled();
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
     expect(screen.getByText('common.submit').parentNode).not.toHaveClass(
       'ant-btn-loading'
     );
