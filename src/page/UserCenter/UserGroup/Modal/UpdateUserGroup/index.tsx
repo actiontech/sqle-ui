@@ -52,11 +52,10 @@ const UpdateUserGroup = () => {
         is_disabled: values.isDisabled,
       });
       if (res.data.code === ResponseCode.SUCCESS) {
-        requestFinish();
         close();
         EventEmitter.emit(EmitterKey.Refresh_User_Group_List);
       }
-    } catch (error) {
+    } finally {
       requestFinish();
     }
   };

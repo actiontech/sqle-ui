@@ -49,11 +49,10 @@ const AddUserGroup = () => {
         user_name_list: values.userList,
       });
       if (res.data.code === ResponseCode.SUCCESS) {
-        requestFinish();
         close();
         EventEmitter.emit(EmitterKey.Refresh_User_Group_List);
       }
-    } catch (error) {
+    } finally {
       requestFinish();
     }
   };
