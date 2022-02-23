@@ -83,7 +83,7 @@ exports[`updateUserGroup should match snapshot when visible is truthy 1`] = `
                           id="userGroupName"
                           placeholder="common.form.placeholder.input"
                           type="text"
-                          value="user group name1"
+                          value="userGroupName1"
                         />
                       </div>
                     </div>

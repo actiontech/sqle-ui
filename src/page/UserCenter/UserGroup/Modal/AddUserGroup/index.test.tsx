@@ -105,7 +105,7 @@ describe('AddUserGroup', () => {
     fireEvent.input(
       screen.getByLabelText('userGroup.userGroupField.userGroupName'),
       {
-        target: { value: 'user group name' },
+        target: { value: 'userGroupName1' },
       }
     );
 
@@ -134,7 +134,7 @@ describe('AddUserGroup', () => {
     expect(createUserSpy).toBeCalledWith({
       role_name_list: ['role_name1'],
       user_group_desc: 'user group desc',
-      user_group_name: 'user group name',
+      user_group_name: 'userGroupName1',
       user_name_list: ['user_name1'],
     });
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
