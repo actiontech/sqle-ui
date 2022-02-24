@@ -1,5 +1,5 @@
 import { useBoolean } from 'ahooks';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import Modal from 'antd/lib/modal/Modal';
 import { useTranslation } from 'react-i18next';
@@ -50,6 +50,11 @@ const AddUserGroup = () => {
       });
       if (res.data.code === ResponseCode.SUCCESS) {
         close();
+        message.success(
+          t('userGroup.createUserGroup.successTips', {
+            name: values.userGroupName,
+          })
+        );
         EventEmitter.emit(EmitterKey.Refresh_User_Group_List);
       }
     } finally {

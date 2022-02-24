@@ -60,7 +60,6 @@ const AddRole = () => {
             t('role.createRole.createSuccessTips', { name: values.roleName })
           );
           EventEmitter.emit(EmitterKey.Refresh_Role_list);
-          EventEmitter.emit(EmitterKey.Refresh_User_list);
         }
       })
       .finally(() => {
