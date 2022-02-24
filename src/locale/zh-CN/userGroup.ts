@@ -25,10 +25,12 @@ export default {
 
   createUserGroup: {
     title: '创建用户组',
+    successTips: '创建用户组 "{{name}}" 成功',
   },
 
   updateUserGroup: {
     title: '编辑用户组',
+    successTips: '编辑用户组 "{{name}}" 成功',
   },
 
   deleteUserGroup: {

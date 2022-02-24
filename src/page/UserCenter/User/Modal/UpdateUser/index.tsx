@@ -63,7 +63,6 @@ const UpdateUser = () => {
           message.success(
             t('user.updateUser.updateSuccessTips', { name: values.username })
           );
-          EventEmitter.emit(EmitterKey.Refresh_Role_list);
           EventEmitter.emit(EmitterKey.Refresh_User_list);
         }
       })

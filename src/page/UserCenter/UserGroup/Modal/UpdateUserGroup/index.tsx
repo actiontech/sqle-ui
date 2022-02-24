@@ -1,5 +1,5 @@
 import { useBoolean } from 'ahooks';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import Modal from 'antd/lib/modal/Modal';
 import { useEffect } from 'react';
@@ -53,6 +53,11 @@ const UpdateUserGroup = () => {
       });
       if (res.data.code === ResponseCode.SUCCESS) {
         close();
+        message.success(
+          t('userGroup.updateUserGroup.successTips', {
+            name: values.userGroupName,
+          })
+        );
         EventEmitter.emit(EmitterKey.Refresh_User_Group_List);
       }
     } finally {

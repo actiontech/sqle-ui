@@ -54,7 +54,6 @@ const AddUser = () => {
           message.success(
             t('user.createUser.createSuccessTips', { name: values.username })
           );
-          EventEmitter.emit(EmitterKey.Refresh_Role_list);
           EventEmitter.emit(EmitterKey.Refresh_User_list);
         }
       })

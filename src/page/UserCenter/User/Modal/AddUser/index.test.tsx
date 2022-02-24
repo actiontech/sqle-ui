@@ -115,9 +115,8 @@ describe('User/Modal/AddUser', () => {
     expect(
       screen.queryByText('user.createUser.createSuccessTips')
     ).toBeInTheDocument();
-    expect(emitSpy).toBeCalledTimes(2);
-    expect(emitSpy).nthCalledWith(1, EmitterKey.Refresh_Role_list);
-    expect(emitSpy).nthCalledWith(2, EmitterKey.Refresh_User_list);
+    expect(emitSpy).toBeCalledTimes(1);
+    expect(emitSpy).toBeCalledWith(EmitterKey.Refresh_User_list);
     expect(screen.getByLabelText('user.userForm.username')).toHaveValue('');
     expect(dispatchSpy).toBeCalledTimes(1);
     expect(dispatchSpy).toBeCalledWith({

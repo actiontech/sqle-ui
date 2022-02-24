@@ -160,6 +160,15 @@ describe('AddUserGroup', () => {
       'ant-btn-loading'
     );
     expect(screen.getByText('common.close').parentNode).not.toBeDisabled();
+    expect(
+      screen.queryByText('userGroup.createUserGroup.successTips')
+    ).toBeInTheDocument();
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.queryByText('userGroup.createUserGroup.successTips')
+    ).not.toBeInTheDocument();
   });
 
   it('should reset submit button state when create request throw error', async () => {
