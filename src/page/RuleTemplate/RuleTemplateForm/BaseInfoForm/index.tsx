@@ -7,6 +7,7 @@ import { nameRule } from '../../../../utils/FormRule';
 import { RuleTemplateBaseInfoFormProps } from './index.type';
 import useDatabaseType from '../../../../hooks/useDatabaseType';
 import { instanceListDefaultKey } from '../../../../data/common';
+import { Rule } from 'antd/lib/form';
 
 const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
   const { t } = useTranslation();
@@ -61,18 +62,23 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.defaultData]);
 
+  const nameFormRule: Rule[] = [
+    {
+      required: true,
+    },
+  ];
+
+  if (!isUpdate) {
+    nameFormRule.push(...nameRule());
+  }
+
   return (
     <Form {...PageFormLayout} form={props.form}>
       <Form.Item
         label={t('ruleTemplate.ruleTemplateForm.templateName')}
         name="templateName"
         validateFirst={true}
-        rules={[
-          {
-            required: true,
-          },
-          ...nameRule(),
-        ]}
+        rules={nameFormRule}
       >
         <Input
           disabled={isUpdate}

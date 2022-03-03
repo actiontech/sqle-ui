@@ -11,7 +11,10 @@ import {
   mockDriver,
   mockInstanceTip,
 } from '../../../testUtils/mockRequest';
-import { ruleTemplateData } from '../__testData__';
+import {
+  ruleTemplateData,
+  ruleTemplateDataWithSpecialName,
+} from '../__testData__';
 import { createMemoryHistory } from 'history';
 import { allRulesWithType } from '../../Rule/__testData__';
 import { IRuleReqV1 } from '../../../api/common';
@@ -89,12 +92,6 @@ describe('UpdateRuleTemplate', () => {
     });
     expect(screen.getByTestId('base-form')).not.toHaveAttribute('hidden');
     fireEvent.input(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName'),
-      {
-        target: { value: 'testRuleTemplateId' },
-      }
-    );
-    fireEvent.input(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateDesc'),
       {
         target: { value: 'rule template desc' },
@@ -129,7 +126,7 @@ describe('UpdateRuleTemplate', () => {
     expect(screen.getByTestId('rule-list')).toHaveAttribute('hidden');
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName')
-    ).toHaveValue('testRuleTemplateId');
+    ).toHaveValue('default_mysql');
     fireEvent.click(screen.getByText('common.nextStep'));
 
     await waitFor(() => {
@@ -166,7 +163,7 @@ describe('UpdateRuleTemplate', () => {
       });
     resultRuleName.shift();
     expect(updateTemplateSpy).toBeCalledWith({
-      rule_template_name: 'testRuleTemplateId',
+      rule_template_name: 'default_mysql',
       desc: 'rule template desc',
       instance_name_list: ['db1', 'mysql-test'],
       rule_list: resultRuleName,
@@ -176,5 +173,49 @@ describe('UpdateRuleTemplate', () => {
     // });
     // expect(screen.getByTestId('rule-list')).toHaveAttribute('hidden');
     // expect(screen.getByTestId('submit-result')).not.toHaveAttribute('hidden');
+  });
+
+  it('should not check rule template name when update rule template', async () => {
+    const getRuleTemplate = mockGetRuleTemplate();
+    getRuleTemplate.mockImplementation(() =>
+      resolveThreeSecond(ruleTemplateDataWithSpecialName)
+    );
+    renderWithThemeAndRouter(<UpdateRuleTemplate />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(screen.getByTestId('base-form')).not.toHaveAttribute('hidden');
+    fireEvent.input(
+      screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateDesc'),
+      {
+        target: { value: 'rule template desc' },
+      }
+    );
+    expect(
+      screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
+    ).toBeDisabled();
+
+    fireEvent.mouseDown(
+      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
+    );
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const option = screen.getAllByText('mysql-test')[1];
+    expect(screen.queryByText('oracle-test')).not.toBeInTheDocument();
+    expect(option).toHaveClass('ant-select-item-option-content');
+    fireEvent.click(option);
+
+    fireEvent.click(screen.getByText('common.nextStep'));
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(screen.getByTestId('base-form')).toHaveAttribute('hidden');
+    expect(screen.getByTestId('rule-list')).not.toHaveAttribute('hidden');
   });
 });
