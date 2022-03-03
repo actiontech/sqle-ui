@@ -1,3 +1,3 @@
 import { IGetSQLEInfoResV1 } from '../common.d';
 
-export interface IGetSQLEInfoReturn extends IGetSQLEInfoResV1 {}
+export interface IGetSQLEInfoV1Return extends IGetSQLEInfoResV1 {}

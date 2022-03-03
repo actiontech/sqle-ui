@@ -1,13 +1,5 @@
 import { DownOutlined } from '@ant-design/icons';
-import {
-  Divider,
-  Dropdown,
-  Menu,
-  Popconfirm,
-  Space,
-  Tag,
-  Typography,
-} from 'antd';
+import { Divider, Dropdown, Menu, Popconfirm, Space, Typography } from 'antd';
 import { IUserResV1 } from '../../../../api/common';
 import EmptyBox from '../../../../components/EmptyBox';
 import { LoginTypeEnum } from '../../../../data/common';

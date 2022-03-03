@@ -3,9 +3,28 @@ import { useTranslation } from 'react-i18next';
 import GlobalSetting from './GlobalSetting';
 import LDAPSetting from './LDAPSetting';
 import SMTPSetting from './SMTPSetting';
-
+/* IFTRUE_isEE */
+import License from './License';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { initSystemModalStatus } from '../../store/system';
+import { ModalName } from '../../data/ModalName';
+/* FITRUE_isEE */
 const System = () => {
   const { t } = useTranslation();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(
+      initSystemModalStatus({
+        modalStatus: {
+          [ModalName.Import_License]: false,
+        },
+      })
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -17,6 +36,9 @@ const System = () => {
           <SMTPSetting />
           <GlobalSetting />
           <LDAPSetting />
+          {/* IFTRUE_isEE */}
+          <License />
+          {/* FITRUE_isEE */}
         </Space>
       </section>
     </>

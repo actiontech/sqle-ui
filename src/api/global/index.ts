@@ -6,11 +6,11 @@
 import ServiceBase from '../Service.base';
 import { AxiosRequestConfig } from 'axios';
 
-import { IGetSQLEInfoReturn } from './index.d';
+import { IGetSQLEInfoV1Return } from './index.d';
 
 class GlobalService extends ServiceBase {
-  public getSQLEInfo(options?: AxiosRequestConfig) {
-    return this.get<IGetSQLEInfoReturn>('/v1/basic_info', undefined, options);
+  public getSQLEInfoV1(options?: AxiosRequestConfig) {
+    return this.get<IGetSQLEInfoV1Return>('/v1/basic_info', undefined, options);
   }
 }
 

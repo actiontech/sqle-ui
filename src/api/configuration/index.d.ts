@@ -3,6 +3,8 @@ import {
   IGetLDAPConfigurationResV1,
   ILDAPConfigurationReqV1,
   IBaseRes,
+  IGetLicenseResV1,
+  ICheckLicenseResV1,
   IGetSMTPConfigurationResV1,
   IUpdateSMTPConfigurationReqV1,
   IGetSystemVariablesResV1,
@@ -18,6 +20,20 @@ export interface IUpdateLDAPConfigurationV1Params
   extends ILDAPConfigurationReqV1 {}
 
 export interface IUpdateLDAPConfigurationV1Return extends IBaseRes {}
+
+export interface IGetSQLELicenseV1Return extends IGetLicenseResV1 {}
+
+export interface ISetSQLELicenseV1Params {
+  license_file: any;
+}
+
+export interface ISetSQLELicenseV1Return extends IBaseRes {}
+
+export interface ICheckSQLELicenseV1Params {
+  license_file: any;
+}
+
+export interface ICheckSQLELicenseV1Return extends ICheckLicenseResV1 {}
 
 export interface IGetSMTPConfigurationV1Return
   extends IGetSMTPConfigurationResV1 {}
