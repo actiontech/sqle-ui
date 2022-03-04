@@ -8,7 +8,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { licenseColumn } from '..';
 import { ILicenseItem } from '../../../../api/common';
 import configuration from '../../../../api/configuration';
-import { ModalFormLayout, ResponseCode } from '../../../../data/common';
+import {
+  ModalFormLayout,
+  ModalSize,
+  ResponseCode,
+} from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
 import { IReduxState } from '../../../../store';
@@ -69,7 +73,7 @@ const ImportModal = () => {
     startImport();
     try {
       const res = await configuration.setSQLELicenseV1({
-        license_file: values.file,
+        license_file: values.file?.[0],
       });
       if (res.data.code === ResponseCode.SUCCESS) {
         close();
@@ -86,6 +90,7 @@ const ImportModal = () => {
       title={t('system.license.import')}
       visible={visible}
       closable={false}
+      width={ModalSize.big}
       footer={
         <>
           <Button onClick={close} disabled={importLoading}>
