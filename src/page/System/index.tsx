@@ -5,11 +5,11 @@ import LDAPSetting from './LDAPSetting';
 import SMTPSetting from './SMTPSetting';
 /* IFTRUE_isEE */
 import License from './License';
+/* FITRUE_isEE */
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { initSystemModalStatus } from '../../store/system';
 import { ModalName } from '../../data/ModalName';
-/* FITRUE_isEE */
 const System = () => {
   const { t } = useTranslation();
 
