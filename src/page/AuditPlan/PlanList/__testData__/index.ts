@@ -122,7 +122,7 @@ export const AuditPlanList = [
 ];
 
 export const AuditPlan = {
-  audit_plan_cron: '0 */2 * * *',
+  audit_plan_cron: '* * * * *',
   audit_plan_db_type: 'oracle',
   audit_plan_instance_database: 'sqle',
   audit_plan_instance_name: 'db1',

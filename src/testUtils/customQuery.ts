@@ -46,6 +46,13 @@ export const getSelectContentByFormLabel = (label: string) => {
   );
 };
 
+export const getSelectValueByFormLabel = (label: string) => {
+  return getBySelector(
+    '.ant-select-selection-item',
+    screen.getByLabelText(label).parentNode?.parentNode as HTMLDivElement
+  );
+};
+
 export const selectOptionByIndex = (
   label: string,
   optionText: string,

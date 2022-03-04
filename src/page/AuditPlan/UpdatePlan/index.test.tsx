@@ -1,9 +1,13 @@
 import { fireEvent, waitFor, screen } from '@testing-library/react';
+import { cloneDeep } from 'lodash';
 import { useParams } from 'react-router-dom';
 import UpdateAuditPlan from '.';
 import audit_plan from '../../../api/audit_plan';
 import EmitterKey from '../../../data/EmitterKey';
-import { getBySelector } from '../../../testUtils/customQuery';
+import {
+  getBySelector,
+  getSelectValueByFormLabel,
+} from '../../../testUtils/customQuery';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import {
   mockDriver,
@@ -108,7 +112,7 @@ describe('UpdateAuditPlan', () => {
 
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
-      audit_plan_cron: '0 */2 * * *',
+      audit_plan_cron: '* * * * *',
       audit_plan_instance_database: 'schema1',
       audit_plan_instance_name: 'db1',
       audit_plan_name: 'auditPlanName1',
@@ -138,6 +142,9 @@ describe('UpdateAuditPlan', () => {
     });
     expect(container).toMatchSnapshot();
     expect(getAuditPlanSpy).toBeCalledTimes(1);
+    getAuditPlanSpy.mockImplementation(() =>
+      resolveThreeSecond(cloneDeep(AuditPlan))
+    );
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
     fireEvent.click(screen.getByText('common.close'));
 
@@ -145,6 +152,19 @@ describe('UpdateAuditPlan', () => {
     expect(emitSpy).toBeCalledWith(EmitterKey.Rest_Audit_Plan_Form);
 
     expect(getBySelector('.ant-modal-wrap')).toHaveStyle('display: none');
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
     expect(getAuditPlanSpy).toBeCalledTimes(2);
+    expect(screen.getByLabelText('auditPlan.planForm.name')).toHaveValue('');
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(screen.getByLabelText('auditPlan.planForm.name')).toHaveValue(
+      'audit_for_java_app20'
+    );
+    expect(
+      getSelectValueByFormLabel('auditPlan.planForm.taskType')
+    ).toHaveTextContent('普通的SQL审核');
   });
 });

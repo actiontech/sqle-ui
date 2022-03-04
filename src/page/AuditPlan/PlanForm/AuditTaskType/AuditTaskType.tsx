@@ -79,7 +79,7 @@ const AuditTaskType: React.FC<AuditTaskTypeProps> = (props) => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dbType]);
+  }, [dbType, defaultValue]);
 
   return (
     <EmptyBox if={!!dbType}>
