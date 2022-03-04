@@ -65,11 +65,24 @@ class ConfigurationService extends ServiceBase {
     params: ISetSQLELicenseV1Params,
     options?: AxiosRequestConfig
   ) {
-    const paramsData = this.cloneDeep(params);
+    const config = options || {};
+    const headers = config.headers ? config.headers : {};
+    config.headers = {
+      ...headers,
+
+      'Content-Type': 'multipart/form-data'
+    };
+
+    const paramsData = new FormData();
+
+    if (params.license_file != undefined) {
+      paramsData.append('license_file', params.license_file as any);
+    }
+
     return this.post<ISetSQLELicenseV1Return>(
       '/v1/configurations/license',
       paramsData,
-      options
+      config
     );
   }
 
@@ -77,11 +90,24 @@ class ConfigurationService extends ServiceBase {
     params: ICheckSQLELicenseV1Params,
     options?: AxiosRequestConfig
   ) {
-    const paramsData = this.cloneDeep(params);
+    const config = options || {};
+    const headers = config.headers ? config.headers : {};
+    config.headers = {
+      ...headers,
+
+      'Content-Type': 'multipart/form-data'
+    };
+
+    const paramsData = new FormData();
+
+    if (params.license_file != undefined) {
+      paramsData.append('license_file', params.license_file as any);
+    }
+
     return this.post<ICheckSQLELicenseV1Return>(
       '/v1/configurations/license/check',
       paramsData,
-      options
+      config
     );
   }
 
