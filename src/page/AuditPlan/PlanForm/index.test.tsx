@@ -5,8 +5,10 @@ import {
   screen,
   act,
 } from '@testing-library/react';
+import { cloneDeep } from 'lodash';
 import PlanForm from '.';
 import audit_plan from '../../../api/audit_plan';
+import { IAuditPlanResV1 } from '../../../api/common';
 import instance from '../../../api/instance';
 import EmitterKey from '../../../data/EmitterKey';
 import { getBySelector } from '../../../testUtils/customQuery';
@@ -18,6 +20,7 @@ import {
 } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 import { dataSourceInstance } from '../../DataSource/__testData__';
+import { AuditPlan } from '../PlanList/__testData__';
 import { auditTaskMetas } from './__testData__/auditMeta';
 
 describe('PlanForm', () => {
@@ -221,7 +224,9 @@ describe('PlanForm', () => {
 
   test('should reset apart of form when props includes default values and user click reset button', async () => {
     const submitFn = jest.fn();
-    const { container } = render(<PlanForm submit={submitFn} />);
+    const { container } = render(
+      <PlanForm submit={submitFn} defaultValue={AuditPlan as IAuditPlanResV1} />
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -244,5 +249,34 @@ describe('PlanForm', () => {
       EventEmitter.emit(EmitterKey.Rest_Audit_Plan_Form);
     });
     expect(screen.getByLabelText('auditPlan.planForm.name')).toHaveValue('');
+  });
+
+  test('should reset all field to new task field after user update audit task and stay this page', async () => {
+    const submitFn = jest.fn();
+    const getMeta = mockGetAuditMeta();
+    const { rerender } = render(
+      <PlanForm submit={submitFn} defaultValue={AuditPlan as IAuditPlanResV1} />
+    );
+    expect(getMeta).toBeCalledTimes(1);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    const auditPlanClone = cloneDeep(AuditPlan);
+    rerender(
+      <PlanForm
+        submit={submitFn}
+        defaultValue={auditPlanClone as IAuditPlanResV1}
+      />
+    );
+    expect(getMeta).toBeCalledTimes(2);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.getByText(AuditPlan.audit_plan_meta.audit_plan_type_desc)
+    ).toHaveClass('ant-select-selection-item');
   });
 });
