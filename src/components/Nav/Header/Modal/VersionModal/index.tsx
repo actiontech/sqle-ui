@@ -27,7 +27,7 @@ const VersionModal: React.FC = () => {
 
   useEffect(() => {
     if (visible) {
-      GlobalService.getSQLEInfo().then((res) => {
+      GlobalService.getSQLEInfoV1().then((res) => {
         setServerVersion(formatServerVersion(res.data.version));
       });
     }

@@ -32,7 +32,7 @@ const resolveThreeSecond = (
 describe('Nav/Header/VersionModal', () => {
   let scopeDispatch: jest.Mock;
   const mockGetSQLEInfo = () => {
-    const spy = jest.spyOn(GlobalService, 'getSQLEInfo');
+    const spy = jest.spyOn(GlobalService, 'getSQLEInfoV1');
     spy.mockImplementation(() =>
       resolveThreeSecond({ version: serverVersion })
     );

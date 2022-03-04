@@ -10,6 +10,9 @@ export enum ModalName {
   Add_User_Group = 'ADD_USER_GROUP',
   Update_User_Group = 'Update_User_Group',
 
+  // system
+  Import_License = 'Import_License',
+
   // whitelist manage
   Add_Whitelist = 'ADD_WHITELIST',
   Update_Whitelist = 'UPDATE_WHITELIST',

@@ -163,6 +163,16 @@ export interface IBatchCancelWorkflowsReqV1 {
   workflow_ids?: string[];
 }
 
+export interface ICheckLicenseResV1 {
+  code?: number;
+
+  content?: string;
+
+  license?: ILicenseItem[];
+
+  message?: string;
+}
+
 export interface ICloneRuleTemplateReqV1 {
   desc?: string;
 
@@ -471,6 +481,16 @@ export interface IGetLDAPConfigurationResV1 {
   message?: string;
 }
 
+export interface IGetLicenseResV1 {
+  code?: number;
+
+  content?: string;
+
+  license?: ILicenseItem[];
+
+  message?: string;
+}
+
 export interface IGetOperationsResV1 {
   code?: number;
 
@@ -719,6 +739,14 @@ export interface ILDAPConfigurationResV1 {
   ldap_user_email_rdn_key?: string;
 
   ldap_user_name_rdn_key?: string;
+}
+
+export interface ILicenseItem {
+  description?: string;
+
+  limit?: string;
+
+  name?: string;
 }
 
 export interface IOperationResV1 {

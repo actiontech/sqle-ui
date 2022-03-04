@@ -11,6 +11,11 @@ import {
   IGetLDAPConfigurationV1Return,
   IUpdateLDAPConfigurationV1Params,
   IUpdateLDAPConfigurationV1Return,
+  IGetSQLELicenseV1Return,
+  ISetSQLELicenseV1Params,
+  ISetSQLELicenseV1Return,
+  ICheckSQLELicenseV1Params,
+  ICheckSQLELicenseV1Return,
   IGetSMTPConfigurationV1Return,
   IUpdateSMTPConfigurationV1Params,
   IUpdateSMTPConfigurationV1Return,
@@ -46,6 +51,42 @@ class ConfigurationService extends ServiceBase {
       paramsData,
       options
     );
+  }
+
+  public getSQLELicenseV1(options?: AxiosRequestConfig) {
+    return this.get<IGetSQLELicenseV1Return>(
+      '/v1/configurations/license',
+      undefined,
+      options
+    );
+  }
+
+  public setSQLELicenseV1(
+    params: ISetSQLELicenseV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.post<ISetSQLELicenseV1Return>(
+      '/v1/configurations/license',
+      paramsData,
+      options
+    );
+  }
+
+  public checkSQLELicenseV1(
+    params: ICheckSQLELicenseV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.post<ICheckSQLELicenseV1Return>(
+      '/v1/configurations/license/check',
+      paramsData,
+      options
+    );
+  }
+
+  public GetSQLELicenseInfoV1(options?: AxiosRequestConfig) {
+    return this.get<any>('/v1/configurations/license/info', undefined, options);
   }
 
   public getSMTPConfigurationV1(options?: AxiosRequestConfig) {

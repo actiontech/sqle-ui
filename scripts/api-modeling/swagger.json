@@ -627,7 +627,7 @@
                     "global"
                 ],
                 "summary": "获取 sqle 基本信息",
-                "operationId": "getSQLEInfo",
+                "operationId": "getSQLEInfoV1",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -714,6 +714,114 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/controller.BaseRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/configurations/license": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "get sqle license",
+                "tags": [
+                    "configuration"
+                ],
+                "summary": "获取 sqle license",
+                "operationId": "getSQLELicenseV1",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.GetLicenseResV1"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "set sqle license",
+                "tags": [
+                    "configuration"
+                ],
+                "summary": "导入 sqle license",
+                "operationId": "setSQLELicenseV1",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "SQLE license file",
+                        "name": "license_file",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controller.BaseRes"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/configurations/license/check": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "parse and check sqle license",
+                "tags": [
+                    "configuration"
+                ],
+                "summary": "解析和校验 sqle license",
+                "operationId": "checkSQLELicenseV1",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "SQLE license file",
+                        "name": "license_file",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v1.CheckLicenseResV1"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/configurations/license/info": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "get the information needed to generate the sqle license",
+                "tags": [
+                    "configuration"
+                ],
+                "summary": "获取生成 sqle license需要的的信息",
+                "operationId": "GetSQLELicenseInfoV1",
+                "responses": {
+                    "200": {
+                        "description": "server info",
+                        "schema": {
+                            "type": "file"
                         }
                     }
                 }
@@ -1372,6 +1480,7 @@
                 ],
                 "summary": "获取角色列表",
                 "operationId": "getRoleListV1",
+                "deprecated": true,
                 "parameters": [
                     {
                         "type": "string",
@@ -1431,6 +1540,7 @@
                 ],
                 "summary": "创建角色",
                 "operationId": "createRoleV1",
+                "deprecated": true,
                 "parameters": [
                     {
                         "description": "create role",
@@ -1507,6 +1617,7 @@
                 ],
                 "summary": "更新角色信息",
                 "operationId": "updateRoleV1",
+                "deprecated": true,
                 "parameters": [
                     {
                         "type": "string",
@@ -3797,6 +3908,9 @@
                 "pass_rate": {
                     "type": "number"
                 },
+                "score": {
+                    "type": "integer"
+                },
                 "sql_source": {
                     "type": "string",
                     "enum": [
@@ -3887,6 +4001,28 @@
                     "items": {
                         "type": "string"
                     }
+                }
+            }
+        },
+        "v1.CheckLicenseResV1": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 0
+                },
+                "content": {
+                    "type": "string"
+                },
+                "license": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.LicenseItem"
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "example": "ok"
                 }
             }
         },
@@ -4578,6 +4714,28 @@
                 }
             }
         },
+        "v1.GetLicenseResV1": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 0
+                },
+                "content": {
+                    "type": "string"
+                },
+                "license": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v1.LicenseItem"
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "example": "ok"
+                }
+            }
+        },
         "v1.GetOperationsResV1": {
             "type": "object",
             "properties": {
@@ -5105,6 +5263,20 @@
                     "type": "string"
                 },
                 "ldap_user_name_rdn_key": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.LicenseItem": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "limit": {
+                    "type": "string"
+                },
+                "name": {
                     "type": "string"
                 }
             }
@@ -5859,6 +6031,9 @@
                 "task_pass_rate": {
                     "type": "number"
                 },
+                "task_score": {
+                    "type": "integer"
+                },
                 "workflow_id": {
                     "type": "integer"
                 }
@@ -6212,6 +6387,9 @@
                         "type": "string"
                     }
                 },
+                "is_disabled": {
+                    "type": "boolean"
+                },
                 "operation_list": {
                     "type": "array",
                     "items": {
@@ -6246,6 +6424,9 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "is_disabled": {
+                    "type": "boolean"
                 },
                 "operation_code_list": {
                     "type": "array",

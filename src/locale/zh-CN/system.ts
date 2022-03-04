@@ -7,6 +7,7 @@ export default {
     smtp: 'SMTP',
     global: '全局配置',
     ldap: 'LDAP',
+    license: 'License',
   },
 
   smtp: {
@@ -47,5 +48,20 @@ export default {
          3. 支持 DDL，和 DML 同时审核，并实现同工单内语句上下文关联；
          4. 支持在审核规则外对语句做必要的对象验证，防止实际执行时库表不存在等情况。
       `,
+  },
+
+  license: {
+    table: {
+      name: '名称',
+      limit: '限制',
+    },
+
+    form: {
+      licenseFile: 'License文件',
+    },
+
+    collect: '收集许可信息',
+    import: '导入许可信息',
+    importSuccessTips: '导入License成功',
   },
 };
