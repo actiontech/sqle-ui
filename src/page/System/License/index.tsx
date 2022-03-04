@@ -21,6 +21,17 @@ export const licenseColumn: TableColumn<ILicenseItem, 'operator'> = [
   {
     dataIndex: 'limit',
     title: i18n.t('system.license.table.limit'),
+    render: (text) => {
+      return (
+        <span
+          style={{
+            wordBreak: 'break-all',
+          }}
+        >
+          {text}
+        </span>
+      );
+    },
   },
 ];
 

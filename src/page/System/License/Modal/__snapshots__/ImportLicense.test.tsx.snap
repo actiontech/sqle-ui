@@ -22,7 +22,7 @@ exports[`Import License should import license file 1`] = `
         <div
           class="ant-modal"
           role="document"
-          style="width: 520px;"
+          style="width: 1000px;"
         >
           <div
             aria-hidden="true"
@@ -365,7 +365,7 @@ exports[`Import License should import license file 2`] = `
         <div
           class="ant-modal"
           role="document"
-          style="width: 520px;"
+          style="width: 1000px;"
         >
           <div
             aria-hidden="true"
@@ -579,7 +579,11 @@ exports[`Import License should import license file 2`] = `
                                 <td
                                   class="ant-table-cell"
                                 >
-                                  10
+                                  <span
+                                    style="word-break: break-all;"
+                                  >
+                                    10
+                                  </span>
                                 </td>
                               </tr>
                               <tr
@@ -594,7 +598,11 @@ exports[`Import License should import license file 2`] = `
                                 <td
                                   class="ant-table-cell"
                                 >
-                                  9
+                                  <span
+                                    style="word-break: break-all;"
+                                  >
+                                    9
+                                  </span>
                                 </td>
                               </tr>
                             </tbody>
@@ -741,7 +749,7 @@ exports[`Import License should match snapshot 1`] = `
         <div
           class="ant-modal"
           role="document"
-          style="width: 520px;"
+          style="width: 1000px;"
         >
           <div
             aria-hidden="true"

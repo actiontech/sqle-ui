@@ -83,6 +83,9 @@ describe('Import License', () => {
       jest.advanceTimersByTime(0);
     });
     expect(importSpy).toBeCalledTimes(1);
+    expect(importSpy).toBeCalledWith({
+      license_file: file,
+    });
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
     expect(screen.getByText('common.submit').parentNode).toHaveClass(
       'ant-btn-loading'
@@ -92,6 +95,14 @@ describe('Import License', () => {
     );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
+    });
+    expect(dispatchSpy).toBeCalledTimes(1);
+    expect(dispatchSpy).toBeCalledWith({
+      payload: {
+        modalName: 'Import_License',
+        status: false,
+      },
+      type: 'system/updateModalStatus',
     });
     expect(screen.getByText('common.submit').parentNode).not.toHaveClass(
       'ant-btn-loading'

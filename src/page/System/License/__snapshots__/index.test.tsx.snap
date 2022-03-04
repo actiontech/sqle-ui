@@ -292,7 +292,11 @@ exports[`license should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          10
+                          <span
+                            style="word-break: break-all;"
+                          >
+                            10
+                          </span>
                         </td>
                       </tr>
                       <tr
@@ -307,7 +311,11 @@ exports[`license should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          9
+                          <span
+                            style="word-break: break-all;"
+                          >
+                            9
+                          </span>
                         </td>
                       </tr>
                     </tbody>
