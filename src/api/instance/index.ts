@@ -7,6 +7,7 @@ import ServiceBase from '../Service.base';
 import { AxiosRequestConfig } from 'axios';
 
 import {
+  IGetInstanceAdditionalMetasReturn,
   ICheckInstanceIsConnectableV1Params,
   ICheckInstanceIsConnectableV1Return,
   IGetInstanceTipListV1Params,
@@ -32,6 +33,14 @@ import {
 } from './index.d';
 
 class InstanceService extends ServiceBase {
+  public getInstanceAdditionalMetas(options?: AxiosRequestConfig) {
+    return this.get<IGetInstanceAdditionalMetasReturn>(
+      '/v1/instance_additional_metas',
+      undefined,
+      options
+    );
+  }
+
   public checkInstanceIsConnectableV1(
     params: ICheckInstanceIsConnectableV1Params,
     options?: AxiosRequestConfig

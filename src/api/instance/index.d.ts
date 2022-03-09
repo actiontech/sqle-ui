@@ -1,4 +1,5 @@
 import {
+  IGetInstanceAdditionalMetasResV1,
   IGetInstanceConnectableReqV1,
   IGetInstanceConnectableResV1,
   IGetInstanceTipsResV1,
@@ -11,6 +12,9 @@ import {
   IGetInstanceSchemaResV1,
   IGetInstanceWorkflowTemplateResV1
 } from '../common.d';
+
+export interface IGetInstanceAdditionalMetasReturn
+  extends IGetInstanceAdditionalMetasResV1 {}
 
 export interface ICheckInstanceIsConnectableV1Params
   extends IGetInstanceConnectableReqV1 {}
