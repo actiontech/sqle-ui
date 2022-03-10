@@ -15,6 +15,7 @@ import {
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
+import { dataSourceMetas } from '../__testData__';
 
 describe('AddDataSource', () => {
   beforeEach(() => {
@@ -22,6 +23,7 @@ describe('AddDataSource', () => {
     mockUseRuleTemplate();
     mockUseRole();
     mockUseWorkflowTemplate();
+    mockGetDataSourceMetas();
     mockDriver();
   });
 
@@ -39,6 +41,12 @@ describe('AddDataSource', () => {
 
   const mockEventEmit = () => {
     const spy = jest.spyOn(EventEmitter, 'emit');
+    return spy;
+  };
+
+  const mockGetDataSourceMetas = () => {
+    const spy = jest.spyOn(instance, 'getInstanceAdditionalMetas');
+    spy.mockImplementation(() => resolveThreeSecond(dataSourceMetas));
     return spy;
   };
 
@@ -134,6 +142,20 @@ describe('AddDataSource', () => {
 
     expect(create).toBeCalledTimes(1);
     expect(create).toBeCalledWith({
+      additional_params: [
+        {
+          name: 'a',
+          value: '123',
+        },
+        {
+          name: 'b',
+          value: '123',
+        },
+        {
+          name: 'c',
+          value: 'true',
+        },
+      ],
       db_type: 'mysql',
       db_host: '1.1.1.1',
       db_password: '123456',

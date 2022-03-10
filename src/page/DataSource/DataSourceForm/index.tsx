@@ -1,5 +1,5 @@
-import { Form, Input, Select } from 'antd';
-import React, { useCallback } from 'react';
+import { Button, Form, Input, Select, Space } from 'antd';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PageFormLayout } from '../../../data/common';
 import useRole from '../../../hooks/useRole';
@@ -9,6 +9,14 @@ import { nameRule } from '../../../utils/FormRule';
 import DatabaseFormItem from './DatabaseFormItem';
 import { IDataSourceFormProps } from './index.type';
 import { ruleTemplateListDefaultKey } from '../../../data/common';
+import useAsyncParams from '../../../components/BackendForm/useAsyncParams';
+import { useBoolean, useRequest } from 'ahooks';
+import EmptyBox from '../../../components/EmptyBox';
+import instance from '../../../api/instance';
+import BackendForm, { FormItem } from '../../../components/BackendForm';
+import EventEmitter from '../../../utils/EventEmitter';
+import EmitterKey from '../../../data/EmitterKey';
+import { turnDataSourceAsyncFormToCommon } from '../tool';
 
 const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
   const { t } = useTranslation();
@@ -39,6 +47,9 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
     [props.form]
   );
 
+  const { generateFormValueByParams, mergeFromValueIntoParams } =
+    useAsyncParams();
+
   React.useEffect(() => {
     updateRoleList();
     updateRuleTemplateList();
@@ -59,11 +70,64 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
           ? props.defaultData.rule_template_name_list[0]
           : '',
         workflow: props.defaultData.workflow_template_name,
+        params: generateFormValueByParams(
+          turnDataSourceAsyncFormToCommon(
+            props.defaultData.additional_params ?? []
+          )
+        ),
       });
       setDatabaseType(props.defaultData.db_type ?? ruleTemplateListDefaultKey);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.defaultData]);
+
+  const { data: instanceMetas } = useRequest(
+    () => instance.getInstanceAdditionalMetas(),
+    {
+      formatResult(res) {
+        return res.data?.data ?? [];
+      },
+    }
+  );
+
+  const params = useMemo<FormItem[]>(() => {
+    if (!instanceMetas || !databaseType) {
+      return [];
+    }
+    const temp = instanceMetas.find((item) => item.db_type === databaseType);
+    if (!temp) {
+      return [];
+    }
+    return turnDataSourceAsyncFormToCommon(temp.params ?? []);
+  }, [databaseType, instanceMetas]);
+
+  useEffect(() => {
+    if (params.length > 0 && !props.defaultData) {
+      props.form.setFieldsValue({
+        params: generateFormValueByParams(params),
+      });
+    }
+  }, [generateFormValueByParams, params, props.defaultData, props.form]);
+
+  const [loading, { setTrue: startSubmit, setFalse: submitFinish }] =
+    useBoolean();
+
+  const reset = () => {
+    EventEmitter.emit(EmitterKey.Reset_Test_Data_Source_Connect);
+    props.form.resetFields();
+  };
+
+  const submit = async () => {
+    const values = await props.form.validateFields();
+    startSubmit();
+    if (values.params) {
+      values.asyncParams = mergeFromValueIntoParams(values.params, params);
+      delete values.params;
+    }
+    props.submit?.(values).finally(() => {
+      submitFinish();
+    });
+  };
 
   return (
     <Form form={props.form} {...PageFormLayout}>
@@ -103,6 +167,9 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
         form={props.form}
         databaseTypeChange={databaseTypeChange}
       />
+      <EmptyBox if={params.length > 0}>
+        <BackendForm params={params} />
+      </EmptyBox>
       <Form.Item label={t('dataSource.dataSourceForm.role')} name="role">
         <Select
           mode="multiple"
@@ -139,6 +206,16 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
         >
           {generateWorkflowSelectOptions()}
         </Select>
+      </Form.Item>
+      <Form.Item label=" " colon={false}>
+        <Space>
+          <EmptyBox if={!isUpdate}>
+            <Button onClick={reset}>{t('common.reset')}</Button>
+          </EmptyBox>
+          <Button type="primary" onClick={submit} loading={loading}>
+            {t('common.submit')}
+          </Button>
+        </Space>
       </Form.Item>
     </Form>
   );

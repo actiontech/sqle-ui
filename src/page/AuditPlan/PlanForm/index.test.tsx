@@ -187,21 +187,15 @@ describe('PlanForm', () => {
       schema: 'schema1',
       asyncParams: [
         {
-          desc: '字段a',
           key: 'a',
-          type: 'string',
           value: '123',
         },
         {
-          desc: '字段b',
           key: 'b',
-          type: 'int',
           value: '123',
         },
         {
-          desc: '字段c',
           key: 'c',
-          type: 'bool',
           value: 'true',
         },
       ],

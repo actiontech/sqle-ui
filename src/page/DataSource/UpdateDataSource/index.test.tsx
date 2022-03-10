@@ -14,6 +14,7 @@ import {
 import { useParams } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { mockDriver } from '../../../testUtils/mockRequest';
+import { dataSourceMetas } from '../__testData__';
 
 jest.mock('react-router', () => {
   return {
@@ -33,6 +34,7 @@ describe('UpdateDataSource', () => {
     mockGetInstance();
     mockUseWorkflowTemplate();
     mockDriver();
+    mockGetDataSourceMetas();
   });
 
   afterEach(() => {
@@ -47,10 +49,21 @@ describe('UpdateDataSource', () => {
     return spy;
   };
 
+  const mockGetDataSourceMetas = () => {
+    const spy = jest.spyOn(instance, 'getInstanceAdditionalMetas');
+    spy.mockImplementation(() => resolveThreeSecond(dataSourceMetas));
+    return spy;
+  };
+
   const mockGetInstance = () => {
     const spy = jest.spyOn(instance, 'getInstanceV1');
     spy.mockImplementation(() =>
       resolveThreeSecond({
+        additional_params: [
+          { description: '字段a', name: 'a', type: 'string', value: '123' },
+          { description: '字段b', name: 'b', type: 'int', value: '123' },
+          { description: '字段c', name: 'c', type: 'bool', value: 'true' },
+        ],
         instance_name: 'db1',
         db_host: '20.20.20.2',
         db_port: '3306',
@@ -151,6 +164,20 @@ describe('UpdateDataSource', () => {
 
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
+      additional_params: [
+        {
+          name: 'a',
+          value: '123',
+        },
+        {
+          name: 'b',
+          value: '123',
+        },
+        {
+          name: 'c',
+          value: 'true',
+        },
+      ],
       db_host: '1.1.1.1',
       db_password: '123456',
       db_port: '4444',
