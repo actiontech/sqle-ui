@@ -78,13 +78,7 @@ module.exports = {
   devServer: (config, { proxy }) => {
     config.proxy = {
       ...(function () {
-        const url = [
-          '/v1/users',
-          '/v1/user_group_tips',
-          '/v2/roles',
-          '/v1/operations',
-          '/v1/user_groups',
-        ];
+        const url = [];
         return url.reduce((acc, cur) => {
           acc[cur] = {
             target: 'http://localhost:4200',
@@ -96,13 +90,19 @@ module.exports = {
           return acc;
         }, {});
       })(),
-      '/v1': {
-        target: 'http://10.186.62.5:10000',
-        secure: false,
-        changeOrigin: true,
-        ws: true,
-        xfwd: true,
-      },
+      ...(function () {
+        const res = {};
+        for (let i = 0; i < 10; i++) {
+          res[`/v${i}`] = {
+            target: 'http://10.186.62.5:10000',
+            secure: false,
+            changeOrigin: true,
+            ws: true,
+            xfwd: true,
+          };
+        }
+        return res;
+      })(),
     };
     return config;
   },

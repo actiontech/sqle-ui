@@ -1,11 +1,14 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
-import { Button, Card, List, Space } from 'antd';
+import { Button, Card, List, Space, Typography } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import audit_plan from '../../../../../api/audit_plan';
+import { AuditPlanReportResV1AuditLevelEnum } from '../../../../../api/common.enum';
+import EmptyBox from '../../../../../components/EmptyBox';
 import EmitterKey from '../../../../../data/EmitterKey';
+import { auditPlanRuleLevelDictionary } from '../../../../../hooks/useStaticStatus/index.data';
 import { formatTime } from '../../../../../utils/Common';
 import EventEmitter from '../../../../../utils/EventEmitter';
 
@@ -87,13 +90,39 @@ const PlanAuditRecord: React.FC<{ auditPlanName: string }> = (props) => {
                 <Link
                   to={`/auditPlan/detail/${props.auditPlanName}/report/${item.audit_plan_report_id}`}
                 >
-                  <span className="text-blue">{item.audit_plan_report_id}</span>
+                  <span className="text-blue">
+                    {`${t('auditPlan.record.generateTime')}${formatTime(
+                      item.audit_plan_report_timestamp,
+                      '--'
+                    )}`}
+                  </span>
                 </Link>
               }
-              description={`${t('auditPlan.record.generateTime')}${formatTime(
-                item.audit_plan_report_timestamp,
-                '--'
-              )}`}
+              description={
+                <>
+                  <Space>
+                    <Typography.Text type="secondary">
+                      {t('audit.source')} {item.score}
+                    </Typography.Text>
+                    <Typography.Text type="secondary">
+                      {t('audit.passRage')}
+                      {(item.pass_rate ?? 0) * 100}%
+                    </Typography.Text>
+                  </Space>
+                  <div>
+                    <EmptyBox if={!!item.audit_level}>
+                      <Typography.Text type="secondary">
+                        {t('auditPlan.record.highRuleLevel')}:
+                        {t(
+                          auditPlanRuleLevelDictionary[
+                            item.audit_level as AuditPlanReportResV1AuditLevelEnum
+                          ]
+                        )}
+                      </Typography.Text>
+                    </EmptyBox>
+                  </div>
+                </>
+              }
             />
           </List.Item>
         )}

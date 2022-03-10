@@ -8,6 +8,7 @@ import {
 } from '../../api/workflow/index.enum';
 import { StaticEnumDictionary } from './index.type';
 import {
+  AuditPlanReportResV1AuditLevelEnum,
   CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
   RuleResV1LevelEnum,
 } from '../../api/common.enum';
@@ -57,6 +58,16 @@ export const ruleLevelDictionary: StaticEnumDictionary<RuleResV1LevelEnum> = {
   [RuleResV1LevelEnum.warn]: 'ruleTemplate.ruleLevel.warn',
   [RuleResV1LevelEnum.error]: 'ruleTemplate.ruleLevel.error',
 };
+
+export const auditPlanRuleLevelDictionary: StaticEnumDictionary<AuditPlanReportResV1AuditLevelEnum> =
+  {
+    [AuditPlanReportResV1AuditLevelEnum.normal]:
+      'ruleTemplate.ruleLevel.normal',
+    [AuditPlanReportResV1AuditLevelEnum.notice]:
+      'ruleTemplate.ruleLevel.notice',
+    [AuditPlanReportResV1AuditLevelEnum.warn]: 'ruleTemplate.ruleLevel.warn',
+    [AuditPlanReportResV1AuditLevelEnum.error]: 'ruleTemplate.ruleLevel.error',
+  };
 
 export const auditLevelDictionary: StaticEnumDictionary<CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum> =
   {

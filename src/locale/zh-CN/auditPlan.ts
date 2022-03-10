@@ -79,6 +79,7 @@ export default {
 
   record: {
     generateTime: '生成时间',
+    highRuleLevel: '审核中出现的最高错误等级',
   },
 
   planTaskRecord: {
