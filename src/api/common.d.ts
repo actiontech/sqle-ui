@@ -1,5 +1,6 @@
 import {
   AuditPlanParamResV1TypeEnum,
+  AuditPlanReportResV1AuditLevelEnum,
   AuditTaskResV1AuditLevelEnum,
   AuditTaskResV1SqlSourceEnum,
   AuditTaskResV1StatusEnum,
@@ -52,9 +53,15 @@ export interface IAuditPlanParamResV1 {
 }
 
 export interface IAuditPlanReportResV1 {
+  audit_level?: AuditPlanReportResV1AuditLevelEnum;
+
   audit_plan_report_id?: string;
 
   audit_plan_report_timestamp?: string;
+
+  pass_rate?: number;
+
+  score?: number;
 }
 
 export interface IAuditPlanReportSQLResV1 {
@@ -206,6 +213,8 @@ export interface ICreateAuditWhitelistReqV1 {
 }
 
 export interface ICreateInstanceReqV1 {
+  additional_params?: IInstanceAdditionalParamReqV1[];
+
   db_host?: string;
 
   db_password?: string;
@@ -407,6 +416,14 @@ export interface IGetDriversResV1 {
   code?: number;
 
   data?: IDriversResV1;
+
+  message?: string;
+}
+
+export interface IGetInstanceAdditionalMetasResV1 {
+  code?: number;
+
+  data?: IInstanceAdditionalMetaV1[];
 
   message?: string;
 }
@@ -671,6 +688,28 @@ export interface IGetWorkflowsResV1 {
   total_nums?: number;
 }
 
+export interface IInstanceAdditionalMetaV1 {
+  db_type?: string;
+
+  params?: IInstanceAdditionalParamResV1[];
+}
+
+export interface IInstanceAdditionalParamReqV1 {
+  name?: string;
+
+  value?: string;
+}
+
+export interface IInstanceAdditionalParamResV1 {
+  description?: string;
+
+  name?: string;
+
+  type?: string;
+
+  value?: string;
+}
+
 export interface IInstanceConnectableResV1 {
   connect_error_message?: string;
 
@@ -678,6 +717,8 @@ export interface IInstanceConnectableResV1 {
 }
 
 export interface IInstanceResV1 {
+  additional_params?: IInstanceAdditionalParamResV1[];
+
   db_host?: string;
 
   db_port?: string;
@@ -906,6 +947,8 @@ export interface IUpdateCurrentUserReqV1 {
 }
 
 export interface IUpdateInstanceReqV1 {
+  additional_params?: IInstanceAdditionalParamReqV1[];
+
   db_host?: string;
 
   db_password?: string;

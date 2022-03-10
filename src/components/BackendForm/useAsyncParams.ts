@@ -1,15 +1,15 @@
-import { IAuditPlanParamResV1 } from '../../api/common';
+import { BackendFormRequestParams, BackendFormValues, FormItem } from '.';
 import { AuditPlanParamResV1TypeEnum } from '../../api/common.enum';
-import { Dictionary } from '../../types/common.type';
 
 const useAsyncParams = () => {
   const mergeFromValueIntoParams = (
-    value: Dictionary,
-    params: IAuditPlanParamResV1[]
-  ) => {
+    value: BackendFormValues,
+    params: FormItem[]
+  ): BackendFormRequestParams[] => {
     return params.map((item) => {
       const temp = {
-        ...item,
+        key: item.key,
+        value: item.value,
       };
       if (item.key && Object.prototype.hasOwnProperty.call(value, item.key)) {
         const tempVal = value[item.key];
@@ -23,14 +23,18 @@ const useAsyncParams = () => {
     });
   };
 
-  const generateFormValueByParams = (params: IAuditPlanParamResV1[]) => {
-    const value: Dictionary = {};
+  const generateFormValueByParams = <
+    T extends { key?: string; value?: string; type?: string }
+  >(
+    params: T[]
+  ): BackendFormValues => {
+    const value: BackendFormValues = {};
     params.forEach((item) => {
       if (item.key) {
         if (item.type === AuditPlanParamResV1TypeEnum.bool) {
           value[item.key] = item.value === 'true' ? true : false;
         } else {
-          value[item.key] = item.value;
+          value[item.key] = item.value ?? '';
         }
       }
     });

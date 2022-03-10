@@ -734,31 +734,62 @@ exports[`UpdateDataSource should render data source form 1`] = `
             </div>
           </div>
         </div>
-      </form>
-      <div
-        class="ant-row"
-      >
         <div
-          class="ant-col ant-col-xs-offset-0 ant-col-sm-offset-8"
+          class="ant-row ant-form-item"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class="ant-form-item-no-colon"
+              title=" "
+            >
+               
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
           >
             <div
-              class="ant-space-item"
+              class="ant-form-item-control-input"
             >
-              <button
-                class="ant-btn ant-btn-primary"
-                type="button"
+              <div
+                class="ant-form-item-control-input-content"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <button
+                      class="ant-btn"
+                      type="button"
+                    >
+                      <span>
+                        common.reset
+                      </span>
+                    </button>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <button
+                      class="ant-btn ant-btn-primary"
+                      type="button"
+                    >
+                      <span>
+                        common.submit
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>
@@ -1284,6 +1315,113 @@ exports[`UpdateDataSource should render data source form 2`] = `
           >
             <label
               class=""
+              for="params_a"
+              title="字段a"
+            >
+              字段a
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <input
+                  class="ant-input"
+                  id="params_a"
+                  type="text"
+                  value="123"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="params_b"
+              title="字段b"
+            >
+              字段b
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <input
+                  class="ant-input"
+                  id="params_b"
+                  type="text"
+                  value="123"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="params_c"
+              title="字段c"
+            >
+              字段c
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <button
+                  aria-checked="true"
+                  class="ant-switch ant-switch-checked"
+                  id="params_c"
+                  role="switch"
+                  type="button"
+                >
+                  <div
+                    class="ant-switch-handle"
+                  />
+                  <span
+                    class="ant-switch-inner"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
               for="role"
               title="dataSource.dataSourceForm.role"
             >
@@ -1577,31 +1715,53 @@ exports[`UpdateDataSource should render data source form 2`] = `
             </div>
           </div>
         </div>
-      </form>
-      <div
-        class="ant-row"
-      >
         <div
-          class="ant-col ant-col-xs-offset-0 ant-col-sm-offset-8"
+          class="ant-row ant-form-item"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class="ant-form-item-no-colon"
+              title=" "
+            >
+               
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
           >
             <div
-              class="ant-space-item"
+              class="ant-form-item-control-input"
             >
-              <button
-                class="ant-btn ant-btn-primary"
-                type="button"
+              <div
+                class="ant-form-item-control-input-content"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  />
+                  <div
+                    class="ant-space-item"
+                  >
+                    <button
+                      class="ant-btn ant-btn-primary"
+                      type="button"
+                    >
+                      <span>
+                        common.submit
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>

@@ -1,14 +1,5 @@
 import { useBoolean } from 'ahooks';
-import {
-  Card,
-  Row,
-  Col,
-  Space,
-  Button,
-  message,
-  Empty,
-  Typography,
-} from 'antd';
+import { Card, Button, message, Empty, Typography } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -18,9 +9,10 @@ import instance from '../../../api/instance';
 import { IUpdateInstanceV1Params } from '../../../api/instance/index.d';
 import BackButton from '../../../components/BackButton';
 import EmptyBox from '../../../components/EmptyBox';
-import { PageFormLayout, ResponseCode } from '../../../data/common';
+import { ResponseCode } from '../../../data/common';
 import DataSourceForm from '../DataSourceForm';
 import { DataSourceFormField } from '../DataSourceForm/index.type';
+import { turnCommonToDataSourceParams } from '../tool';
 import { UpdateDataSourceUrlParams } from './index.type';
 
 const UpdateDataSource = () => {
@@ -33,12 +25,7 @@ const UpdateDataSource = () => {
   const [retryLoading, { toggle: setRetryLoading }] = useBoolean(false);
   const [instanceInfo, setInstanceInfo] = useState<IInstanceResV1>();
 
-  const [loading, { setTrue: setLoadingTrue, setFalse: setLoadingFalse }] =
-    useBoolean();
-
-  const updateDatabase = React.useCallback(async () => {
-    const values = await form.validateFields();
-    setLoadingTrue();
+  const updateDatabase = async (values: DataSourceFormField) => {
     const params: IUpdateInstanceV1Params = {
       db_type: values.type,
       db_host: values.ip,
@@ -49,26 +36,22 @@ const UpdateDataSource = () => {
       role_name_list: values.role,
       rule_template_name_list: values.ruleTemplate ? [values.ruleTemplate] : [],
       workflow_template_name: values.workflow,
+      additional_params: turnCommonToDataSourceParams(values.asyncParams ?? []),
     };
     if (!!values.password) {
       params.db_password = values.password;
     }
-    instance
-      .updateInstanceV1(params)
-      .then((res) => {
-        if (res.data.code === ResponseCode.SUCCESS) {
-          message.success(
-            t('dataSource.updateDatabase.updateDatabaseSuccess', {
-              name: values.name,
-            })
-          );
-          history.replace('/data');
-        }
-      })
-      .finally(() => {
-        setLoadingFalse();
-      });
-  }, [form, history, setLoadingFalse, setLoadingTrue, t]);
+    return instance.updateInstanceV1(params).then((res) => {
+      if (res.data.code === ResponseCode.SUCCESS) {
+        message.success(
+          t('dataSource.updateDatabase.updateDatabaseSuccess', {
+            name: values.name,
+          })
+        );
+        history.replace('/data');
+      }
+    });
+  };
 
   const getInstanceInfo = React.useCallback(() => {
     setRetryLoading(true);
@@ -120,19 +103,11 @@ const UpdateDataSource = () => {
           </Empty>
         }
       >
-        <DataSourceForm form={form} defaultData={instanceInfo} />
-        <Row>
-          <Col
-            xs={{ offset: 0 }}
-            sm={{ offset: PageFormLayout.labelCol.sm.span }}
-          >
-            <Space>
-              <Button type="primary" onClick={updateDatabase} loading={loading}>
-                {t('common.submit')}
-              </Button>
-            </Space>
-          </Col>
-        </Row>
+        <DataSourceForm
+          form={form}
+          defaultData={instanceInfo}
+          submit={updateDatabase}
+        />
       </EmptyBox>
     </Card>
   );

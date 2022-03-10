@@ -6,6 +6,16 @@ export enum AuditPlanParamResV1TypeEnum {
   'bool' = 'bool'
 }
 
+export enum AuditPlanReportResV1AuditLevelEnum {
+  'normal' = 'normal',
+
+  'notice' = 'notice',
+
+  'warn' = 'warn',
+
+  'error' = 'error'
+}
+
 export enum AuditTaskResV1AuditLevelEnum {
   'normal' = 'normal',
 

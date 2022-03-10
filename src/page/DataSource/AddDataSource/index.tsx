@@ -1,30 +1,27 @@
 import { useBoolean } from 'ahooks';
-import { Button, Card, Col, Modal, Result, Row, Space } from 'antd';
+import { Button, Card, Modal, Result } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import instance from '../../../api/instance';
 import BackButton from '../../../components/BackButton';
-import { PageFormLayout, ResponseCode } from '../../../data/common';
+import { ResponseCode } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import EventEmitter from '../../../utils/EventEmitter';
 import DataSourceForm from '../DataSourceForm';
 import { DataSourceFormField } from '../DataSourceForm/index.type';
+import { turnCommonToDataSourceParams } from '../tool';
 
 const AddDataSource = () => {
   const { t } = useTranslation();
   const [form] = useForm<DataSourceFormField>();
 
-  const [loading, { setTrue: setLoadingTrue, setFalse: setLoadingFalse }] =
-    useBoolean();
   const [visible, { setTrue: openResultModal, setFalse: closeResultModal }] =
     useBoolean();
 
-  const addDatabase = React.useCallback(async () => {
-    const values = await form.validateFields();
-    setLoadingTrue();
-    instance
+  const addDatabase = async (values: DataSourceFormField) => {
+    return instance
       .createInstanceV1({
         db_host: values.ip,
         db_password: values.password,
@@ -38,16 +35,16 @@ const AddDataSource = () => {
           ? [values.ruleTemplate]
           : [],
         workflow_template_name: values.workflow,
+        additional_params: turnCommonToDataSourceParams(
+          values.asyncParams ?? []
+        ),
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           openResultModal();
         }
-      })
-      .finally(() => {
-        setLoadingFalse();
       });
-  }, [form, openResultModal, setLoadingFalse, setLoadingTrue]);
+  };
 
   const resetAndCloseResultModal = React.useCallback(() => {
     form.resetFields();
@@ -55,30 +52,12 @@ const AddDataSource = () => {
     EventEmitter.emit(EmitterKey.Reset_Test_Data_Source_Connect);
   }, [closeResultModal, form]);
 
-  const reset = React.useCallback(() => {
-    EventEmitter.emit(EmitterKey.Reset_Test_Data_Source_Connect);
-    form.resetFields();
-  }, [form]);
-
   return (
     <Card
       title={t('dataSource.addDatabase')}
       extra={[<BackButton key="goBack" />]}
     >
-      <DataSourceForm form={form} />
-      <Row>
-        <Col
-          xs={{ offset: 24 - PageFormLayout.labelCol.xs.span }}
-          sm={{ offset: PageFormLayout.labelCol.sm.span }}
-        >
-          <Space>
-            <Button onClick={reset}>{t('common.reset')}</Button>
-            <Button type="primary" onClick={addDatabase} loading={loading}>
-              {t('common.submit')}
-            </Button>
-          </Space>
-        </Col>
-      </Row>
+      <DataSourceForm form={form} submit={addDatabase} />
       <Modal
         title={t('common.operateSuccess')}
         footer={null}

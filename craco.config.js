@@ -78,13 +78,7 @@ module.exports = {
   devServer: (config, { proxy }) => {
     config.proxy = {
       ...(function () {
-        const url = [
-          '/v1/users',
-          '/v1/user_group_tips',
-          '/v2/roles',
-          '/v1/operations',
-          '/v1/user_groups',
-        ];
+        const url = ['/v1/instance_additional_metas', '/v1/instances/db1'];
         return url.reduce((acc, cur) => {
           acc[cur] = {
             target: 'http://localhost:4200',

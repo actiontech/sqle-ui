@@ -1,4 +1,5 @@
-import { IAuditPlanParamResV1, IAuditPlanResV1 } from '../../../api/common';
+import { IAuditPlanResV1 } from '../../../api/common';
+import { FormItem } from '../../../components/BackendForm';
 
 export type PlanFormField = {
   name: string;
@@ -10,7 +11,7 @@ export type PlanFormField = {
   params?: {
     [key: string]: string | boolean;
   };
-  asyncParams?: IAuditPlanParamResV1[];
+  asyncParams?: FormItem[];
 };
 
 export type PlanFormProps = {
