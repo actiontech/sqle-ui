@@ -5,10 +5,8 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import audit_plan from '../../../../../api/audit_plan';
-import { AuditPlanReportResV1AuditLevelEnum } from '../../../../../api/common.enum';
-import EmptyBox from '../../../../../components/EmptyBox';
+import RuleLevelIcon from '../../../../../components/RuleList/RuleLevelIcon';
 import EmitterKey from '../../../../../data/EmitterKey';
-import { auditPlanRuleLevelDictionary } from '../../../../../hooks/useStaticStatus/index.data';
 import { formatTime } from '../../../../../utils/Common';
 import EventEmitter from '../../../../../utils/EventEmitter';
 
@@ -86,6 +84,7 @@ const PlanAuditRecord: React.FC<{ auditPlanName: string }> = (props) => {
         renderItem={(item) => (
           <List.Item>
             <List.Item.Meta
+              avatar={<RuleLevelIcon ruleLevel={item.audit_level} />}
               title={
                 <Link
                   to={`/auditPlan/detail/${props.auditPlanName}/report/${item.audit_plan_report_id}`}
@@ -99,29 +98,15 @@ const PlanAuditRecord: React.FC<{ auditPlanName: string }> = (props) => {
                 </Link>
               }
               description={
-                <>
-                  <Space>
-                    <Typography.Text type="secondary">
-                      {t('audit.source')} {item.score}
-                    </Typography.Text>
-                    <Typography.Text type="secondary">
-                      {t('audit.passRage')}
-                      {(item.pass_rate ?? 0) * 100}%
-                    </Typography.Text>
-                  </Space>
-                  <div>
-                    <EmptyBox if={!!item.audit_level}>
-                      <Typography.Text type="secondary">
-                        {t('auditPlan.record.highRuleLevel')}:
-                        {t(
-                          auditPlanRuleLevelDictionary[
-                            item.audit_level as AuditPlanReportResV1AuditLevelEnum
-                          ]
-                        )}
-                      </Typography.Text>
-                    </EmptyBox>
-                  </div>
-                </>
+                <Space>
+                  <Typography.Text type="secondary">
+                    {t('audit.source')} {item.score}
+                  </Typography.Text>
+                  <Typography.Text type="secondary">
+                    {t('audit.passRage')}
+                    {(item.pass_rate ?? 0) * 100}%
+                  </Typography.Text>
+                </Space>
               }
             />
           </List.Item>
