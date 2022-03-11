@@ -43,18 +43,32 @@ describe('DatabaseFormItem', () => {
         password: '123456',
         user: 'root',
         port: '4444',
+        type: 'mysql',
+        params: {
+          a: 'b',
+          b: 'c',
+          c: true,
+        },
       })
     );
+
     const wrapper = mountWithTheme(
       <Form>
-        <DatabaseFormItem form={{ validateFields: validateFields } as any} />
+        <DatabaseFormItem
+          form={{ validateFields: validateFields } as any}
+          currentAsyncParams={[
+            { desc: '字段a', key: 'a', type: 'string', value: '123' },
+            { desc: '字段b', key: 'b', type: 'int', value: '123' },
+            { desc: '字段c', key: 'c', type: 'bool', value: 'true' },
+          ]}
+        />
       </Form>
     );
     act(() => {
       wrapper.find('Button').simulate('click');
     });
     await waitFor(() => {
-      jest.runOnlyPendingTimers();
+      jest.advanceTimersByTime(0);
     });
     wrapper.update();
     expect(request).toBeCalledTimes(1);
@@ -63,6 +77,21 @@ describe('DatabaseFormItem', () => {
       port: '4444',
       user: 'root',
       password: '123456',
+      db_type: 'mysql',
+      additional_params: [
+        {
+          name: 'a',
+          value: 'b',
+        },
+        {
+          name: 'b',
+          value: 'c',
+        },
+        {
+          name: 'c',
+          value: 'true',
+        },
+      ],
     });
     let connectButton = wrapper.find('TestDatabaseConnectButton');
     expect(connectButton.prop('loading')).toBe(true);
@@ -89,6 +118,10 @@ describe('DatabaseFormItem', () => {
         user: 'root',
         port: '4444',
         type: 'mysql',
+        params: {
+          a: 'a',
+          b: 'b',
+        },
       })
     );
     const wrapper = mountWithTheme(
@@ -128,6 +161,10 @@ describe('DatabaseFormItem', () => {
         user: 'root',
         port: '4444',
         type: 'mysql',
+        params: {
+          a: 'a',
+          b: 'b',
+        },
       })
     );
 

@@ -21,11 +21,15 @@ import { Theme } from '../../../../types/theme.type';
 import EventEmitter from '../../../../utils/EventEmitter';
 import { DataSourceFormField } from '../index.type';
 import useDatabaseType from '../../../../hooks/useDatabaseType';
+import useAsyncParams from '../../../../components/BackendForm/useAsyncParams';
+import BackendForm, { FormItem } from '../../../../components/BackendForm';
+import { turnCommonToDataSourceParams } from '../../tool';
 
 const DatabaseFormItem: React.FC<{
   form: FormInstance<DataSourceFormField>;
   isUpdate?: boolean;
   databaseTypeChange?: (values: string) => void;
+  currentAsyncParams?: FormItem[];
 }> = (props) => {
   const { updateDriverNameList, generateDriverSelectOptions } =
     useDatabaseType();
@@ -39,14 +43,24 @@ const DatabaseFormItem: React.FC<{
   const [initHide, { setFalse: setInitHideFalse, setTrue: setInitHideTrue }] =
     useBoolean(true);
 
-  const testDatabaseConnect = React.useCallback(async () => {
+  const { mergeFromValueIntoParams } = useAsyncParams();
+
+  const testDatabaseConnect = async () => {
     const values = await props.form.validateFields([
       'ip',
       'password',
       'port',
       'user',
       'type',
+      'params',
     ]);
+    if (values.params && props.currentAsyncParams) {
+      values.asyncParams = mergeFromValueIntoParams(
+        values.params,
+        props.currentAsyncParams
+      );
+      delete values.params;
+    }
     setLoadingTrue();
     instance
       .checkInstanceIsConnectableV1({
@@ -55,6 +69,9 @@ const DatabaseFormItem: React.FC<{
         user: values.user,
         db_type: values.type,
         password: values.password,
+        additional_params: turnCommonToDataSourceParams(
+          values.asyncParams ?? []
+        ),
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -66,13 +83,7 @@ const DatabaseFormItem: React.FC<{
         setInitHideFalse();
         setLoadingFalse();
       });
-  }, [
-    props.form,
-    setConnectAble,
-    setInitHideFalse,
-    setLoadingFalse,
-    setLoadingTrue,
-  ]);
+  };
 
   React.useEffect(() => {
     const resetConnectAbleStatus = () => {
@@ -205,6 +216,9 @@ const DatabaseFormItem: React.FC<{
           })}
         />
       </Form.Item>
+      <EmptyBox if={(props.currentAsyncParams?.length ?? 0) > 0}>
+        <BackendForm params={props.currentAsyncParams as FormItem[]} />
+      </EmptyBox>
       <Form.Item label=" " colon={false}>
         <TestDatabaseConnectButton
           initHide={initHide}
