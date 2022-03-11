@@ -78,7 +78,7 @@ module.exports = {
   devServer: (config, { proxy }) => {
     config.proxy = {
       ...(function () {
-        const url = [];
+        const url = ['/v1/instance_additional_metas'];
         return url.reduce((acc, cur) => {
           acc[cur] = {
             target: 'http://localhost:4200',

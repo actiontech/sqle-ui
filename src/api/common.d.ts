@@ -429,6 +429,8 @@ export interface IGetInstanceAdditionalMetasResV1 {
 }
 
 export interface IGetInstanceConnectableReqV1 {
+  additional_params?: IInstanceAdditionalParamReqV1[];
+
   db_type?: string;
 
   host?: string;

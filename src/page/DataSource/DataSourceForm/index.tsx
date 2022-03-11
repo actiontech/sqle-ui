@@ -13,7 +13,7 @@ import useAsyncParams from '../../../components/BackendForm/useAsyncParams';
 import { useBoolean, useRequest } from 'ahooks';
 import EmptyBox from '../../../components/EmptyBox';
 import instance from '../../../api/instance';
-import BackendForm, { FormItem } from '../../../components/BackendForm';
+import { FormItem } from '../../../components/BackendForm';
 import EventEmitter from '../../../utils/EventEmitter';
 import EmitterKey from '../../../data/EmitterKey';
 import { turnDataSourceAsyncFormToCommon } from '../tool';
@@ -165,11 +165,9 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
       <DatabaseFormItem
         isUpdate={isUpdate}
         form={props.form}
+        currentAsyncParams={params}
         databaseTypeChange={databaseTypeChange}
       />
-      <EmptyBox if={params.length > 0}>
-        <BackendForm params={params} />
-      </EmptyBox>
       <Form.Item label={t('dataSource.dataSourceForm.role')} name="role">
         <Select
           mode="multiple"
