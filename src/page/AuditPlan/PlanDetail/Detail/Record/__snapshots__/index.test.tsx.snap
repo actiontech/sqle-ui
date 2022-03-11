@@ -350,25 +350,95 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
                   class="ant-list-item-meta"
                 >
                   <div
+                    class="ant-list-item-meta-avatar"
+                  >
+                    <div
+                      class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-bottom: 1px;"
+                      >
+                        <div>
+                          <span
+                            aria-label="audit"
+                            class="anticon anticon-audit"
+                            role="img"
+                            style="font-size: 25px;"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="audit"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
+                              />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span
+                          class="ant-typography ant-typography-secondary"
+                        >
+                          normal
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
                     class="ant-list-item-meta-content"
                   >
                     <h4
                       class="ant-list-item-meta-title"
                     >
                       <a
-                        href="/auditPlan/detail/planName/report/31"
+                        href="/auditPlan/detail/planName/report/177"
                       >
                         <span
                           class="text-blue"
                         >
-                          31
+                          auditPlan.record.generateTime2022-03-10 15:00:00
                         </span>
                       </a>
                     </h4>
                     <div
                       class="ant-list-item-meta-description"
                     >
-                      auditPlan.record.generateTime2020-10-19 22:39:57
+                      <div
+                        class="ant-space ant-space-horizontal ant-space-align-center"
+                      >
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 8px;"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.source
+                             
+                            100
+                          </span>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.passRage
+                            100
+                            %
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -380,25 +450,95 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
                   class="ant-list-item-meta"
                 >
                   <div
+                    class="ant-list-item-meta-avatar"
+                  >
+                    <div
+                      class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-bottom: 1px;"
+                      >
+                        <div>
+                          <span
+                            aria-label="audit"
+                            class="anticon anticon-audit"
+                            role="img"
+                            style="font-size: 25px;"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="audit"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
+                              />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span
+                          class="ant-typography ant-typography-secondary"
+                        >
+                          normal
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
                     class="ant-list-item-meta-content"
                   >
                     <h4
                       class="ant-list-item-meta-title"
                     >
                       <a
-                        href="/auditPlan/detail/planName/report/32"
+                        href="/auditPlan/detail/planName/report/176"
                       >
                         <span
                           class="text-blue"
                         >
-                          32
+                          auditPlan.record.generateTime2022-03-10 14:00:00
                         </span>
                       </a>
                     </h4>
                     <div
                       class="ant-list-item-meta-description"
                     >
-                      auditPlan.record.generateTime2020-11-19 20:39:57
+                      <div
+                        class="ant-space ant-space-horizontal ant-space-align-center"
+                      >
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 8px;"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.source
+                             
+                            100
+                          </span>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.passRage
+                            100
+                            %
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -410,25 +550,95 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
                   class="ant-list-item-meta"
                 >
                   <div
+                    class="ant-list-item-meta-avatar"
+                  >
+                    <div
+                      class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-bottom: 1px;"
+                      >
+                        <div>
+                          <span
+                            aria-label="audit"
+                            class="anticon anticon-audit"
+                            role="img"
+                            style="font-size: 25px;"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="audit"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
+                              />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span
+                          class="ant-typography ant-typography-secondary"
+                        >
+                          normal
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
                     class="ant-list-item-meta-content"
                   >
                     <h4
                       class="ant-list-item-meta-title"
                     >
                       <a
-                        href="/auditPlan/detail/planName/report/33"
+                        href="/auditPlan/detail/planName/report/175"
                       >
                         <span
                           class="text-blue"
                         >
-                          33
+                          auditPlan.record.generateTime2022-03-10 13:46:00
                         </span>
                       </a>
                     </h4>
                     <div
                       class="ant-list-item-meta-description"
                     >
-                      auditPlan.record.generateTime2020-11-19 19:39:57
+                      <div
+                        class="ant-space ant-space-horizontal ant-space-align-center"
+                      >
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 8px;"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.source
+                             
+                            100
+                          </span>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.passRage
+                            100
+                            %
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -440,25 +650,95 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
                   class="ant-list-item-meta"
                 >
                   <div
+                    class="ant-list-item-meta-avatar"
+                  >
+                    <div
+                      class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-bottom: 1px;"
+                      >
+                        <div>
+                          <span
+                            aria-label="audit"
+                            class="anticon anticon-audit"
+                            role="img"
+                            style="font-size: 25px;"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="audit"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
+                              />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span
+                          class="ant-typography ant-typography-secondary"
+                        >
+                          normal
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
                     class="ant-list-item-meta-content"
                   >
                     <h4
                       class="ant-list-item-meta-title"
                     >
                       <a
-                        href="/auditPlan/detail/planName/report/34"
+                        href="/auditPlan/detail/planName/report/174"
                       >
                         <span
                           class="text-blue"
                         >
-                          34
+                          auditPlan.record.generateTime2022-03-10 13:45:00
                         </span>
                       </a>
                     </h4>
                     <div
                       class="ant-list-item-meta-description"
                     >
-                      auditPlan.record.generateTime2020-12-19 20:39:57
+                      <div
+                        class="ant-space ant-space-horizontal ant-space-align-center"
+                      >
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 8px;"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.source
+                             
+                            100
+                          </span>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.passRage
+                            100
+                            %
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -470,25 +750,95 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
                   class="ant-list-item-meta"
                 >
                   <div
+                    class="ant-list-item-meta-avatar"
+                  >
+                    <div
+                      class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-bottom: 1px;"
+                      >
+                        <div>
+                          <span
+                            aria-label="audit"
+                            class="anticon anticon-audit"
+                            role="img"
+                            style="font-size: 25px;"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="audit"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
+                              />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span
+                          class="ant-typography ant-typography-secondary"
+                        >
+                          normal
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
                     class="ant-list-item-meta-content"
                   >
                     <h4
                       class="ant-list-item-meta-title"
                     >
                       <a
-                        href="/auditPlan/detail/planName/report/35"
+                        href="/auditPlan/detail/planName/report/173"
                       >
                         <span
                           class="text-blue"
                         >
-                          35
+                          auditPlan.record.generateTime2022-03-10 13:44:00
                         </span>
                       </a>
                     </h4>
                     <div
                       class="ant-list-item-meta-description"
                     >
-                      auditPlan.record.generateTime2020-10-19 13:39:57
+                      <div
+                        class="ant-space ant-space-horizontal ant-space-align-center"
+                      >
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 8px;"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.source
+                             
+                            100
+                          </span>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.passRage
+                            100
+                            %
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -500,25 +850,95 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
                   class="ant-list-item-meta"
                 >
                   <div
+                    class="ant-list-item-meta-avatar"
+                  >
+                    <div
+                      class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-bottom: 1px;"
+                      >
+                        <div>
+                          <span
+                            aria-label="audit"
+                            class="anticon anticon-audit"
+                            role="img"
+                            style="font-size: 25px;"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="audit"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
+                              />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span
+                          class="ant-typography ant-typography-secondary"
+                        >
+                          normal
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
                     class="ant-list-item-meta-content"
                   >
                     <h4
                       class="ant-list-item-meta-title"
                     >
                       <a
-                        href="/auditPlan/detail/planName/report/36"
+                        href="/auditPlan/detail/planName/report/172"
                       >
                         <span
                           class="text-blue"
                         >
-                          36
+                          auditPlan.record.generateTime2022-03-10 13:43:00
                         </span>
                       </a>
                     </h4>
                     <div
                       class="ant-list-item-meta-description"
                     >
-                      auditPlan.record.generateTime2020-10-19 13:39:57
+                      <div
+                        class="ant-space ant-space-horizontal ant-space-align-center"
+                      >
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 8px;"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.source
+                             
+                            100
+                          </span>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.passRage
+                            100
+                            %
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -530,25 +950,95 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
                   class="ant-list-item-meta"
                 >
                   <div
+                    class="ant-list-item-meta-avatar"
+                  >
+                    <div
+                      class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-bottom: 1px;"
+                      >
+                        <div>
+                          <span
+                            aria-label="audit"
+                            class="anticon anticon-audit"
+                            role="img"
+                            style="font-size: 25px;"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="audit"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
+                              />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span
+                          class="ant-typography ant-typography-secondary"
+                        >
+                          normal
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
                     class="ant-list-item-meta-content"
                   >
                     <h4
                       class="ant-list-item-meta-title"
                     >
                       <a
-                        href="/auditPlan/detail/planName/report/37"
+                        href="/auditPlan/detail/planName/report/171"
                       >
                         <span
                           class="text-blue"
                         >
-                          37
+                          auditPlan.record.generateTime2022-03-10 13:42:00
                         </span>
                       </a>
                     </h4>
                     <div
                       class="ant-list-item-meta-description"
                     >
-                      auditPlan.record.generateTime2020-11-19 11:39:57
+                      <div
+                        class="ant-space ant-space-horizontal ant-space-align-center"
+                      >
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 8px;"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.source
+                             
+                            100
+                          </span>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.passRage
+                            100
+                            %
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -560,25 +1050,95 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
                   class="ant-list-item-meta"
                 >
                   <div
+                    class="ant-list-item-meta-avatar"
+                  >
+                    <div
+                      class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-bottom: 1px;"
+                      >
+                        <div>
+                          <span
+                            aria-label="audit"
+                            class="anticon anticon-audit"
+                            role="img"
+                            style="font-size: 25px;"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="audit"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
+                              />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span
+                          class="ant-typography ant-typography-secondary"
+                        >
+                          normal
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
                     class="ant-list-item-meta-content"
                   >
                     <h4
                       class="ant-list-item-meta-title"
                     >
                       <a
-                        href="/auditPlan/detail/planName/report/38"
+                        href="/auditPlan/detail/planName/report/170"
                       >
                         <span
                           class="text-blue"
                         >
-                          38
+                          auditPlan.record.generateTime2022-03-10 13:41:00
                         </span>
                       </a>
                     </h4>
                     <div
                       class="ant-list-item-meta-description"
                     >
-                      auditPlan.record.generateTime2020-12-19 18:39:57
+                      <div
+                        class="ant-space ant-space-horizontal ant-space-align-center"
+                      >
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 8px;"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.source
+                             
+                            100
+                          </span>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.passRage
+                            100
+                            %
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -590,25 +1150,95 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
                   class="ant-list-item-meta"
                 >
                   <div
+                    class="ant-list-item-meta-avatar"
+                  >
+                    <div
+                      class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-bottom: 1px;"
+                      >
+                        <div>
+                          <span
+                            aria-label="audit"
+                            class="anticon anticon-audit"
+                            role="img"
+                            style="font-size: 25px;"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="audit"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
+                              />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span
+                          class="ant-typography ant-typography-secondary"
+                        >
+                          normal
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
                     class="ant-list-item-meta-content"
                   >
                     <h4
                       class="ant-list-item-meta-title"
                     >
                       <a
-                        href="/auditPlan/detail/planName/report/39"
+                        href="/auditPlan/detail/planName/report/169"
                       >
                         <span
                           class="text-blue"
                         >
-                          39
+                          auditPlan.record.generateTime2022-03-10 13:40:00
                         </span>
                       </a>
                     </h4>
                     <div
                       class="ant-list-item-meta-description"
                     >
-                      auditPlan.record.generateTime2020-11-19 12:39:57
+                      <div
+                        class="ant-space ant-space-horizontal ant-space-align-center"
+                      >
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 8px;"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.source
+                             
+                            100
+                          </span>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.passRage
+                            100
+                            %
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -620,25 +1250,95 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
                   class="ant-list-item-meta"
                 >
                   <div
+                    class="ant-list-item-meta-avatar"
+                  >
+                    <div
+                      class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-bottom: 1px;"
+                      >
+                        <div>
+                          <span
+                            aria-label="audit"
+                            class="anticon anticon-audit"
+                            role="img"
+                            style="font-size: 25px;"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="audit"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
+                              />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span
+                          class="ant-typography ant-typography-secondary"
+                        >
+                          normal
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
                     class="ant-list-item-meta-content"
                   >
                     <h4
                       class="ant-list-item-meta-title"
                     >
                       <a
-                        href="/auditPlan/detail/planName/report/40"
+                        href="/auditPlan/detail/planName/report/168"
                       >
                         <span
                           class="text-blue"
                         >
-                          40
+                          auditPlan.record.generateTime2022-03-10 13:39:00
                         </span>
                       </a>
                     </h4>
                     <div
                       class="ant-list-item-meta-description"
                     >
-                      auditPlan.record.generateTime2020-10-19 13:39:57
+                      <div
+                        class="ant-space ant-space-horizontal ant-space-align-center"
+                      >
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 8px;"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.source
+                             
+                            100
+                          </span>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary"
+                          >
+                            audit.passRage
+                            100
+                            %
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

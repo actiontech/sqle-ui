@@ -1,10 +1,11 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
-import { Button, Card, List, Space } from 'antd';
+import { Button, Card, List, Space, Typography } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import audit_plan from '../../../../../api/audit_plan';
+import RuleLevelIcon from '../../../../../components/RuleList/RuleLevelIcon';
 import EmitterKey from '../../../../../data/EmitterKey';
 import { formatTime } from '../../../../../utils/Common';
 import EventEmitter from '../../../../../utils/EventEmitter';
@@ -83,17 +84,30 @@ const PlanAuditRecord: React.FC<{ auditPlanName: string }> = (props) => {
         renderItem={(item) => (
           <List.Item>
             <List.Item.Meta
+              avatar={<RuleLevelIcon ruleLevel={item.audit_level} />}
               title={
                 <Link
                   to={`/auditPlan/detail/${props.auditPlanName}/report/${item.audit_plan_report_id}`}
                 >
-                  <span className="text-blue">{item.audit_plan_report_id}</span>
+                  <span className="text-blue">
+                    {`${t('auditPlan.record.generateTime')}${formatTime(
+                      item.audit_plan_report_timestamp,
+                      '--'
+                    )}`}
+                  </span>
                 </Link>
               }
-              description={`${t('auditPlan.record.generateTime')}${formatTime(
-                item.audit_plan_report_timestamp,
-                '--'
-              )}`}
+              description={
+                <Space>
+                  <Typography.Text type="secondary">
+                    {t('audit.source')} {item.score}
+                  </Typography.Text>
+                  <Typography.Text type="secondary">
+                    {t('audit.passRage')}
+                    {(item.pass_rate ?? 0) * 100}%
+                  </Typography.Text>
+                </Space>
+              }
             />
           </List.Item>
         )}
