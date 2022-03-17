@@ -1,5 +1,8 @@
 import { TimelineItemProps } from 'antd';
-import { IWorkflowStepResV1 } from '../../../../api/common.d';
+import {
+  IMaintenanceTimeResV1,
+  IWorkflowStepResV1,
+} from '../../../../api/common.d';
 import {
   WorkflowRecordResV1StatusEnum,
   WorkflowStepResV1StateEnum,
@@ -21,6 +24,7 @@ export type OrderStepsProps = {
   execEndTime?: string;
   modifySql: () => void;
   readonly?: boolean;
+  maintenanceTime?: IMaintenanceTimeResV1[];
 };
 
 export type StepStateStatus = {

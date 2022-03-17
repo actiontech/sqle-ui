@@ -327,4 +327,42 @@ describe('Order/Detail/OrderSteps', () => {
       screen.getByText('order.operator.sqlExecute').parentNode
     ).not.toHaveClass('ant-btn-loading');
   });
+
+  test('only can select maintenance time when user want to set sheduled time', async () => {
+    const executingMock = jest
+      .fn()
+      .mockImplementation(() => resolveThreeSecond({}));
+    const { baseElement } = render(
+      <OrderSteps
+        currentStep={orderWithExecScheduled3.record?.current_step_number}
+        stepList={orderWithExecScheduled3.record?.workflow_step_list ?? []}
+        scheduleTime={orderWithExecScheduled3.record?.schedule_time}
+        scheduledUser={orderWithExecScheduled3.record?.schedule_user}
+        maintenanceTime={orderWithExecScheduled3.instance_maintenance_times}
+        pass={jest.fn()}
+        reject={jest.fn()}
+        executing={executingMock}
+        execSchedule={jest.fn()}
+        modifySql={jest.fn()}
+        currentOrderStatus={execScheduleSubmit3.record?.status}
+      />
+    );
+
+    fireEvent.click(screen.getByText('order.operator.onlineRegularly'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(baseElement).toMatchSnapshot();
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    fireEvent.mouseDown(getBySelector('.ant-picker'));
+    fireEvent.mouseUp(getBySelector('.ant-picker'));
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    expect(getBySelector('.ant-picker-time-panel')).toMatchSnapshot();
+  });
 });

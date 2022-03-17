@@ -57,6 +57,10 @@ module.exports = {
         '!src/reportWebVitals.ts',
         '!src/index.tsx',
         '!src/router/config.tsx',
+        '!src/components/BackendForm/index.ts',
+        '!src/components/EditText/index.ts',
+        '!src/hooks/useOperation/index.tsx',
+        '!src/page/AuditPlan/PlanForm/AuditTaskType/index.tsx',
       ],
       moduleNameMapper: {
         'react-monaco-editor': '<rootDir>/src/testUtils/mockEditor.jsx',
@@ -78,7 +82,7 @@ module.exports = {
   devServer: (config, { proxy }) => {
     config.proxy = {
       ...(function () {
-        const url = ['/v1/instance_additional_metas'];
+        const url = [];
         return url.reduce((acc, cur) => {
           acc[cur] = {
             target: 'http://localhost:4200',

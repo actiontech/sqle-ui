@@ -13,6 +13,7 @@ import {
   Typography,
   DatePicker,
   Popconfirm,
+  Tag,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React, { useState } from 'react';
@@ -26,7 +27,7 @@ import {
 import EmptyBox from '../../../../components/EmptyBox';
 import { ModalFormLayout } from '../../../../data/common';
 import { IReduxState } from '../../../../store';
-import { formatTime } from '../../../../utils/Common';
+import { formatTime, timeAddZero } from '../../../../utils/Common';
 import { OrderStepsProps, StepStateStatus } from './index.type';
 import OrderStatusTag from '../../../../components/OrderStatusTag';
 
@@ -114,13 +115,72 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     return current && current <= moment().startOf('day');
   };
   const disabledDateTime = (value: moment.MomentInput) => {
-    if (moment(value).format('YYYY-MM-DD') === moment().format('YYYY-MM-DD')) {
-      return {
-        disabledHours: () => range(0, 24).splice(0, moment().hour()),
-        disabledMinutes: () => range(0, 60).splice(0, moment().minutes()),
-      };
+    const current = moment(value);
+    const isToday =
+      moment(value).format('YYYY-MM-DD') === moment().format('YYYY-MM-DD');
+
+    let allHours = range(0, 24);
+    const maintenanceTime = props.maintenanceTime ?? [];
+    maintenanceTime.forEach((item) => {
+      const start = item.maintenance_start_time?.hour ?? 0;
+      const end = item.maintenance_stop_time?.hour ?? 0;
+      for (let i = start; i <= end; i++) {
+        allHours[i] = -1;
+      }
+    });
+    if (isToday) {
+      range(0, moment().hour()).forEach((item, i) => {
+        allHours[item] = i;
+      });
     }
-    return {};
+    allHours = allHours.reduce<number[]>((sum, prev) => {
+      if (prev === -1) {
+        return sum;
+      }
+      return [...sum, prev];
+    }, []);
+
+    let allMiniutes: Set<number> = new Set();
+    const hour = current.hour();
+    if (!Number.isNaN(hour)) {
+      maintenanceTime.forEach((item) => {
+        const startHour = item.maintenance_start_time?.hour ?? 0;
+        const startMinute = item.maintenance_start_time?.minute ?? 0;
+        const endHour = item.maintenance_stop_time?.hour ?? 0;
+        const endMinute = item.maintenance_stop_time?.minute ?? 0;
+        if (startHour === endHour && startHour === hour) {
+          range(startMinute, endMinute).forEach((item) => {
+            allMiniutes.add(item);
+          });
+        } else if (hour === startHour) {
+          range(startMinute, 60).forEach((item) => {
+            allMiniutes.add(item);
+          });
+        } else if (hour === endHour) {
+          range(0, endMinute).forEach((item) => {
+            allMiniutes.add(item);
+          });
+        }
+        if (hour > startHour && hour < endHour) {
+          range(0, 60).forEach((item) => {
+            allMiniutes.add(item);
+          });
+        }
+      });
+    }
+
+    if (isToday && hour === moment().hour()) {
+      range(0, moment().minute()).forEach((item) => {
+        allMiniutes.delete(item);
+      });
+    }
+    const disabledMinutes = range(0, 60).filter(
+      (item) => !allMiniutes.has(item)
+    );
+    return {
+      disabledHours: () => allHours,
+      disabledMinutes: () => disabledMinutes,
+    };
   };
 
   const execSchedule = (values: { schedule_time: moment.Moment }) => {
@@ -146,6 +206,16 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     props.executing().finally(() => {
       executingFinish();
     });
+  };
+
+  const createDefaultRangeTime = () => {
+    const maintenanceTime = props.maintenanceTime ?? [];
+    if (maintenanceTime.length === 0) {
+      return moment('00:00:00', 'HH:mm:ss');
+    }
+    const hour = maintenanceTime[0].maintenance_start_time?.hour ?? 0;
+    const minute = maintenanceTime[0].maintenance_start_time?.minute ?? 0;
+    return moment(`${timeAddZero(hour)}:${timeAddZero(minute)}:00`, 'HH:mm:ss');
   };
 
   const getOperatorTimeElement = (
@@ -462,19 +532,77 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
           <Form.Item
             label={t('order.operator.scheduleTime')}
             name="schedule_time"
+            validateFirst
             rules={[
               {
                 required: true,
+              },
+              {
+                validator(_, rule: moment.Moment) {
+                  const hour = rule.hour();
+                  const minute = rule.minute();
+                  const maintenanceTime = props.maintenanceTime ?? [];
+                  if (rule.isBefore(moment())) {
+                    return Promise.reject(
+                      t('order.operator.execScheduledBeforeNow')
+                    );
+                  }
+
+                  if (maintenanceTime.length === 0) {
+                    return Promise.resolve();
+                  }
+                  for (const time of maintenanceTime) {
+                    const startHour = time.maintenance_start_time?.hour ?? 0;
+                    const startMinute =
+                      time.maintenance_start_time?.minute ?? 0;
+                    const endHour = time.maintenance_stop_time?.hour ?? 0;
+                    const endMinute = time.maintenance_stop_time?.minute ?? 0;
+                    if (startHour === endHour && startHour === hour) {
+                      if (minute >= startMinute && minute <= endMinute) {
+                        return Promise.resolve();
+                      }
+                    }
+                    if (hour === startHour) {
+                      if (minute >= startMinute) {
+                        return Promise.resolve();
+                      }
+                    }
+                    if (hour === endHour) {
+                      if (minute <= endMinute) {
+                        return Promise.resolve();
+                      }
+                    }
+                    if (hour > startHour && hour < endHour) {
+                      return Promise.resolve();
+                    }
+                  }
+                  return Promise.reject(
+                    t('order.operator.execScheduledErrorMessage')
+                  );
+                },
               },
             ]}
           >
             <DatePicker
               disabledDate={disabledDate}
               disabledTime={disabledDateTime}
-              showTime
+              showTime={{
+                defaultValue: createDefaultRangeTime(),
+              }}
               showNow={false}
               data-testid="start-date"
             />
+          </Form.Item>
+          <Form.Item label=" " colon={false}>
+            {t('order.operator.maintenanceTime')}:
+            {props.maintenanceTime?.map((time, i) => (
+              <Tag key={i}>
+                {timeAddZero(time.maintenance_start_time?.hour ?? 0)}:{' '}
+                {timeAddZero(time.maintenance_start_time?.minute ?? 0)}-
+                {timeAddZero(time.maintenance_stop_time?.hour ?? 0)}:{' '}
+                {timeAddZero(time.maintenance_stop_time?.minute ?? 0)}
+              </Tag>
+            ))}
           </Form.Item>
           <Form.Item label=" " colon={false}>
             <Space>

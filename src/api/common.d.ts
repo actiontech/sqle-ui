@@ -229,6 +229,8 @@ export interface ICreateInstanceReqV1 {
 
   instance_name?: string;
 
+  maintenance_times?: IMaintenanceTimeReqV1[];
+
   role_name_list?: string[];
 
   rule_template_name_list?: string[];
@@ -278,6 +280,8 @@ export interface ICreateUserReqV1 {
   user_name?: string;
 
   user_password?: string;
+
+  wechat_id?: string;
 }
 
 export interface ICreateWorkflowReqV1 {
@@ -646,6 +650,14 @@ export interface IGetUsersResV1 {
   total_nums?: number;
 }
 
+export interface IGetWeChatConfigurationResV1 {
+  code?: number;
+
+  data?: IWeChatConfigurationResV1;
+
+  message?: string;
+}
+
 export interface IGetWorkflowResV1 {
   code?: number;
 
@@ -733,6 +745,8 @@ export interface IInstanceResV1 {
 
   instance_name?: string;
 
+  maintenance_times?: IMaintenanceTimeResV1[];
+
   role_name_list?: string[];
 
   rule_template_name_list?: string[];
@@ -790,6 +804,18 @@ export interface ILicenseItem {
   limit?: string;
 
   name?: string;
+}
+
+export interface IMaintenanceTimeReqV1 {
+  maintenance_start_time?: ITimeReqV1;
+
+  maintenance_stop_time?: ITimeReqV1;
+}
+
+export interface IMaintenanceTimeResV1 {
+  maintenance_start_time?: ITimeResV1;
+
+  maintenance_stop_time?: ITimeResV1;
 }
 
 export interface IOperationResV1 {
@@ -908,6 +934,36 @@ export interface ISystemVariablesResV1 {
   workflow_expired_hours?: number;
 }
 
+export interface ITestWeChatConfigurationReqV1 {
+  recipient_id?: string;
+}
+
+export interface ITestWeChatConfigurationResDataV1 {
+  is_wechat_send_normal?: boolean;
+
+  send_error_message?: string;
+}
+
+export interface ITestWeChatConfigurationResV1 {
+  code?: number;
+
+  data?: ITestWeChatConfigurationResDataV1;
+
+  message?: string;
+}
+
+export interface ITimeReqV1 {
+  hour?: number;
+
+  minute?: number;
+}
+
+export interface ITimeResV1 {
+  hour?: number;
+
+  minute?: number;
+}
+
 export interface ITriggerAuditPlanResV1 {
   code?: number;
 
@@ -946,6 +1002,8 @@ export interface IUpdateCurrentUserPasswordReqV1 {
 
 export interface IUpdateCurrentUserReqV1 {
   email?: string;
+
+  wechat_id?: string;
 }
 
 export interface IUpdateInstanceReqV1 {
@@ -962,6 +1020,8 @@ export interface IUpdateInstanceReqV1 {
   db_user?: string;
 
   desc?: string;
+
+  maintenance_times?: IMaintenanceTimeReqV1[];
 
   role_name_list?: string[];
 
@@ -1012,6 +1072,22 @@ export interface IUpdateUserReqV1 {
   role_name_list?: string[];
 
   user_group_name_list?: string[];
+
+  wechat_id?: string;
+}
+
+export interface IUpdateWeChatConfigurationReqV1 {
+  agent_id?: number;
+
+  corp_id?: string;
+
+  corp_secret?: string;
+
+  enable_wechat_notify?: boolean;
+
+  proxy_ip?: string;
+
+  safe_enabled?: boolean;
 }
 
 export interface IUpdateWorkflowReqV1 {
@@ -1046,6 +1122,8 @@ export interface IUserDetailResV1 {
   user_group_name_list?: string[];
 
   user_name?: string;
+
+  wechat_id?: string;
 }
 
 export interface IUserGroupListItemResV1 {
@@ -1086,10 +1164,24 @@ export interface IUserResV1 {
   user_group_name_list?: string[];
 
   user_name?: string;
+
+  wechat_id?: string;
 }
 
 export interface IUserTipResV1 {
   user_name?: string;
+}
+
+export interface IWeChatConfigurationResV1 {
+  agent_id?: number;
+
+  corp_id?: string;
+
+  enable_wechat_notify?: boolean;
+
+  proxy_ip?: string;
+
+  safe_enabled?: boolean;
 }
 
 export interface IWorkFlowStepTemplateReqV1 {
@@ -1158,6 +1250,8 @@ export interface IWorkflowResV1 {
   create_user_name?: string;
 
   desc?: string;
+
+  instance_maintenance_times?: IMaintenanceTimeResV1[];
 
   record?: IWorkflowRecordResV1;
 

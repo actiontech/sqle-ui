@@ -12,6 +12,7 @@ export default {
     role: '角色',
     ruleTemplate: '模版',
     workflow: '工作流',
+    maintenanceTime: '运维时间',
   },
 
   addDatabase: '添加数据源',
@@ -36,6 +37,7 @@ export default {
     role: '可访问的角色',
     ruleTemplate: '审核规则模版',
     workflow: '应用的工作流',
+    maintenanceTime: '运维时间',
 
     passwordTips:
       '这里不会显示您已经配置的当前数据库密码，提交时如果您没有填写密码，那么将不会对数据库密码进行变更。',

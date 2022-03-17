@@ -714,6 +714,11 @@ exports[`DataSource/DataSourceList should match snapshot 1`] = `
                         <th
                           class="ant-table-cell"
                         >
+                          dataSource.databaseList.maintenanceTime
+                        </th>
+                        <th
+                          class="ant-table-cell"
+                        >
                           dataSource.databaseList.workflow
                         </th>
                         <th
@@ -729,7 +734,7 @@ exports[`DataSource/DataSourceList should match snapshot 1`] = `
                       >
                         <td
                           class="ant-table-cell"
-                          colspan="7"
+                          colspan="8"
                         >
                           <div
                             class="ant-empty ant-empty-normal"
@@ -1484,6 +1489,11 @@ exports[`DataSource/DataSourceList should match snapshot 2`] = `
                         <th
                           class="ant-table-cell"
                         >
+                          dataSource.databaseList.maintenanceTime
+                        </th>
+                        <th
+                          class="ant-table-cell"
+                        >
                           dataSource.databaseList.workflow
                         </th>
                         <th
@@ -1519,6 +1529,32 @@ exports[`DataSource/DataSourceList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         />
+                        <td
+                          class="ant-table-cell"
+                        >
+                          <span
+                            class="ant-tag"
+                          >
+                            23
+                            :
+                            00
+                             -
+                            23
+                            :
+                            30
+                          </span>
+                          <span
+                            class="ant-tag"
+                          >
+                            00
+                            :
+                            00
+                             -
+                            02
+                            :
+                            00
+                          </span>
+                        </td>
                         <td
                           class="ant-table-cell"
                         >

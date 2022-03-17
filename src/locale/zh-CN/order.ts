@@ -78,11 +78,16 @@ export default {
     sqlReview: '审核通过',
     unknown: '未知步骤',
 
+    maintenanceTime:
+      '定时上线的时间点必须在运维时间之内，当前数据源的运维时间为',
+
     approveSuccessTips: '审批通过',
     rejectSuccessTips: '驳回成功',
     rejectReason: '驳回原因',
     onlineRegularly: '定时上线',
     scheduleTime: '定时时间',
+    execScheduledErrorMessage: '定时上线时间必须在运维时间之内',
+    execScheduledBeforeNow: '定时上线时间必须在当前时间之后',
     cancelExecScheduled: '取消定时上线',
     cancelExecScheduledTip: '确定取消定时上线吗？',
     execScheduleTips: '定时上线设置成功',

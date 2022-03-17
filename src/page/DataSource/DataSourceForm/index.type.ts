@@ -4,6 +4,7 @@ import {
   BackendFormRequestParams,
   BackendFormValues,
 } from '../../../components/BackendForm';
+import { MaintenanceTimeValue } from './MaintenanceTimePicker';
 
 export type DataSourceFormField = {
   name: string;
@@ -18,6 +19,7 @@ export type DataSourceFormField = {
   type?: string;
   params?: BackendFormValues;
   asyncParams?: BackendFormRequestParams[];
+  maintenanceTime: MaintenanceTimeValue[];
 };
 
 export type IDataSourceFormProps = {

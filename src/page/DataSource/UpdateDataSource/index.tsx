@@ -37,6 +37,11 @@ const UpdateDataSource = () => {
       rule_template_name_list: values.ruleTemplate ? [values.ruleTemplate] : [],
       workflow_template_name: values.workflow,
       additional_params: turnCommonToDataSourceParams(values.asyncParams ?? []),
+      maintenance_times:
+        values.maintenanceTime?.map((t) => ({
+          maintenance_start_time: t.startTime,
+          maintenance_stop_time: t.endTime,
+        })) ?? [],
     };
     if (!!values.password) {
       params.db_password = values.password;
