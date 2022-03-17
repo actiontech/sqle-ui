@@ -12,6 +12,7 @@ export interface IUserFormFields {
   roleNameList?: string[];
   disabled: boolean;
   userGroupList?: string[];
+  wechat?: string;
 }
 
 export interface IUserFormProps {

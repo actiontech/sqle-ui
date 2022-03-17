@@ -47,6 +47,7 @@ const AddUser = () => {
         email: values.email,
         role_name_list: values.roleNameList,
         user_group_name_list: values.userGroupList,
+        wechat_id: values.wechat,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {

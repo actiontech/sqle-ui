@@ -17,4 +17,5 @@ export default {
     newPasswordConfirm: '确认新密码',
   },
   updateEmailSuccess: '邮箱地址更新成功',
+  updateWechatSuccess: '微信号更新成功',
 };

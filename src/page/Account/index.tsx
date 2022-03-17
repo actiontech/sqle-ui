@@ -17,6 +17,7 @@ import { LoginTypeEnum } from '../../data/common';
 import { ModalName } from '../../data/ModalName';
 import ModifyPasswordModal from './Modal/ModifyPassword';
 import UserEmail from './UserEmail';
+import Wechat from './Wechat/Wechat';
 
 const Account = () => {
   const { t } = useTranslation();
@@ -64,6 +65,9 @@ const Account = () => {
               <Typography.Text>{userInfo?.user_name ?? '--'}</Typography.Text>
             </Col>
             <UserEmail userInfo={userInfo} refreshUserInfo={refresh} />
+            <Col span={24}>
+              <Wechat userInfo={userInfo} refreshUserInfo={refresh} />
+            </Col>
             <Divider />
             <Col sm={3} xs={24}>
               <Typography.Title level={5}>

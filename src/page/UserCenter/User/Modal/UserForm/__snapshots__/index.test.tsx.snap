@@ -213,6 +213,40 @@ exports[`User/Modal/UserForm should match snapshot when isUpdate is falsy 1`] = 
       >
         <label
           class=""
+          for="wechat"
+          title="user.userForm.wechat"
+        >
+          user.userForm.wechat
+        </label>
+      </div>
+      <div
+        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              id="wechat"
+              placeholder="common.form.placeholder.input"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+      >
+        <label
+          class=""
           for="roleNameList"
           title="user.userForm.role"
         >
@@ -429,6 +463,40 @@ exports[`User/Modal/UserForm should match snapshot when isUpdate is truthy 1`] =
             <input
               class="ant-input"
               id="email"
+              placeholder="common.form.placeholder.input"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item"
+    >
+      <div
+        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+      >
+        <label
+          class=""
+          for="wechat"
+          title="user.userForm.wechat"
+        >
+          user.userForm.wechat
+        </label>
+      </div>
+      <div
+        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              id="wechat"
               placeholder="common.form.placeholder.input"
               type="text"
               value=""

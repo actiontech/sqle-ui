@@ -41,6 +41,7 @@ export default {
     role: '角色',
     disabled: '禁用用户',
     userGroup: '所属用户组',
+    wechat: '微信id',
 
     passwordConfirmPlaceholder: '请保持两次密码输入一致',
   },

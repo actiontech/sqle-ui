@@ -8,6 +8,7 @@ export default {
     global: '全局配置',
     ldap: 'LDAP',
     license: 'License',
+    wechat: '企业微信配置',
   },
 
   smtp: {
@@ -63,5 +64,19 @@ export default {
     collect: '收集许可信息',
     import: '导入许可信息',
     importSuccessTips: '导入License成功',
+  },
+
+  wechat: {
+    enable_wechat_notify: '是否启用微信通知',
+    corp_id: 'CorpID(微信企业号ID)',
+    corp_secret: 'CorpSecret(CorpID对应密码)',
+    agent_id: '企业微信应用ID',
+    safe_enabled: '是否开启加密传输',
+    proxy_ip: '代理服务器IP',
+
+    test: '测试',
+    receiveWechat: '接收者微信ID',
+    testing: '正在向{{id}}发送测试消息...',
+    testSuccess: '测试消息发送成功',
   },
 };
