@@ -38,7 +38,11 @@ const AddDataSource = () => {
         additional_params: turnCommonToDataSourceParams(
           values.asyncParams ?? []
         ),
-        maintenance_times: []
+        maintenance_times:
+          values.maintenanceTime?.map((t) => ({
+            maintenance_start_time: t.startTime,
+            maintenance_end_time: t.endTime,
+          })) ?? [],
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {

@@ -6,6 +6,28 @@ export const dataSourceList = [
     db_user: 'root',
     desc: '',
     workflow_template_name: 'default',
+    maintenance_times: [
+      {
+        maintenance_start_time: {
+          hour: 23,
+          minute: 0,
+        },
+        maintenance_stop_time: {
+          hour: 23,
+          minute: 30,
+        },
+      },
+      {
+        maintenance_start_time: {
+          hour: 0,
+          minute: 0,
+        },
+        maintenance_stop_time: {
+          hour: 2,
+          minute: 0,
+        },
+      },
+    ],
   },
 ];
 

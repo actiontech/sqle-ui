@@ -37,3 +37,7 @@ export const getFileFromUploadChangeEvent = (e: any) => {
   }
   return [];
 };
+
+export const timeAddZero = (time: number): string => {
+  return time < 10 ? `0${time}` : `${time}`;
+};

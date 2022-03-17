@@ -1,4 +1,4 @@
-import { Button, DatePicker, Form, Input, Select, Space } from 'antd';
+import { Button, Form, Input, Select, Space } from 'antd';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PageFormLayout } from '../../../data/common';
@@ -76,6 +76,10 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
             props.defaultData.additional_params ?? []
           )
         ),
+        maintenanceTime: props.defaultData.maintenance_times?.map((item) => ({
+          startTime: item.maintenance_start_time,
+          endTime: item.maintenance_stop_time,
+        })),
       });
       setDatabaseType(props.defaultData.db_type ?? ruleTemplateListDefaultKey);
     }

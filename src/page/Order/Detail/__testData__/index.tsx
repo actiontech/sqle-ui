@@ -123,6 +123,28 @@ export const orderWithExecScheduled = {
   subject: 'testq',
   create_user_name: 'admin',
   create_time: '2021-12-16T20:06:10+08:00',
+  instance_maintenance_times: [
+    {
+      maintenance_start_time: {
+        hour: 23,
+        minute: 0,
+      },
+      maintenance_stop_time: {
+        hour: 23,
+        minute: 30,
+      },
+    },
+    {
+      maintenance_start_time: {
+        hour: 0,
+        minute: 0,
+      },
+      maintenance_stop_time: {
+        hour: 2,
+        minute: 0,
+      },
+    },
+  ],
   record: {
     task_id: 16,
     current_step_number: 2,
@@ -152,6 +174,28 @@ export const orderWithExecuting = {
   subject: 'testq',
   create_user_name: 'admin',
   create_time: '2021-12-16T20:06:10+08:00',
+  instance_maintenance_times: [
+    {
+      maintenance_start_time: {
+        hour: 23,
+        minute: 0,
+      },
+      maintenance_stop_time: {
+        hour: 23,
+        minute: 30,
+      },
+    },
+    {
+      maintenance_start_time: {
+        hour: 0,
+        minute: 0,
+      },
+      maintenance_stop_time: {
+        hour: 2,
+        minute: 0,
+      },
+    },
+  ],
   record: {
     task_id: 36,
     current_step_number: 2,
@@ -321,6 +365,28 @@ export const orderWithExecScheduled3 = {
   subject: 'execScheduled',
   create_user_name: 'admin',
   create_time: '2021-12-16T19:10:02+08:00',
+  instance_maintenance_times: [
+    {
+      maintenance_start_time: {
+        hour: 23,
+        minute: 0,
+      },
+      maintenance_stop_time: {
+        hour: 23,
+        minute: 30,
+      },
+    },
+    {
+      maintenance_start_time: {
+        hour: 0,
+        minute: 0,
+      },
+      maintenance_stop_time: {
+        hour: 2,
+        minute: 0,
+      },
+    },
+  ],
   record: {
     task_id: 22,
     current_step_number: 3,
@@ -395,6 +461,7 @@ export const execScheduleSubmit3 = {
   subject: 'testtt',
   create_user_name: 'admin',
   create_time: '2021-12-16T20:29:40+08:00',
+
   record: {
     task_id: 24,
     current_step_number: 3,

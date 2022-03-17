@@ -493,6 +493,59 @@ exports[`AddDataSource should render data source form 1`] = `
           >
             <label
               class=""
+              for="maintenanceTime"
+              title="dataSource.dataSourceForm.maintenanceTime"
+            >
+              dataSource.dataSourceForm.maintenanceTime
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center full-width-element"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      class="ant-typography ant-typography-secondary"
+                    >
+                      common.maintenanceTimePicker.placeholder
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <button
+                      class="ant-btn"
+                      type="button"
+                    >
+                      <span>
+                        common.add
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
               for="role"
               title="dataSource.dataSourceForm.role"
             >

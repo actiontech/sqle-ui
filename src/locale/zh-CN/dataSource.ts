@@ -12,6 +12,7 @@ export default {
     role: '角色',
     ruleTemplate: '模版',
     workflow: '工作流',
+    maintenanceTime: '运维时间',
   },
 
   addDatabase: '添加数据源',

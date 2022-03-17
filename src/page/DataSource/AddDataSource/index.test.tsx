@@ -136,6 +136,29 @@ describe('AddDataSource', () => {
     expect(workflowOption).toHaveClass('ant-select-item-option-content');
     fireEvent.click(workflowOption);
 
+    fireEvent.click(screen.getByText('common.add'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    fireEvent.click(getBySelector('.ant-picker-range'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    fireEvent.click(screen.getAllByText('23')[0]);
+    fireEvent.click(screen.getAllByText('00')[1]);
+    fireEvent.click(screen.getByText('Ok'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    fireEvent.click(screen.getAllByText('02')[0]);
+    fireEvent.click(screen.getAllByText('00')[1]);
+    fireEvent.click(screen.getByText('Ok'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    fireEvent.click(screen.getByText('common.ok'));
+
     await waitFor(() => {
       fireEvent.click(screen.getByText('common.submit'));
     });
@@ -166,6 +189,18 @@ describe('AddDataSource', () => {
       role_name_list: ['role_name1'],
       rule_template_name_list: ['rule_template_name1'],
       workflow_template_name: 'workflow-template-name-1',
+      maintenance_times: [
+        {
+          maintenance_end_time: {
+            hour: 23,
+            minute: 0,
+          },
+          maintenance_start_time: {
+            hour: 2,
+            minute: 0,
+          },
+        },
+      ],
     });
 
     await waitFor(() => {

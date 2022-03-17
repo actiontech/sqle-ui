@@ -1,9 +1,10 @@
 import { DownOutlined } from '@ant-design/icons';
-import { Button, Divider, Dropdown, Menu, Popconfirm } from 'antd';
+import { Button, Divider, Dropdown, Menu, Popconfirm, Tag } from 'antd';
 import { Link } from 'react-router-dom';
 import { IInstanceResV1 } from '../../../api/common';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
+import { timeAddZero } from '../../../utils/Common';
 
 export const dataSourceColumns = (
   deleteDatabase: (instanceName: string) => void,
@@ -37,6 +38,20 @@ export const dataSourceColumns = (
       title: () => i18n.t('dataSource.databaseList.ruleTemplate'),
       render(value: IInstanceResV1['rule_template_name_list']) {
         return value?.join(',');
+      },
+    },
+    {
+      dataIndex: 'maintenance_times',
+      title: () => i18n.t('dataSource.databaseList.maintenanceTime'),
+      render(value: IInstanceResV1['maintenance_times']) {
+        return value?.map((t, i) => (
+          <Tag key={i}>
+            {timeAddZero(t.maintenance_start_time?.hour ?? 0)}:
+            {timeAddZero(t.maintenance_start_time?.minute ?? 0)} -
+            {timeAddZero(t.maintenance_stop_time?.hour ?? 0)}:
+            {timeAddZero(t.maintenance_stop_time?.minute ?? 0)}
+          </Tag>
+        ));
       },
     },
     {

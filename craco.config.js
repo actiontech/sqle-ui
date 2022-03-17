@@ -57,6 +57,10 @@ module.exports = {
         '!src/reportWebVitals.ts',
         '!src/index.tsx',
         '!src/router/config.tsx',
+        '!src/components/BackendForm/index.ts',
+        '!src/components/EditText/index.ts',
+        '!src/hooks/useOperation/index.tsx',
+        '!src/page/AuditPlan/PlanForm/AuditTaskType/index.tsx',
       ],
       moduleNameMapper: {
         'react-monaco-editor': '<rootDir>/src/testUtils/mockEditor.jsx',

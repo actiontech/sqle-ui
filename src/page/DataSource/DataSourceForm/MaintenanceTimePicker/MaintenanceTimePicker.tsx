@@ -73,7 +73,7 @@ const MaintenanceTimePicker: React.FC<MaintenanceTimePickerProps> = (props) => {
         }
       >
         {value.map((v, index) => (
-          <Tag closable onClose={() => deleteTime(index)}>
+          <Tag closable onClose={() => deleteTime(index)} key={index}>
             {addZero(v.startTime.hour)}:{addZero(v.startTime.minute)} -
             {addZero(v.endTime.hour)}:{addZero(v.endTime.minute)}
           </Tag>

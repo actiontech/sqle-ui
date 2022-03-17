@@ -15,6 +15,7 @@ import { useParams } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { mockDriver } from '../../../testUtils/mockRequest';
 import { dataSourceMetas } from '../__testData__';
+import { getBySelector } from '../../../testUtils/customQuery';
 
 jest.mock('react-router', () => {
   return {
@@ -71,6 +72,28 @@ describe('UpdateDataSource', () => {
         db_type: 'mysql',
         desc: '',
         workflow_template_name: 'workflow-template-name-1',
+        maintenance_times: [
+          {
+            maintenance_start_time: {
+              hour: 23,
+              minute: 0,
+            },
+            maintenance_stop_time: {
+              hour: 23,
+              minute: 30,
+            },
+          },
+          {
+            maintenance_start_time: {
+              hour: 0,
+              minute: 0,
+            },
+            maintenance_stop_time: {
+              hour: 2,
+              minute: 0,
+            },
+          },
+        ],
       })
     );
     return spy;
@@ -158,6 +181,29 @@ describe('UpdateDataSource', () => {
     );
     fireEvent.click(screen.getAllByText('workflow-template-name-1')[2]);
 
+    fireEvent.click(screen.getByText('common.add'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    fireEvent.click(getBySelector('.ant-picker-range'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    fireEvent.click(screen.getAllByText('04')[0]);
+    fireEvent.click(screen.getAllByText('00')[1]);
+    fireEvent.click(screen.getByText('Ok'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    fireEvent.click(screen.getAllByText('05')[0]);
+    fireEvent.click(screen.getAllByText('00')[1]);
+    fireEvent.click(screen.getByText('Ok'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    fireEvent.click(screen.getByText('common.ok'));
+
     await waitFor(() => {
       fireEvent.click(screen.getByText('common.submit'));
     });
@@ -188,6 +234,38 @@ describe('UpdateDataSource', () => {
       role_name_list: ['role_name1'],
       rule_template_name_list: ['rule_template_name1'],
       workflow_template_name: 'workflow-template-name-1',
+      maintenance_times: [
+        {
+          maintenance_start_time: {
+            hour: 23,
+            minute: 0,
+          },
+          maintenance_stop_time: {
+            hour: 23,
+            minute: 30,
+          },
+        },
+        {
+          maintenance_start_time: {
+            hour: 0,
+            minute: 0,
+          },
+          maintenance_stop_time: {
+            hour: 2,
+            minute: 0,
+          },
+        },
+        {
+          maintenance_start_time: {
+            hour: 4,
+            minute: 0,
+          },
+          maintenance_stop_time: {
+            hour: 5,
+            minute: 0,
+          },
+        },
+      ],
     });
 
     await waitFor(() => {
