@@ -8,7 +8,11 @@ import {
   IGetSMTPConfigurationResV1,
   IUpdateSMTPConfigurationReqV1,
   IGetSystemVariablesResV1,
-  IUpdateSystemVariablesReqV1
+  IUpdateSystemVariablesReqV1,
+  IGetWeChatConfigurationResV1,
+  IUpdateWeChatConfigurationReqV1,
+  ITestWeChatConfigurationReqV1,
+  ITestWeChatConfigurationResV1
 } from '../common.d';
 
 export interface IGetDriversV1Return extends IGetDriversResV1 {}
@@ -49,3 +53,17 @@ export interface IUpdateSystemVariablesV1Params
   extends IUpdateSystemVariablesReqV1 {}
 
 export interface IUpdateSystemVariablesV1Return extends IBaseRes {}
+
+export interface IGetWeChatConfigurationV1Return
+  extends IGetWeChatConfigurationResV1 {}
+
+export interface IUpdateWeChatConfigurationV1Params
+  extends IUpdateWeChatConfigurationReqV1 {}
+
+export interface IUpdateWeChatConfigurationV1Return extends IBaseRes {}
+
+export interface ITestWeChatConfigurationV1Params
+  extends ITestWeChatConfigurationReqV1 {}
+
+export interface ITestWeChatConfigurationV1Return
+  extends ITestWeChatConfigurationResV1 {}

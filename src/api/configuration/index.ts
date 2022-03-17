@@ -21,7 +21,12 @@ import {
   IUpdateSMTPConfigurationV1Return,
   IGetSystemVariablesV1Return,
   IUpdateSystemVariablesV1Params,
-  IUpdateSystemVariablesV1Return
+  IUpdateSystemVariablesV1Return,
+  IGetWeChatConfigurationV1Return,
+  IUpdateWeChatConfigurationV1Params,
+  IUpdateWeChatConfigurationV1Return,
+  ITestWeChatConfigurationV1Params,
+  ITestWeChatConfigurationV1Return
 } from './index.d';
 
 class ConfigurationService extends ServiceBase {
@@ -150,6 +155,38 @@ class ConfigurationService extends ServiceBase {
     const paramsData = this.cloneDeep(params);
     return this.patch<IUpdateSystemVariablesV1Return>(
       '/v1/configurations/system_variables',
+      paramsData,
+      options
+    );
+  }
+
+  public getWeChatConfigurationV1(options?: AxiosRequestConfig) {
+    return this.get<IGetWeChatConfigurationV1Return>(
+      '/v1/configurations/wechat',
+      undefined,
+      options
+    );
+  }
+
+  public updateWeChatConfigurationV1(
+    params: IUpdateWeChatConfigurationV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.patch<IUpdateWeChatConfigurationV1Return>(
+      '/v1/configurations/wechat',
+      paramsData,
+      options
+    );
+  }
+
+  public testWeChatConfigurationV1(
+    params: ITestWeChatConfigurationV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.post<ITestWeChatConfigurationV1Return>(
+      '/v1/configurations/wechat/test',
       paramsData,
       options
     );

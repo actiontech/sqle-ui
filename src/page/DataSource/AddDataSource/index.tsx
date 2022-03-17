@@ -38,6 +38,7 @@ const AddDataSource = () => {
         additional_params: turnCommonToDataSourceParams(
           values.asyncParams ?? []
         ),
+        maintenance_times: []
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {

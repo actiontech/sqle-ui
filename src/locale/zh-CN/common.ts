@@ -35,6 +35,8 @@ export default {
   showDetail: '查看详情',
   showMore: '查看更多',
 
+  add: '添加',
+
   in: '在',
   on: '的',
   and: '且',
@@ -101,5 +103,11 @@ export default {
       limit:
         '您的表达式中包含不合法的数值范围， minute(0-59), hour(0-23), day(1,31), month(1-12), week(0-6)',
     },
+  },
+
+  maintenanceTimePicker: {
+    placeholder: '请选择时间段',
+
+    range: '时间段',
   },
 };

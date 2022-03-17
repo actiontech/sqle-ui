@@ -1,4 +1,4 @@
-import { Button, Form, Input, Select, Space } from 'antd';
+import { Button, DatePicker, Form, Input, Select, Space } from 'antd';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PageFormLayout } from '../../../data/common';
@@ -17,6 +17,7 @@ import { FormItem } from '../../../components/BackendForm';
 import EventEmitter from '../../../utils/EventEmitter';
 import EmitterKey from '../../../data/EmitterKey';
 import { turnDataSourceAsyncFormToCommon } from '../tool';
+import MaintenanceTimePicker from './MaintenanceTimePicker';
 
 const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
   const { t } = useTranslation();
@@ -168,6 +169,12 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
         currentAsyncParams={params}
         databaseTypeChange={databaseTypeChange}
       />
+      <Form.Item
+        name="maintenanceTime"
+        label={t('dataSource.dataSourceForm.maintenanceTime')}
+      >
+        <MaintenanceTimePicker />
+      </Form.Item>
       <Form.Item label={t('dataSource.dataSourceForm.role')} name="role">
         <Select
           mode="multiple"
