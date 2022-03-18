@@ -89,12 +89,14 @@ const PlanAuditRecord: React.FC<{ auditPlanName: string }> = (props) => {
                 <EmptyBox
                   if={!!item.audit_level}
                   defaultNode={
-                    <CheckCircleOutlined
-                      className="text-green"
-                      style={{
-                        fontSize: 25,
-                      }}
-                    />
+                    <Space className="flex-all-center" style={{ width: 50 }}>
+                      <CheckCircleOutlined
+                        className="text-green"
+                        style={{
+                          fontSize: 25,
+                        }}
+                      />
+                    </Space>
                   }
                 >
                   <RuleLevelIcon ruleLevel={item.audit_level} />
