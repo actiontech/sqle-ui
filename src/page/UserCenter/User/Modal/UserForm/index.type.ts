@@ -20,4 +20,5 @@ export interface IUserFormProps {
   roleNameList: IRoleTipResV1[];
   userGroupList: IUserGroupTipListItem[];
   isUpdate?: boolean;
+  isAdmin?: boolean;
 }

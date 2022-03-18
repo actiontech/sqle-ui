@@ -43,17 +43,19 @@ const UpdateUser = () => {
     );
   }, [dispatch, form]);
 
-  const updateUser = React.useCallback(async () => {
+  const updateUser = async () => {
     const values = await form.validateFields();
     const params: IUpdateUserV1Params = {
       user_name: values.username,
       role_name_list: values.roleNameList,
-      is_disabled: !!values.disabled,
       user_group_name_list: values.userGroupList,
       wechat_id: values.wechat,
     };
     if (!!values.email) {
       params.email = values.email;
+    }
+    if (values.username !== 'admin') {
+      params.is_disabled = !!values.disabled;
     }
     setTrue();
     user
@@ -70,7 +72,7 @@ const UpdateUser = () => {
       .finally(() => {
         setFalse();
       });
-  }, [close, form, setFalse, setTrue, t]);
+  };
 
   React.useEffect(() => {
     if (visible) {
@@ -109,6 +111,7 @@ const UpdateUser = () => {
         roleNameList={roleList}
         isUpdate={true}
         userGroupList={userGroupList}
+        isAdmin={currentUser?.user_name === 'admin'}
       />
     </Modal>
   );

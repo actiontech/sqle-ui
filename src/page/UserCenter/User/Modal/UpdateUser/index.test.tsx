@@ -171,4 +171,42 @@ describe('User/Modal/AddUser', () => {
       user_group_name_list: [],
     });
   });
+
+  test('should not set disable filed when user name is admin', async () => {
+    userRoleSpy.mockClear();
+    mockUseSelector({
+      userManage: {
+        modalStatus: { [ModalName.Update_User]: true },
+        selectUser: {
+          user_name: 'admin',
+          email: 'user@123.com',
+          role_name_list: ['role_name1'],
+        },
+      },
+    });
+    render(<UpdateUser />);
+    expect(userRoleSpy).toBeCalledTimes(1);
+
+    const updateUserSpy = jest.spyOn(user, 'updateUserV1');
+    updateUserSpy.mockImplementation(() => resolveThreeSecond({}));
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(
+      screen.queryByLabelText('user.userForm.disabled')
+    ).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('common.submit'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(userRoleSpy).toBeCalledTimes(1);
+    expect(updateUserSpy).toBeCalledWith({
+      email: 'user@123.com',
+      user_name: 'admin',
+      role_name_list: ['role_name1'],
+      user_group_name_list: [],
+    });
+  });
 });
