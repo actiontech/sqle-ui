@@ -36,6 +36,7 @@ describe('User/Modal/AddUser', () => {
           email: 'user@123.com',
           role_name_list: ['role_name1'],
           user_group_name_list: ['user_group_name1'],
+          wechat_id: '11231123',
         },
       },
     });
@@ -105,6 +106,7 @@ describe('User/Modal/AddUser', () => {
       is_disabled: true,
       role_name_list: ['role_name1'],
       user_group_name_list: ['user_group_name1'],
+      wechat_id: '11231123',
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);

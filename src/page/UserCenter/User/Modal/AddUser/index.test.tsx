@@ -81,6 +81,10 @@ describe('User/Modal/AddUser', () => {
       target: { value: 'user@163.com' },
     });
 
+    fireEvent.input(screen.getByLabelText('user.userForm.wechat'), {
+      target: { value: '123asdf' },
+    });
+
     fireEvent.mouseDown(screen.getByLabelText('user.userForm.role'));
     const roleOption = screen.getAllByText('role_name1')[1];
     expect(roleOption).toHaveClass('ant-select-item-option-content');
@@ -108,6 +112,7 @@ describe('User/Modal/AddUser', () => {
       user_password: '123456',
       role_name_list: ['role_name1'],
       user_group_name_list: ['user_group_name1'],
+      wechat_id: '123asdf',
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);

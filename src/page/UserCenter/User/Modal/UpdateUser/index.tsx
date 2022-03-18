@@ -50,6 +50,7 @@ const UpdateUser = () => {
       role_name_list: values.roleNameList,
       is_disabled: !!values.disabled,
       user_group_name_list: values.userGroupList,
+      wechat_id: values.wechat,
     };
     if (!!values.email) {
       params.email = values.email;
@@ -80,6 +81,7 @@ const UpdateUser = () => {
         email: currentUser?.email,
         roleNameList: currentUser?.role_name_list ?? [],
         userGroupList: currentUser?.user_group_name_list ?? [],
+        wechat: currentUser?.wechat_id,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

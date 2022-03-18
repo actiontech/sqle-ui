@@ -103,6 +103,13 @@ const UserForm: React.FC<IUserFormProps> = (props) => {
           })}
         />
       </Form.Item>
+      <Form.Item name="wechat" label={t('user.userForm.wechat')}>
+        <Input
+          placeholder={t('common.form.placeholder.input', {
+            name: t('user.userForm.wechat'),
+          })}
+        />
+      </Form.Item>
       <Form.Item name="roleNameList" label={t('user.userForm.role')}>
         <Select
           mode="multiple"

@@ -10,10 +10,8 @@ import useInputChange from './hooks/useInputChange';
 const UserEmail: React.FC<UserEmailProps> = (props) => {
   const { t } = useTranslation();
   const inputRef = useRef<Input | null>(null);
-  const [
-    editEmail,
-    { setTrue: startEditEmail, setFalse: closeEditEmail },
-  ] = useBoolean(false);
+  const [editEmail, { setTrue: startEditEmail, setFalse: closeEditEmail }] =
+    useBoolean(false);
 
   const [inputValue, setInputValue] = React.useState(props.userInfo?.email);
 
