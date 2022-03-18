@@ -80,6 +80,8 @@ export default {
 
     maintenanceTime:
       '定时上线的时间点必须在运维时间之内，当前数据源的运维时间为',
+    sqlExecuteDisableTips:
+      '只能在运维时间之内执行立即上线,当前数据源的运维时间为',
 
     approveSuccessTips: '审批通过',
     rejectSuccessTips: '驳回成功',

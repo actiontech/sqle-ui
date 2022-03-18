@@ -348,6 +348,9 @@ describe('Order/Detail/OrderSteps', () => {
       />
     );
 
+    expect(
+      screen.getByText('order.operator.sqlExecute').parentNode
+    ).toBeDisabled();
     fireEvent.click(screen.getByText('order.operator.onlineRegularly'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
