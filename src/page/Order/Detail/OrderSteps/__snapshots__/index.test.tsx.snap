@@ -189,6 +189,7 @@ exports[`Order/Detail/OrderSteps only can select maintenance time when user want
                     >
                       <button
                         class="ant-btn ant-btn-primary"
+                        disabled=""
                         type="button"
                       >
                         <span>
@@ -214,6 +215,36 @@ exports[`Order/Detail/OrderSteps only can select maintenance time when user want
                     </span>
                   </button>
                 </div>
+              </div>
+              <div>
+                order.operator.sqlExecuteDisableTips
+                :
+                <span
+                  class="ant-tag"
+                >
+                  23
+                  :
+                   
+                  00
+                  -
+                  23
+                  :
+                   
+                  30
+                </span>
+                <span
+                  class="ant-tag"
+                >
+                  00
+                  :
+                   
+                  00
+                  -
+                  02
+                  :
+                   
+                  00
+                </span>
               </div>
             </div>
           </div>

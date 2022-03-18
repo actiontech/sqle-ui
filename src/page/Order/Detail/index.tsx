@@ -273,29 +273,7 @@ const Order = () => {
                 scheduledUser={orderInfo?.record?.schedule_user}
                 execStartTime={taskInfo?.exec_start_time}
                 execEndTime={taskInfo?.exec_end_time}
-                // maintenanceTime={orderInfo?.instance_maintenance_times}
-                maintenanceTime={[
-                  {
-                    maintenance_start_time: {
-                      hour: 23,
-                      minute: 0,
-                    },
-                    maintenance_stop_time: {
-                      hour: 23,
-                      minute: 30,
-                    },
-                  },
-                  {
-                    maintenance_start_time: {
-                      hour: 0,
-                      minute: 0,
-                    },
-                    maintenance_stop_time: {
-                      hour: 2,
-                      minute: 0,
-                    },
-                  },
-                ]}
+                maintenanceTime={orderInfo?.instance_maintenance_times}
                 pass={pass}
                 executing={executing}
                 reject={reject}

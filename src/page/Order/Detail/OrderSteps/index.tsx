@@ -218,6 +218,42 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     return moment(`${timeAddZero(hour)}:${timeAddZero(minute)}:00`, 'HH:mm:ss');
   };
 
+  const checkTimeInMaintenanceTime = (time: moment.Moment) => {
+    const hour = time.hour();
+    const minute = time.minute();
+
+    const maintenanceTime = props.maintenanceTime ?? [];
+    if (maintenanceTime.length === 0) {
+      return true;
+    }
+
+    for (const time of maintenanceTime) {
+      const startHour = time.maintenance_start_time?.hour ?? 0;
+      const startMinute = time.maintenance_start_time?.minute ?? 0;
+      const endHour = time.maintenance_stop_time?.hour ?? 0;
+      const endMinute = time.maintenance_stop_time?.minute ?? 0;
+      if (startHour === endHour && startHour === hour) {
+        if (minute >= startMinute && minute <= endMinute) {
+          return true;
+        }
+      }
+      if (hour === startHour) {
+        if (minute >= startMinute) {
+          return true;
+        }
+      }
+      if (hour === endHour) {
+        if (minute <= endMinute) {
+          return true;
+        }
+      }
+      if (hour > startHour && hour < endHour) {
+        return true;
+      }
+    }
+    return false;
+  };
+
   const getOperatorTimeElement = (
     execStartTime?: string,
     execEndTime?: string,
@@ -251,82 +287,105 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
       <Timeline>
         {props.stepList.map((step) => {
           let operator: JSX.Element | string = (
-            <Space>
-              <EmptyBox
-                if={
-                  props.currentOrderStatus ===
-                    WorkflowRecordResV1StatusEnum.on_process &&
-                  step.type === WorkflowStepResV1TypeEnum.sql_review
-                }
-              >
-                <Button
-                  type="primary"
-                  onClick={pass.bind(null, step.workflow_step_id ?? 0)}
-                  loading={passLoading}
+            <>
+              <Space>
+                <EmptyBox
+                  if={
+                    props.currentOrderStatus ===
+                      WorkflowRecordResV1StatusEnum.on_process &&
+                    step.type === WorkflowStepResV1TypeEnum.sql_review
+                  }
                 >
-                  {t('order.operator.sqlReview')}
-                </Button>
-              </EmptyBox>
+                  <Button
+                    type="primary"
+                    onClick={pass.bind(null, step.workflow_step_id ?? 0)}
+                    loading={passLoading}
+                  >
+                    {t('order.operator.sqlReview')}
+                  </Button>
+                </EmptyBox>
+                <EmptyBox
+                  if={
+                    props.currentOrderStatus ===
+                      WorkflowRecordResV1StatusEnum.on_process &&
+                    step.type === WorkflowStepResV1TypeEnum.sql_execute
+                  }
+                >
+                  <Space>
+                    <Button type="primary" onClick={openScheduleModal}>
+                      {t('order.operator.onlineRegularly')}
+                    </Button>
+                    <Button
+                      type="primary"
+                      onClick={executing}
+                      loading={executingLoading}
+                      disabled={!checkTimeInMaintenanceTime(moment())}
+                    >
+                      {t('order.operator.sqlExecute')}
+                    </Button>
+                  </Space>
+                </EmptyBox>
+                <EmptyBox
+                  if={
+                    props.currentOrderStatus ===
+                    WorkflowRecordResV1StatusEnum.exec_scheduled
+                  }
+                >
+                  <div>
+                    {t('order.operator.scheduleExec', {
+                      username: props.scheduledUser,
+                      time: formatTime(props.scheduleTime),
+                    })}
+                  </div>
+                  <Popconfirm
+                    title={t('order.operator.cancelExecScheduledTip')}
+                    onConfirm={cancelExecScheduled}
+                  >
+                    <Button type="primary">
+                      {t('order.operator.cancelExecScheduled')}
+                    </Button>
+                  </Popconfirm>
+                </EmptyBox>
+                <EmptyBox
+                  if={
+                    !(
+                      props.currentOrderStatus ===
+                      WorkflowRecordResV1StatusEnum.exec_scheduled
+                    )
+                  }
+                >
+                  <Button
+                    onClick={handleClickRejectButton.bind(
+                      null,
+                      step.workflow_step_id ?? 0
+                    )}
+                    danger
+                  >
+                    {t('order.operator.reject')}
+                  </Button>
+                </EmptyBox>
+              </Space>
               <EmptyBox
                 if={
+                  !checkTimeInMaintenanceTime(moment()) &&
                   props.currentOrderStatus ===
                     WorkflowRecordResV1StatusEnum.on_process &&
                   step.type === WorkflowStepResV1TypeEnum.sql_execute
                 }
               >
-                <Space>
-                  <Button type="primary" onClick={openScheduleModal}>
-                    {t('order.operator.onlineRegularly')}
-                  </Button>
-                  <Button
-                    type="primary"
-                    onClick={executing}
-                    loading={executingLoading}
-                  >
-                    {t('order.operator.sqlExecute')}
-                  </Button>
-                </Space>
-              </EmptyBox>
-              <EmptyBox
-                if={
-                  props.currentOrderStatus ===
-                  WorkflowRecordResV1StatusEnum.exec_scheduled
-                }
-              >
                 <div>
-                  {t('order.operator.scheduleExec', {
-                    username: props.scheduledUser,
-                    time: formatTime(props.scheduleTime),
-                  })}
+                  {t('order.operator.sqlExecuteDisableTips')}:
+                  {props.maintenanceTime?.map((time, i) => (
+                    <Tag key={i}>
+                      {timeAddZero(time.maintenance_start_time?.hour ?? 0)}:{' '}
+                      {timeAddZero(time.maintenance_start_time?.minute ?? 0)}-
+                      {timeAddZero(time.maintenance_stop_time?.hour ?? 0)}:{' '}
+                      {timeAddZero(time.maintenance_stop_time?.minute ?? 0)}
+                    </Tag>
+                  ))}
                 </div>
-                <Popconfirm
-                  title={t('order.operator.cancelExecScheduledTip')}
-                  onConfirm={cancelExecScheduled}
-                >
-                  <Button type="primary">
-                    {t('order.operator.cancelExecScheduled')}
-                  </Button>
-                </Popconfirm>
               </EmptyBox>
-              <EmptyBox
-                if={
-                  !(
-                    props.currentOrderStatus ===
-                    WorkflowRecordResV1StatusEnum.exec_scheduled
-                  )
-                }
-              >
-                <Button
-                  onClick={handleClickRejectButton.bind(
-                    null,
-                    step.workflow_step_id ?? 0
-                  )}
-                  danger
-                >
-                  {t('order.operator.reject')}
-                </Button>
-              </EmptyBox>
-            </Space>
+            </>
           );
           const modifySqlNode = (
             <EmptyBox
@@ -539,42 +598,14 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
               },
               {
                 validator(_, rule: moment.Moment) {
-                  const hour = rule.hour();
-                  const minute = rule.minute();
-                  const maintenanceTime = props.maintenanceTime ?? [];
                   if (rule.isBefore(moment())) {
                     return Promise.reject(
                       t('order.operator.execScheduledBeforeNow')
                     );
                   }
 
-                  if (maintenanceTime.length === 0) {
+                  if (checkTimeInMaintenanceTime(rule)) {
                     return Promise.resolve();
-                  }
-                  for (const time of maintenanceTime) {
-                    const startHour = time.maintenance_start_time?.hour ?? 0;
-                    const startMinute =
-                      time.maintenance_start_time?.minute ?? 0;
-                    const endHour = time.maintenance_stop_time?.hour ?? 0;
-                    const endMinute = time.maintenance_stop_time?.minute ?? 0;
-                    if (startHour === endHour && startHour === hour) {
-                      if (minute >= startMinute && minute <= endMinute) {
-                        return Promise.resolve();
-                      }
-                    }
-                    if (hour === startHour) {
-                      if (minute >= startMinute) {
-                        return Promise.resolve();
-                      }
-                    }
-                    if (hour === endHour) {
-                      if (minute <= endMinute) {
-                        return Promise.resolve();
-                      }
-                    }
-                    if (hour > startHour && hour < endHour) {
-                      return Promise.resolve();
-                    }
                   }
                   return Promise.reject(
                     t('order.operator.execScheduledErrorMessage')
