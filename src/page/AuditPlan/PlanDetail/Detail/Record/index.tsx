@@ -1,10 +1,11 @@
-import { SyncOutlined } from '@ant-design/icons';
+import { CheckCircleOutlined, SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Button, Card, List, Space, Typography } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import audit_plan from '../../../../../api/audit_plan';
+import EmptyBox from '../../../../../components/EmptyBox';
 import RuleLevelIcon from '../../../../../components/RuleList/RuleLevelIcon';
 import EmitterKey from '../../../../../data/EmitterKey';
 import { formatTime } from '../../../../../utils/Common';
@@ -84,7 +85,21 @@ const PlanAuditRecord: React.FC<{ auditPlanName: string }> = (props) => {
         renderItem={(item) => (
           <List.Item>
             <List.Item.Meta
-              avatar={<RuleLevelIcon ruleLevel={item.audit_level} />}
+              avatar={
+                <EmptyBox
+                  if={!!item.audit_level}
+                  defaultNode={
+                    <CheckCircleOutlined
+                      className="text-green"
+                      style={{
+                        fontSize: 25,
+                      }}
+                    />
+                  }
+                >
+                  <RuleLevelIcon ruleLevel={item.audit_level} />
+                </EmptyBox>
+              }
               title={
                 <Link
                   to={`/auditPlan/detail/${props.auditPlanName}/report/${item.audit_plan_report_id}`}
@@ -100,11 +115,13 @@ const PlanAuditRecord: React.FC<{ auditPlanName: string }> = (props) => {
               description={
                 <Space>
                   <Typography.Text type="secondary">
-                    {t('audit.source')} {item.score}
+                    {t('audit.source')} {item.score ?? '--'}
                   </Typography.Text>
                   <Typography.Text type="secondary">
                     {t('audit.passRage')}
-                    {(item.pass_rate ?? 0) * 100}%
+                    <EmptyBox if={!!item.pass_rate} defaultNode="--">
+                      {(item.pass_rate ?? 0) * 100}%
+                    </EmptyBox>
                   </Typography.Text>
                 </Space>
               }
