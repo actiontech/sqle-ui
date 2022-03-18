@@ -4,6 +4,7 @@ import { useForm } from 'antd/lib/form/Form';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { IMaintenanceTimeReqV1 } from '../../../api/common';
 import instance from '../../../api/instance';
 import BackButton from '../../../components/BackButton';
 import { ResponseCode } from '../../../data/common';
@@ -41,7 +42,7 @@ const AddDataSource = () => {
         maintenance_times:
           values.maintenanceTime?.map((t) => ({
             maintenance_start_time: t.startTime,
-            maintenance_end_time: t.endTime,
+            maintenance_stop_time: t.endTime,
           })) ?? [],
       })
       .then((res) => {
