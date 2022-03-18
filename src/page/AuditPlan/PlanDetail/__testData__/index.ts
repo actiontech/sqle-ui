@@ -1,7 +1,6 @@
 export const AuditPlanReportList = [
   {
     audit_plan_report_id: '177',
-    audit_level: 'normal',
     score: 100,
     pass_rate: 1,
     audit_plan_report_timestamp: '2022-03-10T15:00:00+08:00',
@@ -9,7 +8,6 @@ export const AuditPlanReportList = [
   {
     audit_plan_report_id: '176',
     audit_level: 'normal',
-    score: 100,
     pass_rate: 1,
     audit_plan_report_timestamp: '2022-03-10T14:00:00+08:00',
   },
@@ -17,14 +15,10 @@ export const AuditPlanReportList = [
     audit_plan_report_id: '175',
     audit_level: 'normal',
     score: 100,
-    pass_rate: 1,
     audit_plan_report_timestamp: '2022-03-10T13:46:00+08:00',
   },
   {
     audit_plan_report_id: '174',
-    audit_level: 'normal',
-    score: 100,
-    pass_rate: 1,
     audit_plan_report_timestamp: '2022-03-10T13:45:00+08:00',
   },
   {

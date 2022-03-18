@@ -352,46 +352,29 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
                   <div
                     class="ant-list-item-meta-avatar"
                   >
-                    <div
-                      class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                    <span
+                      aria-label="check-circle"
+                      class="anticon anticon-check-circle text-green"
+                      role="img"
+                      style="font-size: 25px;"
                     >
-                      <div
-                        class="ant-space-item"
-                        style="margin-bottom: 1px;"
+                      <svg
+                        aria-hidden="true"
+                        data-icon="check-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
                       >
-                        <div>
-                          <span
-                            aria-label="audit"
-                            class="anticon anticon-audit"
-                            role="img"
-                            style="font-size: 25px;"
-                          >
-                            <svg
-                              aria-hidden="true"
-                              data-icon="audit"
-                              fill="currentColor"
-                              focusable="false"
-                              height="1em"
-                              viewBox="64 64 896 896"
-                              width="1em"
-                            >
-                              <path
-                                d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
-                              />
-                            </svg>
-                          </span>
-                        </div>
-                      </div>
-                      <div
-                        class="ant-space-item"
-                      >
-                        <span
-                          class="ant-typography ant-typography-secondary"
-                        >
-                          normal
-                        </span>
-                      </div>
-                    </div>
+                        <path
+                          d="M699 353h-46.9c-10.2 0-19.9 4.9-25.9 13.3L469 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H325c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8a31.8 31.8 0 0051.7 0l210.6-292c3.9-5.3.1-12.7-6.4-12.7z"
+                        />
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                      </svg>
+                    </span>
                   </div>
                   <div
                     class="ant-list-item-meta-content"
@@ -524,7 +507,7 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
                           >
                             audit.source
                              
-                            100
+                            --
                           </span>
                         </div>
                         <div
@@ -634,8 +617,7 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
                             class="ant-typography ant-typography-secondary"
                           >
                             audit.passRage
-                            100
-                            %
+                            --
                           </span>
                         </div>
                       </div>
@@ -652,46 +634,29 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
                   <div
                     class="ant-list-item-meta-avatar"
                   >
-                    <div
-                      class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                    <span
+                      aria-label="check-circle"
+                      class="anticon anticon-check-circle text-green"
+                      role="img"
+                      style="font-size: 25px;"
                     >
-                      <div
-                        class="ant-space-item"
-                        style="margin-bottom: 1px;"
+                      <svg
+                        aria-hidden="true"
+                        data-icon="check-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
                       >
-                        <div>
-                          <span
-                            aria-label="audit"
-                            class="anticon anticon-audit"
-                            role="img"
-                            style="font-size: 25px;"
-                          >
-                            <svg
-                              aria-hidden="true"
-                              data-icon="audit"
-                              fill="currentColor"
-                              focusable="false"
-                              height="1em"
-                              viewBox="64 64 896 896"
-                              width="1em"
-                            >
-                              <path
-                                d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
-                              />
-                            </svg>
-                          </span>
-                        </div>
-                      </div>
-                      <div
-                        class="ant-space-item"
-                      >
-                        <span
-                          class="ant-typography ant-typography-secondary"
-                        >
-                          normal
-                        </span>
-                      </div>
-                    </div>
+                        <path
+                          d="M699 353h-46.9c-10.2 0-19.9 4.9-25.9 13.3L469 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H325c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8a31.8 31.8 0 0051.7 0l210.6-292c3.9-5.3.1-12.7-6.4-12.7z"
+                        />
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                      </svg>
+                    </span>
                   </div>
                   <div
                     class="ant-list-item-meta-content"
@@ -724,7 +689,7 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
                           >
                             audit.source
                              
-                            100
+                            --
                           </span>
                         </div>
                         <div
@@ -734,8 +699,7 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
                             class="ant-typography ant-typography-secondary"
                           >
                             audit.passRage
-                            100
-                            %
+                            --
                           </span>
                         </div>
                       </div>
