@@ -191,7 +191,7 @@ describe('AddDataSource', () => {
       workflow_template_name: 'workflow-template-name-1',
       maintenance_times: [
         {
-          maintenance_end_time: {
+          maintenance_stop_time: {
             hour: 23,
             minute: 0,
           },
