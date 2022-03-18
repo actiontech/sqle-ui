@@ -41,7 +41,7 @@ const AddDataSource = () => {
         maintenance_times:
           values.maintenanceTime?.map((t) => ({
             maintenance_start_time: t.startTime,
-            maintenance_end_time: t.endTime,
+            maintenance_stop_time: t.endTime,
           })) ?? [],
       })
       .then((res) => {
