@@ -63,6 +63,7 @@ const DataSource: React.FC<DataSourceProps> = (props) => {
       >
         <Select
           allowClear
+          showSearch
           onChange={handleDataSourceChange}
           placeholder={t('common.form.placeholder.select')}
         >

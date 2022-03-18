@@ -48,6 +48,7 @@ const UserGroupForm: React.FC<UserGroupFormProps> = (props) => {
       >
         <Select
           mode="multiple"
+          showSearch
           placeholder={t('common.form.placeholder.select')}
         >
           {roleList?.map((role) => (
@@ -62,6 +63,7 @@ const UserGroupForm: React.FC<UserGroupFormProps> = (props) => {
         label={t('userGroup.userGroupField.userNameList')}
       >
         <Select
+          showSearch
           mode="multiple"
           placeholder={t('common.form.placeholder.select')}
         >

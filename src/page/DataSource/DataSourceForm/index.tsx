@@ -183,6 +183,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
         <Select
           mode="multiple"
           allowClear
+          showSearch
           placeholder={t('common.form.placeholder.select', {
             name: t('dataSource.dataSourceForm.role'),
           })}
@@ -195,6 +196,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
         name="ruleTemplate"
       >
         <Select
+          showSearch
           allowClear
           placeholder={t('common.form.placeholder.select', {
             name: t('dataSource.dataSourceForm.ruleTemplate'),
@@ -209,6 +211,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
       >
         <Select
           allowClear
+          showSearch
           placeholder={t('common.form.placeholder.select', {
             name: t('dataSource.dataSourceForm.workflow'),
           })}
