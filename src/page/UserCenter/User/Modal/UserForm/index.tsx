@@ -141,7 +141,7 @@ const UserForm: React.FC<IUserFormProps> = (props) => {
           ))}
         </Select>
       </Form.Item>
-      <EmptyBox if={props.isUpdate}>
+      <EmptyBox if={props.isUpdate && !props.isAdmin}>
         <Form.Item
           name="disabled"
           label={t('user.userForm.disabled')}
