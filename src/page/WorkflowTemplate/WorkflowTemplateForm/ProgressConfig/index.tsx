@@ -246,6 +246,7 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
                               onChange={updateUsername.bind(null, index)}
                               className="full-width-element"
                               mode="multiple"
+                              showSearch
                               placeholder={t('common.form.placeholder.select')}
                               data-testid={`review-user-${index}`}
                             >
@@ -342,6 +343,7 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
                             value={execProgressData.assignee_user_name_list}
                             className="full-width-element"
                             mode="multiple"
+                            showSearch
                             placeholder={t('common.form.placeholder.select')}
                             data-testid="exec-user-select"
                           >

@@ -122,6 +122,7 @@ const DatabaseFormItem: React.FC<{
             name: t('dataSource.dataSourceForm.type'),
           })}
           allowClear
+          showSearch
           disabled={props.isUpdate}
           onChange={props.databaseTypeChange}
         >

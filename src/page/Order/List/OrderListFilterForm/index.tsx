@@ -79,6 +79,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
             label={t('order.order.createUser')}
           >
             <Select
+              showSearch
               placeholder={t('common.form.placeholder.searchSelect', {
                 name: t('order.order.createUser'),
               })}
@@ -118,6 +119,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
             label={t('order.order.assignee')}
           >
             <Select
+              showSearch
               placeholder={t('common.form.placeholder.searchSelect', {
                 name: t('order.order.assignee'),
               })}
@@ -132,6 +134,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
             label={t('order.order.instanceName')}
           >
             <Select
+              showSearch
               placeholder={t('common.form.placeholder.searchSelect', {
                 name: t('order.order.instanceName'),
               })}

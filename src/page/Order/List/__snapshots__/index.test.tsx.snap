@@ -142,7 +142,7 @@ exports[`Order/List should can batch close order 1`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <div
-                            class="ant-select ant-select-single ant-select-show-arrow"
+                            class="ant-select ant-select-single ant-select-show-arrow ant-select-show-search"
                           >
                             <div
                               class="ant-select-selector"
@@ -159,11 +159,8 @@ exports[`Order/List should can batch close order 1`] = `
                                   autocomplete="off"
                                   class="ant-select-selection-search-input"
                                   id="filter_create_user_name"
-                                  readonly=""
                                   role="combobox"
-                                  style="opacity: 0;"
                                   type="search"
-                                  unselectable="on"
                                   value=""
                                 />
                               </span>
@@ -416,7 +413,7 @@ exports[`Order/List should can batch close order 1`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <div
-                            class="ant-select ant-select-single ant-select-show-arrow"
+                            class="ant-select ant-select-single ant-select-show-arrow ant-select-show-search"
                           >
                             <div
                               class="ant-select-selector"
@@ -433,11 +430,8 @@ exports[`Order/List should can batch close order 1`] = `
                                   autocomplete="off"
                                   class="ant-select-selection-search-input"
                                   id="filter_current_step_assignee_user_name"
-                                  readonly=""
                                   role="combobox"
-                                  style="opacity: 0;"
                                   type="search"
-                                  unselectable="on"
                                   value=""
                                 />
                               </span>
@@ -508,7 +502,7 @@ exports[`Order/List should can batch close order 1`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <div
-                            class="ant-select ant-select-single ant-select-show-arrow"
+                            class="ant-select ant-select-single ant-select-show-arrow ant-select-show-search"
                           >
                             <div
                               class="ant-select-selector"
@@ -525,11 +519,8 @@ exports[`Order/List should can batch close order 1`] = `
                                   autocomplete="off"
                                   class="ant-select-selection-search-input"
                                   id="filter_task_instance_name"
-                                  readonly=""
                                   role="combobox"
-                                  style="opacity: 0;"
                                   type="search"
-                                  unselectable="on"
                                   value=""
                                 />
                               </span>
@@ -1183,7 +1174,7 @@ exports[`Order/List should can batch close order 2`] = `
                             class="ant-form-item-control-input-content"
                           >
                             <div
-                              class="ant-select ant-select-single ant-select-show-arrow"
+                              class="ant-select ant-select-single ant-select-show-arrow ant-select-show-search"
                             >
                               <div
                                 class="ant-select-selector"
@@ -1200,11 +1191,8 @@ exports[`Order/List should can batch close order 2`] = `
                                     autocomplete="off"
                                     class="ant-select-selection-search-input"
                                     id="filter_create_user_name"
-                                    readonly=""
                                     role="combobox"
-                                    style="opacity: 0;"
                                     type="search"
-                                    unselectable="on"
                                     value=""
                                   />
                                 </span>
@@ -1457,7 +1445,7 @@ exports[`Order/List should can batch close order 2`] = `
                             class="ant-form-item-control-input-content"
                           >
                             <div
-                              class="ant-select ant-select-single ant-select-show-arrow"
+                              class="ant-select ant-select-single ant-select-show-arrow ant-select-show-search"
                             >
                               <div
                                 class="ant-select-selector"
@@ -1474,11 +1462,8 @@ exports[`Order/List should can batch close order 2`] = `
                                     autocomplete="off"
                                     class="ant-select-selection-search-input"
                                     id="filter_current_step_assignee_user_name"
-                                    readonly=""
                                     role="combobox"
-                                    style="opacity: 0;"
                                     type="search"
-                                    unselectable="on"
                                     value=""
                                   />
                                 </span>
@@ -1549,7 +1534,7 @@ exports[`Order/List should can batch close order 2`] = `
                             class="ant-form-item-control-input-content"
                           >
                             <div
-                              class="ant-select ant-select-single ant-select-show-arrow"
+                              class="ant-select ant-select-single ant-select-show-arrow ant-select-show-search"
                             >
                               <div
                                 class="ant-select-selector"
@@ -1566,11 +1551,8 @@ exports[`Order/List should can batch close order 2`] = `
                                     autocomplete="off"
                                     class="ant-select-selection-search-input"
                                     id="filter_task_instance_name"
-                                    readonly=""
                                     role="combobox"
-                                    style="opacity: 0;"
                                     type="search"
-                                    unselectable="on"
                                     value=""
                                   />
                                 </span>
@@ -2224,7 +2206,7 @@ exports[`Order/List should render order list by response data 1`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <div
-                            class="ant-select ant-select-single ant-select-show-arrow"
+                            class="ant-select ant-select-single ant-select-show-arrow ant-select-show-search"
                           >
                             <div
                               class="ant-select-selector"
@@ -2241,11 +2223,8 @@ exports[`Order/List should render order list by response data 1`] = `
                                   autocomplete="off"
                                   class="ant-select-selection-search-input"
                                   id="filter_create_user_name"
-                                  readonly=""
                                   role="combobox"
-                                  style="opacity: 0;"
                                   type="search"
-                                  unselectable="on"
                                   value=""
                                 />
                               </span>
@@ -2498,7 +2477,7 @@ exports[`Order/List should render order list by response data 1`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <div
-                            class="ant-select ant-select-single ant-select-show-arrow"
+                            class="ant-select ant-select-single ant-select-show-arrow ant-select-show-search"
                           >
                             <div
                               class="ant-select-selector"
@@ -2515,11 +2494,8 @@ exports[`Order/List should render order list by response data 1`] = `
                                   autocomplete="off"
                                   class="ant-select-selection-search-input"
                                   id="filter_current_step_assignee_user_name"
-                                  readonly=""
                                   role="combobox"
-                                  style="opacity: 0;"
                                   type="search"
-                                  unselectable="on"
                                   value=""
                                 />
                               </span>
@@ -2590,7 +2566,7 @@ exports[`Order/List should render order list by response data 1`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <div
-                            class="ant-select ant-select-single ant-select-show-arrow"
+                            class="ant-select ant-select-single ant-select-show-arrow ant-select-show-search"
                           >
                             <div
                               class="ant-select-selector"
@@ -2607,11 +2583,8 @@ exports[`Order/List should render order list by response data 1`] = `
                                   autocomplete="off"
                                   class="ant-select-selection-search-input"
                                   id="filter_task_instance_name"
-                                  readonly=""
                                   role="combobox"
-                                  style="opacity: 0;"
                                   type="search"
-                                  unselectable="on"
                                   value=""
                                 />
                               </span>
@@ -3264,7 +3237,7 @@ exports[`Order/List should render order list by response data 2`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <div
-                            class="ant-select ant-select-single ant-select-show-arrow"
+                            class="ant-select ant-select-single ant-select-show-arrow ant-select-show-search"
                           >
                             <div
                               class="ant-select-selector"
@@ -3281,11 +3254,8 @@ exports[`Order/List should render order list by response data 2`] = `
                                   autocomplete="off"
                                   class="ant-select-selection-search-input"
                                   id="filter_create_user_name"
-                                  readonly=""
                                   role="combobox"
-                                  style="opacity: 0;"
                                   type="search"
-                                  unselectable="on"
                                   value=""
                                 />
                               </span>
@@ -3538,7 +3508,7 @@ exports[`Order/List should render order list by response data 2`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <div
-                            class="ant-select ant-select-single ant-select-show-arrow"
+                            class="ant-select ant-select-single ant-select-show-arrow ant-select-show-search"
                           >
                             <div
                               class="ant-select-selector"
@@ -3555,11 +3525,8 @@ exports[`Order/List should render order list by response data 2`] = `
                                   autocomplete="off"
                                   class="ant-select-selection-search-input"
                                   id="filter_current_step_assignee_user_name"
-                                  readonly=""
                                   role="combobox"
-                                  style="opacity: 0;"
                                   type="search"
-                                  unselectable="on"
                                   value=""
                                 />
                               </span>
@@ -3630,7 +3597,7 @@ exports[`Order/List should render order list by response data 2`] = `
                           class="ant-form-item-control-input-content"
                         >
                           <div
-                            class="ant-select ant-select-single ant-select-show-arrow"
+                            class="ant-select ant-select-single ant-select-show-arrow ant-select-show-search"
                           >
                             <div
                               class="ant-select-selector"
@@ -3647,11 +3614,8 @@ exports[`Order/List should render order list by response data 2`] = `
                                   autocomplete="off"
                                   class="ant-select-selection-search-input"
                                   id="filter_task_instance_name"
-                                  readonly=""
                                   role="combobox"
-                                  style="opacity: 0;"
                                   type="search"
-                                  unselectable="on"
                                   value=""
                                 />
                               </span>

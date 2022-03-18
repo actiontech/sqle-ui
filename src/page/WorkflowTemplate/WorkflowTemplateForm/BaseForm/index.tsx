@@ -125,6 +125,7 @@ const BaseForm: React.FC<BaseFormProps> = (props) => {
         name="instanceNameList"
       >
         <Select
+          showSearch
           placeholder={t('common.form.placeholder.select', {
             name: t('workflowTemplate.form.label.instanceNameList'),
           })}

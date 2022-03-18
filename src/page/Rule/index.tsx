@@ -127,6 +127,7 @@ const Rule = () => {
                       placeholder={t('common.form.placeholder.select')}
                       className="middle-select"
                       allowClear
+                      showSearch
                     >
                       {generateInstanceSelectOption()}
                     </Select>

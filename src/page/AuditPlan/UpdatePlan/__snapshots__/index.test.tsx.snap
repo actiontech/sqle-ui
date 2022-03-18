@@ -117,7 +117,7 @@ exports[`UpdateAuditPlan should send update audit plan request when user input a
                 class="ant-form-item-control-input-content"
               >
                 <div
-                  class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow"
+                  class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
                 >
                   <div
                     class="ant-select-selector"
@@ -134,11 +134,8 @@ exports[`UpdateAuditPlan should send update audit plan request when user input a
                         autocomplete="off"
                         class="ant-select-selection-search-input"
                         id="databaseName"
-                        readonly=""
                         role="combobox"
-                        style="opacity: 0;"
                         type="search"
-                        unselectable="on"
                         value=""
                       />
                     </span>
@@ -1220,7 +1217,7 @@ exports[`UpdateAuditPlan should set form default value to specify instance 1`] =
                 class="ant-form-item-control-input-content"
               >
                 <div
-                  class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow"
+                  class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
                 >
                   <div
                     class="ant-select-selector"
@@ -1237,11 +1234,8 @@ exports[`UpdateAuditPlan should set form default value to specify instance 1`] =
                         autocomplete="off"
                         class="ant-select-selection-search-input"
                         id="databaseName"
-                        readonly=""
                         role="combobox"
-                        style="opacity: 0;"
                         type="search"
-                        unselectable="on"
                         value=""
                       />
                     </span>
