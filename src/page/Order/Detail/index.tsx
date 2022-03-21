@@ -122,7 +122,13 @@ const Order = () => {
     { setTrue: startUpdateSQL, setFalse: updateSqlFinish },
   ] = useBoolean();
 
-  const updateOrderSql = React.useCallback(() => {
+  const [updateTaskRecordTotalNum, setUpdateTaskRecordTotalNum] =
+    React.useState(0);
+  const updateOrderSql = () => {
+    if (updateTaskRecordTotalNum === 0) {
+      message.error(t('order.modifySql.updateEmptyOrderTips'));
+      return;
+    }
     startUpdateSQL();
     workflow
       .updateWorkflowV1({
@@ -138,14 +144,7 @@ const Order = () => {
       .finally(() => {
         updateSqlFinish();
       });
-  }, [
-    orderInfo?.workflow_id,
-    refreshOrder,
-    resetAllState,
-    startUpdateSQL,
-    tempTaskInfo?.task_id,
-    updateSqlFinish,
-  ]);
+  };
 
   const giveUpModify = () => {
     resetAllState();
@@ -320,6 +319,7 @@ const Order = () => {
               taskId={tempTaskInfo?.task_id}
               passRate={tempTaskInfo?.pass_rate}
               auditScore={tempTaskInfo?.score}
+              updateTaskRecordTotalNum={setUpdateTaskRecordTotalNum}
             />
           </EmptyBox>
         </Space>
