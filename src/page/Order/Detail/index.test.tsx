@@ -69,7 +69,9 @@ describe('Order/Detail', () => {
 
   const mockGetTaskSqls = () => {
     const spy = jest.spyOn(task, 'getAuditTaskSQLsV1');
-    spy.mockImplementation(() => resolveThreeSecond(taskSqls));
+    spy.mockImplementation(() =>
+      resolveThreeSecond(taskSqls, { otherData: { total_nums: 20 } })
+    );
     return spy;
   };
 
@@ -523,5 +525,50 @@ describe('Order/Detail', () => {
     expect(
       screen.getByText('order.modifySql.updateOrder').closest('button')
     ).not.toHaveAttribute('disabled');
+  });
+
+  test('should can not update order when submit sql is empty', async () => {
+    const getWorkflowSpy = mockGetWorkflow();
+    getWorkflowSpy.mockImplementation(() => resolveThreeSecond(orderReject));
+
+    const workflowUpdateSpy = jest.spyOn(workflow, 'updateWorkflowV1');
+    workflowUpdateSpy.mockImplementation(() => resolveThreeSecond({}));
+
+    mockGetTask();
+    mockCreateTask();
+    const getSqlSpy = mockGetTaskSqls();
+    getSqlSpy.mockImplementation(() =>
+      resolveThreeSecond(taskSqls, { otherData: { total_nums: 0 } })
+    );
+    mockGetSqlContent();
+    renderWithThemeAndRouter(<Order />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.click(screen.getByText('order.operator.modifySql'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    act(() => {
+      fireEvent.click(screen.getByText('common.submit'));
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.click(screen.getByText('order.modifySql.updateOrder'));
+    await waitFor(() => {
+      jest.runOnlyPendingTimers();
+    });
+    fireEvent.click(screen.getByText('OK'));
+    expect(workflowUpdateSpy).toBeCalledTimes(0);
+    expect(
+      screen.queryByText('order.modifySql.updateEmptyOrderTips')
+    ).toBeInTheDocument();
   });
 });

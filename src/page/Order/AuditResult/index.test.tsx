@@ -20,7 +20,9 @@ describe('Order/Detail/AuditResult', () => {
 
   const mockGetTaskSqls = () => {
     const spy = jest.spyOn(task, 'getAuditTaskSQLsV1');
-    spy.mockImplementation(() => resolveThreeSecond(taskSqls));
+    spy.mockImplementation(() =>
+      resolveThreeSecond(taskSqls, { otherData: { total_nums: 20 } })
+    );
     return spy;
   };
 
@@ -47,6 +49,19 @@ describe('Order/Detail/AuditResult', () => {
       jest.advanceTimersByTime(3000);
     });
     expect(container).toMatchSnapshot();
+  });
+
+  test('should call updateTaskRecordTotalNum when get sql success', async () => {
+    mockGetTaskSqls();
+    const updateTotalNum = jest.fn();
+    render(
+      <AuditResult taskId={9999} updateTaskRecordTotalNum={updateTotalNum} />
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(updateTotalNum).toBeCalledTimes(1);
+    expect(updateTotalNum).toBeCalledWith(20);
   });
 
   test('should set duplicate of table filter when change switch', async () => {
