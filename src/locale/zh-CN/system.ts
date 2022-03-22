@@ -12,6 +12,7 @@ export default {
   },
 
   smtp: {
+    enable: '启用邮件推送',
     host: 'SMTP地址',
     port: 'SMTP端口',
     username: 'SMTP用户名',

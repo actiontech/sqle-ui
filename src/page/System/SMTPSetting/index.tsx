@@ -12,6 +12,7 @@ import {
   Popover,
   Row,
   Space,
+  Switch,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React, { useRef } from 'react';
@@ -20,6 +21,7 @@ import configuration from '../../../api/configuration';
 import { PageFormLayout, ResponseCode } from '../../../data/common';
 
 type SMTPSettingFormFields = {
+  enable: boolean;
   host: string;
   port: number;
   username: string;
@@ -46,6 +48,7 @@ const SMTPSetting = () => {
 
   const setFormDefaultValue = React.useCallback(() => {
     form.setFieldsValue({
+      enable: smtpInfo?.enable_smtp_notify ?? false,
       host: smtpInfo?.smtp_host,
       port: smtpInfo?.smtp_port
         ? Number.parseInt(smtpInfo.smtp_port, 10)
@@ -71,6 +74,7 @@ const SMTPSetting = () => {
       startSubmit();
       configuration
         .updateSMTPConfigurationV1({
+          enable_smtp_notify: values.enable,
           smtp_host: values.host,
           smtp_password: values.password,
           smtp_port: `${values.port}`,
@@ -130,6 +134,11 @@ const SMTPSetting = () => {
     <Card title={t('system.title.smtp')}>
       <section hidden={modifyFlag}>
         <Descriptions>
+          <Descriptions.Item label={t('system.smtp.enable')} span={3}>
+            {smtpInfo?.enable_smtp_notify
+              ? t('common.open')
+              : t('common.close')}
+          </Descriptions.Item>
           <Descriptions.Item label={t('system.smtp.host')} span={3}>
             {smtpInfo?.smtp_host || '--'}
           </Descriptions.Item>
@@ -158,6 +167,9 @@ const SMTPSetting = () => {
                         name="receiveEmail"
                         label={t('system.smtp.receiver')}
                         rules={[
+                          {
+                            required: true,
+                          },
                           {
                             type: 'email',
                           },
@@ -197,6 +209,13 @@ const SMTPSetting = () => {
         form={form}
         onFinish={submit}
       >
+        <Form.Item
+          label={t('system.smtp.enable')}
+          name="enable"
+          valuePropName="checked"
+        >
+          <Switch />
+        </Form.Item>
         <Form.Item
           label={t('system.smtp.host')}
           name="host"
