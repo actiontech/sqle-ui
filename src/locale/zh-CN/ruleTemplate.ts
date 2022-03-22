@@ -88,5 +88,6 @@ export default {
     error: '错误',
     warn: '告警',
     notice: '提示',
+    unknown: '未知',
   },
 };

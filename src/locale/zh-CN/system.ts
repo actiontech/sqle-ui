@@ -17,6 +17,12 @@ export default {
     username: 'SMTP用户名',
     password: 'SMTP密码',
     passwordConfirm: '确认SMTP密码',
+
+    test: '测试',
+    receiver: '接收邮箱',
+
+    testing: '正在向 “{{email}}” 发送测试邮件...',
+    testSuccess: '已成功向 {{email}} 发送测试邮件。',
   },
 
   global: {

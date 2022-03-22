@@ -67,6 +67,8 @@ export const auditPlanRuleLevelDictionary: StaticEnumDictionary<AuditPlanReportR
       'ruleTemplate.ruleLevel.notice',
     [AuditPlanReportResV1AuditLevelEnum.warn]: 'ruleTemplate.ruleLevel.warn',
     [AuditPlanReportResV1AuditLevelEnum.error]: 'ruleTemplate.ruleLevel.error',
+    [AuditPlanReportResV1AuditLevelEnum.UNKNOWN]:
+      'ruleTemplate.ruleLevel.unknown',
   };
 
 export const auditLevelDictionary: StaticEnumDictionary<CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum> =
