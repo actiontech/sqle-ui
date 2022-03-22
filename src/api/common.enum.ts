@@ -13,7 +13,9 @@ export enum AuditPlanReportResV1AuditLevelEnum {
 
   'warn' = 'warn',
 
-  'error' = 'error'
+  'error' = 'error',
+
+  'UNKNOWN' = ''
 }
 
 export enum AuditTaskResV1AuditLevelEnum {
@@ -23,7 +25,9 @@ export enum AuditTaskResV1AuditLevelEnum {
 
   'warn' = 'warn',
 
-  'error' = 'error'
+  'error' = 'error',
+
+  'UNKNOWN' = ''
 }
 
 export enum AuditTaskResV1SqlSourceEnum {

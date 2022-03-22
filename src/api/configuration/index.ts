@@ -19,6 +19,8 @@ import {
   IGetSMTPConfigurationV1Return,
   IUpdateSMTPConfigurationV1Params,
   IUpdateSMTPConfigurationV1Return,
+  ITestSMTPConfigurationV1Params,
+  ITestSMTPConfigurationV1Return,
   IGetSystemVariablesV1Return,
   IUpdateSystemVariablesV1Params,
   IUpdateSystemVariablesV1Return,
@@ -135,6 +137,18 @@ class ConfigurationService extends ServiceBase {
     const paramsData = this.cloneDeep(params);
     return this.patch<IUpdateSMTPConfigurationV1Return>(
       '/v1/configurations/smtp',
+      paramsData,
+      options
+    );
+  }
+
+  public testSMTPConfigurationV1(
+    params: ITestSMTPConfigurationV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.post<ITestSMTPConfigurationV1Return>(
+      '/v1/configurations/smtp/test',
       paramsData,
       options
     );

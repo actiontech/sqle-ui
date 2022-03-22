@@ -923,6 +923,8 @@ export interface IRuleTemplateTipResV1 {
 }
 
 export interface ISMTPConfigurationResV1 {
+  enable_smtp_notify?: boolean;
+
   smtp_host?: string;
 
   smtp_port?: string;
@@ -932,6 +934,24 @@ export interface ISMTPConfigurationResV1 {
 
 export interface ISystemVariablesResV1 {
   workflow_expired_hours?: number;
+}
+
+export interface ITestSMTPConfigurationReqV1 {
+  recipient_addr?: string;
+}
+
+export interface ITestSMTPConfigurationResDataV1 {
+  is_smtp_send_normal?: boolean;
+
+  send_error_message?: string;
+}
+
+export interface ITestSMTPConfigurationResV1 {
+  code?: number;
+
+  data?: ITestSMTPConfigurationResDataV1;
+
+  message?: string;
 }
 
 export interface ITestWeChatConfigurationReqV1 {
@@ -1051,6 +1071,8 @@ export interface IUpdateRuleTemplateReqV1 {
 }
 
 export interface IUpdateSMTPConfigurationReqV1 {
+  enable_smtp_notify?: boolean;
+
   smtp_host?: string;
 
   smtp_password?: string;
