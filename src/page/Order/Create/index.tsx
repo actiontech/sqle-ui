@@ -84,7 +84,9 @@ const CreateOrder = () => {
     [judgeAuditLevel, resetCreateOrderBtnStatus, setCreateOrderDisabled]
   );
 
-  const create = React.useCallback(async () => {
+  const [taskSqlNum, setTaskSqlNum] = React.useState(0);
+
+  const create = async () => {
     try {
       const values = await baseForm.validateFields();
       await sqlInfoForm.validateFields();
@@ -96,6 +98,10 @@ const CreateOrder = () => {
       }
       if (!taskInfo) {
         message.error(t('order.createOrder.mustAuditTips'));
+        return;
+      }
+      if (taskSqlNum === 0) {
+        message.error(t('order.createOrder.mustHaveAuditResultTips'));
         return;
       }
       startCreate();
@@ -116,15 +122,7 @@ const CreateOrder = () => {
     } catch (error) {
       baseForm.scrollToField('name');
     }
-  }, [
-    baseForm,
-    createFinish,
-    openModal,
-    sqlInfoForm,
-    startCreate,
-    t,
-    taskInfo,
-  ]);
+  };
 
   const resetAllForm = React.useCallback(() => {
     baseForm.resetFields();
@@ -199,6 +197,7 @@ const CreateOrder = () => {
               taskId={taskInfo?.task_id}
               passRate={taskInfo?.pass_rate}
               auditScore={taskInfo?.score}
+              updateTaskRecordTotalNum={setTaskSqlNum}
             />
           </EmptyBox>
           <Card className="text-align-right">

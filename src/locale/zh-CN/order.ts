@@ -14,6 +14,7 @@ export default {
       '检测到您在审核SQL语句之后,又修改了‘审核SQL语句信息’表单中的内容并且没有再点击审核，现在会使用当前审核结果表格中的SQL语句进行创建工单，您确认这样做么？',
     unsupportMybatisTips: '暂时不支持创建SQL语句类型为Mybatis的工单',
     mustAuditTips: '您必须先对您的SQL进行审核才能进行创建工单',
+    mustHaveAuditResultTips: '不能对审核结果为空的SQL进行创建工单',
   },
   closeOrder: {
     button: '关闭工单',
@@ -139,6 +140,7 @@ export default {
     updateOrder: '使用下面的SQL语句更新当前工单',
     updateOrderConfirmTips:
       '您确认使用这份SQL更新当前工单么？确认之后，当前工单会立即进入审核流程',
+    updateEmptyOrderTips: '不能使用审核结果为空的SQL更新当前工单',
     giveUpUpdate: '放弃本次修改',
     giveUpUpdateConfirmTips: '您确认放弃本次变更?',
   },

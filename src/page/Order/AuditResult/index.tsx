@@ -46,6 +46,12 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
           total: res.data.total_nums,
         };
       },
+      onSuccess(res) {
+        props.updateTaskRecordTotalNum?.(res.total ?? 0);
+      },
+      onError() {
+        props.updateTaskRecordTotalNum?.(0);
+      },
     }
   );
 
