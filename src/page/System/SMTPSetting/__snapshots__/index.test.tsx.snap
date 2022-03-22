@@ -43,6 +43,29 @@ exports[`System/SMTPSetting should get smtp setting from origin 1`] = `
                       <span
                         class="ant-descriptions-item-label"
                       >
+                        system.smtp.enable
+                      </span>
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        common.close
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-label"
+                      >
                         system.smtp.host
                       </span>
                       <span
@@ -112,14 +135,35 @@ exports[`System/SMTPSetting should get smtp setting from origin 1`] = `
                       <span
                         class="ant-descriptions-item-content"
                       >
-                        <button
-                          class="ant-btn ant-btn-primary"
-                          type="button"
+                        <div
+                          class="ant-space ant-space-horizontal ant-space-align-center"
                         >
-                          <span>
-                            common.modify
-                          </span>
-                        </button>
+                          <div
+                            class="ant-space-item"
+                            style="margin-right: 8px;"
+                          >
+                            <button
+                              class="ant-btn ant-btn-primary"
+                              type="submit"
+                            >
+                              <span>
+                                system.smtp.test
+                              </span>
+                            </button>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <button
+                              class="ant-btn ant-btn-primary"
+                              type="button"
+                            >
+                              <span>
+                                common.modify
+                              </span>
+                            </button>
+                          </div>
+                        </div>
                       </span>
                     </div>
                   </td>
@@ -133,6 +177,47 @@ exports[`System/SMTPSetting should get smtp setting from origin 1`] = `
         class="ant-form ant-form-horizontal"
         hidden=""
       >
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="enable"
+              title="system.smtp.enable"
+            >
+              system.smtp.enable
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <button
+                  aria-checked="false"
+                  class="ant-switch"
+                  id="enable"
+                  role="switch"
+                  type="button"
+                >
+                  <div
+                    class="ant-switch-handle"
+                  />
+                  <span
+                    class="ant-switch-inner"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div
           class="ant-row ant-form-item"
         >
@@ -541,6 +626,29 @@ exports[`System/SMTPSetting should get smtp setting from origin 2`] = `
                       <span
                         class="ant-descriptions-item-label"
                       >
+                        system.smtp.enable
+                      </span>
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        common.open
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-label"
+                      >
                         system.smtp.host
                       </span>
                       <span
@@ -610,14 +718,35 @@ exports[`System/SMTPSetting should get smtp setting from origin 2`] = `
                       <span
                         class="ant-descriptions-item-content"
                       >
-                        <button
-                          class="ant-btn ant-btn-primary"
-                          type="button"
+                        <div
+                          class="ant-space ant-space-horizontal ant-space-align-center"
                         >
-                          <span>
-                            common.modify
-                          </span>
-                        </button>
+                          <div
+                            class="ant-space-item"
+                            style="margin-right: 8px;"
+                          >
+                            <button
+                              class="ant-btn ant-btn-primary"
+                              type="submit"
+                            >
+                              <span>
+                                system.smtp.test
+                              </span>
+                            </button>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <button
+                              class="ant-btn ant-btn-primary"
+                              type="button"
+                            >
+                              <span>
+                                common.modify
+                              </span>
+                            </button>
+                          </div>
+                        </div>
                       </span>
                     </div>
                   </td>
@@ -631,6 +760,47 @@ exports[`System/SMTPSetting should get smtp setting from origin 2`] = `
         class="ant-form ant-form-horizontal"
         hidden=""
       >
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="enable"
+              title="system.smtp.enable"
+            >
+              system.smtp.enable
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <button
+                  aria-checked="false"
+                  class="ant-switch"
+                  id="enable"
+                  role="switch"
+                  type="button"
+                >
+                  <div
+                    class="ant-switch-handle"
+                  />
+                  <span
+                    class="ant-switch-inner"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div
           class="ant-row ant-form-item"
         >
