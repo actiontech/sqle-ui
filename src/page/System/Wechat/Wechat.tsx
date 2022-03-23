@@ -91,7 +91,10 @@ const Wechat = () => {
     }
     testTing.current = true;
     closeTestPopover();
-    const hide = message.loading(t('system.wechat.testing'), 0);
+    const hide = message.loading(
+      t('system.wechat.testing', { id: receiveId }),
+      0
+    );
     configuration
       .testWeChatConfigurationV1({
         recipient_id: receiveId,

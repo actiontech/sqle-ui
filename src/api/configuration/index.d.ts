@@ -7,6 +7,8 @@ import {
   ICheckLicenseResV1,
   IGetSMTPConfigurationResV1,
   IUpdateSMTPConfigurationReqV1,
+  ITestSMTPConfigurationReqV1,
+  ITestSMTPConfigurationResV1,
   IGetSystemVariablesResV1,
   IUpdateSystemVariablesReqV1,
   IGetWeChatConfigurationResV1,
@@ -46,6 +48,12 @@ export interface IUpdateSMTPConfigurationV1Params
   extends IUpdateSMTPConfigurationReqV1 {}
 
 export interface IUpdateSMTPConfigurationV1Return extends IBaseRes {}
+
+export interface ITestSMTPConfigurationV1Params
+  extends ITestSMTPConfigurationReqV1 {}
+
+export interface ITestSMTPConfigurationV1Return
+  extends ITestSMTPConfigurationResV1 {}
 
 export interface IGetSystemVariablesV1Return extends IGetSystemVariablesResV1 {}
 

@@ -3,19 +3,25 @@ import { useBoolean } from 'ahooks';
 import {
   Button,
   Card,
+  Col,
   Descriptions,
   Form,
   Input,
   InputNumber,
+  message,
+  Popover,
+  Row,
   Space,
+  Switch,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
-import React from 'react';
+import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import configuration from '../../../api/configuration';
 import { PageFormLayout, ResponseCode } from '../../../data/common';
 
 type SMTPSettingFormFields = {
+  enable: boolean;
   host: string;
   port: number;
   username: string;
@@ -42,6 +48,7 @@ const SMTPSetting = () => {
 
   const setFormDefaultValue = React.useCallback(() => {
     form.setFieldsValue({
+      enable: smtpInfo?.enable_smtp_notify ?? false,
       host: smtpInfo?.smtp_host,
       port: smtpInfo?.smtp_port
         ? Number.parseInt(smtpInfo.smtp_port, 10)
@@ -60,15 +67,14 @@ const SMTPSetting = () => {
     form.resetFields();
   }, [form, setModifyFlagFalse]);
 
-  const [
-    submitLoading,
-    { setTrue: startSubmit, setFalse: submitFinish },
-  ] = useBoolean();
+  const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
+    useBoolean();
   const submit = React.useCallback(
     (values: SMTPSettingFormFields) => {
       startSubmit();
       configuration
         .updateSMTPConfigurationV1({
+          enable_smtp_notify: values.enable,
           smtp_host: values.host,
           smtp_password: values.password,
           smtp_port: `${values.port}`,
@@ -87,10 +93,52 @@ const SMTPSetting = () => {
     [handelClickCancel, refreshSMTPInfo, startSubmit, submitFinish]
   );
 
+  const [
+    testPopoverVisible,
+    { toggle: toggleTestPopoverVisible, setFalse: closeTestPopover },
+  ] = useBoolean();
+  const [testForm] = useForm<{ receiveEmail?: string }>();
+  const testTing = useRef(false);
+  const test = async () => {
+    if (testTing.current) {
+      return;
+    }
+    const values = await testForm.validateFields();
+    testTing.current = true;
+    closeTestPopover();
+    const hide = message.loading(
+      t('system.smtp.testing', {
+        email: values.receiveEmail,
+      }),
+      0
+    );
+    configuration
+      .testSMTPConfigurationV1({
+        recipient_addr: values.receiveEmail,
+      })
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          message.success(
+            t('system.smtp.testSuccess', { email: values.receiveEmail })
+          );
+          testForm.resetFields();
+        }
+      })
+      .finally(() => {
+        hide();
+        testTing.current = false;
+      });
+  };
+
   return (
     <Card title={t('system.title.smtp')}>
       <section hidden={modifyFlag}>
         <Descriptions>
+          <Descriptions.Item label={t('system.smtp.enable')} span={3}>
+            {smtpInfo?.enable_smtp_notify
+              ? t('common.open')
+              : t('common.close')}
+          </Descriptions.Item>
           <Descriptions.Item label={t('system.smtp.host')} span={3}>
             {smtpInfo?.smtp_host || '--'}
           </Descriptions.Item>
@@ -101,9 +149,57 @@ const SMTPSetting = () => {
             {smtpInfo?.smtp_username || '--'}
           </Descriptions.Item>
           <Descriptions.Item span={3}>
-            <Button type="primary" onClick={handelClickModify}>
-              {t('common.modify')}
-            </Button>
+            <Space>
+              <Popover
+                trigger="click"
+                visible={testPopoverVisible}
+                onVisibleChange={(visible) => {
+                  if (!visible) {
+                    testForm.resetFields();
+                  }
+                  toggleTestPopoverVisible(visible);
+                }}
+                content={
+                  <Space direction="vertical" className="full-width-element">
+                    <Form form={testForm}>
+                      <Form.Item
+                        style={{ marginBottom: 0 }}
+                        name="receiveEmail"
+                        label={t('system.smtp.receiver')}
+                        rules={[
+                          {
+                            required: true,
+                          },
+                          {
+                            type: 'email',
+                          },
+                        ]}
+                      >
+                        <Input />
+                      </Form.Item>
+                    </Form>
+                    <Row>
+                      <Col span={24} style={{ textAlign: 'right' }}>
+                        <Button type="primary" size="small" onClick={test}>
+                          {t('common.ok')}
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Space>
+                }
+              >
+                <Button
+                  htmlType="submit"
+                  type="primary"
+                  loading={submitLoading}
+                >
+                  {t('system.smtp.test')}
+                </Button>
+              </Popover>
+              <Button type="primary" onClick={handelClickModify}>
+                {t('common.modify')}
+              </Button>
+            </Space>
           </Descriptions.Item>
         </Descriptions>
       </section>
@@ -113,6 +209,13 @@ const SMTPSetting = () => {
         form={form}
         onFinish={submit}
       >
+        <Form.Item
+          label={t('system.smtp.enable')}
+          name="enable"
+          valuePropName="checked"
+        >
+          <Switch />
+        </Form.Item>
         <Form.Item
           label={t('system.smtp.host')}
           name="host"
