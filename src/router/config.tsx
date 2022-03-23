@@ -69,14 +69,13 @@ const OrderList = React.lazy(
 const Whitelist = React.lazy(
   () => import(/* webpackChunkName: "Whitelist" */ '../page/Whitelist')
 );
-
+/* FITRUE_isEE */
 const WorkflowTemplate = React.lazy(
   () =>
     import(
       /* webpackChunkName: "WorkflowTemplate" */ '../page/WorkflowTemplate'
     )
 );
-/* FITRUE_isEE */
 
 const System = React.lazy(
   () => import(/* webpackChunkName: "System" */ '../page/System')
@@ -234,6 +233,13 @@ export const routerConfig: RouterItem[] = [
         component: System,
         icon: <SettingOutlined />,
       },
+      {
+        path: '/progress',
+        key: 'progress',
+        label: 'menu.progressManage',
+        icon: <NodeIndexOutlined />,
+        component: WorkflowTemplate,
+      },
       /* IFTRUE_isEE */
       {
         path: '/whitelist',
@@ -241,13 +247,6 @@ export const routerConfig: RouterItem[] = [
         label: 'menu.whitelist',
         component: Whitelist,
         icon: <ProfileOutlined />,
-      },
-      {
-        path: '/progress',
-        key: 'progress',
-        label: 'menu.progressManage',
-        icon: <NodeIndexOutlined />,
-        component: WorkflowTemplate,
       },
       /* FITRUE_isEE */
     ],
