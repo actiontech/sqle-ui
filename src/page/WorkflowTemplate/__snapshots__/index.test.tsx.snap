@@ -11,6 +11,27 @@ exports[`WorkflowTemplate should match snapshot 1`] = `
   <section
     className="padding-content"
   >
+    <Card>
+      workflowTemplate.pageCeDesc
+      <Paragraph>
+        <ul>
+          <li>
+            <a
+              href="https://actiontech.github.io/sqle-docs-cn/"
+            >
+              https://actiontech.github.io/sqle-docs-cn/
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.actionsky.com/"
+            >
+              https://www.actionsky.com/
+            </a>
+          </li>
+        </ul>
+      </Paragraph>
+    </Card>
     <Switch>
       <Route
         component={[Function]}
