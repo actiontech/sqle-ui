@@ -34,6 +34,7 @@ module.exports = {
                 loader: 'js-conditional-compile-loader',
                 options: {
                   isEE: process.env.isEE === 'true',
+                  isCE: process.env.isEE !== 'true',
                 },
               },
             ];
