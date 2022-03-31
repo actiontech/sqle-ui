@@ -64,6 +64,10 @@ describe('wechat', () => {
       screen.getByLabelText('system.wechat.enable_wechat_notify')
     );
 
+    fireEvent.input(screen.getByLabelText('system.wechat.agent_id'), {
+      target: { value: '1234567' },
+    });
+
     fireEvent.input(screen.getByLabelText('system.wechat.corp_secret'), {
       target: { value: 'aaabbb' },
     });
@@ -77,7 +81,7 @@ describe('wechat', () => {
 
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
-      agent_id: 12312312312122,
+      agent_id: 1234567,
       corp_id: '123123123',
       corp_secret: 'aaabbb',
       enable_wechat_notify: true,

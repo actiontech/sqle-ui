@@ -2508,7 +2508,7 @@ exports[`wechat should update wechat config after user input config form 2`] = `
                   class="ant-input"
                   id="agent_id"
                   type="text"
-                  value="12312312312122"
+                  value="1234567"
                 />
               </div>
             </div>
@@ -3046,7 +3046,7 @@ exports[`wechat should update wechat config after user input config form 3`] = `
                   class="ant-input"
                   id="agent_id"
                   type="text"
-                  value="12312312312122"
+                  value="1234567"
                 />
               </div>
             </div>
