@@ -35,6 +35,16 @@ describe('MaintenanceTimePicker', () => {
         minute: 30,
       },
     },
+    {
+      startTime: {
+        hour: 3,
+        minute: 0,
+      },
+      endTime: {
+        hour: 4,
+        minute: 30,
+      },
+    },
   ];
 
   it('should render defalut node whne value is undefined or value length is zero', async () => {
@@ -50,8 +60,9 @@ describe('MaintenanceTimePicker', () => {
   it('should remove value when use click remove icon', async () => {
     const onChange = jest.fn();
     render(<MaintenanceTimePicker value={value} onChange={onChange} />);
-    fireEvent.click(getAllBySelector('.ant-tag-close-icon')[0]);
-    expect(onChange).toBeCalledWith(value.slice(1));
+    fireEvent.click(getAllBySelector('.ant-tag-close-icon')[1]);
+    expect(onChange).toBeCalledWith([value[0], value[2]]);
+    expect(screen.queryByText('03:00 -04:30')).toBeInTheDocument();
   });
 
   it('should add value when use add time', async () => {
@@ -91,5 +102,36 @@ describe('MaintenanceTimePicker', () => {
         },
       },
     ]);
+  });
+
+  it('should show tips when user want to add the same time', async () => {
+    const onChange = jest.fn();
+    render(<MaintenanceTimePicker onChange={onChange} value={value} />);
+    fireEvent.click(screen.getByText('common.add'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    fireEvent.click(getBySelector('.ant-picker-range'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    fireEvent.click(screen.getAllByText('23')[0]);
+    fireEvent.click(screen.getAllByText('00')[1]);
+    fireEvent.click(screen.getByText('Ok'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    fireEvent.click(screen.getAllByText('23')[0]);
+    fireEvent.click(screen.getAllByText('59')[0]);
+    fireEvent.click(screen.getByText('Ok'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    fireEvent.click(screen.getByText('common.ok'));
+    expect(onChange).not.toBeCalled();
+    expect(
+      screen.getByText('common.maintenanceTimePicker.duplicate')
+    ).toBeInTheDocument();
   });
 });

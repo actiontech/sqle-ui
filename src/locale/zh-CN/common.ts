@@ -107,6 +107,7 @@ export default {
 
   maintenanceTimePicker: {
     placeholder: '请选择时间段',
+    duplicate: '不可重复添加相同的时间段',
 
     range: '时间段',
   },

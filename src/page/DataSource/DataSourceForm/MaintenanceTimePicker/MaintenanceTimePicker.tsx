@@ -3,6 +3,7 @@ import {
   Button,
   Col,
   DatePicker,
+  message,
   Popover,
   Row,
   Space,
@@ -48,7 +49,21 @@ const MaintenanceTimePicker: React.FC<MaintenanceTimePickerProps> = (props) => {
 
   const add = () => {
     if (range && range[0] && range[1]) {
-      onChange?.([...value, turnMomentToMaintenanceTime(range[0], range[1])]);
+      const newRange = turnMomentToMaintenanceTime(range[0], range[1]);
+      if (
+        value.some((v) => {
+          return (
+            v.startTime.hour === newRange.startTime.hour &&
+            v.startTime.minute === newRange.startTime.minute &&
+            v.endTime.hour === newRange.endTime.hour &&
+            v.endTime.minute === newRange.endTime.minute
+          );
+        })
+      ) {
+        message.info(t('common.maintenanceTimePicker.duplicate'));
+      } else {
+        onChange?.([...value, newRange]);
+      }
     }
     closePopover();
     setRange(null);
@@ -62,6 +77,10 @@ const MaintenanceTimePicker: React.FC<MaintenanceTimePickerProps> = (props) => {
     return num < 10 ? `0${num}` : num;
   };
 
+  const generateKey = (time: MaintenanceTimeValue) => {
+    return `${time.startTime.hour}${time.startTime.minute}${time.endTime.hour}${time.endTime.minute}`;
+  };
+
   return (
     <Space className="full-width-element">
       <EmptyBox
@@ -73,7 +92,11 @@ const MaintenanceTimePicker: React.FC<MaintenanceTimePickerProps> = (props) => {
         }
       >
         {value.map((v, index) => (
-          <Tag closable onClose={() => deleteTime(index)} key={index}>
+          <Tag
+            closable
+            onClose={() => deleteTime(index)}
+            key={`${generateKey(v)}-${index}`}
+          >
             {addZero(v.startTime.hour)}:{addZero(v.startTime.minute)} -
             {addZero(v.endTime.hour)}:{addZero(v.endTime.minute)}
           </Tag>
