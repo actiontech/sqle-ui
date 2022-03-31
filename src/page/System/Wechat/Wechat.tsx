@@ -22,7 +22,7 @@ type WechatFormFields = {
   enable_wechat_notify: boolean;
   corp_id: string;
   corp_secret: string;
-  agent_id: number;
+  agent_id: string;
   safe_enabled: boolean;
   proxy_ip?: string;
 };
@@ -53,7 +53,7 @@ const Wechat = () => {
         enable_wechat_notify: values.enable_wechat_notify,
         corp_id: values.corp_id,
         corp_secret: values.corp_secret,
-        agent_id: values.agent_id,
+        agent_id: Number.parseInt(values.agent_id ?? '0', 10),
         safe_enabled: values.safe_enabled,
         proxy_ip: values.proxy_ip,
       })
@@ -72,7 +72,7 @@ const Wechat = () => {
     form.setFieldsValue({
       enable_wechat_notify: wechatConfig?.enable_wechat_notify ?? false,
       corp_id: wechatConfig?.corp_id ?? '',
-      agent_id: wechatConfig?.agent_id ?? 0,
+      agent_id: String(wechatConfig?.agent_id ?? 0),
       safe_enabled: wechatConfig?.safe_enabled ?? false,
       proxy_ip: wechatConfig?.proxy_ip ?? '',
     });
