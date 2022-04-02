@@ -23,6 +23,8 @@ import {
   IGetAuditPlanReportSQLsV1Return,
   IGetAuditPlanReportsV1Params,
   IGetAuditPlanReportsV1Return,
+  IGetAuditPlanReportV1Params,
+  IGetAuditPlanReportV1Return,
   IGetAuditPlanSQLsV1Params,
   IGetAuditPlanSQLsV1Return,
   IFullSyncAuditPlanSQLsV1Params,
@@ -33,6 +35,8 @@ import {
   ITriggerAuditPlanV1Return,
   IGetAuditPlanReportSQLsV2Params,
   IGetAuditPlanReportSQLsV2Return,
+  IGetAuditPlanReportsSQLsV2Params,
+  IGetAuditPlanReportsSQLsV2Return,
   IGetAuditPlanSQLsV2Params,
   IGetAuditPlanSQLsV2Return
 } from './index.d';
@@ -152,6 +156,24 @@ class AuditPlanService extends ServiceBase {
     );
   }
 
+  public getAuditPlanReportV1(
+    params: IGetAuditPlanReportV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const audit_plan_name = paramsData.audit_plan_name;
+    delete paramsData.audit_plan_name;
+
+    const audit_plan_report_id = paramsData.audit_plan_report_id;
+    delete paramsData.audit_plan_report_id;
+
+    return this.get<IGetAuditPlanReportV1Return>(
+      `/v1/audit_plans/${audit_plan_name}/reports/${audit_plan_report_id}/`,
+      paramsData,
+      options
+    );
+  }
+
   public getAuditPlanSQLsV1(
     params: IGetAuditPlanSQLsV1Params,
     options?: AxiosRequestConfig
@@ -225,6 +247,24 @@ class AuditPlanService extends ServiceBase {
 
     return this.get<IGetAuditPlanReportSQLsV2Return>(
       `/v2/audit_plans/${audit_plan_name}/report/${audit_plan_report_id}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public getAuditPlanReportsSQLsV2(
+    params: IGetAuditPlanReportsSQLsV2Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const audit_plan_name = paramsData.audit_plan_name;
+    delete paramsData.audit_plan_name;
+
+    const audit_plan_report_id = paramsData.audit_plan_report_id;
+    delete paramsData.audit_plan_report_id;
+
+    return this.get<IGetAuditPlanReportsSQLsV2Return>(
+      `/v2/audit_plans/${audit_plan_name}/reports/${audit_plan_report_id}/sqls`,
       paramsData,
       options
     );

@@ -324,6 +324,14 @@ export interface IGetAuditPlanMetasResV1 {
   message?: string;
 }
 
+export interface IGetAuditPlanReportResV1 {
+  code?: number;
+
+  data?: IAuditPlanReportResV1;
+
+  message?: string;
+}
+
 export interface IGetAuditPlanReportSQLsResV1 {
   code?: number;
 
