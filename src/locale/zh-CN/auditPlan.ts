@@ -87,7 +87,9 @@ export default {
   },
 
   report: {
-    title: '审核报告: {{id}}',
+    time: '报告生成时间: {{time}}',
+    source: '审核报告评分: {{source}}',
+    passRage: '审核通过率: {{rage}}',
 
     table: {
       sql: 'SQL语句',
