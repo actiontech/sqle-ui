@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import AuditPlanReport from '.';
 import audit_plan from '../../../../../api/audit_plan';
 import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
-import { AuditReport } from '../../__testData__';
+import { AuditPlanReportList, AuditReport } from '../../__testData__';
 jest.mock('react-router', () => {
   return {
     ...jest.requireActual('react-router'),
@@ -28,17 +28,29 @@ describe('AuditPlanReport', () => {
   });
 
   const mockGetReport = () => {
-    const spy = jest.spyOn(audit_plan, 'getAuditPlanReportSQLsV2');
+    const spy = jest.spyOn(audit_plan, 'getAuditPlanReportsSQLsV2');
     spy.mockImplementation(() =>
       resolveThreeSecond(AuditReport, { otherData: { total_nums: 63 } })
     );
     return spy;
   };
 
+  const mockGetReportInfo = () => {
+    const spy = jest.spyOn(audit_plan, 'getAuditPlanReportV1');
+    spy.mockImplementation(() => resolveThreeSecond(AuditPlanReportList[0]));
+    return spy;
+  };
+
   test('should match snapshot', async () => {
     const getReportSpy = mockGetReport();
+    const getReportInfoSpy = mockGetReportInfo();
     const { container } = render(<AuditPlanReport />);
     expect(container).toMatchSnapshot();
+    expect(getReportInfoSpy).toBeCalledTimes(1);
+    expect(getReportInfoSpy).toBeCalledWith({
+      audit_plan_name: 'auditPlanName1',
+      audit_plan_report_id: '32',
+    });
     expect(getReportSpy).toBeCalledTimes(1);
     expect(getReportSpy).toBeCalledWith({
       audit_plan_name: 'auditPlanName1',

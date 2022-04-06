@@ -7,6 +7,7 @@ import {
   IUpdateAuditPlanReqV1,
   IGetAuditPlanReportSQLsResV1,
   IGetAuditPlanReportsResV1,
+  IGetAuditPlanReportResV1,
   IGetAuditPlanSQLsResV1,
   IFullSyncAuditPlanSQLsReqV1,
   IPartialSyncAuditPlanSQLsReqV1,
@@ -77,6 +78,14 @@ export interface IGetAuditPlanReportsV1Params {
 export interface IGetAuditPlanReportsV1Return
   extends IGetAuditPlanReportsResV1 {}
 
+export interface IGetAuditPlanReportV1Params {
+  audit_plan_name: string;
+
+  audit_plan_report_id: string;
+}
+
+export interface IGetAuditPlanReportV1Return extends IGetAuditPlanReportResV1 {}
+
 export interface IGetAuditPlanSQLsV1Params {
   audit_plan_name: string;
 
@@ -118,6 +127,19 @@ export interface IGetAuditPlanReportSQLsV2Params {
 }
 
 export interface IGetAuditPlanReportSQLsV2Return
+  extends IGetAuditPlanReportSQLsResV2 {}
+
+export interface IGetAuditPlanReportsSQLsV2Params {
+  audit_plan_name: string;
+
+  audit_plan_report_id: string;
+
+  page_index?: number;
+
+  page_size?: number;
+}
+
+export interface IGetAuditPlanReportsSQLsV2Return
   extends IGetAuditPlanReportSQLsResV2 {}
 
 export interface IGetAuditPlanSQLsV2Params {
