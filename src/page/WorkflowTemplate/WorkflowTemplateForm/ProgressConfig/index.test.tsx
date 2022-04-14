@@ -267,16 +267,19 @@ describe('progressConfig', () => {
         assignee_user_name_list: ['user_name1'],
         desc: 'desc0',
         type: 'sql_review',
+        approved_by_authorized: false,
       },
       {
         assignee_user_name_list: ['user_name1'],
         desc: 'desc1',
         type: 'sql_review',
+        approved_by_authorized: false,
       },
       {
         assignee_user_name_list: ['user_name1'],
         desc: 'desc2',
         type: 'sql_review',
+        approved_by_authorized: false,
       },
       {
         assignee_user_name_list: ['user_name1'],
@@ -318,6 +321,87 @@ describe('progressConfig', () => {
     act(() => {
       EventEmitter.emit(EmitterKey.Reset_Workflow_Template_Form);
     });
+    expect(container).toMatchSnapshot();
+  });
+
+  test('should set approved_by_authorized to true when user select review user type to match', async () => {
+    const submitProgressConfigFn = jest.fn();
+    const { container } = renderWithTheme(
+      <ProgressConfig
+        submitLoading={false}
+        prevStep={jest.fn()}
+        submitProgressConfig={submitProgressConfigFn}
+      />
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.click(
+      screen.getByText('workflowTemplate.progressConfig.operator.addReview')
+    );
+    fireEvent.input(screen.getByTestId('review-desc-0'), {
+      target: { value: 'desc0' },
+    });
+
+    fireEvent.click(screen.getByText('common.submit'));
+    expect(submitProgressConfigFn).not.toBeCalled();
+    expect(container).toMatchSnapshot();
+
+    fireEvent.mouseDown(
+      getBySelector(
+        '.ant-select-selection-placeholder',
+        screen.getByTestId('review-user-0')
+      )
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const usernameOption = screen.getAllByText('user_name1');
+    const username = usernameOption[1];
+    expect(username).toHaveClass('ant-select-item-option-content');
+    fireEvent.click(username);
+
+    fireEvent.click(
+      screen.getByText(
+        'workflowTemplate.progressConfig.review.reviewUserType.match'
+      )
+    );
+
+    fireEvent.input(screen.getByTestId('exec-user-desc'), {
+      target: { value: 'desc exec' },
+    });
+    fireEvent.mouseDown(
+      getBySelector(
+        '.ant-select-selection-placeholder',
+        screen.getByTestId('exec-user-select')
+      )
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const usernameOption3 = screen.getAllByText('user_name1');
+
+    const username1 = usernameOption3[3];
+    expect(username1).toHaveClass('ant-select-item-option-content');
+    fireEvent.click(username1);
+
+    fireEvent.click(screen.getByText('common.submit'));
+    expect(submitProgressConfigFn).toBeCalledTimes(1);
+    expect(submitProgressConfigFn).toBeCalledWith([
+      {
+        assignee_user_name_list: [],
+        desc: 'desc0',
+        type: 'sql_review',
+        approved_by_authorized: true,
+      },
+      {
+        assignee_user_name_list: ['user_name1'],
+        desc: 'desc exec',
+        type: 'sql_execute',
+      },
+    ]);
+
+    fireEvent.click(screen.getByText('common.reset'));
     expect(container).toMatchSnapshot();
   });
 });

@@ -46,6 +46,16 @@ const UpdateWorkflowTemplate = () => {
       .getWorkflowTemplateV1({ workflow_template_name: urlParams.workflowName })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
+          const temp = res.data.data;
+          if (temp?.workflow_step_template_list) {
+            temp.workflow_step_template_list =
+              temp.workflow_step_template_list.map((e) => {
+                if (e.approved_by_authorized) {
+                  e.assignee_user_name_list = [];
+                }
+                return e;
+              });
+          }
           setWorkflowTemplate(res.data.data);
         }
       });
