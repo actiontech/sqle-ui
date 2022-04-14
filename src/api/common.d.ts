@@ -1215,6 +1215,8 @@ export interface IWeChatConfigurationResV1 {
 }
 
 export interface IWorkFlowStepTemplateReqV1 {
+  approved_by_authorized?: boolean;
+
   assignee_user_name_list?: string[];
 
   desc?: string;
@@ -1223,6 +1225,8 @@ export interface IWorkFlowStepTemplateReqV1 {
 }
 
 export interface IWorkFlowStepTemplateResV1 {
+  approved_by_authorized?: boolean;
+
   assignee_user_name_list?: string[];
 
   desc?: string;

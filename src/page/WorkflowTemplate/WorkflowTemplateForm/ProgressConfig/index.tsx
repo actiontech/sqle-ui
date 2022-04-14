@@ -12,6 +12,7 @@ import {
   Select,
   Button,
   Tooltip,
+  Radio,
 } from 'antd';
 import { cloneDeep } from 'lodash';
 import React, { ChangeEvent, useState } from 'react';
@@ -23,17 +24,27 @@ import EmitterKey from '../../../../data/EmitterKey';
 import useUsername from '../../../../hooks/useUsername';
 import { Theme } from '../../../../types/theme.type';
 import EventEmitter from '../../../../utils/EventEmitter';
-import { ProgressConfigItem, ProgressConfigProps } from './index.type';
+import {
+  ExecProgressConfigItem,
+  ProgressConfigItem,
+  ProgressConfigProps,
+} from './index.type';
+
+export enum ProgressConfigReviewTypeEnum {
+  specify = 'specify',
+  match = 'match',
+}
 
 const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
   const theme = useTheme<Theme>();
   const { t } = useTranslation();
 
   const [progressData, setProgressData] = useState<ProgressConfigItem[]>([]);
-  const [execProgressData, setExecProgressData] = useState<ProgressConfigItem>({
-    assignee_user_name_list: [],
-    desc: '',
-  });
+  const [execProgressData, setExecProgressData] =
+    useState<ExecProgressConfigItem>({
+      assignee_user_name_list: [],
+      desc: '',
+    });
   const [
     execProgressError,
     { setTrue: setExecProgressErrorTrue, setFalse: setExecProgressErrorFalse },
@@ -44,6 +55,22 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
     const temp = cloneDeep(progressData);
     temp[index].assignee_user_name_list = value;
     if (progressError.includes(index) && value.length > 0) {
+      setProgressError(progressError.filter((e) => e !== index));
+    }
+    setProgressData(temp);
+  };
+
+  const updateReviewType = (
+    index: number,
+    value: ProgressConfigReviewTypeEnum
+  ) => {
+    const temp = cloneDeep(progressData);
+    temp[index].approved_by_authorized =
+      value === ProgressConfigReviewTypeEnum.match;
+    if (value === ProgressConfigReviewTypeEnum.match) {
+      temp[index].assignee_user_name_list = [];
+    }
+    if (progressError.includes(index) && temp[index].approved_by_authorized) {
       setProgressError(progressError.filter((e) => e !== index));
     }
     setProgressData(temp);
@@ -80,6 +107,7 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
     temp.push({
       assignee_user_name_list: [],
       desc: '',
+      approved_by_authorized: false,
     });
     setProgressData(temp);
   };
@@ -121,7 +149,7 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
     const tempError: number[] = [];
     for (let i = 0; i < progressData.length; i++) {
       const len = progressData[i].assignee_user_name_list.length;
-      if (len <= 0 || len > 3) {
+      if (!progressData[i].approved_by_authorized && (len <= 0 || len > 3)) {
         tempError.push(i);
       }
     }
@@ -203,6 +231,7 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
         props.defaultData.workflow_step_template_list?.map((e) => ({
           assignee_user_name_list: e.assignee_user_name_list ?? [],
           desc: e.desc ?? '',
+          approved_by_authorized: e.approved_by_authorized ?? false,
         })) ?? []
       );
       setExecProgressData({
@@ -215,7 +244,7 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
   return (
     <Space direction="vertical" className="full-width-element" size={24}>
       <Row>
-        <Col span={8} offset={4}>
+        <Col span={10} offset={3}>
           <Steps direction="vertical">
             <Steps.Step
               status="process"
@@ -237,11 +266,42 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
                         className="full-width-element"
                       >
                         <Row>
+                          <Col span={5} className="text-black">
+                            {t('workflowTemplate.form.label.reviewUserType')}
+                          </Col>
+                          <Col span={18}>
+                            <Radio.Group
+                              value={
+                                progressItem.approved_by_authorized
+                                  ? ProgressConfigReviewTypeEnum.match
+                                  : ProgressConfigReviewTypeEnum.specify
+                              }
+                              onChange={(e) =>
+                                updateReviewType(index, e.target.value)
+                              }
+                            >
+                              <Radio
+                                value={ProgressConfigReviewTypeEnum.specify}
+                              >
+                                {t(
+                                  'workflowTemplate.progressConfig.review.reviewUserType.specify'
+                                )}
+                              </Radio>
+                              <Radio value={ProgressConfigReviewTypeEnum.match}>
+                                {t(
+                                  'workflowTemplate.progressConfig.review.reviewUserType.match'
+                                )}
+                              </Radio>
+                            </Radio.Group>
+                          </Col>
+                        </Row>
+                        <Row>
                           <Col span={5}>
                             {t('workflowTemplate.form.label.reviewUser')}
                           </Col>
                           <Col span={18}>
                             <Select
+                              disabled={progressItem.approved_by_authorized}
                               value={progressItem.assignee_user_name_list}
                               onChange={updateUsername.bind(null, index)}
                               className="full-width-element"
@@ -410,7 +470,7 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
         </Col>
       </Row>
       <Row>
-        <Col offset={12}>
+        <Col offset={13}>
           <Space>
             <Button disabled={props.submitLoading} onClick={props.prevStep}>
               {t('common.prevStep')}

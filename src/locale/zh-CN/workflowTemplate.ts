@@ -75,6 +75,7 @@ export default {
       allowSubmitWhenLessAuditLevel: '允许创建工单的最高审核等级',
       instanceNameList: '应用的数据源',
       reviewUser: '审核人',
+      reviewUserType: '审核人类型',
       reviewDesc: '步骤描述',
       execUser: '执行人',
     },
@@ -88,6 +89,10 @@ export default {
     review: {
       title: '工单审核',
       subTitle: '审核人在该步骤可以执行 审核通过或驳回 操作',
+      reviewUserType: {
+        specify: '指定审核人',
+        match: '匹配所有拥有审核权限的用户',
+      },
     },
     exec: {
       title: '执行上线',
