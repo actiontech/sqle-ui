@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { DataSourceProps } from '.';
 import instance from '../../../../api/instance';
 import { IGetInstanceTipListV1Params } from '../../../../api/instance/index.d';
+import { getInstanceTipListV1FunctionalModuleEnum } from '../../../../api/instance/index.enum';
 import { ResponseCode } from '../../../../data/common';
 import useDatabaseType from '../../../../hooks/useDatabaseType';
 import useInstance from '../../../../hooks/useInstance';
@@ -18,10 +19,14 @@ const DataSource: React.FC<DataSourceProps> = (props) => {
     useDatabaseType();
 
   const getInstanceParams = useMemo<IGetInstanceTipListV1Params>(() => {
+    const params: IGetInstanceTipListV1Params = {
+      functional_module:
+        getInstanceTipListV1FunctionalModuleEnum.create_audit_plan,
+    };
     if (!!defaultValue) {
-      return { filter_db_type: defaultValue.audit_plan_db_type };
+      params.filter_db_type = defaultValue.audit_plan_db_type;
     }
-    return {};
+    return params;
   }, [defaultValue]);
 
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();

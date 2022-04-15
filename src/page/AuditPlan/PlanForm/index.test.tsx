@@ -10,6 +10,7 @@ import PlanForm from '.';
 import audit_plan from '../../../api/audit_plan';
 import { IAuditPlanResV1 } from '../../../api/common';
 import instance from '../../../api/instance';
+import { getInstanceTipListV1FunctionalModuleEnum } from '../../../api/instance/index.enum';
 import EmitterKey from '../../../data/EmitterKey';
 import { getBySelector } from '../../../testUtils/customQuery';
 import {
@@ -25,6 +26,7 @@ import { auditTaskMetas } from './__testData__/auditMeta';
 
 describe('PlanForm', () => {
   let warningSpy!: jest.SpyInstance;
+  let useInstanceSpy!: jest.SpyInstance;
   beforeAll(() => {
     const warning = global.console.warn;
     warningSpy = jest.spyOn(global.console, 'warn');
@@ -39,7 +41,7 @@ describe('PlanForm', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockDriver();
-    mockUseInstance();
+    useInstanceSpy = mockUseInstance();
     mockUseInstanceSchema();
     mockGetInstance();
     mockGetAuditMeta();
@@ -226,6 +228,11 @@ describe('PlanForm', () => {
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
+    });
+    expect(useInstanceSpy).toBeCalledTimes(1);
+    expect(useInstanceSpy).toBeCalledWith({
+      filter_db_type: 'oracle',
+      functional_module: 'create_audit_plan',
     });
     expect(container).toMatchSnapshot();
     fireEvent.click(screen.getByText('common.reset'));

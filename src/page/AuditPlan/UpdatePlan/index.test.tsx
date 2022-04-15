@@ -3,6 +3,7 @@ import { cloneDeep } from 'lodash';
 import { useParams } from 'react-router-dom';
 import UpdateAuditPlan from '.';
 import audit_plan from '../../../api/audit_plan';
+import { getInstanceTipListV1FunctionalModuleEnum } from '../../../api/instance/index.enum';
 import EmitterKey from '../../../data/EmitterKey';
 import {
   getBySelector,
@@ -27,6 +28,7 @@ jest.mock('react-router', () => {
 describe('UpdateAuditPlan', () => {
   let warningSpy!: jest.SpyInstance;
   const useParamsMock: jest.Mock = useParams as jest.Mock;
+  let useInstanceSpy!: jest.SpyInstance;
   beforeAll(() => {
     const warning = global.console.warn;
     warningSpy = jest.spyOn(global.console, 'warn');
@@ -42,7 +44,7 @@ describe('UpdateAuditPlan', () => {
     jest.useFakeTimers();
     useParamsMock.mockReturnValue({ auditPlanName: 'auditPlanName1' });
     mockDriver();
-    mockUseInstance();
+    useInstanceSpy = mockUseInstance();
     mockUseInstanceSchema();
     mockGetAuditPlan();
     mockGetAuditMeta();
@@ -93,6 +95,11 @@ describe('UpdateAuditPlan', () => {
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
+    });
+
+    expect(useInstanceSpy).toBeCalledWith({
+      functional_module:
+        getInstanceTipListV1FunctionalModuleEnum.create_audit_plan,
     });
 
     fireEvent.mouseDown(screen.getByLabelText('auditPlan.planForm.schema'));
