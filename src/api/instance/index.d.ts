@@ -13,6 +13,8 @@ import {
   IGetInstanceWorkflowTemplateResV1
 } from '../common.d';
 
+import { getInstanceTipListV1FunctionalModuleEnum } from './index.enum';
+
 export interface IGetInstanceAdditionalMetasReturn
   extends IGetInstanceAdditionalMetasResV1 {}
 
@@ -24,6 +26,8 @@ export interface ICheckInstanceIsConnectableV1Return
 
 export interface IGetInstanceTipListV1Params {
   filter_db_type?: string;
+
+  functional_module?: getInstanceTipListV1FunctionalModuleEnum;
 }
 
 export interface IGetInstanceTipListV1Return extends IGetInstanceTipsResV1 {}

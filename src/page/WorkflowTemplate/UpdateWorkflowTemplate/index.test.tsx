@@ -22,7 +22,7 @@ jest.mock('react-router', () => {
   };
 });
 
-describe('CreateWorkflowTemplate', () => {
+describe('UpdateWorkflowTemplate', () => {
   let getWorkflowTemplateSpy!: jest.SpyInstance;
   const useParamsMock: jest.Mock = useParams as jest.Mock;
 
@@ -39,7 +39,7 @@ describe('CreateWorkflowTemplate', () => {
     jest.clearAllTimers();
   });
 
-  const mockCreateWorkflowTemplate = () => {
+  const mockUpdateWorkflowTemplate = () => {
     const spy = jest.spyOn(workflow, 'updateWorkflowTemplateV1');
     spy.mockImplementation(() => resolveThreeSecond({}));
     return spy;
@@ -64,7 +64,7 @@ describe('CreateWorkflowTemplate', () => {
   });
 
   test('should send create workflow template when user submit all form', async () => {
-    const createSpy = mockCreateWorkflowTemplate();
+    const updateSpy = mockUpdateWorkflowTemplate();
     const shallowWrapper = shallow(<UpdateWorkflowTemplate />);
     const formWrapper = shallowWrapper.find('WorkflowTemplateForm');
     formWrapper.prop<Function>('updateBaseInfo')({
@@ -81,9 +81,10 @@ describe('CreateWorkflowTemplate', () => {
         type: WorkFlowStepTemplateReqV1TypeEnum.sql_review,
       },
       {
-        assignee_user_name_list: ['name2'],
+        assignee_user_name_list: [],
         desc: 'desc2',
         type: WorkFlowStepTemplateReqV1TypeEnum.sql_review,
+        approved_by_authorized: true,
       },
       {
         assignee_user_name_list: ['name2'],
@@ -91,7 +92,7 @@ describe('CreateWorkflowTemplate', () => {
         type: WorkFlowStepTemplateReqV1TypeEnum.sql_execute,
       },
     ]);
-    expect(createSpy).toBeCalledWith({
+    expect(updateSpy).toBeCalledWith({
       workflow_template_name: 'default',
       desc: 'desc1',
       allow_submit_when_less_audit_level:
@@ -104,9 +105,10 @@ describe('CreateWorkflowTemplate', () => {
           type: WorkFlowStepTemplateReqV1TypeEnum.sql_review,
         },
         {
-          assignee_user_name_list: ['name2'],
+          assignee_user_name_list: [],
           desc: 'desc2',
           type: WorkFlowStepTemplateReqV1TypeEnum.sql_review,
+          approved_by_authorized: true,
         },
         {
           assignee_user_name_list: ['name2'],

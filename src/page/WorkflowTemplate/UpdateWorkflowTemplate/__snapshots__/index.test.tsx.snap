@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreateWorkflowTemplate should match snapshot 1`] = `
+exports[`UpdateWorkflowTemplate should match snapshot 1`] = `
 <div>
   <div
     class="ant-card ant-card-bordered"
@@ -477,7 +477,7 @@ exports[`CreateWorkflowTemplate should match snapshot 1`] = `
                   class="ant-row"
                 >
                   <div
-                    class="ant-col ant-col-8 ant-col-offset-4"
+                    class="ant-col ant-col-10 ant-col-offset-3"
                   >
                     <div
                       class="ant-steps ant-steps-vertical"
@@ -743,7 +743,7 @@ exports[`CreateWorkflowTemplate should match snapshot 1`] = `
                   class="ant-row"
                 >
                   <div
-                    class="ant-col ant-col-offset-12"
+                    class="ant-col ant-col-offset-13"
                   >
                     <div
                       class="ant-space ant-space-horizontal ant-space-align-center"
@@ -856,7 +856,7 @@ exports[`CreateWorkflowTemplate should match snapshot 1`] = `
 </div>
 `;
 
-exports[`CreateWorkflowTemplate should match snapshot 2`] = `
+exports[`UpdateWorkflowTemplate should match snapshot 2`] = `
 <div>
   <div
     class="ant-card ant-card-bordered"
@@ -1370,7 +1370,7 @@ exports[`CreateWorkflowTemplate should match snapshot 2`] = `
                   class="ant-row"
                 >
                   <div
-                    class="ant-col ant-col-8 ant-col-offset-4"
+                    class="ant-col ant-col-10 ant-col-offset-3"
                   >
                     <div
                       class="ant-steps ant-steps-vertical"
@@ -1453,6 +1453,67 @@ exports[`CreateWorkflowTemplate should match snapshot 2`] = `
                                   <div
                                     class="ant-space ant-space-vertical full-width-element"
                                   >
+                                    <div
+                                      class="ant-space-item"
+                                      style="margin-bottom: 24px;"
+                                    >
+                                      <div
+                                        class="ant-row"
+                                      >
+                                        <div
+                                          class="ant-col ant-col-5 text-black"
+                                        >
+                                          workflowTemplate.form.label.reviewUserType
+                                        </div>
+                                        <div
+                                          class="ant-col ant-col-18"
+                                        >
+                                          <div
+                                            class="ant-radio-group ant-radio-group-outline"
+                                          >
+                                            <label
+                                              class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                            >
+                                              <span
+                                                class="ant-radio ant-radio-checked"
+                                              >
+                                                <input
+                                                  checked=""
+                                                  class="ant-radio-input"
+                                                  type="radio"
+                                                  value="specify"
+                                                />
+                                                <span
+                                                  class="ant-radio-inner"
+                                                />
+                                              </span>
+                                              <span>
+                                                workflowTemplate.progressConfig.review.reviewUserType.specify
+                                              </span>
+                                            </label>
+                                            <label
+                                              class="ant-radio-wrapper"
+                                            >
+                                              <span
+                                                class="ant-radio"
+                                              >
+                                                <input
+                                                  class="ant-radio-input"
+                                                  type="radio"
+                                                  value="match"
+                                                />
+                                                <span
+                                                  class="ant-radio-inner"
+                                                />
+                                              </span>
+                                              <span>
+                                                workflowTemplate.progressConfig.review.reviewUserType.match
+                                              </span>
+                                            </label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
                                     <div
                                       class="ant-space-item"
                                       style="margin-bottom: 24px;"
@@ -1712,6 +1773,67 @@ exports[`CreateWorkflowTemplate should match snapshot 2`] = `
                                         class="ant-row"
                                       >
                                         <div
+                                          class="ant-col ant-col-5 text-black"
+                                        >
+                                          workflowTemplate.form.label.reviewUserType
+                                        </div>
+                                        <div
+                                          class="ant-col ant-col-18"
+                                        >
+                                          <div
+                                            class="ant-radio-group ant-radio-group-outline"
+                                          >
+                                            <label
+                                              class="ant-radio-wrapper"
+                                            >
+                                              <span
+                                                class="ant-radio"
+                                              >
+                                                <input
+                                                  class="ant-radio-input"
+                                                  type="radio"
+                                                  value="specify"
+                                                />
+                                                <span
+                                                  class="ant-radio-inner"
+                                                />
+                                              </span>
+                                              <span>
+                                                workflowTemplate.progressConfig.review.reviewUserType.specify
+                                              </span>
+                                            </label>
+                                            <label
+                                              class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                            >
+                                              <span
+                                                class="ant-radio ant-radio-checked"
+                                              >
+                                                <input
+                                                  checked=""
+                                                  class="ant-radio-input"
+                                                  type="radio"
+                                                  value="match"
+                                                />
+                                                <span
+                                                  class="ant-radio-inner"
+                                                />
+                                              </span>
+                                              <span>
+                                                workflowTemplate.progressConfig.review.reviewUserType.match
+                                              </span>
+                                            </label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="ant-space-item"
+                                      style="margin-bottom: 24px;"
+                                    >
+                                      <div
+                                        class="ant-row"
+                                      >
+                                        <div
                                           class="ant-col ant-col-5"
                                         >
                                           workflowTemplate.form.label.reviewUser
@@ -1720,7 +1842,7 @@ exports[`CreateWorkflowTemplate should match snapshot 2`] = `
                                           class="ant-col ant-col-18"
                                         >
                                           <div
-                                            class="ant-select full-width-element ant-select-multiple ant-select-show-search"
+                                            class="ant-select full-width-element ant-select-multiple ant-select-disabled ant-select-show-search"
                                             data-testid="review-user-1"
                                           >
                                             <div
@@ -1729,46 +1851,6 @@ exports[`CreateWorkflowTemplate should match snapshot 2`] = `
                                               <div
                                                 class="ant-select-selection-overflow"
                                               >
-                                                <div
-                                                  class="ant-select-selection-overflow-item"
-                                                  style="opacity: 1;"
-                                                >
-                                                  <span
-                                                    class="ant-select-selection-item"
-                                                  >
-                                                    <span
-                                                      class="ant-select-selection-item-content"
-                                                    >
-                                                      admin
-                                                    </span>
-                                                    <span
-                                                      aria-hidden="true"
-                                                      class="ant-select-selection-item-remove"
-                                                      style="user-select: none;"
-                                                      unselectable="on"
-                                                    >
-                                                      <span
-                                                        aria-label="close"
-                                                        class="anticon anticon-close"
-                                                        role="img"
-                                                      >
-                                                        <svg
-                                                          aria-hidden="true"
-                                                          data-icon="close"
-                                                          fill="currentColor"
-                                                          focusable="false"
-                                                          height="1em"
-                                                          viewBox="64 64 896 896"
-                                                          width="1em"
-                                                        >
-                                                          <path
-                                                            d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
-                                                          />
-                                                        </svg>
-                                                      </span>
-                                                    </span>
-                                                  </span>
-                                                </div>
                                                 <div
                                                   class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
                                                   style="opacity: 1;"
@@ -1781,10 +1863,12 @@ exports[`CreateWorkflowTemplate should match snapshot 2`] = `
                                                       aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
                                                       aria-autocomplete="list"
                                                       aria-controls="rc_select_TEST_OR_SSR_list"
+                                                      aria-expanded="false"
                                                       aria-haspopup="listbox"
                                                       aria-owns="rc_select_TEST_OR_SSR_list"
                                                       autocomplete="off"
                                                       class="ant-select-selection-search-input"
+                                                      disabled=""
                                                       id="rc_select_TEST_OR_SSR"
                                                       readonly=""
                                                       role="combobox"
@@ -1803,6 +1887,11 @@ exports[`CreateWorkflowTemplate should match snapshot 2`] = `
                                                   </div>
                                                 </div>
                                               </div>
+                                              <span
+                                                class="ant-select-selection-placeholder"
+                                              >
+                                                common.form.placeholder.select
+                                              </span>
                                             </div>
                                           </div>
                                         </div>
@@ -2175,7 +2264,7 @@ exports[`CreateWorkflowTemplate should match snapshot 2`] = `
                   class="ant-row"
                 >
                   <div
-                    class="ant-col ant-col-offset-12"
+                    class="ant-col ant-col-offset-13"
                   >
                     <div
                       class="ant-space ant-space-horizontal ant-space-align-center"

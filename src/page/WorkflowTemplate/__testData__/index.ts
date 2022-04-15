@@ -13,6 +13,7 @@ export const workflowData = {
       type: 'sql_review',
       desc: '2',
       assignee_user_name_list: ['admin'],
+      approved_by_authorized: true,
     },
     {
       number: 3,

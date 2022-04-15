@@ -442,7 +442,7 @@ exports[`WorkflowTemplateForm should match snapshot 1`] = `
               class="ant-row"
             >
               <div
-                class="ant-col ant-col-8 ant-col-offset-4"
+                class="ant-col ant-col-10 ant-col-offset-3"
               >
                 <div
                   class="ant-steps ant-steps-vertical"
@@ -708,7 +708,7 @@ exports[`WorkflowTemplateForm should match snapshot 1`] = `
               class="ant-row"
             >
               <div
-                class="ant-col ant-col-offset-12"
+                class="ant-col ant-col-offset-13"
               >
                 <div
                   class="ant-space ant-space-horizontal ant-space-align-center"
