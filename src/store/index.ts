@@ -6,6 +6,7 @@ import whitelist from './whitelist';
 import ruleTemplate from './ruleTemplate';
 import nav from './nav';
 import system from './system';
+import auditPlan from './auditPlan';
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     ruleTemplate,
     nav,
     system,
+    auditPlan,
   },
 });
 

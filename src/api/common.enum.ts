@@ -86,6 +86,16 @@ export enum RuleResV1LevelEnum {
   'error' = 'error'
 }
 
+export enum UpdateAuditPlanNotifyConfigReqV1NotifyLevelEnum {
+  'normal' = 'normal',
+
+  'notice' = 'notice',
+
+  'warn' = 'warn',
+
+  'error' = 'error'
+}
+
 export enum UpdateAuditWhitelistReqV1MatchTypeEnum {
   'exact_match' = 'exact_match',
 

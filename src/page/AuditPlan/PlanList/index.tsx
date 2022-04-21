@@ -1,11 +1,21 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useBoolean, useRequest } from 'ahooks';
 import { Button, Card, message, Space, Table } from 'antd';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import audit_plan from '../../../api/audit_plan';
+import { IAuditPlanResV1 } from '../../../api/common';
 import { ResponseCode } from '../../../data/common';
+import { ModalName } from '../../../data/ModalName';
 import useTable from '../../../hooks/useTable';
+import {
+  initAuditPlanModalStatus,
+  updateAuditPlanModalStatus,
+  updateSelectAuditPlan,
+} from '../../../store/auditPlan';
+import PlanListModal from './Modal';
 import { planListTableHeader } from './tableColumn';
 
 const PlanList = () => {
@@ -64,6 +74,32 @@ const PlanList = () => {
       });
   };
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(
+      initAuditPlanModalStatus({
+        modalStatus: {
+          [ModalName.Subscribe_Notice]: false,
+        },
+      })
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const openModal = (name: ModalName, row?: IAuditPlanResV1) => {
+    if (row) {
+      dispatch(updateSelectAuditPlan(row));
+    }
+
+    dispatch(
+      updateAuditPlanModalStatus({
+        modalName: name,
+        status: true,
+      })
+    );
+  };
+
   return (
     <Card
       title={
@@ -81,7 +117,7 @@ const PlanList = () => {
       ]}
     >
       <Table
-        columns={planListTableHeader(removeAuditPlan)}
+        columns={planListTableHeader(removeAuditPlan, openModal)}
         dataSource={data?.list ?? []}
         rowKey="audit_plan_name"
         pagination={{
@@ -96,6 +132,7 @@ const PlanList = () => {
         })}
         onChange={tableChange}
       />
+      <PlanListModal />
     </Card>
   );
 };

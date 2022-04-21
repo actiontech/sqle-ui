@@ -86,7 +86,7 @@ export const FilterFormRowLayout = {
   gutter: 24,
 };
 
-export enum LoginTypeEnum{
-  'ldap'='ldap',
-  'sqle'='sqle',
+export enum LoginTypeEnum {
+  'ldap' = 'ldap',
+  'sqle' = 'sqle',
 }

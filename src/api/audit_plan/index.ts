@@ -19,6 +19,12 @@ import {
   IDeleteAuditPlanV1Return,
   IUpdateAuditPlanV1Params,
   IUpdateAuditPlanV1Return,
+  IGetAuditPlanNotifyConfigV1Params,
+  IGetAuditPlanNotifyConfigV1Return,
+  IUpdateAuditPlanNotifyConfigV1Params,
+  IUpdateAuditPlanNotifyConfigV1Return,
+  ITestAuditPlanNotifyConfigV1Params,
+  ITestAuditPlanNotifyConfigV1Return,
   IGetAuditPlanReportSQLsV1Params,
   IGetAuditPlanReportSQLsV1Return,
   IGetAuditPlanReportsV1Params,
@@ -118,6 +124,51 @@ class AuditPlanService extends ServiceBase {
 
     return this.patch<IUpdateAuditPlanV1Return>(
       `/v1/audit_plans/${audit_plan_name}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public getAuditPlanNotifyConfigV1(
+    params: IGetAuditPlanNotifyConfigV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const audit_plan_name = paramsData.audit_plan_name;
+    delete paramsData.audit_plan_name;
+
+    return this.get<IGetAuditPlanNotifyConfigV1Return>(
+      `/v1/audit_plans/${audit_plan_name}/notify_config`,
+      paramsData,
+      options
+    );
+  }
+
+  public updateAuditPlanNotifyConfigV1(
+    params: IUpdateAuditPlanNotifyConfigV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const audit_plan_name = paramsData.audit_plan_name;
+    delete paramsData.audit_plan_name;
+
+    return this.patch<IUpdateAuditPlanNotifyConfigV1Return>(
+      `/v1/audit_plans/${audit_plan_name}/notify_config`,
+      paramsData,
+      options
+    );
+  }
+
+  public testAuditPlanNotifyConfigV1(
+    params: ITestAuditPlanNotifyConfigV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const audit_plan_name = paramsData.audit_plan_name;
+    delete paramsData.audit_plan_name;
+
+    return this.get<ITestAuditPlanNotifyConfigV1Return>(
+      `/v1/audit_plans/${audit_plan_name}/notify_config/test`,
       paramsData,
       options
     );

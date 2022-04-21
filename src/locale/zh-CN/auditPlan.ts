@@ -15,6 +15,9 @@ export default {
       audit_plan_token: '访问凭证',
       audit_plan_type: '审核任务类型',
     },
+    operator: {
+      notice: '订阅审核失败消息',
+    },
   },
 
   action: {
@@ -94,6 +97,51 @@ export default {
     table: {
       sql: 'SQL语句',
       result: '审核结果',
+    },
+  },
+
+  subscribeNotice: {
+    title: '订阅审核失败消息',
+
+    form: {
+      interval: '推送间隔(分钟)',
+      intervalTips:
+        '推送间隔指的是两次推送之间的最短时间间隔，在推送过一次之后的“间隔时间”之内即使审核出现了错误也不会进行推送。直到间隔时间过了之后触发了新的错误之后才会进行下一次推送。如果你想接收所有推送可以将该间隔设置为0',
+
+      level: '告警等级阈值',
+      levelTips: '只有审核结果中包含高于或等于选择的告警等级的错误才会触发推送',
+
+      emailEnable: '启用邮件推送',
+      emailEnableTips: '邮件会发送给审核任务创建人',
+
+      webhooksEnable: '启用Webhooks推送',
+      webhooksEnableCe: 'Webhooks推送为企业版功能',
+      webhooksUrl: 'Webhooks url',
+      webhooksTemplate: 'webhooks模版(json)',
+
+      webhooksTemplateHelp: {
+        title: '填写模版请遵循以下规则',
+        rule1:
+          '请填写正确的json格式的模版, 理论上不限制字段名，字段个数等规则。只需要保证json格式的正确性即可。',
+        rule2: '推送时会自动替换模版中的变量,变更请参考下方的变量说明',
+
+        supportVariable: '目前支持的变量',
+        table: {
+          desc: '变量描述',
+          variable: '变量',
+        },
+        variable: {
+          subject: '告警标题',
+          body: '告警内容',
+        },
+
+        reset: '重置模版为默认模版',
+      },
+
+      test: '发送测试消息',
+      testTips: '请先提交配置再进行测试',
+      testLoading: '正在向审核任务{{name}}的订阅配置发送测试消息...',
+      testSuccess: '测试消息发送成功',
     },
   },
 };

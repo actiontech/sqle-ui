@@ -26,6 +26,9 @@ export enum ModalName {
   // rule template
   Clone_Rule_Template = 'CLONE_RULE_TEMPLATE',
 
+  // audit plan
+  Subscribe_Notice = 'SUBSCRIBE_NOTICE',
+
   // header
   SHOW_VERSION = 'SHOW_VERSION',
 }
