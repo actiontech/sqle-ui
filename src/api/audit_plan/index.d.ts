@@ -5,6 +5,9 @@ import {
   IBaseRes,
   IGetAuditPlanResV1,
   IUpdateAuditPlanReqV1,
+  IGetAuditPlanNotifyConfigResV1,
+  IUpdateAuditPlanNotifyConfigReqV1,
+  ITestAuditPlanNotifyConfigResV1,
   IGetAuditPlanReportSQLsResV1,
   IGetAuditPlanReportsResV1,
   IGetAuditPlanReportResV1,
@@ -53,6 +56,27 @@ export interface IUpdateAuditPlanV1Params extends IUpdateAuditPlanReqV1 {
 }
 
 export interface IUpdateAuditPlanV1Return extends IBaseRes {}
+
+export interface IGetAuditPlanNotifyConfigV1Params {
+  audit_plan_name: string;
+}
+
+export interface IGetAuditPlanNotifyConfigV1Return
+  extends IGetAuditPlanNotifyConfigResV1 {}
+
+export interface IUpdateAuditPlanNotifyConfigV1Params
+  extends IUpdateAuditPlanNotifyConfigReqV1 {
+  audit_plan_name: string;
+}
+
+export interface IUpdateAuditPlanNotifyConfigV1Return extends IBaseRes {}
+
+export interface ITestAuditPlanNotifyConfigV1Params {
+  audit_plan_name: string;
+}
+
+export interface ITestAuditPlanNotifyConfigV1Return
+  extends ITestAuditPlanNotifyConfigResV1 {}
 
 export interface IGetAuditPlanReportSQLsV1Params {
   audit_plan_name: string;

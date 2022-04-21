@@ -8,6 +8,7 @@ import {
   CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
   RuleParamResV1TypeEnum,
   RuleResV1LevelEnum,
+  UpdateAuditPlanNotifyConfigReqV1NotifyLevelEnum,
   UpdateAuditWhitelistReqV1MatchTypeEnum,
   UpdateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
   WorkFlowStepTemplateReqV1TypeEnum,
@@ -320,6 +321,28 @@ export interface IGetAuditPlanMetasResV1 {
   code?: number;
 
   data?: IAuditPlanMetaV1[];
+
+  message?: string;
+}
+
+export interface IGetAuditPlanNotifyConfigResDataV1 {
+  enable_email_notify?: boolean;
+
+  enable_web_hook_notify?: boolean;
+
+  notify_interval?: number;
+
+  notify_level?: string;
+
+  web_hook_template?: string;
+
+  web_hook_url?: string;
+}
+
+export interface IGetAuditPlanNotifyConfigResV1 {
+  code?: number;
+
+  data?: IGetAuditPlanNotifyConfigResDataV1;
 
   message?: string;
 }
@@ -944,6 +967,20 @@ export interface ISystemVariablesResV1 {
   workflow_expired_hours?: number;
 }
 
+export interface ITestAuditPlanNotifyConfigResDataV1 {
+  is_notify_send_normal?: boolean;
+
+  send_error_message?: string;
+}
+
+export interface ITestAuditPlanNotifyConfigResV1 {
+  code?: number;
+
+  data?: ITestAuditPlanNotifyConfigResDataV1;
+
+  message?: string;
+}
+
 export interface ITestSMTPConfigurationReqV1 {
   recipient_addr?: string;
 }
@@ -998,6 +1035,20 @@ export interface ITriggerAuditPlanResV1 {
   data?: IAuditPlanReportResV1;
 
   message?: string;
+}
+
+export interface IUpdateAuditPlanNotifyConfigReqV1 {
+  enable_email_notify?: boolean;
+
+  enable_web_hook_notify?: boolean;
+
+  notify_interval?: number;
+
+  notify_level?: UpdateAuditPlanNotifyConfigReqV1NotifyLevelEnum;
+
+  web_hook_template?: string;
+
+  web_hook_url?: string;
 }
 
 export interface IUpdateAuditPlanReqV1 {

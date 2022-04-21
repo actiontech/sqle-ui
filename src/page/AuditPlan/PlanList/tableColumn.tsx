@@ -1,12 +1,15 @@
-import { Button, Popconfirm, Space } from 'antd';
+import { MoreOutlined } from '@ant-design/icons';
+import { Button, Dropdown, Menu, Popconfirm, Space } from 'antd';
 import { Link } from 'react-router-dom';
 import { IAuditPlanMetaV1, IAuditPlanResV1 } from '../../../api/common';
+import { ModalName } from '../../../data/ModalName';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import TokenText from './component/TokenText';
 
 export const planListTableHeader = (
-  removeAuditPlan: (auditPlanName: string) => void
+  removeAuditPlan: (auditPlanName: string) => void,
+  openModal: (name: ModalName, row?: IAuditPlanResV1) => void
 ): TableColumn<IAuditPlanResV1, 'operate'> => {
   return [
     {
@@ -59,16 +62,42 @@ export const planListTableHeader = (
             >
               {i18n.t('common.edit')}
             </Link>
-            <Popconfirm
-              title={i18n.t('auditPlan.remove.confirm', {
-                name: record.audit_plan_name,
-              })}
-              onConfirm={() => removeAuditPlan(record.audit_plan_name ?? '')}
+            <Dropdown
+              trigger={['click']}
+              overlay={
+                <Menu>
+                  <Menu.Item>
+                    <Popconfirm
+                      placement="topLeft"
+                      title={i18n.t('auditPlan.remove.confirm', {
+                        name: record.audit_plan_name,
+                      })}
+                      onConfirm={() =>
+                        removeAuditPlan(record.audit_plan_name ?? '')
+                      }
+                    >
+                      <div
+                        className="text-red"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                        }}
+                      >
+                        {i18n.t('common.delete')}
+                      </div>
+                    </Popconfirm>
+                  </Menu.Item>
+                  <Menu.Item
+                    onClick={() =>
+                      openModal(ModalName.Subscribe_Notice, record)
+                    }
+                  >
+                    {i18n.t('auditPlan.list.operator.notice')}
+                  </Menu.Item>
+                </Menu>
+              }
             >
-              <Button type="link" danger>
-                {i18n.t('common.delete')}
-              </Button>
-            </Popconfirm>
+              <Button icon={<MoreOutlined />} type="link" size="small" />
+            </Dropdown>
           </Space>
         );
       },
