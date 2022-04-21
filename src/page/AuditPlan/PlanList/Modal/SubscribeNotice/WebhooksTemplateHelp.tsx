@@ -31,6 +31,7 @@ const WebhooksTemplateHelp: React.FC<{ resetTemplate: () => void }> = (
           )}
           <Table
             size="small"
+            rowKey="name"
             pagination={false}
             columns={[
               {

@@ -80,7 +80,7 @@ const PlanList = () => {
     dispatch(
       initAuditPlanModalStatus({
         modalStatus: {
-          [ModalName.Subscribe_Notice]: true,
+          [ModalName.Subscribe_Notice]: false,
         },
       })
     );

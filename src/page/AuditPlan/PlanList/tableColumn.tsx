@@ -1,5 +1,5 @@
-import { MoreOutlined } from '@ant-design/icons';
-import { Button, Dropdown, Menu, Popconfirm, Space } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+import { Dropdown, Menu, Popconfirm, Space, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import { IAuditPlanMetaV1, IAuditPlanResV1 } from '../../../api/common';
 import { ModalName } from '../../../data/ModalName';
@@ -66,7 +66,7 @@ export const planListTableHeader = (
               trigger={['click']}
               overlay={
                 <Menu>
-                  <Menu.Item>
+                  <Menu.Item key="remove">
                     <Popconfirm
                       placement="topLeft"
                       title={i18n.t('auditPlan.remove.confirm', {
@@ -87,6 +87,7 @@ export const planListTableHeader = (
                     </Popconfirm>
                   </Menu.Item>
                   <Menu.Item
+                    key="subscribe"
                     onClick={() =>
                       openModal(ModalName.Subscribe_Notice, record)
                     }
@@ -96,7 +97,10 @@ export const planListTableHeader = (
                 </Menu>
               }
             >
-              <Button icon={<MoreOutlined />} type="link" size="small" />
+              <Typography.Link className="pointer">
+                {i18n.t('common.more')}
+                <DownOutlined />
+              </Typography.Link>
             </Dropdown>
           </Space>
         );

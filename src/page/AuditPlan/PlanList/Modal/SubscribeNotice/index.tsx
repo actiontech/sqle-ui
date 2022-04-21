@@ -280,7 +280,7 @@ const SubscribeNotice = () => {
         </EmptyBox>
         <Form.Item label=" " colon={false} style={{ marginTop: 10 }}>
           <Tooltip overlay={t('auditPlan.subscribeNotice.form.testTips')}>
-            <Button onClick={test}>
+            <Button onClick={test} data-testid="testMessage">
               {t('auditPlan.subscribeNotice.form.test')}
             </Button>
           </Tooltip>
