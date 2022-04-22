@@ -11,6 +11,7 @@ import {
   message,
   Popconfirm,
   Space,
+  Tag,
   Typography,
 } from 'antd';
 import React, { useEffect } from 'react';
@@ -164,6 +165,9 @@ const RuleTemplateList = () => {
           renderItem={(item) => (
             <List.Item>
               <List.Item.Meta
+                style={{
+                  flex: '0 0 200px',
+                }}
                 title={item.rule_template_name}
                 description={
                   item.desc || t('ruleTemplate.ruleTemplateList.descEmpty')
@@ -182,7 +186,9 @@ const RuleTemplateList = () => {
                     </Typography.Text>
                   }
                 >
-                  {item.instance_name_list?.join(',')}
+                  {item.instance_name_list?.map((e) => (
+                    <Tag key={e}>{e}</Tag>
+                  ))}
                 </EmptyBox>
               </Col>
               <Col flex="0 0 200px">

@@ -355,6 +355,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
               >
                 <div
                   class="ant-list-item-meta"
+                  style="flex: 0 0 200px;"
                 >
                   <div
                     class="ant-list-item-meta-content"
@@ -378,7 +379,11 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                   <div>
                     ruleTemplate.ruleTemplateList.instance
                   </div>
-                  db1
+                  <span
+                    class="ant-tag"
+                  >
+                    db1
+                  </span>
                 </div>
                 <div
                   class="ant-col"
@@ -461,6 +466,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
               >
                 <div
                   class="ant-list-item-meta"
+                  style="flex: 0 0 200px;"
                 >
                   <div
                     class="ant-list-item-meta-content"
@@ -484,7 +490,11 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                   <div>
                     ruleTemplate.ruleTemplateList.instance
                   </div>
-                  db2
+                  <span
+                    class="ant-tag"
+                  >
+                    db2
+                  </span>
                 </div>
                 <div
                   class="ant-col"
