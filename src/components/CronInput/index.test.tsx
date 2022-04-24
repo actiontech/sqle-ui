@@ -1,7 +1,7 @@
 import { fireEvent, screen, render, waitFor } from '@testing-library/react';
 import CronInput from '.';
 import { getBySelector } from '../../testUtils/customQuery';
-import { CronMode } from './index.type';
+import { CronMode, CronTimeValue } from './index.type';
 
 describe('CronInput', () => {
   beforeEach(() => {
@@ -34,64 +34,45 @@ describe('CronInput', () => {
   });
 
   test('should hide the a part of select when user pass default every value', () => {
-    const { container, rerender } = render(<CronInput everyDefault="year" />);
-    expect(container).toMatchSnapshot();
-    rerender(<CronInput everyDefault="month" />);
-    expect(container).toMatchSnapshot();
-    rerender(<CronInput everyDefault="day" />);
-    expect(container).toMatchSnapshot();
-    rerender(<CronInput everyDefault="week" />);
-    expect(container).toMatchSnapshot();
-    rerender(<CronInput everyDefault="hour" />);
-    expect(container).toMatchSnapshot();
-    rerender(<CronInput everyDefault="minute" />);
-    expect(container).toMatchSnapshot();
-  });
-
-  test('should hide the a part of select when user change every select', async () => {
-    const { container } = render(<CronInput everyDefault="year" />);
-    expect(container).toMatchSnapshot();
-
-    fireEvent.mouseDown(screen.getByText('common.time.year'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    const hourOptions = screen.getAllByText('common.time.hour');
-    const hour = hourOptions[0];
-    expect(hour).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(hour);
-    expect(container).toMatchSnapshot();
-  });
-
-  test('should update cron expression when user change every', async () => {
-    const onChangeMock = jest.fn();
-    const { container } = render(
-      <CronInput everyDefault="year" onChange={onChangeMock} />
+    const { container, rerender } = render(
+      <CronInput everyDefault={CronTimeValue.everyDay} />
     );
+    expect(container).toMatchSnapshot();
+    rerender(<CronInput />);
+    expect(container).toMatchSnapshot();
+    rerender(<CronInput everyDefault={CronTimeValue.everyWeek} />);
+    expect(container).toMatchSnapshot();
+  });
+  test('should update cron expression when user change week', async () => {
+    const onChangeMock = jest.fn();
+    const { container } = render(<CronInput onChange={onChangeMock} />);
     expect(container).toMatchSnapshot();
 
     onChangeMock.mockClear();
-
-    fireEvent.mouseDown(screen.getByText('common.time.percommon.time.month'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
-    const monthOptions = screen.getAllByText('1');
-    const month = monthOptions[1];
-    expect(month).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(month);
+
+    fireEvent.mouseDown(screen.getAllByText('common.cron.time.everyDay')[0]);
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const weekOptions = screen.getAllByText('common.cron.time.everyWeek');
+    const week = weekOptions[0];
+    expect(week).toHaveClass('ant-select-item-option-content');
+    fireEvent.click(week);
+
+    fireEvent.click(screen.getByText('common.week.tuesday'));
 
     expect(onChangeMock).toBeCalledTimes(1);
-    expect(onChangeMock).toBeCalledWith('* * * 1 *');
+    expect(onChangeMock).toBeCalledWith('* * * * 2');
 
-    fireEvent.mouseDown(screen.getByText('common.time.year'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    const hourOptions = screen.getAllByText('common.time.hour');
-    const hour = hourOptions[0];
-    expect(hour).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(hour);
+    fireEvent.click(screen.getByText('common.week.friday'));
+
+    expect(onChangeMock).toBeCalledTimes(2);
+    expect(onChangeMock).nthCalledWith(2, '* * * * 2,5');
+
+    fireEvent.click(screen.getByText('common.week.sunday'));
 
     expect(container).toMatchSnapshot();
   });
@@ -126,5 +107,61 @@ describe('CronInput', () => {
   test('should set value to equal props.value', async () => {
     const { container } = render(<CronInput value="1 1 1 1 1" />);
     expect(container).toMatchSnapshot();
+  });
+
+  test('should disable select mode when user input month in cron expression', async () => {
+    render(<CronInput />);
+    fireEvent.click(screen.getByText('common.cron.mode.manual'));
+    fireEvent.input(
+      getBySelector('input', getBySelector('.cron-user-manual')),
+      { target: { value: '* * * 1 *' } }
+    );
+    expect(screen.getByText('common.cron.mode.select').parentNode).toHaveClass(
+      'ant-radio-wrapper-disabled'
+    );
+  });
+
+  test('should set week to * when user change interval from every week to every day', async () => {
+    render(<CronInput />);
+    fireEvent.mouseDown(screen.getAllByText('common.cron.time.everyDay')[0]);
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const weekOptions = screen.getAllByText('common.cron.time.everyWeek');
+    const week = weekOptions[0];
+    expect(week).toHaveClass('ant-select-item-option-content');
+    fireEvent.click(week);
+
+    fireEvent.click(screen.getByText('common.week.tuesday'));
+
+    expect(screen.getByTestId('cron-preview')).toHaveTextContent(
+      'common.preview: * * * * 2'
+    );
+
+    fireEvent.mouseDown(screen.getAllByText('common.cron.time.everyWeek')[0]);
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const dayOptions = screen.getAllByText('common.cron.time.everyDay');
+    const day = dayOptions[0];
+    expect(day).toHaveClass('ant-select-item-option-content');
+    fireEvent.click(day);
+
+    expect(screen.getByTestId('cron-preview')).toHaveTextContent(
+      'common.preview: * * * * *'
+    );
+  });
+
+  test('should switch to every week when cron include week at user switch cron mode', async () => {
+    render(<CronInput />);
+    fireEvent.click(screen.getByText('common.cron.mode.manual'));
+    fireEvent.input(
+      getBySelector('input', getBySelector('.cron-user-manual')),
+      { target: { value: '* * * * 2' } }
+    );
+    fireEvent.click(screen.getByText('common.cron.mode.select'));
+    expect(screen.getByText('common.cron.time.everyWeek')).toHaveClass(
+      'ant-select-selection-item'
+    );
   });
 });
