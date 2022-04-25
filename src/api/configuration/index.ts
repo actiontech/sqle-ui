@@ -16,6 +16,10 @@ import {
   ISetSQLELicenseV1Return,
   ICheckSQLELicenseV1Params,
   ICheckSQLELicenseV1Return,
+  IGetOauth2ConfigurationV1Return,
+  IUpdateOauth2ConfigurationV1Params,
+  IUpdateOauth2ConfigurationV1Return,
+  IGetOauth2TipsReturn,
   IGetSMTPConfigurationV1Return,
   IUpdateSMTPConfigurationV1Params,
   IUpdateSMTPConfigurationV1Return,
@@ -120,6 +124,34 @@ class ConfigurationService extends ServiceBase {
 
   public GetSQLELicenseInfoV1(options?: AxiosRequestConfig) {
     return this.get<any>('/v1/configurations/license/info', undefined, options);
+  }
+
+  public getOauth2ConfigurationV1(options?: AxiosRequestConfig) {
+    return this.get<IGetOauth2ConfigurationV1Return>(
+      '/v1/configurations/oauth2',
+      undefined,
+      options
+    );
+  }
+
+  public updateOauth2ConfigurationV1(
+    params: IUpdateOauth2ConfigurationV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.patch<IUpdateOauth2ConfigurationV1Return>(
+      '/v1/configurations/oauth2',
+      paramsData,
+      options
+    );
+  }
+
+  public getOauth2Tips(options?: AxiosRequestConfig) {
+    return this.get<IGetOauth2TipsReturn>(
+      '/v1/configurations/oauth2/tips',
+      undefined,
+      options
+    );
   }
 
   public getSMTPConfigurationV1(options?: AxiosRequestConfig) {

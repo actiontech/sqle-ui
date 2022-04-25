@@ -171,6 +171,14 @@ export interface IBatchCancelWorkflowsReqV1 {
   workflow_ids?: string[];
 }
 
+export interface IBindOauth2UserReqV1 {
+  oauth2_user_id?: string;
+
+  pwd?: string;
+
+  user_name?: string;
+}
+
 export interface ICheckLicenseResV1 {
   code?: number;
 
@@ -545,6 +553,48 @@ export interface IGetLicenseResV1 {
   message?: string;
 }
 
+export interface IGetOauth2ConfigurationResDataV1 {
+  access_token_tag?: string;
+
+  client_host?: string;
+
+  client_id?: string;
+
+  enable_oauth2?: boolean;
+
+  login_tip?: string;
+
+  scopes?: string[];
+
+  server_auth_url?: string;
+
+  server_token_url?: string;
+
+  server_user_id_url?: string;
+}
+
+export interface IGetOauth2ConfigurationResV1 {
+  code?: number;
+
+  data?: IGetOauth2ConfigurationResDataV1;
+
+  message?: string;
+}
+
+export interface IGetOauth2TipsResDataV1 {
+  enable_oauth2?: boolean;
+
+  login_tip?: string;
+}
+
+export interface IGetOauth2TipsResV1 {
+  code?: number;
+
+  data?: IGetOauth2TipsResDataV1;
+
+  message?: string;
+}
+
 export interface IGetOperationsResV1 {
   code?: number;
 
@@ -847,6 +897,28 @@ export interface IMaintenanceTimeResV1 {
   maintenance_start_time?: ITimeResV1;
 
   maintenance_stop_time?: ITimeResV1;
+}
+
+export interface IOauth2ConfigurationReqV1 {
+  access_token_tag?: string;
+
+  client_host?: string;
+
+  client_id?: string;
+
+  client_key?: string;
+
+  enable_oauth2?: boolean;
+
+  login_tip?: string;
+
+  scopes?: string[];
+
+  server_auth_url?: string;
+
+  server_token_url?: string;
+
+  server_user_id_url?: string;
 }
 
 export interface IOperationResV1 {

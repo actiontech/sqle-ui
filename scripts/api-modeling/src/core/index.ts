@@ -113,7 +113,7 @@ class Core extends BaseClass {
               operationId
             );
             const returnInterface = this.getReturnInterface(
-              method[url][requestMethod].responses[200].schema,
+              method[url][requestMethod].responses?.[200].schema,
               operationId
             );
             body += template.methodTemplate({
@@ -215,7 +215,7 @@ class Core extends BaseClass {
 
   public getReturnInterface(params: ISwaggerProps, operationId: string) {
     if (!params) {
-      return '';
+      return 'any';
     }
     if (Object.keys(this.typeDictionary).includes(params.type)) {
       return this.typeDictionary[params.type];
