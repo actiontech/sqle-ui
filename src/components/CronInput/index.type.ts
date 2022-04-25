@@ -3,8 +3,13 @@ export enum CronMode {
   Select = 'Select',
 }
 
+export enum CronTimeValue {
+  'everyDay' = 'everyDay',
+  'everyWeek' = 'everyWeek',
+}
+
 export type CronInputProps = {
-  everyDefault?: 'year' | 'month' | 'day' | 'week' | 'hour' | 'minute';
+  everyDefault?: CronTimeValue;
   value?: string;
   onChange?: (value: string) => void;
   mode?: CronMode;

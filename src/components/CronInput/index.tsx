@@ -1,33 +1,31 @@
-import { Select, Input, Radio, RadioChangeEvent } from 'antd';
+import { Select, Input, Radio, RadioChangeEvent, Space, Checkbox } from 'antd';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import useCron from '../../hooks/useCron';
 import { CronRange } from '../../hooks/useCron/cron.tool';
-import { everyStatic, everyStaticLabel } from './index.data';
+import { weekLabel } from './index.data';
 import './index.less';
-import { CronInputProps, CronMode } from './index.type';
+import { CronInputProps, CronMode, CronTimeValue } from './index.type';
 
 const CronInput: React.FC<CronInputProps> = (props) => {
   const {
     value,
     error,
+    week,
     minute,
     hour,
-    day,
-    month,
-    week,
     updateCron,
     updateMinute,
     updateHour,
-    updateDay,
-    updateMonth,
     updateWeek,
   } = useCron();
 
   const { t } = useTranslation();
-  const [cronMode, setCronMode] = useState(CronMode.Select);
+  const [cronMode, setCronMode] = useState<CronMode>(CronMode.Select);
 
-  const [every, setEvery] = useState<string>(props.everyDefault ?? 'year');
+  const [every, setEvery] = useState<CronTimeValue>(
+    props.everyDefault ?? CronTimeValue.everyDay
+  );
   const mode = useMemo<CronMode>(() => {
     if (props.mode !== undefined) {
       return props.mode;
@@ -35,27 +33,24 @@ const CronInput: React.FC<CronInputProps> = (props) => {
     return cronMode;
   }, [props.mode, cronMode]);
 
-  const handleEveryChange = (nextEvery: string) => {
-    if (error !== '') {
-      updateCron('* * * * *');
-      return;
-    }
-    const temp = value.split(' ');
-    const tempIndex = [3, 2, 4, 1, 0];
-    for (let i = 0; i < everyStatic[nextEvery]; i++) {
-      temp[tempIndex[i]] = '*';
+  const handleEveryChange = (nextEvery: CronTimeValue) => {
+    if (nextEvery === CronTimeValue.everyDay) {
+      updateWeek([]);
     }
     setEvery(nextEvery);
-    updateCron(temp.join(' '));
+  };
+
+  const updateCronMode = (mode: CronMode) => {
+    if (props.mode !== undefined) {
+      props.modeChange?.(mode);
+    } else {
+      setCronMode(mode);
+    }
   };
 
   const handleCronModeChange = (e: RadioChangeEvent) => {
     const tempMode = e.target.value;
-    if (props.mode !== undefined) {
-      props.modeChange?.(tempMode);
-    } else {
-      setCronMode(tempMode);
-    }
+    updateCronMode(tempMode);
   };
 
   useEffect(() => {
@@ -78,169 +73,124 @@ const CronInput: React.FC<CronInputProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
+  const simpleEnable = useMemo(() => {
+    const [, , _day, _month] = value.split(' ');
+    return _day === '*' && _month === '*';
+  }, [value]);
+
+  useEffect(() => {
+    if (!error && !simpleEnable && value && mode === CronMode.Select) {
+      updateCronMode(CronMode.Manual);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error, simpleEnable, value]);
+
+  useEffect(() => {
+    if (
+      every === CronTimeValue.everyDay &&
+      week.length !== 0 &&
+      week.length !== 7
+    ) {
+      setEvery(CronTimeValue.everyWeek);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mode]);
+
   return (
     <div className="cron-input-wrapper">
       <div style={{ lineHeight: '32px' }}>
         <Radio.Group value={cronMode} onChange={handleCronModeChange}>
-          <Radio value={CronMode.Select}>{t('common.cron.mode.select')}</Radio>
+          <Radio disabled={!simpleEnable} value={CronMode.Select}>
+            {t('common.cron.mode.select')}
+          </Radio>
           <Radio value={CronMode.Manual}>{t('common.cron.mode.manual')}</Radio>
         </Radio.Group>
       </div>
       <div className="cron-user-select" hidden={mode === CronMode.Manual}>
-        {t('common.time.per')}
-        <Select
-          value={every}
-          onChange={handleEveryChange}
-          className="cron-every-select"
-          placeholder={t('common.form.placeholder.select')}
-        >
-          {Object.keys(everyStatic).map((item) => (
-            <Select.Option value={item} key={item}>
-              {t(everyStaticLabel[item])}
-            </Select.Option>
-          ))}
-        </Select>
-        <span hidden={everyStatic[every] !== 0}>
-          {t('common.in')}
-          <Select
-            onChange={updateMonth}
-            value={month}
-            mode="multiple"
-            style={{ width: '100%' }}
-            dropdownClassName="cron-inline-select-dropdown"
-            className="cron-inline-select"
-            virtual={false}
-            placeholder={`${t('common.time.per')}${t('common.time.month')}`}
-            dropdownMatchSelectWidth={false}
-            maxTagCount={1}
-            maxTagPlaceholder="..."
-            allowClear
-          >
-            {CronRange.month.map((item) => (
-              <Select.Option
-                value={item}
-                key={item}
-                className="cron-inline-select-option"
-              >
-                {item}
+        <Space direction="vertical" className="full-width-element">
+          <Space>
+            <span>{t('common.cron.label.interval')}:</span>
+            <Select
+              className="cron-every-select"
+              onChange={handleEveryChange}
+              value={every}
+              placeholder={t('common.form.placeholder.select')}
+            >
+              <Select.Option value={CronTimeValue.everyDay}>
+                {t('common.cron.time.everyDay')}
               </Select.Option>
-            ))}
-          </Select>
-          {t('common.time.month')}
-        </span>
-        <span hidden={everyStatic[every] > 1}>
-          {t('common.on')}
-          <Select
-            onChange={updateDay}
-            value={day}
-            mode="multiple"
-            style={{ width: '100%' }}
-            dropdownClassName="cron-inline-select-dropdown"
-            className="cron-inline-select"
-            placeholder={`${t('common.time.per')}${t('common.time.day')}`}
-            maxTagCount={1}
-            dropdownMatchSelectWidth={false}
-            maxTagPlaceholder="..."
-            virtual={false}
-            allowClear
-          >
-            {CronRange.day.map((item) => (
-              <Select.Option
-                value={item}
-                key={item}
-                className="cron-inline-select-option"
-              >
-                {item}
+              <Select.Option value={CronTimeValue.everyWeek}>
+                {t('common.cron.time.everyWeek')}
               </Select.Option>
-            ))}
-          </Select>
-          {t('common.time.no')}
-        </span>
-        <span hidden={everyStatic[every] > 2}>
-          {t('common.and')}
-          {t('common.time.week')}
-          <Select
-            onChange={updateWeek}
-            value={week}
-            mode="multiple"
-            style={{ width: '100%' }}
-            dropdownClassName="cron-inline-select-dropdown"
-            className="cron-inline-select"
-            placeholder={`${t('common.time.per')}${t('common.time.day')}`}
-            maxTagCount={1}
-            dropdownMatchSelectWidth={false}
-            maxTagPlaceholder="..."
-            virtual={false}
-            allowClear
+            </Select>
+          </Space>
+          <Space
+            className="cron-week-wrapper"
+            hidden={every === CronTimeValue.everyDay}
           >
-            {CronRange.week.map((item) => (
-              <Select.Option
-                value={item}
-                key={item}
-                className="cron-inline-select-option"
-              >
-                {item}
-              </Select.Option>
-            ))}
-          </Select>
-        </span>
-        <span hidden={everyStatic[every] > 3}>
-          {t('common.on')}
-          <Select
-            onChange={updateHour}
-            value={hour}
-            mode="multiple"
-            style={{ width: '100%' }}
-            dropdownClassName="cron-inline-select-dropdown"
-            maxTagCount={1}
-            className="cron-inline-select"
-            placeholder={`${t('common.time.per')}${t('common.time.hour')}`}
-            dropdownMatchSelectWidth={false}
-            maxTagPlaceholder="..."
-            virtual={false}
-            allowClear
-          >
-            {CronRange.hour.map((item) => (
-              <Select.Option
-                value={item}
-                key={item}
-                className="cron-inline-select-option"
-              >
-                {item}
-              </Select.Option>
-            ))}
-          </Select>
-          :
-        </span>
-        {everyStatic[every] === 4 && t('common.on')}
-        <span hidden={everyStatic[every] > 4}>
-          <Select
-            onChange={updateMinute}
-            value={minute}
-            mode="multiple"
-            style={{ width: '100%' }}
-            dropdownClassName="cron-inline-select-dropdown"
-            maxTagCount={1}
-            className="cron-inline-select"
-            placeholder={`${t('common.time.per')}${t('common.time.minute')}`}
-            virtual={false}
-            dropdownMatchSelectWidth={false}
-            maxTagPlaceholder="..."
-            allowClear
-          >
-            {CronRange.minute.map((item) => (
-              <Select.Option
-                value={item}
-                key={item}
-                className="cron-inline-select-option"
-              >
-                {item}
-              </Select.Option>
-            ))}
-          </Select>
-        </span>
-
-        <div>
+            <Checkbox.Group
+              value={week}
+              onChange={(checkedValue) => updateWeek(checkedValue as number[])}
+            >
+              {CronRange.week.map((item) => (
+                <Checkbox value={item} key={item}>
+                  {t(weekLabel[item])}
+                </Checkbox>
+              ))}
+            </Checkbox.Group>
+          </Space>
+          <Space className="full-width-element">
+            <span>{t('common.cron.label.point')}:</span>
+            <Select
+              onChange={updateHour}
+              value={hour}
+              mode="multiple"
+              dropdownClassName="cron-inline-select-dropdown"
+              maxTagCount={3}
+              className="cron-inline-select"
+              placeholder={`${t('common.time.per')}${t('common.time.hour')}`}
+              dropdownMatchSelectWidth={false}
+              maxTagPlaceholder="..."
+              virtual={false}
+              allowClear
+            >
+              {CronRange.hour.map((item) => (
+                <Select.Option
+                  value={item}
+                  key={item}
+                  className="cron-inline-select-option"
+                >
+                  {item}
+                </Select.Option>
+              ))}
+            </Select>
+            :
+            <Select
+              onChange={updateMinute}
+              value={minute}
+              mode="multiple"
+              dropdownClassName="cron-inline-select-dropdown"
+              maxTagCount={3}
+              className="cron-inline-select"
+              placeholder={`${t('common.time.per')}${t('common.time.minute')}`}
+              virtual={false}
+              dropdownMatchSelectWidth={false}
+              maxTagPlaceholder="..."
+              allowClear
+            >
+              {CronRange.minute.map((item) => (
+                <Select.Option
+                  value={item}
+                  key={item}
+                  className="cron-inline-select-option"
+                >
+                  {item}
+                </Select.Option>
+              ))}
+            </Select>
+          </Space>
+        </Space>
+        <div data-testid="cron-preview">
           {t('common.preview')}: {value}
         </div>
       </div>

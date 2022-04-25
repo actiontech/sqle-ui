@@ -1,19 +1,11 @@
 import { I18nKey } from '../../types/common.type';
 
-export const everyStatic: { [key: string]: number } = {
-  year: 0,
-  month: 1,
-  day: 2,
-  week: 3,
-  hour: 4,
-  minute: 5,
-};
-
-export const everyStaticLabel: { [key: string]: I18nKey } = {
-  year: 'common.time.year',
-  month: 'common.time.month',
-  day: 'common.time.day',
-  week: 'common.time.week',
-  hour: 'common.time.hour',
-  minute: 'common.time.minute',
+export const weekLabel: { [key: number]: I18nKey } = {
+  0: 'common.week.sunday',
+  1: 'common.week.monday',
+  2: 'common.week.tuesday',
+  3: 'common.week.wednesday',
+  4: 'common.week.thursday',
+  5: 'common.week.friday',
+  6: 'common.week.saturday',
 };

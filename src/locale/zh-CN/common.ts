@@ -70,6 +70,16 @@ export default {
     per: '每',
   },
 
+  week: {
+    monday: '星期一',
+    tuesday: '星期二',
+    wednesday: '星期三',
+    thursday: '星期四',
+    friday: '星期五',
+    saturday: '星期六',
+    sunday: '星期日',
+  },
+
   form: {
     placeholder: {
       input: '请输入{{name}}',
@@ -93,6 +103,14 @@ export default {
     mode: {
       select: '可视化选择',
       manual: '手工填写',
+    },
+    label: {
+      interval: '频率',
+      point: '时间点',
+    },
+    time: {
+      everyDay: '每天',
+      everyWeek: '每周',
     },
     errorMessage: {
       invalid: '无效的cron表达式',
