@@ -71,10 +71,10 @@ export const renderWithThemeAndServerRouter = (
 };
 
 export const renderWithThemeAndRouter = (
-  ...[ui, option]: [...RenderParams]
+  ...[ui, option, props]: [...RenderParams, MemoryRouterProps?]
 ) => {
   return render(
-    <MemoryRouter>
+    <MemoryRouter {...props}>
       <ThemeProvider theme={lightTheme}>{ui}</ThemeProvider>
     </MemoryRouter>,
     option

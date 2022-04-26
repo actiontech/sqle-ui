@@ -9,6 +9,7 @@ import { createMemoryHistory } from 'history';
 import { fireEvent, screen, act, waitFor } from '@testing-library/react';
 import user from '../../api/user';
 import { resolveThreeSecond } from '../../testUtils/mockRequest';
+import configuration from '../../api/configuration';
 
 jest.mock('./LoginBackground', () => {
   class Test {}
@@ -22,6 +23,7 @@ describe('Login', () => {
     const temp = mockUseDispatch();
     dispatchMock = temp.scopeDispatch;
     mockUseSelector({ locale: { language: SupportLanguage.zhCN } });
+    mockGetOauth2Tips();
     jest.useFakeTimers();
   });
 
@@ -38,8 +40,20 @@ describe('Login', () => {
     return spy;
   };
 
-  test('should render login form', () => {
+  const mockGetOauth2Tips = () => {
+    const spy = jest.spyOn(configuration, 'getOauth2Tips');
+    spy.mockImplementation(() =>
+      resolveThreeSecond({ enable_oauth2: true, login_tip: 'login with QQ' })
+    );
+    return spy;
+  };
+
+  test('should render login form', async () => {
     const { container } = renderWithTheme(<Login />);
+    expect(container).toMatchSnapshot();
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
     expect(container).toMatchSnapshot();
   });
 
@@ -83,5 +97,16 @@ describe('Login', () => {
       type: 'user/updateToken',
     });
     expect(history.location.pathname).toBe('/');
+  });
+
+  test('click oauth login button will jump to `/v1/oauth2/link`', async () => {
+    renderWithTheme(<Login />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(screen.getByText('login with QQ').closest('a')).toHaveAttribute(
+      'href',
+      '/v1/oauth2/link'
+    );
   });
 });

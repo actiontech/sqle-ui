@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import LoginBackground from './LoginBackground';
 import useStyles from '../../theme';
 
@@ -12,6 +12,9 @@ import { useDispatch } from 'react-redux';
 import LanguageSelect from '../../components/LanguageSelect';
 import user from '../../api/user';
 import { ResponseCode } from '../../data/common';
+import { useRequest } from 'ahooks';
+import configuration from '../../api/configuration';
+import EmptyBox from '../../components/EmptyBox';
 
 const Login = () => {
   const theme = useStyles();
@@ -40,6 +43,22 @@ const Login = () => {
     new LoginBackground('#login-background');
   }, []);
 
+  const { run: getOauth2Tips, data: oauthConfig } = useRequest(
+    () => configuration.getOauth2Tips(),
+    {
+      manual: true,
+      formatResult(res) {
+        return res.data?.data ?? {};
+      },
+    }
+  );
+
+  /* IFTRUE_isEE */
+  useEffect(() => {
+    getOauth2Tips();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  /* FITRUE_isEE */
   return (
     <section className="login-page">
       <canvas id="login-background"></canvas>
@@ -78,6 +97,14 @@ const Login = () => {
           >
             <Input.Password placeholder={t('common.password')} />
           </Form.Item>
+          <EmptyBox if={oauthConfig?.enable_oauth2}>
+            <div className="text-align-right font-size-small">
+              <Typography.Link href="/v1/oauth2/link">
+                {oauthConfig?.login_tip}
+              </Typography.Link>
+            </div>
+          </EmptyBox>
+
           <Button type="primary" block htmlType="submit">
             {t('login.login')}
           </Button>

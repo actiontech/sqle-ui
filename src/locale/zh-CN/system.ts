@@ -89,6 +89,9 @@ export default {
   },
 
   oauth: {
+    ceTips:
+      'oauth登录为企业版功能。如果您要想使用这些功能，您可以按照以下链接中的商业支持里的联系方式进行咨询。',
+
     enable: '是否启用oauth登录',
     clientId: '应用 ID',
     clientIdTips:

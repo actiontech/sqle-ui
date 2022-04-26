@@ -39,7 +39,7 @@ describe('App test', () => {
     });
     const wrapper = shallow(<App />);
     const route = wrapper.find('Route');
-    expect(route.length).toBe(1);
+    expect(route.length).toBe(2);
     expect(route.at(0).prop('path')).toBe('/login');
     const redirect = wrapper.find('Redirect');
     expect(redirect.length).toBe(1);

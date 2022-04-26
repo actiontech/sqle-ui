@@ -183,6 +183,14 @@ export interface IBindOauth2UserResDataV1 {
   token?: string;
 }
 
+export interface IBindOauth2UserResV1 {
+  code?: number;
+
+  data?: IBindOauth2UserResDataV1;
+
+  message?: string;
+}
+
 export interface ICheckLicenseResV1 {
   code?: number;
 

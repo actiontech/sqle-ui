@@ -8,6 +8,7 @@ import {
   Space,
   Switch,
   Tag,
+  Typography,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import { useEffect } from 'react';
@@ -98,6 +99,22 @@ const Oauth = () => {
 
   return (
     <Card title={t('system.title.oauth')} loading={getConfigLoading}>
+      {/* IFTRUE_isCE */}
+      {t('system.oauth.ceTips')}
+      <Typography.Paragraph>
+        <ul>
+          <li>
+            <a href="https://actiontech.github.io/sqle-docs-cn/">
+              https://actiontech.github.io/sqle-docs-cn/
+            </a>
+          </li>
+          <li>
+            <a href="https://www.actionsky.com/">https://www.actionsky.com/</a>
+          </li>
+        </ul>
+      </Typography.Paragraph>
+      {/* FITRUE_isCE */}
+      {/* IFTRUE_isEE */}
       <section hidden={modifyFlag}>
         <Descriptions>
           <Descriptions.Item label={t('system.oauth.enable')} span={3}>
@@ -356,6 +373,7 @@ const Oauth = () => {
           </Space>
         </Form.Item>
       </Form>
+      {/* FITRUE_isEE */}
     </Card>
   );
 };

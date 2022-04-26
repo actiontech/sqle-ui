@@ -156,6 +156,27 @@ exports[`Oauth should render oauth config after request finish 2`] = `
     <div
       class="ant-card-body"
     >
+      system.oauth.ceTips
+      <div
+        class="ant-typography"
+      >
+        <ul>
+          <li>
+            <a
+              href="https://actiontech.github.io/sqle-docs-cn/"
+            >
+              https://actiontech.github.io/sqle-docs-cn/
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.actionsky.com/"
+            >
+              https://www.actionsky.com/
+            </a>
+          </li>
+        </ul>
+      </div>
       <section>
         <div
           class="ant-descriptions"
@@ -1381,6 +1402,27 @@ exports[`Oauth should update oauth config after user input config form 1`] = `
     <div
       class="ant-card-body"
     >
+      system.oauth.ceTips
+      <div
+        class="ant-typography"
+      >
+        <ul>
+          <li>
+            <a
+              href="https://actiontech.github.io/sqle-docs-cn/"
+            >
+              https://actiontech.github.io/sqle-docs-cn/
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.actionsky.com/"
+            >
+              https://www.actionsky.com/
+            </a>
+          </li>
+        </ul>
+      </div>
       <section
         hidden=""
       >
@@ -2608,6 +2650,27 @@ exports[`Oauth should update oauth config after user input config form 2`] = `
     <div
       class="ant-card-body"
     >
+      system.oauth.ceTips
+      <div
+        class="ant-typography"
+      >
+        <ul>
+          <li>
+            <a
+              href="https://actiontech.github.io/sqle-docs-cn/"
+            >
+              https://actiontech.github.io/sqle-docs-cn/
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.actionsky.com/"
+            >
+              https://www.actionsky.com/
+            </a>
+          </li>
+        </ul>
+      </div>
       <section
         hidden=""
       >
