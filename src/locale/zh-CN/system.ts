@@ -9,6 +9,7 @@ export default {
     ldap: 'LDAP',
     license: 'License',
     wechat: '企业微信配置',
+    oauth: 'Oauth2.0配置',
   },
 
   smtp: {
@@ -85,5 +86,41 @@ export default {
     receiveWechat: '接收者微信ID',
     testing: '正在向{{id}}发送测试消息...',
     testSuccess: '测试消息发送成功',
+  },
+
+  oauth: {
+    enable: '是否启用oauth登录',
+    clientId: '应用 ID',
+    clientIdTips:
+      '应用的唯一标识, 从要对接的平台申请 , 在OAuth2.0认证过程中，appid的值即为oauth_consumer_key的值。',
+
+    clientSecret: '应用密钥',
+    clientSecretTips:
+      'appid对应的密钥，访问用户资源时用来验证应用的合法性。在OAuth2.0认证过程中，appkey的值即为oauth_consumer_secret的值。如果之前配置过该项，更新时不填写该项代表不更新密钥。',
+    clientHost: '外部访问sqle的地址',
+    clientHostTips: '格式为 ip:port',
+
+    serverAuthUrl: 'oauth2登录授权页面网址',
+    serverAuthUrlTips: '格式类似于 http(s)://ip:port/xxx',
+
+    serverTokenUrl: 'oauth2 access_token 获取地址',
+    serverTokenUrlTips: '格式类似于 http(s)://ip:port/xxx',
+
+    serverUserIdUrl: 'oauth2 user id 获取地址',
+    serverUserIdUrlTips: '格式类似于 http(s)://ip:port/xxx',
+
+    scopes: '请求资源范围',
+    scopesTips: '	此范围由验证服务器定义,多个范围用逗号分隔',
+
+    accessTokenKeyName: 'access_token Key名称',
+    accessTokenKeyNameTips:
+      'sqle会在获取用户ID时将access_token放在这个key对应的value中, 此参数会作为get请求的参数发送给用户ID获取地址',
+
+    userIdKeyName: 'user_id Key名称',
+    userIdKeyNameTips:
+      'sqle会尝试使用此key从第三方平台的响应中解析出用户ID,用户ID应当为唯一ID',
+
+    loginButtonText: '登录按钮文字',
+    loginButtonTextTips: 'login页面oauth登录按钮文字',
   },
 };

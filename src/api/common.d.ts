@@ -179,6 +179,10 @@ export interface IBindOauth2UserReqV1 {
   user_name?: string;
 }
 
+export interface IBindOauth2UserResDataV1 {
+  token?: string;
+}
+
 export interface ICheckLicenseResV1 {
   code?: number;
 
@@ -571,6 +575,8 @@ export interface IGetOauth2ConfigurationResDataV1 {
   server_token_url?: string;
 
   server_user_id_url?: string;
+
+  user_id_tag?: string;
 }
 
 export interface IGetOauth2ConfigurationResV1 {
@@ -919,6 +925,8 @@ export interface IOauth2ConfigurationReqV1 {
   server_token_url?: string;
 
   server_user_id_url?: string;
+
+  user_id_tag?: string;
 }
 
 export interface IOperationResV1 {
