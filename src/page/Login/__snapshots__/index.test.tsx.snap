@@ -312,16 +312,6 @@ exports[`Login should render login form 2`] = `
             </div>
           </div>
         </div>
-        <div
-          class="text-align-right font-size-small"
-        >
-          <a
-            class="ant-typography"
-            href="/v1/oauth2/link"
-          >
-            login with QQ
-          </a>
-        </div>
         <button
           class="ant-btn ant-btn-primary ant-btn-block"
           type="submit"
@@ -330,6 +320,19 @@ exports[`Login should render login form 2`] = `
             login.login
           </span>
         </button>
+        <div
+          class="text-align-right font-size-small"
+          style="padding-top: 10px;"
+        >
+          login.otherMethod
+          : 
+          <a
+            class="ant-typography"
+            href="/v1/oauth2/link"
+          >
+            login with QQ
+          </a>
+        </div>
       </form>
     </div>
     <div
