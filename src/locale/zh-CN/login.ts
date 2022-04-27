@@ -3,6 +3,7 @@ export default {
   powered: 'Action SQLe',
   pageTitle: 'SQL审核平台',
   login: '登录',
+  otherMethod: '其他方式',
 
   oauth: {
     title: '用户绑定',
