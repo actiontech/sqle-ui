@@ -5,6 +5,9 @@ import {
   IBaseRes,
   IGetLicenseResV1,
   ICheckLicenseResV1,
+  IGetOauth2ConfigurationResV1,
+  IOauth2ConfigurationReqV1,
+  IGetOauth2TipsResV1,
   IGetSMTPConfigurationResV1,
   IUpdateSMTPConfigurationReqV1,
   ITestSMTPConfigurationReqV1,
@@ -40,6 +43,16 @@ export interface ICheckSQLELicenseV1Params {
 }
 
 export interface ICheckSQLELicenseV1Return extends ICheckLicenseResV1 {}
+
+export interface IGetOauth2ConfigurationV1Return
+  extends IGetOauth2ConfigurationResV1 {}
+
+export interface IUpdateOauth2ConfigurationV1Params
+  extends IOauth2ConfigurationReqV1 {}
+
+export interface IUpdateOauth2ConfigurationV1Return extends IBaseRes {}
+
+export interface IGetOauth2TipsReturn extends IGetOauth2TipsResV1 {}
 
 export interface IGetSMTPConfigurationV1Return
   extends IGetSMTPConfigurationResV1 {}

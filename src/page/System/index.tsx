@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { initSystemModalStatus } from '../../store/system';
 import { ModalName } from '../../data/ModalName';
+import Oauth from './Oauth/Oauth';
 
 const System = () => {
   const { t } = useTranslation();
@@ -44,6 +45,7 @@ const System = () => {
           {/* IFTRUE_isEE */}
           <License />
           {/* FITRUE_isEE */}
+          <Oauth />
         </Space>
       </section>
     </>

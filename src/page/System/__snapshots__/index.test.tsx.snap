@@ -20,6 +20,7 @@ exports[`System should match snapshot 1`] = `
       <GlobalSetting />
       <LDAPSetting />
       <License />
+      <Oauth />
     </Space>
   </section>
 </Fragment>

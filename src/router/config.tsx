@@ -90,12 +90,22 @@ const AuditPlanDetail = React.lazy(
     import(/* webpackChunkName: "PlanDetail" */ '../page/AuditPlan/PlanDetail')
 );
 
+const BindUser = React.lazy(
+  () => import(/* webpackChunkName: "BindUser" */ '../page/BindUser')
+);
+
 export const unAuthRouter: Array<RouteProps & { key: string }> = [
   {
     path: '/login',
     component: Login,
     exact: true,
     key: 'login',
+  },
+  {
+    path: '/user/bind',
+    component: BindUser,
+    exact: true,
+    key: 'bindUser',
   },
 ];
 
