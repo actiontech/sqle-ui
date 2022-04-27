@@ -97,17 +97,22 @@ const Login = () => {
           >
             <Input.Password placeholder={t('common.password')} />
           </Form.Item>
+          <Button type="primary" block htmlType="submit">
+            {t('login.login')}
+          </Button>
           <EmptyBox if={oauthConfig?.enable_oauth2}>
-            <div className="text-align-right font-size-small">
+            <div
+              className="text-align-right font-size-small"
+              style={{
+                paddingTop: 10,
+              }}
+            >
+              {t('login.otherMethod')}:&nbsp;
               <Typography.Link href="/v1/oauth2/link">
                 {oauthConfig?.login_tip}
               </Typography.Link>
             </div>
           </EmptyBox>
-
-          <Button type="primary" block htmlType="submit">
-            {t('login.login')}
-          </Button>
         </Form>
       </div>
       <div className="login-page-language-wrapper">
