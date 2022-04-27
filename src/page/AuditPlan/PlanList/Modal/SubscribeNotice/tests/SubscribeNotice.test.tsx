@@ -180,6 +180,21 @@ describe('SubscribeNotice', () => {
       'ant-btn-loading'
     );
     expect(screen.getByText('common.close').parentNode).not.toBeDisabled();
+
+    expect(
+      screen.queryByText(
+        'auditPlan.subscribeNotice.form.subscribeNoticeSuccess'
+      )
+    ).toBeInTheDocument();
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(
+      screen.queryByText(
+        'auditPlan.subscribeNotice.form.subscribeNoticeSuccess'
+      )
+    ).not.toBeInTheDocument();
   });
 
   it('should test config when user click test button', async () => {
