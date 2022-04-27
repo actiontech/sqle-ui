@@ -94,6 +94,9 @@ const SubscribeNotice = () => {
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           closeModal();
+          message.success(
+            t('auditPlan.subscribeNotice.form.subscribeNoticeSuccess')
+          );
         }
       })
       .finally(() => {
