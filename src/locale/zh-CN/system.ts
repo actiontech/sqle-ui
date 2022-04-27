@@ -101,9 +101,9 @@ export default {
     clientSecretTips:
       'appid对应的密钥，访问用户资源时用来验证应用的合法性。在OAuth2.0认证过程中，appkey的值即为oauth_consumer_secret的值。如果之前配置过该项，更新时不填写该项代表不更新密钥。',
     clientHost: '外部访问sqle的地址',
-    clientHostTips: '格式为 ip:port',
+    clientHostTips: '格式为 http(s)://ip:port',
 
-    serverAuthUrl: 'oauth2登录授权页面网址',
+    serverAuthUrl: 'oauth2登录授权页面地址',
     serverAuthUrlTips: '格式类似于 http(s)://ip:port/xxx',
 
     serverTokenUrl: 'oauth2 access_token 获取地址',
