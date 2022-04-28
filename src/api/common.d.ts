@@ -172,7 +172,7 @@ export interface IBatchCancelWorkflowsReqV1 {
 }
 
 export interface IBindOauth2UserReqV1 {
-  oauth2_user_id?: string;
+  oauth2_token?: string;
 
   pwd?: string;
 

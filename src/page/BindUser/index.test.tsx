@@ -90,7 +90,7 @@ describe('bindUser', () => {
   });
 
   it('should bind user when url params include user exist=false and oauth2_user_id', async () => {
-    mockLocationSearch('user_exist=false&oauth2_user_id=user_id');
+    mockLocationSearch('user_exist=false&oauth2_token=oauth2_token');
     const bindUser = mockBindUser();
     const history = createMemoryHistory();
     history.push('/bindUser');
@@ -110,7 +110,7 @@ describe('bindUser', () => {
     });
     expect(bindUser).toBeCalledTimes(1);
     expect(bindUser).toBeCalledWith({
-      oauth2_user_id: 'user_id',
+      oauth2_token: 'oauth2_token',
       user_name: 'username',
       pwd: 'password',
     });
@@ -136,7 +136,7 @@ describe('bindUser', () => {
     });
   });
 
-  it('should show lost lostOauthUserId error when url params include user_exist=false but not include oauth2_user_id', async () => {
+  it('should show lost lostOauthUserId error when url params include user_exist=false but not include oauth2Token', async () => {
     mockLocationSearch('user_exist=false');
     const bindUser = mockBindUser();
     const history = createMemoryHistory();
@@ -157,13 +157,13 @@ describe('bindUser', () => {
     });
     expect(bindUser).toBeCalledTimes(0);
     expect(
-      screen.queryByText('login.oauth.lostOauthUserId')
+      screen.queryByText('login.oauth.lostOauth2Token')
     ).toBeInTheDocument();
 
     fireEvent.click(getBySelector('.ant-notification-close-x'));
 
     expect(
-      screen.queryByText('login.oauth.lostOauthUserId')
+      screen.queryByText('login.oauth.lostOauth2Token')
     ).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByText('login.oauth.submitButton'));
@@ -172,12 +172,12 @@ describe('bindUser', () => {
     });
     expect(bindUser).toBeCalledTimes(0);
     expect(
-      screen.queryByText('login.oauth.lostOauthUserId')
+      screen.queryByText('login.oauth.lostOauth2Token')
     ).toBeInTheDocument();
     fireEvent.click(getBySelector('.ant-notification-close-x'));
 
     expect(
-      screen.queryByText('login.oauth.lostOauthUserId')
+      screen.queryByText('login.oauth.lostOauth2Token')
     ).not.toBeInTheDocument();
   });
 });
