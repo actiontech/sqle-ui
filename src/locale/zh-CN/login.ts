@@ -14,6 +14,6 @@ export default {
     bindTips: '如果用户名不存在，会自动创建',
     errorTitle: 'oauth登录错误',
     lostToken: '没有找到token，请返回登录页面重试',
-    lostOauthUserId: '没有找到oauth用户ID，请返回登录页面重试',
+    lostOauth2Token: '没有找到oauth token，请返回登录页面重试',
   },
 };

@@ -23,15 +23,15 @@ const BindUser = () => {
   const loginLock = useRef(false);
   const login = (values: OauthLoginFormFields) => {
     const urlParams = new URLSearchParams(window.location.search);
-    const oauth2UserId = urlParams.get('oauth2_user_id');
+    const oauth2Token = urlParams.get('oauth2_token');
     if (loginLock.current) {
       return;
     }
     loginLock.current = true;
-    if (!oauth2UserId) {
+    if (!oauth2Token) {
       notification.error({
         message: t('login.oauth.errorTitle'),
-        description: t('login.oauth.lostOauthUserId'),
+        description: t('login.oauth.lostOauth2Token'),
         duration: 0,
       });
       loginLock.current = false;
@@ -39,7 +39,7 @@ const BindUser = () => {
     }
     oauth2
       .bindOauth2User({
-        oauth2_user_id: oauth2UserId,
+        oauth2_token: oauth2Token,
         user_name: values.username,
         pwd: values.password,
       })
