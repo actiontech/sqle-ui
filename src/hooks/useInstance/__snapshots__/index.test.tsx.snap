@@ -213,13 +213,10 @@ exports[`useInstance should get instance data from request 3`] = `
             style="height: 0px; width: 0px; overflow: hidden;"
           >
             <div
-              aria-label="instance_test_name"
               aria-selected="false"
               id="rc_select_TEST_OR_SSR_list_0"
               role="option"
-            >
-              instance_test_name
-            </div>
+            />
           </div>
           <div
             class="rc-virtual-list"
@@ -235,8 +232,13 @@ exports[`useInstance should get instance data from request 3`] = `
                   style="display: flex; flex-direction: column;"
                 >
                   <div
+                    class="ant-select-item ant-select-item-group"
+                  >
+                    mysql
+                  </div>
+                  <div
                     aria-selected="false"
-                    class="ant-select-item ant-select-item-option"
+                    class="ant-select-item ant-select-item-option ant-select-item-option-grouped"
                     title="instance_test_name"
                   >
                     <div
@@ -353,7 +355,7 @@ exports[`useInstance should show one database type which your choose 2`] = `
           class="ant-select-selection-search"
         >
           <input
-            aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
+            aria-activedescendant="rc_select_TEST_OR_SSR_list_1"
             aria-autocomplete="list"
             aria-controls="rc_select_TEST_OR_SSR_list"
             aria-expanded="true"
@@ -420,9 +422,14 @@ exports[`useInstance should show one database type which your choose 2`] = `
             style="height: 0px; width: 0px; overflow: hidden;"
           >
             <div
+              aria-selected="false"
+              id="rc_select_TEST_OR_SSR_list_0"
+              role="option"
+            />
+            <div
               aria-label="oracle_instance_test_name"
               aria-selected="true"
-              id="rc_select_TEST_OR_SSR_list_0"
+              id="rc_select_TEST_OR_SSR_list_1"
               role="option"
             >
               oracle_instance_test_name
@@ -442,8 +449,13 @@ exports[`useInstance should show one database type which your choose 2`] = `
                   style="display: flex; flex-direction: column;"
                 >
                   <div
+                    class="ant-select-item ant-select-item-group"
+                  >
+                    oracle
+                  </div>
+                  <div
                     aria-selected="true"
-                    class="ant-select-item ant-select-item-option ant-select-item-option-active ant-select-item-option-selected"
+                    class="ant-select-item ant-select-item-option ant-select-item-option-grouped ant-select-item-option-active ant-select-item-option-selected"
                     title="oracle_instance_test_name"
                   >
                     <div
