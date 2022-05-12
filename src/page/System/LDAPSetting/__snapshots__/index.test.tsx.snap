@@ -178,12 +178,35 @@ exports[`System/LdapConfig should get ldap setting from origin 2`] = `
                       <span
                         class="ant-descriptions-item-label"
                       >
-                        system.ldap.enableLadp
+                        system.ldap.enableLdap
                       </span>
                       <span
                         class="ant-descriptions-item-content"
                       >
                         common.close
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-label"
+                      >
+                        system.ldap.enableLdapSSL
+                      </span>
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        common.open
                       </span>
                     </div>
                   </td>
@@ -369,9 +392,9 @@ exports[`System/LdapConfig should get ldap setting from origin 2`] = `
             <label
               class=""
               for="enable_ldap"
-              title="system.ldap.enableLadp"
+              title="system.ldap.enableLdap"
             >
-              system.ldap.enableLadp
+              system.ldap.enableLdap
             </label>
           </div>
           <div
@@ -387,6 +410,47 @@ exports[`System/LdapConfig should get ldap setting from origin 2`] = `
                   aria-checked="false"
                   class="ant-switch"
                   id="enable_ldap"
+                  role="switch"
+                  type="button"
+                >
+                  <div
+                    class="ant-switch-handle"
+                  />
+                  <span
+                    class="ant-switch-inner"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="enable_ssl"
+              title="system.ldap.enableLdapSSL"
+            >
+              system.ldap.enableLdapSSL
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <button
+                  aria-checked="false"
+                  class="ant-switch"
+                  id="enable_ssl"
                   role="switch"
                   type="button"
                 >
@@ -917,12 +981,35 @@ exports[`System/LdapConfig should update ldap setting after user update from 1`]
                       <span
                         class="ant-descriptions-item-label"
                       >
-                        system.ldap.enableLadp
+                        system.ldap.enableLdap
                       </span>
                       <span
                         class="ant-descriptions-item-content"
                       >
                         common.close
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  class="ant-descriptions-row"
+                >
+                  <td
+                    class="ant-descriptions-item"
+                    colspan="3"
+                  >
+                    <div
+                      class="ant-descriptions-item-container"
+                    >
+                      <span
+                        class="ant-descriptions-item-label"
+                      >
+                        system.ldap.enableLdapSSL
+                      </span>
+                      <span
+                        class="ant-descriptions-item-content"
+                      >
+                        common.open
                       </span>
                     </div>
                   </td>
@@ -1108,9 +1195,9 @@ exports[`System/LdapConfig should update ldap setting after user update from 1`]
             <label
               class=""
               for="enable_ldap"
-              title="system.ldap.enableLadp"
+              title="system.ldap.enableLdap"
             >
-              system.ldap.enableLadp
+              system.ldap.enableLdap
             </label>
           </div>
           <div
@@ -1126,6 +1213,47 @@ exports[`System/LdapConfig should update ldap setting after user update from 1`]
                   aria-checked="false"
                   class="ant-switch"
                   id="enable_ldap"
+                  role="switch"
+                  type="button"
+                >
+                  <div
+                    class="ant-switch-handle"
+                  />
+                  <span
+                    class="ant-switch-inner"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-row ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+          >
+            <label
+              class=""
+              for="enable_ssl"
+              title="system.ldap.enableLdapSSL"
+            >
+              system.ldap.enableLdapSSL
+            </label>
+          </div>
+          <div
+            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+          >
+            <div
+              class="ant-form-item-control-input"
+            >
+              <div
+                class="ant-form-item-control-input-content"
+              >
+                <button
+                  aria-checked="true"
+                  class="ant-switch ant-switch-checked"
+                  id="enable_ssl"
                   role="switch"
                   type="button"
                 >
