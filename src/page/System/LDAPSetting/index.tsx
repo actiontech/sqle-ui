@@ -49,6 +49,7 @@ const LDAPSetting = () => {
     if (!!ldapSetting && modifyFlag) {
       form.setFieldsValue({
         enable_ldap: ldapSetting.enable_ldap,
+        enable_ssl: ldapSetting.enable_ssl,
         ldap_server_host: ldapSetting.ldap_server_host,
         ldap_server_port: ldapSetting.ldap_server_port,
         ldap_connect_dn: ldapSetting.ldap_connect_dn,
@@ -88,8 +89,11 @@ const LDAPSetting = () => {
     <Card title={t('system.title.ldap')} loading={loading}>
       <section hidden={modifyFlag}>
         <Descriptions>
-          <Descriptions.Item label={t('system.ldap.enableLadp')} span={3}>
+          <Descriptions.Item label={t('system.ldap.enableLdap')} span={3}>
             {ldapSetting?.enable_ldap ? t('common.open') : t('common.close')}
+          </Descriptions.Item>
+          <Descriptions.Item label={t('system.ldap.enableLdapSSL')} span={3}>
+            {ldapSetting?.enable_ssl ? t('common.open') : t('common.close')}
           </Descriptions.Item>
           <Descriptions.Item label={t('system.ldap.ldapServerHost')} span={3}>
             {ldapSetting?.ldap_server_host ?? '--'}
@@ -129,8 +133,15 @@ const LDAPSetting = () => {
         onFinish={handleSubmit}
       >
         <Form.Item
-          label={t('system.ldap.enableLadp')}
+          label={t('system.ldap.enableLdap')}
           name="enable_ldap"
+          valuePropName="checked"
+        >
+          <Switch />
+        </Form.Item>
+        <Form.Item
+          label={t('system.ldap.enableLdapSSL')}
+          name="enable_ssl"
           valuePropName="checked"
         >
           <Switch />

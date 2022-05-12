@@ -1,5 +1,6 @@
 export type LDAPFormFields = {
   enable_ldap: boolean;
+  enable_ssl: boolean;
   ldap_server_host?: string;
   ldap_server_port?: string;
   ldap_connect_dn?: string;

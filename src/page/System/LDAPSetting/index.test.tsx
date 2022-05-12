@@ -55,7 +55,7 @@ describe('System/LdapConfig', () => {
     });
     fireEvent.click(screen.getByText('common.modify'));
     expect(container).toMatchSnapshot();
-    fireEvent.click(screen.getByLabelText('system.ldap.enableLadp'));
+    fireEvent.click(screen.getByLabelText('system.ldap.enableLdap'));
     fireEvent.input(screen.getByLabelText('system.ldap.ldapServerPort'), {
       target: { value: '3306' },
     });
