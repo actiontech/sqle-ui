@@ -1,4 +1,4 @@
-import { Button, Form, Input, Select, Space } from 'antd';
+import { Button, Form, Input, InputNumber, Select, Space } from 'antd';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PageFormLayout } from '../../../data/common';
@@ -80,6 +80,10 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
           startTime: item.maintenance_start_time,
           endTime: item.maintenance_stop_time,
         })),
+        maxPreQueryRows:
+          props.defaultData.sql_query_config?.max_pre_query_rows ?? 100,
+        queryTimeoutSecond:
+          props.defaultData.sql_query_config?.query_timeout_second,
       });
       setDatabaseType(props.defaultData.db_type ?? ruleTemplateListDefaultKey);
     }
@@ -218,6 +222,27 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
         >
           {generateWorkflowSelectOptions()}
         </Select>
+      </Form.Item>
+      <Form.Item
+        label={t('dataSource.dataSourceForm.maxPreQueryRows')}
+        name="maxPreQueryRows"
+        initialValue={100}
+        rules={[
+          {
+            required: true,
+            message: t('common.form.rule.require', {
+              name: t('dataSource.dataSourceForm.maxPreQueryRows'),
+            }),
+          },
+        ]}
+      >
+        <InputNumber style={{ width: '100%' }} />
+      </Form.Item>
+      <Form.Item
+        label={t('dataSource.dataSourceForm.queryTimeoutSecond')}
+        name="queryTimeoutSecond"
+      >
+        <InputNumber style={{ width: '100%' }} />
       </Form.Item>
       <Form.Item label=" " colon={false}>
         <Space>

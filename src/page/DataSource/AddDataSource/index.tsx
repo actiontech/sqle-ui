@@ -43,6 +43,10 @@ const AddDataSource = () => {
             maintenance_start_time: t.startTime,
             maintenance_stop_time: t.endTime,
           })) ?? [],
+        sql_query_config: {
+          max_pre_query_rows: values.maxPreQueryRows,
+          query_timeout_second: values.queryTimeoutSecond,
+        },
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
