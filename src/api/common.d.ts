@@ -18,7 +18,7 @@ import {
   WorkflowStepResV1StateEnum,
   WorkflowStepResV1TypeEnum,
   WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
-  AuditPlanSQLHeadV2TypeEnum,
+  AuditPlanSQLHeadV2TypeEnum
 } from './common.enum';
 
 export interface IBaseRes {
@@ -890,6 +890,8 @@ export interface IInstanceTipResV1 {
 export interface ILDAPConfigurationReqV1 {
   enable_ldap?: boolean;
 
+  enable_ssl?: boolean;
+
   ldap_connect_dn?: string;
 
   ldap_connect_pwd?: string;
@@ -907,6 +909,8 @@ export interface ILDAPConfigurationReqV1 {
 
 export interface ILDAPConfigurationResV1 {
   enable_ldap?: boolean;
+
+  enable_ssl?: boolean;
 
   ldap_connect_dn?: string;
 
@@ -1120,7 +1124,7 @@ export interface ISQLQueryConfigResV1 {
 }
 
 export interface ISQLResultItemHeadResV1 {
-  'field_name '?: string;
+  field_name?: string;
 }
 
 export interface ISQLResultItemResV1 {
