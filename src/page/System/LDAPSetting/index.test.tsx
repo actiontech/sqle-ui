@@ -19,6 +19,7 @@ describe('System/LdapConfig', () => {
     spy.mockImplementation(() =>
       resolveThreeSecond({
         enable_ldap: false,
+        enable_ssl: true,
         ldap_server_host: '1',
         ldap_server_port: '1',
         ldap_connect_dn: '1',
@@ -55,7 +56,7 @@ describe('System/LdapConfig', () => {
     });
     fireEvent.click(screen.getByText('common.modify'));
     expect(container).toMatchSnapshot();
-    fireEvent.click(screen.getByLabelText('system.ldap.enableLadp'));
+    fireEvent.click(screen.getByLabelText('system.ldap.enableLdap'));
     fireEvent.input(screen.getByLabelText('system.ldap.ldapServerPort'), {
       target: { value: '3306' },
     });
@@ -72,6 +73,7 @@ describe('System/LdapConfig', () => {
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
       enable_ldap: true,
+      enable_ssl: true,
       ldap_connect_dn: '1',
       ldap_search_base_dn: '1',
       ldap_server_host: '1',

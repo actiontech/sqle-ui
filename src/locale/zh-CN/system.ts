@@ -32,7 +32,8 @@ export default {
   },
 
   ldap: {
-    enableLadp: '是否启用LDAP服务',
+    enableLdap: '是否启用LDAP服务',
+    enableLdapSSL: '是否启用SSL',
     ldapServerHost: 'LDAP服务器地址',
     ldapServerPort: 'LDAP服务器端口',
     ldapConnectDn: '连接用户DN',

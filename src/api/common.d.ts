@@ -256,6 +256,8 @@ export interface ICreateInstanceReqV1 {
 
   rule_template_name_list?: string[];
 
+  sql_query_config?: ISQLQueryConfigReqV1;
+
   workflow_template_name?: string;
 }
 
@@ -685,6 +687,30 @@ export interface IGetSQLEInfoResV1 {
   version?: string;
 }
 
+export interface IGetSQLQueryHistoryResDataV1 {
+  sql_histories?: ISQLHistoryItemResV1[];
+}
+
+export interface IGetSQLQueryHistoryResV1 {
+  code?: number;
+
+  data?: IGetSQLQueryHistoryResDataV1;
+
+  message?: string;
+}
+
+export interface IGetSQLResultResDataV1 {
+  execute_result?: ISQLResultItemResV1[];
+}
+
+export interface IGetSQLResultResV1 {
+  code?: number;
+
+  data?: IGetSQLResultResDataV1;
+
+  message?: string;
+}
+
 export interface IGetSystemVariablesResV1 {
   code?: number;
 
@@ -846,6 +872,8 @@ export interface IInstanceResV1 {
 
   rule_template_name_list?: string[];
 
+  sql_query_config?: ISQLQueryConfigResV1;
+
   workflow_template_name?: string;
 }
 
@@ -861,6 +889,8 @@ export interface IInstanceTipResV1 {
 
 export interface ILDAPConfigurationReqV1 {
   enable_ldap?: boolean;
+
+  enable_ssl?: boolean;
 
   ldap_connect_dn?: string;
 
@@ -879,6 +909,8 @@ export interface ILDAPConfigurationReqV1 {
 
 export interface ILDAPConfigurationResV1 {
   enable_ldap?: boolean;
+
+  enable_ssl?: boolean;
 
   ldap_connect_dn?: string;
 
@@ -955,6 +987,30 @@ export interface IPatchUserGroupReqV1 {
   user_group_desc?: string;
 
   user_name_list?: string[];
+}
+
+export interface IPrepareSQLQueryReqV1 {
+  instance_schema?: string;
+
+  sql?: string;
+}
+
+export interface IPrepareSQLQueryResDataV1 {
+  query_ids?: IPrepareSQLQueryResSQLV1[];
+}
+
+export interface IPrepareSQLQueryResSQLV1 {
+  query_id?: string;
+
+  sql?: string;
+}
+
+export interface IPrepareSQLQueryResV1 {
+  code?: number;
+
+  data?: IPrepareSQLQueryResDataV1;
+
+  message?: string;
 }
 
 export interface IRejectWorkflowReqV1 {
@@ -1049,6 +1105,44 @@ export interface ISMTPConfigurationResV1 {
   smtp_port?: string;
 
   smtp_username?: string;
+}
+
+export interface ISQLHistoryItemResV1 {
+  sql?: string;
+}
+
+export interface ISQLQueryConfigReqV1 {
+  max_pre_query_rows?: number;
+
+  query_timeout_second?: number;
+}
+
+export interface ISQLQueryConfigResV1 {
+  max_pre_query_rows?: number;
+
+  query_timeout_second?: number;
+}
+
+export interface ISQLResultItemHeadResV1 {
+  field_name?: string;
+}
+
+export interface ISQLResultItemResV1 {
+  current_page?: number;
+
+  end_line?: number;
+
+  execution_time?: number;
+
+  head?: ISQLResultItemHeadResV1[];
+
+  rows?: Array<{
+    [key: string]: string;
+  }>;
+
+  sql?: string;
+
+  start_line?: number;
 }
 
 export interface ISystemVariablesResV1 {
@@ -1193,6 +1287,8 @@ export interface IUpdateInstanceReqV1 {
   role_name_list?: string[];
 
   rule_template_name_list?: string[];
+
+  sql_query_config?: ISQLQueryConfigReqV1;
 
   workflow_template_name?: string;
 }
