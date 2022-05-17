@@ -26,6 +26,8 @@ export default {
   },
   order: {
     name: '工单名称',
+    dataSource: '数据源',
+    schema: '数据库',
     createUser: '创建人',
     assignee: '待操作人',
     createTime: '创建时间',
