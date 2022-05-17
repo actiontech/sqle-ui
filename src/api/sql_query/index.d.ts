@@ -24,13 +24,11 @@ export interface IPrepareSQLQueryParams extends IPrepareSQLQueryReqV1 {
 export interface IPrepareSQLQueryReturn extends IPrepareSQLQueryResV1 {}
 
 export interface IGetSQLResultParams {
-  instance_name: string;
+  query_id: string;
 
-  query_id?: string;
+  page_index: number;
 
-  page_index?: number;
-
-  page_size?: number;
+  page_size: number;
 }
 
 export interface IGetSQLResultReturn extends IGetSQLResultResV1 {}
