@@ -234,7 +234,13 @@ const Order = () => {
           <Descriptions.Item label={t('order.order.createUser')}>
             {orderInfo?.create_user_name}
           </Descriptions.Item>
-          <Descriptions.Item label={t('order.order.createTime')}>
+          <Descriptions.Item label={t('order.order.dataSource')}>
+            {taskInfo?.instance_name}
+          </Descriptions.Item>
+          <Descriptions.Item label={t('order.order.schema')}>
+            {taskInfo?.instance_schema}
+          </Descriptions.Item>
+          <Descriptions.Item label={t('order.order.createTime')} span={2}>
             {formatTime(orderInfo?.create_time)}
           </Descriptions.Item>
           <Descriptions.Item label={t('order.order.desc')} span={3}>

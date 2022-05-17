@@ -17,7 +17,11 @@ export const orderListColumn = (): TableColumn<IWorkflowDetailResV1> => {
       dataIndex: 'desc',
       title: () => i18n.t('order.order.desc'),
       render: (text) => {
-        return <Typography.Text ellipsis={true}>{text}</Typography.Text>;
+        return (
+          <Typography.Text style={{ maxWidth: 300 }} ellipsis={true}>
+            {text}
+          </Typography.Text>
+        );
       },
     },
     {

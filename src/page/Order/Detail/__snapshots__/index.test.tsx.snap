@@ -122,6 +122,44 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                     <span
                       class="ant-descriptions-item-label"
                     >
+                      order.order.dataSource
+                    </span>
+                    <span
+                      class="ant-descriptions-item-content"
+                    >
+                      db1
+                    </span>
+                  </div>
+                </td>
+              </tr>
+              <tr
+                class="ant-descriptions-row"
+              >
+                <td
+                  class="ant-descriptions-item"
+                  colspan="1"
+                >
+                  <div
+                    class="ant-descriptions-item-container"
+                  >
+                    <span
+                      class="ant-descriptions-item-label"
+                    >
+                      order.order.schema
+                    </span>
+                    
+                  </div>
+                </td>
+                <td
+                  class="ant-descriptions-item"
+                  colspan="2"
+                >
+                  <div
+                    class="ant-descriptions-item-container"
+                  >
+                    <span
+                      class="ant-descriptions-item-label"
+                    >
                       order.order.createTime
                     </span>
                     <span
@@ -3446,6 +3484,38 @@ exports[`Order/Detail should render on process order info by request 1`] = `
                     <span
                       class="ant-descriptions-item-label"
                     >
+                      order.order.dataSource
+                    </span>
+                  </div>
+                </td>
+              </tr>
+              <tr
+                class="ant-descriptions-row"
+              >
+                <td
+                  class="ant-descriptions-item"
+                  colspan="1"
+                >
+                  <div
+                    class="ant-descriptions-item-container"
+                  >
+                    <span
+                      class="ant-descriptions-item-label"
+                    >
+                      order.order.schema
+                    </span>
+                  </div>
+                </td>
+                <td
+                  class="ant-descriptions-item"
+                  colspan="2"
+                >
+                  <div
+                    class="ant-descriptions-item-container"
+                  >
+                    <span
+                      class="ant-descriptions-item-label"
+                    >
                       order.order.createTime
                     </span>
                     
@@ -4197,6 +4267,38 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                 <td
                   class="ant-descriptions-item"
                   colspan="1"
+                >
+                  <div
+                    class="ant-descriptions-item-container"
+                  >
+                    <span
+                      class="ant-descriptions-item-label"
+                    >
+                      order.order.dataSource
+                    </span>
+                  </div>
+                </td>
+              </tr>
+              <tr
+                class="ant-descriptions-row"
+              >
+                <td
+                  class="ant-descriptions-item"
+                  colspan="1"
+                >
+                  <div
+                    class="ant-descriptions-item-container"
+                  >
+                    <span
+                      class="ant-descriptions-item-label"
+                    >
+                      order.order.schema
+                    </span>
+                  </div>
+                </td>
+                <td
+                  class="ant-descriptions-item"
+                  colspan="2"
                 >
                   <div
                     class="ant-descriptions-item-container"
