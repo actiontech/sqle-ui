@@ -15,6 +15,7 @@ import whitelist from './whitelist';
 import workflowTemplate from './workflowTemplate';
 import auditPlan from './auditPlan';
 import userGroup from './userGroup';
+import sqlQuery from './sqlQuery';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -36,5 +37,6 @@ export default {
     auditPlan,
     role,
     userGroup,
+    sqlQuery,
   },
 };

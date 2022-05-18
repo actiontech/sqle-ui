@@ -14,6 +14,7 @@ import {
   SettingOutlined,
   NodeIndexOutlined,
   CiCircleOutlined,
+  SearchOutlined,
 } from '@ant-design/icons';
 import { SystemRole } from '../data/common';
 
@@ -94,6 +95,10 @@ const BindUser = React.lazy(
   () => import(/* webpackChunkName: "BindUser" */ '../page/BindUser')
 );
 
+const SqlQuery = React.lazy(
+  () => import(/* webpackChunkName: "BindUser" */ '../page/SqlQuery')
+);
+
 export const unAuthRouter: Array<RouteProps & { key: string }> = [
   {
     path: '/login',
@@ -125,6 +130,14 @@ export const routerConfig: RouterItem[] = [
     component: Rule,
     icon: <DesktopOutlined />,
     key: 'rule',
+  },
+  {
+    path: '/sqlQuery',
+    exact: true,
+    label: 'menu.sqlQuery',
+    component: SqlQuery,
+    icon: <SearchOutlined />,
+    key: 'SqlQuery',
   },
   {
     path: '/account',
