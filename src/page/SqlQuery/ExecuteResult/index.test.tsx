@@ -142,9 +142,15 @@ describe('SqlQuery/ExecuteResult', () => {
         maxPreQueryRows={5}
       />
     );
+
     expect(mockSetQueryRes).toBeCalledTimes(0);
-    expect(container.querySelector('.ant-tabs-tab-remove')).toBeInTheDocument();
-    fireEvent.click(container.querySelector('.ant-tabs-tab-remove')!);
+    expect(
+      container.querySelectorAll('.ant-tabs-tab-remove')[0]
+    ).toBeInTheDocument();
+    fireEvent.click(container.querySelectorAll('.ant-tabs-tab-remove')[0]);
     expect(mockSetQueryRes).toBeCalledTimes(1);
+    const queryResAfter = [...queryResShow];
+    queryResAfter[0].hide = true;
+    expect(mockSetQueryRes).toBeCalledWith(queryResAfter);
   });
 });

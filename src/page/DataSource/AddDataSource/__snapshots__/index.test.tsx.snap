@@ -802,8 +802,7 @@ exports[`AddDataSource should render data source form 1`] = `
                 class="ant-form-item-control-input-content"
               >
                 <div
-                  class="ant-input-number"
-                  style="width: 100%;"
+                  class="ant-input-number full-width-element"
                 >
                   <div
                     class="ant-input-number-handler-wrap"
@@ -905,8 +904,7 @@ exports[`AddDataSource should render data source form 1`] = `
                 class="ant-form-item-control-input-content"
               >
                 <div
-                  class="ant-input-number"
-                  style="width: 100%;"
+                  class="ant-input-number full-width-element"
                 >
                   <div
                     class="ant-input-number-handler-wrap"

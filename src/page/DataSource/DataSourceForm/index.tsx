@@ -236,13 +236,13 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
           },
         ]}
       >
-        <InputNumber style={{ width: '100%' }} />
+        <InputNumber className="full-width-element" />
       </Form.Item>
       <Form.Item
         label={t('dataSource.dataSourceForm.queryTimeoutSecond')}
         name="queryTimeoutSecond"
       >
-        <InputNumber style={{ width: '100%' }} />
+        <InputNumber className="full-width-element" />
       </Form.Item>
       <Form.Item label=" " colon={false}>
         <Space>
