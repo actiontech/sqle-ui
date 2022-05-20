@@ -9238,8 +9238,6 @@ exports[`SqlQuery/ExecuteResult should match snapshot when queryRes length is no
                       <li
                         class="ant-pagination-total-text"
                       >
-                        16
-                        :
                         sqlQuery.executeResult.paginationInfo
                       </li>
                       <li

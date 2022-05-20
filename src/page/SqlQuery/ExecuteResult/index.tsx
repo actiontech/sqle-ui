@@ -24,14 +24,19 @@ const ExecuteResult: React.FC<ExecuteResultProps> = ({
     const currentTab = queryRes.find((v) => v.sqlQueryId === activeKey);
     if (!currentTab) {
       setActiveKey(queryRes[0]?.sqlQueryId);
+      setResultTotal(0);
       return;
     }
-    setResultTotal((total) => {
-      const calcTotal =
-        total +
-        (currentTab.resultItem.rows?.length ?? 0) *
-          (currentTab.resultItem.current_page ?? 1);
-      return calcTotal < maxPreQueryRows ? calcTotal : calcTotal + 1;
+    setResultTotal((v) => {
+      const currentPageLength = currentTab.resultItem.rows?.length ?? 0;
+      const currentPage = currentTab.resultItem.current_page ?? 1;
+      if (currentPageLength === 0) {
+        return v;
+      }
+      if (currentPageLength === maxPreQueryRows) {
+        return currentPage * currentPageLength + 1;
+      }
+      return v + currentPageLength + 1;
     });
   }, [activeKey, maxPreQueryRows, queryRes]);
 
@@ -128,10 +133,9 @@ const ExecuteResult: React.FC<ExecuteResultProps> = ({
             showSizeChanger: false,
             onChange: (page) => pageChange(page, queryId),
             showQuickJumper: true,
-            showTotal: (total) => {
+            showTotal: () => {
               return (
                 <>
-                  {total}:
                   {t('sqlQuery.executeResult.paginationInfo', {
                     current_page: resultItem.current_page,
                     start_line: resultItem.start_line,
@@ -175,10 +179,10 @@ const ExecuteResult: React.FC<ExecuteResultProps> = ({
     activeKey,
     maxPreQueryRows,
     queryRes,
-    resultTotal,
     setQueryRes,
     setResultErrorMessage,
     t,
+    resultTotal,
   ]);
   return (
     <Card title={t('sqlQuery.executeResult.title')}>

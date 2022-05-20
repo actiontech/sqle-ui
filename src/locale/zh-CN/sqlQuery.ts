@@ -12,6 +12,7 @@ export default {
     searchSqlResult: '查询',
     sqlHistory: '历史记录',
     returnLengthTips: '返回行数的最大值可通过数据源配置的修改',
+    returnLengthCheck: '请输入返回行数',
   },
   sqlQueryHistory: {
     title: 'Sql查询历史记录',

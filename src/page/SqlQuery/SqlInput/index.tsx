@@ -218,6 +218,7 @@ const SqlInput: React.FC<SqlInputProps> = ({
               rules={[
                 {
                   required: true,
+                  message: t('sqlQuery.sqlInput.returnLengthCheck'),
                 },
               ]}
             >
