@@ -224,7 +224,7 @@ describe('sqlQuery/sqlInput', () => {
     });
     expect(getSqlResult).toBeCalledTimes(query_ids_test1.query_ids?.length!);
     expect(setQueryRes).toBeCalledTimes(1);
-    expect(setResultErrorMessage).toBeCalledTimes(0);
+    expect(setResultErrorMessage).toBeCalledTimes(1);
     expect(
       screen.getByText('sqlQuery.sqlInput.searchSqlResult').parentNode
     ).not.toHaveClass('ant-btn-loading');

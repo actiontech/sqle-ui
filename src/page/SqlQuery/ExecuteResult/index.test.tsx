@@ -114,7 +114,7 @@ describe('SqlQuery/ExecuteResult', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    expect(setResultErrorMessage).toBeCalledTimes(0);
+    expect(setResultErrorMessage).toBeCalledTimes(1);
     expect(mockSetQueryRes).toBeCalledTimes(1);
 
     jest.clearAllMocks();
