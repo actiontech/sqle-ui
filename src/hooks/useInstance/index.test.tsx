@@ -5,6 +5,7 @@ import {
   screen,
   act as reactAct,
   cleanup,
+  waitFor,
 } from '@testing-library/react';
 import useInstance from '.';
 import instance from '../../api/instance';
@@ -224,6 +225,59 @@ describe('useInstance', () => {
     });
 
     await screen.findAllByText('oracle_instance_test_name');
+    expect(baseElementWithOptions).toMatchSnapshot();
+  });
+
+  test('should be group instance by database type', async () => {
+    const requestSpy = mockRequest();
+    requestSpy.mockImplementation(() =>
+      resolveThreeSecond([
+        { instance_name: 'mysql_instance_test_name_1', instance_type: 'mysql' },
+        { instance_name: 'mysql_instance_test_name_2', instance_type: 'mysql' },
+        { instance_name: 'oracle_instance_test_name', instance_type: 'oracle' },
+        {
+          instance_name: 'sqlserver_instance_test_name',
+          instance_type: 'sqlserver',
+        },
+      ])
+    );
+    const { result, waitForNextUpdate } = renderHook(() => useInstance());
+    expect(result.current.loading).toBe(false);
+    expect(result.current.instanceList).toEqual([]);
+
+    act(() => {
+      result.current.updateInstanceList();
+    });
+
+    expect(result.current.loading).toBe(true);
+    expect(requestSpy).toBeCalledTimes(1);
+    expect(result.current.instanceList).toEqual([]);
+
+    jest.advanceTimersByTime(3000);
+    await waitForNextUpdate();
+
+    expect(result.current.loading).toBe(false);
+    expect(requestSpy).toBeCalledTimes(1);
+    expect(result.current.instanceList).toEqual([
+      { instance_name: 'mysql_instance_test_name_1', instance_type: 'mysql' },
+      { instance_name: 'mysql_instance_test_name_2', instance_type: 'mysql' },
+      { instance_name: 'oracle_instance_test_name', instance_type: 'oracle' },
+      {
+        instance_name: 'sqlserver_instance_test_name',
+        instance_type: 'sqlserver',
+      },
+    ]);
+    cleanup();
+    const { baseElement: baseElementWithOptions } = render(
+      <Select data-testid="testId" value="value1">
+        {result.current.generateInstanceSelectOption()}
+      </Select>
+    );
+
+    fireEvent.mouseDown(screen.getByText('value1'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
     expect(baseElementWithOptions).toMatchSnapshot();
   });
 });

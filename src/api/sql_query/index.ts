@@ -25,7 +25,7 @@ class SqlQueryService extends ServiceBase {
     delete paramsData.instance_name;
 
     return this.get<IGetSQLQueryHistoryReturn>(
-      `/v1/sql_query/${instance_name}/history`,
+      `/v1/sql_query/history/${instance_name}/`,
       paramsData,
       options
     );
@@ -40,7 +40,7 @@ class SqlQueryService extends ServiceBase {
     delete paramsData.instance_name;
 
     return this.post<IPrepareSQLQueryReturn>(
-      `/v1/sql_query/${instance_name}/prepare`,
+      `/v1/sql_query/prepare/${instance_name}/`,
       paramsData,
       options
     );
@@ -51,14 +51,11 @@ class SqlQueryService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const instance_name = paramsData.instance_name;
-    delete paramsData.instance_name;
-
     const query_id = paramsData.query_id;
     delete paramsData.query_id;
 
     return this.get<IGetSQLResultReturn>(
-      `/v1/sql_query/${instance_name}/results/${query_id}/`,
+      `/v1/sql_query/results/${query_id}/`,
       paramsData,
       options
     );

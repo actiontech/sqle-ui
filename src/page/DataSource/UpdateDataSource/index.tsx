@@ -42,6 +42,10 @@ const UpdateDataSource = () => {
           maintenance_start_time: t.startTime,
           maintenance_stop_time: t.endTime,
         })) ?? [],
+      sql_query_config: {
+        max_pre_query_rows: values.maxPreQueryRows,
+        query_timeout_second: values.queryTimeoutSecond,
+      },
     };
     if (!!values.password) {
       params.db_password = values.password;

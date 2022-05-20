@@ -94,6 +94,10 @@ describe('UpdateDataSource', () => {
             },
           },
         ],
+        sql_query_config: {
+          max_pre_query_rows: 50,
+          query_timeout_second: 10000,
+        },
       })
     );
     return spy;
@@ -266,6 +270,10 @@ describe('UpdateDataSource', () => {
           },
         },
       ],
+      sql_query_config: {
+        max_pre_query_rows: 50,
+        query_timeout_second: 10000,
+      },
     });
 
     await waitFor(() => {

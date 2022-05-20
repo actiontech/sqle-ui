@@ -45,14 +45,26 @@ const useInstance = () => {
       } else {
         filterInstanceList = instanceList;
       }
-      return filterInstanceList.map((instance) => {
+
+      const instanceTypeList: string[] = Array.from(
+        new Set(filterInstanceList.map((v) => v.instance_type ?? ''))
+      );
+      return instanceTypeList.map((type) => {
         return (
-          <Select.Option
-            key={instance.instance_name}
-            value={instance.instance_name ?? ''}
-          >
-            {instance.instance_name}
-          </Select.Option>
+          <Select.OptGroup label={type} key={type}>
+            {filterInstanceList
+              .filter((instance) => instance.instance_type === type)
+              .map((instance) => {
+                return (
+                  <Select.Option
+                    key={instance.instance_name}
+                    value={instance.instance_name ?? ''}
+                  >
+                    {instance.instance_name}
+                  </Select.Option>
+                );
+              })}
+          </Select.OptGroup>
         );
       });
     },

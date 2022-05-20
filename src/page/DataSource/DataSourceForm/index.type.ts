@@ -20,6 +20,8 @@ export type DataSourceFormField = {
   params?: BackendFormValues;
   asyncParams?: BackendFormRequestParams[];
   maintenanceTime: MaintenanceTimeValue[];
+  maxPreQueryRows: number;
+  queryTimeoutSecond?: number;
 };
 
 export type IDataSourceFormProps = {

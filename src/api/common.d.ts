@@ -700,7 +700,21 @@ export interface IGetSQLQueryHistoryResV1 {
 }
 
 export interface IGetSQLResultResDataV1 {
-  execute_result?: ISQLResultItemResV1[];
+  current_page?: number;
+
+  end_line?: number;
+
+  execution_time?: number;
+
+  head?: ISQLResultItemHeadResV1[];
+
+  rows?: Array<{
+    [key: string]: string;
+  }>;
+
+  sql?: string;
+
+  start_line?: number;
 }
 
 export interface IGetSQLResultResV1 {
@@ -1125,24 +1139,6 @@ export interface ISQLQueryConfigResV1 {
 
 export interface ISQLResultItemHeadResV1 {
   field_name?: string;
-}
-
-export interface ISQLResultItemResV1 {
-  current_page?: number;
-
-  end_line?: number;
-
-  execution_time?: number;
-
-  head?: ISQLResultItemHeadResV1[];
-
-  rows?: Array<{
-    [key: string]: string;
-  }>;
-
-  sql?: string;
-
-  start_line?: number;
 }
 
 export interface ISystemVariablesResV1 {

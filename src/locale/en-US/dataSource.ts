@@ -35,7 +35,12 @@ export default {
     role: 'Role',
     ruleTemplate: 'Rule Template',
     workflow: 'Workflow',
+    maintenanceTime: '运维时间',
+    maxPreQueryRows: 'SQL查询返回条数',
+    queryTimeoutSecond: 'SQL超时限制(s)',
 
+    passwordTips:
+      '这里不会显示您已经配置的当前数据库密码，提交时如果您没有填写密码，那么将不会对数据库密码进行变更。',
     testDatabaseConnection: 'Test database connectivity',
     testing: 'Trying to connect...',
     testSuccess: 'Database connectivity test succeeded',

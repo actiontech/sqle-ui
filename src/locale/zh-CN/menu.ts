@@ -18,4 +18,5 @@ export default {
   whitelist: '白名单管理',
   auditPlane: '审核任务',
   auditPlaneList: '审核任务列表',
+  sqlQuery: 'SQL查询',
 };
