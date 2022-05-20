@@ -1,5 +1,5 @@
 import { Card, Empty, Result, Table, Tabs, Tooltip, Typography } from 'antd';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IGetSQLResultResDataV1 } from '../../../api/common';
 import sql_query from '../../../api/sql_query';
@@ -17,7 +17,23 @@ const ExecuteResult: React.FC<ExecuteResultProps> = ({
   setResultErrorMessage,
 }) => {
   const { t } = useTranslation();
-  const [activeKey, setActiveKey] = useState(queryRes[0]?.sqlQueryId);
+  const [activeKey, setActiveKey] = useState('');
+  const [resultTotal, setResultTotal] = useState(0);
+
+  useEffect(() => {
+    const currentTab = queryRes.find((v) => v.sqlQueryId === activeKey);
+    if (!currentTab) {
+      setActiveKey(queryRes[0]?.sqlQueryId);
+      return;
+    }
+    setResultTotal((total) => {
+      const calcTotal =
+        total +
+        (currentTab.resultItem.rows?.length ?? 0) *
+          (currentTab.resultItem.current_page ?? 1);
+      return calcTotal < maxPreQueryRows ? calcTotal : calcTotal + 1;
+    });
+  }, [activeKey, maxPreQueryRows, queryRes]);
 
   const generateResultTab = useMemo(() => {
     const tabsOnChange = (key: string) => {
@@ -43,6 +59,7 @@ const ExecuteResult: React.FC<ExecuteResultProps> = ({
         );
         return;
       }
+      setResultErrorMessage('');
       setQueryRes((v) => {
         const realQueryRes = [...v];
         realQueryRes.forEach((item) => {
@@ -79,14 +96,21 @@ const ExecuteResult: React.FC<ExecuteResultProps> = ({
             dataIndex: v.field_name ?? '',
             title: v.field_name ?? '',
             render: (text) => {
-              return (
-                <Typography.Paragraph copyable={{ text }}>
-                  <Tooltip title={text}>
-                    <Typography.Text style={{ maxWidth: 300 }} ellipsis={true}>
-                      {text}
-                    </Typography.Text>
-                  </Tooltip>
-                </Typography.Paragraph>
+              return text ? (
+                <div style={{ minWidth: 40 }}>
+                  <Typography.Paragraph copyable={{ text }}>
+                    <Tooltip title={text}>
+                      <Typography.Text
+                        style={{ maxWidth: 300 }}
+                        ellipsis={true}
+                      >
+                        {text}
+                      </Typography.Text>
+                    </Tooltip>
+                  </Typography.Paragraph>
+                </div>
+              ) : (
+                '-'
               );
             },
           };
@@ -98,13 +122,16 @@ const ExecuteResult: React.FC<ExecuteResultProps> = ({
           dataSource={resultItem.rows}
           columns={column}
           pagination={{
+            total: resultTotal,
+            current: resultItem.current_page,
             pageSize: maxPreQueryRows,
             showSizeChanger: false,
             onChange: (page) => pageChange(page, queryId),
             showQuickJumper: true,
-            showTotal: () => {
+            showTotal: (total) => {
               return (
                 <>
+                  {total}:
                   {t('sqlQuery.executeResult.paginationInfo', {
                     current_page: resultItem.current_page,
                     start_line: resultItem.start_line,
@@ -148,6 +175,7 @@ const ExecuteResult: React.FC<ExecuteResultProps> = ({
     activeKey,
     maxPreQueryRows,
     queryRes,
+    resultTotal,
     setQueryRes,
     setResultErrorMessage,
     t,

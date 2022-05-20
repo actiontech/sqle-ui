@@ -1,8 +1,7 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   pageTitle: 'SQL查询',
-  pageDescribe:
-    'SQL质量管理平台提供SQL查询能力，那么就可以对业务人员的SQL进行审计',
+  pageDescribe: '你可以对你有权访问的数据源进行SQL查询',
   ceTips:
     'SQL查询为企业版功能。如果您要想使用这些功能，您可以按照以下链接中的商业支持里的联系方式进行咨询。',
   sqlInput: {
@@ -12,6 +11,7 @@ export default {
     returnLength: '返回行数',
     searchSqlResult: '查询',
     sqlHistory: '历史记录',
+    returnLengthTips: '返回行数的最大值可通过数据源配置的修改',
   },
   sqlQueryHistory: {
     title: 'Sql查询历史记录',

@@ -9,6 +9,7 @@ import {
   IGetSQLResultParams,
   IPrepareSQLQueryParams,
 } from '../../../api/sql_query/index.d';
+import IconTipsLabel from '../../../components/IconTipsLabel';
 import {
   FilterFormColLayout,
   FilterFormRowLayout,
@@ -83,7 +84,7 @@ const SqlInput: React.FC<SqlInputProps> = ({
       setResultErrorMessage(failQuery.data.message ?? t('common.unknownError'));
       return;
     }
-
+    setResultErrorMessage('');
     const realQueryRes: SqlQueryResultType[] =
       prepareSqlQueryRes.data.data?.query_ids?.map((v, index) => {
         return {
@@ -206,7 +207,11 @@ const SqlInput: React.FC<SqlInputProps> = ({
           </Form.Item>
           <Space size="large">
             <Form.Item
-              label={t('sqlQuery.sqlInput.returnLength')}
+              label={
+                <IconTipsLabel tips={t('sqlQuery.sqlInput.returnLengthTips')}>
+                  {t('sqlQuery.sqlInput.returnLength')}
+                </IconTipsLabel>
+              }
               name="maxPreQueryRows"
               style={{ marginBottom: 0 }}
               initialValue={defaultMaxQueryRows}
