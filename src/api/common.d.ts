@@ -8,6 +8,8 @@ import {
   CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
   RuleParamResV1TypeEnum,
   RuleResV1LevelEnum,
+  SQLQueryConfigReqV1AllowQueryWhenLessThanAuditLevelEnum,
+  SQLQueryConfigResV1AllowQueryWhenLessThanAuditLevelEnum,
   UpdateAuditPlanNotifyConfigReqV1NotifyLevelEnum,
   UpdateAuditWhitelistReqV1MatchTypeEnum,
   UpdateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
@@ -1126,12 +1128,20 @@ export interface ISQLHistoryItemResV1 {
 }
 
 export interface ISQLQueryConfigReqV1 {
+  allow_query_when_less_than_audit_level?: SQLQueryConfigReqV1AllowQueryWhenLessThanAuditLevelEnum;
+
+  audit_enabled?: boolean;
+
   max_pre_query_rows?: number;
 
   query_timeout_second?: number;
 }
 
 export interface ISQLQueryConfigResV1 {
+  allow_query_when_less_than_audit_level?: SQLQueryConfigResV1AllowQueryWhenLessThanAuditLevelEnum;
+
+  audit_enabled?: boolean;
+
   max_pre_query_rows?: number;
 
   query_timeout_second?: number;

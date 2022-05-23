@@ -86,6 +86,26 @@ export enum RuleResV1LevelEnum {
   'error' = 'error'
 }
 
+export enum SQLQueryConfigReqV1AllowQueryWhenLessThanAuditLevelEnum {
+  'normal' = 'normal',
+
+  'notice' = 'notice',
+
+  'warn' = 'warn',
+
+  'error' = 'error'
+}
+
+export enum SQLQueryConfigResV1AllowQueryWhenLessThanAuditLevelEnum {
+  'normal' = 'normal',
+
+  'notice' = 'notice',
+
+  'warn' = 'warn',
+
+  'error' = 'error'
+}
+
 export enum UpdateAuditPlanNotifyConfigReqV1NotifyLevelEnum {
   'normal' = 'normal',
 

@@ -164,6 +164,20 @@ describe('AddDataSource', () => {
       jest.advanceTimersByTime(0);
     });
     fireEvent.click(screen.getByText('common.ok'));
+    fireEvent.click(
+      screen.getByLabelText('dataSource.dataSourceForm.needAuditForSqlQuery')
+    );
+    fireEvent.mouseDown(
+      screen.getByLabelText(
+        'dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel'
+      )
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const noticeOptions = screen.getAllByText('notice');
+    const noticeOption = noticeOptions[1];
+    fireEvent.click(noticeOption);
 
     await waitFor(() => {
       fireEvent.click(screen.getByText('common.submit'));
@@ -210,6 +224,8 @@ describe('AddDataSource', () => {
       sql_query_config: {
         max_pre_query_rows: 100,
         query_timeout_second: 10000,
+        allow_query_when_less_than_audit_level: 'notice',
+        audit_enabled: true,
       },
     });
 
