@@ -114,12 +114,17 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                     <div
                       class="ant-form-item-control-input-content"
                     >
-                      <textarea
-                        class="ant-input"
-                        id="describe"
-                        placeholder="common.form.placeholder.input"
-                        style="height: -40px; min-height: -12px; max-height: -40px; resize: none;"
-                      />
+                      <div
+                        class="ant-input-textarea ant-input-textarea-show-count"
+                        data-count="0 / 50"
+                      >
+                        <textarea
+                          class="ant-input"
+                          id="describe"
+                          placeholder="common.form.placeholder.input"
+                          style="height: -40px; min-height: -12px; max-height: -40px; resize: none;"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2316,12 +2321,17 @@ exports[`Order/Create should render page header 1`] = `
                       <div
                         class="ant-form-item-control-input-content"
                       >
-                        <textarea
-                          class="ant-input"
-                          id="describe"
-                          placeholder="common.form.placeholder.input"
-                          style="height: -40px; min-height: -12px; max-height: -40px; overflow-y: hidden; resize: none; overflow-x: hidden;"
-                        />
+                        <div
+                          class="ant-input-textarea ant-input-textarea-show-count"
+                          data-count="0 / 50"
+                        >
+                          <textarea
+                            class="ant-input"
+                            id="describe"
+                            placeholder="common.form.placeholder.input"
+                            style="height: -40px; min-height: -12px; max-height: -40px; overflow-y: hidden; resize: none; overflow-x: hidden;"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
