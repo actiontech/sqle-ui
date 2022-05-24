@@ -1,5 +1,6 @@
 import { FormInstance } from 'antd';
 import { IInstanceResV1 } from '../../../api/common';
+import { SQLQueryConfigReqV1AllowQueryWhenLessThanAuditLevelEnum } from '../../../api/common.enum';
 import {
   BackendFormRequestParams,
   BackendFormValues,
@@ -22,6 +23,8 @@ export type DataSourceFormField = {
   maintenanceTime: MaintenanceTimeValue[];
   maxPreQueryRows: number;
   queryTimeoutSecond?: number;
+  needAuditForSqlQuery?: boolean;
+  allowQueryWhenLessThanAuditLevel?: SQLQueryConfigReqV1AllowQueryWhenLessThanAuditLevelEnum;
 };
 
 export type IDataSourceFormProps = {

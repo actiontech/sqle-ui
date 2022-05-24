@@ -1,4 +1,4 @@
-import { Button, Form, Input, InputNumber, Select, Space } from 'antd';
+import { Button, Form, Input, InputNumber, Select, Space, Switch } from 'antd';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PageFormLayout } from '../../../data/common';
@@ -18,6 +18,10 @@ import EventEmitter from '../../../utils/EventEmitter';
 import EmitterKey from '../../../data/EmitterKey';
 import { turnDataSourceAsyncFormToCommon } from '../tool';
 import MaintenanceTimePicker from './MaintenanceTimePicker';
+import {
+  SQLQueryConfigReqV1AllowQueryWhenLessThanAuditLevelEnum,
+  SQLQueryConfigResV1AllowQueryWhenLessThanAuditLevelEnum,
+} from '../../../api/common.enum';
 
 const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
   const { t } = useTranslation();
@@ -84,6 +88,12 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
           props.defaultData.sql_query_config?.max_pre_query_rows ?? 100,
         queryTimeoutSecond:
           props.defaultData.sql_query_config?.query_timeout_second,
+        needAuditForSqlQuery:
+          !!props.defaultData.sql_query_config?.audit_enabled,
+        allowQueryWhenLessThanAuditLevel: props.defaultData.sql_query_config
+          ?.allow_query_when_less_than_audit_level as
+          | SQLQueryConfigReqV1AllowQueryWhenLessThanAuditLevelEnum
+          | undefined,
       });
       setDatabaseType(props.defaultData.db_type ?? ruleTemplateListDefaultKey);
     }
@@ -243,6 +253,29 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
         name="queryTimeoutSecond"
       >
         <InputNumber className="full-width-element" />
+      </Form.Item>
+      <Form.Item
+        label={t('dataSource.dataSourceForm.needAuditForSqlQuery')}
+        name="needAuditForSqlQuery"
+        valuePropName="checked"
+      >
+        <Switch />
+      </Form.Item>
+      <Form.Item
+        label={t('dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel')}
+        name="allowQueryWhenLessThanAuditLevel"
+      >
+        <Select>
+          {Object.values(
+            SQLQueryConfigResV1AllowQueryWhenLessThanAuditLevelEnum
+          ).map((v) => {
+            return (
+              <Select.Option key={v} value={v}>
+                {v}
+              </Select.Option>
+            );
+          })}
+        </Select>
       </Form.Item>
       <Form.Item label=" " colon={false}>
         <Space>

@@ -45,6 +45,9 @@ const UpdateDataSource = () => {
       sql_query_config: {
         max_pre_query_rows: values.maxPreQueryRows,
         query_timeout_second: values.queryTimeoutSecond,
+        audit_enabled: values.needAuditForSqlQuery,
+        allow_query_when_less_than_audit_level:
+          values.allowQueryWhenLessThanAuditLevel,
       },
     };
     if (!!values.password) {
