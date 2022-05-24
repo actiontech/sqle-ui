@@ -22,6 +22,8 @@ import {
   taskSqls,
 } from '../Detail/__testData__';
 
+const orderDescMaxLength = 50;
+
 describe('Order/Create', () => {
   beforeEach(() => {
     jest.useFakeTimers();
@@ -140,7 +142,11 @@ describe('Order/Create', () => {
       target: { value: 'orderName' },
     });
     fireEvent.input(screen.getByLabelText('order.baseInfo.describe'), {
-      target: { value: 'order describe' },
+      target: {
+        value: Array.from({ length: orderDescMaxLength + 1 }, () => 'e').join(
+          ''
+        ),
+      },
     });
 
     fireEvent.mouseDown(screen.getByLabelText('order.sqlInfo.instanceName'));
@@ -197,7 +203,7 @@ describe('Order/Create', () => {
       'ant-btn-loading'
     );
     expect(createOrderSpy).toBeCalledWith({
-      desc: 'order describe',
+      desc: Array.from({ length: orderDescMaxLength }, () => 'e').join(''),
       task_id: String(taskInfo.task_id),
       workflow_subject: 'orderName',
     });

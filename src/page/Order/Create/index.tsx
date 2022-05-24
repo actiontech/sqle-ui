@@ -183,6 +183,8 @@ const CreateOrder = () => {
                   placeholder={t('common.form.placeholder.input', {
                     name: t('order.baseInfo.describe'),
                   })}
+                  maxLength={50}
+                  showCount
                 />
               </Form.Item>
             </Form>
