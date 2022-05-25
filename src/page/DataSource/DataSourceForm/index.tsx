@@ -148,6 +148,19 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
     });
   };
 
+  const changeAuditEnabled = (check: boolean) => {
+    if (check) {
+      props.form.setFieldsValue({
+        allowQueryWhenLessThanAuditLevel:
+          SQLQueryConfigReqV1AllowQueryWhenLessThanAuditLevelEnum.error,
+      });
+    } else {
+      props.form.setFieldsValue({
+        allowQueryWhenLessThanAuditLevel: undefined,
+      });
+    }
+  };
+
   return (
     <Form form={props.form} {...PageFormLayout}>
       <Form.Item
@@ -259,7 +272,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
         name="needAuditForSqlQuery"
         valuePropName="checked"
       >
-        <Switch />
+        <Switch onChange={changeAuditEnabled} />
       </Form.Item>
       <Form.Item
         label={t('dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel')}

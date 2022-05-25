@@ -97,8 +97,8 @@ describe('UpdateDataSource', () => {
         sql_query_config: {
           max_pre_query_rows: 50,
           query_timeout_second: 10000,
-          allow_query_when_less_than_audit_level: 'error',
-          audit_enabled: false,
+          allow_query_when_less_than_audit_level: 'notice',
+          audit_enabled: true,
         },
       })
     );
@@ -186,6 +186,14 @@ describe('UpdateDataSource', () => {
       'ant-select-item-option-content'
     );
     fireEvent.click(screen.getAllByText('workflow-template-name-1')[2]);
+
+    fireEvent.click(
+      screen.getByLabelText('dataSource.dataSourceForm.needAuditForSqlQuery')
+    );
+
+    fireEvent.click(
+      screen.getByLabelText('dataSource.dataSourceForm.needAuditForSqlQuery')
+    );
 
     fireEvent.click(screen.getByText('common.add'));
     await waitFor(() => {
@@ -276,7 +284,7 @@ describe('UpdateDataSource', () => {
         max_pre_query_rows: 50,
         query_timeout_second: 10000,
         allow_query_when_less_than_audit_level: 'error',
-        audit_enabled: false,
+        audit_enabled: true,
       },
     });
 
