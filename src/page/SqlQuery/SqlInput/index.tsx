@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import MonacoEditor from 'react-monaco-editor';
 import instance from '../../../api/instance';
+import { getInstanceTipListV1FunctionalModuleEnum } from '../../../api/instance/index.enum';
 import sql_query from '../../../api/sql_query';
 import {
   IGetSQLResultParams,
@@ -114,7 +115,9 @@ const SqlInput: React.FC<SqlInputProps> = ({
   );
 
   useEffect(() => {
-    updateInstanceList();
+    updateInstanceList({
+      functional_module: getInstanceTipListV1FunctionalModuleEnum.sql_query,
+    });
   }, [updateInstanceList]);
 
   useEffect(() => {
