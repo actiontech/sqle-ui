@@ -22,7 +22,7 @@ exports[`RuleSelect/RuleManagerModal should render base form at init 1`] = `
         <div
           class="ant-modal rule-manager-modal"
           role="document"
-          style="width: 520px;"
+          style="width: 800px;"
         >
           <div
             aria-hidden="true"

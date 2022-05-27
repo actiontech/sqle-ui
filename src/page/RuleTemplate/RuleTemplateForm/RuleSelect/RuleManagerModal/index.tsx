@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Form, Input, Select, Switch } from 'antd';
 import { IRuleManagerForm, RuleManagerFormProps } from './index.type';
-import { ModalFormLayout } from '../../../../../data/common';
+import { ModalFormLayout, ModalSize } from '../../../../../data/common';
 import { useTranslation } from 'react-i18next';
 import useStaticStatus from '../../../../../hooks/useStaticStatus';
 import { useForm } from 'antd/lib/form/Form';
@@ -91,6 +91,7 @@ const RuleManagerModal: React.FC<RuleManagerFormProps> = (props) => {
         onCancel={onCancel}
         onOk={submit}
         className="rule-manager-modal"
+        width={ModalSize.mid}
       >
         <Form {...ModalFormLayout} form={form} data-testid="base-form">
           <Form.Item hidden={true} name="rule_name">

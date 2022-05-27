@@ -1,4 +1,4 @@
-import { Typography } from 'antd';
+import { Tooltip, Typography } from 'antd';
 import i18n from 'i18next';
 import { IWorkflowDetailResV1 } from '../../../api/common';
 import { getWorkflowListV1FilterCurrentStepTypeEnum } from '../../../api/workflow/index.enum';
@@ -18,9 +18,11 @@ export const orderListColumn = (): TableColumn<IWorkflowDetailResV1> => {
       title: () => i18n.t('order.order.desc'),
       render: (text) => {
         return (
-          <Typography.Text style={{ maxWidth: 300 }} ellipsis={true}>
-            {text}
-          </Typography.Text>
+          <Tooltip overlay={text}>
+            <Typography.Text style={{ maxWidth: 300 }} ellipsis={true}>
+              {text}
+            </Typography.Text>
+          </Tooltip>
         );
       },
     },
