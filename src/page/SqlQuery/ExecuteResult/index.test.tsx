@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import ExecuteResult from '.';
 import sql_query from '../../../api/sql_query';
@@ -12,6 +13,19 @@ import {
   query_res_1,
 } from '../__testData__';
 describe('SqlQuery/ExecuteResult', () => {
+  const error = console.error;
+
+  beforeAll(() => {
+    console.error = jest.fn();
+    (console.error as any).mockImplementation((message: any) => {
+      if (
+        message.includes('Each child in a list should have a unique "key" prop')
+      ) {
+        return;
+      }
+      error(message);
+    });
+  });
   beforeEach(() => {
     jest.useFakeTimers();
   });
@@ -102,7 +116,7 @@ describe('SqlQuery/ExecuteResult', () => {
         queryRes={queryResShow}
         setQueryRes={mockSetQueryRes}
         setResultErrorMessage={setResultErrorMessage}
-        maxPreQueryRows={5}
+        maxPreQueryRows={queryResShow[0].resultItem.rows?.length ?? 16}
       />
     );
     expect(container.querySelector('.ant-pagination-next')).toBeInTheDocument();
@@ -139,7 +153,7 @@ describe('SqlQuery/ExecuteResult', () => {
         queryRes={queryResShow}
         setQueryRes={mockSetQueryRes}
         setResultErrorMessage={setResultErrorMessage}
-        maxPreQueryRows={5}
+        maxPreQueryRows={queryResShow[0].resultItem.rows?.length ?? 16}
       />
     );
 
