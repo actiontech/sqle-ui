@@ -100,7 +100,6 @@ const ExecuteResult: React.FC<ExecuteResultProps> = ({
           return {
             dataIndex: v.field_name ?? '',
             title: v.field_name ?? '',
-            key: v.field_name,
             render: (text) => {
               return text ? (
                 <div style={{ minWidth: 40 }}>
