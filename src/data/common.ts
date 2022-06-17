@@ -2,6 +2,13 @@ export enum ResponseCode {
   SUCCESS = 0,
 }
 
+export enum CharCode {
+  a = 97,
+  z = 122,
+  A = 65,
+  Z = 90,
+}
+
 export enum SystemRole {
   admin = 'admin',
 }

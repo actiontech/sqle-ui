@@ -309,11 +309,13 @@ export const queryResShow: SqlQueryResultType[] = [
     hide: false,
     resultItem: query_res_1,
     sqlQueryId: 'query_id_1',
+    errorMessage: '',
   },
   {
     hide: false,
     resultItem: query_res_1,
     sqlQueryId: 'query_id_2',
+    errorMessage: '123',
   },
 ];
 export const queryResHide_1: SqlQueryResultType[] = [
@@ -321,6 +323,7 @@ export const queryResHide_1: SqlQueryResultType[] = [
     hide: true,
     resultItem: query_res_1,
     sqlQueryId: 'query_id_1',
+    errorMessage: '444',
   },
 ];
 export const queryResHide_2: SqlQueryResultType[] = [];
