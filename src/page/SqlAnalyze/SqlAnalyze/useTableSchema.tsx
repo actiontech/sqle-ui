@@ -7,7 +7,10 @@ import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode } from '../../../data/common';
 import useBackendTable from '../../../hooks/useBackendTable';
 import HighlightCode from '../../../utils/HighlightCode';
-import { TableSchemaItem, UseTableSchemaOption } from './index.type';
+import {
+  TableSchemaItem,
+  UseTableSchemaOption,
+} from '../../SqlQuery/ExecuteResult/index.type';
 
 const useTableSchema = (options?: UseTableSchemaOption) => {
   const { t } = useTranslation();
@@ -60,7 +63,11 @@ const useTableSchema = (options?: UseTableSchemaOption) => {
 
   const { tableColumnFactory } = useBackendTable();
 
-  const generateTableSchemaContent = (item: TableSchemaItem) => {
+  const generateTableSchemaContent = <
+    T extends Pick<TableSchemaItem, 'errorMessage' | 'tableMeta'>
+  >(
+    item: T
+  ) => {
     const renderTableColumnTable = () => {
       return (
         <Card title={t('sqlQuery.databaseTables.columns')}>

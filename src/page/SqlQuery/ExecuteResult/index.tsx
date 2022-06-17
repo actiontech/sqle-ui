@@ -8,9 +8,9 @@ import { IGetSQLResultParams } from '../../../api/sql_query/index.d';
 import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode } from '../../../data/common';
 import useBackendTable from '../../../hooks/useBackendTable';
-import useSQLExecPlan from '../useSQLExecPlan';
+import useSQLExecPlan from '../../SqlAnalyze/SqlAnalyze/useSQLExecPlan';
 import { ExecuteResultProps } from './index.type';
-import useTableSchema from './useTableSchema';
+import useTableSchema from '../../SqlAnalyze/SqlAnalyze/useTableSchema';
 
 const ExecuteResult: React.FC<ExecuteResultProps> = ({
   queryRes,

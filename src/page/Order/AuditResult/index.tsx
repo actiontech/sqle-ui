@@ -90,6 +90,10 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
       });
   };
 
+  const handleClickAnalyze = (sqlNum: number) => {
+    window.open(`/order/${props.taskId}/${sqlNum}/analyze`);
+  };
+
   useEffect(() => {
     if (props.taskId !== undefined) {
       getAuditTaskSql();
@@ -132,7 +136,7 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
           total: data?.total,
           showSizeChanger: true,
         }}
-        columns={orderAuditResultColumn(updateSqlDescribe)}
+        columns={orderAuditResultColumn(updateSqlDescribe, handleClickAnalyze)}
         dataSource={data?.list}
         onChange={tableChange}
       />

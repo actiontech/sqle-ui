@@ -14,10 +14,10 @@ import { ResponseCode } from '../../data/common';
 import { Theme } from '../../types/theme.type';
 import DatabaseTables from './DatabaseTables';
 import ExecuteResult from './ExecuteResult';
-import useTableSchema from './ExecuteResult/useTableSchema';
+import useTableSchema from '../SqlAnalyze/SqlAnalyze/useTableSchema';
 import { ISqlInputForm, SqlQueryResultType } from './index.type';
 import SqlInput from './SqlInput';
-import useSQLExecPlan from './useSQLExecPlan';
+import useSQLExecPlan from '../SqlAnalyze/SqlAnalyze/useSQLExecPlan';
 
 export const DefaultMaxQueryRows = 100;
 

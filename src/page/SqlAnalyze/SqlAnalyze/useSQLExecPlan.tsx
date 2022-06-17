@@ -2,11 +2,14 @@ import { Card, Space, Table } from 'antd';
 import { cloneDeep } from 'lodash';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import sql_query from '../../api/sql_query';
-import { ResponseCode } from '../../data/common';
-import useBackendTable from '../../hooks/useBackendTable';
-import HighlightCode from '../../utils/HighlightCode';
-import { SQLExecPlanItem, UseSQLExecPlanOption } from './index.type';
+import sql_query from '../../../api/sql_query';
+import { ResponseCode } from '../../../data/common';
+import useBackendTable from '../../../hooks/useBackendTable';
+import HighlightCode from '../../../utils/HighlightCode';
+import {
+  SQLExecPlanItem,
+  UseSQLExecPlanOption,
+} from '../../SqlQuery/index.type';
 
 const useSQLExecPlan = (options?: UseSQLExecPlanOption) => {
   const { form } = options ?? {};
@@ -64,7 +67,11 @@ const useSQLExecPlan = (options?: UseSQLExecPlanOption) => {
 
   const { tableColumnFactory } = useBackendTable();
 
-  const generateSQLExecPlanContent = (item: SQLExecPlanItem) => {
+  const generateSQLExecPlanContent = <
+    T extends Pick<SQLExecPlanItem, 'sql' | 'classic_result'>
+  >(
+    item: T
+  ) => {
     const { sql, classic_result: explain } = item;
 
     const renderSQL = () => {

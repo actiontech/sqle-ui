@@ -96,7 +96,19 @@ const BindUser = React.lazy(
 );
 
 const SqlQuery = React.lazy(
-  () => import(/* webpackChunkName: "BindUser" */ '../page/SqlQuery')
+  () => import(/* webpackChunkName: "SqlQuery" */ '../page/SqlQuery')
+);
+
+const OrderSqlAnalyze = React.lazy(
+  () =>
+    import(/* webpackChunkName: "OrderSqlAnalyze" */ '../page/SqlAnalyze/Order')
+);
+
+const AuditPlanSqlAnalyze = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "AuditPlanSqlAnalyze" */ '../page/SqlAnalyze/AuditPlan'
+    )
 );
 
 export const unAuthRouter: Array<RouteProps & { key: string }> = [
@@ -177,6 +189,16 @@ export const routerConfig: RouterItem[] = [
         component: OrderDetail,
         key: 'orderDetail',
       },
+      /* IFTRUE_isEE */
+      {
+        path: '/order/:taskId/:sqlNum/analyze',
+        exact: true,
+        label: 'menu.orderSqlAnalyze',
+        hideInSliderMenu: true,
+        component: OrderSqlAnalyze,
+        key: 'orderAnalyze',
+      },
+      /* FITRUE_isEE */
     ],
   },
   {
@@ -191,6 +213,16 @@ export const routerConfig: RouterItem[] = [
         hideInSliderMenu: true,
         component: AuditPlanDetail,
       },
+      /* IFTRUE_isEE */
+      {
+        path: '/auditPlan/:reportId/:sqlNum/analyze',
+        key: 'auditPlanDetail',
+        exact: true,
+        label: 'menu.auditPlanSqlAnalyze',
+        component: AuditPlanSqlAnalyze,
+        hideInSliderMenu: true,
+      },
+      /* FITRUE_isEE */
       {
         path: '/auditPlan',
         key: 'auditPlan',
