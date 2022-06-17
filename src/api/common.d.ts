@@ -337,8 +337,24 @@ export interface IDriversResV1 {
   driver_name_list?: string[];
 }
 
+export interface IExplainClassicResult {
+  head?: ITableMetaItemHeadResV1[];
+
+  rows?: Array<{
+    [key: string]: string;
+  }>;
+}
+
 export interface IFullSyncAuditPlanSQLsReqV1 {
   audit_plan_sql_list?: IAuditPlanSQLReqV1[];
+}
+
+export interface IGetAuditPlanAnalysisDataResV1 {
+  code?: number;
+
+  data?: IGetSQLAnalysisDataResItemV1;
+
+  message?: string;
 }
 
 export interface IGetAuditPlanMetasResV1 {
@@ -681,12 +697,26 @@ export interface IGetSMTPConfigurationResV1 {
   message?: string;
 }
 
+export interface IGetSQLAnalysisDataResItemV1 {
+  sql_explain?: ISQLExplain;
+
+  table_metas?: ITableMeta[];
+}
+
 export interface IGetSQLEInfoResV1 {
   code?: number;
 
   message?: string;
 
   version?: string;
+}
+
+export interface IGetSQLExplainResV1 {
+  code?: number;
+
+  data?: ISQLExplain[];
+
+  message?: string;
 }
 
 export interface IGetSQLQueryHistoryResDataV1 {
@@ -727,10 +757,38 @@ export interface IGetSQLResultResV1 {
   message?: string;
 }
 
+export interface IGetSqlExplainReqV1 {
+  instance_schema?: string;
+
+  sql?: string;
+}
+
 export interface IGetSystemVariablesResV1 {
   code?: number;
 
   data?: ISystemVariablesResV1;
+
+  message?: string;
+}
+
+export interface IGetTableMetadataResV1 {
+  code?: number;
+
+  data?: ITableMeta;
+
+  message?: string;
+}
+
+export interface IGetTaskAnalysisDataResItemV1 {
+  sql_explain?: ISQLExplain;
+
+  table_metas?: ITableMeta[];
+}
+
+export interface IGetTaskAnalysisDataResV1 {
+  code?: number;
+
+  data?: IGetTaskAnalysisDataResItemV1;
 
   message?: string;
 }
@@ -949,6 +1007,14 @@ export interface ILicenseItem {
   name?: string;
 }
 
+export interface IListTableBySchemaResV1 {
+  code?: number;
+
+  data?: ITable[];
+
+  message?: string;
+}
+
 export interface IMaintenanceTimeReqV1 {
   maintenance_start_time?: ITimeReqV1;
 
@@ -1123,6 +1189,12 @@ export interface ISMTPConfigurationResV1 {
   smtp_username?: string;
 }
 
+export interface ISQLExplain {
+  classic_result?: IExplainClassicResult;
+
+  sql?: string;
+}
+
 export interface ISQLHistoryItemResV1 {
   sql?: string;
 }
@@ -1153,6 +1225,44 @@ export interface ISQLResultItemHeadResV1 {
 
 export interface ISystemVariablesResV1 {
   workflow_expired_hours?: number;
+}
+
+export interface ITable {
+  name?: string;
+}
+
+export interface ITableColumns {
+  head?: ITableMetaItemHeadResV1[];
+
+  rows?: Array<{
+    [key: string]: string;
+  }>;
+}
+
+export interface ITableIndexes {
+  head?: ITableMetaItemHeadResV1[];
+
+  rows?: Array<{
+    [key: string]: string;
+  }>;
+}
+
+export interface ITableMeta {
+  columns?: ITableColumns;
+
+  create_table_sql?: string;
+
+  indexes?: ITableIndexes;
+
+  name?: string;
+
+  schema?: string;
+}
+
+export interface ITableMetaItemHeadResV1 {
+  desc?: string;
+
+  field_name?: string;
 }
 
 export interface ITestAuditPlanNotifyConfigResDataV1 {
@@ -1593,6 +1703,8 @@ export interface IAuditPlanReportSQLResV2 {
   audit_plan_report_sql?: string;
 
   audit_plan_report_sql_audit_result?: string;
+
+  number?: number;
 }
 
 export interface IAuditPlanSQLHeadV2 {

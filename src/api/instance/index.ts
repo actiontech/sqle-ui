@@ -28,6 +28,10 @@ import {
   IGetInstanceRuleListV1Return,
   IGetInstanceSchemasV1Params,
   IGetInstanceSchemasV1Return,
+  IListTableBySchemaParams,
+  IListTableBySchemaReturn,
+  IGetTableMetadataParams,
+  IGetTableMetadataReturn,
   IGetInstanceWorkflowTemplateV1Params,
   IGetInstanceWorkflowTemplateV1Return
 } from './index.d';
@@ -174,6 +178,45 @@ class InstanceService extends ServiceBase {
 
     return this.get<IGetInstanceSchemasV1Return>(
       `/v1/instances/${instance_name}/schemas`,
+      paramsData,
+      options
+    );
+  }
+
+  public listTableBySchema(
+    params: IListTableBySchemaParams,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const instance_name = paramsData.instance_name;
+    delete paramsData.instance_name;
+
+    const schema_name = paramsData.schema_name;
+    delete paramsData.schema_name;
+
+    return this.get<IListTableBySchemaReturn>(
+      `/v1/instances/${instance_name}/schemas/${schema_name}/tables`,
+      paramsData,
+      options
+    );
+  }
+
+  public getTableMetadata(
+    params: IGetTableMetadataParams,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const instance_name = paramsData.instance_name;
+    delete paramsData.instance_name;
+
+    const schema_name = paramsData.schema_name;
+    delete paramsData.schema_name;
+
+    const table_name = paramsData.table_name;
+    delete paramsData.table_name;
+
+    return this.get<IGetTableMetadataReturn>(
+      `/v1/instances/${instance_name}/schemas/${schema_name}/tables/${table_name}/metadata`,
       paramsData,
       options
     );
