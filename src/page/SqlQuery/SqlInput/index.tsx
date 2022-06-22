@@ -84,7 +84,7 @@ const SqlInput: React.FC<SqlInputProps> = ({
                 <Select
                   data-testid="instance-name"
                   value={dataSourceName}
-                  onChange={updateDataSourceName}
+                  onChange={(val) => updateDataSourceName(val)}
                   placeholder={t('common.form.placeholder.select')}
                   className="middle-select"
                   allowClear
@@ -108,7 +108,7 @@ const SqlInput: React.FC<SqlInputProps> = ({
                   placeholder={t('common.form.placeholder.select')}
                   showSearch
                   allowClear
-                  onChange={updateSchemaName}
+                  onChange={(val) => updateSchemaName(val)}
                 >
                   {generateInstanceSchemaSelectOption()}
                 </Select>
@@ -129,6 +129,7 @@ const SqlInput: React.FC<SqlInputProps> = ({
             ]}
           >
             <MonacoEditor
+              data-testid="sql-input-editor"
               theme={currentEditorTheme}
               width="100%"
               height="200"

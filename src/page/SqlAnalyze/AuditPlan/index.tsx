@@ -7,7 +7,7 @@ import { ResponseCode } from '../../../data/common';
 import SqlAnalyze from '../SqlAnalyze';
 import { AuditPlanReportSqlAnalyzeUrlParams } from './index.type';
 
-const OrderSqlAnalyze = () => {
+const AuditPlanSqlAnalyze = () => {
   const urlParams = useParams<AuditPlanReportSqlAnalyzeUrlParams>();
 
   const [errorMessage, setErrorMessage] = useState<string>('');
@@ -57,4 +57,4 @@ const OrderSqlAnalyze = () => {
   );
 };
 
-export default OrderSqlAnalyze;
+export default AuditPlanSqlAnalyze;

@@ -485,6 +485,9 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
                       <col
                         style="width: 200px;"
                       />
+                      <col
+                        style="width: 70px;"
+                      />
                     </colgroup>
                     <thead
                       class="ant-table-thead"
@@ -530,6 +533,11 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
                         >
                           audit.table.describe
                         </th>
+                        <th
+                          class="ant-table-cell"
+                        >
+                          common.operate
+                        </th>
                       </tr>
                     </thead>
                     <tbody
@@ -540,7 +548,7 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
                       >
                         <td
                           class="ant-table-cell"
-                          colspan="8"
+                          colspan="9"
                         >
                           <div
                             class="ant-empty ant-empty-normal"
@@ -1066,6 +1074,9 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
                       <col
                         style="width: 200px;"
                       />
+                      <col
+                        style="width: 70px;"
+                      />
                     </colgroup>
                     <thead
                       class="ant-table-thead"
@@ -1110,6 +1121,11 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
                           class="ant-table-cell"
                         >
                           audit.table.describe
+                        </th>
+                        <th
+                          class="ant-table-cell"
+                        >
+                          common.operate
                         </th>
                       </tr>
                     </thead>
@@ -1264,6 +1280,15 @@ use aaab;
                             </div>
                           </div>
                         </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          <a
+                            class="ant-typography"
+                          >
+                            audit.table.analyze
+                          </a>
+                        </td>
                       </tr>
                       <tr
                         class="ant-table-row ant-table-row-level-0"
@@ -1406,6 +1431,15 @@ use aaab;
                               </span>
                             </div>
                           </div>
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          <a
+                            class="ant-typography"
+                          >
+                            audit.table.analyze
+                          </a>
                         </td>
                       </tr>
                       <tr
@@ -1920,6 +1954,15 @@ use aaab;
                               </span>
                             </div>
                           </div>
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          <a
+                            class="ant-typography"
+                          >
+                            audit.table.analyze
+                          </a>
                         </td>
                       </tr>
                     </tbody>

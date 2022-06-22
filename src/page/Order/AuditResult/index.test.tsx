@@ -170,4 +170,18 @@ describe('Order/Detail/AuditResult', () => {
     });
     expect(getSqlSpy).toBeCalledTimes(2);
   });
+
+  it('should jump to sql analyze page when click analyze button', async () => {
+    mockGetTaskSqls();
+    render(<AuditResult taskId={9999} passRate={0.33} />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    const openSpy = jest.spyOn(window, 'open');
+    openSpy.mockImplementation(() => null);
+    fireEvent.click(screen.getAllByText('audit.table.analyze')[0]);
+    expect(openSpy).toBeCalledTimes(1);
+    expect(openSpy).toBeCalledWith(`/order/9999/1/analyze`);
+    openSpy.mockRestore();
+  });
 });

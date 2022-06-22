@@ -66,7 +66,11 @@ const DatabaseTables: React.FC<DatabaseTablesProps> = (props) => {
   }, [dataSourceName, schemaName]);
 
   const isEmpty = useMemo(() => {
-    return !dataSourceName || !schemaName || tables.length === 0;
+    if (!dataSourceName || !schemaName) {
+      return true;
+    }
+    const count = tables.reduce((s, c) => (s += c.length), 0);
+    return count === 0;
   }, [dataSourceName, schemaName, tables]);
 
   const lock = useRef(false);
