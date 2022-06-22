@@ -220,6 +220,7 @@ exports[`sqlQuery/sqlInput should get the instance list and match the snapshot 1
                   class="ant-form-item-control-input-content"
                 >
                   <input
+                    data-testid="sql-input-editor"
                     height="200"
                     id="sql"
                     language="sql"
@@ -410,6 +411,7 @@ exports[`sqlQuery/sqlInput should get the instance list and match the snapshot 1
             </div>
             <div
               class="ant-space-item"
+              style="margin-right: 24px;"
             >
               <button
                 class="ant-btn ant-btn-primary"
@@ -418,6 +420,19 @@ exports[`sqlQuery/sqlInput should get the instance list and match the snapshot 1
               >
                 <span>
                   sqlQuery.sqlInput.sqlHistory
+                </span>
+              </button>
+            </div>
+            <div
+              class="ant-space-item"
+            >
+              <button
+                class="ant-btn ant-btn-primary"
+                disabled=""
+                type="button"
+              >
+                <span>
+                  sqlQuery.sqlInput.sqlExecPlan
                 </span>
               </button>
             </div>

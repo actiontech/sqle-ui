@@ -671,6 +671,9 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                             <col
                               style="width: 200px;"
                             />
+                            <col
+                              style="width: 70px;"
+                            />
                           </colgroup>
                           <thead
                             class="ant-table-thead"
@@ -715,6 +718,11 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                 class="ant-table-cell"
                               >
                                 audit.table.describe
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                common.operate
                               </th>
                             </tr>
                           </thead>
@@ -869,6 +877,15 @@ use aaab;
                                   </div>
                                 </div>
                               </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                <a
+                                  class="ant-typography"
+                                >
+                                  audit.table.analyze
+                                </a>
+                              </td>
                             </tr>
                             <tr
                               class="ant-table-row ant-table-row-level-0"
@@ -1011,6 +1028,15 @@ use aaab;
                                     </span>
                                   </div>
                                 </div>
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                <a
+                                  class="ant-typography"
+                                >
+                                  audit.table.analyze
+                                </a>
                               </td>
                             </tr>
                             <tr
@@ -1525,6 +1551,15 @@ use aaab;
                                     </span>
                                   </div>
                                 </div>
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                <a
+                                  class="ant-typography"
+                                >
+                                  audit.table.analyze
+                                </a>
                               </td>
                             </tr>
                           </tbody>
@@ -2347,6 +2382,9 @@ use aaab;
                             <col
                               style="width: 200px;"
                             />
+                            <col
+                              style="width: 70px;"
+                            />
                           </colgroup>
                           <thead
                             class="ant-table-thead"
@@ -2391,6 +2429,11 @@ use aaab;
                                 class="ant-table-cell"
                               >
                                 audit.table.describe
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                common.operate
                               </th>
                             </tr>
                           </thead>
@@ -2545,6 +2588,15 @@ use aaab;
                                   </div>
                                 </div>
                               </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                <a
+                                  class="ant-typography"
+                                >
+                                  audit.table.analyze
+                                </a>
+                              </td>
                             </tr>
                             <tr
                               class="ant-table-row ant-table-row-level-0"
@@ -2687,6 +2739,15 @@ use aaab;
                                     </span>
                                   </div>
                                 </div>
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                <a
+                                  class="ant-typography"
+                                >
+                                  audit.table.analyze
+                                </a>
                               </td>
                             </tr>
                             <tr
@@ -3201,6 +3262,15 @@ use aaab;
                                     </span>
                                   </div>
                                 </div>
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                <a
+                                  class="ant-typography"
+                                >
+                                  audit.table.analyze
+                                </a>
                               </td>
                             </tr>
                           </tbody>
@@ -4020,6 +4090,9 @@ exports[`Order/Detail should render on process order info by request 1`] = `
                             <col
                               style="width: 200px;"
                             />
+                            <col
+                              style="width: 70px;"
+                            />
                           </colgroup>
                           <thead
                             class="ant-table-thead"
@@ -4065,6 +4138,11 @@ exports[`Order/Detail should render on process order info by request 1`] = `
                               >
                                 audit.table.describe
                               </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                common.operate
+                              </th>
                             </tr>
                           </thead>
                           <tbody
@@ -4075,7 +4153,7 @@ exports[`Order/Detail should render on process order info by request 1`] = `
                             >
                               <td
                                 class="ant-table-cell"
-                                colspan="8"
+                                colspan="9"
                               >
                                 <div
                                   class="ant-empty ant-empty-normal"
@@ -4836,6 +4914,9 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                             <col
                               style="width: 200px;"
                             />
+                            <col
+                              style="width: 70px;"
+                            />
                           </colgroup>
                           <thead
                             class="ant-table-thead"
@@ -4881,6 +4962,11 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                               >
                                 audit.table.describe
                               </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                common.operate
+                              </th>
                             </tr>
                           </thead>
                           <tbody
@@ -4891,7 +4977,7 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                             >
                               <td
                                 class="ant-table-cell"
-                                colspan="8"
+                                colspan="9"
                               >
                                 <div
                                   class="ant-empty ant-empty-normal"

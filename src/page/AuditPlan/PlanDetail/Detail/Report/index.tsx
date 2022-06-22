@@ -46,6 +46,10 @@ const AuditPlanReport: React.FC = () => {
     }
   );
 
+  const handleClickAnalyze = (sqlNumber: number) => {
+    window.open(`/auditPlan/${urlParams.reportId}/${sqlNumber}/analyze`);
+  };
+
   return (
     <Card
       title={
@@ -70,7 +74,7 @@ const AuditPlanReport: React.FC = () => {
         rowKey="audit_plan_report_sql"
         loading={loading}
         dataSource={data?.list ?? []}
-        columns={AuditPlanReportTableHeader()}
+        columns={AuditPlanReportTableHeader(handleClickAnalyze)}
         pagination={{
           showSizeChanger: true,
           total: data?.total ?? 0,

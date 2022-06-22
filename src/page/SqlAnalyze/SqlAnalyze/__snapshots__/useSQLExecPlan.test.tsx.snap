@@ -1,0 +1,966 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useSQLExecPlan should render sqlExecPlan cad when user call "generateSQLExecPlanContent" method 1`] = `
+<div>
+  <div>
+    <div
+      class="ant-space ant-space-vertical full-width-element"
+    >
+      <div
+        class="ant-space-item"
+        style="margin-bottom: 8px;"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                sqlQuery.executePlan.sql
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <pre>
+              <span
+                class="hljs-keyword"
+              >
+                SELECT
+              </span>
+               
+              <span
+                class="hljs-operator"
+              >
+                *
+              </span>
+               
+              <span
+                class="hljs-keyword"
+              >
+                from
+              </span>
+               tasks;
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-space-item"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                sqlQuery.executePlan.sqlExplain
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-table-wrapper"
+            >
+              <div
+                class="ant-spin-nested-loading"
+              >
+                <div
+                  class="ant-spin-container"
+                >
+                  <div
+                    class="ant-table"
+                  >
+                    <div
+                      class="ant-table-container"
+                    >
+                      <div
+                        class="ant-table-content"
+                      >
+                        <table
+                          style="table-layout: auto;"
+                        >
+                          <colgroup />
+                          <thead
+                            class="ant-table-thead"
+                          >
+                            <tr>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                id
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                select_type
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                table
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                partitions
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                type
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                possible_keys
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                key
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                key_len
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                ref
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                rows
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                filtered
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                Extra
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody
+                            class="ant-table-tbody"
+                          >
+                            <tr
+                              class="ant-table-row ant-table-row-level-0"
+                              data-row-key=""
+                            >
+                              <td
+                                class="ant-table-cell"
+                              >
+                                <div
+                                  style="min-width: 40px;"
+                                >
+                                  <div
+                                    class="ant-typography"
+                                  >
+                                    <span
+                                      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                      style="max-width: 300px;"
+                                    >
+                                      1
+                                    </span>
+                                    <div
+                                      aria-label="Copy"
+                                      class="ant-typography-copy"
+                                      role="button"
+                                      style="border: 0px; background: transparent; padding: 0px; line-height: inherit; display: inline-block;"
+                                      tabindex="0"
+                                    >
+                                      <span
+                                        aria-label="copy"
+                                        class="anticon anticon-copy"
+                                        role="img"
+                                      >
+                                        <svg
+                                          aria-hidden="true"
+                                          data-icon="copy"
+                                          fill="currentColor"
+                                          focusable="false"
+                                          height="1em"
+                                          viewBox="64 64 896 896"
+                                          width="1em"
+                                        >
+                                          <path
+                                            d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                                          />
+                                        </svg>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                <div
+                                  style="min-width: 40px;"
+                                >
+                                  <div
+                                    class="ant-typography"
+                                  >
+                                    <span
+                                      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                      style="max-width: 300px;"
+                                    >
+                                      SIMPLE
+                                    </span>
+                                    <div
+                                      aria-label="Copy"
+                                      class="ant-typography-copy"
+                                      role="button"
+                                      style="border: 0px; background: transparent; padding: 0px; line-height: inherit; display: inline-block;"
+                                      tabindex="0"
+                                    >
+                                      <span
+                                        aria-label="copy"
+                                        class="anticon anticon-copy"
+                                        role="img"
+                                      >
+                                        <svg
+                                          aria-hidden="true"
+                                          data-icon="copy"
+                                          fill="currentColor"
+                                          focusable="false"
+                                          height="1em"
+                                          viewBox="64 64 896 896"
+                                          width="1em"
+                                        >
+                                          <path
+                                            d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                                          />
+                                        </svg>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                <div
+                                  style="min-width: 40px;"
+                                >
+                                  <div
+                                    class="ant-typography"
+                                  >
+                                    <span
+                                      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                      style="max-width: 300px;"
+                                    >
+                                      tasks
+                                    </span>
+                                    <div
+                                      aria-label="Copy"
+                                      class="ant-typography-copy"
+                                      role="button"
+                                      style="border: 0px; background: transparent; padding: 0px; line-height: inherit; display: inline-block;"
+                                      tabindex="0"
+                                    >
+                                      <span
+                                        aria-label="copy"
+                                        class="anticon anticon-copy"
+                                        role="img"
+                                      >
+                                        <svg
+                                          aria-hidden="true"
+                                          data-icon="copy"
+                                          fill="currentColor"
+                                          focusable="false"
+                                          height="1em"
+                                          viewBox="64 64 896 896"
+                                          width="1em"
+                                        >
+                                          <path
+                                            d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                                          />
+                                        </svg>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                <div
+                                  style="min-width: 40px;"
+                                >
+                                  <div
+                                    class="ant-typography"
+                                  >
+                                    <span
+                                      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                      style="max-width: 300px;"
+                                    >
+                                      ALL
+                                    </span>
+                                    <div
+                                      aria-label="Copy"
+                                      class="ant-typography-copy"
+                                      role="button"
+                                      style="border: 0px; background: transparent; padding: 0px; line-height: inherit; display: inline-block;"
+                                      tabindex="0"
+                                    >
+                                      <span
+                                        aria-label="copy"
+                                        class="anticon anticon-copy"
+                                        role="img"
+                                      >
+                                        <svg
+                                          aria-hidden="true"
+                                          data-icon="copy"
+                                          fill="currentColor"
+                                          focusable="false"
+                                          height="1em"
+                                          viewBox="64 64 896 896"
+                                          width="1em"
+                                        >
+                                          <path
+                                            d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                                          />
+                                        </svg>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                <div
+                                  style="min-width: 40px;"
+                                >
+                                  <div
+                                    class="ant-typography"
+                                  >
+                                    <span
+                                      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                      style="max-width: 300px;"
+                                    >
+                                      1
+                                    </span>
+                                    <div
+                                      aria-label="Copy"
+                                      class="ant-typography-copy"
+                                      role="button"
+                                      style="border: 0px; background: transparent; padding: 0px; line-height: inherit; display: inline-block;"
+                                      tabindex="0"
+                                    >
+                                      <span
+                                        aria-label="copy"
+                                        class="anticon anticon-copy"
+                                        role="img"
+                                      >
+                                        <svg
+                                          aria-hidden="true"
+                                          data-icon="copy"
+                                          fill="currentColor"
+                                          focusable="false"
+                                          height="1em"
+                                          viewBox="64 64 896 896"
+                                          width="1em"
+                                        >
+                                          <path
+                                            d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                                          />
+                                        </svg>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                <div
+                                  style="min-width: 40px;"
+                                >
+                                  <div
+                                    class="ant-typography"
+                                  >
+                                    <span
+                                      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                      style="max-width: 300px;"
+                                    >
+                                      100.00
+                                    </span>
+                                    <div
+                                      aria-label="Copy"
+                                      class="ant-typography-copy"
+                                      role="button"
+                                      style="border: 0px; background: transparent; padding: 0px; line-height: inherit; display: inline-block;"
+                                      tabindex="0"
+                                    >
+                                      <span
+                                        aria-label="copy"
+                                        class="anticon anticon-copy"
+                                        role="img"
+                                      >
+                                        <svg
+                                          aria-hidden="true"
+                                          data-icon="copy"
+                                          fill="currentColor"
+                                          focusable="false"
+                                          height="1em"
+                                          viewBox="64 64 896 896"
+                                          width="1em"
+                                        >
+                                          <path
+                                            d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                                          />
+                                        </svg>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-space ant-space-vertical full-width-element"
+    >
+      <div
+        class="ant-space-item"
+        style="margin-bottom: 8px;"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                sqlQuery.executePlan.sql
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <pre>
+              <span
+                class="hljs-keyword"
+              >
+                SELECT
+              </span>
+               
+              <span
+                class="hljs-operator"
+              >
+                *
+              </span>
+               
+              <span
+                class="hljs-keyword"
+              >
+                from
+              </span>
+               users;
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-space-item"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                sqlQuery.executePlan.sqlExplain
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-table-wrapper"
+            >
+              <div
+                class="ant-spin-nested-loading"
+              >
+                <div
+                  class="ant-spin-container"
+                >
+                  <div
+                    class="ant-table"
+                  >
+                    <div
+                      class="ant-table-container"
+                    >
+                      <div
+                        class="ant-table-content"
+                      >
+                        <table
+                          style="table-layout: auto;"
+                        >
+                          <colgroup />
+                          <thead
+                            class="ant-table-thead"
+                          >
+                            <tr>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                id
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                select_type
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                table
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                partitions
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                type
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                possible_keys
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                key
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                key_len
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                ref
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                rows
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                filtered
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                Extra
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody
+                            class="ant-table-tbody"
+                          >
+                            <tr
+                              class="ant-table-row ant-table-row-level-0"
+                              data-row-key=""
+                            >
+                              <td
+                                class="ant-table-cell"
+                              >
+                                <div
+                                  style="min-width: 40px;"
+                                >
+                                  <div
+                                    class="ant-typography"
+                                  >
+                                    <span
+                                      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                      style="max-width: 300px;"
+                                    >
+                                      1
+                                    </span>
+                                    <div
+                                      aria-label="Copy"
+                                      class="ant-typography-copy"
+                                      role="button"
+                                      style="border: 0px; background: transparent; padding: 0px; line-height: inherit; display: inline-block;"
+                                      tabindex="0"
+                                    >
+                                      <span
+                                        aria-label="copy"
+                                        class="anticon anticon-copy"
+                                        role="img"
+                                      >
+                                        <svg
+                                          aria-hidden="true"
+                                          data-icon="copy"
+                                          fill="currentColor"
+                                          focusable="false"
+                                          height="1em"
+                                          viewBox="64 64 896 896"
+                                          width="1em"
+                                        >
+                                          <path
+                                            d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                                          />
+                                        </svg>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                <div
+                                  style="min-width: 40px;"
+                                >
+                                  <div
+                                    class="ant-typography"
+                                  >
+                                    <span
+                                      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                      style="max-width: 300px;"
+                                    >
+                                      SIMPLE
+                                    </span>
+                                    <div
+                                      aria-label="Copy"
+                                      class="ant-typography-copy"
+                                      role="button"
+                                      style="border: 0px; background: transparent; padding: 0px; line-height: inherit; display: inline-block;"
+                                      tabindex="0"
+                                    >
+                                      <span
+                                        aria-label="copy"
+                                        class="anticon anticon-copy"
+                                        role="img"
+                                      >
+                                        <svg
+                                          aria-hidden="true"
+                                          data-icon="copy"
+                                          fill="currentColor"
+                                          focusable="false"
+                                          height="1em"
+                                          viewBox="64 64 896 896"
+                                          width="1em"
+                                        >
+                                          <path
+                                            d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                                          />
+                                        </svg>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                <div
+                                  style="min-width: 40px;"
+                                >
+                                  <div
+                                    class="ant-typography"
+                                  >
+                                    <span
+                                      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                      style="max-width: 300px;"
+                                    >
+                                      users
+                                    </span>
+                                    <div
+                                      aria-label="Copy"
+                                      class="ant-typography-copy"
+                                      role="button"
+                                      style="border: 0px; background: transparent; padding: 0px; line-height: inherit; display: inline-block;"
+                                      tabindex="0"
+                                    >
+                                      <span
+                                        aria-label="copy"
+                                        class="anticon anticon-copy"
+                                        role="img"
+                                      >
+                                        <svg
+                                          aria-hidden="true"
+                                          data-icon="copy"
+                                          fill="currentColor"
+                                          focusable="false"
+                                          height="1em"
+                                          viewBox="64 64 896 896"
+                                          width="1em"
+                                        >
+                                          <path
+                                            d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                                          />
+                                        </svg>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                <div
+                                  style="min-width: 40px;"
+                                >
+                                  <div
+                                    class="ant-typography"
+                                  >
+                                    <span
+                                      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                      style="max-width: 300px;"
+                                    >
+                                      ALL
+                                    </span>
+                                    <div
+                                      aria-label="Copy"
+                                      class="ant-typography-copy"
+                                      role="button"
+                                      style="border: 0px; background: transparent; padding: 0px; line-height: inherit; display: inline-block;"
+                                      tabindex="0"
+                                    >
+                                      <span
+                                        aria-label="copy"
+                                        class="anticon anticon-copy"
+                                        role="img"
+                                      >
+                                        <svg
+                                          aria-hidden="true"
+                                          data-icon="copy"
+                                          fill="currentColor"
+                                          focusable="false"
+                                          height="1em"
+                                          viewBox="64 64 896 896"
+                                          width="1em"
+                                        >
+                                          <path
+                                            d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                                          />
+                                        </svg>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                <div
+                                  style="min-width: 40px;"
+                                >
+                                  <div
+                                    class="ant-typography"
+                                  >
+                                    <span
+                                      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                      style="max-width: 300px;"
+                                    >
+                                      1
+                                    </span>
+                                    <div
+                                      aria-label="Copy"
+                                      class="ant-typography-copy"
+                                      role="button"
+                                      style="border: 0px; background: transparent; padding: 0px; line-height: inherit; display: inline-block;"
+                                      tabindex="0"
+                                    >
+                                      <span
+                                        aria-label="copy"
+                                        class="anticon anticon-copy"
+                                        role="img"
+                                      >
+                                        <svg
+                                          aria-hidden="true"
+                                          data-icon="copy"
+                                          fill="currentColor"
+                                          focusable="false"
+                                          height="1em"
+                                          viewBox="64 64 896 896"
+                                          width="1em"
+                                        >
+                                          <path
+                                            d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                                          />
+                                        </svg>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                <div
+                                  style="min-width: 40px;"
+                                >
+                                  <div
+                                    class="ant-typography"
+                                  >
+                                    <span
+                                      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                      style="max-width: 300px;"
+                                    >
+                                      100.00
+                                    </span>
+                                    <div
+                                      aria-label="Copy"
+                                      class="ant-typography-copy"
+                                      role="button"
+                                      style="border: 0px; background: transparent; padding: 0px; line-height: inherit; display: inline-block;"
+                                      tabindex="0"
+                                    >
+                                      <span
+                                        aria-label="copy"
+                                        class="anticon anticon-copy"
+                                        role="img"
+                                      >
+                                        <svg
+                                          aria-hidden="true"
+                                          data-icon="copy"
+                                          fill="currentColor"
+                                          focusable="false"
+                                          height="1em"
+                                          viewBox="64 64 896 896"
+                                          width="1em"
+                                        >
+                                          <path
+                                            d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                                          />
+                                        </svg>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

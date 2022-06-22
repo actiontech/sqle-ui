@@ -1,9 +1,17 @@
 import {
+  IGetSqlExplainReqV1,
+  IGetSQLExplainResV1,
   IGetSQLQueryHistoryResV1,
   IPrepareSQLQueryReqV1,
   IPrepareSQLQueryResV1,
   IGetSQLResultResV1
 } from '../common.d';
+
+export interface IGetSQLExplainParams extends IGetSqlExplainReqV1 {
+  instance_name: string;
+}
+
+export interface IGetSQLExplainReturn extends IGetSQLExplainResV1 {}
 
 export interface IGetSQLQueryHistoryParams {
   instance_name: string;

@@ -1,9 +1,11 @@
-import { IGetSQLResultResDataV1 } from '../../api/common';
+import { FormInstance } from 'antd';
+import { IGetSQLResultResDataV1, ISQLExplain } from '../../api/common';
 
 export type SqlQueryResultType = {
   sqlQueryId: string;
   resultItem: IGetSQLResultResDataV1;
   hide: boolean;
+  errorMessage: string;
 };
 
 export interface ISqlInputForm {
@@ -12,3 +14,12 @@ export interface ISqlInputForm {
   sql: string;
   maxPreQueryRows: number;
 }
+
+export type UseSQLExecPlanOption = {
+  form: FormInstance<ISqlInputForm>;
+};
+
+export type SQLExecPlanItem = {
+  id: string;
+  hide: boolean;
+} & ISQLExplain;
