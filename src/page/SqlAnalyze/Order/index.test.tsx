@@ -68,6 +68,9 @@ describe('SqlAnalyze/Order', () => {
     });
     fireEvent.click(container.querySelectorAll('.ant-tabs-tab-btn')[1]);
     fireEvent.click(container.querySelectorAll('.ant-tabs-tab-btn')[2]);
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
     expect(container).toMatchSnapshot();
   });
 });
