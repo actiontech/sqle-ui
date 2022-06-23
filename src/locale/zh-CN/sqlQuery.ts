@@ -37,6 +37,6 @@ export default {
   executePlan: {
     title: '执行计划{{index}}',
     sql: 'SQL语句',
-    sqlExplain: 'SQL语句解析',
+    sqlExplain: '执行计划',
   },
 };
