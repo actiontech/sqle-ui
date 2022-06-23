@@ -506,7 +506,7 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                   </label>
                 </div>
                 <div
-                  class="ant-col ant-form-item-control makeStyles-editor-6 ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  class="ant-col ant-form-item-control makeStyles-editor-4 ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
                 >
                   <div
                     class="ant-form-item-control-input"
@@ -2718,7 +2718,7 @@ exports[`Order/Create should render page header 1`] = `
                     </label>
                   </div>
                   <div
-                    class="ant-col ant-form-item-control makeStyles-editor-3 ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                    class="ant-col ant-form-item-control makeStyles-editor-2 ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
                   >
                     <div
                       class="ant-form-item-control-input"

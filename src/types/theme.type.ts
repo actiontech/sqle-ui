@@ -6,7 +6,6 @@ export type Theme = {
       disabledFont: string;
     };
   };
-  loginFormBg: string;
   header: {
     background: string;
     color: string;

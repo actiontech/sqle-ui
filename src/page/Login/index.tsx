@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import LoginBackground from './LoginBackground';
-import useStyles from '../../theme';
 
 import './index.less';
 import { Button, Form, Input, Typography } from 'antd';
@@ -9,15 +7,14 @@ import logo from '../../assets/img/logo.png';
 import { useHistory } from 'react-router';
 import { updateToken } from '../../store/user';
 import { useDispatch } from 'react-redux';
-import LanguageSelect from '../../components/LanguageSelect';
 import user from '../../api/user';
 import { ResponseCode } from '../../data/common';
 import { useRequest } from 'ahooks';
 import configuration from '../../api/configuration';
 import EmptyBox from '../../components/EmptyBox';
+import leftBg from '../../assets/img/login-left-bg.png';
 
 const Login = () => {
-  const theme = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -39,10 +36,6 @@ const Login = () => {
     [dispatch, history]
   );
 
-  React.useLayoutEffect(() => {
-    new LoginBackground('#login-background');
-  }, []);
-
   const { run: getOauth2Tips, data: oauthConfig } = useRequest(
     () => configuration.getOauth2Tips(),
     {
@@ -61,62 +54,77 @@ const Login = () => {
   /* FITRUE_isEE */
   return (
     <section className="login-page">
-      <canvas id="login-background"></canvas>
-      <div className={`login-page-form-wrapper ${theme.loginBg}`}>
-        <div className="login-page-powered">
-          <img src={logo} alt="" />
-          {t('login.powered')}
-        </div>
-        <Typography.Paragraph className="login-page-title">
-          <Typography.Title level={4}>{t('login.pageTitle')}</Typography.Title>
-        </Typography.Paragraph>
-        <Form onFinish={login}>
-          <Form.Item
-            name="username"
-            rules={[
-              {
-                required: true,
-                message: t('common.form.rule.require', {
-                  name: t('common.username'),
-                }),
-              },
-            ]}
-          >
-            <Input placeholder={t('common.username')} autoFocus />
-          </Form.Item>
-          <Form.Item
-            name="password"
-            rules={[
-              {
-                required: true,
-                message: t('common.form.rule.require', {
-                  name: t('common.password'),
-                }),
-              },
-            ]}
-          >
-            <Input.Password placeholder={t('common.password')} />
-          </Form.Item>
-          <Button type="primary" block htmlType="submit">
-            {t('login.login')}
-          </Button>
-          <EmptyBox if={oauthConfig?.enable_oauth2}>
-            <div
-              className="text-align-right font-size-small"
-              style={{
-                paddingTop: 10,
-              }}
-            >
-              {t('login.otherMethod')}:&nbsp;
-              <Typography.Link href="/v1/oauth2/link">
-                {oauthConfig?.login_tip}
-              </Typography.Link>
-            </div>
-          </EmptyBox>
-        </Form>
+      <div className="login-page-powered">
+        <img src={logo} alt="" />
+        <div className="login-page-powered-split-line"></div>
+        <div className="login-page-powered-title">{t('login.powered')}</div>
       </div>
-      <div className="login-page-language-wrapper">
-        <LanguageSelect />
+      <div className="login-page-content">
+        <div className="login-page-content-left-bg">
+          <Typography.Paragraph className="login-page-title">
+            <Typography.Title level={4}>
+              <span className="login-page-title-content">
+                {t('login.pageTitle')}
+              </span>
+            </Typography.Title>
+          </Typography.Paragraph>
+          <img src={leftBg} alt="" />
+        </div>
+        <div className="login-page-form-wrapper">
+          <Form onFinish={login}>
+            <Form.Item
+              name="username"
+              className="login-form-username"
+              rules={[
+                {
+                  required: true,
+                  message: t('common.form.rule.require', {
+                    name: t('common.username'),
+                  }),
+                },
+              ]}
+            >
+              <Input
+                className="login-page-input"
+                placeholder={t('common.username')}
+                autoFocus
+              />
+            </Form.Item>
+            <Form.Item
+              name="password"
+              rules={[
+                {
+                  required: true,
+                  message: t('common.form.rule.require', {
+                    name: t('common.password'),
+                  }),
+                },
+              ]}
+              className="login-form-password"
+            >
+              <Input.Password
+                className="login-page-input"
+                placeholder={t('common.password')}
+              />
+            </Form.Item>
+            <Button type="primary" className="login-btn" htmlType="submit">
+              {t('login.login')}
+            </Button>
+            <EmptyBox if={oauthConfig?.enable_oauth2}>
+              <div
+                className="other-login-method"
+                style={{
+                  paddingTop: 10,
+                }}
+              >
+                {t('login.otherMethod')}:&nbsp;
+                <Typography.Link href="/v1/oauth2/link">
+                  {oauthConfig?.login_tip}
+                </Typography.Link>
+              </div>
+            </EmptyBox>
+          </Form>
+        </div>
       </div>
     </section>
   );

@@ -11,11 +11,6 @@ import user from '../../api/user';
 import { resolveThreeSecond } from '../../testUtils/mockRequest';
 import configuration from '../../api/configuration';
 
-jest.mock('./LoginBackground', () => {
-  class Test {}
-  return Test;
-});
-
 describe('Login', () => {
   let dispatchMock: jest.Mock;
 

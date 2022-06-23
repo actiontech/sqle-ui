@@ -8,7 +8,6 @@ const darkTheme: Theme = {
       disabledFont: 'rgba(255, 255, 255, .85)',
     },
   },
-  loginFormBg: 'rgba(0,0,0,0.7)',
   header: {
     background: '#001529',
     color: '#fff',

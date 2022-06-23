@@ -14,9 +14,6 @@ const ThemeData = {
 };
 
 const useStyles = makeStyles<Theme>((theme) => ({
-  loginBg: {
-    backgroundColor: theme.loginFormBg,
-  },
   headerBg: {
     backgroundColor: theme.header.background,
     color: theme.header.color,
