@@ -341,7 +341,7 @@ exports[`SqlQuery should close query result when user click close icon 1`] = `
                     class="ant-row ant-form-item ant-form-item-has-success"
                   >
                     <div
-                      class="ant-col ant-form-item-control makeStyles-editor-9"
+                      class="ant-col ant-form-item-control makeStyles-editor-6"
                     >
                       <div
                         class="ant-form-item-control-input"
@@ -10379,7 +10379,7 @@ exports[`SqlQuery should get query result when user submit form 1`] = `
                     class="ant-row ant-form-item ant-form-item-has-success"
                   >
                     <div
-                      class="ant-col ant-form-item-control makeStyles-editor-6"
+                      class="ant-col ant-form-item-control makeStyles-editor-4"
                     >
                       <div
                         class="ant-form-item-control-input"
@@ -20406,44 +20406,11 @@ exports[`SqlQuery should match snapshot 1`] = `
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div
-                class="ant-row ant-form-item"
-              >
-                <div
-                  class="ant-col ant-form-item-control makeStyles-editor-2"
-                >
-                  <div
-                    class="ant-form-item-control-input"
-                  >
-                    <div
-                      class="ant-form-item-control-input-content"
-                    >
-                      <input
-                        height="200"
-                        id="sql"
-                        language="sql"
-                        theme="vs"
-                        value="/* input your sql */"
-                        width="100%"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 24px;"
-                >
                   <div
                     class="ant-row ant-form-item"
                   >
                     <div
-                      class="ant-col ant-form-item-control makeStyles-editor-3"
+                      class="ant-col ant-form-item-control makeStyles-editor-2"
                     >
                       <div
                         class="ant-form-item-control-input"
