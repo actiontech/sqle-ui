@@ -7,6 +7,8 @@ import ServiceBase from '../Service.base';
 import { AxiosRequestConfig } from 'axios';
 
 import {
+  IGetSQLExplainParams,
+  IGetSQLExplainReturn,
   IGetSQLQueryHistoryParams,
   IGetSQLQueryHistoryReturn,
   IPrepareSQLQueryParams,
@@ -16,6 +18,21 @@ import {
 } from './index.d';
 
 class SqlQueryService extends ServiceBase {
+  public getSQLExplain(
+    params: IGetSQLExplainParams,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const instance_name = paramsData.instance_name;
+    delete paramsData.instance_name;
+
+    return this.post<IGetSQLExplainReturn>(
+      `/v1/sql_query/explain/${instance_name}/`,
+      paramsData,
+      options
+    );
+  }
+
   public getSQLQueryHistory(
     params: IGetSQLQueryHistoryParams,
     options?: AxiosRequestConfig

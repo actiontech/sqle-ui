@@ -97,6 +97,7 @@ export default {
     table: {
       sql: 'SQL语句',
       result: '审核结果',
+      analyze: '分析',
     },
   },
 

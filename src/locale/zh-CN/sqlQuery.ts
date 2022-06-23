@@ -11,6 +11,7 @@ export default {
     returnLength: '返回行数',
     searchSqlResult: '查询',
     sqlHistory: '历史记录',
+    sqlExecPlan: 'SQL执行计划',
     returnLengthTips: '返回行数的最大值可通过数据源配置的修改',
     returnLengthCheck: '请输入返回行数',
   },
@@ -19,11 +20,23 @@ export default {
     applySql: '应用',
     filterSqlHistory: '查询',
   },
+  databaseTables: {
+    title: '数据库表',
+    tabTitle: '{{tableName}}结构',
+    columns: '列信息',
+    index: '索引信息',
+    createdTableSql: '建表语句',
+  },
   executeResult: {
     title: '执行结果',
     errorMessageTitle: '查询出现错误',
     resultTitle: '结果{{index}}',
     paginationInfo:
       '当前数据为第{{current_page}}页, 显示第{{start_line}}至{{end_line}}条记录, 查询耗时{{execution_time}}ms',
+  },
+  executePlan: {
+    title: '执行计划{{index}}',
+    sql: 'SQL语句',
+    sqlExplain: 'SQL语句解析',
   },
 };

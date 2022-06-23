@@ -1,0 +1,27 @@
+@import '../../../styles/_variable.less';
+
+
+.database-tables-wrapper {
+
+  .database-tables-container {
+    height: 314px;
+    overflow: auto;
+
+    .database-tables-title {
+      background: @bg-gray-light;
+      padding: 0 5px;
+      font-weight: bold;
+    }
+
+    .database-tables-item {
+      padding-left: 10px;
+      span {
+        background: @bg-gray-light;
+        padding: 0 5px;
+        color: @text-red;
+        cursor: pointer;
+      }
+    }
+  }
+  
+}

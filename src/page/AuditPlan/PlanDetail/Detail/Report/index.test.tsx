@@ -1,4 +1,4 @@
-import { render, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import AuditPlanReport from '.';
 import audit_plan from '../../../../../api/audit_plan';
@@ -62,5 +62,20 @@ describe('AuditPlanReport', () => {
       jest.advanceTimersByTime(3000);
     });
     expect(container).toMatchSnapshot();
+  });
+
+  test('should jump to analyze page when user click analyze button', async () => {
+    mockGetReport();
+    mockGetReportInfo();
+    render(<AuditPlanReport />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    const openSpy = jest.spyOn(window, 'open');
+    openSpy.mockImplementationOnce(() => null);
+    fireEvent.click(screen.getAllByText('auditPlan.report.table.analyze')[0]);
+    expect(openSpy).toBeCalledTimes(1);
+    expect(openSpy).toBeCalledWith('/auditPlan/32/0/analyze');
+    openSpy.mockRestore();
   });
 });

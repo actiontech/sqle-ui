@@ -16,6 +16,7 @@ export default {
     execResult: '执行结果',
     rollback: '回滚语句（仅提示，不支持执行回滚）',
     describe: '说明',
+    analyze: '分析',
   },
 
   execStatus: {

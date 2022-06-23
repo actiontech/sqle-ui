@@ -1,3 +1,4 @@
+import { Typography } from 'antd';
 import { IAuditTaskSQLResV1 } from '../../../api/common';
 import {
   getAuditTaskSQLsV1FilterAuditStatusEnum,
@@ -14,8 +15,9 @@ import { TableColumn } from '../../../types/common.type';
 import HighlightCode from '../../../utils/HighlightCode';
 
 export const orderAuditResultColumn = (
-  updateSqlDescribe: (sqlNum: number, sqlDescribe: string) => void
-): TableColumn<IAuditTaskSQLResV1> => {
+  updateSqlDescribe: (sqlNum: number, sqlDescribe: string) => void,
+  clickAnalyze: (sqlNum: number) => void
+): TableColumn<IAuditTaskSQLResV1, 'operator'> => {
   return [
     {
       dataIndex: 'number',
@@ -99,5 +101,19 @@ export const orderAuditResultColumn = (
         );
       },
     },
+    /* IFTRUE_isEE */
+    {
+      dataIndex: 'operator',
+      title: () => i18n.t('common.operate'),
+      width: '70px',
+      render: (_, record) => {
+        return (
+          <Typography.Link onClick={() => clickAnalyze(record.number ?? 0)}>
+            {i18n.t('audit.table.analyze')}
+          </Typography.Link>
+        );
+      },
+    },
+    /* FITRUE_isEE */
   ];
 };

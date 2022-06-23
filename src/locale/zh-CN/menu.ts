@@ -19,4 +19,6 @@ export default {
   auditPlane: '审核任务',
   auditPlaneList: '审核任务列表',
   sqlQuery: 'SQL查询',
+  orderSqlAnalyze: '工单SQL分析',
+  auditPlanSqlAnalyze: '审核计划SQL分析',
 };

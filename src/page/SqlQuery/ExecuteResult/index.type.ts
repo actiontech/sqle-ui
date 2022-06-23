@@ -1,9 +1,23 @@
-import { SqlQueryResultType } from '../index.type';
+import { ITableMeta } from '../../../api/common';
+import { SQLExecPlanItem, SqlQueryResultType } from '../index.type';
 
 export interface ExecuteResultProps {
-  resultErrorMessage: string;
   queryRes: SqlQueryResultType[];
-  setQueryRes: React.Dispatch<React.SetStateAction<SqlQueryResultType[]>>;
+  updateQueryResult: (res: SqlQueryResultType) => void;
   maxPreQueryRows: number;
-  setResultErrorMessage: React.Dispatch<React.SetStateAction<string>>;
+  tableSchemas: TableSchemaItem[];
+  closeTableSchema: (id: string) => void;
+  sqlExecPlan: SQLExecPlanItem[];
+  closeExecPlan: (id: string) => void;
 }
+
+export type UseTableSchemaOption = {
+  schemaName?: string;
+  dataSourceName?: string;
+};
+
+export type TableSchemaItem = {
+  tableMeta: ITableMeta;
+  id: string;
+  errorMessage: string;
+};

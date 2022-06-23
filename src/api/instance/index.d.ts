@@ -10,6 +10,8 @@ import {
   IUpdateInstanceReqV1,
   IGetRulesResV1,
   IGetInstanceSchemaResV1,
+  IListTableBySchemaResV1,
+  IGetTableMetadataResV1,
   IGetInstanceWorkflowTemplateResV1
 } from '../common.d';
 
@@ -96,6 +98,24 @@ export interface IGetInstanceSchemasV1Params {
 }
 
 export interface IGetInstanceSchemasV1Return extends IGetInstanceSchemaResV1 {}
+
+export interface IListTableBySchemaParams {
+  instance_name: string;
+
+  schema_name: string;
+}
+
+export interface IListTableBySchemaReturn extends IListTableBySchemaResV1 {}
+
+export interface IGetTableMetadataParams {
+  instance_name: string;
+
+  schema_name: string;
+
+  table_name: string;
+}
+
+export interface IGetTableMetadataReturn extends IGetTableMetadataResV1 {}
 
 export interface IGetInstanceWorkflowTemplateV1Params {
   instance_name: string;
