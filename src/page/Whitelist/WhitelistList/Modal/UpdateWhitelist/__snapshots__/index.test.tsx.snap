@@ -169,7 +169,7 @@ exports[`Whitelist/WhitelistList/Modal/UpdateWhitelist should match snapshot 1`]
                     </label>
                   </div>
                   <div
-                    class="ant-col ant-form-item-control makeStyles-editor-3 ant-col-xs-24 ant-col-sm-13"
+                    class="ant-col ant-form-item-control makeStyles-editor-2 ant-col-xs-24 ant-col-sm-13"
                   >
                     <div
                       class="ant-form-item-control-input"

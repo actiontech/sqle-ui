@@ -11,11 +11,6 @@ import { resolveThreeSecond } from '../../testUtils/mockRequest';
 import { createMemoryHistory } from 'history';
 import { getBySelector } from '../../testUtils/customQuery';
 
-jest.mock('../Login/LoginBackground', () => {
-  class Test {}
-  return Test;
-});
-
 describe('bindUser', () => {
   let useDispatch!: jest.SpyInstance;
 

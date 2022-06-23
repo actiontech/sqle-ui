@@ -277,7 +277,7 @@ exports[`SqlQuery should match snapshot 1`] = `
                 class="ant-row ant-form-item"
               >
                 <div
-                  class="ant-col ant-form-item-control makeStyles-editor-3"
+                  class="ant-col ant-form-item-control makeStyles-editor-2"
                 >
                   <div
                     class="ant-form-item-control-input"

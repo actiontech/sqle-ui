@@ -1,14 +1,14 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  powered: 'Action SQLe',
+  powered: 'SQLE',
   pageTitle: 'SQL审核平台',
   login: '登录',
-  otherMethod: '其他方式',
+  otherMethod: '其他登录方式',
 
   oauth: {
     title: '用户绑定',
     form: {
-      username: '绑定的SQLe用户名',
+      username: '绑定的SQLE用户名',
     },
     submitButton: '绑定并登录',
     bindTips: '如果用户名不存在，会自动创建',

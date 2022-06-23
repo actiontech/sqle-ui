@@ -54,7 +54,6 @@ module.exports = {
         '!src/locale/**/*.{ts,tsx}',
         '!src/testUtils/**/*.{ts,tsx}',
         '!src/data/**/*.{ts,tsx}',
-        '!src/page/Login/LoginBackground/**/*.{ts,tsx}',
         '!src/reportWebVitals.ts',
         '!src/index.tsx',
         '!src/router/config.tsx',
