@@ -54,9 +54,9 @@ const useSQLExecPlan = (options?: UseSQLExecPlanOption) => {
     if (result.data.code === ResponseCode.SUCCESS) {
       const data = result.data.data ?? [];
       setExecPlans(
-        data.map((e) => ({
+        data.map((e, i) => ({
           ...e,
-          id: idFactory(e.sql ?? '', instanceName, instanceSchema),
+          id: idFactory(`${e.sql}-${i}`, instanceName, instanceSchema),
           hide: false,
         }))
       );
