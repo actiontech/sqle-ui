@@ -105,4 +105,15 @@ describe('useTableSchema', () => {
     );
     expect(container).toMatchSnapshot();
   });
+
+  test('should render info message when table meta data include "message" field', async () => {
+    const { result } = renderHook(() => useTableSchema());
+    const data = cloneDeep(tableSchemas);
+    data[1].errorMessage = 'error';
+    data[1].tableMeta.message = '123';
+    const { container } = render(
+      <div>{data.map((e) => result.current.generateTableSchemaContent(e))}</div>
+    );
+    expect(container).toMatchSnapshot();
+  });
 });

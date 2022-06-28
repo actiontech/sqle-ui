@@ -7,10 +7,29 @@ import useSQLExecPlan from './useSQLExecPlan';
 
 const SqlAnalyze: React.FC<SqlAnalyzeProps> = (props) => {
   const { t } = useTranslation();
-  const { tableSchemas, sqlExplain, errorMessage, loading = false } = props;
+  const {
+    tableSchemas,
+    sqlExplain,
+    errorMessage,
+    loading = false,
+    errorType = 'error',
+  } = props;
 
   const { generateTableSchemaContent } = useTableSchema();
   const { generateSQLExecPlanContent } = useSQLExecPlan();
+
+  const createError = () => {
+    if (errorType === 'error') {
+      return (
+        <Result
+          status={errorType}
+          title={t('common.request.noticeFailTitle')}
+          subTitle={errorMessage}
+        />
+      );
+    }
+    return <Result status={errorType} title={errorMessage} />;
+  };
 
   return (
     <>
@@ -19,16 +38,7 @@ const SqlAnalyze: React.FC<SqlAnalyzeProps> = (props) => {
       </PageHeader>
       <section className="padding-content">
         <Card loading={loading}>
-          <EmptyBox
-            if={!errorMessage}
-            defaultNode={
-              <Result
-                status="error"
-                title={t('common.request.noticeFailTitle')}
-                subTitle={errorMessage}
-              />
-            }
-          >
+          <EmptyBox if={!errorMessage} defaultNode={createError()}>
             <Tabs>
               <Tabs.TabPane tab={t('sqlAnalyze.sqlExplain')}>
                 {generateSQLExecPlanContent(sqlExplain ?? {})}

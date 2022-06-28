@@ -107,19 +107,25 @@ const useTableSchema = (options?: UseTableSchemaOption) => {
       );
     };
     const renderErrorMessage = () => {
-      if (!item.errorMessage) {
-        return undefined;
+      if (!!item.tableMeta.message) {
+        return <Result status="info" title={item.tableMeta.message} />;
       }
-      return (
-        <Result
-          status="error"
-          title={t('common.request.noticeFailTitle')}
-          subTitle={item.errorMessage}
-        />
-      );
+      if (!!item.errorMessage) {
+        return (
+          <Result
+            status="error"
+            title={t('common.request.noticeFailTitle')}
+            subTitle={item.errorMessage}
+          />
+        );
+      }
+      return undefined;
     };
+
+    const hasError = !!item.errorMessage || !!item.tableMeta.message;
+
     return (
-      <EmptyBox if={!item.errorMessage} defaultNode={renderErrorMessage()}>
+      <EmptyBox if={!hasError} defaultNode={renderErrorMessage()}>
         <Space direction="vertical" className="full-width-element">
           {renderTableColumnTable()}
           {renderTableIndexTable()}

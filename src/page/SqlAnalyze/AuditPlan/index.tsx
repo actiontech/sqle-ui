@@ -1,4 +1,5 @@
 import { useBoolean } from 'ahooks';
+import { ResultStatusType } from 'antd/lib/result';
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import audit_plan from '../../../api/audit_plan';
@@ -19,6 +20,8 @@ const AuditPlanSqlAnalyze = () => {
     { setTrue: startGetSqlAnalyze, setFalse: getSqlAnalyzeFinish },
   ] = useBoolean();
 
+  const [errorType, setErrorType] = useState<ResultStatusType>('error');
+
   const getSqlAnalyze = useCallback(async () => {
     startGetSqlAnalyze();
     try {
@@ -31,6 +34,11 @@ const AuditPlanSqlAnalyze = () => {
         setSqlExplain(res.data.data?.sql_explain);
         setTableSchemas(res.data.data?.table_metas ?? []);
       } else {
+        if (res.data.code === ResponseCode.NotSupportDML) {
+          setErrorType('info');
+        } else {
+          setErrorType('error');
+        }
         setErrorMessage(res.data.message ?? '');
       }
     } finally {
@@ -51,6 +59,7 @@ const AuditPlanSqlAnalyze = () => {
     <SqlAnalyze
       tableSchemas={tableSchemas}
       sqlExplain={sqlExplain}
+      errorType={errorType}
       errorMessage={errorMessage}
       loading={loading}
     />

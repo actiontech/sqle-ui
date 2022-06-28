@@ -714,7 +714,7 @@ export interface IGetSQLEInfoResV1 {
 export interface IGetSQLExplainResV1 {
   code?: number;
 
-  data?: ISQLExplain[];
+  data?: ISQLQuerySQLExplain[];
 
   message?: string;
 }
@@ -774,7 +774,7 @@ export interface IGetSystemVariablesResV1 {
 export interface IGetTableMetadataResV1 {
   code?: number;
 
-  data?: ITableMeta;
+  data?: IInstanceTableMeta;
 
   message?: string;
 }
@@ -953,6 +953,18 @@ export interface IInstanceResV1 {
 
 export interface IInstanceSchemaResV1 {
   schema_name_list?: string[];
+}
+
+export interface IInstanceTableMeta {
+  columns?: ITableColumns;
+
+  create_table_sql?: string;
+
+  indexes?: ITableIndexes;
+
+  name?: string;
+
+  schema?: string;
 }
 
 export interface IInstanceTipResV1 {
@@ -1192,6 +1204,8 @@ export interface ISMTPConfigurationResV1 {
 export interface ISQLExplain {
   classic_result?: IExplainClassicResult;
 
+  message?: string;
+
   sql?: string;
 }
 
@@ -1217,6 +1231,12 @@ export interface ISQLQueryConfigResV1 {
   max_pre_query_rows?: number;
 
   query_timeout_second?: number;
+}
+
+export interface ISQLQuerySQLExplain {
+  classic_result?: IExplainClassicResult;
+
+  sql?: string;
 }
 
 export interface ISQLResultItemHeadResV1 {
@@ -1253,6 +1273,8 @@ export interface ITableMeta {
   create_table_sql?: string;
 
   indexes?: ITableIndexes;
+
+  message?: string;
 
   name?: string;
 

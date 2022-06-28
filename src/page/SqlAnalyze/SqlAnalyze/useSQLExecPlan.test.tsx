@@ -3,7 +3,10 @@ import { act, renderHook } from '@testing-library/react-hooks';
 import { cloneDeep } from 'lodash';
 import sql_query from '../../../api/sql_query';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
-import { sqlExecPlans } from '../../SqlQuery/__testData__';
+import {
+  sqlExecPlans,
+  sqlExecPlansWithSameSql,
+} from '../../SqlQuery/__testData__';
 import useSQLExecPlan from './useSQLExecPlan';
 
 describe('useSQLExecPlan', () => {
@@ -45,6 +48,7 @@ describe('useSQLExecPlan', () => {
         sqlExecPlans.map((e) => ({
           sql: e.sql,
           classic_result: e.classic_result,
+          message: e.message,
         }))
       )
     );
@@ -93,9 +97,9 @@ describe('useSQLExecPlan', () => {
     expect(result.current.execPlans).toEqual([]);
     jest.runOnlyPendingTimers();
     await waitForNextUpdate();
-    const res = sqlExecPlans.map((e) => ({
+    const res = sqlExecPlans.map((e, i) => ({
       ...e,
-      id: `${e.sql}_instance1_schema1`,
+      id: `${e.sql}-${i}_instance1_schema1`,
     }));
     expect(result.current.execPlans).toEqual(res);
   });
@@ -127,12 +131,57 @@ describe('useSQLExecPlan', () => {
     expect(result.current.execPlans).toEqual(data);
   });
 
+  test('should set "hide" to true when user want to close exec plan and sql includes the same statement', async () => {
+    const spy = mockGetSQLExplain();
+    spy.mockImplementation(() =>
+      resolveThreeSecond(
+        sqlExecPlansWithSameSql.map((e) => ({
+          sql: e.sql,
+          classic_result: e.classic_result,
+        }))
+      )
+    );
+    const formSpy: any = {
+      validateFields: jest.fn(),
+    };
+    formSpy.validateFields.mockReturnValue({
+      sql: 'select * from table1',
+      instanceName: 'instance1',
+      instanceSchema: 'schema1',
+    });
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useSQLExecPlan({ form: formSpy })
+    );
+    result.current.getSQLExecPlan();
+    await waitFor(() => {
+      jest.runOnlyPendingTimers();
+    });
+    jest.runOnlyPendingTimers();
+    await waitForNextUpdate();
+    const data = cloneDeep(result.current.execPlans);
+    act(() => {
+      result.current.closeExecPlan(data[1].id);
+    });
+    data[1].hide = true;
+    expect(result.current.execPlans).toEqual(data);
+  });
+
   test('should render sqlExecPlan cad when user call "generateSQLExecPlanContent" method', async () => {
     const { result } = renderHook(() => useSQLExecPlan());
     const { container } = render(
       <div>
         {sqlExecPlans.map((e) => result.current.generateSQLExecPlanContent(e))}
       </div>
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  test('should render info message when sql exec plan include "message" field', async () => {
+    const { result } = renderHook(() => useSQLExecPlan());
+    const data = cloneDeep(sqlExecPlans);
+    data[0].message = '123';
+    const { container } = render(
+      <div>{data.map((e) => result.current.generateSQLExecPlanContent(e))}</div>
     );
     expect(container).toMatchSnapshot();
   });

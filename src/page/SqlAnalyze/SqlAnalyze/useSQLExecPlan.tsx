@@ -1,8 +1,9 @@
-import { Card, Space, Table } from 'antd';
+import { Card, Result, Space, Table } from 'antd';
 import { cloneDeep } from 'lodash';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import sql_query from '../../../api/sql_query';
+import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode } from '../../../data/common';
 import useBackendTable from '../../../hooks/useBackendTable';
 import HighlightCode from '../../../utils/HighlightCode';
@@ -54,9 +55,9 @@ const useSQLExecPlan = (options?: UseSQLExecPlanOption) => {
     if (result.data.code === ResponseCode.SUCCESS) {
       const data = result.data.data ?? [];
       setExecPlans(
-        data.map((e) => ({
+        data.map((e, i) => ({
           ...e,
-          id: idFactory(e.sql ?? '', instanceName, instanceSchema),
+          id: idFactory(`${e.sql}-${i}`, instanceName, instanceSchema),
           hide: false,
         }))
       );
@@ -68,11 +69,11 @@ const useSQLExecPlan = (options?: UseSQLExecPlanOption) => {
   const { tableColumnFactory } = useBackendTable();
 
   const generateSQLExecPlanContent = <
-    T extends Pick<SQLExecPlanItem, 'sql' | 'classic_result'>
+    T extends Pick<SQLExecPlanItem, 'sql' | 'classic_result' | 'message'>
   >(
     item: T
   ) => {
-    const { sql, classic_result: explain } = item;
+    const { sql, classic_result: explain, message } = item;
 
     const renderSQL = () => {
       return (
@@ -99,10 +100,15 @@ const useSQLExecPlan = (options?: UseSQLExecPlanOption) => {
     };
 
     return (
-      <Space direction="vertical" className="full-width-element">
-        {renderSQL()}
-        {renderSQLExplain()}
-      </Space>
+      <EmptyBox
+        if={!message}
+        defaultNode={<Result status="info" title={message} />}
+      >
+        <Space direction="vertical" className="full-width-element">
+          {renderSQL()}
+          {renderSQLExplain()}
+        </Space>
+      </EmptyBox>
     );
   };
 
