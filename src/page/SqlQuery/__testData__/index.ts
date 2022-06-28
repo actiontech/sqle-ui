@@ -511,6 +511,7 @@ export const tableSchemas = [
           { field_name: 'Comment', desc: '备注' },
         ],
       },
+      message: '',
       create_table_sql:
         'CREATE TABLE `global_configuration_ldap` (\n  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,\n  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,\n  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  `deleted_at` datetime DEFAULT NULL,\n  `enable` tinyint(1) NOT NULL,\n  `enable_ssl` tinyint(1) NOT NULL,\n  `host` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,\n  `port` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,\n  `connect_dn` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,\n  `connect_secret_password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,\n  `base_dn` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,\n  `user_name_rdn_key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,\n  `user_email_rdn_key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,\n  PRIMARY KEY (`id`),\n  KEY `idx_global_configuration_ldap_deleted_at` (`deleted_at`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci',
     },
@@ -779,6 +780,7 @@ export const tableSchemas = [
           { field_name: 'Comment', desc: '备注' },
         ],
       },
+      message: '',
       create_table_sql:
         "CREATE TABLE `execute_sql_detail` (\n  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,\n  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,\n  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  `deleted_at` datetime DEFAULT NULL,\n  `task_id` int(10) unsigned DEFAULT NULL,\n  `number` int(10) unsigned DEFAULT NULL,\n  `content` longtext COLLATE utf8mb4_unicode_ci,\n  `description` text COLLATE utf8mb4_unicode_ci,\n  `start_binlog_file` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `start_binlog_pos` bigint(20) DEFAULT NULL,\n  `end_binlog_file` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `end_binlog_pos` bigint(20) DEFAULT NULL,\n  `row_affects` bigint(20) DEFAULT NULL,\n  `exec_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'initialized',\n  `exec_result` text COLLATE utf8mb4_unicode_ci,\n  `audit_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'initialized',\n  `audit_result` text COLLATE utf8mb4_unicode_ci,\n  `audit_fingerprint` char(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `audit_level` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `idx_execute_sql_detail_deleted_at` (`deleted_at`),\n  KEY `idx_execute_sql_detail_task_id` (`task_id`),\n  KEY `idx_execute_sql_detail_audit_fingerprint` (`audit_fingerprint`)\n) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci",
     },
@@ -792,6 +794,7 @@ export const sqlExecPlans = [
     id: 'a',
     hide: false,
     sql: 'SELECT * from tasks;',
+    message: '',
     classic_result: {
       rows: [
         {
@@ -829,6 +832,7 @@ export const sqlExecPlans = [
     id: 'b',
     hide: false,
     sql: 'SELECT * from users;',
+    message: '',
     classic_result: {
       rows: [
         {

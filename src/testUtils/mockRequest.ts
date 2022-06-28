@@ -17,11 +17,12 @@ export const successData = (data: any, otherData?: any) => {
   };
 };
 
-export const failedData = (data?: any) => {
+export const failedData = (data?: any, otherData?: any) => {
   return {
     code: 100,
     message: 'error',
     data,
+    ...otherData,
   };
 };
 
@@ -76,7 +77,13 @@ export const resolveThreeSecond = (
 
 export const resolveErrorThreeSecond = (
   data: any,
-  { status = 200, headers = {}, config = {}, statusText = '' } = {}
+  {
+    status = 200,
+    headers = {},
+    config = {},
+    statusText = '',
+    otherData = {},
+  } = {}
 ) => {
   return new Promise<AxiosResponse<any>>((res) => {
     setTimeout(() => {
@@ -85,7 +92,7 @@ export const resolveErrorThreeSecond = (
         headers,
         config,
         statusText,
-        data: failedData(data),
+        data: failedData(data, otherData),
       });
     }, 3000);
   });

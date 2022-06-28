@@ -60,4 +60,17 @@ describe('SqlAnalyze/SqlAnalyze', () => {
     );
     expect(container).toMatchSnapshot();
   });
+
+  test('should render errorMessage by errorType field when "errorMessage" is not empty', () => {
+    const { container } = render(
+      <SqlAnalyze
+        tableSchemas={tableSchemas.map((e) => e.tableMeta)}
+        sqlExplain={sqlExecPlans[0]}
+        loading={false}
+        errorMessage="error"
+        errorType="info"
+      />
+    );
+    expect(container).toMatchSnapshot();
+  });
 });

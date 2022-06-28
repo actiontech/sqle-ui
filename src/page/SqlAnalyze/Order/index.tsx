@@ -1,4 +1,5 @@
 import { useBoolean } from 'ahooks';
+import { ResultStatusType } from 'antd/lib/result';
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ISQLExplain, ITableMeta } from '../../../api/common';
@@ -18,6 +19,7 @@ const OrderSqlAnalyze = () => {
     loading,
     { setTrue: startGetSqlAnalyze, setFalse: getSqlAnalyzeFinish },
   ] = useBoolean();
+  const [errorType, setErrorType] = useState<ResultStatusType>('error');
 
   const getSqlAnalyze = useCallback(async () => {
     startGetSqlAnalyze();
@@ -31,6 +33,11 @@ const OrderSqlAnalyze = () => {
         setSqlExplain(res.data.data?.sql_explain);
         setTableSchemas(res.data.data?.table_metas ?? []);
       } else {
+        if (res.data.code === ResponseCode.NotSupportDML) {
+          setErrorType('info');
+        } else {
+          setErrorType('error');
+        }
         setErrorMessage(res.data.message ?? '');
       }
     } finally {
@@ -49,6 +56,7 @@ const OrderSqlAnalyze = () => {
 
   return (
     <SqlAnalyze
+      errorType={errorType}
       tableSchemas={tableSchemas}
       sqlExplain={sqlExplain}
       errorMessage={errorMessage}

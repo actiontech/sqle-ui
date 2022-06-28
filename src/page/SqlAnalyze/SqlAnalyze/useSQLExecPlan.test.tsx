@@ -48,6 +48,7 @@ describe('useSQLExecPlan', () => {
         sqlExecPlans.map((e) => ({
           sql: e.sql,
           classic_result: e.classic_result,
+          message: e.message,
         }))
       )
     );
@@ -171,6 +172,16 @@ describe('useSQLExecPlan', () => {
       <div>
         {sqlExecPlans.map((e) => result.current.generateSQLExecPlanContent(e))}
       </div>
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  test('should render info message when sql exec plan include "message" field', async () => {
+    const { result } = renderHook(() => useSQLExecPlan());
+    const data = cloneDeep(sqlExecPlans);
+    data[0].message = '123';
+    const { container } = render(
+      <div>{data.map((e) => result.current.generateSQLExecPlanContent(e))}</div>
     );
     expect(container).toMatchSnapshot();
   });

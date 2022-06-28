@@ -2,7 +2,10 @@ import { fireEvent, render, waitFor } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import AuditPlanSqlAnalyze from '.';
 import audit_plan from '../../../api/audit_plan';
-import { resolveThreeSecond } from '../../../testUtils/mockRequest';
+import {
+  resolveErrorThreeSecond,
+  resolveThreeSecond,
+} from '../../../testUtils/mockRequest';
 import { AuditPlanSqlAnalyzeData } from '../__testData__';
 
 jest.mock('react-router', () => {
@@ -70,6 +73,22 @@ describe('SqlAnalyze/AuditPlan', () => {
     fireEvent.click(container.querySelectorAll('.ant-tabs-tab-btn')[2]);
     await waitFor(() => {
       jest.advanceTimersByTime(0);
+    });
+    expect(container).toMatchSnapshot();
+  });
+
+  test('should render error result of type "info" when response code is 8001', async () => {
+    const spy = mockGetAnalyzeData();
+    spy.mockImplementation(() =>
+      resolveErrorThreeSecond(AuditPlanSqlAnalyzeData, {
+        otherData: {
+          code: 8001,
+        },
+      })
+    );
+    const { container } = render(<AuditPlanSqlAnalyze />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
     });
     expect(container).toMatchSnapshot();
   });

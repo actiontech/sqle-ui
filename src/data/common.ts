@@ -1,5 +1,8 @@
 export enum ResponseCode {
   SUCCESS = 0,
+
+  // sql analyze
+  NotSupportDML = 8001,
 }
 
 export enum CharCode {
