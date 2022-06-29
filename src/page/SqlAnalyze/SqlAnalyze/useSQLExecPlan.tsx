@@ -102,7 +102,7 @@ const useSQLExecPlan = (options?: UseSQLExecPlanOption) => {
     return (
       <EmptyBox
         if={!message}
-        defaultNode={<Result status="info" title={message} />}
+        defaultNode={<Result status="error" title={message} />}
       >
         <Space direction="vertical" className="full-width-element">
           {renderSQL()}
