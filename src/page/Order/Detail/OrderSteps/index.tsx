@@ -104,6 +104,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     timeForm.resetFields();
     closeScheduleModal();
   };
+
   const range = (start: number, end: number) => {
     const result = [];
     for (let i = start; i < end; i++) {
@@ -121,13 +122,19 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
 
     let allHours = range(0, 24);
     const maintenanceTime = props.maintenanceTime ?? [];
-    maintenanceTime.forEach((item) => {
-      const start = item.maintenance_start_time?.hour ?? 0;
-      const end = item.maintenance_stop_time?.hour ?? 0;
-      for (let i = start; i <= end; i++) {
-        allHours[i] = -1;
-      }
-    });
+    if (maintenanceTime.length > 0) {
+      maintenanceTime.forEach((item) => {
+        const start = item.maintenance_start_time?.hour ?? 0;
+        const end = item.maintenance_stop_time?.hour ?? 0;
+        for (let i = start; i <= end; i++) {
+          allHours[i] = -1;
+        }
+      });
+    }
+    if (maintenanceTime.length === 0 && !!value) {
+      allHours = allHours.fill(-1);
+    }
+
     if (isToday) {
       range(0, moment().hour()).forEach((item, i) => {
         allHours[item] = i;
@@ -140,42 +147,48 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
       return [...sum, prev];
     }, []);
 
-    let allMiniutes: Set<number> = new Set();
+    let allMinutes: Set<number> = new Set();
     const hour = current.hour();
     if (!Number.isNaN(hour)) {
-      maintenanceTime.forEach((item) => {
-        const startHour = item.maintenance_start_time?.hour ?? 0;
-        const startMinute = item.maintenance_start_time?.minute ?? 0;
-        const endHour = item.maintenance_stop_time?.hour ?? 0;
-        const endMinute = item.maintenance_stop_time?.minute ?? 0;
-        if (startHour === endHour && startHour === hour) {
-          range(startMinute, endMinute).forEach((item) => {
-            allMiniutes.add(item);
-          });
-        } else if (hour === startHour) {
-          range(startMinute, 60).forEach((item) => {
-            allMiniutes.add(item);
-          });
-        } else if (hour === endHour) {
-          range(0, endMinute).forEach((item) => {
-            allMiniutes.add(item);
-          });
-        }
-        if (hour > startHour && hour < endHour) {
-          range(0, 60).forEach((item) => {
-            allMiniutes.add(item);
-          });
-        }
-      });
+      if (maintenanceTime.length > 0) {
+        maintenanceTime.forEach((item) => {
+          const startHour = item.maintenance_start_time?.hour ?? 0;
+          const startMinute = item.maintenance_start_time?.minute ?? 0;
+          const endHour = item.maintenance_stop_time?.hour ?? 0;
+          const endMinute = item.maintenance_stop_time?.minute ?? 0;
+          if (startHour === endHour && startHour === hour) {
+            range(startMinute, endMinute).forEach((item) => {
+              allMinutes.add(item);
+            });
+          } else if (hour === startHour) {
+            range(startMinute, 60).forEach((item) => {
+              allMinutes.add(item);
+            });
+          } else if (hour === endHour) {
+            range(0, endMinute).forEach((item) => {
+              allMinutes.add(item);
+            });
+          }
+          if (hour > startHour && hour < endHour) {
+            range(0, 60).forEach((item) => {
+              allMinutes.add(item);
+            });
+          }
+        });
+      } else {
+        range(0, 60).forEach((item) => {
+          allMinutes.add(item);
+        });
+      }
     }
 
     if (isToday && hour === moment().hour()) {
       range(0, moment().minute()).forEach((item) => {
-        allMiniutes.delete(item);
+        allMinutes.delete(item);
       });
     }
     const disabledMinutes = range(0, 60).filter(
-      (item) => !allMiniutes.has(item)
+      (item) => !allMinutes.has(item)
     );
     return {
       disabledHours: () => allHours,
@@ -375,14 +388,19 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
               >
                 <div>
                   {t('order.operator.sqlExecuteDisableTips')}:
-                  {props.maintenanceTime?.map((time, i) => (
-                    <Tag key={i}>
-                      {timeAddZero(time.maintenance_start_time?.hour ?? 0)}:{' '}
-                      {timeAddZero(time.maintenance_start_time?.minute ?? 0)}-
-                      {timeAddZero(time.maintenance_stop_time?.hour ?? 0)}:{' '}
-                      {timeAddZero(time.maintenance_stop_time?.minute ?? 0)}
-                    </Tag>
-                  ))}
+                  <EmptyBox
+                    if={(props.maintenanceTime ?? []).length > 0}
+                    defaultNode={t('order.operator.emptyMaintenanceTime')}
+                  >
+                    {props.maintenanceTime?.map((time, i) => (
+                      <Tag key={i}>
+                        {timeAddZero(time.maintenance_start_time?.hour ?? 0)}:{' '}
+                        {timeAddZero(time.maintenance_start_time?.minute ?? 0)}-
+                        {timeAddZero(time.maintenance_stop_time?.hour ?? 0)}:{' '}
+                        {timeAddZero(time.maintenance_stop_time?.minute ?? 0)}
+                      </Tag>
+                    ))}
+                  </EmptyBox>
                 </div>
               </EmptyBox>
             </>
@@ -626,14 +644,19 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
           </Form.Item>
           <Form.Item label=" " colon={false}>
             {t('order.operator.maintenanceTime')}:
-            {props.maintenanceTime?.map((time, i) => (
-              <Tag key={i}>
-                {timeAddZero(time.maintenance_start_time?.hour ?? 0)}:{' '}
-                {timeAddZero(time.maintenance_start_time?.minute ?? 0)}-
-                {timeAddZero(time.maintenance_stop_time?.hour ?? 0)}:{' '}
-                {timeAddZero(time.maintenance_stop_time?.minute ?? 0)}
-              </Tag>
-            ))}
+            <EmptyBox
+              if={(props.maintenanceTime ?? []).length > 0}
+              defaultNode={t('order.operator.emptyMaintenanceTime')}
+            >
+              {props.maintenanceTime?.map((time, i) => (
+                <Tag key={i}>
+                  {timeAddZero(time.maintenance_start_time?.hour ?? 0)}:{' '}
+                  {timeAddZero(time.maintenance_start_time?.minute ?? 0)}-
+                  {timeAddZero(time.maintenance_stop_time?.hour ?? 0)}:{' '}
+                  {timeAddZero(time.maintenance_stop_time?.minute ?? 0)}
+                </Tag>
+              ))}
+            </EmptyBox>
           </Form.Item>
           <Form.Item label=" " colon={false}>
             <Space>

@@ -368,4 +368,83 @@ describe('Order/Detail/OrderSteps', () => {
 
     expect(getBySelector('.ant-picker-time-panel')).toMatchSnapshot();
   });
+
+  test('user should set any time when maintenanceTime is empty', async () => {
+    const nowSpy = jest
+      .spyOn(Date, 'now')
+      .mockImplementation(() => new Date('2022-06-29').getTime());
+    const executingMock = jest
+      .fn()
+      .mockImplementation(() => resolveThreeSecond({}));
+    render(
+      <OrderSteps
+        currentStep={orderWithExecScheduled3.record?.current_step_number}
+        stepList={orderWithExecScheduled3.record?.workflow_step_list ?? []}
+        pass={jest.fn()}
+        reject={jest.fn()}
+        executing={executingMock}
+        execSchedule={jest.fn()}
+        modifySql={jest.fn()}
+        currentOrderStatus={execScheduleSubmit3.record?.status}
+      />
+    );
+
+    fireEvent.click(screen.getByText('order.operator.onlineRegularly'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    fireEvent.mouseDown(getBySelector('.ant-picker'));
+    fireEvent.mouseUp(getBySelector('.ant-picker'));
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    fireEvent.click(screen.getAllByText('30')[1]);
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(getBySelector('.ant-picker-time-panel')).toMatchSnapshot();
+    nowSpy.mockRestore();
+  });
+
+  test.only('should throw error when user only click today', async () => {
+    render(
+      <OrderSteps
+        currentStep={execScheduleSubmit3.record?.current_step_number}
+        stepList={execScheduleSubmit3.record?.workflow_step_list ?? []}
+        pass={jest.fn()}
+        reject={jest.fn()}
+        executing={jest.fn()}
+        execSchedule={jest.fn()}
+        modifySql={jest.fn()}
+        currentOrderStatus={execScheduleSubmit3.record?.status}
+      />
+    );
+    expect(
+      screen.queryByText('order.operator.onlineRegularly')
+    ).toBeInTheDocument();
+    act(() => {
+      fireEvent.click(screen.getByText('order.operator.onlineRegularly'));
+    });
+    const warnSpy = jest.spyOn(console, 'warn');
+    warnSpy.mockImplementation(() => void 0);
+    await waitFor(() => {
+      jest.runOnlyPendingTimers();
+    });
+    expect(getBySelector('.ant-modal')).toBeInTheDocument();
+    fireEvent.mouseDown(getBySelector('#schedule_time'));
+    fireEvent.click(screen.getAllByText('00')[2]);
+    fireEvent.click(screen.getByText('Ok'));
+    await waitFor(() => {
+      jest.runOnlyPendingTimers();
+    });
+    expect(warnSpy).toBeCalledTimes(1);
+    expect(warnSpy).toBeCalledWith('async-validator:', [
+      'order.operator.execScheduledBeforeNow',
+    ]);
+    warnSpy.mockRestore();
+  });
 });
