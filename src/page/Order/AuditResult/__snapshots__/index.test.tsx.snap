@@ -31,7 +31,7 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
                 class="ant-typography ant-typography-secondary font-size-small"
               >
                 audit.passRage
-                33
+                16.67
                 %
               </span>
             </div>
@@ -642,7 +642,7 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
                 class="ant-typography ant-typography-secondary font-size-small"
               >
                 audit.passRage
-                33
+                16.67
                 %
               </span>
             </div>

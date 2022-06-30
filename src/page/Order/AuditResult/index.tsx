@@ -6,6 +6,7 @@ import task from '../../../api/task';
 import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode } from '../../../data/common';
 import useTable from '../../../hooks/useTable';
+import { floatToPercent } from '../../../utils/Math';
 import { orderAuditResultColumn } from './column';
 import FilterForm from './FilterForm';
 import { OrderAuditResultFilterFields } from './FilterForm/index.type';
@@ -108,7 +109,7 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
           <Typography.Text type="secondary" className="font-size-small">
             {t('audit.passRage')}
             <EmptyBox if={props.passRate !== undefined}>
-              {(props.passRate ?? 0) * 100}%
+              {floatToPercent(props.passRate ?? 0)}%
             </EmptyBox>
           </Typography.Text>
           <Typography.Text type="secondary" className="font-size-small">

@@ -36,7 +36,7 @@ describe('Order/Detail/AuditResult', () => {
     const getTaskSqlSpy = mockGetTaskSqls();
     const { container, rerender } = render(<AuditResult />);
     expect(getTaskSqlSpy).not.toBeCalled();
-    rerender(<AuditResult taskId={9999} passRate={0.33} />);
+    rerender(<AuditResult taskId={9999} passRate={0.1667} />);
     expect(getTaskSqlSpy).toBeCalledTimes(1);
     expect(getTaskSqlSpy).toBeCalledWith({
       task_id: '9999',
