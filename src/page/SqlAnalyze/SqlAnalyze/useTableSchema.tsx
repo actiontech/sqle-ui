@@ -108,7 +108,7 @@ const useTableSchema = (options?: UseTableSchemaOption) => {
     };
     const renderErrorMessage = () => {
       if (!!item.tableMeta.message) {
-        return <Result status="info" title={item.tableMeta.message} />;
+        return <Result status="error" title={item.tableMeta.message} />;
       }
       if (!!item.errorMessage) {
         return (
