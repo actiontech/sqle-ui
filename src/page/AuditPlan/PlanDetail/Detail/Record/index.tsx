@@ -10,6 +10,7 @@ import RuleLevelIcon from '../../../../../components/RuleList/RuleLevelIcon';
 import EmitterKey from '../../../../../data/EmitterKey';
 import { formatTime } from '../../../../../utils/Common';
 import EventEmitter from '../../../../../utils/EventEmitter';
+import { floatToPercent } from '../../../../../utils/Math';
 
 const PlanAuditRecord: React.FC<{ auditPlanName: string }> = (props) => {
   const { t } = useTranslation();
@@ -122,7 +123,7 @@ const PlanAuditRecord: React.FC<{ auditPlanName: string }> = (props) => {
                   <Typography.Text type="secondary">
                     {t('audit.passRage')}
                     <EmptyBox if={!!item.pass_rate} defaultNode="--">
-                      {(item.pass_rate ?? 0) * 100}%
+                      {floatToPercent(item.pass_rate ?? 0)}%
                     </EmptyBox>
                   </Typography.Text>
                 </Space>

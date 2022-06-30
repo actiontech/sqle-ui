@@ -6,6 +6,7 @@ import OrderStatusTag from '../../../components/OrderStatusTag';
 import { WorkflowStepTypeDictionary } from '../../../hooks/useStaticStatus/index.data';
 import { TableColumn } from '../../../types/common.type';
 import { formatTime } from '../../../utils/Common';
+import { floatToPercent } from '../../../utils/Math';
 
 export const orderListColumn = (): TableColumn<IWorkflowDetailResV1> => {
   return [
@@ -71,7 +72,7 @@ export const orderListColumn = (): TableColumn<IWorkflowDetailResV1> => {
       title: () => i18n.t('order.order.passRate'),
       render: (passRate) => {
         return passRate !== undefined
-          ? `${Number.parseFloat(passRate ?? 0) * 100}%`
+          ? `${floatToPercent(Number.parseFloat(passRate ?? 0))}%`
           : '--';
       },
     },
