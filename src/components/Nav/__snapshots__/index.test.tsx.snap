@@ -7,7 +7,7 @@ exports[`Nav should render page by props of username 1`] = `
   >
     <aside
       class="ant-layout-sider ant-layout-sider-dark"
-      style="flex: 0 0 200px; max-width: 200px; min-width: 200px; width: 200px;"
+      style="flex: 0 0 220px; max-width: 220px; min-width: 220px; width: 220px;"
     >
       <div
         class="ant-layout-sider-children"
@@ -23,6 +23,7 @@ exports[`Nav should render page by props of username 1`] = `
               src="logo.png"
             />
             common.nav.title
+            common.nav.eeTitle
           </div>
         </a>
         <ul
@@ -500,7 +501,7 @@ exports[`Nav should render page by props of username 2`] = `
   >
     <aside
       class="ant-layout-sider ant-layout-sider-dark"
-      style="flex: 0 0 200px; max-width: 200px; min-width: 200px; width: 200px;"
+      style="flex: 0 0 220px; max-width: 220px; min-width: 220px; width: 220px;"
     >
       <div
         class="ant-layout-sider-children"
@@ -516,6 +517,7 @@ exports[`Nav should render page by props of username 2`] = `
               src="logo.png"
             />
             common.nav.title
+            common.nav.eeTitle
           </div>
         </a>
         <ul
