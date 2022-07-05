@@ -21,11 +21,16 @@ const Nav: React.FC = (props) => {
 
   return (
     <Layout className="sqle-layout">
-      <Layout.Sider>
+      <Layout.Sider width={220}>
         <Link to="/">
           <div className="sqle-nav-title">
             <img src={logo} alt="" />
+            {/* IFTRUE_isCE */}
             {t('common.nav.title')}
+            {/* FITRUE_isCE */}
+            {/* IFTRUE_isEE */}
+            {t('common.nav.eeTitle')}
+            {/* FITRUE_isEE */}
           </div>
         </Link>
         <SiderMenu />

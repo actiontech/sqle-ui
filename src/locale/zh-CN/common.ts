@@ -53,6 +53,7 @@ export default {
 
   nav: {
     title: 'SQLE',
+    eeTitle: 'SQLE企业版',
   },
 
   request: {
