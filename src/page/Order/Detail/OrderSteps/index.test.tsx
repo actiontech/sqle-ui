@@ -410,7 +410,7 @@ describe('Order/Detail/OrderSteps', () => {
     nowSpy.mockRestore();
   });
 
-  test.only('should throw error when user only click today', async () => {
+  test('should throw error when user only click today', async () => {
     render(
       <OrderSteps
         currentStep={execScheduleSubmit3.record?.current_step_number}

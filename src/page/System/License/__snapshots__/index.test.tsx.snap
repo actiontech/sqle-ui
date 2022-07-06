@@ -14,7 +14,25 @@ exports[`license should match snapshot 1`] = `
         <div
           class="ant-card-head-title"
         >
-          system.title.license
+          <div
+            class="ant-space ant-space-horizontal ant-space-align-center"
+          >
+            <div
+              class="ant-space-item"
+              style="margin-right: 8px;"
+            >
+              system.title.license
+            </div>
+            <div
+              class="ant-space-item"
+            >
+              <span
+                class="ant-typography ant-typography-secondary font-size-small"
+              >
+                system.license.productName
+              </span>
+            </div>
+          </div>
         </div>
         <div
           class="ant-card-extra"
@@ -199,7 +217,25 @@ exports[`license should match snapshot 2`] = `
         <div
           class="ant-card-head-title"
         >
-          system.title.license
+          <div
+            class="ant-space ant-space-horizontal ant-space-align-center"
+          >
+            <div
+              class="ant-space-item"
+              style="margin-right: 8px;"
+            >
+              system.title.license
+            </div>
+            <div
+              class="ant-space-item"
+            >
+              <span
+                class="ant-typography ant-typography-secondary font-size-small"
+              >
+                system.license.productName
+              </span>
+            </div>
+          </div>
         </div>
         <div
           class="ant-card-extra"

@@ -5,6 +5,13 @@ export default {
   login: '登录',
   otherMethod: '其他登录方式',
 
+  userAgreementTips: '已阅读并同意',
+  userAgreement: '用户协议',
+
+  errorMessage: {
+    userAgreement: '请先阅读并同意用户协议',
+  },
+
   oauth: {
     title: '用户绑定',
     form: {

@@ -1,5 +1,5 @@
 import { useRequest } from 'ahooks';
-import { Button, Card, Space, Table } from 'antd';
+import { Button, Card, Space, Table, Typography } from 'antd';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
@@ -78,7 +78,14 @@ const License = () => {
   return (
     <>
       <Card
-        title={t('system.title.license')}
+        title={
+          <Space>
+            {t('system.title.license')}
+            <Typography.Text type="secondary" className="font-size-small">
+              {t('system.license.productName')}
+            </Typography.Text>
+          </Space>
+        }
         extra={[
           <Space key="button-wrapper">
             <Button type="primary" onClick={collectLicense}>
