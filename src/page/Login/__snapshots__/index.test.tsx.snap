@@ -129,6 +129,52 @@ exports[`Login should render login form 1`] = `
               </div>
             </div>
           </div>
+          <div
+            class="ant-row ant-form-item user-agreement clear-margin"
+          >
+            <div
+              class="ant-col ant-form-item-control"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <label
+                    class="ant-checkbox-wrapper user-agreement-checkbox"
+                  >
+                    <span
+                      class="ant-checkbox"
+                    >
+                      <input
+                        class="ant-checkbox-input"
+                        id="userAgreement"
+                        type="checkbox"
+                        value=""
+                      />
+                      <span
+                        class="ant-checkbox-inner"
+                      />
+                    </span>
+                    <span>
+                      login.userAgreementTips
+                      <a
+                        class="ant-typography"
+                        href="/user-agreement.v4.2.html"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <u>
+                          login.userAgreement
+                        </u>
+                      </a>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
           <button
             class="ant-btn ant-btn-primary login-btn"
             type="submit"
@@ -268,6 +314,52 @@ exports[`Login should render login form 2`] = `
                       </span>
                     </span>
                   </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-row ant-form-item user-agreement clear-margin"
+          >
+            <div
+              class="ant-col ant-form-item-control"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <label
+                    class="ant-checkbox-wrapper user-agreement-checkbox"
+                  >
+                    <span
+                      class="ant-checkbox"
+                    >
+                      <input
+                        class="ant-checkbox-input"
+                        id="userAgreement"
+                        type="checkbox"
+                        value=""
+                      />
+                      <span
+                        class="ant-checkbox-inner"
+                      />
+                    </span>
+                    <span>
+                      login.userAgreementTips
+                      <a
+                        class="ant-typography"
+                        href="/user-agreement.v4.2.html"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <u>
+                          login.userAgreement
+                        </u>
+                      </a>
+                    </span>
+                  </label>
                 </div>
               </div>
             </div>

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import './index.less';
-import { Button, Form, Input, Typography } from 'antd';
+import { Button, Checkbox, Form, Input, message, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
 import logo from '../../assets/img/logo.png';
 import { useHistory } from 'react-router';
@@ -19,22 +19,29 @@ const Login = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const login = React.useCallback(
-    (formData) => {
-      user
-        .loginV1({
-          username: formData.username,
-          password: formData.password,
-        })
-        .then((res) => {
-          if (res.data.code === ResponseCode.SUCCESS) {
-            dispatch(updateToken({ token: res.data.data?.token ?? '' }));
-            history.push('/');
-          }
-        });
-    },
-    [dispatch, history]
-  );
+  const login = (formData: {
+    username: string;
+    password: string;
+    userAgreement: boolean;
+  }) => {
+    /* IFTRUE_isEE */
+    if (!formData.userAgreement) {
+      message.error(t('login.errorMessage.userAgreement'));
+      return;
+    }
+    /* FITRUE_isEE */
+    user
+      .loginV1({
+        username: formData.username,
+        password: formData.password,
+      })
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          dispatch(updateToken({ token: res.data.data?.token ?? '' }));
+          history.push('/');
+        }
+      });
+  };
 
   const { run: getOauth2Tips, data: oauthConfig } = useRequest(
     () => configuration.getOauth2Tips(),
@@ -107,6 +114,24 @@ const Login = () => {
                 placeholder={t('common.password')}
               />
             </Form.Item>
+            {/* IFTRUE_isEE */}
+            <Form.Item
+              name="userAgreement"
+              className="user-agreement clear-margin"
+              valuePropName="checked"
+            >
+              <Checkbox className="user-agreement-checkbox">
+                {t('login.userAgreementTips')}
+                <Typography.Link
+                  underline={true}
+                  href="/user-agreement.v4.2.html"
+                  target="_blank"
+                >
+                  {t('login.userAgreement')}
+                </Typography.Link>
+              </Checkbox>
+            </Form.Item>
+            {/* FITRUE_isEE */}
             <Button type="primary" className="login-btn" htmlType="submit">
               {t('login.login')}
             </Button>

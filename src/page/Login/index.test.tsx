@@ -74,6 +74,20 @@ describe('Login', () => {
     });
 
     expect(history.location.pathname).toBe('/login');
+    expect(request).not.toBeCalled();
+    expect(
+      screen.queryByText('login.errorMessage.userAgreement')
+    ).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('login.userAgreementTips'));
+    act(() => {
+      fireEvent.click(screen.getByText('login.login'));
+    });
+
+    await waitFor(() => {
+      jest.runOnlyPendingTimers();
+    });
+
     expect(request).toBeCalledTimes(1);
     expect(request).toBeCalledWith({
       username: 'root',
