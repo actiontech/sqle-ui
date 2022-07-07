@@ -161,7 +161,7 @@ exports[`Login should render login form 1`] = `
                       login.userAgreementTips
                       <a
                         class="ant-typography"
-                        href="/user-agreement.v4.2.html"
+                        href="/static/user-agreement.html"
                         rel="noopener noreferrer"
                         target="_blank"
                       >
@@ -350,7 +350,7 @@ exports[`Login should render login form 2`] = `
                       login.userAgreementTips
                       <a
                         class="ant-typography"
-                        href="/user-agreement.v4.2.html"
+                        href="/static/user-agreement.html"
                         rel="noopener noreferrer"
                         target="_blank"
                       >
