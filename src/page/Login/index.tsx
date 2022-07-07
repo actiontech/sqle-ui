@@ -124,7 +124,7 @@ const Login = () => {
                 {t('login.userAgreementTips')}
                 <Typography.Link
                   underline={true}
-                  href="/user-agreement.v4.2.html"
+                  href="/static/user-agreement.html"
                   target="_blank"
                 >
                   {t('login.userAgreement')}
