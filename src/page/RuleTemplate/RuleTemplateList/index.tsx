@@ -1,26 +1,12 @@
-import { DownOutlined, SyncOutlined } from '@ant-design/icons';
+import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
-import {
-  Button,
-  Card,
-  Col,
-  Divider,
-  Dropdown,
-  List,
-  Menu,
-  message,
-  Popconfirm,
-  Space,
-  Tag,
-  Typography,
-} from 'antd';
+import { Button, Card, message, Space, Table } from 'antd';
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { IRuleTemplateResV1 } from '../../../api/common';
 import ruleTemplate from '../../../api/rule_template';
-import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { ModalName } from '../../../data/ModalName';
@@ -30,6 +16,7 @@ import {
   updateSelectRuleTemplate,
 } from '../../../store/ruleTemplate';
 import EventEmitter from '../../../utils/EventEmitter';
+import { RuleTemplateListTableColumnFactory } from './column';
 import RuleTemplateListModal from './Modal';
 
 const RuleTemplateList = () => {
@@ -153,7 +140,8 @@ const RuleTemplateList = () => {
           </Link>,
         ]}
       >
-        <List
+        <Table
+          rowKey="rule_template_name"
           loading={loading}
           dataSource={data?.list}
           pagination={{
@@ -162,77 +150,9 @@ const RuleTemplateList = () => {
             showSizeChanger: true,
             onChange: pageChange,
           }}
-          renderItem={(item) => (
-            <List.Item>
-              <List.Item.Meta
-                style={{
-                  flex: '0 0 200px',
-                }}
-                title={item.rule_template_name}
-                description={
-                  item.desc || t('ruleTemplate.ruleTemplateList.descEmpty')
-                }
-              />
-              <Col flex={1}>
-                <div>{t('ruleTemplate.ruleTemplateList.instance')}</div>
-                <EmptyBox
-                  if={
-                    !!item.instance_name_list &&
-                    item.instance_name_list.length > 0
-                  }
-                  defaultNode={
-                    <Typography.Text disabled>
-                      {t('ruleTemplate.ruleTemplateList.instanceEmpty')}
-                    </Typography.Text>
-                  }
-                >
-                  {item.instance_name_list?.map((e) => (
-                    <Tag key={e}>{e}</Tag>
-                  ))}
-                </EmptyBox>
-              </Col>
-              <Col flex="0 0 200px">
-                <Space className="user-cell flex-end-horizontal">
-                  <Link to={`/rule/template/update/${item.rule_template_name}`}>
-                    {t('common.edit')}
-                  </Link>
-                  <Divider type="vertical" />
-                  <Popconfirm
-                    title={t('ruleTemplate.deleteRuleTemplate.tips', {
-                      name: item.rule_template_name,
-                    })}
-                    placement="topRight"
-                    onConfirm={deleteTemplate.bind(
-                      null,
-                      item.rule_template_name ?? ''
-                    )}
-                  >
-                    <Typography.Text type="danger" className="pointer">
-                      {t('common.delete')}
-                    </Typography.Text>
-                  </Popconfirm>
-                  <Divider type="vertical" />
-                  <Dropdown
-                    placement="bottomRight"
-                    overlay={
-                      <Menu>
-                        <Menu.Item
-                          key="update-user-password"
-                          onClick={openCloneRuleTemplateModal.bind(null, item)}
-                        >
-                          {t('ruleTemplate.cloneRuleTemplate.button')}
-                        </Menu.Item>
-                      </Menu>
-                    }
-                  >
-                    <Typography.Link className="pointer">
-                      {t('common.more')}
-                      <DownOutlined />
-                    </Typography.Link>
-                  </Dropdown>
-                </Space>
-              </Col>
-            </List.Item>
+          columns={RuleTemplateListTableColumnFactory(
+            deleteTemplate,
+            openCloneRuleTemplateModal
           )}
         />
       </Card>
