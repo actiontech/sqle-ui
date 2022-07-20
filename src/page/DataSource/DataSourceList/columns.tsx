@@ -34,6 +34,10 @@ export const dataSourceColumns = (
       },
     },
     {
+      dataIndex: 'db_type',
+      title: () => i18n.t('dataSource.databaseList.type'),
+    },
+    {
       dataIndex: 'rule_template_name_list',
       title: () => i18n.t('dataSource.databaseList.ruleTemplate'),
       render(value: IInstanceResV1['rule_template_name_list']) {

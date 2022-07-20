@@ -18,6 +18,18 @@ export enum AuditPlanReportResV1AuditLevelEnum {
   'UNKNOWN' = ''
 }
 
+export enum AuditResDataV1AuditLevelEnum {
+  'normal' = 'normal',
+
+  'notice' = 'notice',
+
+  'warn' = 'warn',
+
+  'error' = 'error',
+
+  'UNKNOWN' = ''
+}
+
 export enum AuditTaskResV1AuditLevelEnum {
   'normal' = 'normal',
 

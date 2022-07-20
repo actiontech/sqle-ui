@@ -4,6 +4,7 @@ export const dataSourceList = [
     db_host: '20.20.20.2',
     db_port: '3306',
     db_user: 'root',
+    db_type: 'mysql',
     desc: '',
     workflow_template_name: 'default',
     maintenance_times: [
