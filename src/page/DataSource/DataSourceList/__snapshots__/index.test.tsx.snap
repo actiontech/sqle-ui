@@ -709,6 +709,11 @@ exports[`DataSource/DataSourceList should match snapshot 1`] = `
                         <th
                           class="ant-table-cell"
                         >
+                          dataSource.databaseList.type
+                        </th>
+                        <th
+                          class="ant-table-cell"
+                        >
                           dataSource.databaseList.ruleTemplate
                         </th>
                         <th
@@ -734,7 +739,7 @@ exports[`DataSource/DataSourceList should match snapshot 1`] = `
                       >
                         <td
                           class="ant-table-cell"
-                          colspan="8"
+                          colspan="9"
                         >
                           <div
                             class="ant-empty ant-empty-normal"
@@ -1484,6 +1489,11 @@ exports[`DataSource/DataSourceList should match snapshot 2`] = `
                         <th
                           class="ant-table-cell"
                         >
+                          dataSource.databaseList.type
+                        </th>
+                        <th
+                          class="ant-table-cell"
+                        >
                           dataSource.databaseList.ruleTemplate
                         </th>
                         <th
@@ -1526,6 +1536,11 @@ exports[`DataSource/DataSourceList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         />
+                        <td
+                          class="ant-table-cell"
+                        >
+                          mysql
+                        </td>
                         <td
                           class="ant-table-cell"
                         />

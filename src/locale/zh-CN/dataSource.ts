@@ -10,6 +10,7 @@ export default {
     address: '地址',
     describe: '描述',
     role: '角色',
+    type: '数据库类型',
     ruleTemplate: '模版',
     workflow: '工作流',
     maintenanceTime: '运维时间',

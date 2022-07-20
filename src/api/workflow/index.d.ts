@@ -73,6 +73,10 @@ export interface IGetWorkflowListV1Params {
 
   filter_task_instance_name?: string;
 
+  filter_task_execute_start_time_from?: string;
+
+  filter_task_execute_start_time_to?: string;
+
   page_index?: number;
 
   page_size?: number;
