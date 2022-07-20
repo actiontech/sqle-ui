@@ -12,6 +12,13 @@ export default {
 
     instance: '应用的数据库',
     instanceEmpty: '未绑定任何数据库',
+
+    table: {
+      templateName: '模版名称',
+      desc: '描述',
+      dbType: '可应用的数据库类型',
+      dataSource: '绑定的数据源',
+    },
   },
 
   deleteRuleTemplate: {
