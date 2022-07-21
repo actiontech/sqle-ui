@@ -1,56 +1,24 @@
-import { Card, Space } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
+import { Button, Popover } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { SystemRole } from '../../../data/common';
-import { IReduxState } from '../../../store';
+import './index.less';
 
 const QuickLink = () => {
   const { t } = useTranslation();
-  const isAdmin = useSelector<IReduxState, boolean>(
-    (state) => state.user.role === SystemRole.admin
-  );
 
   const links = [
     <Link key="workflow" to="/order/create">
       {t('menu.workflow')}
     </Link>,
-    <Link key="order" to="/order">
-      {t('menu.order')}
-    </Link>,
-    <Link key="rule" to="/rule">
-      {t('menu.rule')}
-    </Link>,
   ];
 
-  if (isAdmin) {
-    links.push(
-      ...[
-        <Link key="user" to="/user">
-          {t('menu.user')}
-        </Link>,
-        <Link key="data" to="/data">
-          {t('menu.dataSource')}
-        </Link>,
-        <Link key="ruleTemplate" to="/rule/template">
-          {t('menu.ruleTemplate')}
-        </Link>,
-        /* IFTRUE_isEE */
-        <Link key="whitelist" to="/whitelist">
-          {t('menu.whitelist')}
-        </Link>,
-        /* FITRUE_isEE */
-        <Link key="system" to="/system">
-          {t('menu.systemSetting')}
-        </Link>,
-      ]
-    );
-  }
-
   return (
-    <Card title={t('dashboard.title.quickLink')}>
-      <Space wrap={true}>{links}</Space>
-    </Card>
+    <Popover content={links} className="fixed-widgets-dashboard-namespace">
+      <Button type="primary" size="large" shape="circle">
+        <PlusOutlined />
+      </Button>
+    </Popover>
   );
 };
 

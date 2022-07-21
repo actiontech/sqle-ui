@@ -1,27 +1,73 @@
-import toJson from 'enzyme-to-json';
+import { cleanup, render, waitFor } from '@testing-library/react';
 import Home from '.';
-import { shallowWithRouter } from '../../testUtils/customRender';
+import dashboard from '../../api/dashboard';
+import workflow from '../../api/workflow';
 import { mockUseSelector } from '../../testUtils/mockRedux';
-
-jest.mock('@material-ui/styles', () => {
-  return {
-    ...jest.requireActual('@material-ui/styles'),
-    useTheme: () => ({
-      common: {
-        padding: 24,
-      },
-    }),
-  };
-});
+import { resolveThreeSecond } from '../../testUtils/mockRequest';
 
 describe('Home', () => {
-  afterAll(() => {
+  const mockGetDashboardV1 = () => {
+    const spy = jest.spyOn(dashboard, 'getDashboardV1');
+    spy.mockImplementation(() =>
+      resolveThreeSecond({
+        workflow_statistics: {
+          my_need_review_workflow_number: 2,
+
+          my_need_execute_workflow_number: 99,
+
+          my_rejected_workflow_number: 0,
+
+          need_me_to_execute_workflow_number: 80,
+
+          need_me_to_review_workflow_number: 102,
+        },
+      })
+    );
+    return spy;
+  };
+  const mockRequest = () => {
+    const spy = jest.spyOn(workflow, 'getWorkflowListV1');
+    spy.mockImplementation(() => resolveThreeSecond([]));
+    return spy;
+  };
+
+  beforeEach(() => {
+    jest.useFakeTimers();
+    mockUseSelector({ user: { username: 'admin' } });
+    mockRequest();
+  });
+  afterEach(() => {
     jest.clearAllMocks();
+    jest.useRealTimers();
+
+    cleanup();
   });
 
-  test('should render page base element with username', () => {
-    mockUseSelector({ user: { username: 'admin' } });
-    const wrapper = shallowWithRouter(<Home />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+  test('should match snapshot', async () => {
+    mockGetDashboardV1();
+    const { container } = render(<Home />);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    // fix local snapshot are different from github actions
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+
+  test('should be called getDashboardV1 interface', async () => {
+    const getDashboardSpy = mockGetDashboardV1();
+    expect(getDashboardSpy).toBeCalledTimes(0);
+    render(<Home />);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(getDashboardSpy).toBeCalledTimes(1);
   });
 });

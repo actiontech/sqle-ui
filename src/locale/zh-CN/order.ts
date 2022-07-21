@@ -31,6 +31,7 @@ export default {
     createUser: '创建人',
     assignee: '待操作人',
     createTime: '创建时间',
+    executeTime: '上线时间',
     desc: '工单描述',
     status: '工单状态',
     time: '定时时间',

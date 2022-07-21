@@ -31,6 +31,7 @@ import { WorkflowDetailResV1StatusEnum } from '../../../api/common.enum';
 import { Theme } from '../../../types/theme.type';
 import { useTheme } from '@material-ui/styles';
 import { TableRowSelection } from 'antd/lib/table/interface';
+import moment from 'moment';
 
 const OrderList = () => {
   const history = useHistory();
@@ -62,7 +63,11 @@ const OrderList = () => {
     refresh,
   } = useRequest(
     () => {
-      const { filter_order_createTime, ...otherFilterInfo } = filterInfo;
+      const {
+        filter_order_createTime,
+        filter_order_executeTime,
+        ...otherFilterInfo
+      } = filterInfo;
       return workflow.getWorkflowListV1({
         page_index: pagination.pageIndex,
         page_size: pagination.pageSize,
@@ -71,6 +76,12 @@ const OrderList = () => {
         ),
         filter_create_time_to: translateTimeForRequest(
           filter_order_createTime?.[1]
+        ),
+        filter_task_execute_start_time_from: translateTimeForRequest(
+          filter_order_executeTime?.[0]
+        ),
+        filter_task_execute_start_time_to: translateTimeForRequest(
+          filter_order_executeTime?.[1]
         ),
         ...otherFilterInfo,
       });
@@ -104,6 +115,29 @@ const OrderList = () => {
       filter.filter_status = searchStr.get(
         OrderListUrlParamsKey.status
       ) as getWorkflowListV1FilterStatusEnum;
+    }
+    if (searchStr.has(OrderListUrlParamsKey.createUsername)) {
+      filter.filter_create_user_name = searchStr.get(
+        OrderListUrlParamsKey.createUsername
+      ) as string;
+    }
+    if (searchStr.has(OrderListUrlParamsKey.executeTimeForm)) {
+      const executeTimeForm = moment(
+        searchStr.get(OrderListUrlParamsKey.executeTimeForm)
+      );
+      if (!filter.filter_order_executeTime) {
+        filter.filter_order_executeTime = [];
+      }
+      filter.filter_order_executeTime[0] = executeTimeForm;
+    }
+    if (searchStr.has(OrderListUrlParamsKey.executeTimeTo)) {
+      const executeTimeTo = moment(
+        searchStr.get(OrderListUrlParamsKey.executeTimeTo)
+      );
+      if (!filter.filter_order_executeTime) {
+        filter.filter_order_executeTime = [];
+      }
+      filter.filter_order_executeTime[1] = executeTimeTo;
     }
     if (Object.keys(filter).length > 0) {
       collapseChange(false);

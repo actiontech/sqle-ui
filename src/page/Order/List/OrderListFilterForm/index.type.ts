@@ -7,8 +7,11 @@ export type OrderListFilterFormFields = Omit<
   | 'page_size'
   | 'filter_create_time_from'
   | 'filter_create_time_to'
+  | 'filter_task_execute_start_time_from'
+  | 'filter_task_execute_start_time_to'
 > & {
   filter_order_createTime?: moment.Moment[];
+  filter_order_executeTime?: moment.Moment[];
 };
 
 export type OrderListFilterFormProps = {
