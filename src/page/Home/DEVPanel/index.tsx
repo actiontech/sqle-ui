@@ -17,8 +17,6 @@ import CommonTable, {
   genTabPaneTitle,
 } from '../CommonTable';
 import { IDEVPanelProps } from './index.type';
-import { BaseResult } from '@ahooksjs/use-request/lib/types';
-import { IWorkflowDetailResV1 } from '../../../api/common';
 
 enum tabsKeyEnum {
   pendingReviewByMe = '1',
@@ -26,7 +24,10 @@ enum tabsKeyEnum {
   rejectedOrderByMe = '3',
 }
 
-const DBAPanel: React.FC<IDEVPanelProps> = ({ workflowStatistics }) => {
+const DBAPanel: React.FC<IDEVPanelProps> = ({
+  workflowStatistics,
+  getWorkflowStatistics,
+}) => {
   const username = useSelector<IReduxState, string>(
     (state) => state.user.username
   );
@@ -109,30 +110,26 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({ workflowStatistics }) => {
     );
   };
 
-  const genTableInfoMap = new Map<
-    tabsKeyEnum,
-    BaseResult<IWorkflowDetailResV1[] | undefined, []>
-  >([
-    [tabsKeyEnum.pendingExecByMe, pendingExecByMeResponse],
-    [tabsKeyEnum.pendingReviewByMe, pendingReviewByMeResponse],
-    [tabsKeyEnum.rejectedOrderByMe, rejectedOrderByMeResponse],
-  ]);
-
   const genShowAllMap = new Map<tabsKeyEnum, () => void>([
     [tabsKeyEnum.pendingExecByMe, showAllWithPendingExec],
     [tabsKeyEnum.pendingReviewByMe, showAllWithPendingReview],
     [tabsKeyEnum.rejectedOrderByMe, showAllWithRejected],
   ]);
 
-  const tableInfo = genTableInfoMap.get(currentActiveKey);
+  const tableLoading =
+    pendingExecByMeResponse.loading ||
+    pendingReviewByMeResponse.loading ||
+    rejectedOrderByMeResponse.loading;
+
   const refreshTable = () => {
-    if (tableInfo?.loading) {
+    if (tableLoading) {
       return;
     }
 
-    if (typeof tableInfo?.refresh === 'function') {
-      tableInfo.refresh();
-    }
+    pendingExecByMeResponse.refresh();
+    pendingReviewByMeResponse.refresh();
+    rejectedOrderByMeResponse.refresh();
+    getWorkflowStatistics();
   };
   return (
     <Card className="full-width-element">
@@ -145,10 +142,14 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({ workflowStatistics }) => {
           <>
             <SyncOutlined
               data-testid="refreshTable"
-              spin={tableInfo?.loading}
+              spin={tableLoading}
               onClick={refreshTable}
             />
-            <Button type="link" onClick={genShowAllMap.get(currentActiveKey)}>
+            <Button
+              type="link"
+              onClick={genShowAllMap.get(currentActiveKey)}
+              style={{ padding: 0, marginLeft: 10 }}
+            >
               {t('common.showAll')}
             </Button>
           </>

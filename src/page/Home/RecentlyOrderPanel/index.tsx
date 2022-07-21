@@ -67,7 +67,11 @@ const RecentlyOrderPanel: React.FC = () => {
               onClick={refreshTable}
               data-testid="refreshTable"
             />
-            <Button type="link" onClick={showAll}>
+            <Button
+              type="link"
+              onClick={showAll}
+              style={{ padding: 0, marginLeft: 10 }}
+            >
               {t('common.showAll')}
             </Button>
           </div>

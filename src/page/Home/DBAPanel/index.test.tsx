@@ -42,6 +42,7 @@ describe('test home/DBAPanel', () => {
 
   let getMockRequestSpy: jest.SpyInstance;
   const username = 'admin';
+  const mockGetWorkflowStatistics = jest.fn();
 
   beforeEach(() => {
     jest.useFakeTimers();
@@ -57,13 +58,17 @@ describe('test home/DBAPanel', () => {
   });
 
   test('should match snapshot', () => {
-    const { container } = renderWithRouter(<DBAPanel />);
+    const { container } = renderWithRouter(
+      <DBAPanel getWorkflowStatistics={mockGetWorkflowStatistics} />
+    );
     expect(container).toMatchSnapshot();
   });
 
   test('should be called getWorkflowListV1 interface', async () => {
     expect(getMockRequestSpy).toBeCalledTimes(0);
-    renderWithRouter(<DBAPanel />);
+    renderWithRouter(
+      <DBAPanel getWorkflowStatistics={mockGetWorkflowStatistics} />
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -71,7 +76,9 @@ describe('test home/DBAPanel', () => {
   });
 
   test('should switch tab when clicking another tab title', async () => {
-    renderWithRouter(<DBAPanel />);
+    renderWithRouter(
+      <DBAPanel getWorkflowStatistics={mockGetWorkflowStatistics} />
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -96,7 +103,11 @@ describe('test home/DBAPanel', () => {
   test('should be execute correspond event on the current tab', async () => {
     const history = createMemoryHistory();
     expect(getMockRequestSpy).toBeCalledTimes(0);
-    renderWithServerRouter(<DBAPanel />, undefined, { history });
+    renderWithServerRouter(
+      <DBAPanel getWorkflowStatistics={mockGetWorkflowStatistics} />,
+      undefined,
+      { history }
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -110,8 +121,17 @@ describe('test home/DBAPanel', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    expect(getMockRequestSpy).toBeCalledTimes(3);
-    expect(getMockRequestSpy).toBeCalledWith({
+    expect(mockGetWorkflowStatistics).toBeCalledTimes(1);
+    expect(getMockRequestSpy).toBeCalledTimes(4);
+    expect(getMockRequestSpy.mock.calls[2][0]).toEqual({
+      page_index: 1,
+      page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
+      filter_current_step_assignee_user_name: username,
+      filter_status: getWorkflowListV1FilterStatusEnum.on_process,
+      filter_current_step_type:
+        getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute,
+    });
+    expect(getMockRequestSpy.mock.calls[3][0]).toEqual({
       page_index: 1,
       page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
       filter_current_step_assignee_user_name: username,
@@ -119,8 +139,8 @@ describe('test home/DBAPanel', () => {
       filter_current_step_type:
         getWorkflowListV1FilterCurrentStepTypeEnum.sql_review,
     });
-    fireEvent.click(screen.getByText('common.showAll'));
 
+    fireEvent.click(screen.getByText('common.showAll'));
     expect(history.location.pathname).toBe(`/order`);
     expect(history.location.search).toBe(
       `?${OrderListUrlParamsKey.currentStepAssignee}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}&${OrderListUrlParamsKey.status}=${getWorkflowListV1FilterStatusEnum.on_process}`
@@ -131,17 +151,10 @@ describe('test home/DBAPanel', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    expect(getMockRequestSpy).toBeCalledTimes(4);
-    expect(getMockRequestSpy).toBeCalledWith({
-      page_index: 1,
-      page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
-      filter_current_step_assignee_user_name: username,
-      filter_status: getWorkflowListV1FilterStatusEnum.on_process,
-      filter_current_step_type:
-        getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute,
-    });
-    fireEvent.click(screen.getByText('common.showAll'));
+    expect(mockGetWorkflowStatistics).toBeCalledTimes(2);
+    expect(getMockRequestSpy).toBeCalledTimes(6);
 
+    fireEvent.click(screen.getByText('common.showAll'));
     expect(history.location.pathname).toBe(`/order`);
     expect(history.location.search).toBe(
       `?${OrderListUrlParamsKey.currentStepAssignee}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}&${OrderListUrlParamsKey.status}=${getWorkflowListV1FilterStatusEnum.on_process}`

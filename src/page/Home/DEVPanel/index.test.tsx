@@ -42,6 +42,7 @@ describe('test home/DEVPanel', () => {
 
   let getMockRequestSpy: jest.SpyInstance;
   const username = 'admin';
+  const mockGetWorkflowStatistics = jest.fn();
 
   beforeEach(() => {
     jest.useFakeTimers();
@@ -57,13 +58,17 @@ describe('test home/DEVPanel', () => {
   });
 
   test('should match snapshot', () => {
-    const { container } = renderWithRouter(<DEVPanel />);
+    const { container } = renderWithRouter(
+      <DEVPanel getWorkflowStatistics={mockGetWorkflowStatistics} />
+    );
     expect(container).toMatchSnapshot();
   });
 
   test('should be called getWorkflowListV1 interface', async () => {
     expect(getMockRequestSpy).toBeCalledTimes(0);
-    renderWithRouter(<DEVPanel />);
+    renderWithRouter(
+      <DEVPanel getWorkflowStatistics={mockGetWorkflowStatistics} />
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -71,7 +76,9 @@ describe('test home/DEVPanel', () => {
   });
 
   test('should switch tab when clicking another tab title', async () => {
-    renderWithRouter(<DEVPanel />);
+    renderWithRouter(
+      <DEVPanel getWorkflowStatistics={mockGetWorkflowStatistics} />
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -100,11 +107,16 @@ describe('test home/DEVPanel', () => {
   test('should be execute correspond event on the current tab', async () => {
     const history = createMemoryHistory();
     expect(getMockRequestSpy).toBeCalledTimes(0);
-    renderWithServerRouter(<DEVPanel />, undefined, { history });
+    renderWithServerRouter(
+      <DEVPanel getWorkflowStatistics={mockGetWorkflowStatistics} />,
+      undefined,
+      { history }
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
     expect(getMockRequestSpy).toBeCalledTimes(3);
+    expect(mockGetWorkflowStatistics).toBeCalledTimes(0);
 
     expect(
       screen.getByText('dashboard.title.pendingReviewByMe').parentNode
@@ -114,8 +126,17 @@ describe('test home/DEVPanel', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    expect(getMockRequestSpy).toBeCalledTimes(4);
-    expect(getMockRequestSpy).toBeCalledWith({
+    expect(mockGetWorkflowStatistics).toBeCalledTimes(1);
+    expect(getMockRequestSpy).toBeCalledTimes(6);
+    expect(getMockRequestSpy.mock.calls[3][0]).toEqual({
+      page_index: 1,
+      page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
+      filter_create_user_name: username,
+      filter_status: getWorkflowListV1FilterStatusEnum.on_process,
+      filter_current_step_type:
+        getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute,
+    });
+    expect(getMockRequestSpy.mock.calls[4][0]).toEqual({
       page_index: 1,
       page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
       filter_create_user_name: username,
@@ -123,8 +144,14 @@ describe('test home/DEVPanel', () => {
       filter_current_step_type:
         getWorkflowListV1FilterCurrentStepTypeEnum.sql_review,
     });
-    fireEvent.click(screen.getByText('common.showAll'));
+    expect(getMockRequestSpy.mock.calls[5][0]).toEqual({
+      page_index: 1,
+      page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
+      filter_create_user_name: username,
+      filter_status: getWorkflowListV1FilterStatusEnum.rejected,
+    });
 
+    fireEvent.click(screen.getByText('common.showAll'));
     expect(history.location.pathname).toBe(`/order`);
     expect(history.location.search).toBe(
       `?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}&${OrderListUrlParamsKey.status}=${getWorkflowListV1FilterStatusEnum.on_process}`
@@ -135,15 +162,9 @@ describe('test home/DEVPanel', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    expect(getMockRequestSpy).toBeCalledTimes(5);
-    expect(getMockRequestSpy).toBeCalledWith({
-      page_index: 1,
-      page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
-      filter_create_user_name: username,
-      filter_status: getWorkflowListV1FilterStatusEnum.on_process,
-      filter_current_step_type:
-        getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute,
-    });
+    expect(getMockRequestSpy).toBeCalledTimes(9);
+    expect(mockGetWorkflowStatistics).toBeCalledTimes(2);
+
     fireEvent.click(screen.getByText('common.showAll'));
     expect(history.location.pathname).toBe(`/order`);
     expect(history.location.search).toBe(
@@ -155,13 +176,9 @@ describe('test home/DEVPanel', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    expect(getMockRequestSpy).toBeCalledTimes(6);
-    expect(getMockRequestSpy).toBeCalledWith({
-      page_index: 1,
-      page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
-      filter_create_user_name: username,
-      filter_status: getWorkflowListV1FilterStatusEnum.rejected,
-    });
+    expect(getMockRequestSpy).toBeCalledTimes(12);
+    expect(mockGetWorkflowStatistics).toBeCalledTimes(3);
+
     fireEvent.click(screen.getByText('common.showAll'));
     expect(history.location.pathname).toBe(`/order`);
     expect(history.location.search).toBe(

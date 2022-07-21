@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { IWorkflowDetailResV1 } from '../../../api/common';
 import workflow from '../../../api/workflow';
 import {
   getWorkflowListV1FilterCurrentStepTypeEnum,
@@ -18,14 +17,16 @@ import CommonTable, {
   genTabPaneTitle,
 } from '../CommonTable';
 import { IDBAPanelProps } from './index.type';
-import { BaseResult } from '@ahooksjs/use-request/lib/types';
 
 enum tabsKeyEnum {
   needMeReview = '1',
   needMeExec = '2',
 }
 
-const DBAPanel: React.FC<IDBAPanelProps> = ({ workflowStatistics }) => {
+const DBAPanel: React.FC<IDBAPanelProps> = ({
+  workflowStatistics,
+  getWorkflowStatistics,
+}) => {
   const username = useSelector<IReduxState, string>(
     (state) => state.user.username
   );
@@ -87,28 +88,22 @@ const DBAPanel: React.FC<IDBAPanelProps> = ({ workflowStatistics }) => {
     );
   };
 
-  const genTableInfoMap = new Map<
-    tabsKeyEnum,
-    BaseResult<IWorkflowDetailResV1[] | undefined, []>
-  >([
-    [tabsKeyEnum.needMeReview, needMeReviewResponse],
-    [tabsKeyEnum.needMeExec, needMeExecResponse],
-  ]);
   const genShowAllMap = new Map<tabsKeyEnum, () => void>([
     [tabsKeyEnum.needMeReview, showAllWithNeedMeReview],
     [tabsKeyEnum.needMeExec, showAllWithNeedMeExec],
   ]);
 
-  const tableInfo = genTableInfoMap.get(currentActiveKey);
+  const tableLoading =
+    needMeExecResponse.loading || needMeReviewResponse.loading;
 
   const refreshTable = () => {
-    if (tableInfo?.loading) {
+    if (tableLoading) {
       return;
     }
 
-    if (typeof tableInfo?.refresh === 'function') {
-      tableInfo.refresh();
-    }
+    needMeExecResponse.refresh();
+    needMeReviewResponse.refresh();
+    getWorkflowStatistics();
   };
 
   return (
@@ -122,10 +117,14 @@ const DBAPanel: React.FC<IDBAPanelProps> = ({ workflowStatistics }) => {
           <>
             <SyncOutlined
               data-testid="refreshTable"
-              spin={tableInfo?.loading}
+              spin={tableLoading}
               onClick={refreshTable}
             />
-            <Button type="link" onClick={genShowAllMap.get(currentActiveKey)}>
+            <Button
+              type="link"
+              onClick={genShowAllMap.get(currentActiveKey)}
+              style={{ padding: 0, marginLeft: 10 }}
+            >
               {t('common.showAll')}
             </Button>
           </>

@@ -53,6 +53,7 @@ exports[`test home/RecentlyOrderPanel should match snapshot 1`] = `
                 </span>
                 <button
                   class="ant-btn ant-btn-link"
+                  style="padding: 0px; margin-left: 10px;"
                   type="button"
                 >
                   <span>
