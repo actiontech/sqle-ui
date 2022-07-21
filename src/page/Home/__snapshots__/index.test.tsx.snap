@@ -129,6 +129,7 @@ exports[`Home should match snapshot 1`] = `
                     </div>
                     <div
                       class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
+                      style="left: 0px; width: 0px;"
                     />
                   </div>
                 </div>
@@ -466,6 +467,7 @@ exports[`Home should match snapshot 1`] = `
                     </div>
                     <div
                       class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
+                      style="left: 0px; width: 0px;"
                     />
                   </div>
                 </div>

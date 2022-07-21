@@ -51,6 +51,10 @@ describe('Home', () => {
       jest.advanceTimersByTime(3000);
     });
 
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
     expect(container).toMatchSnapshot();
   });
 
