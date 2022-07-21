@@ -1,173 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home/QuickLink should render quick link when user role is admin 1`] = `
+exports[`Home/QuickLink should match snapshot 1`] = `
 <div>
-  <div
-    class="ant-card ant-card-bordered"
+  <button
+    class="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg fixed-widgets-dashboard-namespace"
+    type="button"
   >
-    <div
-      class="ant-card-head"
+    <span
+      aria-label="plus"
+      class="anticon anticon-plus"
+      role="img"
     >
-      <div
-        class="ant-card-head-wrapper"
+      <svg
+        aria-hidden="true"
+        data-icon="plus"
+        fill="currentColor"
+        focusable="false"
+        height="1em"
+        viewBox="64 64 896 896"
+        width="1em"
       >
-        <div
-          class="ant-card-head-title"
-        >
-          dashboard.title.quickLink
-        </div>
-      </div>
-    </div>
-    <div
-      class="ant-card-body"
-    >
-      <div
-        class="ant-space ant-space-horizontal ant-space-align-center"
-        style="flex-wrap: wrap; margin-bottom: -8px;"
-      >
-        <div
-          class="ant-space-item"
-          style="margin-right: 8px; padding-bottom: 8px;"
-        >
-          <a
-            href="/order/create"
-          >
-            menu.workflow
-          </a>
-        </div>
-        <div
-          class="ant-space-item"
-          style="margin-right: 8px; padding-bottom: 8px;"
-        >
-          <a
-            href="/order"
-          >
-            menu.order
-          </a>
-        </div>
-        <div
-          class="ant-space-item"
-          style="margin-right: 8px; padding-bottom: 8px;"
-        >
-          <a
-            href="/rule"
-          >
-            menu.rule
-          </a>
-        </div>
-        <div
-          class="ant-space-item"
-          style="margin-right: 8px; padding-bottom: 8px;"
-        >
-          <a
-            href="/user"
-          >
-            menu.user
-          </a>
-        </div>
-        <div
-          class="ant-space-item"
-          style="margin-right: 8px; padding-bottom: 8px;"
-        >
-          <a
-            href="/data"
-          >
-            menu.dataSource
-          </a>
-        </div>
-        <div
-          class="ant-space-item"
-          style="margin-right: 8px; padding-bottom: 8px;"
-        >
-          <a
-            href="/rule/template"
-          >
-            menu.ruleTemplate
-          </a>
-        </div>
-        <div
-          class="ant-space-item"
-          style="margin-right: 8px; padding-bottom: 8px;"
-        >
-          <a
-            href="/whitelist"
-          >
-            menu.whitelist
-          </a>
-        </div>
-        <div
-          class="ant-space-item"
-          style="padding-bottom: 8px;"
-        >
-          <a
-            href="/system"
-          >
-            menu.systemSetting
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Home/QuickLink should render quick link when user role is not admin 1`] = `
-<div>
-  <div
-    class="ant-card ant-card-bordered"
-  >
-    <div
-      class="ant-card-head"
-    >
-      <div
-        class="ant-card-head-wrapper"
-      >
-        <div
-          class="ant-card-head-title"
-        >
-          dashboard.title.quickLink
-        </div>
-      </div>
-    </div>
-    <div
-      class="ant-card-body"
-    >
-      <div
-        class="ant-space ant-space-horizontal ant-space-align-center"
-        style="flex-wrap: wrap; margin-bottom: -8px;"
-      >
-        <div
-          class="ant-space-item"
-          style="margin-right: 8px; padding-bottom: 8px;"
-        >
-          <a
-            href="/order/create"
-          >
-            menu.workflow
-          </a>
-        </div>
-        <div
-          class="ant-space-item"
-          style="margin-right: 8px; padding-bottom: 8px;"
-        >
-          <a
-            href="/order"
-          >
-            menu.order
-          </a>
-        </div>
-        <div
-          class="ant-space-item"
-          style="padding-bottom: 8px;"
-        >
-          <a
-            href="/rule"
-          >
-            menu.rule
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+        <defs>
+          <style />
+        </defs>
+        <path
+          d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"
+        />
+        <path
+          d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"
+        />
+      </svg>
+    </span>
+  </button>
 </div>
 `;

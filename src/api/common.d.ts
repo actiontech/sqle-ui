@@ -1,6 +1,7 @@
 import {
   AuditPlanParamResV1TypeEnum,
   AuditPlanReportResV1AuditLevelEnum,
+  AuditResDataV1AuditLevelEnum,
   AuditTaskResV1AuditLevelEnum,
   AuditTaskResV1SqlSourceEnum,
   AuditTaskResV1StatusEnum,
@@ -101,6 +102,8 @@ export interface IAuditPlanSQLReqV1 {
   audit_plan_sql_last_receive_text?: string;
 
   audit_plan_sql_last_receive_timestamp?: string;
+
+  audit_plan_sql_schema?: string;
 }
 
 export interface IAuditPlanSQLResV1 {
@@ -113,12 +116,34 @@ export interface IAuditPlanSQLResV1 {
   audit_plan_sql_last_receive_timestamp?: string;
 }
 
+export interface IAuditResDataV1 {
+  audit_level?: AuditResDataV1AuditLevelEnum;
+
+  pass_rate?: number;
+
+  score?: number;
+
+  sql_results?: IAuditSQLResV1[];
+}
+
+export interface IAuditSQLResV1 {
+  audit_level?: string;
+
+  audit_result?: string;
+
+  exec_sql?: string;
+
+  number?: number;
+}
+
 export interface IAuditTaskResV1 {
   audit_level?: AuditTaskResV1AuditLevelEnum;
 
   exec_end_time?: string;
 
   exec_start_time?: string;
+
+  instance_db_type?: string;
 
   instance_name?: string;
 
@@ -331,6 +356,20 @@ export interface ICreateWorkflowTemplateReqV1 {
 
 export interface IDashboardResV1 {
   workflow_statistics?: IWorkflowStatisticsResV1;
+}
+
+export interface IDirectAuditReqV1 {
+  instance_type?: string;
+
+  sql_content?: string;
+}
+
+export interface IDirectAuditResV1 {
+  code?: number;
+
+  data?: IAuditResDataV1;
+
+  message?: string;
 }
 
 export interface IDriversResV1 {
@@ -1670,6 +1709,10 @@ export interface IWorkflowResV1 {
 }
 
 export interface IWorkflowStatisticsResV1 {
+  my_need_execute_workflow_number?: number;
+
+  my_need_review_workflow_number?: number;
+
   my_on_process_workflow_number?: number;
 
   my_rejected_workflow_number?: number;

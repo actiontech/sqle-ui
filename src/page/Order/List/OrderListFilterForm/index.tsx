@@ -48,6 +48,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
         filter_task_instance_name: undefined,
         filter_order_createTime: undefined,
         filter_subject: undefined,
+        filter_order_executeTime: undefined,
       });
       props.submit();
     }
@@ -164,6 +165,20 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
             />
           </Form.Item>
         </Col>
+
+        <Col xs={24} xl={16} xxl={12} hidden={currentCollapse}>
+          <Form.Item
+            name="filter_order_executeTime"
+            label={t('order.order.executeTime')}
+            labelCol={{ style: { flex: '0 0 14%' } }}
+          >
+            <DatePicker.RangePicker
+              disabledDate={computeDisabledDate}
+              showTime
+            />
+          </Form.Item>
+        </Col>
+
         <Col
           {...filterFormButtonLayoutFactory(12, 16, currentCollapse ? 0 : 18)}
           className="text-align-right"

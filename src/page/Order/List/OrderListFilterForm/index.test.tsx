@@ -131,6 +131,9 @@ describe('Order/List', () => {
       filter_current_step_type: 'sql_review',
       filter_status: undefined,
       filter_task_instance_name: 'instance1',
+      filter_subject: undefined,
+      filter_order_createTime: undefined,
+      filter_order_executeTime: undefined,
     });
 
     expect(screen.getByText('common.collapse')).toBeInTheDocument();
@@ -153,6 +156,7 @@ describe('Order/List', () => {
         filter_task_instance_name: undefined,
         filter_subject: undefined,
         filter_order_createTime: undefined,
+        filter_order_executeTime: undefined,
       })
     ).toBeTruthy();
     expect(submitMock).toBeCalledTimes(1);

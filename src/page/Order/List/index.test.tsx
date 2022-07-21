@@ -81,13 +81,18 @@ describe('Order/List', () => {
     const request = mockRequest();
     const history = createMemoryHistory();
     history.push(
-      '/order?currentStepAssignee=admin&currentStepType=sql_execute&status=on_process'
+      '/order?currentStepAssignee=admin&currentStepType=sql_execute&status=on_process&createUsername=createUser&executeTimeForm=2022-07-20%2011:15:02&executeTimeTo=2022-07-21%2011:15:02'
     );
     renderWithThemeAndServerRouter(<OrderList />, undefined, {
       history,
     });
     expect(request).toBeCalledTimes(1);
     expect(request).toBeCalledWith({
+      filter_task_execute_start_time_from: '2022-07-20T11:15:02+08:00',
+      filter_task_execute_start_time_to: '2022-07-21T11:15:02+08:00',
+      filter_create_time_from: undefined,
+      filter_create_time_to: undefined,
+      filter_create_user_name: 'createUser',
       filter_current_step_assignee_user_name: 'admin',
       filter_current_step_type: 'sql_execute',
       filter_status: 'on_process',
@@ -96,6 +101,10 @@ describe('Order/List', () => {
     });
     expect(screen.getByText('admin')).toBeInTheDocument();
     expect(screen.getByText('admin')).toHaveClass('ant-select-selection-item');
+    expect(screen.getByText('createUser')).toBeInTheDocument();
+    expect(screen.getByText('createUser')).toHaveClass(
+      'ant-select-selection-item'
+    );
     expect(screen.getByText('order.status.process')).toBeInTheDocument();
     expect(screen.getByText('order.status.process')).toHaveClass(
       'ant-select-selection-item'
@@ -103,6 +112,9 @@ describe('Order/List', () => {
     expect(screen.getByText('order.workflowStatus.exec')).toBeInTheDocument();
     expect(screen.getByText('order.workflowStatus.exec')).toHaveClass(
       'ant-select-selection-item'
+    );
+    expect(screen.getByLabelText('order.order.executeTime')).toHaveValue(
+      '2022-07-20 11:15:02'
     );
   });
   test('should can batch close order', async () => {
