@@ -51,6 +51,7 @@ describe('Home', () => {
       jest.advanceTimersByTime(3000);
     });
 
+    // fix local snapshot are different from github actions
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
