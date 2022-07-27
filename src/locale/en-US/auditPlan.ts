@@ -1,19 +1,20 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  pageTitle: '审核任务',
-  pageDesc: '你可以在这个查看/创建审核任务，以适用于你的定时审核任务',
+  pageTitle: '智能扫描',
+  pageDesc:
+    '你可以在这个查看/创建智能扫描任务，并配置审核周期去定期生成审核报告来检测SQL质量',
 
   list: {
-    title: '审核任务列表',
+    title: '扫描任务列表',
 
     table: {
-      audit_plan_cron: '任务审核周期',
+      audit_plan_cron: '审核周期',
       audit_plan_db_type: '数据库类型',
       audit_plan_instance_database: '审核的数据库',
       audit_plan_instance_name: '数据源名称',
-      audit_plan_name: '审核任务名称',
+      audit_plan_name: '任务名称',
       audit_plan_token: '访问凭证',
-      audit_plan_type: '审核任务类型',
+      audit_plan_type: '任务类型',
     },
     operator: {
       notice: '订阅审核失败消息',
@@ -21,49 +22,49 @@ export default {
   },
 
   action: {
-    create: '创建审核任务',
+    create: '创建审扫描任务',
   },
 
   remove: {
-    confirm: '您确认要移除审核任务 {{name}} 么?',
-    loading: '正在移除审核任务{{name}}...',
-    successTips: '移除审核任务 {{name}} 成功',
+    confirm: '您确认要移除扫描任务 {{name}} 么?',
+    loading: '正在移除扫描任务{{name}}...',
+    successTips: '移除扫描任务 {{name}} 成功',
   },
 
   create: {
-    title: '创建审核任务',
-    successTitle: '创建审核任务成功',
-    successGuide: '到审核任务列表查看刚刚添加的审核任务',
+    title: '创建扫描任务',
+    successTitle: '创建扫描任务成功',
+    successGuide: '到扫描任务列表查看刚刚添加的扫描任务',
   },
 
   update: {
-    title: '更新审核任务 {{name}}',
-    successTitle: '更新审核任务{{name}}成功',
-    successGuide: '返回审核任务列表',
+    title: '更新扫描任务 {{name}}',
+    successTitle: '更新扫描任务{{name}}成功',
+    successGuide: '返回扫描任务列表',
   },
 
   planForm: {
-    name: '审核任务名称',
+    name: '任务名称',
     dbType: '数据库类型',
     databaseName: '数据源名称',
     cron: '任务审核周期',
     schema: '数据库',
 
-    taskType: '审核任务类型',
+    taskType: '任务类型',
 
     databaseNameTips:
-      '如果您没有指定数据源，那么该审核任务将使用您所选择的数据库类型的默认规则模版进行静态审核',
+      '如果您没有指定数据源，那么该扫描任务将使用您所选择的数据库类型的默认规则模版进行静态审核',
   },
 
   detailPage: {
-    pageTitle: '审核任务: {{name}}',
-    auditTaskType: '审核任务类型: {{type}}',
+    pageTitle: '任务名称: {{name}}',
+    auditTaskType: '任务类型: {{type}}',
     pageDesc:
-      '您可以在这个查看当前审核任务的SQL语句池中的语句，以及当前审核任务的审核记录',
+      '您可以在这里查看当前智能扫描任务的SQL统计信息，以及当前任务的审核记录',
   },
 
   sqlPool: {
-    title: '当前审核任务SQL语句池',
+    title: 'SQL统计信息',
 
     table: {
       fingerprint: 'SQL指纹',
@@ -97,6 +98,7 @@ export default {
     table: {
       sql: 'SQL语句',
       result: '审核结果',
+      analyze: '分析',
     },
   },
 
@@ -112,7 +114,7 @@ export default {
       levelTips: '只有审核结果中包含高于或等于选择的告警等级的错误才会触发推送',
 
       emailEnable: '启用邮件推送',
-      emailEnableTips: '邮件会发送给审核任务创建人',
+      emailEnableTips: '邮件会发送给扫描任务创建人',
 
       webhooksEnable: '启用Webhooks推送',
       webhooksEnableCe: 'Webhooks推送为企业版功能',
@@ -140,7 +142,7 @@ export default {
 
       test: '发送测试消息',
       testTips: '请先提交配置再进行测试',
-      testLoading: '正在向审核任务{{name}}的订阅配置发送测试消息...',
+      testLoading: '正在向扫描任务{{name}}的订阅配置发送测试消息...',
       testSuccess: '测试消息发送成功',
       subscribeNoticeSuccess: '订阅成功',
     },
