@@ -3,7 +3,7 @@
 exports[`Home/QuickLink should match snapshot 1`] = `
 <div>
   <button
-    class="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg fixed-widgets-dashboard-namespace"
+    class="ant-btn ant-btn-primary ant-btn-circle fixed-widgets-dashboard-namespace"
     type="button"
   >
     <span
@@ -30,6 +30,45 @@ exports[`Home/QuickLink should match snapshot 1`] = `
           d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"
         />
       </svg>
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Home/QuickLink should match snapshot 2`] = `
+<div>
+  <button
+    class="ant-btn ant-btn-primary ant-btn-round fixed-widgets-dashboard-namespace"
+    type="button"
+  >
+    <span>
+      <span
+        aria-label="plus"
+        class="anticon anticon-plus"
+        role="img"
+      >
+        <svg
+          aria-hidden="true"
+          data-icon="plus"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="64 64 896 896"
+          width="1em"
+        >
+          <defs>
+            <style />
+          </defs>
+          <path
+            d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"
+          />
+          <path
+            d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"
+          />
+        </svg>
+      </span>
+       
+      test
     </span>
   </button>
 </div>

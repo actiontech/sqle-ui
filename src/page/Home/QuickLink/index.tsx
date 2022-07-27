@@ -1,24 +1,34 @@
-import { PlusOutlined } from '@ant-design/icons';
-import { Button, Popover } from 'antd';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { useBoolean } from 'ahooks';
+import { Button } from 'antd';
+import { IQuickLinkProps } from './index.type';
+
 import './index.less';
 
-const QuickLink = () => {
-  const { t } = useTranslation();
-
-  const links = [
-    <Link key="workflow" to="/order/create">
-      {t('menu.workflow')}
-    </Link>,
-  ];
+const QuickLink: React.FC<IQuickLinkProps> = ({ handleClick, text, icon }) => {
+  const [isHover, { setFalse: leaveBtn, setTrue: enterBtn }] =
+    useBoolean(false);
 
   return (
-    <Popover content={links} className="fixed-widgets-dashboard-namespace">
-      <Button type="primary" size="large" shape="circle">
-        <PlusOutlined />
-      </Button>
-    </Popover>
+    <Button
+      className="fixed-widgets-dashboard-namespace"
+      onClick={handleClick}
+      type="primary"
+      shape={isHover ? 'round' : 'circle'}
+      onMouseEnter={() => {
+        enterBtn();
+      }}
+      onMouseLeave={() => {
+        leaveBtn();
+      }}
+    >
+      {isHover ? (
+        <>
+          {icon} {text}
+        </>
+      ) : (
+        icon
+      )}
+    </Button>
   );
 };
 

@@ -12,18 +12,29 @@ exports[`test Home/CommonTable should match snapshot 1`] = `
         class="ant-spin-container"
       >
         <div
-          class="ant-table"
+          class="ant-table ant-table-bordered ant-table-scroll-horizontal"
         >
           <div
             class="ant-table-container"
           >
             <div
               class="ant-table-content"
+              style="overflow-x: auto; overflow-y: hidden;"
             >
               <table
-                style="table-layout: auto;"
+                style="min-width: 100%; table-layout: auto;"
               >
-                <colgroup />
+                <colgroup>
+                  <col
+                    style="width: auto;"
+                  />
+                  <col
+                    style="width: auto;"
+                  />
+                  <col
+                    style="width: auto;"
+                  />
+                </colgroup>
                 <thead
                   class="ant-table-thead"
                 >
@@ -49,6 +60,39 @@ exports[`test Home/CommonTable should match snapshot 1`] = `
                   class="ant-table-tbody"
                 >
                   <tr
+                    aria-hidden="true"
+                    class="ant-table-measure-row"
+                    style="height: 0px; font-size: 0px;"
+                  >
+                    <td
+                      style="padding: 0px; border: 0px; height: 0px;"
+                    >
+                      <div
+                        style="height: 0px; overflow: hidden;"
+                      >
+                         
+                      </div>
+                    </td>
+                    <td
+                      style="padding: 0px; border: 0px; height: 0px;"
+                    >
+                      <div
+                        style="height: 0px; overflow: hidden;"
+                      >
+                         
+                      </div>
+                    </td>
+                    <td
+                      style="padding: 0px; border: 0px; height: 0px;"
+                    >
+                      <div
+                        style="height: 0px; overflow: hidden;"
+                      >
+                         
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
                     class="ant-table-row ant-table-row-level-0"
                     data-row-key="test1"
                   >
@@ -64,12 +108,7 @@ exports[`test Home/CommonTable should match snapshot 1`] = `
                     <td
                       class="ant-table-cell"
                     >
-                      <span
-                        class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                        style="max-width: 300px;"
-                      >
-                        desc1
-                      </span>
+                      desc1
                     </td>
                     <td
                       class="ant-table-cell"
@@ -100,16 +139,17 @@ exports[`test Home/CommonTable should render custom custom when custom has a val
         class="ant-spin-container"
       >
         <div
-          class="ant-table"
+          class="ant-table ant-table-bordered ant-table-scroll-horizontal"
         >
           <div
             class="ant-table-container"
           >
             <div
               class="ant-table-content"
+              style="overflow-x: auto; overflow-y: hidden;"
             >
               <table
-                style="table-layout: auto;"
+                style="min-width: 100%; table-layout: auto;"
               >
                 <colgroup />
                 <thead
@@ -136,6 +176,39 @@ exports[`test Home/CommonTable should render custom custom when custom has a val
                 <tbody
                   class="ant-table-tbody"
                 >
+                  <tr
+                    aria-hidden="true"
+                    class="ant-table-measure-row"
+                    style="height: 0px; font-size: 0px;"
+                  >
+                    <td
+                      style="padding: 0px; border: 0px; height: 0px;"
+                    >
+                      <div
+                        style="height: 0px; overflow: hidden;"
+                      >
+                         
+                      </div>
+                    </td>
+                    <td
+                      style="padding: 0px; border: 0px; height: 0px;"
+                    >
+                      <div
+                        style="height: 0px; overflow: hidden;"
+                      >
+                         
+                      </div>
+                    </td>
+                    <td
+                      style="padding: 0px; border: 0px; height: 0px;"
+                    >
+                      <div
+                        style="height: 0px; overflow: hidden;"
+                      >
+                         
+                      </div>
+                    </td>
+                  </tr>
                   <tr
                     class="ant-table-row ant-table-row-level-0"
                     data-row-key="test1"
@@ -177,18 +250,29 @@ exports[`test Home/CommonTable should render error info when error has a value 1
         class="ant-spin-container"
       >
         <div
-          class="ant-table ant-table-empty"
+          class="ant-table ant-table-bordered ant-table-empty ant-table-scroll-horizontal"
         >
           <div
             class="ant-table-container"
           >
             <div
               class="ant-table-content"
+              style="overflow-x: auto; overflow-y: hidden;"
             >
               <table
-                style="table-layout: auto;"
+                style="min-width: 100%; table-layout: auto;"
               >
-                <colgroup />
+                <colgroup>
+                  <col
+                    style="width: auto;"
+                  />
+                  <col
+                    style="width: auto;"
+                  />
+                  <col
+                    style="width: auto;"
+                  />
+                </colgroup>
                 <thead
                   class="ant-table-thead"
                 >
@@ -214,6 +298,39 @@ exports[`test Home/CommonTable should render error info when error has a value 1
                   class="ant-table-tbody"
                 >
                   <tr
+                    aria-hidden="true"
+                    class="ant-table-measure-row"
+                    style="height: 0px; font-size: 0px;"
+                  >
+                    <td
+                      style="padding: 0px; border: 0px; height: 0px;"
+                    >
+                      <div
+                        style="height: 0px; overflow: hidden;"
+                      >
+                         
+                      </div>
+                    </td>
+                    <td
+                      style="padding: 0px; border: 0px; height: 0px;"
+                    >
+                      <div
+                        style="height: 0px; overflow: hidden;"
+                      >
+                         
+                      </div>
+                    </td>
+                    <td
+                      style="padding: 0px; border: 0px; height: 0px;"
+                    >
+                      <div
+                        style="height: 0px; overflow: hidden;"
+                      >
+                         
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
                     class="ant-table-placeholder"
                   >
                     <td
@@ -221,40 +338,45 @@ exports[`test Home/CommonTable should render error info when error has a value 1
                       colspan="3"
                     >
                       <div
-                        class="ant-result ant-result-error"
+                        class="ant-table-expanded-row-fixed"
+                        style="width: 0px; position: sticky; left: 0px; overflow: hidden;"
                       >
                         <div
-                          class="ant-result-icon"
+                          class="ant-result ant-result-error"
                         >
-                          <span
-                            aria-label="close-circle"
-                            class="anticon anticon-close-circle"
-                            role="img"
+                          <div
+                            class="ant-result-icon"
                           >
-                            <svg
-                              aria-hidden="true"
-                              data-icon="close-circle"
-                              fill="currentColor"
-                              focusable="false"
-                              height="1em"
-                              viewBox="64 64 896 896"
-                              width="1em"
+                            <span
+                              aria-label="close-circle"
+                              class="anticon anticon-close-circle"
+                              role="img"
                             >
-                              <path
-                                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
-                              />
-                            </svg>
-                          </span>
-                        </div>
-                        <div
-                          class="ant-result-title"
-                        >
-                          common.request.noticeFailTitle
-                        </div>
-                        <div
-                          class="ant-result-subtitle"
-                        >
-                          error message
+                              <svg
+                                aria-hidden="true"
+                                data-icon="close-circle"
+                                fill="currentColor"
+                                focusable="false"
+                                height="1em"
+                                viewBox="64 64 896 896"
+                                width="1em"
+                              >
+                                <path
+                                  d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
+                                />
+                              </svg>
+                            </span>
+                          </div>
+                          <div
+                            class="ant-result-title"
+                          >
+                            common.request.noticeFailTitle
+                          </div>
+                          <div
+                            class="ant-result-subtitle"
+                          >
+                            error message
+                          </div>
                         </div>
                       </div>
                     </td>
@@ -304,18 +426,29 @@ exports[`test Home/CommonTable should render spin when loading equal true 1`] = 
         class="ant-spin-container ant-spin-blur"
       >
         <div
-          class="ant-table"
+          class="ant-table ant-table-bordered ant-table-scroll-horizontal"
         >
           <div
             class="ant-table-container"
           >
             <div
               class="ant-table-content"
+              style="overflow-x: auto; overflow-y: hidden;"
             >
               <table
-                style="table-layout: auto;"
+                style="min-width: 100%; table-layout: auto;"
               >
-                <colgroup />
+                <colgroup>
+                  <col
+                    style="width: auto;"
+                  />
+                  <col
+                    style="width: auto;"
+                  />
+                  <col
+                    style="width: auto;"
+                  />
+                </colgroup>
                 <thead
                   class="ant-table-thead"
                 >
@@ -341,6 +474,39 @@ exports[`test Home/CommonTable should render spin when loading equal true 1`] = 
                   class="ant-table-tbody"
                 >
                   <tr
+                    aria-hidden="true"
+                    class="ant-table-measure-row"
+                    style="height: 0px; font-size: 0px;"
+                  >
+                    <td
+                      style="padding: 0px; border: 0px; height: 0px;"
+                    >
+                      <div
+                        style="height: 0px; overflow: hidden;"
+                      >
+                         
+                      </div>
+                    </td>
+                    <td
+                      style="padding: 0px; border: 0px; height: 0px;"
+                    >
+                      <div
+                        style="height: 0px; overflow: hidden;"
+                      >
+                         
+                      </div>
+                    </td>
+                    <td
+                      style="padding: 0px; border: 0px; height: 0px;"
+                    >
+                      <div
+                        style="height: 0px; overflow: hidden;"
+                      >
+                         
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
                     class="ant-table-row ant-table-row-level-0"
                     data-row-key="test1"
                   >
@@ -356,12 +522,7 @@ exports[`test Home/CommonTable should render spin when loading equal true 1`] = 
                     <td
                       class="ant-table-cell"
                     >
-                      <span
-                        class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                        style="max-width: 300px;"
-                      >
-                        desc1
-                      </span>
+                      desc1
                     </td>
                     <td
                       class="ant-table-cell"

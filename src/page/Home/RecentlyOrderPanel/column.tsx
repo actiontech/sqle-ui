@@ -1,4 +1,3 @@
-import { Tooltip, Typography } from 'antd';
 import i18n from 'i18next';
 import { Link } from 'react-router-dom';
 import { IWorkflowDetailResV1 } from '../../../api/common';
@@ -20,19 +19,12 @@ export const customColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
           </Link>
         );
       },
+      width: 'auto',
     },
     {
       dataIndex: 'desc',
       title: () => i18n.t('order.order.desc'),
-      render: (text) => {
-        return (
-          <Tooltip overlay={text}>
-            <Typography.Text style={{ maxWidth: 300 }} ellipsis={true}>
-              {text}
-            </Typography.Text>
-          </Tooltip>
-        );
-      },
+      width: 'auto',
     },
     {
       dataIndex: 'create_time',
@@ -47,6 +39,7 @@ export const customColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
       render: (status) => {
         return <OrderStatusTag status={status} />;
       },
+      width: 'auto',
     },
   ];
 };

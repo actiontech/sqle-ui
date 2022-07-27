@@ -13,7 +13,9 @@ const CommonTable: React.FC<ICommonTableProps> = ({
     <>
       <Table
         rowKey="subject"
+        bordered
         loading={tableInfo.loading}
+        scroll={{ x: 'max-content' }}
         pagination={false}
         locale={{
           emptyText: tableInfo.error ? (
