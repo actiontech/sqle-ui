@@ -22,7 +22,7 @@ export default {
   },
 
   action: {
-    create: '创建审扫描任务',
+    create: '创建扫描任务',
   },
 
   remove: {
