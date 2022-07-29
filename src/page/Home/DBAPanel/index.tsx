@@ -113,26 +113,33 @@ const DBAPanel: React.FC<IDBAPanelProps> = ({
         type="card"
         onChange={handleChangeTabs}
         activeKey={currentActiveKey}
-        tabBarExtraContent={
-          <>
-            <SyncOutlined
-              data-testid="refreshTable"
-              spin={tableLoading}
-              onClick={refreshTable}
-            />
-            <Button
-              type="link"
-              onClick={genShowAllMap.get(currentActiveKey)}
-              style={{ padding: 0, marginLeft: 10 }}
-            >
-              {t('common.showAll')}
-            </Button>
-          </>
-        }
+        tabBarExtraContent={{
+          left: (
+            <span className="tab-panel-title">
+              {t('dashboard.title.pendingOrder')}
+            </span>
+          ),
+          right: (
+            <>
+              <SyncOutlined
+                data-testid="refreshTable"
+                spin={tableLoading}
+                onClick={refreshTable}
+              />
+              <Button
+                type="link"
+                onClick={genShowAllMap.get(currentActiveKey)}
+                style={{ padding: 0, marginLeft: 10 }}
+              >
+                {t('common.more')}
+              </Button>
+            </>
+          ),
+        }}
       >
         <Tabs.TabPane
           tab={genTabPaneTitle(
-            t('dashboard.title.needMeReview'),
+            t('dashboard.pendingOrder.needMeReview'),
             workflowStatistics?.need_me_to_review_workflow_number
           )}
           key={tabsKeyEnum.needMeReview}
@@ -147,7 +154,7 @@ const DBAPanel: React.FC<IDBAPanelProps> = ({
         </Tabs.TabPane>
         <Tabs.TabPane
           tab={genTabPaneTitle(
-            t('dashboard.title.needMeExec'),
+            t('dashboard.pendingOrder.needMeExec'),
             workflowStatistics?.need_me_to_execute_workflow_number
           )}
           key={tabsKeyEnum.needMeExec}

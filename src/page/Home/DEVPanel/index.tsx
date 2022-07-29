@@ -138,26 +138,33 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
         type="card"
         onChange={handleChangeTabs}
         activeKey={currentActiveKey}
-        tabBarExtraContent={
-          <>
-            <SyncOutlined
-              data-testid="refreshTable"
-              spin={tableLoading}
-              onClick={refreshTable}
-            />
-            <Button
-              type="link"
-              onClick={genShowAllMap.get(currentActiveKey)}
-              style={{ padding: 0, marginLeft: 10 }}
-            >
-              {t('common.showAll')}
-            </Button>
-          </>
-        }
+        tabBarExtraContent={{
+          left: (
+            <span className="tab-panel-title">
+              {t('dashboard.title.myOrderSituation')}
+            </span>
+          ),
+          right: (
+            <>
+              <SyncOutlined
+                data-testid="refreshTable"
+                spin={tableLoading}
+                onClick={refreshTable}
+              />
+              <Button
+                type="link"
+                onClick={genShowAllMap.get(currentActiveKey)}
+                style={{ padding: 0, marginLeft: 10 }}
+              >
+                {t('common.more')}
+              </Button>
+            </>
+          ),
+        }}
       >
         <Tabs.TabPane
           tab={genTabPaneTitle(
-            t('dashboard.title.pendingReviewByMe'),
+            t('dashboard.myOrderSituation.pendingReviewByMe'),
             workflowStatistics?.my_need_review_workflow_number
           )}
           key={tabsKeyEnum.pendingReviewByMe}
@@ -172,7 +179,7 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
         </Tabs.TabPane>
         <Tabs.TabPane
           tab={genTabPaneTitle(
-            t('dashboard.title.pendingExecByMe'),
+            t('dashboard.myOrderSituation.pendingExecByMe'),
             workflowStatistics?.my_need_execute_workflow_number
           )}
           key={tabsKeyEnum.pendingExecByMe}
@@ -187,7 +194,7 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
         </Tabs.TabPane>
         <Tabs.TabPane
           tab={genTabPaneTitle(
-            t('dashboard.title.rejectedOrderByMe'),
+            t('dashboard.myOrderSituation.rejectedOrderByMe'),
             workflowStatistics?.my_rejected_workflow_number
           )}
           key={tabsKeyEnum.rejectedOrderByMe}

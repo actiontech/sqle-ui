@@ -84,19 +84,19 @@ describe('test home/DBAPanel', () => {
     });
 
     expect(
-      screen.getByText('dashboard.title.needMeReview').parentNode
+      screen.getByText('dashboard.pendingOrder.needMeReview').parentNode
     ).toHaveClass('ant-tabs-tab-active');
     expect(
-      screen.getByText('dashboard.title.needMeExec').parentNode
+      screen.getByText('dashboard.pendingOrder.needMeExec').parentNode
     ).not.toHaveClass('ant-tabs-tab-active');
 
-    fireEvent.click(screen.getByText('dashboard.title.needMeExec'));
+    fireEvent.click(screen.getByText('dashboard.pendingOrder.needMeExec'));
 
     expect(
-      screen.getByText('dashboard.title.needMeReview').parentNode
+      screen.getByText('dashboard.pendingOrder.needMeReview').parentNode
     ).not.toHaveClass('ant-tabs-tab-active');
     expect(
-      screen.getByText('dashboard.title.needMeExec').parentNode
+      screen.getByText('dashboard.pendingOrder.needMeExec').parentNode
     ).toHaveClass('ant-tabs-tab-active');
   });
 
@@ -114,7 +114,7 @@ describe('test home/DBAPanel', () => {
     expect(getMockRequestSpy).toBeCalledTimes(2);
 
     expect(
-      screen.getByText('dashboard.title.needMeReview').parentNode
+      screen.getByText('dashboard.pendingOrder.needMeReview').parentNode
     ).toHaveClass('ant-tabs-tab-active');
 
     fireEvent.click(screen.getByTestId('refreshTable'));
@@ -140,13 +140,13 @@ describe('test home/DBAPanel', () => {
         getWorkflowListV1FilterCurrentStepTypeEnum.sql_review,
     });
 
-    fireEvent.click(screen.getByText('common.showAll'));
+    fireEvent.click(screen.getByText('common.more'));
     expect(history.location.pathname).toBe(`/order`);
     expect(history.location.search).toBe(
       `?${OrderListUrlParamsKey.currentStepAssignee}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}&${OrderListUrlParamsKey.status}=${getWorkflowListV1FilterStatusEnum.on_process}`
     );
 
-    fireEvent.click(screen.getByText('dashboard.title.needMeExec'));
+    fireEvent.click(screen.getByText('dashboard.pendingOrder.needMeExec'));
     fireEvent.click(screen.getByTestId('refreshTable'));
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -154,7 +154,7 @@ describe('test home/DBAPanel', () => {
     expect(mockGetWorkflowStatistics).toBeCalledTimes(2);
     expect(getMockRequestSpy).toBeCalledTimes(6);
 
-    fireEvent.click(screen.getByText('common.showAll'));
+    fireEvent.click(screen.getByText('common.more'));
     expect(history.location.pathname).toBe(`/order`);
     expect(history.location.search).toBe(
       `?${OrderListUrlParamsKey.currentStepAssignee}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}&${OrderListUrlParamsKey.status}=${getWorkflowListV1FilterStatusEnum.on_process}`

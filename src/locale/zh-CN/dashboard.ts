@@ -2,11 +2,17 @@
 export default {
   pageTitle: '工作台',
   title: {
-    needMeReview: '需要我审批的工单 (top5)',
-    needMeExec: '需要我上线的工单 (top5)',
-    pendingReviewByMe: '我创建的待审核工单 (top5)',
-    pendingExecByMe: '我创建的待上线的工单 (top5)',
-    rejectedOrderByMe: '我创建的被驳回的工单 (top5)',
-    recentlyOnlineWorkOrder: '我的近24h上线工单',
+    pendingOrder: '待处理工单',
+    myOrderSituation: '我的工单情况',
+    recentlyOnlineWorkOrder: '近24h上线工单',
+  },
+  pendingOrder: {
+    needMeReview: '需审核',
+    needMeExec: '需上线',
+  },
+  myOrderSituation: {
+    pendingReviewByMe: '待审核',
+    pendingExecByMe: '待上线',
+    rejectedOrderByMe: '被驳回',
   },
 };

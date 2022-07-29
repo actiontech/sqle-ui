@@ -1,6 +1,5 @@
 import { TableColumn } from '../../../types/common.type';
 import i18n from 'i18next';
-import { Tooltip, Typography } from 'antd';
 import { formatTime } from '../../../utils/Common';
 import { Link } from 'react-router-dom';
 import { IWorkflowDetailResV1 } from '../../../api/common';
@@ -19,19 +18,12 @@ export const commonColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
           </Link>
         );
       },
+      width: 'auto',
     },
     {
       dataIndex: 'desc',
       title: () => i18n.t('order.order.desc'),
-      render: (text) => {
-        return (
-          <Tooltip overlay={text}>
-            <Typography.Text style={{ maxWidth: 300 }} ellipsis={true}>
-              {text}
-            </Typography.Text>
-          </Tooltip>
-        );
-      },
+      width: 'auto',
     },
     {
       dataIndex: 'create_time',
@@ -39,6 +31,7 @@ export const commonColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
       render: (time) => {
         return formatTime(time);
       },
+      width: 'auto',
     },
   ];
 };

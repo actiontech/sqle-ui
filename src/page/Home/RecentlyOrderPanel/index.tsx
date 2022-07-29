@@ -62,7 +62,6 @@ const RecentlyOrderPanel: React.FC = () => {
           <span>{t('dashboard.title.recentlyOnlineWorkOrder')}</span>
           <div>
             <SyncOutlined
-              style={{ fontSize: 14 }}
               spin={recentlyOrderResponse?.loading}
               onClick={refreshTable}
               data-testid="refreshTable"
@@ -72,7 +71,7 @@ const RecentlyOrderPanel: React.FC = () => {
               onClick={showAll}
               style={{ padding: 0, marginLeft: 10 }}
             >
-              {t('common.showAll')}
+              {t('common.more')}
             </Button>
           </div>
         </Space>

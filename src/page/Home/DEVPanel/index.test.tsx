@@ -84,23 +84,30 @@ describe('test home/DEVPanel', () => {
     });
 
     expect(
-      screen.getByText('dashboard.title.pendingReviewByMe').parentNode
+      screen.getByText('dashboard.myOrderSituation.pendingReviewByMe')
+        .parentNode
     ).toHaveClass('ant-tabs-tab-active');
     expect(
-      screen.getByText('dashboard.title.pendingExecByMe').parentNode
+      screen.getByText('dashboard.myOrderSituation.pendingExecByMe').parentNode
     ).not.toHaveClass('ant-tabs-tab-active');
     expect(
-      screen.getByText('dashboard.title.rejectedOrderByMe').parentNode
+      screen.getByText('dashboard.myOrderSituation.rejectedOrderByMe')
+        .parentNode
     ).not.toHaveClass('ant-tabs-tab-active');
 
-    fireEvent.click(screen.getByText('dashboard.title.pendingExecByMe'));
+    fireEvent.click(
+      screen.getByText('dashboard.myOrderSituation.pendingExecByMe')
+    );
     expect(
-      screen.getByText('dashboard.title.pendingExecByMe').parentNode
+      screen.getByText('dashboard.myOrderSituation.pendingExecByMe').parentNode
     ).toHaveClass('ant-tabs-tab-active');
 
-    fireEvent.click(screen.getByText('dashboard.title.rejectedOrderByMe'));
+    fireEvent.click(
+      screen.getByText('dashboard.myOrderSituation.rejectedOrderByMe')
+    );
     expect(
-      screen.getByText('dashboard.title.rejectedOrderByMe').parentNode
+      screen.getByText('dashboard.myOrderSituation.rejectedOrderByMe')
+        .parentNode
     ).toHaveClass('ant-tabs-tab-active');
   });
 
@@ -119,7 +126,8 @@ describe('test home/DEVPanel', () => {
     expect(mockGetWorkflowStatistics).toBeCalledTimes(0);
 
     expect(
-      screen.getByText('dashboard.title.pendingReviewByMe').parentNode
+      screen.getByText('dashboard.myOrderSituation.pendingReviewByMe')
+        .parentNode
     ).toHaveClass('ant-tabs-tab-active');
 
     fireEvent.click(screen.getByTestId('refreshTable'));
@@ -151,13 +159,15 @@ describe('test home/DEVPanel', () => {
       filter_status: getWorkflowListV1FilterStatusEnum.rejected,
     });
 
-    fireEvent.click(screen.getByText('common.showAll'));
+    fireEvent.click(screen.getByText('common.more'));
     expect(history.location.pathname).toBe(`/order`);
     expect(history.location.search).toBe(
       `?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}&${OrderListUrlParamsKey.status}=${getWorkflowListV1FilterStatusEnum.on_process}`
     );
 
-    fireEvent.click(screen.getByText('dashboard.title.pendingExecByMe'));
+    fireEvent.click(
+      screen.getByText('dashboard.myOrderSituation.pendingExecByMe')
+    );
     fireEvent.click(screen.getByTestId('refreshTable'));
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -165,13 +175,15 @@ describe('test home/DEVPanel', () => {
     expect(getMockRequestSpy).toBeCalledTimes(9);
     expect(mockGetWorkflowStatistics).toBeCalledTimes(2);
 
-    fireEvent.click(screen.getByText('common.showAll'));
+    fireEvent.click(screen.getByText('common.more'));
     expect(history.location.pathname).toBe(`/order`);
     expect(history.location.search).toBe(
       `?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}&${OrderListUrlParamsKey.status}=${getWorkflowListV1FilterStatusEnum.on_process}`
     );
 
-    fireEvent.click(screen.getByText('dashboard.title.rejectedOrderByMe'));
+    fireEvent.click(
+      screen.getByText('dashboard.myOrderSituation.rejectedOrderByMe')
+    );
     fireEvent.click(screen.getByTestId('refreshTable'));
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -179,7 +191,7 @@ describe('test home/DEVPanel', () => {
     expect(getMockRequestSpy).toBeCalledTimes(12);
     expect(mockGetWorkflowStatistics).toBeCalledTimes(3);
 
-    fireEvent.click(screen.getByText('common.showAll'));
+    fireEvent.click(screen.getByText('common.more'));
     expect(history.location.pathname).toBe(`/order`);
     expect(history.location.search).toBe(
       `?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.status}=${getWorkflowListV1FilterStatusEnum.rejected}`

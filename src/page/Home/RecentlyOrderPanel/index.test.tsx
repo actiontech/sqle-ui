@@ -94,7 +94,7 @@ describe('test home/RecentlyOrderPanel', () => {
       return time.format('YYYY-MM-DD HH:mm:ss');
     };
 
-    fireEvent.click(screen.getByText('common.showAll'));
+    fireEvent.click(screen.getByText('common.more'));
     expect(history.location.pathname).toBe(`/order`);
     expect(history.location.search).toBe(
       `?${OrderListUrlParamsKey.executeTimeForm}=${format(startTime)}&${
