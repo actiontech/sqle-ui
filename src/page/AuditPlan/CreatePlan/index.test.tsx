@@ -124,7 +124,7 @@ describe('CreatePlan', () => {
 
     expect(createRequest).toBeCalledTimes(1);
     expect(createRequest).toBeCalledWith({
-      audit_plan_cron: '* * * * *',
+      audit_plan_cron: '0 0 * * *',
       audit_plan_instance_database: 'schema1',
       audit_plan_instance_name: 'instance1',
       audit_plan_instance_type: 'mysql',

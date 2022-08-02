@@ -116,6 +116,7 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
       <Form.Item
         label={t('auditPlan.planForm.cron')}
         name="cron"
+        initialValue="0 0 * * *"
         rules={[
           {
             required: true,

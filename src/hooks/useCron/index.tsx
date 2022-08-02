@@ -12,7 +12,7 @@ import { CronOptions } from './index.type';
 
 const useCron = (options?: CronOptions) => {
   const { t } = useTranslation();
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(options?.defaultValue ?? '');
   const [error, setError] = useState('');
 
   const [Month, setMonth] = useState<number[]>([]);
@@ -123,7 +123,7 @@ const useCron = (options?: CronOptions) => {
 
   useEffect(() => {
     if (!!options?.defaultValue) {
-      updateCron(options?.defaultValue);
+      updateValueByCronChange(options?.defaultValue);
     } else {
       updateCron('* * * * *');
     }

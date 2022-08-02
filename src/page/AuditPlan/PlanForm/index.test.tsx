@@ -10,7 +10,6 @@ import PlanForm from '.';
 import audit_plan from '../../../api/audit_plan';
 import { IAuditPlanResV1 } from '../../../api/common';
 import instance from '../../../api/instance';
-import { getInstanceTipListV1FunctionalModuleEnum } from '../../../api/instance/index.enum';
 import EmitterKey from '../../../data/EmitterKey';
 import { getBySelector } from '../../../testUtils/customQuery';
 import {
@@ -182,7 +181,7 @@ describe('PlanForm', () => {
 
     expect(submitFn).toBeCalledTimes(1);
     expect(submitFn).toBeCalledWith({
-      cron: '* * * * *',
+      cron: '0 0 * * *',
       databaseName: 'instance1',
       dbType: 'mysql',
       name: 'planName1',
