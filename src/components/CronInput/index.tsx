@@ -18,7 +18,7 @@ const CronInput: React.FC<CronInputProps> = (props) => {
     updateMinute,
     updateHour,
     updateWeek,
-  } = useCron();
+  } = useCron({ defaultValue: props.value });
 
   const { t } = useTranslation();
   const [cronMode, setCronMode] = useState<CronMode>(CronMode.Select);
