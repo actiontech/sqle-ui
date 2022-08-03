@@ -58,7 +58,7 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
               class="ant-form ant-form-horizontal"
             >
               <div
-                class="ant-row ant-form-item"
+                class="ant-row ant-form-item ant-form-item-has-success"
               >
                 <div
                   class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
@@ -85,7 +85,7 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                         id="name"
                         placeholder="common.form.placeholder.input"
                         type="text"
-                        value=""
+                        value="instance1_19700101010101"
                       />
                     </div>
                   </div>

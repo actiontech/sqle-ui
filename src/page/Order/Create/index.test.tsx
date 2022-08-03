@@ -4,7 +4,10 @@ import instance from '../../../api/instance';
 import task from '../../../api/task';
 import workflow from '../../../api/workflow';
 import EmitterKey from '../../../data/EmitterKey';
-import { getBySelector } from '../../../testUtils/customQuery';
+import {
+  getBySelector,
+  selectOptionByIndex,
+} from '../../../testUtils/customQuery';
 import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
 import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
 import {
@@ -23,6 +26,12 @@ import {
 } from '../Detail/__testData__';
 
 const orderDescMaxLength = 50;
+
+jest.mock('moment', () => {
+  return () => ({
+    format: () => '19700101010101',
+  });
+});
 
 describe('Order/Create', () => {
   beforeEach(() => {
@@ -74,6 +83,10 @@ describe('Order/Create', () => {
   test('should audit sql when user click audit button', async () => {
     const createTaskSpy = mockCreateTask();
     const getInstanceWorkflow = mockGetInstanceWorkflowTemplate();
+    const dateSpy = jest.spyOn(Date, 'now');
+    dateSpy.mockReturnValue(
+      new Date('August 19, 1975 23:15:30 GMT+07:00').getTime()
+    );
     mockGetTaskSql();
     const { container } = renderWithThemeAndRouter(<CreateOrder />);
     await waitFor(() => {
@@ -126,6 +139,7 @@ describe('Order/Create', () => {
       jest.advanceTimersByTime(3000);
     });
     expect(container).toMatchSnapshot();
+    dateSpy.mockRestore();
   });
 
   test('should create order when user input all require fields', async () => {
@@ -451,5 +465,21 @@ describe('Order/Create', () => {
     expect(
       screen.queryByText('order.createOrder.mustHaveAuditResultTips')
     ).toBeInTheDocument();
+  });
+
+  test('should generate order name after user select a data source when user do not input order name', async () => {
+    renderWithThemeAndRouter(<CreateOrder />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    selectOptionByIndex('order.sqlInfo.instanceName', 'instance1', 1);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.getByLabelText('order.baseInfo.name')).toHaveValue(
+      'instance1_19700101010101'
+    );
   });
 });
