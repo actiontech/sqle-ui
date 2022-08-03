@@ -14,6 +14,7 @@ import {
   Tooltip,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
+import moment from 'moment';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -144,6 +145,15 @@ const CreateOrder = () => {
     setDisabledOperatorOrderBtnTips,
   ]);
 
+  const instanceNameChange = async (name: string) => {
+    const orderName = baseForm.getFieldValue('name');
+    if (!orderName) {
+      baseForm.setFieldsValue({
+        name: `${name}_${moment().format('YYYYMMDDhhmmss')}`,
+      });
+    }
+  };
+
   return (
     <>
       <PageHeader title={t('order.baseInfo.title')} ghost={false}>
@@ -193,6 +203,7 @@ const CreateOrder = () => {
             form={sqlInfoForm}
             submit={auditSql}
             updateDirtyData={toggleHasDirtyData}
+            instanceNameChange={instanceNameChange}
           />
           <EmptyBox if={!!taskInfo}>
             <AuditResult

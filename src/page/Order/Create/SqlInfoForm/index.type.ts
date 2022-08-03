@@ -5,6 +5,7 @@ export type SqlInfoFormProps = {
   form: FormInstance<SqlInfoFormFields>;
   submit: (values: SqlInfoFormFields) => Promise<void>;
   updateDirtyData: (dirtyDataStatus: boolean) => void;
+  instanceNameChange?: (name: string) => void;
 };
 
 export type SqlInfoFormFields = {

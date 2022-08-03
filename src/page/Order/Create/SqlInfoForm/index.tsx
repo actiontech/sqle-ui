@@ -40,8 +40,9 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   const [currentSQLInputType, setCurrentSQLInputTYpe] = React.useState(
     SQLInputType.manualInput
   );
-  const [instanceName, setInstanceName] =
-    React.useState<string | undefined>(undefined);
+  const [instanceName, setInstanceName] = React.useState<string | undefined>(
+    undefined
+  );
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
     useBoolean();
 
@@ -123,6 +124,11 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
     }
   }, [alreadySubmit, props]);
 
+  const handleInstanceNameChange = (name: string) => {
+    setInstanceName(name);
+    props.instanceNameChange?.(name);
+  };
+
   React.useEffect(() => {
     updateInstanceList();
   }, [updateInstanceList]);
@@ -167,7 +173,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
             ]}
           >
             <Select<string>
-              onChange={setInstanceName}
+              onChange={handleInstanceNameChange}
               showSearch
               placeholder={t('common.form.placeholder.select', {
                 name: t('order.sqlInfo.instanceName'),
