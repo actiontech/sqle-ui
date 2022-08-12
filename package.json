@@ -30,7 +30,6 @@
     "enzyme-to-json": "^3.6.2",
     "highlight.js": "^11.0.1",
     "i18next": "^19.8.4",
-    "jest-electron": "^0.1.12",
     "js-conditional-compile-loader": "^1.0.14",
     "jsdom-worker": "^0.2.1",
     "lodash": "^4.17.21",
