@@ -1,8 +1,9 @@
 import { useTheme } from '@material-ui/styles';
-import { render, waitFor } from '@testing-library/react';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
 import statistic from '../../../api/statistic';
 import { SupportLanguage } from '../../../locale';
-import { mockUseSelector } from '../../../testUtils/mockRedux';
+import { renderWithRedux } from '../../../testUtils/customRender';
+import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import { SupportTheme } from '../../../theme';
 import ReportStatistics from '../index';
@@ -30,6 +31,8 @@ jest.mock('@material-ui/styles', () => {
 });
 
 describe('test ReportStatistics', () => {
+  let scopeDispatch: jest.Mock;
+
   const mockGetTaskRejectedPercentGroupByInstanceV1 = () => {
     const spy = jest.spyOn(
       statistic,
@@ -108,40 +111,87 @@ describe('test ReportStatistics', () => {
   };
   const useThemeMock: jest.Mock = useTheme as jest.Mock;
 
+  let getTaskCountV1Spy: jest.SpyInstance;
+  let getTaskStatusCountV1Spy: jest.SpyInstance;
+  let getTasksPercentCountedByInstanceTypeV1Spy: jest.SpyInstance;
+  let getTaskCreatedCountEachDayV1Spy: jest.SpyInstance;
+  let getTaskPassPercentV1Spy: jest.SpyInstance;
+  let getTaskDurationOfWaitingForAuditV1Spy: jest.SpyInstance;
+  let getTaskDurationOfWaitingForExecutionV1Spy: jest.SpyInstance;
+  let getLicenseUsageV1Spy: jest.SpyInstance;
+  let getInstancesTypePercentV1Spy: jest.SpyInstance;
+  let getTaskRejectedPercentGroupByCreatorV1Spy: jest.SpyInstance;
+  let getTaskRejectedPercentGroupByInstanceV1Spy: jest.SpyInstance;
   beforeEach(() => {
-    mockGetTaskCountV1();
-    mockGetTaskStatusCountV1();
-    mockGetTasksPercentCountedByInstanceTypeV1();
-    mockGetTaskCreatedCountEachDayV1();
-    mockGetTaskPassPercentV1();
-    mockGetTaskDurationOfWaitingForAuditV1();
-    mockGetTaskDurationOfWaitingForExecutionV1();
-    mockGetLicenseUsageV1();
-    mockGetInstancesTypePercentV1();
-    mockGetTaskRejectedPercentGroupByCreatorV1();
-    mockGetTaskRejectedPercentGroupByInstanceV1();
+    getTaskCountV1Spy = mockGetTaskCountV1();
+    getTaskStatusCountV1Spy = mockGetTaskStatusCountV1();
+    getTasksPercentCountedByInstanceTypeV1Spy =
+      mockGetTasksPercentCountedByInstanceTypeV1();
+    getTaskCreatedCountEachDayV1Spy = mockGetTaskCreatedCountEachDayV1();
+    getTaskPassPercentV1Spy = mockGetTaskPassPercentV1();
+    getTaskDurationOfWaitingForAuditV1Spy =
+      mockGetTaskDurationOfWaitingForAuditV1();
+    getTaskDurationOfWaitingForExecutionV1Spy =
+      mockGetTaskDurationOfWaitingForExecutionV1();
+    getLicenseUsageV1Spy = mockGetLicenseUsageV1();
+    getInstancesTypePercentV1Spy = mockGetInstancesTypePercentV1();
+    getTaskRejectedPercentGroupByCreatorV1Spy =
+      mockGetTaskRejectedPercentGroupByCreatorV1();
+    getTaskRejectedPercentGroupByInstanceV1Spy =
+      mockGetTaskRejectedPercentGroupByInstanceV1();
     jest.useFakeTimers();
     mockUseSelector({
       user: { theme: SupportTheme.LIGHT },
       locale: { language: SupportLanguage.zhCN },
+      reportStatistics: { refreshFlag: false },
     });
     useThemeMock.mockReturnValue({ common: { padding: 24 } });
+    scopeDispatch = mockUseDispatch().scopeDispatch;
   });
 
   afterEach(() => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
+    scopeDispatch.mockClear();
   });
 
   test('should match snapshot', async () => {
-    const { container } = render(<ReportStatistics />);
+    const { container } = renderWithRedux(<ReportStatistics />);
     expect(container).toMatchSnapshot();
 
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
 
     expect(container).toMatchSnapshot();
+  });
+
+  test('should called request when clicking refresh button', async () => {
+    renderWithRedux(<ReportStatistics />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(getTaskCountV1Spy).toBeCalledTimes(1);
+    expect(getTaskStatusCountV1Spy).toBeCalledTimes(1);
+    expect(getTasksPercentCountedByInstanceTypeV1Spy).toBeCalledTimes(1);
+    expect(getTaskCreatedCountEachDayV1Spy).toBeCalledTimes(1);
+    expect(getTaskPassPercentV1Spy).toBeCalledTimes(1);
+    expect(getTaskDurationOfWaitingForAuditV1Spy).toBeCalledTimes(1);
+    expect(getTaskDurationOfWaitingForExecutionV1Spy).toBeCalledTimes(1);
+    expect(getLicenseUsageV1Spy).toBeCalledTimes(1);
+    expect(getInstancesTypePercentV1Spy).toBeCalledTimes(1);
+    expect(getTaskRejectedPercentGroupByCreatorV1Spy).toBeCalledTimes(1);
+    expect(getTaskRejectedPercentGroupByInstanceV1Spy).toBeCalledTimes(1);
+
+    fireEvent.click(screen.getByTestId('refreshReportStatistics'));
+    expect(scopeDispatch).toBeCalledTimes(1);
+    expect(scopeDispatch).toBeCalledWith({
+      payload: undefined,
+      type: 'reportStatistics/refreshReportStatistics',
+    });
   });
 });

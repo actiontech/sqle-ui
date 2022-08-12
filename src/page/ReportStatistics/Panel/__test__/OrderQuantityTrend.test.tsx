@@ -52,6 +52,7 @@ describe('test OrderQuantityTrend', () => {
     mockUseSelector({
       user: { theme: SupportTheme.LIGHT },
       locale: { language: SupportLanguage.zhCN },
+      reportStatistics: { refreshFlag: false },
     });
     useThemeMock.mockReturnValue({ common: { padding: 24 } });
     jest.useFakeTimers();

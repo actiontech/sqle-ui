@@ -3,8 +3,10 @@ import { useBoolean } from 'ahooks';
 import { Result } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import statistic from '../../../api/statistic';
 import { ResponseCode } from '../../../data/common';
+import { IReduxState } from '../../../store';
 import CommonPie from '../Charts/CommonPie';
 import reportStatisticsData from '../index.data';
 import PanelWrapper from './PanelWrapper';
@@ -23,6 +25,9 @@ const config: PieConfig = {
       fontSize: 14,
     },
   },
+  legend: {
+    offsetX: -30,
+  },
 };
 
 const { thirdLineSize } = reportStatisticsData;
@@ -36,7 +41,9 @@ const OrderQuantityWithDbType: React.FC = () => {
   const [loading, { setFalse: finishGetData, setTrue: startGetData }] =
     useBoolean(false);
   const [errorMessage, setErrorMessage] = useState('');
-
+  const refreshFlag = useSelector((state: IReduxState) => {
+    return state.reportStatistics.refreshFlag;
+  });
   useEffect(() => {
     const getData = () => {
       startGetData();
@@ -59,7 +66,7 @@ const OrderQuantityWithDbType: React.FC = () => {
     };
 
     getData();
-  }, [finishGetData, startGetData, t]);
+  }, [finishGetData, startGetData, t, refreshFlag]);
   return (
     <PanelWrapper
       title={t('reportStatistics.orderDbTypeScale.title')}

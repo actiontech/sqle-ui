@@ -3,7 +3,7 @@
 exports[`test OrderTotalNumbers should match snapshot 1`] = `
 <div>
   <div
-    class="ant-card ant-card-loading ant-card-bordered ant-card-hoverable ant-card-type-inner"
+    class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
     style="height: 100%;"
   >
     <div
@@ -23,111 +23,61 @@ exports[`test OrderTotalNumbers should match snapshot 1`] = `
       class="ant-card-body"
     >
       <div
-        class="ant-card-loading-content"
+        class="ant-space ant-space-horizontal ant-space-align-center statistics-value-style"
       >
         <div
-          class="ant-row"
-          style="margin-left: -4px; margin-right: -4px;"
+          class="ant-space-item"
+          style="margin-right: 8px;"
         >
           <div
-            class="ant-col ant-col-22"
-            style="padding-left: 4px; padding-right: 4px;"
+            class="ant-statistic"
           >
             <div
-              class="ant-card-loading-block"
-            />
+              class="ant-statistic-content"
+            >
+              <span
+                class="ant-statistic-content-value"
+              >
+                <span
+                  class="ant-statistic-content-value-int"
+                >
+                  
+                  0
+                </span>
+                
+              </span>
+            </div>
           </div>
         </div>
         <div
-          class="ant-row"
-          style="margin-left: -4px; margin-right: -4px;"
+          class="ant-space-item"
+          style="margin-right: 8px;"
         >
-          <div
-            class="ant-col ant-col-8"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-          <div
-            class="ant-col ant-col-15"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
+          <span>
+            /
+          </span>
         </div>
         <div
-          class="ant-row"
-          style="margin-left: -4px; margin-right: -4px;"
+          class="ant-space-item"
         >
           <div
-            class="ant-col ant-col-6"
-            style="padding-left: 4px; padding-right: 4px;"
+            class="ant-statistic"
           >
             <div
-              class="ant-card-loading-block"
-            />
-          </div>
-          <div
-            class="ant-col ant-col-18"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-        </div>
-        <div
-          class="ant-row"
-          style="margin-left: -4px; margin-right: -4px;"
-        >
-          <div
-            class="ant-col ant-col-13"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-          <div
-            class="ant-col ant-col-9"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-        </div>
-        <div
-          class="ant-row"
-          style="margin-left: -4px; margin-right: -4px;"
-        >
-          <div
-            class="ant-col ant-col-4"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-          <div
-            class="ant-col ant-col-3"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-          <div
-            class="ant-col ant-col-16"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
+              class="ant-statistic-content"
+            >
+              <span
+                class="ant-statistic-content-value"
+              >
+                <span
+                  class="ant-statistic-content-value-int"
+                >
+                  
+                  0
+                </span>
+                
+              </span>
+            </div>
           </div>
         </div>
       </div>

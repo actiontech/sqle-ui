@@ -28,7 +28,7 @@ export default {
     waitingForExecution: '待上线',
   },
   orderDbTypeScale: {
-    title: '按数据库类型的工单占比',
+    title: '按数据库类型的工单构成',
   },
   orderInstanceTypeScale: {
     title: '按数据库类型的数据源构成',

@@ -1,4 +1,4 @@
-import { PageHeader } from 'antd';
+import { Button, PageHeader } from 'antd';
 import { useTranslation } from 'react-i18next';
 import useResizeObserver from 'use-resize-observer';
 import { Responsive as ResponsiveReactGridLayout } from 'react-grid-layout';
@@ -20,15 +20,23 @@ import reportStatisticsData from './index.data';
 import { Theme } from '../../types/theme.type';
 import { useTheme } from '@material-ui/styles';
 import IconTipsLabel from '../../components/IconTipsLabel';
+import { SyncOutlined } from '@ant-design/icons';
 
 import './index.less';
 import 'react-grid-layout/css/styles.css';
+import { useDispatch } from 'react-redux';
+import { refreshReportStatistics } from '../../store/reportStatistics';
 
 const { initialLayouts, gridLayoutCols, rowHeight } = reportStatisticsData;
 const ReportStatistics: React.FC = () => {
   const { t } = useTranslation();
   const { ref, width = 0 } = useResizeObserver();
   const theme = useTheme<Theme>();
+  const dispatch = useDispatch();
+
+  const refreshPanelData = () => {
+    dispatch(refreshReportStatistics());
+  };
   return (
     <>
       <PageHeader
@@ -40,6 +48,14 @@ const ReportStatistics: React.FC = () => {
               iconStyle={{ fontSize: 14, marginLeft: 6 }}
             />
           </>
+        }
+        extra={
+          <Button
+            onClick={refreshPanelData}
+            data-testid="refreshReportStatistics"
+          >
+            <SyncOutlined />
+          </Button>
         }
         ghost={false}
       />

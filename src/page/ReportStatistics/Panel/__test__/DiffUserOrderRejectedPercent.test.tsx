@@ -1,5 +1,6 @@
 import { render, waitFor } from '@testing-library/react';
 import statistic from '../../../../api/statistic';
+import { mockUseSelector } from '../../../../testUtils/mockRedux';
 import {
   resolveErrorThreeSecond,
   resolveThreeSecond,
@@ -29,6 +30,9 @@ describe('test DiffUserOrderRejectedPercent', () => {
 
   beforeEach(() => {
     jest.useFakeTimers();
+    mockUseSelector({
+      reportStatistics: { refreshFlag: false },
+    });
   });
 
   afterEach(() => {

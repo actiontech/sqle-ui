@@ -44,6 +44,7 @@ describe('test InstanceProportionWithDbType', () => {
     mockUseSelector({
       user: { theme: SupportTheme.LIGHT },
       locale: { language: SupportLanguage.zhCN },
+      reportStatistics: { refreshFlag: false },
     });
     useThemeMock.mockReturnValue({ common: { padding: 24 } });
   });
@@ -59,6 +60,9 @@ describe('test InstanceProportionWithDbType', () => {
 
     const { container } = render(<InstanceProportionWithDbType />);
 
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });

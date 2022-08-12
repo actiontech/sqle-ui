@@ -2,8 +2,10 @@ import { useBoolean } from 'ahooks';
 import { Space, Typography } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import statistic from '../../../api/statistic';
 import { ResponseCode } from '../../../data/common';
+import { IReduxState } from '../../../store';
 import { floatRound } from '../../../utils/Math';
 import PanelWrapper from './PanelWrapper';
 
@@ -16,7 +18,9 @@ const OrderPassPercent: React.FC = () => {
 
   const [auditPass, setAuditPass] = useState<string>('');
   const [executeSuccess, setExecuteSuccess] = useState<string>('');
-
+  const refreshFlag = useSelector((state: IReduxState) => {
+    return state.reportStatistics.refreshFlag;
+  });
   useEffect(() => {
     const getData = () => {
       startGetData();
@@ -43,7 +47,7 @@ const OrderPassPercent: React.FC = () => {
         });
     };
     getData();
-  }, [finishGetData, startGetData, t]);
+  }, [finishGetData, startGetData, t, refreshFlag]);
 
   return (
     <PanelWrapper

@@ -3,10 +3,12 @@ import { useBoolean } from 'ahooks';
 import { Result } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { ITaskStatusCountV1 } from '../../../api/common';
 import statistic from '../../../api/statistic';
 import { ResponseCode } from '../../../data/common';
 import i18n from '../../../locale';
+import { IReduxState } from '../../../store';
 import CommonPie from '../Charts/CommonPie';
 import reportStatisticsData from '../index.data';
 import PanelWrapper from './PanelWrapper';
@@ -55,6 +57,9 @@ const OrderStatus: React.FC = () => {
   const [loading, { setFalse: finishGetData, setTrue: startGetData }] =
     useBoolean(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const refreshFlag = useSelector((state: IReduxState) => {
+    return state.reportStatistics.refreshFlag;
+  });
 
   useEffect(() => {
     const formatData = (originData?: ITaskStatusCountV1): PieConfig['data'] => {
@@ -90,7 +95,7 @@ const OrderStatus: React.FC = () => {
     };
 
     getData();
-  }, [finishGetData, startGetData, t]);
+  }, [finishGetData, startGetData, t, refreshFlag]);
 
   return (
     <PanelWrapper

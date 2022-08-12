@@ -45,6 +45,7 @@ describe('test OrderQuantityWithDbType', () => {
     mockUseSelector({
       user: { theme: SupportTheme.LIGHT },
       locale: { language: SupportLanguage.zhCN },
+      reportStatistics: { refreshFlag: false },
     });
     useThemeMock.mockReturnValue({ common: { padding: 24 } });
   });
@@ -58,6 +59,9 @@ describe('test OrderQuantityWithDbType', () => {
     mockGetTasksPercentCountedByInstanceTypeV1();
     const { container } = render(<OrderQuantityWithDbType />);
 
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });

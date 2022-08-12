@@ -45,6 +45,7 @@ describe('test LicenseUsage', () => {
     mockUseSelector({
       user: { theme: SupportTheme.LIGHT },
       locale: { language: SupportLanguage.zhCN },
+      reportStatistics: { refreshFlag: false },
     });
     useThemeMock.mockReturnValue({ common: { padding: 24 } });
   });

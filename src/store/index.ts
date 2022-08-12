@@ -7,6 +7,7 @@ import ruleTemplate from './ruleTemplate';
 import nav from './nav';
 import system from './system';
 import auditPlan from './auditPlan';
+import reportStatistics from './reportStatistics';
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     nav,
     system,
     auditPlan,
+    reportStatistics,
   },
 });
 

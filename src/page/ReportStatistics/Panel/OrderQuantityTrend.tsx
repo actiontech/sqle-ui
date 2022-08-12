@@ -5,9 +5,11 @@ import { RangePickerProps } from 'antd/lib/date-picker/generatePicker';
 import moment, { Moment } from 'moment';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import statistic from '../../../api/statistic';
 import { IGetTaskCreatedCountEachDayV1Params } from '../../../api/statistic/index.d';
 import { ResponseCode } from '../../../data/common';
+import { IReduxState } from '../../../store';
 import CommonLine from '../Charts/CommonLine';
 import reportStatisticsData from '../index.data';
 import PanelWrapper from './PanelWrapper';
@@ -23,7 +25,7 @@ const config: LineConfig = {
     tickCount: 7,
   },
   slider: {
-    start: 0.5,
+    start: 0,
     end: 1,
   },
 };
@@ -35,10 +37,13 @@ const OrderQuantityTrend: React.FC = () => {
   ];
   const { t } = useTranslation();
   const [data, setData] = useState<LineConfig['data']>([]);
+
   const [loading, { setFalse: finishGetData, setTrue: startGetData }] =
     useBoolean(false);
   const [errorMessage, setErrorMessage] = useState('');
-
+  const refreshFlag = useSelector((state: IReduxState) => {
+    return state.reportStatistics.refreshFlag;
+  });
   const disabledDate = (current: moment.Moment) => {
     return (
       current &&
@@ -88,7 +93,7 @@ const OrderQuantityTrend: React.FC = () => {
     };
     getOrderQuantityTrendValue(param);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [getOrderQuantityTrendValue]);
+  }, [getOrderQuantityTrendValue, refreshFlag]);
 
   return (
     <PanelWrapper

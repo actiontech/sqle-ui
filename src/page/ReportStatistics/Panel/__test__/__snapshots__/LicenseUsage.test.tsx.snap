@@ -37,7 +37,7 @@ exports[`test LicenseUsage should match snapshot 1`] = `
           />
           <div
             class="g2-html-annotation"
-            style="pointer-events: auto; position: absolute; left: 200px; top: 92.16923076923077px; z-index: 7;"
+            style="pointer-events: auto; position: absolute; left: 200px; top: 92px; z-index: 7;"
           >
             <div
               style="transform:translate(-50%,-46%)"
@@ -46,9 +46,9 @@ exports[`test LicenseUsage should match snapshot 1`] = `
         
               <img
                 alt=""
-                height="25.345292307692304"
+                height="25.392"
                 src="logo.png"
-                width="25.345292307692304"
+                width="25.392"
               />
               
       

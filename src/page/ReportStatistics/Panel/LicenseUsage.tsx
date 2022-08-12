@@ -12,12 +12,16 @@ import { ResponseCode } from '../../../data/common';
 import { floatRound } from '../../../utils/Math';
 import { Datum } from '@antv/g2plot';
 import { CommonChartsColors } from '../Charts';
+import { useSelector } from 'react-redux';
+import { IReduxState } from '../../../store';
 
 const config: RadialBarConfig = {
   data: [],
   xField: 'type',
   yField: 'percent',
   colorField: 'type',
+  xAxis: false,
+  yAxis: false,
 };
 const { thirdLineSize } = reportStatisticsData;
 
@@ -35,6 +39,9 @@ const LicenseUsage: React.FC = () => {
   const [loading, { setFalse: finishGetData, setTrue: startGetData }] =
     useBoolean(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const refreshFlag = useSelector((state: IReduxState) => {
+    return state.reportStatistics.refreshFlag;
+  });
 
   const data: RadialBarConfig['data'] = useMemo(() => {
     const genRadialBarData = (item: ILicenseUsageItem) => {
@@ -58,20 +65,33 @@ const LicenseUsage: React.FC = () => {
   // 为什么要添加 any
   // https://github.com/ant-design/ant-design-charts/pull/1465
   // 但是目前这个地方的 tooltip 类型仍然没有修复..导致使用 formatter 会引发类型错误.
-  const tooltip: RadialBarConfig['tooltip'] & any = useMemo(() => {
+  const tooltip: RadialBarConfig['tooltip'] & {
+    formatter?: (datum: Datum) => {
+      name: string;
+      value: string | number;
+      title: string;
+    };
+  } = useMemo(() => {
     return {
       formatter: (datum: Datum) => {
         const type = datum[config.xField!];
-        const item =
-          instancesUsage.find((v) => v.resource_type === type) ?? userUsage;
+        let item = instancesUsage.find((v) => v.resource_type === type);
+        let tooltipName = t('common.alreadyUsed');
+        if (!item) {
+          item = userUsage;
+          tooltipName = t('common.userNumber');
+        }
+
         if (!item.is_limited || !item.limit) {
           return {
-            name: t('common.alreadyUsed'),
-            value: item.used,
+            title: item.resource_type_desc ?? '',
+            name: tooltipName,
+            value: item.used ?? 0,
           };
         }
         return {
-          name: t('common.alreadyUsed'),
+          title: item.resource_type_desc ?? '',
+          name: tooltipName,
           value: `${item.used} / ${item.limit}`,
         };
       },
@@ -111,7 +131,7 @@ const LicenseUsage: React.FC = () => {
     };
 
     getData();
-  }, [finishGetData, startGetData, t]);
+  }, [finishGetData, startGetData, t, refreshFlag]);
   return (
     <PanelWrapper
       title={t('reportStatistics.licenseUsage.title')}
