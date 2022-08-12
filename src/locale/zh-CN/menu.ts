@@ -21,4 +21,5 @@ export default {
   sqlQuery: 'SQL查询',
   orderSqlAnalyze: '工单SQL分析',
   auditPlanSqlAnalyze: '审核计划SQL分析',
+  reportStatistics: '报表统计',
 };

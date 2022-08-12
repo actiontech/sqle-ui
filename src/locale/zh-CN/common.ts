@@ -24,6 +24,7 @@ export default {
   operateSuccess: '操作成功',
   operate: '操作',
   open: '开启',
+  alreadyUsed: '已使用',
 
   prevStep: '上一步',
   nextStep: '下一步',

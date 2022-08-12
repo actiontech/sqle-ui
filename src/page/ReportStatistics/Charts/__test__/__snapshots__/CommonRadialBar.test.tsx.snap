@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test CommonRadialBar should match snapshot 1`] = `
+<div>
+  <div
+    data-chart-source-type="G2Plot"
+    size-sensor-id="1"
+    style="height: inherit;"
+  >
+    <div
+      style="position:relative;"
+    >
+      <canvas
+        height="328"
+        style="width: 400px; height: 328px; display: inline-block; vertical-align: middle;"
+        width="400"
+      />
+      <div
+        class="g2-html-annotation"
+        style="pointer-events: auto; position: absolute; left: 200px; top: 164px; z-index: 7;"
+      >
+        <div
+          style="transform:translate(-50%,-46%)"
+        >
+          
+        
+          <img
+            alt=""
+            height="45.263999999999996"
+            src="logo.png"
+            width="45.263999999999996"
+          />
+          
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

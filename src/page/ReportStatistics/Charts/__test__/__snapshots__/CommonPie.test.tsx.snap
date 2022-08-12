@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test CommonLine should match snapshot 1`] = `
+<div>
+  <div
+    data-chart-source-type="G2Plot"
+    size-sensor-id="1"
+    style="height: inherit;"
+  >
+    <div
+      style="position:relative;"
+    >
+      <canvas
+        height="328"
+        style="width: 400px; height: 328px; display: inline-block; vertical-align: middle;"
+        width="400"
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -24,6 +24,7 @@ export default {
   operate: 'Operate',
   prevStep: 'Prev',
   nextStep: 'Next',
+  alreadyUsed: 'already used',
 
   expansion: 'Expand',
   collapse: 'Collapse',

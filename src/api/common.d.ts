@@ -606,6 +606,14 @@ export interface IGetInstancesResV1 {
   total_nums?: number;
 }
 
+export interface IGetInstancesTypePercentResV1 {
+  code?: number;
+
+  data?: IInstancesTypePercentV1;
+
+  message?: string;
+}
+
 export interface IGetLDAPConfigurationResV1 {
   code?: number;
 
@@ -620,6 +628,14 @@ export interface IGetLicenseResV1 {
   content?: string;
 
   license?: ILicenseItem[];
+
+  message?: string;
+}
+
+export interface IGetLicenseUsageResV1 {
+  code?: number;
+
+  data?: ILicenseUsageV1;
 
   message?: string;
 }
@@ -832,6 +848,78 @@ export interface IGetTaskAnalysisDataResV1 {
   message?: string;
 }
 
+export interface IGetTaskCountsResV1 {
+  code?: number;
+
+  data?: ITaskCountsV1;
+
+  message?: string;
+}
+
+export interface IGetTaskCreatedCountsEachDayResV1 {
+  code?: number;
+
+  data?: ITaskCreatedCountsEachDayV1;
+
+  message?: string;
+}
+
+export interface IGetTaskDurationOfWaitingForAuditResV1 {
+  code?: number;
+
+  data?: ITaskStageDuration;
+
+  message?: string;
+}
+
+export interface IGetTaskDurationOfWaitingForExecutionResV1 {
+  code?: number;
+
+  data?: ITaskStageDuration;
+
+  message?: string;
+}
+
+export interface IGetTaskPassPercentResV1 {
+  code?: number;
+
+  data?: ITaskPassPercentV1;
+
+  message?: string;
+}
+
+export interface IGetTaskRejectedPercentGroupByCreatorResV1 {
+  code?: number;
+
+  data?: ITaskRejectedPercentGroupByCreator[];
+
+  message?: string;
+}
+
+export interface IGetTaskRejectedPercentGroupByInstanceResV1 {
+  code?: number;
+
+  data?: ITaskRejectedPercentGroupByInstance[];
+
+  message?: string;
+}
+
+export interface IGetTaskStatusCountResV1 {
+  code?: number;
+
+  data?: ITaskStatusCountV1;
+
+  message?: string;
+}
+
+export interface IGetTasksPercentCountedByInstanceTypeResV1 {
+  code?: number;
+
+  data?: ITasksPercentCountedByInstanceTypeV1;
+
+  message?: string;
+}
+
 export interface IGetUserDetailResV1 {
   code?: number;
 
@@ -1012,6 +1100,20 @@ export interface IInstanceTipResV1 {
   instance_type?: string;
 }
 
+export interface IInstanceTypePercent {
+  count?: number;
+
+  percent?: number;
+
+  type?: string;
+}
+
+export interface IInstancesTypePercentV1 {
+  instance_total_num?: number;
+
+  instance_type_percents?: IInstanceTypePercent[];
+}
+
 export interface ILDAPConfigurationReqV1 {
   enable_ldap?: boolean;
 
@@ -1056,6 +1158,24 @@ export interface ILicenseItem {
   limit?: string;
 
   name?: string;
+}
+
+export interface ILicenseUsageItem {
+  is_limited?: boolean;
+
+  limit?: number;
+
+  resource_type?: string;
+
+  resource_type_desc?: string;
+
+  used?: number;
+}
+
+export interface ILicenseUsageV1 {
+  instances_usage?: ILicenseUsageItem[];
+
+  users_usage?: ILicenseUsageItem;
 }
 
 export interface IListTableBySchemaResV1 {
@@ -1324,6 +1444,78 @@ export interface ITableMetaItemHeadResV1 {
   desc?: string;
 
   field_name?: string;
+}
+
+export interface ITaskCountsV1 {
+  today_count?: number;
+
+  total?: number;
+}
+
+export interface ITaskCreatedCountsEachDayItem {
+  date?: string;
+
+  value?: number;
+}
+
+export interface ITaskCreatedCountsEachDayV1 {
+  samples?: ITaskCreatedCountsEachDayItem[];
+}
+
+export interface ITaskPassPercentV1 {
+  audit_pass_percent?: number;
+
+  execution_success_percent?: number;
+}
+
+export interface ITaskRejectedPercentGroupByCreator {
+  creator?: string;
+
+  rejected_percent?: number;
+
+  task_total_num?: number;
+}
+
+export interface ITaskRejectedPercentGroupByInstance {
+  instance_name?: string;
+
+  rejected_percent?: number;
+
+  task_total_num?: number;
+}
+
+export interface ITaskStageDuration {
+  minutes?: number;
+}
+
+export interface ITaskStatusCountV1 {
+  closed_count?: number;
+
+  executing_count?: number;
+
+  executing_failed_count?: number;
+
+  execution_success_count?: number;
+
+  rejected_count?: number;
+
+  waiting_for_audit_count?: number;
+
+  waiting_for_execution_count?: number;
+}
+
+export interface ITasksPercentCountedByInstanceType {
+  count?: number;
+
+  instance_type?: string;
+
+  percent?: number;
+}
+
+export interface ITasksPercentCountedByInstanceTypeV1 {
+  task_percents?: ITasksPercentCountedByInstanceType[];
+
+  task_total_num?: number;
 }
 
 export interface ITestAuditPlanNotifyConfigResDataV1 {
