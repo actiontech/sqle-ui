@@ -55,7 +55,7 @@ describe('test InstanceProportionWithDbType', () => {
     jest.clearAllTimers();
   });
 
-  test('should match snapshot', async () => {
+  test.skip('should match snapshot', async () => {
     mockGetInstancesTypePercentV1();
 
     const { container } = render(<InstanceProportionWithDbType />);

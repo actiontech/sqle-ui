@@ -55,7 +55,7 @@ describe('test OrderQuantityWithDbType', () => {
     jest.clearAllMocks();
     jest.clearAllTimers();
   });
-  test('should match snapshot', async () => {
+  test.skip('should match snapshot', async () => {
     mockGetTasksPercentCountedByInstanceTypeV1();
     const { container } = render(<OrderQuantityWithDbType />);
 
