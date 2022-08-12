@@ -17,6 +17,7 @@ import auditPlan from './auditPlan';
 import userGroup from './userGroup';
 import sqlQuery from './sqlQuery';
 import sqlAnalyze from './sqlAnalyze';
+import reportStatistics from './reportStatistics';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -40,5 +41,6 @@ export default {
     userGroup,
     sqlQuery,
     sqlAnalyze,
+    reportStatistics,
   },
 };

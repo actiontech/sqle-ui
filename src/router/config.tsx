@@ -15,6 +15,7 @@ import {
   NodeIndexOutlined,
   CiCircleOutlined,
   SearchOutlined,
+  BarChartOutlined,
 } from '@ant-design/icons';
 import { SystemRole } from '../data/common';
 
@@ -111,6 +112,13 @@ const AuditPlanSqlAnalyze = React.lazy(
     )
 );
 
+const ReportStatistics = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "ReportStatistics" */ '../page/ReportStatistics'
+    )
+);
+
 export const unAuthRouter: Array<RouteProps & { key: string }> = [
   {
     path: '/login',
@@ -151,6 +159,16 @@ export const routerConfig: RouterItem[] = [
     icon: <SearchOutlined />,
     key: 'SqlQuery',
   },
+  /* IFTRUE_isEE */
+  {
+    path: '/reportStatistics',
+    exact: true,
+    label: 'menu.reportStatistics',
+    component: ReportStatistics,
+    icon: <BarChartOutlined />,
+    key: 'reportStatistics',
+  },
+  /* FITRUE_isEE */
   {
     path: '/account',
     exact: true,

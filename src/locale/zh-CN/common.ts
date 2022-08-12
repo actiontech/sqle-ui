@@ -24,6 +24,8 @@ export default {
   operateSuccess: '操作成功',
   operate: '操作',
   open: '开启',
+  alreadyUsed: '已使用',
+  userNumber: '用户数量',
 
   prevStep: '上一步',
   nextStep: '下一步',

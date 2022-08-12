@@ -24,7 +24,8 @@ export default {
   operate: 'Operate',
   prevStep: 'Prev',
   nextStep: 'Next',
-
+  alreadyUsed: 'Already used',
+  userNumber: 'User number',
   expansion: 'Expand',
   collapse: 'Collapse',
 

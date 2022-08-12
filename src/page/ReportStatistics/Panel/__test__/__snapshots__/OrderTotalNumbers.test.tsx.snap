@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test OrderTotalNumbers should match snapshot 1`] = `
+<div>
+  <div
+    class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+    style="height: 100%;"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          reportStatistics.orderTotalNumbers.title
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="ant-space ant-space-horizontal ant-space-align-center statistics-value-style"
+      >
+        <div
+          class="ant-space-item"
+          style="margin-right: 8px;"
+        >
+          <div
+            class="ant-statistic"
+          >
+            <div
+              class="ant-statistic-content"
+            >
+              <span
+                class="ant-statistic-content-value"
+              >
+                <span
+                  class="ant-statistic-content-value-int"
+                >
+                  
+                  0
+                </span>
+                
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-right: 8px;"
+        >
+          <span>
+            /
+          </span>
+        </div>
+        <div
+          class="ant-space-item"
+        >
+          <div
+            class="ant-statistic"
+          >
+            <div
+              class="ant-statistic-content"
+            >
+              <span
+                class="ant-statistic-content-value"
+              >
+                <span
+                  class="ant-statistic-content-value-int"
+                >
+                  
+                  0
+                </span>
+                
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test OrderTotalNumbers should match snapshot 2`] = `
+<div>
+  <div
+    class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+    style="height: 100%;"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          reportStatistics.orderTotalNumbers.title
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="ant-space ant-space-horizontal ant-space-align-center statistics-value-style"
+      >
+        <div
+          class="ant-space-item"
+          style="margin-right: 8px;"
+        >
+          <div
+            class="ant-statistic"
+          >
+            <div
+              class="ant-statistic-content"
+            >
+              <span
+                class="ant-statistic-content-value"
+              >
+                <span
+                  class="ant-statistic-content-value-int"
+                >
+                  
+                  100
+                </span>
+                
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-right: 8px;"
+        >
+          <span>
+            /
+          </span>
+        </div>
+        <div
+          class="ant-space-item"
+        >
+          <div
+            class="ant-statistic"
+          >
+            <div
+              class="ant-statistic-content"
+            >
+              <span
+                class="ant-statistic-content-value"
+              >
+                <span
+                  class="ant-statistic-content-value-int"
+                >
+                  
+                  10
+                </span>
+                
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test OrderTotalNumbers should match snapshot when request goes wrong 1`] = `
+<div>
+  <div
+    class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+    style="height: 100%;"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          reportStatistics.orderTotalNumbers.title
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <span
+        class="ant-typography ant-typography-danger"
+      >
+        error
+      </span>
+    </div>
+  </div>
+</div>
+`;

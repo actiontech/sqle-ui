@@ -9,3 +9,10 @@ export const floatRound = (num: number, bit = 2): number => {
 export const floatToPercent = (num: number, bit = 2): number => {
   return floatRound(num * 100, bit);
 };
+
+export const minuteToHourMinute = (minutes: number): string => {
+  if (minutes < 60) {
+    return minutes + 'min';
+  }
+  return Math.floor(minutes / 60) + 'h' + (minutes % 60) + 'min';
+};

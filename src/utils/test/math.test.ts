@@ -1,4 +1,4 @@
-import { floatRound, floatToPercent } from '../Math';
+import { floatRound, floatToPercent, minuteToHourMinute } from '../Math';
 
 describe('Math', () => {
   test('should rounding float num', () => {
@@ -17,5 +17,14 @@ describe('Math', () => {
     expect(floatToPercent(0.1667, 1)).toEqual(16.7);
     expect(floatToPercent(0.1667, 0)).toEqual(17);
     expect(floatToPercent(0.1667, 10)).toEqual(16.67);
+  });
+
+  test('should converted minutes to hours and minutes', () => {
+    expect(minuteToHourMinute(0)).toEqual('0min');
+    expect(minuteToHourMinute(30)).toEqual('30min');
+    expect(minuteToHourMinute(30.5)).toEqual('30.5min');
+    expect(minuteToHourMinute(60)).toEqual('1h0min');
+    expect(minuteToHourMinute(65)).toEqual('1h5min');
+    expect(minuteToHourMinute(120)).toEqual('2h0min');
   });
 });
