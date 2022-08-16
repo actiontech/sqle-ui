@@ -1,18 +1,19 @@
 import { LineConfig } from '@ant-design/plots';
-import { useBoolean } from 'ahooks';
 import { DatePicker, Result } from 'antd';
 import { RangePickerProps } from 'antd/lib/date-picker/generatePicker';
+import { AxiosResponse } from 'axios';
 import moment, { Moment } from 'moment';
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import statistic from '../../../api/statistic';
-import { IGetTaskCreatedCountEachDayV1Params } from '../../../api/statistic/index.d';
-import { ResponseCode } from '../../../data/common';
-import { IReduxState } from '../../../store';
+import {
+  IGetWorkflowCreatedCountEachDayV1Params,
+  IGetWorkflowCreatedCountEachDayV1Return,
+} from '../../../api/statistic/index.d';
 import CommonLine from '../Charts/CommonLine';
 import reportStatisticsData from '../index.data';
 import PanelWrapper from './PanelWrapper';
+import usePanelCommonRequest from './usePanelCommonRequest';
 
 const { secondLineSize } = reportStatisticsData;
 const dateFormat = 'YYYY-MM-DD';
@@ -37,13 +38,29 @@ const OrderQuantityTrend: React.FC = () => {
   ];
   const { t } = useTranslation();
   const [data, setData] = useState<LineConfig['data']>([]);
+  const [range, setRange] = useState<[Moment | null, Moment | null] | null>();
 
-  const [loading, { setFalse: finishGetData, setTrue: startGetData }] =
-    useBoolean(false);
-  const [errorMessage, setErrorMessage] = useState('');
-  const refreshFlag = useSelector((state: IReduxState) => {
-    return state.reportStatistics.refreshFlag;
-  });
+  const onSuccess = (
+    res: AxiosResponse<IGetWorkflowCreatedCountEachDayV1Return>
+  ) => {
+    setData(res.data.data?.samples ?? []);
+  };
+
+  const param: IGetWorkflowCreatedCountEachDayV1Params = {
+    filter_date_from:
+      range?.[0]?.format(dateFormat) ??
+      defaultRangeValue[0]!.format(dateFormat),
+    filter_date_to:
+      range?.[1]?.format(dateFormat) ??
+      defaultRangeValue[1]!.format(dateFormat),
+  };
+
+  const { loading, errorMessage, refreshAction } =
+    usePanelCommonRequest<IGetWorkflowCreatedCountEachDayV1Return>(
+      () => statistic.getWorkflowCreatedCountEachDayV1(param),
+      { onSuccess }
+    );
+
   const disabledDate = (current: moment.Moment) => {
     return (
       current &&
@@ -52,48 +69,12 @@ const OrderQuantityTrend: React.FC = () => {
     );
   };
 
-  const getOrderQuantityTrendValue = useCallback(
-    (param: IGetTaskCreatedCountEachDayV1Params) => {
-      startGetData();
-
-      statistic
-        .getTaskCreatedCountEachDayV1(param)
-        .then((res) => {
-          if (res.data.code !== ResponseCode.SUCCESS) {
-            setErrorMessage(res.data.message ?? t('common.unknownError'));
-          } else {
-            setErrorMessage('');
-            setData(res.data.data?.samples ?? []);
-          }
-        })
-        .catch((error) => {
-          setErrorMessage(error?.toString() ?? t('common.unknownError'));
-        })
-        .finally(() => {
-          finishGetData();
-        });
-    },
-    [finishGetData, startGetData, t]
-  );
-
   const rangePickerChangeHandle: RangePickerProps<Moment>['onChange'] = (
     value
   ) => {
-    const param: IGetTaskCreatedCountEachDayV1Params = {
-      filter_date_from: value?.[0]?.format(dateFormat) ?? '',
-      filter_date_to: value?.[1]?.format(dateFormat) ?? '',
-    };
-    getOrderQuantityTrendValue(param);
+    setRange(value);
+    refreshAction();
   };
-
-  useEffect(() => {
-    const param: IGetTaskCreatedCountEachDayV1Params = {
-      filter_date_from: defaultRangeValue?.[0]?.format(dateFormat) ?? '',
-      filter_date_to: defaultRangeValue?.[1]?.format(dateFormat) ?? '',
-    };
-    getOrderQuantityTrendValue(param);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [getOrderQuantityTrendValue, refreshFlag]);
 
   return (
     <PanelWrapper
@@ -106,6 +87,7 @@ const OrderQuantityTrend: React.FC = () => {
           defaultValue={defaultRangeValue}
           allowClear={false}
           data-testid="filterRangePicker"
+          value={range}
         />
       }
       loading={loading}

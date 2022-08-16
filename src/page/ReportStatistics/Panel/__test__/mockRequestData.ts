@@ -1,30 +1,30 @@
 import {
   IInstancesTypePercentV1,
   ILicenseUsageV1,
-  ITaskCountsV1,
-  ITaskCreatedCountsEachDayV1,
-  ITaskPassPercentV1,
-  ITaskRejectedPercentGroupByCreator,
-  ITaskRejectedPercentGroupByInstance,
-  ITasksPercentCountedByInstanceTypeV1,
-  ITaskStageDuration,
-  ITaskStatusCountV1,
+  IWorkflowCountsV1,
+  IWorkflowStatusCountV1,
+  IWorkflowRejectedPercentGroupByCreator,
+  IWorkflowRejectedPercentGroupByInstance,
+  IWorkflowPercentCountedByInstanceTypeV1,
+  IWorkflowCreatedCountsEachDayV1,
+  IWorkflowPassPercentV1,
+  IWorkflowStageDuration,
 } from '../../../../api/common';
 
-const DiffInstanceOrderRejectedPercentData: ITaskRejectedPercentGroupByInstance[] =
+const DiffInstanceOrderRejectedPercentData: IWorkflowRejectedPercentGroupByInstance[] =
   Array.from({ length: 10 }, (_, i) => {
     return {
       instance_name: `instance${i}`,
-      task_total_num: 22,
+      workflow_total_num: 22,
       rejected_percent: 12.66666,
     };
   });
 
-const DiffUserOrderRejectedPercentData: ITaskRejectedPercentGroupByCreator[] =
+const DiffUserOrderRejectedPercentData: IWorkflowRejectedPercentGroupByCreator[] =
   Array.from({ length: 10 }, (_, i) => {
     return {
       creator: `user${i}`,
-      task_total_num: 22,
+      workflow_total_num: 22,
       rejected_percent: 12.34,
     };
   });
@@ -92,20 +92,20 @@ const LicenseUsageData: ILicenseUsageV1 = {
     used: 20,
   },
 };
-const OrderAverageExecuteTimeData: ITaskStageDuration = {
+const OrderAverageExecuteTimeData: IWorkflowStageDuration = {
   minutes: 114,
 };
 
-const OrderAverageReviewTimeData: ITaskStageDuration = {
+const OrderAverageReviewTimeData: IWorkflowStageDuration = {
   minutes: 114,
 };
 
-const OrderPassPercentData: ITaskPassPercentV1 = {
+const OrderPassPercentData: IWorkflowPassPercentV1 = {
   audit_pass_percent: 22.3,
   execution_success_percent: 33.2,
 };
 
-const OrderQuantityTrendData: ITaskCreatedCountsEachDayV1 = {
+const OrderQuantityTrendData: IWorkflowCreatedCountsEachDayV1 = {
   samples: Array.from({ length: 30 }, (_, i) => {
     const cur = i + 1;
     return {
@@ -115,8 +115,8 @@ const OrderQuantityTrendData: ITaskCreatedCountsEachDayV1 = {
   }),
 };
 
-const OrderQuantityWithDbTypeData: ITasksPercentCountedByInstanceTypeV1 = {
-  task_percents: [
+const OrderQuantityWithDbTypeData: IWorkflowPercentCountedByInstanceTypeV1 = {
+  workflow_percents: [
     {
       instance_type: 'Mysql',
       count: 27,
@@ -138,10 +138,10 @@ const OrderQuantityWithDbTypeData: ITasksPercentCountedByInstanceTypeV1 = {
       count: 5,
     },
   ],
-  task_total_num: 70,
+  workflow_total_num: 70,
 };
 
-const OrderStatusData: ITaskStatusCountV1 = {
+const OrderStatusData: IWorkflowStatusCountV1 = {
   closed_count: 12,
 
   executing_count: 32,
@@ -155,7 +155,10 @@ const OrderStatusData: ITaskStatusCountV1 = {
   waiting_for_execution_count: 12,
 };
 
-const OrderTotalNumbersData: ITaskCountsV1 = { total: 100, today_count: 10 };
+const OrderTotalNumbersData: IWorkflowCountsV1 = {
+  total: 100,
+  today_count: 10,
+};
 
 const mockRequestData = {
   DiffInstanceOrderRejectedPercentData,

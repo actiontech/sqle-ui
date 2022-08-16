@@ -159,7 +159,6 @@ export const routerConfig: RouterItem[] = [
     icon: <SearchOutlined />,
     key: 'SqlQuery',
   },
-  /* IFTRUE_isEE */
   {
     path: '/reportStatistics',
     exact: true,
@@ -168,7 +167,6 @@ export const routerConfig: RouterItem[] = [
     icon: <BarChartOutlined />,
     key: 'reportStatistics',
   },
-  /* FITRUE_isEE */
   {
     path: '/account',
     exact: true,

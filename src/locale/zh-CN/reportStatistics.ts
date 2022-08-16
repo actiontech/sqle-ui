@@ -1,5 +1,7 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
+  ceTips:
+    '报表统计为企业版功能。如果您要想使用这些功能，您可以按照以下链接中的商业支持里的联系方式进行咨询。',
   title: '报表统计',
   titleTips: '当前页面统计信息不包含已被回收的数据',
   orderTotalNumbers: {

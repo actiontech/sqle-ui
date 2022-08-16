@@ -848,78 +848,6 @@ export interface IGetTaskAnalysisDataResV1 {
   message?: string;
 }
 
-export interface IGetTaskCountsResV1 {
-  code?: number;
-
-  data?: ITaskCountsV1;
-
-  message?: string;
-}
-
-export interface IGetTaskCreatedCountsEachDayResV1 {
-  code?: number;
-
-  data?: ITaskCreatedCountsEachDayV1;
-
-  message?: string;
-}
-
-export interface IGetTaskDurationOfWaitingForAuditResV1 {
-  code?: number;
-
-  data?: ITaskStageDuration;
-
-  message?: string;
-}
-
-export interface IGetTaskDurationOfWaitingForExecutionResV1 {
-  code?: number;
-
-  data?: ITaskStageDuration;
-
-  message?: string;
-}
-
-export interface IGetTaskPassPercentResV1 {
-  code?: number;
-
-  data?: ITaskPassPercentV1;
-
-  message?: string;
-}
-
-export interface IGetTaskRejectedPercentGroupByCreatorResV1 {
-  code?: number;
-
-  data?: ITaskRejectedPercentGroupByCreator[];
-
-  message?: string;
-}
-
-export interface IGetTaskRejectedPercentGroupByInstanceResV1 {
-  code?: number;
-
-  data?: ITaskRejectedPercentGroupByInstance[];
-
-  message?: string;
-}
-
-export interface IGetTaskStatusCountResV1 {
-  code?: number;
-
-  data?: ITaskStatusCountV1;
-
-  message?: string;
-}
-
-export interface IGetTasksPercentCountedByInstanceTypeResV1 {
-  code?: number;
-
-  data?: ITasksPercentCountedByInstanceTypeV1;
-
-  message?: string;
-}
-
 export interface IGetUserDetailResV1 {
   code?: number;
 
@@ -980,10 +908,82 @@ export interface IGetWeChatConfigurationResV1 {
   message?: string;
 }
 
+export interface IGetWorkflowCountsResV1 {
+  code?: number;
+
+  data?: IWorkflowCountsV1;
+
+  message?: string;
+}
+
+export interface IGetWorkflowCreatedCountsEachDayResV1 {
+  code?: number;
+
+  data?: IWorkflowCreatedCountsEachDayV1;
+
+  message?: string;
+}
+
+export interface IGetWorkflowDurationOfWaitingForAuditResV1 {
+  code?: number;
+
+  data?: IWorkflowStageDuration;
+
+  message?: string;
+}
+
+export interface IGetWorkflowDurationOfWaitingForExecutionResV1 {
+  code?: number;
+
+  data?: IWorkflowStageDuration;
+
+  message?: string;
+}
+
+export interface IGetWorkflowPassPercentResV1 {
+  code?: number;
+
+  data?: IWorkflowPassPercentV1;
+
+  message?: string;
+}
+
+export interface IGetWorkflowPercentCountedByInstanceTypeResV1 {
+  code?: number;
+
+  data?: IWorkflowPercentCountedByInstanceTypeV1;
+
+  message?: string;
+}
+
+export interface IGetWorkflowRejectedPercentGroupByCreatorResV1 {
+  code?: number;
+
+  data?: IWorkflowRejectedPercentGroupByCreator[];
+
+  message?: string;
+}
+
+export interface IGetWorkflowRejectedPercentGroupByInstanceResV1 {
+  code?: number;
+
+  data?: IWorkflowRejectedPercentGroupByInstance[];
+
+  message?: string;
+}
+
 export interface IGetWorkflowResV1 {
   code?: number;
 
   data?: IWorkflowResV1;
+
+  message?: string;
+}
+
+export interface IGetWorkflowStatusCountResV1 {
+  code?: number;
+
+  data?: IWorkflowStatusCountV1;
 
   message?: string;
 }
@@ -1446,78 +1446,6 @@ export interface ITableMetaItemHeadResV1 {
   field_name?: string;
 }
 
-export interface ITaskCountsV1 {
-  today_count?: number;
-
-  total?: number;
-}
-
-export interface ITaskCreatedCountsEachDayItem {
-  date?: string;
-
-  value?: number;
-}
-
-export interface ITaskCreatedCountsEachDayV1 {
-  samples?: ITaskCreatedCountsEachDayItem[];
-}
-
-export interface ITaskPassPercentV1 {
-  audit_pass_percent?: number;
-
-  execution_success_percent?: number;
-}
-
-export interface ITaskRejectedPercentGroupByCreator {
-  creator?: string;
-
-  rejected_percent?: number;
-
-  task_total_num?: number;
-}
-
-export interface ITaskRejectedPercentGroupByInstance {
-  instance_name?: string;
-
-  rejected_percent?: number;
-
-  task_total_num?: number;
-}
-
-export interface ITaskStageDuration {
-  minutes?: number;
-}
-
-export interface ITaskStatusCountV1 {
-  closed_count?: number;
-
-  executing_count?: number;
-
-  executing_failed_count?: number;
-
-  execution_success_count?: number;
-
-  rejected_count?: number;
-
-  waiting_for_audit_count?: number;
-
-  waiting_for_execution_count?: number;
-}
-
-export interface ITasksPercentCountedByInstanceType {
-  count?: number;
-
-  instance_type?: string;
-
-  percent?: number;
-}
-
-export interface ITasksPercentCountedByInstanceTypeV1 {
-  task_percents?: ITasksPercentCountedByInstanceType[];
-
-  task_total_num?: number;
-}
-
 export interface ITestAuditPlanNotifyConfigResDataV1 {
   is_notify_send_normal?: boolean;
 
@@ -1840,6 +1768,22 @@ export interface IWorkFlowStepTemplateResV1 {
   type?: string;
 }
 
+export interface IWorkflowCountsV1 {
+  today_count?: number;
+
+  total?: number;
+}
+
+export interface IWorkflowCreatedCountsEachDayItem {
+  date?: string;
+
+  value?: number;
+}
+
+export interface IWorkflowCreatedCountsEachDayV1 {
+  samples?: IWorkflowCreatedCountsEachDayItem[];
+}
+
 export interface IWorkflowDetailResV1 {
   create_time?: string;
 
@@ -1868,6 +1812,26 @@ export interface IWorkflowDetailResV1 {
   workflow_id?: number;
 }
 
+export interface IWorkflowPassPercentV1 {
+  audit_pass_percent?: number;
+
+  execution_success_percent?: number;
+}
+
+export interface IWorkflowPercentCountedByInstanceType {
+  count?: number;
+
+  instance_type?: string;
+
+  percent?: number;
+}
+
+export interface IWorkflowPercentCountedByInstanceTypeV1 {
+  workflow_percents?: IWorkflowPercentCountedByInstanceType[];
+
+  workflow_total_num?: number;
+}
+
 export interface IWorkflowRecordResV1 {
   current_step_number?: number;
 
@@ -1880,6 +1844,22 @@ export interface IWorkflowRecordResV1 {
   task_id?: number;
 
   workflow_step_list?: IWorkflowStepResV1[];
+}
+
+export interface IWorkflowRejectedPercentGroupByCreator {
+  creator?: string;
+
+  rejected_percent?: number;
+
+  workflow_total_num?: number;
+}
+
+export interface IWorkflowRejectedPercentGroupByInstance {
+  instance_name?: string;
+
+  rejected_percent?: number;
+
+  workflow_total_num?: number;
 }
 
 export interface IWorkflowResV1 {
@@ -1900,6 +1880,10 @@ export interface IWorkflowResV1 {
   workflow_id?: number;
 }
 
+export interface IWorkflowStageDuration {
+  minutes?: number;
+}
+
 export interface IWorkflowStatisticsResV1 {
   my_need_execute_workflow_number?: number;
 
@@ -1912,6 +1896,22 @@ export interface IWorkflowStatisticsResV1 {
   need_me_to_execute_workflow_number?: number;
 
   need_me_to_review_workflow_number?: number;
+}
+
+export interface IWorkflowStatusCountV1 {
+  closed_count?: number;
+
+  executing_count?: number;
+
+  executing_failed_count?: number;
+
+  execution_success_count?: number;
+
+  rejected_count?: number;
+
+  waiting_for_audit_count?: number;
+
+  waiting_for_execution_count?: number;
 }
 
 export interface IWorkflowStepResV1 {

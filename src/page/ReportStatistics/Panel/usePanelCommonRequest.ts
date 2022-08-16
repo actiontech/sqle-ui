@@ -1,4 +1,4 @@
-import { useBoolean } from 'ahooks';
+import { useBoolean, useToggle } from 'ahooks';
 import { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -7,20 +7,24 @@ import { ResponseCode } from '../../../data/common';
 import { IReduxState } from '../../../store';
 
 const usePanelCommonRequest = <
-  T extends { code?: number; message?: string; data?: any }
+  T extends {
+    code?: number;
+    message?: string;
+  }
 >(
   server: () => Promise<AxiosResponse<T>>,
-  formatResult: (res: AxiosResponse<T>) => void,
-  manual = false
+  { onSuccess }: { onSuccess: (res: AxiosResponse<T>) => void }
 ) => {
   const { t } = useTranslation();
   const [loading, { setFalse: finishGetData, setTrue: startGetData }] =
     useBoolean(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const refreshFlag = useSelector((state: IReduxState) => {
+  const globalRefresh = useSelector((state: IReduxState) => {
     return state.reportStatistics.refreshFlag;
   });
+
+  const [refresh, { toggle: refreshAction }] = useToggle();
 
   const getData = () => {
     server()
@@ -30,7 +34,7 @@ const usePanelCommonRequest = <
           setErrorMessage(res.data.message ?? t('common.unknownError'));
         } else {
           setErrorMessage('');
-          formatResult(res);
+          onSuccess(res);
         }
       })
       .catch((error) => {
@@ -43,16 +47,14 @@ const usePanelCommonRequest = <
   };
 
   useEffect(() => {
-    if (!manual) {
-      getData();
-    }
+    getData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [refreshFlag, manual]);
+  }, [globalRefresh, refresh]);
 
   return {
-    getData,
     loading,
     errorMessage,
+    refreshAction,
   };
 };
 export default usePanelCommonRequest;

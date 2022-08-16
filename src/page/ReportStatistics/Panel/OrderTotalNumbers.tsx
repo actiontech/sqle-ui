@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import statistic from '../../../api/statistic';
-import { IGetTaskCountV1Return } from '../../../api/statistic/index.d';
+import { IGetWorkflowCountV1Return } from '../../../api/statistic/index.d';
 import PanelWrapper from './PanelWrapper';
 import usePanelCommonRequest from './usePanelCommonRequest';
 
@@ -12,15 +12,15 @@ const OrderTotalNumbers: React.FC = () => {
   const [totalOrder, setTotalOrder] = useState<number>(0);
   const [newOrder, setNewOrder] = useState<number>(0);
 
-  const formatResult = (res: AxiosResponse<IGetTaskCountV1Return>) => {
+  const onSuccess = (res: AxiosResponse<IGetWorkflowCountV1Return>) => {
     setTotalOrder(res.data.data?.total ?? 0);
     setNewOrder(res.data.data?.today_count ?? 0);
   };
 
   const { loading, errorMessage } =
-    usePanelCommonRequest<IGetTaskCountV1Return>(
-      () => statistic.getTaskCountV1(),
-      formatResult
+    usePanelCommonRequest<IGetWorkflowCountV1Return>(
+      () => statistic.getWorkflowCountV1(),
+      { onSuccess }
     );
 
   return (

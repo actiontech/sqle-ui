@@ -1,15 +1,15 @@
 import {
   IGetInstancesTypePercentResV1,
   IGetLicenseUsageResV1,
-  IGetTaskRejectedPercentGroupByCreatorResV1,
-  IGetTaskRejectedPercentGroupByInstanceResV1,
-  IGetTaskCountsResV1,
-  IGetTaskDurationOfWaitingForAuditResV1,
-  IGetTaskDurationOfWaitingForExecutionResV1,
-  IGetTaskCreatedCountsEachDayResV1,
-  IGetTasksPercentCountedByInstanceTypeResV1,
-  IGetTaskPassPercentResV1,
-  IGetTaskStatusCountResV1
+  IGetWorkflowCountsResV1,
+  IGetWorkflowDurationOfWaitingForAuditResV1,
+  IGetWorkflowDurationOfWaitingForExecutionResV1,
+  IGetWorkflowCreatedCountsEachDayResV1,
+  IGetWorkflowPercentCountedByInstanceTypeResV1,
+  IGetWorkflowPassPercentResV1,
+  IGetWorkflowRejectedPercentGroupByCreatorResV1,
+  IGetWorkflowRejectedPercentGroupByInstanceResV1,
+  IGetWorkflowStatusCountResV1
 } from '../common.d';
 
 export interface IGetInstancesTypePercentV1Return
@@ -17,40 +17,42 @@ export interface IGetInstancesTypePercentV1Return
 
 export interface IGetLicenseUsageV1Return extends IGetLicenseUsageResV1 {}
 
-export interface IGetTaskRejectedPercentGroupByCreatorV1Params {
-  limit: number;
-}
+export interface IGetWorkflowCountV1Return extends IGetWorkflowCountsResV1 {}
 
-export interface IGetTaskRejectedPercentGroupByCreatorV1Return
-  extends IGetTaskRejectedPercentGroupByCreatorResV1 {}
+export interface IGetWorkflowDurationOfWaitingForAuditV1Return
+  extends IGetWorkflowDurationOfWaitingForAuditResV1 {}
 
-export interface IGetTaskRejectedPercentGroupByInstanceV1Params {
-  limit: number;
-}
+export interface IGetWorkflowDurationOfWaitingForExecutionV1Return
+  extends IGetWorkflowDurationOfWaitingForExecutionResV1 {}
 
-export interface IGetTaskRejectedPercentGroupByInstanceV1Return
-  extends IGetTaskRejectedPercentGroupByInstanceResV1 {}
-
-export interface IGetTaskCountV1Return extends IGetTaskCountsResV1 {}
-
-export interface IGetTaskDurationOfWaitingForAuditV1Return
-  extends IGetTaskDurationOfWaitingForAuditResV1 {}
-
-export interface IGetTaskDurationOfWaitingForExecutionV1Return
-  extends IGetTaskDurationOfWaitingForExecutionResV1 {}
-
-export interface IGetTaskCreatedCountEachDayV1Params {
+export interface IGetWorkflowCreatedCountEachDayV1Params {
   filter_date_from: string;
 
   filter_date_to: string;
 }
 
-export interface IGetTaskCreatedCountEachDayV1Return
-  extends IGetTaskCreatedCountsEachDayResV1 {}
+export interface IGetWorkflowCreatedCountEachDayV1Return
+  extends IGetWorkflowCreatedCountsEachDayResV1 {}
 
-export interface IGetTasksPercentCountedByInstanceTypeV1Return
-  extends IGetTasksPercentCountedByInstanceTypeResV1 {}
+export interface IGetWorkflowPercentCountedByInstanceTypeV1Return
+  extends IGetWorkflowPercentCountedByInstanceTypeResV1 {}
 
-export interface IGetTaskPassPercentV1Return extends IGetTaskPassPercentResV1 {}
+export interface IGetWorkflowPassPercentV1Return
+  extends IGetWorkflowPassPercentResV1 {}
 
-export interface IGetTaskStatusCountV1Return extends IGetTaskStatusCountResV1 {}
+export interface IGetWorkflowRejectedPercentGroupByCreatorV1Params {
+  limit: number;
+}
+
+export interface IGetWorkflowRejectedPercentGroupByCreatorV1Return
+  extends IGetWorkflowRejectedPercentGroupByCreatorResV1 {}
+
+export interface IGetWorkflowRejectedPercentGroupByInstanceV1Params {
+  limit: number;
+}
+
+export interface IGetWorkflowRejectedPercentGroupByInstanceV1Return
+  extends IGetWorkflowRejectedPercentGroupByInstanceResV1 {}
+
+export interface IGetWorkflowStatusCountV1Return
+  extends IGetWorkflowStatusCountResV1 {}
