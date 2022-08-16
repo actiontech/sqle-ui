@@ -1,8 +1,8 @@
 import { TableProps, Typography } from 'antd';
 import { Layout, Layouts } from 'react-grid-layout';
 import {
-  ITaskRejectedPercentGroupByCreator,
-  ITaskRejectedPercentGroupByInstance,
+  IWorkflowRejectedPercentGroupByInstance,
+  IWorkflowRejectedPercentGroupByCreator,
 } from '../../api/common';
 import i18n from '../../locale';
 import { TableColumn } from '../../types/common.type';
@@ -227,8 +227,8 @@ const rowHeight = 120;
 
 const tableLimit = 10;
 const tableColumns: {
-  user: () => TableColumn<ITaskRejectedPercentGroupByCreator>;
-  instance: () => TableColumn<ITaskRejectedPercentGroupByInstance>;
+  user: () => TableColumn<IWorkflowRejectedPercentGroupByCreator>;
+  instance: () => TableColumn<IWorkflowRejectedPercentGroupByInstance>;
 } = {
   user: () => {
     return [
@@ -239,7 +239,7 @@ const tableColumns: {
         ),
       },
       {
-        dataIndex: 'task_total_num',
+        dataIndex: 'workflow_total_num',
         title: i18n.t(
           'reportStatistics.diffUserOrderRejectRate.columns.totalOrder'
         ),
@@ -271,7 +271,7 @@ const tableColumns: {
         ),
       },
       {
-        dataIndex: 'task_total_num',
+        dataIndex: 'workflow_total_num',
         title: i18n.t(
           'reportStatistics.diffInstanceOrderRejectRate.columns.totalOrder'
         ),

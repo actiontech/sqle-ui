@@ -1,19 +1,18 @@
 import { RadialBarConfig } from '@ant-design/plots';
-import { useBoolean } from 'ahooks';
 import { Result } from 'antd';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import CommonRadialBar from '../Charts/CommonRadialBar';
 import reportStatisticsData from '../index.data';
 import PanelWrapper from './PanelWrapper';
 import statistic from '../../../api/statistic';
 import { ILicenseUsageItem } from '../../../api/common';
-import { ResponseCode } from '../../../data/common';
 import { floatRound } from '../../../utils/Math';
 import { Datum } from '@antv/g2plot';
 import { CommonChartsColors } from '../Charts';
-import { useSelector } from 'react-redux';
-import { IReduxState } from '../../../store';
+import { AxiosResponse } from 'axios';
+import { IGetLicenseUsageV1Return } from '../../../api/statistic/index.d';
+import usePanelCommonRequest from './usePanelCommonRequest';
 
 const config: RadialBarConfig = {
   data: [],
@@ -36,13 +35,6 @@ const LicenseUsage: React.FC = () => {
     resource_type: '',
   });
 
-  const [loading, { setFalse: finishGetData, setTrue: startGetData }] =
-    useBoolean(false);
-  const [errorMessage, setErrorMessage] = useState('');
-  const refreshFlag = useSelector((state: IReduxState) => {
-    return state.reportStatistics.refreshFlag;
-  });
-
   const data: RadialBarConfig['data'] = useMemo(() => {
     const genRadialBarData = (item: ILicenseUsageItem) => {
       if (!item.is_limited || !item.limit) {
@@ -62,7 +54,7 @@ const LicenseUsage: React.FC = () => {
       genRadialBarData(userUsage),
     ];
   }, [instancesUsage, userUsage]);
-  // 为什么要添加 any
+
   // https://github.com/ant-design/ant-design-charts/pull/1465
   // 但是目前这个地方的 tooltip 类型仍然没有修复..导致使用 formatter 会引发类型错误.
   const tooltip: RadialBarConfig['tooltip'] & {
@@ -108,30 +100,16 @@ const LicenseUsage: React.FC = () => {
     [userUsage.resource_type]
   );
 
-  useEffect(() => {
-    const getData = () => {
-      startGetData();
-      statistic
-        .getLicenseUsageV1()
-        .then((res) => {
-          if (res.data.code !== ResponseCode.SUCCESS) {
-            setErrorMessage(res.data.message ?? t('common.unknownError'));
-          } else {
-            setErrorMessage('');
-            setInstanceUsage(res.data.data?.instances_usage ?? []);
-            setUserUsage(res.data.data?.users_usage ?? {});
-          }
-        })
-        .catch((error) => {
-          setErrorMessage(error?.toString() ?? t('common.unknownError'));
-        })
-        .finally(() => {
-          finishGetData();
-        });
-    };
+  const onSuccess = (res: AxiosResponse<IGetLicenseUsageV1Return>) => {
+    setInstanceUsage(res.data.data?.instances_usage ?? []);
+    setUserUsage(res.data.data?.users_usage ?? {});
+  };
 
-    getData();
-  }, [finishGetData, startGetData, t, refreshFlag]);
+  const { loading, errorMessage } = usePanelCommonRequest(
+    () => statistic.getLicenseUsageV1(),
+    { onSuccess }
+  );
+
   return (
     <PanelWrapper
       title={t('reportStatistics.licenseUsage.title')}

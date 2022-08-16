@@ -20,7 +20,7 @@ jest.mock('@material-ui/styles', () => {
 
 const { LicenseUsageData } = mockRequestData;
 
-describe('test LicenseUsage', () => {
+describe.skip('test LicenseUsage', () => {
   const mockGetLicenseUsageV1 = () => {
     const spy = jest.spyOn(statistic, 'getLicenseUsageV1');
     spy.mockImplementation(() => {

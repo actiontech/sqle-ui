@@ -1,4 +1,4 @@
-import { Button, PageHeader } from 'antd';
+import { Button, Card, PageHeader, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
 import useResizeObserver from 'use-resize-observer';
 import { Responsive as ResponsiveReactGridLayout } from 'react-grid-layout';
@@ -49,6 +49,7 @@ const ReportStatistics: React.FC = () => {
             />
           </>
         }
+        /* IFTRUE_isEE */
         extra={
           <Button
             onClick={refreshPanelData}
@@ -57,8 +58,33 @@ const ReportStatistics: React.FC = () => {
             <SyncOutlined />
           </Button>
         }
+        /* FITRUE_isEE */
         ghost={false}
       />
+
+      {/* IFTRUE_isCE */}
+      <section className="padding-content">
+        <Card>
+          {t('reportStatistics.ceTips')}
+          <Typography.Paragraph>
+            <ul>
+              <li>
+                <a href="https://actiontech.github.io/sqle-docs-cn/">
+                  https://actiontech.github.io/sqle-docs-cn/
+                </a>
+              </li>
+              <li>
+                <a href="https://www.actionsky.com/">
+                  https://www.actionsky.com/
+                </a>
+              </li>
+            </ul>
+          </Typography.Paragraph>
+        </Card>
+      </section>
+      {/* FITRUE_isCE */}
+
+      {/* IFTRUE_isEE */}
       <section ref={ref} className="page-report-statistics-namespace">
         <ResponsiveReactGridLayout
           width={width}
@@ -103,6 +129,7 @@ const ReportStatistics: React.FC = () => {
           </div>
         </ResponsiveReactGridLayout>
       </section>
+      {/* FITRUE_isEE */}
     </>
   );
 };

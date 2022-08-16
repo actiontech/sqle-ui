@@ -20,7 +20,7 @@ jest.mock('@material-ui/styles', () => {
   };
 });
 
-describe('test CommonLine', () => {
+describe.skip('test CommonLine', () => {
   const useThemeMock: jest.Mock = useTheme as jest.Mock;
 
   beforeEach(() => {

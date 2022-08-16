@@ -1,15 +1,14 @@
 import { PieConfig } from '@ant-design/plots';
-import { useBoolean } from 'ahooks';
 import { Result } from 'antd';
-import { useEffect, useState } from 'react';
+import { AxiosResponse } from 'axios';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import statistic from '../../../api/statistic';
-import { ResponseCode } from '../../../data/common';
-import { IReduxState } from '../../../store';
+import { IGetWorkflowPercentCountedByInstanceTypeV1Return } from '../../../api/statistic/index.d';
 import CommonPie from '../Charts/CommonPie';
 import reportStatisticsData from '../index.data';
 import PanelWrapper from './PanelWrapper';
+import usePanelCommonRequest from './usePanelCommonRequest';
 
 const config: PieConfig = {
   data: [],
@@ -38,35 +37,19 @@ const OrderQuantityWithDbType: React.FC = () => {
   const [data, setData] = useState<PieConfig['data']>([
     { count: 0, instance_type: '' },
   ]);
-  const [loading, { setFalse: finishGetData, setTrue: startGetData }] =
-    useBoolean(false);
-  const [errorMessage, setErrorMessage] = useState('');
-  const refreshFlag = useSelector((state: IReduxState) => {
-    return state.reportStatistics.refreshFlag;
-  });
-  useEffect(() => {
-    const getData = () => {
-      startGetData();
-      statistic
-        .getTasksPercentCountedByInstanceTypeV1()
-        .then((res) => {
-          if (res.data.code !== ResponseCode.SUCCESS) {
-            setErrorMessage(res.data.message ?? t('common.unknownError'));
-          } else {
-            setErrorMessage('');
-            setData(res.data.data?.task_percents ?? []);
-          }
-        })
-        .catch((error) => {
-          setErrorMessage(error?.toString() ?? t('common.unknownError'));
-        })
-        .finally(() => {
-          finishGetData();
-        });
-    };
 
-    getData();
-  }, [finishGetData, startGetData, t, refreshFlag]);
+  const onSuccess = (
+    res: AxiosResponse<IGetWorkflowPercentCountedByInstanceTypeV1Return>
+  ) => {
+    setData(res.data.data?.workflow_percents ?? []);
+  };
+
+  const { loading, errorMessage } =
+    usePanelCommonRequest<IGetWorkflowPercentCountedByInstanceTypeV1Return>(
+      () => statistic.getWorkflowPercentCountedByInstanceTypeV1(),
+      { onSuccess }
+    );
+
   return (
     <PanelWrapper
       title={t('reportStatistics.orderDbTypeScale.title')}

@@ -1,17 +1,16 @@
 import { PieConfig } from '@ant-design/plots';
-import { useBoolean } from 'ahooks';
 import { Result } from 'antd';
-import { useEffect, useState } from 'react';
+import { AxiosResponse } from 'axios';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
-import { ITaskStatusCountV1 } from '../../../api/common';
+import { IWorkflowStatusCountV1 } from '../../../api/common';
 import statistic from '../../../api/statistic';
-import { ResponseCode } from '../../../data/common';
+import { IGetWorkflowStatusCountV1Return } from '../../../api/statistic/index.d';
 import i18n from '../../../locale';
-import { IReduxState } from '../../../store';
 import CommonPie from '../Charts/CommonPie';
 import reportStatisticsData from '../index.data';
 import PanelWrapper from './PanelWrapper';
+import usePanelCommonRequest from './usePanelCommonRequest';
 
 const { secondLineSize } = reportStatisticsData;
 
@@ -22,7 +21,7 @@ const config: PieConfig = {
 };
 
 const orderStatusMap = () => {
-  return new Map<keyof ITaskStatusCountV1, string>([
+  return new Map<keyof IWorkflowStatusCountV1, string>([
     ['closed_count', i18n.t('reportStatistics.orderStatus.closed')],
     ['executing_count', i18n.t('reportStatistics.orderStatus.executing')],
     [
@@ -54,48 +53,29 @@ const OrderStatus: React.FC = () => {
   const [data, setData] = useState<PieConfig['data']>([
     { status: '', value: 0 },
   ]);
-  const [loading, { setFalse: finishGetData, setTrue: startGetData }] =
-    useBoolean(false);
-  const [errorMessage, setErrorMessage] = useState('');
-  const refreshFlag = useSelector((state: IReduxState) => {
-    return state.reportStatistics.refreshFlag;
-  });
+  const formatData = (
+    originData?: IWorkflowStatusCountV1
+  ): PieConfig['data'] => {
+    if (!originData) {
+      return [];
+    }
 
-  useEffect(() => {
-    const formatData = (originData?: ITaskStatusCountV1): PieConfig['data'] => {
-      if (!originData) {
-        return [];
-      }
+    return Object.keys(originData).map((key) => {
+      return {
+        value: originData[key as keyof IWorkflowStatusCountV1],
+        status: orderStatusMap().get(key as keyof IWorkflowStatusCountV1),
+      };
+    });
+  };
+  const onSuccess = (res: AxiosResponse<IGetWorkflowStatusCountV1Return>) => {
+    setData(formatData(res.data.data));
+  };
 
-      return Object.keys(originData).map((key) => {
-        return {
-          value: originData[key as keyof ITaskStatusCountV1],
-          status: orderStatusMap().get(key as keyof ITaskStatusCountV1),
-        };
-      });
-    };
-    const getData = () => {
-      startGetData();
-      statistic
-        .getTaskStatusCountV1()
-        .then((res) => {
-          if (res.data.code !== ResponseCode.SUCCESS) {
-            setErrorMessage(res.data.message ?? t('common.unknownError'));
-          } else {
-            setErrorMessage('');
-            setData(formatData(res.data.data));
-          }
-        })
-        .catch((error) => {
-          setErrorMessage(error?.toString() ?? t('common.unknownError'));
-        })
-        .finally(() => {
-          finishGetData();
-        });
-    };
-
-    getData();
-  }, [finishGetData, startGetData, t, refreshFlag]);
+  const { loading, errorMessage } =
+    usePanelCommonRequest<IGetWorkflowStatusCountV1Return>(
+      () => statistic.getWorkflowStatusCountV1(),
+      { onSuccess }
+    );
 
   return (
     <PanelWrapper

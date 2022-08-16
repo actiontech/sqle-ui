@@ -1,47 +1,26 @@
-import { useBoolean } from 'ahooks';
 import { Typography } from 'antd';
-import { useEffect, useState } from 'react';
+import { AxiosResponse } from 'axios';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import statistic from '../../../api/statistic';
-import { ResponseCode } from '../../../data/common';
-import { IReduxState } from '../../../store';
+import { IGetWorkflowDurationOfWaitingForAuditV1Return } from '../../../api/statistic/index.d';
 import { minuteToHourMinute } from '../../../utils/Math';
 import PanelWrapper from './PanelWrapper';
+import usePanelCommonRequest from './usePanelCommonRequest';
 
 const OrderAverageReviewTime: React.FC = () => {
   const { t } = useTranslation();
-  const [loading, { setFalse: finishGetData, setTrue: startGetData }] =
-    useBoolean(false);
-
-  const [errorMessage, setErrorMessage] = useState('');
-
   const [time, setTime] = useState<string>('');
-  const refreshFlag = useSelector((state: IReduxState) => {
-    return state.reportStatistics.refreshFlag;
-  });
-  useEffect(() => {
-    const getData = () => {
-      startGetData();
-      statistic
-        .getTaskDurationOfWaitingForAuditV1()
-        .then((res) => {
-          if (res.data.code !== ResponseCode.SUCCESS) {
-            setErrorMessage(res.data.message ?? t('common.unknownError'));
-          } else {
-            setErrorMessage('');
-            setTime(minuteToHourMinute(res.data.data?.minutes || 0));
-          }
-        })
-        .catch((error) => {
-          setErrorMessage(error?.toString() ?? t('common.unknownError'));
-        })
-        .finally(() => {
-          finishGetData();
-        });
-    };
-    getData();
-  }, [finishGetData, startGetData, t, refreshFlag]);
+  const onSuccess = (
+    res: AxiosResponse<IGetWorkflowDurationOfWaitingForAuditV1Return>
+  ) => {
+    setTime(minuteToHourMinute(res.data.data?.minutes || 0));
+  };
+
+  const { loading, errorMessage } = usePanelCommonRequest(
+    () => statistic.getWorkflowDurationOfWaitingForAuditV1(),
+    { onSuccess }
+  );
 
   return (
     <PanelWrapper

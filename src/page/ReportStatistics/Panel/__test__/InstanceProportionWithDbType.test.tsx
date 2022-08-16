@@ -20,7 +20,7 @@ jest.mock('@material-ui/styles', () => {
 
 const { InstanceProportionWithDbTypeData } = mockRequestData;
 
-describe('test InstanceProportionWithDbType', () => {
+describe.skip('test InstanceProportionWithDbType', () => {
   const mockGetInstancesTypePercentV1 = () => {
     const spy = jest.spyOn(statistic, 'getInstancesTypePercentV1');
     spy.mockImplementation(() => {

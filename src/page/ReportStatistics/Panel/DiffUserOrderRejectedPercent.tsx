@@ -1,53 +1,36 @@
-import { useBoolean } from 'ahooks';
 import { Result, Table } from 'antd';
-import { useEffect, useState } from 'react';
+import { AxiosResponse } from 'axios';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
-import { ITaskRejectedPercentGroupByCreator } from '../../../api/common';
+import { IWorkflowRejectedPercentGroupByCreator } from '../../../api/common';
 import statistic from '../../../api/statistic';
-import { IGetTaskRejectedPercentGroupByCreatorV1Params } from '../../../api/statistic/index.d';
-import { ResponseCode } from '../../../data/common';
-import { IReduxState } from '../../../store';
+import {
+  IGetWorkflowRejectedPercentGroupByCreatorV1Params,
+  IGetWorkflowRejectedPercentGroupByCreatorV1Return,
+} from '../../../api/statistic/index.d';
 import reportStatisticsData from '../index.data';
 import PanelWrapper from './PanelWrapper';
+import usePanelCommonRequest from './usePanelCommonRequest';
 
 const { tableLimit, tableColumns, tableCommonProps } = reportStatisticsData;
-
+const param: IGetWorkflowRejectedPercentGroupByCreatorV1Params = {
+  limit: tableLimit,
+};
 const DiffUserOrderRejectedPercent: React.FC = () => {
   const { t } = useTranslation();
   const [data, setData] = useState<any[]>([]);
-  const [loading, { setFalse: finishGetData, setTrue: startGetData }] =
-    useBoolean(false);
-  const [errorMessage, setErrorMessage] = useState('');
-  const refreshFlag = useSelector((state: IReduxState) => {
-    return state.reportStatistics.refreshFlag;
-  });
-  useEffect(() => {
-    const getData = () => {
-      startGetData();
-      const param: IGetTaskRejectedPercentGroupByCreatorV1Params = {
-        limit: tableLimit,
-      };
-      statistic
-        .getTaskRejectedPercentGroupByCreatorV1(param)
-        .then((res) => {
-          if (res.data.code !== ResponseCode.SUCCESS) {
-            setErrorMessage(res.data.message ?? t('common.unknownError'));
-          } else {
-            setErrorMessage('');
-            setData(res.data.data ?? []);
-          }
-        })
-        .catch((error) => {
-          setErrorMessage(error?.toString() ?? t('common.unknownError'));
-        })
-        .finally(() => {
-          finishGetData();
-        });
-    };
 
-    getData();
-  }, [finishGetData, startGetData, t, refreshFlag]);
+  const onSuccess = (
+    res: AxiosResponse<IGetWorkflowRejectedPercentGroupByCreatorV1Return>
+  ) => {
+    setData(res.data.data ?? []);
+  };
+
+  const { loading, errorMessage } = usePanelCommonRequest(
+    () => statistic.getWorkflowRejectedPercentGroupByCreatorV1(param),
+    { onSuccess }
+  );
+
   return (
     <PanelWrapper
       loading={loading}
@@ -72,7 +55,7 @@ const DiffUserOrderRejectedPercent: React.FC = () => {
         rowKey={'creator'}
         dataSource={data}
         columns={tableColumns.user()}
-        {...tableCommonProps<ITaskRejectedPercentGroupByCreator>()}
+        {...tableCommonProps<IWorkflowRejectedPercentGroupByCreator>()}
       />
     </PanelWrapper>
   );

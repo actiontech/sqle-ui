@@ -9,18 +9,18 @@ import { AxiosRequestConfig } from 'axios';
 import {
   IGetInstancesTypePercentV1Return,
   IGetLicenseUsageV1Return,
-  IGetTaskRejectedPercentGroupByCreatorV1Params,
-  IGetTaskRejectedPercentGroupByCreatorV1Return,
-  IGetTaskRejectedPercentGroupByInstanceV1Params,
-  IGetTaskRejectedPercentGroupByInstanceV1Return,
-  IGetTaskCountV1Return,
-  IGetTaskDurationOfWaitingForAuditV1Return,
-  IGetTaskDurationOfWaitingForExecutionV1Return,
-  IGetTaskCreatedCountEachDayV1Params,
-  IGetTaskCreatedCountEachDayV1Return,
-  IGetTasksPercentCountedByInstanceTypeV1Return,
-  IGetTaskPassPercentV1Return,
-  IGetTaskStatusCountV1Return
+  IGetWorkflowCountV1Return,
+  IGetWorkflowDurationOfWaitingForAuditV1Return,
+  IGetWorkflowDurationOfWaitingForExecutionV1Return,
+  IGetWorkflowCreatedCountEachDayV1Params,
+  IGetWorkflowCreatedCountEachDayV1Return,
+  IGetWorkflowPercentCountedByInstanceTypeV1Return,
+  IGetWorkflowPassPercentV1Return,
+  IGetWorkflowRejectedPercentGroupByCreatorV1Params,
+  IGetWorkflowRejectedPercentGroupByCreatorV1Return,
+  IGetWorkflowRejectedPercentGroupByInstanceV1Params,
+  IGetWorkflowRejectedPercentGroupByInstanceV1Return,
+  IGetWorkflowStatusCountV1Return
 } from './index.d';
 
 class StatisticService extends ServiceBase {
@@ -40,85 +40,89 @@ class StatisticService extends ServiceBase {
     );
   }
 
-  public getTaskRejectedPercentGroupByCreatorV1(
-    params: IGetTaskRejectedPercentGroupByCreatorV1Params,
+  public getWorkflowCountV1(options?: AxiosRequestConfig) {
+    return this.get<IGetWorkflowCountV1Return>(
+      '/v1/statistic/workflows/counts',
+      undefined,
+      options
+    );
+  }
+
+  public getWorkflowDurationOfWaitingForAuditV1(options?: AxiosRequestConfig) {
+    return this.get<IGetWorkflowDurationOfWaitingForAuditV1Return>(
+      '/v1/statistic/workflows/duration_of_waiting_for_audit',
+      undefined,
+      options
+    );
+  }
+
+  public getWorkflowDurationOfWaitingForExecutionV1(
+    options?: AxiosRequestConfig
+  ) {
+    return this.get<IGetWorkflowDurationOfWaitingForExecutionV1Return>(
+      '/v1/statistic/workflows/duration_of_waiting_for_execution',
+      undefined,
+      options
+    );
+  }
+
+  public getWorkflowCreatedCountEachDayV1(
+    params: IGetWorkflowCreatedCountEachDayV1Params,
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    return this.get<IGetTaskRejectedPercentGroupByCreatorV1Return>(
-      '/v1/statistic/task/rejected_percent_group_by_creator',
+    return this.get<IGetWorkflowCreatedCountEachDayV1Return>(
+      '/v1/statistic/workflows/each_day_counts',
       paramsData,
       options
     );
   }
 
-  public getTaskRejectedPercentGroupByInstanceV1(
-    params: IGetTaskRejectedPercentGroupByInstanceV1Params,
+  public getWorkflowPercentCountedByInstanceTypeV1(
+    options?: AxiosRequestConfig
+  ) {
+    return this.get<IGetWorkflowPercentCountedByInstanceTypeV1Return>(
+      '/v1/statistic/workflows/instance_type_percent',
+      undefined,
+      options
+    );
+  }
+
+  public getWorkflowPassPercentV1(options?: AxiosRequestConfig) {
+    return this.get<IGetWorkflowPassPercentV1Return>(
+      '/v1/statistic/workflows/pass_percent',
+      undefined,
+      options
+    );
+  }
+
+  public getWorkflowRejectedPercentGroupByCreatorV1(
+    params: IGetWorkflowRejectedPercentGroupByCreatorV1Params,
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    return this.get<IGetTaskRejectedPercentGroupByInstanceV1Return>(
-      '/v1/statistic/task/rejected_percent_group_by_instance',
+    return this.get<IGetWorkflowRejectedPercentGroupByCreatorV1Return>(
+      '/v1/statistic/workflows/rejected_percent_group_by_creator',
       paramsData,
       options
     );
   }
 
-  public getTaskCountV1(options?: AxiosRequestConfig) {
-    return this.get<IGetTaskCountV1Return>(
-      '/v1/statistic/tasks/counts',
-      undefined,
-      options
-    );
-  }
-
-  public getTaskDurationOfWaitingForAuditV1(options?: AxiosRequestConfig) {
-    return this.get<IGetTaskDurationOfWaitingForAuditV1Return>(
-      '/v1/statistic/tasks/duration_of_waiting_for_audit',
-      undefined,
-      options
-    );
-  }
-
-  public getTaskDurationOfWaitingForExecutionV1(options?: AxiosRequestConfig) {
-    return this.get<IGetTaskDurationOfWaitingForExecutionV1Return>(
-      '/v1/statistic/tasks/duration_of_waiting_for_execution',
-      undefined,
-      options
-    );
-  }
-
-  public getTaskCreatedCountEachDayV1(
-    params: IGetTaskCreatedCountEachDayV1Params,
+  public getWorkflowRejectedPercentGroupByInstanceV1(
+    params: IGetWorkflowRejectedPercentGroupByInstanceV1Params,
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    return this.get<IGetTaskCreatedCountEachDayV1Return>(
-      '/v1/statistic/tasks/each_day_counts',
+    return this.get<IGetWorkflowRejectedPercentGroupByInstanceV1Return>(
+      '/v1/statistic/workflows/rejected_percent_group_by_instance',
       paramsData,
       options
     );
   }
 
-  public getTasksPercentCountedByInstanceTypeV1(options?: AxiosRequestConfig) {
-    return this.get<IGetTasksPercentCountedByInstanceTypeV1Return>(
-      '/v1/statistic/tasks/instance_type_percent',
-      undefined,
-      options
-    );
-  }
-
-  public getTaskPassPercentV1(options?: AxiosRequestConfig) {
-    return this.get<IGetTaskPassPercentV1Return>(
-      '/v1/statistic/tasks/pass_percent',
-      undefined,
-      options
-    );
-  }
-
-  public getTaskStatusCountV1(options?: AxiosRequestConfig) {
-    return this.get<IGetTaskStatusCountV1Return>(
-      '/v1/statistic/tasks/status_count',
+  public getWorkflowStatusCountV1(options?: AxiosRequestConfig) {
+    return this.get<IGetWorkflowStatusCountV1Return>(
+      '/v1/statistic/workflows/status_count',
       undefined,
       options
     );
