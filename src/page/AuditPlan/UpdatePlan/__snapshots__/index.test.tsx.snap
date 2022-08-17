@@ -608,7 +608,7 @@ exports[`UpdateAuditPlan should send update audit plan request when user input a
           </div>
         </div>
         <div
-          class="ant-row ant-form-item"
+          class="ant-row ant-form-item ant-form-item-has-success"
         >
           <div
             class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
@@ -1742,7 +1742,7 @@ exports[`UpdateAuditPlan should set form default value to specify instance 1`] =
           </div>
         </div>
         <div
-          class="ant-row ant-form-item"
+          class="ant-row ant-form-item ant-form-item-has-success"
         >
           <div
             class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"

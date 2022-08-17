@@ -123,18 +123,16 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
         defaultValue={props.defaultValue}
       />
 
-      <EmptyBox if={!!dbType}>
-        <Form.Item
-          label={t('auditPlan.planForm.ruleTemplateName')}
-          name="ruleTemplateName"
-          tooltip={t('auditPlan.planForm.ruleTemplateNameTips')}
-        >
-          <Select>
-            {!getRuleTemplateLoading &&
-              generateRuleTemplateSelectOption(dbType)}
-          </Select>
-        </Form.Item>
-      </EmptyBox>
+      <Form.Item
+        hidden={!dbType}
+        label={t('auditPlan.planForm.ruleTemplateName')}
+        name="ruleTemplateName"
+        tooltip={t('auditPlan.planForm.ruleTemplateNameTips')}
+      >
+        <Select>
+          {!getRuleTemplateLoading && generateRuleTemplateSelectOption(dbType)}
+        </Select>
+      </Form.Item>
 
       <Form.Item
         label={t('auditPlan.planForm.cron')}

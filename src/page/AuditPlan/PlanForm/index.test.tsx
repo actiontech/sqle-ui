@@ -302,8 +302,9 @@ describe('PlanForm', () => {
       jest.advanceTimersByTime(3000);
     });
     expect(
-      screen.queryByLabelText('auditPlan.planForm.ruleTemplateName')
-    ).not.toBeInTheDocument();
+      screen.queryByText('auditPlan.planForm.ruleTemplateName')?.parentElement
+        ?.parentElement
+    ).toHaveClass('ant-form-item-hidden');
 
     fireEvent.mouseDown(
       screen.getByLabelText('auditPlan.planForm.databaseName')
@@ -319,7 +320,8 @@ describe('PlanForm', () => {
       jest.advanceTimersByTime(3000);
     });
     expect(
-      screen.queryByLabelText('auditPlan.planForm.ruleTemplateName')
-    ).toBeInTheDocument();
+      screen.queryByText('auditPlan.planForm.ruleTemplateName')?.parentElement
+        ?.parentElement
+    ).not.toHaveClass('ant-form-item-hidden');
   });
 });
