@@ -10,7 +10,7 @@ import mockRequestData from './mockRequestData';
 
 const { OrderAverageExecuteTimeData } = mockRequestData;
 
-describe.skip('test OrderAverageExecuteTime', () => {
+describe('test OrderAverageExecuteTime', () => {
   const mockGetTaskDurationOfWaitingForExecutionV1 = () => {
     const spy = jest.spyOn(
       statistic,

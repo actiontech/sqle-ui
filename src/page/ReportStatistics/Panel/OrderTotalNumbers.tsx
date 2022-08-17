@@ -17,11 +17,10 @@ const OrderTotalNumbers: React.FC = () => {
     setNewOrder(res.data.data?.today_count ?? 0);
   };
 
-  const { loading, errorMessage } =
-    usePanelCommonRequest<IGetWorkflowCountV1Return>(
-      () => statistic.getWorkflowCountV1(),
-      { onSuccess }
-    );
+  const { loading, errorMessage } = usePanelCommonRequest(
+    () => statistic.getWorkflowCountV1(),
+    { onSuccess }
+  );
 
   return (
     <PanelWrapper

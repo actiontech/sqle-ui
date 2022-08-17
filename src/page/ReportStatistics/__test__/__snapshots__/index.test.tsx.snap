@@ -80,6 +80,39 @@ exports[`test ReportStatistics should match snapshot 1`] = `
     </div>
   </div>
   <section
+    class="padding-content"
+  >
+    <div
+      class="ant-card ant-card-bordered"
+    >
+      <div
+        class="ant-card-body"
+      >
+        reportStatistics.ceTips
+        <div
+          class="ant-typography"
+        >
+          <ul>
+            <li>
+              <a
+                href="https://actiontech.github.io/sqle-docs-cn/"
+              >
+                https://actiontech.github.io/sqle-docs-cn/
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.actionsky.com/"
+              >
+                https://www.actionsky.com/
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section
     class="page-report-statistics-namespace"
   >
     <div
@@ -180,7 +213,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
         style="height: 120px; position: absolute; transform: translate(24px,168px); width: -48px;"
       >
         <div
-          class="ant-card ant-card-loading ant-card-bordered ant-card-hoverable ant-card-type-inner"
+          class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
           style="height: 100%;"
         >
           <div
@@ -200,113 +233,9 @@ exports[`test ReportStatistics should match snapshot 1`] = `
             class="ant-card-body"
           >
             <div
-              class="ant-card-loading-content"
+              class="statistics-value-style"
             >
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-22"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-8"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-15"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-6"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-18"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-13"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-9"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-4"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-3"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-16"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
+              <span />
             </div>
           </div>
         </div>
@@ -319,7 +248,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
         style="height: 120px; position: absolute; transform: translate(24px,312px); width: -48px;"
       >
         <div
-          class="ant-card ant-card-loading ant-card-bordered ant-card-hoverable ant-card-type-inner"
+          class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
           style="height: 100%;"
         >
           <div
@@ -339,113 +268,9 @@ exports[`test ReportStatistics should match snapshot 1`] = `
             class="ant-card-body"
           >
             <div
-              class="ant-card-loading-content"
+              class="statistics-value-style"
             >
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-22"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-8"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-15"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-6"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-18"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-13"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-9"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-4"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-3"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-16"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
+              <span />
             </div>
           </div>
         </div>
@@ -458,7 +283,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
         style="height: 120px; position: absolute; transform: translate(24px,456px); width: -48px;"
       >
         <div
-          class="ant-card ant-card-loading ant-card-bordered ant-card-hoverable ant-card-type-inner"
+          class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
           style="height: 100%;"
         >
           <div
@@ -478,112 +303,26 @@ exports[`test ReportStatistics should match snapshot 1`] = `
             class="ant-card-body"
           >
             <div
-              class="ant-card-loading-content"
+              class="ant-space ant-space-horizontal ant-space-align-center statistics-value-style"
             >
               <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <div
-                  class="ant-col ant-col-22"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
+                <span />
               </div>
               <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <div
-                  class="ant-col ant-col-8"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-15"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
+                <span>
+                  /
+                </span>
               </div>
               <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
+                class="ant-space-item"
               >
-                <div
-                  class="ant-col ant-col-6"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-18"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-13"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-9"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-4"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-3"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-16"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
+                <span />
               </div>
             </div>
           </div>
@@ -597,7 +336,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
         style="height: 336px; position: absolute; transform: translate(24px,600px); width: -48px;"
       >
         <div
-          class="ant-card ant-card-loading ant-card-bordered ant-card-hoverable ant-card-type-inner"
+          class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
           style="height: 100%;"
         >
           <div
@@ -626,7 +365,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
                       placeholder="Start date"
                       readonly=""
                       size="12"
-                      value="2022-07-13"
+                      value="2022-07-12"
                     />
                   </div>
                   <div
@@ -665,7 +404,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
                       placeholder="End date"
                       readonly=""
                       size="12"
-                      value="2022-08-12"
+                      value="2022-08-11"
                     />
                   </div>
                   <div
@@ -703,114 +442,18 @@ exports[`test ReportStatistics should match snapshot 1`] = `
             class="ant-card-body"
           >
             <div
-              class="ant-card-loading-content"
-            >
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-22"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-8"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-15"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-6"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-18"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-13"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-9"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-4"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-3"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-16"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-            </div>
+              color="[\\"#1890ff\\",\\"#ffa940\\",\\"#eb2f96\\",\\"#ff9c6e\\",\\"#fadb14\\",\\"#bae637\\",\\"#ffd666\\",\\"#52c41a\\",\\"#5cdbd3\\"]"
+              data="[]"
+              h="2.5"
+              height="256"
+              locale="zh-CN"
+              padding="auto"
+              slider="{\\"start\\":0,\\"end\\":1}"
+              theme="light"
+              xaxis="{\\"tickCount\\":7}"
+              xfield="date"
+              yfield="value"
+            />
           </div>
         </div>
         <span
@@ -822,7 +465,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
         style="height: 336px; position: absolute; transform: translate(24px,960px); width: -48px;"
       >
         <div
-          class="ant-card ant-card-loading ant-card-bordered ant-card-hoverable ant-card-type-inner"
+          class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
           style="height: 100%;"
         >
           <div
@@ -842,114 +485,19 @@ exports[`test ReportStatistics should match snapshot 1`] = `
             class="ant-card-body"
           >
             <div
-              class="ant-card-loading-content"
-            >
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-22"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-8"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-15"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-6"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-18"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-13"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-9"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-4"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-3"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-16"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-            </div>
+              anglefield="value"
+              color="[\\"#1890ff\\",\\"#ffa940\\",\\"#eb2f96\\",\\"#ff9c6e\\",\\"#fadb14\\",\\"#bae637\\",\\"#ffd666\\",\\"#52c41a\\",\\"#5cdbd3\\"]"
+              colorfield="status"
+              data="[{\\"status\\":\\"\\",\\"value\\":0}]"
+              h="2.5"
+              height="256"
+              interactions="[{\\"type\\":\\"element-active\\"}]"
+              label="{\\"type\\":\\"inner\\",\\"offset\\":\\"-30%\\",\\"style\\":{\\"fontSize\\":14,\\"textAlign\\":\\"center\\"}}"
+              locale="zh-CN"
+              padding="auto"
+              radius="1"
+              theme="light"
+            />
           </div>
         </div>
         <span
@@ -961,7 +509,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
         style="height: 264px; position: absolute; transform: translate(24px,1320px); width: -48px;"
       >
         <div
-          class="ant-card ant-card-loading ant-card-bordered ant-card-hoverable ant-card-type-inner"
+          class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
           style="height: 100%;"
         >
           <div
@@ -981,114 +529,21 @@ exports[`test ReportStatistics should match snapshot 1`] = `
             class="ant-card-body"
           >
             <div
-              class="ant-card-loading-content"
-            >
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-22"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-8"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-15"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-6"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-18"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-13"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-9"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-4"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-3"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-16"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-            </div>
+              anglefield="count"
+              color="[\\"#1890ff\\",\\"#ffa940\\",\\"#eb2f96\\",\\"#ff9c6e\\",\\"#fadb14\\",\\"#bae637\\",\\"#ffd666\\",\\"#52c41a\\",\\"#5cdbd3\\"]"
+              colorfield="instance_type"
+              data="[{\\"count\\":0,\\"instance_type\\":\\"\\"}]"
+              h="2"
+              height="184"
+              innerradius="0.6"
+              interactions="[{\\"type\\":\\"element-active\\"}]"
+              label="{\\"type\\":\\"inner\\",\\"offset\\":\\"-50%\\",\\"content\\":\\"{value}\\",\\"style\\":{\\"textAlign\\":\\"center\\",\\"fontSize\\":14}}"
+              legend="{\\"offsetX\\":-30}"
+              locale="zh-CN"
+              padding="auto"
+              radius="1"
+              theme="light"
+            />
           </div>
         </div>
         <span
@@ -1100,7 +555,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
         style="height: 264px; position: absolute; transform: translate(24px,1608px); width: -48px;"
       >
         <div
-          class="ant-card ant-card-loading ant-card-bordered ant-card-hoverable ant-card-type-inner"
+          class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
           style="height: 100%;"
         >
           <div
@@ -1120,114 +575,21 @@ exports[`test ReportStatistics should match snapshot 1`] = `
             class="ant-card-body"
           >
             <div
-              class="ant-card-loading-content"
-            >
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-22"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-8"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-15"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-6"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-18"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-13"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-9"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-4"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-3"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-16"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-            </div>
+              anglefield="count"
+              color="[\\"#1890ff\\",\\"#ffa940\\",\\"#eb2f96\\",\\"#ff9c6e\\",\\"#fadb14\\",\\"#bae637\\",\\"#ffd666\\",\\"#52c41a\\",\\"#5cdbd3\\"]"
+              colorfield="type"
+              data="[{\\"count\\":0,\\"type\\":\\"\\"}]"
+              h="2"
+              height="184"
+              innerradius="0.6"
+              interactions="[{\\"type\\":\\"element-active\\"}]"
+              label="{\\"type\\":\\"inner\\",\\"offset\\":\\"-50%\\",\\"content\\":\\"{value}\\",\\"style\\":{\\"textAlign\\":\\"center\\",\\"fontSize\\":14}}"
+              legend="{\\"offsetX\\":-30}"
+              locale="zh-CN"
+              padding="auto"
+              radius="1"
+              theme="light"
+            />
           </div>
         </div>
         <span
@@ -1239,7 +601,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
         style="height: 264px; position: absolute; transform: translate(24px,1896px); width: -48px;"
       >
         <div
-          class="ant-card ant-card-loading ant-card-bordered ant-card-hoverable ant-card-type-inner"
+          class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
           style="height: 100%;"
         >
           <div
@@ -1259,114 +621,21 @@ exports[`test ReportStatistics should match snapshot 1`] = `
             class="ant-card-body"
           >
             <div
-              class="ant-card-loading-content"
-            >
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-22"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-8"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-15"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-6"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-18"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-13"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-9"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-4"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-3"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-16"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-            </div>
+              annotations="[{\\"type\\":\\"html\\",\\"position\\":[\\"50%\\",\\"50%\\"]}]"
+              barbackground="{}"
+              colorfield="type"
+              data="[{\\"type\\":\\"\\",\\"percent\\":0},{\\"type\\":\\"\\",\\"percent\\":0}]"
+              h="2"
+              height="184"
+              innerradius="0.2"
+              locale="zh-CN"
+              maxangle="300"
+              radius="1"
+              theme="light"
+              tooltip="{}"
+              xfield="type"
+              yfield="percent"
+            />
           </div>
         </div>
         <span
@@ -1378,7 +647,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
         style="height: 552px; position: absolute; transform: translate(24px,2184px); width: -48px;"
       >
         <div
-          class="ant-card ant-card-loading ant-card-bordered ant-card-hoverable ant-card-type-inner"
+          class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
           style="height: 100%;"
         >
           <div
@@ -1400,111 +669,111 @@ exports[`test ReportStatistics should match snapshot 1`] = `
             class="ant-card-body"
           >
             <div
-              class="ant-card-loading-content"
+              class="ant-table-wrapper"
             >
               <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
+                class="ant-spin-nested-loading"
               >
                 <div
-                  class="ant-col ant-col-22"
-                  style="padding-left: 4px; padding-right: 4px;"
+                  class="ant-spin-container"
                 >
                   <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-8"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-15"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-6"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-18"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-13"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-9"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-4"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-3"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-16"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
+                    class="ant-table ant-table-small ant-table-empty"
+                  >
+                    <div
+                      class="ant-table-container"
+                    >
+                      <div
+                        class="ant-table-content"
+                      >
+                        <table
+                          style="table-layout: auto;"
+                        >
+                          <colgroup />
+                          <thead
+                            class="ant-table-thead"
+                          >
+                            <tr>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                reportStatistics.diffUserOrderRejectRate.columns.username
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                reportStatistics.diffUserOrderRejectRate.columns.totalOrder
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                reportStatistics.diffUserOrderRejectRate.columns.rejectRate
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody
+                            class="ant-table-tbody"
+                          >
+                            <tr
+                              class="ant-table-placeholder"
+                            >
+                              <td
+                                class="ant-table-cell"
+                                colspan="3"
+                              >
+                                <div
+                                  class="ant-empty ant-empty-normal"
+                                >
+                                  <div
+                                    class="ant-empty-image"
+                                  >
+                                    <svg
+                                      class="ant-empty-img-simple"
+                                      height="41"
+                                      viewBox="0 0 64 41"
+                                      width="64"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <g
+                                        fill="none"
+                                        fill-rule="evenodd"
+                                        transform="translate(0 1)"
+                                      >
+                                        <ellipse
+                                          class="ant-empty-img-simple-ellipse"
+                                          cx="32"
+                                          cy="33"
+                                          rx="32"
+                                          ry="7"
+                                        />
+                                        <g
+                                          class="ant-empty-img-simple-g"
+                                          fill-rule="nonzero"
+                                        >
+                                          <path
+                                            d="M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z"
+                                          />
+                                          <path
+                                            class="ant-empty-img-simple-path"
+                                            d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </div>
+                                  <div
+                                    class="ant-empty-description"
+                                  >
+                                    No Data
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1519,7 +788,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
         style="height: 552px; position: absolute; transform: translate(24px,2760px); width: -48px;"
       >
         <div
-          class="ant-card ant-card-loading ant-card-bordered ant-card-hoverable ant-card-type-inner"
+          class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
           style="height: 100%;"
         >
           <div
@@ -1541,111 +810,111 @@ exports[`test ReportStatistics should match snapshot 1`] = `
             class="ant-card-body"
           >
             <div
-              class="ant-card-loading-content"
+              class="ant-table-wrapper"
             >
               <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
+                class="ant-spin-nested-loading"
               >
                 <div
-                  class="ant-col ant-col-22"
-                  style="padding-left: 4px; padding-right: 4px;"
+                  class="ant-spin-container"
                 >
                   <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-8"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-15"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-6"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-18"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-13"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-9"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-              </div>
-              <div
-                class="ant-row"
-                style="margin-left: -4px; margin-right: -4px;"
-              >
-                <div
-                  class="ant-col ant-col-4"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-3"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
-                </div>
-                <div
-                  class="ant-col ant-col-16"
-                  style="padding-left: 4px; padding-right: 4px;"
-                >
-                  <div
-                    class="ant-card-loading-block"
-                  />
+                    class="ant-table ant-table-small ant-table-empty"
+                  >
+                    <div
+                      class="ant-table-container"
+                    >
+                      <div
+                        class="ant-table-content"
+                      >
+                        <table
+                          style="table-layout: auto;"
+                        >
+                          <colgroup />
+                          <thead
+                            class="ant-table-thead"
+                          >
+                            <tr>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                reportStatistics.diffInstanceOrderRejectRate.columns.instanceName
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                reportStatistics.diffInstanceOrderRejectRate.columns.totalOrder
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                reportStatistics.diffInstanceOrderRejectRate.columns.rejectRate
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody
+                            class="ant-table-tbody"
+                          >
+                            <tr
+                              class="ant-table-placeholder"
+                            >
+                              <td
+                                class="ant-table-cell"
+                                colspan="3"
+                              >
+                                <div
+                                  class="ant-empty ant-empty-normal"
+                                >
+                                  <div
+                                    class="ant-empty-image"
+                                  >
+                                    <svg
+                                      class="ant-empty-img-simple"
+                                      height="41"
+                                      viewBox="0 0 64 41"
+                                      width="64"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <g
+                                        fill="none"
+                                        fill-rule="evenodd"
+                                        transform="translate(0 1)"
+                                      >
+                                        <ellipse
+                                          class="ant-empty-img-simple-ellipse"
+                                          cx="32"
+                                          cy="33"
+                                          rx="32"
+                                          ry="7"
+                                        />
+                                        <g
+                                          class="ant-empty-img-simple-g"
+                                          fill-rule="nonzero"
+                                        >
+                                          <path
+                                            d="M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z"
+                                          />
+                                          <path
+                                            class="ant-empty-img-simple-path"
+                                            d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </div>
+                                  <div
+                                    class="ant-empty-description"
+                                  >
+                                    No Data
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1739,6 +1008,39 @@ exports[`test ReportStatistics should match snapshot 2`] = `
       </span>
     </div>
   </div>
+  <section
+    class="padding-content"
+  >
+    <div
+      class="ant-card ant-card-bordered"
+    >
+      <div
+        class="ant-card-body"
+      >
+        reportStatistics.ceTips
+        <div
+          class="ant-typography"
+        >
+          <ul>
+            <li>
+              <a
+                href="https://actiontech.github.io/sqle-docs-cn/"
+              >
+                https://actiontech.github.io/sqle-docs-cn/
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.actionsky.com/"
+              >
+                https://www.actionsky.com/
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
   <section
     class="page-report-statistics-namespace"
   >
@@ -2000,7 +1302,7 @@ exports[`test ReportStatistics should match snapshot 2`] = `
                       placeholder="Start date"
                       readonly=""
                       size="12"
-                      value="2022-07-13"
+                      value="2022-07-12"
                     />
                   </div>
                   <div
@@ -2039,7 +1341,7 @@ exports[`test ReportStatistics should match snapshot 2`] = `
                       placeholder="End date"
                       readonly=""
                       size="12"
-                      value="2022-08-12"
+                      value="2022-08-11"
                     />
                   </div>
                   <div
@@ -2077,20 +1379,18 @@ exports[`test ReportStatistics should match snapshot 2`] = `
             class="ant-card-body"
           >
             <div
-              data-chart-source-type="G2Plot"
-              size-sensor-id="6"
-              style="height: inherit;"
-            >
-              <div
-                style="position:relative;"
-              >
-                <canvas
-                  height="256"
-                  style="width: 400px; height: 256px; display: inline-block; vertical-align: middle;"
-                  width="400"
-                />
-              </div>
-            </div>
+              color="[\\"#1890ff\\",\\"#ffa940\\",\\"#eb2f96\\",\\"#ff9c6e\\",\\"#fadb14\\",\\"#bae637\\",\\"#ffd666\\",\\"#52c41a\\",\\"#5cdbd3\\"]"
+              data="[{\\"date\\":\\"2022-08-01\\",\\"value\\":33},{\\"date\\":\\"2022-08-02\\",\\"value\\":33},{\\"date\\":\\"2022-08-03\\",\\"value\\":33},{\\"date\\":\\"2022-08-04\\",\\"value\\":33},{\\"date\\":\\"2022-08-05\\",\\"value\\":33},{\\"date\\":\\"2022-08-06\\",\\"value\\":33},{\\"date\\":\\"2022-08-07\\",\\"value\\":33},{\\"date\\":\\"2022-08-08\\",\\"value\\":33},{\\"date\\":\\"2022-08-09\\",\\"value\\":33},{\\"date\\":\\"2022-08-10\\",\\"value\\":33},{\\"date\\":\\"2022-08-11\\",\\"value\\":33},{\\"date\\":\\"2022-08-12\\",\\"value\\":33},{\\"date\\":\\"2022-08-13\\",\\"value\\":33},{\\"date\\":\\"2022-08-14\\",\\"value\\":33},{\\"date\\":\\"2022-08-15\\",\\"value\\":33},{\\"date\\":\\"2022-08-16\\",\\"value\\":33},{\\"date\\":\\"2022-08-17\\",\\"value\\":33},{\\"date\\":\\"2022-08-18\\",\\"value\\":33},{\\"date\\":\\"2022-08-19\\",\\"value\\":33},{\\"date\\":\\"2022-08-20\\",\\"value\\":33},{\\"date\\":\\"2022-08-21\\",\\"value\\":33},{\\"date\\":\\"2022-08-22\\",\\"value\\":33},{\\"date\\":\\"2022-08-23\\",\\"value\\":33},{\\"date\\":\\"2022-08-24\\",\\"value\\":33},{\\"date\\":\\"2022-08-25\\",\\"value\\":33},{\\"date\\":\\"2022-08-26\\",\\"value\\":33},{\\"date\\":\\"2022-08-27\\",\\"value\\":33},{\\"date\\":\\"2022-08-28\\",\\"value\\":33},{\\"date\\":\\"2022-08-29\\",\\"value\\":33},{\\"date\\":\\"2022-08-30\\",\\"value\\":33}]"
+              h="2.5"
+              height="256"
+              locale="zh-CN"
+              padding="auto"
+              slider="{\\"start\\":0,\\"end\\":1}"
+              theme="light"
+              xaxis="{\\"tickCount\\":7}"
+              xfield="date"
+              yfield="value"
+            />
           </div>
         </div>
         <span
@@ -2122,20 +1422,19 @@ exports[`test ReportStatistics should match snapshot 2`] = `
             class="ant-card-body"
           >
             <div
-              data-chart-source-type="G2Plot"
-              size-sensor-id="7"
-              style="height: inherit;"
-            >
-              <div
-                style="position:relative;"
-              >
-                <canvas
-                  height="256"
-                  style="width: 400px; height: 256px; display: inline-block; vertical-align: middle;"
-                  width="400"
-                />
-              </div>
-            </div>
+              anglefield="value"
+              color="[\\"#1890ff\\",\\"#ffa940\\",\\"#eb2f96\\",\\"#ff9c6e\\",\\"#fadb14\\",\\"#bae637\\",\\"#ffd666\\",\\"#52c41a\\",\\"#5cdbd3\\"]"
+              colorfield="status"
+              data="[{\\"value\\":12,\\"status\\":\\"reportStatistics.orderStatus.closed\\"},{\\"value\\":32,\\"status\\":\\"reportStatistics.orderStatus.executing\\"},{\\"value\\":22,\\"status\\":\\"reportStatistics.orderStatus.executionSuccess\\"},{\\"value\\":34,\\"status\\":\\"reportStatistics.orderStatus.rejected\\"},{\\"value\\":22,\\"status\\":\\"reportStatistics.orderStatus.waitingForAudit\\"},{\\"value\\":12,\\"status\\":\\"reportStatistics.orderStatus.waitingForExecution\\"}]"
+              h="2.5"
+              height="256"
+              interactions="[{\\"type\\":\\"element-active\\"}]"
+              label="{\\"type\\":\\"inner\\",\\"offset\\":\\"-30%\\",\\"style\\":{\\"fontSize\\":14,\\"textAlign\\":\\"center\\"}}"
+              locale="zh-CN"
+              padding="auto"
+              radius="1"
+              theme="light"
+            />
           </div>
         </div>
         <span
@@ -2167,32 +1466,21 @@ exports[`test ReportStatistics should match snapshot 2`] = `
             class="ant-card-body"
           >
             <div
-              data-chart-source-type="G2Plot"
-              size-sensor-id="8"
-              style="height: inherit;"
-            >
-              <div
-                style="position:relative;"
-              >
-                <canvas
-                  height="184"
-                  style="width: 400px; height: 184px; display: inline-block; vertical-align: middle;"
-                  width="400"
-                />
-                <div
-                  class="g2-html-annotation"
-                  style="pointer-events: none; width: 110.39999999999999px; transform: translate(-50%, -100%); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display: flex; justify-content: center; align-items: center; text-shadow:  0px 0px 0px; font-weight: 300; color: rgb(75, 83, 94); text-align: center; font-size: 20px; line-height: 1; position: absolute; left: 147.39644660940672px; top: 92px; z-index: 7;"
-                >
-                  总计
-                </div>
-                <div
-                  class="g2-html-annotation"
-                  style="pointer-events: none; width: 110.39999999999999px; transform: translate(-50%, 0); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display: flex; justify-content: center; align-items: center; text-shadow:  0px 0px 0px; font-weight: bold; color: rgba(44, 53, 66, 0.85); text-align: center; font-size: 32px; line-height: 1; position: absolute; left: 147.39644660940672px; top: 92px; z-index: 7;"
-                >
-                  90
-                </div>
-              </div>
-            </div>
+              anglefield="count"
+              color="[\\"#1890ff\\",\\"#ffa940\\",\\"#eb2f96\\",\\"#ff9c6e\\",\\"#fadb14\\",\\"#bae637\\",\\"#ffd666\\",\\"#52c41a\\",\\"#5cdbd3\\"]"
+              colorfield="instance_type"
+              data="[{\\"instance_type\\":\\"Mysql\\",\\"count\\":27},{\\"instance_type\\":\\"Oracle\\",\\"count\\":25},{\\"instance_type\\":\\"Redis\\",\\"count\\":18},{\\"instance_type\\":\\"MongoDB\\",\\"count\\":15},{\\"instance_type\\":\\"TiDB\\",\\"count\\":5}]"
+              h="2"
+              height="184"
+              innerradius="0.6"
+              interactions="[{\\"type\\":\\"element-active\\"}]"
+              label="{\\"type\\":\\"inner\\",\\"offset\\":\\"-50%\\",\\"content\\":\\"{value}\\",\\"style\\":{\\"textAlign\\":\\"center\\",\\"fontSize\\":14}}"
+              legend="{\\"offsetX\\":-30}"
+              locale="zh-CN"
+              padding="auto"
+              radius="1"
+              theme="light"
+            />
           </div>
         </div>
         <span
@@ -2224,32 +1512,21 @@ exports[`test ReportStatistics should match snapshot 2`] = `
             class="ant-card-body"
           >
             <div
-              data-chart-source-type="G2Plot"
-              size-sensor-id="9"
-              style="height: inherit;"
-            >
-              <div
-                style="position:relative;"
-              >
-                <canvas
-                  height="184"
-                  style="width: 400px; height: 184px; display: inline-block; vertical-align: middle;"
-                  width="400"
-                />
-                <div
-                  class="g2-html-annotation"
-                  style="pointer-events: none; width: 110.39999999999999px; transform: translate(-50%, -100%); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display: flex; justify-content: center; align-items: center; text-shadow:  0px 0px 0px; font-weight: 300; color: rgb(75, 83, 94); text-align: center; font-size: 20px; line-height: 1; position: absolute; left: 147.39644660940672px; top: 92px; z-index: 7;"
-                >
-                  总计
-                </div>
-                <div
-                  class="g2-html-annotation"
-                  style="pointer-events: none; width: 110.39999999999999px; transform: translate(-50%, 0); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display: flex; justify-content: center; align-items: center; text-shadow:  0px 0px 0px; font-weight: bold; color: rgba(44, 53, 66, 0.85); text-align: center; font-size: 32px; line-height: 1; position: absolute; left: 147.39644660940672px; top: 92px; z-index: 7;"
-                >
-                  90
-                </div>
-              </div>
-            </div>
+              anglefield="count"
+              color="[\\"#1890ff\\",\\"#ffa940\\",\\"#eb2f96\\",\\"#ff9c6e\\",\\"#fadb14\\",\\"#bae637\\",\\"#ffd666\\",\\"#52c41a\\",\\"#5cdbd3\\"]"
+              colorfield="type"
+              data="[{\\"type\\":\\"Mysql\\",\\"count\\":27},{\\"type\\":\\"Oracle\\",\\"count\\":25},{\\"type\\":\\"Redis\\",\\"count\\":18},{\\"type\\":\\"MongoDB\\",\\"count\\":15},{\\"type\\":\\"TiDB\\",\\"count\\":5}]"
+              h="2"
+              height="184"
+              innerradius="0.6"
+              interactions="[{\\"type\\":\\"element-active\\"}]"
+              label="{\\"type\\":\\"inner\\",\\"offset\\":\\"-50%\\",\\"content\\":\\"{value}\\",\\"style\\":{\\"textAlign\\":\\"center\\",\\"fontSize\\":14}}"
+              legend="{\\"offsetX\\":-30}"
+              locale="zh-CN"
+              padding="auto"
+              radius="1"
+              theme="light"
+            />
           </div>
         </div>
         <span
@@ -2281,39 +1558,21 @@ exports[`test ReportStatistics should match snapshot 2`] = `
             class="ant-card-body"
           >
             <div
-              data-chart-source-type="G2Plot"
-              size-sensor-id="10"
-              style="height: inherit;"
-            >
-              <div
-                style="position:relative;"
-              >
-                <canvas
-                  height="184"
-                  style="width: 400px; height: 184px; display: inline-block; vertical-align: middle;"
-                  width="400"
-                />
-                <div
-                  class="g2-html-annotation"
-                  style="pointer-events: auto; position: absolute; left: 200px; top: 92px; z-index: 7;"
-                >
-                  <div
-                    style="transform:translate(-50%,-46%)"
-                  >
-                    
-        
-                    <img
-                      alt=""
-                      height="25.392"
-                      src="logo.png"
-                      width="25.392"
-                    />
-                    
-      
-                  </div>
-                </div>
-              </div>
-            </div>
+              annotations="[{\\"type\\":\\"html\\",\\"position\\":[\\"50%\\",\\"50%\\"]}]"
+              barbackground="{}"
+              colorfield="type"
+              data="[{\\"type\\":\\"test1\\",\\"percent\\":0.1},{\\"type\\":\\"test2\\",\\"percent\\":0.2},{\\"type\\":\\"test3\\",\\"percent\\":0.3},{\\"type\\":\\"test4\\",\\"percent\\":1},{\\"type\\":\\"test4\\",\\"percent\\":0},{\\"type\\":\\"user\\",\\"percent\\":0.2}]"
+              h="2"
+              height="184"
+              innerradius="0.2"
+              locale="zh-CN"
+              maxangle="360"
+              radius="1"
+              theme="light"
+              tooltip="{}"
+              xfield="type"
+              yfield="percent"
+            />
           </div>
         </div>
         <span

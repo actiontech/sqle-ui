@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useTheme } from '@material-ui/styles';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import statistic from '../../../api/statistic';
@@ -30,7 +31,9 @@ jest.mock('@material-ui/styles', () => {
   };
 });
 
-describe.skip('test ReportStatistics', () => {
+const dateFormat = 'YYYY-MM-DD';
+
+describe('test ReportStatistics', () => {
   let scopeDispatch: jest.Mock;
 
   const mockGetTaskRejectedPercentGroupByInstanceV1 = () => {
@@ -119,6 +122,8 @@ describe.skip('test ReportStatistics', () => {
     return spy;
   };
   const useThemeMock: jest.Mock = useTheme as jest.Mock;
+  const error = console.error;
+  const realDateNow = Date.now.bind(global.Date);
 
   let getTaskCountV1Spy: jest.SpyInstance;
   let getTaskStatusCountV1Spy: jest.SpyInstance;
@@ -132,6 +137,19 @@ describe.skip('test ReportStatistics', () => {
   let getTaskRejectedPercentGroupByCreatorV1Spy: jest.SpyInstance;
   let getTaskRejectedPercentGroupByInstanceV1Spy: jest.SpyInstance;
   beforeEach(() => {
+    console.error = jest.fn((message: any) => {
+      if (
+        message.includes('React does not recognize the') ||
+        message.includes('Invalid value for prop')
+      ) {
+        return;
+      }
+      error(message);
+    });
+
+    const dateNowStub = jest.fn(() => new Date('2022-08-11T12:33:37.000Z'));
+    global.Date.now = dateNowStub as any;
+
     getTaskCountV1Spy = mockGetTaskCountV1();
     getTaskStatusCountV1Spy = mockGetTaskStatusCountV1();
     getTasksPercentCountedByInstanceTypeV1Spy =
@@ -163,9 +181,11 @@ describe.skip('test ReportStatistics', () => {
     jest.clearAllMocks();
     jest.clearAllTimers();
     scopeDispatch.mockClear();
+    console.error = error;
+    global.Date.now = realDateNow;
   });
 
-  test.skip('should match snapshot', async () => {
+  test('should match snapshot', async () => {
     const { container } = renderWithRedux(<ReportStatistics />);
     expect(container).toMatchSnapshot();
 

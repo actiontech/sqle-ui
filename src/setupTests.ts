@@ -8,7 +8,6 @@ import { initReactI18next } from 'react-i18next';
 import Enzyme from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import 'jest-canvas-mock';
-import 'jsdom-worker';
 
 global.ResizeObserver = require('resize-observer-polyfill');
 
@@ -49,18 +48,3 @@ i18n.use(initReactI18next).init({
 
   resources: { en: { translations: {} } },
 });
-
-// class CanvasPattern {
-//   constructor() {
-//     this.setTransform = jest.fn(this.setTransform.bind(this));
-//   }
-
-//   setTransform(value: any) {
-//     if (arguments.length > 0 && !(value instanceof Object))
-//       throw new TypeError(
-//         "Failed to execute 'setTransform' on 'CanvasPattern': parameter 1 ('transform') is not an object."
-//       );
-//   }
-// }
-
-// if (!window.CanvasPattern) window.CanvasPattern = CanvasPattern;

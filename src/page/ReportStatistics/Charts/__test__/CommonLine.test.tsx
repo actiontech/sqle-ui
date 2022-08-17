@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { LineConfig } from '@ant-design/plots';
 import { useTheme } from '@material-ui/styles';
 import { SupportLanguage } from '../../../../locale';
@@ -20,15 +21,25 @@ jest.mock('@material-ui/styles', () => {
   };
 });
 
-describe.skip('test CommonLine', () => {
+describe('test CommonLine', () => {
   const useThemeMock: jest.Mock = useTheme as jest.Mock;
+  const error = console.error;
 
   beforeEach(() => {
+    console.error = jest.fn((message: any) => {
+      if (message.includes('React does not recognize the')) {
+        return;
+      }
+      error(message);
+    });
     mockUseSelector({
       user: { theme: SupportTheme.LIGHT },
       locale: { language: SupportLanguage.zhCN },
     });
     useThemeMock.mockReturnValue({ common: { padding: 24 } });
+  });
+  afterEach(() => {
+    console.error = error;
   });
 
   test('should match snapshot', () => {

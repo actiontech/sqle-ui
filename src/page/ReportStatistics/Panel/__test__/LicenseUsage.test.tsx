@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
 import { useTheme } from '@material-ui/styles';
 import { render, waitFor } from '@testing-library/react';
+import React from 'react';
 import statistic from '../../../../api/statistic';
 import { SupportLanguage } from '../../../../locale';
 import { mockUseSelector } from '../../../../testUtils/mockRedux';
@@ -20,7 +22,9 @@ jest.mock('@material-ui/styles', () => {
 
 const { LicenseUsageData } = mockRequestData;
 
-describe.skip('test LicenseUsage', () => {
+describe('test LicenseUsage', () => {
+  const error = console.error;
+
   const mockGetLicenseUsageV1 = () => {
     const spy = jest.spyOn(statistic, 'getLicenseUsageV1');
     spy.mockImplementation(() => {
@@ -40,6 +44,16 @@ describe.skip('test LicenseUsage', () => {
   const useThemeMock: jest.Mock = useTheme as jest.Mock;
 
   beforeEach(() => {
+    console.error = jest.fn((message: any) => {
+      if (
+        message.includes('React does not recognize the') ||
+        message.includes('Invalid value for prop')
+      ) {
+        return;
+      }
+      error(message);
+    });
+
     jest.useFakeTimers();
 
     mockUseSelector({
@@ -54,6 +68,7 @@ describe.skip('test LicenseUsage', () => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
+    console.error = error;
   });
 
   test('should match snapshot', async () => {
@@ -78,8 +93,40 @@ describe.skip('test LicenseUsage', () => {
     const getLicenseUsageV1Spy = mockGetLicenseUsageV1();
     render(<LicenseUsage />);
     expect(getLicenseUsageV1Spy).toBeCalledTimes(1);
+  });
+
+  test('should match snapshot when environment is qa', async () => {
+    const spy = jest.spyOn(statistic, 'getLicenseUsageV1');
+    spy.mockImplementation(() => {
+      return resolveThreeSecond({
+        instances_usage: [
+          {
+            is_limited: false,
+            limit: 0,
+            resource_type: 'test1',
+            used: 10,
+          },
+          {
+            is_limited: false,
+            limit: 0,
+            resource_type: 'test2',
+            used: 110,
+          },
+        ],
+        users_usage: {
+          is_limited: false,
+          limit: 0,
+          resource_type: 'user',
+          used: 20,
+        },
+      });
+    });
+
+    const { container } = render(<LicenseUsage />);
+    expect(spy).toBeCalledTimes(1);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    expect(container).toMatchSnapshot();
   });
 });

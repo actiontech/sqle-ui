@@ -10,7 +10,7 @@ import mockRequestData from './mockRequestData';
 
 const { OrderPassPercentData } = mockRequestData;
 
-describe.skip('test OrderPassPercent', () => {
+describe('test OrderPassPercent', () => {
   const mockGetTaskPassPercentV1 = () => {
     const spy = jest.spyOn(statistic, 'getWorkflowPassPercentV1');
     spy.mockImplementation(() => resolveThreeSecond(OrderPassPercentData));
