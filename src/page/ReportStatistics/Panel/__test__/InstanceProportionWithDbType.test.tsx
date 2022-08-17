@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useTheme } from '@material-ui/styles';
 import { render, waitFor } from '@testing-library/react';
 import statistic from '../../../../api/statistic';
@@ -20,7 +21,7 @@ jest.mock('@material-ui/styles', () => {
 
 const { InstanceProportionWithDbTypeData } = mockRequestData;
 
-describe.skip('test InstanceProportionWithDbType', () => {
+describe('test InstanceProportionWithDbType', () => {
   const mockGetInstancesTypePercentV1 = () => {
     const spy = jest.spyOn(statistic, 'getInstancesTypePercentV1');
     spy.mockImplementation(() => {
@@ -37,8 +38,15 @@ describe.skip('test InstanceProportionWithDbType', () => {
     return spy;
   };
   const useThemeMock: jest.Mock = useTheme as jest.Mock;
-
+  const error = console.error;
   beforeEach(() => {
+    console.error = jest.fn((message: any) => {
+      if (message.includes('React does not recognize the')) {
+        return;
+      }
+      error(message);
+    });
+
     jest.useFakeTimers();
 
     mockUseSelector({
@@ -53,9 +61,10 @@ describe.skip('test InstanceProportionWithDbType', () => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
+    console.error = error;
   });
 
-  test.skip('should match snapshot', async () => {
+  test('should match snapshot', async () => {
     mockGetInstancesTypePercentV1();
 
     const { container } = render(<InstanceProportionWithDbType />);

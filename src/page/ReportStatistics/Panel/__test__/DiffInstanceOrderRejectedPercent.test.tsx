@@ -11,7 +11,7 @@ import mockRequestData from './mockRequestData';
 
 const { tableLimit } = reportStatisticsData;
 const { DiffInstanceOrderRejectedPercentData } = mockRequestData;
-describe.skip('test DiffInstanceOrderRejectedPercent', () => {
+describe('test DiffInstanceOrderRejectedPercent', () => {
   const mockGetTaskRejectedPercentGroupByInstanceV1 = () => {
     const spy = jest.spyOn(
       statistic,

@@ -35,6 +35,10 @@ const LicenseUsage: React.FC = () => {
     resource_type: '',
   });
 
+  const isQa = useMemo(() => {
+    return instancesUsage.some((v) => !v.is_limited);
+  }, [instancesUsage]);
+
   const data: RadialBarConfig['data'] = useMemo(() => {
     const genRadialBarData = (item: ILicenseUsageItem) => {
       if (!item.is_limited || !item.limit) {
@@ -44,16 +48,25 @@ const LicenseUsage: React.FC = () => {
           percent: item.used ?? 0,
         };
       }
+      const percent = floatRound((item.used ?? 0) / item.limit);
+
       return {
         type: item.resource_type,
-        percent: !item.used ? 0 : floatRound(item.used / item.limit),
+        percent: percent > 1 ? 1 : percent,
       };
     };
     return [
-      ...instancesUsage.map((v) => genRadialBarData(v)),
+      ...instancesUsage.map(genRadialBarData),
       genRadialBarData(userUsage),
     ];
   }, [instancesUsage, userUsage]);
+
+  const maxAngle = useMemo(() => {
+    if (isQa) {
+      return 300;
+    }
+    return 360 * Math.max(...data.map((v) => v.percent));
+  }, [data, isQa]);
 
   // https://github.com/ant-design/ant-design-charts/pull/1465
   // 但是目前这个地方的 tooltip 类型仍然没有修复..导致使用 formatter 会引发类型错误.
@@ -126,7 +139,7 @@ const LicenseUsage: React.FC = () => {
       }
     >
       <CommonRadialBar
-        {...{ ...config, data, tooltip, color }}
+        {...{ ...config, data, tooltip, color, maxAngle }}
         h={thirdLineSize.h}
       />
     </PanelWrapper>

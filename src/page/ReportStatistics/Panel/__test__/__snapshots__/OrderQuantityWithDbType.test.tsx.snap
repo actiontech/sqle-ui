@@ -23,32 +23,21 @@ exports[`test OrderQuantityWithDbType should match snapshot 1`] = `
       class="ant-card-body"
     >
       <div
-        data-chart-source-type="G2Plot"
-        size-sensor-id="2"
-        style="height: inherit;"
-      >
-        <div
-          style="position:relative;"
-        >
-          <canvas
-            height="184"
-            style="width: 400px; height: 184px; display: inline-block; vertical-align: middle;"
-            width="400"
-          />
-          <div
-            class="g2-html-annotation"
-            style="pointer-events: none; width: 110.39999999999999px; transform: translate(-50%, -100%); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display: flex; justify-content: center; align-items: center; text-shadow:  0px 0px 0px; font-weight: 300; color: rgb(75, 83, 94); text-align: center; font-size: 20px; line-height: 1; position: absolute; left: 147.39644660940672px; top: 92px; z-index: 7;"
-          >
-            总计
-          </div>
-          <div
-            class="g2-html-annotation"
-            style="pointer-events: none; width: 110.39999999999999px; transform: translate(-50%, 0); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display: flex; justify-content: center; align-items: center; text-shadow:  0px 0px 0px; font-weight: bold; color: rgba(44, 53, 66, 0.85); text-align: center; font-size: 32px; line-height: 1; position: absolute; left: 147.39644660940672px; top: 92px; z-index: 7;"
-          >
-            90
-          </div>
-        </div>
-      </div>
+        anglefield="count"
+        color="[\\"#1890ff\\",\\"#ffa940\\",\\"#eb2f96\\",\\"#ff9c6e\\",\\"#fadb14\\",\\"#bae637\\",\\"#ffd666\\",\\"#52c41a\\",\\"#5cdbd3\\"]"
+        colorfield="instance_type"
+        data="[{\\"instance_type\\":\\"Mysql\\",\\"count\\":27},{\\"instance_type\\":\\"Oracle\\",\\"count\\":25},{\\"instance_type\\":\\"Redis\\",\\"count\\":18},{\\"instance_type\\":\\"MongoDB\\",\\"count\\":15},{\\"instance_type\\":\\"TiDB\\",\\"count\\":5}]"
+        h="2"
+        height="184"
+        innerradius="0.6"
+        interactions="[{\\"type\\":\\"element-active\\"}]"
+        label="{\\"type\\":\\"inner\\",\\"offset\\":\\"-50%\\",\\"content\\":\\"{value}\\",\\"style\\":{\\"textAlign\\":\\"center\\",\\"fontSize\\":14}}"
+        legend="{\\"offsetX\\":-30}"
+        locale="zh-CN"
+        padding="auto"
+        radius="1"
+        theme="light"
+      />
     </div>
   </div>
 </div>

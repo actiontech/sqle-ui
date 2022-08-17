@@ -44,11 +44,10 @@ const OrderQuantityWithDbType: React.FC = () => {
     setData(res.data.data?.workflow_percents ?? []);
   };
 
-  const { loading, errorMessage } =
-    usePanelCommonRequest<IGetWorkflowPercentCountedByInstanceTypeV1Return>(
-      () => statistic.getWorkflowPercentCountedByInstanceTypeV1(),
-      { onSuccess }
-    );
+  const { loading, errorMessage } = usePanelCommonRequest(
+    () => statistic.getWorkflowPercentCountedByInstanceTypeV1(),
+    { onSuccess }
+  );
 
   return (
     <PanelWrapper

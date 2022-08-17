@@ -109,20 +109,18 @@ exports[`test OrderQuantityTrend should match snapshot 1`] = `
       class="ant-card-body"
     >
       <div
-        data-chart-source-type="G2Plot"
-        size-sensor-id="2"
-        style="height: inherit;"
-      >
-        <div
-          style="position:relative;"
-        >
-          <canvas
-            height="256"
-            style="width: 400px; height: 256px; display: inline-block; vertical-align: middle;"
-            width="400"
-          />
-        </div>
-      </div>
+        color="[\\"#1890ff\\",\\"#ffa940\\",\\"#eb2f96\\",\\"#ff9c6e\\",\\"#fadb14\\",\\"#bae637\\",\\"#ffd666\\",\\"#52c41a\\",\\"#5cdbd3\\"]"
+        data="[{\\"date\\":\\"2022-08-01\\",\\"value\\":33},{\\"date\\":\\"2022-08-02\\",\\"value\\":33},{\\"date\\":\\"2022-08-03\\",\\"value\\":33},{\\"date\\":\\"2022-08-04\\",\\"value\\":33},{\\"date\\":\\"2022-08-05\\",\\"value\\":33},{\\"date\\":\\"2022-08-06\\",\\"value\\":33},{\\"date\\":\\"2022-08-07\\",\\"value\\":33},{\\"date\\":\\"2022-08-08\\",\\"value\\":33},{\\"date\\":\\"2022-08-09\\",\\"value\\":33},{\\"date\\":\\"2022-08-10\\",\\"value\\":33},{\\"date\\":\\"2022-08-11\\",\\"value\\":33},{\\"date\\":\\"2022-08-12\\",\\"value\\":33},{\\"date\\":\\"2022-08-13\\",\\"value\\":33},{\\"date\\":\\"2022-08-14\\",\\"value\\":33},{\\"date\\":\\"2022-08-15\\",\\"value\\":33},{\\"date\\":\\"2022-08-16\\",\\"value\\":33},{\\"date\\":\\"2022-08-17\\",\\"value\\":33},{\\"date\\":\\"2022-08-18\\",\\"value\\":33},{\\"date\\":\\"2022-08-19\\",\\"value\\":33},{\\"date\\":\\"2022-08-20\\",\\"value\\":33},{\\"date\\":\\"2022-08-21\\",\\"value\\":33},{\\"date\\":\\"2022-08-22\\",\\"value\\":33},{\\"date\\":\\"2022-08-23\\",\\"value\\":33},{\\"date\\":\\"2022-08-24\\",\\"value\\":33},{\\"date\\":\\"2022-08-25\\",\\"value\\":33},{\\"date\\":\\"2022-08-26\\",\\"value\\":33},{\\"date\\":\\"2022-08-27\\",\\"value\\":33},{\\"date\\":\\"2022-08-28\\",\\"value\\":33},{\\"date\\":\\"2022-08-29\\",\\"value\\":33},{\\"date\\":\\"2022-08-30\\",\\"value\\":33}]"
+        h="2.5"
+        height="256"
+        locale="zh-CN"
+        padding="auto"
+        slider="{\\"start\\":0,\\"end\\":1}"
+        theme="light"
+        xaxis="{\\"tickCount\\":7}"
+        xfield="date"
+        yfield="value"
+      />
     </div>
   </div>
 </div>

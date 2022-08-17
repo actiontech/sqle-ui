@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useTheme } from '@material-ui/styles';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import moment from 'moment';
@@ -25,8 +26,9 @@ jest.mock('@material-ui/styles', () => {
 
 const { OrderQuantityTrendData } = mockRequestData;
 const dateFormat = 'YYYY-MM-DD';
+const error = console.error;
 
-describe.skip('test OrderQuantityTrend', () => {
+describe('test OrderQuantityTrend', () => {
   const mockGetTaskCreatedCountEachDayV1 = () => {
     const spy = jest.spyOn(statistic, 'getWorkflowCreatedCountEachDayV1');
     spy.mockImplementation(() => {
@@ -47,6 +49,12 @@ describe.skip('test OrderQuantityTrend', () => {
   const realDateNow = Date.now.bind(global.Date);
 
   beforeEach(() => {
+    console.error = jest.fn((message: any) => {
+      if (message.includes('React does not recognize the')) {
+        return;
+      }
+      error(message);
+    });
     const dateNowStub = jest.fn(() => new Date('2022-08-11T12:33:37.000Z'));
     global.Date.now = dateNowStub as any;
     mockUseSelector({
@@ -63,6 +71,7 @@ describe.skip('test OrderQuantityTrend', () => {
     jest.clearAllMocks();
     jest.clearAllTimers();
     global.Date.now = realDateNow;
+    console.error = error;
   });
   test('should match snapshot', async () => {
     mockGetTaskCreatedCountEachDayV1();

@@ -6,7 +6,6 @@ import { CommonChartsColors, CommonLineProps } from '.';
 import { IReduxState } from '../../../store';
 import { Theme } from '../../../types/theme.type';
 import reportStatisticsData from '../index.data';
-
 const { rowHeight } = reportStatisticsData;
 
 const CommonLine: React.FC<CommonLineProps> = (props) => {

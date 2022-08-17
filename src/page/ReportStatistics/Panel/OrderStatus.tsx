@@ -71,11 +71,10 @@ const OrderStatus: React.FC = () => {
     setData(formatData(res.data.data));
   };
 
-  const { loading, errorMessage } =
-    usePanelCommonRequest<IGetWorkflowStatusCountV1Return>(
-      () => statistic.getWorkflowStatusCountV1(),
-      { onSuccess }
-    );
+  const { loading, errorMessage } = usePanelCommonRequest(
+    () => statistic.getWorkflowStatusCountV1(),
+    { onSuccess }
+  );
 
   return (
     <PanelWrapper

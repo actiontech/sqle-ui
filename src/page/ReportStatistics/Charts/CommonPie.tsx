@@ -9,7 +9,6 @@ import { floatToPercent } from '../../../utils/Math';
 import reportStatisticsData from '../index.data';
 
 const { rowHeight } = reportStatisticsData;
-
 const CommonLine: React.FC<CommonPieProps> = (props) => {
   const {
     h,

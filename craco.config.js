@@ -64,6 +64,7 @@ module.exports = {
       ],
       moduleNameMapper: {
         'react-monaco-editor': '<rootDir>/src/testUtils/mockEditor.jsx',
+        '@ant-design/plots': '<rootDir>/src/testUtils/mockAntDesignPlots.jsx',
       },
     },
   },
@@ -98,7 +99,7 @@ module.exports = {
         const res = {};
         for (let i = 0; i < 10; i++) {
           res[`/v${i}`] = {
-            target: 'http://10.186.62.5:10000',
+            target: 'http://10.186.63.74:10000',
             secure: false,
             changeOrigin: true,
             ws: true,

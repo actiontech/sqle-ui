@@ -3,19 +3,15 @@
 exports[`test CommonLine should match snapshot 1`] = `
 <div>
   <div
-    data-chart-source-type="G2Plot"
-    size-sensor-id="1"
-    style="height: inherit;"
-  >
-    <div
-      style="position:relative;"
-    >
-      <canvas
-        height="328"
-        style="width: 400px; height: 328px; display: inline-block; vertical-align: middle;"
-        width="400"
-      />
-    </div>
-  </div>
+    color="[\\"#1890ff\\",\\"#ffa940\\",\\"#eb2f96\\",\\"#ff9c6e\\",\\"#fadb14\\",\\"#bae637\\",\\"#ffd666\\",\\"#52c41a\\",\\"#5cdbd3\\"]"
+    data="[{\\"date\\":\\"周一\\",\\"value\\":10},{\\"date\\":\\"周二\\",\\"value\\":20},{\\"date\\":\\"周三\\",\\"value\\":30},{\\"date\\":\\"周四\\",\\"value\\":40},{\\"date\\":\\"周五\\",\\"value\\":50},{\\"date\\":\\"周六\\",\\"value\\":60},{\\"date\\":\\"周日\\",\\"value\\":70}]"
+    h="3"
+    height="328"
+    locale="zh-CN"
+    padding="auto"
+    theme="light"
+    xfield="date"
+    yfield="value"
+  />
 </div>
 `;

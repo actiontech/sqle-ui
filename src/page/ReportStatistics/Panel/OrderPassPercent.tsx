@@ -20,11 +20,10 @@ const OrderPassPercent: React.FC = () => {
     );
   };
 
-  const { loading, errorMessage } =
-    usePanelCommonRequest<IGetWorkflowPassPercentV1Return>(
-      () => statistic.getWorkflowPassPercentV1(),
-      { onSuccess }
-    );
+  const { loading, errorMessage } = usePanelCommonRequest(
+    () => statistic.getWorkflowPassPercentV1(),
+    { onSuccess }
+  );
 
   return (
     <PanelWrapper

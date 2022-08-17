@@ -55,11 +55,10 @@ const OrderQuantityTrend: React.FC = () => {
       defaultRangeValue[1]!.format(dateFormat),
   };
 
-  const { loading, errorMessage, refreshAction } =
-    usePanelCommonRequest<IGetWorkflowCreatedCountEachDayV1Return>(
-      () => statistic.getWorkflowCreatedCountEachDayV1(param),
-      { onSuccess }
-    );
+  const { loading, errorMessage, refreshAction } = usePanelCommonRequest(
+    () => statistic.getWorkflowCreatedCountEachDayV1(param),
+    { onSuccess }
+  );
 
   const disabledDate = (current: moment.Moment) => {
     return (
