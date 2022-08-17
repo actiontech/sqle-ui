@@ -25,6 +25,7 @@ const CreateAuditPlan = () => {
         audit_plan_name: values.name,
         audit_plan_type: values.auditTaskType,
         audit_plan_params: values.asyncParams,
+        rule_template_name: values.ruleTemplateName,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {

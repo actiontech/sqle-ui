@@ -92,6 +92,8 @@ export interface IAuditPlanResV1 {
   audit_plan_name?: string;
 
   audit_plan_token?: string;
+
+  rule_template_name?: string;
 }
 
 export interface IAuditPlanSQLReqV1 {
@@ -250,6 +252,8 @@ export interface ICreateAuditPlanReqV1 {
   audit_plan_params?: IAuditPlanParamReqV1[];
 
   audit_plan_type?: string;
+
+  rule_template_name?: string;
 }
 
 export interface ICreateAuditWhitelistReqV1 {
@@ -1538,6 +1542,8 @@ export interface IUpdateAuditPlanReqV1 {
   audit_plan_instance_name?: string;
 
   audit_plan_params?: IAuditPlanParamReqV1[];
+
+  rule_template_name?: string;
 }
 
 export interface IUpdateAuditTaskSQLsReqV1 {

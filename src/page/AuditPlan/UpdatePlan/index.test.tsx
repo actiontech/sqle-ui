@@ -14,6 +14,7 @@ import {
   mockDriver,
   mockUseInstance,
   mockUseInstanceSchema,
+  mockUseRuleTemplate,
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
@@ -48,6 +49,7 @@ describe('UpdateAuditPlan', () => {
     mockUseInstanceSchema();
     mockGetAuditPlan();
     mockGetAuditMeta();
+    mockUseRuleTemplate();
   });
 
   afterEach(() => {
@@ -110,6 +112,15 @@ describe('UpdateAuditPlan', () => {
     expect(schemaOptions[1]).toHaveClass('ant-select-item-option-content');
     fireEvent.click(schemaOptions[1]);
 
+    fireEvent.mouseDown(
+      screen.getByLabelText('auditPlan.planForm.ruleTemplateName')
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const ruleTemplateOptions = screen.getAllByText('rule_template_name1');
+    fireEvent.click(ruleTemplateOptions[0]);
+
     fireEvent.click(screen.getByText('字段c'));
 
     fireEvent.click(screen.getByText('common.submit'));
@@ -123,6 +134,7 @@ describe('UpdateAuditPlan', () => {
       audit_plan_instance_database: 'schema1',
       audit_plan_instance_name: 'db1',
       audit_plan_name: 'auditPlanName1',
+      rule_template_name: 'rule_template_name1',
       audit_plan_params: [
         {
           key: 'a',

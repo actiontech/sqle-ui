@@ -1,14 +1,16 @@
 import { useBoolean } from 'ahooks';
-import { Button, Form, Input, Space } from 'antd';
+import { Button, Form, Input, Select, Space } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IAuditPlanParamResV1 } from '../../../api/common';
 import useAsyncParams from '../../../components/BackendForm/useAsyncParams';
 import CronInput from '../../../components/CronInput';
+import EmptyBox from '../../../components/EmptyBox';
 import { PageBigFormLayout } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { checkCron } from '../../../hooks/useCron/cron.tool';
+import useRuleTemplate from '../../../hooks/useRuleTemplate';
 import EventEmitter from '../../../utils/EventEmitter';
 import { nameRule } from '../../../utils/FormRule';
 import { AuditTaskType } from './AuditTaskType';
@@ -31,6 +33,11 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
   >([]);
 
   const { mergeFromValueIntoParams } = useAsyncParams();
+  const {
+    generateRuleTemplateSelectOption,
+    loading: getRuleTemplateLoading,
+    updateRuleTemplateList,
+  } = useRuleTemplate();
 
   const submit = (values: PlanFormField) => {
     if (values.params && asyncParams) {
@@ -61,6 +68,7 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
         schema: props.defaultValue.audit_plan_instance_database,
         cron: props.defaultValue.audit_plan_cron,
         dbType: props.defaultValue.audit_plan_db_type,
+        ruleTemplateName: props.defaultValue.rule_template_name,
       });
       if (!!props.defaultValue.audit_plan_instance_name) {
         setDataSource(props.defaultValue.audit_plan_instance_name);
@@ -69,6 +77,7 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
         setDbType(props.defaultValue.audit_plan_db_type);
       }
     }
+    updateRuleTemplateList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.defaultValue]);
 
@@ -113,6 +122,20 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
         updateCurrentTypeParams={setAsyncParams}
         defaultValue={props.defaultValue}
       />
+
+      <EmptyBox if={!!dbType}>
+        <Form.Item
+          label={t('auditPlan.planForm.ruleTemplateName')}
+          name="ruleTemplateName"
+          tooltip={t('auditPlan.planForm.ruleTemplateNameTips')}
+        >
+          <Select>
+            {!getRuleTemplateLoading &&
+              generateRuleTemplateSelectOption(dbType)}
+          </Select>
+        </Form.Item>
+      </EmptyBox>
+
       <Form.Item
         label={t('auditPlan.planForm.cron')}
         name="cron"

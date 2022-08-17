@@ -16,6 +16,7 @@ import {
   mockDriver,
   mockUseInstance,
   mockUseInstanceSchema,
+  mockUseRuleTemplate,
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
@@ -26,6 +27,7 @@ import { auditTaskMetas } from './__testData__/auditMeta';
 describe('PlanForm', () => {
   let warningSpy!: jest.SpyInstance;
   let useInstanceSpy!: jest.SpyInstance;
+  let useRuleTemplateSpy!: jest.SpyInstance;
   beforeAll(() => {
     const warning = global.console.warn;
     warningSpy = jest.spyOn(global.console, 'warn');
@@ -44,6 +46,7 @@ describe('PlanForm', () => {
     mockUseInstanceSchema();
     mockGetInstance();
     mockGetAuditMeta();
+    useRuleTemplateSpy = mockUseRuleTemplate();
   });
 
   afterEach(() => {
@@ -169,6 +172,15 @@ describe('PlanForm', () => {
       jest.advanceTimersByTime(0);
     });
 
+    fireEvent.mouseDown(
+      screen.getByLabelText('auditPlan.planForm.ruleTemplateName')
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const ruleTemplateOptions = screen.getAllByText('rule_template_name1');
+    fireEvent.click(ruleTemplateOptions[1]);
+
     fireEvent.click(screen.getByText('common.submit'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
@@ -201,6 +213,7 @@ describe('PlanForm', () => {
         },
       ],
       auditTaskType: 'normal',
+      ruleTemplateName: 'rule_template_name1',
     });
 
     await waitFor(() => {
@@ -278,5 +291,35 @@ describe('PlanForm', () => {
     expect(
       screen.getByText(AuditPlan.audit_plan_meta.audit_plan_type_desc)
     ).toHaveClass('ant-select-selection-item');
+  });
+
+  test('should be rendered rule template name select form item when data source type is selected', async () => {
+    const submitFn = jest.fn();
+    expect(useRuleTemplateSpy).toBeCalledTimes(0);
+    render(<PlanForm submit={submitFn} />);
+    expect(useRuleTemplateSpy).toBeCalledTimes(1);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.queryByLabelText('auditPlan.planForm.ruleTemplateName')
+    ).not.toBeInTheDocument();
+
+    fireEvent.mouseDown(
+      screen.getByLabelText('auditPlan.planForm.databaseName')
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const instanceOptions = screen.getAllByText('instance1');
+    const instance = instanceOptions[1];
+    expect(instance).toHaveClass('ant-select-item-option-content');
+    fireEvent.click(instance);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.queryByLabelText('auditPlan.planForm.ruleTemplateName')
+    ).toBeInTheDocument();
   });
 });

@@ -40,6 +40,10 @@ export const planListTableHeader = (
       title: () => i18n.t('auditPlan.list.table.audit_plan_db_type'),
     },
     {
+      dataIndex: 'rule_template_name',
+      title: () => i18n.t('auditPlan.list.table.audit_rule_template'),
+    },
+    {
       dataIndex: 'audit_plan_token',
       title: () => i18n.t('auditPlan.list.table.audit_plan_token'),
       render: (text) => {

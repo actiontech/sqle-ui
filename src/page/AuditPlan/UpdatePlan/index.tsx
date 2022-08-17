@@ -28,6 +28,7 @@ const UpdateAuditPlan = () => {
         audit_plan_instance_name: values.databaseName,
         audit_plan_name: urlParams.auditPlanName,
         audit_plan_params: values.asyncParams,
+        rule_template_name: values.ruleTemplateName,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {

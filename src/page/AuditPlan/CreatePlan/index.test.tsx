@@ -9,6 +9,7 @@ import {
   mockDriver,
   mockUseInstance,
   mockUseInstanceSchema,
+  mockUseRuleTemplate,
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
@@ -34,6 +35,7 @@ describe('CreatePlan', () => {
     mockUseInstance();
     mockUseInstanceSchema();
     mockGetInstance();
+    mockUseRuleTemplate();
     mockGetAuditMeta();
   });
 
@@ -117,6 +119,15 @@ describe('CreatePlan', () => {
       jest.advanceTimersByTime(0);
     });
 
+    fireEvent.mouseDown(
+      screen.getByLabelText('auditPlan.planForm.ruleTemplateName')
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const ruleTemplateOptions = screen.getAllByText('rule_template_name1');
+    fireEvent.click(ruleTemplateOptions[1]);
+
     fireEvent.click(screen.getByText('common.submit'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
@@ -144,6 +155,7 @@ describe('CreatePlan', () => {
         },
       ],
       audit_plan_type: 'normal',
+      rule_template_name: 'rule_template_name1',
     });
 
     await waitFor(() => {

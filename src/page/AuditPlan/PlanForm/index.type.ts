@@ -8,6 +8,7 @@ export type PlanFormField = {
   dbType: string;
   cron: string;
   auditTaskType: string;
+  ruleTemplateName?: string;
   params?: {
     [key: string]: string | boolean;
   };
