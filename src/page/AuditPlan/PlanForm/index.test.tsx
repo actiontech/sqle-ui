@@ -323,4 +323,51 @@ describe('PlanForm', () => {
         ?.parentElement
     ).not.toHaveClass('ant-form-item-hidden');
   });
+
+  test('should empty rule template name when changing database type', async () => {
+    const submitFn = jest.fn();
+    render(<PlanForm submit={submitFn} />);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    fireEvent.mouseDown(screen.getByLabelText('auditPlan.planForm.dbType'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const mysqlOptions = screen.getAllByText('mysql');
+    const mysql = mysqlOptions[1];
+    fireEvent.click(mysql);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    fireEvent.mouseDown(
+      screen.getByLabelText('auditPlan.planForm.ruleTemplateName')
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const ruleTemplateOptions = screen.getAllByText('rule_template_name1');
+    fireEvent.click(ruleTemplateOptions[1]);
+
+    expect(screen.getAllByText('rule_template_name1')[0]).toHaveClass(
+      'ant-select-selection-item'
+    );
+
+    fireEvent.mouseDown(screen.getByLabelText('auditPlan.planForm.dbType'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const oracleOptions = screen.getAllByText('oracle');
+    const oracle = oracleOptions[1];
+    fireEvent.click(oracle);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(screen.getAllByText('rule_template_name1')[0]).not.toHaveClass(
+      'ant-select-selection-item'
+    );
+  });
 });
