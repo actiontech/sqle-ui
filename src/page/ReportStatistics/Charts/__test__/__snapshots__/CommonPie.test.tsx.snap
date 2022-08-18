@@ -3,19 +3,18 @@
 exports[`test CommonLine should match snapshot 1`] = `
 <div>
   <div
-    data-chart-source-type="G2Plot"
-    size-sensor-id="1"
-    style="height: inherit;"
-  >
-    <div
-      style="position:relative;"
-    >
-      <canvas
-        height="328"
-        style="width: 400px; height: 328px; display: inline-block; vertical-align: middle;"
-        width="400"
-      />
-    </div>
-  </div>
+    anglefield="percent"
+    color="[\\"#1890ff\\",\\"#ffa940\\",\\"#eb2f96\\",\\"#ff9c6e\\",\\"#fadb14\\",\\"#bae637\\",\\"#ffd666\\",\\"#52c41a\\",\\"#5cdbd3\\"]"
+    colorfield="instance_type"
+    data="[{\\"instance_type\\":\\"Mysql\\",\\"percent\\":27},{\\"instance_type\\":\\"Oracle\\",\\"percent\\":25},{\\"instance_type\\":\\"Redis\\",\\"percent\\":18},{\\"instance_type\\":\\"MongoDB\\",\\"percent\\":15},{\\"instance_type\\":\\"TiDB\\",\\"percent\\":5}]"
+    h="3"
+    height="328"
+    interactions="[{\\"type\\":\\"element-active\\"}]"
+    label="{\\"type\\":\\"inner\\",\\"offset\\":\\"-30%\\",\\"style\\":{\\"fontSize\\":14,\\"textAlign\\":\\"center\\"}}"
+    locale="zh-CN"
+    padding="auto"
+    radius="1"
+    theme="light"
+  />
 </div>
 `;

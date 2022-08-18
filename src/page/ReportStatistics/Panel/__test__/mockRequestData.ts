@@ -56,7 +56,7 @@ const InstanceProportionWithDbTypeData: IInstancesTypePercentV1 = {
 const LicenseUsageData: ILicenseUsageV1 = {
   instances_usage: [
     {
-      is_limited: false,
+      is_limited: true,
       limit: 100,
       resource_type: 'test1',
       used: 10,
@@ -69,7 +69,7 @@ const LicenseUsageData: ILicenseUsageV1 = {
     },
     {
       is_limited: true,
-      limit: 0,
+      limit: 100,
       resource_type: 'test3',
       used: 30,
     },
@@ -87,6 +87,7 @@ const LicenseUsageData: ILicenseUsageV1 = {
     },
   ],
   users_usage: {
+    is_limited: true,
     limit: 100,
     resource_type: 'user',
     used: 20,

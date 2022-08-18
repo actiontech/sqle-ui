@@ -23,20 +23,19 @@ exports[`test OrderStatus should match snapshot 1`] = `
       class="ant-card-body"
     >
       <div
-        data-chart-source-type="G2Plot"
-        size-sensor-id="2"
-        style="height: inherit;"
-      >
-        <div
-          style="position:relative;"
-        >
-          <canvas
-            height="256"
-            style="width: 400px; height: 256px; display: inline-block; vertical-align: middle;"
-            width="400"
-          />
-        </div>
-      </div>
+        anglefield="value"
+        color="[\\"#1890ff\\",\\"#ffa940\\",\\"#eb2f96\\",\\"#ff9c6e\\",\\"#fadb14\\",\\"#bae637\\",\\"#ffd666\\",\\"#52c41a\\",\\"#5cdbd3\\"]"
+        colorfield="status"
+        data="[{\\"value\\":12,\\"status\\":\\"reportStatistics.orderStatus.closed\\"},{\\"value\\":32,\\"status\\":\\"reportStatistics.orderStatus.executing\\"},{\\"value\\":22,\\"status\\":\\"reportStatistics.orderStatus.executionSuccess\\"},{\\"value\\":34,\\"status\\":\\"reportStatistics.orderStatus.rejected\\"},{\\"value\\":22,\\"status\\":\\"reportStatistics.orderStatus.waitingForAudit\\"},{\\"value\\":12,\\"status\\":\\"reportStatistics.orderStatus.waitingForExecution\\"}]"
+        h="2.5"
+        height="256"
+        interactions="[{\\"type\\":\\"element-active\\"}]"
+        label="{\\"type\\":\\"inner\\",\\"offset\\":\\"-30%\\",\\"style\\":{\\"fontSize\\":14,\\"textAlign\\":\\"center\\"}}"
+        locale="zh-CN"
+        padding="auto"
+        radius="1"
+        theme="light"
+      />
     </div>
   </div>
 </div>

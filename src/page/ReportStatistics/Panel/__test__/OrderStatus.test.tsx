@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useTheme } from '@material-ui/styles';
 import { render, waitFor } from '@testing-library/react';
 import statistic from '../../../../api/statistic';
@@ -19,8 +20,9 @@ jest.mock('@material-ui/styles', () => {
 });
 
 const { OrderStatusData } = mockRequestData;
+const error = console.error;
 
-describe.skip('test OrderStatus', () => {
+describe('test OrderStatus', () => {
   const mockGetTaskStatusCountV1 = () => {
     const spy = jest.spyOn(statistic, 'getWorkflowStatusCountV1');
     spy.mockImplementation(() => {
@@ -40,6 +42,12 @@ describe.skip('test OrderStatus', () => {
   const useThemeMock: jest.Mock = useTheme as jest.Mock;
 
   beforeEach(() => {
+    console.error = jest.fn((message: any) => {
+      if (message.includes('React does not recognize the')) {
+        return;
+      }
+      error(message);
+    });
     jest.useFakeTimers();
 
     mockUseSelector({
@@ -54,6 +62,7 @@ describe.skip('test OrderStatus', () => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
+    console.error = error;
   });
 
   it('should match snapshot', async () => {
