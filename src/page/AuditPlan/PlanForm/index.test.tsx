@@ -314,7 +314,6 @@ describe('PlanForm', () => {
     });
     const instanceOptions = screen.getAllByText('instance1');
     const instance = instanceOptions[1];
-    expect(instance).toHaveClass('ant-select-item-option-content');
     fireEvent.click(instance);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);

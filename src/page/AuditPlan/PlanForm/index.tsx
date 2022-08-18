@@ -14,7 +14,7 @@ import useRuleTemplate from '../../../hooks/useRuleTemplate';
 import EventEmitter from '../../../utils/EventEmitter';
 import { nameRule } from '../../../utils/FormRule';
 import { AuditTaskType } from './AuditTaskType';
-import { DataSource } from './DataSource';
+import { DataSource, DataSourceProps } from './DataSource';
 import { PlanFormField, PlanFormProps } from './index.type';
 
 const PlanForm: React.FC<PlanFormProps> = (props) => {
@@ -58,6 +58,13 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
     } else {
       form.resetFields();
     }
+  };
+
+  const dbTypeChange: DataSourceProps['dbTypeChange'] = (dbType) => {
+    setDbType(dbType);
+    form.setFieldsValue({
+      ruleTemplateName: undefined,
+    });
   };
 
   useEffect(() => {
@@ -113,7 +120,7 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
         dataSource={dataSource}
         form={form}
         dataSourceChange={setDataSource}
-        dbTypeChange={setDbType}
+        dbTypeChange={dbTypeChange}
         defaultValue={props.defaultValue}
       />
       <AuditTaskType
@@ -129,7 +136,7 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
         name="ruleTemplateName"
         tooltip={t('auditPlan.planForm.ruleTemplateNameTips')}
       >
-        <Select>
+        <Select placeholder={t('common.form.placeholder.select')}>
           {!getRuleTemplateLoading && generateRuleTemplateSelectOption(dbType)}
         </Select>
       </Form.Item>

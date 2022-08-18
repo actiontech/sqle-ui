@@ -389,7 +389,9 @@ exports[`PlanForm should match snapshot 1`] = `
                 </span>
                 <span
                   class="ant-select-selection-placeholder"
-                />
+                >
+                  common.form.placeholder.select
+                </span>
               </div>
               <span
                 aria-hidden="true"
@@ -4134,7 +4136,9 @@ exports[`PlanForm should submit form value when user input all required fields a
                 </span>
                 <span
                   class="ant-select-selection-placeholder"
-                />
+                >
+                  common.form.placeholder.select
+                </span>
               </div>
               <span
                 aria-hidden="true"
