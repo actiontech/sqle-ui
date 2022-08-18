@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import PlanList from '.';
 import audit_plan from '../../../api/audit_plan';
@@ -10,9 +11,9 @@ import { AuditPlanList } from './__testData__';
 describe('PlanList', () => {
   let dispatchSpy!: jest.SpyInstance;
 
-  let conoleError: any;
+  let consoleError: any;
   beforeAll(() => {
-    conoleError = console.error;
+    consoleError = console.error;
     console.error = (...args: any[]) => {
       if (
         args[0].includes(
@@ -21,7 +22,7 @@ describe('PlanList', () => {
       ) {
         return;
       }
-      conoleError(...args);
+      consoleError(...args);
     };
   });
 
@@ -46,7 +47,7 @@ describe('PlanList', () => {
   });
 
   afterAll(() => {
-    console.error = conoleError;
+    console.error = consoleError;
   });
 
   const mockGetAuditPlan = () => {
@@ -143,6 +144,7 @@ describe('PlanList', () => {
         audit_plan_db_type: 'mysql',
         audit_plan_instance_database: 'sqle',
         audit_plan_instance_name: 'db1',
+        rule_template_name: 'rule_template_name1',
         audit_plan_meta: {
           audit_plan_params: [],
           audit_plan_type: 'audit_for_java_app',

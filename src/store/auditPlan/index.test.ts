@@ -14,6 +14,7 @@ describe('store/auditPlan', () => {
         audit_plan_db_type: 'mysql',
         audit_plan_instance_database: 'sqle',
         audit_plan_instance_name: 'db1',
+        rule_template_name: 'rule_template_name1',
         audit_plan_meta: {
           audit_plan_params: [],
           audit_plan_type: 'audit_for_java_app',

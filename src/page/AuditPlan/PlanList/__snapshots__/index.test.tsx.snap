@@ -155,6 +155,11 @@ exports[`PlanList should match snapshot 1`] = `
                         <th
                           class="ant-table-cell"
                         >
+                          auditPlan.list.table.audit_rule_template
+                        </th>
+                        <th
+                          class="ant-table-cell"
+                        >
                           auditPlan.list.table.audit_plan_token
                         </th>
                         <th
@@ -172,7 +177,7 @@ exports[`PlanList should match snapshot 1`] = `
                       >
                         <td
                           class="ant-table-cell"
-                          colspan="8"
+                          colspan="9"
                         >
                           <div
                             class="ant-empty ant-empty-normal"
@@ -368,6 +373,11 @@ exports[`PlanList should match snapshot 2`] = `
                         <th
                           class="ant-table-cell"
                         >
+                          auditPlan.list.table.audit_rule_template
+                        </th>
+                        <th
+                          class="ant-table-cell"
+                        >
                           auditPlan.list.table.audit_plan_token
                         </th>
                         <th
@@ -413,6 +423,11 @@ exports[`PlanList should match snapshot 2`] = `
                           class="ant-table-cell"
                         >
                           mysql
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          rule_template_name1
                         </td>
                         <td
                           class="ant-table-cell"
@@ -563,6 +578,11 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
+                          rule_template_name2
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
                           <div
                             class="ant-row ant-row-middle"
                           >
@@ -705,6 +725,11 @@ exports[`PlanList should match snapshot 2`] = `
                           class="ant-table-cell"
                         >
                           mysql
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          rule_template_name3
                         </td>
                         <td
                           class="ant-table-cell"
@@ -855,6 +880,11 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
+                          rule_template_name4
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
                           <div
                             class="ant-row ant-row-middle"
                           >
@@ -997,6 +1027,11 @@ exports[`PlanList should match snapshot 2`] = `
                           class="ant-table-cell"
                         >
                           mysql
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          rule_template_name5
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1145,6 +1180,11 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
+                          rule_template_name6
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
                           <div
                             class="ant-row ant-row-middle"
                           >
@@ -1286,6 +1326,9 @@ exports[`PlanList should match snapshot 2`] = `
                         >
                           mysql
                         </td>
+                        <td
+                          class="ant-table-cell"
+                        />
                         <td
                           class="ant-table-cell"
                         >
@@ -1432,6 +1475,9 @@ exports[`PlanList should match snapshot 2`] = `
                         </td>
                         <td
                           class="ant-table-cell"
+                        />
+                        <td
+                          class="ant-table-cell"
                         >
                           <div
                             class="ant-row ant-row-middle"
@@ -1576,6 +1622,9 @@ exports[`PlanList should match snapshot 2`] = `
                         </td>
                         <td
                           class="ant-table-cell"
+                        />
+                        <td
+                          class="ant-table-cell"
                         >
                           <div
                             class="ant-row ant-row-middle"
@@ -1718,6 +1767,9 @@ exports[`PlanList should match snapshot 2`] = `
                         >
                           oracle
                         </td>
+                        <td
+                          class="ant-table-cell"
+                        />
                         <td
                           class="ant-table-cell"
                         >
@@ -2120,6 +2172,11 @@ exports[`PlanList should match snapshot 3`] = `
                         <th
                           class="ant-table-cell"
                         >
+                          auditPlan.list.table.audit_rule_template
+                        </th>
+                        <th
+                          class="ant-table-cell"
+                        >
                           auditPlan.list.table.audit_plan_token
                         </th>
                         <th
@@ -2165,6 +2222,11 @@ exports[`PlanList should match snapshot 3`] = `
                           class="ant-table-cell"
                         >
                           mysql
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          rule_template_name1
                         </td>
                         <td
                           class="ant-table-cell"
@@ -2315,6 +2377,11 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
+                          rule_template_name2
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
                           <div
                             class="ant-row ant-row-middle"
                           >
@@ -2457,6 +2524,11 @@ exports[`PlanList should match snapshot 3`] = `
                           class="ant-table-cell"
                         >
                           mysql
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          rule_template_name3
                         </td>
                         <td
                           class="ant-table-cell"
@@ -2607,6 +2679,11 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
+                          rule_template_name4
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
                           <div
                             class="ant-row ant-row-middle"
                           >
@@ -2749,6 +2826,11 @@ exports[`PlanList should match snapshot 3`] = `
                           class="ant-table-cell"
                         >
                           mysql
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          rule_template_name5
                         </td>
                         <td
                           class="ant-table-cell"
@@ -2897,6 +2979,11 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
+                          rule_template_name6
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
                           <div
                             class="ant-row ant-row-middle"
                           >
@@ -3038,6 +3125,9 @@ exports[`PlanList should match snapshot 3`] = `
                         >
                           mysql
                         </td>
+                        <td
+                          class="ant-table-cell"
+                        />
                         <td
                           class="ant-table-cell"
                         >
@@ -3184,6 +3274,9 @@ exports[`PlanList should match snapshot 3`] = `
                         </td>
                         <td
                           class="ant-table-cell"
+                        />
+                        <td
+                          class="ant-table-cell"
                         >
                           <div
                             class="ant-row ant-row-middle"
@@ -3328,6 +3421,9 @@ exports[`PlanList should match snapshot 3`] = `
                         </td>
                         <td
                           class="ant-table-cell"
+                        />
+                        <td
+                          class="ant-table-cell"
                         >
                           <div
                             class="ant-row ant-row-middle"
@@ -3470,6 +3566,9 @@ exports[`PlanList should match snapshot 3`] = `
                         >
                           oracle
                         </td>
+                        <td
+                          class="ant-table-cell"
+                        />
                         <td
                           class="ant-table-cell"
                         >

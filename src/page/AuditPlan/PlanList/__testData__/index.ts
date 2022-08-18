@@ -5,6 +5,7 @@ export const AuditPlanList = [
     audit_plan_instance_database: 'sqle',
     audit_plan_instance_name: 'db1',
     audit_plan_name: 'audit_for_java_app11',
+    rule_template_name: 'rule_template_name1',
     audit_plan_token:
       'wkpjrnbuneufaljqxijggisjedhpwlhippscklduloxbgymgvwkvhuurmyjiqbaiufvadmkncenueesmbqjqeudkbqdhvihiwzrsdrqbluhashusgzemonxivbsrz',
     audit_plan_meta: {
@@ -20,6 +21,7 @@ export const AuditPlanList = [
     audit_plan_instance_database: 'sqle',
     audit_plan_instance_name: 'db1',
     audit_plan_name: 'audit_for_java_app12',
+    rule_template_name: 'rule_template_name2',
     audit_plan_token:
       'itfpkfctmologkcspmlxwugumdvfslgbgcisqczpehskfjprctfkeuebywxrwsnseltrmsnpwrilahilbxeycpksttfnfbevkrsundytiflrvfccthmrnmorjqfso',
     audit_plan_meta: {
@@ -35,6 +37,7 @@ export const AuditPlanList = [
     audit_plan_instance_database: 'sqle',
     audit_plan_instance_name: 'db1',
     audit_plan_name: 'audit_for_java_app13',
+    rule_template_name: 'rule_template_name3',
     audit_plan_token:
       'aqulzprcpvtydznpplswiijhxsufviotqtfxkocpoukqsiugkmpsnmslnftfdeynbiiobvsguanlktvupflxqaeyjsftedqsuwmxabixdhpekbehnxxqrrjolncmw',
     audit_plan_meta: {
@@ -50,6 +53,7 @@ export const AuditPlanList = [
     audit_plan_instance_database: 'sqle',
     audit_plan_instance_name: 'db1',
     audit_plan_name: 'audit_for_java_app14',
+    rule_template_name: 'rule_template_name4',
     audit_plan_token:
       'nsucohfvciisgsisgythudugjianedqdwvvlefrclxydqxryffrwsunwlhclrboagskhhqpgqthkrwbqhwgziqrdxxswoltlocxaholiwoqpouknqcwelxbekdmjl',
     audit_plan_meta: {
@@ -65,6 +69,7 @@ export const AuditPlanList = [
     audit_plan_instance_database: 'sqle',
     audit_plan_instance_name: 'db1',
     audit_plan_name: 'audit_for_java_app15',
+    rule_template_name: 'rule_template_name5',
     audit_plan_token:
       'oobxrdhaggcwrncxctgtrkmpsrhqlscrxqrrwjqdinxvehvcnhfjmnbefrdmfsuwwfwncqgynnjmwhperpwmmnyhnrszrusrtyaywfuzklnbfvtiaeuxqqhfssuiu',
     audit_plan_meta: {
@@ -80,6 +85,7 @@ export const AuditPlanList = [
     audit_plan_instance_database: 'sqle',
     audit_plan_instance_name: 'db1',
     audit_plan_name: 'audit_for_java_app16',
+    rule_template_name: 'rule_template_name6',
     audit_plan_token:
       'ecylwymxtxpvqhkqmtlgqubfudpmurqofvsrvrviihnmzwgtukvqsljvwqdbpxoijeqzvjjttkcmisfspscldihwbktuzuikwxbcstlntldconobxgnqnvoizkunp',
   },
@@ -127,6 +133,7 @@ export const AuditPlan = {
   audit_plan_instance_database: 'sqle',
   audit_plan_instance_name: 'db1',
   audit_plan_name: 'audit_for_java_app20',
+  rule_template_name: 'rule_template_name1',
   audit_plan_token:
     'tidubrvskubhlwtqqexgnjqehlvrgoggmcmwokwetcpmocxyyohgcrctijsmkgiwisetjnursctznwcqayztiwnjnihmphfegfnoubexphwhzzgzjhufculijanuv',
   audit_plan_meta: {
