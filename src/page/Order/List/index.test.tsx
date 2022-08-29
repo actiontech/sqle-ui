@@ -39,7 +39,7 @@ describe('Order/List', () => {
         {
           create_time: '2021-04-29T05:41:24Z',
           create_user_name: 'admin',
-          current_step_assignee_user_name_list: ['admin'],
+          current_step_assignee_user_name_list: ['admin', 'test'],
           current_step_type: 'sql_execute',
           desc: '',
           status: 'on_process',
