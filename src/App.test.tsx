@@ -74,7 +74,7 @@ describe('App test', () => {
     const Switch = Nav.find('Switch');
     expect(Switch.length).toBe(1);
     const routes = Switch.find('Route');
-    expect(routes.length).toBe(12);
+    expect(routes.length).toBe(11);
     const redirect = Switch.find('Redirect');
     expect(redirect.length).toBe(1);
     expect(redirect.at(0).prop('to')).toBe('/');
