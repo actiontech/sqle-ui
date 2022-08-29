@@ -1,4 +1,4 @@
-import { Tooltip, Typography } from 'antd';
+import { Tag, Tooltip, Typography } from 'antd';
 import i18n from 'i18next';
 import { IWorkflowDetailResV1 } from '../../../api/common';
 import { getWorkflowListV1FilterCurrentStepTypeEnum } from '../../../api/workflow/index.enum';
@@ -62,6 +62,11 @@ export const orderListColumn = (): TableColumn<IWorkflowDetailResV1> => {
     {
       dataIndex: 'current_step_assignee_user_name_list',
       title: () => i18n.t('order.order.assignee'),
+      render: (list: string[]) => {
+        return list?.map((v) => {
+          return <Tag key={v}>{v}</Tag>;
+        });
+      },
     },
     {
       dataIndex: 'task_instance_name',

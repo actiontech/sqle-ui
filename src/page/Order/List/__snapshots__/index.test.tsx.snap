@@ -4567,7 +4567,16 @@ exports[`Order/List should render order list by response data 2`] = `
                               <td
                                 class="ant-table-cell"
                               >
-                                admin
+                                <span
+                                  class="ant-tag"
+                                >
+                                  admin
+                                </span>
+                                <span
+                                  class="ant-tag"
+                                >
+                                  test
+                                </span>
                               </td>
                               <td
                                 class="ant-table-cell"
