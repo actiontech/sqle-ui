@@ -166,6 +166,7 @@ export const routerConfig: RouterItem[] = [
     component: ReportStatistics,
     icon: <BarChartOutlined />,
     key: 'reportStatistics',
+    role: [SystemRole.admin],
   },
   {
     path: '/account',
