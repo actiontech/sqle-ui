@@ -397,7 +397,13 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app11
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app11
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -548,7 +554,13 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app12
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app12
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -699,7 +711,13 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app13
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app13
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -850,7 +868,13 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app14
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app14
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1001,7 +1025,13 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app15
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app15
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1152,7 +1182,13 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app16
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app16
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1301,7 +1337,13 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app17
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app17
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1448,7 +1490,13 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app18
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app18
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1595,7 +1643,13 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app19
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app19
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1742,7 +1796,13 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app20
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app20
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -2196,7 +2256,13 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app11
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app11
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -2347,7 +2413,13 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app12
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app12
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -2498,7 +2570,13 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app13
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app13
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -2649,7 +2727,13 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app14
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app14
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -2800,7 +2884,13 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app15
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app15
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -2951,7 +3041,13 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app16
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app16
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -3100,7 +3196,13 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app17
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app17
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -3247,7 +3349,13 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app18
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app18
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -3394,7 +3502,13 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app19
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app19
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -3541,7 +3655,13 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          audit_for_java_app20
+                          <a
+                            class="ant-typography"
+                          >
+                            <u>
+                              audit_for_java_app20
+                            </u>
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"

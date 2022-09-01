@@ -15,6 +15,9 @@ export const planListTableHeader = (
     {
       dataIndex: 'audit_plan_name',
       title: () => i18n.t('auditPlan.list.table.audit_plan_name'),
+      render: (text: string) => {
+        return <Typography.Link underline={true}>{text}</Typography.Link>;
+      },
     },
     {
       dataIndex: 'audit_plan_meta',
