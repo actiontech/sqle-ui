@@ -1,14 +1,16 @@
 import { Button, Form, Radio, RadioChangeEvent, Upload } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import MonacoEditor from 'react-monaco-editor';
 import EmptyBox from '../../../../components/EmptyBox';
 import { PageFormLayout } from '../../../../data/common';
+import EmitterKey from '../../../../data/EmitterKey';
 import useChangeTheme from '../../../../hooks/useChangeTheme';
 import useMonacoEditor from '../../../../hooks/useMonacoEditor';
 import useStyles from '../../../../theme';
 import { getFileFromUploadChangeEvent } from '../../../../utils/Common';
+import EventEmitter from '../../../../utils/EventEmitter';
 import { SQLInputType } from '../index.enum';
 import { SameSqlModeProps, SqlInfoFormFields } from './index.type';
 
@@ -48,6 +50,17 @@ const SameSqlMode: React.FC<SameSqlModeProps> = ({
     const values = await form.validateFields();
     submit(values, currentTabIndex);
   };
+
+  useEffect(() => {
+    const clearForm = () => {
+      form.resetFields();
+      setCurrentSQLInputTYpe(SQLInputType.manualInput);
+    };
+    EventEmitter.subscribe(EmitterKey.Reset_Create_Order_Form, clearForm);
+    return () => {
+      EventEmitter.unsubscribe(EmitterKey.Reset_Create_Order_Form, clearForm);
+    };
+  }, [form]);
 
   return (
     <Form {...PageFormLayout} form={form}>

@@ -192,7 +192,7 @@ const CreateOrder = () => {
         message.error(t('order.createOrder.mustAuditTips'));
         return;
       }
-      if (Array.from(taskSqlNum).some((_, len) => len === 0)) {
+      if (Array.from(taskSqlNum).some(([_, len]) => len === 0)) {
         message.error(t('order.createOrder.mustHaveAuditResultTips'));
         return;
       }
