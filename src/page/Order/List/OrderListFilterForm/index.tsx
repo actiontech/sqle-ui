@@ -90,20 +90,6 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
           </Form.Item>
         </Col>
         <Col {...FilterFormColLayout}>
-          <Form.Item
-            name="filter_current_step_type"
-            label={t('order.order.stepType')}
-          >
-            <Select
-              placeholder={t('common.form.placeholder.searchSelect', {
-                name: t('order.order.stepType'),
-              })}
-            >
-              {generateWorkflowStepTypeSelectOption()}
-            </Select>
-          </Form.Item>
-        </Col>
-        <Col {...FilterFormColLayout}>
           <Form.Item name="filter_status" label={t('order.order.status')}>
             <Select
               placeholder={t('common.form.placeholder.searchSelect', {

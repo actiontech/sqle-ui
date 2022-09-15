@@ -1,11 +1,14 @@
 import { useBoolean } from 'ahooks';
 import { useCallback, useState } from 'react';
 import { IAuditTaskResV1 } from '../../../api/common';
-import { CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum } from '../../../api/common.enum';
+import {
+  CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
+  WorkflowResV2ModeEnum,
+} from '../../../api/common.enum';
 import { useAllowAuditLevel } from '../hooks/useAllowAuditLevel';
 
-const useModifySql = () => {
-  const [taskInfo, setTaskInfo] = useState<IAuditTaskResV1>();
+const useModifySql = (sqlMode: WorkflowResV2ModeEnum) => {
+  const [taskInfos, setTaskInfos] = useState<IAuditTaskResV1[]>([]);
 
   const [
     updateOrderDisabled,
@@ -23,17 +26,22 @@ const useModifySql = () => {
   } = useAllowAuditLevel();
 
   const modifySqlSubmit = useCallback(
-    (task: IAuditTaskResV1) => {
-      setTaskInfo(task);
+    (tasks: IAuditTaskResV1[]) => {
+      setTaskInfos(tasks);
+      if (sqlMode === WorkflowResV2ModeEnum.different_sqls) {
+        return;
+      }
       closeModifySqlModal();
-      if (task.instance_name) {
+      if ((tasks?.length ?? 0) > 0) {
         judgeAuditLevel(
-          task.instance_name,
+          tasks?.map((v) => ({
+            instanceName: v.instance_name ?? '',
+            currentAuditLevel: v.audit_level as
+              | CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
+              | undefined,
+          })) ?? [],
           setUpdateOrderBtnDisabled,
-          resetUpdateOrderBtnStatus,
-          task.audit_level as
-            | CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
-            | undefined
+          resetUpdateOrderBtnStatus
         );
       }
     },
@@ -42,18 +50,19 @@ const useModifySql = () => {
       judgeAuditLevel,
       resetUpdateOrderBtnStatus,
       setUpdateOrderBtnDisabled,
+      sqlMode,
     ]
   );
 
   const resetAllState = () => {
-    setTaskInfo(undefined);
+    setTaskInfos([]);
     setDisabledOperatorOrderBtnTips('');
     closeModifySqlModal();
     resetUpdateOrderBtnStatus();
   };
 
   return {
-    taskInfo,
+    taskInfos,
     visible,
     openModifySqlModal,
     closeModifySqlModal,

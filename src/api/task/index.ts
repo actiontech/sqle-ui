@@ -7,6 +7,10 @@ import ServiceBase from '../Service.base';
 import { AxiosRequestConfig } from 'axios';
 
 import {
+  ICreateAuditTasksV1Params,
+  ICreateAuditTasksV1Return,
+  IAuditTaskGroupIdV1Params,
+  IAuditTaskGroupIdV1Return,
   ICreateAndAuditTaskV1Params,
   ICreateAndAuditTaskV1Return,
   IGetAuditTaskV1Params,
@@ -24,6 +28,58 @@ import {
 } from './index.d';
 
 class TaskService extends ServiceBase {
+  public createAuditTasksV1(
+    params: ICreateAuditTasksV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.post<ICreateAuditTasksV1Return>(
+      '/v1/task_groups',
+      paramsData,
+      options
+    );
+  }
+
+  public auditTaskGroupIdV1(
+    params: IAuditTaskGroupIdV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const config = options || {};
+    const headers = config.headers ? config.headers : {};
+    config.headers = {
+      ...headers,
+
+      'Content-Type': 'multipart/form-data'
+    };
+
+    const paramsData = new FormData();
+
+    if (params.task_group_id != undefined) {
+      paramsData.append('task_group_id', params.task_group_id as any);
+    }
+
+    if (params.sql != undefined) {
+      paramsData.append('sql', params.sql as any);
+    }
+
+    if (params.input_sql_file != undefined) {
+      paramsData.append('input_sql_file', params.input_sql_file as any);
+    }
+
+    if (params.input_mybatis_xml_file != undefined) {
+      paramsData.append(
+        'input_mybatis_xml_file',
+        params.input_mybatis_xml_file as any
+      );
+    }
+
+    return this.post<IAuditTaskGroupIdV1Return>(
+      '/v1/task_groups/audit',
+      paramsData,
+      config
+    );
+  }
+
   public createAndAuditTaskV1(
     params: ICreateAndAuditTaskV1Params,
     options?: AxiosRequestConfig

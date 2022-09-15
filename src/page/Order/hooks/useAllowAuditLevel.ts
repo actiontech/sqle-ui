@@ -1,6 +1,6 @@
 import { CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum } from './../../../api/common.enum';
 import instance from '../../../api/instance';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const judgeLevelMap = new Map<
@@ -18,38 +18,56 @@ export const useAllowAuditLevel = () => {
 
   const [disabledOperatorOrderBtnTips, setDisabledOperatorOrderBtnTips] =
     useState('');
-  const judgeAuditLevel = async (
-    instanceName: string,
-    setBtnDisabled: () => void,
-    resetBtnDisabled: () => void,
-    currentAuditLevel?: CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
-  ) => {
-    const {
-      data: { data: { allow_submit_when_less_audit_level } = {} },
-    } = await instance.getInstanceWorkflowTemplateV1({
-      instance_name: instanceName,
-    });
+  const judgeAuditLevel = useCallback(
+    async (
+      taskInfos: Array<{
+        instanceName: string;
+        currentAuditLevel?: CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum;
+      }>,
+      setBtnDisabled: () => void,
+      resetBtnDisabled: () => void
+    ) => {
+      const request = (instanceName: string) => {
+        return instance.getInstanceWorkflowTemplateV1({
+          instance_name: instanceName,
+        });
+      };
 
-    if (
-      isExistNotAllowLevel(
-        currentAuditLevel,
-        allow_submit_when_less_audit_level as
-          | CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
-          | undefined
-      )
-    ) {
-      setDisabledOperatorOrderBtnTips(
-        t('order.operator.disabledOperatorOrderBtnTips', {
-          allowAuditLevel: allow_submit_when_less_audit_level,
-          currentAuditLevel: currentAuditLevel,
-        })
-      );
-      setBtnDisabled();
-    } else {
-      resetBtnDisabled();
-      setDisabledOperatorOrderBtnTips('');
-    }
-  };
+      const tips: string[] = [];
+      Promise.all(
+        taskInfos.map((taskInfo) => request(taskInfo.instanceName))
+      ).then((res) => {
+        const invalidTasks = res.filter((v, index) => {
+          const currentInstanceName = taskInfos[index].instanceName;
+          const currentAuditLevel = taskInfos[index].currentAuditLevel;
+          const allowAuditLevel = v.data.data
+            ?.allow_submit_when_less_audit_level as
+            | CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
+            | undefined;
+          if (isExistNotAllowLevel(currentAuditLevel, allowAuditLevel)) {
+            tips.push(
+              t('order.operator.disabledOperatorOrderBtnTips', {
+                currentInstanceName: currentInstanceName,
+                allowAuditLevel: allowAuditLevel,
+                currentAuditLevel: currentAuditLevel,
+              })
+            );
+            return true;
+          }
+          return false;
+        });
+
+        if (invalidTasks.length > 0 && tips.length > 0) {
+          setDisabledOperatorOrderBtnTips(tips.join('\n'));
+          setBtnDisabled();
+        } else {
+          resetBtnDisabled();
+          setDisabledOperatorOrderBtnTips('');
+        }
+      });
+    },
+    [t]
+  );
 
   const isExistNotAllowLevel = (
     currentAuditLevel?: CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,

@@ -22,7 +22,7 @@ const OrderHistory: React.FC<OrderHistoryProps> = (props) => {
     >
       {props.history.map((step, index) => {
         return (
-          <React.Fragment key={step.task_id}>
+          <React.Fragment key={index}>
             <OrderSteps
               stepList={step.workflow_step_list ?? []}
               currentStep={step.current_step_number}
@@ -30,7 +30,6 @@ const OrderHistory: React.FC<OrderHistoryProps> = (props) => {
               pass={() => Promise.resolve()}
               reject={() => Promise.resolve()}
               executing={() => Promise.resolve()}
-              execSchedule={() => Promise.resolve()}
               modifySql={() => void 0}
               readonly={true}
             />

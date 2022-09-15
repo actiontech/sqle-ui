@@ -16,6 +16,8 @@ import {
   IGetInstanceListV1Return,
   ICreateInstanceV1Params,
   ICreateInstanceV1Return,
+  IBatchCheckInstanceIsConnectableByNameParams,
+  IBatchCheckInstanceIsConnectableByNameReturn,
   IGetInstanceV1Params,
   IGetInstanceV1Return,
   IDeleteInstanceV1Params,
@@ -88,6 +90,18 @@ class InstanceService extends ServiceBase {
     const paramsData = this.cloneDeep(params);
     return this.post<ICreateInstanceV1Return>(
       '/v1/instances',
+      paramsData,
+      options
+    );
+  }
+
+  public batchCheckInstanceIsConnectableByName(
+    params: IBatchCheckInstanceIsConnectableByNameParams,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.post<IBatchCheckInstanceIsConnectableByNameReturn>(
+      '/v1/instances/connections',
       paramsData,
       options
     );

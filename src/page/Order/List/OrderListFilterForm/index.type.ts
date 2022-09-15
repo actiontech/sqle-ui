@@ -1,8 +1,8 @@
 import { FormInstance } from 'antd';
-import { IGetWorkflowListV1Params } from '../../../../api/workflow/index.d';
+import { IGetWorkflowsV2Params } from '../../../../api/workflow/index.d';
 
 export type OrderListFilterFormFields = Omit<
-  IGetWorkflowListV1Params,
+  IGetWorkflowsV2Params,
   | 'page_index'
   | 'page_size'
   | 'filter_create_time_from'

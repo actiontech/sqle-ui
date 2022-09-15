@@ -48,10 +48,12 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
         };
       },
       onSuccess(res) {
-        props.updateTaskRecordTotalNum?.(res.total ?? 0);
+        const taskStr = props.taskId ? `${props.taskId}` : '';
+        props.updateTaskRecordTotalNum?.(taskStr, res.total ?? 0);
       },
       onError() {
-        props.updateTaskRecordTotalNum?.(0);
+        const taskStr = props.taskId ? `${props.taskId}` : '';
+        props.updateTaskRecordTotalNum?.(taskStr, 0);
       },
     }
   );
@@ -116,6 +118,12 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
             {t('audit.source')}
             <EmptyBox if={props.auditScore !== undefined}>
               {props.auditScore ?? 0}
+            </EmptyBox>
+          </Typography.Text>
+
+          <Typography.Text type="secondary" className="font-size-small">
+            <EmptyBox if={!!props.instanceSchema}>
+              {props.instanceSchema}
             </EmptyBox>
           </Typography.Text>
         </Space>

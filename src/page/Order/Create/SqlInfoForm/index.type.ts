@@ -1,18 +1,54 @@
 import { FormInstance } from 'antd';
-import { SQLInputType } from '.';
+import { WorkflowResV2ModeEnum } from '../../../../api/common.enum';
+import { SQLInputType } from '../index.enum';
 
 export type SqlInfoFormProps = {
   form: FormInstance<SqlInfoFormFields>;
-  submit: (values: SqlInfoFormFields) => Promise<void>;
+  submit: (values: SqlInfoFormFields, currentTabIndex: number) => Promise<void>;
   updateDirtyData: (dirtyDataStatus: boolean) => void;
   instanceNameChange?: (name: string) => void;
 };
 
-export type SqlInfoFormFields = {
+export type DatabaseInfoFields = {
   instanceName: string;
   instanceSchema: string;
+};
+
+export type SqlInfoFormFields = {
   sqlInputType: SQLInputType;
   sql: string;
   sqlFile: File[];
   mybatisFile: File[];
+  orderMode: WorkflowResV2ModeEnum;
+  dataBaseInfo: Array<DatabaseInfoFields>;
 };
+
+export type DatabaseInfoProps = Pick<
+  SqlInfoFormProps,
+  'form' | 'instanceNameChange'
+> & {
+  setInstanceNames: React.Dispatch<React.SetStateAction<InstanceNamesType>>;
+  setChangeSqlModeDisabled: React.Dispatch<React.SetStateAction<boolean>>;
+  currentSqlMode: WorkflowResV2ModeEnum;
+};
+
+export type SqlContentFields = Pick<
+  SqlInfoFormFields,
+  'sql' | 'sqlFile' | 'mybatisFile'
+>;
+
+export type SameSqlModeProps = {
+  submit: (values: SqlContentFields, currentTabIndex: number) => void;
+  submitLoading: boolean;
+  currentTabIndex: number;
+};
+
+export type DifferenceSqlModeProps = Omit<
+  SameSqlModeProps,
+  'currentTabIndex'
+> & {
+  instanceNameList: string[];
+};
+
+export type InstanceNamesType = Map<number, string>;
+export type SchemaListType = Map<number, string[]>;

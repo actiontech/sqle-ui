@@ -1,8 +1,10 @@
 import { IAuditTaskResV1 } from '../../../../../api/common.d';
+import { WorkflowResV2ModeEnum } from '../../../../../api/common.enum';
 
 export type ModifySqlModalProps = {
   cancel: () => void;
-  submit: (task: IAuditTaskResV1) => void;
+  submit: (tasks: IAuditTaskResV1[]) => void;
   visible: boolean;
-  currentOrderTask?: IAuditTaskResV1;
+  currentOrderTasks?: IAuditTaskResV1[];
+  sqlMode: WorkflowResV2ModeEnum;
 };

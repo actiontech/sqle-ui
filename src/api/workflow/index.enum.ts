@@ -21,3 +21,17 @@ export enum getWorkflowListV1FilterStatusEnum {
 
   'finished' = 'finished'
 }
+
+export enum getWorkflowsV2FilterStatusEnum {
+  'wait_for_audit' = 'wait_for_audit',
+
+  'wait_for_execution' = 'wait_for_execution',
+
+  'rejected' = 'rejected',
+
+  'canceled' = 'canceled',
+
+  'exec_failed' = 'exec_failed',
+
+  'finished' = 'finished'
+}

@@ -1,47 +1,39 @@
 import { useBoolean } from 'ahooks';
-import {
-  Button,
-  Card,
-  Form,
-  Radio,
-  RadioChangeEvent,
-  Select,
-  Upload,
-} from 'antd';
-import React, { useRef } from 'react';
+import { Form, Radio, RadioChangeEvent } from 'antd';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
-import MonacoEditor from 'react-monaco-editor';
+import { WorkflowResV2ModeEnum } from '../../../../api/common.enum';
 import instance from '../../../../api/instance';
 import EmptyBox from '../../../../components/EmptyBox';
 import TestDatabaseConnectButton from '../../../../components/TestDatabaseConnectButton';
 import { ResponseCode, PageFormLayout } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
-import useChangeTheme from '../../../../hooks/useChangeTheme';
-import useInstance from '../../../../hooks/useInstance';
-import useInstanceSchema from '../../../../hooks/useInstanceSchema';
-import useMonacoEditor from '../../../../hooks/useMonacoEditor';
-import useStyles from '../../../../theme';
-import { getFileFromUploadChangeEvent } from '../../../../utils/Common';
 import EventEmitter from '../../../../utils/EventEmitter';
-import { SqlInfoFormFields, SqlInfoFormProps } from './index.type';
-
-export enum SQLInputType {
-  manualInput,
-  uploadFile,
-  uploadMybatisFile,
-}
+import DatabaseInfo from './DatabaseInfo';
+import DifferenceSqlMode from './DifferenceSqlMode';
+import {
+  InstanceNamesType,
+  SqlContentFields,
+  SqlInfoFormProps,
+} from './index.type';
+import SameSqlMode from './SameSqlMode';
 
 const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   const { t } = useTranslation();
-  const { currentEditorTheme } = useChangeTheme();
-  const theme = useStyles();
   const alreadySubmit = useRef(false);
 
-  const [currentSQLInputType, setCurrentSQLInputTYpe] = React.useState(
-    SQLInputType.manualInput
+  const [currentSqlMode, setCurrentSqlMode] = useState(
+    WorkflowResV2ModeEnum.same_sqls
   );
-  const [instanceName, setInstanceName] = React.useState<string | undefined>(
-    undefined
+
+  const [instanceNames, setInstanceNames] = useState<InstanceNamesType>(
+    new Map([[0, '']])
   );
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
     useBoolean();
@@ -53,32 +45,34 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   ] = useBoolean(true);
   const [testLoading, { setTrue: testStart, setFalse: testFinish }] =
     useBoolean();
-  const [connectErrorMessage, setConnectErrorMessage] = React.useState('');
+  const [connectErrorMessage, setConnectErrorMessage] = useState<string[]>([]);
+  const [changeSqlModeDisabled, setChangeSqlModeDisabled] = useState(false);
 
-  const { updateInstanceList, generateInstanceSelectOption } = useInstance();
-  const { generateInstanceSchemaSelectOption } =
-    useInstanceSchema(instanceName);
+  const instanceNameList = useMemo(() => {
+    return Array.from(instanceNames).map(([_, name]) => name ?? '');
+  }, [instanceNames]);
 
-  const { editorDidMount } = useMonacoEditor(props.form, { formName: 'sql' });
+  const testConnectVisible = useMemo(() => {
+    return instanceNameList.length > 0 && instanceNameList.every((v) => !!v);
+  }, [instanceNameList]);
 
-  const currentSQLInputTypeChange = React.useCallback(
-    (event: RadioChangeEvent) => {
-      setCurrentSQLInputTYpe(event.target.value);
-      props.form.resetFields(['sql', 'sqlFile', 'mybatisFile']);
-    },
-    [props.form]
-  );
-
-  const testDatabaseConnect = React.useCallback(async () => {
+  const testDatabaseConnect = useCallback(async () => {
     testStart();
+    const params = {
+      instances: instanceNameList.map((v) => ({ name: v ?? '' })),
+    };
     instance
-      .checkInstanceIsConnectableByNameV1({
-        instance_name: props.form.getFieldValue('instanceName'),
-      })
+      .batchCheckInstanceIsConnectableByName(params)
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
-          setConnectAble(!!res.data.data?.is_instance_connectable);
-          setConnectErrorMessage(res.data.data?.connect_error_message ?? '');
+          const requestResult = res.data.data ?? [];
+          setConnectAble(
+            requestResult.length > 0 &&
+              !!requestResult.every((v) => !!v?.is_instance_connectable)
+          );
+          setConnectErrorMessage(
+            requestResult.map((v) => v.connect_error_message ?? '')
+          );
         }
       })
       .finally(() => {
@@ -86,27 +80,23 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
         testFinish();
       });
   }, [
-    props.form,
+    instanceNameList,
     setConnectAble,
     setConnectInitHideFalse,
     testFinish,
     testStart,
   ]);
 
-  const removeFile = React.useCallback(
-    (fileName: keyof SqlInfoFormFields) => {
-      props.form.setFieldsValue({
-        [fileName]: [],
-      });
-    },
-    [props.form]
-  );
+  const currentOrderModeChange = (event: RadioChangeEvent) => {
+    setCurrentSqlMode(event.target.value);
+  };
 
-  const submit = React.useCallback(
-    (values: SqlInfoFormFields) => {
+  const submit = useCallback(
+    async (values: SqlContentFields, currentTabIndex: number) => {
       startSubmit();
+      const params = await props.form.validateFields();
       props
-        .submit(values)
+        .submit({ ...params, ...values }, currentTabIndex)
         .then(() => {
           alreadySubmit.current = true;
           props.updateDirtyData(false);
@@ -118,26 +108,18 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
     [props, startSubmit, submitFinish]
   );
 
-  const formValueChange = React.useCallback(() => {
+  const formValueChange = useCallback(() => {
     if (alreadySubmit.current) {
       props.updateDirtyData(true);
     }
   }, [alreadySubmit, props]);
 
-  const handleInstanceNameChange = (name: string) => {
-    setInstanceName(name);
-    props.instanceNameChange?.(name);
-  };
-
-  React.useEffect(() => {
-    updateInstanceList();
-  }, [updateInstanceList]);
-
-  React.useEffect(() => {
+  useEffect(() => {
     const resetAlreadySubmit = () => {
       alreadySubmit.current = false;
-      setInstanceName(undefined);
+      setInstanceNames(new Map([[0, '']]));
       setConnectInitHideTrue();
+      setCurrentSqlMode(WorkflowResV2ModeEnum.same_sqls);
     };
     EventEmitter.subscribe(
       EmitterKey.Reset_Create_Order_Form,
@@ -152,147 +134,73 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const testConnectVisible = !!instanceName;
-
   return (
     <>
-      <Card title={t('order.sqlInfo.title')}>
-        <Form
-          form={props.form}
-          {...PageFormLayout}
-          onFinish={submit}
-          onValuesChange={formValueChange}
+      <Form
+        form={props.form}
+        {...PageFormLayout}
+        onValuesChange={formValueChange}
+      >
+        {/* IFTRUE_isEE */}
+        <Form.Item
+          name="orderMode"
+          label={t('order.sqlInfo.orderMode')}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+          tooltip={t('order.sqlInfo.orderModeTips')}
+          initialValue={WorkflowResV2ModeEnum.same_sqls}
         >
-          <Form.Item
-            name="instanceName"
-            label={t('order.sqlInfo.instanceName')}
-            rules={[
-              {
-                required: true,
-              },
-            ]}
+          <Radio.Group
+            onChange={currentOrderModeChange}
+            disabled={changeSqlModeDisabled}
           >
-            <Select<string>
-              onChange={handleInstanceNameChange}
-              showSearch
-              placeholder={t('common.form.placeholder.select', {
-                name: t('order.sqlInfo.instanceName'),
-              })}
-            >
-              {generateInstanceSelectOption()}
-            </Select>
-          </Form.Item>
-          <Form.Item label=" " colon={false} hidden={!testConnectVisible}>
-            <TestDatabaseConnectButton
-              initHide={connectInitHide}
-              onClickTestButton={testDatabaseConnect}
-              loading={testLoading}
-              connectAble={connectAble}
-              connectDisableReason={connectErrorMessage}
+            <Radio value={WorkflowResV2ModeEnum.same_sqls}>
+              {t('order.sqlInfo.sameSql')}
+            </Radio>
+            <Radio value={WorkflowResV2ModeEnum.different_sqls}>
+              {t('order.sqlInfo.differenceSql')}
+            </Radio>
+          </Radio.Group>
+        </Form.Item>
+        {/* FITRUE_isEE */}
+
+        <DatabaseInfo
+          form={props.form}
+          instanceNameChange={props.instanceNameChange}
+          setInstanceNames={setInstanceNames}
+          currentSqlMode={currentSqlMode}
+          setChangeSqlModeDisabled={setChangeSqlModeDisabled}
+        />
+        <Form.Item label=" " colon={false} hidden={!testConnectVisible}>
+          <TestDatabaseConnectButton
+            initHide={connectInitHide}
+            onClickTestButton={testDatabaseConnect}
+            loading={testLoading}
+            connectAble={connectAble}
+            connectDisableReason={connectErrorMessage.join('\n')}
+          />
+        </Form.Item>
+
+        <EmptyBox
+          if={WorkflowResV2ModeEnum.same_sqls === currentSqlMode}
+          defaultNode={
+            <DifferenceSqlMode
+              submit={submit}
+              instanceNameList={instanceNameList}
+              submitLoading={submitLoading}
             />
-          </Form.Item>
-          <Form.Item
-            name="instanceSchema"
-            label={t('order.sqlInfo.instanceSchema')}
-          >
-            <Select
-              placeholder={t('common.form.placeholder.select')}
-              showSearch
-              allowClear
-            >
-              {generateInstanceSchemaSelectOption()}
-            </Select>
-          </Form.Item>
-          <Form.Item
-            label={t('order.sqlInfo.uploadType')}
-            name="sqlInputType"
-            initialValue={SQLInputType.manualInput}
-          >
-            <Radio.Group onChange={currentSQLInputTypeChange}>
-              <Radio value={SQLInputType.manualInput}>
-                {t('order.sqlInfo.manualInput')}
-              </Radio>
-              <Radio value={SQLInputType.uploadFile}>
-                {t('order.sqlInfo.uploadFile')}
-              </Radio>
-              <Radio value={SQLInputType.uploadMybatisFile}>
-                {t('order.sqlInfo.updateMybatisFile')}
-              </Radio>
-            </Radio.Group>
-          </Form.Item>
-          <EmptyBox if={currentSQLInputType === SQLInputType.manualInput}>
-            <Form.Item
-              name="sql"
-              label={t('order.sqlInfo.sql')}
-              initialValue="/* input your sql */"
-              wrapperCol={{
-                ...PageFormLayout.wrapperCol,
-                className: theme.editor,
-              }}
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <MonacoEditor
-                theme={currentEditorTheme}
-                width="100%"
-                height="500"
-                language="sql"
-                editorDidMount={editorDidMount}
-              />
-            </Form.Item>
-          </EmptyBox>
-          <EmptyBox if={currentSQLInputType === SQLInputType.uploadFile}>
-            <Form.Item
-              label={t('order.sqlInfo.sqlFile')}
-              valuePropName="fileList"
-              name="sqlFile"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-              getValueFromEvent={getFileFromUploadChangeEvent}
-            >
-              <Upload
-                accept=".sql"
-                beforeUpload={() => false}
-                onRemove={removeFile.bind(null, 'sqlFile')}
-              >
-                <Button>{t('common.upload')}</Button>
-              </Upload>
-            </Form.Item>
-          </EmptyBox>
-          <EmptyBox if={currentSQLInputType === SQLInputType.uploadMybatisFile}>
-            <Form.Item
-              label={t('order.sqlInfo.updateMybatisFile')}
-              valuePropName="fileList"
-              name="mybatisFile"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-              getValueFromEvent={getFileFromUploadChangeEvent}
-            >
-              <Upload
-                accept=".xml"
-                beforeUpload={() => false}
-                onRemove={removeFile.bind(null, 'mybatisFile')}
-              >
-                <Button>{t('common.upload')}</Button>
-              </Upload>
-            </Form.Item>
-          </EmptyBox>
-          <Form.Item label=" " colon={false}>
-            <Button htmlType="submit" type="primary" loading={submitLoading}>
-              {t('order.sqlInfo.audit')}
-            </Button>
-          </Form.Item>
-        </Form>
-      </Card>
+          }
+        >
+          <SameSqlMode
+            submit={submit}
+            submitLoading={submitLoading}
+            currentTabIndex={0}
+          />
+        </EmptyBox>
+      </Form>
     </>
   );
 };

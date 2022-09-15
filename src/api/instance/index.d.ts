@@ -6,6 +6,8 @@ import {
   IGetInstancesResV1,
   ICreateInstanceReqV1,
   IBaseRes,
+  IBatchCheckInstanceConnectionsReqV1,
+  IBatchGetInstanceConnectionsResV1,
   IGetInstanceResV1,
   IUpdateInstanceReqV1,
   IGetRulesResV1,
@@ -28,6 +30,8 @@ export interface ICheckInstanceIsConnectableV1Return
 
 export interface IGetInstanceTipListV1Params {
   filter_db_type?: string;
+
+  filter_workflow_template_id?: string;
 
   functional_module?: getInstanceTipListV1FunctionalModuleEnum;
 }
@@ -61,6 +65,12 @@ export interface IGetInstanceListV1Return extends IGetInstancesResV1 {}
 export interface ICreateInstanceV1Params extends ICreateInstanceReqV1 {}
 
 export interface ICreateInstanceV1Return extends IBaseRes {}
+
+export interface IBatchCheckInstanceIsConnectableByNameParams
+  extends IBatchCheckInstanceConnectionsReqV1 {}
+
+export interface IBatchCheckInstanceIsConnectableByNameReturn
+  extends IBatchGetInstanceConnectionsResV1 {}
 
 export interface IGetInstanceV1Params {
   instance_name: string;
