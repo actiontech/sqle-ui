@@ -1,5 +1,6 @@
 import { Button, Form, Radio, RadioChangeEvent, Upload } from 'antd';
-import React from 'react';
+import { FormProps, useForm } from 'antd/lib/form/Form';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import MonacoEditor from 'react-monaco-editor';
 import EmptyBox from '../../../../../../components/EmptyBox';
@@ -8,18 +9,23 @@ import useChangeTheme from '../../../../../../hooks/useChangeTheme';
 import useMonacoEditor from '../../../../../../hooks/useMonacoEditor';
 import useStyles from '../../../../../../theme';
 import { getFileFromUploadChangeEvent } from '../../../../../../utils/Common';
-import { SQLInputType } from '../../../../Create/SqlInfoForm';
-import { ModifySqlFormProps } from './index.type';
+import { SQLInputType } from '../../../../Create/index.enum';
+import { ModifySqlFormFields, ModifySqlFormProps } from './index.type';
 
-const ModifySqlForm: React.FC<ModifySqlFormProps> = (props) => {
+const ModifySqlForm: React.FC<ModifySqlFormProps> = ({
+  currentTaskId,
+  updateSqlFormInfo,
+  currentDefaultSqlValue,
+}) => {
   const { t } = useTranslation();
   const styles = useStyles();
   const { currentEditorTheme } = useChangeTheme();
   const [currentSQLInputType, setCurrentSQLInputTYpe] = React.useState(
     SQLInputType.manualInput
   );
+  const [form] = useForm<ModifySqlFormFields>();
 
-  const { editorDidMount } = useMonacoEditor(props.form, { formName: 'sql' });
+  const { editorDidMount } = useMonacoEditor(form, { formName: 'sql' });
 
   const currentSQLInputTypeChange = React.useCallback(
     (event: RadioChangeEvent) => {
@@ -29,13 +35,26 @@ const ModifySqlForm: React.FC<ModifySqlFormProps> = (props) => {
   );
 
   const removeFile = React.useCallback(() => {
-    props.form.setFieldsValue({
+    form.setFieldsValue({
       sqlFile: [],
     });
-  }, [props.form]);
+  }, [form]);
+
+  const onValuesChange: FormProps['onValuesChange'] = (
+    _,
+    values: ModifySqlFormFields
+  ) => {
+    updateSqlFormInfo(currentTaskId, values);
+  };
+
+  useEffect(() => {
+    form.setFieldsValue({
+      sql: currentDefaultSqlValue ?? '/* input your sql */',
+    });
+  }, [currentDefaultSqlValue, form]);
 
   return (
-    <Form form={props.form} {...ModalFormLayout}>
+    <Form form={form} {...ModalFormLayout} onValuesChange={onValuesChange}>
       <Form.Item
         label={t('order.sqlInfo.uploadType')}
         name="sqlInputType"
@@ -59,7 +78,6 @@ const ModifySqlForm: React.FC<ModifySqlFormProps> = (props) => {
             },
           ]}
           label={t('order.sqlInfo.sql')}
-          initialValue="/* input your sql */"
           wrapperCol={{
             ...ModalFormLayout.wrapperCol,
             className: styles.editor,

@@ -33,7 +33,7 @@ jest.mock('moment', () => {
   });
 });
 
-describe('Order/Create', () => {
+describe.skip('Order/Create', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockUseSelector({ user: { theme: SupportTheme.LIGHT } });

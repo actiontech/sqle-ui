@@ -1,11 +1,16 @@
-import { Typography } from 'antd';
-import { IAuditTaskSQLResV1 } from '../../../api/common';
+import { Space, Tag, Typography } from 'antd';
+import {
+  IAuditTaskSQLResV1,
+  IGetWorkflowTasksItemV1,
+} from '../../../api/common';
+import { GetWorkflowTasksItemV1StatusEnum } from '../../../api/common.enum';
 import {
   getAuditTaskSQLsV1FilterAuditStatusEnum,
   getAuditTaskSQLsV1FilterExecStatusEnum,
 } from '../../../api/task/index.enum';
 import AuditResultErrorMessage from '../../../components/AuditResultErrorMessage';
 import EditText from '../../../components/EditText/EditText';
+import EmptyBox from '../../../components/EmptyBox';
 import {
   auditStatusDictionary,
   execStatusDictionary,
@@ -13,6 +18,8 @@ import {
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import HighlightCode from '../../../utils/HighlightCode';
+import { floatToPercent } from '../../../utils/Math';
+import InstanceTasksStatus from './InstanceTasksStatus';
 
 export const orderAuditResultColumn = (
   updateSqlDescribe: (sqlNum: number, sqlDescribe: string) => void,
@@ -115,5 +122,107 @@ export const orderAuditResultColumn = (
       },
     },
     /* FITRUE_isEE */
+  ];
+};
+
+export const auditResultOverviewColumn: (
+  sqlExecuteHandle: (taskId: string) => void,
+  openScheduleModal: () => void,
+  scheduleTimeHandle: (scheduleTime?: string | undefined) => Promise<void>
+) => TableColumn<IGetWorkflowTasksItemV1, 'operator'> = (
+  sqlExecuteHandle,
+  openScheduleModal,
+  scheduleTimeHandle
+) => {
+  const enableSqlExecute = (status?: GetWorkflowTasksItemV1StatusEnum) => {
+    if (!status) {
+      return false;
+    }
+    return status === GetWorkflowTasksItemV1StatusEnum.wait_for_execution;
+  };
+
+  const enableSqlScheduleTime = (status?: GetWorkflowTasksItemV1StatusEnum) => {
+    if (!status) {
+      return false;
+    }
+    return status === GetWorkflowTasksItemV1StatusEnum.wait_for_execution;
+  };
+
+  const enableCancelSqlScheduleTime = (
+    status?: GetWorkflowTasksItemV1StatusEnum
+  ) => {
+    if (!status) {
+      return false;
+    }
+    return status === GetWorkflowTasksItemV1StatusEnum.exec_scheduled;
+  };
+  return [
+    {
+      dataIndex: 'instance_name',
+      title: () => i18n.t('order.auditResultCollection.table.instanceName'),
+    },
+    {
+      dataIndex: 'status',
+      title: () => i18n.t('order.auditResultCollection.table.status'),
+      render: (status: GetWorkflowTasksItemV1StatusEnum) => (
+        <InstanceTasksStatus status={status} />
+      ),
+    },
+    {
+      dataIndex: 'exec_start_time',
+      title: () => i18n.t('order.auditResultCollection.table.execStartTime'),
+    },
+    {
+      dataIndex: 'exec_end_time',
+      title: () => i18n.t('order.auditResultCollection.table.execEndTime'),
+    },
+    {
+      dataIndex: 'schedule_time',
+      title: () =>
+        i18n.t('order.auditResultCollection.table.scheduleExecuteTime'),
+    },
+    {
+      dataIndex: 'current_step_assignee_user_name_list',
+      title: () => i18n.t('order.auditResultCollection.table.assigneeUserName'),
+      render: (names: string[] = []) => names.map((v) => <Tag>{v}</Tag>),
+    },
+    {
+      dataIndex: 'task_pass_rate',
+      title: () => i18n.t('order.auditResultCollection.table.passRate'),
+      render: (rate: number = 0) => `${floatToPercent(rate)}%`,
+    },
+    {
+      dataIndex: 'task_score',
+      title: () => i18n.t('order.auditResultCollection.table.score'),
+    },
+    {
+      dataIndex: 'operator',
+      title: () => i18n.t('common.operate'),
+      render: (_, record) => {
+        const taskId = record.task_id?.toString() ?? '';
+        return (
+          <Space>
+            <Typography.Link
+              disabled={!enableSqlExecute(record.status)}
+              onClick={() => sqlExecuteHandle(taskId)}
+            >
+              {i18n.t('order.auditResultCollection.table.sqlExecute')}
+            </Typography.Link>
+            <EmptyBox if={enableSqlScheduleTime(record.status)}>
+              <Typography.Link onClick={() => openScheduleModal()}>
+                {i18n.t('order.auditResultCollection.table.scheduleTime')}
+              </Typography.Link>
+            </EmptyBox>
+            <EmptyBox if={enableCancelSqlScheduleTime(record.status)}>
+              <Typography.Link onClick={() => scheduleTimeHandle()}>
+                {i18n.t(
+                  'order.auditResultCollection.table.cancelExecScheduled'
+                )}
+              </Typography.Link>
+            </EmptyBox>
+          </Space>
+        );
+      },
+    },
   ];
 };

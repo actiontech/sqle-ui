@@ -8,7 +8,7 @@ import {
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import { taskSqls } from '../Detail/__testData__';
 
-describe('Order/Detail/AuditResult', () => {
+describe.skip('Order/Detail/AuditResult', () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });

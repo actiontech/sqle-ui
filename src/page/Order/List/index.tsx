@@ -14,20 +14,17 @@ import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import workflow from '../../../api/workflow';
-import {
-  getWorkflowListV1FilterCurrentStepTypeEnum,
-  getWorkflowListV1FilterStatusEnum,
-} from '../../../api/workflow/index.enum';
+import { getWorkflowsV2FilterStatusEnum } from '../../../api/workflow/index.enum';
 import useTable from '../../../hooks/useTable';
 import { translateTimeForRequest } from '../../../utils/Common';
 import { orderListColumn } from './column';
 import { OrderListUrlParamsKey } from './index.data';
 import OrderListFilterForm from './OrderListFilterForm';
 import { OrderListFilterFormFields } from './OrderListFilterForm/index.type';
-import { IWorkflowDetailResV1 } from '../../../api/common.d';
+import { IWorkflowDetailResV2 } from '../../../api/common.d';
 import useRole from '../../../hooks/useCurrentUser';
 import { ResponseCode } from '../../../data/common';
-import { WorkflowDetailResV1StatusEnum } from '../../../api/common.enum';
+import { WorkflowDetailResV2StatusEnum } from '../../../api/common.enum';
 import { Theme } from '../../../types/theme.type';
 import { useTheme } from '@material-ui/styles';
 import { TableRowSelection } from 'antd/lib/table/interface';
@@ -68,7 +65,7 @@ const OrderList = () => {
         filter_order_executeTime,
         ...otherFilterInfo
       } = filterInfo;
-      return workflow.getWorkflowListV1({
+      return workflow.getWorkflowsV2({
         page_index: pagination.pageIndex,
         page_size: pagination.pageSize,
         filter_create_time_from: translateTimeForRequest(
@@ -77,12 +74,12 @@ const OrderList = () => {
         filter_create_time_to: translateTimeForRequest(
           filter_order_createTime?.[1]
         ),
-        filter_task_execute_start_time_from: translateTimeForRequest(
-          filter_order_executeTime?.[0]
-        ),
-        filter_task_execute_start_time_to: translateTimeForRequest(
-          filter_order_executeTime?.[1]
-        ),
+        // filter_task_execute_start_time_from: translateTimeForRequest(
+        //   filter_order_executeTime?.[0]
+        // ),
+        // filter_task_execute_start_time_to: translateTimeForRequest(
+        //   filter_order_executeTime?.[1]
+        // ),
         ...otherFilterInfo,
       });
     },
@@ -106,15 +103,15 @@ const OrderList = () => {
         OrderListUrlParamsKey.currentStepAssignee
       ) as string;
     }
-    if (searchStr.has(OrderListUrlParamsKey.currentStepType)) {
-      filter.filter_current_step_type = searchStr.get(
-        OrderListUrlParamsKey.currentStepType
-      ) as getWorkflowListV1FilterCurrentStepTypeEnum;
-    }
+    // if (searchStr.has(OrderListUrlParamsKey.currentStepType)) {
+    //   filter.filter_current_step_type = searchStr.get(
+    //     OrderListUrlParamsKey.currentStepType
+    //   ) as getWorkflowListV1FilterCurrentStepTypeEnum;
+    // }
     if (searchStr.has(OrderListUrlParamsKey.status)) {
       filter.filter_status = searchStr.get(
         OrderListUrlParamsKey.status
-      ) as getWorkflowListV1FilterStatusEnum;
+      ) as getWorkflowsV2FilterStatusEnum;
     }
     if (searchStr.has(OrderListUrlParamsKey.createUsername)) {
       filter.filter_create_user_name = searchStr.get(
@@ -161,8 +158,8 @@ const OrderList = () => {
         (data) => `${data.workflow_id}` === e
       )[0]?.status;
       return (
-        status === WorkflowDetailResV1StatusEnum.on_process ||
-        status === WorkflowDetailResV1StatusEnum.rejected
+        status === WorkflowDetailResV2StatusEnum.wait_for_audit ||
+        status === WorkflowDetailResV2StatusEnum.rejected
       );
     });
     if (canCancel) {
@@ -253,12 +250,12 @@ const OrderList = () => {
 
             <Table
               className="table-row-cursor"
-              rowKey={(record: IWorkflowDetailResV1) => {
+              rowKey={(record: IWorkflowDetailResV2) => {
                 return `${record?.workflow_id}`;
               }}
               loading={loading}
               columns={orderListColumn()}
-              dataSource={orderList?.list}
+              dataSource={orderList?.list ?? []}
               pagination={{
                 total: orderList?.total,
                 showSizeChanger: true,
@@ -271,7 +268,7 @@ const OrderList = () => {
               })}
               rowSelection={
                 isAdmin
-                  ? (rowSelection as TableRowSelection<IWorkflowDetailResV1>)
+                  ? (rowSelection as TableRowSelection<IWorkflowDetailResV2>)
                   : undefined
               }
             />

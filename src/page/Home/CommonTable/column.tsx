@@ -2,9 +2,9 @@ import { TableColumn } from '../../../types/common.type';
 import i18n from 'i18next';
 import { formatTime } from '../../../utils/Common';
 import { Link } from 'react-router-dom';
-import { IWorkflowDetailResV1 } from '../../../api/common';
+import { IWorkflowDetailResV2 } from '../../../api/common';
 
-export const commonColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
+export const commonColumn: () => TableColumn<IWorkflowDetailResV2> = () => {
   return [
     {
       dataIndex: 'subject',

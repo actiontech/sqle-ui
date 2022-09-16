@@ -12,9 +12,9 @@ import { cloneDeep } from 'lodash';
 import { translateTimeForRequest } from '../../../utils/Common';
 import { OrderListUrlParamsKey } from '../../Order/List/index.data';
 
-describe('test home/RecentlyOrderPanel', () => {
+describe.skip('test home/RecentlyOrderPanel', () => {
   const mockRequest = () => {
-    const spy = jest.spyOn(workflow, 'getWorkflowListV1');
+    const spy = jest.spyOn(workflow, 'getWorkflowsV2');
     spy.mockImplementation(() =>
       resolveThreeSecond([
         {
@@ -58,7 +58,7 @@ describe('test home/RecentlyOrderPanel', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('should be called getWorkflowListV1 interface', async () => {
+  test('should be called getWorkflowsV2 interface', async () => {
     expect(getMockRequestSpy).toBeCalledTimes(0);
     renderWithRouter(<RecentlyOrderPanel />);
     await waitFor(() => {

@@ -43,13 +43,17 @@ export default {
   },
 
   status: {
-    canceled: '已关闭',
     process: '处理中',
-    reject: '已驳回',
     exec_scheduled: '定时上线',
     executing: '正在上线',
+
     exec_failed: '上线失败',
     finished: '上线成功',
+    wait_for_audit: '待审核',
+    wait_for_execution: '待上线',
+    reject: '已驳回',
+    canceled: '已关闭',
+    exec_succeeded: '上线成功',
   },
 
   sqlTaskStatus: {
@@ -65,6 +69,7 @@ export default {
     time: '操作时间',
     user: '操作人',
     reject: '驳回',
+    rejectFull: '全部驳回',
     rejectTips:
       '被驳回的工单必须修改审核语句，审核语句只能由工单创建者修改，在您修改了审核语句之后，工单即会从新进入审核流程',
     createOrder: '{{name}}创建了当前工单',
@@ -79,6 +84,9 @@ export default {
     modifySql: '修改审核语句',
     waitModifySql: '等待用户{{username}}修改审核语句',
     sqlExecute: '立即上线',
+    batchSqlExecute: '批量立即上线',
+    batchSqlExecuteTips:
+      '已经设置了定时上线的数据源仍然在定时时间上线，不会立即上线',
     sqlReview: '审核通过',
     unknown: '未知步骤',
 
@@ -105,7 +113,7 @@ export default {
     status: '上线状态',
     executingTips: '立即上线设置成功',
     disabledOperatorOrderBtnTips:
-      '为当前数据源创建工单时最高只能允许有 {{allowAuditLevel}} 等级的审核错误。但是当前审核结果中最高包含 {{currentAuditLevel}} 等级的审核结果。',
+      '{{currentInstanceName}} 创建工单时最高只能允许有 {{allowAuditLevel}} 等级的审核错误。但是当前审核结果中最高包含 {{currentAuditLevel}} 等级的审核结果。',
   },
 
   create: {
@@ -123,10 +131,18 @@ export default {
   sqlInfo: {
     title: '审核SQL语句信息',
 
+    orderMode: '工单模式',
+    orderModeTips: '当数据源类型相同时才能使用相同Sql模式',
+    sameSql: '相同Sql',
+    differenceSql: '不同Sql',
+
     instanceName: '数据源',
+    instanceNameTips: '后续添加的数据源流程模板与当前数据源相同',
     instanceSchema: '数据库',
     sql: 'SQL语句',
     sqlFile: 'SQL文件',
+
+    addInstance: '添加数据源',
 
     uploadType: '选择审核SQL语句上传方式',
     manualInput: '输入SQL语句',
@@ -158,5 +174,24 @@ export default {
     cancelPopTitle: '您确认关闭所选工单吗？',
     messageWarn:
       '您所选的工单包含不可关闭的工单!（只有工单状态为“{{process}}”和“{{reject}}”的工单可以关闭。）',
+  },
+
+  auditResultCollection: {
+    overview: '概览',
+    table: {
+      instanceName: '数据源',
+      status: '状态',
+      execStartTime: '上线开始时间',
+      execEndTime: '上线结束时间',
+      scheduleExecuteTime: '定时上线时间',
+      assigneeUserName: '待操作人',
+      passRate: '审核通过率',
+      score: '审核结果评分',
+      operator: '操作',
+      sqlExecute: '立即上线',
+      scheduleTime: '定时上线',
+      cancelExecScheduled: '取消定时上线',
+      cancelExecScheduledTips: '取消定时上线成功',
+    },
   },
 };

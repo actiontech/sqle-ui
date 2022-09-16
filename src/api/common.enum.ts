@@ -80,6 +80,20 @@ export enum CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum {
   'error' = 'error'
 }
 
+export enum GetWorkflowTasksItemV1StatusEnum {
+  'wait_for_audit' = 'wait_for_audit',
+
+  'wait_for_execution' = 'wait_for_execution',
+
+  'exec_scheduled' = 'exec_scheduled',
+
+  'exec_failed' = 'exec_failed',
+
+  'exec_succeeded' = 'exec_succeeded',
+
+  'executing' = 'executing'
+}
+
 export enum RuleParamResV1TypeEnum {
   'string' = 'string',
 
@@ -218,4 +232,44 @@ export enum WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum {
 
 export enum AuditPlanSQLHeadV2TypeEnum {
   'sql' = 'sql'
+}
+
+export enum WorkflowDetailResV2CurrentStepTypeEnum {
+  'sql_review' = 'sql_review',
+
+  'sql_execute' = 'sql_execute'
+}
+
+export enum WorkflowDetailResV2StatusEnum {
+  'wait_for_audit' = 'wait_for_audit',
+
+  'wait_for_execution' = 'wait_for_execution',
+
+  'rejected' = 'rejected',
+
+  'canceled' = 'canceled',
+
+  'exec_failed' = 'exec_failed',
+
+  'finished' = 'finished'
+}
+
+export enum WorkflowRecordResV2StatusEnum {
+  'wait_for_audit' = 'wait_for_audit',
+
+  'wait_for_execution' = 'wait_for_execution',
+
+  'rejected' = 'rejected',
+
+  'canceled' = 'canceled',
+
+  'exec_failed' = 'exec_failed',
+
+  'finished' = 'finished'
+}
+
+export enum WorkflowResV2ModeEnum {
+  'same_sqls' = 'same_sqls',
+
+  'different_sqls' = 'different_sqls'
 }

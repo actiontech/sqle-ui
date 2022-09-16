@@ -36,7 +36,10 @@ const TestDatabaseConnectButton: React.FC<TestDatabaseConnectButtonProps> = (
           </Typography.Text>
         )}
         {!props.loading && !props.connectAble && (
-          <Tooltip overlay={props.connectDisableReason}>
+          <Tooltip
+            overlayClassName="whitespace-pre-line"
+            overlay={props.connectDisableReason}
+          >
             <Typography.Text type="danger">
               <CloseCircleFilled />
               {t('dataSource.dataSourceForm.testFailed')}

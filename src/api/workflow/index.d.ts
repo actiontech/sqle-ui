@@ -11,12 +11,18 @@ import {
   IGetWorkflowResV1,
   IUpdateWorkflowReqV1,
   IUpdateWorkflowScheduleV1,
-  IRejectWorkflowReqV1
+  IRejectWorkflowReqV1,
+  IGetWorkflowTasksResV1,
+  IGetWorkflowsResV2,
+  ICreateWorkflowReqV2,
+  IGetWorkflowResV2,
+  IUpdateWorkflowReqV2
 } from '../common.d';
 
 import {
   getWorkflowListV1FilterCurrentStepTypeEnum,
-  getWorkflowListV1FilterStatusEnum
+  getWorkflowListV1FilterStatusEnum,
+  getWorkflowsV2FilterStatusEnum
 } from './index.enum';
 
 export interface IGetWorkflowTemplateTipsV1Return
@@ -139,3 +145,71 @@ export interface IExecuteTaskOnWorkflowV1Params {
 }
 
 export interface IExecuteTaskOnWorkflowV1Return extends IBaseRes {}
+
+export interface IGetSummaryOfInstanceTasksV1Params {
+  workflow_id: number;
+}
+
+export interface IGetSummaryOfInstanceTasksV1Return
+  extends IGetWorkflowTasksResV1 {}
+
+export interface IExecuteOneTaskOnWorkflowV1Params {
+  workflow_id: string;
+
+  task_id: string;
+}
+
+export interface IExecuteOneTaskOnWorkflowV1Return extends IBaseRes {}
+
+export interface IGetWorkflowsV2Params {
+  filter_subject?: string;
+
+  filter_create_time_from?: string;
+
+  filter_create_time_to?: string;
+
+  filter_create_user_name?: string;
+
+  filter_status?: getWorkflowsV2FilterStatusEnum;
+
+  filter_current_step_assignee_user_name?: string;
+
+  filter_task_instance_name?: string;
+
+  page_index?: number;
+
+  page_size?: number;
+}
+
+export interface IGetWorkflowsV2Return extends IGetWorkflowsResV2 {}
+
+export interface ICreateWorkflowV2Params extends ICreateWorkflowReqV2 {}
+
+export interface ICreateWorkflowV2Return extends IBaseRes {}
+
+export interface IGetWorkflowV2Params {
+  workflow_id: number;
+}
+
+export interface IGetWorkflowV2Return extends IGetWorkflowResV2 {}
+
+export interface IUpdateWorkflowV2Params extends IUpdateWorkflowReqV2 {
+  workflow_id: string;
+}
+
+export interface IUpdateWorkflowV2Return extends IBaseRes {}
+
+export interface IExecuteTasksOnWorkflowV2Params {
+  workflow_id: string;
+}
+
+export interface IExecuteTasksOnWorkflowV2Return extends IBaseRes {}
+
+export interface IUpdateWorkflowScheduleV2Params
+  extends IUpdateWorkflowScheduleV1 {
+  workflow_id: string;
+
+  task_id: string;
+}
+
+export interface IUpdateWorkflowScheduleV2Return extends IBaseRes {}

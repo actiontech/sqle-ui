@@ -9,7 +9,7 @@ import {
   mockUseUsername,
 } from '../../../../testUtils/mockRequest';
 
-describe('Order/List', () => {
+describe.skip('Order/List', () => {
   let getUserTips: jest.SpyInstance;
   let getInstanceTips: jest.SpyInstance;
   beforeEach(() => {

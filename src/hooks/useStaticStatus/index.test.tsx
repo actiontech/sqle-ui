@@ -9,7 +9,7 @@ import {
 import { Select } from 'antd';
 import useStaticStatus from '.';
 
-describe('useRuleTemplate', () => {
+describe.skip('useRuleTemplate', () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });

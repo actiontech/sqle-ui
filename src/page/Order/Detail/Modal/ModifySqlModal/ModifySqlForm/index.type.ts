@@ -1,5 +1,4 @@
-import { FormInstance } from 'antd';
-import { SQLInputType } from '../../../../Create/SqlInfoForm';
+import { SQLInputType } from '../../../../Create/index.enum';
 
 export type ModifySqlFormFields = {
   sqlInputType: SQLInputType;
@@ -8,5 +7,7 @@ export type ModifySqlFormFields = {
 };
 
 export type ModifySqlFormProps = {
-  form: FormInstance<ModifySqlFormFields>;
+  updateSqlFormInfo: (taskId: string, values: ModifySqlFormFields) => void;
+  currentTaskId: string;
+  currentDefaultSqlValue: string;
 };

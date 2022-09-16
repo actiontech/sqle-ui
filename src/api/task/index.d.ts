@@ -1,4 +1,7 @@
 import {
+  ICreateAuditTasksGroupReqV1,
+  ICreateAuditTasksGroupResV1,
+  IAuditTaskGroupResV1,
   IGetAuditTaskResV1,
   IGetAuditTaskSQLContentResV1,
   IGetAuditTaskSQLsResV1,
@@ -12,6 +15,24 @@ import {
   getAuditTaskSQLsV1FilterAuditStatusEnum,
   getAuditTaskSQLsV1FilterAuditLevelEnum
 } from './index.enum';
+
+export interface ICreateAuditTasksV1Params
+  extends ICreateAuditTasksGroupReqV1 {}
+
+export interface ICreateAuditTasksV1Return
+  extends ICreateAuditTasksGroupResV1 {}
+
+export interface IAuditTaskGroupIdV1Params {
+  task_group_id: number;
+
+  sql?: string;
+
+  input_sql_file?: any;
+
+  input_mybatis_xml_file?: any;
+}
+
+export interface IAuditTaskGroupIdV1Return extends IAuditTaskGroupResV1 {}
 
 export interface ICreateAndAuditTaskV1Params {
   instance_name: string;

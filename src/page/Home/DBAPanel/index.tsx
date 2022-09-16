@@ -9,6 +9,7 @@ import workflow from '../../../api/workflow';
 import {
   getWorkflowListV1FilterCurrentStepTypeEnum,
   getWorkflowListV1FilterStatusEnum,
+  getWorkflowsV2FilterStatusEnum,
 } from '../../../api/workflow/index.enum';
 import { IReduxState } from '../../../store';
 import { OrderListUrlParamsKey } from '../../Order/List/index.data';
@@ -43,13 +44,13 @@ const DBAPanel: React.FC<IDBAPanelProps> = ({
 
   const needMeReviewResponse = useRequest(
     () => {
-      return workflow.getWorkflowListV1({
+      return workflow.getWorkflowsV2({
         page_index: 1,
         page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
         filter_current_step_assignee_user_name: username,
-        filter_status: getWorkflowListV1FilterStatusEnum.on_process,
-        filter_current_step_type:
-          getWorkflowListV1FilterCurrentStepTypeEnum.sql_review,
+        filter_status: getWorkflowsV2FilterStatusEnum.wait_for_execution,
+        // filter_current_step_type:
+        //   getWorkflowListV1FilterCurrentStepTypeEnum.sql_review,
       });
     },
     {
@@ -61,13 +62,13 @@ const DBAPanel: React.FC<IDBAPanelProps> = ({
 
   const needMeExecResponse = useRequest(
     () => {
-      return workflow.getWorkflowListV1({
+      return workflow.getWorkflowsV2({
         page_index: 1,
         page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
         filter_current_step_assignee_user_name: username,
-        filter_status: getWorkflowListV1FilterStatusEnum.on_process,
-        filter_current_step_type:
-          getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute,
+        filter_status: getWorkflowsV2FilterStatusEnum.wait_for_execution,
+        // filter_current_step_type:
+        //   getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute,
       });
     },
     {

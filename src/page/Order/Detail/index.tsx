@@ -1,5 +1,5 @@
 import { useTheme } from '@material-ui/styles';
-import { useBoolean, useRequest } from 'ahooks';
+import { useBoolean, useRequest, useToggle } from 'ahooks';
 import {
   Button,
   Card,
@@ -10,10 +10,15 @@ import {
   Space,
   Typography,
 } from 'antd';
-import React from 'react';
+import { cloneDeep } from 'lodash';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
-import { WorkflowRecordResV1StatusEnum } from '../../../api/common.enum';
+import { IAuditTaskResV1 } from '../../../api/common';
+import {
+  WorkflowRecordResV2StatusEnum,
+  WorkflowResV2ModeEnum,
+} from '../../../api/common.enum';
 import task from '../../../api/task';
 import workflow from '../../../api/workflow';
 import BackButton from '../../../components/BackButton';
@@ -22,7 +27,7 @@ import OrderStatusTag from '../../../components/OrderStatusTag';
 import { ResponseCode } from '../../../data/common';
 import { Theme } from '../../../types/theme.type';
 import { formatTime } from '../../../utils/Common';
-import AuditResult from '../AuditResult';
+import AuditResultCollection from '../AuditResult/AuditResultCollection';
 import ModifySqlModal from './Modal/ModifySqlModal';
 import OrderHistory from './Modal/OrderHistory';
 import OrderSteps from './OrderSteps';
@@ -34,10 +39,18 @@ const Order = () => {
   const { t } = useTranslation();
   const [historyVisible, { setTrue: showHistory, setFalse: closeHistory }] =
     useBoolean();
+  const [refreshFlag, { toggle: refreshTask }] = useToggle(false);
+  const [taskInfos, setTaskInfos] = useState<IAuditTaskResV1[]>([]);
+  const [auditResultActiveKey, setAuditResultActiveKey] = useState<string>('');
+  const [tempAuditResultActiveKey, setTempAuditResultActiveKey] =
+    useState<string>('');
+  const [isExistScheduleTask, setIsExistScheduleTask] = useState(false);
+  const [refreshOverviewFlag, { toggle: refreshOverviewAction }] =
+    useToggle(false);
 
   const { data: orderInfo, refresh: refreshOrder } = useRequest(
     () =>
-      workflow.getWorkflowV1({
+      workflow.getWorkflowV2({
         workflow_id: Number.parseInt(urlParams.orderId),
       }),
     {
@@ -47,16 +60,22 @@ const Order = () => {
     }
   );
 
-  const { data: taskInfo, refresh: refreshTask } = useRequest(
-    () => task.getAuditTaskV1({ task_id: `${orderInfo?.record?.task_id}` }),
-    {
-      ready: !!orderInfo,
-      refreshDeps: [orderInfo?.record?.task_id],
-      formatResult(res) {
-        return res.data.data;
-      },
-    }
-  );
+  useEffect(() => {
+    const request = (taskId: string) => {
+      return task.getAuditTaskV1({ task_id: taskId });
+    };
+
+    Promise.all(
+      (orderInfo?.record?.task_ids ?? []).map((v) =>
+        request(v.task_ids?.toString() ?? '')
+      )
+    ).then((res) => {
+      if (res.every((v) => v.data.code === ResponseCode.SUCCESS)) {
+        setTaskInfos(res.map((v) => v.data.data!));
+      }
+    });
+  }, [orderInfo?.record?.task_ids, refreshFlag]);
+
   const pass = React.useCallback(
     async (stepId: number) => {
       return workflow
@@ -68,15 +87,16 @@ const Order = () => {
           if (res.data.code === ResponseCode.SUCCESS) {
             message.success(t('order.operator.approveSuccessTips'));
             refreshOrder();
+            refreshOverviewAction();
           }
         });
     },
-    [orderInfo?.workflow_id, refreshOrder, t]
+    [orderInfo?.workflow_id, refreshOrder, t, refreshOverviewAction]
   );
 
   const executing = React.useCallback(async () => {
     return workflow
-      .executeTaskOnWorkflowV1({
+      .executeTasksOnWorkflowV2({
         workflow_id: `${orderInfo?.workflow_id}`,
       })
       .then((res) => {
@@ -84,9 +104,16 @@ const Order = () => {
           message.success(t('order.operator.executingTips'));
           refreshOrder();
           refreshTask();
+          refreshOverviewAction();
         }
       });
-  }, [orderInfo?.workflow_id, refreshOrder, refreshTask, t]);
+  }, [
+    orderInfo?.workflow_id,
+    refreshOrder,
+    refreshOverviewAction,
+    refreshTask,
+    t,
+  ]);
 
   const reject = React.useCallback(
     async (reason: string, stepId: number) => {
@@ -100,14 +127,15 @@ const Order = () => {
           if (res.data.code === ResponseCode.SUCCESS) {
             message.success(t('order.operator.rejectSuccessTips'));
             refreshOrder();
+            refreshOverviewAction();
           }
         });
     },
-    [orderInfo?.workflow_id, refreshOrder, t]
+    [orderInfo?.workflow_id, refreshOrder, refreshOverviewAction, t]
   );
 
   const {
-    taskInfo: tempTaskInfo,
+    taskInfos: tempTaskInfos,
     visible,
     openModifySqlModal,
     closeModifySqlModal,
@@ -115,24 +143,35 @@ const Order = () => {
     resetAllState,
     updateOrderDisabled,
     disabledOperatorOrderBtnTips,
-  } = useModifySql();
+  } = useModifySql(
+    orderInfo?.mode ?? WorkflowResV2ModeEnum.same_sqls,
+    setTempAuditResultActiveKey
+  );
 
   const [
     updateLoading,
     { setTrue: startUpdateSQL, setFalse: updateSqlFinish },
   ] = useBoolean();
 
-  const [updateTaskRecordTotalNum, setUpdateTaskRecordTotalNum] =
-    React.useState(0);
+  const [taskSqlNum, setTaskSqlNum] = useState<Map<string, number>>(new Map());
+
+  const updateTaskRecordTotalNum = (taskId: string, sqlNumber: number) => {
+    setTaskSqlNum((v) => {
+      const cloneValue = cloneDeep(v);
+      cloneValue?.set(taskId, sqlNumber);
+      return cloneValue;
+    });
+  };
+
   const updateOrderSql = () => {
-    if (updateTaskRecordTotalNum === 0) {
+    if (Array.from(taskSqlNum).some(([_, len]) => len === 0)) {
       message.error(t('order.modifySql.updateEmptyOrderTips'));
       return;
     }
     startUpdateSQL();
     workflow
-      .updateWorkflowV1({
-        task_id: `${tempTaskInfo?.task_id}`,
+      .updateWorkflowV2({
+        task_ids: tempTaskInfos.map((v) => v.task_id!),
         workflow_id: `${orderInfo?.workflow_id}`,
       })
       .then((res) => {
@@ -170,23 +209,6 @@ const Order = () => {
       });
   }, [closeOrderFinish, orderInfo?.workflow_id, refreshOrder, startCloseOrder]);
 
-  const execSchedule = React.useCallback(
-    async (schedule_time: string | undefined) => {
-      return workflow
-        .updateWorkflowScheduleV1({
-          schedule_time,
-          workflow_id: `${orderInfo?.workflow_id}`,
-        })
-        .then((res) => {
-          if (res.data.code === ResponseCode.SUCCESS) {
-            message.success(t('order.operator.execScheduleTips'));
-            refreshOrder();
-          }
-        });
-    },
-    [orderInfo?.workflow_id, refreshOrder, t]
-  );
-
   return (
     <>
       <PageHeader
@@ -213,11 +235,11 @@ const Order = () => {
                 loading={closeOrderLoading}
                 hidden={
                   orderInfo?.record?.status ===
-                    WorkflowRecordResV1StatusEnum.canceled ||
+                    WorkflowRecordResV2StatusEnum.canceled ||
                   orderInfo?.record?.status ===
-                    WorkflowRecordResV1StatusEnum.finished ||
+                    WorkflowRecordResV2StatusEnum.finished ||
                   orderInfo?.record?.status ===
-                    WorkflowRecordResV1StatusEnum.exec_failed
+                    WorkflowRecordResV2StatusEnum.exec_failed
                 }
               >
                 {t('order.closeOrder.button')}
@@ -234,12 +256,6 @@ const Order = () => {
           <Descriptions.Item label={t('order.order.createUser')}>
             {orderInfo?.create_user_name}
           </Descriptions.Item>
-          <Descriptions.Item label={t('order.order.dataSource')}>
-            {taskInfo?.instance_name}
-          </Descriptions.Item>
-          <Descriptions.Item label={t('order.order.schema')}>
-            {taskInfo?.instance_schema}
-          </Descriptions.Item>
           <Descriptions.Item label={t('order.order.createTime')} span={2}>
             {formatTime(orderInfo?.create_time)}
           </Descriptions.Item>
@@ -254,11 +270,6 @@ const Order = () => {
           direction="vertical"
           size={theme.common.padding}
         >
-          <AuditResult
-            taskId={orderInfo?.record?.task_id}
-            passRate={taskInfo?.pass_rate}
-            auditScore={taskInfo?.score}
-          />
           <EmptyBox if={!!orderInfo}>
             <Card
               title={t('order.operator.title')}
@@ -274,20 +285,28 @@ const Order = () => {
                 stepList={orderInfo?.record?.workflow_step_list ?? []}
                 currentStep={orderInfo?.record?.current_step_number}
                 currentOrderStatus={orderInfo?.record?.status}
-                scheduleTime={orderInfo?.record?.schedule_time}
-                scheduledUser={orderInfo?.record?.schedule_user}
-                execStartTime={taskInfo?.exec_start_time}
-                execEndTime={taskInfo?.exec_end_time}
-                maintenanceTime={orderInfo?.instance_maintenance_times}
+                execStartTime={taskInfos?.[0]?.exec_start_time}
+                execEndTime={taskInfos?.[0]?.exec_end_time}
                 pass={pass}
                 executing={executing}
                 reject={reject}
-                execSchedule={execSchedule}
                 modifySql={openModifySqlModal}
+                isExistScheduleTask={isExistScheduleTask}
               />
             </Card>
           </EmptyBox>
-          <EmptyBox if={!!tempTaskInfo}>
+
+          <AuditResultCollection
+            taskInfos={taskInfos}
+            auditResultActiveKey={auditResultActiveKey}
+            setAuditResultActiveKey={setAuditResultActiveKey}
+            showOverview={true}
+            workflowId={orderInfo?.workflow_id?.toString()}
+            refreshOrder={refreshOrder}
+            setIsExistScheduleTask={setIsExistScheduleTask}
+            refreshOverviewFlag={refreshOverviewFlag}
+          />
+          <EmptyBox if={!!tempTaskInfos.length}>
             <Card>
               <Space>
                 <Popconfirm
@@ -320,12 +339,12 @@ const Order = () => {
               </Space>
             </Card>
           </EmptyBox>
-          <EmptyBox if={!!tempTaskInfo?.task_id}>
-            <AuditResult
-              taskId={tempTaskInfo?.task_id}
-              passRate={tempTaskInfo?.pass_rate}
-              auditScore={tempTaskInfo?.score}
-              updateTaskRecordTotalNum={setUpdateTaskRecordTotalNum}
+          <EmptyBox if={!!tempTaskInfos.length}>
+            <AuditResultCollection
+              taskInfos={tempTaskInfos}
+              auditResultActiveKey={tempAuditResultActiveKey}
+              setAuditResultActiveKey={setTempAuditResultActiveKey}
+              updateTaskRecordTotalNum={updateTaskRecordTotalNum}
             />
           </EmptyBox>
         </Space>
@@ -333,7 +352,8 @@ const Order = () => {
           cancel={closeModifySqlModal}
           submit={modifySqlSubmit}
           visible={visible}
-          currentOrderTask={taskInfo}
+          currentOrderTasks={taskInfos}
+          sqlMode={orderInfo?.mode ?? WorkflowResV2ModeEnum.same_sqls}
         />
         <OrderHistory
           visible={historyVisible}

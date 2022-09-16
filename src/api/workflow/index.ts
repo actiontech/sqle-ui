@@ -37,7 +37,23 @@ import {
   IRejectWorkflowV1Params,
   IRejectWorkflowV1Return,
   IExecuteTaskOnWorkflowV1Params,
-  IExecuteTaskOnWorkflowV1Return
+  IExecuteTaskOnWorkflowV1Return,
+  IGetSummaryOfInstanceTasksV1Params,
+  IGetSummaryOfInstanceTasksV1Return,
+  IExecuteOneTaskOnWorkflowV1Params,
+  IExecuteOneTaskOnWorkflowV1Return,
+  IGetWorkflowsV2Params,
+  IGetWorkflowsV2Return,
+  ICreateWorkflowV2Params,
+  ICreateWorkflowV2Return,
+  IGetWorkflowV2Params,
+  IGetWorkflowV2Return,
+  IUpdateWorkflowV2Params,
+  IUpdateWorkflowV2Return,
+  IExecuteTasksOnWorkflowV2Params,
+  IExecuteTasksOnWorkflowV2Return,
+  IUpdateWorkflowScheduleV2Params,
+  IUpdateWorkflowScheduleV2Return
 } from './index.d';
 
 class WorkflowService extends ServiceBase {
@@ -260,6 +276,126 @@ class WorkflowService extends ServiceBase {
 
     return this.post<IExecuteTaskOnWorkflowV1Return>(
       `/v1/workflows/${workflow_id}/task/execute`,
+      paramsData,
+      options
+    );
+  }
+
+  public getSummaryOfInstanceTasksV1(
+    params: IGetSummaryOfInstanceTasksV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const workflow_id = paramsData.workflow_id;
+    delete paramsData.workflow_id;
+
+    return this.get<IGetSummaryOfInstanceTasksV1Return>(
+      `/v1/workflows/${workflow_id}/tasks`,
+      paramsData,
+      options
+    );
+  }
+
+  public executeOneTaskOnWorkflowV1(
+    params: IExecuteOneTaskOnWorkflowV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const workflow_id = paramsData.workflow_id;
+    delete paramsData.workflow_id;
+
+    const task_id = paramsData.task_id;
+    delete paramsData.task_id;
+
+    return this.post<IExecuteOneTaskOnWorkflowV1Return>(
+      `/v1/workflows/${workflow_id}/tasks/${task_id}/execute`,
+      paramsData,
+      options
+    );
+  }
+
+  public getWorkflowsV2(
+    params: IGetWorkflowsV2Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.get<IGetWorkflowsV2Return>(
+      '/v2/workflows',
+      paramsData,
+      options
+    );
+  }
+
+  public createWorkflowV2(
+    params: ICreateWorkflowV2Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.post<ICreateWorkflowV2Return>(
+      '/v2/workflows',
+      paramsData,
+      options
+    );
+  }
+
+  public getWorkflowV2(
+    params: IGetWorkflowV2Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const workflow_id = paramsData.workflow_id;
+    delete paramsData.workflow_id;
+
+    return this.get<IGetWorkflowV2Return>(
+      `/v2/workflows/${workflow_id}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public updateWorkflowV2(
+    params: IUpdateWorkflowV2Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const workflow_id = paramsData.workflow_id;
+    delete paramsData.workflow_id;
+
+    return this.patch<IUpdateWorkflowV2Return>(
+      `/v2/workflows/${workflow_id}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public executeTasksOnWorkflowV2(
+    params: IExecuteTasksOnWorkflowV2Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const workflow_id = paramsData.workflow_id;
+    delete paramsData.workflow_id;
+
+    return this.post<IExecuteTasksOnWorkflowV2Return>(
+      `/v2/workflows/${workflow_id}/tasks/execute`,
+      paramsData,
+      options
+    );
+  }
+
+  public updateWorkflowScheduleV2(
+    params: IUpdateWorkflowScheduleV2Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const workflow_id = paramsData.workflow_id;
+    delete paramsData.workflow_id;
+
+    const task_id = paramsData.task_id;
+    delete paramsData.task_id;
+
+    return this.put<IUpdateWorkflowScheduleV2Return>(
+      `/v2/workflows/${workflow_id}/tasks/${task_id}/schedule`,
       paramsData,
       options
     );

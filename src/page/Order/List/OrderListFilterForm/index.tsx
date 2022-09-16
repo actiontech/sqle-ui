@@ -65,7 +65,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
   };
 
   const {
-    generateWorkflowStepTypeSelectOption,
+    // generateWorkflowStepTypeSelectOption,
     generateOrderStatusSelectOption,
   } = useStaticStatus();
 
@@ -86,20 +86,6 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
               })}
             >
               {generateUsernameSelectOption()}
-            </Select>
-          </Form.Item>
-        </Col>
-        <Col {...FilterFormColLayout}>
-          <Form.Item
-            name="filter_current_step_type"
-            label={t('order.order.stepType')}
-          >
-            <Select
-              placeholder={t('common.form.placeholder.searchSelect', {
-                name: t('order.order.stepType'),
-              })}
-            >
-              {generateWorkflowStepTypeSelectOption()}
             </Select>
           </Form.Item>
         </Col>

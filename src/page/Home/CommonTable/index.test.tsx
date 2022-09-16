@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import { IWorkflowDetailResV1 } from '../../../api/common';
+import { IWorkflowDetailResV2 } from '../../../api/common';
 import CommonTable, { CommonTableInfoType, genTabPaneTitle } from './index';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import { TableColumn } from '../../../types/common.type';
 
-const list: IWorkflowDetailResV1[] = [
+const list: IWorkflowDetailResV2[] = [
   {
     subject: 'test1',
     desc: 'desc1',
@@ -88,7 +88,7 @@ describe('test Home/CommonTable', () => {
 
   test('should render custom custom when custom has a value', () => {
     const mockCustomColumn = jest
-      .fn<TableColumn<IWorkflowDetailResV1>, any>()
+      .fn<TableColumn<IWorkflowDetailResV2>, any>()
       .mockReturnValue([
         {
           dataIndex: 'subject',

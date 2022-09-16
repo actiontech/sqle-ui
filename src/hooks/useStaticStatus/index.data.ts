@@ -4,7 +4,7 @@ import {
 } from '../../api/task/index.enum';
 import {
   getWorkflowListV1FilterCurrentStepTypeEnum,
-  getWorkflowListV1FilterStatusEnum,
+  getWorkflowsV2FilterStatusEnum,
 } from '../../api/workflow/index.enum';
 import { StaticEnumDictionary } from './index.type';
 import {
@@ -40,16 +40,16 @@ export const auditStatusDictionary: StaticEnumDictionary<getAuditTaskSQLsV1Filte
       'audit.auditStatus.finished',
   };
 
-export const orderStatusDictionary: StaticEnumDictionary<getWorkflowListV1FilterStatusEnum> =
+export const orderStatusDictionary: StaticEnumDictionary<getWorkflowsV2FilterStatusEnum> =
   {
-    [getWorkflowListV1FilterStatusEnum.on_process]: 'order.status.process',
-    [getWorkflowListV1FilterStatusEnum.finished]: 'order.status.finished',
-    [getWorkflowListV1FilterStatusEnum.canceled]: 'order.status.canceled',
-    [getWorkflowListV1FilterStatusEnum.rejected]: 'order.status.reject',
-    [getWorkflowListV1FilterStatusEnum.exec_scheduled]:
-      'order.status.exec_scheduled',
-    [getWorkflowListV1FilterStatusEnum.exec_failed]: 'order.status.exec_failed',
-    [getWorkflowListV1FilterStatusEnum.executing]: 'order.status.executing',
+    [getWorkflowsV2FilterStatusEnum.wait_for_audit]:
+      'order.status.wait_for_audit',
+    [getWorkflowsV2FilterStatusEnum.wait_for_execution]:
+      'order.status.wait_for_execution',
+    [getWorkflowsV2FilterStatusEnum.canceled]: 'order.status.canceled',
+    [getWorkflowsV2FilterStatusEnum.rejected]: 'order.status.reject',
+    [getWorkflowsV2FilterStatusEnum.exec_failed]: 'order.status.exec_failed',
+    [getWorkflowsV2FilterStatusEnum.finished]: 'order.status.finished',
   };
 
 export const ruleLevelDictionary: StaticEnumDictionary<RuleResV1LevelEnum> = {
