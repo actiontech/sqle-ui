@@ -7,17 +7,17 @@ import {
 } from '../../../api/common.enum';
 import { useAllowAuditLevel } from '../hooks/useAllowAuditLevel';
 
-const useModifySql = (sqlMode: WorkflowResV2ModeEnum) => {
+const useModifySql = (
+  sqlMode: WorkflowResV2ModeEnum,
+  setTempAuditResultActiveKey: React.Dispatch<React.SetStateAction<string>>
+) => {
   const [taskInfos, setTaskInfos] = useState<IAuditTaskResV1[]>([]);
 
   const [
     updateOrderDisabled,
     { setTrue: setUpdateOrderBtnDisabled, setFalse: resetUpdateOrderBtnStatus },
   ] = useBoolean(false);
-  const [
-    visible,
-    { setTrue: openModifySqlModal, setFalse: closeModifySqlModal },
-  ] = useBoolean();
+  const [visible, { setTrue: openModifySqlModal, setFalse }] = useBoolean();
 
   const {
     disabledOperatorOrderBtnTips,
@@ -25,13 +25,21 @@ const useModifySql = (sqlMode: WorkflowResV2ModeEnum) => {
     setDisabledOperatorOrderBtnTips,
   } = useAllowAuditLevel();
 
+  const closeModifySqlModal = useCallback(
+    (tasks?: IAuditTaskResV1[]) => {
+      setFalse();
+      setTempAuditResultActiveKey(tasks?.[0]?.task_id?.toString() ?? '');
+    },
+    [setTempAuditResultActiveKey, setFalse]
+  );
+
   const modifySqlSubmit = useCallback(
     (tasks: IAuditTaskResV1[]) => {
       setTaskInfos(tasks);
       if (sqlMode === WorkflowResV2ModeEnum.different_sqls) {
         return;
       }
-      closeModifySqlModal();
+      closeModifySqlModal(tasks);
       if ((tasks?.length ?? 0) > 0) {
         judgeAuditLevel(
           tasks?.map((v) => ({

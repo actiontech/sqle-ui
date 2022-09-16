@@ -26,7 +26,7 @@ describe('Home', () => {
     return spy;
   };
   const mockRequest = () => {
-    const spy = jest.spyOn(workflow, 'getWorkflowListV1');
+    const spy = jest.spyOn(workflow, 'getWorkflowsV2');
     spy.mockImplementation(() => resolveThreeSecond([]));
     return spy;
   };

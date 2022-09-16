@@ -65,7 +65,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
   };
 
   const {
-    generateWorkflowStepTypeSelectOption,
+    // generateWorkflowStepTypeSelectOption,
     generateOrderStatusSelectOption,
   } = useStaticStatus();
 

@@ -1,12 +1,9 @@
 import { Tag, Tooltip, Typography } from 'antd';
 import i18n from 'i18next';
 import { IWorkflowDetailResV2 } from '../../../api/common';
-import { getWorkflowListV1FilterCurrentStepTypeEnum } from '../../../api/workflow/index.enum';
 import OrderStatusTag from '../../../components/OrderStatusTag';
-import { WorkflowStepTypeDictionary } from '../../../hooks/useStaticStatus/index.data';
 import { TableColumn } from '../../../types/common.type';
 import { formatTime } from '../../../utils/Common';
-import { floatToPercent } from '../../../utils/Math';
 
 export const orderListColumn = (): TableColumn<IWorkflowDetailResV2> => {
   return [
@@ -45,20 +42,6 @@ export const orderListColumn = (): TableColumn<IWorkflowDetailResV2> => {
         return <OrderStatusTag status={status} />;
       },
     },
-    // {
-    //   dataIndex: 'schedule_time',
-    //   title: () => i18n.t('order.order.time'),
-    //   render: (schedule_time) => {
-    //     return formatTime(schedule_time);
-    //   },
-    // },
-    // {
-    //   dataIndex: 'current_step_type',
-    //   title: () => i18n.t('order.order.stepType'),
-    //   render: (status: getWorkflowListV1FilterCurrentStepTypeEnum) => {
-    //     return status ? i18n.t(WorkflowStepTypeDictionary[status]) : '';
-    //   },
-    // },
     {
       dataIndex: 'current_step_assignee_user_name_list',
       title: () => i18n.t('order.order.assignee'),
@@ -68,22 +51,5 @@ export const orderListColumn = (): TableColumn<IWorkflowDetailResV2> => {
         });
       },
     },
-    // {
-    //   dataIndex: 'task_instance_name',
-    //   title: () => i18n.t('order.order.instanceName'),
-    // },
-    // {
-    //   dataIndex: 'task_pass_rate',
-    //   title: () => i18n.t('order.order.passRate'),
-    //   render: (passRate) => {
-    //     return passRate !== undefined
-    //       ? `${floatToPercent(Number.parseFloat(passRate ?? 0))}%`
-    //       : '--';
-    //   },
-    // },
-    // {
-    //   dataIndex: 'task_score',
-    //   title: () => i18n.t('order.order.taskScore'),
-    // },
   ];
 };

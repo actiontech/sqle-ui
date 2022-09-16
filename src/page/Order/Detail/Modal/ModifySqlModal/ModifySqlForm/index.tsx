@@ -1,6 +1,6 @@
 import { Button, Form, Radio, RadioChangeEvent, Upload } from 'antd';
 import { FormProps, useForm } from 'antd/lib/form/Form';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import MonacoEditor from 'react-monaco-editor';
 import EmptyBox from '../../../../../../components/EmptyBox';
@@ -15,6 +15,7 @@ import { ModifySqlFormFields, ModifySqlFormProps } from './index.type';
 const ModifySqlForm: React.FC<ModifySqlFormProps> = ({
   currentTaskId,
   updateSqlFormInfo,
+  currentDefaultSqlValue,
 }) => {
   const { t } = useTranslation();
   const styles = useStyles();
@@ -46,6 +47,12 @@ const ModifySqlForm: React.FC<ModifySqlFormProps> = ({
     updateSqlFormInfo(currentTaskId, values);
   };
 
+  useEffect(() => {
+    form.setFieldsValue({
+      sql: currentDefaultSqlValue ?? '/* input your sql */',
+    });
+  }, [currentDefaultSqlValue, form]);
+
   return (
     <Form form={form} {...ModalFormLayout} onValuesChange={onValuesChange}>
       <Form.Item
@@ -71,7 +78,6 @@ const ModifySqlForm: React.FC<ModifySqlFormProps> = ({
             },
           ]}
           label={t('order.sqlInfo.sql')}
-          initialValue="/* input your sql */"
           wrapperCol={{
             ...ModalFormLayout.wrapperCol,
             className: styles.editor,

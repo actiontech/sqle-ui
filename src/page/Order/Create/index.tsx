@@ -118,7 +118,6 @@ const CreateOrder = () => {
 
   const auditSql = useCallback(
     async (values: SqlInfoFormFields, currentTabIndex: number) => {
-      console.log(values);
       const commonJudgeAuditLevel = (tasks: IAuditTaskResV1[]) => {
         judgeAuditLevel(
           tasks.map((v) => ({
@@ -192,7 +191,13 @@ const CreateOrder = () => {
         message.error(t('order.createOrder.mustAuditTips'));
         return;
       }
-      if (Array.from(taskSqlNum).some(([_, len]) => len === 0)) {
+      if (
+        Array.from(taskSqlNum).some(([task, len]) => {
+          return (
+            taskInfos.some((v) => v.task_id?.toString() === task) && len === 0
+          );
+        })
+      ) {
         message.error(t('order.createOrder.mustHaveAuditResultTips'));
         return;
       }

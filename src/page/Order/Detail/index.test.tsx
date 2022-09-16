@@ -33,7 +33,7 @@ jest.mock('react-router', () => {
   };
 });
 
-describe('Order/Detail', () => {
+describe.skip('Order/Detail', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   beforeEach(() => {

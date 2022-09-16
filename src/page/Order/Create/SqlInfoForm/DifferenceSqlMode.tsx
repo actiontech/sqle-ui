@@ -16,7 +16,7 @@ const DifferenceSqlMode: React.FC<DifferenceSqlModeProps> = ({
           return null;
         }
         return (
-          <Tabs.TabPane tab={genKey(v, index + 1)} key={genKey(v, index)}>
+          <Tabs.TabPane tab={v} key={genKey(v, index)}>
             <SameSqlMode
               submit={submit}
               submitLoading={submitLoading}

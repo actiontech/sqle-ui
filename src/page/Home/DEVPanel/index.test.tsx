@@ -17,7 +17,7 @@ import { OrderListUrlParamsKey } from '../../Order/List/index.data';
 
 describe('test home/DEVPanel', () => {
   const mockRequest = () => {
-    const spy = jest.spyOn(workflow, 'getWorkflowListV1');
+    const spy = jest.spyOn(workflow, 'getWorkflowsV2');
     spy.mockImplementation(() =>
       resolveThreeSecond([
         {
@@ -64,7 +64,7 @@ describe('test home/DEVPanel', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('should be called getWorkflowListV1 interface', async () => {
+  test('should be called getWorkflowsV2 interface', async () => {
     expect(getMockRequestSpy).toBeCalledTimes(0);
     renderWithRouter(
       <DEVPanel getWorkflowStatistics={mockGetWorkflowStatistics} />
@@ -140,17 +140,19 @@ describe('test home/DEVPanel', () => {
       page_index: 1,
       page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
       filter_create_user_name: username,
-      filter_status: getWorkflowListV1FilterStatusEnum.on_process,
-      filter_current_step_type:
-        getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute,
+      // filter_status: getWorkflowListV1FilterStatusEnum.on_process,
+      // filter_current_step_type:
+      //   getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute,
+      filter_status: 'wait_for_execution',
     });
     expect(getMockRequestSpy.mock.calls[4][0]).toEqual({
       page_index: 1,
       page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
       filter_create_user_name: username,
-      filter_status: getWorkflowListV1FilterStatusEnum.on_process,
-      filter_current_step_type:
-        getWorkflowListV1FilterCurrentStepTypeEnum.sql_review,
+      // filter_status: getWorkflowListV1FilterStatusEnum.on_process,
+      // filter_current_step_type:
+      //   getWorkflowListV1FilterCurrentStepTypeEnum.sql_review,
+      filter_status: 'wait_for_execution',
     });
     expect(getMockRequestSpy.mock.calls[5][0]).toEqual({
       page_index: 1,

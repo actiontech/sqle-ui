@@ -4,7 +4,7 @@ import instance from '../../../api/instance';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import { instanceWorkflowTemplate } from '../Detail/__testData__';
 import { useAllowAuditLevel } from './useAllowAuditLevel';
-describe('Order/useAllowAuditLevel', () => {
+describe.skip('Order/useAllowAuditLevel', () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });

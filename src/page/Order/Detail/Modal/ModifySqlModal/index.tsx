@@ -1,7 +1,7 @@
 import { useBoolean } from 'ahooks';
 import { Alert, Button, Modal, Space, Tabs } from 'antd';
-import { cloneDeep, remove } from 'lodash';
-import React, { useState } from 'react';
+import { cloneDeep } from 'lodash';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IAuditTaskResV1 } from '../../../../../api/common';
 import {
@@ -14,6 +14,7 @@ import {
   ICreateAndAuditTaskV1Params,
   ICreateAuditTasksV1Params,
 } from '../../../../../api/task/index.d';
+import EmptyBox from '../../../../../components/EmptyBox';
 import { ModalSize, ResponseCode } from '../../../../../data/common';
 import { ModifySqlModalProps } from './index.type';
 import ModifySqlForm from './ModifySqlForm';
@@ -28,13 +29,12 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
     useBoolean();
   const [currentTab, setCurrentTab] = useState('');
-  const [taskInfos, setTaskInfos] =
-    useState<IAuditTaskResV1[]>(currentOrderTasks);
+  const [taskInfos, setTaskInfos] = useState<IAuditTaskResV1[]>([]);
   const [sqlFormInfo, setSqlFormInfo] = useState<
     Map<string, ModifySqlFormFields>
   >(new Map());
   const [currentDefaultSqlValue, setCurrentDefaultValue] = useState('');
-  const [differenceSqlTabIndexTaskIdMap, setDifferenceSqlTanIndexTaskIdMap] =
+  const [differenceSqlTabIndexTaskIdMap, setDifferenceSqlTabIndexTaskIdMap] =
     useState<Map<number, string>>(new Map());
 
   const auditSameSqlMode = () => {
@@ -46,9 +46,12 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
         })) ?? [],
     };
 
-    const values = sqlFormInfo.get(currentTab);
-    if (!values) {
-      return;
+    const values = sqlFormInfo.get(taskInfos[0]?.task_id?.toString()!);
+    let sql: string | undefined;
+    if (values) {
+      sql = values.sql;
+    } else {
+      sql = currentDefaultSqlValue;
     }
     return task.createAuditTasksV1(createAuditTasksParams).then((res) => {
       if (
@@ -57,8 +60,8 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
       ) {
         const auditTaskPrams: IAuditTaskGroupIdV1Params = {
           task_group_id: res.data.data?.task_group_id,
-          sql: values.sql,
-          input_sql_file: values.sqlFile?.[0],
+          sql: sql,
+          input_sql_file: values?.sqlFile?.[0],
         };
         return task.auditTaskGroupIdV1(auditTaskPrams).then((res) => {
           if (res && res.data.code === ResponseCode.SUCCESS) {
@@ -74,17 +77,21 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
       (v) => v.task_id?.toString() === currentTab
     );
     if (!currentTask) {
+      submitFinish();
       return;
     }
     const values = sqlFormInfo.get(currentTab);
-    if (!values) {
-      return;
+    let sql: string | undefined;
+    if (values) {
+      sql = values.sql;
+    } else {
+      sql = currentDefaultSqlValue;
     }
     const params: ICreateAndAuditTaskV1Params = {
       instance_name: currentTask.instance_name ?? '',
       instance_schema: currentTask.instance_schema ?? '',
-      sql: values.sql,
-      input_sql_file: values.sqlFile?.[0],
+      sql: sql,
+      input_sql_file: values?.sqlFile?.[0],
     };
     return task.createAndAuditTaskV1(params).then((res) => {
       if (res && res.data.code === ResponseCode.SUCCESS) {
@@ -97,38 +104,56 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
     startSubmit();
 
     if (sqlMode === WorkflowResV2ModeEnum.same_sqls) {
-      const res = await auditSameSqlMode();
-      submitFinish();
-      if (res && res.tasks) {
-        setTaskInfos(res.tasks);
-        props.submit(res.tasks);
-      }
+      auditSameSqlMode()
+        ?.then((res) => {
+          if (res && res.tasks) {
+            setTaskInfos(res.tasks);
+            props.submit(res.tasks);
+          }
+        })
+        .finally(() => {
+          submitFinish();
+        });
     } else {
-      const res = await auditDifferenceSqlMode();
-      const currentTabIndex = taskInfos.findIndex(
-        (v) => v.task_id?.toString() === currentTab
-      );
-      if (currentTabIndex === -1) {
-        return;
-      }
-      setDifferenceSqlTanIndexTaskIdMap((v) => {
-        const cloneValue = cloneDeep(v);
-        cloneValue.set(currentTabIndex, res?.task_id?.toString() ?? '');
-        return cloneValue;
-      });
-      if (res) {
-        const cloneTaskInfos = cloneDeep(taskInfos);
-        const previousTaskId =
-          differenceSqlTabIndexTaskIdMap.get(currentTabIndex);
-        if (previousTaskId) {
-          remove(
-            cloneTaskInfos,
-            (v) => v.task_id?.toString() === previousTaskId
+      auditDifferenceSqlMode()
+        ?.then((res) => {
+          const currentTabIndex = taskInfos.findIndex(
+            (v) => v.task_id?.toString() === currentTab
           );
-        }
-        setTaskInfos([...cloneTaskInfos, res]);
-        props.submit([...cloneTaskInfos, res]);
-      }
+          if (currentTabIndex === -1) {
+            return;
+          }
+          setDifferenceSqlTabIndexTaskIdMap((v) => {
+            const cloneValue = cloneDeep(v);
+            cloneValue.set(currentTabIndex, res?.task_id?.toString() ?? '');
+            return cloneValue;
+          });
+          if (res) {
+            let existIndex = -1;
+            const cloneTaskInfos = cloneDeep(taskInfos);
+            const previousTaskId =
+              differenceSqlTabIndexTaskIdMap.get(currentTabIndex);
+            if (previousTaskId) {
+              existIndex = cloneTaskInfos.findIndex(
+                (v) => v.task_id?.toString() === previousTaskId
+              );
+              if (existIndex !== -1) {
+                cloneTaskInfos.splice(existIndex, 1);
+              }
+            }
+            if (existIndex === -1) {
+              cloneTaskInfos.push(res);
+            } else {
+              cloneTaskInfos.splice(existIndex, 0, res);
+            }
+            setTaskInfos(cloneTaskInfos);
+            props.submit(cloneTaskInfos);
+            setCurrentTab(res.task_id?.toString() ?? '');
+          }
+        })
+        .finally(() => {
+          submitFinish();
+        });
     }
   };
 
@@ -140,7 +165,7 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
     });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const currentTask = taskInfos.find(
       (v) => v.task_id?.toString() === currentTab
     );
@@ -160,6 +185,18 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
     }
   }, [taskInfos, currentTab, props.visible]);
 
+  useEffect(() => {
+    setTaskInfos(currentOrderTasks);
+    setCurrentTab(currentOrderTasks[0]?.task_id?.toString() ?? '');
+    currentOrderTasks.forEach((order, index) => {
+      setDifferenceSqlTabIndexTaskIdMap((v) => {
+        const cloneValue = cloneDeep(v);
+        cloneValue.set(index, order?.task_id?.toString() ?? '');
+        return cloneValue;
+      });
+    });
+  }, [currentOrderTasks]);
+
   return (
     <Modal
       title={t('order.modifySql.title')}
@@ -178,23 +215,35 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
         </Space>
       }
     >
-      <Tabs
-        onChange={(tabKey) => {
-          setCurrentTab(tabKey);
-        }}
+      <EmptyBox
+        if={sqlMode === WorkflowResV2ModeEnum.different_sqls}
+        defaultNode={
+          <ModifySqlForm
+            updateSqlFormInfo={updateSqlFormInfo}
+            currentTaskId={taskInfos[0]?.task_id?.toString() ?? ''}
+            currentDefaultSqlValue={currentDefaultSqlValue}
+          />
+        }
       >
-        {taskInfos.map((v) => {
-          return (
-            <Tabs.TabPane tab={v.instance_name} key={v.task_id}>
-              <ModifySqlForm
-                updateSqlFormInfo={updateSqlFormInfo}
-                currentTaskId={v.task_id?.toString()!}
-                currentDefaultSqlValue={currentDefaultSqlValue}
-              />
-            </Tabs.TabPane>
-          );
-        })}
-      </Tabs>
+        <Tabs
+          activeKey={currentTab}
+          onChange={(tabKey) => {
+            setCurrentTab(tabKey);
+          }}
+        >
+          {taskInfos.map((v) => {
+            return (
+              <Tabs.TabPane tab={v.instance_name} key={v.task_id}>
+                <ModifySqlForm
+                  updateSqlFormInfo={updateSqlFormInfo}
+                  currentTaskId={v.task_id?.toString()!}
+                  currentDefaultSqlValue={currentDefaultSqlValue}
+                />
+              </Tabs.TabPane>
+            );
+          })}
+        </Tabs>
+      </EmptyBox>
     </Modal>
   );
 };

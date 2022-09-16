@@ -1,11 +1,11 @@
 import i18n from 'i18next';
 import { Link } from 'react-router-dom';
-import { IWorkflowDetailResV1 } from '../../../api/common';
+import { IWorkflowDetailResV2 } from '../../../api/common';
 import OrderStatusTag from '../../../components/OrderStatusTag';
 import { TableColumn } from '../../../types/common.type';
 import { formatTime } from '../../../utils/Common';
 
-export const customColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
+export const customColumn: () => TableColumn<IWorkflowDetailResV2> = () => {
   return [
     {
       dataIndex: 'subject',

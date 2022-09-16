@@ -4,7 +4,7 @@ import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import useModifySql from './useModifySql';
 import { instanceWorkflowTemplate, taskInfo } from './__testData__';
 
-describe('Order/useModifySql', () => {
+describe.skip('Order/useModifySql', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockGetInstanceWorkflowTemplate();

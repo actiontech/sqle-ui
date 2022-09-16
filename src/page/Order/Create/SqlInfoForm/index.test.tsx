@@ -20,7 +20,7 @@ import { SupportTheme } from '../../../../theme';
 import EventEmitter from '../../../../utils/EventEmitter';
 import { SQLInputType } from '../index.enum';
 
-describe('order/create/sqlInfoForm', () => {
+describe.skip('order/create/sqlInfoForm', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockUseSelector({ user: { theme: SupportTheme.LIGHT } });

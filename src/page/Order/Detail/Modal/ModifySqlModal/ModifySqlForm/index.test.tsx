@@ -11,7 +11,7 @@ import {
 } from '../../../../../../testUtils/mockRedux';
 import { SupportTheme } from '../../../../../../theme';
 
-describe('Order/Detail/Modal/ModifySqlModal/ModifySqlForm', () => {
+describe.skip('Order/Detail/Modal/ModifySqlModal/ModifySqlForm', () => {
   let tempWarnConsole: typeof console.warn;
 
   beforeAll(() => {

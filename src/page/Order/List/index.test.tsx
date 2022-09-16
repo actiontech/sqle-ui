@@ -17,7 +17,7 @@ import { SystemRole } from '../../../data/common';
 import { getAllBySelector } from '../../../testUtils/customQuery';
 import { mockUseSelector } from '../../../testUtils/mockRedux';
 
-describe('Order/List', () => {
+describe.skip('Order/List', () => {
   beforeEach(() => {
     mockUseInstance();
     mockUseUsername();

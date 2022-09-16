@@ -7,7 +7,7 @@ import {
 } from '../../api/task/index.enum';
 import {
   getWorkflowListV1FilterCurrentStepTypeEnum,
-  getWorkflowListV1FilterStatusEnum,
+  getWorkflowsV2FilterStatusEnum,
 } from '../../api/workflow/index.enum';
 import {
   CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
@@ -134,57 +134,46 @@ const useStaticStatus = () => {
     return (
       <>
         <Select.Option
-          key={getWorkflowListV1FilterStatusEnum.on_process}
-          value={getWorkflowListV1FilterStatusEnum.on_process}
+          key={getWorkflowsV2FilterStatusEnum.wait_for_audit}
+          value={getWorkflowsV2FilterStatusEnum.wait_for_audit}
         >
           {t(
-            orderStatusDictionary[getWorkflowListV1FilterStatusEnum.on_process]
+            orderStatusDictionary[getWorkflowsV2FilterStatusEnum.wait_for_audit]
           )}
         </Select.Option>
         <Select.Option
-          key={getWorkflowListV1FilterStatusEnum.exec_scheduled}
-          value={getWorkflowListV1FilterStatusEnum.exec_scheduled}
+          key={getWorkflowsV2FilterStatusEnum.wait_for_execution}
+          value={getWorkflowsV2FilterStatusEnum.wait_for_execution}
         >
           {t(
             orderStatusDictionary[
-              getWorkflowListV1FilterStatusEnum.exec_scheduled
+              getWorkflowsV2FilterStatusEnum.wait_for_execution
             ]
           )}
         </Select.Option>
         <Select.Option
-          key={getWorkflowListV1FilterStatusEnum.executing}
-          value={getWorkflowListV1FilterStatusEnum.executing}
+          key={getWorkflowsV2FilterStatusEnum.finished}
+          value={getWorkflowsV2FilterStatusEnum.finished}
         >
-          {t(
-            orderStatusDictionary[getWorkflowListV1FilterStatusEnum.executing]
-          )}
-        </Select.Option>
-
-        <Select.Option
-          key={getWorkflowListV1FilterStatusEnum.finished}
-          value={getWorkflowListV1FilterStatusEnum.finished}
-        >
-          {t(orderStatusDictionary[getWorkflowListV1FilterStatusEnum.finished])}
+          {t(orderStatusDictionary[getWorkflowsV2FilterStatusEnum.finished])}
         </Select.Option>
         <Select.Option
-          key={getWorkflowListV1FilterStatusEnum.rejected}
-          value={getWorkflowListV1FilterStatusEnum.rejected}
+          key={getWorkflowsV2FilterStatusEnum.rejected}
+          value={getWorkflowsV2FilterStatusEnum.rejected}
         >
-          {t(orderStatusDictionary[getWorkflowListV1FilterStatusEnum.rejected])}
+          {t(orderStatusDictionary[getWorkflowsV2FilterStatusEnum.rejected])}
         </Select.Option>
         <Select.Option
-          key={getWorkflowListV1FilterStatusEnum.exec_failed}
-          value={getWorkflowListV1FilterStatusEnum.exec_failed}
+          key={getWorkflowsV2FilterStatusEnum.exec_failed}
+          value={getWorkflowsV2FilterStatusEnum.exec_failed}
         >
-          {t(
-            orderStatusDictionary[getWorkflowListV1FilterStatusEnum.exec_failed]
-          )}
+          {t(orderStatusDictionary[getWorkflowsV2FilterStatusEnum.exec_failed])}
         </Select.Option>
         <Select.Option
-          key={getWorkflowListV1FilterStatusEnum.canceled}
-          value={getWorkflowListV1FilterStatusEnum.canceled}
+          key={getWorkflowsV2FilterStatusEnum.canceled}
+          value={getWorkflowsV2FilterStatusEnum.canceled}
         >
-          {t(orderStatusDictionary[getWorkflowListV1FilterStatusEnum.canceled])}
+          {t(orderStatusDictionary[getWorkflowsV2FilterStatusEnum.canceled])}
         </Select.Option>
       </>
     );

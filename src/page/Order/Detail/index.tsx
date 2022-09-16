@@ -42,7 +42,11 @@ const Order = () => {
   const [refreshFlag, { toggle: refreshTask }] = useToggle(false);
   const [taskInfos, setTaskInfos] = useState<IAuditTaskResV1[]>([]);
   const [auditResultActiveKey, setAuditResultActiveKey] = useState<string>('');
+  const [tempAuditResultActiveKey, setTempAuditResultActiveKey] =
+    useState<string>('');
   const [isExistScheduleTask, setIsExistScheduleTask] = useState(false);
+  const [refreshOverviewFlag, { toggle: refreshOverviewAction }] =
+    useToggle(false);
 
   const { data: orderInfo, refresh: refreshOrder } = useRequest(
     () =>
@@ -83,10 +87,11 @@ const Order = () => {
           if (res.data.code === ResponseCode.SUCCESS) {
             message.success(t('order.operator.approveSuccessTips'));
             refreshOrder();
+            refreshOverviewAction();
           }
         });
     },
-    [orderInfo?.workflow_id, refreshOrder, t]
+    [orderInfo?.workflow_id, refreshOrder, t, refreshOverviewAction]
   );
 
   const executing = React.useCallback(async () => {
@@ -99,9 +104,16 @@ const Order = () => {
           message.success(t('order.operator.executingTips'));
           refreshOrder();
           refreshTask();
+          refreshOverviewAction();
         }
       });
-  }, [orderInfo?.workflow_id, refreshOrder, refreshTask, t]);
+  }, [
+    orderInfo?.workflow_id,
+    refreshOrder,
+    refreshOverviewAction,
+    refreshTask,
+    t,
+  ]);
 
   const reject = React.useCallback(
     async (reason: string, stepId: number) => {
@@ -115,10 +127,11 @@ const Order = () => {
           if (res.data.code === ResponseCode.SUCCESS) {
             message.success(t('order.operator.rejectSuccessTips'));
             refreshOrder();
+            refreshOverviewAction();
           }
         });
     },
-    [orderInfo?.workflow_id, refreshOrder, t]
+    [orderInfo?.workflow_id, refreshOrder, refreshOverviewAction, t]
   );
 
   const {
@@ -130,7 +143,10 @@ const Order = () => {
     resetAllState,
     updateOrderDisabled,
     disabledOperatorOrderBtnTips,
-  } = useModifySql(orderInfo?.mode ?? WorkflowResV2ModeEnum.same_sqls);
+  } = useModifySql(
+    orderInfo?.mode ?? WorkflowResV2ModeEnum.same_sqls,
+    setTempAuditResultActiveKey
+  );
 
   const [
     updateLoading,
@@ -148,7 +164,7 @@ const Order = () => {
   };
 
   const updateOrderSql = () => {
-    if (taskSqlNum.get(auditResultActiveKey) === 0) {
+    if (Array.from(taskSqlNum).some(([_, len]) => len === 0)) {
       message.error(t('order.modifySql.updateEmptyOrderTips'));
       return;
     }
@@ -275,6 +291,7 @@ const Order = () => {
                 executing={executing}
                 reject={reject}
                 modifySql={openModifySqlModal}
+                isExistScheduleTask={isExistScheduleTask}
               />
             </Card>
           </EmptyBox>
@@ -286,6 +303,8 @@ const Order = () => {
             showOverview={true}
             workflowId={orderInfo?.workflow_id?.toString()}
             refreshOrder={refreshOrder}
+            setIsExistScheduleTask={setIsExistScheduleTask}
+            refreshOverviewFlag={refreshOverviewFlag}
           />
           <EmptyBox if={!!tempTaskInfos.length}>
             <Card>
@@ -323,8 +342,8 @@ const Order = () => {
           <EmptyBox if={!!tempTaskInfos.length}>
             <AuditResultCollection
               taskInfos={tempTaskInfos}
-              auditResultActiveKey={auditResultActiveKey}
-              setAuditResultActiveKey={setAuditResultActiveKey}
+              auditResultActiveKey={tempAuditResultActiveKey}
+              setAuditResultActiveKey={setTempAuditResultActiveKey}
               updateTaskRecordTotalNum={updateTaskRecordTotalNum}
             />
           </EmptyBox>

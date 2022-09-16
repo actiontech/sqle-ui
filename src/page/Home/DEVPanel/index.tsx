@@ -9,6 +9,7 @@ import workflow from '../../../api/workflow';
 import {
   getWorkflowListV1FilterCurrentStepTypeEnum,
   getWorkflowListV1FilterStatusEnum,
+  getWorkflowsV2FilterStatusEnum,
 } from '../../../api/workflow/index.enum';
 import { IReduxState } from '../../../store';
 import { OrderListUrlParamsKey } from '../../Order/List/index.data';
@@ -44,13 +45,14 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
 
   const pendingReviewByMeResponse = useRequest(
     () => {
-      return workflow.getWorkflowListV1({
+      return workflow.getWorkflowsV2({
         page_index: 1,
         page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
         filter_create_user_name: username,
-        filter_status: getWorkflowListV1FilterStatusEnum.on_process,
-        filter_current_step_type:
-          getWorkflowListV1FilterCurrentStepTypeEnum.sql_review,
+        filter_status: getWorkflowsV2FilterStatusEnum.wait_for_execution,
+
+        // filter_current_step_type:
+        //   getWorkflowListV1FilterCurrentStepTypeEnum.sql_review,
       });
     },
     {
@@ -62,13 +64,14 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
 
   const pendingExecByMeResponse = useRequest(
     () => {
-      return workflow.getWorkflowListV1({
+      return workflow.getWorkflowsV2({
         page_index: 1,
         page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
         filter_create_user_name: username,
-        filter_status: getWorkflowListV1FilterStatusEnum.on_process,
-        filter_current_step_type:
-          getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute,
+        filter_status: getWorkflowsV2FilterStatusEnum.wait_for_execution,
+
+        // filter_current_step_type:
+        //   getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute,
       });
     },
     {
@@ -80,11 +83,11 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
 
   const rejectedOrderByMeResponse = useRequest(
     () => {
-      return workflow.getWorkflowListV1({
+      return workflow.getWorkflowsV2({
         page_index: 1,
         page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
         filter_create_user_name: username,
-        filter_status: getWorkflowListV1FilterStatusEnum.rejected,
+        filter_status: getWorkflowsV2FilterStatusEnum.rejected,
       });
     },
     {

@@ -38,7 +38,6 @@ const OrderStatusTag: React.FC<{
   status?: WorkflowRecordResV2StatusEnum;
 }> = (props) => {
   const { t } = useTranslation();
-
   const status = props.status ?? 'unknown';
 
   return (

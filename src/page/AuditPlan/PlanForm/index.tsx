@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import { IAuditPlanParamResV1 } from '../../../api/common';
 import useAsyncParams from '../../../components/BackendForm/useAsyncParams';
 import CronInput from '../../../components/CronInput';
-import EmptyBox from '../../../components/EmptyBox';
 import { PageBigFormLayout } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { checkCron } from '../../../hooks/useCron/cron.tool';

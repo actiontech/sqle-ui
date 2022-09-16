@@ -12,7 +12,7 @@ import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
 import { SupportTheme } from '../../../../../theme';
 import { taskInfo, taskInfoErrorAuditLevel } from '../../__testData__';
 
-describe('Order/Detail/Modal/ModifySqlModal', () => {
+describe.skip('Order/Detail/Modal/ModifySqlModal', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockUseSelector({ user: { theme: SupportTheme.LIGHT } });

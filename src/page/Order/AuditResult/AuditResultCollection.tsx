@@ -1,7 +1,6 @@
 import { Card, message, Result, Table, Tabs } from 'antd';
 import { useTranslation } from 'react-i18next';
 import AuditResult from '.';
-import EmptyBox from '../../../components/EmptyBox';
 import { AuditResultCollectionProps } from './index.type';
 import { auditResultOverviewColumn } from './column';
 import workflow from '../../../api/workflow';
@@ -12,8 +11,10 @@ import {
 import { ResponseCode } from '../../../data/common';
 import ScheduleTimeModal from './ScheduleTimeModal';
 import { useBoolean, useRequest } from 'ahooks';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IGetWorkflowTasksItemV1 } from '../../../api/common';
+
+const OVERVIEW_TAB_KEY = 'OVERVIEW_TAB_KEY';
 
 const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
   taskInfos,
@@ -24,6 +25,7 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
   workflowId,
   refreshOrder,
   setIsExistScheduleTask,
+  refreshOverviewFlag,
 }) => {
   const { t } = useTranslation();
   const [currentTaskId, setCurrentTaskId] = useState('');
@@ -71,11 +73,6 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
     });
   };
 
-  const openScheduleModalAndSetTaskId = (taskId: string) => {
-    openScheduleModal();
-    setCurrentTaskId(taskId);
-  };
-
   const {
     loading,
     data: overviewList,
@@ -85,14 +82,24 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
     () =>
       workflow.getSummaryOfInstanceTasksV1({ workflow_id: Number(workflowId) }),
     {
-      ready: !!showOverview && !!workflowId && !!setIsExistScheduleTask,
+      refreshDeps: [refreshOverviewFlag],
+      ready: !!showOverview && !!workflowId,
       formatResult: (res) => res.data.data ?? [],
       onSuccess: (res: IGetWorkflowTasksItemV1[]) => {
+        if (!res.some) {
+          return;
+        }
         const isExistScheduleTask = res.some((v) => !!v.schedule_time);
         setIsExistScheduleTask?.(isExistScheduleTask);
       },
     }
   );
+
+  useEffect(() => {
+    if (showOverview) {
+      setAuditResultActiveKey(OVERVIEW_TAB_KEY);
+    }
+  }, [setAuditResultActiveKey, showOverview]);
 
   return (
     <>
@@ -102,16 +109,26 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
           onChange={setAuditResultActiveKey}
         >
           <>
-            <EmptyBox if={showOverview && !!workflowId}>
-              <Tabs.TabPane tab={t('order.auditResultCollection.overview')}>
+            {showOverview && (
+              <Tabs.TabPane
+                tab={t('order.auditResultCollection.overview')}
+                key={OVERVIEW_TAB_KEY}
+              >
                 <Table
                   loading={loading}
                   columns={auditResultOverviewColumn(
                     sqlExecuteHandle,
-                    openScheduleModalAndSetTaskId,
+                    openScheduleModal,
                     scheduleTimeHandle
                   )}
                   dataSource={overviewList ?? []}
+                  onRow={(record) => {
+                    return {
+                      onClick: () => {
+                        setCurrentTaskId(record.task_id?.toString() ?? '');
+                      },
+                    };
+                  }}
                   pagination={false}
                   locale={{
                     emptyText: error ? (
@@ -124,7 +141,7 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
                   }}
                 />
               </Tabs.TabPane>
-            </EmptyBox>
+            )}
             {taskInfos.map((v) => {
               if (!v.task_id) {
                 return null;

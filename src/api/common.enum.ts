@@ -85,15 +85,13 @@ export enum GetWorkflowTasksItemV1StatusEnum {
 
   'wait_for_execution' = 'wait_for_execution',
 
-  'rejected' = 'rejected',
-
-  'canceled' = 'canceled',
-
   'exec_scheduled' = 'exec_scheduled',
 
   'exec_failed' = 'exec_failed',
 
-  'finished' = 'finished'
+  'exec_succeeded' = 'exec_succeeded',
+
+  'executing' = 'executing'
 }
 
 export enum RuleParamResV1TypeEnum {

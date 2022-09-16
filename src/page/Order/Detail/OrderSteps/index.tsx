@@ -12,7 +12,7 @@ import {
   Timeline,
   Typography,
   Tag,
-  Popconfirm,
+  Tooltip,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React, { useState } from 'react';
@@ -187,40 +187,40 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
                 <EmptyBox
                   if={
                     props.currentOrderStatus ===
-                      WorkflowRecordResV2StatusEnum.wait_for_audit &&
+                      WorkflowRecordResV2StatusEnum.wait_for_execution &&
                     step.type === WorkflowStepResV1TypeEnum.sql_execute
                   }
                 >
                   <Space>
-                    <Button
-                      type="primary"
-                      onClick={executing}
-                      loading={executingLoading}
-                      disabled={!checkTimeInMaintenanceTime(moment())}
-                      title={
-                        '已经设置了定时上线的数据源仍然在定时时间上线，不会立即上线'
-                      }
-                    >
-                      {t('order.operator.batchSqlExecute')}
-                    </Button>
+                    <Tooltip title={t('order.operator.batchSqlExecuteTips')}>
+                      <Button
+                        type="primary"
+                        onClick={executing}
+                        loading={executingLoading}
+                        disabled={!checkTimeInMaintenanceTime(moment())}
+                      >
+                        {t('order.operator.batchSqlExecute')}
+                      </Button>
+                    </Tooltip>
                   </Space>
                 </EmptyBox>
-                <EmptyBox if={!props.isExistScheduleTask}></EmptyBox>
-                <Button
-                  onClick={handleClickRejectButton.bind(
-                    null,
-                    step.workflow_step_id ?? 0
-                  )}
-                  danger
-                >
-                  {t('order.operator.reject')}
-                </Button>
+                <EmptyBox if={!props.isExistScheduleTask}>
+                  <Button
+                    onClick={handleClickRejectButton.bind(
+                      null,
+                      step.workflow_step_id ?? 0
+                    )}
+                    danger
+                  >
+                    {t('order.operator.rejectFull')}
+                  </Button>
+                </EmptyBox>
               </Space>
               <EmptyBox
                 if={
                   !checkTimeInMaintenanceTime(moment()) &&
                   props.currentOrderStatus ===
-                    WorkflowRecordResV2StatusEnum.wait_for_audit &&
+                    WorkflowRecordResV2StatusEnum.wait_for_execution &&
                   step.type === WorkflowStepResV1TypeEnum.sql_execute
                 }
               >
@@ -332,7 +332,6 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
               </div>
             );
           }
-
           if (props.currentStep && (step.number ?? 0) > props.currentStep) {
             //当前有步骤且该步骤大于当前步数
             operator = t('order.operator.notArrival');

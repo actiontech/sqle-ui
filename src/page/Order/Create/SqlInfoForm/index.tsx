@@ -94,16 +94,20 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   const submit = useCallback(
     async (values: SqlContentFields, currentTabIndex: number) => {
       startSubmit();
-      const params = await props.form.validateFields();
-      props
-        .submit({ ...params, ...values }, currentTabIndex)
-        .then(() => {
-          alreadySubmit.current = true;
-          props.updateDirtyData(false);
-        })
-        .finally(() => {
-          submitFinish();
-        });
+      try {
+        const params = await props.form.validateFields();
+        props
+          .submit({ ...params, ...values }, currentTabIndex)
+          .then(() => {
+            alreadySubmit.current = true;
+            props.updateDirtyData(false);
+          })
+          .finally(() => {
+            submitFinish();
+          });
+      } catch (error) {
+        submitFinish();
+      }
     },
     [props, startSubmit, submitFinish]
   );

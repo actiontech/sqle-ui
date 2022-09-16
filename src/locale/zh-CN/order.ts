@@ -53,6 +53,7 @@ export default {
     wait_for_execution: '待上线',
     reject: '已驳回',
     canceled: '已关闭',
+    exec_succeeded: '上线成功',
   },
 
   sqlTaskStatus: {
@@ -68,6 +69,7 @@ export default {
     time: '操作时间',
     user: '操作人',
     reject: '驳回',
+    rejectFull: '全部驳回',
     rejectTips:
       '被驳回的工单必须修改审核语句，审核语句只能由工单创建者修改，在您修改了审核语句之后，工单即会从新进入审核流程',
     createOrder: '{{name}}创建了当前工单',
@@ -83,6 +85,8 @@ export default {
     waitModifySql: '等待用户{{username}}修改审核语句',
     sqlExecute: '立即上线',
     batchSqlExecute: '批量立即上线',
+    batchSqlExecuteTips:
+      '已经设置了定时上线的数据源仍然在定时时间上线，不会立即上线',
     sqlReview: '审核通过',
     unknown: '未知步骤',
 
@@ -109,7 +113,7 @@ export default {
     status: '上线状态',
     executingTips: '立即上线设置成功',
     disabledOperatorOrderBtnTips:
-      '{{currentInstanceName}}创建工单时最高只能允许有 {{allowAuditLevel}} 等级的审核错误。但是当前审核结果中最高包含 {{currentAuditLevel}} 等级的审核结果。',
+      '{{currentInstanceName}} 创建工单时最高只能允许有 {{allowAuditLevel}} 等级的审核错误。但是当前审核结果中最高包含 {{currentAuditLevel}} 等级的审核结果。',
   },
 
   create: {
@@ -185,7 +189,7 @@ export default {
       score: '审核结果评分',
       operator: '操作',
       sqlExecute: '立即上线',
-      scheduleTime: '定时时间',
+      scheduleTime: '定时上线',
       cancelExecScheduled: '取消定时上线',
       cancelExecScheduledTips: '取消定时上线成功',
     },
