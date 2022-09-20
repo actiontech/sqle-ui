@@ -26,7 +26,7 @@ import {
   WorkflowDetailResV2CurrentStepTypeEnum,
   WorkflowDetailResV2StatusEnum,
   WorkflowRecordResV2StatusEnum,
-  WorkflowResV2ModeEnum
+  WorkflowResV2ModeEnum,
 } from './common.enum';
 
 export interface IBaseRes {
@@ -821,6 +821,20 @@ export interface IGetSQLExplainResV1 {
   code?: number;
 
   data?: ISQLQuerySQLExplain[];
+
+  message?: string;
+}
+
+export interface IGetSQLQueryConfigurationResDataV1 {
+  enable_sql_query?: boolean;
+
+  sql_query_root_uri?: string;
+}
+
+export interface IGetSQLQueryConfigurationResV1 {
+  code?: number;
+
+  data?: IGetSQLQueryConfigurationResDataV1;
 
   message?: string;
 }

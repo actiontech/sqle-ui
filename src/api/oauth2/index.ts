@@ -10,7 +10,7 @@ import { IBindOauth2UserParams, IBindOauth2UserReturn } from './index.d';
 
 class Oauth2Service extends ServiceBase {
   public Oauth2Link(options?: AxiosRequestConfig) {
-    return this.get<any>('/v1/oauth2/link', undefined, options);
+    return this.get('/v1/oauth2/link', undefined, options);
   }
 
   public bindOauth2User(
