@@ -30,7 +30,7 @@ const SqlQueryEE = () => {
   useEffect(() => {
     getSqlQueryUrl().then((res) => {
       if (res?.enable_sql_query) {
-        window.open(res.sql_query_root_uri);
+        window.open(res.sql_query_root_uri, '_self');
       }
     });
   }, [getSqlQueryUrl]);
