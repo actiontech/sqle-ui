@@ -3,5 +3,7 @@
 export enum getInstanceTipListV1FunctionalModuleEnum {
   'create_audit_plan' = 'create_audit_plan',
 
-  'sql_query' = 'sql_query'
+  'sql_query' = 'sql_query',
+
+  'create_workflow' = 'create_workflow'
 }

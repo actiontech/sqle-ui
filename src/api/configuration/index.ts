@@ -25,6 +25,7 @@ import {
   IUpdateSMTPConfigurationV1Return,
   ITestSMTPConfigurationV1Params,
   ITestSMTPConfigurationV1Return,
+  IGetSQLQueryConfigurationReturn,
   IGetSystemVariablesV1Return,
   IUpdateSystemVariablesV1Params,
   IUpdateSystemVariablesV1Return,
@@ -182,6 +183,14 @@ class ConfigurationService extends ServiceBase {
     return this.post<ITestSMTPConfigurationV1Return>(
       '/v1/configurations/smtp/test',
       paramsData,
+      options
+    );
+  }
+
+  public getSQLQueryConfiguration(options?: AxiosRequestConfig) {
+    return this.get<IGetSQLQueryConfigurationReturn>(
+      '/v1/configurations/sql_query',
+      undefined,
       options
     );
   }
