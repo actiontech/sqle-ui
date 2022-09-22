@@ -1,46 +1,69 @@
+import { WarningOutlined } from '@ant-design/icons';
 import { useTheme } from '@material-ui/styles';
-import { Card, PageHeader, Space, Typography } from 'antd';
+import { useRequest } from 'ahooks';
+import { Card, Result, Space } from 'antd';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import configuration from '../../api/configuration';
+import EmptyBox from '../../components/EmptyBox';
 import { Theme } from '../../types/theme.type';
 
-export const DefaultMaxQueryRows = 100;
-
-const SqlQuery: React.FC = () => {
+const SqlQueryEE = () => {
   const { t } = useTranslation();
   const theme = useTheme<Theme>();
-  return (
-    <>
-      <PageHeader title={t('sqlQuery.pageTitle')} ghost={false}>
-        {t('sqlQuery.pageDescribe')}
-      </PageHeader>
 
-      <section className="padding-content">
-        <Space
-          size={theme.common.padding}
-          direction="vertical"
-          className="full-width-element"
-        >
-          <Card>
-            {t('sqlQuery.ceTips')}
-            <Typography.Paragraph>
-              <ul>
-                <li>
-                  <a href="https://actiontech.github.io/sqle-docs-cn/">
-                    https://actiontech.github.io/sqle-docs-cn/
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.actionsky.com/">
-                    https://www.actionsky.com/
-                  </a>
-                </li>
-              </ul>
-            </Typography.Paragraph>
-          </Card>
-        </Space>
-      </section>
-    </>
+  const {
+    data,
+    loading,
+    run: getSqlQueryUrl,
+  } = useRequest(
+    () => {
+      return configuration.getSQLQueryConfiguration().then((res) => {
+        return res.data.data;
+      });
+    },
+    {
+      manual: true,
+    }
+  );
+
+  useEffect(() => {
+    getSqlQueryUrl().then((res) => {
+      if (res?.enable_sql_query) {
+        window.open(res.sql_query_root_uri, '_self');
+      }
+    });
+  }, [getSqlQueryUrl]);
+
+  return (
+    <section className="padding-content">
+      <Space
+        size={theme.common.padding}
+        direction="vertical"
+        className="full-width-element"
+      >
+        <Card loading={loading}>
+          <EmptyBox
+            if={!!data && Reflect.has(data, 'enable_sql_query')}
+            defaultNode={
+              <Result
+                status="500"
+                title={t('common.request.noticeFailTitle')}
+              />
+            }
+          >
+            <Space>
+              <WarningOutlined
+                className="text-orange"
+                style={{ fontSize: 50 }}
+              />
+              {t('sqlQuery.eeErrorTips')}
+            </Space>
+          </EmptyBox>
+        </Card>
+      </Space>
+    </section>
   );
 };
 
-export default SqlQuery;
+export default SqlQueryEE;
