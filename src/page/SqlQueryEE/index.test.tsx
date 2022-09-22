@@ -65,6 +65,6 @@ describe('SqlQueryEE', () => {
       jest.advanceTimersByTime(3000);
     });
     expect(openSpy).toBeCalledTimes(1);
-    expect(openSpy).toBeCalledWith('/new_sql_query');
+    expect(openSpy).toBeCalledWith('/new_sql_query', '_self');
   });
 });
