@@ -1,7 +1,7 @@
-import { waitFor } from '@testing-library/react';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
 import SqlQueryEE from '.';
 import configuration from '../../api/configuration';
-import { renderWithTheme } from '../../testUtils/customRender';
+import { renderWithThemeAndRouter } from '../../testUtils/customRender';
 import {
   resolveErrorThreeSecond,
   resolveThreeSecond,
@@ -31,7 +31,7 @@ describe('SqlQueryEE', () => {
 
   it('should match snapshot', async () => {
     const req = mockGetQueryUrl();
-    const { container } = renderWithTheme(<SqlQueryEE />);
+    const { container } = renderWithThemeAndRouter(<SqlQueryEE />);
     expect(container).toMatchSnapshot();
     expect(req).toBeCalledTimes(1);
     await waitFor(() => {
@@ -43,7 +43,7 @@ describe('SqlQueryEE', () => {
   it('should render error when req throw error', async () => {
     const req = mockGetQueryUrl();
     req.mockImplementation(() => resolveErrorThreeSecond({}));
-    const { container } = renderWithTheme(<SqlQueryEE />);
+    const { container } = renderWithThemeAndRouter(<SqlQueryEE />);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -60,11 +60,16 @@ describe('SqlQueryEE', () => {
     );
     const openSpy = jest.spyOn(window, 'open');
     openSpy.mockImplementation(() => void 0 as any);
-    renderWithTheme(<SqlQueryEE />);
+    const { container } = renderWithThemeAndRouter(<SqlQueryEE />);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
     expect(openSpy).toBeCalledTimes(1);
-    expect(openSpy).toBeCalledWith('/new_sql_query', '_self');
+    expect(openSpy).toBeCalledWith('/new_sql_query');
+    expect(container).toMatchSnapshot();
+
+    fireEvent.click(screen.getByText('sqlQuery.jumpToCloudbeaver'));
+    expect(openSpy).toBeCalledTimes(2);
+    expect(openSpy).nthCalledWith(2, '/new_sql_query');
   });
 });

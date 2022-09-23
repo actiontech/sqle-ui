@@ -53,6 +53,8 @@ export default {
   logout: '退出登录',
   account: '个人中心',
 
+  clickHere: '点击此处',
+
   nav: {
     title: 'SQLE',
     eeTitle: 'SQLE企业版',

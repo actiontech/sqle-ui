@@ -1,9 +1,10 @@
 import { WarningOutlined } from '@ant-design/icons';
 import { useTheme } from '@material-ui/styles';
 import { useRequest } from 'ahooks';
-import { Card, Result, Space } from 'antd';
-import { useEffect } from 'react';
+import { Card, PageHeader, Space, Typography } from 'antd';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import configuration from '../../api/configuration';
 import EmptyBox from '../../components/EmptyBox';
 import { Theme } from '../../types/theme.type';
@@ -11,6 +12,8 @@ import { Theme } from '../../types/theme.type';
 const SqlQueryEE = () => {
   const { t } = useTranslation();
   const theme = useTheme<Theme>();
+
+  const cloudbeaverUrl = useRef('');
 
   const {
     data,
@@ -30,39 +33,56 @@ const SqlQueryEE = () => {
   useEffect(() => {
     getSqlQueryUrl().then((res) => {
       if (res?.enable_sql_query) {
-        window.open(res.sql_query_root_uri, '_self');
+        cloudbeaverUrl.current = res.sql_query_root_uri as string;
+        window.open(res.sql_query_root_uri);
       }
     });
   }, [getSqlQueryUrl]);
 
+  const openCloudbeaver = () => {
+    window.open(cloudbeaverUrl.current);
+  };
+
   return (
-    <section className="padding-content">
-      <Space
-        size={theme.common.padding}
-        direction="vertical"
-        className="full-width-element"
-      >
-        <Card loading={loading}>
-          <EmptyBox
-            if={!!data && Reflect.has(data, 'enable_sql_query')}
-            defaultNode={
-              <Result
-                status="500"
-                title={t('common.request.noticeFailTitle')}
-              />
-            }
-          >
-            <Space>
-              <WarningOutlined
-                className="text-orange"
-                style={{ fontSize: 50 }}
-              />
-              {t('sqlQuery.eeErrorTips')}
-            </Space>
-          </EmptyBox>
-        </Card>
-      </Space>
-    </section>
+    <>
+      <PageHeader title={t('sqlQuery.pageTitle')} ghost={false}>
+        {t('sqlQuery.pageDescribe')}
+      </PageHeader>
+      <section className="padding-content">
+        <Space
+          size={theme.common.padding}
+          direction="vertical"
+          className="full-width-element"
+        >
+          <Card loading={loading}>
+            <EmptyBox
+              if={!data?.enable_sql_query}
+              defaultNode={
+                <Typography.Link onClick={openCloudbeaver}>
+                  {t('sqlQuery.jumpToCloudbeaver')}
+                </Typography.Link>
+              }
+            >
+              <Space>
+                <WarningOutlined
+                  className="text-orange"
+                  style={{ fontSize: 50 }}
+                />
+                <div>
+                  {t('sqlQuery.eeErrorTips')}。{t('sqlQuery.eeErrorTips2')}
+                  <Link
+                    target="_blank"
+                    to="https://actiontech.github.io/sqle-docs-cn/3.modules/4.2_sql_editor/overview.html"
+                  >
+                    {t('common.clickHere')}
+                  </Link>
+                </div>
+              </Space>
+            </EmptyBox>
+          </Card>
+        </Space>
+      </section>
+    </>
   );
 };
 

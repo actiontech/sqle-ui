@@ -1,27 +1,12 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  pageTitle: 'SQL查询',
-  pageDescribe: '你可以对你有权访问的数据源进行SQL查询',
-  ceTips:
-    'SQL查询为企业版功能。如果您要想使用这些功能，您可以按照以下链接中的商业支持里的联系方式进行咨询。',
+  pageTitle: 'SQL工作台',
+  pageDescribe: '你可以对你有操作权限的数据源进行受审核管控的SQL操作',
   eeErrorTips: '该环境未配置SQL查询，请设置后再使用',
+  eeErrorTips2: '配置方式及使用说明请查看使用文档',
 
-  sqlInput: {
-    title: 'SQL录入',
-    instance: '数据源',
-    database: '数据库',
-    returnLength: '返回行数',
-    searchSqlResult: '查询',
-    sqlHistory: '历史记录',
-    sqlExecPlan: 'SQL执行计划',
-    returnLengthTips: '返回行数的最大值可通过数据源配置的修改',
-    returnLengthCheck: '请输入返回行数',
-  },
-  sqlQueryHistory: {
-    title: 'Sql查询历史记录',
-    applySql: '应用',
-    filterSqlHistory: '查询',
-  },
+  jumpToCloudbeaver: '重新打开SQL工作台',
+
   databaseTables: {
     title: '数据库表',
     tabTitle: '{{tableName}}结构',
