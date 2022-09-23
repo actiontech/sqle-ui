@@ -4,6 +4,8 @@ export default {
   pageDescribe: '你可以对你有权访问的数据源进行SQL查询',
   ceTips:
     'SQL查询为企业版功能。如果您要想使用这些功能，您可以按照以下链接中的商业支持里的联系方式进行咨询。',
+  eeErrorTips: '该环境未配置SQL查询，请设置后再使用',
+
   sqlInput: {
     title: 'SQL录入',
     instance: '数据源',

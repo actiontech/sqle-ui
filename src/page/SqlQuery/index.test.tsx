@@ -92,7 +92,7 @@ describe('SqlQuery', () => {
     return spy;
   };
 
-  test('should get query result when user submit form', async () => {
+  test.skip('should get query result when user submit form', async () => {
     const { container } = renderWithRedux(
       <ThemeProvider theme={lightTheme}>
         <SqlQuery />
@@ -160,7 +160,7 @@ describe('SqlQuery', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('should close query result when user click close icon', async () => {
+  test.skip('should close query result when user click close icon', async () => {
     const { container } = renderWithRedux(
       <ThemeProvider theme={lightTheme}>
         <SqlQuery />
@@ -197,7 +197,7 @@ describe('SqlQuery', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('should get max query rows when user select a dataSource', async () => {
+  test.skip('should get max query rows when user select a dataSource', async () => {
     renderWithRedux(
       <ThemeProvider theme={lightTheme}>
         <SqlQuery />

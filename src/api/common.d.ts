@@ -26,7 +26,7 @@ import {
   WorkflowDetailResV2CurrentStepTypeEnum,
   WorkflowDetailResV2StatusEnum,
   WorkflowRecordResV2StatusEnum,
-  WorkflowResV2ModeEnum
+  WorkflowResV2ModeEnum,
 } from './common.enum';
 
 export interface IBaseRes {

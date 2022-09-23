@@ -100,6 +100,10 @@ const SqlQuery = React.lazy(
   () => import(/* webpackChunkName: "SqlQuery" */ '../page/SqlQuery')
 );
 
+const SqlQueryEE = React.lazy(
+  () => import(/* webpackChunkName: "SqlQueryEE" */ '../page/SqlQueryEE')
+);
+
 const OrderSqlAnalyze = React.lazy(
   () =>
     import(/* webpackChunkName: "OrderSqlAnalyze" */ '../page/SqlAnalyze/Order')
@@ -151,6 +155,7 @@ export const routerConfig: RouterItem[] = [
     icon: <DesktopOutlined />,
     key: 'rule',
   },
+  /* IFTRUE_isCE */
   {
     path: '/sqlQuery',
     exact: true,
@@ -159,6 +164,17 @@ export const routerConfig: RouterItem[] = [
     icon: <SearchOutlined />,
     key: 'SqlQuery',
   },
+  /* FITRUE_isCE */
+  /* IFTRUE_isEE */
+  {
+    path: '/sqlQuery',
+    exact: true,
+    label: 'menu.sqlQuery',
+    component: SqlQueryEE,
+    icon: <SearchOutlined />,
+    key: 'SqlQueryEE',
+  },
+  /* FITRUE_isEE */
   {
     path: '/reportStatistics',
     exact: true,
