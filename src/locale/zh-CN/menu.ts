@@ -18,7 +18,7 @@ export default {
   whitelist: '白名单管理',
   auditPlane: '智能扫描',
   auditPlaneList: '扫描任务列表',
-  sqlQuery: 'SQL查询',
+  sqlQuery: 'SQL工作台',
   orderSqlAnalyze: '工单SQL分析',
   auditPlanSqlAnalyze: '审核计划SQL分析',
   reportStatistics: '报表统计',
