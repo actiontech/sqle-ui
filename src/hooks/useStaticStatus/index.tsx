@@ -152,6 +152,12 @@ const useStaticStatus = () => {
           )}
         </Select.Option>
         <Select.Option
+          key={getWorkflowsV2FilterStatusEnum.executing}
+          value={getWorkflowsV2FilterStatusEnum.executing}
+        >
+          {t(orderStatusDictionary[getWorkflowsV2FilterStatusEnum.executing])}
+        </Select.Option>
+        <Select.Option
           key={getWorkflowsV2FilterStatusEnum.finished}
           value={getWorkflowsV2FilterStatusEnum.finished}
         >

@@ -168,6 +168,10 @@ export interface IGetWorkflowsV2Params {
 
   filter_create_time_to?: string;
 
+  filter_task_execute_start_time_from?: string;
+
+  filter_task_execute_start_time_to?: string;
+
   filter_create_user_name?: string;
 
   filter_status?: getWorkflowsV2FilterStatusEnum;

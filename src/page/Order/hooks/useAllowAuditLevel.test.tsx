@@ -4,7 +4,34 @@ import instance from '../../../api/instance';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import { instanceWorkflowTemplate } from '../Detail/__testData__';
 import { useAllowAuditLevel } from './useAllowAuditLevel';
-describe.skip('Order/useAllowAuditLevel', () => {
+
+const taskInfos_error = [
+  {
+    instanceName: 'test1',
+    currentAuditLevel:
+      CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.error,
+  },
+  {
+    instanceName: 'test2',
+    currentAuditLevel:
+      CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal,
+  },
+];
+
+const taskInfos_normal = [
+  {
+    instanceName: 'test3',
+    currentAuditLevel:
+      CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal,
+  },
+  {
+    instanceName: 'test4',
+    currentAuditLevel:
+      CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal,
+  },
+];
+
+describe('Order/useAllowAuditLevel', () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });
@@ -36,14 +63,13 @@ describe.skip('Order/useAllowAuditLevel', () => {
 
     act(() => {
       result.current.judgeAuditLevel(
-        'test',
+        taskInfos_error,
         setBtnDisabled,
-        resetBtnDisabled,
-        CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.error
+        resetBtnDisabled
       );
     });
 
-    expect(mockGetInstanceSpy).toBeCalledTimes(1);
+    expect(mockGetInstanceSpy).toBeCalledTimes(taskInfos_error.length);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
@@ -59,13 +85,12 @@ describe.skip('Order/useAllowAuditLevel', () => {
     act(() => {
       result.current.setDisabledOperatorOrderBtnTips('');
       result.current.judgeAuditLevel(
-        'test',
+        taskInfos_normal,
         setBtnDisabled,
-        resetBtnDisabled,
-        CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal
+        resetBtnDisabled
       );
     });
-    expect(mockGetInstanceSpy).toBeCalledTimes(1);
+    expect(mockGetInstanceSpy).toBeCalledTimes(taskInfos_normal.length);
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 

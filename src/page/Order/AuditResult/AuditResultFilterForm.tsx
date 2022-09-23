@@ -2,15 +2,15 @@ import { Button, Col, Form, Row, Select, Space } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import {
+  filterFormButtonLayoutFactory,
+  FilterFormColLayout,
   FilterFormLayout,
   FilterFormRowLayout,
-  FilterFormColLayout,
-  filterFormButtonLayoutFactory,
-} from '../../../../data/common';
-import useStaticStatus from '../../../../hooks/useStaticStatus';
+} from '../../../data/common';
+import useStaticStatus from '../../../hooks/useStaticStatus';
 import { FilterFormProps, OrderAuditResultFilterFields } from './index.type';
 
-const FilterForm: React.FC<FilterFormProps> = (props) => {
+const AuditResultFilterForm: React.FC<FilterFormProps> = (props) => {
   const { t } = useTranslation();
 
   const {
@@ -88,4 +88,4 @@ const FilterForm: React.FC<FilterFormProps> = (props) => {
   );
 };
 
-export default FilterForm;
+export default AuditResultFilterForm;

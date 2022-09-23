@@ -204,7 +204,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
                     </Tooltip>
                   </Space>
                 </EmptyBox>
-                <EmptyBox if={!props.isExistScheduleTask}>
+                <EmptyBox if={props.isRejectOrder}>
                   <Button
                     onClick={handleClickRejectButton.bind(
                       null,

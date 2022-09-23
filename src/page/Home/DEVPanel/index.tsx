@@ -8,7 +8,6 @@ import { useHistory } from 'react-router-dom';
 import workflow from '../../../api/workflow';
 import {
   getWorkflowListV1FilterCurrentStepTypeEnum,
-  getWorkflowListV1FilterStatusEnum,
   getWorkflowsV2FilterStatusEnum,
 } from '../../../api/workflow/index.enum';
 import { IReduxState } from '../../../store';
@@ -49,10 +48,7 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
         page_index: 1,
         page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
         filter_create_user_name: username,
-        filter_status: getWorkflowsV2FilterStatusEnum.wait_for_execution,
-
-        // filter_current_step_type:
-        //   getWorkflowListV1FilterCurrentStepTypeEnum.sql_review,
+        filter_status: getWorkflowsV2FilterStatusEnum.wait_for_audit,
       });
     },
     {
@@ -69,9 +65,6 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
         page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
         filter_create_user_name: username,
         filter_status: getWorkflowsV2FilterStatusEnum.wait_for_execution,
-
-        // filter_current_step_type:
-        //   getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute,
       });
     },
     {
@@ -99,17 +92,17 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
 
   const showAllWithPendingReview = () => {
     history.push(
-      `/order?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}&${OrderListUrlParamsKey.status}=${getWorkflowListV1FilterStatusEnum.on_process}`
+      `/order?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}&${OrderListUrlParamsKey.status}=${getWorkflowsV2FilterStatusEnum.wait_for_audit}`
     );
   };
   const showAllWithPendingExec = () => {
     history.push(
-      `/order?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}&${OrderListUrlParamsKey.status}=${getWorkflowListV1FilterStatusEnum.on_process}`
+      `/order?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}&${OrderListUrlParamsKey.status}=${getWorkflowsV2FilterStatusEnum.wait_for_execution}`
     );
   };
   const showAllWithRejected = () => {
     history.push(
-      `/order?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.status}=${getWorkflowListV1FilterStatusEnum.rejected}`
+      `/order?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.status}=${getWorkflowsV2FilterStatusEnum.rejected}`
     );
   };
 

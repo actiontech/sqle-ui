@@ -2,7 +2,7 @@ import { cleanup, fireEvent, screen, waitFor } from '@testing-library/react';
 import workflow from '../../../api/workflow';
 import {
   getWorkflowListV1FilterCurrentStepTypeEnum,
-  getWorkflowListV1FilterStatusEnum,
+  getWorkflowsV2FilterStatusEnum,
 } from '../../../api/workflow/index.enum';
 import {
   renderWithRouter,
@@ -128,24 +128,18 @@ describe('test home/DBAPanel', () => {
       page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
       filter_current_step_assignee_user_name: username,
       filter_status: 'wait_for_execution',
-      // filter_status: getWorkflowListV1FilterStatusEnum.on_process,
-      // filter_current_step_type:
-      //   getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute,
     });
     expect(getMockRequestSpy.mock.calls[3][0]).toEqual({
       page_index: 1,
       page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
       filter_current_step_assignee_user_name: username,
-      filter_status: 'wait_for_execution',
-      // filter_status: getWorkflowListV1FilterStatusEnum.on_process,
-      // filter_current_step_type:
-      //   getWorkflowListV1FilterCurrentStepTypeEnum.sql_review,
+      filter_status: 'wait_for_audit',
     });
 
     fireEvent.click(screen.getByText('common.more'));
     expect(history.location.pathname).toBe(`/order`);
     expect(history.location.search).toBe(
-      `?${OrderListUrlParamsKey.currentStepAssignee}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}&${OrderListUrlParamsKey.status}=${getWorkflowListV1FilterStatusEnum.on_process}`
+      `?${OrderListUrlParamsKey.currentStepAssignee}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}&${OrderListUrlParamsKey.status}=${getWorkflowsV2FilterStatusEnum.wait_for_audit}`
     );
 
     fireEvent.click(screen.getByText('dashboard.pendingOrder.needMeExec'));
@@ -159,7 +153,7 @@ describe('test home/DBAPanel', () => {
     fireEvent.click(screen.getByText('common.more'));
     expect(history.location.pathname).toBe(`/order`);
     expect(history.location.search).toBe(
-      `?${OrderListUrlParamsKey.currentStepAssignee}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}&${OrderListUrlParamsKey.status}=${getWorkflowListV1FilterStatusEnum.on_process}`
+      `?${OrderListUrlParamsKey.currentStepAssignee}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}&${OrderListUrlParamsKey.status}=${getWorkflowsV2FilterStatusEnum.wait_for_execution}`
     );
   });
 });

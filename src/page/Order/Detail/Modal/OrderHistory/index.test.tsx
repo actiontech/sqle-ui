@@ -10,7 +10,7 @@ import {
   orderWithExecuting,
 } from '../../__testData__';
 
-describe.skip('Order/Detail/OrderHistory', () => {
+describe('Order/Detail/OrderHistory', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockUseSelector({ user: { username: '123' } });

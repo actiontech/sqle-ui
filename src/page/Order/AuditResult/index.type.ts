@@ -1,10 +1,14 @@
-import { TagProps } from 'antd';
+import { FormInstance, TagProps } from 'antd';
 import {
   IAuditTaskResV1,
   IMaintenanceTimeResV1,
   IWorkflowResV2,
 } from '../../../api/common';
-import { GetWorkflowTasksItemV1StatusEnum } from '../../../api/common.enum';
+import {
+  GetWorkflowTasksItemV1StatusEnum,
+  WorkflowRecordResV2StatusEnum,
+} from '../../../api/common.enum';
+import { IGetAuditTaskSQLsV1Params } from '../../../api/task/index.d';
 import { I18nKey } from '../../../types/common.type';
 
 export type AuditResultProps = {
@@ -23,8 +27,9 @@ export interface AuditResultCollectionProps {
   showOverview?: boolean;
   workflowId?: string;
   refreshOrder?: () => Promise<IWorkflowResV2 | undefined>;
-  setIsExistScheduleTask?: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsRejectOrder?: React.Dispatch<React.SetStateAction<boolean>>;
   refreshOverviewFlag?: boolean;
+  orderStatus?: WorkflowRecordResV2StatusEnum;
 }
 
 export type ScheduleTimeModalProps = {
@@ -39,4 +44,19 @@ export type InstanceTasksStatusType = {
     color: TagProps['color'];
     label: I18nKey;
   };
+};
+
+export type FilterFormProps = {
+  form: FormInstance<OrderAuditResultFilterFields>;
+  submit: () => void;
+  reset: () => void;
+};
+
+export type OrderAuditResultFilterFields = Omit<
+  IGetAuditTaskSQLsV1Params,
+  'page_index' | 'page_size' | 'task_id'
+>;
+
+export type WorkflowOverviewProps = {
+  workflowId: string;
 };

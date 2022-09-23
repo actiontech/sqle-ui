@@ -12,6 +12,7 @@ import {
   IUpdateSMTPConfigurationReqV1,
   ITestSMTPConfigurationReqV1,
   ITestSMTPConfigurationResV1,
+  IGetSQLQueryConfigurationResV1,
   IGetSystemVariablesResV1,
   IUpdateSystemVariablesReqV1,
   IGetWeChatConfigurationResV1,
@@ -67,6 +68,9 @@ export interface ITestSMTPConfigurationV1Params
 
 export interface ITestSMTPConfigurationV1Return
   extends ITestSMTPConfigurationResV1 {}
+
+export interface IGetSQLQueryConfigurationReturn
+  extends IGetSQLQueryConfigurationResV1 {}
 
 export interface IGetSystemVariablesV1Return extends IGetSystemVariablesResV1 {}
 

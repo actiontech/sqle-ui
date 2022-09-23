@@ -74,12 +74,12 @@ const OrderList = () => {
         filter_create_time_to: translateTimeForRequest(
           filter_order_createTime?.[1]
         ),
-        // filter_task_execute_start_time_from: translateTimeForRequest(
-        //   filter_order_executeTime?.[0]
-        // ),
-        // filter_task_execute_start_time_to: translateTimeForRequest(
-        //   filter_order_executeTime?.[1]
-        // ),
+        filter_task_execute_start_time_from: translateTimeForRequest(
+          filter_order_executeTime?.[0]
+        ),
+        filter_task_execute_start_time_to: translateTimeForRequest(
+          filter_order_executeTime?.[1]
+        ),
         ...otherFilterInfo,
       });
     },
@@ -103,11 +103,6 @@ const OrderList = () => {
         OrderListUrlParamsKey.currentStepAssignee
       ) as string;
     }
-    // if (searchStr.has(OrderListUrlParamsKey.currentStepType)) {
-    //   filter.filter_current_step_type = searchStr.get(
-    //     OrderListUrlParamsKey.currentStepType
-    //   ) as getWorkflowListV1FilterCurrentStepTypeEnum;
-    // }
     if (searchStr.has(OrderListUrlParamsKey.status)) {
       filter.filter_status = searchStr.get(
         OrderListUrlParamsKey.status
@@ -159,6 +154,7 @@ const OrderList = () => {
       )[0]?.status;
       return (
         status === WorkflowDetailResV2StatusEnum.wait_for_audit ||
+        status === WorkflowDetailResV2StatusEnum.wait_for_execution ||
         status === WorkflowDetailResV2StatusEnum.rejected
       );
     });

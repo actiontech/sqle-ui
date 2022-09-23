@@ -1,12 +1,12 @@
 import { fireEvent, render, waitFor, screen } from '@testing-library/react';
-import AuditResult from '.';
-import task from '../../../api/task';
+import AuditResult from '..';
+import task from '../../../../api/task';
 import {
   getAllBySelector,
   getBySelector,
-} from '../../../testUtils/customQuery';
-import { resolveThreeSecond } from '../../../testUtils/mockRequest';
-import { taskSqls } from '../Detail/__testData__';
+} from '../../../../testUtils/customQuery';
+import { resolveThreeSecond } from '../../../../testUtils/mockRequest';
+import { taskSqls } from '../../Detail/__testData__';
 
 describe.skip('Order/Detail/AuditResult', () => {
   beforeEach(() => {

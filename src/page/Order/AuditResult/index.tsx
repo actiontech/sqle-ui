@@ -7,10 +7,9 @@ import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode } from '../../../data/common';
 import useTable from '../../../hooks/useTable';
 import { floatToPercent } from '../../../utils/Math';
+import AuditResultFilterForm from './AuditResultFilterForm';
 import { orderAuditResultColumn } from './column';
-import FilterForm from './FilterForm';
-import { OrderAuditResultFilterFields } from './FilterForm/index.type';
-import { AuditResultProps } from './index.type';
+import { AuditResultProps, OrderAuditResultFilterFields } from './index.type';
 
 const AuditResult: React.FC<AuditResultProps> = (props) => {
   const { t } = useTranslation();
@@ -137,7 +136,11 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
         </Space>,
       ]}
     >
-      <FilterForm form={filterForm} submit={submitFilter} reset={resetFilter} />
+      <AuditResultFilterForm
+        form={filterForm}
+        submit={submitFilter}
+        reset={resetFilter}
+      />
       <Table
         rowKey="number"
         loading={loading}

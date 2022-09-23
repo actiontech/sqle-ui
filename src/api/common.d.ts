@@ -825,6 +825,20 @@ export interface IGetSQLExplainResV1 {
   message?: string;
 }
 
+export interface IGetSQLQueryConfigurationResDataV1 {
+  enable_sql_query?: boolean;
+
+  sql_query_root_uri?: string;
+}
+
+export interface IGetSQLQueryConfigurationResV1 {
+  code?: number;
+
+  data?: IGetSQLQueryConfigurationResDataV1;
+
+  message?: string;
+}
+
 export interface IGetSQLQueryHistoryResDataV1 {
   sql_histories?: ISQLHistoryItemResV1[];
 }
@@ -1045,6 +1059,10 @@ export interface IGetWorkflowTasksItemV1 {
   exec_end_time?: string;
 
   exec_start_time?: string;
+
+  execution_user_name?: string;
+
+  instance_maintenance_times?: IMaintenanceTimeResV1[];
 
   instance_name?: string;
 
@@ -2214,7 +2232,7 @@ export interface IWorkflowRecordResV2 {
 
   status?: WorkflowRecordResV2StatusEnum;
 
-  task_ids?: IWorkflowTaskItem[];
+  tasks?: IWorkflowTaskItem[];
 
   workflow_step_list?: IWorkflowStepResV1[];
 }
@@ -2238,5 +2256,5 @@ export interface IWorkflowResV2 {
 }
 
 export interface IWorkflowTaskItem {
-  task_ids?: number;
+  task_id?: number;
 }

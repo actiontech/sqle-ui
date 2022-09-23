@@ -154,9 +154,6 @@ const ScheduleTimeModal: React.FC<ScheduleTimeModalProps> = ({
 
   const scheduleTimeHandle = async () => {
     const values = await form.validateFields();
-    if (!values?.schedule_time) {
-      return;
-    }
     scheduleStart();
     submit(
       values?.schedule_time?.format('YYYY-MM-DDTHH:mm:ssZ')?.toString()

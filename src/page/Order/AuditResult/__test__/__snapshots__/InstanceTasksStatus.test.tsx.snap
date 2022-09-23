@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test Order/AuditResult/InstanceTasksStatus should match snapshot 1`] = `
+<div>
+  <span
+    class="ant-tag"
+  >
+    common.unknownStatus
+  </span>
+</div>
+`;
+
+exports[`test Order/AuditResult/InstanceTasksStatus should match snapshot 2`] = `
+<div>
+  <span
+    class="ant-tag ant-tag-blue"
+  >
+    order.status.wait_for_audit
+  </span>
+</div>
+`;
+
+exports[`test Order/AuditResult/InstanceTasksStatus should match snapshot 3`] = `
+<div>
+  <span
+    class="ant-tag ant-tag-blue"
+  >
+    order.status.wait_for_execution
+  </span>
+</div>
+`;
+
+exports[`test Order/AuditResult/InstanceTasksStatus should match snapshot 4`] = `
+<div>
+  <span
+    class="ant-tag ant-tag-orange"
+  >
+    order.status.exec_failed
+  </span>
+</div>
+`;
+
+exports[`test Order/AuditResult/InstanceTasksStatus should match snapshot 5`] = `
+<div>
+  <span
+    class="ant-tag ant-tag-pink"
+  >
+    order.status.exec_scheduled
+  </span>
+</div>
+`;
+
+exports[`test Order/AuditResult/InstanceTasksStatus should match snapshot 6`] = `
+<div>
+  <span
+    class="ant-tag ant-tag-green"
+  >
+    order.status.exec_succeeded
+  </span>
+</div>
+`;
+
+exports[`test Order/AuditResult/InstanceTasksStatus should match snapshot 7`] = `
+<div>
+  <span
+    class="ant-tag ant-tag-blue"
+  >
+    order.status.executing
+  </span>
+</div>
+`;

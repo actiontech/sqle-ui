@@ -29,6 +29,8 @@ export enum getWorkflowsV2FilterStatusEnum {
 
   'rejected' = 'rejected',
 
+  'executing' = 'executing',
+
   'canceled' = 'canceled',
 
   'exec_failed' = 'exec_failed',

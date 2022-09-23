@@ -6,6 +6,7 @@ import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import workflow from '../../../api/workflow';
+import { translateTimeForRequest } from '../../../utils/Common';
 import { OrderListUrlParamsKey } from '../../Order/List/index.data';
 import CommonTable from '../CommonTable';
 import { customColumn } from './column';
@@ -15,13 +16,13 @@ const RecentlyOrderPanel: React.FC = () => {
   const history = useHistory();
   const recentlyOrderResponse = useRequest(
     () => {
-      // const endTime = moment();
-      // const startTime = cloneDeep(endTime).subtract(1, 'day');
+      const endTime = moment();
+      const startTime = cloneDeep(endTime).subtract(1, 'day');
       return workflow.getWorkflowsV2({
         page_index: 1,
         page_size: 1000,
-        // filter_task_execute_start_time_from: translateTimeForRequest(startTime),
-        // filter_task_execute_start_time_to: translateTimeForRequest(endTime),
+        filter_task_execute_start_time_from: translateTimeForRequest(startTime),
+        filter_task_execute_start_time_to: translateTimeForRequest(endTime),
       });
     },
     {

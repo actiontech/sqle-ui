@@ -49,7 +49,7 @@ const ModifySqlForm: React.FC<ModifySqlFormProps> = ({
 
   useEffect(() => {
     form.setFieldsValue({
-      sql: currentDefaultSqlValue ?? '/* input your sql */',
+      sql: currentDefaultSqlValue || '/* input your sql */',
     });
   }, [currentDefaultSqlValue, form]);
 

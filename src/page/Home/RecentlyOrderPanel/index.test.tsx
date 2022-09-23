@@ -12,7 +12,7 @@ import { cloneDeep } from 'lodash';
 import { translateTimeForRequest } from '../../../utils/Common';
 import { OrderListUrlParamsKey } from '../../Order/List/index.data';
 
-describe.skip('test home/RecentlyOrderPanel', () => {
+describe('test home/RecentlyOrderPanel', () => {
   const mockRequest = () => {
     const spy = jest.spyOn(workflow, 'getWorkflowsV2');
     spy.mockImplementation(() =>
@@ -23,7 +23,7 @@ describe.skip('test home/RecentlyOrderPanel', () => {
           current_step_assignee_user_name_list: ['admin'],
           current_step_type: 'sql_execute',
           desc: '',
-          status: 'on_process',
+          status: 'wait_for_audit',
           subject: 'order123',
           task_instance_name: 'db1',
           task_instance_schema: '',

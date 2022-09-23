@@ -17,7 +17,7 @@ import { SystemRole } from '../../../data/common';
 import { getAllBySelector } from '../../../testUtils/customQuery';
 import { mockUseSelector } from '../../../testUtils/mockRedux';
 
-describe.skip('Order/List', () => {
+describe('Order/List', () => {
   beforeEach(() => {
     mockUseInstance();
     mockUseUsername();
@@ -33,7 +33,7 @@ describe.skip('Order/List', () => {
   });
 
   const mockRequest = () => {
-    const spy = jest.spyOn(workflow, 'getWorkflowListV1');
+    const spy = jest.spyOn(workflow, 'getWorkflowsV2');
     spy.mockImplementation(() =>
       resolveThreeSecond([
         {
@@ -42,7 +42,7 @@ describe.skip('Order/List', () => {
           current_step_assignee_user_name_list: ['admin', 'test'],
           current_step_type: 'sql_execute',
           desc: '',
-          status: 'on_process',
+          status: 'wait_for_audit',
           subject: 'order123',
           task_instance_name: 'db1',
           task_instance_schema: '',
@@ -81,7 +81,7 @@ describe.skip('Order/List', () => {
     const request = mockRequest();
     const history = createMemoryHistory();
     history.push(
-      '/order?currentStepAssignee=admin&currentStepType=sql_execute&status=on_process&createUsername=createUser&executeTimeForm=2022-07-20%2011:15:02&executeTimeTo=2022-07-21%2011:15:02'
+      '/order?currentStepAssignee=admin&currentStepType=sql_execute&status=wait_for_audit&createUsername=createUser&executeTimeForm=2022-07-20%2011:15:02&executeTimeTo=2022-07-21%2011:15:02'
     );
     renderWithThemeAndServerRouter(<OrderList />, undefined, {
       history,
@@ -94,8 +94,8 @@ describe.skip('Order/List', () => {
       filter_create_time_to: undefined,
       filter_create_user_name: 'createUser',
       filter_current_step_assignee_user_name: 'admin',
-      filter_current_step_type: 'sql_execute',
-      filter_status: 'on_process',
+      // filter_current_step_type: 'sql_execute',
+      filter_status: 'wait_for_audit',
       page_index: 1,
       page_size: 10,
     });
@@ -105,14 +105,14 @@ describe.skip('Order/List', () => {
     expect(screen.getByText('createUser')).toHaveClass(
       'ant-select-selection-item'
     );
-    expect(screen.getByText('order.status.process')).toBeInTheDocument();
-    expect(screen.getByText('order.status.process')).toHaveClass(
+    expect(screen.getByText('order.status.wait_for_audit')).toBeInTheDocument();
+    expect(screen.getByText('order.status.wait_for_audit')).toHaveClass(
       'ant-select-selection-item'
     );
-    expect(screen.getByText('order.workflowStatus.exec')).toBeInTheDocument();
-    expect(screen.getByText('order.workflowStatus.exec')).toHaveClass(
-      'ant-select-selection-item'
-    );
+    // expect(screen.getByText('order.workflowStatus.review')).toBeInTheDocument();
+    // expect(screen.getByText('order.workflowStatus.review')).toHaveClass(
+    //   'ant-select-selection-item'
+    // );
     expect(screen.getByLabelText('order.order.executeTime')).toHaveValue(
       '2022-07-20 11:15:02'
     );

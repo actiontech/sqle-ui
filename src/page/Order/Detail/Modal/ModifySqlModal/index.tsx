@@ -21,7 +21,7 @@ import ModifySqlForm from './ModifySqlForm';
 import { ModifySqlFormFields } from './ModifySqlForm/index.type';
 
 const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
-  currentOrderTasks = [],
+  currentOrderTasks,
   sqlMode,
   ...props
 }) => {
@@ -102,7 +102,6 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
 
   const auditSql = async () => {
     startSubmit();
-
     if (sqlMode === WorkflowResV2ModeEnum.same_sqls) {
       auditSameSqlMode()
         ?.then((res) => {
@@ -186,9 +185,9 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
   }, [taskInfos, currentTab, props.visible]);
 
   useEffect(() => {
-    setTaskInfos(currentOrderTasks);
-    setCurrentTab(currentOrderTasks[0]?.task_id?.toString() ?? '');
-    currentOrderTasks.forEach((order, index) => {
+    setTaskInfos(currentOrderTasks ?? []);
+    setCurrentTab(currentOrderTasks?.[0]?.task_id?.toString() ?? '');
+    (currentOrderTasks ?? []).forEach((order, index) => {
       setDifferenceSqlTabIndexTaskIdMap((v) => {
         const cloneValue = cloneDeep(v);
         cloneValue.set(index, order?.task_id?.toString() ?? '');
