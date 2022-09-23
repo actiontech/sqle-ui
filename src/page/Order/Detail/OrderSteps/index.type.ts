@@ -24,7 +24,7 @@ export type OrderStepsProps = {
   modifySql: () => void;
   readonly?: boolean;
   maintenanceTime?: IMaintenanceTimeResV1[];
-  isRejectOrder?: boolean;
+  canRejectOrder?: boolean;
 };
 
 export type StepStateStatus = {

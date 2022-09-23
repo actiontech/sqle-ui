@@ -27,7 +27,7 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
   showOverview = false,
   workflowId,
   refreshOrder,
-  setIsRejectOrder,
+  setCanRejectOrder,
   refreshOverviewFlag,
   orderStatus,
 }) => {
@@ -100,7 +100,7 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
           return;
         }
 
-        const isRejectOrder = res.every(
+        const canRejectOrder = res.every(
           (v) =>
             !!v.status &&
             ![
@@ -110,7 +110,7 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
               GetWorkflowTasksItemV1StatusEnum.exec_scheduled,
             ].includes(v.status)
         );
-        setIsRejectOrder?.(isRejectOrder);
+        setCanRejectOrder?.(canRejectOrder);
       },
     }
   );

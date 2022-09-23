@@ -416,7 +416,7 @@ describe('test AuditResultCollection', () => {
     expect(mockRefreshOrder).toBeCalledTimes(1);
   });
 
-  test('should call setIsRejectOrder props when setIsRejectOrder is not undefined and status exists can not reject', async () => {
+  test('should call setCanRejectOrder props when setCanRejectOrder is not undefined and status exists can not reject', async () => {
     mockGetSummaryOfInstanceTasks();
     const mockSetIsRejectOrder = jest.fn();
     render(
@@ -428,7 +428,7 @@ describe('test AuditResultCollection', () => {
         showOverview={true}
         workflowId={workflowId}
         refreshOrder={mockRefreshOrder}
-        setIsRejectOrder={mockSetIsRejectOrder}
+        setCanRejectOrder={mockSetIsRejectOrder}
       />
     );
     expect(mockSetIsRejectOrder).toBeCalledTimes(0);
@@ -451,7 +451,7 @@ describe('test AuditResultCollection', () => {
         showOverview={true}
         workflowId={workflowId}
         refreshOrder={mockRefreshOrder}
-        setIsRejectOrder={mockSetIsRejectOrder}
+        setCanRejectOrder={mockSetIsRejectOrder}
       />
     );
 

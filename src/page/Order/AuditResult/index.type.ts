@@ -27,7 +27,7 @@ export interface AuditResultCollectionProps {
   showOverview?: boolean;
   workflowId?: string;
   refreshOrder?: () => Promise<IWorkflowResV2 | undefined>;
-  setIsRejectOrder?: React.Dispatch<React.SetStateAction<boolean>>;
+  setCanRejectOrder?: React.Dispatch<React.SetStateAction<boolean>>;
   refreshOverviewFlag?: boolean;
   orderStatus?: WorkflowRecordResV2StatusEnum;
 }

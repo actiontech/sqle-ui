@@ -44,7 +44,7 @@ const Order = () => {
   const [auditResultActiveKey, setAuditResultActiveKey] = useState<string>('');
   const [tempAuditResultActiveKey, setTempAuditResultActiveKey] =
     useState<string>('');
-  const [isRejectOrder, setIsRejectOrder] = useState(false);
+  const [canRejectOrder, setCanRejectOrder] = useState(false);
   const [refreshOverviewFlag, { toggle: refreshOverviewAction }] =
     useToggle(false);
 
@@ -293,7 +293,7 @@ const Order = () => {
                 executing={executing}
                 reject={reject}
                 modifySql={openModifySqlModal}
-                isRejectOrder={isRejectOrder}
+                canRejectOrder={canRejectOrder}
               />
             </Card>
           </EmptyBox>
@@ -307,7 +307,7 @@ const Order = () => {
             refreshOrder={refreshOrder}
             refreshOverviewFlag={refreshOverviewFlag}
             orderStatus={orderInfo?.record?.status}
-            setIsRejectOrder={setIsRejectOrder}
+            setCanRejectOrder={setCanRejectOrder}
           />
           <EmptyBox if={!!tempTaskInfos.length}>
             <Card>
