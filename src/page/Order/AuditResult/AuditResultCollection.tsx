@@ -13,6 +13,9 @@ import ScheduleTimeModal from './ScheduleTimeModal';
 import { useBoolean, useRequest } from 'ahooks';
 import { useEffect, useState } from 'react';
 import { IGetWorkflowTasksItemV1 } from '../../../api/common';
+import { GetWorkflowTasksItemV1StatusEnum } from '../../../api/common.enum';
+import { useSelector } from 'react-redux';
+import { IReduxState } from '../../../store';
 
 const OVERVIEW_TAB_KEY = 'OVERVIEW_TAB_KEY';
 
@@ -24,12 +27,16 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
   showOverview = false,
   workflowId,
   refreshOrder,
-  setIsExistScheduleTask,
+  setCanRejectOrder,
   refreshOverviewFlag,
+  orderStatus,
 }) => {
   const { t } = useTranslation();
-  const [currentTaskId, setCurrentTaskId] = useState('');
-
+  const [currentTask, setCurrentTask] =
+    useState<IGetWorkflowTasksItemV1 | null>(null);
+  const username = useSelector<IReduxState, string>(
+    (state) => state.user.username
+  );
   const [
     scheduleVisible,
     { setTrue: openScheduleModal, setFalse: closeScheduleModal },
@@ -54,10 +61,13 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
     });
   };
 
-  const scheduleTimeHandle = (scheduleTime?: string) => {
+  const scheduleTimeHandle = (
+    scheduleTime?: string,
+    taskId = currentTask?.task_id?.toString()
+  ) => {
     const param: IUpdateWorkflowScheduleV2Params = {
       workflow_id: workflowId ?? '',
-      task_id: currentTaskId,
+      task_id: taskId ?? '',
       schedule_time: scheduleTime,
     };
     return workflow.updateWorkflowScheduleV2(param).then((res) => {
@@ -89,8 +99,18 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
         if (!res.some) {
           return;
         }
-        const isExistScheduleTask = res.some((v) => !!v.schedule_time);
-        setIsExistScheduleTask?.(isExistScheduleTask);
+
+        const canRejectOrder = res.every(
+          (v) =>
+            !!v.status &&
+            ![
+              GetWorkflowTasksItemV1StatusEnum.exec_succeeded,
+              GetWorkflowTasksItemV1StatusEnum.executing,
+              GetWorkflowTasksItemV1StatusEnum.exec_failed,
+              GetWorkflowTasksItemV1StatusEnum.exec_scheduled,
+            ].includes(v.status)
+        );
+        setCanRejectOrder?.(canRejectOrder);
       },
     }
   );
@@ -115,17 +135,20 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
                 key={OVERVIEW_TAB_KEY}
               >
                 <Table
+                  rowKey="task_id"
                   loading={loading}
                   columns={auditResultOverviewColumn(
                     sqlExecuteHandle,
                     openScheduleModal,
-                    scheduleTimeHandle
+                    scheduleTimeHandle,
+                    username,
+                    orderStatus
                   )}
                   dataSource={overviewList ?? []}
                   onRow={(record) => {
                     return {
                       onClick: () => {
-                        setCurrentTaskId(record.task_id?.toString() ?? '');
+                        setCurrentTask(record);
                       },
                     };
                   }}
@@ -166,6 +189,7 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
         visible={scheduleVisible}
         closeScheduleModal={closeScheduleModal}
         submit={scheduleTimeHandle}
+        maintenanceTime={currentTask?.instance_maintenance_times ?? []}
       />
     </>
   );

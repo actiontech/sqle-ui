@@ -185,6 +185,7 @@ export default {
       execEndTime: '上线结束时间',
       scheduleExecuteTime: '定时上线时间',
       assigneeUserName: '待操作人',
+      executeUserName: '上线人',
       passRate: '审核通过率',
       score: '审核结果评分',
       operator: '操作',

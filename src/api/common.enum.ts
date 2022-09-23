@@ -251,6 +251,8 @@ export enum WorkflowDetailResV2StatusEnum {
 
   'exec_failed' = 'exec_failed',
 
+  'executing' = 'executing',
+
   'finished' = 'finished'
 }
 
@@ -264,6 +266,8 @@ export enum WorkflowRecordResV2StatusEnum {
   'canceled' = 'canceled',
 
   'exec_failed' = 'exec_failed',
+
+  'executing' = 'executing',
 
   'finished' = 'finished'
 }

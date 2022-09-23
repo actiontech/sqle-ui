@@ -1,7 +1,11 @@
+/* eslint-disable no-console */
 import { cleanup, fireEvent, screen, waitFor } from '@testing-library/react';
 import { cloneDeep } from 'lodash';
 import ModifySqlModal from '.';
-import { AuditTaskResV1SqlSourceEnum } from '../../../../../api/common.enum';
+import {
+  AuditTaskResV1SqlSourceEnum,
+  WorkflowResV2ModeEnum,
+} from '../../../../../api/common.enum';
 import task from '../../../../../api/task';
 import { renderWithTheme } from '../../../../../testUtils/customRender';
 import {
@@ -12,17 +16,30 @@ import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
 import { SupportTheme } from '../../../../../theme';
 import { taskInfo, taskInfoErrorAuditLevel } from '../../__testData__';
 
-describe.skip('Order/Detail/Modal/ModifySqlModal', () => {
+describe('Order/Detail/Modal/ModifySqlModal', () => {
+  let tempErrorConsole: typeof console.error;
+
   beforeEach(() => {
     jest.useFakeTimers();
     mockUseSelector({ user: { theme: SupportTheme.LIGHT } });
     mockUseDispatch();
+    mockCreateAuditTasksV1();
+    mockAuditTaskGroupId();
+    console.error = (params: any) => {
+      if (
+        params.includes('A component is changing an uncontrolled input to be ')
+      ) {
+        return;
+      }
+      tempErrorConsole(params);
+    };
   });
 
   afterEach(() => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
+    console.error = tempErrorConsole;
   });
 
   const mockGetSqlContent = () => {
@@ -33,9 +50,30 @@ describe.skip('Order/Detail/Modal/ModifySqlModal', () => {
     return spy;
   };
 
-  const mockCreateTask = () => {
-    const spy = jest.spyOn(task, 'createAndAuditTaskV1');
-    spy.mockImplementation(() => resolveThreeSecond(taskInfoErrorAuditLevel));
+  // const mockCreateTask = () => {
+  //   const spy = jest.spyOn(task, 'createAndAuditTaskV1');
+  //   spy.mockImplementation(() => resolveThreeSecond(taskInfoErrorAuditLevel));
+  //   return spy;
+  // };
+
+  const mockCreateAuditTasksV1 = () => {
+    const spy = jest.spyOn(task, 'createAuditTasksV1');
+    spy.mockImplementation(() =>
+      resolveThreeSecond({
+        task_group_id: 11,
+      })
+    );
+    return spy;
+  };
+
+  const mockAuditTaskGroupId = () => {
+    const spy = jest.spyOn(task, 'auditTaskGroupIdV1');
+    spy.mockImplementation(() =>
+      resolveThreeSecond({
+        task_group_id: 11,
+        tasks: [taskInfo],
+      })
+    );
     return spy;
   };
 
@@ -45,7 +83,7 @@ describe.skip('Order/Detail/Modal/ModifySqlModal', () => {
         visible={false}
         submit={jest.fn()}
         cancel={jest.fn()}
-        currentOrderTask={taskInfo}
+        sqlMode={WorkflowResV2ModeEnum.same_sqls}
       />
     );
     expect(baseElement).toMatchSnapshot();
@@ -60,7 +98,8 @@ describe.skip('Order/Detail/Modal/ModifySqlModal', () => {
         visible={false}
         submit={jest.fn()}
         cancel={jest.fn()}
-        currentOrderTask={tempTask}
+        sqlMode={WorkflowResV2ModeEnum.same_sqls}
+        currentOrderTasks={[tempTask]}
       />
     );
     expect(getSqlContentSpy).not.toBeCalled();
@@ -70,7 +109,8 @@ describe.skip('Order/Detail/Modal/ModifySqlModal', () => {
         visible={true}
         submit={jest.fn()}
         cancel={jest.fn()}
-        currentOrderTask={tempTask}
+        sqlMode={WorkflowResV2ModeEnum.same_sqls}
+        currentOrderTasks={[tempTask]}
       />
     );
     expect(getSqlContentSpy).not.toBeCalled();
@@ -81,7 +121,8 @@ describe.skip('Order/Detail/Modal/ModifySqlModal', () => {
         visible={true}
         submit={jest.fn()}
         cancel={jest.fn()}
-        currentOrderTask={tempTask}
+        sqlMode={WorkflowResV2ModeEnum.same_sqls}
+        currentOrderTasks={[tempTask]}
       />
     );
     expect(getSqlContentSpy).not.toBeCalled();
@@ -92,7 +133,8 @@ describe.skip('Order/Detail/Modal/ModifySqlModal', () => {
         visible={true}
         submit={jest.fn()}
         cancel={jest.fn()}
-        currentOrderTask={tempTask}
+        sqlMode={WorkflowResV2ModeEnum.same_sqls}
+        currentOrderTasks={[tempTask]}
       />
     );
     expect(getSqlContentSpy).toBeCalledTimes(1);
@@ -108,13 +150,15 @@ describe.skip('Order/Detail/Modal/ModifySqlModal', () => {
   test('should send sql field without input_sql_file field when user input sql in editor', async () => {
     const tempTask = cloneDeep(taskInfo);
     mockGetSqlContent();
-    const createTaskSpy = mockCreateTask();
+    const createAuditTaskSpy = mockCreateAuditTasksV1();
+    const auditTaskGroupIdSpy = mockAuditTaskGroupId();
     renderWithTheme(
       <ModifySqlModal
         visible={true}
         submit={jest.fn()}
         cancel={jest.fn()}
-        currentOrderTask={tempTask}
+        sqlMode={WorkflowResV2ModeEnum.same_sqls}
+        currentOrderTasks={[tempTask]}
       />
     );
     await waitFor(() => {
@@ -130,10 +174,24 @@ describe.skip('Order/Detail/Modal/ModifySqlModal', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
-    expect(createTaskSpy).toBeCalledTimes(1);
-    expect(createTaskSpy).toBeCalledWith({
-      instance_name: tempTask.instance_name,
+    expect(createAuditTaskSpy).toBeCalledTimes(1);
+    expect(createAuditTaskSpy).toBeCalledWith({
+      instances: [
+        {
+          instance_name: 'db1',
+          instance_schema: '',
+        },
+      ],
+    });
+    expect(auditTaskGroupIdSpy).toBeCalledTimes(0);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(auditTaskGroupIdSpy).toBeCalledTimes(1);
+    expect(auditTaskGroupIdSpy).toBeCalledWith({
       sql: 'select * from table2',
+      task_group_id: 11,
     });
   });
 
@@ -141,14 +199,22 @@ describe.skip('Order/Detail/Modal/ModifySqlModal', () => {
     const tempTask = cloneDeep(taskInfo);
     mockGetSqlContent();
     const propsSubmit = jest.fn();
-    const createTaskSpy = mockCreateTask();
+    const createAuditTaskSpy = mockCreateAuditTasksV1();
+    const auditTaskGroupIdSpy = mockAuditTaskGroupId();
+    auditTaskGroupIdSpy.mockImplementation(() =>
+      resolveThreeSecond({
+        task_group_id: 11,
+        tasks: [taskInfoErrorAuditLevel],
+      })
+    );
     tempTask.instance_schema = 'schema1';
     const { baseElement } = renderWithTheme(
       <ModifySqlModal
         visible={true}
         submit={propsSubmit}
         cancel={jest.fn()}
-        currentOrderTask={tempTask}
+        sqlMode={WorkflowResV2ModeEnum.same_sqls}
+        currentOrderTasks={[tempTask]}
       />
     );
     await waitFor(() => {
@@ -173,12 +239,26 @@ describe.skip('Order/Detail/Modal/ModifySqlModal', () => {
     expect(screen.getByText('common.submit').parentNode).toHaveClass(
       'ant-btn-loading'
     );
-    expect(createTaskSpy).toBeCalledTimes(1);
-    expect(createTaskSpy).toBeCalledWith({
-      instance_name: tempTask.instance_name,
-      instance_schema: tempTask.instance_schema,
-      input_sql_file: sqlFile,
+    expect(createAuditTaskSpy).toBeCalledTimes(1);
+    expect(createAuditTaskSpy).toBeCalledWith({
+      instances: [
+        {
+          instance_name: 'db1',
+          instance_schema: 'schema1',
+        },
+      ],
     });
+    expect(auditTaskGroupIdSpy).toBeCalledTimes(0);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(auditTaskGroupIdSpy).toBeCalledTimes(1);
+    expect(auditTaskGroupIdSpy).toBeCalledWith({
+      input_sql_file: sqlFile,
+      task_group_id: 11,
+    });
+
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -186,6 +266,6 @@ describe.skip('Order/Detail/Modal/ModifySqlModal', () => {
       'ant-btn-loading'
     );
     expect(propsSubmit).toBeCalledTimes(1);
-    expect(propsSubmit).toBeCalledWith(taskInfoErrorAuditLevel);
+    expect(propsSubmit).toBeCalledWith([taskInfoErrorAuditLevel]);
   });
 });

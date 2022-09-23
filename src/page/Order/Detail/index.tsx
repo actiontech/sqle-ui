@@ -44,7 +44,7 @@ const Order = () => {
   const [auditResultActiveKey, setAuditResultActiveKey] = useState<string>('');
   const [tempAuditResultActiveKey, setTempAuditResultActiveKey] =
     useState<string>('');
-  const [isExistScheduleTask, setIsExistScheduleTask] = useState(false);
+  const [canRejectOrder, setCanRejectOrder] = useState(false);
   const [refreshOverviewFlag, { toggle: refreshOverviewAction }] =
     useToggle(false);
 
@@ -64,17 +64,18 @@ const Order = () => {
     const request = (taskId: string) => {
       return task.getAuditTaskV1({ task_id: taskId });
     };
-
-    Promise.all(
-      (orderInfo?.record?.task_ids ?? []).map((v) =>
-        request(v.task_ids?.toString() ?? '')
-      )
-    ).then((res) => {
-      if (res.every((v) => v.data.code === ResponseCode.SUCCESS)) {
-        setTaskInfos(res.map((v) => v.data.data!));
-      }
-    });
-  }, [orderInfo?.record?.task_ids, refreshFlag]);
+    if (!!orderInfo) {
+      Promise.all(
+        (orderInfo?.record?.tasks ?? []).map((v) =>
+          request(v.task_id?.toString() ?? '')
+        )
+      ).then((res) => {
+        if (res.every((v) => v.data.code === ResponseCode.SUCCESS)) {
+          setTaskInfos(res.map((v) => v.data.data!));
+        }
+      });
+    }
+  }, [orderInfo, refreshFlag]);
 
   const pass = React.useCallback(
     async (stepId: number) => {
@@ -208,7 +209,6 @@ const Order = () => {
         closeOrderFinish();
       });
   }, [closeOrderFinish, orderInfo?.workflow_id, refreshOrder, startCloseOrder]);
-
   return (
     <>
       <PageHeader
@@ -234,12 +234,14 @@ const Order = () => {
                 danger
                 loading={closeOrderLoading}
                 hidden={
-                  orderInfo?.record?.status ===
-                    WorkflowRecordResV2StatusEnum.canceled ||
-                  orderInfo?.record?.status ===
-                    WorkflowRecordResV2StatusEnum.finished ||
-                  orderInfo?.record?.status ===
-                    WorkflowRecordResV2StatusEnum.exec_failed
+                  !(
+                    orderInfo?.record?.status ===
+                      WorkflowRecordResV2StatusEnum.wait_for_audit ||
+                    orderInfo?.record?.status ===
+                      WorkflowRecordResV2StatusEnum.wait_for_execution ||
+                    orderInfo?.record?.status ===
+                      WorkflowRecordResV2StatusEnum.rejected
+                  )
                 }
               >
                 {t('order.closeOrder.button')}
@@ -291,7 +293,7 @@ const Order = () => {
                 executing={executing}
                 reject={reject}
                 modifySql={openModifySqlModal}
-                isExistScheduleTask={isExistScheduleTask}
+                canRejectOrder={canRejectOrder}
               />
             </Card>
           </EmptyBox>
@@ -303,8 +305,9 @@ const Order = () => {
             showOverview={true}
             workflowId={orderInfo?.workflow_id?.toString()}
             refreshOrder={refreshOrder}
-            setIsExistScheduleTask={setIsExistScheduleTask}
             refreshOverviewFlag={refreshOverviewFlag}
+            orderStatus={orderInfo?.record?.status}
+            setCanRejectOrder={setCanRejectOrder}
           />
           <EmptyBox if={!!tempTaskInfos.length}>
             <Card>

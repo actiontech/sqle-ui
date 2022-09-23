@@ -1060,6 +1060,10 @@ export interface IGetWorkflowTasksItemV1 {
 
   exec_start_time?: string;
 
+  execution_user_name?: string;
+
+  instance_maintenance_times?: IMaintenanceTimeResV1[];
+
   instance_name?: string;
 
   schedule_time?: string;
@@ -2228,7 +2232,7 @@ export interface IWorkflowRecordResV2 {
 
   status?: WorkflowRecordResV2StatusEnum;
 
-  task_ids?: IWorkflowTaskItem[];
+  tasks?: IWorkflowTaskItem[];
 
   workflow_step_list?: IWorkflowStepResV1[];
 }
@@ -2252,5 +2256,5 @@ export interface IWorkflowResV2 {
 }
 
 export interface IWorkflowTaskItem {
-  task_ids?: number;
+  task_id?: number;
 }

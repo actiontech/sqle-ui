@@ -9,7 +9,7 @@ import {
 import { Select } from 'antd';
 import useStaticStatus from '.';
 
-describe.skip('useRuleTemplate', () => {
+describe('useRuleTemplate', () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });
@@ -71,7 +71,7 @@ describe.skip('useRuleTemplate', () => {
       jest.runAllTimers();
     });
 
-    await screen.findAllByText('order.status.process');
+    await screen.findAllByText('order.status.wait_for_audit');
     expect(baseElementWithOptions).toMatchSnapshot();
   });
 

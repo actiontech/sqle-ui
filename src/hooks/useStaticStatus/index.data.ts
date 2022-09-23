@@ -50,6 +50,7 @@ export const orderStatusDictionary: StaticEnumDictionary<getWorkflowsV2FilterSta
     [getWorkflowsV2FilterStatusEnum.rejected]: 'order.status.reject',
     [getWorkflowsV2FilterStatusEnum.exec_failed]: 'order.status.exec_failed',
     [getWorkflowsV2FilterStatusEnum.finished]: 'order.status.finished',
+    [getWorkflowsV2FilterStatusEnum.executing]: 'order.status.executing',
   };
 
 export const ruleLevelDictionary: StaticEnumDictionary<RuleResV1LevelEnum> = {

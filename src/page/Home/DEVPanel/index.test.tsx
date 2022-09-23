@@ -2,7 +2,7 @@ import { cleanup, fireEvent, screen, waitFor } from '@testing-library/react';
 import workflow from '../../../api/workflow';
 import {
   getWorkflowListV1FilterCurrentStepTypeEnum,
-  getWorkflowListV1FilterStatusEnum,
+  getWorkflowsV2FilterStatusEnum,
 } from '../../../api/workflow/index.enum';
 import {
   renderWithRouter,
@@ -140,31 +140,25 @@ describe('test home/DEVPanel', () => {
       page_index: 1,
       page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
       filter_create_user_name: username,
-      // filter_status: getWorkflowListV1FilterStatusEnum.on_process,
-      // filter_current_step_type:
-      //   getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute,
       filter_status: 'wait_for_execution',
     });
     expect(getMockRequestSpy.mock.calls[4][0]).toEqual({
       page_index: 1,
       page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
       filter_create_user_name: username,
-      // filter_status: getWorkflowListV1FilterStatusEnum.on_process,
-      // filter_current_step_type:
-      //   getWorkflowListV1FilterCurrentStepTypeEnum.sql_review,
-      filter_status: 'wait_for_execution',
+      filter_status: 'wait_for_audit',
     });
     expect(getMockRequestSpy.mock.calls[5][0]).toEqual({
       page_index: 1,
       page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
       filter_create_user_name: username,
-      filter_status: getWorkflowListV1FilterStatusEnum.rejected,
+      filter_status: getWorkflowsV2FilterStatusEnum.rejected,
     });
 
     fireEvent.click(screen.getByText('common.more'));
     expect(history.location.pathname).toBe(`/order`);
     expect(history.location.search).toBe(
-      `?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}&${OrderListUrlParamsKey.status}=${getWorkflowListV1FilterStatusEnum.on_process}`
+      `?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}&${OrderListUrlParamsKey.status}=${getWorkflowsV2FilterStatusEnum.wait_for_audit}`
     );
 
     fireEvent.click(
@@ -180,7 +174,7 @@ describe('test home/DEVPanel', () => {
     fireEvent.click(screen.getByText('common.more'));
     expect(history.location.pathname).toBe(`/order`);
     expect(history.location.search).toBe(
-      `?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}&${OrderListUrlParamsKey.status}=${getWorkflowListV1FilterStatusEnum.on_process}`
+      `?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}&${OrderListUrlParamsKey.status}=${getWorkflowsV2FilterStatusEnum.wait_for_execution}`
     );
 
     fireEvent.click(
@@ -196,7 +190,7 @@ describe('test home/DEVPanel', () => {
     fireEvent.click(screen.getByText('common.more'));
     expect(history.location.pathname).toBe(`/order`);
     expect(history.location.search).toBe(
-      `?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.status}=${getWorkflowListV1FilterStatusEnum.rejected}`
+      `?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.status}=${getWorkflowsV2FilterStatusEnum.rejected}`
     );
   });
 });

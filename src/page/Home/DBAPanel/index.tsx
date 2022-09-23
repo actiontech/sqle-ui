@@ -8,7 +8,6 @@ import { useHistory } from 'react-router-dom';
 import workflow from '../../../api/workflow';
 import {
   getWorkflowListV1FilterCurrentStepTypeEnum,
-  getWorkflowListV1FilterStatusEnum,
   getWorkflowsV2FilterStatusEnum,
 } from '../../../api/workflow/index.enum';
 import { IReduxState } from '../../../store';
@@ -48,9 +47,7 @@ const DBAPanel: React.FC<IDBAPanelProps> = ({
         page_index: 1,
         page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
         filter_current_step_assignee_user_name: username,
-        filter_status: getWorkflowsV2FilterStatusEnum.wait_for_execution,
-        // filter_current_step_type:
-        //   getWorkflowListV1FilterCurrentStepTypeEnum.sql_review,
+        filter_status: getWorkflowsV2FilterStatusEnum.wait_for_audit,
       });
     },
     {
@@ -67,8 +64,6 @@ const DBAPanel: React.FC<IDBAPanelProps> = ({
         page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
         filter_current_step_assignee_user_name: username,
         filter_status: getWorkflowsV2FilterStatusEnum.wait_for_execution,
-        // filter_current_step_type:
-        //   getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute,
       });
     },
     {
@@ -80,12 +75,12 @@ const DBAPanel: React.FC<IDBAPanelProps> = ({
 
   const showAllWithNeedMeReview = () => {
     history.push(
-      `/order?${OrderListUrlParamsKey.currentStepAssignee}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}&${OrderListUrlParamsKey.status}=${getWorkflowListV1FilterStatusEnum.on_process}`
+      `/order?${OrderListUrlParamsKey.currentStepAssignee}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}&${OrderListUrlParamsKey.status}=${getWorkflowsV2FilterStatusEnum.wait_for_audit}`
     );
   };
   const showAllWithNeedMeExec = () => {
     history.push(
-      `order?${OrderListUrlParamsKey.currentStepAssignee}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}&${OrderListUrlParamsKey.status}=${getWorkflowListV1FilterStatusEnum.on_process}`
+      `order?${OrderListUrlParamsKey.currentStepAssignee}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}&${OrderListUrlParamsKey.status}=${getWorkflowsV2FilterStatusEnum.wait_for_execution}`
     );
   };
 

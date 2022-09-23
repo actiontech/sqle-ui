@@ -648,12 +648,12 @@ exports[`useRuleTemplate should render static option for order status 2`] = `
             style="height: 0px; width: 0px; overflow: hidden;"
           >
             <div
-              aria-label="order.status.process"
+              aria-label="order.status.wait_for_audit"
               aria-selected="false"
               id="rc_select_TEST_OR_SSR_list_0"
               role="option"
             >
-              on_process
+              wait_for_audit
             </div>
           </div>
           <div
@@ -672,12 +672,12 @@ exports[`useRuleTemplate should render static option for order status 2`] = `
                   <div
                     aria-selected="false"
                     class="ant-select-item ant-select-item-option"
-                    title="order.status.process"
+                    title="order.status.wait_for_audit"
                   >
                     <div
                       class="ant-select-item-option-content"
                     >
-                      order.status.process
+                      order.status.wait_for_audit
                     </div>
                     <span
                       aria-hidden="true"
@@ -689,12 +689,12 @@ exports[`useRuleTemplate should render static option for order status 2`] = `
                   <div
                     aria-selected="false"
                     class="ant-select-item ant-select-item-option"
-                    title="order.status.exec_scheduled"
+                    title="order.status.wait_for_execution"
                   >
                     <div
                       class="ant-select-item-option-content"
                     >
-                      order.status.exec_scheduled
+                      order.status.wait_for_execution
                     </div>
                     <span
                       aria-hidden="true"

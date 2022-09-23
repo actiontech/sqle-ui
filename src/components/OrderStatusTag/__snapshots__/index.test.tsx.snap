@@ -35,7 +35,7 @@ exports[`OrderStatusTag should render username by redux state 4`] = `
   <span
     class="ant-tag ant-tag-blue"
   >
-    order.status.process
+    order.status.wait_for_audit
   </span>
 </div>
 `;
@@ -43,9 +43,39 @@ exports[`OrderStatusTag should render username by redux state 4`] = `
 exports[`OrderStatusTag should render username by redux state 5`] = `
 <div>
   <span
+    class="ant-tag ant-tag-blue"
+  >
+    order.status.wait_for_execution
+  </span>
+</div>
+`;
+
+exports[`OrderStatusTag should render username by redux state 6`] = `
+<div>
+  <span
     class="ant-tag ant-tag-orange"
   >
     order.status.reject
+  </span>
+</div>
+`;
+
+exports[`OrderStatusTag should render username by redux state 7`] = `
+<div>
+  <span
+    class="ant-tag ant-tag-orange"
+  >
+    order.status.exec_failed
+  </span>
+</div>
+`;
+
+exports[`OrderStatusTag should render username by redux state 8`] = `
+<div>
+  <span
+    class="ant-tag ant-tag-blue"
+  >
+    order.status.executing
   </span>
 </div>
 `;

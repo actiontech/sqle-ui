@@ -28,6 +28,10 @@ const statusColor: OrderStatus = {
     color: 'orange',
     label: 'order.status.exec_failed',
   },
+  [WorkflowRecordResV2StatusEnum.executing]: {
+    color: 'blue',
+    label: 'order.status.executing',
+  },
   unknown: {
     color: undefined,
     label: 'common.unknownStatus',

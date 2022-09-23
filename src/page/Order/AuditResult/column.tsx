@@ -3,7 +3,10 @@ import {
   IAuditTaskSQLResV1,
   IGetWorkflowTasksItemV1,
 } from '../../../api/common';
-import { GetWorkflowTasksItemV1StatusEnum } from '../../../api/common.enum';
+import {
+  GetWorkflowTasksItemV1StatusEnum,
+  WorkflowRecordResV2StatusEnum,
+} from '../../../api/common.enum';
 import {
   getAuditTaskSQLsV1FilterAuditStatusEnum,
   getAuditTaskSQLsV1FilterExecStatusEnum,
@@ -128,21 +131,42 @@ export const orderAuditResultColumn = (
 export const auditResultOverviewColumn: (
   sqlExecuteHandle: (taskId: string) => void,
   openScheduleModal: () => void,
-  scheduleTimeHandle: (scheduleTime?: string | undefined) => Promise<void>
+  scheduleTimeHandle: (
+    scheduleTime?: string | undefined,
+    taskId?: string
+  ) => Promise<void>,
+  currentUserName: string,
+  orderStatus?: WorkflowRecordResV2StatusEnum
 ) => TableColumn<IGetWorkflowTasksItemV1, 'operator'> = (
   sqlExecuteHandle,
   openScheduleModal,
-  scheduleTimeHandle
+  scheduleTimeHandle,
+  currentUsername,
+  orderStatus
 ) => {
-  const enableSqlExecute = (status?: GetWorkflowTasksItemV1StatusEnum) => {
-    if (!status) {
+  const enableSqlExecute = (
+    currentStepAssigneeUsernameList: string[] = [],
+    status?: GetWorkflowTasksItemV1StatusEnum
+  ) => {
+    if (
+      !status ||
+      orderStatus === WorkflowRecordResV2StatusEnum.rejected ||
+      !currentStepAssigneeUsernameList.includes(currentUsername)
+    ) {
       return false;
     }
     return status === GetWorkflowTasksItemV1StatusEnum.wait_for_execution;
   };
 
-  const enableSqlScheduleTime = (status?: GetWorkflowTasksItemV1StatusEnum) => {
-    if (!status) {
+  const enableSqlScheduleTime = (
+    currentStepAssigneeUsernameList: string[] = [],
+    status?: GetWorkflowTasksItemV1StatusEnum
+  ) => {
+    if (
+      !status ||
+      orderStatus === WorkflowRecordResV2StatusEnum.rejected ||
+      !currentStepAssigneeUsernameList.includes(currentUsername)
+    ) {
       return false;
     }
     return status === GetWorkflowTasksItemV1StatusEnum.wait_for_execution;
@@ -151,7 +175,7 @@ export const auditResultOverviewColumn: (
   const enableCancelSqlScheduleTime = (
     status?: GetWorkflowTasksItemV1StatusEnum
   ) => {
-    if (!status) {
+    if (!status || orderStatus === WorkflowRecordResV2StatusEnum.rejected) {
       return false;
     }
     return status === GetWorkflowTasksItemV1StatusEnum.exec_scheduled;
@@ -169,6 +193,25 @@ export const auditResultOverviewColumn: (
       ),
     },
     {
+      dataIndex: 'task_pass_rate',
+      title: () => i18n.t('order.auditResultCollection.table.passRate'),
+      render: (rate: number = 0) => `${floatToPercent(rate)}%`,
+    },
+    {
+      dataIndex: 'task_score',
+      title: () => i18n.t('order.auditResultCollection.table.score'),
+    },
+    {
+      dataIndex: 'current_step_assignee_user_name_list',
+      title: () => i18n.t('order.auditResultCollection.table.assigneeUserName'),
+      render: (names: string[] = []) =>
+        names.map((v) => <Tag key={v}>{v}</Tag>),
+    },
+    {
+      dataIndex: 'execution_user_name',
+      title: () => i18n.t('order.auditResultCollection.table.executeUserName'),
+    },
+    {
       dataIndex: 'exec_start_time',
       title: () => i18n.t('order.auditResultCollection.table.execStartTime'),
     },
@@ -182,20 +225,6 @@ export const auditResultOverviewColumn: (
         i18n.t('order.auditResultCollection.table.scheduleExecuteTime'),
     },
     {
-      dataIndex: 'current_step_assignee_user_name_list',
-      title: () => i18n.t('order.auditResultCollection.table.assigneeUserName'),
-      render: (names: string[] = []) => names.map((v) => <Tag>{v}</Tag>),
-    },
-    {
-      dataIndex: 'task_pass_rate',
-      title: () => i18n.t('order.auditResultCollection.table.passRate'),
-      render: (rate: number = 0) => `${floatToPercent(rate)}%`,
-    },
-    {
-      dataIndex: 'task_score',
-      title: () => i18n.t('order.auditResultCollection.table.score'),
-    },
-    {
       dataIndex: 'operator',
       title: () => i18n.t('common.operate'),
       render: (_, record) => {
@@ -203,18 +232,44 @@ export const auditResultOverviewColumn: (
         return (
           <Space>
             <Typography.Link
-              disabled={!enableSqlExecute(record.status)}
+              disabled={
+                !enableSqlExecute(
+                  record.current_step_assignee_user_name_list,
+                  record.status
+                )
+              }
               onClick={() => sqlExecuteHandle(taskId)}
             >
               {i18n.t('order.auditResultCollection.table.sqlExecute')}
             </Typography.Link>
-            <EmptyBox if={enableSqlScheduleTime(record.status)}>
-              <Typography.Link onClick={() => openScheduleModal()}>
-                {i18n.t('order.auditResultCollection.table.scheduleTime')}
-              </Typography.Link>
-            </EmptyBox>
-            <EmptyBox if={enableCancelSqlScheduleTime(record.status)}>
-              <Typography.Link onClick={() => scheduleTimeHandle()}>
+            <EmptyBox
+              if={
+                record.status ===
+                GetWorkflowTasksItemV1StatusEnum.exec_scheduled
+              }
+              defaultNode={
+                <Typography.Link
+                  disabled={
+                    !enableSqlScheduleTime(
+                      record.current_step_assignee_user_name_list,
+                      record.status
+                    )
+                  }
+                  onClick={() => openScheduleModal()}
+                >
+                  {i18n.t('order.auditResultCollection.table.scheduleTime')}
+                </Typography.Link>
+              }
+            >
+              <Typography.Link
+                disabled={!enableCancelSqlScheduleTime(record.status)}
+                onClick={() =>
+                  scheduleTimeHandle(
+                    undefined,
+                    record.task_id?.toString() ?? ''
+                  )
+                }
+              >
                 {i18n.t(
                   'order.auditResultCollection.table.cancelExecScheduled'
                 )}
