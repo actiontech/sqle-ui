@@ -23,7 +23,6 @@ import { IAuditTaskResV1 } from '../../../api/common';
 import {
   AuditTaskResV1SqlSourceEnum,
   CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
-  WorkflowResV2ModeEnum,
 } from '../../../api/common.enum';
 import task from '../../../api/task';
 import {
@@ -131,7 +130,7 @@ const CreateOrder = () => {
         );
       };
 
-      if (values.orderMode === WorkflowResV2ModeEnum.same_sqls) {
+      if (values.isSameSqlOrder) {
         const res = await auditSameSqlMode(values);
         if (res && res.tasks) {
           setTaskInfos(res.tasks);
@@ -222,10 +221,14 @@ const CreateOrder = () => {
     }
   };
 
+  const clearTaskInfos = () => {
+    setTaskInfos([]);
+  };
+
   const resetAllForm = useCallback(() => {
     baseForm.resetFields();
     sqlInfoForm.resetFields();
-    setTaskInfos([]);
+    clearTaskInfos();
     toggleHasDirtyData(false);
     EventEmitter.emit(EmitterKey.Reset_Create_Order_Form);
   }, [baseForm, sqlInfoForm, toggleHasDirtyData]);
@@ -303,11 +306,15 @@ const CreateOrder = () => {
                 />
               </Form.Item>
             </Form>
+          </Card>
+
+          <Card title={t('order.sqlInfo.title')}>
             <SqlInfoForm
               form={sqlInfoForm}
               submit={auditSql}
               updateDirtyData={toggleHasDirtyData}
               instanceNameChange={instanceNameChange}
+              clearTaskInfos={clearTaskInfos}
             />
           </Card>
 

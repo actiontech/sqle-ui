@@ -50,7 +50,7 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
       });
     }
     setChangeSqlModeDisabled(
-      currentSqlMode === WorkflowResV2ModeEnum.different_sqls &&
+      currentSqlMode === WorkflowResV2ModeEnum.same_sqls &&
         new Set([...instanceType, currentInstance?.instance_type ?? '']).size >
           1
     );

@@ -131,7 +131,7 @@ export default {
   sqlInfo: {
     title: '审核SQL语句信息',
 
-    orderMode: '工单模式',
+    isSameSqlOrder: '是否选择相同sql',
     orderModeTips: '当数据源类型相同时才能使用相同Sql模式',
     sameSql: '相同Sql',
     differenceSql: '不同Sql',
