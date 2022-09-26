@@ -1,5 +1,5 @@
 import { useBoolean } from 'ahooks';
-import { Form, Radio, RadioChangeEvent } from 'antd';
+import { Form, Switch, SwitchProps } from 'antd';
 import React, {
   useCallback,
   useEffect,
@@ -87,8 +87,13 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
     testStart,
   ]);
 
-  const currentOrderModeChange = (event: RadioChangeEvent) => {
-    setCurrentSqlMode(event.target.value);
+  const currentOrderModeChange: SwitchProps['onChange'] = (flag) => {
+    props.clearTaskInfos();
+    setCurrentSqlMode(
+      flag
+        ? WorkflowResV2ModeEnum.same_sqls
+        : WorkflowResV2ModeEnum.different_sqls
+    );
   };
 
   const submit = useCallback(
@@ -118,6 +123,19 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
     }
   }, [alreadySubmit, props]);
 
+  const setChangeSqlModeDisabledAndSetValue = useCallback(
+    (disabled: boolean) => {
+      setChangeSqlModeDisabled(disabled);
+      if (disabled) {
+        props.form.setFieldsValue({
+          isSameSqlOrder: false,
+        });
+        setCurrentSqlMode(WorkflowResV2ModeEnum.different_sqls);
+      }
+    },
+    [props.form]
+  );
+
   useEffect(() => {
     const resetAlreadySubmit = () => {
       alreadySubmit.current = false;
@@ -145,38 +163,12 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
         {...PageFormLayout}
         onValuesChange={formValueChange}
       >
-        {/* IFTRUE_isEE */}
-        <Form.Item
-          name="orderMode"
-          label={t('order.sqlInfo.orderMode')}
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-          tooltip={t('order.sqlInfo.orderModeTips')}
-          initialValue={WorkflowResV2ModeEnum.same_sqls}
-        >
-          <Radio.Group
-            onChange={currentOrderModeChange}
-            disabled={changeSqlModeDisabled}
-          >
-            <Radio value={WorkflowResV2ModeEnum.same_sqls}>
-              {t('order.sqlInfo.sameSql')}
-            </Radio>
-            <Radio value={WorkflowResV2ModeEnum.different_sqls}>
-              {t('order.sqlInfo.differenceSql')}
-            </Radio>
-          </Radio.Group>
-        </Form.Item>
-        {/* FITRUE_isEE */}
-
         <DatabaseInfo
           form={props.form}
           instanceNameChange={props.instanceNameChange}
           setInstanceNames={setInstanceNames}
           currentSqlMode={currentSqlMode}
-          setChangeSqlModeDisabled={setChangeSqlModeDisabled}
+          setChangeSqlModeDisabled={setChangeSqlModeDisabledAndSetValue}
         />
         <Form.Item label=" " colon={false} hidden={!testConnectVisible}>
           <TestDatabaseConnectButton
@@ -187,6 +179,26 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
             connectDisableReason={connectErrorMessage.join('\n')}
           />
         </Form.Item>
+
+        {/* IFTRUE_isEE */}
+        <Form.Item
+          name="isSameSqlOrder"
+          label={t('order.sqlInfo.isSameSqlOrder')}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+          tooltip={t('order.sqlInfo.orderModeTips')}
+          valuePropName="checked"
+          initialValue={!changeSqlModeDisabled}
+        >
+          <Switch
+            onChange={currentOrderModeChange}
+            disabled={changeSqlModeDisabled}
+          />
+        </Form.Item>
+        {/* FITRUE_isEE */}
 
         <EmptyBox
           if={WorkflowResV2ModeEnum.same_sqls === currentSqlMode}

@@ -7,6 +7,7 @@ export type SqlInfoFormProps = {
   submit: (values: SqlInfoFormFields, currentTabIndex: number) => Promise<void>;
   updateDirtyData: (dirtyDataStatus: boolean) => void;
   instanceNameChange?: (name: string) => void;
+  clearTaskInfos: () => void;
 };
 
 export type DatabaseInfoFields = {
@@ -19,7 +20,7 @@ export type SqlInfoFormFields = {
   sql: string;
   sqlFile: File[];
   mybatisFile: File[];
-  orderMode: WorkflowResV2ModeEnum;
+  isSameSqlOrder: boolean;
   dataBaseInfo: Array<DatabaseInfoFields>;
 };
 
@@ -28,7 +29,7 @@ export type DatabaseInfoProps = Pick<
   'form' | 'instanceNameChange'
 > & {
   setInstanceNames: React.Dispatch<React.SetStateAction<InstanceNamesType>>;
-  setChangeSqlModeDisabled: React.Dispatch<React.SetStateAction<boolean>>;
+  setChangeSqlModeDisabled: (disabled: boolean) => void;
   currentSqlMode: WorkflowResV2ModeEnum;
 };
 
