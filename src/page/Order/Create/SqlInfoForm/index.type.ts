@@ -42,6 +42,7 @@ export type SameSqlModeProps = {
   submit: (values: SqlContentFields, currentTabIndex: number) => void;
   submitLoading: boolean;
   currentTabIndex: number;
+  formValueChange: () => void;
 };
 
 export type DifferenceSqlModeProps = Omit<

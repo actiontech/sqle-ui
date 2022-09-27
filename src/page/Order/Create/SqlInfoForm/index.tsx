@@ -207,6 +207,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
               submit={submit}
               instanceNameList={instanceNameList}
               submitLoading={submitLoading}
+              formValueChange={formValueChange}
             />
           }
         >
@@ -214,6 +215,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
             submit={submit}
             submitLoading={submitLoading}
             currentTabIndex={0}
+            formValueChange={formValueChange}
           />
         </EmptyBox>
       </Form>

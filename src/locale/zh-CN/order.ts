@@ -15,6 +15,8 @@ export default {
     unsupportMybatisTips: '暂时不支持创建SQL语句类型为Mybatis的工单',
     mustAuditTips: '您必须先对您的SQL进行审核才能进行创建工单',
     mustHaveAuditResultTips: '不能对审核结果为空的SQL进行创建工单',
+    inDifferenceSqlModeShouldAuditAllInstance:
+      '在不同sql语句模式下, 需审核所有数据源后才能创建工单!',
   },
   closeOrder: {
     button: '关闭工单',

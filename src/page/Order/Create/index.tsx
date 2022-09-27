@@ -177,7 +177,14 @@ const CreateOrder = () => {
   const create = async () => {
     try {
       const values = await baseForm.validateFields();
-      await sqlInfoForm.validateFields();
+      const { isSameSqlOrder, dataBaseInfo } =
+        await sqlInfoForm.validateFields();
+      if (!isSameSqlOrder && dataBaseInfo.length !== taskInfos.length) {
+        message.error(
+          t('order.createOrder.inDifferenceSqlModeShouldAuditAllInstance')
+        );
+        return;
+      }
       if (
         taskInfos?.some(
           (v) => v.sql_source === AuditTaskResV1SqlSourceEnum.mybatis_xml_file

@@ -18,6 +18,7 @@ const SameSqlMode: React.FC<SameSqlModeProps> = ({
   submitLoading,
   submit,
   currentTabIndex,
+  formValueChange,
 }) => {
   const { currentEditorTheme } = useChangeTheme();
   const { t } = useTranslation();
@@ -63,7 +64,7 @@ const SameSqlMode: React.FC<SameSqlModeProps> = ({
   }, [form]);
 
   return (
-    <Form {...PageFormLayout} form={form}>
+    <Form {...PageFormLayout} form={form} onValuesChange={formValueChange}>
       <Form.Item
         label={t('order.sqlInfo.uploadType')}
         name="sqlInputType"
