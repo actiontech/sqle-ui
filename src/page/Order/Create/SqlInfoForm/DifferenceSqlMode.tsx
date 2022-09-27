@@ -8,6 +8,7 @@ const DifferenceSqlMode: React.FC<DifferenceSqlModeProps> = ({
   instanceNameList,
   submitLoading,
   submit,
+  formValueChange,
 }) => {
   return (
     <Tabs>
@@ -21,6 +22,7 @@ const DifferenceSqlMode: React.FC<DifferenceSqlModeProps> = ({
               submit={submit}
               submitLoading={submitLoading}
               currentTabIndex={index}
+              formValueChange={formValueChange}
             />
           </Tabs.TabPane>
         );
