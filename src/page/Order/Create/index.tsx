@@ -181,7 +181,7 @@ const CreateOrder = () => {
         await sqlInfoForm.validateFields();
       if (!isSameSqlOrder && dataBaseInfo.length !== taskInfos.length) {
         message.error(
-          t('order.createOrder.InDifferenceSqlModeShouldAuditAllInstance')
+          t('order.createOrder.inDifferenceSqlModeShouldAuditAllInstance')
         );
         return;
       }
