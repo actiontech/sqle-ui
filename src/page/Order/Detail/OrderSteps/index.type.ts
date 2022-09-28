@@ -1,14 +1,12 @@
 import { TimelineItemProps } from 'antd';
-import {
-  IMaintenanceTimeResV1,
-  IWorkflowStepResV1,
-} from '../../../../api/common.d';
+import { IWorkflowStepResV1 } from '../../../../api/common.d';
 import {
   WorkflowRecordResV2StatusEnum,
   WorkflowStepResV1StateEnum,
   WorkflowStepResV1TypeEnum,
 } from '../../../../api/common.enum';
 import { I18nKey } from '../../../../types/common.type';
+import { MaintenanceTimeInfoType } from '../../AuditResult/index.type';
 
 export type OrderStepsProps = {
   currentStep?: number;
@@ -23,7 +21,7 @@ export type OrderStepsProps = {
   execEndTime?: string;
   modifySql: () => void;
   readonly?: boolean;
-  maintenanceTime?: IMaintenanceTimeResV1[];
+  maintenanceTime?: MaintenanceTimeInfoType;
   canRejectOrder?: boolean;
 };
 

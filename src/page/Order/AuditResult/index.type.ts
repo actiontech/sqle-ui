@@ -30,6 +30,9 @@ export interface AuditResultCollectionProps {
   setCanRejectOrder?: React.Dispatch<React.SetStateAction<boolean>>;
   refreshOverviewFlag?: boolean;
   orderStatus?: WorkflowRecordResV2StatusEnum;
+  setMaintenanceTimeInfo?: React.Dispatch<
+    React.SetStateAction<MaintenanceTimeInfoType>
+  >;
 }
 
 export type ScheduleTimeModalProps = {
@@ -60,3 +63,8 @@ export type OrderAuditResultFilterFields = Omit<
 export type WorkflowOverviewProps = {
   workflowId: string;
 };
+
+export type MaintenanceTimeInfoType = Array<{
+  instanceName: string;
+  maintenanceTime: IMaintenanceTimeResV1[];
+}>;

@@ -28,6 +28,7 @@ import { ResponseCode } from '../../../data/common';
 import { Theme } from '../../../types/theme.type';
 import { formatTime } from '../../../utils/Common';
 import AuditResultCollection from '../AuditResult/AuditResultCollection';
+import { MaintenanceTimeInfoType } from '../AuditResult/index.type';
 import ModifySqlModal from './Modal/ModifySqlModal';
 import OrderHistory from './Modal/OrderHistory';
 import OrderSteps from './OrderSteps';
@@ -47,6 +48,8 @@ const Order = () => {
   const [canRejectOrder, setCanRejectOrder] = useState(false);
   const [refreshOverviewFlag, { toggle: refreshOverviewAction }] =
     useToggle(false);
+  const [maintenanceTimeInfo, setMaintenanceTimeInfo] =
+    useState<MaintenanceTimeInfoType>([]);
 
   const { data: orderInfo, refresh: refreshOrder } = useRequest(
     () =>
@@ -294,6 +297,7 @@ const Order = () => {
                 reject={reject}
                 modifySql={openModifySqlModal}
                 canRejectOrder={canRejectOrder}
+                maintenanceTime={maintenanceTimeInfo}
               />
             </Card>
           </EmptyBox>
@@ -308,6 +312,7 @@ const Order = () => {
             refreshOverviewFlag={refreshOverviewFlag}
             orderStatus={orderInfo?.record?.status}
             setCanRejectOrder={setCanRejectOrder}
+            setMaintenanceTimeInfo={setMaintenanceTimeInfo}
           />
           <EmptyBox if={!!tempTaskInfos.length}>
             <Card>
