@@ -4,7 +4,6 @@ import { useRequest } from 'ahooks';
 import { Card, PageHeader, Space, Typography } from 'antd';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import configuration from '../../api/configuration';
 import EmptyBox from '../../components/EmptyBox';
 import { Theme } from '../../types/theme.type';
@@ -70,12 +69,13 @@ const SqlQueryEE = () => {
                 />
                 <div>
                   {t('sqlQuery.eeErrorTips')}。{t('sqlQuery.eeErrorTips2')}
-                  <Link
+                  <a
                     target="_blank"
-                    to="https://actiontech.github.io/sqle-docs-cn/3.modules/4.2_sql_editor/overview.html"
+                    href="https://actiontech.github.io/sqle-docs-cn/3.modules/4.2_sql_editor/overview.html"
+                    rel="noreferrer"
                   >
                     {t('common.clickHere')}
-                  </Link>
+                  </a>
                 </div>
               </Space>
             </EmptyBox>
