@@ -286,7 +286,8 @@ exports[`SqlQueryEE should match snapshot 2`] = `
                   。
                   sqlQuery.eeErrorTips2
                   <a
-                    href="/https://actiontech.github.io/sqle-docs-cn/3.modules/4.2_sql_editor/overview.html"
+                    href="https://actiontech.github.io/sqle-docs-cn/3.modules/4.2_sql_editor/overview.html"
+                    rel="noreferrer"
                     target="_blank"
                   >
                     common.clickHere
@@ -378,7 +379,8 @@ exports[`SqlQueryEE should render error when req throw error 1`] = `
                   。
                   sqlQuery.eeErrorTips2
                   <a
-                    href="/https://actiontech.github.io/sqle-docs-cn/3.modules/4.2_sql_editor/overview.html"
+                    href="https://actiontech.github.io/sqle-docs-cn/3.modules/4.2_sql_editor/overview.html"
+                    rel="noreferrer"
                     target="_blank"
                   >
                     common.clickHere
