@@ -470,16 +470,7 @@ exports[`Order/Detail/OrderHistory should render all order history 1`] = `
                         class="ant-col ant-col-19"
                       >
                         <div>
-                          order.operator.executing
                           <div>
-                            <span>
-                              order.operator.startTime
-                            </span>
-                            <br />
-                            <span>
-                              order.operator.endTime
-                            </span>
-                            <br />
                             <span>
                               order.operator.status
                               ：

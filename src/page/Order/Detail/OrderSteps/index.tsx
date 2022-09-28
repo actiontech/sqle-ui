@@ -107,31 +107,33 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
       return true;
     }
 
-    for (const time of maintenanceTime) {
-      const startHour = time.maintenance_start_time?.hour ?? 0;
-      const startMinute = time.maintenance_start_time?.minute ?? 0;
-      const endHour = time.maintenance_stop_time?.hour ?? 0;
-      const endMinute = time.maintenance_stop_time?.minute ?? 0;
-      if (startHour === endHour && startHour === hour) {
-        if (minute >= startMinute && minute <= endMinute) {
+    return maintenanceTime.every((item) => {
+      for (const time of item.maintenanceTime) {
+        const startHour = time.maintenance_start_time?.hour ?? 0;
+        const startMinute = time.maintenance_start_time?.minute ?? 0;
+        const endHour = time.maintenance_stop_time?.hour ?? 0;
+        const endMinute = time.maintenance_stop_time?.minute ?? 0;
+        if (startHour === endHour && startHour === hour) {
+          if (minute >= startMinute && minute <= endMinute) {
+            return true;
+          }
+        }
+        if (hour === startHour) {
+          if (minute >= startMinute) {
+            return true;
+          }
+        }
+        if (hour === endHour) {
+          if (minute <= endMinute) {
+            return true;
+          }
+        }
+        if (hour > startHour && hour < endHour) {
           return true;
         }
       }
-      if (hour === startHour) {
-        if (minute >= startMinute) {
-          return true;
-        }
-      }
-      if (hour === endHour) {
-        if (minute <= endMinute) {
-          return true;
-        }
-      }
-      if (hour > startHour && hour < endHour) {
-        return true;
-      }
-    }
-    return false;
+      return false;
+    });
   };
 
   const getOperatorTimeElement = (
@@ -141,7 +143,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
   ) => {
     return (
       <div>
-        <span>
+        {/* <span>
           {t('order.operator.startTime', {
             startTime: formatTime(execStartTime),
           })}
@@ -152,7 +154,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
             endTime: formatTime(execEndTime),
           })}
         </span>
-        <br />
+        <br /> */}
         <span>
           {t('order.operator.status')}
           ：
@@ -227,16 +229,36 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
                 <div>
                   {t('order.operator.sqlExecuteDisableTips')}:
                   <EmptyBox
-                    if={(props.maintenanceTime ?? []).length > 0}
+                    if={props.maintenanceTime?.some(
+                      (v) => v.maintenanceTime.length > 0
+                    )}
                     defaultNode={t('order.operator.emptyMaintenanceTime')}
                   >
-                    {props.maintenanceTime?.map((time, i) => (
-                      <Tag key={i}>
-                        {timeAddZero(time.maintenance_start_time?.hour ?? 0)}:{' '}
-                        {timeAddZero(time.maintenance_start_time?.minute ?? 0)}-
-                        {timeAddZero(time.maintenance_stop_time?.hour ?? 0)}:{' '}
-                        {timeAddZero(time.maintenance_stop_time?.minute ?? 0)}
-                      </Tag>
+                    {props.maintenanceTime?.map((item, i) => (
+                      <Space key={i}>
+                        <div>
+                          {item.instanceName}:
+                          {item.maintenanceTime.map((time) => (
+                            <Tag key={i}>
+                              {timeAddZero(
+                                time.maintenance_start_time?.hour ?? 0
+                              )}
+                              :
+                              {timeAddZero(
+                                time.maintenance_start_time?.minute ?? 0
+                              )}
+                              -
+                              {timeAddZero(
+                                time.maintenance_stop_time?.hour ?? 0
+                              )}
+                              :
+                              {timeAddZero(
+                                time.maintenance_stop_time?.minute ?? 0
+                              )}
+                            </Tag>
+                          ))}
+                        </div>
+                      </Space>
                     ))}
                   </EmptyBox>
                 </div>
@@ -303,10 +325,10 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
           ) {
             operator = (
               <div>
-                {t('order.operator.scheduleExec', {
+                {/* {t('order.operator.scheduleExec', {
                   username: step.operation_user_name,
                   time: formatTime(props.scheduleTime),
-                })}
+                })} */}
                 {getOperatorTimeElement(
                   props.execStartTime,
                   props.execEndTime,
@@ -321,9 +343,9 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
           ) {
             operator = (
               <div>
-                {t('order.operator.executing', {
+                {/* {t('order.operator.executing', {
                   username: step.operation_user_name,
-                })}
+                })} */}
                 {getOperatorTimeElement(
                   props.execStartTime,
                   props.execEndTime,

@@ -30,6 +30,7 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
   setCanRejectOrder,
   refreshOverviewFlag,
   orderStatus,
+  setMaintenanceTimeInfo,
 }) => {
   const { t } = useTranslation();
   const [currentTask, setCurrentTask] =
@@ -99,6 +100,13 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
         if (!res.some) {
           return;
         }
+
+        setMaintenanceTimeInfo?.(
+          res.map((v) => ({
+            instanceName: v.instance_name ?? '',
+            maintenanceTime: v.instance_maintenance_times ?? [],
+          }))
+        );
 
         const canRejectOrder = res.every(
           (v) =>
