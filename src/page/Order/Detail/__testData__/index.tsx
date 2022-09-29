@@ -577,6 +577,12 @@ export const workflowTasks: IGetWorkflowTasksItemV1[] = [
     task_pass_rate: 0,
     task_score: 30,
     schedule_time: '2022-09-30',
+    instance_maintenance_times: [
+      {
+        maintenance_start_time: { hour: 0, minute: 0 },
+        maintenance_stop_time: { hour: 20, minute: 0 },
+      },
+    ],
   },
   {
     current_step_assignee_user_name_list: ['admin'],

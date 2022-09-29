@@ -486,4 +486,38 @@ describe('test AuditResultCollection', () => {
       screen.getAllByText('order.auditResultCollection.table.scheduleTime')[0]
     ).toHaveClass('ant-typography-disabled');
   });
+
+  test('should disable execute sql button when the current time is outside the maintenance time', async () => {
+    const RealDate = Date.now;
+
+    global.Date.now = jest.fn(() =>
+      new Date('2022-09-29T23:40:02+08:00').getTime()
+    );
+
+    const getSummarySpy = mockGetSummaryOfInstanceTasks();
+    getSummarySpy.mockImplementation(() =>
+      resolveThreeSecond([workflowTasks[1]])
+    );
+    render(
+      <AuditResultCollection
+        taskInfos={taskInfos}
+        auditResultActiveKey={OVERVIEW_TAB_KEY}
+        setAuditResultActiveKey={mockSetAuditResultActiveKey}
+        updateTaskRecordTotalNum={jest.fn()}
+        showOverview={true}
+        workflowId={workflowId}
+        refreshOrder={mockRefreshOrder}
+      />
+    );
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(
+      screen.getAllByText('order.auditResultCollection.table.sqlExecute')[0]
+    ).toHaveClass('ant-typography-disabled');
+
+    global.Date.now = RealDate;
+  });
 });
