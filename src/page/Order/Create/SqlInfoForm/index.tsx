@@ -70,8 +70,11 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
             requestResult.length > 0 &&
               !!requestResult.every((v) => !!v?.is_instance_connectable)
           );
+
           setConnectErrorMessage(
-            requestResult.map((v) => v.connect_error_message ?? '')
+            requestResult
+              .filter((v) => !!v.connect_error_message)
+              .map((v) => v.connect_error_message!)
           );
         }
       })
