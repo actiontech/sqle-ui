@@ -2357,32 +2357,20 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                             <div
                               class="ant-space-item"
                             >
-                              <span
-                                class="ant-tooltip-disabled-compatible-wrapper"
-                                style="display: inline-block; cursor: not-allowed;"
+                              <button
+                                class="ant-btn ant-btn-primary"
+                                type="button"
                               >
-                                <button
-                                  class="ant-btn ant-btn-primary"
-                                  disabled=""
-                                  style="pointer-events: none;"
-                                  type="button"
-                                >
-                                  <span>
-                                    order.operator.batchSqlExecute
-                                  </span>
-                                </button>
-                              </span>
+                                <span>
+                                  order.operator.batchSqlExecute
+                                </span>
+                              </button>
                             </div>
                           </div>
                         </div>
                         <div
                           class="ant-space-item"
                         />
-                      </div>
-                      <div>
-                        order.operator.sqlExecuteDisableTips
-                        :
-                        order.operator.emptyMaintenanceTime
                       </div>
                     </div>
                   </div>

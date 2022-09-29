@@ -56,8 +56,6 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
         message.success(t('order.status.finished'));
         refreshOverview();
         refreshOrder?.();
-      } else {
-        message.error(res.data.message);
       }
     });
   };

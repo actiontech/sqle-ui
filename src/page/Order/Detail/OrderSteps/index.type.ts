@@ -21,7 +21,7 @@ export type OrderStepsProps = {
   execEndTime?: string;
   modifySql: () => void;
   readonly?: boolean;
-  maintenanceTime?: MaintenanceTimeInfoType;
+  maintenanceTimeInfo?: MaintenanceTimeInfoType;
   canRejectOrder?: boolean;
 };
 

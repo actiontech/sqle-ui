@@ -57,6 +57,7 @@ describe.skip('order/create/sqlInfoForm', () => {
         form={result.current[0]}
         submit={submitMock}
         updateDirtyData={updateDirtyDataMock}
+        clearTaskInfos={jest.fn()}
       />
     );
     await waitFor(() => {
@@ -170,6 +171,7 @@ describe.skip('order/create/sqlInfoForm', () => {
         form={result.current[0]}
         submit={submitMock}
         updateDirtyData={updateDirtyDataMock}
+        clearTaskInfos={jest.fn()}
       />
     );
     await waitFor(() => {
@@ -227,6 +229,7 @@ describe.skip('order/create/sqlInfoForm', () => {
         form={result.current[0]}
         submit={submitMock}
         updateDirtyData={updateDirtyDataMock}
+        clearTaskInfos={jest.fn()}
       />
     );
     await waitFor(() => {

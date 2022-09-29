@@ -1,7 +1,9 @@
 import { Space, Tag, Typography } from 'antd';
+import moment from 'moment';
 import {
   IAuditTaskSQLResV1,
   IGetWorkflowTasksItemV1,
+  IMaintenanceTimeResV1,
 } from '../../../api/common';
 import {
   GetWorkflowTasksItemV1StatusEnum,
@@ -22,6 +24,7 @@ import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import HighlightCode from '../../../utils/HighlightCode';
 import { floatToPercent } from '../../../utils/Math';
+import { checkTimeInWithMaintenanceTime } from '../Detail/OrderSteps/utils';
 import InstanceTasksStatus from './InstanceTasksStatus';
 
 export const orderAuditResultColumn = (
@@ -146,7 +149,8 @@ export const auditResultOverviewColumn: (
 ) => {
   const enableSqlExecute = (
     currentStepAssigneeUsernameList: string[] = [],
-    status?: GetWorkflowTasksItemV1StatusEnum
+    status?: GetWorkflowTasksItemV1StatusEnum,
+    maintenanceTime: IMaintenanceTimeResV1[] = []
   ) => {
     if (
       !status ||
@@ -155,6 +159,11 @@ export const auditResultOverviewColumn: (
     ) {
       return false;
     }
+
+    if (maintenanceTime.length) {
+      return checkTimeInWithMaintenanceTime(moment(), maintenanceTime);
+    }
+
     return status === GetWorkflowTasksItemV1StatusEnum.wait_for_execution;
   };
 
@@ -169,6 +178,7 @@ export const auditResultOverviewColumn: (
     ) {
       return false;
     }
+
     return status === GetWorkflowTasksItemV1StatusEnum.wait_for_execution;
   };
 
@@ -235,7 +245,8 @@ export const auditResultOverviewColumn: (
               disabled={
                 !enableSqlExecute(
                   record.current_step_assignee_user_name_list,
-                  record.status
+                  record.status,
+                  record.instance_maintenance_times
                 )
               }
               onClick={() => sqlExecuteHandle(taskId)}

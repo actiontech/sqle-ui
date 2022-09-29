@@ -29,6 +29,7 @@ import { IReduxState } from '../../../../store';
 import { formatTime, timeAddZero } from '../../../../utils/Common';
 import { OrderStepsProps, StepStateStatus } from './index.type';
 import OrderStatusTag from '../../../../components/OrderStatusTag';
+import { checkTimeInWithMaintenanceTime } from './utils';
 
 const stepStateStatus: StepStateStatus = {
   [WorkflowStepResV1StateEnum.initialized]: {
@@ -98,42 +99,10 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     });
   };
 
-  const checkTimeInMaintenanceTime = (time: moment.Moment) => {
-    const hour = time.hour();
-    const minute = time.minute();
-
-    const maintenanceTime = props.maintenanceTime ?? [];
-    if (maintenanceTime.length === 0) {
-      return true;
-    }
-
-    return maintenanceTime.every((item) => {
-      for (const time of item.maintenanceTime) {
-        const startHour = time.maintenance_start_time?.hour ?? 0;
-        const startMinute = time.maintenance_start_time?.minute ?? 0;
-        const endHour = time.maintenance_stop_time?.hour ?? 0;
-        const endMinute = time.maintenance_stop_time?.minute ?? 0;
-        if (startHour === endHour && startHour === hour) {
-          if (minute >= startMinute && minute <= endMinute) {
-            return true;
-          }
-        }
-        if (hour === startHour) {
-          if (minute >= startMinute) {
-            return true;
-          }
-        }
-        if (hour === endHour) {
-          if (minute <= endMinute) {
-            return true;
-          }
-        }
-        if (hour > startHour && hour < endHour) {
-          return true;
-        }
-      }
-      return false;
-    });
+  const checkInTimeWithMaintenanceTimeInfo = (time: moment.Moment) => {
+    return props.maintenanceTimeInfo?.every((v) =>
+      checkTimeInWithMaintenanceTime(time, v.maintenanceTime)
+    );
   };
 
   const getOperatorTimeElement = (
@@ -199,7 +168,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
                         type="primary"
                         onClick={executing}
                         loading={executingLoading}
-                        disabled={!checkTimeInMaintenanceTime(moment())}
+                        disabled={!checkInTimeWithMaintenanceTimeInfo(moment())}
                       >
                         {t('order.operator.batchSqlExecute')}
                       </Button>
@@ -220,44 +189,48 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
               </Space>
               <EmptyBox
                 if={
-                  !checkTimeInMaintenanceTime(moment()) &&
+                  !checkInTimeWithMaintenanceTimeInfo(moment()) &&
                   props.currentOrderStatus ===
                     WorkflowRecordResV2StatusEnum.wait_for_execution &&
                   step.type === WorkflowStepResV1TypeEnum.sql_execute
                 }
               >
                 <div>
-                  {t('order.operator.sqlExecuteDisableTips')}:
+                  {t('order.operator.sqlExecuteDisableTips')}
+                  {': '}
                   <EmptyBox
-                    if={props.maintenanceTime?.some(
+                    if={props.maintenanceTimeInfo?.some(
                       (v) => v.maintenanceTime.length > 0
                     )}
                     defaultNode={t('order.operator.emptyMaintenanceTime')}
                   >
-                    {props.maintenanceTime?.map((item, i) => (
+                    {props.maintenanceTimeInfo?.map((item, i) => (
                       <Space key={i}>
-                        <div>
-                          {item.instanceName}:
-                          {item.maintenanceTime.map((time) => (
-                            <Tag key={i}>
-                              {timeAddZero(
-                                time.maintenance_start_time?.hour ?? 0
-                              )}
-                              :
-                              {timeAddZero(
-                                time.maintenance_start_time?.minute ?? 0
-                              )}
-                              -
-                              {timeAddZero(
-                                time.maintenance_stop_time?.hour ?? 0
-                              )}
-                              :
-                              {timeAddZero(
-                                time.maintenance_stop_time?.minute ?? 0
-                              )}
-                            </Tag>
-                          ))}
-                        </div>
+                        <EmptyBox if={item.maintenanceTime.length > 0}>
+                          <div>
+                            {item.instanceName}
+                            {': '}
+                            {item.maintenanceTime.map((time) => (
+                              <Tag key={i}>
+                                {timeAddZero(
+                                  time.maintenance_start_time?.hour ?? 0
+                                )}
+                                :
+                                {timeAddZero(
+                                  time.maintenance_start_time?.minute ?? 0
+                                )}
+                                -
+                                {timeAddZero(
+                                  time.maintenance_stop_time?.hour ?? 0
+                                )}
+                                :
+                                {timeAddZero(
+                                  time.maintenance_stop_time?.minute ?? 0
+                                )}
+                              </Tag>
+                            ))}
+                          </div>
+                        </EmptyBox>
                       </Space>
                     ))}
                   </EmptyBox>
