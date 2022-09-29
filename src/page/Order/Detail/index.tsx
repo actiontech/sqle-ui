@@ -297,7 +297,7 @@ const Order = () => {
                 reject={reject}
                 modifySql={openModifySqlModal}
                 canRejectOrder={canRejectOrder}
-                maintenanceTime={maintenanceTimeInfo}
+                maintenanceTimeInfo={maintenanceTimeInfo}
               />
             </Card>
           </EmptyBox>
