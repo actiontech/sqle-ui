@@ -24,7 +24,9 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
   const [schemaList, setSchemaList] = useState<SchemaListType>(
     new Map([[0, []]])
   );
-  const [instanceType, setInstanceType] = useState<string[]>([]);
+  const [instanceTypeMap, setInstanceTypeMap] = useState<Map<number, string>>(
+    new Map()
+  );
   const { updateInstanceList, generateInstanceSelectOption, instanceList } =
     useInstance();
 
@@ -37,7 +39,9 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
     instanceNameChange?.(name);
     updateSchemaList(name, index);
     const currentInstance = instanceList.find((v) => v.instance_name === name);
-    setInstanceType((v) => [...v, currentInstance?.instance_type ?? '']);
+    const realInstanceTypeMap = cloneDeep(instanceTypeMap);
+    realInstanceTypeMap.set(index, currentInstance?.instance_type ?? '');
+    setInstanceTypeMap(realInstanceTypeMap);
 
     if (currentInstance && index === 0) {
       updateInstanceList({
@@ -49,10 +53,16 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
             : undefined,
       });
     }
+    const instanceTypeList = Array.from(realInstanceTypeMap).map(
+      ([_, value]) => value
+    );
+    if (!realInstanceTypeMap.has(index)) {
+      instanceTypeList.push(currentInstance?.instance_type ?? '');
+    }
+    const isExistDifferentInstanceType = new Set(instanceTypeList).size > 1;
     setChangeSqlModeDisabled(
-      currentSqlMode === WorkflowResV2ModeEnum.same_sqls &&
-        new Set([...instanceType, currentInstance?.instance_type ?? '']).size >
-          1
+      currentSqlMode === WorkflowResV2ModeEnum.different_sqls &&
+        isExistDifferentInstanceType
     );
   };
 
@@ -83,7 +93,6 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
   };
 
   useEffect(() => {
-    updateInstanceList();
     EventEmitter.subscribe(
       EmitterKey.Reset_Create_Order_Form,
       updateInstanceList
@@ -94,7 +103,11 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
         updateInstanceList
       );
     };
-  }, [updateInstanceList, currentSqlMode]);
+  }, [updateInstanceList]);
+
+  useEffect(() => {
+    updateInstanceList();
+  }, [currentSqlMode, updateInstanceList]);
 
   return (
     <Form.List name="dataBaseInfo" initialValue={[{}]}>
