@@ -60,10 +60,7 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
       instanceTypeList.push(currentInstance?.instance_type ?? '');
     }
     const isExistDifferentInstanceType = new Set(instanceTypeList).size > 1;
-    setChangeSqlModeDisabled(
-      currentSqlMode === WorkflowResV2ModeEnum.different_sqls &&
-        isExistDifferentInstanceType
-    );
+    setChangeSqlModeDisabled(isExistDifferentInstanceType);
   };
 
   const updateSchemaList = (name: string, index: number) => {
