@@ -1,7 +1,7 @@
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Col, Form, Row, Select } from 'antd';
 import { cloneDeep } from 'lodash';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { WorkflowResV2ModeEnum } from '../../../../api/common.enum';
 import instance from '../../../../api/instance';
@@ -24,7 +24,8 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
   const [schemaList, setSchemaList] = useState<SchemaListType>(
     new Map([[0, []]])
   );
-  const [instanceType, setInstanceType] = useState<string[]>([]);
+
+  const instanceTypeMap = useRef<Map<number, string>>(new Map());
   const { updateInstanceList, generateInstanceSelectOption, instanceList } =
     useInstance();
 
@@ -37,7 +38,6 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
     instanceNameChange?.(name);
     updateSchemaList(name, index);
     const currentInstance = instanceList.find((v) => v.instance_name === name);
-    setInstanceType((v) => [...v, currentInstance?.instance_type ?? '']);
 
     if (currentInstance && index === 0) {
       updateInstanceList({
@@ -49,11 +49,7 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
             : undefined,
       });
     }
-    setChangeSqlModeDisabled(
-      currentSqlMode === WorkflowResV2ModeEnum.same_sqls &&
-        new Set([...instanceType, currentInstance?.instance_type ?? '']).size >
-          1
-    );
+    getInstanceTypeWithAction(index, 'add', currentInstance?.instance_type);
   };
 
   const updateSchemaList = (name: string, index: number) => {
@@ -82,8 +78,22 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
     );
   };
 
+  const getInstanceTypeWithAction = (
+    key: number,
+    type: 'add' | 'remove',
+    instanceType = ''
+  ) => {
+    if (type === 'add') {
+      instanceTypeMap.current.set(key, instanceType);
+    } else if (type === 'remove') {
+      instanceTypeMap.current.delete(key);
+    }
+    const instanceTypeSet = new Set(instanceTypeMap.current.values());
+    const isExistDifferentInstanceType = instanceTypeSet.size > 1;
+    setChangeSqlModeDisabled(isExistDifferentInstanceType);
+  };
+
   useEffect(() => {
-    updateInstanceList();
     EventEmitter.subscribe(
       EmitterKey.Reset_Create_Order_Form,
       updateInstanceList
@@ -94,7 +104,11 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
         updateInstanceList
       );
     };
-  }, [updateInstanceList, currentSqlMode]);
+  }, [updateInstanceList]);
+
+  useEffect(() => {
+    updateInstanceList();
+  }, [currentSqlMode, updateInstanceList]);
 
   return (
     <Form.List name="dataBaseInfo" initialValue={[{}]}>
@@ -182,9 +196,10 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
                         onClick={() => {
                           setInstanceNames((values) => {
                             const cloneValue = cloneDeep(values);
-                            cloneValue.delete(index);
+                            cloneValue.delete(field.key);
                             return cloneValue;
                           });
+                          getInstanceTypeWithAction(field.key, 'remove');
                           remove(field.name);
                         }}
                       />
