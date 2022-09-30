@@ -1,7 +1,7 @@
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Col, Form, Row, Select } from 'antd';
 import { cloneDeep } from 'lodash';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { WorkflowResV2ModeEnum } from '../../../../api/common.enum';
 import instance from '../../../../api/instance';
@@ -24,9 +24,8 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
   const [schemaList, setSchemaList] = useState<SchemaListType>(
     new Map([[0, []]])
   );
-  const [instanceTypeMap, setInstanceTypeMap] = useState<Map<number, string>>(
-    new Map()
-  );
+
+  const instanceTypeMap = useRef<Map<number, string>>(new Map());
   const { updateInstanceList, generateInstanceSelectOption, instanceList } =
     useInstance();
 
@@ -39,9 +38,6 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
     instanceNameChange?.(name);
     updateSchemaList(name, index);
     const currentInstance = instanceList.find((v) => v.instance_name === name);
-    const realInstanceTypeMap = cloneDeep(instanceTypeMap);
-    realInstanceTypeMap.set(index, currentInstance?.instance_type ?? '');
-    setInstanceTypeMap(realInstanceTypeMap);
 
     if (currentInstance && index === 0) {
       updateInstanceList({
@@ -53,14 +49,7 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
             : undefined,
       });
     }
-    const instanceTypeList = Array.from(realInstanceTypeMap).map(
-      ([_, value]) => value
-    );
-    if (!realInstanceTypeMap.has(index)) {
-      instanceTypeList.push(currentInstance?.instance_type ?? '');
-    }
-    const isExistDifferentInstanceType = new Set(instanceTypeList).size > 1;
-    setChangeSqlModeDisabled(isExistDifferentInstanceType);
+    getInstanceTypeWithAction(index, 'add', currentInstance?.instance_type);
   };
 
   const updateSchemaList = (name: string, index: number) => {
@@ -87,6 +76,21 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
         </Select.Option>
       )) ?? []
     );
+  };
+
+  const getInstanceTypeWithAction = (
+    key: number,
+    type: 'add' | 'remove',
+    instanceType = ''
+  ) => {
+    if (type === 'add') {
+      instanceTypeMap.current.set(key, instanceType);
+    } else if (type === 'remove') {
+      instanceTypeMap.current.delete(key);
+    }
+    const instanceTypeSet = new Set(instanceTypeMap.current.values());
+    const isExistDifferentInstanceType = instanceTypeSet.size > 1;
+    setChangeSqlModeDisabled(isExistDifferentInstanceType);
   };
 
   useEffect(() => {
@@ -192,9 +196,10 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
                         onClick={() => {
                           setInstanceNames((values) => {
                             const cloneValue = cloneDeep(values);
-                            cloneValue.delete(index);
+                            cloneValue.delete(field.key);
                             return cloneValue;
                           });
+                          getInstanceTypeWithAction(field.key, 'remove');
                           remove(field.name);
                         }}
                       />
