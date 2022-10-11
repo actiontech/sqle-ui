@@ -61,7 +61,7 @@ export default {
   },
 
   license: {
-    productName: '云树SQL审核软件 CTREE SQLE V3.0',
+    productName: 'SQL质量管理软件 V1.0',
     table: {
       name: '名称',
       limit: '限制',
