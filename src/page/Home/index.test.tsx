@@ -1,7 +1,8 @@
-import { cleanup, render, waitFor } from '@testing-library/react';
+import { cleanup, waitFor } from '@testing-library/react';
 import Home from '.';
 import dashboard from '../../api/dashboard';
 import workflow from '../../api/workflow';
+import { renderWithRouter } from '../../testUtils/customRender';
 import { mockUseSelector } from '../../testUtils/mockRedux';
 import { resolveThreeSecond } from '../../testUtils/mockRequest';
 
@@ -45,7 +46,7 @@ describe('Home', () => {
 
   test('should match snapshot', async () => {
     mockGetDashboardV1();
-    const { container } = render(<Home />);
+    const { container } = renderWithRouter(<Home />);
 
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -62,7 +63,7 @@ describe('Home', () => {
   test('should be called getDashboardV1 interface', async () => {
     const getDashboardSpy = mockGetDashboardV1();
     expect(getDashboardSpy).toBeCalledTimes(0);
-    render(<Home />);
+    renderWithRouter(<Home />);
 
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
