@@ -50,10 +50,8 @@ const UpdateUser = () => {
       role_name_list: values.roleNameList,
       user_group_name_list: values.userGroupList,
       wechat_id: values.wechat,
+      email: values.email ?? '',
     };
-    if (!!values.email) {
-      params.email = values.email;
-    }
     if (values.username !== 'admin') {
       params.is_disabled = !!values.disabled;
     }
