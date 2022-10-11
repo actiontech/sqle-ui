@@ -33,7 +33,6 @@ const SqlQueryEE = () => {
     getSqlQueryUrl().then((res) => {
       if (res?.enable_sql_query) {
         cloudbeaverUrl.current = res.sql_query_root_uri as string;
-        window.open(res.sql_query_root_uri);
       }
     });
   }, [getSqlQueryUrl]);
