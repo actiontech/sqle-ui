@@ -1,34 +1,22 @@
-import { useBoolean } from 'ahooks';
 import { Button } from 'antd';
-import { IQuickLinkProps } from './index.type';
+import { useTranslation } from 'react-i18next';
+import { PlusOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 import './index.less';
 
-const QuickLink: React.FC<IQuickLinkProps> = ({ handleClick, text, icon }) => {
-  const [isHover, { setFalse: leaveBtn, setTrue: enterBtn }] =
-    useBoolean(false);
+const QuickLink = () => {
+  const { t } = useTranslation();
 
   return (
-    <Button
-      className="fixed-widgets-dashboard-namespace"
-      onClick={handleClick}
-      type="primary"
-      shape={isHover ? 'round' : 'circle'}
-      onMouseEnter={() => {
-        enterBtn();
-      }}
-      onMouseLeave={() => {
-        leaveBtn();
-      }}
-    >
-      {isHover ? (
-        <>
-          {icon} {text}
-        </>
-      ) : (
-        icon
-      )}
-    </Button>
+    <section className="fixed-widgets-dashboard-namespace">
+      <Link to="/order/create">
+        <Button type="primary" shape="round">
+          <PlusOutlined />
+          {t('order.createOrder.title')}
+        </Button>
+      </Link>
+    </section>
   );
 };
 

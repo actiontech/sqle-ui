@@ -8,12 +8,9 @@ import DEVPanel from './DEVPanel';
 import RecentlyOrderPanel from './RecentlyOrderPanel';
 
 import './index.less';
-import { PlusOutlined } from '@ant-design/icons';
-import { useHistory } from 'react-router-dom';
 
 const Home = () => {
   const { t } = useTranslation();
-  const history = useHistory();
   const { data: workflowStatistics, refresh: getWorkflowStatistics } =
     useRequest(() => dashboard.getDashboardV1(), {
       formatResult(res) {
@@ -37,13 +34,7 @@ const Home = () => {
           <RecentlyOrderPanel />
         </Space>
       </section>
-      <QuickLink
-        text={t('order.createOrder.title')}
-        icon={<PlusOutlined />}
-        handleClick={() => {
-          history.push('/order/create');
-        }}
-      />
+      <QuickLink />
     </>
   );
 };
