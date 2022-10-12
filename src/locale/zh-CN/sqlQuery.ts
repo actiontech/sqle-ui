@@ -5,7 +5,7 @@ export default {
   eeErrorTips: '该环境未配置SQL查询，请设置后再使用',
   eeErrorTips2: '配置方式及使用说明请查看使用文档',
 
-  jumpToCloudbeaver: '重新打开SQL工作台',
+  jumpToCloudbeaver: '打开SQL工作台',
 
   databaseTables: {
     title: '数据库表',
