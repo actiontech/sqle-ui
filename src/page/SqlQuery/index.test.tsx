@@ -64,12 +64,11 @@ describe('SqlQueryEE', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    expect(openSpy).toBeCalledTimes(1);
-    expect(openSpy).toBeCalledWith('/new_sql_query');
+    expect(openSpy).toBeCalledTimes(0);
     expect(container).toMatchSnapshot();
 
     fireEvent.click(screen.getByText('sqlQuery.jumpToCloudbeaver'));
-    expect(openSpy).toBeCalledTimes(2);
-    expect(openSpy).nthCalledWith(2, '/new_sql_query');
+    expect(openSpy).toBeCalledTimes(1);
+    expect(openSpy).toBeCalledWith('/new_sql_query');
   });
 });
