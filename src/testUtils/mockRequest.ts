@@ -7,6 +7,7 @@ import workflow from '../api/workflow';
 import configuration from '../api/configuration';
 import user_group from '../api/user_group';
 import operation from '../api/operation';
+import audit_plan from '../api/audit_plan';
 
 export const successData = (data: any, otherData?: any) => {
   return {
@@ -234,5 +235,24 @@ export const mockInstanceTip = () => {
       },
     ])
   );
+  return spy;
+};
+
+export const AuditPlanTypesData = [
+  { type: 'default', desc: '自定义' },
+  { type: 'mysql_slow_log', desc: '慢日志' },
+  { type: 'mysql_mybatis', desc: 'Mybatis 扫描' },
+  { type: 'mysql_schema_meta', desc: '库表元数据' },
+  { type: 'ali_rds_mysql_slow_log', desc: '阿里RDS MySQL慢日志' },
+  { type: 'ali_rds_mysql_audit_log', desc: '阿里RDS MySQL审计日志' },
+  { type: 'oracle_top_sql', desc: 'Oracle TOP SQL' },
+  { type: 'all_app_extract', desc: '应用程序SQL抓取' },
+  { type: 'tidb_audit_log', desc: 'TiDB审计日志' },
+  { type: 'ocean_base_for_mysql_mybatis', desc: 'Mybatis 扫描' },
+  { type: 'ocean_base_for_mysql_top_sql', desc: 'Top SQL' },
+];
+export const mockUseAuditPlanTypes = () => {
+  const spy = jest.spyOn(audit_plan, 'getAuditPlanTypesV1');
+  spy.mockImplementation(() => resolveThreeSecond(AuditPlanTypesData));
   return spy;
 };

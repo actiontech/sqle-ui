@@ -59,7 +59,12 @@ export const selectOptionByIndex = (
   index = 1
 ) => {
   fireEvent.mouseDown(screen.getByLabelText(label));
-  const option = screen.getAllByText(optionText)[index];
+  const options = screen.getAllByText(optionText);
+  let realIndex = index;
+  if (index < 0) {
+    realIndex = options.length + index;
+  }
+  const option = options[realIndex];
   expect(option).toHaveClass('ant-select-item-option-content');
   fireEvent.click(option);
 };
