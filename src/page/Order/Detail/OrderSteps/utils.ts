@@ -6,7 +6,6 @@ export const checkTimeInWithMaintenanceTime = (
 ) => {
   const hour = time.hour();
   const minute = time.minute();
-
   if (maintenanceTime.length === 0) {
     return true;
   }
@@ -35,4 +34,6 @@ export const checkTimeInWithMaintenanceTime = (
       return true;
     }
   }
+
+  return false;
 };

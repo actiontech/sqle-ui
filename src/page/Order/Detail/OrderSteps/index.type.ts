@@ -23,6 +23,7 @@ export type OrderStepsProps = {
   readonly?: boolean;
   maintenanceTimeInfo?: MaintenanceTimeInfoType;
   canRejectOrder?: boolean;
+  tasksStatusNumber?: TasksStatusNumberType;
 };
 
 export type StepStateStatus = {
@@ -35,4 +36,10 @@ export type StepTypeStatus = {
   [key in WorkflowStepResV1TypeEnum | 'unknown']: {
     label: I18nKey;
   };
+};
+
+export type TasksStatusNumberType = {
+  success: number;
+  failed: number;
+  executing: number;
 };
