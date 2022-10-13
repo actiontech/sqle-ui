@@ -9,6 +9,7 @@ import { AxiosRequestConfig } from 'axios';
 import {
   IGetAuditPlanMetasV1Params,
   IGetAuditPlanMetasV1Return,
+  IGetAuditPlanTypesV1Return,
   IGetAuditPlansV1Params,
   IGetAuditPlansV1Return,
   ICreateAuditPlanV1Params,
@@ -58,6 +59,14 @@ class AuditPlanService extends ServiceBase {
     return this.get<IGetAuditPlanMetasV1Return>(
       '/v1/audit_plan_metas',
       paramsData,
+      options
+    );
+  }
+
+  public getAuditPlanTypesV1(options?: AxiosRequestConfig) {
+    return this.get<IGetAuditPlanTypesV1Return>(
+      '/v1/audit_plan_types',
+      undefined,
       options
     );
   }

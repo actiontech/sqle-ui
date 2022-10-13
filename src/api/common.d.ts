@@ -26,7 +26,7 @@ import {
   WorkflowDetailResV2CurrentStepTypeEnum,
   WorkflowDetailResV2StatusEnum,
   WorkflowRecordResV2StatusEnum,
-  WorkflowResV2ModeEnum,
+  WorkflowResV2ModeEnum
 } from './common.enum';
 
 export interface IBaseRes {
@@ -121,6 +121,12 @@ export interface IAuditPlanSQLResV1 {
   audit_plan_sql_last_receive_text?: string;
 
   audit_plan_sql_last_receive_timestamp?: string;
+}
+
+export interface IAuditPlanTypesV1 {
+  desc?: string;
+
+  type?: string;
 }
 
 export interface IAuditResDataV1 {
@@ -523,6 +529,14 @@ export interface IGetAuditPlanSQLsResV1 {
   total_nums?: number;
 }
 
+export interface IGetAuditPlanTypesResV1 {
+  code?: number;
+
+  data?: IAuditPlanTypesV1[];
+
+  message?: string;
+}
+
 export interface IGetAuditPlansResV1 {
   code?: number;
 
@@ -877,6 +891,22 @@ export interface IGetSQLResultResV1 {
   message?: string;
 }
 
+export interface IGetSqlAverageExecutionTimeResV1 {
+  code?: number;
+
+  data?: ISqlAverageExecutionTime[];
+
+  message?: string;
+}
+
+export interface IGetSqlExecutionFailPercentResV1 {
+  code?: number;
+
+  data?: ISqlExecutionFailPercent[];
+
+  message?: string;
+}
+
 export interface IGetSqlExplainReqV1 {
   instance_schema?: string;
 
@@ -969,6 +999,14 @@ export interface IGetWeChatConfigurationResV1 {
   code?: number;
 
   data?: IWeChatConfigurationResV1;
+
+  message?: string;
+}
+
+export interface IGetWorkflowAuditPassPercentResV1 {
+  code?: number;
+
+  data?: IWorkflowAuditPassPercentV1;
 
   message?: string;
 }
@@ -1519,6 +1557,22 @@ export interface ISQLResultItemHeadResV1 {
   field_name?: string;
 }
 
+export interface ISqlAverageExecutionTime {
+  average_execution_seconds?: number;
+
+  instance_name?: string;
+
+  max_execution_seconds?: number;
+
+  min_execution_seconds?: number;
+}
+
+export interface ISqlExecutionFailPercent {
+  instance_name?: string;
+
+  percent?: number;
+}
+
 export interface ISystemVariablesResV1 {
   workflow_expired_hours?: number;
 }
@@ -1885,6 +1939,10 @@ export interface IWorkFlowStepTemplateResV1 {
   number?: number;
 
   type?: string;
+}
+
+export interface IWorkflowAuditPassPercentV1 {
+  audit_pass_percent?: number;
 }
 
 export interface IWorkflowCountsV1 {
