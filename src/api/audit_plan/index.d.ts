@@ -1,5 +1,6 @@
 import {
   IGetAuditPlanMetasResV1,
+  IGetAuditPlanTypesResV1,
   IGetAuditPlansResV1,
   ICreateAuditPlanReqV1,
   IBaseRes,
@@ -26,8 +27,16 @@ export interface IGetAuditPlanMetasV1Params {
 
 export interface IGetAuditPlanMetasV1Return extends IGetAuditPlanMetasResV1 {}
 
+export interface IGetAuditPlanTypesV1Return extends IGetAuditPlanTypesResV1 {}
+
 export interface IGetAuditPlansV1Params {
   filter_audit_plan_db_type?: string;
+
+  fuzzy_search_audit_plan_name?: string;
+
+  filter_audit_plan_type?: string;
+
+  filter_audit_plan_instance_name?: string;
 
   page_index?: number;
 

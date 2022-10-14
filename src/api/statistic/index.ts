@@ -7,8 +7,13 @@ import ServiceBase from '../Service.base';
 import { AxiosRequestConfig } from 'axios';
 
 import {
+  IGetSqlAverageExecutionTimeV1Params,
+  IGetSqlAverageExecutionTimeV1Return,
+  IGetSqlExecutionFailPercentV1Params,
+  IGetSqlExecutionFailPercentV1Return,
   IGetInstancesTypePercentV1Return,
   IGetLicenseUsageV1Return,
+  IGetWorkflowAuditPassPercentV1Return,
   IGetWorkflowCountV1Return,
   IGetWorkflowDurationOfWaitingForAuditV1Return,
   IGetWorkflowDurationOfWaitingForExecutionV1Return,
@@ -24,6 +29,30 @@ import {
 } from './index.d';
 
 class StatisticService extends ServiceBase {
+  public getSqlAverageExecutionTimeV1(
+    params: IGetSqlAverageExecutionTimeV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.get<IGetSqlAverageExecutionTimeV1Return>(
+      '/v1/statistic/instances/sql_average_execution_time',
+      paramsData,
+      options
+    );
+  }
+
+  public getSqlExecutionFailPercentV1(
+    params: IGetSqlExecutionFailPercentV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.get<IGetSqlExecutionFailPercentV1Return>(
+      '/v1/statistic/instances/sql_execution_fail_percent',
+      paramsData,
+      options
+    );
+  }
+
   public getInstancesTypePercentV1(options?: AxiosRequestConfig) {
     return this.get<IGetInstancesTypePercentV1Return>(
       '/v1/statistic/instances/type_percent',
@@ -35,6 +64,14 @@ class StatisticService extends ServiceBase {
   public getLicenseUsageV1(options?: AxiosRequestConfig) {
     return this.get<IGetLicenseUsageV1Return>(
       '/v1/statistic/license/usage',
+      undefined,
+      options
+    );
+  }
+
+  public getWorkflowAuditPassPercentV1(options?: AxiosRequestConfig) {
+    return this.get<IGetWorkflowAuditPassPercentV1Return>(
+      '/v1/statistic/workflows/audit_pass_percent',
       undefined,
       options
     );

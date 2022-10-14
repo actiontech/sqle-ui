@@ -16,6 +16,8 @@ import {
   updateSelectAuditPlan,
 } from '../../../store/auditPlan';
 import PlanListModal from './Modal';
+import PlanListFilterForm from './PlanListFilterForm';
+import { PlanListFilterFormFields } from './PlanListFilterForm/index.type';
 import { planListTableHeader } from './tableColumn';
 
 const PlanList = () => {
@@ -26,18 +28,20 @@ const PlanList = () => {
     { setTrue: startRemoveAuditPlan, setFalse: removeAuditPlanFinish },
   ] = useBoolean();
 
-  const { pagination, tableChange } = useTable();
+  const { pagination, tableChange, filterInfo, setFilterInfo } =
+    useTable<PlanListFilterFormFields>();
 
   const { data, loading, refresh } = useRequest(
     () => {
       return audit_plan.getAuditPlansV1({
         page_index: pagination.pageIndex,
         page_size: pagination.pageSize,
+        ...filterInfo,
       });
     },
     {
       paginated: true,
-      refreshDeps: [pagination],
+      refreshDeps: [pagination, filterInfo],
       formatResult(res) {
         return {
           total: res.data?.total_nums ?? 1,
@@ -116,6 +120,7 @@ const PlanList = () => {
         </Link>,
       ]}
     >
+      <PlanListFilterForm submit={setFilterInfo} />
       <Table
         columns={planListTableHeader(removeAuditPlan, openModal)}
         dataSource={data?.list ?? []}

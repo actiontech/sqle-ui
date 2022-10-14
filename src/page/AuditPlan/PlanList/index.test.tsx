@@ -2,9 +2,15 @@
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import PlanList from '.';
 import audit_plan from '../../../api/audit_plan';
+import { selectOptionByIndex } from '../../../testUtils/customQuery';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
-import { resolveThreeSecond } from '../../../testUtils/mockRequest';
+import {
+  mockDriver,
+  mockUseAuditPlanTypes,
+  mockUseInstance,
+  resolveThreeSecond,
+} from '../../../testUtils/mockRequest';
 import { mockUseStyle } from '../../../testUtils/mockStyle';
 import { AuditPlanList } from './__testData__';
 
@@ -29,6 +35,9 @@ describe('PlanList', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockGetAuditPlan();
+    mockUseInstance();
+    mockDriver();
+    mockUseAuditPlanTypes();
     dispatchSpy = mockUseDispatch().scopeDispatch;
     mockUseStyle();
     mockUseSelector({
@@ -160,6 +169,70 @@ describe('PlanList', () => {
     expect(dispatchSpy).nthCalledWith(3, {
       payload: { modalName: 'SUBSCRIBE_NOTICE', status: true },
       type: 'auditPlan/updateModalStatus',
+    });
+  });
+
+  test('should send request with filter params when user set filter info for table', async () => {
+    const getAuditPlanSpy = mockGetAuditPlan();
+    renderWithRouter(<PlanList />);
+    expect(getAuditPlanSpy).toBeCalledTimes(1);
+    expect(getAuditPlanSpy).toBeCalledWith({
+      page_index: 1,
+      page_size: 10,
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    fireEvent.input(
+      screen.getByLabelText('auditPlan.list.table.audit_plan_name'),
+      { target: { value: '123' } }
+    );
+
+    selectOptionByIndex(
+      'auditPlan.list.table.audit_plan_instance_name',
+      'instance1',
+      1
+    );
+
+    selectOptionByIndex(
+      'auditPlan.list.table.audit_plan_type',
+      '库表元数据',
+      0
+    );
+
+    selectOptionByIndex('auditPlan.list.table.audit_plan_db_type', 'mysql', -1);
+
+    fireEvent.click(screen.getByText('common.search'));
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    expect(getAuditPlanSpy).toBeCalledTimes(2);
+    expect(getAuditPlanSpy).nthCalledWith(2, {
+      page_index: 1,
+      page_size: 10,
+      filter_audit_plan_db_type: 'mysql',
+      filter_audit_plan_instance_name: 'instance1',
+      filter_audit_plan_name: '123',
+      filter_audit_plan_type: 'mysql_schema_meta',
+    });
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    fireEvent.click(screen.getByText('common.reset'));
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    expect(getAuditPlanSpy).toBeCalledTimes(3);
+    expect(getAuditPlanSpy).nthCalledWith(3, {
+      page_index: 1,
+      page_size: 10,
     });
   });
 });
