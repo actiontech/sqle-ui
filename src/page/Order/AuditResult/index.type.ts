@@ -1,6 +1,7 @@
 import { FormInstance, TagProps } from 'antd';
 import {
   IAuditTaskResV1,
+  IGetWorkflowTasksItemV1,
   IMaintenanceTimeResV1,
   IWorkflowResV2,
 } from '../../../api/common';
@@ -27,12 +28,9 @@ export interface AuditResultCollectionProps {
   showOverview?: boolean;
   workflowId?: string;
   refreshOrder?: () => Promise<IWorkflowResV2 | undefined>;
-  setCanRejectOrder?: React.Dispatch<React.SetStateAction<boolean>>;
   refreshOverviewFlag?: boolean;
   orderStatus?: WorkflowRecordResV2StatusEnum;
-  setMaintenanceTimeInfo?: React.Dispatch<
-    React.SetStateAction<MaintenanceTimeInfoType>
-  >;
+  getOverviewListSuccessHandle?: (list: IGetWorkflowTasksItemV1[]) => void;
 }
 
 export type ScheduleTimeModalProps = {

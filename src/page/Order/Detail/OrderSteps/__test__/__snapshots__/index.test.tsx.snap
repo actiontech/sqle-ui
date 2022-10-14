@@ -1,0 +1,438 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test OrderSteps should disable execute button and render disable tips when the current time is not in maintenance time 1`] = `
+<div>
+  <ul
+    class="ant-timeline"
+  >
+    <li
+      class="ant-timeline-item"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-3"
+          >
+            order.operator.createOrderStep
+          </div>
+          <div
+            class="ant-col ant-col-6"
+          />
+          <div
+            class="ant-col ant-col-15"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              ：
+              2022-10-13 15:13:20
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              ：
+              admin
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="ant-timeline-item"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-3"
+          >
+            order.operator.reviewOrderStep
+          </div>
+          <div
+            class="ant-col ant-col-6"
+          />
+          <div
+            class="ant-col ant-col-15"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              ：
+              2022-10-13 15:13:45
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              ：
+              admin
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="ant-timeline-item ant-timeline-item-last"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-custom ant-timeline-item-head-gray"
+      >
+        <span
+          aria-label="clock-circle"
+          class="anticon anticon-clock-circle timeline-clock-icon"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="clock-circle"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+            />
+            <path
+              d="M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z"
+            />
+          </svg>
+        </span>
+      </div>
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-3"
+          >
+            order.operator.executeOrderStep
+          </div>
+          <div
+            class="ant-col ant-col-6"
+          >
+            <div
+              class="ant-space ant-space-horizontal ant-space-align-center"
+            >
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              />
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                  >
+                    <span
+                      class="ant-tooltip-disabled-compatible-wrapper"
+                      style="display: inline-block; cursor: not-allowed;"
+                    >
+                      <button
+                        class="ant-btn ant-btn-primary"
+                        disabled=""
+                        style="pointer-events: none;"
+                        type="button"
+                      >
+                        <span>
+                          order.operator.batchSqlExecute
+                        </span>
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-space-item"
+              >
+                <button
+                  class="ant-btn ant-btn-dangerous"
+                  type="button"
+                >
+                  <span>
+                    order.operator.rejectFull
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div>
+              order.operator.sqlExecuteDisableTips
+              : 
+              <div
+                class="ant-space ant-space-horizontal ant-space-align-center"
+              >
+                <div
+                  class="ant-space-item"
+                >
+                  <div>
+                    local
+                    : 
+                    <span
+                      class="ant-tag"
+                    >
+                      00
+                      :
+                      00
+                      -
+                      03
+                      :
+                      00
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-col ant-col-15"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              <div
+                class="ant-space ant-space-horizontal ant-space-align-center"
+              >
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
+                >
+                  <span>
+                    order.status.finished
+                    ：
+                    1
+                  </span>
+                </div>
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
+                >
+                  <span>
+                    order.status.exec_failed
+                    ：
+                    0
+                  </span>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  <span>
+                    order.status.executing
+                    ：
+                    0
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`test OrderSteps should match snapshot with default props 1`] = `
+<div>
+  <ul
+    class="ant-timeline"
+  >
+    <li
+      class="ant-timeline-item"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-3"
+          >
+            order.operator.createOrderStep
+          </div>
+          <div
+            class="ant-col ant-col-6"
+          />
+          <div
+            class="ant-col ant-col-15"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              ：
+              2022-10-12 16:25:03
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              ：
+              admin
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="ant-timeline-item"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-3"
+          >
+            order.operator.reviewOrderStep
+          </div>
+          <div
+            class="ant-col ant-col-6"
+          />
+          <div
+            class="ant-col ant-col-15"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.time
+              ：
+              2022-10-12 16:25:07
+            </div>
+            <div
+              class="ant-col ant-col-24"
+            >
+              order.operator.user
+              ：
+              admin
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      class="ant-timeline-item ant-timeline-item-last"
+    >
+      <div
+        class="ant-timeline-item-tail"
+      />
+      <div
+        class="ant-timeline-item-head ant-timeline-item-head-green"
+      />
+      <div
+        class="ant-timeline-item-content"
+      >
+        <div
+          class="ant-row"
+        >
+          <div
+            class="ant-col ant-col-3"
+          >
+            order.operator.executeOrderStep
+          </div>
+          <div
+            class="ant-col ant-col-6"
+          >
+            <span>
+              order.operator.status
+              ：
+              <span
+                class="ant-tag ant-tag-green"
+              >
+                order.status.finished
+              </span>
+            </span>
+          </div>
+          <div
+            class="ant-col ant-col-15"
+          >
+            <div
+              class="ant-col ant-col-24"
+            >
+              <div
+                class="ant-space ant-space-horizontal ant-space-align-center"
+              >
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
+                >
+                  <span>
+                    order.status.finished
+                    ：
+                    1
+                  </span>
+                </div>
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
+                >
+                  <span>
+                    order.status.exec_failed
+                    ：
+                    0
+                  </span>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  <span>
+                    order.status.executing
+                    ：
+                    0
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;

@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test useGenerateOrderStepInfo should return expect value with getStepActionAndOperateInfo 1`] = `
+<React.Fragment>
+  modifySqlNode
+</React.Fragment>
+`;
+
+exports[`test useGenerateOrderStepInfo should return expect value with getStepActionAndOperateInfo 2`] = `
+<React.Fragment>
+  <Col
+    span={24}
+  >
+    order.operator.time
+    ：
+    2022-10-12 16:25:03
+  </Col>
+  <Col
+    span={24}
+  >
+    order.operator.user
+    ：
+    admin
+  </Col>
+</React.Fragment>
+`;
+
+exports[`test useGenerateOrderStepInfo should return expect value with getStepActionAndOperateInfo 3`] = `
+<React.Fragment>
+  <Col
+    span={24}
+  >
+    order.operator.time
+    ：
+    2022-10-12 16:25:03
+  </Col>
+  <Col
+    span={24}
+  >
+    order.operator.user
+    ：
+    admin
+  </Col>
+</React.Fragment>
+`;
+
+exports[`test useGenerateOrderStepInfo should return expect value with getStepActionAndOperateInfo 4`] = `
+<React.Fragment>
+  modifySqlNode
+</React.Fragment>
+`;
+
+exports[`test useGenerateOrderStepInfo should return expect value with getStepActionAndOperateInfo 5`] = `
+<React.Fragment>
+  <Col
+    span={24}
+  >
+    order.operator.time
+    ：
+    2022-10-12 16:25:03
+  </Col>
+  <Col
+    span={24}
+  >
+    order.operator.user
+    ：
+    admin
+  </Col>
+</React.Fragment>
+`;
+
+exports[`test useGenerateOrderStepInfo should return expect value with getStepActionAndOperateInfo 6`] = `
+<React.Fragment>
+  <Col
+    span={24}
+  >
+    order.operator.time
+    ：
+    2022-10-12 16:25:07
+  </Col>
+  <Col
+    span={24}
+  >
+    order.operator.user
+    ：
+    admin
+  </Col>
+</React.Fragment>
+`;
+
+exports[`test useGenerateOrderStepInfo should return expect value with getStepActionAndOperateInfo 7`] = `
+<span>
+  order.operator.status
+  ：
+  <OrderStatusTag
+    status="finished"
+  />
+</span>
+`;
+
+exports[`test useGenerateOrderStepInfo should return expect value with getStepActionAndOperateInfo 8`] = `
+<React.Fragment>
+  <Col
+    span={24}
+  >
+    <Space>
+      <span>
+        order.status.finished
+        ：
+        1
+      </span>
+      <span>
+        order.status.exec_failed
+        ：
+        0
+      </span>
+      <span>
+        order.status.executing
+        ：
+        0
+      </span>
+    </Space>
+  </Col>
+</React.Fragment>
+`;
+
+exports[`test useGenerateOrderStepInfo should return expect value with getStepActionAndOperateInfo 9`] = `
+<React.Fragment>
+  <Col
+    span={24}
+  >
+    <Space>
+      <span>
+        order.status.finished
+        ：
+        1
+      </span>
+      <span>
+        order.status.exec_failed
+        ：
+        0
+      </span>
+      <span>
+        order.status.executing
+        ：
+        0
+      </span>
+    </Space>
+  </Col>
+</React.Fragment>
+`;
+
+exports[`test useGenerateOrderStepInfo should return expect value with getStepActionAndOperateInfo 10`] = `
+<React.Fragment>
+  <Col
+    span={24}
+  >
+    order.operator.time
+    ：
+    2022-10-12 16:25:03
+  </Col>
+  <Col
+    span={24}
+  >
+    order.operator.user
+    ：
+    admin
+  </Col>
+</React.Fragment>
+`;
+
+exports[`test useGenerateOrderStepInfo should return expect value with getStepActionAndOperateInfo 11`] = `
+<React.Fragment>
+  <Col
+    span={24}
+  >
+    order.operator.time
+    ：
+    2022-10-12 16:25:03
+  </Col>
+  <Col
+    span={24}
+  >
+    order.operator.user
+    ：
+    admin
+  </Col>
+</React.Fragment>
+`;
+
+exports[`test useGenerateOrderStepInfo should return expect value with getStepActionAndOperateInfo 12`] = `
+<React.Fragment>
+  <div>
+    <Text>
+      order.operator.rejectDetail
+    </Text>
+  </div>
+  <Text
+    type="danger"
+  >
+    order.operator.rejectReason
+    :
+  </Text>
+  <div>
+    <Text
+      type="danger"
+    >
+      (
+      order.operator.rejectTips
+      )
+    </Text>
+  </div>
+</React.Fragment>
+`;
+
+exports[`test useGenerateOrderStepInfo should return expect value with getStepActionAndOperateInfo 13`] = `
+<React.Fragment>
+  <Col
+    span={24}
+  >
+    order.operator.time
+    ：
+    2022-10-12 16:25:03
+  </Col>
+  <Col
+    span={24}
+  >
+    order.operator.user
+    ：
+    admin
+  </Col>
+</React.Fragment>
+`;
+
+exports[`test useGenerateOrderStepInfo should return expect value with getTimeLineIcon 1`] = `
+<ForwardRef(ClockCircleOutlined)
+  className="timeline-clock-icon"
+/>
+`;
+
+exports[`test useGenerateOrderStepInfo should return expect value with getTimeLineIcon 2`] = `
+<ForwardRef(ClockCircleOutlined)
+  className="timeline-clock-icon"
+/>
+`;

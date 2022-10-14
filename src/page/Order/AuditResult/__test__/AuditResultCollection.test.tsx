@@ -416,9 +416,9 @@ describe('test AuditResultCollection', () => {
     expect(mockRefreshOrder).toBeCalledTimes(1);
   });
 
-  test('should call setCanRejectOrder props when setCanRejectOrder is not undefined and status exists can not reject', async () => {
+  test('should call getOverviewListSuccessHandle props when setCanRejectOrder is not undefined and status exists can not reject', async () => {
     mockGetSummaryOfInstanceTasks();
-    const mockSetIsRejectOrder = jest.fn();
+    const mockGetOverviewListSuccessHandle = jest.fn();
     render(
       <AuditResultCollection
         taskInfos={taskInfos}
@@ -428,39 +428,14 @@ describe('test AuditResultCollection', () => {
         showOverview={true}
         workflowId={workflowId}
         refreshOrder={mockRefreshOrder}
-        setCanRejectOrder={mockSetIsRejectOrder}
+        getOverviewListSuccessHandle={mockGetOverviewListSuccessHandle}
       />
     );
-    expect(mockSetIsRejectOrder).toBeCalledTimes(0);
+    expect(mockGetOverviewListSuccessHandle).toBeCalledTimes(0);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    expect(mockSetIsRejectOrder).toBeCalledTimes(1);
-    expect(mockSetIsRejectOrder).toBeCalledWith(false);
-
-    jest.clearAllMocks();
-    jest.clearAllTimers();
-
-    mockCanRejectInstanceTasks();
-    render(
-      <AuditResultCollection
-        taskInfos={taskInfos}
-        auditResultActiveKey={OVERVIEW_TAB_KEY}
-        setAuditResultActiveKey={mockSetAuditResultActiveKey}
-        updateTaskRecordTotalNum={jest.fn()}
-        showOverview={true}
-        workflowId={workflowId}
-        refreshOrder={mockRefreshOrder}
-        setCanRejectOrder={mockSetIsRejectOrder}
-      />
-    );
-
-    expect(mockSetIsRejectOrder).toBeCalledTimes(0);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    expect(mockSetIsRejectOrder).toBeCalledTimes(1);
-    expect(mockSetIsRejectOrder).toBeCalledWith(true);
+    expect(mockGetOverviewListSuccessHandle).toBeCalledTimes(1);
   });
 
   test('should disabled button when current step assignee user name list is not exists current user name', async () => {

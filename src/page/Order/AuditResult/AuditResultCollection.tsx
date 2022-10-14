@@ -13,7 +13,6 @@ import ScheduleTimeModal from './ScheduleTimeModal';
 import { useBoolean, useRequest } from 'ahooks';
 import { useEffect, useState } from 'react';
 import { IGetWorkflowTasksItemV1 } from '../../../api/common';
-import { GetWorkflowTasksItemV1StatusEnum } from '../../../api/common.enum';
 import { useSelector } from 'react-redux';
 import { IReduxState } from '../../../store';
 
@@ -27,10 +26,9 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
   showOverview = false,
   workflowId,
   refreshOrder,
-  setCanRejectOrder,
+  getOverviewListSuccessHandle,
   refreshOverviewFlag,
   orderStatus,
-  setMaintenanceTimeInfo,
 }) => {
   const { t } = useTranslation();
   const [currentTask, setCurrentTask] =
@@ -94,30 +92,7 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
       refreshDeps: [refreshOverviewFlag],
       ready: !!showOverview && !!workflowId,
       formatResult: (res) => res.data.data ?? [],
-      onSuccess: (res: IGetWorkflowTasksItemV1[]) => {
-        if (!res.some) {
-          return;
-        }
-
-        setMaintenanceTimeInfo?.(
-          res.map((v) => ({
-            instanceName: v.instance_name ?? '',
-            maintenanceTime: v.instance_maintenance_times ?? [],
-          }))
-        );
-
-        const canRejectOrder = res.every(
-          (v) =>
-            !!v.status &&
-            ![
-              GetWorkflowTasksItemV1StatusEnum.exec_succeeded,
-              GetWorkflowTasksItemV1StatusEnum.executing,
-              GetWorkflowTasksItemV1StatusEnum.exec_failed,
-              GetWorkflowTasksItemV1StatusEnum.exec_scheduled,
-            ].includes(v.status)
-        );
-        setCanRejectOrder?.(canRejectOrder);
-      },
+      onSuccess: getOverviewListSuccessHandle,
     }
   );
 

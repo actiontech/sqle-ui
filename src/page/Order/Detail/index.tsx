@@ -14,8 +14,9 @@ import { cloneDeep } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router';
-import { IAuditTaskResV1 } from '../../../api/common';
+import { IAuditTaskResV1, IGetWorkflowTasksItemV1 } from '../../../api/common';
 import {
+  GetWorkflowTasksItemV1StatusEnum,
   WorkflowRecordResV2StatusEnum,
   WorkflowResV2ModeEnum,
 } from '../../../api/common.enum';
@@ -32,6 +33,7 @@ import { MaintenanceTimeInfoType } from '../AuditResult/index.type';
 import ModifySqlModal from './Modal/ModifySqlModal';
 import OrderHistory from './Modal/OrderHistory';
 import OrderSteps from './OrderSteps';
+import { TasksStatusNumberType } from './OrderSteps/index.type';
 import useModifySql from './useModifySql';
 
 const Order = () => {
@@ -50,6 +52,8 @@ const Order = () => {
     useToggle(false);
   const [maintenanceTimeInfo, setMaintenanceTimeInfo] =
     useState<MaintenanceTimeInfoType>([]);
+  const [tasksStatusNumber, setTasksStatusNumber] =
+    useState<TasksStatusNumberType>();
 
   const { data: orderInfo, refresh: refreshOrder } = useRequest(
     () =>
@@ -212,6 +216,49 @@ const Order = () => {
         closeOrderFinish();
       });
   }, [closeOrderFinish, orderInfo?.workflow_id, refreshOrder, startCloseOrder]);
+
+  const getOverviewListSuccessHandle = (list: IGetWorkflowTasksItemV1[]) => {
+    if (!list.some) {
+      return;
+    }
+
+    setMaintenanceTimeInfo?.(
+      list.map((v) => ({
+        instanceName: v.instance_name ?? '',
+        maintenanceTime: v.instance_maintenance_times ?? [],
+      }))
+    );
+
+    const canRejectOrder = list.every(
+      (v) =>
+        !!v.status &&
+        ![
+          GetWorkflowTasksItemV1StatusEnum.exec_succeeded,
+          GetWorkflowTasksItemV1StatusEnum.executing,
+          GetWorkflowTasksItemV1StatusEnum.exec_failed,
+          GetWorkflowTasksItemV1StatusEnum.exec_scheduled,
+        ].includes(v.status)
+    );
+    setCanRejectOrder?.(canRejectOrder);
+    let succeededNumber = 0,
+      executingNumber = 0,
+      failedNumber = 0;
+    list.forEach((v) => {
+      if (v.status === GetWorkflowTasksItemV1StatusEnum.exec_succeeded) {
+        succeededNumber++;
+      } else if (v.status === GetWorkflowTasksItemV1StatusEnum.executing) {
+        executingNumber++;
+      } else if (v.status === GetWorkflowTasksItemV1StatusEnum.exec_failed) {
+        failedNumber++;
+      }
+    });
+    setTasksStatusNumber({
+      failed: failedNumber,
+      success: succeededNumber,
+      executing: executingNumber,
+    });
+  };
+
   return (
     <>
       <PageHeader
@@ -298,6 +345,7 @@ const Order = () => {
                 modifySql={openModifySqlModal}
                 canRejectOrder={canRejectOrder}
                 maintenanceTimeInfo={maintenanceTimeInfo}
+                tasksStatusNumber={tasksStatusNumber}
               />
             </Card>
           </EmptyBox>
@@ -311,8 +359,7 @@ const Order = () => {
             refreshOrder={refreshOrder}
             refreshOverviewFlag={refreshOverviewFlag}
             orderStatus={orderInfo?.record?.status}
-            setCanRejectOrder={setCanRejectOrder}
-            setMaintenanceTimeInfo={setMaintenanceTimeInfo}
+            getOverviewListSuccessHandle={getOverviewListSuccessHandle}
           />
           <EmptyBox if={!!tempTaskInfos.length}>
             <Card>
