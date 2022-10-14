@@ -212,27 +212,13 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                     class="ant-row"
                   >
                     <div
-                      class="ant-col ant-col-5"
+                      class="ant-col ant-col-3"
                     >
-                      <div
-                        class="ant-col ant-col-24"
-                      >
-                        order.operator.time
-                        :
-                        2021-05-20 10:48:57
-                      </div>
-                      <div
-                        class="ant-col ant-col-24"
-                      >
-                        order.operator.user
-                        :
-                        admin
-                      </div>
+                      order.operator.createOrderStep
                     </div>
                     <div
-                      class="ant-col ant-col-19"
+                      class="ant-col ant-col-6"
                     >
-                      order.operator.createOrder
                       <div>
                         <button
                           ant-click-animating-without-extra-node="true"
@@ -243,6 +229,24 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                             order.operator.modifySql
                           </span>
                         </button>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col ant-col-15"
+                    >
+                      <div
+                        class="ant-col ant-col-24"
+                      >
+                        order.operator.time
+                        ：
+                        2021-05-20 10:48:57
+                      </div>
+                      <div
+                        class="ant-col ant-col-24"
+                      >
+                        order.operator.user
+                        ：
+                        admin
                       </div>
                     </div>
                   </div>
@@ -264,25 +268,12 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                     class="ant-row"
                   >
                     <div
-                      class="ant-col ant-col-5"
+                      class="ant-col ant-col-3"
                     >
-                      <div
-                        class="ant-col ant-col-24"
-                      >
-                        order.operator.time
-                        :
-                        2021-05-20 10:49:09
-                      </div>
-                      <div
-                        class="ant-col ant-col-24"
-                      >
-                        order.operator.user
-                        :
-                        admin
-                      </div>
+                      order.operator.executeOrderStep
                     </div>
                     <div
-                      class="ant-col ant-col-19"
+                      class="ant-col ant-col-6"
                     >
                       <div>
                         <span
@@ -306,6 +297,47 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                           order.operator.rejectTips
                           )
                         </span>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col ant-col-15"
+                    >
+                      <div
+                        class="ant-col ant-col-24"
+                      >
+                        <div
+                          class="ant-space ant-space-horizontal ant-space-align-center"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-right: 8px;"
+                          >
+                            <span>
+                              order.status.finished
+                              ：
+                              0
+                            </span>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                            style="margin-right: 8px;"
+                          >
+                            <span>
+                              order.status.exec_failed
+                              ：
+                              0
+                            </span>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span>
+                              order.status.executing
+                              ：
+                              1
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -2256,27 +2288,30 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                     class="ant-row"
                   >
                     <div
-                      class="ant-col ant-col-5"
+                      class="ant-col ant-col-3"
+                    >
+                      order.operator.createOrderStep
+                    </div>
+                    <div
+                      class="ant-col ant-col-6"
+                    />
+                    <div
+                      class="ant-col ant-col-15"
                     >
                       <div
                         class="ant-col ant-col-24"
                       >
                         order.operator.time
-                        :
+                        ：
                         2021-05-18 16:35:10
                       </div>
                       <div
                         class="ant-col ant-col-24"
                       >
                         order.operator.user
-                        :
+                        ：
                         admin
                       </div>
-                    </div>
-                    <div
-                      class="ant-col ant-col-19"
-                    >
-                      order.operator.createOrder
                     </div>
                   </div>
                 </div>
@@ -2320,25 +2355,12 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                     class="ant-row"
                   >
                     <div
-                      class="ant-col ant-col-5"
+                      class="ant-col ant-col-3"
                     >
-                      <div
-                        class="ant-col ant-col-24"
-                      >
-                        order.operator.time
-                        :
-                        --
-                      </div>
-                      <div
-                        class="ant-col ant-col-24"
-                      >
-                        order.operator.user
-                        :
-                        --
-                      </div>
+                      order.operator.executeOrderStep
                     </div>
                     <div
-                      class="ant-col ant-col-19"
+                      class="ant-col ant-col-6"
                     >
                       <div
                         class="ant-space ant-space-horizontal ant-space-align-center"
@@ -2371,6 +2393,47 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                         <div
                           class="ant-space-item"
                         />
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col ant-col-15"
+                    >
+                      <div
+                        class="ant-col ant-col-24"
+                      >
+                        <div
+                          class="ant-space ant-space-horizontal ant-space-align-center"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-right: 8px;"
+                          >
+                            <span>
+                              order.status.finished
+                              ：
+                              0
+                            </span>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                            style="margin-right: 8px;"
+                          >
+                            <span>
+                              order.status.exec_failed
+                              ：
+                              0
+                            </span>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span>
+                              order.status.executing
+                              ：
+                              1
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -3158,27 +3221,13 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                     class="ant-row"
                   >
                     <div
-                      class="ant-col ant-col-5"
+                      class="ant-col ant-col-3"
                     >
-                      <div
-                        class="ant-col ant-col-24"
-                      >
-                        order.operator.time
-                        :
-                        2021-05-20 10:48:57
-                      </div>
-                      <div
-                        class="ant-col ant-col-24"
-                      >
-                        order.operator.user
-                        :
-                        admin
-                      </div>
+                      order.operator.createOrderStep
                     </div>
                     <div
-                      class="ant-col ant-col-19"
+                      class="ant-col ant-col-6"
                     >
-                      order.operator.createOrder
                       <div>
                         <button
                           ant-click-animating-without-extra-node="true"
@@ -3189,6 +3238,24 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                             order.operator.modifySql
                           </span>
                         </button>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col ant-col-15"
+                    >
+                      <div
+                        class="ant-col ant-col-24"
+                      >
+                        order.operator.time
+                        ：
+                        2021-05-20 10:48:57
+                      </div>
+                      <div
+                        class="ant-col ant-col-24"
+                      >
+                        order.operator.user
+                        ：
+                        admin
                       </div>
                     </div>
                   </div>
@@ -3210,25 +3277,12 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                     class="ant-row"
                   >
                     <div
-                      class="ant-col ant-col-5"
+                      class="ant-col ant-col-3"
                     >
-                      <div
-                        class="ant-col ant-col-24"
-                      >
-                        order.operator.time
-                        :
-                        2021-05-20 10:49:09
-                      </div>
-                      <div
-                        class="ant-col ant-col-24"
-                      >
-                        order.operator.user
-                        :
-                        admin
-                      </div>
+                      order.operator.executeOrderStep
                     </div>
                     <div
-                      class="ant-col ant-col-19"
+                      class="ant-col ant-col-6"
                     >
                       <div>
                         <span
@@ -3252,6 +3306,47 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                           order.operator.rejectTips
                           )
                         </span>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col ant-col-15"
+                    >
+                      <div
+                        class="ant-col ant-col-24"
+                      >
+                        <div
+                          class="ant-space ant-space-horizontal ant-space-align-center"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-right: 8px;"
+                          >
+                            <span>
+                              order.status.finished
+                              ：
+                              0
+                            </span>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                            style="margin-right: 8px;"
+                          >
+                            <span>
+                              order.status.exec_failed
+                              ：
+                              0
+                            </span>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <span>
+                              order.status.executing
+                              ：
+                              1
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

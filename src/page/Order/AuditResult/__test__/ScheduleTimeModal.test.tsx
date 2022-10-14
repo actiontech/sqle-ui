@@ -126,7 +126,16 @@ describe('Order/AuditResult/ScheduleTimeModal', () => {
         visible={true}
         closeScheduleModal={mockCloseScheduleModal}
         submit={mockSubmit}
-        maintenanceTime={orderWithExecScheduled3.instance_maintenance_times}
+        maintenanceTime={[
+          {
+            maintenance_start_time: { hour: 0, minute: 0 },
+            maintenance_stop_time: { hour: 10, minute: 0 },
+          },
+          {
+            maintenance_start_time: { hour: 12, minute: 0 },
+            maintenance_stop_time: { hour: 20, minute: 0 },
+          },
+        ]}
       />
     );
 
