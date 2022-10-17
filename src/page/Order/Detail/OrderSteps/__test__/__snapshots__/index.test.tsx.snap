@@ -145,10 +145,6 @@ exports[`test OrderSteps should disable execute button and render disable tips w
               <div
                 class="ant-space-item"
                 style="margin-right: 8px;"
-              />
-              <div
-                class="ant-space-item"
-                style="margin-right: 8px;"
               >
                 <div
                   class="ant-space ant-space-horizontal ant-space-align-center"

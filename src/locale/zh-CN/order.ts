@@ -120,6 +120,7 @@ export default {
     updateOrderStep: '更新工单',
     reviewOrderStep: '审核工单',
     executeOrderStep: '上线工单',
+    stepNumberIsUndefined: '当前节点的步骤数未定义!',
   },
 
   create: {
