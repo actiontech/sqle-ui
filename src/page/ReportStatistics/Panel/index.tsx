@@ -1,4 +1,3 @@
-import OrderAverageExecuteTime from './OrderAverageExecuteTime';
 import OrderAverageReviewTime from './OrderAverageReviewTime';
 import OrderPassPercent from './OrderPassPercent';
 import OrderTotalNumbers from './OrderTotalNumbers';
@@ -7,21 +6,22 @@ import OrderStatus from './OrderStatus';
 import LicenseUsage from './LicenseUsage';
 import OrderQuantityWithDbType from './OrderQuantityWithDbType';
 import InstanceProportionWithDbType from './InstanceProportionWithDbType';
-import DiffInstanceOrderRejectedPercent from './DiffInstanceOrderRejectedPercent';
 import DiffUserOrderRejectedPercent from './DiffUserOrderRejectedPercent';
+import SqlExecFailedTopN from './SqlExecFailedTopN';
+import OrderAverageExecuteTimeTopN from './OrderAverageExecuteTimeTopN';
 
 export {
   OrderTotalNumbers,
   OrderPassPercent,
   OrderAverageReviewTime,
-  OrderAverageExecuteTime,
   OrderQuantityTrend,
   OrderStatus,
   InstanceProportionWithDbType,
   OrderQuantityWithDbType,
   LicenseUsage,
   DiffUserOrderRejectedPercent,
-  DiffInstanceOrderRejectedPercent,
+  SqlExecFailedTopN,
+  OrderAverageExecuteTimeTopN,
 };
 
 export interface PanelWrapperProps {

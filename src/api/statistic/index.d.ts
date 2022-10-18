@@ -1,6 +1,9 @@
 import {
+  IGetSqlAverageExecutionTimeResV1,
+  IGetSqlExecutionFailPercentResV1,
   IGetInstancesTypePercentResV1,
   IGetLicenseUsageResV1,
+  IGetWorkflowAuditPassPercentResV1,
   IGetWorkflowCountsResV1,
   IGetWorkflowDurationOfWaitingForAuditResV1,
   IGetWorkflowDurationOfWaitingForExecutionResV1,
@@ -12,10 +15,27 @@ import {
   IGetWorkflowStatusCountResV1
 } from '../common.d';
 
+export interface IGetSqlAverageExecutionTimeV1Params {
+  limit: number;
+}
+
+export interface IGetSqlAverageExecutionTimeV1Return
+  extends IGetSqlAverageExecutionTimeResV1 {}
+
+export interface IGetSqlExecutionFailPercentV1Params {
+  limit: number;
+}
+
+export interface IGetSqlExecutionFailPercentV1Return
+  extends IGetSqlExecutionFailPercentResV1 {}
+
 export interface IGetInstancesTypePercentV1Return
   extends IGetInstancesTypePercentResV1 {}
 
 export interface IGetLicenseUsageV1Return extends IGetLicenseUsageResV1 {}
+
+export interface IGetWorkflowAuditPassPercentV1Return
+  extends IGetWorkflowAuditPassPercentResV1 {}
 
 export interface IGetWorkflowCountV1Return extends IGetWorkflowCountsResV1 {}
 

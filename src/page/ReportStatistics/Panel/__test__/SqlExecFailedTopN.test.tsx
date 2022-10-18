@@ -6,27 +6,22 @@ import {
   resolveThreeSecond,
 } from '../../../../testUtils/mockRequest';
 import reportStatisticsData from '../../index.data';
-import DiffInstanceOrderRejectedPercent from '../DiffInstanceOrderRejectedPercent';
+import SqlExecFailedTopN from '../SqlExecFailedTopN';
 import mockRequestData from './mockRequestData';
 
 const { tableLimit } = reportStatisticsData;
-const { DiffInstanceOrderRejectedPercentData } = mockRequestData;
-describe('test DiffInstanceOrderRejectedPercent', () => {
-  const mockGetTaskRejectedPercentGroupByInstanceV1 = () => {
-    const spy = jest.spyOn(
-      statistic,
-      'getWorkflowRejectedPercentGroupByInstanceV1'
-    );
+const { SqlExecFailedTopNData } = mockRequestData;
+
+describe('test SqlExecFailedTopN', () => {
+  const mockGetSqlExecutionFailPercentV1 = () => {
+    const spy = jest.spyOn(statistic, 'getSqlExecutionFailPercentV1');
     spy.mockImplementation(() => {
-      return resolveThreeSecond(DiffInstanceOrderRejectedPercentData);
+      return resolveThreeSecond(SqlExecFailedTopNData);
     });
     return spy;
   };
-  const mockErrorGetTaskRejectedPercentGroupByInstanceV1 = () => {
-    const spy = jest.spyOn(
-      statistic,
-      'getWorkflowRejectedPercentGroupByInstanceV1'
-    );
+  const mockErrorGetSqlExecutionFailPercentV1 = () => {
+    const spy = jest.spyOn(statistic, 'getSqlExecutionFailPercentV1');
     spy.mockImplementation(() => {
       return resolveErrorThreeSecond({});
     });
@@ -47,8 +42,8 @@ describe('test DiffInstanceOrderRejectedPercent', () => {
   });
 
   test('should match snapshot', async () => {
-    mockGetTaskRejectedPercentGroupByInstanceV1();
-    const { container } = render(<DiffInstanceOrderRejectedPercent />);
+    mockGetSqlExecutionFailPercentV1();
+    const { container } = render(<SqlExecFailedTopN />);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -56,8 +51,8 @@ describe('test DiffInstanceOrderRejectedPercent', () => {
   });
 
   test('should match snapshot when request goes wrong', async () => {
-    mockErrorGetTaskRejectedPercentGroupByInstanceV1();
-    const { container } = render(<DiffInstanceOrderRejectedPercent />);
+    mockErrorGetSqlExecutionFailPercentV1();
+    const { container } = render(<SqlExecFailedTopN />);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -65,11 +60,10 @@ describe('test DiffInstanceOrderRejectedPercent', () => {
   });
 
   test('should called getWorkflowRejectedPercentGroupByCreatorV1 when first rendered', async () => {
-    const getTaskRejectedPercentGroupByCreatorV1Spy =
-      mockGetTaskRejectedPercentGroupByInstanceV1();
-    render(<DiffInstanceOrderRejectedPercent />);
-    expect(getTaskRejectedPercentGroupByCreatorV1Spy).toBeCalledTimes(1);
-    expect(getTaskRejectedPercentGroupByCreatorV1Spy).toBeCalledWith({
+    const getSqlExecutionFailPercentV1Spy = mockGetSqlExecutionFailPercentV1();
+    render(<SqlExecFailedTopN />);
+    expect(getSqlExecutionFailPercentV1Spy).toBeCalledTimes(1);
+    expect(getSqlExecutionFailPercentV1Spy).toBeCalledWith({
       limit: tableLimit,
     });
     await waitFor(() => {

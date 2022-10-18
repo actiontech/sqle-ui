@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test DiffInstanceOrderRejectedPercent should match snapshot 1`] = `
+exports[`test SqlExecFailedTopN should match snapshot 1`] = `
 <div>
   <div
     class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -16,7 +16,7 @@ exports[`test DiffInstanceOrderRejectedPercent should match snapshot 1`] = `
           class="ant-card-head-title"
         >
           <span>
-            reportStatistics.diffInstanceOrderRejectRate.title
+            reportStatistics.sqlExecFailedTopN.title
           </span>
         </div>
       </div>
@@ -53,17 +53,12 @@ exports[`test DiffInstanceOrderRejectedPercent should match snapshot 1`] = `
                         <th
                           class="ant-table-cell"
                         >
-                          reportStatistics.diffInstanceOrderRejectRate.columns.instanceName
+                          reportStatistics.sqlExecFailedTopN.columns.dataSourceName
                         </th>
                         <th
                           class="ant-table-cell"
                         >
-                          reportStatistics.diffInstanceOrderRejectRate.columns.totalOrder
-                        </th>
-                        <th
-                          class="ant-table-cell"
-                        >
-                          reportStatistics.diffInstanceOrderRejectRate.columns.rejectRate
+                          reportStatistics.sqlExecFailedTopN.columns.sqlExecFailedPercent
                         </th>
                       </tr>
                     </thead>
@@ -72,17 +67,12 @@ exports[`test DiffInstanceOrderRejectedPercent should match snapshot 1`] = `
                     >
                       <tr
                         class="ant-table-row ant-table-row-level-0"
-                        data-row-key="instance0"
+                        data-row-key="0"
                       >
                         <td
                           class="ant-table-cell"
                         >
-                          instance0
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          22
+                          instance_name0
                         </td>
                         <td
                           class="ant-table-cell"
@@ -90,23 +80,18 @@ exports[`test DiffInstanceOrderRejectedPercent should match snapshot 1`] = `
                           <span
                             class="ant-typography text-blue"
                           >
-                            12.67%
+                            11.11%
                           </span>
                         </td>
                       </tr>
                       <tr
                         class="ant-table-row ant-table-row-level-0"
-                        data-row-key="instance1"
+                        data-row-key="1"
                       >
                         <td
                           class="ant-table-cell"
                         >
-                          instance1
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          22
+                          instance_name1
                         </td>
                         <td
                           class="ant-table-cell"
@@ -114,23 +99,18 @@ exports[`test DiffInstanceOrderRejectedPercent should match snapshot 1`] = `
                           <span
                             class="ant-typography text-blue"
                           >
-                            12.67%
+                            11.11%
                           </span>
                         </td>
                       </tr>
                       <tr
                         class="ant-table-row ant-table-row-level-0"
-                        data-row-key="instance2"
+                        data-row-key="2"
                       >
                         <td
                           class="ant-table-cell"
                         >
-                          instance2
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          22
+                          instance_name2
                         </td>
                         <td
                           class="ant-table-cell"
@@ -138,23 +118,18 @@ exports[`test DiffInstanceOrderRejectedPercent should match snapshot 1`] = `
                           <span
                             class="ant-typography text-blue"
                           >
-                            12.67%
+                            11.11%
                           </span>
                         </td>
                       </tr>
                       <tr
                         class="ant-table-row ant-table-row-level-0"
-                        data-row-key="instance3"
+                        data-row-key="3"
                       >
                         <td
                           class="ant-table-cell"
                         >
-                          instance3
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          22
+                          instance_name3
                         </td>
                         <td
                           class="ant-table-cell"
@@ -162,23 +137,18 @@ exports[`test DiffInstanceOrderRejectedPercent should match snapshot 1`] = `
                           <span
                             class="ant-typography text-blue"
                           >
-                            12.67%
+                            11.11%
                           </span>
                         </td>
                       </tr>
                       <tr
                         class="ant-table-row ant-table-row-level-0"
-                        data-row-key="instance4"
+                        data-row-key="4"
                       >
                         <td
                           class="ant-table-cell"
                         >
-                          instance4
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          22
+                          instance_name4
                         </td>
                         <td
                           class="ant-table-cell"
@@ -186,23 +156,18 @@ exports[`test DiffInstanceOrderRejectedPercent should match snapshot 1`] = `
                           <span
                             class="ant-typography text-blue"
                           >
-                            12.67%
+                            11.11%
                           </span>
                         </td>
                       </tr>
                       <tr
                         class="ant-table-row ant-table-row-level-0"
-                        data-row-key="instance5"
+                        data-row-key="5"
                       >
                         <td
                           class="ant-table-cell"
                         >
-                          instance5
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          22
+                          instance_name5
                         </td>
                         <td
                           class="ant-table-cell"
@@ -210,23 +175,18 @@ exports[`test DiffInstanceOrderRejectedPercent should match snapshot 1`] = `
                           <span
                             class="ant-typography text-blue"
                           >
-                            12.67%
+                            11.11%
                           </span>
                         </td>
                       </tr>
                       <tr
                         class="ant-table-row ant-table-row-level-0"
-                        data-row-key="instance6"
+                        data-row-key="6"
                       >
                         <td
                           class="ant-table-cell"
                         >
-                          instance6
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          22
+                          instance_name6
                         </td>
                         <td
                           class="ant-table-cell"
@@ -234,23 +194,18 @@ exports[`test DiffInstanceOrderRejectedPercent should match snapshot 1`] = `
                           <span
                             class="ant-typography text-blue"
                           >
-                            12.67%
+                            11.11%
                           </span>
                         </td>
                       </tr>
                       <tr
                         class="ant-table-row ant-table-row-level-0"
-                        data-row-key="instance7"
+                        data-row-key="7"
                       >
                         <td
                           class="ant-table-cell"
                         >
-                          instance7
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          22
+                          instance_name7
                         </td>
                         <td
                           class="ant-table-cell"
@@ -258,23 +213,18 @@ exports[`test DiffInstanceOrderRejectedPercent should match snapshot 1`] = `
                           <span
                             class="ant-typography text-blue"
                           >
-                            12.67%
+                            11.11%
                           </span>
                         </td>
                       </tr>
                       <tr
                         class="ant-table-row ant-table-row-level-0"
-                        data-row-key="instance8"
+                        data-row-key="8"
                       >
                         <td
                           class="ant-table-cell"
                         >
-                          instance8
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          22
+                          instance_name8
                         </td>
                         <td
                           class="ant-table-cell"
@@ -282,23 +232,18 @@ exports[`test DiffInstanceOrderRejectedPercent should match snapshot 1`] = `
                           <span
                             class="ant-typography text-blue"
                           >
-                            12.67%
+                            11.11%
                           </span>
                         </td>
                       </tr>
                       <tr
                         class="ant-table-row ant-table-row-level-0"
-                        data-row-key="instance9"
+                        data-row-key="9"
                       >
                         <td
                           class="ant-table-cell"
                         >
-                          instance9
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          22
+                          instance_name9
                         </td>
                         <td
                           class="ant-table-cell"
@@ -306,7 +251,7 @@ exports[`test DiffInstanceOrderRejectedPercent should match snapshot 1`] = `
                           <span
                             class="ant-typography text-blue"
                           >
-                            12.67%
+                            11.11%
                           </span>
                         </td>
                       </tr>
@@ -323,7 +268,7 @@ exports[`test DiffInstanceOrderRejectedPercent should match snapshot 1`] = `
 </div>
 `;
 
-exports[`test DiffInstanceOrderRejectedPercent should match snapshot when request goes wrong 1`] = `
+exports[`test SqlExecFailedTopN should match snapshot when request goes wrong 1`] = `
 <div>
   <div
     class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -339,7 +284,7 @@ exports[`test DiffInstanceOrderRejectedPercent should match snapshot when reques
           class="ant-card-head-title"
         >
           <span>
-            reportStatistics.diffInstanceOrderRejectRate.title
+            reportStatistics.sqlExecFailedTopN.title
           </span>
         </div>
       </div>

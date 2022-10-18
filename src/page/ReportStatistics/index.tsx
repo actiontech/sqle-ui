@@ -4,10 +4,8 @@ import useResizeObserver from 'use-resize-observer';
 import { Responsive as ResponsiveReactGridLayout } from 'react-grid-layout';
 import { ReportStatisticsPanelEnum } from './index.enum';
 import {
-  DiffInstanceOrderRejectedPercent,
   DiffUserOrderRejectedPercent,
   LicenseUsage,
-  OrderAverageExecuteTime,
   OrderAverageReviewTime,
   OrderQuantityWithDbType,
   InstanceProportionWithDbType,
@@ -15,17 +13,19 @@ import {
   OrderQuantityTrend,
   OrderStatus,
   OrderTotalNumbers,
+  SqlExecFailedTopN,
+  OrderAverageExecuteTimeTopN,
 } from './Panel';
 import reportStatisticsData from './index.data';
 import { Theme } from '../../types/theme.type';
 import { useTheme } from '@material-ui/styles';
 import IconTipsLabel from '../../components/IconTipsLabel';
 import { SyncOutlined } from '@ant-design/icons';
+import { useDispatch } from 'react-redux';
+import { refreshReportStatistics } from '../../store/reportStatistics';
 
 import './index.less';
 import 'react-grid-layout/css/styles.css';
-import { useDispatch } from 'react-redux';
-import { refreshReportStatistics } from '../../store/reportStatistics';
 
 const { initialLayouts, gridLayoutCols, rowHeight } = reportStatisticsData;
 const ReportStatistics: React.FC = () => {
@@ -100,9 +100,6 @@ const ReportStatistics: React.FC = () => {
           <div key={ReportStatisticsPanelEnum.OrderAverageReviewTime}>
             <OrderAverageReviewTime />
           </div>
-          <div key={ReportStatisticsPanelEnum.OrderAverageExecuteTime}>
-            <OrderAverageExecuteTime />
-          </div>
           <div key={ReportStatisticsPanelEnum.OrderPassPercent}>
             <OrderPassPercent />
           </div>
@@ -124,8 +121,11 @@ const ReportStatistics: React.FC = () => {
           <div key={ReportStatisticsPanelEnum.DiffUserOrderRejectedPercent}>
             <DiffUserOrderRejectedPercent />
           </div>
-          <div key={ReportStatisticsPanelEnum.DiffInstanceOrderRejectedPercent}>
-            <DiffInstanceOrderRejectedPercent />
+          <div key={ReportStatisticsPanelEnum.orderAverageExecuteTimeTopN}>
+            <OrderAverageExecuteTimeTopN />
+          </div>
+          <div key={ReportStatisticsPanelEnum.sqlExecFailedTopN}>
+            <SqlExecFailedTopN />
           </div>
         </ResponsiveReactGridLayout>
       </section>

@@ -1,6 +1,5 @@
 export enum ReportStatisticsPanelEnum {
   OrderTotalNumbers = 'OrderTotalNumbers',
-  OrderAverageExecuteTime = 'OrderAverageExecuteTime',
   OrderAverageReviewTime = 'OrderAverageReviewTime',
   OrderPassPercent = 'OrderPassPercent',
   OrderQuantityTrend = 'OrderQuantityTrend',
@@ -9,5 +8,6 @@ export enum ReportStatisticsPanelEnum {
   InstanceProportionWithDbType = 'InstanceProportionWithDbType',
   LicenseUsage = 'LicenseUsage',
   DiffUserOrderRejectedPercent = 'DiffUserOrderRejectedPercent',
-  DiffInstanceOrderRejectedPercent = 'DiffInstanceOrderRejectedPercent',
+  orderAverageExecuteTimeTopN = 'orderAverageExecuteTimeTopN',
+  sqlExecFailedTopN = 'sqlExecFailedTopN',
 }

@@ -117,7 +117,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
   >
     <div
       class="react-grid-layout"
-      style="height: 3336px;"
+      style="height: 3768px;"
     >
       <div
         class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
@@ -260,41 +260,6 @@ exports[`test ReportStatistics should match snapshot 1`] = `
               <div
                 class="ant-card-head-title"
               >
-                reportStatistics.orderAverageExecuteTime.title
-              </div>
-            </div>
-          </div>
-          <div
-            class="ant-card-body"
-          >
-            <div
-              class="statistics-value-style"
-            >
-              <span />
-            </div>
-          </div>
-        </div>
-        <span
-          class="react-resizable-handle react-resizable-handle-se"
-        />
-      </div>
-      <div
-        class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
-        style="height: 120px; position: absolute; transform: translate(24px,456px); width: -48px;"
-      >
-        <div
-          class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
-          style="height: 100%;"
-        >
-          <div
-            class="ant-card-head"
-          >
-            <div
-              class="ant-card-head-wrapper"
-            >
-              <div
-                class="ant-card-head-title"
-              >
                 reportStatistics.orderPassRate.title
               </div>
             </div>
@@ -307,20 +272,6 @@ exports[`test ReportStatistics should match snapshot 1`] = `
             >
               <div
                 class="ant-space-item"
-                style="margin-right: 8px;"
-              >
-                <span />
-              </div>
-              <div
-                class="ant-space-item"
-                style="margin-right: 8px;"
-              >
-                <span>
-                  /
-                </span>
-              </div>
-              <div
-                class="ant-space-item"
               >
                 <span />
               </div>
@@ -333,7 +284,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
       </div>
       <div
         class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
-        style="height: 336px; position: absolute; transform: translate(24px,600px); width: -48px;"
+        style="height: 336px; position: absolute; transform: translate(24px,456px); width: -48px;"
       >
         <div
           class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -462,7 +413,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
       </div>
       <div
         class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
-        style="height: 336px; position: absolute; transform: translate(24px,960px); width: -48px;"
+        style="height: 336px; position: absolute; transform: translate(24px,816px); width: -48px;"
       >
         <div
           class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -506,7 +457,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
       </div>
       <div
         class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
-        style="height: 264px; position: absolute; transform: translate(24px,1320px); width: -48px;"
+        style="height: 264px; position: absolute; transform: translate(24px,1176px); width: -48px;"
       >
         <div
           class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -521,7 +472,43 @@ exports[`test ReportStatistics should match snapshot 1`] = `
               <div
                 class="ant-card-head-title"
               >
-                reportStatistics.orderDbTypeScale.title
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    reportStatistics.orderDbTypeScale.title
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      data-testid="order-db-type-scale-tips"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -552,7 +539,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
       </div>
       <div
         class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
-        style="height: 264px; position: absolute; transform: translate(24px,1608px); width: -48px;"
+        style="height: 264px; position: absolute; transform: translate(24px,1464px); width: -48px;"
       >
         <div
           class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -598,7 +585,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
       </div>
       <div
         class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
-        style="height: 264px; position: absolute; transform: translate(24px,1896px); width: -48px;"
+        style="height: 264px; position: absolute; transform: translate(24px,1752px); width: -48px;"
       >
         <div
           class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -644,7 +631,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
       </div>
       <div
         class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
-        style="height: 552px; position: absolute; transform: translate(24px,2184px); width: -48px;"
+        style="height: 552px; position: absolute; transform: translate(24px,2040px); width: -48px;"
       >
         <div
           class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -785,7 +772,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
       </div>
       <div
         class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
-        style="height: 552px; position: absolute; transform: translate(24px,2760px); width: -48px;"
+        style="height: 552px; position: absolute; transform: translate(24px,2616px); width: -48px;"
       >
         <div
           class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -801,7 +788,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
                 class="ant-card-head-title"
               >
                 <span>
-                  reportStatistics.diffInstanceOrderRejectRate.title
+                  reportStatistics.orderAverageExecuteTimeTopN.title
                 </span>
               </div>
             </div>
@@ -838,17 +825,22 @@ exports[`test ReportStatistics should match snapshot 1`] = `
                               <th
                                 class="ant-table-cell"
                               >
-                                reportStatistics.diffInstanceOrderRejectRate.columns.instanceName
+                                reportStatistics.orderAverageExecuteTimeTopN.columns.dataSourceName
                               </th>
                               <th
                                 class="ant-table-cell"
                               >
-                                reportStatistics.diffInstanceOrderRejectRate.columns.totalOrder
+                                reportStatistics.orderAverageExecuteTimeTopN.columns.average
                               </th>
                               <th
                                 class="ant-table-cell"
                               >
-                                reportStatistics.diffInstanceOrderRejectRate.columns.rejectRate
+                                reportStatistics.orderAverageExecuteTimeTopN.columns.max
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                reportStatistics.orderAverageExecuteTimeTopN.columns.min
                               </th>
                             </tr>
                           </thead>
@@ -860,7 +852,143 @@ exports[`test ReportStatistics should match snapshot 1`] = `
                             >
                               <td
                                 class="ant-table-cell"
-                                colspan="3"
+                                colspan="4"
+                              >
+                                <div
+                                  class="ant-empty ant-empty-normal"
+                                >
+                                  <div
+                                    class="ant-empty-image"
+                                  >
+                                    <svg
+                                      class="ant-empty-img-simple"
+                                      height="41"
+                                      viewBox="0 0 64 41"
+                                      width="64"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <g
+                                        fill="none"
+                                        fill-rule="evenodd"
+                                        transform="translate(0 1)"
+                                      >
+                                        <ellipse
+                                          class="ant-empty-img-simple-ellipse"
+                                          cx="32"
+                                          cy="33"
+                                          rx="32"
+                                          ry="7"
+                                        />
+                                        <g
+                                          class="ant-empty-img-simple-g"
+                                          fill-rule="nonzero"
+                                        >
+                                          <path
+                                            d="M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z"
+                                          />
+                                          <path
+                                            class="ant-empty-img-simple-path"
+                                            d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z"
+                                          />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </div>
+                                  <div
+                                    class="ant-empty-description"
+                                  >
+                                    No Data
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span
+          class="react-resizable-handle react-resizable-handle-se"
+        />
+      </div>
+      <div
+        class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
+        style="height: 552px; position: absolute; transform: translate(24px,3192px); width: -48px;"
+      >
+        <div
+          class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+          style="height: 100%;"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                <span>
+                  reportStatistics.sqlExecFailedTopN.title
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-table-wrapper"
+            >
+              <div
+                class="ant-spin-nested-loading"
+              >
+                <div
+                  class="ant-spin-container"
+                >
+                  <div
+                    class="ant-table ant-table-small ant-table-empty"
+                  >
+                    <div
+                      class="ant-table-container"
+                    >
+                      <div
+                        class="ant-table-content"
+                      >
+                        <table
+                          style="table-layout: auto;"
+                        >
+                          <colgroup />
+                          <thead
+                            class="ant-table-thead"
+                          >
+                            <tr>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                reportStatistics.sqlExecFailedTopN.columns.dataSourceName
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                reportStatistics.sqlExecFailedTopN.columns.sqlExecFailedPercent
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody
+                            class="ant-table-tbody"
+                          >
+                            <tr
+                              class="ant-table-placeholder"
+                            >
+                              <td
+                                class="ant-table-cell"
+                                colspan="2"
                               >
                                 <div
                                   class="ant-empty ant-empty-normal"
@@ -1046,7 +1174,7 @@ exports[`test ReportStatistics should match snapshot 2`] = `
   >
     <div
       class="react-grid-layout"
-      style="height: 3336px;"
+      style="height: 3768px;"
     >
       <div
         class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
@@ -1191,43 +1319,6 @@ exports[`test ReportStatistics should match snapshot 2`] = `
               <div
                 class="ant-card-head-title"
               >
-                reportStatistics.orderAverageExecuteTime.title
-              </div>
-            </div>
-          </div>
-          <div
-            class="ant-card-body"
-          >
-            <div
-              class="statistics-value-style"
-            >
-              <span>
-                1h54min
-              </span>
-            </div>
-          </div>
-        </div>
-        <span
-          class="react-resizable-handle react-resizable-handle-se"
-        />
-      </div>
-      <div
-        class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
-        style="height: 120px; position: absolute; transform: translate(24px,456px); width: -48px;"
-      >
-        <div
-          class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
-          style="height: 100%;"
-        >
-          <div
-            class="ant-card-head"
-          >
-            <div
-              class="ant-card-head-wrapper"
-            >
-              <div
-                class="ant-card-head-title"
-              >
                 reportStatistics.orderPassRate.title
               </div>
             </div>
@@ -1240,25 +1331,9 @@ exports[`test ReportStatistics should match snapshot 2`] = `
             >
               <div
                 class="ant-space-item"
-                style="margin-right: 8px;"
               >
                 <span>
                   22.3%
-                </span>
-              </div>
-              <div
-                class="ant-space-item"
-                style="margin-right: 8px;"
-              >
-                <span>
-                  /
-                </span>
-              </div>
-              <div
-                class="ant-space-item"
-              >
-                <span>
-                  33.2%
                 </span>
               </div>
             </div>
@@ -1270,7 +1345,7 @@ exports[`test ReportStatistics should match snapshot 2`] = `
       </div>
       <div
         class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
-        style="height: 336px; position: absolute; transform: translate(24px,600px); width: -48px;"
+        style="height: 336px; position: absolute; transform: translate(24px,456px); width: -48px;"
       >
         <div
           class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -1399,7 +1474,7 @@ exports[`test ReportStatistics should match snapshot 2`] = `
       </div>
       <div
         class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
-        style="height: 336px; position: absolute; transform: translate(24px,960px); width: -48px;"
+        style="height: 336px; position: absolute; transform: translate(24px,816px); width: -48px;"
       >
         <div
           class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -1443,7 +1518,7 @@ exports[`test ReportStatistics should match snapshot 2`] = `
       </div>
       <div
         class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
-        style="height: 264px; position: absolute; transform: translate(24px,1320px); width: -48px;"
+        style="height: 264px; position: absolute; transform: translate(24px,1176px); width: -48px;"
       >
         <div
           class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -1458,7 +1533,43 @@ exports[`test ReportStatistics should match snapshot 2`] = `
               <div
                 class="ant-card-head-title"
               >
-                reportStatistics.orderDbTypeScale.title
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    reportStatistics.orderDbTypeScale.title
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      data-testid="order-db-type-scale-tips"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1489,7 +1600,7 @@ exports[`test ReportStatistics should match snapshot 2`] = `
       </div>
       <div
         class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
-        style="height: 264px; position: absolute; transform: translate(24px,1608px); width: -48px;"
+        style="height: 264px; position: absolute; transform: translate(24px,1464px); width: -48px;"
       >
         <div
           class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -1535,7 +1646,7 @@ exports[`test ReportStatistics should match snapshot 2`] = `
       </div>
       <div
         class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
-        style="height: 264px; position: absolute; transform: translate(24px,1896px); width: -48px;"
+        style="height: 264px; position: absolute; transform: translate(24px,1752px); width: -48px;"
       >
         <div
           class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -1581,7 +1692,7 @@ exports[`test ReportStatistics should match snapshot 2`] = `
       </div>
       <div
         class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
-        style="height: 552px; position: absolute; transform: translate(24px,2184px); width: -48px;"
+        style="height: 552px; position: absolute; transform: translate(24px,2040px); width: -48px;"
       >
         <div
           class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -1907,7 +2018,7 @@ exports[`test ReportStatistics should match snapshot 2`] = `
       </div>
       <div
         class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
-        style="height: 552px; position: absolute; transform: translate(24px,2760px); width: -48px;"
+        style="height: 552px; position: absolute; transform: translate(24px,2616px); width: -48px;"
       >
         <div
           class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -1923,7 +2034,7 @@ exports[`test ReportStatistics should match snapshot 2`] = `
                 class="ant-card-head-title"
               >
                 <span>
-                  reportStatistics.diffInstanceOrderRejectRate.title
+                  reportStatistics.orderAverageExecuteTimeTopN.title
                 </span>
               </div>
             </div>
@@ -1960,17 +2071,22 @@ exports[`test ReportStatistics should match snapshot 2`] = `
                               <th
                                 class="ant-table-cell"
                               >
-                                reportStatistics.diffInstanceOrderRejectRate.columns.instanceName
+                                reportStatistics.orderAverageExecuteTimeTopN.columns.dataSourceName
                               </th>
                               <th
                                 class="ant-table-cell"
                               >
-                                reportStatistics.diffInstanceOrderRejectRate.columns.totalOrder
+                                reportStatistics.orderAverageExecuteTimeTopN.columns.average
                               </th>
                               <th
                                 class="ant-table-cell"
                               >
-                                reportStatistics.diffInstanceOrderRejectRate.columns.rejectRate
+                                reportStatistics.orderAverageExecuteTimeTopN.columns.max
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                reportStatistics.orderAverageExecuteTimeTopN.columns.min
                               </th>
                             </tr>
                           </thead>
@@ -1979,17 +2095,343 @@ exports[`test ReportStatistics should match snapshot 2`] = `
                           >
                             <tr
                               class="ant-table-row ant-table-row-level-0"
-                              data-row-key="instance0"
+                              data-row-key="0"
                             >
                               <td
                                 class="ant-table-cell"
                               >
-                                instance0
+                                instance_name0
                               </td>
                               <td
                                 class="ant-table-cell"
                               >
-                                22
+                                3s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                4s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                5s
+                              </td>
+                            </tr>
+                            <tr
+                              class="ant-table-row ant-table-row-level-0"
+                              data-row-key="1"
+                            >
+                              <td
+                                class="ant-table-cell"
+                              >
+                                instance_name1
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                3s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                4s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                5s
+                              </td>
+                            </tr>
+                            <tr
+                              class="ant-table-row ant-table-row-level-0"
+                              data-row-key="2"
+                            >
+                              <td
+                                class="ant-table-cell"
+                              >
+                                instance_name2
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                3s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                4s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                5s
+                              </td>
+                            </tr>
+                            <tr
+                              class="ant-table-row ant-table-row-level-0"
+                              data-row-key="3"
+                            >
+                              <td
+                                class="ant-table-cell"
+                              >
+                                instance_name3
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                3s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                4s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                5s
+                              </td>
+                            </tr>
+                            <tr
+                              class="ant-table-row ant-table-row-level-0"
+                              data-row-key="4"
+                            >
+                              <td
+                                class="ant-table-cell"
+                              >
+                                instance_name4
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                3s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                4s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                5s
+                              </td>
+                            </tr>
+                            <tr
+                              class="ant-table-row ant-table-row-level-0"
+                              data-row-key="5"
+                            >
+                              <td
+                                class="ant-table-cell"
+                              >
+                                instance_name5
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                3s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                4s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                5s
+                              </td>
+                            </tr>
+                            <tr
+                              class="ant-table-row ant-table-row-level-0"
+                              data-row-key="6"
+                            >
+                              <td
+                                class="ant-table-cell"
+                              >
+                                instance_name6
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                3s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                4s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                5s
+                              </td>
+                            </tr>
+                            <tr
+                              class="ant-table-row ant-table-row-level-0"
+                              data-row-key="7"
+                            >
+                              <td
+                                class="ant-table-cell"
+                              >
+                                instance_name7
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                3s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                4s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                5s
+                              </td>
+                            </tr>
+                            <tr
+                              class="ant-table-row ant-table-row-level-0"
+                              data-row-key="8"
+                            >
+                              <td
+                                class="ant-table-cell"
+                              >
+                                instance_name8
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                3s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                4s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                5s
+                              </td>
+                            </tr>
+                            <tr
+                              class="ant-table-row ant-table-row-level-0"
+                              data-row-key="9"
+                            >
+                              <td
+                                class="ant-table-cell"
+                              >
+                                instance_name9
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                3s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                4s
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                5s
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span
+          class="react-resizable-handle react-resizable-handle-se"
+        />
+      </div>
+      <div
+        class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
+        style="height: 552px; position: absolute; transform: translate(24px,3192px); width: -48px;"
+      >
+        <div
+          class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+          style="height: 100%;"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                <span>
+                  reportStatistics.sqlExecFailedTopN.title
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-table-wrapper"
+            >
+              <div
+                class="ant-spin-nested-loading"
+              >
+                <div
+                  class="ant-spin-container"
+                >
+                  <div
+                    class="ant-table ant-table-small"
+                  >
+                    <div
+                      class="ant-table-container"
+                    >
+                      <div
+                        class="ant-table-content"
+                      >
+                        <table
+                          style="table-layout: auto;"
+                        >
+                          <colgroup />
+                          <thead
+                            class="ant-table-thead"
+                          >
+                            <tr>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                reportStatistics.sqlExecFailedTopN.columns.dataSourceName
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                reportStatistics.sqlExecFailedTopN.columns.sqlExecFailedPercent
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody
+                            class="ant-table-tbody"
+                          >
+                            <tr
+                              class="ant-table-row ant-table-row-level-0"
+                              data-row-key="0"
+                            >
+                              <td
+                                class="ant-table-cell"
+                              >
+                                instance_name0
                               </td>
                               <td
                                 class="ant-table-cell"
@@ -1997,23 +2439,18 @@ exports[`test ReportStatistics should match snapshot 2`] = `
                                 <span
                                   class="ant-typography text-blue"
                                 >
-                                  12.67%
+                                  11.11%
                                 </span>
                               </td>
                             </tr>
                             <tr
                               class="ant-table-row ant-table-row-level-0"
-                              data-row-key="instance1"
+                              data-row-key="1"
                             >
                               <td
                                 class="ant-table-cell"
                               >
-                                instance1
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                22
+                                instance_name1
                               </td>
                               <td
                                 class="ant-table-cell"
@@ -2021,23 +2458,18 @@ exports[`test ReportStatistics should match snapshot 2`] = `
                                 <span
                                   class="ant-typography text-blue"
                                 >
-                                  12.67%
+                                  11.11%
                                 </span>
                               </td>
                             </tr>
                             <tr
                               class="ant-table-row ant-table-row-level-0"
-                              data-row-key="instance2"
+                              data-row-key="2"
                             >
                               <td
                                 class="ant-table-cell"
                               >
-                                instance2
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                22
+                                instance_name2
                               </td>
                               <td
                                 class="ant-table-cell"
@@ -2045,23 +2477,18 @@ exports[`test ReportStatistics should match snapshot 2`] = `
                                 <span
                                   class="ant-typography text-blue"
                                 >
-                                  12.67%
+                                  11.11%
                                 </span>
                               </td>
                             </tr>
                             <tr
                               class="ant-table-row ant-table-row-level-0"
-                              data-row-key="instance3"
+                              data-row-key="3"
                             >
                               <td
                                 class="ant-table-cell"
                               >
-                                instance3
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                22
+                                instance_name3
                               </td>
                               <td
                                 class="ant-table-cell"
@@ -2069,23 +2496,18 @@ exports[`test ReportStatistics should match snapshot 2`] = `
                                 <span
                                   class="ant-typography text-blue"
                                 >
-                                  12.67%
+                                  11.11%
                                 </span>
                               </td>
                             </tr>
                             <tr
                               class="ant-table-row ant-table-row-level-0"
-                              data-row-key="instance4"
+                              data-row-key="4"
                             >
                               <td
                                 class="ant-table-cell"
                               >
-                                instance4
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                22
+                                instance_name4
                               </td>
                               <td
                                 class="ant-table-cell"
@@ -2093,23 +2515,18 @@ exports[`test ReportStatistics should match snapshot 2`] = `
                                 <span
                                   class="ant-typography text-blue"
                                 >
-                                  12.67%
+                                  11.11%
                                 </span>
                               </td>
                             </tr>
                             <tr
                               class="ant-table-row ant-table-row-level-0"
-                              data-row-key="instance5"
+                              data-row-key="5"
                             >
                               <td
                                 class="ant-table-cell"
                               >
-                                instance5
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                22
+                                instance_name5
                               </td>
                               <td
                                 class="ant-table-cell"
@@ -2117,23 +2534,18 @@ exports[`test ReportStatistics should match snapshot 2`] = `
                                 <span
                                   class="ant-typography text-blue"
                                 >
-                                  12.67%
+                                  11.11%
                                 </span>
                               </td>
                             </tr>
                             <tr
                               class="ant-table-row ant-table-row-level-0"
-                              data-row-key="instance6"
+                              data-row-key="6"
                             >
                               <td
                                 class="ant-table-cell"
                               >
-                                instance6
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                22
+                                instance_name6
                               </td>
                               <td
                                 class="ant-table-cell"
@@ -2141,23 +2553,18 @@ exports[`test ReportStatistics should match snapshot 2`] = `
                                 <span
                                   class="ant-typography text-blue"
                                 >
-                                  12.67%
+                                  11.11%
                                 </span>
                               </td>
                             </tr>
                             <tr
                               class="ant-table-row ant-table-row-level-0"
-                              data-row-key="instance7"
+                              data-row-key="7"
                             >
                               <td
                                 class="ant-table-cell"
                               >
-                                instance7
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                22
+                                instance_name7
                               </td>
                               <td
                                 class="ant-table-cell"
@@ -2165,23 +2572,18 @@ exports[`test ReportStatistics should match snapshot 2`] = `
                                 <span
                                   class="ant-typography text-blue"
                                 >
-                                  12.67%
+                                  11.11%
                                 </span>
                               </td>
                             </tr>
                             <tr
                               class="ant-table-row ant-table-row-level-0"
-                              data-row-key="instance8"
+                              data-row-key="8"
                             >
                               <td
                                 class="ant-table-cell"
                               >
-                                instance8
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                22
+                                instance_name8
                               </td>
                               <td
                                 class="ant-table-cell"
@@ -2189,23 +2591,18 @@ exports[`test ReportStatistics should match snapshot 2`] = `
                                 <span
                                   class="ant-typography text-blue"
                                 >
-                                  12.67%
+                                  11.11%
                                 </span>
                               </td>
                             </tr>
                             <tr
                               class="ant-table-row ant-table-row-level-0"
-                              data-row-key="instance9"
+                              data-row-key="9"
                             >
                               <td
                                 class="ant-table-cell"
                               >
-                                instance9
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                22
+                                instance_name9
                               </td>
                               <td
                                 class="ant-table-cell"
@@ -2213,7 +2610,7 @@ exports[`test ReportStatistics should match snapshot 2`] = `
                                 <span
                                   class="ant-typography text-blue"
                                 >
-                                  12.67%
+                                  11.11%
                                 </span>
                               </td>
                             </tr>
