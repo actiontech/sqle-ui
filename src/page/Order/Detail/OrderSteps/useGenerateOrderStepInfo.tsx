@@ -89,7 +89,7 @@ export const useGenerateOrderStepInfo = ({
       return t('order.operator.executeOrderStep');
     }
 
-    return 'unknown';
+    return t('order.operator.unknown');
   };
 
   /**

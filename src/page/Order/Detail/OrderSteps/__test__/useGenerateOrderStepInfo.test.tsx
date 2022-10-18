@@ -44,7 +44,9 @@ describe('test useGenerateOrderStepInfo', () => {
   test('should return expect value with generateStepTypeString', () => {
     const { result } = renderHook(() => useGenerateOrderStepInfo(defaultProps));
 
-    expect(result.current.generateStepTypeString(undefined)).toBe('unknown');
+    expect(result.current.generateStepTypeString(undefined)).toBe(
+      'order.operator.unknown'
+    );
     expect(
       result.current.generateStepTypeString(
         WorkflowStepResV1TypeEnum.create_workflow
