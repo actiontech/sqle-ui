@@ -1,4 +1,3 @@
-import { ClockCircleOutlined } from '@ant-design/icons';
 import { useBoolean } from 'ahooks';
 import moment from 'moment';
 import {
@@ -52,8 +51,12 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     { setTrue: executingStart, setFalse: executingFinish },
   ] = useBoolean();
 
-  const { getStepTypeString, getStepActionAndOperateInfo, getTimeLineIcon } =
-    useGenerateOrderStepInfo(props);
+  const {
+    generateStepTypeString,
+    generateActionNode,
+    generateTimeLineIcon,
+    generateOperateInfo,
+  } = useGenerateOrderStepInfo(props);
 
   const pass = (stepId: number) => {
     passStart();
@@ -95,136 +98,107 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     <>
       <Timeline>
         {props.stepList.map((step) => {
-          const defaultActionNode: JSX.Element | string = (
-            <>
-              <Space>
-                <EmptyBox
-                  if={
-                    props.currentOrderStatus ===
-                      WorkflowRecordResV2StatusEnum.wait_for_audit &&
-                    step.type === WorkflowStepResV1TypeEnum.sql_review
-                  }
-                >
-                  <Button
-                    type="primary"
-                    onClick={pass.bind(null, step.workflow_step_id ?? 0)}
-                    loading={passLoading}
-                  >
-                    {t('order.operator.sqlReview')}
-                  </Button>
-                </EmptyBox>
-                <EmptyBox
-                  if={
-                    props.currentOrderStatus ===
-                      WorkflowRecordResV2StatusEnum.wait_for_execution &&
-                    step.type === WorkflowStepResV1TypeEnum.sql_execute
-                  }
-                >
-                  <Space>
-                    <Tooltip title={t('order.operator.batchSqlExecuteTips')}>
-                      <Button
-                        type="primary"
-                        onClick={executing}
-                        loading={executingLoading}
-                        disabled={!checkInTimeWithMaintenanceTimeInfo(moment())}
-                      >
-                        {t('order.operator.batchSqlExecute')}
-                      </Button>
-                    </Tooltip>
-                  </Space>
-                </EmptyBox>
-                <EmptyBox if={props.canRejectOrder}>
-                  <Button
-                    onClick={handleClickRejectButton.bind(
-                      null,
-                      step.workflow_step_id ?? 0
-                    )}
-                    danger
-                  >
-                    {t('order.operator.rejectFull')}
-                  </Button>
-                </EmptyBox>
-              </Space>
-              <EmptyBox
-                if={
-                  !checkInTimeWithMaintenanceTimeInfo(moment()) &&
-                  props.currentOrderStatus ===
-                    WorkflowRecordResV2StatusEnum.wait_for_execution &&
-                  step.type === WorkflowStepResV1TypeEnum.sql_execute
-                }
-              >
-                <div>
-                  {t('order.operator.sqlExecuteDisableTips')}
-                  {': '}
-                  <EmptyBox
-                    if={props.maintenanceTimeInfo?.some(
-                      (v) => v.maintenanceTime.length > 0
-                    )}
-                    defaultNode={t('order.operator.emptyMaintenanceTime')}
-                  >
-                    {props.maintenanceTimeInfo?.map((item, i) => (
-                      <Space key={i}>
-                        <EmptyBox if={item.maintenanceTime.length > 0}>
-                          <div>
-                            {item.instanceName}
-                            {': '}
-                            {item.maintenanceTime.map((time) => (
-                              <Tag key={i}>
-                                {timeAddZero(
-                                  time.maintenance_start_time?.hour ?? 0
-                                )}
-                                :
-                                {timeAddZero(
-                                  time.maintenance_start_time?.minute ?? 0
-                                )}
-                                -
-                                {timeAddZero(
-                                  time.maintenance_stop_time?.hour ?? 0
-                                )}
-                                :
-                                {timeAddZero(
-                                  time.maintenance_stop_time?.minute ?? 0
-                                )}
-                              </Tag>
-                            ))}
-                          </div>
-                        </EmptyBox>
-                      </Space>
-                    ))}
-                  </EmptyBox>
-                </div>
-              </EmptyBox>
-            </>
-          );
-          const modifySqlNode = (
-            <EmptyBox
-              if={
-                props.currentOrderStatus ===
-                WorkflowRecordResV2StatusEnum.rejected
-              }
+          const sqlReviewNode = (
+            <Button
+              type="primary"
+              onClick={pass.bind(null, step.workflow_step_id ?? 0)}
+              loading={passLoading}
             >
-              <EmptyBox
-                if={username === step.operation_user_name}
-                defaultNode={t('order.operator.waitModifySql', {
-                  username: step.operation_user_name,
-                })}
-              >
-                <div>
-                  <Button type="primary" onClick={props.modifySql}>
-                    {t('order.operator.modifySql')}
-                  </Button>
-                </div>
-              </EmptyBox>
+              {t('order.operator.sqlReview')}
+            </Button>
+          );
+
+          const batchSqlExecuteNode = (
+            <Space>
+              <Tooltip title={t('order.operator.batchSqlExecuteTips')}>
+                <Button
+                  type="primary"
+                  onClick={executing}
+                  loading={executingLoading}
+                  disabled={!checkInTimeWithMaintenanceTimeInfo(moment())}
+                >
+                  {t('order.operator.batchSqlExecute')}
+                </Button>
+              </Tooltip>
+            </Space>
+          );
+
+          const rejectFullNode = (
+            <Button
+              onClick={handleClickRejectButton.bind(
+                null,
+                step.workflow_step_id ?? 0
+              )}
+              danger
+            >
+              {t('order.operator.rejectFull')}
+            </Button>
+          );
+
+          const maintenanceTimeInfoNode = (
+            <EmptyBox if={!checkInTimeWithMaintenanceTimeInfo(moment())}>
+              <div>
+                {t('order.operator.sqlExecuteDisableTips')}
+                {': '}
+                <EmptyBox
+                  if={props.maintenanceTimeInfo?.some(
+                    (v) => v.maintenanceTime.length > 0
+                  )}
+                  defaultNode={t('order.operator.emptyMaintenanceTime')}
+                >
+                  {props.maintenanceTimeInfo?.map((item, i) => (
+                    <Space key={i}>
+                      <EmptyBox if={item.maintenanceTime.length > 0}>
+                        <div>
+                          {item.instanceName}
+                          {': '}
+                          {item.maintenanceTime.map((time) => (
+                            <Tag key={i}>
+                              {timeAddZero(
+                                time.maintenance_start_time?.hour ?? 0
+                              )}
+                              :
+                              {timeAddZero(
+                                time.maintenance_start_time?.minute ?? 0
+                              )}
+                              -
+                              {timeAddZero(
+                                time.maintenance_stop_time?.hour ?? 0
+                              )}
+                              :
+                              {timeAddZero(
+                                time.maintenance_stop_time?.minute ?? 0
+                              )}
+                            </Tag>
+                          ))}
+                        </div>
+                      </EmptyBox>
+                    </Space>
+                  ))}
+                </EmptyBox>
+              </div>
             </EmptyBox>
           );
 
-          const { actionNode, operateInfo } = getStepActionAndOperateInfo(
-            step,
-            modifySqlNode,
-            defaultActionNode
+          const modifySqlNode = (
+            <div>
+              <Button type="primary" onClick={props.modifySql}>
+                {t('order.operator.modifySql')}
+              </Button>
+            </div>
           );
 
-          const { color, icon } = getTimeLineIcon(step);
+          const actionNode = generateActionNode(step, {
+            modifySqlNode,
+            sqlReviewNode,
+            batchSqlExecuteNode,
+            rejectFullNode,
+            maintenanceTimeInfoNode,
+          });
+
+          const operateInfoNode = generateOperateInfo(step);
+
+          const { color, icon } = generateTimeLineIcon(step);
 
           return (
             <Timeline.Item
@@ -233,9 +207,9 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
               color={color}
             >
               <Row>
-                <Col span={3}>{getStepTypeString(step.type)}</Col>
+                <Col span={3}>{generateStepTypeString(step.type)}</Col>
                 <Col span={6}>{actionNode}</Col>
-                <Col span={15}>{operateInfo}</Col>
+                <Col span={15}>{operateInfoNode}</Col>
               </Row>
             </Timeline.Item>
           );

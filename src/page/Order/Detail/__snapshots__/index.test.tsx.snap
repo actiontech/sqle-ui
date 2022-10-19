@@ -2367,11 +2367,6 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
-                        />
-                        <div
-                          class="ant-space-item"
-                          style="margin-right: 8px;"
                         >
                           <div
                             class="ant-space ant-space-horizontal ant-space-align-center"
@@ -2390,9 +2385,6 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                             </div>
                           </div>
                         </div>
-                        <div
-                          class="ant-space-item"
-                        />
                       </div>
                     </div>
                     <div

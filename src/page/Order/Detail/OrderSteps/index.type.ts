@@ -43,3 +43,11 @@ export type TasksStatusNumberType = {
   failed: number;
   executing: number;
 };
+
+export type ActionNodeType = {
+  modifySqlNode: JSX.Element;
+  sqlReviewNode: JSX.Element;
+  batchSqlExecuteNode: JSX.Element;
+  rejectFullNode: JSX.Element;
+  maintenanceTimeInfoNode: JSX.Element;
+};
