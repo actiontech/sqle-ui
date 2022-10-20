@@ -15,14 +15,8 @@ import {
 import { useForm } from 'antd/lib/form/Form';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
-import {
-  WorkflowRecordResV2StatusEnum,
-  WorkflowStepResV1TypeEnum,
-} from '../../../../api/common.enum';
 import EmptyBox from '../../../../components/EmptyBox';
 import { ModalFormLayout } from '../../../../data/common';
-import { IReduxState } from '../../../../store';
 import { timeAddZero } from '../../../../utils/Common';
 import { OrderStepsProps } from './index.type';
 import { checkTimeInWithMaintenanceTime } from './utils';
@@ -30,9 +24,6 @@ import { useGenerateOrderStepInfo } from './useGenerateOrderStepInfo';
 
 const OrderSteps: React.FC<OrderStepsProps> = (props) => {
   const { t } = useTranslation();
-  const username = useSelector<IReduxState, string>(
-    (state) => state.user.username
-  );
   const [form] = useForm();
   const [rejectStepId, setRejectStepId] = useState(0);
 

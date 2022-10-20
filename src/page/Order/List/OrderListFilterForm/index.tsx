@@ -100,7 +100,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
             </Select>
           </Form.Item>
         </Col>
-        <Col {...FilterFormColLayout} hidden={currentCollapse}>
+        <Col {...FilterFormColLayout}>
           <Form.Item
             name="filter_current_step_assignee_user_name"
             label={t('order.order.assignee')}
@@ -166,7 +166,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
         </Col>
 
         <Col
-          {...filterFormButtonLayoutFactory(12, 16, currentCollapse ? 0 : 18)}
+          {...filterFormButtonLayoutFactory(currentCollapse ? 0 : 12, currentCollapse ? 16 : 0, currentCollapse ? 0 : 6)}
           className="text-align-right"
         >
           <Form.Item className="clear-margin-right" wrapperCol={{ span: 24 }}>

@@ -181,7 +181,7 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
           {...filterFormButtonLayoutFactory(
             0,
             collapse ? 16 : 8,
-            collapse ? 0 : 18
+            0
           )}
           className="text-align-right"
         >
