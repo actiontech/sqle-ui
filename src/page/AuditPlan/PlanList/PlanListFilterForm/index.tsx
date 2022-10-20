@@ -43,6 +43,15 @@ const PlanListFilterForm: React.FC<PlanListFilterFormProps> = (props) => {
     submit?.(form.getFieldsValue());
   };
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    form.setFieldsValue({
+      filter_audit_plan_type: params.get('type') ?? undefined
+    })
+    innerSubmit();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [form, window.location.search])
+
   return (
     <Form<PlanListFilterFormFields> form={form} {...FilterFormLayout}>
       <Row {...FilterFormRowLayout}>
