@@ -11,17 +11,17 @@ import ReportStatistics from '../index';
 import mockRequestData from '../Panel/__test__/mockRequestData';
 
 const {
-  DiffInstanceOrderRejectedPercentData,
   DiffUserOrderRejectedPercentData,
   InstanceProportionWithDbTypeData,
   LicenseUsageData,
-  OrderAverageExecuteTimeData,
   OrderAverageReviewTimeData,
   OrderPassPercentData,
   OrderQuantityTrendData,
   OrderQuantityWithDbTypeData,
   OrderStatusData,
   OrderTotalNumbersData,
+  SqlExecFailedTopNData,
+  SqlAverageExecutionTimeData,
 } = mockRequestData;
 
 jest.mock('@material-ui/styles', () => {
@@ -36,16 +36,6 @@ const dateFormat = 'YYYY-MM-DD';
 describe('test ReportStatistics', () => {
   let scopeDispatch: jest.Mock;
 
-  const mockGetTaskRejectedPercentGroupByInstanceV1 = () => {
-    const spy = jest.spyOn(
-      statistic,
-      'getWorkflowRejectedPercentGroupByInstanceV1'
-    );
-    spy.mockImplementation(() => {
-      return resolveThreeSecond(DiffInstanceOrderRejectedPercentData);
-    });
-    return spy;
-  };
   const mockGetTaskRejectedPercentGroupByCreatorV1 = () => {
     const spy = jest.spyOn(
       statistic,
@@ -70,16 +60,7 @@ describe('test ReportStatistics', () => {
     });
     return spy;
   };
-  const mockGetTaskDurationOfWaitingForExecutionV1 = () => {
-    const spy = jest.spyOn(
-      statistic,
-      'getWorkflowDurationOfWaitingForExecutionV1'
-    );
-    spy.mockImplementation(() =>
-      resolveThreeSecond(OrderAverageExecuteTimeData)
-    );
-    return spy;
-  };
+
   const mockGetTaskDurationOfWaitingForAuditV1 = () => {
     const spy = jest.spyOn(statistic, 'getWorkflowDurationOfWaitingForAuditV1');
     spy.mockImplementation(() =>
@@ -88,7 +69,7 @@ describe('test ReportStatistics', () => {
     return spy;
   };
   const mockGetTaskPassPercentV1 = () => {
-    const spy = jest.spyOn(statistic, 'getWorkflowPassPercentV1');
+    const spy = jest.spyOn(statistic, 'getWorkflowAuditPassPercentV1');
     spy.mockImplementation(() => resolveThreeSecond(OrderPassPercentData));
     return spy;
   };
@@ -121,6 +102,23 @@ describe('test ReportStatistics', () => {
     spy.mockImplementation(() => resolveThreeSecond(OrderTotalNumbersData));
     return spy;
   };
+
+  const mockGetSqlExecutionFailPercentV1 = () => {
+    const spy = jest.spyOn(statistic, 'getSqlExecutionFailPercentV1');
+    spy.mockImplementation(() => {
+      return resolveThreeSecond(SqlExecFailedTopNData);
+    });
+    return spy;
+  };
+
+  const mockGetSqlAverageExecutionTimeV1 = () => {
+    const spy = jest.spyOn(statistic, 'getSqlAverageExecutionTimeV1');
+    spy.mockImplementation(() => {
+      return resolveThreeSecond(SqlAverageExecutionTimeData);
+    });
+    return spy;
+  };
+
   const useThemeMock: jest.Mock = useTheme as jest.Mock;
   const error = console.error;
   const realDateNow = Date.now.bind(global.Date);
@@ -131,11 +129,11 @@ describe('test ReportStatistics', () => {
   let getTaskCreatedCountEachDayV1Spy: jest.SpyInstance;
   let getTaskPassPercentV1Spy: jest.SpyInstance;
   let getTaskDurationOfWaitingForAuditV1Spy: jest.SpyInstance;
-  let getTaskDurationOfWaitingForExecutionV1Spy: jest.SpyInstance;
   let getLicenseUsageV1Spy: jest.SpyInstance;
   let getInstancesTypePercentV1Spy: jest.SpyInstance;
   let getTaskRejectedPercentGroupByCreatorV1Spy: jest.SpyInstance;
-  let getTaskRejectedPercentGroupByInstanceV1Spy: jest.SpyInstance;
+  let getSqlExecutionFailPercentV1Spy: jest.SpyInstance;
+  let getSqlAverageExecutionTimeV1Spy: jest.SpyInstance;
   beforeEach(() => {
     console.error = jest.fn((message: any) => {
       if (
@@ -158,14 +156,12 @@ describe('test ReportStatistics', () => {
     getTaskPassPercentV1Spy = mockGetTaskPassPercentV1();
     getTaskDurationOfWaitingForAuditV1Spy =
       mockGetTaskDurationOfWaitingForAuditV1();
-    getTaskDurationOfWaitingForExecutionV1Spy =
-      mockGetTaskDurationOfWaitingForExecutionV1();
     getLicenseUsageV1Spy = mockGetLicenseUsageV1();
     getInstancesTypePercentV1Spy = mockGetInstancesTypePercentV1();
     getTaskRejectedPercentGroupByCreatorV1Spy =
       mockGetTaskRejectedPercentGroupByCreatorV1();
-    getTaskRejectedPercentGroupByInstanceV1Spy =
-      mockGetTaskRejectedPercentGroupByInstanceV1();
+    getSqlExecutionFailPercentV1Spy = mockGetSqlExecutionFailPercentV1();
+    getSqlAverageExecutionTimeV1Spy = mockGetSqlAverageExecutionTimeV1();
     jest.useFakeTimers();
     mockUseSelector({
       user: { theme: SupportTheme.LIGHT },
@@ -210,11 +206,11 @@ describe('test ReportStatistics', () => {
     expect(getTaskCreatedCountEachDayV1Spy).toBeCalledTimes(1);
     expect(getTaskPassPercentV1Spy).toBeCalledTimes(1);
     expect(getTaskDurationOfWaitingForAuditV1Spy).toBeCalledTimes(1);
-    expect(getTaskDurationOfWaitingForExecutionV1Spy).toBeCalledTimes(1);
     expect(getLicenseUsageV1Spy).toBeCalledTimes(1);
     expect(getInstancesTypePercentV1Spy).toBeCalledTimes(1);
     expect(getTaskRejectedPercentGroupByCreatorV1Spy).toBeCalledTimes(1);
-    expect(getTaskRejectedPercentGroupByInstanceV1Spy).toBeCalledTimes(1);
+    expect(getSqlExecutionFailPercentV1Spy).toBeCalledTimes(1);
+    expect(getSqlAverageExecutionTimeV1Spy).toBeCalledTimes(1);
 
     fireEvent.click(screen.getByTestId('refreshReportStatistics'));
     expect(scopeDispatch).toBeCalledTimes(1);

@@ -14,7 +14,7 @@ export default {
     title: '工单平均上线时间',
   },
   orderPassRate: {
-    title: '审核通过率/上线成功率',
+    title: '审核通过率',
   },
   orderQuantityTrend: {
     title: '工单趋势',
@@ -31,6 +31,7 @@ export default {
   },
   orderDbTypeScale: {
     title: '按数据库类型的工单构成',
+    tips: '一个工单，存在不同数据库类型的多个数据源，则按数据库类型分别计算工单数',
   },
   orderInstanceTypeScale: {
     title: '按数据库类型的数据源构成',
@@ -54,6 +55,22 @@ export default {
       instanceName: '数据源名',
       totalOrder: '工单总数',
       rejectRate: '驳回率',
+    },
+  },
+  orderAverageExecuteTimeTopN: {
+    title: 'SQL上线平均耗时 (Top{{tableLimit}})',
+    columns: {
+      dataSourceName: '数据源名称',
+      average: '平均上线耗时',
+      max: '最长上线耗时',
+      min: '最短上线耗时',
+    },
+  },
+  sqlExecFailedTopN: {
+    title: 'SQL上线失败率 (Top{{tableLimit}})',
+    columns: {
+      dataSourceName: '数据源名称',
+      sqlExecFailedPercent: '上线失败率',
     },
   },
 };

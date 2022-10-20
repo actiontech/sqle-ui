@@ -27,20 +27,6 @@ exports[`test OrderPassPercent should match snapshot 1`] = `
       >
         <div
           class="ant-space-item"
-          style="margin-right: 8px;"
-        >
-          <span />
-        </div>
-        <div
-          class="ant-space-item"
-          style="margin-right: 8px;"
-        >
-          <span>
-            /
-          </span>
-        </div>
-        <div
-          class="ant-space-item"
         >
           <span />
         </div>
@@ -77,25 +63,9 @@ exports[`test OrderPassPercent should match snapshot 2`] = `
       >
         <div
           class="ant-space-item"
-          style="margin-right: 8px;"
         >
           <span>
             22.3%
-          </span>
-        </div>
-        <div
-          class="ant-space-item"
-          style="margin-right: 8px;"
-        >
-          <span>
-            /
-          </span>
-        </div>
-        <div
-          class="ant-space-item"
-        >
-          <span>
-            33.2%
           </span>
         </div>
       </div>

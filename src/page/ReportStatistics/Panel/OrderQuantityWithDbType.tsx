@@ -1,5 +1,6 @@
+import { InfoCircleOutlined } from '@ant-design/icons';
 import { PieConfig } from '@ant-design/plots';
-import { Result } from 'antd';
+import { Result, Space, Tooltip } from 'antd';
 import { AxiosResponse } from 'axios';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -51,7 +52,17 @@ const OrderQuantityWithDbType: React.FC = () => {
 
   return (
     <PanelWrapper
-      title={t('reportStatistics.orderDbTypeScale.title')}
+      title={
+        <Space>
+          {t('reportStatistics.orderDbTypeScale.title')}
+          <Tooltip overlay={t('reportStatistics.orderDbTypeScale.tips')}>
+            <InfoCircleOutlined
+              data-testid="order-db-type-scale-tips"
+              className="text-orange"
+            />
+          </Tooltip>
+        </Space>
+      }
       loading={loading}
       error={
         errorMessage ? (

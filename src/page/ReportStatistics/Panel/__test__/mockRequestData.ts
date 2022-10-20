@@ -4,21 +4,13 @@ import {
   IWorkflowCountsV1,
   IWorkflowStatusCountV1,
   IWorkflowRejectedPercentGroupByCreator,
-  IWorkflowRejectedPercentGroupByInstance,
   IWorkflowPercentCountedByInstanceTypeV1,
   IWorkflowCreatedCountsEachDayV1,
   IWorkflowPassPercentV1,
   IWorkflowStageDuration,
+  ISqlExecutionFailPercent,
+  ISqlAverageExecutionTime,
 } from '../../../../api/common';
-
-const DiffInstanceOrderRejectedPercentData: IWorkflowRejectedPercentGroupByInstance[] =
-  Array.from({ length: 10 }, (_, i) => {
-    return {
-      instance_name: `instance${i}`,
-      workflow_total_num: 22,
-      rejected_percent: 12.66666,
-    };
-  });
 
 const DiffUserOrderRejectedPercentData: IWorkflowRejectedPercentGroupByCreator[] =
   Array.from({ length: 10 }, (_, i) => {
@@ -93,9 +85,6 @@ const LicenseUsageData: ILicenseUsageV1 = {
     used: 20,
   },
 };
-const OrderAverageExecuteTimeData: IWorkflowStageDuration = {
-  minutes: 114,
-};
 
 const OrderAverageReviewTimeData: IWorkflowStageDuration = {
   minutes: 114,
@@ -103,12 +92,11 @@ const OrderAverageReviewTimeData: IWorkflowStageDuration = {
 
 const OrderPassPercentData: IWorkflowPassPercentV1 = {
   audit_pass_percent: 22.3,
-  execution_success_percent: 33.2,
 };
 
 const OrderQuantityTrendData: IWorkflowCreatedCountsEachDayV1 = {
   samples: Array.from({ length: 30 }, (_, i) => {
-    const cur = i + 1;
+    const cur: number = i + 1;
     return {
       date: `2022-08-${cur < 10 ? '0' + cur : cur}`,
       value: 33,
@@ -161,18 +149,40 @@ const OrderTotalNumbersData: IWorkflowCountsV1 = {
   today_count: 10,
 };
 
+const SqlExecFailedTopNData: ISqlExecutionFailPercent[] = Array.from(
+  { length: 10 },
+  (_, i) => {
+    return {
+      instance_name: `instance_name${i}`,
+      percent: 11.11,
+    };
+  }
+);
+
+const SqlAverageExecutionTimeData: ISqlAverageExecutionTime[] = Array.from(
+  { length: 10 },
+  (_, i) => {
+    return {
+      instance_name: `instance_name${i}`,
+      average_execution_seconds: 3,
+      max_execution_seconds: 4,
+      min_execution_seconds: 5,
+    };
+  }
+);
+
 const mockRequestData = {
-  DiffInstanceOrderRejectedPercentData,
   DiffUserOrderRejectedPercentData,
   InstanceProportionWithDbTypeData,
   LicenseUsageData,
-  OrderAverageExecuteTimeData,
+  SqlAverageExecutionTimeData,
   OrderAverageReviewTimeData,
   OrderPassPercentData,
   OrderQuantityTrendData,
   OrderQuantityWithDbTypeData,
   OrderStatusData,
   OrderTotalNumbersData,
+  SqlExecFailedTopNData,
 };
 
 export default mockRequestData;

@@ -12,13 +12,13 @@ const { OrderPassPercentData } = mockRequestData;
 
 describe('test OrderPassPercent', () => {
   const mockGetTaskPassPercentV1 = () => {
-    const spy = jest.spyOn(statistic, 'getWorkflowPassPercentV1');
+    const spy = jest.spyOn(statistic, 'getWorkflowAuditPassPercentV1');
     spy.mockImplementation(() => resolveThreeSecond(OrderPassPercentData));
     return spy;
   };
 
   const mockErrorGetTaskPassPercentV1 = () => {
-    const spy = jest.spyOn(statistic, 'getWorkflowPassPercentV1');
+    const spy = jest.spyOn(statistic, 'getWorkflowAuditPassPercentV1');
     spy.mockImplementation(() => resolveErrorThreeSecond({}));
     return spy;
   };
