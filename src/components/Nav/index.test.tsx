@@ -4,6 +4,7 @@ import { ModalName } from '../../data/ModalName';
 import { SupportLanguage } from '../../locale';
 import { renderWithRouter } from '../../testUtils/customRender';
 import { mockUseDispatch, mockUseSelector } from '../../testUtils/mockRedux';
+import { mockUseAuditPlanTypes } from '../../testUtils/mockRequest';
 import { mockUseStyle } from '../../testUtils/mockStyle';
 
 describe('Nav', () => {
@@ -17,6 +18,7 @@ describe('Nav', () => {
     });
     mockUseStyle();
     mockUseDispatch();
+    mockUseAuditPlanTypes();
     jest.useFakeTimers();
   });
 

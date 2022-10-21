@@ -6,16 +6,32 @@ import {
   mockUseAuditPlanTypes,
   mockUseInstance,
 } from '../../../../testUtils/mockRequest';
+import { useLocation } from 'react-router-dom';
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLocation: jest.fn(),
+}));
 
 describe('PlanListFilerForm', () => {
+  const useLocationMock: jest.Mock = useLocation as jest.Mock;
+
   beforeEach(() => {
     jest.useFakeTimers();
+    useLocationMock.mockReturnValue({
+      pathname: '/auditPlan',
+      search: '',
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
+    });
     mockUseInstance();
     mockDriver();
     mockUseAuditPlanTypes();
   });
 
   afterEach(() => {
+    useLocationMock.mockRestore();
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
@@ -62,8 +78,8 @@ describe('PlanListFilerForm', () => {
       jest.advanceTimersByTime(0);
     });
 
-    expect(submitSpy).toBeCalledTimes(1);
-    expect(submitSpy).toBeCalledWith({
+    expect(submitSpy).toBeCalledTimes(2);
+    expect(submitSpy).nthCalledWith(2, {
       filter_audit_plan_db_type: 'mysql',
       filter_audit_plan_instance_name: 'instance1',
       filter_audit_plan_name: '123',
@@ -76,7 +92,30 @@ describe('PlanListFilerForm', () => {
     });
     expect(container).toMatchSnapshot();
 
-    expect(submitSpy).toBeCalledTimes(2);
-    expect(submitSpy).nthCalledWith(2, {});
+    expect(submitSpy).toBeCalledTimes(3);
+    expect(submitSpy).nthCalledWith(3, {});
+  });
+
+  it('should set audit task type in filter form when url include type params', async () => {
+    const submitSpy = jest.fn();
+    useLocationMock.mockReturnValue({
+      pathname: '/auditPlan',
+      search: '?type=ali_rds_mysql_slow_log',
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
+    });
+
+    const { container } = render(<PlanListFilterForm submit={submitSpy} />);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(container).toMatchSnapshot();
+    expect(submitSpy).toBeCalledTimes(1);
+    expect(submitSpy).toBeCalledWith({
+      filter_audit_plan_type: 'ali_rds_mysql_slow_log',
+    });
   });
 });

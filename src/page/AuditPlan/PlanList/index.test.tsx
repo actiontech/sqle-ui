@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { useLocation } from 'react-router-dom';
 import PlanList from '.';
 import audit_plan from '../../../api/audit_plan';
 import { selectOptionByIndex } from '../../../testUtils/customQuery';
@@ -14,8 +15,14 @@ import {
 import { mockUseStyle } from '../../../testUtils/mockStyle';
 import { AuditPlanList } from './__testData__';
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLocation: jest.fn(),
+}));
+
 describe('PlanList', () => {
   let dispatchSpy!: jest.SpyInstance;
+  const useLocationMock: jest.Mock = useLocation as jest.Mock;
 
   let consoleError: any;
   beforeAll(() => {
@@ -47,12 +54,20 @@ describe('PlanList', () => {
       },
       user: {},
     });
+    useLocationMock.mockReturnValue({
+      pathname: '/auditPlan',
+      search: '',
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
+    });
   });
 
   afterEach(() => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
+    useLocationMock.mockRestore();
   });
 
   afterAll(() => {
@@ -233,6 +248,27 @@ describe('PlanList', () => {
     expect(getAuditPlanSpy).nthCalledWith(3, {
       page_index: 1,
       page_size: 10,
+    });
+  });
+
+  test('should send request once when url include filter info', async () => {
+    const getAuditPlanSpy = mockGetAuditPlan();
+    useLocationMock.mockReturnValue({
+      pathname: '/auditPlan',
+      search: '?type=ali_rds_mysql_slow_log',
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
+    });
+    renderWithRouter(<PlanList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(100);
+    });
+    expect(getAuditPlanSpy).toBeCalledTimes(1);
+    expect(getAuditPlanSpy).toBeCalledWith({
+      page_index: 1,
+      page_size: 10,
+      filter_audit_plan_type: 'ali_rds_mysql_slow_log',
     });
   });
 });
