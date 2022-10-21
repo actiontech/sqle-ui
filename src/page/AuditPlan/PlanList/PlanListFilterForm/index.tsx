@@ -2,6 +2,7 @@ import { Button, Col, Form, Input, Row, Select, Space } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 import {
   filterFormButtonLayoutFactory,
   FilterFormColLayout,
@@ -43,14 +44,16 @@ const PlanListFilterForm: React.FC<PlanListFilterFormProps> = (props) => {
     submit?.(form.getFieldsValue());
   };
 
+  const location = useLocation()
+
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(location.search);
     form.setFieldsValue({
       filter_audit_plan_type: params.get('type') ?? undefined
     })
     innerSubmit();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [form, window.location.search])
+  }, [form, location.search])
 
   return (
     <Form<PlanListFilterFormFields> form={form} {...FilterFormLayout}>

@@ -8,6 +8,7 @@ import { RouterItem } from '../../../types/router.type';
 import { useTranslation } from 'react-i18next';
 import { SystemRole } from '../../../data/common';
 import useAuditPlanTypes from '../../../hooks/useAuditPlanTypes';
+import { cloneDeep } from 'lodash';
 
 const AuditPlan = React.lazy(
   () => import(/* webpackChunkName: "AuditPlan" */ '../../../page/AuditPlan')
@@ -101,7 +102,7 @@ const SiderMenu = () => {
 
   useEffect(() => {
     if (auditPlanTypes.length > 0) {
-      const newRouterConfig = [...innerRouterConfig];
+      const newRouterConfig = cloneDeep(routerConfig);
       const plan = newRouterConfig.find(item => item.key === 'plane');
       if (!plan) {
         return;

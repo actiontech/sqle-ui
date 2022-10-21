@@ -7,6 +7,7 @@ import { ModalName } from './data/ModalName';
 import { SupportLanguage } from './locale';
 import { mockUseDispatch, mockUseSelector } from './testUtils/mockRedux';
 import {
+  mockUseAuditPlanTypes,
   resolveErrorThreeSecond,
   resolveImmediately,
   resolveThreeSecond,
@@ -23,6 +24,7 @@ describe('App test', () => {
     );
     const { scopeDispatch: temp } = mockUseDispatch();
     scopeDispatch = temp;
+    mockUseAuditPlanTypes();
     jest.useFakeTimers();
   });
 
