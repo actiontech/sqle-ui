@@ -1,10 +1,4 @@
-import {
-  fireEvent,
-  render,
-  waitFor,
-  screen,
-  cleanup,
-} from '@testing-library/react';
+import { fireEvent, render, waitFor, screen } from '@testing-library/react';
 import SMTPSetting from '.';
 import configuration from '../../../api/configuration';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
