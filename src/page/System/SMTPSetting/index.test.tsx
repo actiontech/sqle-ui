@@ -1,4 +1,10 @@
-import { fireEvent, render, waitFor, screen } from '@testing-library/react';
+import {
+  fireEvent,
+  render,
+  waitFor,
+  screen,
+  cleanup,
+} from '@testing-library/react';
 import SMTPSetting from '.';
 import configuration from '../../../api/configuration';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
@@ -12,6 +18,7 @@ describe('System/SMTPSetting', () => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
+    cleanup();
   });
 
   const mockGetSMTPInfo = () => {
@@ -27,9 +34,24 @@ describe('System/SMTPSetting', () => {
     return spy;
   };
 
-  const mockTestEmail = () => {
+  const mockSuccessTestEmail = () => {
     const spy = jest.spyOn(configuration, 'testSMTPConfigurationV1');
-    spy.mockImplementation(() => resolveThreeSecond({}));
+    spy.mockImplementation(() =>
+      resolveThreeSecond({
+        is_smtp_send_normal: true,
+      })
+    );
+    return spy;
+  };
+
+  const mockErrorTestEmail = () => {
+    const spy = jest.spyOn(configuration, 'testSMTPConfigurationV1');
+    spy.mockImplementation(() =>
+      resolveThreeSecond({
+        is_smtp_send_normal: false,
+        send_error_message: 'error message',
+      })
+    );
     return spy;
   };
 
@@ -101,7 +123,7 @@ describe('System/SMTPSetting', () => {
 
   test('should send test email request when user click test button', async () => {
     mockGetSMTPInfo();
-    const testSpy = mockTestEmail();
+    const testSpy = mockSuccessTestEmail();
     render(<SMTPSetting />);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -136,5 +158,50 @@ describe('System/SMTPSetting', () => {
     });
     expect(screen.queryByText('system.smtp.testing')).not.toBeInTheDocument();
     expect(screen.queryByText('system.smtp.testSuccess')).toBeInTheDocument();
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+  });
+
+  test('should show error message when request is_smtp_send_normal is equal false', async () => {
+    mockGetSMTPInfo();
+    const testSpy = mockErrorTestEmail();
+    render(<SMTPSetting />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.click(screen.getByText('system.smtp.test'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    fireEvent.input(screen.getByLabelText('system.smtp.receiver'), {
+      target: { value: '123@123.com' },
+    });
+    fireEvent.click(screen.getByText('common.ok'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(testSpy).toBeCalledTimes(1);
+    expect(testSpy).toBeCalledWith({
+      recipient_addr: '123@123.com',
+    });
+    expect(screen.queryByText('system.smtp.testing')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('system.smtp.test'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    fireEvent.click(screen.getByText('common.ok'));
+
+    expect(testSpy).toBeCalledTimes(1);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(screen.queryByText('system.smtp.testing')).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('system.smtp.testSuccess')
+    ).not.toBeInTheDocument();
+    expect(screen.queryByText('error message')).toBeInTheDocument();
   });
 });
