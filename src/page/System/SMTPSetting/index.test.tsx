@@ -18,7 +18,6 @@ describe('System/SMTPSetting', () => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
-    cleanup();
   });
 
   const mockGetSMTPInfo = () => {
