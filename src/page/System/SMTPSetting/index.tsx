@@ -118,10 +118,16 @@ const SMTPSetting = () => {
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
-          message.success(
-            t('system.smtp.testSuccess', { email: values.receiveEmail })
-          );
-          testForm.resetFields();
+          if (res.data.data?.is_smtp_send_normal) {
+            message.success(
+              t('system.smtp.testSuccess', { email: values.receiveEmail })
+            );
+            testForm.resetFields();
+          } else {
+            message.error(
+              res.data.data?.send_error_message ?? t('common.unknownError')
+            );
+          }
         }
       })
       .finally(() => {
