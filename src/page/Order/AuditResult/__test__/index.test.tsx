@@ -47,6 +47,9 @@ describe('Order/Detail/AuditResult', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
     expect(container).toMatchSnapshot();
   });
 
