@@ -44,7 +44,6 @@ describe('Order/Detail/AuditResult', () => {
       page_size: '10',
       no_duplicate: false,
     });
-    expect(container).toMatchSnapshot();
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
