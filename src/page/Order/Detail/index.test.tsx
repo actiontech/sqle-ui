@@ -459,6 +459,9 @@ describe('Order/Detail', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
     expect(container).toMatchSnapshot();
     expect(screen.getByText('order.modifySql.updateOrder')).toBeInTheDocument();
     expect(
@@ -510,6 +513,9 @@ describe('Order/Detail', () => {
     });
     act(() => {
       fireEvent.click(screen.getByText('common.submit'));
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -575,10 +581,13 @@ describe('Order/Detail', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
 
     expect(
       screen.getByText('order.modifySql.updateOrder').closest('button')
-    ).toHaveAttribute('disabled');
+    ).toBeDisabled();
 
     auditTaskGroupIdSpy.mockImplementation(() =>
       resolveThreeSecond({
@@ -603,9 +612,12 @@ describe('Order/Detail', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
     expect(
       screen.getByText('order.modifySql.updateOrder').closest('button')
-    ).not.toHaveAttribute('disabled');
+    ).not.toBeDisabled();
   });
 
   test('should can not update order when submit sql is empty', async () => {
@@ -637,6 +649,9 @@ describe('Order/Detail', () => {
     });
     act(() => {
       fireEvent.click(screen.getByText('common.submit'));
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);

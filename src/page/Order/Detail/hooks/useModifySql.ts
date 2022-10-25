@@ -5,8 +5,10 @@ import { SqlInfoFormFields } from '../../Create/SqlInfoForm/index.type';
 import useAuditOrder from '../../hooks/useAuditOrder';
 
 const useModifySql = (sqlMode: WorkflowResV2ModeEnum) => {
-  const [modifySqlModalVisibility, { setTrue: openModifySqlModal, setFalse }] =
-    useBoolean();
+  const [
+    modifySqlModalVisibility,
+    { setTrue: openModifySqlModal, setFalse: closeModifySqlModal },
+  ] = useBoolean();
 
   const {
     taskInfos,
@@ -19,11 +21,6 @@ const useModifySql = (sqlMode: WorkflowResV2ModeEnum) => {
     resetFinallySubmitButtonStatus,
     clearDifferenceSqlModeTaskInfos,
   } = useAuditOrder();
-
-  const closeModifySqlModal = useCallback(() => {
-    setFalse();
-    clearDifferenceSqlModeTaskInfos();
-  }, [clearDifferenceSqlModeTaskInfos, setFalse]);
 
   const modifySqlSubmit = useCallback(
     async (

@@ -184,7 +184,6 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
           setInstanceNames={setInstanceNames}
           currentSqlMode={currentSqlMode}
           setChangeSqlModeDisabled={setChangeSqlModeDisabledAndSetValue}
-          clearTaskInfos={props.clearTaskInfos}
           clearTaskInfoWithKey={props.clearTaskInfoWithKey}
         />
         <Form.Item label=" " colon={false} hidden={!testConnectVisible}>

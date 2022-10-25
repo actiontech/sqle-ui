@@ -18,7 +18,6 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
   setInstanceNames,
   currentSqlMode,
   setChangeSqlModeDisabled,
-  clearTaskInfos,
   clearTaskInfoWithKey,
 }) => {
   const { t } = useTranslation();

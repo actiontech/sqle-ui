@@ -17,9 +17,10 @@ import { SupportTheme } from '../../../../../theme';
 import { taskInfo, taskInfoErrorAuditLevel } from '../../__testData__';
 
 describe('Order/Detail/Modal/ModifySqlModal', () => {
-  const mockSubmit = jest.fn().mockImplementation(() => resolveThreeSecond({}));
+  const mockSubmit = jest.fn();
 
   beforeEach(() => {
+    mockSubmit.mockImplementation(() => resolveThreeSecond({}));
     jest.useFakeTimers();
     mockUseSelector({ user: { theme: SupportTheme.LIGHT } });
     mockUseDispatch();
@@ -226,6 +227,7 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
     expect(screen.getByText('common.submit').parentNode).toHaveClass(
       'ant-btn-loading'
     );
+
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
@@ -337,31 +339,119 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
       jest.advanceTimersByTime(0);
     });
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
     expect(screen.getByText('common.submit').parentNode).toHaveClass(
       'ant-btn-loading'
     );
-    expect(mockSubmit).toBeCalledTimes(1);
-    expect(mockSubmit).toBeCalledWith({
-      instances: [
-        {
-          instance_name: 'db1',
-          instance_schema: 'schema1',
-        },
-      ],
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
     });
-    // expect(auditTaskGroupIdSpy).toBeCalledWith({
-    //   input_sql_file: sqlFile,
-    //   task_group_id: 11,
-    // });
-
+    expect(mockSubmit).toBeCalledTimes(1);
+    expect(mockSubmit).toBeCalledWith(
+      {
+        '0': {
+          sqlFile: [sqlFile],
+          sqlInputType: 1,
+        },
+        dataBaseInfo: [
+          {
+            instanceName: 'db1',
+            instanceSchema: 'schema1',
+          },
+        ],
+        isSameSqlOrder: true,
+      },
+      0,
+      ''
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
     expect(screen.getByText('common.submit').parentNode).not.toHaveClass(
       'ant-btn-loading'
     );
+
+    cleanup();
+    mockSubmit.mockClear();
+
+    renderWithTheme(
+      <ModifySqlModal
+        visible={true}
+        submit={mockSubmit}
+        cancel={jest.fn()}
+        sqlMode={WorkflowResV2ModeEnum.different_sqls}
+        currentOrderTasks={[tempTask, taskInfoErrorAuditLevel]}
+      />
+    );
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.click(screen.getAllByText('order.sqlInfo.uploadFile')[1]);
+    fireEvent.change(screen.getByLabelText('order.sqlInfo.sqlFile'), {
+      target: { files: [sqlFile] },
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    fireEvent.click(screen.getByText('common.submit'));
+    expect(screen.getByText('common.submit').parentNode).toHaveClass(
+      'ant-btn-loading'
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(mockSubmit).toBeCalledTimes(1);
+    expect(mockSubmit).toBeCalledWith(
+      {
+        '27': {
+          sql: 'select * from table1',
+          sqlInputType: 0,
+        },
+        '3': {
+          sqlFile: [sqlFile],
+          sqlInputType: 1,
+        },
+        dataBaseInfo: [
+          {
+            instanceName: 'db1',
+            instanceSchema: 'schema1',
+          },
+          {
+            instanceName: 'db1',
+            instanceSchema: '',
+          },
+        ],
+        isSameSqlOrder: false,
+      },
+      1,
+      '3'
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(screen.getByText('common.submit').parentNode).not.toHaveClass(
+      'ant-btn-loading'
+    );
+  });
+
+  test('should called cancel props when clicking close button', async () => {
+    const mockCancel = jest.fn();
+    mockGetSqlContent();
+    renderWithTheme(
+      <ModifySqlModal
+        visible={true}
+        submit={mockSubmit}
+        cancel={mockCancel}
+        sqlMode={WorkflowResV2ModeEnum.different_sqls}
+        currentOrderTasks={[taskInfoErrorAuditLevel]}
+      />
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(mockCancel).toBeCalledTimes(0);
+
+    fireEvent.click(screen.getByText('common.close'));
+    expect(mockCancel).toBeCalledTimes(1);
   });
 });

@@ -1,5 +1,5 @@
 import { useTheme } from '@material-ui/styles';
-import { useBoolean } from 'ahooks';
+import { useBoolean, useToggle } from 'ahooks';
 import {
   Button,
   Card,
@@ -29,7 +29,7 @@ import ModifySqlModal from './Modal/ModifySqlModal';
 import OrderHistory from './Modal/OrderHistory';
 import OrderSteps from './OrderSteps';
 import useModifySql from './hooks/useModifySql';
-import useGetDataWithRequest from './hooks/useGetDataWithRequest';
+import useInitDataWithRequest from './hooks/useInitDataWithRequest';
 import useGenerateOrderStepsProps from './hooks/useGenerateOrderStepsProps';
 
 const Order = () => {
@@ -38,13 +38,14 @@ const Order = () => {
   const [historyVisible, { setTrue: showHistory, setFalse: closeHistory }] =
     useBoolean();
   const [auditResultActiveKey, setAuditResultActiveKey] = useState<string>('');
+  const [refreshOverviewFlag, { toggle: refreshOverviewAction }] =
+    useToggle(false);
 
   const { taskInfos, orderInfo, refreshOrder, refreshTask } =
-    useGetDataWithRequest();
+    useInitDataWithRequest();
 
   const {
     pass,
-    refreshOverviewFlag,
     executing,
     reject,
     maintenanceTimeInfo,
@@ -55,6 +56,7 @@ const Order = () => {
     workflowId: orderInfo?.workflow_id?.toString() ?? '',
     refreshOrder,
     refreshTask,
+    refreshOverviewAction,
   });
 
   const {

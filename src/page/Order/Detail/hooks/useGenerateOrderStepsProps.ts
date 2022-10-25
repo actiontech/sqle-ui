@@ -1,4 +1,3 @@
-import { useToggle } from 'ahooks';
 import { message } from 'antd';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -16,19 +15,20 @@ type HooksParamType = {
   workflowId: string;
   refreshOrder: () => Promise<IWorkflowResV2 | undefined>;
   refreshTask: (value?: boolean | undefined) => void;
+  refreshOverviewAction: (value?: boolean | undefined) => void;
 };
 
 const useGenerateOrderStepsProps = ({
   workflowId,
   refreshOrder,
   refreshTask,
+  refreshOverviewAction,
 }: HooksParamType) => {
   const { t } = useTranslation();
 
   const [tasksStatusNumber, setTasksStatusNumber] =
     useState<TasksStatusNumberType>();
-  const [refreshOverviewFlag, { toggle: refreshOverviewAction }] =
-    useToggle(false);
+
   const [maintenanceTimeInfo, setMaintenanceTimeInfo] =
     useState<MaintenanceTimeInfoType>([]);
   const [canRejectOrder, setCanRejectOrder] = useState(false);
@@ -86,10 +86,6 @@ const useGenerateOrderStepsProps = ({
   );
 
   const getOverviewListSuccessHandle = (list: IGetWorkflowTasksItemV1[]) => {
-    if (!list.some) {
-      return;
-    }
-
     setMaintenanceTimeInfo?.(
       list.map((v) => ({
         instanceName: v.instance_name ?? '',
@@ -129,7 +125,6 @@ const useGenerateOrderStepsProps = ({
 
   return {
     pass,
-    refreshOverviewFlag,
     executing,
     reject,
     maintenanceTimeInfo,

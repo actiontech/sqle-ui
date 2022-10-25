@@ -1,11 +1,5 @@
 /* eslint-disable no-console */
-import {
-  act,
-  fireEvent,
-  getByLabelText,
-  screen,
-  waitFor,
-} from '@testing-library/react';
+import { act, fireEvent, screen, waitFor } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import Form, { useForm } from 'antd/lib/form/Form';
 import { SqlStatementForm } from '..';

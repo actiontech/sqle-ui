@@ -6,7 +6,7 @@ import task from '../../../../api/task';
 import workflow from '../../../../api/workflow';
 import { ResponseCode } from '../../../../data/common';
 
-const useGetDataWithRequest = () => {
+const useInitDataWithRequest = () => {
   const urlParams = useParams<{ orderId: string }>();
   const [taskInfos, setTaskInfos] = useState<IAuditTaskResV1[]>([]);
   const [refreshFlag, { toggle: refreshTask }] = useToggle(false);
@@ -48,4 +48,4 @@ const useGetDataWithRequest = () => {
   };
 };
 
-export default useGetDataWithRequest;
+export default useInitDataWithRequest;

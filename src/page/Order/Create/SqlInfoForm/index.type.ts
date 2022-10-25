@@ -28,7 +28,7 @@ export type SqlInfoFormFields = {
 
 export type DatabaseInfoProps = Pick<
   SqlInfoFormProps,
-  'form' | 'instanceNameChange' | 'clearTaskInfos' | 'clearTaskInfoWithKey'
+  'form' | 'instanceNameChange' | 'clearTaskInfoWithKey'
 > & {
   setInstanceNames: React.Dispatch<React.SetStateAction<InstanceNamesType>>;
   setChangeSqlModeDisabled: (disabled: boolean) => void;

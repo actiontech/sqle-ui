@@ -55,6 +55,15 @@ describe('test Order/hooks/useAuditOrder', () => {
     jest.useRealTimers();
   });
 
+  test('should return default value', () => {
+    const { result } = renderHook(() => useAuditOrder());
+
+    expect(result.current.taskInfos).toEqual([]);
+    expect(result.current.auditResultActiveKey).toBe('');
+    expect(result.current.isDisableFinallySubmitButton).toBeFalsy();
+    expect(result.current.disabledOperatorOrderBtnTips).toBe('');
+  });
+
   test('use the same sql mode to audit the work order and the audit result level is normal', async () => {
     const createAuditTasksSpy = mockCreateAuditTasks();
     const auditTasksGroupIdSpy = mockAuditTaskGroupId();

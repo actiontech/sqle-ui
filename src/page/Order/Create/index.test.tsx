@@ -33,7 +33,7 @@ jest.mock('moment', () => {
   });
 });
 
-describe.skip('Order/Create', () => {
+describe('Order/Create', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockUseSelector({ user: { theme: SupportTheme.LIGHT } });
@@ -49,7 +49,28 @@ describe.skip('Order/Create', () => {
     jest.clearAllTimers();
   });
 
-  const mockCreateTask = () => {
+  const mockCreateAuditTasks = () => {
+    const spy = jest.spyOn(task, 'createAuditTasksV1');
+    spy.mockImplementation(() =>
+      resolveThreeSecond({
+        task_group_id: 11,
+      })
+    );
+    return spy;
+  };
+
+  const mockAuditTaskGroupId = () => {
+    const spy = jest.spyOn(task, 'auditTaskGroupIdV1');
+    spy.mockImplementation(() =>
+      resolveThreeSecond({
+        task_group_id: 11,
+        tasks: [taskInfo],
+      })
+    );
+    return spy;
+  };
+
+  const mockCreateAndAuditTask = () => {
     const spy = jest.spyOn(task, 'createAndAuditTaskV1');
     spy.mockImplementation(() => resolveThreeSecond(taskInfo));
     return spy;
@@ -64,7 +85,7 @@ describe.skip('Order/Create', () => {
   };
 
   const mockCreateOrder = () => {
-    const spy = jest.spyOn(workflow, 'createWorkflowV1');
+    const spy = jest.spyOn(workflow, 'createWorkflowV2');
     spy.mockImplementation(() => resolveThreeSecond({}));
     return spy;
   };
@@ -81,7 +102,13 @@ describe.skip('Order/Create', () => {
   });
 
   test('should audit sql when user click audit button', async () => {
-    const createTaskSpy = mockCreateTask();
+    //different
+    const createAndAuditTaskSpy = mockCreateAndAuditTask();
+
+    //same
+    const createAuditTasksSpy = mockCreateAuditTasks();
+    const auditTasksGroupIdSpy = mockAuditTaskGroupId();
+
     const getInstanceWorkflow = mockGetInstanceWorkflowTemplate();
     const dateSpy = jest.spyOn(Date, 'now');
     dateSpy.mockReturnValue(
@@ -123,29 +150,64 @@ describe.skip('Order/Create', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
-    expect(createTaskSpy).toBeCalledTimes(1);
-    expect(createTaskSpy).toBeCalledWith({
-      instance_name: 'instance1',
-      instance_schema: 'schema1',
-      input_mybatis_xml_file: undefined,
-      input_sql_file: undefined,
-      sql: 'select * from table2',
-    });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    expect(createAuditTasksSpy).toBeCalledTimes(1);
+    expect(createAuditTasksSpy).toBeCalledWith({
+      instances: [
+        {
+          instance_name: 'instance1',
+          instance_schema: 'schema1',
+        },
+      ],
+    });
+
+    expect(auditTasksGroupIdSpy).toBeCalledTimes(1);
+    expect(auditTasksGroupIdSpy).toBeCalledWith({
+      task_group_id: 11,
+      sql: 'select * from table2',
+    });
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
     expect(getInstanceWorkflow).toBeCalledTimes(1);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+
+    //different
+    fireEvent.click(screen.getByLabelText('order.sqlInfo.isSameSqlOrder'));
+    fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
+      target: { value: 'select * from table5' },
+    });
+    fireEvent.click(screen.getByText('order.sqlInfo.audit'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(createAndAuditTaskSpy).toBeCalledTimes(1);
+    expect(createAndAuditTaskSpy).toBeCalledWith({
+      instance_name: 'instance1',
+      instance_schema: 'schema1',
+      sql: 'select * from table5',
+    });
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
     expect(container).toMatchSnapshot();
     dateSpy.mockRestore();
   });
 
   test('should create order when user input all require fields', async () => {
-    mockCreateTask();
+    mockCreateAuditTasks();
+    mockAuditTaskGroupId();
     mockGetInstanceWorkflowTemplate();
     mockGetTaskSql();
+
     const createOrderSpy = mockCreateOrder();
     renderWithThemeAndRouter(<CreateOrder />);
     await waitFor(() => {
@@ -207,6 +269,9 @@ describe.skip('Order/Create', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
 
     fireEvent.click(screen.getByText('order.createOrder.title'));
     await waitFor(() => {
@@ -218,7 +283,7 @@ describe.skip('Order/Create', () => {
     );
     expect(createOrderSpy).toBeCalledWith({
       desc: Array.from({ length: orderDescMaxLength }, () => 'e').join(''),
-      task_id: String(taskInfo.task_id),
+      task_ids: [taskInfo.task_id],
       workflow_subject: 'orderName',
     });
     await waitFor(() => {
@@ -229,9 +294,7 @@ describe.skip('Order/Create', () => {
     ).not.toHaveClass('ant-btn-loading');
 
     expect(getBySelector('.ant-modal-wrap')).toMatchSnapshot();
-    expect(
-      screen.queryByLabelText('audit.table.auditStatus')
-    ).toBeInTheDocument();
+
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
     fireEvent.click(screen.getByText('common.resetAndClose'));
 
@@ -239,13 +302,11 @@ describe.skip('Order/Create', () => {
     expect(emitSpy).toBeCalledWith(EmitterKey.Reset_Create_Order_Form);
     expect(getBySelector('.ant-modal-wrap')).toHaveStyle('display: none');
     expect(screen.getByLabelText('order.baseInfo.name')).toHaveValue('');
-    expect(
-      screen.queryByLabelText('audit.table.auditStatus')
-    ).not.toBeInTheDocument();
   });
 
   test('should show tips of unsave sql when form have dirty data at click create order', async () => {
-    mockCreateTask();
+    mockCreateAuditTasks();
+    mockAuditTaskGroupId();
     mockGetInstanceWorkflowTemplate();
     mockGetTaskSql();
     renderWithThemeAndRouter(<CreateOrder />);
@@ -308,10 +369,15 @@ describe.skip('Order/Create', () => {
   });
 
   test('should be set create order button to disabled  when the sql audit result level does not conform to the configuration', async () => {
-    const createTaskSpy = mockCreateTask();
-    createTaskSpy.mockImplementation(() =>
-      resolveThreeSecond(taskInfoErrorAuditLevel)
+    const createAuditTasksSpy = mockCreateAuditTasks();
+    const auditTasksGroupIdSpy = mockAuditTaskGroupId();
+    auditTasksGroupIdSpy.mockImplementation(() =>
+      resolveThreeSecond({
+        task_group_id: 11,
+        tasks: [taskInfoErrorAuditLevel],
+      })
     );
+
     const createOrderSpy = mockCreateOrder();
     const getInstanceWorkflowTemplate = mockGetInstanceWorkflowTemplate();
     mockGetTaskSql();
@@ -320,7 +386,7 @@ describe.skip('Order/Create', () => {
       jest.advanceTimersByTime(3000);
     });
     expect(getInstanceWorkflowTemplate).toBeCalledTimes(0);
-    expect(createTaskSpy).toBeCalledTimes(0);
+    expect(createAuditTasksSpy).toBeCalledTimes(0);
     expect(createOrderSpy).toBeCalledTimes(0);
 
     fireEvent.input(screen.getByLabelText('order.baseInfo.name'), {
@@ -352,12 +418,16 @@ describe.skip('Order/Create', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
     expect(getInstanceWorkflowTemplate).toBeCalledTimes(1);
-    expect(createTaskSpy).toBeCalledTimes(1);
+    expect(createAuditTasksSpy).toBeCalledTimes(1);
+    expect(auditTasksGroupIdSpy).toBeCalledTimes(1);
 
     expect(
       screen.getByText('order.createOrder.title').closest('button')
-    ).toHaveAttribute('disabled');
+    ).toBeDisabled();
 
     fireEvent.click(screen.getByText('order.createOrder.title'));
     await waitFor(() => {
@@ -370,9 +440,14 @@ describe.skip('Order/Create', () => {
     });
     expect(
       screen.getByText('order.createOrder.title').closest('button')
-    ).toHaveAttribute('disabled');
+    ).toBeDisabled();
 
-    createTaskSpy.mockImplementation(() => resolveThreeSecond(taskInfo));
+    auditTasksGroupIdSpy.mockImplementation(() =>
+      resolveThreeSecond({
+        task_group_id: 11,
+        tasks: [taskInfo],
+      })
+    );
     fireEvent.click(screen.getByText('order.sqlInfo.audit'));
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -383,20 +458,24 @@ describe.skip('Order/Create', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
     expect(
       screen.getByText('order.createOrder.title').closest('button')
-    ).not.toHaveAttribute('disabled');
+    ).not.toBeDisabled();
 
     fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
       target: { value: 'select * from table3' },
     });
     expect(
       screen.getByText('order.createOrder.title').closest('button')
-    ).not.toHaveAttribute('disabled');
+    ).not.toBeDisabled();
   });
 
   test('should can not create order when the result total num of get audit sql is 0', async () => {
-    mockCreateTask();
+    mockCreateAuditTasks();
+    mockAuditTaskGroupId();
     const createOrderSpy = mockCreateOrder();
     mockGetInstanceWorkflowTemplate();
     const getSqlSpy = mockGetTaskSql();
@@ -437,6 +516,9 @@ describe.skip('Order/Create', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
 
     fireEvent.click(screen.getByText('order.createOrder.title'));
     await waitFor(() => {
@@ -448,6 +530,9 @@ describe.skip('Order/Create', () => {
       target: { value: 'select * from table3' },
     });
     fireEvent.click(screen.getByText('order.sqlInfo.audit'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
