@@ -198,7 +198,6 @@ describe('Order/Create', () => {
       jest.advanceTimersByTime(3000);
     });
 
-    expect(container).toMatchSnapshot();
     dateSpy.mockRestore();
   });
 
