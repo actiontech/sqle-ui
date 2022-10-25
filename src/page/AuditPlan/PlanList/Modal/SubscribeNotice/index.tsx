@@ -120,7 +120,13 @@ const SubscribeNotice = () => {
         audit_plan_name: currentAuditPlan?.audit_plan_name ?? '',
       });
       if (res.data.code === ResponseCode.SUCCESS) {
-        message.success(t('auditPlan.subscribeNotice.form.testSuccess'));
+        if (res.data.data?.is_notify_send_normal) {
+          message.success(t('auditPlan.subscribeNotice.form.testSuccess'));
+        } else {
+          message.error(
+            res.data.data?.send_error_message ?? t('common.unknownError')
+          );
+        }
       }
     } finally {
       hide();

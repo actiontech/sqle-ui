@@ -73,7 +73,11 @@ describe('SubscribeNotice', () => {
 
   const mockTestAuditPlanNotifyConfigV1 = () => {
     const spy = jest.spyOn(audit_plan, 'testAuditPlanNotifyConfigV1');
-    spy.mockImplementation(() => resolveThreeSecond({}));
+    spy.mockImplementation(() =>
+      resolveThreeSecond({
+        is_notify_send_normal: true,
+      })
+    );
     return spy;
   };
 
@@ -236,6 +240,52 @@ describe('SubscribeNotice', () => {
     expect(
       screen.queryByText('auditPlan.subscribeNotice.form.testSuccess')
     ).not.toBeInTheDocument();
+  });
+
+  test('should show error message when request is_smtp_send_normal is equal false', async () => {
+    const testSpy = mockTestAuditPlanNotifyConfigV1();
+    testSpy.mockImplementation(() =>
+      resolveThreeSecond({
+        is_notify_send_normal: false,
+        send_error_message: 'error message',
+      })
+    );
+    renderWithTheme(<SubscribeNotice />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.mouseEnter(screen.getByTestId('testMessage'));
+
+    await waitFor(() => {
+      jest.runAllTimers();
+    });
+    expect(
+      screen.queryByText('auditPlan.subscribeNotice.form.testTips')
+    ).toBeInTheDocument();
+    fireEvent.click(screen.getByTestId('testMessage'));
+    expect(
+      screen.queryByText('auditPlan.subscribeNotice.form.testLoading')
+    ).toBeInTheDocument();
+    expect(testSpy).toBeCalledTimes(1);
+    expect(testSpy).toBeCalledWith({
+      audit_plan_name: 'audit_for_java_app11',
+    });
+    fireEvent.click(screen.getByTestId('testMessage'));
+    expect(testSpy).toBeCalledTimes(1);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.queryByText('auditPlan.subscribeNotice.form.testLoading')
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('auditPlan.subscribeNotice.form.testSuccess')
+    ).not.toBeInTheDocument();
+    expect(screen.queryByText('error message')).toBeInTheDocument();
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(screen.queryByText('error message')).not.toBeInTheDocument();
   });
 
   test('should set template to default when user click reset template button', async () => {
