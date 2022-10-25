@@ -1,74 +1,72 @@
 import { Button, Form, Radio, RadioChangeEvent, Upload } from 'antd';
-import { useForm } from 'antd/lib/form/Form';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import MonacoEditor from 'react-monaco-editor';
-import EmptyBox from '../../../../components/EmptyBox';
-import { PageFormLayout } from '../../../../data/common';
-import EmitterKey from '../../../../data/EmitterKey';
-import useChangeTheme from '../../../../hooks/useChangeTheme';
-import useMonacoEditor from '../../../../hooks/useMonacoEditor';
-import useStyles from '../../../../theme';
-import { getFileFromUploadChangeEvent } from '../../../../utils/Common';
-import EventEmitter from '../../../../utils/EventEmitter';
-import { SqlStatementFields } from '../../SqlStatementFormTabs';
-import { SQLInputType } from '../index.enum';
-import { SameSqlModeProps } from './index.type';
+import { SQLInputType, SqlStatementFields, SqlStatementFormProps } from '.';
+import EmptyBox from '../../../components/EmptyBox';
+import { PageFormLayout } from '../../../data/common';
+import useChangeTheme from '../../../hooks/useChangeTheme';
+import useMonacoEditor from '../../../hooks/useMonacoEditor';
+import useStyles from '../../../theme';
+import { getFileFromUploadChangeEvent } from '../../../utils/Common';
 
-const SameSqlMode: React.FC<SameSqlModeProps> = ({
-  submitLoading,
-  submit,
-  currentTabIndex,
-  formValueChange,
+const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
+  form,
+  isClearFormWhenChangeSqlType = false,
+  sqlStatement,
+  fieldName,
+  hideUpdateMybatisFile = false,
 }) => {
-  const { currentEditorTheme } = useChangeTheme();
   const { t } = useTranslation();
-  const [form] = useForm();
   const { editorDidMount } = useMonacoEditor(form, { formName: 'sql' });
   const theme = useStyles();
+  const { currentEditorTheme } = useChangeTheme();
 
   const [currentSQLInputType, setCurrentSQLInputTYpe] = useState(
     SQLInputType.manualInput
   );
 
-  const currentSQLInputTypeChange = useCallback(
-    (event: RadioChangeEvent) => {
-      setCurrentSQLInputTYpe(event.target.value);
-      form.resetFields(['sql', 'sqlFile', 'mybatisFile']);
-    },
-    [form]
-  );
+  const currentSQLInputTypeChange = (event: RadioChangeEvent) => {
+    setCurrentSQLInputTYpe(event.target.value);
+    if (isClearFormWhenChangeSqlType) {
+      form.resetFields([
+        generateFieldName('sql'),
+        generateFieldName('sqlFile'),
+        generateFieldName('mybatisFile'),
+      ]);
+    }
+  };
 
   const removeFile = useCallback(
     (fileName: keyof SqlStatementFields) => {
       form.setFieldsValue({
-        [fileName]: [],
+        [fieldName ?? '0']: {
+          [fileName]: [],
+        },
       });
     },
-    [form]
+    [fieldName, form]
   );
 
-  const onFinish = async () => {
-    const values = await form.validateFields();
-    submit(values, currentTabIndex);
+  const generateFieldName = (name: string) => {
+    return [fieldName ?? '0', name];
   };
 
   useEffect(() => {
-    const clearForm = () => {
-      form.resetFields();
-      setCurrentSQLInputTYpe(SQLInputType.manualInput);
-    };
-    EventEmitter.subscribe(EmitterKey.Reset_Create_Order_Form, clearForm);
-    return () => {
-      EventEmitter.unsubscribe(EmitterKey.Reset_Create_Order_Form, clearForm);
-    };
-  }, [form]);
+    if (sqlStatement) {
+      form.setFieldsValue({
+        [fieldName ?? '0']: {
+          sql: sqlStatement,
+        },
+      });
+    }
+  }, [fieldName, form, sqlStatement]);
 
   return (
-    <Form {...PageFormLayout} form={form} onValuesChange={formValueChange}>
+    <>
       <Form.Item
         label={t('order.sqlInfo.uploadType')}
-        name="sqlInputType"
+        name={generateFieldName('sqlInputType')}
         initialValue={SQLInputType.manualInput}
       >
         <Radio.Group onChange={currentSQLInputTypeChange}>
@@ -78,14 +76,16 @@ const SameSqlMode: React.FC<SameSqlModeProps> = ({
           <Radio value={SQLInputType.uploadFile}>
             {t('order.sqlInfo.uploadFile')}
           </Radio>
-          <Radio value={SQLInputType.uploadMybatisFile}>
-            {t('order.sqlInfo.updateMybatisFile')}
-          </Radio>
+          <EmptyBox if={!hideUpdateMybatisFile}>
+            <Radio value={SQLInputType.uploadMybatisFile}>
+              {t('order.sqlInfo.updateMybatisFile')}
+            </Radio>
+          </EmptyBox>
         </Radio.Group>
       </Form.Item>
       <EmptyBox if={currentSQLInputType === SQLInputType.manualInput}>
         <Form.Item
-          name="sql"
+          name={generateFieldName('sql')}
           label={t('order.sqlInfo.sql')}
           initialValue="/* input your sql */"
           wrapperCol={{
@@ -111,7 +111,7 @@ const SameSqlMode: React.FC<SameSqlModeProps> = ({
         <Form.Item
           label={t('order.sqlInfo.sqlFile')}
           valuePropName="fileList"
-          name="sqlFile"
+          name={generateFieldName('sqlFile')}
           rules={[
             {
               required: true,
@@ -130,9 +130,9 @@ const SameSqlMode: React.FC<SameSqlModeProps> = ({
       </EmptyBox>
       <EmptyBox if={currentSQLInputType === SQLInputType.uploadMybatisFile}>
         <Form.Item
-          label={t('order.sqlInfo.updateMybatisFile')}
+          label={t('order.sqlInfo.mybatisFile')}
           valuePropName="fileList"
-          name="mybatisFile"
+          name={generateFieldName('mybatisFile')}
           rules={[
             {
               required: true,
@@ -149,12 +149,8 @@ const SameSqlMode: React.FC<SameSqlModeProps> = ({
           </Upload>
         </Form.Item>
       </EmptyBox>
-      <Form.Item label=" " colon={false}>
-        <Button onClick={onFinish} type="primary" loading={submitLoading}>
-          {t('order.sqlInfo.audit')}
-        </Button>
-      </Form.Item>
-    </Form>
+    </>
   );
 };
-export default SameSqlMode;
+
+export default SqlStatementForm;

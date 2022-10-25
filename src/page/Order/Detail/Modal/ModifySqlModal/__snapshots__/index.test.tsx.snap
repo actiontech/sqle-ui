@@ -6,6 +6,12 @@ exports[`Order/Detail/Modal/ModifySqlModal should match snapshot 1`] = `
 </body>
 `;
 
+exports[`Order/Detail/Modal/ModifySqlModal should match snapshot 2`] = `
+<body>
+  <div />
+</body>
+`;
+
 exports[`Order/Detail/Modal/ModifySqlModal should send sql file when user upload sql file 1`] = `
 <body
   class="ant-scrolling-effect"
@@ -26,7 +32,7 @@ exports[`Order/Detail/Modal/ModifySqlModal should send sql file when user upload
         class="ant-modal-mask"
       />
       <div
-        aria-labelledby="rcDialogTitle4"
+        aria-labelledby="rcDialogTitle6"
         class="ant-modal-wrap"
         role="dialog"
         tabindex="-1"
@@ -49,7 +55,7 @@ exports[`Order/Detail/Modal/ModifySqlModal should send sql file when user upload
             >
               <div
                 class="ant-modal-title"
-                id="rcDialogTitle4"
+                id="rcDialogTitle6"
               >
                 order.modifySql.title
               </div>
@@ -68,7 +74,7 @@ exports[`Order/Detail/Modal/ModifySqlModal should send sql file when user upload
                   >
                     <label
                       class=""
-                      for="sqlInputType"
+                      for="0_sqlInputType"
                       title="order.sqlInfo.uploadType"
                     >
                       order.sqlInfo.uploadType
@@ -85,7 +91,7 @@ exports[`Order/Detail/Modal/ModifySqlModal should send sql file when user upload
                       >
                         <div
                           class="ant-radio-group ant-radio-group-outline"
-                          id="sqlInputType"
+                          id="0_sqlInputType"
                         >
                           <label
                             class="ant-radio-wrapper"
@@ -139,7 +145,7 @@ exports[`Order/Detail/Modal/ModifySqlModal should send sql file when user upload
                   >
                     <label
                       class="ant-form-item-required"
-                      for="sqlFile"
+                      for="0_sqlFile"
                       title="order.sqlInfo.sqlFile"
                     >
                       order.sqlInfo.sqlFile
@@ -167,7 +173,7 @@ exports[`Order/Detail/Modal/ModifySqlModal should send sql file when user upload
                             >
                               <input
                                 accept=".sql"
-                                id="sqlFile"
+                                id="0_sqlFile"
                                 style="display: none;"
                                 type="file"
                               />
@@ -186,11 +192,6 @@ exports[`Order/Detail/Modal/ModifySqlModal should send sql file when user upload
                           />
                         </span>
                       </div>
-                    </div>
-                    <div
-                      class="ant-form-item-extra"
-                    >
-                      order.modifySql.sqlFileTips
                     </div>
                   </div>
                 </div>

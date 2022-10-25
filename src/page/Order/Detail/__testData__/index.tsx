@@ -502,6 +502,17 @@ export const taskInfoErrorAuditLevel: IAuditTaskResV1 = {
   score: 40,
 } as IAuditTaskResV1;
 
+export const taskInfoWarnAuditLevel: IAuditTaskResV1 = {
+  task_id: 5,
+  instance_name: 'db1',
+  instance_schema: '',
+  pass_rate: 0,
+  status: 'audited',
+  sql_source: 'form_data',
+  audit_level: AuditTaskResV1AuditLevelEnum.warn,
+  score: 40,
+} as IAuditTaskResV1;
+
 export const taskSqls = [
   {
     number: 1,

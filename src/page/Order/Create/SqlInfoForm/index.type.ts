@@ -1,13 +1,18 @@
 import { FormInstance } from 'antd';
 import { WorkflowResV2ModeEnum } from '../../../../api/common.enum';
-import { SQLInputType } from '../index.enum';
+import { SqlStatementFields } from '../../SqlStatementFormTabs';
 
 export type SqlInfoFormProps = {
   form: FormInstance<SqlInfoFormFields>;
-  submit: (values: SqlInfoFormFields, currentTabIndex: number) => Promise<void>;
+  submit: (
+    values: SqlInfoFormFields,
+    currentTabIndex: number,
+    currentTabKey: string
+  ) => Promise<void>;
   updateDirtyData: (dirtyDataStatus: boolean) => void;
   instanceNameChange?: (name: string) => void;
   clearTaskInfos: () => void;
+  clearTaskInfoWithKey: (key: string) => void;
 };
 
 export type DatabaseInfoFields = {
@@ -16,17 +21,14 @@ export type DatabaseInfoFields = {
 };
 
 export type SqlInfoFormFields = {
-  sqlInputType: SQLInputType;
-  sql: string;
-  sqlFile: File[];
-  mybatisFile: File[];
   isSameSqlOrder: boolean;
   dataBaseInfo: Array<DatabaseInfoFields>;
+  [key: string]: SqlStatementFields | boolean | Array<DatabaseInfoFields>;
 };
 
 export type DatabaseInfoProps = Pick<
   SqlInfoFormProps,
-  'form' | 'instanceNameChange'
+  'form' | 'instanceNameChange' | 'clearTaskInfos' | 'clearTaskInfoWithKey'
 > & {
   setInstanceNames: React.Dispatch<React.SetStateAction<InstanceNamesType>>;
   setChangeSqlModeDisabled: (disabled: boolean) => void;
@@ -34,7 +36,7 @@ export type DatabaseInfoProps = Pick<
 };
 
 export type SqlContentFields = Pick<
-  SqlInfoFormFields,
+  SqlStatementFields,
   'sql' | 'sqlFile' | 'mybatisFile'
 >;
 

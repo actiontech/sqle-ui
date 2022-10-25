@@ -1,4 +1,3 @@
-import { ClockCircleOutlined } from '@ant-design/icons';
 import { useBoolean } from 'ahooks';
 import moment from 'moment';
 import {
@@ -69,7 +68,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     rejectStart();
     props.reject(values.reason, rejectStepId).finally(() => {
       rejectFinish();
-      closeRejectModal();
+      resetAndCloseRejectModal();
       setRejectStepId(0);
     });
   };

@@ -1,9 +1,9 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { WorkflowResV2ModeEnum } from '../../../api/common.enum';
-import instance from '../../../api/instance';
-import { resolveThreeSecond } from '../../../testUtils/mockRequest';
-import useModifySql from './useModifySql';
-import { instanceWorkflowTemplate, taskInfo } from './__testData__';
+import { WorkflowResV2ModeEnum } from '../../../../../api/common.enum';
+import instance from '../../../../../api/instance';
+import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
+import useModifySql from '../useModifySql';
+import { instanceWorkflowTemplate, taskInfo } from '../../__testData__';
 
 describe('Order/useModifySql', () => {
   beforeEach(() => {

@@ -1,5 +1,5 @@
 import { useTheme } from '@material-ui/styles';
-import { useBoolean, useRequest, useToggle } from 'ahooks';
+import { useBoolean } from 'ahooks';
 import {
   Button,
   Card,
@@ -11,16 +11,12 @@ import {
   Typography,
 } from 'antd';
 import { cloneDeep } from 'lodash';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router';
-import { IAuditTaskResV1, IGetWorkflowTasksItemV1 } from '../../../api/common';
 import {
-  GetWorkflowTasksItemV1StatusEnum,
   WorkflowRecordResV2StatusEnum,
   WorkflowResV2ModeEnum,
 } from '../../../api/common.enum';
-import task from '../../../api/task';
 import workflow from '../../../api/workflow';
 import BackButton from '../../../components/BackButton';
 import EmptyBox from '../../../components/EmptyBox';
@@ -29,132 +25,50 @@ import { ResponseCode } from '../../../data/common';
 import { Theme } from '../../../types/theme.type';
 import { formatTime } from '../../../utils/Common';
 import AuditResultCollection from '../AuditResult/AuditResultCollection';
-import { MaintenanceTimeInfoType } from '../AuditResult/index.type';
 import ModifySqlModal from './Modal/ModifySqlModal';
 import OrderHistory from './Modal/OrderHistory';
 import OrderSteps from './OrderSteps';
-import { TasksStatusNumberType } from './OrderSteps/index.type';
-import useModifySql from './useModifySql';
+import useModifySql from './hooks/useModifySql';
+import useGetDataWithRequest from './hooks/useGetDataWithRequest';
+import useGenerateOrderStepsProps from './hooks/useGenerateOrderStepsProps';
 
 const Order = () => {
-  const urlParams = useParams<{ orderId: string }>();
   const theme = useTheme<Theme>();
   const { t } = useTranslation();
   const [historyVisible, { setTrue: showHistory, setFalse: closeHistory }] =
     useBoolean();
-  const [refreshFlag, { toggle: refreshTask }] = useToggle(false);
-  const [taskInfos, setTaskInfos] = useState<IAuditTaskResV1[]>([]);
   const [auditResultActiveKey, setAuditResultActiveKey] = useState<string>('');
-  const [tempAuditResultActiveKey, setTempAuditResultActiveKey] =
-    useState<string>('');
-  const [canRejectOrder, setCanRejectOrder] = useState(false);
-  const [refreshOverviewFlag, { toggle: refreshOverviewAction }] =
-    useToggle(false);
-  const [maintenanceTimeInfo, setMaintenanceTimeInfo] =
-    useState<MaintenanceTimeInfoType>([]);
-  const [tasksStatusNumber, setTasksStatusNumber] =
-    useState<TasksStatusNumberType>();
 
-  const { data: orderInfo, refresh: refreshOrder } = useRequest(
-    () =>
-      workflow.getWorkflowV2({
-        workflow_id: Number.parseInt(urlParams.orderId),
-      }),
-    {
-      formatResult(res) {
-        return res.data.data;
-      },
-    }
-  );
+  const { taskInfos, orderInfo, refreshOrder, refreshTask } =
+    useGetDataWithRequest();
 
-  useEffect(() => {
-    const request = (taskId: string) => {
-      return task.getAuditTaskV1({ task_id: taskId });
-    };
-    if (!!orderInfo) {
-      Promise.all(
-        (orderInfo?.record?.tasks ?? []).map((v) =>
-          request(v.task_id?.toString() ?? '')
-        )
-      ).then((res) => {
-        if (res.every((v) => v.data.code === ResponseCode.SUCCESS)) {
-          setTaskInfos(res.map((v) => v.data.data!));
-        }
-      });
-    }
-  }, [orderInfo, refreshFlag]);
-
-  const pass = React.useCallback(
-    async (stepId: number) => {
-      return workflow
-        .approveWorkflowV1({
-          workflow_id: `${orderInfo?.workflow_id}`,
-          workflow_step_id: `${stepId}`,
-        })
-        .then((res) => {
-          if (res.data.code === ResponseCode.SUCCESS) {
-            message.success(t('order.operator.approveSuccessTips'));
-            refreshOrder();
-            refreshOverviewAction();
-          }
-        });
-    },
-    [orderInfo?.workflow_id, refreshOrder, t, refreshOverviewAction]
-  );
-
-  const executing = React.useCallback(async () => {
-    return workflow
-      .executeTasksOnWorkflowV2({
-        workflow_id: `${orderInfo?.workflow_id}`,
-      })
-      .then((res) => {
-        if (res.data.code === ResponseCode.SUCCESS) {
-          message.success(t('order.operator.executingTips'));
-          refreshOrder();
-          refreshTask();
-          refreshOverviewAction();
-        }
-      });
-  }, [
-    orderInfo?.workflow_id,
+  const {
+    pass,
+    refreshOverviewFlag,
+    executing,
+    reject,
+    maintenanceTimeInfo,
+    canRejectOrder,
+    tasksStatusNumber,
+    getOverviewListSuccessHandle,
+  } = useGenerateOrderStepsProps({
+    workflowId: orderInfo?.workflow_id?.toString() ?? '',
     refreshOrder,
-    refreshOverviewAction,
     refreshTask,
-    t,
-  ]);
-
-  const reject = React.useCallback(
-    async (reason: string, stepId: number) => {
-      return workflow
-        .rejectWorkflowV1({
-          workflow_id: `${orderInfo?.workflow_id}`,
-          workflow_step_id: `${stepId}`,
-          reason,
-        })
-        .then((res) => {
-          if (res.data.code === ResponseCode.SUCCESS) {
-            message.success(t('order.operator.rejectSuccessTips'));
-            refreshOrder();
-            refreshOverviewAction();
-          }
-        });
-    },
-    [orderInfo?.workflow_id, refreshOrder, refreshOverviewAction, t]
-  );
+  });
 
   const {
     taskInfos: tempTaskInfos,
-    visible,
+    modifySqlModalVisibility,
     openModifySqlModal,
     closeModifySqlModal,
     modifySqlSubmit,
     resetAllState,
-    updateOrderDisabled,
+    isDisableFinallySubmitButton,
     disabledOperatorOrderBtnTips,
-  } = useModifySql(
-    orderInfo?.mode ?? WorkflowResV2ModeEnum.same_sqls,
-    setTempAuditResultActiveKey
-  );
+    auditResultActiveKey: tempAuditResultActiveKey,
+    setAuditResultActiveKey: setTempAuditResultActiveKey,
+  } = useModifySql(orderInfo?.mode ?? WorkflowResV2ModeEnum.same_sqls);
 
   const [
     updateLoading,
@@ -216,48 +130,6 @@ const Order = () => {
         closeOrderFinish();
       });
   }, [closeOrderFinish, orderInfo?.workflow_id, refreshOrder, startCloseOrder]);
-
-  const getOverviewListSuccessHandle = (list: IGetWorkflowTasksItemV1[]) => {
-    if (!list.some) {
-      return;
-    }
-
-    setMaintenanceTimeInfo?.(
-      list.map((v) => ({
-        instanceName: v.instance_name ?? '',
-        maintenanceTime: v.instance_maintenance_times ?? [],
-      }))
-    );
-
-    const canRejectOrder = list.every(
-      (v) =>
-        !!v.status &&
-        ![
-          GetWorkflowTasksItemV1StatusEnum.exec_succeeded,
-          GetWorkflowTasksItemV1StatusEnum.executing,
-          GetWorkflowTasksItemV1StatusEnum.exec_failed,
-          GetWorkflowTasksItemV1StatusEnum.exec_scheduled,
-        ].includes(v.status)
-    );
-    setCanRejectOrder?.(canRejectOrder);
-    let succeededNumber = 0,
-      executingNumber = 0,
-      failedNumber = 0;
-    list.forEach((v) => {
-      if (v.status === GetWorkflowTasksItemV1StatusEnum.exec_succeeded) {
-        succeededNumber++;
-      } else if (v.status === GetWorkflowTasksItemV1StatusEnum.executing) {
-        executingNumber++;
-      } else if (v.status === GetWorkflowTasksItemV1StatusEnum.exec_failed) {
-        failedNumber++;
-      }
-    });
-    setTasksStatusNumber({
-      failed: failedNumber,
-      success: succeededNumber,
-      executing: executingNumber,
-    });
-  };
 
   return (
     <>
@@ -366,16 +238,16 @@ const Order = () => {
               <Space>
                 <Popconfirm
                   title={
-                    updateOrderDisabled
+                    isDisableFinallySubmitButton
                       ? disabledOperatorOrderBtnTips
                       : t('order.modifySql.updateOrderConfirmTips')
                   }
                   onConfirm={updateOrderSql}
                   disabled={updateLoading}
-                  okButtonProps={{ disabled: updateOrderDisabled }}
+                  okButtonProps={{ disabled: isDisableFinallySubmitButton }}
                 >
                   <Button
-                    disabled={updateOrderDisabled}
+                    disabled={isDisableFinallySubmitButton}
                     type="primary"
                     loading={updateLoading}
                   >
@@ -406,7 +278,7 @@ const Order = () => {
         <ModifySqlModal
           cancel={closeModifySqlModal}
           submit={modifySqlSubmit}
-          visible={visible}
+          visible={modifySqlModalVisibility}
           currentOrderTasks={taskInfos}
           sqlMode={orderInfo?.mode ?? WorkflowResV2ModeEnum.same_sqls}
         />

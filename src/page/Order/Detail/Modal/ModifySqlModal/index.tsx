@@ -1,211 +1,131 @@
 import { useBoolean } from 'ahooks';
-import { Alert, Button, Modal, Space, Tabs } from 'antd';
-import { cloneDeep } from 'lodash';
-import React, { useEffect, useState } from 'react';
+import { Alert, Button, Form, Modal, Space } from 'antd';
+import { useForm } from 'antd/lib/form/Form';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { IAuditTaskResV1 } from '../../../../../api/common';
 import {
   AuditTaskResV1SqlSourceEnum,
   WorkflowResV2ModeEnum,
 } from '../../../../../api/common.enum';
 import task from '../../../../../api/task';
-import {
-  IAuditTaskGroupIdV1Params,
-  ICreateAndAuditTaskV1Params,
-  ICreateAuditTasksV1Params,
-} from '../../../../../api/task/index.d';
+
 import EmptyBox from '../../../../../components/EmptyBox';
-import { ModalSize, ResponseCode } from '../../../../../data/common';
+import {
+  ModalFormLayout,
+  ModalSize,
+  ResponseCode,
+} from '../../../../../data/common';
+import { DatabaseInfoFields } from '../../../Create/SqlInfoForm/index.type';
+import {
+  SqlStatementFields,
+  SqlStatementForm,
+  SqlStatementFormTabs,
+  SqlStatementFormTabsRefType,
+} from '../../../SqlStatementFormTabs';
 import { ModifySqlModalProps } from './index.type';
-import ModifySqlForm from './ModifySqlForm';
-import { ModifySqlFormFields } from './ModifySqlForm/index.type';
 
 const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
-  currentOrderTasks,
+  currentOrderTasks = [],
   sqlMode,
-  ...props
+  submit,
+  visible,
+  cancel,
 }) => {
   const { t } = useTranslation();
+  const [form] = useForm<{ [key in string]: SqlStatementFields }>();
+  const sqlStatementFormTabsRef = useRef<SqlStatementFormTabsRefType>(null);
+
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
     useBoolean();
-  const [currentTab, setCurrentTab] = useState('');
-  const [taskInfos, setTaskInfos] = useState<IAuditTaskResV1[]>([]);
-  const [sqlFormInfo, setSqlFormInfo] = useState<
-    Map<string, ModifySqlFormFields>
-  >(new Map());
-  const [currentDefaultSqlValue, setCurrentDefaultValue] = useState('');
-  const [differenceSqlTabIndexTaskIdMap, setDifferenceSqlTabIndexTaskIdMap] =
-    useState<Map<number, string>>(new Map());
+  const [sqlStatementValue, setSqlStatementValue] =
+    useState<Record<string, string>>();
 
-  const auditSameSqlMode = () => {
-    const createAuditTasksParams: ICreateAuditTasksV1Params = {
-      instances:
-        taskInfos.map((v) => ({
-          instance_name: v.instance_name,
-          instance_schema: v.instance_schema,
-        })) ?? [],
-    };
-
-    const values = sqlFormInfo.get(taskInfos[0]?.task_id?.toString()!);
-    let sql: string | undefined;
-    if (values) {
-      sql = values.sql;
-    } else {
-      sql = currentDefaultSqlValue;
-    }
-    return task.createAuditTasksV1(createAuditTasksParams).then((res) => {
-      if (
-        res.data.code === ResponseCode.SUCCESS &&
-        res.data.data?.task_group_id
-      ) {
-        const auditTaskPrams: IAuditTaskGroupIdV1Params = {
-          task_group_id: res.data.data?.task_group_id,
-          sql: sql,
-          input_sql_file: values?.sqlFile?.[0],
-        };
-        return task.auditTaskGroupIdV1(auditTaskPrams).then((res) => {
-          if (res && res.data.code === ResponseCode.SUCCESS) {
-            return res.data.data;
-          }
-        });
-      }
+  const sqlStatementInfo = useMemo(() => {
+    return currentOrderTasks.map((v) => {
+      return {
+        key: v.task_id?.toString() ?? '',
+        instanceName: v.instance_name ?? '',
+        sql: sqlStatementValue?.[v.task_id?.toString() ?? ''],
+      };
     });
-  };
-
-  const auditDifferenceSqlMode = () => {
-    const currentTask = taskInfos.find(
-      (v) => v.task_id?.toString() === currentTab
-    );
-    if (!currentTask) {
-      submitFinish();
-      return;
-    }
-    const values = sqlFormInfo.get(currentTab);
-    let sql: string | undefined;
-    if (values) {
-      sql = values.sql;
-    } else {
-      sql = currentDefaultSqlValue;
-    }
-    const params: ICreateAndAuditTaskV1Params = {
-      instance_name: currentTask.instance_name ?? '',
-      instance_schema: currentTask.instance_schema ?? '',
-      sql: sql,
-      input_sql_file: values?.sqlFile?.[0],
-    };
-    return task.createAndAuditTaskV1(params).then((res) => {
-      if (res && res.data.code === ResponseCode.SUCCESS) {
-        return res.data.data;
-      }
-    });
-  };
+  }, [currentOrderTasks, sqlStatementValue]);
 
   const auditSql = async () => {
     startSubmit();
-    if (sqlMode === WorkflowResV2ModeEnum.same_sqls) {
-      auditSameSqlMode()
-        ?.then((res) => {
-          if (res && res.tasks) {
-            setTaskInfos(res.tasks);
-            props.submit(res.tasks);
-          }
-        })
-        .finally(() => {
-          submitFinish();
-        });
-    } else {
-      auditDifferenceSqlMode()
-        ?.then((res) => {
-          const currentTabIndex = taskInfos.findIndex(
-            (v) => v.task_id?.toString() === currentTab
-          );
-          if (currentTabIndex === -1) {
-            return;
-          }
-          setDifferenceSqlTabIndexTaskIdMap((v) => {
-            const cloneValue = cloneDeep(v);
-            cloneValue.set(currentTabIndex, res?.task_id?.toString() ?? '');
-            return cloneValue;
+    try {
+      const sqlStatementInfo = await form.validateFields();
+      const currentTabIndex = sqlStatementFormTabsRef.current?.activeIndex ?? 0;
+      const currentTabKey = sqlStatementFormTabsRef.current?.activeKey ?? '';
+      const dataBaseInfo: Array<DatabaseInfoFields> =
+        currentOrderTasks.map((v) => ({
+          instanceName: v.instance_name ?? '',
+          instanceSchema: v.instance_schema ?? '',
+        })) ?? [];
+      await submit(
+        {
+          ...sqlStatementInfo,
+          dataBaseInfo,
+          isSameSqlOrder: sqlMode === WorkflowResV2ModeEnum.same_sqls,
+        },
+        currentTabIndex,
+        currentTabKey
+      );
+    } finally {
+      submitFinish();
+    }
+  };
+
+  useEffect(() => {
+    const getAllSqlStatement = () => {
+      const request = (taskId: string) => {
+        return task
+          .getAuditTaskSQLContentV1({
+            task_id: taskId,
+          })
+          .then((res) => {
+            if (res.data.code === ResponseCode.SUCCESS) {
+              return {
+                taskId,
+                sql: res.data.data?.sql ?? '',
+              };
+            }
           });
-          if (res) {
-            let existIndex = -1;
-            const cloneTaskInfos = cloneDeep(taskInfos);
-            const previousTaskId =
-              differenceSqlTabIndexTaskIdMap.get(currentTabIndex);
-            if (previousTaskId) {
-              existIndex = cloneTaskInfos.findIndex(
-                (v) => v.task_id?.toString() === previousTaskId
-              );
-              if (existIndex !== -1) {
-                cloneTaskInfos.splice(existIndex, 1);
-              }
-            }
-            if (existIndex === -1) {
-              cloneTaskInfos.push(res);
-            } else {
-              cloneTaskInfos.splice(existIndex, 0, res);
-            }
-            setTaskInfos(cloneTaskInfos);
-            props.submit(cloneTaskInfos);
-            setCurrentTab(res.task_id?.toString() ?? '');
-          }
-        })
-        .finally(() => {
-          submitFinish();
-        });
-    }
-  };
+      };
 
-  const updateSqlFormInfo = (taskId: string, values: ModifySqlFormFields) => {
-    setSqlFormInfo((v) => {
-      const cloneValue = cloneDeep(v);
-      cloneValue.set(taskId, values);
-      return cloneValue;
-    });
-  };
-
-  useEffect(() => {
-    const currentTask = taskInfos.find(
-      (v) => v.task_id?.toString() === currentTab
-    );
-    if (
-      props.visible &&
-      currentTask?.sql_source === AuditTaskResV1SqlSourceEnum.form_data
-    ) {
-      task
-        .getAuditTaskSQLContentV1({
-          task_id: `${currentTask.task_id}`,
-        })
-        .then((res) => {
-          if (res.data.code === ResponseCode.SUCCESS) {
-            setCurrentDefaultValue(res.data.data?.sql ?? '');
+      const formDataTasks = currentOrderTasks.filter(
+        (v) => v.sql_source === AuditTaskResV1SqlSourceEnum.form_data
+      );
+      Promise.all(
+        formDataTasks.map((v) => request(v.task_id?.toString() ?? ''))
+      ).then((res) => {
+        res.forEach((v) => {
+          if (v) {
+            setSqlStatementValue((sql) => ({ ...sql, [v.taskId]: v.sql }));
           }
         });
-    }
-  }, [taskInfos, currentTab, props.visible]);
-
-  useEffect(() => {
-    setTaskInfos(currentOrderTasks ?? []);
-    setCurrentTab(currentOrderTasks?.[0]?.task_id?.toString() ?? '');
-    (currentOrderTasks ?? []).forEach((order, index) => {
-      setDifferenceSqlTabIndexTaskIdMap((v) => {
-        const cloneValue = cloneDeep(v);
-        cloneValue.set(index, order?.task_id?.toString() ?? '');
-        return cloneValue;
       });
-    });
-  }, [currentOrderTasks]);
+    };
+
+    if (visible) {
+      getAllSqlStatement();
+      if (sqlMode === WorkflowResV2ModeEnum.different_sqls) {
+        sqlStatementFormTabsRef.current?.tabsChangeHandle(
+          currentOrderTasks[0].task_id?.toString() ?? ''
+        );
+      }
+    }
+  }, [currentOrderTasks, visible, sqlMode]);
 
   return (
     <Modal
       title={t('order.modifySql.title')}
       width={ModalSize.big}
-      visible={props.visible}
+      visible={visible}
       closable={false}
       footer={
         <Space>
           <Alert message={t('order.modifySql.submitTips')} type="warning" />
-          <Button onClick={props.cancel} disabled={submitLoading}>
+          <Button onClick={cancel} disabled={submitLoading}>
             {t('common.close')}
           </Button>
           <Button type="primary" onClick={auditSql} loading={submitLoading}>
@@ -214,35 +134,27 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
         </Space>
       }
     >
-      <EmptyBox
-        if={sqlMode === WorkflowResV2ModeEnum.different_sqls}
-        defaultNode={
-          <ModifySqlForm
-            updateSqlFormInfo={updateSqlFormInfo}
-            currentTaskId={taskInfos[0]?.task_id?.toString() ?? ''}
-            currentDefaultSqlValue={currentDefaultSqlValue}
-          />
-        }
-      >
-        <Tabs
-          activeKey={currentTab}
-          onChange={(tabKey) => {
-            setCurrentTab(tabKey);
-          }}
+      <Form form={form} {...ModalFormLayout}>
+        <EmptyBox
+          if={sqlMode === WorkflowResV2ModeEnum.different_sqls}
+          defaultNode={
+            <SqlStatementForm
+              form={form}
+              sqlStatement={
+                sqlStatementValue?.[currentOrderTasks[0]?.task_id ?? '']
+              }
+              hideUpdateMybatisFile={true}
+            />
+          }
         >
-          {taskInfos.map((v) => {
-            return (
-              <Tabs.TabPane tab={v.instance_name} key={v.task_id}>
-                <ModifySqlForm
-                  updateSqlFormInfo={updateSqlFormInfo}
-                  currentTaskId={v.task_id?.toString()!}
-                  currentDefaultSqlValue={currentDefaultSqlValue}
-                />
-              </Tabs.TabPane>
-            );
-          })}
-        </Tabs>
-      </EmptyBox>
+          <SqlStatementFormTabs
+            ref={sqlStatementFormTabsRef}
+            form={form}
+            sqlStatementInfo={sqlStatementInfo}
+            hideUpdateMybatisFile={true}
+          />
+        </EmptyBox>
+      </Form>
     </Modal>
   );
 };

@@ -14,22 +14,12 @@ import {
   Tooltip,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
-import { cloneDeep, remove } from 'lodash';
+import { cloneDeep } from 'lodash';
 import moment from 'moment';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { IAuditTaskResV1 } from '../../../api/common';
-import {
-  AuditTaskResV1SqlSourceEnum,
-  CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
-} from '../../../api/common.enum';
-import task from '../../../api/task';
-import {
-  IAuditTaskGroupIdV1Params,
-  ICreateAndAuditTaskV1Params,
-  ICreateAuditTasksV1Params,
-} from '../../../api/task/index.d';
+import { AuditTaskResV1SqlSourceEnum } from '../../../api/common.enum';
 import workflow from '../../../api/workflow';
 import { ICreateWorkflowV2Params } from '../../../api/workflow/index.d';
 import EmptyBox from '../../../components/EmptyBox';
@@ -39,7 +29,7 @@ import { Theme } from '../../../types/theme.type';
 import EventEmitter from '../../../utils/EventEmitter';
 import { nameRule } from '../../../utils/FormRule';
 import AuditResultCollection from '../AuditResult/AuditResultCollection';
-import { useAllowAuditLevel } from '../hooks/useAllowAuditLevel';
+import useAuditOrder from '../hooks/useAuditOrder';
 import SqlInfoForm from './SqlInfoForm';
 import { SqlInfoFormFields } from './SqlInfoForm/index.type';
 
@@ -52,126 +42,35 @@ const CreateOrder = () => {
   const [createLoading, { setTrue: startCreate, setFalse: createFinish }] =
     useBoolean();
   const [visible, { setTrue: openModal, setFalse: closeModal }] = useBoolean();
-  const [taskInfos, setTaskInfos] = useState<IAuditTaskResV1[]>([]);
-  const [auditResultActiveKey, setAuditResultActiveKey] = useState<string>('');
   const [taskSqlNum, setTaskSqlNum] = useState<Map<string, number>>(new Map());
-  const [differenceSqlTabIndexTaskIdMap, setDifferenceSqlTanIndexTaskIdMap] =
-    useState<Map<number, string>>(new Map());
-
-  const [
-    isCreateOrderDisabled,
-    { setTrue: setCreateOrderDisabled, setFalse: resetCreateOrderBtnStatus },
-  ] = useBoolean(false);
+  useState<Map<number, string>>(new Map());
 
   const {
+    taskInfos,
+    auditOrderWithSameSql,
+    auditOrderWthDifferenceSql,
+    auditResultActiveKey,
+    setAuditResultActiveKey,
+    isDisableFinallySubmitButton,
     disabledOperatorOrderBtnTips,
-    judgeAuditLevel,
-    setDisabledOperatorOrderBtnTips,
-  } = useAllowAuditLevel();
-
-  const auditSameSqlMode = useCallback((values: SqlInfoFormFields) => {
-    const createAuditTasksParams: ICreateAuditTasksV1Params = {
-      instances:
-        values.dataBaseInfo.map((v) => ({
-          instance_name: v.instanceName,
-          instance_schema: v.instanceSchema,
-        })) ?? [],
-    };
-    return task.createAuditTasksV1(createAuditTasksParams).then((res) => {
-      if (
-        res.data.code === ResponseCode.SUCCESS &&
-        res.data.data?.task_group_id
-      ) {
-        const auditTaskPrams: IAuditTaskGroupIdV1Params = {
-          task_group_id: res.data.data?.task_group_id,
-          sql: values.sql,
-          input_sql_file: values.sqlFile?.[0],
-          input_mybatis_xml_file: values.mybatisFile?.[0],
-        };
-        return task.auditTaskGroupIdV1(auditTaskPrams).then((res) => {
-          if (res && res.data.code === ResponseCode.SUCCESS) {
-            return res.data.data;
-          }
-        });
-      }
-    });
-  }, []);
-
-  const auditDifferenceSqlMode = useCallback(
-    (values: SqlInfoFormFields, currentTabIndex: number) => {
-      const params: ICreateAndAuditTaskV1Params = {
-        instance_name: values.dataBaseInfo[currentTabIndex].instanceName,
-        instance_schema: values.dataBaseInfo[currentTabIndex].instanceSchema,
-        sql: values.sql,
-        input_sql_file: values.sqlFile?.[0],
-        input_mybatis_xml_file: values.mybatisFile?.[0],
-      };
-      return task.createAndAuditTaskV1(params).then((res) => {
-        if (res && res.data.code === ResponseCode.SUCCESS) {
-          return res.data.data;
-        }
-      });
-    },
-    []
-  );
+    resetFinallySubmitButtonStatus,
+    clearDifferenceSqlModeTaskInfos,
+    clearTaskInfoWithKey,
+  } = useAuditOrder();
 
   const auditSql = useCallback(
-    async (values: SqlInfoFormFields, currentTabIndex: number) => {
-      const commonJudgeAuditLevel = (tasks: IAuditTaskResV1[]) => {
-        judgeAuditLevel(
-          tasks.map((v) => ({
-            instanceName: v.instance_name ?? '',
-            currentAuditLevel: v.audit_level as
-              | CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
-              | undefined,
-          })) ?? [],
-          setCreateOrderDisabled,
-          resetCreateOrderBtnStatus
-        );
-      };
-
+    async (
+      values: SqlInfoFormFields,
+      currentTabIndex: number,
+      currentTabKey: string
+    ) => {
       if (values.isSameSqlOrder) {
-        const res = await auditSameSqlMode(values);
-        if (res && res.tasks) {
-          setTaskInfos(res.tasks);
-          if (res.tasks.length > 0) {
-            setAuditResultActiveKey(res?.tasks?.[0].task_id?.toString() ?? '');
-            commonJudgeAuditLevel(res.tasks);
-          }
-        }
+        auditOrderWithSameSql(values);
       } else {
-        const res = await auditDifferenceSqlMode(values, currentTabIndex);
-        setDifferenceSqlTanIndexTaskIdMap((v) => {
-          const cloneValue = cloneDeep(v);
-          cloneValue.set(currentTabIndex, res?.task_id?.toString() ?? '');
-          return cloneValue;
-        });
-        if (res) {
-          const cloneTaskInfos = cloneDeep(taskInfos);
-          const previousTaskId =
-            differenceSqlTabIndexTaskIdMap.get(currentTabIndex);
-          if (previousTaskId) {
-            remove(
-              cloneTaskInfos,
-              (v) => v.task_id?.toString() === previousTaskId
-            );
-          }
-
-          setAuditResultActiveKey(res.task_id?.toString() ?? '');
-          setTaskInfos([...cloneTaskInfos, res]);
-          commonJudgeAuditLevel([...cloneTaskInfos, res]);
-        }
+        auditOrderWthDifferenceSql(values, currentTabIndex, currentTabKey);
       }
     },
-    [
-      differenceSqlTabIndexTaskIdMap,
-      auditDifferenceSqlMode,
-      auditSameSqlMode,
-      judgeAuditLevel,
-      resetCreateOrderBtnStatus,
-      setCreateOrderDisabled,
-      taskInfos,
-    ]
+    [auditOrderWithSameSql, auditOrderWthDifferenceSql]
   );
 
   const create = async () => {
@@ -225,12 +124,14 @@ const CreateOrder = () => {
         });
     } catch (error) {
       baseForm.scrollToField('name');
+    } finally {
+      clearDifferenceSqlModeTaskInfos();
     }
   };
 
-  const clearTaskInfos = () => {
-    setTaskInfos([]);
-  };
+  const clearTaskInfos = useCallback(() => {
+    clearDifferenceSqlModeTaskInfos();
+  }, [clearDifferenceSqlModeTaskInfos]);
 
   const resetAllForm = useCallback(() => {
     baseForm.resetFields();
@@ -238,19 +139,13 @@ const CreateOrder = () => {
     clearTaskInfos();
     toggleHasDirtyData(false);
     EventEmitter.emit(EmitterKey.Reset_Create_Order_Form);
-  }, [baseForm, sqlInfoForm, toggleHasDirtyData]);
+  }, [baseForm, clearTaskInfos, sqlInfoForm, toggleHasDirtyData]);
 
   const closeModalAndResetForm = useCallback(() => {
     closeModal();
     resetAllForm();
-    resetCreateOrderBtnStatus();
-    setDisabledOperatorOrderBtnTips('');
-  }, [
-    closeModal,
-    resetAllForm,
-    resetCreateOrderBtnStatus,
-    setDisabledOperatorOrderBtnTips,
-  ]);
+    resetFinallySubmitButtonStatus();
+  }, [closeModal, resetAllForm, resetFinallySubmitButtonStatus]);
 
   const instanceNameChange = async (name: string) => {
     const orderName = baseForm.getFieldValue('name');
@@ -322,6 +217,7 @@ const CreateOrder = () => {
               updateDirtyData={toggleHasDirtyData}
               instanceNameChange={instanceNameChange}
               clearTaskInfos={clearTaskInfos}
+              clearTaskInfoWithKey={clearTaskInfoWithKey}
             />
           </Card>
 
@@ -343,7 +239,9 @@ const CreateOrder = () => {
                 defaultNode={
                   <Tooltip
                     title={
-                      isCreateOrderDisabled ? disabledOperatorOrderBtnTips : ''
+                      isDisableFinallySubmitButton
+                        ? disabledOperatorOrderBtnTips
+                        : ''
                     }
                     overlayClassName="whitespace-pre-line"
                   >
@@ -351,7 +249,7 @@ const CreateOrder = () => {
                       htmlType="submit"
                       type="primary"
                       onClick={create}
-                      disabled={isCreateOrderDisabled}
+                      disabled={isDisableFinallySubmitButton}
                       loading={createLoading}
                     >
                       {t('order.createOrder.title')}
@@ -363,20 +261,22 @@ const CreateOrder = () => {
                   title={t('order.createOrder.dirtyDataTips')}
                   onConfirm={create}
                   overlayClassName="popconfirm-small"
-                  disabled={createLoading || isCreateOrderDisabled}
+                  disabled={createLoading || isDisableFinallySubmitButton}
                   placement="topRight"
                 >
                   <Tooltip
                     overlayClassName="whitespace-pre-line"
                     title={
-                      isCreateOrderDisabled ? disabledOperatorOrderBtnTips : ''
+                      isDisableFinallySubmitButton
+                        ? disabledOperatorOrderBtnTips
+                        : ''
                     }
                   >
                     <Button
                       htmlType="submit"
                       type="primary"
                       loading={createLoading}
-                      disabled={isCreateOrderDisabled}
+                      disabled={isDisableFinallySubmitButton}
                     >
                       {t('order.createOrder.title')}
                     </Button>
