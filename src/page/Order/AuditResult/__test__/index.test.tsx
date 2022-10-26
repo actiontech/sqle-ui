@@ -34,7 +34,7 @@ describe('Order/Detail/AuditResult', () => {
 
   test('should get task sql info when pass task id into component props', async () => {
     const getTaskSqlSpy = mockGetTaskSqls();
-    const { rerender } = render(<AuditResult />);
+    const { rerender, container } = render(<AuditResult />);
     expect(getTaskSqlSpy).not.toBeCalled();
     rerender(<AuditResult taskId={9999} passRate={0.1667} />);
     expect(getTaskSqlSpy).toBeCalledTimes(1);
@@ -44,12 +44,13 @@ describe('Order/Detail/AuditResult', () => {
       page_size: '10',
       no_duplicate: false,
     });
+
+    expect(container).toMatchSnapshot();
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
 
-    //github snapshot match failed
-    // expect(container).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   test('should call updateTaskRecordTotalNum when get sql success', async () => {
