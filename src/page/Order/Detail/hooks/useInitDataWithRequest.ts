@@ -41,7 +41,7 @@ const useInitDataWithRequest = () => {
 
   useEffect(() => {
     refreshTask();
-  }, [orderInfo, refreshTask]);
+  }, [refreshTask]);
 
   return {
     taskInfos,
