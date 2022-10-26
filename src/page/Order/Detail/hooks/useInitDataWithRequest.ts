@@ -1,5 +1,5 @@
-import { useRequest, useToggle } from 'ahooks';
-import { useEffect, useState } from 'react';
+import { useRequest } from 'ahooks';
+import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { IAuditTaskResV1 } from '../../../../api/common';
 import task from '../../../../api/task';
@@ -9,7 +9,6 @@ import { ResponseCode } from '../../../../data/common';
 const useInitDataWithRequest = () => {
   const urlParams = useParams<{ orderId: string }>();
   const [taskInfos, setTaskInfos] = useState<IAuditTaskResV1[]>([]);
-  const [refreshFlag, { toggle: refreshTask }] = useToggle(false);
 
   const { data: orderInfo, refresh: refreshOrder } = useRequest(
     () =>
@@ -23,7 +22,7 @@ const useInitDataWithRequest = () => {
     }
   );
 
-  useEffect(() => {
+  const refreshTask = useCallback(() => {
     const request = (taskId: string) => {
       return task.getAuditTaskV1({ task_id: taskId });
     };
@@ -38,7 +37,11 @@ const useInitDataWithRequest = () => {
         }
       });
     }
-  }, [orderInfo, refreshFlag]);
+  }, [orderInfo]);
+
+  useEffect(() => {
+    refreshTask();
+  }, [orderInfo, refreshTask]);
 
   return {
     taskInfos,

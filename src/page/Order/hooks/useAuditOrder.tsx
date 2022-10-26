@@ -116,7 +116,7 @@ const useAuditOrder = () => {
    *
    * values 数据格式
    * {
-   *   [key in {0, 1, 2...}]: SqlStatementFields, sql语句信息, 因为不同sql模式下只会多份数据, 这里的 key 值对应的是 sql 语句录入 的 tabs 的 index
+   *   [key in {0, 1, 2...}]: SqlStatementFields, sql语句信息, 因为不同sql模式下只会多份数据, 这里的 key 值对应的是 sql 语句录入 的 tabs 的 key
    *   dataBaseInfo:  Array<DatabaseInfoFields>, 数据源以及数据库信息, 可能会有多份
    * }
    *
@@ -129,9 +129,7 @@ const useAuditOrder = () => {
       currentTabIndex: number,
       currentTabKey: string
     ) => {
-      const sqlStatementInfo = values[
-        currentTabKey.toString()
-      ] as SqlStatementFields;
+      const sqlStatementInfo = values[currentTabKey] as SqlStatementFields;
       const params: ICreateAndAuditTaskV1Params = {
         instance_name: values.dataBaseInfo[currentTabIndex].instanceName,
         instance_schema: values.dataBaseInfo[currentTabIndex].instanceSchema,

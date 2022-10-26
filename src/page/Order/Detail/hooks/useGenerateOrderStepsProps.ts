@@ -14,7 +14,7 @@ import { TasksStatusNumberType } from '../OrderSteps/index.type';
 type HooksParamType = {
   workflowId: string;
   refreshOrder: () => Promise<IWorkflowResV2 | undefined>;
-  refreshTask: (value?: boolean | undefined) => void;
+  refreshTask: () => void;
   refreshOverviewAction: (value?: boolean | undefined) => void;
 };
 
