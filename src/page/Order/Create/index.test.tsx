@@ -178,6 +178,8 @@ describe('Order/Create', () => {
       jest.advanceTimersByTime(3000);
     });
 
+    expect(container).toMatchSnapshot();
+
     //different
     fireEvent.click(screen.getByLabelText('order.sqlInfo.isSameSqlOrder'));
     fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
@@ -198,6 +200,7 @@ describe('Order/Create', () => {
       jest.advanceTimersByTime(3000);
     });
 
+    expect(container).toMatchSnapshot();
     dateSpy.mockRestore();
   });
 
