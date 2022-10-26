@@ -44,23 +44,23 @@ const PlanListFilterForm: React.FC<PlanListFilterFormProps> = (props) => {
     submit?.(form.getFieldsValue());
   };
 
-  const location = useLocation()
+  const location = useLocation();
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     form.setFieldsValue({
-      filter_audit_plan_type: params.get('type') ?? undefined
-    })
+      filter_audit_plan_type: params.get('type') ?? undefined,
+    });
     innerSubmit();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [form, location.search])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [form, location.search]);
 
   return (
     <Form<PlanListFilterFormFields> form={form} {...FilterFormLayout}>
       <Row {...FilterFormRowLayout}>
         <Col {...FilterFormColLayout}>
           <Form.Item
-            name="filter_audit_plan_name"
+            name="fuzzy_search_audit_plan_name"
             label={t('auditPlan.list.table.audit_plan_name')}
           >
             <Input />
