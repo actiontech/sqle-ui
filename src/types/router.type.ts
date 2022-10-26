@@ -6,6 +6,7 @@ import { I18nKey } from './common.type';
 export type RouterItem = {
   role?: Array<SystemRole | ''>;
   label: I18nKey;
+  labelWithoutI18n?: string;
   key: string;
   path?: string;
   icon?: ReactNode;

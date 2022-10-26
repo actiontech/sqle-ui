@@ -121,14 +121,14 @@ export const otherStepList: IWorkflowStepResV1[] = [
     number: 1,
     operation_time: '2022-10-12T16:25:03+08:00',
     operation_user_name: 'admin',
-    type: WorkflowStepResV1TypeEnum.create_workflow,
+    type: WorkflowStepResV1TypeEnum.sql_review,
     state: WorkflowStepResV1StateEnum.initialized,
   },
   {
     number: 2,
     operation_time: '2022-10-12T16:25:03+08:00',
     operation_user_name: 'admin',
-    type: WorkflowStepResV1TypeEnum.create_workflow,
+    type: WorkflowStepResV1TypeEnum.sql_review,
     state: WorkflowStepResV1StateEnum.rejected,
   },
 ];

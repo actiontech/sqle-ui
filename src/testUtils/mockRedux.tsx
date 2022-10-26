@@ -36,6 +36,9 @@ export const mockUseDispatch = () => {
   return { spy, scopeDispatch };
 };
 
+export const mockUseLocation = () => {}
+
+
 export const CustomProvider: React.FC<{ initStore: Dictionary }> = (props) => {
   return (
     <Provider store={storeFactory(props.initStore)}>{props.children}</Provider>

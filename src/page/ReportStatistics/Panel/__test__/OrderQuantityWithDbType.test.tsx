@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { useTheme } from '@material-ui/styles';
-import { render, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import statistic from '../../../../api/statistic';
 import { SupportLanguage } from '../../../../locale';
 import { mockUseSelector } from '../../../../testUtils/mockRedux';
@@ -73,16 +73,17 @@ describe('test OrderQuantityWithDbType', () => {
   });
   test('should match snapshot', async () => {
     mockGetTasksPercentCountedByInstanceTypeV1();
-    const { container } = render(<OrderQuantityWithDbType />);
+    const { baseElement } = render(<OrderQuantityWithDbType />);
 
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    fireEvent.mouseEnter(screen.getByTestId('order-db-type-scale-tips'));
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
 
-    expect(container).toMatchSnapshot();
+    expect(baseElement).toMatchSnapshot();
   });
 
   test('should match snapshot when request goes wrong', async () => {

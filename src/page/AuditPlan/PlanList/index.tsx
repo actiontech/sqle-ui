@@ -1,7 +1,7 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useBoolean, useRequest } from 'ahooks';
 import { Button, Card, message, Space, Table } from 'antd';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
@@ -31,6 +31,20 @@ const PlanList = () => {
   const { pagination, tableChange, filterInfo, setFilterInfo } =
     useTable<PlanListFilterFormFields>();
 
+  const [ready, { setTrue: already }] = useBoolean(false);
+  const init = useRef(false);
+
+  useEffect(() => {
+    if (!init.current) {
+      init.current = true;
+      return;
+    }
+    if (!ready) {
+      already();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filterInfo]);
+
   const { data, loading, refresh } = useRequest(
     () => {
       return audit_plan.getAuditPlansV1({
@@ -40,6 +54,7 @@ const PlanList = () => {
       });
     },
     {
+      ready,
       paginated: true,
       refreshDeps: [pagination, filterInfo],
       formatResult(res) {

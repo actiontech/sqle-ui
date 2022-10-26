@@ -93,7 +93,7 @@ exports[`PlanList should match snapshot 1`] = `
               >
                 <label
                   class=""
-                  for="filter_audit_plan_name"
+                  for="fuzzy_search_audit_plan_name"
                   title="auditPlan.list.table.audit_plan_name"
                 >
                   auditPlan.list.table.audit_plan_name
@@ -110,7 +110,7 @@ exports[`PlanList should match snapshot 1`] = `
                   >
                     <input
                       class="ant-input"
-                      id="filter_audit_plan_name"
+                      id="fuzzy_search_audit_plan_name"
                       type="text"
                       value=""
                     />
@@ -688,7 +688,7 @@ exports[`PlanList should match snapshot 2`] = `
               >
                 <label
                   class=""
-                  for="filter_audit_plan_name"
+                  for="fuzzy_search_audit_plan_name"
                   title="auditPlan.list.table.audit_plan_name"
                 >
                   auditPlan.list.table.audit_plan_name
@@ -705,7 +705,7 @@ exports[`PlanList should match snapshot 2`] = `
                   >
                     <input
                       class="ant-input"
-                      id="filter_audit_plan_name"
+                      id="fuzzy_search_audit_plan_name"
                       type="text"
                       value=""
                     />
@@ -2902,7 +2902,7 @@ exports[`PlanList should match snapshot 3`] = `
               >
                 <label
                   class=""
-                  for="filter_audit_plan_name"
+                  for="fuzzy_search_audit_plan_name"
                   title="auditPlan.list.table.audit_plan_name"
                 >
                   auditPlan.list.table.audit_plan_name
@@ -2919,7 +2919,7 @@ exports[`PlanList should match snapshot 3`] = `
                   >
                     <input
                       class="ant-input"
-                      id="filter_audit_plan_name"
+                      id="fuzzy_search_audit_plan_name"
                       type="text"
                       value=""
                     />

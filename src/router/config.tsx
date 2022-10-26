@@ -244,7 +244,6 @@ export const routerConfig: RouterItem[] = [
         path: '/auditPlan',
         key: 'auditPlan',
         label: 'menu.auditPlaneList',
-        icon: <CiCircleOutlined />,
         component: AuditPlan,
       },
     ],

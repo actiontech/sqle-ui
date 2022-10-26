@@ -1424,7 +1424,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                               </div>
                             </div>
                             <div
-                              class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-0"
+                              class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-0 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-0"
                               style="padding-left: 12px; padding-right: 12px;"
                             >
                               <div
@@ -2367,11 +2367,6 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                       >
                         <div
                           class="ant-space-item"
-                          style="margin-right: 8px;"
-                        />
-                        <div
-                          class="ant-space-item"
-                          style="margin-right: 8px;"
                         >
                           <div
                             class="ant-space ant-space-horizontal ant-space-align-center"
@@ -2390,9 +2385,6 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                             </div>
                           </div>
                         </div>
-                        <div
-                          class="ant-space-item"
-                        />
                       </div>
                     </div>
                     <div
@@ -4433,7 +4425,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                               </div>
                             </div>
                             <div
-                              class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-0"
+                              class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-0 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-0"
                               style="padding-left: 12px; padding-right: 12px;"
                             >
                               <div

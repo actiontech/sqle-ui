@@ -3,6 +3,8 @@ import { Layout, Layouts } from 'react-grid-layout';
 import {
   IWorkflowRejectedPercentGroupByInstance,
   IWorkflowRejectedPercentGroupByCreator,
+  ISqlAverageExecutionTime,
+  ISqlExecutionFailPercent,
 } from '../../api/common';
 import i18n from '../../locale';
 import { TableColumn } from '../../types/common.type';
@@ -11,7 +13,7 @@ import { ReportStatisticsPanelEnum } from './index.enum';
 import { IPanelGridLayout } from './index.type';
 
 const firstLineSize = {
-  w: 1,
+  w: 4 / 3,
   h: 1,
 };
 const secondLineSize = [
@@ -32,6 +34,12 @@ const fourthLineSize = {
   w: 2,
   h: 4,
 };
+
+const fifthLineSize = {
+  w: 2,
+  h: 4,
+};
+
 const elIsStatic = true;
 const secondLineMaxH = Math.max(...secondLineSize.map((v) => v.h));
 
@@ -44,12 +52,6 @@ const firstLinePanel: IPanelGridLayout[] = [
   },
   {
     i: ReportStatisticsPanelEnum.OrderAverageReviewTime,
-    w: firstLineSize.w,
-    h: firstLineSize.h,
-    static: elIsStatic,
-  },
-  {
-    i: ReportStatisticsPanelEnum.OrderAverageExecuteTime,
     w: firstLineSize.w,
     h: firstLineSize.h,
     static: elIsStatic,
@@ -106,9 +108,18 @@ const fourthLinePanel: IPanelGridLayout[] = [
     static: elIsStatic,
   },
   {
-    i: ReportStatisticsPanelEnum.DiffInstanceOrderRejectedPercent,
+    i: ReportStatisticsPanelEnum.orderAverageExecuteTimeTopN,
     w: fourthLineSize.w,
     h: fourthLineSize.h,
+    static: elIsStatic,
+  },
+];
+
+const fifthLinePanel: IPanelGridLayout[] = [
+  {
+    i: ReportStatisticsPanelEnum.sqlExecFailedTopN,
+    w: fifthLineSize.w,
+    h: fifthLineSize.h,
     static: elIsStatic,
   },
 ];
@@ -145,19 +156,23 @@ const genLgAndMdLayout: () => Layout[] = () => {
   ySum += thirdLineSize.h;
 
   const fourthLineLayout = genLayoutWithH(fourthLinePanel, ySum);
+  ySum += fourthLineSize.h;
+
+  const fifthLineLayout = genLayoutWithH(fifthLinePanel, ySum);
   return [
     ...firstLineLayout,
     ...secondLineLayout,
     ...thirdLineLayout,
     ...fourthLineLayout,
+    ...fifthLineLayout,
   ];
 };
 
 const genSmAndXsLayout: () => Layout[] = () => {
   let ySum = 0;
   const firstLineLayout = [
-    ...genLayoutWithH(firstLinePanel.slice(0, 2), 0),
-    ...genLayoutWithH(firstLinePanel.slice(2, 4), firstLineSize.h),
+    ...genLayoutWithH(firstLinePanel.slice(0, 2), 0, 1),
+    ...genLayoutWithH(firstLinePanel.slice(2), firstLineSize.h, 2),
   ];
   ySum = firstLineSize.h * 2;
 
@@ -187,21 +202,28 @@ const genSmAndXsLayout: () => Layout[] = () => {
     ...genLayoutWithH(fourthLinePanel.slice(1, 2), ySum + fourthLineSize.h, 4),
   ];
 
+  ySum += fourthLineSize.h * 2;
+
+  const fifthLineLayout = [...genLayoutWithH(fifthLinePanel.slice(), ySum, 4)];
+
   return [
     ...firstLineLayout,
     ...secondLineLayout,
     ...thirdLineLayout,
     ...fourthLineLayout,
+    ...fifthLineLayout,
   ];
 };
 
 const genXxsLayout: () => Layout[] = () => {
   let ySum = 0;
+
   return [
     ...firstLinePanel,
     ...secondLinePanel,
     ...thirdLinePanel,
     ...fourthLinePanel,
+    ...fifthLinePanel,
   ].map((v) => {
     const res = {
       ...v,
@@ -229,6 +251,8 @@ const tableLimit = 10;
 const tableColumns: {
   user: () => TableColumn<IWorkflowRejectedPercentGroupByCreator>;
   instance: () => TableColumn<IWorkflowRejectedPercentGroupByInstance>;
+  sqlExecTime: () => TableColumn<ISqlAverageExecutionTime>;
+  sqlExecFailed: () => TableColumn<ISqlExecutionFailPercent>;
 } = {
   user: () => {
     return [
@@ -280,6 +304,66 @@ const tableColumns: {
         dataIndex: 'rejected_percent',
         title: i18n.t(
           'reportStatistics.diffInstanceOrderRejectRate.columns.rejectRate'
+        ),
+        render(v) {
+          return (
+            <Typography.Text className="text-blue">{`${floatRound(
+              v
+            )}%`}</Typography.Text>
+          );
+        },
+      },
+    ];
+  },
+  sqlExecTime: () => {
+    return [
+      {
+        dataIndex: 'instance_name',
+        title: i18n.t(
+          'reportStatistics.orderAverageExecuteTimeTopN.columns.dataSourceName'
+        ),
+      },
+      {
+        dataIndex: 'average_execution_seconds',
+        title: i18n.t(
+          'reportStatistics.orderAverageExecuteTimeTopN.columns.average'
+        ),
+        render(text) {
+          return `${text}s`;
+        },
+      },
+      {
+        dataIndex: 'max_execution_seconds',
+        title: i18n.t(
+          'reportStatistics.orderAverageExecuteTimeTopN.columns.max'
+        ),
+        render(text) {
+          return `${text}s`;
+        },
+      },
+      {
+        dataIndex: 'min_execution_seconds',
+        title: i18n.t(
+          'reportStatistics.orderAverageExecuteTimeTopN.columns.min'
+        ),
+        render(text) {
+          return `${text}s`;
+        },
+      },
+    ];
+  },
+  sqlExecFailed: () => {
+    return [
+      {
+        dataIndex: 'instance_name',
+        title: i18n.t(
+          'reportStatistics.sqlExecFailedTopN.columns.dataSourceName'
+        ),
+      },
+      {
+        dataIndex: 'percent',
+        title: i18n.t(
+          'reportStatistics.sqlExecFailedTopN.columns.sqlExecFailedPercent'
         ),
         render(v) {
           return (

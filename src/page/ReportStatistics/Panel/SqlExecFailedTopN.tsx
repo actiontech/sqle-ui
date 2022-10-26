@@ -1,34 +1,36 @@
 import { Result, Table } from 'antd';
 import { AxiosResponse } from 'axios';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IWorkflowRejectedPercentGroupByInstance } from '../../../api/common';
 import statistic from '../../../api/statistic';
 import {
-  IGetWorkflowRejectedPercentGroupByInstanceV1Params,
-  IGetWorkflowRejectedPercentGroupByInstanceV1Return,
+  IGetSqlExecutionFailPercentV1Params,
+  IGetSqlExecutionFailPercentV1Return,
 } from '../../../api/statistic/index.d';
 import reportStatisticsData from '../index.data';
 import PanelWrapper from './PanelWrapper';
 import usePanelCommonRequest from './usePanelCommonRequest';
 
 const { tableLimit, tableColumns, tableCommonProps } = reportStatisticsData;
-const param: IGetWorkflowRejectedPercentGroupByInstanceV1Params = {
+const param: IGetSqlExecutionFailPercentV1Params = {
   limit: tableLimit,
 };
-const DiffInstanceOrderRejectedPercent: React.FC = () => {
+const SqlExecFailedTopN: React.FC = () => {
   const { t } = useTranslation();
 
   const [data, setData] = useState<any[]>([]);
-
+  const id = useRef(0);
   const onSuccess = (
-    res: AxiosResponse<IGetWorkflowRejectedPercentGroupByInstanceV1Return>
+    res: AxiosResponse<IGetSqlExecutionFailPercentV1Return>
   ) => {
-    setData(res.data.data ?? []);
+    setData(
+      res.data.data?.map((e) => ({ id: String(id.current++), ...e })) ?? []
+    );
   };
 
   const { loading, errorMessage } = usePanelCommonRequest(
-    () => statistic.getWorkflowRejectedPercentGroupByInstanceV1(param),
+    () => statistic.getSqlExecutionFailPercentV1(param),
     { onSuccess }
   );
   return (
@@ -36,7 +38,7 @@ const DiffInstanceOrderRejectedPercent: React.FC = () => {
       loading={loading}
       title={
         <span>
-          {t('reportStatistics.diffInstanceOrderRejectRate.title', {
+          {t('reportStatistics.sqlExecFailedTopN.title', {
             tableLimit,
           })}
         </span>
@@ -52,13 +54,13 @@ const DiffInstanceOrderRejectedPercent: React.FC = () => {
       }
     >
       <Table
-        rowKey={'instance_name'}
+        rowKey="id"
         dataSource={data}
-        columns={tableColumns.instance()}
+        columns={tableColumns.sqlExecFailed()}
         {...tableCommonProps<IWorkflowRejectedPercentGroupByInstance>()}
       />
     </PanelWrapper>
   );
 };
 
-export default DiffInstanceOrderRejectedPercent;
+export default SqlExecFailedTopN;
