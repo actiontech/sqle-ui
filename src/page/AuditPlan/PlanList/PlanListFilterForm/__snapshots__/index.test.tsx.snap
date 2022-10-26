@@ -21,7 +21,7 @@ exports[`PlanListFilerForm should match snapshot 1`] = `
           >
             <label
               class=""
-              for="filter_audit_plan_name"
+              for="fuzzy_search_audit_plan_name"
               title="auditPlan.list.table.audit_plan_name"
             >
               auditPlan.list.table.audit_plan_name
@@ -38,7 +38,7 @@ exports[`PlanListFilerForm should match snapshot 1`] = `
               >
                 <input
                   class="ant-input"
-                  id="filter_audit_plan_name"
+                  id="fuzzy_search_audit_plan_name"
                   type="text"
                   value=""
                 />
@@ -381,7 +381,7 @@ exports[`PlanListFilerForm should pass all fields when user click search button 
           >
             <label
               class=""
-              for="filter_audit_plan_name"
+              for="fuzzy_search_audit_plan_name"
               title="auditPlan.list.table.audit_plan_name"
             >
               auditPlan.list.table.audit_plan_name
@@ -398,7 +398,7 @@ exports[`PlanListFilerForm should pass all fields when user click search button 
               >
                 <input
                   class="ant-input"
-                  id="filter_audit_plan_name"
+                  id="fuzzy_search_audit_plan_name"
                   type="text"
                   value="123"
                 />
@@ -831,7 +831,7 @@ exports[`PlanListFilerForm should pass all fields when user click search button 
           >
             <label
               class=""
-              for="filter_audit_plan_name"
+              for="fuzzy_search_audit_plan_name"
               title="auditPlan.list.table.audit_plan_name"
             >
               auditPlan.list.table.audit_plan_name
@@ -848,7 +848,7 @@ exports[`PlanListFilerForm should pass all fields when user click search button 
               >
                 <input
                   class="ant-input"
-                  id="filter_audit_plan_name"
+                  id="fuzzy_search_audit_plan_name"
                   type="text"
                   value=""
                 />
@@ -1193,7 +1193,7 @@ exports[`PlanListFilerForm should set audit task type in filter form when url in
           >
             <label
               class=""
-              for="filter_audit_plan_name"
+              for="fuzzy_search_audit_plan_name"
               title="auditPlan.list.table.audit_plan_name"
             >
               auditPlan.list.table.audit_plan_name
@@ -1210,7 +1210,7 @@ exports[`PlanListFilerForm should set audit task type in filter form when url in
               >
                 <input
                   class="ant-input"
-                  id="filter_audit_plan_name"
+                  id="fuzzy_search_audit_plan_name"
                   type="text"
                   value=""
                 />

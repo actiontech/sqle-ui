@@ -82,7 +82,7 @@ describe('PlanListFilerForm', () => {
     expect(submitSpy).nthCalledWith(2, {
       filter_audit_plan_db_type: 'mysql',
       filter_audit_plan_instance_name: 'instance1',
-      filter_audit_plan_name: '123',
+      fuzzy_search_audit_plan_name: '123',
       filter_audit_plan_type: 'mysql_schema_meta',
     });
 
