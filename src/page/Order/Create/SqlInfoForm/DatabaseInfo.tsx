@@ -18,6 +18,7 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
   setInstanceNames,
   currentSqlMode,
   setChangeSqlModeDisabled,
+  clearTaskInfoWithKey,
 }) => {
   const { t } = useTranslation();
 
@@ -122,6 +123,10 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
                     xs: { span: 24 },
                     sm: { span: 16 },
                   }}
+                  wrapperCol={{
+                    xs: { span: 24 },
+                    sm: { span: 8 },
+                  }}
                   tooltip={
                     index === 0
                       ? t('order.sqlInfo.instanceNameTips')
@@ -137,7 +142,9 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
                   ]}
                 >
                   <Select<string>
-                    onChange={(value) => handleInstanceNameChange(value, index)}
+                    onChange={(value) =>
+                      handleInstanceNameChange(value, field.key)
+                    }
                     showSearch
                     placeholder={t('common.form.placeholder.select', {
                       name: t('order.sqlInfo.instanceName'),
@@ -200,7 +207,8 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
                             return cloneValue;
                           });
                           getInstanceTypeWithAction(field.key, 'remove');
-                          remove(field.name);
+                          remove(index);
+                          clearTaskInfoWithKey(field.key.toString());
                         }}
                       />
                     </EmptyBox>
@@ -216,7 +224,7 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
               onClick={() => {
                 setInstanceNames((values) => {
                   const cloneValue = cloneDeep(values);
-                  cloneValue.set(values.size, '');
+                  cloneValue.set(fields[fields.length - 1].key + 1, '');
                   return cloneValue;
                 });
                 add();

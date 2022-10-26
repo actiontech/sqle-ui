@@ -63,7 +63,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     rejectStart();
     props.reject(values.reason, rejectStepId).finally(() => {
       rejectFinish();
-      closeRejectModal();
+      resetAndCloseRejectModal();
       setRejectStepId(0);
     });
   };

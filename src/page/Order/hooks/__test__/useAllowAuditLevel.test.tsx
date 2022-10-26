@@ -1,35 +1,9 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import { CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum } from '../../../api/common.enum';
-import instance from '../../../api/instance';
-import { resolveThreeSecond } from '../../../testUtils/mockRequest';
-import { instanceWorkflowTemplate } from '../Detail/__testData__';
-import { useAllowAuditLevel } from './useAllowAuditLevel';
-
-const taskInfos_error = [
-  {
-    instanceName: 'test1',
-    currentAuditLevel:
-      CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.error,
-  },
-  {
-    instanceName: 'test2',
-    currentAuditLevel:
-      CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal,
-  },
-];
-
-const taskInfos_normal = [
-  {
-    instanceName: 'test3',
-    currentAuditLevel:
-      CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal,
-  },
-  {
-    instanceName: 'test4',
-    currentAuditLevel:
-      CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal,
-  },
-];
+import instance from '../../../../api/instance';
+import { resolveThreeSecond } from '../../../../testUtils/mockRequest';
+import { instanceWorkflowTemplate } from '../../Detail/__testData__';
+import { useAllowAuditLevel } from '../useAllowAuditLevel';
+import { taskInfosLeverIsError, taskInfosLeverIsNormal } from './test.data';
 
 describe('Order/useAllowAuditLevel', () => {
   beforeEach(() => {
@@ -63,13 +37,13 @@ describe('Order/useAllowAuditLevel', () => {
 
     act(() => {
       result.current.judgeAuditLevel(
-        taskInfos_error,
+        taskInfosLeverIsError,
         setBtnDisabled,
         resetBtnDisabled
       );
     });
 
-    expect(mockGetInstanceSpy).toBeCalledTimes(taskInfos_error.length);
+    expect(mockGetInstanceSpy).toBeCalledTimes(taskInfosLeverIsError.length);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
@@ -85,12 +59,12 @@ describe('Order/useAllowAuditLevel', () => {
     act(() => {
       result.current.setDisabledOperatorOrderBtnTips('');
       result.current.judgeAuditLevel(
-        taskInfos_normal,
+        taskInfosLeverIsNormal,
         setBtnDisabled,
         resetBtnDisabled
       );
     });
-    expect(mockGetInstanceSpy).toBeCalledTimes(taskInfos_normal.length);
+    expect(mockGetInstanceSpy).toBeCalledTimes(taskInfosLeverIsNormal.length);
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 

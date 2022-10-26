@@ -1,5 +1,5 @@
 import { useBoolean } from 'ahooks';
-import { Form, Switch, SwitchProps } from 'antd';
+import { Button, Form, Switch, SwitchProps } from 'antd';
 import React, {
   useCallback,
   useEffect,
@@ -15,18 +15,18 @@ import TestDatabaseConnectButton from '../../../../components/TestDatabaseConnec
 import { ResponseCode, PageFormLayout } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import EventEmitter from '../../../../utils/EventEmitter';
-import DatabaseInfo from './DatabaseInfo';
-import DifferenceSqlMode from './DifferenceSqlMode';
 import {
-  InstanceNamesType,
-  SqlContentFields,
-  SqlInfoFormProps,
-} from './index.type';
-import SameSqlMode from './SameSqlMode';
+  SqlStatementForm,
+  SqlStatementFormTabs,
+  SqlStatementFormTabsRefType,
+} from '../../SqlStatementFormTabs';
+import DatabaseInfo from './DatabaseInfo';
+import { InstanceNamesType, SqlInfoFormProps } from './index.type';
 
 const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   const { t } = useTranslation();
   const alreadySubmit = useRef(false);
+  const sqlStatementFormTabsRef = useRef<SqlStatementFormTabsRefType>(null);
 
   const [currentSqlMode, setCurrentSqlMode] = useState(
     WorkflowResV2ModeEnum.same_sqls
@@ -50,6 +50,17 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
 
   const instanceNameList = useMemo(() => {
     return Array.from(instanceNames).map(([_, name]) => name ?? '');
+  }, [instanceNames]);
+
+  const sqlStatementInfo = useMemo(() => {
+    return Array.from(instanceNames)
+      .filter(([_, name]) => !!name)
+      .map(([key, name]) => {
+        return {
+          key: `${key}`,
+          instanceName: name,
+        };
+      });
   }, [instanceNames]);
 
   const testConnectVisible = useMemo(() => {
@@ -99,26 +110,27 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
     );
   };
 
-  const submit = useCallback(
-    async (values: SqlContentFields, currentTabIndex: number) => {
-      startSubmit();
-      try {
-        const params = await props.form.validateFields();
-        props
-          .submit({ ...params, ...values }, currentTabIndex)
-          .then(() => {
-            alreadySubmit.current = true;
-            props.updateDirtyData(false);
-          })
-          .finally(() => {
-            submitFinish();
-          });
-      } catch (error) {
-        submitFinish();
-      }
-    },
-    [props, startSubmit, submitFinish]
-  );
+  const submit = useCallback(async () => {
+    startSubmit();
+    try {
+      const params = await props.form.validateFields();
+      props
+        .submit(
+          params,
+          sqlStatementFormTabsRef.current?.activeIndex ?? 0,
+          sqlStatementFormTabsRef.current?.activeKey ?? ''
+        )
+        .then(() => {
+          alreadySubmit.current = true;
+          props.updateDirtyData(false);
+        })
+        .finally(() => {
+          submitFinish();
+        });
+    } catch (error) {
+      submitFinish();
+    }
+  }, [props, startSubmit, submitFinish]);
 
   const formValueChange = useCallback(() => {
     if (alreadySubmit.current) {
@@ -172,6 +184,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
           setInstanceNames={setInstanceNames}
           currentSqlMode={currentSqlMode}
           setChangeSqlModeDisabled={setChangeSqlModeDisabledAndSetValue}
+          clearTaskInfoWithKey={props.clearTaskInfoWithKey}
         />
         <Form.Item label=" " colon={false} hidden={!testConnectVisible}>
           <TestDatabaseConnectButton
@@ -206,21 +219,25 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
         <EmptyBox
           if={WorkflowResV2ModeEnum.same_sqls === currentSqlMode}
           defaultNode={
-            <DifferenceSqlMode
-              submit={submit}
-              instanceNameList={instanceNameList}
-              submitLoading={submitLoading}
-              formValueChange={formValueChange}
+            <SqlStatementFormTabs
+              ref={sqlStatementFormTabsRef}
+              form={props.form}
+              isClearFormWhenChangeSqlType={true}
+              sqlStatementInfo={sqlStatementInfo}
             />
           }
         >
-          <SameSqlMode
-            submit={submit}
-            submitLoading={submitLoading}
-            currentTabIndex={0}
-            formValueChange={formValueChange}
+          <SqlStatementForm
+            form={props.form}
+            isClearFormWhenChangeSqlType={true}
           />
         </EmptyBox>
+
+        <Form.Item label=" " colon={false}>
+          <Button onClick={submit} type="primary" loading={submitLoading}>
+            {t('order.sqlInfo.audit')}
+          </Button>
+        </Form.Item>
       </Form>
     </>
   );

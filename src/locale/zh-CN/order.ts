@@ -137,6 +137,7 @@ export default {
     instanceSchema: '数据库',
     sql: 'SQL语句',
     sqlFile: 'SQL文件',
+    mybatisFile: 'Mybatis的XML文件',
 
     addInstance: '添加数据源',
 

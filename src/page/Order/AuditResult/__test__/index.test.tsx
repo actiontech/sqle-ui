@@ -8,7 +8,7 @@ import {
 import { resolveThreeSecond } from '../../../../testUtils/mockRequest';
 import { taskSqls } from '../../Detail/__testData__';
 
-describe.skip('Order/Detail/AuditResult', () => {
+describe('Order/Detail/AuditResult', () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });
@@ -34,7 +34,7 @@ describe.skip('Order/Detail/AuditResult', () => {
 
   test('should get task sql info when pass task id into component props', async () => {
     const getTaskSqlSpy = mockGetTaskSqls();
-    const { container, rerender } = render(<AuditResult />);
+    const { rerender, container } = render(<AuditResult />);
     expect(getTaskSqlSpy).not.toBeCalled();
     rerender(<AuditResult taskId={9999} passRate={0.1667} />);
     expect(getTaskSqlSpy).toBeCalledTimes(1);
@@ -44,24 +44,27 @@ describe.skip('Order/Detail/AuditResult', () => {
       page_size: '10',
       no_duplicate: false,
     });
+
     expect(container).toMatchSnapshot();
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+
     expect(container).toMatchSnapshot();
   });
 
   test('should call updateTaskRecordTotalNum when get sql success', async () => {
     mockGetTaskSqls();
+    const taskId = 9999;
     const updateTotalNum = jest.fn();
     render(
-      <AuditResult taskId={9999} updateTaskRecordTotalNum={updateTotalNum} />
+      <AuditResult taskId={taskId} updateTaskRecordTotalNum={updateTotalNum} />
     );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
     expect(updateTotalNum).toBeCalledTimes(1);
-    expect(updateTotalNum).toBeCalledWith(20);
+    expect(updateTotalNum).toBeCalledWith(`${taskId}`, 20);
   });
 
   test('should set duplicate of table filter when change switch', async () => {
