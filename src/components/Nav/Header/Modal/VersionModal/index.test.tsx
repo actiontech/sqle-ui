@@ -6,28 +6,10 @@ import {
 } from '../../../../../testUtils/mockRedux';
 import VersionModal from './index';
 import GlobalService from '../../../../../api/global';
-import { AxiosResponse } from 'axios';
-import { successData } from '../../../../../testUtils/mockRequest';
+import { modalTestData } from '../index.test.data';
 
-const serverVersion = `"issue_201 b1c2baedcb37f27feb7cef34f088212938fad1ba"`;
-const formatServerVersion = `Server Version: issue_201 b1c2baedcb`;
-
-const resolveThreeSecond = (
-  data: any,
-  { status = 200, headers = {}, config = {}, statusText = '' } = {}
-) => {
-  return new Promise<AxiosResponse<any>>((res) => {
-    setTimeout(() => {
-      res({
-        status,
-        headers,
-        config,
-        statusText,
-        ...successData(data),
-      });
-    }, 3000);
-  });
-};
+const { formatServerVersion, serverVersion, resolveThreeSecond } =
+  modalTestData;
 
 describe('Nav/Header/VersionModal', () => {
   let scopeDispatch: jest.Mock;

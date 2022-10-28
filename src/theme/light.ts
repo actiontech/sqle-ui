@@ -10,8 +10,8 @@ const lightTheme: Theme = {
   },
 
   header: {
-    background: '#ffffff',
-    color: 'rgba(0, 0, 0, .85)',
+    background: '#001529',
+    color: '#fff',
   },
   editor: {
     border: '1px solid #d9d9d9',

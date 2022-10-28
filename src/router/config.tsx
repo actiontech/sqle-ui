@@ -16,6 +16,7 @@ import {
   CiCircleOutlined,
   SearchOutlined,
   BarChartOutlined,
+  ProjectOutlined,
 } from '@ant-design/icons';
 import { SystemRole } from '../data/common';
 
@@ -119,6 +120,10 @@ const ReportStatistics = React.lazy(
     )
 );
 
+const ProjectManage = React.lazy(
+  () => import(/* webpackChunkName: "ProjectManage" */ '../page/ProjectManage')
+);
+
 export const unAuthRouter: Array<RouteProps & { key: string }> = [
   {
     path: '/login',
@@ -157,7 +162,7 @@ export const routerConfig: RouterItem[] = [
     label: 'menu.sqlQuery',
     component: SqlQuery,
     icon: <SearchOutlined />,
-    key: 'SqlQuery',
+    key: 'sqlQuery',
   },
   {
     path: '/reportStatistics',
@@ -321,5 +326,13 @@ export const routerConfig: RouterItem[] = [
       },
       /* FITRUE_isEE */
     ],
+  },
+  {
+    label: 'menu.projectManage',
+    key: 'projectManage',
+    icon: <ProjectOutlined />,
+    path: '/project',
+    exact: true,
+    component: ProjectManage,
   },
 ];
