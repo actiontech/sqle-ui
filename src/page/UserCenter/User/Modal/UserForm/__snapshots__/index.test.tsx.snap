@@ -247,10 +247,10 @@ exports[`User/Modal/UserForm should match snapshot when isUpdate is falsy 1`] = 
       >
         <label
           class=""
-          for="roleNameList"
-          title="user.userForm.role"
+          for="managementPermissionCodeList"
+          title="user.userForm.managerPermission"
         >
-          user.userForm.role
+          user.userForm.managerPermission
         </label>
       </div>
       <div
@@ -280,14 +280,14 @@ exports[`User/Modal/UserForm should match snapshot when isUpdate is falsy 1`] = 
                       style="width: 0px;"
                     >
                       <input
-                        aria-activedescendant="roleNameList_list_0"
+                        aria-activedescendant="managementPermissionCodeList_list_0"
                         aria-autocomplete="list"
-                        aria-controls="roleNameList_list"
+                        aria-controls="managementPermissionCodeList_list"
                         aria-haspopup="listbox"
-                        aria-owns="roleNameList_list"
+                        aria-owns="managementPermissionCodeList_list"
                         autocomplete="off"
                         class="ant-select-selection-search-input"
-                        id="roleNameList"
+                        id="managementPermissionCodeList"
                         readonly=""
                         role="combobox"
                         style="opacity: 0;"
@@ -513,10 +513,10 @@ exports[`User/Modal/UserForm should match snapshot when isUpdate is truthy 1`] =
       >
         <label
           class=""
-          for="roleNameList"
-          title="user.userForm.role"
+          for="managementPermissionCodeList"
+          title="user.userForm.managerPermission"
         >
-          user.userForm.role
+          user.userForm.managerPermission
         </label>
       </div>
       <div
@@ -546,14 +546,14 @@ exports[`User/Modal/UserForm should match snapshot when isUpdate is truthy 1`] =
                       style="width: 0px;"
                     >
                       <input
-                        aria-activedescendant="roleNameList_list_0"
+                        aria-activedescendant="managementPermissionCodeList_list_0"
                         aria-autocomplete="list"
-                        aria-controls="roleNameList_list"
+                        aria-controls="managementPermissionCodeList_list"
                         aria-haspopup="listbox"
-                        aria-owns="roleNameList_list"
+                        aria-owns="managementPermissionCodeList_list"
                         autocomplete="off"
                         class="ant-select-selection-search-input"
-                        id="roleNameList"
+                        id="managementPermissionCodeList"
                         readonly=""
                         role="combobox"
                         style="opacity: 0;"

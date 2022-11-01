@@ -117,7 +117,6 @@ describe('AddUserGroup', () => {
       }
     );
 
-    selectOptionByIndex('userGroup.userGroupField.roleNameList', 'role_name1');
     selectOptionByIndex('userGroup.userGroupField.userNameList', 'user_name1');
 
     fireEvent.click(screen.getByText('common.submit'));
@@ -133,7 +132,6 @@ describe('AddUserGroup', () => {
 
     expect(createUserSpy).toBeCalledTimes(1);
     expect(createUserSpy).toBeCalledWith({
-      role_name_list: ['role_name1'],
       user_group_desc: 'user group desc',
       user_group_name: 'userGroupName1',
       user_name_list: ['user_name1'],

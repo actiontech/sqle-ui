@@ -26,7 +26,7 @@ import {
   WorkflowDetailResV2CurrentStepTypeEnum,
   WorkflowDetailResV2StatusEnum,
   WorkflowRecordResV2StatusEnum,
-  WorkflowResV2ModeEnum
+  WorkflowResV2ModeEnum,
 } from './common.enum';
 
 export interface IBaseRes {
@@ -346,13 +346,11 @@ export interface ICreateInstanceReqV1 {
 }
 
 export interface ICreateRoleReqV1 {
-  instance_name_list?: string[];
+  operation_code_list?: number[];
 
   role_desc?: string;
 
   role_name?: string;
-
-  user_name_list?: string[];
 }
 
 export interface ICreateRuleTemplateReqV1 {
@@ -368,8 +366,6 @@ export interface ICreateRuleTemplateReqV1 {
 }
 
 export interface ICreateUserGroupReqV1 {
-  role_name_list?: string[];
-
   user_group_desc?: string;
 
   user_group_name?: string;
@@ -380,7 +376,7 @@ export interface ICreateUserGroupReqV1 {
 export interface ICreateUserReqV1 {
   email?: string;
 
-  role_name_list?: string[];
+  management_permission_code_list?: number[];
 
   user_group_name_list?: string[];
 
@@ -703,6 +699,26 @@ export interface IGetLicenseUsageResV1 {
   data?: ILicenseUsageV1;
 
   message?: string;
+}
+
+export interface IGetManagementPermissionsResV1 {
+  code?: number;
+
+  data?: IManagementPermissionResV1[];
+
+  message?: string;
+}
+
+export interface IManagementPermission {
+  code?: number;
+
+  desc?: string;
+}
+
+export interface IManagementPermissionResV1 {
+  code?: number;
+
+  desc?: string;
 }
 
 export interface IGetOauth2ConfigurationResDataV1 {
@@ -1377,6 +1393,12 @@ export interface IOauth2ConfigurationReqV1 {
   user_id_tag?: string;
 }
 
+export interface IOperation {
+  op_code?: number;
+
+  op_desc?: string;
+}
+
 export interface IOperationResV1 {
   op_code?: number;
 
@@ -1389,8 +1411,6 @@ export interface IPartialSyncAuditPlanSQLsReqV1 {
 
 export interface IPatchUserGroupReqV1 {
   is_disabled?: boolean;
-
-  role_name_list?: string[];
 
   user_group_desc?: string;
 
@@ -1426,13 +1446,13 @@ export interface IRejectWorkflowReqV1 {
 }
 
 export interface IRoleResV1 {
-  instance_name_list?: string[];
+  is_disabled?: boolean;
+
+  operation_list?: IOperation[];
 
   role_desc?: string;
 
   role_name?: string;
-
-  user_name_list?: string[];
 }
 
 export interface IRoleTipResV1 {
@@ -1768,11 +1788,11 @@ export interface IUpdateOtherUserPasswordReqV1 {
 }
 
 export interface IUpdateRoleReqV1 {
-  instance_name_list?: string[];
+  is_disabled?: boolean;
+
+  operation_code_list?: number[];
 
   role_desc?: string;
-
-  user_name_list?: string[];
 }
 
 export interface IUpdateRuleTemplateReqV1 {
@@ -1804,7 +1824,7 @@ export interface IUpdateUserReqV1 {
 
   is_disabled?: boolean;
 
-  role_name_list?: string[];
+  management_permission_code_list?: number[];
 
   user_group_name_list?: string[];
 
@@ -1864,8 +1884,6 @@ export interface IUserDetailResV1 {
 export interface IUserGroupListItemResV1 {
   is_disabled?: boolean;
 
-  role_name_list?: string[];
-
   user_group_desc?: string;
 
   user_group_name?: string;
@@ -1894,7 +1912,7 @@ export interface IUserResV1 {
 
   login_type?: string;
 
-  role_name_list?: string[];
+  management_permission_list?: IManagementPermission[];
 
   user_group_name_list?: string[];
 

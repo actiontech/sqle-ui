@@ -35,36 +35,6 @@ export const RoleListColumnFactory = (
       },
     },
     {
-      dataIndex: 'user_name_list',
-      title: () => i18n.t('role.roleList.username'),
-      render: (list: string[]) => {
-        if (!Array.isArray(list)) {
-          return '';
-        }
-        return generateTag(list);
-      },
-    },
-    {
-      dataIndex: 'instance_name_list',
-      title: () => i18n.t('role.roleList.database'),
-      render: (list: string[]) => {
-        if (!Array.isArray(list)) {
-          return '';
-        }
-        return generateTag(list);
-      },
-    },
-    {
-      dataIndex: 'user_group_name_list',
-      title: () => i18n.t('role.roleList.userGroup'),
-      render: (list: string[]) => {
-        if (!Array.isArray(list)) {
-          return '';
-        }
-        return generateTag(list);
-      },
-    },
-    {
       dataIndex: 'operation_list',
       title: () => i18n.t('role.roleList.operation'),
       render: (list: IOperation[]) => {

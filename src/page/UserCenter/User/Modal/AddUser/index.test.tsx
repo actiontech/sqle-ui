@@ -9,25 +9,26 @@ import AddUser from '.';
 import user from '../../../../../api/user';
 import EmitterKey from '../../../../../data/EmitterKey';
 import { ModalName } from '../../../../../data/ModalName';
+import { selectOptionByIndex } from '../../../../../testUtils/customQuery';
 import {
   mockUseDispatch,
   mockUseSelector,
 } from '../../../../../testUtils/mockRedux';
 import {
-  mockUseRole,
   mockUseUserGroup,
   resolveThreeSecond,
+  mockManagerPermission,
 } from '../../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../../utils/EventEmitter';
 
 describe('User/Modal/AddUser', () => {
-  let userRoleSpy: jest.SpyInstance;
   let useUserGroupSpy: jest.SpyInstance;
+  let managerPermissionSpy: jest.SpyInstance;
   let dispatchSpy: jest.Mock;
 
   beforeEach(() => {
-    userRoleSpy = mockUseRole();
     useUserGroupSpy = mockUseUserGroup();
+    managerPermissionSpy = mockManagerPermission();
     mockUseSelector({
       userManage: { modalStatus: { [ModalName.Add_User]: true } },
     });
@@ -44,16 +45,17 @@ describe('User/Modal/AddUser', () => {
 
   test('should get instance list and username list when modal is opened', async () => {
     render(<AddUser />);
-    expect(userRoleSpy).toBeCalledTimes(1);
+    expect(managerPermissionSpy).toBeCalledTimes(1);
     expect(useUserGroupSpy).toBeCalledTimes(1);
+    expect(managerPermissionSpy).toBeCalledTimes(1);
     cleanup();
-    userRoleSpy.mockClear();
+    managerPermissionSpy.mockClear();
     useUserGroupSpy.mockClear();
     mockUseSelector({
       userManage: { modalStatus: { [ModalName.Add_User]: false } },
     });
     render(<AddUser />);
-    expect(userRoleSpy).not.toBeCalled();
+    expect(managerPermissionSpy).not.toBeCalled();
     expect(useUserGroupSpy).not.toBeCalled();
   });
 
@@ -85,10 +87,7 @@ describe('User/Modal/AddUser', () => {
       target: { value: '123asdf' },
     });
 
-    fireEvent.mouseDown(screen.getByLabelText('user.userForm.role'));
-    const roleOption = screen.getAllByText('role_name1')[1];
-    expect(roleOption).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(roleOption);
+    selectOptionByIndex('user.userForm.managerPermission', '创建项目', 0);
 
     fireEvent.mouseDown(screen.getByLabelText('user.userForm.userGroup'));
     const userGroupOption = screen.getAllByText('user_group_name1')[1];
@@ -110,7 +109,7 @@ describe('User/Modal/AddUser', () => {
       email: 'user@163.com',
       user_name: 'username1',
       user_password: '123456',
-      role_name_list: ['role_name1'],
+      management_permission_code_list: [1],
       user_group_name_list: ['user_group_name1'],
       wechat_id: '123asdf',
     });

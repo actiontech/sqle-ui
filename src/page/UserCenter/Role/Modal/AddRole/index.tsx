@@ -13,17 +13,11 @@ import { ResponseCode } from '../../../../../data/common';
 import { useBoolean } from 'ahooks';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import EmitterKey from '../../../../../data/EmitterKey';
-import useInstance from '../../../../../hooks/useInstance';
-import useUsername from '../../../../../hooks/useUsername';
 import useOperation from '../../../../../hooks/useOperation';
-import useUserGroup from '../../../../../hooks/useUserGroup';
 
 const AddRole = () => {
   const [form] = useForm<IRoleFormFields>();
-  const { instanceList, updateInstanceList } = useInstance();
-  const { usernameList, updateUsernameList } = useUsername();
   const { operationList, updateOperationList } = useOperation();
-  const { userGroupList, updateUserGroupList } = useUserGroup();
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [createLoading, { setTrue, setFalse }] = useBoolean();
@@ -45,12 +39,9 @@ const AddRole = () => {
     const values = await form.validateFields();
     setTrue();
     role
-      .createRoleV2({
+      .createRoleV1({
         role_name: values.roleName,
         role_desc: values.roleDesc,
-        instance_name_list: values.databases,
-        user_name_list: values.usernames,
-        user_group_name_list: values.userGroups,
         operation_code_list: values.operationCodes,
       })
       .then((res) => {
@@ -69,18 +60,9 @@ const AddRole = () => {
 
   React.useEffect(() => {
     if (visible) {
-      updateInstanceList();
-      updateUsernameList();
       updateOperationList();
-      updateUserGroupList();
     }
-  }, [
-    updateInstanceList,
-    updateOperationList,
-    updateUserGroupList,
-    updateUsernameList,
-    visible,
-  ]);
+  }, [updateOperationList, visible]);
 
   return (
     <Modal
@@ -98,13 +80,7 @@ const AddRole = () => {
         </>
       }
     >
-      <RoleForm
-        form={form}
-        instanceList={instanceList}
-        usernameList={usernameList}
-        operationList={operationList}
-        userGroupList={userGroupList}
-      />
+      <RoleForm form={form} operationList={operationList} />
     </Modal>
   );
 };

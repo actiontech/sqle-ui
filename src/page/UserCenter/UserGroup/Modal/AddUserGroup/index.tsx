@@ -45,7 +45,6 @@ const AddUserGroup = () => {
       const res = await user_group.CreateUserGroupV1({
         user_group_name: values.userGroupName,
         user_group_desc: values.userGroupDesc,
-        role_name_list: values.roleList,
         user_name_list: values.userList,
       });
       if (res.data.code === ResponseCode.SUCCESS) {
@@ -62,7 +61,7 @@ const AddUserGroup = () => {
     }
   };
 
-  const { roleList, usernameList } = useUserGroupFormOption(visible);
+  const { usernameList } = useUserGroupFormOption(visible);
 
   return (
     <Modal
@@ -84,7 +83,7 @@ const AddUserGroup = () => {
         </>
       }
     >
-      <UserGroupForm form={form} roleList={roleList} userList={usernameList} />
+      <UserGroupForm form={form} userList={usernameList} />
     </Modal>
   );
 };

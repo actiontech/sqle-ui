@@ -8,9 +8,7 @@ import {
   FilterFormRowLayout,
 } from '../../../../../data/common';
 import EmitterKey from '../../../../../data/EmitterKey';
-import useInstance from '../../../../../hooks/useInstance';
 import useRole from '../../../../../hooks/useRole';
-import useUsername from '../../../../../hooks/useUsername';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import { RoleListFilter } from '../index.type';
 
@@ -18,8 +16,6 @@ const RoleListFilterForm: React.FC<{
   updateRoleListFilter: (filter: RoleListFilter) => void;
 }> = (props) => {
   const { roleList, updateRoleList } = useRole();
-  const { instanceList, updateInstanceList } = useInstance();
-  const { usernameList, updateUsernameList } = useUsername();
   const { t } = useTranslation();
   const [form] = useForm();
 
@@ -39,18 +35,6 @@ const RoleListFilterForm: React.FC<{
   }, [updateRoleList]);
 
   React.useEffect(() => {
-    const refresh = () => {
-      updateUsernameList();
-    };
-    EventEmitter.subscribe(EmitterKey.Refresh_User_list, refresh);
-    return () => {
-      EventEmitter.unsubscribe(EmitterKey.Refresh_User_list, refresh);
-    };
-  }, [updateUsernameList]);
-
-  React.useEffect(() => {
-    updateInstanceList();
-    updateUsernameList();
     updateRoleList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -77,47 +61,6 @@ const RoleListFilterForm: React.FC<{
                   value={role.role_name ?? ''}
                 >
                   {role.role_name}
-                </Select.Option>
-              ))}
-            </Select>
-          </Form.Item>
-        </Col>
-        <Col {...FilterFormColLayout}>
-          <Form.Item
-            name="filter_user_name"
-            label={t('role.roleForm.usernames')}
-          >
-            <Select
-              showSearch
-              placeholder={t('role.roleListFilter.usernamePlaceholder')}
-            >
-              {usernameList.map((user) => (
-                <Select.Option
-                  key={user.user_name}
-                  value={user.user_name ?? ''}
-                >
-                  {user.user_name}
-                </Select.Option>
-              ))}
-            </Select>
-          </Form.Item>
-        </Col>
-
-        <Col {...FilterFormColLayout}>
-          <Form.Item
-            name="filter_instance_name"
-            label={t('role.roleForm.databases')}
-          >
-            <Select
-              showSearch
-              placeholder={t('role.roleListFilter.databasePlaceholder')}
-            >
-              {instanceList.map((instance) => (
-                <Select.Option
-                  key={instance.instance_name}
-                  value={instance.instance_name ?? ''}
-                >
-                  {instance.instance_name}
                 </Select.Option>
               ))}
             </Select>

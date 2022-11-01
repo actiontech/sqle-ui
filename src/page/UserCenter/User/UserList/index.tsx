@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { IUserResV1 } from '../../../../api/common';
 import user from '../../../../api/user';
+import { IGetUserListV1Params } from '../../../../api/user/index.d';
 import { ResponseCode } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
@@ -32,11 +33,12 @@ const UserList = () => {
     pagination: { total, onChange: changePagination, changeCurrent },
   } = useRequest(
     ({ current, pageSize }) => {
-      return user.getUserListV1({
+      const params: IGetUserListV1Params = {
         page_index: current,
         page_size: pageSize,
-        ...userListFilter,
-      });
+        filter_user_name: userListFilter.filter_user_name,
+      };
+      return user.getUserListV1(params);
     },
     {
       paginated: true,

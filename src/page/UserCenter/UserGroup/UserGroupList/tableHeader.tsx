@@ -41,16 +41,6 @@ export const userGroupTableHeaderFactory = (
       },
     },
     {
-      dataIndex: 'role_name_list',
-      title: () => i18n.t('userGroup.userGroupField.roleNameList'),
-      render: (roleNameList) => {
-        if (!Array.isArray(roleNameList)) {
-          return '';
-        }
-        return generateTag(roleNameList);
-      },
-    },
-    {
       dataIndex: 'operation',
       title: () => i18n.t('common.operate'),
       render: (_, record) => {

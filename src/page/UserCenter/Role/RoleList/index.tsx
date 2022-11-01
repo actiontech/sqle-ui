@@ -32,10 +32,10 @@ const RoleList = () => {
     pagination: { total, onChange: changePagination, changeCurrent },
   } = useRequest(
     ({ current, pageSize }) =>
-      role.getRoleListV2({
+      role.getRoleListV1({
         page_index: current,
         page_size: pageSize,
-        ...roleListFilter,
+        filter_role_name: roleListFilter.filter_role_name,
       }),
     {
       paginated: true,
