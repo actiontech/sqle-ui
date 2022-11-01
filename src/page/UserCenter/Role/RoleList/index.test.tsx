@@ -6,9 +6,7 @@ import EmitterKey from '../../../../data/EmitterKey';
 import { getBySelector } from '../../../../testUtils/customQuery';
 import { mockUseDispatch } from '../../../../testUtils/mockRedux';
 import {
-  mockUseInstance,
   mockUseRole,
-  mockUseUsername,
   resolveThreeSecond,
 } from '../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../utils/EventEmitter';
@@ -22,9 +20,7 @@ describe('User/RoleList', () => {
     const { scopeDispatch } = mockUseDispatch();
     dispatchMock = scopeDispatch;
     jest.useFakeTimers();
-    mockUseUsername();
     mockUseRole();
-    mockUseInstance();
     getRoleListSpy = mockGetRoleList();
   });
 
@@ -35,7 +31,7 @@ describe('User/RoleList', () => {
   });
 
   const mockGetRoleList = () => {
-    const spy = jest.spyOn(role, 'getRoleListV2');
+    const spy = jest.spyOn(role, 'getRoleListV1');
     spy.mockImplementation(() =>
       resolveThreeSecond(RoleListData, { otherData: { total_nums: 11 } })
     );
@@ -79,8 +75,8 @@ describe('User/RoleList', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    fireEvent.mouseDown(screen.getByLabelText('role.roleForm.usernames'));
-    const option = screen.getAllByText('user_name1')[1];
+    fireEvent.mouseDown(screen.getByLabelText('role.roleForm.roleName'));
+    const option = screen.getAllByText('role_name1')[1];
     expect(option).toHaveClass('ant-select-item-option-content');
     fireEvent.click(option);
 
@@ -92,11 +88,11 @@ describe('User/RoleList', () => {
     expect(getRoleListSpy).toBeCalledWith({
       page_index: 1,
       page_size: 10,
-      filter_user_name: 'user_name1',
+      filter_role_name: 'role_name1',
     });
   });
 
-  test('should dispatch open create role modal event when user click creat role button', async () => {
+  test('should dispatch open create role modal event when user click create role button', async () => {
     render(<RoleList />);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);

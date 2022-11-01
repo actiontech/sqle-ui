@@ -1,6 +1,7 @@
 import { DownOutlined } from '@ant-design/icons';
 import { Divider, Dropdown, Menu, Popconfirm, Space, Typography } from 'antd';
-import { IUserResV1 } from '../../../../api/common';
+import { orderBy } from 'lodash';
+import { IManagementPermission, IUserResV1 } from '../../../../api/common';
 import EmptyBox from '../../../../components/EmptyBox';
 import { LoginTypeEnum } from '../../../../data/common';
 import i18n from '../../../../locale';
@@ -39,16 +40,6 @@ const tableHeaderFactory = (
       title: () => i18n.t('user.table.userType'),
     },
     {
-      dataIndex: 'role_name_list',
-      title: () => i18n.t('user.userForm.role'),
-      render: (roleList?: string[]) => {
-        if (!Array.isArray(roleList)) {
-          return '';
-        }
-        return generateTag(roleList);
-      },
-    },
-    {
       dataIndex: 'user_group_name_list',
       title: () => i18n.t('user.userForm.userGroup'),
       render: (userGroupList?: string[]) => {
@@ -56,6 +47,18 @@ const tableHeaderFactory = (
           return '';
         }
         return generateTag(userGroupList);
+      },
+    },
+    {
+      dataIndex: 'management_permission_list',
+      title: () => i18n.t('user.table.operation'),
+      render: (list: IManagementPermission[]) => {
+        if (!Array.isArray(list)) {
+          return '';
+        }
+        return orderBy(list, ['code'], ['asc'])
+          .map((e) => e.desc)
+          .join(',');
       },
     },
     {

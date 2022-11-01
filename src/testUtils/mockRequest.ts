@@ -8,6 +8,7 @@ import configuration from '../api/configuration';
 import user_group from '../api/user_group';
 import operation from '../api/operation';
 import audit_plan from '../api/audit_plan';
+import management_permission from '../api/management_permission';
 
 export const successData = (data: any, otherData?: any) => {
   return {
@@ -235,6 +236,21 @@ export const mockInstanceTip = () => {
       },
     ])
   );
+  return spy;
+};
+
+export const mockManagerPermission = () => {
+  const spy = jest.spyOn(management_permission, 'GetManagementPermissionsV1');
+
+  spy.mockImplementation(() =>
+    resolveThreeSecond([
+      {
+        code: 1,
+        desc: '创建项目',
+      },
+    ])
+  );
+
   return spy;
 };
 

@@ -116,7 +116,6 @@ describe('updateUserGroup', () => {
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
       is_disabled: false,
-      role_name_list: ['role_name1'],
       user_group_desc: 'user group desc2',
       user_group_name: 'userGroupName1',
       user_name_list: ['user_name1'],

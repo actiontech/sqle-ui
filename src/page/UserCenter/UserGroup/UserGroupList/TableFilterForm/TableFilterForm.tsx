@@ -8,7 +8,9 @@ import {
   FilterFormColLayout,
   filterFormButtonLayoutFactory,
 } from '../../../../../data/common';
+import EmitterKey from '../../../../../data/EmitterKey';
 import useUserGroup from '../../../../../hooks/useUserGroup';
+import EventEmitter from '../../../../../utils/EventEmitter';
 
 const TableFilterForm: React.FC<TableFilterFormProps> = (props) => {
   const [form] = useForm();
@@ -20,6 +22,17 @@ const TableFilterForm: React.FC<TableFilterFormProps> = (props) => {
   const { t } = useTranslation();
 
   const { generateUserGroupSelectOption, updateUserGroupList } = useUserGroup();
+
+  useEffect(() => {
+    const refresh = () => {
+      updateUserGroupList();
+    };
+
+    EventEmitter.subscribe(EmitterKey.Refresh_User_Group_List, refresh);
+    return () => {
+      EventEmitter.unsubscribe(EmitterKey.Refresh_User_Group_List, refresh);
+    };
+  }, [updateUserGroupList]);
 
   useEffect(() => {
     updateUserGroupList();

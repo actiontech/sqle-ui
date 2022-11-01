@@ -12,7 +12,10 @@ const useUsername = () => {
   const updateUsernameList = React.useCallback(() => {
     setTrue();
     user
-      .getUserTipListV1()
+      .getUserTipListV1({
+        //todo
+        filter_project: undefined,
+      })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           setUsernameList(res.data?.data ?? []);

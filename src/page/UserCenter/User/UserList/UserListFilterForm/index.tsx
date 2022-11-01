@@ -8,7 +8,6 @@ import {
   FilterFormRowLayout,
 } from '../../../../../data/common';
 import EmitterKey from '../../../../../data/EmitterKey';
-import useRole from '../../../../../hooks/useRole';
 import useUsername from '../../../../../hooks/useUsername';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import { UserListFilter } from '../index.type';
@@ -19,22 +18,11 @@ const UserListFilterForm: React.FC<{
   const [form] = useForm();
   const { t } = useTranslation();
   const { usernameList, updateUsernameList } = useUsername();
-  const { roleList, updateRoleList } = useRole();
 
   const resetFilter = React.useCallback(() => {
     form.resetFields();
     props.updateUserListFilter({});
   }, [form, props]);
-
-  React.useEffect(() => {
-    const refresh = () => {
-      updateRoleList();
-    };
-    EventEmitter.subscribe(EmitterKey.Refresh_Role_list, refresh);
-    return () => {
-      EventEmitter.unsubscribe(EmitterKey.Refresh_Role_list, refresh);
-    };
-  }, [updateRoleList]);
 
   React.useEffect(() => {
     const refresh = () => {
@@ -47,9 +35,8 @@ const UserListFilterForm: React.FC<{
   }, [updateUsernameList]);
 
   React.useEffect(() => {
-    updateRoleList();
     updateUsernameList();
-  }, [updateRoleList, updateUsernameList]);
+  }, [updateUsernameList]);
 
   return (
     <Form<UserListFilter>
@@ -73,23 +60,6 @@ const UserListFilterForm: React.FC<{
                   value={user.user_name ?? ''}
                 >
                   {user.user_name}
-                </Select.Option>
-              ))}
-            </Select>
-          </Form.Item>
-        </Col>
-        <Col {...FilterFormColLayout}>
-          <Form.Item name="filter_role_name" label={t('user.userForm.role')}>
-            <Select
-              showSearch
-              placeholder={t('user.userListFilter.rolePlaceholder')}
-            >
-              {roleList.map((role) => (
-                <Select.Option
-                  key={role.role_name}
-                  value={role.role_name ?? ''}
-                >
-                  {role.role_name}
                 </Select.Option>
               ))}
             </Select>

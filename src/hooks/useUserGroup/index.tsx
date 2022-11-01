@@ -14,7 +14,10 @@ const useUserGroup = () => {
   const updateUserGroupList = React.useCallback(() => {
     setTrue();
     user_group
-      .getUserGroupTipListV1()
+      .getUserGroupTipListV1({
+        //todo
+        filter_project: undefined,
+      })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           setUserGroupList(res.data?.data ?? []);

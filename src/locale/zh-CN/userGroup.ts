@@ -9,7 +9,6 @@ export default {
     userGroupDesc: '用户组描述',
     isDisabled: '禁用',
     userNameList: '绑定用户',
-    roleNameList: '绑定角色',
   },
 
   userGroupState: {

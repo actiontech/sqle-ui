@@ -2,11 +2,15 @@ import { fireEvent, render, waitFor } from '@testing-library/react';
 import TableFilterForm from '.';
 import { selectOptionByIndex } from '../../../../../testUtils/customQuery';
 import { mockUseUserGroup } from '../../../../../testUtils/mockRequest';
+import { act } from 'react-dom/test-utils';
+import EventEmitter from '../../../../../utils/EventEmitter';
+import EmitterKey from '../../../../../data/EmitterKey';
 
 describe('TableFilterForm', () => {
+  let userGroupSpy: jest.SpyInstance;
   beforeEach(() => {
     jest.useFakeTimers();
-    mockUseUserGroup();
+    userGroupSpy = mockUseUserGroup();
   });
 
   afterEach(() => {
@@ -42,5 +46,21 @@ describe('TableFilterForm', () => {
     });
     expect(updateTableFilter).toBeCalledTimes(2);
     expect(updateTableFilter).nthCalledWith(2, {});
+  });
+
+  test('should refresh options when receive event form EventEmit', async () => {
+    render(<TableFilterForm updateTableFilter={jest.fn()} />);
+    expect(userGroupSpy).toBeCalledTimes(1);
+    await waitFor(() => {
+      jest.advanceTimersByTime(300);
+    });
+    expect(userGroupSpy).toBeCalledTimes(1);
+    await waitFor(() => {
+      jest.advanceTimersByTime(300);
+    });
+    act(() => {
+      EventEmitter.emit(EmitterKey.Refresh_User_Group_List);
+    });
+    expect(userGroupSpy).toBeCalledTimes(2);
   });
 });

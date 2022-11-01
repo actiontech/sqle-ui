@@ -1,10 +1,62 @@
 import {
+  IGetMemberGroupsRespV1,
+  ICreateMemberGroupReqV1,
+  IBaseRes,
+  IGetMemberGroupRespV1,
+  IUpdateMemberGroupReqV1,
   IGetUserGroupTipsResV1,
   IGetUserGroupsResV1,
   ICreateUserGroupReqV1,
-  IBaseRes,
   IPatchUserGroupReqV1
 } from '../common.d';
+
+export interface IGetMemberGroupsV1Params {
+  filter_user_group_name?: string;
+
+  filter_instance_name?: string;
+
+  page_index?: number;
+
+  page_size?: number;
+
+  project_id: number;
+}
+
+export interface IGetMemberGroupsV1Return extends IGetMemberGroupsRespV1 {}
+
+export interface IAddMemberGroupV1Params extends ICreateMemberGroupReqV1 {
+  project_id: number;
+}
+
+export interface IAddMemberGroupV1Return extends IBaseRes {}
+
+export interface IGetMemberGroupV1Params {
+  project_id: number;
+
+  user_group_name: string;
+}
+
+export interface IGetMemberGroupV1Return extends IGetMemberGroupRespV1 {}
+
+export interface IDeleteMemberGroupV1Params {
+  project_id: number;
+
+  user_group_name: string;
+}
+
+export interface IDeleteMemberGroupV1Return extends IBaseRes {}
+
+export interface IUpdateMemberGroupV1Params extends IUpdateMemberGroupReqV1 {
+  project_id: number;
+
+  user_group_name: string;
+}
+
+export interface IUpdateMemberGroupV1Return extends IBaseRes {}
+
+export interface IGetUserGroupTipListV1Params {
+  filter_project?: string;
+}
 
 export interface IGetUserGroupTipListV1Return extends IGetUserGroupTipsResV1 {}
 

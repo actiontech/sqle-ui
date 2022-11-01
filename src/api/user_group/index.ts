@@ -7,6 +7,17 @@ import ServiceBase from '../Service.base';
 import { AxiosRequestConfig } from 'axios';
 
 import {
+  IGetMemberGroupsV1Params,
+  IGetMemberGroupsV1Return,
+  IAddMemberGroupV1Params,
+  IAddMemberGroupV1Return,
+  IGetMemberGroupV1Params,
+  IGetMemberGroupV1Return,
+  IDeleteMemberGroupV1Params,
+  IDeleteMemberGroupV1Return,
+  IUpdateMemberGroupV1Params,
+  IUpdateMemberGroupV1Return,
+  IGetUserGroupTipListV1Params,
   IGetUserGroupTipListV1Return,
   IGetUserGroupListV1Params,
   IGetUserGroupListV1Return,
@@ -19,10 +30,98 @@ import {
 } from './index.d';
 
 class UserGroupService extends ServiceBase {
-  public getUserGroupTipListV1(options?: AxiosRequestConfig) {
+  public getMemberGroupsV1(
+    params: IGetMemberGroupsV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_id = paramsData.project_id;
+    delete paramsData.project_id;
+
+    return this.get<IGetMemberGroupsV1Return>(
+      `/v1/projects/${project_id}/member_groups`,
+      paramsData,
+      options
+    );
+  }
+
+  public addMemberGroupV1(
+    params: IAddMemberGroupV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_id = paramsData.project_id;
+    delete paramsData.project_id;
+
+    return this.post<IAddMemberGroupV1Return>(
+      `/v1/projects/${project_id}/member_groups`,
+      paramsData,
+      options
+    );
+  }
+
+  public getMemberGroupV1(
+    params: IGetMemberGroupV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_id = paramsData.project_id;
+    delete paramsData.project_id;
+
+    const user_group_name = paramsData.user_group_name;
+    delete paramsData.user_group_name;
+
+    return this.get<IGetMemberGroupV1Return>(
+      `/v1/projects/${project_id}/member_groups/${user_group_name}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public deleteMemberGroupV1(
+    params: IDeleteMemberGroupV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_id = paramsData.project_id;
+    delete paramsData.project_id;
+
+    const user_group_name = paramsData.user_group_name;
+    delete paramsData.user_group_name;
+
+    return this.delete<IDeleteMemberGroupV1Return>(
+      `/v1/projects/${project_id}/member_groups/${user_group_name}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public updateMemberGroupV1(
+    params: IUpdateMemberGroupV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_id = paramsData.project_id;
+    delete paramsData.project_id;
+
+    const user_group_name = paramsData.user_group_name;
+    delete paramsData.user_group_name;
+
+    return this.patch<IUpdateMemberGroupV1Return>(
+      `/v1/projects/${project_id}/member_groups/${user_group_name}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public getUserGroupTipListV1(
+    params: IGetUserGroupTipListV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
     return this.get<IGetUserGroupTipListV1Return>(
       '/v1/user_group_tips',
-      undefined,
+      paramsData,
       options
     );
   }

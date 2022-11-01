@@ -26,6 +26,7 @@ export default {
   table: {
     userType: '用户类型',
     status: '用户状态',
+    operation: '平台管理权限',
   },
 
   userState: {
@@ -42,6 +43,7 @@ export default {
     disabled: '禁用用户',
     userGroup: '所属用户组',
     wechat: '微信id',
+    managerPermission: '平台管理权限',
 
     passwordConfirmPlaceholder: '请保持两次密码输入一致',
   },
