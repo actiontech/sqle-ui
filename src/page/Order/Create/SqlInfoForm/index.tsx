@@ -196,8 +196,10 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
           />
         </Form.Item>
 
-        {/* IFTRUE_isEE */}
         <Form.Item
+          /* IFTRUE_isCE */
+          hidden={true}
+          /* FITRUE_isCE */
           name="isSameSqlOrder"
           label={t('order.sqlInfo.isSameSqlOrder')}
           rules={[
@@ -214,8 +216,8 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
             disabled={changeSqlModeDisabled}
           />
         </Form.Item>
-        {/* FITRUE_isEE */}
 
+        {/* IFTRUE_isEE */}
         <EmptyBox
           if={WorkflowResV2ModeEnum.same_sqls === currentSqlMode}
           defaultNode={
@@ -227,11 +229,16 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
             />
           }
         >
+          {/* FITRUE_isEE */}
+
           <SqlStatementForm
             form={props.form}
             isClearFormWhenChangeSqlType={true}
           />
+
+          {/* IFTRUE_isEE */}
         </EmptyBox>
+        {/* FITRUE_isEE */}
 
         <Form.Item label=" " colon={false}>
           <Button onClick={submit} type="primary" loading={submitLoading}>
