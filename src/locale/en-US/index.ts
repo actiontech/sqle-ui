@@ -12,6 +12,7 @@ import user from './user';
 import whitelist from './whitelist';
 import system from './system';
 import reportStatistics from './reportStatistics';
+import projectManage from './projectManage';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -30,5 +31,6 @@ export default {
     whitelist,
     system,
     reportStatistics,
+    projectManage,
   },
 };
