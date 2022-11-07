@@ -4,13 +4,12 @@ import RuleTemplateForm from '.';
 import { IRuleResV1 } from '../../../api/common';
 import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
 import { allRulesWithType } from '../../Rule/__testData__';
-import { mockDriver, mockInstanceTip } from '../../../testUtils/mockRequest';
+import { mockDriver } from '../../../testUtils/mockRequest';
 
 describe('RuleTemplate/RuleTemplateForm', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockDriver();
-    mockInstanceTip();
   });
   afterAll(() => {
     jest.useRealTimers();

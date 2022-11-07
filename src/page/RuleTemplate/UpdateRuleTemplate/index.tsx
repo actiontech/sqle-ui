@@ -24,7 +24,7 @@ const UpdateRuleTemplate = () => {
   const [ruleTemplate, setRuleTemplate] = React.useState<
     IRuleTemplateDetailResV1 | undefined
   >();
-  const urlParams = useParams<{ templateName: string }>();
+  const urlParams = useParams<{ templateId: string }>();
   const { data: allRules, loading: getAllRulesLoading } = useRequest(
     () => ruleTemplateService.getRuleListV1({}),
     {
@@ -60,9 +60,8 @@ const UpdateRuleTemplate = () => {
     });
     ruleTemplateService
       .updateRuleTemplateV1({
-        rule_template_name: baseInfo.templateName,
+        rule_template_id: Number(urlParams.templateId),
         desc: baseInfo.templateDesc,
-        instance_name_list: baseInfo.instances,
         rule_list: activeRuleWithNewField,
       })
       .then((res) => {
@@ -73,12 +72,12 @@ const UpdateRuleTemplate = () => {
       .finally(() => {
         updateLoading(false);
       });
-  }, [activeRule, form, step, updateLoading]);
+  }, [activeRule, form, step, updateLoading, urlParams.templateId]);
 
   React.useEffect(() => {
     ruleTemplateService
       .getRuleTemplateV1({
-        rule_template_name: urlParams.templateName,
+        rule_template_id: Number(urlParams.templateId),
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -87,7 +86,7 @@ const UpdateRuleTemplate = () => {
           setActiveRule(template?.rule_list ?? []);
         }
       });
-  }, [urlParams.templateName]);
+  }, [urlParams.templateId]);
 
   return (
     <>

@@ -271,10 +271,16 @@ export interface ICheckLicenseResV1 {
   message?: string;
 }
 
-export interface ICloneRuleTemplateReqV1 {
+export interface ICloneProjectRuleTemplateReqV1 {
   desc?: string;
 
   instance_name_list?: string[];
+
+  new_rule_template_name?: string;
+}
+
+export interface ICloneRuleTemplateReqV1 {
+  desc?: string;
 
   new_rule_template_name?: string;
 }
@@ -351,6 +357,18 @@ export interface ICreateProjectReqV1 {
   name?: string;
 }
 
+export interface ICreateProjectRuleTemplateReqV1 {
+  db_type?: string;
+
+  desc?: string;
+
+  instance_name_list?: string[];
+
+  rule_list?: IRuleReqV1[];
+
+  rule_template_name?: string;
+}
+
 export interface ICreateRoleReqV1 {
   operation_code_list?: number[];
 
@@ -363,8 +381,6 @@ export interface ICreateRuleTemplateReqV1 {
   db_type?: string;
 
   desc?: string;
-
-  instance_name_list?: string[];
 
   rule_list?: IRuleReqV1[];
 
@@ -789,6 +805,24 @@ export interface IGetProjectResV1 {
   total_nums?: number;
 }
 
+export interface IGetProjectRuleTemplateResV1 {
+  code?: number;
+
+  data?: IRuleProjectTemplateDetailResV1;
+
+  message?: string;
+}
+
+export interface IGetProjectRuleTemplatesResV1 {
+  code?: number;
+
+  data?: IProjectRuleTemplateResV1[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
 export interface IGetRoleTipsResV1 {
   code?: number;
 
@@ -1191,6 +1225,12 @@ export interface IGetWorkflowsResV1 {
   total_nums?: number;
 }
 
+export interface IGlobalRuleTemplateInstance {
+  instance_name?: string;
+
+  project_name?: string;
+}
+
 export interface IInstanceAdditionalMetaV1 {
   db_type?: string;
 
@@ -1469,6 +1509,22 @@ export interface IProjectListItem {
   name?: string;
 }
 
+export interface IProjectRuleTemplateInstance {
+  name?: string;
+}
+
+export interface IProjectRuleTemplateResV1 {
+  db_type?: string;
+
+  desc?: string;
+
+  id?: number;
+
+  instance_list?: IProjectRuleTemplateInstance[];
+
+  rule_template_name?: string;
+}
+
 export interface IRejectWorkflowReqV1 {
   reason?: string;
 }
@@ -1503,6 +1559,20 @@ export interface IRuleParamResV1 {
   value?: string;
 }
 
+export interface IRuleProjectTemplateDetailResV1 {
+  db_type?: string;
+
+  desc?: string;
+
+  id?: number;
+
+  instance_list?: IProjectRuleTemplateInstance[];
+
+  rule_list?: IRuleResV1[];
+
+  rule_template_name?: string;
+}
+
 export interface IRuleReqV1 {
   level?: string;
 
@@ -1530,7 +1600,9 @@ export interface IRuleTemplateDetailResV1 {
 
   desc?: string;
 
-  instance_name_list?: string[];
+  id?: number;
+
+  instance_list?: IGlobalRuleTemplateInstance[];
 
   rule_list?: IRuleResV1[];
 
@@ -1542,7 +1614,9 @@ export interface IRuleTemplateResV1 {
 
   desc?: string;
 
-  instance_name_list?: string[];
+  id?: number;
+
+  instance_list?: IGlobalRuleTemplateInstance[];
 
   rule_template_name?: string;
 }
@@ -1815,6 +1889,14 @@ export interface IUpdateOtherUserPasswordReqV1 {
   password?: string;
 }
 
+export interface IUpdateProjectRuleTemplateReqV1 {
+  desc?: string;
+
+  instance_name_list?: string[];
+
+  rule_list?: IRuleReqV1[];
+}
+
 export interface IUpdateProjectReqV1 {
   desc?: string;
 }
@@ -1829,8 +1911,6 @@ export interface IUpdateRoleReqV1 {
 
 export interface IUpdateRuleTemplateReqV1 {
   desc?: string;
-
-  instance_name_list?: string[];
 
   rule_list?: IRuleReqV1[];
 }

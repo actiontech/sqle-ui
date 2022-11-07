@@ -7,9 +7,11 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { IRuleTemplateResV1 } from '../../../api/common';
 import ruleTemplate from '../../../api/rule_template';
+import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { ModalName } from '../../../data/ModalName';
+import useCurrentUser from '../../../hooks/useCurrentUser';
 import {
   initRuleTemplateListModalStatus,
   updateRuleTemplateListModalStatus,
@@ -22,6 +24,7 @@ import RuleTemplateListModal from './Modal';
 const RuleTemplateList = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const { isAdmin } = useCurrentUser();
 
   const {
     data,
@@ -57,14 +60,14 @@ const RuleTemplateList = () => {
   );
 
   const deleteTemplate = React.useCallback(
-    (templateName: string) => {
+    (templateId: number, templateName: string) => {
       const hideLoading = message.loading(
         t('ruleTemplate.deleteRuleTemplate.deleting', { name: templateName }),
         0
       );
       ruleTemplate
         .deleteRuleTemplateV1({
-          rule_template_name: templateName,
+          rule_template_id: templateId,
         })
         .then((res) => {
           if (res.data.code === ResponseCode.SUCCESS) {
@@ -134,9 +137,11 @@ const RuleTemplateList = () => {
         }
         extra={[
           <Link to="/rule/template/create" key="createRuleTemplate">
-            <Button type="primary">
-              {t('ruleTemplate.createRuleTemplate.button')}
-            </Button>
+            <EmptyBox if={isAdmin}>
+              <Button type="primary">
+                {t('ruleTemplate.createRuleTemplate.button')}
+              </Button>
+            </EmptyBox>
           </Link>,
         ]}
       >
@@ -152,7 +157,8 @@ const RuleTemplateList = () => {
           }}
           columns={RuleTemplateListTableColumnFactory(
             deleteTemplate,
-            openCloneRuleTemplateModal
+            openCloneRuleTemplateModal,
+            isAdmin
           )}
         />
       </Card>

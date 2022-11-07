@@ -5,11 +5,7 @@ import {
   renderWithThemeAndRouter,
   renderWithThemeAndServerRouter,
 } from '../../../testUtils/customRender';
-import {
-  resolveThreeSecond,
-  mockDriver,
-  mockInstanceTip,
-} from '../../../testUtils/mockRequest';
+import { resolveThreeSecond, mockDriver } from '../../../testUtils/mockRequest';
 import { createMemoryHistory } from 'history';
 import { allRulesWithType } from '../../Rule/__testData__';
 import { IRuleReqV1 } from '../../../api/common';
@@ -19,7 +15,6 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
     jest.useFakeTimers();
     mockGetAllRules();
     mockDriver();
-    mockInstanceTip();
   });
 
   afterEach(() => {
@@ -95,15 +90,6 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
     expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
     fireEvent.click(databaseTypeOption);
 
-    fireEvent.mouseDown(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
-    );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    const option = screen.getAllByText('oracle-test')[1];
-    expect(option).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(option);
     fireEvent.click(screen.getByText('common.nextStep'));
 
     await waitFor(() => {
@@ -156,7 +142,6 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
       db_type: 'oracle',
       rule_template_name: 'testRuleTemplateId',
       desc: 'rule template desc',
-      instance_name_list: ['oracle-test'],
       rule_list: resultRuleName,
     });
     // await waitFor(() => {

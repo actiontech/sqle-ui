@@ -2,21 +2,16 @@ import { Button, Form, Input, Select, Space } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { PageFormLayout } from '../../../../data/common';
-import useInstance from '../../../../hooks/useInstance';
 import { nameRule } from '../../../../utils/FormRule';
 import { RuleTemplateBaseInfoFormProps } from './index.type';
 import useDatabaseType from '../../../../hooks/useDatabaseType';
-import { instanceListDefaultKey } from '../../../../data/common';
 import { Rule } from 'antd/lib/form';
 
 const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
   const { t } = useTranslation();
-  const { updateInstanceList, generateInstanceSelectOption } = useInstance();
   const { updateDriverNameList, generateDriverSelectOptions } =
     useDatabaseType();
-  const [databaseType, setDatabaseType] = React.useState<string>(
-    props.form.getFieldValue('db_type') ?? instanceListDefaultKey
-  );
+
   const isUpdate = React.useMemo(
     () => !!props.defaultData,
     [props.defaultData]
@@ -31,32 +26,16 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
   }, [props.form, isUpdate]);
 
   React.useEffect(() => {
-    updateInstanceList();
     updateDriverNameList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const databaseTypeChange = React.useCallback(
-    (value) => {
-      setDatabaseType(value ?? instanceListDefaultKey);
-      props.form.setFields([
-        {
-          name: 'instances',
-          value: [],
-        },
-      ]);
-    },
-    [props.form]
-  );
-
   React.useEffect(() => {
     if (!!props.defaultData) {
-      setDatabaseType(props.defaultData.db_type ?? instanceListDefaultKey);
       props.form.setFieldsValue({
         templateName: props.defaultData.rule_template_name,
         templateDesc: props.defaultData.desc,
         db_type: props.defaultData.db_type,
-        instances: props.defaultData.instance_name_list ?? [],
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -112,25 +91,9 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
             name: t('ruleTemplate.ruleTemplateForm.databaseType'),
           })}
           allowClear
-          onChange={databaseTypeChange}
           disabled={isUpdate}
         >
           {generateDriverSelectOptions()}
-        </Select>
-      </Form.Item>
-      <Form.Item
-        label={t('ruleTemplate.ruleTemplateForm.instances')}
-        name="instances"
-      >
-        <Select
-          mode="multiple"
-          allowClear
-          showSearch
-          placeholder={t('common.form.placeholder.select', {
-            name: t('ruleTemplate.ruleTemplateForm.instances'),
-          })}
-        >
-          {generateInstanceSelectOption(databaseType)}
         </Select>
       </Form.Item>
       <Form.Item label=" " colon={false}>
