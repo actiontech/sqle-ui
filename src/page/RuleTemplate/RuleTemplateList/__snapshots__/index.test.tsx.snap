@@ -388,7 +388,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                               style="margin-right: 8px;"
                             >
                               <a
-                                href="/rule/template/update/1"
+                                href="/rule/template/update/default_mysql"
                               >
                                 common.edit
                               </a>
@@ -488,7 +488,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                               style="margin-right: 8px;"
                             >
                               <a
-                                href="/rule/template/update/2"
+                                href="/rule/template/update/default_oracle"
                               >
                                 common.edit
                               </a>

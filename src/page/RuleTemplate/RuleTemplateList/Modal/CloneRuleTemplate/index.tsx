@@ -45,7 +45,7 @@ const CloneRuleTemplateModal = () => {
     startRequest();
     ruleTemplate
       .CloneRuleTemplateV1({
-        rule_template_id: currentRuleTemplate?.id ?? 0,
+        rule_template_name: currentRuleTemplate?.rule_template_name ?? '',
         new_rule_template_name: value.templateName,
         desc: value.templateDesc,
       })

@@ -35,7 +35,7 @@ export interface ICreateProjectRuleTemplateV1Return extends IBaseRes {}
 export interface IGetProjectRuleTemplateV1Params {
   project_name: string;
 
-  rule_template_id: number;
+  rule_template_name: string;
 }
 
 export interface IGetProjectRuleTemplateV1Return
@@ -44,7 +44,7 @@ export interface IGetProjectRuleTemplateV1Return
 export interface IDeleteProjectRuleTemplateV1Params {
   project_name: string;
 
-  rule_template_id: number;
+  rule_template_name: string;
 }
 
 export interface IDeleteProjectRuleTemplateV1Return extends IBaseRes {}
@@ -53,7 +53,7 @@ export interface IUpdateProjectRuleTemplateV1Params
   extends IUpdateProjectRuleTemplateReqV1 {
   project_name: string;
 
-  rule_template_id: number;
+  rule_template_name: string;
 }
 
 export interface IUpdateProjectRuleTemplateV1Return extends IBaseRes {}
@@ -62,7 +62,7 @@ export interface ICloneProjectRuleTemplateV1Params
   extends ICloneProjectRuleTemplateReqV1 {
   project_name: string;
 
-  rule_template_id: number;
+  rule_template_name: string;
 }
 
 export interface ICloneProjectRuleTemplateV1Return extends IBaseRes {}
@@ -89,25 +89,25 @@ export interface ICreateRuleTemplateV1Params extends ICreateRuleTemplateReqV1 {}
 export interface ICreateRuleTemplateV1Return extends IBaseRes {}
 
 export interface IGetRuleTemplateV1Params {
-  rule_template_id: number;
+  rule_template_name: string;
 }
 
 export interface IGetRuleTemplateV1Return extends IGetRuleTemplateResV1 {}
 
 export interface IDeleteRuleTemplateV1Params {
-  rule_template_id: number;
+  rule_template_name: string;
 }
 
 export interface IDeleteRuleTemplateV1Return extends IBaseRes {}
 
 export interface IUpdateRuleTemplateV1Params extends IUpdateRuleTemplateReqV1 {
-  rule_template_id: number;
+  rule_template_name: string;
 }
 
 export interface IUpdateRuleTemplateV1Return extends IBaseRes {}
 
 export interface ICloneRuleTemplateV1Params extends ICloneRuleTemplateReqV1 {
-  rule_template_id: number;
+  rule_template_name: string;
 }
 
 export interface ICloneRuleTemplateV1Return extends IBaseRes {}
