@@ -375,11 +375,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          <span
-                            class="ant-tag"
-                          >
-                            db1
-                          </span>
+                          
                         </td>
                         <td
                           class="ant-table-cell"
@@ -392,7 +388,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                               style="margin-right: 8px;"
                             >
                               <a
-                                href="/rule/template/update/default_mysql"
+                                href="/rule/template/update/1"
                               >
                                 common.edit
                               </a>
@@ -479,11 +475,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          <span
-                            class="ant-tag"
-                          >
-                            db2
-                          </span>
+                          
                         </td>
                         <td
                           class="ant-table-cell"
@@ -496,7 +488,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                               style="margin-right: 8px;"
                             >
                               <a
-                                href="/rule/template/update/default_oracle"
+                                href="/rule/template/update/2"
                               >
                                 common.edit
                               </a>

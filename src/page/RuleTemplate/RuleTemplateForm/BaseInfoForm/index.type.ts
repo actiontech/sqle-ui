@@ -4,7 +4,6 @@ import { IRuleTemplateDetailResV1 } from '../../../../api/common';
 export type RuleTemplateBaseInfoFields = {
   templateName: string;
   templateDesc?: string;
-  instances?: string[];
   db_type: string;
 };
 

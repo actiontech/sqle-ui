@@ -56,7 +56,6 @@ const CreateRuleTemplate = () => {
       .createRuleTemplateV1({
         rule_template_name: baseInfo.templateName,
         desc: baseInfo.templateDesc,
-        instance_name_list: baseInfo.instances,
         db_type: baseInfo.db_type,
         rule_list: activeRuleWithNewField,
       })

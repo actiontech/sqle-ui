@@ -14,10 +14,11 @@ import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 
 export const RuleTemplateListTableColumnFactory = (
-  deleteTemplate: (name: string) => void,
-  openCloneRuleTemplateModal: (rowData: IRuleTemplateResV1) => void
+  deleteTemplate: (id: number, name: string) => void,
+  openCloneRuleTemplateModal: (rowData: IRuleTemplateResV1) => void,
+  isAdmin: boolean
 ): TableColumn<IRuleTemplateResV1, 'operator'> => {
-  return [
+  const columns: TableColumn<IRuleTemplateResV1, 'operator'> = [
     {
       dataIndex: 'rule_template_name',
       title: () => i18n.t('ruleTemplate.ruleTemplateList.table.templateName'),
@@ -32,13 +33,17 @@ export const RuleTemplateListTableColumnFactory = (
       title: () => i18n.t('ruleTemplate.ruleTemplateList.table.dbType'),
     },
     {
-      dataIndex: 'instance_name_list',
+      dataIndex: 'instance_list',
       title: () => i18n.t('ruleTemplate.ruleTemplateList.table.dataSource'),
-      render: (data: IRuleTemplateResV1['instance_name_list']) => {
+      render: (data: IRuleTemplateResV1['instance_list']) => {
         if (!data || !Array.isArray(data)) {
           return '';
         }
-        return data.map((item) => <Tag key={item}>{item}</Tag>);
+        return data.map((item) => (
+          <Tag
+            key={item.instance_name}
+          >{`${item.project_name}: ${item.instance_name}`}</Tag>
+        ));
       },
     },
     {
@@ -47,7 +52,7 @@ export const RuleTemplateListTableColumnFactory = (
       render: (_, record) => {
         return (
           <Space className="user-cell flex-end-horizontal">
-            <Link to={`/rule/template/update/${record.rule_template_name}`}>
+            <Link to={`/rule/template/update/${record.id}`}>
               {i18n.t('common.edit')}
             </Link>
             <Divider type="vertical" />
@@ -58,6 +63,7 @@ export const RuleTemplateListTableColumnFactory = (
               placement="topRight"
               onConfirm={deleteTemplate.bind(
                 null,
+                record.id ?? 0,
                 record.rule_template_name ?? ''
               )}
             >
@@ -89,4 +95,10 @@ export const RuleTemplateListTableColumnFactory = (
       },
     },
   ];
+
+  if (!isAdmin) {
+    return columns.filter((v) => v.dataIndex !== 'operator');
+  }
+
+  return columns;
 };

@@ -4,12 +4,14 @@ export const ruleTemplateListData = [
     desc: '默认规则模板',
     instance_name_list: ['db1'],
     rule_template_name: 'default_mysql',
+    id: 1,
   },
   {
     db_type: 'oracle',
     desc: '默认规则模板2',
     instance_name_list: ['db2'],
     rule_template_name: 'default_oracle',
+    id: 2,
   },
 ];
 
@@ -68,6 +70,7 @@ export const ruleTemplateData = {
       db_type: 'mysql',
     },
   ],
+  id: 3,
 };
 
 export const ruleTemplateDataWithSpecialName = {
@@ -125,4 +128,5 @@ export const ruleTemplateDataWithSpecialName = {
       db_type: 'mysql',
     },
   ],
+  id: 4,
 };

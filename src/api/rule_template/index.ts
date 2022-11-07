@@ -7,6 +7,18 @@ import ServiceBase from '../Service.base';
 import { AxiosRequestConfig } from 'axios';
 
 import {
+  IGetProjectRuleTemplateListV1Params,
+  IGetProjectRuleTemplateListV1Return,
+  ICreateProjectRuleTemplateV1Params,
+  ICreateProjectRuleTemplateV1Return,
+  IGetProjectRuleTemplateV1Params,
+  IGetProjectRuleTemplateV1Return,
+  IDeleteProjectRuleTemplateV1Params,
+  IDeleteProjectRuleTemplateV1Return,
+  IUpdateProjectRuleTemplateV1Params,
+  IUpdateProjectRuleTemplateV1Return,
+  ICloneProjectRuleTemplateV1Params,
+  ICloneProjectRuleTemplateV1Return,
   IGetRuleTemplateTipsV1Params,
   IGetRuleTemplateTipsV1Return,
   IGetRuleTemplateListV1Params,
@@ -26,6 +38,108 @@ import {
 } from './index.d';
 
 class RuleTemplateService extends ServiceBase {
+  public getProjectRuleTemplateListV1(
+    params: IGetProjectRuleTemplateListV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_id = paramsData.project_id;
+    delete paramsData.project_id;
+
+    return this.get<IGetProjectRuleTemplateListV1Return>(
+      `/v1/projects/${project_id}/rule_templates`,
+      paramsData,
+      options
+    );
+  }
+
+  public createProjectRuleTemplateV1(
+    params: ICreateProjectRuleTemplateV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_id = paramsData.project_id;
+    delete paramsData.project_id;
+
+    return this.post<ICreateProjectRuleTemplateV1Return>(
+      `/v1/projects/${project_id}/rule_templates`,
+      paramsData,
+      options
+    );
+  }
+
+  public getProjectRuleTemplateV1(
+    params: IGetProjectRuleTemplateV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_id = paramsData.project_id;
+    delete paramsData.project_id;
+
+    const rule_template_id = paramsData.rule_template_id;
+    delete paramsData.rule_template_id;
+
+    return this.get<IGetProjectRuleTemplateV1Return>(
+      `/v1/projects/${project_id}/rule_templates/${rule_template_id}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public deleteProjectRuleTemplateV1(
+    params: IDeleteProjectRuleTemplateV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_id = paramsData.project_id;
+    delete paramsData.project_id;
+
+    const rule_template_id = paramsData.rule_template_id;
+    delete paramsData.rule_template_id;
+
+    return this.delete<IDeleteProjectRuleTemplateV1Return>(
+      `/v1/projects/${project_id}/rule_templates/${rule_template_id}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public updateProjectRuleTemplateV1(
+    params: IUpdateProjectRuleTemplateV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_id = paramsData.project_id;
+    delete paramsData.project_id;
+
+    const rule_template_id = paramsData.rule_template_id;
+    delete paramsData.rule_template_id;
+
+    return this.patch<IUpdateProjectRuleTemplateV1Return>(
+      `/v1/projects/${project_id}/rule_templates/${rule_template_id}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public cloneProjectRuleTemplateV1(
+    params: ICloneProjectRuleTemplateV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_id = paramsData.project_id;
+    delete paramsData.project_id;
+
+    const rule_template_id = paramsData.rule_template_id;
+    delete paramsData.rule_template_id;
+
+    return this.post<ICloneProjectRuleTemplateV1Return>(
+      `/v1/projects/${project_id}/rule_templates/${rule_template_id}/clone`,
+      paramsData,
+      options
+    );
+  }
+
   public getRuleTemplateTipsV1(
     params: IGetRuleTemplateTipsV1Params,
     options?: AxiosRequestConfig
@@ -67,11 +181,11 @@ class RuleTemplateService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const rule_template_name = paramsData.rule_template_name;
-    delete paramsData.rule_template_name;
+    const rule_template_id = paramsData.rule_template_id;
+    delete paramsData.rule_template_id;
 
     return this.get<IGetRuleTemplateV1Return>(
-      `/v1/rule_templates/${rule_template_name}/`,
+      `/v1/rule_templates/${rule_template_id}/`,
       paramsData,
       options
     );
@@ -82,11 +196,11 @@ class RuleTemplateService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const rule_template_name = paramsData.rule_template_name;
-    delete paramsData.rule_template_name;
+    const rule_template_id = paramsData.rule_template_id;
+    delete paramsData.rule_template_id;
 
     return this.delete<IDeleteRuleTemplateV1Return>(
-      `/v1/rule_templates/${rule_template_name}/`,
+      `/v1/rule_templates/${rule_template_id}/`,
       paramsData,
       options
     );
@@ -97,11 +211,11 @@ class RuleTemplateService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const rule_template_name = paramsData.rule_template_name;
-    delete paramsData.rule_template_name;
+    const rule_template_id = paramsData.rule_template_id;
+    delete paramsData.rule_template_id;
 
     return this.patch<IUpdateRuleTemplateV1Return>(
-      `/v1/rule_templates/${rule_template_name}/`,
+      `/v1/rule_templates/${rule_template_id}/`,
       paramsData,
       options
     );
@@ -112,11 +226,11 @@ class RuleTemplateService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const rule_template_name = paramsData.rule_template_name;
-    delete paramsData.rule_template_name;
+    const rule_template_id = paramsData.rule_template_id;
+    delete paramsData.rule_template_id;
 
     return this.post<ICloneRuleTemplateV1Return>(
-      `/v1/rule_templates/${rule_template_name}/clone`,
+      `/v1/rule_templates/${rule_template_id}/clone`,
       paramsData,
       options
     );
