@@ -1,12 +1,16 @@
-import { fireEvent, waitFor, screen } from '@testing-library/react';
+import { fireEvent, waitFor, screen, act } from '@testing-library/react';
 import Rule from '.';
 import instance from '../../api/instance';
 import rule_template from '../../api/rule_template';
-import { getBySelector } from '../../testUtils/customQuery';
+import {
+  getBySelector,
+  selectOptionByIndex,
+} from '../../testUtils/customQuery';
 import { renderWithTheme } from '../../testUtils/customRender';
 import {
   mockDriver,
   mockUseInstance,
+  mockUseProject,
   resolveThreeSecond,
 } from '../../testUtils/mockRequest';
 import { allRulesWithType, instanceRule } from './__testData__';
@@ -16,6 +20,7 @@ describe('Rule', () => {
     jest.useFakeTimers();
     mockUseInstance();
     mockDriver();
+    mockUseProject();
   });
 
   afterEach(() => {
@@ -107,6 +112,11 @@ describe('Rule', () => {
       jest.advanceTimersByTime(3000);
     });
 
+    expect(screen.queryByLabelText('rule.form.instance')).toBeInTheDocument();
+    expect(screen.queryByLabelText('rule.form.instance')).toBeDisabled();
+    selectOptionByIndex('rule.form.project', 'project_name_1');
+
+    expect(screen.queryByLabelText('rule.form.instance')).not.toBeDisabled();
     fireEvent.mouseDown(
       getBySelector('input', screen.getByTestId('instance-name'))
     );
@@ -123,7 +133,10 @@ describe('Rule', () => {
       jest.advanceTimersByTime(3000);
     });
     expect(getInstanceRuleSpy).toBeCalledTimes(1);
-    expect(getInstanceRuleSpy).toBeCalledWith({ instance_name: 'instance1' });
+    expect(getInstanceRuleSpy).toBeCalledWith({
+      instance_name: 'instance1',
+      project_name: 'project_name_1',
+    });
     expect(getAllRulesSpy).toBeCalledTimes(2);
     expect(getAllRulesSpy).toBeCalledWith({ filter_db_type: 'mysql' });
     await waitFor(() => {

@@ -15,7 +15,7 @@ import {
 } from '../common.d';
 
 export interface IGetProjectRuleTemplateListV1Params {
-  project_id: number;
+  project_name: string;
 
   page_index?: number;
 
@@ -27,13 +27,13 @@ export interface IGetProjectRuleTemplateListV1Return
 
 export interface ICreateProjectRuleTemplateV1Params
   extends ICreateProjectRuleTemplateReqV1 {
-  project_id: number;
+  project_name: string;
 }
 
 export interface ICreateProjectRuleTemplateV1Return extends IBaseRes {}
 
 export interface IGetProjectRuleTemplateV1Params {
-  project_id: number;
+  project_name: string;
 
   rule_template_id: number;
 }
@@ -42,7 +42,7 @@ export interface IGetProjectRuleTemplateV1Return
   extends IGetProjectRuleTemplateResV1 {}
 
 export interface IDeleteProjectRuleTemplateV1Params {
-  project_id: number;
+  project_name: string;
 
   rule_template_id: number;
 }
@@ -51,7 +51,7 @@ export interface IDeleteProjectRuleTemplateV1Return extends IBaseRes {}
 
 export interface IUpdateProjectRuleTemplateV1Params
   extends IUpdateProjectRuleTemplateReqV1 {
-  project_id: number;
+  project_name: string;
 
   rule_template_id: number;
 }
@@ -60,7 +60,7 @@ export interface IUpdateProjectRuleTemplateV1Return extends IBaseRes {}
 
 export interface ICloneProjectRuleTemplateV1Params
   extends ICloneProjectRuleTemplateReqV1 {
-  project_id: number;
+  project_name: string;
 
   rule_template_id: number;
 }

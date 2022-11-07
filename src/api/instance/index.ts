@@ -35,7 +35,7 @@ import {
   IGetTableMetadataParams,
   IGetTableMetadataReturn,
   IGetInstanceWorkflowTemplateV1Params,
-  IGetInstanceWorkflowTemplateV1Return
+  IGetInstanceWorkflowTemplateV1Return,
 } from './index.d';
 
 class InstanceService extends ServiceBase {
@@ -172,11 +172,14 @@ class InstanceService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     const instance_name = paramsData.instance_name;
     delete paramsData.instance_name;
 
     return this.get<IGetInstanceRuleListV1Return>(
-      `/v1/instances/${instance_name}/rules`,
+      `/v1/projects/${project_name}/instances/${instance_name}/rules`,
       paramsData,
       options
     );

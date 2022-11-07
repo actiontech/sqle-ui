@@ -1,9 +1,13 @@
 import {
+  IGetProjectTipsResV1,
   IGetProjectResV1,
   ICreateProjectReqV1,
   IBaseRes,
+  IGetProjectDetailResV1,
   IUpdateProjectReqV1
 } from '../common.d';
+
+export interface IGetProjectTipsV1Return extends IGetProjectTipsResV1 {}
 
 export interface IGetProjectListV1Params {
   page_index?: number;
@@ -17,14 +21,20 @@ export interface ICreateProjectV1Params extends ICreateProjectReqV1 {}
 
 export interface ICreateProjectV1Return extends IBaseRes {}
 
+export interface IGetProjectDetailV1Params {
+  project_name: string;
+}
+
+export interface IGetProjectDetailV1Return extends IGetProjectDetailResV1 {}
+
 export interface IDeleteProjectV1Params {
-  project_id: number;
+  project_name: string;
 }
 
 export interface IDeleteProjectV1Return extends IBaseRes {}
 
 export interface IUpdateProjectV1Params extends IUpdateProjectReqV1 {
-  project_id: number;
+  project_name: string;
 }
 
 export interface IUpdateProjectV1Return extends IBaseRes {}

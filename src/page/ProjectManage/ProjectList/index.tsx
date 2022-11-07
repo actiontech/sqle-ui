@@ -53,10 +53,10 @@ const ProjectList: React.FC = () => {
     [changeCurrent, changePagination]
   );
 
-  const deleteAction = (id?: number, name?: string) => {
+  const deleteAction = (name?: string) => {
     project
       .deleteProjectV1({
-        project_id: id!,
+        project_name: name!,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {

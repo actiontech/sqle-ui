@@ -43,11 +43,11 @@ class RuleTemplateService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const project_id = paramsData.project_id;
-    delete paramsData.project_id;
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
 
     return this.get<IGetProjectRuleTemplateListV1Return>(
-      `/v1/projects/${project_id}/rule_templates`,
+      `/v1/projects/${project_name}/rule_templates`,
       paramsData,
       options
     );
@@ -58,11 +58,11 @@ class RuleTemplateService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const project_id = paramsData.project_id;
-    delete paramsData.project_id;
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
 
     return this.post<ICreateProjectRuleTemplateV1Return>(
-      `/v1/projects/${project_id}/rule_templates`,
+      `/v1/projects/${project_name}/rule_templates`,
       paramsData,
       options
     );
@@ -73,14 +73,14 @@ class RuleTemplateService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const project_id = paramsData.project_id;
-    delete paramsData.project_id;
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
 
     const rule_template_id = paramsData.rule_template_id;
     delete paramsData.rule_template_id;
 
     return this.get<IGetProjectRuleTemplateV1Return>(
-      `/v1/projects/${project_id}/rule_templates/${rule_template_id}/`,
+      `/v1/projects/${project_name}/rule_templates/${rule_template_id}/`,
       paramsData,
       options
     );
@@ -91,14 +91,14 @@ class RuleTemplateService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const project_id = paramsData.project_id;
-    delete paramsData.project_id;
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
 
     const rule_template_id = paramsData.rule_template_id;
     delete paramsData.rule_template_id;
 
     return this.delete<IDeleteProjectRuleTemplateV1Return>(
-      `/v1/projects/${project_id}/rule_templates/${rule_template_id}/`,
+      `/v1/projects/${project_name}/rule_templates/${rule_template_id}/`,
       paramsData,
       options
     );
@@ -109,14 +109,14 @@ class RuleTemplateService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const project_id = paramsData.project_id;
-    delete paramsData.project_id;
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
 
     const rule_template_id = paramsData.rule_template_id;
     delete paramsData.rule_template_id;
 
     return this.patch<IUpdateProjectRuleTemplateV1Return>(
-      `/v1/projects/${project_id}/rule_templates/${rule_template_id}/`,
+      `/v1/projects/${project_name}/rule_templates/${rule_template_id}/`,
       paramsData,
       options
     );
@@ -127,14 +127,14 @@ class RuleTemplateService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const project_id = paramsData.project_id;
-    delete paramsData.project_id;
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
 
     const rule_template_id = paramsData.rule_template_id;
     delete paramsData.rule_template_id;
 
     return this.post<ICloneProjectRuleTemplateV1Return>(
-      `/v1/projects/${project_id}/rule_templates/${rule_template_id}/clone`,
+      `/v1/projects/${project_name}/rule_templates/${rule_template_id}/clone`,
       paramsData,
       options
     );

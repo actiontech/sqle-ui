@@ -5,7 +5,7 @@ import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 
 export const ProjectListTableColumnFactory = (
-  deleteAction: (id?: number, name?: string) => void,
+  deleteAction: (name?: string) => void,
   openModalAndUpdateSelectProject: (record: IProjectListItem) => void
 ): TableColumn<IProjectListItem, 'operator'> => {
   return [
@@ -53,7 +53,7 @@ export const ProjectListTableColumnFactory = (
               okText={i18n.t('common.ok')}
               cancelText={i18n.t('common.cancel')}
               placement="topRight"
-              onConfirm={() => deleteAction(record.id, record.name)}
+              onConfirm={() => deleteAction(record.name)}
             >
               <Typography.Text type="danger" className="pointer">
                 {i18n.t('common.delete')}
