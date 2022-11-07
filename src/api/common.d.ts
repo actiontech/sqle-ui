@@ -345,6 +345,12 @@ export interface ICreateInstanceReqV1 {
   workflow_template_name?: string;
 }
 
+export interface ICreateProjectReqV1 {
+  desc?: string;
+
+  name?: string;
+}
+
 export interface ICreateRoleReqV1 {
   operation_code_list?: number[];
 
@@ -771,6 +777,16 @@ export interface IGetOperationsResV1 {
   data?: IOperationResV1[];
 
   message?: string;
+}
+
+export interface IGetProjectResV1 {
+  code?: number;
+
+  data?: IProjectListItem[];
+
+  message?: string;
+
+  total_nums?: number;
 }
 
 export interface IGetRoleTipsResV1 {
@@ -1441,6 +1457,18 @@ export interface IPrepareSQLQueryResV1 {
   message?: string;
 }
 
+export interface IProjectListItem {
+  create_time?: string;
+
+  create_user_name?: string;
+
+  desc?: string;
+
+  id?: number;
+
+  name?: string;
+}
+
 export interface IRejectWorkflowReqV1 {
   reason?: string;
 }
@@ -1785,6 +1813,10 @@ export interface IUpdateInstanceReqV1 {
 
 export interface IUpdateOtherUserPasswordReqV1 {
   password?: string;
+}
+
+export interface IUpdateProjectReqV1 {
+  desc?: string;
 }
 
 export interface IUpdateRoleReqV1 {

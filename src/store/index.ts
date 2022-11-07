@@ -8,6 +8,7 @@ import nav from './nav';
 import system from './system';
 import auditPlan from './auditPlan';
 import reportStatistics from './reportStatistics';
+import projectManage from './projectManage';
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     system,
     auditPlan,
     reportStatistics,
+    projectManage,
   },
 });
 

@@ -18,6 +18,8 @@ enum EmitterKey {
   Refresh_Audit_Plan_Record = 'REFRESH_AUDIT_PLAN_RECORD',
 
   Refresh_License = 'REFRESH_LICENSE',
+
+  Refresh_Project_List = 'Refresh_Project_List',
 }
 
 export default EmitterKey;

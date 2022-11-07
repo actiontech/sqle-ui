@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test ProjectManage/Modal/CreateProject should match snapshot 1`] = `
+<body
+  class="ant-scrolling-effect"
+  style="width: calc(100% - 0px); overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
+>
+  <div />
+  <div>
+    <div
+      class="ant-modal-root"
+    >
+      <div
+        class="ant-modal-mask"
+      />
+      <div
+        aria-labelledby="rcDialogTitle0"
+        class="ant-modal-wrap"
+        role="dialog"
+        tabindex="-1"
+      >
+        <div
+          class="ant-modal"
+          role="document"
+          style="width: 520px;"
+        >
+          <div
+            aria-hidden="true"
+            style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+            tabindex="0"
+          />
+          <div
+            class="ant-modal-content"
+          >
+            <div
+              class="ant-modal-header"
+            >
+              <div
+                class="ant-modal-title"
+                id="rcDialogTitle0"
+              >
+                projectManage.createProject.modalTitle
+              </div>
+            </div>
+            <div
+              class="ant-modal-body"
+            >
+              <form
+                class="ant-form ant-form-horizontal"
+              >
+                <div
+                  class="ant-row ant-form-item"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                  >
+                    <label
+                      class="ant-form-item-required"
+                      for="projectName"
+                      title="projectManage.projectForm.projectName"
+                    >
+                      projectManage.projectForm.projectName
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <input
+                          class="ant-input"
+                          id="projectName"
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-row ant-form-item"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                  >
+                    <label
+                      class=""
+                      for="projectDesc"
+                      title="projectManage.projectForm.projectDesc"
+                    >
+                      projectManage.projectForm.projectDesc
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <textarea
+                          class="ant-input"
+                          id="projectDesc"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div
+              class="ant-modal-footer"
+            >
+              <button
+                class="ant-btn"
+                type="button"
+              >
+                <span>
+                  common.close
+                </span>
+              </button>
+              <button
+                class="ant-btn ant-btn-primary"
+                type="button"
+              >
+                <span>
+                  common.submit
+                </span>
+              </button>
+            </div>
+          </div>
+          <div
+            aria-hidden="true"
+            style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+            tabindex="0"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

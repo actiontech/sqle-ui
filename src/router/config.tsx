@@ -332,7 +332,6 @@ export const routerConfig: RouterItem[] = [
     key: 'projectManage',
     icon: <ProjectOutlined />,
     path: '/project',
-    exact: true,
     component: ProjectManage,
   },
 ];
