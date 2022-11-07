@@ -66,7 +66,7 @@ const UserListFilterForm: React.FC<{
           </Form.Item>
         </Col>
         <Col
-          {...filterFormButtonLayoutFactory(12, 0, 6)}
+          {...filterFormButtonLayoutFactory(0, 8, 12)}
           className="text-align-right"
         >
           <Form.Item className="clear-margin-right">

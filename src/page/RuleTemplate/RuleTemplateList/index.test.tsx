@@ -78,7 +78,7 @@ describe('RuleTemplate/RuleTemplateList', () => {
     fireEvent.click(screen.getByText('OK'));
     expect(deleteSpy).toBeCalledTimes(1);
     expect(deleteSpy).toBeCalledWith({
-      rule_template_id: ruleTemplateListData[1].id,
+      rule_template_name: ruleTemplateListData[1].rule_template_name,
     });
     expect(
       screen.queryByText('ruleTemplate.deleteRuleTemplate.deleting')

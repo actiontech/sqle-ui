@@ -67,7 +67,7 @@ const RoleListFilterForm: React.FC<{
           </Form.Item>
         </Col>
         <Col
-          {...filterFormButtonLayoutFactory(0, 16)}
+          {...filterFormButtonLayoutFactory(0, 8, 12)}
           className="text-align-right"
         >
           <Form.Item>

@@ -15,7 +15,7 @@ import { createMemoryHistory } from 'history';
 import { allRulesWithType } from '../../Rule/__testData__';
 import { IRuleReqV1 } from '../../../api/common';
 
-const templateId = 1;
+const templateName = 'mysql-1';
 
 jest.mock('react-router', () => {
   return {
@@ -28,7 +28,7 @@ describe('UpdateRuleTemplate', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
   beforeEach(() => {
     jest.useFakeTimers();
-    useParamsMock.mockReturnValue({ templateId });
+    useParamsMock.mockReturnValue({ templateName });
     mockGetRuleTemplate();
     mockGetAllRules();
     mockDriver();
@@ -148,7 +148,7 @@ describe('UpdateRuleTemplate', () => {
       });
     resultRuleName.shift();
     expect(updateTemplateSpy).toBeCalledWith({
-      rule_template_id: templateId,
+      rule_template_name: 'default_mysql',
       desc: 'rule template desc',
       rule_list: resultRuleName,
     });

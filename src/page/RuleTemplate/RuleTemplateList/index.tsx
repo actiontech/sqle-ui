@@ -60,14 +60,14 @@ const RuleTemplateList = () => {
   );
 
   const deleteTemplate = React.useCallback(
-    (templateId: number, templateName: string) => {
+    (templateName: string) => {
       const hideLoading = message.loading(
         t('ruleTemplate.deleteRuleTemplate.deleting', { name: templateName }),
         0
       );
       ruleTemplate
         .deleteRuleTemplateV1({
-          rule_template_id: templateId,
+          rule_template_name: templateName,
         })
         .then((res) => {
           if (res.data.code === ResponseCode.SUCCESS) {

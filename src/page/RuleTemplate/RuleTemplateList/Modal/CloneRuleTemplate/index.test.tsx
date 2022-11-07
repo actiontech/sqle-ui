@@ -102,7 +102,7 @@ describe('RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal', () => {
     expect(cloneRequestSpy).toBeCalledTimes(1);
     expect(cloneRequestSpy).toBeCalledWith({
       desc: 'desc1',
-      rule_template_id: ruleTemplateListData[0].id,
+      rule_template_name: ruleTemplateListData[0].rule_template_name,
       new_rule_template_name: 'name1',
     });
     expect(screen.getByText('OK').parentNode).toHaveClass('ant-btn-loading');

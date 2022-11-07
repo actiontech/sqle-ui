@@ -14,7 +14,7 @@ import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 
 export const RuleTemplateListTableColumnFactory = (
-  deleteTemplate: (id: number, name: string) => void,
+  deleteTemplate: (name: string) => void,
   openCloneRuleTemplateModal: (rowData: IRuleTemplateResV1) => void,
   isAdmin: boolean
 ): TableColumn<IRuleTemplateResV1, 'operator'> => {
@@ -52,7 +52,7 @@ export const RuleTemplateListTableColumnFactory = (
       render: (_, record) => {
         return (
           <Space className="user-cell flex-end-horizontal">
-            <Link to={`/rule/template/update/${record.id}`}>
+            <Link to={`/rule/template/update/${record.rule_template_name}`}>
               {i18n.t('common.edit')}
             </Link>
             <Divider type="vertical" />
@@ -63,7 +63,6 @@ export const RuleTemplateListTableColumnFactory = (
               placement="topRight"
               onConfirm={deleteTemplate.bind(
                 null,
-                record.id ?? 0,
                 record.rule_template_name ?? ''
               )}
             >
