@@ -95,7 +95,7 @@ describe('test ProjectManage/ProjectList', () => {
 
     fireEvent.click(screen.getByText('common.ok'));
     expect(deleteProjectList).toBeCalledTimes(1);
-    expect(deleteProjectList).toBeCalledWith({ project_id: 1 });
+    expect(deleteProjectList).toBeCalledWith({ project_name: 'project1' });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });

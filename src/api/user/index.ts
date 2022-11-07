@@ -51,11 +51,11 @@ class UserService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const project_id = paramsData.project_id;
-    delete paramsData.project_id;
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
 
     return this.get<IGetMembersV1Return>(
-      `/v1/projects/${project_id}/members`,
+      `/v1/projects/${project_name}/members`,
       paramsData,
       options
     );
@@ -63,11 +63,11 @@ class UserService extends ServiceBase {
 
   public addMemberV1(params: IAddMemberV1Params, options?: AxiosRequestConfig) {
     const paramsData = this.cloneDeep(params);
-    const project_id = paramsData.project_id;
-    delete paramsData.project_id;
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
 
     return this.post<IAddMemberV1Return>(
-      `/v1/projects/${project_id}/members`,
+      `/v1/projects/${project_name}/members`,
       paramsData,
       options
     );
@@ -75,14 +75,14 @@ class UserService extends ServiceBase {
 
   public getMemberV1(params: IGetMemberV1Params, options?: AxiosRequestConfig) {
     const paramsData = this.cloneDeep(params);
-    const project_id = paramsData.project_id;
-    delete paramsData.project_id;
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
 
     const user_name = paramsData.user_name;
     delete paramsData.user_name;
 
     return this.get<IGetMemberV1Return>(
-      `/v1/projects/${project_id}/members/${user_name}/`,
+      `/v1/projects/${project_name}/members/${user_name}/`,
       paramsData,
       options
     );
@@ -93,14 +93,14 @@ class UserService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const project_id = paramsData.project_id;
-    delete paramsData.project_id;
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
 
     const user_name = paramsData.user_name;
     delete paramsData.user_name;
 
     return this.delete<IDeleteMemberV1Return>(
-      `/v1/projects/${project_id}/members/${user_name}/`,
+      `/v1/projects/${project_name}/members/${user_name}/`,
       paramsData,
       options
     );
@@ -111,14 +111,14 @@ class UserService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const project_id = paramsData.project_id;
-    delete paramsData.project_id;
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
 
     const user_name = paramsData.user_name;
     delete paramsData.user_name;
 
     return this.patch<IUpdateMemberV1Return>(
-      `/v1/projects/${project_id}/members/${user_name}/`,
+      `/v1/projects/${project_name}/members/${user_name}/`,
       paramsData,
       options
     );

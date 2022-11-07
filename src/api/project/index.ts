@@ -7,10 +7,13 @@ import ServiceBase from '../Service.base';
 import { AxiosRequestConfig } from 'axios';
 
 import {
+  IGetProjectTipsV1Return,
   IGetProjectListV1Params,
   IGetProjectListV1Return,
   ICreateProjectV1Params,
   ICreateProjectV1Return,
+  IGetProjectDetailV1Params,
+  IGetProjectDetailV1Return,
   IDeleteProjectV1Params,
   IDeleteProjectV1Return,
   IUpdateProjectV1Params,
@@ -18,6 +21,14 @@ import {
 } from './index.d';
 
 class ProjectService extends ServiceBase {
+  public getProjectTipsV1(options?: AxiosRequestConfig) {
+    return this.get<IGetProjectTipsV1Return>(
+      '/v1/project_tips',
+      undefined,
+      options
+    );
+  }
+
   public getProjectListV1(
     params: IGetProjectListV1Params,
     options?: AxiosRequestConfig
@@ -42,16 +53,31 @@ class ProjectService extends ServiceBase {
     );
   }
 
+  public getProjectDetailV1(
+    params: IGetProjectDetailV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.get<IGetProjectDetailV1Return>(
+      `/v1/projects/${project_name}/`,
+      paramsData,
+      options
+    );
+  }
+
   public deleteProjectV1(
     params: IDeleteProjectV1Params,
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const project_id = paramsData.project_id;
-    delete paramsData.project_id;
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
 
     return this.delete<IDeleteProjectV1Return>(
-      `/v1/projects/${project_id}/`,
+      `/v1/projects/${project_name}/`,
       paramsData,
       options
     );
@@ -62,11 +88,11 @@ class ProjectService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const project_id = paramsData.project_id;
-    delete paramsData.project_id;
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
 
     return this.patch<IUpdateProjectV1Return>(
-      `/v1/projects/${project_id}/`,
+      `/v1/projects/${project_name}/`,
       paramsData,
       options
     );

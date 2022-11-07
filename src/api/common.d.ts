@@ -795,6 +795,14 @@ export interface IGetOperationsResV1 {
   message?: string;
 }
 
+export interface IGetProjectDetailResV1 {
+  code?: number;
+
+  data?: IProjectDetailItem;
+
+  message?: string;
+}
+
 export interface IGetProjectResV1 {
   code?: number;
 
@@ -821,6 +829,14 @@ export interface IGetProjectRuleTemplatesResV1 {
   message?: string;
 
   total_nums?: number;
+}
+
+export interface IGetProjectTipsResV1 {
+  code?: number;
+
+  data?: IProjectTipResV1[];
+
+  message?: string;
 }
 
 export interface IGetRoleTipsResV1 {
@@ -1497,6 +1513,16 @@ export interface IPrepareSQLQueryResV1 {
   message?: string;
 }
 
+export interface IProjectDetailItem {
+  create_time?: string;
+
+  create_user_name?: string;
+
+  desc?: string;
+
+  name?: string;
+}
+
 export interface IProjectListItem {
   create_time?: string;
 
@@ -1511,6 +1537,10 @@ export interface IProjectListItem {
 
 export interface IProjectRuleTemplateInstance {
   name?: string;
+}
+
+export interface IProjectTipResV1 {
+  project_name?: string;
 }
 
 export interface IProjectRuleTemplateResV1 {

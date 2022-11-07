@@ -14,7 +14,7 @@ import {
   IGetInstanceSchemaResV1,
   IListTableBySchemaResV1,
   IGetTableMetadataResV1,
-  IGetInstanceWorkflowTemplateResV1
+  IGetInstanceWorkflowTemplateResV1,
 } from '../common.d';
 
 import { getInstanceTipListV1FunctionalModuleEnum } from './index.enum';
@@ -98,6 +98,8 @@ export interface ICheckInstanceIsConnectableByNameV1Return
   extends IGetInstanceConnectableResV1 {}
 
 export interface IGetInstanceRuleListV1Params {
+  project_name: string;
+
   instance_name: string;
 }
 

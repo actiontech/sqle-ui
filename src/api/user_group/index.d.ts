@@ -19,19 +19,19 @@ export interface IGetMemberGroupsV1Params {
 
   page_size?: number;
 
-  project_id: number;
+  project_name: string;
 }
 
 export interface IGetMemberGroupsV1Return extends IGetMemberGroupsRespV1 {}
 
 export interface IAddMemberGroupV1Params extends ICreateMemberGroupReqV1 {
-  project_id: number;
+  project_name: string;
 }
 
 export interface IAddMemberGroupV1Return extends IBaseRes {}
 
 export interface IGetMemberGroupV1Params {
-  project_id: number;
+  project_name: string;
 
   user_group_name: string;
 }
@@ -39,7 +39,7 @@ export interface IGetMemberGroupV1Params {
 export interface IGetMemberGroupV1Return extends IGetMemberGroupRespV1 {}
 
 export interface IDeleteMemberGroupV1Params {
-  project_id: number;
+  project_name: string;
 
   user_group_name: string;
 }
@@ -47,7 +47,7 @@ export interface IDeleteMemberGroupV1Params {
 export interface IDeleteMemberGroupV1Return extends IBaseRes {}
 
 export interface IUpdateMemberGroupV1Params extends IUpdateMemberGroupReqV1 {
-  project_id: number;
+  project_name: string;
 
   user_group_name: string;
 }

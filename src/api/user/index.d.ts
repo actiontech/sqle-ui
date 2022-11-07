@@ -29,19 +29,19 @@ export interface IGetMembersV1Params {
 
   page_size?: number;
 
-  project_id: number;
+  project_name: string;
 }
 
 export interface IGetMembersV1Return extends IGetMembersRespV1 {}
 
 export interface IAddMemberV1Params extends ICreateMemberReqV1 {
-  project_id: number;
+  project_name: string;
 }
 
 export interface IAddMemberV1Return extends IBaseRes {}
 
 export interface IGetMemberV1Params {
-  project_id: number;
+  project_name: string;
 
   user_name: string;
 }
@@ -49,7 +49,7 @@ export interface IGetMemberV1Params {
 export interface IGetMemberV1Return extends IGetMemberRespV1 {}
 
 export interface IDeleteMemberV1Params {
-  project_id: number;
+  project_name: string;
 
   user_name: string;
 }
@@ -57,7 +57,7 @@ export interface IDeleteMemberV1Params {
 export interface IDeleteMemberV1Return extends IBaseRes {}
 
 export interface IUpdateMemberV1Params extends IUpdateMemberReqV1 {
-  project_id: number;
+  project_name: string;
 
   user_name: string;
 }

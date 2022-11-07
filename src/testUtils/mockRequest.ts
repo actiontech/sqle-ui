@@ -9,6 +9,7 @@ import user_group from '../api/user_group';
 import operation from '../api/operation';
 import audit_plan from '../api/audit_plan';
 import management_permission from '../api/management_permission';
+import project from '../api/project';
 
 export const successData = (data: any, otherData?: any) => {
   return {
@@ -241,7 +242,6 @@ export const mockInstanceTip = () => {
 
 export const mockManagerPermission = () => {
   const spy = jest.spyOn(management_permission, 'GetManagementPermissionsV1');
-
   spy.mockImplementation(() =>
     resolveThreeSecond([
       {
@@ -250,7 +250,21 @@ export const mockManagerPermission = () => {
       },
     ])
   );
+  return spy;
+};
 
+export const mockUseProject = () => {
+  const spy = jest.spyOn(project, 'getProjectTipsV1');
+  spy.mockImplementation(() =>
+    resolveThreeSecond([
+      {
+        project_name: 'project_name_1',
+      },
+      {
+        project_name: 'project_name_2',
+      },
+    ])
+  );
   return spy;
 };
 

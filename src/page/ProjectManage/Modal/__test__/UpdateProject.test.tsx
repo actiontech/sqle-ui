@@ -77,7 +77,7 @@ describe('test ProjectManage/Modal/UpdateProject', () => {
 
     expect(updateProjectSpy).toBeCalledTimes(1);
     expect(updateProjectSpy).toBeCalledWith({
-      project_id: 1,
+      project_name: 'name',
       desc: 'update_desc',
     });
 

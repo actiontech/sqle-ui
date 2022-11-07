@@ -35,11 +35,11 @@ class UserGroupService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const project_id = paramsData.project_id;
-    delete paramsData.project_id;
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
 
     return this.get<IGetMemberGroupsV1Return>(
-      `/v1/projects/${project_id}/member_groups`,
+      `/v1/projects/${project_name}/member_groups`,
       paramsData,
       options
     );
@@ -50,11 +50,11 @@ class UserGroupService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const project_id = paramsData.project_id;
-    delete paramsData.project_id;
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
 
     return this.post<IAddMemberGroupV1Return>(
-      `/v1/projects/${project_id}/member_groups`,
+      `/v1/projects/${project_name}/member_groups`,
       paramsData,
       options
     );
@@ -65,14 +65,14 @@ class UserGroupService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const project_id = paramsData.project_id;
-    delete paramsData.project_id;
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
 
     const user_group_name = paramsData.user_group_name;
     delete paramsData.user_group_name;
 
     return this.get<IGetMemberGroupV1Return>(
-      `/v1/projects/${project_id}/member_groups/${user_group_name}/`,
+      `/v1/projects/${project_name}/member_groups/${user_group_name}/`,
       paramsData,
       options
     );
@@ -83,14 +83,14 @@ class UserGroupService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const project_id = paramsData.project_id;
-    delete paramsData.project_id;
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
 
     const user_group_name = paramsData.user_group_name;
     delete paramsData.user_group_name;
 
     return this.delete<IDeleteMemberGroupV1Return>(
-      `/v1/projects/${project_id}/member_groups/${user_group_name}/`,
+      `/v1/projects/${project_name}/member_groups/${user_group_name}/`,
       paramsData,
       options
     );
@@ -101,14 +101,14 @@ class UserGroupService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
-    const project_id = paramsData.project_id;
-    delete paramsData.project_id;
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
 
     const user_group_name = paramsData.user_group_name;
     delete paramsData.user_group_name;
 
     return this.patch<IUpdateMemberGroupV1Return>(
-      `/v1/projects/${project_id}/member_groups/${user_group_name}/`,
+      `/v1/projects/${project_name}/member_groups/${user_group_name}/`,
       paramsData,
       options
     );

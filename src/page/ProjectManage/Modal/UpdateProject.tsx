@@ -44,7 +44,7 @@ const UpdateProject: React.FC = () => {
   const submit = async () => {
     const values = await form.validateFields();
     const params: IUpdateProjectV1Params = {
-      project_id: selectProjectItem?.id!,
+      project_name: selectProjectItem?.name ?? '',
       desc: values.projectDesc,
     };
     startSubmit();

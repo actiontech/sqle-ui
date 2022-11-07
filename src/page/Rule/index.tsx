@@ -26,13 +26,17 @@ import {
 } from '../../data/common';
 import useDatabaseType from '../../hooks/useDatabaseType';
 import useInstance from '../../hooks/useInstance';
+import useProject from '../../hooks/useProject';
 import { Theme } from '../../types/theme.type';
 
 const Rule = () => {
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
   const { updateDriverNameList, driverNameList, generateDriverSelectOptions } =
     useDatabaseType();
+  const { updateProjectList, generateProjectSelectOption } = useProject();
+
   const { t } = useTranslation();
+  const [projectName, setProjectName] = useState<string | undefined>();
   const [instanceName, setInstanceName] = useState<string | undefined>(
     undefined
   );
@@ -43,6 +47,7 @@ const Rule = () => {
     () =>
       instance.getInstanceRuleListV1({
         instance_name: instanceName ?? '',
+        project_name: projectName ?? '',
       }),
     {
       manual: true,
@@ -92,6 +97,7 @@ const Rule = () => {
   React.useEffect(() => {
     updateInstanceList();
     updateDriverNameList();
+    updateProjectList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -119,9 +125,27 @@ const Rule = () => {
             <Form {...FilterFormLayout}>
               <Row align="middle" {...FilterFormRowLayout}>
                 <Col {...FilterFormColLayout}>
-                  <Form.Item label={t('rule.form.instance')}>
+                  <Form.Item name="project" label={t('rule.form.project')}>
+                    <Select
+                      value={projectName}
+                      onChange={setProjectName}
+                      placeholder={t('common.form.placeholder.select')}
+                      className="middle-select"
+                      allowClear
+                      showSearch
+                    >
+                      {generateProjectSelectOption()}
+                    </Select>
+                  </Form.Item>
+                </Col>
+                <Col {...FilterFormColLayout}>
+                  <Form.Item
+                    name="instanceName"
+                    label={t('rule.form.instance')}
+                  >
                     <Select
                       data-testid="instance-name"
+                      disabled={!projectName}
                       value={instanceName}
                       onChange={setInstanceName}
                       placeholder={t('common.form.placeholder.select')}
@@ -134,7 +158,7 @@ const Rule = () => {
                   </Form.Item>
                 </Col>
                 <Col {...FilterFormColLayout}>
-                  <Form.Item label={t('rule.form.dbType')}>
+                  <Form.Item name="dbType" label={t('rule.form.dbType')}>
                     <Select
                       data-testid="database-type"
                       value={dbType}
