@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { IProjectListItem } from '../../../api/common';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
+import { ProjectDetailLocationStateType } from '../ProjectDetail';
 
 export const ProjectListTableColumnFactory = (
   deleteAction: (name?: string) => void,
@@ -12,9 +13,14 @@ export const ProjectListTableColumnFactory = (
     {
       dataIndex: 'name',
       title: () => i18n.t('projectManage.projectList.column.name'),
-      render(name: string) {
-        //todo
-        return <Link to="/order">{name}</Link>;
+      render(projectName: string) {
+        return (
+          <Link<ProjectDetailLocationStateType>
+            to={{ pathname: '/', state: { projectName } }}
+          >
+            {projectName}
+          </Link>
+        );
       },
     },
     {

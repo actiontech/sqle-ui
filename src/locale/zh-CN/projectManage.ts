@@ -28,4 +28,11 @@ export default {
     projectName: '项目名称',
     projectDesc: '项目描述',
   },
+
+  projectInfoBox: {
+    title: '{{name}}',
+    desc: '项目描述: {{desc}}',
+    createTime: '创建时间: {{time}}',
+    createUser: '创建人: {{user}}',
+  },
 };

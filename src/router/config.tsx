@@ -1,10 +1,13 @@
 import React from 'react';
 import { RouteProps } from 'react-router-dom';
-import { RouterItem } from '../types/router.type';
+import {
+  GlobalRouterItemKeyLiteral,
+  ProjectDetailRouterItemKeyLiteral,
+  RouterItem,
+} from '../types/router.type';
 import {
   PieChartOutlined,
   DesktopOutlined,
-  ContainerOutlined,
   UserOutlined,
   DatabaseOutlined,
   AuditOutlined,
@@ -120,8 +123,18 @@ const ReportStatistics = React.lazy(
     )
 );
 
-const ProjectManage = React.lazy(
-  () => import(/* webpackChunkName: "ProjectManage" */ '../page/ProjectManage')
+const ProjectList = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "ProjectList" */ '../page/ProjectManage/ProjectList'
+    )
+);
+
+const ProjectDetail = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "ProjectDetail" */ '../page/ProjectManage/ProjectDetail'
+    )
 );
 
 export const unAuthRouter: Array<RouteProps & { key: string }> = [
@@ -139,9 +152,9 @@ export const unAuthRouter: Array<RouteProps & { key: string }> = [
   },
 ];
 
-export const routerConfig: RouterItem[] = [
+export const globalRouterConfig: RouterItem<GlobalRouterItemKeyLiteral>[] = [
   {
-    path: '/',
+    path: '/dashboard',
     exact: true,
     label: 'menu.dashboard',
     component: Home,
@@ -164,6 +177,7 @@ export const routerConfig: RouterItem[] = [
     icon: <SearchOutlined />,
     key: 'sqlQuery',
   },
+
   {
     path: '/reportStatistics',
     exact: true,
@@ -182,156 +196,167 @@ export const routerConfig: RouterItem[] = [
     key: 'account',
   },
   {
-    label: 'menu.order',
-    key: 'order',
-    icon: <ConsoleSqlOutlined />,
+    label: 'menu.userCenter',
+    icon: <UserOutlined />,
+    key: 'userCenter',
     components: [
       {
-        path: '/order',
+        path: '/user',
         exact: true,
-        label: 'menu.orderList',
-        icon: <BarsOutlined />,
-        component: OrderList,
-        key: 'orderList',
+        label: 'menu.user',
+        component: User,
+        key: 'user',
       },
       {
-        path: '/order/create',
+        path: '/user/role',
         exact: true,
-        label: 'menu.workflow',
-        component: CreateOrder,
-        icon: <DesktopOutlined />,
-        key: 'orderCreate',
-        hideInSliderMenu: true,
+        label: 'menu.role',
+        component: Role,
+        key: 'role',
       },
       {
-        path: '/order/:orderId',
+        path: '/user/group',
         exact: true,
-        label: 'menu.orderDetail',
-        hideInSliderMenu: true,
-        component: OrderDetail,
-        key: 'orderDetail',
-      },
-      /* IFTRUE_isEE */
-      {
-        path: '/order/:taskId/:sqlNum/analyze',
-        exact: true,
-        label: 'menu.orderSqlAnalyze',
-        hideInSliderMenu: true,
-        component: OrderSqlAnalyze,
-        key: 'orderAnalyze',
-      },
-      /* FITRUE_isEE */
-    ],
-  },
-  {
-    label: 'menu.auditPlane',
-    key: 'plane',
-    icon: <CiCircleOutlined />,
-    components: [
-      {
-        path: '/auditPlan/detail/:auditPlanName',
-        key: 'auditPlanDetail',
-        label: 'menu.auditPlane',
-        hideInSliderMenu: true,
-        component: AuditPlanDetail,
-      },
-      /* IFTRUE_isEE */
-      {
-        path: '/auditPlan/:reportId/:sqlNum/analyze',
-        key: 'auditPlanDetail',
-        exact: true,
-        label: 'menu.auditPlanSqlAnalyze',
-        component: AuditPlanSqlAnalyze,
-        hideInSliderMenu: true,
-      },
-      /* FITRUE_isEE */
-      {
-        path: '/auditPlan',
-        key: 'auditPlan',
-        label: 'menu.auditPlaneList',
-        component: AuditPlan,
+        label: 'menu.userGroup',
+        component: UserGroup,
+        key: 'userGroup',
       },
     ],
   },
   {
-    label: 'menu.platformManage',
-    role: [SystemRole.admin],
-    key: 'platformManage',
-    icon: <ContainerOutlined />,
-    components: [
-      {
-        label: 'menu.userCenter',
-        icon: <UserOutlined />,
-        key: 'userCenter',
-        components: [
-          {
-            path: '/user',
-            exact: true,
-            label: 'menu.user',
-            component: User,
-            key: 'user',
-          },
-          {
-            path: '/user/role',
-            exact: true,
-            label: 'menu.role',
-            component: Role,
-            key: 'role',
-          },
-          {
-            path: '/user/group',
-            exact: true,
-            label: 'menu.userGroup',
-            component: UserGroup,
-            key: 'userGroup',
-          },
-        ],
-      },
-      {
-        path: '/data',
-        key: 'data',
-        label: 'menu.dataSource',
-        icon: <DatabaseOutlined />,
-        component: DataSource,
-      },
-      {
-        path: '/rule/template',
-        key: 'ruleTemplate',
-        label: 'menu.ruleTemplate',
-        icon: <AuditOutlined />,
-        component: RuleTemplate,
-      },
-      {
-        path: '/system',
-        key: 'System',
-        label: 'menu.systemSetting',
-        exact: true,
-        component: System,
-        icon: <SettingOutlined />,
-      },
-      {
-        path: '/progress',
-        key: 'progress',
-        label: 'menu.progressManage',
-        icon: <NodeIndexOutlined />,
-        component: WorkflowTemplate,
-      },
-      /* IFTRUE_isEE */
-      {
-        path: '/whitelist',
-        key: 'Whitelist',
-        label: 'menu.whitelist',
-        component: Whitelist,
-        icon: <ProfileOutlined />,
-      },
-      /* FITRUE_isEE */
-    ],
+    path: '/rule/template',
+    key: 'globalRuleTemplate',
+    label: 'menu.ruleTemplate',
+    icon: <AuditOutlined />,
+    component: RuleTemplate,
+  },
+  {
+    path: '/system',
+    key: 'System',
+    label: 'menu.systemSetting',
+    exact: true,
+    component: System,
+    icon: <SettingOutlined />,
   },
   {
     label: 'menu.projectManage',
-    key: 'projectManage',
+    key: 'projectList',
     icon: <ProjectOutlined />,
     path: '/project',
-    component: ProjectManage,
+    exact: true,
+    component: ProjectList,
+  },
+  {
+    label: 'menu.projectManage',
+    key: 'projectDetail',
+    icon: <ProjectOutlined />,
+    path: '/',
+    component: ProjectDetail,
   },
 ];
+
+export const projectDetailRouterConfig: RouterItem<ProjectDetailRouterItemKeyLiteral>[] =
+  [
+    {
+      label: 'menu.order',
+      key: 'order',
+      icon: <ConsoleSqlOutlined />,
+      components: [
+        {
+          path: '/order',
+          exact: true,
+          label: 'menu.orderList',
+          icon: <BarsOutlined />,
+          component: OrderList,
+          key: 'orderList',
+        },
+        {
+          path: '/order/create',
+          exact: true,
+          label: 'menu.workflow',
+          component: CreateOrder,
+          icon: <DesktopOutlined />,
+          key: 'orderCreate',
+          hideInSliderMenu: true,
+        },
+        {
+          path: '/order/:orderId',
+          exact: true,
+          label: 'menu.orderDetail',
+          hideInSliderMenu: true,
+          component: OrderDetail,
+          key: 'orderDetail',
+        },
+        /* IFTRUE_isEE */
+        {
+          path: '/order/:taskId/:sqlNum/analyze',
+          exact: true,
+          label: 'menu.orderSqlAnalyze',
+          hideInSliderMenu: true,
+          component: OrderSqlAnalyze,
+          key: 'orderAnalyze',
+        },
+        /* FITRUE_isEE */
+      ],
+    },
+    {
+      label: 'menu.auditPlane',
+      key: 'plane',
+      icon: <CiCircleOutlined />,
+      components: [
+        {
+          path: '/auditPlan/detail/:auditPlanName',
+          key: 'auditPlanDetail',
+          label: 'menu.auditPlane',
+          hideInSliderMenu: true,
+          component: AuditPlanDetail,
+        },
+        /* IFTRUE_isEE */
+        {
+          path: '/auditPlan/:reportId/:sqlNum/analyze',
+          key: 'auditPlanDetail',
+          exact: true,
+          label: 'menu.auditPlanSqlAnalyze',
+          component: AuditPlanSqlAnalyze,
+          hideInSliderMenu: true,
+        },
+        /* FITRUE_isEE */
+        {
+          path: '/auditPlan',
+          key: 'auditPlan',
+          label: 'menu.auditPlaneList',
+          component: AuditPlan,
+        },
+      ],
+    },
+    {
+      path: '/data',
+      key: 'data',
+      label: 'menu.dataSource',
+      icon: <DatabaseOutlined />,
+      component: DataSource,
+    },
+    {
+      path: '/rule/template',
+      key: 'ruleTemplate',
+      label: 'menu.ruleTemplate',
+      icon: <AuditOutlined />,
+      component: RuleTemplate,
+    },
+    {
+      path: '/progress',
+      key: 'progress',
+      label: 'menu.progressManage',
+      icon: <NodeIndexOutlined />,
+      component: WorkflowTemplate,
+    },
+    /* IFTRUE_isEE */
+    {
+      path: '/whitelist',
+      key: 'Whitelist',
+      label: 'menu.whitelist',
+      component: Whitelist,
+      icon: <ProfileOutlined />,
+    },
+    /* FITRUE_isEE */
+  ];

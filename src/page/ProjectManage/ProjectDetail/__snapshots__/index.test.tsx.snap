@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test ProjectManage/ProjectDetail should match snapshot 1`] = `
+<ProjectDetailLayout
+  projectName="test"
+>
+  <Suspense
+    fallback={<HeaderProgress />}
+  >
+    <Switch>
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.lazy),
+            "_init": [Function],
+            "_payload": Object {
+              "_result": [Function],
+              "_status": -1,
+            },
+          }
+        }
+        exact={true}
+        icon={<ForwardRef(BarsOutlined) />}
+        key="orderList"
+        label="menu.orderList"
+        path="/order"
+      />
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.lazy),
+            "_init": [Function],
+            "_payload": Object {
+              "_result": [Function],
+              "_status": -1,
+            },
+          }
+        }
+        exact={true}
+        hideInSliderMenu={true}
+        icon={<ForwardRef(DesktopOutlined) />}
+        key="orderCreate"
+        label="menu.workflow"
+        path="/order/create"
+      />
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.lazy),
+            "_init": [Function],
+            "_payload": Object {
+              "_result": [Function],
+              "_status": -1,
+            },
+          }
+        }
+        exact={true}
+        hideInSliderMenu={true}
+        key="orderDetail"
+        label="menu.orderDetail"
+        path="/order/:orderId"
+      />
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.lazy),
+            "_init": [Function],
+            "_payload": Object {
+              "_result": [Function],
+              "_status": -1,
+            },
+          }
+        }
+        exact={true}
+        hideInSliderMenu={true}
+        key="orderAnalyze"
+        label="menu.orderSqlAnalyze"
+        path="/order/:taskId/:sqlNum/analyze"
+      />
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.lazy),
+            "_init": [Function],
+            "_payload": Object {
+              "_result": [Function],
+              "_status": -1,
+            },
+          }
+        }
+        hideInSliderMenu={true}
+        key="auditPlanDetail"
+        label="menu.auditPlane"
+        path="/auditPlan/detail/:auditPlanName"
+      />
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.lazy),
+            "_init": [Function],
+            "_payload": Object {
+              "_result": [Function],
+              "_status": -1,
+            },
+          }
+        }
+        exact={true}
+        hideInSliderMenu={true}
+        key="auditPlanDetail"
+        label="menu.auditPlanSqlAnalyze"
+        path="/auditPlan/:reportId/:sqlNum/analyze"
+      />
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.lazy),
+            "_init": [Function],
+            "_payload": Object {
+              "_result": [Function],
+              "_status": -1,
+            },
+          }
+        }
+        key="auditPlan"
+        label="menu.auditPlaneList"
+        path="/auditPlan"
+      />
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.lazy),
+            "_init": [Function],
+            "_payload": Object {
+              "_result": [Function],
+              "_status": -1,
+            },
+          }
+        }
+        icon={<ForwardRef(DatabaseOutlined) />}
+        key="data"
+        label="menu.dataSource"
+        path="/data"
+      />
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.lazy),
+            "_init": [Function],
+            "_payload": Object {
+              "_result": [Function],
+              "_status": -1,
+            },
+          }
+        }
+        icon={<ForwardRef(AuditOutlined) />}
+        key="ruleTemplate"
+        label="menu.ruleTemplate"
+        path="/rule/template"
+      />
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.lazy),
+            "_init": [Function],
+            "_payload": Object {
+              "_result": [Function],
+              "_status": -1,
+            },
+          }
+        }
+        icon={<ForwardRef(NodeIndexOutlined) />}
+        key="progress"
+        label="menu.progressManage"
+        path="/progress"
+      />
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.lazy),
+            "_init": [Function],
+            "_payload": Object {
+              "_result": [Function],
+              "_status": -1,
+            },
+          }
+        }
+        icon={<ForwardRef(ProfileOutlined) />}
+        key="Whitelist"
+        label="menu.whitelist"
+        path="/whitelist"
+      />
+      <Redirect
+        to={
+          Object {
+            "pathname": "/order",
+            "state": Object {
+              "projectName": "test",
+            },
+          }
+        }
+      />
+    </Switch>
+  </Suspense>
+</ProjectDetailLayout>
+`;

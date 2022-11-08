@@ -4,7 +4,7 @@ import EmitterKey from '../../../data/EmitterKey';
 import { ModalName } from '../../../data/ModalName';
 import { getBySelector } from '../../../testUtils/customQuery';
 import { renderWithRouter } from '../../../testUtils/customRender';
-import { mockUseDispatch } from '../../../testUtils/mockRedux';
+import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
 import EventEmitter from '../../../utils/EventEmitter';
 import { mockDeleteProject, mockGetProjectList } from '../__test__/utils';
 
@@ -13,6 +13,14 @@ describe('test ProjectManage/ProjectList', () => {
   let deleteProjectList: jest.SpyInstance;
   let dispatchSpy: jest.SpyInstance;
   beforeEach(() => {
+    mockUseSelector({
+      projectManage: {
+        modalStatus: {
+          [ModalName.Create_Project]: false,
+          [ModalName.Update_Project]: false,
+        },
+      },
+    });
     getProjectListSpy = mockGetProjectList();
     deleteProjectList = mockDeleteProject();
     const { scopeDispatch } = mockUseDispatch();
@@ -63,13 +71,13 @@ describe('test ProjectManage/ProjectList', () => {
 
   test('should open the modal for creating a project when click the Create Project button', () => {
     renderWithRouter(<ProjectList />);
-    expect(dispatchSpy).toBeCalledTimes(0);
+    expect(dispatchSpy).toBeCalledTimes(1);
 
     fireEvent.click(
       screen.getByText('projectManage.projectList.createProject')
     );
 
-    expect(dispatchSpy).toBeCalledTimes(1);
+    expect(dispatchSpy).toBeCalledTimes(2);
     expect(dispatchSpy).toBeCalledWith({
       type: 'projectManage/updateModalStatus',
       payload: {
@@ -114,7 +122,7 @@ describe('test ProjectManage/ProjectList', () => {
 
   test('should open the modal for updating a project when click the Update Project button', async () => {
     renderWithRouter(<ProjectList />);
-    expect(dispatchSpy).toBeCalledTimes(0);
+    expect(dispatchSpy).toBeCalledTimes(1);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -123,7 +131,7 @@ describe('test ProjectManage/ProjectList', () => {
 
     fireEvent.click(screen.getAllByText('common.edit')[0]);
 
-    expect(dispatchSpy).toBeCalledTimes(2);
+    expect(dispatchSpy).toBeCalledTimes(3);
     expect(dispatchSpy).toBeCalledWith({
       type: 'projectManage/updateModalStatus',
       payload: {
