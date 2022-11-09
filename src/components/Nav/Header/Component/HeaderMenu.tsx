@@ -1,8 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router-dom';
-import { routerConfig } from '../../../../router/config';
+import { globalRouterConfig } from '../../../../router/config';
 
-const headerMenuKeys = ['dashboard', 'rule', 'sqlQuery', 'projectManage'];
+const headerMenuKeys: Array<typeof globalRouterConfig[number]['key']> = [
+  'dashboard',
+  'rule',
+  'sqlQuery',
+  'projectList',
+];
 
 const HeaderMenu: React.FC = () => {
   const { t } = useTranslation();
@@ -14,7 +19,7 @@ const HeaderMenu: React.FC = () => {
   };
   return (
     <div className="header-menu">
-      {routerConfig.map((router) => {
+      {globalRouterConfig.map((router) => {
         if (headerMenuKeys.includes(router.key)) {
           return (
             <div

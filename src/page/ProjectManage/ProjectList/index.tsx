@@ -1,6 +1,6 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
-import { Button, Card, message, Space, Table } from 'antd';
+import { Button, Card, message, PageHeader, Space, Table } from 'antd';
 import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
@@ -14,6 +14,7 @@ import {
   updateSelectProject,
 } from '../../../store/projectManage';
 import EventEmitter from '../../../utils/EventEmitter';
+import ProjectManageModal from '../Modal';
 import { ProjectListTableColumnFactory } from './column';
 
 const ProjectList: React.FC = () => {
@@ -98,47 +99,54 @@ const ProjectList: React.FC = () => {
   }, [refresh]);
 
   return (
-    <section className="padding-content">
-      <Card
-        title={
-          <Space>
-            {t('projectManage.projectList.title')}
+    <article className="project-manage-page-namespace">
+      <PageHeader title={t('projectManage.pageTitle')} ghost={false}>
+        {t('projectManage.pageDescribe')}
+      </PageHeader>
+      <section className="padding-content">
+        <Card
+          title={
+            <Space>
+              {t('projectManage.projectList.title')}
+              <Button
+                key="refresh_project"
+                data-testid="refresh-project"
+                onClick={refresh}
+              >
+                <SyncOutlined spin={loading} />
+              </Button>
+            </Space>
+          }
+          extra={[
             <Button
-              key="refresh_project"
-              data-testid="refresh-project"
-              onClick={refresh}
+              key="create_project"
+              type="primary"
+              onClick={openCreateProjectModal}
             >
-              <SyncOutlined spin={loading} />
-            </Button>
-          </Space>
-        }
-        extra={[
-          <Button
-            key="create_project"
-            type="primary"
-            onClick={openCreateProjectModal}
-          >
-            {t('projectManage.projectList.createProject')}
-          </Button>,
-        ]}
-      >
-        <Table
-          rowKey="id"
-          dataSource={data?.list}
-          loading={loading}
-          pagination={{
-            total,
-            defaultPageSize: 10,
-            showSizeChanger: true,
-            onChange: pageChange,
-          }}
-          columns={ProjectListTableColumnFactory(
-            deleteAction,
-            openModalAndUpdateSelectProject
-          )}
-        />
-      </Card>
-    </section>
+              {t('projectManage.projectList.createProject')}
+            </Button>,
+          ]}
+        >
+          <Table
+            rowKey="id"
+            dataSource={data?.list}
+            loading={loading}
+            pagination={{
+              total,
+              defaultPageSize: 10,
+              showSizeChanger: true,
+              onChange: pageChange,
+            }}
+            columns={ProjectListTableColumnFactory(
+              deleteAction,
+              openModalAndUpdateSelectProject
+            )}
+          />
+        </Card>
+      </section>
+
+      <ProjectManageModal />
+    </article>
   );
 };
 

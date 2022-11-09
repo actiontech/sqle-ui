@@ -1,6 +1,6 @@
 import { ThemeProvider } from '@material-ui/styles';
 import { ConfigProvider } from 'antd';
-import React, { ReactNodeArray } from 'react';
+import React from 'react';
 import { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import {
@@ -13,39 +13,22 @@ import HeaderProgress from './components/HeaderProgress';
 import Nav from './components/Nav';
 import useChangeTheme from './hooks/useChangeTheme';
 import useLanguage from './hooks/useLanguage';
-import { routerConfig, unAuthRouter } from './router/config';
+import { globalRouterConfig, unAuthRouter } from './router/config';
 import { IReduxState } from './store';
-import { RouterItem } from './types/router.type';
 import { useRequest } from 'ahooks';
 import { ResponseCode, SystemRole } from './data/common';
 import { updateUser, updateToken } from './store/user';
 import user from './api/user';
 import { useDispatch } from 'react-redux';
 import EmptyBox from './components/EmptyBox';
+import useRoutes from './hooks/useRoutes';
 
 function App() {
   const token = useSelector<IReduxState, string>((state) => state.user.token);
-  const role = useSelector<IReduxState, SystemRole | ''>(
-    (state) => state.user.role
-  );
+  const { registerRouter } = useRoutes();
   const { antdLocale } = useLanguage();
   const { currentThemeData } = useChangeTheme();
   const dispatch = useDispatch();
-
-  const registerRouter = React.useCallback(
-    (config: RouterItem[]): ReactNodeArray => {
-      return config.map((route) => {
-        if (Array.isArray(route.role) && !route.role.includes(role)) {
-          return null;
-        }
-        if (route.components) {
-          return registerRouter(route.components);
-        }
-        return <Route {...route} />;
-      });
-    },
-    [role]
-  );
 
   const clearUserInfo = () => {
     dispatch(
@@ -112,8 +95,8 @@ function App() {
                 <Suspense fallback={<HeaderProgress />}>
                   <EmptyBox if={!loading}>
                     <Switch>
-                      {registerRouter(routerConfig)}
-                      <Redirect to="/" />
+                      {registerRouter(globalRouterConfig)}
+                      <Redirect to="/dashboard" />
                     </Switch>
                   </EmptyBox>
                 </Suspense>

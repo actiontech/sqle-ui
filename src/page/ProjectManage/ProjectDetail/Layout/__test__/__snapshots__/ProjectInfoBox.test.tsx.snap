@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test ProjectInfoBox should match snapshot 1`] = `
+<div>
+  <div
+    class="project-info-wrapper"
+  >
+    <span
+      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white title"
+    >
+      <strong>
+        project1
+      </strong>
+    </span>
+    <span
+      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white pb-10"
+    >
+      projectManage.projectInfoBox.desc
+    </span>
+    <span
+      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white pb-10"
+    >
+      projectManage.projectInfoBox.createTime
+    </span>
+    <span
+      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white pb-10"
+    >
+      projectManage.projectInfoBox.createUser
+    </span>
+  </div>
+</div>
+`;
+
+exports[`test ProjectInfoBox should match snapshot when a request goes wrong 1`] = `
+<div>
+  <div
+    class="project-info-wrapper"
+  >
+    <span
+      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white title"
+    >
+      <strong>
+        
+      </strong>
+    </span>
+    <span
+      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white pb-10"
+    >
+      projectManage.projectInfoBox.desc
+    </span>
+    <span
+      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white pb-10"
+    >
+      projectManage.projectInfoBox.createTime
+    </span>
+    <span
+      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white pb-10"
+    >
+      projectManage.projectInfoBox.createUser
+    </span>
+  </div>
+</div>
+`;

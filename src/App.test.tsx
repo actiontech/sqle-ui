@@ -59,10 +59,10 @@ describe('App test', () => {
     const Switch = Nav.find('Switch');
     expect(Switch.length).toBe(1);
     const routes = Switch.find('Route');
-    expect(routes.length).toBe(21);
+    expect(routes.length).toBe(12);
     const redirect = Switch.find('Redirect');
     expect(redirect.length).toBe(1);
-    expect(redirect.at(0).prop('to')).toBe('/');
+    expect(redirect.at(0).prop('to')).toBe('/dashboard');
   });
 
   test('should render Nav and some inner route when token is truthy and role is not admin', () => {
@@ -76,10 +76,10 @@ describe('App test', () => {
     const Switch = Nav.find('Switch');
     expect(Switch.length).toBe(1);
     const routes = Switch.find('Route');
-    expect(routes.length).toBe(12);
+    expect(routes.length).toBe(11);
     const redirect = Switch.find('Redirect');
     expect(redirect.length).toBe(1);
-    expect(redirect.at(0).prop('to')).toBe('/');
+    expect(redirect.at(0).prop('to')).toBe('/dashboard');
   });
 
   test('should get user info when token is not empty', async () => {
