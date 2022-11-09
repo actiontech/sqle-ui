@@ -9,6 +9,7 @@ import system from './system';
 import auditPlan from './auditPlan';
 import reportStatistics from './reportStatistics';
 import projectManage from './projectManage';
+import member from './member';
 
 const store = configureStore({
   reducer: {
@@ -22,6 +23,7 @@ const store = configureStore({
     auditPlan,
     reportStatistics,
     projectManage,
+    member,
   },
 });
 

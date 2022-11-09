@@ -9,24 +9,29 @@ const useUsername = () => {
   const [usernameList, setUsernameList] = React.useState<IUserTipResV1[]>([]);
   const [loading, { setTrue, setFalse }] = useBoolean();
 
-  const updateUsernameList = React.useCallback(() => {
-    setTrue();
-    user
-      .getUserTipListV1({})
-      .then((res) => {
-        if (res.data.code === ResponseCode.SUCCESS) {
-          setUsernameList(res.data?.data ?? []);
-        } else {
+  const updateUsernameList = React.useCallback(
+    (projectName?: string) => {
+      setTrue();
+      user
+        .getUserTipListV1({
+          filter_project: projectName,
+        })
+        .then((res) => {
+          if (res.data.code === ResponseCode.SUCCESS) {
+            setUsernameList(res.data?.data ?? []);
+          } else {
+            setUsernameList([]);
+          }
+        })
+        .catch(() => {
           setUsernameList([]);
-        }
-      })
-      .catch(() => {
-        setUsernameList([]);
-      })
-      .finally(() => {
-        setFalse();
-      });
-  }, [setFalse, setTrue]);
+        })
+        .finally(() => {
+          setFalse();
+        });
+    },
+    [setFalse, setTrue]
+  );
 
   const generateUsernameSelectOption = React.useCallback(() => {
     return usernameList.map((user) => {

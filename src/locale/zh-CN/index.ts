@@ -19,6 +19,7 @@ import sqlQuery from './sqlQuery';
 import sqlAnalyze from './sqlAnalyze';
 import reportStatistics from './reportStatistics';
 import projectManage from './projectManage';
+import member from './member';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -44,5 +45,6 @@ export default {
     sqlAnalyze,
     reportStatistics,
     projectManage,
+    member,
   },
 };

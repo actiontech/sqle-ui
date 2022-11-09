@@ -129,7 +129,7 @@ const ProjectList: React.FC = () => {
         >
           <Table
             rowKey="id"
-            dataSource={data?.list}
+            dataSource={data?.list ?? [{ name: 'test' }]}
             loading={loading}
             pagination={{
               total,
