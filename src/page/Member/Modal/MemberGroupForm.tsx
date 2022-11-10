@@ -1,12 +1,15 @@
-import { Form, Input, Switch } from 'antd';
+import { Form, Input } from 'antd';
 import { Rule } from 'antd/lib/form';
 import { useTranslation } from 'react-i18next';
 import { ModalFormLayout } from '../../../data/common';
 import { nameRule } from '../../../utils/FormRule';
-import { MemberFormProps } from './index.type';
+import { MemberGroupFormProps } from './index.type';
 import RoleSelector from '../Common/RoleSelector';
 
-const MemberForm: React.FC<MemberFormProps> = ({ form, isUpdate }) => {
+const MemberGroupForm: React.FC<MemberGroupFormProps> = ({
+  form,
+  isUpdate,
+}) => {
   const { t } = useTranslation();
 
   const userNameRules = (): Rule[] => {
@@ -27,25 +30,17 @@ const MemberForm: React.FC<MemberFormProps> = ({ form, isUpdate }) => {
   return (
     <Form form={form} {...ModalFormLayout}>
       <Form.Item
-        name="username"
-        label={t('member.memberForm.username')}
+        name="userGroupName"
+        label={t('member.memberGroupForm.userGroupName')}
         validateFirst={true}
         rules={userNameRules()}
       >
         <Input
           disabled={isUpdate}
           placeholder={t('common.form.placeholder.input', {
-            name: t('member.memberForm.username'),
+            name: t('member.memberGroupForm.userGroupName'),
           })}
         />
-      </Form.Item>
-
-      <Form.Item
-        name="isOwner"
-        label={t('member.memberForm.projectAdmin')}
-        valuePropName="checked"
-      >
-        <Switch />
       </Form.Item>
 
       <RoleSelector />
@@ -53,4 +48,4 @@ const MemberForm: React.FC<MemberFormProps> = ({ form, isUpdate }) => {
   );
 };
 
-export default MemberForm;
+export default MemberGroupForm;

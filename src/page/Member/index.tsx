@@ -1,4 +1,4 @@
-import { PageHeader } from 'antd';
+import { PageHeader, Space } from 'antd';
 import { useTranslation } from 'react-i18next';
 import MemberGroupList from './MemberGroupList';
 import MemberList from './MemberList';
@@ -10,8 +10,10 @@ const Member: React.FC = () => {
     <article>
       <PageHeader title={t('member.pageTitle')} ghost={false}></PageHeader>
       <section className="padding-content">
-        <MemberList />
-        <MemberGroupList />
+        <Space direction="vertical" className="full-width-element" size="large">
+          <MemberList />
+          <MemberGroupList />
+        </Space>
       </section>
 
       <MemberModal />

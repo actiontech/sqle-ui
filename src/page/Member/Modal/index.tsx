@@ -3,7 +3,9 @@ import { useDispatch } from 'react-redux';
 import { ModalName } from '../../../data/ModalName';
 import { initMemberModalStatus } from '../../../store/member';
 import AddMember from './AddMember';
+import AddMemberGroup from './AddMemberGroup';
 import UpdateMember from './UpdateMember';
+import UpdateMemberGroup from './UpdateMemberGroup';
 
 const MemberModal: React.FC = () => {
   const dispatch = useDispatch();
@@ -24,6 +26,8 @@ const MemberModal: React.FC = () => {
     <>
       <AddMember />
       <UpdateMember />
+      <AddMemberGroup />
+      <UpdateMemberGroup />
     </>
   );
 };

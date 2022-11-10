@@ -11,23 +11,23 @@ import {
 } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import useInstance from '../../../hooks/useInstance';
-import useUsername from '../../../hooks/useUsername';
+import useUserGroup from '../../../hooks/useUserGroup';
 import EventEmitter from '../../../utils/EventEmitter';
 import { ProjectDetailLocationStateType } from '../../ProjectManage/ProjectDetail';
 import {
-  MemberListFilterFormFields,
-  MemberListFilterFormProps,
+  MemberGroupListFilterFormProps,
+  MemberGroupListFilterFormFields,
 } from './index.type';
 
-const MemberListFilterForm: React.FC<MemberListFilterFormProps> = ({
+const MemberGroupListFilterForm: React.FC<MemberGroupListFilterFormProps> = ({
   submit,
 }) => {
   const { t } = useTranslation();
-  const [form] = useForm<MemberListFilterFormFields>();
+  const [form] = useForm<MemberGroupListFilterFormFields>();
   const location = useLocation<ProjectDetailLocationStateType>();
 
   const { generateInstanceSelectOption, updateInstanceList } = useInstance();
-  const { generateUsernameSelectOption, updateUsernameList } = useUsername();
+  const { generateUserGroupSelectOption, updateUserGroupList } = useUserGroup();
 
   const reset = () => {
     form.resetFields();
@@ -36,29 +36,29 @@ const MemberListFilterForm: React.FC<MemberListFilterFormProps> = ({
 
   useEffect(() => {
     updateInstanceList();
-    updateUsernameList(location.state.projectName);
-  }, [location.state.projectName, updateInstanceList, updateUsernameList]);
+    updateUserGroupList(location.state.projectName);
+  }, [location.state.projectName, updateInstanceList, updateUserGroupList]);
 
   useEffect(() => {
-    const refreshUsernameTips = () => {
-      updateUsernameList(location.state.projectName);
+    const refreshUserGroupNameTips = () => {
+      updateUserGroupList(location.state.projectName);
     };
 
     EventEmitter.subscribe(
-      EmitterKey.Refresh_Filter_User_Tips,
-      refreshUsernameTips
+      EmitterKey.Refresh_Filter_User_Group_Tips,
+      refreshUserGroupNameTips
     );
 
     return () => {
       EventEmitter.unsubscribe(
-        EmitterKey.Refresh_Filter_User_Tips,
-        refreshUsernameTips
+        EmitterKey.Refresh_Filter_User_Group_Tips,
+        refreshUserGroupNameTips
       );
     };
-  }, [location.state.projectName, updateUsernameList]);
+  }, [location.state.projectName, updateUserGroupList]);
 
   return (
-    <Form<MemberListFilterFormFields>
+    <Form<MemberGroupListFilterFormFields>
       form={form}
       {...FilterFormLayout}
       onFinish={submit}
@@ -66,18 +66,18 @@ const MemberListFilterForm: React.FC<MemberListFilterFormProps> = ({
       <Row {...FilterFormRowLayout}>
         <Col {...FilterFormColLayout}>
           <Form.Item
-            name="filterUserName"
-            label={t('member.memberList.filterForm.username')}
+            name="filterUserGroupName"
+            label={t('member.memberGroupList.filterForm.userGroupName')}
           >
             <Select allowClear showSearch>
-              {generateUsernameSelectOption()}
+              {generateUserGroupSelectOption()}
             </Select>
           </Form.Item>
         </Col>
         <Col {...FilterFormColLayout}>
           <Form.Item
             name="filterInstance"
-            label={t('member.memberList.filterForm.instance')}
+            label={t('member.memberGroupList.filterForm.instance')}
           >
             <Select allowClear showSearch>
               {generateInstanceSelectOption()}
@@ -91,7 +91,7 @@ const MemberListFilterForm: React.FC<MemberListFilterFormProps> = ({
           <Form.Item wrapperCol={{ span: 24 }}>
             <Space>
               <Button onClick={reset}>{t('common.reset')}</Button>
-              <Button htmlType="submit" type="primary">
+              <Button type="primary" htmlType="submit">
                 {t('common.search')}
               </Button>
             </Space>
@@ -102,4 +102,4 @@ const MemberListFilterForm: React.FC<MemberListFilterFormProps> = ({
   );
 };
 
-export default MemberListFilterForm;
+export default MemberGroupListFilterForm;

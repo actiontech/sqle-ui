@@ -26,13 +26,13 @@ const RoleSelector: React.FC = () => {
                 <Form.Item
                   labelCol={{
                     xs: { span: 24 },
-                    sm: { span: 8 },
+                    sm: { span: 14 },
                   }}
                   wrapperCol={{
                     xs: { span: 24 },
-                    sm: { span: 14 },
+                    sm: { span: 10 },
                   }}
-                  label={t('member.memberForm.role')}
+                  label={t('member.roleSelector.role')}
                   {...field}
                   name={[field.name, 'role_names']}
                 >
@@ -40,14 +40,14 @@ const RoleSelector: React.FC = () => {
                     mode="multiple"
                     showSearch
                     placeholder={t('common.form.placeholder.select', {
-                      name: t('member.memberForm.role'),
+                      name: t('member.roleSelector.role'),
                     })}
                   >
                     {generateRoleSelectOption()}
                   </Select>
                 </Form.Item>
               </Col>
-              <Col span={11}>
+              <Col span={10} offset={1}>
                 <Form.Item
                   noStyle
                   shouldUpdate={(prevValues, curValues) => {
@@ -61,19 +61,19 @@ const RoleSelector: React.FC = () => {
                     <Form.Item
                       labelCol={{
                         xs: { span: 24 },
-                        sm: { span: 6 },
+                        sm: { span: 7 },
                       }}
                       wrapperCol={{
                         xs: { span: 24 },
-                        sm: { span: 14 },
+                        sm: { span: 10 },
                       }}
                       {...field}
                       name={[field.name, 'instance_name']}
-                      label={t('member.memberForm.instance')}
+                      label={t('member.roleSelector.instance')}
                     >
                       <Select
                         placeholder={t('common.form.placeholder.select', {
-                          name: t('member.memberForm.instance'),
+                          name: t('member.roleSelector.instance'),
                         })}
                         showSearch
                         allowClear
@@ -88,6 +88,7 @@ const RoleSelector: React.FC = () => {
               <Col span={1}>
                 <EmptyBox if={index !== 0}>
                   <MinusCircleOutlined
+                    data-testid="remove-item"
                     style={{ marginTop: 8 }}
                     onClick={() => {
                       remove(index);

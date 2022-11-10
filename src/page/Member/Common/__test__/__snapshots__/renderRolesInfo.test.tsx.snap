@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test renderRolesInfo should match snapshot 1`] = `
+<Space
+  direction="vertical"
+>
+  <div>
+    db1: [ test1,test2,test3 ]
+  </div>
+  <div>
+    db2: [ test3 ]
+  </div>
+  <div>
+    db3: [ test3,test4,test5,test6,test7 ]
+  </div>
+</Space>
+`;
+
+exports[`test renderRolesInfo should match snapshot 2`] = `
+<Space
+  direction="vertical"
+>
+  <Text
+    ellipsis={true}
+  >
+    db1: [ test1,test2,test3 ]
+  </Text>
+  <Text
+    ellipsis={true}
+  >
+    db2: [ test3 ]
+  </Text>
+  <Text
+    ellipsis={true}
+  >
+    db3: [ test3,test4,test5,test6,test7 ]
+  </Text>
+</Space>
+`;

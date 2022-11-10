@@ -21,7 +21,6 @@ import { ProjectDetailLocationStateType } from '../../ProjectManage/ProjectDetai
 import MemberListTableColumnFactory from './column';
 import MemberListFilterForm from './FilterForm';
 import { MemberListFilterFormFields } from './index.type';
-import { mockList } from './__test__/utils';
 
 const MemberList: React.FC = () => {
   const { t } = useTranslation();
@@ -48,7 +47,7 @@ const MemberList: React.FC = () => {
       })
     );
   };
-  const removeAction = async (username: string) => {
+  const deleteAction = async (username: string) => {
     const res = await user.deleteMemberV1({
       user_name: username,
       project_name: location.state.projectName,
@@ -115,8 +114,8 @@ const MemberList: React.FC = () => {
       <Table
         rowKey="user_name"
         loading={loading}
-        dataSource={data?.list ?? mockList}
-        columns={MemberListTableColumnFactory(updateAction, removeAction)}
+        dataSource={data?.list}
+        columns={MemberListTableColumnFactory(updateAction, deleteAction)}
         pagination={{
           total: data?.total,
           showSizeChanger: true,

@@ -341,6 +341,21 @@ Array [
         },
       }
     }
+    icon={<ForwardRef(UserOutlined) />}
+    label="menu.member"
+    path="/member"
+  />,
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
+      }
+    }
     icon={<ForwardRef(AuditOutlined) />}
     label="menu.ruleTemplate"
     path="/rule/template"

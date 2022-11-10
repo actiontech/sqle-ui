@@ -11,3 +11,13 @@ export type MemberFormProps = {
   form: FormInstance<MemberFormFields>;
   isUpdate?: boolean;
 };
+
+export type MemberGroupFormFields = {
+  roles: IBindRoleReqV1[];
+  userGroupName: string;
+};
+
+export type MemberGroupFormProps = {
+  form: FormInstance<MemberGroupFormFields>;
+  isUpdate?: boolean;
+};

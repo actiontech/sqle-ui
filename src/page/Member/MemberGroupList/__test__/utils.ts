@@ -1,10 +1,10 @@
-import user from '../../../../api/user';
+import { IGetMemberGroupRespDataV1 } from '../../../../api/common';
+import user_group from '../../../../api/user_group';
 import { resolveThreeSecond } from '../../../../testUtils/mockRequest';
 
-export const mockMemberList = [
+export const mockMemberGroupList: IGetMemberGroupRespDataV1[] = [
   {
-    is_owner: false,
-    user_name: 'test',
+    user_group_name: 'test',
     roles: [
       {
         instance_name: 'db1',
@@ -26,14 +26,14 @@ export const mockMemberList = [
   },
 ];
 
-export const mockGetMembers = () => {
-  const spy = jest.spyOn(user, 'getMembersV1');
-  spy.mockImplementation(() => resolveThreeSecond(mockMemberList));
+export const mockGetMemberGroups = () => {
+  const spy = jest.spyOn(user_group, 'getMemberGroupsV1');
+  spy.mockImplementation(() => resolveThreeSecond(mockMemberGroupList));
   return spy;
 };
 
-export const mockDeleteMember = () => {
-  const spy = jest.spyOn(user, 'deleteMemberV1');
+export const mockDeleteMemberGroup = () => {
+  const spy = jest.spyOn(user_group, 'deleteMemberGroupV1');
   spy.mockImplementation(() => resolveThreeSecond({}));
   return spy;
 };

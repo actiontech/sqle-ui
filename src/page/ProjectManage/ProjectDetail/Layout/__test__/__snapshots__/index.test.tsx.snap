@@ -62,6 +62,23 @@ Array [
     </Link>
   </MenuItem>,
   <MenuItem
+    icon={<ForwardRef(UserOutlined) />}
+  >
+    <Link
+      to={
+        Object {
+          "pathname": "/member",
+          "search": undefined,
+          "state": Object {
+            "projectName": "test",
+          },
+        }
+      }
+    >
+      menu.member
+    </Link>
+  </MenuItem>,
+  <MenuItem
     icon={<ForwardRef(AuditOutlined) />}
   >
     <Link

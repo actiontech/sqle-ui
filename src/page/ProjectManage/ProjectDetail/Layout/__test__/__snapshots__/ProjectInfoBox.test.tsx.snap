@@ -13,17 +13,17 @@ exports[`test ProjectInfoBox should match snapshot 1`] = `
       </strong>
     </span>
     <span
-      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white pb-10"
+      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white detail"
     >
       projectManage.projectInfoBox.desc
     </span>
     <span
-      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white pb-10"
+      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white detail"
     >
       projectManage.projectInfoBox.createTime
     </span>
     <span
-      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white pb-10"
+      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white detail"
     >
       projectManage.projectInfoBox.createUser
     </span>
@@ -44,17 +44,17 @@ exports[`test ProjectInfoBox should match snapshot when a request goes wrong 1`]
       </strong>
     </span>
     <span
-      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white pb-10"
+      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white detail"
     >
       projectManage.projectInfoBox.desc
     </span>
     <span
-      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white pb-10"
+      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white detail"
     >
       projectManage.projectInfoBox.createTime
     </span>
     <span
-      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white pb-10"
+      class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white detail"
     >
       projectManage.projectInfoBox.createUser
     </span>

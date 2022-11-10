@@ -1,24 +1,24 @@
 import { Divider, Popconfirm, Space, Tooltip, Typography } from 'antd';
-import { IBindRoleReqV1, IGetMemberRespDataV1 } from '../../../api/common';
+import { IBindRoleReqV1, IGetMemberGroupRespDataV1 } from '../../../api/common';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import renderRolesInfo from '../Common/renderRolesInfo';
 
-const MemberListTableColumnFactory: (
-  updateAction: (record: IGetMemberRespDataV1) => void,
+const MemberGroupListTableColumnFactory: (
+  updateAction: (record: IGetMemberGroupRespDataV1) => void,
   deleteAction: (username: string) => void
-) => TableColumn<IGetMemberRespDataV1, 'operator'> = (
+) => TableColumn<IGetMemberGroupRespDataV1, 'operator'> = (
   updateAction,
   deleteAction
 ) => {
   return [
     {
-      dataIndex: 'user_name',
-      title: i18n.t('member.memberList.tableColumn.username'),
+      dataIndex: 'user_group_name',
+      title: i18n.t('member.memberGroupList.tableColumn.userGroupName'),
     },
     {
       dataIndex: 'roles',
-      title: i18n.t('member.memberList.tableColumn.role'),
+      title: i18n.t('member.memberGroupList.tableColumn.role'),
       render(roles?: IBindRoleReqV1[]) {
         if (!Array.isArray(roles) || roles.length === 0) {
           return null;
@@ -29,17 +29,6 @@ const MemberListTableColumnFactory: (
             {renderRolesInfo(roles, true)}
           </Tooltip>
         );
-      },
-    },
-    {
-      dataIndex: 'is_owner',
-      title: i18n.t('member.memberList.tableColumn.isOwner'),
-      render(isOwner: boolean | unknown) {
-        if (typeof isOwner !== 'boolean') {
-          return i18n.t('common.unknownStatus');
-        }
-
-        return isOwner ? i18n.t('common.true') : i18n.t('common.false');
       },
     },
     {
@@ -57,13 +46,13 @@ const MemberListTableColumnFactory: (
             {/* <EmptyBox if={record.user_name !== 'admin'}> */}
             <Divider type="vertical" />
             <Popconfirm
-              title={i18n.t('member.memberList.tableColumn.confirmTitle', {
-                name: record.user_name,
+              title={i18n.t('member.memberGroupList.tableColumn.confirmTitle', {
+                username: record.user_group_name,
               })}
               placement="topRight"
               okText={i18n.t('common.ok')}
               cancelText={i18n.t('common.cancel')}
-              onConfirm={deleteAction.bind(null, record.user_name ?? '')}
+              onConfirm={deleteAction.bind(null, record.user_group_name ?? '')}
             >
               <Typography.Text type="danger" className="pointer">
                 {i18n.t('common.delete')}
@@ -77,4 +66,4 @@ const MemberListTableColumnFactory: (
   ];
 };
 
-export default MemberListTableColumnFactory;
+export default MemberGroupListTableColumnFactory;
