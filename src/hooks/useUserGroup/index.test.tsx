@@ -43,11 +43,14 @@ describe('useUserGroup', () => {
     expect(baseElement).toMatchSnapshot();
 
     act(() => {
-      result.current.updateUserGroupList();
+      result.current.updateUserGroupList('test');
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      filter_project: 'test',
+    });
     expect(result.current.userGroupList).toEqual([]);
 
     jest.advanceTimersByTime(3000);

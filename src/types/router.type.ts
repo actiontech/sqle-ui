@@ -31,7 +31,8 @@ export type ProjectDetailRouterItemKeyLiteral =
   | 'progress'
   | 'Whitelist'
   | 'data'
-  | 'ruleTemplate';
+  | 'ruleTemplate'
+  | 'member';
 
 export type RouterItem<T extends string> = {
   role?: Array<SystemRole | ''>;

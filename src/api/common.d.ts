@@ -261,6 +261,12 @@ export interface IBindOauth2UserResV1 {
   message?: string;
 }
 
+export interface IBindRoleReqV1 {
+  instance_name?: string;
+
+  role_names?: string[];
+}
+
 export interface ICheckLicenseResV1 {
   code?: number;
 
@@ -349,6 +355,20 @@ export interface ICreateInstanceReqV1 {
   sql_query_config?: ISQLQueryConfigReqV1;
 
   workflow_template_name?: string;
+}
+
+export interface ICreateMemberGroupReqV1 {
+  roles?: IBindRoleReqV1[];
+
+  user_group_name?: string;
+}
+
+export interface ICreateMemberReqV1 {
+  is_owner?: boolean;
+
+  roles?: IBindRoleReqV1[];
+
+  user_name?: string;
 }
 
 export interface ICreateProjectReqV1 {
@@ -731,16 +751,54 @@ export interface IGetManagementPermissionsResV1 {
   message?: string;
 }
 
-export interface IManagementPermission {
-  code?: number;
+export interface IGetMemberGroupRespDataV1 {
+  roles?: IBindRoleReqV1[];
 
-  desc?: string;
+  user_group_name?: string;
 }
 
-export interface IManagementPermissionResV1 {
+export interface IGetMemberGroupRespV1 {
   code?: number;
 
-  desc?: string;
+  data?: IGetMemberGroupRespDataV1;
+
+  message?: string;
+}
+
+export interface IGetMemberGroupsRespV1 {
+  code?: number;
+
+  data?: IGetMemberGroupRespDataV1[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
+export interface IGetMemberRespDataV1 {
+  is_owner?: boolean;
+
+  roles?: IBindRoleReqV1[];
+
+  user_name?: string;
+}
+
+export interface IGetMemberRespV1 {
+  code?: number;
+
+  data?: IGetMemberRespDataV1;
+
+  message?: string;
+}
+
+export interface IGetMembersRespV1 {
+  code?: number;
+
+  data?: IGetMemberRespDataV1[];
+
+  message?: string;
+
+  total_nums?: number;
 }
 
 export interface IGetOauth2ConfigurationResDataV1 {
@@ -1441,6 +1499,18 @@ export interface IMaintenanceTimeResV1 {
   maintenance_stop_time?: ITimeResV1;
 }
 
+export interface IManagementPermission {
+  code?: number;
+
+  desc?: string;
+}
+
+export interface IManagementPermissionResV1 {
+  code?: number;
+
+  desc?: string;
+}
+
 export interface IOauth2ConfigurationReqV1 {
   access_token_tag?: string;
 
@@ -1530,8 +1600,6 @@ export interface IProjectListItem {
 
   desc?: string;
 
-  id?: number;
-
   name?: string;
 }
 
@@ -1539,20 +1607,18 @@ export interface IProjectRuleTemplateInstance {
   name?: string;
 }
 
-export interface IProjectTipResV1 {
-  project_name?: string;
-}
-
 export interface IProjectRuleTemplateResV1 {
   db_type?: string;
 
   desc?: string;
 
-  id?: number;
-
   instance_list?: IProjectRuleTemplateInstance[];
 
   rule_template_name?: string;
+}
+
+export interface IProjectTipResV1 {
+  project_name?: string;
 }
 
 export interface IRejectWorkflowReqV1 {
@@ -1594,8 +1660,6 @@ export interface IRuleProjectTemplateDetailResV1 {
 
   desc?: string;
 
-  id?: number;
-
   instance_list?: IProjectRuleTemplateInstance[];
 
   rule_list?: IRuleResV1[];
@@ -1630,8 +1694,6 @@ export interface IRuleTemplateDetailResV1 {
 
   desc?: string;
 
-  id?: number;
-
   instance_list?: IGlobalRuleTemplateInstance[];
 
   rule_list?: IRuleResV1[];
@@ -1643,8 +1705,6 @@ export interface IRuleTemplateResV1 {
   db_type?: string;
 
   desc?: string;
-
-  id?: number;
 
   instance_list?: IGlobalRuleTemplateInstance[];
 
@@ -1915,8 +1975,22 @@ export interface IUpdateInstanceReqV1 {
   workflow_template_name?: string;
 }
 
+export interface IUpdateMemberGroupReqV1 {
+  roles?: IBindRoleReqV1[];
+}
+
+export interface IUpdateMemberReqV1 {
+  is_owner?: boolean;
+
+  roles?: IBindRoleReqV1[];
+}
+
 export interface IUpdateOtherUserPasswordReqV1 {
   password?: string;
+}
+
+export interface IUpdateProjectReqV1 {
+  desc?: string;
 }
 
 export interface IUpdateProjectRuleTemplateReqV1 {
@@ -1925,10 +1999,6 @@ export interface IUpdateProjectRuleTemplateReqV1 {
   instance_name_list?: string[];
 
   rule_list?: IRuleReqV1[];
-}
-
-export interface IUpdateProjectReqV1 {
-  desc?: string;
 }
 
 export interface IUpdateRoleReqV1 {
@@ -2014,7 +2084,7 @@ export interface IUserDetailResV1 {
 
   login_type?: string;
 
-  role_name_list?: string[];
+  management_permission_list?: IManagementPermission[];
 
   user_group_name_list?: string[];
 

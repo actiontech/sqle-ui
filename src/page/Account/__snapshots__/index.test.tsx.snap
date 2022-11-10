@@ -243,24 +243,6 @@ exports[`Account should render user Info when request is success 1`] = `
             role="separator"
           />
           <div
-            class="ant-col ant-col-xs-24 ant-col-sm-3"
-          >
-            <h5
-              class="ant-typography"
-            >
-              user.userForm.role
-            </h5>
-          </div>
-          <div
-            class="ant-col ant-col-xs-24 ant-col-sm-21"
-          >
-            <span
-              class="ant-typography"
-            >
-              --
-            </span>
-          </div>
-          <div
             class="ant-col ant-col-24"
           >
             <button
@@ -522,33 +504,6 @@ exports[`Account should render user Info when request is success 2`] = `
             class="ant-divider ant-divider-horizontal"
             role="separator"
           />
-          <div
-            class="ant-col ant-col-xs-24 ant-col-sm-3"
-          >
-            <h5
-              class="ant-typography"
-            >
-              user.userForm.role
-            </h5>
-          </div>
-          <div
-            class="ant-col ant-col-xs-24 ant-col-sm-21"
-          >
-            <span
-              class="ant-typography"
-            >
-              <span
-                class="ant-tag"
-              >
-                role1
-              </span>
-              <span
-                class="ant-tag"
-              >
-                role2
-              </span>
-            </span>
-          </div>
           <div
             class="ant-col ant-col-24"
           >

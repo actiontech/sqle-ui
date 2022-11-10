@@ -1,4 +1,3 @@
-import { useRequest } from 'ahooks';
 import { Layout, Menu } from 'antd';
 import { cloneDeep } from 'lodash';
 import { lazy, useCallback, useEffect, useState } from 'react';
@@ -6,7 +5,6 @@ import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { generateNavigateMenu, ProjectDetailLayoutProps } from '.';
 import { ProjectDetailLocationStateType } from '..';
-import project from '../../../../api/project';
 import { SystemRole } from '../../../../data/common';
 import useAuditPlanTypes from '../../../../hooks/useAuditPlanTypes';
 import { projectDetailRouterConfig } from '../../../../router/config';

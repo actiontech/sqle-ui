@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test Member should match snapshot 1`] = `
+<article>
+  <PageHeader
+    ghost={false}
+    title="member.pageTitle"
+  />
+  <section
+    className="padding-content"
+  >
+    <Space
+      className="full-width-element"
+      direction="vertical"
+      size="large"
+    >
+      <MemberList />
+      <UserGroupList />
+    </Space>
+  </section>
+  <MemberModal />
+</article>
+`;

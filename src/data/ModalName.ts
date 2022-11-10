@@ -35,4 +35,10 @@ export enum ModalName {
   //project manage
   Create_Project = 'Create_Project',
   Update_Project = 'Update_Project',
+
+  //member
+  Add_Member = 'Add_Member',
+  Update_Member = 'Update_Member',
+  Add_Member_Group = 'Add_Member_Group',
+  Update_Member_Group = 'Update_Member_Group',
 }

@@ -43,11 +43,14 @@ describe('useUsername', () => {
     expect(baseElement).toMatchSnapshot();
 
     act(() => {
-      result.current.updateUsernameList();
+      result.current.updateUsernameList('test1');
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      filter_project: 'test1',
+    });
     expect(result.current.usernameList).toEqual([]);
 
     jest.advanceTimersByTime(3000);

@@ -152,6 +152,22 @@ exports[`test ProjectManage/ProjectDetail should match snapshot 1`] = `
             },
           }
         }
+        icon={<ForwardRef(UserOutlined) />}
+        key="member"
+        label="menu.member"
+        path="/member"
+      />
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.lazy),
+            "_init": [Function],
+            "_payload": Object {
+              "_result": [Function],
+              "_status": -1,
+            },
+          }
+        }
         icon={<ForwardRef(AuditOutlined) />}
         key="ruleTemplate"
         label="menu.ruleTemplate"

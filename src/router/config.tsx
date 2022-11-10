@@ -137,6 +137,10 @@ const ProjectDetail = React.lazy(
     )
 );
 
+const Member = React.lazy(
+  () => import(/* webpackChunkName: "Member" */ '../page/Member')
+);
+
 export const unAuthRouter: Array<RouteProps & { key: string }> = [
   {
     path: '/login',
@@ -335,6 +339,13 @@ export const projectDetailRouterConfig: RouterItem<ProjectDetailRouterItemKeyLit
       label: 'menu.dataSource',
       icon: <DatabaseOutlined />,
       component: DataSource,
+    },
+    {
+      path: '/member',
+      key: 'member',
+      label: 'menu.member',
+      icon: <UserOutlined />,
+      component: Member,
     },
     {
       path: '/rule/template',

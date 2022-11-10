@@ -22,7 +22,6 @@ describe('Account', () => {
       resolveThreeSecond({
         email: 'aaaa@bbbb.ccc',
         is_admin: false,
-        role_name_list: ['role1', 'role2'],
         user_name: 'user_test1',
         login_type: 'sqle',
       })

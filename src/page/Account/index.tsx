@@ -1,18 +1,8 @@
 import useRequest from '@ahooksjs/use-request';
-import {
-  Button,
-  Card,
-  Col,
-  Divider,
-  PageHeader,
-  Row,
-  Tag,
-  Typography,
-} from 'antd';
+import { Button, Card, Col, Divider, PageHeader, Row, Typography } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import user from '../../api/user';
-import EmptyBox from '../../components/EmptyBox';
 import { LoginTypeEnum } from '../../data/common';
 import { ModalName } from '../../data/ModalName';
 import ModifyPasswordModal from './Modal/ModifyPassword';
@@ -69,20 +59,6 @@ const Account = () => {
               <Wechat userInfo={userInfo} refreshUserInfo={refresh} />
             </Col>
             <Divider />
-            <Col sm={3} xs={24}>
-              <Typography.Title level={5}>
-                {t('user.userForm.role')}
-              </Typography.Title>
-            </Col>
-            <Col sm={21} xs={24}>
-              <Typography.Text>
-                <EmptyBox if={!!userInfo?.role_name_list} defaultNode="--">
-                  {userInfo?.role_name_list?.map((role) => (
-                    <Tag key={role}>{role}</Tag>
-                  ))}
-                </EmptyBox>
-              </Typography.Text>
-            </Col>
             <Col span={24}>
               <Button
                 disabled={userInfo?.login_type === LoginTypeEnum.ldap}

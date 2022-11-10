@@ -20,6 +20,11 @@ enum EmitterKey {
   Refresh_License = 'REFRESH_LICENSE',
 
   Refresh_Project_List = 'Refresh_Project_List',
+
+  Refresh_Member_List = 'Refresh_Member_List',
+  Refresh_Member_Group_List = 'Refresh_Member_Group_List',
+  Refresh_Filter_User_Tips = 'Refresh_Filter_User_Tips',
+  Refresh_Filter_User_Group_Tips = 'Refresh_Filter_User_Group_Tips',
 }
 
 export default EmitterKey;
