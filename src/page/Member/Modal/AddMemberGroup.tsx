@@ -14,7 +14,6 @@ import { updateMemberModalStatus } from '../../../store/member';
 import EventEmitter from '../../../utils/EventEmitter';
 import { ProjectDetailLocationStateType } from '../../ProjectManage/ProjectDetail';
 import { MemberGroupFormFields } from './index.type';
-import MemberForm from './MemberForm';
 import MemberGroupForm from './MemberGroupForm';
 
 const AddMemberGroup: React.FC = () => {
