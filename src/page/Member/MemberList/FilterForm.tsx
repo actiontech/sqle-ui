@@ -33,7 +33,7 @@ const MemberListFilterForm: React.FC<MemberListFilterFormProps> = ({
   };
 
   useEffect(() => {
-    updateInstanceList();
+    updateInstanceList({ project_name: projectName });
     updateUsernameList(projectName);
   }, [projectName, updateInstanceList, updateUsernameList]);
 

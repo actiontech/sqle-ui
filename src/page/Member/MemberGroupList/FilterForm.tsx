@@ -24,7 +24,6 @@ const MemberGroupListFilterForm: React.FC<MemberGroupListFilterFormProps> = ({
   const { t } = useTranslation();
   const [form] = useForm<MemberGroupListFilterFormFields>();
   const { projectName } = useCurrentProjectName();
-
   const { generateInstanceSelectOption, updateInstanceList } = useInstance();
   const { generateUserGroupSelectOption, updateUserGroupList } = useUserGroup();
 
@@ -34,7 +33,7 @@ const MemberGroupListFilterForm: React.FC<MemberGroupListFilterFormProps> = ({
   };
 
   useEffect(() => {
-    updateInstanceList();
+    updateInstanceList({ project_name: projectName });
     updateUserGroupList(projectName);
   }, [projectName, updateInstanceList, updateUserGroupList]);
 

@@ -27,22 +27,12 @@ export const dataSourceColumns = (
       title: () => i18n.t('dataSource.databaseList.describe'),
     },
     {
-      dataIndex: 'role_name_list',
-      title: () => i18n.t('dataSource.databaseList.role'),
-      render(value: IInstanceResV1['role_name_list']) {
-        return value?.join(',');
-      },
-    },
-    {
       dataIndex: 'db_type',
       title: () => i18n.t('dataSource.databaseList.type'),
     },
     {
-      dataIndex: 'rule_template_name_list',
+      dataIndex: 'rule_template_name',
       title: () => i18n.t('dataSource.databaseList.ruleTemplate'),
-      render(value: IInstanceResV1['rule_template_name_list']) {
-        return value?.join(',');
-      },
     },
     {
       dataIndex: 'maintenance_times',
@@ -58,11 +48,6 @@ export const dataSourceColumns = (
         ));
       },
     },
-    {
-      dataIndex: 'workflow_template_name',
-      title: () => i18n.t('dataSource.databaseList.workflow'),
-    },
-
     {
       dataIndex: 'operate',
       render: (_, record) => {

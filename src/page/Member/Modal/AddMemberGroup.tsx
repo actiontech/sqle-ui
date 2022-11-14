@@ -79,7 +79,7 @@ const AddMemberGroup: React.FC = () => {
         </>
       }
     >
-      <MemberGroupForm form={form} />
+      <MemberGroupForm form={form} projectName={projectName} />
     </Modal>
   );
 };

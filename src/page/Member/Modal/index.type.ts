@@ -10,6 +10,7 @@ export type MemberFormFields = {
 export type MemberFormProps = {
   form: FormInstance<MemberFormFields>;
   isUpdate?: boolean;
+  projectName: string;
 };
 
 export type MemberGroupFormFields = {
@@ -20,4 +21,5 @@ export type MemberGroupFormFields = {
 export type MemberGroupFormProps = {
   form: FormInstance<MemberGroupFormFields>;
   isUpdate?: boolean;
+  projectName: string;
 };

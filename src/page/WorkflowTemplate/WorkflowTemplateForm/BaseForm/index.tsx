@@ -10,6 +10,7 @@ import EventEmitter from '../../../../utils/EventEmitter';
 import { nameRule } from '../../../../utils/FormRule';
 import { BaseFormFields, BaseFormProps } from './index.type';
 import useStaticStatus from '../../../../hooks/useStaticStatus';
+import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 
 const BaseForm: React.FC<BaseFormProps> = (props) => {
   const { t } = useTranslation();
@@ -17,11 +18,10 @@ const BaseForm: React.FC<BaseFormProps> = (props) => {
   const { getAuditLevelStatusSelectOption } = useStaticStatus();
 
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
-
+  const { projectName } = useCurrentProjectName();
   useEffect(() => {
-    updateInstanceList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    updateInstanceList({ project_name: projectName });
+  }, [projectName, updateInstanceList]);
 
   const nextStep = async () => {
     const value = await form.validateFields();

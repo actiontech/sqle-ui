@@ -9,6 +9,7 @@ import BackButton from '../../../components/BackButton';
 import { ResponseCode } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import EventEmitter from '../../../utils/EventEmitter';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import DataSourceForm from '../DataSourceForm';
 import { DataSourceFormField } from '../DataSourceForm/index.type';
 import { turnCommonToDataSourceParams } from '../tool';
@@ -19,10 +20,12 @@ const AddDataSource = () => {
 
   const [visible, { setTrue: openResultModal, setFalse: closeResultModal }] =
     useBoolean();
+  const { projectName } = useCurrentProjectName();
 
   const addDatabase = async (values: DataSourceFormField) => {
     return instance
       .createInstanceV1({
+        project_name: projectName,
         db_host: values.ip,
         db_password: values.password,
         db_port: `${values.port}`,
@@ -30,11 +33,7 @@ const AddDataSource = () => {
         db_type: values.type,
         desc: values.describe,
         instance_name: values.name,
-        role_name_list: values.role,
-        rule_template_name_list: values.ruleTemplate
-          ? [values.ruleTemplate]
-          : [],
-        workflow_template_name: values.workflow,
+        rule_template_name: values.ruleTemplate,
         additional_params: turnCommonToDataSourceParams(
           values.asyncParams ?? []
         ),
@@ -69,7 +68,11 @@ const AddDataSource = () => {
       title={t('dataSource.addDatabase')}
       extra={[<BackButton key="goBack" />]}
     >
-      <DataSourceForm form={form} submit={addDatabase} />
+      <DataSourceForm
+        form={form}
+        submit={addDatabase}
+        projectName={projectName}
+      />
       <Modal
         title={t('common.operateSuccess')}
         footer={null}

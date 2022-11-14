@@ -10,6 +10,7 @@ import { ResponseCode } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import useInstance from '../../../../hooks/useInstance';
 import EventEmitter from '../../../../utils/EventEmitter';
+import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 import { DatabaseInfoProps, SchemaListType } from './index.type';
 
 const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
@@ -22,6 +23,7 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
 }) => {
   const { t } = useTranslation();
 
+  const { projectName } = useCurrentProjectName();
   const [schemaList, setSchemaList] = useState<SchemaListType>(
     new Map([[0, []]])
   );
@@ -48,6 +50,7 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
           currentSqlMode === WorkflowResV2ModeEnum.same_sqls
             ? currentInstance?.instance_type
             : undefined,
+        project_name: projectName,
       });
     }
     getInstanceTypeWithAction(index, 'add', currentInstance?.instance_type);
@@ -57,6 +60,7 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
     instance
       .getInstanceSchemasV1({
         instance_name: name,
+        project_name: projectName,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -108,8 +112,8 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
   }, [updateInstanceList]);
 
   useEffect(() => {
-    updateInstanceList();
-  }, [currentSqlMode, updateInstanceList]);
+    updateInstanceList({ project_name: projectName });
+  }, [currentSqlMode, projectName, updateInstanceList]);
 
   return (
     <Form.List name="dataBaseInfo" initialValue={[{}]}>

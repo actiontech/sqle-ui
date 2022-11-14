@@ -10,16 +10,18 @@ import { dataSourceColumns } from './columns';
 import DataSourceListFilterForm from './DataSourceListFilterForm';
 import { DataSourceListFilterFields } from './DataSourceListFilterForm/index.type';
 import useTable from '../../../hooks/useTable';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 
 const DataSourceList = () => {
   const { t } = useTranslation();
 
   const { pagination, filterInfo, setFilterInfo, tableChange } =
     useTable<DataSourceListFilterFields>();
-
+  const { projectName } = useCurrentProjectName();
   const { data, loading, refresh } = useRequest(
     () => {
       return instance.getInstanceListV1({
+        project_name: projectName,
         page_index: pagination.pageIndex,
         page_size: pagination.pageSize,
         ...filterInfo,
@@ -46,6 +48,7 @@ const DataSourceList = () => {
       instance
         .deleteInstanceV1({
           instance_name: instanceName,
+          project_name: projectName,
         })
         .then((res) => {
           if (res.data.code === ResponseCode.SUCCESS) {
@@ -60,7 +63,7 @@ const DataSourceList = () => {
           hideLoading();
         });
     },
-    [t]
+    [projectName, t]
   );
 
   const testDatabaseConnection = React.useCallback(
@@ -69,6 +72,7 @@ const DataSourceList = () => {
       instance
         .checkInstanceIsConnectableByNameV1({
           instance_name: instanceName,
+          project_name: projectName,
         })
         .then((res) => {
           hide();
@@ -88,7 +92,7 @@ const DataSourceList = () => {
           }
         });
     },
-    [t]
+    [projectName, t]
   );
 
   return (
