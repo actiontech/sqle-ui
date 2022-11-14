@@ -64,8 +64,11 @@ class InstanceService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     return this.get<IGetInstanceTipListV1Return>(
-      '/v1/instance_tips',
+      `/v1/projects/${project_name}/instance_tips`,
       paramsData,
       options
     );

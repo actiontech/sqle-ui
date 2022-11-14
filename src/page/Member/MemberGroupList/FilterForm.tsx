@@ -2,7 +2,6 @@ import { Button, Col, Form, Row, Select, Space } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
 import {
   filterFormButtonLayoutFactory,
   FilterFormColLayout,
@@ -13,7 +12,7 @@ import EmitterKey from '../../../data/EmitterKey';
 import useInstance from '../../../hooks/useInstance';
 import useUserGroup from '../../../hooks/useUserGroup';
 import EventEmitter from '../../../utils/EventEmitter';
-import { ProjectDetailLocationStateType } from '../../ProjectManage/ProjectDetail';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import {
   MemberGroupListFilterFormProps,
   MemberGroupListFilterFormFields,
@@ -24,7 +23,7 @@ const MemberGroupListFilterForm: React.FC<MemberGroupListFilterFormProps> = ({
 }) => {
   const { t } = useTranslation();
   const [form] = useForm<MemberGroupListFilterFormFields>();
-  const location = useLocation<ProjectDetailLocationStateType>();
+  const { projectName } = useCurrentProjectName();
 
   const { generateInstanceSelectOption, updateInstanceList } = useInstance();
   const { generateUserGroupSelectOption, updateUserGroupList } = useUserGroup();
@@ -36,12 +35,12 @@ const MemberGroupListFilterForm: React.FC<MemberGroupListFilterFormProps> = ({
 
   useEffect(() => {
     updateInstanceList();
-    updateUserGroupList(location.state.projectName);
-  }, [location.state.projectName, updateInstanceList, updateUserGroupList]);
+    updateUserGroupList(projectName);
+  }, [projectName, updateInstanceList, updateUserGroupList]);
 
   useEffect(() => {
     const refreshUserGroupNameTips = () => {
-      updateUserGroupList(location.state.projectName);
+      updateUserGroupList(projectName);
     };
 
     EventEmitter.subscribe(
@@ -55,7 +54,7 @@ const MemberGroupListFilterForm: React.FC<MemberGroupListFilterFormProps> = ({
         refreshUserGroupNameTips
       );
     };
-  }, [location.state.projectName, updateUserGroupList]);
+  }, [projectName, updateUserGroupList]);
 
   return (
     <Form<MemberGroupListFilterFormFields>

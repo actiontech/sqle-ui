@@ -29,6 +29,9 @@ export interface ICheckInstanceIsConnectableV1Return
   extends IGetInstanceConnectableResV1 {}
 
 export interface IGetInstanceTipListV1Params {
+  //todo
+  project_name?: string;
+
   filter_db_type?: string;
 
   filter_workflow_template_id?: string;

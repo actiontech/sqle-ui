@@ -1,11 +1,11 @@
 import {
+  IGetRuleTemplateTipsResV1,
   IGetProjectRuleTemplatesResV1,
   ICreateProjectRuleTemplateReqV1,
   IBaseRes,
   IGetProjectRuleTemplateResV1,
   IUpdateProjectRuleTemplateReqV1,
   ICloneProjectRuleTemplateReqV1,
-  IGetRuleTemplateTipsResV1,
   IGetRuleTemplatesResV1,
   ICreateRuleTemplateReqV1,
   IGetRuleTemplateResV1,
@@ -13,6 +13,15 @@ import {
   ICloneRuleTemplateReqV1,
   IGetRulesResV1
 } from '../common.d';
+
+export interface IGetProjectRuleTemplateTipsV1Params {
+  project_name: string;
+
+  filter_db_type?: string;
+}
+
+export interface IGetProjectRuleTemplateTipsV1Return
+  extends IGetRuleTemplateTipsResV1 {}
 
 export interface IGetProjectRuleTemplateListV1Params {
   project_name: string;
@@ -75,8 +84,6 @@ export interface IGetRuleTemplateTipsV1Return
   extends IGetRuleTemplateTipsResV1 {}
 
 export interface IGetRuleTemplateListV1Params {
-  filter_instance_name?: string;
-
   page_index?: number;
 
   page_size?: number;

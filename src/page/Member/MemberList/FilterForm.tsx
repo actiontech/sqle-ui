@@ -2,7 +2,6 @@ import { Button, Col, Form, Row, Select, Space } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
 import {
   filterFormButtonLayoutFactory,
   FilterFormColLayout,
@@ -13,7 +12,7 @@ import EmitterKey from '../../../data/EmitterKey';
 import useInstance from '../../../hooks/useInstance';
 import useUsername from '../../../hooks/useUsername';
 import EventEmitter from '../../../utils/EventEmitter';
-import { ProjectDetailLocationStateType } from '../../ProjectManage/ProjectDetail';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import {
   MemberListFilterFormFields,
   MemberListFilterFormProps,
@@ -24,8 +23,7 @@ const MemberListFilterForm: React.FC<MemberListFilterFormProps> = ({
 }) => {
   const { t } = useTranslation();
   const [form] = useForm<MemberListFilterFormFields>();
-  const location = useLocation<ProjectDetailLocationStateType>();
-
+  const { projectName } = useCurrentProjectName();
   const { generateInstanceSelectOption, updateInstanceList } = useInstance();
   const { generateUsernameSelectOption, updateUsernameList } = useUsername();
 
@@ -36,12 +34,12 @@ const MemberListFilterForm: React.FC<MemberListFilterFormProps> = ({
 
   useEffect(() => {
     updateInstanceList();
-    updateUsernameList(location.state.projectName);
-  }, [location.state.projectName, updateInstanceList, updateUsernameList]);
+    updateUsernameList(projectName);
+  }, [projectName, updateInstanceList, updateUsernameList]);
 
   useEffect(() => {
     const refreshUsernameTips = () => {
-      updateUsernameList(location.state.projectName);
+      updateUsernameList(projectName);
     };
 
     EventEmitter.subscribe(
@@ -55,7 +53,7 @@ const MemberListFilterForm: React.FC<MemberListFilterFormProps> = ({
         refreshUsernameTips
       );
     };
-  }, [location.state.projectName, updateUsernameList]);
+  }, [projectName, updateUsernameList]);
 
   return (
     <Form<MemberListFilterFormFields>

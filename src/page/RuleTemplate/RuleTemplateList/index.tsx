@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { IRuleTemplateResV1 } from '../../../api/common';
+import { IProjectRuleTemplateResV1 } from '../../../api/common';
 import ruleTemplate from '../../../api/rule_template';
 import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode } from '../../../data/common';
@@ -18,6 +18,7 @@ import {
   updateSelectRuleTemplate,
 } from '../../../store/ruleTemplate';
 import EventEmitter from '../../../utils/EventEmitter';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import { RuleTemplateListTableColumnFactory } from './column';
 import RuleTemplateListModal from './Modal';
 
@@ -25,7 +26,7 @@ const RuleTemplateList = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { isAdmin } = useCurrentUser();
-
+  const { projectName } = useCurrentProjectName();
   const {
     data,
     loading,
@@ -33,9 +34,10 @@ const RuleTemplateList = () => {
     pagination: { total, onChange: changePagination, changeCurrent },
   } = useRequest(
     ({ current, pageSize }) =>
-      ruleTemplate.getRuleTemplateListV1({
+      ruleTemplate.getProjectRuleTemplateListV1({
         page_index: current,
         page_size: pageSize,
+        project_name: projectName,
       }),
     {
       paginated: true,
@@ -66,8 +68,9 @@ const RuleTemplateList = () => {
         0
       );
       ruleTemplate
-        .deleteRuleTemplateV1({
+        .deleteProjectRuleTemplateV1({
           rule_template_name: templateName,
+          project_name: projectName,
         })
         .then((res) => {
           if (res.data.code === ResponseCode.SUCCESS) {
@@ -83,10 +86,12 @@ const RuleTemplateList = () => {
           hideLoading();
         });
     },
-    [refreshRuleTemplate, t]
+    [projectName, refreshRuleTemplate, t]
   );
 
-  const openCloneRuleTemplateModal = (ruleTemplate: IRuleTemplateResV1) => {
+  const openCloneRuleTemplateModal = (
+    ruleTemplate: IProjectRuleTemplateResV1
+  ) => {
     dispatch(
       updateSelectRuleTemplate({
         ruleTemplate,

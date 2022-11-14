@@ -4,7 +4,6 @@ import { Button, Card, message, Space, Table } from 'antd';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
 import { IGetMemberGroupRespDataV1 } from '../../../api/common';
 import user_group from '../../../api/user_group';
 import { IGetMemberGroupsV1Params } from '../../../api/user_group/index.d';
@@ -17,15 +16,15 @@ import {
   updateSelectMemberGroup,
 } from '../../../store/member';
 import EventEmitter from '../../../utils/EventEmitter';
-import { ProjectDetailLocationStateType } from '../../ProjectManage/ProjectDetail';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import MemberGroupListTableColumnFactory from './column';
 import MemberGroupListFilterForm from './FilterForm';
 import { MemberGroupListFilterFormFields } from './index.type';
 
 const UserGroupList: React.FC = () => {
   const { t } = useTranslation();
-  const location = useLocation<ProjectDetailLocationStateType>();
   const dispatch = useDispatch();
+  const { projectName } = useCurrentProjectName();
 
   const { pagination, tableChange, filterInfo, setFilterInfo } =
     useTable<MemberGroupListFilterFormFields>();
@@ -51,7 +50,7 @@ const UserGroupList: React.FC = () => {
   const deleteAction = async (userGroupName: string) => {
     const res = await user_group.deleteMemberGroupV1({
       user_group_name: userGroupName,
-      project_name: location.state.projectName,
+      project_name: projectName,
     });
 
     if (res.data.code === ResponseCode.SUCCESS) {
@@ -70,7 +69,7 @@ const UserGroupList: React.FC = () => {
         page_index: current,
         page_size: pageSize,
         filter_instance_name: filterInfo.filterInstance,
-        project_name: location.state.projectName,
+        project_name: projectName,
         filter_user_group_name: filterInfo.filterUserGroupName,
       };
       return user_group.getMemberGroupsV1(params);

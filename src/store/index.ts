@@ -10,6 +10,7 @@ import auditPlan from './auditPlan';
 import reportStatistics from './reportStatistics';
 import projectManage from './projectManage';
 import member from './member';
+import globalRuleTemplate from './globalRuleTemplate';
 
 const store = configureStore({
   reducer: {
@@ -24,6 +25,7 @@ const store = configureStore({
     reportStatistics,
     projectManage,
     member,
+    globalRuleTemplate,
   },
 });
 

@@ -1,18 +1,31 @@
 import { useBoolean } from 'ahooks';
-import { Col, Form, Input, message, Modal, Row, Space, Typography } from 'antd';
+import {
+  Col,
+  Form,
+  Input,
+  message,
+  Modal,
+  Row,
+  Select,
+  Space,
+  Typography,
+} from 'antd';
 import { useForm } from 'antd/lib/form/Form';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { IRuleTemplateResV1 } from '../../../../../api/common';
+import { IProjectRuleTemplateResV1 } from '../../../../../api/common';
 import ruleTemplate from '../../../../../api/rule_template';
 import { ModalFormLayout, ResponseCode } from '../../../../../data/common';
 import EmitterKey from '../../../../../data/EmitterKey';
 import { ModalName } from '../../../../../data/ModalName';
+import useInstance from '../../../../../hooks/useInstance';
 import { IReduxState } from '../../../../../store';
 import { updateRuleTemplateListModalStatus } from '../../../../../store/ruleTemplate';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import { nameRule } from '../../../../../utils/FormRule';
+import { useCurrentProjectName } from '../../../../ProjectManage/ProjectDetail';
 import { CloneRuleTemplateFormFields } from './index.type';
 
 const CloneRuleTemplateModal = () => {
@@ -24,10 +37,12 @@ const CloneRuleTemplateModal = () => {
   );
   const [requestPending, { setTrue: startRequest, setFalse: requestFinished }] =
     useBoolean();
+  const { projectName } = useCurrentProjectName();
+  const { generateInstanceSelectOption, updateInstanceList } = useInstance();
 
   const currentRuleTemplate = useSelector<
     IReduxState,
-    IRuleTemplateResV1 | null
+    IProjectRuleTemplateResV1 | null
   >((state) => state.ruleTemplate.selectRuleTemplate);
 
   const close = () => {
@@ -44,10 +59,12 @@ const CloneRuleTemplateModal = () => {
     const value = await form.validateFields();
     startRequest();
     ruleTemplate
-      .CloneRuleTemplateV1({
+      .cloneProjectRuleTemplateV1({
         rule_template_name: currentRuleTemplate?.rule_template_name ?? '',
         new_rule_template_name: value.templateName,
         desc: value.templateDesc,
+        project_name: projectName,
+        instance_name_list: value.instances,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -64,6 +81,13 @@ const CloneRuleTemplateModal = () => {
         requestFinished();
       });
   };
+
+  useEffect(() => {
+    if (visible) {
+      updateInstanceList({ project_name: projectName });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible]);
 
   return (
     <Modal
@@ -120,6 +144,21 @@ const CloneRuleTemplateModal = () => {
                 name: t('ruleTemplate.ruleTemplateForm.templateDesc'),
               })}
             />
+          </Form.Item>
+          <Form.Item
+            label={t('ruleTemplate.ruleTemplateForm.instances')}
+            name="instances"
+          >
+            <Select
+              mode="multiple"
+              allowClear
+              showSearch
+              placeholder={t('common.form.placeholder.select', {
+                name: t('ruleTemplate.ruleTemplateForm.instances'),
+              })}
+            >
+              {generateInstanceSelectOption()}
+            </Select>
           </Form.Item>
         </Form>
       </Space>

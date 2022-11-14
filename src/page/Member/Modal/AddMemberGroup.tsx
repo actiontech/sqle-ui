@@ -3,7 +3,6 @@ import { Button, message, Modal } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
 import user_group from '../../../api/user_group';
 import { IAddMemberGroupV1Params } from '../../../api/user_group/index.d';
 import { ResponseCode } from '../../../data/common';
@@ -12,14 +11,14 @@ import { ModalName } from '../../../data/ModalName';
 import { IReduxState } from '../../../store';
 import { updateMemberModalStatus } from '../../../store/member';
 import EventEmitter from '../../../utils/EventEmitter';
-import { ProjectDetailLocationStateType } from '../../ProjectManage/ProjectDetail';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import { MemberGroupFormFields } from './index.type';
 import MemberGroupForm from './MemberGroupForm';
 
 const AddMemberGroup: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const location = useLocation<ProjectDetailLocationStateType>();
+  const { projectName } = useCurrentProjectName();
   const [form] = useForm<MemberGroupFormFields>();
   const [submitLoading, { setFalse: submitFinish, setTrue: startSubmit }] =
     useBoolean();
@@ -30,7 +29,7 @@ const AddMemberGroup: React.FC = () => {
   const submit = async () => {
     const values = await form.validateFields();
     const params: IAddMemberGroupV1Params = {
-      project_name: location.state.projectName,
+      project_name: projectName,
       roles: values.roles,
       user_group_name: values.userGroupName,
     };

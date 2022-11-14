@@ -4,7 +4,6 @@ import { Button, Card, message, Space, Table } from 'antd';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
 import { IGetMemberRespDataV1 } from '../../../api/common';
 import user from '../../../api/user';
 import { IGetMembersV1Params } from '../../../api/user/index.d';
@@ -17,15 +16,15 @@ import {
   updateSelectMember,
 } from '../../../store/member';
 import EventEmitter from '../../../utils/EventEmitter';
-import { ProjectDetailLocationStateType } from '../../ProjectManage/ProjectDetail';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import MemberListTableColumnFactory from './column';
 import MemberListFilterForm from './FilterForm';
 import { MemberListFilterFormFields } from './index.type';
 
 const MemberList: React.FC = () => {
   const { t } = useTranslation();
-  const location = useLocation<ProjectDetailLocationStateType>();
   const dispatch = useDispatch();
+  const { projectName } = useCurrentProjectName();
   const { pagination, tableChange, filterInfo, setFilterInfo } =
     useTable<MemberListFilterFormFields>();
 
@@ -50,7 +49,7 @@ const MemberList: React.FC = () => {
   const deleteAction = async (username: string) => {
     const res = await user.deleteMemberV1({
       user_name: username,
-      project_name: location.state.projectName,
+      project_name: projectName,
     });
 
     if (res.data.code === ResponseCode.SUCCESS) {
@@ -70,7 +69,7 @@ const MemberList: React.FC = () => {
         page_size: pageSize,
         filter_user_name: filterInfo.filterUserName,
         filter_instance_name: filterInfo.filterInstance,
-        project_name: location.state.projectName,
+        project_name: projectName,
       };
       return user.getMembersV1(params);
     },
