@@ -1,15 +1,16 @@
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Menu, Popconfirm, Space, Typography } from 'antd';
-import { Link } from 'react-router-dom';
 import { IAuditPlanMetaV1, IAuditPlanResV1 } from '../../../api/common';
 import { ModalName } from '../../../data/ModalName';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
+import { CustomLink } from '../../ProjectManage/ProjectDetail';
 import TokenText from './component/TokenText';
 
 export const planListTableHeader = (
   removeAuditPlan: (auditPlanName: string) => void,
-  openModal: (name: ModalName, row?: IAuditPlanResV1) => void
+  openModal: (name: ModalName, row?: IAuditPlanResV1) => void,
+  projectName: string
 ): TableColumn<IAuditPlanResV1, 'operate'> => {
   return [
     {
@@ -63,12 +64,13 @@ export const planListTableHeader = (
               e.stopPropagation();
             }}
           >
-            <Link
+            <CustomLink
               type="link"
               to={`/auditPlan/update/${record.audit_plan_name}`}
+              projectName={projectName}
             >
               {i18n.t('common.edit')}
-            </Link>
+            </CustomLink>
             <Dropdown
               trigger={['click']}
               overlay={

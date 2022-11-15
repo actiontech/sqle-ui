@@ -3,14 +3,16 @@ import { useRequest } from 'ahooks';
 import { Button, Card, message, Modal, Space, Table } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import instance from '../../../api/instance';
 import { ResponseCode } from '../../../data/common';
 import { dataSourceColumns } from './columns';
 import DataSourceListFilterForm from './DataSourceListFilterForm';
 import { DataSourceListFilterFields } from './DataSourceListFilterForm/index.type';
 import useTable from '../../../hooks/useTable';
-import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
+import {
+  CustomLink,
+  useCurrentProjectName,
+} from '../../ProjectManage/ProjectDetail';
 
 const DataSourceList = () => {
   const { t } = useTranslation();
@@ -106,9 +108,9 @@ const DataSourceList = () => {
         </Space>
       }
       extra={
-        <Link to="/data/create">
+        <CustomLink to="/data/create" projectName={projectName}>
           <Button type="primary">{t('dataSource.addDatabase')}</Button>
-        </Link>
+        </CustomLink>
       }
     >
       <DataSourceListFilterForm submit={setFilterInfo} />
@@ -116,7 +118,11 @@ const DataSourceList = () => {
         rowKey="instance_name"
         loading={loading}
         dataSource={data?.list ?? []}
-        columns={dataSourceColumns(deleteDatabase, testDatabaseConnection)}
+        columns={dataSourceColumns(
+          deleteDatabase,
+          testDatabaseConnection,
+          projectName
+        )}
         pagination={{
           total: data?.total,
         }}

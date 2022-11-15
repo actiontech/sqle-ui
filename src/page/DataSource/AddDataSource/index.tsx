@@ -3,13 +3,15 @@ import { Button, Card, Modal, Result } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import instance from '../../../api/instance';
 import BackButton from '../../../components/BackButton';
 import { ResponseCode } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import EventEmitter from '../../../utils/EventEmitter';
-import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
+import {
+  CustomLink,
+  useCurrentProjectName,
+} from '../../ProjectManage/ProjectDetail';
 import DataSourceForm from '../DataSourceForm';
 import { DataSourceFormField } from '../DataSourceForm/index.type';
 import { turnCommonToDataSourceParams } from '../tool';
@@ -83,9 +85,9 @@ const AddDataSource = () => {
           status="success"
           title={t('dataSource.addDatabaseSuccess')}
           subTitle={
-            <Link to="/data">
+            <CustomLink to="/data" projectName={projectName}>
               {t('dataSource.addDatabaseSuccessGuide')} {'>'}
-            </Link>
+            </CustomLink>
           }
           extra={[
             <Button key="close" onClick={closeResultModal}>

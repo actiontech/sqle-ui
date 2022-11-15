@@ -11,8 +11,7 @@ import {
 } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory, useLocation } from 'react-router';
-import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import workflow from '../../../api/workflow';
 import { getWorkflowsV1FilterStatusEnum } from '../../../api/workflow/index.enum';
 import useTable from '../../../hooks/useTable';
@@ -28,11 +27,15 @@ import { Theme } from '../../../types/theme.type';
 import { useTheme } from '@material-ui/styles';
 import { TableRowSelection } from 'antd/lib/table/interface';
 import moment from 'moment';
-import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
+import {
+  CustomLink,
+  useCurrentProjectName,
+  useCustomHistory,
+} from '../../ProjectManage/ProjectDetail';
 import { WorkflowDetailResV1StatusEnum } from '../../../api/common.enum';
 
 const OrderList = () => {
-  const history = useHistory();
+  const history = useCustomHistory();
   const { t } = useTranslation();
   const location = useLocation();
   const theme = useTheme<Theme>();
@@ -202,9 +205,13 @@ const OrderList = () => {
         title={t('order.orderList.pageTitle')}
         ghost={false}
         extra={[
-          <Link to="/order/create" key="createOrder">
+          <CustomLink
+            to="/order/create"
+            projectName={projectName}
+            key="createOrder"
+          >
             <Button type="primary">{t('order.createOrder.title')}</Button>
-          </Link>,
+          </CustomLink>,
         ]}
       >
         {t('order.orderList.pageDesc')}
@@ -271,7 +278,7 @@ const OrderList = () => {
               onChange={tableChange}
               onRow={(record) => ({
                 onClick() {
-                  history.push(`/order/${record.workflow_name}`);
+                  history.push(`/order/${record.workflow_name}`, projectName);
                 },
               })}
               rowSelection={

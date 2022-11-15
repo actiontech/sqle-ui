@@ -8,15 +8,16 @@ import {
   Tag,
   Typography,
 } from 'antd';
-import { Link } from 'react-router-dom';
 import { IProjectRuleTemplateResV1 } from '../../../api/common';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
+import { CustomLink } from '../../ProjectManage/ProjectDetail';
 
 export const RuleTemplateListTableColumnFactory = (
   deleteTemplate: (name: string) => void,
   openCloneRuleTemplateModal: (rowData: IProjectRuleTemplateResV1) => void,
-  isAdmin: boolean
+  isAdmin: boolean,
+  projectName: string
 ): TableColumn<IProjectRuleTemplateResV1, 'operator'> => {
   const columns: TableColumn<IProjectRuleTemplateResV1, 'operator'> = [
     {
@@ -48,9 +49,12 @@ export const RuleTemplateListTableColumnFactory = (
       render: (_, record) => {
         return (
           <Space className="user-cell flex-end-horizontal">
-            <Link to={`/rule/template/update/${record.rule_template_name}`}>
+            <CustomLink
+              to={`/rule/template/update/${record.rule_template_name}`}
+              projectName={projectName}
+            >
               {i18n.t('common.edit')}
-            </Link>
+            </CustomLink>
             <Divider type="vertical" />
             <Popconfirm
               title={i18n.t('ruleTemplate.deleteRuleTemplate.tips', {

@@ -4,7 +4,6 @@ import { Button, Card, message, PageHeader, Space, Table } from 'antd';
 import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { IProjectListItem } from '../../../api/common';
 import project from '../../../api/project';
 import { ResponseCode } from '../../../data/common';
@@ -21,7 +20,6 @@ import { ProjectListTableColumnFactory } from './column';
 const ProjectList: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const history = useHistory();
   const {
     data,
     loading,
@@ -91,13 +89,6 @@ const ProjectList: React.FC = () => {
     );
   };
 
-  const jumpToProjectDetailAndUpdateSelectProject = (
-    record: IProjectListItem
-  ) => {
-    history.push('/');
-    dispatch(updateSelectProject({ project: record }));
-  };
-
   useEffect(() => {
     EventEmitter.subscribe(EmitterKey.Refresh_Project_List, refresh);
 
@@ -137,7 +128,7 @@ const ProjectList: React.FC = () => {
         >
           <Table
             rowKey="id"
-            dataSource={data?.list}
+            dataSource={data?.list ?? [{ name: 'test' }]}
             loading={loading}
             pagination={{
               total,
@@ -147,8 +138,7 @@ const ProjectList: React.FC = () => {
             }}
             columns={ProjectListTableColumnFactory(
               deleteAction,
-              openModalAndUpdateSelectProject,
-              jumpToProjectDetailAndUpdateSelectProject
+              openModalAndUpdateSelectProject
             )}
           />
         </Card>

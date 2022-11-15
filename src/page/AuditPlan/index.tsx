@@ -7,7 +7,6 @@ import UpdateAuditPlan from './UpdatePlan';
 
 const AuditPlan = () => {
   const { t } = useTranslation();
-
   return (
     <>
       <PageHeader ghost={false} title={t('auditPlan.pageTitle')}>
@@ -22,7 +21,7 @@ const AuditPlan = () => {
             path="/auditPlan/update/:auditPlanName"
             component={UpdateAuditPlan}
           />
-          <Redirect to="/auditPlan" />
+          <Redirect to={{ pathname: '/auditPlan' }} />
         </Switch>
       </section>
     </>

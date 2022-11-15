@@ -1,13 +1,15 @@
 import { useBoolean } from 'ahooks';
 import { Button, Card, Modal, Result } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import audit_plan from '../../../api/audit_plan';
 import BackButton from '../../../components/BackButton';
 import { ResponseCode } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import EventEmitter from '../../../utils/EventEmitter';
-import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
+import {
+  CustomLink,
+  useCurrentProjectName,
+} from '../../ProjectManage/ProjectDetail';
 import PlanForm from '../PlanForm';
 import { PlanFormField } from '../PlanForm/index.type';
 
@@ -58,9 +60,9 @@ const CreateAuditPlan = () => {
           status="success"
           title={t('auditPlan.create.successTitle')}
           subTitle={
-            <Link to="/auditPlan">
+            <CustomLink to="/auditPlan" projectName={projectName}>
               {t('auditPlan.create.successGuide')} {'>'}
-            </Link>
+            </CustomLink>
           }
           extra={[
             <Button key="close" onClick={closeResultModal}>

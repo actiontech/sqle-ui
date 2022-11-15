@@ -3,7 +3,6 @@ import { useRequest } from 'ahooks';
 import { Button, Card, List, Space, Typography } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import audit_plan from '../../../../../api/audit_plan';
 import EmptyBox from '../../../../../components/EmptyBox';
 import RuleLevelIcon from '../../../../../components/RuleList/RuleLevelIcon';
@@ -11,13 +10,17 @@ import EmitterKey from '../../../../../data/EmitterKey';
 import { formatTime } from '../../../../../utils/Common';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import { floatToPercent } from '../../../../../utils/Math';
+import {
+  CustomLink,
+  useCurrentProjectName,
+} from '../../../../ProjectManage/ProjectDetail';
 
 const PlanAuditRecord: React.FC<{
   auditPlanName: string;
   projectName: string;
 }> = (props) => {
   const { t } = useTranslation();
-
+  const { projectName } = useCurrentProjectName();
   const [pagination, setPagination] = useState({ pageIndex: 1, pageSize: 10 });
 
   const { data, loading, refresh } = useRequest(
@@ -108,8 +111,9 @@ const PlanAuditRecord: React.FC<{
                 </EmptyBox>
               }
               title={
-                <Link
+                <CustomLink
                   to={`/auditPlan/detail/${props.auditPlanName}/report/${item.audit_plan_report_id}`}
+                  projectName={projectName}
                 >
                   <span className="text-blue">
                     {`${t('auditPlan.record.generateTime')}${formatTime(
@@ -117,7 +121,7 @@ const PlanAuditRecord: React.FC<{
                       '--'
                     )}`}
                   </span>
-                </Link>
+                </CustomLink>
               }
               description={
                 <Space>

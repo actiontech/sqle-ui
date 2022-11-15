@@ -2,7 +2,7 @@ import { Button, Card, Result, Row } from 'antd';
 import { AxiosResponse } from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import {
   IWorkFlowStepTemplateReqV1,
   IWorkflowTemplateDetailResV1,
@@ -11,7 +11,10 @@ import { UpdateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum } from '..
 import workflow from '../../../api/workflow';
 import { IUpdateWorkflowTemplateV1Return } from '../../../api/workflow/index.d';
 import { ResponseCode } from '../../../data/common';
-import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
+import {
+  CustomLink,
+  useCurrentProjectName,
+} from '../../ProjectManage/ProjectDetail';
 import WorkflowTemplateForm from '../WorkflowTemplateForm';
 import { BaseFormFields } from '../WorkflowTemplateForm/BaseForm/index.type';
 
@@ -43,40 +46,38 @@ const UpdateWorkflowTemplate = () => {
     });
   };
 
-  const getWorkflowProgress = () => {
-    workflow
-      .getWorkflowTemplateV1({ project_name: projectName })
-      .then((res) => {
-        if (res.data.code === ResponseCode.SUCCESS) {
-          const temp = res.data.data;
-          if (temp?.workflow_step_template_list) {
-            temp.workflow_step_template_list =
-              temp.workflow_step_template_list.map((e) => {
-                if (e.approved_by_authorized) {
-                  e.assignee_user_name_list = [];
-                }
-                return e;
-              });
-          }
-          setWorkflowTemplate(res.data.data);
-        }
-      });
-  };
-
   useEffect(() => {
+    const getWorkflowProgress = () => {
+      workflow
+        .getWorkflowTemplateV1({ project_name: projectName })
+        .then((res) => {
+          if (res.data.code === ResponseCode.SUCCESS) {
+            const temp = res.data.data;
+            if (temp?.workflow_step_template_list) {
+              temp.workflow_step_template_list =
+                temp.workflow_step_template_list.map((e) => {
+                  if (e.approved_by_authorized) {
+                    e.assignee_user_name_list = [];
+                  }
+                  return e;
+                });
+            }
+            setWorkflowTemplate(res.data.data);
+          }
+        });
+    };
     if (!!urlParams.workflowName) {
       getWorkflowProgress();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [history, urlParams]);
+  }, [history, projectName, urlParams]);
 
   return (
     <Card
       title={t('workflowTemplate.update.title.wrapper')}
       extra={[
-        <Link to="/progress" key="go-back">
+        <CustomLink to="/progress" key="go-back" projectName={projectName}>
           <Button type="primary">{t('common.back')}</Button>
-        </Link>,
+        </CustomLink>,
       ]}
     >
       <WorkflowTemplateForm
@@ -90,13 +91,14 @@ const UpdateWorkflowTemplate = () => {
           title={t('workflowTemplate.update.result.title')}
         />
         <Row justify="center">
-          <Link
+          <CustomLink
             to={`/progress/detail/${workflowTemplate?.workflow_template_name}`}
+            projectName={projectName}
           >
             <Button type="primary">
               {t('workflowTemplate.update.result.showNow')}
             </Button>
-          </Link>
+          </CustomLink>
         </Row>
       </WorkflowTemplateForm>
     </Card>

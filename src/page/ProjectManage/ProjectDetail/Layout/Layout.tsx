@@ -22,6 +22,7 @@ const AuditPlan = lazy(
 
 const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
   children,
+  projectName,
 }) => {
   const userRole = useSelector<IReduxState, SystemRole | ''>(
     (state) => state.user.role
@@ -110,7 +111,7 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
           mode="inline"
           theme="dark"
         >
-          {generateNavigateMenu(innerRouterConfig, userRole)}
+          {generateNavigateMenu(innerRouterConfig, userRole, projectName)}
         </Menu>
       </Layout.Sider>
       <Layout.Content>{children}</Layout.Content>

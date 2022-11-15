@@ -8,7 +8,6 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 const WorkflowTemplate = () => {
   const { t } = useTranslation();
-
   return (
     <article>
       <PageHeader title={t('workflowTemplate.pageTitle')} ghost={false}>
@@ -37,7 +36,7 @@ const WorkflowTemplate = () => {
         {/* IFTRUE_isEE */}
         <Switch>
           <Route
-            path="/progress/detail"
+            path="/progress"
             exact={true}
             component={WorkflowTemplateDetail}
           />
@@ -46,7 +45,7 @@ const WorkflowTemplate = () => {
             exact={true}
             component={UpdateWorkflowTemplate}
           />
-          <Redirect to="/progress/detail" />
+          <Redirect to={{ pathname: '/progress' }} />
         </Switch>
         {/* FITRUE_isEE */}
       </section>

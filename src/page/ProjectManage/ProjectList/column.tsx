@@ -2,24 +2,21 @@ import { Divider, Popconfirm, Space, Typography } from 'antd';
 import { IProjectListItem } from '../../../api/common';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
+import { CustomLink } from '../ProjectDetail';
 
 export const ProjectListTableColumnFactory = (
   deleteAction: (name?: string) => void,
-  openModalAndUpdateSelectProject: (record: IProjectListItem) => void,
-  jumpToProjectDetailAndUpdateSelectProject: (record: IProjectListItem) => void
+  openModalAndUpdateSelectProject: (record: IProjectListItem) => void
 ): TableColumn<IProjectListItem, 'operator'> => {
   return [
     {
       dataIndex: 'name',
       title: () => i18n.t('projectManage.projectList.column.name'),
-      render(name: string, record) {
+      render(name: string) {
         return (
-          <Typography.Link
-            className="pointer"
-            onClick={() => jumpToProjectDetailAndUpdateSelectProject(record)}
-          >
+          <CustomLink to="/" projectName={name}>
             {name}
-          </Typography.Link>
+          </CustomLink>
         );
       },
     },

@@ -4,7 +4,6 @@ import { Button, Card, message, Space, Table } from 'antd';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
 import audit_plan from '../../../api/audit_plan';
 import { IAuditPlanResV1 } from '../../../api/common';
 import { ResponseCode } from '../../../data/common';
@@ -15,7 +14,11 @@ import {
   updateAuditPlanModalStatus,
   updateSelectAuditPlan,
 } from '../../../store/auditPlan';
-import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
+import {
+  CustomLink,
+  useCurrentProjectName,
+  useCustomHistory,
+} from '../../ProjectManage/ProjectDetail';
 import PlanListModal from './Modal';
 import PlanListFilterForm from './PlanListFilterForm';
 import { PlanListFilterFormFields } from './PlanListFilterForm/index.type';
@@ -23,7 +26,7 @@ import { planListTableHeader } from './tableColumn';
 
 const PlanList = () => {
   const { t } = useTranslation();
-  const history = useHistory();
+  const history = useCustomHistory();
   const [
     removePending,
     { setTrue: startRemoveAuditPlan, setFalse: removeAuditPlanFinish },
@@ -135,14 +138,18 @@ const PlanList = () => {
         </Space>
       }
       extra={[
-        <Link key="create-audit-plan" to="/auditPlan/create">
+        <CustomLink
+          key="create-audit-plan"
+          to="/auditPlan/create"
+          projectName={projectName}
+        >
           <Button type="primary">{t('auditPlan.action.create')}</Button>
-        </Link>,
+        </CustomLink>,
       ]}
     >
       <PlanListFilterForm submit={setFilterInfo} />
       <Table
-        columns={planListTableHeader(removeAuditPlan, openModal)}
+        columns={planListTableHeader(removeAuditPlan, openModal, projectName)}
         dataSource={data?.list ?? []}
         rowKey="audit_plan_name"
         pagination={{
@@ -152,7 +159,10 @@ const PlanList = () => {
         loading={loading}
         onRow={(record) => ({
           onClick: () => {
-            history.push(`/auditPlan/detail/${record.audit_plan_name}`);
+            history.push(
+              `/auditPlan/detail/${record.audit_plan_name}`,
+              projectName
+            );
           },
         })}
         onChange={tableChange}

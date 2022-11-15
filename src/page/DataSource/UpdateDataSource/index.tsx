@@ -3,14 +3,17 @@ import { Card, Button, message, Empty, Typography } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { IInstanceResV1 } from '../../../api/common';
 import instance from '../../../api/instance';
 import { IUpdateInstanceV1Params } from '../../../api/instance/index.d';
 import BackButton from '../../../components/BackButton';
 import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode } from '../../../data/common';
-import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
+import {
+  useCurrentProjectName,
+  useCustomHistory,
+} from '../../ProjectManage/ProjectDetail';
 import DataSourceForm from '../DataSourceForm';
 import { DataSourceFormField } from '../DataSourceForm/index.type';
 import { turnCommonToDataSourceParams } from '../tool';
@@ -19,7 +22,7 @@ import { UpdateDataSourceUrlParams } from './index.type';
 const UpdateDataSource = () => {
   const { t } = useTranslation();
   const [form] = useForm<DataSourceFormField>();
-  const history = useHistory();
+  const history = useCustomHistory();
   const urlParams = useParams<UpdateDataSourceUrlParams>();
   const { projectName } = useCurrentProjectName();
   const [initError, setInitError] = React.useState('');
@@ -60,7 +63,7 @@ const UpdateDataSource = () => {
             name: values.name,
           })
         );
-        history.replace('/data');
+        history.replace('/data', projectName);
       }
     });
   };
