@@ -1,7 +1,7 @@
 import { useBoolean } from 'ahooks';
 import { useCallback, useRef, useState } from 'react';
 import { IAuditTaskResV1 } from '../../../api/common';
-import { CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum } from '../../../api/common.enum';
+import { WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum } from '../../../api/common.enum';
 import task from '../../../api/task';
 import {
   IAuditTaskGroupIdV1Params,
@@ -9,11 +9,13 @@ import {
   ICreateAuditTasksV1Params,
 } from '../../../api/task/index.d';
 import { ResponseCode } from '../../../data/common';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import { SqlInfoFormFields } from '../Create/SqlInfoForm/index.type';
 import { SqlStatementFields } from '../SqlStatementFormTabs';
 import { useAllowAuditLevel } from './useAllowAuditLevel';
 
 const useAuditOrder = () => {
+  const { projectName } = useCurrentProjectName();
   const [taskInfos, setTaskInfos] = useState<IAuditTaskResV1[]>([]);
   const [auditResultActiveKey, setAuditResultActiveKey] = useState<string>('');
   const catchTaskInfos = useRef<IAuditTaskResV1[]>([]);
@@ -41,9 +43,10 @@ const useAuditOrder = () => {
     (tasks: IAuditTaskResV1[]) => {
       judgeAuditLevel(
         tasks.map((v) => ({
+          projectName,
           instanceName: v.instance_name ?? '',
           currentAuditLevel: v.audit_level as
-            | CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
+            | WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum
             | undefined,
         })) ?? [],
         disableFinallySubmitButton,
@@ -54,6 +57,7 @@ const useAuditOrder = () => {
       cancelDisableFinallySubmitButton,
       disableFinallySubmitButton,
       judgeAuditLevel,
+      projectName,
     ]
   );
 
@@ -76,6 +80,7 @@ const useAuditOrder = () => {
       const sqlStatementInfo = values['0'] as SqlStatementFields;
 
       const createAuditTasksParams: ICreateAuditTasksV1Params = {
+        project_name: projectName,
         instances:
           values.dataBaseInfo.map((v) => ({
             instance_name: v.instanceName,
@@ -107,7 +112,7 @@ const useAuditOrder = () => {
         }
       }
     },
-    [commonJudgeAuditLevel]
+    [commonJudgeAuditLevel, projectName]
   );
 
   /**
@@ -131,6 +136,7 @@ const useAuditOrder = () => {
     ) => {
       const sqlStatementInfo = values[currentTabKey] as SqlStatementFields;
       const params: ICreateAndAuditTaskV1Params = {
+        project_name: projectName,
         instance_name: values.dataBaseInfo[currentTabIndex].instanceName,
         instance_schema: values.dataBaseInfo[currentTabIndex].instanceSchema,
         sql: sqlStatementInfo.sql,
@@ -162,7 +168,7 @@ const useAuditOrder = () => {
       }
       setTaskInfos(catchTaskInfos.current);
     },
-    [commonJudgeAuditLevel]
+    [commonJudgeAuditLevel, projectName]
   );
 
   const clearTaskInfoWithKey = (key: string) => {

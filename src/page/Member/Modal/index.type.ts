@@ -2,7 +2,7 @@ import { FormInstance } from 'antd';
 import { IBindRoleReqV1 } from '../../../api/common';
 
 export type MemberFormFields = {
-  isOwner: boolean;
+  isManager: boolean;
   roles: IBindRoleReqV1[];
   username: string;
 };

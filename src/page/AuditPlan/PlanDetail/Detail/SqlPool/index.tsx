@@ -5,24 +5,26 @@ import { ColumnType } from 'antd/lib/table';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import audit_plan from '../../../../../api/audit_plan';
-import { IAuditPlanSQLHeadV2 } from '../../../../../api/common.d';
-import { AuditPlanSQLHeadV2TypeEnum } from '../../../../../api/common.enum';
+import { IAuditPlanSQLHeadV1 } from '../../../../../api/common';
+import { AuditPlanSQLHeadV1TypeEnum } from '../../../../../api/common.enum';
 import { ResponseCode } from '../../../../../data/common';
 import EmitterKey from '../../../../../data/EmitterKey';
 import useTable from '../../../../../hooks/useTable';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import HighlightCode from '../../../../../utils/HighlightCode';
 
-const SqlPool: React.FC<{ auditPlanName: string }> = (props) => {
+const SqlPool: React.FC<{ auditPlanName: string; projectName: string }> = (
+  props
+) => {
   const { t } = useTranslation();
 
   const { pagination, tableChange } = useTable();
 
   const [columns, setColumns] = useState<ColumnType<any>[]>([]);
-
   const { loading, data, refresh } = useRequest(
     () =>
-      audit_plan.getAuditPlanSQLsV2({
+      audit_plan.getAuditPlanSQLsV1({
+        project_name: props.projectName,
         audit_plan_name: props.auditPlanName,
         page_index: pagination.pageIndex,
         page_size: pagination.pageSize,
@@ -40,11 +42,11 @@ const SqlPool: React.FC<{ auditPlanName: string }> = (props) => {
       onSuccess: (res) => {
         const { head = [] } = res;
         setColumns(
-          (head as IAuditPlanSQLHeadV2[]).map((item) => ({
+          (head as IAuditPlanSQLHeadV1[]).map((item) => ({
             title: item.desc,
             dataIndex: item.name,
             render: (text) => {
-              if (item.type === AuditPlanSQLHeadV2TypeEnum.sql) {
+              if (item.type === AuditPlanSQLHeadV1TypeEnum.sql) {
                 return (
                   <pre
                     dangerouslySetInnerHTML={{
@@ -65,7 +67,10 @@ const SqlPool: React.FC<{ auditPlanName: string }> = (props) => {
   const triggerAudit = () => {
     const hide = message.loading(t('auditPlan.sqlPool.action.loading'), 0);
     audit_plan
-      .triggerAuditPlanV1({ audit_plan_name: props.auditPlanName })
+      .triggerAuditPlanV1({
+        audit_plan_name: props.auditPlanName,
+        project_name: props.projectName,
+      })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           message.success(t('auditPlan.sqlPool.action.triggerSuccess'));

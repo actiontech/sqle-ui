@@ -1,28 +1,22 @@
 /* tslint:disable no-duplicate-string */
 
-export enum getWorkflowListV1FilterCurrentStepTypeEnum {
-  'sql_review' = 'sql_review',
+export enum getWorkflowsV1FilterStatusEnum {
+  'wait_for_audit' = 'wait_for_audit',
 
-  'sql_execute' = 'sql_execute'
-}
-
-export enum getWorkflowListV1FilterStatusEnum {
-  'on_process' = 'on_process',
+  'wait_for_execution' = 'wait_for_execution',
 
   'rejected' = 'rejected',
 
-  'canceled' = 'canceled',
-
-  'exec_scheduled' = 'exec_scheduled',
-
   'executing' = 'executing',
+
+  'canceled' = 'canceled',
 
   'exec_failed' = 'exec_failed',
 
   'finished' = 'finished'
 }
 
-export enum getWorkflowsV2FilterStatusEnum {
+export enum getGlobalWorkflowsV1FilterStatusEnum {
   'wait_for_audit' = 'wait_for_audit',
 
   'wait_for_execution' = 'wait_for_execution',

@@ -1,7 +1,7 @@
 import {
   IAuditTaskResV1,
   IGetWorkflowTasksItemV1,
-  IWorkflowResV2,
+  IWorkflowResV1,
   IWorkflowTemplateDetailResV1,
 } from '../../../../api/common';
 import {
@@ -35,7 +35,7 @@ export const order = {
       },
     ],
   },
-} as IWorkflowResV2;
+} as IWorkflowResV1;
 
 export const orderCancel = {
   workflow_id: 2,
@@ -61,7 +61,7 @@ export const orderCancel = {
       },
     ],
   },
-} as IWorkflowResV2;
+} as IWorkflowResV1;
 
 export const orderReject = {
   workflow_id: 3,
@@ -90,7 +90,7 @@ export const orderReject = {
       },
     ],
   },
-} as IWorkflowResV2;
+} as IWorkflowResV1;
 
 export const orderPass = {
   workflow_id: 4,
@@ -118,7 +118,7 @@ export const orderPass = {
       },
     ],
   },
-} as IWorkflowResV2;
+} as IWorkflowResV1;
 
 export const orderWithExecScheduled = {
   workflow_id: 13,
@@ -147,7 +147,7 @@ export const orderWithExecScheduled = {
       },
     ],
   },
-} as IWorkflowResV2;
+} as IWorkflowResV1;
 
 export const orderWithExecuting = {
   workflow_id: 13,
@@ -176,7 +176,7 @@ export const orderWithExecuting = {
       },
     ],
   },
-} as IWorkflowResV2;
+} as IWorkflowResV1;
 
 export const order3 = {
   workflow_id: 1,
@@ -209,7 +209,7 @@ export const order3 = {
       },
     ],
   },
-} as IWorkflowResV2;
+} as IWorkflowResV1;
 export const orderPass3 = {
   workflow_id: 4,
   subject: 'pass',
@@ -245,7 +245,7 @@ export const orderPass3 = {
       },
     ],
   },
-} as IWorkflowResV2;
+} as IWorkflowResV1;
 
 export const orderCancel3 = {
   workflow_id: 2,
@@ -278,7 +278,7 @@ export const orderCancel3 = {
       },
     ],
   },
-} as IWorkflowResV2;
+} as IWorkflowResV1;
 
 export const orderReject3 = {
   workflow_id: 3,
@@ -316,7 +316,7 @@ export const orderReject3 = {
       },
     ],
   },
-} as IWorkflowResV2;
+} as IWorkflowResV1;
 
 export const orderWithExecScheduled3 = {
   workflow_id: 4,
@@ -354,7 +354,7 @@ export const orderWithExecScheduled3 = {
       },
     ],
   },
-} as IWorkflowResV2;
+} as IWorkflowResV1;
 
 export const orderWithExecuting3 = {
   workflow_id: 5,
@@ -391,7 +391,7 @@ export const orderWithExecuting3 = {
       },
     ],
   },
-} as IWorkflowResV2;
+} as IWorkflowResV1;
 export const execScheduleSubmit3 = {
   workflow_id: 17,
   subject: 'testtt',
@@ -427,7 +427,7 @@ export const execScheduleSubmit3 = {
       },
     ],
   },
-} as IWorkflowResV2;
+} as IWorkflowResV1;
 
 export const orderWithHistory = {
   workflow_id: 1,
@@ -478,7 +478,7 @@ export const orderWithHistory = {
       ],
     },
   ],
-} as IWorkflowResV2;
+} as IWorkflowResV1;
 
 export const taskInfo: IAuditTaskResV1 = {
   task_id: 27,

@@ -1,6 +1,6 @@
 import { FormInstance } from 'antd';
 import {
-  IManagementPermission,
+  IManagementPermissionResV1,
   IUserGroupTipListItem,
 } from '../../../../../api/common.d';
 
@@ -20,5 +20,5 @@ export interface IUserFormProps {
   userGroupList: IUserGroupTipListItem[];
   isUpdate?: boolean;
   isAdmin?: boolean;
-  managementPermissionList: IManagementPermission[];
+  managementPermissionList: IManagementPermissionResV1[];
 }

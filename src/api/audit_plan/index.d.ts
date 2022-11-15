@@ -10,15 +10,13 @@ import {
   IGetAuditPlanNotifyConfigResV1,
   IUpdateAuditPlanNotifyConfigReqV1,
   ITestAuditPlanNotifyConfigResV1,
-  IGetAuditPlanReportSQLsResV1,
   IGetAuditPlanReportsResV1,
   IGetAuditPlanReportResV1,
+  IGetAuditPlanReportSQLsResV1,
   IGetAuditPlanSQLsResV1,
   IFullSyncAuditPlanSQLsReqV1,
   IPartialSyncAuditPlanSQLsReqV1,
-  ITriggerAuditPlanResV1,
-  IGetAuditPlanReportSQLsResV2,
-  IGetAuditPlanSQLsResV2
+  ITriggerAuditPlanResV1
 } from '../common.d';
 
 export interface IGetAuditPlanMetasV1Params {
@@ -30,6 +28,8 @@ export interface IGetAuditPlanMetasV1Return extends IGetAuditPlanMetasResV1 {}
 export interface IGetAuditPlanTypesV1Return extends IGetAuditPlanTypesResV1 {}
 
 export interface IGetAuditPlansV1Params {
+  project_name: string;
+
   filter_audit_plan_db_type?: string;
 
   fuzzy_search_audit_plan_name?: string;
@@ -45,11 +45,15 @@ export interface IGetAuditPlansV1Params {
 
 export interface IGetAuditPlansV1Return extends IGetAuditPlansResV1 {}
 
-export interface ICreateAuditPlanV1Params extends ICreateAuditPlanReqV1 {}
+export interface ICreateAuditPlanV1Params extends ICreateAuditPlanReqV1 {
+  project_name: string;
+}
 
 export interface ICreateAuditPlanV1Return extends IBaseRes {}
 
 export interface IGetTaskAnalysisDataParams {
+  project_name: string;
+
   audit_plan_report_id: string;
 
   number: string;
@@ -59,24 +63,32 @@ export interface IGetTaskAnalysisDataReturn
   extends IGetAuditPlanAnalysisDataResV1 {}
 
 export interface IGetAuditPlanV1Params {
+  project_name: string;
+
   audit_plan_name: string;
 }
 
 export interface IGetAuditPlanV1Return extends IGetAuditPlanResV1 {}
 
 export interface IDeleteAuditPlanV1Params {
+  project_name: string;
+
   audit_plan_name: string;
 }
 
 export interface IDeleteAuditPlanV1Return extends IBaseRes {}
 
 export interface IUpdateAuditPlanV1Params extends IUpdateAuditPlanReqV1 {
+  project_name: string;
+
   audit_plan_name: string;
 }
 
 export interface IUpdateAuditPlanV1Return extends IBaseRes {}
 
 export interface IGetAuditPlanNotifyConfigV1Params {
+  project_name: string;
+
   audit_plan_name: string;
 }
 
@@ -85,32 +97,25 @@ export interface IGetAuditPlanNotifyConfigV1Return
 
 export interface IUpdateAuditPlanNotifyConfigV1Params
   extends IUpdateAuditPlanNotifyConfigReqV1 {
+  project_name: string;
+
   audit_plan_name: string;
 }
 
 export interface IUpdateAuditPlanNotifyConfigV1Return extends IBaseRes {}
 
 export interface ITestAuditPlanNotifyConfigV1Params {
+  project_name: string;
+
   audit_plan_name: string;
 }
 
 export interface ITestAuditPlanNotifyConfigV1Return
   extends ITestAuditPlanNotifyConfigResV1 {}
 
-export interface IGetAuditPlanReportSQLsV1Params {
-  audit_plan_name: string;
-
-  audit_plan_report_id: string;
-
-  page_index?: number;
-
-  page_size?: number;
-}
-
-export interface IGetAuditPlanReportSQLsV1Return
-  extends IGetAuditPlanReportSQLsResV1 {}
-
 export interface IGetAuditPlanReportsV1Params {
+  project_name: string;
+
   audit_plan_name: string;
 
   page_index?: number;
@@ -122,6 +127,8 @@ export interface IGetAuditPlanReportsV1Return
   extends IGetAuditPlanReportsResV1 {}
 
 export interface IGetAuditPlanReportV1Params {
+  project_name: string;
+
   audit_plan_name: string;
 
   audit_plan_report_id: string;
@@ -129,7 +136,24 @@ export interface IGetAuditPlanReportV1Params {
 
 export interface IGetAuditPlanReportV1Return extends IGetAuditPlanReportResV1 {}
 
+export interface IGetAuditPlanReportsSQLsV1Params {
+  project_name: string;
+
+  audit_plan_name: string;
+
+  audit_plan_report_id: string;
+
+  page_index?: number;
+
+  page_size?: number;
+}
+
+export interface IGetAuditPlanReportsSQLsV1Return
+  extends IGetAuditPlanReportSQLsResV1 {}
+
 export interface IGetAuditPlanSQLsV1Params {
+  project_name: string;
+
   audit_plan_name: string;
 
   page_index?: number;
@@ -141,6 +165,8 @@ export interface IGetAuditPlanSQLsV1Return extends IGetAuditPlanSQLsResV1 {}
 
 export interface IFullSyncAuditPlanSQLsV1Params
   extends IFullSyncAuditPlanSQLsReqV1 {
+  project_name: string;
+
   audit_plan_name: string;
 }
 
@@ -148,49 +174,17 @@ export interface IFullSyncAuditPlanSQLsV1Return extends IBaseRes {}
 
 export interface IPartialSyncAuditPlanSQLsV1Params
   extends IPartialSyncAuditPlanSQLsReqV1 {
+  project_name: string;
+
   audit_plan_name: string;
 }
 
 export interface IPartialSyncAuditPlanSQLsV1Return extends IBaseRes {}
 
 export interface ITriggerAuditPlanV1Params {
+  project_name: string;
+
   audit_plan_name: string;
 }
 
 export interface ITriggerAuditPlanV1Return extends ITriggerAuditPlanResV1 {}
-
-export interface IGetAuditPlanReportSQLsV2Params {
-  audit_plan_name: string;
-
-  audit_plan_report_id: string;
-
-  page_index?: number;
-
-  page_size?: number;
-}
-
-export interface IGetAuditPlanReportSQLsV2Return
-  extends IGetAuditPlanReportSQLsResV2 {}
-
-export interface IGetAuditPlanReportsSQLsV2Params {
-  audit_plan_name: string;
-
-  audit_plan_report_id: string;
-
-  page_index?: number;
-
-  page_size?: number;
-}
-
-export interface IGetAuditPlanReportsSQLsV2Return
-  extends IGetAuditPlanReportSQLsResV2 {}
-
-export interface IGetAuditPlanSQLsV2Params {
-  audit_plan_name: string;
-
-  page_index?: number;
-
-  page_size?: number;
-}
-
-export interface IGetAuditPlanSQLsV2Return extends IGetAuditPlanSQLsResV2 {}

@@ -8,7 +8,6 @@ import {
 import {
   mockUseRole,
   mockUseRuleTemplate,
-  mockUseWorkflowTemplate,
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
 import { useParams } from 'react-router-dom';
@@ -33,7 +32,6 @@ describe('UpdateDataSource', () => {
     mockUseRuleTemplate();
     mockUseRole();
     mockGetInstance();
-    mockUseWorkflowTemplate();
     mockDriver();
     mockGetDataSourceMetas();
   });

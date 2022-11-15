@@ -1,4 +1,11 @@
-import { Divider, Popconfirm, Space, Tooltip, Typography } from 'antd';
+import {
+  Checkbox,
+  Divider,
+  Popconfirm,
+  Space,
+  Tooltip,
+  Typography,
+} from 'antd';
 import { IBindRoleReqV1, IGetMemberRespDataV1 } from '../../../api/common';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
@@ -32,14 +39,14 @@ const MemberListTableColumnFactory: (
       },
     },
     {
-      dataIndex: 'is_owner',
-      title: i18n.t('member.memberList.tableColumn.isOwner'),
-      render(isOwner: boolean | unknown) {
-        if (typeof isOwner !== 'boolean') {
+      dataIndex: 'is_manager',
+      title: i18n.t('member.memberList.tableColumn.isManager'),
+      render(isManager: boolean | unknown) {
+        if (typeof isManager !== 'boolean') {
           return i18n.t('common.unknownStatus');
         }
 
-        return isOwner ? i18n.t('common.true') : i18n.t('common.false');
+        return <Checkbox checked={isManager} />;
       },
     },
     {

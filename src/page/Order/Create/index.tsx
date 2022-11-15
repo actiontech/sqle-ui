@@ -21,13 +21,14 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { AuditTaskResV1SqlSourceEnum } from '../../../api/common.enum';
 import workflow from '../../../api/workflow';
-import { ICreateWorkflowV2Params } from '../../../api/workflow/index.d';
+import { ICreateWorkflowV1Params } from '../../../api/workflow/index.d';
 import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode, PageFormLayout } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { Theme } from '../../../types/theme.type';
 import EventEmitter from '../../../utils/EventEmitter';
 import { nameRule } from '../../../utils/FormRule';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import AuditResultCollection from '../AuditResult/AuditResultCollection';
 import useAuditOrder from '../hooks/useAuditOrder';
 import SqlInfoForm from './SqlInfoForm';
@@ -44,7 +45,7 @@ const CreateOrder = () => {
   const [visible, { setTrue: openModal, setFalse: closeModal }] = useBoolean();
   const [taskSqlNum, setTaskSqlNum] = useState<Map<string, number>>(new Map());
   useState<Map<number, string>>(new Map());
-
+  const { projectName } = useCurrentProjectName();
   const {
     taskInfos,
     auditOrderWithSameSql,
@@ -107,13 +108,14 @@ const CreateOrder = () => {
         return;
       }
       startCreate();
-      const createWorkflowParam: ICreateWorkflowV2Params = {
+      const createWorkflowParam: ICreateWorkflowV1Params = {
         task_ids: taskInfos.map((v) => v.task_id!),
         desc: values.describe,
         workflow_subject: values.name,
+        project_name: projectName,
       };
       workflow
-        .createWorkflowV2(createWorkflowParam)
+        .createWorkflowV1(createWorkflowParam)
         .then((res) => {
           if (res.data.code === ResponseCode.SUCCESS) {
             openModal();
@@ -227,6 +229,7 @@ const CreateOrder = () => {
               auditResultActiveKey={auditResultActiveKey}
               setAuditResultActiveKey={setAuditResultActiveKey}
               updateTaskRecordTotalNum={updateTaskRecordTotalNum}
+              projectName={projectName}
             />
           </EmptyBox>
           <Card className="text-align-right">

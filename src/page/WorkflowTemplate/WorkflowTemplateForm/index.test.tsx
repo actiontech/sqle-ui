@@ -1,6 +1,6 @@
 import { act, fireEvent, screen, waitFor } from '@testing-library/react';
 import WorkflowTemplateForm from '.';
-import { CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum } from '../../../api/common.enum';
+import { WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum } from '../../../api/common.enum';
 import EmitterKey from '../../../data/EmitterKey';
 import { getBySelector } from '../../../testUtils/customQuery';
 import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
@@ -61,7 +61,7 @@ describe('WorkflowTemplateForm', () => {
     expect(updateBaseInfoMock).toBeCalledWith({
       name: 'name1',
       allowSubmitWhenLessAuditLevel:
-        CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.warn,
+        WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.warn,
     });
     expect(screen.getByTestId('base-form')).toHaveAttribute('hidden');
     expect(screen.getByTestId('progress-config')).not.toHaveAttribute('hidden');

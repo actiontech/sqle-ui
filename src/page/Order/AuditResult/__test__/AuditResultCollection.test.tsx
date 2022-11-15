@@ -9,7 +9,7 @@ import {
   AuditTaskResV1SqlSourceEnum,
   AuditTaskResV1StatusEnum,
   GetWorkflowTasksItemV1StatusEnum,
-  WorkflowRecordResV2StatusEnum,
+  WorkflowDetailResV1StatusEnum,
 } from '../../../../api/common.enum';
 import task from '../../../../api/task';
 import workflow from '../../../../api/workflow';
@@ -243,7 +243,7 @@ describe('test AuditResultCollection', () => {
         updateTaskRecordTotalNum={jest.fn()}
         showOverview={true}
         workflowId={workflowId}
-        orderStatus={WorkflowRecordResV2StatusEnum.rejected}
+        orderStatus={WorkflowDetailResV1StatusEnum.rejected}
       />
     );
     await waitFor(() => {

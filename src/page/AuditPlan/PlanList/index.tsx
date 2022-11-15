@@ -15,6 +15,7 @@ import {
   updateAuditPlanModalStatus,
   updateSelectAuditPlan,
 } from '../../../store/auditPlan';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import PlanListModal from './Modal';
 import PlanListFilterForm from './PlanListFilterForm';
 import { PlanListFilterFormFields } from './PlanListFilterForm/index.type';
@@ -27,6 +28,8 @@ const PlanList = () => {
     removePending,
     { setTrue: startRemoveAuditPlan, setFalse: removeAuditPlanFinish },
   ] = useBoolean();
+
+  const { projectName } = useCurrentProjectName();
 
   const { pagination, tableChange, filterInfo, setFilterInfo } =
     useTable<PlanListFilterFormFields>();
@@ -42,12 +45,13 @@ const PlanList = () => {
     if (!ready) {
       already();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterInfo]);
 
   const { data, loading, refresh } = useRequest(
     () => {
       return audit_plan.getAuditPlansV1({
+        project_name: projectName,
         page_index: pagination.pageIndex,
         page_size: pagination.pageSize,
         ...filterInfo,
@@ -78,6 +82,7 @@ const PlanList = () => {
     audit_plan
       .deleteAuditPlanV1({
         audit_plan_name: auditPlanName,
+        project_name: projectName,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {

@@ -11,6 +11,7 @@ import { UpdateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum } from '..
 import workflow from '../../../api/workflow';
 import { IUpdateWorkflowTemplateV1Return } from '../../../api/workflow/index.d';
 import { ResponseCode } from '../../../data/common';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import WorkflowTemplateForm from '../WorkflowTemplateForm';
 import { BaseFormFields } from '../WorkflowTemplateForm/BaseForm/index.type';
 
@@ -21,6 +22,7 @@ const UpdateWorkflowTemplate = () => {
     useState<IWorkflowTemplateDetailResV1>();
   const urlParams = useParams<{ workflowName: string }>();
   const history = useHistory();
+  const { projectName } = useCurrentProjectName();
 
   const updateBaseInfo = (info: BaseFormFields) => {
     baseFormValue.current = info;
@@ -30,7 +32,7 @@ const UpdateWorkflowTemplate = () => {
     progressConfig: IWorkFlowStepTemplateReqV1[]
   ): Promise<AxiosResponse<IUpdateWorkflowTemplateV1Return>> => {
     return workflow.updateWorkflowTemplateV1({
-      workflow_template_name: urlParams.workflowName,
+      project_name: projectName,
       desc: baseFormValue.current?.desc,
       instance_name_list: baseFormValue.current?.instanceNameList,
       workflow_step_template_list: progressConfig,
@@ -43,7 +45,7 @@ const UpdateWorkflowTemplate = () => {
 
   const getWorkflowProgress = () => {
     workflow
-      .getWorkflowTemplateV1({ workflow_template_name: urlParams.workflowName })
+      .getWorkflowTemplateV1({ project_name: projectName })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           const temp = res.data.data;
@@ -81,6 +83,7 @@ const UpdateWorkflowTemplate = () => {
         defaultData={workflowTemplate}
         updateBaseInfo={updateBaseInfo}
         submitProgress={submitProgress}
+        projectName={projectName}
       >
         <Result
           status="success"

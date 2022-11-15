@@ -34,7 +34,7 @@ const UpdateMember: React.FC = () => {
     const values = await form.validateFields();
     const params: IUpdateMemberV1Params = {
       project_name: projectName,
-      is_owner: values.isOwner,
+      is_manager: values.isManager,
       roles: values.roles,
       user_name: values.username,
     };
@@ -70,7 +70,7 @@ const UpdateMember: React.FC = () => {
   useEffect(() => {
     if (modalVisibility) {
       form.setFieldsValue({
-        isOwner: selectMember?.is_owner,
+        isManager: selectMember?.is_manager,
         roles: selectMember?.roles,
         username: selectMember?.user_name,
       });
@@ -78,7 +78,7 @@ const UpdateMember: React.FC = () => {
   }, [
     form,
     modalVisibility,
-    selectMember?.is_owner,
+    selectMember?.is_manager,
     selectMember?.roles,
     selectMember?.user_name,
   ]);

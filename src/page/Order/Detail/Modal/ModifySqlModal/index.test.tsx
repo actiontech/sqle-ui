@@ -4,7 +4,7 @@ import { cloneDeep } from 'lodash';
 import ModifySqlModal from '.';
 import {
   AuditTaskResV1SqlSourceEnum,
-  WorkflowResV2ModeEnum,
+  WorkflowResV1ModeEnum,
 } from '../../../../../api/common.enum';
 import task from '../../../../../api/task';
 import { renderWithTheme } from '../../../../../testUtils/customRender';
@@ -46,7 +46,7 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
         visible={false}
         submit={jest.fn()}
         cancel={jest.fn()}
-        sqlMode={WorkflowResV2ModeEnum.same_sqls}
+        sqlMode={WorkflowResV1ModeEnum.same_sqls}
         currentOrderTasks={[taskInfo]}
       />
     );
@@ -58,7 +58,7 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
         visible={false}
         submit={jest.fn()}
         cancel={jest.fn()}
-        sqlMode={WorkflowResV2ModeEnum.different_sqls}
+        sqlMode={WorkflowResV1ModeEnum.different_sqls}
         currentOrderTasks={[taskInfo, taskInfoErrorAuditLevel]}
       />
     );
@@ -74,7 +74,7 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
         visible={false}
         submit={jest.fn()}
         cancel={jest.fn()}
-        sqlMode={WorkflowResV2ModeEnum.same_sqls}
+        sqlMode={WorkflowResV1ModeEnum.same_sqls}
         currentOrderTasks={[tempTask]}
       />
     );
@@ -85,7 +85,7 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
         visible={true}
         submit={jest.fn()}
         cancel={jest.fn()}
-        sqlMode={WorkflowResV2ModeEnum.same_sqls}
+        sqlMode={WorkflowResV1ModeEnum.same_sqls}
         currentOrderTasks={[tempTask]}
       />
     );
@@ -97,7 +97,7 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
         visible={true}
         submit={jest.fn()}
         cancel={jest.fn()}
-        sqlMode={WorkflowResV2ModeEnum.same_sqls}
+        sqlMode={WorkflowResV1ModeEnum.same_sqls}
         currentOrderTasks={[tempTask]}
       />
     );
@@ -109,7 +109,7 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
         visible={true}
         submit={jest.fn()}
         cancel={jest.fn()}
-        sqlMode={WorkflowResV2ModeEnum.same_sqls}
+        sqlMode={WorkflowResV1ModeEnum.same_sqls}
         currentOrderTasks={[tempTask]}
       />
     );
@@ -129,7 +129,7 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
         visible={true}
         submit={jest.fn()}
         cancel={jest.fn()}
-        sqlMode={WorkflowResV2ModeEnum.different_sqls}
+        sqlMode={WorkflowResV1ModeEnum.different_sqls}
         currentOrderTasks={[tempTask, taskInfoErrorAuditLevel]}
       />
     );
@@ -158,7 +158,7 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
         visible={true}
         submit={mockSubmit}
         cancel={jest.fn()}
-        sqlMode={WorkflowResV2ModeEnum.same_sqls}
+        sqlMode={WorkflowResV1ModeEnum.same_sqls}
         currentOrderTasks={[tempTask]}
       />
     );
@@ -212,7 +212,7 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
         visible={true}
         submit={mockSubmit}
         cancel={jest.fn()}
-        sqlMode={WorkflowResV2ModeEnum.different_sqls}
+        sqlMode={WorkflowResV1ModeEnum.different_sqls}
         currentOrderTasks={[tempTask, taskInfoErrorAuditLevel]}
       />
     );
@@ -319,7 +319,7 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
         visible={true}
         submit={mockSubmit}
         cancel={jest.fn()}
-        sqlMode={WorkflowResV2ModeEnum.same_sqls}
+        sqlMode={WorkflowResV1ModeEnum.same_sqls}
         currentOrderTasks={[tempTask]}
       />
     );
@@ -378,7 +378,7 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
         visible={true}
         submit={mockSubmit}
         cancel={jest.fn()}
-        sqlMode={WorkflowResV2ModeEnum.different_sqls}
+        sqlMode={WorkflowResV1ModeEnum.different_sqls}
         currentOrderTasks={[tempTask, taskInfoErrorAuditLevel]}
       />
     );
@@ -442,7 +442,7 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
         visible={true}
         submit={mockSubmit}
         cancel={mockCancel}
-        sqlMode={WorkflowResV2ModeEnum.different_sqls}
+        sqlMode={WorkflowResV1ModeEnum.different_sqls}
         currentOrderTasks={[taskInfoErrorAuditLevel]}
       />
     );

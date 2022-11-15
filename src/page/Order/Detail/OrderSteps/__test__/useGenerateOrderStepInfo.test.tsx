@@ -1,7 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import {
-  WorkflowRecordResV2StatusEnum,
+  WorkflowDetailResV1StatusEnum,
   WorkflowStepResV1TypeEnum,
 } from '../../../../../api/common.enum';
 import { mockUseSelector } from '../../../../../testUtils/mockRedux';
@@ -91,7 +91,7 @@ describe('test useGenerateOrderStepInfo', () => {
 
     rerender({
       ...defaultProps,
-      currentOrderStatus: WorkflowRecordResV2StatusEnum.executing,
+      currentOrderStatus: WorkflowDetailResV1StatusEnum.executing,
     });
     expect(
       result.current.generateTimeLineIcon(stepList[2]).icon
@@ -157,7 +157,7 @@ describe('test useGenerateOrderStepInfo', () => {
 
     rerender({
       ...defaultProps,
-      currentOrderStatus: WorkflowRecordResV2StatusEnum.canceled,
+      currentOrderStatus: WorkflowDetailResV1StatusEnum.canceled,
     });
     const alreadyClosed = result.current.generateActionNode(
       otherStepList[1],
@@ -176,7 +176,7 @@ describe('test useGenerateOrderStepInfo', () => {
 
     rerender({
       ...defaultProps,
-      currentOrderStatus: WorkflowRecordResV2StatusEnum.rejected,
+      currentOrderStatus: WorkflowDetailResV1StatusEnum.rejected,
     });
     const alreadyRejected = result.current.generateActionNode(
       otherStepList[1],

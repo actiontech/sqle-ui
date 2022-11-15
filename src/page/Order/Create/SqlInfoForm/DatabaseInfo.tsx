@@ -3,7 +3,7 @@ import { Button, Col, Form, Row, Select } from 'antd';
 import { cloneDeep } from 'lodash';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { WorkflowResV2ModeEnum } from '../../../../api/common.enum';
+import { WorkflowResV1ModeEnum } from '../../../../api/common.enum';
 import instance from '../../../../api/instance';
 import EmptyBox from '../../../../components/EmptyBox';
 import { ResponseCode } from '../../../../data/common';
@@ -47,7 +47,7 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
         filter_workflow_template_id:
           currentInstance.workflow_template_id?.toString(),
         filter_db_type:
-          currentSqlMode === WorkflowResV2ModeEnum.same_sqls
+          currentSqlMode === WorkflowResV1ModeEnum.same_sqls
             ? currentInstance?.instance_type
             : undefined,
         project_name: projectName,

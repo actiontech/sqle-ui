@@ -89,7 +89,7 @@ describe('test AddMember', () => {
       project_name: projectName,
       roles: [{ instance_name: 'instance1', role_names: ['role_name1'] }],
       user_name: 'name',
-      is_owner: true,
+      is_manager: true,
     });
 
     await waitFor(() => {

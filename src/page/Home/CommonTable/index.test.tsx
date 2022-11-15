@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import { IWorkflowDetailResV2 } from '../../../api/common';
+import { IWorkflowDetailResV1 } from '../../../api/common';
 import CommonTable, { CommonTableInfoType, genTabPaneTitle } from './index';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import { TableColumn } from '../../../types/common.type';
 
-const list: IWorkflowDetailResV2[] = [
+const list: IWorkflowDetailResV1[] = [
   {
     subject: 'test1',
     desc: 'desc1',

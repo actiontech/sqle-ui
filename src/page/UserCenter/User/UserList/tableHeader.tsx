@@ -1,7 +1,7 @@
 import { DownOutlined } from '@ant-design/icons';
 import { Divider, Dropdown, Menu, Popconfirm, Space, Typography } from 'antd';
 import { orderBy } from 'lodash';
-import { IManagementPermission, IUserResV1 } from '../../../../api/common';
+import { IManagementPermissionResV1, IUserResV1 } from '../../../../api/common';
 import EmptyBox from '../../../../components/EmptyBox';
 import { LoginTypeEnum } from '../../../../data/common';
 import i18n from '../../../../locale';
@@ -52,7 +52,7 @@ const tableHeaderFactory = (
     {
       dataIndex: 'management_permission_list',
       title: () => i18n.t('user.table.operation'),
-      render: (list: IManagementPermission[]) => {
+      render: (list: IManagementPermissionResV1[]) => {
         if (!Array.isArray(list)) {
           return '';
         }

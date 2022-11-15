@@ -1,10 +1,10 @@
 import { useBoolean } from 'ahooks';
 import { useCallback } from 'react';
-import { WorkflowResV2ModeEnum } from '../../../../api/common.enum';
+import { WorkflowResV1ModeEnum } from '../../../../api/common.enum';
 import { SqlInfoFormFields } from '../../Create/SqlInfoForm/index.type';
 import useAuditOrder from '../../hooks/useAuditOrder';
 
-const useModifySql = (sqlMode: WorkflowResV2ModeEnum) => {
+const useModifySql = (sqlMode: WorkflowResV1ModeEnum) => {
   const [
     modifySqlModalVisibility,
     { setTrue: openModifySqlModal, setFalse: closeModifySqlModal },
@@ -28,7 +28,7 @@ const useModifySql = (sqlMode: WorkflowResV2ModeEnum) => {
       currentTabIndex: number,
       currentTabKey: string
     ) => {
-      if (sqlMode === WorkflowResV2ModeEnum.same_sqls) {
+      if (sqlMode === WorkflowResV1ModeEnum.same_sqls) {
         auditOrderWithSameSql(values);
         closeModifySqlModal();
       } else {

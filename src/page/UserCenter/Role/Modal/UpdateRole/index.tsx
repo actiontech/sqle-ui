@@ -11,7 +11,7 @@ import { updateUserManageModalStatus } from '../../../../../store/userManage';
 import role from '../../../../../api/role';
 import { ResponseCode } from '../../../../../data/common';
 import { useBoolean } from 'ahooks';
-import { IRoleResV2 } from '../../../../../api/common';
+import { IRoleResV1 } from '../../../../../api/common';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import EmitterKey from '../../../../../data/EmitterKey';
 import useOperation from '../../../../../hooks/useOperation';
@@ -27,7 +27,7 @@ const UpdateRole = () => {
   const visible = useSelector<IReduxState, boolean>(
     (state) => !!state.userManage.modalStatus[ModalName.Update_Role]
   );
-  const currentRole = useSelector<IReduxState, IRoleResV2 | null>(
+  const currentRole = useSelector<IReduxState, IRoleResV1 | null>(
     (state) => state.userManage.selectRole
   );
 

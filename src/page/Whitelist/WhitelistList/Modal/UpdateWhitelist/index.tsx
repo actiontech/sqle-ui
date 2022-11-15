@@ -16,6 +16,7 @@ import { ModalName } from '../../../../../data/ModalName';
 import { IReduxState } from '../../../../../store';
 import { updateWhitelistModalStatus } from '../../../../../store/whitelist';
 import EventEmitter from '../../../../../utils/EventEmitter';
+import { useCurrentProjectName } from '../../../../ProjectManage/ProjectDetail';
 import WhitelistForm from '../../../WhitelistForm';
 import { WhitelistFormFields } from '../../../WhitelistForm/index.type';
 
@@ -25,6 +26,7 @@ const UpdateWhitelist = () => {
   const visible = useSelector<IReduxState, boolean>(
     (state) => !!state.whitelist.modalStatus[ModalName.Update_Whitelist]
   );
+  const { projectName } = useCurrentProjectName();
   const currentWhitelist = useSelector<
     IReduxState,
     IAuditWhitelistResV1 | null
@@ -48,6 +50,7 @@ const UpdateWhitelist = () => {
     startCreate();
     auditWhitelist
       .UpdateAuditWhitelistByIdV1({
+        project_name: projectName,
         audit_whitelist_id: `${currentWhitelist?.audit_whitelist_id}`,
         value: values.sql,
         desc: values.desc,
@@ -69,6 +72,7 @@ const UpdateWhitelist = () => {
     createFinish,
     currentWhitelist?.audit_whitelist_id,
     form,
+    projectName,
     startCreate,
   ]);
 

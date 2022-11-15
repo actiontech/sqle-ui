@@ -3,7 +3,7 @@ import { resolveThreeSecond } from '../../../../testUtils/mockRequest';
 
 export const mockMemberList = [
   {
-    is_owner: false,
+    is_manager: false,
     user_name: 'test',
     roles: [
       {

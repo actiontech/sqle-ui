@@ -8,7 +8,7 @@ import {
 import { renderHook, act } from '@testing-library/react-hooks';
 import { Select } from 'antd';
 import useManagerPermission from '.';
-import { IManagementPermission } from '../../api/common';
+import { IManagementPermissionResV1 } from '../../api/common';
 import management_permission from '../../api/management_permission';
 import {
   resolveErrorThreeSecond,
@@ -24,7 +24,7 @@ describe('test useManagerPermission', () => {
     jest.useRealTimers();
   });
 
-  const managerPermissionList: IManagementPermission[] = [
+  const managerPermissionList: IManagementPermissionResV1[] = [
     { code: 20100, desc: '创建项目' },
     { code: 20150, desc: '修改项目' },
     { code: 20400, desc: '删除项目' },

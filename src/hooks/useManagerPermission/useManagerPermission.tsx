@@ -1,13 +1,13 @@
 import { useCallback, useState } from 'react';
 import { useBoolean } from 'ahooks';
-import { IManagementPermission } from '../../api/common';
+import { IManagementPermissionResV1 } from '../../api/common';
 import { ResponseCode } from '../../data/common';
 import { Select } from 'antd';
 import management_permission from '../../api/management_permission';
 
 const useManagerPermission = () => {
   const [managerPermissionList, setManagerPermissionList] = useState<
-    IManagementPermission[]
+    IManagementPermissionResV1[]
   >([]);
   const [loading, { setTrue, setFalse }] = useBoolean();
 

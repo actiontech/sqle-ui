@@ -10,7 +10,6 @@ import {
 import {
   mockUseRole,
   mockUseRuleTemplate,
-  mockUseWorkflowTemplate,
   mockDriver,
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
@@ -22,7 +21,6 @@ describe('AddDataSource', () => {
     jest.useFakeTimers();
     mockUseRuleTemplate();
     mockUseRole();
-    mockUseWorkflowTemplate();
     mockGetDataSourceMetas();
     mockDriver();
   });
