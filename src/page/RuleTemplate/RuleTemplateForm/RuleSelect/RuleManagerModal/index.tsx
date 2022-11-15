@@ -142,6 +142,7 @@ const RuleManagerModal: React.FC<RuleManagerFormProps> = (props) => {
             </Select>
           </Form.Item>
 
+          {/* todo Rewrite using BackendForm */}
           {props.ruleData?.params &&
             props.ruleData?.params.map((item) => {
               if (item.type === RuleParamResV1TypeEnum.bool) {
