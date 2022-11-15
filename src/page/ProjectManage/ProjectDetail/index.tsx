@@ -13,6 +13,7 @@ export type ProjectDetailCustomLinkState = {
   projectName: string;
 };
 
+//todo 后续需要换个方式实现当前项目名称的保存与获取.
 export const useCurrentProjectName = () => {
   const location = useLocation<ProjectDetailCustomLinkState>();
   return { projectName: location.state?.projectName ?? '' };
