@@ -14,6 +14,7 @@ import { useForm } from 'antd/lib/form/Form';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { IProjectRuleTemplateResV1 } from '../../../../../api/common';
 import ruleTemplate from '../../../../../api/rule_template';
 import { ModalFormLayout, ResponseCode } from '../../../../../data/common';
@@ -24,10 +25,7 @@ import { IReduxState } from '../../../../../store';
 import { updateRuleTemplateListModalStatus } from '../../../../../store/ruleTemplate';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import { nameRule } from '../../../../../utils/FormRule';
-import {
-  CustomLink,
-  useCurrentProjectName,
-} from '../../../../ProjectManage/ProjectDetail';
+import { useCurrentProjectName } from '../../../../ProjectManage/ProjectDetail';
 import { CloneRuleTemplateFormFields } from './index.type';
 
 const CloneRuleTemplateModal = () => {
@@ -104,13 +102,12 @@ const CloneRuleTemplateModal = () => {
         <Row>
           <Col offset={2}>
             {t('ruleTemplate.cloneRuleTemplate.currentTemplateTips')}
-            <CustomLink
+            <Link
               target="_blank"
-              to={`/rule/template/update/${currentRuleTemplate?.rule_template_name}`}
-              projectName={projectName}
+              to={`/project/${projectName}/rule/template/update/${currentRuleTemplate?.rule_template_name}`}
             >
               {currentRuleTemplate?.rule_template_name}
-            </CustomLink>
+            </Link>
           </Col>
           <Col offset={2}>
             <Typography.Text type="secondary">

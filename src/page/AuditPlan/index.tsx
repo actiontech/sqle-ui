@@ -15,13 +15,20 @@ const AuditPlan = () => {
 
       <section className="padding-content">
         <Switch>
-          <Route path="/auditPlan" exact={true} component={PlanList} />
-          <Route path="/auditPlan/create" component={CreateAuditPlan} />
           <Route
-            path="/auditPlan/update/:auditPlanName"
+            path={`/project/:projectName/auditPlan`}
+            exact={true}
+            component={PlanList}
+          />
+          <Route
+            path={`/project/:projectName/auditPlan/create`}
+            component={CreateAuditPlan}
+          />
+          <Route
+            path={`/project/:projectName/auditPlan/update/:auditPlanName`}
             component={UpdateAuditPlan}
           />
-          <Redirect to={{ pathname: '/auditPlan' }} />
+          <Redirect to={`/project/:projectName/auditPlan`} />
         </Switch>
       </section>
     </>

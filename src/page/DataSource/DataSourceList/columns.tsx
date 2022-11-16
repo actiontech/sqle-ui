@@ -1,10 +1,10 @@
 import { DownOutlined } from '@ant-design/icons';
 import { Button, Divider, Dropdown, Menu, Popconfirm, Tag } from 'antd';
+import { Link } from 'react-router-dom';
 import { IInstanceResV1 } from '../../../api/common';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import { timeAddZero } from '../../../utils/Common';
-import { CustomLink } from '../../ProjectManage/ProjectDetail';
 
 export const dataSourceColumns = (
   deleteDatabase: (instanceName: string) => void,
@@ -54,12 +54,11 @@ export const dataSourceColumns = (
       render: (_, record) => {
         return (
           <>
-            <CustomLink
-              to={`/data/update/${record.instance_name}`}
-              projectName={projectName}
+            <Link
+              to={`/project/${projectName}/data/update/${record.instance_name}`}
             >
               <Button type="link">{i18n.t('common.edit')}</Button>
-            </CustomLink>
+            </Link>
             <Divider type="vertical" />
             <Popconfirm
               title={i18n.t('dataSource.deleteDatabase.confirmMessage', {

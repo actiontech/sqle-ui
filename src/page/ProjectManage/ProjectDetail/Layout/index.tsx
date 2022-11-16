@@ -1,6 +1,7 @@
 import { Menu } from 'antd';
 import { ReactNode } from 'react';
-import { CustomLink, ProjectDetailCustomLinkState } from '..';
+import { Link } from 'react-router-dom';
+import { ProjectDetailUrlParamType } from '..';
 import { SystemRole } from '../../../../data/common';
 import i18n from '../../../../locale';
 import {
@@ -11,7 +12,7 @@ import ProjectDetailLayout from './Layout';
 
 export type ProjectDetailLayoutProps = {
   children: ReactNode;
-} & ProjectDetailCustomLinkState;
+} & ProjectDetailUrlParamType;
 
 export const generateNavigateMenu = (
   config: Array<
@@ -41,13 +42,9 @@ export const generateNavigateMenu = (
 
     return (
       <Menu.Item key={route.key} icon={route.icon}>
-        <CustomLink
-          to={route.path as string}
-          search={route.search}
-          projectName={projectName}
-        >
+        <Link to={(route.path as string).replace(':projectName', projectName)}>
           {route.labelWithoutI18n ?? i18n.t(route.label)}
-        </CustomLink>
+        </Link>
       </Menu.Item>
     );
   });

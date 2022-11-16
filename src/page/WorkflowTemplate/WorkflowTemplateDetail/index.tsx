@@ -12,13 +12,11 @@ import {
 } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { IWorkFlowStepTemplateResV1 } from '../../../api/common';
 import workflow from '../../../api/workflow';
 import { Theme } from '../../../types/theme.type';
-import {
-  CustomLink,
-  useCurrentProjectName,
-} from '../../ProjectManage/ProjectDetail';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 
 const WorkflowTemplateDetail = () => {
   const { t } = useTranslation();
@@ -87,14 +85,13 @@ const WorkflowTemplateDetail = () => {
               {workflowTemplate?.instance_name_list?.join(',') ?? '--'}
             </Descriptions.Item>
           </Descriptions>
-          <CustomLink
-            to={`/progress/update/${workflowTemplate?.workflow_template_name}`}
-            projectName={projectName}
+          <Link
+            to={`/project/${projectName}/progress/update/${workflowTemplate?.workflow_template_name}`}
           >
             <Button type="primary">
               {t('workflowTemplate.detail.updateTemplate')}
             </Button>
-          </CustomLink>
+          </Link>
         </Col>
         <Col span={12}>
           <Typography.Title level={5}>

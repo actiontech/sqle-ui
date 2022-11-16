@@ -9,10 +9,8 @@ import { dataSourceColumns } from './columns';
 import DataSourceListFilterForm from './DataSourceListFilterForm';
 import { DataSourceListFilterFields } from './DataSourceListFilterForm/index.type';
 import useTable from '../../../hooks/useTable';
-import {
-  CustomLink,
-  useCurrentProjectName,
-} from '../../ProjectManage/ProjectDetail';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
+import { Link } from 'react-router-dom';
 
 const DataSourceList = () => {
   const { t } = useTranslation();
@@ -108,9 +106,9 @@ const DataSourceList = () => {
         </Space>
       }
       extra={
-        <CustomLink to="/data/create" projectName={projectName}>
+        <Link to={`/project/${projectName}/data/create`}>
           <Button type="primary">{t('dataSource.addDatabase')}</Button>
-        </CustomLink>
+        </Link>
       }
     >
       <DataSourceListFilterForm submit={setFilterInfo} />
