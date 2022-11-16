@@ -11,13 +11,14 @@ import EmitterKey from '../../../../../data/EmitterKey';
 import { formatTime } from '../../../../../utils/Common';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import { floatToPercent } from '../../../../../utils/Math';
+import { useCurrentProjectName } from '../../../../ProjectManage/ProjectDetail';
 
 const PlanAuditRecord: React.FC<{
   auditPlanName: string;
   projectName: string;
 }> = (props) => {
   const { t } = useTranslation();
-
+  const { projectName } = useCurrentProjectName();
   const [pagination, setPagination] = useState({ pageIndex: 1, pageSize: 10 });
 
   const { data, loading, refresh } = useRequest(
@@ -109,7 +110,7 @@ const PlanAuditRecord: React.FC<{
               }
               title={
                 <Link
-                  to={`/auditPlan/detail/${props.auditPlanName}/report/${item.audit_plan_report_id}`}
+                  to={`/project/${projectName}/auditPlan/detail/${props.auditPlanName}/report/${item.audit_plan_report_id}`}
                 >
                   <span className="text-blue">
                     {`${t('auditPlan.record.generateTime')}${formatTime(

@@ -135,14 +135,17 @@ const PlanList = () => {
         </Space>
       }
       extra={[
-        <Link key="create-audit-plan" to="/auditPlan/create">
+        <Link
+          key="create-audit-plan"
+          to={`/project/${projectName}/auditPlan/create`}
+        >
           <Button type="primary">{t('auditPlan.action.create')}</Button>
         </Link>,
       ]}
     >
       <PlanListFilterForm submit={setFilterInfo} />
       <Table
-        columns={planListTableHeader(removeAuditPlan, openModal)}
+        columns={planListTableHeader(removeAuditPlan, openModal, projectName)}
         dataSource={data?.list ?? []}
         rowKey="audit_plan_name"
         pagination={{
@@ -152,7 +155,10 @@ const PlanList = () => {
         loading={loading}
         onRow={(record) => ({
           onClick: () => {
-            history.push(`/auditPlan/detail/${record.audit_plan_name}`);
+            history.push(
+              `/project/${projectName}/auditPlan/detail/${record.audit_plan_name}`,
+              projectName
+            );
           },
         })}
         onChange={tableChange}

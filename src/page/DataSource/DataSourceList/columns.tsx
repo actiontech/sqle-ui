@@ -8,7 +8,8 @@ import { timeAddZero } from '../../../utils/Common';
 
 export const dataSourceColumns = (
   deleteDatabase: (instanceName: string) => void,
-  testDatabaseConnection: (instanceName: string) => void
+  testDatabaseConnection: (instanceName: string) => void,
+  projectName: string
 ): TableColumn<IInstanceResV1, 'operate' | 'address' | 'connect'> => {
   return [
     {
@@ -53,7 +54,9 @@ export const dataSourceColumns = (
       render: (_, record) => {
         return (
           <>
-            <Link to={`/data/update/${record.instance_name}`}>
+            <Link
+              to={`/project/${projectName}/data/update/${record.instance_name}`}
+            >
               <Button type="link">{i18n.t('common.edit')}</Button>
             </Link>
             <Divider type="vertical" />

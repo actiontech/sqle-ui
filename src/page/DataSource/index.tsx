@@ -16,13 +16,20 @@ const DataSource = () => {
       </PageHeader>
       <section className="padding-content">
         <Switch>
-          <Route path="/data" exact={true} component={DataSourceList} />
-          <Route path="/data/create" component={AddDataSource} />
           <Route
-            path="/data/update/:instanceName"
+            path="/project/:projectName/data"
+            exact={true}
+            component={DataSourceList}
+          />
+          <Route
+            path="/project/:projectName/data/create"
+            component={AddDataSource}
+          />
+          <Route
+            path="/project/:projectName/data/update/:instanceName"
             component={UpdateDataSource}
           />
-          <Redirect to="/data" />
+          <Redirect to="/project/:projectName/data" />
         </Switch>
       </section>
     </article>

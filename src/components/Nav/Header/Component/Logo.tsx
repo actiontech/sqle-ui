@@ -5,7 +5,7 @@ import logo from '../../../../assets/img/logo.png';
 const Logo: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <Link to="/dashboard">
+    <Link to="/">
       <div className="sqle-nav-title">
         <img src={logo} alt="" />
         {/* IFTRUE_isCE */}

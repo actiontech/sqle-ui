@@ -165,7 +165,7 @@ export const unAuthRouter: Array<RouteProps & { key: string }> = [
 
 export const globalRouterConfig: RouterItem<GlobalRouterItemKeyLiteral>[] = [
   {
-    path: '/dashboard',
+    path: '/',
     exact: true,
     label: 'menu.dashboard',
     component: Home,
@@ -235,7 +235,7 @@ export const globalRouterConfig: RouterItem<GlobalRouterItemKeyLiteral>[] = [
     ],
   },
   {
-    path: '/global/rule/template',
+    path: '/rule/template',
     key: 'globalRuleTemplate',
     label: 'menu.ruleTemplate',
     icon: <AuditOutlined />,
@@ -261,7 +261,7 @@ export const globalRouterConfig: RouterItem<GlobalRouterItemKeyLiteral>[] = [
     label: 'menu.projectManage',
     key: 'projectDetail',
     icon: <ProjectOutlined />,
-    path: '/',
+    path: '/project/:projectName',
     component: ProjectDetail,
   },
 ];
@@ -274,7 +274,7 @@ export const projectDetailRouterConfig: RouterItem<ProjectDetailRouterItemKeyLit
       icon: <ConsoleSqlOutlined />,
       components: [
         {
-          path: '/order',
+          path: '/project/:projectName/order',
           exact: true,
           label: 'menu.orderList',
           icon: <BarsOutlined />,
@@ -282,7 +282,7 @@ export const projectDetailRouterConfig: RouterItem<ProjectDetailRouterItemKeyLit
           key: 'orderList',
         },
         {
-          path: '/order/create',
+          path: '/project/:projectName/order/create',
           exact: true,
           label: 'menu.workflow',
           component: CreateOrder,
@@ -291,7 +291,7 @@ export const projectDetailRouterConfig: RouterItem<ProjectDetailRouterItemKeyLit
           hideInSliderMenu: true,
         },
         {
-          path: '/order/:orderId',
+          path: '/project/:projectName/order/:orderId',
           exact: true,
           label: 'menu.orderDetail',
           hideInSliderMenu: true,
@@ -300,7 +300,7 @@ export const projectDetailRouterConfig: RouterItem<ProjectDetailRouterItemKeyLit
         },
         /* IFTRUE_isEE */
         {
-          path: '/order/:taskId/:sqlNum/analyze',
+          path: '/project/:projectName/order/:taskId/:sqlNum/analyze',
           exact: true,
           label: 'menu.orderSqlAnalyze',
           hideInSliderMenu: true,
@@ -316,7 +316,7 @@ export const projectDetailRouterConfig: RouterItem<ProjectDetailRouterItemKeyLit
       icon: <CiCircleOutlined />,
       components: [
         {
-          path: '/auditPlan/detail/:auditPlanName',
+          path: '/project/:projectName/auditPlan/detail/:auditPlanName',
           key: 'auditPlanDetail',
           label: 'menu.auditPlane',
           hideInSliderMenu: true,
@@ -324,7 +324,7 @@ export const projectDetailRouterConfig: RouterItem<ProjectDetailRouterItemKeyLit
         },
         /* IFTRUE_isEE */
         {
-          path: '/auditPlan/:reportId/:sqlNum/analyze',
+          path: '/project/:projectName/auditPlan/:reportId/:sqlNum/analyze',
           key: 'auditPlanDetail',
           exact: true,
           label: 'menu.auditPlanSqlAnalyze',
@@ -333,7 +333,7 @@ export const projectDetailRouterConfig: RouterItem<ProjectDetailRouterItemKeyLit
         },
         /* FITRUE_isEE */
         {
-          path: '/auditPlan',
+          path: '/project/:projectName/auditPlan',
           key: 'auditPlan',
           label: 'menu.auditPlaneList',
           component: AuditPlan,
@@ -341,28 +341,28 @@ export const projectDetailRouterConfig: RouterItem<ProjectDetailRouterItemKeyLit
       ],
     },
     {
-      path: '/data',
+      path: '/project/:projectName/data',
       key: 'data',
       label: 'menu.dataSource',
       icon: <DatabaseOutlined />,
       component: DataSource,
     },
     {
-      path: '/member',
+      path: '/project/:projectName/member',
       key: 'member',
       label: 'menu.member',
       icon: <UserOutlined />,
       component: Member,
     },
     {
-      path: '/rule/template',
+      path: '/project/:projectName/rule/template',
       key: 'ruleTemplate',
       label: 'menu.ruleTemplate',
       icon: <AuditOutlined />,
       component: RuleTemplate,
     },
     {
-      path: '/progress',
+      path: '/project/:projectName/progress',
       key: 'progress',
       label: 'menu.progressManage',
       icon: <NodeIndexOutlined />,
@@ -370,7 +370,7 @@ export const projectDetailRouterConfig: RouterItem<ProjectDetailRouterItemKeyLit
     },
     /* IFTRUE_isEE */
     {
-      path: '/whitelist',
+      path: '/project/:projectName/whitelist',
       key: 'Whitelist',
       label: 'menu.whitelist',
       component: Whitelist,

@@ -60,7 +60,7 @@ const UpdateDataSource = () => {
             name: values.name,
           })
         );
-        history.replace('/data');
+        history.replace(`/project/${projectName}/data`);
       }
     });
   };

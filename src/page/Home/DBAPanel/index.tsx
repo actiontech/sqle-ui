@@ -1,14 +1,12 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
-import { Button, Card, Tabs, TabsProps } from 'antd';
+import { Card, Space, Tabs, TabsProps, Typography } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import workflow from '../../../api/workflow';
 import { getGlobalWorkflowsV1FilterStatusEnum } from '../../../api/workflow/index.enum';
 import { IReduxState } from '../../../store';
-import { OrderListUrlParamsKey } from '../../Order/List/index.data';
 import CommonTable, {
   DASHBOARD_COMMON_GET_ORDER_NUMBER,
   genTabPaneTitle,
@@ -27,7 +25,6 @@ const DBAPanel: React.FC<IDBAPanelProps> = ({
   const username = useSelector<IReduxState, string>(
     (state) => state.user.username
   );
-  const history = useHistory();
   const [currentActiveKey, setCurrentActiveKey] = useState<tabsKeyEnum>(
     tabsKeyEnum.needMeReview
   );
@@ -69,24 +66,6 @@ const DBAPanel: React.FC<IDBAPanelProps> = ({
     }
   );
 
-  const showAllWithNeedMeReview = () => {
-    history.push(
-      `/order?${OrderListUrlParamsKey.currentStepAssignee}=${username}&${OrderListUrlParamsKey.status}=${getGlobalWorkflowsV1FilterStatusEnum.wait_for_audit}`
-    );
-  };
-  const showAllWithNeedMeExec = () => {
-    //todo
-
-    history.push(
-      `order?${OrderListUrlParamsKey.currentStepAssignee}=${username}&${OrderListUrlParamsKey.status}=${getGlobalWorkflowsV1FilterStatusEnum.wait_for_execution}`
-    );
-  };
-
-  const genShowAllMap = new Map<tabsKeyEnum, () => void>([
-    [tabsKeyEnum.needMeReview, showAllWithNeedMeReview],
-    [tabsKeyEnum.needMeExec, showAllWithNeedMeExec],
-  ]);
-
   const tableLoading =
     needMeExecResponse.loading || needMeReviewResponse.loading;
 
@@ -103,6 +82,7 @@ const DBAPanel: React.FC<IDBAPanelProps> = ({
   return (
     <Card className="full-width-element">
       <Tabs
+        animated={true}
         size="small"
         type="card"
         onChange={handleChangeTabs}
@@ -114,20 +94,18 @@ const DBAPanel: React.FC<IDBAPanelProps> = ({
             </span>
           ),
           right: (
-            <>
+            <Space>
+              <Typography.Text>
+                {t('dashboard.tableLimitTips', {
+                  number: DASHBOARD_COMMON_GET_ORDER_NUMBER,
+                })}
+              </Typography.Text>
               <SyncOutlined
                 data-testid="refreshTable"
                 spin={tableLoading}
                 onClick={refreshTable}
               />
-              <Button
-                type="link"
-                onClick={genShowAllMap.get(currentActiveKey)}
-                style={{ padding: 0, marginLeft: 10 }}
-              >
-                {t('common.more')}
-              </Button>
-            </>
+            </Space>
           ),
         }}
       >

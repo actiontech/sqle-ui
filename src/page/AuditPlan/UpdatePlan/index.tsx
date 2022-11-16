@@ -79,7 +79,7 @@ const UpdateAuditPlan = () => {
           status="success"
           title={t('auditPlan.update.successTitle')}
           subTitle={
-            <Link to="/auditPlan">
+            <Link to={`/project/${projectName}/auditPlan`}>
               {t('auditPlan.update.successGuide')} {'>'}
             </Link>
           }

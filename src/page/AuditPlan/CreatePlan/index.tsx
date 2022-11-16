@@ -58,7 +58,7 @@ const CreateAuditPlan = () => {
           status="success"
           title={t('auditPlan.create.successTitle')}
           subTitle={
-            <Link to="/auditPlan">
+            <Link to={`/projectName/${projectName}/auditPlan`}>
               {t('auditPlan.create.successGuide')} {'>'}
             </Link>
           }

@@ -141,7 +141,10 @@ const RuleTemplateList = () => {
           </Space>
         }
         extra={[
-          <Link to="/rule/template/create" key="createRuleTemplate">
+          <Link
+            to={`/project/${projectName}/rule/template/create`}
+            key="createRuleTemplate"
+          >
             <EmptyBox if={isAdmin}>
               <Button type="primary">
                 {t('ruleTemplate.createRuleTemplate.button')}
@@ -163,7 +166,8 @@ const RuleTemplateList = () => {
           columns={RuleTemplateListTableColumnFactory(
             deleteTemplate,
             openCloneRuleTemplateModal,
-            isAdmin
+            isAdmin,
+            projectName
           )}
         />
       </Card>

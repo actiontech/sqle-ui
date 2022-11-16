@@ -16,7 +16,8 @@ import { TableColumn } from '../../../types/common.type';
 export const RuleTemplateListTableColumnFactory = (
   deleteTemplate: (name: string) => void,
   openCloneRuleTemplateModal: (rowData: IProjectRuleTemplateResV1) => void,
-  isAdmin: boolean
+  isAdmin: boolean,
+  projectName: string
 ): TableColumn<IProjectRuleTemplateResV1, 'operator'> => {
   const columns: TableColumn<IProjectRuleTemplateResV1, 'operator'> = [
     {
@@ -48,7 +49,9 @@ export const RuleTemplateListTableColumnFactory = (
       render: (_, record) => {
         return (
           <Space className="user-cell flex-end-horizontal">
-            <Link to={`/rule/template/update/${record.rule_template_name}`}>
+            <Link
+              to={`/project/${projectName}/rule/template/update/${record.rule_template_name}`}
+            >
               {i18n.t('common.edit')}
             </Link>
             <Divider type="vertical" />

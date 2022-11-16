@@ -2,7 +2,6 @@ import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Col, Form, Row, Select } from 'antd';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import EmptyBox from '../../../components/EmptyBox';
 import useInstance from '../../../hooks/useInstance';
 import useRole from '../../../hooks/useRole';
 
@@ -16,7 +15,7 @@ const RoleSelector: React.FC<{ projectName: string }> = ({ projectName }) => {
   }, [projectName, updateInstanceList, updateRoleList]);
 
   return (
-    <Form.List name="roles" initialValue={[{}]}>
+    <Form.List name="roles" initialValue={[]}>
       {(fields, { add, remove }) => (
         <>
           {fields.map((field, index) => (
@@ -34,6 +33,7 @@ const RoleSelector: React.FC<{ projectName: string }> = ({ projectName }) => {
                   label={t('member.roleSelector.role')}
                   {...field}
                   name={[field.name, 'role_names']}
+                  rules={[{ required: true }]}
                 >
                   <Select<string>
                     mode="multiple"
@@ -69,6 +69,7 @@ const RoleSelector: React.FC<{ projectName: string }> = ({ projectName }) => {
                       {...field}
                       name={[field.name, 'instance_name']}
                       label={t('member.roleSelector.instance')}
+                      rules={[{ required: true }]}
                     >
                       <Select
                         placeholder={t('common.form.placeholder.select', {
@@ -85,15 +86,13 @@ const RoleSelector: React.FC<{ projectName: string }> = ({ projectName }) => {
               </Col>
 
               <Col span={1}>
-                <EmptyBox if={index !== 0}>
-                  <MinusCircleOutlined
-                    data-testid="remove-item"
-                    style={{ marginTop: 8 }}
-                    onClick={() => {
-                      remove(index);
-                    }}
-                  />
-                </EmptyBox>
+                <MinusCircleOutlined
+                  data-testid="remove-item"
+                  style={{ marginTop: 8 }}
+                  onClick={() => {
+                    remove(index);
+                  }}
+                />
               </Col>
             </Row>
           ))}
@@ -106,7 +105,7 @@ const RoleSelector: React.FC<{ projectName: string }> = ({ projectName }) => {
               block
               icon={<PlusOutlined />}
             >
-              {t('common.add')}
+              {t('member.roleSelector.addRole')}
             </Button>
           </Form.Item>
         </>

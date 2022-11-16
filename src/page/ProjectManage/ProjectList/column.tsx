@@ -1,26 +1,19 @@
 import { Divider, Popconfirm, Space, Typography } from 'antd';
+import { Link } from 'react-router-dom';
 import { IProjectListItem } from '../../../api/common';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 
 export const ProjectListTableColumnFactory = (
   deleteAction: (name?: string) => void,
-  openModalAndUpdateSelectProject: (record: IProjectListItem) => void,
-  jumpToProjectDetailAndUpdateSelectProject: (record: IProjectListItem) => void
+  openModalAndUpdateSelectProject: (record: IProjectListItem) => void
 ): TableColumn<IProjectListItem, 'operator'> => {
   return [
     {
       dataIndex: 'name',
       title: () => i18n.t('projectManage.projectList.column.name'),
-      render(name: string, record) {
-        return (
-          <Typography.Link
-            className="pointer"
-            onClick={() => jumpToProjectDetailAndUpdateSelectProject(record)}
-          >
-            {name}
-          </Typography.Link>
-        );
+      render(name: string) {
+        return <Link to={`/project/${name}`}>{name}</Link>;
       },
     },
     {

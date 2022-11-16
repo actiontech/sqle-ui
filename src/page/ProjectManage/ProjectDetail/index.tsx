@@ -1,12 +1,18 @@
-import { useSelector } from 'react-redux';
-import { IReduxState } from '../../../store';
+import { LinkProps, useParams } from 'react-router-dom';
 import ProjectDetail from './ProjectDetail';
+import { Pathname, Search } from 'history';
 
-//todo 后续需要换个方式实现当前项目名称的保存与获取.
+export type CustomLinkProps = Omit<LinkProps, 'to'> & {
+  to: Pathname;
+  search?: Search;
+} & ProjectDetailUrlParamType;
+
+export type ProjectDetailUrlParamType = {
+  projectName: string;
+};
+
 export const useCurrentProjectName = () => {
-  const projectName = useSelector((state: IReduxState) => {
-    return state.projectManage.selectProject?.name ?? '';
-  });
+  const { projectName = '' } = useParams<ProjectDetailUrlParamType>();
   return { projectName };
 };
 

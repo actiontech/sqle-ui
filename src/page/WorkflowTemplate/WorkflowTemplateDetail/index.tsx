@@ -86,7 +86,7 @@ const WorkflowTemplateDetail = () => {
             </Descriptions.Item>
           </Descriptions>
           <Link
-            to={`/progress/update/${workflowTemplate?.workflow_template_name}`}
+            to={`/project/${projectName}/progress/update/${workflowTemplate?.workflow_template_name}`}
           >
             <Button type="primary">
               {t('workflowTemplate.detail.updateTemplate')}

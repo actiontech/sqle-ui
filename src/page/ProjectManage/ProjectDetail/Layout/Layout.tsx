@@ -22,6 +22,7 @@ const AuditPlan = lazy(
 
 const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
   children,
+  projectName,
 }) => {
   const userRole = useSelector<IReduxState, SystemRole | ''>(
     (state) => state.user.role
@@ -86,15 +87,13 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
       const newRouters = auditPlanTypes.map<
         RouterItem<ProjectDetailRouterItemKeyLiteral> & { search?: string }
       >((e) => ({
-        path: `/auditPlan`,
+        path: `/project/:projectName/auditPlan?type=${e.type}`,
         key: `auditPlan${e.type}` as ProjectDetailRouterItemKeyLiteral,
         label: 'menu',
         labelWithoutI18n: e.desc,
         component: AuditPlan,
-        search: `type=${e.type}`,
       }));
       plan.components = [...plan.components!, ...newRouters];
-
       setInnerRouterConfig(newRouterConfig);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -106,11 +105,11 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
         <ProjectInfoBox />
         <Menu
           selectedKeys={selectMenuWrapper()}
-          defaultOpenKeys={['order', 'plane']}
+          defaultOpenKeys={['order']}
           mode="inline"
           theme="dark"
         >
-          {generateNavigateMenu(innerRouterConfig, userRole)}
+          {generateNavigateMenu(innerRouterConfig, userRole, projectName)}
         </Menu>
       </Layout.Sider>
       <Layout.Content>{children}</Layout.Content>

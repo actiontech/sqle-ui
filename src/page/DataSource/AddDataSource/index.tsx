@@ -83,7 +83,7 @@ const AddDataSource = () => {
           status="success"
           title={t('dataSource.addDatabaseSuccess')}
           subTitle={
-            <Link to="/data">
+            <Link to={`project/${projectName}/data`}>
               {t('dataSource.addDatabaseSuccessGuide')} {'>'}
             </Link>
           }

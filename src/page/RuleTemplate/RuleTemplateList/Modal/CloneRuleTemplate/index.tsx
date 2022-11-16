@@ -104,7 +104,7 @@ const CloneRuleTemplateModal = () => {
             {t('ruleTemplate.cloneRuleTemplate.currentTemplateTips')}
             <Link
               target="_blank"
-              to={`/rule/template/update/${currentRuleTemplate?.rule_template_name}`}
+              to={`/project/${projectName}/rule/template/update/${currentRuleTemplate?.rule_template_name}`}
             >
               {currentRuleTemplate?.rule_template_name}
             </Link>

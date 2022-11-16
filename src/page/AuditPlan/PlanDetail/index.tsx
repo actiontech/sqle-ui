@@ -50,7 +50,7 @@ const PlanDetailPage = () => {
             path="/auditPlan/detail/:auditPlanName"
             component={PlanDetail}
           />
-          <Redirect to="/auditPlan" />
+          <Redirect to={{ pathname: '/auditPlan', state: { projectName } }} />
         </Switch>
       </section>
     </>
