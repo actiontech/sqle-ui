@@ -7,10 +7,11 @@ import { Link, useParams } from 'react-router-dom';
 import {
   IRuleReqV1,
   IRuleResV1,
-  IRuleTemplateDetailResV1,
+  IRuleProjectTemplateDetailResV1,
 } from '../../../api/common';
 import ruleTemplateService from '../../../api/rule_template';
 import { ResponseCode } from '../../../data/common';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import RuleTemplateForm from '../RuleTemplateForm';
 import { RuleTemplateBaseInfoFields } from '../RuleTemplateForm/BaseInfoForm/index.type';
 
@@ -22,8 +23,9 @@ const UpdateRuleTemplate = () => {
   const [activeRule, setActiveRule] = React.useState<IRuleResV1[]>([]);
   const [databaseRule, setDatabaseRule] = React.useState<IRuleResV1[]>([]);
   const [ruleTemplate, setRuleTemplate] = React.useState<
-    IRuleTemplateDetailResV1 | undefined
+    IRuleProjectTemplateDetailResV1 | undefined
   >();
+  const { projectName } = useCurrentProjectName();
   const urlParams = useParams<{ templateName: string }>();
   const { data: allRules, loading: getAllRulesLoading } = useRequest(
     () => ruleTemplateService.getRuleListV1({}),
@@ -59,10 +61,12 @@ const UpdateRuleTemplate = () => {
       };
     });
     ruleTemplateService
-      .updateRuleTemplateV1({
+      .updateProjectRuleTemplateV1({
         rule_template_name: baseInfo.templateName,
         desc: baseInfo.templateDesc,
         rule_list: activeRuleWithNewField,
+        project_name: projectName,
+        instance_name_list: baseInfo.instances,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -72,12 +76,13 @@ const UpdateRuleTemplate = () => {
       .finally(() => {
         updateLoading(false);
       });
-  }, [activeRule, form, step, updateLoading]);
+  }, [activeRule, form, projectName, step, updateLoading]);
 
   React.useEffect(() => {
     ruleTemplateService
-      .getRuleTemplateV1({
+      .getProjectRuleTemplateV1({
         rule_template_name: urlParams.templateName,
+        project_name: projectName,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -86,7 +91,7 @@ const UpdateRuleTemplate = () => {
           setActiveRule(template?.rule_list ?? []);
         }
       });
-  }, [urlParams.templateName]);
+  }, [projectName, urlParams.templateName]);
 
   return (
     <>

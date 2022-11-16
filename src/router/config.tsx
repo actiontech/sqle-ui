@@ -56,6 +56,13 @@ const RuleTemplate = React.lazy(
   () => import(/* webpackChunkName: "RuleTemplate" */ '../page/RuleTemplate')
 );
 
+const GlobalRuleTemplate = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "GlobalRuleTemplate" */ '../page/GlobalRuleTemplate'
+    )
+);
+
 const Account = React.lazy(
   () => import(/* webpackChunkName: "Account" */ '../page/Account')
 );
@@ -228,11 +235,11 @@ export const globalRouterConfig: RouterItem<GlobalRouterItemKeyLiteral>[] = [
     ],
   },
   {
-    path: '/rule/template',
+    path: '/global/rule/template',
     key: 'globalRuleTemplate',
     label: 'menu.ruleTemplate',
     icon: <AuditOutlined />,
-    component: RuleTemplate,
+    component: GlobalRuleTemplate,
   },
   {
     path: '/system',

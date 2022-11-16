@@ -6,6 +6,7 @@ enum EmitterKey {
   Refresh_Whitelist_List = 'REFRESH_WHITELIST_LIST',
 
   Refresh_Rule_Template_List = 'REFRESH_RULE_TEMPLATE_LIST',
+  Refresh_Global_Rule_Template_List = 'Refresh_Global_Rule_Template_List',
 
   Reset_Create_Order_Form = 'RESET_CREATE_ORDER_FORM',
 

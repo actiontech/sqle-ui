@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal should match snapshot 1`] = `
+<body
+  class="ant-scrolling-effect"
+  style="width: calc(100% - 0px); overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
+>
+  <div />
+  <div>
+    <div
+      class="ant-modal-root"
+    >
+      <div
+        class="ant-modal-mask"
+      />
+      <div
+        aria-labelledby="rcDialogTitle0"
+        class="ant-modal-wrap"
+        role="dialog"
+        tabindex="-1"
+      >
+        <div
+          class="ant-modal"
+          role="document"
+          style="width: 520px;"
+        >
+          <div
+            aria-hidden="true"
+            style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+            tabindex="0"
+          />
+          <div
+            class="ant-modal-content"
+          >
+            <div
+              class="ant-modal-header"
+            >
+              <div
+                class="ant-modal-title"
+                id="rcDialogTitle0"
+              >
+                ruleTemplate.cloneRuleTemplate.title
+              </div>
+            </div>
+            <div
+              class="ant-modal-body"
+            >
+              <div
+                class="ant-space ant-space-vertical full-width-element"
+              >
+                <div
+                  class="ant-space-item"
+                  style="margin-bottom: 8px;"
+                >
+                  <div
+                    class="ant-row"
+                  >
+                    <div
+                      class="ant-col ant-col-offset-2"
+                    >
+                      ruleTemplate.cloneRuleTemplate.currentTemplateTips
+                      <a
+                        href="/rule/template/update/default_mysql"
+                        target="_blank"
+                      >
+                        default_mysql
+                      </a>
+                    </div>
+                    <div
+                      class="ant-col ant-col-offset-2"
+                    >
+                      <span
+                        class="ant-typography ant-typography-secondary"
+                      >
+                        ruleTemplate.cloneRuleTemplate.cloneDesc
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  <form
+                    class="ant-form ant-form-horizontal"
+                  >
+                    <div
+                      class="ant-row ant-form-item"
+                    >
+                      <div
+                        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                      >
+                        <label
+                          class="ant-form-item-required"
+                          for="templateName"
+                          title="ruleTemplate.ruleTemplateForm.templateName"
+                        >
+                          ruleTemplate.ruleTemplateForm.templateName
+                        </label>
+                      </div>
+                      <div
+                        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                      >
+                        <div
+                          class="ant-form-item-control-input"
+                        >
+                          <div
+                            class="ant-form-item-control-input-content"
+                          >
+                            <input
+                              class="ant-input"
+                              id="templateName"
+                              placeholder="common.form.placeholder.input"
+                              type="text"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-row ant-form-item"
+                    >
+                      <div
+                        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                      >
+                        <label
+                          class=""
+                          for="templateDesc"
+                          title="ruleTemplate.ruleTemplateForm.templateDesc"
+                        >
+                          ruleTemplate.ruleTemplateForm.templateDesc
+                        </label>
+                      </div>
+                      <div
+                        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                      >
+                        <div
+                          class="ant-form-item-control-input"
+                        >
+                          <div
+                            class="ant-form-item-control-input-content"
+                          >
+                            <textarea
+                              class="ant-input textarea-no-resize"
+                              id="templateDesc"
+                              placeholder="common.form.placeholder.input"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-modal-footer"
+            >
+              <button
+                class="ant-btn"
+                type="button"
+              >
+                <span>
+                  Cancel
+                </span>
+              </button>
+              <button
+                class="ant-btn ant-btn-primary"
+                type="button"
+              >
+                <span>
+                  OK
+                </span>
+              </button>
+            </div>
+          </div>
+          <div
+            aria-hidden="true"
+            style="width: 0px; height: 0px; overflow: hidden; outline: none;"
+            tabindex="0"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal should match snapshot 2`] = `
+<body
+  class=""
+  style=""
+>
+  <div />
+</body>
+`;

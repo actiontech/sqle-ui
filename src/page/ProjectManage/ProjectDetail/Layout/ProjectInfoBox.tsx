@@ -2,21 +2,19 @@ import { useRequest } from 'ahooks';
 import { Spin, Tooltip, Typography } from 'antd';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
-import { ProjectDetailLocationStateType } from '..';
+import { useCurrentProjectName } from '..';
 import project from '../../../../api/project';
 import EmptyBox from '../../../../components/EmptyBox';
 
 const ProjectInfoBox: React.FC = () => {
-  const location = useLocation<ProjectDetailLocationStateType>();
+  const { projectName } = useCurrentProjectName();
   const { t } = useTranslation();
   const {
     data: projectInfo,
     error,
     loading,
   } = useRequest(
-    () =>
-      project.getProjectDetailV1({ project_name: location.state.projectName }),
+    () => project.getProjectDetailV1({ project_name: projectName }),
     {
       formatResult: (data) => data.data.data,
     }

@@ -9,16 +9,16 @@ import {
   Typography,
 } from 'antd';
 import { Link } from 'react-router-dom';
-import { IRuleTemplateResV1 } from '../../../api/common';
+import { IProjectRuleTemplateResV1 } from '../../../api/common';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 
 export const RuleTemplateListTableColumnFactory = (
   deleteTemplate: (name: string) => void,
-  openCloneRuleTemplateModal: (rowData: IRuleTemplateResV1) => void,
+  openCloneRuleTemplateModal: (rowData: IProjectRuleTemplateResV1) => void,
   isAdmin: boolean
-): TableColumn<IRuleTemplateResV1, 'operator'> => {
-  const columns: TableColumn<IRuleTemplateResV1, 'operator'> = [
+): TableColumn<IProjectRuleTemplateResV1, 'operator'> => {
+  const columns: TableColumn<IProjectRuleTemplateResV1, 'operator'> = [
     {
       dataIndex: 'rule_template_name',
       title: () => i18n.t('ruleTemplate.ruleTemplateList.table.templateName'),
@@ -35,15 +35,11 @@ export const RuleTemplateListTableColumnFactory = (
     {
       dataIndex: 'instance_list',
       title: () => i18n.t('ruleTemplate.ruleTemplateList.table.dataSource'),
-      render: (data: IRuleTemplateResV1['instance_list']) => {
+      render: (data: IProjectRuleTemplateResV1['instance_list']) => {
         if (!data || !Array.isArray(data)) {
           return '';
         }
-        return data.map((item) => (
-          <Tag
-            key={item.instance_name}
-          >{`${item.project_name}: ${item.instance_name}`}</Tag>
-        ));
+        return data.map((item) => <Tag key={item.name}>{item.name ?? ''}</Tag>);
       },
     },
     {

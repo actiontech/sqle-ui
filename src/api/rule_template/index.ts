@@ -7,6 +7,8 @@ import ServiceBase from '../Service.base';
 import { AxiosRequestConfig } from 'axios';
 
 import {
+  IGetProjectRuleTemplateTipsV1Params,
+  IGetProjectRuleTemplateTipsV1Return,
   IGetProjectRuleTemplateListV1Params,
   IGetProjectRuleTemplateListV1Return,
   ICreateProjectRuleTemplateV1Params,
@@ -38,6 +40,21 @@ import {
 } from './index.d';
 
 class RuleTemplateService extends ServiceBase {
+  public getProjectRuleTemplateTipsV1(
+    params: IGetProjectRuleTemplateTipsV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.get<IGetProjectRuleTemplateTipsV1Return>(
+      `/v1/projects/${project_name}/rule_template_tips`,
+      paramsData,
+      options
+    );
+  }
+
   public getProjectRuleTemplateListV1(
     params: IGetProjectRuleTemplateListV1Params,
     options?: AxiosRequestConfig

@@ -4,7 +4,6 @@ import { lazy, useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { generateNavigateMenu, ProjectDetailLayoutProps } from '.';
-import { ProjectDetailLocationStateType } from '..';
 import { SystemRole } from '../../../../data/common';
 import useAuditPlanTypes from '../../../../hooks/useAuditPlanTypes';
 import { projectDetailRouterConfig } from '../../../../router/config';
@@ -23,12 +22,11 @@ const AuditPlan = lazy(
 
 const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
   children,
-  projectName,
 }) => {
   const userRole = useSelector<IReduxState, SystemRole | ''>(
     (state) => state.user.role
   );
-  const location = useLocation<ProjectDetailLocationStateType>();
+  const location = useLocation();
   const { updateAuditPlanTypes, auditPlanTypes } = useAuditPlanTypes();
   const [innerRouterConfig, setInnerRouterConfig] = useState(
     projectDetailRouterConfig
@@ -112,7 +110,7 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
           mode="inline"
           theme="dark"
         >
-          {generateNavigateMenu(innerRouterConfig, userRole, projectName)}
+          {generateNavigateMenu(innerRouterConfig, userRole)}
         </Menu>
       </Layout.Sider>
       <Layout.Content>{children}</Layout.Content>
