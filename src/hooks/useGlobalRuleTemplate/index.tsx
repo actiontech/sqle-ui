@@ -12,27 +12,24 @@ const useGlobalRuleTemplate = () => {
   >([]);
   const [loading, { setTrue, setFalse }] = useBoolean();
 
-  const updateGlobalRuleTemplateList = React.useCallback(
-    (projectName: string) => {
-      setTrue();
-      ruleTemplate
-        .getProjectRuleTemplateTipsV1({ project_name: projectName })
-        .then((res) => {
-          if (res.data.code === ResponseCode.SUCCESS) {
-            setRuleTemplate(res.data?.data ?? []);
-          } else {
-            setRuleTemplate([]);
-          }
-        })
-        .catch(() => {
+  const updateGlobalRuleTemplateList = React.useCallback(() => {
+    setTrue();
+    ruleTemplate
+      .getRuleTemplateTipsV1({})
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          setRuleTemplate(res.data?.data ?? []);
+        } else {
           setRuleTemplate([]);
-        })
-        .finally(() => {
-          setFalse();
-        });
-    },
-    [setFalse, setTrue]
-  );
+        }
+      })
+      .catch(() => {
+        setRuleTemplate([]);
+      })
+      .finally(() => {
+        setFalse();
+      });
+  }, [setFalse, setTrue]);
 
   const generateGlobalRuleTemplateSelectOption = React.useCallback(
     (db_type: string = ruleTemplateListDefaultKey) => {
