@@ -86,8 +86,7 @@ const CloneRuleTemplateModal = () => {
     if (visible) {
       updateInstanceList({ project_name: projectName });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible]);
+  }, [projectName, updateInstanceList, visible]);
 
   return (
     <Modal

@@ -80,7 +80,7 @@ const AddMember: React.FC = () => {
         </>
       }
     >
-      <MemberForm form={form} />
+      <MemberForm form={form} projectName={projectName} />
     </Modal>
   );
 };

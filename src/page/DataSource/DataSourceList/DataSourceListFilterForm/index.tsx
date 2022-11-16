@@ -11,13 +11,14 @@ import {
   FilterFormRowLayout,
 } from '../../../../data/common';
 import useInstance from '../../../../hooks/useInstance';
-import useRole from '../../../../hooks/useRole';
 import useRuleTemplate from '../../../../hooks/useRuleTemplate';
 import {
   DataSourceListFilterFields,
   DataSourceListFilterFormProps,
 } from './index.type';
 import useDatabaseType from '../../../../hooks/useDatabaseType';
+import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
+import useGlobalRuleTemplate from '../../../../hooks/useGlobalRuleTemplate';
 
 const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
   props
@@ -26,12 +27,12 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
     useDatabaseType();
   const { t } = useTranslation();
   const [collapse, { toggle: toggleCollapse }] = useBoolean(true);
-
+  const { projectName } = useCurrentProjectName();
   const [form] = useForm<DataSourceListFilterFields>();
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
-  const { updateRuleTemplateList, generateRuleTemplateSelectOption } =
-    useRuleTemplate();
-  const { updateRoleList, generateRoleSelectOption } = useRole();
+  const { updateRuleTemplateList, ruleTemplateList } = useRuleTemplate();
+  const { updateGlobalRuleTemplateList, globalRuleTemplateList } =
+    useGlobalRuleTemplate();
   const submit = React.useCallback(() => {
     props.submit(form.getFieldsValue());
   }, [form, props]);
@@ -41,9 +42,7 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
     if (!collapse) {
       form.setFieldsValue({
         filter_db_user: undefined,
-        // filter_workflow_template_name: undefined,
         filter_rule_template_name: undefined,
-        filter_role_name: undefined,
         filter_db_type: undefined,
       });
       submit();
@@ -56,12 +55,17 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
   }, [form, props]);
 
   React.useEffect(() => {
-    updateInstanceList();
-    updateRuleTemplateList();
-    updateRoleList();
+    updateInstanceList({ project_name: projectName });
+    updateGlobalRuleTemplateList();
+    updateRuleTemplateList(projectName);
     updateDriverNameList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [
+    projectName,
+    updateDriverNameList,
+    updateGlobalRuleTemplateList,
+    updateInstanceList,
+    updateRuleTemplateList,
+  ]);
 
   return (
     <Form<DataSourceListFilterFields> form={form} {...FilterFormLayout}>
@@ -118,18 +122,6 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
             />
           </Form.Item>
         </Col>
-        {/* <Col {...FilterFormColLayout} hidden={collapse}>
-          <Form.Item
-            name="filter_workflow_template_name"
-            label={t('dataSource.dataSourceForm.workflow')}
-          >
-            <Input
-              placeholder={t('common.form.placeholder.searchInput', {
-                name: t('dataSource.dataSourceForm.workflow'),
-              })}
-            />
-          </Form.Item>
-        </Col> */}
         <Col {...FilterFormColLayout} hidden={collapse}>
           <Form.Item
             label={t('dataSource.dataSourceForm.type')}
@@ -157,31 +149,26 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
                 name: t('dataSource.dataSourceForm.ruleTemplate'),
               })}
             >
-              {generateRuleTemplateSelectOption()}
-            </Select>
-          </Form.Item>
-        </Col>
-        <Col {...FilterFormColLayout} hidden={collapse}>
-          <Form.Item
-            name="filter_role_name"
-            label={t('dataSource.dataSourceForm.role')}
-          >
-            <Select
-              allowClear
-              showSearch
-              placeholder={t('common.form.placeholder.searchSelect', {
-                name: t('dataSource.dataSourceForm.role'),
-              })}
-            >
-              {generateRoleSelectOption()}
+              {[...ruleTemplateList, ...globalRuleTemplateList].map(
+                (template) => {
+                  return (
+                    <Select.Option
+                      key={template.rule_template_name}
+                      value={template.rule_template_name ?? ''}
+                    >
+                      {template.rule_template_name}
+                    </Select.Option>
+                  );
+                }
+              )}
             </Select>
           </Form.Item>
         </Col>
         <Col
           {...filterFormButtonLayoutFactory(
-            0,
-            collapse ? 16 : 8,
-            0
+            collapse ? 0 : 12,
+            16,
+            collapse ? 0 : 6
           )}
           className="text-align-right"
         >

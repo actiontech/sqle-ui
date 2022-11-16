@@ -6,9 +6,12 @@ import { nameRule } from '../../../utils/FormRule';
 import { MemberFormProps } from './index.type';
 import RoleSelector from '../Common/RoleSelector';
 
-const MemberForm: React.FC<MemberFormProps> = ({ form, isUpdate }) => {
+const MemberForm: React.FC<MemberFormProps> = ({
+  form,
+  isUpdate,
+  projectName,
+}) => {
   const { t } = useTranslation();
-
   const userNameRules = (): Rule[] => {
     const baseRules = [
       {
@@ -48,7 +51,7 @@ const MemberForm: React.FC<MemberFormProps> = ({ form, isUpdate }) => {
         <Switch />
       </Form.Item>
 
-      <RoleSelector />
+      <RoleSelector projectName={projectName} />
     </Form>
   );
 };

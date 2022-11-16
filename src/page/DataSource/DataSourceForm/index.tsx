@@ -2,9 +2,7 @@ import { Button, Form, Input, InputNumber, Select, Space, Switch } from 'antd';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PageFormLayout } from '../../../data/common';
-import useRole from '../../../hooks/useRole';
 import useRuleTemplate from '../../../hooks/useRuleTemplate';
-import useWorkflowTemplate from '../../../hooks/useWorkflowTemplate';
 import { nameRule } from '../../../utils/FormRule';
 import DatabaseFormItem from './DatabaseFormItem';
 import { IDataSourceFormProps } from './index.type';
@@ -22,6 +20,7 @@ import {
   SQLQueryConfigReqV1AllowQueryWhenLessThanAuditLevelEnum,
   SQLQueryConfigResV1AllowQueryWhenLessThanAuditLevelEnum,
 } from '../../../api/common.enum';
+import useGlobalRuleTemplate from '../../../hooks/useGlobalRuleTemplate';
 
 const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
   const { t } = useTranslation();
@@ -32,13 +31,9 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
   const [databaseType, setDatabaseType] = React.useState<string>(
     ruleTemplateListDefaultKey
   );
-  const { updateRoleList, generateRoleSelectOption } = useRole();
-  const { updateRuleTemplateList, generateRuleTemplateSelectOption } =
-    useRuleTemplate();
-
-  const { updateWorkflowTemplate, generateWorkflowSelectOptions } =
-    useWorkflowTemplate();
-
+  const { updateRuleTemplateList, ruleTemplateList } = useRuleTemplate();
+  const { updateGlobalRuleTemplateList, globalRuleTemplateList } =
+    useGlobalRuleTemplate();
   const databaseTypeChange = useCallback(
     (value) => {
       setDatabaseType(value ?? ruleTemplateListDefaultKey);
@@ -56,10 +51,9 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
     useAsyncParams();
 
   React.useEffect(() => {
-    updateRoleList();
-    updateRuleTemplateList();
-    updateWorkflowTemplate();
-  }, [updateRoleList, updateRuleTemplateList, updateWorkflowTemplate]);
+    updateRuleTemplateList(props.projectName);
+    updateGlobalRuleTemplateList();
+  }, [updateRuleTemplateList, props.projectName, updateGlobalRuleTemplateList]);
 
   React.useEffect(() => {
     if (!!props.defaultData) {
@@ -70,11 +64,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
         ip: props.defaultData.db_host,
         port: Number.parseInt(props.defaultData.db_port ?? ''),
         user: props.defaultData.db_user,
-        role: props.defaultData.role_name_list,
-        ruleTemplate: Array.isArray(props.defaultData.rule_template_name_list)
-          ? props.defaultData.rule_template_name_list[0]
-          : '',
-        workflow: props.defaultData.workflow_template_name,
+        ruleTemplate: props.defaultData.rule_template_name,
         params: generateFormValueByParams(
           turnDataSourceAsyncFormToCommon(
             props.defaultData.additional_params ?? []
@@ -206,18 +196,6 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
       >
         <MaintenanceTimePicker />
       </Form.Item>
-      <Form.Item label={t('dataSource.dataSourceForm.role')} name="role">
-        <Select
-          mode="multiple"
-          allowClear
-          showSearch
-          placeholder={t('common.form.placeholder.select', {
-            name: t('dataSource.dataSourceForm.role'),
-          })}
-        >
-          {generateRoleSelectOption()}
-        </Select>
-      </Form.Item>
       <Form.Item
         label={t('dataSource.dataSourceForm.ruleTemplate')}
         name="ruleTemplate"
@@ -229,21 +207,18 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
             name: t('dataSource.dataSourceForm.ruleTemplate'),
           })}
         >
-          {generateRuleTemplateSelectOption(databaseType)}
-        </Select>
-      </Form.Item>
-      <Form.Item
-        label={t('dataSource.dataSourceForm.workflow')}
-        name="workflow"
-      >
-        <Select
-          allowClear
-          showSearch
-          placeholder={t('common.form.placeholder.select', {
-            name: t('dataSource.dataSourceForm.workflow'),
-          })}
-        >
-          {generateWorkflowSelectOptions()}
+          {[...ruleTemplateList, ...globalRuleTemplateList]
+            .filter((v) => v.db_type === databaseType)
+            .map((template) => {
+              return (
+                <Select.Option
+                  key={template.rule_template_name}
+                  value={template.rule_template_name ?? ''}
+                >
+                  {template.rule_template_name}
+                </Select.Option>
+              );
+            })}
         </Select>
       </Form.Item>
       <Form.Item

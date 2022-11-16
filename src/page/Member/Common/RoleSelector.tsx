@@ -6,15 +6,14 @@ import EmptyBox from '../../../components/EmptyBox';
 import useInstance from '../../../hooks/useInstance';
 import useRole from '../../../hooks/useRole';
 
-const RoleSelector: React.FC = () => {
+const RoleSelector: React.FC<{ projectName: string }> = ({ projectName }) => {
   const { t } = useTranslation();
   const { updateRoleList, generateRoleSelectOption } = useRole();
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
-
   useEffect(() => {
     updateRoleList();
-    updateInstanceList();
-  }, [updateInstanceList, updateRoleList]);
+    updateInstanceList({ project_name: projectName });
+  }, [projectName, updateInstanceList, updateRoleList]);
 
   return (
     <Form.List name="roles" initialValue={[{}]}>

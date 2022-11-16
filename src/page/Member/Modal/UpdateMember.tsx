@@ -99,7 +99,7 @@ const UpdateMember: React.FC = () => {
         </>
       }
     >
-      <MemberForm form={form} isUpdate={true} />
+      <MemberForm form={form} isUpdate={true} projectName={projectName} />
     </Modal>
   );
 };

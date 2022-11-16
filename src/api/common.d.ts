@@ -348,13 +348,9 @@ export interface ICreateInstanceReqV1 {
 
   maintenance_times?: IMaintenanceTimeReqV1[];
 
-  role_name_list?: string[];
-
-  rule_template_name_list?: string[];
+  rule_template_name?: string;
 
   sql_query_config?: ISQLQueryConfigReqV1;
-
-  workflow_template_name?: string;
 }
 
 export interface ICreateMemberGroupReqV1 {
@@ -1368,13 +1364,9 @@ export interface IInstanceResV1 {
 
   maintenance_times?: IMaintenanceTimeResV1[];
 
-  role_name_list?: string[];
-
-  rule_template_name_list?: string[];
+  rule_template_name?: string;
 
   sql_query_config?: ISQLQueryConfigResV1;
-
-  workflow_template_name?: string;
 }
 
 export interface IInstanceSchemaResV1 {
@@ -1966,13 +1958,9 @@ export interface IUpdateInstanceReqV1 {
 
   maintenance_times?: IMaintenanceTimeReqV1[];
 
-  role_name_list?: string[];
-
-  rule_template_name_list?: string[];
+  rule_template_name?: string;
 
   sql_query_config?: ISQLQueryConfigReqV1;
-
-  workflow_template_name?: string;
 }
 
 export interface IUpdateMemberGroupReqV1 {

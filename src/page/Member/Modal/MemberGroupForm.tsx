@@ -9,6 +9,7 @@ import RoleSelector from '../Common/RoleSelector';
 const MemberGroupForm: React.FC<MemberGroupFormProps> = ({
   form,
   isUpdate,
+  projectName,
 }) => {
   const { t } = useTranslation();
 
@@ -43,7 +44,7 @@ const MemberGroupForm: React.FC<MemberGroupFormProps> = ({
         />
       </Form.Item>
 
-      <RoleSelector />
+      <RoleSelector projectName={projectName} />
     </Form>
   );
 };

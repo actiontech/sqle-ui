@@ -9,6 +9,7 @@ import CronInput from '../../../components/CronInput';
 import { PageBigFormLayout } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { checkCron } from '../../../hooks/useCron/cron.tool';
+import useGlobalRuleTemplate from '../../../hooks/useGlobalRuleTemplate';
 import useRuleTemplate from '../../../hooks/useRuleTemplate';
 import EventEmitter from '../../../utils/EventEmitter';
 import { nameRule } from '../../../utils/FormRule';
@@ -33,10 +34,10 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
 
   const { mergeFromValueIntoParams } = useAsyncParams();
   const {
-    generateRuleTemplateSelectOption,
+    generateGlobalRuleTemplateSelectOption,
     loading: getRuleTemplateLoading,
-    updateRuleTemplateList,
-  } = useRuleTemplate();
+    updateGlobalRuleTemplateList,
+  } = useGlobalRuleTemplate();
 
   const submit = (values: PlanFormField) => {
     if (values.params && asyncParams) {
@@ -83,7 +84,7 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
         setDbType(props.defaultValue.audit_plan_db_type);
       }
     }
-    updateRuleTemplateList();
+    updateGlobalRuleTemplateList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.defaultValue]);
 
@@ -136,7 +137,8 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
         tooltip={t('auditPlan.planForm.ruleTemplateNameTips')}
       >
         <Select placeholder={t('common.form.placeholder.select')}>
-          {!getRuleTemplateLoading && generateRuleTemplateSelectOption(dbType)}
+          {!getRuleTemplateLoading &&
+            generateGlobalRuleTemplateSelectOption(dbType)}
         </Select>
       </Form.Item>
 

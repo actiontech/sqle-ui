@@ -12,6 +12,7 @@ import {
 import useAuditPlanTypes from '../../../../hooks/useAuditPlanTypes';
 import useDatabaseType from '../../../../hooks/useDatabaseType';
 import useInstance from '../../../../hooks/useInstance';
+import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 import {
   PlanListFilterFormFields,
   PlanListFilterFormProps,
@@ -23,6 +24,7 @@ const PlanListFilterForm: React.FC<PlanListFilterFormProps> = (props) => {
   const [form] = useForm<PlanListFilterFormFields>();
 
   const { t } = useTranslation();
+  const { projectName } = useCurrentProjectName();
 
   const { generateInstanceSelectOption, updateInstanceList } = useInstance();
   const { generateDriverSelectOptions, updateDriverNameList } =
@@ -31,10 +33,15 @@ const PlanListFilterForm: React.FC<PlanListFilterFormProps> = (props) => {
     useAuditPlanTypes();
 
   useEffect(() => {
-    updateInstanceList();
+    updateInstanceList({ project_name: projectName });
     updateDriverNameList();
     updateAuditPlanTypes();
-  }, [updateAuditPlanTypes, updateDriverNameList, updateInstanceList]);
+  }, [
+    projectName,
+    updateAuditPlanTypes,
+    updateDriverNameList,
+    updateInstanceList,
+  ]);
 
   const reset = () => {
     form.resetFields();

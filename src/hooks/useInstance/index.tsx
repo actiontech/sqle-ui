@@ -14,10 +14,10 @@ const useInstance = () => {
   const [loading, { setTrue, setFalse }] = useBoolean();
 
   const updateInstanceList = React.useCallback(
-    (params?: IGetInstanceTipListV1Params) => {
+    (params: IGetInstanceTipListV1Params) => {
       setTrue();
       instance
-        .getInstanceTipListV1(params ?? {})
+        .getInstanceTipListV1(params)
         .then((res) => {
           if (res.data.code === ResponseCode.SUCCESS) {
             setInstanceList(res.data?.data ?? []);

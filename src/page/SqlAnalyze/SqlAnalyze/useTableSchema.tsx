@@ -26,7 +26,7 @@ const useTableSchema = (options?: UseTableSchemaOption) => {
   const [tableSchemas, setTableSchemas] = useState<TableSchemaItem[]>([]);
 
   const getTableSchemas = useCallback(
-    async (tableName: string) => {
+    async (tableName: string, projectName: string) => {
       if (!schemaName || !dataSourceName) {
         setTableSchemas([]);
         return;
@@ -39,6 +39,7 @@ const useTableSchema = (options?: UseTableSchemaOption) => {
         instance_name: dataSourceName,
         schema_name: schemaName,
         table_name: tableName,
+        project_name: projectName,
       });
       if (oldItemIndex !== -1) {
         newTableSchemas.splice(oldItemIndex, 1);

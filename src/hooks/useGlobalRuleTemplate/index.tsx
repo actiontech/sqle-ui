@@ -6,43 +6,40 @@ import ruleTemplate from '../../api/rule_template';
 import { Select } from 'antd';
 import { ruleTemplateListDefaultKey } from '../../data/common';
 
-const useRuleTemplate = () => {
-  const [ruleTemplateList, setRuleTemplate] = React.useState<
+const useGlobalRuleTemplate = () => {
+  const [globalRuleTemplateList, setRuleTemplate] = React.useState<
     IRuleTemplateTipResV1[]
   >([]);
   const [loading, { setTrue, setFalse }] = useBoolean();
 
-  const updateRuleTemplateList = React.useCallback(
-    (projectName: string) => {
-      setTrue();
-      ruleTemplate
-        .getProjectRuleTemplateTipsV1({ project_name: projectName })
-        .then((res) => {
-          if (res.data.code === ResponseCode.SUCCESS) {
-            setRuleTemplate(res.data?.data ?? []);
-          } else {
-            setRuleTemplate([]);
-          }
-        })
-        .catch(() => {
+  const updateGlobalRuleTemplateList = React.useCallback(() => {
+    setTrue();
+    ruleTemplate
+      .getRuleTemplateTipsV1({})
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          setRuleTemplate(res.data?.data ?? []);
+        } else {
           setRuleTemplate([]);
-        })
-        .finally(() => {
-          setFalse();
-        });
-    },
-    [setFalse, setTrue]
-  );
+        }
+      })
+      .catch(() => {
+        setRuleTemplate([]);
+      })
+      .finally(() => {
+        setFalse();
+      });
+  }, [setFalse, setTrue]);
 
-  const generateRuleTemplateSelectOption = React.useCallback(
+  const generateGlobalRuleTemplateSelectOption = React.useCallback(
     (db_type: string = ruleTemplateListDefaultKey) => {
       let filterRuleTemplateList: IRuleTemplateTipResV1[] = [];
       if (db_type !== ruleTemplateListDefaultKey) {
-        filterRuleTemplateList = ruleTemplateList.filter(
+        filterRuleTemplateList = globalRuleTemplateList.filter(
           (i) => i.db_type === db_type
         );
       } else {
-        filterRuleTemplateList = ruleTemplateList;
+        filterRuleTemplateList = globalRuleTemplateList;
       }
       return filterRuleTemplateList.map((template) => {
         return (
@@ -55,15 +52,15 @@ const useRuleTemplate = () => {
         );
       });
     },
-    [ruleTemplateList]
+    [globalRuleTemplateList]
   );
 
   return {
-    ruleTemplateList,
+    globalRuleTemplateList,
     loading,
-    updateRuleTemplateList,
-    generateRuleTemplateSelectOption,
+    updateGlobalRuleTemplateList,
+    generateGlobalRuleTemplateSelectOption,
   };
 };
 
-export default useRuleTemplate;
+export default useGlobalRuleTemplate;

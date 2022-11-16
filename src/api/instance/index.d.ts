@@ -29,8 +29,7 @@ export interface ICheckInstanceIsConnectableV1Return
   extends IGetInstanceConnectableResV1 {}
 
 export interface IGetInstanceTipListV1Params {
-  //todo
-  project_name?: string;
+  project_name: string;
 
   filter_db_type?: string;
 
@@ -42,6 +41,8 @@ export interface IGetInstanceTipListV1Params {
 export interface IGetInstanceTipListV1Return extends IGetInstanceTipsResV1 {}
 
 export interface IGetInstanceListV1Params {
+  project_name: string;
+
   filter_instance_name?: string;
 
   filter_db_type?: string;
@@ -52,11 +53,7 @@ export interface IGetInstanceListV1Params {
 
   filter_db_user?: string;
 
-  filter_workflow_template_name?: string;
-
   filter_rule_template_name?: string;
-
-  filter_role_name?: string;
 
   page_index?: number;
 
@@ -65,35 +62,47 @@ export interface IGetInstanceListV1Params {
 
 export interface IGetInstanceListV1Return extends IGetInstancesResV1 {}
 
-export interface ICreateInstanceV1Params extends ICreateInstanceReqV1 {}
+export interface ICreateInstanceV1Params extends ICreateInstanceReqV1 {
+  project_name: string;
+}
 
 export interface ICreateInstanceV1Return extends IBaseRes {}
 
 export interface IBatchCheckInstanceIsConnectableByNameParams
-  extends IBatchCheckInstanceConnectionsReqV1 {}
+  extends IBatchCheckInstanceConnectionsReqV1 {
+  project_name: string;
+}
 
 export interface IBatchCheckInstanceIsConnectableByNameReturn
   extends IBatchGetInstanceConnectionsResV1 {}
 
 export interface IGetInstanceV1Params {
+  project_name: string;
+
   instance_name: string;
 }
 
 export interface IGetInstanceV1Return extends IGetInstanceResV1 {}
 
 export interface IDeleteInstanceV1Params {
+  project_name: string;
+
   instance_name: string;
 }
 
 export interface IDeleteInstanceV1Return extends IBaseRes {}
 
 export interface IUpdateInstanceV1Params extends IUpdateInstanceReqV1 {
+  project_name: string;
+
   instance_name: string;
 }
 
 export interface IUpdateInstanceV1Return extends IBaseRes {}
 
 export interface ICheckInstanceIsConnectableByNameV1Params {
+  project_name: string;
+
   instance_name: string;
 }
 
@@ -109,12 +118,16 @@ export interface IGetInstanceRuleListV1Params {
 export interface IGetInstanceRuleListV1Return extends IGetRulesResV1 {}
 
 export interface IGetInstanceSchemasV1Params {
+  project_name: string;
+
   instance_name: string;
 }
 
 export interface IGetInstanceSchemasV1Return extends IGetInstanceSchemaResV1 {}
 
 export interface IListTableBySchemaParams {
+  project_name: string;
+
   instance_name: string;
 
   schema_name: string;
@@ -123,6 +136,8 @@ export interface IListTableBySchemaParams {
 export interface IListTableBySchemaReturn extends IListTableBySchemaResV1 {}
 
 export interface IGetTableMetadataParams {
+  project_name: string;
+
   instance_name: string;
 
   schema_name: string;

@@ -96,7 +96,7 @@ const UpdateMemberGroup: React.FC = () => {
         </>
       }
     >
-      <MemberGroupForm form={form} isUpdate={true} />
+      <MemberGroupForm form={form} isUpdate={true} projectName={projectName} />
     </Modal>
   );
 };

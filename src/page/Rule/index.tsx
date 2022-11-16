@@ -82,9 +82,12 @@ const Rule = () => {
   }, [allRules, instanceRules]);
 
   React.useEffect(() => {
-    if (instanceName !== undefined) {
+    if (instanceName !== undefined && projectName !== undefined) {
       instance
-        .getInstanceV1({ instance_name: instanceName ?? '' })
+        .getInstanceV1({
+          instance_name: instanceName ?? '',
+          project_name: projectName,
+        })
         .then((res) => {
           if (res.data.code === ResponseCode.SUCCESS) {
             setDbType(res.data.data?.db_type);
@@ -92,14 +95,20 @@ const Rule = () => {
           }
         });
     }
-  }, [getInstanceRules, instanceName]);
+  }, [getInstanceRules, instanceName, projectName]);
 
   React.useEffect(() => {
-    updateInstanceList();
+    if (projectName !== undefined) {
+      updateInstanceList({ project_name: projectName });
+    }
     updateDriverNameList();
     updateProjectList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [
+    projectName,
+    updateDriverNameList,
+    updateInstanceList,
+    updateProjectList,
+  ]);
 
   React.useEffect(() => {
     if (driverNameList.length > 0 && !dbType) {

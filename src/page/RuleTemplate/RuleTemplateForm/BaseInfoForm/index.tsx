@@ -64,8 +64,7 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
   React.useEffect(() => {
     updateInstanceList({ project_name: projectName });
     updateDriverNameList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [projectName, updateDriverNameList, updateInstanceList]);
 
   React.useEffect(() => {
     if (!!props.defaultData) {

@@ -10,11 +10,13 @@ import React, {
 import { useTranslation } from 'react-i18next';
 import { WorkflowResV2ModeEnum } from '../../../../api/common.enum';
 import instance from '../../../../api/instance';
+import { IBatchCheckInstanceIsConnectableByNameParams } from '../../../../api/instance/index.d';
 import EmptyBox from '../../../../components/EmptyBox';
 import TestDatabaseConnectButton from '../../../../components/TestDatabaseConnectButton';
 import { ResponseCode, PageFormLayout } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import EventEmitter from '../../../../utils/EventEmitter';
+import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 import {
   SqlStatementForm,
   SqlStatementFormTabs,
@@ -27,7 +29,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   const { t } = useTranslation();
   const alreadySubmit = useRef(false);
   const sqlStatementFormTabsRef = useRef<SqlStatementFormTabsRefType>(null);
-
+  const { projectName } = useCurrentProjectName();
   const [currentSqlMode, setCurrentSqlMode] = useState(
     WorkflowResV2ModeEnum.same_sqls
   );
@@ -69,8 +71,9 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
 
   const testDatabaseConnect = useCallback(async () => {
     testStart();
-    const params = {
+    const params: IBatchCheckInstanceIsConnectableByNameParams = {
       instances: instanceNameList.map((v) => ({ name: v ?? '' })),
+      project_name: projectName,
     };
     instance
       .batchCheckInstanceIsConnectableByName(params)
@@ -95,6 +98,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
       });
   }, [
     instanceNameList,
+    projectName,
     setConnectAble,
     setConnectInitHideFalse,
     testFinish,
