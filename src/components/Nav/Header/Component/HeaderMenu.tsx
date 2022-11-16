@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router-dom';
+import { DEFAULT_PROJECT_NAME } from '../../../../page/ProjectManage/ProjectDetail';
 import { globalRouterConfig } from '../../../../router/config';
 
 const headerMenuKeys: Array<typeof globalRouterConfig[number]['key']> = [
@@ -20,6 +21,12 @@ const HeaderMenu: React.FC = () => {
   const history = useHistory();
 
   const jumpToPath = (path: string) => {
+    /* IFTRUE_isCE */
+    if (path.includes(':projectName')) {
+      path = path.replace(':projectName', DEFAULT_PROJECT_NAME);
+    }
+    /* FITRUE_isCE */
+
     history.push(path);
   };
   return (

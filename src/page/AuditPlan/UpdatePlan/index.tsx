@@ -68,7 +68,11 @@ const UpdateAuditPlan = () => {
       title={t('auditPlan.update.title')}
       extra={[<BackButton key="goBack" />]}
     >
-      <PlanForm submit={updateAuditPlan} defaultValue={defaultValue} />
+      <PlanForm
+        submit={updateAuditPlan}
+        defaultValue={defaultValue}
+        projectName={projectName}
+      />
       <Modal
         title={t('common.operateSuccess')}
         footer={null}
