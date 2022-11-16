@@ -51,8 +51,8 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
     useAsyncParams();
 
   React.useEffect(() => {
-    updateRuleTemplateList();
-    updateGlobalRuleTemplateList(props.projectName);
+    updateRuleTemplateList(props.projectName);
+    updateGlobalRuleTemplateList();
   }, [updateRuleTemplateList, props.projectName, updateGlobalRuleTemplateList]);
 
   React.useEffect(() => {

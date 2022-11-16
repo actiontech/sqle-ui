@@ -56,8 +56,8 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
 
   React.useEffect(() => {
     updateInstanceList({ project_name: projectName });
-    updateGlobalRuleTemplateList(projectName);
-    updateRuleTemplateList();
+    updateGlobalRuleTemplateList();
+    updateRuleTemplateList(projectName);
     updateDriverNameList();
   }, [
     projectName,
