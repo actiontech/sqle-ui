@@ -35,7 +35,7 @@ const PlanDetail = () => {
         </Col>
       </Row>
       <Route
-        path="/auditPlan/detail/:auditPlanName/report/:reportId"
+        path="/project/:projectName/auditPlan/detail/:auditPlanName/report/:reportId"
         component={AuditPlanReport}
       />
     </>
