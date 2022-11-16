@@ -6,7 +6,12 @@ const headerMenuKeys: Array<typeof globalRouterConfig[number]['key']> = [
   'dashboard',
   'rule',
   'sqlQuery',
+  /* IFTRUE_isEE */
   'projectList',
+  /* FITRUE_isEE */
+  /* IFTRUE_isCE */
+  'projectDetail',
+  /* FITRUE_isCE */
 ];
 
 const HeaderMenu: React.FC = () => {

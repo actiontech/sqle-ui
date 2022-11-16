@@ -4,6 +4,8 @@ import CustomLink from './CustomLink';
 import useCustomHistory from './useCustomHistory';
 import { Pathname, Search } from 'history';
 
+export const DEFAULT_PROJECT_NAME = 'default';
+
 export type CustomLinkProps = Omit<LinkProps, 'to'> & {
   to: Pathname;
   search?: Search;
@@ -13,10 +15,9 @@ export type ProjectDetailCustomLinkState = {
   projectName: string;
 };
 
-//todo 后续需要换个方式实现当前项目名称的保存与获取.
 export const useCurrentProjectName = () => {
   const location = useLocation<ProjectDetailCustomLinkState>();
-  return { projectName: location.state?.projectName ?? '' };
+  return { projectName: location.state?.projectName ?? DEFAULT_PROJECT_NAME };
 };
 
 export { CustomLink, useCustomHistory };

@@ -1,19 +1,16 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
-import { Button, Card, Space } from 'antd';
+import { Card, Space } from 'antd';
 import { cloneDeep } from 'lodash';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
 import workflow from '../../../api/workflow';
 import { translateTimeForRequest } from '../../../utils/Common';
-import { OrderListUrlParamsKey } from '../../Order/List/index.data';
 import CommonTable from '../CommonTable';
 import { customColumn } from './column';
 
 const RecentlyOrderPanel: React.FC = () => {
   const { t } = useTranslation();
-  const history = useHistory();
   const recentlyOrderResponse = useRequest(
     () => {
       const endTime = moment();
@@ -42,19 +39,6 @@ const RecentlyOrderPanel: React.FC = () => {
     }
   };
 
-  const showAll = () => {
-    const endTime = moment();
-    const startTime = cloneDeep(endTime).subtract(1, 'day');
-    const format = (time: moment.Moment) => {
-      return time.format('YYYY-MM-DD HH:mm:ss');
-    };
-    history.push(
-      `/order?${OrderListUrlParamsKey.executeTimeForm}=${format(startTime)}&${
-        OrderListUrlParamsKey.executeTimeTo
-      }=${format(endTime)}`
-    );
-  };
-
   return (
     <Card
       title={
@@ -66,13 +50,6 @@ const RecentlyOrderPanel: React.FC = () => {
               onClick={refreshTable}
               data-testid="refreshTable"
             />
-            <Button
-              type="link"
-              onClick={showAll}
-              style={{ padding: 0, marginLeft: 10 }}
-            >
-              {t('common.more')}
-            </Button>
           </div>
         </Space>
       }

@@ -10,7 +10,6 @@ import { PageBigFormLayout } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { checkCron } from '../../../hooks/useCron/cron.tool';
 import useGlobalRuleTemplate from '../../../hooks/useGlobalRuleTemplate';
-import useRuleTemplate from '../../../hooks/useRuleTemplate';
 import EventEmitter from '../../../utils/EventEmitter';
 import { nameRule } from '../../../utils/FormRule';
 import { AuditTaskType } from './AuditTaskType';
