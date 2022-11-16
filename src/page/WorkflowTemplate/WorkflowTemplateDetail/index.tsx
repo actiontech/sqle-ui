@@ -12,18 +12,19 @@ import {
 } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { IWorkFlowStepTemplateResV1 } from '../../../api/common';
 import workflow from '../../../api/workflow';
 import { Theme } from '../../../types/theme.type';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 
 const WorkflowTemplateDetail = () => {
-  const urlParams = useParams<{ workflowName: string }>();
   const { t } = useTranslation();
   const theme = useTheme<Theme>();
   const [reviewSteps, setReviewSteps] = useState<IWorkFlowStepTemplateResV1[]>(
     []
   );
+  const { projectName } = useCurrentProjectName();
   const [execSteps, setExecSteps] = useState<IWorkFlowStepTemplateResV1>({
     assignee_user_name_list: [],
     desc: '',
@@ -32,10 +33,10 @@ const WorkflowTemplateDetail = () => {
   const { data: workflowTemplate } = useRequest(
     () =>
       workflow.getWorkflowTemplateV1({
-        workflow_template_name: urlParams.workflowName,
+        project_name: projectName,
       }),
     {
-      ready: !!urlParams.workflowName,
+      ready: !!projectName,
       formatResult(res) {
         return res.data.data;
       },
@@ -58,14 +59,7 @@ const WorkflowTemplateDetail = () => {
   }, [workflowTemplate]);
 
   return (
-    <Card
-      title={t('workflowTemplate.detail.title.wrapper')}
-      extra={[
-        <Link to="/progress" key="bo-back">
-          <Button type="primary">{t('common.back')}</Button>
-        </Link>,
-      ]}
-    >
+    <Card title={t('workflowTemplate.detail.title.wrapper')}>
       <Row>
         <Col span={8}>
           <Typography.Title level={5}>

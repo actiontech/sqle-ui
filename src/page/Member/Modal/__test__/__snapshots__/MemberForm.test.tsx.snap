@@ -47,7 +47,7 @@ exports[`test MemberForm should match snapshot 1`] = `
       >
         <label
           class=""
-          for="isOwner"
+          for="isManager"
           title="member.memberForm.projectAdmin"
         >
           member.memberForm.projectAdmin
@@ -65,7 +65,7 @@ exports[`test MemberForm should match snapshot 1`] = `
             <button
               aria-checked="false"
               class="ant-switch"
-              id="isOwner"
+              id="isManager"
               role="switch"
               type="button"
             >
@@ -366,7 +366,7 @@ exports[`test MemberForm should match snapshot 2`] = `
       >
         <label
           class=""
-          for="isOwner"
+          for="isManager"
           title="member.memberForm.projectAdmin"
         >
           member.memberForm.projectAdmin
@@ -384,7 +384,7 @@ exports[`test MemberForm should match snapshot 2`] = `
             <button
               aria-checked="false"
               class="ant-switch"
-              id="isOwner"
+              id="isManager"
               role="switch"
               type="button"
             >

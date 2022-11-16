@@ -207,14 +207,6 @@ export const mockUseUsername = () => {
   return spy;
 };
 
-export const mockUseWorkflowTemplate = () => {
-  const spy = jest.spyOn(workflow, 'getWorkflowTemplateTipsV1');
-  spy.mockImplementation(() =>
-    resolveThreeSecond([{ workflow_template_name: 'workflow-template-name-1' }])
-  );
-  return spy;
-};
-
 export const mockDriver = () => {
   const spy = jest.spyOn(configuration, 'getDriversV1');
   spy.mockImplementation(() =>

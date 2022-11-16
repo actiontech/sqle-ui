@@ -4,7 +4,7 @@ import { Card, Button, Space, message, Table } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { IRoleResV2 } from '../../../../api/common';
+import { IRoleResV1 } from '../../../../api/common';
 import role from '../../../../api/role';
 import { ResponseCode } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
@@ -69,7 +69,7 @@ const RoleList = () => {
     );
   };
 
-  const updateRole = (role: IRoleResV2) => {
+  const updateRole = (role: IRoleResV1) => {
     dispatch(updateSelectRole({ role }));
     dispatch(
       updateUserManageModalStatus({

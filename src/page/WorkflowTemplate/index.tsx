@@ -1,10 +1,8 @@
 import { Card, PageHeader, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
 /* IFTRUE_isEE */
-import CreateWorkflowTemplate from './CreateWorkflowTemplate';
 import UpdateWorkflowTemplate from './UpdateWorkflowTemplate';
 import WorkflowTemplateDetail from './WorkflowTemplateDetail';
-import WorkflowTemplateList from './WorkflowTemplateList';
 /* FITRUE_isEE */
 import { Redirect, Route, Switch } from 'react-router-dom';
 
@@ -39,26 +37,16 @@ const WorkflowTemplate = () => {
         {/* IFTRUE_isEE */}
         <Switch>
           <Route
-            path="/progress"
-            exact={true}
-            component={WorkflowTemplateList}
-          />
-          <Route
-            path="/progress/detail/:workflowName"
+            path="/progress/detail"
             exact={true}
             component={WorkflowTemplateDetail}
-          />
-          <Route
-            path="/progress/create"
-            exact={true}
-            component={CreateWorkflowTemplate}
           />
           <Route
             path="/progress/update/:workflowName"
             exact={true}
             component={UpdateWorkflowTemplate}
           />
-          <Redirect to="/progress" />
+          <Redirect to="/progress/detail" />
         </Switch>
         {/* FITRUE_isEE */}
       </section>

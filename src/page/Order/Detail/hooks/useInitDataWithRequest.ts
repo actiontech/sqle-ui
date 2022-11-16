@@ -5,15 +5,18 @@ import { IAuditTaskResV1 } from '../../../../api/common';
 import task from '../../../../api/task';
 import workflow from '../../../../api/workflow';
 import { ResponseCode } from '../../../../data/common';
+import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 
 const useInitDataWithRequest = () => {
   const urlParams = useParams<{ orderId: string }>();
+  const { projectName } = useCurrentProjectName();
   const [taskInfos, setTaskInfos] = useState<IAuditTaskResV1[]>([]);
 
   const { data: orderInfo, refresh: refreshOrder } = useRequest(
     () =>
-      workflow.getWorkflowV2({
-        workflow_id: Number.parseInt(urlParams.orderId),
+      workflow.getWorkflowV1({
+        project_name: projectName,
+        workflow_name: urlParams.orderId,
       }),
     {
       formatResult(res) {

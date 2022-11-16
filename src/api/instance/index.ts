@@ -33,9 +33,7 @@ import {
   IListTableBySchemaParams,
   IListTableBySchemaReturn,
   IGetTableMetadataParams,
-  IGetTableMetadataReturn,
-  IGetInstanceWorkflowTemplateV1Params,
-  IGetInstanceWorkflowTemplateV1Return,
+  IGetTableMetadataReturn
 } from './index.d';
 
 class InstanceService extends ServiceBase {
@@ -267,21 +265,6 @@ class InstanceService extends ServiceBase {
 
     return this.get<IGetTableMetadataReturn>(
       `/v1/projects/${project_name}/instances/${instance_name}/schemas/${schema_name}/tables/${table_name}/metadata`,
-      paramsData,
-      options
-    );
-  }
-
-  public getInstanceWorkflowTemplateV1(
-    params: IGetInstanceWorkflowTemplateV1Params,
-    options?: AxiosRequestConfig
-  ) {
-    const paramsData = this.cloneDeep(params);
-    const instance_name = paramsData.instance_name;
-    delete paramsData.instance_name;
-
-    return this.get<IGetInstanceWorkflowTemplateV1Return>(
-      `/v1/instances/${instance_name}/workflow_template`,
       paramsData,
       options
     );

@@ -1,44 +1,44 @@
 import OrderStatusTag from '.';
 import { render } from '@testing-library/react';
-import { WorkflowRecordResV2StatusEnum } from '../../api/common.enum';
+import { WorkflowRecordResV1StatusEnum } from '../../api/common.enum';
 
 describe('OrderStatusTag', () => {
   test('should render username by redux state', () => {
     const { container, rerender } = render(<OrderStatusTag />);
     expect(container).toMatchSnapshot();
     rerender(
-      <OrderStatusTag status={WorkflowRecordResV2StatusEnum.canceled} />
+      <OrderStatusTag status={WorkflowRecordResV1StatusEnum.canceled} />
     );
     expect(container).toMatchSnapshot();
 
     rerender(
-      <OrderStatusTag status={WorkflowRecordResV2StatusEnum.finished} />
+      <OrderStatusTag status={WorkflowRecordResV1StatusEnum.finished} />
     );
     expect(container).toMatchSnapshot();
 
     rerender(
-      <OrderStatusTag status={WorkflowRecordResV2StatusEnum.wait_for_audit} />
+      <OrderStatusTag status={WorkflowRecordResV1StatusEnum.wait_for_audit} />
     );
     expect(container).toMatchSnapshot();
     rerender(
       <OrderStatusTag
-        status={WorkflowRecordResV2StatusEnum.wait_for_execution}
+        status={WorkflowRecordResV1StatusEnum.wait_for_execution}
       />
     );
     expect(container).toMatchSnapshot();
 
     rerender(
-      <OrderStatusTag status={WorkflowRecordResV2StatusEnum.rejected} />
+      <OrderStatusTag status={WorkflowRecordResV1StatusEnum.rejected} />
     );
     expect(container).toMatchSnapshot();
 
     rerender(
-      <OrderStatusTag status={WorkflowRecordResV2StatusEnum.exec_failed} />
+      <OrderStatusTag status={WorkflowRecordResV1StatusEnum.exec_failed} />
     );
     expect(container).toMatchSnapshot();
 
     rerender(
-      <OrderStatusTag status={WorkflowRecordResV2StatusEnum.executing} />
+      <OrderStatusTag status={WorkflowRecordResV1StatusEnum.executing} />
     );
     expect(container).toMatchSnapshot();
   });

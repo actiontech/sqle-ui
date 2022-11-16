@@ -1,24 +1,23 @@
 import i18n from 'i18next';
 import { Link } from 'react-router-dom';
-import { IWorkflowDetailResV2 } from '../../../api/common';
+import { IWorkflowDetailResV1 } from '../../../api/common';
 import OrderStatusTag from '../../../components/OrderStatusTag';
 import { TableColumn } from '../../../types/common.type';
 import { formatTime } from '../../../utils/Common';
 
-export const customColumn: () => TableColumn<IWorkflowDetailResV2> = () => {
+export const customColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
   return [
     {
-      dataIndex: 'subject',
+      dataIndex: 'workflow_name',
       title: () => i18n.t('order.order.name'),
-      render: (text, record) => {
-        return (
-          <Link
-            to={record.workflow_id ? `/order/${record.workflow_id}` : '/order'}
-          >
-            {text}
-          </Link>
-        );
+      render: (text) => {
+        return <Link to={text ? `/order/${text}` : '/order'}>{text}</Link>;
       },
+      width: 'auto',
+    },
+    {
+      dataIndex: 'project_name',
+      title: () => i18n.t('projectManage.projectForm.projectName'),
       width: 'auto',
     },
     {

@@ -10,7 +10,7 @@ export default {
     tableColumn: {
       username: '用户名',
       role: '角色',
-      isOwner: '项目拥有者',
+      isManager: '项目拥有者',
       confirmTitle: '确定要删除成员:{{name}}?',
     },
 

@@ -8,6 +8,7 @@ export type ProgressConfigProps = {
   submitLoading: boolean;
   prevStep: () => void;
   submitProgressConfig: (configs: IWorkFlowStepTemplateReqV1[]) => void;
+  projectName: string;
 };
 
 export type ProgressConfigItem = Required<

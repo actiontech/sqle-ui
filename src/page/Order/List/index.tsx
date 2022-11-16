@@ -14,21 +14,22 @@ import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import workflow from '../../../api/workflow';
-import { getWorkflowsV2FilterStatusEnum } from '../../../api/workflow/index.enum';
+import { getWorkflowsV1FilterStatusEnum } from '../../../api/workflow/index.enum';
 import useTable from '../../../hooks/useTable';
 import { translateTimeForRequest } from '../../../utils/Common';
 import { orderListColumn } from './column';
 import { OrderListUrlParamsKey } from './index.data';
 import OrderListFilterForm from './OrderListFilterForm';
 import { OrderListFilterFormFields } from './OrderListFilterForm/index.type';
-import { IWorkflowDetailResV2 } from '../../../api/common.d';
+import { IWorkflowDetailResV1 } from '../../../api/common.d';
 import useRole from '../../../hooks/useCurrentUser';
 import { ResponseCode } from '../../../data/common';
-import { WorkflowDetailResV2StatusEnum } from '../../../api/common.enum';
 import { Theme } from '../../../types/theme.type';
 import { useTheme } from '@material-ui/styles';
 import { TableRowSelection } from 'antd/lib/table/interface';
 import moment from 'moment';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
+import { WorkflowDetailResV1StatusEnum } from '../../../api/common.enum';
 
 const OrderList = () => {
   const history = useHistory();
@@ -42,6 +43,8 @@ const OrderList = () => {
   const [confirmLoading, setConfirmLoading] = React.useState<boolean>(false);
   const [visible, { setTrue: setVisibleTrue, setFalse: setVisibleFalse }] =
     useBoolean(false);
+
+  const { projectName } = useCurrentProjectName();
   const {
     pagination,
     filterForm,
@@ -65,7 +68,8 @@ const OrderList = () => {
         filter_order_executeTime,
         ...otherFilterInfo
       } = filterInfo;
-      return workflow.getWorkflowsV2({
+      return workflow.getWorkflowsV1({
+        project_name: projectName,
         page_index: pagination.pageIndex,
         page_size: pagination.pageSize,
         filter_create_time_from: translateTimeForRequest(
@@ -106,7 +110,7 @@ const OrderList = () => {
     if (searchStr.has(OrderListUrlParamsKey.status)) {
       filter.filter_status = searchStr.get(
         OrderListUrlParamsKey.status
-      ) as getWorkflowsV2FilterStatusEnum;
+      ) as getWorkflowsV1FilterStatusEnum;
     }
     if (searchStr.has(OrderListUrlParamsKey.createUsername)) {
       filter.filter_create_user_name = searchStr.get(
@@ -150,19 +154,20 @@ const OrderList = () => {
   const batchCancel = React.useCallback(() => {
     const canCancel: boolean = selectedRowKeys.every((e) => {
       const status = orderList?.list.filter(
-        (data) => `${data.workflow_id}` === e
+        (data) => `${data.workflow_name}` === e
       )[0]?.status;
       return (
-        status === WorkflowDetailResV2StatusEnum.wait_for_audit ||
-        status === WorkflowDetailResV2StatusEnum.wait_for_execution ||
-        status === WorkflowDetailResV2StatusEnum.rejected
+        status === WorkflowDetailResV1StatusEnum.wait_for_audit ||
+        status === WorkflowDetailResV1StatusEnum.wait_for_execution ||
+        status === WorkflowDetailResV1StatusEnum.rejected
       );
     });
     if (canCancel) {
       setConfirmLoading(true);
       workflow
         .batchCancelWorkflowsV1({
-          workflow_ids: selectedRowKeys,
+          workflow_names: selectedRowKeys,
+          project_name: projectName,
         })
         .then((res) => {
           if (res.data.code === ResponseCode.SUCCESS) {
@@ -182,7 +187,14 @@ const OrderList = () => {
       );
     }
     setVisibleFalse();
-  }, [orderList, selectedRowKeys, t, setVisibleFalse, refresh]);
+  }, [
+    selectedRowKeys,
+    setVisibleFalse,
+    orderList?.list,
+    projectName,
+    refresh,
+    t,
+  ]);
 
   return (
     <>
@@ -246,8 +258,8 @@ const OrderList = () => {
 
             <Table
               className="table-row-cursor"
-              rowKey={(record: IWorkflowDetailResV2) => {
-                return `${record?.workflow_id}`;
+              rowKey={(record: IWorkflowDetailResV1) => {
+                return `${record?.workflow_name}`;
               }}
               loading={loading}
               columns={orderListColumn()}
@@ -259,12 +271,12 @@ const OrderList = () => {
               onChange={tableChange}
               onRow={(record) => ({
                 onClick() {
-                  history.push(`/order/${record.workflow_id}`);
+                  history.push(`/order/${record.workflow_name}`);
                 },
               })}
               rowSelection={
                 isAdmin
-                  ? (rowSelection as TableRowSelection<IWorkflowDetailResV2>)
+                  ? (rowSelection as TableRowSelection<IWorkflowDetailResV1>)
                   : undefined
               }
             />

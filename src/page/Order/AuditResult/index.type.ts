@@ -3,11 +3,11 @@ import {
   IAuditTaskResV1,
   IGetWorkflowTasksItemV1,
   IMaintenanceTimeResV1,
-  IWorkflowResV2,
+  IWorkflowResV1,
 } from '../../../api/common';
 import {
   GetWorkflowTasksItemV1StatusEnum,
-  WorkflowRecordResV2StatusEnum,
+  WorkflowRecordResV1StatusEnum,
 } from '../../../api/common.enum';
 import { IGetAuditTaskSQLsV1Params } from '../../../api/task/index.d';
 import { I18nKey } from '../../../types/common.type';
@@ -26,11 +26,12 @@ export interface AuditResultCollectionProps {
   setAuditResultActiveKey: React.Dispatch<React.SetStateAction<string>>;
   updateTaskRecordTotalNum?: (taskId: string, sqlNumber: number) => void;
   showOverview?: boolean;
-  workflowId?: string;
-  refreshOrder?: () => Promise<IWorkflowResV2 | undefined>;
+  workflowName?: string;
+  refreshOrder?: () => Promise<IWorkflowResV1 | undefined>;
   refreshOverviewFlag?: boolean;
-  orderStatus?: WorkflowRecordResV2StatusEnum;
+  orderStatus?: WorkflowRecordResV1StatusEnum;
   getOverviewListSuccessHandle?: (list: IGetWorkflowTasksItemV1[]) => void;
+  projectName: string;
 }
 
 export type ScheduleTimeModalProps = {
@@ -59,7 +60,7 @@ export type OrderAuditResultFilterFields = Omit<
 >;
 
 export type WorkflowOverviewProps = {
-  workflowId: string;
+  workflowName: string;
 };
 
 export type MaintenanceTimeInfoType = Array<{

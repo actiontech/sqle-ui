@@ -65,10 +65,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
     return current && current > moment().endOf('day');
   };
 
-  const {
-    // generateWorkflowStepTypeSelectOption,
-    generateOrderStatusSelectOption,
-  } = useStaticStatus();
+  const { generateOrderStatusSelectOption } = useStaticStatus();
 
   const currentCollapse =
     props.collapse === undefined ? collapse : props.collapse;

@@ -23,8 +23,11 @@ class AuditWhitelistService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     return this.get<IGetAuditWhitelistV1Return>(
-      '/v1/audit_whitelist',
+      `/v1/projects/${project_name}/audit_whitelist`,
       paramsData,
       options
     );
@@ -35,8 +38,11 @@ class AuditWhitelistService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     return this.post<ICreateAuditWhitelistV1Return>(
-      '/v1/audit_whitelist',
+      `/v1/projects/${project_name}/audit_whitelist`,
       paramsData,
       options
     );
@@ -47,11 +53,14 @@ class AuditWhitelistService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     const audit_whitelist_id = paramsData.audit_whitelist_id;
     delete paramsData.audit_whitelist_id;
 
     return this.delete<IDeleteAuditWhitelistByIdV1Return>(
-      `/v1/audit_whitelist/${audit_whitelist_id}/`,
+      `/v1/projects/${project_name}/audit_whitelist/${audit_whitelist_id}/`,
       paramsData,
       options
     );
@@ -62,11 +71,14 @@ class AuditWhitelistService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     const audit_whitelist_id = paramsData.audit_whitelist_id;
     delete paramsData.audit_whitelist_id;
 
     return this.patch<IUpdateAuditWhitelistByIdV1Return>(
-      `/v1/audit_whitelist/${audit_whitelist_id}/`,
+      `/v1/projects/${project_name}/audit_whitelist/${audit_whitelist_id}/`,
       paramsData,
       options
     );

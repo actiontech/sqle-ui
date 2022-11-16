@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { useParams } from 'react-router-dom';
 import UpdateWorkflowTemplate from '.';
 import {
-  CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
+  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
   WorkFlowStepTemplateReqV1TypeEnum,
 } from '../../../api/common.enum';
 import workflow from '../../../api/workflow';
@@ -71,7 +71,7 @@ describe('UpdateWorkflowTemplate', () => {
       name: 'default',
       desc: 'desc1',
       allowSubmitWhenLessAuditLevel:
-        CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal,
+        WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.normal,
       instanceNameList: ['instanceList1'],
     });
     formWrapper.prop<Function>('submitProgress')([
@@ -96,7 +96,7 @@ describe('UpdateWorkflowTemplate', () => {
       workflow_template_name: 'default',
       desc: 'desc1',
       allow_submit_when_less_audit_level:
-        CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal,
+        WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.normal,
       instance_name_list: ['instanceList1'],
       workflow_step_template_list: [
         {

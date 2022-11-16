@@ -18,7 +18,7 @@ const RecentlyOrderPanel: React.FC = () => {
     () => {
       const endTime = moment();
       const startTime = cloneDeep(endTime).subtract(1, 'day');
-      return workflow.getWorkflowsV2({
+      return workflow.getGlobalWorkflowsV1({
         page_index: 1,
         page_size: 1000,
         filter_task_execute_start_time_from: translateTimeForRequest(startTime),

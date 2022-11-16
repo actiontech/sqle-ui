@@ -1,14 +1,14 @@
 import { Tag, Tooltip, Typography } from 'antd';
 import i18n from 'i18next';
-import { IWorkflowDetailResV2 } from '../../../api/common';
+import { IWorkflowDetailResV1 } from '../../../api/common';
 import OrderStatusTag from '../../../components/OrderStatusTag';
 import { TableColumn } from '../../../types/common.type';
 import { formatTime } from '../../../utils/Common';
 
-export const orderListColumn = (): TableColumn<IWorkflowDetailResV2> => {
+export const orderListColumn = (): TableColumn<IWorkflowDetailResV1> => {
   return [
     {
-      dataIndex: 'subject',
+      dataIndex: 'workflow_name',
       title: () => i18n.t('order.order.name'),
     },
     {

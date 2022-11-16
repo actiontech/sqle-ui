@@ -1,14 +1,15 @@
 import { FormInstance } from 'antd';
-import { IGetWorkflowsV2Params } from '../../../../api/workflow/index.d';
+import { IGetWorkflowsV1Params } from '../../../../api/workflow/index.d';
 
 export type OrderListFilterFormFields = Omit<
-  IGetWorkflowsV2Params,
+  IGetWorkflowsV1Params,
   | 'page_index'
   | 'page_size'
   | 'filter_create_time_from'
   | 'filter_create_time_to'
   | 'filter_task_execute_start_time_from'
   | 'filter_task_execute_start_time_to'
+  | 'project_name'
 > & {
   filter_order_createTime?: moment.Moment[];
   filter_order_executeTime?: moment.Moment[];

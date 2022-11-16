@@ -30,7 +30,7 @@ const AddMember: React.FC = () => {
     const values = await form.validateFields();
     const params: IAddMemberV1Params = {
       project_name: projectName,
-      is_owner: values.isOwner,
+      is_manager: values.isManager,
       roles: values.roles,
       user_name: values.username,
     };

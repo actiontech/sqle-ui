@@ -1,13 +1,13 @@
-import { IOperation, IRoleResV2 } from '../../../../api/common';
+import { IOperation, IRoleResV1 } from '../../../../api/common';
 import i18n from '../../../../locale';
 import { TableColumn } from '../../../../types/common.type';
 import { orderBy } from 'lodash';
 import { Space, Typography, Divider, Popconfirm } from 'antd';
 
 export const RoleListColumnFactory = (
-  updateRole: (role: IRoleResV2) => void,
+  updateRole: (role: IRoleResV1) => void,
   deleteRole: (roleName: string) => void
-): TableColumn<IRoleResV2, 'operator'> => {
+): TableColumn<IRoleResV1, 'operator'> => {
   return [
     {
       dataIndex: 'role_name',

@@ -12,7 +12,10 @@ import { formatTime } from '../../../../../utils/Common';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import { floatToPercent } from '../../../../../utils/Math';
 
-const PlanAuditRecord: React.FC<{ auditPlanName: string }> = (props) => {
+const PlanAuditRecord: React.FC<{
+  auditPlanName: string;
+  projectName: string;
+}> = (props) => {
   const { t } = useTranslation();
 
   const [pagination, setPagination] = useState({ pageIndex: 1, pageSize: 10 });
@@ -20,6 +23,7 @@ const PlanAuditRecord: React.FC<{ auditPlanName: string }> = (props) => {
   const { data, loading, refresh } = useRequest(
     () =>
       audit_plan.getAuditPlanReportsV1({
+        project_name: props.projectName,
         audit_plan_name: props.auditPlanName,
         page_index: pagination.pageIndex,
         page_size: pagination.pageSize,

@@ -5,19 +5,15 @@ import {
   getAuditTaskSQLsV1FilterAuditStatusEnum,
   getAuditTaskSQLsV1FilterExecStatusEnum,
 } from '../../api/task/index.enum';
+import { getGlobalWorkflowsV1FilterStatusEnum } from '../../api/workflow/index.enum';
 import {
-  getWorkflowListV1FilterCurrentStepTypeEnum,
-  getWorkflowsV2FilterStatusEnum,
-} from '../../api/workflow/index.enum';
-import {
-  CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
+  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
   RuleResV1LevelEnum,
 } from '../../api/common.enum';
 import {
   auditStatusDictionary,
   execStatusDictionary,
   orderStatusDictionary,
-  WorkflowStepTypeDictionary,
   ruleLevelDictionary,
   auditLevelDictionary,
 } from './index.data';
@@ -103,83 +99,72 @@ const useStaticStatus = () => {
     );
   }, [t]);
 
-  const generateWorkflowStepTypeSelectOption = React.useCallback(() => {
-    return (
-      <>
-        <Select.Option
-          key={getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}
-          value={getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}
-        >
-          {t(
-            WorkflowStepTypeDictionary[
-              getWorkflowListV1FilterCurrentStepTypeEnum.sql_review
-            ]
-          )}
-        </Select.Option>
-        <Select.Option
-          key={getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}
-          value={getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}
-        >
-          {t(
-            WorkflowStepTypeDictionary[
-              getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute
-            ]
-          )}
-        </Select.Option>
-      </>
-    );
-  }, [t]);
-
   const generateOrderStatusSelectOption = React.useCallback(() => {
     return (
       <>
         <Select.Option
-          key={getWorkflowsV2FilterStatusEnum.wait_for_audit}
-          value={getWorkflowsV2FilterStatusEnum.wait_for_audit}
-        >
-          {t(
-            orderStatusDictionary[getWorkflowsV2FilterStatusEnum.wait_for_audit]
-          )}
-        </Select.Option>
-        <Select.Option
-          key={getWorkflowsV2FilterStatusEnum.wait_for_execution}
-          value={getWorkflowsV2FilterStatusEnum.wait_for_execution}
+          key={getGlobalWorkflowsV1FilterStatusEnum.wait_for_audit}
+          value={getGlobalWorkflowsV1FilterStatusEnum.wait_for_audit}
         >
           {t(
             orderStatusDictionary[
-              getWorkflowsV2FilterStatusEnum.wait_for_execution
+              getGlobalWorkflowsV1FilterStatusEnum.wait_for_audit
             ]
           )}
         </Select.Option>
         <Select.Option
-          key={getWorkflowsV2FilterStatusEnum.executing}
-          value={getWorkflowsV2FilterStatusEnum.executing}
+          key={getGlobalWorkflowsV1FilterStatusEnum.wait_for_execution}
+          value={getGlobalWorkflowsV1FilterStatusEnum.wait_for_execution}
         >
-          {t(orderStatusDictionary[getWorkflowsV2FilterStatusEnum.executing])}
+          {t(
+            orderStatusDictionary[
+              getGlobalWorkflowsV1FilterStatusEnum.wait_for_execution
+            ]
+          )}
         </Select.Option>
         <Select.Option
-          key={getWorkflowsV2FilterStatusEnum.finished}
-          value={getWorkflowsV2FilterStatusEnum.finished}
+          key={getGlobalWorkflowsV1FilterStatusEnum.executing}
+          value={getGlobalWorkflowsV1FilterStatusEnum.executing}
         >
-          {t(orderStatusDictionary[getWorkflowsV2FilterStatusEnum.finished])}
+          {t(
+            orderStatusDictionary[
+              getGlobalWorkflowsV1FilterStatusEnum.executing
+            ]
+          )}
         </Select.Option>
         <Select.Option
-          key={getWorkflowsV2FilterStatusEnum.rejected}
-          value={getWorkflowsV2FilterStatusEnum.rejected}
+          key={getGlobalWorkflowsV1FilterStatusEnum.finished}
+          value={getGlobalWorkflowsV1FilterStatusEnum.finished}
         >
-          {t(orderStatusDictionary[getWorkflowsV2FilterStatusEnum.rejected])}
+          {t(
+            orderStatusDictionary[getGlobalWorkflowsV1FilterStatusEnum.finished]
+          )}
         </Select.Option>
         <Select.Option
-          key={getWorkflowsV2FilterStatusEnum.exec_failed}
-          value={getWorkflowsV2FilterStatusEnum.exec_failed}
+          key={getGlobalWorkflowsV1FilterStatusEnum.rejected}
+          value={getGlobalWorkflowsV1FilterStatusEnum.rejected}
         >
-          {t(orderStatusDictionary[getWorkflowsV2FilterStatusEnum.exec_failed])}
+          {t(
+            orderStatusDictionary[getGlobalWorkflowsV1FilterStatusEnum.rejected]
+          )}
         </Select.Option>
         <Select.Option
-          key={getWorkflowsV2FilterStatusEnum.canceled}
-          value={getWorkflowsV2FilterStatusEnum.canceled}
+          key={getGlobalWorkflowsV1FilterStatusEnum.exec_failed}
+          value={getGlobalWorkflowsV1FilterStatusEnum.exec_failed}
         >
-          {t(orderStatusDictionary[getWorkflowsV2FilterStatusEnum.canceled])}
+          {t(
+            orderStatusDictionary[
+              getGlobalWorkflowsV1FilterStatusEnum.exec_failed
+            ]
+          )}
+        </Select.Option>
+        <Select.Option
+          key={getGlobalWorkflowsV1FilterStatusEnum.canceled}
+          value={getGlobalWorkflowsV1FilterStatusEnum.canceled}
+        >
+          {t(
+            orderStatusDictionary[getGlobalWorkflowsV1FilterStatusEnum.canceled]
+          )}
         </Select.Option>
       </>
     );
@@ -278,59 +263,59 @@ const useStaticStatus = () => {
       <>
         <Select.Option
           value={
-            CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal
+            WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.normal
           }
           key={
-            CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal
+            WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.normal
           }
         >
           {t(
             auditLevelDictionary[
-              CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
+              WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum
                 .normal
             ]
           )}
         </Select.Option>
         <Select.Option
           value={
-            CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.notice
+            WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.notice
           }
           key={
-            CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.notice
+            WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.notice
           }
         >
           {t(
             auditLevelDictionary[
-              CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
+              WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum
                 .notice
             ]
           )}
         </Select.Option>
         <Select.Option
           value={
-            CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.warn
+            WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.warn
           }
           key={
-            CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.warn
+            WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.warn
           }
         >
           {t(
             auditLevelDictionary[
-              CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.warn
+              WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.warn
             ]
           )}
         </Select.Option>
         <Select.Option
           value={
-            CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.error
+            WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.error
           }
           key={
-            CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.error
+            WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.error
           }
         >
           {t(
             auditLevelDictionary[
-              CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.error
+              WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.error
             ]
           )}
         </Select.Option>
@@ -341,7 +326,6 @@ const useStaticStatus = () => {
   return {
     generateAuditStatusSelectOption,
     generateExecStatusSelectOption,
-    generateWorkflowStepTypeSelectOption,
     generateOrderStatusSelectOption,
     // generateSqlTaskStatusSelectOption,
     getRuleLevelStatusSelectOption,

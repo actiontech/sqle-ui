@@ -44,7 +44,7 @@ const MemberForm: React.FC<MemberFormProps> = ({
       </Form.Item>
 
       <Form.Item
-        name="isOwner"
+        name="isManager"
         label={t('member.memberForm.projectAdmin')}
         valuePropName="checked"
       >

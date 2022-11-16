@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { IWorkflowStepResV1 } from '../../../../api/common';
 import {
-  WorkflowRecordResV2StatusEnum,
+  WorkflowRecordResV1StatusEnum,
   WorkflowStepResV1StateEnum,
   WorkflowStepResV1TypeEnum,
 } from '../../../../api/common.enum';
@@ -153,7 +153,7 @@ export const useGenerateOrderStepInfo = ({
       if (readonly) {
         return null;
       }
-      if (currentOrderStatus === WorkflowRecordResV2StatusEnum.rejected) {
+      if (currentOrderStatus === WorkflowRecordResV1StatusEnum.rejected) {
         if (step.operation_user_name === username) {
           return modifySqlNode;
         }
@@ -171,7 +171,7 @@ export const useGenerateOrderStepInfo = ({
         return null;
       }
 
-      if (currentOrderStatus === WorkflowRecordResV2StatusEnum.wait_for_audit) {
+      if (currentOrderStatus === WorkflowRecordResV1StatusEnum.wait_for_audit) {
         return (
           <Space>
             {sqlReviewNode}
@@ -184,12 +184,12 @@ export const useGenerateOrderStepInfo = ({
         return genRejectedNode();
       }
 
-      if (currentOrderStatus === WorkflowRecordResV2StatusEnum.rejected) {
+      if (currentOrderStatus === WorkflowRecordResV1StatusEnum.rejected) {
         return t('order.operator.alreadyRejected');
       }
 
       if (
-        currentOrderStatus === WorkflowRecordResV2StatusEnum.canceled &&
+        currentOrderStatus === WorkflowRecordResV1StatusEnum.canceled &&
         orderStateIsInitialized(step.state)
       ) {
         return t('order.operator.alreadyClosed');
@@ -209,7 +209,7 @@ export const useGenerateOrderStepInfo = ({
         );
       }
       if (
-        currentOrderStatus === WorkflowRecordResV2StatusEnum.wait_for_execution
+        currentOrderStatus === WorkflowRecordResV1StatusEnum.wait_for_execution
       ) {
         return (
           <>
@@ -225,12 +225,12 @@ export const useGenerateOrderStepInfo = ({
         return genRejectedNode();
       }
 
-      if (currentOrderStatus === WorkflowRecordResV2StatusEnum.rejected) {
+      if (currentOrderStatus === WorkflowRecordResV1StatusEnum.rejected) {
         return t('order.operator.alreadyRejected');
       }
 
       if (
-        currentOrderStatus === WorkflowRecordResV2StatusEnum.canceled &&
+        currentOrderStatus === WorkflowRecordResV1StatusEnum.canceled &&
         orderStateIsInitialized(step.state)
       ) {
         return t('order.operator.alreadyClosed');
@@ -336,7 +336,7 @@ export const useGenerateOrderStepInfo = ({
 
     if (
       orderTypeIsExecute(step.type) &&
-      currentOrderStatus === WorkflowRecordResV2StatusEnum.executing
+      currentOrderStatus === WorkflowRecordResV1StatusEnum.executing
     ) {
       icon = <ClockCircleOutlined className="timeline-clock-icon" />;
     }

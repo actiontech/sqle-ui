@@ -1,4 +1,4 @@
-import { CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum } from '../../../../api/common.enum';
+import { WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum } from '../../../../api/common.enum';
 import { SqlInfoFormFields } from '../../Create/SqlInfoForm/index.type';
 import { SqlStatementFields } from '../../SqlStatementFormTabs';
 
@@ -40,12 +40,12 @@ export const taskInfosLeverIsError = [
   {
     instanceName: 'test1',
     currentAuditLevel:
-      CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.error,
+      WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.error,
   },
   {
     instanceName: 'test2',
     currentAuditLevel:
-      CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal,
+      WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.normal,
   },
 ];
 
@@ -53,11 +53,11 @@ export const taskInfosLeverIsNormal = [
   {
     instanceName: 'test3',
     currentAuditLevel:
-      CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal,
+      WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.normal,
   },
   {
     instanceName: 'test4',
     currentAuditLevel:
-      CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal,
+      WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.normal,
   },
 ];

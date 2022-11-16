@@ -7,7 +7,7 @@ import {
 } from '../../../api/common';
 import {
   GetWorkflowTasksItemV1StatusEnum,
-  WorkflowRecordResV2StatusEnum,
+  WorkflowRecordResV1StatusEnum,
 } from '../../../api/common.enum';
 import {
   getAuditTaskSQLsV1FilterAuditStatusEnum,
@@ -139,7 +139,7 @@ export const auditResultOverviewColumn: (
     taskId?: string
   ) => Promise<void>,
   currentUserName: string,
-  orderStatus?: WorkflowRecordResV2StatusEnum
+  orderStatus?: WorkflowRecordResV1StatusEnum
 ) => TableColumn<IGetWorkflowTasksItemV1, 'operator'> = (
   sqlExecuteHandle,
   openScheduleModal,
@@ -154,7 +154,7 @@ export const auditResultOverviewColumn: (
   ) => {
     if (
       !status ||
-      orderStatus === WorkflowRecordResV2StatusEnum.rejected ||
+      orderStatus === WorkflowRecordResV1StatusEnum.rejected ||
       !currentStepAssigneeUsernameList.includes(currentUsername)
     ) {
       return false;
@@ -173,7 +173,7 @@ export const auditResultOverviewColumn: (
   ) => {
     if (
       !status ||
-      orderStatus === WorkflowRecordResV2StatusEnum.rejected ||
+      orderStatus === WorkflowRecordResV1StatusEnum.rejected ||
       !currentStepAssigneeUsernameList.includes(currentUsername)
     ) {
       return false;
@@ -185,7 +185,7 @@ export const auditResultOverviewColumn: (
   const enableCancelSqlScheduleTime = (
     status?: GetWorkflowTasksItemV1StatusEnum
   ) => {
-    if (!status || orderStatus === WorkflowRecordResV2StatusEnum.rejected) {
+    if (!status || orderStatus === WorkflowRecordResV1StatusEnum.rejected) {
       return false;
     }
     return status === GetWorkflowTasksItemV1StatusEnum.exec_scheduled;

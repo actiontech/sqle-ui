@@ -85,7 +85,7 @@ describe('test UpdateMember', () => {
       project_name: projectName,
       roles: mockMemberList[0].roles,
       user_name: mockMemberList[0].user_name,
-      is_owner: true,
+      is_manager: true,
     });
 
     await waitFor(() => {

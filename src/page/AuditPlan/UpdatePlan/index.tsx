@@ -9,6 +9,7 @@ import BackButton from '../../../components/BackButton';
 import { ResponseCode } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import EventEmitter from '../../../utils/EventEmitter';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import PlanForm from '../PlanForm';
 import { PlanFormField } from '../PlanForm/index.type';
 import { UpdateAuditPlanUrlParams } from './index.type';
@@ -19,7 +20,7 @@ const UpdateAuditPlan = () => {
   const [visible, { setTrue: openResultModal, setFalse: closeResultModal }] =
     useBoolean();
   const [defaultValue, setDefaultValue] = useState<IAuditPlanResV1>();
-
+  const { projectName } = useCurrentProjectName();
   const updateAuditPlan = (values: PlanFormField) => {
     return audit_plan
       .updateAuditPlanV1({
@@ -29,6 +30,7 @@ const UpdateAuditPlan = () => {
         audit_plan_name: urlParams.auditPlanName,
         audit_plan_params: values.asyncParams,
         rule_template_name: values.ruleTemplateName,
+        project_name: projectName,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -47,6 +49,7 @@ const UpdateAuditPlan = () => {
     audit_plan
       .getAuditPlanV1({
         audit_plan_name: urlParams.auditPlanName,
+        project_name: projectName,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {

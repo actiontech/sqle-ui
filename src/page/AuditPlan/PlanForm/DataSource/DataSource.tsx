@@ -33,7 +33,10 @@ const DataSource: React.FC<DataSourceProps> = (props) => {
   }, [defaultValue, projectName]);
 
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
-  const { generateInstanceSchemaSelectOption } = useInstanceSchema(dataSource);
+  const { generateInstanceSchemaSelectOption } = useInstanceSchema(
+    projectName,
+    dataSource
+  );
 
   const handleDataSourceChange = (dataSource: string) => {
     props.dataSourceChange?.(dataSource);

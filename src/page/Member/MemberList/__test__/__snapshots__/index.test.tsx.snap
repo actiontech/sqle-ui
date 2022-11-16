@@ -362,7 +362,7 @@ exports[`test MemberList should match snapshot 1`] = `
                         <th
                           class="ant-table-cell"
                         >
-                          member.memberList.tableColumn.isOwner
+                          member.memberList.tableColumn.isManager
                         </th>
                         <th
                           class="ant-table-cell"
@@ -782,7 +782,7 @@ exports[`test MemberList should match snapshot 2`] = `
                         <th
                           class="ant-table-cell"
                         >
-                          member.memberList.tableColumn.isOwner
+                          member.memberList.tableColumn.isManager
                         </th>
                         <th
                           class="ant-table-cell"

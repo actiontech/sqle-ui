@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { WorkflowRecordResV2StatusEnum } from '../../../../../api/common.enum';
+import { WorkflowDetailResV1StatusEnum } from '../../../../../api/common.enum';
 import { getBySelector } from '../../../../../testUtils/customQuery';
 import { mockUseSelector } from '../../../../../testUtils/mockRedux';
 import OrderStep from '../index';
@@ -70,7 +70,7 @@ describe('test OrderSteps', () => {
     const { rerender } = render(
       <OrderStep
         {...defaultProps}
-        currentOrderStatus={WorkflowRecordResV2StatusEnum.wait_for_audit}
+        currentOrderStatus={WorkflowDetailResV1StatusEnum.wait_for_audit}
         canRejectOrder={false}
         pass={mockPass}
         stepList={waitAuditStepList}
@@ -99,7 +99,7 @@ describe('test OrderSteps', () => {
     rerender(
       <OrderStep
         {...defaultProps}
-        currentOrderStatus={WorkflowRecordResV2StatusEnum.wait_for_audit}
+        currentOrderStatus={WorkflowDetailResV1StatusEnum.wait_for_audit}
         canRejectOrder={true}
         pass={mockPass}
         stepList={waitAuditStepList}
@@ -150,7 +150,7 @@ describe('test OrderSteps', () => {
       <OrderStep
         {...defaultProps}
         stepList={rejectedStepList}
-        currentOrderStatus={WorkflowRecordResV2StatusEnum.rejected}
+        currentOrderStatus={WorkflowDetailResV1StatusEnum.rejected}
       />
     );
     expect(
@@ -162,7 +162,7 @@ describe('test OrderSteps', () => {
       <OrderStep
         {...defaultProps}
         stepList={rejectedStepList}
-        currentOrderStatus={WorkflowRecordResV2StatusEnum.rejected}
+        currentOrderStatus={WorkflowDetailResV1StatusEnum.rejected}
         modifySql={mockModifySql}
       />
     );
@@ -181,7 +181,7 @@ describe('test OrderSteps', () => {
       <OrderStep
         {...defaultProps}
         stepList={executeStepList}
-        currentOrderStatus={WorkflowRecordResV2StatusEnum.wait_for_execution}
+        currentOrderStatus={WorkflowDetailResV1StatusEnum.wait_for_execution}
         currentStep={3}
         executing={mockExecuting}
       />
@@ -215,7 +215,7 @@ describe('test OrderSteps', () => {
       <OrderStep
         {...defaultProps}
         stepList={executeStepList}
-        currentOrderStatus={WorkflowRecordResV2StatusEnum.wait_for_execution}
+        currentOrderStatus={WorkflowDetailResV1StatusEnum.wait_for_execution}
         currentStep={3}
         executing={mockExecuting}
         maintenanceTimeInfo={[

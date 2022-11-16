@@ -1,5 +1,5 @@
 import { FormInstance } from 'antd';
-import { WorkflowResV2ModeEnum } from '../../../../api/common.enum';
+import { WorkflowResV1ModeEnum } from '../../../../api/common.enum';
 import { SqlStatementFields } from '../../SqlStatementFormTabs';
 
 export type SqlInfoFormProps = {
@@ -32,7 +32,7 @@ export type DatabaseInfoProps = Pick<
 > & {
   setInstanceNames: React.Dispatch<React.SetStateAction<InstanceNamesType>>;
   setChangeSqlModeDisabled: (disabled: boolean) => void;
-  currentSqlMode: WorkflowResV2ModeEnum;
+  currentSqlMode: WorkflowResV1ModeEnum;
 };
 
 export type SqlContentFields = Pick<

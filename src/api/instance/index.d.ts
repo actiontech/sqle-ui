@@ -13,8 +13,7 @@ import {
   IGetRulesResV1,
   IGetInstanceSchemaResV1,
   IListTableBySchemaResV1,
-  IGetTableMetadataResV1,
-  IGetInstanceWorkflowTemplateResV1,
+  IGetTableMetadataResV1
 } from '../common.d';
 
 import { getInstanceTipListV1FunctionalModuleEnum } from './index.enum';
@@ -146,10 +145,3 @@ export interface IGetTableMetadataParams {
 }
 
 export interface IGetTableMetadataReturn extends IGetTableMetadataResV1 {}
-
-export interface IGetInstanceWorkflowTemplateV1Params {
-  instance_name: string;
-}
-
-export interface IGetInstanceWorkflowTemplateV1Return
-  extends IGetInstanceWorkflowTemplateResV1 {}

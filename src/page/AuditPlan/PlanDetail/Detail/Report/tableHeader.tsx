@@ -1,5 +1,5 @@
 import { Typography } from 'antd';
-import { IAuditPlanReportSQLResV2 } from '../../../../../api/common';
+import { IAuditPlanReportSQLResV1 } from '../../../../../api/common';
 import AuditResultErrorMessage from '../../../../../components/AuditResultErrorMessage';
 import i18n from '../../../../../locale';
 import { TableColumn } from '../../../../../types/common.type';
@@ -7,7 +7,7 @@ import HighlightCode from '../../../../../utils/HighlightCode';
 
 export const AuditPlanReportTableHeader = (
   clickAnalyze: (sqlNum: number) => void
-): TableColumn<IAuditPlanReportSQLResV2, 'operator'> => {
+): TableColumn<IAuditPlanReportSQLResV1, 'operator'> => {
   return [
     {
       dataIndex: 'audit_plan_report_sql',

@@ -1,6 +1,6 @@
 import { IWorkflowStepResV1 } from '../../../../../api/common';
 import {
-  WorkflowRecordResV2StatusEnum,
+  WorkflowRecordResV1StatusEnum,
   WorkflowStepResV1StateEnum,
   WorkflowStepResV1TypeEnum,
 } from '../../../../../api/common.enum';
@@ -135,7 +135,7 @@ export const otherStepList: IWorkflowStepResV1[] = [
 export const defaultProps: OrderStepsProps = {
   currentStep: undefined,
   readonly: false,
-  currentOrderStatus: WorkflowRecordResV2StatusEnum.finished,
+  currentOrderStatus: WorkflowRecordResV1StatusEnum.finished,
   tasksStatusNumber: {
     executing: 0,
     failed: 0,
