@@ -3,7 +3,7 @@ import { Button, Card, Result, Row } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import {
   IRuleReqV1,
   IRuleResV1,
@@ -11,10 +11,7 @@ import {
 } from '../../../api/common';
 import ruleTemplateService from '../../../api/rule_template';
 import { ResponseCode } from '../../../data/common';
-import {
-  CustomLink,
-  useCurrentProjectName,
-} from '../../ProjectManage/ProjectDetail';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import RuleTemplateForm from '../RuleTemplateForm';
 import { RuleTemplateBaseInfoFields } from '../RuleTemplateForm/BaseInfoForm/index.type';
 
@@ -101,9 +98,9 @@ const UpdateRuleTemplate = () => {
       <Card
         title={t('ruleTemplate.updateRuleTemplate.title')}
         extra={[
-          <CustomLink to="/rule/template" key="back" projectName={projectName}>
+          <Link to={`/project/${projectName}/rule/template`} key="back">
             <Button type="primary">{t('common.back')}</Button>
-          </CustomLink>,
+          </Link>,
         ]}
       >
         <RuleTemplateForm
@@ -124,9 +121,9 @@ const UpdateRuleTemplate = () => {
             title={t('ruleTemplate.updateRuleTemplate.successTitle')}
           />
           <Row justify="center">
-            <CustomLink to="/rule/template" projectName={projectName}>
+            <Link to={`/project/${projectName}/rule/template`}>
               <Button type="primary">{t('ruleTemplate.backToList')}</Button>
-            </CustomLink>
+            </Link>
           </Row>
         </RuleTemplateForm>
       </Card>

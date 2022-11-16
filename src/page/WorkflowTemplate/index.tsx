@@ -36,16 +36,16 @@ const WorkflowTemplate = () => {
         {/* IFTRUE_isEE */}
         <Switch>
           <Route
-            path="/progress"
+            path="/project/:projectName/progress"
             exact={true}
             component={WorkflowTemplateDetail}
           />
           <Route
-            path="/progress/update/:workflowName"
+            path="/project/:projectName/progress/update/:workflowName"
             exact={true}
             component={UpdateWorkflowTemplate}
           />
-          <Redirect to={{ pathname: '/progress' }} />
+          <Redirect to="/project/:projectName/progress" />
         </Switch>
         {/* FITRUE_isEE */}
       </section>

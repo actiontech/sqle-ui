@@ -27,15 +27,12 @@ import { Theme } from '../../../types/theme.type';
 import { useTheme } from '@material-ui/styles';
 import { TableRowSelection } from 'antd/lib/table/interface';
 import moment from 'moment';
-import {
-  CustomLink,
-  useCurrentProjectName,
-  useCustomHistory,
-} from '../../ProjectManage/ProjectDetail';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import { WorkflowDetailResV1StatusEnum } from '../../../api/common.enum';
+import { Link, useHistory } from 'react-router-dom';
 
 const OrderList = () => {
-  const history = useCustomHistory();
+  const history = useHistory();
   const { t } = useTranslation();
   const location = useLocation();
   const theme = useTheme<Theme>();
@@ -205,13 +202,9 @@ const OrderList = () => {
         title={t('order.orderList.pageTitle')}
         ghost={false}
         extra={[
-          <CustomLink
-            to="/order/create"
-            projectName={projectName}
-            key="createOrder"
-          >
+          <Link to={`/project/${projectName}/order/create`} key="createOrder">
             <Button type="primary">{t('order.createOrder.title')}</Button>
-          </CustomLink>,
+          </Link>,
         ]}
       >
         {t('order.orderList.pageDesc')}
@@ -278,7 +271,9 @@ const OrderList = () => {
               onChange={tableChange}
               onRow={(record) => ({
                 onClick() {
-                  history.push(`/order/${record.workflow_name}`, projectName);
+                  history.push(
+                    `/project/${projectName}/order/${record.workflow_name}`
+                  );
                 },
               })}
               rowSelection={

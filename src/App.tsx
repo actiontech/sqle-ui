@@ -96,7 +96,7 @@ function App() {
                   <EmptyBox if={!loading}>
                     <Switch>
                       {registerRouter(globalRouterConfig)}
-                      <Redirect to="/dashboard" />
+                      <Redirect to="/" />
                     </Switch>
                   </EmptyBox>
                 </Suspense>

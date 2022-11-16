@@ -38,7 +38,7 @@ const Login = () => {
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           dispatch(updateToken({ token: res.data.data?.token ?? '' }));
-          history.push('/dashboard');
+          history.push('/');
         }
       });
   };

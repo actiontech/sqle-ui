@@ -14,7 +14,11 @@ const ProjectDetail: React.FC = () => {
       <Suspense fallback={<HeaderProgress />}>
         <Switch>
           {registerRouter(projectDetailRouterConfig)}
-          <Redirect to={{ pathname: '/order', state: { projectName } }} />
+          <Redirect
+            to={{
+              pathname: `/project/${projectName}/order`,
+            }}
+          />
         </Switch>
       </Suspense>
     </ProjectDetailLayout>

@@ -2,7 +2,7 @@ import { Button, Card, Result, Row } from 'antd';
 import { AxiosResponse } from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import {
   IWorkFlowStepTemplateReqV1,
   IWorkflowTemplateDetailResV1,
@@ -11,10 +11,7 @@ import { UpdateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum } from '..
 import workflow from '../../../api/workflow';
 import { IUpdateWorkflowTemplateV1Return } from '../../../api/workflow/index.d';
 import { ResponseCode } from '../../../data/common';
-import {
-  CustomLink,
-  useCurrentProjectName,
-} from '../../ProjectManage/ProjectDetail';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import WorkflowTemplateForm from '../WorkflowTemplateForm';
 import { BaseFormFields } from '../WorkflowTemplateForm/BaseForm/index.type';
 
@@ -75,9 +72,9 @@ const UpdateWorkflowTemplate = () => {
     <Card
       title={t('workflowTemplate.update.title.wrapper')}
       extra={[
-        <CustomLink to="/progress" key="go-back" projectName={projectName}>
+        <Link to={`/project/${projectName}/progress`} key="go-back">
           <Button type="primary">{t('common.back')}</Button>
-        </CustomLink>,
+        </Link>,
       ]}
     >
       <WorkflowTemplateForm
@@ -91,14 +88,13 @@ const UpdateWorkflowTemplate = () => {
           title={t('workflowTemplate.update.result.title')}
         />
         <Row justify="center">
-          <CustomLink
-            to={`/progress/detail/${workflowTemplate?.workflow_template_name}`}
-            projectName={projectName}
+          <Link
+            to={`/project/${projectName}/progress/detail/${workflowTemplate?.workflow_template_name}`}
           >
             <Button type="primary">
               {t('workflowTemplate.update.result.showNow')}
             </Button>
-          </CustomLink>
+          </Link>
         </Row>
       </WorkflowTemplateForm>
     </Card>

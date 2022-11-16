@@ -87,15 +87,13 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
       const newRouters = auditPlanTypes.map<
         RouterItem<ProjectDetailRouterItemKeyLiteral> & { search?: string }
       >((e) => ({
-        path: `/auditPlan`,
+        path: `/project/:projectName/auditPlan?type=${e.type}`,
         key: `auditPlan${e.type}` as ProjectDetailRouterItemKeyLiteral,
         label: 'menu',
         labelWithoutI18n: e.desc,
         component: AuditPlan,
-        search: `type=${e.type}`,
       }));
       plan.components = [...plan.components!, ...newRouters];
-
       setInnerRouterConfig(newRouterConfig);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

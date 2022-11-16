@@ -69,7 +69,7 @@ const MoreAction: React.FC = () => {
 
                 <Menu.Item
                   key="ruleTemplate"
-                  onClick={() => history.push('/global/rule/template')}
+                  onClick={() => history.push('/rule/template')}
                 >
                   {t('menu.ruleTemplate')}
                 </Menu.Item>

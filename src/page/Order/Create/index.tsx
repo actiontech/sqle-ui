@@ -18,6 +18,7 @@ import { cloneDeep } from 'lodash';
 import moment from 'moment';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { AuditTaskResV1SqlSourceEnum } from '../../../api/common.enum';
 import workflow from '../../../api/workflow';
 import { ICreateWorkflowV1Params } from '../../../api/workflow/index.d';
@@ -27,10 +28,7 @@ import EmitterKey from '../../../data/EmitterKey';
 import { Theme } from '../../../types/theme.type';
 import EventEmitter from '../../../utils/EventEmitter';
 import { nameRule } from '../../../utils/FormRule';
-import {
-  CustomLink,
-  useCurrentProjectName,
-} from '../../ProjectManage/ProjectDetail';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import AuditResultCollection from '../AuditResult/AuditResultCollection';
 import useAuditOrder from '../hooks/useAuditOrder';
 import SqlInfoForm from './SqlInfoForm';
@@ -302,9 +300,9 @@ const CreateOrder = () => {
           status="success"
           title={t('order.create.success')}
           subTitle={
-            <CustomLink to="/order" projectName={projectName}>
+            <Link to={`/project/${projectName}/order`}>
               {t('order.create.guide')} {'>'}
-            </CustomLink>
+            </Link>
           }
           extra={[
             <Button key="close" onClick={closeModal}>

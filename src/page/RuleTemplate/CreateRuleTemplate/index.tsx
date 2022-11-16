@@ -4,13 +4,11 @@ import { useForm } from 'antd/lib/form/Form';
 import { cloneDeep } from 'lodash';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { IRuleReqV1, IRuleResV1 } from '../../../api/common';
 import ruleTemplate from '../../../api/rule_template';
 import { ResponseCode } from '../../../data/common';
-import {
-  CustomLink,
-  useCurrentProjectName,
-} from '../../ProjectManage/ProjectDetail';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import RuleTemplateForm from '../RuleTemplateForm';
 import { RuleTemplateBaseInfoFields } from '../RuleTemplateForm/BaseInfoForm/index.type';
 
@@ -85,9 +83,9 @@ const CreateRuleTemplate = () => {
       <Card
         title={t('ruleTemplate.createRuleTemplate.title')}
         extra={[
-          <CustomLink to="/rule/template" projectName={projectName} key="back">
+          <Link to={`/project/${projectName}/rule/template`} key="back">
             <Button type="primary">{t('common.back')}</Button>
-          </CustomLink>,
+          </Link>,
         ]}
       >
         <RuleTemplateForm
@@ -116,9 +114,9 @@ const CreateRuleTemplate = () => {
             }
           />
           <Row justify="center">
-            <CustomLink to="/rule/template" projectName={projectName}>
+            <Link to={`/project/${projectName}/rule/template`}>
               <Button type="primary">{t('ruleTemplate.backToList')}</Button>
-            </CustomLink>
+            </Link>
           </Row>
         </RuleTemplateForm>
       </Card>

@@ -4,6 +4,7 @@ import { Button, Card, message, Space, Table } from 'antd';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import audit_plan from '../../../api/audit_plan';
 import { IAuditPlanResV1 } from '../../../api/common';
 import { ResponseCode } from '../../../data/common';
@@ -14,11 +15,7 @@ import {
   updateAuditPlanModalStatus,
   updateSelectAuditPlan,
 } from '../../../store/auditPlan';
-import {
-  CustomLink,
-  useCurrentProjectName,
-  useCustomHistory,
-} from '../../ProjectManage/ProjectDetail';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import PlanListModal from './Modal';
 import PlanListFilterForm from './PlanListFilterForm';
 import { PlanListFilterFormFields } from './PlanListFilterForm/index.type';
@@ -26,7 +23,7 @@ import { planListTableHeader } from './tableColumn';
 
 const PlanList = () => {
   const { t } = useTranslation();
-  const history = useCustomHistory();
+  const history = useHistory();
   const [
     removePending,
     { setTrue: startRemoveAuditPlan, setFalse: removeAuditPlanFinish },
@@ -138,13 +135,12 @@ const PlanList = () => {
         </Space>
       }
       extra={[
-        <CustomLink
+        <Link
           key="create-audit-plan"
-          to="/auditPlan/create"
-          projectName={projectName}
+          to={`/project/${projectName}/auditPlan/create`}
         >
           <Button type="primary">{t('auditPlan.action.create')}</Button>
-        </CustomLink>,
+        </Link>,
       ]}
     >
       <PlanListFilterForm submit={setFilterInfo} />
@@ -160,7 +156,7 @@ const PlanList = () => {
         onRow={(record) => ({
           onClick: () => {
             history.push(
-              `/auditPlan/detail/${record.audit_plan_name}`,
+              `/project/${projectName}/auditPlan/detail/${record.audit_plan_name}`,
               projectName
             );
           },

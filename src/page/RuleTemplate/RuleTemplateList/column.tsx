@@ -8,10 +8,10 @@ import {
   Tag,
   Typography,
 } from 'antd';
+import { Link } from 'react-router-dom';
 import { IProjectRuleTemplateResV1 } from '../../../api/common';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
-import { CustomLink } from '../../ProjectManage/ProjectDetail';
 
 export const RuleTemplateListTableColumnFactory = (
   deleteTemplate: (name: string) => void,
@@ -49,12 +49,11 @@ export const RuleTemplateListTableColumnFactory = (
       render: (_, record) => {
         return (
           <Space className="user-cell flex-end-horizontal">
-            <CustomLink
-              to={`/rule/template/update/${record.rule_template_name}`}
-              projectName={projectName}
+            <Link
+              to={`/project/${projectName}/rule/template/update/${record.rule_template_name}`}
             >
               {i18n.t('common.edit')}
-            </CustomLink>
+            </Link>
             <Divider type="vertical" />
             <Popconfirm
               title={i18n.t('ruleTemplate.deleteRuleTemplate.tips', {

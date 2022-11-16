@@ -4,6 +4,7 @@ import { Button, Card, message, Space, Table } from 'antd';
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { IProjectRuleTemplateResV1 } from '../../../api/common';
 import ruleTemplate from '../../../api/rule_template';
 import EmptyBox from '../../../components/EmptyBox';
@@ -17,10 +18,7 @@ import {
   updateSelectRuleTemplate,
 } from '../../../store/ruleTemplate';
 import EventEmitter from '../../../utils/EventEmitter';
-import {
-  CustomLink,
-  useCurrentProjectName,
-} from '../../ProjectManage/ProjectDetail';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import { RuleTemplateListTableColumnFactory } from './column';
 import RuleTemplateListModal from './Modal';
 
@@ -143,17 +141,16 @@ const RuleTemplateList = () => {
           </Space>
         }
         extra={[
-          <CustomLink
-            to="/rule/template/create"
+          <Link
+            to={`/project/${projectName}/rule/template/create`}
             key="createRuleTemplate"
-            projectName={projectName}
           >
             <EmptyBox if={isAdmin}>
               <Button type="primary">
                 {t('ruleTemplate.createRuleTemplate.button')}
               </Button>
             </EmptyBox>
-          </CustomLink>,
+          </Link>,
         ]}
       >
         <Table

@@ -23,7 +23,7 @@ describe('test Nav/Header/HeaderMenu', () => {
       'header-menu-item-active'
     );
     fireEvent.click(screen.getByText('menu.dashboard'));
-    expect(history.location.pathname).toBe('/dashboard');
+    expect(history.location.pathname).toBe('/');
     expect(screen.getByText('menu.dashboard')).toHaveClass(
       'header-menu-item-active'
     );
