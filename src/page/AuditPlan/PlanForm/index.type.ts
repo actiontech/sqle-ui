@@ -18,4 +18,5 @@ export type PlanFormField = {
 export type PlanFormProps = {
   submit: (data: PlanFormField) => Promise<void>;
   defaultValue?: IAuditPlanResV1;
+  projectName: string;
 };

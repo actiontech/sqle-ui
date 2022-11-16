@@ -36,8 +36,9 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
   const selectMenu = useCallback(
     (config: RouterItem<string>[], pathname: string): string[] => {
       for (const route of config) {
-        if (route.path === pathname && route.hideInSliderMenu !== true) {
-          if (pathname === '/auditPlan') {
+        const realPath = route.path?.replace(':projectName', projectName);
+        if (realPath === pathname && route.hideInSliderMenu !== true) {
+          if (pathname === `/project/${projectName}/auditPlan`) {
             const params = new URLSearchParams(location.search);
             if (params.has('type')) {
               return [`auditPlan${params.get('type')}`];
@@ -54,7 +55,7 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
       }
       return [];
     },
-    [location.search]
+    [location.search, projectName]
   );
 
   const selectMenuWrapper = useCallback((): string[] => {

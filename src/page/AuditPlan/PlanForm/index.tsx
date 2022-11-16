@@ -33,11 +33,10 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
   >([]);
 
   const { mergeFromValueIntoParams } = useAsyncParams();
-  const {
-    generateGlobalRuleTemplateSelectOption,
-    loading: getRuleTemplateLoading,
-    updateGlobalRuleTemplateList,
-  } = useGlobalRuleTemplate();
+  const { globalRuleTemplateList, updateGlobalRuleTemplateList } =
+    useGlobalRuleTemplate();
+
+  const { ruleTemplateList, updateRuleTemplateList } = useRuleTemplate();
 
   const submit = (values: PlanFormField) => {
     if (values.params && asyncParams) {
@@ -84,9 +83,15 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
         setDbType(props.defaultValue.audit_plan_db_type);
       }
     }
+    updateRuleTemplateList(props.projectName);
     updateGlobalRuleTemplateList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.defaultValue]);
+  }, [
+    form,
+    props.defaultValue,
+    props.projectName,
+    updateGlobalRuleTemplateList,
+    updateRuleTemplateList,
+  ]);
 
   useEffect(() => {
     const reset = () => {
@@ -137,8 +142,19 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
         tooltip={t('auditPlan.planForm.ruleTemplateNameTips')}
       >
         <Select placeholder={t('common.form.placeholder.select')}>
-          {!getRuleTemplateLoading &&
-            generateGlobalRuleTemplateSelectOption(dbType)}
+          {[...ruleTemplateList, ...globalRuleTemplateList].map((template) => {
+            if (template.db_type === dbType) {
+              return (
+                <Select.Option
+                  key={template.rule_template_name}
+                  value={template.rule_template_name ?? ''}
+                >
+                  {template.rule_template_name}
+                </Select.Option>
+              );
+            }
+            return null;
+          })}
         </Select>
       </Form.Item>
 
