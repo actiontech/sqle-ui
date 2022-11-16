@@ -139,7 +139,7 @@ const RuleTemplateList = () => {
           </Space>
         }
         extra={[
-          <Link to="/global/rule/template/create" key="createRuleTemplate">
+          <Link to="/rule/template/create" key="createRuleTemplate">
             <EmptyBox if={isAdmin}>
               <Button type="primary">
                 {t('ruleTemplate.createRuleTemplate.button')}

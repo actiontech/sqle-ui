@@ -52,9 +52,7 @@ export const RuleTemplateListTableColumnFactory = (
       render: (_, record) => {
         return (
           <Space className="user-cell flex-end-horizontal">
-            <Link
-              to={`/global/rule/template/update/${record.rule_template_name}`}
-            >
+            <Link to={`/rule/template/update/${record.rule_template_name}`}>
               {i18n.t('common.edit')}
             </Link>
             <Divider type="vertical" />

@@ -3,14 +3,21 @@ import i18n from 'i18next';
 import { formatTime } from '../../../utils/Common';
 import { Link } from 'react-router-dom';
 import { IWorkflowDetailResV1 } from '../../../api/common';
+import EmptyBox from '../../../components/EmptyBox';
 
 export const commonColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
   return [
     {
       dataIndex: 'workflow_name',
       title: () => i18n.t('order.order.name'),
-      render: (text) => {
-        return <Link to={text ? `/order/${text}` : '/order'}>{text}</Link>;
+      render: (text, record) => {
+        return (
+          <EmptyBox if={text && record.project_name} defaultNode={text}>
+            <Link to={`/project/${record.project_name}/order/${text}`}>
+              {text}
+            </Link>
+          </EmptyBox>
+        );
       },
       width: 'auto',
     },
