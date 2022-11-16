@@ -47,10 +47,10 @@ const PlanDetailPage = () => {
       <section className="padding-content">
         <Switch>
           <Route
-            path="/auditPlan/detail/:auditPlanName"
+            path="/project/:projectName/auditPlan/detail/:auditPlanName"
             component={PlanDetail}
           />
-          <Redirect to={{ pathname: '/auditPlan', state: { projectName } }} />
+          <Redirect to="/project/:projectName/auditPlan" />
         </Switch>
       </section>
     </>
