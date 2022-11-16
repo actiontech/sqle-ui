@@ -4,12 +4,12 @@ import React from 'react';
 import instance from '../../api/instance';
 import { ResponseCode } from '../../data/common';
 
-const useInstanceSchema = (projectName?: string, instanceName?: string) => {
+const useInstanceSchema = (projectName: string, instanceName?: string) => {
   const [schemaList, setSchemaList] = React.useState<string[]>([]);
   const [loading, { setTrue, setFalse }] = useBoolean();
 
   const updateSchemaList = React.useCallback(() => {
-    if (instanceName === undefined || projectName === undefined) {
+    if (!instanceName || !projectName) {
       setSchemaList([]);
       return;
     }
