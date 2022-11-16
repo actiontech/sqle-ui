@@ -12,24 +12,27 @@ const useRuleTemplate = () => {
   >([]);
   const [loading, { setTrue, setFalse }] = useBoolean();
 
-  const updateRuleTemplateList = React.useCallback(() => {
-    setTrue();
-    ruleTemplate
-      .getRuleTemplateTipsV1({})
-      .then((res) => {
-        if (res.data.code === ResponseCode.SUCCESS) {
-          setRuleTemplate(res.data?.data ?? []);
-        } else {
+  const updateRuleTemplateList = React.useCallback(
+    (projectName: string) => {
+      setTrue();
+      ruleTemplate
+        .getProjectRuleTemplateTipsV1({ project_name: projectName })
+        .then((res) => {
+          if (res.data.code === ResponseCode.SUCCESS) {
+            setRuleTemplate(res.data?.data ?? []);
+          } else {
+            setRuleTemplate([]);
+          }
+        })
+        .catch(() => {
           setRuleTemplate([]);
-        }
-      })
-      .catch(() => {
-        setRuleTemplate([]);
-      })
-      .finally(() => {
-        setFalse();
-      });
-  }, [setFalse, setTrue]);
+        })
+        .finally(() => {
+          setFalse();
+        });
+    },
+    [setFalse, setTrue]
+  );
 
   const generateRuleTemplateSelectOption = React.useCallback(
     (db_type: string = ruleTemplateListDefaultKey) => {
