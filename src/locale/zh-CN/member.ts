@@ -69,5 +69,6 @@ export default {
   roleSelector: {
     role: '角色',
     instance: '数据源',
+    addRole: '添加角色与数据源的绑定',
   },
 };

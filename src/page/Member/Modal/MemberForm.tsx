@@ -1,10 +1,10 @@
-import { Form, Input, Switch } from 'antd';
-import { Rule } from 'antd/lib/form';
+import { Form, Input, Select, Switch } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { ModalFormLayout } from '../../../data/common';
-import { nameRule } from '../../../utils/FormRule';
 import { MemberFormProps } from './index.type';
 import RoleSelector from '../Common/RoleSelector';
+import useUsername from '../../../hooks/useUsername';
+import { useEffect } from 'react';
 
 const MemberForm: React.FC<MemberFormProps> = ({
   form,
@@ -12,20 +12,11 @@ const MemberForm: React.FC<MemberFormProps> = ({
   projectName,
 }) => {
   const { t } = useTranslation();
-  const userNameRules = (): Rule[] => {
-    const baseRules = [
-      {
-        required: true,
-        message: t('common.form.rule.require', {
-          name: t('user.userForm.username'),
-        }),
-      },
-    ];
-    if (isUpdate) {
-      return baseRules;
-    }
-    return [...baseRules, ...nameRule()];
-  };
+  const { updateUsernameList, generateUsernameSelectOption } = useUsername();
+
+  useEffect(() => {
+    updateUsernameList();
+  }, [updateUsernameList]);
 
   return (
     <Form form={form} {...ModalFormLayout}>
@@ -33,20 +24,30 @@ const MemberForm: React.FC<MemberFormProps> = ({
         name="username"
         label={t('member.memberForm.username')}
         validateFirst={true}
-        rules={userNameRules()}
+        rules={[
+          {
+            required: true,
+            message: t('common.form.rule.require', {
+              name: t('user.userForm.username'),
+            }),
+          },
+        ]}
       >
-        <Input
+        <Select
           disabled={isUpdate}
-          placeholder={t('common.form.placeholder.input', {
+          placeholder={t('common.form.placeholder.select', {
             name: t('member.memberForm.username'),
           })}
-        />
+        >
+          {generateUsernameSelectOption()}
+        </Select>
       </Form.Item>
 
       <Form.Item
         name="isManager"
         label={t('member.memberForm.projectAdmin')}
         valuePropName="checked"
+        initialValue={false}
       >
         <Switch />
       </Form.Item>

@@ -99,7 +99,7 @@ const UserGroupList: React.FC = () => {
       title={
         <Space>
           {t('member.memberGroupList.title')}
-          <Button>
+          <Button onClick={refresh}>
             <SyncOutlined spin={loading} />
           </Button>
         </Space>

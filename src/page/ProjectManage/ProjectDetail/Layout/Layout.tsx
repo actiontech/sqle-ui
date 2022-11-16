@@ -107,7 +107,7 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
         <ProjectInfoBox />
         <Menu
           selectedKeys={selectMenuWrapper()}
-          defaultOpenKeys={['order', 'plane']}
+          defaultOpenKeys={['order']}
           mode="inline"
           theme="dark"
         >

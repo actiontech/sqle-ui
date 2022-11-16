@@ -7,6 +7,7 @@ import {
   Typography,
 } from 'antd';
 import { IBindRoleReqV1, IGetMemberRespDataV1 } from '../../../api/common';
+import EmptyBox from '../../../components/EmptyBox';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import renderRolesInfo from '../Common/renderRolesInfo';
@@ -46,7 +47,7 @@ const MemberListTableColumnFactory: (
           return i18n.t('common.unknownStatus');
         }
 
-        return <Checkbox checked={isManager} />;
+        return <Checkbox checked={isManager} disabled={true} />;
       },
     },
     {
@@ -61,22 +62,22 @@ const MemberListTableColumnFactory: (
             >
               {i18n.t('common.edit')}
             </Typography.Link>
-            {/* <EmptyBox if={record.user_name !== 'admin'}> */}
-            <Divider type="vertical" />
-            <Popconfirm
-              title={i18n.t('member.memberList.tableColumn.confirmTitle', {
-                name: record.user_name,
-              })}
-              placement="topRight"
-              okText={i18n.t('common.ok')}
-              cancelText={i18n.t('common.cancel')}
-              onConfirm={deleteAction.bind(null, record.user_name ?? '')}
-            >
-              <Typography.Text type="danger" className="pointer">
-                {i18n.t('common.delete')}
-              </Typography.Text>
-            </Popconfirm>
-            {/* </EmptyBox> */}
+            <EmptyBox if={record.user_name !== 'admin'}>
+              <Divider type="vertical" />
+              <Popconfirm
+                title={i18n.t('member.memberList.tableColumn.confirmTitle', {
+                  name: record.user_name,
+                })}
+                placement="topRight"
+                okText={i18n.t('common.ok')}
+                cancelText={i18n.t('common.cancel')}
+                onConfirm={deleteAction.bind(null, record.user_name ?? '')}
+              >
+                <Typography.Text type="danger" className="pointer">
+                  {i18n.t('common.delete')}
+                </Typography.Text>
+              </Popconfirm>
+            </EmptyBox>
           </Space>
         );
       },

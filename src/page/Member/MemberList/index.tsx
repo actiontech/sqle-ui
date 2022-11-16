@@ -98,7 +98,7 @@ const MemberList: React.FC = () => {
       title={
         <Space>
           {t('member.memberList.title')}
-          <Button>
+          <Button onClick={refresh}>
             <SyncOutlined spin={loading} />
           </Button>
         </Space>
