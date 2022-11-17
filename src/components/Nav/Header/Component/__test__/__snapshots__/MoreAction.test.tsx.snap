@@ -54,8 +54,8 @@ exports[`test Nav/Header/MoreAction should match snapshot 1`] = `
             class="ant-dropdown-menu-item-divider"
           />
           <li
-            class="ant-dropdown-menu-item ant-dropdown-menu-item-only-child"
-            data-menu-id="rc-menu-uuid-test-reportStatistics"
+            class="ant-dropdown-menu-item ant-dropdown-menu-item-active ant-dropdown-menu-item-only-child"
+            data-menu-id="rc-menu-uuid-test-undefined"
             role="menuitem"
             tabindex="-1"
           >
@@ -217,24 +217,6 @@ exports[`test Nav/Header/MoreAction should match snapshot 2`] = `
               system.log.version
             </span>
           </li>
-          <li
-            class="ant-dropdown-menu-item-divider"
-          />
-          <li
-            class="ant-dropdown-menu-item ant-dropdown-menu-item-only-child"
-            data-menu-id="rc-menu-uuid-test-reportStatistics"
-            role="menuitem"
-            tabindex="-1"
-          >
-            <span
-              class="ant-dropdown-menu-title-content"
-            >
-              menu.reportStatistics
-            </span>
-          </li>
-          <li
-            class="ant-dropdown-menu-item-divider"
-          />
         </ul>
         <div
           aria-hidden="true"

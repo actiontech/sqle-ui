@@ -1,15 +1,17 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Button, Card, message, Space, Table } from 'antd';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { IGetMemberGroupRespDataV1 } from '../../../api/common';
 import user_group from '../../../api/user_group';
 import { IGetMemberGroupsV1Params } from '../../../api/user_group/index.d';
+import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { ModalName } from '../../../data/ModalName';
+import useCurrentUser from '../../../hooks/useCurrentUser';
 import useTable from '../../../hooks/useTable';
 import {
   updateMemberModalStatus,
@@ -26,10 +28,19 @@ const UserGroupList: React.FC = () => {
   const dispatch = useDispatch();
   const { projectName } = useCurrentProjectName();
 
+  const { isAdmin, isProjectManager } = useCurrentUser();
+
+  const actionPermission = useMemo(() => {
+    return isAdmin || isProjectManager(projectName);
+  }, [isAdmin, isProjectManager, projectName]);
+
   const { pagination, tableChange, filterInfo, setFilterInfo } =
     useTable<MemberGroupListFilterFormFields>();
 
   const createAction = () => {
+    if (!actionPermission) {
+      return;
+    }
     dispatch(
       updateMemberModalStatus({
         modalName: ModalName.Add_Member_Group,
@@ -39,6 +50,9 @@ const UserGroupList: React.FC = () => {
   };
 
   const updateAction = (record: IGetMemberGroupRespDataV1) => {
+    if (!actionPermission) {
+      return;
+    }
     dispatch(updateSelectMemberGroup({ memberGroup: record }));
     dispatch(
       updateMemberModalStatus({
@@ -48,6 +62,9 @@ const UserGroupList: React.FC = () => {
     );
   };
   const deleteAction = async (userGroupName: string) => {
+    if (!actionPermission) {
+      return;
+    }
     const res = await user_group.deleteMemberGroupV1({
       user_group_name: userGroupName,
       project_name: projectName,
@@ -105,9 +122,11 @@ const UserGroupList: React.FC = () => {
         </Space>
       }
       extra={[
-        <Button key="create-user" type="primary" onClick={createAction}>
-          {t('member.memberGroupList.createAction')}
-        </Button>,
+        <EmptyBox if={actionPermission} key="create-user-group">
+          <Button type="primary" onClick={createAction}>
+            {t('member.memberGroupList.createAction')}
+          </Button>
+        </EmptyBox>,
       ]}
     >
       <MemberGroupListFilterForm submit={setFilterInfo} />
@@ -115,7 +134,11 @@ const UserGroupList: React.FC = () => {
         rowKey="user_group_name"
         loading={loading}
         dataSource={data?.list}
-        columns={MemberGroupListTableColumnFactory(updateAction, deleteAction)}
+        columns={MemberGroupListTableColumnFactory(
+          updateAction,
+          deleteAction,
+          actionPermission
+        )}
         pagination={{
           total: data?.total,
           showSizeChanger: true,

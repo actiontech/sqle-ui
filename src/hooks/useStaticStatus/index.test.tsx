@@ -74,23 +74,4 @@ describe('useRuleTemplate', () => {
     await screen.findAllByText('order.status.wait_for_audit');
     expect(baseElementWithOptions).toMatchSnapshot();
   });
-
-  test('should render static option for workflow step type', async () => {
-    const { result } = renderHook(() => useStaticStatus());
-
-    const { baseElement: baseElementWithOptions } = render(
-      <Select data-testid="testId" value="value1">
-        {result.current.generateWorkflowStepTypeSelectOption()}
-      </Select>
-    );
-    expect(baseElementWithOptions).toMatchSnapshot();
-
-    reactAct(() => {
-      fireEvent.mouseDown(screen.getByText('value1'));
-      jest.runAllTimers();
-    });
-
-    await screen.findAllByText('order.workflowStatus.review');
-    expect(baseElementWithOptions).toMatchSnapshot();
-  });
 });

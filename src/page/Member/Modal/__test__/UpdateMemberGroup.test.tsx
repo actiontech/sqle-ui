@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
 import {
@@ -9,6 +9,7 @@ import {
 import {
   mockUseInstance,
   mockUseRole,
+  mockUseUserGroup,
 } from '../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../utils/EventEmitter';
 import { mockMemberGroupList } from '../../MemberGroupList/__test__/utils';
@@ -17,24 +18,24 @@ import { mockUpdateMemberGroup } from './utils';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useLocation: jest.fn(),
+  useParams: jest.fn(),
 }));
-const projectName = 'test';
+const projectName = 'default';
 
 describe('test UpdateMemberGroup', () => {
   let updateMemberGroupSpy: jest.SpyInstance;
   let dispatchSpy: jest.SpyInstance;
   const emitSpy = jest.spyOn(EventEmitter, 'emit');
 
-  const useLocationMock: jest.Mock = useLocation as jest.Mock;
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   beforeEach(() => {
     mockUseRole();
+    mockUseUserGroup();
     mockUseInstance();
     updateMemberGroupSpy = mockUpdateMemberGroup();
-    useLocationMock.mockImplementation(() => {
-      return { state: { projectName } };
-    });
+    useParamsMock.mockReturnValue({ projectName });
+
     dispatchSpy = mockUseDispatch().scopeDispatch;
     mockUseSelector({
       member: {
@@ -51,7 +52,6 @@ describe('test UpdateMemberGroup', () => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
-    useLocationMock.mockRestore();
   });
 
   test('should match snapshot', async () => {
@@ -123,8 +123,8 @@ describe('test UpdateMemberGroup', () => {
     expect(dispatchSpy).toBeCalledTimes(0);
 
     expect(
-      screen.getByLabelText('member.memberGroupForm.userGroupName')
-    ).toHaveValue(mockMemberGroupList[0].user_group_name);
+      screen.getAllByText(mockMemberGroupList[0].user_group_name!)[0]
+    ).toHaveClass('ant-select-selection-item');
     expect(
       screen.getByLabelText('member.memberGroupForm.userGroupName')
     ).toBeDisabled();
@@ -132,8 +132,8 @@ describe('test UpdateMemberGroup', () => {
     fireEvent.click(screen.getByText('common.close'));
 
     expect(
-      screen.getByLabelText('member.memberGroupForm.userGroupName')
-    ).toHaveValue('');
+      screen.queryAllByText(mockMemberGroupList[0].user_group_name!)[0]
+    ).toBeUndefined();
 
     expect(dispatchSpy).toBeCalledTimes(1);
     expect(dispatchSpy).toBeCalledWith({

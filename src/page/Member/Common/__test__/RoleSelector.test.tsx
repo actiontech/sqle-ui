@@ -9,6 +9,7 @@ import {
 import RoleSelector from '../RoleSelector';
 
 describe('test RoleSelector', () => {
+  const projectName = 'default';
   let useRoleSpy: jest.SpyInstance;
   let useInstanceSpy: jest.SpyInstance;
   beforeEach(() => {
@@ -28,7 +29,7 @@ describe('test RoleSelector', () => {
     const { result } = renderHook(() => useForm());
     return render(
       <Form form={result.current[0]}>
-        <RoleSelector />
+        <RoleSelector projectName={projectName} />
       </Form>
     );
   };
@@ -47,14 +48,23 @@ describe('test RoleSelector', () => {
     renderComponent();
 
     expect(screen.queryAllByLabelText('member.roleSelector.role').length).toBe(
+      0
+    );
+    expect(
+      screen.queryAllByLabelText('member.roleSelector.instance').length
+    ).toBe(0);
+    expect(screen.queryByTestId('remove-item')).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('member.roleSelector.addRole'));
+
+    expect(screen.queryAllByLabelText('member.roleSelector.role').length).toBe(
       1
     );
     expect(
       screen.queryAllByLabelText('member.roleSelector.instance').length
     ).toBe(1);
-    expect(screen.queryByTestId('remove-item')).not.toBeInTheDocument();
 
-    fireEvent.click(screen.getByText('common.add'));
+    fireEvent.click(screen.getByText('member.roleSelector.addRole'));
 
     expect(screen.queryAllByLabelText('member.roleSelector.role').length).toBe(
       2
@@ -62,9 +72,10 @@ describe('test RoleSelector', () => {
     expect(
       screen.queryAllByLabelText('member.roleSelector.instance').length
     ).toBe(2);
-    expect(screen.queryByTestId('remove-item')).toBeInTheDocument();
 
-    fireEvent.click(screen.getByTestId('remove-item'));
+    expect(screen.queryAllByTestId('remove-item')[0]).toBeInTheDocument();
+
+    fireEvent.click(screen.getAllByTestId('remove-item')[0]);
     expect(screen.queryAllByLabelText('member.roleSelector.role').length).toBe(
       1
     );

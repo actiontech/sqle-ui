@@ -1,10 +1,10 @@
-import { Form, Input } from 'antd';
-import { Rule } from 'antd/lib/form';
+import { Form, Select } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { ModalFormLayout } from '../../../data/common';
-import { nameRule } from '../../../utils/FormRule';
 import { MemberGroupFormProps } from './index.type';
 import RoleSelector from '../Common/RoleSelector';
+import useUserGroup from '../../../hooks/useUserGroup';
+import { useEffect } from 'react';
 
 const MemberGroupForm: React.FC<MemberGroupFormProps> = ({
   form,
@@ -13,20 +13,11 @@ const MemberGroupForm: React.FC<MemberGroupFormProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const userNameRules = (): Rule[] => {
-    const baseRules = [
-      {
-        required: true,
-        message: t('common.form.rule.require', {
-          name: t('user.userForm.username'),
-        }),
-      },
-    ];
-    if (isUpdate) {
-      return baseRules;
-    }
-    return [...baseRules, ...nameRule()];
-  };
+  const { updateUserGroupList, generateUserGroupSelectOption } = useUserGroup();
+
+  useEffect(() => {
+    updateUserGroupList();
+  }, [updateUserGroupList]);
 
   return (
     <Form form={form} {...ModalFormLayout}>
@@ -34,14 +25,23 @@ const MemberGroupForm: React.FC<MemberGroupFormProps> = ({
         name="userGroupName"
         label={t('member.memberGroupForm.userGroupName')}
         validateFirst={true}
-        rules={userNameRules()}
+        rules={[
+          {
+            required: true,
+            message: t('common.form.rule.require', {
+              name: t('user.userForm.username'),
+            }),
+          },
+        ]}
       >
-        <Input
+        <Select
           disabled={isUpdate}
-          placeholder={t('common.form.placeholder.input', {
+          placeholder={t('common.form.placeholder.select', {
             name: t('member.memberGroupForm.userGroupName'),
           })}
-        />
+        >
+          {generateUserGroupSelectOption()}
+        </Select>
       </Form.Item>
 
       <RoleSelector projectName={projectName} />

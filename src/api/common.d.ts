@@ -2020,6 +2020,8 @@ export interface IUpdateWorkflowTemplateReqV1 {
 }
 
 export interface IUserBindProjectResV1 {
+  isManager?: boolean;
+
   projectName?: string;
 }
 
@@ -2217,8 +2219,6 @@ export interface IWorkflowResV1 {
   record?: IWorkflowRecordResV1;
 
   record_history_list?: IWorkflowRecordResV1[];
-
-  subject?: string;
 
   workflow_name?: string;
 }

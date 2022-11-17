@@ -1,11 +1,22 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import MemberGroupList from '..';
+import { SystemRole } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
+import { mockBindProjects } from '../../../../hooks/useCurrentUser/index.test';
 import { selectOptionByIndex } from '../../../../testUtils/customQuery';
-import { mockUseDispatch } from '../../../../testUtils/mockRedux';
+import {
+  mockUseDispatch,
+  mockUseSelector,
+} from '../../../../testUtils/mockRedux';
 import {
   mockUseInstance,
   mockUseUserGroup,
@@ -19,12 +30,12 @@ import {
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useLocation: jest.fn(),
+  useParams: jest.fn(),
 }));
-const projectName = 'test';
+const projectName = mockBindProjects[0].projectName;
 
 describe('test MemberGroupList', () => {
-  const useLocationMock: jest.Mock = useLocation as jest.Mock;
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
   let getMemberGroupsSpy: jest.SpyInstance;
   let deleteMemberGroupSpy: jest.SpyInstance;
   let dispatchSpy: jest.SpyInstance;
@@ -34,10 +45,11 @@ describe('test MemberGroupList', () => {
     deleteMemberGroupSpy = mockDeleteMemberGroup();
     mockUseUserGroup();
     mockUseInstance();
-    useLocationMock.mockImplementation(() => {
-      return { state: { projectName } };
-    });
+    useParamsMock.mockReturnValue({ projectName });
     dispatchSpy = mockUseDispatch().scopeDispatch;
+    mockUseSelector({
+      user: { role: SystemRole.admin, bindProjects: mockBindProjects },
+    });
 
     jest.useFakeTimers();
   });
@@ -45,7 +57,6 @@ describe('test MemberGroupList', () => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
-    useLocationMock.mockRestore();
   });
 
   test('should match snapshot', async () => {
@@ -210,6 +221,66 @@ describe('test MemberGroupList', () => {
     });
     expect(
       screen.queryByText('member.memberGroupList.deleteSuccessTips')
+    ).not.toBeInTheDocument();
+  });
+
+  test('should hide the Create, Add, Edit feature when not currently a project manager or admin', async () => {
+    mockUseSelector({
+      user: {
+        role: SystemRole.admin,
+        bindProjects: [{ projectName: 'test', isManager: false }],
+      },
+    });
+
+    render(<MemberGroupList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryByText('common.delete')).toBeInTheDocument();
+    expect(screen.queryByText('common.edit')).toBeInTheDocument();
+    expect(
+      screen.queryByText('member.memberGroupList.createAction')
+    ).toBeInTheDocument();
+
+    cleanup();
+    jest.clearAllMocks();
+
+    mockUseSelector({
+      user: {
+        role: '',
+        bindProjects: mockBindProjects,
+      },
+    });
+    render(<MemberGroupList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryByText('common.delete')).toBeInTheDocument();
+    expect(screen.queryByText('common.edit')).toBeInTheDocument();
+    expect(
+      screen.queryByText('member.memberGroupList.createAction')
+    ).toBeInTheDocument();
+
+    cleanup();
+    jest.clearAllMocks();
+
+    mockUseSelector({
+      user: {
+        role: '',
+        bindProjects: [{ projectName: 'default', isManager: false }],
+      },
+    });
+    render(<MemberGroupList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryByText('common.delete')).not.toBeInTheDocument();
+    expect(screen.queryByText('common.edit')).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('member.memberGroupList.createAction')
     ).not.toBeInTheDocument();
   });
 });

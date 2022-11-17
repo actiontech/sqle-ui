@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import EmitterKey from '../../../../data/EmitterKey';
 import { selectOptionByIndex } from '../../../../testUtils/customQuery';
 import {
@@ -12,21 +12,20 @@ import MemberListFilterForm from '../FilterForm';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useLocation: jest.fn(),
+  useParams: jest.fn(),
 }));
-const projectName = 'test';
+const projectName = 'default';
 
 describe('test MemberListFilterForm', () => {
   let useInstanceSpy: jest.SpyInstance;
   let useUsernameSpy: jest.SpyInstance;
-  const useLocationMock: jest.Mock = useLocation as jest.Mock;
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
+
   const submitSpy = jest.fn();
   beforeEach(() => {
     useInstanceSpy = mockUseInstance();
     useUsernameSpy = mockUseUsername();
-    useLocationMock.mockImplementation(() => {
-      return { state: { projectName } };
-    });
+    useParamsMock.mockReturnValue({ projectName });
 
     jest.useFakeTimers();
   });
@@ -35,7 +34,6 @@ describe('test MemberListFilterForm', () => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
-    useLocationMock.mockRestore();
   });
   test('should match snapshot', async () => {
     const { container } = render(<MemberListFilterForm submit={submitSpy} />);
@@ -51,6 +49,9 @@ describe('test MemberListFilterForm', () => {
     render(<MemberListFilterForm submit={submitSpy} />);
 
     expect(useInstanceSpy).toBeCalledTimes(1);
+    expect(useInstanceSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(useUsernameSpy).toBeCalledTimes(1);
     expect(useUsernameSpy).toBeCalledWith({
       filter_project: projectName,

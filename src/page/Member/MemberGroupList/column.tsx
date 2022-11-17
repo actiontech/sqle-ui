@@ -6,12 +6,14 @@ import renderRolesInfo from '../Common/renderRolesInfo';
 
 const MemberGroupListTableColumnFactory: (
   updateAction: (record: IGetMemberGroupRespDataV1) => void,
-  deleteAction: (username: string) => void
+  deleteAction: (username: string) => void,
+  actionPermission: boolean
 ) => TableColumn<IGetMemberGroupRespDataV1, 'operator'> = (
   updateAction,
-  deleteAction
+  deleteAction,
+  actionPermission
 ) => {
-  return [
+  const columns: TableColumn<IGetMemberGroupRespDataV1, 'operator'> = [
     {
       dataIndex: 'user_group_name',
       title: i18n.t('member.memberGroupList.tableColumn.userGroupName'),
@@ -64,6 +66,10 @@ const MemberGroupListTableColumnFactory: (
       },
     },
   ];
+  if (!actionPermission) {
+    return columns.filter((v) => v.dataIndex !== 'operator');
+  }
+  return columns;
 };
 
 export default MemberGroupListTableColumnFactory;

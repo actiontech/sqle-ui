@@ -853,7 +853,23 @@ exports[`test MemberList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          common.false
+                          <label
+                            class="ant-checkbox-wrapper ant-checkbox-wrapper-disabled"
+                          >
+                            <span
+                              class="ant-checkbox ant-checkbox-disabled"
+                            >
+                              <input
+                                class="ant-checkbox-input"
+                                disabled=""
+                                type="checkbox"
+                                value=""
+                              />
+                              <span
+                                class="ant-checkbox-inner"
+                              />
+                            </span>
+                          </label>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -873,16 +889,11 @@ exports[`test MemberList should match snapshot 2`] = `
                             </div>
                             <div
                               class="ant-space-item"
-                              style="margin-right: 8px;"
                             >
                               <div
                                 class="ant-divider ant-divider-vertical"
                                 role="separator"
                               />
-                            </div>
-                            <div
-                              class="ant-space-item"
-                            >
                               <span
                                 class="ant-typography ant-typography-danger pointer"
                               >

@@ -5,6 +5,7 @@ import {
 import HeaderMenu from '../HeaderMenu';
 import { createMemoryHistory } from 'history';
 import { fireEvent, screen } from '@testing-library/react';
+import { DEFAULT_PROJECT_NAME } from '../../../../../page/ProjectManage/ProjectDetail';
 
 describe('test Nav/Header/HeaderMenu', () => {
   test('should match snapshot', () => {
@@ -46,12 +47,22 @@ describe('test Nav/Header/HeaderMenu', () => {
       'header-menu-item-active'
     );
 
-    expect(screen.getByText('menu.projectManage')).not.toHaveClass(
+    expect(screen.getAllByText('menu.projectManage')[0]).not.toHaveClass(
       'header-menu-item-active'
     );
-    fireEvent.click(screen.getByText('menu.projectManage'));
+    fireEvent.click(screen.getAllByText('menu.projectManage')[0]);
     expect(history.location.pathname).toBe('/project');
-    expect(screen.getByText('menu.projectManage')).toHaveClass(
+    expect(screen.getAllByText('menu.projectManage')[0]).toHaveClass(
+      'header-menu-item-active'
+    );
+
+    fireEvent.click(screen.getByText('menu.dashboard'));
+    expect(screen.getAllByText('menu.projectManage')[1]).not.toHaveClass(
+      'header-menu-item-active'
+    );
+    fireEvent.click(screen.getAllByText('menu.projectManage')[1]);
+    expect(history.location.pathname).toBe(`/project/${DEFAULT_PROJECT_NAME}`);
+    expect(screen.getAllByText('menu.projectManage')[1]).toHaveClass(
       'header-menu-item-active'
     );
   });

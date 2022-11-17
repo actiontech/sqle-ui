@@ -16,7 +16,6 @@ import useRuleTemplate from '.';
 import ruleTemplate from '../../api/rule_template';
 
 describe('useRuleTemplate', () => {
-  const projectName = 'default';
   beforeEach(() => {
     jest.useFakeTimers();
   });
@@ -26,7 +25,7 @@ describe('useRuleTemplate', () => {
   });
 
   const mockRequest = () => {
-    const spy = jest.spyOn(ruleTemplate, 'getProjectRuleTemplateTipsV1');
+    const spy = jest.spyOn(ruleTemplate, 'getRuleTemplateTipsV1');
     return spy;
   };
 
@@ -39,36 +38,34 @@ describe('useRuleTemplate', () => {
     );
     const { result, waitForNextUpdate } = renderHook(() => useRuleTemplate());
     expect(result.current.loading).toBe(false);
-    expect(result.current.ruleTemplateList).toEqual([]);
+    expect(result.current.globalRuleTemplateList).toEqual([]);
     const { baseElement } = render(
-      <Select>{result.current.generateRuleTemplateSelectOption()}</Select>
+      <Select>{result.current.generateGlobalRuleTemplateSelectOption()}</Select>
     );
     expect(baseElement).toMatchSnapshot();
 
     act(() => {
-      result.current.updateRuleTemplateList(projectName);
+      result.current.updateGlobalRuleTemplateList();
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(requestSpy).toBeCalledWith({
-      project_name: projectName,
-    });
-    expect(result.current.ruleTemplateList).toEqual([]);
+
+    expect(result.current.globalRuleTemplateList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.ruleTemplateList).toEqual([
+    expect(result.current.globalRuleTemplateList).toEqual([
       { rule_template_name: 'rule_template_name1', db_type: 'mysql' },
     ]);
     cleanup();
 
     const { baseElement: baseElementWithOptions } = render(
       <Select data-testid="testId" value="value1">
-        {result.current.generateRuleTemplateSelectOption()}
+        {result.current.generateGlobalRuleTemplateSelectOption()}
       </Select>
     );
     expect(baseElementWithOptions).toMatchSnapshot();
@@ -91,25 +88,23 @@ describe('useRuleTemplate', () => {
     );
     const { result, waitForNextUpdate } = renderHook(() => useRuleTemplate());
     expect(result.current.loading).toBe(false);
-    expect(result.current.ruleTemplateList).toEqual([]);
+    expect(result.current.globalRuleTemplateList).toEqual([]);
 
     act(() => {
-      result.current.updateRuleTemplateList(projectName);
+      result.current.updateGlobalRuleTemplateList();
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(requestSpy).toBeCalledWith({
-      project_name: projectName,
-    });
-    expect(result.current.ruleTemplateList).toEqual([]);
+
+    expect(result.current.globalRuleTemplateList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.ruleTemplateList).toEqual([
+    expect(result.current.globalRuleTemplateList).toEqual([
       { rule_template_name: 'rule_template_name1', db_type: 'mysql' },
     ]);
     requestSpy.mockClear();
@@ -120,14 +115,12 @@ describe('useRuleTemplate', () => {
     );
 
     act(() => {
-      result.current.updateRuleTemplateList(projectName);
+      result.current.updateGlobalRuleTemplateList();
     });
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(requestSpy).toBeCalledWith({
-      project_name: projectName,
-    });
-    expect(result.current.ruleTemplateList).toEqual([
+
+    expect(result.current.globalRuleTemplateList).toEqual([
       {
         rule_template_name: 'rule_template_name1',
         db_type: 'mysql',
@@ -139,7 +132,7 @@ describe('useRuleTemplate', () => {
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.ruleTemplateList).toEqual([]);
+    expect(result.current.globalRuleTemplateList).toEqual([]);
   });
 
   test('should set list to empty array when response throw error', async () => {
@@ -151,25 +144,23 @@ describe('useRuleTemplate', () => {
     );
     const { result, waitForNextUpdate } = renderHook(() => useRuleTemplate());
     expect(result.current.loading).toBe(false);
-    expect(result.current.ruleTemplateList).toEqual([]);
+    expect(result.current.globalRuleTemplateList).toEqual([]);
 
     act(() => {
-      result.current.updateRuleTemplateList(projectName);
+      result.current.updateGlobalRuleTemplateList();
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(requestSpy).toBeCalledWith({
-      project_name: projectName,
-    });
-    expect(result.current.ruleTemplateList).toEqual([]);
+
+    expect(result.current.globalRuleTemplateList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.ruleTemplateList).toEqual([
+    expect(result.current.globalRuleTemplateList).toEqual([
       { rule_template_name: 'rule_template_name1', db_type: 'mysql' },
     ]);
     requestSpy.mockClear();
@@ -180,14 +171,12 @@ describe('useRuleTemplate', () => {
     );
 
     act(() => {
-      result.current.updateRuleTemplateList(projectName);
+      result.current.updateGlobalRuleTemplateList();
     });
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(requestSpy).toBeCalledWith({
-      project_name: projectName,
-    });
-    expect(result.current.ruleTemplateList).toEqual([
+
+    expect(result.current.globalRuleTemplateList).toEqual([
       {
         rule_template_name: 'rule_template_name1',
         db_type: 'mysql',
@@ -199,7 +188,7 @@ describe('useRuleTemplate', () => {
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.ruleTemplateList).toEqual([]);
+    expect(result.current.globalRuleTemplateList).toEqual([]);
   });
 
   test('should show one database type which your choose', async () => {
@@ -212,35 +201,31 @@ describe('useRuleTemplate', () => {
     );
     const { result, waitForNextUpdate } = renderHook(() => useRuleTemplate());
     expect(result.current.loading).toBe(false);
-    expect(result.current.ruleTemplateList).toEqual([]);
+    expect(result.current.globalRuleTemplateList).toEqual([]);
 
     act(() => {
-      result.current.updateRuleTemplateList(projectName);
+      result.current.updateGlobalRuleTemplateList();
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(requestSpy).toBeCalledWith({
-      project_name: projectName,
-    });
-    expect(result.current.ruleTemplateList).toEqual([]);
+
+    expect(result.current.globalRuleTemplateList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(requestSpy).toBeCalledWith({
-      project_name: projectName,
-    });
-    expect(result.current.ruleTemplateList).toEqual([
+
+    expect(result.current.globalRuleTemplateList).toEqual([
       { rule_template_name: 'rule_template_name_mysql', db_type: 'mysql' },
       { rule_template_name: 'rule_template_name_oracle', db_type: 'oracle' },
     ]);
     cleanup();
     const { baseElement: baseElementWithOptions } = render(
       <Select data-testid="testId" value="rule_template_name_oracle">
-        {result.current.generateRuleTemplateSelectOption('oracle')}
+        {result.current.generateGlobalRuleTemplateSelectOption('oracle')}
       </Select>
     );
     expect(baseElementWithOptions).toMatchSnapshot();

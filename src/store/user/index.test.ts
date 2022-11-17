@@ -1,7 +1,13 @@
-import reducers, { updateTheme, updateToken, updateUser } from '.';
+import reducers, {
+  updateBindProjects,
+  updateTheme,
+  updateToken,
+  updateUser,
+} from '.';
 import { IReduxState } from '..';
 import { SystemRole } from '../../data/common';
 import StorageKey from '../../data/StorageKey';
+import { mockBindProjects } from '../../hooks/useCurrentUser/index.test';
 import { SupportTheme } from '../../theme';
 import LocalStorageWrapper from '../../utils/LocalStorageWrapper';
 
@@ -26,6 +32,12 @@ describe('store/user', () => {
       },
       type: 'user/updateToken',
     });
+    expect(updateBindProjects({ bindProjects: mockBindProjects })).toEqual({
+      payload: {
+        bindProjects: mockBindProjects,
+      },
+      type: 'user/updateBindProjects',
+    });
   });
 
   const state: IReduxState['user'] = {
@@ -33,6 +45,7 @@ describe('store/user', () => {
     role: '',
     token: '',
     theme: SupportTheme.LIGHT,
+    bindProjects: [],
   };
 
   test('should update username and role when dispatch updateUser action', () => {
@@ -46,6 +59,7 @@ describe('store/user', () => {
       role: SystemRole.admin,
       token: '',
       theme: SupportTheme.LIGHT,
+      bindProjects: [],
     });
   });
 
@@ -57,6 +71,7 @@ describe('store/user', () => {
       role: '',
       token: '',
       theme: SupportTheme.DARK,
+      bindProjects: [],
     });
   });
 
@@ -69,7 +84,20 @@ describe('store/user', () => {
       role: '',
       token: 'token',
       theme: SupportTheme.LIGHT,
+      bindProjects: [],
     });
     expect(localStorageWrapperSpy).toBeCalledWith(StorageKey.Token, 'token');
+  });
+
+  test('should update bind projects when dispatch updateBindProjects action', () => {
+    const newState = reducers(
+      state,
+      updateBindProjects({ bindProjects: mockBindProjects })
+    );
+    expect(newState).not.toBe(state);
+    expect(newState).toEqual({
+      ...state,
+      bindProjects: mockBindProjects,
+    });
   });
 });
