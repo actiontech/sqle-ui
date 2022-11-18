@@ -4,7 +4,7 @@ import Form, { useForm } from 'antd/lib/form/Form';
 import { WorkflowResV1ModeEnum } from '../../../../../api/common.enum';
 import DatabaseInfo from '../DatabaseInfo';
 
-describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
+describe.skip('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
   const instanceNameChange = jest.fn();
   const setInstanceNames = jest.fn();
   const setChangeSqlModeDisabled = jest.fn();

@@ -14,7 +14,7 @@ jest.mock('react-router', () => {
 });
 const orderId = '1';
 
-describe('test Order/Detail/useInitDataWithRequest', () => {
+describe.skip('test Order/Detail/useInitDataWithRequest', () => {
   let getWorkflowSpy: jest.SpyInstance;
   let getTaskSpy: jest.SpyInstance;
 

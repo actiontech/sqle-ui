@@ -7,7 +7,7 @@ import { renderWithTheme } from '../../../../testUtils/customRender';
 import { ThemeProvider } from '@material-ui/styles';
 import lightTheme from '../../../../theme/light';
 
-describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
+describe.skip('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });

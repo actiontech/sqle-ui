@@ -8,7 +8,7 @@ import {
   mockDriver,
 } from '../../../../testUtils/mockRequest';
 
-describe('DataSource/DataSourceList/DataSourceListFilterForm', () => {
+describe.skip('DataSource/DataSourceList/DataSourceListFilterForm', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockUseInstance();

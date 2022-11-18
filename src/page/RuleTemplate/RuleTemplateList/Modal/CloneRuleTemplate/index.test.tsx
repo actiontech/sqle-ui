@@ -15,7 +15,7 @@ import {
 import EventEmitter from '../../../../../utils/EventEmitter';
 import { ruleTemplateListData } from '../../../__testData__';
 
-describe('RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal', () => {
+describe.skip('RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal', () => {
   let mockDispatch: jest.Mock;
 
   beforeEach(() => {

@@ -12,7 +12,7 @@ import {
 import useAuditOrder from '../useAuditOrder';
 import { differenceSqlValues, sameSqlValues } from './test.data';
 
-describe('test Order/hooks/useAuditOrder', () => {
+describe.skip('test Order/hooks/useAuditOrder', () => {
   const mockCreateAuditTasks = () => {
     const spy = jest.spyOn(task, 'createAuditTasksV1');
     spy.mockImplementation(() =>

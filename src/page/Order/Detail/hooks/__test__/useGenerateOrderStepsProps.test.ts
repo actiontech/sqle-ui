@@ -7,7 +7,7 @@ import workflow from '../../../../../api/workflow';
 import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
 import useGenerateOrderStepsProps from '../useGenerateOrderStepsProps';
 
-describe('test Order/Detail/useGenerateOrderStepsProps', () => {
+describe.skip('test Order/Detail/useGenerateOrderStepsProps', () => {
   const refreshOrder = jest.fn();
   const refreshTask = jest.fn();
   const refreshOverviewAction = jest.fn();
