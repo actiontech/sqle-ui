@@ -143,7 +143,7 @@ const PlanList = () => {
         </Link>,
       ]}
     >
-      <PlanListFilterForm submit={setFilterInfo} />
+      <PlanListFilterForm submit={setFilterInfo} projectName={projectName} />
       <Table
         columns={planListTableHeader(removeAuditPlan, openModal, projectName)}
         dataSource={data?.list ?? []}

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { fireEvent, screen, waitFor } from '@testing-library/react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import PlanList from '.';
 import audit_plan from '../../../api/audit_plan';
 import { selectOptionByIndex } from '../../../testUtils/customQuery';
@@ -18,11 +18,14 @@ import { AuditPlanList } from './__testData__';
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useLocation: jest.fn(),
+  useParams: jest.fn(),
 }));
+const projectName = 'default';
 
 describe('PlanList', () => {
   let dispatchSpy!: jest.SpyInstance;
   const useLocationMock: jest.Mock = useLocation as jest.Mock;
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   let consoleError: any;
   beforeAll(() => {
@@ -54,6 +57,7 @@ describe('PlanList', () => {
       },
       user: {},
     });
+    useParamsMock.mockReturnValue({ projectName });
     useLocationMock.mockReturnValue({
       pathname: '/auditPlan',
       search: '',
@@ -134,6 +138,7 @@ describe('PlanList', () => {
     expect(screen.queryByText('auditPlan.remove.loading')).toBeInTheDocument();
     expect(deleteSpy).toBeCalledTimes(1);
     expect(deleteSpy).toBeCalledWith({
+      project_name: projectName,
       audit_plan_name: AuditPlanList[0].audit_plan_name,
     });
     await waitFor(() => {
@@ -192,6 +197,7 @@ describe('PlanList', () => {
     renderWithRouter(<PlanList />);
     expect(getAuditPlanSpy).toBeCalledTimes(1);
     expect(getAuditPlanSpy).toBeCalledWith({
+      project_name: projectName,
       page_index: 1,
       page_size: 10,
     });
@@ -232,6 +238,7 @@ describe('PlanList', () => {
       filter_audit_plan_instance_name: 'instance1',
       fuzzy_search_audit_plan_name: '123',
       filter_audit_plan_type: 'mysql_schema_meta',
+      project_name: projectName,
     });
 
     await waitFor(() => {
@@ -246,6 +253,7 @@ describe('PlanList', () => {
 
     expect(getAuditPlanSpy).toBeCalledTimes(3);
     expect(getAuditPlanSpy).nthCalledWith(3, {
+      project_name: projectName,
       page_index: 1,
       page_size: 10,
     });
@@ -266,6 +274,7 @@ describe('PlanList', () => {
     });
     expect(getAuditPlanSpy).toBeCalledTimes(1);
     expect(getAuditPlanSpy).toBeCalledWith({
+      project_name: projectName,
       page_index: 1,
       page_size: 10,
       filter_audit_plan_type: 'ali_rds_mysql_slow_log',

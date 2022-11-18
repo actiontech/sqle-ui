@@ -12,6 +12,7 @@ import {
 import { renderWithRouter } from '../../../testUtils/customRender';
 import {
   mockDriver,
+  mockUseGlobalRuleTemplate,
   mockUseInstance,
   mockUseInstanceSchema,
   mockUseRuleTemplate,
@@ -29,6 +30,7 @@ jest.mock('react-router', () => {
 describe('UpdateAuditPlan', () => {
   let warningSpy!: jest.SpyInstance;
   const useParamsMock: jest.Mock = useParams as jest.Mock;
+  const projectName = 'default';
   let useInstanceSpy!: jest.SpyInstance;
   beforeAll(() => {
     const warning = global.console.warn;
@@ -43,13 +45,17 @@ describe('UpdateAuditPlan', () => {
 
   beforeEach(() => {
     jest.useFakeTimers();
-    useParamsMock.mockReturnValue({ auditPlanName: 'auditPlanName1' });
+    useParamsMock.mockReturnValue({
+      auditPlanName: 'auditPlanName1',
+      projectName,
+    });
     mockDriver();
     useInstanceSpy = mockUseInstance();
     mockUseInstanceSchema();
     mockGetAuditPlan();
     mockGetAuditMeta();
     mockUseRuleTemplate();
+    mockUseGlobalRuleTemplate();
   });
 
   afterEach(() => {
@@ -100,6 +106,7 @@ describe('UpdateAuditPlan', () => {
     });
 
     expect(useInstanceSpy).toBeCalledWith({
+      project_name: projectName,
       functional_module:
         getInstanceTipListV1FunctionalModuleEnum.create_audit_plan,
     });
@@ -130,6 +137,7 @@ describe('UpdateAuditPlan', () => {
 
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
+      project_name: projectName,
       audit_plan_cron: '* * * * *',
       audit_plan_instance_database: 'schema1',
       audit_plan_instance_name: 'db1',

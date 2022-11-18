@@ -17,6 +17,7 @@ exports[`PlanDetail should should match snapshot with report 1`] = `
     >
       <SqlPool
         auditPlanName="auditPlanName1"
+        projectName="default"
       />
     </Col>
     <Col
@@ -25,12 +26,13 @@ exports[`PlanDetail should should match snapshot with report 1`] = `
     >
       <PlanAuditRecord
         auditPlanName="auditPlanName1"
+        projectName="default"
       />
     </Col>
   </Row>
   <Route
     component={[Function]}
-    path="/auditPlan/detail/:auditPlanName/report/:reportId"
+    path="/project/:projectName/auditPlan/detail/:auditPlanName/report/:reportId"
   />
 </Fragment>
 `;
@@ -52,6 +54,7 @@ exports[`PlanDetail should should match snapshot without report 1`] = `
     >
       <SqlPool
         auditPlanName="auditPlanName1"
+        projectName="default"
       />
     </Col>
     <Col
@@ -60,12 +63,13 @@ exports[`PlanDetail should should match snapshot without report 1`] = `
     >
       <PlanAuditRecord
         auditPlanName="auditPlanName1"
+        projectName="default"
       />
     </Col>
   </Row>
   <Route
     component={[Function]}
-    path="/auditPlan/detail/:auditPlanName/report/:reportId"
+    path="/project/:projectName/auditPlan/detail/:auditPlanName/report/:reportId"
   />
 </Fragment>
 `;

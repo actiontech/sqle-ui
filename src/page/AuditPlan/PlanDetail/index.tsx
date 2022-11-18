@@ -12,7 +12,6 @@ const PlanDetailPage = () => {
   const urlParams = useParams<PlanDetailUrlParams>();
   const { projectName } = useCurrentProjectName();
   const { t } = useTranslation();
-
   const { data: auditTask } = useRequest(
     () => {
       return audit_plan.getAuditPlanV1({

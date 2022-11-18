@@ -9,13 +9,11 @@ import { ResponseCode } from '../../../../data/common';
 import useDatabaseType from '../../../../hooks/useDatabaseType';
 import useInstance from '../../../../hooks/useInstance';
 import useInstanceSchema from '../../../../hooks/useInstanceSchema';
-import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 
 const DataSource: React.FC<DataSourceProps> = (props) => {
-  const { form, defaultValue, dataSource } = props;
+  const { form, defaultValue, dataSource, projectName } = props;
 
   const { t } = useTranslation();
-  const { projectName } = useCurrentProjectName();
 
   const { updateDriverNameList, generateDriverSelectOptions } =
     useDatabaseType();
@@ -45,7 +43,10 @@ const DataSource: React.FC<DataSourceProps> = (props) => {
     });
     if (!!dataSource) {
       instance
-        .getInstanceV1({ instance_name: dataSource, project_name: projectName })
+        .getInstanceV1({
+          instance_name: dataSource,
+          project_name: projectName,
+        })
         .then((res) => {
           if (res.data.code === ResponseCode.SUCCESS) {
             form.setFieldsValue({
