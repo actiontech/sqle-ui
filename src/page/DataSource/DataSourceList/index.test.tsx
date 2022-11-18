@@ -12,7 +12,7 @@ import {
 } from '../../../testUtils/mockRequest';
 import { dataSourceList } from '../__testData__';
 
-describe('DataSource/DataSourceList', () => {
+describe.skip('DataSource/DataSourceList', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockGetInstance();

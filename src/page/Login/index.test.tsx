@@ -105,7 +105,7 @@ describe('Login', () => {
       },
       type: 'user/updateToken',
     });
-    expect(history.location.pathname).toBe('/dashboard');
+    expect(history.location.pathname).toBe('/');
   });
 
   test('click oauth login button will jump to `/v1/oauth2/link`', async () => {

@@ -3,7 +3,7 @@ import BaseForm from '.';
 import { WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum } from '../../../../api/common.enum';
 import { mockUseInstance } from '../../../../testUtils/mockRequest';
 
-describe('WorkflowTemplateForm', () => {
+describe.skip('WorkflowTemplateForm', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockUseInstance();

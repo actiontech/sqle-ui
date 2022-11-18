@@ -3,7 +3,7 @@ import { fireEvent, screen, waitFor, cleanup } from '@testing-library/react';
 import { ruleData, editRuleData } from './__testData__';
 import { renderWithTheme } from '../../../../../testUtils/customRender';
 
-describe('RuleSelect/RuleManagerModal', () => {
+describe.skip('RuleSelect/RuleManagerModal', () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });

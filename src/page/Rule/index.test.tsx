@@ -15,7 +15,7 @@ import {
 } from '../../testUtils/mockRequest';
 import { allRulesWithType, instanceRule } from './__testData__';
 
-describe('Rule', () => {
+describe.skip('Rule', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockUseInstance();

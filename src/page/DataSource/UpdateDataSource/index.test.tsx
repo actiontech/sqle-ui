@@ -23,7 +23,7 @@ jest.mock('react-router', () => {
   };
 });
 
-describe('UpdateDataSource', () => {
+describe.skip('UpdateDataSource', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   beforeEach(() => {

@@ -11,7 +11,7 @@ import {
 import task from '../../../../../api/task';
 import { waitFor } from '@testing-library/react';
 
-describe('Order/useModifySql', () => {
+describe.skip('Order/useModifySql', () => {
   let createAuditTasksSpy: jest.SpyInstance;
   let auditTasksGroupIdSpy: jest.SpyInstance;
   let createAndAuditTaskSpy: jest.SpyInstance;

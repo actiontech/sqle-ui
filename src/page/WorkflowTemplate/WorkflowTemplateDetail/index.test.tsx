@@ -11,7 +11,7 @@ jest.mock('react-router', () => {
     useParams: jest.fn(),
   };
 });
-describe('WorkflowTemplate/WorkflowTemplateDetail', () => {
+describe.skip('WorkflowTemplate/WorkflowTemplateDetail', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
   let getWorkflowTemplateDetail!: jest.SpyInstance;
 

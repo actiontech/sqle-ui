@@ -344,7 +344,13 @@ exports[`test MemberGroupList should match snapshot 1`] = `
                   <table
                     style="table-layout: auto;"
                   >
-                    <colgroup />
+                    <colgroup>
+                      <col />
+                      <col />
+                      <col
+                        style="width: 160px;"
+                      />
+                    </colgroup>
                     <thead
                       class="ant-table-thead"
                     >
@@ -759,7 +765,13 @@ exports[`test MemberGroupList should match snapshot 2`] = `
                   <table
                     style="table-layout: auto;"
                   >
-                    <colgroup />
+                    <colgroup>
+                      <col />
+                      <col />
+                      <col
+                        style="width: 160px;"
+                      />
+                    </colgroup>
                     <thead
                       class="ant-table-thead"
                     >

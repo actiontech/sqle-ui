@@ -10,7 +10,7 @@ import { createMemoryHistory } from 'history';
 import { allRulesWithType } from '../../Rule/__testData__';
 import { IRuleReqV1 } from '../../../api/common';
 
-describe('RuleTemplate/CreateRuleTemplate', () => {
+describe.skip('RuleTemplate/CreateRuleTemplate', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockGetAllRules();
