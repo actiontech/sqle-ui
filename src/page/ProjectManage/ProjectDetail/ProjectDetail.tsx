@@ -25,6 +25,12 @@ const ProjectDetail: React.FC = () => {
   );
 
   const renderProjectDetail = () => {
+    /**
+     * todo 临时处理
+     * 目前方案存在问题: bindProjects 数据并不不具有实时性, 目前这样做仅仅为了处理当不存在项目时会存在接口的错误提示, 感觉不太友好
+     * 后续调整方案: 后端改造 getProjectDetailV1 接口. 区分接口出现错误与当前用户未加入任何项目的情况, 这样便无需 bindProjects 数据.
+     *
+     * */
     if (bindProjects.length === 0) {
       return (
         <Result
