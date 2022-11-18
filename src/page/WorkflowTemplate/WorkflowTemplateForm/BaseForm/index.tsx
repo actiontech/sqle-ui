@@ -2,7 +2,7 @@ import { Button, Form, Input, Select, Space } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum } from '../../../../api/common.enum';
+import { WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum } from '../../../../api/common.enum';
 import { PageFormLayout } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import useInstance from '../../../../hooks/useInstance';
@@ -10,6 +10,7 @@ import EventEmitter from '../../../../utils/EventEmitter';
 import { nameRule } from '../../../../utils/FormRule';
 import { BaseFormFields, BaseFormProps } from './index.type';
 import useStaticStatus from '../../../../hooks/useStaticStatus';
+import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 
 const BaseForm: React.FC<BaseFormProps> = (props) => {
   const { t } = useTranslation();
@@ -17,11 +18,10 @@ const BaseForm: React.FC<BaseFormProps> = (props) => {
   const { getAuditLevelStatusSelectOption } = useStaticStatus();
 
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
-
+  const { projectName } = useCurrentProjectName();
   useEffect(() => {
-    updateInstanceList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    updateInstanceList({ project_name: projectName });
+  }, [projectName, updateInstanceList]);
 
   const nextStep = async () => {
     const value = await form.validateFields();
@@ -65,14 +65,14 @@ const BaseForm: React.FC<BaseFormProps> = (props) => {
         desc: props.defaultData.desc,
         allowSubmitWhenLessAuditLevel: props.defaultData
           .allow_submit_when_less_audit_level as
-          | CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum
+          | WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum
           | undefined,
         instanceNameList: props.defaultData.instance_name_list,
       });
     } else {
       form.setFieldsValue({
         allowSubmitWhenLessAuditLevel:
-          CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.warn,
+          WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.warn,
       });
     }
   }, [form, props.defaultData]);
@@ -91,7 +91,7 @@ const BaseForm: React.FC<BaseFormProps> = (props) => {
         ]}
       >
         <Input
-          disabled={!!props.defaultData}
+          disabled={true}
           placeholder={t('common.form.placeholder.input', {
             name: t('workflowTemplate.form.label.name'),
           })}
@@ -102,6 +102,7 @@ const BaseForm: React.FC<BaseFormProps> = (props) => {
           placeholder={t('common.form.placeholder.input', {
             name: t('workflowTemplate.form.label.desc'),
           })}
+          disabled
           rows={3}
           className="textarea-no-resize"
         />
@@ -125,6 +126,7 @@ const BaseForm: React.FC<BaseFormProps> = (props) => {
         name="instanceNameList"
       >
         <Select
+          disabled
           showSearch
           placeholder={t('common.form.placeholder.select', {
             name: t('workflowTemplate.form.label.instanceNameList'),

@@ -10,6 +10,7 @@ import { IUpdateInstanceV1Params } from '../../../api/instance/index.d';
 import BackButton from '../../../components/BackButton';
 import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode } from '../../../data/common';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import DataSourceForm from '../DataSourceForm';
 import { DataSourceFormField } from '../DataSourceForm/index.type';
 import { turnCommonToDataSourceParams } from '../tool';
@@ -20,22 +21,21 @@ const UpdateDataSource = () => {
   const [form] = useForm<DataSourceFormField>();
   const history = useHistory();
   const urlParams = useParams<UpdateDataSourceUrlParams>();
-
+  const { projectName } = useCurrentProjectName();
   const [initError, setInitError] = React.useState('');
   const [retryLoading, { toggle: setRetryLoading }] = useBoolean(false);
   const [instanceInfo, setInstanceInfo] = useState<IInstanceResV1>();
 
   const updateDatabase = async (values: DataSourceFormField) => {
     const params: IUpdateInstanceV1Params = {
+      project_name: projectName,
       db_type: values.type,
       db_host: values.ip,
       db_port: `${values.port}`,
       db_user: values.user,
       desc: values.describe,
       instance_name: values.name,
-      role_name_list: values.role,
-      rule_template_name_list: values.ruleTemplate ? [values.ruleTemplate] : [],
-      workflow_template_name: values.workflow,
+      rule_template_name: values.ruleTemplate,
       additional_params: turnCommonToDataSourceParams(values.asyncParams ?? []),
       maintenance_times:
         values.maintenanceTime?.map((t) => ({
@@ -60,7 +60,7 @@ const UpdateDataSource = () => {
             name: values.name,
           })
         );
-        history.replace('/data');
+        history.replace(`/project/${projectName}/data`);
       }
     });
   };
@@ -68,7 +68,10 @@ const UpdateDataSource = () => {
   const getInstanceInfo = React.useCallback(() => {
     setRetryLoading(true);
     instance
-      .getInstanceV1({ instance_name: urlParams.instanceName })
+      .getInstanceV1({
+        instance_name: urlParams.instanceName,
+        project_name: projectName,
+      })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           const instance = res.data.data;
@@ -81,7 +84,7 @@ const UpdateDataSource = () => {
       .finally(() => {
         setRetryLoading(false);
       });
-  }, [setRetryLoading, t, urlParams.instanceName]);
+  }, [projectName, setRetryLoading, t, urlParams.instanceName]);
 
   React.useEffect(() => {
     getInstanceInfo();
@@ -119,6 +122,7 @@ const UpdateDataSource = () => {
           form={form}
           defaultData={instanceInfo}
           submit={updateDatabase}
+          projectName={projectName}
         />
       </EmptyBox>
     </Card>

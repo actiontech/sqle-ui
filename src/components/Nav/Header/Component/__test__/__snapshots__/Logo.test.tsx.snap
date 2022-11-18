@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test Nav/Header/Logo should match snapshot 1`] = `
+<div>
+  <a
+    href="/"
+  >
+    <div
+      class="sqle-nav-title"
+    >
+      <img
+        alt=""
+        src="logo.png"
+      />
+      common.nav.title
+      common.nav.eeTitle
+    </div>
+  </a>
+</div>
+`;

@@ -4,12 +4,12 @@ import React from 'react';
 import instance from '../../api/instance';
 import { ResponseCode } from '../../data/common';
 
-const useInstanceSchema = (instanceName?: string) => {
+const useInstanceSchema = (projectName: string, instanceName?: string) => {
   const [schemaList, setSchemaList] = React.useState<string[]>([]);
   const [loading, { setTrue, setFalse }] = useBoolean();
 
   const updateSchemaList = React.useCallback(() => {
-    if (!instanceName) {
+    if (!instanceName || !projectName) {
       setSchemaList([]);
       return;
     }
@@ -17,6 +17,7 @@ const useInstanceSchema = (instanceName?: string) => {
     instance
       .getInstanceSchemasV1({
         instance_name: instanceName,
+        project_name: projectName,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -26,7 +27,7 @@ const useInstanceSchema = (instanceName?: string) => {
       .finally(() => {
         setFalse();
       });
-  }, [instanceName, setFalse, setTrue]);
+  }, [instanceName, projectName, setFalse, setTrue]);
 
   const generateInstanceSchemaSelectOption = React.useCallback(() => {
     return schemaList.map((schema) => (

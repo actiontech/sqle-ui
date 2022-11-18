@@ -16,16 +16,19 @@ const RuleTemplate = () => {
       <section className="padding-content">
         <Switch>
           <Route
-            path="/rule/template"
+            path="/project/:projectName/rule/template"
             exact={true}
             component={RuleTemplateList}
           />
-          <Route path="/rule/template/create" component={CreateRuleTemplate} />
           <Route
-            path="/rule/template/update/:templateName"
+            path="/project/:projectName/rule/template/create"
+            component={CreateRuleTemplate}
+          />
+          <Route
+            path="/project/:projectName/rule/template/update/:templateName"
             component={UpdateRuleTemplate}
           />
-          <Redirect to="/rule/template" />
+          <Redirect to="/project/:projectName/rule/template" />
         </Switch>
       </section>
     </article>

@@ -33,9 +33,7 @@ import {
   IListTableBySchemaParams,
   IListTableBySchemaReturn,
   IGetTableMetadataParams,
-  IGetTableMetadataReturn,
-  IGetInstanceWorkflowTemplateV1Params,
-  IGetInstanceWorkflowTemplateV1Return
+  IGetTableMetadataReturn
 } from './index.d';
 
 class InstanceService extends ServiceBase {
@@ -64,8 +62,11 @@ class InstanceService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     return this.get<IGetInstanceTipListV1Return>(
-      '/v1/instance_tips',
+      `/v1/projects/${project_name}/instance_tips`,
       paramsData,
       options
     );
@@ -76,8 +77,11 @@ class InstanceService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     return this.get<IGetInstanceListV1Return>(
-      '/v1/instances',
+      `/v1/projects/${project_name}/instances`,
       paramsData,
       options
     );
@@ -88,8 +92,11 @@ class InstanceService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     return this.post<ICreateInstanceV1Return>(
-      '/v1/instances',
+      `/v1/projects/${project_name}/instances`,
       paramsData,
       options
     );
@@ -100,8 +107,11 @@ class InstanceService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     return this.post<IBatchCheckInstanceIsConnectableByNameReturn>(
-      '/v1/instances/connections',
+      `/v1/projects/${project_name}/instances/connections`,
       paramsData,
       options
     );
@@ -112,11 +122,14 @@ class InstanceService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     const instance_name = paramsData.instance_name;
     delete paramsData.instance_name;
 
     return this.get<IGetInstanceV1Return>(
-      `/v1/instances/${instance_name}/`,
+      `/v1/projects/${project_name}/instances/${instance_name}/`,
       paramsData,
       options
     );
@@ -127,11 +140,14 @@ class InstanceService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     const instance_name = paramsData.instance_name;
     delete paramsData.instance_name;
 
     return this.delete<IDeleteInstanceV1Return>(
-      `/v1/instances/${instance_name}/`,
+      `/v1/projects/${project_name}/instances/${instance_name}/`,
       paramsData,
       options
     );
@@ -142,11 +158,14 @@ class InstanceService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     const instance_name = paramsData.instance_name;
     delete paramsData.instance_name;
 
     return this.patch<IUpdateInstanceV1Return>(
-      `/v1/instances/${instance_name}/`,
+      `/v1/projects/${project_name}/instances/${instance_name}/`,
       paramsData,
       options
     );
@@ -157,11 +176,14 @@ class InstanceService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     const instance_name = paramsData.instance_name;
     delete paramsData.instance_name;
 
     return this.get<ICheckInstanceIsConnectableByNameV1Return>(
-      `/v1/instances/${instance_name}/connection`,
+      `/v1/projects/${project_name}/instances/${instance_name}/connection`,
       paramsData,
       options
     );
@@ -172,11 +194,14 @@ class InstanceService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     const instance_name = paramsData.instance_name;
     delete paramsData.instance_name;
 
     return this.get<IGetInstanceRuleListV1Return>(
-      `/v1/instances/${instance_name}/rules`,
+      `/v1/projects/${project_name}/instances/${instance_name}/rules`,
       paramsData,
       options
     );
@@ -187,11 +212,14 @@ class InstanceService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     const instance_name = paramsData.instance_name;
     delete paramsData.instance_name;
 
     return this.get<IGetInstanceSchemasV1Return>(
-      `/v1/instances/${instance_name}/schemas`,
+      `/v1/projects/${project_name}/instances/${instance_name}/schemas`,
       paramsData,
       options
     );
@@ -202,6 +230,9 @@ class InstanceService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     const instance_name = paramsData.instance_name;
     delete paramsData.instance_name;
 
@@ -209,7 +240,7 @@ class InstanceService extends ServiceBase {
     delete paramsData.schema_name;
 
     return this.get<IListTableBySchemaReturn>(
-      `/v1/instances/${instance_name}/schemas/${schema_name}/tables`,
+      `/v1/projects/${project_name}/instances/${instance_name}/schemas/${schema_name}/tables`,
       paramsData,
       options
     );
@@ -220,6 +251,9 @@ class InstanceService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     const instance_name = paramsData.instance_name;
     delete paramsData.instance_name;
 
@@ -230,22 +264,7 @@ class InstanceService extends ServiceBase {
     delete paramsData.table_name;
 
     return this.get<IGetTableMetadataReturn>(
-      `/v1/instances/${instance_name}/schemas/${schema_name}/tables/${table_name}/metadata`,
-      paramsData,
-      options
-    );
-  }
-
-  public getInstanceWorkflowTemplateV1(
-    params: IGetInstanceWorkflowTemplateV1Params,
-    options?: AxiosRequestConfig
-  ) {
-    const paramsData = this.cloneDeep(params);
-    const instance_name = paramsData.instance_name;
-    delete paramsData.instance_name;
-
-    return this.get<IGetInstanceWorkflowTemplateV1Return>(
-      `/v1/instances/${instance_name}/workflow_template`,
+      `/v1/projects/${project_name}/instances/${instance_name}/schemas/${schema_name}/tables/${table_name}/metadata`,
       paramsData,
       options
     );

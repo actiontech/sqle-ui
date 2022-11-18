@@ -3,7 +3,6 @@ import { PageHeader, Space } from 'antd';
 import { useTranslation } from 'react-i18next';
 import dashboard from '../../api/dashboard';
 import DBAPanel from './DBAPanel';
-import QuickLink from './QuickLink';
 import DEVPanel from './DEVPanel';
 import RecentlyOrderPanel from './RecentlyOrderPanel';
 
@@ -34,7 +33,6 @@ const Home = () => {
           <RecentlyOrderPanel />
         </Space>
       </section>
-      <QuickLink />
     </>
   );
 };

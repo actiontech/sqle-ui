@@ -7,6 +7,7 @@ import BackButton from '../../../components/BackButton';
 import { ResponseCode } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import EventEmitter from '../../../utils/EventEmitter';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import PlanForm from '../PlanForm';
 import { PlanFormField } from '../PlanForm/index.type';
 
@@ -14,10 +15,12 @@ const CreateAuditPlan = () => {
   const { t } = useTranslation();
   const [visible, { setTrue: openResultModal, setFalse: closeResultModal }] =
     useBoolean();
+  const { projectName } = useCurrentProjectName();
 
   const createAuditPlan = (values: PlanFormField) => {
     return audit_plan
       .createAuditPlanV1({
+        project_name: projectName,
         audit_plan_cron: values.cron,
         audit_plan_instance_database: values.schema,
         audit_plan_instance_name: values.databaseName,
@@ -44,7 +47,7 @@ const CreateAuditPlan = () => {
       title={t('auditPlan.create.title')}
       extra={[<BackButton key="goBack" />]}
     >
-      <PlanForm submit={createAuditPlan} />
+      <PlanForm submit={createAuditPlan} projectName={projectName} />
       <Modal
         title={t('common.operateSuccess')}
         footer={null}
@@ -55,7 +58,7 @@ const CreateAuditPlan = () => {
           status="success"
           title={t('auditPlan.create.successTitle')}
           subTitle={
-            <Link to="/auditPlan">
+            <Link to={`/project/${projectName}/auditPlan`}>
               {t('auditPlan.create.successGuide')} {'>'}
             </Link>
           }

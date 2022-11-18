@@ -1,27 +1,35 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Button, Card, message, Space, Table } from 'antd';
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { IRuleTemplateResV1 } from '../../../api/common';
+import { IProjectRuleTemplateResV1 } from '../../../api/common';
 import ruleTemplate from '../../../api/rule_template';
+import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { ModalName } from '../../../data/ModalName';
+import useCurrentUser from '../../../hooks/useCurrentUser';
 import {
   initRuleTemplateListModalStatus,
   updateRuleTemplateListModalStatus,
   updateSelectRuleTemplate,
 } from '../../../store/ruleTemplate';
 import EventEmitter from '../../../utils/EventEmitter';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import { RuleTemplateListTableColumnFactory } from './column';
 import RuleTemplateListModal from './Modal';
 
 const RuleTemplateList = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const { projectName } = useCurrentProjectName();
+  const { isAdmin, isProjectManager } = useCurrentUser();
+  const actionPermission = useMemo(() => {
+    return isAdmin || isProjectManager(projectName);
+  }, [isAdmin, isProjectManager, projectName]);
 
   const {
     data,
@@ -30,9 +38,10 @@ const RuleTemplateList = () => {
     pagination: { total, onChange: changePagination, changeCurrent },
   } = useRequest(
     ({ current, pageSize }) =>
-      ruleTemplate.getRuleTemplateListV1({
+      ruleTemplate.getProjectRuleTemplateListV1({
         page_index: current,
         page_size: pageSize,
+        project_name: projectName,
       }),
     {
       paginated: true,
@@ -63,8 +72,9 @@ const RuleTemplateList = () => {
         0
       );
       ruleTemplate
-        .deleteRuleTemplateV1({
+        .deleteProjectRuleTemplateV1({
           rule_template_name: templateName,
+          project_name: projectName,
         })
         .then((res) => {
           if (res.data.code === ResponseCode.SUCCESS) {
@@ -80,10 +90,12 @@ const RuleTemplateList = () => {
           hideLoading();
         });
     },
-    [refreshRuleTemplate, t]
+    [projectName, refreshRuleTemplate, t]
   );
 
-  const openCloneRuleTemplateModal = (ruleTemplate: IRuleTemplateResV1) => {
+  const openCloneRuleTemplateModal = (
+    ruleTemplate: IProjectRuleTemplateResV1
+  ) => {
     dispatch(
       updateSelectRuleTemplate({
         ruleTemplate,
@@ -133,10 +145,15 @@ const RuleTemplateList = () => {
           </Space>
         }
         extra={[
-          <Link to="/rule/template/create" key="createRuleTemplate">
-            <Button type="primary">
-              {t('ruleTemplate.createRuleTemplate.button')}
-            </Button>
+          <Link
+            to={`/project/${projectName}/rule/template/create`}
+            key="createRuleTemplate"
+          >
+            <EmptyBox if={actionPermission}>
+              <Button type="primary">
+                {t('ruleTemplate.createRuleTemplate.button')}
+              </Button>
+            </EmptyBox>
           </Link>,
         ]}
       >
@@ -152,7 +169,9 @@ const RuleTemplateList = () => {
           }}
           columns={RuleTemplateListTableColumnFactory(
             deleteTemplate,
-            openCloneRuleTemplateModal
+            openCloneRuleTemplateModal,
+            actionPermission,
+            projectName
           )}
         />
       </Card>

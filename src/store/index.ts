@@ -8,6 +8,9 @@ import nav from './nav';
 import system from './system';
 import auditPlan from './auditPlan';
 import reportStatistics from './reportStatistics';
+import projectManage from './projectManage';
+import member from './member';
+import globalRuleTemplate from './globalRuleTemplate';
 
 const store = configureStore({
   reducer: {
@@ -20,6 +23,9 @@ const store = configureStore({
     system,
     auditPlan,
     reportStatistics,
+    projectManage,
+    member,
+    globalRuleTemplate,
   },
 });
 

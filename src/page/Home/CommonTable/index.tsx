@@ -1,5 +1,5 @@
 import { Badge } from 'antd';
-import { IWorkflowDetailResV2 } from '../../../api/common';
+import { IWorkflowDetailResV1 } from '../../../api/common';
 import { TableColumn } from '../../../types/common.type';
 import CommonTable from './Table';
 
@@ -19,14 +19,14 @@ export const genTabPaneTitle = (title: string, badgeCount?: number) => {
 };
 
 export type CommonTableInfoType = {
-  data: IWorkflowDetailResV2[];
+  data: IWorkflowDetailResV1[];
   error: Error | undefined;
   loading: boolean;
 };
 
 export interface ICommonTableProps {
   tableInfo: CommonTableInfoType;
-  customColumn?: () => TableColumn<IWorkflowDetailResV2>;
+  customColumn?: () => TableColumn<IWorkflowDetailResV1>;
 }
 
 export const DASHBOARD_COMMON_GET_ORDER_NUMBER = 5;

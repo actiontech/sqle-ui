@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   pageTitle: '工作台',
+  tableLimitTips: '当前表格仅展示前{{number}}条数据',
   title: {
     pendingOrder: '待处理工单',
     myOrderSituation: '我的工单情况',

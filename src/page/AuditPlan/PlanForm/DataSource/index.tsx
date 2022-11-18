@@ -8,6 +8,7 @@ export type DataSourceProps = {
   defaultValue?: IAuditPlanResV1;
   dbTypeChange?: (dbType: string) => void;
   dataSourceChange?: (dataSource: string) => void;
+  projectName: string;
 };
 
 export { default as DataSource } from './DataSource';

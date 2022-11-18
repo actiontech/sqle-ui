@@ -8,13 +8,15 @@ import React, {
   useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { WorkflowResV2ModeEnum } from '../../../../api/common.enum';
+import { WorkflowResV1ModeEnum } from '../../../../api/common.enum';
 import instance from '../../../../api/instance';
+import { IBatchCheckInstanceIsConnectableByNameParams } from '../../../../api/instance/index.d';
 import EmptyBox from '../../../../components/EmptyBox';
 import TestDatabaseConnectButton from '../../../../components/TestDatabaseConnectButton';
 import { ResponseCode, PageFormLayout } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import EventEmitter from '../../../../utils/EventEmitter';
+import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 import {
   SqlStatementForm,
   SqlStatementFormTabs,
@@ -27,9 +29,9 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   const { t } = useTranslation();
   const alreadySubmit = useRef(false);
   const sqlStatementFormTabsRef = useRef<SqlStatementFormTabsRefType>(null);
-
+  const { projectName } = useCurrentProjectName();
   const [currentSqlMode, setCurrentSqlMode] = useState(
-    WorkflowResV2ModeEnum.same_sqls
+    WorkflowResV1ModeEnum.same_sqls
   );
 
   const [instanceNames, setInstanceNames] = useState<InstanceNamesType>(
@@ -69,8 +71,9 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
 
   const testDatabaseConnect = useCallback(async () => {
     testStart();
-    const params = {
+    const params: IBatchCheckInstanceIsConnectableByNameParams = {
       instances: instanceNameList.map((v) => ({ name: v ?? '' })),
+      project_name: projectName,
     };
     instance
       .batchCheckInstanceIsConnectableByName(params)
@@ -95,6 +98,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
       });
   }, [
     instanceNameList,
+    projectName,
     setConnectAble,
     setConnectInitHideFalse,
     testFinish,
@@ -105,8 +109,8 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
     props.clearTaskInfos();
     setCurrentSqlMode(
       flag
-        ? WorkflowResV2ModeEnum.same_sqls
-        : WorkflowResV2ModeEnum.different_sqls
+        ? WorkflowResV1ModeEnum.same_sqls
+        : WorkflowResV1ModeEnum.different_sqls
     );
   };
 
@@ -145,7 +149,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
         props.form.setFieldsValue({
           isSameSqlOrder: false,
         });
-        setCurrentSqlMode(WorkflowResV2ModeEnum.different_sqls);
+        setCurrentSqlMode(WorkflowResV1ModeEnum.different_sqls);
       }
     },
     [props.form]
@@ -156,7 +160,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
       alreadySubmit.current = false;
       setInstanceNames(new Map([[0, '']]));
       setConnectInitHideTrue();
-      setCurrentSqlMode(WorkflowResV2ModeEnum.same_sqls);
+      setCurrentSqlMode(WorkflowResV1ModeEnum.same_sqls);
     };
     EventEmitter.subscribe(
       EmitterKey.Reset_Create_Order_Form,
@@ -219,7 +223,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
 
         {/* IFTRUE_isEE */}
         <EmptyBox
-          if={WorkflowResV2ModeEnum.same_sqls === currentSqlMode}
+          if={WorkflowResV1ModeEnum.same_sqls === currentSqlMode}
           defaultNode={
             <SqlStatementFormTabs
               ref={sqlStatementFormTabsRef}

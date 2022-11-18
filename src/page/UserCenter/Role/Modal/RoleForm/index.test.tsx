@@ -7,13 +7,7 @@ describe('User/Modal/RoleForm', () => {
   test('should match snapshot', () => {
     const { result } = renderHook(() => useForm());
     const { container } = render(
-      <RoleForm
-        form={result.current[0]}
-        instanceList={[]}
-        usernameList={[]}
-        operationList={[]}
-        userGroupList={[]}
-      />
+      <RoleForm form={result.current[0]} operationList={[]} />
     );
     expect(container).toMatchSnapshot();
   });
@@ -21,14 +15,7 @@ describe('User/Modal/RoleForm', () => {
   test('should match snapshot when isUpdate is truthy', () => {
     const { result } = renderHook(() => useForm());
     const { container } = render(
-      <RoleForm
-        isUpdate={true}
-        form={result.current[0]}
-        instanceList={[]}
-        usernameList={[]}
-        operationList={[]}
-        userGroupList={[]}
-      />
+      <RoleForm isUpdate={true} form={result.current[0]} operationList={[]} />
     );
     expect(container).toMatchSnapshot();
   });

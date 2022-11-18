@@ -9,6 +9,7 @@ import CronInput from '../../../components/CronInput';
 import { PageBigFormLayout } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { checkCron } from '../../../hooks/useCron/cron.tool';
+import useGlobalRuleTemplate from '../../../hooks/useGlobalRuleTemplate';
 import useRuleTemplate from '../../../hooks/useRuleTemplate';
 import EventEmitter from '../../../utils/EventEmitter';
 import { nameRule } from '../../../utils/FormRule';
@@ -32,11 +33,10 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
   >([]);
 
   const { mergeFromValueIntoParams } = useAsyncParams();
-  const {
-    generateRuleTemplateSelectOption,
-    loading: getRuleTemplateLoading,
-    updateRuleTemplateList,
-  } = useRuleTemplate();
+  const { globalRuleTemplateList, updateGlobalRuleTemplateList } =
+    useGlobalRuleTemplate();
+
+  const { ruleTemplateList, updateRuleTemplateList } = useRuleTemplate();
 
   const submit = (values: PlanFormField) => {
     if (values.params && asyncParams) {
@@ -83,9 +83,15 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
         setDbType(props.defaultValue.audit_plan_db_type);
       }
     }
-    updateRuleTemplateList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.defaultValue]);
+    updateRuleTemplateList(props.projectName);
+    updateGlobalRuleTemplateList();
+  }, [
+    form,
+    props.defaultValue,
+    props.projectName,
+    updateGlobalRuleTemplateList,
+    updateRuleTemplateList,
+  ]);
 
   useEffect(() => {
     const reset = () => {
@@ -121,6 +127,7 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
         dataSourceChange={setDataSource}
         dbTypeChange={dbTypeChange}
         defaultValue={props.defaultValue}
+        projectName={props.projectName}
       />
       <AuditTaskType
         dbType={dbType}
@@ -136,7 +143,19 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
         tooltip={t('auditPlan.planForm.ruleTemplateNameTips')}
       >
         <Select placeholder={t('common.form.placeholder.select')}>
-          {!getRuleTemplateLoading && generateRuleTemplateSelectOption(dbType)}
+          {[...ruleTemplateList, ...globalRuleTemplateList].map((template) => {
+            if (template.db_type === dbType) {
+              return (
+                <Select.Option
+                  key={template.rule_template_name}
+                  value={template.rule_template_name ?? ''}
+                >
+                  {template.rule_template_name}
+                </Select.Option>
+              );
+            }
+            return null;
+          })}
         </Select>
       </Form.Item>
 

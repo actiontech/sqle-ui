@@ -22,4 +22,6 @@ export default {
   orderSqlAnalyze: '工单SQL分析',
   auditPlanSqlAnalyze: '审核计划SQL分析',
   reportStatistics: '报表统计',
+  projectManage: '项目',
+  member: '成员',
 };

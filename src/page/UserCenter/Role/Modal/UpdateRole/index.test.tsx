@@ -15,25 +15,16 @@ import {
   mockUseSelector,
 } from '../../../../../testUtils/mockRedux';
 import {
-  mockUseInstance,
   mockUseOperation,
-  mockUseUserGroup,
-  mockUseUsername,
   resolveThreeSecond,
 } from '../../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../../utils/EventEmitter';
 
 describe('User/Modal/AddRole', () => {
-  let instanceSpy: jest.SpyInstance;
-  let usernameSpy: jest.SpyInstance;
-  let userGroupSpy: jest.SpyInstance;
   let useOperationSpy: jest.SpyInstance;
   let dispatchSpy: jest.Mock;
 
   beforeEach(() => {
-    instanceSpy = mockUseInstance();
-    usernameSpy = mockUseUsername();
-    userGroupSpy = mockUseUserGroup();
     useOperationSpy = mockUseOperation();
     mockUseSelector({
       userManage: {
@@ -41,9 +32,6 @@ describe('User/Modal/AddRole', () => {
         selectRole: {
           role_name: 'oldName',
           role_desc: 'oldDesc',
-          user_name_list: ['user_name1'],
-          instance_name_list: ['instance1'],
-          user_group_name_list: ['user_group1'],
           operation_list: [{ op_code: 20100 }],
           is_disabled: false,
         },
@@ -62,28 +50,19 @@ describe('User/Modal/AddRole', () => {
 
   test('should get instance list and username list when modal is opened', async () => {
     render(<UpdateRole />);
-    expect(instanceSpy).toBeCalledTimes(1);
-    expect(usernameSpy).toBeCalledTimes(1);
-    expect(userGroupSpy).toBeCalledTimes(1);
     expect(useOperationSpy).toBeCalledTimes(1);
     cleanup();
-    instanceSpy.mockClear();
-    usernameSpy.mockClear();
-    userGroupSpy.mockClear();
     useOperationSpy.mockClear();
     mockUseSelector({
       userManage: { modalStatus: { [ModalName.Add_Role]: false } },
     });
     render(<UpdateRole />);
-    expect(instanceSpy).not.toBeCalled();
-    expect(usernameSpy).not.toBeCalled();
-    expect(userGroupSpy).not.toBeCalled();
     expect(useOperationSpy).not.toBeCalled();
   });
 
   test('should send update role request when user click submit button', async () => {
     render(<UpdateRole />);
-    const updateRoleSpy = jest.spyOn(role, 'updateRoleV2');
+    const updateRoleSpy = jest.spyOn(role, 'updateRoleV1');
     updateRoleSpy.mockImplementation(() => resolveThreeSecond({}));
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
     await waitFor(() => {
@@ -104,22 +83,6 @@ describe('User/Modal/AddRole', () => {
       target: { value: 'role1 desc' },
     });
 
-    const instanceSelect = getSelectContentByFormLabel(
-      'role.roleForm.databases'
-    );
-    expect(instanceSelect).toBeInTheDocument();
-    expect(instanceSelect).toHaveTextContent('instance1');
-
-    const userSelect = getSelectContentByFormLabel('role.roleForm.usernames');
-    expect(userSelect).toBeInTheDocument();
-    expect(userSelect).toHaveTextContent('user_name1');
-
-    const userGroupSelect = getSelectContentByFormLabel(
-      'role.roleForm.userGroups'
-    );
-    expect(userGroupSelect).toBeInTheDocument();
-    expect(userGroupSelect).toHaveTextContent('user_group1');
-
     const operationCodeSelect = getSelectContentByFormLabel(
       'role.roleForm.operationCodes'
     );
@@ -138,11 +101,8 @@ describe('User/Modal/AddRole', () => {
     );
     expect(updateRoleSpy).toBeCalledTimes(1);
     expect(updateRoleSpy).toBeCalledWith({
-      instance_name_list: ['instance1'],
       role_desc: 'role1 desc',
       role_name: 'oldName',
-      user_name_list: ['user_name1'],
-      user_group_name_list: ['user_group1'],
       operation_code_list: [20100],
       is_disabled: false,
     });

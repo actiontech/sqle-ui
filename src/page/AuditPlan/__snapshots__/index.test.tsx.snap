@@ -15,18 +15,18 @@ exports[`AuditPlan should match snapshot 1`] = `
       <Route
         component={[Function]}
         exact={true}
-        path="/auditPlan"
+        path="/project/:projectName/auditPlan"
       />
       <Route
         component={[Function]}
-        path="/auditPlan/create"
+        path="/project/:projectName/auditPlan/create"
       />
       <Route
         component={[Function]}
-        path="/auditPlan/update/:auditPlanName"
+        path="/project/:projectName/auditPlan/update/:auditPlanName"
       />
       <Redirect
-        to="/auditPlan"
+        to="/project/:projectName/auditPlan"
       />
     </Switch>
   </section>

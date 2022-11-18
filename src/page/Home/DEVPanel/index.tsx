@@ -1,17 +1,12 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
-import { Button, Card, Tabs, TabsProps } from 'antd';
+import { Card, Space, Tabs, TabsProps, Typography } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import workflow from '../../../api/workflow';
-import {
-  getWorkflowListV1FilterCurrentStepTypeEnum,
-  getWorkflowsV2FilterStatusEnum,
-} from '../../../api/workflow/index.enum';
+import { getGlobalWorkflowsV1FilterStatusEnum } from '../../../api/workflow/index.enum';
 import { IReduxState } from '../../../store';
-import { OrderListUrlParamsKey } from '../../Order/List/index.data';
 import CommonTable, {
   DASHBOARD_COMMON_GET_ORDER_NUMBER,
   genTabPaneTitle,
@@ -32,7 +27,6 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
     (state) => state.user.username
   );
 
-  const history = useHistory();
   const [currentActiveKey, setCurrentActiveKey] = useState<tabsKeyEnum>(
     tabsKeyEnum.pendingReviewByMe
   );
@@ -44,11 +38,11 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
 
   const pendingReviewByMeResponse = useRequest(
     () => {
-      return workflow.getWorkflowsV2({
+      return workflow.getGlobalWorkflowsV1({
         page_index: 1,
         page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
         filter_create_user_name: username,
-        filter_status: getWorkflowsV2FilterStatusEnum.wait_for_audit,
+        filter_status: getGlobalWorkflowsV1FilterStatusEnum.wait_for_audit,
       });
     },
     {
@@ -60,11 +54,11 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
 
   const pendingExecByMeResponse = useRequest(
     () => {
-      return workflow.getWorkflowsV2({
+      return workflow.getGlobalWorkflowsV1({
         page_index: 1,
         page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
         filter_create_user_name: username,
-        filter_status: getWorkflowsV2FilterStatusEnum.wait_for_execution,
+        filter_status: getGlobalWorkflowsV1FilterStatusEnum.wait_for_execution,
       });
     },
     {
@@ -76,11 +70,11 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
 
   const rejectedOrderByMeResponse = useRequest(
     () => {
-      return workflow.getWorkflowsV2({
+      return workflow.getGlobalWorkflowsV1({
         page_index: 1,
         page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
         filter_create_user_name: username,
-        filter_status: getWorkflowsV2FilterStatusEnum.rejected,
+        filter_status: getGlobalWorkflowsV1FilterStatusEnum.rejected,
       });
     },
     {
@@ -89,28 +83,6 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
       },
     }
   );
-
-  const showAllWithPendingReview = () => {
-    history.push(
-      `/order?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_review}&${OrderListUrlParamsKey.status}=${getWorkflowsV2FilterStatusEnum.wait_for_audit}`
-    );
-  };
-  const showAllWithPendingExec = () => {
-    history.push(
-      `/order?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.currentStepType}=${getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute}&${OrderListUrlParamsKey.status}=${getWorkflowsV2FilterStatusEnum.wait_for_execution}`
-    );
-  };
-  const showAllWithRejected = () => {
-    history.push(
-      `/order?${OrderListUrlParamsKey.createUsername}=${username}&${OrderListUrlParamsKey.status}=${getWorkflowsV2FilterStatusEnum.rejected}`
-    );
-  };
-
-  const genShowAllMap = new Map<tabsKeyEnum, () => void>([
-    [tabsKeyEnum.pendingExecByMe, showAllWithPendingExec],
-    [tabsKeyEnum.pendingReviewByMe, showAllWithPendingReview],
-    [tabsKeyEnum.rejectedOrderByMe, showAllWithRejected],
-  ]);
 
   const tableLoading =
     pendingExecByMeResponse.loading ||
@@ -130,6 +102,7 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
   return (
     <Card className="full-width-element">
       <Tabs
+        animated={true}
         size="small"
         type="card"
         onChange={handleChangeTabs}
@@ -141,20 +114,19 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
             </span>
           ),
           right: (
-            <>
+            <Space>
+              <Typography.Text>
+                {t('dashboard.tableLimitTips', {
+                  number: DASHBOARD_COMMON_GET_ORDER_NUMBER,
+                })}
+              </Typography.Text>
+
               <SyncOutlined
                 data-testid="refreshTable"
                 spin={tableLoading}
                 onClick={refreshTable}
               />
-              <Button
-                type="link"
-                onClick={genShowAllMap.get(currentActiveKey)}
-                style={{ padding: 0, marginLeft: 10 }}
-              >
-                {t('common.more')}
-              </Button>
-            </>
+            </Space>
           ),
         }}
       >

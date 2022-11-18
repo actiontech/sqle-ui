@@ -6,6 +6,7 @@ enum EmitterKey {
   Refresh_Whitelist_List = 'REFRESH_WHITELIST_LIST',
 
   Refresh_Rule_Template_List = 'REFRESH_RULE_TEMPLATE_LIST',
+  Refresh_Global_Rule_Template_List = 'Refresh_Global_Rule_Template_List',
 
   Reset_Create_Order_Form = 'RESET_CREATE_ORDER_FORM',
 
@@ -18,6 +19,13 @@ enum EmitterKey {
   Refresh_Audit_Plan_Record = 'REFRESH_AUDIT_PLAN_RECORD',
 
   Refresh_License = 'REFRESH_LICENSE',
+
+  Refresh_Project_List = 'Refresh_Project_List',
+
+  Refresh_Member_List = 'Refresh_Member_List',
+  Refresh_Member_Group_List = 'Refresh_Member_Group_List',
+  Refresh_Filter_User_Tips = 'Refresh_Filter_User_Tips',
+  Refresh_Filter_User_Group_Tips = 'Refresh_Filter_User_Group_Tips',
 }
 
 export default EmitterKey;

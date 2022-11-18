@@ -13,13 +13,14 @@ import EmitterKey from '../../../../../data/EmitterKey';
 import user from '../../../../../api/user';
 import UserForm from '../UserForm';
 import { IUserFormFields } from '../UserForm/index.type';
-import useRole from '../../../../../hooks/useRole';
 import useUserGroup from '../../../../../hooks/useUserGroup';
+import useManagerPermission from '../../../../../hooks/useManagerPermission';
 
 const AddUser = () => {
   const [form] = useForm<IUserFormFields>();
-  const { roleList, updateRoleList } = useRole();
   const { userGroupList, updateUserGroupList } = useUserGroup();
+  const { managerPermissionList, updateManagerPermission } =
+    useManagerPermission();
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [createLoading, { setTrue, setFalse }] = useBoolean();
@@ -45,9 +46,9 @@ const AddUser = () => {
         user_name: values.username,
         user_password: values.password,
         email: values.email,
-        role_name_list: values.roleNameList,
         user_group_name_list: values.userGroupList,
         wechat_id: values.wechat,
+        management_permission_code_list: values.managementPermissionCodeList,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -65,10 +66,10 @@ const AddUser = () => {
 
   React.useEffect(() => {
     if (visible) {
-      updateRoleList();
       updateUserGroupList();
+      updateManagerPermission();
     }
-  }, [updateRoleList, updateUserGroupList, visible]);
+  }, [updateManagerPermission, updateUserGroupList, visible]);
 
   return (
     <Modal
@@ -88,8 +89,8 @@ const AddUser = () => {
     >
       <UserForm
         form={form}
-        roleNameList={roleList}
         userGroupList={userGroupList}
+        managementPermissionList={managerPermissionList}
       />
     </Modal>
   );

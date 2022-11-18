@@ -1,4 +1,5 @@
 import { waitFor, fireEvent, screen } from '@testing-library/react';
+import { useParams } from 'react-router-dom';
 import CreateAuditPlan from '.';
 import audit_plan from '../../../api/audit_plan';
 import instance from '../../../api/instance';
@@ -7,6 +8,7 @@ import { getBySelector } from '../../../testUtils/customQuery';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import {
   mockDriver,
+  mockUseGlobalRuleTemplate,
   mockUseInstance,
   mockUseInstanceSchema,
   mockUseRuleTemplate,
@@ -16,7 +18,15 @@ import EventEmitter from '../../../utils/EventEmitter';
 import { dataSourceInstance } from '../../DataSource/__testData__';
 import { auditTaskMetas } from '../PlanForm/__testData__/auditMeta';
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: jest.fn(),
+}));
+const projectName = 'default';
+
 describe('CreatePlan', () => {
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
+
   let warningSpy!: jest.SpyInstance;
   beforeAll(() => {
     const warning = global.console.warn;
@@ -31,11 +41,13 @@ describe('CreatePlan', () => {
 
   beforeEach(() => {
     jest.useFakeTimers();
+    useParamsMock.mockReturnValue({ projectName });
     mockDriver();
     mockUseInstance();
     mockUseInstanceSchema();
     mockGetInstance();
     mockUseRuleTemplate();
+    mockUseGlobalRuleTemplate();
     mockGetAuditMeta();
   });
 
@@ -135,6 +147,7 @@ describe('CreatePlan', () => {
 
     expect(createRequest).toBeCalledTimes(1);
     expect(createRequest).toBeCalledWith({
+      project_name: projectName,
       audit_plan_cron: '0 0 * * *',
       audit_plan_instance_database: 'schema1',
       audit_plan_instance_name: 'instance1',

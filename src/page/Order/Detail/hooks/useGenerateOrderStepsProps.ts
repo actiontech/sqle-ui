@@ -3,7 +3,7 @@ import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   IGetWorkflowTasksItemV1,
-  IWorkflowResV2,
+  IWorkflowResV1,
 } from '../../../../api/common';
 import { GetWorkflowTasksItemV1StatusEnum } from '../../../../api/common.enum';
 import workflow from '../../../../api/workflow';
@@ -12,17 +12,19 @@ import { MaintenanceTimeInfoType } from '../../AuditResult/index.type';
 import { TasksStatusNumberType } from '../OrderSteps/index.type';
 
 type HooksParamType = {
-  workflowId: string;
-  refreshOrder: () => Promise<IWorkflowResV2 | undefined>;
+  workflowName: string;
+  refreshOrder: () => Promise<IWorkflowResV1 | undefined>;
   refreshTask: () => void;
   refreshOverviewAction: (value?: boolean | undefined) => void;
+  projectName: string;
 };
 
 const useGenerateOrderStepsProps = ({
-  workflowId,
+  workflowName,
   refreshOrder,
   refreshTask,
   refreshOverviewAction,
+  projectName,
 }: HooksParamType) => {
   const { t } = useTranslation();
 
@@ -37,8 +39,9 @@ const useGenerateOrderStepsProps = ({
     async (stepId: number) => {
       return workflow
         .approveWorkflowV1({
-          workflow_id: workflowId,
+          workflow_name: workflowName,
           workflow_step_id: `${stepId}`,
+          project_name: projectName,
         })
         .then((res) => {
           if (res.data.code === ResponseCode.SUCCESS) {
@@ -48,13 +51,14 @@ const useGenerateOrderStepsProps = ({
           }
         });
     },
-    [workflowId, t, refreshOrder, refreshOverviewAction]
+    [workflowName, projectName, t, refreshOrder, refreshOverviewAction]
   );
 
   const executing = useCallback(async () => {
     return workflow
-      .executeTasksOnWorkflowV2({
-        workflow_id: workflowId,
+      .executeTasksOnWorkflowV1({
+        workflow_name: workflowName,
+        project_name: projectName,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -64,13 +68,21 @@ const useGenerateOrderStepsProps = ({
           refreshOverviewAction();
         }
       });
-  }, [refreshOrder, refreshOverviewAction, refreshTask, t, workflowId]);
+  }, [
+    projectName,
+    refreshOrder,
+    refreshOverviewAction,
+    refreshTask,
+    t,
+    workflowName,
+  ]);
 
   const reject = useCallback(
     async (reason: string, stepId: number) => {
       return workflow
         .rejectWorkflowV1({
-          workflow_id: workflowId,
+          project_name: projectName,
+          workflow_name: workflowName,
           workflow_step_id: `${stepId}`,
           reason,
         })
@@ -82,7 +94,7 @@ const useGenerateOrderStepsProps = ({
           }
         });
     },
-    [refreshOrder, refreshOverviewAction, t, workflowId]
+    [projectName, refreshOrder, refreshOverviewAction, t, workflowName]
   );
 
   const getOverviewListSuccessHandle = (list: IGetWorkflowTasksItemV1[]) => {

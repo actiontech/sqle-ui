@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import audit_plan from '../../../../../api/audit_plan';
 import useTable from '../../../../../hooks/useTable';
 import { formatTime } from '../../../../../utils/Common';
+import { useCurrentProjectName } from '../../../../ProjectManage/ProjectDetail';
 import { AuditPlanReportUrlParams } from './index.type';
 import { AuditPlanReportTableHeader } from './tableHeader';
 
@@ -12,12 +13,14 @@ const AuditPlanReport: React.FC = () => {
   const { t } = useTranslation();
   const urlParams = useParams<AuditPlanReportUrlParams>();
   const { pagination, tableChange } = useTable();
+  const { projectName } = useCurrentProjectName();
 
   const { data: reportInfo } = useRequest(
     () =>
       audit_plan.getAuditPlanReportV1({
         audit_plan_report_id: urlParams.reportId,
         audit_plan_name: urlParams.auditPlanName,
+        project_name: projectName,
       }),
     {
       formatResult(res) {
@@ -28,7 +31,8 @@ const AuditPlanReport: React.FC = () => {
 
   const { data, loading } = useRequest(
     () =>
-      audit_plan.getAuditPlanReportsSQLsV2({
+      audit_plan.getAuditPlanReportsSQLsV1({
+        project_name: projectName,
         audit_plan_name: urlParams.auditPlanName,
         audit_plan_report_id: urlParams.reportId,
         page_index: pagination.pageIndex,

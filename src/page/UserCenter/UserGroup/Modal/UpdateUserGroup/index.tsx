@@ -47,7 +47,6 @@ const UpdateUserGroup = () => {
       const res = await user_group.updateUserGroupV1({
         user_group_name: values.userGroupName,
         user_group_desc: values.userGroupDesc,
-        role_name_list: values.roleList,
         user_name_list: values.userList,
         is_disabled: values.isDisabled,
       });
@@ -76,14 +75,13 @@ const UpdateUserGroup = () => {
         userGroupName: currentUserGroup?.user_group_name,
         userGroupDesc: currentUserGroup?.user_group_desc,
         isDisabled: currentUserGroup?.is_disabled,
-        roleList: currentUserGroup?.role_name_list,
         userList: currentUserGroup?.user_name_list,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
 
-  const { roleList, usernameList } = useUserGroupFormOption(visible);
+  const { usernameList } = useUserGroupFormOption(visible);
 
   return (
     <Modal
@@ -105,12 +103,7 @@ const UpdateUserGroup = () => {
         </>
       }
     >
-      <UserGroupForm
-        form={form}
-        roleList={roleList}
-        userList={usernameList}
-        isUpdate={true}
-      />
+      <UserGroupForm form={form} userList={usernameList} isUpdate={true} />
     </Modal>
   );
 };

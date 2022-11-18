@@ -11,7 +11,7 @@ import useInstance from '../../../../hooks/useInstance';
 import useInstanceSchema from '../../../../hooks/useInstanceSchema';
 
 const DataSource: React.FC<DataSourceProps> = (props) => {
-  const { form, defaultValue, dataSource } = props;
+  const { form, defaultValue, dataSource, projectName } = props;
 
   const { t } = useTranslation();
 
@@ -20,6 +20,7 @@ const DataSource: React.FC<DataSourceProps> = (props) => {
 
   const getInstanceParams = useMemo<IGetInstanceTipListV1Params>(() => {
     const params: IGetInstanceTipListV1Params = {
+      project_name: projectName,
       functional_module:
         getInstanceTipListV1FunctionalModuleEnum.create_audit_plan,
     };
@@ -27,10 +28,13 @@ const DataSource: React.FC<DataSourceProps> = (props) => {
       params.filter_db_type = defaultValue.audit_plan_db_type;
     }
     return params;
-  }, [defaultValue]);
+  }, [defaultValue, projectName]);
 
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
-  const { generateInstanceSchemaSelectOption } = useInstanceSchema(dataSource);
+  const { generateInstanceSchemaSelectOption } = useInstanceSchema(
+    projectName,
+    dataSource
+  );
 
   const handleDataSourceChange = (dataSource: string) => {
     props.dataSourceChange?.(dataSource);
@@ -38,26 +42,29 @@ const DataSource: React.FC<DataSourceProps> = (props) => {
       schema: undefined,
     });
     if (!!dataSource) {
-      instance.getInstanceV1({ instance_name: dataSource }).then((res) => {
-        if (res.data.code === ResponseCode.SUCCESS) {
-          form.setFieldsValue({
-            dbType: res.data.data?.db_type,
-          });
-          props.dbTypeChange?.(res.data.data?.db_type ?? '');
-        }
-      });
+      instance
+        .getInstanceV1({
+          instance_name: dataSource,
+          project_name: projectName,
+        })
+        .then((res) => {
+          if (res.data.code === ResponseCode.SUCCESS) {
+            form.setFieldsValue({
+              dbType: res.data.data?.db_type,
+            });
+            props.dbTypeChange?.(res.data.data?.db_type ?? '');
+          }
+        });
     }
   };
 
   useEffect(() => {
     updateDriverNameList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [updateDriverNameList]);
 
   useEffect(() => {
     updateInstanceList(getInstanceParams);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [getInstanceParams]);
+  }, [getInstanceParams, updateInstanceList]);
 
   return (
     <>

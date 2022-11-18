@@ -7,4 +7,5 @@ export type PlanListFilterFormFields = {
 
 export type PlanListFilterFormProps = {
   submit?: (values: PlanListFilterFormFields) => void;
+  projectName: string;
 };

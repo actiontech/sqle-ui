@@ -13,15 +13,16 @@ import EmitterKey from '../../../../../data/EmitterKey';
 import user from '../../../../../api/user';
 import UserForm from '../UserForm';
 import { IUserFormFields } from '../UserForm/index.type';
-import useRole from '../../../../../hooks/useRole';
 import { IUserResV1 } from '../../../../../api/common';
 import { IUpdateUserV1Params } from '../../../../../api/user/index.d';
 import useUserGroup from '../../../../../hooks/useUserGroup';
+import useManagerPermission from '../../../../../hooks/useManagerPermission';
 
 const UpdateUser = () => {
   const [form] = useForm<IUserFormFields>();
-  const { roleList, updateRoleList } = useRole();
   const { userGroupList, updateUserGroupList } = useUserGroup();
+  const { managerPermissionList, updateManagerPermission } =
+    useManagerPermission();
 
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -47,10 +48,10 @@ const UpdateUser = () => {
     const values = await form.validateFields();
     const params: IUpdateUserV1Params = {
       user_name: values.username,
-      role_name_list: values.roleNameList,
       user_group_name_list: values.userGroupList,
       wechat_id: values.wechat,
       email: values.email ?? '',
+      management_permission_code_list: values.managementPermissionCodeList,
     };
     if (values.username !== 'admin') {
       params.is_disabled = !!values.disabled;
@@ -74,18 +75,19 @@ const UpdateUser = () => {
 
   React.useEffect(() => {
     if (visible) {
-      updateRoleList();
       updateUserGroupList();
+      updateManagerPermission();
       form.setFieldsValue({
         username: currentUser?.user_name,
         email: currentUser?.email,
-        roleNameList: currentUser?.role_name_list ?? [],
         userGroupList: currentUser?.user_group_name_list ?? [],
         wechat: currentUser?.wechat_id,
+        managementPermissionCodeList:
+          currentUser?.management_permission_list?.map((v) => v.code ?? 0),
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [updateRoleList, updateUserGroupList, visible]);
+  }, [updateUserGroupList, updateManagerPermission, visible]);
 
   return (
     <Modal
@@ -106,9 +108,9 @@ const UpdateUser = () => {
       {/* todo: userGroupList */}
       <UserForm
         form={form}
-        roleNameList={roleList}
         isUpdate={true}
         userGroupList={userGroupList}
+        managementPermissionList={managerPermissionList}
         isAdmin={currentUser?.user_name === 'admin'}
       />
     </Modal>

@@ -1,23 +1,17 @@
 import { DownOutlined } from '@ant-design/icons';
-import {
-  Divider,
-  Dropdown,
-  Menu,
-  Popconfirm,
-  Space,
-  Tag,
-  Typography,
-} from 'antd';
+import { Divider, Dropdown, Menu, Popconfirm, Tag, Typography } from 'antd';
 import { Link } from 'react-router-dom';
-import { IRuleTemplateResV1 } from '../../../api/common';
+import { IProjectRuleTemplateResV1 } from '../../../api/common';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 
 export const RuleTemplateListTableColumnFactory = (
   deleteTemplate: (name: string) => void,
-  openCloneRuleTemplateModal: (rowData: IRuleTemplateResV1) => void
-): TableColumn<IRuleTemplateResV1, 'operator'> => {
-  return [
+  openCloneRuleTemplateModal: (rowData: IProjectRuleTemplateResV1) => void,
+  actionPermission: boolean,
+  projectName: string
+): TableColumn<IProjectRuleTemplateResV1, 'operator'> => {
+  const columns: TableColumn<IProjectRuleTemplateResV1, 'operator'> = [
     {
       dataIndex: 'rule_template_name',
       title: () => i18n.t('ruleTemplate.ruleTemplateList.table.templateName'),
@@ -32,23 +26,26 @@ export const RuleTemplateListTableColumnFactory = (
       title: () => i18n.t('ruleTemplate.ruleTemplateList.table.dbType'),
     },
     {
-      dataIndex: 'instance_name_list',
+      dataIndex: 'instance_list',
       title: () => i18n.t('ruleTemplate.ruleTemplateList.table.dataSource'),
-      render: (data: IRuleTemplateResV1['instance_name_list']) => {
+      render: (data: IProjectRuleTemplateResV1['instance_list']) => {
         if (!data || !Array.isArray(data)) {
           return '';
         }
-        return data.map((item) => <Tag key={item}>{item}</Tag>);
+        return data.map((item) => <Tag key={item.name}>{item.name ?? ''}</Tag>);
       },
     },
     {
       dataIndex: 'operator',
       title: () => i18n.t('common.operate'),
+      width: 180,
       render: (_, record) => {
         return (
-          <Space className="user-cell flex-end-horizontal">
-            <Link to={`/rule/template/update/${record.rule_template_name}`}>
-              {i18n.t('common.edit')}
+          <>
+            <Link
+              to={`/project/${projectName}/rule/template/update/${record.rule_template_name}`}
+            >
+              <Typography.Link>{i18n.t('common.edit')}</Typography.Link>
             </Link>
             <Divider type="vertical" />
             <Popconfirm
@@ -61,9 +58,9 @@ export const RuleTemplateListTableColumnFactory = (
                 record.rule_template_name ?? ''
               )}
             >
-              <Typography.Text type="danger" className="pointer">
+              <Typography.Link type="danger">
                 {i18n.t('common.delete')}
-              </Typography.Text>
+              </Typography.Link>
             </Popconfirm>
             <Divider type="vertical" />
             <Dropdown
@@ -84,9 +81,15 @@ export const RuleTemplateListTableColumnFactory = (
                 <DownOutlined />
               </Typography.Link>
             </Dropdown>
-          </Space>
+          </>
         );
       },
     },
   ];
+
+  if (!actionPermission) {
+    return columns.filter((v) => v.dataIndex !== 'operator');
+  }
+
+  return columns;
 };

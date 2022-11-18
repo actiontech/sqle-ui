@@ -1,14 +1,17 @@
 import { DownOutlined } from '@ant-design/icons';
-import { Button, Divider, Dropdown, Menu, Popconfirm, Tag } from 'antd';
+import { Divider, Dropdown, Menu, Popconfirm, Tag, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import { IInstanceResV1 } from '../../../api/common';
+import EmptyBox from '../../../components/EmptyBox';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import { timeAddZero } from '../../../utils/Common';
 
 export const dataSourceColumns = (
   deleteDatabase: (instanceName: string) => void,
-  testDatabaseConnection: (instanceName: string) => void
+  testDatabaseConnection: (instanceName: string) => void,
+  projectName: string,
+  actionPermission: boolean
 ): TableColumn<IInstanceResV1, 'operate' | 'address' | 'connect'> => {
   return [
     {
@@ -27,22 +30,12 @@ export const dataSourceColumns = (
       title: () => i18n.t('dataSource.databaseList.describe'),
     },
     {
-      dataIndex: 'role_name_list',
-      title: () => i18n.t('dataSource.databaseList.role'),
-      render(value: IInstanceResV1['role_name_list']) {
-        return value?.join(',');
-      },
-    },
-    {
       dataIndex: 'db_type',
       title: () => i18n.t('dataSource.databaseList.type'),
     },
     {
-      dataIndex: 'rule_template_name_list',
+      dataIndex: 'rule_template_name',
       title: () => i18n.t('dataSource.databaseList.ruleTemplate'),
-      render(value: IInstanceResV1['rule_template_name_list']) {
-        return value?.join(',');
-      },
     },
     {
       dataIndex: 'maintenance_times',
@@ -59,30 +52,34 @@ export const dataSourceColumns = (
       },
     },
     {
-      dataIndex: 'workflow_template_name',
-      title: () => i18n.t('dataSource.databaseList.workflow'),
-    },
-
-    {
       dataIndex: 'operate',
+      title: i18n.t('common.operate'),
+      width: actionPermission ? 180 : 40,
       render: (_, record) => {
         return (
           <>
-            <Link to={`/data/update/${record.instance_name}`}>
-              <Button type="link">{i18n.t('common.edit')}</Button>
-            </Link>
-            <Divider type="vertical" />
-            <Popconfirm
-              title={i18n.t('dataSource.deleteDatabase.confirmMessage', {
-                name: record.instance_name,
-              })}
-              onConfirm={deleteDatabase.bind(null, record.instance_name ?? '')}
-            >
-              <Button type="link" danger>
-                {i18n.t('common.delete')}
-              </Button>
-            </Popconfirm>
-            <Divider type="vertical" />
+            <EmptyBox if={actionPermission}>
+              <Link
+                to={`/project/${projectName}/data/update/${record.instance_name}`}
+              >
+                <Typography.Link>{i18n.t('common.edit')}</Typography.Link>
+              </Link>
+              <Divider type="vertical" />
+              <Popconfirm
+                title={i18n.t('dataSource.deleteDatabase.confirmMessage', {
+                  name: record.instance_name,
+                })}
+                onConfirm={deleteDatabase.bind(
+                  null,
+                  record.instance_name ?? ''
+                )}
+              >
+                <Typography.Link type="danger">
+                  {i18n.t('common.delete')}
+                </Typography.Link>
+              </Popconfirm>
+              <Divider type="vertical" />
+            </EmptyBox>
             <Dropdown
               overlay={
                 <Menu>
@@ -98,10 +95,10 @@ export const dataSourceColumns = (
                 </Menu>
               }
             >
-              <Button type="link">
+              <Typography.Link>
                 {i18n.t('common.more')}
                 <DownOutlined />
-              </Button>
+              </Typography.Link>
             </Dropdown>
           </>
         );

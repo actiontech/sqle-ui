@@ -9,10 +9,10 @@ import { AxiosRequestConfig } from 'axios';
 import {
   ICreateAuditTasksV1Params,
   ICreateAuditTasksV1Return,
-  IAuditTaskGroupIdV1Params,
-  IAuditTaskGroupIdV1Return,
   ICreateAndAuditTaskV1Params,
   ICreateAndAuditTaskV1Return,
+  IAuditTaskGroupIdV1Params,
+  IAuditTaskGroupIdV1Return,
   IGetAuditTaskV1Params,
   IGetAuditTaskV1Return,
   IGetAuditTaskSQLContentV1Params,
@@ -33,50 +33,13 @@ class TaskService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
     return this.post<ICreateAuditTasksV1Return>(
-      '/v1/task_groups',
+      `/v1/projects/${project_name}/task_groups`,
       paramsData,
       options
-    );
-  }
-
-  public auditTaskGroupIdV1(
-    params: IAuditTaskGroupIdV1Params,
-    options?: AxiosRequestConfig
-  ) {
-    const config = options || {};
-    const headers = config.headers ? config.headers : {};
-    config.headers = {
-      ...headers,
-
-      'Content-Type': 'multipart/form-data'
-    };
-
-    const paramsData = new FormData();
-
-    if (params.task_group_id != undefined) {
-      paramsData.append('task_group_id', params.task_group_id as any);
-    }
-
-    if (params.sql != undefined) {
-      paramsData.append('sql', params.sql as any);
-    }
-
-    if (params.input_sql_file != undefined) {
-      paramsData.append('input_sql_file', params.input_sql_file as any);
-    }
-
-    if (params.input_mybatis_xml_file != undefined) {
-      paramsData.append(
-        'input_mybatis_xml_file',
-        params.input_mybatis_xml_file as any
-      );
-    }
-
-    return this.post<IAuditTaskGroupIdV1Return>(
-      '/v1/task_groups/audit',
-      paramsData,
-      config
     );
   }
 
@@ -117,8 +80,50 @@ class TaskService extends ServiceBase {
       );
     }
 
+    const project_name = params.project_name;
+
     return this.post<ICreateAndAuditTaskV1Return>(
-      '/v1/tasks/audits',
+      `/v1/projects/${project_name}/tasks/audits`,
+      paramsData,
+      config
+    );
+  }
+
+  public auditTaskGroupIdV1(
+    params: IAuditTaskGroupIdV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const config = options || {};
+    const headers = config.headers ? config.headers : {};
+    config.headers = {
+      ...headers,
+
+      'Content-Type': 'multipart/form-data'
+    };
+
+    const paramsData = new FormData();
+
+    if (params.task_group_id != undefined) {
+      paramsData.append('task_group_id', params.task_group_id as any);
+    }
+
+    if (params.sql != undefined) {
+      paramsData.append('sql', params.sql as any);
+    }
+
+    if (params.input_sql_file != undefined) {
+      paramsData.append('input_sql_file', params.input_sql_file as any);
+    }
+
+    if (params.input_mybatis_xml_file != undefined) {
+      paramsData.append(
+        'input_mybatis_xml_file',
+        params.input_mybatis_xml_file as any
+      );
+    }
+
+    return this.post<IAuditTaskGroupIdV1Return>(
+      '/v1/task_groups/audit',
       paramsData,
       config
     );

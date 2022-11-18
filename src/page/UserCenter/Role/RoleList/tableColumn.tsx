@@ -1,14 +1,13 @@
-import { IOperation, IRoleResV2 } from '../../../../api/common';
+import { IOperation, IRoleResV1 } from '../../../../api/common';
 import i18n from '../../../../locale';
 import { TableColumn } from '../../../../types/common.type';
 import { orderBy } from 'lodash';
 import { Space, Typography, Divider, Popconfirm } from 'antd';
-import generateTag from '../../Common/generateTag';
 
 export const RoleListColumnFactory = (
-  updateRole: (role: IRoleResV2) => void,
+  updateRole: (role: IRoleResV1) => void,
   deleteRole: (roleName: string) => void
-): TableColumn<IRoleResV2, 'operator'> => {
+): TableColumn<IRoleResV1, 'operator'> => {
   return [
     {
       dataIndex: 'role_name',
@@ -32,36 +31,6 @@ export const RoleListColumnFactory = (
               : i18n.t('user.userState.normal')}
           </Typography.Text>
         );
-      },
-    },
-    {
-      dataIndex: 'user_name_list',
-      title: () => i18n.t('role.roleList.username'),
-      render: (list: string[]) => {
-        if (!Array.isArray(list)) {
-          return '';
-        }
-        return generateTag(list);
-      },
-    },
-    {
-      dataIndex: 'instance_name_list',
-      title: () => i18n.t('role.roleList.database'),
-      render: (list: string[]) => {
-        if (!Array.isArray(list)) {
-          return '';
-        }
-        return generateTag(list);
-      },
-    },
-    {
-      dataIndex: 'user_group_name_list',
-      title: () => i18n.t('role.roleList.userGroup'),
-      render: (list: string[]) => {
-        if (!Array.isArray(list)) {
-          return '';
-        }
-        return generateTag(list);
       },
     },
     {

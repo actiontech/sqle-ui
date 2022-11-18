@@ -23,13 +23,14 @@ import {
 import useInstance from '../../../../hooks/useInstance';
 import useStaticStatus from '../../../../hooks/useStaticStatus';
 import useUsername from '../../../../hooks/useUsername';
+import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 import { OrderListFilterFormProps } from './index.type';
 
 const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
   const { t } = useTranslation();
   const { updateUsernameList, generateUsernameSelectOption } = useUsername();
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
-
+  const { projectName } = useCurrentProjectName();
   const [collapse, { toggle: toggleCollapse }] = useBoolean(
     props.collapse ?? true
   );
@@ -56,7 +57,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
 
   React.useEffect(() => {
     updateUsernameList();
-    updateInstanceList();
+    updateInstanceList({ project_name: projectName });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -64,10 +65,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
     return current && current > moment().endOf('day');
   };
 
-  const {
-    // generateWorkflowStepTypeSelectOption,
-    generateOrderStatusSelectOption,
-  } = useStaticStatus();
+  const { generateOrderStatusSelectOption } = useStaticStatus();
 
   const currentCollapse =
     props.collapse === undefined ? collapse : props.collapse;
@@ -166,7 +164,11 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
         </Col>
 
         <Col
-          {...filterFormButtonLayoutFactory(currentCollapse ? 0 : 12, currentCollapse ? 16 : 0, currentCollapse ? 0 : 6)}
+          {...filterFormButtonLayoutFactory(
+            currentCollapse ? 0 : 12,
+            currentCollapse ? 16 : 0,
+            currentCollapse ? 0 : 6
+          )}
           className="text-align-right"
         >
           <Form.Item className="clear-margin-right" wrapperCol={{ span: 24 }}>

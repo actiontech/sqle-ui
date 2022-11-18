@@ -2,24 +2,13 @@ import {
   getAuditTaskSQLsV1FilterAuditStatusEnum,
   getAuditTaskSQLsV1FilterExecStatusEnum,
 } from '../../api/task/index.enum';
-import {
-  getWorkflowListV1FilterCurrentStepTypeEnum,
-  getWorkflowsV2FilterStatusEnum,
-} from '../../api/workflow/index.enum';
+import { getWorkflowsV1FilterStatusEnum } from '../../api/workflow/index.enum';
 import { StaticEnumDictionary } from './index.type';
 import {
   AuditPlanReportResV1AuditLevelEnum,
-  CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
+  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
   RuleResV1LevelEnum,
 } from '../../api/common.enum';
-
-export const WorkflowStepTypeDictionary: StaticEnumDictionary<getWorkflowListV1FilterCurrentStepTypeEnum> =
-  {
-    [getWorkflowListV1FilterCurrentStepTypeEnum.sql_review]:
-      'order.workflowStatus.review',
-    [getWorkflowListV1FilterCurrentStepTypeEnum.sql_execute]:
-      'order.workflowStatus.exec',
-  };
 
 export const execStatusDictionary: StaticEnumDictionary<getAuditTaskSQLsV1FilterExecStatusEnum> =
   {
@@ -40,17 +29,17 @@ export const auditStatusDictionary: StaticEnumDictionary<getAuditTaskSQLsV1Filte
       'audit.auditStatus.finished',
   };
 
-export const orderStatusDictionary: StaticEnumDictionary<getWorkflowsV2FilterStatusEnum> =
+export const orderStatusDictionary: StaticEnumDictionary<getWorkflowsV1FilterStatusEnum> =
   {
-    [getWorkflowsV2FilterStatusEnum.wait_for_audit]:
+    [getWorkflowsV1FilterStatusEnum.wait_for_audit]:
       'order.status.wait_for_audit',
-    [getWorkflowsV2FilterStatusEnum.wait_for_execution]:
+    [getWorkflowsV1FilterStatusEnum.wait_for_execution]:
       'order.status.wait_for_execution',
-    [getWorkflowsV2FilterStatusEnum.canceled]: 'order.status.canceled',
-    [getWorkflowsV2FilterStatusEnum.rejected]: 'order.status.reject',
-    [getWorkflowsV2FilterStatusEnum.exec_failed]: 'order.status.exec_failed',
-    [getWorkflowsV2FilterStatusEnum.finished]: 'order.status.finished',
-    [getWorkflowsV2FilterStatusEnum.executing]: 'order.status.executing',
+    [getWorkflowsV1FilterStatusEnum.canceled]: 'order.status.canceled',
+    [getWorkflowsV1FilterStatusEnum.rejected]: 'order.status.reject',
+    [getWorkflowsV1FilterStatusEnum.exec_failed]: 'order.status.exec_failed',
+    [getWorkflowsV1FilterStatusEnum.finished]: 'order.status.finished',
+    [getWorkflowsV1FilterStatusEnum.executing]: 'order.status.executing',
   };
 
 export const ruleLevelDictionary: StaticEnumDictionary<RuleResV1LevelEnum> = {
@@ -72,14 +61,14 @@ export const auditPlanRuleLevelDictionary: StaticEnumDictionary<AuditPlanReportR
       'ruleTemplate.ruleLevel.unknown',
   };
 
-export const auditLevelDictionary: StaticEnumDictionary<CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum> =
+export const auditLevelDictionary: StaticEnumDictionary<WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum> =
   {
-    [CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.normal]:
+    [WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.normal]:
       'workflowTemplate.auditLevel.normal',
-    [CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.notice]:
+    [WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.notice]:
       'workflowTemplate.auditLevel.notice',
-    [CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.warn]:
+    [WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.warn]:
       'workflowTemplate.auditLevel.warn',
-    [CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum.error]:
+    [WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.error]:
       'workflowTemplate.auditLevel.error',
   };

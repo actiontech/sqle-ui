@@ -9,6 +9,7 @@ export default {
   activeRules: '实例{{name}}启用的规则',
   disableRules: '实例{{name}}禁用的规则',
   form: {
+    project: '项目',
     instance: '数据源',
     dbType: '数据库类型',
   },

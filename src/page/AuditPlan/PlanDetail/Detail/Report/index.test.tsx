@@ -12,12 +12,13 @@ jest.mock('react-router', () => {
 });
 describe('AuditPlanReport', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
-
+  const projectName = 'default';
   beforeEach(() => {
     jest.useFakeTimers();
     useParamsMock.mockReturnValue({
       auditPlanName: 'auditPlanName1',
       reportId: '32',
+      projectName,
     });
   });
 
@@ -28,7 +29,7 @@ describe('AuditPlanReport', () => {
   });
 
   const mockGetReport = () => {
-    const spy = jest.spyOn(audit_plan, 'getAuditPlanReportsSQLsV2');
+    const spy = jest.spyOn(audit_plan, 'getAuditPlanReportsSQLsV1');
     spy.mockImplementation(() =>
       resolveThreeSecond(AuditReport, { otherData: { total_nums: 63 } })
     );
@@ -48,11 +49,13 @@ describe('AuditPlanReport', () => {
     expect(container).toMatchSnapshot();
     expect(getReportInfoSpy).toBeCalledTimes(1);
     expect(getReportInfoSpy).toBeCalledWith({
+      project_name: projectName,
       audit_plan_name: 'auditPlanName1',
       audit_plan_report_id: '32',
     });
     expect(getReportSpy).toBeCalledTimes(1);
     expect(getReportSpy).toBeCalledWith({
+      project_name: projectName,
       audit_plan_name: 'auditPlanName1',
       audit_plan_report_id: '32',
       page_index: 1,

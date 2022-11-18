@@ -15,6 +15,7 @@ import {
   updateAuditPlanModalStatus,
   updateSelectAuditPlan,
 } from '../../../store/auditPlan';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import PlanListModal from './Modal';
 import PlanListFilterForm from './PlanListFilterForm';
 import { PlanListFilterFormFields } from './PlanListFilterForm/index.type';
@@ -27,6 +28,8 @@ const PlanList = () => {
     removePending,
     { setTrue: startRemoveAuditPlan, setFalse: removeAuditPlanFinish },
   ] = useBoolean();
+
+  const { projectName } = useCurrentProjectName();
 
   const { pagination, tableChange, filterInfo, setFilterInfo } =
     useTable<PlanListFilterFormFields>();
@@ -42,12 +45,13 @@ const PlanList = () => {
     if (!ready) {
       already();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterInfo]);
 
   const { data, loading, refresh } = useRequest(
     () => {
       return audit_plan.getAuditPlansV1({
+        project_name: projectName,
         page_index: pagination.pageIndex,
         page_size: pagination.pageSize,
         ...filterInfo,
@@ -78,6 +82,7 @@ const PlanList = () => {
     audit_plan
       .deleteAuditPlanV1({
         audit_plan_name: auditPlanName,
+        project_name: projectName,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -130,14 +135,17 @@ const PlanList = () => {
         </Space>
       }
       extra={[
-        <Link key="create-audit-plan" to="/auditPlan/create">
+        <Link
+          key="create-audit-plan"
+          to={`/project/${projectName}/auditPlan/create`}
+        >
           <Button type="primary">{t('auditPlan.action.create')}</Button>
         </Link>,
       ]}
     >
-      <PlanListFilterForm submit={setFilterInfo} />
+      <PlanListFilterForm submit={setFilterInfo} projectName={projectName} />
       <Table
-        columns={planListTableHeader(removeAuditPlan, openModal)}
+        columns={planListTableHeader(removeAuditPlan, openModal, projectName)}
         dataSource={data?.list ?? []}
         rowKey="audit_plan_name"
         pagination={{
@@ -147,7 +155,10 @@ const PlanList = () => {
         loading={loading}
         onRow={(record) => ({
           onClick: () => {
-            history.push(`/auditPlan/detail/${record.audit_plan_name}`);
+            history.push(
+              `/project/${projectName}/auditPlan/detail/${record.audit_plan_name}`,
+              projectName
+            );
           },
         })}
         onChange={tableChange}

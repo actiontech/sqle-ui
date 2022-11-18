@@ -14,27 +14,33 @@ import {
   mockUseSelector,
 } from '../../../../../testUtils/mockRedux';
 import {
-  mockUseRole,
+  mockManagerPermission,
   mockUseUserGroup,
   resolveThreeSecond,
 } from '../../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../../utils/EventEmitter';
 
-describe('User/Modal/AddUser', () => {
-  let userRoleSpy: jest.SpyInstance;
+describe('User/Modal/UpdateUser', () => {
   let useUserGroupSpy: jest.SpyInstance;
+  let managerPermissionSpy: jest.SpyInstance;
   let dispatchSpy: jest.Mock;
 
   beforeEach(() => {
-    userRoleSpy = mockUseRole();
     useUserGroupSpy = mockUseUserGroup();
+    managerPermissionSpy = mockManagerPermission();
+
     mockUseSelector({
       userManage: {
         modalStatus: { [ModalName.Update_User]: true },
         selectUser: {
           user_name: 'root',
           email: 'user@123.com',
-          role_name_list: ['role_name1'],
+          management_permission_list: [
+            {
+              desc: '创建项目',
+              code: 1,
+            },
+          ],
           user_group_name_list: ['user_group_name1'],
           wechat_id: '11231123',
         },
@@ -53,16 +59,17 @@ describe('User/Modal/AddUser', () => {
 
   test('should get instance list and username list when modal is opened', async () => {
     render(<UpdateUser />);
-    expect(userRoleSpy).toBeCalledTimes(1);
+    expect(managerPermissionSpy).toBeCalledTimes(1);
     expect(useUserGroupSpy).toBeCalledTimes(1);
+    expect(managerPermissionSpy).toBeCalledTimes(1);
     cleanup();
-    userRoleSpy.mockClear();
+    managerPermissionSpy.mockClear();
     useUserGroupSpy.mockClear();
     mockUseSelector({
       userManage: { modalStatus: { [ModalName.Update_User]: false } },
     });
     render(<UpdateUser />);
-    expect(userRoleSpy).not.toBeCalled();
+    expect(managerPermissionSpy).not.toBeCalled();
     expect(useUserGroupSpy).not.toBeCalled();
   });
 
@@ -104,7 +111,7 @@ describe('User/Modal/AddUser', () => {
       email: 'newuser@163.com',
       user_name: 'root',
       is_disabled: true,
-      role_name_list: ['role_name1'],
+      management_permission_code_list: [1],
       user_group_name_list: ['user_group_name1'],
       wechat_id: '11231123',
     });
@@ -134,19 +141,24 @@ describe('User/Modal/AddUser', () => {
   });
 
   test('should send update user request when the username is any value', async () => {
-    userRoleSpy.mockClear();
+    managerPermissionSpy.mockClear();
     mockUseSelector({
       userManage: {
         modalStatus: { [ModalName.Update_User]: true },
         selectUser: {
           user_name: 'san.zhang',
           email: 'user@123.com',
-          role_name_list: ['role_name1'],
+          management_permission_list: [
+            {
+              desc: '创建项目',
+              code: 1,
+            },
+          ],
         },
       },
     });
     render(<UpdateUser />);
-    expect(userRoleSpy).toBeCalledTimes(1);
+    expect(managerPermissionSpy).toBeCalledTimes(1);
 
     const updateUserSpy = jest.spyOn(user, 'updateUserV1');
     updateUserSpy.mockImplementation(() => resolveThreeSecond({}));
@@ -162,30 +174,35 @@ describe('User/Modal/AddUser', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
-    expect(userRoleSpy).toBeCalledTimes(1);
+    expect(managerPermissionSpy).toBeCalledTimes(1);
     expect(updateUserSpy).toBeCalledWith({
       email: 'user@123.com',
       user_name: 'san.zhang',
       is_disabled: false,
-      role_name_list: ['role_name1'],
+      management_permission_code_list: [1],
       user_group_name_list: [],
     });
   });
 
   test('should not set disable filed when user name is admin', async () => {
-    userRoleSpy.mockClear();
+    managerPermissionSpy.mockClear();
     mockUseSelector({
       userManage: {
         modalStatus: { [ModalName.Update_User]: true },
         selectUser: {
           user_name: 'admin',
           email: 'user@123.com',
-          role_name_list: ['role_name1'],
+          management_permission_list: [
+            {
+              desc: '创建项目',
+              code: 1,
+            },
+          ],
         },
       },
     });
     render(<UpdateUser />);
-    expect(userRoleSpy).toBeCalledTimes(1);
+    expect(managerPermissionSpy).toBeCalledTimes(1);
 
     const updateUserSpy = jest.spyOn(user, 'updateUserV1');
     updateUserSpy.mockImplementation(() => resolveThreeSecond({}));
@@ -201,29 +218,34 @@ describe('User/Modal/AddUser', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
-    expect(userRoleSpy).toBeCalledTimes(1);
+    expect(managerPermissionSpy).toBeCalledTimes(1);
     expect(updateUserSpy).toBeCalledWith({
       email: 'user@123.com',
       user_name: 'admin',
-      role_name_list: ['role_name1'],
+      management_permission_code_list: [1],
       user_group_name_list: [],
     });
   });
 
   test('should send update user request when user clear email', async () => {
-    userRoleSpy.mockClear();
+    managerPermissionSpy.mockClear();
     mockUseSelector({
       userManage: {
         modalStatus: { [ModalName.Update_User]: true },
         selectUser: {
           user_name: 'san.zhang',
           email: 'user@123.com',
-          role_name_list: ['role_name1'],
+          management_permission_list: [
+            {
+              desc: '创建项目',
+              code: 1,
+            },
+          ],
         },
       },
     });
     render(<UpdateUser />);
-    expect(userRoleSpy).toBeCalledTimes(1);
+    expect(managerPermissionSpy).toBeCalledTimes(1);
 
     const updateUserSpy = jest.spyOn(user, 'updateUserV1');
     updateUserSpy.mockImplementation(() => resolveThreeSecond({}));
@@ -243,12 +265,12 @@ describe('User/Modal/AddUser', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
-    expect(userRoleSpy).toBeCalledTimes(1);
+    expect(managerPermissionSpy).toBeCalledTimes(1);
     expect(updateUserSpy).toBeCalledWith({
       email: '',
       user_name: 'san.zhang',
       is_disabled: false,
-      role_name_list: ['role_name1'],
+      management_permission_code_list: [1],
       user_group_name_list: [],
     });
   });

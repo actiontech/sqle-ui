@@ -50,37 +50,6 @@ const RoleForm: React.FC<IRoleFormProps> = (props) => {
           <Switch />
         </Form.Item>
       </EmptyBox>
-      <Form.Item name="databases" label={t('role.roleForm.databases')}>
-        <Select
-          mode="multiple"
-          showSearch
-          placeholder={t('common.form.placeholder.select', {
-            name: t('role.roleForm.databases'),
-          })}
-        >
-          {props.instanceList.map((instance) => (
-            <Select.Option
-              value={instance.instance_name ?? ''}
-              key={instance.instance_name}
-            >
-              {instance.instance_name}
-            </Select.Option>
-          ))}
-        </Select>
-      </Form.Item>
-      <Form.Item name="usernames" label={t('role.roleForm.usernames')}>
-        <Select
-          mode="multiple"
-          showSearch
-          placeholder={t('common.form.placeholder.select')}
-        >
-          {props.usernameList.map((user) => (
-            <Select.Option value={user.user_name ?? ''} key={user.user_name}>
-              {user.user_name}
-            </Select.Option>
-          ))}
-        </Select>
-      </Form.Item>
       <Form.Item
         name="operationCodes"
         label={t('role.roleForm.operationCodes')}
@@ -96,22 +65,6 @@ const RoleForm: React.FC<IRoleFormProps> = (props) => {
               value={operation.op_code ?? ''}
             >
               {operation.op_desc}
-            </Select.Option>
-          ))}
-        </Select>
-      </Form.Item>
-      <Form.Item name="userGroups" label={t('role.roleForm.userGroups')}>
-        <Select<number>
-          mode="multiple"
-          showSearch
-          placeholder={t('common.form.placeholder.select')}
-        >
-          {props.userGroupList.map((group) => (
-            <Select.Option
-              key={group.user_group_name}
-              value={group.user_group_name ?? ''}
-            >
-              {group.user_group_name}
             </Select.Option>
           ))}
         </Select>

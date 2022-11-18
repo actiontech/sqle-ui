@@ -8,6 +8,8 @@ import configuration from '../api/configuration';
 import user_group from '../api/user_group';
 import operation from '../api/operation';
 import audit_plan from '../api/audit_plan';
+import management_permission from '../api/management_permission';
+import project from '../api/project';
 
 export const successData = (data: any, otherData?: any) => {
   return {
@@ -187,7 +189,7 @@ export const mockUseOperation = () => {
 };
 
 export const mockUseRuleTemplate = () => {
-  const spy = jest.spyOn(ruleTemplate, 'getRuleTemplateTipsV1');
+  const spy = jest.spyOn(ruleTemplate, 'getProjectRuleTemplateTipsV1');
   spy.mockImplementation(() =>
     resolveThreeSecond([
       { rule_template_name: 'rule_template_name1', db_type: 'mysql' },
@@ -197,18 +199,21 @@ export const mockUseRuleTemplate = () => {
   return spy;
 };
 
-export const mockUseUsername = () => {
-  const spy = jest.spyOn(user, 'getUserTipListV1');
+export const mockUseGlobalRuleTemplate = () => {
+  const spy = jest.spyOn(ruleTemplate, 'getRuleTemplateTipsV1');
   spy.mockImplementation(() =>
-    resolveThreeSecond([{ user_name: 'user_name1' }])
+    resolveThreeSecond([
+      { rule_template_name: 'global_rule_template_name1', db_type: 'mysql' },
+      { rule_template_name: 'global_rule_template_name2', db_type: 'oracle' },
+    ])
   );
   return spy;
 };
 
-export const mockUseWorkflowTemplate = () => {
-  const spy = jest.spyOn(workflow, 'getWorkflowTemplateTipsV1');
+export const mockUseUsername = () => {
+  const spy = jest.spyOn(user, 'getUserTipListV1');
   spy.mockImplementation(() =>
-    resolveThreeSecond([{ workflow_template_name: 'workflow-template-name-1' }])
+    resolveThreeSecond([{ user_name: 'user_name1' }])
   );
   return spy;
 };
@@ -232,6 +237,34 @@ export const mockInstanceTip = () => {
       {
         instance_name: 'oracle-test',
         instance_type: 'oracle',
+      },
+    ])
+  );
+  return spy;
+};
+
+export const mockManagerPermission = () => {
+  const spy = jest.spyOn(management_permission, 'GetManagementPermissionsV1');
+  spy.mockImplementation(() =>
+    resolveThreeSecond([
+      {
+        code: 1,
+        desc: '创建项目',
+      },
+    ])
+  );
+  return spy;
+};
+
+export const mockUseProject = () => {
+  const spy = jest.spyOn(project, 'getProjectTipsV1');
+  spy.mockImplementation(() =>
+    resolveThreeSecond([
+      {
+        project_name: 'project_name_1',
+      },
+      {
+        project_name: 'project_name_2',
       },
     ])
   );

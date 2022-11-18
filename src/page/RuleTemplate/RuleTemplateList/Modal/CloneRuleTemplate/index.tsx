@@ -15,7 +15,7 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { IRuleTemplateResV1 } from '../../../../../api/common';
+import { IProjectRuleTemplateResV1 } from '../../../../../api/common';
 import ruleTemplate from '../../../../../api/rule_template';
 import { ModalFormLayout, ResponseCode } from '../../../../../data/common';
 import EmitterKey from '../../../../../data/EmitterKey';
@@ -25,6 +25,7 @@ import { IReduxState } from '../../../../../store';
 import { updateRuleTemplateListModalStatus } from '../../../../../store/ruleTemplate';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import { nameRule } from '../../../../../utils/FormRule';
+import { useCurrentProjectName } from '../../../../ProjectManage/ProjectDetail';
 import { CloneRuleTemplateFormFields } from './index.type';
 
 const CloneRuleTemplateModal = () => {
@@ -36,13 +37,13 @@ const CloneRuleTemplateModal = () => {
   );
   const [requestPending, { setTrue: startRequest, setFalse: requestFinished }] =
     useBoolean();
+  const { projectName } = useCurrentProjectName();
+  const { generateInstanceSelectOption, updateInstanceList } = useInstance();
 
   const currentRuleTemplate = useSelector<
     IReduxState,
-    IRuleTemplateResV1 | null
+    IProjectRuleTemplateResV1 | null
   >((state) => state.ruleTemplate.selectRuleTemplate);
-
-  const { generateInstanceSelectOption, updateInstanceList } = useInstance();
 
   const close = () => {
     form.resetFields();
@@ -58,10 +59,11 @@ const CloneRuleTemplateModal = () => {
     const value = await form.validateFields();
     startRequest();
     ruleTemplate
-      .CloneRuleTemplateV1({
+      .cloneProjectRuleTemplateV1({
         rule_template_name: currentRuleTemplate?.rule_template_name ?? '',
         new_rule_template_name: value.templateName,
         desc: value.templateDesc,
+        project_name: projectName,
         instance_name_list: value.instances,
       })
       .then((res) => {
@@ -82,10 +84,9 @@ const CloneRuleTemplateModal = () => {
 
   useEffect(() => {
     if (visible) {
-      updateInstanceList();
+      updateInstanceList({ project_name: projectName });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible]);
+  }, [projectName, updateInstanceList, visible]);
 
   return (
     <Modal
@@ -103,7 +104,7 @@ const CloneRuleTemplateModal = () => {
             {t('ruleTemplate.cloneRuleTemplate.currentTemplateTips')}
             <Link
               target="_blank"
-              to={`/rule/template/update/${currentRuleTemplate?.rule_template_name}`}
+              to={`/project/${projectName}/rule/template/update/${currentRuleTemplate?.rule_template_name}`}
             >
               {currentRuleTemplate?.rule_template_name}
             </Link>

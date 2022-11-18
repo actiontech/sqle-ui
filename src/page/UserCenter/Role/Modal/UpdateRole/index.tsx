@@ -11,29 +11,23 @@ import { updateUserManageModalStatus } from '../../../../../store/userManage';
 import role from '../../../../../api/role';
 import { ResponseCode } from '../../../../../data/common';
 import { useBoolean } from 'ahooks';
-import { IRoleResV2 } from '../../../../../api/common';
+import { IRoleResV1 } from '../../../../../api/common';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import EmitterKey from '../../../../../data/EmitterKey';
-import useInstance from '../../../../../hooks/useInstance';
-import useUsername from '../../../../../hooks/useUsername';
 import useOperation from '../../../../../hooks/useOperation';
-import useUserGroup from '../../../../../hooks/useUserGroup';
 
 const UpdateRole = () => {
   const [form] = useForm<IRoleFormFields>();
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const { instanceList, updateInstanceList } = useInstance();
-  const { usernameList, updateUsernameList } = useUsername();
   const { operationList, updateOperationList } = useOperation();
-  const { userGroupList, updateUserGroupList } = useUserGroup();
 
   const [updateLoading, { setTrue, setFalse }] = useBoolean();
   const visible = useSelector<IReduxState, boolean>(
     (state) => !!state.userManage.modalStatus[ModalName.Update_Role]
   );
-  const currentRole = useSelector<IReduxState, IRoleResV2 | null>(
+  const currentRole = useSelector<IReduxState, IRoleResV1 | null>(
     (state) => state.userManage.selectRole
   );
 
@@ -51,12 +45,9 @@ const UpdateRole = () => {
     const values = await form.validateFields();
     setTrue();
     role
-      .updateRoleV2({
+      .updateRoleV1({
         role_name: values.roleName,
         role_desc: values.roleDesc,
-        instance_name_list: values.databases,
-        user_name_list: values.usernames,
-        user_group_name_list: values.userGroups,
         operation_code_list: values.operationCodes,
         is_disabled: values.isDisabled,
       })
@@ -79,9 +70,6 @@ const UpdateRole = () => {
       form.setFieldsValue({
         roleName: currentRole?.role_name,
         roleDesc: currentRole?.role_desc,
-        usernames: currentRole?.user_name_list,
-        databases: currentRole?.instance_name_list,
-        userGroups: currentRole?.user_group_name_list,
         operationCodes: currentRole?.operation_list?.map((e) => e.op_code ?? 0),
         isDisabled: currentRole?.is_disabled ?? false,
       });
@@ -91,18 +79,9 @@ const UpdateRole = () => {
 
   React.useEffect(() => {
     if (visible) {
-      updateInstanceList();
-      updateUsernameList();
       updateOperationList();
-      updateUserGroupList();
     }
-  }, [
-    updateInstanceList,
-    updateOperationList,
-    updateUserGroupList,
-    updateUsernameList,
-    visible,
-  ]);
+  }, [updateOperationList, visible]);
 
   return (
     <Modal
@@ -120,14 +99,7 @@ const UpdateRole = () => {
         </>
       }
     >
-      <RoleForm
-        isUpdate={true}
-        form={form}
-        instanceList={instanceList}
-        usernameList={usernameList}
-        operationList={operationList}
-        userGroupList={userGroupList}
-      />
+      <RoleForm isUpdate={true} form={form} operationList={operationList} />
     </Modal>
   );
 };

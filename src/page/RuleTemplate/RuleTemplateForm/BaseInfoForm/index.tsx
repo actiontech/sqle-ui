@@ -1,22 +1,27 @@
 import { Button, Form, Input, Select, Space } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { PageFormLayout } from '../../../../data/common';
-import useInstance from '../../../../hooks/useInstance';
+import {
+  instanceListDefaultKey,
+  PageFormLayout,
+} from '../../../../data/common';
 import { nameRule } from '../../../../utils/FormRule';
 import { RuleTemplateBaseInfoFormProps } from './index.type';
 import useDatabaseType from '../../../../hooks/useDatabaseType';
-import { instanceListDefaultKey } from '../../../../data/common';
 import { Rule } from 'antd/lib/form';
+import useInstance from '../../../../hooks/useInstance';
+import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 
 const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
   const { t } = useTranslation();
+  const { projectName } = useCurrentProjectName();
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
   const { updateDriverNameList, generateDriverSelectOptions } =
     useDatabaseType();
   const [databaseType, setDatabaseType] = React.useState<string>(
     props.form.getFieldValue('db_type') ?? instanceListDefaultKey
   );
+
   const isUpdate = React.useMemo(
     () => !!props.defaultData,
     [props.defaultData]
@@ -29,12 +34,6 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
     }
     props.form.resetFields();
   }, [props.form, isUpdate]);
-
-  React.useEffect(() => {
-    updateInstanceList();
-    updateDriverNameList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const databaseTypeChange = React.useCallback(
     (value) => {
@@ -49,6 +48,24 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
     [props.form]
   );
 
+  const nameFormRule: () => Rule[] = React.useCallback(() => {
+    const rule: Rule[] = [
+      {
+        required: true,
+      },
+    ];
+
+    if (!isUpdate) {
+      rule.push(...nameRule());
+    }
+    return rule;
+  }, [isUpdate]);
+
+  React.useEffect(() => {
+    updateInstanceList({ project_name: projectName });
+    updateDriverNameList();
+  }, [projectName, updateDriverNameList, updateInstanceList]);
+
   React.useEffect(() => {
     if (!!props.defaultData) {
       setDatabaseType(props.defaultData.db_type ?? instanceListDefaultKey);
@@ -56,21 +73,12 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
         templateName: props.defaultData.rule_template_name,
         templateDesc: props.defaultData.desc,
         db_type: props.defaultData.db_type,
-        instances: props.defaultData.instance_name_list ?? [],
+        instances:
+          props.defaultData.instance_list?.map((v) => v.name ?? '') ?? [],
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.defaultData]);
-
-  const nameFormRule: Rule[] = [
-    {
-      required: true,
-    },
-  ];
-
-  if (!isUpdate) {
-    nameFormRule.push(...nameRule());
-  }
 
   return (
     <Form {...PageFormLayout} form={props.form}>
@@ -78,7 +86,7 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
         label={t('ruleTemplate.ruleTemplateForm.templateName')}
         name="templateName"
         validateFirst={true}
-        rules={nameFormRule}
+        rules={nameFormRule()}
       >
         <Input
           disabled={isUpdate}

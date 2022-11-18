@@ -1,5 +1,5 @@
 import { IAuditTaskResV1 } from '../../../../../api/common.d';
-import { WorkflowResV2ModeEnum } from '../../../../../api/common.enum';
+import { WorkflowResV1ModeEnum } from '../../../../../api/common.enum';
 import { SqlInfoFormFields } from '../../../Create/SqlInfoForm/index.type';
 
 export type ModifySqlModalProps = {
@@ -11,5 +11,5 @@ export type ModifySqlModalProps = {
   ) => Promise<void>;
   visible: boolean;
   currentOrderTasks?: IAuditTaskResV1[];
-  sqlMode: WorkflowResV2ModeEnum;
+  sqlMode: WorkflowResV1ModeEnum;
 };

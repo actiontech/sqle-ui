@@ -21,7 +21,7 @@ import EventEmitter from '../../../../../utils/EventEmitter';
 import { SQLInputType } from '../../index.enum';
 import { SqlInfoFormFields, SqlInfoFormProps } from '../index.type';
 
-describe('order/create/sqlInfoForm', () => {
+describe.skip('order/create/sqlInfoForm', () => {
   const mockSubmit = jest.fn();
 
   const updateDirtyDataMock = jest.fn();

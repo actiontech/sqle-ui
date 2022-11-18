@@ -18,7 +18,7 @@ import {
 } from './index.type';
 
 const PlanListFilterForm: React.FC<PlanListFilterFormProps> = (props) => {
-  const { submit } = props;
+  const { submit, projectName } = props;
 
   const [form] = useForm<PlanListFilterFormFields>();
 
@@ -31,10 +31,15 @@ const PlanListFilterForm: React.FC<PlanListFilterFormProps> = (props) => {
     useAuditPlanTypes();
 
   useEffect(() => {
-    updateInstanceList();
+    updateInstanceList({ project_name: projectName });
     updateDriverNameList();
     updateAuditPlanTypes();
-  }, [updateAuditPlanTypes, updateDriverNameList, updateInstanceList]);
+  }, [
+    projectName,
+    updateAuditPlanTypes,
+    updateDriverNameList,
+    updateInstanceList,
+  ]);
 
   const reset = () => {
     form.resetFields();

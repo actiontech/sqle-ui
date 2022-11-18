@@ -35,6 +35,7 @@ import {
   updateSelectAuditPlan,
 } from '../../../../../store/auditPlan';
 import useStyles from '../../../../../theme';
+import { useCurrentProjectName } from '../../../../ProjectManage/ProjectDetail';
 import { webhooksTemplateDefault } from './index.data';
 import { SubscribeNoticeFormFields } from './index.type';
 import WebhooksTemplateHelp from './WebhooksTemplateHelp';
@@ -45,6 +46,7 @@ const SubscribeNotice = () => {
   const { currentEditorTheme } = useChangeTheme();
   const [form] = useForm<SubscribeNoticeFormFields>();
 
+  const { projectName } = useCurrentProjectName();
   const visible = useSelector<IReduxState, boolean>(
     (state) => state.auditPlan.modalStatus[ModalName.Subscribe_Notice]
   );
@@ -84,6 +86,7 @@ const SubscribeNotice = () => {
       enable_web_hook_notify: values.webhooksEnable,
       notify_interval: values.interval,
       notify_level: values.level,
+      project_name: projectName,
     };
     if (values.webhooksEnable) {
       params.web_hook_url = values.webhooksUrl;
@@ -118,6 +121,7 @@ const SubscribeNotice = () => {
     try {
       const res = await audit_plan.testAuditPlanNotifyConfigV1({
         audit_plan_name: currentAuditPlan?.audit_plan_name ?? '',
+        project_name: projectName,
       });
       if (res.data.code === ResponseCode.SUCCESS) {
         if (res.data.data?.is_notify_send_normal) {
@@ -137,6 +141,7 @@ const SubscribeNotice = () => {
   const setDefaultValue = async () => {
     const response = await audit_plan.getAuditPlanNotifyConfigV1({
       audit_plan_name: currentAuditPlan?.audit_plan_name ?? '',
+      project_name: projectName,
     });
     if (response.data.code === ResponseCode.SUCCESS) {
       const config = response.data.data;

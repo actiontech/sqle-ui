@@ -9,11 +9,22 @@ import { AxiosRequestConfig } from 'axios';
 import {
   ILoginV1Params,
   ILoginV1Return,
+  IGetMembersV1Params,
+  IGetMembersV1Return,
+  IAddMemberV1Params,
+  IAddMemberV1Return,
+  IGetMemberV1Params,
+  IGetMemberV1Return,
+  IDeleteMemberV1Params,
+  IDeleteMemberV1Return,
+  IUpdateMemberV1Params,
+  IUpdateMemberV1Return,
   IGetCurrentUserV1Return,
   IUpdateCurrentUserV1Params,
   IUpdateCurrentUserV1Return,
   IUpdateCurrentUserPasswordV1Params,
   IUpdateCurrentUserPasswordV1Return,
+  IGetUserTipListV1Params,
   IGetUserTipListV1Return,
   IGetUserListV1Params,
   IGetUserListV1Return,
@@ -33,6 +44,84 @@ class UserService extends ServiceBase {
   public loginV1(params: ILoginV1Params, options?: AxiosRequestConfig) {
     const paramsData = this.cloneDeep(params);
     return this.post<ILoginV1Return>('/v1/login', paramsData, options);
+  }
+
+  public getMembersV1(
+    params: IGetMembersV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.get<IGetMembersV1Return>(
+      `/v1/projects/${project_name}/members`,
+      paramsData,
+      options
+    );
+  }
+
+  public addMemberV1(params: IAddMemberV1Params, options?: AxiosRequestConfig) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.post<IAddMemberV1Return>(
+      `/v1/projects/${project_name}/members`,
+      paramsData,
+      options
+    );
+  }
+
+  public getMemberV1(params: IGetMemberV1Params, options?: AxiosRequestConfig) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    const user_name = paramsData.user_name;
+    delete paramsData.user_name;
+
+    return this.get<IGetMemberV1Return>(
+      `/v1/projects/${project_name}/members/${user_name}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public deleteMemberV1(
+    params: IDeleteMemberV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    const user_name = paramsData.user_name;
+    delete paramsData.user_name;
+
+    return this.delete<IDeleteMemberV1Return>(
+      `/v1/projects/${project_name}/members/${user_name}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public updateMemberV1(
+    params: IUpdateMemberV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    const user_name = paramsData.user_name;
+    delete paramsData.user_name;
+
+    return this.patch<IUpdateMemberV1Return>(
+      `/v1/projects/${project_name}/members/${user_name}/`,
+      paramsData,
+      options
+    );
   }
 
   public getCurrentUserV1(options?: AxiosRequestConfig) {
@@ -63,10 +152,14 @@ class UserService extends ServiceBase {
     );
   }
 
-  public getUserTipListV1(options?: AxiosRequestConfig) {
+  public getUserTipListV1(
+    params: IGetUserTipListV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
     return this.get<IGetUserTipListV1Return>(
       '/v1/user_tips',
-      undefined,
+      paramsData,
       options
     );
   }

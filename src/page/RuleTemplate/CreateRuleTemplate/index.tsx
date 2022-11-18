@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { IRuleReqV1, IRuleResV1 } from '../../../api/common';
 import ruleTemplate from '../../../api/rule_template';
 import { ResponseCode } from '../../../data/common';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import RuleTemplateForm from '../RuleTemplateForm';
 import { RuleTemplateBaseInfoFields } from '../RuleTemplateForm/BaseInfoForm/index.type';
 
@@ -18,6 +19,7 @@ const CreateRuleTemplate = () => {
   const [createLoading, { toggle: updateCreateLoading }] = useBoolean();
   const [activeRule, setActiveRule] = React.useState<IRuleResV1[]>([]);
   const [databaseRule, setDatabaseRule] = React.useState<IRuleResV1[]>([]);
+  const { projectName } = useCurrentProjectName();
   const { data: allRules, loading: getAllRulesLoading } = useRequest(
     ruleTemplate.getRuleListV1.bind(ruleTemplate),
     {
@@ -53,12 +55,13 @@ const CreateRuleTemplate = () => {
       };
     });
     ruleTemplate
-      .createRuleTemplateV1({
+      .createProjectRuleTemplateV1({
         rule_template_name: baseInfo.templateName,
         desc: baseInfo.templateDesc,
-        instance_name_list: baseInfo.instances,
         db_type: baseInfo.db_type,
         rule_list: activeRuleWithNewField,
+        project_name: projectName,
+        instance_name_list: baseInfo.instances,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -68,7 +71,7 @@ const CreateRuleTemplate = () => {
       .finally(() => {
         updateCreateLoading(false);
       });
-  }, [activeRule, form, step, updateCreateLoading]);
+  }, [activeRule, form, projectName, step, updateCreateLoading]);
 
   const resetAll = React.useCallback(() => {
     setStep(0);
@@ -80,7 +83,7 @@ const CreateRuleTemplate = () => {
       <Card
         title={t('ruleTemplate.createRuleTemplate.title')}
         extra={[
-          <Link to="/rule/template" key="back">
+          <Link to={`/project/${projectName}/rule/template`} key="back">
             <Button type="primary">{t('common.back')}</Button>
           </Link>,
         ]}
@@ -111,7 +114,7 @@ const CreateRuleTemplate = () => {
             }
           />
           <Row justify="center">
-            <Link to="/rule/template">
+            <Link to={`/project/${projectName}/rule/template`}>
               <Button type="primary">{t('ruleTemplate.backToList')}</Button>
             </Link>
           </Row>

@@ -2,12 +2,11 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { useForm } from 'antd/lib/form/Form';
 import BaseInfoForm from '.';
-import { mockUseInstance, mockDriver } from '../../../../testUtils/mockRequest';
+import { mockDriver } from '../../../../testUtils/mockRequest';
 
-describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
+describe.skip('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
   beforeEach(() => {
     jest.useFakeTimers();
-    mockUseInstance();
     mockDriver();
   });
 
@@ -41,15 +40,6 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
     expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
     fireEvent.click(databaseTypeOption);
 
-    fireEvent.mouseDown(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
-    );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    const option = screen.getAllByText('instance1')[0];
-    fireEvent.click(option);
-
     fireEvent.click(screen.getByText('common.reset'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
@@ -59,9 +49,6 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
     ).toHaveValue('');
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateDesc')
-    ).toHaveValue('');
-    expect(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
     ).toHaveValue('');
   });
 
@@ -98,14 +85,6 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
       { target: { value: 'template describe' } }
     );
 
-    fireEvent.mouseDown(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
-    );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    const option = screen.getAllByText('instance1')[0];
-    fireEvent.click(option);
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
@@ -119,9 +98,7 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateDesc')
     ).toHaveValue('');
-    expect(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
-    ).toHaveValue('');
+
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
     ).toHaveValue('');

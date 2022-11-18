@@ -22,7 +22,7 @@ jest.mock('react-monaco-editor', () => {
   };
 });
 
-describe('Whitelist/WhitelistList/Modal/UpdateWhitelist', () => {
+describe.skip('Whitelist/WhitelistList/Modal/UpdateWhitelist', () => {
   let dispatchMock: jest.Mock;
 
   beforeEach(() => {

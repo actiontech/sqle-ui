@@ -6,7 +6,7 @@ import { auditResultOverviewColumn } from './column';
 import workflow from '../../../api/workflow';
 import {
   IExecuteOneTaskOnWorkflowV1Params,
-  IUpdateWorkflowScheduleV2Params,
+  IUpdateWorkflowScheduleV1Params,
 } from '../../../api/workflow/index.d';
 import { ResponseCode } from '../../../data/common';
 import ScheduleTimeModal from './ScheduleTimeModal';
@@ -24,11 +24,12 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
   setAuditResultActiveKey,
   updateTaskRecordTotalNum,
   showOverview = false,
-  workflowId,
+  workflowName,
   refreshOrder,
   getOverviewListSuccessHandle,
   refreshOverviewFlag,
   orderStatus,
+  projectName,
 }) => {
   const { t } = useTranslation();
   const [currentTask, setCurrentTask] =
@@ -42,12 +43,13 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
   ] = useBoolean();
 
   const sqlExecuteHandle = (taskId: string) => {
-    if (!workflowId) {
+    if (!workflowName) {
       return;
     }
     const param: IExecuteOneTaskOnWorkflowV1Params = {
-      workflow_id: workflowId,
+      workflow_name: workflowName,
       task_id: taskId,
+      project_name: projectName,
     };
     workflow.executeOneTaskOnWorkflowV1(param).then((res) => {
       if (res.data.code === ResponseCode.SUCCESS) {
@@ -62,12 +64,13 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
     scheduleTime?: string,
     taskId = currentTask?.task_id?.toString()
   ) => {
-    const param: IUpdateWorkflowScheduleV2Params = {
-      workflow_id: workflowId ?? '',
+    const param: IUpdateWorkflowScheduleV1Params = {
+      workflow_name: workflowName ?? '',
       task_id: taskId ?? '',
       schedule_time: scheduleTime,
+      project_name: projectName,
     };
-    return workflow.updateWorkflowScheduleV2(param).then((res) => {
+    return workflow.updateWorkflowScheduleV1(param).then((res) => {
       if (res.data.code === ResponseCode.SUCCESS) {
         message.success(
           scheduleTime
@@ -87,10 +90,13 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
     refresh: refreshOverview,
   } = useRequest(
     () =>
-      workflow.getSummaryOfInstanceTasksV1({ workflow_id: Number(workflowId) }),
+      workflow.getSummaryOfInstanceTasksV1({
+        workflow_name: workflowName ?? '',
+        project_name: projectName,
+      }),
     {
       refreshDeps: [refreshOverviewFlag],
-      ready: !!showOverview && !!workflowId,
+      ready: !!showOverview && !!workflowName,
       formatResult: (res) => res.data.data ?? [],
       onSuccess: getOverviewListSuccessHandle,
     }

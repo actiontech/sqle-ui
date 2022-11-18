@@ -194,9 +194,8 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
   const { updateUsernameList, generateUsernameSelectOption } = useUsername();
 
   React.useEffect(() => {
-    updateUsernameList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    updateUsernameList(props.projectName);
+  }, [props.projectName, updateUsernameList]);
 
   React.useEffect(() => {
     const resetAllForm = () => {

@@ -7,7 +7,11 @@ describe('User/Modal/UserForm', () => {
   test('should match snapshot when isUpdate is falsy', () => {
     const { result } = renderHook(() => useForm());
     const { container } = render(
-      <UserForm form={result.current[0]} roleNameList={[]} userGroupList={[]} />
+      <UserForm
+        form={result.current[0]}
+        managementPermissionList={[]}
+        userGroupList={[]}
+      />
     );
     expect(container).toMatchSnapshot();
   });
@@ -18,7 +22,7 @@ describe('User/Modal/UserForm', () => {
       <UserForm
         isUpdate={true}
         form={result.current[0]}
-        roleNameList={[]}
+        managementPermissionList={[]}
         userGroupList={[]}
       />
     );

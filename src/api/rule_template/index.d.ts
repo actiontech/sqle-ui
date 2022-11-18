@@ -1,13 +1,80 @@
 import {
   IGetRuleTemplateTipsResV1,
+  IGetProjectRuleTemplatesResV1,
+  ICreateProjectRuleTemplateReqV1,
+  IBaseRes,
+  IGetProjectRuleTemplateResV1,
+  IUpdateProjectRuleTemplateReqV1,
+  ICloneProjectRuleTemplateReqV1,
   IGetRuleTemplatesResV1,
   ICreateRuleTemplateReqV1,
-  IBaseRes,
   IGetRuleTemplateResV1,
   IUpdateRuleTemplateReqV1,
   ICloneRuleTemplateReqV1,
   IGetRulesResV1
 } from '../common.d';
+
+export interface IGetProjectRuleTemplateTipsV1Params {
+  project_name: string;
+
+  filter_db_type?: string;
+}
+
+export interface IGetProjectRuleTemplateTipsV1Return
+  extends IGetRuleTemplateTipsResV1 {}
+
+export interface IGetProjectRuleTemplateListV1Params {
+  project_name: string;
+
+  page_index?: number;
+
+  page_size?: number;
+}
+
+export interface IGetProjectRuleTemplateListV1Return
+  extends IGetProjectRuleTemplatesResV1 {}
+
+export interface ICreateProjectRuleTemplateV1Params
+  extends ICreateProjectRuleTemplateReqV1 {
+  project_name: string;
+}
+
+export interface ICreateProjectRuleTemplateV1Return extends IBaseRes {}
+
+export interface IGetProjectRuleTemplateV1Params {
+  project_name: string;
+
+  rule_template_name: string;
+}
+
+export interface IGetProjectRuleTemplateV1Return
+  extends IGetProjectRuleTemplateResV1 {}
+
+export interface IDeleteProjectRuleTemplateV1Params {
+  project_name: string;
+
+  rule_template_name: string;
+}
+
+export interface IDeleteProjectRuleTemplateV1Return extends IBaseRes {}
+
+export interface IUpdateProjectRuleTemplateV1Params
+  extends IUpdateProjectRuleTemplateReqV1 {
+  project_name: string;
+
+  rule_template_name: string;
+}
+
+export interface IUpdateProjectRuleTemplateV1Return extends IBaseRes {}
+
+export interface ICloneProjectRuleTemplateV1Params
+  extends ICloneProjectRuleTemplateReqV1 {
+  project_name: string;
+
+  rule_template_name: string;
+}
+
+export interface ICloneProjectRuleTemplateV1Return extends IBaseRes {}
 
 export interface IGetRuleTemplateTipsV1Params {
   filter_db_type?: string;
@@ -17,8 +84,6 @@ export interface IGetRuleTemplateTipsV1Return
   extends IGetRuleTemplateTipsResV1 {}
 
 export interface IGetRuleTemplateListV1Params {
-  filter_instance_name?: string;
-
   page_index?: number;
 
   page_size?: number;

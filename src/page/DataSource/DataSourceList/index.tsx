@@ -1,25 +1,33 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Button, Card, message, Modal, Space, Table } from 'antd';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import instance from '../../../api/instance';
 import { ResponseCode } from '../../../data/common';
 import { dataSourceColumns } from './columns';
 import DataSourceListFilterForm from './DataSourceListFilterForm';
 import { DataSourceListFilterFields } from './DataSourceListFilterForm/index.type';
 import useTable from '../../../hooks/useTable';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
+import { Link } from 'react-router-dom';
+import useCurrentUser from '../../../hooks/useCurrentUser';
+import EmptyBox from '../../../components/EmptyBox';
 
 const DataSourceList = () => {
   const { t } = useTranslation();
-
   const { pagination, filterInfo, setFilterInfo, tableChange } =
     useTable<DataSourceListFilterFields>();
+  const { isAdmin, isProjectManager } = useCurrentUser();
+  const { projectName } = useCurrentProjectName();
+  const actionPermission = useMemo(() => {
+    return isAdmin || isProjectManager(projectName);
+  }, [isAdmin, isProjectManager, projectName]);
 
   const { data, loading, refresh } = useRequest(
     () => {
       return instance.getInstanceListV1({
+        project_name: projectName,
         page_index: pagination.pageIndex,
         page_size: pagination.pageSize,
         ...filterInfo,
@@ -46,6 +54,7 @@ const DataSourceList = () => {
       instance
         .deleteInstanceV1({
           instance_name: instanceName,
+          project_name: projectName,
         })
         .then((res) => {
           if (res.data.code === ResponseCode.SUCCESS) {
@@ -60,7 +69,7 @@ const DataSourceList = () => {
           hideLoading();
         });
     },
-    [t]
+    [projectName, t]
   );
 
   const testDatabaseConnection = React.useCallback(
@@ -69,6 +78,7 @@ const DataSourceList = () => {
       instance
         .checkInstanceIsConnectableByNameV1({
           instance_name: instanceName,
+          project_name: projectName,
         })
         .then((res) => {
           hide();
@@ -88,7 +98,7 @@ const DataSourceList = () => {
           }
         });
     },
-    [t]
+    [projectName, t]
   );
 
   return (
@@ -102,9 +112,11 @@ const DataSourceList = () => {
         </Space>
       }
       extra={
-        <Link to="/data/create">
-          <Button type="primary">{t('dataSource.addDatabase')}</Button>
-        </Link>
+        <EmptyBox if={actionPermission}>
+          <Link to={`/project/${projectName}/data/create`}>
+            <Button type="primary">{t('dataSource.addDatabase')}</Button>
+          </Link>
+        </EmptyBox>
       }
     >
       <DataSourceListFilterForm submit={setFilterInfo} />
@@ -112,7 +124,12 @@ const DataSourceList = () => {
         rowKey="instance_name"
         loading={loading}
         dataSource={data?.list ?? []}
-        columns={dataSourceColumns(deleteDatabase, testDatabaseConnection)}
+        columns={dataSourceColumns(
+          deleteDatabase,
+          testDatabaseConnection,
+          projectName,
+          actionPermission
+        )}
         pagination={{
           total: data?.total,
         }}

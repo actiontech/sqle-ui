@@ -10,19 +10,17 @@ import {
 import {
   mockUseRole,
   mockUseRuleTemplate,
-  mockUseWorkflowTemplate,
   mockDriver,
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 import { dataSourceMetas } from '../__testData__';
 
-describe('AddDataSource', () => {
+describe.skip('AddDataSource', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockUseRuleTemplate();
     mockUseRole();
-    mockUseWorkflowTemplate();
     mockGetDataSourceMetas();
     mockDriver();
   });

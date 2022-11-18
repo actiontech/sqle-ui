@@ -1,7 +1,7 @@
-import { IWorkflowRecordResV2 } from '../../../../../api/common.d';
+import { IWorkflowRecordResV1 } from '../../../../../api/common.d';
 
 export type OrderHistoryProps = {
-  history: IWorkflowRecordResV2[];
+  history: IWorkflowRecordResV1[];
   visible: boolean;
   close: () => void;
 };

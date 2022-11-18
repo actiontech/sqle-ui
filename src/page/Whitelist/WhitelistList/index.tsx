@@ -18,17 +18,24 @@ import EventEmitter from '../../../utils/EventEmitter';
 import EmitterKey from '../../../data/EmitterKey';
 import { IAuditWhitelistResV1 } from '../../../api/common.d';
 import { ResponseCode } from '../../../data/common';
+import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 
 const WhitelistList = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { pagination, tableChange } = useTable();
+  const { projectName } = useCurrentProjectName();
 
-  const { data: whitelistList, loading, refresh } = useRequest(
+  const {
+    data: whitelistList,
+    loading,
+    refresh,
+  } = useRequest(
     () =>
       auditWhitelist.getAuditWhitelistV1({
         page_index: `${pagination.pageIndex}`,
         page_size: `${pagination.pageSize}`,
+        project_name: projectName,
       }),
     {
       refreshDeps: [pagination],
@@ -73,6 +80,7 @@ const WhitelistList = () => {
       auditWhitelist
         .deleteAuditWhitelistByIdV1({
           audit_whitelist_id: `${whitelistId}`,
+          project_name: projectName,
         })
         .then((res) => {
           if (res.data.code === ResponseCode.SUCCESS) {
@@ -84,7 +92,7 @@ const WhitelistList = () => {
           hide();
         });
     },
-    [refresh, t]
+    [projectName, refresh, t]
   );
 
   React.useEffect(() => {

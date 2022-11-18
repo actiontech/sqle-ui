@@ -1,12 +1,12 @@
 import {
   AuditPlanParamResV1TypeEnum,
   AuditPlanReportResV1AuditLevelEnum,
+  AuditPlanSQLHeadV1TypeEnum,
   AuditResDataV1AuditLevelEnum,
   AuditTaskResV1AuditLevelEnum,
   AuditTaskResV1SqlSourceEnum,
   AuditTaskResV1StatusEnum,
   CreateAuditWhitelistReqV1MatchTypeEnum,
-  CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
   GetWorkflowTasksItemV1StatusEnum,
   RuleParamResV1TypeEnum,
   RuleResV1LevelEnum,
@@ -19,14 +19,10 @@ import {
   WorkflowDetailResV1CurrentStepTypeEnum,
   WorkflowDetailResV1StatusEnum,
   WorkflowRecordResV1StatusEnum,
+  WorkflowResV1ModeEnum,
   WorkflowStepResV1StateEnum,
   WorkflowStepResV1TypeEnum,
-  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
-  AuditPlanSQLHeadV2TypeEnum,
-  WorkflowDetailResV2CurrentStepTypeEnum,
-  WorkflowDetailResV2StatusEnum,
-  WorkflowRecordResV2StatusEnum,
-  WorkflowResV2ModeEnum
+  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum
 } from './common.enum';
 
 export interface IBaseRes {
@@ -74,13 +70,11 @@ export interface IAuditPlanReportResV1 {
 }
 
 export interface IAuditPlanReportSQLResV1 {
+  audit_plan_report_sql?: string;
+
   audit_plan_report_sql_audit_result?: string;
 
-  audit_plan_report_sql_fingerprint?: string;
-
-  audit_plan_report_sql_last_receive_text?: string;
-
-  audit_plan_report_sql_last_receive_timestamp?: string;
+  number?: number;
 }
 
 export interface IAuditPlanResV1 {
@@ -101,6 +95,14 @@ export interface IAuditPlanResV1 {
   rule_template_name?: string;
 }
 
+export interface IAuditPlanSQLHeadV1 {
+  desc?: string;
+
+  name?: string;
+
+  type?: AuditPlanSQLHeadV1TypeEnum;
+}
+
 export interface IAuditPlanSQLReqV1 {
   audit_plan_sql_counter?: string;
 
@@ -114,13 +116,11 @@ export interface IAuditPlanSQLReqV1 {
 }
 
 export interface IAuditPlanSQLResV1 {
-  audit_plan_sql_counter?: string;
+  head?: IAuditPlanSQLHeadV1[];
 
-  audit_plan_sql_fingerprint?: string;
-
-  audit_plan_sql_last_receive_text?: string;
-
-  audit_plan_sql_last_receive_timestamp?: string;
+  rows?: Array<{
+    [key: string]: string;
+  }>;
 }
 
 export interface IAuditPlanTypesV1 {
@@ -226,7 +226,7 @@ export interface IAuditWhitelistResV1 {
 }
 
 export interface IBatchCancelWorkflowsReqV1 {
-  workflow_ids?: string[];
+  workflow_names?: string[];
 }
 
 export interface IBatchCheckInstanceConnectionsReqV1 {
@@ -261,6 +261,12 @@ export interface IBindOauth2UserResV1 {
   message?: string;
 }
 
+export interface IBindRoleReqV1 {
+  instance_name?: string;
+
+  role_names?: string[];
+}
+
 export interface ICheckLicenseResV1 {
   code?: number;
 
@@ -271,10 +277,16 @@ export interface ICheckLicenseResV1 {
   message?: string;
 }
 
-export interface ICloneRuleTemplateReqV1 {
+export interface ICloneProjectRuleTemplateReqV1 {
   desc?: string;
 
   instance_name_list?: string[];
+
+  new_rule_template_name?: string;
+}
+
+export interface ICloneRuleTemplateReqV1 {
+  desc?: string;
 
   new_rule_template_name?: string;
 }
@@ -336,26 +348,32 @@ export interface ICreateInstanceReqV1 {
 
   maintenance_times?: IMaintenanceTimeReqV1[];
 
-  role_name_list?: string[];
-
-  rule_template_name_list?: string[];
+  rule_template_name?: string;
 
   sql_query_config?: ISQLQueryConfigReqV1;
-
-  workflow_template_name?: string;
 }
 
-export interface ICreateRoleReqV1 {
-  instance_name_list?: string[];
+export interface ICreateMemberGroupReqV1 {
+  roles?: IBindRoleReqV1[];
 
-  role_desc?: string;
-
-  role_name?: string;
-
-  user_name_list?: string[];
+  user_group_name?: string;
 }
 
-export interface ICreateRuleTemplateReqV1 {
+export interface ICreateMemberReqV1 {
+  is_manager?: boolean;
+
+  roles?: IBindRoleReqV1[];
+
+  user_name?: string;
+}
+
+export interface ICreateProjectReqV1 {
+  desc?: string;
+
+  name?: string;
+}
+
+export interface ICreateProjectRuleTemplateReqV1 {
   db_type?: string;
 
   desc?: string;
@@ -367,9 +385,25 @@ export interface ICreateRuleTemplateReqV1 {
   rule_template_name?: string;
 }
 
-export interface ICreateUserGroupReqV1 {
-  role_name_list?: string[];
+export interface ICreateRoleReqV1 {
+  operation_code_list?: number[];
 
+  role_desc?: string;
+
+  role_name?: string;
+}
+
+export interface ICreateRuleTemplateReqV1 {
+  db_type?: string;
+
+  desc?: string;
+
+  rule_list?: IRuleReqV1[];
+
+  rule_template_name?: string;
+}
+
+export interface ICreateUserGroupReqV1 {
   user_group_desc?: string;
 
   user_group_name?: string;
@@ -380,7 +414,7 @@ export interface ICreateUserGroupReqV1 {
 export interface ICreateUserReqV1 {
   email?: string;
 
-  role_name_list?: string[];
+  management_permission_code_list?: number[];
 
   user_group_name_list?: string[];
 
@@ -394,21 +428,9 @@ export interface ICreateUserReqV1 {
 export interface ICreateWorkflowReqV1 {
   desc?: string;
 
-  task_id?: string;
+  task_ids?: number[];
 
   workflow_subject?: string;
-}
-
-export interface ICreateWorkflowTemplateReqV1 {
-  allow_submit_when_less_audit_level?: CreateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum;
-
-  desc?: string;
-
-  instance_name_list?: string[];
-
-  workflow_step_template_list?: IWorkFlowStepTemplateReqV1[];
-
-  workflow_template_name?: string;
 }
 
 export interface IDashboardResV1 {
@@ -522,7 +544,7 @@ export interface IGetAuditPlanResV1 {
 export interface IGetAuditPlanSQLsResV1 {
   code?: number;
 
-  data?: IAuditPlanSQLResV1[];
+  data?: IAuditPlanSQLResV1;
 
   message?: string;
 
@@ -653,14 +675,6 @@ export interface IGetInstanceTipsResV1 {
   message?: string;
 }
 
-export interface IGetInstanceWorkflowTemplateResV1 {
-  code?: number;
-
-  data?: IWorkflowTemplateDetailResV1;
-
-  message?: string;
-}
-
 export interface IGetInstancesResV1 {
   code?: number;
 
@@ -703,6 +717,64 @@ export interface IGetLicenseUsageResV1 {
   data?: ILicenseUsageV1;
 
   message?: string;
+}
+
+export interface IGetManagementPermissionsResV1 {
+  code?: number;
+
+  data?: IManagementPermissionResV1[];
+
+  message?: string;
+}
+
+export interface IGetMemberGroupRespDataV1 {
+  roles?: IBindRoleReqV1[];
+
+  user_group_name?: string;
+}
+
+export interface IGetMemberGroupRespV1 {
+  code?: number;
+
+  data?: IGetMemberGroupRespDataV1;
+
+  message?: string;
+}
+
+export interface IGetMemberGroupsRespV1 {
+  code?: number;
+
+  data?: IGetMemberGroupRespDataV1[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
+export interface IGetMemberRespDataV1 {
+  is_manager?: boolean;
+
+  roles?: IBindRoleReqV1[];
+
+  user_name?: string;
+}
+
+export interface IGetMemberRespV1 {
+  code?: number;
+
+  data?: IGetMemberRespDataV1;
+
+  message?: string;
+}
+
+export interface IGetMembersRespV1 {
+  code?: number;
+
+  data?: IGetMemberRespDataV1[];
+
+  message?: string;
+
+  total_nums?: number;
 }
 
 export interface IGetOauth2ConfigurationResDataV1 {
@@ -753,6 +825,50 @@ export interface IGetOperationsResV1 {
   code?: number;
 
   data?: IOperationResV1[];
+
+  message?: string;
+}
+
+export interface IGetProjectDetailResV1 {
+  code?: number;
+
+  data?: IProjectDetailItem;
+
+  message?: string;
+}
+
+export interface IGetProjectResV1 {
+  code?: number;
+
+  data?: IProjectListItem[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
+export interface IGetProjectRuleTemplateResV1 {
+  code?: number;
+
+  data?: IRuleProjectTemplateDetailResV1;
+
+  message?: string;
+}
+
+export interface IGetProjectRuleTemplatesResV1 {
+  code?: number;
+
+  data?: IProjectRuleTemplateResV1[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
+export interface IGetProjectTipsResV1 {
+  code?: number;
+
+  data?: IProjectTipResV1[];
 
   message?: string;
 }
@@ -1131,24 +1247,6 @@ export interface IGetWorkflowTemplateResV1 {
   message?: string;
 }
 
-export interface IGetWorkflowTemplateTipResV1 {
-  code?: number;
-
-  data?: IWorkflowTemplateTipResV1[];
-
-  message?: string;
-}
-
-export interface IGetWorkflowTemplatesResV1 {
-  code?: number;
-
-  data?: IWorkflowTemplateResV1[];
-
-  message?: string;
-
-  total_nums?: number;
-}
-
 export interface IGetWorkflowsResV1 {
   code?: number;
 
@@ -1157,6 +1255,12 @@ export interface IGetWorkflowsResV1 {
   message?: string;
 
   total_nums?: number;
+}
+
+export interface IGlobalRuleTemplateInstance {
+  instance_name?: string;
+
+  project_name?: string;
 }
 
 export interface IInstanceAdditionalMetaV1 {
@@ -1222,13 +1326,9 @@ export interface IInstanceResV1 {
 
   maintenance_times?: IMaintenanceTimeResV1[];
 
-  role_name_list?: string[];
-
-  rule_template_name_list?: string[];
+  rule_template_name?: string;
 
   sql_query_config?: ISQLQueryConfigResV1;
-
-  workflow_template_name?: string;
 }
 
 export interface IInstanceSchemaResV1 {
@@ -1353,6 +1453,12 @@ export interface IMaintenanceTimeResV1 {
   maintenance_stop_time?: ITimeResV1;
 }
 
+export interface IManagementPermissionResV1 {
+  code?: number;
+
+  desc?: string;
+}
+
 export interface IOauth2ConfigurationReqV1 {
   access_token_tag?: string;
 
@@ -1377,6 +1483,12 @@ export interface IOauth2ConfigurationReqV1 {
   user_id_tag?: string;
 }
 
+export interface IOperation {
+  op_code?: number;
+
+  op_desc?: string;
+}
+
 export interface IOperationResV1 {
   op_code?: number;
 
@@ -1389,8 +1501,6 @@ export interface IPartialSyncAuditPlanSQLsReqV1 {
 
 export interface IPatchUserGroupReqV1 {
   is_disabled?: boolean;
-
-  role_name_list?: string[];
 
   user_group_desc?: string;
 
@@ -1421,18 +1531,56 @@ export interface IPrepareSQLQueryResV1 {
   message?: string;
 }
 
+export interface IProjectDetailItem {
+  create_time?: string;
+
+  create_user_name?: string;
+
+  desc?: string;
+
+  name?: string;
+}
+
+export interface IProjectListItem {
+  create_time?: string;
+
+  create_user_name?: string;
+
+  desc?: string;
+
+  name?: string;
+}
+
+export interface IProjectRuleTemplateInstance {
+  name?: string;
+}
+
+export interface IProjectRuleTemplateResV1 {
+  db_type?: string;
+
+  desc?: string;
+
+  instance_list?: IProjectRuleTemplateInstance[];
+
+  rule_template_name?: string;
+}
+
+export interface IProjectTipResV1 {
+  project_name?: string;
+}
+
 export interface IRejectWorkflowReqV1 {
   reason?: string;
 }
 
 export interface IRoleResV1 {
-  instance_name_list?: string[];
+  is_disabled?: boolean;
+
+  operation_list?: IOperation[];
 
   role_desc?: string;
 
   role_name?: string;
-
-  user_name_list?: string[];
 }
 
 export interface IRoleTipResV1 {
@@ -1453,6 +1601,18 @@ export interface IRuleParamResV1 {
   type?: RuleParamResV1TypeEnum;
 
   value?: string;
+}
+
+export interface IRuleProjectTemplateDetailResV1 {
+  db_type?: string;
+
+  desc?: string;
+
+  instance_list?: IProjectRuleTemplateInstance[];
+
+  rule_list?: IRuleResV1[];
+
+  rule_template_name?: string;
 }
 
 export interface IRuleReqV1 {
@@ -1482,7 +1642,7 @@ export interface IRuleTemplateDetailResV1 {
 
   desc?: string;
 
-  instance_name_list?: string[];
+  instance_list?: IGlobalRuleTemplateInstance[];
 
   rule_list?: IRuleResV1[];
 
@@ -1494,7 +1654,7 @@ export interface IRuleTemplateResV1 {
 
   desc?: string;
 
-  instance_name_list?: string[];
+  instance_list?: IGlobalRuleTemplateInstance[];
 
   rule_template_name?: string;
 }
@@ -1754,31 +1914,47 @@ export interface IUpdateInstanceReqV1 {
 
   maintenance_times?: IMaintenanceTimeReqV1[];
 
-  role_name_list?: string[];
-
-  rule_template_name_list?: string[];
+  rule_template_name?: string;
 
   sql_query_config?: ISQLQueryConfigReqV1;
+}
 
-  workflow_template_name?: string;
+export interface IUpdateMemberGroupReqV1 {
+  roles?: IBindRoleReqV1[];
+}
+
+export interface IUpdateMemberReqV1 {
+  is_manager?: boolean;
+
+  roles?: IBindRoleReqV1[];
 }
 
 export interface IUpdateOtherUserPasswordReqV1 {
   password?: string;
 }
 
-export interface IUpdateRoleReqV1 {
+export interface IUpdateProjectReqV1 {
+  desc?: string;
+}
+
+export interface IUpdateProjectRuleTemplateReqV1 {
+  desc?: string;
+
   instance_name_list?: string[];
 
-  role_desc?: string;
+  rule_list?: IRuleReqV1[];
+}
 
-  user_name_list?: string[];
+export interface IUpdateRoleReqV1 {
+  is_disabled?: boolean;
+
+  operation_code_list?: number[];
+
+  role_desc?: string;
 }
 
 export interface IUpdateRuleTemplateReqV1 {
   desc?: string;
-
-  instance_name_list?: string[];
 
   rule_list?: IRuleReqV1[];
 }
@@ -1804,7 +1980,7 @@ export interface IUpdateUserReqV1 {
 
   is_disabled?: boolean;
 
-  role_name_list?: string[];
+  management_permission_code_list?: number[];
 
   user_group_name_list?: string[];
 
@@ -1826,10 +2002,10 @@ export interface IUpdateWeChatConfigurationReqV1 {
 }
 
 export interface IUpdateWorkflowReqV1 {
-  task_id?: string;
+  task_ids?: number[];
 }
 
-export interface IUpdateWorkflowScheduleV1 {
+export interface IUpdateWorkflowScheduleReqV1 {
   schedule_time?: string;
 }
 
@@ -1843,7 +2019,15 @@ export interface IUpdateWorkflowTemplateReqV1 {
   workflow_step_template_list?: IWorkFlowStepTemplateReqV1[];
 }
 
+export interface IUserBindProjectResV1 {
+  is_manager?: boolean;
+
+  project_name?: string;
+}
+
 export interface IUserDetailResV1 {
+  bind_projects?: IUserBindProjectResV1[];
+
   email?: string;
 
   is_admin?: boolean;
@@ -1852,7 +2036,7 @@ export interface IUserDetailResV1 {
 
   login_type?: string;
 
-  role_name_list?: string[];
+  management_permission_list?: IManagementPermissionResV1[];
 
   user_group_name_list?: string[];
 
@@ -1863,8 +2047,6 @@ export interface IUserDetailResV1 {
 
 export interface IUserGroupListItemResV1 {
   is_disabled?: boolean;
-
-  role_name_list?: string[];
 
   user_group_desc?: string;
 
@@ -1894,7 +2076,7 @@ export interface IUserResV1 {
 
   login_type?: string;
 
-  role_name_list?: string[];
+  management_permission_list?: IManagementPermissionResV1[];
 
   user_group_name_list?: string[];
 
@@ -1972,21 +2154,11 @@ export interface IWorkflowDetailResV1 {
 
   desc?: string;
 
-  schedule_time?: string;
+  project_name?: string;
 
   status?: WorkflowDetailResV1StatusEnum;
 
-  subject?: string;
-
-  task_instance_name?: string;
-
-  task_instance_schema?: string;
-
-  task_pass_rate?: number;
-
-  task_score?: number;
-
-  workflow_id?: number;
+  workflow_name?: string;
 }
 
 export interface IWorkflowPassPercentV1 {
@@ -2012,13 +2184,9 @@ export interface IWorkflowPercentCountedByInstanceTypeV1 {
 export interface IWorkflowRecordResV1 {
   current_step_number?: number;
 
-  schedule_time?: string;
-
-  schedule_user?: string;
-
   status?: WorkflowRecordResV1StatusEnum;
 
-  task_id?: number;
+  tasks?: IWorkflowTaskItem[];
 
   workflow_step_list?: IWorkflowStepResV1[];
 }
@@ -2046,15 +2214,13 @@ export interface IWorkflowResV1 {
 
   desc?: string;
 
-  instance_maintenance_times?: IMaintenanceTimeResV1[];
+  mode?: WorkflowResV1ModeEnum;
 
   record?: IWorkflowRecordResV1;
 
   record_history_list?: IWorkflowRecordResV1[];
 
-  subject?: string;
-
-  workflow_id?: number;
+  workflow_name?: string;
 }
 
 export interface IWorkflowStageDuration {
@@ -2111,6 +2277,10 @@ export interface IWorkflowStepResV1 {
   workflow_step_id?: number;
 }
 
+export interface IWorkflowTaskItem {
+  task_id?: number;
+}
+
 export interface IWorkflowTemplateDetailResV1 {
   allow_submit_when_less_audit_level?: WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum;
 
@@ -2121,198 +2291,4 @@ export interface IWorkflowTemplateDetailResV1 {
   workflow_step_template_list?: IWorkFlowStepTemplateResV1[];
 
   workflow_template_name?: string;
-}
-
-export interface IWorkflowTemplateResV1 {
-  desc?: string;
-
-  workflow_template_name?: string;
-}
-
-export interface IWorkflowTemplateTipResV1 {
-  workflow_template_name?: string;
-}
-
-export interface IAuditPlanReportSQLResV2 {
-  audit_plan_report_sql?: string;
-
-  audit_plan_report_sql_audit_result?: string;
-
-  number?: number;
-}
-
-export interface IAuditPlanSQLHeadV2 {
-  desc?: string;
-
-  name?: string;
-
-  type?: AuditPlanSQLHeadV2TypeEnum;
-}
-
-export interface IAuditPlanSQLResV2 {
-  head?: IAuditPlanSQLHeadV2[];
-
-  rows?: Array<{
-    [key: string]: string;
-  }>;
-}
-
-export interface ICreateRoleReqV2 {
-  instance_name_list?: string[];
-
-  operation_code_list?: number[];
-
-  role_desc?: string;
-
-  role_name?: string;
-
-  user_group_name_list?: string[];
-
-  user_name_list?: string[];
-}
-
-export interface ICreateWorkflowReqV2 {
-  desc?: string;
-
-  task_ids?: number[];
-
-  workflow_subject?: string;
-}
-
-export interface IGetAuditPlanReportSQLsResV2 {
-  code?: number;
-
-  data?: IAuditPlanReportSQLResV2[];
-
-  message?: string;
-
-  total_nums?: number;
-}
-
-export interface IGetAuditPlanSQLsResV2 {
-  code?: number;
-
-  data?: IAuditPlanSQLResV2;
-
-  message?: string;
-
-  total_nums?: number;
-}
-
-export interface IGetRolesResV2 {
-  code?: number;
-
-  data?: IRoleResV2[];
-
-  message?: string;
-
-  total_nums?: number;
-}
-
-export interface IGetWorkflowResV2 {
-  code?: number;
-
-  data?: IWorkflowResV2;
-
-  message?: string;
-}
-
-export interface IGetWorkflowsResV2 {
-  code?: number;
-
-  data?: IWorkflowDetailResV2[];
-
-  message?: string;
-
-  total_nums?: number;
-}
-
-export interface IOperation {
-  op_code?: number;
-
-  op_desc?: string;
-}
-
-export interface IRoleResV2 {
-  instance_name_list?: string[];
-
-  is_disabled?: boolean;
-
-  operation_list?: IOperation[];
-
-  role_desc?: string;
-
-  role_name?: string;
-
-  user_group_name_list?: string[];
-
-  user_name_list?: string[];
-}
-
-export interface IUpdateRoleReqV2 {
-  instance_name_list?: string[];
-
-  is_disabled?: boolean;
-
-  operation_code_list?: number[];
-
-  role_desc?: string;
-
-  user_group_name_list?: string[];
-
-  user_name_list?: string[];
-}
-
-export interface IUpdateWorkflowReqV2 {
-  task_ids?: number[];
-}
-
-export interface IWorkflowDetailResV2 {
-  create_time?: string;
-
-  create_user_name?: string;
-
-  current_step_assignee_user_name_list?: string[];
-
-  current_step_type?: WorkflowDetailResV2CurrentStepTypeEnum;
-
-  desc?: string;
-
-  status?: WorkflowDetailResV2StatusEnum;
-
-  subject?: string;
-
-  workflow_id?: number;
-}
-
-export interface IWorkflowRecordResV2 {
-  current_step_number?: number;
-
-  status?: WorkflowRecordResV2StatusEnum;
-
-  tasks?: IWorkflowTaskItem[];
-
-  workflow_step_list?: IWorkflowStepResV1[];
-}
-
-export interface IWorkflowResV2 {
-  create_time?: string;
-
-  create_user_name?: string;
-
-  desc?: string;
-
-  mode?: WorkflowResV2ModeEnum;
-
-  record?: IWorkflowRecordResV2;
-
-  record_history_list?: IWorkflowRecordResV2[];
-
-  subject?: string;
-
-  workflow_id?: number;
-}
-
-export interface IWorkflowTaskItem {
-  task_id?: number;
 }

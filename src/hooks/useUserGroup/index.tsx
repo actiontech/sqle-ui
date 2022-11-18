@@ -11,24 +11,29 @@ const useUserGroup = () => {
   >([]);
   const [loading, { setTrue, setFalse }] = useBoolean();
 
-  const updateUserGroupList = React.useCallback(() => {
-    setTrue();
-    user_group
-      .getUserGroupTipListV1()
-      .then((res) => {
-        if (res.data.code === ResponseCode.SUCCESS) {
-          setUserGroupList(res.data?.data ?? []);
-        } else {
+  const updateUserGroupList = React.useCallback(
+    (projectName?: string) => {
+      setTrue();
+      user_group
+        .getUserGroupTipListV1({
+          filter_project: projectName,
+        })
+        .then((res) => {
+          if (res.data.code === ResponseCode.SUCCESS) {
+            setUserGroupList(res.data?.data ?? []);
+          } else {
+            setUserGroupList([]);
+          }
+        })
+        .catch(() => {
           setUserGroupList([]);
-        }
-      })
-      .catch(() => {
-        setUserGroupList([]);
-      })
-      .finally(() => {
-        setFalse();
-      });
-  }, [setFalse, setTrue]);
+        })
+        .finally(() => {
+          setFalse();
+        });
+    },
+    [setFalse, setTrue]
+  );
 
   const generateUserGroupSelectOption = React.useCallback(() => {
     return userGroupList.map((userGroup) => {

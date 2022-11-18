@@ -26,13 +26,17 @@ import {
 } from '../../data/common';
 import useDatabaseType from '../../hooks/useDatabaseType';
 import useInstance from '../../hooks/useInstance';
+import useProject from '../../hooks/useProject';
 import { Theme } from '../../types/theme.type';
 
 const Rule = () => {
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
   const { updateDriverNameList, driverNameList, generateDriverSelectOptions } =
     useDatabaseType();
+  const { updateProjectList, generateProjectSelectOption } = useProject();
+
   const { t } = useTranslation();
+  const [projectName, setProjectName] = useState<string | undefined>();
   const [instanceName, setInstanceName] = useState<string | undefined>(
     undefined
   );
@@ -43,6 +47,7 @@ const Rule = () => {
     () =>
       instance.getInstanceRuleListV1({
         instance_name: instanceName ?? '',
+        project_name: projectName ?? '',
       }),
     {
       manual: true,
@@ -77,9 +82,12 @@ const Rule = () => {
   }, [allRules, instanceRules]);
 
   React.useEffect(() => {
-    if (instanceName !== undefined) {
+    if (instanceName !== undefined && projectName !== undefined) {
       instance
-        .getInstanceV1({ instance_name: instanceName ?? '' })
+        .getInstanceV1({
+          instance_name: instanceName ?? '',
+          project_name: projectName,
+        })
         .then((res) => {
           if (res.data.code === ResponseCode.SUCCESS) {
             setDbType(res.data.data?.db_type);
@@ -87,13 +95,20 @@ const Rule = () => {
           }
         });
     }
-  }, [getInstanceRules, instanceName]);
+  }, [getInstanceRules, instanceName, projectName]);
 
   React.useEffect(() => {
-    updateInstanceList();
+    if (projectName !== undefined) {
+      updateInstanceList({ project_name: projectName });
+    }
     updateDriverNameList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    updateProjectList();
+  }, [
+    projectName,
+    updateDriverNameList,
+    updateInstanceList,
+    updateProjectList,
+  ]);
 
   React.useEffect(() => {
     if (driverNameList.length > 0 && !dbType) {
@@ -119,9 +134,27 @@ const Rule = () => {
             <Form {...FilterFormLayout}>
               <Row align="middle" {...FilterFormRowLayout}>
                 <Col {...FilterFormColLayout}>
-                  <Form.Item label={t('rule.form.instance')}>
+                  <Form.Item name="project" label={t('rule.form.project')}>
+                    <Select
+                      value={projectName}
+                      onChange={setProjectName}
+                      placeholder={t('common.form.placeholder.select')}
+                      className="middle-select"
+                      allowClear
+                      showSearch
+                    >
+                      {generateProjectSelectOption()}
+                    </Select>
+                  </Form.Item>
+                </Col>
+                <Col {...FilterFormColLayout}>
+                  <Form.Item
+                    name="instanceName"
+                    label={t('rule.form.instance')}
+                  >
                     <Select
                       data-testid="instance-name"
+                      disabled={!projectName}
                       value={instanceName}
                       onChange={setInstanceName}
                       placeholder={t('common.form.placeholder.select')}
@@ -134,7 +167,7 @@ const Rule = () => {
                   </Form.Item>
                 </Col>
                 <Col {...FilterFormColLayout}>
-                  <Form.Item label={t('rule.form.dbType')}>
+                  <Form.Item name="dbType" label={t('rule.form.dbType')}>
                     <Select
                       data-testid="database-type"
                       value={dbType}

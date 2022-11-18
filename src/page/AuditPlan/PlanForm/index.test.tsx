@@ -14,6 +14,7 @@ import EmitterKey from '../../../data/EmitterKey';
 import { getBySelector } from '../../../testUtils/customQuery';
 import {
   mockDriver,
+  mockUseGlobalRuleTemplate,
   mockUseInstance,
   mockUseInstanceSchema,
   mockUseRuleTemplate,
@@ -28,6 +29,8 @@ describe('PlanForm', () => {
   let warningSpy!: jest.SpyInstance;
   let useInstanceSpy!: jest.SpyInstance;
   let useRuleTemplateSpy!: jest.SpyInstance;
+  let useGlobalRuleTemplateSpy!: jest.SpyInstance;
+  const projectName = 'default';
   beforeAll(() => {
     const warning = global.console.warn;
     warningSpy = jest.spyOn(global.console, 'warn');
@@ -47,6 +50,7 @@ describe('PlanForm', () => {
     mockGetInstance();
     mockGetAuditMeta();
     useRuleTemplateSpy = mockUseRuleTemplate();
+    useGlobalRuleTemplateSpy = mockUseGlobalRuleTemplate();
   });
 
   afterEach(() => {
@@ -73,7 +77,9 @@ describe('PlanForm', () => {
 
   test('should match snapshot', async () => {
     const submitFn = jest.fn();
-    const { container } = render(<PlanForm submit={submitFn} />);
+    const { container } = render(
+      <PlanForm submit={submitFn} projectName={projectName} />
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -83,7 +89,7 @@ describe('PlanForm', () => {
   test('should set db type to equal data source which user select', async () => {
     const submitFn = jest.fn();
     const getInstanceSpy = mockGetInstance();
-    render(<PlanForm submit={submitFn} />);
+    render(<PlanForm submit={submitFn} projectName={projectName} />);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -100,7 +106,10 @@ describe('PlanForm', () => {
     fireEvent.click(instance);
 
     expect(getInstanceSpy).toBeCalledTimes(1);
-    expect(getInstanceSpy).toBeCalledWith({ instance_name: 'instance1' });
+    expect(getInstanceSpy).toBeCalledWith({
+      instance_name: 'instance1',
+      project_name: projectName,
+    });
 
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -117,7 +126,9 @@ describe('PlanForm', () => {
   test('should submit form value when user input all required fields and click submit button', async () => {
     const submitFn = jest.fn().mockImplementation(() => resolveThreeSecond({}));
     const getAuditMetasSpy = mockGetAuditMeta();
-    const { container } = render(<PlanForm submit={submitFn} />);
+    const { container } = render(
+      <PlanForm submit={submitFn} projectName={projectName} />
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -233,7 +244,11 @@ describe('PlanForm', () => {
   test('should reset apart of form when props includes default values and user click reset button', async () => {
     const submitFn = jest.fn();
     const { container } = render(
-      <PlanForm submit={submitFn} defaultValue={AuditPlan as IAuditPlanResV1} />
+      <PlanForm
+        submit={submitFn}
+        defaultValue={AuditPlan as IAuditPlanResV1}
+        projectName={projectName}
+      />
     );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -245,6 +260,7 @@ describe('PlanForm', () => {
     expect(useInstanceSpy).toBeCalledWith({
       filter_db_type: 'oracle',
       functional_module: 'create_audit_plan',
+      project_name: projectName,
     });
     expect(container).toMatchSnapshot();
     fireEvent.click(screen.getByText('common.reset'));
@@ -254,7 +270,7 @@ describe('PlanForm', () => {
 
   test('should rest form when component "Rest_Audit_Plan_Form" event', async () => {
     const submitFn = jest.fn();
-    render(<PlanForm submit={submitFn} />);
+    render(<PlanForm submit={submitFn} projectName={projectName} />);
     fireEvent.input(screen.getByLabelText('auditPlan.planForm.name'), {
       target: { value: 'planName1' },
     });
@@ -268,7 +284,11 @@ describe('PlanForm', () => {
     const submitFn = jest.fn();
     const getMeta = mockGetAuditMeta();
     const { rerender } = render(
-      <PlanForm submit={submitFn} defaultValue={AuditPlan as IAuditPlanResV1} />
+      <PlanForm
+        submit={submitFn}
+        defaultValue={AuditPlan as IAuditPlanResV1}
+        projectName={projectName}
+      />
     );
     expect(getMeta).toBeCalledTimes(1);
     await waitFor(() => {
@@ -282,6 +302,7 @@ describe('PlanForm', () => {
       <PlanForm
         submit={submitFn}
         defaultValue={auditPlanClone as IAuditPlanResV1}
+        projectName={projectName}
       />
     );
     expect(getMeta).toBeCalledTimes(2);
@@ -296,8 +317,11 @@ describe('PlanForm', () => {
   test('should be rendered rule template name select form item when data source type is selected', async () => {
     const submitFn = jest.fn();
     expect(useRuleTemplateSpy).toBeCalledTimes(0);
-    render(<PlanForm submit={submitFn} />);
+    expect(useGlobalRuleTemplateSpy).toBeCalledTimes(0);
+    render(<PlanForm submit={submitFn} projectName={projectName} />);
     expect(useRuleTemplateSpy).toBeCalledTimes(1);
+    expect(useRuleTemplateSpy).toBeCalledWith({ project_name: projectName });
+    expect(useGlobalRuleTemplateSpy).toBeCalledTimes(1);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -326,7 +350,7 @@ describe('PlanForm', () => {
 
   test('should empty rule template name when changing database type', async () => {
     const submitFn = jest.fn();
-    render(<PlanForm submit={submitFn} />);
+    render(<PlanForm submit={submitFn} projectName={projectName} />);
 
     await waitFor(() => {
       jest.advanceTimersByTime(3000);

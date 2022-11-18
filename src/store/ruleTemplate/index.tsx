@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IRuleTemplateResV1 } from '../../api/common';
+import { IProjectRuleTemplateResV1 } from '../../api/common';
 import { ModalStatus } from '../../types/common.type';
 import { commonModalReducer } from '../common';
 
 type RuleTemplateListState = {
-  selectRuleTemplate: null | IRuleTemplateResV1;
+  selectRuleTemplate: null | IProjectRuleTemplateResV1;
   modalStatus: ModalStatus;
 };
 
@@ -21,7 +21,7 @@ const ruleTemplate = createSlice({
       state,
       {
         payload: { ruleTemplate },
-      }: PayloadAction<{ ruleTemplate: IRuleTemplateResV1 | null }>
+      }: PayloadAction<{ ruleTemplate: IProjectRuleTemplateResV1 | null }>
     ) {
       state.selectRuleTemplate = ruleTemplate;
     },

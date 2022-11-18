@@ -15,21 +15,22 @@ import {
   updateUserManageModalStatus,
 } from '../../../../store/userManage';
 import EventEmitter from '../../../../utils/EventEmitter';
-import TableFilterForm from './TableFilterForm';
+import TableFilterForm, { UserGroupListFilter } from './TableFilterForm';
 import { userGroupTableHeaderFactory } from './tableHeader';
 
 const UserGroupList = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const { pagination, filterInfo, tableChange, setFilterInfo } = useTable();
+  const { pagination, filterInfo, tableChange, setFilterInfo } =
+    useTable<UserGroupListFilter>();
 
   const { data, loading, refresh } = useRequest(
     () => {
       return user_group.getUserGroupListV1({
         page_index: pagination.pageIndex,
         page_size: pagination.pageSize,
-        ...filterInfo,
+        filter_user_group_name: filterInfo.filter_user_group_name,
       });
     },
     {

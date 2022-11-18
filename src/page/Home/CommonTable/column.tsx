@@ -2,23 +2,36 @@ import { TableColumn } from '../../../types/common.type';
 import i18n from 'i18next';
 import { formatTime } from '../../../utils/Common';
 import { Link } from 'react-router-dom';
-import { IWorkflowDetailResV2 } from '../../../api/common';
+import { IWorkflowDetailResV1 } from '../../../api/common';
+import EmptyBox from '../../../components/EmptyBox';
 
-export const commonColumn: () => TableColumn<IWorkflowDetailResV2> = () => {
+export const commonColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
   return [
     {
-      dataIndex: 'subject',
+      dataIndex: 'workflow_name',
       title: () => i18n.t('order.order.name'),
       render: (text, record) => {
         return (
-          <Link
-            to={record.workflow_id ? `/order/${record.workflow_id}` : '/order'}
-          >
-            {text}
-          </Link>
+          <EmptyBox if={text && record.project_name} defaultNode={text}>
+            <Link to={`/project/${record.project_name}/order/${text}`}>
+              {text}
+            </Link>
+          </EmptyBox>
         );
       },
       width: 'auto',
+    },
+    {
+      dataIndex: 'project_name',
+      title: () => i18n.t('projectManage.projectForm.projectName'),
+      width: 'auto',
+      render: (projectName) => {
+        return (
+          <EmptyBox if={projectName} defaultNode={projectName}>
+            <Link to={`/project/${projectName}/order`}>{projectName}</Link>
+          </EmptyBox>
+        );
+      },
     },
     {
       dataIndex: 'desc',

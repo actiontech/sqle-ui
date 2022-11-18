@@ -1,15 +1,17 @@
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Col, Form, Row, Select } from 'antd';
 import { cloneDeep } from 'lodash';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { WorkflowResV2ModeEnum } from '../../../../api/common.enum';
+import { WorkflowResV1ModeEnum } from '../../../../api/common.enum';
 import instance from '../../../../api/instance';
+import { getInstanceTipListV1FunctionalModuleEnum } from '../../../../api/instance/index.enum';
 import EmptyBox from '../../../../components/EmptyBox';
 import { ResponseCode } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import useInstance from '../../../../hooks/useInstance';
 import EventEmitter from '../../../../utils/EventEmitter';
+import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 import { DatabaseInfoProps, SchemaListType } from './index.type';
 
 const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
@@ -22,6 +24,7 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
 }) => {
   const { t } = useTranslation();
 
+  const { projectName } = useCurrentProjectName();
   const [schemaList, setSchemaList] = useState<SchemaListType>(
     new Map([[0, []]])
   );
@@ -45,9 +48,12 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
         filter_workflow_template_id:
           currentInstance.workflow_template_id?.toString(),
         filter_db_type:
-          currentSqlMode === WorkflowResV2ModeEnum.same_sqls
+          currentSqlMode === WorkflowResV1ModeEnum.same_sqls
             ? currentInstance?.instance_type
             : undefined,
+        project_name: projectName,
+        functional_module:
+          getInstanceTipListV1FunctionalModuleEnum.create_workflow,
       });
     }
     getInstanceTypeWithAction(index, 'add', currentInstance?.instance_type);
@@ -57,6 +63,7 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
     instance
       .getInstanceSchemasV1({
         instance_name: name,
+        project_name: projectName,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -94,22 +101,30 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
     setChangeSqlModeDisabled(isExistDifferentInstanceType);
   };
 
+  const refreshInstanceList = useCallback(() => {
+    updateInstanceList({
+      project_name: projectName,
+      functional_module:
+        getInstanceTipListV1FunctionalModuleEnum.create_workflow,
+    });
+  }, [projectName, updateInstanceList]);
+
   useEffect(() => {
     EventEmitter.subscribe(
       EmitterKey.Reset_Create_Order_Form,
-      updateInstanceList
+      refreshInstanceList
     );
     return () => {
       EventEmitter.unsubscribe(
         EmitterKey.Reset_Create_Order_Form,
-        updateInstanceList
+        refreshInstanceList
       );
     };
-  }, [updateInstanceList]);
+  }, [refreshInstanceList]);
 
   useEffect(() => {
-    updateInstanceList();
-  }, [currentSqlMode, updateInstanceList]);
+    refreshInstanceList();
+  }, [currentSqlMode, refreshInstanceList]);
 
   return (
     <Form.List name="dataBaseInfo" initialValue={[{}]}>

@@ -1,6 +1,7 @@
 import { fireEvent, waitFor, screen, act } from '@testing-library/react';
 import RuleTemplateList from '.';
 import rule_template from '../../../api/rule_template';
+import { SystemRole } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
@@ -8,7 +9,7 @@ import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 import { ruleTemplateListData } from '../__testData__';
 
-describe('RuleTemplate/RuleTemplateList', () => {
+describe.skip('RuleTemplate/RuleTemplateList', () => {
   let mockDispatch: jest.Mock;
   let getRuleTemplateListSpy: jest.SpyInstance;
 
@@ -18,6 +19,9 @@ describe('RuleTemplate/RuleTemplateList', () => {
     const { scopeDispatch } = mockUseDispatch();
     mockUseSelector({
       ruleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
+      user: {
+        role: SystemRole.admin,
+      },
     });
     mockDispatch = scopeDispatch;
   });
@@ -132,5 +136,22 @@ describe('RuleTemplate/RuleTemplateList', () => {
       EventEmitter.emit(EmitterKey.Refresh_Rule_Template_List);
     });
     expect(getRuleTemplateListSpy).toBeCalledTimes(2);
+  });
+
+  test('should hide the creation button and the action column when the user role is not an admin', () => {
+    mockUseSelector({
+      ruleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
+      user: {
+        role: 'test',
+      },
+    });
+
+    renderWithRouter(<RuleTemplateList />);
+
+    expect(
+      screen.queryByText('ruleTemplate.createRuleTemplate.button')
+    ).not.toBeInTheDocument();
+
+    expect(screen.queryByText('common.operate')).not.toBeInTheDocument();
   });
 });

@@ -110,17 +110,18 @@ const UserForm: React.FC<IUserFormProps> = (props) => {
           })}
         />
       </Form.Item>
-      <Form.Item name="roleNameList" label={t('user.userForm.role')}>
+      <Form.Item
+        name="managementPermissionCodeList"
+        label={t('user.userForm.managerPermission')}
+      >
         <Select
           mode="multiple"
           showSearch
-          placeholder={t('common.form.placeholder.select', {
-            name: t('user.userForm.role'),
-          })}
+          placeholder={t('common.form.placeholder.select')}
         >
-          {props.roleNameList.map((role) => (
-            <Select.Option value={role.role_name ?? ''} key={role.role_name}>
-              {role.role_name}
+          {props.managementPermissionList.map((v) => (
+            <Select.Option key={v.code} value={v.code ?? ''}>
+              {v.desc}
             </Select.Option>
           ))}
         </Select>

@@ -11,6 +11,7 @@ import { ModalName } from '../../../../../data/ModalName';
 import { IReduxState } from '../../../../../store';
 import { updateWhitelistModalStatus } from '../../../../../store/whitelist';
 import EventEmitter from '../../../../../utils/EventEmitter';
+import { useCurrentProjectName } from '../../../../ProjectManage/ProjectDetail';
 import WhitelistForm from '../../../WhitelistForm';
 import { WhitelistFormFields } from '../../../WhitelistForm/index.type';
 
@@ -23,6 +24,7 @@ const AddWhitelist = () => {
   const dispatch = useDispatch();
   const [createLoading, { setTrue: startCreate, setFalse: createFinish }] =
     useBoolean();
+  const { projectName } = useCurrentProjectName();
 
   const closeModal = React.useCallback(() => {
     form.resetFields();
@@ -42,6 +44,7 @@ const AddWhitelist = () => {
         value: values.sql,
         desc: values.desc,
         match_type: values.matchType,
+        project_name: projectName,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -52,7 +55,7 @@ const AddWhitelist = () => {
       .finally(() => {
         createFinish();
       });
-  }, [closeModal, createFinish, form, startCreate]);
+  }, [closeModal, createFinish, form, projectName, startCreate]);
 
   return (
     <Modal

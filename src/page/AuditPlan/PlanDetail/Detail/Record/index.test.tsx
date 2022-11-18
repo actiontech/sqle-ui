@@ -8,6 +8,7 @@ import EventEmitter from '../../../../../utils/EventEmitter';
 import { AuditPlanReportList } from '../../__testData__';
 
 describe('AuditPlanRecord', () => {
+  const projectName = 'default';
   beforeEach(() => {
     jest.useFakeTimers();
   });
@@ -27,7 +28,7 @@ describe('AuditPlanRecord', () => {
   test('should match snapshot', async () => {
     const getReportSpy = mockGetAuditPlanReport();
     const { container } = renderWithRouter(
-      <PlanAuditRecord auditPlanName="planName" />
+      <PlanAuditRecord auditPlanName="planName" projectName={projectName} />
     );
     expect(container).toMatchSnapshot();
     await waitFor(() => {

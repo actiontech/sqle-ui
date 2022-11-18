@@ -1,0 +1,394 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test hooks/useRoutes should match snapshot 1`] = `
+Array [
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
+      }
+    }
+    exact={true}
+    icon={<ForwardRef(PieChartOutlined) />}
+    label="menu.dashboard"
+    path="/"
+  />,
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
+      }
+    }
+    exact={true}
+    icon={<ForwardRef(DesktopOutlined) />}
+    label="menu.rule"
+    path="/rule"
+  />,
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
+      }
+    }
+    exact={true}
+    icon={<ForwardRef(SearchOutlined) />}
+    label="menu.sqlQuery"
+    path="/sqlQuery"
+  />,
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
+      }
+    }
+    exact={true}
+    icon={<ForwardRef(BarChartOutlined) />}
+    label="menu.reportStatistics"
+    path="/reportStatistics"
+    role={
+      Array [
+        "admin",
+      ]
+    }
+  />,
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
+      }
+    }
+    exact={true}
+    hideInSliderMenu={true}
+    label="common.account"
+    path="/account"
+  />,
+  Array [
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
+        }
+      }
+      exact={true}
+      label="menu.user"
+      path="/user"
+    />,
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
+        }
+      }
+      exact={true}
+      label="menu.role"
+      path="/user/role"
+    />,
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
+        }
+      }
+      exact={true}
+      label="menu.userGroup"
+      path="/user/group"
+    />,
+  ],
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
+      }
+    }
+    icon={<ForwardRef(AuditOutlined) />}
+    label="menu.ruleTemplate"
+    path="/rule/template"
+  />,
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
+      }
+    }
+    exact={true}
+    icon={<ForwardRef(SettingOutlined) />}
+    label="menu.systemSetting"
+    path="/system"
+  />,
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
+      }
+    }
+    exact={true}
+    icon={<ForwardRef(ProjectOutlined) />}
+    label="menu.projectManage"
+    path="/project"
+  />,
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
+      }
+    }
+    icon={<ForwardRef(ProjectOutlined) />}
+    label="menu.projectManage"
+    path="/project/:projectName"
+  />,
+]
+`;
+
+exports[`test hooks/useRoutes should match snapshot 2`] = `
+Array [
+  Array [
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
+        }
+      }
+      exact={true}
+      icon={<ForwardRef(BarsOutlined) />}
+      label="menu.orderList"
+      path="/project/:projectName/order"
+    />,
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
+        }
+      }
+      exact={true}
+      hideInSliderMenu={true}
+      icon={<ForwardRef(DesktopOutlined) />}
+      label="menu.workflow"
+      path="/project/:projectName/order/create"
+    />,
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
+        }
+      }
+      exact={true}
+      hideInSliderMenu={true}
+      label="menu.orderDetail"
+      path="/project/:projectName/order/:orderId"
+    />,
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
+        }
+      }
+      exact={true}
+      hideInSliderMenu={true}
+      label="menu.orderSqlAnalyze"
+      path="/project/:projectName/order/:taskId/:sqlNum/analyze"
+    />,
+  ],
+  Array [
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
+        }
+      }
+      hideInSliderMenu={true}
+      label="menu.auditPlane"
+      path="/project/:projectName/auditPlan/detail/:auditPlanName"
+    />,
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
+        }
+      }
+      exact={true}
+      hideInSliderMenu={true}
+      label="menu.auditPlanSqlAnalyze"
+      path="/project/:projectName/auditPlan/:reportId/:sqlNum/analyze"
+    />,
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.lazy),
+          "_init": [Function],
+          "_payload": Object {
+            "_result": [Function],
+            "_status": -1,
+          },
+        }
+      }
+      label="menu.auditPlaneList"
+      path="/project/:projectName/auditPlan"
+    />,
+  ],
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
+      }
+    }
+    icon={<ForwardRef(DatabaseOutlined) />}
+    label="menu.dataSource"
+    path="/project/:projectName/data"
+  />,
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
+      }
+    }
+    icon={<ForwardRef(UserOutlined) />}
+    label="menu.member"
+    path="/project/:projectName/member"
+  />,
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
+      }
+    }
+    icon={<ForwardRef(AuditOutlined) />}
+    label="menu.ruleTemplate"
+    path="/project/:projectName/rule/template"
+  />,
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
+      }
+    }
+    icon={<ForwardRef(NodeIndexOutlined) />}
+    label="menu.progressManage"
+    path="/project/:projectName/progress"
+  />,
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
+      }
+    }
+    icon={<ForwardRef(ProfileOutlined) />}
+    label="menu.whitelist"
+    path="/project/:projectName/whitelist"
+  />,
+]
+`;

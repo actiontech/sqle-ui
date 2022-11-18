@@ -6,7 +6,7 @@ import { ModalFormLayout } from '../../../../../data/common';
 import { nameRule } from '../../../../../utils/FormRule';
 
 const UserGroupForm: React.FC<UserGroupFormProps> = (props) => {
-  const { form, roleList, userList, isUpdate } = props;
+  const { form, userList, isUpdate } = props;
   const { t } = useTranslation();
 
   return (
@@ -42,22 +42,6 @@ const UserGroupForm: React.FC<UserGroupFormProps> = (props) => {
           <Switch />
         </Form.Item>
       </EmptyBox>
-      <Form.Item
-        name="roleList"
-        label={t('userGroup.userGroupField.roleNameList')}
-      >
-        <Select
-          mode="multiple"
-          showSearch
-          placeholder={t('common.form.placeholder.select')}
-        >
-          {roleList?.map((role) => (
-            <Select.Option key={role.role_name} value={role.role_name ?? ''}>
-              {role.role_name}
-            </Select.Option>
-          ))}
-        </Select>
-      </Form.Item>
       <Form.Item
         name="userList"
         label={t('userGroup.userGroupField.userNameList')}

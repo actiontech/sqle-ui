@@ -94,6 +94,7 @@ const WorkflowTemplateForm: React.FC<WorkflowTemplateFormProps> = (props) => {
           submitLoading={submitLoading}
           prevStep={prevStep}
           submitProgressConfig={submitProgress}
+          projectName={props.projectName}
         />
       </div>
       <div hidden={step !== 2} data-testid="submit-result">

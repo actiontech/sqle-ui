@@ -16,6 +16,7 @@ import useRuleTemplate from '.';
 import ruleTemplate from '../../api/rule_template';
 
 describe('useRuleTemplate', () => {
+  const projectName = 'default';
   beforeEach(() => {
     jest.useFakeTimers();
   });
@@ -25,7 +26,7 @@ describe('useRuleTemplate', () => {
   });
 
   const mockRequest = () => {
-    const spy = jest.spyOn(ruleTemplate, 'getRuleTemplateTipsV1');
+    const spy = jest.spyOn(ruleTemplate, 'getProjectRuleTemplateTipsV1');
     return spy;
   };
 
@@ -45,11 +46,14 @@ describe('useRuleTemplate', () => {
     expect(baseElement).toMatchSnapshot();
 
     act(() => {
-      result.current.updateRuleTemplateList();
+      result.current.updateRuleTemplateList(projectName);
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.ruleTemplateList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
@@ -90,11 +94,14 @@ describe('useRuleTemplate', () => {
     expect(result.current.ruleTemplateList).toEqual([]);
 
     act(() => {
-      result.current.updateRuleTemplateList();
+      result.current.updateRuleTemplateList(projectName);
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.ruleTemplateList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
@@ -113,10 +120,13 @@ describe('useRuleTemplate', () => {
     );
 
     act(() => {
-      result.current.updateRuleTemplateList();
+      result.current.updateRuleTemplateList(projectName);
     });
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.ruleTemplateList).toEqual([
       {
         rule_template_name: 'rule_template_name1',
@@ -144,11 +154,14 @@ describe('useRuleTemplate', () => {
     expect(result.current.ruleTemplateList).toEqual([]);
 
     act(() => {
-      result.current.updateRuleTemplateList();
+      result.current.updateRuleTemplateList(projectName);
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.ruleTemplateList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
@@ -167,10 +180,13 @@ describe('useRuleTemplate', () => {
     );
 
     act(() => {
-      result.current.updateRuleTemplateList();
+      result.current.updateRuleTemplateList(projectName);
     });
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.ruleTemplateList).toEqual([
       {
         rule_template_name: 'rule_template_name1',
@@ -199,11 +215,14 @@ describe('useRuleTemplate', () => {
     expect(result.current.ruleTemplateList).toEqual([]);
 
     act(() => {
-      result.current.updateRuleTemplateList();
+      result.current.updateRuleTemplateList(projectName);
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.ruleTemplateList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
@@ -211,6 +230,9 @@ describe('useRuleTemplate', () => {
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.ruleTemplateList).toEqual([
       { rule_template_name: 'rule_template_name_mysql', db_type: 'mysql' },
       { rule_template_name: 'rule_template_name_oracle', db_type: 'oracle' },
