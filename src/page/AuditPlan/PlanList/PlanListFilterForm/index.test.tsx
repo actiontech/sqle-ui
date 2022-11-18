@@ -13,6 +13,8 @@ jest.mock('react-router-dom', () => ({
   useLocation: jest.fn(),
 }));
 
+const projectName = 'default';
+
 describe('PlanListFilerForm', () => {
   const useLocationMock: jest.Mock = useLocation as jest.Mock;
 
@@ -38,7 +40,9 @@ describe('PlanListFilerForm', () => {
   });
 
   it('should match snapshot', async () => {
-    const { container } = render(<PlanListFilterForm />);
+    const { container } = render(
+      <PlanListFilterForm projectName={projectName} />
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -48,7 +52,9 @@ describe('PlanListFilerForm', () => {
   it('should pass all fields when user click search button', async () => {
     const submitSpy = jest.fn();
 
-    const { container } = render(<PlanListFilterForm submit={submitSpy} />);
+    const { container } = render(
+      <PlanListFilterForm submit={submitSpy} projectName={projectName} />
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -106,7 +112,9 @@ describe('PlanListFilerForm', () => {
       key: '5nvxpbdafa',
     });
 
-    const { container } = render(<PlanListFilterForm submit={submitSpy} />);
+    const { container } = render(
+      <PlanListFilterForm submit={submitSpy} projectName={projectName} />
+    );
 
     await waitFor(() => {
       jest.advanceTimersByTime(3000);

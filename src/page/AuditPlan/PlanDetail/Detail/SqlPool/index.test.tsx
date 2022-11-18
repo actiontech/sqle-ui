@@ -9,7 +9,7 @@ import { AuditPlanSqlsRes } from '../../__testData__';
 
 describe('SqlPool', () => {
   const error = console.error;
-
+  const projectName = 'default';
   beforeAll(() => {
     console.error = jest.fn();
     (console.error as any).mockImplementation((message: any) => {
@@ -38,7 +38,7 @@ describe('SqlPool', () => {
   });
 
   const mockGetSqls = () => {
-    const spy = jest.spyOn(audit_plan, 'getAuditPlanSQLsV2');
+    const spy = jest.spyOn(audit_plan, 'getAuditPlanSQLsV1');
     spy.mockImplementation(() => resolveThreeSecond(AuditPlanSqlsRes));
     return spy;
   };
@@ -50,7 +50,9 @@ describe('SqlPool', () => {
   };
 
   test('should match snapshot', async () => {
-    const { container } = render(<SqlPool auditPlanName="planName" />);
+    const { container } = render(
+      <SqlPool auditPlanName="planName" projectName={projectName} />
+    );
     expect(container).toMatchSnapshot();
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -60,13 +62,16 @@ describe('SqlPool', () => {
 
   test('should trigger audit plan', async () => {
     const triggerSpy = mockTrigger();
-    render(<SqlPool auditPlanName="planName" />);
+    render(<SqlPool auditPlanName="planName" projectName={projectName} />);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
     fireEvent.click(screen.getByText('auditPlan.sqlPool.action.trigger'));
     expect(triggerSpy).toBeCalledTimes(1);
-    expect(triggerSpy).toBeCalledWith({ audit_plan_name: 'planName' });
+    expect(triggerSpy).toBeCalledWith({
+      audit_plan_name: 'planName',
+      project_name: projectName,
+    });
     expect(
       screen.queryByText('auditPlan.sqlPool.action.loading')
     ).toBeInTheDocument();

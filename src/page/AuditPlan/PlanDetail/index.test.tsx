@@ -6,6 +6,7 @@ import audit_plan from '../../../api/audit_plan';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import { AuditPlan } from '../PlanList/__testData__';
 import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
+import { AuditPlanReportList } from './__testData__';
 
 jest.mock('react-router', () => {
   return {
@@ -16,10 +17,12 @@ jest.mock('react-router', () => {
 
 describe('PlanDetail', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
+  const projectName = 'default';
   beforeEach(() => {
-    useParamsMock.mockReturnValue({ auditPlanName: 'plan name' });
+    useParamsMock.mockReturnValue({ auditPlanName: 'plan name', projectName });
     jest.useFakeTimers();
     mockGetAuditPlanV1();
+    mockGetAuditPlanReport();
   });
 
   afterEach(() => {
@@ -34,15 +37,26 @@ describe('PlanDetail', () => {
     return spy;
   };
 
+  const mockGetAuditPlanReport = () => {
+    const spy = jest.spyOn(audit_plan, 'getAuditPlanReportsV1');
+    spy.mockImplementation(() => resolveThreeSecond(AuditPlanReportList));
+    return spy;
+  };
+
   test('should match snapshot', async () => {
     const wrapper = shallow(<PlanDetail />);
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 
-  test('should send request for get audit plan detail', () => {
+  test('should send request for get audit plan detail', async () => {
     const spy = mockGetAuditPlanV1();
-    renderWithThemeAndRouter(<PlanDetail />);
+    renderWithThemeAndRouter(<PlanDetail />, undefined, {
+      initialEntries: [`/project/${projectName}/auditPlan/detail/test1`],
+    });
     expect(spy).toBeCalledTimes(1);
-    expect(spy).toBeCalledWith({ audit_plan_name: 'plan name' });
+    expect(spy).toBeCalledWith({
+      audit_plan_name: 'plan name',
+      project_name: projectName,
+    });
   });
 });

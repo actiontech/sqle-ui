@@ -189,11 +189,22 @@ export const mockUseOperation = () => {
 };
 
 export const mockUseRuleTemplate = () => {
-  const spy = jest.spyOn(ruleTemplate, 'getRuleTemplateTipsV1');
+  const spy = jest.spyOn(ruleTemplate, 'getProjectRuleTemplateTipsV1');
   spy.mockImplementation(() =>
     resolveThreeSecond([
       { rule_template_name: 'rule_template_name1', db_type: 'mysql' },
       { rule_template_name: 'rule_template_name2', db_type: 'oracle' },
+    ])
+  );
+  return spy;
+};
+
+export const mockUseGlobalRuleTemplate = () => {
+  const spy = jest.spyOn(ruleTemplate, 'getRuleTemplateTipsV1');
+  spy.mockImplementation(() =>
+    resolveThreeSecond([
+      { rule_template_name: 'global_rule_template_name1', db_type: 'mysql' },
+      { rule_template_name: 'global_rule_template_name2', db_type: 'oracle' },
     ])
   );
   return spy;

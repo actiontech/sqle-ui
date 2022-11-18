@@ -1,4 +1,6 @@
+/* eslint-disable no-console */
 import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { useParams } from 'react-router-dom';
 import SubscribeNotice from '..';
 import audit_plan from '../../../../../../api/audit_plan';
 import { ModalName } from '../../../../../../data/ModalName';
@@ -13,8 +15,15 @@ import { mockUseStyle } from '../../../../../../testUtils/mockStyle';
 import { AuditPlanList } from '../../../__testData__';
 import { auditPlanSubscribeNoticeConfig } from './__testData__';
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: jest.fn(),
+}));
+const projectName = 'default';
+
 describe('SubscribeNotice', () => {
   let dispatchSpy!: jest.SpyInstance;
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   let conoleError: any;
   beforeAll(() => {
@@ -45,6 +54,7 @@ describe('SubscribeNotice', () => {
       },
       user: {},
     });
+    useParamsMock.mockReturnValue({ projectName });
   });
 
   afterEach(() => {
@@ -89,6 +99,7 @@ describe('SubscribeNotice', () => {
     expect(getConfig).toBeCalledTimes(1);
     expect(getConfig).toBeCalledWith({
       audit_plan_name: 'audit_for_java_app11',
+      project_name: projectName,
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -163,6 +174,7 @@ describe('SubscribeNotice', () => {
 
     expect(submitSpy).toBeCalledTimes(1);
     expect(submitSpy).toBeCalledWith({
+      project_name: projectName,
       audit_plan_name: 'audit_for_java_app11',
       enable_email_notify: false,
       enable_web_hook_notify: true,
@@ -222,6 +234,7 @@ describe('SubscribeNotice', () => {
     expect(testSpy).toBeCalledTimes(1);
     expect(testSpy).toBeCalledWith({
       audit_plan_name: 'audit_for_java_app11',
+      project_name: projectName,
     });
     fireEvent.click(screen.getByTestId('testMessage'));
     expect(testSpy).toBeCalledTimes(1);
@@ -268,6 +281,7 @@ describe('SubscribeNotice', () => {
     ).toBeInTheDocument();
     expect(testSpy).toBeCalledTimes(1);
     expect(testSpy).toBeCalledWith({
+      project_name: projectName,
       audit_plan_name: 'audit_for_java_app11',
     });
     fireEvent.click(screen.getByTestId('testMessage'));

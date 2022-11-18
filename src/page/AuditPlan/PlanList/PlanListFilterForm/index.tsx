@@ -12,19 +12,17 @@ import {
 import useAuditPlanTypes from '../../../../hooks/useAuditPlanTypes';
 import useDatabaseType from '../../../../hooks/useDatabaseType';
 import useInstance from '../../../../hooks/useInstance';
-import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 import {
   PlanListFilterFormFields,
   PlanListFilterFormProps,
 } from './index.type';
 
 const PlanListFilterForm: React.FC<PlanListFilterFormProps> = (props) => {
-  const { submit } = props;
+  const { submit, projectName } = props;
 
   const [form] = useForm<PlanListFilterFormFields>();
 
   const { t } = useTranslation();
-  const { projectName } = useCurrentProjectName();
 
   const { generateInstanceSelectOption, updateInstanceList } = useInstance();
   const { generateDriverSelectOptions, updateDriverNameList } =

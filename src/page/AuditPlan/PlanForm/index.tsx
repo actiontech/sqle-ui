@@ -127,6 +127,7 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
         dataSourceChange={setDataSource}
         dbTypeChange={dbTypeChange}
         defaultValue={props.defaultValue}
+        projectName={props.projectName}
       />
       <AuditTaskType
         dbType={dbType}
