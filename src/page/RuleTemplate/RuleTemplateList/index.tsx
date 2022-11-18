@@ -1,7 +1,7 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Button, Card, message, Space, Table } from 'antd';
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -25,8 +25,12 @@ import RuleTemplateListModal from './Modal';
 const RuleTemplateList = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { isAdmin } = useCurrentUser();
   const { projectName } = useCurrentProjectName();
+  const { isAdmin, isProjectManager } = useCurrentUser();
+  const actionPermission = useMemo(() => {
+    return isAdmin || isProjectManager(projectName);
+  }, [isAdmin, isProjectManager, projectName]);
+
   const {
     data,
     loading,
@@ -145,7 +149,7 @@ const RuleTemplateList = () => {
             to={`/project/${projectName}/rule/template/create`}
             key="createRuleTemplate"
           >
-            <EmptyBox if={isAdmin}>
+            <EmptyBox if={actionPermission}>
               <Button type="primary">
                 {t('ruleTemplate.createRuleTemplate.button')}
               </Button>
@@ -166,7 +170,7 @@ const RuleTemplateList = () => {
           columns={RuleTemplateListTableColumnFactory(
             deleteTemplate,
             openCloneRuleTemplateModal,
-            isAdmin,
+            actionPermission,
             projectName
           )}
         />

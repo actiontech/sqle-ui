@@ -2020,9 +2020,9 @@ export interface IUpdateWorkflowTemplateReqV1 {
 }
 
 export interface IUserBindProjectResV1 {
-  isManager?: boolean;
+  is_manager?: boolean;
 
-  projectName?: string;
+  project_name?: string;
 }
 
 export interface IUserDetailResV1 {

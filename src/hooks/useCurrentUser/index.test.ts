@@ -7,12 +7,12 @@ import { mockUseSelector } from '../../testUtils/mockRedux';
 
 export const mockBindProjects: IUserBindProjectResV1[] = [
   {
-    isManager: true,
-    projectName: 'default',
+    is_manager: true,
+    project_name: 'default',
   },
   {
-    isManager: false,
-    projectName: 'test',
+    is_manager: false,
+    project_name: 'test',
   },
 ];
 describe('hooks/useCurrentUser', () => {

@@ -13,8 +13,8 @@ const useCurrentUser = () => {
 
   const isProjectManager = useCallback(
     (projectName: string) => {
-      const project = bindProjects.find((v) => v.projectName === projectName);
-      return !!project && !!project.isManager;
+      const project = bindProjects.find((v) => v.project_name === projectName);
+      return !!project && !!project.is_manager;
     },
     [bindProjects]
   );

@@ -10,11 +10,13 @@ import {
   Space,
   Button,
 } from 'antd';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { IWorkFlowStepTemplateResV1 } from '../../../api/common';
 import workflow from '../../../api/workflow';
+import EmptyBox from '../../../components/EmptyBox';
+import useCurrentUser from '../../../hooks/useCurrentUser';
 import { Theme } from '../../../types/theme.type';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 
@@ -25,6 +27,13 @@ const WorkflowTemplateDetail = () => {
     []
   );
   const { projectName } = useCurrentProjectName();
+
+  const { isAdmin, isProjectManager } = useCurrentUser();
+
+  const actionPermission = useMemo(() => {
+    return isAdmin || isProjectManager(projectName);
+  }, [isAdmin, isProjectManager, projectName]);
+
   const [execSteps, setExecSteps] = useState<IWorkFlowStepTemplateResV1>({
     assignee_user_name_list: [],
     desc: '',
@@ -85,13 +94,15 @@ const WorkflowTemplateDetail = () => {
               {workflowTemplate?.instance_name_list?.join(',') ?? '--'}
             </Descriptions.Item>
           </Descriptions>
-          <Link
-            to={`/project/${projectName}/progress/update/${workflowTemplate?.workflow_template_name}`}
-          >
-            <Button type="primary">
-              {t('workflowTemplate.detail.updateTemplate')}
-            </Button>
-          </Link>
+          <EmptyBox if={actionPermission}>
+            <Link
+              to={`/project/${projectName}/progress/update/${workflowTemplate?.workflow_template_name}`}
+            >
+              <Button type="primary">
+                {t('workflowTemplate.detail.updateTemplate')}
+              </Button>
+            </Link>
+          </EmptyBox>
         </Col>
         <Col span={12}>
           <Typography.Title level={5}>

@@ -55,6 +55,7 @@ const MemberListTableColumnFactory: (
     {
       dataIndex: 'operator',
       title: i18n.t('common.operate'),
+      width: 160,
       render: (_, record) => {
         return (
           <Space className="user-cell flex-end-horizontal">
