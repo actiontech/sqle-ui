@@ -20,11 +20,20 @@ const ProjectDetail: React.FC = () => {
   const { data, error, loading } = useRequest(
     () => project.getProjectDetailV1({ project_name: projectName }),
     {
-      ready: !!projectName,
+      ready: !!projectName && bindProjects.length > 0,
     }
   );
 
   const renderProjectDetail = () => {
+    if (bindProjects.length === 0) {
+      return (
+        <Result
+          status="info"
+          title={t('projectManage.projectDetail.notice')}
+          subTitle={t('projectManage.projectDetail.unboundProjectTips')}
+        />
+      );
+    }
     if (loading) {
       return <HeaderProgress />;
     }
@@ -39,16 +48,6 @@ const ProjectDetail: React.FC = () => {
     }
 
     if (!data?.data.data) {
-      if (bindProjects.length === 0) {
-        return (
-          <Result
-            status="info"
-            title={t('projectManage.projectDetail.notice')}
-            subTitle={t('projectManage.projectDetail.unboundProjectTips')}
-          />
-        );
-      }
-
       return (
         <Result
           status="error"
