@@ -12,6 +12,7 @@ import { Select } from 'antd';
 import useInstanceSchema from '.';
 
 describe('useInstanceSchema', () => {
+  const projectName = 'default';
   beforeEach(() => {
     jest.useFakeTimers();
   });
@@ -31,7 +32,7 @@ describe('useInstanceSchema', () => {
       resolveThreeSecond({ schema_name_list: ['schema1'] })
     );
     const { result, waitForNextUpdate } = renderHook(() =>
-      useInstanceSchema('instanceId')
+      useInstanceSchema(projectName, 'instanceId')
     );
     expect(result.current.loading).toBe(true);
     expect(result.current.schemaList).toEqual([]);
@@ -41,7 +42,10 @@ describe('useInstanceSchema', () => {
     expect(baseElement).toMatchSnapshot();
 
     expect(requestSpy).toBeCalledTimes(1);
-    expect(requestSpy).toBeCalledWith({ instance_name: 'instanceId' });
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+      instance_name: 'instanceId',
+    });
     expect(result.current.schemaList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
@@ -73,7 +77,7 @@ describe('useInstanceSchema', () => {
     requestSpy.mockImplementation(() =>
       resolveThreeSecond({ schema_name_list: ['schema1'] })
     );
-    const { result } = renderHook(() => useInstanceSchema());
+    const { result } = renderHook(() => useInstanceSchema(projectName));
     expect(result.current.loading).toBe(false);
     expect(requestSpy).not.toBeCalled();
 

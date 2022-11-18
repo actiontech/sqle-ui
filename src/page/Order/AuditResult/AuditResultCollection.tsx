@@ -91,7 +91,7 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
   } = useRequest(
     () =>
       workflow.getSummaryOfInstanceTasksV1({
-        workflow_name: Number(workflowName),
+        workflow_name: workflowName ?? '',
         project_name: projectName,
       }),
     {

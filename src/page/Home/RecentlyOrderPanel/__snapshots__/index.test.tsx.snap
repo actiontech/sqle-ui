@@ -50,15 +50,6 @@ exports[`test home/RecentlyOrderPanel should match snapshot 1`] = `
                     />
                   </svg>
                 </span>
-                <button
-                  class="ant-btn ant-btn-link"
-                  style="padding: 0px; margin-left: 10px;"
-                  type="button"
-                >
-                  <span>
-                    common.more
-                  </span>
-                </button>
               </div>
             </div>
           </div>
@@ -119,6 +110,9 @@ exports[`test home/RecentlyOrderPanel should match snapshot 1`] = `
                       <col
                         style="width: auto;"
                       />
+                      <col
+                        style="width: auto;"
+                      />
                       <col />
                       <col
                         style="width: auto;"
@@ -132,6 +126,11 @@ exports[`test home/RecentlyOrderPanel should match snapshot 1`] = `
                           class="ant-table-cell"
                         >
                           order.order.name
+                        </th>
+                        <th
+                          class="ant-table-cell"
+                        >
+                          projectManage.projectForm.projectName
                         </th>
                         <th
                           class="ant-table-cell"
@@ -194,13 +193,22 @@ exports[`test home/RecentlyOrderPanel should match snapshot 1`] = `
                              
                           </div>
                         </td>
+                        <td
+                          style="padding: 0px; border: 0px; height: 0px;"
+                        >
+                          <div
+                            style="height: 0px; overflow: hidden;"
+                          >
+                             
+                          </div>
+                        </td>
                       </tr>
                       <tr
                         class="ant-table-placeholder"
                       >
                         <td
                           class="ant-table-cell"
-                          colspan="4"
+                          colspan="5"
                         >
                           <div
                             class="ant-table-expanded-row-fixed"

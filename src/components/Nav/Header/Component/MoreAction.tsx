@@ -38,16 +38,16 @@ const MoreAction: React.FC = () => {
             >
               {t('system.log.version')}
             </Menu.Item>
-            <Menu.Divider />
-            <Menu.Item
-              key="reportStatistics"
-              onClick={() => history.push('/reportStatistics')}
-            >
-              {t('menu.reportStatistics')}
-            </Menu.Item>
-            <Menu.Divider />
 
             <EmptyBox if={isAdmin}>
+              <Menu.Divider />
+              <Menu.Item
+                key="reportStatistics"
+                onClick={() => history.push('/reportStatistics')}
+              >
+                {t('menu.reportStatistics')}
+              </Menu.Item>
+              <Menu.Divider />
               <Menu.ItemGroup title={t('menu.platformManage')}>
                 <Menu.ItemGroup key="userCenter" title={t('menu.userCenter')}>
                   <Menu.Item key="user" onClick={() => history.push('/user')}>

@@ -16,7 +16,7 @@ Array [
     exact={true}
     icon={<ForwardRef(PieChartOutlined) />}
     label="menu.dashboard"
-    path="/dashboard"
+    path="/"
   />,
   <Route
     component={
@@ -194,7 +194,7 @@ Array [
     }
     icon={<ForwardRef(ProjectOutlined) />}
     label="menu.projectManage"
-    path="/"
+    path="/project/:projectName"
   />,
 ]
 `;
@@ -216,7 +216,7 @@ Array [
       exact={true}
       icon={<ForwardRef(BarsOutlined) />}
       label="menu.orderList"
-      path="/order"
+      path="/project/:projectName/order"
     />,
     <Route
       component={
@@ -233,7 +233,7 @@ Array [
       hideInSliderMenu={true}
       icon={<ForwardRef(DesktopOutlined) />}
       label="menu.workflow"
-      path="/order/create"
+      path="/project/:projectName/order/create"
     />,
     <Route
       component={
@@ -249,7 +249,7 @@ Array [
       exact={true}
       hideInSliderMenu={true}
       label="menu.orderDetail"
-      path="/order/:orderId"
+      path="/project/:projectName/order/:orderId"
     />,
     <Route
       component={
@@ -265,7 +265,7 @@ Array [
       exact={true}
       hideInSliderMenu={true}
       label="menu.orderSqlAnalyze"
-      path="/order/:taskId/:sqlNum/analyze"
+      path="/project/:projectName/order/:taskId/:sqlNum/analyze"
     />,
   ],
   Array [
@@ -282,7 +282,7 @@ Array [
       }
       hideInSliderMenu={true}
       label="menu.auditPlane"
-      path="/auditPlan/detail/:auditPlanName"
+      path="/project/:projectName/auditPlan/detail/:auditPlanName"
     />,
     <Route
       component={
@@ -298,7 +298,7 @@ Array [
       exact={true}
       hideInSliderMenu={true}
       label="menu.auditPlanSqlAnalyze"
-      path="/auditPlan/:reportId/:sqlNum/analyze"
+      path="/project/:projectName/auditPlan/:reportId/:sqlNum/analyze"
     />,
     <Route
       component={
@@ -312,7 +312,7 @@ Array [
         }
       }
       label="menu.auditPlaneList"
-      path="/auditPlan"
+      path="/project/:projectName/auditPlan"
     />,
   ],
   <Route
@@ -328,7 +328,7 @@ Array [
     }
     icon={<ForwardRef(DatabaseOutlined) />}
     label="menu.dataSource"
-    path="/data"
+    path="/project/:projectName/data"
   />,
   <Route
     component={
@@ -343,7 +343,7 @@ Array [
     }
     icon={<ForwardRef(UserOutlined) />}
     label="menu.member"
-    path="/member"
+    path="/project/:projectName/member"
   />,
   <Route
     component={
@@ -358,7 +358,7 @@ Array [
     }
     icon={<ForwardRef(AuditOutlined) />}
     label="menu.ruleTemplate"
-    path="/rule/template"
+    path="/project/:projectName/rule/template"
   />,
   <Route
     component={
@@ -373,7 +373,7 @@ Array [
     }
     icon={<ForwardRef(NodeIndexOutlined) />}
     label="menu.progressManage"
-    path="/progress"
+    path="/project/:projectName/progress"
   />,
   <Route
     component={
@@ -388,7 +388,7 @@ Array [
     }
     icon={<ForwardRef(ProfileOutlined) />}
     label="menu.whitelist"
-    path="/whitelist"
+    path="/project/:projectName/whitelist"
   />,
 ]
 `;

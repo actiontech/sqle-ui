@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import MemberModal from '..';
 import { ModalName } from '../../../../data/ModalName';
 import {
@@ -13,22 +13,19 @@ import {
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useLocation: jest.fn(),
+  useParams: jest.fn(),
 }));
-const projectName = 'test';
+const projectName = 'default';
 
 describe('test', () => {
   let dispatchSpy: jest.SpyInstance;
-  const useLocationMock: jest.Mock = useLocation as jest.Mock;
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   beforeEach(() => {
     mockUseRole();
     mockUseInstance();
     dispatchSpy = mockUseDispatch().scopeDispatch;
-
-    useLocationMock.mockImplementation(() => {
-      return { state: { projectName } };
-    });
+    useParamsMock.mockReturnValue({ projectName });
 
     mockUseSelector({
       member: {
@@ -44,7 +41,6 @@ describe('test', () => {
   afterEach(() => {
     jest.clearAllMocks();
     jest.clearAllTimers();
-    useLocationMock.mockRestore();
   });
 
   test('should dispatch "initMemberModalStatus" when MemberModal is first render', () => {

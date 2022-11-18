@@ -2,6 +2,7 @@ import { Menu } from 'antd';
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ProjectDetailUrlParamType } from '..';
+import { IProjectDetailItem } from '../../../../api/common';
 import { SystemRole } from '../../../../data/common';
 import i18n from '../../../../locale';
 import {
@@ -12,7 +13,12 @@ import ProjectDetailLayout from './Layout';
 
 export type ProjectDetailLayoutProps = {
   children: ReactNode;
-} & ProjectDetailUrlParamType;
+} & ProjectDetailUrlParamType &
+  ProjectInfoBoxProps;
+
+export type ProjectInfoBoxProps = {
+  projectInfo?: IProjectDetailItem;
+};
 
 export const generateNavigateMenu = (
   config: Array<

@@ -1,4 +1,4 @@
-import { Form, Input, Select, Switch } from 'antd';
+import { Form, Select, Switch } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { ModalFormLayout } from '../../../data/common';
 import { MemberFormProps } from './index.type';

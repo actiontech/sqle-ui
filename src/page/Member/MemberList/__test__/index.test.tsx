@@ -1,11 +1,22 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import MemberList from '..';
+import { SystemRole } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
+import { mockBindProjects } from '../../../../hooks/useCurrentUser/index.test';
 import { selectOptionByIndex } from '../../../../testUtils/customQuery';
-import { mockUseDispatch } from '../../../../testUtils/mockRedux';
+import {
+  mockUseDispatch,
+  mockUseSelector,
+} from '../../../../testUtils/mockRedux';
 import {
   mockUseInstance,
   mockUseUsername,
@@ -15,12 +26,12 @@ import { mockDeleteMember, mockGetMembers, mockMemberList } from './utils';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useLocation: jest.fn(),
+  useParams: jest.fn(),
 }));
-const projectName = 'test';
+const projectName = mockBindProjects[0].project_name;
 
 describe('test MemberList', () => {
-  const useLocationMock: jest.Mock = useLocation as jest.Mock;
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
   let getMembersSpy: jest.SpyInstance;
   let deleteMemberSpy: jest.SpyInstance;
   let dispatchSpy: jest.SpyInstance;
@@ -30,8 +41,9 @@ describe('test MemberList', () => {
     deleteMemberSpy = mockDeleteMember();
     mockUseUsername();
     mockUseInstance();
-    useLocationMock.mockImplementation(() => {
-      return { state: { projectName } };
+    useParamsMock.mockReturnValue({ projectName });
+    mockUseSelector({
+      user: { role: SystemRole.admin, bindProjects: mockBindProjects },
     });
     dispatchSpy = mockUseDispatch().scopeDispatch;
 
@@ -41,7 +53,6 @@ describe('test MemberList', () => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
-    useLocationMock.mockRestore();
   });
 
   test('should match snapshot', async () => {
@@ -93,6 +104,7 @@ describe('test MemberList', () => {
 
     selectOptionByIndex('member.memberList.filterForm.username', 'user_name1');
     selectOptionByIndex('member.memberList.filterForm.instance', 'instance1');
+
     fireEvent.click(screen.getByText('common.search'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
@@ -200,6 +212,66 @@ describe('test MemberList', () => {
     });
     expect(
       screen.queryByText('member.memberList.deleteSuccessTips')
+    ).not.toBeInTheDocument();
+  });
+
+  test('should hide the Create, Add, Edit feature when not currently a project manager or admin', async () => {
+    mockUseSelector({
+      user: {
+        role: SystemRole.admin,
+        bindProjects: [{ projectName: 'test', isManager: false }],
+      },
+    });
+
+    render(<MemberList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryByText('common.delete')).toBeInTheDocument();
+    expect(screen.queryByText('common.edit')).toBeInTheDocument();
+    expect(
+      screen.queryByText('member.memberList.createAction')
+    ).toBeInTheDocument();
+
+    cleanup();
+    jest.clearAllMocks();
+
+    mockUseSelector({
+      user: {
+        role: '',
+        bindProjects: mockBindProjects,
+      },
+    });
+    render(<MemberList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryByText('common.delete')).toBeInTheDocument();
+    expect(screen.queryByText('common.edit')).toBeInTheDocument();
+    expect(
+      screen.queryByText('member.memberList.createAction')
+    ).toBeInTheDocument();
+
+    cleanup();
+    jest.clearAllMocks();
+
+    mockUseSelector({
+      user: {
+        role: '',
+        bindProjects: [{ projectName: 'default', isManager: false }],
+      },
+    });
+    render(<MemberList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryByText('common.delete')).not.toBeInTheDocument();
+    expect(screen.queryByText('common.edit')).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('member.memberList.createAction')
     ).not.toBeInTheDocument();
   });
 });

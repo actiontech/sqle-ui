@@ -1,7 +1,8 @@
 import { DownOutlined } from '@ant-design/icons';
-import { Button, Divider, Dropdown, Menu, Popconfirm, Tag } from 'antd';
+import { Divider, Dropdown, Menu, Popconfirm, Tag, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import { IInstanceResV1 } from '../../../api/common';
+import EmptyBox from '../../../components/EmptyBox';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import { timeAddZero } from '../../../utils/Common';
@@ -9,7 +10,8 @@ import { timeAddZero } from '../../../utils/Common';
 export const dataSourceColumns = (
   deleteDatabase: (instanceName: string) => void,
   testDatabaseConnection: (instanceName: string) => void,
-  projectName: string
+  projectName: string,
+  actionPermission: boolean
 ): TableColumn<IInstanceResV1, 'operate' | 'address' | 'connect'> => {
   return [
     {
@@ -51,26 +53,33 @@ export const dataSourceColumns = (
     },
     {
       dataIndex: 'operate',
+      title: i18n.t('common.operate'),
+      width: actionPermission ? 180 : 40,
       render: (_, record) => {
         return (
           <>
-            <Link
-              to={`/project/${projectName}/data/update/${record.instance_name}`}
-            >
-              <Button type="link">{i18n.t('common.edit')}</Button>
-            </Link>
-            <Divider type="vertical" />
-            <Popconfirm
-              title={i18n.t('dataSource.deleteDatabase.confirmMessage', {
-                name: record.instance_name,
-              })}
-              onConfirm={deleteDatabase.bind(null, record.instance_name ?? '')}
-            >
-              <Button type="link" danger>
-                {i18n.t('common.delete')}
-              </Button>
-            </Popconfirm>
-            <Divider type="vertical" />
+            <EmptyBox if={actionPermission}>
+              <Link
+                to={`/project/${projectName}/data/update/${record.instance_name}`}
+              >
+                <Typography.Link>{i18n.t('common.edit')}</Typography.Link>
+              </Link>
+              <Divider type="vertical" />
+              <Popconfirm
+                title={i18n.t('dataSource.deleteDatabase.confirmMessage', {
+                  name: record.instance_name,
+                })}
+                onConfirm={deleteDatabase.bind(
+                  null,
+                  record.instance_name ?? ''
+                )}
+              >
+                <Typography.Link type="danger">
+                  {i18n.t('common.delete')}
+                </Typography.Link>
+              </Popconfirm>
+              <Divider type="vertical" />
+            </EmptyBox>
             <Dropdown
               overlay={
                 <Menu>
@@ -86,10 +95,10 @@ export const dataSourceColumns = (
                 </Menu>
               }
             >
-              <Button type="link">
+              <Typography.Link>
                 {i18n.t('common.more')}
                 <DownOutlined />
-              </Button>
+              </Typography.Link>
             </Dropdown>
           </>
         );

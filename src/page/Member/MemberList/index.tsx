@@ -1,15 +1,17 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Button, Card, message, Space, Table } from 'antd';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { IGetMemberRespDataV1 } from '../../../api/common';
 import user from '../../../api/user';
 import { IGetMembersV1Params } from '../../../api/user/index.d';
+import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { ModalName } from '../../../data/ModalName';
+import useCurrentUser from '../../../hooks/useCurrentUser';
 import useTable from '../../../hooks/useTable';
 import {
   updateMemberModalStatus,
@@ -27,8 +29,16 @@ const MemberList: React.FC = () => {
   const { projectName } = useCurrentProjectName();
   const { pagination, tableChange, filterInfo, setFilterInfo } =
     useTable<MemberListFilterFormFields>();
+  const { isAdmin, isProjectManager } = useCurrentUser();
+
+  const actionPermission = useMemo(() => {
+    return isAdmin || isProjectManager(projectName);
+  }, [isAdmin, isProjectManager, projectName]);
 
   const createAction = () => {
+    if (!actionPermission) {
+      return;
+    }
     dispatch(
       updateMemberModalStatus({
         modalName: ModalName.Add_Member,
@@ -38,6 +48,9 @@ const MemberList: React.FC = () => {
   };
 
   const updateAction = (record: IGetMemberRespDataV1) => {
+    if (!actionPermission) {
+      return;
+    }
     dispatch(updateSelectMember({ member: record }));
     dispatch(
       updateMemberModalStatus({
@@ -47,6 +60,9 @@ const MemberList: React.FC = () => {
     );
   };
   const deleteAction = async (username: string) => {
+    if (!actionPermission) {
+      return;
+    }
     const res = await user.deleteMemberV1({
       user_name: username,
       project_name: projectName,
@@ -104,9 +120,11 @@ const MemberList: React.FC = () => {
         </Space>
       }
       extra={[
-        <Button key="create-user" type="primary" onClick={createAction}>
-          {t('member.memberList.createAction')}
-        </Button>,
+        <EmptyBox if={actionPermission} key="create-user">
+          <Button type="primary" onClick={createAction}>
+            {t('member.memberList.createAction')}
+          </Button>
+        </EmptyBox>,
       ]}
     >
       <MemberListFilterForm submit={setFilterInfo} />
@@ -114,7 +132,11 @@ const MemberList: React.FC = () => {
         rowKey="user_name"
         loading={loading}
         dataSource={data?.list}
-        columns={MemberListTableColumnFactory(updateAction, deleteAction)}
+        columns={MemberListTableColumnFactory(
+          updateAction,
+          deleteAction,
+          actionPermission
+        )}
         pagination={{
           total: data?.total,
           showSizeChanger: true,

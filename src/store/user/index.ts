@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IUserBindProjectResV1 } from '../../api/common';
 import { SystemRole } from '../../data/common';
 import StorageKey from '../../data/StorageKey';
 import { SupportTheme } from '../../theme';
@@ -9,6 +10,7 @@ type UserReduxState = {
   role: SystemRole | '';
   token: string;
   theme: string;
+  bindProjects: IUserBindProjectResV1[];
 };
 
 const initialState: UserReduxState = {
@@ -16,6 +18,7 @@ const initialState: UserReduxState = {
   role: '',
   token: LocalStorageWrapper.getOrDefault(StorageKey.Token, ''),
   theme: LocalStorageWrapper.getOrDefault(StorageKey.Theme, SupportTheme.LIGHT),
+  bindProjects: [],
 };
 
 const user = createSlice({
@@ -45,9 +48,18 @@ const user = createSlice({
       state.token = token;
       LocalStorageWrapper.set(StorageKey.Token, token);
     },
+    updateBindProjects: (
+      state,
+      {
+        payload: { bindProjects },
+      }: PayloadAction<{ bindProjects: IUserBindProjectResV1[] }>
+    ) => {
+      state.bindProjects = bindProjects;
+    },
   },
 });
 
-export const { updateUser, updateTheme, updateToken } = user.actions;
+export const { updateUser, updateTheme, updateToken, updateBindProjects } =
+  user.actions;
 
 export default user.reducer;

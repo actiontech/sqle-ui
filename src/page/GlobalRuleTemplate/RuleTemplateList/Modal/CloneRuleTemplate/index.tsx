@@ -10,7 +10,7 @@ import { ModalFormLayout, ResponseCode } from '../../../../../data/common';
 import EmitterKey from '../../../../../data/EmitterKey';
 import { ModalName } from '../../../../../data/ModalName';
 import { IReduxState } from '../../../../../store';
-import { updateRuleTemplateListModalStatus } from '../../../../../store/ruleTemplate';
+import { updateGlobalRuleTemplateListModalStatus } from '../../../../../store/globalRuleTemplate';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import { nameRule } from '../../../../../utils/FormRule';
 import { CloneRuleTemplateFormFields } from './index.type';
@@ -34,7 +34,7 @@ const CloneRuleTemplateModal = () => {
   const close = () => {
     form.resetFields();
     dispatch(
-      updateRuleTemplateListModalStatus({
+      updateGlobalRuleTemplateListModalStatus({
         modalName: ModalName.Clone_Rule_Template,
         status: false,
       })

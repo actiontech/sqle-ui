@@ -17,7 +17,7 @@ import { globalRouterConfig, unAuthRouter } from './router/config';
 import { IReduxState } from './store';
 import { useRequest } from 'ahooks';
 import { ResponseCode, SystemRole } from './data/common';
-import { updateUser, updateToken } from './store/user';
+import { updateUser, updateToken, updateBindProjects } from './store/user';
 import user from './api/user';
 import { useDispatch } from 'react-redux';
 import EmptyBox from './components/EmptyBox';
@@ -51,6 +51,9 @@ function App() {
       onSuccess: (res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           const data = res.data.data;
+          dispatch(
+            updateBindProjects({ bindProjects: data?.bind_projects ?? [] })
+          );
           dispatch(
             updateUser({
               username: data?.user_name ?? '',

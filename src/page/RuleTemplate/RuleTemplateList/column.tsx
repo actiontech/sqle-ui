@@ -1,13 +1,5 @@
 import { DownOutlined } from '@ant-design/icons';
-import {
-  Divider,
-  Dropdown,
-  Menu,
-  Popconfirm,
-  Space,
-  Tag,
-  Typography,
-} from 'antd';
+import { Divider, Dropdown, Menu, Popconfirm, Tag, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import { IProjectRuleTemplateResV1 } from '../../../api/common';
 import i18n from '../../../locale';
@@ -16,7 +8,7 @@ import { TableColumn } from '../../../types/common.type';
 export const RuleTemplateListTableColumnFactory = (
   deleteTemplate: (name: string) => void,
   openCloneRuleTemplateModal: (rowData: IProjectRuleTemplateResV1) => void,
-  isAdmin: boolean,
+  actionPermission: boolean,
   projectName: string
 ): TableColumn<IProjectRuleTemplateResV1, 'operator'> => {
   const columns: TableColumn<IProjectRuleTemplateResV1, 'operator'> = [
@@ -46,13 +38,14 @@ export const RuleTemplateListTableColumnFactory = (
     {
       dataIndex: 'operator',
       title: () => i18n.t('common.operate'),
+      width: 180,
       render: (_, record) => {
         return (
-          <Space className="user-cell flex-end-horizontal">
+          <>
             <Link
               to={`/project/${projectName}/rule/template/update/${record.rule_template_name}`}
             >
-              {i18n.t('common.edit')}
+              <Typography.Link>{i18n.t('common.edit')}</Typography.Link>
             </Link>
             <Divider type="vertical" />
             <Popconfirm
@@ -65,9 +58,9 @@ export const RuleTemplateListTableColumnFactory = (
                 record.rule_template_name ?? ''
               )}
             >
-              <Typography.Text type="danger" className="pointer">
+              <Typography.Link type="danger">
                 {i18n.t('common.delete')}
-              </Typography.Text>
+              </Typography.Link>
             </Popconfirm>
             <Divider type="vertical" />
             <Dropdown
@@ -88,13 +81,13 @@ export const RuleTemplateListTableColumnFactory = (
                 <DownOutlined />
               </Typography.Link>
             </Dropdown>
-          </Space>
+          </>
         );
       },
     },
   ];
 
-  if (!isAdmin) {
+  if (!actionPermission) {
     return columns.filter((v) => v.dataIndex !== 'operator');
   }
 

@@ -1,7 +1,12 @@
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router-dom';
 import { DEFAULT_PROJECT_NAME } from '../../../../page/ProjectManage/ProjectDetail';
 import { globalRouterConfig } from '../../../../router/config';
+import {
+  GlobalRouterItemKeyLiteral,
+  RouterItem,
+} from '../../../../types/router.type';
 
 const headerMenuKeys: Array<typeof globalRouterConfig[number]['key']> = [
   'dashboard',
@@ -29,6 +34,17 @@ const HeaderMenu: React.FC = () => {
 
     history.push(path);
   };
+
+  const isActiveMenu = useCallback(
+    (router: RouterItem<GlobalRouterItemKeyLiteral>) => {
+      if (router.key === 'projectList' || router.key === 'projectDetail') {
+        return /^\/project.*/.test(location.pathname);
+      }
+
+      return router.path === location.pathname;
+    },
+    [location.pathname]
+  );
   return (
     <div className="header-menu">
       {globalRouterConfig.map((router) => {
@@ -37,9 +53,7 @@ const HeaderMenu: React.FC = () => {
             <div
               key={router.key}
               className={`${
-                location.pathname === router.path
-                  ? 'header-menu-item-active'
-                  : ''
+                isActiveMenu(router) ? 'header-menu-item-active' : ''
               } header-menu-item`}
               onClick={() => jumpToPath(router.path as string)}
             >

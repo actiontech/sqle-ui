@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
 import {
@@ -9,6 +9,7 @@ import {
 import {
   mockUseInstance,
   mockUseRole,
+  mockUseUsername,
 } from '../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../utils/EventEmitter';
 import { mockMemberList } from '../../MemberList/__test__/utils';
@@ -17,24 +18,24 @@ import { mockUpdateMember } from './utils';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useLocation: jest.fn(),
+  useParams: jest.fn(),
 }));
-const projectName = 'test';
+const projectName = 'default';
 
 describe('test UpdateMember', () => {
   let updateMemberSpy: jest.SpyInstance;
   let dispatchSpy: jest.SpyInstance;
   const emitSpy = jest.spyOn(EventEmitter, 'emit');
 
-  const useLocationMock: jest.Mock = useLocation as jest.Mock;
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   beforeEach(() => {
     mockUseRole();
+    mockUseUsername();
     mockUseInstance();
     updateMemberSpy = mockUpdateMember();
-    useLocationMock.mockImplementation(() => {
-      return { state: { projectName } };
-    });
+    useParamsMock.mockReturnValue({ projectName });
+
     dispatchSpy = mockUseDispatch().scopeDispatch;
     mockUseSelector({
       member: {
@@ -51,7 +52,6 @@ describe('test UpdateMember', () => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
-    useLocationMock.mockRestore();
   });
 
   test('should match snapshot', async () => {
@@ -125,15 +125,17 @@ describe('test UpdateMember', () => {
     });
     expect(dispatchSpy).toBeCalledTimes(0);
 
-    expect(screen.getByLabelText('member.memberForm.username')).toHaveValue(
-      mockMemberList[0].user_name
+    expect(screen.getAllByText(mockMemberList[0].user_name!)[0]).toHaveClass(
+      'ant-select-selection-item'
     );
 
     expect(screen.getByLabelText('member.memberForm.username')).toBeDisabled();
 
     fireEvent.click(screen.getByText('common.close'));
 
-    expect(screen.getByLabelText('member.memberForm.username')).toHaveValue('');
+    expect(
+      screen.queryAllByText(mockMemberList[0].user_name!)[0]
+    ).toBeUndefined();
 
     expect(dispatchSpy).toBeCalledTimes(1);
     expect(dispatchSpy).toBeCalledWith({

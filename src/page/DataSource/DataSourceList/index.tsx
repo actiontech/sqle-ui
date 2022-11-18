@@ -1,7 +1,7 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Button, Card, message, Modal, Space, Table } from 'antd';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import instance from '../../../api/instance';
 import { ResponseCode } from '../../../data/common';
@@ -11,13 +11,19 @@ import { DataSourceListFilterFields } from './DataSourceListFilterForm/index.typ
 import useTable from '../../../hooks/useTable';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import { Link } from 'react-router-dom';
+import useCurrentUser from '../../../hooks/useCurrentUser';
+import EmptyBox from '../../../components/EmptyBox';
 
 const DataSourceList = () => {
   const { t } = useTranslation();
-
   const { pagination, filterInfo, setFilterInfo, tableChange } =
     useTable<DataSourceListFilterFields>();
+  const { isAdmin, isProjectManager } = useCurrentUser();
   const { projectName } = useCurrentProjectName();
+  const actionPermission = useMemo(() => {
+    return isAdmin || isProjectManager(projectName);
+  }, [isAdmin, isProjectManager, projectName]);
+
   const { data, loading, refresh } = useRequest(
     () => {
       return instance.getInstanceListV1({
@@ -106,9 +112,11 @@ const DataSourceList = () => {
         </Space>
       }
       extra={
-        <Link to={`/project/${projectName}/data/create`}>
-          <Button type="primary">{t('dataSource.addDatabase')}</Button>
-        </Link>
+        <EmptyBox if={actionPermission}>
+          <Link to={`/project/${projectName}/data/create`}>
+            <Button type="primary">{t('dataSource.addDatabase')}</Button>
+          </Link>
+        </EmptyBox>
       }
     >
       <DataSourceListFilterForm submit={setFilterInfo} />
@@ -119,7 +127,8 @@ const DataSourceList = () => {
         columns={dataSourceColumns(
           deleteDatabase,
           testDatabaseConnection,
-          projectName
+          projectName,
+          actionPermission
         )}
         pagination={{
           total: data?.total,

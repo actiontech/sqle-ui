@@ -34,4 +34,9 @@ export default {
     createTime: '创建时间: {{time}}',
     createUser: '创建人: {{user}}',
   },
+
+  projectDetail: {
+    notice: '提示',
+    unboundProjectTips: '当前用户暂未绑定项目, 请联系项目管理员',
+  },
 };

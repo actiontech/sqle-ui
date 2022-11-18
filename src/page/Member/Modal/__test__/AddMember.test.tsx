@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
 import { selectOptionByIndex } from '../../../../testUtils/customQuery';
@@ -10,6 +10,7 @@ import {
 import {
   mockUseInstance,
   mockUseRole,
+  mockUseUsername,
 } from '../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../utils/EventEmitter';
 import AddMember from '../AddMember';
@@ -17,24 +18,22 @@ import { mockAddMember } from './utils';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useLocation: jest.fn(),
+  useParams: jest.fn(),
 }));
-const projectName = 'test';
+const projectName = 'default';
 
 describe('test AddMember', () => {
   let addMemberSpy: jest.SpyInstance;
   let dispatchSpy: jest.SpyInstance;
   const emitSpy = jest.spyOn(EventEmitter, 'emit');
-
-  const useLocationMock: jest.Mock = useLocation as jest.Mock;
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   beforeEach(() => {
     mockUseRole();
+    mockUseUsername();
     mockUseInstance();
     addMemberSpy = mockAddMember();
-    useLocationMock.mockImplementation(() => {
-      return { state: { projectName } };
-    });
+
     dispatchSpy = mockUseDispatch().scopeDispatch;
     mockUseSelector({
       member: {
@@ -43,6 +42,7 @@ describe('test AddMember', () => {
         },
       },
     });
+    useParamsMock.mockReturnValue({ projectName });
     jest.useFakeTimers();
   });
 
@@ -50,7 +50,6 @@ describe('test AddMember', () => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
-    useLocationMock.mockRestore();
   });
 
   test('should match snapshot', async () => {
@@ -67,10 +66,13 @@ describe('test AddMember', () => {
     expect(dispatchSpy).toBeCalledTimes(0);
     expect(emitSpy).toBeCalledTimes(0);
 
-    fireEvent.change(screen.getByLabelText('member.memberForm.username'), {
-      target: { value: 'name' },
+    selectOptionByIndex('member.memberForm.username', 'user_name1');
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
     });
     fireEvent.click(screen.getByLabelText('member.memberForm.projectAdmin'));
+
+    fireEvent.click(screen.getByText('member.roleSelector.addRole'));
     selectOptionByIndex('member.roleSelector.role', 'role_name1');
     selectOptionByIndex('member.roleSelector.instance', 'instance1');
 
@@ -88,7 +90,7 @@ describe('test AddMember', () => {
     expect(addMemberSpy).toBeCalledWith({
       project_name: projectName,
       roles: [{ instance_name: 'instance1', role_names: ['role_name1'] }],
-      user_name: 'name',
+      user_name: 'user_name1',
       is_manager: true,
     });
 
@@ -130,10 +132,10 @@ describe('test AddMember', () => {
     });
     expect(dispatchSpy).toBeCalledTimes(0);
 
-    fireEvent.change(screen.getByLabelText('member.memberForm.username'), {
-      target: { value: 'name' },
+    selectOptionByIndex('member.memberForm.username', 'user_name1');
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
     });
-
     fireEvent.click(screen.getByText('common.close'));
 
     expect(screen.getByLabelText('member.memberForm.username')).toHaveValue('');

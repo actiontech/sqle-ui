@@ -4,6 +4,7 @@ import user from './api/user';
 import App from './App';
 import { SystemRole } from './data/common';
 import { ModalName } from './data/ModalName';
+import { mockBindProjects } from './hooks/useCurrentUser/index.test';
 import { SupportLanguage } from './locale';
 import { mockUseDispatch, mockUseSelector } from './testUtils/mockRedux';
 import {
@@ -20,7 +21,11 @@ describe('App test', () => {
   beforeEach(() => {
     getUserSpy = jest.spyOn(user, 'getCurrentUserV1');
     getUserSpy.mockImplementation(() =>
-      resolveImmediately({ user_name: 'test', is_admin: '' })
+      resolveImmediately({
+        user_name: 'test',
+        is_admin: '',
+        bindProjects: mockBindProjects,
+      })
     );
     const { scopeDispatch: temp } = mockUseDispatch();
     scopeDispatch = temp;
@@ -89,13 +94,23 @@ describe('App test', () => {
       nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
     });
     getUserSpy.mockImplementation(() =>
-      resolveThreeSecond({ user_name: 'username', is_admin: '' })
+      resolveThreeSecond({
+        user_name: 'username',
+        is_admin: '',
+        bind_projects: mockBindProjects,
+      })
     );
     expect(scopeDispatch).not.toBeCalled();
     render(<App />);
     await waitFor(() => jest.advanceTimersByTime(3000));
-    expect(scopeDispatch).toBeCalledTimes(2);
-    expect(scopeDispatch).toBeCalledWith({
+    expect(scopeDispatch).toBeCalledTimes(3);
+    expect(scopeDispatch.mock.calls[1][0]).toEqual({
+      payload: {
+        bindProjects: mockBindProjects,
+      },
+      type: 'user/updateBindProjects',
+    });
+    expect(scopeDispatch.mock.calls[2][0]).toEqual({
       payload: {
         role: '',
         username: 'username',

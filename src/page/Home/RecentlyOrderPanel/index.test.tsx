@@ -10,30 +10,23 @@ import { createMemoryHistory } from 'history';
 import moment from 'moment';
 import { cloneDeep } from 'lodash';
 import { translateTimeForRequest } from '../../../utils/Common';
-import { OrderListUrlParamsKey } from '../../Order/List/index.data';
 
 describe('test home/RecentlyOrderPanel', () => {
+  const list = [
+    {
+      create_time: '2021-04-29T05:41:24Z',
+      create_user_name: 'admin',
+      current_step_assignee_user_name_list: ['admin'],
+      current_step_type: 'sql_execute',
+      desc: '',
+      status: 'wait_for_audit',
+      workflow_name: 'order123',
+      project_name: 'default',
+    },
+  ];
   const mockRequest = () => {
-    const spy = jest.spyOn(workflow, 'getWorkflowsV2');
-    spy.mockImplementation(() =>
-      resolveThreeSecond([
-        {
-          create_time: '2021-04-29T05:41:24Z',
-          create_user_name: 'admin',
-          current_step_assignee_user_name_list: ['admin'],
-          current_step_type: 'sql_execute',
-          desc: '',
-          status: 'wait_for_audit',
-          subject: 'order123',
-          task_instance_name: 'db1',
-          task_instance_schema: '',
-          task_pass_rate: 0,
-          task_status: 'audited',
-          workflow_id: 1,
-          task_score: 30,
-        },
-      ])
-    );
+    const spy = jest.spyOn(workflow, 'getGlobalWorkflowsV1');
+    spy.mockImplementation(() => resolveThreeSecond(list));
     return spy;
   };
   let getMockRequestSpy: jest.SpyInstance;
@@ -90,16 +83,25 @@ describe('test home/RecentlyOrderPanel', () => {
       filter_task_execute_start_time_from: translateTimeForRequest(startTime),
       filter_task_execute_start_time_to: translateTimeForRequest(endTime),
     });
-    const format = (time: moment.Moment) => {
-      return time.format('YYYY-MM-DD HH:mm:ss');
-    };
+  });
 
-    fireEvent.click(screen.getByText('common.more'));
-    expect(history.location.pathname).toBe(`/order`);
-    expect(history.location.search).toBe(
-      `?${OrderListUrlParamsKey.executeTimeForm}=${format(startTime)}&${
-        OrderListUrlParamsKey.executeTimeTo
-      }=${format(endTime)}`
+  test('should jump to the order page under the project when click on the corresponding link', async () => {
+    const history = createMemoryHistory();
+
+    renderWithServerRouter(<RecentlyOrderPanel />, undefined, { history });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(screen.queryByText(list[0].workflow_name!)).toBeInTheDocument();
+    fireEvent.click(screen.getByText(list[0].workflow_name!));
+    expect(history.location.pathname).toBe(
+      `/project/${list[0].project_name}/order/${list[0].workflow_name}`
+    );
+
+    expect(screen.queryByText(list[0].project_name!)).toBeInTheDocument();
+    fireEvent.click(screen.getByText(list[0].project_name!));
+    expect(history.location.pathname).toBe(
+      `/project/${list[0].project_name}/order`
     );
   });
 });

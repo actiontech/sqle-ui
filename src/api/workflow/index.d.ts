@@ -9,12 +9,12 @@ import {
   IUpdateWorkflowReqV1,
   IRejectWorkflowReqV1,
   IGetWorkflowTasksResV1,
-  IUpdateWorkflowScheduleReqV1,
+  IUpdateWorkflowScheduleReqV1
 } from '../common.d';
 
 import {
   getWorkflowsV1FilterStatusEnum,
-  getGlobalWorkflowsV1FilterStatusEnum,
+  getGlobalWorkflowsV1FilterStatusEnum
 } from './index.enum';
 
 export interface IGetWorkflowTemplateV1Params {
@@ -117,7 +117,7 @@ export interface IRejectWorkflowV1Params extends IRejectWorkflowReqV1 {
 export interface IRejectWorkflowV1Return extends IBaseRes {}
 
 export interface IGetSummaryOfInstanceTasksV1Params {
-  workflow_name: number;
+  workflow_name: string;
 
   project_name: string;
 }

@@ -26,6 +26,13 @@ export const customColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
       dataIndex: 'project_name',
       title: () => i18n.t('projectManage.projectForm.projectName'),
       width: 'auto',
+      render: (projectName) => {
+        return (
+          <EmptyBox if={projectName} defaultNode={projectName}>
+            <Link to={`/project/${projectName}/order`}>{projectName}</Link>
+          </EmptyBox>
+        );
+      },
     },
     {
       dataIndex: 'desc',

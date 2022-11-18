@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
 import { selectOptionByIndex } from '../../../../testUtils/customQuery';
@@ -10,6 +10,7 @@ import {
 import {
   mockUseInstance,
   mockUseRole,
+  mockUseUserGroup,
 } from '../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../utils/EventEmitter';
 import AddMemberGroup from '../AddMemberGroup';
@@ -17,24 +18,24 @@ import { mockAddMemberGroup } from './utils';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useLocation: jest.fn(),
+  useParams: jest.fn(),
 }));
-const projectName = 'test';
+const projectName = 'default';
 
 describe('test AddMemberGroup', () => {
   let addMemberGroupSpy: jest.SpyInstance;
   let dispatchSpy: jest.SpyInstance;
   const emitSpy = jest.spyOn(EventEmitter, 'emit');
 
-  const useLocationMock: jest.Mock = useLocation as jest.Mock;
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   beforeEach(() => {
     mockUseRole();
+    mockUseUserGroup();
     mockUseInstance();
     addMemberGroupSpy = mockAddMemberGroup();
-    useLocationMock.mockImplementation(() => {
-      return { state: { projectName } };
-    });
+    useParamsMock.mockReturnValue({ projectName });
+
     dispatchSpy = mockUseDispatch().scopeDispatch;
     mockUseSelector({
       member: {
@@ -50,7 +51,6 @@ describe('test AddMemberGroup', () => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
-    useLocationMock.mockRestore();
   });
 
   test('should match snapshot', async () => {
@@ -67,12 +67,14 @@ describe('test AddMemberGroup', () => {
     expect(dispatchSpy).toBeCalledTimes(0);
     expect(emitSpy).toBeCalledTimes(0);
 
-    fireEvent.change(
-      screen.getByLabelText('member.memberGroupForm.userGroupName'),
-      {
-        target: { value: 'name' },
-      }
+    selectOptionByIndex(
+      'member.memberGroupForm.userGroupName',
+      'user_group_name1'
     );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    fireEvent.click(screen.getByText('member.roleSelector.addRole'));
     selectOptionByIndex('member.roleSelector.role', 'role_name1');
     selectOptionByIndex('member.roleSelector.instance', 'instance1');
 
@@ -90,7 +92,7 @@ describe('test AddMemberGroup', () => {
     expect(addMemberGroupSpy).toBeCalledWith({
       project_name: projectName,
       roles: [{ instance_name: 'instance1', role_names: ['role_name1'] }],
-      user_group_name: 'name',
+      user_group_name: 'user_group_name1',
     });
 
     await waitFor(() => {
@@ -131,12 +133,13 @@ describe('test AddMemberGroup', () => {
     });
     expect(dispatchSpy).toBeCalledTimes(0);
 
-    fireEvent.change(
-      screen.getByLabelText('member.memberGroupForm.userGroupName'),
-      {
-        target: { value: 'name' },
-      }
+    selectOptionByIndex(
+      'member.memberGroupForm.userGroupName',
+      'user_group_name1'
     );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
 
     fireEvent.click(screen.getByText('common.close'));
 

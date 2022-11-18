@@ -23,6 +23,7 @@ const AuditPlan = lazy(
 const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
   children,
   projectName,
+  projectInfo,
 }) => {
   const userRole = useSelector<IReduxState, SystemRole | ''>(
     (state) => state.user.role
@@ -103,7 +104,7 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
   return (
     <Layout className="project-detail-wrapper">
       <Layout.Sider>
-        <ProjectInfoBox />
+        <ProjectInfoBox projectInfo={projectInfo} />
         <Menu
           selectedKeys={selectMenuWrapper()}
           defaultOpenKeys={['order']}

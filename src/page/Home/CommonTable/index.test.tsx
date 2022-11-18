@@ -1,12 +1,17 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { IWorkflowDetailResV1 } from '../../../api/common';
 import CommonTable, { CommonTableInfoType, genTabPaneTitle } from './index';
-import { renderWithRouter } from '../../../testUtils/customRender';
+import {
+  renderWithRouter,
+  renderWithServerRouter,
+} from '../../../testUtils/customRender';
 import { TableColumn } from '../../../types/common.type';
+import { createMemoryHistory } from 'history';
 
 const list: IWorkflowDetailResV1[] = [
   {
-    subject: 'test1',
+    workflow_name: 'test1',
+    project_name: 'default',
     desc: 'desc1',
     create_time: '',
   },
@@ -88,10 +93,10 @@ describe('test Home/CommonTable', () => {
 
   test('should render custom custom when custom has a value', () => {
     const mockCustomColumn = jest
-      .fn<TableColumn<IWorkflowDetailResV2>, any>()
+      .fn<TableColumn<IWorkflowDetailResV1>, any>()
       .mockReturnValue([
         {
-          dataIndex: 'subject',
+          dataIndex: 'workflow_name',
           title: () => 'subject',
         },
         {
@@ -99,7 +104,7 @@ describe('test Home/CommonTable', () => {
           title: () => 'desc',
         },
         {
-          dataIndex: 'workflow_id',
+          dataIndex: 'workflow_name',
           title: () => 'workflow_id',
         },
       ]);
@@ -114,5 +119,27 @@ describe('test Home/CommonTable', () => {
     );
     expect(mockCustomColumn).toBeCalledTimes(1);
     expect(container).toMatchSnapshot();
+  });
+
+  test('should jump to the order page under the project when click on the corresponding link', () => {
+    const history = createMemoryHistory();
+
+    renderWithServerRouter(
+      <CommonTable tableInfo={mockTableInfo} />,
+      undefined,
+      { history }
+    );
+
+    expect(screen.queryByText(list[0].workflow_name!)).toBeInTheDocument();
+    fireEvent.click(screen.getByText(list[0].workflow_name!));
+    expect(history.location.pathname).toBe(
+      `/project/${list[0].project_name}/order/${list[0].workflow_name}`
+    );
+
+    expect(screen.queryByText(list[0].project_name!)).toBeInTheDocument();
+    fireEvent.click(screen.getByText(list[0].project_name!));
+    expect(history.location.pathname).toBe(
+      `/project/${list[0].project_name}/order`
+    );
   });
 });

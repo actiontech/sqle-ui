@@ -150,7 +150,7 @@ const Order = () => {
         title={
           <Space>
             <Typography.Text ellipsis>
-              {orderInfo?.subject ?? t('order.pageTitle')}
+              {orderInfo?.workflow_name ?? t('order.pageTitle')}
             </Typography.Text>
             <OrderStatusTag status={orderInfo?.record?.status} />
           </Space>
@@ -188,7 +188,7 @@ const Order = () => {
       >
         <Descriptions>
           <Descriptions.Item label={t('order.order.name')}>
-            {orderInfo?.subject ?? '--'}
+            {orderInfo?.workflow_name ?? '--'}
           </Descriptions.Item>
           <Descriptions.Item label={t('order.order.createUser')}>
             {orderInfo?.create_user_name}

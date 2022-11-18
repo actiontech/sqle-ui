@@ -12,7 +12,7 @@ const CommonTable: React.FC<ICommonTableProps> = ({
   return (
     <>
       <Table
-        rowKey="subject"
+        rowKey="workflow_name"
         bordered
         loading={tableInfo.loading}
         scroll={{ x: 'max-content' }}
