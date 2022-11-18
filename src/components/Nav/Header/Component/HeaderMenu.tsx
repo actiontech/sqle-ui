@@ -38,7 +38,7 @@ const HeaderMenu: React.FC = () => {
   const isActiveMenu = useCallback(
     (router: RouterItem<GlobalRouterItemKeyLiteral>) => {
       if (router.key === 'projectList' || router.key === 'projectDetail') {
-        return /^\/project\/.+/.test(location.pathname);
+        return /^\/project.*/.test(location.pathname);
       }
 
       return router.path === location.pathname;

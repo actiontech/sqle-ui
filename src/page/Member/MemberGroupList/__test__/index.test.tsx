@@ -32,7 +32,7 @@ jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn(),
 }));
-const projectName = mockBindProjects[0].projectName;
+const projectName = mockBindProjects[0].project_name;
 
 describe('test MemberGroupList', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
