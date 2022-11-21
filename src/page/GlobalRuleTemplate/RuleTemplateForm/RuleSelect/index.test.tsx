@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
 import { cloneDeep } from 'lodash';
 import RuleSelect from '.';
 import { IRuleResV1 } from '../../../../api/common';
@@ -7,7 +7,7 @@ import { renderWithTheme } from '../../../../testUtils/customRender';
 import { ThemeProvider } from '@material-ui/styles';
 import lightTheme from '../../../../theme/light';
 
-describe.skip('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
+describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });

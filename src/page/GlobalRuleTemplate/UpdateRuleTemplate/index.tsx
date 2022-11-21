@@ -93,7 +93,7 @@ const UpdateRuleTemplate = () => {
       <Card
         title={t('ruleTemplate.updateRuleTemplate.title')}
         extra={[
-          <Link to="/global/rule/template" key="back">
+          <Link to="/rule/template" key="back">
             <Button type="primary">{t('common.back')}</Button>
           </Link>,
         ]}
@@ -116,7 +116,7 @@ const UpdateRuleTemplate = () => {
             title={t('ruleTemplate.updateRuleTemplate.successTitle')}
           />
           <Row justify="center">
-            <Link to="/global/rule/template">
+            <Link to="/rule/template">
               <Button type="primary">{t('ruleTemplate.backToList')}</Button>
             </Link>
           </Row>

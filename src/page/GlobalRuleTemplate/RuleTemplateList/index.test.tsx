@@ -9,7 +9,7 @@ import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 import { ruleTemplateListData } from '../__testData__';
 
-describe.skip('RuleTemplate/RuleTemplateList', () => {
+describe('RuleTemplate/RuleTemplateList', () => {
   let mockDispatch: jest.Mock;
   let getRuleTemplateListSpy: jest.SpyInstance;
 
@@ -18,7 +18,7 @@ describe.skip('RuleTemplate/RuleTemplateList', () => {
     getRuleTemplateListSpy = mockGetRuleTemplateList();
     const { scopeDispatch } = mockUseDispatch();
     mockUseSelector({
-      ruleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
+      globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
       user: {
         role: SystemRole.admin,
       },
@@ -58,7 +58,7 @@ describe.skip('RuleTemplate/RuleTemplateList', () => {
           CLONE_RULE_TEMPLATE: false,
         },
       },
-      type: 'ruleTemplate/initModalStatus',
+      type: 'globalRuleTemplate/initModalStatus',
     });
     expect(container).toMatchSnapshot();
   });
@@ -115,14 +115,14 @@ describe.skip('RuleTemplate/RuleTemplateList', () => {
       payload: {
         ruleTemplate: ruleTemplateListData[0],
       },
-      type: 'ruleTemplate/updateSelectRuleTemplate',
+      type: 'globalRuleTemplate/updateGlobalSelectRuleTemplate',
     });
     expect(mockDispatch).nthCalledWith(2, {
       payload: {
         modalName: 'CLONE_RULE_TEMPLATE',
         status: true,
       },
-      type: 'ruleTemplate/updateModalStatus',
+      type: 'globalRuleTemplate/updateModalStatus',
     });
   });
 
@@ -140,7 +140,7 @@ describe.skip('RuleTemplate/RuleTemplateList', () => {
 
   test('should hide the creation button and the action column when the user role is not an admin', () => {
     mockUseSelector({
-      ruleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
+      globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
       user: {
         role: 'test',
       },
@@ -149,7 +149,7 @@ describe.skip('RuleTemplate/RuleTemplateList', () => {
     renderWithRouter(<RuleTemplateList />);
 
     expect(
-      screen.queryByText('ruleTemplate.createRuleTemplate.button')
+      screen.queryByText('globalRuleTemplate.createRuleTemplate.button')
     ).not.toBeInTheDocument();
 
     expect(screen.queryByText('common.operate')).not.toBeInTheDocument();
