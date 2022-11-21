@@ -434,7 +434,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/"
+                                href="/project/project1"
                               >
                                 project1
                               </a>
@@ -502,7 +502,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/"
+                                href="/project/project1"
                               >
                                 project1
                               </a>
@@ -570,7 +570,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/"
+                                href="/project/project1"
                               >
                                 project1
                               </a>
@@ -638,7 +638,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/"
+                                href="/project/project1"
                               >
                                 project1
                               </a>
@@ -706,7 +706,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/"
+                                href="/project/project1"
                               >
                                 project1
                               </a>
@@ -774,7 +774,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/"
+                                href="/project/project1"
                               >
                                 project1
                               </a>
@@ -842,7 +842,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/"
+                                href="/project/project1"
                               >
                                 project1
                               </a>
@@ -910,7 +910,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/"
+                                href="/project/project1"
                               >
                                 project1
                               </a>
@@ -978,7 +978,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/"
+                                href="/project/project1"
                               >
                                 project1
                               </a>
@@ -1046,7 +1046,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/"
+                                href="/project/project1"
                               >
                                 project1
                               </a>
