@@ -6,7 +6,14 @@ import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
 import { render, screen, waitFor } from '@testing-library/react';
 import { mockGetProjectDetail } from './Layout/__test__/utils';
 import { renderWithRouter } from '../../../testUtils/customRender';
-import { resolveErrorThreeSecond } from '../../../testUtils/mockRequest';
+import {
+  mockUseAuditPlanTypes,
+  mockUseInstance,
+  mockUseUsername,
+  resolveErrorThreeSecond,
+  resolveThreeSecond,
+} from '../../../testUtils/mockRequest';
+import workflow from '../../../api/workflow';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -18,10 +25,20 @@ describe('test ProjectManage/ProjectDetail', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
   let getProjectDetailSpy: jest.SpyInstance;
 
+  const mockGetWorkflows = () => {
+    const spy = jest.spyOn(workflow, 'getWorkflowsV1');
+    spy.mockImplementation(() => resolveThreeSecond([]));
+    return spy;
+  };
+
   beforeEach(() => {
     mockUseSelector({
       user: { role: SystemRole.admin, bindProjects: [] },
     });
+    mockUseAuditPlanTypes();
+    mockUseUsername();
+    mockUseInstance();
+    mockGetWorkflows();
     getProjectDetailSpy = mockGetProjectDetail();
 
     useParamsMock.mockReturnValue({ projectName });
@@ -52,6 +69,9 @@ describe('test ProjectManage/ProjectDetail', () => {
       project_name: projectName,
     });
     expect(container).toMatchSnapshot();
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
