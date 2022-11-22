@@ -69,11 +69,12 @@ describe('test ProjectManage/ProjectDetail', () => {
       project_name: projectName,
     });
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
     });
     expect(container).toMatchSnapshot();
   });
