@@ -10,15 +10,7 @@ Array [
       icon={<ForwardRef(BarsOutlined) />}
     >
       <Link
-        to={
-          Object {
-            "pathname": "/order",
-            "search": undefined,
-            "state": Object {
-              "projectName": "test",
-            },
-          }
-        }
+        to="/project/test/order"
       >
         menu.orderList
       </Link>
@@ -30,15 +22,7 @@ Array [
   >
     <MenuItem>
       <Link
-        to={
-          Object {
-            "pathname": "/auditPlan",
-            "search": undefined,
-            "state": Object {
-              "projectName": "test",
-            },
-          }
-        }
+        to="/project/test/auditPlan"
       >
         menu.auditPlaneList
       </Link>
@@ -48,15 +32,7 @@ Array [
     icon={<ForwardRef(DatabaseOutlined) />}
   >
     <Link
-      to={
-        Object {
-          "pathname": "/data",
-          "search": undefined,
-          "state": Object {
-            "projectName": "test",
-          },
-        }
-      }
+      to="/project/test/data"
     >
       menu.dataSource
     </Link>
@@ -65,15 +41,7 @@ Array [
     icon={<ForwardRef(UserOutlined) />}
   >
     <Link
-      to={
-        Object {
-          "pathname": "/member",
-          "search": undefined,
-          "state": Object {
-            "projectName": "test",
-          },
-        }
-      }
+      to="/project/test/member"
     >
       menu.member
     </Link>
@@ -82,15 +50,7 @@ Array [
     icon={<ForwardRef(AuditOutlined) />}
   >
     <Link
-      to={
-        Object {
-          "pathname": "/rule/template",
-          "search": undefined,
-          "state": Object {
-            "projectName": "test",
-          },
-        }
-      }
+      to="/project/test/rule/template"
     >
       menu.ruleTemplate
     </Link>
@@ -99,15 +59,7 @@ Array [
     icon={<ForwardRef(NodeIndexOutlined) />}
   >
     <Link
-      to={
-        Object {
-          "pathname": "/progress",
-          "search": undefined,
-          "state": Object {
-            "projectName": "test",
-          },
-        }
-      }
+      to="/project/test/progress"
     >
       menu.progressManage
     </Link>
@@ -116,15 +68,83 @@ Array [
     icon={<ForwardRef(ProfileOutlined) />}
   >
     <Link
-      to={
-        Object {
-          "pathname": "/whitelist",
-          "search": undefined,
-          "state": Object {
-            "projectName": "test",
-          },
-        }
-      }
+      to="/project/test/whitelist"
+    >
+      menu.whitelist
+    </Link>
+  </MenuItem>,
+]
+`;
+
+exports[`test ProjectManage/ProjectDetailLayout/index should match snapshot 2`] = `
+Array [
+  <SubMenu
+    icon={<ForwardRef(ConsoleSqlOutlined) />}
+    title="menu.order"
+  >
+    <MenuItem
+      icon={<ForwardRef(BarsOutlined) />}
+    >
+      <Link
+        to="/project/test/order"
+      >
+        menu.orderList
+      </Link>
+    </MenuItem>
+  </SubMenu>,
+  <SubMenu
+    icon={<ForwardRef(CiCircleOutlined) />}
+    title="menu.auditPlane"
+  >
+    <MenuItem>
+      <Link
+        to="/project/test/auditPlan"
+      >
+        menu.auditPlaneList
+      </Link>
+    </MenuItem>
+  </SubMenu>,
+  <MenuItem
+    icon={<ForwardRef(DatabaseOutlined) />}
+  >
+    <Link
+      to="/project/test/data"
+    >
+      menu.dataSource
+    </Link>
+  </MenuItem>,
+  <MenuItem
+    icon={<ForwardRef(UserOutlined) />}
+  >
+    <Link
+      to="/project/test/member"
+    >
+      menu.member
+    </Link>
+  </MenuItem>,
+  <MenuItem
+    icon={<ForwardRef(AuditOutlined) />}
+  >
+    <Link
+      to="/project/test/rule/template"
+    >
+      menu.ruleTemplate
+    </Link>
+  </MenuItem>,
+  <MenuItem
+    icon={<ForwardRef(NodeIndexOutlined) />}
+  >
+    <Link
+      to="/project/test/progress"
+    >
+      menu.progressManage
+    </Link>
+  </MenuItem>,
+  <MenuItem
+    icon={<ForwardRef(ProfileOutlined) />}
+  >
+    <Link
+      to="/project/test/whitelist"
     >
       menu.whitelist
     </Link>

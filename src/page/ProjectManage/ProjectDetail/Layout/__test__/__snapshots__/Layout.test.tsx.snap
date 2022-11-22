@@ -12,26 +12,6 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
       <div
         class="ant-layout-sider-children"
       >
-        <div
-          class="ant-spin ant-spin-spinning"
-        >
-          <span
-            class="ant-spin-dot ant-spin-dot-spin"
-          >
-            <i
-              class="ant-spin-dot-item"
-            />
-            <i
-              class="ant-spin-dot-item"
-            />
-            <i
-              class="ant-spin-dot-item"
-            />
-            <i
-              class="ant-spin-dot-item"
-            />
-          </span>
-        </div>
         <ul
           class="ant-menu ant-menu-root ant-menu-inline ant-menu-dark"
           data-menu-list="true"
@@ -39,7 +19,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
           tabindex="0"
         >
           <li
-            class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open ant-menu-submenu-selected"
+            class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open"
             role="none"
           >
             <div
@@ -95,7 +75,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
               id="rc-menu-uuid-test-order-popup"
             >
               <li
-                class="ant-menu-item ant-menu-item-selected"
+                class="ant-menu-item"
                 data-menu-id="rc-menu-uuid-test-orderList"
                 role="menuitem"
                 style="padding-left: 48px;"
@@ -124,7 +104,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
                   class="ant-menu-title-content"
                 >
                   <a
-                    href="/order"
+                    href="/project/test/order"
                   >
                     menu.orderList
                   </a>
@@ -133,12 +113,12 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
             </ul>
           </li>
           <li
-            class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open"
+            class="ant-menu-submenu ant-menu-submenu-inline"
             role="none"
           >
             <div
               aria-controls="rc-menu-uuid-test-plane-popup"
-              aria-expanded="true"
+              aria-expanded="false"
               aria-haspopup="true"
               class="ant-menu-submenu-title"
               data-menu-id="rc-menu-uuid-test-plane"
@@ -174,29 +154,6 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
                 class="ant-menu-submenu-arrow"
               />
             </div>
-            <ul
-              class="ant-menu ant-menu-sub ant-menu-inline"
-              data-menu-list="true"
-              id="rc-menu-uuid-test-plane-popup"
-            >
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlan"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan"
-                  >
-                    menu.auditPlaneList
-                  </a>
-                </span>
-              </li>
-            </ul>
           </li>
           <li
             class="ant-menu-item"
@@ -228,7 +185,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
               class="ant-menu-title-content"
             >
               <a
-                href="/data"
+                href="/project/test/data"
               >
                 menu.dataSource
               </a>
@@ -264,7 +221,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
               class="ant-menu-title-content"
             >
               <a
-                href="/member"
+                href="/project/test/member"
               >
                 menu.member
               </a>
@@ -300,7 +257,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
               class="ant-menu-title-content"
             >
               <a
-                href="/rule/template"
+                href="/project/test/rule/template"
               >
                 menu.ruleTemplate
               </a>
@@ -339,7 +296,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
               class="ant-menu-title-content"
             >
               <a
-                href="/progress"
+                href="/project/test/progress"
               >
                 menu.progressManage
               </a>
@@ -375,7 +332,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
               class="ant-menu-title-content"
             >
               <a
-                href="/whitelist"
+                href="/project/test/whitelist"
               >
                 menu.whitelist
               </a>
@@ -409,32 +366,6 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
       <div
         class="ant-layout-sider-children"
       >
-        <div
-          class="project-info-wrapper"
-        >
-          <span
-            class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white title"
-          >
-            <strong>
-              project1
-            </strong>
-          </span>
-          <span
-            class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white detail"
-          >
-            projectManage.projectInfoBox.desc
-          </span>
-          <span
-            class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white detail"
-          >
-            projectManage.projectInfoBox.createTime
-          </span>
-          <span
-            class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white detail"
-          >
-            projectManage.projectInfoBox.createUser
-          </span>
-        </div>
         <ul
           class="ant-menu ant-menu-root ant-menu-inline ant-menu-dark"
           data-menu-list="true"
@@ -442,7 +373,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
           tabindex="0"
         >
           <li
-            class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open ant-menu-submenu-selected"
+            class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open"
             role="none"
           >
             <div
@@ -498,7 +429,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
               id="rc-menu-uuid-test-order-popup"
             >
               <li
-                class="ant-menu-item ant-menu-item-selected"
+                class="ant-menu-item"
                 data-menu-id="rc-menu-uuid-test-orderList"
                 role="menuitem"
                 style="padding-left: 48px;"
@@ -527,7 +458,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
                   class="ant-menu-title-content"
                 >
                   <a
-                    href="/order"
+                    href="/project/test/order"
                   >
                     menu.orderList
                   </a>
@@ -536,12 +467,12 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
             </ul>
           </li>
           <li
-            class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open"
+            class="ant-menu-submenu ant-menu-submenu-inline"
             role="none"
           >
             <div
               aria-controls="rc-menu-uuid-test-plane-popup"
-              aria-expanded="true"
+              aria-expanded="false"
               aria-haspopup="true"
               class="ant-menu-submenu-title"
               data-menu-id="rc-menu-uuid-test-plane"
@@ -577,216 +508,6 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
                 class="ant-menu-submenu-arrow"
               />
             </div>
-            <ul
-              class="ant-menu ant-menu-sub ant-menu-inline"
-              data-menu-list="true"
-              id="rc-menu-uuid-test-plane-popup"
-            >
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlan"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan"
-                  >
-                    menu.auditPlaneList
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlandefault"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=default"
-                  >
-                    自定义
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlanmysql_slow_log"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=mysql_slow_log"
-                  >
-                    慢日志
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlanmysql_mybatis"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=mysql_mybatis"
-                  >
-                    Mybatis 扫描
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlanmysql_schema_meta"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=mysql_schema_meta"
-                  >
-                    库表元数据
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlanali_rds_mysql_slow_log"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=ali_rds_mysql_slow_log"
-                  >
-                    阿里RDS MySQL慢日志
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlanali_rds_mysql_audit_log"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=ali_rds_mysql_audit_log"
-                  >
-                    阿里RDS MySQL审计日志
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlanoracle_top_sql"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=oracle_top_sql"
-                  >
-                    Oracle TOP SQL
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlanall_app_extract"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=all_app_extract"
-                  >
-                    应用程序SQL抓取
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlantidb_audit_log"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=tidb_audit_log"
-                  >
-                    TiDB审计日志
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlanocean_base_for_mysql_mybatis"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=ocean_base_for_mysql_mybatis"
-                  >
-                    Mybatis 扫描
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlanocean_base_for_mysql_top_sql"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=ocean_base_for_mysql_top_sql"
-                  >
-                    Top SQL
-                  </a>
-                </span>
-              </li>
-            </ul>
           </li>
           <li
             class="ant-menu-item"
@@ -818,7 +539,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
               class="ant-menu-title-content"
             >
               <a
-                href="/data"
+                href="/project/test/data"
               >
                 menu.dataSource
               </a>
@@ -854,7 +575,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
               class="ant-menu-title-content"
             >
               <a
-                href="/member"
+                href="/project/test/member"
               >
                 menu.member
               </a>
@@ -890,7 +611,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
               class="ant-menu-title-content"
             >
               <a
-                href="/rule/template"
+                href="/project/test/rule/template"
               >
                 menu.ruleTemplate
               </a>
@@ -929,7 +650,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
               class="ant-menu-title-content"
             >
               <a
-                href="/progress"
+                href="/project/test/progress"
               >
                 menu.progressManage
               </a>
@@ -965,7 +686,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
               class="ant-menu-title-content"
             >
               <a
-                href="/whitelist"
+                href="/project/test/whitelist"
               >
                 menu.whitelist
               </a>
@@ -999,32 +720,6 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
       <div
         class="ant-layout-sider-children"
       >
-        <div
-          class="project-info-wrapper"
-        >
-          <span
-            class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white title"
-          >
-            <strong>
-              project1
-            </strong>
-          </span>
-          <span
-            class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white detail"
-          >
-            projectManage.projectInfoBox.desc
-          </span>
-          <span
-            class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white detail"
-          >
-            projectManage.projectInfoBox.createTime
-          </span>
-          <span
-            class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line text-white detail"
-          >
-            projectManage.projectInfoBox.createUser
-          </span>
-        </div>
         <ul
           class="ant-menu ant-menu-root ant-menu-inline ant-menu-dark"
           data-menu-list="true"
@@ -1032,7 +727,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
           tabindex="0"
         >
           <li
-            class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open ant-menu-submenu-selected"
+            class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open"
             role="none"
           >
             <div
@@ -1088,7 +783,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
               id="rc-menu-uuid-test-order-popup"
             >
               <li
-                class="ant-menu-item ant-menu-item-selected"
+                class="ant-menu-item"
                 data-menu-id="rc-menu-uuid-test-orderList"
                 role="menuitem"
                 style="padding-left: 48px;"
@@ -1117,7 +812,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
                   class="ant-menu-title-content"
                 >
                   <a
-                    href="/order"
+                    href="/project/test/order"
                   >
                     menu.orderList
                   </a>
@@ -1126,12 +821,12 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
             </ul>
           </li>
           <li
-            class="ant-menu-submenu ant-menu-submenu-inline ant-menu-submenu-open"
+            class="ant-menu-submenu ant-menu-submenu-inline"
             role="none"
           >
             <div
               aria-controls="rc-menu-uuid-test-plane-popup"
-              aria-expanded="true"
+              aria-expanded="false"
               aria-haspopup="true"
               class="ant-menu-submenu-title"
               data-menu-id="rc-menu-uuid-test-plane"
@@ -1167,216 +862,6 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
                 class="ant-menu-submenu-arrow"
               />
             </div>
-            <ul
-              class="ant-menu ant-menu-sub ant-menu-inline"
-              data-menu-list="true"
-              id="rc-menu-uuid-test-plane-popup"
-            >
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlan"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan"
-                  >
-                    menu.auditPlaneList
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlandefault"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=default"
-                  >
-                    自定义
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlanmysql_slow_log"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=mysql_slow_log"
-                  >
-                    慢日志
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlanmysql_mybatis"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=mysql_mybatis"
-                  >
-                    Mybatis 扫描
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlanmysql_schema_meta"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=mysql_schema_meta"
-                  >
-                    库表元数据
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlanali_rds_mysql_slow_log"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=ali_rds_mysql_slow_log"
-                  >
-                    阿里RDS MySQL慢日志
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlanali_rds_mysql_audit_log"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=ali_rds_mysql_audit_log"
-                  >
-                    阿里RDS MySQL审计日志
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlanoracle_top_sql"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=oracle_top_sql"
-                  >
-                    Oracle TOP SQL
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlanall_app_extract"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=all_app_extract"
-                  >
-                    应用程序SQL抓取
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlantidb_audit_log"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=tidb_audit_log"
-                  >
-                    TiDB审计日志
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlanocean_base_for_mysql_mybatis"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=ocean_base_for_mysql_mybatis"
-                  >
-                    Mybatis 扫描
-                  </a>
-                </span>
-              </li>
-              <li
-                class="ant-menu-item ant-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-auditPlanocean_base_for_mysql_top_sql"
-                role="menuitem"
-                style="padding-left: 48px;"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-menu-title-content"
-                >
-                  <a
-                    href="/auditPlan?type=ocean_base_for_mysql_top_sql"
-                  >
-                    Top SQL
-                  </a>
-                </span>
-              </li>
-            </ul>
           </li>
           <li
             class="ant-menu-item"
@@ -1408,7 +893,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
               class="ant-menu-title-content"
             >
               <a
-                href="/data"
+                href="/project/test/data"
               >
                 menu.dataSource
               </a>
@@ -1444,7 +929,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
               class="ant-menu-title-content"
             >
               <a
-                href="/member"
+                href="/project/test/member"
               >
                 menu.member
               </a>
@@ -1480,7 +965,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
               class="ant-menu-title-content"
             >
               <a
-                href="/rule/template"
+                href="/project/test/rule/template"
               >
                 menu.ruleTemplate
               </a>
@@ -1519,7 +1004,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
               class="ant-menu-title-content"
             >
               <a
-                href="/progress"
+                href="/project/test/progress"
               >
                 menu.progressManage
               </a>
@@ -1555,7 +1040,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
               class="ant-menu-title-content"
             >
               <a
-                href="/whitelist"
+                href="/project/test/whitelist"
               >
                 menu.whitelist
               </a>
