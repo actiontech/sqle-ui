@@ -18,6 +18,7 @@ export type AuditResultProps = {
   auditScore?: number;
   instanceSchema?: string;
   updateTaskRecordTotalNum?: (taskId: string, sqlNumber: number) => void;
+  projectName: string;
 };
 
 export interface AuditResultCollectionProps {

@@ -14,8 +14,6 @@ import {
   IGetAuditPlansV1Return,
   ICreateAuditPlanV1Params,
   ICreateAuditPlanV1Return,
-  IGetTaskAnalysisDataParams,
-  IGetTaskAnalysisDataReturn,
   IGetAuditPlanV1Params,
   IGetAuditPlanV1Return,
   IDeleteAuditPlanV1Params,
@@ -34,6 +32,8 @@ import {
   IGetAuditPlanReportV1Return,
   IGetAuditPlanReportsSQLsV1Params,
   IGetAuditPlanReportsSQLsV1Return,
+  IGetTaskAnalysisDataParams,
+  IGetTaskAnalysisDataReturn,
   IGetAuditPlanSQLsV1Params,
   IGetAuditPlanSQLsV1Return,
   IFullSyncAuditPlanSQLsV1Params,
@@ -90,27 +90,6 @@ class AuditPlanService extends ServiceBase {
 
     return this.post<ICreateAuditPlanV1Return>(
       `/v1/projects/${project_name}/audit_plans`,
-      paramsData,
-      options
-    );
-  }
-
-  public getTaskAnalysisData(
-    params: IGetTaskAnalysisDataParams,
-    options?: AxiosRequestConfig
-  ) {
-    const paramsData = this.cloneDeep(params);
-    const project_name = paramsData.project_name;
-    delete paramsData.project_name;
-
-    const audit_plan_report_id = paramsData.audit_plan_report_id;
-    delete paramsData.audit_plan_report_id;
-
-    const number = paramsData.number;
-    delete paramsData.number;
-
-    return this.get<IGetTaskAnalysisDataReturn>(
-      `/v1/projects/${project_name}/audit_plans/reports/${audit_plan_report_id}/sqls/${number}/analysis`,
       paramsData,
       options
     );
@@ -279,6 +258,30 @@ class AuditPlanService extends ServiceBase {
 
     return this.get<IGetAuditPlanReportsSQLsV1Return>(
       `/v1/projects/${project_name}/audit_plans/${audit_plan_name}/reports/${audit_plan_report_id}/sqls`,
+      paramsData,
+      options
+    );
+  }
+
+  public getTaskAnalysisData(
+    params: IGetTaskAnalysisDataParams,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    const audit_plan_name = paramsData.audit_plan_name;
+    delete paramsData.audit_plan_name;
+
+    const audit_plan_report_id = paramsData.audit_plan_report_id;
+    delete paramsData.audit_plan_report_id;
+
+    const number = paramsData.number;
+    delete paramsData.number;
+
+    return this.get<IGetTaskAnalysisDataReturn>(
+      `/v1/projects/${project_name}/audit_plans/${audit_plan_name}/reports/${audit_plan_report_id}/sqls/${number}/analysis`,
       paramsData,
       options
     );

@@ -51,7 +51,9 @@ const AuditPlanReport: React.FC = () => {
   );
 
   const handleClickAnalyze = (sqlNumber: number) => {
-    window.open(`/auditPlan/${urlParams.reportId}/${sqlNumber}/analyze`);
+    window.open(
+      `/project/${projectName}/auditPlan/${urlParams.reportId}/${sqlNumber}/${urlParams.auditPlanName}/analyze`
+    );
   };
 
   return (

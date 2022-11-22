@@ -1,9 +1,8 @@
 import { FormInstance } from 'antd';
-import { IGetSQLResultResDataV1, ISQLExplain } from '../../api/common';
+import { ISQLExplain } from '../../api/common';
 
 export type SqlQueryResultType = {
   sqlQueryId: string;
-  resultItem: IGetSQLResultResDataV1;
   hide: boolean;
   errorMessage: string;
 };

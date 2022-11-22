@@ -93,7 +93,9 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
   };
 
   const handleClickAnalyze = (sqlNum: number) => {
-    window.open(`/order/${props.taskId}/${sqlNum}/analyze`);
+    window.open(
+      `/project/${props.projectName}/order/${props.taskId}/${sqlNum}/analyze`
+    );
   };
 
   useEffect(() => {

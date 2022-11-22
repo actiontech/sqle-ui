@@ -8,9 +8,10 @@ import { WhitelistMatchTypeLabel } from '../WhitelistForm';
 
 export const WhitelistColumn = (
   updateWhitelist: (whitelist: IAuditWhitelistResV1) => void,
-  deleteWhitelist: (whitelistId: number) => void
-): TableColumn<IAuditWhitelistResV1, 'operate'> => {
-  return [
+  deleteWhitelist: (whitelistId: number) => void,
+  actionPermission: boolean
+): TableColumn<IAuditWhitelistResV1, 'operator'> => {
+  const columns: TableColumn<IAuditWhitelistResV1, 'operator'> = [
     {
       dataIndex: 'value',
       title: () => i18n.t('whitelist.table.sql'),
@@ -40,7 +41,7 @@ export const WhitelistColumn = (
       },
     },
     {
-      dataIndex: 'operate',
+      dataIndex: 'operator',
       title: () => i18n.t('common.operate'),
       render: (_, record) => (
         <Space>
@@ -67,4 +68,10 @@ export const WhitelistColumn = (
       ),
     },
   ];
+
+  if (!actionPermission) {
+    return columns.filter((v) => v.dataIndex !== 'operator');
+  }
+
+  return columns;
 };
