@@ -24,7 +24,7 @@ jest.mock('react-router', () => {
   };
 });
 
-describe.skip('UpdateRuleTemplate', () => {
+describe('UpdateRuleTemplate', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
   beforeEach(() => {
     jest.useFakeTimers();
