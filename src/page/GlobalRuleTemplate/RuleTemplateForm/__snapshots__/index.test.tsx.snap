@@ -903,6 +903,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  annotation1
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -985,6 +995,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 存在多条对同一个表的修改语句，建议合并成一个ALTER语句
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  annotation2
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -1067,6 +1087,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 建议使用规定的数据库排序规则
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -1158,6 +1188,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 BLOB 和 TEXT 类型的字段不可指定非 NULL 的默认值
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -1240,6 +1280,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 不建议使用 BLOB 或 TEXT 类型
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -1322,6 +1372,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 BLOB 和 TEXT 类型的字段不建议设置为 NOT NULL
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -1404,6 +1464,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 char长度大于20时，必须使用varchar类型
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -1486,6 +1556,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 不建议使用 ENUM 类型
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -1568,6 +1648,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 不建议使用 SET 类型
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -1650,6 +1740,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 timestamp 类型的列必须添加默认值
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -1732,6 +1832,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 禁止使用 varchar(max)
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -1814,6 +1924,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 列建议添加注释
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -1896,6 +2016,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 除了自增列及大字段列之外，每个列都必须添加默认值
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -1978,6 +2108,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 复合索引的列数量不建议超过阈值
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -2069,6 +2209,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 禁止使用自定义函数
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -2151,6 +2301,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 禁止使用存储过程
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -2233,6 +2393,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 禁止使用触发器
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -2315,6 +2485,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 禁止使用视图
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -2397,6 +2577,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 数据库名称建议以"_DB"结尾
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -2479,6 +2669,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 精确浮点数建议使用DECIMAL
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -2561,6 +2761,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 禁止将blob类型的列加入索引
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -2643,6 +2853,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 索引个数建议不超过阈值
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -2734,6 +2954,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 建议选择可选性超过阈值字段作为索引
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -2825,6 +3055,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 普通索引必须要以"idx_"为前缀
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -2907,6 +3147,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 建议创建约束前,先行创建索引
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -2989,6 +3239,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 使用LIMIT分页时,避免使用LIMIT M,N
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -3071,6 +3331,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 表名、列名、索引名的长度不能大于64字节
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -3153,6 +3423,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 数据库对象命名不能使用英文、下划线、数字之外的字符
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -3235,6 +3515,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 数据库对象命名禁止使用关键字
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -3317,6 +3607,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 建议主键命名为"PK_表名"
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -3399,6 +3699,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 表必须有主键
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -3481,6 +3791,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 主键禁止使用自增
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -3563,6 +3883,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 主键建议使用自增
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -3645,6 +3975,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 主键建议使用 bigint 无符号类型，即 bigint unsigned
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -3727,6 +4067,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 不建议使用分区表相关功能
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -3809,6 +4159,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 表建议添加注释
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -3891,6 +4251,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 新建表必须加入if not exists create，保证重复执行不报错
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -3973,6 +4343,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 建议使用Innodb引擎,utf8mb4字符集
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -4055,6 +4435,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 事物隔离级别建议设置成RC
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -4137,6 +4527,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 unique索引名必须使用 IDX_UK_表名_字段名
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -4219,6 +4619,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 unique索引必须要以"uniq_"为前缀
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -4301,6 +4711,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 禁止除索引外的drop操作
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -4383,6 +4803,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 禁止使用外键
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -4462,6 +4892,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 改表时，表空间超过指定大小(MB)审核时输出osc改写建议
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -4553,6 +4993,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 单条insert语句，建议批量插入不超过阈值
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -4641,6 +5091,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 查询的扫描不建议超过指定行数（默认值：10000）
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -4729,6 +5189,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 该查询使用了文件排序
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -4808,6 +5278,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 该查询使用了临时表
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -4890,6 +5370,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 禁止使用全模糊搜索或左模糊搜索
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -4972,6 +5462,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 insert 语句必须指定column
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -5054,6 +5554,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 建议使用UNION ALL,替代UNION
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -5136,6 +5646,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 delete/update 语句必须有limit条件
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -5218,6 +5738,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 避免使用不必要的内置函数
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -5309,6 +5839,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 使用JOIN连接表查询建议不超过阈值
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -5400,6 +5940,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 建议避免使用select for update
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -5482,6 +6032,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 避免对条件字段使用函数操作
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -5564,6 +6124,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 条件字段存在数值和字符的隐式转换
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -5646,6 +6216,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 不建议对条件字段使用负向查询
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -5728,6 +6308,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 不建议对条件字段使用 NULL 值判断
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -5810,6 +6400,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 避免使用标量子查询
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -5892,6 +6492,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 delete/update 语句不能有limit条件
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -5974,6 +6584,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 delete/update 语句不能有order by
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -6056,6 +6676,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 不建议使用select *
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -6138,6 +6768,16 @@ exports[`RuleTemplate/RuleTemplateForm should match snapshot 1`] = `
                               >
                                 在 DML 语句中预计影响行数超过指定值则不回滚
                               </h4>
+                              <div
+                                class="ant-list-item-meta-description"
+                              >
+                                <span
+                                  class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                                  style="max-width: 500px;"
+                                >
+                                  
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <div

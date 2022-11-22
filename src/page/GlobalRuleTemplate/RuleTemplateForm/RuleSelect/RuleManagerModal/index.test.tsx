@@ -34,6 +34,12 @@ describe('RuleSelect/RuleManagerModal', () => {
     expect(screen.getByLabelText('ruleTemplate.editModal.rule')).toBeDisabled();
 
     expect(
+      screen.getByLabelText('ruleTemplate.editModal.annotation')
+    ).toHaveValue(ruleData.annotation);
+    expect(
+      screen.getByLabelText('ruleTemplate.editModal.annotation')
+    ).toBeDisabled();
+    expect(
       screen.getByLabelText('ruleTemplate.editModal.ruleTypeLabel')
     ).toHaveValue(ruleData.type);
     expect(
@@ -85,6 +91,7 @@ describe('RuleSelect/RuleManagerModal', () => {
       type: 'DDL规范',
       db_type: 'mysql',
       params: undefined,
+      annotation: 'annotation',
     });
   });
 

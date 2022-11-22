@@ -1,4 +1,4 @@
-import { Col, List, Tabs } from 'antd';
+import { Col, List, Tabs, Tooltip, Typography } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RuleListDefaultTabKey } from '../../data/common';
@@ -79,6 +79,17 @@ const RuleList: React.FC<RuleListProps> = (props) => {
                   <List.Item.Meta
                     avatar={<RuleLevelIcon ruleLevel={item.level} />}
                     title={item.desc}
+                    description={
+                      <Tooltip title={item.annotation}>
+                        <Typography.Text
+                          ellipsis={true}
+                          type="secondary"
+                          style={{ maxWidth: 500 }}
+                        >
+                          {item.annotation}
+                        </Typography.Text>
+                      </Tooltip>
+                    }
                   />
                   <Col flex="20%">
                     {item.params &&
