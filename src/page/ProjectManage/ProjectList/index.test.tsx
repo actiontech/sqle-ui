@@ -8,7 +8,7 @@ import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
 import EventEmitter from '../../../utils/EventEmitter';
 import { mockDeleteProject, mockGetProjectList } from '../__test__/utils';
 
-describe.skip('test ProjectManage/ProjectList', () => {
+describe('test ProjectManage/ProjectList', () => {
   let getProjectListSpy: jest.SpyInstance;
   let deleteProjectList: jest.SpyInstance;
   let dispatchSpy: jest.SpyInstance;

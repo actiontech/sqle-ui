@@ -23,7 +23,6 @@ const ProjectDetail: React.FC = () => {
       ready: !!projectName && bindProjects.length > 0,
     }
   );
-
   const renderProjectDetail = () => {
     /**
      * todo 临时处理
@@ -52,7 +51,6 @@ const ProjectDetail: React.FC = () => {
         />
       );
     }
-
     if (!data?.data.data) {
       return (
         <Result

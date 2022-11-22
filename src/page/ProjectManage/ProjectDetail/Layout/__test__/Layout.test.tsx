@@ -1,4 +1,4 @@
-import { cleanup, waitFor } from '@testing-library/react';
+import { cleanup, fireEvent, screen, waitFor } from '@testing-library/react';
 import ProjectDetailLayout from '..';
 import { SystemRole } from '../../../../../data/common';
 import {
@@ -6,32 +6,25 @@ import {
   renderWithServerRouter,
 } from '../../../../../testUtils/customRender';
 import { mockUseSelector } from '../../../../../testUtils/mockRedux';
-import { mockUseAuditPlanTypes } from '../../../../../testUtils/mockRequest';
+import {
+  AuditPlanTypesData,
+  mockUseAuditPlanTypes,
+} from '../../../../../testUtils/mockRequest';
 import { createMemoryHistory } from 'history';
 import { getBySelector } from '../../../../../testUtils/customQuery';
 import { mockGetProjectDetail } from './utils';
-import { useLocation } from 'react-router-dom';
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useLocation: jest.fn(),
-}));
-
-describe.skip('test ProjectManage/ProjectDetailLayout', () => {
+describe('test ProjectManage/ProjectDetailLayout', () => {
   const projectName = 'test';
   const children = <>children</>;
   let useSelectorSpy: jest.SpyInstance;
   let useAuditPlanTypesSpy: jest.SpyInstance;
-  const useLocationMock: jest.Mock = useLocation as jest.Mock;
 
   beforeEach(() => {
     mockGetProjectDetail();
     useSelectorSpy = mockUseSelector();
     useAuditPlanTypesSpy = mockUseAuditPlanTypes();
     jest.useFakeTimers();
-    useLocationMock.mockImplementation(() => {
-      return { state: { projectName: 'test' }, pathname: '/order' };
-    });
   });
 
   afterEach(() => {
@@ -86,9 +79,28 @@ describe.skip('test ProjectManage/ProjectDetailLayout', () => {
       jest.advanceTimersByTime(3000);
     });
 
-    history.push('/order');
+    history.push(`/project/${projectName}/order`);
     expect(getBySelector('.ant-menu-item-selected')).toHaveTextContent(
       'menu.order'
+    );
+
+    fireEvent.click(screen.getByText('menu.auditPlane'));
+
+    history.push(`/project/${projectName}/auditPlan`);
+    expect(getBySelector('.ant-menu-item-selected')).toHaveTextContent(
+      'menu.auditPlaneList'
+    );
+    history.push(
+      `/project/${projectName}/auditPlan?type=${AuditPlanTypesData[0].type}`
+    );
+    expect(getBySelector('.ant-menu-item-selected')).toHaveTextContent(
+      AuditPlanTypesData[0].desc
+    );
+    history.push(
+      `/project/${projectName}/auditPlan?type=${AuditPlanTypesData[1].type}`
+    );
+    expect(getBySelector('.ant-menu-item-selected')).toHaveTextContent(
+      AuditPlanTypesData[1].desc
     );
   });
 });
