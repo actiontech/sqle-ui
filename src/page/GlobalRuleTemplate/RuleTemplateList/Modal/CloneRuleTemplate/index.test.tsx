@@ -15,7 +15,7 @@ import {
 import EventEmitter from '../../../../../utils/EventEmitter';
 import { ruleTemplateListData } from '../../../__testData__';
 
-describe.skip('RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal', () => {
+describe('RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal', () => {
   let mockDispatch: jest.Mock;
 
   beforeEach(() => {
@@ -23,9 +23,9 @@ describe.skip('RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal', () =
     const { scopeDispatch } = mockUseDispatch();
     mockUseInstance();
     mockUseSelector({
-      ruleTemplate: {
+      globalRuleTemplate: {
         modalStatus: { [ModalName.Clone_Rule_Template]: true },
-        selectRuleTemplate: ruleTemplateListData[0],
+        selectGlobalRuleTemplate: ruleTemplateListData[0],
       },
     });
     mockDispatch = scopeDispatch;
@@ -50,9 +50,9 @@ describe.skip('RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal', () =
     expect(nullElement).toMatchSnapshot();
     cleanup();
     mockUseSelector({
-      ruleTemplate: {
+      globalRuleTemplate: {
         modalStatus: { [ModalName.Clone_Rule_Template]: false },
-        selectRuleTemplate: ruleTemplateListData[0],
+        selectGlobalRuleTemplate: ruleTemplateListData[0],
       },
     });
     const { baseElement } = renderWithRouter(<CloneRuleTemplateModal />);
@@ -75,7 +75,7 @@ describe.skip('RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal', () =
         modalName: 'CLONE_RULE_TEMPLATE',
         status: false,
       },
-      type: 'ruleTemplate/updateModalStatus',
+      type: 'globalRuleTemplate/updateModalStatus',
     });
   });
 
@@ -129,7 +129,7 @@ describe.skip('RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal', () =
         modalName: 'CLONE_RULE_TEMPLATE',
         status: false,
       },
-      type: 'ruleTemplate/updateModalStatus',
+      type: 'globalRuleTemplate/updateModalStatus',
     });
   });
 });

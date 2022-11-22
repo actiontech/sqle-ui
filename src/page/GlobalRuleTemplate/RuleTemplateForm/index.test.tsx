@@ -6,7 +6,7 @@ import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
 import { allRulesWithType } from '../../Rule/__testData__';
 import { mockDriver } from '../../../testUtils/mockRequest';
 
-describe.skip('RuleTemplate/RuleTemplateForm', () => {
+describe('RuleTemplate/RuleTemplateForm', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockDriver();
