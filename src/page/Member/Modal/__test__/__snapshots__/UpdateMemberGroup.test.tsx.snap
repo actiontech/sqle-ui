@@ -337,13 +337,13 @@ exports[`test UpdateMemberGroup should match snapshot 1`] = `
                     </div>
                   </div>
                   <div
-                    class="ant-col ant-col-10 ant-col-offset-1"
+                    class="ant-col ant-col-10"
                   >
                     <div
                       class="ant-row ant-form-item"
                     >
                       <div
-                        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-9"
                       >
                         <label
                           class="ant-form-item-required"
@@ -354,7 +354,7 @@ exports[`test UpdateMemberGroup should match snapshot 1`] = `
                         </label>
                       </div>
                       <div
-                        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-10"
+                        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-11"
                       >
                         <div
                           class="ant-form-item-control-input"
@@ -680,13 +680,13 @@ exports[`test UpdateMemberGroup should match snapshot 1`] = `
                     </div>
                   </div>
                   <div
-                    class="ant-col ant-col-10 ant-col-offset-1"
+                    class="ant-col ant-col-10"
                   >
                     <div
                       class="ant-row ant-form-item"
                     >
                       <div
-                        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-9"
                       >
                         <label
                           class="ant-form-item-required"
@@ -697,7 +697,7 @@ exports[`test UpdateMemberGroup should match snapshot 1`] = `
                         </label>
                       </div>
                       <div
-                        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-10"
+                        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-11"
                       >
                         <div
                           class="ant-form-item-control-input"
@@ -1023,13 +1023,13 @@ exports[`test UpdateMemberGroup should match snapshot 1`] = `
                     </div>
                   </div>
                   <div
-                    class="ant-col ant-col-10 ant-col-offset-1"
+                    class="ant-col ant-col-10"
                   >
                     <div
                       class="ant-row ant-form-item"
                     >
                       <div
-                        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-9"
                       >
                         <label
                           class="ant-form-item-required"
@@ -1040,7 +1040,7 @@ exports[`test UpdateMemberGroup should match snapshot 1`] = `
                         </label>
                       </div>
                       <div
-                        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-10"
+                        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-11"
                       >
                         <div
                           class="ant-form-item-control-input"
@@ -1366,13 +1366,13 @@ exports[`test UpdateMemberGroup should match snapshot 1`] = `
                     </div>
                   </div>
                   <div
-                    class="ant-col ant-col-10 ant-col-offset-1"
+                    class="ant-col ant-col-10"
                   >
                     <div
                       class="ant-row ant-form-item"
                     >
                       <div
-                        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-9"
                       >
                         <label
                           class="ant-form-item-required"
@@ -1383,7 +1383,7 @@ exports[`test UpdateMemberGroup should match snapshot 1`] = `
                         </label>
                       </div>
                       <div
-                        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-10"
+                        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-11"
                       >
                         <div
                           class="ant-form-item-control-input"

@@ -9,7 +9,7 @@ export default {
 
     tableColumn: {
       username: '用户名',
-      role: '角色',
+      role: '权限 (格式 数据源: [角色1,角色2 ...])',
       isManager: '项目管理员',
       confirmTitle: '确定要删除成员:{{name}}?',
     },
@@ -27,7 +27,7 @@ export default {
 
     tableColumn: {
       userGroupName: '用户组名',
-      role: '角色',
+      role: '权限 (格式 数据源: [角色1,角色2 ...])',
       confirmTitle: '确定要删除成员组:{{name}}?',
     },
 
