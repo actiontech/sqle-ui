@@ -9,7 +9,7 @@ import {
 } from '../../SqlQuery/__testData__';
 import useSQLExecPlan from './useSQLExecPlan';
 
-describe('useSQLExecPlan', () => {
+describe.skip('useSQLExecPlan', () => {
   // eslint-disable-next-line no-console
   const error = console.error;
 

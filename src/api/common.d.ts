@@ -947,14 +947,6 @@ export interface IGetSQLEInfoResV1 {
   version?: string;
 }
 
-export interface IGetSQLExplainResV1 {
-  code?: number;
-
-  data?: ISQLQuerySQLExplain[];
-
-  message?: string;
-}
-
 export interface IGetSQLQueryConfigurationResDataV1 {
   enable_sql_query?: boolean;
 
@@ -965,44 +957,6 @@ export interface IGetSQLQueryConfigurationResV1 {
   code?: number;
 
   data?: IGetSQLQueryConfigurationResDataV1;
-
-  message?: string;
-}
-
-export interface IGetSQLQueryHistoryResDataV1 {
-  sql_histories?: ISQLHistoryItemResV1[];
-}
-
-export interface IGetSQLQueryHistoryResV1 {
-  code?: number;
-
-  data?: IGetSQLQueryHistoryResDataV1;
-
-  message?: string;
-}
-
-export interface IGetSQLResultResDataV1 {
-  current_page?: number;
-
-  end_line?: number;
-
-  execution_time?: number;
-
-  head?: ISQLResultItemHeadResV1[];
-
-  rows?: Array<{
-    [key: string]: string;
-  }>;
-
-  sql?: string;
-
-  start_line?: number;
-}
-
-export interface IGetSQLResultResV1 {
-  code?: number;
-
-  data?: IGetSQLResultResDataV1;
 
   message?: string;
 }
@@ -1021,12 +975,6 @@ export interface IGetSqlExecutionFailPercentResV1 {
   data?: ISqlExecutionFailPercent[];
 
   message?: string;
-}
-
-export interface IGetSqlExplainReqV1 {
-  instance_schema?: string;
-
-  sql?: string;
 }
 
 export interface IGetSystemVariablesResV1 {
@@ -1507,30 +1455,6 @@ export interface IPatchUserGroupReqV1 {
   user_name_list?: string[];
 }
 
-export interface IPrepareSQLQueryReqV1 {
-  instance_schema?: string;
-
-  sql?: string;
-}
-
-export interface IPrepareSQLQueryResDataV1 {
-  query_ids?: IPrepareSQLQueryResSQLV1[];
-}
-
-export interface IPrepareSQLQueryResSQLV1 {
-  query_id?: string;
-
-  sql?: string;
-}
-
-export interface IPrepareSQLQueryResV1 {
-  code?: number;
-
-  data?: IPrepareSQLQueryResDataV1;
-
-  message?: string;
-}
-
 export interface IProjectDetailItem {
   create_time?: string;
 
@@ -1685,10 +1609,6 @@ export interface ISQLExplain {
   sql?: string;
 }
 
-export interface ISQLHistoryItemResV1 {
-  sql?: string;
-}
-
 export interface ISQLQueryConfigReqV1 {
   allow_query_when_less_than_audit_level?: SQLQueryConfigReqV1AllowQueryWhenLessThanAuditLevelEnum;
 
@@ -1707,16 +1627,6 @@ export interface ISQLQueryConfigResV1 {
   max_pre_query_rows?: number;
 
   query_timeout_second?: number;
-}
-
-export interface ISQLQuerySQLExplain {
-  classic_result?: IExplainClassicResult;
-
-  sql?: string;
-}
-
-export interface ISQLResultItemHeadResV1 {
-  field_name?: string;
 }
 
 export interface ISqlAverageExecutionTime {

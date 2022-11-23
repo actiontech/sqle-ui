@@ -2,15 +2,12 @@ import { Card, Result, Space, Table } from 'antd';
 import { cloneDeep } from 'lodash';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { TableSchemaItem, UseTableSchemaOption } from '.';
 import instance from '../../../api/instance';
 import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode } from '../../../data/common';
 import useBackendTable from '../../../hooks/useBackendTable';
 import HighlightCode from '../../../utils/HighlightCode';
-import {
-  TableSchemaItem,
-  UseTableSchemaOption,
-} from '../../SqlQuery/ExecuteResult/index.type';
 
 const useTableSchema = (options?: UseTableSchemaOption) => {
   const { t } = useTranslation();

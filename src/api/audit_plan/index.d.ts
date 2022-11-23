@@ -4,7 +4,6 @@ import {
   IGetAuditPlansResV1,
   ICreateAuditPlanReqV1,
   IBaseRes,
-  IGetAuditPlanAnalysisDataResV1,
   IGetAuditPlanResV1,
   IUpdateAuditPlanReqV1,
   IGetAuditPlanNotifyConfigResV1,
@@ -13,6 +12,7 @@ import {
   IGetAuditPlanReportsResV1,
   IGetAuditPlanReportResV1,
   IGetAuditPlanReportSQLsResV1,
+  IGetAuditPlanAnalysisDataResV1,
   IGetAuditPlanSQLsResV1,
   IFullSyncAuditPlanSQLsReqV1,
   IPartialSyncAuditPlanSQLsReqV1,
@@ -50,17 +50,6 @@ export interface ICreateAuditPlanV1Params extends ICreateAuditPlanReqV1 {
 }
 
 export interface ICreateAuditPlanV1Return extends IBaseRes {}
-
-export interface IGetTaskAnalysisDataParams {
-  project_name: string;
-
-  audit_plan_report_id: string;
-
-  number: string;
-}
-
-export interface IGetTaskAnalysisDataReturn
-  extends IGetAuditPlanAnalysisDataResV1 {}
 
 export interface IGetAuditPlanV1Params {
   project_name: string;
@@ -150,6 +139,19 @@ export interface IGetAuditPlanReportsSQLsV1Params {
 
 export interface IGetAuditPlanReportsSQLsV1Return
   extends IGetAuditPlanReportSQLsResV1 {}
+
+export interface IGetTaskAnalysisDataParams {
+  project_name: string;
+
+  audit_plan_name: string;
+
+  audit_plan_report_id: string;
+
+  number: string;
+}
+
+export interface IGetTaskAnalysisDataReturn
+  extends IGetAuditPlanAnalysisDataResV1 {}
 
 export interface IGetAuditPlanSQLsV1Params {
   project_name: string;

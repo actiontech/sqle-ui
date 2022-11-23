@@ -9,6 +9,7 @@ import { resolveThreeSecond } from '../../../../testUtils/mockRequest';
 import { taskSqls } from '../../Detail/__testData__';
 
 describe('Order/Detail/AuditResult', () => {
+  const projectName = 'default';
   beforeEach(() => {
     jest.useFakeTimers();
   });
@@ -34,9 +35,13 @@ describe('Order/Detail/AuditResult', () => {
 
   test('should get task sql info when pass task id into component props', async () => {
     const getTaskSqlSpy = mockGetTaskSqls();
-    const { rerender, container } = render(<AuditResult />);
+    const { rerender, container } = render(
+      <AuditResult projectName={projectName} />
+    );
     expect(getTaskSqlSpy).not.toBeCalled();
-    rerender(<AuditResult taskId={9999} passRate={0.1667} />);
+    rerender(
+      <AuditResult taskId={9999} passRate={0.1667} projectName={projectName} />
+    );
     expect(getTaskSqlSpy).toBeCalledTimes(1);
     expect(getTaskSqlSpy).toBeCalledWith({
       task_id: '9999',
@@ -58,7 +63,11 @@ describe('Order/Detail/AuditResult', () => {
     const taskId = 9999;
     const updateTotalNum = jest.fn();
     render(
-      <AuditResult taskId={taskId} updateTaskRecordTotalNum={updateTotalNum} />
+      <AuditResult
+        taskId={taskId}
+        updateTaskRecordTotalNum={updateTotalNum}
+        projectName={projectName}
+      />
     );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -69,7 +78,9 @@ describe('Order/Detail/AuditResult', () => {
 
   test('should set duplicate of table filter when change switch', async () => {
     const getTaskSqlSpy = mockGetTaskSqls();
-    render(<AuditResult taskId={9999} passRate={0.33} />);
+    render(
+      <AuditResult taskId={9999} passRate={0.33} projectName={projectName} />
+    );
     expect(getTaskSqlSpy).toBeCalledTimes(1);
     expect(getTaskSqlSpy).toBeCalledWith({
       task_id: '9999',
@@ -90,7 +101,9 @@ describe('Order/Detail/AuditResult', () => {
 
   test('should send download sql file request  when click download sql button', () => {
     mockGetTaskSqls();
-    render(<AuditResult taskId={9999} passRate={0.33} />);
+    render(
+      <AuditResult taskId={9999} passRate={0.33} projectName={projectName} />
+    );
     const download = jest.spyOn(task, 'downloadAuditTaskSQLFileV1');
     download.mockImplementation(() => resolveThreeSecond({}));
 
@@ -102,7 +115,9 @@ describe('Order/Detail/AuditResult', () => {
 
   test('should send download sql report request  when click download sql button', () => {
     mockGetTaskSqls();
-    render(<AuditResult taskId={9999} passRate={0.33} />);
+    render(
+      <AuditResult taskId={9999} passRate={0.33} projectName={projectName} />
+    );
     const download = jest.spyOn(task, 'downloadAuditTaskSQLReportV1');
     download.mockImplementation(() => resolveThreeSecond({}));
 
@@ -122,7 +137,9 @@ describe('Order/Detail/AuditResult', () => {
   test('should send update sql describe request when user click update describe in table', async () => {
     const getSqlSpy = mockGetTaskSqls();
     const updateTaskSqlSpy = mockUpdateTaskSqlDesc();
-    render(<AuditResult taskId={9999} passRate={0.33} />);
+    render(
+      <AuditResult taskId={9999} passRate={0.33} projectName={projectName} />
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -176,7 +193,7 @@ describe('Order/Detail/AuditResult', () => {
 
   it('should jump to sql analyze page when click analyze button', async () => {
     mockGetTaskSqls();
-    render(<AuditResult taskId={9999} passRate={0.33} />);
+    render(<AuditResult taskId={9999} passRate={0.33} projectName="default" />);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -184,7 +201,7 @@ describe('Order/Detail/AuditResult', () => {
     openSpy.mockImplementation(() => null);
     fireEvent.click(screen.getAllByText('audit.table.analyze')[0]);
     expect(openSpy).toBeCalledTimes(1);
-    expect(openSpy).toBeCalledWith(`/order/9999/1/analyze`);
+    expect(openSpy).toBeCalledWith(`/project/default/order/9999/1/analyze`);
     openSpy.mockRestore();
   });
 });

@@ -1,6 +1,6 @@
 import { useRequest } from 'ahooks';
 import { Button, Card, message, PageHeader, Space, Table } from 'antd';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import auditWhitelist from '../../../api/audit_whitelist';
 import { ModalName } from '../../../data/ModalName';
@@ -19,12 +19,19 @@ import EmitterKey from '../../../data/EmitterKey';
 import { IAuditWhitelistResV1 } from '../../../api/common.d';
 import { ResponseCode } from '../../../data/common';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
+import useCurrentUser from '../../../hooks/useCurrentUser';
+import EmptyBox from '../../../components/EmptyBox';
 
 const WhitelistList = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { pagination, tableChange } = useTable();
   const { projectName } = useCurrentProjectName();
+  const { isAdmin, isProjectManager } = useCurrentUser();
+
+  const actionPermission = useMemo(() => {
+    return isAdmin || isProjectManager(projectName);
+  }, [isAdmin, isProjectManager, projectName]);
 
   const {
     data: whitelistList,
@@ -49,16 +56,22 @@ const WhitelistList = () => {
   );
 
   const clickAddWhitelist = React.useCallback(() => {
+    if (!actionPermission) {
+      return;
+    }
     dispatch(
       updateWhitelistModalStatus({
         modalName: ModalName.Add_Whitelist,
         status: true,
       })
     );
-  }, [dispatch]);
+  }, [actionPermission, dispatch]);
 
   const clickUpdateWhitelist = React.useCallback(
     (whitelist: IAuditWhitelistResV1) => {
+      if (!actionPermission) {
+        return;
+      }
       dispatch(
         updateSelectWhitelist({
           whitelist,
@@ -71,11 +84,14 @@ const WhitelistList = () => {
         })
       );
     },
-    [dispatch]
+    [actionPermission, dispatch]
   );
 
   const removeWhitelist = React.useCallback(
     (whitelistId: number) => {
+      if (!actionPermission) {
+        return;
+      }
       const hide = message.loading(t('whitelist.operate.deleting'));
       auditWhitelist
         .deleteAuditWhitelistByIdV1({
@@ -92,7 +108,7 @@ const WhitelistList = () => {
           hide();
         });
     },
-    [projectName, refresh, t]
+    [actionPermission, projectName, refresh, t]
   );
 
   React.useEffect(() => {
@@ -129,13 +145,11 @@ const WhitelistList = () => {
             </Space>
           }
           extra={[
-            <Button
-              key="add-whitelist"
-              type="primary"
-              onClick={clickAddWhitelist}
-            >
-              {t('whitelist.operate.addWhitelist')}
-            </Button>,
+            <EmptyBox if={actionPermission} key="add-whitelist">
+              <Button type="primary" onClick={clickAddWhitelist}>
+                {t('whitelist.operate.addWhitelist')}
+              </Button>
+            </EmptyBox>,
           ]}
         >
           <Table
@@ -146,7 +160,11 @@ const WhitelistList = () => {
               total: whitelistList?.total,
             }}
             dataSource={whitelistList?.list}
-            columns={WhitelistColumn(clickUpdateWhitelist, removeWhitelist)}
+            columns={WhitelistColumn(
+              clickUpdateWhitelist,
+              removeWhitelist,
+              actionPermission
+            )}
             onChange={tableChange}
           />
         </Card>

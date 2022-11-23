@@ -2,9 +2,7 @@ import { Card, Result, Space, Table } from 'antd';
 import { cloneDeep } from 'lodash';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import sql_query from '../../../api/sql_query';
 import EmptyBox from '../../../components/EmptyBox';
-import { ResponseCode } from '../../../data/common';
 import useBackendTable from '../../../hooks/useBackendTable';
 import HighlightCode from '../../../utils/HighlightCode';
 import {
@@ -13,19 +11,9 @@ import {
 } from '../../SqlQuery/index.type';
 
 const useSQLExecPlan = (options?: UseSQLExecPlanOption) => {
-  const { form } = options ?? {};
-
   const { t } = useTranslation();
 
   const [execPlans, setExecPlans] = useState<SQLExecPlanItem[]>([]);
-
-  const idFactory = (
-    sql: string,
-    dataSourceName: string,
-    schemaName: string
-  ) => {
-    return `${sql}_${dataSourceName}_${schemaName}`;
-  };
 
   const closeExecPlan = (id: string) => {
     const newExecPlans = cloneDeep(execPlans);
@@ -35,35 +23,6 @@ const useSQLExecPlan = (options?: UseSQLExecPlanOption) => {
     }
     newExecPlans[index].hide = true;
     setExecPlans(newExecPlans);
-  };
-
-  const getSQLExecPlan = async () => {
-    if (!form) {
-      return;
-    }
-    const values = await form.validateFields([
-      'sql',
-      'instanceName',
-      'instanceSchema',
-    ]);
-    const { sql, instanceName, instanceSchema } = values;
-    const result = await sql_query.getSQLExplain({
-      sql,
-      instance_name: instanceName,
-      instance_schema: instanceSchema,
-    });
-    if (result.data.code === ResponseCode.SUCCESS) {
-      const data = result.data.data ?? [];
-      setExecPlans(
-        data.map((e, i) => ({
-          ...e,
-          id: idFactory(`${e.sql}-${i}`, instanceName, instanceSchema),
-          hide: false,
-        }))
-      );
-    } else {
-      setExecPlans([]);
-    }
   };
 
   const { tableColumnFactory } = useBackendTable();
@@ -114,7 +73,6 @@ const useSQLExecPlan = (options?: UseSQLExecPlanOption) => {
 
   return {
     execPlans,
-    getSQLExecPlan,
     closeExecPlan,
     generateSQLExecPlanContent,
   };

@@ -30,6 +30,7 @@ const AuditPlanSqlAnalyze = () => {
         project_name: projectName,
         audit_plan_report_id: urlParams.reportId,
         number: urlParams.sqlNum,
+        audit_plan_name: urlParams.auditPlanName,
       });
       if (res.data.code === ResponseCode.SUCCESS) {
         setErrorMessage('');
@@ -51,6 +52,7 @@ const AuditPlanSqlAnalyze = () => {
     projectName,
     urlParams.reportId,
     urlParams.sqlNum,
+    urlParams.auditPlanName,
     getSqlAnalyzeFinish,
   ]);
 

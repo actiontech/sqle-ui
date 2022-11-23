@@ -78,7 +78,9 @@ describe('AuditPlanReport', () => {
     openSpy.mockImplementationOnce(() => null);
     fireEvent.click(screen.getAllByText('auditPlan.report.table.analyze')[0]);
     expect(openSpy).toBeCalledTimes(1);
-    expect(openSpy).toBeCalledWith('/auditPlan/32/0/analyze');
+    expect(openSpy).toBeCalledWith(
+      '/project/default/auditPlan/32/0/auditPlanName1/analyze'
+    );
     openSpy.mockRestore();
   });
 });

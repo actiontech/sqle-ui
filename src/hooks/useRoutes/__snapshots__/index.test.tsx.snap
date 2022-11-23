@@ -298,7 +298,7 @@ Array [
       exact={true}
       hideInSliderMenu={true}
       label="menu.auditPlanSqlAnalyze"
-      path="/project/:projectName/auditPlan/:reportId/:sqlNum/analyze"
+      path="/project/:projectName/auditPlan/:reportId/:sqlNum/:auditPlanName/analyze"
     />,
     <Route
       component={

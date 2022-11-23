@@ -324,7 +324,7 @@ export const projectDetailRouterConfig: RouterItem<ProjectDetailRouterItemKeyLit
         },
         /* IFTRUE_isEE */
         {
-          path: '/project/:projectName/auditPlan/:reportId/:sqlNum/analyze',
+          path: '/project/:projectName/auditPlan/:reportId/:sqlNum/:auditPlanName/analyze',
           key: 'auditPlanDetail',
           exact: true,
           label: 'menu.auditPlanSqlAnalyze',

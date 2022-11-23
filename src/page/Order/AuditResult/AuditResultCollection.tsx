@@ -164,6 +164,7 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
                     auditScore={v?.score}
                     updateTaskRecordTotalNum={updateTaskRecordTotalNum}
                     instanceSchema={v.instance_schema}
+                    projectName={projectName}
                   />
                 </Tabs.TabPane>
               );
