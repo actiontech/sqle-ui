@@ -46,7 +46,7 @@ const RoleSelector: React.FC<{ projectName: string }> = ({ projectName }) => {
                   </Select>
                 </Form.Item>
               </Col>
-              <Col span={10} offset={1}>
+              <Col span={10}>
                 <Form.Item
                   noStyle
                   shouldUpdate={(prevValues, curValues) => {
@@ -60,11 +60,11 @@ const RoleSelector: React.FC<{ projectName: string }> = ({ projectName }) => {
                     <Form.Item
                       labelCol={{
                         xs: { span: 24 },
-                        sm: { span: 7 },
+                        sm: { span: 9 },
                       }}
                       wrapperCol={{
                         xs: { span: 24 },
-                        sm: { span: 10 },
+                        sm: { span: 11 },
                       }}
                       {...field}
                       name={[field.name, 'instance_name']}
