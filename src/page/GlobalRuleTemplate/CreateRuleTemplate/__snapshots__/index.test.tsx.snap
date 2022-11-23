@@ -221,6 +221,16 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           不建议对条件字段使用 NULL 值判断
                         </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                            style="max-width: 500px;"
+                          >
+                            
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -316,6 +326,16 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           避免使用标量子查询
                         </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                            style="max-width: 500px;"
+                          >
+                            
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -411,6 +431,16 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           delete/update 语句不能有limit条件
                         </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                            style="max-width: 500px;"
+                          >
+                            
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -506,6 +536,16 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           delete/update 语句不能有order by
                         </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                            style="max-width: 500px;"
+                          >
+                            
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -601,6 +641,16 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           不建议使用select *
                         </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                            style="max-width: 500px;"
+                          >
+                            
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -696,6 +746,16 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           在 DML 语句中预计影响行数超过指定值则不回滚
                         </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                            style="max-width: 500px;"
+                          >
+                            
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -1404,6 +1464,16 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           不建议对条件字段使用 NULL 值判断
                         </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                            style="max-width: 500px;"
+                          >
+                            
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -1486,6 +1556,16 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           避免使用标量子查询
                         </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                            style="max-width: 500px;"
+                          >
+                            
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -1568,6 +1648,16 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           delete/update 语句不能有limit条件
                         </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                            style="max-width: 500px;"
+                          >
+                            
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -1650,6 +1740,16 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           delete/update 语句不能有order by
                         </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                            style="max-width: 500px;"
+                          >
+                            
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -1732,6 +1832,16 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           不建议使用select *
                         </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                            style="max-width: 500px;"
+                          >
+                            
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -1814,6 +1924,16 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           在 DML 语句中预计影响行数超过指定值则不回滚
                         </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                            style="max-width: 500px;"
+                          >
+                            
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -2133,6 +2253,16 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           不建议对条件字段使用 NULL 值判断
                         </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                            style="max-width: 500px;"
+                          >
+                            
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -2228,6 +2358,16 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           避免使用标量子查询
                         </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                            style="max-width: 500px;"
+                          >
+                            
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -2323,6 +2463,16 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           delete/update 语句不能有limit条件
                         </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                            style="max-width: 500px;"
+                          >
+                            
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -2418,6 +2568,16 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           delete/update 语句不能有order by
                         </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                            style="max-width: 500px;"
+                          >
+                            
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -2513,6 +2673,16 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           不建议使用select *
                         </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                            style="max-width: 500px;"
+                          >
+                            
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -2608,6 +2778,16 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           在 DML 语句中预计影响行数超过指定值则不回滚
                         </h4>
+                        <div
+                          class="ant-list-item-meta-description"
+                        >
+                          <span
+                            class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                            style="max-width: 500px;"
+                          >
+                            
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div

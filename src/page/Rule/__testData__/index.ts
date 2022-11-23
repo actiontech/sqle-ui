@@ -417,6 +417,7 @@ export const instanceRule = [
 
 export const allRulesWithType = [
   {
+    annotation: 'annotation1',
     rule_name: 'all_check_where_is_invalid',
     desc: '禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql',
     params: [],
@@ -425,6 +426,7 @@ export const allRulesWithType = [
     db_type: 'mysql',
   },
   {
+    annotation: 'annotation2',
     rule_name: 'ddl_check_alter_table_need_merge',
     desc: '存在多条对同一个表的修改语句，建议合并成一个ALTER语句',
     params: [],

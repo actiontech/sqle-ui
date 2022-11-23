@@ -114,6 +114,41 @@ exports[`RuleSelect/RuleManagerModal should render base form at init 1`] = `
                   >
                     <label
                       class=""
+                      for="annotation"
+                      title="ruleTemplate.editModal.annotation"
+                    >
+                      ruleTemplate.editModal.annotation
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <textarea
+                          class="ant-input ant-input-disabled"
+                          disabled=""
+                          id="annotation"
+                          style="color: rgba(0, 0, 0, 0.85); height: -24px; min-height: -4px; max-height: -24px; overflow-y: hidden; resize: none; overflow-x: hidden;"
+                        >
+                          annotation
+                        </textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-row ant-form-item ant-form-item-has-success"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                  >
+                    <label
+                      class=""
                       for="type"
                       title="ruleTemplate.editModal.ruleTypeLabel"
                     >

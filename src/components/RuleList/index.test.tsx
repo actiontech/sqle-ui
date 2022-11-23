@@ -8,6 +8,7 @@ import {
 
 const ruleList: IRuleResV1[] = [
   {
+    annotation: 'annotation1',
     desc: 'desc1',
     level: RuleResV1LevelEnum.normal,
     rule_name: 'name1',
@@ -32,29 +33,34 @@ const ruleList: IRuleResV1[] = [
     ],
   },
   {
+    annotation: 'annotation2',
     desc: 'desc2',
     level: RuleResV1LevelEnum.normal,
     rule_name: 'name2',
     type: 'type2',
   },
   {
+    annotation: 'annotation3',
     desc: 'desc3',
     level: RuleResV1LevelEnum.notice,
     rule_name: 'name3',
     type: 'type3',
   },
   {
+    annotation: 'annotation4',
     desc: 'desc4',
     level: RuleResV1LevelEnum.warn,
     rule_name: 'name4',
     type: 'type3',
   },
   {
+    annotation: 'annotation5',
     desc: 'desc4',
     rule_name: 'name4',
     type: 'type2',
   },
   {
+    annotation: 'annotation6',
     desc: 'desc4',
     rule_name: 'name4',
     type: 'type1',

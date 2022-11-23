@@ -9,6 +9,7 @@ export const ruleData: IRuleResV1 = {
   level: RuleResV1LevelEnum.error,
   type: 'DDL规范',
   db_type: 'mysql',
+  annotation: 'annotation',
 };
 
 export const editRuleData: IRuleResV1 = {
