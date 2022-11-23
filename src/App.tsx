@@ -31,6 +31,7 @@ function App() {
   const dispatch = useDispatch();
 
   const clearUserInfo = () => {
+    dispatch(updateBindProjects({ bindProjects: [] }));
     dispatch(
       updateUser({
         username: '',

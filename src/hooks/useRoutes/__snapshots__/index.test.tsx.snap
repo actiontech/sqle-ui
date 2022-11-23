@@ -201,23 +201,38 @@ Array [
 
 exports[`test hooks/useRoutes should match snapshot 2`] = `
 Array [
-  Array [
-    <Route
-      component={
-        Object {
-          "$$typeof": Symbol(react.lazy),
-          "_init": [Function],
-          "_payload": Object {
-            "_result": [Function],
-            "_status": -1,
-          },
-        }
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
       }
-      exact={true}
-      icon={<ForwardRef(BarsOutlined) />}
-      label="menu.orderList"
-      path="/project/:projectName/order"
-    />,
+    }
+    icon={<ForwardRef(ProjectOutlined) />}
+    label="menu.projectOverview"
+    path="/project/:projectName/overview"
+  />,
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
+      }
+    }
+    exact={true}
+    icon={<ForwardRef(BarsOutlined) />}
+    label="menu.order"
+    path="/project/:projectName/order"
+  />,
+  Array [
     <Route
       component={
         Object {

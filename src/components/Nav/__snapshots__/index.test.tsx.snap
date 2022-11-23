@@ -9,7 +9,7 @@ exports[`Nav should render page by props of username 1`] = `
       class="ant-layout"
     >
       <header
-        class="ant-layout-header sqle-header headerBg-test"
+        class="ant-layout-header sqle-layout-header headerBg-test"
       >
         <header
           class="sqle-header"
@@ -352,7 +352,7 @@ exports[`Nav should render page by props of username 2`] = `
       class="ant-layout"
     >
       <header
-        class="ant-layout-header sqle-header headerBg-test"
+        class="ant-layout-header sqle-layout-header headerBg-test"
       >
         <header
           class="sqle-header"

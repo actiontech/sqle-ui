@@ -28,7 +28,7 @@ export const commonColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
       render: (projectName) => {
         return (
           <EmptyBox if={projectName} defaultNode={projectName}>
-            <Link to={`/project/${projectName}/order`}>{projectName}</Link>
+            <Link to={`/project/${projectName}/overview`}>{projectName}</Link>
           </EmptyBox>
         );
       },

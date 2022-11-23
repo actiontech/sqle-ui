@@ -2,20 +2,25 @@
 
 exports[`test ProjectManage/ProjectDetailLayout/index should match snapshot 1`] = `
 Array [
-  <SubMenu
-    icon={<ForwardRef(ConsoleSqlOutlined) />}
-    title="menu.order"
+  <MenuItem
+    icon={<ForwardRef(ProjectOutlined) />}
   >
-    <MenuItem
-      icon={<ForwardRef(BarsOutlined) />}
+    <Link
+      to="/project/test/overview"
     >
-      <Link
-        to="/project/test/order"
-      >
-        menu.orderList
-      </Link>
-    </MenuItem>
-  </SubMenu>,
+      menu.projectOverview
+    </Link>
+  </MenuItem>,
+  <MenuItem
+    icon={<ForwardRef(BarsOutlined) />}
+  >
+    <Link
+      to="/project/test/order"
+    >
+      menu.order
+    </Link>
+  </MenuItem>,
+  null,
   <SubMenu
     icon={<ForwardRef(CiCircleOutlined) />}
     title="menu.auditPlane"
@@ -78,20 +83,25 @@ Array [
 
 exports[`test ProjectManage/ProjectDetailLayout/index should match snapshot 2`] = `
 Array [
-  <SubMenu
-    icon={<ForwardRef(ConsoleSqlOutlined) />}
-    title="menu.order"
+  <MenuItem
+    icon={<ForwardRef(ProjectOutlined) />}
   >
-    <MenuItem
-      icon={<ForwardRef(BarsOutlined) />}
+    <Link
+      to="/project/test/overview"
     >
-      <Link
-        to="/project/test/order"
-      >
-        menu.orderList
-      </Link>
-    </MenuItem>
-  </SubMenu>,
+      menu.projectOverview
+    </Link>
+  </MenuItem>,
+  <MenuItem
+    icon={<ForwardRef(BarsOutlined) />}
+  >
+    <Link
+      to="/project/test/order"
+    >
+      menu.order
+    </Link>
+  </MenuItem>,
+  null,
   <SubMenu
     icon={<ForwardRef(CiCircleOutlined) />}
     title="menu.auditPlane"

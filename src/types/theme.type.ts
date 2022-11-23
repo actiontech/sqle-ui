@@ -13,4 +13,7 @@ export type Theme = {
   editor: {
     border: string;
   };
+  projectLayoutSider: {
+    border: string;
+  };
 };
