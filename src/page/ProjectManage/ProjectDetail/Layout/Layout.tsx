@@ -1,4 +1,4 @@
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Typography } from 'antd';
 import { cloneDeep } from 'lodash';
 import { lazy, useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -14,7 +14,6 @@ import {
 } from '../../../../types/router.type';
 
 import './index.less';
-import ProjectInfoBox from './ProjectInfoBox';
 
 const AuditPlan = lazy(
   () => import(/* webpackChunkName: "AuditPlan" */ '../../../AuditPlan')
@@ -23,7 +22,6 @@ const AuditPlan = lazy(
 const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
   children,
   projectName,
-  projectInfo,
 }) => {
   const userRole = useSelector<IReduxState, SystemRole | ''>(
     (state) => state.user.role
@@ -104,7 +102,12 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
   return (
     <Layout className="project-detail-wrapper">
       <Layout.Sider>
-        <ProjectInfoBox projectInfo={projectInfo} />
+        <Typography.Title
+          ellipsis={true}
+          style={{ color: 'white', padding: 20 }}
+        >
+          {projectName}
+        </Typography.Title>
         <Menu
           selectedKeys={selectMenuWrapper()}
           defaultOpenKeys={['order']}

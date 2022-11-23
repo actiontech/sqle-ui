@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test ProjectInfoBox should match snapshot 1`] = `<div />`;
+
+exports[`test ProjectInfoBox should match snapshot 2`] = `
+<div>
+  <div
+    class="ant-space ant-space-horizontal ant-space-align-center"
+  >
+    <div
+      class="ant-space-item"
+      style="margin-right: 24px;"
+    >
+      <span
+        class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+      >
+        projectManage.projectInfoBox.name
+      </span>
+    </div>
+    <div
+      class="ant-space-item"
+      style="margin-right: 24px;"
+    >
+      <span
+        class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+        style="max-width: 300px;"
+      >
+        projectManage.projectInfoBox.desc
+      </span>
+    </div>
+    <div
+      class="ant-space-item"
+      style="margin-right: 24px;"
+    >
+      <span
+        class="ant-typography"
+      >
+        projectManage.projectInfoBox.createTime
+      </span>
+    </div>
+    <div
+      class="ant-space-item"
+    >
+      <span
+        class="ant-typography"
+      >
+        projectManage.projectInfoBox.createUser
+      </span>
+    </div>
+  </div>
+</div>
+`;

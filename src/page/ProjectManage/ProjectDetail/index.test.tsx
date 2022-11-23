@@ -1,10 +1,8 @@
 import ProjectDetail from '.';
-import { mockUseSelector } from '../../../testUtils/mockRedux';
-import { SystemRole } from '../../../data/common';
+import { mockUseDispatch } from '../../../testUtils/mockRedux';
 import { useParams } from 'react-router-dom';
 import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
 import { render, screen, waitFor } from '@testing-library/react';
-import { mockGetProjectDetail } from './Layout/__test__/utils';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import {
   mockUseAuditPlanTypes,
@@ -13,7 +11,11 @@ import {
   resolveErrorThreeSecond,
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
-import workflow from '../../../api/workflow';
+import user from '../../../api/user';
+import {
+  mockGetProjectDetail,
+  mockGetProjectStatistics,
+} from '../__test__/utils';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -23,23 +25,22 @@ const projectName = mockBindProjects[0].project_name;
 
 describe('test ProjectManage/ProjectDetail', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
-  let getProjectDetailSpy: jest.SpyInstance;
-
-  const mockGetWorkflows = () => {
-    const spy = jest.spyOn(workflow, 'getWorkflowsV1');
-    spy.mockImplementation(() => resolveThreeSecond([]));
-    return spy;
-  };
-
+  let getUserSpy: jest.SpyInstance;
+  let dispatchSpy: jest.SpyInstance;
   beforeEach(() => {
-    mockUseSelector({
-      user: { role: SystemRole.admin, bindProjects: [] },
-    });
+    getUserSpy = jest.spyOn(user, 'getCurrentUserV1');
+    getUserSpy.mockImplementation(() =>
+      resolveThreeSecond({
+        user_name: 'test',
+        is_admin: '',
+        bind_projects: mockBindProjects,
+      })
+    );
+
+    dispatchSpy = mockUseDispatch().scopeDispatch;
     mockUseAuditPlanTypes();
     mockUseUsername();
     mockUseInstance();
-    mockGetWorkflows();
-    getProjectDetailSpy = mockGetProjectDetail();
 
     useParamsMock.mockReturnValue({ projectName });
     jest.useFakeTimers();
@@ -50,26 +51,53 @@ describe('test ProjectManage/ProjectDetail', () => {
     jest.useRealTimers();
     jest.clearAllTimers();
   });
-  test('should render tips for unbound project', () => {
+  test('should render tips for unbound project', async () => {
+    getUserSpy.mockImplementation(() =>
+      resolveThreeSecond({
+        user_name: 'test',
+        is_admin: '',
+        bind_projects: [],
+      })
+    );
+    expect(getUserSpy).toBeCalledTimes(0);
+
     render(<ProjectDetail />);
-    expect(getProjectDetailSpy).toBeCalledTimes(0);
+    expect(getUserSpy).toBeCalledTimes(1);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
     expect(
       screen.getByText('projectManage.projectDetail.unboundProjectTips')
     ).toBeInTheDocument();
   });
 
-  test('should get project detail info when bound project exists', async () => {
-    mockUseSelector({
-      user: { role: SystemRole.admin, bindProjects: mockBindProjects },
+  test('should clear user info when get current user is wrong', async () => {
+    getUserSpy.mockImplementation(() => resolveErrorThreeSecond(undefined));
+    expect(dispatchSpy).toBeCalledTimes(0);
+    render(<ProjectDetail />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
     });
-    expect(getProjectDetailSpy).toBeCalledTimes(0);
-    const { container } = renderWithRouter(<ProjectDetail />);
-    expect(getProjectDetailSpy).toBeCalledTimes(1);
-    expect(getProjectDetailSpy).toBeCalledWith({
-      project_name: projectName,
-    });
-    expect(container).toMatchSnapshot();
 
+    expect(dispatchSpy).toBeCalledTimes(3);
+    expect(dispatchSpy).nthCalledWith(1, {
+      payload: { bindProjects: [] },
+      type: 'user/updateBindProjects',
+    });
+    expect(dispatchSpy).nthCalledWith(2, {
+      payload: { username: '', role: '' },
+      type: 'user/updateUser',
+    });
+    expect(dispatchSpy).nthCalledWith(3, {
+      payload: { token: '' },
+      type: 'user/updateToken',
+    });
+  });
+
+  test('should match snapshot when bound project exists', async () => {
+    const getProjectDetailSpy = mockGetProjectDetail();
+    const getProjectStatistics = mockGetProjectStatistics();
+    const { container } = renderWithRouter(<ProjectDetail />);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -77,19 +105,7 @@ describe('test ProjectManage/ProjectDetail', () => {
       jest.advanceTimersByTime(0);
     });
     expect(container).toMatchSnapshot();
-  });
-
-  test('should render error message when get data is wrong', async () => {
-    mockUseSelector({
-      user: { role: SystemRole.admin, bindProjects: mockBindProjects },
-    });
-    getProjectDetailSpy.mockImplementation(() =>
-      resolveErrorThreeSecond(undefined)
-    );
-    const { container } = render(<ProjectDetail />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    expect(container).toMatchSnapshot();
+    expect(getProjectDetailSpy).toBeCalledTimes(1);
+    expect(getProjectStatistics).toBeCalledTimes(1);
   });
 });

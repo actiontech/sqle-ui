@@ -2,6 +2,15 @@
 
 exports[`test ProjectManage/ProjectDetailLayout/index should match snapshot 1`] = `
 Array [
+  <MenuItem
+    icon={<ForwardRef(ProjectOutlined) />}
+  >
+    <Link
+      to="/project/test/overview"
+    >
+      menu.projectOverview
+    </Link>
+  </MenuItem>,
   <SubMenu
     icon={<ForwardRef(ConsoleSqlOutlined) />}
     title="menu.order"
@@ -78,6 +87,15 @@ Array [
 
 exports[`test ProjectManage/ProjectDetailLayout/index should match snapshot 2`] = `
 Array [
+  <MenuItem
+    icon={<ForwardRef(ProjectOutlined) />}
+  >
+    <Link
+      to="/project/test/overview"
+    >
+      menu.projectOverview
+    </Link>
+  </MenuItem>,
   <SubMenu
     icon={<ForwardRef(ConsoleSqlOutlined) />}
     title="menu.order"

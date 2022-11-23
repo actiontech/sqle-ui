@@ -24,4 +24,5 @@ export default {
   reportStatistics: '报表统计',
   projectManage: '项目',
   member: '成员',
+  projectOverview: '项目概览',
 };

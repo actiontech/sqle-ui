@@ -143,6 +143,12 @@ const ProjectDetail = React.lazy(
       /* webpackChunkName: "ProjectDetail" */ '../page/ProjectManage/ProjectDetail'
     )
 );
+const ProjectOverview = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "ProjectOverview" */ '../page/ProjectManage/ProjectOverview'
+    )
+);
 
 const Member = React.lazy(
   () => import(/* webpackChunkName: "Member" */ '../page/Member')
@@ -268,6 +274,13 @@ export const globalRouterConfig: RouterItem<GlobalRouterItemKeyLiteral>[] = [
 
 export const projectDetailRouterConfig: RouterItem<ProjectDetailRouterItemKeyLiteral>[] =
   [
+    {
+      label: 'menu.projectOverview',
+      key: 'projectOverview',
+      icon: <ProjectOutlined />,
+      path: '/project/:projectName/overview',
+      component: ProjectOverview,
+    },
     {
       label: 'menu.order',
       key: 'order',

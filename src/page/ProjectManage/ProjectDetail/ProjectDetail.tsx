@@ -2,35 +2,69 @@ import { useRequest } from 'ahooks';
 import { Result } from 'antd';
 import { Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 import { Redirect, Switch } from 'react-router-dom';
 import { useCurrentProjectName } from '.';
-import project from '../../../api/project';
+import user from '../../../api/user';
 import HeaderProgress from '../../../components/HeaderProgress';
-import useCurrentUser from '../../../hooks/useCurrentUser';
+import { ResponseCode, SystemRole } from '../../../data/common';
 import useRoutes from '../../../hooks/useRoutes';
 import { projectDetailRouterConfig } from '../../../router/config';
+import {
+  updateBindProjects,
+  updateToken,
+  updateUser,
+} from '../../../store/user';
 import ProjectDetailLayout from './Layout';
 
 const ProjectDetail: React.FC = () => {
   const { registerRouter } = useRoutes();
   const { projectName } = useCurrentProjectName();
   const { t } = useTranslation();
-  const { bindProjects } = useCurrentUser();
+  const dispatch = useDispatch();
 
-  const { data, error, loading } = useRequest(
-    () => project.getProjectDetailV1({ project_name: projectName }),
-    {
-      ready: !!projectName && bindProjects.length > 0,
-    }
-  );
+  const clearUserInfo = () => {
+    dispatch(updateBindProjects({ bindProjects: [] }));
+    dispatch(
+      updateUser({
+        username: '',
+        role: '',
+      })
+    );
+    dispatch(
+      updateToken({
+        token: '',
+      })
+    );
+  };
+
+  const { loading, data } = useRequest(() => user.getCurrentUserV1(), {
+    onSuccess: (res) => {
+      if (res.data.code === ResponseCode.SUCCESS) {
+        const data = res.data.data;
+        dispatch(
+          updateBindProjects({ bindProjects: data?.bind_projects ?? [] })
+        );
+        dispatch(
+          updateUser({
+            username: data?.user_name ?? '',
+            role: data?.is_admin ? SystemRole.admin : '',
+          })
+        );
+      } else {
+        clearUserInfo();
+      }
+    },
+    onError: () => {
+      clearUserInfo();
+    },
+  });
+
   const renderProjectDetail = () => {
-    /**
-     * todo 临时处理
-     * 目前方案存在问题: bindProjects 数据并不不具有实时性, 目前这样做仅仅为了处理当不存在项目时会存在接口的错误提示, 感觉不太友好
-     * 后续调整方案: 后端改造 getProjectDetailV1 接口. 区分接口出现错误与当前用户未加入任何项目的情况, 这样便无需 bindProjects 数据.
-     *
-     * */
-    if (bindProjects.length === 0) {
+    if (loading) {
+      return <HeaderProgress />;
+    }
+    if ((data?.data.data?.bind_projects?.length ?? 0) === 0) {
       return (
         <Result
           status="info"
@@ -39,39 +73,15 @@ const ProjectDetail: React.FC = () => {
         />
       );
     }
-    if (loading) {
-      return <HeaderProgress />;
-    }
-    if (!!error) {
-      return (
-        <Result
-          status="error"
-          title={t('common.request.noticeFailTitle')}
-          subTitle={error.message ?? t('common.unknownError')}
-        />
-      );
-    }
-    if (!data?.data.data) {
-      return (
-        <Result
-          status="error"
-          title={t('common.request.noticeFailTitle')}
-          subTitle={data?.data.message ?? t('common.unknownError')}
-        />
-      );
-    }
 
     return (
-      <ProjectDetailLayout
-        projectName={projectName}
-        projectInfo={data?.data.data}
-      >
+      <ProjectDetailLayout projectName={projectName}>
         <Suspense fallback={<HeaderProgress />}>
           <Switch>
             {registerRouter(projectDetailRouterConfig)}
             <Redirect
               to={{
-                pathname: `/project/${projectName}/order`,
+                pathname: `/project/${projectName}/overview`,
               }}
             />
           </Switch>

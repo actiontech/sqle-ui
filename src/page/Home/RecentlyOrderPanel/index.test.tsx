@@ -101,7 +101,7 @@ describe('test home/RecentlyOrderPanel', () => {
     expect(screen.queryByText(list[0].project_name!)).toBeInTheDocument();
     fireEvent.click(screen.getByText(list[0].project_name!));
     expect(history.location.pathname).toBe(
-      `/project/${list[0].project_name}/order`
+      `/project/${list[0].project_name}/overview`
     );
   });
 });

@@ -12,7 +12,6 @@ import {
 } from '../../../../../testUtils/mockRequest';
 import { createMemoryHistory } from 'history';
 import { getBySelector } from '../../../../../testUtils/customQuery';
-import { mockGetProjectDetail } from './utils';
 
 describe('test ProjectManage/ProjectDetailLayout', () => {
   const projectName = 'test';
@@ -21,7 +20,6 @@ describe('test ProjectManage/ProjectDetailLayout', () => {
   let useAuditPlanTypesSpy: jest.SpyInstance;
 
   beforeEach(() => {
-    mockGetProjectDetail();
     useSelectorSpy = mockUseSelector();
     useAuditPlanTypesSpy = mockUseAuditPlanTypes();
     jest.useFakeTimers();
