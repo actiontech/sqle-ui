@@ -6,6 +6,7 @@ export const mockUseStyle = () => {
     loginBg: 'loginBg-test',
     headerBg: 'headerBg-test',
     editor: 'editor-test',
+    projectLayoutSider: 'projectLayoutSider-test',
   }));
   return useStylesSpy;
 };

@@ -22,6 +22,9 @@ const useStyles = makeStyles<Theme>((theme) => ({
     border: theme.editor.border,
     paddingRight: 1,
   },
+  projectLayoutSider: {
+    borderRight: theme.projectLayoutSider.border,
+  },
 }));
 
 export { SupportTheme, ThemeData };

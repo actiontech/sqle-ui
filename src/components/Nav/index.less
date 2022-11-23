@@ -3,7 +3,7 @@
 .sqle-layout {
   min-height: 100vh;
   .sqle-nav-title {
-    min-width: 108px;
+    min-width: 168px;
     color: @text-white;
     padding: 10px 10px 10px 0;
     font-size: 20px;
@@ -16,49 +16,54 @@
     }
   }
 
-  .sqle-header {
-    width: 100%;
+  .sqle-layout-header {
     height: 50px;
-    line-height: 50px;
-    padding: 0 @padding;
-    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
-    z-index: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 0;
 
-    .header-more-icon {
-      cursor: pointer;
-      font-size: 28px;
-      margin: 50% auto;
-    }
-
-    .header-menu {
+    .sqle-header {
       width: 100%;
-      font-size: 16px;
-      color: rgba(255, 255, 255, 0.75);
-
+      height: 100%;
+      line-height: 50px;
+      padding: 0 @padding;
+      box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+      z-index: 1;
       display: flex;
-      .header-menu-item {
-        flex-shrink: 0;
+      justify-content: space-between;
+      align-items: center;
 
-        margin-right: 20px;
+      .header-more-icon {
         cursor: pointer;
-        .header-menu-item-icon {
-          margin-right: 10px;
+        font-size: 28px;
+        margin: 50% auto;
+      }
+
+      .header-menu {
+        width: 100%;
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.75);
+
+        display: flex;
+        .header-menu-item {
+          flex-shrink: 0;
+
+          margin-right: 20px;
+          cursor: pointer;
+          .header-menu-item-icon {
+            margin-right: 10px;
+          }
+        }
+
+        &-item-active {
+          color: rgb(255, 255, 255);
         }
       }
 
-      &-item-active {
-        color: rgb(255, 255, 255);
-      }
-    }
-
-    .menu-wrapper {
-      cursor: pointer;
-      padding: 0 @padding-small;
-      &:hover {
-        background: rgba(0, 0, 0, 0.025);
+      .menu-wrapper {
+        cursor: pointer;
+        padding: 0 @padding-small;
+        &:hover {
+          background: rgba(0, 0, 0, 0.025);
+        }
       }
     }
   }
@@ -67,19 +72,18 @@
 @media (max-width: 900px) {
   .sqle-layout {
     .sqle-nav-title {
-      padding: 10px @padding-small 10px 0;
-
       font-size: 16px;
       font-weight: 400;
     }
-    .sqle-header {
-      padding: 0;
-      .header-menu {
-        font-size: 14px;
-        .header-menu-item {
-          margin-right: 14px;
-          .header-menu-item-icon {
-            margin-right: 4px;
+    .sqle-layout-header {
+      .sqle-header {
+        .header-menu {
+          font-size: 14px;
+          .header-menu-item {
+            margin-right: 14px;
+            .header-menu-item-icon {
+              margin-right: 4px;
+            }
           }
         }
       }

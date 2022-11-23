@@ -282,18 +282,19 @@ export const projectDetailRouterConfig: RouterItem<ProjectDetailRouterItemKeyLit
       component: ProjectOverview,
     },
     {
+      path: '/project/:projectName/order',
+      exact: true,
+      label: 'menu.order',
+      icon: <BarsOutlined />,
+      component: OrderList,
+      key: 'orderList',
+    },
+    {
       label: 'menu.order',
       key: 'order',
       icon: <ConsoleSqlOutlined />,
+      hideInSliderMenu: true,
       components: [
-        {
-          path: '/project/:projectName/order',
-          exact: true,
-          label: 'menu.orderList',
-          icon: <BarsOutlined />,
-          component: OrderList,
-          key: 'orderList',
-        },
         {
           path: '/project/:projectName/order/create',
           exact: true,

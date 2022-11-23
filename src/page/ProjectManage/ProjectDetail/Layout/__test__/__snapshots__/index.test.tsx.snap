@@ -11,20 +11,16 @@ Array [
       menu.projectOverview
     </Link>
   </MenuItem>,
-  <SubMenu
-    icon={<ForwardRef(ConsoleSqlOutlined) />}
-    title="menu.order"
+  <MenuItem
+    icon={<ForwardRef(BarsOutlined) />}
   >
-    <MenuItem
-      icon={<ForwardRef(BarsOutlined) />}
+    <Link
+      to="/project/test/order"
     >
-      <Link
-        to="/project/test/order"
-      >
-        menu.orderList
-      </Link>
-    </MenuItem>
-  </SubMenu>,
+      menu.order
+    </Link>
+  </MenuItem>,
+  null,
   <SubMenu
     icon={<ForwardRef(CiCircleOutlined) />}
     title="menu.auditPlane"
@@ -96,20 +92,16 @@ Array [
       menu.projectOverview
     </Link>
   </MenuItem>,
-  <SubMenu
-    icon={<ForwardRef(ConsoleSqlOutlined) />}
-    title="menu.order"
+  <MenuItem
+    icon={<ForwardRef(BarsOutlined) />}
   >
-    <MenuItem
-      icon={<ForwardRef(BarsOutlined) />}
+    <Link
+      to="/project/test/order"
     >
-      <Link
-        to="/project/test/order"
-      >
-        menu.orderList
-      </Link>
-    </MenuItem>
-  </SubMenu>,
+      menu.order
+    </Link>
+  </MenuItem>,
+  null,
   <SubMenu
     icon={<ForwardRef(CiCircleOutlined) />}
     title="menu.auditPlane"

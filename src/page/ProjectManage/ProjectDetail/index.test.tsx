@@ -16,6 +16,7 @@ import {
   mockGetProjectDetail,
   mockGetProjectStatistics,
 } from '../__test__/utils';
+import { mockUseStyle } from '../../../testUtils/mockStyle';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -41,6 +42,7 @@ describe('test ProjectManage/ProjectDetail', () => {
     mockUseAuditPlanTypes();
     mockUseUsername();
     mockUseInstance();
+    mockUseStyle();
 
     useParamsMock.mockReturnValue({ projectName });
     jest.useFakeTimers();

@@ -5,22 +5,34 @@ import {
   renderWithRouter,
   renderWithServerRouter,
 } from '../../../../../testUtils/customRender';
-import { mockUseSelector } from '../../../../../testUtils/mockRedux';
+import {
+  mockUseDispatch,
+  mockUseSelector,
+} from '../../../../../testUtils/mockRedux';
 import {
   AuditPlanTypesData,
   mockUseAuditPlanTypes,
 } from '../../../../../testUtils/mockRequest';
 import { createMemoryHistory } from 'history';
 import { getBySelector } from '../../../../../testUtils/customQuery';
+import { mockUseStyle } from '../../../../../testUtils/mockStyle';
+import { SupportTheme } from '../../../../../theme';
 
 describe('test ProjectManage/ProjectDetailLayout', () => {
   const projectName = 'test';
   const children = <>children</>;
-  let useSelectorSpy: jest.SpyInstance;
   let useAuditPlanTypesSpy: jest.SpyInstance;
 
   beforeEach(() => {
-    useSelectorSpy = mockUseSelector();
+    mockUseStyle();
+    mockUseDispatch();
+    mockUseSelector({
+      user: {
+        role: SystemRole.admin,
+        theme: SupportTheme.LIGHT,
+      },
+    });
+
     useAuditPlanTypesSpy = mockUseAuditPlanTypes();
     jest.useFakeTimers();
   });
@@ -32,7 +44,12 @@ describe('test ProjectManage/ProjectDetailLayout', () => {
   });
 
   test('should render menu by user role', async () => {
-    useSelectorSpy.mockReturnValue('');
+    mockUseSelector({
+      user: {
+        role: '',
+        theme: SupportTheme.LIGHT,
+      },
+    });
     const { container: normalMenu } = renderWithRouter(
       <ProjectDetailLayout projectName={projectName}>
         {children}
@@ -49,7 +66,7 @@ describe('test ProjectManage/ProjectDetailLayout', () => {
     expect(normalMenu).toMatchSnapshot();
 
     cleanup();
-    useSelectorSpy.mockReturnValue(SystemRole.admin);
+
     const { container: adminMenu } = renderWithRouter(
       <ProjectDetailLayout projectName={projectName}>
         {children}
@@ -63,7 +80,6 @@ describe('test ProjectManage/ProjectDetailLayout', () => {
   });
 
   test('should render active menu by router pathname', async () => {
-    useSelectorSpy.mockReturnValue(SystemRole.admin);
     let history = createMemoryHistory();
 
     renderWithServerRouter(

@@ -1,4 +1,5 @@
-import { Layout, Menu, Typography } from 'antd';
+import { Layout, Menu, MenuTheme, Typography } from 'antd';
+import { SiderTheme } from 'antd/lib/layout/Sider';
 import { cloneDeep } from 'lodash';
 import { lazy, useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -6,8 +7,10 @@ import { useLocation } from 'react-router-dom';
 import { generateNavigateMenu, ProjectDetailLayoutProps } from '.';
 import { SystemRole } from '../../../../data/common';
 import useAuditPlanTypes from '../../../../hooks/useAuditPlanTypes';
+import useChangeTheme from '../../../../hooks/useChangeTheme';
 import { projectDetailRouterConfig } from '../../../../router/config';
 import { IReduxState } from '../../../../store';
+import useStyles from '../../../../theme';
 import {
   ProjectDetailRouterItemKeyLiteral,
   RouterItem,
@@ -23,9 +26,12 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
   children,
   projectName,
 }) => {
+  const styles = useStyles();
+
   const userRole = useSelector<IReduxState, SystemRole | ''>(
     (state) => state.user.role
   );
+  const { currentTheme } = useChangeTheme();
   const location = useLocation();
   const { updateAuditPlanTypes, auditPlanTypes } = useAuditPlanTypes();
   const [innerRouterConfig, setInnerRouterConfig] = useState(
@@ -101,18 +107,17 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
 
   return (
     <Layout className="project-detail-wrapper">
-      <Layout.Sider>
-        <Typography.Title
-          ellipsis={true}
-          style={{ color: 'white', padding: 20 }}
-        >
+      <Layout.Sider
+        theme={currentTheme as SiderTheme}
+        className={`${styles.projectLayoutSider}`}
+      >
+        <Typography.Title ellipsis={true} style={{ padding: 20 }}>
           {projectName}
         </Typography.Title>
         <Menu
           selectedKeys={selectMenuWrapper()}
-          defaultOpenKeys={['order']}
           mode="inline"
-          theme="dark"
+          theme={currentTheme as MenuTheme}
         >
           {generateNavigateMenu(innerRouterConfig, userRole, projectName)}
         </Menu>
