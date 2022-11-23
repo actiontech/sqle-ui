@@ -78,7 +78,7 @@ describe('test Nav/Header/MoreAction', () => {
     fireEvent.click(screen.getByText('menu.userGroup'));
     expect(history.location.pathname).toBe('/user/group');
 
-    fireEvent.click(screen.getByText('menu.ruleTemplate'));
+    fireEvent.click(screen.getByText('menu.globalRuleTemplate'));
     expect(history.location.pathname).toBe('/rule/template');
 
     fireEvent.click(screen.getByText('menu.systemSetting'));

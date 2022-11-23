@@ -9,6 +9,7 @@ export default {
   userGroup: '用户组管理',
   dataSource: '数据源',
   ruleTemplate: '模版管理',
+  globalRuleTemplate: '规则模版管理',
   progressManage: '流程管理',
   systemSetting: '系统设置',
   workflow: '工单创建',

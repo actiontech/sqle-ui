@@ -1,8 +1,7 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   pageTitle: '用户组管理',
-  pageDesc:
-    '您可以在这里创建/编辑用户组，并为用户组绑定角色和用户，用户组中的用户拥有用户组中的所有角色的权限并集。',
+  pageDesc: '您可以在这里创建/编辑用户组，并为用户组绑定用户。',
 
   userGroupField: {
     userGroupName: '用户组名',
