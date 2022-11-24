@@ -49,29 +49,26 @@ const MoreAction: React.FC = () => {
               </Menu.Item>
               <Menu.Divider />
               <Menu.ItemGroup title={t('menu.platformManage')}>
-                <Menu.ItemGroup key="userCenter" title={t('menu.userCenter')}>
-                  <Menu.Item key="user" onClick={() => history.push('/user')}>
-                    {t('menu.user')}
-                  </Menu.Item>
-                  <Menu.Item
-                    key="role"
-                    onClick={() => history.push('/user/role')}
-                  >
-                    {t('menu.role')}
-                  </Menu.Item>
-                  <Menu.Item
-                    key="userGroup"
-                    onClick={() => history.push('/user/group')}
-                  >
-                    {t('menu.userGroup')}
-                  </Menu.Item>
-                </Menu.ItemGroup>
-
+                <Menu.Item key="user" onClick={() => history.push('/user')}>
+                  {t('menu.user')}
+                </Menu.Item>
+                <Menu.Item
+                  key="role"
+                  onClick={() => history.push('/user/role')}
+                >
+                  {t('menu.role')}
+                </Menu.Item>
+                <Menu.Item
+                  key="userGroup"
+                  onClick={() => history.push('/user/group')}
+                >
+                  {t('menu.userGroup')}
+                </Menu.Item>
                 <Menu.Item
                   key="ruleTemplate"
                   onClick={() => history.push('/rule/template')}
                 >
-                  {t('menu.ruleTemplate')}
+                  {t('menu.globalRuleTemplate')}
                 </Menu.Item>
                 <Menu.Item
                   key="systemSetting"

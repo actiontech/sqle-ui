@@ -8,6 +8,7 @@ export default {
   role: '角色管理',
   userGroup: '用户组管理',
   dataSource: '数据源',
+  globalRuleTemplate: '规则模版管理',
   ruleTemplate: '规则模板',
   progressManage: '流程模板',
   systemSetting: '系统设置',
