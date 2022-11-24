@@ -15,6 +15,9 @@ const darkTheme: Theme = {
   editor: {
     border: '1px solid #434343',
   },
+  projectLayoutSider: {
+    border: '1px solid #303030',
+  },
 };
 
 export default darkTheme;

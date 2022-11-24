@@ -17,7 +17,7 @@ const Nav: React.FC = (props) => {
   return (
     <Layout className="sqle-layout">
       <Layout>
-        <Layout.Header className={`sqle-header ${styles.headerBg}`}>
+        <Layout.Header className={`sqle-layout-header ${styles.headerBg}`}>
           <Header />
         </Layout.Header>
         <EmptyBox if={!!username}>

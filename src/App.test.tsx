@@ -128,7 +128,13 @@ describe('App test', () => {
 
     render(<App />);
     await waitFor(() => jest.advanceTimersByTime(3000));
-    expect(scopeDispatch).toBeCalledTimes(3);
+    expect(scopeDispatch).toBeCalledTimes(4);
+    expect(scopeDispatch).toBeCalledWith({
+      payload: {
+        bindProjects: [],
+      },
+      type: 'user/updateBindProjects',
+    });
     expect(scopeDispatch).toBeCalledWith({
       payload: {
         role: '',

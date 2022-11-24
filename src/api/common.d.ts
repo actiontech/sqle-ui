@@ -22,7 +22,7 @@ import {
   WorkflowResV1ModeEnum,
   WorkflowStepResV1StateEnum,
   WorkflowStepResV1TypeEnum,
-  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
+  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum
 } from './common.enum';
 
 export interface IBaseRes {
@@ -863,6 +863,28 @@ export interface IGetProjectRuleTemplatesResV1 {
   message?: string;
 
   total_nums?: number;
+}
+
+export interface IGetProjectStatisticsResDataV1 {
+  audit_plan_total?: number;
+
+  instance_total?: number;
+
+  member_total?: number;
+
+  rule_template_total?: number;
+
+  whitelist_total?: number;
+
+  workflow_total?: number;
+}
+
+export interface IGetProjectStatisticsResV1 {
+  code?: number;
+
+  data?: IGetProjectStatisticsResDataV1;
+
+  message?: string;
 }
 
 export interface IGetProjectTipsResV1 {

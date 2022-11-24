@@ -1,4 +1,6 @@
+import { IGetProjectStatisticsResDataV1 } from '../../../api/common';
 import project from '../../../api/project';
+import statistic from '../../../api/statistic';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 
 export const mockGetProjectList = () => {
@@ -33,5 +35,33 @@ export const mockCreateProject = () => {
 export const mockUpdateProject = () => {
   const spy = jest.spyOn(project, 'updateProjectV1');
   spy.mockImplementation(() => resolveThreeSecond({}));
+  return spy;
+};
+
+export const mockGetProjectDetail = () => {
+  const spy = jest.spyOn(project, 'getProjectDetailV1');
+  spy.mockImplementation(() =>
+    resolveThreeSecond({
+      create_time: '2022-01-01',
+      create_user_name: 'admin',
+      desc: 'desc',
+      name: 'project1',
+    })
+  );
+  return spy;
+};
+
+export const projectStatisticsData: IGetProjectStatisticsResDataV1 = {
+  workflow_total: 12,
+  audit_plan_total: 10,
+  instance_total: 3,
+  member_total: 22,
+  rule_template_total: 12,
+  whitelist_total: 3,
+};
+
+export const mockGetProjectStatistics = () => {
+  const spy = jest.spyOn(statistic, 'getProjectStatisticsV1');
+  spy.mockImplementation(() => resolveThreeSecond(projectStatisticsData));
   return spy;
 };

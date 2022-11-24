@@ -7,6 +7,8 @@ import ServiceBase from '../Service.base';
 import { AxiosRequestConfig } from 'axios';
 
 import {
+  IGetProjectStatisticsV1Params,
+  IGetProjectStatisticsV1Return,
   IGetSqlAverageExecutionTimeV1Params,
   IGetSqlAverageExecutionTimeV1Return,
   IGetSqlExecutionFailPercentV1Params,
@@ -29,6 +31,21 @@ import {
 } from './index.d';
 
 class StatisticService extends ServiceBase {
+  public getProjectStatisticsV1(
+    params: IGetProjectStatisticsV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.get<IGetProjectStatisticsV1Return>(
+      `/v1/projects/${project_name}/statistics`,
+      paramsData,
+      options
+    );
+  }
+
   public getSqlAverageExecutionTimeV1(
     params: IGetSqlAverageExecutionTimeV1Params,
     options?: AxiosRequestConfig

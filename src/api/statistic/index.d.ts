@@ -1,4 +1,5 @@
 import {
+  IGetProjectStatisticsResV1,
   IGetSqlAverageExecutionTimeResV1,
   IGetSqlExecutionFailPercentResV1,
   IGetInstancesTypePercentResV1,
@@ -14,6 +15,13 @@ import {
   IGetWorkflowRejectedPercentGroupByInstanceResV1,
   IGetWorkflowStatusCountResV1
 } from '../common.d';
+
+export interface IGetProjectStatisticsV1Params {
+  project_name: string;
+}
+
+export interface IGetProjectStatisticsV1Return
+  extends IGetProjectStatisticsResV1 {}
 
 export interface IGetSqlAverageExecutionTimeV1Params {
   limit: number;

@@ -16,6 +16,9 @@ const lightTheme: Theme = {
   editor: {
     border: '1px solid #d9d9d9',
   },
+  projectLayoutSider: {
+    border: '1px solid #d9d9d9',
+  },
 };
 
 export default lightTheme;

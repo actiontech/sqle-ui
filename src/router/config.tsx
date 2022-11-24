@@ -143,6 +143,12 @@ const ProjectDetail = React.lazy(
       /* webpackChunkName: "ProjectDetail" */ '../page/ProjectManage/ProjectDetail'
     )
 );
+const ProjectOverview = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "ProjectOverview" */ '../page/ProjectManage/ProjectOverview'
+    )
+);
 
 const Member = React.lazy(
   () => import(/* webpackChunkName: "Member" */ '../page/Member')
@@ -269,18 +275,26 @@ export const globalRouterConfig: RouterItem<GlobalRouterItemKeyLiteral>[] = [
 export const projectDetailRouterConfig: RouterItem<ProjectDetailRouterItemKeyLiteral>[] =
   [
     {
+      label: 'menu.projectOverview',
+      key: 'projectOverview',
+      icon: <ProjectOutlined />,
+      path: '/project/:projectName/overview',
+      component: ProjectOverview,
+    },
+    {
+      path: '/project/:projectName/order',
+      exact: true,
+      label: 'menu.order',
+      icon: <BarsOutlined />,
+      component: OrderList,
+      key: 'orderList',
+    },
+    {
       label: 'menu.order',
       key: 'order',
       icon: <ConsoleSqlOutlined />,
+      hideInSliderMenu: true,
       components: [
-        {
-          path: '/project/:projectName/order',
-          exact: true,
-          label: 'menu.orderList',
-          icon: <BarsOutlined />,
-          component: OrderList,
-          key: 'orderList',
-        },
         {
           path: '/project/:projectName/order/create',
           exact: true,

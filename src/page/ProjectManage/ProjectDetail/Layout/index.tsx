@@ -13,8 +13,7 @@ import ProjectDetailLayout from './Layout';
 
 export type ProjectDetailLayoutProps = {
   children: ReactNode;
-} & ProjectDetailUrlParamType &
-  ProjectInfoBoxProps;
+} & ProjectDetailUrlParamType;
 
 export type ProjectInfoBoxProps = {
   projectInfo?: IProjectDetailItem;
