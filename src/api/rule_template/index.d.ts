@@ -121,6 +121,8 @@ export interface ICloneRuleTemplateV1Return extends IBaseRes {}
 
 export interface IGetRuleListV1Params {
   filter_db_type?: string;
+
+  filter_global_rule_template_name?: string;
 }
 
 export interface IGetRuleListV1Return extends IGetRulesResV1 {}

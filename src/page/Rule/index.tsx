@@ -11,53 +11,70 @@ import {
   Space,
   Form,
 } from 'antd';
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import instance from '../../api/instance';
+import rule_template from '../../api/rule_template';
 import ruleTemplate from '../../api/rule_template';
 import EmptyBox from '../../components/EmptyBox';
 import RuleList from '../../components/RuleList';
 import useSyncRuleListTab from '../../components/RuleList/useSyncRuleListTab';
-import {
-  ResponseCode,
-  FilterFormColLayout,
-  FilterFormRowLayout,
-  FilterFormLayout,
-} from '../../data/common';
-import useDatabaseType from '../../hooks/useDatabaseType';
-import useInstance from '../../hooks/useInstance';
-import useProject from '../../hooks/useProject';
+import { FilterFormColLayout, FilterFormRowLayout } from '../../data/common';
 import { Theme } from '../../types/theme.type';
+import useRuleFilterForm from './useRuleFilterForm';
 
 const Rule = () => {
-  const { updateInstanceList, generateInstanceSelectOption } = useInstance();
-  const { updateDriverNameList, driverNameList, generateDriverSelectOptions } =
-    useDatabaseType();
-  const { updateProjectList, generateProjectSelectOption } = useProject();
-
   const { t } = useTranslation();
-  const [projectName, setProjectName] = useState<string | undefined>();
-  const [instanceName, setInstanceName] = useState<string | undefined>(
-    undefined
-  );
-  const [dbType, setDbType] = useState<string | undefined>(undefined);
 
-  const theme = useTheme<Theme>();
-  const { data: instanceRules, run: getInstanceRules } = useRequest(
-    () =>
-      instance.getInstanceRuleListV1({
-        instance_name: instanceName ?? '',
-        project_name: projectName ?? '',
+  const {
+    data: projectTemplateRules,
+    loading: getProjectTemplateRulesLoading,
+    run: getProjectTemplateRules,
+  } = useRequest(
+    (project?: string, ruleTemplate?: string) =>
+      rule_template.getProjectRuleTemplateV1({
+        rule_template_name: ruleTemplate ?? '',
+        project_name: project ?? '',
       }),
     {
       manual: true,
       formatResult(res) {
-        return res.data?.data ?? [];
+        setDbType(res.data.data?.db_type ?? '');
+        return res.data?.data?.rule_list ?? [];
       },
     }
   );
 
-  const { data: allRules, loading: getRulesLoading } = useRequest(
+  const {
+    data: globalTemplateRules,
+    loading: getGlobalTemplateRulesLoading,
+    run: getGlobalTemplateRules,
+  } = useRequest(
+    (ruleTemplate?: string) =>
+      rule_template.getRuleTemplateV1({
+        rule_template_name: ruleTemplate ?? '',
+      }),
+    {
+      manual: true,
+      formatResult(res) {
+        setDbType(res.data.data?.db_type ?? '');
+        return res.data?.data?.rule_list ?? [];
+      },
+    }
+  );
+
+  const {
+    generateDriverSelectOptions,
+    generateProjectSelectOption,
+    generateRuleTemplateSelectOptions,
+    projectName,
+    projectNameChangeHandle,
+    dbType,
+    setDbType,
+    ruleTemplateName,
+    ruleTemplateNameChangeHandle,
+  } = useRuleFilterForm(getProjectTemplateRules, getGlobalTemplateRules);
+
+  const { data: allRules, loading: getAllRulesLoading } = useRequest(
     () =>
       ruleTemplate.getRuleListV1({
         filter_db_type: dbType,
@@ -72,50 +89,19 @@ const Rule = () => {
   );
 
   const disableRules = React.useMemo(() => {
-    if (!instanceRules) {
+    const tempRules = projectName ? projectTemplateRules : globalTemplateRules;
+
+    if (!tempRules) {
       return allRules ?? [];
     }
     const all = allRules ?? [];
+
     return all.filter(
-      (e) => !instanceRules.find((item) => item.rule_name === e.rule_name)
+      (e) => !tempRules.find((item) => item.rule_name === e.rule_name)
     );
-  }, [allRules, instanceRules]);
+  }, [allRules, globalTemplateRules, projectName, projectTemplateRules]);
 
-  React.useEffect(() => {
-    if (instanceName !== undefined && projectName !== undefined) {
-      instance
-        .getInstanceV1({
-          instance_name: instanceName ?? '',
-          project_name: projectName,
-        })
-        .then((res) => {
-          if (res.data.code === ResponseCode.SUCCESS) {
-            setDbType(res.data.data?.db_type);
-            getInstanceRules();
-          }
-        });
-    }
-  }, [getInstanceRules, instanceName, projectName]);
-
-  React.useEffect(() => {
-    if (projectName !== undefined) {
-      updateInstanceList({ project_name: projectName });
-    }
-    updateDriverNameList();
-    updateProjectList();
-  }, [
-    projectName,
-    updateDriverNameList,
-    updateInstanceList,
-    updateProjectList,
-  ]);
-
-  React.useEffect(() => {
-    if (driverNameList.length > 0 && !dbType) {
-      setDbType(driverNameList[0]);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [driverNameList]);
+  const theme = useTheme<Theme>();
 
   const { tabKey, allTypes, tabChange } = useSyncRuleListTab(allRules);
 
@@ -131,13 +117,14 @@ const Rule = () => {
           className="full-width-element"
         >
           <Card>
-            <Form {...FilterFormLayout}>
-              <Row align="middle" {...FilterFormRowLayout}>
+            <Form>
+              <Row {...FilterFormRowLayout}>
                 <Col {...FilterFormColLayout}>
-                  <Form.Item name="project" label={t('rule.form.project')}>
+                  <Form.Item label={t('rule.form.project')}>
                     <Select
+                      data-testid="project-name"
                       value={projectName}
-                      onChange={setProjectName}
+                      onChange={projectNameChangeHandle}
                       placeholder={t('common.form.placeholder.select')}
                       className="middle-select"
                       allowClear
@@ -149,32 +136,31 @@ const Rule = () => {
                 </Col>
                 <Col {...FilterFormColLayout}>
                   <Form.Item
-                    name="instanceName"
-                    label={t('rule.form.instance')}
+                    tooltip={t('rule.form.ruleTemplateTips')}
+                    label={t('rule.form.ruleTemplate')}
                   >
                     <Select
-                      data-testid="instance-name"
-                      disabled={!projectName}
-                      value={instanceName}
-                      onChange={setInstanceName}
+                      data-testid="rule-template-name"
+                      value={ruleTemplateName}
+                      onChange={ruleTemplateNameChangeHandle}
                       placeholder={t('common.form.placeholder.select')}
                       className="middle-select"
                       allowClear
                       showSearch
                     >
-                      {generateInstanceSelectOption()}
+                      {generateRuleTemplateSelectOptions()}
                     </Select>
                   </Form.Item>
                 </Col>
                 <Col {...FilterFormColLayout}>
-                  <Form.Item name="dbType" label={t('rule.form.dbType')}>
+                  <Form.Item label={t('rule.form.dbType')}>
                     <Select
+                      disabled={!!ruleTemplateName}
                       data-testid="database-type"
                       value={dbType}
                       onChange={setDbType}
                       placeholder={t('common.form.placeholder.select')}
                       className="middle-select"
-                      disabled={!!instanceName}
                     >
                       {generateDriverSelectOptions()}
                     </Select>
@@ -183,36 +169,49 @@ const Rule = () => {
               </Row>
             </Form>
           </Card>
-          <EmptyBox if={!instanceName}>
+          <EmptyBox if={!ruleTemplateName}>
             <Card title={t('rule.allRules')}>
               <RuleList
                 list={allRules ?? []}
-                listProps={{ loading: getRulesLoading }}
+                listProps={{
+                  loading: getAllRulesLoading,
+                }}
               />
             </Card>
           </EmptyBox>
-          <EmptyBox if={!!instanceName}>
-            <Card title={t('rule.instanceRuleList')}>
+          <EmptyBox if={!!ruleTemplateName}>
+            <Card title={t('rule.templateRuleList')}>
               <Descriptions
-                title={t('rule.activeRules', { name: instanceName })}
+                title={t('rule.activeRules', { name: ruleTemplateName })}
               />
               <RuleList
-                list={instanceRules ?? []}
+                list={
+                  (projectName ? projectTemplateRules : globalTemplateRules) ??
+                  []
+                }
                 allRuleTabs={allTypes}
                 currentTab={tabKey}
                 tabChange={tabChange}
-                listProps={{ loading: getRulesLoading }}
+                listProps={{
+                  loading:
+                    getProjectTemplateRulesLoading ||
+                    getGlobalTemplateRulesLoading,
+                }}
               />
               <Divider dashed />
               <Descriptions
-                title={t('rule.disableRules', { name: instanceName })}
+                title={t('rule.disableRules', { name: ruleTemplateName })}
               />
               <RuleList
                 list={disableRules ?? []}
                 allRuleTabs={allTypes}
                 currentTab={tabKey}
                 tabChange={tabChange}
-                listProps={{ loading: getRulesLoading }}
+                listProps={{
+                  loading:
+                    getProjectTemplateRulesLoading ||
+                    getGlobalTemplateRulesLoading,
+                }}
               />
             </Card>
           </EmptyBox>
