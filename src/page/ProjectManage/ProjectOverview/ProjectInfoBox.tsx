@@ -8,7 +8,7 @@ const ProjectInfoBox: React.FC<ProjectInfoBoxProps> = ({ projectInfo }) => {
   const { t } = useTranslation();
   return (
     <EmptyBox if={!!projectInfo}>
-      <Space size="large">
+      <Space size="large" wrap={true}>
         <Typography.Text ellipsis={true}>
           {t('projectManage.projectInfoBox.name', {
             name: projectInfo?.name ?? '',
