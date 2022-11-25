@@ -6,7 +6,7 @@ import {
   renderWithThemeAndServerRouter,
 } from '../../../testUtils/customRender';
 import {
-  mockUseRole,
+  mockUseGlobalRuleTemplate,
   mockUseRuleTemplate,
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
@@ -22,18 +22,19 @@ jest.mock('react-router', () => {
     useParams: jest.fn(),
   };
 });
+const projectName = 'default';
 
-describe.skip('UpdateDataSource', () => {
+describe('UpdateDataSource', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   beforeEach(() => {
     jest.useFakeTimers();
-    useParamsMock.mockReturnValue({ instanceName: '1' });
+    useParamsMock.mockReturnValue({ instanceName: '1', projectName });
     mockUseRuleTemplate();
-    mockUseRole();
     mockGetInstance();
     mockDriver();
     mockGetDataSourceMetas();
+    mockUseGlobalRuleTemplate();
   });
 
   afterEach(() => {
@@ -157,15 +158,6 @@ describe.skip('UpdateDataSource', () => {
         target: { value: '123456' },
       }
     );
-    fireEvent.mouseDown(
-      screen.getByLabelText('dataSource.dataSourceForm.role')
-    );
-
-    await screen.findAllByText('role_name1');
-    const allRoleOptions = screen.getAllByText('role_name1');
-    const roleOption = allRoleOptions[1];
-    expect(roleOption).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(roleOption);
 
     fireEvent.mouseDown(
       screen.getByLabelText('dataSource.dataSourceForm.ruleTemplate')
@@ -176,14 +168,6 @@ describe.skip('UpdateDataSource', () => {
     const instanceOption = allInstanceOptions[1];
     expect(instanceOption).toHaveClass('ant-select-item-option-content');
     fireEvent.click(instanceOption);
-
-    fireEvent.mouseDown(
-      screen.getByLabelText('dataSource.dataSourceForm.workflow')
-    );
-    expect(screen.getAllByText('workflow-template-name-1')[2]).toHaveClass(
-      'ant-select-item-option-content'
-    );
-    fireEvent.click(screen.getAllByText('workflow-template-name-1')[2]);
 
     fireEvent.click(
       screen.getByLabelText('dataSource.dataSourceForm.needAuditForSqlQuery')
@@ -243,9 +227,9 @@ describe.skip('UpdateDataSource', () => {
       db_type: 'mysql',
       desc: 'desc1',
       instance_name: 'instance_name1',
-      role_name_list: ['role_name1'],
-      rule_template_name_list: ['rule_template_name1'],
-      workflow_template_name: 'workflow-template-name-1',
+      project_name: 'default',
+
+      rule_template_name: 'rule_template_name1',
       maintenance_times: [
         {
           maintenance_start_time: {
@@ -293,7 +277,7 @@ describe.skip('UpdateDataSource', () => {
       screen.getByText('dataSource.updateDatabase.updateDatabaseSuccess')
     ).not.toBeNull();
 
-    expect(history.location.pathname).toBe('/data');
+    expect(history.location.pathname).toBe(`/project/${projectName}/data`);
   });
 
   // test('should reset all fields when click reset button', async () => {

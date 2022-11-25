@@ -9,4 +9,5 @@ export type DataSourceListFilterFields = {
 
 export interface DataSourceListFilterFormProps {
   submit: (values: DataSourceListFilterFields) => void;
+  projectName: string;
 }

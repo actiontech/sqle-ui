@@ -17,17 +17,16 @@ import {
   DataSourceListFilterFormProps,
 } from './index.type';
 import useDatabaseType from '../../../../hooks/useDatabaseType';
-import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 import useGlobalRuleTemplate from '../../../../hooks/useGlobalRuleTemplate';
 
 const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
   props
 ) => {
+  const { projectName } = props;
   const { updateDriverNameList, generateDriverSelectOptions } =
     useDatabaseType();
   const { t } = useTranslation();
   const [collapse, { toggle: toggleCollapse }] = useBoolean(true);
-  const { projectName } = useCurrentProjectName();
   const [form] = useForm<DataSourceListFilterFields>();
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
   const { updateRuleTemplateList, ruleTemplateList } = useRuleTemplate();

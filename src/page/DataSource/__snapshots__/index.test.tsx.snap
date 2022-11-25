@@ -17,18 +17,18 @@ exports[`DataSource should render page title and page describe 1`] = `
       <Route
         component={[Function]}
         exact={true}
-        path="/data"
+        path="/project/:projectName/data"
       />
       <Route
         component={[Function]}
-        path="/data/create"
+        path="/project/:projectName/data/create"
       />
       <Route
         component={[Function]}
-        path="/data/update/:instanceName"
+        path="/project/:projectName/data/update/:instanceName"
       />
       <Redirect
-        to="/data"
+        to="/project/:projectName/data"
       />
     </Switch>
   </section>

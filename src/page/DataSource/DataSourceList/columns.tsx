@@ -22,6 +22,9 @@ export const dataSourceColumns = (
       dataIndex: 'address',
       title: () => i18n.t('dataSource.databaseList.address'),
       render(_, record) {
+        if (!record.db_host || !record.db_port) {
+          return '--';
+        }
         return `${record.db_host}:${record.db_port}`;
       },
     },
@@ -62,7 +65,7 @@ export const dataSourceColumns = (
               <Link
                 to={`/project/${projectName}/data/update/${record.instance_name}`}
               >
-                <Typography.Link>{i18n.t('common.edit')}</Typography.Link>
+                {i18n.t('common.edit')}
               </Link>
               <Divider type="vertical" />
               <Popconfirm
