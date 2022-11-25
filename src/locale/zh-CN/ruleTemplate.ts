@@ -78,7 +78,7 @@ export default {
     ruleNameLabel: '规则名称',
     ruleDbType: '数据库类型',
     rule: '规则',
-    annotation: '背景',
+    annotation: '说明',
     ruleValueTypeOnlyNumber: '当前规则值类型只能为数字',
   },
 
