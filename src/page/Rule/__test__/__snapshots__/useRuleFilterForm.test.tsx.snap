@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test useRuleFilterForm should be match snapshot of rule template options 1`] = `
+<OptGroup
+  label="rule.globalRuleTemplate"
+>
+  <Option
+    value="global_rule_template_name1"
+  >
+    global_rule_template_name1
+  </Option>
+  <Option
+    value="global_rule_template_name2"
+  >
+    global_rule_template_name2
+  </Option>
+</OptGroup>
+`;
+
+exports[`test useRuleFilterForm should be match snapshot of rule template options 2`] = `
+<OptGroup
+  label="rule.projectRuleTemplate"
+>
+  <Option
+    value="rule_template_name1"
+  >
+    rule_template_name1
+  </Option>
+  <Option
+    value="rule_template_name2"
+  >
+    rule_template_name2
+  </Option>
+</OptGroup>
+`;
