@@ -6,10 +6,11 @@ exports[`test ProjectInfoBox should match snapshot 2`] = `
 <div>
   <div
     class="ant-space ant-space-horizontal ant-space-align-center"
+    style="flex-wrap: wrap; margin-bottom: -24px;"
   >
     <div
       class="ant-space-item"
-      style="margin-right: 24px;"
+      style="margin-right: 24px; padding-bottom: 24px;"
     >
       <span
         class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
@@ -19,7 +20,7 @@ exports[`test ProjectInfoBox should match snapshot 2`] = `
     </div>
     <div
       class="ant-space-item"
-      style="margin-right: 24px;"
+      style="margin-right: 24px; padding-bottom: 24px;"
     >
       <span
         class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
@@ -30,7 +31,7 @@ exports[`test ProjectInfoBox should match snapshot 2`] = `
     </div>
     <div
       class="ant-space-item"
-      style="margin-right: 24px;"
+      style="margin-right: 24px; padding-bottom: 24px;"
     >
       <span
         class="ant-typography"
@@ -40,6 +41,7 @@ exports[`test ProjectInfoBox should match snapshot 2`] = `
     </div>
     <div
       class="ant-space-item"
+      style="padding-bottom: 24px;"
     >
       <span
         class="ant-typography"

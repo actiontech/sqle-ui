@@ -47,7 +47,7 @@ export default {
     auditPlanTotal: '扫描任务总数',
     instanceTotal: '数据源总数',
     memberTotal: '成员总数',
-    ruleTemplateTotal: '成员模板总数',
-    whiteListTotal: '白名单总属',
+    ruleTemplateTotal: '规则模板总数',
+    whiteListTotal: '白名单总数',
   },
 };

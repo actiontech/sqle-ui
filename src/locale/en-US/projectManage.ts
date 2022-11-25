@@ -30,6 +30,7 @@ export default {
   },
 
   projectInfoBox: {
+    name: '项目名称: {{name}}',
     desc: '项目描述: {{desc}}',
     createTime: '创建时间: {{time}}',
     createUser: '创建人: {{user}}',
@@ -38,5 +39,15 @@ export default {
   projectDetail: {
     notice: '提示',
     unboundProjectTips: '当前用户暂未绑定项目, 请联系项目管理员',
+  },
+
+  projectOverview: {
+    pageTitle: '项目概览',
+    orderTotal: '工单总数',
+    auditPlanTotal: '扫描任务总数',
+    instanceTotal: '数据源总数',
+    memberTotal: '成员总数',
+    ruleTemplateTotal: '规则模板总数',
+    whiteListTotal: '白名单总数',
   },
 };
