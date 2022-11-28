@@ -1,4 +1,5 @@
 import { fireEvent, waitFor, screen } from '@testing-library/react';
+import { useParams } from 'react-router-dom';
 import AddDataSource from '.';
 import instance from '../../../api/instance';
 import EmitterKey from '../../../data/EmitterKey';
@@ -8,21 +9,31 @@ import {
   renderWithThemeAndRouter,
 } from '../../../testUtils/customRender';
 import {
-  mockUseRole,
   mockUseRuleTemplate,
   mockDriver,
   resolveThreeSecond,
+  mockUseGlobalRuleTemplate,
 } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 import { dataSourceMetas } from '../__testData__';
 
-describe.skip('AddDataSource', () => {
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: jest.fn(),
+}));
+
+const projectName = 'default';
+
+describe('AddDataSource', () => {
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
+
   beforeEach(() => {
     jest.useFakeTimers();
     mockUseRuleTemplate();
-    mockUseRole();
     mockGetDataSourceMetas();
     mockDriver();
+    mockUseGlobalRuleTemplate();
+    useParamsMock.mockReturnValue({ projectName });
   });
 
   afterEach(() => {
@@ -102,17 +113,7 @@ describe.skip('AddDataSource', () => {
         target: { value: '10000' },
       }
     );
-    fireEvent.mouseDown(
-      screen.getByLabelText('dataSource.dataSourceForm.role')
-    );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    await screen.findAllByText('role_name1');
-    const allRoleOptions = screen.getAllByText('role_name1');
-    const roleOption = allRoleOptions[1];
-    expect(roleOption).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(roleOption);
+
     expect(
       screen.getByLabelText('dataSource.dataSourceForm.ruleTemplate')
     ).toHaveValue('');
@@ -127,18 +128,6 @@ describe.skip('AddDataSource', () => {
     const instanceOption = allInstanceOptions[1];
     expect(instanceOption).toHaveClass('ant-select-item-option-content');
     fireEvent.click(instanceOption);
-
-    fireEvent.mouseDown(
-      screen.getByLabelText('dataSource.dataSourceForm.workflow')
-    );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    await screen.findAllByText('workflow-template-name-1');
-    const allWorkflowOptions = screen.getAllByText('workflow-template-name-1');
-    const workflowOption = allWorkflowOptions[1];
-    expect(workflowOption).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(workflowOption);
 
     fireEvent.click(screen.getByText('common.add'));
     await waitFor(() => {
@@ -206,9 +195,8 @@ describe.skip('AddDataSource', () => {
       db_user: 'root',
       desc: 'desc1',
       instance_name: 'instance_name1',
-      role_name_list: ['role_name1'],
-      rule_template_name_list: ['rule_template_name1'],
-      workflow_template_name: 'workflow-template-name-1',
+      project_name: 'default',
+      rule_template_name: 'rule_template_name1',
       maintenance_times: [
         {
           maintenance_stop_time: {

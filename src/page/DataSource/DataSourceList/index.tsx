@@ -119,7 +119,10 @@ const DataSourceList = () => {
         </EmptyBox>
       }
     >
-      <DataSourceListFilterForm submit={setFilterInfo} />
+      <DataSourceListFilterForm
+        submit={setFilterInfo}
+        projectName={projectName}
+      />
       <Table
         rowKey="instance_name"
         loading={loading}

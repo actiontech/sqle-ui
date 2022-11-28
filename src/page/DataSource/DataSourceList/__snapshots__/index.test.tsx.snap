@@ -57,7 +57,7 @@ exports[`DataSource/DataSourceList should match snapshot 1`] = `
           class="ant-card-extra"
         >
           <a
-            href="/data/create"
+            href="/project/default/data/create"
           >
             <button
               class="ant-btn ant-btn-primary"
@@ -425,95 +425,6 @@ exports[`DataSource/DataSourceList should match snapshot 1`] = `
                             autocomplete="off"
                             class="ant-select-selection-search-input"
                             id="filter_rule_template_name"
-                            role="combobox"
-                            type="search"
-                            value=""
-                          />
-                        </span>
-                        <span
-                          class="ant-select-selection-placeholder"
-                        >
-                          common.form.placeholder.searchSelect
-                        </span>
-                      </div>
-                      <span
-                        aria-hidden="true"
-                        class="ant-select-arrow"
-                        style="user-select: none;"
-                        unselectable="on"
-                      >
-                        <span
-                          aria-label="down"
-                          class="anticon anticon-down ant-select-suffix"
-                          role="img"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            data-icon="down"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                            />
-                          </svg>
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
-            hidden=""
-            style="padding-left: 12px; padding-right: 12px;"
-          >
-            <div
-              class="ant-row ant-form-item"
-            >
-              <div
-                class="ant-col ant-col-7 ant-form-item-label"
-              >
-                <label
-                  class=""
-                  for="filter_role_name"
-                  title="dataSource.dataSourceForm.role"
-                >
-                  dataSource.dataSourceForm.role
-                </label>
-              </div>
-              <div
-                class="ant-col ant-col-17 ant-form-item-control"
-              >
-                <div
-                  class="ant-form-item-control-input"
-                >
-                  <div
-                    class="ant-form-item-control-input-content"
-                  >
-                    <div
-                      class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
-                    >
-                      <div
-                        class="ant-select-selector"
-                      >
-                        <span
-                          class="ant-select-selection-search"
-                        >
-                          <input
-                            aria-activedescendant="filter_role_name_list_0"
-                            aria-autocomplete="list"
-                            aria-controls="filter_role_name_list"
-                            aria-haspopup="listbox"
-                            aria-owns="filter_role_name_list"
-                            autocomplete="off"
-                            class="ant-select-selection-search-input"
-                            id="filter_role_name"
                             role="combobox"
                             type="search"
                             value=""
@@ -681,7 +592,17 @@ exports[`DataSource/DataSourceList should match snapshot 1`] = `
                   <table
                     style="table-layout: auto;"
                   >
-                    <colgroup />
+                    <colgroup>
+                      <col />
+                      <col />
+                      <col />
+                      <col />
+                      <col />
+                      <col />
+                      <col
+                        style="width: 180px;"
+                      />
+                    </colgroup>
                     <thead
                       class="ant-table-thead"
                     >
@@ -704,11 +625,6 @@ exports[`DataSource/DataSourceList should match snapshot 1`] = `
                         <th
                           class="ant-table-cell"
                         >
-                          dataSource.databaseList.role
-                        </th>
-                        <th
-                          class="ant-table-cell"
-                        >
                           dataSource.databaseList.type
                         </th>
                         <th
@@ -724,11 +640,8 @@ exports[`DataSource/DataSourceList should match snapshot 1`] = `
                         <th
                           class="ant-table-cell"
                         >
-                          dataSource.databaseList.workflow
+                          common.operate
                         </th>
-                        <th
-                          class="ant-table-cell"
-                        />
                       </tr>
                     </thead>
                     <tbody
@@ -739,7 +652,7 @@ exports[`DataSource/DataSourceList should match snapshot 1`] = `
                       >
                         <td
                           class="ant-table-cell"
-                          colspan="9"
+                          colspan="7"
                         >
                           <div
                             class="ant-empty ant-empty-normal"
@@ -859,7 +772,7 @@ exports[`DataSource/DataSourceList should match snapshot 2`] = `
           class="ant-card-extra"
         >
           <a
-            href="/data/create"
+            href="/project/default/data/create"
           >
             <button
               class="ant-btn ant-btn-primary"
@@ -1271,95 +1184,6 @@ exports[`DataSource/DataSourceList should match snapshot 2`] = `
             </div>
           </div>
           <div
-            class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
-            hidden=""
-            style="padding-left: 12px; padding-right: 12px;"
-          >
-            <div
-              class="ant-row ant-form-item"
-            >
-              <div
-                class="ant-col ant-col-7 ant-form-item-label"
-              >
-                <label
-                  class=""
-                  for="filter_role_name"
-                  title="dataSource.dataSourceForm.role"
-                >
-                  dataSource.dataSourceForm.role
-                </label>
-              </div>
-              <div
-                class="ant-col ant-col-17 ant-form-item-control"
-              >
-                <div
-                  class="ant-form-item-control-input"
-                >
-                  <div
-                    class="ant-form-item-control-input-content"
-                  >
-                    <div
-                      class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
-                    >
-                      <div
-                        class="ant-select-selector"
-                      >
-                        <span
-                          class="ant-select-selection-search"
-                        >
-                          <input
-                            aria-activedescendant="filter_role_name_list_0"
-                            aria-autocomplete="list"
-                            aria-controls="filter_role_name_list"
-                            aria-haspopup="listbox"
-                            aria-owns="filter_role_name_list"
-                            autocomplete="off"
-                            class="ant-select-selection-search-input"
-                            id="filter_role_name"
-                            role="combobox"
-                            type="search"
-                            value=""
-                          />
-                        </span>
-                        <span
-                          class="ant-select-selection-placeholder"
-                        >
-                          common.form.placeholder.searchSelect
-                        </span>
-                      </div>
-                      <span
-                        aria-hidden="true"
-                        class="ant-select-arrow"
-                        style="user-select: none;"
-                        unselectable="on"
-                      >
-                        <span
-                          aria-label="down"
-                          class="anticon anticon-down ant-select-suffix"
-                          role="img"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            data-icon="down"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                            />
-                          </svg>
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
             class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-0 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-0"
             style="padding-left: 12px; padding-right: 12px;"
           >
@@ -1461,7 +1285,17 @@ exports[`DataSource/DataSourceList should match snapshot 2`] = `
                   <table
                     style="table-layout: auto;"
                   >
-                    <colgroup />
+                    <colgroup>
+                      <col />
+                      <col />
+                      <col />
+                      <col />
+                      <col />
+                      <col />
+                      <col
+                        style="width: 180px;"
+                      />
+                    </colgroup>
                     <thead
                       class="ant-table-thead"
                     >
@@ -1484,11 +1318,6 @@ exports[`DataSource/DataSourceList should match snapshot 2`] = `
                         <th
                           class="ant-table-cell"
                         >
-                          dataSource.databaseList.role
-                        </th>
-                        <th
-                          class="ant-table-cell"
-                        >
                           dataSource.databaseList.type
                         </th>
                         <th
@@ -1504,11 +1333,8 @@ exports[`DataSource/DataSourceList should match snapshot 2`] = `
                         <th
                           class="ant-table-cell"
                         >
-                          dataSource.databaseList.workflow
+                          common.operate
                         </th>
-                        <th
-                          class="ant-table-cell"
-                        />
                       </tr>
                     </thead>
                     <tbody
@@ -1533,9 +1359,6 @@ exports[`DataSource/DataSourceList should match snapshot 2`] = `
                         >
                           
                         </td>
-                        <td
-                          class="ant-table-cell"
-                        />
                         <td
                           class="ant-table-cell"
                         >
@@ -1573,46 +1396,28 @@ exports[`DataSource/DataSourceList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          default
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
                           <a
-                            href="/data/update/db1"
+                            href="/project/default/data/update/db1"
                           >
-                            <button
-                              class="ant-btn ant-btn-link"
-                              type="button"
-                            >
-                              <span>
-                                common.edit
-                              </span>
-                            </button>
+                            common.edit
                           </a>
                           <div
                             class="ant-divider ant-divider-vertical"
                             role="separator"
                           />
-                          <button
-                            class="ant-btn ant-btn-link ant-btn-dangerous"
-                            type="button"
+                          <a
+                            class="ant-typography ant-typography-danger"
                           >
-                            <span>
-                              common.delete
-                            </span>
-                          </button>
+                            common.delete
+                          </a>
                           <div
                             class="ant-divider ant-divider-vertical"
                             role="separator"
                           />
-                          <button
-                            class="ant-btn ant-btn-link ant-dropdown-trigger"
-                            type="button"
+                          <a
+                            class="ant-typography ant-dropdown-trigger"
                           >
-                            <span>
-                              common.more
-                            </span>
+                            common.more
                             <span
                               aria-label="down"
                               class="anticon anticon-down"
@@ -1632,7 +1437,7 @@ exports[`DataSource/DataSourceList should match snapshot 2`] = `
                                 />
                               </svg>
                             </span>
-                          </button>
+                          </a>
                         </td>
                       </tr>
                     </tbody>

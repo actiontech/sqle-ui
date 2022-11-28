@@ -3,18 +3,20 @@ import { isEqual } from 'lodash';
 import DataSourceListFilterForm from '.';
 import {
   mockUseInstance,
-  mockUseRole,
   mockUseRuleTemplate,
   mockDriver,
+  mockUseGlobalRuleTemplate,
 } from '../../../../testUtils/mockRequest';
 
-describe.skip('DataSource/DataSourceList/DataSourceListFilterForm', () => {
+const projectName = 'default';
+
+describe('DataSource/DataSourceList/DataSourceListFilterForm', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockUseInstance();
     mockUseRuleTemplate();
-    mockUseRole();
     mockDriver();
+    mockUseGlobalRuleTemplate();
   });
 
   afterEach(() => {
@@ -25,14 +27,16 @@ describe.skip('DataSource/DataSourceList/DataSourceListFilterForm', () => {
 
   test('should match snapshot', async () => {
     const { container } = render(
-      <DataSourceListFilterForm submit={jest.fn()} />
+      <DataSourceListFilterForm submit={jest.fn()} projectName={projectName} />
     );
     expect(container).toMatchSnapshot();
   });
 
   test('should submit filter info when user click search button', async () => {
     const submitFn = jest.fn();
-    render(<DataSourceListFilterForm submit={submitFn} />);
+    render(
+      <DataSourceListFilterForm submit={submitFn} projectName={projectName} />
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -58,7 +62,9 @@ describe.skip('DataSource/DataSourceList/DataSourceListFilterForm', () => {
 
   test('should reset all filter info when user click reset button', async () => {
     const submitFn = jest.fn();
-    render(<DataSourceListFilterForm submit={submitFn} />);
+    render(
+      <DataSourceListFilterForm submit={submitFn} projectName={projectName} />
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -80,7 +86,9 @@ describe.skip('DataSource/DataSourceList/DataSourceListFilterForm', () => {
 
   test('should reset a part of fields when user collapse filter', async () => {
     const submitFn = jest.fn();
-    render(<DataSourceListFilterForm submit={submitFn} />);
+    render(
+      <DataSourceListFilterForm submit={submitFn} projectName={projectName} />
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -109,7 +117,6 @@ describe.skip('DataSource/DataSourceList/DataSourceListFilterForm', () => {
         filter_db_port: undefined,
         filter_db_user: undefined,
         filter_rule_template_name: undefined,
-        filter_role_name: undefined,
         filter_db_type: undefined,
       })
     ).toBe(true);
