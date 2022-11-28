@@ -13,6 +13,13 @@ import EventEmitter from '../../../../../utils/EventEmitter';
 import EmitterKey from '../../../../../data/EmitterKey';
 import { WhitelistData } from '../../../__testData__';
 import { UpdateAuditWhitelistReqV1MatchTypeEnum } from '../../../../../api/common.enum';
+import { useParams } from 'react-router-dom';
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: jest.fn(),
+}));
+const projectName = 'default';
 
 // https://github.com/react-monaco-editor/react-monaco-editor/issues/176
 jest.mock('react-monaco-editor', () => {
@@ -22,8 +29,9 @@ jest.mock('react-monaco-editor', () => {
   };
 });
 
-describe.skip('Whitelist/WhitelistList/Modal/UpdateWhitelist', () => {
+describe('Whitelist/WhitelistList/Modal/UpdateWhitelist', () => {
   let dispatchMock: jest.Mock;
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   beforeEach(() => {
     jest.useFakeTimers();
@@ -34,6 +42,7 @@ describe.skip('Whitelist/WhitelistList/Modal/UpdateWhitelist', () => {
         selectWhitelist: WhitelistData[0],
       },
     });
+    useParamsMock.mockReturnValue({ projectName });
     const { scopeDispatch } = mockUseDispatch();
     dispatchMock = scopeDispatch;
   });
@@ -106,6 +115,7 @@ describe.skip('Whitelist/WhitelistList/Modal/UpdateWhitelist', () => {
       desc: 'whitelist desc',
       match_type: UpdateAuditWhitelistReqV1MatchTypeEnum.fp_match,
       value: 'select * from table1;',
+      project_name: projectName,
     });
 
     await waitFor(() => {

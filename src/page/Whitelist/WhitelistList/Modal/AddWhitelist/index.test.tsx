@@ -12,9 +12,17 @@ import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import EmitterKey from '../../../../../data/EmitterKey';
 import { CreateAuditWhitelistReqV1MatchTypeEnum } from '../../../../../api/common.enum';
+import { useParams } from 'react-router-dom';
 
-describe.skip('Whitelist/WhitelistList/Modal/AddWhitelist', () => {
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: jest.fn(),
+}));
+const projectName = 'default';
+
+describe('Whitelist/WhitelistList/Modal/AddWhitelist', () => {
   let dispatchMock: jest.Mock;
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   beforeEach(() => {
     jest.useFakeTimers();
@@ -23,6 +31,8 @@ describe.skip('Whitelist/WhitelistList/Modal/AddWhitelist', () => {
       whitelist: { modalStatus: { [ModalName.Add_Whitelist]: true } },
     });
     const { scopeDispatch } = mockUseDispatch();
+    useParamsMock.mockReturnValue({ projectName });
+
     dispatchMock = scopeDispatch;
   });
 
@@ -87,6 +97,7 @@ describe.skip('Whitelist/WhitelistList/Modal/AddWhitelist', () => {
       desc: 'whitelist desc',
       match_type: CreateAuditWhitelistReqV1MatchTypeEnum.exact_match,
       value: 'select * from table1;',
+      project_name: projectName,
     });
 
     await waitFor(() => {

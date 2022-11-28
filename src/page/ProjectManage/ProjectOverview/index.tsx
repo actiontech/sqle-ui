@@ -1,15 +1,6 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
-import {
-  Button,
-  Card,
-  Col,
-  PageHeader,
-  Row,
-  Space,
-  Spin,
-  Typography,
-} from 'antd';
+import { Button, Card, Col, PageHeader, Row, Spin, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
 import project from '../../../api/project';
 import statistic from '../../../api/statistic';
@@ -84,7 +75,7 @@ const ProjectOverview: React.FC = () => {
 
       <section className="padding-content">
         <EmptyBox if={!getProjectStatisticsLoading} defaultNode={<Spin />}>
-          <Row gutter={[{ xs: 8, sm: 30, md: 30, lg: 50 }, 32]}>
+          <Row gutter={[{ xs: 8, sm: 28, md: 28, lg: 48 }, 32]}>
             <Col className="gutter-row" span={8}>
               {renderCard(
                 t('projectManage.projectOverview.orderTotal'),

@@ -1,23 +1,43 @@
-import { fireEvent, render, waitFor, screen } from '@testing-library/react';
+import {
+  fireEvent,
+  render,
+  waitFor,
+  screen,
+  cleanup,
+} from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
+import { useParams } from 'react-router-dom';
 import WhitelistList from '.';
 import audit_whitelist from '../../../api/audit_whitelist';
+import { SystemRole } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
+import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
 import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 import { WhitelistData } from '../__testData__';
 
-describe.skip('Whitelist/WhitelistList', () => {
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: jest.fn(),
+}));
+const projectName = 'default';
+
+describe('Whitelist/WhitelistList', () => {
   let dispatchMock: jest.Mock;
   let getWhitelistSpy: jest.SpyInstance;
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   beforeEach(() => {
     jest.useFakeTimers();
     const { scopeDispatch } = mockUseDispatch();
     dispatchMock = scopeDispatch;
     getWhitelistSpy = mockGetWhitelistList();
-    mockUseSelector({ whitelist: { modalStatus: {} } });
+    mockUseSelector({
+      whitelist: { modalStatus: {} },
+      user: { role: SystemRole.admin, bindProjects: mockBindProjects },
+    });
+    useParamsMock.mockReturnValue({ projectName });
   });
 
   afterEach(() => {
@@ -42,6 +62,7 @@ describe.skip('Whitelist/WhitelistList', () => {
     expect(getWhitelistSpy).toBeCalledWith({
       page_index: '1',
       page_size: '10',
+      project_name: projectName,
     });
     expect(dispatchMock).toBeCalledWith({
       payload: {
@@ -119,6 +140,7 @@ describe.skip('Whitelist/WhitelistList', () => {
     expect(deleteWhiteListSpy).toBeCalledTimes(1);
     expect(deleteWhiteListSpy).toBeCalledWith({
       audit_whitelist_id: `${WhitelistData[0].audit_whitelist_id}`,
+      project_name: projectName,
     });
 
     await waitFor(() => {
@@ -144,5 +166,68 @@ describe.skip('Whitelist/WhitelistList', () => {
       EventEmitter.emit(EmitterKey.Refresh_Whitelist_List);
     });
     expect(getWhitelistSpy).toBeCalledTimes(2);
+  });
+
+  test('should hide the Create, Add, Edit feature when not currently a project manager or admin', async () => {
+    mockUseSelector({
+      whitelist: { modalStatus: {} },
+      user: {
+        role: SystemRole.admin,
+        bindProjects: [{ projectName: 'test', isManager: false }],
+      },
+    });
+
+    render(<WhitelistList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryAllByText('common.delete')[0]).toBeInTheDocument();
+    expect(screen.queryAllByText('common.edit')[0]).toBeInTheDocument();
+    expect(
+      screen.queryByText('whitelist.operate.addWhitelist')
+    ).toBeInTheDocument();
+
+    cleanup();
+    jest.clearAllMocks();
+
+    mockUseSelector({
+      whitelist: { modalStatus: {} },
+      user: {
+        role: '',
+        bindProjects: mockBindProjects,
+      },
+    });
+    render(<WhitelistList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryAllByText('common.delete')[0]).toBeInTheDocument();
+    expect(screen.queryAllByText('common.edit')[0]).toBeInTheDocument();
+    expect(
+      screen.queryByText('whitelist.operate.addWhitelist')
+    ).toBeInTheDocument();
+
+    cleanup();
+    jest.clearAllMocks();
+
+    mockUseSelector({
+      whitelist: { modalStatus: {} },
+      user: {
+        role: '',
+        bindProjects: [{ projectName: 'default', isManager: false }],
+      },
+    });
+    render(<WhitelistList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryByText('common.delete')).not.toBeInTheDocument();
+    expect(screen.queryByText('common.edit')).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('whitelist.operate.addWhitelist')
+    ).not.toBeInTheDocument();
   });
 });
