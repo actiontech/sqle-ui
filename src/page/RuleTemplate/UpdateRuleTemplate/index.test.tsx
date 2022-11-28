@@ -6,7 +6,11 @@ import {
   renderWithThemeAndRouter,
   renderWithThemeAndServerRouter,
 } from '../../../testUtils/customRender';
-import { resolveThreeSecond, mockDriver } from '../../../testUtils/mockRequest';
+import {
+  resolveThreeSecond,
+  mockDriver,
+  mockInstanceTip,
+} from '../../../testUtils/mockRequest';
 import {
   ruleTemplateData,
   ruleTemplateDataWithSpecialName,
@@ -16,6 +20,7 @@ import { allRulesWithType } from '../../Rule/__testData__';
 import { IRuleReqV1 } from '../../../api/common';
 
 const templateName = 'mysql-1';
+const projectName = 'default';
 
 jest.mock('react-router', () => {
   return {
@@ -24,14 +29,15 @@ jest.mock('react-router', () => {
   };
 });
 
-describe.skip('UpdateRuleTemplate', () => {
+describe('UpdateRuleTemplate', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
   beforeEach(() => {
     jest.useFakeTimers();
-    useParamsMock.mockReturnValue({ templateName });
+    useParamsMock.mockReturnValue({ templateName, projectName });
     mockGetRuleTemplate();
     mockGetAllRules();
     mockDriver();
+    mockInstanceTip();
   });
 
   afterEach(() => {
@@ -47,13 +53,13 @@ describe.skip('UpdateRuleTemplate', () => {
   };
 
   const mockGetRuleTemplate = () => {
-    const spy = jest.spyOn(rule_template, 'getRuleTemplateV1');
+    const spy = jest.spyOn(rule_template, 'getProjectRuleTemplateV1');
     spy.mockImplementation(() => resolveThreeSecond(ruleTemplateData));
     return spy;
   };
 
   const mockUpdateRuleTemplate = () => {
-    const spy = jest.spyOn(rule_template, 'updateRuleTemplateV1');
+    const spy = jest.spyOn(rule_template, 'updateProjectRuleTemplateV1');
     spy.mockImplementation(() => resolveThreeSecond({}));
     return spy;
   };
@@ -67,7 +73,7 @@ describe.skip('UpdateRuleTemplate', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('should jump to /rule/template when user click back btn', async () => {
+  test('should jump to /project/default/rule/template when user click back btn', async () => {
     const history = createMemoryHistory();
     renderWithThemeAndServerRouter(<UpdateRuleTemplate />, undefined, {
       history,
@@ -78,7 +84,7 @@ describe.skip('UpdateRuleTemplate', () => {
     expect(history.location.pathname).toBe('/');
     expect(screen.getByText('common.back')).toBeInTheDocument();
     fireEvent.click(screen.getByText('common.back'));
-    expect(history.location.pathname).toBe('/rule/template');
+    expect(history.location.pathname).toBe('/project/default/rule/template');
   });
 
   test('should jump to next step when user input all require fields', async () => {
@@ -97,6 +103,18 @@ describe.skip('UpdateRuleTemplate', () => {
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
     ).toBeDisabled();
+
+    fireEvent.mouseDown(
+      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
+    );
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const option = screen.getAllByText('mysql-test')[1];
+    expect(screen.queryByText('oracle-test')).not.toBeInTheDocument();
+    expect(option).toHaveClass('ant-select-item-option-content');
+    fireEvent.click(option);
 
     fireEvent.click(screen.getByText('common.nextStep'));
 
@@ -151,6 +169,8 @@ describe.skip('UpdateRuleTemplate', () => {
       rule_template_name: 'default_mysql',
       desc: 'rule template desc',
       rule_list: resultRuleName,
+      instance_name_list: ['mysql-test'],
+      project_name: projectName,
     });
   });
 

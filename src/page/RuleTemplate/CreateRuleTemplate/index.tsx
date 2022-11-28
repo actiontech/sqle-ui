@@ -99,6 +99,7 @@ const CreateRuleTemplate = () => {
           baseInfoSubmit={baseInfoFormSubmit}
           prevStep={prevStep}
           submit={submit}
+          projectName={projectName}
         >
           <Result
             status="success"

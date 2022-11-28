@@ -5,16 +5,31 @@ import {
   renderWithThemeAndRouter,
   renderWithThemeAndServerRouter,
 } from '../../../testUtils/customRender';
-import { resolveThreeSecond, mockDriver } from '../../../testUtils/mockRequest';
+import {
+  resolveThreeSecond,
+  mockDriver,
+  mockInstanceTip,
+} from '../../../testUtils/mockRequest';
 import { createMemoryHistory } from 'history';
 import { allRulesWithType } from '../../Rule/__testData__';
 import { IRuleReqV1 } from '../../../api/common';
+import { useParams } from 'react-router-dom';
 
-describe.skip('RuleTemplate/CreateRuleTemplate', () => {
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: jest.fn(),
+}));
+const projectName = 'default';
+
+describe('RuleTemplate/CreateRuleTemplate', () => {
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
+
   beforeEach(() => {
     jest.useFakeTimers();
     mockGetAllRules();
     mockDriver();
+    mockInstanceTip();
+    useParamsMock.mockReturnValue({ projectName });
   });
 
   afterEach(() => {
@@ -30,7 +45,7 @@ describe.skip('RuleTemplate/CreateRuleTemplate', () => {
   };
 
   const mockCreateTemplate = () => {
-    const spy = jest.spyOn(rule_template, 'createRuleTemplateV1');
+    const spy = jest.spyOn(rule_template, 'createProjectRuleTemplateV1');
     spy.mockImplementation(() => resolveThreeSecond({}));
     return spy;
   };
@@ -44,7 +59,7 @@ describe.skip('RuleTemplate/CreateRuleTemplate', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('should jump to /rule/template when user click back btn', async () => {
+  test('should jump to /project/default/rule/template when user click back btn', async () => {
     const history = createMemoryHistory();
     renderWithThemeAndServerRouter(<CreateRuleTemplate />, undefined, {
       history,
@@ -58,7 +73,7 @@ describe.skip('RuleTemplate/CreateRuleTemplate', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    expect(history.location.pathname).toBe('/rule/template');
+    expect(history.location.pathname).toBe('/project/default/rule/template');
   });
 
   test('should jump to next step when user input all require fields', async () => {
@@ -90,6 +105,15 @@ describe.skip('RuleTemplate/CreateRuleTemplate', () => {
     expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
     fireEvent.click(databaseTypeOption);
 
+    fireEvent.mouseDown(
+      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const option = screen.getAllByText('oracle-test')[1];
+    expect(option).toHaveClass('ant-select-item-option-content');
+    fireEvent.click(option);
     fireEvent.click(screen.getByText('common.nextStep'));
 
     await waitFor(() => {
@@ -143,6 +167,8 @@ describe.skip('RuleTemplate/CreateRuleTemplate', () => {
       rule_template_name: 'testRuleTemplateId',
       desc: 'rule template desc',
       rule_list: resultRuleName,
+      instance_name_list: ['oracle-test'],
+      project_name: projectName,
     });
     // await waitFor(() => {
     //   jest.advanceTimersByTime(3000);
@@ -150,7 +176,7 @@ describe.skip('RuleTemplate/CreateRuleTemplate', () => {
     // expect(screen.getByTestId('rule-list')).toHaveAttribute('hidden');
     // expect(screen.getByTestId('submit-result')).not.toHaveAttribute('hidden');
     // // fireEvent.click(screen.getByText('ruleTemplate.backToList'));
-    // // expect(history.location.pathname).toBe('/rule/template');
+    // // expect(history.location.pathname).toBe('/project/default/rule/template');
 
     // fireEvent.click(
     //   screen.getByText('ruleTemplate.createRuleTemplate.createNew')

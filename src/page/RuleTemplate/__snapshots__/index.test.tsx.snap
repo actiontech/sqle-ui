@@ -17,18 +17,18 @@ exports[`RuleTemplate should render page header and describe 1`] = `
       <Route
         component={[Function]}
         exact={true}
-        path="/rule/template"
+        path="/project/:projectName/rule/template"
       />
       <Route
         component={[Function]}
-        path="/rule/template/create"
+        path="/project/:projectName/rule/template/create"
       />
       <Route
         component={[Function]}
-        path="/rule/template/update/:templateName"
+        path="/project/:projectName/rule/template/update/:templateName"
       />
       <Redirect
-        to="/rule/template"
+        to="/project/:projectName/rule/template"
       />
     </Switch>
   </section>

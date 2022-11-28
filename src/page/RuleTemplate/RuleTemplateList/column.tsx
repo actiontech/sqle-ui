@@ -45,7 +45,7 @@ export const RuleTemplateListTableColumnFactory = (
             <Link
               to={`/project/${projectName}/rule/template/update/${record.rule_template_name}`}
             >
-              <Typography.Link>{i18n.t('common.edit')}</Typography.Link>
+              {i18n.t('common.edit')}
             </Link>
             <Divider type="vertical" />
             <Popconfirm

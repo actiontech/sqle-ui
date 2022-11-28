@@ -6,7 +6,7 @@ import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
 import { allRulesWithType } from '../../Rule/__testData__';
 import { mockDriver } from '../../../testUtils/mockRequest';
 
-describe.skip('RuleTemplate/RuleTemplateForm', () => {
+describe('RuleTemplate/RuleTemplateForm', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockDriver();
@@ -30,6 +30,7 @@ describe.skip('RuleTemplate/RuleTemplateForm', () => {
         baseInfoSubmit={jest.fn()}
         prevStep={jest.fn()}
         submit={jest.fn()}
+        projectName="default"
       >
         this is children
       </RuleTemplateForm>
