@@ -105,11 +105,11 @@ exports[`test ProjectOverview should match snapshot 1`] = `
     >
       <div
         class="ant-row"
-        style="margin: -16px -25px -16px -25px;"
+        style="margin: -16px -24px -16px -24px;"
       >
         <div
           class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 25px 16px 25px;"
+          style="padding: 16px 24px 16px 24px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -140,7 +140,7 @@ exports[`test ProjectOverview should match snapshot 1`] = `
         </div>
         <div
           class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 25px 16px 25px;"
+          style="padding: 16px 24px 16px 24px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -171,7 +171,7 @@ exports[`test ProjectOverview should match snapshot 1`] = `
         </div>
         <div
           class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 25px 16px 25px;"
+          style="padding: 16px 24px 16px 24px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -202,7 +202,7 @@ exports[`test ProjectOverview should match snapshot 1`] = `
         </div>
         <div
           class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 25px 16px 25px;"
+          style="padding: 16px 24px 16px 24px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -233,7 +233,7 @@ exports[`test ProjectOverview should match snapshot 1`] = `
         </div>
         <div
           class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 25px 16px 25px;"
+          style="padding: 16px 24px 16px 24px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -264,7 +264,7 @@ exports[`test ProjectOverview should match snapshot 1`] = `
         </div>
         <div
           class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 25px 16px 25px;"
+          style="padding: 16px 24px 16px 24px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -404,11 +404,11 @@ exports[`test ProjectOverview should match snapshot when get project statistics 
     >
       <div
         class="ant-row"
-        style="margin: -16px -25px -16px -25px;"
+        style="margin: -16px -24px -16px -24px;"
       >
         <div
           class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 25px 16px 25px;"
+          style="padding: 16px 24px 16px 24px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -439,7 +439,7 @@ exports[`test ProjectOverview should match snapshot when get project statistics 
         </div>
         <div
           class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 25px 16px 25px;"
+          style="padding: 16px 24px 16px 24px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -470,7 +470,7 @@ exports[`test ProjectOverview should match snapshot when get project statistics 
         </div>
         <div
           class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 25px 16px 25px;"
+          style="padding: 16px 24px 16px 24px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -501,7 +501,7 @@ exports[`test ProjectOverview should match snapshot when get project statistics 
         </div>
         <div
           class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 25px 16px 25px;"
+          style="padding: 16px 24px 16px 24px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -532,7 +532,7 @@ exports[`test ProjectOverview should match snapshot when get project statistics 
         </div>
         <div
           class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 25px 16px 25px;"
+          style="padding: 16px 24px 16px 24px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
@@ -563,7 +563,7 @@ exports[`test ProjectOverview should match snapshot when get project statistics 
         </div>
         <div
           class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 25px 16px 25px;"
+          style="padding: 16px 24px 16px 24px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
