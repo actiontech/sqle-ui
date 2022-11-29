@@ -165,23 +165,6 @@ describe('RuleTemplate/RuleTemplateList', () => {
     expect(getRuleTemplateListSpy).toBeCalledTimes(2);
   });
 
-  // test('should hide the creation button and the action column when the user role is not an admin', () => {
-  //   mockUseSelector({
-  //     ruleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
-  //     user: {
-  //       role: 'test',
-  //       bind
-  //     },
-  //   });
-
-  //   renderWithRouter(<RuleTemplateList />);
-
-  //   expect(
-  //     screen.queryByText('ruleTemplate.createRuleTemplate.button')
-  //   ).not.toBeInTheDocument();
-
-  //   expect(screen.queryByText('common.operate')).not.toBeInTheDocument();
-  // });
   test('should hide the Create, Add, Edit feature when not currently a project manager or admin', async () => {
     mockUseSelector({
       ruleTemplate: {
