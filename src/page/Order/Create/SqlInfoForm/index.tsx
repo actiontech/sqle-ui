@@ -16,7 +16,6 @@ import TestDatabaseConnectButton from '../../../../components/TestDatabaseConnec
 import { ResponseCode, PageFormLayout } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import EventEmitter from '../../../../utils/EventEmitter';
-import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 import {
   SqlStatementForm,
   SqlStatementFormTabs,
@@ -29,7 +28,6 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   const { t } = useTranslation();
   const alreadySubmit = useRef(false);
   const sqlStatementFormTabsRef = useRef<SqlStatementFormTabsRefType>(null);
-  const { projectName } = useCurrentProjectName();
   const [currentSqlMode, setCurrentSqlMode] = useState(
     WorkflowResV1ModeEnum.same_sqls
   );
@@ -73,7 +71,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
     testStart();
     const params: IBatchCheckInstanceIsConnectableByNameParams = {
       instances: instanceNameList.map((v) => ({ name: v ?? '' })),
-      project_name: projectName,
+      project_name: props.projectName,
     };
     instance
       .batchCheckInstanceIsConnectableByName(params)
@@ -98,7 +96,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
       });
   }, [
     instanceNameList,
-    projectName,
+    props.projectName,
     setConnectAble,
     setConnectInitHideFalse,
     testFinish,
@@ -186,9 +184,9 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
           form={props.form}
           instanceNameChange={props.instanceNameChange}
           setInstanceNames={setInstanceNames}
-          currentSqlMode={currentSqlMode}
           setChangeSqlModeDisabled={setChangeSqlModeDisabledAndSetValue}
           clearTaskInfoWithKey={props.clearTaskInfoWithKey}
+          projectName={props.projectName}
         />
         <Form.Item label=" " colon={false} hidden={!testConnectVisible}>
           <TestDatabaseConnectButton

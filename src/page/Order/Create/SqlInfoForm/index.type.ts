@@ -1,5 +1,4 @@
 import { FormInstance } from 'antd';
-import { WorkflowResV1ModeEnum } from '../../../../api/common.enum';
 import { SqlStatementFields } from '../../SqlStatementFormTabs';
 
 export type SqlInfoFormProps = {
@@ -13,6 +12,7 @@ export type SqlInfoFormProps = {
   instanceNameChange?: (name: string) => void;
   clearTaskInfos: () => void;
   clearTaskInfoWithKey: (key: string) => void;
+  projectName: string;
 };
 
 export type DatabaseInfoFields = {
@@ -28,11 +28,10 @@ export type SqlInfoFormFields = {
 
 export type DatabaseInfoProps = Pick<
   SqlInfoFormProps,
-  'form' | 'instanceNameChange' | 'clearTaskInfoWithKey'
+  'form' | 'instanceNameChange' | 'clearTaskInfoWithKey' | 'projectName'
 > & {
   setInstanceNames: React.Dispatch<React.SetStateAction<InstanceNamesType>>;
   setChangeSqlModeDisabled: (disabled: boolean) => void;
-  currentSqlMode: WorkflowResV1ModeEnum;
 };
 
 export type SqlContentFields = Pick<

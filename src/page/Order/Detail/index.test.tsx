@@ -25,7 +25,6 @@ import {
   getBySelector,
 } from '../../../testUtils/customQuery';
 import { SupportTheme } from '../../../theme';
-import instance from '../../../api/instance';
 import { AuditTaskResV1AuditLevelEnum } from '../../../api/common.enum';
 
 jest.mock('react-router', () => {
@@ -35,7 +34,10 @@ jest.mock('react-router', () => {
   };
 });
 
-describe.skip('Order/Detail', () => {
+const projectName = 'default';
+const orderId = '1';
+
+describe('Order/Detail', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   let getInstanceSummarySpy: jest.SpyInstance;
@@ -56,7 +58,7 @@ describe.skip('Order/Detail', () => {
       error(message);
     });
 
-    useParamsMock.mockReturnValue({ orderId: '1' });
+    useParamsMock.mockReturnValue({ orderId, projectName });
     mockUseSelector({ user: { username: 'admin', theme: SupportTheme.LIGHT } });
     mockUseDispatch();
     mockGetInstanceWorkflowTemplate();
@@ -72,13 +74,13 @@ describe.skip('Order/Detail', () => {
   });
 
   const mockGetInstanceWorkflowTemplate = () => {
-    const spy = jest.spyOn(instance, 'getInstanceWorkflowTemplateV1');
+    const spy = jest.spyOn(workflow, 'getWorkflowTemplateV1');
     spy.mockImplementation(() => resolveThreeSecond(instanceWorkflowTemplate));
     return spy;
   };
 
   const mockGetWorkflow = () => {
-    const spy = jest.spyOn(workflow, 'getWorkflowV2');
+    const spy = jest.spyOn(workflow, 'getWorkflowV1');
     spy.mockImplementation(() => resolveThreeSecond(order));
     return spy;
   };
@@ -152,7 +154,10 @@ describe.skip('Order/Detail', () => {
     mockGetTaskSqls();
     const { container } = renderWithThemeAndRouter(<Order />);
     expect(getWorkflowSpy).toBeCalledTimes(1);
-    expect(getWorkflowSpy).toBeCalledWith({ workflow_id: 1 });
+    expect(getWorkflowSpy).toBeCalledWith({
+      workflow_name: orderId,
+      project_name: projectName,
+    });
     expect(getTaskSpy).not.toBeCalled();
     expect(container).toMatchSnapshot();
     await waitFor(() => {
@@ -175,7 +180,10 @@ describe.skip('Order/Detail', () => {
     const getTaskSpy = mockGetTask();
     renderWithThemeAndRouter(<Order />);
     expect(getWorkflowSpy).toBeCalledTimes(1);
-    expect(getWorkflowSpy).toBeCalledWith({ workflow_id: 1 });
+    expect(getWorkflowSpy).toBeCalledWith({
+      workflow_name: orderId,
+      project_name: projectName,
+    });
     expect(getTaskSpy).not.toBeCalled();
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -200,7 +208,10 @@ describe.skip('Order/Detail', () => {
     mockGetTaskSqls();
     renderWithThemeAndRouter(<Order />);
     expect(getWorkflowSpy).toBeCalledTimes(1);
-    expect(getWorkflowSpy).toBeCalledWith({ workflow_id: 1 });
+    expect(getWorkflowSpy).toBeCalledWith({
+      workflow_name: orderId,
+      project_name: projectName,
+    });
     expect(getTaskSpy).not.toBeCalled();
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -221,7 +232,10 @@ describe.skip('Order/Detail', () => {
     mockGetTaskSqls();
     renderWithThemeAndRouter(<Order />);
     expect(getWorkflowSpy).toBeCalledTimes(1);
-    expect(getWorkflowSpy).toBeCalledWith({ workflow_id: 1 });
+    expect(getWorkflowSpy).toBeCalledWith({
+      workflow_name: orderId,
+      project_name: projectName,
+    });
     expect(getTaskSpy).not.toBeCalled();
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -247,7 +261,10 @@ describe.skip('Order/Detail', () => {
     mockGetTaskSqls();
     renderWithThemeAndRouter(<Order />);
     expect(getWorkflowSpy).toBeCalledTimes(1);
-    expect(getWorkflowSpy).toBeCalledWith({ workflow_id: 1 });
+    expect(getWorkflowSpy).toBeCalledWith({
+      workflow_name: orderId,
+      project_name: projectName,
+    });
     expect(getTaskSpy).not.toBeCalled();
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -269,7 +286,7 @@ describe.skip('Order/Detail', () => {
     mockGetTask();
     mockGetTaskSqls();
 
-    const resolveOrderSpy = jest.spyOn(workflow, 'executeTasksOnWorkflowV2');
+    const resolveOrderSpy = jest.spyOn(workflow, 'executeTasksOnWorkflowV1');
     resolveOrderSpy.mockImplementation(() => resolveThreeSecond({}));
     renderWithThemeAndRouter(<Order />);
     expect(getWorkflowSpy).toBeCalledTimes(1);
@@ -284,7 +301,8 @@ describe.skip('Order/Detail', () => {
     fireEvent.click(screen.getByText('order.operator.batchSqlExecute'));
     expect(resolveOrderSpy).toBeCalledTimes(1);
     expect(resolveOrderSpy).toBeCalledWith({
-      workflow_id: String(order.workflow_id),
+      workflow_name: order.workflow_name,
+      project_name: projectName,
     });
 
     await waitFor(() => {
@@ -339,8 +357,9 @@ describe.skip('Order/Detail', () => {
 
     expect(rejectOrderSpy).toBeCalledTimes(1);
     expect(rejectOrderSpy).toBeCalledWith({
+      project_name: projectName,
       reason: 'test reason',
-      workflow_id: String(order.workflow_id),
+      workflow_name: order.workflow_name,
       workflow_step_id: String(
         order.record?.workflow_step_list?.[
           (order.record?.current_step_number ?? 0) - 1
@@ -398,6 +417,7 @@ describe.skip('Order/Detail', () => {
     });
     expect(createAuditTaskSpy).toBeCalledWith({
       instances: [{ instance_name: 'db1', instance_schema: '' }],
+      project_name: projectName,
     });
     expect(auditTaskGroupIdSpy).toBeCalledTimes(0);
     await waitFor(() => {
@@ -414,14 +434,6 @@ describe.skip('Order/Detail', () => {
       'ant-btn-loading'
     );
 
-    // await waitFor(() => {
-    //   jest.advanceTimersByTime(3000);
-    // });
-    // Modal shouldComponentUpdate return false, so this case can't pass;
-    // expect(screen.getByText('common.submit').parentNode).not.toHaveClass(
-    //   'ant-btn-loading'
-    // );
-
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -432,7 +444,7 @@ describe.skip('Order/Detail', () => {
     const getWorkflowSpy = mockGetWorkflow();
     getWorkflowSpy.mockImplementation(() => resolveThreeSecond(orderReject));
 
-    const workflowUpdateSpy = jest.spyOn(workflow, 'updateWorkflowV2');
+    const workflowUpdateSpy = jest.spyOn(workflow, 'updateWorkflowV1');
     workflowUpdateSpy.mockImplementation(() => resolveThreeSecond({}));
     mockCreateAuditTasksV1();
     mockAuditTaskGroupId();
@@ -475,7 +487,8 @@ describe.skip('Order/Detail', () => {
     expect(workflowUpdateSpy).toBeCalledTimes(1);
     expect(workflowUpdateSpy).toBeCalledWith({
       task_ids: [27],
-      workflow_id: `${orderReject.workflow_id}`,
+      workflow_name: orderReject.workflow_name,
+      project_name: projectName,
     });
     expect(screen.getByText('order.modifySql.updateOrder')).toBeInTheDocument();
     expect(
@@ -544,7 +557,7 @@ describe.skip('Order/Detail', () => {
     const getWorkflowSpy = mockGetWorkflow();
     getWorkflowSpy.mockImplementation(() => resolveThreeSecond(orderReject));
 
-    const workflowUpdateSpy = jest.spyOn(workflow, 'updateWorkflowV2');
+    const workflowUpdateSpy = jest.spyOn(workflow, 'updateWorkflowV1');
     workflowUpdateSpy.mockImplementation(() => resolveThreeSecond({}));
 
     mockCreateAuditTasksV1();
@@ -624,7 +637,7 @@ describe.skip('Order/Detail', () => {
     const getWorkflowSpy = mockGetWorkflow();
     getWorkflowSpy.mockImplementation(() => resolveThreeSecond(orderReject));
 
-    const workflowUpdateSpy = jest.spyOn(workflow, 'updateWorkflowV2');
+    const workflowUpdateSpy = jest.spyOn(workflow, 'updateWorkflowV1');
     workflowUpdateSpy.mockImplementation(() => resolveThreeSecond({}));
 
     mockGetTask();

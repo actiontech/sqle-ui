@@ -538,7 +538,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                     class="ant-table-tbody"
                                   >
                                     <tr
-                                      class="ant-table-row ant-table-row-level-0"
+                                      class="ant-table-row ant-table-row-level-0 pointer"
                                       data-row-key="27"
                                     >
                                       <td
@@ -624,7 +624,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                       </td>
                                     </tr>
                                     <tr
-                                      class="ant-table-row ant-table-row-level-0"
+                                      class="ant-table-row ant-table-row-level-0 pointer"
                                       data-row-key="28"
                                     >
                                       <td
@@ -712,7 +712,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                       </td>
                                     </tr>
                                     <tr
-                                      class="ant-table-row ant-table-row-level-0"
+                                      class="ant-table-row ant-table-row-level-0 pointer"
                                       data-row-key="29"
                                     >
                                       <td
@@ -795,7 +795,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                       </td>
                                     </tr>
                                     <tr
-                                      class="ant-table-row ant-table-row-level-0"
+                                      class="ant-table-row ant-table-row-level-0 pointer"
                                       data-row-key="30"
                                     >
                                       <td
@@ -2626,7 +2626,7 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                                     class="ant-table-tbody"
                                   >
                                     <tr
-                                      class="ant-table-row ant-table-row-level-0"
+                                      class="ant-table-row ant-table-row-level-0 pointer"
                                       data-row-key="27"
                                     >
                                       <td
@@ -2712,7 +2712,7 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                                       </td>
                                     </tr>
                                     <tr
-                                      class="ant-table-row ant-table-row-level-0"
+                                      class="ant-table-row ant-table-row-level-0 pointer"
                                       data-row-key="28"
                                     >
                                       <td
@@ -2800,7 +2800,7 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                                       </td>
                                     </tr>
                                     <tr
-                                      class="ant-table-row ant-table-row-level-0"
+                                      class="ant-table-row ant-table-row-level-0 pointer"
                                       data-row-key="29"
                                     >
                                       <td
@@ -2883,7 +2883,7 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                                       </td>
                                     </tr>
                                     <tr
-                                      class="ant-table-row ant-table-row-level-0"
+                                      class="ant-table-row ant-table-row-level-0 pointer"
                                       data-row-key="30"
                                     >
                                       <td
@@ -3539,7 +3539,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                     class="ant-table-tbody"
                                   >
                                     <tr
-                                      class="ant-table-row ant-table-row-level-0"
+                                      class="ant-table-row ant-table-row-level-0 pointer"
                                       data-row-key="27"
                                     >
                                       <td
@@ -3625,7 +3625,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                       </td>
                                     </tr>
                                     <tr
-                                      class="ant-table-row ant-table-row-level-0"
+                                      class="ant-table-row ant-table-row-level-0 pointer"
                                       data-row-key="28"
                                     >
                                       <td
@@ -3713,7 +3713,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                       </td>
                                     </tr>
                                     <tr
-                                      class="ant-table-row ant-table-row-level-0"
+                                      class="ant-table-row ant-table-row-level-0 pointer"
                                       data-row-key="29"
                                     >
                                       <td
@@ -3796,7 +3796,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                       </td>
                                     </tr>
                                     <tr
-                                      class="ant-table-row ant-table-row-level-0"
+                                      class="ant-table-row ant-table-row-level-0 pointer"
                                       data-row-key="30"
                                     >
                                       <td

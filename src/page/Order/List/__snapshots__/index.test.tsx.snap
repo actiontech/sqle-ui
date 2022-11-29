@@ -22,7 +22,7 @@ exports[`Order/List should can batch close order 1`] = `
         class="ant-page-header-heading-extra"
       >
         <a
-          href="/order/create"
+          href="/project/default/order/create"
         >
           <button
             class="ant-btn ant-btn-primary"
@@ -1053,7 +1053,7 @@ exports[`Order/List should can batch close order 2`] = `
           class="ant-page-header-heading-extra"
         >
           <a
-            href="/order/create"
+            href="/project/default/order/create"
           >
             <button
               class="ant-btn ant-btn-primary"
@@ -2084,7 +2084,7 @@ exports[`Order/List should render order list by response data 1`] = `
         class="ant-page-header-heading-extra"
       >
         <a
-          href="/order/create"
+          href="/project/default/order/create"
         >
           <button
             class="ant-btn ant-btn-primary"
@@ -3114,7 +3114,7 @@ exports[`Order/List should render order list by response data 2`] = `
         class="ant-page-header-heading-extra"
       >
         <a
-          href="/order/create"
+          href="/project/default/order/create"
         >
           <button
             class="ant-btn ant-btn-primary"
@@ -4030,7 +4030,7 @@ exports[`Order/List should render order list by response data 2`] = `
                           >
                             <tr
                               class="ant-table-row ant-table-row-level-0"
-                              data-row-key="1"
+                              data-row-key="order123"
                             >
                               <td
                                 class="ant-table-cell ant-table-selection-column"

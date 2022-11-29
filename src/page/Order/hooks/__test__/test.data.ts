@@ -38,11 +38,13 @@ export const differenceSqlValues: SqlInfoFormFields = {
 
 export const taskInfosLeverIsError = [
   {
+    projectName: 'default',
     instanceName: 'test1',
     currentAuditLevel:
       WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.error,
   },
   {
+    projectName: 'default',
     instanceName: 'test2',
     currentAuditLevel:
       WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.normal,
@@ -51,11 +53,13 @@ export const taskInfosLeverIsError = [
 
 export const taskInfosLeverIsNormal = [
   {
+    projectName: 'default',
     instanceName: 'test3',
     currentAuditLevel:
       WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.normal,
   },
   {
+    projectName: 'default',
     instanceName: 'test4',
     currentAuditLevel:
       WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.normal,

@@ -8,7 +8,6 @@ import {
 import moment from 'moment';
 import { IMaintenanceTimeResV1 } from '../../../../api/common';
 import { getBySelector } from '../../../../testUtils/customQuery';
-import { orderWithExecScheduled3 } from '../../Detail/__testData__';
 import ScheduleTimeModal from '../ScheduleTimeModal';
 
 const maintenanceTime: IMaintenanceTimeResV1[] = [];

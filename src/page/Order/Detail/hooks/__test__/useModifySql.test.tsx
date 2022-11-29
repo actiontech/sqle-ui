@@ -1,6 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 import { WorkflowResV1ModeEnum } from '../../../../../api/common.enum';
-import instance from '../../../../../api/instance';
 import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
 import useModifySql from '../useModifySql';
 import { instanceWorkflowTemplate, taskInfo } from '../../__testData__';
@@ -10,17 +9,28 @@ import {
 } from '../../../hooks/__test__/test.data';
 import task from '../../../../../api/task';
 import { waitFor } from '@testing-library/react';
+import workflow from '../../../../../api/workflow';
+import { useParams } from 'react-router-dom';
 
-describe.skip('Order/useModifySql', () => {
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: jest.fn(),
+}));
+const projectName = 'default';
+
+describe('Order/useModifySql', () => {
   let createAuditTasksSpy: jest.SpyInstance;
   let auditTasksGroupIdSpy: jest.SpyInstance;
   let createAndAuditTaskSpy: jest.SpyInstance;
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
+
   beforeEach(() => {
     jest.useFakeTimers();
     mockGetInstanceWorkflowTemplate();
     createAuditTasksSpy = mockCreateAuditTasks();
     auditTasksGroupIdSpy = mockAuditTaskGroupId();
     createAndAuditTaskSpy = mockCreateAndAuditTask();
+    useParamsMock.mockReturnValue({ projectName });
   });
 
   afterEach(() => {
@@ -57,7 +67,7 @@ describe.skip('Order/useModifySql', () => {
   };
 
   const mockGetInstanceWorkflowTemplate = () => {
-    const spy = jest.spyOn(instance, 'getInstanceWorkflowTemplateV1');
+    const spy = jest.spyOn(workflow, 'getWorkflowTemplateV1');
     spy.mockImplementation(() => resolveThreeSecond(instanceWorkflowTemplate));
     return spy;
   };

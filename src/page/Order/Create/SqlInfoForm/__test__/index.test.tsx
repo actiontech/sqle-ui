@@ -21,9 +21,9 @@ import EventEmitter from '../../../../../utils/EventEmitter';
 import { SQLInputType } from '../../index.enum';
 import { SqlInfoFormFields, SqlInfoFormProps } from '../index.type';
 
-describe.skip('order/create/sqlInfoForm', () => {
+describe('order/create/sqlInfoForm', () => {
   const mockSubmit = jest.fn();
-
+  const projectName = 'default';
   const updateDirtyDataMock = jest.fn();
   const clearTaskInfos = jest.fn();
   const clearTaskInfoWithKey = jest.fn();
@@ -67,6 +67,7 @@ describe.skip('order/create/sqlInfoForm', () => {
         updateDirtyData={updateDirtyDataMock}
         clearTaskInfos={clearTaskInfos}
         clearTaskInfoWithKey={clearTaskInfoWithKey}
+        projectName={projectName}
         {...props}
       />
     );
@@ -119,6 +120,7 @@ describe.skip('order/create/sqlInfoForm', () => {
     );
     expect(checkInstanceConnectSpy).toBeCalledTimes(1);
     expect(checkInstanceConnectSpy).toBeCalledWith({
+      project_name: projectName,
       instances: [
         {
           name: 'instance1',
@@ -418,6 +420,7 @@ describe.skip('order/create/sqlInfoForm', () => {
     );
     expect(checkInstanceConnectSpy).toBeCalledTimes(1);
     expect(checkInstanceConnectSpy).toBeCalledWith({
+      project_name: projectName,
       instances: [
         {
           name: 'instance1',

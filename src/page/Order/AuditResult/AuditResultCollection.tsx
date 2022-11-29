@@ -83,6 +83,11 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
     });
   };
 
+  const overviewTableRowClick = (record: IGetWorkflowTasksItemV1) => {
+    setCurrentTask(record);
+    setAuditResultActiveKey(record.task_id?.toString() ?? '');
+  };
+
   const {
     loading,
     data: overviewList,
@@ -122,6 +127,7 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
                 key={OVERVIEW_TAB_KEY}
               >
                 <Table
+                  rowClassName="pointer"
                   rowKey="task_id"
                   loading={loading}
                   columns={auditResultOverviewColumn(
@@ -134,9 +140,7 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
                   dataSource={overviewList ?? []}
                   onRow={(record) => {
                     return {
-                      onClick: () => {
-                        setCurrentTask(record);
-                      },
+                      onClick: () => overviewTableRowClick(record),
                     };
                   }}
                   pagination={false}
