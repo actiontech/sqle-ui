@@ -20,14 +20,14 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 1`] = `
           class="ant-card-extra"
         >
           <a
-            href="/progress"
+            href="/project/default/progress/update/undefined"
           >
             <button
               class="ant-btn ant-btn-primary"
               type="button"
             >
               <span>
-                common.back
+                workflowTemplate.detail.updateTemplate
               </span>
             </button>
           </a>
@@ -41,109 +41,7 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 1`] = `
         class="ant-row"
       >
         <div
-          class="ant-col ant-col-8"
-        >
-          <h5
-            class="ant-typography"
-          >
-            workflowTemplate.detail.title.base
-          </h5>
-          <div
-            class="ant-descriptions"
-          >
-            <div
-              class="ant-descriptions-view"
-            >
-              <table>
-                <tbody>
-                  <tr
-                    class="ant-descriptions-row"
-                  >
-                    <td
-                      class="ant-descriptions-item"
-                      colspan="3"
-                    >
-                      <div
-                        class="ant-descriptions-item-container"
-                      >
-                        <span
-                          class="ant-descriptions-item-label"
-                        >
-                          workflowTemplate.form.label.name
-                        </span>
-                        <span
-                          class="ant-descriptions-item-content"
-                        >
-                          --
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr
-                    class="ant-descriptions-row"
-                  >
-                    <td
-                      class="ant-descriptions-item"
-                      colspan="3"
-                    >
-                      <div
-                        class="ant-descriptions-item-container"
-                      >
-                        <span
-                          class="ant-descriptions-item-label"
-                        >
-                          workflowTemplate.form.label.desc
-                        </span>
-                        <span
-                          class="ant-descriptions-item-content"
-                        >
-                          --
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr
-                    class="ant-descriptions-row"
-                  >
-                    <td
-                      class="ant-descriptions-item"
-                      colspan="3"
-                    >
-                      <div
-                        class="ant-descriptions-item-container"
-                      >
-                        <span
-                          class="ant-descriptions-item-label"
-                        >
-                          workflowTemplate.form.label.instanceNameList
-                        </span>
-                        <span
-                          class="ant-descriptions-item-content"
-                        >
-                          --
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <a
-            href="/progress/update/undefined"
-          >
-            <button
-              class="ant-btn ant-btn-primary"
-              type="button"
-            >
-              <span>
-                workflowTemplate.detail.updateTemplate
-              </span>
-            </button>
-          </a>
-        </div>
-        <div
-          class="ant-col ant-col-12"
+          class="ant-col ant-col-24"
         >
           <h5
             class="ant-typography"
@@ -223,50 +121,30 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 1`] = `
                     class="ant-steps-item-description"
                   >
                     <div
-                      class="ant-row"
+                      class="ant-space ant-space-vertical full-width-element"
                     >
                       <div
-                        class="ant-col ant-col-10"
+                        class="ant-space-item"
+                        style="margin-bottom: 24px;"
                       >
-                        <div
-                          class="ant-space ant-space-vertical full-width-element"
-                        >
-                          <div
-                            class="ant-space-item"
-                            style="margin-bottom: 24px;"
+                        <span>
+                          workflowTemplate.form.label.execUser
+                           : 
+                          
+                        </span>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span>
+                          <span
+                            class="text-black"
                           >
-                            <div
-                              class="ant-row"
-                            >
-                              <div
-                                class="ant-col ant-col-5"
-                              >
-                                workflowTemplate.form.label.execUser
-                                :
-                              </div>
-                              <div
-                                class="ant-col ant-col-18"
-                              />
-                            </div>
-                          </div>
-                          <div
-                            class="ant-space-item"
-                          >
-                            <div
-                              class="ant-row"
-                            >
-                              <div
-                                class="ant-col ant-col-5 text-black"
-                              >
-                                workflowTemplate.form.label.reviewDesc
-                                :
-                              </div>
-                              <div
-                                class="ant-col ant-col-18"
-                              />
-                            </div>
-                          </div>
-                        </div>
+                            workflowTemplate.form.label.reviewDesc
+                             : 
+                          </span>
+                          
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -301,14 +179,14 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 2`] = `
           class="ant-card-extra"
         >
           <a
-            href="/progress"
+            href="/project/default/progress/update/db1"
           >
             <button
               class="ant-btn ant-btn-primary"
               type="button"
             >
               <span>
-                common.back
+                workflowTemplate.detail.updateTemplate
               </span>
             </button>
           </a>
@@ -322,109 +200,7 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 2`] = `
         class="ant-row"
       >
         <div
-          class="ant-col ant-col-8"
-        >
-          <h5
-            class="ant-typography"
-          >
-            workflowTemplate.detail.title.base
-          </h5>
-          <div
-            class="ant-descriptions"
-          >
-            <div
-              class="ant-descriptions-view"
-            >
-              <table>
-                <tbody>
-                  <tr
-                    class="ant-descriptions-row"
-                  >
-                    <td
-                      class="ant-descriptions-item"
-                      colspan="3"
-                    >
-                      <div
-                        class="ant-descriptions-item-container"
-                      >
-                        <span
-                          class="ant-descriptions-item-label"
-                        >
-                          workflowTemplate.form.label.name
-                        </span>
-                        <span
-                          class="ant-descriptions-item-content"
-                        >
-                          db1
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr
-                    class="ant-descriptions-row"
-                  >
-                    <td
-                      class="ant-descriptions-item"
-                      colspan="3"
-                    >
-                      <div
-                        class="ant-descriptions-item-container"
-                      >
-                        <span
-                          class="ant-descriptions-item-label"
-                        >
-                          workflowTemplate.form.label.desc
-                        </span>
-                        <span
-                          class="ant-descriptions-item-content"
-                        >
-                          123
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr
-                    class="ant-descriptions-row"
-                  >
-                    <td
-                      class="ant-descriptions-item"
-                      colspan="3"
-                    >
-                      <div
-                        class="ant-descriptions-item-container"
-                      >
-                        <span
-                          class="ant-descriptions-item-label"
-                        >
-                          workflowTemplate.form.label.instanceNameList
-                        </span>
-                        <span
-                          class="ant-descriptions-item-content"
-                        >
-                          db1
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <a
-            href="/progress/update/db1"
-          >
-            <button
-              class="ant-btn ant-btn-primary"
-              type="button"
-            >
-              <span>
-                workflowTemplate.detail.updateTemplate
-              </span>
-            </button>
-          </a>
-        </div>
-        <div
-          class="ant-col ant-col-12"
+          class="ant-col ant-col-24"
         >
           <h5
             class="ant-typography"
@@ -504,52 +280,30 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 2`] = `
                     class="ant-steps-item-description"
                   >
                     <div
-                      class="ant-row"
+                      class="ant-space ant-space-vertical full-width-element"
                     >
                       <div
-                        class="ant-col ant-col-10"
+                        class="ant-space-item"
+                        style="margin-bottom: 24px;"
                       >
-                        <div
-                          class="ant-space ant-space-vertical full-width-element"
-                        >
-                          <div
-                            class="ant-space-item"
-                            style="margin-bottom: 24px;"
+                        <span>
+                          workflowTemplate.form.label.reviewUser
+                           : 
+                          admin
+                        </span>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span>
+                          <span
+                            class="text-black"
                           >
-                            <div
-                              class="ant-row"
-                            >
-                              <div
-                                class="ant-col ant-col-5"
-                              >
-                                workflowTemplate.form.label.reviewUser
-                              </div>
-                              <div
-                                class="ant-col ant-col-18"
-                              >
-                                admin
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            class="ant-space-item"
-                          >
-                            <div
-                              class="ant-row"
-                            >
-                              <div
-                                class="ant-col ant-col-5 text-black"
-                              >
-                                workflowTemplate.form.label.reviewDesc
-                              </div>
-                              <div
-                                class="ant-col ant-col-18"
-                              >
-                                1
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                            workflowTemplate.form.label.reviewDesc
+                             : 
+                          </span>
+                          1
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -592,52 +346,30 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 2`] = `
                     class="ant-steps-item-description"
                   >
                     <div
-                      class="ant-row"
+                      class="ant-space ant-space-vertical full-width-element"
                     >
                       <div
-                        class="ant-col ant-col-10"
+                        class="ant-space-item"
+                        style="margin-bottom: 24px;"
                       >
-                        <div
-                          class="ant-space ant-space-vertical full-width-element"
-                        >
-                          <div
-                            class="ant-space-item"
-                            style="margin-bottom: 24px;"
+                        <span>
+                          workflowTemplate.form.label.reviewUser
+                           : 
+                          admin
+                        </span>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span>
+                          <span
+                            class="text-black"
                           >
-                            <div
-                              class="ant-row"
-                            >
-                              <div
-                                class="ant-col ant-col-5"
-                              >
-                                workflowTemplate.form.label.reviewUser
-                              </div>
-                              <div
-                                class="ant-col ant-col-18"
-                              >
-                                admin
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            class="ant-space-item"
-                          >
-                            <div
-                              class="ant-row"
-                            >
-                              <div
-                                class="ant-col ant-col-5 text-black"
-                              >
-                                workflowTemplate.form.label.reviewDesc
-                              </div>
-                              <div
-                                class="ant-col ant-col-18"
-                              >
-                                2
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                            workflowTemplate.form.label.reviewDesc
+                             : 
+                          </span>
+                          2
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -680,54 +412,30 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 2`] = `
                     class="ant-steps-item-description"
                   >
                     <div
-                      class="ant-row"
+                      class="ant-space ant-space-vertical full-width-element"
                     >
                       <div
-                        class="ant-col ant-col-10"
+                        class="ant-space-item"
+                        style="margin-bottom: 24px;"
                       >
-                        <div
-                          class="ant-space ant-space-vertical full-width-element"
-                        >
-                          <div
-                            class="ant-space-item"
-                            style="margin-bottom: 24px;"
+                        <span>
+                          workflowTemplate.form.label.execUser
+                           : 
+                          admin
+                        </span>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span>
+                          <span
+                            class="text-black"
                           >
-                            <div
-                              class="ant-row"
-                            >
-                              <div
-                                class="ant-col ant-col-5"
-                              >
-                                workflowTemplate.form.label.execUser
-                                :
-                              </div>
-                              <div
-                                class="ant-col ant-col-18"
-                              >
-                                admin
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            class="ant-space-item"
-                          >
-                            <div
-                              class="ant-row"
-                            >
-                              <div
-                                class="ant-col ant-col-5 text-black"
-                              >
-                                workflowTemplate.form.label.reviewDesc
-                                :
-                              </div>
-                              <div
-                                class="ant-col ant-col-18"
-                              >
-                                3
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                            workflowTemplate.form.label.reviewDesc
+                             : 
+                          </span>
+                          3
+                        </span>
                       </div>
                     </div>
                   </div>

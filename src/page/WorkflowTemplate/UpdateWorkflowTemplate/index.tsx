@@ -33,8 +33,6 @@ const UpdateWorkflowTemplate = () => {
   ): Promise<AxiosResponse<IUpdateWorkflowTemplateV1Return>> => {
     return workflow.updateWorkflowTemplateV1({
       project_name: projectName,
-      desc: baseFormValue.current?.desc,
-      instance_name_list: baseFormValue.current?.instanceNameList,
       workflow_step_template_list: progressConfig,
       allow_submit_when_less_audit_level: baseFormValue.current
         ?.allowSubmitWhenLessAuditLevel as
@@ -88,9 +86,7 @@ const UpdateWorkflowTemplate = () => {
           title={t('workflowTemplate.update.result.title')}
         />
         <Row justify="center">
-          <Link
-            to={`/project/${projectName}/progress/detail/${workflowTemplate?.workflow_template_name}`}
-          >
+          <Link to={`/project/${projectName}/progress`}>
             <Button type="primary">
               {t('workflowTemplate.update.result.showNow')}
             </Button>

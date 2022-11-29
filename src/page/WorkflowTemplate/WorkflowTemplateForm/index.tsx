@@ -86,6 +86,7 @@ const WorkflowTemplateForm: React.FC<WorkflowTemplateFormProps> = (props) => {
           defaultData={props.defaultData}
           nextStep={nextStep}
           updateBaseInfo={props.updateBaseInfo}
+          projectName={props.projectName}
         />
       </div>
       <div hidden={step !== 1} data-testid="progress-config">

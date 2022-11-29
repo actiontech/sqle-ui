@@ -5,11 +5,9 @@ export type BaseFormProps = {
   defaultData?: IWorkflowTemplateDetailResV1;
   nextStep: () => void;
   updateBaseInfo: (info: BaseFormFields) => void;
+  projectName: string;
 };
 
 export type BaseFormFields = {
-  name: string;
-  desc?: string;
-  instanceNameList?: string[];
   allowSubmitWhenLessAuditLevel?: WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum;
 };

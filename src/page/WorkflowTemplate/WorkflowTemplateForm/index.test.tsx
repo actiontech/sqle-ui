@@ -2,7 +2,10 @@ import { act, fireEvent, screen, waitFor } from '@testing-library/react';
 import WorkflowTemplateForm from '.';
 import { WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum } from '../../../api/common.enum';
 import EmitterKey from '../../../data/EmitterKey';
-import { getBySelector } from '../../../testUtils/customQuery';
+import {
+  getBySelector,
+  selectOptionByIndex,
+} from '../../../testUtils/customQuery';
 import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
 import {
   mockUseInstance,
@@ -11,7 +14,9 @@ import {
 } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 
-describe.skip('WorkflowTemplateForm', () => {
+const projectName = 'default';
+
+describe('WorkflowTemplateForm', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockUseInstance();
@@ -28,6 +33,7 @@ describe.skip('WorkflowTemplateForm', () => {
       <WorkflowTemplateForm
         updateBaseInfo={jest.fn()}
         submitProgress={jest.fn()}
+        projectName={projectName}
       />
     );
     expect(container).toMatchSnapshot();
@@ -41,6 +47,7 @@ describe.skip('WorkflowTemplateForm', () => {
       <WorkflowTemplateForm
         updateBaseInfo={updateBaseInfoMock}
         submitProgress={submitProgressMock}
+        projectName={projectName}
       >
         test id
       </WorkflowTemplateForm>
@@ -51,15 +58,19 @@ describe.skip('WorkflowTemplateForm', () => {
     expect(screen.getByTestId('base-form')).not.toHaveAttribute('hidden');
     expect(screen.getByTestId('progress-config')).toHaveAttribute('hidden');
     expect(screen.getByTestId('submit-result')).toHaveAttribute('hidden');
-    fireEvent.input(screen.getByLabelText('workflowTemplate.form.label.name'), {
-      target: { value: 'name1' },
+    selectOptionByIndex(
+      'workflowTemplate.form.label.allowSubmitWhenLessAuditLevel',
+      'workflowTemplate.auditLevel.warn',
+      1
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
     });
     fireEvent.click(screen.getByText('common.nextStep'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
     expect(updateBaseInfoMock).toBeCalledWith({
-      name: 'name1',
       allowSubmitWhenLessAuditLevel:
         WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.warn,
     });
@@ -114,6 +125,7 @@ describe.skip('WorkflowTemplateForm', () => {
       <WorkflowTemplateForm
         updateBaseInfo={updateBaseInfoMock}
         submitProgress={submitProgressMock}
+        projectName={projectName}
       >
         test id
       </WorkflowTemplateForm>
@@ -124,8 +136,13 @@ describe.skip('WorkflowTemplateForm', () => {
     expect(screen.getByTestId('base-form')).not.toHaveAttribute('hidden');
     expect(screen.getByTestId('progress-config')).toHaveAttribute('hidden');
     expect(screen.getByTestId('submit-result')).toHaveAttribute('hidden');
-    fireEvent.input(screen.getByLabelText('workflowTemplate.form.label.name'), {
-      target: { value: 'name1' },
+    selectOptionByIndex(
+      'workflowTemplate.form.label.allowSubmitWhenLessAuditLevel',
+      'workflowTemplate.auditLevel.warn',
+      1
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
     });
     fireEvent.click(screen.getByText('common.nextStep'));
     await waitFor(() => {
@@ -149,6 +166,7 @@ describe.skip('WorkflowTemplateForm', () => {
       <WorkflowTemplateForm
         updateBaseInfo={updateBaseInfoMock}
         submitProgress={submitProgressMock}
+        projectName={projectName}
       >
         test id
       </WorkflowTemplateForm>
@@ -159,8 +177,13 @@ describe.skip('WorkflowTemplateForm', () => {
     expect(screen.getByTestId('base-form')).not.toHaveAttribute('hidden');
     expect(screen.getByTestId('progress-config')).toHaveAttribute('hidden');
     expect(screen.getByTestId('submit-result')).toHaveAttribute('hidden');
-    fireEvent.input(screen.getByLabelText('workflowTemplate.form.label.name'), {
-      target: { value: 'name1' },
+    selectOptionByIndex(
+      'workflowTemplate.form.label.allowSubmitWhenLessAuditLevel',
+      'workflowTemplate.auditLevel.warn',
+      1
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
     });
     fireEvent.click(screen.getByText('common.nextStep'));
     await waitFor(() => {
