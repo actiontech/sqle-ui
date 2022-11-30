@@ -1,27 +1,18 @@
-import { Button, Form, Input, Select, Space } from 'antd';
+import { Button, Form, Select, Space } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum } from '../../../../api/common.enum';
 import { PageFormLayout } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
-import useInstance from '../../../../hooks/useInstance';
 import EventEmitter from '../../../../utils/EventEmitter';
-import { nameRule } from '../../../../utils/FormRule';
 import { BaseFormFields, BaseFormProps } from './index.type';
 import useStaticStatus from '../../../../hooks/useStaticStatus';
-import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 
 const BaseForm: React.FC<BaseFormProps> = (props) => {
   const { t } = useTranslation();
   const [form] = useForm<BaseFormFields>();
   const { getAuditLevelStatusSelectOption } = useStaticStatus();
-
-  const { updateInstanceList, generateInstanceSelectOption } = useInstance();
-  const { projectName } = useCurrentProjectName();
-  useEffect(() => {
-    updateInstanceList({ project_name: projectName });
-  }, [projectName, updateInstanceList]);
 
   const nextStep = async () => {
     const value = await form.validateFields();
@@ -61,13 +52,10 @@ const BaseForm: React.FC<BaseFormProps> = (props) => {
   useEffect(() => {
     if (!!props.defaultData) {
       form.setFieldsValue({
-        name: props.defaultData.workflow_template_name,
-        desc: props.defaultData.desc,
         allowSubmitWhenLessAuditLevel: props.defaultData
           .allow_submit_when_less_audit_level as
           | WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum
           | undefined,
-        instanceNameList: props.defaultData.instance_name_list,
       });
     } else {
       form.setFieldsValue({
@@ -80,34 +68,6 @@ const BaseForm: React.FC<BaseFormProps> = (props) => {
   return (
     <Form {...PageFormLayout} form={form}>
       <Form.Item
-        label={t('workflowTemplate.form.label.name')}
-        name="name"
-        validateFirst={true}
-        rules={[
-          {
-            required: true,
-          },
-          ...nameRule(),
-        ]}
-      >
-        <Input
-          disabled={true}
-          placeholder={t('common.form.placeholder.input', {
-            name: t('workflowTemplate.form.label.name'),
-          })}
-        />
-      </Form.Item>
-      <Form.Item label={t('workflowTemplate.form.label.desc')} name="desc">
-        <Input.TextArea
-          placeholder={t('common.form.placeholder.input', {
-            name: t('workflowTemplate.form.label.desc'),
-          })}
-          disabled
-          rows={3}
-          className="textarea-no-resize"
-        />
-      </Form.Item>
-      <Form.Item
         label={t('workflowTemplate.form.label.allowSubmitWhenLessAuditLevel')}
         name="allowSubmitWhenLessAuditLevel"
       >
@@ -119,21 +79,6 @@ const BaseForm: React.FC<BaseFormProps> = (props) => {
           })}
         >
           {getAuditLevelStatusSelectOption()}
-        </Select>
-      </Form.Item>
-      <Form.Item
-        label={t('workflowTemplate.form.label.instanceNameList')}
-        name="instanceNameList"
-      >
-        <Select
-          disabled
-          showSearch
-          placeholder={t('common.form.placeholder.select', {
-            name: t('workflowTemplate.form.label.instanceNameList'),
-          })}
-          mode="multiple"
-        >
-          {generateInstanceSelectOption()}
         </Select>
       </Form.Item>
       <Form.Item label=" " colon={false}>

@@ -1,15 +1,6 @@
 import { useTheme } from '@material-ui/styles';
 import { useRequest } from 'ahooks';
-import {
-  Card,
-  Col,
-  Row,
-  Typography,
-  Descriptions,
-  Steps,
-  Space,
-  Button,
-} from 'antd';
+import { Card, Col, Row, Typography, Steps, Space, Button } from 'antd';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -68,43 +59,22 @@ const WorkflowTemplateDetail = () => {
   }, [workflowTemplate]);
 
   return (
-    <Card title={t('workflowTemplate.detail.title.wrapper')}>
+    <Card
+      title={t('workflowTemplate.detail.title.wrapper')}
+      extra={[
+        <EmptyBox if={actionPermission} key="update-workflow-template">
+          <Link
+            to={`/project/${projectName}/progress/update/${workflowTemplate?.workflow_template_name}`}
+          >
+            <Button type="primary">
+              {t('workflowTemplate.detail.updateTemplate')}
+            </Button>
+          </Link>
+        </EmptyBox>,
+      ]}
+    >
       <Row>
-        <Col span={8}>
-          <Typography.Title level={5}>
-            {t('workflowTemplate.detail.title.base')}
-          </Typography.Title>
-          <Descriptions>
-            <Descriptions.Item
-              label={t('workflowTemplate.form.label.name')}
-              span={3}
-            >
-              {workflowTemplate?.workflow_template_name ?? '--'}
-            </Descriptions.Item>
-            <Descriptions.Item
-              label={t('workflowTemplate.form.label.desc')}
-              span={3}
-            >
-              {workflowTemplate?.desc ?? '--'}
-            </Descriptions.Item>
-            <Descriptions.Item
-              label={t('workflowTemplate.form.label.instanceNameList')}
-              span={3}
-            >
-              {workflowTemplate?.instance_name_list?.join(',') ?? '--'}
-            </Descriptions.Item>
-          </Descriptions>
-          <EmptyBox if={actionPermission}>
-            <Link
-              to={`/project/${projectName}/progress/update/${workflowTemplate?.workflow_template_name}`}
-            >
-              <Button type="primary">
-                {t('workflowTemplate.detail.updateTemplate')}
-              </Button>
-            </Link>
-          </EmptyBox>
-        </Col>
-        <Col span={12}>
+        <Col span={24}>
           <Typography.Title level={5}>
             {t('workflowTemplate.detail.title.step')}
           </Typography.Title>
@@ -121,31 +91,24 @@ const WorkflowTemplateDetail = () => {
                 title={t('workflowTemplate.progressConfig.review.title')}
                 subTitle={t('workflowTemplate.progressConfig.review.subTitle')}
                 description={
-                  <Row>
-                    <Col span={10}>
-                      <Space
-                        size={theme.common.padding}
-                        direction="vertical"
-                        className="full-width-element"
-                      >
-                        <Row>
-                          <Col span={5}>
-                            {t('workflowTemplate.form.label.reviewUser')}
-                          </Col>
-                          <Col span={18}>
-                            {progressItem.assignee_user_name_list?.join(',') ??
-                              '--'}
-                          </Col>
-                        </Row>
-                        <Row>
-                          <Col span={5} className="text-black">
-                            {t('workflowTemplate.form.label.reviewDesc')}
-                          </Col>
-                          <Col span={18}>{progressItem.desc ?? '--'}</Col>
-                        </Row>
-                      </Space>
-                    </Col>
-                  </Row>
+                  <Space
+                    size={theme.common.padding}
+                    direction="vertical"
+                    className="full-width-element"
+                  >
+                    <span>
+                      {t('workflowTemplate.form.label.reviewUser')}
+                      {' : '}
+                      {progressItem.assignee_user_name_list?.join(',') ?? '--'}
+                    </span>
+                    <span>
+                      <span className="text-black">
+                        {t('workflowTemplate.form.label.reviewDesc')}
+                        {' : '}
+                      </span>
+                      {progressItem.desc ?? '--'}
+                    </span>
+                  </Space>
                 }
               />
             ))}
@@ -154,30 +117,25 @@ const WorkflowTemplateDetail = () => {
               status="process"
               subTitle={t('workflowTemplate.progressConfig.exec.subTitle')}
               description={
-                <Row>
-                  <Col span={10}>
-                    <Space
-                      size={theme.common.padding}
-                      direction="vertical"
-                      className="full-width-element"
-                    >
-                      <Row>
-                        <Col span={5}>
-                          {t('workflowTemplate.form.label.execUser')}:
-                        </Col>
-                        <Col span={18}>
-                          {execSteps.assignee_user_name_list?.join(',') ?? '--'}
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col span={5} className="text-black">
-                          {t('workflowTemplate.form.label.reviewDesc')}:
-                        </Col>
-                        <Col span={18}>{execSteps.desc ?? '--'}</Col>
-                      </Row>
-                    </Space>
-                  </Col>
-                </Row>
+                <Space
+                  size={theme.common.padding}
+                  direction="vertical"
+                  className="full-width-element"
+                >
+                  <span>
+                    {t('workflowTemplate.form.label.execUser')}
+                    {' : '}
+                    {execSteps.assignee_user_name_list?.join(',') ?? '--'}
+                  </span>
+
+                  <span>
+                    <span className="text-black">
+                      {t('workflowTemplate.form.label.reviewDesc')}
+                      {' : '}
+                    </span>
+                    {execSteps.desc ?? '--'}
+                  </span>
+                </Space>
               }
             />
           </Steps>

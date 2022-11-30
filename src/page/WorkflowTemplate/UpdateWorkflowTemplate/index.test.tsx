@@ -22,7 +22,9 @@ jest.mock('react-router', () => {
   };
 });
 
-describe.skip('UpdateWorkflowTemplate', () => {
+const projectName = 'default';
+
+describe('UpdateWorkflowTemplate', () => {
   let getWorkflowTemplateSpy!: jest.SpyInstance;
   const useParamsMock: jest.Mock = useParams as jest.Mock;
 
@@ -30,7 +32,7 @@ describe.skip('UpdateWorkflowTemplate', () => {
     jest.useFakeTimers();
     mockUseUsername();
     mockUseInstance();
-    useParamsMock.mockReturnValue({ workflowName: 'default' });
+    useParamsMock.mockReturnValue({ workflowName: 'default', projectName });
     getWorkflowTemplateSpy = mockGetWorkflowTemplate();
   });
 
@@ -55,7 +57,7 @@ describe.skip('UpdateWorkflowTemplate', () => {
     const { container } = renderWithThemeAndRouter(<UpdateWorkflowTemplate />);
     expect(container).toMatchSnapshot();
     expect(getWorkflowTemplateSpy).toBeCalledWith({
-      workflow_template_name: 'default',
+      project_name: projectName,
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -68,11 +70,8 @@ describe.skip('UpdateWorkflowTemplate', () => {
     const shallowWrapper = shallow(<UpdateWorkflowTemplate />);
     const formWrapper = shallowWrapper.find('WorkflowTemplateForm');
     formWrapper.prop<Function>('updateBaseInfo')({
-      name: 'default',
-      desc: 'desc1',
       allowSubmitWhenLessAuditLevel:
         WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.normal,
-      instanceNameList: ['instanceList1'],
     });
     formWrapper.prop<Function>('submitProgress')([
       {
@@ -93,11 +92,9 @@ describe.skip('UpdateWorkflowTemplate', () => {
       },
     ]);
     expect(updateSpy).toBeCalledWith({
-      workflow_template_name: 'default',
-      desc: 'desc1',
+      project_name: projectName,
       allow_submit_when_less_audit_level:
         WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.normal,
-      instance_name_list: ['instanceList1'],
       workflow_step_template_list: [
         {
           assignee_user_name_list: ['name1'],

@@ -8,6 +8,7 @@ import { mockUseUsername } from '../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../utils/EventEmitter';
 import { workflowData } from '../../__testData__';
 
+const projectName = 'default';
 describe('progressConfig', () => {
   beforeEach(() => {
     jest.useFakeTimers();
@@ -25,6 +26,7 @@ describe('progressConfig', () => {
         submitLoading={false}
         prevStep={jest.fn()}
         submitProgressConfig={jest.fn()}
+        projectName={projectName}
       />
     );
     expect(container).toMatchSnapshot();
@@ -37,6 +39,7 @@ describe('progressConfig', () => {
         prevStep={jest.fn()}
         submitProgressConfig={jest.fn()}
         defaultData={workflowData as IWorkflowTemplateDetailResV1}
+        projectName={projectName}
       />
     );
     expect(container).toMatchSnapshot();
@@ -48,6 +51,7 @@ describe('progressConfig', () => {
         submitLoading={false}
         prevStep={jest.fn()}
         submitProgressConfig={jest.fn()}
+        projectName={projectName}
       />
     );
     await waitFor(() => {
@@ -85,6 +89,7 @@ describe('progressConfig', () => {
         submitLoading={false}
         prevStep={jest.fn()}
         submitProgressConfig={jest.fn()}
+        projectName={projectName}
       />
     );
     await waitFor(() => {
@@ -120,6 +125,7 @@ describe('progressConfig', () => {
         submitLoading={false}
         prevStep={jest.fn()}
         submitProgressConfig={jest.fn()}
+        projectName={projectName}
       />
     );
     await waitFor(() => {
@@ -146,6 +152,7 @@ describe('progressConfig', () => {
         submitLoading={false}
         prevStep={jest.fn()}
         submitProgressConfig={jest.fn()}
+        projectName={projectName}
       />
     );
     await waitFor(() => {
@@ -175,6 +182,7 @@ describe('progressConfig', () => {
         submitLoading={false}
         prevStep={jest.fn()}
         submitProgressConfig={submitProgressConfigFn}
+        projectName={projectName}
       />
     );
     await waitFor(() => {
@@ -299,6 +307,7 @@ describe('progressConfig', () => {
         submitLoading={false}
         prevStep={jest.fn()}
         submitProgressConfig={submitProgressConfigFn}
+        projectName={projectName}
       />
     );
     await waitFor(() => {
@@ -331,6 +340,7 @@ describe('progressConfig', () => {
         submitLoading={false}
         prevStep={jest.fn()}
         submitProgressConfig={submitProgressConfigFn}
+        projectName={projectName}
       />
     );
     await waitFor(() => {

@@ -11,50 +11,19 @@ exports[`WorkflowTemplate should match snapshot 1`] = `
   <section
     className="padding-content"
   >
-    <Card>
-      workflowTemplate.pageCeDesc
-      <Paragraph>
-        <ul>
-          <li>
-            <a
-              href="https://actiontech.github.io/sqle-docs-cn/"
-            >
-              https://actiontech.github.io/sqle-docs-cn/
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.actionsky.com/"
-            >
-              https://www.actionsky.com/
-            </a>
-          </li>
-        </ul>
-      </Paragraph>
-    </Card>
     <Switch>
       <Route
         component={[Function]}
         exact={true}
-        path="/progress"
+        path="/project/:projectName/progress"
       />
       <Route
         component={[Function]}
         exact={true}
-        path="/progress/detail/:workflowName"
-      />
-      <Route
-        component={[Function]}
-        exact={true}
-        path="/progress/create"
-      />
-      <Route
-        component={[Function]}
-        exact={true}
-        path="/progress/update/:workflowName"
+        path="/project/:projectName/progress/update/:workflowName"
       />
       <Redirect
-        to="/progress"
+        to="/project/:projectName/progress"
       />
     </Switch>
   </section>
