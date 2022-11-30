@@ -17,4 +17,5 @@ export type RuleTemplateFormProps = {
   baseInfoSubmit: () => void;
   prevStep: () => void;
   submit: () => void;
+  projectName: string;
 };

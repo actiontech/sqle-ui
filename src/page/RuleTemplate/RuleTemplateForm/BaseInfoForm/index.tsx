@@ -10,11 +10,9 @@ import { RuleTemplateBaseInfoFormProps } from './index.type';
 import useDatabaseType from '../../../../hooks/useDatabaseType';
 import { Rule } from 'antd/lib/form';
 import useInstance from '../../../../hooks/useInstance';
-import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 
 const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
   const { t } = useTranslation();
-  const { projectName } = useCurrentProjectName();
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
   const { updateDriverNameList, generateDriverSelectOptions } =
     useDatabaseType();
@@ -62,9 +60,9 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
   }, [isUpdate]);
 
   React.useEffect(() => {
-    updateInstanceList({ project_name: projectName });
+    updateInstanceList({ project_name: props.projectName });
     updateDriverNameList();
-  }, [projectName, updateDriverNameList, updateInstanceList]);
+  }, [props.projectName, updateDriverNameList, updateInstanceList]);
 
   React.useEffect(() => {
     if (!!props.defaultData) {

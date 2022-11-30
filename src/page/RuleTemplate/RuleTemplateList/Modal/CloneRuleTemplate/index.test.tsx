@@ -1,4 +1,5 @@
 import { fireEvent, screen, cleanup, waitFor } from '@testing-library/react';
+import { useParams } from 'react-router-dom';
 import CloneRuleTemplateModal from '.';
 import rule_template from '../../../../../api/rule_template';
 import EmitterKey from '../../../../../data/EmitterKey';
@@ -15,8 +16,15 @@ import {
 import EventEmitter from '../../../../../utils/EventEmitter';
 import { ruleTemplateListData } from '../../../__testData__';
 
-describe.skip('RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal', () => {
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: jest.fn(),
+}));
+const projectName = 'default';
+
+describe('RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal', () => {
   let mockDispatch: jest.Mock;
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   beforeEach(() => {
     jest.useFakeTimers();
@@ -29,6 +37,7 @@ describe.skip('RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal', () =
       },
     });
     mockDispatch = scopeDispatch;
+    useParamsMock.mockReturnValue({ projectName });
   });
 
   afterEach(() => {
@@ -38,7 +47,7 @@ describe.skip('RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal', () =
   });
 
   const mockCloneRuleTemplate = () => {
-    const spy = jest.spyOn(rule_template, 'CloneRuleTemplateV1');
+    const spy = jest.spyOn(rule_template, 'cloneProjectRuleTemplateV1');
     spy.mockImplementation(() => resolveThreeSecond({}));
     return spy;
   };
@@ -95,6 +104,15 @@ describe.skip('RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal', () =
       { target: { value: 'desc1' } }
     );
 
+    fireEvent.mouseDown(
+      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const option = screen.getAllByText('instance1')[1];
+    fireEvent.click(option);
+
     fireEvent.click(screen.getByText('OK'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
@@ -104,6 +122,8 @@ describe.skip('RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal', () =
       desc: 'desc1',
       rule_template_name: ruleTemplateListData[0].rule_template_name,
       new_rule_template_name: 'name1',
+      instance_name_list: ['instance1'],
+      project_name: projectName,
     });
     expect(screen.getByText('OK').parentNode).toHaveClass('ant-btn-loading');
     expect(screen.getByText('Cancel').parentNode).toHaveAttribute('disabled');
