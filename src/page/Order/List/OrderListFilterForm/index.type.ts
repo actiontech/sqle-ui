@@ -21,4 +21,5 @@ export type OrderListFilterFormProps = {
   reset: () => void;
   collapse?: boolean;
   collapseChange?: (collapse: boolean) => void;
+  projectName: string;
 };

@@ -1,7 +1,8 @@
 import { waitFor } from '@testing-library/react';
 import { act, renderHook } from '@testing-library/react-hooks/dom';
-import instance from '../../../../api/instance';
+import { useParams } from 'react-router-dom';
 import task from '../../../../api/task';
+import workflow from '../../../../api/workflow';
 import { resolveThreeSecond } from '../../../../testUtils/mockRequest';
 import {
   instanceWorkflowTemplate,
@@ -12,7 +13,13 @@ import {
 import useAuditOrder from '../useAuditOrder';
 import { differenceSqlValues, sameSqlValues } from './test.data';
 
-describe.skip('test Order/hooks/useAuditOrder', () => {
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: jest.fn(),
+}));
+const projectName = 'default';
+
+describe('test Order/hooks/useAuditOrder', () => {
   const mockCreateAuditTasks = () => {
     const spy = jest.spyOn(task, 'createAuditTasksV1');
     spy.mockImplementation(() =>
@@ -41,12 +48,15 @@ describe.skip('test Order/hooks/useAuditOrder', () => {
   };
 
   const mockGetInstanceWorkflowTemplate = () => {
-    const spy = jest.spyOn(instance, 'getInstanceWorkflowTemplateV1');
+    const spy = jest.spyOn(workflow, 'getWorkflowTemplateV1');
     spy.mockImplementation(() => resolveThreeSecond(instanceWorkflowTemplate));
     return spy;
   };
 
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
+
   beforeEach(() => {
+    useParamsMock.mockReturnValue({ projectName });
     jest.useFakeTimers();
   });
   afterEach(() => {
@@ -84,6 +94,7 @@ describe.skip('test Order/hooks/useAuditOrder', () => {
 
     expect(createAuditTasksSpy).toBeCalledTimes(1);
     expect(createAuditTasksSpy).toBeCalledWith({
+      project_name: projectName,
       instances: [
         {
           instance_name: 'mysql-1',
@@ -174,6 +185,7 @@ describe.skip('test Order/hooks/useAuditOrder', () => {
     });
     expect(createAndAuditTaskSpy).toBeCalledTimes(1);
     expect(createAndAuditTaskSpy).toBeCalledWith({
+      project_name: projectName,
       instance_name: 'mysql-1',
       instance_schema: 'db1',
       sql: 'SELECT (1)',
@@ -201,6 +213,7 @@ describe.skip('test Order/hooks/useAuditOrder', () => {
       instance_name: 'mysql-2',
       instance_schema: 'db2',
       sql: 'SELECT (2)',
+      project_name: projectName,
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -230,6 +243,7 @@ describe.skip('test Order/hooks/useAuditOrder', () => {
       instance_name: 'mysql-3',
       instance_schema: 'db3',
       sql: 'SELECT (3)',
+      project_name: projectName,
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -256,6 +270,7 @@ describe.skip('test Order/hooks/useAuditOrder', () => {
       instance_name: 'mysql-2',
       instance_schema: 'db2',
       sql: 'SELECT (2)',
+      project_name: projectName,
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);

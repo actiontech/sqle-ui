@@ -220,6 +220,7 @@ const CreateOrder = () => {
               instanceNameChange={instanceNameChange}
               clearTaskInfos={clearTaskInfos}
               clearTaskInfoWithKey={clearTaskInfoWithKey}
+              projectName={projectName}
             />
           </Card>
 

@@ -13,15 +13,16 @@ jest.mock('react-router', () => {
   };
 });
 const orderId = '1';
+const projectName = 'default';
 
-describe.skip('test Order/Detail/useInitDataWithRequest', () => {
+describe('test Order/Detail/useInitDataWithRequest', () => {
   let getWorkflowSpy: jest.SpyInstance;
   let getTaskSpy: jest.SpyInstance;
 
   const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   beforeEach(() => {
-    useParamsMock.mockReturnValue({ orderId });
+    useParamsMock.mockReturnValue({ orderId, projectName });
     getWorkflowSpy = mockGetWorkflow();
     getTaskSpy = mockGetTask();
     jest.useFakeTimers();
@@ -34,7 +35,7 @@ describe.skip('test Order/Detail/useInitDataWithRequest', () => {
   });
 
   const mockGetWorkflow = () => {
-    const spy = jest.spyOn(workflow, 'getWorkflowV2');
+    const spy = jest.spyOn(workflow, 'getWorkflowV1');
     spy.mockImplementation(() => resolveThreeSecond(order));
     return spy;
   };
@@ -50,7 +51,10 @@ describe.skip('test Order/Detail/useInitDataWithRequest', () => {
       useInitDataWithRequest()
     );
     expect(getWorkflowSpy).toBeCalledTimes(1);
-    expect(getWorkflowSpy).toBeCalledWith({ workflow_id: Number(orderId) });
+    expect(getWorkflowSpy).toBeCalledWith({
+      workflow_name: orderId,
+      project_name: projectName,
+    });
     expect(getTaskSpy).toBeCalledTimes(0);
 
     jest.advanceTimersByTime(3000);

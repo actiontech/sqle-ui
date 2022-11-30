@@ -9,7 +9,9 @@ import {
   mockUseUsername,
 } from '../../../../testUtils/mockRequest';
 
-describe.skip('Order/List/OrderListFilterForm', () => {
+const projectName = 'default';
+
+describe('Order/List/OrderListFilterForm', () => {
   let getUserTips: jest.SpyInstance;
   let getInstanceTips: jest.SpyInstance;
   beforeEach(() => {
@@ -30,6 +32,7 @@ describe.skip('Order/List/OrderListFilterForm', () => {
         form={undefined as any}
         submit={jest.fn()}
         reset={jest.fn()}
+        projectName={projectName}
       />
     );
     expect(getUserTips).toBeCalledTimes(1);
@@ -44,6 +47,7 @@ describe.skip('Order/List/OrderListFilterForm', () => {
         form={undefined as any}
         submit={submitMock}
         reset={resetMock}
+        projectName={projectName}
       />
     );
     expect(screen.getByText('common.search')).toBeInTheDocument();
@@ -69,6 +73,7 @@ describe.skip('Order/List/OrderListFilterForm', () => {
         form={result.current[0]}
         submit={submitMock}
         reset={resetMock}
+        projectName={projectName}
       />
     );
     await waitFor(() => {
@@ -79,21 +84,9 @@ describe.skip('Order/List/OrderListFilterForm', () => {
     expect(screen.queryByText('common.expansion')).not.toBeInTheDocument();
     expect(screen.getByText('common.collapse')).toBeInTheDocument();
 
-    // fireEvent.mouseDown(getBySelector('#filter_current_step_type'));
-
-    // await waitFor(() => {
-    //   jest.runOnlyPendingTimers();
-    // });
-
-    // const currentStepTypeOption = screen.getByText(
-    //   'order.workflowStatus.review'
-    // );
-    // expect(currentStepTypeOption).toHaveClass('ant-select-item-option-content');
-    // fireEvent.click(currentStepTypeOption);
     expect(result.current[0].getFieldsValue()).toEqual({
       filter_current_step_assignee_user_name: undefined,
       filter_create_user_name: undefined,
-      // filter_current_step_type: 'sql_review',
       filter_status: undefined,
       filter_task_instance_name: undefined,
     });
@@ -173,6 +166,7 @@ describe.skip('Order/List/OrderListFilterForm', () => {
         reset={resetMock}
         collapse={true}
         collapseChange={collapseChangeMock}
+        projectName={projectName}
       />
     );
     await waitFor(() => {
@@ -193,6 +187,7 @@ describe.skip('Order/List/OrderListFilterForm', () => {
         reset={resetMock}
         collapse={false}
         collapseChange={collapseChangeMock}
+        projectName={projectName}
       />
     );
     await waitFor(() => {

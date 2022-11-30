@@ -1,11 +1,11 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import instance from '../../../../api/instance';
+import workflow from '../../../../api/workflow';
 import { resolveThreeSecond } from '../../../../testUtils/mockRequest';
 import { instanceWorkflowTemplate } from '../../Detail/__testData__';
 import { useAllowAuditLevel } from '../useAllowAuditLevel';
 import { taskInfosLeverIsError, taskInfosLeverIsNormal } from './test.data';
 
-describe.skip('Order/useAllowAuditLevel', () => {
+describe('Order/useAllowAuditLevel', () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });
@@ -17,7 +17,7 @@ describe.skip('Order/useAllowAuditLevel', () => {
   });
 
   const mockGetInstanceWorkflowTemplate = () => {
-    const spy = jest.spyOn(instance, 'getInstanceWorkflowTemplateV1');
+    const spy = jest.spyOn(workflow, 'getWorkflowTemplateV1');
     spy.mockImplementation(() => resolveThreeSecond(instanceWorkflowTemplate));
     return spy;
   };

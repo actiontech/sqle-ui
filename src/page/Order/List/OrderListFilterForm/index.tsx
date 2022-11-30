@@ -23,14 +23,12 @@ import {
 import useInstance from '../../../../hooks/useInstance';
 import useStaticStatus from '../../../../hooks/useStaticStatus';
 import useUsername from '../../../../hooks/useUsername';
-import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 import { OrderListFilterFormProps } from './index.type';
 
 const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
   const { t } = useTranslation();
   const { updateUsernameList, generateUsernameSelectOption } = useUsername();
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
-  const { projectName } = useCurrentProjectName();
   const [collapse, { toggle: toggleCollapse }] = useBoolean(
     props.collapse ?? true
   );
@@ -57,9 +55,8 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
 
   React.useEffect(() => {
     updateUsernameList();
-    updateInstanceList({ project_name: projectName });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    updateInstanceList({ project_name: props.projectName });
+  }, [props.projectName, updateInstanceList, updateUsernameList]);
 
   const computeDisabledDate = (current: moment.Moment) => {
     return current && current > moment().endOf('day');

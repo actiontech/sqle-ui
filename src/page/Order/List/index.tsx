@@ -231,6 +231,7 @@ const OrderList = () => {
               submit={submitFilter}
               collapse={collapse}
               collapseChange={collapseChange}
+              projectName={projectName}
             />
             {isAdmin && (
               <Popconfirm

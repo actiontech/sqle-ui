@@ -1,4 +1,5 @@
 import { fireEvent, waitFor, screen } from '@testing-library/react';
+import { useParams } from 'react-router-dom';
 import CreateOrder from '.';
 import instance from '../../../api/instance';
 import task from '../../../api/task';
@@ -33,7 +34,15 @@ jest.mock('moment', () => {
   });
 });
 
-describe.skip('Order/Create', () => {
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: jest.fn(),
+}));
+const projectName = 'default';
+
+describe('Order/Create', () => {
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
+
   beforeEach(() => {
     jest.useFakeTimers();
     mockUseSelector({ user: { theme: SupportTheme.LIGHT } });
@@ -41,6 +50,7 @@ describe.skip('Order/Create', () => {
     mockUseInstance();
     mockUseInstanceSchema();
     mockDriver();
+    useParamsMock.mockReturnValue({ projectName });
   });
 
   afterEach(() => {
@@ -85,13 +95,13 @@ describe.skip('Order/Create', () => {
   };
 
   const mockCreateOrder = () => {
-    const spy = jest.spyOn(workflow, 'createWorkflowV2');
+    const spy = jest.spyOn(workflow, 'createWorkflowV1');
     spy.mockImplementation(() => resolveThreeSecond({}));
     return spy;
   };
 
   const mockGetInstanceWorkflowTemplate = () => {
-    const spy = jest.spyOn(instance, 'getInstanceWorkflowTemplateV1');
+    const spy = jest.spyOn(workflow, 'getWorkflowTemplateV1');
     spy.mockImplementation(() => resolveThreeSecond(instanceWorkflowTemplate));
     return spy;
   };
@@ -155,6 +165,7 @@ describe.skip('Order/Create', () => {
     });
     expect(createAuditTasksSpy).toBeCalledTimes(1);
     expect(createAuditTasksSpy).toBeCalledWith({
+      project_name: projectName,
       instances: [
         {
           instance_name: 'instance1',
@@ -191,6 +202,7 @@ describe.skip('Order/Create', () => {
     });
     expect(createAndAuditTaskSpy).toBeCalledTimes(1);
     expect(createAndAuditTaskSpy).toBeCalledWith({
+      project_name: projectName,
       instance_name: 'instance1',
       instance_schema: 'schema1',
       sql: 'select * from table5',
@@ -287,6 +299,7 @@ describe.skip('Order/Create', () => {
       desc: Array.from({ length: orderDescMaxLength }, () => 'e').join(''),
       task_ids: [taskInfo.task_id],
       workflow_subject: 'orderName',
+      project_name: projectName,
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);

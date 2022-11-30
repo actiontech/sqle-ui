@@ -16,13 +16,23 @@ import { CustomProvider } from '../../../testUtils/mockRedux';
 import { SystemRole } from '../../../data/common';
 import { getAllBySelector } from '../../../testUtils/customQuery';
 import { mockUseSelector } from '../../../testUtils/mockRedux';
+import { useParams } from 'react-router-dom';
 
-describe.skip('Order/List', () => {
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: jest.fn(),
+}));
+const projectName = 'default';
+
+describe('Order/List', () => {
+  const useParamsMock: jest.Mock = useParams as jest.Mock;
+
   beforeEach(() => {
     mockUseInstance();
     mockUseUsername();
     jest.useFakeTimers();
     mockUseSelector({ user: { role: SystemRole.admin } });
+    useParamsMock.mockReturnValue({ projectName });
   });
 
   afterEach(() => {
@@ -33,7 +43,7 @@ describe.skip('Order/List', () => {
   });
 
   const mockRequest = () => {
-    const spy = jest.spyOn(workflow, 'getWorkflowsV2');
+    const spy = jest.spyOn(workflow, 'getWorkflowsV1');
     spy.mockImplementation(() =>
       resolveThreeSecond([
         {
@@ -43,12 +53,11 @@ describe.skip('Order/List', () => {
           current_step_type: 'sql_execute',
           desc: '',
           status: 'wait_for_audit',
-          subject: 'order123',
+          workflow_name: 'order123',
           task_instance_name: 'db1',
           task_instance_schema: '',
           task_pass_rate: 0,
           task_status: 'audited',
-          workflow_id: 1,
           task_score: 30,
         },
       ])
@@ -70,6 +79,7 @@ describe.skip('Order/List', () => {
     expect(request).toBeCalledWith({
       page_index: 1,
       page_size: 10,
+      project_name: projectName,
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -88,13 +98,13 @@ describe.skip('Order/List', () => {
     });
     expect(request).toBeCalledTimes(1);
     expect(request).toBeCalledWith({
+      project_name: projectName,
       filter_task_execute_start_time_from: '2022-07-20T11:15:02+08:00',
       filter_task_execute_start_time_to: '2022-07-21T11:15:02+08:00',
       filter_create_time_from: undefined,
       filter_create_time_to: undefined,
       filter_create_user_name: 'createUser',
       filter_current_step_assignee_user_name: 'admin',
-      // filter_current_step_type: 'sql_execute',
       filter_status: 'wait_for_audit',
       page_index: 1,
       page_size: 10,
@@ -109,10 +119,6 @@ describe.skip('Order/List', () => {
     expect(screen.getByText('order.status.wait_for_audit')).toHaveClass(
       'ant-select-selection-item'
     );
-    // expect(screen.getByText('order.workflowStatus.review')).toBeInTheDocument();
-    // expect(screen.getByText('order.workflowStatus.review')).toHaveClass(
-    //   'ant-select-selection-item'
-    // );
     expect(screen.getByLabelText('order.order.executeTime')).toHaveValue(
       '2022-07-20 11:15:02'
     );
@@ -135,6 +141,7 @@ describe.skip('Order/List', () => {
     expect(request).toBeCalledWith({
       page_index: 1,
       page_size: 10,
+      project_name: projectName,
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -152,7 +159,10 @@ describe.skip('Order/List', () => {
     ).toBeInTheDocument();
     fireEvent.click(screen.getAllByText('common.ok')[0]);
     expect(batchCancelSpy).toBeCalledTimes(1);
-    expect(batchCancelSpy).toBeCalledWith({ workflow_ids: ['1'] });
+    expect(batchCancelSpy).toBeCalledWith({
+      workflow_names: ['order123'],
+      project_name: projectName,
+    });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -160,6 +170,7 @@ describe.skip('Order/List', () => {
     expect(request).toBeCalledWith({
       page_index: 1,
       page_size: 10,
+      project_name: projectName,
     });
   });
 });

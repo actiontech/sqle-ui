@@ -12,7 +12,7 @@ import {
 
 export const order = {
   workflow_id: 1,
-  subject: 'order123',
+  workflow_name: 'order123',
   create_user_name: 'admin',
   create_time: '2021-04-29T05:41:24Z',
   record: {
@@ -39,7 +39,7 @@ export const order = {
 
 export const orderCancel = {
   workflow_id: 2,
-  subject: 'test',
+  workflow_name: 'test',
   create_user_name: 'admin',
   create_time: '2021-05-20T02:46:32Z',
   record: {
@@ -65,7 +65,7 @@ export const orderCancel = {
 
 export const orderReject = {
   workflow_id: 3,
-  subject: 'testccc',
+  workflow_name: 'testccc',
   create_user_name: 'admin',
   create_time: '2021-05-20T02:48:57Z',
   record: {
@@ -94,7 +94,7 @@ export const orderReject = {
 
 export const orderPass = {
   workflow_id: 4,
-  subject: 'pass',
+  workflow_name: 'pass',
   create_user_name: 'admin',
   create_time: '2021-05-20T02:57:25Z',
   record: {
@@ -122,7 +122,7 @@ export const orderPass = {
 
 export const orderWithExecScheduled = {
   workflow_id: 13,
-  subject: 'testq',
+  workflow_name: 'testq',
   create_user_name: 'admin',
   create_time: '2021-12-16T20:06:10+08:00',
   record: {
@@ -151,7 +151,7 @@ export const orderWithExecScheduled = {
 
 export const orderWithExecuting = {
   workflow_id: 13,
-  subject: 'testq',
+  workflow_name: 'testq',
   create_user_name: 'admin',
   create_time: '2021-12-16T20:06:10+08:00',
   record: {
@@ -180,7 +180,7 @@ export const orderWithExecuting = {
 
 export const order3 = {
   workflow_id: 1,
-  subject: 'order123',
+  workflow_name: 'order123',
   create_user_name: 'admin',
   create_time: '2021-04-29T05:41:24Z',
   record: {
@@ -212,7 +212,7 @@ export const order3 = {
 } as IWorkflowResV1;
 export const orderPass3 = {
   workflow_id: 4,
-  subject: 'pass',
+  workflow_name: 'pass',
   create_user_name: 'admin',
   create_time: '2021-05-20T02:57:25Z',
   record: {
@@ -249,7 +249,7 @@ export const orderPass3 = {
 
 export const orderCancel3 = {
   workflow_id: 2,
-  subject: 'test',
+  workflow_name: 'test',
   create_user_name: 'admin',
   create_time: '2021-05-20T02:46:32Z',
   record: {
@@ -282,7 +282,7 @@ export const orderCancel3 = {
 
 export const orderReject3 = {
   workflow_id: 3,
-  subject: 'testccc',
+  workflow_name: 'testccc',
   create_user_name: 'admin',
   create_time: '2021-05-20T02:48:57Z',
   record: {
@@ -320,7 +320,7 @@ export const orderReject3 = {
 
 export const orderWithExecScheduled3 = {
   workflow_id: 4,
-  subject: 'execScheduled',
+  workflow_name: 'execScheduled',
   create_user_name: 'admin',
   create_time: '2021-12-16T19:10:02+08:00',
   record: {
@@ -358,7 +358,7 @@ export const orderWithExecScheduled3 = {
 
 export const orderWithExecuting3 = {
   workflow_id: 5,
-  subject: 'test_executing3',
+  workflow_name: 'test_executing3',
   create_user_name: 'admin',
   create_time: '2021-12-16T19:37:02+08:00',
   record: {
@@ -394,7 +394,7 @@ export const orderWithExecuting3 = {
 } as IWorkflowResV1;
 export const execScheduleSubmit3 = {
   workflow_id: 17,
-  subject: 'testtt',
+  workflow_name: 'testtt',
   create_user_name: 'admin',
   create_time: '2021-12-16T20:29:40+08:00',
 
@@ -431,7 +431,7 @@ export const execScheduleSubmit3 = {
 
 export const orderWithHistory = {
   workflow_id: 1,
-  subject: 'order123',
+  workflow_name: 'order123',
   create_user_name: 'admin',
   create_time: '2021-04-29T05:41:24Z',
   record: {

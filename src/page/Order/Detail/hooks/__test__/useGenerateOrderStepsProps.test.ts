@@ -7,13 +7,14 @@ import workflow from '../../../../../api/workflow';
 import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
 import useGenerateOrderStepsProps from '../useGenerateOrderStepsProps';
 
-describe.skip('test Order/Detail/useGenerateOrderStepsProps', () => {
+describe('test Order/Detail/useGenerateOrderStepsProps', () => {
   const refreshOrder = jest.fn();
   const refreshTask = jest.fn();
   const refreshOverviewAction = jest.fn();
-  const workflowId = '1';
+  const workflowName = '1';
   const stepId = 1;
   const reason = 'reason';
+  const projectName = 'default';
 
   const workflowTasks: IGetWorkflowTasksItemV1[] = [
     {
@@ -35,10 +36,11 @@ describe.skip('test Order/Detail/useGenerateOrderStepsProps', () => {
   ];
 
   const hooksParam = {
-    workflowId,
+    workflowName,
     refreshOrder,
     refreshTask,
     refreshOverviewAction,
+    projectName,
   };
 
   let approveWorkflowSpy: jest.SpyInstance;
@@ -65,7 +67,7 @@ describe.skip('test Order/Detail/useGenerateOrderStepsProps', () => {
   };
 
   const mockExecuteTasksOnWorkflow = () => {
-    const spy = jest.spyOn(workflow, 'executeTasksOnWorkflowV2');
+    const spy = jest.spyOn(workflow, 'executeTasksOnWorkflowV1');
     spy.mockImplementation(() => resolveThreeSecond({}));
     return spy;
   };
@@ -93,8 +95,9 @@ describe.skip('test Order/Detail/useGenerateOrderStepsProps', () => {
     result.current.pass(stepId);
     expect(approveWorkflowSpy).toBeCalledTimes(1);
     expect(approveWorkflowSpy).toBeCalledWith({
-      workflow_id: workflowId,
+      workflow_name: workflowName,
       workflow_step_id: `${stepId}`,
+      project_name: projectName,
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -117,7 +120,8 @@ describe.skip('test Order/Detail/useGenerateOrderStepsProps', () => {
     result.current.executing();
     expect(executeTasksOnWorkflowSpy).toBeCalledTimes(1);
     expect(executeTasksOnWorkflowSpy).toBeCalledWith({
-      workflow_id: workflowId,
+      workflow_name: workflowName,
+      project_name: projectName,
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -141,8 +145,9 @@ describe.skip('test Order/Detail/useGenerateOrderStepsProps', () => {
 
     expect(rejectWorkflowSpy).toBeCalledTimes(1);
     expect(rejectWorkflowSpy).toBeCalledWith({
-      workflow_id: workflowId,
+      workflow_name: workflowName,
       workflow_step_id: `${stepId}`,
+      project_name: projectName,
       reason,
     });
     await waitFor(() => {

@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import EmptyBox from '../../../components/EmptyBox';
 import { ModalFormLayout } from '../../../data/common';
 import { timeAddZero } from '../../../utils/Common';
+import { checkTimeInWithMaintenanceTime } from '../Detail/OrderSteps/utils';
 import { ScheduleTimeModalProps } from './index.type';
 
 const ScheduleTimeModal: React.FC<ScheduleTimeModalProps> = ({
@@ -109,40 +110,7 @@ const ScheduleTimeModal: React.FC<ScheduleTimeModalProps> = ({
       disabledMinutes: () => disabledMinutes,
     };
   };
-  const checkTimeInMaintenanceTime = (time: moment.Moment) => {
-    const hour = time.hour();
-    const minute = time.minute();
 
-    if (maintenanceTime.length === 0) {
-      return true;
-    }
-
-    for (const time of maintenanceTime) {
-      const startHour = time.maintenance_start_time?.hour ?? 0;
-      const startMinute = time.maintenance_start_time?.minute ?? 0;
-      const endHour = time.maintenance_stop_time?.hour ?? 0;
-      const endMinute = time.maintenance_stop_time?.minute ?? 0;
-      if (startHour === endHour && startHour === hour) {
-        if (minute >= startMinute && minute <= endMinute) {
-          return true;
-        }
-      }
-      if (hour === startHour) {
-        if (minute >= startMinute) {
-          return true;
-        }
-      }
-      if (hour === endHour) {
-        if (minute <= endMinute) {
-          return true;
-        }
-      }
-      if (hour > startHour && hour < endHour) {
-        return true;
-      }
-    }
-    return false;
-  };
   const createDefaultRangeTime = () => {
     if (maintenanceTime.length === 0) {
       return moment('00:00:00', 'HH:mm:ss');
@@ -186,7 +154,7 @@ const ScheduleTimeModal: React.FC<ScheduleTimeModalProps> = ({
                   );
                 }
 
-                if (checkTimeInMaintenanceTime(rule)) {
+                if (checkTimeInWithMaintenanceTime(rule, maintenanceTime)) {
                   return Promise.resolve();
                 }
                 return Promise.reject(
