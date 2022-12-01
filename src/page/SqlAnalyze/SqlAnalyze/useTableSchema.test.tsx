@@ -6,6 +6,8 @@ import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import { tableSchemas } from '../../SqlQuery/__testData__';
 import useTableSchema from './useTableSchema';
 
+const projectName = 'default';
+
 describe('useTableSchema', () => {
   // eslint-disable-next-line no-console
   const error = console.error;
@@ -47,7 +49,7 @@ describe('useTableSchema', () => {
   test('should not get table schema when user call "getTableSchemas" method and "dataSourceName" and "schemaName" of options is empty', async () => {
     const request = mockGetTableSchemas();
     const { result } = renderHook(() => useTableSchema());
-    result.current.getTableSchemas('123');
+    result.current.getTableSchemas('123', projectName);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -59,13 +61,14 @@ describe('useTableSchema', () => {
     const { result } = renderHook(() =>
       useTableSchema({ dataSourceName: 'source1', schemaName: 'schema1' })
     );
-    result.current.getTableSchemas('table1');
+    result.current.getTableSchemas('table1', projectName);
 
     expect(request).toBeCalledTimes(1);
     expect(request).toBeCalledWith({
       instance_name: 'source1',
       schema_name: 'schema1',
       table_name: 'table1',
+      project_name: projectName,
     });
     expect(result.current.tableSchemas).toEqual([]);
     await waitFor(() => {
@@ -82,7 +85,7 @@ describe('useTableSchema', () => {
     const { result } = renderHook(() =>
       useTableSchema({ dataSourceName: 'source1', schemaName: 'schema1' })
     );
-    result.current.getTableSchemas('table1');
+    result.current.getTableSchemas('table1', projectName);
     expect(result.current.tableSchemas).toEqual([]);
     await waitFor(() => {
       jest.runOnlyPendingTimers();

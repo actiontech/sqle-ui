@@ -1,29 +1,12 @@
 import { Card, Result, Space, Table } from 'antd';
-import { cloneDeep } from 'lodash';
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import EmptyBox from '../../../components/EmptyBox';
 import useBackendTable from '../../../hooks/useBackendTable';
 import HighlightCode from '../../../utils/HighlightCode';
-import {
-  SQLExecPlanItem,
-  UseSQLExecPlanOption,
-} from '../../SqlQuery/index.type';
+import { SQLExecPlanItem } from '../../SqlQuery/index.type';
 
-const useSQLExecPlan = (options?: UseSQLExecPlanOption) => {
+const useSQLExecPlan = () => {
   const { t } = useTranslation();
-
-  const [execPlans, setExecPlans] = useState<SQLExecPlanItem[]>([]);
-
-  const closeExecPlan = (id: string) => {
-    const newExecPlans = cloneDeep(execPlans);
-    const index = newExecPlans.findIndex((v) => v.id === id);
-    if (index === -1) {
-      return;
-    }
-    newExecPlans[index].hide = true;
-    setExecPlans(newExecPlans);
-  };
 
   const { tableColumnFactory } = useBackendTable();
 
@@ -72,8 +55,6 @@ const useSQLExecPlan = (options?: UseSQLExecPlanOption) => {
   };
 
   return {
-    execPlans,
-    closeExecPlan,
     generateSQLExecPlanContent,
   };
 };
