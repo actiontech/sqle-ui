@@ -1,5 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IUserBindProjectResV1 } from '../../api/common';
+import {
+  IManagementPermissionResV1,
+  IUserBindProjectResV1,
+} from '../../api/common';
 import { SystemRole } from '../../data/common';
 import StorageKey from '../../data/StorageKey';
 import { SupportTheme } from '../../theme';
@@ -11,6 +14,7 @@ type UserReduxState = {
   token: string;
   theme: string;
   bindProjects: IUserBindProjectResV1[];
+  managementPermissions: IManagementPermissionResV1[];
 };
 
 const initialState: UserReduxState = {
@@ -19,6 +23,7 @@ const initialState: UserReduxState = {
   token: LocalStorageWrapper.getOrDefault(StorageKey.Token, ''),
   theme: LocalStorageWrapper.getOrDefault(StorageKey.Theme, SupportTheme.LIGHT),
   bindProjects: [],
+  managementPermissions: [],
 };
 
 const user = createSlice({
@@ -56,10 +61,23 @@ const user = createSlice({
     ) => {
       state.bindProjects = bindProjects;
     },
+    updateManagementPermissions: (
+      state,
+      {
+        payload: { managementPermissions },
+      }: PayloadAction<{ managementPermissions: IManagementPermissionResV1[] }>
+    ) => {
+      state.managementPermissions = managementPermissions;
+    },
   },
 });
 
-export const { updateUser, updateTheme, updateToken, updateBindProjects } =
-  user.actions;
+export const {
+  updateUser,
+  updateTheme,
+  updateToken,
+  updateBindProjects,
+  updateManagementPermissions,
+} = user.actions;
 
 export default user.reducer;

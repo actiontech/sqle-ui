@@ -10,7 +10,6 @@ import RuleTemplateList from '.';
 import rule_template from '../../../api/rule_template';
 import { SystemRole } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
-import { ModalName } from '../../../data/ModalName';
 import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';

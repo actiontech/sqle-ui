@@ -1,14 +1,16 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Button, Card, message, PageHeader, Space, Table } from 'antd';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { IProjectListItem } from '../../../api/common';
 import project from '../../../api/project';
-import { ResponseCode } from '../../../data/common';
+import EmptyBox from '../../../components/EmptyBox';
+import { ManagementPermissionsEnum, ResponseCode } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { ModalName } from '../../../data/ModalName';
+import useCurrentUser from '../../../hooks/useCurrentUser';
 import {
   updateProjectManageModalStatus,
   updateSelectProject,
@@ -20,6 +22,24 @@ import { ProjectListTableColumnFactory } from './column';
 const ProjectList: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const { isAdmin, managementPermissions, isProjectManager } = useCurrentUser();
+
+  const allowCreateProject = useMemo(() => {
+    return (
+      isAdmin ||
+      managementPermissions.some(
+        (v) => v.code === ManagementPermissionsEnum.Create_Project
+      )
+    );
+  }, [isAdmin, managementPermissions]);
+
+  const allowOperateProject = useCallback(
+    (projectName: string) => {
+      return isAdmin || isProjectManager(projectName);
+    },
+    [isAdmin, isProjectManager]
+  );
+
   const {
     data,
     loading,
@@ -54,6 +74,9 @@ const ProjectList: React.FC = () => {
   );
 
   const deleteAction = (name?: string) => {
+    if (!allowOperateProject(name ?? '')) {
+      return;
+    }
     project
       .deleteProjectV1({
         project_name: name!,
@@ -71,6 +94,9 @@ const ProjectList: React.FC = () => {
   };
 
   const openModalAndUpdateSelectProject = (record: IProjectListItem) => {
+    if (!allowOperateProject(record.name ?? '')) {
+      return;
+    }
     dispatch(
       updateProjectManageModalStatus({
         modalName: ModalName.Update_Project,
@@ -81,6 +107,9 @@ const ProjectList: React.FC = () => {
   };
 
   const openCreateProjectModal = () => {
+    if (!allowCreateProject) {
+      return;
+    }
     dispatch(
       updateProjectManageModalStatus({
         modalName: ModalName.Create_Project,
@@ -117,13 +146,11 @@ const ProjectList: React.FC = () => {
             </Space>
           }
           extra={[
-            <Button
-              key="create_project"
-              type="primary"
-              onClick={openCreateProjectModal}
-            >
-              {t('projectManage.projectList.createProject')}
-            </Button>,
+            <EmptyBox key="create_project" if={allowCreateProject}>
+              <Button type="primary" onClick={openCreateProjectModal}>
+                {t('projectManage.projectList.createProject')}
+              </Button>
+            </EmptyBox>,
           ]}
         >
           <Table
@@ -138,7 +165,8 @@ const ProjectList: React.FC = () => {
             }}
             columns={ProjectListTableColumnFactory(
               deleteAction,
-              openModalAndUpdateSelectProject
+              openModalAndUpdateSelectProject,
+              allowOperateProject
             )}
           />
         </Card>

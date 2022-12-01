@@ -6,7 +6,8 @@ import { TableColumn } from '../../../types/common.type';
 
 export const ProjectListTableColumnFactory = (
   deleteAction: (name?: string) => void,
-  openModalAndUpdateSelectProject: (record: IProjectListItem) => void
+  openModalAndUpdateSelectProject: (record: IProjectListItem) => void,
+  allowOperateProject: (projectName: string) => boolean
 ): TableColumn<IProjectListItem, 'operator'> => {
   return [
     {
@@ -41,20 +42,29 @@ export const ProjectListTableColumnFactory = (
             <Typography.Link
               className="pointer"
               onClick={() => openModalAndUpdateSelectProject(record)}
+              disabled={!allowOperateProject(record.name ?? '')}
             >
               {i18n.t('common.edit')}
             </Typography.Link>
             <Divider type="vertical" />
             <Popconfirm
-              title={i18n.t('ruleTemplate.deleteRuleTemplate.tips', {
-                name: record.name,
-              })}
+              title={i18n.t(
+                'projectManage.projectList.column.deleteProjectTips',
+                {
+                  name: record.name,
+                }
+              )}
               okText={i18n.t('common.ok')}
               cancelText={i18n.t('common.cancel')}
               placement="topRight"
               onConfirm={() => deleteAction(record.name)}
+              disabled={!allowOperateProject(record.name ?? '')}
             >
-              <Typography.Text type="danger" className="pointer">
+              <Typography.Text
+                type="danger"
+                className="pointer"
+                disabled={!allowOperateProject(record.name ?? '')}
+              >
                 {i18n.t('common.delete')}
               </Typography.Text>
             </Popconfirm>

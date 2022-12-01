@@ -17,7 +17,12 @@ import { globalRouterConfig, unAuthRouter } from './router/config';
 import { IReduxState } from './store';
 import { useRequest } from 'ahooks';
 import { ResponseCode, SystemRole } from './data/common';
-import { updateUser, updateToken, updateBindProjects } from './store/user';
+import {
+  updateUser,
+  updateToken,
+  updateBindProjects,
+  updateManagementPermissions,
+} from './store/user';
 import user from './api/user';
 import { useDispatch } from 'react-redux';
 import EmptyBox from './components/EmptyBox';
@@ -43,6 +48,7 @@ function App() {
         token: '',
       })
     );
+    dispatch(updateManagementPermissions({ managementPermissions: [] }));
   };
 
   const { loading, run: getUserInfo } = useRequest(
@@ -52,6 +58,7 @@ function App() {
       onSuccess: (res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           const data = res.data.data;
+
           dispatch(
             updateBindProjects({ bindProjects: data?.bind_projects ?? [] })
           );
@@ -59,6 +66,11 @@ function App() {
             updateUser({
               username: data?.user_name ?? '',
               role: data?.is_admin ? SystemRole.admin : '',
+            })
+          );
+          dispatch(
+            updateManagementPermissions({
+              managementPermissions: data?.management_permission_list ?? [],
             })
           );
         } else {

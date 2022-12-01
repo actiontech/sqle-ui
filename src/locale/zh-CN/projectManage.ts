@@ -13,6 +13,7 @@ export default {
       desc: '项目描述',
       createTime: '创建时间',
       createUser: '创建人',
+      deleteProjectTips: '确认要删除项目"{{name}}"么?',
     },
   },
   createProject: {

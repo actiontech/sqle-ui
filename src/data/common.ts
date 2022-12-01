@@ -100,3 +100,7 @@ export enum LoginTypeEnum {
   'ldap' = 'ldap',
   'sqle' = 'sqle',
 }
+
+export enum ManagementPermissionsEnum {
+  Create_Project = 1,
+}

@@ -4,7 +4,10 @@ import user from './api/user';
 import App from './App';
 import { SystemRole } from './data/common';
 import { ModalName } from './data/ModalName';
-import { mockBindProjects } from './hooks/useCurrentUser/index.test';
+import {
+  mockBindProjects,
+  mockManagementPermissions,
+} from './hooks/useCurrentUser/index.test';
 import { SupportLanguage } from './locale';
 import { mockUseDispatch, mockUseSelector } from './testUtils/mockRedux';
 import {
@@ -25,6 +28,7 @@ describe('App test', () => {
         user_name: 'test',
         is_admin: '',
         bindProjects: mockBindProjects,
+        management_permission_list: mockManagementPermissions,
       })
     );
     const { scopeDispatch: temp } = mockUseDispatch();
@@ -98,12 +102,13 @@ describe('App test', () => {
         user_name: 'username',
         is_admin: '',
         bind_projects: mockBindProjects,
+        management_permission_list: mockManagementPermissions,
       })
     );
     expect(scopeDispatch).not.toBeCalled();
     render(<App />);
     await waitFor(() => jest.advanceTimersByTime(3000));
-    expect(scopeDispatch).toBeCalledTimes(3);
+    expect(scopeDispatch).toBeCalledTimes(4);
     expect(scopeDispatch.mock.calls[1][0]).toEqual({
       payload: {
         bindProjects: mockBindProjects,
@@ -117,6 +122,12 @@ describe('App test', () => {
       },
       type: 'user/updateUser',
     });
+    expect(scopeDispatch.mock.calls[3][0]).toEqual({
+      payload: {
+        managementPermissions: mockManagementPermissions,
+      },
+      type: 'user/updateManagementPermissions',
+    });
 
     scopeDispatch.mockClear();
     getUserSpy.mockImplementation(() =>
@@ -128,7 +139,7 @@ describe('App test', () => {
 
     render(<App />);
     await waitFor(() => jest.advanceTimersByTime(3000));
-    expect(scopeDispatch).toBeCalledTimes(4);
+    expect(scopeDispatch).toBeCalledTimes(5);
     expect(scopeDispatch).toBeCalledWith({
       payload: {
         bindProjects: [],
@@ -147,6 +158,12 @@ describe('App test', () => {
         token: '',
       },
       type: 'user/updateToken',
+    });
+    expect(scopeDispatch).toBeCalledWith({
+      payload: {
+        managementPermissions: [],
+      },
+      type: 'user/updateManagementPermissions',
     });
   });
 
