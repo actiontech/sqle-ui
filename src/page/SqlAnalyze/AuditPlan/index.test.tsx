@@ -15,7 +15,9 @@ jest.mock('react-router', () => {
   };
 });
 
-describe.skip('SqlAnalyze/AuditPlan', () => {
+const projectName = 'default';
+
+describe('SqlAnalyze/AuditPlan', () => {
   // eslint-disable-next-line no-console
   const error = console.error;
 
@@ -37,7 +39,11 @@ describe.skip('SqlAnalyze/AuditPlan', () => {
 
   beforeEach(() => {
     jest.useFakeTimers();
-    useParamsMock.mockReturnValue({ reportId: 'reportId1', sqlNum: '123' });
+    useParamsMock.mockReturnValue({
+      reportId: 'reportId1',
+      sqlNum: '123',
+      projectName,
+    });
   });
 
   afterEach(() => {
@@ -62,6 +68,7 @@ describe.skip('SqlAnalyze/AuditPlan', () => {
     const { container } = render(<AuditPlanSqlAnalyze />);
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith({
+      project_name: projectName,
       audit_plan_report_id: 'reportId1',
       number: '123',
     });
