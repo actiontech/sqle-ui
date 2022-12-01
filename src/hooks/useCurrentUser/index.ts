@@ -3,12 +3,15 @@ import { IReduxState } from '../../store';
 import { SystemRole } from '../../data/common';
 import { useCallback } from 'react';
 const useCurrentUser = () => {
-  const { role, bindProjects } = useSelector((state: IReduxState) => {
-    return {
-      role: state.user.role,
-      bindProjects: state.user.bindProjects,
-    };
-  });
+  const { role, bindProjects, managementPermissions } = useSelector(
+    (state: IReduxState) => {
+      return {
+        role: state.user.role,
+        bindProjects: state.user.bindProjects,
+        managementPermissions: state.user.managementPermissions,
+      };
+    }
+  );
   const isAdmin: boolean = role === SystemRole.admin;
 
   const isProjectManager = useCallback(
@@ -19,6 +22,6 @@ const useCurrentUser = () => {
     [bindProjects]
   );
 
-  return { isAdmin, isProjectManager, bindProjects };
+  return { isAdmin, isProjectManager, bindProjects, managementPermissions };
 };
 export default useCurrentUser;

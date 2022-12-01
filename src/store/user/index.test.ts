@@ -1,5 +1,6 @@
 import reducers, {
   updateBindProjects,
+  updateManagementPermissions,
   updateTheme,
   updateToken,
   updateUser,
@@ -7,7 +8,10 @@ import reducers, {
 import { IReduxState } from '..';
 import { SystemRole } from '../../data/common';
 import StorageKey from '../../data/StorageKey';
-import { mockBindProjects } from '../../hooks/useCurrentUser/index.test';
+import {
+  mockBindProjects,
+  mockManagementPermissions,
+} from '../../hooks/useCurrentUser/index.test';
 import { SupportTheme } from '../../theme';
 import LocalStorageWrapper from '../../utils/LocalStorageWrapper';
 
@@ -38,6 +42,16 @@ describe('store/user', () => {
       },
       type: 'user/updateBindProjects',
     });
+    expect(
+      updateManagementPermissions({
+        managementPermissions: mockManagementPermissions,
+      })
+    ).toEqual({
+      payload: {
+        managementPermissions: mockManagementPermissions,
+      },
+      type: 'user/updateManagementPermissions',
+    });
   });
 
   const state: IReduxState['user'] = {
@@ -46,6 +60,7 @@ describe('store/user', () => {
     token: '',
     theme: SupportTheme.LIGHT,
     bindProjects: [],
+    managementPermissions: [],
   };
 
   test('should update username and role when dispatch updateUser action', () => {
@@ -60,6 +75,7 @@ describe('store/user', () => {
       token: '',
       theme: SupportTheme.LIGHT,
       bindProjects: [],
+      managementPermissions: [],
     });
   });
 
@@ -72,6 +88,7 @@ describe('store/user', () => {
       token: '',
       theme: SupportTheme.DARK,
       bindProjects: [],
+      managementPermissions: [],
     });
   });
 
@@ -85,6 +102,7 @@ describe('store/user', () => {
       token: 'token',
       theme: SupportTheme.LIGHT,
       bindProjects: [],
+      managementPermissions: [],
     });
     expect(localStorageWrapperSpy).toBeCalledWith(StorageKey.Token, 'token');
   });
@@ -98,6 +116,20 @@ describe('store/user', () => {
     expect(newState).toEqual({
       ...state,
       bindProjects: mockBindProjects,
+    });
+  });
+
+  test('should update management permissions when dispatch updateManagementPermissions action', () => {
+    const newState = reducers(
+      state,
+      updateManagementPermissions({
+        managementPermissions: mockManagementPermissions,
+      })
+    );
+    expect(newState).not.toBe(state);
+    expect(newState).toEqual({
+      ...state,
+      managementPermissions: mockManagementPermissions,
     });
   });
 });

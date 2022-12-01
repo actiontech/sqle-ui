@@ -1,7 +1,15 @@
-import { act, fireEvent, screen, waitFor } from '@testing-library/react';
+import {
+  act,
+  cleanup,
+  fireEvent,
+  screen,
+  waitFor,
+} from '@testing-library/react';
 import ProjectList from '.';
+import { SystemRole } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { ModalName } from '../../../data/ModalName';
+import { mockManagementPermissions } from '../../../hooks/useCurrentUser/index.test';
 import { getBySelector } from '../../../testUtils/customQuery';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
@@ -19,6 +27,11 @@ describe('test ProjectManage/ProjectList', () => {
           [ModalName.Create_Project]: false,
           [ModalName.Update_Project]: false,
         },
+      },
+      user: {
+        role: SystemRole.admin,
+        bindProjects: [],
+        managementPermissions: [],
       },
     });
     getProjectListSpy = mockGetProjectList();
@@ -98,7 +111,7 @@ describe('test ProjectManage/ProjectList', () => {
 
     fireEvent.click(screen.getAllByText('common.delete')[0]);
     expect(
-      screen.getByText('ruleTemplate.deleteRuleTemplate.tips')
+      screen.getByText('projectManage.projectList.column.deleteProjectTips')
     ).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('common.ok'));
@@ -185,5 +198,197 @@ describe('test ProjectManage/ProjectList', () => {
       page_index: 1,
       page_size: 10,
     });
+  });
+
+  test('should hide the Create feature when project permissions are not created and the is not a admin', async () => {
+    mockUseSelector({
+      projectManage: {
+        modalStatus: {
+          [ModalName.Create_Project]: false,
+          [ModalName.Update_Project]: false,
+        },
+      },
+      user: {
+        role: SystemRole.admin,
+        bindProjects: [],
+        managementPermissions: [],
+      },
+    });
+
+    renderWithRouter(<ProjectList />);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(
+      screen.queryByText('projectManage.projectList.createProject')
+    ).toBeInTheDocument();
+
+    cleanup();
+    jest.clearAllMocks();
+
+    mockUseSelector({
+      projectManage: {
+        modalStatus: {
+          [ModalName.Create_Project]: false,
+          [ModalName.Update_Project]: false,
+        },
+      },
+      user: {
+        role: '',
+        bindProjects: [],
+        managementPermissions: mockManagementPermissions,
+      },
+    });
+    renderWithRouter(<ProjectList />);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(
+      screen.queryByText('projectManage.projectList.createProject')
+    ).toBeInTheDocument();
+
+    cleanup();
+    jest.clearAllMocks();
+
+    mockUseSelector({
+      projectManage: {
+        modalStatus: {
+          [ModalName.Create_Project]: false,
+          [ModalName.Update_Project]: false,
+        },
+      },
+      user: {
+        role: '',
+        bindProjects: [],
+        managementPermissions: [],
+      },
+    });
+    renderWithRouter(<ProjectList />);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(
+      screen.queryByText('projectManage.projectList.createProject')
+    ).not.toBeInTheDocument();
+  });
+
+  test('should disabled the Delete, Edit feature when not currently a project manager or admin', async () => {
+    mockUseSelector({
+      projectManage: {
+        modalStatus: {
+          [ModalName.Create_Project]: false,
+          [ModalName.Update_Project]: false,
+        },
+      },
+      user: {
+        role: '',
+        bindProjects: [],
+        managementPermissions: [],
+      },
+    });
+
+    renderWithRouter(<ProjectList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryAllByText('common.delete')[0]).toHaveClass(
+      'ant-typography-disabled'
+    );
+    fireEvent.click(screen.queryAllByText('common.delete')[0]);
+    expect(
+      screen.queryByText('projectManage.projectList.column.deleteProjectTips')
+    ).not.toBeInTheDocument();
+
+    expect(screen.queryAllByText('common.edit')[0]).toHaveClass(
+      'ant-typography-disabled'
+    );
+
+    expect(dispatchSpy).toBeCalledTimes(1);
+    fireEvent.click(screen.getAllByText('common.edit')[0]);
+    expect(dispatchSpy).toBeCalledTimes(1);
+
+    cleanup();
+    jest.clearAllMocks();
+
+    mockUseSelector({
+      projectManage: {
+        modalStatus: {
+          [ModalName.Create_Project]: false,
+          [ModalName.Update_Project]: false,
+        },
+      },
+      user: {
+        role: SystemRole.admin,
+        bindProjects: [],
+        managementPermissions: [],
+      },
+    });
+    renderWithRouter(<ProjectList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryAllByText('common.delete')[0]).not.toHaveClass(
+      'ant-typography-disabled'
+    );
+    fireEvent.click(screen.queryAllByText('common.delete')[0]);
+    expect(
+      screen.queryByText('projectManage.projectList.column.deleteProjectTips')
+    ).toBeInTheDocument();
+
+    expect(screen.queryAllByText('common.edit')[0]).not.toHaveClass(
+      'ant-typography-disabled'
+    );
+
+    expect(dispatchSpy).toBeCalledTimes(1);
+    fireEvent.click(screen.getAllByText('common.edit')[0]);
+    expect(dispatchSpy).toBeCalledTimes(3);
+
+    cleanup();
+    jest.clearAllMocks();
+
+    mockUseSelector({
+      projectManage: {
+        modalStatus: {
+          [ModalName.Create_Project]: false,
+          [ModalName.Update_Project]: false,
+        },
+      },
+      user: {
+        role: '',
+        bindProjects: [{ project_name: 'project1', is_manager: true }],
+        managementPermissions: [],
+      },
+    });
+    renderWithRouter(<ProjectList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryAllByText('common.delete')[0]).not.toHaveClass(
+      'ant-typography-disabled'
+    );
+    fireEvent.click(screen.queryAllByText('common.delete')[0]);
+    expect(
+      screen.queryByText('projectManage.projectList.column.deleteProjectTips')
+    ).toBeInTheDocument();
+
+    expect(screen.queryAllByText('common.edit')[0]).not.toHaveClass(
+      'ant-typography-disabled'
+    );
+
+    expect(dispatchSpy).toBeCalledTimes(1);
+    fireEvent.click(screen.getAllByText('common.edit')[0]);
+    expect(dispatchSpy).toBeCalledTimes(3);
+
+    cleanup();
+    jest.clearAllMocks();
   });
 });
