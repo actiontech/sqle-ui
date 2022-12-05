@@ -24,14 +24,57 @@ jest.mock('react-router', () => {
 });
 const projectName = 'default';
 
+const instanceData = {
+  additional_params: [
+    { description: '字段a', name: 'a', type: 'string', value: '123' },
+    { description: '字段b', name: 'b', type: 'int', value: '123' },
+    { description: '字段c', name: 'c', type: 'bool', value: 'true' },
+  ],
+  instance_name: 'db1',
+  db_host: '20.20.20.2',
+  db_port: '3306',
+  db_user: 'root',
+  db_type: 'mysql',
+  desc: '',
+  maintenance_times: [
+    {
+      maintenance_start_time: {
+        hour: 23,
+        minute: 0,
+      },
+      maintenance_stop_time: {
+        hour: 23,
+        minute: 30,
+      },
+    },
+    {
+      maintenance_start_time: {
+        hour: 0,
+        minute: 0,
+      },
+      maintenance_stop_time: {
+        hour: 2,
+        minute: 0,
+      },
+    },
+  ],
+  rule_template_name: 'default_MySQL',
+  sql_query_config: {
+    max_pre_query_rows: 50,
+    query_timeout_second: 10000,
+    allow_query_when_less_than_audit_level: 'notice',
+    audit_enabled: true,
+  },
+};
+
 describe('UpdateDataSource', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
-
+  let getInstanceSpy: jest.SpyInstance;
   beforeEach(() => {
     jest.useFakeTimers();
     useParamsMock.mockReturnValue({ instanceName: '1', projectName });
     mockUseRuleTemplate();
-    mockGetInstance();
+    getInstanceSpy = mockGetInstance();
     mockDriver();
     mockGetDataSourceMetas();
     mockUseGlobalRuleTemplate();
@@ -57,50 +100,7 @@ describe('UpdateDataSource', () => {
 
   const mockGetInstance = () => {
     const spy = jest.spyOn(instance, 'getInstanceV1');
-    spy.mockImplementation(() =>
-      resolveThreeSecond({
-        additional_params: [
-          { description: '字段a', name: 'a', type: 'string', value: '123' },
-          { description: '字段b', name: 'b', type: 'int', value: '123' },
-          { description: '字段c', name: 'c', type: 'bool', value: 'true' },
-        ],
-        instance_name: 'db1',
-        db_host: '20.20.20.2',
-        db_port: '3306',
-        db_user: 'root',
-        db_type: 'mysql',
-        desc: '',
-        workflow_template_name: 'workflow-template-name-1',
-        maintenance_times: [
-          {
-            maintenance_start_time: {
-              hour: 23,
-              minute: 0,
-            },
-            maintenance_stop_time: {
-              hour: 23,
-              minute: 30,
-            },
-          },
-          {
-            maintenance_start_time: {
-              hour: 0,
-              minute: 0,
-            },
-            maintenance_stop_time: {
-              hour: 2,
-              minute: 0,
-            },
-          },
-        ],
-        sql_query_config: {
-          max_pre_query_rows: 50,
-          query_timeout_second: 10000,
-          allow_query_when_less_than_audit_level: 'notice',
-          audit_enabled: true,
-        },
-      })
-    );
+    spy.mockImplementation(() => resolveThreeSecond(instanceData));
     return spy;
   };
 
@@ -280,34 +280,46 @@ describe('UpdateDataSource', () => {
     expect(history.location.pathname).toBe(`/project/${projectName}/data`);
   });
 
-  // test('should reset all fields when click reset button', async () => {
-  //   renderWithTheme(<UpdateDataSource />);
+  test('should be send an empty string when rule template is not selected', async () => {
+    getInstanceSpy.mockImplementation(() => {
+      return resolveThreeSecond({
+        ...instanceData,
+        rule_template_name: undefined,
+      });
+    });
+    const updateSpy = mockUpdateInstanceRequest();
+    renderWithThemeAndRouter(<UpdateDataSource />);
 
-  //   await waitFor(() => {
-  //     jest.advanceTimersByTime(3000);
-  //   });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
 
-  //   fireEvent.input(screen.getByLabelText('dataSource.dataSourceForm.name'), {
-  //     target: { value: 'instance_name1' },
-  //   });
-  //   expect(screen.getByLabelText('dataSource.dataSourceForm.name')).toHaveValue(
-  //     'instance_name1'
-  //   );
+    await waitFor(() => {
+      fireEvent.click(screen.getByText('common.submit'));
+    });
 
-  //   fireEvent.input(screen.getByLabelText('dataSource.dataSourceForm.port'), {
-  //     target: { value: 4444 },
-  //   });
-  //   expect(screen.getByLabelText('dataSource.dataSourceForm.port')).toHaveValue(
-  //     '4444'
-  //   );
-
-  //   fireEvent.click(screen.getByText('common.reset'));
-
-  //   expect(screen.getByLabelText('dataSource.dataSourceForm.name')).toHaveValue(
-  //     ''
-  //   );
-  //   expect(screen.getByLabelText('dataSource.dataSourceForm.port')).toHaveValue(
-  //     '3306'
-  //   );
-  // });
+    expect(updateSpy).toBeCalledTimes(1);
+    expect(updateSpy).toBeCalledWith({
+      ...instanceData,
+      rule_template_name: '',
+      project_name: projectName,
+      additional_params: [
+        {
+          name: 'a',
+          value: '123',
+        },
+        {
+          name: 'b',
+          value: '123',
+        },
+        {
+          name: 'c',
+          value: 'true',
+        },
+      ],
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+  });
 });

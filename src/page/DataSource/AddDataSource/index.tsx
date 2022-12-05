@@ -33,7 +33,7 @@ const AddDataSource = () => {
         db_type: values.type,
         desc: values.describe,
         instance_name: values.name,
-        rule_template_name: values.ruleTemplate,
+        rule_template_name: values.ruleTemplate ?? '',
         additional_params: turnCommonToDataSourceParams(
           values.asyncParams ?? []
         ),

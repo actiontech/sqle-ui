@@ -35,7 +35,7 @@ const UpdateDataSource = () => {
       db_user: values.user,
       desc: values.describe,
       instance_name: values.name,
-      rule_template_name: values.ruleTemplate,
+      rule_template_name: values.ruleTemplate ?? '',
       additional_params: turnCommonToDataSourceParams(values.asyncParams ?? []),
       maintenance_times:
         values.maintenanceTime?.map((t) => ({
