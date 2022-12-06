@@ -69,14 +69,8 @@ describe('test Nav/Header/MoreAction', () => {
     fireEvent.click(screen.getByText('menu.reportStatistics'));
     expect(history.location.pathname).toBe('/reportStatistics');
 
-    fireEvent.click(screen.getByText('menu.user'));
-    expect(history.location.pathname).toBe('/user');
-
-    fireEvent.click(screen.getByText('menu.role'));
-    expect(history.location.pathname).toBe('/user/role');
-
-    fireEvent.click(screen.getByText('menu.userGroup'));
-    expect(history.location.pathname).toBe('/user/group');
+    fireEvent.click(screen.getByText('menu.userCenter'));
+    expect(history.location.pathname).toBe('/userCenter');
 
     fireEvent.click(screen.getByText('menu.globalRuleTemplate'));
     expect(history.location.pathname).toBe('/rule/template');

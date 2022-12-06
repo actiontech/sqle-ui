@@ -1,8 +1,5 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  pageTitle: '角色管理',
-  pageDesc: '您可以在这个创建/编辑角色，并为角色分配数据源和部分工单操作权限。',
-
   roleListTitle: '角色列表',
 
   createRole: {

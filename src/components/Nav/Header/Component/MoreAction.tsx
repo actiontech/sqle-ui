@@ -49,20 +49,11 @@ const MoreAction: React.FC = () => {
               </Menu.Item>
               <Menu.Divider />
               <Menu.ItemGroup title={t('menu.platformManage')}>
-                <Menu.Item key="user" onClick={() => history.push('/user')}>
-                  {t('menu.user')}
-                </Menu.Item>
                 <Menu.Item
-                  key="role"
-                  onClick={() => history.push('/user/role')}
+                  key="userCenter"
+                  onClick={() => history.push('/userCenter')}
                 >
-                  {t('menu.role')}
-                </Menu.Item>
-                <Menu.Item
-                  key="userGroup"
-                  onClick={() => history.push('/user/group')}
-                >
-                  {t('menu.userGroup')}
+                  {t('menu.userCenter')}
                 </Menu.Item>
                 <Menu.Item
                   key="ruleTemplate"
