@@ -33,7 +33,7 @@ export default {
     ip: '数据库地址',
     ipTips: '数据库IP或域名',
     port: '数据库端口',
-    user: '链接用户',
+    user: '连接用户',
     password: '密码',
     role: '可访问的角色',
     ruleTemplate: '审核规则模版',
