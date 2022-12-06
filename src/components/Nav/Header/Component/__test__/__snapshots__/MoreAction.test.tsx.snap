@@ -82,38 +82,14 @@ exports[`test Nav/Header/MoreAction should match snapshot 1`] = `
             >
               <li
                 class="ant-dropdown-menu-item ant-dropdown-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-user"
+                data-menu-id="rc-menu-uuid-test-userCenter"
                 role="menuitem"
                 tabindex="-1"
               >
                 <span
                   class="ant-dropdown-menu-title-content"
                 >
-                  menu.user
-                </span>
-              </li>
-              <li
-                class="ant-dropdown-menu-item ant-dropdown-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-role"
-                role="menuitem"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-dropdown-menu-title-content"
-                >
-                  menu.role
-                </span>
-              </li>
-              <li
-                class="ant-dropdown-menu-item ant-dropdown-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-userGroup"
-                role="menuitem"
-                tabindex="-1"
-              >
-                <span
-                  class="ant-dropdown-menu-title-content"
-                >
-                  menu.userGroup
+                  menu.userCenter
                 </span>
               </li>
               <li

@@ -1,8 +1,7 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  pageTitle: '用户管理',
-  pageDesc:
-    '你可以在这里管理平台的用户，用户拥有其所属的用户组所拥有的所有权限。',
+  pageTitle: '用户中心',
+  pageDesc: '您可以在用户中心管理平台用户、用户组，并配置平台角色权限。',
   userListTitle: '用户列表',
 
   createUser: {

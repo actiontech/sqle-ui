@@ -31,17 +31,8 @@ const Login = React.lazy(
   () => import(/* webpackChunkName: "Login" */ '../page/Login')
 );
 
-const User = React.lazy(
-  () => import(/* webpackChunkName: "User" */ '../page/UserCenter/User')
-);
-
-const Role = React.lazy(
-  () => import(/* webpackChunkName: "Role" */ '../page/UserCenter/Role')
-);
-
-const UserGroup = React.lazy(
-  () =>
-    import(/* webpackChunkName: "UserGroup" */ '../page/UserCenter/UserGroup')
+const UserCenter = React.lazy(
+  () => import(/* webpackChunkName: "UserCenter" */ '../page/UserCenter')
 );
 
 const Rule = React.lazy(
@@ -213,32 +204,11 @@ export const globalRouterConfig: RouterItem<GlobalRouterItemKeyLiteral>[] = [
     key: 'account',
   },
   {
+    path: '/userCenter',
     label: 'menu.userCenter',
     icon: <UserOutlined />,
     key: 'userCenter',
-    components: [
-      {
-        path: '/user',
-        exact: true,
-        label: 'menu.user',
-        component: User,
-        key: 'user',
-      },
-      {
-        path: '/user/role',
-        exact: true,
-        label: 'menu.role',
-        component: Role,
-        key: 'role',
-      },
-      {
-        path: '/user/group',
-        exact: true,
-        label: 'menu.userGroup',
-        component: UserGroup,
-        key: 'userGroup',
-      },
-    ],
+    component: UserCenter,
   },
   {
     path: '/rule/template',

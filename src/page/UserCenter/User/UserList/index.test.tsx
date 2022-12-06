@@ -12,7 +12,6 @@ import { ModalName } from '../../../../data/ModalName';
 import { getBySelector } from '../../../../testUtils/customQuery';
 import { mockUseDispatch } from '../../../../testUtils/mockRedux';
 import {
-  mockUseRole,
   mockUseUsername,
   resolveThreeSecond,
 } from '../../../../testUtils/mockRequest';
@@ -28,8 +27,7 @@ describe('User/UserList', () => {
     dispatchMock = scopeDispatch;
     jest.useFakeTimers();
     mockUseUsername();
-    mockUseRole();
-    getUserListSpy = mockGetRoleList();
+    getUserListSpy = mockGetUserList();
   });
 
   afterEach(() => {
@@ -39,7 +37,7 @@ describe('User/UserList', () => {
     jest.restoreAllMocks();
   });
 
-  const mockGetRoleList = () => {
+  const mockGetUserList = () => {
     const spy = jest.spyOn(user, 'getUserListV1');
     spy.mockImplementation(() =>
       resolveThreeSecond(UserListData, { otherData: { total_nums: 11 } })

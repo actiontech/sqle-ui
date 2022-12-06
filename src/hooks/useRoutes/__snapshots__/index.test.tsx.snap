@@ -87,53 +87,21 @@ Array [
     label="common.account"
     path="/account"
   />,
-  Array [
-    <Route
-      component={
-        Object {
-          "$$typeof": Symbol(react.lazy),
-          "_init": [Function],
-          "_payload": Object {
-            "_result": [Function],
-            "_status": -1,
-          },
-        }
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
       }
-      exact={true}
-      label="menu.user"
-      path="/user"
-    />,
-    <Route
-      component={
-        Object {
-          "$$typeof": Symbol(react.lazy),
-          "_init": [Function],
-          "_payload": Object {
-            "_result": [Function],
-            "_status": -1,
-          },
-        }
-      }
-      exact={true}
-      label="menu.role"
-      path="/user/role"
-    />,
-    <Route
-      component={
-        Object {
-          "$$typeof": Symbol(react.lazy),
-          "_init": [Function],
-          "_payload": Object {
-            "_result": [Function],
-            "_status": -1,
-          },
-        }
-      }
-      exact={true}
-      label="menu.userGroup"
-      path="/user/group"
-    />,
-  ],
+    }
+    icon={<ForwardRef(UserOutlined) />}
+    label="menu.userCenter"
+    path="/userCenter"
+  />,
   <Route
     component={
       Object {
