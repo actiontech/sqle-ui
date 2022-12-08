@@ -23,7 +23,7 @@ import {
   WorkflowResV1ModeEnum,
   WorkflowStepResV1StateEnum,
   WorkflowStepResV1TypeEnum,
-  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum
+  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
 } from './common.enum';
 
 export interface IBaseRes {

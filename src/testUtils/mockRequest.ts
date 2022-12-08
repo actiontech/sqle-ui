@@ -271,6 +271,12 @@ export const mockUseProject = () => {
   return spy;
 };
 
+export const mockUseMember = () => {
+  const spy = jest.spyOn(user, 'getMemberTipListV1');
+  spy.mockImplementation(() => resolveThreeSecond([{ user_name: 'member1' }]));
+  return spy;
+};
+
 export const AuditPlanTypesData = [
   { type: 'default', desc: '自定义' },
   { type: 'mysql_slow_log', desc: '慢日志' },

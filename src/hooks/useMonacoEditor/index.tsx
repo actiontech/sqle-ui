@@ -4,6 +4,9 @@ import { EditorDidMount } from 'react-monaco-editor';
 import { IDisposable } from 'monaco-editor';
 import { createDependencyProposals } from './index.data';
 import { IRange } from './index.type';
+import { throttle } from 'lodash';
+import * as monacoEditor from 'monaco-editor/esm/vs/editor/editor.api';
+
 const useMonacoEditor = (
   form?: FormInstance,
   {
@@ -12,12 +15,11 @@ const useMonacoEditor = (
   }: { formName?: string; placeholder?: string } = {}
 ) => {
   const monacoProviderRef = React.useRef<IDisposable>();
-  React.useEffect(() => {
-    return () => {
-      monacoProviderRef.current?.dispose();
-    };
-  }, []);
+  const editorRef =
+    React.useRef<monacoEditor.editor.IStandaloneCodeEditor | null>(null);
+
   const editorDidMount: EditorDidMount = (editor, monaco) => {
+    editorRef.current = editor;
     monacoProviderRef.current = monaco.languages.registerCompletionItemProvider(
       'sql',
       {
@@ -68,6 +70,19 @@ const useMonacoEditor = (
       }
     });
   };
+
+  React.useEffect(() => {
+    const onResize = throttle(() => {
+      editorRef.current?.layout();
+    }, 500);
+
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      monacoProviderRef.current?.dispose();
+      window.removeEventListener('resize', onResize);
+    };
+  }, []);
 
   return {
     editorDidMount,
