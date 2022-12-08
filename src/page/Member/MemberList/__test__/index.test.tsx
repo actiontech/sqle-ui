@@ -19,7 +19,7 @@ import {
 } from '../../../../testUtils/mockRedux';
 import {
   mockUseInstance,
-  mockUseUsername,
+  mockUseMember,
 } from '../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../utils/EventEmitter';
 import { mockDeleteMember, mockGetMembers, mockMemberList } from './utils';
@@ -39,7 +39,7 @@ describe('test MemberList', () => {
   beforeEach(() => {
     getMembersSpy = mockGetMembers();
     deleteMemberSpy = mockDeleteMember();
-    mockUseUsername();
+    mockUseMember();
     mockUseInstance();
     useParamsMock.mockReturnValue({ projectName });
     mockUseSelector({
@@ -102,7 +102,7 @@ describe('test MemberList', () => {
       project_name: projectName,
     });
 
-    selectOptionByIndex('member.memberList.filterForm.username', 'user_name1');
+    selectOptionByIndex('member.memberList.filterForm.username', 'member1');
     selectOptionByIndex('member.memberList.filterForm.instance', 'instance1');
 
     fireEvent.click(screen.getByText('common.search'));
@@ -115,7 +115,7 @@ describe('test MemberList', () => {
       page_index: 1,
       page_size: 10,
       project_name: projectName,
-      filter_user_name: 'user_name1',
+      filter_user_name: 'member1',
       filter_instance_name: 'instance1',
     });
 

@@ -5,7 +5,7 @@ import EmitterKey from '../../../../data/EmitterKey';
 import { selectOptionByIndex } from '../../../../testUtils/customQuery';
 import {
   mockUseInstance,
-  mockUseUsername,
+  mockUseMember,
 } from '../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../utils/EventEmitter';
 import MemberListFilterForm from '../FilterForm';
@@ -18,13 +18,13 @@ const projectName = 'default';
 
 describe('test MemberListFilterForm', () => {
   let useInstanceSpy: jest.SpyInstance;
-  let useUsernameSpy: jest.SpyInstance;
+  let useMemberSpy: jest.SpyInstance;
   const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   const submitSpy = jest.fn();
   beforeEach(() => {
     useInstanceSpy = mockUseInstance();
-    useUsernameSpy = mockUseUsername();
+    useMemberSpy = mockUseMember();
     useParamsMock.mockReturnValue({ projectName });
 
     jest.useFakeTimers();
@@ -45,24 +45,24 @@ describe('test MemberListFilterForm', () => {
 
   test('should get data from request', () => {
     expect(useInstanceSpy).toBeCalledTimes(0);
-    expect(useUsernameSpy).toBeCalledTimes(0);
+    expect(useMemberSpy).toBeCalledTimes(0);
     render(<MemberListFilterForm submit={submitSpy} />);
 
     expect(useInstanceSpy).toBeCalledTimes(1);
     expect(useInstanceSpy).toBeCalledWith({
       project_name: projectName,
     });
-    expect(useUsernameSpy).toBeCalledTimes(1);
-    expect(useUsernameSpy).toBeCalledWith({
-      filter_project: projectName,
+    expect(useMemberSpy).toBeCalledTimes(1);
+    expect(useMemberSpy).toBeCalledWith({
+      project_name: projectName,
     });
   });
 
   test('should call username tips request when receive event form EventEmit', async () => {
     render(<MemberListFilterForm submit={submitSpy} />);
-    expect(useUsernameSpy).toBeCalledTimes(1);
-    expect(useUsernameSpy).toBeCalledWith({
-      filter_project: projectName,
+    expect(useMemberSpy).toBeCalledTimes(1);
+    expect(useMemberSpy).toBeCalledWith({
+      project_name: projectName,
     });
 
     await waitFor(() => {
@@ -72,9 +72,9 @@ describe('test MemberListFilterForm', () => {
     act(() => {
       EventEmitter.emit(EmitterKey.Refresh_Filter_User_Tips);
     });
-    expect(useUsernameSpy).toBeCalledTimes(2);
-    expect(useUsernameSpy).toBeCalledWith({
-      filter_project: projectName,
+    expect(useMemberSpy).toBeCalledTimes(2);
+    expect(useMemberSpy).toBeCalledWith({
+      project_name: projectName,
     });
   });
 
@@ -85,7 +85,7 @@ describe('test MemberListFilterForm', () => {
     });
     expect(submitSpy).toBeCalledTimes(0);
 
-    selectOptionByIndex('member.memberList.filterForm.username', 'user_name1');
+    selectOptionByIndex('member.memberList.filterForm.username', 'member1');
     selectOptionByIndex('member.memberList.filterForm.instance', 'instance1');
 
     fireEvent.click(screen.getByText('common.search'));
@@ -94,7 +94,7 @@ describe('test MemberListFilterForm', () => {
     });
     expect(submitSpy).toBeCalledTimes(1);
     expect(submitSpy).toBeCalledWith({
-      filterUserName: 'user_name1',
+      filterUserName: 'member1',
       filterInstance: 'instance1',
     });
     fireEvent.click(screen.getByText('common.reset'));

@@ -9,6 +9,8 @@ import { AxiosRequestConfig } from 'axios';
 import {
   ILoginV1Params,
   ILoginV1Return,
+  IGetMemberTipListV1Params,
+  IGetMemberTipListV1Return,
   IGetMembersV1Params,
   IGetMembersV1Return,
   IAddMemberV1Params,
@@ -44,6 +46,21 @@ class UserService extends ServiceBase {
   public loginV1(params: ILoginV1Params, options?: AxiosRequestConfig) {
     const paramsData = this.cloneDeep(params);
     return this.post<ILoginV1Return>('/v1/login', paramsData, options);
+  }
+
+  public getMemberTipListV1(
+    params: IGetMemberTipListV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.get<IGetMemberTipListV1Return>(
+      `/v1/projects/${project_name}/member_tips`,
+      paramsData,
+      options
+    );
   }
 
   public getMembersV1(
