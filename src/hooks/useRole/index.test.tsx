@@ -167,4 +167,54 @@ describe('useRole', () => {
     expect(requestSpy).toBeCalledTimes(1);
     expect(result.current.roleList).toEqual([]);
   });
+
+  test('should match snapshot when need show tooltip when generate select options', async () => {
+    const requestSpy = mockRequest();
+    requestSpy.mockImplementation(() =>
+      resolveThreeSecond([
+        {
+          role_name: 'role_name1',
+          operations: Array.from({ length: 16 }, (_, i) => ({
+            op_code: i,
+            op_desc: 'desc' + i,
+          })),
+        },
+      ])
+    );
+
+    const { result, waitForNextUpdate } = renderHook(() => useRole());
+
+    act(() => {
+      result.current.updateRoleList();
+    });
+
+    jest.advanceTimersByTime(3000);
+    await waitForNextUpdate();
+
+    expect(
+      result.current.generateRoleSelectOption({ showTooltip: true })
+    ).toMatchSnapshot();
+
+    jest.clearAllMocks();
+    requestSpy.mockImplementation(() =>
+      resolveThreeSecond([
+        {
+          role_name: 'role_name1',
+          operations: Array.from({ length: 10 }, (_, i) => ({
+            op_code: i,
+            op_desc: 'desc' + i,
+          })),
+        },
+      ])
+    );
+    act(() => {
+      result.current.updateRoleList();
+    });
+
+    jest.advanceTimersByTime(3000);
+    await waitForNextUpdate();
+    expect(
+      result.current.generateRoleSelectOption({ showTooltip: true })
+    ).toMatchSnapshot();
+  });
 });

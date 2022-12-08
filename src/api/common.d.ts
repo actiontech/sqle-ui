@@ -7,6 +7,7 @@ import {
   AuditTaskResV1SqlSourceEnum,
   AuditTaskResV1StatusEnum,
   CreateAuditWhitelistReqV1MatchTypeEnum,
+  DirectAuditReqV1SqlTypeEnum,
   GetWorkflowTasksItemV1StatusEnum,
   RuleParamResV1TypeEnum,
   RuleResV1LevelEnum,
@@ -441,6 +442,8 @@ export interface IDirectAuditReqV1 {
   instance_type?: string;
 
   sql_content?: string;
+
+  sql_type?: DirectAuditReqV1SqlTypeEnum;
 }
 
 export interface IDirectAuditResV1 {
@@ -731,6 +734,8 @@ export interface IGetMemberGroupRespDataV1 {
   roles?: IBindRoleReqV1[];
 
   user_group_name?: string;
+
+  users?: IMemberGroupUserItem[];
 }
 
 export interface IGetMemberGroupRespV1 {
@@ -763,6 +768,14 @@ export interface IGetMemberRespV1 {
   code?: number;
 
   data?: IGetMemberRespDataV1;
+
+  message?: string;
+}
+
+export interface IGetMemberTipsResV1 {
+  code?: number;
+
+  data?: IMemberTipResV1[];
 
   message?: string;
 }
@@ -1429,6 +1442,14 @@ export interface IManagementPermissionResV1 {
   desc?: string;
 }
 
+export interface IMemberGroupUserItem {
+  name?: string;
+}
+
+export interface IMemberTipResV1 {
+  user_name?: string;
+}
+
 export interface IOauth2ConfigurationReqV1 {
   access_token_tag?: string;
 
@@ -1530,6 +1551,8 @@ export interface IRoleResV1 {
 }
 
 export interface IRoleTipResV1 {
+  operations?: IOperation[];
+
   role_name?: string;
 }
 
@@ -1991,6 +2014,8 @@ export interface IUserGroupListItemResV1 {
 
 export interface IUserGroupTipListItem {
   user_group_name?: string;
+
+  user_names?: string[];
 }
 
 export interface IUserLoginReqV1 {

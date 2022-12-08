@@ -176,4 +176,48 @@ describe('useUserGroup', () => {
     expect(requestSpy).toBeCalledTimes(1);
     expect(result.current.userGroupList).toEqual([]);
   });
+
+  test('should match snapshot when need show tooltip when generate select options', async () => {
+    const requestSpy = mockRequest();
+    requestSpy.mockImplementation(() =>
+      resolveThreeSecond([
+        {
+          user_group_name: 'group1',
+          user_names: Array.from({ length: 16 }, (_, i) => 'user_name' + i),
+        },
+      ])
+    );
+
+    const { result, waitForNextUpdate } = renderHook(() => useUsername());
+
+    act(() => {
+      result.current.updateUserGroupList();
+    });
+
+    jest.advanceTimersByTime(3000);
+    await waitForNextUpdate();
+
+    expect(
+      result.current.generateUserGroupSelectOption({ showTooltip: true })
+    ).toMatchSnapshot();
+
+    jest.clearAllMocks();
+    requestSpy.mockImplementation(() =>
+      resolveThreeSecond([
+        {
+          user_group_name: 'group1',
+          user_names: Array.from({ length: 10 }, (_, i) => 'user_name' + i),
+        },
+      ])
+    );
+    act(() => {
+      result.current.updateUserGroupList();
+    });
+
+    jest.advanceTimersByTime(3000);
+    await waitForNextUpdate();
+    expect(
+      result.current.generateUserGroupSelectOption({ showTooltip: true })
+    ).toMatchSnapshot();
+  });
 });

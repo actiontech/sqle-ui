@@ -74,6 +74,14 @@ export enum CreateAuditWhitelistReqV1MatchTypeEnum {
   'fp_match' = 'fp_match'
 }
 
+export enum DirectAuditReqV1SqlTypeEnum {
+  'sql' = 'sql',
+
+  'mybatis' = 'mybatis',
+
+  'UNKNOWN' = ''
+}
+
 export enum GetWorkflowTasksItemV1StatusEnum {
   'wait_for_audit' = 'wait_for_audit',
 

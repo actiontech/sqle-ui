@@ -347,6 +347,7 @@ exports[`test MemberGroupList should match snapshot 1`] = `
                     <colgroup>
                       <col />
                       <col />
+                      <col />
                       <col
                         style="width: 160px;"
                       />
@@ -355,6 +356,11 @@ exports[`test MemberGroupList should match snapshot 1`] = `
                       class="ant-table-thead"
                     >
                       <tr>
+                        <th
+                          class="ant-table-cell"
+                        >
+                          member.memberGroupList.tableColumn.userGroupName
+                        </th>
                         <th
                           class="ant-table-cell"
                         >
@@ -380,7 +386,7 @@ exports[`test MemberGroupList should match snapshot 1`] = `
                       >
                         <td
                           class="ant-table-cell"
-                          colspan="3"
+                          colspan="4"
                         >
                           <div
                             class="ant-empty ant-empty-normal"
@@ -768,6 +774,7 @@ exports[`test MemberGroupList should match snapshot 2`] = `
                     <colgroup>
                       <col />
                       <col />
+                      <col />
                       <col
                         style="width: 160px;"
                       />
@@ -776,6 +783,11 @@ exports[`test MemberGroupList should match snapshot 2`] = `
                       class="ant-table-thead"
                     >
                       <tr>
+                        <th
+                          class="ant-table-cell"
+                        >
+                          member.memberGroupList.tableColumn.userGroupName
+                        </th>
                         <th
                           class="ant-table-cell"
                         >
@@ -804,6 +816,15 @@ exports[`test MemberGroupList should match snapshot 2`] = `
                           class="ant-table-cell"
                         >
                           test
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          <span
+                            class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+                          >
+                            username1、username2
+                          </span>
                         </td>
                         <td
                           class="ant-table-cell"

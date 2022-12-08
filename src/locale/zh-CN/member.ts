@@ -27,6 +27,7 @@ export default {
 
     tableColumn: {
       userGroupName: '用户组名',
+      users: '组员',
       role: '权限 (格式 数据源: [角色1,角色2 ...])',
       confirmTitle: '确定要删除成员组:{{name}}?',
     },

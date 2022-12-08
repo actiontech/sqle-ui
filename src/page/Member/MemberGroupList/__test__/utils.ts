@@ -5,6 +5,7 @@ import { resolveThreeSecond } from '../../../../testUtils/mockRequest';
 export const mockMemberGroupList: IGetMemberGroupRespDataV1[] = [
   {
     user_group_name: 'test',
+    users: [{ name: 'username1' }, { name: 'username2' }],
     roles: [
       {
         instance_name: 'db1',

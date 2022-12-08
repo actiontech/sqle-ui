@@ -213,7 +213,6 @@ exports[`useRole should get role data from request 3`] = `
             style="height: 0px; width: 0px; overflow: hidden;"
           >
             <div
-              aria-label="role_name1"
               aria-selected="false"
               id="rc_select_TEST_OR_SSR_list_0"
               role="option"
@@ -237,7 +236,6 @@ exports[`useRole should get role data from request 3`] = `
                   <div
                     aria-selected="false"
                     class="ant-select-item ant-select-item-option"
-                    title="role_name1"
                   >
                     <div
                       class="ant-select-item-option-content"
@@ -269,4 +267,70 @@ exports[`useRole should get role data from request 3`] = `
     </div>
   </div>
 </body>
+`;
+
+exports[`useRole should match snapshot when need show tooltip when generate select options 1`] = `
+Array [
+  <Option
+    value="role_name1"
+  >
+    <EmptyBox
+      defaultNode="role_name1"
+      if={true}
+    >
+      <Tooltip
+        arrowPointAtCenter={false}
+        autoAdjustOverflow={true}
+        mouseEnterDelay={0.1}
+        mouseLeaveDelay={0.1}
+        placement="right"
+        title={
+          <React.Fragment>
+            desc0, desc1, desc2, desc3, desc4, desc5, desc6, desc7, desc8, desc9, desc10, desc11, desc12, desc13, desc14
+            ...
+          </React.Fragment>
+        }
+      >
+        <div
+          className="full-width-element"
+        >
+          role_name1
+        </div>
+      </Tooltip>
+    </EmptyBox>
+  </Option>,
+]
+`;
+
+exports[`useRole should match snapshot when need show tooltip when generate select options 2`] = `
+Array [
+  <Option
+    value="role_name1"
+  >
+    <EmptyBox
+      defaultNode="role_name1"
+      if={true}
+    >
+      <Tooltip
+        arrowPointAtCenter={false}
+        autoAdjustOverflow={true}
+        mouseEnterDelay={0.1}
+        mouseLeaveDelay={0.1}
+        placement="right"
+        title={
+          <React.Fragment>
+            desc0, desc1, desc2, desc3, desc4, desc5, desc6, desc7, desc8, desc9
+            
+          </React.Fragment>
+        }
+      >
+        <div
+          className="full-width-element"
+        >
+          role_name1
+        </div>
+      </Tooltip>
+    </EmptyBox>
+  </Option>,
+]
 `;
