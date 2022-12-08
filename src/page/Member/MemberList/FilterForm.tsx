@@ -10,7 +10,7 @@ import {
 } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import useInstance from '../../../hooks/useInstance';
-import useUsername from '../../../hooks/useUsername';
+import useMember from '../../../hooks/useMember';
 import EventEmitter from '../../../utils/EventEmitter';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import {
@@ -25,7 +25,7 @@ const MemberListFilterForm: React.FC<MemberListFilterFormProps> = ({
   const [form] = useForm<MemberListFilterFormFields>();
   const { projectName } = useCurrentProjectName();
   const { generateInstanceSelectOption, updateInstanceList } = useInstance();
-  const { generateUsernameSelectOption, updateUsernameList } = useUsername();
+  const { generateMemberSelectOption, updateMemberList } = useMember();
 
   const reset = () => {
     form.resetFields();
@@ -34,12 +34,12 @@ const MemberListFilterForm: React.FC<MemberListFilterFormProps> = ({
 
   useEffect(() => {
     updateInstanceList({ project_name: projectName });
-    updateUsernameList(projectName);
-  }, [projectName, updateInstanceList, updateUsernameList]);
+    updateMemberList(projectName);
+  }, [projectName, updateInstanceList, updateMemberList]);
 
   useEffect(() => {
     const refreshUsernameTips = () => {
-      updateUsernameList(projectName);
+      updateMemberList(projectName);
     };
 
     EventEmitter.subscribe(
@@ -53,7 +53,7 @@ const MemberListFilterForm: React.FC<MemberListFilterFormProps> = ({
         refreshUsernameTips
       );
     };
-  }, [projectName, updateUsernameList]);
+  }, [projectName, updateMemberList]);
 
   return (
     <Form<MemberListFilterFormFields>
@@ -68,7 +68,7 @@ const MemberListFilterForm: React.FC<MemberListFilterFormProps> = ({
             label={t('member.memberList.filterForm.username')}
           >
             <Select allowClear showSearch>
-              {generateUsernameSelectOption()}
+              {generateMemberSelectOption()}
             </Select>
           </Form.Item>
         </Col>

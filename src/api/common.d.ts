@@ -7,6 +7,7 @@ import {
   AuditTaskResV1SqlSourceEnum,
   AuditTaskResV1StatusEnum,
   CreateAuditWhitelistReqV1MatchTypeEnum,
+  DirectAuditReqV1SqlTypeEnum,
   GetWorkflowTasksItemV1StatusEnum,
   RuleParamResV1TypeEnum,
   RuleResV1LevelEnum,
@@ -441,6 +442,8 @@ export interface IDirectAuditReqV1 {
   instance_type?: string;
 
   sql_content?: string;
+
+  sql_type?: DirectAuditReqV1SqlTypeEnum;
 }
 
 export interface IDirectAuditResV1 {
@@ -763,6 +766,14 @@ export interface IGetMemberRespV1 {
   code?: number;
 
   data?: IGetMemberRespDataV1;
+
+  message?: string;
+}
+
+export interface IGetMemberTipsResV1 {
+  code?: number;
+
+  data?: IMemberTipResV1[];
 
   message?: string;
 }
@@ -1427,6 +1438,10 @@ export interface IManagementPermissionResV1 {
   code?: number;
 
   desc?: string;
+}
+
+export interface IMemberTipResV1 {
+  user_name?: string;
 }
 
 export interface IOauth2ConfigurationReqV1 {

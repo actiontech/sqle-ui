@@ -1,6 +1,7 @@
 import {
   IUserLoginReqV1,
   IGetUserLoginResV1,
+  IGetMemberTipsResV1,
   IGetMembersRespV1,
   ICreateMemberReqV1,
   IBaseRes,
@@ -19,6 +20,12 @@ import {
 export interface ILoginV1Params extends IUserLoginReqV1 {}
 
 export interface ILoginV1Return extends IGetUserLoginResV1 {}
+
+export interface IGetMemberTipListV1Params {
+  project_name: string;
+}
+
+export interface IGetMemberTipListV1Return extends IGetMemberTipsResV1 {}
 
 export interface IGetMembersV1Params {
   filter_user_name?: string;
