@@ -72,7 +72,7 @@ exports[`test AddMemberGroup should match snapshot 1`] = `
                         class="ant-form-item-control-input-content"
                       >
                         <div
-                          class="ant-select ant-select-single ant-select-show-arrow"
+                          class="ant-select ant-select-single ant-select-show-arrow ant-select-show-search"
                         >
                           <div
                             class="ant-select-selector"
@@ -89,11 +89,8 @@ exports[`test AddMemberGroup should match snapshot 1`] = `
                                 autocomplete="off"
                                 class="ant-select-selection-search-input"
                                 id="userGroupName"
-                                readonly=""
                                 role="combobox"
-                                style="opacity: 0;"
                                 type="search"
-                                unselectable="on"
                                 value=""
                               />
                             </span>

@@ -213,7 +213,6 @@ exports[`useUserGroup should get group data from request 3`] = `
             style="height: 0px; width: 0px; overflow: hidden;"
           >
             <div
-              aria-label="group1"
               aria-selected="false"
               id="rc_select_TEST_OR_SSR_list_0"
               role="option"
@@ -237,7 +236,6 @@ exports[`useUserGroup should get group data from request 3`] = `
                   <div
                     aria-selected="false"
                     class="ant-select-item ant-select-item-option"
-                    title="group1"
                   >
                     <div
                       class="ant-select-item-option-content"
@@ -269,4 +267,70 @@ exports[`useUserGroup should get group data from request 3`] = `
     </div>
   </div>
 </body>
+`;
+
+exports[`useUserGroup should match snapshot when need show tooltip when generate select options 1`] = `
+Array [
+  <Option
+    value="group1"
+  >
+    <EmptyBox
+      defaultNode="group1"
+      if={true}
+    >
+      <Tooltip
+        arrowPointAtCenter={false}
+        autoAdjustOverflow={true}
+        mouseEnterDelay={0.1}
+        mouseLeaveDelay={0.1}
+        placement="right"
+        title={
+          <React.Fragment>
+            user_name0, user_name1, user_name2, user_name3, user_name4, user_name5, user_name6, user_name7, user_name8, user_name9, user_name10, user_name11, user_name12, user_name13, user_name14
+            ...
+          </React.Fragment>
+        }
+      >
+        <div
+          className="full-width-element"
+        >
+          group1
+        </div>
+      </Tooltip>
+    </EmptyBox>
+  </Option>,
+]
+`;
+
+exports[`useUserGroup should match snapshot when need show tooltip when generate select options 2`] = `
+Array [
+  <Option
+    value="group1"
+  >
+    <EmptyBox
+      defaultNode="group1"
+      if={true}
+    >
+      <Tooltip
+        arrowPointAtCenter={false}
+        autoAdjustOverflow={true}
+        mouseEnterDelay={0.1}
+        mouseLeaveDelay={0.1}
+        placement="right"
+        title={
+          <React.Fragment>
+            user_name0, user_name1, user_name2, user_name3, user_name4, user_name5, user_name6, user_name7, user_name8, user_name9
+            
+          </React.Fragment>
+        }
+      >
+        <div
+          className="full-width-element"
+        >
+          group1
+        </div>
+      </Tooltip>
+    </EmptyBox>
+  </Option>,
+]
 `;

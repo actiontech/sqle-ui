@@ -23,7 +23,7 @@ import {
   WorkflowResV1ModeEnum,
   WorkflowStepResV1StateEnum,
   WorkflowStepResV1TypeEnum,
-  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum
+  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
 } from './common.enum';
 
 export interface IBaseRes {
@@ -734,6 +734,8 @@ export interface IGetMemberGroupRespDataV1 {
   roles?: IBindRoleReqV1[];
 
   user_group_name?: string;
+
+  users?: IMemberGroupUserItem[];
 }
 
 export interface IGetMemberGroupRespV1 {
@@ -1440,6 +1442,10 @@ export interface IManagementPermissionResV1 {
   desc?: string;
 }
 
+export interface IMemberGroupUserItem {
+  name?: string;
+}
+
 export interface IMemberTipResV1 {
   user_name?: string;
 }
@@ -1545,6 +1551,8 @@ export interface IRoleResV1 {
 }
 
 export interface IRoleTipResV1 {
+  operations?: IOperation[];
+
   role_name?: string;
 }
 
@@ -2006,6 +2014,8 @@ export interface IUserGroupListItemResV1 {
 
 export interface IUserGroupTipListItem {
   user_group_name?: string;
+
+  user_names?: string[];
 }
 
 export interface IUserLoginReqV1 {

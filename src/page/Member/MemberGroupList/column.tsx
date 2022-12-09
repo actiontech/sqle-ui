@@ -1,5 +1,9 @@
 import { Divider, Popconfirm, Space, Tooltip, Typography } from 'antd';
-import { IBindRoleReqV1, IGetMemberGroupRespDataV1 } from '../../../api/common';
+import {
+  IBindRoleReqV1,
+  IGetMemberGroupRespDataV1,
+  IMemberGroupUserItem,
+} from '../../../api/common';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import renderRolesInfo from '../Common/renderRolesInfo';
@@ -17,6 +21,20 @@ const MemberGroupListTableColumnFactory: (
     {
       dataIndex: 'user_group_name',
       title: i18n.t('member.memberGroupList.tableColumn.userGroupName'),
+    },
+    {
+      dataIndex: 'users',
+      title: i18n.t('member.memberGroupList.tableColumn.userGroupName'),
+      render(users: IMemberGroupUserItem[]) {
+        if (!Array.isArray(users)) {
+          return null;
+        }
+        return (
+          <Typography.Text ellipsis={true}>
+            {users.map((v) => v.name).join('、')}
+          </Typography.Text>
+        );
+      },
     },
     {
       dataIndex: 'roles',

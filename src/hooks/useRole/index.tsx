@@ -3,7 +3,8 @@ import { useBoolean } from 'ahooks';
 import { IRoleTipResV1 } from '../../api/common';
 import role from '../../api/role';
 import { ResponseCode } from '../../data/common';
-import { Select } from 'antd';
+import { Select, Tooltip } from 'antd';
+import EmptyBox from '../../components/EmptyBox';
 
 const useRole = () => {
   const [roleList, setRoleList] = React.useState<IRoleTipResV1[]>([]);
@@ -28,15 +29,37 @@ const useRole = () => {
       });
   }, [setFalse, setTrue]);
 
-  const generateRoleSelectOption = React.useCallback(() => {
-    return roleList.map((role) => {
-      return (
-        <Select.Option key={role.role_name} value={role.role_name ?? ''}>
-          {role.role_name}
-        </Select.Option>
-      );
-    });
-  }, [roleList]);
+  const generateRoleSelectOption = React.useCallback(
+    (params?: { showTooltip?: boolean }) => {
+      const { showTooltip = false } = params ?? {};
+      return roleList.map((role) => {
+        return (
+          <Select.Option key={role.role_name} value={role.role_name ?? ''}>
+            <EmptyBox
+              if={showTooltip && (role.operations?.length ?? 0) > 0}
+              defaultNode={role.role_name}
+            >
+              <Tooltip
+                placement="right"
+                title={
+                  <>
+                    {role.operations
+                      ?.map((v) => v.op_desc)
+                      ?.slice(0, 15)
+                      ?.join(', ')}
+                    {(role.operations?.length ?? 0) > 15 ? '...' : ''}
+                  </>
+                }
+              >
+                <div className="full-width-element">{role.role_name}</div>
+              </Tooltip>
+            </EmptyBox>
+          </Select.Option>
+        );
+      });
+    },
+    [roleList]
+  );
 
   return {
     roleList,

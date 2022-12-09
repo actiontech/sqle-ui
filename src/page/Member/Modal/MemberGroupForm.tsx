@@ -35,12 +35,13 @@ const MemberGroupForm: React.FC<MemberGroupFormProps> = ({
         ]}
       >
         <Select
+          showSearch={true}
           disabled={isUpdate}
           placeholder={t('common.form.placeholder.select', {
             name: t('member.memberGroupForm.userGroupName'),
           })}
         >
-          {generateUserGroupSelectOption()}
+          {generateUserGroupSelectOption({ showTooltip: true })}
         </Select>
       </Form.Item>
 

@@ -30,58 +30,48 @@ const RoleSelector: React.FC<{ projectName: string }> = ({ projectName }) => {
                     xs: { span: 24 },
                     sm: { span: 10 },
                   }}
+                  {...field}
+                  name={[field.name, 'instance_name']}
+                  label={t('member.roleSelector.instance')}
+                  rules={[{ required: true }]}
+                >
+                  <Select
+                    dropdownMatchSelectWidth={160}
+                    placeholder={t('common.form.placeholder.select', {
+                      name: t('member.roleSelector.instance'),
+                    })}
+                    showSearch
+                    allowClear
+                  >
+                    {generateInstanceSelectOption()}
+                  </Select>
+                </Form.Item>
+              </Col>
+              <Col span={10}>
+                <Form.Item
+                  labelCol={{
+                    xs: { span: 24 },
+                    sm: { span: 9 },
+                  }}
+                  wrapperCol={{
+                    xs: { span: 24 },
+                    sm: { span: 11 },
+                  }}
                   label={t('member.roleSelector.role')}
                   {...field}
                   name={[field.name, 'role_names']}
                   rules={[{ required: true }]}
                 >
                   <Select<string>
+                    dropdownMatchSelectWidth={120}
                     mode="multiple"
                     showSearch
                     placeholder={t('common.form.placeholder.select', {
                       name: t('member.roleSelector.role'),
                     })}
                   >
-                    {generateRoleSelectOption()}
+                    {generateRoleSelectOption({ showTooltip: true })}
                   </Select>
-                </Form.Item>
-              </Col>
-              <Col span={10}>
-                <Form.Item
-                  noStyle
-                  shouldUpdate={(prevValues, curValues) => {
-                    return (
-                      prevValues?.roles[index]?.instance_name !==
-                      curValues?.roles[index]?.instance_name
-                    );
-                  }}
-                >
-                  {() => (
-                    <Form.Item
-                      labelCol={{
-                        xs: { span: 24 },
-                        sm: { span: 9 },
-                      }}
-                      wrapperCol={{
-                        xs: { span: 24 },
-                        sm: { span: 11 },
-                      }}
-                      {...field}
-                      name={[field.name, 'instance_name']}
-                      label={t('member.roleSelector.instance')}
-                      rules={[{ required: true }]}
-                    >
-                      <Select
-                        placeholder={t('common.form.placeholder.select', {
-                          name: t('member.roleSelector.instance'),
-                        })}
-                        showSearch
-                        allowClear
-                      >
-                        {generateInstanceSelectOption()}
-                      </Select>
-                    </Form.Item>
-                  )}
                 </Form.Item>
               </Col>
 

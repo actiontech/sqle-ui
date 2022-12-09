@@ -34,6 +34,7 @@ const MemberForm: React.FC<MemberFormProps> = ({
         ]}
       >
         <Select
+          showSearch={true}
           disabled={isUpdate}
           placeholder={t('common.form.placeholder.select', {
             name: t('member.memberForm.username'),
