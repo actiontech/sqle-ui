@@ -1486,6 +1486,24 @@ export interface IOperationResV1 {
   op_desc?: string;
 }
 
+export interface IParseProjectRuleTemplateFileResDataV1 {
+  db_type?: string;
+
+  desc?: string;
+
+  name?: string;
+
+  rule_list?: IRuleResV1[];
+}
+
+export interface IParseProjectRuleTemplateFileResV1 {
+  code?: number;
+
+  data?: IParseProjectRuleTemplateFileResDataV1;
+
+  message?: string;
+}
+
 export interface IPartialSyncAuditPlanSQLsReqV1 {
   audit_plan_sql_list?: IAuditPlanSQLReqV1[];
 }
