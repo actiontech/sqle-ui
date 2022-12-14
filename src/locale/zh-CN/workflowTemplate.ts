@@ -55,7 +55,7 @@ export default {
 
   step: {
     baseFormTitle: '基本信息',
-    baseFormDesc: '设定模版的名称、描述等基本信息',
+    baseFormDesc: '设定模版的基本信息',
 
     progressTitle: '流程',
     progressDesc: '编辑审核流程',
@@ -87,7 +87,8 @@ export default {
       subTitle: '审核人在该步骤可以执行 审核通过或驳回 操作',
       reviewUserType: {
         specify: '指定审核人',
-        match: '匹配所有拥有审核权限的用户',
+        matchAudit: '匹配所有拥有审核权限的用户',
+        matchExecute: '匹配所有拥有上线权限的用户',
       },
     },
     exec: {

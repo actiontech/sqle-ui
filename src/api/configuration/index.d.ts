@@ -1,8 +1,10 @@
 import {
+  IGetDingTalkConfigurationResV1,
+  IUpdateDingTalkConfigurationReqV1,
+  IBaseRes,
   IGetDriversResV1,
   IGetLDAPConfigurationResV1,
   ILDAPConfigurationReqV1,
-  IBaseRes,
   IGetLicenseResV1,
   ICheckLicenseResV1,
   IGetOauth2ConfigurationResV1,
@@ -20,6 +22,14 @@ import {
   ITestWeChatConfigurationReqV1,
   ITestWeChatConfigurationResV1
 } from '../common.d';
+
+export interface IGetDingTalkConfigurationV1Return
+  extends IGetDingTalkConfigurationResV1 {}
+
+export interface IUpdateDingTalkConfigurationV1Params
+  extends IUpdateDingTalkConfigurationReqV1 {}
+
+export interface IUpdateDingTalkConfigurationV1Return extends IBaseRes {}
 
 export interface IGetDriversV1Return extends IGetDriversResV1 {}
 

@@ -8,6 +8,7 @@ import {
   ICloneProjectRuleTemplateReqV1,
   IGetRuleTemplatesResV1,
   ICreateRuleTemplateReqV1,
+  IParseProjectRuleTemplateFileResV1,
   IGetRuleTemplateResV1,
   IUpdateRuleTemplateReqV1,
   ICloneRuleTemplateReqV1,
@@ -76,6 +77,12 @@ export interface ICloneProjectRuleTemplateV1Params
 
 export interface ICloneProjectRuleTemplateV1Return extends IBaseRes {}
 
+export interface IExportProjectRuleTemplateV1Params {
+  project_name: string;
+
+  rule_template_name: string;
+}
+
 export interface IGetRuleTemplateTipsV1Params {
   filter_db_type?: string;
 }
@@ -94,6 +101,13 @@ export interface IGetRuleTemplateListV1Return extends IGetRuleTemplatesResV1 {}
 export interface ICreateRuleTemplateV1Params extends ICreateRuleTemplateReqV1 {}
 
 export interface ICreateRuleTemplateV1Return extends IBaseRes {}
+
+export interface IImportProjectRuleTemplateV1Params {
+  rule_template_file: any;
+}
+
+export interface IImportProjectRuleTemplateV1Return
+  extends IParseProjectRuleTemplateFileResV1 {}
 
 export interface IGetRuleTemplateV1Params {
   rule_template_name: string;
@@ -118,6 +132,10 @@ export interface ICloneRuleTemplateV1Params extends ICloneRuleTemplateReqV1 {
 }
 
 export interface ICloneRuleTemplateV1Return extends IBaseRes {}
+
+export interface IExportRuleTemplateV1Params {
+  rule_template_name: string;
+}
 
 export interface IGetRuleListV1Params {
   filter_db_type?: string;

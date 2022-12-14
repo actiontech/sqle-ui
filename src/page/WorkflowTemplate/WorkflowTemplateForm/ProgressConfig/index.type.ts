@@ -16,5 +16,8 @@ export type ProgressConfigItem = Required<
 >;
 
 export type ExecProgressConfigItem = Required<
-  Omit<IWorkFlowStepTemplateReqV1, 'type' | 'approved_by_authorized'>
+  Omit<
+    IWorkFlowStepTemplateReqV1,
+    'type' | 'approved_by_authorized' | 'execute_by_authorized'
+  >
 >;
