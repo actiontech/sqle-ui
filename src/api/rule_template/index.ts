@@ -21,12 +21,15 @@ import {
   IUpdateProjectRuleTemplateV1Return,
   ICloneProjectRuleTemplateV1Params,
   ICloneProjectRuleTemplateV1Return,
+  IExportProjectRuleTemplateV1Params,
   IGetRuleTemplateTipsV1Params,
   IGetRuleTemplateTipsV1Return,
   IGetRuleTemplateListV1Params,
   IGetRuleTemplateListV1Return,
   ICreateRuleTemplateV1Params,
   ICreateRuleTemplateV1Return,
+  IImportProjectRuleTemplateV1Params,
+  IImportProjectRuleTemplateV1Return,
   IGetRuleTemplateV1Params,
   IGetRuleTemplateV1Return,
   IDeleteRuleTemplateV1Params,
@@ -35,6 +38,7 @@ import {
   IUpdateRuleTemplateV1Return,
   ICloneRuleTemplateV1Params,
   ICloneRuleTemplateV1Return,
+  IExportRuleTemplateV1Params,
   IGetRuleListV1Params,
   IGetRuleListV1Return
 } from './index.d';
@@ -157,6 +161,24 @@ class RuleTemplateService extends ServiceBase {
     );
   }
 
+  public exportProjectRuleTemplateV1(
+    params: IExportProjectRuleTemplateV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    const rule_template_name = paramsData.rule_template_name;
+    delete paramsData.rule_template_name;
+
+    return this.get<any>(
+      `/v1/projects/${project_name}/rule_templates/${rule_template_name}/export`,
+      paramsData,
+      options
+    );
+  }
+
   public getRuleTemplateTipsV1(
     params: IGetRuleTemplateTipsV1Params,
     options?: AxiosRequestConfig
@@ -190,6 +212,31 @@ class RuleTemplateService extends ServiceBase {
       '/v1/rule_templates',
       paramsData,
       options
+    );
+  }
+
+  public importProjectRuleTemplateV1(
+    params: IImportProjectRuleTemplateV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const config = options || {};
+    const headers = config.headers ? config.headers : {};
+    config.headers = {
+      ...headers,
+
+      'Content-Type': 'multipart/form-data'
+    };
+
+    const paramsData = new FormData();
+
+    if (params.rule_template_file != undefined) {
+      paramsData.append('rule_template_file', params.rule_template_file as any);
+    }
+
+    return this.post<IImportProjectRuleTemplateV1Return>(
+      '/v1/rule_templates/parse',
+      paramsData,
+      config
     );
   }
 
@@ -248,6 +295,21 @@ class RuleTemplateService extends ServiceBase {
 
     return this.post<ICloneRuleTemplateV1Return>(
       `/v1/rule_templates/${rule_template_name}/clone`,
+      paramsData,
+      options
+    );
+  }
+
+  public exportRuleTemplateV1(
+    params: IExportRuleTemplateV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const rule_template_name = paramsData.rule_template_name;
+    delete paramsData.rule_template_name;
+
+    return this.get<any>(
+      `/v1/rule_templates/${rule_template_name}/export`,
       paramsData,
       options
     );

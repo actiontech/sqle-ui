@@ -7,6 +7,9 @@ import ServiceBase from '../Service.base';
 import { AxiosRequestConfig } from 'axios';
 
 import {
+  IGetDingTalkConfigurationV1Return,
+  IUpdateDingTalkConfigurationV1Params,
+  IUpdateDingTalkConfigurationV1Return,
   IGetDriversV1Return,
   IGetLDAPConfigurationV1Return,
   IUpdateLDAPConfigurationV1Params,
@@ -37,6 +40,26 @@ import {
 } from './index.d';
 
 class ConfigurationService extends ServiceBase {
+  public getDingTalkConfigurationV1(options?: AxiosRequestConfig) {
+    return this.get<IGetDingTalkConfigurationV1Return>(
+      '/v1/configurations/ding_talk',
+      undefined,
+      options
+    );
+  }
+
+  public updateDingTalkConfigurationV1(
+    params: IUpdateDingTalkConfigurationV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.patch<IUpdateDingTalkConfigurationV1Return>(
+      '/v1/configurations/ding_talk',
+      paramsData,
+      options
+    );
+  }
+
   public getDriversV1(options?: AxiosRequestConfig) {
     return this.get<IGetDriversV1Return>(
       '/v1/configurations/drivers',

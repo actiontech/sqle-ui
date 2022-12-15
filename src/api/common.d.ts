@@ -23,7 +23,7 @@ import {
   WorkflowResV1ModeEnum,
   WorkflowStepResV1StateEnum,
   WorkflowStepResV1TypeEnum,
-  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
+  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum
 } from './common.enum';
 
 export interface IBaseRes {
@@ -417,6 +417,8 @@ export interface ICreateUserReqV1 {
 
   management_permission_code_list?: number[];
 
+  phone?: string;
+
   user_group_name_list?: string[];
 
   user_name?: string;
@@ -436,6 +438,14 @@ export interface ICreateWorkflowReqV1 {
 
 export interface IDashboardResV1 {
   workflow_statistics?: IWorkflowStatisticsResV1;
+}
+
+export interface IDingTalkConfigurationV1 {
+  app_key?: string;
+
+  app_secret?: string;
+
+  is_enable_ding_talk_notify?: boolean;
 }
 
 export interface IDirectAuditReqV1 {
@@ -612,6 +622,14 @@ export interface IGetDashboardResV1 {
   code?: number;
 
   data?: IDashboardResV1;
+
+  message?: string;
+}
+
+export interface IGetDingTalkConfigurationResV1 {
+  code?: number;
+
+  data?: IDingTalkConfigurationV1;
 
   message?: string;
 }
@@ -1486,6 +1504,24 @@ export interface IOperationResV1 {
   op_desc?: string;
 }
 
+export interface IParseProjectRuleTemplateFileResDataV1 {
+  db_type?: string;
+
+  desc?: string;
+
+  name?: string;
+
+  rule_list?: IRuleResV1[];
+}
+
+export interface IParseProjectRuleTemplateFileResV1 {
+  code?: number;
+
+  data?: IParseProjectRuleTemplateFileResDataV1;
+
+  message?: string;
+}
+
 export interface IPartialSyncAuditPlanSQLsReqV1 {
   audit_plan_sql_list?: IAuditPlanSQLReqV1[];
 }
@@ -1854,6 +1890,14 @@ export interface IUpdateCurrentUserReqV1 {
   wechat_id?: string;
 }
 
+export interface IUpdateDingTalkConfigurationReqV1 {
+  app_key: string;
+
+  app_secret: string;
+
+  is_enable_ding_talk_notify: boolean;
+}
+
 export interface IUpdateInstanceReqV1 {
   additional_params?: IInstanceAdditionalParamReqV1[];
 
@@ -1939,6 +1983,8 @@ export interface IUpdateUserReqV1 {
 
   management_permission_code_list?: number[];
 
+  phone?: string;
+
   user_group_name_list?: string[];
 
   wechat_id?: string;
@@ -1995,6 +2041,8 @@ export interface IUserDetailResV1 {
 
   management_permission_list?: IManagementPermissionResV1[];
 
+  phone?: string;
+
   user_group_name_list?: string[];
 
   user_name?: string;
@@ -2037,6 +2085,8 @@ export interface IUserResV1 {
 
   management_permission_list?: IManagementPermissionResV1[];
 
+  phone?: string;
+
   user_group_name_list?: string[];
 
   user_name?: string;
@@ -2067,6 +2117,8 @@ export interface IWorkFlowStepTemplateReqV1 {
 
   desc?: string;
 
+  execute_by_authorized?: boolean;
+
   type?: WorkFlowStepTemplateReqV1TypeEnum;
 }
 
@@ -2076,6 +2128,8 @@ export interface IWorkFlowStepTemplateResV1 {
   assignee_user_name_list?: string[];
 
   desc?: string;
+
+  execute_by_authorized?: boolean;
 
   number?: number;
 

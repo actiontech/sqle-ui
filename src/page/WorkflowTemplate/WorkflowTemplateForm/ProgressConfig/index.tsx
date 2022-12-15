@@ -32,7 +32,8 @@ import {
 
 export enum ProgressConfigReviewTypeEnum {
   specify = 'specify',
-  match = 'match',
+  matchAudit = 'matchAudit',
+  matchExecute = 'matchExecute',
 }
 
 const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
@@ -65,12 +66,22 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
     value: ProgressConfigReviewTypeEnum
   ) => {
     const temp = cloneDeep(progressData);
-    temp[index].approved_by_authorized =
-      value === ProgressConfigReviewTypeEnum.match;
-    if (value === ProgressConfigReviewTypeEnum.match) {
+    if (value === ProgressConfigReviewTypeEnum.matchAudit) {
+      temp[index].approved_by_authorized = true;
+      temp[index].execute_by_authorized = false;
       temp[index].assignee_user_name_list = [];
+    } else if (value === ProgressConfigReviewTypeEnum.matchExecute) {
+      temp[index].execute_by_authorized = true;
+      temp[index].approved_by_authorized = false;
+      temp[index].assignee_user_name_list = [];
+    } else {
+      temp[index].execute_by_authorized = false;
+      temp[index].approved_by_authorized = false;
     }
-    if (progressError.includes(index) && temp[index].approved_by_authorized) {
+    if (
+      progressError.includes(index) &&
+      (temp[index].approved_by_authorized || temp[index].execute_by_authorized)
+    ) {
       setProgressError(progressError.filter((e) => e !== index));
     }
     setProgressData(temp);
@@ -108,6 +119,7 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
       assignee_user_name_list: [],
       desc: '',
       approved_by_authorized: false,
+      execute_by_authorized: false,
     });
     setProgressData(temp);
   };
@@ -149,7 +161,11 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
     const tempError: number[] = [];
     for (let i = 0; i < progressData.length; i++) {
       const len = progressData[i].assignee_user_name_list.length;
-      if (!progressData[i].approved_by_authorized && (len <= 0 || len > 3)) {
+      if (
+        !progressData[i].approved_by_authorized &&
+        !progressData[i].execute_by_authorized &&
+        (len <= 0 || len > 3)
+      ) {
         tempError.push(i);
       }
     }
@@ -191,6 +207,19 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
     props.submitProgressConfig(progressConfig);
   };
 
+  const setReviewUserTypeValue = (
+    progressItem: Required<Omit<IWorkFlowStepTemplateReqV1, 'type'>>
+  ) => {
+    if (progressItem.approved_by_authorized) {
+      return ProgressConfigReviewTypeEnum.matchAudit;
+    }
+
+    if (progressItem.execute_by_authorized) {
+      return ProgressConfigReviewTypeEnum.matchExecute;
+    }
+    return ProgressConfigReviewTypeEnum.specify;
+  };
+
   const { updateUsernameList, generateUsernameSelectOption } = useUsername();
 
   React.useEffect(() => {
@@ -230,7 +259,8 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
         props.defaultData.workflow_step_template_list?.map((e) => ({
           assignee_user_name_list: e.assignee_user_name_list ?? [],
           desc: e.desc ?? '',
-          approved_by_authorized: e.approved_by_authorized ?? false,
+          approved_by_authorized: !!e.approved_by_authorized,
+          execute_by_authorized: !!e.execute_by_authorized,
         })) ?? []
       );
       setExecProgressData({
@@ -270,11 +300,7 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
                           </Col>
                           <Col span={18}>
                             <Radio.Group
-                              value={
-                                progressItem.approved_by_authorized
-                                  ? ProgressConfigReviewTypeEnum.match
-                                  : ProgressConfigReviewTypeEnum.specify
-                              }
+                              value={setReviewUserTypeValue(progressItem)}
                               onChange={(e) =>
                                 updateReviewType(index, e.target.value)
                               }
@@ -286,9 +312,20 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
                                   'workflowTemplate.progressConfig.review.reviewUserType.specify'
                                 )}
                               </Radio>
-                              <Radio value={ProgressConfigReviewTypeEnum.match}>
+                              <Radio
+                                value={ProgressConfigReviewTypeEnum.matchAudit}
+                              >
                                 {t(
-                                  'workflowTemplate.progressConfig.review.reviewUserType.match'
+                                  'workflowTemplate.progressConfig.review.reviewUserType.matchAudit'
+                                )}
+                              </Radio>
+                              <Radio
+                                value={
+                                  ProgressConfigReviewTypeEnum.matchExecute
+                                }
+                              >
+                                {t(
+                                  'workflowTemplate.progressConfig.review.reviewUserType.matchExecute'
                                 )}
                               </Radio>
                             </Radio.Group>
@@ -300,7 +337,10 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
                           </Col>
                           <Col span={18}>
                             <Select
-                              disabled={progressItem.approved_by_authorized}
+                              disabled={
+                                progressItem.approved_by_authorized ||
+                                progressItem.execute_by_authorized
+                              }
                               value={progressItem.assignee_user_name_list}
                               onChange={updateUsername.bind(null, index)}
                               className="full-width-element"

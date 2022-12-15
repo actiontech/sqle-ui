@@ -1174,14 +1174,33 @@ exports[`UpdateWorkflowTemplate should match snapshot 2`] = `
                                                 <input
                                                   class="ant-radio-input"
                                                   type="radio"
-                                                  value="match"
+                                                  value="matchAudit"
                                                 />
                                                 <span
                                                   class="ant-radio-inner"
                                                 />
                                               </span>
                                               <span>
-                                                workflowTemplate.progressConfig.review.reviewUserType.match
+                                                workflowTemplate.progressConfig.review.reviewUserType.matchAudit
+                                              </span>
+                                            </label>
+                                            <label
+                                              class="ant-radio-wrapper"
+                                            >
+                                              <span
+                                                class="ant-radio"
+                                              >
+                                                <input
+                                                  class="ant-radio-input"
+                                                  type="radio"
+                                                  value="matchExecute"
+                                                />
+                                                <span
+                                                  class="ant-radio-inner"
+                                                />
+                                              </span>
+                                              <span>
+                                                workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                               </span>
                                             </label>
                                           </div>
@@ -1486,14 +1505,33 @@ exports[`UpdateWorkflowTemplate should match snapshot 2`] = `
                                                   checked=""
                                                   class="ant-radio-input"
                                                   type="radio"
-                                                  value="match"
+                                                  value="matchAudit"
                                                 />
                                                 <span
                                                   class="ant-radio-inner"
                                                 />
                                               </span>
                                               <span>
-                                                workflowTemplate.progressConfig.review.reviewUserType.match
+                                                workflowTemplate.progressConfig.review.reviewUserType.matchAudit
+                                              </span>
+                                            </label>
+                                            <label
+                                              class="ant-radio-wrapper"
+                                            >
+                                              <span
+                                                class="ant-radio"
+                                              >
+                                                <input
+                                                  class="ant-radio-input"
+                                                  type="radio"
+                                                  value="matchExecute"
+                                                />
+                                                <span
+                                                  class="ant-radio-inner"
+                                                />
+                                              </span>
+                                              <span>
+                                                workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                               </span>
                                             </label>
                                           </div>
