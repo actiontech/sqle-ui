@@ -56,18 +56,43 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 1`] = `
         <div
           class="ant-card-extra"
         >
-          <a
-            href="/project/default/rule/template/create"
+          <div
+            class="ant-space ant-space-horizontal ant-space-align-center"
           >
-            <button
-              class="ant-btn ant-btn-primary"
-              type="button"
+            <div
+              class="ant-space-item"
+              style="margin-right: 24px;"
             >
-              <span>
-                ruleTemplate.createRuleTemplate.button
-              </span>
-            </button>
-          </a>
+              <a
+                href="/project/default/rule/template/import"
+              >
+                <button
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    ruleTemplate.importRuleTemplate.button
+                  </span>
+                </button>
+              </a>
+            </div>
+            <div
+              class="ant-space-item"
+            >
+              <a
+                href="/project/default/rule/template/create"
+              >
+                <button
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    ruleTemplate.createRuleTemplate.button
+                  </span>
+                </button>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -285,18 +310,43 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
         <div
           class="ant-card-extra"
         >
-          <a
-            href="/project/default/rule/template/create"
+          <div
+            class="ant-space ant-space-horizontal ant-space-align-center"
           >
-            <button
-              class="ant-btn ant-btn-primary"
-              type="button"
+            <div
+              class="ant-space-item"
+              style="margin-right: 24px;"
             >
-              <span>
-                ruleTemplate.createRuleTemplate.button
-              </span>
-            </button>
-          </a>
+              <a
+                href="/project/default/rule/template/import"
+              >
+                <button
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    ruleTemplate.importRuleTemplate.button
+                  </span>
+                </button>
+              </a>
+            </div>
+            <div
+              class="ant-space-item"
+            >
+              <a
+                href="/project/default/rule/template/create"
+              >
+                <button
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    ruleTemplate.createRuleTemplate.button
+                  </span>
+                </button>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

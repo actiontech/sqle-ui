@@ -100,6 +100,29 @@ const RuleTemplateList = () => {
     );
   };
 
+  const exportRuleTemplate = (templateName: string) => {
+    const hideLoading = message.loading(
+      t('ruleTemplate.exportRuleTemplate.exporting', { name: templateName }),
+      0
+    );
+    ruleTemplate
+      .exportRuleTemplateV1({
+        rule_template_name: templateName,
+      })
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          message.success(
+            t('ruleTemplate.exportRuleTemplate.exportSuccessTips', {
+              name: templateName,
+            })
+          );
+        }
+      })
+      .finally(() => {
+        hideLoading();
+      });
+  };
+
   useEffect(() => {
     dispatch(
       initGlobalRuleTemplateListModalStatus({
@@ -139,13 +162,20 @@ const RuleTemplateList = () => {
           </Space>
         }
         extra={[
-          <Link to="/rule/template/create" key="createRuleTemplate">
-            <EmptyBox if={isAdmin}>
-              <Button type="primary">
-                {t('ruleTemplate.createRuleTemplate.button')}
-              </Button>
-            </EmptyBox>
-          </Link>,
+          <EmptyBox if={isAdmin} key="ruleTemplateButton">
+            <Space size="large">
+              <Link to="/rule/template/import">
+                <Button type="primary">
+                  {t('ruleTemplate.importRuleTemplate.button')}
+                </Button>
+              </Link>
+              <Link to="/rule/template/create">
+                <Button type="primary">
+                  {t('ruleTemplate.createRuleTemplate.button')}
+                </Button>
+              </Link>
+            </Space>
+          </EmptyBox>,
         ]}
       >
         <Table
@@ -160,6 +190,7 @@ const RuleTemplateList = () => {
           }}
           columns={RuleTemplateListTableColumnFactory(
             deleteTemplate,
+            exportRuleTemplate,
             openCloneRuleTemplateModal,
             isAdmin
           )}
