@@ -72,7 +72,7 @@ describe('test RuleTemplate/ImportRuleTemplate', () => {
   };
 
   const mockCreateTemplate = () => {
-    const spy = jest.spyOn(rule_template, 'createRuleTemplateV1');
+    const spy = jest.spyOn(rule_template, 'createProjectRuleTemplateV1');
     spy.mockImplementation(() => resolveThreeSecond({}));
     return spy;
   };
@@ -167,6 +167,7 @@ describe('test RuleTemplate/ImportRuleTemplate', () => {
       db_type: parseFileData.db_type,
       desc: parseFileData.desc,
       rule_template_name: parseFileData.name,
+      project_name: projectName,
       rule_list: [
         {
           name: allRulesWithType[0].rule_name,

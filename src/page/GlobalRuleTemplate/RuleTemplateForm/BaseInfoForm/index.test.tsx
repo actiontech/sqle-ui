@@ -18,7 +18,9 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
 
   test('should reset all fields when user click reset button and isUpdate of props is not true', async () => {
     const { result } = renderHook(() => useForm());
-    render(<BaseInfoForm form={result.current[0]} submit={jest.fn()} />);
+    render(
+      <BaseInfoForm form={result.current[0]} submit={jest.fn()} mode="create" />
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -58,6 +60,7 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
       <BaseInfoForm
         form={result.current[0]}
         submit={jest.fn()}
+        mode="create"
         defaultData={{}}
       />
     );
@@ -102,5 +105,24 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
     ).toHaveValue('');
+  });
+
+  test('should disabled db type when mode is import', async () => {
+    const { result } = renderHook(() => useForm());
+    render(
+      <BaseInfoForm
+        form={result.current[0]}
+        submit={jest.fn()}
+        mode="import"
+        defaultData={{}}
+      />
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(
+      screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
+    ).toBeDisabled();
   });
 });

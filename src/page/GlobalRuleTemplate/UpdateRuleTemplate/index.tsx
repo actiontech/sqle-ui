@@ -110,6 +110,7 @@ const UpdateRuleTemplate = () => {
           prevStep={prevStep}
           submit={submit}
           defaultData={ruleTemplate}
+          mode="update"
         >
           <Result
             status="success"

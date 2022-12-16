@@ -100,6 +100,7 @@ const CreateRuleTemplate = () => {
           prevStep={prevStep}
           submit={submit}
           projectName={projectName}
+          mode="create"
         >
           <Result
             status="success"

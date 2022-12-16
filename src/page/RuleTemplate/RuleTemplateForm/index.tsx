@@ -42,6 +42,7 @@ const RuleTemplateForm: React.FC<RuleTemplateFormProps> = (props) => {
             submit={props.baseInfoSubmit}
             defaultData={props.defaultData}
             projectName={props.projectName}
+            mode={props.mode}
           />
         </div>
         <div hidden={props.step !== 1} data-testid="rule-list">

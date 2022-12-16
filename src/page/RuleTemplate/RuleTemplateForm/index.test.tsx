@@ -31,6 +31,7 @@ describe('RuleTemplate/RuleTemplateForm', () => {
         prevStep={jest.fn()}
         submit={jest.fn()}
         projectName="default"
+        mode="create"
       >
         this is children
       </RuleTemplateForm>
