@@ -27,11 +27,20 @@ import {
   mockGetMemberGroups,
   mockMemberGroupList,
 } from './utils';
+import { useTheme } from '@material-ui/styles';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn(),
 }));
+
+jest.mock('@material-ui/styles', () => {
+  return {
+    ...jest.requireActual('@material-ui/styles'),
+    useTheme: jest.fn(),
+  };
+});
+
 const projectName = mockBindProjects[0].project_name;
 
 describe('test MemberGroupList', () => {
@@ -39,6 +48,7 @@ describe('test MemberGroupList', () => {
   let getMemberGroupsSpy: jest.SpyInstance;
   let deleteMemberGroupSpy: jest.SpyInstance;
   let dispatchSpy: jest.SpyInstance;
+  const useThemeMock: jest.Mock = useTheme as jest.Mock;
 
   beforeEach(() => {
     getMemberGroupsSpy = mockGetMemberGroups();
@@ -50,6 +60,7 @@ describe('test MemberGroupList', () => {
     mockUseSelector({
       user: { role: SystemRole.admin, bindProjects: mockBindProjects },
     });
+    useThemeMock.mockReturnValue({ common: { padding: 24 } });
 
     jest.useFakeTimers();
   });

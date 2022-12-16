@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IAuditPlanResV1 } from '../../api/common';
+import { IAuditPlanResV2 } from '../../api/common';
 import { ModalStatus } from '../../types/common.type';
 import { commonModalReducer } from '../common';
 type AuditPlanReduxState = {
   modalStatus: ModalStatus;
-  selectAuditPlan: IAuditPlanResV1 | null;
+  selectAuditPlan: IAuditPlanResV2 | null;
 };
 
 const initialState: AuditPlanReduxState = {
@@ -18,7 +18,7 @@ const auditPlan = createSlice({
     ...commonModalReducer(),
     updateSelectAuditPlan: (
       state,
-      { payload: selectedData }: PayloadAction<IAuditPlanResV1 | null>
+      { payload: selectedData }: PayloadAction<IAuditPlanResV2 | null>
     ) => {
       state.selectAuditPlan = selectedData;
     },

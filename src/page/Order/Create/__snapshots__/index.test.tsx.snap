@@ -13,9 +13,9 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
       >
         <span
           class="ant-page-header-heading-title"
-          title="order.baseInfo.title"
+          title="order.createOrder.title"
         >
-          order.baseInfo.title
+          order.createOrder.title
         </span>
       </div>
     </div>
@@ -2374,7 +2374,7 @@ use aaab;
                   type="submit"
                 >
                   <span>
-                    order.createOrder.title
+                    order.createOrder.button
                   </span>
                 </button>
               </div>
@@ -2400,9 +2400,9 @@ exports[`Order/Create should audit sql when user click audit button 2`] = `
       >
         <span
           class="ant-page-header-heading-title"
-          title="order.baseInfo.title"
+          title="order.createOrder.title"
         >
-          order.baseInfo.title
+          order.createOrder.title
         </span>
       </div>
     </div>
@@ -3942,7 +3942,7 @@ exports[`Order/Create should audit sql when user click audit button 2`] = `
                   type="submit"
                 >
                   <span>
-                    order.createOrder.title
+                    order.createOrder.button
                   </span>
                 </button>
               </div>
@@ -4076,9 +4076,9 @@ exports[`Order/Create should render page header 1`] = `
         >
           <span
             class="ant-page-header-heading-title"
-            title="order.baseInfo.title"
+            title="order.createOrder.title"
           >
-            order.baseInfo.title
+            order.createOrder.title
           </span>
         </div>
       </div>
@@ -4784,7 +4784,7 @@ exports[`Order/Create should render page header 1`] = `
                     type="submit"
                   >
                     <span>
-                      order.createOrder.title
+                      order.createOrder.button
                     </span>
                   </button>
                 </div>

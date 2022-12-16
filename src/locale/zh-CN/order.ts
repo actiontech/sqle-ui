@@ -8,6 +8,7 @@ export default {
     allOrderAboutMe: '所有与我相关的工单',
   },
   createOrder: {
+    button: '创建工单',
     title: '创建工单',
     pageDesc: '您可以在这里选择数据源进行创建SQL审核工单',
     dirtyDataTips:

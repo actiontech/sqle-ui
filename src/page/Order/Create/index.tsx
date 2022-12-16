@@ -168,7 +168,7 @@ const CreateOrder = () => {
 
   return (
     <>
-      <PageHeader title={t('order.baseInfo.title')} ghost={false}>
+      <PageHeader title={t('order.createOrder.title')} ghost={false}>
         {t('order.createOrder.pageDesc')}
       </PageHeader>
       <section className="padding-content">
@@ -256,7 +256,7 @@ const CreateOrder = () => {
                       disabled={isDisableFinallySubmitButton}
                       loading={createLoading}
                     >
-                      {t('order.createOrder.title')}
+                      {t('order.createOrder.button')}
                     </Button>
                   </Tooltip>
                 }
@@ -282,7 +282,7 @@ const CreateOrder = () => {
                       loading={createLoading}
                       disabled={isDisableFinallySubmitButton}
                     >
-                      {t('order.createOrder.title')}
+                      {t('order.createOrder.button')}
                     </Button>
                   </Tooltip>
                 </Popconfirm>

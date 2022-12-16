@@ -33,7 +33,9 @@ import {
   IListTableBySchemaParams,
   IListTableBySchemaReturn,
   IGetTableMetadataParams,
-  IGetTableMetadataReturn
+  IGetTableMetadataReturn,
+  IGetInstanceListV2Params,
+  IGetInstanceListV2Return
 } from './index.d';
 
 class InstanceService extends ServiceBase {
@@ -265,6 +267,21 @@ class InstanceService extends ServiceBase {
 
     return this.get<IGetTableMetadataReturn>(
       `/v1/projects/${project_name}/instances/${instance_name}/schemas/${schema_name}/tables/${table_name}/metadata`,
+      paramsData,
+      options
+    );
+  }
+
+  public getInstanceListV2(
+    params: IGetInstanceListV2Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.get<IGetInstanceListV2Return>(
+      `/v2/projects/${project_name}/instances`,
       paramsData,
       options
     );

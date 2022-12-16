@@ -1,3 +1,4 @@
+import { useTheme } from '@material-ui/styles';
 import {
   fireEvent,
   waitFor,
@@ -11,11 +12,15 @@ import rule_template from '../../../api/rule_template';
 import { SystemRole } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
-import { renderWithRouter } from '../../../testUtils/customRender';
+import {
+  renderWithRouter,
+  renderWithServerRouter,
+} from '../../../testUtils/customRender';
 import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 import { ruleTemplateListData } from '../__testData__';
+import { createMemoryHistory } from 'history';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -23,22 +28,32 @@ jest.mock('react-router-dom', () => ({
 }));
 const projectName = 'default';
 
+jest.mock('@material-ui/styles', () => {
+  return {
+    ...jest.requireActual('@material-ui/styles'),
+    useTheme: jest.fn(),
+  };
+});
+
 describe('RuleTemplate/RuleTemplateList', () => {
   let mockDispatch: jest.Mock;
   let getRuleTemplateListSpy: jest.SpyInstance;
   const useParamsMock: jest.Mock = useParams as jest.Mock;
+  const useThemeMock: jest.Mock = useTheme as jest.Mock;
 
   beforeEach(() => {
     jest.useFakeTimers();
     getRuleTemplateListSpy = mockGetRuleTemplateList();
     const { scopeDispatch } = mockUseDispatch();
     useParamsMock.mockReturnValue({ projectName });
-
+    mockGetGlobalRuleTemplateList();
     mockUseSelector({
+      globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
       ruleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
       user: { role: SystemRole.admin, bindProjects: mockBindProjects },
     });
     mockDispatch = scopeDispatch;
+    useThemeMock.mockReturnValue({ common: { padding: 24 } });
   });
 
   afterEach(() => {
@@ -46,6 +61,14 @@ describe('RuleTemplate/RuleTemplateList', () => {
     jest.clearAllMocks();
     jest.clearAllTimers();
   });
+
+  const mockGetGlobalRuleTemplateList = () => {
+    const spy = jest.spyOn(rule_template, 'getRuleTemplateListV1');
+    spy.mockImplementation(() =>
+      resolveThreeSecond([], { otherData: { total_nums: 0 } })
+    );
+    return spy;
+  };
 
   const mockGetRuleTemplateList = () => {
     const spy = jest.spyOn(rule_template, 'getProjectRuleTemplateListV1');
@@ -210,6 +233,7 @@ describe('RuleTemplate/RuleTemplateList', () => {
 
   test('should hide the Create, Add, Edit feature when not currently a project manager or admin', async () => {
     mockUseSelector({
+      globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
       ruleTemplate: {
         modalStatus: {},
         selectRuleTemplate: undefined,
@@ -235,6 +259,7 @@ describe('RuleTemplate/RuleTemplateList', () => {
     jest.clearAllMocks();
 
     mockUseSelector({
+      globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
       ruleTemplate: {
         modalStatus: {},
         selectRuleTemplate: undefined,
@@ -259,6 +284,7 @@ describe('RuleTemplate/RuleTemplateList', () => {
     jest.clearAllMocks();
 
     mockUseSelector({
+      globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
       ruleTemplate: {
         modalStatus: {},
         selectRuleTemplate: undefined,
@@ -278,5 +304,20 @@ describe('RuleTemplate/RuleTemplateList', () => {
     expect(
       screen.queryByText('ruleTemplate.createRuleTemplate.button')
     ).not.toBeInTheDocument();
+  });
+
+  test('should render rule link when rule template name is not empty', async () => {
+    let history = createMemoryHistory();
+    renderWithServerRouter(<RuleTemplateList />, undefined, { history });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.click(
+      screen.getByText(ruleTemplateListData[0].rule_template_name!)
+    );
+    expect(history.location.pathname).toBe('/rule');
+    expect(history.location.search).toBe(
+      '?projectName=default&ruleTemplateName=default_mysql'
+    );
   });
 });

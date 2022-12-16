@@ -26,7 +26,7 @@ const DataSourceList = () => {
 
   const { data, loading, refresh } = useRequest(
     () => {
-      return instance.getInstanceListV1({
+      return instance.getInstanceListV2({
         project_name: projectName,
         page_index: pagination.pageIndex,
         page_size: pagination.pageSize,

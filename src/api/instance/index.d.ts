@@ -13,7 +13,8 @@ import {
   IGetRulesResV1,
   IGetInstanceSchemaResV1,
   IListTableBySchemaResV1,
-  IGetTableMetadataResV1
+  IGetTableMetadataResV1,
+  IGetInstancesResV2
 } from '../common.d';
 
 import { getInstanceTipListV1FunctionalModuleEnum } from './index.enum';
@@ -145,3 +146,25 @@ export interface IGetTableMetadataParams {
 }
 
 export interface IGetTableMetadataReturn extends IGetTableMetadataResV1 {}
+
+export interface IGetInstanceListV2Params {
+  project_name: string;
+
+  filter_instance_name?: string;
+
+  filter_db_type?: string;
+
+  filter_db_host?: string;
+
+  filter_db_port?: string;
+
+  filter_db_user?: string;
+
+  filter_rule_template_name?: string;
+
+  page_index?: number;
+
+  page_size?: number;
+}
+
+export interface IGetInstanceListV2Return extends IGetInstancesResV2 {}

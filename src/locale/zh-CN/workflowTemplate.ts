@@ -88,7 +88,7 @@ export default {
       subTitle: '审核人在该步骤可以执行 审核通过或驳回 操作',
       reviewUserType: {
         specifyAudit: '指定审核人',
-        matchAudit: '匹配所有拥有审核权限的用户',
+        matchAudit: '匹配拥有数据源审核权限的成员',
       },
     },
     exec: {
@@ -96,7 +96,7 @@ export default {
       subTitle: '执行人在该步骤可以执行 执行上线或驳回 操作',
       executeUserType: {
         specifyExecute: '指定执行人',
-        matchExecute: '匹配所有拥有上线权限的用户',
+        matchExecute: '匹配拥有数据源上线权限的成员',
       },
     },
     operator: {

@@ -4,9 +4,9 @@ import { Button, Card, message, Space, Table } from 'antd';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import audit_plan from '../../../api/audit_plan';
-import { IAuditPlanResV1 } from '../../../api/common';
+import { IAuditPlanResV2 } from '../../../api/common';
 import { ResponseCode } from '../../../data/common';
 import { ModalName } from '../../../data/ModalName';
 import useTable from '../../../hooks/useTable';
@@ -23,7 +23,6 @@ import { planListTableHeader } from './tableColumn';
 
 const PlanList = () => {
   const { t } = useTranslation();
-  const history = useHistory();
   const [
     removePending,
     { setTrue: startRemoveAuditPlan, setFalse: removeAuditPlanFinish },
@@ -50,7 +49,7 @@ const PlanList = () => {
 
   const { data, loading, refresh } = useRequest(
     () => {
-      return audit_plan.getAuditPlansV1({
+      return audit_plan.getAuditPlansV2({
         project_name: projectName,
         page_index: pagination.pageIndex,
         page_size: pagination.pageSize,
@@ -111,7 +110,7 @@ const PlanList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const openModal = (name: ModalName, row?: IAuditPlanResV1) => {
+  const openModal = (name: ModalName, row?: IAuditPlanResV2) => {
     if (row) {
       dispatch(updateSelectAuditPlan(row));
     }
@@ -153,14 +152,6 @@ const PlanList = () => {
           showSizeChanger: true,
         }}
         loading={loading}
-        onRow={(record) => ({
-          onClick: () => {
-            history.push(
-              `/project/${projectName}/auditPlan/detail/${record.audit_plan_name}`,
-              projectName
-            );
-          },
-        })}
         onChange={tableChange}
       />
       <PlanListModal />

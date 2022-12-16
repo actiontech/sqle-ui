@@ -5,7 +5,10 @@ import DataSourceList from '.';
 import instance from '../../../api/instance';
 import { SystemRole } from '../../../data/common';
 import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
-import { renderWithRouter } from '../../../testUtils/customRender';
+import {
+  renderWithRouter,
+  renderWithServerRouter,
+} from '../../../testUtils/customRender';
 import { mockUseSelector } from '../../../testUtils/mockRedux';
 import {
   mockUseInstance,
@@ -16,6 +19,7 @@ import {
   mockUseGlobalRuleTemplate,
 } from '../../../testUtils/mockRequest';
 import { dataSourceList } from '../__testData__';
+import { createMemoryHistory } from 'history';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -47,7 +51,7 @@ describe('DataSource/DataSourceList', () => {
   });
 
   const mockGetInstance = () => {
-    const spy = jest.spyOn(instance, 'getInstanceListV1');
+    const spy = jest.spyOn(instance, 'getInstanceListV2');
     spy.mockImplementation(() =>
       resolveThreeSecond(dataSourceList, { otherData: { total_nums: 1 } })
     );
@@ -77,7 +81,7 @@ describe('DataSource/DataSourceList', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    fireEvent.click(screen.getByText('common.delete'));
+    fireEvent.click(screen.getAllByText('common.delete')[0]);
     expect(
       screen.queryByText('dataSource.deleteDatabase.confirmMessage')
     ).toBeInTheDocument();
@@ -115,7 +119,7 @@ describe('DataSource/DataSourceList', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    fireEvent.mouseEnter(screen.getByText('common.more'));
+    fireEvent.mouseEnter(screen.getAllByText('common.more')[0]);
     await waitFor(() => {
       jest.advanceTimersByTime(300);
     });
@@ -157,7 +161,7 @@ describe('DataSource/DataSourceList', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    fireEvent.mouseEnter(screen.getByText('common.more'));
+    fireEvent.mouseEnter(screen.getAllByText('common.more')[0]);
     await waitFor(() => {
       jest.advanceTimersByTime(300);
     });
@@ -198,9 +202,11 @@ describe('DataSource/DataSourceList', () => {
       jest.advanceTimersByTime(3000);
     });
 
-    expect(screen.queryByText('common.delete')).toBeInTheDocument();
-    expect(screen.queryByText('common.edit')).toBeInTheDocument();
-    expect(screen.queryByText('dataSource.addDatabase')).toBeInTheDocument();
+    expect(screen.queryAllByText('common.delete')[0]).toBeInTheDocument();
+    expect(screen.queryAllByText('common.edit')[0]).toBeInTheDocument();
+    expect(
+      screen.queryAllByText('dataSource.addDatabase')[0]
+    ).toBeInTheDocument();
 
     cleanup();
     jest.clearAllMocks();
@@ -216,8 +222,8 @@ describe('DataSource/DataSourceList', () => {
       jest.advanceTimersByTime(3000);
     });
 
-    expect(screen.queryByText('common.delete')).toBeInTheDocument();
-    expect(screen.queryByText('common.edit')).toBeInTheDocument();
+    expect(screen.queryAllByText('common.delete')[0]).toBeInTheDocument();
+    expect(screen.queryAllByText('common.edit')[0]).toBeInTheDocument();
     expect(screen.queryByText('dataSource.addDatabase')).toBeInTheDocument();
 
     cleanup();
@@ -234,10 +240,27 @@ describe('DataSource/DataSourceList', () => {
       jest.advanceTimersByTime(3000);
     });
 
-    expect(screen.queryByText('common.delete')).not.toBeInTheDocument();
-    expect(screen.queryByText('common.edit')).not.toBeInTheDocument();
+    expect(screen.queryAllByText('common.delete')[0]).toBeUndefined();
+    expect(screen.queryAllByText('common.edit')[0]).toBeUndefined();
     expect(
       screen.queryByText('dataSource.addDatabase')
     ).not.toBeInTheDocument();
+  });
+
+  test('should render rule link when rule template name is not empty', async () => {
+    let history = createMemoryHistory();
+    renderWithServerRouter(<DataSourceList />, undefined, { history });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.click(screen.getByText(dataSourceList[0].rule_template?.name!));
+    expect(history.location.pathname).toBe('/rule');
+    expect(history.location.search).toBe('?ruleTemplateName=default');
+
+    fireEvent.click(screen.getByText(dataSourceList[1].rule_template?.name!));
+    expect(history.location.pathname).toBe('/rule');
+    expect(history.location.search).toBe(
+      '?projectName=default&ruleTemplateName=test'
+    );
   });
 });

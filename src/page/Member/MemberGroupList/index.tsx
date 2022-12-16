@@ -1,4 +1,5 @@
 import { SyncOutlined } from '@ant-design/icons';
+import { useTheme } from '@material-ui/styles';
 import { useRequest } from 'ahooks';
 import { Button, Card, message, Space, Table } from 'antd';
 import { useEffect, useMemo } from 'react';
@@ -17,6 +18,7 @@ import {
   updateMemberModalStatus,
   updateSelectMemberGroup,
 } from '../../../store/member';
+import { Theme } from '../../../types/theme.type';
 import EventEmitter from '../../../utils/EventEmitter';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import MemberGroupListTableColumnFactory from './column';
@@ -27,6 +29,7 @@ const UserGroupList: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { projectName } = useCurrentProjectName();
+  const theme = useTheme<Theme>();
 
   const { isAdmin, isProjectManager } = useCurrentUser();
 
@@ -113,6 +116,7 @@ const UserGroupList: React.FC = () => {
 
   return (
     <Card
+      style={{ marginTop: theme.common.padding }}
       title={
         <Space>
           {t('member.memberGroupList.title')}

@@ -41,7 +41,9 @@ import {
   IPartialSyncAuditPlanSQLsV1Params,
   IPartialSyncAuditPlanSQLsV1Return,
   ITriggerAuditPlanV1Params,
-  ITriggerAuditPlanV1Return
+  ITriggerAuditPlanV1Return,
+  IGetAuditPlansV2Params,
+  IGetAuditPlansV2Return
 } from './index.d';
 
 class AuditPlanService extends ServiceBase {
@@ -354,6 +356,21 @@ class AuditPlanService extends ServiceBase {
 
     return this.post<ITriggerAuditPlanV1Return>(
       `/v1/projects/${project_name}/audit_plans/${audit_plan_name}/trigger`,
+      paramsData,
+      options
+    );
+  }
+
+  public getAuditPlansV2(
+    params: IGetAuditPlansV2Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.get<IGetAuditPlansV2Return>(
+      `/v2/projects/${project_name}/audit_plans`,
       paramsData,
       options
     );

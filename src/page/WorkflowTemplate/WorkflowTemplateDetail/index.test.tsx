@@ -3,7 +3,7 @@ import WorkflowTemplateDetail from '.';
 import workflow from '../../../api/workflow';
 import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
-import { workflowData } from '../__testData__';
+import { workflowData, workflowData2 } from '../__testData__';
 import { useParams } from 'react-router-dom';
 import { mockUseSelector } from '../../../testUtils/mockRedux';
 import { SystemRole } from '../../../data/common';
@@ -104,5 +104,26 @@ describe('WorkflowTemplate/WorkflowTemplateDetail', () => {
     expect(
       screen.queryByText('workflowTemplate.detail.updateTemplate')
     ).not.toBeInTheDocument();
+  });
+
+  test('should render match text when choosing to match All privileged users', async () => {
+    getWorkflowTemplateDetail.mockImplementation(() =>
+      resolveThreeSecond(workflowData2)
+    );
+    const { container } = renderWithThemeAndRouter(<WorkflowTemplateDetail />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(container).toMatchSnapshot();
+    expect(
+      screen.queryByText(
+        'workflowTemplate.form.label.reviewUser : workflowTemplate.progressConfig.review.reviewUserType.matchAudit'
+      )
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText(
+        'workflowTemplate.form.label.execUser : workflowTemplate.progressConfig.exec.executeUserType.matchExecute'
+      )
+    ).toBeInTheDocument();
   });
 });

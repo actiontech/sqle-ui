@@ -265,7 +265,7 @@ describe('Order/Create', () => {
       target: { value: 'select * from table2' },
     });
 
-    fireEvent.click(screen.getByText('order.createOrder.title'));
+    fireEvent.click(screen.getByText('order.createOrder.button'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
@@ -287,12 +287,12 @@ describe('Order/Create', () => {
       jest.advanceTimersByTime(3000);
     });
 
-    fireEvent.click(screen.getByText('order.createOrder.title'));
+    fireEvent.click(screen.getByText('order.createOrder.button'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
     expect(createOrderSpy).toBeCalledTimes(1);
-    expect(screen.getByText('order.createOrder.title').parentNode).toHaveClass(
+    expect(screen.getByText('order.createOrder.button').parentNode).toHaveClass(
       'ant-btn-loading'
     );
     expect(createOrderSpy).toBeCalledWith({
@@ -305,7 +305,7 @@ describe('Order/Create', () => {
       jest.advanceTimersByTime(3000);
     });
     expect(
-      screen.getByText('order.createOrder.title').parentNode
+      screen.getByText('order.createOrder.button').parentNode
     ).not.toHaveClass('ant-btn-loading');
 
     expect(getBySelector('.ant-modal-wrap')).toMatchSnapshot();
@@ -374,7 +374,7 @@ describe('Order/Create', () => {
       target: { value: 'select * from table3' },
     });
 
-    fireEvent.click(screen.getByText('order.createOrder.title'));
+    fireEvent.click(screen.getByText('order.createOrder.button'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
@@ -441,10 +441,10 @@ describe('Order/Create', () => {
     expect(auditTasksGroupIdSpy).toBeCalledTimes(1);
 
     expect(
-      screen.getByText('order.createOrder.title').closest('button')
+      screen.getByText('order.createOrder.button').closest('button')
     ).toBeDisabled();
 
-    fireEvent.click(screen.getByText('order.createOrder.title'));
+    fireEvent.click(screen.getByText('order.createOrder.button'));
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -454,7 +454,7 @@ describe('Order/Create', () => {
       target: { value: 'select * from table3' },
     });
     expect(
-      screen.getByText('order.createOrder.title').closest('button')
+      screen.getByText('order.createOrder.button').closest('button')
     ).toBeDisabled();
 
     auditTasksGroupIdSpy.mockImplementation(() =>
@@ -477,14 +477,14 @@ describe('Order/Create', () => {
       jest.advanceTimersByTime(3000);
     });
     expect(
-      screen.getByText('order.createOrder.title').closest('button')
+      screen.getByText('order.createOrder.button').closest('button')
     ).not.toBeDisabled();
 
     fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
       target: { value: 'select * from table3' },
     });
     expect(
-      screen.getByText('order.createOrder.title').closest('button')
+      screen.getByText('order.createOrder.button').closest('button')
     ).not.toBeDisabled();
   });
 
@@ -535,7 +535,7 @@ describe('Order/Create', () => {
       jest.advanceTimersByTime(3000);
     });
 
-    fireEvent.click(screen.getByText('order.createOrder.title'));
+    fireEvent.click(screen.getByText('order.createOrder.button'));
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -557,7 +557,7 @@ describe('Order/Create', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-    fireEvent.click(screen.getByText('order.createOrder.title'));
+    fireEvent.click(screen.getByText('order.createOrder.button'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });

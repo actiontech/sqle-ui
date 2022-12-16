@@ -17,7 +17,7 @@ import MonacoEditor from 'react-monaco-editor';
 import { useDispatch, useSelector } from 'react-redux';
 import audit_plan from '../../../../../api/audit_plan';
 import { IUpdateAuditPlanNotifyConfigV1Params } from '../../../../../api/audit_plan/index.d';
-import { IAuditPlanResV1 } from '../../../../../api/common';
+import { IAuditPlanResV2 } from '../../../../../api/common';
 import { UpdateAuditPlanNotifyConfigReqV1NotifyLevelEnum } from '../../../../../api/common.enum';
 import EmptyBox from '../../../../../components/EmptyBox';
 import IconTipsLabel from '../../../../../components/IconTipsLabel';
@@ -51,7 +51,7 @@ const SubscribeNotice = () => {
     (state) => state.auditPlan.modalStatus[ModalName.Subscribe_Notice]
   );
 
-  const currentAuditPlan = useSelector<IReduxState, IAuditPlanResV1 | null>(
+  const currentAuditPlan = useSelector<IReduxState, IAuditPlanResV2 | null>(
     (state) => state.auditPlan.selectAuditPlan
   );
 

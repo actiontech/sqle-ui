@@ -1,9 +1,10 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   pageTitle: '审核规则模版',
-  pageDescribe: '数据库会应用其所绑定的所有规则模版的规则并集进行SQL审核',
+  pageDescribe: 'SQL审核会应用数据源绑定的规则模板',
 
-  ruleTemplateListTitle: '规则模版列表',
+  ruleTemplateListTitle: '项目规则模版列表',
+  globalRuleTemplateListTitle: '公共规则模板列表',
 
   backToList: '返回审核规则模版列表',
 

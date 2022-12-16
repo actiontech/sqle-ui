@@ -4,6 +4,7 @@ exports[`test MemberGroupList should match snapshot 1`] = `
 <div>
   <div
     class="ant-card ant-card-bordered"
+    style="margin-top: 24px;"
   >
     <div
       class="ant-card-head"
@@ -453,6 +454,7 @@ exports[`test MemberGroupList should match snapshot 2`] = `
 <div>
   <div
     class="ant-card ant-card-bordered"
+    style="margin-top: 24px;"
   >
     <div
       class="ant-card-head"

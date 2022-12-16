@@ -1,17 +1,18 @@
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Menu, Popconfirm, Space, Typography } from 'antd';
 import { Link } from 'react-router-dom';
-import { IAuditPlanMetaV1, IAuditPlanResV1 } from '../../../api/common';
+import { IAuditPlanMetaV1, IAuditPlanResV2 } from '../../../api/common';
 import { ModalName } from '../../../data/ModalName';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
+import { RuleUrlParamKey } from '../../Rule/useRuleFilterForm';
 import TokenText from './component/TokenText';
 
 export const planListTableHeader = (
   removeAuditPlan: (auditPlanName: string) => void,
-  openModal: (name: ModalName, row?: IAuditPlanResV1) => void,
+  openModal: (name: ModalName, row?: IAuditPlanResV2) => void,
   projectName: string
-): TableColumn<IAuditPlanResV1, 'operate'> => {
+): TableColumn<IAuditPlanResV2, 'operate'> => {
   return [
     {
       dataIndex: 'audit_plan_name',
@@ -48,8 +49,19 @@ export const planListTableHeader = (
       title: () => i18n.t('auditPlan.list.table.audit_plan_db_type'),
     },
     {
-      dataIndex: 'rule_template_name',
+      dataIndex: 'rule_template',
       title: () => i18n.t('auditPlan.list.table.audit_rule_template'),
+      render(ruleTemplate: IAuditPlanResV2['rule_template']) {
+        if (!ruleTemplate?.name) {
+          return '';
+        }
+
+        const path = ruleTemplate.is_global_rule_template
+          ? `/rule?${RuleUrlParamKey.ruleTemplateName}=${ruleTemplate.name}`
+          : `/rule?${RuleUrlParamKey.projectName}=${projectName}&${RuleUrlParamKey.ruleTemplateName}=${ruleTemplate.name}`;
+
+        return <Link to={path}>{ruleTemplate.name}</Link>;
+      },
     },
     {
       dataIndex: 'audit_plan_token',

@@ -115,7 +115,6 @@ describe('DataSource/DataSourceList/DataSourceListFilterForm', () => {
         filter_instance_name: undefined,
         filter_db_host: undefined,
         filter_db_port: undefined,
-        filter_db_user: undefined,
         filter_rule_template_name: undefined,
         filter_db_type: undefined,
       })
