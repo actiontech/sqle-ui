@@ -21,7 +21,9 @@ import EventEmitter from '../../../utils/EventEmitter';
 import { RuleTemplateListTableColumnFactory } from './column';
 import RuleTemplateListModal from './Modal';
 
-const RuleTemplateList = () => {
+const RuleTemplateList: React.FC<{ hiddenOperations?: boolean }> = ({
+  hiddenOperations = false,
+}) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { isAdmin } = useCurrentUser();
@@ -132,7 +134,7 @@ const RuleTemplateList = () => {
       <Card
         title={
           <Space>
-            {t('ruleTemplate.ruleTemplateListTitle')}
+            {t('ruleTemplate.globalRuleTemplateListTitle')}
             <Button onClick={refreshRuleTemplate}>
               <SyncOutlined spin={loading} />
             </Button>
@@ -140,7 +142,7 @@ const RuleTemplateList = () => {
         }
         extra={[
           <Link to="/rule/template/create" key="createRuleTemplate">
-            <EmptyBox if={isAdmin}>
+            <EmptyBox if={isAdmin && !hiddenOperations}>
               <Button type="primary">
                 {t('ruleTemplate.createRuleTemplate.button')}
               </Button>
@@ -161,7 +163,7 @@ const RuleTemplateList = () => {
           columns={RuleTemplateListTableColumnFactory(
             deleteTemplate,
             openCloneRuleTemplateModal,
-            isAdmin
+            isAdmin && !hiddenOperations
           )}
         />
       </Card>

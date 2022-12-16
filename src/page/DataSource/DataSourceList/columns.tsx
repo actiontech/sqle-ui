@@ -1,18 +1,19 @@
 import { DownOutlined } from '@ant-design/icons';
 import { Divider, Dropdown, Menu, Popconfirm, Tag, Typography } from 'antd';
 import { Link } from 'react-router-dom';
-import { IInstanceResV1 } from '../../../api/common';
+import { IInstanceResV2 } from '../../../api/common';
 import EmptyBox from '../../../components/EmptyBox';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import { timeAddZero } from '../../../utils/Common';
+import { RuleUrlParamKey } from '../../Rule/useRuleFilterForm';
 
 export const dataSourceColumns = (
   deleteDatabase: (instanceName: string) => void,
   testDatabaseConnection: (instanceName: string) => void,
   projectName: string,
   actionPermission: boolean
-): TableColumn<IInstanceResV1, 'operate' | 'address' | 'connect'> => {
+): TableColumn<IInstanceResV2, 'operate' | 'address' | 'connect'> => {
   return [
     {
       dataIndex: 'instance_name',
@@ -37,13 +38,24 @@ export const dataSourceColumns = (
       title: () => i18n.t('dataSource.databaseList.type'),
     },
     {
-      dataIndex: 'rule_template_name',
+      dataIndex: 'rule_template',
       title: () => i18n.t('dataSource.databaseList.ruleTemplate'),
+      render(ruleTemplate: IInstanceResV2['rule_template']) {
+        if (!ruleTemplate?.name) {
+          return '';
+        }
+
+        const path = ruleTemplate.is_global_rule_template
+          ? `/rule?${RuleUrlParamKey.ruleTemplateName}=${ruleTemplate.name}`
+          : `/rule?${RuleUrlParamKey.projectName}=${projectName}&${RuleUrlParamKey.ruleTemplateName}=${ruleTemplate.name}`;
+
+        return <Link to={path}>{ruleTemplate.name}</Link>;
+      },
     },
     {
       dataIndex: 'maintenance_times',
       title: () => i18n.t('dataSource.databaseList.maintenanceTime'),
-      render(value: IInstanceResV1['maintenance_times']) {
+      render(value: IInstanceResV2['maintenance_times']) {
         return value?.map((t, i) => (
           <Tag key={i}>
             {timeAddZero(t.maintenance_start_time?.hour ?? 0)}:

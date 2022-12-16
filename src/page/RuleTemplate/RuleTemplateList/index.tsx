@@ -21,6 +21,9 @@ import EventEmitter from '../../../utils/EventEmitter';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import { RuleTemplateListTableColumnFactory } from './column';
 import RuleTemplateListModal from './Modal';
+import GlobalRuleTemplateList from '../../GlobalRuleTemplate/RuleTemplateList';
+import { useTheme } from '@material-ui/styles';
+import { Theme } from '../../../types/theme.type';
 
 const RuleTemplateList = () => {
   const { t } = useTranslation();
@@ -30,9 +33,10 @@ const RuleTemplateList = () => {
   const actionPermission = useMemo(() => {
     return isAdmin || isProjectManager(projectName);
   }, [isAdmin, isProjectManager, projectName]);
+  const theme = useTheme<Theme>();
 
   const {
-    data,
+    data: ruleTemplateList,
     loading,
     refresh: refreshRuleTemplate,
     pagination: { total, onChange: changePagination, changeCurrent },
@@ -135,7 +139,9 @@ const RuleTemplateList = () => {
 
   return (
     <>
+      <GlobalRuleTemplateList hiddenOperations={true} />
       <Card
+        style={{ marginTop: theme.common.padding }}
         title={
           <Space>
             {t('ruleTemplate.ruleTemplateListTitle')}
@@ -160,7 +166,7 @@ const RuleTemplateList = () => {
         <Table
           rowKey="rule_template_name"
           loading={loading}
-          dataSource={data?.list}
+          dataSource={ruleTemplateList?.list}
           pagination={{
             total,
             defaultPageSize: 10,
@@ -175,6 +181,7 @@ const RuleTemplateList = () => {
           )}
         />
       </Card>
+
       <RuleTemplateListModal />
     </>
   );

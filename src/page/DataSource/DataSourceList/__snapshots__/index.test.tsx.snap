@@ -260,46 +260,6 @@ exports[`DataSource/DataSourceList should match snapshot 1`] = `
               >
                 <label
                   class=""
-                  for="filter_db_user"
-                  title="dataSource.dataSourceForm.user"
-                >
-                  dataSource.dataSourceForm.user
-                </label>
-              </div>
-              <div
-                class="ant-col ant-col-17 ant-form-item-control"
-              >
-                <div
-                  class="ant-form-item-control-input"
-                >
-                  <div
-                    class="ant-form-item-control-input-content"
-                  >
-                    <input
-                      class="ant-input"
-                      id="filter_db_user"
-                      placeholder="common.form.placeholder.searchInput"
-                      type="text"
-                      value=""
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
-            hidden=""
-            style="padding-left: 12px; padding-right: 12px;"
-          >
-            <div
-              class="ant-row ant-form-item"
-            >
-              <div
-                class="ant-col ant-col-7 ant-form-item-label"
-              >
-                <label
-                  class=""
                   for="filter_db_type"
                   title="dataSource.dataSourceForm.type"
                 >
@@ -953,46 +913,6 @@ exports[`DataSource/DataSourceList should match snapshot 2`] = `
                     <input
                       class="ant-input"
                       id="filter_db_port"
-                      placeholder="common.form.placeholder.searchInput"
-                      type="text"
-                      value=""
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
-            hidden=""
-            style="padding-left: 12px; padding-right: 12px;"
-          >
-            <div
-              class="ant-row ant-form-item"
-            >
-              <div
-                class="ant-col ant-col-7 ant-form-item-label"
-              >
-                <label
-                  class=""
-                  for="filter_db_user"
-                  title="dataSource.dataSourceForm.user"
-                >
-                  dataSource.dataSourceForm.user
-                </label>
-              </div>
-              <div
-                class="ant-col ant-col-17 ant-form-item-control"
-              >
-                <div
-                  class="ant-form-item-control-input"
-                >
-                  <div
-                    class="ant-form-item-control-input-content"
-                  >
-                    <input
-                      class="ant-input"
-                      id="filter_db_user"
                       placeholder="common.form.placeholder.searchInput"
                       type="text"
                       value=""

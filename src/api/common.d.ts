@@ -417,6 +417,8 @@ export interface ICreateUserReqV1 {
 
   management_permission_code_list?: number[];
 
+  phone?: string;
+
   user_group_name_list?: string[];
 
   user_name?: string;
@@ -436,6 +438,14 @@ export interface ICreateWorkflowReqV1 {
 
 export interface IDashboardResV1 {
   workflow_statistics?: IWorkflowStatisticsResV1;
+}
+
+export interface IDingTalkConfigurationV1 {
+  app_key?: string;
+
+  app_secret?: string;
+
+  is_enable_ding_talk_notify?: boolean;
 }
 
 export interface IDirectAuditReqV1 {
@@ -612,6 +622,14 @@ export interface IGetDashboardResV1 {
   code?: number;
 
   data?: IDashboardResV1;
+
+  message?: string;
+}
+
+export interface IGetDingTalkConfigurationResV1 {
+  code?: number;
+
+  data?: IDingTalkConfigurationV1;
 
   message?: string;
 }
@@ -1486,6 +1504,24 @@ export interface IOperationResV1 {
   op_desc?: string;
 }
 
+export interface IParseProjectRuleTemplateFileResDataV1 {
+  db_type?: string;
+
+  desc?: string;
+
+  name?: string;
+
+  rule_list?: IRuleResV1[];
+}
+
+export interface IParseProjectRuleTemplateFileResV1 {
+  code?: number;
+
+  data?: IParseProjectRuleTemplateFileResDataV1;
+
+  message?: string;
+}
+
 export interface IPartialSyncAuditPlanSQLsReqV1 {
   audit_plan_sql_list?: IAuditPlanSQLReqV1[];
 }
@@ -1854,6 +1890,14 @@ export interface IUpdateCurrentUserReqV1 {
   wechat_id?: string;
 }
 
+export interface IUpdateDingTalkConfigurationReqV1 {
+  app_key: string;
+
+  app_secret: string;
+
+  is_enable_ding_talk_notify: boolean;
+}
+
 export interface IUpdateInstanceReqV1 {
   additional_params?: IInstanceAdditionalParamReqV1[];
 
@@ -1939,6 +1983,8 @@ export interface IUpdateUserReqV1 {
 
   management_permission_code_list?: number[];
 
+  phone?: string;
+
   user_group_name_list?: string[];
 
   wechat_id?: string;
@@ -1995,6 +2041,8 @@ export interface IUserDetailResV1 {
 
   management_permission_list?: IManagementPermissionResV1[];
 
+  phone?: string;
+
   user_group_name_list?: string[];
 
   user_name?: string;
@@ -2036,6 +2084,8 @@ export interface IUserResV1 {
   login_type?: string;
 
   management_permission_list?: IManagementPermissionResV1[];
+
+  phone?: string;
 
   user_group_name_list?: string[];
 
@@ -2250,4 +2300,70 @@ export interface IWorkflowTemplateDetailResV1 {
   workflow_step_template_list?: IWorkFlowStepTemplateResV1[];
 
   workflow_template_name?: string;
+}
+
+export interface IAuditPlanResV2 {
+  audit_plan_cron?: string;
+
+  audit_plan_db_type?: string;
+
+  audit_plan_instance_database?: string;
+
+  audit_plan_instance_name?: string;
+
+  audit_plan_meta?: IAuditPlanMetaV1;
+
+  audit_plan_name?: string;
+
+  audit_plan_token?: string;
+
+  rule_template?: IRuleTemplateV2;
+}
+
+export interface IGetAuditPlansResV2 {
+  code?: number;
+
+  data?: IAuditPlanResV2[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
+export interface IGetInstancesResV2 {
+  code?: number;
+
+  data?: IInstanceResV2[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
+export interface IInstanceResV2 {
+  additional_params?: IInstanceAdditionalParamResV1[];
+
+  db_host?: string;
+
+  db_port?: string;
+
+  db_type?: string;
+
+  db_user?: string;
+
+  desc?: string;
+
+  instance_name?: string;
+
+  maintenance_times?: IMaintenanceTimeResV1[];
+
+  rule_template?: IRuleTemplateV2;
+
+  sql_query_config?: ISQLQueryConfigResV1;
+}
+
+export interface IRuleTemplateV2 {
+  is_global_rule_template?: boolean;
+
+  name?: string;
 }

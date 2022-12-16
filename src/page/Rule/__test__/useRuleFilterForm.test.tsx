@@ -7,11 +7,11 @@ import {
   mockUseRuleTemplate,
 } from '../../../testUtils/mockRequest';
 import useRuleFilterForm from '../useRuleFilterForm';
+import route from 'react-router';
 
 describe('test useRuleFilterForm', () => {
   const projectName = 'default';
   const ruleTemplateName = 'rule1';
-  const dbType = 'MySQL';
   let getDriverSpy: jest.SpyInstance;
   let getProjectSpy: jest.SpyInstance;
   let getRuleTemplateSpy: jest.SpyInstance;
@@ -26,6 +26,12 @@ describe('test useRuleFilterForm', () => {
     getGlobalRuleTemplateSpy = mockUseGlobalRuleTemplate();
 
     jest.useFakeTimers();
+    jest.spyOn(route, 'useLocation').mockReturnValue({
+      pathname: '/rule',
+      hash: '',
+      search: '',
+      state: '',
+    });
   });
   afterEach(() => {
     jest.clearAllMocks();
@@ -141,5 +147,47 @@ describe('test useRuleFilterForm', () => {
     });
     expect(getGlobalTemplateRulesSpy).toBeCalledTimes(1);
     expect(getProjectTemplateRulesSpy).toBeCalledTimes(1);
+  });
+
+  test('should be executed change event with url search parameter', async () => {
+    jest.spyOn(route, 'useLocation').mockReturnValue({
+      pathname: '/rule',
+      hash: '',
+      search: `?projectName=${projectName}&ruleTemplateName=${ruleTemplateName}`,
+      state: '',
+    });
+
+    const { result, rerender } = renderHook(() =>
+      useRuleFilterForm(getProjectTemplateRulesSpy, getGlobalTemplateRulesSpy)
+    );
+
+    expect(result.current.projectName).toBe(projectName);
+    expect(getRuleTemplateSpy).toBeCalledTimes(1);
+    expect(getRuleTemplateSpy).toBeCalledWith({
+      project_name: projectName,
+    });
+
+    expect(getGlobalTemplateRulesSpy).toBeCalledTimes(0);
+    expect(getProjectTemplateRulesSpy).toBeCalledTimes(1);
+    expect(getProjectTemplateRulesSpy).toBeCalledWith(
+      projectName,
+      ruleTemplateName
+    );
+
+    jest.clearAllMocks();
+    jest.clearAllTimers();
+
+    jest.spyOn(route, 'useLocation').mockReturnValue({
+      pathname: '/rule',
+      hash: '',
+      search: `ruleTemplateName=${ruleTemplateName}`,
+      state: '',
+    });
+
+    rerender();
+    expect(getRuleTemplateSpy).toBeCalledTimes(0);
+    expect(getProjectTemplateRulesSpy).toBeCalledTimes(0);
+    expect(getGlobalTemplateRulesSpy).toBeCalledTimes(1);
+    expect(getGlobalTemplateRulesSpy).toBeCalledWith(ruleTemplateName);
   });
 });

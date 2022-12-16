@@ -40,7 +40,6 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
     toggleCollapse(!collapse);
     if (!collapse) {
       form.setFieldsValue({
-        filter_db_user: undefined,
         filter_rule_template_name: undefined,
         filter_db_type: undefined,
       });
@@ -105,18 +104,6 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
             <Input
               placeholder={t('common.form.placeholder.searchInput', {
                 name: t('dataSource.dataSourceForm.port'),
-              })}
-            />
-          </Form.Item>
-        </Col>
-        <Col {...FilterFormColLayout} hidden={collapse}>
-          <Form.Item
-            name="filter_db_user"
-            label={t('dataSource.dataSourceForm.user')}
-          >
-            <Input
-              placeholder={t('common.form.placeholder.searchInput', {
-                name: t('dataSource.dataSourceForm.user'),
               })}
             />
           </Form.Item>

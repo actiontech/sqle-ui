@@ -168,7 +168,7 @@ const CreateOrder = () => {
 
   return (
     <>
-      <PageHeader title={t('order.baseInfo.title')} ghost={false}>
+      <PageHeader title={t('order.createOrder.title')} ghost={false}>
         {t('order.createOrder.pageDesc')}
       </PageHeader>
       <section className="padding-content">

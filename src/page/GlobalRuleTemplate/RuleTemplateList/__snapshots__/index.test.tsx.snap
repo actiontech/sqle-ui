@@ -21,7 +21,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 1`] = `
               class="ant-space-item"
               style="margin-right: 8px;"
             >
-              ruleTemplate.ruleTemplateListTitle
+              ruleTemplate.globalRuleTemplateListTitle
             </div>
             <div
               class="ant-space-item"
@@ -242,7 +242,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
               class="ant-space-item"
               style="margin-right: 8px;"
             >
-              ruleTemplate.ruleTemplateListTitle
+              ruleTemplate.globalRuleTemplateListTitle
             </div>
             <div
               class="ant-space-item"
@@ -359,7 +359,11 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          default_mysql
+                          <a
+                            href="/rule?ruleTemplateName=default_mysql"
+                          >
+                            default_mysql
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell ant-table-cell-ellipsis"
@@ -459,7 +463,11 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          default_oracle
+                          <a
+                            href="/rule?ruleTemplateName=default_oracle"
+                          >
+                            default_oracle
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell ant-table-cell-ellipsis"

@@ -4,17 +4,31 @@ import { Link } from 'react-router-dom';
 import { IProjectRuleTemplateResV1 } from '../../../api/common';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
+import { RuleUrlParamKey } from '../../Rule/useRuleFilterForm';
 
 export const RuleTemplateListTableColumnFactory = (
   deleteTemplate: (name: string) => void,
   openCloneRuleTemplateModal: (rowData: IProjectRuleTemplateResV1) => void,
   actionPermission: boolean,
   projectName: string
-): TableColumn<IProjectRuleTemplateResV1, 'operator'> => {
+): TableColumn<IProjectRuleTemplateResV1, 'operator' | 'template_source'> => {
   const columns: TableColumn<IProjectRuleTemplateResV1, 'operator'> = [
     {
       dataIndex: 'rule_template_name',
       title: () => i18n.t('ruleTemplate.ruleTemplateList.table.templateName'),
+      render(name: string) {
+        if (!name) {
+          return '';
+        }
+
+        return (
+          <Link
+            to={`/rule?${RuleUrlParamKey.projectName}=${projectName}&${RuleUrlParamKey.ruleTemplateName}=${name}`}
+          >
+            {name}
+          </Link>
+        );
+      },
     },
     {
       dataIndex: 'desc',

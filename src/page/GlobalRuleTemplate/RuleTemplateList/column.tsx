@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import { IRuleTemplateResV1 } from '../../../api/common';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
+import { RuleUrlParamKey } from '../../Rule/useRuleFilterForm';
 
 export const RuleTemplateListTableColumnFactory = (
   deleteTemplate: (name: string) => void,
@@ -22,6 +23,17 @@ export const RuleTemplateListTableColumnFactory = (
     {
       dataIndex: 'rule_template_name',
       title: () => i18n.t('ruleTemplate.ruleTemplateList.table.templateName'),
+      render(name: string) {
+        if (!name) {
+          return '';
+        }
+
+        return (
+          <Link to={`/rule?${RuleUrlParamKey.ruleTemplateName}=${name}`}>
+            {name}
+          </Link>
+        );
+      },
     },
     {
       dataIndex: 'desc',
