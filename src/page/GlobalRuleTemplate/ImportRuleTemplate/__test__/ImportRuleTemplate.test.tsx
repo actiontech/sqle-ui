@@ -90,14 +90,20 @@ describe('test GlobalRuleTemplate/ImportRuleTemplate', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
+    expect(
+      screen.queryByText('ruleTemplate.importRuleTemplate.importingFile')
+    ).toBeInTheDocument();
     expect(importProjectRuleTemplateSpy).toBeCalledTimes(1);
     expect(importProjectRuleTemplateSpy).toBeCalledWith({
-      rule_template_file: [sqlFile],
+      rule_template_file: sqlFile,
     });
 
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    expect(
+      screen.queryByText('ruleTemplate.importRuleTemplate.importingFile')
+    ).not.toBeInTheDocument();
     expect(getAllRulesSpy).toBeCalledTimes(1);
     expect(getAllRulesSpy).toBeCalledWith({
       filter_db_type: parseFileData.db_type,
@@ -109,6 +115,9 @@ describe('test GlobalRuleTemplate/ImportRuleTemplate', () => {
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName')
     ).toHaveValue(parseFileData.name);
+    expect(
+      screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName')
+    ).not.toBeDisabled();
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateDesc')
     ).toHaveValue(parseFileData.desc);

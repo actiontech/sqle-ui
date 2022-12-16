@@ -106,9 +106,14 @@ const RuleTemplateList = () => {
       0
     );
     ruleTemplate
-      .exportRuleTemplateV1({
-        rule_template_name: templateName,
-      })
+      .exportRuleTemplateV1(
+        {
+          rule_template_name: templateName,
+        },
+        {
+          responseType: 'blob',
+        }
+      )
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           message.success(
