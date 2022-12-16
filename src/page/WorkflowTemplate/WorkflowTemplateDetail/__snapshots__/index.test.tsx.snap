@@ -53,6 +53,7 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 1`] = `
           >
             <div
               class="ant-steps-item ant-steps-item-process ant-steps-item-active"
+              style="margin-bottom: 10px;"
             >
               <div
                 class="ant-steps-item-container"
@@ -111,10 +112,35 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 1`] = `
                   >
                     workflowTemplate.progressConfig.exec.title
                     <div
-                      class="ant-steps-item-subtitle"
-                      title="workflowTemplate.progressConfig.exec.subTitle"
+                      class="ant-space ant-space-horizontal ant-space-align-center"
                     >
-                      workflowTemplate.progressConfig.exec.subTitle
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span
+                          aria-label="info-circle"
+                          class="anticon anticon-info-circle text-orange"
+                          role="img"
+                          style="font-size: 14px; margin-left: 6px;"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="info-circle"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                            />
+                            <path
+                              d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
                     </div>
                   </div>
                   <div
@@ -125,12 +151,12 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 1`] = `
                     >
                       <div
                         class="ant-space-item"
-                        style="margin-bottom: 24px;"
+                        style="margin-bottom: 0px;"
                       >
                         <span>
                           workflowTemplate.form.label.execUser
                            : 
-                          
+                          --
                         </span>
                       </div>
                       <div
@@ -212,6 +238,7 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 2`] = `
           >
             <div
               class="ant-steps-item ant-steps-item-process ant-steps-item-active"
+              style="margin-bottom: 10px;"
             >
               <div
                 class="ant-steps-item-container"
@@ -246,6 +273,7 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 2`] = `
             </div>
             <div
               class="ant-steps-item ant-steps-item-process"
+              style="margin-bottom: 10px;"
             >
               <div
                 class="ant-steps-item-container"
@@ -270,10 +298,35 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 2`] = `
                   >
                     workflowTemplate.progressConfig.review.title
                     <div
-                      class="ant-steps-item-subtitle"
-                      title="workflowTemplate.progressConfig.review.subTitle"
+                      class="ant-space ant-space-horizontal ant-space-align-center"
                     >
-                      workflowTemplate.progressConfig.review.subTitle
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span
+                          aria-label="info-circle"
+                          class="anticon anticon-info-circle text-orange"
+                          role="img"
+                          style="font-size: 14px; margin-left: 6px;"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="info-circle"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                            />
+                            <path
+                              d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
                     </div>
                   </div>
                   <div
@@ -284,7 +337,7 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 2`] = `
                     >
                       <div
                         class="ant-space-item"
-                        style="margin-bottom: 24px;"
+                        style="margin-bottom: 0px;"
                       >
                         <span>
                           workflowTemplate.form.label.reviewUser
@@ -312,6 +365,7 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 2`] = `
             </div>
             <div
               class="ant-steps-item ant-steps-item-process"
+              style="margin-bottom: 10px;"
             >
               <div
                 class="ant-steps-item-container"
@@ -336,10 +390,35 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 2`] = `
                   >
                     workflowTemplate.progressConfig.review.title
                     <div
-                      class="ant-steps-item-subtitle"
-                      title="workflowTemplate.progressConfig.review.subTitle"
+                      class="ant-space ant-space-horizontal ant-space-align-center"
                     >
-                      workflowTemplate.progressConfig.review.subTitle
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span
+                          aria-label="info-circle"
+                          class="anticon anticon-info-circle text-orange"
+                          role="img"
+                          style="font-size: 14px; margin-left: 6px;"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="info-circle"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                            />
+                            <path
+                              d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
                     </div>
                   </div>
                   <div
@@ -350,7 +429,7 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 2`] = `
                     >
                       <div
                         class="ant-space-item"
-                        style="margin-bottom: 24px;"
+                        style="margin-bottom: 0px;"
                       >
                         <span>
                           workflowTemplate.form.label.reviewUser
@@ -402,10 +481,35 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 2`] = `
                   >
                     workflowTemplate.progressConfig.exec.title
                     <div
-                      class="ant-steps-item-subtitle"
-                      title="workflowTemplate.progressConfig.exec.subTitle"
+                      class="ant-space ant-space-horizontal ant-space-align-center"
                     >
-                      workflowTemplate.progressConfig.exec.subTitle
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span
+                          aria-label="info-circle"
+                          class="anticon anticon-info-circle text-orange"
+                          role="img"
+                          style="font-size: 14px; margin-left: 6px;"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="info-circle"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                            />
+                            <path
+                              d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
                     </div>
                   </div>
                   <div
@@ -416,12 +520,381 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 2`] = `
                     >
                       <div
                         class="ant-space-item"
-                        style="margin-bottom: 24px;"
+                        style="margin-bottom: 0px;"
                       >
                         <span>
                           workflowTemplate.form.label.execUser
                            : 
                           admin
+                        </span>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span>
+                          <span
+                            class="text-black"
+                          >
+                            workflowTemplate.form.label.reviewDesc
+                             : 
+                          </span>
+                          3
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`WorkflowTemplate/WorkflowTemplateDetail should render match text when choosing to match All privileged users 1`] = `
+<div>
+  <div
+    class="ant-card ant-card-bordered"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          workflowTemplate.detail.title.wrapper
+        </div>
+        <div
+          class="ant-card-extra"
+        >
+          <a
+            href="/project/default/progress/update/db1"
+          >
+            <button
+              class="ant-btn ant-btn-primary"
+              type="button"
+            >
+              <span>
+                workflowTemplate.detail.updateTemplate
+              </span>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="ant-row"
+      >
+        <div
+          class="ant-col ant-col-24"
+        >
+          <h5
+            class="ant-typography"
+          >
+            workflowTemplate.detail.title.step
+          </h5>
+          <div
+            class="ant-steps ant-steps-vertical"
+          >
+            <div
+              class="ant-steps-item ant-steps-item-process ant-steps-item-active"
+              style="margin-bottom: 10px;"
+            >
+              <div
+                class="ant-steps-item-container"
+              >
+                <div
+                  class="ant-steps-item-tail"
+                />
+                <div
+                  class="ant-steps-item-icon"
+                >
+                  <span
+                    class="ant-steps-icon"
+                  >
+                    1
+                  </span>
+                </div>
+                <div
+                  class="ant-steps-item-content"
+                >
+                  <div
+                    class="ant-steps-item-title"
+                  >
+                    workflowTemplate.progressConfig.createStep.title
+                  </div>
+                  <div
+                    class="ant-steps-item-description"
+                  >
+                    workflowTemplate.progressConfig.createStep.desc
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-steps-item ant-steps-item-process"
+              style="margin-bottom: 10px;"
+            >
+              <div
+                class="ant-steps-item-container"
+              >
+                <div
+                  class="ant-steps-item-tail"
+                />
+                <div
+                  class="ant-steps-item-icon"
+                >
+                  <span
+                    class="ant-steps-icon"
+                  >
+                    2
+                  </span>
+                </div>
+                <div
+                  class="ant-steps-item-content"
+                >
+                  <div
+                    class="ant-steps-item-title"
+                  >
+                    workflowTemplate.progressConfig.review.title
+                    <div
+                      class="ant-space ant-space-horizontal ant-space-align-center"
+                    >
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span
+                          aria-label="info-circle"
+                          class="anticon anticon-info-circle text-orange"
+                          role="img"
+                          style="font-size: 14px; margin-left: 6px;"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="info-circle"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                            />
+                            <path
+                              d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="ant-steps-item-description"
+                  >
+                    <div
+                      class="ant-space ant-space-vertical full-width-element"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-bottom: 0px;"
+                      >
+                        <span>
+                          workflowTemplate.form.label.reviewUser
+                           : 
+                          admin
+                        </span>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span>
+                          <span
+                            class="text-black"
+                          >
+                            workflowTemplate.form.label.reviewDesc
+                             : 
+                          </span>
+                          1
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-steps-item ant-steps-item-process"
+              style="margin-bottom: 10px;"
+            >
+              <div
+                class="ant-steps-item-container"
+              >
+                <div
+                  class="ant-steps-item-tail"
+                />
+                <div
+                  class="ant-steps-item-icon"
+                >
+                  <span
+                    class="ant-steps-icon"
+                  >
+                    3
+                  </span>
+                </div>
+                <div
+                  class="ant-steps-item-content"
+                >
+                  <div
+                    class="ant-steps-item-title"
+                  >
+                    workflowTemplate.progressConfig.review.title
+                    <div
+                      class="ant-space ant-space-horizontal ant-space-align-center"
+                    >
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span
+                          aria-label="info-circle"
+                          class="anticon anticon-info-circle text-orange"
+                          role="img"
+                          style="font-size: 14px; margin-left: 6px;"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="info-circle"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                            />
+                            <path
+                              d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="ant-steps-item-description"
+                  >
+                    <div
+                      class="ant-space ant-space-vertical full-width-element"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-bottom: 0px;"
+                      >
+                        <span>
+                          workflowTemplate.form.label.reviewUser
+                           : 
+                          workflowTemplate.progressConfig.review.reviewUserType.matchAudit
+                        </span>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span>
+                          <span
+                            class="text-black"
+                          >
+                            workflowTemplate.form.label.reviewDesc
+                             : 
+                          </span>
+                          2
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-steps-item ant-steps-item-process"
+            >
+              <div
+                class="ant-steps-item-container"
+              >
+                <div
+                  class="ant-steps-item-tail"
+                />
+                <div
+                  class="ant-steps-item-icon"
+                >
+                  <span
+                    class="ant-steps-icon"
+                  >
+                    4
+                  </span>
+                </div>
+                <div
+                  class="ant-steps-item-content"
+                >
+                  <div
+                    class="ant-steps-item-title"
+                  >
+                    workflowTemplate.progressConfig.exec.title
+                    <div
+                      class="ant-space ant-space-horizontal ant-space-align-center"
+                    >
+                      <div
+                        class="ant-space-item"
+                      >
+                        <span
+                          aria-label="info-circle"
+                          class="anticon anticon-info-circle text-orange"
+                          role="img"
+                          style="font-size: 14px; margin-left: 6px;"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="info-circle"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                            />
+                            <path
+                              d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="ant-steps-item-description"
+                  >
+                    <div
+                      class="ant-space ant-space-vertical full-width-element"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-bottom: 0px;"
+                      >
+                        <span>
+                          workflowTemplate.form.label.execUser
+                           : 
+                          workflowTemplate.progressConfig.exec.executeUserType.matchExecute
                         </span>
                       </div>
                       <div

@@ -13,6 +13,7 @@ import {
   mockGetGlobalTemplateRules,
   mockGetProjectTemplateRules,
 } from './utils';
+import route from 'react-router';
 
 const clickSelectOption = async (id: string, value: string) => {
   fireEvent.mouseDown(getBySelector('input', screen.getByTestId(id)));
@@ -38,6 +39,12 @@ describe('test Rule', () => {
     getProjectRuleTemplateSpy = mockGetProjectTemplateRules();
     getRuleTemplateSpy = mockGetGlobalTemplateRules();
     getRuleListSpy = mockGetAllRules();
+    jest.spyOn(route, 'useLocation').mockReturnValue({
+      pathname: '/rule',
+      hash: '',
+      search: '',
+      state: '',
+    });
 
     jest.useFakeTimers();
   });

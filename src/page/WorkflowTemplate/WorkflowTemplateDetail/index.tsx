@@ -44,7 +44,9 @@ const WorkflowTemplateDetail = () => {
   const renderReviewUser = (progressItem: IWorkFlowStepTemplateResV1) => {
     if (progressItem.assignee_user_name_list?.length === 0) {
       if (progressItem.approved_by_authorized) {
-        return t('workflowTemplate.progressConfig.review.reviewUserType.match');
+        return t(
+          'workflowTemplate.progressConfig.review.reviewUserType.matchAudit'
+        );
       }
       return '--';
     }
@@ -54,7 +56,14 @@ const WorkflowTemplateDetail = () => {
 
   const renderExecuteUser = (execSteps: IWorkFlowStepTemplateResV1) => {
     if (execSteps.assignee_user_name_list?.length === 0) {
+      if (execSteps.execute_by_authorized) {
+        return t(
+          'workflowTemplate.progressConfig.exec.executeUserType.matchExecute'
+        );
+      }
+      return '--';
     }
+    return execSteps.assignee_user_name_list?.join(',') ?? '--';
   };
 
   useEffect(() => {
@@ -157,7 +166,7 @@ const WorkflowTemplateDetail = () => {
                   <span>
                     {t('workflowTemplate.form.label.execUser')}
                     {' : '}
-                    {execSteps.assignee_user_name_list?.join(',') ?? '--'}
+                    {renderExecuteUser(execSteps)}
                   </span>
                   <span>
                     <span className="text-black">

@@ -1,4 +1,6 @@
-export const dataSourceList = [
+import { IInstanceResV2 } from '../../../api/common';
+
+export const dataSourceList: IInstanceResV2[] = [
   {
     instance_name: 'db1',
     db_host: '20.20.20.2',
@@ -6,7 +8,7 @@ export const dataSourceList = [
     db_user: 'root',
     db_type: 'mysql',
     desc: '',
-    workflow_template_name: 'default',
+    rule_template: { is_global_rule_template: true, name: 'default' },
     maintenance_times: [
       {
         maintenance_start_time: {
@@ -29,6 +31,16 @@ export const dataSourceList = [
         },
       },
     ],
+  },
+  {
+    instance_name: 'db2',
+    db_host: '20.20.20.1',
+    db_port: '3306',
+    db_user: 'root',
+    db_type: 'mysql',
+    desc: '',
+    rule_template: { is_global_rule_template: false, name: 'test' },
+    maintenance_times: [],
   },
 ];
 

@@ -9,14 +9,8 @@ exports[`test Member should match snapshot 1`] = `
   <section
     className="padding-content"
   >
-    <Space
-      className="full-width-element"
-      direction="vertical"
-      size="large"
-    >
-      <MemberList />
-      <UserGroupList />
-    </Space>
+    <MemberList />
+    <UserGroupList />
   </section>
   <MemberModal />
 </article>

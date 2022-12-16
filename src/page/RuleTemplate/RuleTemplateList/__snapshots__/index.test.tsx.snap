@@ -55,11 +55,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 1`] = `
         </div>
         <div
           class="ant-card-extra"
-        >
-          <a
-            href="/rule/template/create"
-          />
-        </div>
+        />
       </div>
     </div>
     <div
@@ -512,11 +508,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
         </div>
         <div
           class="ant-card-extra"
-        >
-          <a
-            href="/rule/template/create"
-          />
-        </div>
+        />
       </div>
     </div>
     <div

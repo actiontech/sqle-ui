@@ -4,7 +4,10 @@ import { useLocation, useParams } from 'react-router-dom';
 import PlanList from '.';
 import audit_plan from '../../../api/audit_plan';
 import { selectOptionByIndex } from '../../../testUtils/customQuery';
-import { renderWithRouter } from '../../../testUtils/customRender';
+import {
+  renderWithRouter,
+  renderWithServerRouter,
+} from '../../../testUtils/customRender';
 import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
 import {
   mockDriver,
@@ -14,6 +17,7 @@ import {
 } from '../../../testUtils/mockRequest';
 import { mockUseStyle } from '../../../testUtils/mockStyle';
 import { AuditPlanList } from './__testData__';
+import { createMemoryHistory } from 'history';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -79,7 +83,7 @@ describe('PlanList', () => {
   });
 
   const mockGetAuditPlan = () => {
-    const spy = jest.spyOn(audit_plan, 'getAuditPlansV1');
+    const spy = jest.spyOn(audit_plan, 'getAuditPlansV2');
     spy.mockImplementation(() => resolveThreeSecond(AuditPlanList));
     return spy;
   };
@@ -173,7 +177,10 @@ describe('PlanList', () => {
         audit_plan_db_type: 'mysql',
         audit_plan_instance_database: 'sqle',
         audit_plan_instance_name: 'db1',
-        rule_template_name: 'rule_template_name1',
+        rule_template: {
+          is_global_rule_template: true,
+          name: 'rule_template_name1',
+        },
         audit_plan_meta: {
           audit_plan_params: [],
           audit_plan_type: 'audit_for_java_app',
@@ -279,5 +286,24 @@ describe('PlanList', () => {
       page_size: 10,
       filter_audit_plan_type: 'ali_rds_mysql_slow_log',
     });
+  });
+
+  test('should render rule link when rule template name is not empty', async () => {
+    let history = createMemoryHistory();
+    renderWithServerRouter(<PlanList />, undefined, { history });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.click(screen.getByText(AuditPlanList[0].rule_template?.name!));
+    expect(history.location.pathname).toBe('/rule');
+    expect(history.location.search).toBe(
+      '?ruleTemplateName=rule_template_name1'
+    );
+
+    fireEvent.click(screen.getByText(AuditPlanList[1].rule_template?.name!));
+    expect(history.location.pathname).toBe('/rule');
+    expect(history.location.search).toBe(
+      '?projectName=default&ruleTemplateName=rule_template_name2'
+    );
   });
 });

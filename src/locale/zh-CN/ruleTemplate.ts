@@ -3,7 +3,7 @@ export default {
   pageTitle: '审核规则模版',
   pageDescribe: 'SQL审核会应用数据源绑定的规则模板',
 
-  ruleTemplateListTitle: '规则模版列表',
+  ruleTemplateListTitle: '项目规则模版列表',
   globalRuleTemplateListTitle: '公共规则模板列表',
 
   backToList: '返回审核规则模版列表',

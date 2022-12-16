@@ -12,11 +12,15 @@ import rule_template from '../../../api/rule_template';
 import { SystemRole } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
-import { renderWithRouter } from '../../../testUtils/customRender';
+import {
+  renderWithRouter,
+  renderWithServerRouter,
+} from '../../../testUtils/customRender';
 import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 import { ruleTemplateListData } from '../__testData__';
+import { createMemoryHistory } from 'history';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -300,5 +304,20 @@ describe('RuleTemplate/RuleTemplateList', () => {
     expect(
       screen.queryByText('ruleTemplate.createRuleTemplate.button')
     ).not.toBeInTheDocument();
+  });
+
+  test('should render rule link when rule template name is not empty', async () => {
+    let history = createMemoryHistory();
+    renderWithServerRouter(<RuleTemplateList />, undefined, { history });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.click(
+      screen.getByText(ruleTemplateListData[0].rule_template_name!)
+    );
+    expect(history.location.pathname).toBe('/rule');
+    expect(history.location.search).toBe(
+      '?projectName=default&ruleTemplateName=default_mysql'
+    );
   });
 });

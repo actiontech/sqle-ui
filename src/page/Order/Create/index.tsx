@@ -256,7 +256,7 @@ const CreateOrder = () => {
                       disabled={isDisableFinallySubmitButton}
                       loading={createLoading}
                     >
-                      {t('order.createOrder.title')}
+                      {t('order.createOrder.button')}
                     </Button>
                   </Tooltip>
                 }
@@ -282,7 +282,7 @@ const CreateOrder = () => {
                       loading={createLoading}
                       disabled={isDisableFinallySubmitButton}
                     >
-                      {t('order.createOrder.title')}
+                      {t('order.createOrder.button')}
                     </Button>
                   </Tooltip>
                 </Popconfirm>

@@ -1141,7 +1141,11 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          rule_template_name1
+                          <a
+                            href="/rule?ruleTemplateName=rule_template_name1"
+                          >
+                            rule_template_name1
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1296,7 +1300,11 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          rule_template_name2
+                          <a
+                            href="/rule?projectName=default&ruleTemplateName=rule_template_name2"
+                          >
+                            rule_template_name2
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1451,7 +1459,11 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          rule_template_name3
+                          <a
+                            href="/rule?ruleTemplateName=rule_template_name3"
+                          >
+                            rule_template_name3
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1606,7 +1618,11 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          rule_template_name4
+                          <a
+                            href="/rule?ruleTemplateName=rule_template_name4"
+                          >
+                            rule_template_name4
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1761,7 +1777,11 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          rule_template_name5
+                          <a
+                            href="/rule?ruleTemplateName=rule_template_name5"
+                          >
+                            rule_template_name5
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1914,7 +1934,11 @@ exports[`PlanList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          rule_template_name6
+                          <a
+                            href="/rule?ruleTemplateName=rule_template_name6"
+                          >
+                            rule_template_name6
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -2066,7 +2090,9 @@ exports[`PlanList should match snapshot 2`] = `
                         </td>
                         <td
                           class="ant-table-cell"
-                        />
+                        >
+                          
+                        </td>
                         <td
                           class="ant-table-cell"
                         >
@@ -2217,7 +2243,9 @@ exports[`PlanList should match snapshot 2`] = `
                         </td>
                         <td
                           class="ant-table-cell"
-                        />
+                        >
+                          
+                        </td>
                         <td
                           class="ant-table-cell"
                         >
@@ -2368,7 +2396,9 @@ exports[`PlanList should match snapshot 2`] = `
                         </td>
                         <td
                           class="ant-table-cell"
-                        />
+                        >
+                          
+                        </td>
                         <td
                           class="ant-table-cell"
                         >
@@ -2519,7 +2549,9 @@ exports[`PlanList should match snapshot 2`] = `
                         </td>
                         <td
                           class="ant-table-cell"
-                        />
+                        >
+                          
+                        </td>
                         <td
                           class="ant-table-cell"
                         >
@@ -3335,7 +3367,11 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          rule_template_name1
+                          <a
+                            href="/rule?ruleTemplateName=rule_template_name1"
+                          >
+                            rule_template_name1
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -3490,7 +3526,11 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          rule_template_name2
+                          <a
+                            href="/rule?projectName=default&ruleTemplateName=rule_template_name2"
+                          >
+                            rule_template_name2
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -3645,7 +3685,11 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          rule_template_name3
+                          <a
+                            href="/rule?ruleTemplateName=rule_template_name3"
+                          >
+                            rule_template_name3
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -3800,7 +3844,11 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          rule_template_name4
+                          <a
+                            href="/rule?ruleTemplateName=rule_template_name4"
+                          >
+                            rule_template_name4
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -3955,7 +4003,11 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          rule_template_name5
+                          <a
+                            href="/rule?ruleTemplateName=rule_template_name5"
+                          >
+                            rule_template_name5
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -4108,7 +4160,11 @@ exports[`PlanList should match snapshot 3`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          rule_template_name6
+                          <a
+                            href="/rule?ruleTemplateName=rule_template_name6"
+                          >
+                            rule_template_name6
+                          </a>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -4260,7 +4316,9 @@ exports[`PlanList should match snapshot 3`] = `
                         </td>
                         <td
                           class="ant-table-cell"
-                        />
+                        >
+                          
+                        </td>
                         <td
                           class="ant-table-cell"
                         >
@@ -4411,7 +4469,9 @@ exports[`PlanList should match snapshot 3`] = `
                         </td>
                         <td
                           class="ant-table-cell"
-                        />
+                        >
+                          
+                        </td>
                         <td
                           class="ant-table-cell"
                         >
@@ -4562,7 +4622,9 @@ exports[`PlanList should match snapshot 3`] = `
                         </td>
                         <td
                           class="ant-table-cell"
-                        />
+                        >
+                          
+                        </td>
                         <td
                           class="ant-table-cell"
                         >
@@ -4713,7 +4775,9 @@ exports[`PlanList should match snapshot 3`] = `
                         </td>
                         <td
                           class="ant-table-cell"
-                        />
+                        >
+                          
+                        </td>
                         <td
                           class="ant-table-cell"
                         >
