@@ -389,6 +389,67 @@ exports[`WorkflowTemplateForm should match snapshot 1`] = `
                                     class="ant-row"
                                   >
                                     <div
+                                      class="ant-col ant-col-5 text-black"
+                                    >
+                                      workflowTemplate.form.label.execUserType
+                                    </div>
+                                    <div
+                                      class="ant-col ant-col-18"
+                                    >
+                                      <div
+                                        class="ant-radio-group ant-radio-group-outline"
+                                      >
+                                        <label
+                                          class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                        >
+                                          <span
+                                            class="ant-radio ant-radio-checked"
+                                          >
+                                            <input
+                                              checked=""
+                                              class="ant-radio-input"
+                                              type="radio"
+                                              value="specify"
+                                            />
+                                            <span
+                                              class="ant-radio-inner"
+                                            />
+                                          </span>
+                                          <span>
+                                            workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                          </span>
+                                        </label>
+                                        <label
+                                          class="ant-radio-wrapper"
+                                        >
+                                          <span
+                                            class="ant-radio"
+                                          >
+                                            <input
+                                              class="ant-radio-input"
+                                              type="radio"
+                                              value="matchExecute"
+                                            />
+                                            <span
+                                              class="ant-radio-inner"
+                                            />
+                                          </span>
+                                          <span>
+                                            workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                          </span>
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                  style="margin-bottom: 24px;"
+                                >
+                                  <div
+                                    class="ant-row"
+                                  >
+                                    <div
                                       class="ant-col ant-col-5"
                                     >
                                       workflowTemplate.form.label.execUser

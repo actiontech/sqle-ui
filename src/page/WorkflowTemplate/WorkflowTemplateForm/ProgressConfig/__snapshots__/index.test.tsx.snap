@@ -131,7 +131,7 @@ exports[`progressConfig should match snapshot with default data 1`] = `
                                       />
                                     </span>
                                     <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.specify
+                                      workflowTemplate.progressConfig.review.reviewUserType.specifyAudit
                                     </span>
                                   </label>
                                   <label
@@ -151,25 +151,6 @@ exports[`progressConfig should match snapshot with default data 1`] = `
                                     </span>
                                     <span>
                                       workflowTemplate.progressConfig.review.reviewUserType.matchAudit
-                                    </span>
-                                  </label>
-                                  <label
-                                    class="ant-radio-wrapper"
-                                  >
-                                    <span
-                                      class="ant-radio"
-                                    >
-                                      <input
-                                        class="ant-radio-input"
-                                        type="radio"
-                                        value="matchExecute"
-                                      />
-                                      <span
-                                        class="ant-radio-inner"
-                                      />
-                                    </span>
-                                    <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                     </span>
                                   </label>
                                 </div>
@@ -461,7 +442,7 @@ exports[`progressConfig should match snapshot with default data 1`] = `
                                       />
                                     </span>
                                     <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.specify
+                                      workflowTemplate.progressConfig.review.reviewUserType.specifyAudit
                                     </span>
                                   </label>
                                   <label
@@ -482,25 +463,6 @@ exports[`progressConfig should match snapshot with default data 1`] = `
                                     </span>
                                     <span>
                                       workflowTemplate.progressConfig.review.reviewUserType.matchAudit
-                                    </span>
-                                  </label>
-                                  <label
-                                    class="ant-radio-wrapper"
-                                  >
-                                    <span
-                                      class="ant-radio"
-                                    >
-                                      <input
-                                        class="ant-radio-input"
-                                        type="radio"
-                                        value="matchExecute"
-                                      />
-                                      <span
-                                        class="ant-radio-inner"
-                                      />
-                                    </span>
-                                    <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                     </span>
                                   </label>
                                 </div>
@@ -734,6 +696,67 @@ exports[`progressConfig should match snapshot with default data 1`] = `
                         <div
                           class="ant-space ant-space-vertical full-width-element"
                         >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 24px;"
+                          >
+                            <div
+                              class="ant-row"
+                            >
+                              <div
+                                class="ant-col ant-col-5 text-black"
+                              >
+                                workflowTemplate.form.label.execUserType
+                              </div>
+                              <div
+                                class="ant-col ant-col-18"
+                              >
+                                <div
+                                  class="ant-radio-group ant-radio-group-outline"
+                                >
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                  >
+                                    <span
+                                      class="ant-radio ant-radio-checked"
+                                    >
+                                      <input
+                                        checked=""
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="specify"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="matchExecute"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                           <div
                             class="ant-space-item"
                             style="margin-bottom: 24px;"
@@ -1101,6 +1124,67 @@ exports[`progressConfig should match snapshot without default data 1`] = `
                         <div
                           class="ant-space ant-space-vertical full-width-element"
                         >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 24px;"
+                          >
+                            <div
+                              class="ant-row"
+                            >
+                              <div
+                                class="ant-col ant-col-5 text-black"
+                              >
+                                workflowTemplate.form.label.execUserType
+                              </div>
+                              <div
+                                class="ant-col ant-col-18"
+                              >
+                                <div
+                                  class="ant-radio-group ant-radio-group-outline"
+                                >
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                  >
+                                    <span
+                                      class="ant-radio ant-radio-checked"
+                                    >
+                                      <input
+                                        checked=""
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="specify"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="matchExecute"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                           <div
                             class="ant-space-item"
                             style="margin-bottom: 24px;"
@@ -1484,7 +1568,7 @@ exports[`progressConfig should move a step and step error index if step which wa
                                       />
                                     </span>
                                     <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.specify
+                                      workflowTemplate.progressConfig.review.reviewUserType.specifyAudit
                                     </span>
                                   </label>
                                   <label
@@ -1504,25 +1588,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                     </span>
                                     <span>
                                       workflowTemplate.progressConfig.review.reviewUserType.matchAudit
-                                    </span>
-                                  </label>
-                                  <label
-                                    class="ant-radio-wrapper"
-                                  >
-                                    <span
-                                      class="ant-radio"
-                                    >
-                                      <input
-                                        class="ant-radio-input"
-                                        type="radio"
-                                        value="matchExecute"
-                                      />
-                                      <span
-                                        class="ant-radio-inner"
-                                      />
-                                    </span>
-                                    <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                     </span>
                                   </label>
                                 </div>
@@ -1799,7 +1864,7 @@ exports[`progressConfig should move a step and step error index if step which wa
                                       />
                                     </span>
                                     <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.specify
+                                      workflowTemplate.progressConfig.review.reviewUserType.specifyAudit
                                     </span>
                                   </label>
                                   <label
@@ -1819,25 +1884,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                     </span>
                                     <span>
                                       workflowTemplate.progressConfig.review.reviewUserType.matchAudit
-                                    </span>
-                                  </label>
-                                  <label
-                                    class="ant-radio-wrapper"
-                                  >
-                                    <span
-                                      class="ant-radio"
-                                    >
-                                      <input
-                                        class="ant-radio-input"
-                                        type="radio"
-                                        value="matchExecute"
-                                      />
-                                      <span
-                                        class="ant-radio-inner"
-                                      />
-                                    </span>
-                                    <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                     </span>
                                   </label>
                                 </div>
@@ -2076,6 +2122,67 @@ exports[`progressConfig should move a step and step error index if step which wa
                         <div
                           class="ant-space ant-space-vertical full-width-element"
                         >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 24px;"
+                          >
+                            <div
+                              class="ant-row"
+                            >
+                              <div
+                                class="ant-col ant-col-5 text-black"
+                              >
+                                workflowTemplate.form.label.execUserType
+                              </div>
+                              <div
+                                class="ant-col ant-col-18"
+                              >
+                                <div
+                                  class="ant-radio-group ant-radio-group-outline"
+                                >
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                  >
+                                    <span
+                                      class="ant-radio ant-radio-checked"
+                                    >
+                                      <input
+                                        checked=""
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="specify"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="matchExecute"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                           <div
                             class="ant-space-item"
                             style="margin-bottom: 24px;"
@@ -2480,7 +2587,7 @@ exports[`progressConfig should move a step and step error index if step which wa
                                       />
                                     </span>
                                     <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.specify
+                                      workflowTemplate.progressConfig.review.reviewUserType.specifyAudit
                                     </span>
                                   </label>
                                   <label
@@ -2500,25 +2607,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                     </span>
                                     <span>
                                       workflowTemplate.progressConfig.review.reviewUserType.matchAudit
-                                    </span>
-                                  </label>
-                                  <label
-                                    class="ant-radio-wrapper"
-                                  >
-                                    <span
-                                      class="ant-radio"
-                                    >
-                                      <input
-                                        class="ant-radio-input"
-                                        type="radio"
-                                        value="matchExecute"
-                                      />
-                                      <span
-                                        class="ant-radio-inner"
-                                      />
-                                    </span>
-                                    <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                     </span>
                                   </label>
                                 </div>
@@ -2793,7 +2881,7 @@ exports[`progressConfig should move a step and step error index if step which wa
                                       />
                                     </span>
                                     <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.specify
+                                      workflowTemplate.progressConfig.review.reviewUserType.specifyAudit
                                     </span>
                                   </label>
                                   <label
@@ -2813,25 +2901,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                     </span>
                                     <span>
                                       workflowTemplate.progressConfig.review.reviewUserType.matchAudit
-                                    </span>
-                                  </label>
-                                  <label
-                                    class="ant-radio-wrapper"
-                                  >
-                                    <span
-                                      class="ant-radio"
-                                    >
-                                      <input
-                                        class="ant-radio-input"
-                                        type="radio"
-                                        value="matchExecute"
-                                      />
-                                      <span
-                                        class="ant-radio-inner"
-                                      />
-                                    </span>
-                                    <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                     </span>
                                   </label>
                                 </div>
@@ -3072,6 +3141,67 @@ exports[`progressConfig should move a step and step error index if step which wa
                         <div
                           class="ant-space ant-space-vertical full-width-element"
                         >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 24px;"
+                          >
+                            <div
+                              class="ant-row"
+                            >
+                              <div
+                                class="ant-col ant-col-5 text-black"
+                              >
+                                workflowTemplate.form.label.execUserType
+                              </div>
+                              <div
+                                class="ant-col ant-col-18"
+                              >
+                                <div
+                                  class="ant-radio-group ant-radio-group-outline"
+                                >
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                  >
+                                    <span
+                                      class="ant-radio ant-radio-checked"
+                                    >
+                                      <input
+                                        checked=""
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="specify"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="matchExecute"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                           <div
                             class="ant-space-item"
                             style="margin-bottom: 24px;"
@@ -3458,7 +3588,7 @@ exports[`progressConfig should move a step and step error index if step which wa
                                       />
                                     </span>
                                     <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.specify
+                                      workflowTemplate.progressConfig.review.reviewUserType.specifyAudit
                                     </span>
                                   </label>
                                   <label
@@ -3478,25 +3608,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                     </span>
                                     <span>
                                       workflowTemplate.progressConfig.review.reviewUserType.matchAudit
-                                    </span>
-                                  </label>
-                                  <label
-                                    class="ant-radio-wrapper"
-                                  >
-                                    <span
-                                      class="ant-radio"
-                                    >
-                                      <input
-                                        class="ant-radio-input"
-                                        type="radio"
-                                        value="matchExecute"
-                                      />
-                                      <span
-                                        class="ant-radio-inner"
-                                      />
-                                    </span>
-                                    <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                     </span>
                                   </label>
                                 </div>
@@ -3772,7 +3883,7 @@ exports[`progressConfig should move a step and step error index if step which wa
                                       />
                                     </span>
                                     <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.specify
+                                      workflowTemplate.progressConfig.review.reviewUserType.specifyAudit
                                     </span>
                                   </label>
                                   <label
@@ -3792,25 +3903,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                     </span>
                                     <span>
                                       workflowTemplate.progressConfig.review.reviewUserType.matchAudit
-                                    </span>
-                                  </label>
-                                  <label
-                                    class="ant-radio-wrapper"
-                                  >
-                                    <span
-                                      class="ant-radio"
-                                    >
-                                      <input
-                                        class="ant-radio-input"
-                                        type="radio"
-                                        value="matchExecute"
-                                      />
-                                      <span
-                                        class="ant-radio-inner"
-                                      />
-                                    </span>
-                                    <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                     </span>
                                   </label>
                                 </div>
@@ -4068,6 +4160,67 @@ exports[`progressConfig should move a step and step error index if step which wa
                         <div
                           class="ant-space ant-space-vertical full-width-element"
                         >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 24px;"
+                          >
+                            <div
+                              class="ant-row"
+                            >
+                              <div
+                                class="ant-col ant-col-5 text-black"
+                              >
+                                workflowTemplate.form.label.execUserType
+                              </div>
+                              <div
+                                class="ant-col ant-col-18"
+                              >
+                                <div
+                                  class="ant-radio-group ant-radio-group-outline"
+                                >
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                  >
+                                    <span
+                                      class="ant-radio ant-radio-checked"
+                                    >
+                                      <input
+                                        checked=""
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="specify"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="matchExecute"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                           <div
                             class="ant-space-item"
                             style="margin-bottom: 24px;"
@@ -4472,7 +4625,7 @@ exports[`progressConfig should remove step and remove error step index if step w
                                       />
                                     </span>
                                     <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.specify
+                                      workflowTemplate.progressConfig.review.reviewUserType.specifyAudit
                                     </span>
                                   </label>
                                   <label
@@ -4492,25 +4645,6 @@ exports[`progressConfig should remove step and remove error step index if step w
                                     </span>
                                     <span>
                                       workflowTemplate.progressConfig.review.reviewUserType.matchAudit
-                                    </span>
-                                  </label>
-                                  <label
-                                    class="ant-radio-wrapper"
-                                  >
-                                    <span
-                                      class="ant-radio"
-                                    >
-                                      <input
-                                        class="ant-radio-input"
-                                        type="radio"
-                                        value="matchExecute"
-                                      />
-                                      <span
-                                        class="ant-radio-inner"
-                                      />
-                                    </span>
-                                    <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                     </span>
                                   </label>
                                 </div>
@@ -4785,7 +4919,7 @@ exports[`progressConfig should remove step and remove error step index if step w
                                       />
                                     </span>
                                     <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.specify
+                                      workflowTemplate.progressConfig.review.reviewUserType.specifyAudit
                                     </span>
                                   </label>
                                   <label
@@ -4805,25 +4939,6 @@ exports[`progressConfig should remove step and remove error step index if step w
                                     </span>
                                     <span>
                                       workflowTemplate.progressConfig.review.reviewUserType.matchAudit
-                                    </span>
-                                  </label>
-                                  <label
-                                    class="ant-radio-wrapper"
-                                  >
-                                    <span
-                                      class="ant-radio"
-                                    >
-                                      <input
-                                        class="ant-radio-input"
-                                        type="radio"
-                                        value="matchExecute"
-                                      />
-                                      <span
-                                        class="ant-radio-inner"
-                                      />
-                                    </span>
-                                    <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                     </span>
                                   </label>
                                 </div>
@@ -5062,6 +5177,67 @@ exports[`progressConfig should remove step and remove error step index if step w
                         <div
                           class="ant-space ant-space-vertical full-width-element"
                         >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 24px;"
+                          >
+                            <div
+                              class="ant-row"
+                            >
+                              <div
+                                class="ant-col ant-col-5 text-black"
+                              >
+                                workflowTemplate.form.label.execUserType
+                              </div>
+                              <div
+                                class="ant-col ant-col-18"
+                              >
+                                <div
+                                  class="ant-radio-group ant-radio-group-outline"
+                                >
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                  >
+                                    <span
+                                      class="ant-radio ant-radio-checked"
+                                    >
+                                      <input
+                                        checked=""
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="specify"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="matchExecute"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                           <div
                             class="ant-space-item"
                             style="margin-bottom: 24px;"
@@ -5448,7 +5624,7 @@ exports[`progressConfig should remove step and remove error step index if step w
                                       />
                                     </span>
                                     <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.specify
+                                      workflowTemplate.progressConfig.review.reviewUserType.specifyAudit
                                     </span>
                                   </label>
                                   <label
@@ -5468,25 +5644,6 @@ exports[`progressConfig should remove step and remove error step index if step w
                                     </span>
                                     <span>
                                       workflowTemplate.progressConfig.review.reviewUserType.matchAudit
-                                    </span>
-                                  </label>
-                                  <label
-                                    class="ant-radio-wrapper"
-                                  >
-                                    <span
-                                      class="ant-radio"
-                                    >
-                                      <input
-                                        class="ant-radio-input"
-                                        type="radio"
-                                        value="matchExecute"
-                                      />
-                                      <span
-                                        class="ant-radio-inner"
-                                      />
-                                    </span>
-                                    <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                     </span>
                                   </label>
                                 </div>
@@ -5735,6 +5892,67 @@ exports[`progressConfig should remove step and remove error step index if step w
                               class="ant-row"
                             >
                               <div
+                                class="ant-col ant-col-5 text-black"
+                              >
+                                workflowTemplate.form.label.execUserType
+                              </div>
+                              <div
+                                class="ant-col ant-col-18"
+                              >
+                                <div
+                                  class="ant-radio-group ant-radio-group-outline"
+                                >
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                  >
+                                    <span
+                                      class="ant-radio ant-radio-checked"
+                                    >
+                                      <input
+                                        checked=""
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="specify"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="matchExecute"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 24px;"
+                          >
+                            <div
+                              class="ant-row"
+                            >
+                              <div
                                 class="ant-col ant-col-5"
                               >
                                 workflowTemplate.form.label.execUser
@@ -5821,7 +6039,6 @@ exports[`progressConfig should remove step and remove error step index if step w
                           </div>
                           <div
                             class="ant-space-item"
-                            style="margin-bottom: 24px;"
                           >
                             <div
                               class="ant-alert ant-alert-error ant-alert-no-icon"
@@ -6132,7 +6349,7 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                       />
                                     </span>
                                     <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.specify
+                                      workflowTemplate.progressConfig.review.reviewUserType.specifyAudit
                                     </span>
                                   </label>
                                   <label
@@ -6152,25 +6369,6 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                     </span>
                                     <span>
                                       workflowTemplate.progressConfig.review.reviewUserType.matchAudit
-                                    </span>
-                                  </label>
-                                  <label
-                                    class="ant-radio-wrapper"
-                                  >
-                                    <span
-                                      class="ant-radio"
-                                    >
-                                      <input
-                                        class="ant-radio-input"
-                                        type="radio"
-                                        value="matchExecute"
-                                      />
-                                      <span
-                                        class="ant-radio-inner"
-                                      />
-                                    </span>
-                                    <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                     </span>
                                   </label>
                                 </div>
@@ -6465,7 +6663,7 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                       />
                                     </span>
                                     <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.specify
+                                      workflowTemplate.progressConfig.review.reviewUserType.specifyAudit
                                     </span>
                                   </label>
                                   <label
@@ -6485,25 +6683,6 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                     </span>
                                     <span>
                                       workflowTemplate.progressConfig.review.reviewUserType.matchAudit
-                                    </span>
-                                  </label>
-                                  <label
-                                    class="ant-radio-wrapper"
-                                  >
-                                    <span
-                                      class="ant-radio"
-                                    >
-                                      <input
-                                        class="ant-radio-input"
-                                        type="radio"
-                                        value="matchExecute"
-                                      />
-                                      <span
-                                        class="ant-radio-inner"
-                                      />
-                                    </span>
-                                    <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                     </span>
                                   </label>
                                 </div>
@@ -6794,7 +6973,7 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                       />
                                     </span>
                                     <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.specify
+                                      workflowTemplate.progressConfig.review.reviewUserType.specifyAudit
                                     </span>
                                   </label>
                                   <label
@@ -6814,25 +6993,6 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                     </span>
                                     <span>
                                       workflowTemplate.progressConfig.review.reviewUserType.matchAudit
-                                    </span>
-                                  </label>
-                                  <label
-                                    class="ant-radio-wrapper"
-                                  >
-                                    <span
-                                      class="ant-radio"
-                                    >
-                                      <input
-                                        class="ant-radio-input"
-                                        type="radio"
-                                        value="matchExecute"
-                                      />
-                                      <span
-                                        class="ant-radio-inner"
-                                      />
-                                    </span>
-                                    <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                     </span>
                                   </label>
                                 </div>
@@ -7090,6 +7250,67 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                         <div
                           class="ant-space ant-space-vertical full-width-element"
                         >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 24px;"
+                          >
+                            <div
+                              class="ant-row"
+                            >
+                              <div
+                                class="ant-col ant-col-5 text-black"
+                              >
+                                workflowTemplate.form.label.execUserType
+                              </div>
+                              <div
+                                class="ant-col ant-col-18"
+                              >
+                                <div
+                                  class="ant-radio-group ant-radio-group-outline"
+                                >
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                  >
+                                    <span
+                                      class="ant-radio ant-radio-checked"
+                                    >
+                                      <input
+                                        checked=""
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="specify"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="matchExecute"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                           <div
                             class="ant-space-item"
                             style="margin-bottom: 24px;"
@@ -7449,6 +7670,67 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                               class="ant-row"
                             >
                               <div
+                                class="ant-col ant-col-5 text-black"
+                              >
+                                workflowTemplate.form.label.execUserType
+                              </div>
+                              <div
+                                class="ant-col ant-col-18"
+                              >
+                                <div
+                                  class="ant-radio-group ant-radio-group-outline"
+                                >
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                  >
+                                    <span
+                                      class="ant-radio ant-radio-checked"
+                                    >
+                                      <input
+                                        checked=""
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="specify"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="matchExecute"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 24px;"
+                          >
+                            <div
+                              class="ant-row"
+                            >
+                              <div
                                 class="ant-col ant-col-5"
                               >
                                 workflowTemplate.form.label.execUser
@@ -7535,7 +7817,6 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                           </div>
                           <div
                             class="ant-space-item"
-                            style="margin-bottom: 24px;"
                           />
                         </div>
                       </div>
@@ -7827,7 +8108,7 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
                                       />
                                     </span>
                                     <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.specify
+                                      workflowTemplate.progressConfig.review.reviewUserType.specifyAudit
                                     </span>
                                   </label>
                                   <label
@@ -7847,25 +8128,6 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
                                     </span>
                                     <span>
                                       workflowTemplate.progressConfig.review.reviewUserType.matchAudit
-                                    </span>
-                                  </label>
-                                  <label
-                                    class="ant-radio-wrapper"
-                                  >
-                                    <span
-                                      class="ant-radio"
-                                    >
-                                      <input
-                                        class="ant-radio-input"
-                                        type="radio"
-                                        value="matchExecute"
-                                      />
-                                      <span
-                                        class="ant-radio-inner"
-                                      />
-                                    </span>
-                                    <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                     </span>
                                   </label>
                                 </div>
@@ -8127,6 +8389,67 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
                         <div
                           class="ant-space ant-space-vertical full-width-element"
                         >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 24px;"
+                          >
+                            <div
+                              class="ant-row"
+                            >
+                              <div
+                                class="ant-col ant-col-5 text-black"
+                              >
+                                workflowTemplate.form.label.execUserType
+                              </div>
+                              <div
+                                class="ant-col ant-col-18"
+                              >
+                                <div
+                                  class="ant-radio-group ant-radio-group-outline"
+                                >
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                  >
+                                    <span
+                                      class="ant-radio ant-radio-checked"
+                                    >
+                                      <input
+                                        checked=""
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="specify"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="matchExecute"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                           <div
                             class="ant-space-item"
                             style="margin-bottom: 24px;"
@@ -8486,6 +8809,67 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
                               class="ant-row"
                             >
                               <div
+                                class="ant-col ant-col-5 text-black"
+                              >
+                                workflowTemplate.form.label.execUserType
+                              </div>
+                              <div
+                                class="ant-col ant-col-18"
+                              >
+                                <div
+                                  class="ant-radio-group ant-radio-group-outline"
+                                >
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                  >
+                                    <span
+                                      class="ant-radio ant-radio-checked"
+                                    >
+                                      <input
+                                        checked=""
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="specify"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="matchExecute"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 24px;"
+                          >
+                            <div
+                              class="ant-row"
+                            >
+                              <div
                                 class="ant-col ant-col-5"
                               >
                                 workflowTemplate.form.label.execUser
@@ -8515,6 +8899,7 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
                                             aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
                                             aria-autocomplete="list"
                                             aria-controls="rc_select_TEST_OR_SSR_list"
+                                            aria-expanded="false"
                                             aria-haspopup="listbox"
                                             aria-owns="rc_select_TEST_OR_SSR_list"
                                             autocomplete="off"
@@ -8572,7 +8957,6 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
                           </div>
                           <div
                             class="ant-space-item"
-                            style="margin-bottom: 24px;"
                           />
                         </div>
                       </div>
@@ -8865,7 +9249,7 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
                                       />
                                     </span>
                                     <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.specify
+                                      workflowTemplate.progressConfig.review.reviewUserType.specifyAudit
                                     </span>
                                   </label>
                                   <label
@@ -8885,25 +9269,6 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
                                     </span>
                                     <span>
                                       workflowTemplate.progressConfig.review.reviewUserType.matchAudit
-                                    </span>
-                                  </label>
-                                  <label
-                                    class="ant-radio-wrapper"
-                                  >
-                                    <span
-                                      class="ant-radio"
-                                    >
-                                      <input
-                                        class="ant-radio-input"
-                                        type="radio"
-                                        value="matchExecute"
-                                      />
-                                      <span
-                                        class="ant-radio-inner"
-                                      />
-                                    </span>
-                                    <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                     </span>
                                   </label>
                                 </div>
@@ -9165,6 +9530,67 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
                         <div
                           class="ant-space ant-space-vertical full-width-element"
                         >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 24px;"
+                          >
+                            <div
+                              class="ant-row"
+                            >
+                              <div
+                                class="ant-col ant-col-5 text-black"
+                              >
+                                workflowTemplate.form.label.execUserType
+                              </div>
+                              <div
+                                class="ant-col ant-col-18"
+                              >
+                                <div
+                                  class="ant-radio-group ant-radio-group-outline"
+                                >
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                  >
+                                    <span
+                                      class="ant-radio ant-radio-checked"
+                                    >
+                                      <input
+                                        checked=""
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="specify"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="matchExecute"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                           <div
                             class="ant-space-item"
                             style="margin-bottom: 24px;"
@@ -9524,6 +9950,67 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
                               class="ant-row"
                             >
                               <div
+                                class="ant-col ant-col-5 text-black"
+                              >
+                                workflowTemplate.form.label.execUserType
+                              </div>
+                              <div
+                                class="ant-col ant-col-18"
+                              >
+                                <div
+                                  class="ant-radio-group ant-radio-group-outline"
+                                >
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                  >
+                                    <span
+                                      class="ant-radio ant-radio-checked"
+                                    >
+                                      <input
+                                        checked=""
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="specify"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="matchExecute"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 24px;"
+                          >
+                            <div
+                              class="ant-row"
+                            >
+                              <div
                                 class="ant-col ant-col-5"
                               >
                                 workflowTemplate.form.label.execUser
@@ -9553,6 +10040,7 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
                                             aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
                                             aria-autocomplete="list"
                                             aria-controls="rc_select_TEST_OR_SSR_list"
+                                            aria-expanded="false"
                                             aria-haspopup="listbox"
                                             aria-owns="rc_select_TEST_OR_SSR_list"
                                             autocomplete="off"
@@ -9610,7 +10098,6 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
                           </div>
                           <div
                             class="ant-space-item"
-                            style="margin-bottom: 24px;"
                           />
                         </div>
                       </div>
@@ -9868,6 +10355,67 @@ exports[`progressConfig should update username and remove error tips if error ex
                         <div
                           class="ant-space ant-space-vertical full-width-element"
                         >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 24px;"
+                          >
+                            <div
+                              class="ant-row"
+                            >
+                              <div
+                                class="ant-col ant-col-5 text-black"
+                              >
+                                workflowTemplate.form.label.execUserType
+                              </div>
+                              <div
+                                class="ant-col ant-col-18"
+                              >
+                                <div
+                                  class="ant-radio-group ant-radio-group-outline"
+                                >
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                  >
+                                    <span
+                                      class="ant-radio ant-radio-checked"
+                                    >
+                                      <input
+                                        checked=""
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="specify"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="matchExecute"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                           <div
                             class="ant-space-item"
                             style="margin-bottom: 24px;"
@@ -10218,6 +10766,67 @@ exports[`progressConfig should update username and remove error tips if error ex
                         <div
                           class="ant-space ant-space-vertical full-width-element"
                         >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 24px;"
+                          >
+                            <div
+                              class="ant-row"
+                            >
+                              <div
+                                class="ant-col ant-col-5 text-black"
+                              >
+                                workflowTemplate.form.label.execUserType
+                              </div>
+                              <div
+                                class="ant-col ant-col-18"
+                              >
+                                <div
+                                  class="ant-radio-group ant-radio-group-outline"
+                                >
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                  >
+                                    <span
+                                      class="ant-radio ant-radio-checked"
+                                    >
+                                      <input
+                                        checked=""
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="specify"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="matchExecute"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                           <div
                             class="ant-space-item"
                             style="margin-bottom: 24px;"
@@ -10638,7 +11247,7 @@ exports[`progressConfig should update username and remove error tips if error ex
                                       />
                                     </span>
                                     <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.specify
+                                      workflowTemplate.progressConfig.review.reviewUserType.specifyAudit
                                     </span>
                                   </label>
                                   <label
@@ -10658,25 +11267,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                                     </span>
                                     <span>
                                       workflowTemplate.progressConfig.review.reviewUserType.matchAudit
-                                    </span>
-                                  </label>
-                                  <label
-                                    class="ant-radio-wrapper"
-                                  >
-                                    <span
-                                      class="ant-radio"
-                                    >
-                                      <input
-                                        class="ant-radio-input"
-                                        type="radio"
-                                        value="matchExecute"
-                                      />
-                                      <span
-                                        class="ant-radio-inner"
-                                      />
-                                    </span>
-                                    <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                     </span>
                                   </label>
                                 </div>
@@ -10936,6 +11526,67 @@ exports[`progressConfig should update username and remove error tips if error ex
                         <div
                           class="ant-space ant-space-vertical full-width-element"
                         >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 24px;"
+                          >
+                            <div
+                              class="ant-row"
+                            >
+                              <div
+                                class="ant-col ant-col-5 text-black"
+                              >
+                                workflowTemplate.form.label.execUserType
+                              </div>
+                              <div
+                                class="ant-col ant-col-18"
+                              >
+                                <div
+                                  class="ant-radio-group ant-radio-group-outline"
+                                >
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                  >
+                                    <span
+                                      class="ant-radio ant-radio-checked"
+                                    >
+                                      <input
+                                        checked=""
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="specify"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="matchExecute"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                           <div
                             class="ant-space-item"
                             style="margin-bottom: 24px;"
@@ -11322,7 +11973,7 @@ exports[`progressConfig should update username and remove error tips if error ex
                                       />
                                     </span>
                                     <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.specify
+                                      workflowTemplate.progressConfig.review.reviewUserType.specifyAudit
                                     </span>
                                   </label>
                                   <label
@@ -11342,25 +11993,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                                     </span>
                                     <span>
                                       workflowTemplate.progressConfig.review.reviewUserType.matchAudit
-                                    </span>
-                                  </label>
-                                  <label
-                                    class="ant-radio-wrapper"
-                                  >
-                                    <span
-                                      class="ant-radio"
-                                    >
-                                      <input
-                                        class="ant-radio-input"
-                                        type="radio"
-                                        value="matchExecute"
-                                      />
-                                      <span
-                                        class="ant-radio-inner"
-                                      />
-                                    </span>
-                                    <span>
-                                      workflowTemplate.progressConfig.review.reviewUserType.matchExecute
                                     </span>
                                   </label>
                                 </div>
@@ -11637,6 +12269,67 @@ exports[`progressConfig should update username and remove error tips if error ex
                         <div
                           class="ant-space ant-space-vertical full-width-element"
                         >
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 24px;"
+                          >
+                            <div
+                              class="ant-row"
+                            >
+                              <div
+                                class="ant-col ant-col-5 text-black"
+                              >
+                                workflowTemplate.form.label.execUserType
+                              </div>
+                              <div
+                                class="ant-col ant-col-18"
+                              >
+                                <div
+                                  class="ant-radio-group ant-radio-group-outline"
+                                >
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                  >
+                                    <span
+                                      class="ant-radio ant-radio-checked"
+                                    >
+                                      <input
+                                        checked=""
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="specify"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="matchExecute"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                           <div
                             class="ant-space-item"
                             style="margin-bottom: 24px;"
@@ -11996,6 +12689,67 @@ exports[`progressConfig should validate step and update progress config when use
                               class="ant-row"
                             >
                               <div
+                                class="ant-col ant-col-5 text-black"
+                              >
+                                workflowTemplate.form.label.execUserType
+                              </div>
+                              <div
+                                class="ant-col ant-col-18"
+                              >
+                                <div
+                                  class="ant-radio-group ant-radio-group-outline"
+                                >
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-checked"
+                                  >
+                                    <span
+                                      class="ant-radio ant-radio-checked"
+                                    >
+                                      <input
+                                        checked=""
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="specify"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.specifyExecute
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="matchExecute"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      workflowTemplate.progressConfig.exec.executeUserType.matchExecute
+                                    </span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                            style="margin-bottom: 24px;"
+                          >
+                            <div
+                              class="ant-row"
+                            >
+                              <div
                                 class="ant-col ant-col-5"
                               >
                                 workflowTemplate.form.label.execUser
@@ -12025,6 +12779,7 @@ exports[`progressConfig should validate step and update progress config when use
                                             aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
                                             aria-autocomplete="list"
                                             aria-controls="rc_select_TEST_OR_SSR_list"
+                                            aria-expanded="false"
                                             aria-haspopup="listbox"
                                             aria-owns="rc_select_TEST_OR_SSR_list"
                                             autocomplete="off"
@@ -12082,7 +12837,6 @@ exports[`progressConfig should validate step and update progress config when use
                           </div>
                           <div
                             class="ant-space-item"
-                            style="margin-bottom: 24px;"
                           />
                         </div>
                       </div>

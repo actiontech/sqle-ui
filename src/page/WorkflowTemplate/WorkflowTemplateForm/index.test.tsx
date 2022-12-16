@@ -105,6 +105,7 @@ describe('WorkflowTemplateForm', () => {
     expect(submitProgressMock).toBeCalledWith([
       {
         assignee_user_name_list: ['user_name1'],
+        execute_by_authorized: false,
         desc: 'exec user',
         type: 'sql_execute',
       },

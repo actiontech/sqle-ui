@@ -276,26 +276,24 @@ describe('progressConfig', () => {
         desc: 'desc0',
         type: 'sql_review',
         approved_by_authorized: false,
-        execute_by_authorized: false,
       },
       {
         assignee_user_name_list: ['user_name1'],
         desc: 'desc1',
         type: 'sql_review',
         approved_by_authorized: false,
-        execute_by_authorized: false,
       },
       {
         assignee_user_name_list: ['user_name1'],
         desc: 'desc2',
         type: 'sql_review',
         approved_by_authorized: false,
-        execute_by_authorized: false,
       },
       {
         assignee_user_name_list: ['user_name1'],
         desc: 'desc exec',
         type: 'sql_execute',
+        execute_by_authorized: false,
       },
     ]);
 
@@ -406,18 +404,19 @@ describe('progressConfig', () => {
         desc: 'desc0',
         type: 'sql_review',
         approved_by_authorized: true,
-        execute_by_authorized: false,
       },
       {
         assignee_user_name_list: ['user_name1'],
         desc: 'desc exec',
         type: 'sql_execute',
+        execute_by_authorized: false,
       },
     ]);
 
     fireEvent.click(screen.getByText('common.reset'));
     expect(container).toMatchSnapshot();
   });
+
   test('should set execute_by_authorized to true when user select execute user type to match', async () => {
     const submitProgressConfigFn = jest.fn();
     const { container } = renderWithTheme(
@@ -456,15 +455,6 @@ describe('progressConfig', () => {
     expect(username).toHaveClass('ant-select-item-option-content');
     fireEvent.click(username);
 
-    fireEvent.click(
-      screen.getByText(
-        'workflowTemplate.progressConfig.review.reviewUserType.matchExecute'
-      )
-    );
-
-    fireEvent.input(screen.getByTestId('exec-user-desc'), {
-      target: { value: 'desc exec' },
-    });
     fireEvent.mouseDown(
       getBySelector(
         '.ant-select-selection-placeholder',
@@ -476,24 +466,34 @@ describe('progressConfig', () => {
     });
     const usernameOption3 = screen.getAllByText('user_name1');
 
-    const username1 = usernameOption3[3];
+    const username1 = usernameOption3[4];
     expect(username1).toHaveClass('ant-select-item-option-content');
     fireEvent.click(username1);
+
+    fireEvent.click(
+      screen.getByText(
+        'workflowTemplate.progressConfig.exec.executeUserType.matchExecute'
+      )
+    );
+
+    fireEvent.input(screen.getByTestId('exec-user-desc'), {
+      target: { value: 'desc exec' },
+    });
 
     fireEvent.click(screen.getByText('common.submit'));
     expect(submitProgressConfigFn).toBeCalledTimes(1);
     expect(submitProgressConfigFn).toBeCalledWith([
       {
-        assignee_user_name_list: [],
+        assignee_user_name_list: ['user_name1'],
         desc: 'desc0',
         type: 'sql_review',
         approved_by_authorized: false,
-        execute_by_authorized: true,
       },
       {
-        assignee_user_name_list: ['user_name1'],
+        assignee_user_name_list: [],
         desc: 'desc exec',
         type: 'sql_execute',
+        execute_by_authorized: true,
       },
     ]);
 

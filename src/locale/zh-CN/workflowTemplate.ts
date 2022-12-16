@@ -74,6 +74,7 @@ export default {
       reviewUserType: '审核人类型',
       reviewDesc: '步骤描述',
       execUser: '执行人',
+      execUserType: '执行人类型',
     },
   },
 
@@ -86,14 +87,17 @@ export default {
       title: '工单审核',
       subTitle: '审核人在该步骤可以执行 审核通过或驳回 操作',
       reviewUserType: {
-        specify: '指定审核人',
+        specifyAudit: '指定审核人',
         matchAudit: '匹配所有拥有审核权限的用户',
-        matchExecute: '匹配所有拥有上线权限的用户',
       },
     },
     exec: {
       title: '执行上线',
       subTitle: '执行人在该步骤可以执行 执行上线或驳回 操作',
+      executeUserType: {
+        specifyExecute: '指定执行人',
+        matchExecute: '匹配所有拥有上线权限的用户',
+      },
     },
     operator: {
       remove: '移除该步骤',
