@@ -1,5 +1,14 @@
 import { useBoolean } from 'ahooks';
-import { Button, Card, Upload, Form, Result, Typography, Row } from 'antd';
+import {
+  Button,
+  Card,
+  Upload,
+  Form,
+  Result,
+  Typography,
+  Row,
+  message,
+} from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -29,9 +38,6 @@ const ImportRuleTemplate: React.FC = () => {
   const [allRules, setAllRules] = useState<RuleTemplateFormProps['allRules']>(
     []
   );
-  const [defaultData, setDefaultData] = useState<
-    RuleTemplateFormProps['defaultData']
-  >({});
 
   const [createLoading, { toggle: updateCreateLoading }] = useBoolean();
   const [getAllRulesLoading, { toggle: updateGetAllRulesLoading }] =
@@ -67,9 +73,13 @@ const ImportRuleTemplate: React.FC = () => {
   };
 
   const importFile = (values: SelectFileFormFields) => {
+    const hideLoading = message.loading(
+      t('ruleTemplate.importRuleTemplate.importingFile'),
+      0
+    );
     rule_template
       .importProjectRuleTemplateV1({
-        rule_template_file: values.ruleTemplateFile,
+        rule_template_file: values.ruleTemplateFile[0],
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -80,15 +90,17 @@ const ImportRuleTemplate: React.FC = () => {
               parseFileData.rule_list ?? [],
               parseFileData.db_type
             );
-            setDefaultData({
-              rule_template_name: parseFileData.name,
+            ruleTemplateForm.setFieldsValue({
+              templateDesc: parseFileData.desc,
+              templateName: parseFileData.name,
               db_type: parseFileData.db_type,
-              desc: parseFileData.desc,
             });
           }
         }
       })
-      .finally();
+      .finally(() => {
+        hideLoading();
+      });
   };
 
   const baseInfoFormSubmit = useCallback(async () => {
@@ -184,7 +196,6 @@ const ImportRuleTemplate: React.FC = () => {
         <RuleTemplateForm
           form={ruleTemplateForm}
           activeRule={activeRule}
-          defaultData={defaultData}
           allRules={allRules ?? []}
           ruleListLoading={getAllRulesLoading}
           submitLoading={createLoading}

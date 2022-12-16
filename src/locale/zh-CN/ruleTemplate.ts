@@ -70,6 +70,7 @@ export default {
     fileRequireTips: '当前未选择任何文件',
     successTitle: '导入审核规则模版成功',
     importNew: '再导入一个新的审核规则模版 >',
+    importingFile: '正在导入文件...',
   },
 
   exportRuleTemplate: {
