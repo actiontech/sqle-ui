@@ -1,5 +1,6 @@
 import { FormInstance } from 'antd';
 import { IRuleProjectTemplateDetailResV1 } from '../../../../api/common';
+import { RuleTemplateFormProps } from '../index.type';
 
 export type RuleTemplateBaseInfoFields = {
   templateName: string;
@@ -13,4 +14,5 @@ export type RuleTemplateBaseInfoFormProps = {
   defaultData?: IRuleProjectTemplateDetailResV1;
   submit: () => void;
   projectName: string;
+  mode: RuleTemplateFormProps['mode'];
 };

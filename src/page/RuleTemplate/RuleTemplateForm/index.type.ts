@@ -18,4 +18,5 @@ export type RuleTemplateFormProps = {
   prevStep: () => void;
   submit: () => void;
   projectName: string;
+  mode: 'import' | 'update' | 'create';
 };

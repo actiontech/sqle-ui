@@ -204,6 +204,7 @@ const ImportRuleTemplate: React.FC = () => {
           baseInfoSubmit={baseInfoFormSubmit}
           prevStep={prevStep}
           submit={submit}
+          mode="import"
         >
           <Result
             status="success"

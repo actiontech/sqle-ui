@@ -119,7 +119,7 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
           })}
           allowClear
           onChange={databaseTypeChange}
-          disabled={isUpdate}
+          disabled={isUpdate || props.mode === 'import'}
         >
           {generateDriverSelectOptions()}
         </Select>

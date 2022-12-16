@@ -30,6 +30,7 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
         form={result.current[0]}
         submit={jest.fn()}
         projectName={projectName}
+        mode="create"
       />
     );
     expect(getDriverNameListSpy).toBeCalledTimes(1);
@@ -87,6 +88,7 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
         submit={jest.fn()}
         defaultData={{}}
         projectName={projectName}
+        mode="create"
       />
     );
     await waitFor(() => {
@@ -140,5 +142,25 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
     ).toHaveValue('');
+  });
+
+  test('should disabled db type when mode is import', async () => {
+    const { result } = renderHook(() => useForm());
+    render(
+      <BaseInfoForm
+        form={result.current[0]}
+        submit={jest.fn()}
+        mode="import"
+        defaultData={{}}
+        projectName={projectName}
+      />
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(
+      screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
+    ).toBeDisabled();
   });
 });

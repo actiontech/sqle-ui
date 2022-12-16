@@ -126,11 +126,12 @@ const ImportRuleTemplate: React.FC = () => {
       };
     });
     rule_template
-      .createRuleTemplateV1({
+      .createProjectRuleTemplateV1({
         rule_template_name: baseInfo.templateName,
         desc: baseInfo.templateDesc,
         db_type: baseInfo.db_type,
         rule_list: activeRuleWithNewField,
+        project_name: projectName,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -140,7 +141,7 @@ const ImportRuleTemplate: React.FC = () => {
       .finally(() => {
         updateCreateLoading(false);
       });
-  }, [activeRule, ruleTemplateForm, step, updateCreateLoading]);
+  }, [activeRule, ruleTemplateForm, step, updateCreateLoading, projectName]);
 
   const resetAll = useCallback(() => {
     setStep(0);
@@ -207,6 +208,7 @@ const ImportRuleTemplate: React.FC = () => {
           baseInfoSubmit={baseInfoFormSubmit}
           prevStep={prevStep}
           submit={submit}
+          mode="import"
         >
           <Result
             status="success"
@@ -222,7 +224,7 @@ const ImportRuleTemplate: React.FC = () => {
             }
           />
           <Row justify="center">
-            <Link to="/rule/template">
+            <Link to={`/project/${projectName}/rule/template`}>
               <Button type="primary">{t('ruleTemplate.backToList')}</Button>
             </Link>
           </Row>

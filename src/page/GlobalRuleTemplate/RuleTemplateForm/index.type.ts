@@ -14,4 +14,5 @@ export type RuleTemplateFormProps = {
   baseInfoSubmit: () => void;
   prevStep: () => void;
   submit: () => void;
+  mode: 'import' | 'update' | 'create';
 };

@@ -95,6 +95,7 @@ const CreateRuleTemplate = () => {
           baseInfoSubmit={baseInfoFormSubmit}
           prevStep={prevStep}
           submit={submit}
+          mode="create"
         >
           <Result
             status="success"

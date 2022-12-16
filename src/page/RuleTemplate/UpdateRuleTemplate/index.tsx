@@ -116,6 +116,7 @@ const UpdateRuleTemplate = () => {
           submit={submit}
           defaultData={ruleTemplate}
           projectName={projectName}
+          mode="update"
         >
           <Result
             status="success"
