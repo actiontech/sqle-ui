@@ -23,7 +23,7 @@ import {
   WorkflowResV1ModeEnum,
   WorkflowStepResV1StateEnum,
   WorkflowStepResV1TypeEnum,
-  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
+  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum
 } from './common.enum';
 
 export interface IBaseRes {
@@ -2117,6 +2117,8 @@ export interface IWorkFlowStepTemplateReqV1 {
 
   desc?: string;
 
+  execute_by_authorized?: boolean;
+
   type?: WorkFlowStepTemplateReqV1TypeEnum;
 }
 
@@ -2126,6 +2128,8 @@ export interface IWorkFlowStepTemplateResV1 {
   assignee_user_name_list?: string[];
 
   desc?: string;
+
+  execute_by_authorized?: boolean;
 
   number?: number;
 

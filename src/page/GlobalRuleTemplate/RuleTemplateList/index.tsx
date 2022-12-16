@@ -102,6 +102,29 @@ const RuleTemplateList: React.FC<{ hiddenOperations?: boolean }> = ({
     );
   };
 
+  const exportRuleTemplate = (templateName: string) => {
+    const hideLoading = message.loading(
+      t('ruleTemplate.exportRuleTemplate.exporting', { name: templateName }),
+      0
+    );
+    ruleTemplate
+      .exportRuleTemplateV1({
+        rule_template_name: templateName,
+      })
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          message.success(
+            t('ruleTemplate.exportRuleTemplate.exportSuccessTips', {
+              name: templateName,
+            })
+          );
+        }
+      })
+      .finally(() => {
+        hideLoading();
+      });
+  };
+
   useEffect(() => {
     dispatch(
       initGlobalRuleTemplateListModalStatus({
@@ -141,13 +164,20 @@ const RuleTemplateList: React.FC<{ hiddenOperations?: boolean }> = ({
           </Space>
         }
         extra={[
-          <Link to="/rule/template/create" key="createRuleTemplate">
-            <EmptyBox if={isAdmin && !hiddenOperations}>
-              <Button type="primary">
-                {t('ruleTemplate.createRuleTemplate.button')}
-              </Button>
-            </EmptyBox>
-          </Link>,
+          <EmptyBox if={isAdmin && !hiddenOperations} key="ruleTemplateButton">
+            <Space size="large">
+              <Link to="/rule/template/import">
+                <Button type="primary">
+                  {t('ruleTemplate.importRuleTemplate.button')}
+                </Button>
+              </Link>
+              <Link to="/rule/template/create">
+                <Button type="primary">
+                  {t('ruleTemplate.createRuleTemplate.button')}
+                </Button>
+              </Link>
+            </Space>
+          </EmptyBox>,
         ]}
       >
         <Table
@@ -162,6 +192,7 @@ const RuleTemplateList: React.FC<{ hiddenOperations?: boolean }> = ({
           }}
           columns={RuleTemplateListTableColumnFactory(
             deleteTemplate,
+            exportRuleTemplate,
             openCloneRuleTemplateModal,
             isAdmin && !hiddenOperations
           )}

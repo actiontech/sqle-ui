@@ -80,6 +80,12 @@ describe('RuleTemplate/RuleTemplateList', () => {
     return spy;
   };
 
+  const mockExportRuleTemplate = () => {
+    const spy = jest.spyOn(rule_template, 'exportProjectRuleTemplateV1');
+    spy.mockImplementation(() => resolveThreeSecond({}));
+    return spy;
+  };
+
   test('should match snapshot', async () => {
     const { container } = renderWithRouter(<RuleTemplateList />);
     expect(container).toMatchSnapshot();
@@ -138,6 +144,41 @@ describe('RuleTemplate/RuleTemplateList', () => {
       page_size: 10,
       project_name: projectName,
     });
+  });
+
+  test('should send export rule template request when user click export rule template button', async () => {
+    const exportSpy = mockExportRuleTemplate();
+    renderWithRouter(<RuleTemplateList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.mouseEnter(screen.getAllByText('common.more')[0]);
+    await waitFor(() => {
+      jest.advanceTimersByTime(300);
+    });
+    expect(
+      screen.queryByText('ruleTemplate.exportRuleTemplate.button')
+    ).toBeInTheDocument();
+    expect(exportSpy).toBeCalledTimes(0);
+
+    fireEvent.click(screen.getByText('ruleTemplate.exportRuleTemplate.button'));
+    expect(exportSpy).toBeCalledTimes(1);
+    expect(exportSpy).toBeCalledWith({
+      rule_template_name: ruleTemplateListData[0].rule_template_name,
+      project_name: projectName,
+    });
+    expect(
+      screen.queryByText('ruleTemplate.exportRuleTemplate.exporting')
+    ).toBeInTheDocument();
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.queryByText('ruleTemplate.exportRuleTemplate.exportSuccessTips')
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText('ruleTemplate.exportRuleTemplate.exporting')
+    ).not.toBeInTheDocument();
   });
 
   test('should open clone rule template modal when use click clone this template', async () => {

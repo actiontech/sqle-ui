@@ -2,6 +2,7 @@ import { PageHeader } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import CreateRuleTemplate from './CreateRuleTemplate';
+import ImportRuleTemplate from './ImportRuleTemplate';
 import RuleTemplateList from './RuleTemplateList';
 import UpdateRuleTemplate from './UpdateRuleTemplate';
 
@@ -21,6 +22,7 @@ const GlobalRuleTemplate = () => {
             component={RuleTemplateList}
           />
           <Route path="/rule/template/create" component={CreateRuleTemplate} />
+          <Route path="/rule/template/import" component={ImportRuleTemplate} />
           <Route
             path="/rule/template/update/:templateName"
             component={UpdateRuleTemplate}

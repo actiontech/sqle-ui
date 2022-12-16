@@ -16,6 +16,7 @@ import { RuleUrlParamKey } from '../../Rule/useRuleFilterForm';
 
 export const RuleTemplateListTableColumnFactory = (
   deleteTemplate: (name: string) => void,
+  exportRuleTemplate: (name: string) => void,
   openCloneRuleTemplateModal: (rowData: IRuleTemplateResV1) => void,
   isAdmin: boolean
 ): TableColumn<IRuleTemplateResV1, 'operator'> => {
@@ -88,10 +89,19 @@ export const RuleTemplateListTableColumnFactory = (
               overlay={
                 <Menu>
                   <Menu.Item
-                    key="update-user-password"
+                    key="clone-rule-template"
                     onClick={openCloneRuleTemplateModal.bind(null, record)}
                   >
                     {i18n.t('ruleTemplate.cloneRuleTemplate.button')}
+                  </Menu.Item>
+                  <Menu.Item
+                    key="export-rule-template"
+                    onClick={exportRuleTemplate.bind(
+                      null,
+                      record.rule_template_name ?? ''
+                    )}
+                  >
+                    {i18n.t('ruleTemplate.exportRuleTemplate.button')}
                   </Menu.Item>
                 </Menu>
               }

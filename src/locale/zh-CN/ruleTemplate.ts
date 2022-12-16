@@ -62,6 +62,22 @@ export default {
     createNew: '再创建一个新的审核规则模版 >',
   },
 
+  importRuleTemplate: {
+    button: '导入规则模板',
+    title: '导入审核规则模板',
+    selectFile: '请选择导入文件',
+    submitText: '导入',
+    fileRequireTips: '当前未选择任何文件',
+    successTitle: '导入审核规则模版成功',
+    importNew: '再导入一个新的审核规则模版 >',
+  },
+
+  exportRuleTemplate: {
+    button: '导出规则模板',
+    exporting: '正在导出模版 "{{name}}"...',
+    exportSuccessTips: '导出模版"{{name}}"成功',
+  },
+
   updateRuleTemplate: {
     title: '更新审核规则模版',
     successTitle: '更新审核规则模版成功',

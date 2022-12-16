@@ -113,6 +113,30 @@ const RuleTemplateList = () => {
     );
   };
 
+  const exportRuleTemplate = (templateName: string) => {
+    const hideLoading = message.loading(
+      t('ruleTemplate.exportRuleTemplate.exporting', { name: templateName }),
+      0
+    );
+    ruleTemplate
+      .exportProjectRuleTemplateV1({
+        rule_template_name: templateName,
+        project_name: projectName,
+      })
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          message.success(
+            t('ruleTemplate.exportRuleTemplate.exportSuccessTips', {
+              name: templateName,
+            })
+          );
+        }
+      })
+      .finally(() => {
+        hideLoading();
+      });
+  };
+
   useEffect(() => {
     dispatch(
       initRuleTemplateListModalStatus({
@@ -151,16 +175,21 @@ const RuleTemplateList = () => {
           </Space>
         }
         extra={[
-          <Link
-            to={`/project/${projectName}/rule/template/create`}
-            key="createRuleTemplate"
-          >
-            <EmptyBox if={actionPermission}>
-              <Button type="primary">
-                {t('ruleTemplate.createRuleTemplate.button')}
-              </Button>
-            </EmptyBox>
-          </Link>,
+          <EmptyBox if={actionPermission} key="ruleTemplateButton">
+            <Space size="large">
+              <Link to={`/project/${projectName}/rule/template/import`}>
+                <Button type="primary">
+                  {t('ruleTemplate.importRuleTemplate.button')}
+                </Button>
+              </Link>
+
+              <Link to={`/project/${projectName}/rule/template/create`}>
+                <Button type="primary">
+                  {t('ruleTemplate.createRuleTemplate.button')}
+                </Button>
+              </Link>
+            </Space>
+          </EmptyBox>,
         ]}
       >
         <Table
@@ -175,6 +204,7 @@ const RuleTemplateList = () => {
           }}
           columns={RuleTemplateListTableColumnFactory(
             deleteTemplate,
+            exportRuleTemplate,
             openCloneRuleTemplateModal,
             actionPermission,
             projectName

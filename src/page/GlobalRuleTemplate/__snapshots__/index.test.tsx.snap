@@ -25,6 +25,10 @@ exports[`RuleTemplate should render page header and describe 1`] = `
       />
       <Route
         component={[Function]}
+        path="/rule/template/import"
+      />
+      <Route
+        component={[Function]}
         path="/rule/template/update/:templateName"
       />
       <Redirect

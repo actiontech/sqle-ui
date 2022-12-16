@@ -12,7 +12,7 @@ export type ProgressConfigProps = {
 };
 
 export type ProgressConfigItem = Required<
-  Omit<IWorkFlowStepTemplateReqV1, 'type'>
+  Omit<IWorkFlowStepTemplateReqV1, 'type' | 'execute_by_authorized'>
 >;
 
 export type ExecProgressConfigItem = Required<

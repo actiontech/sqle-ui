@@ -8,6 +8,7 @@ import { RuleUrlParamKey } from '../../Rule/useRuleFilterForm';
 
 export const RuleTemplateListTableColumnFactory = (
   deleteTemplate: (name: string) => void,
+  exportRuleTemplate: (templateName: string) => void,
   openCloneRuleTemplateModal: (rowData: IProjectRuleTemplateResV1) => void,
   actionPermission: boolean,
   projectName: string
@@ -86,6 +87,15 @@ export const RuleTemplateListTableColumnFactory = (
                     onClick={openCloneRuleTemplateModal.bind(null, record)}
                   >
                     {i18n.t('ruleTemplate.cloneRuleTemplate.button')}
+                  </Menu.Item>
+                  <Menu.Item
+                    key="export-rule-template"
+                    onClick={exportRuleTemplate.bind(
+                      null,
+                      record.rule_template_name ?? ''
+                    )}
+                  >
+                    {i18n.t('ruleTemplate.exportRuleTemplate.button')}
                   </Menu.Item>
                 </Menu>
               }
