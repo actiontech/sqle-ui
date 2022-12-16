@@ -144,10 +144,13 @@ describe('RuleTemplate/RuleTemplateList', () => {
 
     fireEvent.click(screen.getByText('ruleTemplate.exportRuleTemplate.button'));
     expect(exportSpy).toBeCalledTimes(1);
-    expect(exportSpy).toBeCalledWith({
-      rule_template_name: ruleTemplateListData[0].rule_template_name,
-      project_name: projectName,
-    });
+    expect(exportSpy).toBeCalledWith(
+      {
+        rule_template_name: ruleTemplateListData[0].rule_template_name,
+        project_name: projectName,
+      },
+      { responseType: 'blob' }
+    );
     expect(
       screen.queryByText('ruleTemplate.exportRuleTemplate.exporting')
     ).toBeInTheDocument();
