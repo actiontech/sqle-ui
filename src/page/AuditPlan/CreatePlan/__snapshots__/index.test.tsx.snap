@@ -141,7 +141,6 @@ exports[`CreatePlan should send create audit plan request 1`] = `
                     </span>
                     <span
                       class="ant-select-selection-item"
-                      title="instance1"
                     >
                       instance1
                     </span>

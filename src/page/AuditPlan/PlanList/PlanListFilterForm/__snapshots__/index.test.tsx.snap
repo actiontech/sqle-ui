@@ -460,7 +460,6 @@ exports[`PlanListFilerForm should pass all fields when user click search button 
                     </span>
                     <span
                       class="ant-select-selection-item"
-                      title="instance1"
                     >
                       instance1
                     </span>

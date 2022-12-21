@@ -214,7 +214,6 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                               </span>
                               <span
                                 class="ant-select-selection-item"
-                                title="instance1"
                               >
                                 instance1
                               </span>
@@ -2601,7 +2600,6 @@ exports[`Order/Create should audit sql when user click audit button 2`] = `
                               </span>
                               <span
                                 class="ant-select-selection-item"
-                                title="instance1"
                               >
                                 instance1
                               </span>

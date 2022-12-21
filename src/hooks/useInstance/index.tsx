@@ -4,6 +4,7 @@ import React from 'react';
 import { IInstanceTipResV1 } from '../../api/common';
 import instance from '../../api/instance';
 import { IGetInstanceTipListV1Params } from '../../api/instance/index.d';
+import EmptyBox from '../../components/EmptyBox';
 import { ResponseCode } from '../../data/common';
 import { instanceListDefaultKey } from '../../data/common';
 
@@ -60,7 +61,12 @@ const useInstance = () => {
                     key={instance.instance_name}
                     value={instance.instance_name ?? ''}
                   >
-                    {instance.instance_name}
+                    <EmptyBox
+                      if={!!instance.host && !!instance.port}
+                      defaultNode={instance.instance_name}
+                    >
+                      {`${instance.instance_name} (${instance.host}:${instance.port})`}
+                    </EmptyBox>
                   </Select.Option>
                 );
               })}
