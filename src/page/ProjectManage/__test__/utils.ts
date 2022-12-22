@@ -8,8 +8,7 @@ export const mockGetProjectList = () => {
   spy.mockImplementation(() =>
     resolveThreeSecond(
       Array.from({ length: 11 }, (_, i) => ({
-        id: i + 1,
-        name: 'project1',
+        name: `project${i + 1}`,
         desc: 'desc1',
         create_time: '2022-11-01',
         create_user_name: 'admin',

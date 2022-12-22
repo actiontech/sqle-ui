@@ -16,4 +16,7 @@ export type Theme = {
   projectLayoutSider: {
     border: string;
   };
+  optionsHover: {
+    background: string;
+  };
 };

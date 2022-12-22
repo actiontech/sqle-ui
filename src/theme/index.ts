@@ -25,6 +25,11 @@ const useStyles = makeStyles<Theme>((theme) => ({
   projectLayoutSider: {
     borderRight: theme.projectLayoutSider.border,
   },
+  optionsHover: {
+    '&:hover': {
+      background: theme.optionsHover.background,
+    },
+  },
 }));
 
 export { SupportTheme, ThemeData };

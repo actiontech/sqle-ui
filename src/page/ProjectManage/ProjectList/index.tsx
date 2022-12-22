@@ -17,12 +17,14 @@ import {
 } from '../../../store/projectManage';
 import EventEmitter from '../../../utils/EventEmitter';
 import ProjectManageModal from '../Modal';
+import { useRecentlyOpenedProjects } from '../ProjectDetail';
 import { ProjectListTableColumnFactory } from './column';
 
 const ProjectList: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { isAdmin, managementPermissions, isProjectManager } = useCurrentUser();
+  const { updateRecentlyProject } = useRecentlyOpenedProjects();
 
   const allowCreateProject = useMemo(() => {
     return (
@@ -154,7 +156,7 @@ const ProjectList: React.FC = () => {
           ]}
         >
           <Table
-            rowKey="id"
+            rowKey="name"
             dataSource={data?.list}
             loading={loading}
             pagination={{
@@ -166,7 +168,8 @@ const ProjectList: React.FC = () => {
             columns={ProjectListTableColumnFactory(
               deleteAction,
               openModalAndUpdateSelectProject,
-              allowOperateProject
+              allowOperateProject,
+              updateRecentlyProject
             )}
           />
         </Card>

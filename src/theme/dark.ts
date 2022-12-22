@@ -18,6 +18,9 @@ const darkTheme: Theme = {
   projectLayoutSider: {
     border: '1px solid #303030',
   },
+  optionsHover: {
+    background: 'hsla(0, 0%, 100%, 0.08)',
+  },
 };
 
 export default darkTheme;

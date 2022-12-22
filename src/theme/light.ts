@@ -19,6 +19,9 @@ const lightTheme: Theme = {
   projectLayoutSider: {
     border: '1px solid #d9d9d9',
   },
+  optionsHover: {
+    background: '#f5f5f5',
+  },
 };
 
 export default lightTheme;

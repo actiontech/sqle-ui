@@ -15,6 +15,14 @@ export default {
       createUser: '创建人',
       deleteProjectTips: '确认要删除项目"{{name}}"么?',
     },
+    allProject: '查看所有项目',
+
+    searchProject: {
+      placeholder: '搜索您的项目',
+      recentlyOpenedProjects: '最近打开的项目',
+      notSearched: '未搜索到符合条件的项目',
+      notRecentlyOpenedProjects: '暂无最近打开的项目',
+    },
   },
   createProject: {
     modalTitle: '创建项目',

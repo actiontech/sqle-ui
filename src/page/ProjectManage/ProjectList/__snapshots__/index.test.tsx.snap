@@ -428,7 +428,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                         >
                           <tr
                             class="ant-table-row ant-table-row-level-0"
-                            data-row-key="1"
+                            data-row-key="project1"
                           >
                             <td
                               class="ant-table-cell"
@@ -496,15 +496,15 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                           </tr>
                           <tr
                             class="ant-table-row ant-table-row-level-0"
-                            data-row-key="2"
+                            data-row-key="project2"
                           >
                             <td
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project1"
+                                href="/project/project2"
                               >
-                                project1
+                                project2
                               </a>
                             </td>
                             <td
@@ -564,15 +564,15 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                           </tr>
                           <tr
                             class="ant-table-row ant-table-row-level-0"
-                            data-row-key="3"
+                            data-row-key="project3"
                           >
                             <td
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project1"
+                                href="/project/project3"
                               >
-                                project1
+                                project3
                               </a>
                             </td>
                             <td
@@ -632,15 +632,15 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                           </tr>
                           <tr
                             class="ant-table-row ant-table-row-level-0"
-                            data-row-key="4"
+                            data-row-key="project4"
                           >
                             <td
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project1"
+                                href="/project/project4"
                               >
-                                project1
+                                project4
                               </a>
                             </td>
                             <td
@@ -700,15 +700,15 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                           </tr>
                           <tr
                             class="ant-table-row ant-table-row-level-0"
-                            data-row-key="5"
+                            data-row-key="project5"
                           >
                             <td
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project1"
+                                href="/project/project5"
                               >
-                                project1
+                                project5
                               </a>
                             </td>
                             <td
@@ -768,15 +768,15 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                           </tr>
                           <tr
                             class="ant-table-row ant-table-row-level-0"
-                            data-row-key="6"
+                            data-row-key="project6"
                           >
                             <td
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project1"
+                                href="/project/project6"
                               >
-                                project1
+                                project6
                               </a>
                             </td>
                             <td
@@ -836,15 +836,15 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                           </tr>
                           <tr
                             class="ant-table-row ant-table-row-level-0"
-                            data-row-key="7"
+                            data-row-key="project7"
                           >
                             <td
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project1"
+                                href="/project/project7"
                               >
-                                project1
+                                project7
                               </a>
                             </td>
                             <td
@@ -904,15 +904,15 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                           </tr>
                           <tr
                             class="ant-table-row ant-table-row-level-0"
-                            data-row-key="8"
+                            data-row-key="project8"
                           >
                             <td
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project1"
+                                href="/project/project8"
                               >
-                                project1
+                                project8
                               </a>
                             </td>
                             <td
@@ -972,15 +972,15 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                           </tr>
                           <tr
                             class="ant-table-row ant-table-row-level-0"
-                            data-row-key="9"
+                            data-row-key="project9"
                           >
                             <td
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project1"
+                                href="/project/project9"
                               >
-                                project1
+                                project9
                               </a>
                             </td>
                             <td
@@ -1040,15 +1040,15 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                           </tr>
                           <tr
                             class="ant-table-row ant-table-row-level-0"
-                            data-row-key="10"
+                            data-row-key="project10"
                           >
                             <td
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project1"
+                                href="/project/project10"
                               >
-                                project1
+                                project10
                               </a>
                             </td>
                             <td

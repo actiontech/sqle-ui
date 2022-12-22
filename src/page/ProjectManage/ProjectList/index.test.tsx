@@ -9,6 +9,7 @@ import ProjectList from '.';
 import { SystemRole } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { ModalName } from '../../../data/ModalName';
+import StorageKey from '../../../data/StorageKey';
 import { mockManagementPermissions } from '../../../hooks/useCurrentUser/index.test';
 import { getBySelector } from '../../../testUtils/customQuery';
 import { renderWithRouter } from '../../../testUtils/customRender';
@@ -158,7 +159,6 @@ describe('test ProjectManage/ProjectList', () => {
           create_time: '2022-11-01',
           create_user_name: 'admin',
           desc: 'desc1',
-          id: 1,
           name: 'project1',
         },
       },
@@ -390,5 +390,30 @@ describe('test ProjectManage/ProjectList', () => {
 
     cleanup();
     jest.clearAllMocks();
+  });
+
+  test('should be update recently project when clicking project name', async () => {
+    const localStorageSetItemSpy = jest.spyOn(Storage.prototype, 'setItem');
+    const emitSpy = jest.spyOn(EventEmitter, 'emit');
+    renderWithRouter(<ProjectList />);
+    expect(emitSpy).toBeCalledTimes(0);
+    expect(localStorageSetItemSpy).toBeCalledTimes(0);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    fireEvent.click(screen.getByText('project1'));
+
+    expect(emitSpy).toBeCalledTimes(1);
+    expect(emitSpy).toBeCalledWith(EmitterKey.Update_Recently_Opened_Projects, [
+      'project1',
+    ]);
+    expect(localStorageSetItemSpy).toBeCalledTimes(1);
+    expect(localStorageSetItemSpy).toBeCalledWith(
+      StorageKey.Project_Catch,
+      JSON.stringify(['project1'])
+    );
+    window.localStorage.clear();
   });
 });
