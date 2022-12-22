@@ -1,24 +1,16 @@
 import { Button, Form, Input, Select, Space } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  instanceListDefaultKey,
-  PageFormLayout,
-} from '../../../../data/common';
+import { PageFormLayout } from '../../../../data/common';
 import { nameRule } from '../../../../utils/FormRule';
 import { RuleTemplateBaseInfoFormProps } from './index.type';
 import useDatabaseType from '../../../../hooks/useDatabaseType';
 import { Rule } from 'antd/lib/form';
-import useInstance from '../../../../hooks/useInstance';
 
 const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
   const { t } = useTranslation();
-  const { updateInstanceList, generateInstanceSelectOption } = useInstance();
   const { updateDriverNameList, generateDriverSelectOptions } =
     useDatabaseType();
-  const [databaseType, setDatabaseType] = React.useState<string>(
-    props.form.getFieldValue('db_type') ?? instanceListDefaultKey
-  );
 
   const isUpdate = React.useMemo(
     () => !!props.defaultData,
@@ -27,24 +19,11 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
 
   const reset = React.useCallback(() => {
     if (isUpdate) {
-      props.form.resetFields(['templateDesc', 'instances']);
+      props.form.resetFields(['templateDesc']);
       return;
     }
     props.form.resetFields();
   }, [props.form, isUpdate]);
-
-  const databaseTypeChange = React.useCallback(
-    (value) => {
-      setDatabaseType(value ?? instanceListDefaultKey);
-      props.form.setFields([
-        {
-          name: 'instances',
-          value: [],
-        },
-      ]);
-    },
-    [props.form]
-  );
 
   const nameFormRule: () => Rule[] = React.useCallback(() => {
     const rule: Rule[] = [
@@ -60,19 +39,15 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
   }, [isUpdate]);
 
   React.useEffect(() => {
-    updateInstanceList({ project_name: props.projectName });
     updateDriverNameList();
-  }, [props.projectName, updateDriverNameList, updateInstanceList]);
+  }, [props.projectName, updateDriverNameList]);
 
   React.useEffect(() => {
     if (!!props.defaultData) {
-      setDatabaseType(props.defaultData.db_type ?? instanceListDefaultKey);
       props.form.setFieldsValue({
         templateName: props.defaultData.rule_template_name,
         templateDesc: props.defaultData.desc,
         db_type: props.defaultData.db_type,
-        instances:
-          props.defaultData.instance_list?.map((v) => v.name ?? '') ?? [],
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -118,25 +93,9 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
             name: t('ruleTemplate.ruleTemplateForm.databaseType'),
           })}
           allowClear
-          onChange={databaseTypeChange}
           disabled={isUpdate || props.mode === 'import'}
         >
           {generateDriverSelectOptions()}
-        </Select>
-      </Form.Item>
-      <Form.Item
-        label={t('ruleTemplate.ruleTemplateForm.instances')}
-        name="instances"
-      >
-        <Select
-          mode="multiple"
-          allowClear
-          showSearch
-          placeholder={t('common.form.placeholder.select', {
-            name: t('ruleTemplate.ruleTemplateForm.instances'),
-          })}
-        >
-          {generateInstanceSelectOption(databaseType)}
         </Select>
       </Form.Item>
       <Form.Item label=" " colon={false}>

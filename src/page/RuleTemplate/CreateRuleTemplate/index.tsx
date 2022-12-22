@@ -61,7 +61,6 @@ const CreateRuleTemplate = () => {
         db_type: baseInfo.db_type,
         rule_list: activeRuleWithNewField,
         project_name: projectName,
-        instance_name_list: baseInfo.instances,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {

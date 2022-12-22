@@ -104,18 +104,6 @@ describe('UpdateRuleTemplate', () => {
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
     ).toBeDisabled();
 
-    fireEvent.mouseDown(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
-    );
-
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    const option = screen.getAllByText('mysql-test')[1];
-    expect(screen.queryByText('oracle-test')).not.toBeInTheDocument();
-    expect(option).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(option);
-
     fireEvent.click(screen.getByText('common.nextStep'));
 
     await waitFor(() => {
@@ -169,7 +157,6 @@ describe('UpdateRuleTemplate', () => {
       rule_template_name: 'default_mysql',
       desc: 'rule template desc',
       rule_list: resultRuleName,
-      instance_name_list: ['mysql-test'],
       project_name: projectName,
     });
   });

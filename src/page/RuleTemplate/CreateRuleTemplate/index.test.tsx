@@ -5,11 +5,7 @@ import {
   renderWithThemeAndRouter,
   renderWithThemeAndServerRouter,
 } from '../../../testUtils/customRender';
-import {
-  resolveThreeSecond,
-  mockDriver,
-  mockInstanceTip,
-} from '../../../testUtils/mockRequest';
+import { resolveThreeSecond, mockDriver } from '../../../testUtils/mockRequest';
 import { createMemoryHistory } from 'history';
 import { allRulesWithType } from '../../Rule/__testData__';
 import { IRuleReqV1 } from '../../../api/common';
@@ -28,7 +24,6 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
     jest.useFakeTimers();
     mockGetAllRules();
     mockDriver();
-    mockInstanceTip();
     useParamsMock.mockReturnValue({ projectName });
   });
 
@@ -105,15 +100,6 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
     expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
     fireEvent.click(databaseTypeOption);
 
-    fireEvent.mouseDown(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
-    );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    const option = screen.getAllByText('oracle-test')[1];
-    expect(option).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(option);
     fireEvent.click(screen.getByText('common.nextStep'));
 
     await waitFor(() => {
@@ -167,25 +153,7 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
       rule_template_name: 'testRuleTemplateId',
       desc: 'rule template desc',
       rule_list: resultRuleName,
-      instance_name_list: ['oracle-test'],
       project_name: projectName,
     });
-    // await waitFor(() => {
-    //   jest.advanceTimersByTime(3000);
-    // });
-    // expect(screen.getByTestId('rule-list')).toHaveAttribute('hidden');
-    // expect(screen.getByTestId('submit-result')).not.toHaveAttribute('hidden');
-    // // fireEvent.click(screen.getByText('ruleTemplate.backToList'));
-    // // expect(history.location.pathname).toBe('/project/default/rule/template');
-
-    // fireEvent.click(
-    //   screen.getByText('ruleTemplate.createRuleTemplate.createNew')
-    // );
-
-    // expect(screen.getByTestId('base-form')).not.toHaveAttribute('hidden');
-    // expect(
-    //   screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName')
-    // ).toHaveValue('');
-    // expect(container).toMatchSnapshot();
   });
 });

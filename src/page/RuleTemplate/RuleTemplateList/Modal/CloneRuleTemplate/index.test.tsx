@@ -104,15 +104,6 @@ describe('RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal', () => {
       { target: { value: 'desc1' } }
     );
 
-    fireEvent.mouseDown(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
-    );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    const option = screen.getAllByText('instance1')[1];
-    fireEvent.click(option);
-
     fireEvent.click(screen.getByText('OK'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
@@ -122,7 +113,6 @@ describe('RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal', () => {
       desc: 'desc1',
       rule_template_name: ruleTemplateListData[0].rule_template_name,
       new_rule_template_name: 'name1',
-      instance_name_list: ['instance1'],
       project_name: projectName,
     });
     expect(screen.getByText('OK').parentNode).toHaveClass('ant-btn-loading');

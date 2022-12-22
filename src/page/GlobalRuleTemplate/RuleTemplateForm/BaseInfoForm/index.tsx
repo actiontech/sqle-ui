@@ -19,7 +19,7 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
 
   const reset = React.useCallback(() => {
     if (isUpdate) {
-      props.form.resetFields(['templateDesc', 'instances']);
+      props.form.resetFields(['templateDesc']);
       return;
     }
     props.form.resetFields();
