@@ -43,6 +43,7 @@ export default {
     userGroup: '所属用户组',
     wechat: '微信id',
     managerPermission: '平台管理权限',
+    phone: '手机号',
 
     passwordConfirmPlaceholder: '请保持两次密码输入一致',
   },

@@ -49,6 +49,7 @@ const AddUser = () => {
         user_group_name_list: values.userGroupList,
         wechat_id: values.wechat,
         management_permission_code_list: values.managementPermissionCodeList,
+        phone: values.phone ?? '',
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {

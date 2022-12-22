@@ -4,12 +4,18 @@ export default {
   pageDesc: '您可以在这里配置您的邮箱SMTP等系统配置',
 
   title: {
+    dingTalk: '钉钉配置',
     smtp: 'SMTP',
     global: '全局配置',
     ldap: 'LDAP',
     license: 'License',
     wechat: '企业微信配置',
     oauth: 'Oauth2.0配置',
+  },
+
+  dingTalk: {
+    titleTips: '审批信息将根据审核人的手机号发送到相应的钉钉账号',
+    enable: '启用钉钉审批',
   },
 
   smtp: {

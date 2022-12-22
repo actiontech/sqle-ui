@@ -13,6 +13,7 @@ export interface IUserFormFields {
   userGroupList?: string[];
   wechat?: string;
   managementPermissionCodeList?: number[];
+  phone?: string;
 }
 
 export interface IUserFormProps {

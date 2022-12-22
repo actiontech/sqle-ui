@@ -43,6 +43,7 @@ describe('User/Modal/UpdateUser', () => {
           ],
           user_group_name_list: ['user_group_name1'],
           wechat_id: '11231123',
+          phone: '13312341234',
         },
       },
     });
@@ -114,6 +115,7 @@ describe('User/Modal/UpdateUser', () => {
       management_permission_code_list: [1],
       user_group_name_list: ['user_group_name1'],
       wechat_id: '11231123',
+      phone: '13312341234',
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
@@ -148,6 +150,8 @@ describe('User/Modal/UpdateUser', () => {
         selectUser: {
           user_name: 'san.zhang',
           email: 'user@123.com',
+          phone: '13312341234',
+
           management_permission_list: [
             {
               desc: '创建项目',
@@ -181,6 +185,7 @@ describe('User/Modal/UpdateUser', () => {
       is_disabled: false,
       management_permission_code_list: [1],
       user_group_name_list: [],
+      phone: '13312341234',
     });
   });
 
@@ -192,6 +197,8 @@ describe('User/Modal/UpdateUser', () => {
         selectUser: {
           user_name: 'admin',
           email: 'user@123.com',
+          phone: '13312341234',
+
           management_permission_list: [
             {
               desc: '创建项目',
@@ -222,6 +229,7 @@ describe('User/Modal/UpdateUser', () => {
     expect(updateUserSpy).toBeCalledWith({
       email: 'user@123.com',
       user_name: 'admin',
+      phone: '13312341234',
       management_permission_code_list: [1],
       user_group_name_list: [],
     });
@@ -235,6 +243,7 @@ describe('User/Modal/UpdateUser', () => {
         selectUser: {
           user_name: 'san.zhang',
           email: 'user@123.com',
+          phone: '13312341234',
           management_permission_list: [
             {
               desc: '创建项目',
@@ -272,6 +281,7 @@ describe('User/Modal/UpdateUser', () => {
       is_disabled: false,
       management_permission_code_list: [1],
       user_group_name_list: [],
+      phone: '13312341234',
     });
   });
 });

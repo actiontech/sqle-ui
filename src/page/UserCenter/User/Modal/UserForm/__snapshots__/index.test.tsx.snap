@@ -206,6 +206,40 @@ exports[`User/Modal/UserForm should match snapshot when isUpdate is falsy 1`] = 
       </div>
     </div>
     <div
+      class="ant-row ant-form-item input-number-hide-arrows"
+    >
+      <div
+        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+      >
+        <label
+          class=""
+          for="phone"
+          title="user.userForm.phone"
+        >
+          user.userForm.phone
+        </label>
+      </div>
+      <div
+        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              id="phone"
+              placeholder="common.form.placeholder.input"
+              type="number"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
       class="ant-row ant-form-item"
     >
       <div
@@ -465,6 +499,40 @@ exports[`User/Modal/UserForm should match snapshot when isUpdate is truthy 1`] =
               id="email"
               placeholder="common.form.placeholder.input"
               type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-row ant-form-item input-number-hide-arrows"
+    >
+      <div
+        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+      >
+        <label
+          class=""
+          for="phone"
+          title="user.userForm.phone"
+        >
+          user.userForm.phone
+        </label>
+      </div>
+      <div
+        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+      >
+        <div
+          class="ant-form-item-control-input"
+        >
+          <div
+            class="ant-form-item-control-input-content"
+          >
+            <input
+              class="ant-input"
+              id="phone"
+              placeholder="common.form.placeholder.input"
+              type="number"
               value=""
             />
           </div>

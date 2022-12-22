@@ -83,6 +83,10 @@ describe('User/Modal/AddUser', () => {
       target: { value: 'user@163.com' },
     });
 
+    fireEvent.input(screen.getByLabelText('user.userForm.phone'), {
+      target: { value: '13312341234' },
+    });
+
     fireEvent.input(screen.getByLabelText('user.userForm.wechat'), {
       target: { value: '123asdf' },
     });
@@ -112,6 +116,7 @@ describe('User/Modal/AddUser', () => {
       management_permission_code_list: [1],
       user_group_name_list: ['user_group_name1'],
       wechat_id: '123asdf',
+      phone: '13312341234',
     });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);

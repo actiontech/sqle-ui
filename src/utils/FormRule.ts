@@ -69,3 +69,24 @@ export const validatorPort = (min = 1, max = 65535): FormValidatorRule => {
     return Promise.resolve();
   };
 };
+
+export const phoneRule = (): Rule[] => {
+  return [
+    {
+      validator: phoneRuleValidator(),
+    },
+  ];
+};
+
+export const phoneRuleValidator = (): FormValidatorRule => {
+  return (_, value) => {
+    if (!value) {
+      return Promise.resolve();
+    }
+    const reg = /^1\d{10}$/;
+    if (!reg.test(value)) {
+      return Promise.reject(translation('common.form.rule.phone'));
+    }
+    return Promise.resolve();
+  };
+};

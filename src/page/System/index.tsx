@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import { initSystemModalStatus } from '../../store/system';
 import { ModalName } from '../../data/ModalName';
 import Oauth from './Oauth/Oauth';
+import DingTalkSetting from './DingTalkSetting';
 
 const System = () => {
   const { t } = useTranslation();
@@ -36,6 +37,7 @@ const System = () => {
       </PageHeader>
       <section className="padding-content">
         <Space direction="vertical" className="full-width-element">
+          <DingTalkSetting />
           <SMTPSetting />
           {/* IFTRUE_isEE */}
           <Wechat />

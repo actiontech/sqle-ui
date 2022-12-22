@@ -4,7 +4,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalFormLayout } from '../../../../../data/common';
 import EmptyBox from '../../../../../components/EmptyBox';
-import { nameRule } from '../../../../../utils/FormRule';
+import { nameRule, phoneRule } from '../../../../../utils/FormRule';
 import { Rule } from 'antd/lib/form';
 
 const UserForm: React.FC<IUserFormProps> = (props) => {
@@ -100,6 +100,19 @@ const UserForm: React.FC<IUserFormProps> = (props) => {
         <Input
           placeholder={t('common.form.placeholder.input', {
             name: t('user.userForm.email'),
+          })}
+        />
+      </Form.Item>
+      <Form.Item
+        name="phone"
+        label={t('user.userForm.phone')}
+        rules={phoneRule()}
+        className="input-number-hide-arrows"
+      >
+        <Input
+          type="number"
+          placeholder={t('common.form.placeholder.input', {
+            name: t('user.userForm.phone'),
           })}
         />
       </Form.Item>
