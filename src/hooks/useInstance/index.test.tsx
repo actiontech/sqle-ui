@@ -16,6 +16,8 @@ import {
 } from '../../testUtils/mockRequest';
 import { Select } from 'antd';
 
+const projectName = 'default';
+
 describe('useInstance', () => {
   beforeEach(() => {
     jest.useFakeTimers();
@@ -34,7 +36,12 @@ describe('useInstance', () => {
     const requestSpy = mockRequest();
     requestSpy.mockImplementation(() =>
       resolveThreeSecond([
-        { instance_name: 'instance_test_name', instance_type: 'mysql' },
+        {
+          instance_name: 'instance_test_name',
+          instance_type: 'mysql',
+          host: '127.0.0.1',
+          port: '8081',
+        },
       ])
     );
     const { result, waitForNextUpdate } = renderHook(() => useInstance());
@@ -46,11 +53,14 @@ describe('useInstance', () => {
     expect(baseElement).toMatchSnapshot();
 
     act(() => {
-      result.current.updateInstanceList();
+      result.current.updateInstanceList({ project_name: projectName });
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.instanceList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
@@ -58,8 +68,16 @@ describe('useInstance', () => {
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.instanceList).toEqual([
-      { instance_name: 'instance_test_name', instance_type: 'mysql' },
+      {
+        instance_name: 'instance_test_name',
+        instance_type: 'mysql',
+        host: '127.0.0.1',
+        port: '8081',
+      },
     ]);
     cleanup();
 
@@ -75,7 +93,7 @@ describe('useInstance', () => {
       jest.runAllTimers();
     });
 
-    await screen.findAllByText('instance_test_name');
+    await screen.findAllByText('instance_test_name (127.0.0.1:8081)');
     expect(baseElementWithOptions).toMatchSnapshot();
   });
 
@@ -83,7 +101,11 @@ describe('useInstance', () => {
     const requestSpy = mockRequest();
     requestSpy.mockImplementation(() =>
       resolveThreeSecond([
-        { instance_name: 'instance_test_name', instance_type: 'mysql' },
+        {
+          instance_name: 'instance_test_name',
+          instance_type: 'mysql',
+          host: '127.0.0.1',
+        },
       ])
     );
     const { result, waitForNextUpdate } = renderHook(() => useInstance());
@@ -91,11 +113,14 @@ describe('useInstance', () => {
     expect(result.current.instanceList).toEqual([]);
 
     act(() => {
-      result.current.updateInstanceList();
+      result.current.updateInstanceList({ project_name: projectName });
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.instanceList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
@@ -103,8 +128,15 @@ describe('useInstance', () => {
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.instanceList).toEqual([
-      { instance_name: 'instance_test_name', instance_type: 'mysql' },
+      {
+        instance_name: 'instance_test_name',
+        instance_type: 'mysql',
+        host: '127.0.0.1',
+      },
     ]);
     requestSpy.mockClear();
     requestSpy.mockImplementation(() =>
@@ -114,14 +146,18 @@ describe('useInstance', () => {
     );
 
     act(() => {
-      result.current.updateInstanceList();
+      result.current.updateInstanceList({ project_name: projectName });
     });
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.instanceList).toEqual([
       {
         instance_name: 'instance_test_name',
         instance_type: 'mysql',
+        host: '127.0.0.1',
       },
     ]);
 
@@ -143,11 +179,14 @@ describe('useInstance', () => {
     expect(result.current.instanceList).toEqual([]);
 
     act(() => {
-      result.current.updateInstanceList();
+      result.current.updateInstanceList({ project_name: projectName });
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.instanceList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
@@ -155,6 +194,9 @@ describe('useInstance', () => {
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.instanceList).toEqual([
       { instance_name: 'instance_test_name' },
     ]);
@@ -164,10 +206,13 @@ describe('useInstance', () => {
     );
 
     act(() => {
-      result.current.updateInstanceList();
+      result.current.updateInstanceList({ project_name: projectName });
     });
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.instanceList).toEqual([
       {
         instance_name: 'instance_test_name',
@@ -179,6 +224,9 @@ describe('useInstance', () => {
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.instanceList).toEqual([]);
   });
 
@@ -195,11 +243,14 @@ describe('useInstance', () => {
     expect(result.current.instanceList).toEqual([]);
 
     act(() => {
-      result.current.updateInstanceList();
+      result.current.updateInstanceList({ project_name: projectName });
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.instanceList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
@@ -207,6 +258,9 @@ describe('useInstance', () => {
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.instanceList).toEqual([
       { instance_name: 'mysql_instance_test_name', instance_type: 'mysql' },
       { instance_name: 'oracle_instance_test_name', instance_type: 'oracle' },
@@ -246,11 +300,14 @@ describe('useInstance', () => {
     expect(result.current.instanceList).toEqual([]);
 
     act(() => {
-      result.current.updateInstanceList();
+      result.current.updateInstanceList({ project_name: projectName });
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.instanceList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
@@ -258,6 +315,9 @@ describe('useInstance', () => {
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
+    expect(requestSpy).toBeCalledWith({
+      project_name: projectName,
+    });
     expect(result.current.instanceList).toEqual([
       { instance_name: 'mysql_instance_test_name_1', instance_type: 'mysql' },
       { instance_name: 'mysql_instance_test_name_2', instance_type: 'mysql' },

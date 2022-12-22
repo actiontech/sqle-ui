@@ -441,12 +441,12 @@ exports[`useInstance should get instance data from request 3`] = `
                   <div
                     aria-selected="false"
                     class="ant-select-item ant-select-item-option ant-select-item-option-grouped"
-                    title="instance_test_name"
+                    title="instance_test_name (127.0.0.1:8081)"
                   >
                     <div
                       class="ant-select-item-option-content"
                     >
-                      instance_test_name
+                      instance_test_name (127.0.0.1:8081)
                     </div>
                     <span
                       aria-hidden="true"

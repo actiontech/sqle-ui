@@ -3,7 +3,6 @@ import instance from '../api/instance';
 import role from '../api/role';
 import ruleTemplate from '../api/rule_template';
 import user from '../api/user';
-import workflow from '../api/workflow';
 import configuration from '../api/configuration';
 import user_group from '../api/user_group';
 import operation from '../api/operation';

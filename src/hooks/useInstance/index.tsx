@@ -60,7 +60,9 @@ const useInstance = () => {
                     key={instance.instance_name}
                     value={instance.instance_name ?? ''}
                   >
-                    {instance.instance_name}
+                    {!!instance.host && !!instance.port
+                      ? `${instance.instance_name} (${instance.host}:${instance.port})`
+                      : instance.instance_name}
                   </Select.Option>
                 );
               })}
