@@ -6,6 +6,7 @@ export const UserListData = [
     role_name_list: [],
     user_group_name_list: ['group'],
     user_name: 'admin',
+    phone: '13312341234',
   },
   {
     email: 'l.cjfetom@gqdrfj.lk',
@@ -14,6 +15,7 @@ export const UserListData = [
     role_name_list: ['roleName'],
     user_group_name_list: [],
     user_name: '孙艳',
+    phone: '13312345678',
   },
   {
     email: 'l.vxrphnpbtt@wxxmrawkh.st',

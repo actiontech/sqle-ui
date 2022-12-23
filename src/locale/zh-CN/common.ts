@@ -99,6 +99,7 @@ export default {
       selectFile: '必须选择一个文件',
       passwordNotMatch: '两次密码输入不一致',
       email: '请输入有效的邮箱地址',
+      phone: '请输入有效的手机号',
       startWithLetter: '必须要以字母开头',
       onlyLetterAndNumber: '只能包含字母、数字、中划线和下划线',
       onlyNumber: '只能包含数字',

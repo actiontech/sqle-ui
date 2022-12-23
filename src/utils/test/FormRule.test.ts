@@ -1,4 +1,8 @@
-import { nameRuleValidator, validatorPort } from '../FormRule';
+import {
+  nameRuleValidator,
+  phoneRuleValidator,
+  validatorPort,
+} from '../FormRule';
 
 describe('utils/FormRule', () => {
   test('should check name must start with letter and only includes letters and number and some special char', async () => {
@@ -70,5 +74,49 @@ describe('utils/FormRule', () => {
       }
       expect(message).toBe(c.message);
     }
+  });
+
+  test('should check phone', async () => {
+    const check = phoneRuleValidator();
+    let message = '';
+    try {
+      await check({} as any, '1123456789', () => {});
+    } catch (error: any) {
+      message = error;
+    }
+
+    expect(message).toBe('common.form.rule.phone');
+
+    message = '';
+    try {
+      await check({} as any, '112345678912', () => {});
+    } catch (error: any) {
+      message = error;
+    }
+    expect(message).toBe('common.form.rule.phone');
+
+    message = '';
+    try {
+      await check({} as any, '1123456789d', () => {});
+    } catch (error: any) {
+      message = error;
+    }
+    expect(message).toBe('common.form.rule.phone');
+
+    message = '';
+    try {
+      await check({} as any, '13412341234', () => {});
+    } catch (error: any) {
+      message = error;
+    }
+    expect(message).toBe('');
+
+    message = '';
+    try {
+      await check({} as any, '', () => {});
+    } catch (error: any) {
+      message = error;
+    }
+    expect(message).toBe('');
   });
 });

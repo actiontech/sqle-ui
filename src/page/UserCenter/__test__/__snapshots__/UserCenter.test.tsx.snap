@@ -401,6 +401,11 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         <th
                                           class="ant-table-cell"
                                         >
+                                          user.userForm.phone
+                                        </th>
+                                        <th
+                                          class="ant-table-cell"
+                                        >
                                           user.table.status
                                         </th>
                                         <th
@@ -441,6 +446,11 @@ exports[`first should be rendered UserManage page when it first entered the user
                                           class="ant-table-cell"
                                         >
                                           a.nnrhdj@uondqxze.ph
+                                        </td>
+                                        <td
+                                          class="ant-table-cell"
+                                        >
+                                          13312341234
                                         </td>
                                         <td
                                           class="ant-table-cell"
@@ -505,6 +515,11 @@ exports[`first should be rendered UserManage page when it first entered the user
                                           class="ant-table-cell"
                                         >
                                           l.cjfetom@gqdrfj.lk
+                                        </td>
+                                        <td
+                                          class="ant-table-cell"
+                                        >
+                                          13312345678
                                         </td>
                                         <td
                                           class="ant-table-cell"
@@ -574,6 +589,9 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         >
                                           l.vxrphnpbtt@wxxmrawkh.st
                                         </td>
+                                        <td
+                                          class="ant-table-cell"
+                                        />
                                         <td
                                           class="ant-table-cell"
                                         >
@@ -678,6 +696,9 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         </td>
                                         <td
                                           class="ant-table-cell"
+                                        />
+                                        <td
+                                          class="ant-table-cell"
                                         >
                                           <span
                                             class="ant-typography ant-typography-danger"
@@ -744,6 +765,9 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         >
                                           b.yuuaipnvn@yxthkee.cq
                                         </td>
+                                        <td
+                                          class="ant-table-cell"
+                                        />
                                         <td
                                           class="ant-table-cell"
                                         >
@@ -848,6 +872,9 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         </td>
                                         <td
                                           class="ant-table-cell"
+                                        />
+                                        <td
+                                          class="ant-table-cell"
                                         >
                                           <span
                                             class="ant-typography"
@@ -920,6 +947,9 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         >
                                           l.enlvcrn@xgevp.uk
                                         </td>
+                                        <td
+                                          class="ant-table-cell"
+                                        />
                                         <td
                                           class="ant-table-cell"
                                         >
@@ -1029,6 +1059,9 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         </td>
                                         <td
                                           class="ant-table-cell"
+                                        />
+                                        <td
+                                          class="ant-table-cell"
                                         >
                                           <span
                                             class="ant-typography ant-typography-danger"
@@ -1101,6 +1134,9 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         >
                                           n.tlam@ilrqhnsito.tf
                                         </td>
+                                        <td
+                                          class="ant-table-cell"
+                                        />
                                         <td
                                           class="ant-table-cell"
                                         >
@@ -1197,6 +1233,9 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         >
                                           v.otxzpusup@bubxdfulx.id
                                         </td>
+                                        <td
+                                          class="ant-table-cell"
+                                        />
                                         <td
                                           class="ant-table-cell"
                                         >

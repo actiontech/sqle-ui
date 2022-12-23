@@ -52,6 +52,7 @@ const UpdateUser = () => {
       wechat_id: values.wechat,
       email: values.email ?? '',
       management_permission_code_list: values.managementPermissionCodeList,
+      phone: values.phone ?? '',
     };
     if (values.username !== 'admin') {
       params.is_disabled = !!values.disabled;
@@ -84,6 +85,7 @@ const UpdateUser = () => {
         wechat: currentUser?.wechat_id,
         managementPermissionCodeList:
           currentUser?.management_permission_list?.map((v) => v.code ?? 0),
+        phone: currentUser?.phone,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -23,6 +23,10 @@ const tableHeaderFactory = (
       title: () => i18n.t('user.userForm.email'),
     },
     {
+      dataIndex: 'phone',
+      title: () => i18n.t('user.userForm.phone'),
+    },
+    {
       dataIndex: 'is_disabled',
       title: () => i18n.t('user.table.status'),
       render: (isDisabled: boolean) => {
