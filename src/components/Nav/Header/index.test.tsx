@@ -1,15 +1,20 @@
 import Header from '.';
-import { renderWithRouter } from '../../../testUtils/customRender';
+import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
 import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
 import { SupportLanguage } from '../../../locale';
 import { SupportTheme } from '../../../theme';
 import { ModalName } from '../../../data/ModalName';
+import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
 
 describe('Header', () => {
   let scopeDispatch: jest.Mock;
   beforeEach(() => {
     mockUseSelector({
-      user: { username: 'admin', theme: SupportTheme.LIGHT },
+      user: {
+        username: 'admin',
+        theme: SupportTheme.LIGHT,
+        bindProjects: mockBindProjects,
+      },
       locale: { language: SupportLanguage.zhCN },
       nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
     });
@@ -22,7 +27,7 @@ describe('Header', () => {
   });
 
   test('should match snapshot', () => {
-    const { baseElement } = renderWithRouter(<Header />);
+    const { baseElement } = renderWithThemeAndRouter(<Header />);
 
     expect(baseElement).toMatchSnapshot();
   });

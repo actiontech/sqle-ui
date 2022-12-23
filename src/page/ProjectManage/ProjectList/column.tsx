@@ -7,14 +7,22 @@ import { TableColumn } from '../../../types/common.type';
 export const ProjectListTableColumnFactory = (
   deleteAction: (name?: string) => void,
   openModalAndUpdateSelectProject: (record: IProjectListItem) => void,
-  allowOperateProject: (projectName: string) => boolean
+  allowOperateProject: (projectName: string) => boolean,
+  updateRecentlyProject: (projectName: string) => void
 ): TableColumn<IProjectListItem, 'operator'> => {
   return [
     {
       dataIndex: 'name',
       title: () => i18n.t('projectManage.projectList.column.name'),
       render(name: string) {
-        return <Link to={`/project/${name}`}>{name}</Link>;
+        return (
+          <Link
+            onClick={() => updateRecentlyProject(name)}
+            to={`/project/${name}`}
+          >
+            {name}
+          </Link>
+        );
       },
     },
     {

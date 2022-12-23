@@ -1,4 +1,4 @@
-import ProjectDetail from '.';
+import ProjectDetail, { useRecentlyOpenedProjects } from '.';
 import { mockUseDispatch } from '../../../testUtils/mockRedux';
 import { useParams } from 'react-router-dom';
 import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
@@ -17,6 +17,10 @@ import {
   mockGetProjectStatistics,
 } from '../__test__/utils';
 import { mockUseStyle } from '../../../testUtils/mockStyle';
+import { act, renderHook } from '@testing-library/react-hooks/dom';
+import EventEmitter from '../../../utils/EventEmitter';
+import EmitterKey from '../../../data/EmitterKey';
+import StorageKey from '../../../data/StorageKey';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -109,5 +113,124 @@ describe('test ProjectManage/ProjectDetail', () => {
     expect(container).toMatchSnapshot();
     expect(getProjectDetailSpy).toBeCalledTimes(1);
     expect(getProjectStatistics).toBeCalledTimes(1);
+  });
+});
+
+describe('test useRecentlyOpenedProjects', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+    jest.useRealTimers();
+    jest.clearAllTimers();
+  });
+
+  test('should perform as expected with update operation', async () => {
+    const localStorageSetItemSpy = jest.spyOn(Storage.prototype, 'setItem');
+    const { result } = renderHook(() => useRecentlyOpenedProjects());
+
+    expect(localStorageSetItemSpy).toBeCalledTimes(0);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    act(() => {
+      result.current.updateRecentlyProject('default1');
+    });
+
+    expect(localStorageSetItemSpy).toBeCalledTimes(1);
+    expect(localStorageSetItemSpy).toBeCalledWith(
+      StorageKey.Project_Catch,
+      JSON.stringify(['default1'])
+    );
+
+    expect(result.current.recentlyProjects).toEqual(['default1']);
+
+    act(() => {
+      result.current.updateRecentlyProject('default2');
+    });
+
+    expect(localStorageSetItemSpy).toBeCalledTimes(2);
+    expect(localStorageSetItemSpy).toBeCalledWith(
+      StorageKey.Project_Catch,
+      JSON.stringify(['default2', 'default1'])
+    );
+
+    expect(result.current.recentlyProjects).toEqual(['default2', 'default1']);
+
+    act(() => {
+      result.current.updateRecentlyProject('default3');
+    });
+
+    expect(localStorageSetItemSpy).toBeCalledTimes(3);
+    expect(localStorageSetItemSpy).toBeCalledWith(
+      StorageKey.Project_Catch,
+      JSON.stringify(['default3', 'default2', 'default1'])
+    );
+
+    expect(result.current.recentlyProjects).toEqual([
+      'default3',
+      'default2',
+      'default1',
+    ]);
+
+    act(() => {
+      result.current.updateRecentlyProject('default4');
+    });
+
+    expect(localStorageSetItemSpy).toBeCalledTimes(4);
+    expect(localStorageSetItemSpy).toBeCalledWith(
+      StorageKey.Project_Catch,
+      JSON.stringify(['default4', 'default3', 'default2'])
+    );
+
+    expect(result.current.recentlyProjects).toEqual([
+      'default4',
+      'default3',
+      'default2',
+    ]);
+
+    act(() => {
+      result.current.updateRecentlyProject('default3');
+    });
+
+    expect(localStorageSetItemSpy).toBeCalledTimes(5);
+    expect(localStorageSetItemSpy).toBeCalledWith(
+      StorageKey.Project_Catch,
+      JSON.stringify(['default3', 'default4', 'default2'])
+    );
+
+    expect(result.current.recentlyProjects).toEqual([
+      'default3',
+      'default4',
+      'default2',
+    ]);
+
+    window.localStorage.clear();
+  });
+
+  test('should be an empty array when no update operation is performed', () => {
+    const subscribeSpy = jest.spyOn(EventEmitter, 'subscribe');
+    const unsubscribeSpy = jest.spyOn(EventEmitter, 'unsubscribe');
+
+    const { result, unmount } = renderHook(() => useRecentlyOpenedProjects());
+
+    expect(result.current.recentlyProjects).toEqual([]);
+
+    expect(unsubscribeSpy).toBeCalledTimes(0);
+    expect(subscribeSpy).toBeCalledTimes(1);
+    expect(subscribeSpy.mock.calls[0][0]).toBe(
+      EmitterKey.Update_Recently_Opened_Projects
+    );
+
+    unmount();
+
+    expect(unsubscribeSpy).toBeCalledTimes(1);
+    expect(unsubscribeSpy.mock.calls[0][0]).toBe(
+      EmitterKey.Update_Recently_Opened_Projects
+    );
   });
 });

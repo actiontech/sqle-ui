@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router-dom';
 import { DEFAULT_PROJECT_NAME } from '../../../../page/ProjectManage/ProjectDetail';
@@ -7,6 +7,7 @@ import {
   GlobalRouterItemKeyLiteral,
   RouterItem,
 } from '../../../../types/router.type';
+import ProjectDropdown from './ProjectDropdown';
 
 const headerMenuKeys: Array<typeof globalRouterConfig[number]['key']> = [
   'dashboard',
@@ -35,6 +36,8 @@ const HeaderMenu: React.FC = () => {
     history.push(path);
   };
 
+  const [projectDropdownVisible, setProjectDropdownVisible] = useState(false);
+
   const isActiveMenu = useCallback(
     (router: RouterItem<GlobalRouterItemKeyLiteral>) => {
       if (router.key === 'projectList' || router.key === 'projectDetail') {
@@ -45,22 +48,47 @@ const HeaderMenu: React.FC = () => {
     },
     [location.pathname]
   );
+
+  const generateMenu = (router: RouterItem<GlobalRouterItemKeyLiteral>) => {
+    if (router.key === 'projectList') {
+      return (
+        <ProjectDropdown
+          key="projectList"
+          visible={projectDropdownVisible}
+          onVisibleChange={setProjectDropdownVisible}
+        >
+          <div
+            className={`${
+              isActiveMenu(router) ? 'header-menu-item-active' : ''
+            } header-menu-item`}
+            onClick={() => setProjectDropdownVisible(true)}
+          >
+            <span className="header-menu-item-icon">{router.icon}</span>
+            {t(router.label)}
+          </div>
+        </ProjectDropdown>
+      );
+    }
+
+    return (
+      <div
+        key={router.key}
+        className={`${
+          isActiveMenu(router) ? 'header-menu-item-active' : ''
+        } header-menu-item`}
+        onClick={() => jumpToPath(router.path as string)}
+      >
+        <span className="header-menu-item-icon">{router.icon}</span>
+        {t(router.label)}
+      </div>
+    );
+  };
+
   return (
     <div className="header-menu">
       {globalRouterConfig.map((router) => {
         if (headerMenuKeys.includes(router.key)) {
-          return (
-            <div
-              key={router.key}
-              className={`${
-                isActiveMenu(router) ? 'header-menu-item-active' : ''
-              } header-menu-item`}
-              onClick={() => jumpToPath(router.path as string)}
-            >
-              <span className="header-menu-item-icon">{router.icon}</span>
-              {t(router.label)}
-            </div>
-          );
+          return generateMenu(router);
         }
         return null;
       })}

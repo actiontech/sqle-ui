@@ -26,6 +26,8 @@ enum EmitterKey {
   Refresh_Member_Group_List = 'Refresh_Member_Group_List',
   Refresh_Filter_User_Tips = 'Refresh_Filter_User_Tips',
   Refresh_Filter_User_Group_Tips = 'Refresh_Filter_User_Group_Tips',
+
+  Update_Recently_Opened_Projects = 'UPDATE_RECENTLY_OPENED_PROJECTS',
 }
 
 export default EmitterKey;

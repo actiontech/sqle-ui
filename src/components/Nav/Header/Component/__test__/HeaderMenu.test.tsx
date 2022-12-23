@@ -1,15 +1,49 @@
 import {
-  renderWithRouter,
-  renderWithServerRouter,
+  renderWithThemeAndRouter,
+  renderWithThemeAndServerRouter,
 } from '../../../../../testUtils/customRender';
 import HeaderMenu from '../HeaderMenu';
 import { createMemoryHistory } from 'history';
 import { fireEvent, screen } from '@testing-library/react';
 import { DEFAULT_PROJECT_NAME } from '../../../../../page/ProjectManage/ProjectDetail';
+import { mockUseSelector } from '../../../../../testUtils/mockRedux';
+import { SystemRole } from '../../../../../data/common';
+import { mockBindProjects } from '../../../../../hooks/useCurrentUser/index.test';
 
 describe('test Nav/Header/HeaderMenu', () => {
+  let errorSpy!: jest.SpyInstance;
+
+  beforeAll(() => {
+    const error = global.console.error;
+    errorSpy = jest.spyOn(global.console, 'error');
+    errorSpy.mockImplementation((message: string) => {
+      if (
+        message.includes(
+          ' React does not recognize the `eventKey` prop on a DOM element'
+        )
+      ) {
+        return;
+      }
+      error(message);
+    });
+  });
+
+  afterAll(() => {
+    errorSpy.mockRestore();
+  });
+  beforeEach(() => {
+    mockUseSelector({
+      user: { role: SystemRole.admin, bindProjects: mockBindProjects },
+    });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+    jest.clearAllTimers();
+    window.localStorage.clear();
+  });
   test('should match snapshot', () => {
-    const { container } = renderWithRouter(<HeaderMenu />);
+    const { container } = renderWithThemeAndRouter(<HeaderMenu />);
 
     expect(container).toMatchSnapshot();
   });
@@ -17,7 +51,11 @@ describe('test Nav/Header/HeaderMenu', () => {
   test('should jump to path when clicking the menu item', () => {
     const history = createMemoryHistory();
     history.push('/test');
-    renderWithServerRouter(<HeaderMenu />, undefined, { history });
+    const { baseElement } = renderWithThemeAndServerRouter(
+      <HeaderMenu />,
+      undefined,
+      { history }
+    );
     expect(history.location.pathname).toBe('/test');
 
     expect(screen.getByText('menu.dashboard')).not.toHaveClass(
@@ -51,10 +89,7 @@ describe('test Nav/Header/HeaderMenu', () => {
       'header-menu-item-active'
     );
     fireEvent.click(screen.getAllByText('menu.projectManage')[0]);
-    expect(history.location.pathname).toBe('/project');
-    expect(screen.getAllByText('menu.projectManage')[0]).toHaveClass(
-      'header-menu-item-active'
-    );
+    expect(baseElement).toMatchSnapshot();
 
     fireEvent.click(screen.getByText('menu.dashboard'));
     expect(screen.getAllByText('menu.projectManage')[1]).not.toHaveClass(
