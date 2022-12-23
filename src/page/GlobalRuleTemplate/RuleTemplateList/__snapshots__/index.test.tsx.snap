@@ -166,11 +166,6 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 1`] = `
                         <th
                           class="ant-table-cell"
                         >
-                          ruleTemplate.ruleTemplateList.table.dataSource
-                        </th>
-                        <th
-                          class="ant-table-cell"
-                        >
                           common.operate
                         </th>
                       </tr>
@@ -183,7 +178,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 1`] = `
                       >
                         <td
                           class="ant-table-cell"
-                          colspan="5"
+                          colspan="4"
                         >
                           <div
                             class="ant-empty ant-empty-normal"
@@ -390,11 +385,6 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                         <th
                           class="ant-table-cell"
                         >
-                          ruleTemplate.ruleTemplateList.table.dataSource
-                        </th>
-                        <th
-                          class="ant-table-cell"
-                        >
                           common.operate
                         </th>
                       </tr>
@@ -425,11 +415,6 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                           class="ant-table-cell"
                         >
                           mysql
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          
                         </td>
                         <td
                           class="ant-table-cell"
@@ -529,11 +514,6 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                           class="ant-table-cell"
                         >
                           oracle
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          
                         </td>
                         <td
                           class="ant-table-cell"

@@ -4,7 +4,6 @@ import { RuleTemplateFormProps } from '../index.type';
 
 export type RuleTemplateBaseInfoFields = {
   templateName: string;
-  instances?: string[];
   templateDesc?: string;
   db_type: string;
 };

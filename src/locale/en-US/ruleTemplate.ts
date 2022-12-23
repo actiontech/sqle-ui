@@ -33,7 +33,6 @@ export default {
 
     templateName: 'Template Name',
     templateDesc: 'Template Describe',
-    instances: 'Instances',
 
     activeRuleTitle: 'Enable Rule',
     activeRule: 'Enable',

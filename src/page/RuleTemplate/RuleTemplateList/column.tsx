@@ -1,5 +1,5 @@
 import { DownOutlined } from '@ant-design/icons';
-import { Divider, Dropdown, Menu, Popconfirm, Tag, Typography } from 'antd';
+import { Divider, Dropdown, Menu, Popconfirm, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import { IProjectRuleTemplateResV1 } from '../../../api/common';
 import i18n from '../../../locale';
@@ -39,16 +39,6 @@ export const RuleTemplateListTableColumnFactory = (
     {
       dataIndex: 'db_type',
       title: () => i18n.t('ruleTemplate.ruleTemplateList.table.dbType'),
-    },
-    {
-      dataIndex: 'instance_list',
-      title: () => i18n.t('ruleTemplate.ruleTemplateList.table.dataSource'),
-      render: (data: IProjectRuleTemplateResV1['instance_list']) => {
-        if (!data || !Array.isArray(data)) {
-          return '';
-        }
-        return data.map((item) => <Tag key={item.name}>{item.name ?? ''}</Tag>);
-      },
     },
     {
       dataIndex: 'operator',

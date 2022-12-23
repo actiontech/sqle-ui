@@ -125,11 +125,6 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 1`] = `
                         >
                           ruleTemplate.ruleTemplateList.table.dbType
                         </th>
-                        <th
-                          class="ant-table-cell"
-                        >
-                          ruleTemplate.ruleTemplateList.table.dataSource
-                        </th>
                       </tr>
                     </thead>
                     <tbody
@@ -140,7 +135,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 1`] = `
                       >
                         <td
                           class="ant-table-cell"
-                          colspan="4"
+                          colspan="3"
                         >
                           <div
                             class="ant-empty ant-empty-normal"
@@ -345,7 +340,6 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 1`] = `
                       <col />
                       <col />
                       <col />
-                      <col />
                       <col
                         style="width: 180px;"
                       />
@@ -373,11 +367,6 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 1`] = `
                         <th
                           class="ant-table-cell"
                         >
-                          ruleTemplate.ruleTemplateList.table.dataSource
-                        </th>
-                        <th
-                          class="ant-table-cell"
-                        >
                           common.operate
                         </th>
                       </tr>
@@ -390,7 +379,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 1`] = `
                       >
                         <td
                           class="ant-table-cell"
-                          colspan="5"
+                          colspan="4"
                         >
                           <div
                             class="ant-empty ant-empty-normal"
@@ -556,11 +545,6 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                         >
                           ruleTemplate.ruleTemplateList.table.dbType
                         </th>
-                        <th
-                          class="ant-table-cell"
-                        >
-                          ruleTemplate.ruleTemplateList.table.dataSource
-                        </th>
                       </tr>
                     </thead>
                     <tbody
@@ -571,7 +555,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                       >
                         <td
                           class="ant-table-cell"
-                          colspan="4"
+                          colspan="3"
                         >
                           <div
                             class="ant-empty ant-empty-normal"
@@ -754,7 +738,6 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                       <col />
                       <col />
                       <col />
-                      <col />
                       <col
                         style="width: 180px;"
                       />
@@ -778,11 +761,6 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                           class="ant-table-cell"
                         >
                           ruleTemplate.ruleTemplateList.table.dbType
-                        </th>
-                        <th
-                          class="ant-table-cell"
-                        >
-                          ruleTemplate.ruleTemplateList.table.dataSource
                         </th>
                         <th
                           class="ant-table-cell"
@@ -817,11 +795,6 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                           class="ant-table-cell"
                         >
                           mysql
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          
                         </td>
                         <td
                           class="ant-table-cell"
@@ -893,11 +866,6 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                           class="ant-table-cell"
                         >
                           oracle
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          
                         </td>
                         <td
                           class="ant-table-cell"

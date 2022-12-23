@@ -66,7 +66,6 @@ const UpdateRuleTemplate = () => {
         desc: baseInfo.templateDesc,
         rule_list: activeRuleWithNewField,
         project_name: projectName,
-        instance_name_list: baseInfo.instances,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {

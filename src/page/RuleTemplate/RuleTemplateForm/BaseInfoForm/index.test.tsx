@@ -2,17 +2,15 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { useForm } from 'antd/lib/form/Form';
 import BaseInfoForm from '.';
-import { mockDriver, mockUseInstance } from '../../../../testUtils/mockRequest';
+import { mockDriver } from '../../../../testUtils/mockRequest';
 
 describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
   const projectName = 'default';
 
   let getDriverNameListSpy: jest.SpyInstance;
-  let getInstanceListSpy: jest.SpyInstance;
   beforeEach(() => {
     jest.useFakeTimers();
     getDriverNameListSpy = mockDriver();
-    getInstanceListSpy = mockUseInstance();
   });
 
   afterEach(() => {
@@ -24,7 +22,6 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
   test('should reset all fields when user click reset button and isUpdate of props is not true', async () => {
     const { result } = renderHook(() => useForm());
     expect(getDriverNameListSpy).toBeCalledTimes(0);
-    expect(getInstanceListSpy).toBeCalledTimes(0);
     render(
       <BaseInfoForm
         form={result.current[0]}
@@ -34,8 +31,6 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
       />
     );
     expect(getDriverNameListSpy).toBeCalledTimes(1);
-    expect(getInstanceListSpy).toBeCalledTimes(1);
-    expect(getInstanceListSpy).toBeCalledWith({ project_name: projectName });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -57,11 +52,6 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
     expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
     fireEvent.click(databaseTypeOption);
 
-    fireEvent.mouseDown(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
-    );
-    const option = screen.getAllByText('instance1')[0];
-    fireEvent.click(option);
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
@@ -74,9 +64,6 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
     ).toHaveValue('');
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateDesc')
-    ).toHaveValue('');
-    expect(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
     ).toHaveValue('');
   });
 
@@ -115,17 +102,6 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
       { target: { value: 'template describe' } }
     );
 
-    fireEvent.mouseDown(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
-    );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    const option = screen.getAllByText('instance1')[0];
-    fireEvent.click(option);
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
     fireEvent.click(screen.getByText('common.reset'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
@@ -136,9 +112,7 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateDesc')
     ).toHaveValue('');
-    expect(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.instances')
-    ).toHaveValue('');
+
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
     ).toHaveValue('');
