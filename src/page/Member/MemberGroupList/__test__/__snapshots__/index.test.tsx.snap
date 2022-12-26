@@ -365,7 +365,7 @@ exports[`test MemberGroupList should match snapshot 1`] = `
                         <th
                           class="ant-table-cell"
                         >
-                          member.memberGroupList.tableColumn.userGroupName
+                          member.memberGroupList.tableColumn.users
                         </th>
                         <th
                           class="ant-table-cell"
@@ -793,7 +793,7 @@ exports[`test MemberGroupList should match snapshot 2`] = `
                         <th
                           class="ant-table-cell"
                         >
-                          member.memberGroupList.tableColumn.userGroupName
+                          member.memberGroupList.tableColumn.users
                         </th>
                         <th
                           class="ant-table-cell"

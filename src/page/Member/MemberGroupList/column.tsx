@@ -24,7 +24,7 @@ const MemberGroupListTableColumnFactory: (
     },
     {
       dataIndex: 'users',
-      title: i18n.t('member.memberGroupList.tableColumn.userGroupName'),
+      title: i18n.t('member.memberGroupList.tableColumn.users'),
       render(users: IMemberGroupUserItem[]) {
         if (!Array.isArray(users)) {
           return null;
