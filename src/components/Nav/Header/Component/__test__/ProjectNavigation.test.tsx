@@ -6,7 +6,7 @@ import {
   renderWithThemeAndServerRouter,
 } from '../../../../../testUtils/customRender';
 import { mockUseSelector } from '../../../../../testUtils/mockRedux';
-import ProjectDropdown from '../ProjectDropdown';
+import ProjectNavigation from '../ProjectNavigation';
 import { createMemoryHistory } from 'history';
 
 const children = 'test';
@@ -19,7 +19,7 @@ function sleep(time: number) {
   });
 }
 
-describe('test ProjectDropdown', () => {
+describe('test ProjectNavigation', () => {
   let errorSpy!: jest.SpyInstance;
 
   beforeAll(() => {
@@ -55,7 +55,7 @@ describe('test ProjectDropdown', () => {
 
   test('should match snapshot', async () => {
     const { baseElement } = renderWithThemeAndRouter(
-      <ProjectDropdown visible={true}>{children}</ProjectDropdown>
+      <ProjectNavigation visible={true}>{children}</ProjectNavigation>
     );
 
     expect(baseElement).toMatchSnapshot();
@@ -66,9 +66,9 @@ describe('test ProjectDropdown', () => {
     const onVisibleChange = jest.fn();
 
     const { baseElement } = renderWithThemeAndServerRouter(
-      <ProjectDropdown visible={true} onVisibleChange={onVisibleChange}>
+      <ProjectNavigation visible={true} onVisibleChange={onVisibleChange}>
         {children}
-      </ProjectDropdown>,
+      </ProjectNavigation>,
       undefined,
       { history }
     );
@@ -105,9 +105,9 @@ describe('test ProjectDropdown', () => {
     const onVisibleChange = jest.fn();
 
     const { baseElement } = renderWithThemeAndServerRouter(
-      <ProjectDropdown visible={true} onVisibleChange={onVisibleChange}>
+      <ProjectNavigation visible={true} onVisibleChange={onVisibleChange}>
         {children}
-      </ProjectDropdown>,
+      </ProjectNavigation>,
       undefined,
       { history }
     );
@@ -158,9 +158,9 @@ describe('test ProjectDropdown', () => {
     const onVisibleChange = jest.fn();
 
     renderWithThemeAndServerRouter(
-      <ProjectDropdown visible={true} onVisibleChange={onVisibleChange}>
+      <ProjectNavigation visible={true} onVisibleChange={onVisibleChange}>
         {children}
-      </ProjectDropdown>,
+      </ProjectNavigation>,
       undefined,
       { history }
     );

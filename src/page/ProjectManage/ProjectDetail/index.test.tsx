@@ -1,7 +1,10 @@
 import ProjectDetail, { useRecentlyOpenedProjects } from '.';
-import { mockUseDispatch } from '../../../testUtils/mockRedux';
+import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
 import { useParams } from 'react-router-dom';
-import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
+import {
+  mockBindProjects,
+  mockManagementPermissions,
+} from '../../../hooks/useCurrentUser/index.test';
 import { render, screen, waitFor } from '@testing-library/react';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import {
@@ -21,6 +24,7 @@ import { act, renderHook } from '@testing-library/react-hooks/dom';
 import EventEmitter from '../../../utils/EventEmitter';
 import EmitterKey from '../../../data/EmitterKey';
 import StorageKey from '../../../data/StorageKey';
+import { SystemRole } from '../../../data/common';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -117,8 +121,42 @@ describe('test ProjectManage/ProjectDetail', () => {
 });
 
 describe('test useRecentlyOpenedProjects', () => {
+  const username1 = 'admin';
+  const username2 = 'test';
+
+  const bindProjects = [
+    {
+      is_manager: true,
+      project_name: 'default',
+    },
+    {
+      is_manager: false,
+      project_name: 'default1',
+    },
+    {
+      is_manager: false,
+      project_name: 'default2',
+    },
+    {
+      is_manager: false,
+      project_name: 'default3',
+    },
+    {
+      is_manager: false,
+      project_name: 'default4',
+    },
+  ];
+
   beforeEach(() => {
     jest.useFakeTimers();
+    mockUseSelector({
+      user: {
+        username: username1,
+        role: SystemRole.admin,
+        bindProjects: bindProjects,
+        managementPermissions: mockManagementPermissions,
+      },
+    });
   });
 
   afterEach(() => {
@@ -127,15 +165,11 @@ describe('test useRecentlyOpenedProjects', () => {
     jest.clearAllTimers();
   });
 
-  test('should perform as expected with update operation', async () => {
+  test('should perform as expected with update operation', () => {
     const localStorageSetItemSpy = jest.spyOn(Storage.prototype, 'setItem');
     const { result } = renderHook(() => useRecentlyOpenedProjects());
 
     expect(localStorageSetItemSpy).toBeCalledTimes(0);
-
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
 
     act(() => {
       result.current.updateRecentlyProject('default1');
@@ -144,7 +178,7 @@ describe('test useRecentlyOpenedProjects', () => {
     expect(localStorageSetItemSpy).toBeCalledTimes(1);
     expect(localStorageSetItemSpy).toBeCalledWith(
       StorageKey.Project_Catch,
-      JSON.stringify(['default1'])
+      JSON.stringify({ [username1]: ['default1'] })
     );
 
     expect(result.current.recentlyProjects).toEqual(['default1']);
@@ -156,7 +190,7 @@ describe('test useRecentlyOpenedProjects', () => {
     expect(localStorageSetItemSpy).toBeCalledTimes(2);
     expect(localStorageSetItemSpy).toBeCalledWith(
       StorageKey.Project_Catch,
-      JSON.stringify(['default2', 'default1'])
+      JSON.stringify({ [username1]: ['default2', 'default1'] })
     );
 
     expect(result.current.recentlyProjects).toEqual(['default2', 'default1']);
@@ -168,7 +202,7 @@ describe('test useRecentlyOpenedProjects', () => {
     expect(localStorageSetItemSpy).toBeCalledTimes(3);
     expect(localStorageSetItemSpy).toBeCalledWith(
       StorageKey.Project_Catch,
-      JSON.stringify(['default3', 'default2', 'default1'])
+      JSON.stringify({ [username1]: ['default3', 'default2', 'default1'] })
     );
 
     expect(result.current.recentlyProjects).toEqual([
@@ -184,7 +218,7 @@ describe('test useRecentlyOpenedProjects', () => {
     expect(localStorageSetItemSpy).toBeCalledTimes(4);
     expect(localStorageSetItemSpy).toBeCalledWith(
       StorageKey.Project_Catch,
-      JSON.stringify(['default4', 'default3', 'default2'])
+      JSON.stringify({ [username1]: ['default4', 'default3', 'default2'] })
     );
 
     expect(result.current.recentlyProjects).toEqual([
@@ -200,7 +234,7 @@ describe('test useRecentlyOpenedProjects', () => {
     expect(localStorageSetItemSpy).toBeCalledTimes(5);
     expect(localStorageSetItemSpy).toBeCalledWith(
       StorageKey.Project_Catch,
-      JSON.stringify(['default3', 'default4', 'default2'])
+      JSON.stringify({ [username1]: ['default3', 'default4', 'default2'] })
     );
 
     expect(result.current.recentlyProjects).toEqual([
@@ -210,6 +244,61 @@ describe('test useRecentlyOpenedProjects', () => {
     ]);
 
     window.localStorage.clear();
+  });
+
+  test('should be distinguished projects by users and filtering out projects that do not have permissions', () => {
+    const localStorageSetItemSpy = jest.spyOn(Storage.prototype, 'setItem');
+    const { result, rerender } = renderHook(() => useRecentlyOpenedProjects());
+
+    expect(localStorageSetItemSpy).toBeCalledTimes(0);
+
+    act(() => {
+      result.current.updateRecentlyProject('default1');
+    });
+
+    expect(localStorageSetItemSpy).toBeCalledTimes(1);
+    expect(localStorageSetItemSpy).toBeCalledWith(
+      StorageKey.Project_Catch,
+      JSON.stringify({ [username1]: ['default1'] })
+    );
+    expect(result.current.recentlyProjects).toEqual(['default1']);
+    jest.clearAllMocks();
+
+    mockUseSelector({
+      user: {
+        username: username2,
+        role: SystemRole.admin,
+        bindProjects: bindProjects,
+        managementPermissions: mockManagementPermissions,
+      },
+    });
+
+    rerender();
+
+    act(() => {
+      result.current.updateRecentlyProject('default1');
+    });
+
+    expect(localStorageSetItemSpy).toBeCalledTimes(1);
+    expect(localStorageSetItemSpy).toBeCalledWith(
+      StorageKey.Project_Catch,
+      JSON.stringify({ [username1]: ['default1'], [username2]: ['default1'] })
+    );
+    expect(result.current.recentlyProjects).toEqual(['default1']);
+
+    jest.clearAllMocks();
+
+    mockUseSelector({
+      user: {
+        username: username2,
+        role: SystemRole.admin,
+        bindProjects: [],
+        managementPermissions: mockManagementPermissions,
+      },
+    });
+
+    rerender();
+    expect(result.current.recentlyProjects).toEqual([]);
   });
 
   test('should be an empty array when no update operation is performed', () => {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test ProjectDropdown should be able to search for projects properly 1`] = `
+exports[`test ProjectNavigation should be able to search for projects properly 1`] = `
 <body>
   <div>
     test
@@ -208,7 +208,7 @@ exports[`test ProjectDropdown should be able to search for projects properly 1`]
 </body>
 `;
 
-exports[`test ProjectDropdown should match snapshot 1`] = `
+exports[`test ProjectNavigation should match snapshot 1`] = `
 <body>
   <div>
     test
@@ -444,7 +444,7 @@ exports[`test ProjectDropdown should match snapshot 1`] = `
 </body>
 `;
 
-exports[`test ProjectDropdown should update the recently used item when clicking on the project 1`] = `
+exports[`test ProjectNavigation should update the recently used item when clicking on the project 1`] = `
 <body>
   <div>
     test

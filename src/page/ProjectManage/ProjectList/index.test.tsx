@@ -21,6 +21,7 @@ describe('test ProjectManage/ProjectList', () => {
   let getProjectListSpy: jest.SpyInstance;
   let deleteProjectList: jest.SpyInstance;
   let dispatchSpy: jest.SpyInstance;
+  const username = 'test';
   beforeEach(() => {
     mockUseSelector({
       projectManage: {
@@ -33,6 +34,7 @@ describe('test ProjectManage/ProjectList', () => {
         role: SystemRole.admin,
         bindProjects: [],
         managementPermissions: [],
+        username,
       },
     });
     getProjectListSpy = mockGetProjectList();
@@ -406,13 +408,13 @@ describe('test ProjectManage/ProjectList', () => {
     fireEvent.click(screen.getByText('project1'));
 
     expect(emitSpy).toBeCalledTimes(1);
-    expect(emitSpy).toBeCalledWith(EmitterKey.Update_Recently_Opened_Projects, [
-      'project1',
-    ]);
+    expect(emitSpy).toBeCalledWith(EmitterKey.Update_Recently_Opened_Projects, {
+      [username]: ['project1'],
+    });
     expect(localStorageSetItemSpy).toBeCalledTimes(1);
     expect(localStorageSetItemSpy).toBeCalledWith(
       StorageKey.Project_Catch,
-      JSON.stringify(['project1'])
+      JSON.stringify({ [username]: ['project1'] })
     );
     window.localStorage.clear();
   });

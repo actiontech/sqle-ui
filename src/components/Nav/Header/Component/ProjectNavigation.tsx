@@ -18,7 +18,7 @@ import { useRecentlyOpenedProjects } from '../../../../page/ProjectManage/Projec
 import useStyles from '../../../../theme';
 import EmptyBox from '../../../EmptyBox';
 
-const ProjectDropdown: React.FC<
+const ProjectNavigation: React.FC<
   Pick<DropDownProps, 'visible' | 'onVisibleChange'>
 > = ({ children, visible, onVisibleChange }) => {
   const { t } = useTranslation();
@@ -116,7 +116,7 @@ const ProjectDropdown: React.FC<
         </Typography.Text>
 
         <EmptyBox
-          if={recentlyProjects.length > 0}
+          if={recentlyProjects?.length > 0}
           defaultNode={
             <Typography.Text type="secondary">
               {t(
@@ -126,7 +126,7 @@ const ProjectDropdown: React.FC<
           }
         >
           <div>
-            {recentlyProjects.map((name) => {
+            {recentlyProjects?.map((name) => {
               if (name) {
                 return (
                   <div
@@ -190,4 +190,4 @@ const ProjectDropdown: React.FC<
   );
 };
 
-export default ProjectDropdown;
+export default ProjectNavigation;
