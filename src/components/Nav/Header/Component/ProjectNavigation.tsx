@@ -111,14 +111,14 @@ const ProjectNavigation: React.FC<
         className="full-width-element"
         key="recentlyOpenedProjects"
       >
-        <Typography.Text>
+        <Typography.Text strong>
           {t('projectManage.projectList.searchProject.recentlyOpenedProjects')}
         </Typography.Text>
 
         <EmptyBox
           if={recentlyProjects?.length > 0}
           defaultNode={
-            <Typography.Text type="secondary">
+            <Typography.Text type="secondary" style={{ marginLeft: 12 }}>
               {t(
                 'projectManage.projectList.searchProject.notRecentlyOpenedProjects'
               )}
@@ -179,7 +179,9 @@ const ProjectNavigation: React.FC<
 
             <Menu.Divider />
             <Menu.Item key="allProject" onClick={showAllProjects}>
-              {t('projectManage.projectList.allProject')}
+              <Typography.Text strong>
+                {t('projectManage.projectList.allProject')}
+              </Typography.Text>
             </Menu.Item>
           </Menu>
         }

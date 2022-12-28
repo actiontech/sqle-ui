@@ -112,7 +112,13 @@ exports[`test ProjectNavigation should be able to search for projects properly 1
             <span
               class="ant-dropdown-menu-title-content"
             >
-              projectManage.projectList.allProject
+              <span
+                class="ant-typography"
+              >
+                <strong>
+                  projectManage.projectList.allProject
+                </strong>
+              </span>
             </span>
           </li>
         </ul>
@@ -307,7 +313,9 @@ exports[`test ProjectNavigation should match snapshot 1`] = `
                   <span
                     class="ant-typography"
                   >
-                    projectManage.projectList.searchProject.recentlyOpenedProjects
+                    <strong>
+                      projectManage.projectList.searchProject.recentlyOpenedProjects
+                    </strong>
                   </span>
                 </div>
                 <div
@@ -315,6 +323,7 @@ exports[`test ProjectNavigation should match snapshot 1`] = `
                 >
                   <span
                     class="ant-typography ant-typography-secondary"
+                    style="margin-left: 12px;"
                   >
                     projectManage.projectList.searchProject.notRecentlyOpenedProjects
                   </span>
@@ -334,7 +343,13 @@ exports[`test ProjectNavigation should match snapshot 1`] = `
             <span
               class="ant-dropdown-menu-title-content"
             >
-              projectManage.projectList.allProject
+              <span
+                class="ant-typography"
+              >
+                <strong>
+                  projectManage.projectList.allProject
+                </strong>
+              </span>
             </span>
           </li>
         </ul>
@@ -422,7 +437,9 @@ exports[`test ProjectNavigation should match snapshot 1`] = `
                   <span
                     class="ant-typography"
                   >
-                    projectManage.projectList.searchProject.recentlyOpenedProjects
+                    <strong>
+                      projectManage.projectList.searchProject.recentlyOpenedProjects
+                    </strong>
                   </span>
                 </div>
                 <div
@@ -430,6 +447,7 @@ exports[`test ProjectNavigation should match snapshot 1`] = `
                 >
                   <span
                     class="ant-typography ant-typography-secondary"
+                    style="margin-left: 12px;"
                   >
                     projectManage.projectList.searchProject.notRecentlyOpenedProjects
                   </span>
@@ -556,7 +574,13 @@ exports[`test ProjectNavigation should update the recently used item when clicki
             <span
               class="ant-dropdown-menu-title-content"
             >
-              projectManage.projectList.allProject
+              <span
+                class="ant-typography"
+              >
+                <strong>
+                  projectManage.projectList.allProject
+                </strong>
+              </span>
             </span>
           </li>
         </ul>
