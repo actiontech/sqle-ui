@@ -84,10 +84,10 @@ const UserGroupList: React.FC = () => {
   };
 
   const { data, loading, refresh } = useRequest(
-    ({ current, pageSize }) => {
+    () => {
       const params: IGetMemberGroupsV1Params = {
-        page_index: current,
-        page_size: pageSize,
+        page_index: pagination.pageIndex,
+        page_size: pagination.pageSize,
         filter_instance_name: filterInfo.filterInstance,
         project_name: projectName,
         filter_user_group_name: filterInfo.filterUserGroupName,

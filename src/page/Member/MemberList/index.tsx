@@ -79,10 +79,10 @@ const MemberList: React.FC = () => {
   };
 
   const { data, loading, refresh } = useRequest(
-    ({ current, pageSize }) => {
+    () => {
       const params: IGetMembersV1Params = {
-        page_index: current,
-        page_size: pageSize,
+        page_index: pagination.pageIndex,
+        page_size: pagination.pageSize,
         filter_user_name: filterInfo.filterUserName,
         filter_instance_name: filterInfo.filterInstance,
         project_name: projectName,
