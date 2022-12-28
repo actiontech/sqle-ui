@@ -177,7 +177,7 @@ describe('userMonacoEditor', () => {
     };
     const form = {
       getFieldValue: jest.fn(),
-      setFieldsValue: jest.fn(),
+      setFields: jest.fn(),
     };
     const { result, unmount } = renderHook(() =>
       useMonacoEditor(form as any, { formName: 'sql' })
@@ -192,7 +192,7 @@ describe('userMonacoEditor', () => {
     focusFn();
     expect(form.getFieldValue).toBeCalledTimes(1);
     expect(form.getFieldValue).toBeCalledWith('sql');
-    expect(form.setFieldsValue).toBeCalledTimes(0);
+    expect(form.setFields).toBeCalledTimes(0);
     expect(editor.getValue).toBeCalledTimes(0);
     expect(editor.setValue).toBeCalledTimes(0);
 
@@ -201,8 +201,8 @@ describe('userMonacoEditor', () => {
     focusFn();
     expect(form.getFieldValue).toBeCalledTimes(2);
     expect(form.getFieldValue).lastCalledWith('sql');
-    expect(form.setFieldsValue).toBeCalledTimes(1);
-    expect(form.setFieldsValue).toBeCalledWith({ sql: '' });
+    expect(form.setFields).toBeCalledTimes(1);
+    expect(form.setFields).toBeCalledWith([{ name: 'sql', value: '' }]);
 
     unmount();
     expect(dispose).toBeCalledTimes(1);
@@ -223,7 +223,7 @@ describe('userMonacoEditor', () => {
     };
     const form = {
       getFieldValue: jest.fn(),
-      setFieldsValue: jest.fn(),
+      setFields: jest.fn(),
     };
     const { result, unmount } = renderHook(() =>
       useMonacoEditor(form as any, {
@@ -241,7 +241,7 @@ describe('userMonacoEditor', () => {
     focusFn();
     expect(form.getFieldValue).toBeCalledTimes(1);
     expect(form.getFieldValue).toBeCalledWith('sql');
-    expect(form.setFieldsValue).toBeCalledTimes(0);
+    expect(form.setFields).toBeCalledTimes(0);
     expect(editor.getValue).toBeCalledTimes(0);
     expect(editor.setValue).toBeCalledTimes(0);
 
@@ -250,8 +250,8 @@ describe('userMonacoEditor', () => {
     focusFn();
     expect(form.getFieldValue).toBeCalledTimes(2);
     expect(form.getFieldValue).lastCalledWith('sql');
-    expect(form.setFieldsValue).toBeCalledTimes(1);
-    expect(form.setFieldsValue).toBeCalledWith({ sql: '' });
+    expect(form.setFields).toBeCalledTimes(1);
+    expect(form.setFields).toBeCalledWith([{ name: 'sql', value: '' }]);
     expect(editor.getValue).toBeCalledTimes(0);
     expect(editor.setValue).toBeCalledTimes(0);
 
@@ -274,7 +274,7 @@ describe('userMonacoEditor', () => {
     };
     const form = {
       getFieldValue: jest.fn(),
-      setFieldsValue: jest.fn(),
+      setFields: jest.fn(),
     };
     const { result, unmount } = renderHook(() =>
       useMonacoEditor(form as any, { formName: 'sql' })
@@ -292,7 +292,7 @@ describe('userMonacoEditor', () => {
     blurFn();
     expect(form.getFieldValue).toBeCalledTimes(1);
     expect(form.getFieldValue).toBeCalledWith('sql');
-    expect(form.setFieldsValue).toBeCalledTimes(0);
+    expect(form.setFields).toBeCalledTimes(0);
     expect(editor.getValue).toBeCalledTimes(0);
     expect(editor.setValue).toBeCalledTimes(0);
 
@@ -301,8 +301,10 @@ describe('userMonacoEditor', () => {
     blurFn();
     expect(form.getFieldValue).toBeCalledTimes(2);
     expect(form.getFieldValue).lastCalledWith('sql');
-    expect(form.setFieldsValue).toBeCalledTimes(1);
-    expect(form.setFieldsValue).toBeCalledWith({ sql: '/* input your sql */' });
+    expect(form.setFields).toBeCalledTimes(1);
+    expect(form.setFields).toBeCalledWith([
+      { name: 'sql', value: '/* input your sql */' },
+    ]);
 
     unmount();
     expect(dispose).toBeCalledTimes(1);
@@ -323,7 +325,7 @@ describe('userMonacoEditor', () => {
     };
     const form = {
       getFieldValue: jest.fn(),
-      setFieldsValue: jest.fn(),
+      setFields: jest.fn(),
     };
     const { result, unmount } = renderHook(() =>
       useMonacoEditor(form as any, {
@@ -344,7 +346,7 @@ describe('userMonacoEditor', () => {
     blurFn();
     expect(form.getFieldValue).toBeCalledTimes(1);
     expect(form.getFieldValue).toBeCalledWith('sql');
-    expect(form.setFieldsValue).toBeCalledTimes(0);
+    expect(form.setFields).toBeCalledTimes(0);
     expect(editor.getValue).toBeCalledTimes(0);
     expect(editor.setValue).toBeCalledTimes(0);
 
@@ -353,8 +355,10 @@ describe('userMonacoEditor', () => {
     blurFn();
     expect(form.getFieldValue).toBeCalledTimes(2);
     expect(form.getFieldValue).lastCalledWith('sql');
-    expect(form.setFieldsValue).toBeCalledTimes(1);
-    expect(form.setFieldsValue).toBeCalledWith({ sql: 'test aaaa' });
+    expect(form.setFields).toBeCalledTimes(1);
+    expect(form.setFields).toBeCalledWith([
+      { name: 'sql', value: 'test aaaa' },
+    ]);
 
     unmount();
     expect(dispose).toBeCalledTimes(1);
@@ -396,7 +400,7 @@ describe('userMonacoEditor', () => {
     };
     const form = {
       getFieldValue: jest.fn(),
-      setFieldsValue: jest.fn(),
+      setFields: jest.fn(),
     };
     const { result, unmount } = renderHook(() =>
       useMonacoEditor(form as any, {

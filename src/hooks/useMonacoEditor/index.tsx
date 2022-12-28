@@ -6,13 +6,14 @@ import { createDependencyProposals } from './index.data';
 import { IRange } from './index.type';
 import { throttle } from 'lodash';
 import * as monacoEditor from 'monaco-editor/esm/vs/editor/editor.api';
+import { NamePath } from 'antd/lib/form/interface';
 
 const useMonacoEditor = (
   form?: FormInstance,
   {
     formName,
     placeholder = '/* input your sql */',
-  }: { formName?: string; placeholder?: string } = {}
+  }: { formName?: NamePath; placeholder?: string } = {}
 ) => {
   const monacoProviderRef = React.useRef<IDisposable>();
   const editorRef =
@@ -42,9 +43,7 @@ const useMonacoEditor = (
       if (!!form && !!formName) {
         const currentValue = form.getFieldValue(formName);
         if (currentValue === placeholder) {
-          form.setFieldsValue({
-            [formName]: '',
-          });
+          form.setFields([{ name: formName, value: '' }]);
         }
       } else {
         const currentValue = editor.getValue();
@@ -58,9 +57,7 @@ const useMonacoEditor = (
       if (!!form && !!formName) {
         const currentValue = form.getFieldValue(formName);
         if (currentValue === '') {
-          form.setFieldsValue({
-            [formName]: placeholder,
-          });
+          form.setFields([{ name: formName, value: placeholder }]);
         }
       } else {
         const currentValue = editor.getValue();
