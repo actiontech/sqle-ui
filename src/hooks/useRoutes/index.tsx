@@ -23,9 +23,11 @@ const useRoutes = () => {
         }
 
         if (route.groups) {
-          return route.groups.map((v) => {
-            return registerRouter(v.values);
-          });
+          const components = route.groups?.reduce<RouterItem<string>[]>(
+            (acc, cur) => [...acc, ...cur.values],
+            []
+          );
+          return registerRouter(components);
         }
         return <Route {...route} path={route.path} />;
       });
