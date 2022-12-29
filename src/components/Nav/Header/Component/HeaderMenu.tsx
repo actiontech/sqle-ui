@@ -7,7 +7,7 @@ import {
   GlobalRouterItemKeyLiteral,
   RouterItem,
 } from '../../../../types/router.type';
-import ProjectDropdown from './ProjectDropdown';
+import ProjectNavigation from './ProjectNavigation';
 
 const headerMenuKeys: Array<typeof globalRouterConfig[number]['key']> = [
   'dashboard',
@@ -36,7 +36,8 @@ const HeaderMenu: React.FC = () => {
     history.push(path);
   };
 
-  const [projectDropdownVisible, setProjectDropdownVisible] = useState(false);
+  const [projectNavigationVisible, setProjectNavigationVisible] =
+    useState(false);
 
   const isActiveMenu = useCallback(
     (router: RouterItem<GlobalRouterItemKeyLiteral>) => {
@@ -52,21 +53,21 @@ const HeaderMenu: React.FC = () => {
   const generateMenu = (router: RouterItem<GlobalRouterItemKeyLiteral>) => {
     if (router.key === 'projectList') {
       return (
-        <ProjectDropdown
+        <ProjectNavigation
           key="projectList"
-          visible={projectDropdownVisible}
-          onVisibleChange={setProjectDropdownVisible}
+          visible={projectNavigationVisible}
+          onVisibleChange={setProjectNavigationVisible}
         >
           <div
             className={`${
               isActiveMenu(router) ? 'header-menu-item-active' : ''
             } header-menu-item`}
-            onClick={() => setProjectDropdownVisible(true)}
+            onClick={() => setProjectNavigationVisible(true)}
           >
             <span className="header-menu-item-icon">{router.icon}</span>
             {t(router.label)}
           </div>
-        </ProjectDropdown>
+        </ProjectNavigation>
       );
     }
 
