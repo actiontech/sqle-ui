@@ -18,7 +18,6 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
   hideUpdateMybatisFile = false,
 }) => {
   const { t } = useTranslation();
-  const { editorDidMount } = useMonacoEditor(form, { formName: 'sql' });
   const theme = useStyles();
   const { currentEditorTheme } = useChangeTheme();
 
@@ -51,6 +50,10 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
   const generateFieldName = (name: string) => {
     return [fieldName ?? '0', name];
   };
+
+  const { editorDidMount } = useMonacoEditor(form, {
+    formName: generateFieldName('sql'),
+  });
 
   useEffect(() => {
     if (sqlStatement) {

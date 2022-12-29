@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { IProjectListItem } from '../../../api/common';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
+import { formatTime } from '../../../utils/Common';
 
 export const ProjectListTableColumnFactory = (
   deleteAction: (name?: string) => void,
@@ -34,6 +35,9 @@ export const ProjectListTableColumnFactory = (
       dataIndex: 'create_time',
       ellipsis: true,
       title: () => i18n.t('projectManage.projectList.column.createTime'),
+      render: (time) => {
+        return formatTime(time);
+      },
     },
     {
       dataIndex: 'create_user_name',
