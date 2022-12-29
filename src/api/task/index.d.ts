@@ -85,9 +85,9 @@ export interface IGetAuditTaskSQLsV1Params {
 
   no_duplicate?: boolean;
 
-  page_index?: string;
+  page_index: string;
 
-  page_size?: string;
+  page_size: string;
 }
 
 export interface IGetAuditTaskSQLsV1Return extends IGetAuditTaskSQLsResV1 {}

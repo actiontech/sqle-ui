@@ -94,7 +94,7 @@ const DingTalkSetting: React.FC = () => {
           </Descriptions.Item>
           <Descriptions.Item label="AppKey" span={3}>
             <Typography.Paragraph>
-              {dingTalkInfo?.app_key ?? '--'}
+              {dingTalkInfo?.app_key || '--'}
             </Typography.Paragraph>
           </Descriptions.Item>
           <Descriptions.Item span={3}>

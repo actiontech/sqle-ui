@@ -8,9 +8,9 @@ import {
 export interface IGetAuditWhitelistV1Params {
   project_name: string;
 
-  page_index?: string;
+  page_index: string;
 
-  page_size?: string;
+  page_size: string;
 }
 
 export interface IGetAuditWhitelistV1Return extends IGetAuditWhitelistResV1 {}

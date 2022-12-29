@@ -11,9 +11,9 @@ export interface IGetRoleTipListV1Return extends IGetRoleTipsResV1 {}
 export interface IGetRoleListV1Params {
   filter_role_name?: string;
 
-  page_index?: number;
+  page_index: number;
 
-  page_size?: number;
+  page_size: number;
 }
 
 export interface IGetRoleListV1Return extends IGetRolesResV1 {}

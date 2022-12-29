@@ -19,6 +19,7 @@ describe('System/GlobalConfig', () => {
     spy.mockImplementation(() =>
       resolveThreeSecond({
         workflow_expired_hours: 720,
+        url: 'http://127.0.0.1:5151',
       })
     );
     return spy;
@@ -58,6 +59,10 @@ describe('System/GlobalConfig', () => {
       }
     );
 
+    fireEvent.input(screen.getByLabelText('system.global.urlAddressPrefix'), {
+      target: 'http://127.0.0.1:5151',
+    });
+
     fireEvent.click(screen.getByText('common.submit'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
@@ -66,6 +71,7 @@ describe('System/GlobalConfig', () => {
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
       workflow_expired_hours: 800,
+      url: 'http://127.0.0.1:5151',
     });
     expect(screen.getByText('common.submit').parentNode).toHaveClass(
       'ant-btn-loading'
