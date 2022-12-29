@@ -25,13 +25,17 @@ Array [
     icon={<ForwardRef(CiCircleOutlined) />}
     title="menu.auditPlane"
   >
-    <MenuItem>
-      <Link
-        to="/project/test/auditPlan"
-      >
-        menu.auditPlaneList
-      </Link>
-    </MenuItem>
+    <MenuItemGroup
+      title=""
+    >
+      <MenuItem>
+        <Link
+          to="/project/test/auditPlan"
+        >
+          menu.auditPlaneList
+        </Link>
+      </MenuItem>
+    </MenuItemGroup>
   </SubMenu>,
   <MenuItem
     icon={<ForwardRef(DatabaseOutlined) />}
@@ -106,13 +110,17 @@ Array [
     icon={<ForwardRef(CiCircleOutlined) />}
     title="menu.auditPlane"
   >
-    <MenuItem>
-      <Link
-        to="/project/test/auditPlan"
-      >
-        menu.auditPlaneList
-      </Link>
-    </MenuItem>
+    <MenuItemGroup
+      title=""
+    >
+      <MenuItem>
+        <Link
+          to="/project/test/auditPlan"
+        >
+          menu.auditPlaneList
+        </Link>
+      </MenuItem>
+    </MenuItemGroup>
   </SubMenu>,
   <MenuItem
     icon={<ForwardRef(DatabaseOutlined) />}

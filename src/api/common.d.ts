@@ -2,6 +2,7 @@ import {
   AuditPlanParamResV1TypeEnum,
   AuditPlanReportResV1AuditLevelEnum,
   AuditPlanSQLHeadV1TypeEnum,
+  AuditPlanTypesV1InstanceTypeEnum,
   AuditResDataV1AuditLevelEnum,
   AuditTaskResV1AuditLevelEnum,
   AuditTaskResV1SqlSourceEnum,
@@ -126,6 +127,8 @@ export interface IAuditPlanSQLResV1 {
 
 export interface IAuditPlanTypesV1 {
   desc?: string;
+
+  instance_type?: AuditPlanTypesV1InstanceTypeEnum;
 
   type?: string;
 }

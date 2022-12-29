@@ -45,4 +45,5 @@ export type RouterItem<T extends string> = {
   components?: RouterItem<T>[];
   hideInSliderMenu?: boolean;
   hightLightMenuKey?: string;
+  groups?: Array<{ title: string; values: RouterItem<T>[] }>;
 } & RouteProps;

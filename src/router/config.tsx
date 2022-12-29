@@ -317,10 +317,23 @@ export const projectDetailRouterConfig: RouterItem<ProjectDetailRouterItemKeyLit
         },
         /* FITRUE_isEE */
         {
-          path: '/project/:projectName/auditPlan',
           key: 'auditPlan',
           label: 'menu.auditPlaneList',
-          component: AuditPlan,
+          path: '/project/:projectName/auditPlan',
+          groups: [
+            //default data for register router
+            {
+              title: '',
+              values: [
+                {
+                  path: '/project/:projectName/auditPlan',
+                  key: 'auditPlan',
+                  label: 'menu.auditPlaneList',
+                  component: AuditPlan,
+                },
+              ],
+            },
+          ],
         },
       ],
     },

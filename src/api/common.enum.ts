@@ -22,6 +22,18 @@ export enum AuditPlanSQLHeadV1TypeEnum {
   'sql' = 'sql'
 }
 
+export enum AuditPlanTypesV1InstanceTypeEnum {
+  'MySQL' = 'MySQL',
+
+  'Oracle' = 'Oracle',
+
+  'TiDB' = 'TiDB',
+
+  'OceanBase For MySQL' = 'OceanBase For MySQL',
+
+  'UNKNOWN' = ''
+}
+
 export enum AuditResDataV1AuditLevelEnum {
   'normal' = 'normal',
 

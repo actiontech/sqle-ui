@@ -21,6 +21,12 @@ const useRoutes = () => {
         if (route.components) {
           return registerRouter(route.components);
         }
+
+        if (route.groups) {
+          return route.groups.map((v) => {
+            return registerRouter(v.values);
+          });
+        }
         return <Route {...route} path={route.path} />;
       });
     },
