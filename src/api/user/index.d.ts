@@ -32,9 +32,9 @@ export interface IGetMembersV1Params {
 
   filter_instance_name?: string;
 
-  page_index?: number;
+  page_index: number;
 
-  page_size?: number;
+  page_size: number;
 
   project_name: string;
 }
@@ -91,9 +91,9 @@ export interface IGetUserTipListV1Return extends IGetUserTipsResV1 {}
 export interface IGetUserListV1Params {
   filter_user_name?: string;
 
-  page_index?: number;
+  page_index: number;
 
-  page_size?: number;
+  page_size: number;
 }
 
 export interface IGetUserListV1Return extends IGetUsersResV1 {}

@@ -50,9 +50,9 @@ export interface IGetWorkflowsV1Params {
 
   filter_task_instance_name?: string;
 
-  page_index?: number;
+  page_index: number;
 
-  page_size?: number;
+  page_size: number;
 
   project_name: string;
 }
@@ -173,9 +173,9 @@ export interface IGetGlobalWorkflowsV1Params {
 
   filter_task_instance_name?: string;
 
-  page_index?: number;
+  page_index: number;
 
-  page_size?: number;
+  page_size: number;
 }
 
 export interface IGetGlobalWorkflowsV1Return extends IGetWorkflowsResV1 {}

@@ -55,9 +55,9 @@ export interface IGetInstanceListV1Params {
 
   filter_rule_template_name?: string;
 
-  page_index?: number;
+  page_index: number;
 
-  page_size?: number;
+  page_size: number;
 }
 
 export interface IGetInstanceListV1Return extends IGetInstancesResV1 {}
@@ -162,9 +162,9 @@ export interface IGetInstanceListV2Params {
 
   filter_rule_template_name?: string;
 
-  page_index?: number;
+  page_index: number;
 
-  page_size?: number;
+  page_size: number;
 }
 
 export interface IGetInstanceListV2Return extends IGetInstancesResV2 {}
