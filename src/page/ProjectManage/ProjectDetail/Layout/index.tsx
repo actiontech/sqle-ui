@@ -20,9 +20,7 @@ export type ProjectInfoBoxProps = {
 };
 
 export const generateNavigateMenu = (
-  config: Array<
-    RouterItem<ProjectDetailRouterItemKeyLiteral> & { search?: string }
-  >,
+  config: Array<RouterItem<ProjectDetailRouterItemKeyLiteral>>,
   userRole: SystemRole | '',
   projectName: string
 ) => {
@@ -43,6 +41,16 @@ export const generateNavigateMenu = (
           {generateNavigateMenu(route.components, userRole, projectName)}
         </Menu.SubMenu>
       );
+    }
+
+    if (!!route.groups) {
+      return route.groups.map((v) => {
+        return (
+          <Menu.ItemGroup title={v.title} key={v.title}>
+            {generateNavigateMenu(v.values, userRole, projectName)}
+          </Menu.ItemGroup>
+        );
+      });
     }
 
     return (

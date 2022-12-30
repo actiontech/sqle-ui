@@ -1,7 +1,8 @@
 import { Layout, Menu, MenuTheme, Typography } from 'antd';
 import { SiderTheme } from 'antd/lib/layout/Sider';
-import { cloneDeep } from 'lodash';
+import { cloneDeep, groupBy } from 'lodash';
 import { lazy, useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { generateNavigateMenu, ProjectDetailLayoutProps } from '.';
@@ -22,12 +23,14 @@ const AuditPlan = lazy(
   () => import(/* webpackChunkName: "AuditPlan" */ '../../../AuditPlan')
 );
 
+const ALL_INSTANCE_TYPE = '';
+
 const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
   children,
   projectName,
 }) => {
   const styles = useStyles();
-
+  const { t } = useTranslation();
   const userRole = useSelector<IReduxState, SystemRole | ''>(
     (state) => state.user.role
   );
@@ -86,24 +89,43 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
   useEffect(() => {
     if (auditPlanTypes.length > 0) {
       const newRouterConfig = cloneDeep(projectDetailRouterConfig);
-      const plan = newRouterConfig.find((item) => item.key === 'plane');
+      const plan = newRouterConfig
+        .find((item) => item.key === 'plane')
+        ?.components?.find((item) => item.key === 'auditPlan');
       if (!plan) {
         return;
       }
-      const newRouters = auditPlanTypes.map<
-        RouterItem<ProjectDetailRouterItemKeyLiteral> & { search?: string }
-      >((e) => ({
-        path: `/project/:projectName/auditPlan?type=${e.type}`,
-        key: `auditPlan${e.type}` as ProjectDetailRouterItemKeyLiteral,
-        label: 'menu',
-        labelWithoutI18n: e.desc,
-        component: AuditPlan,
-      }));
-      plan.components = [...plan.components!, ...newRouters];
+
+      const auditPlanTypesDictionary = groupBy(auditPlanTypes, 'instance_type');
+
+      //add default data
+      if (auditPlanTypesDictionary[ALL_INSTANCE_TYPE] === undefined) {
+        auditPlanTypesDictionary[ALL_INSTANCE_TYPE] = [];
+      }
+      auditPlanTypesDictionary[ALL_INSTANCE_TYPE].unshift({
+        type: '',
+        desc: t('menu.auditPlaneList'),
+      });
+
+      plan.groups = Object.keys(auditPlanTypesDictionary).map((key) => {
+        const value =
+          auditPlanTypesDictionary[
+            key as keyof typeof auditPlanTypesDictionary
+          ];
+        return {
+          title: key === ALL_INSTANCE_TYPE ? t('menu.allInstanceType') : key,
+          values: value.map((e) => ({
+            path: `/project/:projectName/auditPlan?type=${e.type}`,
+            key: `auditPlan${e.type}` as ProjectDetailRouterItemKeyLiteral,
+            label: 'menu',
+            labelWithoutI18n: e.desc,
+            component: AuditPlan,
+          })),
+        };
+      });
       setInnerRouterConfig(newRouterConfig);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [auditPlanTypes]);
+  }, [auditPlanTypes, t]);
 
   return (
     <Layout className="project-detail-wrapper">

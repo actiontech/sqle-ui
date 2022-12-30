@@ -11,7 +11,6 @@ import {
   mockUseAuditPlanTypes,
   rejectThreeSecond,
   resolveErrorThreeSecond,
-  resolveThreeSecond,
 } from '../../testUtils/mockRequest';
 import { Select } from 'antd';
 import useAuditPlanTypes from '.';

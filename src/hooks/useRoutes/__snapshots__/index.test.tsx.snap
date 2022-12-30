@@ -283,20 +283,22 @@ Array [
       label="menu.auditPlanSqlAnalyze"
       path="/project/:projectName/auditPlan/:reportId/:sqlNum/:auditPlanName/analyze"
     />,
-    <Route
-      component={
-        Object {
-          "$$typeof": Symbol(react.lazy),
-          "_init": [Function],
-          "_payload": Object {
-            "_result": [Function],
-            "_status": -1,
-          },
+    Array [
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.lazy),
+            "_init": [Function],
+            "_payload": Object {
+              "_result": [Function],
+              "_status": -1,
+            },
+          }
         }
-      }
-      label="menu.auditPlaneList"
-      path="/project/:projectName/auditPlan"
-    />,
+        label="menu.auditPlaneList"
+        path="/project/:projectName/auditPlan"
+      />,
+    ],
   ],
   <Route
     component={
