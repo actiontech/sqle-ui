@@ -1,13 +1,23 @@
 import { useBoolean, useRequest } from 'ahooks';
-import { Button, Card, Descriptions, Form, InputNumber, Space } from 'antd';
+import {
+  Button,
+  Card,
+  Descriptions,
+  Form,
+  Input,
+  InputNumber,
+  Space,
+} from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import { useTranslation } from 'react-i18next';
 import configuration from '../../../api/configuration';
 import EmptyBox from '../../../components/EmptyBox';
-import { ResponseCode } from '../../../data/common';
+import IconTipsLabel from '../../../components/IconTipsLabel';
+import { PageFormLayout, ResponseCode } from '../../../data/common';
 
 type GlobalConfigFields = {
   orderExpiredHours: number;
+  url: string;
 };
 
 const GlobalSetting = () => {
@@ -38,6 +48,7 @@ const GlobalSetting = () => {
     setModifyFlagTrue();
     form.setFieldsValue({
       orderExpiredHours: globalConfig?.workflow_expired_hours ?? 720,
+      url: globalConfig?.url,
     });
   };
 
@@ -46,6 +57,7 @@ const GlobalSetting = () => {
     configuration
       .updateSystemVariablesV1({
         workflow_expired_hours: values.orderExpiredHours,
+        url: values.url,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -73,6 +85,18 @@ const GlobalSetting = () => {
               {globalConfig?.workflow_expired_hours}({t('common.time.hour')})
             </EmptyBox>
           </Descriptions.Item>
+          <Descriptions.Item
+            label={
+              <IconTipsLabel tips={t('system.global.urlAddressPrefixTips')}>
+                {t('system.global.urlAddressPrefix')}
+              </IconTipsLabel>
+            }
+            span={3}
+          >
+            <EmptyBox if={!!globalConfig?.url} defaultNode="--">
+              {globalConfig?.url}
+            </EmptyBox>
+          </Descriptions.Item>
           <Descriptions.Item span={3}>
             <Button type="primary" onClick={handelClickModify}>
               {t('common.modify')}
@@ -80,7 +104,12 @@ const GlobalSetting = () => {
           </Descriptions.Item>
         </Descriptions>
       </section>
-      <Form form={form} hidden={!modifyFlag} onFinish={submitGlobalConfig}>
+      <Form
+        form={form}
+        hidden={!modifyFlag}
+        onFinish={submitGlobalConfig}
+        {...PageFormLayout}
+      >
         <Form.Item
           label={
             <>
@@ -102,6 +131,13 @@ const GlobalSetting = () => {
           ]}
         >
           <InputNumber />
+        </Form.Item>
+        <Form.Item
+          tooltip={t('system.global.urlAddressFormatTips')}
+          label={t('system.global.urlAddressPrefix')}
+          name="url"
+        >
+          <Input style={{ width: 200 }} />
         </Form.Item>
         <Form.Item label=" " colon={false}>
           <Space>
