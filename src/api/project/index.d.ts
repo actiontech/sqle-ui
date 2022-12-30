@@ -10,9 +10,9 @@ import {
 export interface IGetProjectTipsV1Return extends IGetProjectTipsResV1 {}
 
 export interface IGetProjectListV1Params {
-  page_index?: number;
+  page_index: number;
 
-  page_size?: number;
+  page_size: number;
 }
 
 export interface IGetProjectListV1Return extends IGetProjectResV1 {}

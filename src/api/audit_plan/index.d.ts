@@ -39,9 +39,9 @@ export interface IGetAuditPlansV1Params {
 
   filter_audit_plan_instance_name?: string;
 
-  page_index?: number;
+  page_index: number;
 
-  page_size?: number;
+  page_size: number;
 }
 
 export interface IGetAuditPlansV1Return extends IGetAuditPlansResV1 {}
@@ -108,9 +108,9 @@ export interface IGetAuditPlanReportsV1Params {
 
   audit_plan_name: string;
 
-  page_index?: number;
+  page_index: number;
 
-  page_size?: number;
+  page_size: number;
 }
 
 export interface IGetAuditPlanReportsV1Return
@@ -133,9 +133,9 @@ export interface IGetAuditPlanReportsSQLsV1Params {
 
   audit_plan_report_id: string;
 
-  page_index?: number;
+  page_index: number;
 
-  page_size?: number;
+  page_size: number;
 }
 
 export interface IGetAuditPlanReportsSQLsV1Return
@@ -159,9 +159,9 @@ export interface IGetAuditPlanSQLsV1Params {
 
   audit_plan_name: string;
 
-  page_index?: number;
+  page_index: number;
 
-  page_size?: number;
+  page_size: number;
 }
 
 export interface IGetAuditPlanSQLsV1Return extends IGetAuditPlanSQLsResV1 {}
@@ -203,9 +203,9 @@ export interface IGetAuditPlansV2Params {
 
   filter_audit_plan_instance_name?: string;
 
-  page_index?: number;
+  page_index: number;
 
-  page_size?: number;
+  page_size: number;
 }
 
 export interface IGetAuditPlansV2Return extends IGetAuditPlansResV2 {}

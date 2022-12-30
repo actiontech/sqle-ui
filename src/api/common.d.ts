@@ -2,6 +2,7 @@ import {
   AuditPlanParamResV1TypeEnum,
   AuditPlanReportResV1AuditLevelEnum,
   AuditPlanSQLHeadV1TypeEnum,
+  AuditPlanTypesV1InstanceTypeEnum,
   AuditResDataV1AuditLevelEnum,
   AuditTaskResV1AuditLevelEnum,
   AuditTaskResV1SqlSourceEnum,
@@ -126,6 +127,8 @@ export interface IAuditPlanSQLResV1 {
 
 export interface IAuditPlanTypesV1 {
   desc?: string;
+
+  instance_type?: AuditPlanTypesV1InstanceTypeEnum;
 
   type?: string;
 }
@@ -442,8 +445,6 @@ export interface IDashboardResV1 {
 
 export interface IDingTalkConfigurationV1 {
   app_key?: string;
-
-  app_secret?: string;
 
   is_enable_ding_talk_notify?: boolean;
 }
@@ -1731,6 +1732,8 @@ export interface ISqlExecutionFailPercent {
 }
 
 export interface ISystemVariablesResV1 {
+  url?: string;
+
   workflow_expired_hours?: number;
 }
 
@@ -1977,6 +1980,8 @@ export interface IUpdateSMTPConfigurationReqV1 {
 }
 
 export interface IUpdateSystemVariablesReqV1 {
+  url?: string;
+
   workflow_expired_hours?: number;
 }
 

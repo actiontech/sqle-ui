@@ -15,9 +15,9 @@ export interface IGetMemberGroupsV1Params {
 
   filter_instance_name?: string;
 
-  page_index?: number;
+  page_index: number;
 
-  page_size?: number;
+  page_size: number;
 
   project_name: string;
 }
@@ -63,9 +63,9 @@ export interface IGetUserGroupTipListV1Return extends IGetUserGroupTipsResV1 {}
 export interface IGetUserGroupListV1Params {
   filter_user_group_name?: string;
 
-  page_index?: number;
+  page_index: number;
 
-  page_size?: number;
+  page_size: number;
 }
 
 export interface IGetUserGroupListV1Return extends IGetUserGroupsResV1 {}

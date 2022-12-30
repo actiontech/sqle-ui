@@ -27,9 +27,9 @@ export interface IGetProjectRuleTemplateTipsV1Return
 export interface IGetProjectRuleTemplateListV1Params {
   project_name: string;
 
-  page_index?: number;
+  page_index: number;
 
-  page_size?: number;
+  page_size: number;
 }
 
 export interface IGetProjectRuleTemplateListV1Return
@@ -91,9 +91,9 @@ export interface IGetRuleTemplateTipsV1Return
   extends IGetRuleTemplateTipsResV1 {}
 
 export interface IGetRuleTemplateListV1Params {
-  page_index?: number;
+  page_index: number;
 
-  page_size?: number;
+  page_size: number;
 }
 
 export interface IGetRuleTemplateListV1Return extends IGetRuleTemplatesResV1 {}

@@ -36,7 +36,6 @@ const DingTalkSetting: React.FC = () => {
     form.setFieldsValue({
       enabled: !!dingTalkInfo?.is_enable_ding_talk_notify,
       appKey: dingTalkInfo?.app_key,
-      appSecret: dingTalkInfo?.app_secret,
     });
   };
 
@@ -94,7 +93,7 @@ const DingTalkSetting: React.FC = () => {
           </Descriptions.Item>
           <Descriptions.Item label="AppKey" span={3}>
             <Typography.Paragraph>
-              {dingTalkInfo?.app_key ?? '--'}
+              {dingTalkInfo?.app_key || '--'}
             </Typography.Paragraph>
           </Descriptions.Item>
           <Descriptions.Item span={3}>
@@ -127,7 +126,7 @@ const DingTalkSetting: React.FC = () => {
           name="appSecret"
           rules={[{ required: true }]}
         >
-          <Input
+          <Input.Password
             placeholder={t('common.form.placeholder.input', {
               name: 'AppSecret',
             })}
