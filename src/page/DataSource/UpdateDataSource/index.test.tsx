@@ -279,47 +279,4 @@ describe('UpdateDataSource', () => {
 
     expect(history.location.pathname).toBe(`/project/${projectName}/data`);
   });
-
-  test('should be send an empty string when rule template is not selected', async () => {
-    getInstanceSpy.mockImplementation(() => {
-      return resolveThreeSecond({
-        ...instanceData,
-        rule_template_name: undefined,
-      });
-    });
-    const updateSpy = mockUpdateInstanceRequest();
-    renderWithThemeAndRouter(<UpdateDataSource />);
-
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-
-    await waitFor(() => {
-      fireEvent.click(screen.getByText('common.submit'));
-    });
-
-    expect(updateSpy).toBeCalledTimes(1);
-    expect(updateSpy).toBeCalledWith({
-      ...instanceData,
-      rule_template_name: '',
-      project_name: projectName,
-      additional_params: [
-        {
-          name: 'a',
-          value: '123',
-        },
-        {
-          name: 'b',
-          value: '123',
-        },
-        {
-          name: 'c',
-          value: 'true',
-        },
-      ],
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-  });
 });

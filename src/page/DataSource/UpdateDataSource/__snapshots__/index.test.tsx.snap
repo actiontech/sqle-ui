@@ -542,7 +542,7 @@ exports[`UpdateDataSource should render data source form 1`] = `
             class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
           >
             <label
-              class=""
+              class="ant-form-item-required"
               for="ruleTemplate"
               title="dataSource.dataSourceForm.ruleTemplate"
             >
@@ -1740,7 +1740,7 @@ exports[`UpdateDataSource should render data source form 2`] = `
             class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
           >
             <label
-              class=""
+              class="ant-form-item-required"
               for="ruleTemplate"
               title="dataSource.dataSourceForm.ruleTemplate"
             >

@@ -199,6 +199,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
       <Form.Item
         label={t('dataSource.dataSourceForm.ruleTemplate')}
         name="ruleTemplate"
+        rules={[{ required: true }]}
       >
         <Select
           showSearch
