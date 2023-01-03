@@ -10,6 +10,7 @@ import {
   IGetDingTalkConfigurationV1Return,
   IUpdateDingTalkConfigurationV1Params,
   IUpdateDingTalkConfigurationV1Return,
+  ITestDingTalkConfigV1Return,
   IGetDriversV1Return,
   IGetLDAPConfigurationV1Return,
   IUpdateLDAPConfigurationV1Params,
@@ -56,6 +57,14 @@ class ConfigurationService extends ServiceBase {
     return this.patch<IUpdateDingTalkConfigurationV1Return>(
       '/v1/configurations/ding_talk',
       paramsData,
+      options
+    );
+  }
+
+  public testDingTalkConfigV1(options?: AxiosRequestConfig) {
+    return this.post<ITestDingTalkConfigV1Return>(
+      '/v1/configurations/ding_talk/test',
+      undefined,
       options
     );
   }

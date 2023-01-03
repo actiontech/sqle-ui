@@ -1791,6 +1791,20 @@ export interface ITestAuditPlanNotifyConfigResV1 {
   message?: string;
 }
 
+export interface ITestDingTalkConfigResDataV1 {
+  is_ding_talk_send_normal?: boolean;
+
+  send_error_message?: string;
+}
+
+export interface ITestDingTalkConfigResV1 {
+  code?: number;
+
+  data?: ITestDingTalkConfigResDataV1;
+
+  message?: string;
+}
+
 export interface ITestSMTPConfigurationReqV1 {
   recipient_addr?: string;
 }

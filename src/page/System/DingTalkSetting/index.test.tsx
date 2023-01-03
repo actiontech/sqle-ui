@@ -6,9 +6,11 @@ import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 describe('test DingTalkSetting', () => {
   let getDingTalkConfigSpy: jest.SpyInstance;
   let updateDingTalkConfigSpy: jest.SpyInstance;
+  let testDingTalkConfigSpy: jest.SpyInstance;
   beforeEach(() => {
     getDingTalkConfigSpy = mockGetDingTalkConfiguration();
     updateDingTalkConfigSpy = mockUpdateDingTalkConfiguration();
+    testDingTalkConfigSpy = mockTestDingTalkConfiguration();
     jest.useFakeTimers();
   });
   afterEach(() => {
@@ -24,6 +26,16 @@ describe('test DingTalkSetting', () => {
         app_key: 'app_key',
         app_secret: 'app_secret',
         is_enable_ding_talk_notify: false,
+      })
+    );
+    return spy;
+  };
+
+  const mockTestDingTalkConfiguration = () => {
+    const spy = jest.spyOn(configuration, 'testDingTalkConfigV1');
+    spy.mockImplementation(() =>
+      resolveThreeSecond({
+        is_ding_talk_send_normal: true,
       })
     );
     return spy;
@@ -119,5 +131,54 @@ describe('test DingTalkSetting', () => {
     expect(screen.getByLabelText('AppSecret')).toHaveValue('');
     expect(getDingTalkConfigSpy).toBeCalledTimes(2);
     expect(screen.getByText('common.modify')).toBeInTheDocument();
+  });
+
+  test('should send request when clicking test DingTalk button', async () => {
+    render(<DingTalkSetting />);
+    expect(testDingTalkConfigSpy).toBeCalledTimes(0);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    fireEvent.click(screen.getByText('system.dingTalk.test'));
+
+    expect(testDingTalkConfigSpy).toBeCalledTimes(1);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(
+      screen.queryByText('system.dingTalk.testSuccess')
+    ).toBeInTheDocument();
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(
+      screen.queryByText('system.dingTalk.testSuccess')
+    ).not.toBeInTheDocument();
+
+    jest.clearAllMocks();
+    testDingTalkConfigSpy.mockImplementation(() => {
+      return resolveThreeSecond({
+        is_ding_talk_send_normal: false,
+        send_error_message: 'error message',
+      });
+    });
+    fireEvent.click(screen.getByText('system.dingTalk.test'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryByText('error message')).toBeInTheDocument();
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryByText('error message')).not.toBeInTheDocument();
   });
 });
