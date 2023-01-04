@@ -237,6 +237,10 @@ export interface IBatchCheckInstanceConnectionsReqV1 {
   instances?: IInstanceForCheckConnection[];
 }
 
+export interface IBatchCompleteWorkflowsReqV1 {
+  workflow_names?: string[];
+}
+
 export interface IBatchGetInstanceConnectionsResV1 {
   code?: number;
 
@@ -2345,6 +2349,30 @@ export interface IAuditPlanResV2 {
   audit_plan_token?: string;
 
   rule_template?: IRuleTemplateV2;
+}
+
+export interface ICreateInstanceReqV2 {
+  additional_params?: IInstanceAdditionalParamReqV1[];
+
+  db_host?: string;
+
+  db_password?: string;
+
+  db_port?: string;
+
+  db_type?: string;
+
+  db_user?: string;
+
+  desc?: string;
+
+  instance_name?: string;
+
+  maintenance_times?: IMaintenanceTimeReqV1[];
+
+  rule_template_name?: string;
+
+  sql_query_config?: ISQLQueryConfigReqV1;
 }
 
 export interface IGetAuditPlansResV2 {

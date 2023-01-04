@@ -24,7 +24,7 @@ const AddDataSource = () => {
 
   const addDatabase = async (values: DataSourceFormField) => {
     return instance
-      .createInstanceV1({
+      .createInstanceV2({
         project_name: projectName,
         db_host: values.ip,
         db_password: values.password,

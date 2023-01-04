@@ -5,6 +5,7 @@ import {
   IGetWorkflowsResV1,
   ICreateWorkflowReqV1,
   IBatchCancelWorkflowsReqV1,
+  IBatchCompleteWorkflowsReqV1,
   IGetWorkflowResV1,
   IUpdateWorkflowReqV1,
   IRejectWorkflowReqV1,
@@ -71,6 +72,13 @@ export interface IBatchCancelWorkflowsV1Params
 }
 
 export interface IBatchCancelWorkflowsV1Return extends IBaseRes {}
+
+export interface IBatchCompleteWorkflowsV1Params
+  extends IBatchCompleteWorkflowsReqV1 {
+  project_name: string;
+}
+
+export interface IBatchCompleteWorkflowsV1Return extends IBaseRes {}
 
 export interface IGetWorkflowV1Params {
   workflow_name: string;
