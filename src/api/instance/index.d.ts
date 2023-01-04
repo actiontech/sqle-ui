@@ -14,7 +14,8 @@ import {
   IGetInstanceSchemaResV1,
   IListTableBySchemaResV1,
   IGetTableMetadataResV1,
-  IGetInstancesResV2
+  IGetInstancesResV2,
+  ICreateInstanceReqV2
 } from '../common.d';
 
 import { getInstanceTipListV1FunctionalModuleEnum } from './index.enum';
@@ -168,3 +169,9 @@ export interface IGetInstanceListV2Params {
 }
 
 export interface IGetInstanceListV2Return extends IGetInstancesResV2 {}
+
+export interface ICreateInstanceV2Params extends ICreateInstanceReqV2 {
+  project_name: string;
+}
+
+export interface ICreateInstanceV2Return extends IBaseRes {}

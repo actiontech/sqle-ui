@@ -150,4 +150,5 @@ export const defaultProps: OrderStepsProps = {
   modifySql: () => {},
   pass: () => new Promise(() => {}),
   reject: () => new Promise(() => {}),
+  complete: () => new Promise(() => {}),
 };

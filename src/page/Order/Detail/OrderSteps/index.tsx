@@ -42,6 +42,11 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     { setTrue: executingStart, setFalse: executingFinish },
   ] = useBoolean();
 
+  const [
+    completeLoading,
+    { setTrue: completeStart, setFalse: completeFinish },
+  ] = useBoolean();
+
   const {
     generateStepTypeString,
     generateActionNode,
@@ -77,6 +82,13 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     executingStart();
     props.executing().finally(() => {
       executingFinish();
+    });
+  };
+
+  const complete = () => {
+    completeStart();
+    props.complete().finally(() => {
+      completeFinish();
     });
   };
 
@@ -123,6 +135,17 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
               danger
             >
               {t('order.operator.rejectFull')}
+            </Button>
+          );
+
+          const finishNode = (
+            <Button
+              onClick={complete}
+              loading={completeLoading}
+              type="primary"
+              disabled={!checkInTimeWithMaintenanceTimeInfo(moment())}
+            >
+              {t('order.operator.finished')}
             </Button>
           );
 
@@ -185,6 +208,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
             batchSqlExecuteNode,
             rejectFullNode,
             maintenanceTimeInfoNode,
+            finishNode,
           });
 
           const operateInfoNode = generateOperateInfo(step);
@@ -199,8 +223,8 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
             >
               <Row>
                 <Col span={3}>{generateStepTypeString(step.type)}</Col>
-                <Col span={6}>{actionNode}</Col>
-                <Col span={15}>{operateInfoNode}</Col>
+                <Col span={8}>{actionNode}</Col>
+                <Col span={13}>{operateInfoNode}</Col>
               </Row>
             </Timeline.Item>
           );

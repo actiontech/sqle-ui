@@ -46,11 +46,13 @@ describe('test Order/Detail/useGenerateOrderStepsProps', () => {
   let approveWorkflowSpy: jest.SpyInstance;
   let executeTasksOnWorkflowSpy: jest.SpyInstance;
   let rejectWorkflowSpy: jest.SpyInstance;
+  let batchCompleteWorkflowSpy: jest.SpyInstance;
 
   beforeEach(() => {
     approveWorkflowSpy = mockApproveWorkflow();
     executeTasksOnWorkflowSpy = mockExecuteTasksOnWorkflow();
     rejectWorkflowSpy = mockRejectWorkflow();
+    batchCompleteWorkflowSpy = mockBatchCompleteWorkflow();
     jest.useFakeTimers();
   });
 
@@ -74,6 +76,12 @@ describe('test Order/Detail/useGenerateOrderStepsProps', () => {
 
   const mockRejectWorkflow = () => {
     const spy = jest.spyOn(workflow, 'rejectWorkflowV1');
+    spy.mockImplementation(() => resolveThreeSecond({}));
+    return spy;
+  };
+
+  const mockBatchCompleteWorkflow = () => {
+    const spy = jest.spyOn(workflow, 'batchCompleteWorkflowsV1');
     spy.mockImplementation(() => resolveThreeSecond({}));
     return spy;
   };
@@ -158,6 +166,30 @@ describe('test Order/Detail/useGenerateOrderStepsProps', () => {
     ).toBeInTheDocument();
     expect(refreshOrder).toBeCalledTimes(1);
     expect(refreshTask).toBeCalledTimes(0);
+    expect(refreshOverviewAction).toBeCalledTimes(1);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+  });
+
+  test('should be call refreshOrder, refreshTask and refreshOverviewAction when executed complete', async () => {
+    const { result } = renderHook(() => useGenerateOrderStepsProps(hooksParam));
+    expect(batchCompleteWorkflowSpy).toBeCalledTimes(0);
+
+    result.current.complete();
+    expect(batchCompleteWorkflowSpy).toBeCalledTimes(1);
+    expect(batchCompleteWorkflowSpy).toBeCalledWith({
+      workflow_names: [workflowName],
+      project_name: projectName,
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.getByText('order.operator.completeSuccessTips')
+    ).toBeInTheDocument();
+    expect(refreshOrder).toBeCalledTimes(1);
+    expect(refreshTask).toBeCalledTimes(1);
     expect(refreshOverviewAction).toBeCalledTimes(1);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);

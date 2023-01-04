@@ -125,6 +125,7 @@ export const useGenerateOrderStepInfo = ({
       sqlReviewNode,
       batchSqlExecuteNode,
       rejectFullNode,
+      finishNode,
     }: ActionNodeType
   ) => {
     const genRejectedNode = () => {
@@ -216,6 +217,7 @@ export const useGenerateOrderStepInfo = ({
             <Space>
               {batchSqlExecuteNode}
               {canRejectOrder ? rejectFullNode : null}
+              {finishNode}
             </Space>
             {maintenanceTimeInfoNode}
           </>

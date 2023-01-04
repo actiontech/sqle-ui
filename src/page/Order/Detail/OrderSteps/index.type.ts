@@ -17,6 +17,7 @@ export type OrderStepsProps = {
   pass: (stepId: number) => Promise<void>;
   reject: (reason: string, stepId: number) => Promise<void>;
   executing: () => Promise<void>;
+  complete: () => Promise<void>;
   execStartTime?: string;
   execEndTime?: string;
   modifySql: () => void;
@@ -50,4 +51,5 @@ export type ActionNodeType = {
   batchSqlExecuteNode: JSX.Element;
   rejectFullNode: JSX.Element;
   maintenanceTimeInfoNode: JSX.Element;
+  finishNode: JSX.Element;
 };

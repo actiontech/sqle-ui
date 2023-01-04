@@ -17,6 +17,7 @@ describe('test OrderSteps', () => {
   const mockReject = jest.fn();
   const mockModifySql = jest.fn();
   const mockExecuting = jest.fn();
+  const mockComplete = jest.fn();
 
   beforeEach(() => {
     jest.useFakeTimers();
@@ -46,6 +47,14 @@ describe('test OrderSteps', () => {
         })
     );
     mockExecuting.mockImplementation(
+      () =>
+        new Promise((res) => {
+          setTimeout(() => {
+            res(null);
+          }, 3000);
+        })
+    );
+    mockComplete.mockImplementation(
       () =>
         new Promise((res) => {
           setTimeout(() => {
@@ -205,6 +214,35 @@ describe('test OrderSteps', () => {
     ).not.toHaveClass('ant-btn-loading');
 
     expect(mockExecuting).toBeCalledTimes(1);
+  });
+
+  test('should render batch complete button when current order status is equal wait_for_execution', async () => {
+    render(
+      <OrderStep
+        {...defaultProps}
+        stepList={executeStepList}
+        currentOrderStatus={WorkflowRecordResV1StatusEnum.wait_for_execution}
+        currentStep={3}
+        complete={mockComplete}
+      />
+    );
+
+    expect(screen.queryByText('order.operator.finished')).toBeInTheDocument();
+    expect(mockComplete).toBeCalledTimes(0);
+
+    fireEvent.click(screen.getByText('order.operator.finished'));
+    expect(
+      screen.getByText('order.operator.finished').closest('button')
+    ).toHaveClass('ant-btn-loading');
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.getByText('order.operator.finished').closest('button')
+    ).not.toHaveClass('ant-btn-loading');
+
+    expect(mockComplete).toBeCalledTimes(1);
   });
 
   test('should disable execute button and render disable tips when the current time is not in maintenance time', () => {
