@@ -75,7 +75,10 @@ describe('DataSource/DataSourceList', () => {
   });
 
   test('should delete data source when user click delete data source button', async () => {
+    const getInstanceSpy = mockGetInstance();
     renderWithRouter(<DataSourceList />);
+    expect(getInstanceSpy).toBeCalledTimes(1);
+
     const deleteSpy = jest.spyOn(instance, 'deleteInstanceV1');
     deleteSpy.mockImplementation(() => resolveThreeSecond({}));
     await waitFor(() => {
@@ -103,6 +106,7 @@ describe('DataSource/DataSourceList', () => {
     expect(
       screen.queryByText('dataSource.deleteDatabase.deleteSuccessTips')
     ).toBeInTheDocument();
+    expect(getInstanceSpy).toBeCalledTimes(2);
   });
 
   test('should send test database connect request when user click test database connectable button', async () => {

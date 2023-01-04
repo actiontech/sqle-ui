@@ -63,13 +63,14 @@ const DataSourceList = () => {
                 name: instanceName,
               })
             );
+            refresh();
           }
         })
         .finally(() => {
           hideLoading();
         });
     },
-    [projectName, t]
+    [projectName, refresh, t]
   );
 
   const testDatabaseConnection = React.useCallback(
