@@ -147,6 +147,12 @@ export const auditResultOverviewColumn: (
   currentUsername,
   orderStatus
 ) => {
+  const unusableStatus = [
+    WorkflowRecordResV1StatusEnum.rejected,
+    WorkflowRecordResV1StatusEnum.canceled,
+    WorkflowRecordResV1StatusEnum.finished,
+  ];
+
   const enableSqlExecute = (
     currentStepAssigneeUsernameList: string[] = [],
     status?: GetWorkflowTasksItemV1StatusEnum,
@@ -154,7 +160,7 @@ export const auditResultOverviewColumn: (
   ) => {
     if (
       !status ||
-      orderStatus === WorkflowRecordResV1StatusEnum.rejected ||
+      unusableStatus.includes(orderStatus as WorkflowRecordResV1StatusEnum) ||
       !currentStepAssigneeUsernameList.includes(currentUsername)
     ) {
       return false;
@@ -173,7 +179,7 @@ export const auditResultOverviewColumn: (
   ) => {
     if (
       !status ||
-      orderStatus === WorkflowRecordResV1StatusEnum.rejected ||
+      unusableStatus.includes(orderStatus as WorkflowRecordResV1StatusEnum) ||
       !currentStepAssigneeUsernameList.includes(currentUsername)
     ) {
       return false;
@@ -185,7 +191,10 @@ export const auditResultOverviewColumn: (
   const enableCancelSqlScheduleTime = (
     status?: GetWorkflowTasksItemV1StatusEnum
   ) => {
-    if (!status || orderStatus === WorkflowRecordResV1StatusEnum.rejected) {
+    if (
+      !status ||
+      unusableStatus.includes(orderStatus as WorkflowRecordResV1StatusEnum)
+    ) {
       return false;
     }
     return status === GetWorkflowTasksItemV1StatusEnum.exec_scheduled;
@@ -249,7 +258,10 @@ export const auditResultOverviewColumn: (
                   record.instance_maintenance_times
                 )
               }
-              onClick={() => sqlExecuteHandle(taskId)}
+              onClick={(e) => {
+                e.stopPropagation();
+                sqlExecuteHandle(taskId);
+              }}
             >
               {i18n.t('order.auditResultCollection.table.sqlExecute')}
             </Typography.Link>
@@ -266,7 +278,10 @@ export const auditResultOverviewColumn: (
                       record.status
                     )
                   }
-                  onClick={() => openScheduleModal()}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    openScheduleModal();
+                  }}
                 >
                   {i18n.t('order.auditResultCollection.table.scheduleTime')}
                 </Typography.Link>
@@ -274,12 +289,13 @@ export const auditResultOverviewColumn: (
             >
               <Typography.Link
                 disabled={!enableCancelSqlScheduleTime(record.status)}
-                onClick={() =>
+                onClick={(e) => {
+                  e.stopPropagation();
                   scheduleTimeHandle(
                     undefined,
                     record.task_id?.toString() ?? ''
-                  )
-                }
+                  );
+                }}
               >
                 {i18n.t(
                   'order.auditResultCollection.table.cancelExecScheduled'
