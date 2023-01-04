@@ -232,9 +232,9 @@ describe('test AuditResultCollection', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('should be disabled executed when the order status is rejected', async () => {
+  test('should be disabled executed when the order status is rejected or canceled', async () => {
     mockGetSummaryOfInstanceTasks();
-    render(
+    const { rerender } = render(
       <AuditResultCollection
         taskInfos={taskInfos}
         auditResultActiveKey={OVERVIEW_TAB_KEY}
@@ -273,6 +273,41 @@ describe('test AuditResultCollection', () => {
         (v) => v.status === GetWorkflowTasksItemV1StatusEnum.exec_scheduled
       ).length
     );
+
+    expect(
+      screen.getAllByText('order.auditResultCollection.table.sqlExecute')[0]
+    ).toHaveClass('ant-typography-disabled');
+    expect(
+      screen.getAllByText('order.auditResultCollection.table.sqlExecute')[1]
+    ).toHaveClass('ant-typography-disabled');
+    expect(
+      screen.getAllByText('order.auditResultCollection.table.scheduleTime')[0]
+    ).toHaveClass('ant-typography-disabled');
+    expect(
+      screen.getAllByText('order.auditResultCollection.table.scheduleTime')[1]
+    ).toHaveClass('ant-typography-disabled');
+    expect(
+      screen.getAllByText(
+        'order.auditResultCollection.table.cancelExecScheduled'
+      )[0]
+    ).toHaveClass('ant-typography-disabled');
+
+    rerender(
+      <AuditResultCollection
+        taskInfos={taskInfos}
+        auditResultActiveKey={OVERVIEW_TAB_KEY}
+        setAuditResultActiveKey={mockSetAuditResultActiveKey}
+        updateTaskRecordTotalNum={jest.fn()}
+        showOverview={true}
+        workflowName={workflowName}
+        orderStatus={WorkflowRecordResV1StatusEnum.canceled}
+        projectName={projectName}
+      />
+    );
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
 
     expect(
       screen.getAllByText('order.auditResultCollection.table.sqlExecute')[0]
