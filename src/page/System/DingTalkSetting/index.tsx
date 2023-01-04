@@ -5,6 +5,7 @@ import {
   Descriptions,
   Form,
   Input,
+  message,
   Space,
   Switch,
   Typography,
@@ -58,6 +59,20 @@ const DingTalkSetting: React.FC = () => {
       });
   };
 
+  const testDingTalkConfiguration = () => {
+    configuration.testDingTalkConfigV1().then((res) => {
+      if (res.data.code === ResponseCode.SUCCESS) {
+        if (res.data.data?.is_ding_talk_send_normal) {
+          message.success(t('system.dingTalk.testSuccess'));
+        } else {
+          message.error(
+            res.data.data?.send_error_message ?? t('common.unknownError')
+          );
+        }
+      }
+    });
+  };
+
   const handelClickCancel = () => {
     form.resetFields();
     setModifyFlagFalse();
@@ -97,9 +112,18 @@ const DingTalkSetting: React.FC = () => {
             </Typography.Paragraph>
           </Descriptions.Item>
           <Descriptions.Item span={3}>
-            <Button type="primary" onClick={handelClickModify}>
-              {t('common.modify')}
-            </Button>
+            <Space>
+              <Button
+                type="primary"
+                loading={submitLoading}
+                onClick={testDingTalkConfiguration}
+              >
+                {t('system.dingTalk.test')}
+              </Button>
+              <Button type="primary" onClick={handelClickModify}>
+                {t('common.modify')}
+              </Button>
+            </Space>
           </Descriptions.Item>
         </Descriptions>
       </section>

@@ -16,6 +16,8 @@ export default {
   dingTalk: {
     titleTips: '审批信息将根据审核人的手机号发送到相应的钉钉账号',
     enable: '启用钉钉审批',
+    test: '测试',
+    testSuccess: '当前AppKey和AppSecret验证通过',
   },
 
   smtp: {

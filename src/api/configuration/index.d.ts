@@ -2,6 +2,7 @@ import {
   IGetDingTalkConfigurationResV1,
   IUpdateDingTalkConfigurationReqV1,
   IBaseRes,
+  ITestDingTalkConfigResV1,
   IGetDriversResV1,
   IGetLDAPConfigurationResV1,
   ILDAPConfigurationReqV1,
@@ -30,6 +31,8 @@ export interface IUpdateDingTalkConfigurationV1Params
   extends IUpdateDingTalkConfigurationReqV1 {}
 
 export interface IUpdateDingTalkConfigurationV1Return extends IBaseRes {}
+
+export interface ITestDingTalkConfigV1Return extends ITestDingTalkConfigResV1 {}
 
 export interface IGetDriversV1Return extends IGetDriversResV1 {}
 

@@ -124,14 +124,35 @@ exports[`test DingTalkSetting should match snapshot 1`] = `
                       <span
                         class="ant-descriptions-item-content"
                       >
-                        <button
-                          class="ant-btn ant-btn-primary"
-                          type="button"
+                        <div
+                          class="ant-space ant-space-horizontal ant-space-align-center"
                         >
-                          <span>
-                            common.modify
-                          </span>
-                        </button>
+                          <div
+                            class="ant-space-item"
+                            style="margin-right: 8px;"
+                          >
+                            <button
+                              class="ant-btn ant-btn-primary"
+                              type="button"
+                            >
+                              <span>
+                                system.dingTalk.test
+                              </span>
+                            </button>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <button
+                              class="ant-btn ant-btn-primary"
+                              type="button"
+                            >
+                              <span>
+                                common.modify
+                              </span>
+                            </button>
+                          </div>
+                        </div>
                       </span>
                     </div>
                   </td>
@@ -472,15 +493,36 @@ exports[`test DingTalkSetting should match snapshot 2`] = `
                       <span
                         class="ant-descriptions-item-content"
                       >
-                        <button
-                          ant-click-animating-without-extra-node="false"
-                          class="ant-btn ant-btn-primary"
-                          type="button"
+                        <div
+                          class="ant-space ant-space-horizontal ant-space-align-center"
                         >
-                          <span>
-                            common.modify
-                          </span>
-                        </button>
+                          <div
+                            class="ant-space-item"
+                            style="margin-right: 8px;"
+                          >
+                            <button
+                              class="ant-btn ant-btn-primary"
+                              type="button"
+                            >
+                              <span>
+                                system.dingTalk.test
+                              </span>
+                            </button>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <button
+                              ant-click-animating-without-extra-node="false"
+                              class="ant-btn ant-btn-primary"
+                              type="button"
+                            >
+                              <span>
+                                common.modify
+                              </span>
+                            </button>
+                          </div>
+                        </div>
                       </span>
                     </div>
                   </td>
@@ -818,14 +860,35 @@ exports[`test DingTalkSetting should match snapshot when open dingTalk configura
                       <span
                         class="ant-descriptions-item-content"
                       >
-                        <button
-                          class="ant-btn ant-btn-primary"
-                          type="button"
+                        <div
+                          class="ant-space ant-space-horizontal ant-space-align-center"
                         >
-                          <span>
-                            common.modify
-                          </span>
-                        </button>
+                          <div
+                            class="ant-space-item"
+                            style="margin-right: 8px;"
+                          >
+                            <button
+                              class="ant-btn ant-btn-primary"
+                              type="button"
+                            >
+                              <span>
+                                system.dingTalk.test
+                              </span>
+                            </button>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <button
+                              class="ant-btn ant-btn-primary"
+                              type="button"
+                            >
+                              <span>
+                                common.modify
+                              </span>
+                            </button>
+                          </div>
+                        </div>
                       </span>
                     </div>
                   </td>
@@ -1166,15 +1229,36 @@ exports[`test DingTalkSetting should match snapshot when open dingTalk configura
                       <span
                         class="ant-descriptions-item-content"
                       >
-                        <button
-                          ant-click-animating-without-extra-node="false"
-                          class="ant-btn ant-btn-primary"
-                          type="button"
+                        <div
+                          class="ant-space ant-space-horizontal ant-space-align-center"
                         >
-                          <span>
-                            common.modify
-                          </span>
-                        </button>
+                          <div
+                            class="ant-space-item"
+                            style="margin-right: 8px;"
+                          >
+                            <button
+                              class="ant-btn ant-btn-primary"
+                              type="button"
+                            >
+                              <span>
+                                system.dingTalk.test
+                              </span>
+                            </button>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <button
+                              ant-click-animating-without-extra-node="false"
+                              class="ant-btn ant-btn-primary"
+                              type="button"
+                            >
+                              <span>
+                                common.modify
+                              </span>
+                            </button>
+                          </div>
+                        </div>
                       </span>
                     </div>
                   </td>
