@@ -54,6 +54,7 @@ const Order = () => {
     canRejectOrder,
     tasksStatusNumber,
     getOverviewListSuccessHandle,
+    complete,
   } = useGenerateOrderStepsProps({
     workflowName: orderInfo?.workflow_name ?? '',
     refreshOrder,
@@ -226,6 +227,7 @@ const Order = () => {
                 execEndTime={taskInfos?.[0]?.exec_end_time}
                 pass={pass}
                 executing={executing}
+                complete={complete}
                 reject={reject}
                 modifySql={openModifySqlModal}
                 canRejectOrder={canRejectOrder}

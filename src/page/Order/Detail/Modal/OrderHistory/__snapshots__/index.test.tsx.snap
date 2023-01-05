@@ -98,10 +98,10 @@ exports[`Order/Detail/OrderHistory should render all order history 1`] = `
                         order.operator.createOrderStep
                       </div>
                       <div
-                        class="ant-col ant-col-6"
+                        class="ant-col ant-col-8"
                       />
                       <div
-                        class="ant-col ant-col-15"
+                        class="ant-col ant-col-13"
                       >
                         <div
                           class="ant-col ant-col-24"
@@ -165,12 +165,12 @@ exports[`Order/Detail/OrderHistory should render all order history 1`] = `
                         order.operator.executeOrderStep
                       </div>
                       <div
-                        class="ant-col ant-col-6"
+                        class="ant-col ant-col-8"
                       >
                         order.operator.wait
                       </div>
                       <div
-                        class="ant-col ant-col-15"
+                        class="ant-col ant-col-13"
                       >
                         <div
                           class="ant-col ant-col-24"
@@ -242,10 +242,10 @@ exports[`Order/Detail/OrderHistory should render all order history 1`] = `
                         order.operator.createOrderStep
                       </div>
                       <div
-                        class="ant-col ant-col-6"
+                        class="ant-col ant-col-8"
                       />
                       <div
-                        class="ant-col ant-col-15"
+                        class="ant-col ant-col-13"
                       >
                         <div
                           class="ant-col ant-col-24"
@@ -286,7 +286,7 @@ exports[`Order/Detail/OrderHistory should render all order history 1`] = `
                         order.operator.executeOrderStep
                       </div>
                       <div
-                        class="ant-col ant-col-6"
+                        class="ant-col ant-col-8"
                       >
                         <div>
                           <span
@@ -313,7 +313,7 @@ exports[`Order/Detail/OrderHistory should render all order history 1`] = `
                         </div>
                       </div>
                       <div
-                        class="ant-col ant-col-15"
+                        class="ant-col ant-col-13"
                       >
                         <div
                           class="ant-col ant-col-24"
@@ -385,10 +385,10 @@ exports[`Order/Detail/OrderHistory should render all order history 1`] = `
                         order.operator.createOrderStep
                       </div>
                       <div
-                        class="ant-col ant-col-6"
+                        class="ant-col ant-col-8"
                       />
                       <div
-                        class="ant-col ant-col-15"
+                        class="ant-col ant-col-13"
                       >
                         <div
                           class="ant-col ant-col-24"
@@ -429,12 +429,12 @@ exports[`Order/Detail/OrderHistory should render all order history 1`] = `
                         order.operator.executeOrderStep
                       </div>
                       <div
-                        class="ant-col ant-col-6"
+                        class="ant-col ant-col-8"
                       >
                         order.operator.alreadyClosed
                       </div>
                       <div
-                        class="ant-col ant-col-15"
+                        class="ant-col ant-col-13"
                       >
                         <div
                           class="ant-col ant-col-24"
@@ -506,10 +506,10 @@ exports[`Order/Detail/OrderHistory should render all order history 1`] = `
                         order.operator.createOrderStep
                       </div>
                       <div
-                        class="ant-col ant-col-6"
+                        class="ant-col ant-col-8"
                       />
                       <div
-                        class="ant-col ant-col-15"
+                        class="ant-col ant-col-13"
                       >
                         <div
                           class="ant-col ant-col-24"
@@ -550,7 +550,7 @@ exports[`Order/Detail/OrderHistory should render all order history 1`] = `
                         order.operator.executeOrderStep
                       </div>
                       <div
-                        class="ant-col ant-col-6"
+                        class="ant-col ant-col-8"
                       >
                         <span>
                           order.operator.status
@@ -563,7 +563,7 @@ exports[`Order/Detail/OrderHistory should render all order history 1`] = `
                         </span>
                       </div>
                       <div
-                        class="ant-col ant-col-15"
+                        class="ant-col ant-col-13"
                       >
                         <div
                           class="ant-col ant-col-24"
@@ -635,10 +635,10 @@ exports[`Order/Detail/OrderHistory should render all order history 1`] = `
                         order.operator.createOrderStep
                       </div>
                       <div
-                        class="ant-col ant-col-6"
+                        class="ant-col ant-col-8"
                       />
                       <div
-                        class="ant-col ant-col-15"
+                        class="ant-col ant-col-13"
                       >
                         <div
                           class="ant-col ant-col-24"
@@ -702,12 +702,12 @@ exports[`Order/Detail/OrderHistory should render all order history 1`] = `
                         order.operator.executeOrderStep
                       </div>
                       <div
-                        class="ant-col ant-col-6"
+                        class="ant-col ant-col-8"
                       >
                         order.operator.wait
                       </div>
                       <div
-                        class="ant-col ant-col-15"
+                        class="ant-col ant-col-13"
                       >
                         <div
                           class="ant-col ant-col-24"
@@ -779,10 +779,10 @@ exports[`Order/Detail/OrderHistory should render all order history 1`] = `
                         order.operator.createOrderStep
                       </div>
                       <div
-                        class="ant-col ant-col-6"
+                        class="ant-col ant-col-8"
                       />
                       <div
-                        class="ant-col ant-col-15"
+                        class="ant-col ant-col-13"
                       >
                         <div
                           class="ant-col ant-col-24"
@@ -846,12 +846,12 @@ exports[`Order/Detail/OrderHistory should render all order history 1`] = `
                         order.operator.executeOrderStep
                       </div>
                       <div
-                        class="ant-col ant-col-6"
+                        class="ant-col ant-col-8"
                       >
                         order.operator.wait
                       </div>
                       <div
-                        class="ant-col ant-col-15"
+                        class="ant-col ant-col-13"
                       >
                         <div
                           class="ant-col ant-col-24"

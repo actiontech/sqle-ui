@@ -217,7 +217,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                       order.operator.createOrderStep
                     </div>
                     <div
-                      class="ant-col ant-col-6"
+                      class="ant-col ant-col-8"
                     >
                       <div>
                         <button
@@ -232,7 +232,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                       </div>
                     </div>
                     <div
-                      class="ant-col ant-col-15"
+                      class="ant-col ant-col-13"
                     >
                       <div
                         class="ant-col ant-col-24"
@@ -273,7 +273,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                       order.operator.executeOrderStep
                     </div>
                     <div
-                      class="ant-col ant-col-6"
+                      class="ant-col ant-col-8"
                     >
                       <div>
                         <span
@@ -300,7 +300,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                       </div>
                     </div>
                     <div
-                      class="ant-col ant-col-15"
+                      class="ant-col ant-col-13"
                     >
                       <div
                         class="ant-col ant-col-24"
@@ -2293,10 +2293,10 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                       order.operator.createOrderStep
                     </div>
                     <div
-                      class="ant-col ant-col-6"
+                      class="ant-col ant-col-8"
                     />
                     <div
-                      class="ant-col ant-col-15"
+                      class="ant-col ant-col-13"
                     >
                       <div
                         class="ant-col ant-col-24"
@@ -2360,13 +2360,14 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                       order.operator.executeOrderStep
                     </div>
                     <div
-                      class="ant-col ant-col-6"
+                      class="ant-col ant-col-8"
                     >
                       <div
                         class="ant-space ant-space-horizontal ant-space-align-center"
                       >
                         <div
                           class="ant-space-item"
+                          style="margin-right: 8px;"
                         >
                           <div
                             class="ant-space ant-space-horizontal ant-space-align-center"
@@ -2385,10 +2386,22 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                             </div>
                           </div>
                         </div>
+                        <div
+                          class="ant-space-item"
+                        >
+                          <button
+                            class="ant-btn ant-btn-primary"
+                            type="button"
+                          >
+                            <span>
+                              order.operator.finished
+                            </span>
+                          </button>
+                        </div>
                       </div>
                     </div>
                     <div
-                      class="ant-col ant-col-15"
+                      class="ant-col ant-col-13"
                     >
                       <div
                         class="ant-col ant-col-24"
@@ -3218,7 +3231,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                       order.operator.createOrderStep
                     </div>
                     <div
-                      class="ant-col ant-col-6"
+                      class="ant-col ant-col-8"
                     >
                       <div>
                         <button
@@ -3233,7 +3246,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                       </div>
                     </div>
                     <div
-                      class="ant-col ant-col-15"
+                      class="ant-col ant-col-13"
                     >
                       <div
                         class="ant-col ant-col-24"
@@ -3274,7 +3287,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                       order.operator.executeOrderStep
                     </div>
                     <div
-                      class="ant-col ant-col-6"
+                      class="ant-col ant-col-8"
                     >
                       <div>
                         <span
@@ -3301,7 +3314,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                       </div>
                     </div>
                     <div
-                      class="ant-col ant-col-15"
+                      class="ant-col ant-col-13"
                     >
                       <div
                         class="ant-col ant-col-24"

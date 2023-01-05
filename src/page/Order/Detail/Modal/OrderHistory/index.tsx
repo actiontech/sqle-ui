@@ -31,6 +31,7 @@ const OrderHistory: React.FC<OrderHistoryProps> = (props) => {
               reject={() => Promise.resolve()}
               executing={() => Promise.resolve()}
               modifySql={() => void 0}
+              complete={() => Promise.resolve()}
               readonly={true}
             />
             {index < props.history.length - 1 && (

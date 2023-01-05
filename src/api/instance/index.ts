@@ -35,7 +35,9 @@ import {
   IGetTableMetadataParams,
   IGetTableMetadataReturn,
   IGetInstanceListV2Params,
-  IGetInstanceListV2Return
+  IGetInstanceListV2Return,
+  ICreateInstanceV2Params,
+  ICreateInstanceV2Return
 } from './index.d';
 
 class InstanceService extends ServiceBase {
@@ -281,6 +283,21 @@ class InstanceService extends ServiceBase {
     delete paramsData.project_name;
 
     return this.get<IGetInstanceListV2Return>(
+      `/v2/projects/${project_name}/instances`,
+      paramsData,
+      options
+    );
+  }
+
+  public createInstanceV2(
+    params: ICreateInstanceV2Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.post<ICreateInstanceV2Return>(
       `/v2/projects/${project_name}/instances`,
       paramsData,
       options

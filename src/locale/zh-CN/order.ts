@@ -73,6 +73,7 @@ export default {
     user: '操作人',
     reject: '驳回',
     rejectFull: '全部驳回',
+    finished: '工单已上线',
     rejectTips:
       '被驳回的工单必须修改审核语句，审核语句只能由工单创建者修改，在您修改了审核语句之后，工单即会从新进入审核流程',
     wait: '正在等待用户{{username}}进行操作',
@@ -96,6 +97,7 @@ export default {
 
     approveSuccessTips: '审批通过',
     rejectSuccessTips: '驳回成功',
+    completeSuccessTips: '同步工单已上线成功',
     rejectReason: '驳回原因',
     onlineRegularly: '定时上线',
     scheduleTime: '定时时间',

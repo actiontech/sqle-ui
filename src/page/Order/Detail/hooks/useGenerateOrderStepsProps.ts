@@ -97,6 +97,29 @@ const useGenerateOrderStepsProps = ({
     [projectName, refreshOrder, refreshOverviewAction, t, workflowName]
   );
 
+  const complete = useCallback(async () => {
+    return workflow
+      .batchCompleteWorkflowsV1({
+        workflow_names: [workflowName],
+        project_name: projectName,
+      })
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          message.success(t('order.operator.completeSuccessTips'));
+          refreshOrder();
+          refreshTask();
+          refreshOverviewAction();
+        }
+      });
+  }, [
+    projectName,
+    refreshOrder,
+    refreshOverviewAction,
+    refreshTask,
+    t,
+    workflowName,
+  ]);
+
   const getOverviewListSuccessHandle = (list: IGetWorkflowTasksItemV1[]) => {
     setMaintenanceTimeInfo?.(
       list.map((v) => ({
@@ -143,6 +166,7 @@ const useGenerateOrderStepsProps = ({
     canRejectOrder,
     tasksStatusNumber,
     getOverviewListSuccessHandle,
+    complete,
   };
 };
 

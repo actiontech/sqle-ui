@@ -26,10 +26,10 @@ exports[`test OrderSteps should disable execute button and render disable tips w
             order.operator.createOrderStep
           </div>
           <div
-            class="ant-col ant-col-6"
+            class="ant-col ant-col-8"
           />
           <div
-            class="ant-col ant-col-15"
+            class="ant-col ant-col-13"
           >
             <div
               class="ant-col ant-col-24"
@@ -70,10 +70,10 @@ exports[`test OrderSteps should disable execute button and render disable tips w
             order.operator.reviewOrderStep
           </div>
           <div
-            class="ant-col ant-col-6"
+            class="ant-col ant-col-8"
           />
           <div
-            class="ant-col ant-col-15"
+            class="ant-col ant-col-13"
           >
             <div
               class="ant-col ant-col-24"
@@ -137,7 +137,7 @@ exports[`test OrderSteps should disable execute button and render disable tips w
             order.operator.executeOrderStep
           </div>
           <div
-            class="ant-col ant-col-6"
+            class="ant-col ant-col-8"
           >
             <div
               class="ant-space ant-space-horizontal ant-space-align-center"
@@ -172,6 +172,7 @@ exports[`test OrderSteps should disable execute button and render disable tips w
               </div>
               <div
                 class="ant-space-item"
+                style="margin-right: 8px;"
               >
                 <button
                   class="ant-btn ant-btn-dangerous"
@@ -179,6 +180,19 @@ exports[`test OrderSteps should disable execute button and render disable tips w
                 >
                   <span>
                     order.operator.rejectFull
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+              >
+                <button
+                  class="ant-btn ant-btn-primary"
+                  disabled=""
+                  type="button"
+                >
+                  <span>
+                    order.operator.finished
                   </span>
                 </button>
               </div>
@@ -212,7 +226,7 @@ exports[`test OrderSteps should disable execute button and render disable tips w
             </div>
           </div>
           <div
-            class="ant-col ant-col-15"
+            class="ant-col ant-col-13"
           >
             <div
               class="ant-col ant-col-24"
@@ -285,10 +299,10 @@ exports[`test OrderSteps should match snapshot with default props 1`] = `
             order.operator.createOrderStep
           </div>
           <div
-            class="ant-col ant-col-6"
+            class="ant-col ant-col-8"
           />
           <div
-            class="ant-col ant-col-15"
+            class="ant-col ant-col-13"
           >
             <div
               class="ant-col ant-col-24"
@@ -329,10 +343,10 @@ exports[`test OrderSteps should match snapshot with default props 1`] = `
             order.operator.reviewOrderStep
           </div>
           <div
-            class="ant-col ant-col-6"
+            class="ant-col ant-col-8"
           />
           <div
-            class="ant-col ant-col-15"
+            class="ant-col ant-col-13"
           >
             <div
               class="ant-col ant-col-24"
@@ -373,7 +387,7 @@ exports[`test OrderSteps should match snapshot with default props 1`] = `
             order.operator.executeOrderStep
           </div>
           <div
-            class="ant-col ant-col-6"
+            class="ant-col ant-col-8"
           >
             <span>
               order.operator.status
@@ -386,7 +400,7 @@ exports[`test OrderSteps should match snapshot with default props 1`] = `
             </span>
           </div>
           <div
-            class="ant-col ant-col-15"
+            class="ant-col ant-col-13"
           >
             <div
               class="ant-col ant-col-24"

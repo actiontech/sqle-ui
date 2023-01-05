@@ -18,6 +18,7 @@ const sqlReviewNode = <>sqlReviewNode</>;
 const batchSqlExecuteNode = <>batchSqlExecuteNode</>;
 const rejectFullNode = <>rejectFullNode</>;
 const maintenanceTimeInfoNode = <>maintenanceTimeInfoNode</>;
+const finishNode = <>finishNode</>;
 
 const actionNode = {
   modifySqlNode,
@@ -25,6 +26,7 @@ const actionNode = {
   batchSqlExecuteNode,
   rejectFullNode,
   maintenanceTimeInfoNode,
+  finishNode,
 };
 
 const renderJsx = (jsx?: JSX.Element | string | null) => {
