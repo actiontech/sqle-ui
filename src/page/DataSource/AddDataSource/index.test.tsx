@@ -43,7 +43,7 @@ describe('AddDataSource', () => {
   });
 
   const mockCreateInstanceRequest = () => {
-    const spy = jest.spyOn(instance, 'createInstanceV1');
+    const spy = jest.spyOn(instance, 'createInstanceV2');
     spy.mockImplementation(() => resolveThreeSecond(undefined));
     return spy;
   };
