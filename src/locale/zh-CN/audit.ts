@@ -24,6 +24,7 @@ export default {
     doing: '正在执行',
     succeeded: '执行成功',
     failed: '执行失败',
+    manually_executed: '人工执行',
   },
 
   auditStatus: {

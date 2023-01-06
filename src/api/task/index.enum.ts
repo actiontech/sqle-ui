@@ -7,7 +7,9 @@ export enum getAuditTaskSQLsV1FilterExecStatusEnum {
 
   'succeeded' = 'succeeded',
 
-  'failed' = 'failed'
+  'failed' = 'failed',
+
+  'manually_executed' = 'manually_executed'
 }
 
 export enum getAuditTaskSQLsV1FilterAuditStatusEnum {

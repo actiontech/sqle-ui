@@ -43,5 +43,12 @@ describe('test Order/AuditResult/InstanceTasksStatus', () => {
       />
     );
     expect(container).toMatchSnapshot();
+
+    rerender(
+      <InstanceTasksStatus
+        status={GetWorkflowTasksItemV1StatusEnum.manually_executed}
+      />
+    );
+    expect(container).toMatchSnapshot();
   });
 });

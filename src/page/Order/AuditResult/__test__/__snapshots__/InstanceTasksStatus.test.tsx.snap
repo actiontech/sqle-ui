@@ -69,3 +69,13 @@ exports[`test Order/AuditResult/InstanceTasksStatus should match snapshot 7`] = 
   </span>
 </div>
 `;
+
+exports[`test Order/AuditResult/InstanceTasksStatus should match snapshot 8`] = `
+<div>
+  <span
+    class="ant-tag ant-tag-green"
+  >
+    order.status.manually_executed
+  </span>
+</div>
+`;
