@@ -18,6 +18,8 @@ export const execStatusDictionary: StaticEnumDictionary<getAuditTaskSQLsV1Filter
     [getAuditTaskSQLsV1FilterExecStatusEnum.failed]: 'audit.execStatus.failed',
     [getAuditTaskSQLsV1FilterExecStatusEnum.succeeded]:
       'audit.execStatus.succeeded',
+    [getAuditTaskSQLsV1FilterExecStatusEnum.manually_executed]:
+      'audit.execStatus.manually_executed',
   };
 
 export const auditStatusDictionary: StaticEnumDictionary<getAuditTaskSQLsV1FilterAuditStatusEnum> =

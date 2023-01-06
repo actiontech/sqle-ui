@@ -57,6 +57,7 @@ export default {
     reject: '已驳回',
     canceled: '已关闭',
     exec_succeeded: '上线成功',
+    manually_executed: '人工上线',
   },
 
   sqlTaskStatus: {

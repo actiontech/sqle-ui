@@ -77,7 +77,9 @@ export enum AuditTaskResV1StatusEnum {
 
   'exec_success' = 'exec_success',
 
-  'exec_failed' = 'exec_failed'
+  'exec_failed' = 'exec_failed',
+
+  'manually_executed' = 'manually_executed'
 }
 
 export enum CreateAuditWhitelistReqV1MatchTypeEnum {
@@ -105,7 +107,9 @@ export enum GetWorkflowTasksItemV1StatusEnum {
 
   'exec_succeeded' = 'exec_succeeded',
 
-  'executing' = 'executing'
+  'executing' = 'executing',
+
+  'manually_executed' = 'manually_executed'
 }
 
 export enum RuleParamResV1TypeEnum {
