@@ -16,6 +16,8 @@ enum EmitterKey {
 
   Rest_Audit_Plan_Form = 'REST_AUDIT_PLAN_FORM',
 
+  Reset_Audit_Plan_Form_Instance_List = 'Reset_Audit_Plan_Form_Instance_List',
+
   Refresh_Audit_Plan_Record = 'REFRESH_AUDIT_PLAN_RECORD',
 
   Refresh_License = 'REFRESH_LICENSE',

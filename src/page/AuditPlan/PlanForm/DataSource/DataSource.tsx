@@ -6,9 +6,11 @@ import instance from '../../../../api/instance';
 import { IGetInstanceTipListV1Params } from '../../../../api/instance/index.d';
 import { getInstanceTipListV1FunctionalModuleEnum } from '../../../../api/instance/index.enum';
 import { ResponseCode } from '../../../../data/common';
+import EmitterKey from '../../../../data/EmitterKey';
 import useDatabaseType from '../../../../hooks/useDatabaseType';
 import useInstance from '../../../../hooks/useInstance';
 import useInstanceSchema from '../../../../hooks/useInstanceSchema';
+import EventEmitter from '../../../../utils/EventEmitter';
 
 const DataSource: React.FC<DataSourceProps> = (props) => {
   const { form, defaultValue, dataSource, projectName } = props;
@@ -52,10 +54,15 @@ const DataSource: React.FC<DataSourceProps> = (props) => {
             form.setFieldsValue({
               dbType: res.data.data?.db_type,
             });
-            props.dbTypeChange?.(res.data.data?.db_type ?? '');
+            handleDbTypeChange(res.data.data?.db_type ?? '');
           }
         });
     }
+  };
+
+  const handleDbTypeChange = (dbType: string) => {
+    props.dbTypeChange?.(dbType);
+    updateInstanceList({ ...getInstanceParams, filter_db_type: dbType });
   };
 
   useEffect(() => {
@@ -63,7 +70,22 @@ const DataSource: React.FC<DataSourceProps> = (props) => {
   }, [updateDriverNameList]);
 
   useEffect(() => {
-    updateInstanceList(getInstanceParams);
+    const refreshInstanceList = () => {
+      updateInstanceList(getInstanceParams);
+    };
+
+    refreshInstanceList();
+
+    EventEmitter.subscribe(
+      EmitterKey.Reset_Audit_Plan_Form_Instance_List,
+      refreshInstanceList
+    );
+    return () => {
+      EventEmitter.unsubscribe(
+        EmitterKey.Reset_Audit_Plan_Form_Instance_List,
+        refreshInstanceList
+      );
+    };
   }, [getInstanceParams, updateInstanceList]);
 
   return (
@@ -99,7 +121,8 @@ const DataSource: React.FC<DataSourceProps> = (props) => {
         <Select<string>
           disabled={!!dataSource || !!defaultValue}
           placeholder={t('common.form.placeholder.select')}
-          onChange={props.dbTypeChange}
+          onChange={handleDbTypeChange}
+          allowClear
         >
           {generateDriverSelectOptions()}
         </Select>

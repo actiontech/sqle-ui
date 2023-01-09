@@ -52,6 +52,7 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
 
   const resetForm = () => {
     setDataSource('');
+    EventEmitter.emit(EmitterKey.Reset_Audit_Plan_Form_Instance_List);
     if (!!props.defaultValue) {
       form.resetFields(['databaseName', 'cron', 'schema']);
     } else {

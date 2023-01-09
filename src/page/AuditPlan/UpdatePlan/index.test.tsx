@@ -169,9 +169,11 @@ describe('UpdateAuditPlan', () => {
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
     fireEvent.click(screen.getByText('common.close'));
 
-    expect(emitSpy).toBeCalledTimes(1);
+    expect(emitSpy).toBeCalledTimes(2);
     expect(emitSpy).toBeCalledWith(EmitterKey.Rest_Audit_Plan_Form);
-
+    expect(emitSpy).toBeCalledWith(
+      EmitterKey.Reset_Audit_Plan_Form_Instance_List
+    );
     expect(getBySelector('.ant-modal-wrap')).toHaveStyle('display: none');
     await waitFor(() => {
       jest.advanceTimersByTime(0);
