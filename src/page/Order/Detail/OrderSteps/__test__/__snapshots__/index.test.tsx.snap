@@ -141,38 +141,31 @@ exports[`test OrderSteps should disable execute button and render disable tips w
           >
             <div
               class="ant-space ant-space-horizontal ant-space-align-center"
+              style="flex-wrap: wrap; margin-bottom: -8px;"
             >
               <div
                 class="ant-space-item"
-                style="margin-right: 8px;"
+                style="margin-right: 8px; padding-bottom: 8px;"
               >
-                <div
-                  class="ant-space ant-space-horizontal ant-space-align-center"
+                <span
+                  class="ant-popover-disabled-compatible-wrapper"
+                  style="display: inline-block; cursor: not-allowed;"
                 >
-                  <div
-                    class="ant-space-item"
+                  <button
+                    class="ant-btn ant-btn-primary"
+                    disabled=""
+                    style="pointer-events: none;"
+                    type="button"
                   >
-                    <span
-                      class="ant-tooltip-disabled-compatible-wrapper"
-                      style="display: inline-block; cursor: not-allowed;"
-                    >
-                      <button
-                        class="ant-btn ant-btn-primary"
-                        disabled=""
-                        style="pointer-events: none;"
-                        type="button"
-                      >
-                        <span>
-                          order.operator.batchSqlExecute
-                        </span>
-                      </button>
+                    <span>
+                      order.operator.batchSqlExecute
                     </span>
-                  </div>
-                </div>
+                  </button>
+                </span>
               </div>
               <div
                 class="ant-space-item"
-                style="margin-right: 8px;"
+                style="margin-right: 8px; padding-bottom: 8px;"
               >
                 <button
                   class="ant-btn ant-btn-dangerous"
@@ -185,16 +178,23 @@ exports[`test OrderSteps should disable execute button and render disable tips w
               </div>
               <div
                 class="ant-space-item"
+                style="padding-bottom: 8px;"
               >
-                <button
-                  class="ant-btn ant-btn-primary"
-                  disabled=""
-                  type="button"
+                <span
+                  class="ant-popover-disabled-compatible-wrapper"
+                  style="display: inline-block; cursor: not-allowed;"
                 >
-                  <span>
-                    order.operator.finished
-                  </span>
-                </button>
+                  <button
+                    class="ant-btn ant-btn-primary"
+                    disabled=""
+                    style="pointer-events: none;"
+                    type="button"
+                  >
+                    <span>
+                      order.operator.markManually
+                    </span>
+                  </button>
+                </span>
               </div>
             </div>
             <div>

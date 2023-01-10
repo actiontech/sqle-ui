@@ -299,6 +299,18 @@ describe('Order/Detail', () => {
       screen.queryByText('order.operator.batchSqlExecute')
     ).toBeInTheDocument();
     fireEvent.click(screen.getByText('order.operator.batchSqlExecute'));
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(
+      screen.queryByText('order.operator.batchSqlExecuteConfirmTips')
+    ).toBeInTheDocument();
+
+    expect(screen.queryByText('common.ok')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('common.ok'));
+
     expect(resolveOrderSpy).toBeCalledTimes(1);
     expect(resolveOrderSpy).toBeCalledWith({
       workflow_name: order.workflow_name,
