@@ -16,7 +16,8 @@ export type GlobalRouterItemKeyLiteral =
   | 'globalRuleTemplate'
   | 'projectDetail'
   | 'projectList'
-  | 'System';
+  | 'System'
+  | 'syncDataSource'
 
 export type ProjectDetailRouterItemKeyLiteral =
   | 'order'

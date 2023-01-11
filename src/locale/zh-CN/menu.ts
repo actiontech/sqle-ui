@@ -27,4 +27,5 @@ export default {
   member: '成员',
   projectOverview: '项目概览',
   allInstanceType: '所有数据库类型',
+  syncDataSource: '外部数据源同步',
 };

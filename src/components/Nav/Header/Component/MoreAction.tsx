@@ -62,6 +62,12 @@ const MoreAction: React.FC = () => {
                   {t('menu.globalRuleTemplate')}
                 </Menu.Item>
                 <Menu.Item
+                  key="syncDataSource"
+                  onClick={() => history.push('/syncDataSource')}
+                >
+                  {t('menu.syncDataSource')}
+                </Menu.Item>
+                <Menu.Item
                   key="systemSetting"
                   onClick={() => history.push('/system')}
                 >

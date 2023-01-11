@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test SyncDataSource should match snapshot 1`] = `
+<Fragment>
+  <section
+    className="padding-content"
+  >
+    <Card>
+      syncDataSource.ceTips
+      <Paragraph>
+        <ul>
+          <li>
+            <a
+              href="https://actiontech.github.io/sqle-docs-cn/"
+            >
+              https://actiontech.github.io/sqle-docs-cn/
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.actionsky.com/"
+            >
+              https://www.actionsky.com/
+            </a>
+          </li>
+        </ul>
+      </Paragraph>
+    </Card>
+  </section>
+  <article>
+    <PageHeader
+      ghost={false}
+      title="syncDataSource.pageTitle"
+    >
+      syncDataSource.pageDesc
+    </PageHeader>
+    <section
+      className="padding-content"
+    >
+      <Switch>
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/syncDataSource"
+        />
+        <Route
+          component={[Function]}
+          path="/syncDataSource/create"
+        />
+        <Route
+          component={[Function]}
+          path="/syncDataSource/update/:taskId"
+        />
+        <Redirect
+          to="/syncDataSource"
+        />
+      </Switch>
+    </section>
+  </article>
+</Fragment>
+`;

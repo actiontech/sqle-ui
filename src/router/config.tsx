@@ -145,6 +145,11 @@ const Member = React.lazy(
   () => import(/* webpackChunkName: "Member" */ '../page/Member')
 );
 
+const SyncDataSource = React.lazy(
+  () =>
+    import(/* webpackChunkName: "SyncDataSource" */ '../page/SyncDataSource')
+);
+
 export const unAuthRouter: Array<RouteProps & { key: string }> = [
   {
     path: '/login',
@@ -239,6 +244,13 @@ export const globalRouterConfig: RouterItem<GlobalRouterItemKeyLiteral>[] = [
     icon: <ProjectOutlined />,
     path: '/project/:projectName',
     component: ProjectDetail,
+  },
+  {
+    path: '/SyncDataSource',
+    label: 'menu.syncDataSource',
+    key: 'syncDataSource',
+    icon: <ProjectOutlined />,
+    component: SyncDataSource,
   },
 ];
 
