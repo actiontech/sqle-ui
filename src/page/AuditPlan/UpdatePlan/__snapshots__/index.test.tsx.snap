@@ -341,7 +341,7 @@ exports[`UpdateAuditPlan should send update audit plan request when user input a
                 class="ant-form-item-control-input-content"
               >
                 <div
-                  class="ant-select ant-select-single ant-select-show-arrow ant-select-disabled"
+                  class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-disabled"
                 >
                   <div
                     class="ant-select-selector"
@@ -1587,7 +1587,7 @@ exports[`UpdateAuditPlan should set form default value to specify instance 1`] =
                 class="ant-form-item-control-input-content"
               >
                 <div
-                  class="ant-select ant-select-single ant-select-show-arrow ant-select-disabled"
+                  class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-disabled"
                 >
                   <div
                     class="ant-select-selector"

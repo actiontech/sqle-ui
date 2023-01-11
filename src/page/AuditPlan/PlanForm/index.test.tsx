@@ -241,8 +241,22 @@ describe('PlanForm', () => {
     expect(container).toMatchSnapshot();
   });
 
+  test('should rest form when component "Rest_Audit_Plan_Form" event', async () => {
+    const submitFn = jest.fn();
+    render(<PlanForm submit={submitFn} projectName={projectName} />);
+    fireEvent.input(screen.getByLabelText('auditPlan.planForm.name'), {
+      target: { value: 'planName1' },
+    });
+    act(() => {
+      EventEmitter.emit(EmitterKey.Rest_Audit_Plan_Form);
+    });
+    expect(screen.getByLabelText('auditPlan.planForm.name')).toHaveValue('');
+  });
+
   test('should reset apart of form when props includes default values and user click reset button', async () => {
     const submitFn = jest.fn();
+    const emitSpy = jest.spyOn(EventEmitter, 'emit');
+
     const { container } = render(
       <PlanForm
         submit={submitFn}
@@ -265,19 +279,13 @@ describe('PlanForm', () => {
     expect(container).toMatchSnapshot();
     fireEvent.click(screen.getByText('common.reset'));
 
-    expect(container).toMatchSnapshot();
-  });
+    expect(emitSpy).toBeCalledTimes(1);
+    expect(emitSpy).toBeCalledWith(
+      EmitterKey.Reset_Audit_Plan_Form_Instance_List
+    );
 
-  test('should rest form when component "Rest_Audit_Plan_Form" event', async () => {
-    const submitFn = jest.fn();
-    render(<PlanForm submit={submitFn} projectName={projectName} />);
-    fireEvent.input(screen.getByLabelText('auditPlan.planForm.name'), {
-      target: { value: 'planName1' },
-    });
-    act(() => {
-      EventEmitter.emit(EmitterKey.Rest_Audit_Plan_Form);
-    });
-    expect(screen.getByLabelText('auditPlan.planForm.name')).toHaveValue('');
+    expect(container).toMatchSnapshot();
+    emitSpy.mockClear();
   });
 
   test('should reset all field to new task field after user update audit task and stay this page', async () => {
@@ -393,5 +401,36 @@ describe('PlanForm', () => {
     expect(screen.getAllByText('rule_template_name1')[0]).not.toHaveClass(
       'ant-select-selection-item'
     );
+  });
+
+  test('should filter instance when changing database type', async () => {
+    const submitFn = jest.fn();
+    render(<PlanForm submit={submitFn} projectName={projectName} />);
+
+    expect(useInstanceSpy).toBeCalledTimes(1);
+    expect(useInstanceSpy).toBeCalledWith({
+      functional_module: 'create_audit_plan',
+      project_name: projectName,
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    fireEvent.mouseDown(screen.getByLabelText('auditPlan.planForm.dbType'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    const mysqlOptions = screen.getAllByText('mysql');
+    const mysql = mysqlOptions[1];
+    fireEvent.click(mysql);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(useInstanceSpy).toBeCalledTimes(2);
+    expect(useInstanceSpy).toBeCalledWith({
+      filter_db_type: 'mysql',
+      functional_module: 'create_audit_plan',
+      project_name: projectName,
+    });
   });
 });

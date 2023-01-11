@@ -254,7 +254,7 @@ exports[`PlanForm should match snapshot 1`] = `
             class="ant-form-item-control-input-content"
           >
             <div
-              class="ant-select ant-select-single ant-select-show-arrow"
+              class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow"
             >
               <div
                 class="ant-select-selector"
@@ -1382,7 +1382,7 @@ exports[`PlanForm should reset apart of form when props includes default values 
             class="ant-form-item-control-input-content"
           >
             <div
-              class="ant-select ant-select-single ant-select-show-arrow ant-select-disabled"
+              class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-disabled"
             >
               <div
                 class="ant-select-selector"
@@ -2534,7 +2534,7 @@ exports[`PlanForm should reset apart of form when props includes default values 
             class="ant-form-item-control-input-content"
           >
             <div
-              class="ant-select ant-select-single ant-select-show-arrow ant-select-disabled"
+              class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-disabled"
             >
               <div
                 class="ant-select-selector"
@@ -3808,7 +3808,7 @@ exports[`PlanForm should submit form value when user input all required fields a
             class="ant-form-item-control-input-content"
           >
             <div
-              class="ant-select ant-select-single ant-select-show-arrow"
+              class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow"
             >
               <div
                 class="ant-select-selector"
