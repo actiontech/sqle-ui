@@ -1373,6 +1373,8 @@ export interface IInstanceResV1 {
 
   rule_template_name?: string;
 
+  source?: string;
+
   sql_query_config?: ISQLQueryConfigResV1;
 }
 
@@ -2514,6 +2516,8 @@ export interface IInstanceResV2 {
   maintenance_times?: IMaintenanceTimeResV1[];
 
   rule_template?: IRuleTemplateV2;
+
+  source?: string;
 
   sql_query_config?: ISQLQueryConfigResV1;
 }
