@@ -10,7 +10,8 @@ import {
   Space,
   Timeline,
   Tag,
-  Tooltip,
+  Popconfirm,
+  Alert,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React, { useState } from 'react';
@@ -97,6 +98,89 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
       checkTimeInWithMaintenanceTime(time, v.maintenanceTime)
     );
   };
+
+  const batchSqlExecuteNode = (
+    <Popconfirm
+      title={t('order.operator.batchSqlExecuteConfirmTips')}
+      onConfirm={executing}
+      disabled={
+        executingLoading || !checkInTimeWithMaintenanceTimeInfo(moment())
+      }
+      overlayClassName="popconfirm-small"
+      placement="topRight"
+      okText={t('common.ok')}
+    >
+      <Button
+        type="primary"
+        loading={executingLoading}
+        disabled={!checkInTimeWithMaintenanceTimeInfo(moment())}
+      >
+        {t('order.operator.batchSqlExecute')}
+      </Button>
+    </Popconfirm>
+  );
+
+  const finishNode = (
+    <Popconfirm
+      title={t('order.operator.markManuallyConfirmTips')}
+      onConfirm={complete}
+      disabled={
+        completeLoading || !checkInTimeWithMaintenanceTimeInfo(moment())
+      }
+      overlayClassName="popconfirm-small"
+      placement="topRight"
+      okText={t('common.ok')}
+    >
+      <Button
+        loading={completeLoading}
+        type="primary"
+        disabled={!checkInTimeWithMaintenanceTimeInfo(moment())}
+      >
+        {t('order.operator.markManually')}
+      </Button>
+    </Popconfirm>
+  );
+
+  const maintenanceTimeInfoNode = (
+    <EmptyBox if={!checkInTimeWithMaintenanceTimeInfo(moment())}>
+      <div>
+        {t('order.operator.sqlExecuteDisableTips')}
+        {': '}
+        <EmptyBox
+          if={props.maintenanceTimeInfo?.some(
+            (v) => v.maintenanceTime.length > 0
+          )}
+          defaultNode={t('order.operator.emptyMaintenanceTime')}
+        >
+          {props.maintenanceTimeInfo?.map((item, i) => (
+            <Space key={i}>
+              <EmptyBox if={item.maintenanceTime.length > 0}>
+                <div>
+                  {item.instanceName}
+                  {': '}
+                  {item.maintenanceTime.map((time) => (
+                    <Tag key={i}>
+                      {timeAddZero(time.maintenance_start_time?.hour ?? 0)}:
+                      {timeAddZero(time.maintenance_start_time?.minute ?? 0)}-
+                      {timeAddZero(time.maintenance_stop_time?.hour ?? 0)}:
+                      {timeAddZero(time.maintenance_stop_time?.minute ?? 0)}
+                    </Tag>
+                  ))}
+                </div>
+              </EmptyBox>
+            </Space>
+          ))}
+        </EmptyBox>
+      </div>
+    </EmptyBox>
+  );
+
+  const modifySqlNode = (
+    <Button type="primary" onClick={props.modifySql}>
+      {t('order.operator.modifySql')}
+    </Button>
+  );
+
   return (
     <>
       <Timeline>
@@ -111,21 +195,6 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
             </Button>
           );
 
-          const batchSqlExecuteNode = (
-            <Space>
-              <Tooltip title={t('order.operator.batchSqlExecuteTips')}>
-                <Button
-                  type="primary"
-                  onClick={executing}
-                  loading={executingLoading}
-                  disabled={!checkInTimeWithMaintenanceTimeInfo(moment())}
-                >
-                  {t('order.operator.batchSqlExecute')}
-                </Button>
-              </Tooltip>
-            </Space>
-          );
-
           const rejectFullNode = (
             <Button
               onClick={handleClickRejectButton.bind(
@@ -136,70 +205,6 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
             >
               {t('order.operator.rejectFull')}
             </Button>
-          );
-
-          const finishNode = (
-            <Button
-              onClick={complete}
-              loading={completeLoading}
-              type="primary"
-              disabled={!checkInTimeWithMaintenanceTimeInfo(moment())}
-            >
-              {t('order.operator.finished')}
-            </Button>
-          );
-
-          const maintenanceTimeInfoNode = (
-            <EmptyBox if={!checkInTimeWithMaintenanceTimeInfo(moment())}>
-              <div>
-                {t('order.operator.sqlExecuteDisableTips')}
-                {': '}
-                <EmptyBox
-                  if={props.maintenanceTimeInfo?.some(
-                    (v) => v.maintenanceTime.length > 0
-                  )}
-                  defaultNode={t('order.operator.emptyMaintenanceTime')}
-                >
-                  {props.maintenanceTimeInfo?.map((item, i) => (
-                    <Space key={i}>
-                      <EmptyBox if={item.maintenanceTime.length > 0}>
-                        <div>
-                          {item.instanceName}
-                          {': '}
-                          {item.maintenanceTime.map((time) => (
-                            <Tag key={i}>
-                              {timeAddZero(
-                                time.maintenance_start_time?.hour ?? 0
-                              )}
-                              :
-                              {timeAddZero(
-                                time.maintenance_start_time?.minute ?? 0
-                              )}
-                              -
-                              {timeAddZero(
-                                time.maintenance_stop_time?.hour ?? 0
-                              )}
-                              :
-                              {timeAddZero(
-                                time.maintenance_stop_time?.minute ?? 0
-                              )}
-                            </Tag>
-                          ))}
-                        </div>
-                      </EmptyBox>
-                    </Space>
-                  ))}
-                </EmptyBox>
-              </div>
-            </EmptyBox>
-          );
-
-          const modifySqlNode = (
-            <div>
-              <Button type="primary" onClick={props.modifySql}>
-                {t('order.operator.modifySql')}
-              </Button>
-            </div>
           );
 
           const actionNode = generateActionNode(step, {
@@ -236,29 +241,43 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
         closable={false}
         footer={null}
       >
-        <Form {...ModalFormLayout} form={form} onFinish={reject}>
-          <Form.Item
-            label={t('order.operator.rejectReason')}
-            name="reason"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input.TextArea placeholder={t('common.form.placeholder.input')} />
-          </Form.Item>
-          <Form.Item label=" " colon={false}>
-            <Space>
-              <Button type="primary" htmlType="submit" loading={rejectLoading}>
-                {t('order.operator.reject')}
-              </Button>
-              <Button onClick={resetAndCloseRejectModal}>
-                {t('common.cancel')}
-              </Button>
-            </Space>
-          </Form.Item>
-        </Form>
+        <>
+          <Alert
+            style={{ marginBottom: 24 }}
+            message={t('order.operator.rejectAllTips')}
+            type="warning"
+          />
+
+          <Form {...ModalFormLayout} form={form} onFinish={reject}>
+            <Form.Item
+              label={t('order.operator.rejectReason')}
+              name="reason"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input.TextArea
+                placeholder={t('common.form.placeholder.input')}
+              />
+            </Form.Item>
+            <Form.Item label=" " colon={false}>
+              <Space>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  loading={rejectLoading}
+                >
+                  {t('order.operator.reject')}
+                </Button>
+                <Button onClick={resetAndCloseRejectModal}>
+                  {t('common.cancel')}
+                </Button>
+              </Space>
+            </Form.Item>
+          </Form>
+        </>
       </Modal>
     </>
   );

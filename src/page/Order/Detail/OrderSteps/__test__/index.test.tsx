@@ -202,6 +202,18 @@ describe('test OrderSteps', () => {
     expect(mockExecuting).toBeCalledTimes(0);
 
     fireEvent.click(screen.getByText('order.operator.batchSqlExecute'));
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(
+      screen.queryByText('order.operator.batchSqlExecuteConfirmTips')
+    ).toBeInTheDocument();
+
+    expect(screen.queryByText('common.ok')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('common.ok'));
+
     expect(
       screen.getByText('order.operator.batchSqlExecute').closest('button')
     ).toHaveClass('ant-btn-loading');
@@ -227,19 +239,33 @@ describe('test OrderSteps', () => {
       />
     );
 
-    expect(screen.queryByText('order.operator.finished')).toBeInTheDocument();
+    expect(
+      screen.queryByText('order.operator.markManually')
+    ).toBeInTheDocument();
     expect(mockComplete).toBeCalledTimes(0);
 
-    fireEvent.click(screen.getByText('order.operator.finished'));
+    fireEvent.click(screen.getByText('order.operator.markManually'));
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
     expect(
-      screen.getByText('order.operator.finished').closest('button')
+      screen.queryByText('order.operator.markManuallyConfirmTips')
+    ).toBeInTheDocument();
+
+    expect(screen.queryByText('common.ok')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('common.ok'));
+
+    expect(
+      screen.getByText('order.operator.markManually').closest('button')
     ).toHaveClass('ant-btn-loading');
 
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
     expect(
-      screen.getByText('order.operator.finished').closest('button')
+      screen.getByText('order.operator.markManually').closest('button')
     ).not.toHaveClass('ant-btn-loading');
 
     expect(mockComplete).toBeCalledTimes(1);
@@ -274,6 +300,10 @@ describe('test OrderSteps', () => {
     ).toBeInTheDocument();
     expect(
       screen.getByText('order.operator.batchSqlExecute').closest('button')
+    ).toHaveAttribute('disabled');
+
+    expect(
+      screen.getByText('order.operator.markManually').closest('button')
     ).toHaveAttribute('disabled');
 
     expect(container).toMatchSnapshot();

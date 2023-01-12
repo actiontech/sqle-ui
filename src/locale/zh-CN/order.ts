@@ -74,7 +74,8 @@ export default {
     user: '操作人',
     reject: '驳回',
     rejectFull: '全部驳回',
-    finished: '工单已上线',
+    markManually: '标记为人工上线',
+    markManuallyConfirmTips: '当前操作仅修改工单状态，而不对数据源产生操作，是否确认标记为人工上线?',
     rejectTips:
       '被驳回的工单必须修改审核语句，审核语句只能由工单创建者修改，在您修改了审核语句之后，工单即会从新进入审核流程',
     wait: '正在等待用户{{username}}进行操作',
@@ -85,21 +86,21 @@ export default {
     modifySql: '修改审核语句',
     waitModifySql: '等待用户{{username}}修改审核语句',
     batchSqlExecute: '批量立即上线',
-    batchSqlExecuteTips:
-      '已经设置了定时上线的数据源仍然在定时时间上线，不会立即上线',
+    batchSqlExecuteConfirmTips: '当前操作将立即执行工单下的所有SQL语句，且已经设置了定时上线的数据源仍然在定时时间上线，不会立即上线，是否确认立即批量上线?',
     sqlReview: '审核通过',
     unknown: '未知步骤',
 
     maintenanceTime:
       '定时上线的时间点必须在运维时间之内，当前数据源的运维时间为',
     sqlExecuteDisableTips:
-      '只能在运维时间之内执行立即上线,当前数据源的运维时间为',
+      '只能在运维时间之内执行立即上线，当前数据源的运维时间为',
     emptyMaintenanceTime: '任意时间',
 
     approveSuccessTips: '审批通过',
     rejectSuccessTips: '驳回成功',
     completeSuccessTips: '同步工单已上线成功',
     rejectReason: '驳回原因',
+    rejectAllTips: '当前操作将驳回工单下所有SQL语句，是否确认全部驳回?',
     onlineRegularly: '定时上线',
     scheduleTime: '定时时间',
     execScheduledErrorMessage: '定时上线时间必须在运维时间之内',
@@ -108,7 +109,7 @@ export default {
     status: '上线状态',
     executingTips: '立即上线设置成功',
     disabledOperatorOrderBtnTips:
-      '项目 {{currentProject}} 创建工单时最高只能允许有 {{allowAuditLevel}} 等级的审核错误。但是当前审核结果中最高包含 {{currentAuditLevel}} 等级的审核结果。',
+      '项目 {{currentProject}} 创建工单时最高只能允许有 {{allowAuditLevel}} 等级的审核错误，但是当前审核结果中最高包含 {{currentAuditLevel}} 等级的审核结果。',
     createOrderStep: '创建工单',
     updateOrderStep: '更新工单',
     reviewOrderStep: '审核工单',

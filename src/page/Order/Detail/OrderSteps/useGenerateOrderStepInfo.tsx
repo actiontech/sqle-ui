@@ -174,7 +174,7 @@ export const useGenerateOrderStepInfo = ({
 
       if (currentOrderStatus === WorkflowRecordResV1StatusEnum.wait_for_audit) {
         return (
-          <Space>
+          <Space wrap>
             {sqlReviewNode}
             {canRejectOrder ? rejectFullNode : null}
           </Space>
@@ -214,7 +214,7 @@ export const useGenerateOrderStepInfo = ({
       ) {
         return (
           <>
-            <Space>
+            <Space wrap>
               {batchSqlExecuteNode}
               {canRejectOrder ? rejectFullNode : null}
               {finishNode}
