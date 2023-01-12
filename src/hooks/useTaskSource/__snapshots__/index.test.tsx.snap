@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`useUserGroup should get task source from request 1`] = `
+exports[`useTaskSource should get task source from request 1`] = `
 <body>
   <div>
     <div
@@ -64,7 +64,7 @@ exports[`useUserGroup should get task source from request 1`] = `
 </body>
 `;
 
-exports[`useUserGroup should get task source from request 2`] = `
+exports[`useTaskSource should get task source from request 2`] = `
 <body>
   <div>
     <div
@@ -132,7 +132,7 @@ exports[`useUserGroup should get task source from request 2`] = `
 </body>
 `;
 
-exports[`useUserGroup should get task source from request 3`] = `
+exports[`useTaskSource should get task source from request 3`] = `
 <body>
   <div>
     <div
