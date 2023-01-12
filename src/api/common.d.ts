@@ -1397,9 +1397,9 @@ export interface IInstanceTableMeta {
 export interface IInstanceTaskDetailResV1 {
   db_type?: string;
 
-  global_rule_template?: string;
-
   id?: number;
+
+  rule_template?: string;
 
   source?: string;
 

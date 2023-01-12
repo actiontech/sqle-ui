@@ -23,7 +23,7 @@ export const defaultSyncTask: IInstanceTaskDetailResV1 = {
   url: 'http://192.168.1.1:3000',
   version: '4.2.2.0',
   sync_instance_interval: '0 0 * * *',
-  global_rule_template: 'global_rule_template_name1',
+  rule_template: 'global_rule_template_name1',
 };
 
 jest.mock('react-router-dom', () => ({

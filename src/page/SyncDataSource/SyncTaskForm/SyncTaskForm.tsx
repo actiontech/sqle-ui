@@ -94,7 +94,7 @@ const SyncTaskForm: React.FC<SyncTaskFormProps> = ({
         version: defaultValue.version,
         url: defaultValue.url,
         instanceType: defaultValue.db_type,
-        ruleTemplateName: defaultValue.global_rule_template,
+        ruleTemplateName: defaultValue.rule_template,
         syncInterval: defaultValue.sync_instance_interval,
       });
     }
