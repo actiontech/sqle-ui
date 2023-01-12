@@ -12,9 +12,9 @@ import {
   resolveErrorThreeSecond,
 } from '../../testUtils/mockRequest';
 import { Select } from 'antd';
-import useUsername from '.';
+import useTaskSource from '.';
 
-describe('useUserGroup', () => {
+describe('useTaskSource', () => {
   let requestSpy: jest.SpyInstance;
   beforeEach(() => {
     jest.useFakeTimers();
@@ -26,7 +26,7 @@ describe('useUserGroup', () => {
   });
 
   test('should get task source from request', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useUsername());
+    const { result, waitForNextUpdate } = renderHook(() => useTaskSource());
     expect(result.current.loading).toBe(false);
     expect(result.current.taskSourceList).toEqual([]);
     const { baseElement } = render(
@@ -67,7 +67,7 @@ describe('useUserGroup', () => {
   });
 
   test('should set list to empty array when response code is not equal success code', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useUsername());
+    const { result, waitForNextUpdate } = renderHook(() => useTaskSource());
     expect(result.current.loading).toBe(false);
     expect(result.current.taskSourceList).toEqual([]);
 
@@ -110,7 +110,7 @@ describe('useUserGroup', () => {
   });
 
   test('should set list to empty array when response throw error', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useUsername());
+    const { result, waitForNextUpdate } = renderHook(() => useTaskSource());
     expect(result.current.loading).toBe(false);
     expect(result.current.taskSourceList).toEqual([]);
 
