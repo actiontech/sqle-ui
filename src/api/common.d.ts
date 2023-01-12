@@ -10,6 +10,7 @@ import {
   CreateAuditWhitelistReqV1MatchTypeEnum,
   DirectAuditReqV1SqlTypeEnum,
   GetWorkflowTasksItemV1StatusEnum,
+  InstanceTaskResV1LastSyncStatusEnum,
   RuleParamResV1TypeEnum,
   RuleResV1LevelEnum,
   SQLQueryConfigReqV1AllowQueryWhenLessThanAuditLevelEnum,
@@ -409,6 +410,20 @@ export interface ICreateRuleTemplateReqV1 {
   rule_list?: IRuleReqV1[];
 
   rule_template_name?: string;
+}
+
+export interface ICreateSyncInstanceTaskReqV1 {
+  db_type: string;
+
+  global_rule_template: string;
+
+  source: string;
+
+  sync_instance_interval: string;
+
+  url: string;
+
+  version: string;
 }
 
 export interface ICreateUserGroupReqV1 {
@@ -1035,6 +1050,30 @@ export interface IGetSqlExecutionFailPercentResV1 {
   message?: string;
 }
 
+export interface IGetSyncInstanceTaskListResV1 {
+  code?: number;
+
+  data?: IInstanceTaskResV1[];
+
+  message?: string;
+}
+
+export interface IGetSyncInstanceTaskResV1 {
+  code?: number;
+
+  data?: IInstanceTaskDetailResV1;
+
+  message?: string;
+}
+
+export interface IGetSyncTaskSourceTipsResV1 {
+  code?: number;
+
+  data?: ISyncTaskTipsResV1[];
+
+  message?: string;
+}
+
 export interface IGetSystemVariablesResV1 {
   code?: number;
 
@@ -1334,6 +1373,8 @@ export interface IInstanceResV1 {
 
   rule_template_name?: string;
 
+  source?: string;
+
   sql_query_config?: ISQLQueryConfigResV1;
 }
 
@@ -1351,6 +1392,38 @@ export interface IInstanceTableMeta {
   name?: string;
 
   schema?: string;
+}
+
+export interface IInstanceTaskDetailResV1 {
+  db_type?: string;
+
+  global_rule_template?: string;
+
+  id?: number;
+
+  source?: string;
+
+  sync_instance_interval?: string;
+
+  url?: string;
+
+  version?: string;
+}
+
+export interface IInstanceTaskResV1 {
+  db_type?: string;
+
+  id?: number;
+
+  last_sync_status?: InstanceTaskResV1LastSyncStatusEnum;
+
+  last_sync_success_time?: string;
+
+  source?: string;
+
+  url?: string;
+
+  version?: string;
 }
 
 export interface IInstanceTipResV1 {
@@ -1735,6 +1808,18 @@ export interface ISqlExecutionFailPercent {
   percent?: number;
 }
 
+export interface ISyncInstanceResV1 {
+  is_sync_instance_success?: boolean;
+
+  sync_error_message?: string;
+}
+
+export interface ISyncTaskTipsResV1 {
+  db_types?: string[];
+
+  source?: string;
+}
+
 export interface ISystemVariablesResV1 {
   url?: string;
 
@@ -1861,6 +1946,14 @@ export interface ITriggerAuditPlanResV1 {
   code?: number;
 
   data?: IAuditPlanReportResV1;
+
+  message?: string;
+}
+
+export interface ITriggerSyncInstanceResV1 {
+  code?: number;
+
+  data?: ISyncInstanceResV1;
 
   message?: string;
 }
@@ -1995,6 +2088,16 @@ export interface IUpdateSMTPConfigurationReqV1 {
   smtp_port?: string;
 
   smtp_username?: string;
+}
+
+export interface IUpdateSyncInstanceTaskReqV1 {
+  global_rule_template: string;
+
+  sync_instance_interval: string;
+
+  url: string;
+
+  version: string;
 }
 
 export interface IUpdateSystemVariablesReqV1 {
@@ -2413,6 +2516,8 @@ export interface IInstanceResV2 {
   maintenance_times?: IMaintenanceTimeResV1[];
 
   rule_template?: IRuleTemplateV2;
+
+  source?: string;
 
   sql_query_config?: ISQLQueryConfigResV1;
 }

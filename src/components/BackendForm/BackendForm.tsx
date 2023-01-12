@@ -18,7 +18,7 @@ const BackendForm: React.FC<BackendFormProps> = (props) => {
               label={item.desc}
               valuePropName="checked"
             >
-              <Switch />
+              <Switch disabled={props.disabled} />
             </Form.Item>
           );
         }
@@ -35,7 +35,7 @@ const BackendForm: React.FC<BackendFormProps> = (props) => {
                 },
               ]}
             >
-              <Input />
+              <Input disabled={props.disabled} />
             </Form.Item>
           );
         }
@@ -45,7 +45,7 @@ const BackendForm: React.FC<BackendFormProps> = (props) => {
             label={item.desc ?? ''}
             name={[paramsKey, item.key ?? '']}
           >
-            <Input />
+            <Input disabled={props.disabled} />
           </Form.Item>
         );
       })}

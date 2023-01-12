@@ -17,6 +17,7 @@ export type BackendFormValues = {
 export type BackendFormProps = {
   params: FormItem[];
   paramsKey?: string;
+  disabled?: boolean;
 };
 
 export { default } from './BackendForm';

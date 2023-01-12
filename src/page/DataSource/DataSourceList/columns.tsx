@@ -30,6 +30,10 @@ export const dataSourceColumns = (
       },
     },
     {
+      dataIndex: 'source',
+      title: () => i18n.t('dataSource.databaseList.source'),
+    },
+    {
       dataIndex: 'desc',
       title: () => i18n.t('dataSource.databaseList.describe'),
     },

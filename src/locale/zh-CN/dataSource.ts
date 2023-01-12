@@ -14,6 +14,7 @@ export default {
     ruleTemplate: '模版',
     workflow: '工作流',
     maintenanceTime: '运维时间',
+    source: '来源',
   },
 
   addDatabase: '添加数据源',

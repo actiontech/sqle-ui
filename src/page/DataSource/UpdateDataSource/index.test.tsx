@@ -15,6 +15,7 @@ import { createMemoryHistory } from 'history';
 import { mockDriver } from '../../../testUtils/mockRequest';
 import { dataSourceMetas } from '../__testData__';
 import { getBySelector } from '../../../testUtils/customQuery';
+import { SQLE_INSTANCE_SOURCE_NAME } from '../../../data/common';
 
 jest.mock('react-router', () => {
   return {
@@ -63,6 +64,7 @@ const instanceData = {
     allow_query_when_less_than_audit_level: 'notice',
     audit_enabled: true,
   },
+  source: SQLE_INSTANCE_SOURCE_NAME,
 };
 
 describe('UpdateDataSource', () => {
@@ -274,5 +276,59 @@ describe('UpdateDataSource', () => {
     ).not.toBeNull();
 
     expect(history.location.pathname).toBe(`/project/${projectName}/data`);
+  });
+
+  test('should be disabled partial form items when the instance source is not SQLE', async () => {
+    getInstanceSpy.mockImplementation(() =>
+      resolveThreeSecond({ ...instanceData, source: 'DMP' })
+    );
+
+    const { container } = renderWithThemeAndRouter(
+      <UpdateDataSource />,
+      undefined
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(
+      screen.getByLabelText('dataSource.dataSourceForm.name')
+    ).toBeDisabled();
+    expect(
+      screen.getByLabelText('dataSource.dataSourceForm.describe')
+    ).toBeDisabled();
+    expect(
+      screen.getByLabelText('dataSource.dataSourceForm.type')
+    ).toBeDisabled();
+
+    expect(
+      screen.getByLabelText('dataSource.dataSourceForm.ip')
+    ).toBeDisabled();
+
+    expect(
+      screen.getByLabelText('dataSource.dataSourceForm.port')
+    ).toBeDisabled();
+
+    expect(
+      screen.getByLabelText('dataSource.dataSourceForm.user')
+    ).toBeDisabled();
+
+    expect(
+      screen.getByLabelText('dataSource.dataSourceForm.password')
+    ).toBeDisabled();
+
+    expect(
+      screen.getByLabelText('dataSource.dataSourceForm.ruleTemplate')
+    ).not.toBeDisabled();
+    expect(
+      screen.getByLabelText('dataSource.dataSourceForm.needAuditForSqlQuery')
+    ).not.toBeDisabled();
+    expect(
+      screen.getByLabelText(
+        'dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel'
+      )
+    ).not.toBeDisabled();
+
+    expect(container).toMatchSnapshot();
   });
 });
