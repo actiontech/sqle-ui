@@ -19,8 +19,6 @@ export type DataSourceFormField = {
   params?: BackendFormValues;
   asyncParams?: BackendFormRequestParams[];
   maintenanceTime: MaintenanceTimeValue[];
-  maxPreQueryRows: number;
-  queryTimeoutSecond?: number;
   needAuditForSqlQuery?: boolean;
   allowQueryWhenLessThanAuditLevel?: SQLQueryConfigReqV1AllowQueryWhenLessThanAuditLevelEnum;
 };

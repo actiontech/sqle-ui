@@ -60,8 +60,6 @@ const instanceData = {
   ],
   rule_template_name: 'default_MySQL',
   sql_query_config: {
-    max_pre_query_rows: 50,
-    query_timeout_second: 10000,
     allow_query_when_less_than_audit_level: 'notice',
     audit_enabled: true,
   },
@@ -263,8 +261,6 @@ describe('UpdateDataSource', () => {
         },
       ],
       sql_query_config: {
-        max_pre_query_rows: 50,
-        query_timeout_second: 10000,
         allow_query_when_less_than_audit_level: 'error',
         audit_enabled: true,
       },

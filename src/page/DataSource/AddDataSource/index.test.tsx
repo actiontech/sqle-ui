@@ -107,12 +107,6 @@ describe('AddDataSource', () => {
         target: { value: '123456' },
       }
     );
-    fireEvent.input(
-      screen.getByLabelText('dataSource.dataSourceForm.queryTimeoutSecond'),
-      {
-        target: { value: '10000' },
-      }
-    );
 
     expect(
       screen.getByLabelText('dataSource.dataSourceForm.ruleTemplate')
@@ -210,8 +204,6 @@ describe('AddDataSource', () => {
         },
       ],
       sql_query_config: {
-        max_pre_query_rows: 100,
-        query_timeout_second: 10000,
         allow_query_when_less_than_audit_level: 'error',
         audit_enabled: true,
       },

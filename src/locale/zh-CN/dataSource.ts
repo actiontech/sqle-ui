@@ -39,8 +39,6 @@ export default {
     ruleTemplate: '审核规则模版',
     workflow: '应用的工作流',
     maintenanceTime: '运维时间',
-    maxPreQueryRows: 'SQL查询返回条数',
-    queryTimeoutSecond: 'SQL超时限制(s)',
     needAuditForSqlQuery: 'SQL查询是否需要审核',
     allowQueryWhenLessThanAuditLevel: '运行查询的最高审核等级',
     passwordTips:

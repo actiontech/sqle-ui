@@ -1,4 +1,4 @@
-import { Button, Form, Input, InputNumber, Select, Space, Switch } from 'antd';
+import { Button, Form, Input, Select, Space, Switch } from 'antd';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PageFormLayout } from '../../../data/common';
@@ -74,10 +74,6 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
           startTime: item.maintenance_start_time,
           endTime: item.maintenance_stop_time,
         })),
-        maxPreQueryRows:
-          props.defaultData.sql_query_config?.max_pre_query_rows ?? 100,
-        queryTimeoutSecond:
-          props.defaultData.sql_query_config?.query_timeout_second,
         needAuditForSqlQuery:
           !!props.defaultData.sql_query_config?.audit_enabled,
         allowQueryWhenLessThanAuditLevel: props.defaultData.sql_query_config
@@ -221,27 +217,6 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
               );
             })}
         </Select>
-      </Form.Item>
-      <Form.Item
-        label={t('dataSource.dataSourceForm.maxPreQueryRows')}
-        name="maxPreQueryRows"
-        initialValue={100}
-        rules={[
-          {
-            required: true,
-            message: t('common.form.rule.require', {
-              name: t('dataSource.dataSourceForm.maxPreQueryRows'),
-            }),
-          },
-        ]}
-      >
-        <InputNumber className="full-width-element" />
-      </Form.Item>
-      <Form.Item
-        label={t('dataSource.dataSourceForm.queryTimeoutSecond')}
-        name="queryTimeoutSecond"
-      >
-        <InputNumber className="full-width-element" />
       </Form.Item>
       <Form.Item
         label={t('dataSource.dataSourceForm.needAuditForSqlQuery')}
