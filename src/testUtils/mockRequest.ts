@@ -9,6 +9,7 @@ import operation from '../api/operation';
 import audit_plan from '../api/audit_plan';
 import management_permission from '../api/management_permission';
 import project from '../api/project';
+import sync_instance from '../api/sync_instance';
 
 export const successData = (data: any, otherData?: any) => {
   return {
@@ -275,6 +276,12 @@ export const mockUseMember = () => {
   spy.mockImplementation(() => resolveThreeSecond([{ user_name: 'member1' }]));
   return spy;
 };
+
+export const mockUseTaskSource = () => {
+  const spy = jest.spyOn(sync_instance, 'GetSyncTaskSourceTips');
+  spy.mockImplementation(() => resolveThreeSecond([{ source: 'source1' }]))
+  return spy;
+}
 
 export const AuditPlanTypesData = [
   { type: 'default', desc: '自定义', instance_type: '' },

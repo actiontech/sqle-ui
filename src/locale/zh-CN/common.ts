@@ -47,6 +47,9 @@ export default {
   at: '中',
   preview: '预览',
 
+  success: '成功',
+  fail: '失败',
+
   theme: {
     light: '明亮模式',
     dark: '暗黑模式',

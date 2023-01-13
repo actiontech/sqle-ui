@@ -24,7 +24,7 @@ import {
 class SyncInstanceService extends ServiceBase {
   public GetSyncInstanceTaskList(options?: AxiosRequestConfig) {
     return this.get<IGetSyncInstanceTaskListReturn>(
-      '/v1/sync_instance',
+      '/v1/sync_instances',
       undefined,
       options
     );
@@ -36,7 +36,7 @@ class SyncInstanceService extends ServiceBase {
   ) {
     const paramsData = this.cloneDeep(params);
     return this.post<ICreateSyncInstanceTaskV1Return>(
-      '/v1/sync_instance',
+      '/v1/sync_instances',
       paramsData,
       options
     );
@@ -44,7 +44,7 @@ class SyncInstanceService extends ServiceBase {
 
   public GetSyncTaskSourceTips(options?: AxiosRequestConfig) {
     return this.get<IGetSyncTaskSourceTipsReturn>(
-      '/v1/sync_instance/source_tips',
+      '/v1/sync_instances/source_tips',
       undefined,
       options
     );
@@ -59,7 +59,7 @@ class SyncInstanceService extends ServiceBase {
     delete paramsData.task_id;
 
     return this.get<IGetSyncInstanceTaskReturn>(
-      `/v1/sync_instance/${task_id}/`,
+      `/v1/sync_instances/${task_id}/`,
       paramsData,
       options
     );
@@ -74,7 +74,7 @@ class SyncInstanceService extends ServiceBase {
     delete paramsData.task_id;
 
     return this.delete<IDeleteSyncInstanceTaskV1Return>(
-      `/v1/sync_instance/${task_id}/`,
+      `/v1/sync_instances/${task_id}/`,
       paramsData,
       options
     );
@@ -89,7 +89,7 @@ class SyncInstanceService extends ServiceBase {
     delete paramsData.task_id;
 
     return this.patch<IUpdateSyncInstanceTaskV1Return>(
-      `/v1/sync_instance/${task_id}/`,
+      `/v1/sync_instances/${task_id}/`,
       paramsData,
       options
     );
@@ -104,7 +104,7 @@ class SyncInstanceService extends ServiceBase {
     delete paramsData.task_id;
 
     return this.post<ITriggerSyncInstanceV1Return>(
-      `/v1/sync_instance/${task_id}/trigger`,
+      `/v1/sync_instances/${task_id}/trigger`,
       paramsData,
       options
     );
