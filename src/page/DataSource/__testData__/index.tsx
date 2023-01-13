@@ -31,6 +31,7 @@ export const dataSourceList: IInstanceResV2[] = [
         },
       },
     ],
+    source: 'SQLE',
   },
   {
     instance_name: 'db2',
@@ -41,6 +42,7 @@ export const dataSourceList: IInstanceResV2[] = [
     desc: '',
     rule_template: { is_global_rule_template: false, name: 'test' },
     maintenance_times: [],
+    source: 'DMP',
   },
 ];
 

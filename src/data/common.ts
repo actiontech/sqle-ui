@@ -104,3 +104,6 @@ export enum LoginTypeEnum {
 export enum ManagementPermissionsEnum {
   Create_Project = 1,
 }
+
+
+export const SQLE_INSTANCE_SOURCE_NAME = 'SQLE';

@@ -30,6 +30,7 @@ const DatabaseFormItem: React.FC<{
   isUpdate?: boolean;
   databaseTypeChange?: (values: string) => void;
   currentAsyncParams?: FormItem[];
+  isExternalInstance?: boolean;
 }> = (props) => {
   const { updateDriverNameList, generateDriverSelectOptions } =
     useDatabaseType();
@@ -142,6 +143,7 @@ const DatabaseFormItem: React.FC<{
         ]}
       >
         <Input
+          disabled={props.isExternalInstance}
           placeholder={t('common.form.placeholder.input', {
             name: t('dataSource.dataSourceForm.ipTips'),
           })}
@@ -166,6 +168,7 @@ const DatabaseFormItem: React.FC<{
           placeholder={t('common.form.placeholder.input', {
             name: t('dataSource.dataSourceForm.ip'),
           })}
+          disabled={props.isExternalInstance}
         />
       </Form.Item>
       <Form.Item
@@ -181,6 +184,7 @@ const DatabaseFormItem: React.FC<{
         ]}
       >
         <Input
+          disabled={props.isExternalInstance}
           placeholder={t('common.form.placeholder.input', {
             name: t('dataSource.dataSourceForm.user'),
           })}
@@ -212,13 +216,17 @@ const DatabaseFormItem: React.FC<{
         ]}
       >
         <Input.Password
+          disabled={props.isExternalInstance}
           placeholder={t('common.form.placeholder.input', {
             name: t('dataSource.dataSourceForm.password'),
           })}
         />
       </Form.Item>
       <EmptyBox if={(props.currentAsyncParams?.length ?? 0) > 0}>
-        <BackendForm params={props.currentAsyncParams as FormItem[]} />
+        <BackendForm
+          params={props.currentAsyncParams as FormItem[]}
+          disabled={props.isExternalInstance}
+        />
       </EmptyBox>
       <Form.Item label=" " colon={false}>
         <TestDatabaseConnectButton

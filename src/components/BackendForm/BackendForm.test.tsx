@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { Form } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
@@ -82,5 +82,27 @@ describe('BackendForm', () => {
         stringKey: 'this is a string',
       },
     });
+  });
+
+  it('should disable item when disabled props is equal true', () => {
+    const form = renderHook(() => useForm());
+    const { rerender } = render(
+      <Form form={form.result.current[0]}>
+        <BackendForm params={formItems} paramsKey="custom" disabled={true} />
+      </Form>
+    );
+
+    expect(screen.getByLabelText('boolDesc')).toBeDisabled();
+    expect(screen.getByLabelText('intDesc')).toBeDisabled();
+    expect(screen.getByLabelText('stringDesc')).toBeDisabled();
+
+    rerender(
+      <Form form={form.result.current[0]}>
+        <BackendForm params={formItems} paramsKey="custom" />
+      </Form>
+    );
+    expect(screen.getByLabelText('boolDesc')).not.toBeDisabled();
+    expect(screen.getByLabelText('intDesc')).not.toBeDisabled();
+    expect(screen.getByLabelText('stringDesc')).not.toBeDisabled();
   });
 });

@@ -1,7 +1,10 @@
 import { Button, Form, Input, Select, Space, Switch } from 'antd';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { PageFormLayout } from '../../../data/common';
+import {
+  SQLE_INSTANCE_SOURCE_NAME,
+  PageFormLayout,
+} from '../../../data/common';
 import useRuleTemplate from '../../../hooks/useRuleTemplate';
 import { nameRule } from '../../../utils/FormRule';
 import DatabaseFormItem from './DatabaseFormItem';
@@ -28,6 +31,13 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
     () => !!props.defaultData,
     [props.defaultData]
   );
+  const isExternalInstance = React.useMemo<boolean>(() => {
+    if (!props.defaultData) {
+      return false;
+    }
+    return props.defaultData.source !== SQLE_INSTANCE_SOURCE_NAME;
+  }, [props.defaultData]);
+
   const [databaseType, setDatabaseType] = React.useState<string>(
     ruleTemplateListDefaultKey
   );
@@ -175,6 +185,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
         name="describe"
       >
         <Input.TextArea
+          disabled={isExternalInstance}
           placeholder={t('common.form.placeholder.input', {
             name: t('dataSource.dataSourceForm.describe'),
           })}
@@ -182,6 +193,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
       </Form.Item>
       <DatabaseFormItem
         isUpdate={isUpdate}
+        isExternalInstance={isExternalInstance}
         form={props.form}
         currentAsyncParams={params}
         databaseTypeChange={databaseTypeChange}
