@@ -106,6 +106,18 @@ exports[`test Nav/Header/MoreAction should match snapshot 1`] = `
               </li>
               <li
                 class="ant-dropdown-menu-item ant-dropdown-menu-item-only-child"
+                data-menu-id="rc-menu-uuid-test-syncDataSource"
+                role="menuitem"
+                tabindex="-1"
+              >
+                <span
+                  class="ant-dropdown-menu-title-content"
+                >
+                  menu.syncDataSource
+                </span>
+              </li>
+              <li
+                class="ant-dropdown-menu-item ant-dropdown-menu-item-only-child"
                 data-menu-id="rc-menu-uuid-test-systemSetting"
                 role="menuitem"
                 tabindex="-1"

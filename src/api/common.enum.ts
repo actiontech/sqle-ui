@@ -112,6 +112,12 @@ export enum GetWorkflowTasksItemV1StatusEnum {
   'manually_executed' = 'manually_executed'
 }
 
+export enum InstanceTaskResV1LastSyncStatusEnum {
+  'success' = 'success',
+
+  'fail' = 'fail'
+}
+
 export enum RuleParamResV1TypeEnum {
   'string' = 'string',
 

@@ -30,6 +30,8 @@ enum EmitterKey {
   Refresh_Filter_User_Group_Tips = 'Refresh_Filter_User_Group_Tips',
 
   Update_Recently_Opened_Projects = 'UPDATE_RECENTLY_OPENED_PROJECTS',
+
+  Refresh_Sync_Task_Rule_Template_Tips = 'REFRESH_SYNC_TASK_RULE_TEMPLATE_TIPS',
 }
 
 export default EmitterKey;
