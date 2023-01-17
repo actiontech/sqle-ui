@@ -3,7 +3,11 @@ import { useParams } from 'react-router-dom';
 import AddDataSource from '.';
 import instance from '../../../api/instance';
 import EmitterKey from '../../../data/EmitterKey';
-import { getBySelector } from '../../../testUtils/customQuery';
+import {
+  getBySelector,
+  getSelectValueByFormLabel,
+  selectOptionByIndex,
+} from '../../../testUtils/customQuery';
 import {
   renderWithTheme,
   renderWithThemeAndRouter,
@@ -204,7 +208,7 @@ describe('AddDataSource', () => {
         },
       ],
       sql_query_config: {
-        allow_query_when_less_than_audit_level: 'error',
+        allow_query_when_less_than_audit_level: 'notice',
         audit_enabled: true,
       },
     });
@@ -257,5 +261,53 @@ describe('AddDataSource', () => {
     expect(
       screen.getByLabelText('dataSource.dataSourceForm.ruleTemplate')
     ).toHaveValue('');
+  });
+
+  test('should be hidden "allowQueryWhenLessThanAuditLevel" field when audit enabled is equal false', async () => {
+    renderWithThemeAndRouter(<AddDataSource />, undefined);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(
+      screen.getByTitle(
+        'dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel'
+      )?.parentElement?.parentElement
+    ).toHaveClass('ant-form-item-hidden');
+
+    fireEvent.click(
+      screen.getByLabelText('dataSource.dataSourceForm.needAuditForSqlQuery')
+    );
+    expect(
+      screen.getByTitle(
+        'dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel'
+      )?.parentElement?.parentElement
+    ).not.toHaveClass('ant-form-item-hidden');
+
+    selectOptionByIndex(
+      'dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel',
+      'error',
+      0
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    expect(
+      getSelectValueByFormLabel(
+        'dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel'
+      )
+    ).toHaveTextContent('error');
+
+    fireEvent.click(
+      screen.getByLabelText('dataSource.dataSourceForm.needAuditForSqlQuery')
+    );
+
+    expect(
+      screen.getByTitle(
+        'dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel'
+      )?.parentElement?.parentElement
+    ).toHaveClass('ant-form-item-hidden');
   });
 });

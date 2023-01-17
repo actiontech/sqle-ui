@@ -14,7 +14,10 @@ import { useParams } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { mockDriver } from '../../../testUtils/mockRequest';
 import { dataSourceMetas } from '../__testData__';
-import { getBySelector } from '../../../testUtils/customQuery';
+import {
+  getBySelector,
+  getSelectValueByFormLabel,
+} from '../../../testUtils/customQuery';
 import { SQLE_INSTANCE_SOURCE_NAME } from '../../../data/common';
 
 jest.mock('react-router', () => {
@@ -263,7 +266,7 @@ describe('UpdateDataSource', () => {
         },
       ],
       sql_query_config: {
-        allow_query_when_less_than_audit_level: 'error',
+        allow_query_when_less_than_audit_level: 'notice',
         audit_enabled: true,
       },
     });
@@ -330,5 +333,97 @@ describe('UpdateDataSource', () => {
     ).not.toBeDisabled();
 
     expect(container).toMatchSnapshot();
+  });
+
+  test('should be hidden "allowQueryWhenLessThanAuditLevel" field when audit enabled is equal false', async () => {
+    const updateSpy = mockUpdateInstanceRequest();
+
+    renderWithThemeAndRouter(<UpdateDataSource />, undefined);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(
+      screen.getByTitle(
+        'dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel'
+      )?.parentElement?.parentElement
+    ).not.toHaveClass('ant-form-item-hidden');
+
+    fireEvent.click(
+      screen.getByLabelText('dataSource.dataSourceForm.needAuditForSqlQuery')
+    );
+    expect(
+      screen.getByTitle(
+        'dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel'
+      )?.parentElement?.parentElement
+    ).toHaveClass('ant-form-item-hidden');
+
+    await waitFor(() => {
+      fireEvent.click(screen.getByText('common.submit'));
+    });
+
+    expect(updateSpy).toBeCalledTimes(1);
+    expect(updateSpy).toBeCalledWith({
+      additional_params: [
+        {
+          name: 'a',
+          value: '123',
+        },
+        {
+          name: 'b',
+          value: '123',
+        },
+        {
+          name: 'c',
+          value: 'true',
+        },
+      ],
+      db_host: '20.20.20.2',
+      db_port: '3306',
+      db_user: 'root',
+      db_type: 'mysql',
+      desc: '',
+      instance_name: 'db1',
+      project_name: 'default',
+
+      rule_template_name: 'default_MySQL',
+      maintenance_times: [
+        {
+          maintenance_start_time: {
+            hour: 23,
+            minute: 0,
+          },
+          maintenance_stop_time: {
+            hour: 23,
+            minute: 30,
+          },
+        },
+        {
+          maintenance_start_time: {
+            hour: 0,
+            minute: 0,
+          },
+          maintenance_stop_time: {
+            hour: 2,
+            minute: 0,
+          },
+        },
+      ],
+      sql_query_config: {
+        allow_query_when_less_than_audit_level: undefined,
+        audit_enabled: false,
+      },
+    });
+
+    fireEvent.click(
+      screen.getByLabelText('dataSource.dataSourceForm.needAuditForSqlQuery')
+    );
+
+    expect(
+      getSelectValueByFormLabel(
+        'dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel'
+      )
+    ).toHaveTextContent('notice');
   });
 });
