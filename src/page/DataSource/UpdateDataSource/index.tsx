@@ -1,5 +1,5 @@
 import { useBoolean } from 'ahooks';
-import { Card, Button, message, Empty, Typography } from 'antd';
+import { Card, Button, message, Empty, Typography, Spin } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -116,12 +116,14 @@ const UpdateDataSource = () => {
           </Empty>
         }
       >
-        <DataSourceForm
-          form={form}
-          defaultData={instanceInfo}
-          submit={updateDatabase}
-          projectName={projectName}
-        />
+        <Spin spinning={retryLoading}>
+          <DataSourceForm
+            form={form}
+            defaultData={instanceInfo}
+            submit={updateDatabase}
+            projectName={projectName}
+          />
+        </Spin>
       </EmptyBox>
     </Card>
   );

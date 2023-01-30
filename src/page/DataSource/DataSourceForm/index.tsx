@@ -9,7 +9,6 @@ import useRuleTemplate from '../../../hooks/useRuleTemplate';
 import { nameRule } from '../../../utils/FormRule';
 import DatabaseFormItem from './DatabaseFormItem';
 import { IDataSourceFormProps } from './index.type';
-import { ruleTemplateListDefaultKey } from '../../../data/common';
 import useAsyncParams from '../../../components/BackendForm/useAsyncParams';
 import { useBoolean, useRequest } from 'ahooks';
 import EmptyBox from '../../../components/EmptyBox';
@@ -38,19 +37,18 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
     return props.defaultData.source !== SQLE_INSTANCE_SOURCE_NAME;
   }, [props.defaultData]);
 
-  const [databaseType, setDatabaseType] = React.useState<string>(
-    ruleTemplateListDefaultKey
-  );
+  const [auditEnabled, setAuditEnabled] = React.useState<boolean>(false);
+  const [databaseType, setDatabaseType] = React.useState<string>('');
   const { updateRuleTemplateList, ruleTemplateList } = useRuleTemplate();
   const { updateGlobalRuleTemplateList, globalRuleTemplateList } =
     useGlobalRuleTemplate();
   const databaseTypeChange = useCallback(
-    (value) => {
-      setDatabaseType(value ?? ruleTemplateListDefaultKey);
+    (value: string) => {
+      setDatabaseType(value);
       props.form.setFields([
         {
           name: 'ruleTemplate',
-          value: null,
+          value: undefined,
         },
       ]);
     },
@@ -91,7 +89,8 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
           | SQLQueryConfigReqV1AllowQueryWhenLessThanAuditLevelEnum
           | undefined,
       });
-      setDatabaseType(props.defaultData.db_type ?? ruleTemplateListDefaultKey);
+      setDatabaseType(props.defaultData.db_type ?? '');
+      setAuditEnabled(!!props.defaultData.sql_query_config?.audit_enabled);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.defaultData]);
@@ -130,6 +129,8 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
   const reset = () => {
     EventEmitter.emit(EmitterKey.Reset_Test_Data_Source_Connect);
     props.form.resetFields();
+    setAuditEnabled(false);
+    setDatabaseType('');
   };
 
   const submit = async () => {
@@ -145,15 +146,20 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
   };
 
   const changeAuditEnabled = (check: boolean) => {
-    if (check) {
-      props.form.setFieldsValue({
-        allowQueryWhenLessThanAuditLevel:
-          SQLQueryConfigReqV1AllowQueryWhenLessThanAuditLevelEnum.error,
-      });
-    } else {
+    setAuditEnabled(check);
+    if (!check) {
       props.form.setFieldsValue({
         allowQueryWhenLessThanAuditLevel: undefined,
       });
+    } else {
+      if (props.defaultData) {
+        props.form.setFieldsValue({
+          allowQueryWhenLessThanAuditLevel: props.defaultData.sql_query_config
+            ?.allow_query_when_less_than_audit_level as
+            | SQLQueryConfigReqV1AllowQueryWhenLessThanAuditLevelEnum
+            | undefined,
+        });
+      }
     }
   };
 
@@ -217,7 +223,7 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
           })}
         >
           {[...ruleTemplateList, ...globalRuleTemplateList]
-            .filter((v) => v.db_type === databaseType)
+            .filter((v) => (databaseType ? v.db_type === databaseType : true))
             .map((template) => {
               return (
                 <Select.Option
@@ -235,9 +241,10 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
         name="needAuditForSqlQuery"
         valuePropName="checked"
       >
-        <Switch onChange={changeAuditEnabled} />
+        <Switch checked={auditEnabled} onChange={changeAuditEnabled} />
       </Form.Item>
       <Form.Item
+        hidden={!auditEnabled}
         label={t('dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel')}
         name="allowQueryWhenLessThanAuditLevel"
       >

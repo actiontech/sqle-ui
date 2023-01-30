@@ -660,7 +660,7 @@ exports[`AddDataSource should render data source form 1`] = `
           </div>
         </div>
         <div
-          class="ant-row ant-form-item"
+          class="ant-row ant-form-item ant-form-item-hidden"
         >
           <div
             class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
