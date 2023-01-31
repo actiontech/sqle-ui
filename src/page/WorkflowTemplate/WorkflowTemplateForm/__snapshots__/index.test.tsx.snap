@@ -587,12 +587,6 @@ exports[`WorkflowTemplateForm should match snapshot 1`] = `
                               <li>
                                 workflowTemplate.progressConfig.ruler.rule3
                               </li>
-                              <li>
-                                workflowTemplate.progressConfig.ruler.rule4
-                              </li>
-                              <li>
-                                workflowTemplate.progressConfig.ruler.rule5
-                              </li>
                             </ul>
                           </article>
                         </div>

@@ -364,7 +364,7 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
                           <Alert
                             type="error"
                             message={t(
-                              'workflowTemplate.progressConfig.ruler.rule5'
+                              'workflowTemplate.progressConfig.ruler.rule3'
                             )}
                           />
                         </EmptyBox>
@@ -492,7 +492,7 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
                         <Alert
                           type="error"
                           message={t(
-                            'workflowTemplate.progressConfig.ruler.rule5'
+                            'workflowTemplate.progressConfig.ruler.rule3'
                           )}
                         />
                       </EmptyBox>
@@ -516,8 +516,6 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
                     <li>{t('workflowTemplate.progressConfig.ruler.rule1')}</li>
                     <li>{t('workflowTemplate.progressConfig.ruler.rule2')}</li>
                     <li>{t('workflowTemplate.progressConfig.ruler.rule3')}</li>
-                    <li>{t('workflowTemplate.progressConfig.ruler.rule4')}</li>
-                    <li>{t('workflowTemplate.progressConfig.ruler.rule5')}</li>
                   </ul>
                 </Typography>
               }
