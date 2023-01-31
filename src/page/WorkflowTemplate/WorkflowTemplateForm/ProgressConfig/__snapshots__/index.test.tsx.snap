@@ -939,12 +939,6 @@ exports[`progressConfig should match snapshot with default data 1`] = `
                         <li>
                           workflowTemplate.progressConfig.ruler.rule3
                         </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule4
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule5
-                        </li>
                       </ul>
                     </article>
                   </div>
@@ -1330,12 +1324,6 @@ exports[`progressConfig should match snapshot without default data 1`] = `
                         <li>
                           workflowTemplate.progressConfig.ruler.rule3
                         </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule4
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule5
-                        </li>
                       </ul>
                     </article>
                   </div>
@@ -1702,7 +1690,7 @@ exports[`progressConfig should move a step and step error index if step which wa
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -2289,7 +2277,7 @@ exports[`progressConfig should move a step and step error index if step which wa
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -2346,12 +2334,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                         </li>
                         <li>
                           workflowTemplate.progressConfig.ruler.rule3
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule4
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule5
                         </li>
                       </ul>
                     </article>
@@ -2719,7 +2701,7 @@ exports[`progressConfig should move a step and step error index if step which wa
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -3308,7 +3290,7 @@ exports[`progressConfig should move a step and step error index if step which wa
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -3365,12 +3347,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                         </li>
                         <li>
                           workflowTemplate.progressConfig.ruler.rule3
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule4
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule5
                         </li>
                       </ul>
                     </article>
@@ -4015,7 +3991,7 @@ exports[`progressConfig should move a step and step error index if step which wa
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -4327,7 +4303,7 @@ exports[`progressConfig should move a step and step error index if step which wa
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -4384,12 +4360,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                         </li>
                         <li>
                           workflowTemplate.progressConfig.ruler.rule3
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule4
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule5
                         </li>
                       </ul>
                     </article>
@@ -4757,7 +4727,7 @@ exports[`progressConfig should remove step and remove error step index if step w
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -5344,7 +5314,7 @@ exports[`progressConfig should remove step and remove error step index if step w
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -5401,12 +5371,6 @@ exports[`progressConfig should remove step and remove error step index if step w
                         </li>
                         <li>
                           workflowTemplate.progressConfig.ruler.rule3
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule4
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule5
                         </li>
                       </ul>
                     </article>
@@ -6051,7 +6015,7 @@ exports[`progressConfig should remove step and remove error step index if step w
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -6108,12 +6072,6 @@ exports[`progressConfig should remove step and remove error step index if step w
                         </li>
                         <li>
                           workflowTemplate.progressConfig.ruler.rule3
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule4
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule5
                         </li>
                       </ul>
                     </article>
@@ -6483,7 +6441,7 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -6795,7 +6753,7 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -7105,7 +7063,7 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -7417,7 +7375,7 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -7474,12 +7432,6 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                         </li>
                         <li>
                           workflowTemplate.progressConfig.ruler.rule3
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule4
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule5
                         </li>
                       </ul>
                     </article>
@@ -7868,12 +7820,6 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                         <li>
                           workflowTemplate.progressConfig.ruler.rule3
                         </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule4
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule5
-                        </li>
                       </ul>
                     </article>
                   </div>
@@ -8242,7 +8188,7 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -8556,7 +8502,7 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -8613,12 +8559,6 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
                         </li>
                         <li>
                           workflowTemplate.progressConfig.ruler.rule3
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule4
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule5
                         </li>
                       </ul>
                     </article>
@@ -9008,12 +8948,6 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
                         <li>
                           workflowTemplate.progressConfig.ruler.rule3
                         </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule4
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule5
-                        </li>
                       </ul>
                     </article>
                   </div>
@@ -9383,7 +9317,7 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -9697,7 +9631,7 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -9754,12 +9688,6 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
                         </li>
                         <li>
                           workflowTemplate.progressConfig.ruler.rule3
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule4
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule5
                         </li>
                       </ul>
                     </article>
@@ -10149,12 +10077,6 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
                         <li>
                           workflowTemplate.progressConfig.ruler.rule3
                         </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule4
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule5
-                        </li>
                       </ul>
                     </article>
                   </div>
@@ -10522,7 +10444,7 @@ exports[`progressConfig should update username and remove error tips if error ex
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -10579,12 +10501,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                         </li>
                         <li>
                           workflowTemplate.progressConfig.ruler.rule3
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule4
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule5
                         </li>
                       </ul>
                     </article>
@@ -11008,12 +10924,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                         <li>
                           workflowTemplate.progressConfig.ruler.rule3
                         </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule4
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule5
-                        </li>
                       </ul>
                     </article>
                   </div>
@@ -11379,7 +11289,7 @@ exports[`progressConfig should update username and remove error tips if error ex
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -11693,7 +11603,7 @@ exports[`progressConfig should update username and remove error tips if error ex
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -11750,12 +11660,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                         </li>
                         <li>
                           workflowTemplate.progressConfig.ruler.rule3
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule4
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule5
                         </li>
                       </ul>
                     </article>
@@ -12436,7 +12340,7 @@ exports[`progressConfig should update username and remove error tips if error ex
                                 <div
                                   class="ant-alert-message"
                                 >
-                                  workflowTemplate.progressConfig.ruler.rule5
+                                  workflowTemplate.progressConfig.ruler.rule3
                                 </div>
                                 <div
                                   class="ant-alert-description"
@@ -12493,12 +12397,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                         </li>
                         <li>
                           workflowTemplate.progressConfig.ruler.rule3
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule4
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule5
                         </li>
                       </ul>
                     </article>
@@ -12887,12 +12785,6 @@ exports[`progressConfig should validate step and update progress config when use
                         </li>
                         <li>
                           workflowTemplate.progressConfig.ruler.rule3
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule4
-                        </li>
-                        <li>
-                          workflowTemplate.progressConfig.ruler.rule5
                         </li>
                       </ul>
                     </article>
