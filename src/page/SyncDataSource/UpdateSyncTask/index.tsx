@@ -1,5 +1,5 @@
 import { useBoolean } from 'ahooks';
-import { Button, Card, Empty, message, Typography } from 'antd';
+import { Button, Card, Empty, message, Spin, Typography } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -19,6 +19,8 @@ const UpdateSyncTask: React.FC = () => {
   const [initError, setInitError] = useState('');
   const history = useHistory();
   const [retryLoading, { toggle: setRetryLoading }] = useBoolean(false);
+  const [finishGetSyncInstanceTask, { toggle: setFinishGetSyncInstanceTask }] =
+    useBoolean(false);
   const [syncInstanceTask, setSyncInstanceTask] = useState<
     IInstanceTaskDetailResV1 | undefined
   >();
@@ -52,8 +54,9 @@ const UpdateSyncTask: React.FC = () => {
       })
       .finally(() => {
         setRetryLoading(false);
+        setFinishGetSyncInstanceTask(true);
       });
-  }, [setRetryLoading, t, taskId]);
+  }, [setFinishGetSyncInstanceTask, setRetryLoading, t, taskId]);
 
   useEffect(() => {
     getSyncInstanceTask();
@@ -86,11 +89,16 @@ const UpdateSyncTask: React.FC = () => {
           </Empty>
         }
       >
-        <SyncTaskForm
-          defaultValue={syncInstanceTask}
-          submit={submit}
-          form={form}
-        />
+        <EmptyBox
+          if={finishGetSyncInstanceTask}
+          defaultNode={<Spin delay={400} />}
+        >
+          <SyncTaskForm
+            defaultValue={syncInstanceTask}
+            submit={submit}
+            form={form}
+          />
+        </EmptyBox>
       </EmptyBox>
     </Card>
   );

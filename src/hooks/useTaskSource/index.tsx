@@ -40,11 +40,27 @@ const useTaskSource = () => {
     });
   }, [taskSourceList]);
 
+  const generateTaskSourceDbTypesSelectOption = React.useCallback(
+    (source: string) => {
+      const dbTypes =
+        taskSourceList.find((v) => v.source === source)?.db_types ?? [];
+      return dbTypes.map((type) => {
+        return (
+          <Select.Option key={type} value={type ?? ''}>
+            {type}
+          </Select.Option>
+        );
+      });
+    },
+    [taskSourceList]
+  );
+
   return {
     taskSourceList,
     loading,
     updateTaskSourceList,
     generateTaskSourceSelectOption,
+    generateTaskSourceDbTypesSelectOption,
   };
 };
 

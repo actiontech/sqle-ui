@@ -5,6 +5,7 @@ import {
   screen,
   act as reactAct,
   cleanup,
+  waitFor,
 } from '@testing-library/react';
 import {
   mockUseTaskSource,
@@ -47,7 +48,10 @@ describe('useTaskSource', () => {
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.taskSourceList).toEqual([{ source: 'source1' }]);
+    expect(result.current.taskSourceList).toEqual([
+      { source: 'source1', db_types: ['mysql'] },
+      { source: 'source2', db_types: ['oracle'] },
+    ]);
     cleanup();
 
     const { baseElement: baseElementWithOptions } = render(
@@ -84,10 +88,16 @@ describe('useTaskSource', () => {
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.taskSourceList).toEqual([{ source: 'source1' }]);
+    expect(result.current.taskSourceList).toEqual([
+      { source: 'source1', db_types: ['mysql'] },
+      { source: 'source2', db_types: ['oracle'] },
+    ]);
     requestSpy.mockClear();
     requestSpy.mockImplementation(() =>
-      resolveErrorThreeSecond([{ source: 'source1' }])
+      resolveErrorThreeSecond([
+        { source: 'source1', db_types: ['mysql'] },
+        { source: 'source2', db_types: ['oracle'] },
+      ])
     );
 
     act(() => {
@@ -96,9 +106,8 @@ describe('useTaskSource', () => {
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
     expect(result.current.taskSourceList).toEqual([
-      {
-        source: 'source1',
-      },
+      { source: 'source1', db_types: ['mysql'] },
+      { source: 'source2', db_types: ['oracle'] },
     ]);
 
     jest.advanceTimersByTime(3000);
@@ -127,10 +136,16 @@ describe('useTaskSource', () => {
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.taskSourceList).toEqual([{ source: 'source1' }]);
+    expect(result.current.taskSourceList).toEqual([
+      { source: 'source1', db_types: ['mysql'] },
+      { source: 'source2', db_types: ['oracle'] },
+    ]);
     requestSpy.mockClear();
     requestSpy.mockImplementation(() =>
-      rejectThreeSecond([{ source: 'source1' }])
+      rejectThreeSecond([
+        { source: 'source1', db_types: ['mysql'] },
+        { source: 'source2', db_types: ['oracle'] },
+      ])
     );
 
     act(() => {
@@ -139,9 +154,8 @@ describe('useTaskSource', () => {
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
     expect(result.current.taskSourceList).toEqual([
-      {
-        source: 'source1',
-      },
+      { source: 'source1', db_types: ['mysql'] },
+      { source: 'source2', db_types: ['oracle'] },
     ]);
 
     jest.advanceTimersByTime(3000);
@@ -150,5 +164,47 @@ describe('useTaskSource', () => {
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
     expect(result.current.taskSourceList).toEqual([]);
+  });
+
+  test('should generate dbTypes select options with source', async () => {
+    const { result, waitForNextUpdate } = renderHook(() => useTaskSource());
+    act(() => {
+      result.current.updateTaskSourceList();
+    });
+    jest.advanceTimersByTime(3000);
+    await waitForNextUpdate();
+
+    const { baseElement, rerender } = render(
+      <Select value="type1">
+        {result.current.generateTaskSourceDbTypesSelectOption('source1')}
+      </Select>
+    );
+
+    fireEvent.mouseDown(screen.getByText('type1'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(baseElement).toMatchSnapshot();
+
+    rerender(
+      <Select value="type3">
+        {result.current.generateTaskSourceDbTypesSelectOption('source2')}
+      </Select>
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(baseElement).toMatchSnapshot();
+
+    rerender(
+      <Select value="type3">
+        {result.current.generateTaskSourceDbTypesSelectOption('source3')}
+      </Select>
+    );
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(baseElement).toMatchSnapshot();
   });
 });

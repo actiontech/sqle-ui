@@ -10,7 +10,6 @@ import {
 } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { checkCron } from '../../../hooks/useCron/cron.tool';
-import useDatabaseType from '../../../hooks/useDatabaseType';
 import useGlobalRuleTemplate from '../../../hooks/useGlobalRuleTemplate';
 import useTaskSource from '../../../hooks/useTaskSource';
 import EventEmitter from '../../../utils/EventEmitter';
@@ -22,11 +21,13 @@ const SyncTaskForm: React.FC<SyncTaskFormProps> = ({
 }) => {
   const { t } = useTranslation();
   const [dbType, setDbType] = useState('');
+  const [source, setSource] = useState('');
+  const {
+    updateTaskSourceList,
+    generateTaskSourceSelectOption,
+    generateTaskSourceDbTypesSelectOption,
+  } = useTaskSource();
 
-  const { updateTaskSourceList, generateTaskSourceSelectOption } =
-    useTaskSource();
-  const { updateDriverNameList, generateDriverSelectOptions } =
-    useDatabaseType();
   const {
     generateGlobalRuleTemplateSelectOption,
     updateGlobalRuleTemplateList,
@@ -39,6 +40,13 @@ const SyncTaskForm: React.FC<SyncTaskFormProps> = ({
     setDbType(type);
     form.setFieldsValue({
       ruleTemplateName: undefined,
+    });
+  };
+
+  const sourceChange = (source: string) => {
+    setSource(source);
+    form.setFieldsValue({
+      instanceType: undefined,
     });
   };
 
@@ -57,12 +65,12 @@ const SyncTaskForm: React.FC<SyncTaskFormProps> = ({
       form.resetFields();
     }
     setDbType('');
+    setSource('');
     updateGlobalRuleTemplateList();
   };
 
   useEffect(() => {
     updateTaskSourceList();
-    updateDriverNameList();
     updateGlobalRuleTemplateList();
 
     const refreshGlobalTemplateTips = () => {
@@ -81,11 +89,7 @@ const SyncTaskForm: React.FC<SyncTaskFormProps> = ({
         refreshGlobalTemplateTips
       );
     };
-  }, [
-    updateDriverNameList,
-    updateGlobalRuleTemplateList,
-    updateTaskSourceList,
-  ]);
+  }, [updateGlobalRuleTemplateList, updateTaskSourceList]);
 
   useEffect(() => {
     if (!!defaultValue) {
@@ -115,6 +119,7 @@ const SyncTaskForm: React.FC<SyncTaskFormProps> = ({
           disabled={!!defaultValue}
           allowClear
           placeholder={t('common.form.placeholder.select')}
+          onChange={sourceChange}
         >
           {generateTaskSourceSelectOption()}
         </Select>
@@ -147,7 +152,7 @@ const SyncTaskForm: React.FC<SyncTaskFormProps> = ({
           onChange={dbTypeChange}
           placeholder={t('common.form.placeholder.select')}
         >
-          {generateDriverSelectOptions()}
+          {generateTaskSourceDbTypesSelectOption(source)}
         </Select>
       </Form.Item>
 

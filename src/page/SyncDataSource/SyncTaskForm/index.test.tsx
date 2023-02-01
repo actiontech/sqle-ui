@@ -5,11 +5,19 @@ import SyncTaskForm from '.';
 import { IInstanceTaskDetailResV1 } from '../../../api/common';
 import { selectOptionByIndex } from '../../../testUtils/customQuery';
 import {
-  mockDriver,
   mockUseGlobalRuleTemplate,
   mockUseTaskSource,
 } from '../../../testUtils/mockRequest';
-import { defaultSyncTask } from '../UpdateSyncTask/index.test';
+
+const defaultSyncTask: IInstanceTaskDetailResV1 = {
+  db_type: 'mysql',
+  id: 0,
+  source: 'source1',
+  url: 'http://192.168.1.1:3000',
+  version: '4.2.2.0',
+  sync_instance_interval: '0 0 * * *',
+  rule_template: 'global_rule_template_name1',
+};
 
 const mockSubmit = jest.fn();
 const renderComponent = (defaultValue?: IInstanceTaskDetailResV1) => {
@@ -27,7 +35,6 @@ describe('test SyncTaskForm', () => {
   let getGlobalRuleTemplateSpy: jest.SpyInstance;
   beforeEach(() => {
     jest.useFakeTimers();
-    mockDriver();
     mockUseTaskSource();
     getGlobalRuleTemplateSpy = mockUseGlobalRuleTemplate();
     mockSubmit.mockImplementation(
@@ -141,7 +148,6 @@ describe('test SyncTaskForm', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
-
     expect(container).toMatchSnapshot();
     fireEvent.click(screen.getByText('common.reset'));
     expect(getGlobalRuleTemplateSpy).toBeCalledTimes(2);
@@ -154,7 +160,18 @@ describe('test SyncTaskForm', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+
+    selectOptionByIndex('syncDataSource.syncTaskForm.source', 'source1');
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
     selectOptionByIndex('syncDataSource.syncTaskForm.instanceType', 'mysql');
+
+    expect(screen.getAllByText('mysql')[0]).toHaveClass(
+      'ant-select-selection-item'
+    );
+
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
@@ -169,6 +186,15 @@ describe('test SyncTaskForm', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
+
+    selectOptionByIndex('syncDataSource.syncTaskForm.source', 'source2');
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    expect(screen.getAllByText('mysql')[0]).not.toHaveClass(
+      'ant-select-selection-item'
+    );
 
     selectOptionByIndex('syncDataSource.syncTaskForm.instanceType', 'oracle');
     await waitFor(() => {

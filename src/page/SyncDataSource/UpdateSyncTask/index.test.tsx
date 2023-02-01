@@ -16,7 +16,7 @@ import {
 } from '../../../testUtils/mockRequest';
 import { createMemoryHistory } from 'history';
 
-export const defaultSyncTask: IInstanceTaskDetailResV1 = {
+const defaultSyncTask: IInstanceTaskDetailResV1 = {
   db_type: 'mysql',
   id: 0,
   source: 'source1',
