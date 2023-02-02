@@ -5,7 +5,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   AuditTaskResV1SqlSourceEnum,
-  WorkflowResV1ModeEnum,
+  WorkflowResV2ModeEnum,
 } from '../../../../../api/common.enum';
 import task from '../../../../../api/task';
 
@@ -65,7 +65,7 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
         {
           ...sqlStatementInfo,
           dataBaseInfo,
-          isSameSqlOrder: sqlMode === WorkflowResV1ModeEnum.same_sqls,
+          isSameSqlOrder: sqlMode === WorkflowResV2ModeEnum.same_sqls,
         },
         currentTabIndex,
         currentTabKey
@@ -108,7 +108,7 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
 
     if (visible) {
       getAllSqlStatement();
-      if (sqlMode === WorkflowResV1ModeEnum.different_sqls) {
+      if (sqlMode === WorkflowResV2ModeEnum.different_sqls) {
         sqlStatementFormTabsRef.current?.tabsChangeHandle(
           currentOrderTasks[0].task_id?.toString() ?? ''
         );
@@ -136,7 +136,7 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
     >
       <Form form={form} {...ModalFormLayout}>
         <EmptyBox
-          if={sqlMode === WorkflowResV1ModeEnum.different_sqls}
+          if={sqlMode === WorkflowResV2ModeEnum.different_sqls}
           defaultNode={
             <SqlStatementForm
               form={form}

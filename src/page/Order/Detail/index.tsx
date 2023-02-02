@@ -14,8 +14,8 @@ import { cloneDeep } from 'lodash';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  WorkflowRecordResV1StatusEnum,
-  WorkflowResV1ModeEnum,
+  WorkflowRecordResV2StatusEnum,
+  WorkflowResV2ModeEnum,
 } from '../../../api/common.enum';
 import workflow from '../../../api/workflow';
 import BackButton from '../../../components/BackButton';
@@ -56,7 +56,7 @@ const Order = () => {
     getOverviewListSuccessHandle,
     complete,
   } = useGenerateOrderStepsProps({
-    workflowName: orderInfo?.workflow_name ?? '',
+    workflowId: orderInfo?.workflow_id ?? '',
     refreshOrder,
     refreshTask,
     refreshOverviewAction,
@@ -74,7 +74,7 @@ const Order = () => {
     disabledOperatorOrderBtnTips,
     auditResultActiveKey: tempAuditResultActiveKey,
     setAuditResultActiveKey: setTempAuditResultActiveKey,
-  } = useModifySql(orderInfo?.mode ?? WorkflowResV1ModeEnum.same_sqls);
+  } = useModifySql(orderInfo?.mode ?? WorkflowResV2ModeEnum.same_sqls);
 
   const [
     updateLoading,
@@ -98,10 +98,10 @@ const Order = () => {
     }
     startUpdateSQL();
     workflow
-      .updateWorkflowV1({
+      .updateWorkflowV2({
         project_name: projectName,
         task_ids: tempTaskInfos.map((v) => v.task_id!),
-        workflow_name: `${orderInfo?.workflow_name ?? ''}`,
+        workflow_id: `${orderInfo?.workflow_id ?? ''}`,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -125,9 +125,9 @@ const Order = () => {
   const closeOrder = React.useCallback(() => {
     startCloseOrder();
     workflow
-      .cancelWorkflowV1({
+      .cancelWorkflowV2({
         project_name: projectName,
-        workflow_name: `${orderInfo?.workflow_name ?? ''}`,
+        workflow_id: `${orderInfo?.workflow_id ?? ''}`,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -139,7 +139,7 @@ const Order = () => {
       });
   }, [
     closeOrderFinish,
-    orderInfo?.workflow_name,
+    orderInfo?.workflow_id,
     projectName,
     refreshOrder,
     startCloseOrder,
@@ -172,11 +172,11 @@ const Order = () => {
                 hidden={
                   !(
                     orderInfo?.record?.status ===
-                      WorkflowRecordResV1StatusEnum.wait_for_audit ||
+                      WorkflowRecordResV2StatusEnum.wait_for_audit ||
                     orderInfo?.record?.status ===
-                      WorkflowRecordResV1StatusEnum.wait_for_execution ||
+                      WorkflowRecordResV2StatusEnum.wait_for_execution ||
                     orderInfo?.record?.status ===
-                      WorkflowRecordResV1StatusEnum.rejected
+                      WorkflowRecordResV2StatusEnum.rejected
                   )
                 }
               >
@@ -242,7 +242,7 @@ const Order = () => {
             auditResultActiveKey={auditResultActiveKey}
             setAuditResultActiveKey={setAuditResultActiveKey}
             showOverview={true}
-            workflowName={orderInfo?.workflow_name?.toString()}
+            workflowId={orderInfo?.workflow_id?.toString()}
             refreshOrder={refreshOrder}
             refreshOverviewFlag={refreshOverviewFlag}
             orderStatus={orderInfo?.record?.status}
@@ -297,7 +297,7 @@ const Order = () => {
           submit={modifySqlSubmit}
           visible={modifySqlModalVisibility}
           currentOrderTasks={taskInfos}
-          sqlMode={orderInfo?.mode ?? WorkflowResV1ModeEnum.same_sqls}
+          sqlMode={orderInfo?.mode ?? WorkflowResV2ModeEnum.same_sqls}
         />
         <OrderHistory
           visible={historyVisible}

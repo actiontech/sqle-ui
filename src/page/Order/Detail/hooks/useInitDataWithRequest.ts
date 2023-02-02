@@ -14,9 +14,9 @@ const useInitDataWithRequest = () => {
 
   const { data: orderInfo, refresh: refreshOrder } = useRequest(
     () =>
-      workflow.getWorkflowV1({
+      workflow.getWorkflowV2({
         project_name: projectName,
-        workflow_name: urlParams.orderId,
+        workflow_id: urlParams.orderId,
       }),
     {
       formatResult(res) {

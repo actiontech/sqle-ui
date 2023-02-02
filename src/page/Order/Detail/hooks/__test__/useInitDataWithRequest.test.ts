@@ -35,7 +35,7 @@ describe('test Order/Detail/useInitDataWithRequest', () => {
   });
 
   const mockGetWorkflow = () => {
-    const spy = jest.spyOn(workflow, 'getWorkflowV1');
+    const spy = jest.spyOn(workflow, 'getWorkflowV2');
     spy.mockImplementation(() => resolveThreeSecond(order));
     return spy;
   };
@@ -52,7 +52,7 @@ describe('test Order/Detail/useInitDataWithRequest', () => {
     );
     expect(getWorkflowSpy).toBeCalledTimes(1);
     expect(getWorkflowSpy).toBeCalledWith({
-      workflow_name: orderId,
+      workflow_id: orderId,
       project_name: projectName,
     });
     expect(getTaskSpy).toBeCalledTimes(0);

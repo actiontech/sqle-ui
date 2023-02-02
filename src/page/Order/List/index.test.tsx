@@ -59,6 +59,7 @@ describe('Order/List', () => {
           task_pass_rate: 0,
           task_status: 'audited',
           task_score: 30,
+          workflow_id: '1',
         },
       ])
     );
@@ -66,7 +67,7 @@ describe('Order/List', () => {
   };
 
   const mockBatchCancelOrder = () => {
-    const spy = jest.spyOn(workflow, 'batchCancelWorkflowsV1');
+    const spy = jest.spyOn(workflow, 'batchCancelWorkflowsV2');
     spy.mockImplementation(() => resolveThreeSecond({}));
     return spy;
   };
@@ -160,7 +161,7 @@ describe('Order/List', () => {
     fireEvent.click(screen.getAllByText('common.ok')[0]);
     expect(batchCancelSpy).toBeCalledTimes(1);
     expect(batchCancelSpy).toBeCalledWith({
-      workflow_names: ['order123'],
+      workflow_id_list: ['1'],
       project_name: projectName,
     });
     await waitFor(() => {

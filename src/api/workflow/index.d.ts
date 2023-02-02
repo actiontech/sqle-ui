@@ -10,7 +10,15 @@ import {
   IUpdateWorkflowReqV1,
   IRejectWorkflowReqV1,
   IGetWorkflowTasksResV1,
-  IUpdateWorkflowScheduleReqV1
+  IUpdateWorkflowScheduleReqV1,
+  ICreateWorkflowReqV2,
+  IBatchCancelWorkflowsReqV2,
+  IBatchCompleteWorkflowsReqV2,
+  IGetWorkflowResV2,
+  IUpdateWorkflowReqV2,
+  IRejectWorkflowReqV2,
+  IGetWorkflowTasksResV2,
+  IUpdateWorkflowScheduleReqV2
 } from '../common.d';
 
 import {
@@ -187,3 +195,105 @@ export interface IGetGlobalWorkflowsV1Params {
 }
 
 export interface IGetGlobalWorkflowsV1Return extends IGetWorkflowsResV1 {}
+
+export interface ICreateWorkflowV2Params extends ICreateWorkflowReqV2 {
+  project_name: string;
+}
+
+export interface ICreateWorkflowV2Return extends IBaseRes {}
+
+export interface IBatchCancelWorkflowsV2Params
+  extends IBatchCancelWorkflowsReqV2 {
+  project_name: string;
+}
+
+export interface IBatchCancelWorkflowsV2Return extends IBaseRes {}
+
+export interface IBatchCompleteWorkflowsV2Params
+  extends IBatchCompleteWorkflowsReqV2 {
+  project_name: string;
+}
+
+export interface IBatchCompleteWorkflowsV2Return extends IBaseRes {}
+
+export interface IGetWorkflowV2Params {
+  workflow_id: string;
+
+  project_name: string;
+}
+
+export interface IGetWorkflowV2Return extends IGetWorkflowResV2 {}
+
+export interface IUpdateWorkflowV2Params extends IUpdateWorkflowReqV2 {
+  workflow_id: string;
+
+  project_name: string;
+}
+
+export interface IUpdateWorkflowV2Return extends IBaseRes {}
+
+export interface ICancelWorkflowV2Params {
+  project_name: string;
+
+  workflow_id: string;
+}
+
+export interface ICancelWorkflowV2Return extends IBaseRes {}
+
+export interface IApproveWorkflowV2Params {
+  workflow_id: string;
+
+  workflow_step_id: string;
+
+  project_name: string;
+}
+
+export interface IApproveWorkflowV2Return extends IBaseRes {}
+
+export interface IRejectWorkflowV2Params extends IRejectWorkflowReqV2 {
+  workflow_id: string;
+
+  project_name: string;
+
+  workflow_step_id: string;
+}
+
+export interface IRejectWorkflowV2Return extends IBaseRes {}
+
+export interface IGetSummaryOfInstanceTasksV2Params {
+  workflow_id: string;
+
+  project_name: string;
+}
+
+export interface IGetSummaryOfInstanceTasksV2Return
+  extends IGetWorkflowTasksResV2 {}
+
+export interface IExecuteTasksOnWorkflowV2Params {
+  workflow_id: string;
+
+  project_name: string;
+}
+
+export interface IExecuteTasksOnWorkflowV2Return extends IBaseRes {}
+
+export interface IExecuteOneTaskOnWorkflowV2Params {
+  workflow_id: string;
+
+  project_name: string;
+
+  task_id: string;
+}
+
+export interface IExecuteOneTaskOnWorkflowV2Return extends IBaseRes {}
+
+export interface IUpdateWorkflowScheduleV2Params
+  extends IUpdateWorkflowScheduleReqV2 {
+  workflow_id: string;
+
+  task_id: string;
+
+  project_name: string;
+}
+
+export interface IUpdateWorkflowScheduleV2Return extends IBaseRes {}

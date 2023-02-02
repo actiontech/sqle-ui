@@ -1,17 +1,17 @@
 import {
   IAuditTaskResV1,
-  IGetWorkflowTasksItemV1,
-  IWorkflowResV1,
+  IGetWorkflowTasksItemV2,
+  IWorkflowResV2,
   IWorkflowTemplateDetailResV1,
 } from '../../../../api/common';
 import {
   AuditTaskResV1AuditLevelEnum,
-  GetWorkflowTasksItemV1StatusEnum,
+  GetWorkflowTasksItemV2StatusEnum,
   WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
 } from '../../../../api/common.enum';
 
 export const order = {
-  workflow_id: 1,
+  workflow_id: '1',
   workflow_name: 'order123',
   create_user_name: 'admin',
   create_time: '2021-04-29T05:41:24Z',
@@ -35,10 +35,10 @@ export const order = {
       },
     ],
   },
-} as IWorkflowResV1;
+} as IWorkflowResV2;
 
 export const orderCancel = {
-  workflow_id: 2,
+  workflow_id: '2',
   workflow_name: 'test',
   create_user_name: 'admin',
   create_time: '2021-05-20T02:46:32Z',
@@ -61,10 +61,10 @@ export const orderCancel = {
       },
     ],
   },
-} as IWorkflowResV1;
+} as IWorkflowResV2;
 
 export const orderReject = {
-  workflow_id: 3,
+  workflow_id: '3',
   workflow_name: 'testccc',
   create_user_name: 'admin',
   create_time: '2021-05-20T02:48:57Z',
@@ -90,10 +90,10 @@ export const orderReject = {
       },
     ],
   },
-} as IWorkflowResV1;
+} as IWorkflowResV2;
 
 export const orderPass = {
-  workflow_id: 4,
+  workflow_id: '4',
   workflow_name: 'pass',
   create_user_name: 'admin',
   create_time: '2021-05-20T02:57:25Z',
@@ -118,10 +118,10 @@ export const orderPass = {
       },
     ],
   },
-} as IWorkflowResV1;
+} as IWorkflowResV2;
 
 export const orderWithExecScheduled = {
-  workflow_id: 13,
+  workflow_id: '13',
   workflow_name: 'testq',
   create_user_name: 'admin',
   create_time: '2021-12-16T20:06:10+08:00',
@@ -147,10 +147,10 @@ export const orderWithExecScheduled = {
       },
     ],
   },
-} as IWorkflowResV1;
+} as IWorkflowResV2;
 
 export const orderWithExecuting = {
-  workflow_id: 13,
+  workflow_id: '13',
   workflow_name: 'testq',
   create_user_name: 'admin',
   create_time: '2021-12-16T20:06:10+08:00',
@@ -176,10 +176,10 @@ export const orderWithExecuting = {
       },
     ],
   },
-} as IWorkflowResV1;
+} as IWorkflowResV2;
 
 export const order3 = {
-  workflow_id: 1,
+  workflow_id: '1',
   workflow_name: 'order123',
   create_user_name: 'admin',
   create_time: '2021-04-29T05:41:24Z',
@@ -209,9 +209,9 @@ export const order3 = {
       },
     ],
   },
-} as IWorkflowResV1;
+} as IWorkflowResV2;
 export const orderPass3 = {
-  workflow_id: 4,
+  workflow_id: '4',
   workflow_name: 'pass',
   create_user_name: 'admin',
   create_time: '2021-05-20T02:57:25Z',
@@ -245,10 +245,10 @@ export const orderPass3 = {
       },
     ],
   },
-} as IWorkflowResV1;
+} as IWorkflowResV2;
 
 export const orderCancel3 = {
-  workflow_id: 2,
+  workflow_id: '2',
   workflow_name: 'test',
   create_user_name: 'admin',
   create_time: '2021-05-20T02:46:32Z',
@@ -278,10 +278,10 @@ export const orderCancel3 = {
       },
     ],
   },
-} as IWorkflowResV1;
+} as IWorkflowResV2;
 
 export const orderReject3 = {
-  workflow_id: 3,
+  workflow_id: '3',
   workflow_name: 'testccc',
   create_user_name: 'admin',
   create_time: '2021-05-20T02:48:57Z',
@@ -316,10 +316,10 @@ export const orderReject3 = {
       },
     ],
   },
-} as IWorkflowResV1;
+} as IWorkflowResV2;
 
 export const orderWithExecScheduled3 = {
-  workflow_id: 4,
+  workflow_id: '4',
   workflow_name: 'execScheduled',
   create_user_name: 'admin',
   create_time: '2021-12-16T19:10:02+08:00',
@@ -354,10 +354,10 @@ export const orderWithExecScheduled3 = {
       },
     ],
   },
-} as IWorkflowResV1;
+} as IWorkflowResV2;
 
 export const orderWithExecuting3 = {
-  workflow_id: 5,
+  workflow_id: '5',
   workflow_name: 'test_executing3',
   create_user_name: 'admin',
   create_time: '2021-12-16T19:37:02+08:00',
@@ -391,9 +391,9 @@ export const orderWithExecuting3 = {
       },
     ],
   },
-} as IWorkflowResV1;
+} as IWorkflowResV2;
 export const execScheduleSubmit3 = {
-  workflow_id: 17,
+  workflow_id: '17',
   workflow_name: 'testtt',
   create_user_name: 'admin',
   create_time: '2021-12-16T20:29:40+08:00',
@@ -427,10 +427,10 @@ export const execScheduleSubmit3 = {
       },
     ],
   },
-} as IWorkflowResV1;
+} as IWorkflowResV2;
 
 export const orderWithHistory = {
-  workflow_id: 1,
+  workflow_id: '1',
   workflow_name: 'order123',
   create_user_name: 'admin',
   create_time: '2021-04-29T05:41:24Z',
@@ -478,7 +478,7 @@ export const orderWithHistory = {
       ],
     },
   ],
-} as IWorkflowResV1;
+} as IWorkflowResV2;
 
 export const taskInfo: IAuditTaskResV1 = {
   task_id: 27,
@@ -567,13 +567,13 @@ export const instanceWorkflowTemplate: IWorkflowTemplateDetailResV1 = {
   workflow_template_name: 'test',
 };
 
-export const workflowTasks: IGetWorkflowTasksItemV1[] = [
+export const workflowTasks: IGetWorkflowTasksItemV2[] = [
   {
     current_step_assignee_user_name_list: ['admin', 'admin2'],
     exec_end_time: '2022-09-30',
     exec_start_time: '2022-09-01',
     instance_name: 'mysql-1',
-    status: GetWorkflowTasksItemV1StatusEnum.wait_for_audit,
+    status: GetWorkflowTasksItemV2StatusEnum.wait_for_audit,
     task_id: 27,
     task_pass_rate: 0.3099,
     task_score: 30,
@@ -583,7 +583,7 @@ export const workflowTasks: IGetWorkflowTasksItemV1[] = [
     exec_end_time: '2022-09-30',
     exec_start_time: '2022-09-01',
     instance_name: 'mysql-2',
-    status: GetWorkflowTasksItemV1StatusEnum.wait_for_execution,
+    status: GetWorkflowTasksItemV2StatusEnum.wait_for_execution,
     task_id: 28,
     task_pass_rate: 0,
     task_score: 30,
@@ -600,7 +600,7 @@ export const workflowTasks: IGetWorkflowTasksItemV1[] = [
     exec_end_time: '2022-09-30',
     exec_start_time: '2022-09-01',
     instance_name: 'mysql-3',
-    status: GetWorkflowTasksItemV1StatusEnum.exec_scheduled,
+    status: GetWorkflowTasksItemV2StatusEnum.exec_scheduled,
     task_id: 29,
     task_pass_rate: 0,
     task_score: 30,
@@ -611,7 +611,7 @@ export const workflowTasks: IGetWorkflowTasksItemV1[] = [
     exec_end_time: '2022-09-30',
     exec_start_time: '2022-09-01',
     instance_name: 'mysql-4',
-    status: GetWorkflowTasksItemV1StatusEnum.executing,
+    status: GetWorkflowTasksItemV2StatusEnum.executing,
     task_id: 30,
     task_pass_rate: 0,
     task_score: 30,

@@ -4030,7 +4030,7 @@ exports[`Order/List should render order list by response data 2`] = `
                           >
                             <tr
                               class="ant-table-row ant-table-row-level-0"
-                              data-row-key="order123"
+                              data-row-key="1"
                             >
                               <td
                                 class="ant-table-cell ant-table-selection-column"

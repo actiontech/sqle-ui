@@ -1,13 +1,13 @@
 import { FormInstance, TagProps } from 'antd';
 import {
   IAuditTaskResV1,
-  IGetWorkflowTasksItemV1,
+  IGetWorkflowTasksItemV2,
   IMaintenanceTimeResV1,
-  IWorkflowResV1,
+  IWorkflowResV2,
 } from '../../../api/common';
 import {
   GetWorkflowTasksItemV1StatusEnum,
-  WorkflowRecordResV1StatusEnum,
+  WorkflowRecordResV2StatusEnum,
 } from '../../../api/common.enum';
 import { IGetAuditTaskSQLsV1Params } from '../../../api/task/index.d';
 import { I18nKey } from '../../../types/common.type';
@@ -27,11 +27,11 @@ export interface AuditResultCollectionProps {
   setAuditResultActiveKey: React.Dispatch<React.SetStateAction<string>>;
   updateTaskRecordTotalNum?: (taskId: string, sqlNumber: number) => void;
   showOverview?: boolean;
-  workflowName?: string;
-  refreshOrder?: () => Promise<IWorkflowResV1 | undefined>;
+  workflowId?: string;
+  refreshOrder?: () => Promise<IWorkflowResV2 | undefined>;
   refreshOverviewFlag?: boolean;
-  orderStatus?: WorkflowRecordResV1StatusEnum;
-  getOverviewListSuccessHandle?: (list: IGetWorkflowTasksItemV1[]) => void;
+  orderStatus?: WorkflowRecordResV2StatusEnum;
+  getOverviewListSuccessHandle?: (list: IGetWorkflowTasksItemV2[]) => void;
   projectName: string;
 }
 

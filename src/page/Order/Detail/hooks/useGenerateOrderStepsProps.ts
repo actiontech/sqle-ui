@@ -2,25 +2,25 @@ import { message } from 'antd';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  IGetWorkflowTasksItemV1,
-  IWorkflowResV1,
+  IGetWorkflowTasksItemV2,
+  IWorkflowResV2,
 } from '../../../../api/common';
-import { GetWorkflowTasksItemV1StatusEnum } from '../../../../api/common.enum';
+import { GetWorkflowTasksItemV2StatusEnum } from '../../../../api/common.enum';
 import workflow from '../../../../api/workflow';
 import { ResponseCode } from '../../../../data/common';
 import { MaintenanceTimeInfoType } from '../../AuditResult/index.type';
 import { TasksStatusNumberType } from '../OrderSteps/index.type';
 
 type HooksParamType = {
-  workflowName: string;
-  refreshOrder: () => Promise<IWorkflowResV1 | undefined>;
+  workflowId: string;
+  refreshOrder: () => Promise<IWorkflowResV2 | undefined>;
   refreshTask: () => void;
   refreshOverviewAction: (value?: boolean | undefined) => void;
   projectName: string;
 };
 
 const useGenerateOrderStepsProps = ({
-  workflowName,
+  workflowId,
   refreshOrder,
   refreshTask,
   refreshOverviewAction,
@@ -38,8 +38,8 @@ const useGenerateOrderStepsProps = ({
   const pass = useCallback(
     async (stepId: number) => {
       return workflow
-        .approveWorkflowV1({
-          workflow_name: workflowName,
+        .approveWorkflowV2({
+          workflow_id: workflowId,
           workflow_step_id: `${stepId}`,
           project_name: projectName,
         })
@@ -51,13 +51,13 @@ const useGenerateOrderStepsProps = ({
           }
         });
     },
-    [workflowName, projectName, t, refreshOrder, refreshOverviewAction]
+    [workflowId, projectName, t, refreshOrder, refreshOverviewAction]
   );
 
   const executing = useCallback(async () => {
     return workflow
-      .executeTasksOnWorkflowV1({
-        workflow_name: workflowName,
+      .executeTasksOnWorkflowV2({
+        workflow_id: workflowId,
         project_name: projectName,
       })
       .then((res) => {
@@ -74,15 +74,15 @@ const useGenerateOrderStepsProps = ({
     refreshOverviewAction,
     refreshTask,
     t,
-    workflowName,
+    workflowId,
   ]);
 
   const reject = useCallback(
     async (reason: string, stepId: number) => {
       return workflow
-        .rejectWorkflowV1({
+        .rejectWorkflowV2({
           project_name: projectName,
-          workflow_name: workflowName,
+          workflow_id: workflowId,
           workflow_step_id: `${stepId}`,
           reason,
         })
@@ -94,13 +94,13 @@ const useGenerateOrderStepsProps = ({
           }
         });
     },
-    [projectName, refreshOrder, refreshOverviewAction, t, workflowName]
+    [projectName, refreshOrder, refreshOverviewAction, t, workflowId]
   );
 
   const complete = useCallback(async () => {
     return workflow
-      .batchCompleteWorkflowsV1({
-        workflow_names: [workflowName],
+      .batchCompleteWorkflowsV2({
+        workflow_id_list: [workflowId],
         project_name: projectName,
       })
       .then((res) => {
@@ -117,10 +117,10 @@ const useGenerateOrderStepsProps = ({
     refreshOverviewAction,
     refreshTask,
     t,
-    workflowName,
+    workflowId,
   ]);
 
-  const getOverviewListSuccessHandle = (list: IGetWorkflowTasksItemV1[]) => {
+  const getOverviewListSuccessHandle = (list: IGetWorkflowTasksItemV2[]) => {
     setMaintenanceTimeInfo?.(
       list.map((v) => ({
         instanceName: v.instance_name ?? '',
@@ -132,10 +132,10 @@ const useGenerateOrderStepsProps = ({
       (v) =>
         !!v.status &&
         ![
-          GetWorkflowTasksItemV1StatusEnum.exec_succeeded,
-          GetWorkflowTasksItemV1StatusEnum.executing,
-          GetWorkflowTasksItemV1StatusEnum.exec_failed,
-          GetWorkflowTasksItemV1StatusEnum.exec_scheduled,
+          GetWorkflowTasksItemV2StatusEnum.exec_succeeded,
+          GetWorkflowTasksItemV2StatusEnum.executing,
+          GetWorkflowTasksItemV2StatusEnum.exec_failed,
+          GetWorkflowTasksItemV2StatusEnum.exec_scheduled,
         ].includes(v.status)
     );
     setCanRejectOrder(canRejectOrder);
@@ -143,11 +143,11 @@ const useGenerateOrderStepsProps = ({
       executingNumber = 0,
       failedNumber = 0;
     list.forEach((v) => {
-      if (v.status === GetWorkflowTasksItemV1StatusEnum.exec_succeeded) {
+      if (v.status === GetWorkflowTasksItemV2StatusEnum.exec_succeeded) {
         succeededNumber++;
-      } else if (v.status === GetWorkflowTasksItemV1StatusEnum.executing) {
+      } else if (v.status === GetWorkflowTasksItemV2StatusEnum.executing) {
         executingNumber++;
-      } else if (v.status === GetWorkflowTasksItemV1StatusEnum.exec_failed) {
+      } else if (v.status === GetWorkflowTasksItemV2StatusEnum.exec_failed) {
         failedNumber++;
       }
     });
