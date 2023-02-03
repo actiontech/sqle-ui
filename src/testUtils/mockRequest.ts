@@ -279,7 +279,7 @@ export const mockUseMember = () => {
 
 export const mockUseTaskSource = () => {
   const spy = jest.spyOn(sync_instance, 'GetSyncTaskSourceTips');
-  spy.mockImplementation(() => resolveThreeSecond([{ source: 'source1' }]))
+  spy.mockImplementation(() => resolveThreeSecond([{ source: 'source1', db_types: ['mysql'] }, { source: 'source2', db_types: ['oracle'] }]))
   return spy;
 }
 

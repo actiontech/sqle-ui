@@ -39,8 +39,6 @@ export const SyncTaskListTableColumnFactory: (
         } else if (status === InstanceTaskResV1LastSyncStatusEnum.fail) {
           return <Tag color="red">{i18n.t('common.fail')}</Tag>;
         }
-
-        return <Tag>{i18n.t('common.unknownStatus')}</Tag>;
       },
     },
     {

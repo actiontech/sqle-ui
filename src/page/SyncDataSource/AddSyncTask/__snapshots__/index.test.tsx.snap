@@ -2131,6 +2131,14 @@ exports[`test AddSyncTask should send request when clicking submit button 1`] = 
             >
               source1
             </div>
+            <div
+              aria-label="source2"
+              aria-selected="false"
+              id="source_list_1"
+              role="option"
+            >
+              source2
+            </div>
           </div>
           <div
             class="rc-virtual-list"
@@ -2154,6 +2162,23 @@ exports[`test AddSyncTask should send request when clicking submit button 1`] = 
                       class="ant-select-item-option-content"
                     >
                       source1
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      class="ant-select-item-option-state"
+                      style="user-select: none;"
+                      unselectable="on"
+                    />
+                  </div>
+                  <div
+                    aria-selected="false"
+                    class="ant-select-item ant-select-item-option"
+                    title="source2"
+                  >
+                    <div
+                      class="ant-select-item-option-content"
+                    >
+                      source2
                     </div>
                     <span
                       aria-hidden="true"
@@ -2194,17 +2219,9 @@ exports[`test AddSyncTask should send request when clicking submit button 1`] = 
             style="height: 0px; width: 0px; overflow: hidden;"
           >
             <div
-              aria-label="oracle"
-              aria-selected="false"
-              id="instanceType_list_0"
-              role="option"
-            >
-              oracle
-            </div>
-            <div
               aria-label="mysql"
               aria-selected="true"
-              id="instanceType_list_1"
+              id="instanceType_list_0"
               role="option"
             >
               mysql
@@ -2224,25 +2241,8 @@ exports[`test AddSyncTask should send request when clicking submit button 1`] = 
                   style="display: flex; flex-direction: column;"
                 >
                   <div
-                    aria-selected="false"
-                    class="ant-select-item ant-select-item-option ant-select-item-option-active"
-                    title="oracle"
-                  >
-                    <div
-                      class="ant-select-item-option-content"
-                    >
-                      oracle
-                    </div>
-                    <span
-                      aria-hidden="true"
-                      class="ant-select-item-option-state"
-                      style="user-select: none;"
-                      unselectable="on"
-                    />
-                  </div>
-                  <div
                     aria-selected="true"
-                    class="ant-select-item ant-select-item-option ant-select-item-option-selected"
+                    class="ant-select-item ant-select-item-option ant-select-item-option-active ant-select-item-option-selected"
                     title="mysql"
                   >
                     <div
