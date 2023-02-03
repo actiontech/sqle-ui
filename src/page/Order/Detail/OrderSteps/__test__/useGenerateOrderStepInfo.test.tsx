@@ -2,7 +2,7 @@ import { cleanup, render, screen } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import {
   WorkflowDetailResV1StatusEnum,
-  WorkflowStepResV1TypeEnum,
+  WorkflowStepResV2TypeEnum,
 } from '../../../../../api/common.enum';
 import { mockUseSelector } from '../../../../../testUtils/mockRedux';
 import { useGenerateOrderStepInfo } from '../useGenerateOrderStepInfo';
@@ -51,22 +51,22 @@ describe('test useGenerateOrderStepInfo', () => {
     );
     expect(
       result.current.generateStepTypeString(
-        WorkflowStepResV1TypeEnum.create_workflow
+        WorkflowStepResV2TypeEnum.create_workflow
       )
     ).toBe('order.operator.createOrderStep');
     expect(
       result.current.generateStepTypeString(
-        WorkflowStepResV1TypeEnum.update_workflow
+        WorkflowStepResV2TypeEnum.update_workflow
       )
     ).toBe('order.operator.updateOrderStep');
     expect(
       result.current.generateStepTypeString(
-        WorkflowStepResV1TypeEnum.sql_review
+        WorkflowStepResV2TypeEnum.sql_review
       )
     ).toBe('order.operator.reviewOrderStep');
     expect(
       result.current.generateStepTypeString(
-        WorkflowStepResV1TypeEnum.sql_execute
+        WorkflowStepResV2TypeEnum.sql_execute
       )
     ).toBe('order.operator.executeOrderStep');
   });

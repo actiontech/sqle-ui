@@ -2,11 +2,11 @@ import { ClockCircleOutlined } from '@ant-design/icons';
 import { Col, Space, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { IWorkflowStepResV1 } from '../../../../api/common';
+import { IWorkflowStepResV2 } from '../../../../api/common';
 import {
-  WorkflowRecordResV1StatusEnum,
-  WorkflowStepResV1StateEnum,
-  WorkflowStepResV1TypeEnum,
+  WorkflowRecordResV2StatusEnum,
+  WorkflowStepResV2StateEnum,
+  WorkflowStepResV2TypeEnum,
 } from '../../../../api/common.enum';
 import OrderStatusTag from '../../../../components/OrderStatusTag';
 import { IReduxState } from '../../../../store';
@@ -14,13 +14,13 @@ import { formatTime } from '../../../../utils/Common';
 import { ActionNodeType, OrderStepsProps, StepStateStatus } from './index.type';
 
 const stepStateStatus: StepStateStatus = {
-  [WorkflowStepResV1StateEnum.initialized]: {
+  [WorkflowStepResV2StateEnum.initialized]: {
     color: 'gray',
   },
-  [WorkflowStepResV1StateEnum.approved]: {
+  [WorkflowStepResV2StateEnum.approved]: {
     color: 'green',
   },
-  [WorkflowStepResV1StateEnum.rejected]: {
+  [WorkflowStepResV2StateEnum.rejected]: {
     color: 'red',
   },
   unknown: {
@@ -28,32 +28,32 @@ const stepStateStatus: StepStateStatus = {
   },
 };
 
-const orderTypeIsCreate = (type?: WorkflowStepResV1TypeEnum) => {
-  return type === WorkflowStepResV1TypeEnum.create_workflow;
+const orderTypeIsCreate = (type?: WorkflowStepResV2TypeEnum) => {
+  return type === WorkflowStepResV2TypeEnum.create_workflow;
 };
 
-const orderTypeIsUpdate = (type?: WorkflowStepResV1TypeEnum) => {
-  return type === WorkflowStepResV1TypeEnum.update_workflow;
+const orderTypeIsUpdate = (type?: WorkflowStepResV2TypeEnum) => {
+  return type === WorkflowStepResV2TypeEnum.update_workflow;
 };
 
-const orderTypeIsReview = (type?: WorkflowStepResV1TypeEnum) => {
-  return type === WorkflowStepResV1TypeEnum.sql_review;
+const orderTypeIsReview = (type?: WorkflowStepResV2TypeEnum) => {
+  return type === WorkflowStepResV2TypeEnum.sql_review;
 };
 
-const orderTypeIsExecute = (type?: WorkflowStepResV1TypeEnum) => {
-  return type === WorkflowStepResV1TypeEnum.sql_execute;
+const orderTypeIsExecute = (type?: WorkflowStepResV2TypeEnum) => {
+  return type === WorkflowStepResV2TypeEnum.sql_execute;
 };
 
-const orderStateIsApproved = (state?: WorkflowStepResV1StateEnum) => {
-  return state === WorkflowStepResV1StateEnum.approved;
+const orderStateIsApproved = (state?: WorkflowStepResV2StateEnum) => {
+  return state === WorkflowStepResV2StateEnum.approved;
 };
 
-const orderStateIsInitialized = (state?: WorkflowStepResV1StateEnum) => {
-  return state === WorkflowStepResV1StateEnum.initialized;
+const orderStateIsInitialized = (state?: WorkflowStepResV2StateEnum) => {
+  return state === WorkflowStepResV2StateEnum.initialized;
 };
 
-const orderStateIsRejected = (state?: WorkflowStepResV1StateEnum) => {
-  return state === WorkflowStepResV1StateEnum.rejected;
+const orderStateIsRejected = (state?: WorkflowStepResV2StateEnum) => {
+  return state === WorkflowStepResV2StateEnum.rejected;
 };
 
 const isCurrentStep = (stepNumber?: number, currentStep?: number) => {
@@ -72,7 +72,7 @@ export const useGenerateOrderStepInfo = ({
     (state) => state.user.username
   );
 
-  const generateStepTypeString = (type?: WorkflowStepResV1TypeEnum) => {
+  const generateStepTypeString = (type?: WorkflowStepResV2TypeEnum) => {
     if (orderTypeIsCreate(type)) {
       return t('order.operator.createOrderStep');
     }
@@ -118,7 +118,7 @@ export const useGenerateOrderStepInfo = ({
    */
 
   const generateActionNode = (
-    step: IWorkflowStepResV1,
+    step: IWorkflowStepResV2,
     {
       maintenanceTimeInfoNode,
       modifySqlNode,
@@ -154,7 +154,7 @@ export const useGenerateOrderStepInfo = ({
       if (readonly) {
         return null;
       }
-      if (currentOrderStatus === WorkflowRecordResV1StatusEnum.rejected) {
+      if (currentOrderStatus === WorkflowRecordResV2StatusEnum.rejected) {
         if (step.operation_user_name === username) {
           return modifySqlNode;
         }
@@ -172,7 +172,7 @@ export const useGenerateOrderStepInfo = ({
         return null;
       }
 
-      if (currentOrderStatus === WorkflowRecordResV1StatusEnum.wait_for_audit) {
+      if (currentOrderStatus === WorkflowRecordResV2StatusEnum.wait_for_audit) {
         return (
           <Space wrap>
             {sqlReviewNode}
@@ -185,12 +185,12 @@ export const useGenerateOrderStepInfo = ({
         return genRejectedNode();
       }
 
-      if (currentOrderStatus === WorkflowRecordResV1StatusEnum.rejected) {
+      if (currentOrderStatus === WorkflowRecordResV2StatusEnum.rejected) {
         return t('order.operator.alreadyRejected');
       }
 
       if (
-        currentOrderStatus === WorkflowRecordResV1StatusEnum.canceled &&
+        currentOrderStatus === WorkflowRecordResV2StatusEnum.canceled &&
         orderStateIsInitialized(step.state)
       ) {
         return t('order.operator.alreadyClosed');
@@ -210,7 +210,7 @@ export const useGenerateOrderStepInfo = ({
         );
       }
       if (
-        currentOrderStatus === WorkflowRecordResV1StatusEnum.wait_for_execution
+        currentOrderStatus === WorkflowRecordResV2StatusEnum.wait_for_execution
       ) {
         return (
           <>
@@ -227,12 +227,12 @@ export const useGenerateOrderStepInfo = ({
         return genRejectedNode();
       }
 
-      if (currentOrderStatus === WorkflowRecordResV1StatusEnum.rejected) {
+      if (currentOrderStatus === WorkflowRecordResV2StatusEnum.rejected) {
         return t('order.operator.alreadyRejected');
       }
 
       if (
-        currentOrderStatus === WorkflowRecordResV1StatusEnum.canceled &&
+        currentOrderStatus === WorkflowRecordResV2StatusEnum.canceled &&
         orderStateIsInitialized(step.state)
       ) {
         return t('order.operator.alreadyClosed');
@@ -291,7 +291,7 @@ export const useGenerateOrderStepInfo = ({
   /**
    * 当工单类型为 上线工单时, 第三列需要展示当前工单下每项数据源的上线状态, 其他情况下展示操作时间以及操作人
    */
-  const generateOperateInfo = (step: IWorkflowStepResV1) => {
+  const generateOperateInfo = (step: IWorkflowStepResV2) => {
     if (orderTypeIsExecute(step.type)) {
       return (
         <>
@@ -326,7 +326,7 @@ export const useGenerateOrderStepInfo = ({
     );
   };
 
-  const generateTimeLineIcon = (step: IWorkflowStepResV1) => {
+  const generateTimeLineIcon = (step: IWorkflowStepResV2) => {
     let icon = isCurrentStep(step.number, currentStep) ? (
       <ClockCircleOutlined className="timeline-clock-icon" />
     ) : undefined;
@@ -338,7 +338,7 @@ export const useGenerateOrderStepInfo = ({
 
     if (
       orderTypeIsExecute(step.type) &&
-      currentOrderStatus === WorkflowRecordResV1StatusEnum.executing
+      currentOrderStatus === WorkflowRecordResV2StatusEnum.executing
     ) {
       icon = <ClockCircleOutlined className="timeline-clock-icon" />;
     }

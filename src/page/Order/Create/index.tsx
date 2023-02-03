@@ -21,18 +21,29 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { AuditTaskResV1SqlSourceEnum } from '../../../api/common.enum';
 import workflow from '../../../api/workflow';
-import { ICreateWorkflowV1Params } from '../../../api/workflow/index.d';
+import { ICreateWorkflowV2Params } from '../../../api/workflow/index.d';
 import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode, PageFormLayout } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
+import { translation } from '../../../locale';
+import { FormValidatorRule } from '../../../types/common.type';
 import { Theme } from '../../../types/theme.type';
 import EventEmitter from '../../../utils/EventEmitter';
-import { nameRule } from '../../../utils/FormRule';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import AuditResultCollection from '../AuditResult/AuditResultCollection';
 import useAuditOrder from '../hooks/useAuditOrder';
 import SqlInfoForm from './SqlInfoForm';
 import { SqlInfoFormFields } from './SqlInfoForm/index.type';
+
+export const workflowNameRule = (): FormValidatorRule => {
+  return (_, value) => {
+    const reg = /^[\u4e00-\u9fa5_a-zA-Z0-9_-]*$/;
+    if (!reg.test(value)) {
+      return Promise.reject(translation('order.createOrder.workflowNameRule'));
+    }
+    return Promise.resolve();
+  };
+};
 
 const CreateOrder = () => {
   const { t } = useTranslation();
@@ -108,14 +119,14 @@ const CreateOrder = () => {
         return;
       }
       startCreate();
-      const createWorkflowParam: ICreateWorkflowV1Params = {
+      const createWorkflowParam: ICreateWorkflowV2Params = {
         task_ids: taskInfos.map((v) => v.task_id!),
         desc: values.describe,
         workflow_subject: values.name,
         project_name: projectName,
       };
       workflow
-        .createWorkflowV1(createWorkflowParam)
+        .createWorkflowV2(createWorkflowParam)
         .then((res) => {
           if (res.data.code === ResponseCode.SUCCESS) {
             openModal();
@@ -187,7 +198,12 @@ const CreateOrder = () => {
                   {
                     required: true,
                   },
-                  ...nameRule(),
+                  {
+                    validator: workflowNameRule(),
+                  },
+                  {
+                    max: 59,
+                  },
                 ]}
               >
                 <Input

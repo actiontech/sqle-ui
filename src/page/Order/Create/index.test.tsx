@@ -1,7 +1,6 @@
 import { fireEvent, waitFor, screen } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
-import CreateOrder from '.';
-import instance from '../../../api/instance';
+import CreateOrder, { workflowNameRule } from '.';
 import task from '../../../api/task';
 import workflow from '../../../api/workflow';
 import EmitterKey from '../../../data/EmitterKey';
@@ -95,7 +94,7 @@ describe('Order/Create', () => {
   };
 
   const mockCreateOrder = () => {
-    const spy = jest.spyOn(workflow, 'createWorkflowV1');
+    const spy = jest.spyOn(workflow, 'createWorkflowV2');
     spy.mockImplementation(() => resolveThreeSecond({}));
     return spy;
   };
@@ -128,6 +127,10 @@ describe('Order/Create', () => {
     const { container } = renderWithThemeAndRouter(<CreateOrder />);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
+    });
+
+    fireEvent.change(screen.getByLabelText('order.baseInfo.name'), {
+      target: { value: '数据源测试' },
     });
 
     fireEvent.mouseDown(screen.getByLabelText('order.sqlInfo.instanceName'));
@@ -581,5 +584,44 @@ describe('Order/Create', () => {
     expect(screen.getByLabelText('order.baseInfo.name')).toHaveValue(
       'instance1_19700101010101'
     );
+  });
+
+  test('should check workflow name with regex', async () => {
+    const check = workflowNameRule();
+    let message = '';
+    try {
+      await check({} as any, '测试数据源', {} as any);
+    } catch (error) {
+      message = error;
+    }
+    expect(message).toBe('');
+
+    try {
+      await check({} as any, 'orderName', {} as any);
+    } catch (error) {
+      message = error;
+    }
+    expect(message).toBe('');
+
+    try {
+      await check({} as any, '123456', {} as any);
+    } catch (error) {
+      message = error;
+    }
+    expect(message).toBe('');
+
+    try {
+      await check({} as any, '测试数据源_123456-orderName', {} as any);
+    } catch (error) {
+      message = error;
+    }
+    expect(message).toBe('');
+
+    try {
+      await check({} as any, '测试数据源_123456-orderName*', {} as any);
+    } catch (error) {
+      message = error;
+    }
+    expect(message).toBe('order.createOrder.workflowNameRule');
   });
 });

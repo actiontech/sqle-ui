@@ -2,14 +2,14 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { message } from 'antd';
 import {
   IAuditTaskResV1,
-  IGetWorkflowTasksItemV1,
+  IGetWorkflowTasksItemV2,
 } from '../../../../api/common';
 import {
   AuditTaskResV1AuditLevelEnum,
   AuditTaskResV1SqlSourceEnum,
   AuditTaskResV1StatusEnum,
-  GetWorkflowTasksItemV1StatusEnum,
-  WorkflowRecordResV1StatusEnum,
+  GetWorkflowTasksItemV2StatusEnum,
+  WorkflowRecordResV2StatusEnum,
 } from '../../../../api/common.enum';
 import task from '../../../../api/task';
 import workflow from '../../../../api/workflow';
@@ -47,13 +47,13 @@ const taskInfos: IAuditTaskResV1[] = [
   },
 ];
 
-const workflowTasksNotAssigneeUserName: IGetWorkflowTasksItemV1[] = [
+const workflowTasksNotAssigneeUserName: IGetWorkflowTasksItemV2[] = [
   {
     current_step_assignee_user_name_list: ['admin1'],
     exec_end_time: '2022-09-30',
     exec_start_time: '2022-09-01',
     instance_name: 'mysql-1',
-    status: GetWorkflowTasksItemV1StatusEnum.wait_for_execution,
+    status: GetWorkflowTasksItemV2StatusEnum.wait_for_execution,
     task_id: 27,
     task_pass_rate: 0.3099,
     task_score: 30,
@@ -61,7 +61,7 @@ const workflowTasksNotAssigneeUserName: IGetWorkflowTasksItemV1[] = [
 ];
 
 const activeKey = taskInfos[0].task_id?.toString()!;
-const workflowName = '22';
+const workflowId = '22';
 
 describe('test AuditResultCollection', () => {
   const mockSetAuditResultActiveKey = jest.fn();
@@ -96,19 +96,19 @@ describe('test AuditResultCollection', () => {
     return spy;
   };
   const mockGetSummaryOfInstanceTasks = () => {
-    const spy = jest.spyOn(workflow, 'getSummaryOfInstanceTasksV1');
+    const spy = jest.spyOn(workflow, 'getSummaryOfInstanceTasksV2');
     spy.mockImplementation(() => resolveThreeSecond(workflowTasks));
     return spy;
   };
 
   const mockFailedGetSummaryOfInstanceTasks = () => {
-    const spy = jest.spyOn(workflow, 'getSummaryOfInstanceTasksV1');
+    const spy = jest.spyOn(workflow, 'getSummaryOfInstanceTasksV2');
     spy.mockImplementation(() => resolveErrorThreeSecond({}));
     return spy;
   };
 
   const mockNotAssigneeUsernameInstanceTasks = () => {
-    const spy = jest.spyOn(workflow, 'getSummaryOfInstanceTasksV1');
+    const spy = jest.spyOn(workflow, 'getSummaryOfInstanceTasksV2');
     spy.mockImplementation(() =>
       resolveThreeSecond(workflowTasksNotAssigneeUserName)
     );
@@ -116,13 +116,13 @@ describe('test AuditResultCollection', () => {
   };
 
   const mockExecuteOneTaskOnWorkflow = () => {
-    const spy = jest.spyOn(workflow, 'executeOneTaskOnWorkflowV1');
+    const spy = jest.spyOn(workflow, 'executeOneTaskOnWorkflowV2');
     spy.mockImplementation(() => resolveThreeSecond({}));
     return spy;
   };
 
   const mockUpdateWorkflowSchedule = () => {
-    const spy = jest.spyOn(workflow, 'updateWorkflowScheduleV1');
+    const spy = jest.spyOn(workflow, 'updateWorkflowScheduleV2');
     spy.mockImplementation(() => resolveThreeSecond({}));
     return spy;
   };
@@ -187,7 +187,7 @@ describe('test AuditResultCollection', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('should be show overview table when showOverview is equal true and workflow_name is not undefined', async () => {
+  test('should be show overview table when showOverview is equal true and workflow_id is not undefined', async () => {
     const getSummaryOfInstanceTasks = mockGetSummaryOfInstanceTasks();
     expect(getSummaryOfInstanceTasks).toBeCalledTimes(0);
     render(
@@ -197,7 +197,7 @@ describe('test AuditResultCollection', () => {
         setAuditResultActiveKey={mockSetAuditResultActiveKey}
         updateTaskRecordTotalNum={jest.fn()}
         showOverview={true}
-        workflowName={workflowName}
+        workflowId={workflowId}
         projectName={projectName}
       />
     );
@@ -207,7 +207,7 @@ describe('test AuditResultCollection', () => {
     });
     expect(getSummaryOfInstanceTasks).toBeCalledTimes(1);
     expect(getSummaryOfInstanceTasks).toBeCalledWith({
-      workflow_name: workflowName,
+      workflow_id: workflowId,
       project_name: projectName,
     });
   });
@@ -221,7 +221,7 @@ describe('test AuditResultCollection', () => {
         setAuditResultActiveKey={mockSetAuditResultActiveKey}
         updateTaskRecordTotalNum={jest.fn()}
         showOverview={true}
-        workflowName={workflowName}
+        workflowId={workflowId}
         projectName={projectName}
       />
     );
@@ -241,8 +241,8 @@ describe('test AuditResultCollection', () => {
         setAuditResultActiveKey={mockSetAuditResultActiveKey}
         updateTaskRecordTotalNum={jest.fn()}
         showOverview={true}
-        workflowName={workflowName}
-        orderStatus={WorkflowRecordResV1StatusEnum.rejected}
+        workflowId={workflowId}
+        orderStatus={WorkflowRecordResV2StatusEnum.rejected}
         projectName={projectName}
       />
     );
@@ -260,7 +260,7 @@ describe('test AuditResultCollection', () => {
         .length
     ).toBe(
       workflowTasks.filter(
-        (v) => v.status !== GetWorkflowTasksItemV1StatusEnum.exec_scheduled
+        (v) => v.status !== GetWorkflowTasksItemV2StatusEnum.exec_scheduled
       ).length
     );
 
@@ -270,7 +270,7 @@ describe('test AuditResultCollection', () => {
       ).length
     ).toBe(
       workflowTasks.filter(
-        (v) => v.status === GetWorkflowTasksItemV1StatusEnum.exec_scheduled
+        (v) => v.status === GetWorkflowTasksItemV2StatusEnum.exec_scheduled
       ).length
     );
 
@@ -299,8 +299,8 @@ describe('test AuditResultCollection', () => {
         setAuditResultActiveKey={mockSetAuditResultActiveKey}
         updateTaskRecordTotalNum={jest.fn()}
         showOverview={true}
-        workflowName={workflowName}
-        orderStatus={WorkflowRecordResV1StatusEnum.canceled}
+        workflowId={workflowId}
+        orderStatus={WorkflowRecordResV2StatusEnum.canceled}
         projectName={projectName}
       />
     );
@@ -340,7 +340,7 @@ describe('test AuditResultCollection', () => {
         setAuditResultActiveKey={mockSetAuditResultActiveKey}
         updateTaskRecordTotalNum={jest.fn()}
         showOverview={true}
-        workflowName={workflowName}
+        workflowId={workflowId}
         refreshOrder={mockRefreshOrder}
         projectName={projectName}
       />
@@ -363,7 +363,7 @@ describe('test AuditResultCollection', () => {
 
     expect(mockExecuteTask).toBeCalledTimes(1);
     expect(mockExecuteTask).toBeCalledWith({
-      workflow_name: workflowName,
+      workflow_id: workflowId,
       task_id: taskInfos[1].task_id?.toString(),
       project_name: projectName,
     });
@@ -386,7 +386,7 @@ describe('test AuditResultCollection', () => {
         setAuditResultActiveKey={mockSetAuditResultActiveKey}
         updateTaskRecordTotalNum={jest.fn()}
         showOverview={true}
-        workflowName={workflowName}
+        workflowId={workflowId}
         refreshOrder={mockRefreshOrder}
         projectName={projectName}
       />
@@ -419,7 +419,7 @@ describe('test AuditResultCollection', () => {
         setAuditResultActiveKey={mockSetAuditResultActiveKey}
         updateTaskRecordTotalNum={jest.fn()}
         showOverview={true}
-        workflowName={workflowName}
+        workflowId={workflowId}
         refreshOrder={mockRefreshOrder}
         projectName={projectName}
       />
@@ -446,7 +446,7 @@ describe('test AuditResultCollection', () => {
     expect(mockUpdateWorkflow).toBeCalledTimes(1);
     expect(mockUpdateWorkflow).toBeCalledWith({
       project_name: projectName,
-      workflow_name: workflowName,
+      workflow_id: workflowId,
       task_id: workflowTasks[2].task_id?.toString(),
     });
     expect(successMessageSyp).toBeCalledWith(
@@ -466,7 +466,7 @@ describe('test AuditResultCollection', () => {
         setAuditResultActiveKey={mockSetAuditResultActiveKey}
         updateTaskRecordTotalNum={jest.fn()}
         showOverview={true}
-        workflowName={workflowName}
+        workflowId={workflowId}
         refreshOrder={mockRefreshOrder}
         getOverviewListSuccessHandle={mockGetOverviewListSuccessHandle}
         projectName={projectName}
@@ -488,7 +488,7 @@ describe('test AuditResultCollection', () => {
         setAuditResultActiveKey={mockSetAuditResultActiveKey}
         updateTaskRecordTotalNum={jest.fn()}
         showOverview={true}
-        workflowName={workflowName}
+        workflowId={workflowId}
         projectName={projectName}
       />
     );
@@ -522,7 +522,7 @@ describe('test AuditResultCollection', () => {
         setAuditResultActiveKey={mockSetAuditResultActiveKey}
         updateTaskRecordTotalNum={jest.fn()}
         showOverview={true}
-        workflowName={workflowName}
+        workflowId={workflowId}
         refreshOrder={mockRefreshOrder}
         projectName={projectName}
       />

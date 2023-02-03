@@ -18,6 +18,7 @@ export default {
     mustHaveAuditResultTips: '不能对审核结果为空的SQL进行创建工单',
     inDifferenceSqlModeShouldAuditAllInstance:
       '在不同sql语句模式下, 需审核所有数据源后才能创建工单!',
+    workflowNameRule: '只能包含字母、数字、中文、中划线和下划线',
   },
   closeOrder: {
     button: '关闭工单',

@@ -85,7 +85,7 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                         id="name"
                         placeholder="common.form.placeholder.input"
                         type="text"
-                        value="instance1_19700101010101"
+                        value="数据源测试"
                       />
                     </div>
                   </div>
@@ -2472,7 +2472,7 @@ exports[`Order/Create should audit sql when user click audit button 2`] = `
                         id="name"
                         placeholder="common.form.placeholder.input"
                         type="text"
-                        value="instance1_19700101010101"
+                        value="数据源测试"
                       />
                     </div>
                   </div>

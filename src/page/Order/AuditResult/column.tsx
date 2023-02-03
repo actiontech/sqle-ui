@@ -2,12 +2,12 @@ import { Space, Tag, Typography } from 'antd';
 import moment from 'moment';
 import {
   IAuditTaskSQLResV1,
-  IGetWorkflowTasksItemV1,
+  IGetWorkflowTasksItemV2,
   IMaintenanceTimeResV1,
 } from '../../../api/common';
 import {
-  GetWorkflowTasksItemV1StatusEnum,
-  WorkflowRecordResV1StatusEnum,
+  GetWorkflowTasksItemV2StatusEnum,
+  WorkflowRecordResV2StatusEnum,
 } from '../../../api/common.enum';
 import {
   getAuditTaskSQLsV1FilterAuditStatusEnum,
@@ -139,8 +139,8 @@ export const auditResultOverviewColumn: (
     taskId?: string
   ) => Promise<void>,
   currentUserName: string,
-  orderStatus?: WorkflowRecordResV1StatusEnum
-) => TableColumn<IGetWorkflowTasksItemV1, 'operator'> = (
+  orderStatus?: WorkflowRecordResV2StatusEnum
+) => TableColumn<IGetWorkflowTasksItemV2, 'operator'> = (
   sqlExecuteHandle,
   openScheduleModal,
   scheduleTimeHandle,
@@ -148,19 +148,19 @@ export const auditResultOverviewColumn: (
   orderStatus
 ) => {
   const unusableStatus = [
-    WorkflowRecordResV1StatusEnum.rejected,
-    WorkflowRecordResV1StatusEnum.canceled,
-    WorkflowRecordResV1StatusEnum.finished,
+    WorkflowRecordResV2StatusEnum.rejected,
+    WorkflowRecordResV2StatusEnum.canceled,
+    WorkflowRecordResV2StatusEnum.finished,
   ];
 
   const enableSqlExecute = (
     currentStepAssigneeUsernameList: string[] = [],
-    status?: GetWorkflowTasksItemV1StatusEnum,
+    status?: GetWorkflowTasksItemV2StatusEnum,
     maintenanceTime: IMaintenanceTimeResV1[] = []
   ) => {
     if (
       !status ||
-      unusableStatus.includes(orderStatus as WorkflowRecordResV1StatusEnum) ||
+      unusableStatus.includes(orderStatus as WorkflowRecordResV2StatusEnum) ||
       !currentStepAssigneeUsernameList.includes(currentUsername)
     ) {
       return false;
@@ -170,34 +170,34 @@ export const auditResultOverviewColumn: (
       return checkTimeInWithMaintenanceTime(moment(), maintenanceTime);
     }
 
-    return status === GetWorkflowTasksItemV1StatusEnum.wait_for_execution;
+    return status === GetWorkflowTasksItemV2StatusEnum.wait_for_execution;
   };
 
   const enableSqlScheduleTime = (
     currentStepAssigneeUsernameList: string[] = [],
-    status?: GetWorkflowTasksItemV1StatusEnum
+    status?: GetWorkflowTasksItemV2StatusEnum
   ) => {
     if (
       !status ||
-      unusableStatus.includes(orderStatus as WorkflowRecordResV1StatusEnum) ||
+      unusableStatus.includes(orderStatus as WorkflowRecordResV2StatusEnum) ||
       !currentStepAssigneeUsernameList.includes(currentUsername)
     ) {
       return false;
     }
 
-    return status === GetWorkflowTasksItemV1StatusEnum.wait_for_execution;
+    return status === GetWorkflowTasksItemV2StatusEnum.wait_for_execution;
   };
 
   const enableCancelSqlScheduleTime = (
-    status?: GetWorkflowTasksItemV1StatusEnum
+    status?: GetWorkflowTasksItemV2StatusEnum
   ) => {
     if (
       !status ||
-      unusableStatus.includes(orderStatus as WorkflowRecordResV1StatusEnum)
+      unusableStatus.includes(orderStatus as WorkflowRecordResV2StatusEnum)
     ) {
       return false;
     }
-    return status === GetWorkflowTasksItemV1StatusEnum.exec_scheduled;
+    return status === GetWorkflowTasksItemV2StatusEnum.exec_scheduled;
   };
   return [
     {
@@ -207,7 +207,7 @@ export const auditResultOverviewColumn: (
     {
       dataIndex: 'status',
       title: () => i18n.t('order.auditResultCollection.table.status'),
-      render: (status: GetWorkflowTasksItemV1StatusEnum) => (
+      render: (status: GetWorkflowTasksItemV2StatusEnum) => (
         <InstanceTasksStatus status={status} />
       ),
     },
@@ -268,7 +268,7 @@ export const auditResultOverviewColumn: (
             <EmptyBox
               if={
                 record.status ===
-                GetWorkflowTasksItemV1StatusEnum.exec_scheduled
+                GetWorkflowTasksItemV2StatusEnum.exec_scheduled
               }
               defaultNode={
                 <Typography.Link

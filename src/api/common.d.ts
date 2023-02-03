@@ -25,7 +25,12 @@ import {
   WorkflowResV1ModeEnum,
   WorkflowStepResV1StateEnum,
   WorkflowStepResV1TypeEnum,
-  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum
+  WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
+  GetWorkflowTasksItemV2StatusEnum,
+  WorkflowRecordResV2StatusEnum,
+  WorkflowResV2ModeEnum,
+  WorkflowStepResV2StateEnum,
+  WorkflowStepResV2TypeEnum
 } from './common.enum';
 
 export interface IBaseRes {
@@ -2091,13 +2096,13 @@ export interface IUpdateSMTPConfigurationReqV1 {
 }
 
 export interface IUpdateSyncInstanceTaskReqV1 {
-  global_rule_template: string;
+  global_rule_template?: string;
 
-  sync_instance_interval: string;
+  sync_instance_interval?: string;
 
-  url: string;
+  url?: string;
 
-  version: string;
+  version?: string;
 }
 
 export interface IUpdateSystemVariablesReqV1 {
@@ -2301,6 +2306,8 @@ export interface IWorkflowDetailResV1 {
 
   status?: WorkflowDetailResV1StatusEnum;
 
+  workflow_id?: string;
+
   workflow_name?: string;
 }
 
@@ -2454,6 +2461,14 @@ export interface IAuditPlanResV2 {
   rule_template?: IRuleTemplateV2;
 }
 
+export interface IBatchCancelWorkflowsReqV2 {
+  workflow_id_list?: string[];
+}
+
+export interface IBatchCompleteWorkflowsReqV2 {
+  workflow_id_list?: string[];
+}
+
 export interface ICreateInstanceReqV2 {
   additional_params?: IInstanceAdditionalParamReqV1[];
 
@@ -2478,6 +2493,16 @@ export interface ICreateInstanceReqV2 {
   sql_query_config?: ISQLQueryConfigReqV1;
 }
 
+export interface ICreateWorkflowReqV2 {
+  desc?: string;
+
+  task_ids?: number[];
+
+  workflow_id?: string;
+
+  workflow_subject?: string;
+}
+
 export interface IGetAuditPlansResV2 {
   code?: number;
 
@@ -2496,6 +2521,46 @@ export interface IGetInstancesResV2 {
   message?: string;
 
   total_nums?: number;
+}
+
+export interface IGetWorkflowResV2 {
+  code?: number;
+
+  data?: IWorkflowResV2;
+
+  message?: string;
+}
+
+export interface IGetWorkflowTasksItemV2 {
+  current_step_assignee_user_name_list?: string[];
+
+  exec_end_time?: string;
+
+  exec_start_time?: string;
+
+  execution_user_name?: string;
+
+  instance_maintenance_times?: IMaintenanceTimeResV1[];
+
+  instance_name?: string;
+
+  schedule_time?: string;
+
+  status?: GetWorkflowTasksItemV2StatusEnum;
+
+  task_id?: number;
+
+  task_pass_rate?: number;
+
+  task_score?: number;
+}
+
+export interface IGetWorkflowTasksResV2 {
+  code?: number;
+
+  data?: IGetWorkflowTasksItemV2[];
+
+  message?: string;
 }
 
 export interface IInstanceResV2 {
@@ -2522,8 +2587,68 @@ export interface IInstanceResV2 {
   sql_query_config?: ISQLQueryConfigResV1;
 }
 
+export interface IRejectWorkflowReqV2 {
+  reason?: string;
+}
+
 export interface IRuleTemplateV2 {
   is_global_rule_template?: boolean;
 
   name?: string;
+}
+
+export interface IUpdateWorkflowReqV2 {
+  task_ids?: number[];
+}
+
+export interface IUpdateWorkflowScheduleReqV2 {
+  schedule_time?: string;
+}
+
+export interface IWorkflowRecordResV2 {
+  current_step_number?: number;
+
+  status?: WorkflowRecordResV2StatusEnum;
+
+  tasks?: IWorkflowTaskItem[];
+
+  workflow_step_list?: IWorkflowStepResV2[];
+}
+
+export interface IWorkflowResV2 {
+  create_time?: string;
+
+  create_user_name?: string;
+
+  desc?: string;
+
+  mode?: WorkflowResV2ModeEnum;
+
+  record?: IWorkflowRecordResV2;
+
+  record_history_list?: IWorkflowRecordResV2[];
+
+  workflow_id?: string;
+
+  workflow_name?: string;
+}
+
+export interface IWorkflowStepResV2 {
+  assignee_user_name_list?: string[];
+
+  desc?: string;
+
+  number?: number;
+
+  operation_time?: string;
+
+  operation_user_name?: string;
+
+  reason?: string;
+
+  state?: WorkflowStepResV2StateEnum;
+
+  type?: WorkflowStepResV2TypeEnum;
+
+  workflow_step_id?: number;
 }

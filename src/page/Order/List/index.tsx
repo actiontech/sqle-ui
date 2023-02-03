@@ -154,7 +154,7 @@ const OrderList = () => {
   const batchCancel = React.useCallback(() => {
     const canCancel: boolean = selectedRowKeys.every((e) => {
       const status = orderList?.list.filter(
-        (data) => `${data.workflow_name}` === e
+        (data) => `${data.workflow_id}` === e
       )[0]?.status;
       return (
         status === WorkflowDetailResV1StatusEnum.wait_for_audit ||
@@ -165,8 +165,8 @@ const OrderList = () => {
     if (canCancel) {
       setConfirmLoading(true);
       workflow
-        .batchCancelWorkflowsV1({
-          workflow_names: selectedRowKeys,
+        .batchCancelWorkflowsV2({
+          workflow_id_list: selectedRowKeys,
           project_name: projectName,
         })
         .then((res) => {
@@ -260,7 +260,7 @@ const OrderList = () => {
             <Table
               className="table-row-cursor"
               rowKey={(record: IWorkflowDetailResV1) => {
-                return `${record?.workflow_name}`;
+                return `${record?.workflow_id}`;
               }}
               loading={loading}
               columns={orderListColumn()}
@@ -273,7 +273,7 @@ const OrderList = () => {
               onRow={(record) => ({
                 onClick() {
                   history.push(
-                    `/project/${projectName}/order/${record.workflow_name}`
+                    `/project/${projectName}/order/${record.workflow_id}`
                   );
                 },
               })}

@@ -1,34 +1,34 @@
 import { Tag } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { WorkflowRecordResV1StatusEnum } from '../../api/common.enum';
+import { WorkflowRecordResV2StatusEnum } from '../../api/common.enum';
 import { OrderStatus } from './index.type';
 
 const statusColor: OrderStatus = {
-  [WorkflowRecordResV1StatusEnum.canceled]: {
+  [WorkflowRecordResV2StatusEnum.canceled]: {
     color: 'red',
     label: 'order.status.canceled',
   },
-  [WorkflowRecordResV1StatusEnum.finished]: {
+  [WorkflowRecordResV2StatusEnum.finished]: {
     color: 'green',
     label: 'order.status.finished',
   },
-  [WorkflowRecordResV1StatusEnum.wait_for_audit]: {
+  [WorkflowRecordResV2StatusEnum.wait_for_audit]: {
     color: 'blue',
     label: 'order.status.wait_for_audit',
   },
-  [WorkflowRecordResV1StatusEnum.rejected]: {
+  [WorkflowRecordResV2StatusEnum.rejected]: {
     color: 'orange',
     label: 'order.status.reject',
   },
-  [WorkflowRecordResV1StatusEnum.wait_for_execution]: {
+  [WorkflowRecordResV2StatusEnum.wait_for_execution]: {
     color: 'blue',
     label: 'order.status.wait_for_execution',
   },
-  [WorkflowRecordResV1StatusEnum.exec_failed]: {
+  [WorkflowRecordResV2StatusEnum.exec_failed]: {
     color: 'orange',
     label: 'order.status.exec_failed',
   },
-  [WorkflowRecordResV1StatusEnum.executing]: {
+  [WorkflowRecordResV2StatusEnum.executing]: {
     color: 'blue',
     label: 'order.status.executing',
   },
@@ -39,7 +39,7 @@ const statusColor: OrderStatus = {
 };
 
 const OrderStatusTag: React.FC<{
-  status?: WorkflowRecordResV1StatusEnum;
+  status?: WorkflowRecordResV2StatusEnum;
 }> = (props) => {
   const { t } = useTranslation();
   const status = props.status ?? 'unknown';

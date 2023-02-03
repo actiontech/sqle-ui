@@ -259,3 +259,59 @@ export enum WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum {
 
   'error' = 'error'
 }
+
+export enum GetWorkflowTasksItemV2StatusEnum {
+  'wait_for_audit' = 'wait_for_audit',
+
+  'wait_for_execution' = 'wait_for_execution',
+
+  'exec_scheduled' = 'exec_scheduled',
+
+  'exec_failed' = 'exec_failed',
+
+  'exec_succeeded' = 'exec_succeeded',
+
+  'executing' = 'executing',
+
+  'manually_executed' = 'manually_executed'
+}
+
+export enum WorkflowRecordResV2StatusEnum {
+  'wait_for_audit' = 'wait_for_audit',
+
+  'wait_for_execution' = 'wait_for_execution',
+
+  'rejected' = 'rejected',
+
+  'canceled' = 'canceled',
+
+  'exec_failed' = 'exec_failed',
+
+  'executing' = 'executing',
+
+  'finished' = 'finished'
+}
+
+export enum WorkflowResV2ModeEnum {
+  'same_sqls' = 'same_sqls',
+
+  'different_sqls' = 'different_sqls'
+}
+
+export enum WorkflowStepResV2StateEnum {
+  'initialized' = 'initialized',
+
+  'approved' = 'approved',
+
+  'rejected' = 'rejected'
+}
+
+export enum WorkflowStepResV2TypeEnum {
+  'create_workflow' = 'create_workflow',
+
+  'update_workflow' = 'update_workflow',
+
+  'sql_review' = 'sql_review',
+
+  'sql_execute' = 'sql_execute'
+}
