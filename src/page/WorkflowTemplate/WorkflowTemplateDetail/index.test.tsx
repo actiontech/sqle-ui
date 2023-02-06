@@ -126,4 +126,19 @@ describe('WorkflowTemplate/WorkflowTemplateDetail', () => {
       )
     ).toBeInTheDocument();
   });
+
+  test('should display the highest audit level allowed to create a order', async () => {
+    getWorkflowTemplateDetail.mockImplementation(() =>
+      resolveThreeSecond(workflowData)
+    );
+
+    renderWithThemeAndRouter(<WorkflowTemplateDetail />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(
+      screen.getByText('workflowTemplate.auditLevel.warn')
+    ).toBeInTheDocument();
+  });
 });

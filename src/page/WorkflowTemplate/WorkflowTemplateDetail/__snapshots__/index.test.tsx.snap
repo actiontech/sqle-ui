@@ -42,6 +42,34 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 1`] = `
       >
         <div
           class="ant-col ant-col-24"
+          style="margin-bottom: 6px;"
+        >
+          <div
+            class="ant-space ant-space-horizontal ant-space-align-baseline"
+          >
+            <div
+              class="ant-space-item"
+              style="margin-right: 16px;"
+            >
+              <h5
+                class="ant-typography"
+              >
+                workflowTemplate.form.label.allowSubmitWhenLessAuditLevel
+              </h5>
+            </div>
+            <div
+              class="ant-space-item"
+            >
+              <span
+                class="ant-typography"
+              >
+                
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-col ant-col-24"
         >
           <h5
             class="ant-typography"
@@ -225,6 +253,34 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 2`] = `
       <div
         class="ant-row"
       >
+        <div
+          class="ant-col ant-col-24"
+          style="margin-bottom: 6px;"
+        >
+          <div
+            class="ant-space ant-space-horizontal ant-space-align-baseline"
+          >
+            <div
+              class="ant-space-item"
+              style="margin-right: 16px;"
+            >
+              <h5
+                class="ant-typography"
+              >
+                workflowTemplate.form.label.allowSubmitWhenLessAuditLevel
+              </h5>
+            </div>
+            <div
+              class="ant-space-item"
+            >
+              <span
+                class="ant-typography"
+              >
+                workflowTemplate.auditLevel.warn
+              </span>
+            </div>
+          </div>
+        </div>
         <div
           class="ant-col ant-col-24"
         >
@@ -594,6 +650,34 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should render match text when c
       <div
         class="ant-row"
       >
+        <div
+          class="ant-col ant-col-24"
+          style="margin-bottom: 6px;"
+        >
+          <div
+            class="ant-space ant-space-horizontal ant-space-align-baseline"
+          >
+            <div
+              class="ant-space-item"
+              style="margin-right: 16px;"
+            >
+              <h5
+                class="ant-typography"
+              >
+                workflowTemplate.form.label.allowSubmitWhenLessAuditLevel
+              </h5>
+            </div>
+            <div
+              class="ant-space-item"
+            >
+              <span
+                class="ant-typography"
+              >
+                workflowTemplate.auditLevel.error
+              </span>
+            </div>
+          </div>
+        </div>
         <div
           class="ant-col ant-col-24"
         >

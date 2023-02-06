@@ -8,6 +8,7 @@ import workflow from '../../../api/workflow';
 import EmptyBox from '../../../components/EmptyBox';
 import IconTipsLabel from '../../../components/IconTipsLabel';
 import useCurrentUser from '../../../hooks/useCurrentUser';
+import { auditLevelDictionary } from '../../../hooks/useStaticStatus/index.data';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 
 const WorkflowTemplateDetail = () => {
@@ -97,6 +98,22 @@ const WorkflowTemplateDetail = () => {
       ]}
     >
       <Row>
+        <Col span={24} style={{ marginBottom: 6 }}>
+          <Space align="baseline" size={16}>
+            <Typography.Title level={5}>
+              {t('workflowTemplate.form.label.allowSubmitWhenLessAuditLevel')}
+            </Typography.Title>
+            <Typography.Text>
+              {workflowTemplate?.allow_submit_when_less_audit_level
+                ? t(
+                    auditLevelDictionary[
+                      workflowTemplate?.allow_submit_when_less_audit_level!
+                    ]
+                  )
+                : ''}
+            </Typography.Text>
+          </Space>
+        </Col>
         <Col span={24}>
           <Typography.Title level={5}>
             {t('workflowTemplate.detail.title.step')}

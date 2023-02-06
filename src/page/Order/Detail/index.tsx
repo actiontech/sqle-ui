@@ -188,9 +188,6 @@ const Order = () => {
         ]}
       >
         <Descriptions>
-          <Descriptions.Item label={t('order.order.name')}>
-            {orderInfo?.workflow_name ?? '--'}
-          </Descriptions.Item>
           <Descriptions.Item label={t('order.order.createUser')}>
             {orderInfo?.create_user_name}
           </Descriptions.Item>

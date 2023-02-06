@@ -986,9 +986,10 @@ exports[`UpdateWorkflowTemplate should match snapshot 2`] = `
                             />
                           </span>
                           <span
-                            class="ant-select-selection-placeholder"
+                            class="ant-select-selection-item"
+                            title="workflowTemplate.auditLevel.warn"
                           >
-                            common.form.placeholder.select
+                            workflowTemplate.auditLevel.warn
                           </span>
                         </div>
                         <span

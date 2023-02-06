@@ -6647,7 +6647,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should render select file fo
                       tabindex="0"
                     >
                       <input
-                        accept=""
+                        accept=".json"
                         id="ruleTemplateFile"
                         style="display: none;"
                         type="file"

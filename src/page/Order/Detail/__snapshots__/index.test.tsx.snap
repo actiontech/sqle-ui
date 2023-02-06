@@ -84,25 +84,6 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                     <span
                       class="ant-descriptions-item-label"
                     >
-                      order.order.name
-                    </span>
-                    <span
-                      class="ant-descriptions-item-content"
-                    >
-                      testccc
-                    </span>
-                  </div>
-                </td>
-                <td
-                  class="ant-descriptions-item"
-                  colspan="1"
-                >
-                  <div
-                    class="ant-descriptions-item-container"
-                  >
-                    <span
-                      class="ant-descriptions-item-label"
-                    >
                       order.order.createUser
                     </span>
                     <span
@@ -114,7 +95,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                 </td>
                 <td
                   class="ant-descriptions-item"
-                  colspan="1"
+                  colspan="2"
                 >
                   <div
                     class="ant-descriptions-item-container"
@@ -1739,32 +1720,13 @@ exports[`Order/Detail should render on process order info by request 1`] = `
                     <span
                       class="ant-descriptions-item-label"
                     >
-                      order.order.name
-                    </span>
-                    <span
-                      class="ant-descriptions-item-content"
-                    >
-                      --
-                    </span>
-                  </div>
-                </td>
-                <td
-                  class="ant-descriptions-item"
-                  colspan="1"
-                >
-                  <div
-                    class="ant-descriptions-item-container"
-                  >
-                    <span
-                      class="ant-descriptions-item-label"
-                    >
                       order.order.createUser
                     </span>
                   </div>
                 </td>
                 <td
                   class="ant-descriptions-item"
-                  colspan="1"
+                  colspan="2"
                 >
                   <div
                     class="ant-descriptions-item-container"
@@ -2158,25 +2120,6 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                     <span
                       class="ant-descriptions-item-label"
                     >
-                      order.order.name
-                    </span>
-                    <span
-                      class="ant-descriptions-item-content"
-                    >
-                      order123
-                    </span>
-                  </div>
-                </td>
-                <td
-                  class="ant-descriptions-item"
-                  colspan="1"
-                >
-                  <div
-                    class="ant-descriptions-item-container"
-                  >
-                    <span
-                      class="ant-descriptions-item-label"
-                    >
                       order.order.createUser
                     </span>
                     <span
@@ -2188,7 +2131,7 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                 </td>
                 <td
                   class="ant-descriptions-item"
-                  colspan="1"
+                  colspan="2"
                 >
                   <div
                     class="ant-descriptions-item-container"
@@ -3090,25 +3033,6 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                     <span
                       class="ant-descriptions-item-label"
                     >
-                      order.order.name
-                    </span>
-                    <span
-                      class="ant-descriptions-item-content"
-                    >
-                      testccc
-                    </span>
-                  </div>
-                </td>
-                <td
-                  class="ant-descriptions-item"
-                  colspan="1"
-                >
-                  <div
-                    class="ant-descriptions-item-container"
-                  >
-                    <span
-                      class="ant-descriptions-item-label"
-                    >
                       order.order.createUser
                     </span>
                     <span
@@ -3120,7 +3044,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                 </td>
                 <td
                   class="ant-descriptions-item"
-                  colspan="1"
+                  colspan="2"
                 >
                   <div
                     class="ant-descriptions-item-container"
