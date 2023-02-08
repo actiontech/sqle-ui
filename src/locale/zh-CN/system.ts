@@ -36,7 +36,7 @@ export default {
   },
 
   global: {
-    orderExpiredHours: '已完成的工单回收周期',
+    orderExpiredHours: '已完成的工单自动过期时间',
     urlAddressPrefix: 'URL地址前缀',
     urlAddressPrefixTips: '配置能访问sqle的url地址信息',
     urlAddressFormatTips: '格式为 http(s)://ip:port',

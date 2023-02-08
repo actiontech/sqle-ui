@@ -1,4 +1,7 @@
+import { WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum } from "../../../api/common.enum";
+
 export const workflowData = {
+  allow_submit_when_less_audit_level: WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.warn,
   workflow_template_name: 'db1',
   desc: '123',
   workflow_step_template_list: [
@@ -26,6 +29,7 @@ export const workflowData = {
 };
 
 export const workflowData2 = {
+  allow_submit_when_less_audit_level: WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.error,
   workflow_template_name: 'db1',
   desc: '123',
   workflow_step_template_list: [

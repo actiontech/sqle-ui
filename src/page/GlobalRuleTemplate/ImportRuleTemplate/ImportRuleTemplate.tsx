@@ -180,6 +180,7 @@ const ImportRuleTemplate: React.FC = () => {
                     ruleTemplateFile: [],
                   });
                 }}
+                accept=".json"
               >
                 <Button>{t('common.upload')}</Button>
               </Upload>
