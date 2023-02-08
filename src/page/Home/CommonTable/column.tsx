@@ -13,7 +13,9 @@ export const commonColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
       render: (text, record) => {
         return (
           <EmptyBox if={text && record.project_name} defaultNode={text}>
-            <Link to={`/project/${record.project_name}/order/${text}`}>
+            <Link
+              to={`/project/${record.project_name}/order/${record.workflow_id}`}
+            >
               {text}
             </Link>
           </EmptyBox>

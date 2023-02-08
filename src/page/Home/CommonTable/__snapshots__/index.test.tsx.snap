@@ -117,7 +117,7 @@ exports[`test Home/CommonTable should match snapshot 1`] = `
                       class="ant-table-cell"
                     >
                       <a
-                        href="/project/default/order/test1"
+                        href="/project/default/order/1"
                       >
                         test1
                       </a>
@@ -576,7 +576,7 @@ exports[`test Home/CommonTable should render spin when loading equal true 1`] = 
                       class="ant-table-cell"
                     >
                       <a
-                        href="/project/default/order/test1"
+                        href="/project/default/order/1"
                       >
                         test1
                       </a>

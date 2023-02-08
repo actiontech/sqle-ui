@@ -2498,8 +2498,6 @@ export interface ICreateWorkflowReqV2 {
 
   task_ids?: number[];
 
-  workflow_id?: string;
-
   workflow_subject?: string;
 }
 

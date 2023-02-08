@@ -22,6 +22,7 @@ describe('test home/RecentlyOrderPanel', () => {
       status: 'wait_for_audit',
       workflow_name: 'order123',
       project_name: 'default',
+      workflow_id: '1',
     },
   ];
   const mockRequest = () => {
@@ -95,7 +96,7 @@ describe('test home/RecentlyOrderPanel', () => {
     expect(screen.queryByText(list[0].workflow_name!)).toBeInTheDocument();
     fireEvent.click(screen.getByText(list[0].workflow_name!));
     expect(history.location.pathname).toBe(
-      `/project/${list[0].project_name}/order/${list[0].workflow_name}`
+      `/project/${list[0].project_name}/order/${list[0].workflow_id}`
     );
 
     expect(screen.queryByText(list[0].project_name!)).toBeInTheDocument();
