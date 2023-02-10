@@ -183,6 +183,10 @@ exports[`Header should match snapshot 1`] = `
         <div
           class="ant-space-item"
           style="margin-right: 8px;"
+        />
+        <div
+          class="ant-space-item"
+          style="margin-right: 8px;"
         >
           <div
             class="ant-select ant-select-sm font-size-small ant-select-single ant-select-show-arrow"

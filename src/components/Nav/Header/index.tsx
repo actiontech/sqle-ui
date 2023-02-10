@@ -5,6 +5,9 @@ import Logo from './Component/Logo';
 import MoreAction from './Component/MoreAction';
 import UserNavigation from './Component/UserNavigation';
 import NavModal from './Modal';
+/* IFTRUE_isEE */
+import OperationRecordNavigation from './Component/OperationRecordNavigation';
+/* FITRUE_isEE */
 
 const Header: React.FC = () => {
   return (
@@ -15,6 +18,9 @@ const Header: React.FC = () => {
       </Space>
 
       <Space>
+        {/* IFTRUE_isEE */}
+        <OperationRecordNavigation />
+        {/* FITRUE_isEE */}
         <LanguageSelect />
         <UserNavigation />
         <MoreAction />

@@ -1,3 +1,5 @@
+import { getProjectTipsV1FunctionalModuleEnum } from './index.enum';
+
 import {
   IGetProjectTipsResV1,
   IGetProjectResV1,
@@ -6,6 +8,10 @@ import {
   IGetProjectDetailResV1,
   IUpdateProjectReqV1
 } from '../common.d';
+
+export interface IGetProjectTipsV1Params {
+  functional_module?: getProjectTipsV1FunctionalModuleEnum;
+}
 
 export interface IGetProjectTipsV1Return extends IGetProjectTipsResV1 {}
 

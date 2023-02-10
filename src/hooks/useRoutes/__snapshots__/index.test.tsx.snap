@@ -175,9 +175,27 @@ Array [
         },
       }
     }
-    icon={<ForwardRef(ProjectOutlined) />}
     label="menu.syncDataSource"
     path="/SyncDataSource"
+  />,
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.lazy),
+        "_init": [Function],
+        "_payload": Object {
+          "_result": [Function],
+          "_status": -1,
+        },
+      }
+    }
+    label="menu.operationRecord"
+    path="/operationRecord"
+    role={
+      Array [
+        "admin",
+      ]
+    }
   />,
 ]
 `;
