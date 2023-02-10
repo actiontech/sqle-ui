@@ -1,7 +1,7 @@
 import { Col, Row, Form, DatePicker, Select, Space, Button, Input } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import moment from 'moment';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   OperationRecordListFilterFormFields,
@@ -27,7 +27,7 @@ const FilterForm: React.FC<OperationRecordListFilterFormProps> = ({
   const { t } = useTranslation();
   const [form] = useForm<OperationRecordListFilterFormFields>();
 
-  const { generateProjectSelectOption, updateProjectList } = useProject();
+  const { projectList, updateProjectList } = useProject();
   const { updateOperationTypeNameList, generateOperationTypeNameSelectOption } =
     useOperationTypeName();
   const { updateOperationActions, generateOperationActionSelectOption } =
@@ -37,6 +37,20 @@ const FilterForm: React.FC<OperationRecordListFilterFormProps> = ({
     form.resetFields();
     updateOperationRecordListFilter({});
   };
+
+  const generateProjectSelectOption = useCallback(() => {
+    return projectList.map((project) => {
+      return (
+        <Select.Option
+          key={project.project_name}
+          value={project.project_name ?? ''}
+        >
+          {project.project_name ||
+            t('operationRecord.list.filterForm.platformOperation')}
+        </Select.Option>
+      );
+    });
+  }, [projectList, t]);
 
   useEffect(() => {
     updateOperationTypeNameList();
