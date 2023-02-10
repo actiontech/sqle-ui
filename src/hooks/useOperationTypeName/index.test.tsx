@@ -12,11 +12,10 @@ import {
   resolveThreeSecond,
 } from '../../testUtils/mockRequest';
 import { Select } from 'antd';
-import project from '../../api/project';
-import useProject from '.';
-import { getProjectTipsV1FunctionalModuleEnum } from '../../api/project/index.enum';
+import useOperationTypeName from '.';
+import OperationRecord from '../../api/OperationRecord';
 
-describe('useProject', () => {
+describe('useOperationTypeName', () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });
@@ -26,54 +25,48 @@ describe('useProject', () => {
   });
 
   const mockRequest = () => {
-    const spy = jest.spyOn(project, 'getProjectTipsV1');
+    const spy = jest.spyOn(OperationRecord, 'GetOperationTypeNameList');
     return spy;
   };
 
-  test('should get project data from request', async () => {
+  test('should get group data from request', async () => {
     const requestSpy = mockRequest();
     requestSpy.mockImplementation(() =>
       resolveThreeSecond([
-        {
-          project_name: 'project_name_1',
-        },
+        { operation_type_name: 'operation_type_name1', desc: '操作类型' },
       ])
     );
-    const { result, waitForNextUpdate } = renderHook(() => useProject());
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useOperationTypeName()
+    );
     expect(result.current.loading).toBe(false);
-    expect(result.current.projectList).toEqual([]);
+    expect(result.current.operationTypeNameList).toEqual([]);
     const { baseElement } = render(
-      <Select>{result.current.generateProjectSelectOption()}</Select>
+      <Select>{result.current.generateOperationTypeNameSelectOption()}</Select>
     );
     expect(baseElement).toMatchSnapshot();
 
     act(() => {
-      result.current.updateProjectList({
-        functional_module:
-          getProjectTipsV1FunctionalModuleEnum.operation_record,
-      });
+      result.current.updateOperationTypeNameList();
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(requestSpy).toBeCalledWith({
-      functional_module: getProjectTipsV1FunctionalModuleEnum.operation_record,
-    });
-    expect(result.current.projectList).toEqual([]);
+    expect(result.current.operationTypeNameList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.projectList).toEqual([
-      { project_name: 'project_name_1' },
+    expect(result.current.operationTypeNameList).toEqual([
+      { operation_type_name: 'operation_type_name1', desc: '操作类型' },
     ]);
     cleanup();
 
     const { baseElement: baseElementWithOptions } = render(
       <Select data-testid="testId" value="value1">
-        {result.current.generateProjectSelectOption()}
+        {result.current.generateOperationTypeNameSelectOption()}
       </Select>
     );
     expect(baseElementWithOptions).toMatchSnapshot();
@@ -83,7 +76,7 @@ describe('useProject', () => {
       jest.runAllTimers();
     });
 
-    await screen.findAllByText('project_name_1');
+    await screen.findAllByText('操作类型');
     expect(baseElementWithOptions).toMatchSnapshot();
   });
 
@@ -91,45 +84,43 @@ describe('useProject', () => {
     const requestSpy = mockRequest();
     requestSpy.mockImplementation(() =>
       resolveThreeSecond([
-        {
-          project_name: 'project_name_1',
-        },
+        { operation_type_name: 'operation_type_name1', desc: '操作类型' },
       ])
     );
-    const { result, waitForNextUpdate } = renderHook(() => useProject());
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useOperationTypeName()
+    );
     expect(result.current.loading).toBe(false);
-    expect(result.current.projectList).toEqual([]);
+    expect(result.current.operationTypeNameList).toEqual([]);
 
     act(() => {
-      result.current.updateProjectList();
+      result.current.updateOperationTypeNameList();
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.projectList).toEqual([]);
+    expect(result.current.operationTypeNameList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.projectList).toEqual([
-      { project_name: 'project_name_1' },
+    expect(result.current.operationTypeNameList).toEqual([
+      { operation_type_name: 'operation_type_name1', desc: '操作类型' },
     ]);
     requestSpy.mockClear();
     requestSpy.mockImplementation(() =>
-      resolveErrorThreeSecond([{ project_name: 'project_name_1' }])
+      resolveErrorThreeSecond([{ operation_type_name: 'operation_type_name1' }])
     );
 
     act(() => {
-      result.current.updateProjectList();
+      result.current.updateOperationTypeNameList();
     });
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.projectList).toEqual([
-      {
-        project_name: 'project_name_1',
-      },
+    expect(result.current.operationTypeNameList).toEqual([
+      { operation_type_name: 'operation_type_name1', desc: '操作类型' },
     ]);
 
     jest.advanceTimersByTime(3000);
@@ -137,48 +128,52 @@ describe('useProject', () => {
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.projectList).toEqual([]);
+    expect(result.current.operationTypeNameList).toEqual([]);
   });
 
   test('should set list to empty array when response throw error', async () => {
     const requestSpy = mockRequest();
     requestSpy.mockImplementation(() =>
-      resolveThreeSecond([{ project_name: 'project_name_1' }])
+      resolveThreeSecond([
+        { operation_type_name: 'operation_type_name1', desc: '操作类型' },
+      ])
     );
-    const { result, waitForNextUpdate } = renderHook(() => useProject());
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useOperationTypeName()
+    );
     expect(result.current.loading).toBe(false);
-    expect(result.current.projectList).toEqual([]);
+    expect(result.current.operationTypeNameList).toEqual([]);
 
     act(() => {
-      result.current.updateProjectList();
+      result.current.updateOperationTypeNameList();
     });
 
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.projectList).toEqual([]);
+    expect(result.current.operationTypeNameList).toEqual([]);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.projectList).toEqual([
-      { project_name: 'project_name_1' },
+    expect(result.current.operationTypeNameList).toEqual([
+      { operation_type_name: 'operation_type_name1', desc: '操作类型' },
     ]);
     requestSpy.mockClear();
     requestSpy.mockImplementation(() =>
-      rejectThreeSecond([{ project_name: 'project_name_1' }])
+      rejectThreeSecond([
+        { operation_type_name: 'operation_type_name1', desc: '操作类型' },
+      ])
     );
 
     act(() => {
-      result.current.updateProjectList();
+      result.current.updateOperationTypeNameList();
     });
     expect(result.current.loading).toBe(true);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.projectList).toEqual([
-      {
-        project_name: 'project_name_1',
-      },
+    expect(result.current.operationTypeNameList).toEqual([
+      { operation_type_name: 'operation_type_name1', desc: '操作类型' },
     ]);
 
     jest.advanceTimersByTime(3000);
@@ -186,6 +181,6 @@ describe('useProject', () => {
 
     expect(result.current.loading).toBe(false);
     expect(requestSpy).toBeCalledTimes(1);
-    expect(result.current.projectList).toEqual([]);
+    expect(result.current.operationTypeNameList).toEqual([]);
   });
 });

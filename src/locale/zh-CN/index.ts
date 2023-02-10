@@ -21,6 +21,7 @@ import reportStatistics from './reportStatistics';
 import projectManage from './projectManage';
 import member from './member';
 import syncDataSource from './syncDataSource'
+import operationRecord from './operationRecord'
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -47,6 +48,7 @@ export default {
     reportStatistics,
     projectManage,
     member,
-    syncDataSource
+    syncDataSource,
+    operationRecord,
   },
 };

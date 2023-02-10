@@ -118,6 +118,12 @@ export enum InstanceTaskResV1LastSyncStatusEnum {
   'fail' = 'fail'
 }
 
+export enum OperationRecordListStatusEnum {
+  'success' = 'success',
+
+  'fail' = 'fail'
+}
+
 export enum RuleParamResV1TypeEnum {
   'string' = 'string',
 

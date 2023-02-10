@@ -18,6 +18,7 @@ export type GlobalRouterItemKeyLiteral =
   | 'projectList'
   | 'System'
   | 'syncDataSource'
+  | 'operationRecord'
 
 export type ProjectDetailRouterItemKeyLiteral =
   | 'order'

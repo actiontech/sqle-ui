@@ -150,6 +150,11 @@ const SyncDataSource = React.lazy(
     import(/* webpackChunkName: "SyncDataSource" */ '../page/SyncDataSource')
 );
 
+const OperationRecord = React.lazy(
+  () =>
+    import(/* webpackChunkName: "OperationRecord" */ '../page/OperationRecord')
+);
+
 export const unAuthRouter: Array<RouteProps & { key: string }> = [
   {
     path: '/login',
@@ -249,9 +254,17 @@ export const globalRouterConfig: RouterItem<GlobalRouterItemKeyLiteral>[] = [
     path: '/SyncDataSource',
     label: 'menu.syncDataSource',
     key: 'syncDataSource',
-    icon: <ProjectOutlined />,
     component: SyncDataSource,
   },
+  /* IFTRUE_isEE */
+  {
+    path: '/operationRecord',
+    label: 'menu.operationRecord',
+    key: 'operationRecord',
+    component: OperationRecord,
+    role: [SystemRole.admin],
+  },
+  /* FITRUE_isEE */
 ];
 
 export const projectDetailRouterConfig: RouterItem<ProjectDetailRouterItemKeyLiteral>[] =

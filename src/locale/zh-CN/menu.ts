@@ -28,4 +28,5 @@ export default {
   projectOverview: '项目概览',
   allInstanceType: '所有数据库类型',
   syncDataSource: '外部数据源同步',
+  operationRecord: '操作记录'
 };

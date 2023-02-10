@@ -10,6 +10,7 @@ import audit_plan from '../api/audit_plan';
 import management_permission from '../api/management_permission';
 import project from '../api/project';
 import sync_instance from '../api/sync_instance';
+import OperationRecord from '../api/OperationRecord';
 
 export const successData = (data: any, otherData?: any) => {
   return {
@@ -280,6 +281,18 @@ export const mockUseMember = () => {
 export const mockUseTaskSource = () => {
   const spy = jest.spyOn(sync_instance, 'GetSyncTaskSourceTips');
   spy.mockImplementation(() => resolveThreeSecond([{ source: 'source1', db_types: ['mysql'] }, { source: 'source2', db_types: ['oracle'] }]))
+  return spy;
+}
+
+export const mockUseOperationTypeName = () => {
+  const spy = jest.spyOn(OperationRecord, 'GetOperationTypeNameList');
+  spy.mockImplementation(() => resolveThreeSecond([{ operation_type_name: 'operation_type_name', desc: '操作类型' }]))
+  return spy;
+}
+
+export const mockUseOperationActions = () => {
+  const spy = jest.spyOn(OperationRecord, 'getOperationActionList');
+  spy.mockImplementation(() => resolveThreeSecond([{ operation_action: 'operation_action', desc: '操作内容' }]))
   return spy;
 }
 

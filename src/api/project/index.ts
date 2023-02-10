@@ -7,6 +7,7 @@ import ServiceBase from '../Service.base';
 import { AxiosRequestConfig } from 'axios';
 
 import {
+  IGetProjectTipsV1Params,
   IGetProjectTipsV1Return,
   IGetProjectListV1Params,
   IGetProjectListV1Return,
@@ -21,10 +22,14 @@ import {
 } from './index.d';
 
 class ProjectService extends ServiceBase {
-  public getProjectTipsV1(options?: AxiosRequestConfig) {
+  public getProjectTipsV1(
+    params: IGetProjectTipsV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
     return this.get<IGetProjectTipsV1Return>(
       '/v1/project_tips',
-      undefined,
+      paramsData,
       options
     );
   }

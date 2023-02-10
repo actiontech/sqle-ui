@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OperationRecord should render page header and describe 1`] = `
+<article>
+  <PageHeader
+    ghost={false}
+    title="menu.operationRecord"
+  />
+  <section
+    className="padding-content"
+  >
+    <OperationRecordList />
+  </section>
+</article>
+`;
