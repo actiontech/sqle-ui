@@ -5,6 +5,7 @@ import {
   mockUseOperationActions,
   mockUseOperationTypeName,
   mockUseProject,
+  resolveThreeSecond,
 } from '../../../../testUtils/mockRequest';
 import FilterForm from '../FilterForm';
 
@@ -116,5 +117,39 @@ describe('test OperationRecordList/FilterForm', () => {
       screen.getByLabelText('operationRecord.list.filterForm.operator')
     ).toHaveValue('');
     expect(container).toMatchSnapshot();
+  });
+
+  test('should send empty string when select platform operation', async () => {
+    getProjectTips.mockImplementation(() =>
+      resolveThreeSecond([{ project_name: '' }])
+    );
+
+    render(
+      <FilterForm
+        updateOperationRecordListFilter={mockUpdateOperationRecordListFilter}
+      />
+    );
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    selectOptionByIndex(
+      'operationRecord.list.filterForm.projectName',
+      'operationRecord.list.filterForm.platformOperation',
+      0
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    fireEvent.click(screen.getByText('common.search'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    expect(mockUpdateOperationRecordListFilter).toBeCalledTimes(1);
+    expect(mockUpdateOperationRecordListFilter).toBeCalledWith({
+      projectName: '',
+    });
   });
 });
