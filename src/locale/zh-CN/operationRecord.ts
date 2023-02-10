@@ -9,6 +9,7 @@ export default {
       operator: '操作人',
       operationType: '操作类型',
       operationAction: '操作内容',
+      platformOperation: '-- (平台操作)'
     },
     column: {
       operatingTime: '操作时间',
