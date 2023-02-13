@@ -14,6 +14,7 @@ export default {
       audit_plan_instance_name: '数据源名称',
       audit_plan_name: '任务名称',
       audit_plan_token: '访问凭证',
+      audit_plan_token_tips: '用于审核任务上传凭证',
       audit_plan_type: '任务类型',
       audit_rule_template: '审核规则模板',
     },
