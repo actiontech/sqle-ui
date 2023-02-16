@@ -2,14 +2,38 @@ import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Button, Card, Col, PageHeader, Row, Spin, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
 import project from '../../../api/project';
 import statistic from '../../../api/statistic';
 import EmptyBox from '../../../components/EmptyBox';
 import { useCurrentProjectName } from '../ProjectDetail';
 import ProjectInfoBox from './ProjectInfoBox';
 
+const renderCard = ({
+  title,
+  handleClick,
+  content = '--',
+}: {
+  title: string;
+  handleClick: () => void;
+  content?: number | string;
+}) => {
+  return (
+    <Card
+      title={title}
+      hoverable={true}
+      type="inner"
+      bordered
+      onClick={handleClick}
+    >
+      <Typography.Link>{content}</Typography.Link>
+    </Card>
+  );
+};
+
 const ProjectOverview: React.FC = () => {
   const { t } = useTranslation();
+  const history = useHistory();
   const { projectName } = useCurrentProjectName();
 
   const {
@@ -45,14 +69,6 @@ const ProjectOverview: React.FC = () => {
     refreshProjectStatistics();
   };
 
-  const renderCard = (title: string, content?: number | string) => {
-    return (
-      <Card title={title} hoverable={true} type="inner" bordered>
-        <Typography.Link>{content ?? '--'}</Typography.Link>
-      </Card>
-    );
-  };
-
   return (
     <article>
       <PageHeader
@@ -77,40 +93,58 @@ const ProjectOverview: React.FC = () => {
         <EmptyBox if={!getProjectStatisticsLoading} defaultNode={<Spin />}>
           <Row gutter={[{ xs: 8, sm: 28, md: 28, lg: 48 }, 32]}>
             <Col className="gutter-row" span={8}>
-              {renderCard(
-                t('projectManage.projectOverview.orderTotal'),
-                projectStatistics?.workflow_total
-              )}
+              {renderCard({
+                title: t('projectManage.projectOverview.orderTotal'),
+                content: projectStatistics?.workflow_total,
+                handleClick: () => {
+                  history.push(`/project/${projectName}/order`);
+                },
+              })}
             </Col>
             <Col className="gutter-row" span={8}>
-              {renderCard(
-                t('projectManage.projectOverview.auditPlanTotal'),
-                projectStatistics?.audit_plan_total
-              )}
+              {renderCard({
+                title: t('projectManage.projectOverview.auditPlanTotal'),
+                content: projectStatistics?.audit_plan_total,
+                handleClick: () => {
+                  history.push(`/project/${projectName}/auditPlan`);
+                },
+              })}
             </Col>
             <Col className="gutter-row" span={8}>
-              {renderCard(
-                t('projectManage.projectOverview.instanceTotal'),
-                projectStatistics?.instance_total
-              )}
+              {renderCard({
+                title: t('projectManage.projectOverview.instanceTotal'),
+                content: projectStatistics?.instance_total,
+                handleClick: () => {
+                  history.push(`/project/${projectName}/data`);
+                },
+              })}
             </Col>
             <Col className="gutter-row" span={8}>
-              {renderCard(
-                t('projectManage.projectOverview.memberTotal'),
-                projectStatistics?.member_total
-              )}
+              {renderCard({
+                title: t('projectManage.projectOverview.memberTotal'),
+                content: projectStatistics?.member_total,
+                handleClick: () => {
+                  history.push(`/project/${projectName}/member`);
+                },
+              })}
             </Col>
             <Col className="gutter-row" span={8}>
-              {renderCard(
-                t('projectManage.projectOverview.ruleTemplateTotal'),
-                projectStatistics?.rule_template_total
-              )}
+              {renderCard({
+                title: t('projectManage.projectOverview.ruleTemplateTotal'),
+                content: projectStatistics?.rule_template_total,
+                handleClick: () => {
+                  history.push(`/project/${projectName}/rule/template`);
+                },
+              })}
             </Col>
             <Col className="gutter-row" span={8}>
-              {renderCard(
-                t('projectManage.projectOverview.whiteListTotal'),
-                projectStatistics?.whitelist_total
-              )}
+              {renderCard({
+                title: t('projectManage.projectOverview.whiteListTotal'),
+                content: projectStatistics?.whitelist_total,
+                handleClick: () => {
+                  history.push(`/project/${projectName}/whitelist`);
+                },
+              })}
             </Col>
           </Row>
         </EmptyBox>

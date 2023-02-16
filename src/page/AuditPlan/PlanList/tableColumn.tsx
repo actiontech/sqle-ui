@@ -2,6 +2,7 @@ import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Menu, Popconfirm, Space, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import { IAuditPlanMetaV1, IAuditPlanResV2 } from '../../../api/common';
+import IconTipsLabel from '../../../components/IconTipsLabel';
 import { ModalName } from '../../../data/ModalName';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
@@ -65,7 +66,15 @@ export const planListTableHeader = (
     },
     {
       dataIndex: 'audit_plan_token',
-      title: () => i18n.t('auditPlan.list.table.audit_plan_token'),
+      title: () => (
+        <>
+          <IconTipsLabel
+            tips={i18n.t('auditPlan.list.table.audit_plan_token_tips')}
+          >
+            {i18n.t('auditPlan.list.table.audit_plan_token')}
+          </IconTipsLabel>
+        </>
+      ),
       render: (text) => {
         return <TokenText token={text} />;
       },
