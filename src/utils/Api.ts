@@ -13,12 +13,13 @@ import Download from './Download';
 
 const ApiBase = axios.create();
 
-const filterUri = ['/v1/configurations/oauth2/tips', '/v1/login'];
-
 export const authInvalid = () => {
   const targetUrl = window.location.pathname;
-  window.location.href = `/login?${SQLE_REDIRECT_KEY_PARAMS_NAME}=${targetUrl}`;
+  if (targetUrl === '/login') {
+    return;
+  }
 
+  window.location.href = `/login?${SQLE_REDIRECT_KEY_PARAMS_NAME}=${targetUrl}`;
   store.dispatch(updateUser({ username: '', role: '' }));
   store.dispatch(updateManagementPermissions({ managementPermissions: [] }));
   store.dispatch(updateBindProjects({ bindProjects: [] }));
@@ -27,7 +28,7 @@ export const authInvalid = () => {
 
 ApiBase.interceptors.response.use(
   (res) => {
-    if (res.status === 401 && !filterUri.includes(res.config.url ?? '')) {
+    if (res.status === 401) {
       authInvalid();
     } else if (res.headers?.['content-disposition']?.includes('attachment')) {
       const disposition: string = res.headers?.['content-disposition'];
@@ -70,20 +71,5 @@ ApiBase.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-const doNotAddAuthRequest = ['/login'];
-
-ApiBase.interceptors.request.use((config) => {
-  if (doNotAddAuthRequest.some((url) => config.url?.includes(url))) {
-    return config;
-  }
-  return {
-    ...config,
-    headers: {
-      ...config.headers,
-      Authorization: store.getState().user.token,
-    },
-  };
-});
 
 export default ApiBase;

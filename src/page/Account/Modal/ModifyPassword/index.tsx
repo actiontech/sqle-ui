@@ -27,12 +27,8 @@ const ModifyPasswordModal: React.FC<ModifyPasswordProps> = (props) => {
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
-          user.logoutV1().then((logoutRes) => {
-            if (logoutRes.data.code === ResponseCode.SUCCESS) {
-              clearUserInfo();
-              history.replace('/login');
-            }
-          });
+          clearUserInfo();
+          history.replace('/login');
         } else {
           submitFinish();
         }
