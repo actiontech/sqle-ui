@@ -9,7 +9,7 @@ import instance from '../../../api/instance';
 import { IUpdateInstanceV1Params } from '../../../api/instance/index.d';
 import BackButton from '../../../components/BackButton';
 import EmptyBox from '../../../components/EmptyBox';
-import { ResponseCode } from '../../../data/common';
+import { ResponseCode, SQLE_INSTANCE_SOURCE_NAME } from '../../../data/common';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import DataSourceForm from '../DataSourceForm';
 import { DataSourceFormField } from '../DataSourceForm/index.type';
@@ -29,11 +29,6 @@ const UpdateDataSource = () => {
   const updateDatabase = async (values: DataSourceFormField) => {
     const params: IUpdateInstanceV1Params = {
       project_name: projectName,
-      db_type: values.type,
-      db_host: values.ip,
-      db_port: `${values.port}`,
-      db_user: values.user,
-      desc: values.describe,
       instance_name: values.name,
       rule_template_name: values.ruleTemplate ?? '',
       additional_params: turnCommonToDataSourceParams(values.asyncParams ?? []),
@@ -48,8 +43,16 @@ const UpdateDataSource = () => {
           values.allowQueryWhenLessThanAuditLevel,
       },
     };
+
     if (!!values.password) {
       params.db_password = values.password;
+    }
+    if (instanceInfo?.source === SQLE_INSTANCE_SOURCE_NAME) {
+      params.db_type = values.type;
+      params.db_host = values.ip;
+      params.db_port = `${values.port}`;
+      params.db_user = values.user;
+      params.desc = values.describe;
     }
     return instance.updateInstanceV1(params).then((res) => {
       if (res.data.code === ResponseCode.SUCCESS) {

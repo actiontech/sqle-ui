@@ -276,15 +276,20 @@ describe('UpdateDataSource', () => {
     });
     expect(
       screen.getByText('dataSource.updateDatabase.updateDatabaseSuccess')
-    ).not.toBeNull();
+    ).toBeInTheDocument();
 
     expect(history.location.pathname).toBe(`/project/${projectName}/data`);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
   });
 
   test('should be disabled partial form items when the instance source is not SQLE', async () => {
     getInstanceSpy.mockImplementation(() =>
       resolveThreeSecond({ ...instanceData, source: 'DMP' })
     );
+    const updateSpy = mockUpdateInstanceRequest();
 
     const { container } = renderWithThemeAndRouter(
       <UpdateDataSource />,
@@ -333,6 +338,69 @@ describe('UpdateDataSource', () => {
     ).not.toBeDisabled();
 
     expect(container).toMatchSnapshot();
+
+    await waitFor(() => {
+      fireEvent.click(screen.getByText('common.submit'));
+    });
+
+    expect(updateSpy).toBeCalledTimes(1);
+    expect(updateSpy).toBeCalledWith({
+      additional_params: [
+        {
+          name: 'a',
+          value: '123',
+        },
+        {
+          name: 'b',
+          value: '123',
+        },
+        {
+          name: 'c',
+          value: 'true',
+        },
+      ],
+
+      instance_name: 'db1',
+      project_name: 'default',
+      maintenance_times: [
+        {
+          maintenance_start_time: {
+            hour: 23,
+            minute: 0,
+          },
+          maintenance_stop_time: {
+            hour: 23,
+            minute: 30,
+          },
+        },
+        {
+          maintenance_start_time: {
+            hour: 0,
+            minute: 0,
+          },
+          maintenance_stop_time: {
+            hour: 2,
+            minute: 0,
+          },
+        },
+      ],
+      rule_template_name: 'default_MySQL',
+      sql_query_config: {
+        allow_query_when_less_than_audit_level: 'notice',
+        audit_enabled: true,
+      },
+    });
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.queryByText('dataSource.updateDatabase.updateDatabaseSuccess')
+    ).toBeInTheDocument();
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
   });
 
   test('should be hidden "allowQueryWhenLessThanAuditLevel" field when audit enabled is equal false', async () => {
