@@ -133,7 +133,7 @@ export const orderAuditResultColumn = (
 
 export const auditResultOverviewColumn: (
   sqlExecuteHandle: (taskId: string) => void,
-  openScheduleModal: () => void,
+  openScheduleModalAndSetCurrentTask: (record: IGetWorkflowTasksItemV2) => void,
   scheduleTimeHandle: (
     scheduleTime?: string | undefined,
     taskId?: string
@@ -142,7 +142,7 @@ export const auditResultOverviewColumn: (
   orderStatus?: WorkflowRecordResV2StatusEnum
 ) => TableColumn<IGetWorkflowTasksItemV2, 'operator'> = (
   sqlExecuteHandle,
-  openScheduleModal,
+  openScheduleModalAndSetCurrentTask,
   scheduleTimeHandle,
   currentUsername,
   orderStatus
@@ -280,7 +280,7 @@ export const auditResultOverviewColumn: (
                   }
                   onClick={(e) => {
                     e.stopPropagation();
-                    openScheduleModal();
+                    openScheduleModalAndSetCurrentTask(record);
                   }}
                 >
                   {i18n.t('order.auditResultCollection.table.scheduleTime')}
