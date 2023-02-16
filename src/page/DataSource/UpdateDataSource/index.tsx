@@ -25,7 +25,6 @@ const UpdateDataSource = () => {
   const [initError, setInitError] = React.useState('');
   const [retryLoading, { toggle: setRetryLoading }] = useBoolean(false);
   const [instanceInfo, setInstanceInfo] = useState<IInstanceResV1>();
-  const [isExternalInstance, setIsExternalInstance] = useState(false);
 
   const updateDatabase = async (values: DataSourceFormField) => {
     const params: IUpdateInstanceV1Params = {
@@ -48,7 +47,7 @@ const UpdateDataSource = () => {
     if (!!values.password) {
       params.db_password = values.password;
     }
-    if (!isExternalInstance) {
+    if (instanceInfo?.source === SQLE_INSTANCE_SOURCE_NAME) {
       params.db_type = values.type;
       params.db_host = values.ip;
       params.db_port = `${values.port}`;
@@ -78,7 +77,6 @@ const UpdateDataSource = () => {
         if (res.data.code === ResponseCode.SUCCESS) {
           const instance = res.data.data;
           setInstanceInfo(instance);
-          setIsExternalInstance(instance?.source !== SQLE_INSTANCE_SOURCE_NAME);
           setInitError('');
         } else {
           setInitError(res.data.message ?? t('common.unknownError'));
@@ -87,13 +85,7 @@ const UpdateDataSource = () => {
       .finally(() => {
         setRetryLoading(false);
       });
-  }, [
-    projectName,
-    setIsExternalInstance,
-    setRetryLoading,
-    t,
-    urlParams.instanceName,
-  ]);
+  }, [projectName, setRetryLoading, t, urlParams.instanceName]);
 
   React.useEffect(() => {
     getInstanceInfo();
