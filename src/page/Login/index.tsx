@@ -8,16 +8,24 @@ import { useHistory } from 'react-router';
 import { updateToken } from '../../store/user';
 import { useDispatch } from 'react-redux';
 import user from '../../api/user';
-import { ResponseCode } from '../../data/common';
+import {
+  OPEN_CLOUD_BEAVER_URL_PARAM_NAME,
+  ResponseCode,
+  SQLE_COOKIE_TOKEN_KEY_NAME,
+  SQLE_REDIRECT_KEY_PARAMS_NAME,
+} from '../../data/common';
 import { useRequest } from 'ahooks';
 import configuration from '../../api/configuration';
 import EmptyBox from '../../components/EmptyBox';
 import leftBg from '../../assets/img/login-left-bg.png';
+import { useLocation } from 'react-router-dom';
+import { getCookie } from '../../utils/Common';
 
 const Login = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const location = useLocation();
 
   const login = (formData: {
     username: string;
@@ -31,14 +39,28 @@ const Login = () => {
     }
     /* FITRUE_isEE */
     user
-      .loginV1({
+      .loginV2({
         username: formData.username,
         password: formData.password,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
-          dispatch(updateToken({ token: res.data.data?.token ?? '' }));
-          history.push('/');
+          const params = new URLSearchParams(location.search);
+          dispatch(
+            updateToken({ token: getCookie(SQLE_COOKIE_TOKEN_KEY_NAME) })
+          );
+          const target = params.get(SQLE_REDIRECT_KEY_PARAMS_NAME);
+          if (target) {
+            if (target === '/sqlQuery') {
+              history.push(
+                `/sqlQuery?${OPEN_CLOUD_BEAVER_URL_PARAM_NAME}=true`
+              );
+            } else {
+              history.push(target);
+            }
+          } else {
+            history.push('/');
+          }
         }
       });
   };

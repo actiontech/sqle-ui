@@ -9,6 +9,7 @@ import { AxiosRequestConfig } from 'axios';
 import {
   ILoginV1Params,
   ILoginV1Return,
+  ILogoutV1Return,
   IGetMemberTipListV1Params,
   IGetMemberTipListV1Return,
   IGetMembersV1Params,
@@ -39,13 +40,19 @@ import {
   IUpdateUserV1Params,
   IUpdateUserV1Return,
   IUpdateOtherUserPasswordV1Params,
-  IUpdateOtherUserPasswordV1Return
+  IUpdateOtherUserPasswordV1Return,
+  ILoginV2Params,
+  ILoginV2Return
 } from './index.d';
 
 class UserService extends ServiceBase {
   public loginV1(params: ILoginV1Params, options?: AxiosRequestConfig) {
     const paramsData = this.cloneDeep(params);
     return this.post<ILoginV1Return>('/v1/login', paramsData, options);
+  }
+
+  public logoutV1(options?: AxiosRequestConfig) {
+    return this.post<ILogoutV1Return>('/v1/logout', undefined, options);
   }
 
   public getMemberTipListV1(
@@ -252,6 +259,11 @@ class UserService extends ServiceBase {
       paramsData,
       options
     );
+  }
+
+  public loginV2(params: ILoginV2Params, options?: AxiosRequestConfig) {
+    const paramsData = this.cloneDeep(params);
+    return this.post<ILoginV2Return>('/v2/login', paramsData, options);
   }
 }
 

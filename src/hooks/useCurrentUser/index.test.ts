@@ -6,7 +6,7 @@ import {
   IUserBindProjectResV1,
 } from '../../api/common';
 import { renderHook } from '@testing-library/react-hooks';
-import { mockUseSelector } from '../../testUtils/mockRedux';
+import { mockUseDispatch, mockUseSelector } from '../../testUtils/mockRedux';
 
 export const mockBindProjects: IUserBindProjectResV1[] = [
   {
@@ -27,6 +27,15 @@ export const mockManagementPermissions: IManagementPermissionResV1[] = [
 ];
 
 describe('hooks/useCurrentUser', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+  afterEach(() => {
+    jest.useRealTimers();
+    jest.clearAllMocks();
+    jest.clearAllTimers();
+  });
+
   test('should return true while role is admin', () => {
     const { result } = renderHooksWithRedux(() => useCurrentUser(), {
       user: { role: SystemRole.admin },

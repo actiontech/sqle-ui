@@ -1,24 +1,33 @@
 import axios from 'axios';
 import store from '../store';
-import { updateToken, updateUser } from '../store/user';
-import { createBrowserHistory } from 'history';
-import { ResponseCode } from '../data/common';
+import {
+  updateBindProjects,
+  updateManagementPermissions,
+  updateToken,
+  updateUser,
+} from '../store/user';
+import { ResponseCode, SQLE_REDIRECT_KEY_PARAMS_NAME } from '../data/common';
 import { notification } from 'antd';
 import i18n from '../locale';
 import Download from './Download';
 
 const ApiBase = axios.create();
 
-const authInvalid = () => {
+const filterUri = ['/v1/configurations/oauth2/tips', '/v1/login'];
+
+export const authInvalid = () => {
+  const targetUrl = window.location.pathname;
+  window.location.href = `/login?${SQLE_REDIRECT_KEY_PARAMS_NAME}=${targetUrl}`;
+
   store.dispatch(updateUser({ username: '', role: '' }));
+  store.dispatch(updateManagementPermissions({ managementPermissions: [] }));
+  store.dispatch(updateBindProjects({ bindProjects: [] }));
   store.dispatch(updateToken({ token: '' }));
-  const history = createBrowserHistory();
-  history.push('/login');
 };
 
 ApiBase.interceptors.response.use(
   (res) => {
-    if (res.status === 401) {
+    if (res.status === 401 && !filterUri.includes(res.config.url ?? '')) {
       authInvalid();
     } else if (res.headers?.['content-disposition']?.includes('attachment')) {
       const disposition: string = res.headers?.['content-disposition'];

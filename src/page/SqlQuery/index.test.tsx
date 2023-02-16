@@ -1,13 +1,22 @@
 import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { useLocation } from 'react-router-dom';
 import SqlQueryEE from '.';
 import configuration from '../../api/configuration';
+import { OPEN_CLOUD_BEAVER_URL_PARAM_NAME } from '../../data/common';
 import { renderWithThemeAndRouter } from '../../testUtils/customRender';
 import {
   resolveErrorThreeSecond,
   resolveThreeSecond,
 } from '../../testUtils/mockRequest';
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLocation: jest.fn(),
+}));
+
 describe('SqlQueryEE', () => {
+  const useLocationMock: jest.Mock = useLocation as jest.Mock;
+
   const mockGetQueryUrl = () => {
     const spy = jest.spyOn(configuration, 'getSQLQueryConfiguration');
     spy.mockImplementation(() =>
@@ -21,6 +30,13 @@ describe('SqlQueryEE', () => {
 
   beforeEach(() => {
     jest.useFakeTimers();
+    useLocationMock.mockReturnValue({
+      pathname: '/sqlQuery',
+      search: '',
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
+    });
   });
 
   afterEach(() => {
@@ -68,6 +84,30 @@ describe('SqlQueryEE', () => {
     expect(container).toMatchSnapshot();
 
     fireEvent.click(screen.getByText('sqlQuery.jumpToCloudbeaver'));
+    expect(openSpy).toBeCalledTimes(1);
+    expect(openSpy).toBeCalledWith('/new_sql_query');
+  });
+
+  it('should auto open cloud beaver when url "open_cloud_beaver" params is exists', async () => {
+    useLocationMock.mockReturnValue({
+      pathname: '`sqlQuery',
+      search: `?${OPEN_CLOUD_BEAVER_URL_PARAM_NAME}=true`,
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
+    });
+    mockGetQueryUrl().mockImplementation(() =>
+      resolveThreeSecond({
+        enable_sql_query: true,
+        sql_query_root_uri: '/new_sql_query',
+      })
+    );
+    const openSpy = jest.spyOn(window, 'open');
+    openSpy.mockImplementation(() => void 0 as any);
+    renderWithThemeAndRouter(<SqlQueryEE />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
     expect(openSpy).toBeCalledTimes(1);
     expect(openSpy).toBeCalledWith('/new_sql_query');
   });

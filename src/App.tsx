@@ -15,75 +15,16 @@ import useChangeTheme from './hooks/useChangeTheme';
 import useLanguage from './hooks/useLanguage';
 import { globalRouterConfig, unAuthRouter } from './router/config';
 import { IReduxState } from './store';
-import { useRequest } from 'ahooks';
-import { ResponseCode, SystemRole } from './data/common';
-import {
-  updateUser,
-  updateToken,
-  updateBindProjects,
-  updateManagementPermissions,
-} from './store/user';
-import user from './api/user';
-import { useDispatch } from 'react-redux';
 import EmptyBox from './components/EmptyBox';
 import useRoutes from './hooks/useRoutes';
+import useUserInfo from './hooks/useUserInfo';
 
 function App() {
   const token = useSelector<IReduxState, string>((state) => state.user.token);
   const { registerRouter } = useRoutes();
   const { antdLocale } = useLanguage();
   const { currentThemeData } = useChangeTheme();
-  const dispatch = useDispatch();
-
-  const clearUserInfo = () => {
-    dispatch(updateBindProjects({ bindProjects: [] }));
-    dispatch(
-      updateUser({
-        username: '',
-        role: '',
-      })
-    );
-    dispatch(
-      updateToken({
-        token: '',
-      })
-    );
-    dispatch(updateManagementPermissions({ managementPermissions: [] }));
-  };
-
-  const { loading, run: getUserInfo } = useRequest(
-    user.getCurrentUserV1.bind(user),
-    {
-      manual: true,
-      onSuccess: (res) => {
-        if (res.data.code === ResponseCode.SUCCESS) {
-          const data = res.data.data;
-
-          dispatch(
-            updateBindProjects({ bindProjects: data?.bind_projects ?? [] })
-          );
-          dispatch(
-            updateUser({
-              username: data?.user_name ?? '',
-              role: data?.is_admin ? SystemRole.admin : '',
-            })
-          );
-          dispatch(
-            updateManagementPermissions({
-              managementPermissions: data?.management_permission_list ?? [],
-            })
-          );
-        } else {
-          clearUserInfo();
-        }
-      },
-      ready: !!token,
-      refreshDeps: [token],
-      onError: () => {
-        clearUserInfo();
-      },
-    }
-  );
+  const { getUserInfo, getUserInfoLoading } = useUserInfo();
 
   React.useEffect(() => {
     if (!!token) {
@@ -96,7 +37,7 @@ function App() {
       <ConfigProvider locale={antdLocale}>
         <Router>
           <Suspense fallback={<HeaderProgress />}>
-            {!loading && !token && (
+            {!getUserInfoLoading && !token && (
               <>
                 <Switch>
                   {unAuthRouter.map((route) => {
@@ -109,7 +50,7 @@ function App() {
             {!!token && (
               <Nav>
                 <Suspense fallback={<HeaderProgress />}>
-                  <EmptyBox if={!loading}>
+                  <EmptyBox if={!getUserInfoLoading}>
                     <Switch>
                       {registerRouter(globalRouterConfig)}
                       <Redirect to="/" />

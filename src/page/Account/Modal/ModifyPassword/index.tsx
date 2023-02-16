@@ -3,12 +3,11 @@ import { Button, Form, Input, Space } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import Modal from 'antd/lib/modal/Modal';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import user from '../../../../api/user';
 import { ModalFormLayout, ResponseCode } from '../../../../data/common';
 import { ModalName } from '../../../../data/ModalName';
-import { updateToken, updateUser } from '../../../../store/user';
+import useUserInfo from '../../../../hooks/useUserInfo';
 import { ModifyPasswordFormFields, ModifyPasswordProps } from './index.type';
 
 const ModifyPasswordModal: React.FC<ModifyPasswordProps> = (props) => {
@@ -16,8 +15,8 @@ const ModifyPasswordModal: React.FC<ModifyPasswordProps> = (props) => {
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
     useBoolean();
   const history = useHistory();
-  const dispatch = useDispatch();
   const [form] = useForm<ModifyPasswordFormFields>();
+  const { clearUserInfo } = useUserInfo();
 
   const submit = (value: ModifyPasswordFormFields) => {
     startSubmit();
@@ -28,9 +27,12 @@ const ModifyPasswordModal: React.FC<ModifyPasswordProps> = (props) => {
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
-          dispatch(updateToken({ token: '' }));
-          dispatch(updateUser({ username: '', role: '' }));
-          history.replace('/login');
+          user.logoutV1().then((logoutRes) => {
+            if (logoutRes.data.code === ResponseCode.SUCCESS) {
+              clearUserInfo();
+              history.replace('/login');
+            }
+          });
         } else {
           submitFinish();
         }

@@ -9,15 +9,23 @@ import { ModalName } from '../../../../data/ModalName';
 
 describe('Account/ModifyPassword', () => {
   let dispatchSpy: jest.Mock;
+  let logoutSpy: jest.SpyInstance;
   beforeEach(() => {
     jest.useFakeTimers();
     const { scopeDispatch } = mockUseDispatch();
     dispatchSpy = scopeDispatch;
+    logoutSpy = mockLogout();
   });
 
   afterEach(() => {
     jest.useRealTimers();
   });
+
+  const mockLogout = () => {
+    const spy = jest.spyOn(user, 'logoutV1');
+    spy.mockImplementation(() => resolveThreeSecond({}));
+    return spy;
+  };
 
   const mockUpdateCurrentUserPasswordV1 = () => {
     const spy = jest.spyOn(user, 'UpdateCurrentUserPasswordV1');
@@ -73,17 +81,27 @@ describe('Account/ModifyPassword', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    expect(logoutSpy).toBeCalledTimes(1);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
     expect(history.location.pathname).toBe('/login');
-    expect(dispatchSpy).toBeCalledTimes(2);
+    expect(dispatchSpy).toBeCalledTimes(4);
     expect(dispatchSpy).nthCalledWith(1, {
-      payload: {
-        token: '',
-      },
-      type: 'user/updateToken',
+      payload: { bindProjects: [] },
+      type: 'user/updateBindProjects',
     });
     expect(dispatchSpy).nthCalledWith(2, {
-      payload: { role: '', username: '' },
+      payload: { username: '', role: '' },
       type: 'user/updateUser',
+    });
+    expect(dispatchSpy).nthCalledWith(3, {
+      payload: { token: '' },
+      type: 'user/updateToken',
+    });
+    expect(dispatchSpy).nthCalledWith(4, {
+      payload: { managementPermissions: [] },
+      type: 'user/updateManagementPermissions',
     });
   });
 

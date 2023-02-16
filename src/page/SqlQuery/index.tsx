@@ -4,14 +4,16 @@ import { useRequest } from 'ahooks';
 import { Card, PageHeader, Space, Typography } from 'antd';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 import configuration from '../../api/configuration';
 import EmptyBox from '../../components/EmptyBox';
+import { OPEN_CLOUD_BEAVER_URL_PARAM_NAME } from '../../data/common';
 import { Theme } from '../../types/theme.type';
 
 const SqlQueryEE = () => {
   const { t } = useTranslation();
   const theme = useTheme<Theme>();
-
+  const location = useLocation();
   const cloudbeaverUrl = useRef('');
 
   const {
@@ -34,8 +36,14 @@ const SqlQueryEE = () => {
       if (res?.enable_sql_query) {
         cloudbeaverUrl.current = res.sql_query_root_uri as string;
       }
+
+      const params = new URLSearchParams(location.search);
+
+      if (params.get(OPEN_CLOUD_BEAVER_URL_PARAM_NAME) === 'true') {
+        window.open(cloudbeaverUrl.current);
+      }
     });
-  }, [getSqlQueryUrl]);
+  }, [getSqlQueryUrl, location.search]);
 
   const openCloudbeaver = () => {
     window.open(cloudbeaverUrl.current);

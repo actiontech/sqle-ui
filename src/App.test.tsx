@@ -1,6 +1,5 @@
 import { render, waitFor } from '@testing-library/react';
 import { shallow } from 'enzyme';
-import user from './api/user';
 import App from './App';
 import { SystemRole } from './data/common';
 import { ModalName } from './data/ModalName';
@@ -8,12 +7,12 @@ import {
   mockBindProjects,
   mockManagementPermissions,
 } from './hooks/useCurrentUser/index.test';
+import { mockGetCurrentUser } from './hooks/useUserInfo/index.test';
 import { SupportLanguage } from './locale';
 import { mockUseDispatch, mockUseSelector } from './testUtils/mockRedux';
 import {
   mockUseAuditPlanTypes,
   resolveErrorThreeSecond,
-  resolveImmediately,
   resolveThreeSecond,
 } from './testUtils/mockRequest';
 
@@ -22,15 +21,7 @@ describe('App test', () => {
   let scopeDispatch: jest.SpyInstance;
 
   beforeEach(() => {
-    getUserSpy = jest.spyOn(user, 'getCurrentUserV1');
-    getUserSpy.mockImplementation(() =>
-      resolveImmediately({
-        user_name: 'test',
-        is_admin: '',
-        bindProjects: mockBindProjects,
-        management_permission_list: mockManagementPermissions,
-      })
-    );
+    getUserSpy = mockGetCurrentUser();
     const { scopeDispatch: temp } = mockUseDispatch();
     scopeDispatch = temp;
     mockUseAuditPlanTypes();
@@ -140,26 +131,34 @@ describe('App test', () => {
     render(<App />);
     await waitFor(() => jest.advanceTimersByTime(3000));
     expect(scopeDispatch).toBeCalledTimes(5);
-    expect(scopeDispatch).toBeCalledWith({
+    expect(scopeDispatch).nthCalledWith(1, {
+      payload: {
+        modalStatus: {
+          SHOW_VERSION: false,
+        },
+      },
+      type: 'nav/initModalStatus',
+    });
+    expect(scopeDispatch).nthCalledWith(2, {
       payload: {
         bindProjects: [],
       },
       type: 'user/updateBindProjects',
     });
-    expect(scopeDispatch).toBeCalledWith({
+    expect(scopeDispatch).nthCalledWith(3, {
       payload: {
         role: '',
         username: '',
       },
       type: 'user/updateUser',
     });
-    expect(scopeDispatch).toBeCalledWith({
+    expect(scopeDispatch).nthCalledWith(4, {
       payload: {
         token: '',
       },
       type: 'user/updateToken',
     });
-    expect(scopeDispatch).toBeCalledWith({
+    expect(scopeDispatch).nthCalledWith(5, {
       payload: {
         managementPermissions: [],
       },
