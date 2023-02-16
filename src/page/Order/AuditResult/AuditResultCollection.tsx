@@ -83,8 +83,14 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
     });
   };
 
-  const overviewTableRowClick = (record: IGetWorkflowTasksItemV2) => {
+  const openScheduleModalAndSetCurrentTask = (
+    record: IGetWorkflowTasksItemV2
+  ) => {
+    openScheduleModal();
     setCurrentTask(record);
+  };
+
+  const overviewTableRowClick = (record: IGetWorkflowTasksItemV2) => {
     setAuditResultActiveKey(record.task_id?.toString() ?? '');
   };
 
@@ -132,7 +138,7 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
                   loading={loading}
                   columns={auditResultOverviewColumn(
                     sqlExecuteHandle,
-                    openScheduleModal,
+                    openScheduleModalAndSetCurrentTask,
                     scheduleTimeHandle,
                     username,
                     orderStatus
