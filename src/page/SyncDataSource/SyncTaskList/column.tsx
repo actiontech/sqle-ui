@@ -34,9 +34,9 @@ export const SyncTaskListTableColumnFactory: (
       dataIndex: 'last_sync_status',
       title: () => i18n.t('syncDataSource.syncTaskList.columns.lastSyncResult'),
       render: (status: InstanceTaskResV1LastSyncStatusEnum) => {
-        if (status === InstanceTaskResV1LastSyncStatusEnum.success) {
+        if (status === InstanceTaskResV1LastSyncStatusEnum.succeeded) {
           return <Tag color="green">{i18n.t('common.success')}</Tag>;
-        } else if (status === InstanceTaskResV1LastSyncStatusEnum.fail) {
+        } else if (status === InstanceTaskResV1LastSyncStatusEnum.failed) {
           return <Tag color="red">{i18n.t('common.fail')}</Tag>;
         }
       },
