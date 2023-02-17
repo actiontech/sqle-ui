@@ -10,9 +10,17 @@ import { fireEvent, screen, act, waitFor } from '@testing-library/react';
 import user from '../../api/user';
 import { resolveThreeSecond } from '../../testUtils/mockRequest';
 import configuration from '../../api/configuration';
+import { useLocation } from 'react-router-dom';
+import { OPEN_CLOUD_BEAVER_URL_PARAM_NAME } from '../../data/common';
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLocation: jest.fn(),
+}));
 
 describe('Login', () => {
   let dispatchMock: jest.Mock;
+  const useLocationMock: jest.Mock = useLocation as jest.Mock;
 
   beforeEach(() => {
     const temp = mockUseDispatch();
@@ -20,6 +28,28 @@ describe('Login', () => {
     mockUseSelector({ locale: { language: SupportLanguage.zhCN } });
     mockGetOauth2Tips();
     jest.useFakeTimers();
+    useLocationMock.mockReturnValue({
+      pathname: '/login',
+      search: '',
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
+    });
+  });
+
+  beforeAll(() => {
+    Object.defineProperty(document, 'cookie', {
+      writable: true,
+      value:
+        'sqle-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY1MzkyNjMsIm5hbWUiOiJhZG1pbiJ9.g1_g7JHE4PjMoBvR0Jq4h_sgA-4QVY_S92rl3BxCENQ',
+    });
+  });
+
+  afterAll(() => {
+    Object.defineProperty(document, 'cookie', {
+      writable: false,
+      value: '',
+    });
   });
 
   afterEach(() => {
@@ -30,8 +60,8 @@ describe('Login', () => {
   });
 
   const mockRequest = () => {
-    const spy = jest.spyOn(user, 'loginV1');
-    spy.mockImplementation(() => resolveThreeSecond({ token: 'testToken' }));
+    const spy = jest.spyOn(user, 'loginV2');
+    spy.mockImplementation(() => resolveThreeSecond({}));
     return spy;
   };
 
@@ -101,7 +131,8 @@ describe('Login', () => {
 
     expect(dispatchMock).toBeCalledWith({
       payload: {
-        token: 'testToken',
+        token:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY1MzkyNjMsIm5hbWUiOiJhZG1pbiJ9.g1_g7JHE4PjMoBvR0Jq4h_sgA-4QVY_S92rl3BxCENQ',
       },
       type: 'user/updateToken',
     });
@@ -116,6 +147,110 @@ describe('Login', () => {
     expect(screen.getByText('login with QQ').closest('a')).toHaveAttribute(
       'href',
       '/v1/oauth2/link'
+    );
+  });
+
+  test('should jump path when url target params is exists', async () => {
+    useLocationMock.mockReturnValue({
+      pathname: '/login',
+      search: '?target=/rule',
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
+    });
+
+    const history = createMemoryHistory();
+    const request = mockRequest();
+    history.push('/login');
+    renderWithThemeAndServerRouter(<Login />, undefined, {
+      history,
+    });
+    fireEvent.input(screen.getByPlaceholderText('common.username'), {
+      target: { value: 'root' },
+    });
+    fireEvent.input(screen.getByPlaceholderText('common.password'), {
+      target: { value: '123456' },
+    });
+    act(() => {
+      fireEvent.click(screen.getByText('login.login'));
+    });
+
+    await waitFor(() => {
+      jest.runOnlyPendingTimers();
+    });
+
+    expect(history.location.pathname).toBe('/login');
+    expect(request).not.toBeCalled();
+    expect(
+      screen.queryByText('login.errorMessage.userAgreement')
+    ).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('login.userAgreementTips'));
+    act(() => {
+      fireEvent.click(screen.getByText('login.login'));
+    });
+
+    await waitFor(() => {
+      jest.runOnlyPendingTimers();
+    });
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(history.location.pathname).toBe('/rule');
+  });
+
+  test('should set url params when url search is "/sqlQuery"', async () => {
+    useLocationMock.mockReturnValue({
+      pathname: '/login',
+      search: '?target=/sqlQuery',
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
+    });
+
+    const history = createMemoryHistory();
+    const request = mockRequest();
+    history.push('/login');
+    renderWithThemeAndServerRouter(<Login />, undefined, {
+      history,
+    });
+    fireEvent.input(screen.getByPlaceholderText('common.username'), {
+      target: { value: 'root' },
+    });
+    fireEvent.input(screen.getByPlaceholderText('common.password'), {
+      target: { value: '123456' },
+    });
+    act(() => {
+      fireEvent.click(screen.getByText('login.login'));
+    });
+
+    await waitFor(() => {
+      jest.runOnlyPendingTimers();
+    });
+
+    expect(history.location.pathname).toBe('/login');
+    expect(request).not.toBeCalled();
+    expect(
+      screen.queryByText('login.errorMessage.userAgreement')
+    ).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('login.userAgreementTips'));
+    act(() => {
+      fireEvent.click(screen.getByText('login.login'));
+    });
+
+    await waitFor(() => {
+      jest.runOnlyPendingTimers();
+    });
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(history.location.pathname).toBe('/sqlQuery');
+    expect(history.location.search).toBe(
+      `?${OPEN_CLOUD_BEAVER_URL_PARAM_NAME}=true`
     );
   });
 });

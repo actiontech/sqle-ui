@@ -1,10 +1,10 @@
 import {
   IUserLoginReqV1,
   IGetUserLoginResV1,
+  IBaseRes,
   IGetMemberTipsResV1,
   IGetMembersRespV1,
   ICreateMemberReqV1,
-  IBaseRes,
   IGetMemberRespV1,
   IUpdateMemberReqV1,
   IGetUserDetailResV1,
@@ -20,6 +20,8 @@ import {
 export interface ILoginV1Params extends IUserLoginReqV1 {}
 
 export interface ILoginV1Return extends IGetUserLoginResV1 {}
+
+export interface ILogoutV1Return extends IBaseRes {}
 
 export interface IGetMemberTipListV1Params {
   project_name: string;
@@ -126,3 +128,7 @@ export interface IUpdateOtherUserPasswordV1Params
 }
 
 export interface IUpdateOtherUserPasswordV1Return extends IBaseRes {}
+
+export interface ILoginV2Params extends IUserLoginReqV1 {}
+
+export interface ILoginV2Return extends IBaseRes {}

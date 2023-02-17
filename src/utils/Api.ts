@@ -1,19 +1,29 @@
 import axios from 'axios';
 import store from '../store';
-import { updateToken, updateUser } from '../store/user';
-import { createBrowserHistory } from 'history';
-import { ResponseCode } from '../data/common';
+import {
+  updateBindProjects,
+  updateManagementPermissions,
+  updateToken,
+  updateUser,
+} from '../store/user';
+import { ResponseCode, SQLE_REDIRECT_KEY_PARAMS_NAME } from '../data/common';
 import { notification } from 'antd';
 import i18n from '../locale';
 import Download from './Download';
 
 const ApiBase = axios.create();
 
-const authInvalid = () => {
+export const authInvalid = () => {
+  const targetUrl = window.location.pathname;
+  if (targetUrl === '/login') {
+    return;
+  }
+
+  window.location.href = `/login?${SQLE_REDIRECT_KEY_PARAMS_NAME}=${targetUrl}`;
   store.dispatch(updateUser({ username: '', role: '' }));
+  store.dispatch(updateManagementPermissions({ managementPermissions: [] }));
+  store.dispatch(updateBindProjects({ bindProjects: [] }));
   store.dispatch(updateToken({ token: '' }));
-  const history = createBrowserHistory();
-  history.push('/login');
 };
 
 ApiBase.interceptors.response.use(
@@ -61,20 +71,5 @@ ApiBase.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-const doNotAddAuthRequest = ['/login'];
-
-ApiBase.interceptors.request.use((config) => {
-  if (doNotAddAuthRequest.some((url) => config.url?.includes(url))) {
-    return config;
-  }
-  return {
-    ...config,
-    headers: {
-      ...config.headers,
-      Authorization: store.getState().user.token,
-    },
-  };
-});
 
 export default ApiBase;

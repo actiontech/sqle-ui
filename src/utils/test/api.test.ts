@@ -2,7 +2,6 @@ import ApiBase from '../Api';
 import { setupServer } from 'msw/node';
 import { rest } from 'msw';
 import store from '../../store';
-import * as history from 'history';
 import Download from '../Download';
 import { notification } from 'antd';
 import { updateToken } from '../../store/user';
@@ -11,9 +10,17 @@ const downloadSpy = jest.spyOn(Download, 'downloadByCreateElementA');
 const notificationSpy = jest.spyOn(notification, 'error');
 const server = setupServer();
 
+global.window = Object.create(window);
+
 describe('Api', () => {
   beforeAll(() => {
     server.listen();
+    Object.defineProperty(window, 'location', {
+      value: {
+        ...window.location,
+      },
+      writable: true,
+    });
   });
 
   afterEach(() => {
@@ -26,9 +33,16 @@ describe('Api', () => {
     server.close();
     downloadSpy.mockRestore();
     notificationSpy.mockRestore();
+    Object.defineProperty(window, 'location', {
+      value: {
+        ...window.location,
+      },
+      writable: false,
+    });
   });
 
   test('should jump to login page when request return 401', async () => {
+    let oldHref = window.location.href;
     server.use(
       rest.post('/test', (req, res, ctx) => {
         return res(
@@ -41,23 +55,19 @@ describe('Api', () => {
       })
     );
     const dispatchSpy = jest.spyOn(store, 'dispatch');
-    const createBrowserHistorySpy = jest.spyOn(history, 'createBrowserHistory');
-    const historyPushSpy = jest.fn();
-    createBrowserHistorySpy.mockReturnValue({
-      push: historyPushSpy,
-    } as any);
     let result;
     try {
       await ApiBase.post('/test');
     } catch (error) {
       result = error;
     } finally {
+      expect(window.location.href).toBe('/login?target=/');
       expect(result?.response?.data).toEqual({
         code: 2,
         message: 'error',
       });
       expect(result?.response?.status).toBe(401);
-      expect(dispatchSpy).toBeCalledTimes(2);
+      expect(dispatchSpy).toBeCalledTimes(4);
       expect(dispatchSpy).nthCalledWith(1, {
         payload: {
           role: '',
@@ -67,13 +77,25 @@ describe('Api', () => {
       });
       expect(dispatchSpy).nthCalledWith(2, {
         payload: {
+          managementPermissions: [],
+        },
+        type: 'user/updateManagementPermissions',
+      });
+      expect(dispatchSpy).nthCalledWith(3, {
+        payload: {
+          bindProjects: [],
+        },
+        type: 'user/updateBindProjects',
+      });
+      expect(dispatchSpy).nthCalledWith(4, {
+        payload: {
           token: '',
         },
         type: 'user/updateToken',
       });
       dispatchSpy.mockRestore();
-      expect(historyPushSpy).toBeCalledTimes(1);
-      expect(historyPushSpy).toBeCalledWith('/login');
+
+      window.location.href = oldHref;
     }
   });
 
@@ -146,54 +168,34 @@ describe('Api', () => {
     }
   });
 
-  test('should add token when request url is not equal "/login"', async () => {
-    let token = '';
+  test('should no not add target when window pathname is equal "/login"', async () => {
+    window.location.pathname = '/login';
+    let href = window.location.href;
     server.use(
       rest.post('/test', (req, res, ctx) => {
-        token = req.headers.get('Authorization') ?? '';
         return res(
-          ctx.status(200),
+          ctx.status(401),
           ctx.json({
-            code: 1,
-            message: 'error message',
+            code: 2,
+            message: 'error',
           })
         );
       })
     );
-    store.dispatch(updateToken({ token: 'token' }));
+    const dispatchSpy = jest.spyOn(store, 'dispatch');
+    let result;
     try {
       await ApiBase.post('/test');
     } catch (error) {
+      result = error;
     } finally {
-      expect(token).toBe('token');
-      expect(notificationSpy).toBeCalledTimes(1);
-      expect(notificationSpy).toBeCalledWith({
-        message: 'common.request.noticeFailTitle',
-        description: 'error message',
+      expect(window.location.href).toBe(href);
+      expect(result?.response?.data).toEqual({
+        code: 2,
+        message: 'error',
       });
-    }
-  });
-
-  test('should do not add token when request url is equal "/login"', async () => {
-    let token = '';
-    server.use(
-      rest.post('/login', (req, res, ctx) => {
-        token = req.headers.get('Authorization') ?? '';
-        return res(
-          ctx.status(200),
-          ctx.json({
-            code: 1,
-            message: 'error message',
-          })
-        );
-      })
-    );
-    store.dispatch(updateToken({ token: 'token' }));
-    try {
-      await ApiBase.post('/login');
-    } catch (error) {
-    } finally {
-      expect(token).toBe('');
+      expect(result?.response?.status).toBe(401);
+      expect(dispatchSpy).toBeCalledTimes(0);
     }
   });
 });

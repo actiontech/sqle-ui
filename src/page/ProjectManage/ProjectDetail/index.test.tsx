@@ -89,7 +89,7 @@ describe('test ProjectManage/ProjectDetail', () => {
       jest.advanceTimersByTime(3000);
     });
 
-    expect(dispatchSpy).toBeCalledTimes(3);
+    expect(dispatchSpy).toBeCalledTimes(4);
     expect(dispatchSpy).nthCalledWith(1, {
       payload: { bindProjects: [] },
       type: 'user/updateBindProjects',
@@ -101,6 +101,10 @@ describe('test ProjectManage/ProjectDetail', () => {
     expect(dispatchSpy).nthCalledWith(3, {
       payload: { token: '' },
       type: 'user/updateToken',
+    });
+    expect(dispatchSpy).nthCalledWith(4, {
+      payload: { managementPermissions: [] },
+      type: 'user/updateManagementPermissions',
     });
   });
 

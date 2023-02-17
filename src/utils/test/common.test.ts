@@ -2,6 +2,7 @@ import moment from 'moment';
 import {
   emailValidate,
   formatTime,
+  getCookie,
   getFileFromUploadChangeEvent,
   translateTimeForRequest,
 } from '../Common';
@@ -66,5 +67,20 @@ describe('utils/Common', () => {
         },
       })
     ).toEqual([]);
+  });
+
+  test('should return cookie value with key', () => {
+    Object.defineProperty(document, 'cookie', {
+      writable: true,
+      value: 'sqle-token=token-value; test-key=test-value',
+    });
+    expect(getCookie('sqle-token')).toBe('token-value');
+    expect(getCookie('test-key')).toBe('test-value');
+    expect(getCookie('unknown')).toBe('');
+
+    Object.defineProperty(document, 'cookie', {
+      writable: false,
+      value: '',
+    });
   });
 });

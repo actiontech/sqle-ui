@@ -17,21 +17,33 @@ import {
 import { SupportTheme } from '../../../../../theme';
 import UserNavigation from '../UserNavigation';
 import { createMemoryHistory } from 'history';
+import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
+import user from '../../../../../api/user';
 
 describe('test Nav/Header/UserNavigation', () => {
   let scopeDispatch: jest.Mock;
+  let logoutSpy: jest.SpyInstance;
   beforeEach(() => {
+    logoutSpy = mockLogout();
     mockUseSelector({
       user: { username: 'admin', theme: SupportTheme.LIGHT },
       locale: { language: SupportLanguage.zhCN },
     });
+    jest.useFakeTimers();
     scopeDispatch = mockUseDispatch().scopeDispatch;
   });
 
   afterEach(() => {
     scopeDispatch.mockClear();
     jest.clearAllMocks();
+    jest.useRealTimers();
   });
+
+  const mockLogout = () => {
+    const spy = jest.spyOn(user, 'logoutV1');
+    spy.mockImplementation(() => resolveThreeSecond({}));
+    return spy;
+  };
 
   test('should render username by redux state', () => {
     const { container, rerender } = render(<UserNavigation />);
@@ -67,7 +79,9 @@ describe('test Nav/Header/UserNavigation', () => {
     });
     renderWithMemoryRouter(<UserNavigation />);
     fireEvent.mouseEnter(screen.getByText('admin'));
-    await waitFor(() => screen.getByText(/common.logout/i));
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
     expect(screen.getByText('common.theme.light').parentNode).toHaveAttribute(
       'hidden'
     );
@@ -81,7 +95,9 @@ describe('test Nav/Header/UserNavigation', () => {
     });
     renderWithMemoryRouter(<UserNavigation />);
     fireEvent.mouseEnter(screen.getByText('admin'));
-    await waitFor(() => screen.getByText(/common.logout/i));
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
     expect(
       screen.getByText('common.theme.light').parentNode
     ).not.toHaveAttribute('hidden');
@@ -96,22 +112,32 @@ describe('test Nav/Header/UserNavigation', () => {
     renderWithServerRouter(<UserNavigation />, undefined, { history });
     expect(scopeDispatch).toBeCalledTimes(0);
     fireEvent.mouseEnter(screen.getByText('admin'));
-    await waitFor(() => screen.getByText(/common.logout/i));
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
     expect(history.location.pathname).toBe('/test');
+    expect(logoutSpy).toBeCalledTimes(0);
     fireEvent.click(screen.getByText('common.logout'));
-    expect(scopeDispatch).toBeCalledTimes(2);
-    expect(scopeDispatch).toBeCalledWith({
-      payload: {
-        role: '',
-        username: '',
-      },
+    expect(logoutSpy).toBeCalledTimes(1);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(scopeDispatch).toBeCalledTimes(4);
+    expect(scopeDispatch).nthCalledWith(1, {
+      payload: { bindProjects: [] },
+      type: 'user/updateBindProjects',
+    });
+    expect(scopeDispatch).nthCalledWith(2, {
+      payload: { username: '', role: '' },
       type: 'user/updateUser',
     });
-    expect(scopeDispatch).toBeCalledWith({
-      payload: {
-        token: '',
-      },
+    expect(scopeDispatch).nthCalledWith(3, {
+      payload: { token: '' },
       type: 'user/updateToken',
+    });
+    expect(scopeDispatch).nthCalledWith(4, {
+      payload: { managementPermissions: [] },
+      type: 'user/updateManagementPermissions',
     });
     expect(history.location.pathname).toBe('/');
   });
@@ -123,7 +149,9 @@ describe('test Nav/Header/UserNavigation', () => {
     expect(history.location.pathname).toBe('/test');
 
     fireEvent.mouseEnter(screen.getByText('admin'));
-    await waitFor(() => screen.getByText(/common.account/i));
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
 
     expect(screen.queryByText('common.account')).toBeInTheDocument();
     fireEvent.click(screen.getByText('common.account'));
