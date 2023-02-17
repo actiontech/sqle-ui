@@ -22,7 +22,7 @@ const mockList: IOperationRecordList[] = [
     operation_type_name: 'type1',
     operation_content: 'content1',
     project_name: 'default',
-    status: OperationRecordListStatusEnum.fail,
+    status: OperationRecordListStatusEnum.failed,
   },
 ];
 

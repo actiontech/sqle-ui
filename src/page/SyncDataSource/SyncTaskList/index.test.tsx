@@ -14,7 +14,7 @@ const tableList: IInstanceTaskResV1[] = [
   {
     db_type: 'mysql',
     id: 0,
-    last_sync_status: InstanceTaskResV1LastSyncStatusEnum.success,
+    last_sync_status: InstanceTaskResV1LastSyncStatusEnum.succeeded,
     last_sync_success_time: '2023-01-10',
     source: 'source1',
     url: 'http://192.168.1.1:3000',
@@ -23,7 +23,7 @@ const tableList: IInstanceTaskResV1[] = [
   {
     db_type: 'oracle',
     id: 1,
-    last_sync_status: InstanceTaskResV1LastSyncStatusEnum.fail,
+    last_sync_status: InstanceTaskResV1LastSyncStatusEnum.failed,
     last_sync_success_time: '2023-01-10',
     source: 'source1',
     url: 'http://192.168.1.1:3000',

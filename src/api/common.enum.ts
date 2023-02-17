@@ -113,15 +113,15 @@ export enum GetWorkflowTasksItemV1StatusEnum {
 }
 
 export enum InstanceTaskResV1LastSyncStatusEnum {
-  'success' = 'success',
+  'succeeded' = 'succeeded',
 
-  'fail' = 'fail'
+  'failed' = 'failed'
 }
 
 export enum OperationRecordListStatusEnum {
-  'success' = 'success',
+  'succeeded' = 'succeeded',
 
-  'fail' = 'fail'
+  'failed' = 'failed'
 }
 
 export enum RuleParamResV1TypeEnum {

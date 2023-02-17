@@ -44,9 +44,9 @@ const OperationRecordListTableHeader =
         dataIndex: 'status',
         title: () => i18n.t('operationRecord.list.column.status'),
         render: (status: OperationRecordListStatusEnum) => {
-          if (status === OperationRecordListStatusEnum.success) {
+          if (status === OperationRecordListStatusEnum.succeeded) {
             return <Tag color="green">{i18n.t('common.success')}</Tag>;
-          } else if (status === OperationRecordListStatusEnum.fail) {
+          } else if (status === OperationRecordListStatusEnum.failed) {
             return <Tag color="red">{i18n.t('common.fail')}</Tag>;
           }
         },
