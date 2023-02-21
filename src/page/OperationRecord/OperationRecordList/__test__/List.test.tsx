@@ -28,11 +28,13 @@ const mockList: IOperationRecordList[] = [
 
 describe('test OperationRecordList', () => {
   let getOperationRecordListSpy: jest.SpyInstance;
+  let exportOperationRecordListSpy: jest.SpyInstance;
   beforeEach(() => {
     mockUseOperationTypeName();
     mockUseOperationActions();
     mockUseProject();
     getOperationRecordListSpy = mockGetOperationRecordList();
+    exportOperationRecordListSpy = mockExportOperationRecordList();
     jest.useFakeTimers();
   });
   afterEach(() => {
@@ -43,6 +45,12 @@ describe('test OperationRecordList', () => {
 
   const mockGetOperationRecordList = () => {
     const spy = jest.spyOn(OperationRecord, 'getOperationRecordListV1');
+    spy.mockImplementation(() => resolveThreeSecond(mockList));
+    return spy;
+  };
+
+  const mockExportOperationRecordList = () => {
+    const spy = jest.spyOn(OperationRecord, 'getExportOperationRecordListV1');
     spy.mockImplementation(() => resolveThreeSecond(mockList));
     return spy;
   };
@@ -152,5 +160,101 @@ describe('test OperationRecordList', () => {
       page_index: 1,
       page_size: 10,
     });
+  });
+
+  test('should send request when clicking export button', async () => {
+    render(<OperationRecordList />);
+
+    expect(exportOperationRecordListSpy).toBeCalledTimes(0);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    fireEvent.click(screen.getByText('operationRecord.list.exportButtonText'));
+    expect(exportOperationRecordListSpy).toBeCalledTimes(1);
+    expect(exportOperationRecordListSpy).nthCalledWith(
+      1,
+      {},
+      { responseType: 'blob' }
+    );
+
+    expect(
+      screen.queryByText('operationRecord.list.exporting')
+    ).toBeInTheDocument();
+    expect(
+      screen
+        .getByText('operationRecord.list.exportButtonText')
+        .closest('button')
+    ).toBeDisabled();
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.queryByText('operationRecord.list.exporting')
+    ).not.toBeInTheDocument();
+    expect(
+      screen
+        .getByText('operationRecord.list.exportButtonText')
+        .closest('button')
+    ).not.toBeDisabled();
+
+    expect(
+      screen.queryByText('operationRecord.list.exportSuccessTips')
+    ).toBeInTheDocument();
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.queryByText('operationRecord.list.exportSuccessTips')
+    ).not.toBeInTheDocument();
+
+    selectOptionByIndex(
+      'operationRecord.list.filterForm.projectName',
+      'project_name_1'
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    selectOptionByIndex(
+      'operationRecord.list.filterForm.operationType',
+      '操作类型',
+      0
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    selectOptionByIndex(
+      'operationRecord.list.filterForm.operationAction',
+      '操作内容',
+      0
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    fireEvent.change(
+      screen.getByLabelText('operationRecord.list.filterForm.operator'),
+      { target: { value: 'admin' } }
+    );
+
+    fireEvent.click(screen.getByText('operationRecord.list.exportButtonText'));
+
+    expect(exportOperationRecordListSpy).toBeCalledTimes(2);
+    expect(exportOperationRecordListSpy).nthCalledWith(
+      2,
+      {
+        fuzzy_search_operate_user_name: 'admin',
+        filter_operate_action: 'operation_action',
+        filter_operate_project_name: 'project_name_1',
+        filter_operate_time_from: undefined,
+        filter_operate_time_to: undefined,
+        filter_operate_type_name: 'operation_type_name',
+      },
+      { responseType: 'blob' }
+    );
   });
 });
