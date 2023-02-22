@@ -361,6 +361,15 @@ describe('test AuditResultCollection', () => {
       screen.getAllByText('order.auditResultCollection.table.sqlExecute')[1]
     );
 
+    expect(screen.queryByText('common.ok')).toBeInTheDocument();
+    expect(
+      screen.queryByText(
+        'order.auditResultCollection.table.sqlExecuteConfirmTips'
+      )
+    ).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('common.ok'));
+
     expect(mockExecuteTask).toBeCalledTimes(1);
     expect(mockExecuteTask).toBeCalledWith({
       workflow_id: workflowId,

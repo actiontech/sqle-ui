@@ -76,7 +76,8 @@ export default {
     reject: '驳回',
     rejectFull: '全部驳回',
     markManually: '标记为人工上线',
-    markManuallyConfirmTips: '当前操作仅修改工单状态，而不对数据源产生操作，是否确认标记为人工上线?',
+    markManuallyConfirmTips:
+      '当前操作仅修改工单状态，而不对数据源产生操作，是否确认标记为人工上线?',
     rejectTips:
       '被驳回的工单必须修改审核语句，审核语句只能由工单创建者修改，在您修改了审核语句之后，工单即会从新进入审核流程',
     wait: '正在等待用户{{username}}进行操作',
@@ -87,7 +88,8 @@ export default {
     modifySql: '修改审核语句',
     waitModifySql: '等待用户{{username}}修改审核语句',
     batchSqlExecute: '批量立即上线',
-    batchSqlExecuteConfirmTips: '当前操作将立即执行工单下的所有SQL语句，且已经设置了定时上线的数据源仍然在定时时间上线，不会立即上线，是否确认立即批量上线?',
+    batchSqlExecuteConfirmTips:
+      '当前操作将立即执行工单下的所有SQL语句，且已经设置了定时上线的数据源仍然在定时时间上线，不会立即上线，是否确认立即批量上线?',
     sqlReview: '审核通过',
     unknown: '未知步骤',
 
@@ -196,6 +198,8 @@ export default {
       scheduleTime: '定时上线',
       cancelExecScheduled: '取消定时上线',
       cancelExecScheduledTips: '取消定时上线成功',
+      sqlExecuteConfirmTips:
+        '当前操作将立即执行该数据源上的sql语句, 是否确认立即上线',
     },
   },
 };
