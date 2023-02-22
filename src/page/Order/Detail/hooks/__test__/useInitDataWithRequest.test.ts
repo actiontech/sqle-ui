@@ -50,6 +50,7 @@ describe('test Order/Detail/useInitDataWithRequest', () => {
     const { result, waitForNextUpdate } = renderHook(() =>
       useInitDataWithRequest()
     );
+    expect(result.current.initLoading).toBeTruthy();
     expect(getWorkflowSpy).toBeCalledTimes(1);
     expect(getWorkflowSpy).toBeCalledWith({
       workflow_id: orderId,
@@ -59,11 +60,13 @@ describe('test Order/Detail/useInitDataWithRequest', () => {
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
+    expect(result.current.initLoading).toBeTruthy();
 
     expect(result.current.orderInfo).toEqual(order);
 
     jest.advanceTimersByTime(3000);
     await waitForNextUpdate();
+    expect(result.current.initLoading).toBeFalsy();
 
     expect(getTaskSpy).toBeCalledTimes(order.record?.tasks?.length!);
     expect(getTaskSpy).toBeCalledWith({

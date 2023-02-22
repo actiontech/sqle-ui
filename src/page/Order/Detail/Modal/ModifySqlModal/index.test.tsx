@@ -90,8 +90,9 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
       />
     );
     expect(getSqlContentSpy).not.toBeCalled();
-    tempTask.sql_source = AuditTaskResV1SqlSourceEnum.mybatis_xml_file;
     cleanup();
+
+    tempTask.sql_source = AuditTaskResV1SqlSourceEnum.mybatis_xml_file;
     renderWithTheme(
       <ModifySqlModal
         visible={true}
@@ -102,8 +103,9 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
       />
     );
     expect(getSqlContentSpy).not.toBeCalled();
-    tempTask.sql_source = AuditTaskResV1SqlSourceEnum.form_data;
     cleanup();
+
+    tempTask.sql_source = AuditTaskResV1SqlSourceEnum.form_data;
     renderWithTheme(
       <ModifySqlModal
         visible={true}

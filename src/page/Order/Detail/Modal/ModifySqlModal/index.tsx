@@ -1,5 +1,5 @@
 import { useBoolean } from 'ahooks';
-import { Alert, Button, Form, Modal, Space } from 'antd';
+import { Alert, Button, Form, Modal, Space, Spin } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -37,6 +37,10 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
 
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
     useBoolean();
+  const [
+    getAllSqlStatementLoading,
+    { setTrue: startGetAllSqlStatement, setFalse: finishGetAllSqlStatement },
+  ] = useBoolean(false);
   const [sqlStatementValue, setSqlStatementValue] =
     useState<Record<string, string>>();
 
@@ -95,15 +99,23 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
       const formDataTasks = currentOrderTasks.filter(
         (v) => v.sql_source === AuditTaskResV1SqlSourceEnum.form_data
       );
-      Promise.all(
-        formDataTasks.map((v) => request(v.task_id?.toString() ?? ''))
-      ).then((res) => {
-        res.forEach((v) => {
-          if (v) {
-            setSqlStatementValue((sql) => ({ ...sql, [v.taskId]: v.sql }));
-          }
-        });
-      });
+
+      if (formDataTasks.length > 0) {
+        startGetAllSqlStatement();
+        Promise.all(
+          formDataTasks.map((v) => request(v.task_id?.toString() ?? ''))
+        )
+          .then((res) => {
+            res.forEach((v) => {
+              if (v) {
+                setSqlStatementValue((sql) => ({ ...sql, [v.taskId]: v.sql }));
+              }
+            });
+          })
+          .finally(() => {
+            finishGetAllSqlStatement();
+          });
+      }
     };
 
     if (visible) {
@@ -113,10 +125,19 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
           currentOrderTasks[0].task_id?.toString() ?? ''
         );
       }
+    } else {
+      setSqlStatementValue(undefined);
     }
-  }, [currentOrderTasks, visible, sqlMode]);
+  }, [
+    currentOrderTasks,
+    visible,
+    sqlMode,
+    startGetAllSqlStatement,
+    finishGetAllSqlStatement,
+    form,
+  ]);
 
-  return (
+  return visible ? (
     <Modal
       title={t('order.modifySql.title')}
       width={ModalSize.big}
@@ -134,29 +155,31 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
         </Space>
       }
     >
-      <Form form={form} {...ModalFormLayout}>
-        <EmptyBox
-          if={sqlMode === WorkflowResV2ModeEnum.different_sqls}
-          defaultNode={
-            <SqlStatementForm
+      <Spin spinning={getAllSqlStatementLoading} delay={400}>
+        <Form form={form} {...ModalFormLayout}>
+          <EmptyBox
+            if={sqlMode === WorkflowResV2ModeEnum.different_sqls}
+            defaultNode={
+              <SqlStatementForm
+                form={form}
+                sqlStatement={
+                  sqlStatementValue?.[currentOrderTasks[0]?.task_id ?? '']
+                }
+                hideUpdateMybatisFile={true}
+              />
+            }
+          >
+            <SqlStatementFormTabs
+              ref={sqlStatementFormTabsRef}
               form={form}
-              sqlStatement={
-                sqlStatementValue?.[currentOrderTasks[0]?.task_id ?? '']
-              }
+              sqlStatementInfo={sqlStatementInfo}
               hideUpdateMybatisFile={true}
             />
-          }
-        >
-          <SqlStatementFormTabs
-            ref={sqlStatementFormTabsRef}
-            form={form}
-            sqlStatementInfo={sqlStatementInfo}
-            hideUpdateMybatisFile={true}
-          />
-        </EmptyBox>
-      </Form>
+          </EmptyBox>
+        </Form>
+      </Spin>
     </Modal>
-  );
+  ) : null;
 };
 
 export default ModifySqlModal;
