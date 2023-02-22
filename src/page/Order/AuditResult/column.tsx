@@ -22,6 +22,7 @@ import {
 } from '../../../hooks/useStaticStatus/index.data';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
+import { formatTime } from '../../../utils/Common';
 import HighlightCode from '../../../utils/HighlightCode';
 import { floatToPercent } from '../../../utils/Math';
 import { checkTimeInWithMaintenanceTime } from '../Detail/OrderSteps/utils';
@@ -233,15 +234,24 @@ export const auditResultOverviewColumn: (
     {
       dataIndex: 'exec_start_time',
       title: () => i18n.t('order.auditResultCollection.table.execStartTime'),
+      render: (time) => {
+        return formatTime(time);
+      },
     },
     {
       dataIndex: 'exec_end_time',
       title: () => i18n.t('order.auditResultCollection.table.execEndTime'),
+      render: (time) => {
+        return formatTime(time);
+      },
     },
     {
       dataIndex: 'schedule_time',
       title: () =>
         i18n.t('order.auditResultCollection.table.scheduleExecuteTime'),
+      render: (time) => {
+        return formatTime(time);
+      },
     },
     {
       dataIndex: 'operator',
