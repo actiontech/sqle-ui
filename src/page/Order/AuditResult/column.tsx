@@ -1,4 +1,4 @@
-import { Space, Tag, Typography } from 'antd';
+import { Popconfirm, Space, Tag, Typography } from 'antd';
 import moment from 'moment';
 import {
   IAuditTaskSQLResV1,
@@ -250,7 +250,10 @@ export const auditResultOverviewColumn: (
         const taskId = record.task_id?.toString() ?? '';
         return (
           <Space>
-            <Typography.Link
+            <Popconfirm
+              overlayClassName="popconfirm-small"
+              placement="topRight"
+              okText={i18n.t('common.ok')}
               disabled={
                 !enableSqlExecute(
                   record.current_step_assignee_user_name_list,
@@ -258,13 +261,32 @@ export const auditResultOverviewColumn: (
                   record.instance_maintenance_times
                 )
               }
-              onClick={(e) => {
-                e.stopPropagation();
+              title={i18n.t(
+                'order.auditResultCollection.table.sqlExecuteConfirmTips'
+              )}
+              onConfirm={(e) => {
+                e?.stopPropagation();
                 sqlExecuteHandle(taskId);
               }}
+              onCancel={(e) => {
+                e?.stopPropagation();
+              }}
             >
-              {i18n.t('order.auditResultCollection.table.sqlExecute')}
-            </Typography.Link>
+              <Typography.Link
+                disabled={
+                  !enableSqlExecute(
+                    record.current_step_assignee_user_name_list,
+                    record.status,
+                    record.instance_maintenance_times
+                  )
+                }
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
+                {i18n.t('order.auditResultCollection.table.sqlExecute')}
+              </Typography.Link>
+            </Popconfirm>
             <EmptyBox
               if={
                 record.status ===
