@@ -8,6 +8,7 @@ import {
   PageHeader,
   Popconfirm,
   Space,
+  Spin,
   Typography,
 } from 'antd';
 import { cloneDeep } from 'lodash';
@@ -43,7 +44,7 @@ const Order = () => {
   const [refreshOverviewFlag, { toggle: refreshOverviewAction }] =
     useToggle(false);
 
-  const { taskInfos, orderInfo, refreshOrder, refreshTask } =
+  const { taskInfos, orderInfo, refreshOrder, refreshTask, initLoading } =
     useInitDataWithRequest();
 
   const {
@@ -146,7 +147,7 @@ const Order = () => {
   ]);
 
   return (
-    <>
+    <Spin spinning={initLoading} delay={400}>
       <PageHeader
         title={
           <Space>
@@ -302,7 +303,7 @@ const Order = () => {
           close={closeHistory}
         />
       </section>
-    </>
+    </Spin>
   );
 };
 
