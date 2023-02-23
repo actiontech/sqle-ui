@@ -87,7 +87,7 @@ describe('test OperationRecordList', () => {
 
     selectOptionByIndex(
       'operationRecord.list.filterForm.operationType',
-      '操作类型',
+      '数据源',
       0
     );
     await waitFor(() => {
@@ -96,7 +96,7 @@ describe('test OperationRecordList', () => {
 
     selectOptionByIndex(
       'operationRecord.list.filterForm.operationAction',
-      '操作内容',
+      '编辑数据源',
       0
     );
     await waitFor(() => {
@@ -118,11 +118,11 @@ describe('test OperationRecordList', () => {
       page_index: 1,
       page_size: 10,
       fuzzy_search_operate_user_name: 'admin',
-      filter_operate_action: 'operation_action',
+      filter_operate_action: 'edit_instance',
       filter_operate_project_name: 'project_name_1',
       filter_operate_time_from: undefined,
       filter_operate_time_to: undefined,
-      filter_operate_type_name: 'operation_type_name',
+      filter_operate_type_name: 'instance',
     });
 
     fireEvent.click(screen.getByText('common.reset'));

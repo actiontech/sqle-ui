@@ -1616,6 +1616,8 @@ export interface IOperationActionList {
   desc?: string;
 
   operation_action?: string;
+
+  operation_type?: string;
 }
 
 export interface IOperationRecordList {

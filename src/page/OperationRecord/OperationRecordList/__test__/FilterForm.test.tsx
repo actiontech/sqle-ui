@@ -53,7 +53,7 @@ describe('test OperationRecordList/FilterForm', () => {
   });
 
   test('should be call "updateOperationRecordListFilter" when clicking submit button', async () => {
-    const { container } = render(
+    const { baseElement } = render(
       <FilterForm
         updateOperationRecordListFilter={mockUpdateOperationRecordListFilter}
       />
@@ -75,7 +75,7 @@ describe('test OperationRecordList/FilterForm', () => {
 
     selectOptionByIndex(
       'operationRecord.list.filterForm.operationType',
-      '操作类型',
+      '数据源',
       0
     );
     await waitFor(() => {
@@ -84,7 +84,7 @@ describe('test OperationRecordList/FilterForm', () => {
 
     selectOptionByIndex(
       'operationRecord.list.filterForm.operationAction',
-      '操作内容',
+      '编辑数据源',
       0
     );
     await waitFor(() => {
@@ -102,8 +102,8 @@ describe('test OperationRecordList/FilterForm', () => {
     });
     expect(mockUpdateOperationRecordListFilter).toBeCalledTimes(1);
     expect(mockUpdateOperationRecordListFilter).toBeCalledWith({
-      operationAction: 'operation_action',
-      operationType: 'operation_type_name',
+      operationAction: 'edit_instance',
+      operationType: 'instance',
       operator: 'admin',
       projectName: 'project_name_1',
     });
@@ -116,7 +116,19 @@ describe('test OperationRecordList/FilterForm', () => {
     expect(
       screen.getByLabelText('operationRecord.list.filterForm.operator')
     ).toHaveValue('');
-    expect(container).toMatchSnapshot();
+
+    expect(baseElement).toMatchSnapshot();
+
+    selectOptionByIndex(
+      'operationRecord.list.filterForm.operationType',
+      '项目',
+      0
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    expect(baseElement).toMatchSnapshot();
   });
 
   test('should send empty string when select platform operation', async () => {
