@@ -1,5 +1,4 @@
 import { Col, Row, Form, DatePicker, Select, Space, Button, Input } from 'antd';
-import { useForm } from 'antd/lib/form/Form';
 import moment from 'moment';
 import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -23,9 +22,9 @@ const computeDisabledDate = (current: moment.Moment) => {
 
 const FilterForm: React.FC<OperationRecordListFilterFormProps> = ({
   updateOperationRecordListFilter,
+  form,
 }) => {
   const { t } = useTranslation();
-  const [form] = useForm<OperationRecordListFilterFormFields>();
 
   const { projectList, updateProjectList } = useProject();
   const { updateOperationTypeNameList, generateOperationTypeNameSelectOption } =

@@ -76,6 +76,18 @@ exports[`test OperationRecordList should match snapshot 1`] = `
                 </div>
               </div>
             </div>
+            <div
+              class="ant-card-extra"
+            >
+              <button
+                class="ant-btn ant-btn-primary"
+                type="button"
+              >
+                <span>
+                  operationRecord.list.exportButtonText
+                </span>
+              </button>
+            </div>
           </div>
         </div>
         <div
@@ -794,6 +806,18 @@ exports[`test OperationRecordList should match snapshot 2`] = `
                   </button>
                 </div>
               </div>
+            </div>
+            <div
+              class="ant-card-extra"
+            >
+              <button
+                class="ant-btn ant-btn-primary"
+                type="button"
+              >
+                <span>
+                  operationRecord.list.exportButtonText
+                </span>
+              </button>
             </div>
           </div>
         </div>

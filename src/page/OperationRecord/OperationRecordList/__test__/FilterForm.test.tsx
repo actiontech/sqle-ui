@@ -1,4 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks/dom';
+import { useForm } from 'antd/lib/form/Form';
 import { getProjectTipsV1FunctionalModuleEnum } from '../../../../api/project/index.enum';
 import { selectOptionByIndex } from '../../../../testUtils/customQuery';
 import {
@@ -28,11 +30,13 @@ describe('test OperationRecordList/FilterForm', () => {
   });
 
   test('should match snapshot', async () => {
+    const { result } = renderHook(() => useForm());
     expect(getOperationTypeNameListSpy).toBeCalledTimes(0);
     expect(getOperationActionsSpy).toBeCalledTimes(0);
     expect(getProjectTips).toBeCalledTimes(0);
     const { container } = render(
       <FilterForm
+        form={result.current[0]}
         updateOperationRecordListFilter={mockUpdateOperationRecordListFilter}
       />
     );
@@ -53,8 +57,11 @@ describe('test OperationRecordList/FilterForm', () => {
   });
 
   test('should be call "updateOperationRecordListFilter" when clicking submit button', async () => {
+    const { result } = renderHook(() => useForm());
+
     const { container } = render(
       <FilterForm
+        form={result.current[0]}
         updateOperationRecordListFilter={mockUpdateOperationRecordListFilter}
       />
     );
@@ -120,12 +127,15 @@ describe('test OperationRecordList/FilterForm', () => {
   });
 
   test('should send empty string when select platform operation', async () => {
+    const { result } = renderHook(() => useForm());
+
     getProjectTips.mockImplementation(() =>
       resolveThreeSecond([{ project_name: '' }])
     );
 
     render(
       <FilterForm
+        form={result.current[0]}
         updateOperationRecordListFilter={mockUpdateOperationRecordListFilter}
       />
     );

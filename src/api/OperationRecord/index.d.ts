@@ -25,6 +25,20 @@ export interface IGetOperationRecordListV1Params {
 export interface IGetOperationRecordListV1Return
   extends IGetOperationRecordListResV1 {}
 
+export interface IGetExportOperationRecordListV1Params {
+  filter_operate_time_from?: string;
+
+  filter_operate_time_to?: string;
+
+  filter_operate_project_name?: string;
+
+  fuzzy_search_operate_user_name?: string;
+
+  filter_operate_type_name?: string;
+
+  filter_operate_action?: string;
+}
+
 export interface IGetOperationActionListReturn
   extends IGetOperationActionListResV1 {}
 
