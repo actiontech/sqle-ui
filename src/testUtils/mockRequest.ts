@@ -280,21 +280,44 @@ export const mockUseMember = () => {
 
 export const mockUseTaskSource = () => {
   const spy = jest.spyOn(sync_instance, 'GetSyncTaskSourceTips');
-  spy.mockImplementation(() => resolveThreeSecond([{ source: 'source1', db_types: ['mysql'] }, { source: 'source2', db_types: ['oracle'] }]))
+  spy.mockImplementation(() =>
+    resolveThreeSecond([
+      { source: 'source1', db_types: ['mysql'] },
+      { source: 'source2', db_types: ['oracle'] },
+    ])
+  );
   return spy;
-}
+};
 
 export const mockUseOperationTypeName = () => {
   const spy = jest.spyOn(OperationRecord, 'GetOperationTypeNameList');
-  spy.mockImplementation(() => resolveThreeSecond([{ operation_type_name: 'operation_type_name', desc: '操作类型' }]))
+  spy.mockImplementation(() =>
+    resolveThreeSecond([
+      { operation_type_name: 'project', desc: '项目' },
+      { operation_type_name: 'instance', desc: '数据源' },
+    ])
+  );
   return spy;
-}
+};
 
 export const mockUseOperationActions = () => {
   const spy = jest.spyOn(OperationRecord, 'getOperationActionList');
-  spy.mockImplementation(() => resolveThreeSecond([{ operation_action: 'operation_action', desc: '操作内容' }]))
+  spy.mockImplementation(() =>
+    resolveThreeSecond([
+      {
+        operation_action: 'edit_instance',
+        desc: '编辑数据源',
+        operation_type: 'instance',
+      },
+      {
+        operation_action: 'create_project',
+        desc: '创建项目',
+        operation_type: 'project',
+      },
+    ])
+  );
   return spy;
-}
+};
 
 export const AuditPlanTypesData = [
   { type: 'default', desc: '自定义', instance_type: '' },

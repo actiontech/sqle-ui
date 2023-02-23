@@ -1,7 +1,7 @@
 import { Col, Row, Form, DatePicker, Select, Space, Button, Input } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import moment from 'moment';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   OperationRecordListFilterFormFields,
@@ -26,6 +26,8 @@ const FilterForm: React.FC<OperationRecordListFilterFormProps> = ({
 }) => {
   const { t } = useTranslation();
   const [form] = useForm<OperationRecordListFilterFormFields>();
+  const [currentOperationTypeName, setCurrentOperationTypeName] =
+    useState<string>();
 
   const { projectList, updateProjectList } = useProject();
   const { updateOperationTypeNameList, generateOperationTypeNameSelectOption } =
@@ -35,6 +37,7 @@ const FilterForm: React.FC<OperationRecordListFilterFormProps> = ({
 
   const resetFilter = () => {
     form.resetFields();
+    setCurrentOperationTypeName('');
     updateOperationRecordListFilter({});
   };
 
@@ -100,6 +103,7 @@ const FilterForm: React.FC<OperationRecordListFilterFormProps> = ({
             label={t('operationRecord.list.filterForm.operationType')}
           >
             <Select
+              onChange={(v: string) => setCurrentOperationTypeName(v)}
               placeholder={t('common.form.placeholder.searchSelect', {
                 name: t('operationRecord.list.filterForm.operationType'),
               })}
@@ -119,7 +123,7 @@ const FilterForm: React.FC<OperationRecordListFilterFormProps> = ({
                 name: t('operationRecord.list.filterForm.operationAction'),
               })}
             >
-              {generateOperationActionSelectOption()}
+              {generateOperationActionSelectOption(currentOperationTypeName)}
             </Select>
           </Form.Item>
         </Col>

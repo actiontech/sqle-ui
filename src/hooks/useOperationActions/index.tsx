@@ -29,18 +29,24 @@ const useOperationActions = () => {
       });
   }, [setFalse, setTrue]);
 
-  const generateOperationActionSelectOption = React.useCallback(() => {
-    return operationActions.map((content) => {
-      return (
-        <Select.Option
-          key={content.operation_action}
-          value={content.operation_action ?? ''}
-        >
-          {content.desc}
-        </Select.Option>
-      );
-    });
-  }, [operationActions]);
+  const generateOperationActionSelectOption = React.useCallback(
+    (type?: string) => {
+      return operationActions.map((content) => {
+        if (!type || type === content.operation_type) {
+          return (
+            <Select.Option
+              key={content.operation_action}
+              value={content.operation_action ?? ''}
+            >
+              {content.desc}
+            </Select.Option>
+          );
+        }
+        return null;
+      });
+    },
+    [operationActions]
+  );
 
   return {
     operationActions,
