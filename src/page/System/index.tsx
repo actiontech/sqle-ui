@@ -13,6 +13,7 @@ import { initSystemModalStatus } from '../../store/system';
 import { ModalName } from '../../data/ModalName';
 import Oauth from './Oauth/Oauth';
 import DingTalkSetting from './DingTalkSetting';
+import LarkSetting from './LarkSetting';
 
 const System = () => {
   const { t } = useTranslation();
@@ -37,6 +38,7 @@ const System = () => {
       </PageHeader>
       <section className="padding-content">
         <Space direction="vertical" className="full-width-element">
+          <LarkSetting />
           <DingTalkSetting />
           <SMTPSetting />
           {/* IFTRUE_isEE */}
