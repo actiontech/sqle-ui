@@ -137,12 +137,13 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
     form,
   ]);
 
-  return visible ? (
+  return (
     <Modal
       title={t('order.modifySql.title')}
       width={ModalSize.big}
       visible={visible}
       closable={false}
+      destroyOnClose={true}
       footer={
         <Space>
           <Alert message={t('order.modifySql.submitTips')} type="warning" />
@@ -179,7 +180,7 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
         </Form>
       </Spin>
     </Modal>
-  ) : null;
+  );
 };
 
 export default ModifySqlModal;
