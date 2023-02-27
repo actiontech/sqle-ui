@@ -570,16 +570,18 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-01
+                                            2022-09-01 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
-                                          />
+                                          >
+                                            
+                                          </td>
                                           <td
                                             class="ant-table-cell"
                                           >
@@ -656,17 +658,17 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-01
+                                            2022-09-01 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
@@ -739,17 +741,17 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-01
+                                            2022-09-01 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
@@ -822,17 +824,17 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-01
+                                            2022-09-01 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
@@ -2643,16 +2645,18 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-01
+                                            2022-09-01 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
-                                          />
+                                          >
+                                            
+                                          </td>
                                           <td
                                             class="ant-table-cell"
                                           >
@@ -2729,17 +2733,17 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-01
+                                            2022-09-01 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
@@ -2812,17 +2816,17 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-01
+                                            2022-09-01 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
@@ -2895,17 +2899,17 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-01
+                                            2022-09-01 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
@@ -3543,16 +3547,18 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-01
+                                            2022-09-01 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
-                                          />
+                                          >
+                                            
+                                          </td>
                                           <td
                                             class="ant-table-cell"
                                           >
@@ -3629,17 +3635,17 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-01
+                                            2022-09-01 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
@@ -3712,17 +3718,17 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-01
+                                            2022-09-01 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
@@ -3795,17 +3801,17 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-01
+                                            2022-09-01 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            2022-09-30
+                                            2022-09-30 00:00:00
                                           </td>
                                           <td
                                             class="ant-table-cell"

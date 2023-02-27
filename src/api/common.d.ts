@@ -502,6 +502,12 @@ export interface IExplainClassicResult {
   }>;
 }
 
+export interface IFeishuConfigurationV1 {
+  app_id?: string;
+
+  is_feishu_notification_enabled?: boolean;
+}
+
 export interface IFullSyncAuditPlanSQLsReqV1 {
   audit_plan_sql_list?: IAuditPlanSQLReqV1[];
 }
@@ -664,6 +670,14 @@ export interface IGetDriversResV1 {
   code?: number;
 
   data?: IDriversResV1;
+
+  message?: string;
+}
+
+export interface IGetFeishuConfigurationResV1 {
+  code?: number;
+
+  data?: IFeishuConfigurationV1;
 
   message?: string;
 }
@@ -1964,6 +1978,20 @@ export interface ITestDingTalkConfigResV1 {
   message?: string;
 }
 
+export interface ITestFeishuConfigResDataV1 {
+  error_message?: string;
+
+  is_message_sent_normally?: boolean;
+}
+
+export interface ITestFeishuConfigResV1 {
+  code?: number;
+
+  data?: ITestFeishuConfigResDataV1;
+
+  message?: string;
+}
+
 export interface ITestSMTPConfigurationReqV1 {
   recipient_addr?: string;
 }
@@ -2084,6 +2112,14 @@ export interface IUpdateDingTalkConfigurationReqV1 {
   app_secret: string;
 
   is_enable_ding_talk_notify: boolean;
+}
+
+export interface IUpdateFeishuConfigurationReqV1 {
+  app_id?: string;
+
+  app_secret?: string;
+
+  is_feishu_notification_enabled?: boolean;
 }
 
 export interface IUpdateInstanceReqV1 {

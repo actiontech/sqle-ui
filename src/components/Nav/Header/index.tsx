@@ -1,5 +1,4 @@
 import { Space } from 'antd';
-import LanguageSelect from '../../LanguageSelect';
 import HeaderMenu from './Component/HeaderMenu';
 import Logo from './Component/Logo';
 import MoreAction from './Component/MoreAction';
@@ -21,7 +20,8 @@ const Header: React.FC = () => {
         {/* IFTRUE_isEE */}
         <OperationRecordNavigation />
         {/* FITRUE_isEE */}
-        <LanguageSelect />
+
+        {/* <LanguageSelect /> */}
         <UserNavigation />
         <MoreAction />
       </Space>

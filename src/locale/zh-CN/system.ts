@@ -11,6 +11,14 @@ export default {
     license: 'License',
     wechat: '企业微信配置',
     oauth: 'Oauth2.0配置',
+    lark: '飞书配置',
+  },
+
+  lark: {
+    enable: '是否启用飞书推送',
+    test: '测试',
+    testing: '正在向飞书推送消息...',
+    testSuccess: '已成功将消息推送至指定账号',
   },
 
   dingTalk: {

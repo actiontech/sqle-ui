@@ -12,6 +12,10 @@ import {
   IUpdateDingTalkConfigurationV1Return,
   ITestDingTalkConfigV1Return,
   IGetDriversV1Return,
+  IGetFeishuConfigurationV1Return,
+  IUpdateFeishuConfigurationV1Params,
+  IUpdateFeishuConfigurationV1Return,
+  ITestFeishuConfigV1Return,
   IGetLDAPConfigurationV1Return,
   IUpdateLDAPConfigurationV1Params,
   IUpdateLDAPConfigurationV1Return,
@@ -72,6 +76,34 @@ class ConfigurationService extends ServiceBase {
   public getDriversV1(options?: AxiosRequestConfig) {
     return this.get<IGetDriversV1Return>(
       '/v1/configurations/drivers',
+      undefined,
+      options
+    );
+  }
+
+  public getFeishuConfigurationV1(options?: AxiosRequestConfig) {
+    return this.get<IGetFeishuConfigurationV1Return>(
+      '/v1/configurations/feishu',
+      undefined,
+      options
+    );
+  }
+
+  public updateFeishuConfigurationV1(
+    params: IUpdateFeishuConfigurationV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.patch<IUpdateFeishuConfigurationV1Return>(
+      '/v1/configurations/feishu',
+      paramsData,
+      options
+    );
+  }
+
+  public testFeishuConfigV1(options?: AxiosRequestConfig) {
+    return this.post<ITestFeishuConfigV1Return>(
+      '/v1/configurations/feishu/test',
       undefined,
       options
     );
