@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { WorkflowResV1ModeEnum } from '../../../../../api/common.enum';
+import { WorkflowResV2ModeEnum } from '../../../../../api/common.enum';
 import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
 import useModifySql from '../useModifySql';
 import { instanceWorkflowTemplate, taskInfo } from '../../__testData__';
@@ -74,7 +74,7 @@ describe('Order/useModifySql', () => {
 
   test('should return default value', () => {
     const { result } = renderHook(() =>
-      useModifySql(WorkflowResV1ModeEnum.same_sqls)
+      useModifySql(WorkflowResV2ModeEnum.same_sqls)
     );
     expect(result.current.modifySqlModalVisibility).toBe(false);
     expect(result.current.taskInfos).toEqual([]);
@@ -82,7 +82,7 @@ describe('Order/useModifySql', () => {
 
   test('should toggle visible value when call openModifySqlModal and closeModifySqlModal', async () => {
     const { result } = renderHook(() =>
-      useModifySql(WorkflowResV1ModeEnum.same_sqls)
+      useModifySql(WorkflowResV2ModeEnum.same_sqls)
     );
     expect(result.current.modifySqlModalVisibility).toBe(false);
     act(() => {
@@ -96,8 +96,8 @@ describe('Order/useModifySql', () => {
   });
 
   test('should set tempTaskId and pass rage and instance name and set visible to false when call modifySqlSubmit', async () => {
-    const { result } = renderHook(() =>
-      useModifySql(WorkflowResV1ModeEnum.same_sqls)
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useModifySql(WorkflowResV2ModeEnum.same_sqls)
     );
     expect(createAndAuditTaskSpy).toBeCalledTimes(0);
     expect(auditTasksGroupIdSpy).toBeCalledTimes(0);
@@ -113,18 +113,21 @@ describe('Order/useModifySql', () => {
     act(() => {
       result.current.modifySqlSubmit(sameSqlValues, 0, '');
     });
-    expect(result.current.modifySqlModalVisibility).toBe(false);
     expect(createAndAuditTaskSpy).toBeCalledTimes(0);
     expect(createAuditTasksSpy).toBeCalledTimes(1);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    expect(result.current.modifySqlModalVisibility).toBe(true);
     expect(auditTasksGroupIdSpy).toBeCalledTimes(1);
+    jest.advanceTimersByTime(3000);
+    await waitForNextUpdate();
+    expect(result.current.modifySqlModalVisibility).toBe(false);
   });
 
   test('should reset all state when call resetAllState', () => {
     const { result } = renderHook(() =>
-      useModifySql(WorkflowResV1ModeEnum.same_sqls)
+      useModifySql(WorkflowResV2ModeEnum.same_sqls)
     );
     expect(result.current.modifySqlModalVisibility).toBe(false);
     act(() => {
@@ -141,7 +144,7 @@ describe('Order/useModifySql', () => {
 
   test('should not close modal when sql mode is equal different', async () => {
     const { result } = renderHook(() =>
-      useModifySql(WorkflowResV1ModeEnum.different_sqls)
+      useModifySql(WorkflowResV2ModeEnum.different_sqls)
     );
     expect(createAndAuditTaskSpy).toBeCalledTimes(0);
     expect(auditTasksGroupIdSpy).toBeCalledTimes(0);

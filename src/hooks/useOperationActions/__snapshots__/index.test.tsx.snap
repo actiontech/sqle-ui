@@ -213,12 +213,12 @@ exports[`useOperationContents should get group data from request 3`] = `
             style="height: 0px; width: 0px; overflow: hidden;"
           >
             <div
-              aria-label="操作内容"
+              aria-label="创建项目"
               aria-selected="false"
               id="rc_select_TEST_OR_SSR_list_0"
               role="option"
             >
-              operation_action
+              create_project
             </div>
           </div>
           <div
@@ -237,12 +237,12 @@ exports[`useOperationContents should get group data from request 3`] = `
                   <div
                     aria-selected="false"
                     class="ant-select-item ant-select-item-option"
-                    title="操作内容"
+                    title="创建项目"
                   >
                     <div
                       class="ant-select-item-option-content"
                     >
-                      操作内容
+                      创建项目
                     </div>
                     <span
                       aria-hidden="true"

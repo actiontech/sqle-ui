@@ -29,7 +29,7 @@ const useModifySql = (sqlMode: WorkflowResV2ModeEnum) => {
       currentTabKey: string
     ) => {
       if (sqlMode === WorkflowResV2ModeEnum.same_sqls) {
-        auditOrderWithSameSql(values);
+        await auditOrderWithSameSql(values);
         closeModifySqlModal();
       } else {
         auditOrderWthDifferenceSql(values, currentTabIndex, currentTabKey);
