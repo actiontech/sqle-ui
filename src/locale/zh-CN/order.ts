@@ -23,6 +23,7 @@ export default {
   closeOrder: {
     button: '关闭工单',
     closeConfirm: '您确认关闭当前工单？',
+    closeOrderSuccessTips: '工单关闭成功',
   },
   history: {
     title: '工单操作历史',
