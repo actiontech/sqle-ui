@@ -13,7 +13,10 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router';
 import workflow from '../../../api/workflow';
-import { getWorkflowsV1FilterStatusEnum } from '../../../api/workflow/index.enum';
+import {
+  exportWorkflowV1FilterStatusEnum,
+  getWorkflowsV1FilterStatusEnum,
+} from '../../../api/workflow/index.enum';
 import useTable from '../../../hooks/useTable';
 import { translateTimeForRequest } from '../../../utils/Common';
 import { orderListColumn } from './column';
@@ -30,6 +33,7 @@ import moment from 'moment';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import { WorkflowDetailResV1StatusEnum } from '../../../api/common.enum';
 import { Link, useHistory } from 'react-router-dom';
+import { IExportWorkflowV1Params } from '../../../api/workflow/index.d';
 
 const OrderList = () => {
   const history = useHistory();
@@ -196,6 +200,62 @@ const OrderList = () => {
     t,
   ]);
 
+  // IFTRUE_isEE
+  const [
+    exportButtonDisabled,
+    { setFalse: finishExport, setTrue: startExport },
+  ] = useBoolean(false);
+  const exportOrder = () => {
+    startExport();
+    const hideLoading = message.loading(t('order.exportOrder.exporting'));
+
+    const {
+      filter_order_createTime,
+      filter_order_executeTime,
+      filter_create_user_name,
+      filter_current_step_assignee_user_name,
+      filter_status,
+      filter_subject,
+      filter_task_instance_name,
+    } = filterForm.getFieldsValue();
+
+    const params: IExportWorkflowV1Params = {
+      project_name: projectName,
+      filter_create_user_name,
+      filter_current_step_assignee_user_name,
+      filter_status: filter_status as
+        | exportWorkflowV1FilterStatusEnum
+        | undefined,
+      filter_subject,
+      filter_task_instance_name,
+      filter_create_time_from: translateTimeForRequest(
+        filter_order_createTime?.[0]
+      ),
+      filter_create_time_to: translateTimeForRequest(
+        filter_order_createTime?.[1]
+      ),
+      filter_task_execute_start_time_from: translateTimeForRequest(
+        filter_order_executeTime?.[0]
+      ),
+      filter_task_execute_start_time_to: translateTimeForRequest(
+        filter_order_executeTime?.[1]
+      ),
+    };
+
+    workflow
+      .exportWorkflowV1(params, { responseType: 'blob' })
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          message.success(t('order.exportOrder.exportSuccessTips'));
+        }
+      })
+      .finally(() => {
+        hideLoading();
+        finishExport();
+      });
+  };
+  // FITRUE_isEE
+
   return (
     <>
       <PageHeader
@@ -233,29 +293,41 @@ const OrderList = () => {
               collapseChange={collapseChange}
               projectName={projectName}
             />
-            {isAdmin && (
-              <Popconfirm
-                title={t('order.batchCancel.cancelPopTitle')}
-                okText={t('common.ok')}
-                cancelText={t('common.cancel')}
-                onConfirm={batchCancel}
-                onCancel={() => {
-                  setVisibleFalse();
-                }}
-                okButtonProps={{ loading: confirmLoading }}
-                visible={visible}
-              >
-                <Button
-                  danger
-                  disabled={selectedRowKeys?.length === 0}
-                  onClick={() => {
-                    setVisibleTrue();
+            <Space>
+              {isAdmin && (
+                <Popconfirm
+                  title={t('order.batchCancel.cancelPopTitle')}
+                  okText={t('common.ok')}
+                  cancelText={t('common.cancel')}
+                  onConfirm={batchCancel}
+                  onCancel={() => {
+                    setVisibleFalse();
                   }}
+                  okButtonProps={{ loading: confirmLoading }}
+                  visible={visible}
                 >
-                  {t('order.batchCancel.batchDelete')}
-                </Button>
-              </Popconfirm>
-            )}
+                  <Button
+                    danger
+                    disabled={selectedRowKeys?.length === 0}
+                    onClick={() => {
+                      setVisibleTrue();
+                    }}
+                  >
+                    {t('order.batchCancel.batchDelete')}
+                  </Button>
+                </Popconfirm>
+              )}
+
+              {/* IFTRUE_isEE */}
+              <Button
+                type="primary"
+                onClick={exportOrder}
+                disabled={exportButtonDisabled}
+              >
+                {t('order.exportOrder.buttonText')}
+              </Button>
+              {/* FITRUE_isEE */}
+            </Space>
 
             <Table
               className="table-row-cursor"

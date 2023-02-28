@@ -9,6 +9,7 @@ import { AxiosRequestConfig } from 'axios';
 import {
   IGetOperationRecordListV1Params,
   IGetOperationRecordListV1Return,
+  IGetExportOperationRecordListV1Params,
   IGetOperationActionListReturn,
   IGetOperationTypeNameListReturn
 } from './index.d';
@@ -24,6 +25,14 @@ class OperationRecordService extends ServiceBase {
       paramsData,
       options
     );
+  }
+
+  public getExportOperationRecordListV1(
+    params: IGetExportOperationRecordListV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.get<any>('/v1/operation_records/exports', paramsData, options);
   }
 
   public getOperationActionList(options?: AxiosRequestConfig) {

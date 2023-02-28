@@ -14,7 +14,10 @@ import {
 import { createMemoryHistory } from 'history';
 import { CustomProvider } from '../../../testUtils/mockRedux';
 import { SystemRole } from '../../../data/common';
-import { getAllBySelector } from '../../../testUtils/customQuery';
+import {
+  getAllBySelector,
+  selectOptionByIndex,
+} from '../../../testUtils/customQuery';
 import { mockUseSelector } from '../../../testUtils/mockRedux';
 import { useParams } from 'react-router-dom';
 
@@ -68,6 +71,12 @@ describe('Order/List', () => {
 
   const mockBatchCancelOrder = () => {
     const spy = jest.spyOn(workflow, 'batchCancelWorkflowsV2');
+    spy.mockImplementation(() => resolveThreeSecond({}));
+    return spy;
+  };
+
+  const mockExportWorkflow = () => {
+    const spy = jest.spyOn(workflow, 'exportWorkflowV1');
     spy.mockImplementation(() => resolveThreeSecond({}));
     return spy;
   };
@@ -173,5 +182,67 @@ describe('Order/List', () => {
       page_size: 10,
       project_name: projectName,
     });
+  });
+  test('should can export order', async () => {
+    const exportWorkflowSpy = mockExportWorkflow();
+    mockRequest();
+    renderWithThemeAndRouter(<OrderList />);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.click(screen.getByText('order.exportOrder.buttonText'));
+    expect(exportWorkflowSpy).toBeCalledTimes(1);
+    expect(exportWorkflowSpy).nthCalledWith(
+      1,
+      {
+        project_name: projectName,
+      },
+      {
+        responseType: 'blob',
+      }
+    );
+    expect(
+      screen.queryByText('order.exportOrder.exporting')
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('order.exportOrder.buttonText').closest('button')
+    ).toBeDisabled();
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.queryByText('order.exportOrder.exporting')
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('order.exportOrder.exportSuccessTips')
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('order.exportOrder.buttonText').closest('button')
+    ).not.toBeDisabled();
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.queryByText('order.exportOrder.exportSuccessTips')
+    ).not.toBeInTheDocument();
+
+    selectOptionByIndex('order.order.createUser', 'user_name1');
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    fireEvent.click(screen.getByText('order.exportOrder.buttonText'));
+    expect(exportWorkflowSpy).nthCalledWith(
+      2,
+      {
+        project_name: projectName,
+        filter_create_user_name: 'user_name1',
+      },
+      {
+        responseType: 'blob',
+      }
+    );
   });
 });
