@@ -11,19 +11,53 @@ exports[`System should match snapshot 1`] = `
   <section
     className="padding-content"
   >
-    <Space
-      className="full-width-element"
-      direction="vertical"
-    >
-      <LarkSetting />
-      <DingTalkSetting />
-      <SMTPSetting />
-      <Wechat />
-      <GlobalSetting />
-      <LDAPSetting />
-      <License />
-      <Oauth />
-    </Space>
+    <Card>
+      <Tabs>
+        <TabPane
+          key="pushNotification"
+          tab="system.tabPaneTitle.pushNotification"
+        >
+          <Space
+            className="full-width-element"
+            direction="vertical"
+          >
+            <SMTPSetting />
+            <Wechat />
+            <LarkSetting />
+          </Space>
+        </TabPane>
+        <TabPane
+          key="processConnection"
+          tab="system.tabPaneTitle.processConnection"
+        >
+          <DingTalkSetting />
+        </TabPane>
+        <TabPane
+          key="loginConnection"
+          tab="system.tabPaneTitle.loginConnection"
+        >
+          <Space
+            className="full-width-element"
+            direction="vertical"
+          >
+            <LDAPSetting />
+            <Oauth />
+          </Space>
+        </TabPane>
+        <TabPane
+          key="globalCOnfiguration"
+          tab="system.tabPaneTitle.globalCOnfiguration"
+        >
+          <GlobalSetting />
+        </TabPane>
+        <TabPane
+          key="license"
+          tab="system.tabPaneTitle.license"
+        >
+          <License />
+        </TabPane>
+      </Tabs>
+    </Card>
   </section>
 </Fragment>
 `;
