@@ -33,9 +33,12 @@ const useSQLExecPlan = () => {
       return (
         <Card title={t('sqlQuery.executePlan.sqlExplain')}>
           <Table
-            columns={tableColumnFactory(explain?.head ?? [])}
+            columns={tableColumnFactory(explain?.head ?? [], {
+              customRender: (v) => v || '-',
+            })}
             dataSource={explain?.rows ?? []}
             pagination={false}
+            scroll={{ x: 'max-content' }}
           />
         </Card>
       );

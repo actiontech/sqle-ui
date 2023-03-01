@@ -4,6 +4,9 @@ import {
   IBaseRes,
   ITestDingTalkConfigResV1,
   IGetDriversResV1,
+  IGetFeishuConfigurationResV1,
+  IUpdateFeishuConfigurationReqV1,
+  ITestFeishuConfigResV1,
   IGetLDAPConfigurationResV1,
   ILDAPConfigurationReqV1,
   IGetLicenseResV1,
@@ -35,6 +38,16 @@ export interface IUpdateDingTalkConfigurationV1Return extends IBaseRes {}
 export interface ITestDingTalkConfigV1Return extends ITestDingTalkConfigResV1 {}
 
 export interface IGetDriversV1Return extends IGetDriversResV1 {}
+
+export interface IGetFeishuConfigurationV1Return
+  extends IGetFeishuConfigurationResV1 {}
+
+export interface IUpdateFeishuConfigurationV1Params
+  extends IUpdateFeishuConfigurationReqV1 {}
+
+export interface IUpdateFeishuConfigurationV1Return extends IBaseRes {}
+
+export interface ITestFeishuConfigV1Return extends ITestFeishuConfigResV1 {}
 
 export interface IGetLDAPConfigurationV1Return
   extends IGetLDAPConfigurationResV1 {}
