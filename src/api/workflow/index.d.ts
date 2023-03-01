@@ -23,6 +23,7 @@ import {
 
 import {
   getWorkflowsV1FilterStatusEnum,
+  exportWorkflowV1FilterStatusEnum,
   getGlobalWorkflowsV1FilterStatusEnum
 } from './index.enum';
 
@@ -87,6 +88,28 @@ export interface IBatchCompleteWorkflowsV1Params
 }
 
 export interface IBatchCompleteWorkflowsV1Return extends IBaseRes {}
+
+export interface IExportWorkflowV1Params {
+  filter_subject?: string;
+
+  filter_create_time_from?: string;
+
+  filter_create_time_to?: string;
+
+  filter_task_execute_start_time_from?: string;
+
+  filter_task_execute_start_time_to?: string;
+
+  filter_create_user_name?: string;
+
+  filter_status?: exportWorkflowV1FilterStatusEnum;
+
+  filter_current_step_assignee_user_name?: string;
+
+  filter_task_instance_name?: string;
+
+  project_name: string;
+}
 
 export interface IGetWorkflowV1Params {
   workflow_name: string;

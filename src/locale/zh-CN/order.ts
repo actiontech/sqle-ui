@@ -182,6 +182,12 @@ export default {
       '您所选的工单包含不可关闭的工单!（只有工单状态为“{{process}}”和“{{reject}}”的工单可以关闭。）',
   },
 
+  exportOrder: {
+    buttonText: '导出工单',
+    exporting: '正在导出历史工单',
+    exportSuccessTips: '历史工单导出成功',
+  },
+
   auditResultCollection: {
     overview: '概览',
     table: {
