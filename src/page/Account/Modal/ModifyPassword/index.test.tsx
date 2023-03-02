@@ -6,17 +6,33 @@ import { mockUseDispatch } from '../../../../testUtils/mockRedux';
 import { resolveThreeSecond } from '../../../../testUtils/mockRequest';
 import { createMemoryHistory } from 'history';
 import { ModalName } from '../../../../data/ModalName';
+import { useLocation } from 'react-router-dom';
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLocation: jest.fn(),
+}));
 
 describe('Account/ModifyPassword', () => {
   let dispatchSpy: jest.Mock;
+  const useLocationMock: jest.Mock = useLocation as jest.Mock;
+
   beforeEach(() => {
     jest.useFakeTimers();
     const { scopeDispatch } = mockUseDispatch();
     dispatchSpy = scopeDispatch;
+    useLocationMock.mockReturnValue({
+      pathname: '/rule',
+      search: '',
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
+    });
   });
 
   afterEach(() => {
     jest.useRealTimers();
+    useLocationMock.mockRestore();
   });
 
   const mockUpdateCurrentUserPasswordV1 = () => {

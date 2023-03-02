@@ -5,17 +5,26 @@ import {
   screen,
   fireEvent,
 } from '@testing-library/react';
+import { useHistory, useLocation } from 'react-router-dom';
 import Account from '.';
 import user from '../../api/user';
 import { mockUseDispatch } from '../../testUtils/mockRedux';
 import { resolveThreeSecond } from '../../testUtils/mockRequest';
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLocation: jest.fn(),
+  useHistory: jest.fn(),
+}));
 
 describe('Account', () => {
   const mockRequest = () => {
     const spy = jest.spyOn(user, 'getCurrentUserV1');
     return spy;
   };
-  let dispatchMock: jest.Mock;
+  const useLocationMock: jest.Mock = useLocation as jest.Mock;
+  const useHistoryMock: jest.Mock = useHistory as jest.Mock;
+  const replaceMock = jest.fn();
   beforeEach(() => {
     const userSpy = mockRequest();
     userSpy.mockImplementation(() =>
@@ -26,15 +35,26 @@ describe('Account', () => {
         login_type: 'sqle',
       })
     );
-    const { scopeDispatch } = mockUseDispatch();
-    dispatchMock = scopeDispatch;
     jest.useFakeTimers();
+    mockUseDispatch();
+    useLocationMock.mockReturnValue({
+      pathname: '/rule',
+      search: '',
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
+    });
+    useHistoryMock.mockReturnValue({
+      replace: replaceMock,
+    });
   });
 
   afterEach(() => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
+    useLocationMock.mockRestore();
+    useHistoryMock.mockRestore();
   });
 
   test('should render user Info when request is success', async () => {

@@ -38,7 +38,7 @@ const UserNavigation: React.FC = () => {
     const res = await user.logoutV1();
     if (res.data.code === ResponseCode.SUCCESS) {
       clearUserInfo();
-      history.push('/');
+      history.replace('/login');
     }
   }, [clearUserInfo, history]);
 

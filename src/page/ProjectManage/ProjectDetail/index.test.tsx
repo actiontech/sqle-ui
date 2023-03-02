@@ -1,6 +1,6 @@
 import ProjectDetail, { useRecentlyOpenedProjects } from '.';
 import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
 import {
   mockBindProjects,
   mockManagementPermissions,
@@ -29,6 +29,8 @@ import { SystemRole } from '../../../data/common';
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn(),
+  useLocation: jest.fn(),
+  useHistory: jest.fn(),
 }));
 const projectName = mockBindProjects[0].project_name;
 
@@ -36,6 +38,9 @@ describe('test ProjectManage/ProjectDetail', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
   let getUserSpy: jest.SpyInstance;
   let dispatchSpy: jest.SpyInstance;
+  const useLocationMock: jest.Mock = useLocation as jest.Mock;
+  const useHistoryMock: jest.Mock = useHistory as jest.Mock;
+  const replaceMock = jest.fn();
   beforeEach(() => {
     getUserSpy = jest.spyOn(user, 'getCurrentUserV1');
     getUserSpy.mockImplementation(() =>
@@ -51,7 +56,16 @@ describe('test ProjectManage/ProjectDetail', () => {
     mockUseUsername();
     mockUseInstance();
     mockUseStyle();
-
+    useLocationMock.mockReturnValue({
+      pathname: '/project/default/overview',
+      search: '',
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
+    });
+    useHistoryMock.mockReturnValue({
+      replace: replaceMock,
+    });
     useParamsMock.mockReturnValue({ projectName });
     jest.useFakeTimers();
   });
@@ -60,6 +74,8 @@ describe('test ProjectManage/ProjectDetail', () => {
     jest.clearAllMocks();
     jest.useRealTimers();
     jest.clearAllTimers();
+    useLocationMock.mockRestore();
+    useHistoryMock.mockRestore();
   });
   test('should render tips for unbound project', async () => {
     getUserSpy.mockImplementation(() =>
