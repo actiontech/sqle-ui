@@ -27,6 +27,9 @@ export default {
     test: '测试',
     testing: '正在向飞书推送消息...',
     testSuccess: '已成功将消息推送至指定账号',
+    receiveType: '接收方式',
+    email: '邮箱',
+    phone: '手机号',
   },
 
   dingTalk: {

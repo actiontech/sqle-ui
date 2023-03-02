@@ -6,6 +6,7 @@ import {
   IGetDriversResV1,
   IGetFeishuConfigurationResV1,
   IUpdateFeishuConfigurationReqV1,
+  ITestFeishuConfigurationReqV1,
   ITestFeishuConfigResV1,
   IGetLDAPConfigurationResV1,
   ILDAPConfigurationReqV1,
@@ -46,6 +47,9 @@ export interface IUpdateFeishuConfigurationV1Params
   extends IUpdateFeishuConfigurationReqV1 {}
 
 export interface IUpdateFeishuConfigurationV1Return extends IBaseRes {}
+
+export interface ITestFeishuConfigV1Params
+  extends ITestFeishuConfigurationReqV1 {}
 
 export interface ITestFeishuConfigV1Return extends ITestFeishuConfigResV1 {}
 
