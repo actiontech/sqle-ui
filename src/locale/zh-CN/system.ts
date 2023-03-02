@@ -3,6 +3,14 @@ export default {
   pageTitle: '系统设置',
   pageDesc: '您可以在这里配置您的邮箱SMTP等系统配置',
 
+  tabPaneTitle: {
+    pushNotification: '消息推送',
+    processConnection: '流程对接',
+    loginConnection: '登录对接',
+    globalCOnfiguration: '全局配置',
+    license: '许可证',
+  },
+
   title: {
     dingTalk: '钉钉配置',
     smtp: 'SMTP',

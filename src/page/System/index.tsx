@@ -1,4 +1,4 @@
-import { PageHeader, Space } from 'antd';
+import { Card, PageHeader, Space, Tabs } from 'antd';
 import { useTranslation } from 'react-i18next';
 import GlobalSetting from './GlobalSetting';
 import LDAPSetting from './LDAPSetting';
@@ -17,7 +17,6 @@ import LarkSetting from './LarkSetting';
 
 const System = () => {
   const { t } = useTranslation();
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -37,20 +36,49 @@ const System = () => {
         {t('system.pageDesc')}
       </PageHeader>
       <section className="padding-content">
-        <Space direction="vertical" className="full-width-element">
-          <LarkSetting />
-          <DingTalkSetting />
-          <SMTPSetting />
-          {/* IFTRUE_isEE */}
-          <Wechat />
-          {/* FITRUE_isEE */}
-          <GlobalSetting />
-          <LDAPSetting />
-          {/* IFTRUE_isEE */}
-          <License />
-          {/* FITRUE_isEE */}
-          <Oauth />
-        </Space>
+        <Card>
+          <Tabs>
+            <Tabs.TabPane
+              tab={t('system.tabPaneTitle.pushNotification')}
+              key="pushNotification"
+            >
+              <Space direction="vertical" className="full-width-element">
+                <SMTPSetting />
+                {/* IFTRUE_isEE */}
+                <Wechat />
+                {/* FITRUE_isEE */}
+                <LarkSetting />
+              </Space>
+            </Tabs.TabPane>
+            <Tabs.TabPane
+              tab={t('system.tabPaneTitle.processConnection')}
+              key="processConnection"
+            >
+              <DingTalkSetting />
+            </Tabs.TabPane>
+            <Tabs.TabPane
+              tab={t('system.tabPaneTitle.loginConnection')}
+              key="loginConnection"
+            >
+              <Space direction="vertical" className="full-width-element">
+                <LDAPSetting />
+                <Oauth />
+              </Space>
+            </Tabs.TabPane>
+            <Tabs.TabPane
+              tab={t('system.tabPaneTitle.globalCOnfiguration')}
+              key="globalCOnfiguration"
+            >
+              <GlobalSetting />
+            </Tabs.TabPane>
+
+            {/* IFTRUE_isEE */}
+            <Tabs.TabPane tab={t('system.tabPaneTitle.license')} key="license">
+              <License />
+            </Tabs.TabPane>
+            {/* FITRUE_isEE */}
+          </Tabs>
+        </Card>
       </section>
     </>
   );
