@@ -4,7 +4,6 @@ import { rest } from 'msw';
 import store from '../../store';
 import Download from '../Download';
 import { notification } from 'antd';
-import { updateToken } from '../../store/user';
 
 const downloadSpy = jest.spyOn(Download, 'downloadByCreateElementA');
 const notificationSpy = jest.spyOn(notification, 'error');

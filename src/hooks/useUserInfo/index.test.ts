@@ -1,7 +1,9 @@
 import { waitFor } from '@testing-library/react';
 import { act, renderHook } from '@testing-library/react-hooks';
+import { useHistory, useLocation } from 'react-router-dom';
 import useUserInfo from '.';
 import user from '../../api/user';
+import { SQLE_REDIRECT_KEY_PARAMS_NAME } from '../../data/common';
 import { mockUseDispatch } from '../../testUtils/mockRedux';
 import {
   resolveErrorThreeSecond,
@@ -12,8 +14,15 @@ import {
   mockManagementPermissions,
 } from '../useCurrentUser/index.test';
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLocation: jest.fn(),
+  useHistory: jest.fn(),
+}));
+
 export const mockGetCurrentUser = () => {
   const spy = jest.spyOn(user, 'getCurrentUserV1');
+
   spy.mockImplementation(() =>
     resolveThreeSecond({
       user_name: 'test',
@@ -28,16 +37,30 @@ export const mockGetCurrentUser = () => {
 describe('test useUserInfo', () => {
   let getUserSpy: jest.SpyInstance;
   let dispatchSpy: jest.SpyInstance;
-
+  const useLocationMock: jest.Mock = useLocation as jest.Mock;
+  const useHistoryMock: jest.Mock = useHistory as jest.Mock;
+  const replaceMock = jest.fn();
   beforeEach(() => {
     jest.useFakeTimers();
     dispatchSpy = mockUseDispatch().scopeDispatch;
     getUserSpy = mockGetCurrentUser();
+    useLocationMock.mockReturnValue({
+      pathname: '/rule',
+      search: '',
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
+    });
+    useHistoryMock.mockReturnValue({
+      replace: replaceMock,
+    });
   });
   afterEach(() => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
+    useLocationMock.mockRestore();
+    useHistoryMock.mockRestore();
   });
   test('should send request when execute "clearUserInfo"', async () => {
     const { result } = renderHook(() => useUserInfo());
@@ -125,5 +148,10 @@ describe('test useUserInfo', () => {
       payload: { managementPermissions: [] },
       type: 'user/updateManagementPermissions',
     });
+    expect(replaceMock).toBeCalledTimes(1);
+    expect(replaceMock).nthCalledWith(
+      1,
+      `/login?${SQLE_REDIRECT_KEY_PARAMS_NAME}=/rule`
+    );
   });
 });

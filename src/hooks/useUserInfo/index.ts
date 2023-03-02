@@ -6,12 +6,20 @@ import {
   updateToken,
   updateUser,
 } from '../../store/user';
-import { ResponseCode, SystemRole } from '../../data/common';
+import {
+  ResponseCode,
+  SQLE_REDIRECT_KEY_PARAMS_NAME,
+  SystemRole,
+} from '../../data/common';
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const useUserInfo = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const location = useLocation();
+
   const clearUserInfo = useCallback(() => {
     dispatch(updateBindProjects({ bindProjects: [] }));
     dispatch(
@@ -54,10 +62,16 @@ const useUserInfo = () => {
         );
       } else {
         clearUserInfo();
+        history.replace(
+          `/login?${SQLE_REDIRECT_KEY_PARAMS_NAME}=${location.pathname}`
+        );
       }
     },
     onError: () => {
       clearUserInfo();
+      history.replace(
+        `/login?${SQLE_REDIRECT_KEY_PARAMS_NAME}=${location.pathname}`
+      );
     },
   });
 

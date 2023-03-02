@@ -1,7 +1,8 @@
-import { render, waitFor } from '@testing-library/react';
+import { cleanup, render, waitFor } from '@testing-library/react';
 import { shallow } from 'enzyme';
-import App from './App';
-import { SystemRole } from './data/common';
+import { BrowserRouter, useHistory, useLocation } from 'react-router-dom';
+import App, { Wrapper } from './App';
+import { SQLE_REDIRECT_KEY_PARAMS_NAME, SystemRole } from './data/common';
 import { ModalName } from './data/ModalName';
 import {
   mockBindProjects,
@@ -16,22 +17,92 @@ import {
   resolveThreeSecond,
 } from './testUtils/mockRequest';
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLocation: jest.fn(),
+  useHistory: jest.fn(),
+}));
+
 describe('App test', () => {
   let getUserSpy: jest.SpyInstance;
   let scopeDispatch: jest.SpyInstance;
-
+  const useLocationMock: jest.Mock = useLocation as jest.Mock;
+  const useHistoryMock: jest.Mock = useHistory as jest.Mock;
+  const replaceMock = jest.fn();
   beforeEach(() => {
     getUserSpy = mockGetCurrentUser();
     const { scopeDispatch: temp } = mockUseDispatch();
     scopeDispatch = temp;
     mockUseAuditPlanTypes();
     jest.useFakeTimers();
+    useLocationMock.mockReturnValue({
+      pathname: '/rule',
+      search: '',
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
+    });
+    useHistoryMock.mockReturnValue({
+      replace: replaceMock,
+    });
   });
 
   afterEach(() => {
     jest.clearAllMocks();
     jest.clearAllTimers();
     jest.useRealTimers();
+    useLocationMock.mockRestore();
+    useHistoryMock.mockRestore();
+  });
+
+  test('should render App Wrapper', () => {
+    mockUseSelector({
+      user: { token: '' },
+    });
+    render(<Wrapper>children</Wrapper>);
+
+    expect(replaceMock).toBeCalledTimes(1);
+    expect(replaceMock).nthCalledWith(
+      1,
+      `/login?${SQLE_REDIRECT_KEY_PARAMS_NAME}=/rule`
+    );
+    cleanup();
+    replaceMock.mockClear();
+
+    mockUseSelector({
+      user: { token: 'token' },
+    });
+    render(<Wrapper>children</Wrapper>);
+    expect(replaceMock).toBeCalledTimes(0);
+    cleanup();
+    replaceMock.mockClear();
+
+    mockUseSelector({
+      user: { token: '' },
+    });
+    useLocationMock.mockReturnValue({
+      pathname: '/login',
+      search: '',
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
+    });
+    render(<Wrapper>children</Wrapper>);
+    expect(replaceMock).toBeCalledTimes(0);
+    cleanup();
+    replaceMock.mockClear();
+
+    useLocationMock.mockReturnValue({
+      pathname: '/user/bind',
+      search: '',
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
+    });
+    render(<Wrapper>children</Wrapper>);
+    expect(replaceMock).toBeCalledTimes(0);
+    cleanup();
+    replaceMock.mockClear();
   });
 
   test('should render login route when token is falsy', () => {
@@ -97,7 +168,11 @@ describe('App test', () => {
       })
     );
     expect(scopeDispatch).not.toBeCalled();
-    render(<App />);
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
     await waitFor(() => jest.advanceTimersByTime(3000));
     expect(scopeDispatch).toBeCalledTimes(4);
     expect(scopeDispatch.mock.calls[1][0]).toEqual({
@@ -128,7 +203,12 @@ describe('App test', () => {
       })
     );
 
-    render(<App />);
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
+
     await waitFor(() => jest.advanceTimersByTime(3000));
     expect(scopeDispatch).toBeCalledTimes(5);
     expect(scopeDispatch).nthCalledWith(1, {
@@ -176,7 +256,12 @@ describe('App test', () => {
     getUserSpy.mockImplementation(() => getUserFn);
     expect(scopeDispatch).not.toBeCalled();
     expect(getUserFn).not.toBeCalled();
-    render(<App />);
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
+
     expect(scopeDispatch).not.toBeCalled();
     expect(scopeDispatch).not.toBeCalled();
   });

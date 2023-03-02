@@ -19,10 +19,17 @@ import UserNavigation from '../UserNavigation';
 import { createMemoryHistory } from 'history';
 import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
 import user from '../../../../../api/user';
+import { useLocation } from 'react-router-dom';
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLocation: jest.fn(),
+}));
 
 describe('test Nav/Header/UserNavigation', () => {
   let scopeDispatch: jest.Mock;
   let logoutSpy: jest.SpyInstance;
+  const useLocationMock: jest.Mock = useLocation as jest.Mock;
   beforeEach(() => {
     logoutSpy = mockLogout();
     mockUseSelector({
@@ -31,12 +38,20 @@ describe('test Nav/Header/UserNavigation', () => {
     });
     jest.useFakeTimers();
     scopeDispatch = mockUseDispatch().scopeDispatch;
+    useLocationMock.mockReturnValue({
+      pathname: '/rule',
+      search: '',
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
+    });
   });
 
   afterEach(() => {
     scopeDispatch.mockClear();
     jest.clearAllMocks();
     jest.useRealTimers();
+    useLocationMock.mockRestore();
   });
 
   const mockLogout = () => {
@@ -106,7 +121,7 @@ describe('test Nav/Header/UserNavigation', () => {
     );
   });
 
-  test('should clean user info and jump to "/" router when click the logout button', async () => {
+  test('should clean user info and jump to "/login" router when click the logout button', async () => {
     const history = createMemoryHistory();
     history.push('/test');
     renderWithServerRouter(<UserNavigation />, undefined, { history });
@@ -139,7 +154,7 @@ describe('test Nav/Header/UserNavigation', () => {
       payload: { managementPermissions: [] },
       type: 'user/updateManagementPermissions',
     });
-    expect(history.location.pathname).toBe('/');
+    expect(history.location.pathname).toBe('/login');
   });
 
   test('should jump to "/account" when clicking "common.account"', async () => {
