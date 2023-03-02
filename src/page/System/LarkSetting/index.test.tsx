@@ -1,7 +1,8 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import LarkSetting from '.';
+import LarkSetting from './LarkSetting';
 import configuration from '../../../api/configuration';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
+import { TestFeishuConfigurationReqV1AccountTypeEnum } from '../../../api/common.enum';
 
 describe('test System/LarkSetting', () => {
   let getLarkConfigSpy: jest.SpyInstance;
@@ -60,11 +61,11 @@ describe('test System/LarkSetting', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('should disabled edit lark configuration when "is_enable_ding_talk_notify" is equal false', async () => {
+  test('should disabled edit lark configuration when "is_feishu_notification_enabled" is equal false', async () => {
     getLarkConfigSpy.mockImplementation(() =>
       resolveThreeSecond({
         app_id: 'app_key',
-        is_enable_ding_talk_notify: false,
+        is_feishu_notification_enabled: false,
       })
     );
     const { container } = render(<LarkSetting />);
@@ -138,7 +139,7 @@ describe('test System/LarkSetting', () => {
   });
 
   test('should send request when clicking test DingTalk button', async () => {
-    render(<LarkSetting />);
+    const { baseElement } = render(<LarkSetting />);
     expect(testLarkConfigSpy).toBeCalledTimes(0);
 
     await waitFor(() => {
@@ -147,7 +148,23 @@ describe('test System/LarkSetting', () => {
 
     fireEvent.click(screen.getByText('system.lark.test'));
 
+    expect(screen.queryByText('system.lark.receiveType')).toBeInTheDocument();
+    expect(baseElement).toMatchSnapshot();
+    fireEvent.change(screen.getAllByLabelText('system.lark.email')[1], {
+      target: { value: 'demo@gmail.com' },
+    });
+
+    fireEvent.click(screen.getByText('common.ok'));
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
     expect(testLarkConfigSpy).toBeCalledTimes(1);
+    expect(testLarkConfigSpy).nthCalledWith(1, {
+      account: 'demo@gmail.com',
+      account_type: TestFeishuConfigurationReqV1AccountTypeEnum.email,
+    });
 
     expect(screen.queryByText('system.lark.testing')).toBeInTheDocument();
     expect(
@@ -177,6 +194,29 @@ describe('test System/LarkSetting', () => {
       screen.queryByText('system.lark.testSuccess')
     ).not.toBeInTheDocument();
 
+    fireEvent.click(screen.getAllByText('system.lark.phone')[0]);
+    fireEvent.change(screen.getAllByLabelText('system.lark.phone')[1], {
+      target: { value: '13112341234' },
+    });
+
+    fireEvent.click(screen.getByText('common.ok'));
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    expect(testLarkConfigSpy).toBeCalledTimes(2);
+    expect(testLarkConfigSpy).nthCalledWith(2, {
+      account: '13112341234',
+      account_type: TestFeishuConfigurationReqV1AccountTypeEnum.phone,
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
     jest.clearAllMocks();
     testLarkConfigSpy.mockImplementation(() => {
       return resolveThreeSecond({
@@ -185,6 +225,20 @@ describe('test System/LarkSetting', () => {
       });
     });
     fireEvent.click(screen.getByText('system.lark.test'));
+    fireEvent.change(screen.getAllByLabelText('system.lark.email')[1], {
+      target: { value: 'demo@gmail.com' },
+    });
+
+    fireEvent.click(screen.getByText('common.ok'));
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(testLarkConfigSpy).toBeCalledTimes(1);
+    expect(testLarkConfigSpy).nthCalledWith(1, {
+      account: 'demo@gmail.com',
+      account_type: TestFeishuConfigurationReqV1AccountTypeEnum.email,
+    });
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });

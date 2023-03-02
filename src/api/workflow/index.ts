@@ -19,6 +19,7 @@ import {
   IBatchCancelWorkflowsV1Return,
   IBatchCompleteWorkflowsV1Params,
   IBatchCompleteWorkflowsV1Return,
+  IExportWorkflowV1Params,
   IGetWorkflowV1Params,
   IGetWorkflowV1Return,
   IUpdateWorkflowV1Params,
@@ -151,6 +152,21 @@ class WorkflowService extends ServiceBase {
 
     return this.post<IBatchCompleteWorkflowsV1Return>(
       `/v1/projects/${project_name}/workflows/complete`,
+      paramsData,
+      options
+    );
+  }
+
+  public exportWorkflowV1(
+    params: IExportWorkflowV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.get<any>(
+      `/v1/projects/${project_name}/workflows/exports`,
       paramsData,
       options
     );

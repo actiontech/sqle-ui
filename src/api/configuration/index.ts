@@ -15,6 +15,7 @@ import {
   IGetFeishuConfigurationV1Return,
   IUpdateFeishuConfigurationV1Params,
   IUpdateFeishuConfigurationV1Return,
+  ITestFeishuConfigV1Params,
   ITestFeishuConfigV1Return,
   IGetLDAPConfigurationV1Return,
   IUpdateLDAPConfigurationV1Params,
@@ -101,10 +102,14 @@ class ConfigurationService extends ServiceBase {
     );
   }
 
-  public testFeishuConfigV1(options?: AxiosRequestConfig) {
+  public testFeishuConfigV1(
+    params: ITestFeishuConfigV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
     return this.post<ITestFeishuConfigV1Return>(
       '/v1/configurations/feishu/test',
-      undefined,
+      paramsData,
       options
     );
   }

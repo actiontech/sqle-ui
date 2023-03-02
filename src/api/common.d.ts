@@ -16,6 +16,7 @@ import {
   RuleResV1LevelEnum,
   SQLQueryConfigReqV1AllowQueryWhenLessThanAuditLevelEnum,
   SQLQueryConfigResV1AllowQueryWhenLessThanAuditLevelEnum,
+  TestFeishuConfigurationReqV1AccountTypeEnum,
   UpdateAuditPlanNotifyConfigReqV1NotifyLevelEnum,
   UpdateAuditWhitelistReqV1MatchTypeEnum,
   UpdateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
@@ -1630,6 +1631,8 @@ export interface IOperationActionList {
   desc?: string;
 
   operation_action?: string;
+
+  operation_type?: string;
 }
 
 export interface IOperationRecordList {
@@ -1988,6 +1991,12 @@ export interface ITestFeishuConfigResV1 {
   data?: ITestFeishuConfigResDataV1;
 
   message?: string;
+}
+
+export interface ITestFeishuConfigurationReqV1 {
+  account?: string;
+
+  account_type?: TestFeishuConfigurationReqV1AccountTypeEnum;
 }
 
 export interface ITestSMTPConfigurationReqV1 {

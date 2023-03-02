@@ -162,6 +162,12 @@ export enum SQLQueryConfigResV1AllowQueryWhenLessThanAuditLevelEnum {
   'error' = 'error'
 }
 
+export enum TestFeishuConfigurationReqV1AccountTypeEnum {
+  'email' = 'email',
+
+  'phone' = 'phone'
+}
+
 export enum UpdateAuditPlanNotifyConfigReqV1NotifyLevelEnum {
   'normal' = 'normal',
 
