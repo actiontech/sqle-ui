@@ -73,6 +73,12 @@ describe('Order/Detail', () => {
     console.error = error;
   });
 
+  const mockCancelWorkflow = () => {
+    const spy = jest.spyOn(workflow, 'cancelWorkflowV2');
+    spy.mockImplementation(() => resolveThreeSecond({}));
+    return spy;
+  };
+
   const mockGetInstanceWorkflowTemplate = () => {
     const spy = jest.spyOn(workflow, 'getWorkflowTemplateV1');
     spy.mockImplementation(() => resolveThreeSecond(instanceWorkflowTemplate));
@@ -693,5 +699,42 @@ describe('Order/Detail', () => {
     expect(
       screen.queryByText('order.modifySql.updateEmptyOrderTips')
     ).toBeInTheDocument();
+  });
+
+  test('should be called cancel workflow request when clicked close order button', async () => {
+    let cancelWorkflowSpy = mockCancelWorkflow();
+    const getWorkflowSpy = mockGetWorkflow();
+    getWorkflowSpy.mockImplementation(() => resolveThreeSecond(orderReject));
+    mockGetTask();
+    mockGetTaskSqls();
+    renderWithThemeAndRouter(<Order />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    fireEvent.click(screen.getByText('order.closeOrder.button'));
+    expect(
+      screen.queryByText('order.closeOrder.closeConfirm')
+    ).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('common.ok'));
+    expect(cancelWorkflowSpy).toBeCalledTimes(1);
+    expect(cancelWorkflowSpy).toBeCalledWith({
+      project_name: projectName,
+      workflow_id: orderReject.workflow_id,
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.queryByText('order.closeOrder.closeOrderSuccessTips')
+    ).toBeInTheDocument();
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.queryByText('order.closeOrder.closeOrderSuccessTips')
+    ).not.toBeInTheDocument();
   });
 });

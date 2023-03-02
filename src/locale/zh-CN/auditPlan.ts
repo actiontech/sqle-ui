@@ -55,8 +55,7 @@ export default {
     taskType: '任务类型',
 
     ruleTemplateName: '审核规则模版',
-    ruleTemplateNameTips:
-      '如果未指定此项会优先使用数据源绑定的模板, 如果数据源也未指定则使用数据类型默认模板',
+    ruleTemplateNameTips: '如果未指定此项会优先使用数据源绑定的模板',
 
     databaseNameTips:
       '如果您没有指定数据源，那么该扫描任务将使用您所选择的数据库类型的默认规则模版进行静态审核',

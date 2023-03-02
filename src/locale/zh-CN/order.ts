@@ -23,6 +23,7 @@ export default {
   closeOrder: {
     button: '关闭工单',
     closeConfirm: '您确认关闭当前工单？',
+    closeOrderSuccessTips: '工单关闭成功',
   },
   history: {
     title: '工单操作历史',
@@ -179,6 +180,12 @@ export default {
     cancelPopTitle: '您确认关闭所选工单吗？',
     messageWarn:
       '您所选的工单包含不可关闭的工单!（只有工单状态为“{{process}}”和“{{reject}}”的工单可以关闭。）',
+  },
+
+  exportOrder: {
+    buttonText: '导出工单',
+    exporting: '正在导出历史工单',
+    exportSuccessTips: '历史工单导出成功',
   },
 
   auditResultCollection: {

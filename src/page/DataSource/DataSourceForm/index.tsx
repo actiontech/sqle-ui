@@ -23,6 +23,7 @@ import {
   SQLQueryConfigResV1AllowQueryWhenLessThanAuditLevelEnum,
 } from '../../../api/common.enum';
 import useGlobalRuleTemplate from '../../../hooks/useGlobalRuleTemplate';
+import IconTipsLabel from '../../../components/IconTipsLabel';
 
 const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
   const { t } = useTranslation();
@@ -206,7 +207,13 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
       />
       <Form.Item
         name="maintenanceTime"
-        label={t('dataSource.dataSourceForm.maintenanceTime')}
+        label={
+          <IconTipsLabel
+            tips={t('dataSource.dataSourceForm.maintenanceTimeTips')}
+          >
+            {t('dataSource.dataSourceForm.maintenanceTime')}
+          </IconTipsLabel>
+        }
       >
         <MaintenanceTimePicker />
       </Form.Item>

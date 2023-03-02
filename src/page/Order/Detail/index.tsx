@@ -133,6 +133,7 @@ const Order = () => {
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           refreshOrder();
+          message.success(t('order.closeOrder.closeOrderSuccessTips'));
         }
       })
       .finally(() => {
@@ -144,6 +145,7 @@ const Order = () => {
     projectName,
     refreshOrder,
     startCloseOrder,
+    t,
   ]);
 
   return (
@@ -163,6 +165,7 @@ const Order = () => {
             key="close-confirm"
             title={t('order.closeOrder.closeConfirm')}
             onConfirm={closeOrder}
+            okText={t('common.ok')}
             disabled={closeOrderLoading}
           >
             {!!orderInfo && (
