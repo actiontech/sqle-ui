@@ -78,13 +78,13 @@ describe('test System/LarkSetting', () => {
 
     fireEvent.click(screen.getByText('common.modify'));
     expect(container).toMatchSnapshot();
-    expect(screen.getByLabelText('AppKey')).toHaveValue('app_key');
-    expect(screen.getByLabelText('AppKey')).toBeDisabled();
-    expect(screen.getByLabelText('AppSecret')).toBeDisabled();
+    expect(screen.getByLabelText('App ID')).toHaveValue('app_key');
+    expect(screen.getByLabelText('App ID')).toBeDisabled();
+    expect(screen.getByLabelText('App Secret')).toBeDisabled();
 
     fireEvent.click(screen.getByLabelText('system.lark.enable'));
-    expect(screen.getByLabelText('AppKey')).not.toBeDisabled();
-    expect(screen.getByLabelText('AppSecret')).not.toBeDisabled();
+    expect(screen.getByLabelText('App ID')).not.toBeDisabled();
+    expect(screen.getByLabelText('App Secret')).not.toBeDisabled();
   });
 
   test('should be able to update dingTalk configuration', async () => {
@@ -96,10 +96,10 @@ describe('test System/LarkSetting', () => {
 
     fireEvent.click(screen.getByText('common.modify'));
     fireEvent.click(screen.getByLabelText('system.lark.enable'));
-    fireEvent.change(screen.getByLabelText('AppKey'), {
+    fireEvent.change(screen.getByLabelText('App ID'), {
       target: { value: 'update-appKey' },
     });
-    fireEvent.change(screen.getByLabelText('AppSecret'), {
+    fireEvent.change(screen.getByLabelText('App Secret'), {
       target: { value: 'update-appSecret' },
     });
     expect(updateLarkConfigSpy).toBeCalledTimes(0);
@@ -132,8 +132,8 @@ describe('test System/LarkSetting', () => {
       screen.getByText('common.cancel').closest('button')
     ).not.toBeDisabled();
 
-    expect(screen.getByLabelText('AppKey')).toHaveValue('');
-    expect(screen.getByLabelText('AppSecret')).toHaveValue('');
+    expect(screen.getByLabelText('App ID')).toHaveValue('');
+    expect(screen.getByLabelText('App Secret')).toHaveValue('');
     expect(getLarkConfigSpy).toBeCalledTimes(2);
     expect(screen.getByText('common.modify')).toBeInTheDocument();
   });

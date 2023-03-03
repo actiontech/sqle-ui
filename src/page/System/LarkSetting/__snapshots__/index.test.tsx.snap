@@ -66,7 +66,7 @@ exports[`test System/LarkSetting should disabled edit lark configuration when "i
                       <span
                         class="ant-descriptions-item-label"
                       >
-                        AppKey
+                        App ID
                       </span>
                       <span
                         class="ant-descriptions-item-content"
@@ -185,9 +185,9 @@ exports[`test System/LarkSetting should disabled edit lark configuration when "i
             <label
               class="ant-form-item-required"
               for="appKey"
-              title="AppKey"
+              title="App ID"
             >
-              AppKey
+              App ID
             </label>
           </div>
           <div
@@ -220,9 +220,9 @@ exports[`test System/LarkSetting should disabled edit lark configuration when "i
             <label
               class="ant-form-item-required"
               for="appSecret"
-              title="AppSecret"
+              title="App Secret"
             >
-              AppSecret
+              App Secret
             </label>
           </div>
           <div
@@ -406,7 +406,7 @@ exports[`test System/LarkSetting should disabled edit lark configuration when "i
                       <span
                         class="ant-descriptions-item-label"
                       >
-                        AppKey
+                        App ID
                       </span>
                       <span
                         class="ant-descriptions-item-content"
@@ -525,9 +525,9 @@ exports[`test System/LarkSetting should disabled edit lark configuration when "i
             <label
               class="ant-form-item-required"
               for="appKey"
-              title="AppKey"
+              title="App ID"
             >
-              AppKey
+              App ID
             </label>
           </div>
           <div
@@ -560,9 +560,9 @@ exports[`test System/LarkSetting should disabled edit lark configuration when "i
             <label
               class="ant-form-item-required"
               for="appSecret"
-              title="AppSecret"
+              title="App Secret"
             >
-              AppSecret
+              App Secret
             </label>
           </div>
           <div
@@ -744,7 +744,7 @@ exports[`test System/LarkSetting should match snapshot 1`] = `
                       <span
                         class="ant-descriptions-item-label"
                       >
-                        AppKey
+                        App ID
                       </span>
                       <span
                         class="ant-descriptions-item-content"
@@ -863,9 +863,9 @@ exports[`test System/LarkSetting should match snapshot 1`] = `
             <label
               class="ant-form-item-required"
               for="appKey"
-              title="AppKey"
+              title="App ID"
             >
-              AppKey
+              App ID
             </label>
           </div>
           <div
@@ -898,9 +898,9 @@ exports[`test System/LarkSetting should match snapshot 1`] = `
             <label
               class="ant-form-item-required"
               for="appSecret"
-              title="AppSecret"
+              title="App Secret"
             >
-              AppSecret
+              App Secret
             </label>
           </div>
           <div
@@ -1083,7 +1083,7 @@ exports[`test System/LarkSetting should match snapshot 2`] = `
                       <span
                         class="ant-descriptions-item-label"
                       >
-                        AppKey
+                        App ID
                       </span>
                       <span
                         class="ant-descriptions-item-content"
@@ -1202,9 +1202,9 @@ exports[`test System/LarkSetting should match snapshot 2`] = `
             <label
               class="ant-form-item-required"
               for="appKey"
-              title="AppKey"
+              title="App ID"
             >
-              AppKey
+              App ID
             </label>
           </div>
           <div
@@ -1237,9 +1237,9 @@ exports[`test System/LarkSetting should match snapshot 2`] = `
             <label
               class="ant-form-item-required"
               for="appSecret"
-              title="AppSecret"
+              title="App Secret"
             >
-              AppSecret
+              App Secret
             </label>
           </div>
           <div
@@ -1423,7 +1423,7 @@ exports[`test System/LarkSetting should match snapshot 3`] = `
                       <span
                         class="ant-descriptions-item-label"
                       >
-                        AppKey
+                        App ID
                       </span>
                       <span
                         class="ant-descriptions-item-content"
@@ -1542,9 +1542,9 @@ exports[`test System/LarkSetting should match snapshot 3`] = `
             <label
               class="ant-form-item-required"
               for="appKey"
-              title="AppKey"
+              title="App ID"
             >
-              AppKey
+              App ID
             </label>
           </div>
           <div
@@ -1576,9 +1576,9 @@ exports[`test System/LarkSetting should match snapshot 3`] = `
             <label
               class="ant-form-item-required"
               for="appSecret"
-              title="AppSecret"
+              title="App Secret"
             >
-              AppSecret
+              App Secret
             </label>
           </div>
           <div
@@ -1761,7 +1761,7 @@ exports[`test System/LarkSetting should send request when clicking test DingTalk
                         <span
                           class="ant-descriptions-item-label"
                         >
-                          AppKey
+                          App ID
                         </span>
                         <span
                           class="ant-descriptions-item-content"
@@ -1881,9 +1881,9 @@ exports[`test System/LarkSetting should send request when clicking test DingTalk
               <label
                 class="ant-form-item-required"
                 for="appKey"
-                title="AppKey"
+                title="App ID"
               >
-                AppKey
+                App ID
               </label>
             </div>
             <div
@@ -1916,9 +1916,9 @@ exports[`test System/LarkSetting should send request when clicking test DingTalk
               <label
                 class="ant-form-item-required"
                 for="appSecret"
-                title="AppSecret"
+                title="App Secret"
               >
-                AppSecret
+                App Secret
               </label>
             </div>
             <div

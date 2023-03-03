@@ -145,7 +145,7 @@ const LarkSetting: React.FC = () => {
               ? t('common.open')
               : t('common.close')}
           </Descriptions.Item>
-          <Descriptions.Item label="AppKey" span={3}>
+          <Descriptions.Item label="App ID" span={3}>
             <Typography.Paragraph>
               {larkInfo?.app_id || '--'}
             </Typography.Paragraph>
@@ -273,21 +273,21 @@ const LarkSetting: React.FC = () => {
         >
           <Switch checked={enable} onChange={setEnable} />
         </Form.Item>
-        <Form.Item label="AppKey" name="appKey" rules={[{ required: true }]}>
+        <Form.Item label="App ID" name="appKey" rules={[{ required: true }]}>
           <Input
             disabled={!enable}
-            placeholder={t('common.form.placeholder.input', { name: 'AppKey' })}
+            placeholder={t('common.form.placeholder.input', { name: 'App ID' })}
           />
         </Form.Item>
         <Form.Item
-          label="AppSecret"
+          label="App Secret"
           name="appSecret"
           rules={[{ required: true }]}
         >
           <Input.Password
             disabled={!enable}
             placeholder={t('common.form.placeholder.input', {
-              name: 'AppSecret',
+              name: 'App Secret',
             })}
           />
         </Form.Item>
