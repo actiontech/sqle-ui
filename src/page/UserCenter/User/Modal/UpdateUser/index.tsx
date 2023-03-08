@@ -86,6 +86,7 @@ const UpdateUser = () => {
         managementPermissionCodeList:
           currentUser?.management_permission_list?.map((v) => v.code ?? 0),
         phone: currentUser?.phone,
+        disabled: !!currentUser?.is_disabled,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

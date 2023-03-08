@@ -44,6 +44,7 @@ describe('User/Modal/UpdateUser', () => {
           user_group_name_list: ['user_group_name1'],
           wechat_id: '11231123',
           phone: '13312341234',
+          is_disabled: false,
         },
       },
     });
@@ -56,6 +57,39 @@ describe('User/Modal/UpdateUser', () => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
+  });
+
+  test('should match snapshot', async () => {
+    const { baseElement, rerender } = render(<UpdateUser />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(baseElement).toMatchSnapshot();
+    cleanup();
+
+    mockUseSelector({
+      userManage: {
+        modalStatus: { [ModalName.Update_User]: true },
+        selectUser: {
+          user_name: 'root',
+          email: 'user@123.com',
+          management_permission_list: [
+            {
+              desc: '创建项目',
+              code: 1,
+            },
+          ],
+          user_group_name_list: ['user_group_name1'],
+          wechat_id: '11231123',
+          phone: '13312341234',
+          is_disabled: false,
+        },
+      },
+    });
+
+    rerender(<UpdateUser />);
+
+    expect(baseElement).toMatchSnapshot();
   });
 
   test('should get instance list and username list when modal is opened', async () => {
