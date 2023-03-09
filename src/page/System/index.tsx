@@ -5,8 +5,8 @@ import LDAPSetting from './LDAPSetting';
 import SMTPSetting from './SMTPSetting';
 /* IFTRUE_isEE */
 import License from './License';
-import Wechat from './Wechat/Wechat';
 /* FITRUE_isEE */
+import Wechat from './Wechat/Wechat';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { initSystemModalStatus } from '../../store/system';
@@ -44,9 +44,7 @@ const System = () => {
             >
               <Space direction="vertical" className="full-width-element">
                 <SMTPSetting />
-                {/* IFTRUE_isEE */}
                 <Wechat />
-                {/* FITRUE_isEE */}
                 <LarkSetting />
               </Space>
             </Tabs.TabPane>
