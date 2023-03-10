@@ -115,7 +115,7 @@ export default {
     proxy_ip: '代理服务器IP',
 
     test: '测试',
-    receiveWechat: '接收者微信ID',
+    receiveWechat: '接收者UserID',
     testing: '正在向{{id}}发送测试消息...',
     testSuccess: '测试消息发送成功',
   },
