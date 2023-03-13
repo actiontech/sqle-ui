@@ -81,9 +81,6 @@ const WhitelistForm: React.FC<WhitelistFormProps> = (props) => {
           height="500"
           language="sql"
           editorDidMount={editorDidMount}
-          options={{
-            automaticLayout: true,
-          }}
         />
       </Form.Item>
     </Form>

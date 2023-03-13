@@ -980,7 +980,6 @@ exports[`SubscribeNotice should match snapshot 2`] = `
                           height="200"
                           id="template"
                           language="json"
-                          options="[object Object]"
                           theme="vs"
                           value="{
             \\"msg_type\\": \\"text2\\",
