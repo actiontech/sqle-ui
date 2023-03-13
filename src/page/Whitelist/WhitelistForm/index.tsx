@@ -37,14 +37,14 @@ const WhitelistForm: React.FC<WhitelistFormProps> = (props) => {
           <Radio value={CreateAuditWhitelistReqV1MatchTypeEnum.exact_match}>
             {t(
               WhitelistMatchTypeLabel[
-              CreateAuditWhitelistReqV1MatchTypeEnum.exact_match
+                CreateAuditWhitelistReqV1MatchTypeEnum.exact_match
               ]
             )}
           </Radio>
           <Radio value={CreateAuditWhitelistReqV1MatchTypeEnum.fp_match}>
             {t(
               WhitelistMatchTypeLabel[
-              CreateAuditWhitelistReqV1MatchTypeEnum.fp_match
+                CreateAuditWhitelistReqV1MatchTypeEnum.fp_match
               ]
             )}
           </Radio>

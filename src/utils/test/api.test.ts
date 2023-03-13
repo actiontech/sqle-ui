@@ -9,8 +9,6 @@ const downloadSpy = jest.spyOn(Download, 'downloadByCreateElementA');
 const notificationSpy = jest.spyOn(notification, 'error');
 const server = setupServer();
 
-global.window = Object.create(window);
-
 describe('Api', () => {
   beforeAll(() => {
     server.listen();

@@ -107,6 +107,9 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
             height="500"
             language="sql"
             editorDidMount={editorDidMount}
+            options={{
+              automaticLayout: true,
+            }}
           />
         </Form.Item>
       </EmptyBox>
