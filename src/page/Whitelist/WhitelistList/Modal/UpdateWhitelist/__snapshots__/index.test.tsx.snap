@@ -181,6 +181,7 @@ exports[`Whitelist/WhitelistList/Modal/UpdateWhitelist should match snapshot 1`]
                           height="500"
                           id="sql"
                           language="sql"
+                          options="[object Object]"
                           theme="vs"
                           width="100%"
                         >

@@ -179,6 +179,7 @@ exports[`Whitelist/WhitelistList/Modal/AddWhitelist should match snapshot 1`] = 
                           height="500"
                           id="sql"
                           language="sql"
+                          options="[object Object]"
                           theme="vs"
                           value="/* input your sql */"
                           width="100%"

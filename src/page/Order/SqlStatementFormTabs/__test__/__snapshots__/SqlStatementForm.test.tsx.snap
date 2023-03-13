@@ -122,6 +122,7 @@ exports[`test Order/SqlStatementForm should match snapshot 1`] = `
               height="500"
               id="0_sql"
               language="sql"
+              options="[object Object]"
               theme="vs"
               value="/* input your sql */"
               width="100%"

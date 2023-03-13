@@ -136,6 +136,7 @@ exports[`Whitelist/WhitelistForm should match snapshot 1`] = `
               height="500"
               id="sql"
               language="sql"
+              options="[object Object]"
               theme="vs"
               value="/* input your sql */"
               width="100%"
