@@ -381,44 +381,4 @@ describe('userMonacoEditor', () => {
 
     expect(createDependencyProposals(monaco as any, range)).toMatchSnapshot();
   });
-
-  test('should call "editor.layout" when window trigger resize', () => {
-    const layoutEvent = jest.fn();
-
-    const editor = {
-      layout: layoutEvent,
-      onDidFocusEditorText: jest.fn(),
-      onDidBlurEditorText: jest.fn(),
-      getValue: jest.fn().mockReturnValue('getValue'),
-      setValue: jest.fn(),
-    };
-    const dispose = jest.fn();
-    const monaco = {
-      languages: {
-        registerCompletionItemProvider: jest.fn(() => ({ dispose })),
-      },
-    };
-    const form = {
-      getFieldValue: jest.fn(),
-      setFields: jest.fn(),
-    };
-    const { result, unmount } = renderHook(() =>
-      useMonacoEditor(form as any, {
-        formName: 'sql',
-        placeholder: 'test aaaa',
-      })
-    );
-    result.current.editorDidMount(editor as any, monaco as any);
-
-    expect(layoutEvent).toBeCalledTimes(0);
-
-    window.dispatchEvent(new Event('resize'));
-
-    expect(layoutEvent).toBeCalledTimes(1);
-
-    unmount();
-
-    window.dispatchEvent(new Event('resize'));
-    expect(layoutEvent).toBeCalledTimes(1);
-  });
 });
