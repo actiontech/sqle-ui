@@ -289,6 +289,9 @@ const SubscribeNotice = () => {
               width="100%"
               height="200"
               language="json"
+              options={{
+                automaticLayout: true,
+              }}
             />
           </Form.Item>
         </EmptyBox>

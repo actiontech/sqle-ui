@@ -143,7 +143,6 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
       width={ModalSize.big}
       visible={visible}
       closable={false}
-      destroyOnClose={true}
       footer={
         <Space>
           <Alert message={t('order.modifySql.submitTips')} type="warning" />

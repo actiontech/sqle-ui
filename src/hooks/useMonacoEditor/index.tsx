@@ -4,7 +4,6 @@ import { EditorDidMount } from 'react-monaco-editor';
 import { IDisposable } from 'monaco-editor';
 import { createDependencyProposals } from './index.data';
 import { IRange } from './index.type';
-import { throttle } from 'lodash';
 import * as monacoEditor from 'monaco-editor/esm/vs/editor/editor.api';
 import { NamePath } from 'antd/lib/form/interface';
 
@@ -69,15 +68,8 @@ const useMonacoEditor = (
   };
 
   React.useEffect(() => {
-    const onResize = throttle(() => {
-      editorRef.current?.layout();
-    }, 500);
-
-    window.addEventListener('resize', onResize);
-
     return () => {
       monacoProviderRef.current?.dispose();
-      window.removeEventListener('resize', onResize);
     };
   }, []);
 
