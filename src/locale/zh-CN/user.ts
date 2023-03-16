@@ -41,7 +41,7 @@ export default {
     role: '角色',
     disabled: '禁用用户',
     userGroup: '所属用户组',
-    wechat: '微信id',
+    wechat: '企业微信UserID',
     managerPermission: '平台管理权限',
     phone: '手机号',
 

@@ -7,6 +7,7 @@ import { LoginTypeEnum } from '../../data/common';
 import { ModalName } from '../../data/ModalName';
 import ModifyPasswordModal from './Modal/ModifyPassword';
 import UserEmail from './UserEmail';
+import UserPhone from './UserPhone/Phone';
 import Wechat from './Wechat/Wechat';
 
 const Account = () => {
@@ -57,6 +58,9 @@ const Account = () => {
             <UserEmail userInfo={userInfo} refreshUserInfo={refresh} />
             <Col span={24}>
               <Wechat userInfo={userInfo} refreshUserInfo={refresh} />
+            </Col>
+            <Col span={24}>
+              <UserPhone userInfo={userInfo} refreshUserInfo={refresh} />
             </Col>
             <Divider />
             <Col span={24}>
