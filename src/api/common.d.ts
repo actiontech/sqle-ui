@@ -32,7 +32,7 @@ import {
   WorkflowRecordResV2StatusEnum,
   WorkflowResV2ModeEnum,
   WorkflowStepResV2StateEnum,
-  WorkflowStepResV2TypeEnum
+  WorkflowStepResV2TypeEnum,
 } from './common.enum';
 
 export interface IBaseRes {
@@ -2109,6 +2109,8 @@ export interface IUpdateCurrentUserPasswordReqV1 {
 
 export interface IUpdateCurrentUserReqV1 {
   email?: string;
+
+  phone?: string;
 
   wechat_id?: string;
 }
