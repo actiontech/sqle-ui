@@ -1,4 +1,4 @@
-import { cleanup, waitFor } from '@testing-library/react';
+import { cleanup, fireEvent, screen, waitFor } from '@testing-library/react';
 import Home from '.';
 import dashboard from '../../api/dashboard';
 import workflow from '../../api/workflow';
@@ -26,16 +26,37 @@ describe('Home', () => {
     );
     return spy;
   };
-  const mockRequest = () => {
+  const mockGetDashboardProjectTipsV1 = () => {
+    const spy = jest.spyOn(dashboard, 'getDashboardProjectTipsV1');
+    spy.mockImplementation(() =>
+      resolveThreeSecond([
+        { project_name: 'aaa', unfinished_workflow_count: 1 },
+        { project_name: 'default', unfinished_workflow_count: 8 },
+      ])
+    );
+    return spy;
+  };
+
+  const mockGetGlobalWorkflows = () => {
     const spy = jest.spyOn(workflow, 'getGlobalWorkflowsV1');
     spy.mockImplementation(() => resolveThreeSecond([]));
     return spy;
   };
 
+  const mockGetWorkflows = () => {
+    const spy = jest.spyOn(workflow, 'getWorkflowsV1');
+    spy.mockImplementation(() => resolveThreeSecond([]));
+    return spy;
+  };
+
+  let getGlobalWorkflowsSpy: jest.SpyInstance;
+  let getWorkflowsSpy: jest.SpyInstance;
+
   beforeEach(() => {
     jest.useFakeTimers();
     mockUseSelector({ user: { username: 'admin' } });
-    mockRequest();
+    getGlobalWorkflowsSpy = mockGetGlobalWorkflows();
+    getWorkflowsSpy = mockGetWorkflows();
   });
   afterEach(() => {
     jest.clearAllMocks();
@@ -44,8 +65,29 @@ describe('Home', () => {
     cleanup();
   });
 
+  let errorSpy!: jest.SpyInstance;
+
+  beforeAll(() => {
+    const error = global.console.error;
+    errorSpy = jest.spyOn(global.console, 'error');
+    errorSpy.mockImplementation((message: string) => {
+      if (
+        message.includes(
+          ' React does not recognize the `showLabel` prop on a DOM element'
+        )
+      ) {
+        return;
+      }
+      error(message);
+    });
+  });
+  afterAll(() => {
+    errorSpy.mockRestore();
+  });
+
   test('should match snapshot', async () => {
     mockGetDashboardV1();
+    mockGetDashboardProjectTipsV1();
     const { container } = renderWithRouter(<Home />);
 
     await waitFor(() => {
@@ -62,7 +104,9 @@ describe('Home', () => {
 
   test('should be called getDashboardV1 interface', async () => {
     const getDashboardSpy = mockGetDashboardV1();
+    const getDashboardProjectTipsSpy = mockGetDashboardProjectTipsV1();
     expect(getDashboardSpy).toBeCalledTimes(0);
+    expect(getDashboardProjectTipsSpy).toBeCalledTimes(0);
     renderWithRouter(<Home />);
 
     await waitFor(() => {
@@ -70,5 +114,32 @@ describe('Home', () => {
     });
 
     expect(getDashboardSpy).toBeCalledTimes(1);
+    expect(getDashboardProjectTipsSpy).toBeCalledTimes(1);
+  });
+
+  test('should be called request when changed project name', async () => {
+    mockGetDashboardV1();
+    mockGetDashboardProjectTipsV1();
+
+    renderWithRouter(<Home />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(screen.getByText('dashboard.allProjectTip')).toBeInTheDocument();
+    expect(getGlobalWorkflowsSpy).toBeCalledTimes(6);
+
+    fireEvent.mouseDown(screen.getByText('dashboard.allProjectTip'));
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    fireEvent.click(screen.getAllByText('default')[1]);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    expect(getWorkflowsSpy).toBeCalledTimes(6);
   });
 });

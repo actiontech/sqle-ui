@@ -1,33 +1,35 @@
 import { SyncOutlined } from '@ant-design/icons';
-import { useRequest } from 'ahooks';
 import { Card, Space } from 'antd';
 import { cloneDeep } from 'lodash';
 import moment from 'moment';
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import workflow from '../../../api/workflow';
+import { IGetWorkflowsV1Params } from '../../../api/workflow/index.d';
 import { translateTimeForRequest } from '../../../utils/Common';
 import CommonTable from '../CommonTable';
+import useDashboardRequest from '../useDashboardRequest';
 import { customColumn } from './column';
+import { IRecentlyOrderPanelProps } from './index.type';
 
-const RecentlyOrderPanel: React.FC = () => {
+const RecentlyOrderPanel: React.FC<IRecentlyOrderPanelProps> = ({
+  projectName,
+}) => {
   const { t } = useTranslation();
-  const recentlyOrderResponse = useRequest(
-    () => {
-      const endTime = moment();
-      const startTime = cloneDeep(endTime).subtract(1, 'day');
-      return workflow.getGlobalWorkflowsV1({
-        page_index: 1,
-        page_size: 1000,
-        filter_task_execute_start_time_from: translateTimeForRequest(startTime),
-        filter_task_execute_start_time_to: translateTimeForRequest(endTime),
-      });
-    },
-    {
-      formatResult(res) {
-        return res.data.data;
-      },
-    }
-  );
+
+  const getParams = useCallback((): IGetWorkflowsV1Params => {
+    const endTime = moment();
+    const startTime = cloneDeep(endTime).subtract(1, 'day');
+
+    return {
+      page_index: 1,
+      page_size: 1000,
+      filter_task_execute_start_time_from: translateTimeForRequest(startTime),
+      filter_task_execute_start_time_to: translateTimeForRequest(endTime),
+      project_name: projectName,
+    };
+  }, [projectName]);
+
+  const recentlyOrderResponse = useDashboardRequest(getParams(), [projectName]);
 
   const refreshTable = () => {
     if (recentlyOrderResponse?.loading) {

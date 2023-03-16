@@ -1,16 +1,15 @@
 import { SyncOutlined } from '@ant-design/icons';
-import { useRequest } from 'ahooks';
 import { Card, Space, Tabs, TabsProps, Typography } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import workflow from '../../../api/workflow';
-import { getGlobalWorkflowsV1FilterStatusEnum } from '../../../api/workflow/index.enum';
+import { getWorkflowsV1FilterStatusEnum } from '../../../api/workflow/index.enum';
 import { IReduxState } from '../../../store';
 import CommonTable, {
   DASHBOARD_COMMON_GET_ORDER_NUMBER,
   genTabPaneTitle,
 } from '../CommonTable';
+import useDashboardRequest from '../useDashboardRequest';
 import { IDEVPanelProps } from './index.type';
 
 enum tabsKeyEnum {
@@ -22,6 +21,7 @@ enum tabsKeyEnum {
 const DBAPanel: React.FC<IDEVPanelProps> = ({
   workflowStatistics,
   getWorkflowStatistics,
+  projectName,
 }) => {
   const username = useSelector<IReduxState, string>(
     (state) => state.user.username
@@ -36,52 +36,37 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
     setCurrentActiveKey(key as tabsKeyEnum);
   };
 
-  const pendingReviewByMeResponse = useRequest(
-    () => {
-      return workflow.getGlobalWorkflowsV1({
-        page_index: 1,
-        page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
-        filter_create_user_name: username,
-        filter_status: getGlobalWorkflowsV1FilterStatusEnum.wait_for_audit,
-      });
-    },
+  const pendingReviewByMeResponse = useDashboardRequest(
     {
-      formatResult(res) {
-        return res.data.data;
-      },
-    }
+      page_index: 1,
+      page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
+      filter_create_user_name: username,
+      filter_status: getWorkflowsV1FilterStatusEnum.wait_for_audit,
+      project_name: projectName,
+    },
+    [projectName]
   );
 
-  const pendingExecByMeResponse = useRequest(
-    () => {
-      return workflow.getGlobalWorkflowsV1({
-        page_index: 1,
-        page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
-        filter_create_user_name: username,
-        filter_status: getGlobalWorkflowsV1FilterStatusEnum.wait_for_execution,
-      });
-    },
+  const pendingExecByMeResponse = useDashboardRequest(
     {
-      formatResult(res) {
-        return res.data.data;
-      },
-    }
+      page_index: 1,
+      page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
+      filter_create_user_name: username,
+      filter_status: getWorkflowsV1FilterStatusEnum.wait_for_execution,
+      project_name: projectName,
+    },
+    [projectName]
   );
 
-  const rejectedOrderByMeResponse = useRequest(
-    () => {
-      return workflow.getGlobalWorkflowsV1({
-        page_index: 1,
-        page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
-        filter_create_user_name: username,
-        filter_status: getGlobalWorkflowsV1FilterStatusEnum.rejected,
-      });
-    },
+  const rejectedOrderByMeResponse = useDashboardRequest(
     {
-      formatResult(res) {
-        return res.data.data;
-      },
-    }
+      page_index: 1,
+      page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
+      filter_create_user_name: username,
+      filter_status: getWorkflowsV1FilterStatusEnum.rejected,
+      project_name: projectName,
+    },
+    [projectName]
   );
 
   const tableLoading =

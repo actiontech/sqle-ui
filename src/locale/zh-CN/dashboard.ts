@@ -1,7 +1,10 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   pageTitle: '工作台',
+  pageDesc: '您可以通过筛选项目, 查看项目对应的工作台数据',
   tableLimitTips: '当前表格仅展示前{{number}}条数据',
+  allProjectTip: '所有项目',
+  projectName: '项目名称',
   title: {
     pendingOrder: '待处理工单',
     myOrderSituation: '我的工单情况',
