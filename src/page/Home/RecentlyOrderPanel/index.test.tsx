@@ -10,6 +10,7 @@ import { createMemoryHistory } from 'history';
 import moment from 'moment';
 import { cloneDeep } from 'lodash';
 import { translateTimeForRequest } from '../../../utils/Common';
+import { ALL_PROJECT_NAME } from '..';
 
 describe('test home/RecentlyOrderPanel', () => {
   const list = [
@@ -32,6 +33,7 @@ describe('test home/RecentlyOrderPanel', () => {
   };
   let getMockRequestSpy: jest.SpyInstance;
   const realDateNow = Date.now.bind(global.Date);
+  const projectName = ALL_PROJECT_NAME;
 
   beforeEach(() => {
     const dateNowStub = jest.fn(() => new Date('2022-07-21T12:33:37.000Z'));
@@ -48,13 +50,15 @@ describe('test home/RecentlyOrderPanel', () => {
   });
 
   test('should match snapshot', () => {
-    const { container } = renderWithRouter(<RecentlyOrderPanel />);
+    const { container } = renderWithRouter(
+      <RecentlyOrderPanel projectName={projectName} />
+    );
     expect(container).toMatchSnapshot();
   });
 
   test('should be called getWorkflowsV2 interface', async () => {
     expect(getMockRequestSpy).toBeCalledTimes(0);
-    renderWithRouter(<RecentlyOrderPanel />);
+    renderWithRouter(<RecentlyOrderPanel projectName={projectName} />);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -64,7 +68,11 @@ describe('test home/RecentlyOrderPanel', () => {
   test('should execute corresponding event when clicking button', async () => {
     const history = createMemoryHistory();
     expect(getMockRequestSpy).toBeCalledTimes(0);
-    renderWithServerRouter(<RecentlyOrderPanel />, undefined, { history });
+    renderWithServerRouter(
+      <RecentlyOrderPanel projectName={projectName} />,
+      undefined,
+      { history }
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -83,13 +91,18 @@ describe('test home/RecentlyOrderPanel', () => {
       page_size: 1000,
       filter_task_execute_start_time_from: translateTimeForRequest(startTime),
       filter_task_execute_start_time_to: translateTimeForRequest(endTime),
+      project_name: '',
     });
   });
 
   test('should jump to the order page under the project when click on the corresponding link', async () => {
     const history = createMemoryHistory();
 
-    renderWithServerRouter(<RecentlyOrderPanel />, undefined, { history });
+    renderWithServerRouter(
+      <RecentlyOrderPanel projectName={projectName} />,
+      undefined,
+      { history }
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -104,5 +117,32 @@ describe('test home/RecentlyOrderPanel', () => {
     expect(history.location.pathname).toBe(
       `/project/${list[0].project_name}/overview`
     );
+  });
+
+  test('should be called getWorkflowsV1 when project name is not empty', async () => {
+    const getMockRequestSpy = jest.spyOn(workflow, 'getWorkflowsV1');
+    getMockRequestSpy.mockImplementation(() => resolveThreeSecond(list));
+
+    renderWithRouter(<RecentlyOrderPanel projectName={'default'} />);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(getMockRequestSpy).toBeCalledTimes(1);
+    const endTime = moment();
+    const startTime = cloneDeep(endTime).subtract(1, 'day');
+    expect(getMockRequestSpy).toBeCalledWith({
+      page_index: 1,
+      page_size: 1000,
+      filter_task_execute_start_time_from: translateTimeForRequest(startTime),
+      filter_task_execute_start_time_to: translateTimeForRequest(endTime),
+      project_name: 'default',
+    });
+
+    fireEvent.click(screen.getByTestId('refreshTable'));
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(getMockRequestSpy).toBeCalledTimes(2);
   });
 });

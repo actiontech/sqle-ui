@@ -111,7 +111,7 @@ exports[`test Home/CommonTable should match snapshot 1`] = `
                   </tr>
                   <tr
                     class="ant-table-row ant-table-row-level-0"
-                    data-row-key="test1"
+                    data-row-key="1"
                   >
                     <td
                       class="ant-table-cell"
@@ -237,7 +237,7 @@ exports[`test Home/CommonTable should render custom custom when custom has a val
                   </tr>
                   <tr
                     class="ant-table-row ant-table-row-level-0"
-                    data-row-key="test1"
+                    data-row-key="1"
                   >
                     <td
                       class="ant-table-cell"
@@ -570,7 +570,7 @@ exports[`test Home/CommonTable should render spin when loading equal true 1`] = 
                   </tr>
                   <tr
                     class="ant-table-row ant-table-row-level-0"
-                    data-row-key="test1"
+                    data-row-key="1"
                   >
                     <td
                       class="ant-table-cell"

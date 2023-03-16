@@ -465,6 +465,12 @@ export interface ICreateWorkflowReqV1 {
   workflow_subject?: string;
 }
 
+export interface IDashboardProjectTipV1 {
+  project_name?: string;
+
+  unfinished_workflow_count?: number;
+}
+
 export interface IDashboardResV1 {
   workflow_statistics?: IWorkflowStatisticsResV1;
 }
@@ -649,6 +655,14 @@ export interface IGetAuditWhitelistResV1 {
   message?: string;
 
   total_nums?: number;
+}
+
+export interface IGetDashboardProjectTipsResV1 {
+  code?: number;
+
+  data?: IDashboardProjectTipV1[];
+
+  message?: string;
 }
 
 export interface IGetDashboardResV1 {
@@ -1736,6 +1750,8 @@ export interface IProjectRuleTemplateResV1 {
 }
 
 export interface IProjectTipResV1 {
+  count_of_unfinished_workflows_related_to_current_user?: number;
+
   project_name?: string;
 }
 

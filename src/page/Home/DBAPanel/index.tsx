@@ -1,16 +1,15 @@
 import { SyncOutlined } from '@ant-design/icons';
-import { useRequest } from 'ahooks';
 import { Card, Space, Tabs, TabsProps, Typography } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import workflow from '../../../api/workflow';
-import { getGlobalWorkflowsV1FilterStatusEnum } from '../../../api/workflow/index.enum';
+import { getWorkflowsV1FilterStatusEnum } from '../../../api/workflow/index.enum';
 import { IReduxState } from '../../../store';
 import CommonTable, {
   DASHBOARD_COMMON_GET_ORDER_NUMBER,
   genTabPaneTitle,
 } from '../CommonTable';
+import useDashboardRequest from '../useDashboardRequest';
 import { IDBAPanelProps } from './index.type';
 
 enum tabsKeyEnum {
@@ -21,6 +20,7 @@ enum tabsKeyEnum {
 const DBAPanel: React.FC<IDBAPanelProps> = ({
   workflowStatistics,
   getWorkflowStatistics,
+  projectName,
 }) => {
   const username = useSelector<IReduxState, string>(
     (state) => state.user.username
@@ -34,36 +34,26 @@ const DBAPanel: React.FC<IDBAPanelProps> = ({
     setCurrentActiveKey(key as tabsKeyEnum);
   };
 
-  const needMeReviewResponse = useRequest(
-    () => {
-      return workflow.getGlobalWorkflowsV1({
-        page_index: 1,
-        page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
-        filter_current_step_assignee_user_name: username,
-        filter_status: getGlobalWorkflowsV1FilterStatusEnum.wait_for_audit,
-      });
-    },
+  const needMeReviewResponse = useDashboardRequest(
     {
-      formatResult(res) {
-        return res.data.data;
-      },
-    }
+      page_index: 1,
+      page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
+      filter_current_step_assignee_user_name: username,
+      filter_status: getWorkflowsV1FilterStatusEnum.wait_for_audit,
+      project_name: projectName,
+    },
+    [projectName]
   );
 
-  const needMeExecResponse = useRequest(
-    () => {
-      return workflow.getGlobalWorkflowsV1({
-        page_index: 1,
-        page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
-        filter_current_step_assignee_user_name: username,
-        filter_status: getGlobalWorkflowsV1FilterStatusEnum.wait_for_execution,
-      });
-    },
+  const needMeExecResponse = useDashboardRequest(
     {
-      formatResult(res) {
-        return res.data.data;
-      },
-    }
+      page_index: 1,
+      page_size: DASHBOARD_COMMON_GET_ORDER_NUMBER,
+      filter_current_step_assignee_user_name: username,
+      filter_status: getWorkflowsV1FilterStatusEnum.wait_for_execution,
+      project_name: projectName,
+    },
+    [projectName]
   );
 
   const tableLoading =
