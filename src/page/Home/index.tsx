@@ -34,29 +34,40 @@ const Home = () => {
     () => dashboard.getDashboardProjectTipsV1(),
     {
       formatResult(res) {
-        let sum = 0;
         const genLabel = (name?: string, count?: number) => {
           return (
             <Space className="full-width-element flex-space-between">
               {name}
-              {<Badge size="small" count={count} />}
+              {<Badge size="small" count={count} showZero={true} />}
             </Space>
           );
         };
+        const sumCount = res.data.data?.reduce(
+          (acc, cur) => acc + (cur?.unfinished_workflow_count ?? 0),
+          0
+        );
         return [
-          ...(res.data.data?.map((v) => {
-            sum += v.unfinished_workflow_count ?? 0;
-            return {
-              label: genLabel(v.project_name, v.unfinished_workflow_count),
-              value: v?.project_name ?? '',
-              showLabel: v?.project_name ?? '',
-            };
-          }) ?? []),
           {
-            label: genLabel(t('dashboard.allProjectTip'), sum),
+            label: genLabel(t('dashboard.allProjectTip'), sumCount),
             value: ALL_PROJECT_NAME,
             showLabel: t('dashboard.allProjectTip'),
           },
+          ...(res.data.data
+            ?.sort(
+              (a, b) =>
+                (b?.unfinished_workflow_count ?? 0) -
+                (a?.unfinished_workflow_count ?? 0)
+            )
+            .map((v) => {
+              return {
+                label: genLabel(
+                  v.project_name,
+                  v.unfinished_workflow_count ?? 0
+                ),
+                value: v?.project_name ?? '',
+                showLabel: v?.project_name ?? '',
+              };
+            }) ?? []),
         ];
       },
     }
