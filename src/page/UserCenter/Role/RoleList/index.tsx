@@ -1,5 +1,5 @@
 import { SyncOutlined } from '@ant-design/icons';
-import { useRequest } from 'ahooks';
+import { usePagination } from 'ahooks';
 import { Card, Button, Space, message, Table } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -30,22 +30,23 @@ const RoleList = () => {
     loading,
     refresh: refreshRoleList,
     pagination: { total, onChange: changePagination, changeCurrent },
-  } = useRequest(
+  } = usePagination(
     ({ current, pageSize }) =>
-      role.getRoleListV1({
-        page_index: current,
-        page_size: pageSize,
-        filter_role_name: roleListFilter.filter_role_name,
-      }),
+      role
+        .getRoleListV1({
+          page_index: current,
+          page_size: pageSize,
+          filter_role_name: roleListFilter.filter_role_name,
+        })
+        .then((res) => {
+          return {
+            list: res.data?.data ?? [],
+            total: res.data?.total_nums ?? 0,
+          };
+        }),
     {
-      paginated: true,
+      // paginated: true,
       refreshDeps: [roleListFilter],
-      formatResult(res) {
-        return {
-          list: res.data?.data ?? [],
-          total: res.data?.total_nums ?? 0,
-        };
-      },
     }
   );
 

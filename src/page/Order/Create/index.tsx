@@ -1,5 +1,5 @@
 import { useTheme } from '@material-ui/styles';
-import { useBoolean, useToggle } from 'ahooks';
+import { useBoolean } from 'ahooks';
 import {
   Button,
   Card,
@@ -50,7 +50,7 @@ const CreateOrder = () => {
   const theme = useTheme<Theme>();
   const [baseForm] = useForm();
   const [sqlInfoForm] = useForm<SqlInfoFormFields>();
-  const [hasDirtyData, { toggle: toggleHasDirtyData }] = useToggle(false);
+  const [hasDirtyData, toggleHasDirtyData] = useState(false);
   const [createLoading, { setTrue: startCreate, setFalse: createFinish }] =
     useBoolean();
   const [visible, { setTrue: openModal, setFalse: closeModal }] = useBoolean();

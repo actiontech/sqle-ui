@@ -41,9 +41,9 @@ const ImportRuleTemplate: React.FC = () => {
     []
   );
 
-  const [createLoading, { toggle: updateCreateLoading }] = useBoolean();
-  const [getAllRulesLoading, { toggle: updateGetAllRulesLoading }] =
+  const [createLoading, { setTrue: startSubmit, setFalse: finishSubmit }] =
     useBoolean();
+  const [getAllRulesLoading, updateGetAllRulesLoading] = useState(false);
 
   const [step, setStep] = useState(0);
 
@@ -114,7 +114,7 @@ const ImportRuleTemplate: React.FC = () => {
   }, [step]);
 
   const submit = useCallback(() => {
-    updateCreateLoading(true);
+    startSubmit();
     const baseInfo = ruleTemplateForm.getFieldsValue();
     const activeRuleWithNewField: IRuleReqV1[] = activeRule.map((rule) => {
       return {
@@ -139,9 +139,16 @@ const ImportRuleTemplate: React.FC = () => {
         }
       })
       .finally(() => {
-        updateCreateLoading(false);
+        finishSubmit();
       });
-  }, [activeRule, ruleTemplateForm, step, updateCreateLoading, projectName]);
+  }, [
+    startSubmit,
+    ruleTemplateForm,
+    activeRule,
+    projectName,
+    step,
+    finishSubmit,
+  ]);
 
   const resetAll = useCallback(() => {
     setStep(0);

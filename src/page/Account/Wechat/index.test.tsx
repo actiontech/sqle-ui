@@ -71,7 +71,12 @@ describe('Wechat', () => {
     ).not.toHaveAttribute('hidden');
     expect(input).toHaveFocus();
 
-    fireEvent.keyDown(input, { key: 'esc' });
+    fireEvent.keyDown(input, {
+      key: 'Escape',
+      code: 'Escape',
+      keyCode: 27,
+      charCode: 27,
+    });
 
     expect(
       getBySelector('.ant-input-affix-wrapper').parentNode
@@ -98,7 +103,12 @@ describe('Wechat', () => {
 
     fireEvent.click(getBySelector('.anticon-edit'));
     fireEvent.input(input, { target: { value: 'aaabbb' } });
-    fireEvent.keyDown(input, { key: 'enter' });
+    fireEvent.keyDown(input, {
+      key: 'Enter',
+      code: 'Enter',
+      keyCode: 13,
+      charCode: 13,
+    });
     expect(
       getBySelector('.ant-input-affix-wrapper').parentNode
     ).not.toHaveAttribute('hidden');

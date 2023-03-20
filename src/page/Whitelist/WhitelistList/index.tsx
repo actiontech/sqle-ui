@@ -39,19 +39,18 @@ const WhitelistList = () => {
     refresh,
   } = useRequest(
     () =>
-      auditWhitelist.getAuditWhitelistV1({
-        page_index: `${pagination.pageIndex}`,
-        page_size: `${pagination.pageSize}`,
-        project_name: projectName,
-      }),
-    {
-      refreshDeps: [pagination],
-      formatResult(res) {
-        return {
+      auditWhitelist
+        .getAuditWhitelistV1({
+          page_index: `${pagination.pageIndex}`,
+          page_size: `${pagination.pageSize}`,
+          project_name: projectName,
+        })
+        .then((res) => ({
           list: res.data?.data ?? [],
           total: res.data.total_nums ?? 0,
-        };
-      },
+        })),
+    {
+      refreshDeps: [pagination],
     }
   );
 

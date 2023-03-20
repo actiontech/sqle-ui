@@ -31,14 +31,13 @@ const WorkflowTemplateDetail = () => {
 
   const { data: workflowTemplate } = useRequest(
     () =>
-      workflow.getWorkflowTemplateV1({
-        project_name: projectName,
-      }),
+      workflow
+        .getWorkflowTemplateV1({
+          project_name: projectName,
+        })
+        .then((res) => res.data.data),
     {
       ready: !!projectName,
-      formatResult(res) {
-        return res.data.data;
-      },
     }
   );
 

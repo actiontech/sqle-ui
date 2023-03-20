@@ -1,4 +1,3 @@
-import { useBoolean } from 'ahooks';
 import {
   Button,
   Card,
@@ -39,9 +38,8 @@ const ImportRuleTemplate: React.FC = () => {
     []
   );
 
-  const [createLoading, { toggle: updateCreateLoading }] = useBoolean();
-  const [getAllRulesLoading, { toggle: updateGetAllRulesLoading }] =
-    useBoolean();
+  const [createLoading, updateCreateLoading] = useState(false);
+  const [getAllRulesLoading, updateGetAllRulesLoading] = useState(false);
 
   const [step, setStep] = useState(0);
 

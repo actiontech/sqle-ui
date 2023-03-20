@@ -1,5 +1,4 @@
-import useRequest from '@ahooksjs/use-request';
-import { useBoolean } from 'ahooks';
+import { useBoolean, useRequest } from 'ahooks';
 import {
   Button,
   Card,
@@ -15,7 +14,7 @@ import {
   Switch,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import configuration from '../../../api/configuration';
 import { PageFormLayout, ResponseCode } from '../../../data/common';
@@ -37,13 +36,8 @@ const SMTPSetting = () => {
     { setTrue: setModifyFlagTrue, setFalse: setModifyFlagFalse },
   ] = useBoolean(false);
 
-  const { data: smtpInfo, refresh: refreshSMTPInfo } = useRequest(
-    () => configuration.getSMTPConfigurationV1(),
-    {
-      formatResult(res) {
-        return res.data.data ?? {};
-      },
-    }
+  const { data: smtpInfo, refresh: refreshSMTPInfo } = useRequest(() =>
+    configuration.getSMTPConfigurationV1().then((res) => res.data.data ?? {})
   );
 
   const setFormDefaultValue = React.useCallback(() => {
@@ -93,10 +87,7 @@ const SMTPSetting = () => {
     [handelClickCancel, refreshSMTPInfo, startSubmit, submitFinish]
   );
 
-  const [
-    testPopoverVisible,
-    { toggle: toggleTestPopoverVisible, setFalse: closeTestPopover },
-  ] = useBoolean();
+  const [testPopoverVisible, toggleTestPopoverVisible] = useState(false);
   const [testForm] = useForm<{ receiveEmail?: string }>();
   const testTing = useRef(false);
   const test = async () => {
@@ -105,7 +96,7 @@ const SMTPSetting = () => {
     }
     const values = await testForm.validateFields();
     testTing.current = true;
-    closeTestPopover();
+    toggleTestPopoverVisible(false);
     const hide = message.loading(
       t('system.smtp.testing', {
         email: values.receiveEmail,

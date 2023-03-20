@@ -92,17 +92,15 @@ const UserGroupList: React.FC = () => {
         project_name: projectName,
         filter_user_group_name: filterInfo.filterUserGroupName,
       };
-      return user_group.getMemberGroupsV1(params);
-    },
-    {
-      paginated: true,
-      refreshDeps: [pagination, filterInfo],
-      formatResult(res) {
+      return user_group.getMemberGroupsV1(params).then((res) => {
         return {
           list: res.data?.data ?? [],
           total: res.data?.total_nums ?? 0,
         };
-      },
+      });
+    },
+    {
+      refreshDeps: [pagination, filterInfo],
     }
   );
 

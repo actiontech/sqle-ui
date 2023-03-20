@@ -87,17 +87,15 @@ const MemberList: React.FC = () => {
         filter_instance_name: filterInfo.filterInstance,
         project_name: projectName,
       };
-      return user.getMembersV1(params);
-    },
-    {
-      paginated: true,
-      refreshDeps: [pagination, filterInfo],
-      formatResult(res) {
+      return user.getMembersV1(params).then((res) => {
         return {
           list: res.data?.data ?? [],
           total: res.data?.total_nums ?? 0,
         };
-      },
+      });
+    },
+    {
+      refreshDeps: [pagination, filterInfo],
     }
   );
 

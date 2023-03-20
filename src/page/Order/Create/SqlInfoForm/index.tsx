@@ -38,7 +38,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
     useBoolean();
 
-  const [connectAble, { toggle: setConnectAble }] = useBoolean();
+  const [connectAble, setConnectAble] = useState(false);
   const [
     connectInitHide,
     { setTrue: setConnectInitHideTrue, setFalse: setConnectInitHideFalse },

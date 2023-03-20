@@ -41,12 +41,12 @@ const ProjectOverview: React.FC = () => {
     loading: getProjectInfoLoading,
     refresh: refreshProjectInfo,
   } = useRequest(
-    () => project.getProjectDetailV1({ project_name: projectName }),
+    () =>
+      project
+        .getProjectDetailV1({ project_name: projectName })
+        .then((res) => res.data.data),
     {
       ready: !!projectName,
-      formatResult: (res) => {
-        return res.data.data;
-      },
     }
   );
 
@@ -55,12 +55,12 @@ const ProjectOverview: React.FC = () => {
     loading: getProjectStatisticsLoading,
     refresh: refreshProjectStatistics,
   } = useRequest(
-    () => statistic.getProjectStatisticsV1({ project_name: projectName }),
+    () =>
+      statistic
+        .getProjectStatisticsV1({ project_name: projectName })
+        .then((res) => res.data.data),
     {
       ready: !!projectName,
-      formatResult: (res) => {
-        return res.data.data;
-      },
     }
   );
 

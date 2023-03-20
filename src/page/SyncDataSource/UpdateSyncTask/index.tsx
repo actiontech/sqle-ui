@@ -1,4 +1,3 @@
-import { useBoolean } from 'ahooks';
 import { Button, Card, Empty, message, Spin, Typography } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import { useCallback, useEffect, useState } from 'react';
@@ -18,9 +17,9 @@ const UpdateSyncTask: React.FC = () => {
   const { taskId } = useParams<{ taskId: string }>();
   const [initError, setInitError] = useState('');
   const history = useHistory();
-  const [retryLoading, { toggle: setRetryLoading }] = useBoolean(false);
-  const [finishGetSyncInstanceTask, { toggle: setFinishGetSyncInstanceTask }] =
-    useBoolean(false);
+  const [retryLoading, setRetryLoading] = useState(false);
+  const [finishGetSyncInstanceTask, setFinishGetSyncInstanceTask] =
+    useState(false);
   const [syncInstanceTask, setSyncInstanceTask] = useState<
     IInstanceTaskDetailResV1 | undefined
   >();

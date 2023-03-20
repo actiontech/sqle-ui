@@ -19,14 +19,13 @@ const AuditTaskType: React.FC<AuditTaskTypeProps> = (props) => {
     run: updateAuditTaskMetas,
   } = useRequest(
     () =>
-      audit_plan.getAuditPlanMetasV1({
-        filter_instance_type: dbType,
-      }),
+      audit_plan
+        .getAuditPlanMetasV1({
+          filter_instance_type: dbType,
+        })
+        .then((res) => res.data.data),
     {
       manual: true,
-      formatResult(res) {
-        return res.data.data;
-      },
     }
   );
 

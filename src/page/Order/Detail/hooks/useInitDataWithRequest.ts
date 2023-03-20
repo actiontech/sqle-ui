@@ -19,17 +19,13 @@ const useInitDataWithRequest = () => {
     data: orderInfo,
     refresh: refreshOrder,
     loading: getWorkflowLoading,
-  } = useRequest(
-    () =>
-      workflow.getWorkflowV2({
+  } = useRequest(() =>
+    workflow
+      .getWorkflowV2({
         project_name: projectName,
         workflow_id: urlParams.orderId,
-      }),
-    {
-      formatResult(res) {
-        return res.data.data;
-      },
-    }
+      })
+      .then((res) => res.data.data)
   );
 
   const refreshTask = useCallback(() => {

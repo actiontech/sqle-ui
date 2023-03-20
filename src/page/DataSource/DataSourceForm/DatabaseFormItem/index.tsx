@@ -39,7 +39,7 @@ const DatabaseFormItem: React.FC<{
   const [loading, { setTrue: setLoadingTrue, setFalse: setLoadingFalse }] =
     useBoolean();
 
-  const [connectAble, { toggle: setConnectAble }] = useBoolean();
+  const [connectAble, setConnectAble] = React.useState(false);
   const [connectErrorMessage, setConnectErrorMessage] = React.useState('');
   const [initHide, { setFalse: setInitHideFalse, setTrue: setInitHideTrue }] =
     useBoolean(true);

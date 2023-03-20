@@ -14,12 +14,9 @@ const useDashboardRequest = (
   refreshDeps: React.DependencyList
 ) => {
   const request = isGlobalParams(params)
-    ? () => workflow.getGlobalWorkflowsV1(params)
-    : () => workflow.getWorkflowsV1(params);
+    ? () => workflow.getGlobalWorkflowsV1(params).then((res) => res.data.data)
+    : () => workflow.getWorkflowsV1(params).then((res) => res.data.data);
   const response = useRequest(request, {
-    formatResult(res) {
-      return res.data.data;
-    },
     refreshDeps,
   });
   return response;

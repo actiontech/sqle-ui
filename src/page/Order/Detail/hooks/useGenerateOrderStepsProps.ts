@@ -1,10 +1,7 @@
 import { message } from 'antd';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  IGetWorkflowTasksItemV2,
-  IWorkflowResV2,
-} from '../../../../api/common';
+import { IGetWorkflowTasksItemV2 } from '../../../../api/common';
 import { GetWorkflowTasksItemV2StatusEnum } from '../../../../api/common.enum';
 import workflow from '../../../../api/workflow';
 import { ResponseCode } from '../../../../data/common';
@@ -13,7 +10,7 @@ import { TasksStatusNumberType } from '../OrderSteps/index.type';
 
 type HooksParamType = {
   workflowId: string;
-  refreshOrder: () => Promise<IWorkflowResV2 | undefined>;
+  refreshOrder: () => void;
   refreshTask: () => void;
   refreshOverviewAction: (value?: boolean | undefined) => void;
   projectName: string;

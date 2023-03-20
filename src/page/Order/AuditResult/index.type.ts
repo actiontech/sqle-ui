@@ -3,7 +3,6 @@ import {
   IAuditTaskResV1,
   IGetWorkflowTasksItemV2,
   IMaintenanceTimeResV1,
-  IWorkflowResV2,
 } from '../../../api/common';
 import {
   GetWorkflowTasksItemV1StatusEnum,
@@ -28,7 +27,7 @@ export interface AuditResultCollectionProps {
   updateTaskRecordTotalNum?: (taskId: string, sqlNumber: number) => void;
   showOverview?: boolean;
   workflowId?: string;
-  refreshOrder?: () => Promise<IWorkflowResV2 | undefined>;
+  refreshOrder?: () => void;
   refreshOverviewFlag?: boolean;
   orderStatus?: WorkflowRecordResV2StatusEnum;
   getOverviewListSuccessHandle?: (list: IGetWorkflowTasksItemV2[]) => void;

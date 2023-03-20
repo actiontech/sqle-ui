@@ -101,14 +101,15 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
     refresh: refreshOverview,
   } = useRequest(
     () =>
-      workflow.getSummaryOfInstanceTasksV2({
-        workflow_id: workflowId ?? '',
-        project_name: projectName,
-      }),
+      workflow
+        .getSummaryOfInstanceTasksV2({
+          workflow_id: workflowId ?? '',
+          project_name: projectName,
+        })
+        .then((res) => res.data.data ?? []),
     {
       refreshDeps: [refreshOverviewFlag],
       ready: !!showOverview && !!workflowId,
-      formatResult: (res) => res.data.data ?? [],
       onSuccess: getOverviewListSuccessHandle,
     }
   );

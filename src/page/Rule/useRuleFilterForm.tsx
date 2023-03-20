@@ -2,7 +2,6 @@ import { Select } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
-import { IRuleResV1 } from '../../api/common';
 import useDatabaseType from '../../hooks/useDatabaseType';
 import useGlobalRuleTemplate from '../../hooks/useGlobalRuleTemplate';
 import useProject from '../../hooks/useProject';
@@ -17,8 +16,8 @@ const useRuleFilterForm = (
   getProjectTemplateRules: (
     projectName?: string,
     ruleTemplateName?: string
-  ) => Promise<IRuleResV1[]>,
-  getGlobalTemplateRules: (ruleTemplateName?: string) => Promise<IRuleResV1[]>
+  ) => void,
+  getGlobalTemplateRules: (ruleTemplateName?: string) => void
 ) => {
   const { t } = useTranslation();
   const location = useLocation();

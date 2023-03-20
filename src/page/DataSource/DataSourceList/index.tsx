@@ -26,22 +26,22 @@ const DataSourceList = () => {
 
   const { data, loading, refresh } = useRequest(
     () => {
-      return instance.getInstanceListV2({
-        project_name: projectName,
-        page_index: pagination.pageIndex,
-        page_size: pagination.pageSize,
-        ...filterInfo,
-      });
+      return instance
+        .getInstanceListV2({
+          project_name: projectName,
+          page_index: pagination.pageIndex,
+          page_size: pagination.pageSize,
+          ...filterInfo,
+        })
+        .then((res) => {
+          return {
+            total: res.data?.total_nums ?? 1,
+            list: res.data?.data ?? [],
+          };
+        });
     },
     {
-      paginated: true,
       refreshDeps: [filterInfo, pagination],
-      formatResult(res) {
-        return {
-          total: res.data?.total_nums ?? 1,
-          list: res.data?.data ?? [],
-        };
-      },
     }
   );
 

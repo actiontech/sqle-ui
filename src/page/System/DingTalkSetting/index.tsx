@@ -78,13 +78,10 @@ const DingTalkSetting: React.FC = () => {
     setModifyFlagFalse();
   };
 
-  const { data: dingTalkInfo, refresh: refreshDingTalkInfo } = useRequest(
-    () => configuration.getDingTalkConfigurationV1(),
-    {
-      formatResult(res) {
-        return res.data.data ?? {};
-      },
-    }
+  const { data: dingTalkInfo, refresh: refreshDingTalkInfo } = useRequest(() =>
+    configuration
+      .getDingTalkConfigurationV1()
+      .then((res) => res.data.data ?? {})
   );
 
   return (

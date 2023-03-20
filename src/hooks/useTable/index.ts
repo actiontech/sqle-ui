@@ -1,7 +1,6 @@
-import { useBoolean } from 'ahooks';
 import { TableProps } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
-import React from 'react';
+import React, { useState } from 'react';
 import { Dictionary } from '../../types/common.type';
 import { TablePagination, UseTableOption } from './index.type';
 
@@ -14,9 +13,7 @@ const useTable = <T = Dictionary>(option?: UseTableOption) => {
   } = option ?? {};
 
   const [form] = useForm<T>();
-  const [collapse, { toggle: collapseChange }] = useBoolean(
-    defaultFilterFormCollapse
-  );
+  const [collapse, collapseChange] = useState(defaultFilterFormCollapse);
 
   const submitFilter = React.useCallback(() => {
     const values = form.getFieldsValue();

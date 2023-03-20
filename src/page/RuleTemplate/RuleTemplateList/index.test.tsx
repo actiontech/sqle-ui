@@ -21,6 +21,7 @@ import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 import { ruleTemplateListData } from '../__testData__';
 import { createMemoryHistory } from 'history';
+import { getBySelector } from '../../../testUtils/customQuery';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -319,5 +320,33 @@ describe('RuleTemplate/RuleTemplateList', () => {
     expect(history.location.search).toBe(
       '?projectName=default&ruleTemplateName=default_mysql'
     );
+  });
+
+  test('should jump to next page when user click next page button', async () => {
+    getRuleTemplateListSpy.mockImplementation(() =>
+      resolveThreeSecond(
+        Array.from({ length: 11 }, (_, i) => ({
+          ...ruleTemplateListData[0],
+          rule_template_name: `default_mysql_${i}`,
+        })),
+        { otherData: { total_nums: 11 } }
+      )
+    );
+    renderWithRouter(<RuleTemplateList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.click(getBySelector('.ant-pagination-next'));
+    expect(getRuleTemplateListSpy).toBeCalledWith({
+      page_index: 2,
+      page_size: 10,
+      project_name: projectName,
+    });
+    fireEvent.click(getBySelector('.ant-pagination-prev'));
+    expect(getRuleTemplateListSpy).toBeCalledWith({
+      page_index: 1,
+      page_size: 10,
+      project_name: projectName,
+    });
   });
 });

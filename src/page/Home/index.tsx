@@ -18,48 +18,44 @@ const Home = () => {
   const { data: workflowStatistics, refresh: getWorkflowStatistics } =
     useRequest(
       () =>
-        dashboard.getDashboardV1({
-          filter_project_name: filterProjectName,
-        }),
+        dashboard
+          .getDashboardV1({
+            filter_project_name: filterProjectName,
+          })
+          .then((res) => res.data?.data?.workflow_statistics),
       {
-        formatResult(res) {
-          return res.data?.data?.workflow_statistics;
-        },
         refreshDeps: [filterProjectName],
       }
     );
 
   /* IFTRUE_isEE */
-  const { data: projectTipSelectOptions } = useRequest(
-    () => dashboard.getDashboardProjectTipsV1(),
-    {
-      formatResult(res) {
-        let sum = 0;
-        const genLabel = (name?: string, count?: number) => {
-          return (
-            <Space className="full-width-element flex-space-between">
-              {name}
-              {<Badge size="small" count={count} />}
-            </Space>
-          );
-        };
-        return [
-          ...(res.data.data?.map((v) => {
-            sum += v.unfinished_workflow_count ?? 0;
-            return {
-              label: genLabel(v.project_name, v.unfinished_workflow_count),
-              value: v?.project_name ?? '',
-              showLabel: v?.project_name ?? '',
-            };
-          }) ?? []),
-          {
-            label: genLabel(t('dashboard.allProjectTip'), sum),
-            value: ALL_PROJECT_NAME,
-            showLabel: t('dashboard.allProjectTip'),
-          },
-        ];
-      },
-    }
+  const { data: projectTipSelectOptions } = useRequest(() =>
+    dashboard.getDashboardProjectTipsV1().then((res) => {
+      let sum = 0;
+      const genLabel = (name?: string, count?: number) => {
+        return (
+          <Space className="full-width-element flex-space-between">
+            {name}
+            {<Badge size="small" count={count} />}
+          </Space>
+        );
+      };
+      return [
+        ...(res.data.data?.map((v) => {
+          sum += v.unfinished_workflow_count ?? 0;
+          return {
+            label: genLabel(v.project_name, v.unfinished_workflow_count),
+            value: v?.project_name ?? '',
+            showLabel: v?.project_name ?? '',
+          };
+        }) ?? []),
+        {
+          label: genLabel(t('dashboard.allProjectTip'), sum),
+          value: ALL_PROJECT_NAME,
+          showLabel: t('dashboard.allProjectTip'),
+        },
+      ];
+    })
   );
   /* FITRUE_isEE */
 

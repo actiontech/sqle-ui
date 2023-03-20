@@ -32,11 +32,9 @@ const Oauth = () => {
     loading: getConfigLoading,
     data: oauthConfig,
     refresh: refreshOauthConfig,
-  } = useRequest(() => configuration.getOauth2ConfigurationV1(), {
-    formatResult(res) {
-      return res.data?.data ?? {};
-    },
-  });
+  } = useRequest(() =>
+    configuration.getOauth2ConfigurationV1().then((res) => res.data?.data ?? {})
+  );
 
   const [form] = useForm<OauthFormField>();
 
