@@ -148,8 +148,9 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                           <col />
                           <col />
                           <col />
+                          <col />
                           <col
-                            style="width: 160px;"
+                            style="width: 190px;"
                           />
                         </colgroup>
                         <thead
@@ -166,6 +167,11 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               title="projectManage.projectList.column.desc"
                             >
                               projectManage.projectList.column.desc
+                            </th>
+                            <th
+                              class="ant-table-cell"
+                            >
+                              projectManage.projectList.column.status
                             </th>
                             <th
                               class="ant-table-cell ant-table-cell-ellipsis"
@@ -194,7 +200,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                           >
                             <td
                               class="ant-table-cell"
-                              colspan="5"
+                              colspan="6"
                             >
                               <div
                                 class="ant-empty ant-empty-normal"
@@ -385,8 +391,9 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                           <col />
                           <col />
                           <col />
+                          <col />
                           <col
-                            style="width: 160px;"
+                            style="width: 190px;"
                           />
                         </colgroup>
                         <thead
@@ -403,6 +410,11 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               title="projectManage.projectList.column.desc"
                             >
                               projectManage.projectList.column.desc
+                            </th>
+                            <th
+                              class="ant-table-cell"
+                            >
+                              projectManage.projectList.column.status
                             </th>
                             <th
                               class="ant-table-cell ant-table-cell-ellipsis"
@@ -446,6 +458,11 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               desc1
                             </td>
                             <td
+                              class="ant-table-cell"
+                            >
+                              projectManage.projectList.column.unavailable
+                            </td>
+                            <td
                               class="ant-table-cell ant-table-cell-ellipsis"
                               title="2022-11-01 00:00:00"
                             >
@@ -484,12 +501,31 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                                 </div>
                                 <div
                                   class="ant-space-item"
+                                  style="margin-right: 8px;"
                                 >
                                   <span
                                     class="ant-typography ant-typography-danger pointer"
                                   >
                                     common.delete
                                   </span>
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                  style="margin-right: 8px;"
+                                >
+                                  <div
+                                    class="ant-divider ant-divider-vertical"
+                                    role="separator"
+                                  />
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                >
+                                  <a
+                                    class="ant-typography pointer"
+                                  >
+                                    projectManage.projectList.column.unarchive
+                                  </a>
                                 </div>
                               </div>
                             </td>
@@ -514,6 +550,11 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               desc1
                             </td>
                             <td
+                              class="ant-table-cell"
+                            >
+                              projectManage.projectList.column.available
+                            </td>
+                            <td
                               class="ant-table-cell ant-table-cell-ellipsis"
                               title="2022-11-01 00:00:00"
                             >
@@ -552,12 +593,31 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                                 </div>
                                 <div
                                   class="ant-space-item"
+                                  style="margin-right: 8px;"
                                 >
                                   <span
                                     class="ant-typography ant-typography-danger pointer"
                                   >
                                     common.delete
                                   </span>
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                  style="margin-right: 8px;"
+                                >
+                                  <div
+                                    class="ant-divider ant-divider-vertical"
+                                    role="separator"
+                                  />
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                >
+                                  <a
+                                    class="ant-typography pointer"
+                                  >
+                                    projectManage.projectList.column.archive
+                                  </a>
                                 </div>
                               </div>
                             </td>
@@ -582,6 +642,11 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               desc1
                             </td>
                             <td
+                              class="ant-table-cell"
+                            >
+                              projectManage.projectList.column.available
+                            </td>
+                            <td
                               class="ant-table-cell ant-table-cell-ellipsis"
                               title="2022-11-01 00:00:00"
                             >
@@ -620,12 +685,31 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                                 </div>
                                 <div
                                   class="ant-space-item"
+                                  style="margin-right: 8px;"
                                 >
                                   <span
                                     class="ant-typography ant-typography-danger pointer"
                                   >
                                     common.delete
                                   </span>
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                  style="margin-right: 8px;"
+                                >
+                                  <div
+                                    class="ant-divider ant-divider-vertical"
+                                    role="separator"
+                                  />
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                >
+                                  <a
+                                    class="ant-typography pointer"
+                                  >
+                                    projectManage.projectList.column.archive
+                                  </a>
                                 </div>
                               </div>
                             </td>
@@ -650,6 +734,11 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               desc1
                             </td>
                             <td
+                              class="ant-table-cell"
+                            >
+                              projectManage.projectList.column.available
+                            </td>
+                            <td
                               class="ant-table-cell ant-table-cell-ellipsis"
                               title="2022-11-01 00:00:00"
                             >
@@ -688,12 +777,31 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                                 </div>
                                 <div
                                   class="ant-space-item"
+                                  style="margin-right: 8px;"
                                 >
                                   <span
                                     class="ant-typography ant-typography-danger pointer"
                                   >
                                     common.delete
                                   </span>
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                  style="margin-right: 8px;"
+                                >
+                                  <div
+                                    class="ant-divider ant-divider-vertical"
+                                    role="separator"
+                                  />
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                >
+                                  <a
+                                    class="ant-typography pointer"
+                                  >
+                                    projectManage.projectList.column.archive
+                                  </a>
                                 </div>
                               </div>
                             </td>
@@ -718,6 +826,11 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               desc1
                             </td>
                             <td
+                              class="ant-table-cell"
+                            >
+                              projectManage.projectList.column.available
+                            </td>
+                            <td
                               class="ant-table-cell ant-table-cell-ellipsis"
                               title="2022-11-01 00:00:00"
                             >
@@ -756,12 +869,31 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                                 </div>
                                 <div
                                   class="ant-space-item"
+                                  style="margin-right: 8px;"
                                 >
                                   <span
                                     class="ant-typography ant-typography-danger pointer"
                                   >
                                     common.delete
                                   </span>
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                  style="margin-right: 8px;"
+                                >
+                                  <div
+                                    class="ant-divider ant-divider-vertical"
+                                    role="separator"
+                                  />
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                >
+                                  <a
+                                    class="ant-typography pointer"
+                                  >
+                                    projectManage.projectList.column.archive
+                                  </a>
                                 </div>
                               </div>
                             </td>
@@ -786,6 +918,11 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               desc1
                             </td>
                             <td
+                              class="ant-table-cell"
+                            >
+                              projectManage.projectList.column.available
+                            </td>
+                            <td
                               class="ant-table-cell ant-table-cell-ellipsis"
                               title="2022-11-01 00:00:00"
                             >
@@ -824,12 +961,31 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                                 </div>
                                 <div
                                   class="ant-space-item"
+                                  style="margin-right: 8px;"
                                 >
                                   <span
                                     class="ant-typography ant-typography-danger pointer"
                                   >
                                     common.delete
                                   </span>
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                  style="margin-right: 8px;"
+                                >
+                                  <div
+                                    class="ant-divider ant-divider-vertical"
+                                    role="separator"
+                                  />
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                >
+                                  <a
+                                    class="ant-typography pointer"
+                                  >
+                                    projectManage.projectList.column.archive
+                                  </a>
                                 </div>
                               </div>
                             </td>
@@ -854,6 +1010,11 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               desc1
                             </td>
                             <td
+                              class="ant-table-cell"
+                            >
+                              projectManage.projectList.column.available
+                            </td>
+                            <td
                               class="ant-table-cell ant-table-cell-ellipsis"
                               title="2022-11-01 00:00:00"
                             >
@@ -892,12 +1053,31 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                                 </div>
                                 <div
                                   class="ant-space-item"
+                                  style="margin-right: 8px;"
                                 >
                                   <span
                                     class="ant-typography ant-typography-danger pointer"
                                   >
                                     common.delete
                                   </span>
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                  style="margin-right: 8px;"
+                                >
+                                  <div
+                                    class="ant-divider ant-divider-vertical"
+                                    role="separator"
+                                  />
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                >
+                                  <a
+                                    class="ant-typography pointer"
+                                  >
+                                    projectManage.projectList.column.archive
+                                  </a>
                                 </div>
                               </div>
                             </td>
@@ -922,6 +1102,11 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               desc1
                             </td>
                             <td
+                              class="ant-table-cell"
+                            >
+                              projectManage.projectList.column.available
+                            </td>
+                            <td
                               class="ant-table-cell ant-table-cell-ellipsis"
                               title="2022-11-01 00:00:00"
                             >
@@ -960,12 +1145,31 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                                 </div>
                                 <div
                                   class="ant-space-item"
+                                  style="margin-right: 8px;"
                                 >
                                   <span
                                     class="ant-typography ant-typography-danger pointer"
                                   >
                                     common.delete
                                   </span>
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                  style="margin-right: 8px;"
+                                >
+                                  <div
+                                    class="ant-divider ant-divider-vertical"
+                                    role="separator"
+                                  />
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                >
+                                  <a
+                                    class="ant-typography pointer"
+                                  >
+                                    projectManage.projectList.column.archive
+                                  </a>
                                 </div>
                               </div>
                             </td>
@@ -990,6 +1194,11 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               desc1
                             </td>
                             <td
+                              class="ant-table-cell"
+                            >
+                              projectManage.projectList.column.available
+                            </td>
+                            <td
                               class="ant-table-cell ant-table-cell-ellipsis"
                               title="2022-11-01 00:00:00"
                             >
@@ -1028,12 +1237,31 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                                 </div>
                                 <div
                                   class="ant-space-item"
+                                  style="margin-right: 8px;"
                                 >
                                   <span
                                     class="ant-typography ant-typography-danger pointer"
                                   >
                                     common.delete
                                   </span>
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                  style="margin-right: 8px;"
+                                >
+                                  <div
+                                    class="ant-divider ant-divider-vertical"
+                                    role="separator"
+                                  />
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                >
+                                  <a
+                                    class="ant-typography pointer"
+                                  >
+                                    projectManage.projectList.column.archive
+                                  </a>
                                 </div>
                               </div>
                             </td>
@@ -1058,6 +1286,11 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               desc1
                             </td>
                             <td
+                              class="ant-table-cell"
+                            >
+                              projectManage.projectList.column.available
+                            </td>
+                            <td
                               class="ant-table-cell ant-table-cell-ellipsis"
                               title="2022-11-01 00:00:00"
                             >
@@ -1096,12 +1329,31 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                                 </div>
                                 <div
                                   class="ant-space-item"
+                                  style="margin-right: 8px;"
                                 >
                                   <span
                                     class="ant-typography ant-typography-danger pointer"
                                   >
                                     common.delete
                                   </span>
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                  style="margin-right: 8px;"
+                                >
+                                  <div
+                                    class="ant-divider ant-divider-vertical"
+                                    role="separator"
+                                  />
+                                </div>
+                                <div
+                                  class="ant-space-item"
+                                >
+                                  <a
+                                    class="ant-typography pointer"
+                                  >
+                                    projectManage.projectList.column.archive
+                                  </a>
                                 </div>
                               </div>
                             </td>

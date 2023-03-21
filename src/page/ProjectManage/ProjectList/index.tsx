@@ -75,40 +75,90 @@ const ProjectList: React.FC = () => {
     [changeCurrent, changePagination]
   );
 
-  const deleteAction = (name?: string) => {
-    if (!allowOperateProject(name ?? '')) {
-      return;
-    }
-    project
-      .deleteProjectV1({
-        project_name: name!,
-      })
-      .then((res) => {
-        if (res.data.code === ResponseCode.SUCCESS) {
-          message.success(
-            t('projectManage.projectList.deleteSuccessTips', {
-              name,
-            })
-          );
+  const deleteAction = useCallback(
+    (name: string) => {
+      if (!allowOperateProject(name)) {
+        return;
+      }
+      project
+        .deleteProjectV1({
+          project_name: name,
+        })
+        .then((res) => {
+          if (res.data.code === ResponseCode.SUCCESS) {
+            message.success(
+              t('projectManage.projectList.deleteSuccessTips', {
+                name,
+              })
+            );
+            refresh();
+          }
+        });
+    },
+    [allowOperateProject, refresh, t]
+  );
+
+  const archiveProject = useCallback(
+    (name: string) => {
+      if (!allowOperateProject(name)) {
+        return;
+      }
+      project
+        .archiveProjectV1({
+          project_name: name,
+        })
+        .then((res) => {
+          if (res.data.code === ResponseCode.SUCCESS) {
+            message.success(
+              t('projectManage.projectList.archiveProjectSuccessTips')
+            );
+          }
+
           refresh();
-        }
-      });
-  };
+        });
+    },
+    [allowOperateProject, refresh, t]
+  );
 
-  const openModalAndUpdateSelectProject = (record: IProjectListItem) => {
-    if (!allowOperateProject(record.name ?? '')) {
-      return;
-    }
-    dispatch(
-      updateProjectManageModalStatus({
-        modalName: ModalName.Update_Project,
-        status: true,
-      })
-    );
-    dispatch(updateSelectProject({ project: record }));
-  };
+  const unarchiveProject = useCallback(
+    (name: string) => {
+      if (!allowOperateProject(name)) {
+        return;
+      }
+      project
+        .unarchiveProjectV1({
+          project_name: name,
+        })
+        .then((res) => {
+          if (res.data.code === ResponseCode.SUCCESS) {
+            message.success(
+              t('projectManage.projectList.unarchiveProjectSuccessTips')
+            );
+          }
 
-  const openCreateProjectModal = () => {
+          refresh();
+        });
+    },
+    [allowOperateProject, refresh, t]
+  );
+
+  const openModalAndUpdateSelectProject = useCallback(
+    (record: IProjectListItem) => {
+      if (!allowOperateProject(record.name ?? '')) {
+        return;
+      }
+      dispatch(
+        updateProjectManageModalStatus({
+          modalName: ModalName.Update_Project,
+          status: true,
+        })
+      );
+      dispatch(updateSelectProject({ project: record }));
+    },
+    [allowOperateProject, dispatch]
+  );
+
+  const openCreateProjectModal = useCallback(() => {
     if (!allowCreateProject) {
       return;
     }
@@ -118,7 +168,7 @@ const ProjectList: React.FC = () => {
         status: true,
       })
     );
-  };
+  }, [allowCreateProject, dispatch]);
 
   useEffect(() => {
     EventEmitter.subscribe(EmitterKey.Refresh_Project_List, refresh);
@@ -165,12 +215,14 @@ const ProjectList: React.FC = () => {
               showSizeChanger: true,
               onChange: pageChange,
             }}
-            columns={ProjectListTableColumnFactory(
+            columns={ProjectListTableColumnFactory({
               deleteAction,
               openModalAndUpdateSelectProject,
               allowOperateProject,
-              updateRecentlyProject
-            )}
+              updateRecentlyProject,
+              archiveProject,
+              unarchiveProject,
+            })}
           />
         </Card>
       </section>

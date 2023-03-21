@@ -44,3 +44,15 @@ export interface IUpdateProjectV1Params extends IUpdateProjectReqV1 {
 }
 
 export interface IUpdateProjectV1Return extends IBaseRes {}
+
+export interface IArchiveProjectV1Params {
+  project_name: string;
+}
+
+export interface IArchiveProjectV1Return extends IBaseRes {}
+
+export interface IUnarchiveProjectV1Params {
+  project_name: string;
+}
+
+export interface IUnarchiveProjectV1Return extends IBaseRes {}

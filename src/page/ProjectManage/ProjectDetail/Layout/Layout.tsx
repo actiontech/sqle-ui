@@ -1,4 +1,4 @@
-import { Layout, Menu, MenuTheme, Typography } from 'antd';
+import { Layout, Menu, MenuTheme, Space, Typography } from 'antd';
 import { SiderTheme } from 'antd/lib/layout/Sider';
 import { cloneDeep, groupBy } from 'lodash';
 import { lazy, useCallback, useEffect, useState } from 'react';
@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { generateNavigateMenu, ProjectDetailLayoutProps } from '.';
+import EmptyBox from '../../../../components/EmptyBox';
 import { SystemRole } from '../../../../data/common';
 import useAuditPlanTypes from '../../../../hooks/useAuditPlanTypes';
 import useChangeTheme from '../../../../hooks/useChangeTheme';
@@ -28,6 +29,7 @@ const ALL_INSTANCE_TYPE = '';
 const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
   children,
   projectName,
+  archive,
 }) => {
   const styles = useStyles();
   const { t } = useTranslation();
@@ -133,9 +135,30 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
         theme={currentTheme as SiderTheme}
         className={`${styles.projectLayoutSider}`}
       >
-        <Typography.Title ellipsis={true} style={{ padding: 20 }}>
-          {projectName}
-        </Typography.Title>
+        <EmptyBox
+          if={archive}
+          defaultNode={
+            <Typography.Title
+              ellipsis={true}
+              style={{ padding: 20, paddingRight: 0 }}
+            >
+              {projectName}
+            </Typography.Title>
+          }
+        >
+          <Space size={0}>
+            <Typography.Title
+              ellipsis={true}
+              style={{ padding: 20, paddingRight: 0, maxWidth: 140 }}
+            >
+              {projectName}
+            </Typography.Title>
+            <Typography.Text type={'danger'}>
+              {`(${t('projectManage.projectList.column.unavailable')})`}
+            </Typography.Text>
+          </Space>
+        </EmptyBox>
+
         <Menu
           selectedKeys={selectMenuWrapper()}
           mode="inline"

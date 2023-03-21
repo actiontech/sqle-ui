@@ -15,9 +15,16 @@ import { getBySelector } from '../../../testUtils/customQuery';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
 import EventEmitter from '../../../utils/EventEmitter';
-import { mockDeleteProject, mockGetProjectList } from '../__test__/utils';
+import {
+  mockArchiveProject,
+  mockDeleteProject,
+  mockGetProjectList,
+  mockUnarchiveProject,
+} from '../__test__/utils';
 
 describe('test ProjectManage/ProjectList', () => {
+  let archiveProjectSpy: jest.SpyInstance;
+  let unarchiveProjectSpy: jest.SpyInstance;
   let getProjectListSpy: jest.SpyInstance;
   let deleteProjectList: jest.SpyInstance;
   let dispatchSpy: jest.SpyInstance;
@@ -39,6 +46,8 @@ describe('test ProjectManage/ProjectList', () => {
     });
     getProjectListSpy = mockGetProjectList();
     deleteProjectList = mockDeleteProject();
+    archiveProjectSpy = mockArchiveProject();
+    unarchiveProjectSpy = mockUnarchiveProject();
     const { scopeDispatch } = mockUseDispatch();
     dispatchSpy = scopeDispatch;
     jest.useFakeTimers();
@@ -136,6 +145,84 @@ describe('test ProjectManage/ProjectList', () => {
     ).not.toBeInTheDocument();
   });
 
+  test('should be called archive request when clicking the archive button', async () => {
+    renderWithRouter(<ProjectList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(archiveProjectSpy).toBeCalledTimes(0);
+
+    expect(
+      screen.getAllByText('projectManage.projectList.column.archive')[0]
+    ).toBeInTheDocument();
+
+    fireEvent.click(
+      screen.getAllByText('projectManage.projectList.column.archive')[0]
+    );
+    expect(
+      screen.getByText('projectManage.projectList.column.archiveProjectTips')
+    ).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('common.ok'));
+    expect(archiveProjectSpy).toBeCalledTimes(1);
+    expect(archiveProjectSpy).toBeCalledWith({ project_name: 'project2' });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.queryByText('projectManage.projectList.archiveProjectSuccessTips')
+    ).toBeInTheDocument();
+    expect(getProjectListSpy).toBeCalledTimes(2);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.queryByText('projectManage.projectList.archiveProjectSuccessTips')
+    ).not.toBeInTheDocument();
+  });
+
+  test('should be called unarchive request when clicking the unarchive button', async () => {
+    renderWithRouter(<ProjectList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(unarchiveProjectSpy).toBeCalledTimes(0);
+
+    expect(
+      screen.getAllByText('projectManage.projectList.column.unarchive')[0]
+    ).toBeInTheDocument();
+
+    fireEvent.click(
+      screen.getAllByText('projectManage.projectList.column.unarchive')[0]
+    );
+    expect(
+      screen.getByText('projectManage.projectList.column.unarchiveProjectTips')
+    ).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('common.ok'));
+    expect(unarchiveProjectSpy).toBeCalledTimes(1);
+    expect(unarchiveProjectSpy).toBeCalledWith({ project_name: 'project1' });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.queryByText(
+        'projectManage.projectList.unarchiveProjectSuccessTips'
+      )
+    ).toBeInTheDocument();
+    expect(getProjectListSpy).toBeCalledTimes(2);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.queryByText(
+        'projectManage.projectList.unarchiveProjectSuccessTips'
+      )
+    ).not.toBeInTheDocument();
+  });
+
   test('should open the modal for updating a project when click the Update Project button', async () => {
     renderWithRouter(<ProjectList />);
     expect(dispatchSpy).toBeCalledTimes(1);
@@ -148,20 +235,21 @@ describe('test ProjectManage/ProjectList', () => {
     fireEvent.click(screen.getAllByText('common.edit')[0]);
 
     expect(dispatchSpy).toBeCalledTimes(3);
-    expect(dispatchSpy).toBeCalledWith({
+    expect(dispatchSpy).nthCalledWith(2, {
       type: 'projectManage/updateModalStatus',
       payload: {
         modalName: ModalName.Update_Project,
         status: true,
       },
     });
-    expect(dispatchSpy).toBeCalledWith({
+    expect(dispatchSpy).nthCalledWith(3, {
       payload: {
         project: {
           create_time: '2022-11-01',
           create_user_name: 'admin',
           desc: 'desc1',
           name: 'project1',
+          archived: true,
         },
       },
       type: 'projectManage/updateSelectProject',
@@ -280,7 +368,7 @@ describe('test ProjectManage/ProjectList', () => {
     ).not.toBeInTheDocument();
   });
 
-  test('should disabled the Delete, Edit feature when not currently a project manager or admin', async () => {
+  test('should disabled the Delete, Edit, Archive, Unarchive feature when not currently a project manager or admin', async () => {
     mockUseSelector({
       projectManage: {
         modalStatus: {
@@ -315,6 +403,28 @@ describe('test ProjectManage/ProjectList', () => {
     expect(dispatchSpy).toBeCalledTimes(1);
     fireEvent.click(screen.getAllByText('common.edit')[0]);
     expect(dispatchSpy).toBeCalledTimes(1);
+
+    expect(
+      screen.queryAllByText('projectManage.projectList.column.unarchive')[0]
+    ).toHaveClass('ant-typography-disabled');
+    fireEvent.click(
+      screen.queryAllByText('projectManage.projectList.column.unarchive')[0]
+    );
+    expect(
+      screen.queryByText(
+        'projectManage.projectList.column.unarchiveProjectTips'
+      )
+    ).not.toBeInTheDocument();
+
+    expect(
+      screen.queryAllByText('projectManage.projectList.column.archive')[0]
+    ).toHaveClass('ant-typography-disabled');
+    fireEvent.click(
+      screen.queryAllByText('projectManage.projectList.column.archive')[0]
+    );
+    expect(
+      screen.queryByText('projectManage.projectList.column.archiveProjectTips')
+    ).not.toBeInTheDocument();
 
     cleanup();
     jest.clearAllMocks();
@@ -353,6 +463,28 @@ describe('test ProjectManage/ProjectList', () => {
     fireEvent.click(screen.getAllByText('common.edit')[0]);
     expect(dispatchSpy).toBeCalledTimes(3);
 
+    expect(
+      screen.queryAllByText('projectManage.projectList.column.unarchive')[0]
+    ).not.toHaveClass('ant-typography-disabled');
+    fireEvent.click(
+      screen.queryAllByText('projectManage.projectList.column.unarchive')[0]
+    );
+    expect(
+      screen.queryByText(
+        'projectManage.projectList.column.unarchiveProjectTips'
+      )
+    ).toBeInTheDocument();
+
+    expect(
+      screen.queryAllByText('projectManage.projectList.column.archive')[0]
+    ).not.toHaveClass('ant-typography-disabled');
+    fireEvent.click(
+      screen.queryAllByText('projectManage.projectList.column.archive')[0]
+    );
+    expect(
+      screen.queryByText('projectManage.projectList.column.archiveProjectTips')
+    ).toBeInTheDocument();
+
     cleanup();
     jest.clearAllMocks();
 
@@ -365,7 +497,10 @@ describe('test ProjectManage/ProjectList', () => {
       },
       user: {
         role: '',
-        bindProjects: [{ project_name: 'project1', is_manager: true }],
+        bindProjects: [
+          { project_name: 'project1', is_manager: true },
+          { project_name: 'project2', is_manager: true },
+        ],
         managementPermissions: [],
       },
     });
@@ -389,6 +524,28 @@ describe('test ProjectManage/ProjectList', () => {
     expect(dispatchSpy).toBeCalledTimes(1);
     fireEvent.click(screen.getAllByText('common.edit')[0]);
     expect(dispatchSpy).toBeCalledTimes(3);
+
+    expect(
+      screen.queryAllByText('projectManage.projectList.column.unarchive')[0]
+    ).not.toHaveClass('ant-typography-disabled');
+    fireEvent.click(
+      screen.queryAllByText('projectManage.projectList.column.unarchive')[0]
+    );
+    expect(
+      screen.queryByText(
+        'projectManage.projectList.column.unarchiveProjectTips'
+      )
+    ).toBeInTheDocument();
+
+    expect(
+      screen.queryAllByText('projectManage.projectList.column.archive')[0]
+    ).not.toHaveClass('ant-typography-disabled');
+    fireEvent.click(
+      screen.queryAllByText('projectManage.projectList.column.archive')[0]
+    );
+    expect(
+      screen.queryByText('projectManage.projectList.column.archiveProjectTips')
+    ).toBeInTheDocument();
 
     cleanup();
     jest.clearAllMocks();
