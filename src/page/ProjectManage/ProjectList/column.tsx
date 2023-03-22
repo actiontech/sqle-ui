@@ -46,6 +46,7 @@ export const ProjectListTableColumnFactory = ({
       ellipsis: true,
       title: () => i18n.t('projectManage.projectList.column.desc'),
     },
+    /* IFTRUE_isEE */
     {
       dataIndex: 'archived',
       title: () => i18n.t('projectManage.projectList.column.status'),
@@ -57,6 +58,7 @@ export const ProjectListTableColumnFactory = ({
         return i18n.t('projectManage.projectList.column.available');
       },
     },
+    /* FITRUE_isEE */
     {
       dataIndex: 'create_time',
       ellipsis: true,
@@ -108,6 +110,8 @@ export const ProjectListTableColumnFactory = ({
                 {i18n.t('common.delete')}
               </Typography.Text>
             </Popconfirm>
+
+            {/* IFTRUE_isEE */}
             <Divider type="vertical" />
             <EmptyBox
               if={record.archived}
@@ -155,6 +159,7 @@ export const ProjectListTableColumnFactory = ({
                 </Typography.Link>
               </Popconfirm>
             </EmptyBox>
+            {/* FITRUE_isEE */}
           </Space>
         );
       },
