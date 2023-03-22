@@ -485,7 +485,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                                   style="margin-right: 8px;"
                                 >
                                   <a
-                                    class="ant-typography pointer"
+                                    class="ant-typography ant-typography-disabled pointer"
                                   >
                                     common.edit
                                   </a>

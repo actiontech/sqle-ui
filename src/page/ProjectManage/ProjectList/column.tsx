@@ -80,7 +80,9 @@ export const ProjectListTableColumnFactory = ({
             <Typography.Link
               className="pointer"
               onClick={() => openModalAndUpdateSelectProject(record)}
-              disabled={!allowOperateProject(record.name ?? '')}
+              disabled={
+                !allowOperateProject(record.name ?? '') || record.archived
+              }
             >
               {i18n.t('common.edit')}
             </Typography.Link>

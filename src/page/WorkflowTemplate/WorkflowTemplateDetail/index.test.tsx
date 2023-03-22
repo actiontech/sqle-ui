@@ -33,6 +33,7 @@ describe('WorkflowTemplate/WorkflowTemplateDetail', () => {
     getWorkflowTemplateDetail = mockGetWorkflowTemplateDetail();
     mockUseSelector({
       user: { role: SystemRole.admin, bindProjects: mockBindProjects },
+      projectManage: { archived: false },
     });
   });
 
@@ -58,6 +59,7 @@ describe('WorkflowTemplate/WorkflowTemplateDetail', () => {
         role: SystemRole.admin,
         bindProjects: [{ projectName: 'test', isManager: false }],
       },
+      projectManage: { archived: false },
     });
 
     renderWithThemeAndRouter(<WorkflowTemplateDetail />);
@@ -77,6 +79,7 @@ describe('WorkflowTemplate/WorkflowTemplateDetail', () => {
         role: '',
         bindProjects: mockBindProjects,
       },
+      projectManage: { archived: false },
     });
     renderWithThemeAndRouter(<WorkflowTemplateDetail />);
     await waitFor(() => {
@@ -95,6 +98,7 @@ describe('WorkflowTemplate/WorkflowTemplateDetail', () => {
         role: '',
         bindProjects: [{ projectName: 'default', isManager: false }],
       },
+      projectManage: { archived: false },
     });
     renderWithThemeAndRouter(<WorkflowTemplateDetail />);
     await waitFor(() => {
@@ -140,5 +144,24 @@ describe('WorkflowTemplate/WorkflowTemplateDetail', () => {
     expect(
       screen.getByText('workflowTemplate.auditLevel.warn')
     ).toBeInTheDocument();
+  });
+
+  test('should hide the Create, Delete, Edit feature when project is archived', async () => {
+    mockUseSelector({
+      user: {
+        role: SystemRole.admin,
+        bindProjects: [{ projectName, isManager: true }],
+      },
+      projectManage: { archived: true },
+    });
+
+    renderWithThemeAndRouter(<WorkflowTemplateDetail />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(
+      screen.queryByText('workflowTemplate.detail.updateTemplate')
+    ).not.toBeInTheDocument();
   });
 });

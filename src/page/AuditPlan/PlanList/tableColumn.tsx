@@ -12,9 +12,10 @@ import TokenText from './component/TokenText';
 export const planListTableHeader = (
   removeAuditPlan: (auditPlanName: string) => void,
   openModal: (name: ModalName, row?: IAuditPlanResV2) => void,
-  projectName: string
+  projectName: string,
+  projectIsArchive: boolean
 ): TableColumn<IAuditPlanResV2, 'operate'> => {
-  return [
+  const column: TableColumn<IAuditPlanResV2, 'operate'> = [
     {
       dataIndex: 'audit_plan_name',
       title: () => i18n.t('auditPlan.list.table.audit_plan_name'),
@@ -140,4 +141,10 @@ export const planListTableHeader = (
       },
     },
   ];
+
+  if (projectIsArchive) {
+    return column.filter((v) => v.dataIndex !== 'operate');
+  }
+
+  return column;
 };

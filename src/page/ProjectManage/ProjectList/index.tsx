@@ -144,7 +144,7 @@ const ProjectList: React.FC = () => {
 
   const openModalAndUpdateSelectProject = useCallback(
     (record: IProjectListItem) => {
-      if (!allowOperateProject(record.name ?? '')) {
+      if (!allowOperateProject(record.name ?? '') || record.archived) {
         return;
       }
       dispatch(

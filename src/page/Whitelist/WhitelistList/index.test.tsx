@@ -36,6 +36,7 @@ describe('Whitelist/WhitelistList', () => {
     mockUseSelector({
       whitelist: { modalStatus: {} },
       user: { role: SystemRole.admin, bindProjects: mockBindProjects },
+      projectManage: { archived: false },
     });
     useParamsMock.mockReturnValue({ projectName });
   });
@@ -175,6 +176,7 @@ describe('Whitelist/WhitelistList', () => {
         role: SystemRole.admin,
         bindProjects: [{ projectName: 'test', isManager: false }],
       },
+      projectManage: { archived: false },
     });
 
     render(<WhitelistList />);
@@ -197,6 +199,7 @@ describe('Whitelist/WhitelistList', () => {
         role: '',
         bindProjects: mockBindProjects,
       },
+      projectManage: { archived: false },
     });
     render(<WhitelistList />);
     await waitFor(() => {
@@ -218,7 +221,30 @@ describe('Whitelist/WhitelistList', () => {
         role: '',
         bindProjects: [{ projectName: 'default', isManager: false }],
       },
+      projectManage: { archived: false },
     });
+    render(<WhitelistList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryByText('common.delete')).not.toBeInTheDocument();
+    expect(screen.queryByText('common.edit')).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('whitelist.operate.addWhitelist')
+    ).not.toBeInTheDocument();
+  });
+
+  test('should hide the Create, Delete, Edit feature when project is archived', async () => {
+    mockUseSelector({
+      whitelist: { modalStatus: {} },
+      user: {
+        role: SystemRole.admin,
+        bindProjects: [{ projectName: projectName, isManager: true }],
+      },
+      projectManage: { archived: true },
+    });
+
     render(<WhitelistList />);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);

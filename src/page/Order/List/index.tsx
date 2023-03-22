@@ -34,6 +34,9 @@ import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import { WorkflowDetailResV1StatusEnum } from '../../../api/common.enum';
 import { Link, useHistory } from 'react-router-dom';
 import { IExportWorkflowV1Params } from '../../../api/workflow/index.d';
+import { useSelector } from 'react-redux';
+import { IReduxState } from '../../../store';
+import EmptyBox from '../../../components/EmptyBox';
 
 const OrderList = () => {
   const history = useHistory();
@@ -49,6 +52,10 @@ const OrderList = () => {
     useBoolean(false);
 
   const { projectName } = useCurrentProjectName();
+  const projectIsArchive = useSelector(
+    (state: IReduxState) => state.projectManage.archived
+  );
+
   const {
     pagination,
     filterForm,
@@ -262,9 +269,11 @@ const OrderList = () => {
         title={t('order.orderList.pageTitle')}
         ghost={false}
         extra={[
-          <Link to={`/project/${projectName}/order/create`} key="createOrder">
-            <Button type="primary">{t('order.createOrder.title')}</Button>
-          </Link>,
+          <EmptyBox if={!projectIsArchive} key="createOrder">
+            <Link to={`/project/${projectName}/order/create`}>
+              <Button type="primary">{t('order.createOrder.title')}</Button>
+            </Link>
+          </EmptyBox>,
         ]}
       >
         {t('order.orderList.pageDesc')}

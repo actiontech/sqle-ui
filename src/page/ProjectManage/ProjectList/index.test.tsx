@@ -230,9 +230,9 @@ describe('test ProjectManage/ProjectList', () => {
       jest.advanceTimersByTime(3000);
     });
 
-    expect(screen.getAllByText('common.edit')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('common.edit')[1]).toBeInTheDocument();
 
-    fireEvent.click(screen.getAllByText('common.edit')[0]);
+    fireEvent.click(screen.getAllByText('common.edit')[1]);
 
     expect(dispatchSpy).toBeCalledTimes(3);
     expect(dispatchSpy).nthCalledWith(2, {
@@ -248,8 +248,8 @@ describe('test ProjectManage/ProjectList', () => {
           create_time: '2022-11-01',
           create_user_name: 'admin',
           desc: 'desc1',
-          name: 'project1',
-          archived: true,
+          name: 'project2',
+          archived: false,
         },
       },
       type: 'projectManage/updateSelectProject',
@@ -455,12 +455,12 @@ describe('test ProjectManage/ProjectList', () => {
       screen.queryByText('projectManage.projectList.column.deleteProjectTips')
     ).toBeInTheDocument();
 
-    expect(screen.queryAllByText('common.edit')[0]).not.toHaveClass(
+    expect(screen.queryAllByText('common.edit')[1]).not.toHaveClass(
       'ant-typography-disabled'
     );
 
     expect(dispatchSpy).toBeCalledTimes(1);
-    fireEvent.click(screen.getAllByText('common.edit')[0]);
+    fireEvent.click(screen.getAllByText('common.edit')[1]);
     expect(dispatchSpy).toBeCalledTimes(3);
 
     expect(
@@ -517,12 +517,12 @@ describe('test ProjectManage/ProjectList', () => {
       screen.queryByText('projectManage.projectList.column.deleteProjectTips')
     ).toBeInTheDocument();
 
-    expect(screen.queryAllByText('common.edit')[0]).not.toHaveClass(
+    expect(screen.queryAllByText('common.edit')[1]).not.toHaveClass(
       'ant-typography-disabled'
     );
 
     expect(dispatchSpy).toBeCalledTimes(1);
-    fireEvent.click(screen.getAllByText('common.edit')[0]);
+    fireEvent.click(screen.getAllByText('common.edit')[1]);
     expect(dispatchSpy).toBeCalledTimes(3);
 
     expect(
@@ -574,5 +574,34 @@ describe('test ProjectManage/ProjectList', () => {
       JSON.stringify({ [username]: ['project1'] })
     );
     window.localStorage.clear();
+  });
+
+  test('should disabled the Edit feature when project is archive', async () => {
+    mockUseSelector({
+      projectManage: {
+        modalStatus: {
+          [ModalName.Create_Project]: false,
+          [ModalName.Update_Project]: false,
+        },
+      },
+      user: {
+        role: SystemRole.admin,
+        bindProjects: [{ project_name: 'project1', is_manager: true }],
+        managementPermissions: [],
+      },
+    });
+    renderWithRouter(<ProjectList />);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryAllByText('common.edit')[0]).toHaveClass(
+      'ant-typography-disabled'
+    );
+
+    expect(dispatchSpy).toBeCalledTimes(1);
+    fireEvent.click(screen.getAllByText('common.edit')[0]);
+    expect(dispatchSpy).toBeCalledTimes(1);
   });
 });

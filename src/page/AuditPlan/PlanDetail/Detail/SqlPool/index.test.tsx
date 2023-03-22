@@ -51,7 +51,11 @@ describe('SqlPool', () => {
 
   test('should match snapshot', async () => {
     const { container } = render(
-      <SqlPool auditPlanName="planName" projectName={projectName} />
+      <SqlPool
+        auditPlanName="planName"
+        projectName={projectName}
+        projectIsArchive={false}
+      />
     );
     expect(container).toMatchSnapshot();
     await waitFor(() => {
@@ -62,7 +66,13 @@ describe('SqlPool', () => {
 
   test('should trigger audit plan', async () => {
     const triggerSpy = mockTrigger();
-    render(<SqlPool auditPlanName="planName" projectName={projectName} />);
+    render(
+      <SqlPool
+        auditPlanName="planName"
+        projectName={projectName}
+        projectIsArchive={false}
+      />
+    );
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -89,5 +99,22 @@ describe('SqlPool', () => {
     ).toBeInTheDocument();
     expect(jestSpy).toBeCalledTimes(1);
     expect(jestSpy).toBeCalledWith(EmitterKey.Refresh_Audit_Plan_Record);
+  });
+
+  test('should hide trigger button when "projectIsArchive" is equal true', async () => {
+    render(
+      <SqlPool
+        auditPlanName="planName"
+        projectName={projectName}
+        projectIsArchive={true}
+      />
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(
+      screen.queryByText('auditPlan.sqlPool.action.trigger')
+    ).not.toBeInTheDocument();
   });
 });

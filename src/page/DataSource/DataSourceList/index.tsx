@@ -13,6 +13,8 @@ import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import { Link } from 'react-router-dom';
 import useCurrentUser from '../../../hooks/useCurrentUser';
 import EmptyBox from '../../../components/EmptyBox';
+import { useSelector } from 'react-redux';
+import { IReduxState } from '../../../store';
 
 const DataSourceList = () => {
   const { t } = useTranslation();
@@ -20,6 +22,9 @@ const DataSourceList = () => {
     useTable<DataSourceListFilterFields>();
   const { isAdmin, isProjectManager } = useCurrentUser();
   const { projectName } = useCurrentProjectName();
+  const projectIsArchive = useSelector(
+    (state: IReduxState) => state.projectManage.archived
+  );
   const actionPermission = useMemo(() => {
     return isAdmin || isProjectManager(projectName);
   }, [isAdmin, isProjectManager, projectName]);
@@ -113,7 +118,7 @@ const DataSourceList = () => {
         </Space>
       }
       extra={
-        <EmptyBox if={actionPermission}>
+        <EmptyBox if={actionPermission && !projectIsArchive}>
           <Link to={`/project/${projectName}/data/create`}>
             <Button type="primary">{t('dataSource.addDatabase')}</Button>
           </Link>
@@ -132,7 +137,8 @@ const DataSourceList = () => {
           deleteDatabase,
           testDatabaseConnection,
           projectName,
-          actionPermission
+          actionPermission,
+          projectIsArchive
         )}
         pagination={{
           total: data?.total,

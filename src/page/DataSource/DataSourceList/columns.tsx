@@ -12,7 +12,8 @@ export const dataSourceColumns = (
   deleteDatabase: (instanceName: string) => void,
   testDatabaseConnection: (instanceName: string) => void,
   projectName: string,
-  actionPermission: boolean
+  actionPermission: boolean,
+  projectIsArchive: boolean
 ): TableColumn<IInstanceResV2, 'operate' | 'address' | 'connect'> => {
   return [
     {
@@ -73,11 +74,11 @@ export const dataSourceColumns = (
     {
       dataIndex: 'operate',
       title: i18n.t('common.operate'),
-      width: actionPermission ? 180 : 40,
+      width: actionPermission && !projectIsArchive ? 180 : 40,
       render: (_, record) => {
         return (
           <>
-            <EmptyBox if={actionPermission}>
+            <EmptyBox if={actionPermission && !projectIsArchive}>
               <Link
                 to={`/project/${projectName}/data/update/${record.instance_name}`}
               >
@@ -99,6 +100,7 @@ export const dataSourceColumns = (
               </Popconfirm>
               <Divider type="vertical" />
             </EmptyBox>
+
             <Dropdown
               overlay={
                 <Menu>

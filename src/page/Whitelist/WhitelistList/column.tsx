@@ -9,7 +9,8 @@ import { WhitelistMatchTypeLabel } from '../WhitelistForm';
 export const WhitelistColumn = (
   updateWhitelist: (whitelist: IAuditWhitelistResV1) => void,
   deleteWhitelist: (whitelistId: number) => void,
-  actionPermission: boolean
+  actionPermission: boolean,
+  projectIsArchive: boolean
 ): TableColumn<IAuditWhitelistResV1, 'operator'> => {
   const columns: TableColumn<IAuditWhitelistResV1, 'operator'> = [
     {
@@ -69,7 +70,7 @@ export const WhitelistColumn = (
     },
   ];
 
-  if (!actionPermission) {
+  if (!actionPermission || projectIsArchive) {
     return columns.filter((v) => v.dataIndex !== 'operator');
   }
 

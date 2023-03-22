@@ -1,7 +1,9 @@
 import { useTheme } from '@material-ui/styles';
 import { Row, Col } from 'antd';
 import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { Route, useHistory, useParams } from 'react-router-dom';
+import { IReduxState } from '../../../../store';
 import { Theme } from '../../../../types/theme.type';
 import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 import { PlanDetailUrlParams } from '../index.type';
@@ -14,6 +16,9 @@ const PlanDetail = () => {
   const theme = useTheme<Theme>();
   const history = useHistory();
   const { projectName } = useCurrentProjectName();
+  const projectIsArchive = useSelector(
+    (state: IReduxState) => state.projectManage.archived
+  );
   const hideReportList = useMemo(() => {
     return history.location.pathname.includes('/report');
   }, [history.location.pathname]);
@@ -25,6 +30,7 @@ const PlanDetail = () => {
           <SqlPool
             auditPlanName={urlParams.auditPlanName}
             projectName={projectName}
+            projectIsArchive={projectIsArchive}
           />
         </Col>
         <Col xxl={8} sm={24}>

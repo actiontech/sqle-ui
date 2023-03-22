@@ -34,7 +34,10 @@ describe('Order/List', () => {
     mockUseInstance();
     mockUseUsername();
     jest.useFakeTimers();
-    mockUseSelector({ user: { role: SystemRole.admin } });
+    mockUseSelector({
+      user: { role: SystemRole.admin },
+      projectManage: { archived: false },
+    });
     useParamsMock.mockReturnValue({ projectName });
   });
 
@@ -244,5 +247,22 @@ describe('Order/List', () => {
         responseType: 'blob',
       }
     );
+  });
+
+  test('should hide create order button when project is archived', async () => {
+    mockUseSelector({
+      user: { role: SystemRole.admin },
+      projectManage: { archived: true },
+    });
+    mockRequest();
+    renderWithThemeAndRouter(<OrderList />);
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(
+      screen.queryByText('order.createOrder.title')
+    ).not.toBeInTheDocument();
   });
 });
