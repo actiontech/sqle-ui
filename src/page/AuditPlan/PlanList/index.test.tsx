@@ -3,7 +3,10 @@ import { fireEvent, screen, waitFor } from '@testing-library/react';
 import { useLocation, useParams } from 'react-router-dom';
 import PlanList from '.';
 import audit_plan from '../../../api/audit_plan';
-import { selectOptionByIndex } from '../../../testUtils/customQuery';
+import {
+  getBySelector,
+  selectOptionByIndex,
+} from '../../../testUtils/customQuery';
 import {
   renderWithRouter,
   renderWithServerRouter,
@@ -286,6 +289,43 @@ describe('PlanList', () => {
       page_size: 10,
       filter_audit_plan_type: 'ali_rds_mysql_slow_log',
     });
+  });
+
+  test('should jump to next page when user click next page button', async () => {
+    const getAuditPlanSpy = mockGetAuditPlan();
+
+    getAuditPlanSpy.mockImplementation(() =>
+      resolveThreeSecond(
+        Array.from({ length: 11 }, (_, i) => ({
+          ...AuditPlanList[0],
+          audit_plan_name: `audit_plan_name_${i}`,
+        })),
+        { otherData: { total_nums: 11 } }
+      )
+    );
+
+    renderWithRouter(<PlanList />);
+    expect(getAuditPlanSpy).nthCalledWith(1, {
+      page_index: 1,
+      page_size: 10,
+      project_name: projectName,
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.click(getBySelector('.ant-pagination-next'));
+    expect(getAuditPlanSpy).nthCalledWith(2, {
+      page_index: 2,
+      page_size: 10,
+      project_name: projectName,
+    });
+    fireEvent.click(getBySelector('.ant-pagination-prev'));
+    expect(getAuditPlanSpy).nthCalledWith(3, {
+      page_index: 1,
+      page_size: 10,
+      project_name: projectName,
+    });
+    expect(getAuditPlanSpy).toBeCalledTimes(3);
   });
 
   test('should render rule link when rule template name is not empty', async () => {

@@ -49,15 +49,10 @@ const SyncTaskList: React.FC = () => {
       });
   };
 
-  const { loading, data, refresh } = useRequest(
-    () => sync_instance.GetSyncInstanceTaskList(),
-    {
-      formatResult(res) {
-        return {
-          list: res.data?.data ?? [],
-        };
-      },
-    }
+  const { loading, data, refresh } = useRequest(() =>
+    sync_instance
+      .GetSyncInstanceTaskList()
+      .then((res) => ({ list: res.data?.data ?? [] }))
   );
 
   return (

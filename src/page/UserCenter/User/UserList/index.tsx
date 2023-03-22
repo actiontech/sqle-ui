@@ -1,5 +1,5 @@
 import { SyncOutlined } from '@ant-design/icons';
-import { useRequest } from 'ahooks';
+import { usePagination } from 'ahooks';
 import { message, Card, Button, Space, Table } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -31,24 +31,22 @@ const UserList = () => {
     loading,
     refresh: refreshUserList,
     pagination: { total, onChange: changePagination, changeCurrent },
-  } = useRequest(
+  } = usePagination(
     ({ current, pageSize }) => {
       const params: IGetUserListV1Params = {
         page_index: current,
         page_size: pageSize,
         filter_user_name: userListFilter.filter_user_name,
       };
-      return user.getUserListV1(params);
-    },
-    {
-      paginated: true,
-      refreshDeps: [userListFilter],
-      formatResult(res) {
+      return user.getUserListV1(params).then((res) => {
         return {
           list: res.data?.data ?? [],
           total: res.data?.total_nums ?? 0,
         };
-      },
+      });
+    },
+    {
+      refreshDeps: [userListFilter],
     }
   );
 

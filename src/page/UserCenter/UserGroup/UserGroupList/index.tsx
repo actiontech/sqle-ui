@@ -27,20 +27,19 @@ const UserGroupList = () => {
 
   const { data, loading, refresh } = useRequest(
     () => {
-      return user_group.getUserGroupListV1({
-        page_index: pagination.pageIndex,
-        page_size: pagination.pageSize,
-        filter_user_group_name: filterInfo.filter_user_group_name,
-      });
+      return user_group
+        .getUserGroupListV1({
+          page_index: pagination.pageIndex,
+          page_size: pagination.pageSize,
+          filter_user_group_name: filterInfo.filter_user_group_name,
+        })
+        .then((res) => ({
+          list: res.data?.data ?? [],
+          total: res.data?.total_nums ?? 0,
+        }));
     },
     {
       refreshDeps: [pagination, filterInfo],
-      formatResult(res) {
-        return {
-          list: res.data?.data ?? [],
-          total: res.data?.total_nums ?? 0,
-        };
-      },
     }
   );
 

@@ -15,38 +15,35 @@ const AuditPlanReport: React.FC = () => {
   const { pagination, tableChange } = useTable();
   const { projectName } = useCurrentProjectName();
 
-  const { data: reportInfo } = useRequest(
-    () =>
-      audit_plan.getAuditPlanReportV1({
+  const { data: reportInfo } = useRequest(() =>
+    audit_plan
+      .getAuditPlanReportV1({
         audit_plan_report_id: urlParams.reportId,
         audit_plan_name: urlParams.auditPlanName,
         project_name: projectName,
-      }),
-    {
-      formatResult(res) {
-        return res.data?.data ?? {};
-      },
-    }
+      })
+      .then((res) => res.data?.data ?? {})
   );
 
   const { data, loading } = useRequest(
     () =>
-      audit_plan.getAuditPlanReportsSQLsV1({
-        project_name: projectName,
-        audit_plan_name: urlParams.auditPlanName,
-        audit_plan_report_id: urlParams.reportId,
-        page_index: pagination.pageIndex,
-        page_size: pagination.pageSize,
-      }),
+      audit_plan
+        .getAuditPlanReportsSQLsV1({
+          project_name: projectName,
+          audit_plan_name: urlParams.auditPlanName,
+          audit_plan_report_id: urlParams.reportId,
+          page_index: pagination.pageIndex,
+          page_size: pagination.pageSize,
+        })
+        .then((res) => {
+          return {
+            list: res.data?.data ?? [],
+            total: res.data?.total_nums ?? 0,
+          };
+        }),
     {
       ready: !!urlParams.auditPlanName && !!urlParams.reportId,
       refreshDeps: [pagination, urlParams.auditPlanName, urlParams.reportId],
-      formatResult(res) {
-        return {
-          list: res.data?.data ?? [],
-          total: res.data?.total_nums ?? 0,
-        };
-      },
     }
   );
 

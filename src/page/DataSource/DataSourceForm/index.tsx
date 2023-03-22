@@ -96,13 +96,8 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.defaultData]);
 
-  const { data: instanceMetas } = useRequest(
-    () => instance.getInstanceAdditionalMetas(),
-    {
-      formatResult(res) {
-        return res.data?.data ?? [];
-      },
-    }
+  const { data: instanceMetas } = useRequest(() =>
+    instance.getInstanceAdditionalMetas().then((res) => res.data?.data ?? [])
   );
 
   const params = useMemo<FormItem[]>(() => {

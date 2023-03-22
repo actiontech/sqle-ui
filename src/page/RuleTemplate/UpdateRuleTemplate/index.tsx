@@ -19,7 +19,10 @@ const UpdateRuleTemplate = () => {
   const { t } = useTranslation();
   const [step, setStep] = React.useState(0);
   const [form] = useForm<RuleTemplateBaseInfoFields>();
-  const [updateTemplateLoading, { toggle: updateLoading }] = useBoolean();
+  const [
+    updateTemplateLoading,
+    { setFalse: finishSubmit, setTrue: startSubmit },
+  ] = useBoolean(false);
   const [activeRule, setActiveRule] = React.useState<IRuleResV1[]>([]);
   const [databaseRule, setDatabaseRule] = React.useState<IRuleResV1[]>([]);
   const [ruleTemplate, setRuleTemplate] = React.useState<
@@ -27,13 +30,8 @@ const UpdateRuleTemplate = () => {
   >();
   const { projectName } = useCurrentProjectName();
   const urlParams = useParams<{ templateName: string }>();
-  const { data: allRules, loading: getAllRulesLoading } = useRequest(
-    () => ruleTemplateService.getRuleListV1({}),
-    {
-      formatResult(res) {
-        return res.data.data ?? [];
-      },
-    }
+  const { data: allRules, loading: getAllRulesLoading } = useRequest(() =>
+    ruleTemplateService.getRuleListV1({}).then((res) => res.data.data ?? [])
   );
 
   const baseInfoFormSubmit = React.useCallback(async () => {
@@ -49,7 +47,7 @@ const UpdateRuleTemplate = () => {
   }, [step]);
 
   const submit = React.useCallback(() => {
-    updateLoading(true);
+    startSubmit();
     const baseInfo = form.getFieldsValue();
     const activeRuleWithNewField: IRuleReqV1[] = activeRule.map((rule) => {
       return {
@@ -73,9 +71,9 @@ const UpdateRuleTemplate = () => {
         }
       })
       .finally(() => {
-        updateLoading(false);
+        finishSubmit();
       });
-  }, [activeRule, form, projectName, step, updateLoading]);
+  }, [activeRule, finishSubmit, form, projectName, startSubmit, step]);
 
   React.useEffect(() => {
     ruleTemplateService

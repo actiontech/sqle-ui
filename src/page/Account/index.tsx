@@ -1,4 +1,4 @@
-import useRequest from '@ahooksjs/use-request';
+import { useRequest } from 'ahooks';
 import { Button, Card, Col, Divider, PageHeader, Row, Typography } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -16,13 +16,8 @@ const Account = () => {
     [ModalName.Modify_Password]: false,
   });
 
-  const { data: userInfo, refresh } = useRequest(
-    () => user.getCurrentUserV1(),
-    {
-      formatResult(res) {
-        return res.data.data ?? {};
-      },
-    }
+  const { data: userInfo, refresh } = useRequest(() =>
+    user.getCurrentUserV1().then((res) => res.data.data ?? {})
   );
 
   const handleChangeModalStatus = (modalName: ModalName, status: boolean) => {

@@ -31,21 +31,22 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
     run: getAuditTaskSql,
   } = useRequest(
     () =>
-      task.getAuditTaskSQLsV1({
-        task_id: `${props.taskId}`,
-        ...filterInfo,
-        page_index: pagination.pageIndex.toString(),
-        page_size: pagination.pageSize.toString(),
-        no_duplicate: duplicate,
-      }),
+      task
+        .getAuditTaskSQLsV1({
+          task_id: `${props.taskId}`,
+          ...filterInfo,
+          page_index: pagination.pageIndex.toString(),
+          page_size: pagination.pageSize.toString(),
+          no_duplicate: duplicate,
+        })
+        .then((res) => {
+          return {
+            list: res.data.data,
+            total: res.data.total_nums,
+          };
+        }),
     {
       manual: true,
-      formatResult(res) {
-        return {
-          list: res.data.data,
-          total: res.data.total_nums,
-        };
-      },
       onSuccess(res) {
         const taskStr = props.taskId ? `${props.taskId}` : '';
         props.updateTaskRecordTotalNum?.(taskStr, res.total ?? 0);

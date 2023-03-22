@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 import './index.less';
 import { Button, Checkbox, Form, Input, message, Typography } from 'antd';
@@ -66,12 +66,9 @@ const Login = () => {
   };
 
   const { run: getOauth2Tips, data: oauthConfig } = useRequest(
-    () => configuration.getOauth2Tips(),
+    () => configuration.getOauth2Tips().then((res) => res.data?.data ?? {}),
     {
       manual: true,
-      formatResult(res) {
-        return res.data?.data ?? {};
-      },
     }
   );
 

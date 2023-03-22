@@ -1,5 +1,5 @@
 import { SyncOutlined } from '@ant-design/icons';
-import { useRequest } from 'ahooks';
+import { usePagination } from 'ahooks';
 import { Button, Card, message, PageHeader, Space, Table } from 'antd';
 import { useCallback, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -47,21 +47,18 @@ const ProjectList: React.FC = () => {
     loading,
     refresh,
     pagination: { total, onChange: changePagination, changeCurrent },
-  } = useRequest(
-    ({ current, pageSize }) =>
-      project.getProjectListV1({
+  } = usePagination(({ current, pageSize }) =>
+    project
+      .getProjectListV1({
         page_index: current,
         page_size: pageSize,
-      }),
-    {
-      paginated: true,
-      formatResult(res) {
+      })
+      .then((res) => {
         return {
           list: res.data?.data ?? [],
           total: res.data?.total_nums ?? 0,
         };
-      },
-    }
+      })
   );
 
   const pageChange = useCallback(

@@ -40,8 +40,7 @@ const OrderList = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const theme = useTheme<Theme>();
-  const [resolveUrlParamFlag, { toggle: setResolveUrlParamFlag }] =
-    useBoolean();
+  const [resolveUrlParamFlag, setResolveUrlParamFlag] = React.useState(false);
   const { isAdmin } = useRole();
   const [selectedRowKeys, setSelectedRowKeys] = React.useState<string[]>([]);
   const [confirmLoading, setConfirmLoading] = React.useState<boolean>(false);
@@ -72,34 +71,35 @@ const OrderList = () => {
         filter_order_executeTime,
         ...otherFilterInfo
       } = filterInfo;
-      return workflow.getWorkflowsV1({
-        project_name: projectName,
-        page_index: pagination.pageIndex,
-        page_size: pagination.pageSize,
-        filter_create_time_from: translateTimeForRequest(
-          filter_order_createTime?.[0]
-        ),
-        filter_create_time_to: translateTimeForRequest(
-          filter_order_createTime?.[1]
-        ),
-        filter_task_execute_start_time_from: translateTimeForRequest(
-          filter_order_executeTime?.[0]
-        ),
-        filter_task_execute_start_time_to: translateTimeForRequest(
-          filter_order_executeTime?.[1]
-        ),
-        ...otherFilterInfo,
-      });
+      return workflow
+        .getWorkflowsV1({
+          project_name: projectName,
+          page_index: pagination.pageIndex,
+          page_size: pagination.pageSize,
+          filter_create_time_from: translateTimeForRequest(
+            filter_order_createTime?.[0]
+          ),
+          filter_create_time_to: translateTimeForRequest(
+            filter_order_createTime?.[1]
+          ),
+          filter_task_execute_start_time_from: translateTimeForRequest(
+            filter_order_executeTime?.[0]
+          ),
+          filter_task_execute_start_time_to: translateTimeForRequest(
+            filter_order_executeTime?.[1]
+          ),
+          ...otherFilterInfo,
+        })
+        .then((res) => {
+          return {
+            list: res.data?.data ?? [],
+            total: res.data?.total_nums ?? 0,
+          };
+        });
     },
     {
       ready: resolveUrlParamFlag,
       refreshDeps: [pagination, filterInfo],
-      formatResult(res) {
-        return {
-          list: res.data?.data ?? [],
-          total: res.data?.total_nums ?? 0,
-        };
-      },
     }
   );
 

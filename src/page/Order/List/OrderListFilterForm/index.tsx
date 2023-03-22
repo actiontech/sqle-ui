@@ -1,5 +1,4 @@
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
-import { useBoolean } from 'ahooks';
 import {
   Form,
   Row,
@@ -12,7 +11,7 @@ import {
   Input,
 } from 'antd';
 import moment from 'moment';
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   FilterFormRowLayout,
@@ -29,9 +28,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
   const { t } = useTranslation();
   const { updateUsernameList, generateUsernameSelectOption } = useUsername();
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
-  const [collapse, { toggle: toggleCollapse }] = useBoolean(
-    props.collapse ?? true
-  );
+  const [collapse, toggleCollapse] = useState(props.collapse ?? true);
 
   const collapseChange = React.useCallback(() => {
     const nextCollapse =

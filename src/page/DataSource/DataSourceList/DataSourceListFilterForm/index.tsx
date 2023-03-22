@@ -1,8 +1,7 @@
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
-import { useBoolean } from 'ahooks';
 import { Button, Col, Form, Input, Row, Select, Space, Typography } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   filterFormButtonLayoutFactory,
@@ -26,7 +25,7 @@ const DataSourceListFilterForm: React.FC<DataSourceListFilterFormProps> = (
   const { updateDriverNameList, generateDriverSelectOptions } =
     useDatabaseType();
   const { t } = useTranslation();
-  const [collapse, { toggle: toggleCollapse }] = useBoolean(true);
+  const [collapse, toggleCollapse] = useState(true);
   const [form] = useForm<DataSourceListFilterFields>();
   const { updateInstanceList, generateInstanceSelectOption } = useInstance();
   const { updateRuleTemplateList, ruleTemplateList } = useRuleTemplate();

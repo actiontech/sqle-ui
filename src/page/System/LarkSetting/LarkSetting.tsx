@@ -41,10 +41,7 @@ const LarkSetting: React.FC = () => {
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
     useBoolean();
   const [enable, setEnable] = useState(false);
-  const [
-    testPopoverVisible,
-    { toggle: toggleTestPopoverVisible, setFalse: closeTestPopover },
-  ] = useBoolean();
+  const [testPopoverVisible, toggleTestPopoverVisible] = useState(false);
   const [receiveType, setReceiveType] =
     useState<TestFeishuConfigurationReqV1AccountTypeEnum>(
       TestFeishuConfigurationReqV1AccountTypeEnum.email
@@ -81,7 +78,7 @@ const LarkSetting: React.FC = () => {
   const testLarkConfiguration = async () => {
     const values = await testForm.validateFields();
     startTest();
-    closeTestPopover();
+    toggleTestPopoverVisible(false);
     const hide = message.loading(t('system.lark.testing'), 0);
     configuration
       .testFeishuConfigV1({
@@ -127,13 +124,8 @@ const LarkSetting: React.FC = () => {
     }
   };
 
-  const { data: larkInfo, refresh: refreshLarkInfo } = useRequest(
-    () => configuration.getFeishuConfigurationV1(),
-    {
-      formatResult(res) {
-        return res.data.data ?? {};
-      },
-    }
+  const { data: larkInfo, refresh: refreshLarkInfo } = useRequest(() =>
+    configuration.getFeishuConfigurationV1().then((res) => res.data.data ?? {})
   );
 
   return (

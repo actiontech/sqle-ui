@@ -30,13 +30,8 @@ const GlobalSetting = () => {
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
     useBoolean();
 
-  const { data: globalConfig, refresh } = useRequest(
-    () => configuration.getSystemVariablesV1(),
-    {
-      formatResult(res) {
-        return res?.data?.data ?? {};
-      },
-    }
+  const { data: globalConfig, refresh } = useRequest(() =>
+    configuration.getSystemVariablesV1().then((res) => res?.data?.data ?? {})
   );
 
   const handelClickCancel = () => {

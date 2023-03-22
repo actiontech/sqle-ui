@@ -1,4 +1,3 @@
-import { useBoolean } from 'ahooks';
 import { Card, Button, message, Empty, Typography, Spin } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React, { useState } from 'react';
@@ -22,8 +21,8 @@ const UpdateDataSource = () => {
   const history = useHistory();
   const urlParams = useParams<UpdateDataSourceUrlParams>();
   const { projectName } = useCurrentProjectName();
-  const [initError, setInitError] = React.useState('');
-  const [retryLoading, { toggle: setRetryLoading }] = useBoolean(false);
+  const [initError, setInitError] = useState('');
+  const [retryLoading, setRetryLoading] = useState(false);
   const [instanceInfo, setInstanceInfo] = useState<IInstanceResV1>();
 
   const updateDatabase = async (values: DataSourceFormField) => {

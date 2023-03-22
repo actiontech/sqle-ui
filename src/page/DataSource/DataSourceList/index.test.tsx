@@ -20,6 +20,7 @@ import {
 } from '../../../testUtils/mockRequest';
 import { dataSourceList } from '../__testData__';
 import { createMemoryHistory } from 'history';
+import { getBySelector } from '../../../testUtils/customQuery';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -249,6 +250,41 @@ describe('DataSource/DataSourceList', () => {
     expect(
       screen.queryByText('dataSource.addDatabase')
     ).not.toBeInTheDocument();
+  });
+
+  test('should jump to next page when user click next page button', async () => {
+    const getInstanceSpy = mockGetInstance();
+    getInstanceSpy.mockImplementation(() =>
+      resolveThreeSecond(
+        Array.from({ length: 11 }, (_, i) => ({
+          ...dataSourceList[0],
+          instance_name: `instance_name_${i}`,
+        })),
+        { otherData: { total_nums: 11 } }
+      )
+    );
+    renderWithRouter(<DataSourceList />);
+    expect(getInstanceSpy).nthCalledWith(1, {
+      page_index: 1,
+      page_size: 10,
+      project_name: projectName,
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    fireEvent.click(getBySelector('.ant-pagination-next'));
+    expect(getInstanceSpy).nthCalledWith(2, {
+      page_index: 2,
+      page_size: 10,
+      project_name: projectName,
+    });
+    fireEvent.click(getBySelector('.ant-pagination-prev'));
+    expect(getInstanceSpy).nthCalledWith(3, {
+      page_index: 1,
+      page_size: 10,
+      project_name: projectName,
+    });
+    expect(getInstanceSpy).toBeCalledTimes(3);
   });
 
   test('should render rule link when rule template name is not empty', async () => {

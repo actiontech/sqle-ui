@@ -1,5 +1,5 @@
 import { SyncOutlined } from '@ant-design/icons';
-import { useRequest } from 'ahooks';
+import { usePagination } from 'ahooks';
 import { Button, Card, message, Space, Table } from 'antd';
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -33,21 +33,18 @@ const RuleTemplateList: React.FC<{ hiddenOperations?: boolean }> = ({
     loading,
     refresh: refreshRuleTemplate,
     pagination: { total, onChange: changePagination, changeCurrent },
-  } = useRequest(
-    ({ current, pageSize }) =>
-      ruleTemplate.getRuleTemplateListV1({
+  } = usePagination(({ current, pageSize }) =>
+    ruleTemplate
+      .getRuleTemplateListV1({
         page_index: current,
         page_size: pageSize,
-      }),
-    {
-      paginated: true,
-      formatResult(res) {
+      })
+      .then((res) => {
         return {
           list: res.data?.data ?? [],
           total: res.data?.total_nums ?? 0,
         };
-      },
-    }
+      })
   );
 
   const pageChange = React.useCallback(

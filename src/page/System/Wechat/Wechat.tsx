@@ -33,13 +33,8 @@ const Wechat = () => {
   const [modifyFlag, { setTrue: startModify, setFalse: modifyFinish }] =
     useBoolean();
 
-  const { data: wechatConfig, refresh } = useRequest(
-    () => configuration.getWeChatConfigurationV1(),
-    {
-      formatResult(res) {
-        return res?.data?.data;
-      },
-    }
+  const { data: wechatConfig, refresh } = useRequest(() =>
+    configuration.getWeChatConfigurationV1().then((res) => res?.data?.data)
   );
 
   const [form] = useForm<WechatFormFields>();
@@ -80,17 +75,14 @@ const Wechat = () => {
   };
 
   const [receiveId, setReceiveId] = useState('');
-  const [
-    testPopoverVisible,
-    { toggle: toggleTestPopoverVisible, setFalse: closeTestPopover },
-  ] = useBoolean();
+  const [testPopoverVisible, toggleTestPopoverVisible] = useState(false);
   const testTing = useRef(false);
   const test = () => {
     if (testTing.current) {
       return;
     }
     testTing.current = true;
-    closeTestPopover();
+    toggleTestPopoverVisible(false);
     const hide = message.loading(
       t('system.wechat.testing', { id: receiveId }),
       0

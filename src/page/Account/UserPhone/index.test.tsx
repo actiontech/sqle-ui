@@ -80,7 +80,12 @@ describe('test Account/UserPhone', () => {
     ).not.toHaveAttribute('hidden');
     expect(input).toHaveFocus();
 
-    fireEvent.keyDown(input, { key: 'esc' });
+    fireEvent.keyDown(input, {
+      key: 'Escape',
+      code: 'Escape',
+      keyCode: 27,
+      charCode: 27,
+    });
 
     expect(
       getBySelector('.ant-input-affix-wrapper').parentNode
@@ -108,19 +113,34 @@ describe('test Account/UserPhone', () => {
 
     fireEvent.click(getBySelector('.anticon-edit'));
     fireEvent.input(input, { target: { value: '1234' } });
-    fireEvent.keyDown(input, { key: 'enter' });
+    fireEvent.keyDown(input, {
+      key: 'Enter',
+      code: 'Enter',
+      keyCode: 13,
+      charCode: 13,
+    });
 
     expect(errorMessageSpy).toBeCalledTimes(1);
     expect(errorMessageSpy).nthCalledWith(1, 'account.phoneErrorMessage.type');
 
     fireEvent.input(input, { target: { value: '12312341234' } });
-    fireEvent.keyDown(input, { key: 'enter' });
+    fireEvent.keyDown(input, {
+      key: 'Enter',
+      code: 'Enter',
+      keyCode: 13,
+      charCode: 13,
+    });
 
     expect(errorMessageSpy).toBeCalledTimes(2);
     expect(errorMessageSpy).nthCalledWith(2, 'account.phoneErrorMessage.match');
 
     fireEvent.input(input, { target: { value: '12312341235' } });
-    fireEvent.keyDown(input, { key: 'enter' });
+    fireEvent.keyDown(input, {
+      key: 'Enter',
+      code: 'Enter',
+      keyCode: 13,
+      charCode: 13,
+    });
 
     expect(
       getBySelector('.ant-input-affix-wrapper').parentNode

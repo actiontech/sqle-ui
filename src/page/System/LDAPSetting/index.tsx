@@ -30,12 +30,12 @@ const LDAPSetting = () => {
     data: ldapSetting,
     loading,
     run: getLDAPSetting,
-  } = useRequest(() => configuration.getLDAPConfigurationV1(), {
-    manual: true,
-    formatResult(res) {
-      return res.data.data;
-    },
-  });
+  } = useRequest(
+    () => configuration.getLDAPConfigurationV1().then((res) => res.data.data),
+    {
+      manual: true,
+    }
+  );
 
   useEffect(() => {
     getLDAPSetting();

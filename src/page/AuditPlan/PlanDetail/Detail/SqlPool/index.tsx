@@ -23,22 +23,24 @@ const SqlPool: React.FC<{ auditPlanName: string; projectName: string }> = (
   const [columns, setColumns] = useState<ColumnType<any>[]>([]);
   const { loading, data, refresh } = useRequest(
     () =>
-      audit_plan.getAuditPlanSQLsV1({
-        project_name: props.projectName,
-        audit_plan_name: props.auditPlanName,
-        page_index: pagination.pageIndex,
-        page_size: pagination.pageSize,
-      }),
+      audit_plan
+        .getAuditPlanSQLsV1({
+          project_name: props.projectName,
+          audit_plan_name: props.auditPlanName,
+          page_index: pagination.pageIndex,
+          page_size: pagination.pageSize,
+        })
+        .then((res) => {
+          return {
+            head: res.data.data?.head,
+            list: res.data.data?.rows,
+            total: res.data.total_nums,
+          };
+        }),
     {
       ready: !!props.auditPlanName,
       refreshDeps: [props.auditPlanName, pagination],
-      formatResult(res) {
-        return {
-          head: res.data.data?.head,
-          list: res.data.data?.rows,
-          total: res.data.total_nums,
-        };
-      },
+
       onSuccess: (res) => {
         const { head = [] } = res;
         setColumns(

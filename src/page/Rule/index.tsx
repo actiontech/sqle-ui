@@ -1,5 +1,5 @@
-import useRequest from '@ahooksjs/use-request';
 import { useTheme } from '@material-ui/styles';
+import { useRequest } from 'ahooks';
 import {
   Card,
   Col,
@@ -31,16 +31,17 @@ const Rule = () => {
     run: getProjectTemplateRules,
   } = useRequest(
     (project?: string, ruleTemplate?: string) =>
-      rule_template.getProjectRuleTemplateV1({
-        rule_template_name: ruleTemplate ?? '',
-        project_name: project ?? '',
-      }),
+      rule_template
+        .getProjectRuleTemplateV1({
+          rule_template_name: ruleTemplate ?? '',
+          project_name: project ?? '',
+        })
+        .then((res) => {
+          setDbType(res.data.data?.db_type ?? '');
+          return res.data?.data?.rule_list ?? [];
+        }),
     {
       manual: true,
-      formatResult(res) {
-        setDbType(res.data.data?.db_type ?? '');
-        return res.data?.data?.rule_list ?? [];
-      },
     }
   );
 
@@ -50,15 +51,16 @@ const Rule = () => {
     run: getGlobalTemplateRules,
   } = useRequest(
     (ruleTemplate?: string) =>
-      rule_template.getRuleTemplateV1({
-        rule_template_name: ruleTemplate ?? '',
-      }),
+      rule_template
+        .getRuleTemplateV1({
+          rule_template_name: ruleTemplate ?? '',
+        })
+        .then((res) => {
+          setDbType(res.data.data?.db_type ?? '');
+          return res.data?.data?.rule_list ?? [];
+        }),
     {
       manual: true,
-      formatResult(res) {
-        setDbType(res.data.data?.db_type ?? '');
-        return res.data?.data?.rule_list ?? [];
-      },
     }
   );
 
@@ -76,15 +78,14 @@ const Rule = () => {
 
   const { data: allRules, loading: getAllRulesLoading } = useRequest(
     () =>
-      ruleTemplate.getRuleListV1({
-        filter_db_type: dbType,
-      }),
+      ruleTemplate
+        .getRuleListV1({
+          filter_db_type: dbType,
+        })
+        .then((res) => res.data?.data ?? []),
     {
       ready: !!dbType,
       refreshDeps: [dbType],
-      formatResult(res) {
-        return res.data?.data ?? [];
-      },
     }
   );
 

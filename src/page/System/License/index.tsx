@@ -39,18 +39,11 @@ const License = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const { data, loading, refresh } = useRequest(
-    () => {
-      return configuration.getSQLELicenseV1();
-    },
-    {
-      formatResult(res) {
-        return {
-          list: res?.data?.license ?? [],
-        };
-      },
-    }
-  );
+  const { data, loading, refresh } = useRequest(() => {
+    return configuration
+      .getSQLELicenseV1()
+      .then((res) => ({ list: res?.data?.license ?? [] }));
+  });
 
   const collectLicense = () => {
     configuration.GetSQLELicenseInfoV1();

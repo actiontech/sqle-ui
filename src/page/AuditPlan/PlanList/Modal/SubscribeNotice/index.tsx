@@ -11,7 +11,7 @@ import {
   Tooltip,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import MonacoEditor from 'react-monaco-editor';
 import { useDispatch, useSelector } from 'react-redux';
@@ -73,7 +73,7 @@ const SubscribeNotice = () => {
 
   const { getRuleLevelStatusSelectOption } = useStaticStatus();
 
-  const [webhooksEnable, { toggle: toggleWebhooksEnable }] = useBoolean();
+  const [webhooksEnable, toggleWebhooksEnable] = useState(false);
 
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
     useBoolean();

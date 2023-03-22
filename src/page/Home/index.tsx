@@ -18,59 +18,52 @@ const Home = () => {
   const { data: workflowStatistics, refresh: getWorkflowStatistics } =
     useRequest(
       () =>
-        dashboard.getDashboardV1({
-          filter_project_name: filterProjectName,
-        }),
+        dashboard
+          .getDashboardV1({
+            filter_project_name: filterProjectName,
+          })
+          .then((res) => res.data?.data?.workflow_statistics),
       {
-        formatResult(res) {
-          return res.data?.data?.workflow_statistics;
-        },
         refreshDeps: [filterProjectName],
       }
     );
 
   /* IFTRUE_isEE */
-  const { data: projectTipSelectOptions } = useRequest(
-    () => dashboard.getDashboardProjectTipsV1(),
-    {
-      formatResult(res) {
-        const genLabel = (name?: string, count?: number) => {
-          return (
-            <Space className="full-width-element flex-space-between">
-              {name}
-              {<Badge size="small" count={count} showZero={true} />}
-            </Space>
-          );
-        };
-        const sumCount = res.data.data?.reduce(
-          (acc, cur) => acc + (cur?.unfinished_workflow_count ?? 0),
-          0
+  const { data: projectTipSelectOptions } = useRequest(() =>
+    dashboard.getDashboardProjectTipsV1().then((res) => {
+      const genLabel = (name?: string, count?: number) => {
+        return (
+          <Space className="full-width-element flex-space-between">
+            {name}
+            {<Badge size="small" count={count} showZero={true} />}
+          </Space>
         );
-        return [
-          {
-            label: genLabel(t('dashboard.allProjectTip'), sumCount),
-            value: ALL_PROJECT_NAME,
-            showLabel: t('dashboard.allProjectTip'),
-          },
-          ...(res.data.data
-            ?.sort(
-              (a, b) =>
-                (b?.unfinished_workflow_count ?? 0) -
-                (a?.unfinished_workflow_count ?? 0)
-            )
-            .map((v) => {
-              return {
-                label: genLabel(
-                  v.project_name,
-                  v.unfinished_workflow_count ?? 0
-                ),
-                value: v?.project_name ?? '',
-                showLabel: v?.project_name ?? '',
-              };
-            }) ?? []),
-        ];
-      },
-    }
+      };
+      const sumCount = res.data.data?.reduce(
+        (acc, cur) => acc + (cur?.unfinished_workflow_count ?? 0),
+        0
+      );
+      return [
+        {
+          label: genLabel(t('dashboard.allProjectTip'), sumCount),
+          value: ALL_PROJECT_NAME,
+          showLabel: t('dashboard.allProjectTip'),
+        },
+        ...(res.data.data
+          ?.sort(
+            (a, b) =>
+              (b?.unfinished_workflow_count ?? 0) -
+              (a?.unfinished_workflow_count ?? 0)
+          )
+          .map((v) => {
+            return {
+              label: genLabel(v.project_name, v.unfinished_workflow_count ?? 0),
+              value: v?.project_name ?? '',
+              showLabel: v?.project_name ?? '',
+            };
+          }) ?? []),
+      ];
+    })
   );
   /* FITRUE_isEE */
 

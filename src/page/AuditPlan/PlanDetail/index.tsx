@@ -12,19 +12,14 @@ const PlanDetailPage = () => {
   const urlParams = useParams<PlanDetailUrlParams>();
   const { projectName } = useCurrentProjectName();
   const { t } = useTranslation();
-  const { data: auditTask } = useRequest(
-    () => {
-      return audit_plan.getAuditPlanV1({
+  const { data: auditTask } = useRequest(() => {
+    return audit_plan
+      .getAuditPlanV1({
         audit_plan_name: urlParams.auditPlanName,
         project_name: projectName,
-      });
-    },
-    {
-      formatResult(res) {
-        return res.data;
-      },
-    }
-  );
+      })
+      .then((res) => res.data);
+  });
 
   return (
     <>

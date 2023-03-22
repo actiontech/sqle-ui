@@ -85,7 +85,12 @@ describe('UserEmail', () => {
     ).not.toHaveAttribute('hidden');
     expect(input).toHaveFocus();
 
-    fireEvent.keyDown(input, { key: 'esc' });
+    fireEvent.keyDown(input, {
+      key: 'Escape',
+      code: 'Escape',
+      keyCode: 27,
+      charCode: 27,
+    });
 
     expect(
       getBySelector('.ant-input-affix-wrapper').parentNode
@@ -109,7 +114,12 @@ describe('UserEmail', () => {
 
     fireEvent.click(getBySelector('.anticon-edit'));
     fireEvent.input(input, { target: { value: 'aaa@@@@@mmmm.' } });
-    fireEvent.keyDown(input, { key: 'enter' });
+    fireEvent.keyDown(input, {
+      key: 'Enter',
+      code: 'Enter',
+      keyCode: 13,
+      charCode: 13,
+    });
 
     expect(errorMessageSpy).toBeCalledTimes(1);
     expect(errorMessageSpy).toBeCalledWith('account.emailErrorMessage.type');
@@ -131,7 +141,12 @@ describe('UserEmail', () => {
 
     fireEvent.click(getBySelector('.anticon-edit'));
     fireEvent.input(input, { target: { value: 'aaaa@bbb.cc' } });
-    fireEvent.keyDown(input, { key: 'enter' });
+    fireEvent.keyDown(input, {
+      key: 'Enter',
+      code: 'Enter',
+      keyCode: 13,
+      charCode: 13,
+    });
 
     expect(errorMessageSpy).toBeCalledTimes(1);
     expect(errorMessageSpy).toBeCalledWith('account.emailErrorMessage.match');
@@ -157,7 +172,12 @@ describe('UserEmail', () => {
 
     fireEvent.click(getBySelector('.anticon-edit'));
     fireEvent.input(input, { target: { value: 'test@gmail.com' } });
-    fireEvent.keyDown(input, { key: 'enter' });
+    fireEvent.keyDown(input, {
+      key: 'Enter',
+      code: 'Enter',
+      keyCode: 13,
+      charCode: 13,
+    });
     expect(
       getBySelector('.ant-input-affix-wrapper').parentNode
     ).not.toHaveAttribute('hidden');

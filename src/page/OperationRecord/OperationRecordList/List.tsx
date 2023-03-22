@@ -38,16 +38,14 @@ const OperationRecordList: React.FC = () => {
         fuzzy_search_operate_user_name: filterInfo.operator,
         page_index: pagination.pageIndex,
         page_size: pagination.pageSize,
-      }),
-    {
-      paginated: true,
-      refreshDeps: [pagination, filterInfo],
-      formatResult(res) {
+      }).then((res) => {
         return {
           total: res.data.total_nums ?? 0,
           list: res.data?.data ?? [],
         };
-      },
+      }),
+    {
+      refreshDeps: [pagination, filterInfo],
     }
   );
 

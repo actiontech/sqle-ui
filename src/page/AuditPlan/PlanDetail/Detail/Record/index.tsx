@@ -23,12 +23,19 @@ const PlanAuditRecord: React.FC<{
 
   const { data, loading, refresh } = useRequest(
     () =>
-      audit_plan.getAuditPlanReportsV1({
-        project_name: props.projectName,
-        audit_plan_name: props.auditPlanName,
-        page_index: pagination.pageIndex,
-        page_size: pagination.pageSize,
-      }),
+      audit_plan
+        .getAuditPlanReportsV1({
+          project_name: props.projectName,
+          audit_plan_name: props.auditPlanName,
+          page_index: pagination.pageIndex,
+          page_size: pagination.pageSize,
+        })
+        .then((res) => {
+          return {
+            list: res.data?.data ?? [],
+            total: res.data.total_nums ?? 0,
+          };
+        }),
     {
       ready: !!props.auditPlanName,
       refreshDeps: [
@@ -36,12 +43,6 @@ const PlanAuditRecord: React.FC<{
         pagination.pageIndex,
         pagination.pageSize,
       ],
-      formatResult(res) {
-        return {
-          list: res.data?.data ?? [],
-          total: res.data.total_nums ?? 0,
-        };
-      },
     }
   );
 

@@ -19,7 +19,7 @@ const SqlQueryEE = () => {
   const {
     data,
     loading,
-    run: getSqlQueryUrl,
+    runAsync: getSqlQueryUrl,
   } = useRequest(
     () => {
       return configuration.getSQLQueryConfiguration().then((res) => {
