@@ -7,6 +7,7 @@ import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import { AuditPlan } from '../PlanList/__testData__';
 import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
 import { AuditPlanReportList } from './__testData__';
+import { mockUseSelector } from '../../../testUtils/mockRedux';
 
 jest.mock('react-router', () => {
   return {
@@ -23,6 +24,9 @@ describe('PlanDetail', () => {
     jest.useFakeTimers();
     mockGetAuditPlanV1();
     mockGetAuditPlanReport();
+    mockUseSelector({
+      projectManage: { archived: false },
+    });
   });
 
   afterEach(() => {

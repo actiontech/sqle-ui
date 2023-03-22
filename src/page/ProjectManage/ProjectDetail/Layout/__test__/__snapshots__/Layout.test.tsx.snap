@@ -14,7 +14,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
       >
         <h1
           class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-          style="padding: 20px;"
+          style="padding: 20px 0px 20px 20px;"
         >
           test
         </h1>
@@ -352,7 +352,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
       >
         <h1
           class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-          style="padding: 20px;"
+          style="padding: 20px 0px 20px 20px;"
         >
           test
         </h1>
@@ -690,7 +690,7 @@ exports[`test ProjectManage/ProjectDetailLayout should render menu by user role 
       >
         <h1
           class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-          style="padding: 20px;"
+          style="padding: 20px 0px 20px 20px;"
         >
           test
         </h1>

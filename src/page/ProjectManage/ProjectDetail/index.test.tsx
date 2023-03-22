@@ -38,6 +38,7 @@ describe('test ProjectManage/ProjectDetail', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
   let getUserSpy: jest.SpyInstance;
   let dispatchSpy: jest.SpyInstance;
+  let getProjectDetailSpy: jest.SpyInstance;
   const useLocationMock: jest.Mock = useLocation as jest.Mock;
   const useHistoryMock: jest.Mock = useHistory as jest.Mock;
   const replaceMock = jest.fn();
@@ -50,6 +51,7 @@ describe('test ProjectManage/ProjectDetail', () => {
         bind_projects: mockBindProjects,
       })
     );
+    getProjectDetailSpy = mockGetProjectDetail();
 
     dispatchSpy = mockUseDispatch().scopeDispatch;
     mockUseAuditPlanTypes();
@@ -89,6 +91,7 @@ describe('test ProjectManage/ProjectDetail', () => {
 
     render(<ProjectDetail />);
     expect(getUserSpy).toBeCalledTimes(1);
+    expect(getProjectDetailSpy).toBeCalledTimes(1);
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
@@ -105,27 +108,30 @@ describe('test ProjectManage/ProjectDetail', () => {
       jest.advanceTimersByTime(3000);
     });
 
-    expect(dispatchSpy).toBeCalledTimes(4);
+    expect(dispatchSpy).toBeCalledTimes(5);
     expect(dispatchSpy).nthCalledWith(1, {
+      payload: false,
+      type: 'projectManage/updateProjectStatus',
+    });
+    expect(dispatchSpy).nthCalledWith(2, {
       payload: { bindProjects: [] },
       type: 'user/updateBindProjects',
     });
-    expect(dispatchSpy).nthCalledWith(2, {
+    expect(dispatchSpy).nthCalledWith(3, {
       payload: { username: '', role: '' },
       type: 'user/updateUser',
     });
-    expect(dispatchSpy).nthCalledWith(3, {
+    expect(dispatchSpy).nthCalledWith(4, {
       payload: { token: '' },
       type: 'user/updateToken',
     });
-    expect(dispatchSpy).nthCalledWith(4, {
+    expect(dispatchSpy).nthCalledWith(5, {
       payload: { managementPermissions: [] },
       type: 'user/updateManagementPermissions',
     });
   });
 
   test('should match snapshot when bound project exists', async () => {
-    const getProjectDetailSpy = mockGetProjectDetail();
     const getProjectStatistics = mockGetProjectStatistics();
     const { container } = renderWithRouter(<ProjectDetail />);
     await waitFor(() => {
@@ -135,8 +141,33 @@ describe('test ProjectManage/ProjectDetail', () => {
       jest.advanceTimersByTime(0);
     });
     expect(container).toMatchSnapshot();
-    expect(getProjectDetailSpy).toBeCalledTimes(1);
+    expect(getProjectDetailSpy).toBeCalledTimes(2);
     expect(getProjectStatistics).toBeCalledTimes(1);
+  });
+
+  test('should show unavailable when project archived is equal true', async () => {
+    mockGetProjectStatistics();
+    getProjectDetailSpy.mockImplementation(() =>
+      resolveThreeSecond({
+        create_time: '2022-01-01',
+        create_user_name: 'admin',
+        desc: 'desc',
+        name: 'project1',
+        archived: true,
+      })
+    );
+
+    const { container } = renderWithRouter(<ProjectDetail />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+    expect(
+      screen.getByText('(projectManage.projectList.column.unavailable)')
+    ).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 });
 

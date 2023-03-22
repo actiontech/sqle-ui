@@ -6,11 +6,13 @@ import { commonModalReducer } from '../common';
 type ProjectManageReduxState = {
   modalStatus: ModalStatus;
   selectProject: IProjectListItem | null;
+  archived: boolean;
 };
 
 const initialState: ProjectManageReduxState = {
   selectProject: null,
   modalStatus: {},
+  archived: false,
 };
 
 const projectManage = createSlice({
@@ -25,11 +27,15 @@ const projectManage = createSlice({
     ) {
       state.selectProject = project;
     },
+    updateProjectStatus(state, { payload: archived }: PayloadAction<boolean>) {
+      state.archived = archived;
+    },
     ...commonModalReducer(),
   },
 });
 
 export const {
+  updateProjectStatus,
   updateSelectProject,
   initModalStatus: initProjectManageModalStatus,
   updateModalStatus: updateProjectManageModalStatus,

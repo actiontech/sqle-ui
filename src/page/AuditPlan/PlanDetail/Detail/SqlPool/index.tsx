@@ -7,15 +7,18 @@ import { useTranslation } from 'react-i18next';
 import audit_plan from '../../../../../api/audit_plan';
 import { IAuditPlanSQLHeadV1 } from '../../../../../api/common';
 import { AuditPlanSQLHeadV1TypeEnum } from '../../../../../api/common.enum';
+import EmptyBox from '../../../../../components/EmptyBox';
 import { ResponseCode } from '../../../../../data/common';
 import EmitterKey from '../../../../../data/EmitterKey';
 import useTable from '../../../../../hooks/useTable';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import HighlightCode from '../../../../../utils/HighlightCode';
 
-const SqlPool: React.FC<{ auditPlanName: string; projectName: string }> = (
-  props
-) => {
+const SqlPool: React.FC<{
+  auditPlanName: string;
+  projectName: string;
+  projectIsArchive: boolean;
+}> = (props) => {
   const { t } = useTranslation();
 
   const { pagination, tableChange } = useTable();
@@ -95,9 +98,11 @@ const SqlPool: React.FC<{ auditPlanName: string; projectName: string }> = (
         </Space>
       }
       extra={[
-        <Button key="trigger" type="primary" onClick={triggerAudit}>
-          {t('auditPlan.sqlPool.action.trigger')}
-        </Button>,
+        <EmptyBox if={!props.projectIsArchive} key="trigger">
+          <Button type="primary" onClick={triggerAudit}>
+            {t('auditPlan.sqlPool.action.trigger')}
+          </Button>
+        </EmptyBox>,
       ]}
     >
       <Table

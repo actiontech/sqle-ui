@@ -12,6 +12,7 @@ export const mockGetProjectList = () => {
         desc: 'desc1',
         create_time: '2022-11-01',
         create_user_name: 'admin',
+        archived: i < 1,
       })),
       { otherData: { total_nums: 11 } }
     )
@@ -45,6 +46,7 @@ export const mockGetProjectDetail = () => {
       create_user_name: 'admin',
       desc: 'desc',
       name: 'project1',
+      archived: false,
     })
   );
   return spy;
@@ -62,5 +64,17 @@ export const projectStatisticsData: IGetProjectStatisticsResDataV1 = {
 export const mockGetProjectStatistics = () => {
   const spy = jest.spyOn(statistic, 'getProjectStatisticsV1');
   spy.mockImplementation(() => resolveThreeSecond(projectStatisticsData));
+  return spy;
+};
+
+export const mockArchiveProject = () => {
+  const spy = jest.spyOn(project, 'archiveProjectV1');
+  spy.mockImplementation(() => resolveThreeSecond({}));
+  return spy;
+};
+
+export const mockUnarchiveProject = () => {
+  const spy = jest.spyOn(project, 'unarchiveProjectV1');
+  spy.mockImplementation(() => resolveThreeSecond({}));
   return spy;
 };

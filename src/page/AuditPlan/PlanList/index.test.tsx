@@ -63,6 +63,7 @@ describe('PlanList', () => {
         selectAuditPlan: null,
       },
       user: {},
+      projectManage: { archived: false },
     });
     useParamsMock.mockReturnValue({ projectName });
     useLocationMock.mockReturnValue({
@@ -345,5 +346,28 @@ describe('PlanList', () => {
     expect(history.location.search).toBe(
       '?projectName=default&ruleTemplateName=rule_template_name2'
     );
+  });
+
+  test('should hide the Add, Edit feature when project is archived', async () => {
+    mockUseSelector({
+      projectManage: { archived: true },
+      user: {},
+      auditPlan: {
+        modalStatus: {},
+        selectAuditPlan: null,
+      },
+    });
+
+    renderWithRouter(<PlanList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryAllByText('common.delete')[0]).toBeUndefined();
+    expect(screen.queryAllByText('common.edit')[0]).toBeUndefined();
+    expect(screen.queryAllByText('common.more')[0]).toBeUndefined();
+    expect(
+      screen.queryByText('auditPlan.action.create')
+    ).not.toBeInTheDocument();
   });
 });

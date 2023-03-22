@@ -4,7 +4,7 @@ import { useRequest } from 'ahooks';
 import { Button, Card, message, Space, Table } from 'antd';
 import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IGetMemberGroupRespDataV1 } from '../../../api/common';
 import user_group from '../../../api/user_group';
 import { IGetMemberGroupsV1Params } from '../../../api/user_group/index.d';
@@ -14,6 +14,7 @@ import EmitterKey from '../../../data/EmitterKey';
 import { ModalName } from '../../../data/ModalName';
 import useCurrentUser from '../../../hooks/useCurrentUser';
 import useTable from '../../../hooks/useTable';
+import { IReduxState } from '../../../store';
 import {
   updateMemberModalStatus,
   updateSelectMemberGroup,
@@ -29,6 +30,9 @@ const UserGroupList: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { projectName } = useCurrentProjectName();
+  const projectIsArchive = useSelector(
+    (state: IReduxState) => state.projectManage.archived
+  );
   const theme = useTheme<Theme>();
 
   const { isAdmin, isProjectManager } = useCurrentUser();
@@ -124,7 +128,10 @@ const UserGroupList: React.FC = () => {
         </Space>
       }
       extra={[
-        <EmptyBox if={actionPermission} key="create-user-group">
+        <EmptyBox
+          if={actionPermission && !projectIsArchive}
+          key="create-user-group"
+        >
           <Button type="primary" onClick={createAction}>
             {t('member.memberGroupList.createAction')}
           </Button>
@@ -139,7 +146,8 @@ const UserGroupList: React.FC = () => {
         columns={MemberGroupListTableColumnFactory(
           updateAction,
           deleteAction,
-          actionPermission
+          actionPermission,
+          projectIsArchive
         )}
         pagination={{
           total: data?.total,

@@ -3,7 +3,7 @@ import { useRequest } from 'ahooks';
 import { Button, Card, message, Space, Table } from 'antd';
 import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IGetMemberRespDataV1 } from '../../../api/common';
 import user from '../../../api/user';
 import { IGetMembersV1Params } from '../../../api/user/index.d';
@@ -13,6 +13,7 @@ import EmitterKey from '../../../data/EmitterKey';
 import { ModalName } from '../../../data/ModalName';
 import useCurrentUser from '../../../hooks/useCurrentUser';
 import useTable from '../../../hooks/useTable';
+import { IReduxState } from '../../../store';
 import {
   updateMemberModalStatus,
   updateSelectMember,
@@ -34,7 +35,9 @@ const MemberList: React.FC = () => {
   const actionPermission = useMemo(() => {
     return isAdmin || isProjectManager(projectName);
   }, [isAdmin, isProjectManager, projectName]);
-
+  const projectIsArchive = useSelector(
+    (state: IReduxState) => state.projectManage.archived
+  );
   const createAction = () => {
     if (!actionPermission) {
       return;
@@ -118,7 +121,7 @@ const MemberList: React.FC = () => {
         </Space>
       }
       extra={[
-        <EmptyBox if={actionPermission} key="create-user">
+        <EmptyBox if={actionPermission && !projectIsArchive} key="create-user">
           <Button type="primary" onClick={createAction}>
             {t('member.memberList.createAction')}
           </Button>
@@ -133,7 +136,8 @@ const MemberList: React.FC = () => {
         columns={MemberListTableColumnFactory(
           updateAction,
           deleteAction,
-          actionPermission
+          actionPermission,
+          projectIsArchive
         )}
         pagination={{
           total: data?.total,

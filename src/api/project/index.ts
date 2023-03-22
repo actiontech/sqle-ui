@@ -18,7 +18,11 @@ import {
   IDeleteProjectV1Params,
   IDeleteProjectV1Return,
   IUpdateProjectV1Params,
-  IUpdateProjectV1Return
+  IUpdateProjectV1Return,
+  IArchiveProjectV1Params,
+  IArchiveProjectV1Return,
+  IUnarchiveProjectV1Params,
+  IUnarchiveProjectV1Return
 } from './index.d';
 
 class ProjectService extends ServiceBase {
@@ -98,6 +102,36 @@ class ProjectService extends ServiceBase {
 
     return this.patch<IUpdateProjectV1Return>(
       `/v1/projects/${project_name}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public archiveProjectV1(
+    params: IArchiveProjectV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.post<IArchiveProjectV1Return>(
+      `/v1/projects/${project_name}/archive`,
+      paramsData,
+      options
+    );
+  }
+
+  public unarchiveProjectV1(
+    params: IUnarchiveProjectV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.post<IUnarchiveProjectV1Return>(
+      `/v1/projects/${project_name}/unarchive`,
       paramsData,
       options
     );

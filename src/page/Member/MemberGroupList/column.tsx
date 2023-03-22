@@ -11,11 +11,13 @@ import renderRolesInfo from '../Common/renderRolesInfo';
 const MemberGroupListTableColumnFactory: (
   updateAction: (record: IGetMemberGroupRespDataV1) => void,
   deleteAction: (username: string) => void,
-  actionPermission: boolean
+  actionPermission: boolean,
+  projectIsArchive: boolean
 ) => TableColumn<IGetMemberGroupRespDataV1, 'operator'> = (
   updateAction,
   deleteAction,
-  actionPermission
+  actionPermission,
+  projectIsArchive
 ) => {
   const columns: TableColumn<IGetMemberGroupRespDataV1, 'operator'> = [
     {
@@ -85,7 +87,7 @@ const MemberGroupListTableColumnFactory: (
       },
     },
   ];
-  if (!actionPermission) {
+  if (!actionPermission || projectIsArchive) {
     return columns.filter((v) => v.dataIndex !== 'operator');
   }
   return columns;

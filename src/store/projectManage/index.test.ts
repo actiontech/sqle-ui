@@ -1,4 +1,4 @@
-import reducers, { updateSelectProject } from '.';
+import reducers, { updateProjectStatus, updateSelectProject } from '.';
 import { IReduxState } from '..';
 
 describe('store/projectManage', () => {
@@ -28,6 +28,7 @@ describe('store/projectManage', () => {
   const state: IReduxState['projectManage'] = {
     selectProject: null,
     modalStatus: {},
+    archived: false,
   };
 
   test('should update selectProject when dispatch updateSelectProject action', () => {
@@ -51,6 +52,17 @@ describe('store/projectManage', () => {
         create_user_name: 'admin',
       },
       modalStatus: {},
+      archived: false,
+    });
+  });
+
+  test('should update archived when dispatch updateProjectStatus action', () => {
+    const newState = reducers(state, updateProjectStatus(true));
+    expect(newState).not.toBe(state);
+    expect(newState).toEqual({
+      selectProject: null,
+      modalStatus: {},
+      archived: true,
     });
   });
 });

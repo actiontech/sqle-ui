@@ -17,6 +17,7 @@ exports[`PlanDetail should should match snapshot with report 1`] = `
     >
       <SqlPool
         auditPlanName="auditPlanName1"
+        projectIsArchive={false}
         projectName="default"
       />
     </Col>
@@ -54,6 +55,7 @@ exports[`PlanDetail should should match snapshot without report 1`] = `
     >
       <SqlPool
         auditPlanName="auditPlanName1"
+        projectIsArchive={false}
         projectName="default"
       />
     </Col>

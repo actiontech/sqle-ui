@@ -32,7 +32,7 @@ import {
   WorkflowRecordResV2StatusEnum,
   WorkflowResV2ModeEnum,
   WorkflowStepResV2StateEnum,
-  WorkflowStepResV2TypeEnum,
+  WorkflowStepResV2TypeEnum
 } from './common.enum';
 
 export interface IBaseRes {
@@ -1716,6 +1716,8 @@ export interface IPatchUserGroupReqV1 {
 }
 
 export interface IProjectDetailItem {
+  archived?: boolean;
+
   create_time?: string;
 
   create_user_name?: string;
@@ -1726,6 +1728,8 @@ export interface IProjectDetailItem {
 }
 
 export interface IProjectListItem {
+  archived?: boolean;
+
   create_time?: string;
 
   create_user_name?: string;
@@ -1750,8 +1754,6 @@ export interface IProjectRuleTemplateResV1 {
 }
 
 export interface IProjectTipResV1 {
-  count_of_unfinished_workflows_related_to_current_user?: number;
-
   project_name?: string;
 }
 

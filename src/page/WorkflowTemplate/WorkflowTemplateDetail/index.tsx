@@ -2,6 +2,7 @@ import { useRequest } from 'ahooks';
 import { Card, Col, Row, Typography, Steps, Space, Button } from 'antd';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { IWorkFlowStepTemplateResV1 } from '../../../api/common';
 import workflow from '../../../api/workflow';
@@ -9,6 +10,7 @@ import EmptyBox from '../../../components/EmptyBox';
 import IconTipsLabel from '../../../components/IconTipsLabel';
 import useCurrentUser from '../../../hooks/useCurrentUser';
 import { auditLevelDictionary } from '../../../hooks/useStaticStatus/index.data';
+import { IReduxState } from '../../../store';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 
 const WorkflowTemplateDetail = () => {
@@ -17,6 +19,10 @@ const WorkflowTemplateDetail = () => {
     []
   );
   const { projectName } = useCurrentProjectName();
+
+  const projectIsArchive = useSelector(
+    (state: IReduxState) => state.projectManage.archived
+  );
 
   const { isAdmin, isProjectManager } = useCurrentUser();
 
@@ -85,7 +91,10 @@ const WorkflowTemplateDetail = () => {
     <Card
       title={t('workflowTemplate.detail.title.wrapper')}
       extra={[
-        <EmptyBox if={actionPermission} key="update-workflow-template">
+        <EmptyBox
+          if={actionPermission && !projectIsArchive}
+          key="update-workflow-template"
+        >
           <Link
             to={`/project/${projectName}/progress/update/${workflowTemplate?.workflow_template_name}`}
           >

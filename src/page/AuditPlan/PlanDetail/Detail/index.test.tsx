@@ -3,6 +3,7 @@ import PlanDetail from '.';
 import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 import { useTheme } from '@material-ui/styles';
+import { mockUseSelector } from '../../../../testUtils/mockRedux';
 
 jest.mock('react-router', () => {
   return {
@@ -29,6 +30,9 @@ describe('PlanDetail', () => {
     });
     useHistoryMock.mockReturnValue({ location: { pathname: '/' } });
     useThemeMock.mockReturnValue({ common: { padding: 24 } });
+    mockUseSelector({
+      projectManage: { archived: false },
+    });
   });
 
   test('should should match snapshot without report', () => {

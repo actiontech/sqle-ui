@@ -42,6 +42,7 @@ describe('DataSource/DataSourceList', () => {
     useParamsMock.mockReturnValue({ projectName });
     mockUseSelector({
       user: { role: SystemRole.admin, bindProjects: mockBindProjects },
+      projectManage: { archived: false },
     });
   });
 
@@ -200,6 +201,7 @@ describe('DataSource/DataSourceList', () => {
         role: SystemRole.admin,
         bindProjects: [{ projectName: 'test', isManager: false }],
       },
+      projectManage: { archived: false },
     });
 
     renderWithRouter(<DataSourceList />);
@@ -221,6 +223,7 @@ describe('DataSource/DataSourceList', () => {
         role: '',
         bindProjects: mockBindProjects,
       },
+      projectManage: { archived: false },
     });
     renderWithRouter(<DataSourceList />);
     await waitFor(() => {
@@ -239,6 +242,7 @@ describe('DataSource/DataSourceList', () => {
         role: '',
         bindProjects: [{ projectName: 'default', isManager: false }],
       },
+      projectManage: { archived: false },
     });
     renderWithRouter(<DataSourceList />);
     await waitFor(() => {
@@ -302,5 +306,26 @@ describe('DataSource/DataSourceList', () => {
     expect(history.location.search).toBe(
       '?projectName=default&ruleTemplateName=test'
     );
+  });
+
+  test('should hide the Create, Delete, Edit feature when project is archived', async () => {
+    mockUseSelector({
+      user: {
+        role: SystemRole.admin,
+        bindProjects: [{ projectName: projectName, isManager: true }],
+      },
+      projectManage: { archived: true },
+    });
+
+    renderWithRouter(<DataSourceList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryAllByText('common.delete')[0]).toBeUndefined();
+    expect(screen.queryAllByText('common.edit')[0]).toBeUndefined();
+    expect(
+      screen.queryByText('dataSource.addDatabase')
+    ).not.toBeInTheDocument();
   });
 });

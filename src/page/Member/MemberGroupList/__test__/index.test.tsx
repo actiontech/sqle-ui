@@ -59,6 +59,7 @@ describe('test MemberGroupList', () => {
     dispatchSpy = mockUseDispatch().scopeDispatch;
     mockUseSelector({
       user: { role: SystemRole.admin, bindProjects: mockBindProjects },
+      projectManage: { archived: false },
     });
     useThemeMock.mockReturnValue({ common: { padding: 24 } });
 
@@ -241,6 +242,7 @@ describe('test MemberGroupList', () => {
         role: SystemRole.admin,
         bindProjects: [{ projectName: 'test', isManager: false }],
       },
+      projectManage: { archived: false },
     });
 
     render(<MemberGroupList />);
@@ -262,6 +264,7 @@ describe('test MemberGroupList', () => {
         role: '',
         bindProjects: mockBindProjects,
       },
+      projectManage: { archived: false },
     });
     render(<MemberGroupList />);
     await waitFor(() => {
@@ -282,6 +285,7 @@ describe('test MemberGroupList', () => {
         role: '',
         bindProjects: [{ projectName: 'default', isManager: false }],
       },
+      projectManage: { archived: false },
     });
     render(<MemberGroupList />);
     await waitFor(() => {
@@ -290,6 +294,27 @@ describe('test MemberGroupList', () => {
 
     expect(screen.queryByText('common.delete')).not.toBeInTheDocument();
     expect(screen.queryByText('common.edit')).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('member.memberGroupList.createAction')
+    ).not.toBeInTheDocument();
+  });
+
+  test('should hide the Create, Delete, Edit feature when project is archived', async () => {
+    mockUseSelector({
+      user: {
+        role: SystemRole.admin,
+        bindProjects: [{ projectName: projectName, isManager: true }],
+      },
+      projectManage: { archived: true },
+    });
+
+    render(<MemberGroupList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryAllByText('common.delete')[0]).toBeUndefined();
+    expect(screen.queryAllByText('common.edit')[0]).toBeUndefined();
     expect(
       screen.queryByText('member.memberGroupList.createAction')
     ).not.toBeInTheDocument();

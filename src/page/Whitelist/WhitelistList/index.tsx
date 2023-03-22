@@ -12,7 +12,7 @@ import {
   updateSelectWhitelist,
   updateWhitelistModalStatus,
 } from '../../../store/whitelist';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { SyncOutlined } from '@ant-design/icons';
 import EventEmitter from '../../../utils/EventEmitter';
 import EmitterKey from '../../../data/EmitterKey';
@@ -21,12 +21,16 @@ import { ResponseCode } from '../../../data/common';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import useCurrentUser from '../../../hooks/useCurrentUser';
 import EmptyBox from '../../../components/EmptyBox';
+import { IReduxState } from '../../../store';
 
 const WhitelistList = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { pagination, tableChange } = useTable();
   const { projectName } = useCurrentProjectName();
+  const projectIsArchive = useSelector(
+    (state: IReduxState) => state.projectManage.archived
+  );
   const { isAdmin, isProjectManager } = useCurrentUser();
 
   const actionPermission = useMemo(() => {
@@ -55,7 +59,7 @@ const WhitelistList = () => {
   );
 
   const clickAddWhitelist = React.useCallback(() => {
-    if (!actionPermission) {
+    if (!actionPermission || projectIsArchive) {
       return;
     }
     dispatch(
@@ -64,11 +68,11 @@ const WhitelistList = () => {
         status: true,
       })
     );
-  }, [actionPermission, dispatch]);
+  }, [actionPermission, dispatch, projectIsArchive]);
 
   const clickUpdateWhitelist = React.useCallback(
     (whitelist: IAuditWhitelistResV1) => {
-      if (!actionPermission) {
+      if (!actionPermission || projectIsArchive) {
         return;
       }
       dispatch(
@@ -83,12 +87,12 @@ const WhitelistList = () => {
         })
       );
     },
-    [actionPermission, dispatch]
+    [actionPermission, dispatch, projectIsArchive]
   );
 
   const removeWhitelist = React.useCallback(
     (whitelistId: number) => {
-      if (!actionPermission) {
+      if (!actionPermission || projectIsArchive) {
         return;
       }
       const hide = message.loading(t('whitelist.operate.deleting'));
@@ -107,7 +111,7 @@ const WhitelistList = () => {
           hide();
         });
     },
-    [actionPermission, projectName, refresh, t]
+    [actionPermission, projectIsArchive, projectName, refresh, t]
   );
 
   React.useEffect(() => {
@@ -144,7 +148,10 @@ const WhitelistList = () => {
             </Space>
           }
           extra={[
-            <EmptyBox if={actionPermission} key="add-whitelist">
+            <EmptyBox
+              if={actionPermission && !projectIsArchive}
+              key="add-whitelist"
+            >
               <Button type="primary" onClick={clickAddWhitelist}>
                 {t('whitelist.operate.addWhitelist')}
               </Button>
@@ -162,7 +169,8 @@ const WhitelistList = () => {
             columns={WhitelistColumn(
               clickUpdateWhitelist,
               removeWhitelist,
-              actionPermission
+              actionPermission,
+              projectIsArchive
             )}
             onChange={tableChange}
           />

@@ -44,6 +44,7 @@ describe('test MemberList', () => {
     useParamsMock.mockReturnValue({ projectName });
     mockUseSelector({
       user: { role: SystemRole.admin, bindProjects: mockBindProjects },
+      projectManage: { archived: false },
     });
     dispatchSpy = mockUseDispatch().scopeDispatch;
 
@@ -221,6 +222,7 @@ describe('test MemberList', () => {
         role: SystemRole.admin,
         bindProjects: [{ projectName: 'test', isManager: false }],
       },
+      projectManage: { archived: false },
     });
 
     render(<MemberList />);
@@ -242,6 +244,7 @@ describe('test MemberList', () => {
         role: '',
         bindProjects: mockBindProjects,
       },
+      projectManage: { archived: false },
     });
     render(<MemberList />);
     await waitFor(() => {
@@ -262,6 +265,7 @@ describe('test MemberList', () => {
         role: '',
         bindProjects: [{ projectName: 'default', isManager: false }],
       },
+      projectManage: { archived: false },
     });
     render(<MemberList />);
     await waitFor(() => {
@@ -270,6 +274,27 @@ describe('test MemberList', () => {
 
     expect(screen.queryByText('common.delete')).not.toBeInTheDocument();
     expect(screen.queryByText('common.edit')).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('member.memberList.createAction')
+    ).not.toBeInTheDocument();
+  });
+
+  test('should hide the Create, Delete, Edit feature when project is archived', async () => {
+    mockUseSelector({
+      user: {
+        role: SystemRole.admin,
+        bindProjects: [{ projectName: projectName, isManager: true }],
+      },
+      projectManage: { archived: true },
+    });
+
+    render(<MemberList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryAllByText('common.delete')[0]).toBeUndefined();
+    expect(screen.queryAllByText('common.edit')[0]).toBeUndefined();
     expect(
       screen.queryByText('member.memberList.createAction')
     ).not.toBeInTheDocument();

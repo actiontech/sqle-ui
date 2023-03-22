@@ -1,6 +1,5 @@
-import { LinkProps, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ProjectDetail from './ProjectDetail';
-import { Pathname, Search } from 'history';
 import LocalStorageWrapper from '../../../utils/LocalStorageWrapper';
 import StorageKey from '../../../data/StorageKey';
 import { useEffect, useMemo, useState } from 'react';
@@ -11,11 +10,6 @@ import useCurrentUser from '../../../hooks/useCurrentUser';
 
 export const DEFAULT_PROJECT_NAME = 'default';
 export const DEFAULT_MAX_SHOW_PROJECT_NUMBER = 3;
-
-export type CustomLinkProps = Omit<LinkProps, 'to'> & {
-  to: Pathname;
-  search?: Search;
-} & ProjectDetailUrlParamType;
 
 export type ProjectDetailUrlParamType = {
   projectName: string;
