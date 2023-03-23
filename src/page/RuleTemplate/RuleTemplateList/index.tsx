@@ -3,7 +3,7 @@ import { usePagination } from 'ahooks';
 import { Button, Card, message, Space, Table } from 'antd';
 import React, { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { IProjectRuleTemplateResV1 } from '../../../api/common';
 import ruleTemplate from '../../../api/rule_template';
@@ -24,6 +24,7 @@ import RuleTemplateListModal from './Modal';
 import GlobalRuleTemplateList from '../../GlobalRuleTemplate/RuleTemplateList';
 import { useTheme } from '@material-ui/styles';
 import { Theme } from '../../../types/theme.type';
+import { IReduxState } from '../../../store';
 
 const RuleTemplateList = () => {
   const { t } = useTranslation();
@@ -34,6 +35,9 @@ const RuleTemplateList = () => {
     return isAdmin || isProjectManager(projectName);
   }, [isAdmin, isProjectManager, projectName]);
   const theme = useTheme<Theme>();
+  const projectIsArchive = useSelector(
+    (state: IReduxState) => state.projectManage.archived
+  );
 
   const {
     data: ruleTemplateList,
@@ -177,7 +181,10 @@ const RuleTemplateList = () => {
           </Space>
         }
         extra={[
-          <EmptyBox if={actionPermission} key="ruleTemplateButton">
+          <EmptyBox
+            if={actionPermission && !projectIsArchive}
+            key="ruleTemplateButton"
+          >
             <Space size="large">
               <Link to={`/project/${projectName}/rule/template/import`}>
                 <Button type="primary">
@@ -209,7 +216,8 @@ const RuleTemplateList = () => {
             exportRuleTemplate,
             openCloneRuleTemplateModal,
             actionPermission,
-            projectName
+            projectName,
+            projectIsArchive
           )}
         />
       </Card>
