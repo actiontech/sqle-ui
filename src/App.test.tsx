@@ -2,7 +2,11 @@ import { cleanup, render, waitFor } from '@testing-library/react';
 import { shallow } from 'enzyme';
 import { BrowserRouter, useHistory, useLocation } from 'react-router-dom';
 import App, { Wrapper } from './App';
-import { SQLE_REDIRECT_KEY_PARAMS_NAME, SystemRole } from './data/common';
+import {
+  SQLE_DEFAULT_WEB_TITLE,
+  SQLE_REDIRECT_KEY_PARAMS_NAME,
+  SystemRole,
+} from './data/common';
 import { ModalName } from './data/ModalName';
 import {
   mockBindProjects,
@@ -10,6 +14,7 @@ import {
 } from './hooks/useCurrentUser/index.test';
 import { mockGetCurrentUser } from './hooks/useUserInfo/index.test';
 import { SupportLanguage } from './locale';
+import { mockGetSqleInfo } from './page/System/PersonalizeSetting/__test__/index.test';
 import { mockUseDispatch, mockUseSelector } from './testUtils/mockRedux';
 import {
   mockUseAuditPlanTypes,
@@ -29,8 +34,12 @@ describe('App test', () => {
   const useLocationMock: jest.Mock = useLocation as jest.Mock;
   const useHistoryMock: jest.Mock = useHistory as jest.Mock;
   const replaceMock = jest.fn();
+  let getSqleInfoSpy: jest.SpyInstance;
+
   beforeEach(() => {
     getUserSpy = mockGetCurrentUser();
+    getSqleInfoSpy = mockGetSqleInfo();
+
     const { scopeDispatch: temp } = mockUseDispatch();
     scopeDispatch = temp;
     mockUseAuditPlanTypes();
@@ -44,6 +53,9 @@ describe('App test', () => {
     });
     useHistoryMock.mockReturnValue({
       replace: replaceMock,
+    });
+    mockUseSelector({
+      system: { webTitle: SQLE_DEFAULT_WEB_TITLE, webLogoUrl: 'test' },
     });
   });
 
@@ -158,6 +170,7 @@ describe('App test', () => {
       user: { token: 'testToken', role: '' },
       locale: { language: SupportLanguage.zhCN },
       nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
+      system: { webTitle: SQLE_DEFAULT_WEB_TITLE, webLogoUrl: 'test' },
     });
     getUserSpy.mockImplementation(() =>
       resolveThreeSecond({
@@ -174,21 +187,21 @@ describe('App test', () => {
       </BrowserRouter>
     );
     await waitFor(() => jest.advanceTimersByTime(3000));
-    expect(scopeDispatch).toBeCalledTimes(4);
-    expect(scopeDispatch.mock.calls[1][0]).toEqual({
+    expect(scopeDispatch).toBeCalledTimes(5);
+    expect(scopeDispatch.mock.calls[2][0]).toEqual({
       payload: {
         bindProjects: mockBindProjects,
       },
       type: 'user/updateBindProjects',
     });
-    expect(scopeDispatch.mock.calls[2][0]).toEqual({
+    expect(scopeDispatch.mock.calls[3][0]).toEqual({
       payload: {
         role: '',
         username: 'username',
       },
       type: 'user/updateUser',
     });
-    expect(scopeDispatch.mock.calls[3][0]).toEqual({
+    expect(scopeDispatch.mock.calls[4][0]).toEqual({
       payload: {
         managementPermissions: mockManagementPermissions,
       },
@@ -210,8 +223,8 @@ describe('App test', () => {
     );
 
     await waitFor(() => jest.advanceTimersByTime(3000));
-    expect(scopeDispatch).toBeCalledTimes(5);
-    expect(scopeDispatch).nthCalledWith(1, {
+    expect(scopeDispatch).toBeCalledTimes(6);
+    expect(scopeDispatch).toBeCalledWith({
       payload: {
         modalStatus: {
           SHOW_VERSION: false,
@@ -219,26 +232,26 @@ describe('App test', () => {
       },
       type: 'nav/initModalStatus',
     });
-    expect(scopeDispatch).nthCalledWith(2, {
+    expect(scopeDispatch).toBeCalledWith({
       payload: {
         bindProjects: [],
       },
       type: 'user/updateBindProjects',
     });
-    expect(scopeDispatch).nthCalledWith(3, {
+    expect(scopeDispatch).toBeCalledWith({
       payload: {
         role: '',
         username: '',
       },
       type: 'user/updateUser',
     });
-    expect(scopeDispatch).nthCalledWith(4, {
+    expect(scopeDispatch).toBeCalledWith({
       payload: {
         token: '',
       },
       type: 'user/updateToken',
     });
-    expect(scopeDispatch).nthCalledWith(5, {
+    expect(scopeDispatch).toBeCalledWith({
       payload: {
         managementPermissions: [],
       },
@@ -264,5 +277,51 @@ describe('App test', () => {
 
     expect(scopeDispatch).not.toBeCalled();
     expect(scopeDispatch).not.toBeCalled();
+  });
+
+  test('should dispatch "updateWebTitleAndLog" action and set document title after getting sqle data from the request', async () => {
+    mockUseSelector({
+      system: { webTitle: SQLE_DEFAULT_WEB_TITLE, webLogoUrl: 'test' },
+      user: { token: 'token', role: '' },
+      locale: { language: SupportLanguage.zhCN },
+      nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
+    });
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
+    expect(getSqleInfoSpy).toBeCalledTimes(1);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(document.title).toBe('SQLE');
+    expect(scopeDispatch).toBeCalledTimes(5);
+    expect(scopeDispatch).toBeCalledWith({
+      payload: {
+        webLogoUrl: 'test',
+        webTitle: 'SQLE',
+      },
+      type: 'system/updateWebTitleAndLog',
+    });
+  });
+
+  test('should set default title when the fetched title is undefined', async () => {
+    mockUseSelector({
+      system: { webTitle: SQLE_DEFAULT_WEB_TITLE, webLogoUrl: 'test' },
+      user: { token: 'token', role: '' },
+      locale: { language: SupportLanguage.zhCN },
+      nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
+    });
+    getSqleInfoSpy.mockImplementation(() => resolveThreeSecond({}));
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(document.title).toBe(SQLE_DEFAULT_WEB_TITLE);
   });
 });

@@ -5,6 +5,7 @@ import { SupportLanguage } from '../../../locale';
 import { SupportTheme } from '../../../theme';
 import { ModalName } from '../../../data/ModalName';
 import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
+import { SQLE_DEFAULT_WEB_TITLE } from '../../../data/common';
 
 describe('Header', () => {
   let scopeDispatch: jest.Mock;
@@ -17,6 +18,7 @@ describe('Header', () => {
       },
       locale: { language: SupportLanguage.zhCN },
       nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
+      system: { webTitle: SQLE_DEFAULT_WEB_TITLE, webLogoUrl: 'test' },
     });
     scopeDispatch = mockUseDispatch().scopeDispatch;
   });

@@ -10,9 +10,10 @@ exports[`test Nav/Header/Logo should match snapshot 1`] = `
     >
       <img
         alt=""
-        src="logo.png"
+        src="test"
       />
-      common.nav.title
+      Action SQLE
+       
       common.nav.eeTitle
     </div>
   </a>

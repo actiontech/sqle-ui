@@ -46,7 +46,7 @@ exports[`System should match snapshot 1`] = `
         </TabPane>
         <TabPane
           key="globalCOnfiguration"
-          tab="system.tabPaneTitle.globalCOnfiguration"
+          tab="system.tabPaneTitle.globalConfiguration"
         >
           <GlobalSetting />
         </TabPane>
@@ -55,6 +55,12 @@ exports[`System should match snapshot 1`] = `
           tab="system.tabPaneTitle.license"
         >
           <License />
+        </TabPane>
+        <TabPane
+          key="personalize"
+          tab="system.tabPaneTitle.personalize"
+        >
+          <PersonalizeSetting />
         </TabPane>
       </Tabs>
     </Card>

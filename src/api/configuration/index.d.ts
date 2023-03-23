@@ -15,6 +15,8 @@ import {
   IGetOauth2ConfigurationResV1,
   IOauth2ConfigurationReqV1,
   IGetOauth2TipsResV1,
+  IPersonaliseReqV1,
+  IUploadLogoResV1,
   IGetSMTPConfigurationResV1,
   IUpdateSMTPConfigurationReqV1,
   ITestSMTPConfigurationReqV1,
@@ -85,6 +87,16 @@ export interface IUpdateOauth2ConfigurationV1Return extends IBaseRes {}
 
 export interface IGetOauth2TipsReturn extends IGetOauth2TipsResV1 {}
 
+export interface IPersonaliseParams extends IPersonaliseReqV1 {}
+
+export interface IPersonaliseReturn extends IBaseRes {}
+
+export interface IUploadLogoParams {
+  logo: any;
+}
+
+export interface IUploadLogoReturn extends IUploadLogoResV1 {}
+
 export interface IGetSMTPConfigurationV1Return
   extends IGetSMTPConfigurationResV1 {}
 
@@ -122,3 +134,7 @@ export interface ITestWeChatConfigurationV1Params
 
 export interface ITestWeChatConfigurationV1Return
   extends ITestWeChatConfigurationResV1 {}
+
+export interface IGetLogoParams {
+  timestamp?: string;
+}

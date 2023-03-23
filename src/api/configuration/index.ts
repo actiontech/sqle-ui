@@ -29,6 +29,10 @@ import {
   IUpdateOauth2ConfigurationV1Params,
   IUpdateOauth2ConfigurationV1Return,
   IGetOauth2TipsReturn,
+  IPersonaliseParams,
+  IPersonaliseReturn,
+  IUploadLogoParams,
+  IUploadLogoReturn,
   IGetSMTPConfigurationV1Return,
   IUpdateSMTPConfigurationV1Params,
   IUpdateSMTPConfigurationV1Return,
@@ -42,7 +46,8 @@ import {
   IUpdateWeChatConfigurationV1Params,
   IUpdateWeChatConfigurationV1Return,
   ITestWeChatConfigurationV1Params,
-  ITestWeChatConfigurationV1Return
+  ITestWeChatConfigurationV1Return,
+  IGetLogoParams
 } from './index.d';
 
 class ConfigurationService extends ServiceBase {
@@ -224,6 +229,37 @@ class ConfigurationService extends ServiceBase {
     );
   }
 
+  public personalise(params: IPersonaliseParams, options?: AxiosRequestConfig) {
+    const paramsData = this.cloneDeep(params);
+    return this.patch<IPersonaliseReturn>(
+      '/v1/configurations/personalise',
+      paramsData,
+      options
+    );
+  }
+
+  public uploadLogo(params: IUploadLogoParams, options?: AxiosRequestConfig) {
+    const config = options || {};
+    const headers = config.headers ? config.headers : {};
+    config.headers = {
+      ...headers,
+
+      'Content-Type': 'multipart/form-data'
+    };
+
+    const paramsData = new FormData();
+
+    if (params.logo != undefined) {
+      paramsData.append('logo', params.logo as any);
+    }
+
+    return this.post<IUploadLogoReturn>(
+      '/v1/configurations/personalise/logo',
+      paramsData,
+      config
+    );
+  }
+
   public getSMTPConfigurationV1(options?: AxiosRequestConfig) {
     return this.get<IGetSMTPConfigurationV1Return>(
       '/v1/configurations/smtp',
@@ -314,6 +350,11 @@ class ConfigurationService extends ServiceBase {
       paramsData,
       options
     );
+  }
+
+  public getLogo(params: IGetLogoParams, options?: AxiosRequestConfig) {
+    const paramsData = this.cloneDeep(params);
+    return this.get<any>('/v1/static/logo', paramsData, options);
   }
 }
 

@@ -14,6 +14,7 @@ import { ModalName } from '../../data/ModalName';
 import Oauth from './Oauth/Oauth';
 import DingTalkSetting from './DingTalkSetting';
 import LarkSetting from './LarkSetting';
+import PersonalizeSetting from './PersonalizeSetting';
 
 const System = () => {
   const { t } = useTranslation();
@@ -64,7 +65,7 @@ const System = () => {
               </Space>
             </Tabs.TabPane>
             <Tabs.TabPane
-              tab={t('system.tabPaneTitle.globalCOnfiguration')}
+              tab={t('system.tabPaneTitle.globalConfiguration')}
               key="globalCOnfiguration"
             >
               <GlobalSetting />
@@ -73,6 +74,15 @@ const System = () => {
             {/* IFTRUE_isEE */}
             <Tabs.TabPane tab={t('system.tabPaneTitle.license')} key="license">
               <License />
+            </Tabs.TabPane>
+            {/* FITRUE_isEE */}
+
+            {/* IFTRUE_isEE */}
+            <Tabs.TabPane
+              tab={t('system.tabPaneTitle.personalize')}
+              key="personalize"
+            >
+              <PersonalizeSetting />
             </Tabs.TabPane>
             {/* FITRUE_isEE */}
           </Tabs>

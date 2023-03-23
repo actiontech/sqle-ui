@@ -1,5 +1,6 @@
 import { waitFor } from '@testing-library/react';
 import Nav from '.';
+import { SQLE_DEFAULT_WEB_TITLE } from '../../data/common';
 import { ModalName } from '../../data/ModalName';
 import { SupportLanguage } from '../../locale';
 import { renderWithRouter } from '../../testUtils/customRender';
@@ -15,6 +16,7 @@ describe('Nav', () => {
       user: { role: '', username: 'test' },
       locale: { language: SupportLanguage.zhCN },
       nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
+      system: { webTitle: SQLE_DEFAULT_WEB_TITLE, webLogoUrl: 'test' },
     });
     mockUseStyle();
     mockUseDispatch();
@@ -39,6 +41,7 @@ describe('Nav', () => {
       user: { role: '', username: '' },
       locale: { language: SupportLanguage.zhCN },
       nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
+      system: { webTitle: SQLE_DEFAULT_WEB_TITLE, webLogoUrl: 'test' },
     });
     const { container: notShowContainer } = renderWithRouter(
       <Nav>notshow</Nav>
