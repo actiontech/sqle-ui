@@ -35,7 +35,7 @@ const Home = () => {
         return (
           <Space className="full-width-element flex-space-between">
             {name}
-            {<Badge size="small" count={count} showZero={true} />}
+            {<Badge size="small" count={count} />}
           </Space>
         );
       };
