@@ -52,6 +52,7 @@ describe('RuleTemplate/RuleTemplateList', () => {
       globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
       ruleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
       user: { role: SystemRole.admin, bindProjects: mockBindProjects },
+      projectManage: { archived: false },
     });
     mockDispatch = scopeDispatch;
     useThemeMock.mockReturnValue({ common: { padding: 24 } });
@@ -243,6 +244,7 @@ describe('RuleTemplate/RuleTemplateList', () => {
         role: SystemRole.admin,
         bindProjects: [{ projectName: 'test', isManager: false }],
       },
+      projectManage: { archived: false },
     });
 
     renderWithRouter(<RuleTemplateList />);
@@ -269,6 +271,7 @@ describe('RuleTemplate/RuleTemplateList', () => {
         role: '',
         bindProjects: mockBindProjects,
       },
+      projectManage: { archived: false },
     });
     renderWithRouter(<RuleTemplateList />);
     await waitFor(() => {
@@ -294,6 +297,7 @@ describe('RuleTemplate/RuleTemplateList', () => {
         role: '',
         bindProjects: [{ projectName: 'default', isManager: false }],
       },
+      projectManage: { archived: false },
     });
     renderWithRouter(<RuleTemplateList />);
     await waitFor(() => {
@@ -348,5 +352,45 @@ describe('RuleTemplate/RuleTemplateList', () => {
       page_size: 10,
       project_name: projectName,
     });
+  });
+
+  test('should hide the Create, Delete, Edit, Import, Clone feature when project is archived', async () => {
+    mockUseSelector({
+      globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
+      ruleTemplate: {
+        modalStatus: {},
+        selectRuleTemplate: undefined,
+      },
+      user: {
+        role: SystemRole.admin,
+        bindProjects: [{ projectName, isManager: true }],
+      },
+      projectManage: { archived: true },
+    });
+
+    renderWithRouter(<RuleTemplateList />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(screen.queryAllByText('common.delete')[0]).toBeUndefined();
+    expect(screen.queryAllByText('common.edit')[0]).toBeUndefined();
+    expect(
+      screen.queryByText('ruleTemplate.importRuleTemplate.button')
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('ruleTemplate.createRuleTemplate.button')
+    ).not.toBeInTheDocument();
+
+    fireEvent.mouseEnter(screen.getAllByText('common.more')[0]);
+    await waitFor(() => {
+      jest.advanceTimersByTime(300);
+    });
+    expect(
+      screen.queryByText('ruleTemplate.exportRuleTemplate.button')
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText('ruleTemplate.cloneRuleTemplate.button')
+    ).not.toBeInTheDocument();
   });
 });
