@@ -11,7 +11,10 @@ import user from '../../api/user';
 import { resolveThreeSecond } from '../../testUtils/mockRequest';
 import configuration from '../../api/configuration';
 import { useLocation } from 'react-router-dom';
-import { OPEN_CLOUD_BEAVER_URL_PARAM_NAME } from '../../data/common';
+import {
+  OPEN_CLOUD_BEAVER_URL_PARAM_NAME,
+  SQLE_DEFAULT_WEB_TITLE,
+} from '../../data/common';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -25,7 +28,10 @@ describe('Login', () => {
   beforeEach(() => {
     const temp = mockUseDispatch();
     dispatchMock = temp.scopeDispatch;
-    mockUseSelector({ locale: { language: SupportLanguage.zhCN } });
+    mockUseSelector({
+      locale: { language: SupportLanguage.zhCN },
+      system: { webTitle: SQLE_DEFAULT_WEB_TITLE, webLogoUrl: '' },
+    });
     mockGetOauth2Tips();
     jest.useFakeTimers();
     useLocationMock.mockReturnValue({

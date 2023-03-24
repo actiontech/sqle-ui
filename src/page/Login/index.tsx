@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import logo from '../../assets/img/logo.png';
 import { useHistory } from 'react-router';
 import { updateToken } from '../../store/user';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import user from '../../api/user';
 import {
   OPEN_CLOUD_BEAVER_URL_PARAM_NAME,
@@ -20,6 +20,7 @@ import EmptyBox from '../../components/EmptyBox';
 import leftBg from '../../assets/img/login-left-bg.png';
 import { useLocation } from 'react-router-dom';
 import { getCookie } from '../../utils/Common';
+import { IReduxState } from '../../store';
 
 const Login = () => {
   const history = useHistory();
@@ -72,6 +73,11 @@ const Login = () => {
     }
   );
 
+  const { webLogoUrl, webTitle } = useSelector((state: IReduxState) => ({
+    webTitle: state.system.webTitle,
+    webLogoUrl: state.system.webLogoUrl,
+  }));
+
   /* IFTRUE_isEE */
   useEffect(() => {
     getOauth2Tips();
@@ -81,9 +87,9 @@ const Login = () => {
   return (
     <section className="login-page">
       <div className="login-page-powered">
-        <img src={logo} alt="" />
+        <img src={webLogoUrl ? webLogoUrl : logo} alt="" />
         <div className="login-page-powered-split-line"></div>
-        <div className="login-page-powered-title">{t('login.powered')}</div>
+        <div className="login-page-powered-title">{webTitle}</div>
       </div>
       <div className="login-page-content">
         <div className="login-page-content-left-bg">

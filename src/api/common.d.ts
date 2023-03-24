@@ -1073,12 +1073,20 @@ export interface IGetSQLAnalysisDataResItemV1 {
   table_metas?: ITableMeta[];
 }
 
+export interface IGetSQLEInfoResDataV1 {
+  logo_url?: string;
+
+  title?: string;
+
+  version?: string;
+}
+
 export interface IGetSQLEInfoResV1 {
   code?: number;
 
-  message?: string;
+  data?: IGetSQLEInfoResDataV1;
 
-  version?: string;
+  message?: string;
 }
 
 export interface IGetSQLQueryConfigurationResDataV1 {
@@ -1715,6 +1723,10 @@ export interface IPatchUserGroupReqV1 {
   user_name_list?: string[];
 }
 
+export interface IPersonaliseReqV1 {
+  title?: string;
+}
+
 export interface IProjectDetailItem {
   archived?: boolean;
 
@@ -2283,6 +2295,18 @@ export interface IUpdateWorkflowTemplateReqV1 {
   instance_name_list?: string[];
 
   workflow_step_template_list?: IWorkFlowStepTemplateReqV1[];
+}
+
+export interface IUploadLogoResDataV1 {
+  logo_url?: string;
+}
+
+export interface IUploadLogoResV1 {
+  code?: number;
+
+  data?: IUploadLogoResDataV1;
+
+  message?: string;
 }
 
 export interface IUserBindProjectResV1 {

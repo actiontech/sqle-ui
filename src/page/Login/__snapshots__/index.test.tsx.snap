@@ -18,7 +18,7 @@ exports[`Login should render login form 1`] = `
       <div
         class="login-page-powered-title"
       >
-        login.powered
+        Action SQLE
       </div>
     </div>
     <div
@@ -208,7 +208,7 @@ exports[`Login should render login form 2`] = `
       <div
         class="login-page-powered-title"
       >
-        login.powered
+        Action SQLE
       </div>
     </div>
     <div

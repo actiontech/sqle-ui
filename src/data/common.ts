@@ -105,11 +105,12 @@ export enum ManagementPermissionsEnum {
   Create_Project = 1,
 }
 
-
 export const SQLE_INSTANCE_SOURCE_NAME = 'SQLE';
 
 export const SQLE_REDIRECT_KEY_PARAMS_NAME = 'target';
 
 export const SQLE_COOKIE_TOKEN_KEY_NAME = 'sqle-token';
 
-export const OPEN_CLOUD_BEAVER_URL_PARAM_NAME = 'open_cloud_beaver'
+export const OPEN_CLOUD_BEAVER_URL_PARAM_NAME = 'open_cloud_beaver';
+
+export const SQLE_DEFAULT_WEB_TITLE = 'Action SQLE';

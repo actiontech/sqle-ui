@@ -29,9 +29,10 @@ exports[`Nav should render page by props of username 1`] = `
                 >
                   <img
                     alt=""
-                    src="logo.png"
+                    src="test"
                   />
-                  common.nav.title
+                  Action SQLE
+                   
                   common.nav.eeTitle
                 </div>
               </a>
@@ -296,9 +297,10 @@ exports[`Nav should render page by props of username 2`] = `
                 >
                   <img
                     alt=""
-                    src="logo.png"
+                    src="test"
                   />
-                  common.nav.title
+                  Action SQLE
+                   
                   common.nav.eeTitle
                 </div>
               </a>

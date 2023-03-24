@@ -6,10 +6,9 @@ import {
   mockUseDispatch,
   mockUseSelector,
 } from '../../../../testUtils/mockRedux';
-import { modalTestData } from './index.test.data';
+import { resolveThreeSecond } from '../../../../testUtils/mockRequest';
 
-const { formatServerVersion, serverVersion, resolveThreeSecond } =
-  modalTestData;
+const serverVersion = `"issue_201 b1c2baedcb37f27feb7cef34f088212938fad1ba"`;
 
 describe('test Nav/Header/Modal', () => {
   let scopeDispatch: jest.Mock;

@@ -7,8 +7,9 @@ export default {
     pushNotification: '消息推送',
     processConnection: '流程对接',
     loginConnection: '登录对接',
-    globalCOnfiguration: '全局配置',
+    globalConfiguration: '全局配置',
     license: '许可证',
+    personalize: '个性化设置',
   },
 
   title: {
@@ -20,6 +21,18 @@ export default {
     wechat: '企业微信配置',
     oauth: 'Oauth2.0配置',
     lark: '飞书配置',
+    personalize: '个性化设置',
+  },
+
+  personalize: {
+    title: '个性化标题',
+    match: '新标题不能与旧标题一致',
+    updateTitleSuccessTips: '个性化标题更新成功',
+
+    logo: '个性化Logo',
+    uploadAndUpdate: '上传并更新',
+    uploadTips: '*建议尺寸为 58 × 48 的png图片',
+    limitSize: '图片大小不能超过5MB',
   },
 
   lark: {

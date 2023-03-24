@@ -2,7 +2,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import { ConfigProvider } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { Suspense } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Redirect,
   Route,
@@ -19,7 +19,13 @@ import { IReduxState } from './store';
 import EmptyBox from './components/EmptyBox';
 import useRoutes from './hooks/useRoutes';
 import useUserInfo from './hooks/useUserInfo';
-import { SQLE_REDIRECT_KEY_PARAMS_NAME } from './data/common';
+import {
+  SQLE_DEFAULT_WEB_TITLE,
+  SQLE_REDIRECT_KEY_PARAMS_NAME,
+} from './data/common';
+import { useRequest } from 'ahooks';
+import global from './api/global';
+import { updateWebTitleAndLog } from './store/system';
 
 //fix  https://github.com/actiontech/sqle/issues/1350
 export const Wrapper: React.FC = ({ children }) => {
@@ -42,11 +48,25 @@ export const Wrapper: React.FC = ({ children }) => {
 };
 
 function App() {
+  const dispatch = useDispatch();
   const token = useSelector<IReduxState, string>((state) => state.user.token);
   const { registerRouter } = useRoutes();
   const { antdLocale } = useLanguage();
   const { currentThemeData } = useChangeTheme();
   const { getUserInfo, getUserInfoLoading } = useUserInfo();
+
+  useRequest(() =>
+    global.getSQLEInfoV1().then((res) => {
+      const webTitle = res.data.data?.title ?? SQLE_DEFAULT_WEB_TITLE;
+      document.title = webTitle;
+      dispatch(
+        updateWebTitleAndLog({
+          webTitle,
+          webLogoUrl: res.data.data?.logo_url,
+        })
+      );
+    })
+  );
 
   React.useEffect(() => {
     if (!!token) {
