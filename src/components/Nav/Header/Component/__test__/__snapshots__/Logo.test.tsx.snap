@@ -13,8 +13,6 @@ exports[`test Nav/Header/Logo should match snapshot 1`] = `
         src="test"
       />
       Action SQLE
-       
-      common.nav.eeTitle
     </div>
   </a>
 </div>

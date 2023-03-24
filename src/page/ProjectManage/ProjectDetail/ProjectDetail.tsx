@@ -29,6 +29,7 @@ const ProjectDetail: React.FC = () => {
       }),
     {
       ready: !!projectName,
+      refreshDeps: [projectName],
     }
   );
 
