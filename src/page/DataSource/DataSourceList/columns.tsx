@@ -74,7 +74,7 @@ export const dataSourceColumns = (
     {
       dataIndex: 'operate',
       title: i18n.t('common.operate'),
-      width: actionPermission && !projectIsArchive ? 180 : 40,
+      width: actionPermission && !projectIsArchive ? 180 : 80,
       render: (_, record) => {
         return (
           <>

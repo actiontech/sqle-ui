@@ -32,8 +32,6 @@ exports[`Nav should render page by props of username 1`] = `
                     src="test"
                   />
                   Action SQLE
-                   
-                  common.nav.eeTitle
                 </div>
               </a>
             </div>
@@ -300,8 +298,6 @@ exports[`Nav should render page by props of username 2`] = `
                     src="test"
                   />
                   Action SQLE
-                   
-                  common.nav.eeTitle
                 </div>
               </a>
             </div>

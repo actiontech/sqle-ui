@@ -24,8 +24,6 @@ exports[`Header should match snapshot 1`] = `
                 src="test"
               />
               Action SQLE
-               
-              common.nav.eeTitle
             </div>
           </a>
         </div>

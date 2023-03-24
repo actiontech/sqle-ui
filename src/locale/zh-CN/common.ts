@@ -60,11 +60,6 @@ export default {
 
   clickHere: '点击此处',
 
-  nav: {
-    title: 'SQLE',
-    eeTitle: '企业版',
-  },
-
   request: {
     noticeFailTitle: '请求错误',
   },
