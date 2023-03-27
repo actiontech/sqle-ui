@@ -46,7 +46,7 @@ const License = () => {
   });
 
   const collectLicense = () => {
-    configuration.GetSQLELicenseInfoV1();
+    configuration.GetSQLELicenseInfoV1({ responseType: 'blob' });
   };
 
   const importLicense = () => {

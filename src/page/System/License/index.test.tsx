@@ -61,6 +61,7 @@ describe('license', () => {
     });
     fireEvent.click(screen.getByText('system.license.collect'));
     expect(collectSpy).toBeCalledTimes(1);
+    expect(collectSpy).toBeCalledWith({ responseType: 'blob' });
   });
 
   it('should open import modal when user click import button', async () => {
