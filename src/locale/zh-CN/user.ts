@@ -40,6 +40,7 @@ export default {
     email: '邮箱',
     role: '角色',
     disabled: '禁用用户',
+    disabledTips: '当用户被禁用，该用户将无法登录',
     userGroup: '所属用户组',
     wechat: '企业微信UserID',
     managerPermission: '平台管理权限',

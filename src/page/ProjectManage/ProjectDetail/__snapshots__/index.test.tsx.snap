@@ -30,6 +30,7 @@ exports[`test ProjectManage/ProjectDetail should match snapshot when bound proje
             role="menuitem"
             style="padding-left: 24px;"
             tabindex="-1"
+            title="menu.projectOverview"
           >
             <span
               aria-label="project"
@@ -66,6 +67,7 @@ exports[`test ProjectManage/ProjectDetail should match snapshot when bound proje
             role="menuitem"
             style="padding-left: 24px;"
             tabindex="-1"
+            title="menu.order"
           >
             <span
               aria-label="bars"
@@ -145,6 +147,7 @@ exports[`test ProjectManage/ProjectDetail should match snapshot when bound proje
             role="menuitem"
             style="padding-left: 24px;"
             tabindex="-1"
+            title="menu.dataSource"
           >
             <span
               aria-label="database"
@@ -181,6 +184,7 @@ exports[`test ProjectManage/ProjectDetail should match snapshot when bound proje
             role="menuitem"
             style="padding-left: 24px;"
             tabindex="-1"
+            title="menu.member"
           >
             <span
               aria-label="user"
@@ -217,6 +221,7 @@ exports[`test ProjectManage/ProjectDetail should match snapshot when bound proje
             role="menuitem"
             style="padding-left: 24px;"
             tabindex="-1"
+            title="menu.ruleTemplate"
           >
             <span
               aria-label="audit"
@@ -253,6 +258,7 @@ exports[`test ProjectManage/ProjectDetail should match snapshot when bound proje
             role="menuitem"
             style="padding-left: 24px;"
             tabindex="-1"
+            title="menu.progressManage"
           >
             <span
               aria-label="node-index"
@@ -292,6 +298,7 @@ exports[`test ProjectManage/ProjectDetail should match snapshot when bound proje
             role="menuitem"
             style="padding-left: 24px;"
             tabindex="-1"
+            title="menu.whitelist"
           >
             <span
               aria-label="profile"
@@ -461,6 +468,7 @@ exports[`test ProjectManage/ProjectDetail should show unavailable when project a
             role="menuitem"
             style="padding-left: 24px;"
             tabindex="-1"
+            title="menu.projectOverview"
           >
             <span
               aria-label="project"
@@ -497,6 +505,7 @@ exports[`test ProjectManage/ProjectDetail should show unavailable when project a
             role="menuitem"
             style="padding-left: 24px;"
             tabindex="-1"
+            title="menu.order"
           >
             <span
               aria-label="bars"
@@ -576,6 +585,7 @@ exports[`test ProjectManage/ProjectDetail should show unavailable when project a
             role="menuitem"
             style="padding-left: 24px;"
             tabindex="-1"
+            title="menu.dataSource"
           >
             <span
               aria-label="database"
@@ -612,6 +622,7 @@ exports[`test ProjectManage/ProjectDetail should show unavailable when project a
             role="menuitem"
             style="padding-left: 24px;"
             tabindex="-1"
+            title="menu.member"
           >
             <span
               aria-label="user"
@@ -648,6 +659,7 @@ exports[`test ProjectManage/ProjectDetail should show unavailable when project a
             role="menuitem"
             style="padding-left: 24px;"
             tabindex="-1"
+            title="menu.ruleTemplate"
           >
             <span
               aria-label="audit"
@@ -684,6 +696,7 @@ exports[`test ProjectManage/ProjectDetail should show unavailable when project a
             role="menuitem"
             style="padding-left: 24px;"
             tabindex="-1"
+            title="menu.progressManage"
           >
             <span
               aria-label="node-index"
@@ -723,6 +736,7 @@ exports[`test ProjectManage/ProjectDetail should show unavailable when project a
             role="menuitem"
             style="padding-left: 24px;"
             tabindex="-1"
+            title="menu.whitelist"
           >
             <span
               aria-label="profile"

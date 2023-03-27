@@ -4,6 +4,8 @@ export default {
     userGroupName: '用户组名',
     userGroupDesc: '用户组描述',
     isDisabled: '禁用',
+    isDisabledTips:
+      '当用户组被禁用，组内用户不会被禁用，但会失去该用户组所关联的数据源及对应角色权限',
     userNameList: '绑定用户',
   },
 

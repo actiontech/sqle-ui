@@ -2,6 +2,7 @@ import { Form, Input, Select, Switch } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { UserGroupFormProps } from '.';
 import EmptyBox from '../../../../../components/EmptyBox';
+import IconTipsLabel from '../../../../../components/IconTipsLabel';
 import { ModalFormLayout } from '../../../../../data/common';
 import { nameRule } from '../../../../../utils/FormRule';
 
@@ -35,7 +36,11 @@ const UserGroupForm: React.FC<UserGroupFormProps> = (props) => {
       <EmptyBox if={isUpdate}>
         <Form.Item
           name="isDisabled"
-          label={t('userGroup.userGroupField.isDisabled')}
+          label={
+            <IconTipsLabel tips={t('userGroup.userGroupField.isDisabledTips')}>
+              {t('userGroup.userGroupField.isDisabled')}
+            </IconTipsLabel>
+          }
           valuePropName="checked"
           initialValue={false}
         >

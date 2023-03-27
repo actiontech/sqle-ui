@@ -4,6 +4,7 @@ exports[`test ProjectManage/ProjectDetailLayout/index should match snapshot 1`] 
 Array [
   <MenuItem
     icon={<ForwardRef(ProjectOutlined) />}
+    title="menu.projectOverview"
   >
     <Link
       to="/project/test/overview"
@@ -13,6 +14,7 @@ Array [
   </MenuItem>,
   <MenuItem
     icon={<ForwardRef(BarsOutlined) />}
+    title="menu.order"
   >
     <Link
       to="/project/test/order"
@@ -28,7 +30,9 @@ Array [
     <MenuItemGroup
       title=""
     >
-      <MenuItem>
+      <MenuItem
+        title="menu.auditPlaneList"
+      >
         <Link
           to="/project/test/auditPlan"
         >
@@ -39,6 +43,7 @@ Array [
   </SubMenu>,
   <MenuItem
     icon={<ForwardRef(DatabaseOutlined) />}
+    title="menu.dataSource"
   >
     <Link
       to="/project/test/data"
@@ -48,6 +53,7 @@ Array [
   </MenuItem>,
   <MenuItem
     icon={<ForwardRef(UserOutlined) />}
+    title="menu.member"
   >
     <Link
       to="/project/test/member"
@@ -57,6 +63,7 @@ Array [
   </MenuItem>,
   <MenuItem
     icon={<ForwardRef(AuditOutlined) />}
+    title="menu.ruleTemplate"
   >
     <Link
       to="/project/test/rule/template"
@@ -66,6 +73,7 @@ Array [
   </MenuItem>,
   <MenuItem
     icon={<ForwardRef(NodeIndexOutlined) />}
+    title="menu.progressManage"
   >
     <Link
       to="/project/test/progress"
@@ -75,6 +83,7 @@ Array [
   </MenuItem>,
   <MenuItem
     icon={<ForwardRef(ProfileOutlined) />}
+    title="menu.whitelist"
   >
     <Link
       to="/project/test/whitelist"
@@ -89,6 +98,7 @@ exports[`test ProjectManage/ProjectDetailLayout/index should match snapshot 2`] 
 Array [
   <MenuItem
     icon={<ForwardRef(ProjectOutlined) />}
+    title="menu.projectOverview"
   >
     <Link
       to="/project/test/overview"
@@ -98,6 +108,7 @@ Array [
   </MenuItem>,
   <MenuItem
     icon={<ForwardRef(BarsOutlined) />}
+    title="menu.order"
   >
     <Link
       to="/project/test/order"
@@ -113,7 +124,9 @@ Array [
     <MenuItemGroup
       title=""
     >
-      <MenuItem>
+      <MenuItem
+        title="menu.auditPlaneList"
+      >
         <Link
           to="/project/test/auditPlan"
         >
@@ -124,6 +137,7 @@ Array [
   </SubMenu>,
   <MenuItem
     icon={<ForwardRef(DatabaseOutlined) />}
+    title="menu.dataSource"
   >
     <Link
       to="/project/test/data"
@@ -133,6 +147,7 @@ Array [
   </MenuItem>,
   <MenuItem
     icon={<ForwardRef(UserOutlined) />}
+    title="menu.member"
   >
     <Link
       to="/project/test/member"
@@ -142,6 +157,7 @@ Array [
   </MenuItem>,
   <MenuItem
     icon={<ForwardRef(AuditOutlined) />}
+    title="menu.ruleTemplate"
   >
     <Link
       to="/project/test/rule/template"
@@ -151,6 +167,7 @@ Array [
   </MenuItem>,
   <MenuItem
     icon={<ForwardRef(NodeIndexOutlined) />}
+    title="menu.progressManage"
   >
     <Link
       to="/project/test/progress"
@@ -160,6 +177,7 @@ Array [
   </MenuItem>,
   <MenuItem
     icon={<ForwardRef(ProfileOutlined) />}
+    title="menu.whitelist"
   >
     <Link
       to="/project/test/whitelist"
