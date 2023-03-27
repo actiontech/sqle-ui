@@ -1,4 +1,4 @@
-import { Menu, Tooltip } from 'antd';
+import { Menu } from 'antd';
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ProjectDetailUrlParamType } from '..';
