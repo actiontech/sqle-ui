@@ -169,9 +169,8 @@ const RuleTemplateList = () => {
 
   return (
     <>
-      <GlobalRuleTemplateList hiddenOperations={true} />
       <Card
-        style={{ marginTop: theme.common.padding }}
+        style={{ marginBottom: theme.common.padding }}
         title={
           <Space>
             {t('ruleTemplate.ruleTemplateListTitle')}
@@ -185,7 +184,7 @@ const RuleTemplateList = () => {
             if={actionPermission && !projectIsArchive}
             key="ruleTemplateButton"
           >
-            <Space size="large">
+            <Space>
               <Link to={`/project/${projectName}/rule/template/import`}>
                 <Button type="primary">
                   {t('ruleTemplate.importRuleTemplate.button')}
@@ -221,6 +220,7 @@ const RuleTemplateList = () => {
           )}
         />
       </Card>
+      <GlobalRuleTemplateList hiddenOperations={true} />
 
       <RuleTemplateListModal />
     </>
