@@ -6,6 +6,7 @@ import { ModalFormLayout } from '../../../../../data/common';
 import EmptyBox from '../../../../../components/EmptyBox';
 import { nameRule, phoneRule } from '../../../../../utils/FormRule';
 import { Rule } from 'antd/lib/form';
+import IconTipsLabel from '../../../../../components/IconTipsLabel';
 
 const UserForm: React.FC<IUserFormProps> = (props) => {
   const { t } = useTranslation();
@@ -158,7 +159,11 @@ const UserForm: React.FC<IUserFormProps> = (props) => {
       <EmptyBox if={props.isUpdate && !props.isAdmin}>
         <Form.Item
           name="disabled"
-          label={t('user.userForm.disabled')}
+          label={
+            <IconTipsLabel tips={t('user.userForm.disabledTips')}>
+              {t('user.userForm.disabled')}
+            </IconTipsLabel>
+          }
           valuePropName="checked"
         >
           <Switch />

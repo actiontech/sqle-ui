@@ -193,8 +193,9 @@ describe('User/UserList', () => {
     expect(
       screen.getByText('user.deleteUser.deleteSuccess')
     ).toBeInTheDocument();
-    expect(emitSpy).toBeCalledTimes(1);
-    expect(emitSpy).toBeCalledWith(EmitterKey.Refresh_Role_list);
+    expect(emitSpy).toBeCalledTimes(2);
+    expect(emitSpy).nthCalledWith(1, EmitterKey.Refresh_Role_list);
+    expect(emitSpy).nthCalledWith(2, EmitterKey.Refresh_User_Group_List);
 
     expect(getUserListSpy).toBeCalledTimes(2);
     expect(getUserListSpy).toBeCalledWith({

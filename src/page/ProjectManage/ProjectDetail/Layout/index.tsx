@@ -55,7 +55,11 @@ export const generateNavigateMenu = (
     }
 
     return (
-      <Menu.Item key={route.key} icon={route.icon}>
+      <Menu.Item
+        key={route.key}
+        icon={route.icon}
+        title={route.labelWithoutI18n ?? i18n.t(route.label)}
+      >
         <Link to={(route.path as string).replace(':projectName', projectName)}>
           {route.labelWithoutI18n ?? i18n.t(route.label)}
         </Link>

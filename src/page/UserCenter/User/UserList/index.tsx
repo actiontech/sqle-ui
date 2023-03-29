@@ -117,6 +117,7 @@ const UserList = () => {
             message.success(t('user.deleteUser.deleteSuccess', { username }));
             refreshUserList();
             EventEmitter.emit(EmitterKey.Refresh_Role_list);
+            EventEmitter.emit(EmitterKey.Refresh_User_Group_List);
           }
         })
         .finally(() => {
