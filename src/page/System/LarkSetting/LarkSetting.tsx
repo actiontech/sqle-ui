@@ -1,4 +1,4 @@
-import { useBoolean, useRequest } from 'ahooks';
+import { useBoolean, useRequest } from "ahooks";
 import {
   Button,
   Card,
@@ -14,23 +14,19 @@ import {
   Space,
   Switch,
   Typography,
-} from 'antd';
-import { useForm } from 'antd/lib/form/Form';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { FormFields, TestFormFields } from '.';
-import { TestFeishuConfigurationReqV1AccountTypeEnum } from '../../../api/common.enum';
-import configuration from '../../../api/configuration';
-import EmptyBox from '../../../components/EmptyBox';
-import { PageFormLayout, ResponseCode } from '../../../data/common';
-import { phoneRule } from '../../../utils/FormRule';
+} from "antd";
+import { useForm } from "antd/lib/form/Form";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { FormFields, TestFormFields } from ".";
+import { TestFeishuConfigurationReqV1AccountTypeEnum } from "../../../api/common.enum";
+import configuration from "../../../api/configuration";
+import EmptyBox from "../../../components/EmptyBox";
+import { PageFormLayout, ResponseCode } from "../../../data/common";
+import { phoneRule } from "../../../utils/FormRule";
 
 const LarkSetting: React.FC = () => {
   const { t } = useTranslation();
-  const [
-    testButtonDisabledStatus,
-    { setFalse: finishTest, setTrue: startTest },
-  ] = useBoolean(false);
   const [form] = useForm<FormFields>();
   const [testForm] = useForm<TestFormFields>();
 
@@ -77,9 +73,8 @@ const LarkSetting: React.FC = () => {
 
   const testLarkConfiguration = async () => {
     const values = await testForm.validateFields();
-    startTest();
     toggleTestPopoverVisible(false);
-    const hide = message.loading(t('system.lark.testing'), 0);
+    const hide = message.loading(t("system.lark.testing"), 0);
     configuration
       .testFeishuConfigV1({
         account:
@@ -91,17 +86,16 @@ const LarkSetting: React.FC = () => {
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           if (res.data.data?.is_message_sent_normally) {
-            message.success(t('system.lark.testSuccess'));
+            message.success(t("system.lark.testSuccess"));
           } else {
             message.error(
-              res.data.data?.error_message ?? t('common.unknownError')
+              res.data.data?.error_message ?? t("common.unknownError")
             );
           }
         }
       })
       .finally(() => {
         hide();
-        finishTest();
         testForm.resetFields();
         setReceiveType(TestFeishuConfigurationReqV1AccountTypeEnum.email);
       });
@@ -113,14 +107,14 @@ const LarkSetting: React.FC = () => {
     setModifyFlagFalse();
   };
 
-  const handleChangeReceiveType: RadioGroupProps['onChange'] = (e) => {
+  const handleChangeReceiveType: RadioGroupProps["onChange"] = (e) => {
     const receiveType = e.target.value;
     setReceiveType(receiveType);
 
     if (receiveType === TestFeishuConfigurationReqV1AccountTypeEnum.email) {
-      testForm.resetFields(['receivePhone']);
+      testForm.resetFields(["receivePhone"]);
     } else {
-      testForm.resetFields(['receiveEmail']);
+      testForm.resetFields(["receiveEmail"]);
     }
   };
 
@@ -129,17 +123,17 @@ const LarkSetting: React.FC = () => {
   );
 
   return (
-    <Card title={<>{t('system.title.lark')}</>}>
+    <Card title={<>{t("system.title.lark")}</>}>
       <section hidden={modifyFlag}>
         <Descriptions>
-          <Descriptions.Item label={t('system.lark.enable')} span={3}>
+          <Descriptions.Item label={t("system.lark.enable")} span={3}>
             {larkInfo?.is_feishu_notification_enabled
-              ? t('common.open')
-              : t('common.close')}
+              ? t("common.open")
+              : t("common.close")}
           </Descriptions.Item>
           <Descriptions.Item label="App ID" span={3}>
             <Typography.Paragraph>
-              {larkInfo?.app_id || '--'}
+              {larkInfo?.app_id || "--"}
             </Typography.Paragraph>
           </Descriptions.Item>
           <Descriptions.Item span={3}>
@@ -150,6 +144,9 @@ const LarkSetting: React.FC = () => {
                 onVisibleChange={(visible) => {
                   if (!visible) {
                     testForm.resetFields();
+                    setReceiveType(
+                      TestFeishuConfigurationReqV1AccountTypeEnum.email
+                    );
                   }
                   toggleTestPopoverVisible(visible);
                 }}
@@ -158,7 +155,7 @@ const LarkSetting: React.FC = () => {
                     <Form form={testForm}>
                       <Form.Item
                         name="receiveType"
-                        label={t('system.lark.receiveType')}
+                        label={t("system.lark.receiveType")}
                         initialValue={
                           TestFeishuConfigurationReqV1AccountTypeEnum.email
                         }
@@ -170,14 +167,14 @@ const LarkSetting: React.FC = () => {
                               TestFeishuConfigurationReqV1AccountTypeEnum.email
                             }
                           >
-                            {t('system.lark.email')}
+                            {t("system.lark.email")}
                           </Radio>
                           <Radio
                             value={
                               TestFeishuConfigurationReqV1AccountTypeEnum.phone
                             }
                           >
-                            {t('system.lark.phone')}
+                            {t("system.lark.phone")}
                           </Radio>
                         </Radio.Group>
                       </Form.Item>
@@ -190,13 +187,13 @@ const LarkSetting: React.FC = () => {
                           <Form.Item
                             style={{ marginBottom: 0 }}
                             name="receiveEmail"
-                            label={t('system.lark.email')}
+                            label={t("system.lark.email")}
                             rules={[
                               {
                                 required: true,
                               },
                               {
-                                type: 'email',
+                                type: "email",
                               },
                             ]}
                           >
@@ -207,7 +204,7 @@ const LarkSetting: React.FC = () => {
                         <Form.Item
                           style={{ marginBottom: 0 }}
                           name="receivePhone"
-                          label={t('system.lark.phone')}
+                          label={t("system.lark.phone")}
                           rules={[
                             {
                               required: true,
@@ -220,13 +217,13 @@ const LarkSetting: React.FC = () => {
                       </EmptyBox>
                     </Form>
                     <Row>
-                      <Col span={24} style={{ textAlign: 'right' }}>
+                      <Col span={24} style={{ textAlign: "right" }}>
                         <Button
                           type="primary"
                           size="small"
                           onClick={testLarkConfiguration}
                         >
-                          {t('common.ok')}
+                          {t("common.ok")}
                         </Button>
                       </Col>
                     </Row>
@@ -234,19 +231,15 @@ const LarkSetting: React.FC = () => {
                 }
               >
                 <Button
+                  htmlType="submit"
                   type="primary"
                   loading={submitLoading}
-                  disabled={testButtonDisabledStatus}
                 >
-                  {t('system.lark.test')}
+                  {t("system.lark.test")}
                 </Button>
               </Popover>
-              <Button
-                type="primary"
-                onClick={handelClickModify}
-                disabled={testButtonDisabledStatus}
-              >
-                {t('common.modify')}
+              <Button type="primary" onClick={handelClickModify}>
+                {t("common.modify")}
               </Button>
             </Space>
           </Descriptions.Item>
@@ -259,7 +252,7 @@ const LarkSetting: React.FC = () => {
         {...PageFormLayout}
       >
         <Form.Item
-          label={t('system.lark.enable')}
+          label={t("system.lark.enable")}
           name="enabled"
           valuePropName="checked"
         >
@@ -267,8 +260,7 @@ const LarkSetting: React.FC = () => {
         </Form.Item>
         <Form.Item label="App ID" name="appKey" rules={[{ required: true }]}>
           <Input
-            disabled={!enable}
-            placeholder={t('common.form.placeholder.input', { name: 'App ID' })}
+            placeholder={t("common.form.placeholder.input", { name: "App ID" })}
           />
         </Form.Item>
         <Form.Item
@@ -277,19 +269,18 @@ const LarkSetting: React.FC = () => {
           rules={[{ required: true }]}
         >
           <Input.Password
-            disabled={!enable}
-            placeholder={t('common.form.placeholder.input', {
-              name: 'App Secret',
+            placeholder={t("common.form.placeholder.input", {
+              name: "App Secret",
             })}
           />
         </Form.Item>
         <Form.Item label=" " colon={false}>
           <Space>
             <Button htmlType="submit" type="primary" loading={submitLoading}>
-              {t('common.submit')}
+              {t("common.submit")}
             </Button>
             <Button onClick={handelClickCancel} disabled={submitLoading}>
-              {t('common.cancel')}
+              {t("common.cancel")}
             </Button>
           </Space>
         </Form.Item>

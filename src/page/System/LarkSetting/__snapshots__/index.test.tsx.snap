@@ -102,7 +102,7 @@ exports[`test System/LarkSetting should disabled edit lark configuration when "i
                           >
                             <button
                               class="ant-btn ant-btn-primary"
-                              type="button"
+                              type="submit"
                             >
                               <span>
                                 system.lark.test
@@ -200,8 +200,7 @@ exports[`test System/LarkSetting should disabled edit lark configuration when "i
                 class="ant-form-item-control-input-content"
               >
                 <input
-                  class="ant-input ant-input-disabled"
-                  disabled=""
+                  class="ant-input"
                   id="appKey"
                   placeholder="common.form.placeholder.input"
                   type="text"
@@ -235,12 +234,11 @@ exports[`test System/LarkSetting should disabled edit lark configuration when "i
                 class="ant-form-item-control-input-content"
               >
                 <span
-                  class="ant-input-affix-wrapper ant-input-affix-wrapper-disabled ant-input-password"
+                  class="ant-input-affix-wrapper ant-input-password"
                 >
                   <input
                     action="click"
-                    class="ant-input ant-input-disabled"
-                    disabled=""
+                    class="ant-input"
                     id="appSecret"
                     placeholder="common.form.placeholder.input"
                     type="password"
@@ -442,7 +440,7 @@ exports[`test System/LarkSetting should disabled edit lark configuration when "i
                           >
                             <button
                               class="ant-btn ant-btn-primary"
-                              type="button"
+                              type="submit"
                             >
                               <span>
                                 system.lark.test
@@ -540,8 +538,7 @@ exports[`test System/LarkSetting should disabled edit lark configuration when "i
                 class="ant-form-item-control-input-content"
               >
                 <input
-                  class="ant-input ant-input-disabled"
-                  disabled=""
+                  class="ant-input"
                   id="appKey"
                   placeholder="common.form.placeholder.input"
                   type="text"
@@ -575,12 +572,11 @@ exports[`test System/LarkSetting should disabled edit lark configuration when "i
                 class="ant-form-item-control-input-content"
               >
                 <span
-                  class="ant-input-affix-wrapper ant-input-affix-wrapper-disabled ant-input-password"
+                  class="ant-input-affix-wrapper ant-input-password"
                 >
                   <input
                     action="click"
-                    class="ant-input ant-input-disabled"
-                    disabled=""
+                    class="ant-input"
                     id="appSecret"
                     placeholder="common.form.placeholder.input"
                     type="password"
@@ -780,7 +776,7 @@ exports[`test System/LarkSetting should match snapshot 1`] = `
                           >
                             <button
                               class="ant-btn ant-btn-primary"
-                              type="button"
+                              type="submit"
                             >
                               <span>
                                 system.lark.test
@@ -878,8 +874,7 @@ exports[`test System/LarkSetting should match snapshot 1`] = `
                 class="ant-form-item-control-input-content"
               >
                 <input
-                  class="ant-input ant-input-disabled"
-                  disabled=""
+                  class="ant-input"
                   id="appKey"
                   placeholder="common.form.placeholder.input"
                   type="text"
@@ -913,12 +908,11 @@ exports[`test System/LarkSetting should match snapshot 1`] = `
                 class="ant-form-item-control-input-content"
               >
                 <span
-                  class="ant-input-affix-wrapper ant-input-affix-wrapper-disabled ant-input-password"
+                  class="ant-input-affix-wrapper ant-input-password"
                 >
                   <input
                     action="click"
-                    class="ant-input ant-input-disabled"
-                    disabled=""
+                    class="ant-input"
                     id="appSecret"
                     placeholder="common.form.placeholder.input"
                     type="password"
@@ -1119,7 +1113,7 @@ exports[`test System/LarkSetting should match snapshot 2`] = `
                           >
                             <button
                               class="ant-btn ant-btn-primary"
-                              type="button"
+                              type="submit"
                             >
                               <span>
                                 system.lark.test
@@ -1217,8 +1211,7 @@ exports[`test System/LarkSetting should match snapshot 2`] = `
                 class="ant-form-item-control-input-content"
               >
                 <input
-                  class="ant-input ant-input-disabled"
-                  disabled=""
+                  class="ant-input"
                   id="appKey"
                   placeholder="common.form.placeholder.input"
                   type="text"
@@ -1252,12 +1245,11 @@ exports[`test System/LarkSetting should match snapshot 2`] = `
                 class="ant-form-item-control-input-content"
               >
                 <span
-                  class="ant-input-affix-wrapper ant-input-affix-wrapper-disabled ant-input-password"
+                  class="ant-input-affix-wrapper ant-input-password"
                 >
                   <input
                     action="click"
-                    class="ant-input ant-input-disabled"
-                    disabled=""
+                    class="ant-input"
                     id="appSecret"
                     placeholder="common.form.placeholder.input"
                     type="password"
@@ -1459,7 +1451,7 @@ exports[`test System/LarkSetting should match snapshot 3`] = `
                           >
                             <button
                               class="ant-btn ant-btn-primary"
-                              type="button"
+                              type="submit"
                             >
                               <span>
                                 system.lark.test
@@ -1798,7 +1790,7 @@ exports[`test System/LarkSetting should send request when clicking test DingTalk
                               <button
                                 ant-click-animating-without-extra-node="false"
                                 class="ant-btn ant-btn-primary ant-popover-open"
-                                type="button"
+                                type="submit"
                               >
                                 <span>
                                   system.lark.test
@@ -1896,8 +1888,7 @@ exports[`test System/LarkSetting should send request when clicking test DingTalk
                   class="ant-form-item-control-input-content"
                 >
                   <input
-                    class="ant-input ant-input-disabled"
-                    disabled=""
+                    class="ant-input"
                     id="appKey"
                     placeholder="common.form.placeholder.input"
                     type="text"
@@ -1931,12 +1922,11 @@ exports[`test System/LarkSetting should send request when clicking test DingTalk
                   class="ant-form-item-control-input-content"
                 >
                   <span
-                    class="ant-input-affix-wrapper ant-input-affix-wrapper-disabled ant-input-password"
+                    class="ant-input-affix-wrapper ant-input-password"
                   >
                     <input
                       action="click"
-                      class="ant-input ant-input-disabled"
-                      disabled=""
+                      class="ant-input"
                       id="appSecret"
                       placeholder="common.form.placeholder.input"
                       type="password"
