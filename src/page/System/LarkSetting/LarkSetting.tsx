@@ -16,7 +16,7 @@ import {
   Typography,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FormFields, TestFormFields } from '.';
 import { TestFeishuConfigurationReqV1AccountTypeEnum } from '../../../api/common.enum';
@@ -27,10 +27,6 @@ import { phoneRule } from '../../../utils/FormRule';
 
 const LarkSetting: React.FC = () => {
   const { t } = useTranslation();
-  const [
-    testButtonDisabledStatus,
-    { setFalse: finishTest, setTrue: startTest },
-  ] = useBoolean(false);
   const [form] = useForm<FormFields>();
   const [testForm] = useForm<TestFormFields>();
 
@@ -46,6 +42,7 @@ const LarkSetting: React.FC = () => {
     useState<TestFeishuConfigurationReqV1AccountTypeEnum>(
       TestFeishuConfigurationReqV1AccountTypeEnum.email
     );
+  const testing = useRef(false);
 
   const handelClickModify = () => {
     setModifyFlagTrue();
@@ -76,8 +73,11 @@ const LarkSetting: React.FC = () => {
   };
 
   const testLarkConfiguration = async () => {
+    if (testing.current) {
+      return;
+    }
+    testing.current = true;
     const values = await testForm.validateFields();
-    startTest();
     toggleTestPopoverVisible(false);
     const hide = message.loading(t('system.lark.testing'), 0);
     configuration
@@ -101,7 +101,7 @@ const LarkSetting: React.FC = () => {
       })
       .finally(() => {
         hide();
-        finishTest();
+        testing.current = false;
         testForm.resetFields();
         setReceiveType(TestFeishuConfigurationReqV1AccountTypeEnum.email);
       });
@@ -150,6 +150,9 @@ const LarkSetting: React.FC = () => {
                 onVisibleChange={(visible) => {
                   if (!visible) {
                     testForm.resetFields();
+                    setReceiveType(
+                      TestFeishuConfigurationReqV1AccountTypeEnum.email
+                    );
                   }
                   toggleTestPopoverVisible(visible);
                 }}
@@ -234,18 +237,14 @@ const LarkSetting: React.FC = () => {
                 }
               >
                 <Button
+                  htmlType="submit"
                   type="primary"
                   loading={submitLoading}
-                  disabled={testButtonDisabledStatus}
                 >
                   {t('system.lark.test')}
                 </Button>
               </Popover>
-              <Button
-                type="primary"
-                onClick={handelClickModify}
-                disabled={testButtonDisabledStatus}
-              >
+              <Button type="primary" onClick={handelClickModify}>
                 {t('common.modify')}
               </Button>
             </Space>
@@ -267,7 +266,6 @@ const LarkSetting: React.FC = () => {
         </Form.Item>
         <Form.Item label="App ID" name="appKey" rules={[{ required: true }]}>
           <Input
-            disabled={!enable}
             placeholder={t('common.form.placeholder.input', { name: 'App ID' })}
           />
         </Form.Item>
@@ -277,7 +275,6 @@ const LarkSetting: React.FC = () => {
           rules={[{ required: true }]}
         >
           <Input.Password
-            disabled={!enable}
             placeholder={t('common.form.placeholder.input', {
               name: 'App Secret',
             })}

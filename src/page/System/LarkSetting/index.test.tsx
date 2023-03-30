@@ -79,8 +79,8 @@ describe('test System/LarkSetting', () => {
     fireEvent.click(screen.getByText('common.modify'));
     expect(container).toMatchSnapshot();
     expect(screen.getByLabelText('App ID')).toHaveValue('app_key');
-    expect(screen.getByLabelText('App ID')).toBeDisabled();
-    expect(screen.getByLabelText('App Secret')).toBeDisabled();
+    expect(screen.getByLabelText('App ID')).not.toBeDisabled();
+    expect(screen.getByLabelText('App Secret')).not.toBeDisabled();
 
     fireEvent.click(screen.getByLabelText('system.lark.enable'));
     expect(screen.getByLabelText('App ID')).not.toBeDisabled();
@@ -169,9 +169,9 @@ describe('test System/LarkSetting', () => {
     expect(screen.queryByText('system.lark.testing')).toBeInTheDocument();
     expect(
       screen.getByText('system.lark.test').closest('button')
-    ).toBeDisabled();
+    ).not.toBeDisabled();
 
-    expect(screen.getByText('common.modify').closest('button')).toBeDisabled();
+    expect(screen.getByText('common.modify').closest('button')).not.toBeDisabled();
 
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
