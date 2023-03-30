@@ -16,7 +16,7 @@ import {
   Typography,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FormFields, TestFormFields } from '.';
 import { TestFeishuConfigurationReqV1AccountTypeEnum } from '../../../api/common.enum';
@@ -42,6 +42,7 @@ const LarkSetting: React.FC = () => {
     useState<TestFeishuConfigurationReqV1AccountTypeEnum>(
       TestFeishuConfigurationReqV1AccountTypeEnum.email
     );
+  const testing = useRef(false);
 
   const handelClickModify = () => {
     setModifyFlagTrue();
@@ -72,6 +73,10 @@ const LarkSetting: React.FC = () => {
   };
 
   const testLarkConfiguration = async () => {
+    if (testing.current) {
+      return;
+    }
+    testing.current = true;
     const values = await testForm.validateFields();
     toggleTestPopoverVisible(false);
     const hide = message.loading(t('system.lark.testing'), 0);
@@ -96,6 +101,7 @@ const LarkSetting: React.FC = () => {
       })
       .finally(() => {
         hide();
+        testing.current = false;
         testForm.resetFields();
         setReceiveType(TestFeishuConfigurationReqV1AccountTypeEnum.email);
       });
