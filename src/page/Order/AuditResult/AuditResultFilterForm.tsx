@@ -14,7 +14,6 @@ const AuditResultFilterForm: React.FC<FilterFormProps> = (props) => {
   const { t } = useTranslation();
 
   const {
-    generateAuditStatusSelectOption,
     generateExecStatusSelectOption,
     getAuditLevelStatusSelectOption,
   } = useStaticStatus();
@@ -22,22 +21,6 @@ const AuditResultFilterForm: React.FC<FilterFormProps> = (props) => {
   return (
     <Form<OrderAuditResultFilterFields> {...FilterFormLayout} form={props.form}>
       <Row {...FilterFormRowLayout}>
-        <Col {...FilterFormColLayout}>
-          <Form.Item
-            name="filter_audit_status"
-            label={t('audit.table.auditStatus')}
-          >
-            <Select
-              showSearch
-              allowClear
-              placeholder={t('common.form.placeholder.searchSelect', {
-                name: t('audit.table.auditStatus'),
-              })}
-            >
-              {generateAuditStatusSelectOption()}
-            </Select>
-          </Form.Item>
-        </Col>
         <Col {...FilterFormColLayout}>
           <Form.Item
             name="filter_exec_status"

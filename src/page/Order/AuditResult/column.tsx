@@ -10,14 +10,12 @@ import {
   WorkflowRecordResV2StatusEnum,
 } from '../../../api/common.enum';
 import {
-  getAuditTaskSQLsV1FilterAuditStatusEnum,
   getAuditTaskSQLsV1FilterExecStatusEnum,
 } from '../../../api/task/index.enum';
 import AuditResultErrorMessage from '../../../components/AuditResultErrorMessage';
 import EditText from '../../../components/EditText/EditText';
 import EmptyBox from '../../../components/EmptyBox';
 import {
-  auditStatusDictionary,
   execStatusDictionary,
 } from '../../../hooks/useStaticStatus/index.data';
 import i18n from '../../../locale';
@@ -36,13 +34,6 @@ export const orderAuditResultColumn = (
     {
       dataIndex: 'number',
       title: () => i18n.t('audit.table.number'),
-    },
-    {
-      dataIndex: 'audit_status',
-      title: () => i18n.t('audit.table.auditStatus'),
-      render: (status: getAuditTaskSQLsV1FilterAuditStatusEnum) => {
-        return status ? i18n.t(auditStatusDictionary[status]) : '';
-      },
     },
     {
       dataIndex: 'audit_result',
