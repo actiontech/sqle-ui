@@ -54,7 +54,7 @@ const AuditResultFilterForm: React.FC<FilterFormProps> = (props) => {
           </Form.Item>
         </Col>
         <Col
-          {...filterFormButtonLayoutFactory(0, 16, 0)}
+          {...filterFormButtonLayoutFactory(12, 0, 6)}
           className="text-align-right"
         >
           <Form.Item wrapperCol={{ span: 24 }}>
