@@ -1,4 +1,4 @@
-import { List, Tabs, Tooltip, Typography } from 'antd';
+import { Col, List, Tabs, Tooltip, Typography } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RuleListDefaultTabKey } from '../../data/common';
@@ -85,21 +85,22 @@ const RuleList: React.FC<RuleListProps> = (props) => {
                         <Typography.Text
                           ellipsis={true}
                           type="secondary"
-                          style={{ maxWidth: 500 }}
+                          style={{ maxWidth: 500, width: '100%' }}
                         >
                           {item.annotation}
                         </Typography.Text>
                       </Tooltip>
                     }
                   />
-
-                  {item.params &&
-                    item.params.map((v) => (
-                      <div key={v.key} className="list-item-right-content">
-                        <span>{!!v.desc ? `${v.desc}: ` : ''}</span>
-                        <span>{v.value ?? ''}</span>
-                      </div>
-                    ))}
+                  <Col flex="20%">
+                    {item.params &&
+                      item.params.map((v) => (
+                        <div key={v.key}>
+                          <span>{!!v.desc ? `${v.desc}: ` : ''}</span>
+                          <span>{v.value ?? ''}</span>
+                        </div>
+                      ))}
+                  </Col>
                 </List.Item>
               )}
             />
