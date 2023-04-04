@@ -1,9 +1,10 @@
-import { Col, List, Tabs, Tooltip, Typography } from 'antd';
+import { List, Tabs, Tooltip, Typography } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RuleListDefaultTabKey } from '../../data/common';
 import { RuleListProps, TabRuleItem } from './index.type';
 import RuleLevelIcon from './RuleLevelIcon';
+import './index.less';
 
 const RuleList: React.FC<RuleListProps> = (props) => {
   const { t } = useTranslation();
@@ -91,15 +92,14 @@ const RuleList: React.FC<RuleListProps> = (props) => {
                       </Tooltip>
                     }
                   />
-                  <Col flex="20%">
-                    {item.params &&
-                      item.params.map((v) => (
-                        <div key={v.key}>
-                          <span>{!!v.desc ? `${v.desc}: ` : ''}</span>
-                          <span>{v.value ?? ''}</span>
-                        </div>
-                      ))}
-                  </Col>
+
+                  {item.params &&
+                    item.params.map((v) => (
+                      <div key={v.key} className="list-item-right-content">
+                        <span>{!!v.desc ? `${v.desc}: ` : ''}</span>
+                        <span>{v.value ?? ''}</span>
+                      </div>
+                    ))}
                 </List.Item>
               )}
             />
