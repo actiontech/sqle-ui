@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import AuditPlanReport from '.';
 import audit_plan from '../../../../../api/audit_plan';
 import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
+import { mockGetAllRules } from '../../../../Rule/__test__/utils';
 import { AuditPlanReportList, AuditReport } from '../../__testData__';
 jest.mock('react-router', () => {
   return {
@@ -13,7 +14,9 @@ jest.mock('react-router', () => {
 describe('AuditPlanReport', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
   const projectName = 'default';
+  let getAllRulesSpy: jest.SpyInstance;
   beforeEach(() => {
+    getAllRulesSpy = mockGetAllRules();
     jest.useFakeTimers();
     useParamsMock.mockReturnValue({
       auditPlanName: 'auditPlanName1',
@@ -29,7 +32,7 @@ describe('AuditPlanReport', () => {
   });
 
   const mockGetReport = () => {
-    const spy = jest.spyOn(audit_plan, 'getAuditPlanReportsSQLsV1');
+    const spy = jest.spyOn(audit_plan, 'getAuditPlanReportsSQLs');
     spy.mockImplementation(() =>
       resolveThreeSecond(AuditReport, { otherData: { total_nums: 63 } })
     );
@@ -82,5 +85,15 @@ describe('AuditPlanReport', () => {
       '/project/default/auditPlan/32/0/auditPlanName1/analyze'
     );
     openSpy.mockRestore();
+  });
+
+  test('should call get all rules request', async () => {
+    mockGetReport();
+    mockGetReportInfo();
+    render(<AuditPlanReport />);
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(getAllRulesSpy).toBeCalledTimes(AuditReport.length);
   });
 });

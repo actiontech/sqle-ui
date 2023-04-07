@@ -1226,7 +1226,9 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
                                   class="ant-col message"
                                   style="flex: 1 1 auto;"
                                 >
-                                  schema aaab 不存在
+                                  <span>
+                                    禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql
+                                  </span>
                                 </div>
                               </div>
                             </div>
@@ -1322,74 +1324,7 @@ use aaab;
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          <div
-                            class="ant-space ant-space-vertical audit-result-error-message-wrapper"
-                          >
-                            <div
-                              class="ant-space-item"
-                            >
-                              <div
-                                class="ant-row ant-row-no-wrap"
-                              >
-                                <div
-                                  class="ant-col"
-                                  style="flex: 0 0 50px;"
-                                >
-                                  <div
-                                    class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
-                                  >
-                                    <div
-                                      class="ant-space-item"
-                                      style="margin-bottom: 1px;"
-                                    >
-                                      <div>
-                                        <span
-                                          aria-label="info-circle"
-                                          class="anticon anticon-info-circle"
-                                          role="img"
-                                          style="font-size: 25px; color: rgb(240, 0, 0);"
-                                        >
-                                          <svg
-                                            aria-hidden="true"
-                                            data-icon="info-circle"
-                                            fill="currentColor"
-                                            focusable="false"
-                                            height="1em"
-                                            viewBox="64 64 896 896"
-                                            width="1em"
-                                          >
-                                            <path
-                                              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                                            />
-                                            <path
-                                              d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                                            />
-                                          </svg>
-                                        </span>
-                                      </div>
-                                    </div>
-                                    <div
-                                      class="ant-space-item"
-                                    >
-                                      <span
-                                        class="ant-typography ant-typography-secondary"
-                                      >
-                                        error
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div
-                                  class="ant-col message"
-                                  style="flex: 1 1 auto;"
-                                >
-                                  schema bbbbe 不存在
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
@@ -1536,7 +1471,9 @@ use aaab;
                                   class="ant-col message"
                                   style="flex: 1 1 auto;"
                                 >
-                                  schema bbbbe 不存在
+                                  <span>
+                                    schema bbbbe 不存在
+                                  </span>
                                 </div>
                               </div>
                             </div>
@@ -1929,9 +1866,7 @@ use aaab;
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         />

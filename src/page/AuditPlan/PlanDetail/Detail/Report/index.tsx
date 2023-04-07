@@ -28,7 +28,7 @@ const AuditPlanReport: React.FC = () => {
   const { data, loading } = useRequest(
     () =>
       audit_plan
-        .getAuditPlanReportsSQLsV1({
+        .getAuditPlanReportsSQLs({
           project_name: projectName,
           audit_plan_name: urlParams.auditPlanName,
           audit_plan_report_id: urlParams.reportId,

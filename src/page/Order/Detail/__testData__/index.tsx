@@ -517,7 +517,14 @@ export const taskSqls = [
   {
     number: 1,
     exec_sql: '/* input your sql */\nuse aaab;',
-    audit_result: '[error]schema aaab 不存在',
+    audit_result: [
+      {
+        level: 'error',
+        message:
+          '禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql',
+        rule_name: 'all_check_where_is_invalid',
+      },
+    ],
     audit_level: 'error',
     audit_status: 'finished',
     exec_result: '',
@@ -526,7 +533,7 @@ export const taskSqls = [
   {
     number: 2,
     exec_sql: 'use bbbbe;',
-    audit_result: '[error]schema bbbbe 不存在',
+    audit_result: null,
     audit_level: 'error',
     audit_status: 'finished',
     exec_result: '',
@@ -550,10 +557,16 @@ export const taskSqls = [
       PRIMARY KEY (\`id\`),
       KEY \`idx_tasks_deleted_at\` (\`deleted_at\`)
       ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`,
-    audit_result: '[error]schema bbbbe 不存在',
+    audit_result: [
+      {
+        level: 'error',
+        message: 'schema bbbbe 不存在',
+        rule_name: '',
+      },
+    ],
     audit_level: 'error',
     audit_status: 'finished',
-    exec_result: '',
+    exec_result: null,
     exec_status: 'initialized',
     description: 'this is a test',
   },

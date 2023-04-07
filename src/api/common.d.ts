@@ -28,6 +28,8 @@ import {
   WorkflowStepResV1StateEnum,
   WorkflowStepResV1TypeEnum,
   WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
+  AuditResDataV2AuditLevelEnum,
+  DirectAuditReqV2SqlTypeEnum,
   GetWorkflowTasksItemV2StatusEnum,
   WorkflowRecordResV2StatusEnum,
   WorkflowResV2ModeEnum,
@@ -2595,6 +2597,14 @@ export interface IWorkflowTemplateDetailResV1 {
   workflow_template_name?: string;
 }
 
+export interface IAuditPlanReportSQLResV2 {
+  audit_plan_report_sql?: string;
+
+  audit_plan_report_sql_audit_result?: IAuditResult[];
+
+  number?: number;
+}
+
 export interface IAuditPlanResV2 {
   audit_plan_cron?: string;
 
@@ -2611,6 +2621,54 @@ export interface IAuditPlanResV2 {
   audit_plan_token?: string;
 
   rule_template?: IRuleTemplateV2;
+}
+
+export interface IAuditResDataV2 {
+  audit_level?: AuditResDataV2AuditLevelEnum;
+
+  pass_rate?: number;
+
+  score?: number;
+
+  sql_results?: IAuditSQLResV2[];
+}
+
+export interface IAuditResult {
+  level?: string;
+
+  message?: string;
+
+  rule_name?: string;
+}
+
+export interface IAuditSQLResV2 {
+  audit_level?: string;
+
+  audit_result?: IAuditResult[];
+
+  exec_sql?: string;
+
+  number?: number;
+}
+
+export interface IAuditTaskSQLResV2 {
+  audit_level?: string;
+
+  audit_result?: IAuditResult[];
+
+  audit_status?: string;
+
+  description?: string;
+
+  exec_result?: string;
+
+  exec_sql?: string;
+
+  exec_status?: string;
+
+  number?: number;
+
+  rollback_sql?: string;
 }
 
 export interface IBatchCancelWorkflowsReqV2 {
@@ -2653,10 +2711,46 @@ export interface ICreateWorkflowReqV2 {
   workflow_subject?: string;
 }
 
+export interface IDirectAuditReqV2 {
+  instance_type?: string;
+
+  sql_content?: string;
+
+  sql_type?: DirectAuditReqV2SqlTypeEnum;
+}
+
+export interface IDirectAuditResV2 {
+  code?: number;
+
+  data?: IAuditResDataV2;
+
+  message?: string;
+}
+
+export interface IGetAuditPlanReportSQLsResV2 {
+  code?: number;
+
+  data?: IAuditPlanReportSQLResV2[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
 export interface IGetAuditPlansResV2 {
   code?: number;
 
   data?: IAuditPlanResV2[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
+export interface IGetAuditTaskSQLsResV2 {
+  code?: number;
+
+  data?: IAuditTaskSQLResV2[];
 
   message?: string;
 
