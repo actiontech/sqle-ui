@@ -5,12 +5,14 @@ import EmitterKey from '../../../../../data/EmitterKey';
 import { renderWithRouter } from '../../../../../testUtils/customRender';
 import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../../utils/EventEmitter';
+import { mockGetAllRules } from '../../../../Rule/__test__/utils';
 import { AuditPlanReportList } from '../../__testData__';
 
 describe('AuditPlanRecord', () => {
   const projectName = 'default';
   beforeEach(() => {
     jest.useFakeTimers();
+    mockGetAllRules();
   });
 
   afterEach(() => {

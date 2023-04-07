@@ -272,6 +272,26 @@ export enum WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum {
   'error' = 'error'
 }
 
+export enum AuditResDataV2AuditLevelEnum {
+  'normal' = 'normal',
+
+  'notice' = 'notice',
+
+  'warn' = 'warn',
+
+  'error' = 'error',
+
+  'UNKNOWN' = ''
+}
+
+export enum DirectAuditReqV2SqlTypeEnum {
+  'sql' = 'sql',
+
+  'mybatis' = 'mybatis',
+
+  'UNKNOWN' = ''
+}
+
 export enum GetWorkflowTasksItemV2StatusEnum {
   'wait_for_audit' = 'wait_for_audit',
 

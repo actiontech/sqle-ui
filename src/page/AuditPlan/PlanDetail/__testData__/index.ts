@@ -86,52 +86,112 @@ export const AuditPlanSqlsRes = {
 export const AuditReport = [
   {
     audit_plan_report_sql: 'select * from t1 where id = t41',
-    audit_plan_report_sql_audit_result:
-      '[error]禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql\n[notice]不建议使用select *\n[warn]CPU心情不太好\n[normal]所以CPU出门散心去了',
+    audit_plan_report_sql_audit_result: [
+      {
+        level: 'error',
+        message:
+          '禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql',
+        rule_name: 'all_check_where_is_invalid',
+      },
+    ],
   },
   {
     audit_plan_report_sql: 'select * from t1 where id = t42',
-    audit_plan_report_sql_audit_result:
-      '[error]禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql\n[notice]不建议使用select *\n[warn]CPU心情不太好\n[normal]所以CPU出门散心去了',
+    audit_plan_report_sql_audit_result: [
+      {
+        level: 'error',
+        message:
+          '禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql',
+        rule_name: 'all_check_where_is_invalid',
+      },
+    ],
   },
   {
     audit_plan_report_sql: 'select * from t1 where id = t43',
-    audit_plan_report_sql_audit_result:
-      '[error]禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql\n[notice]不建议使用select *\n[warn]CPU心情不太好\n[normal]所以CPU出门散心去了',
+    audit_plan_report_sql_audit_result: [
+      {
+        level: 'error',
+        message:
+          '禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql',
+        rule_name: 'all_check_where_is_invalid',
+      },
+    ],
   },
   {
     audit_plan_report_sql: 'select * from t1 where id = t44',
-    audit_plan_report_sql_audit_result:
-      '[error]禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql\n[notice]不建议使用select *\n[warn]CPU心情不太好\n[normal]所以CPU出门散心去了',
+    audit_plan_report_sql_audit_result: [
+      {
+        level: 'error',
+        message:
+          '禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql',
+        rule_name: 'all_check_where_is_invalid',
+      },
+    ],
   },
   {
     audit_plan_report_sql: 'select * from t1 where id = t45',
-    audit_plan_report_sql_audit_result:
-      '[error]禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql\n[notice]不建议使用select *\n[warn]CPU心情不太好\n[normal]所以CPU出门散心去了',
+    audit_plan_report_sql_audit_result: [
+      {
+        level: 'error',
+        message:
+          '禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql',
+        rule_name: 'all_check_where_is_invalid',
+      },
+    ],
   },
   {
     audit_plan_report_sql: 'select * from t1 where id = t46',
-    audit_plan_report_sql_audit_result:
-      '[error]禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql\n[notice]不建议使用select *\n[warn]CPU心情不太好\n[normal]所以CPU出门散心去了',
+    audit_plan_report_sql_audit_result: [
+      {
+        level: 'error',
+        message:
+          '禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql',
+        rule_name: 'all_check_where_is_invalid',
+      },
+    ],
   },
   {
     audit_plan_report_sql: 'select * from t1 where id = t47',
-    audit_plan_report_sql_audit_result:
-      '[error]禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql\n[notice]不建议使用select *\n[warn]CPU心情不太好\n[normal]所以CPU出门散心去了',
+    audit_plan_report_sql_audit_result: [
+      {
+        level: 'error',
+        message:
+          '禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql',
+        rule_name: 'all_check_where_is_invalid',
+      },
+    ],
   },
   {
     audit_plan_report_sql: 'select * from t1 where id = t48',
-    audit_plan_report_sql_audit_result:
-      '[error]禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql\n[notice]不建议使用select *\n[warn]CPU心情不太好\n[normal]所以CPU出门散心去了',
+    audit_plan_report_sql_audit_result: [
+      {
+        level: 'error',
+        message:
+          '禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql',
+        rule_name: 'all_check_where_is_invalid',
+      },
+    ],
   },
   {
     audit_plan_report_sql: 'select * from t1 where id = t49',
-    audit_plan_report_sql_audit_result:
-      '[error]禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql\n[notice]不建议使用select *\n[warn]CPU心情不太好\n[normal]所以CPU出门散心去了',
+    audit_plan_report_sql_audit_result: [
+      {
+        level: 'error',
+        message:
+          '禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql',
+        rule_name: 'all_check_where_is_invalid',
+      },
+    ],
   },
   {
     audit_plan_report_sql: 'select * from t1 where id = t50',
-    audit_plan_report_sql_audit_result:
-      '[error]禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql\n[notice]不建议使用select *\n[warn]CPU心情不太好\n[normal]所以CPU出门散心去了',
+    audit_plan_report_sql_audit_result: [
+      {
+        level: 'error',
+        message:
+          '禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql',
+        rule_name: 'all_check_where_is_invalid',
+      },
+    ],
   },
 ];

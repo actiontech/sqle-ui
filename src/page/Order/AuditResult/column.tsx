@@ -1,7 +1,8 @@
 import { Popconfirm, Space, Tag, Typography } from 'antd';
 import moment from 'moment';
 import {
-  IAuditTaskSQLResV1,
+  IAuditResult,
+  IAuditTaskSQLResV2,
   IGetWorkflowTasksItemV2,
   IMaintenanceTimeResV1,
 } from '../../../api/common';
@@ -31,7 +32,7 @@ import InstanceTasksStatus from './InstanceTasksStatus';
 export const orderAuditResultColumn = (
   updateSqlDescribe: (sqlNum: number, sqlDescribe: string) => void,
   clickAnalyze: (sqlNum: number) => void
-): TableColumn<IAuditTaskSQLResV1, 'operator'> => {
+): TableColumn<IAuditTaskSQLResV2, 'operator'> => {
   return [
     {
       dataIndex: 'number',
@@ -47,8 +48,8 @@ export const orderAuditResultColumn = (
     {
       dataIndex: 'audit_result',
       title: () => i18n.t('audit.table.auditResult'),
-      render: (errorMessage) => {
-        return <AuditResultErrorMessage resultErrorMessage={errorMessage} />;
+      render: (auditResult: IAuditResult[]) => {
+        return <AuditResultErrorMessage auditResult={auditResult} />;
       },
     },
     {

@@ -18,6 +18,7 @@ import {
 } from '../../../testUtils/mockRequest';
 import { SupportTheme } from '../../../theme';
 import EventEmitter from '../../../utils/EventEmitter';
+import { mockGetAllRules } from '../../Rule/__test__/utils';
 import {
   instanceWorkflowTemplate,
   taskInfo,
@@ -49,6 +50,7 @@ describe('Order/Create', () => {
     mockUseInstance();
     mockUseInstanceSchema();
     mockDriver();
+    mockGetAllRules();
     useParamsMock.mockReturnValue({ projectName });
   });
 
@@ -86,7 +88,7 @@ describe('Order/Create', () => {
   };
 
   const mockGetTaskSql = () => {
-    const spy = jest.spyOn(task, 'getAuditTaskSQLsV1');
+    const spy = jest.spyOn(task, 'getAuditTaskSQLsV2');
     spy.mockImplementation(() =>
       resolveThreeSecond(taskSqls, { otherData: { total_nums: 20 } })
     );

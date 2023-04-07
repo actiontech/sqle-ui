@@ -26,6 +26,7 @@ import {
 } from '../../../testUtils/customQuery';
 import { SupportTheme } from '../../../theme';
 import { AuditTaskResV1AuditLevelEnum } from '../../../api/common.enum';
+import { mockGetAllRules } from '../../Rule/__test__/utils';
 
 jest.mock('react-router', () => {
   return {
@@ -62,6 +63,7 @@ describe('Order/Detail', () => {
     mockUseSelector({ user: { username: 'admin', theme: SupportTheme.LIGHT } });
     mockUseDispatch();
     mockGetInstanceWorkflowTemplate();
+    mockGetAllRules();
     getInstanceSummarySpy = mockGetSummaryOfInstanceTasks();
     jest.useFakeTimers();
   });
@@ -98,7 +100,7 @@ describe('Order/Detail', () => {
   };
 
   const mockGetTaskSqls = () => {
-    const spy = jest.spyOn(task, 'getAuditTaskSQLsV1');
+    const spy = jest.spyOn(task, 'getAuditTaskSQLsV2');
     spy.mockImplementation(() =>
       resolveThreeSecond(taskSqls, { otherData: { total_nums: 20 } })
     );

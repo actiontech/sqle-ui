@@ -24,7 +24,9 @@ import {
   IUpdateAuditTaskSQLsV1Params,
   IUpdateAuditTaskSQLsV1Return,
   IGetTaskAnalysisDataParams,
-  IGetTaskAnalysisDataReturn
+  IGetTaskAnalysisDataReturn,
+  IGetAuditTaskSQLsV2Params,
+  IGetAuditTaskSQLsV2Return
 } from './index.d';
 
 class TaskService extends ServiceBase {
@@ -235,6 +237,21 @@ class TaskService extends ServiceBase {
 
     return this.get<IGetTaskAnalysisDataReturn>(
       `/v1/tasks/audits/${task_id}/sqls/${number}/analysis`,
+      paramsData,
+      options
+    );
+  }
+
+  public getAuditTaskSQLsV2(
+    params: IGetAuditTaskSQLsV2Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const task_id = paramsData.task_id;
+    delete paramsData.task_id;
+
+    return this.get<IGetAuditTaskSQLsV2Return>(
+      `/v2/tasks/audits/${task_id}/sqls`,
       paramsData,
       options
     );

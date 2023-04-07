@@ -141,6 +141,8 @@ export interface IGetRuleListV1Params {
   filter_db_type?: string;
 
   filter_global_rule_template_name?: string;
+
+  filter_rule_names?: string;
 }
 
 export interface IGetRuleListV1Return extends IGetRulesResV1 {}

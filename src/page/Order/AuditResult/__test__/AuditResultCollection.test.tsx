@@ -19,6 +19,7 @@ import {
   resolveErrorThreeSecond,
   resolveThreeSecond,
 } from '../../../../testUtils/mockRequest';
+import { mockGetAllRules } from '../../../Rule/__test__/utils';
 import { taskSqls, workflowTasks } from '../../Detail/__testData__';
 import AuditResultCollection from '../AuditResultCollection';
 const OVERVIEW_TAB_KEY = 'OVERVIEW_TAB_KEY';
@@ -67,6 +68,7 @@ describe('test AuditResultCollection', () => {
   const mockSetAuditResultActiveKey = jest.fn();
   const mockRefreshOrder = jest.fn();
   beforeEach(() => {
+    mockGetAllRules();
     mockGetTaskSqls();
     mockUpdateTaskSqlDesc();
     jest.useFakeTimers();
@@ -84,7 +86,7 @@ describe('test AuditResultCollection', () => {
   };
 
   const mockGetTaskSqls = () => {
-    const spy = jest.spyOn(task, 'getAuditTaskSQLsV1');
+    const spy = jest.spyOn(task, 'getAuditTaskSQLsV2');
     spy.mockImplementation(() =>
       resolveThreeSecond(taskSqls, { otherData: { total_nums: 20 } })
     );

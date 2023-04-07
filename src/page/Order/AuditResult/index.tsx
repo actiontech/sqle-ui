@@ -32,7 +32,7 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
   } = useRequest(
     () =>
       task
-        .getAuditTaskSQLsV1({
+        .getAuditTaskSQLsV2({
           task_id: `${props.taskId}`,
           ...filterInfo,
           page_index: pagination.pageIndex.toString(),
