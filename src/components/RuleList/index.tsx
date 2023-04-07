@@ -84,7 +84,7 @@ const RuleList: React.FC<RuleListProps> = (props) => {
                         <Typography.Text
                           ellipsis={true}
                           type="secondary"
-                          style={{ maxWidth: 500 }}
+                          style={{ maxWidth: 500, width: '100%' }}
                         >
                           {item.annotation}
                         </Typography.Text>
