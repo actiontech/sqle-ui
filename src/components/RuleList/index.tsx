@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { RuleListDefaultTabKey } from '../../data/common';
 import { RuleListProps, TabRuleItem } from './index.type';
 import RuleLevelIcon from './RuleLevelIcon';
-import './index.less';
 
 const RuleList: React.FC<RuleListProps> = (props) => {
   const { t } = useTranslation();
