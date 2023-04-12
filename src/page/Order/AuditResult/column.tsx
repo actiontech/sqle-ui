@@ -1,4 +1,4 @@
-import { Popconfirm, Space, Tag, Tooltip, Typography } from 'antd';
+import { Popconfirm, Space, Tag, Typography } from 'antd';
 import moment from 'moment';
 import {
   IAuditResult,
@@ -19,11 +19,10 @@ import { execStatusDictionary } from '../../../hooks/useStaticStatus/index.data'
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import { formatTime } from '../../../utils/Common';
-import HighlightCode from '../../../utils/HighlightCode';
 import { floatToPercent } from '../../../utils/Math';
 import { checkTimeInWithMaintenanceTime } from '../Detail/OrderSteps/utils';
 import InstanceTasksStatus from './InstanceTasksStatus';
-import AuditResultColumn from '../../../components/AuditResultColumn';
+import AuditResultColumn from './AuditResultColumn';
 
 export const expandedRowRender = (record: IAuditTaskSQLResV2) => (
   <AuditResultErrorMessage auditResult={record?.audit_result ?? []} />
@@ -104,7 +103,7 @@ export const orderAuditResultColumn = (
     {
       dataIndex: 'description',
       title: () => i18n.t('audit.table.describe'),
-      width: '200px',
+      width: 200,
       render: (description: string, record) => {
         return (
           <EditText
@@ -124,7 +123,7 @@ export const orderAuditResultColumn = (
     {
       dataIndex: 'operator',
       title: () => i18n.t('common.operate'),
-      width: '70px',
+      width: 70,
       render: (_, record) => {
         return (
           <Typography.Link onClick={() => clickAnalyze(record.number ?? 0)}>

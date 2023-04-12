@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
 import { AuditResultColumnProps } from './index.type';
-import AuditResultErrorMessage from '../AuditResultErrorMessage';
+import AuditResultErrorMessage from '../../../../components/AuditResultErrorMessage';
 import {
   InfoCircleOutlined,
   CheckOutlined,
   WarningOutlined,
 } from '@ant-design/icons';
-import { RuleResV1LevelEnum } from '../../api/common.enum';
+import { RuleResV1LevelEnum } from '../../../../api/common.enum';
 import './index.less';
 
 const AuditResultColumn: React.FC<AuditResultColumnProps> = (props) => {

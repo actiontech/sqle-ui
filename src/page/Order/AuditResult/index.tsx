@@ -1,6 +1,6 @@
 import { useBoolean, useRequest } from 'ahooks';
 import { Button, Card, Space, Switch, Table, Typography } from 'antd';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import task from '../../../api/task';
 import EmptyBox from '../../../components/EmptyBox';
@@ -10,6 +10,7 @@ import { floatToPercent } from '../../../utils/Math';
 import AuditResultFilterForm from './AuditResultFilterForm';
 import { orderAuditResultColumn, expandedRowRender } from './column';
 import { AuditResultProps, OrderAuditResultFilterFields } from './index.type';
+import { DownOutlined, UpOutlined } from '@ant-design/icons';
 
 const AuditResult: React.FC<AuditResultProps> = (props) => {
   const { t } = useTranslation();
@@ -157,6 +158,13 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
           rowExpandable: (record) =>
             !!record.audit_result && record.audit_result.length > 1,
           expandIconColumnIndex: 3,
+          expandIcon: ({ expanded, onExpand, record }) =>
+          expanded ? (
+            <UpOutlined onClick={e => onExpand(record, e)} />
+          ) : (
+            <DownOutlined onClick={e => onExpand(record, e)} />
+          ),
+          columnWidth: 14
         }}
         scroll={{ x: 'max-content' }}
       />
