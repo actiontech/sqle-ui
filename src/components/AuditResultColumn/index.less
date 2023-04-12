@@ -1,0 +1,33 @@
+@import '../../styles/_variable.less';
+
+.result-box {
+  color: @text-blue;
+  border: 1px solid @text-blue;
+  border-radius: 4px;
+  padding: 2px 5px;
+  display: flex;
+  align-items: center;
+  .result-box-level {
+    margin-left: 5px;
+    width: 110px;
+    display: inline-box;
+  }
+  &-success {
+    color: @text-green;
+    border-color: @text-green;
+  }
+  &-warning {
+    color: @text-orange;
+    border-color: @text-orange;
+  }
+  &-error {
+    color: @text-red;
+    border-color: @text-red;
+  }
+}
+
+.result-box-list {
+  display: inline-flex;
+  gap: 8px;
+  flex-direction: column;
+}

@@ -1,4 +1,4 @@
-import { Popconfirm, Space, Tag, Typography } from 'antd';
+import { Popconfirm, Space, Tag, Tooltip, Typography } from 'antd';
 import moment from 'moment';
 import {
   IAuditResult,
@@ -10,15 +10,12 @@ import {
   GetWorkflowTasksItemV2StatusEnum,
   WorkflowRecordResV2StatusEnum,
 } from '../../../api/common.enum';
-import {
-  getAuditTaskSQLsV1FilterExecStatusEnum,
-} from '../../../api/task/index.enum';
+import { getAuditTaskSQLsV1FilterExecStatusEnum } from '../../../api/task/index.enum';
 import AuditResultErrorMessage from '../../../components/AuditResultErrorMessage';
 import EditText from '../../../components/EditText/EditText';
 import EmptyBox from '../../../components/EmptyBox';
-import {
-  execStatusDictionary,
-} from '../../../hooks/useStaticStatus/index.data';
+import IconTipsLabel from '../../../components/IconTipsLabel';
+import { execStatusDictionary } from '../../../hooks/useStaticStatus/index.data';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import { formatTime } from '../../../utils/Common';
@@ -26,6 +23,25 @@ import HighlightCode from '../../../utils/HighlightCode';
 import { floatToPercent } from '../../../utils/Math';
 import { checkTimeInWithMaintenanceTime } from '../Detail/OrderSteps/utils';
 import InstanceTasksStatus from './InstanceTasksStatus';
+import AuditResultColumn from '../../../components/AuditResultColumn';
+
+export const expandedRowRender = (record: IAuditTaskSQLResV2) => (
+  <AuditResultErrorMessage auditResult={record?.audit_result ?? []} />
+);
+
+const renderSqlColumn = (sql: string) => (
+  <Typography.Paragraph
+    copyable={true}
+    ellipsis={{
+      expandable: false,
+      tooltip: <pre className="pre-warp-break-all">{sql}</pre>,
+      rows: 10,
+    }}
+    className="margin-bottom-0"
+  >
+    {sql}
+  </Typography.Paragraph>
+);
 
 export const orderAuditResultColumn = (
   updateSqlDescribe: (sqlNum: number, sqlDescribe: string) => void,
@@ -35,29 +51,25 @@ export const orderAuditResultColumn = (
     {
       dataIndex: 'number',
       title: () => i18n.t('audit.table.number'),
-    },
-    {
-      dataIndex: 'audit_result',
-      title: () => i18n.t('audit.table.auditResult'),
-      render: (auditResult: IAuditResult[]) => {
-        return <AuditResultErrorMessage auditResult={auditResult} />;
-      },
+      width: 60,
     },
     {
       dataIndex: 'exec_sql',
       title: () => i18n.t('audit.table.execSql'),
+      width: 300,
       render: (sql?: string) => {
         if (!!sql) {
-          return (
-            <pre
-              dangerouslySetInnerHTML={{
-                __html: HighlightCode.highlightSql(sql),
-              }}
-              className="pre-warp-break-all"
-            ></pre>
-          );
+          return renderSqlColumn(sql);
         }
         return null;
+      },
+    },
+    {
+      dataIndex: 'audit_result',
+      title: () => i18n.t('audit.table.auditResult'),
+      width: 200,
+      render: (auditResult: IAuditResult[]) => {
+        return <AuditResultColumn auditResult={auditResult} />;
       },
     },
     {
@@ -66,24 +78,25 @@ export const orderAuditResultColumn = (
       render: (status: getAuditTaskSQLsV1FilterExecStatusEnum) => {
         return status ? i18n.t(execStatusDictionary[status]) : '';
       },
+      width: 100,
     },
     {
       dataIndex: 'exec_result',
       title: () => i18n.t('audit.table.execResult'),
+      width: 140,
     },
     {
       dataIndex: 'rollback_sql',
-      title: () => i18n.t('audit.table.rollback'),
+      title: () => (
+        <Space>
+          <span>{i18n.t('audit.table.rollback')}</span>
+          <IconTipsLabel tips={i18n.t('audit.table.rollbackTips')} />
+        </Space>
+      ),
+      width: 300,
       render: (sql?: string) => {
         if (!!sql) {
-          return (
-            <pre
-              dangerouslySetInnerHTML={{
-                __html: HighlightCode.highlightSql(sql),
-              }}
-              className="pre-warp-break-all"
-            ></pre>
-          );
+          return renderSqlColumn(sql);
         }
         return null;
       },
