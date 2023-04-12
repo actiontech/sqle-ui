@@ -45,7 +45,9 @@ import {
   IGetAuditPlansV2Params,
   IGetAuditPlansV2Return,
   IGetAuditPlanReportsSQLsParams,
-  IGetAuditPlanReportsSQLsReturn
+  IGetAuditPlanReportsSQLsReturn,
+  IGetAuditPlantAnalysisDataV2Params,
+  IGetAuditPlantAnalysisDataV2Return
 } from './index.d';
 
 class AuditPlanService extends ServiceBase {
@@ -394,6 +396,30 @@ class AuditPlanService extends ServiceBase {
 
     return this.get<IGetAuditPlanReportsSQLsReturn>(
       `/v2/projects/${project_name}/audit_plans/${audit_plan_name}/reports/${audit_plan_report_id}/sqls`,
+      paramsData,
+      options
+    );
+  }
+
+  public getAuditPlantAnalysisDataV2(
+    params: IGetAuditPlantAnalysisDataV2Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    const audit_plan_name = paramsData.audit_plan_name;
+    delete paramsData.audit_plan_name;
+
+    const audit_plan_report_id = paramsData.audit_plan_report_id;
+    delete paramsData.audit_plan_report_id;
+
+    const number = paramsData.number;
+    delete paramsData.number;
+
+    return this.get<IGetAuditPlantAnalysisDataV2Return>(
+      `/v2/projects/${project_name}/audit_plans/${audit_plan_name}/reports/${audit_plan_report_id}/sqls/${number}/analysis`,
       paramsData,
       options
     );

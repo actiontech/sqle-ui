@@ -38,9 +38,26 @@ describe('useSQLExecPlan', () => {
 
   test('should render sqlExecPlan cad when user call "generateSQLExecPlanContent" method', async () => {
     const { result } = renderHook(() => useSQLExecPlan());
-    const { container } = render(
+    const { container, rerender } = render(
       <div>
-        {sqlExecPlans.map((e) => result.current.generateSQLExecPlanContent(e))}
+        {sqlExecPlans.map((e) =>
+          result.current.generateSQLExecPlanContent({
+            ...e,
+            affect_rows: { count: 10, err_message: '' },
+          })
+        )}
+      </div>
+    );
+    expect(container).toMatchSnapshot();
+
+    rerender(
+      <div>
+        {sqlExecPlans.map((e) =>
+          result.current.generateSQLExecPlanContent({
+            ...e,
+            affect_rows: { count: 0, err_message: 'error' },
+          })
+        )}
       </div>
     );
     expect(container).toMatchSnapshot();

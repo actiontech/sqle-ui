@@ -1,12 +1,18 @@
 import { ResultStatusType } from 'antd/lib/result';
-import { ISQLExplain, ITableMeta } from '../../../api/common';
+import {
+  IPerformanceStatistics,
+  ISQLExplain,
+  ITableMeta,
+  ITableMetas,
+} from '../../../api/common';
 import SqlAnalyze from './SqlAnalyze';
 
 export type SqlAnalyzeProps = {
   errorMessage: string;
   errorType?: ResultStatusType;
-  tableSchemas: ITableMeta[];
+  tableMetas?: ITableMetas;
   sqlExplain?: ISQLExplain;
+  performanceStatistics?: IPerformanceStatistics;
   loading?: boolean;
 };
 

@@ -1884,7 +1884,7 @@ export interface ISMTPConfigurationResV1 {
 export interface ISQLExplain {
   classic_result?: IExplainClassicResult;
 
-  message?: string;
+  err_message?: string;
 
   sql?: string;
 }
@@ -2597,6 +2597,12 @@ export interface IWorkflowTemplateDetailResV1 {
   workflow_template_name?: string;
 }
 
+export interface IAffectRows {
+  count?: number;
+
+  err_message?: string;
+}
+
 export interface IAuditPlanReportSQLResV2 {
   audit_plan_report_sql?: string;
 
@@ -2727,6 +2733,14 @@ export interface IDirectAuditResV2 {
   message?: string;
 }
 
+export interface IGetAuditPlanAnalysisDataResV2 {
+  code?: number;
+
+  data?: ITaskAnalysisDataV2;
+
+  message?: string;
+}
+
 export interface IGetAuditPlanReportSQLsResV2 {
   code?: number;
 
@@ -2765,6 +2779,14 @@ export interface IGetInstancesResV2 {
   message?: string;
 
   total_nums?: number;
+}
+
+export interface IGetTaskAnalysisDataResV2 {
+  code?: number;
+
+  data?: ITaskAnalysisDataV2;
+
+  message?: string;
 }
 
 export interface IGetWorkflowResV2 {
@@ -2831,6 +2853,10 @@ export interface IInstanceResV2 {
   sql_query_config?: ISQLQueryConfigResV1;
 }
 
+export interface IPerformanceStatistics {
+  affect_rows?: IAffectRows;
+}
+
 export interface IRejectWorkflowReqV2 {
   reason?: string;
 }
@@ -2839,6 +2865,20 @@ export interface IRuleTemplateV2 {
   is_global_rule_template?: boolean;
 
   name?: string;
+}
+
+export interface ITableMetas {
+  err_message?: string;
+
+  table_meta_items?: ITableMeta[];
+}
+
+export interface ITaskAnalysisDataV2 {
+  performance_statistics?: IPerformanceStatistics;
+
+  sql_explain?: ISQLExplain;
+
+  table_metas?: ITableMetas;
 }
 
 export interface IUpdateWorkflowReqV2 {
