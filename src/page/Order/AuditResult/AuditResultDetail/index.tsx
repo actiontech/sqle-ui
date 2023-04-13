@@ -9,7 +9,7 @@ import {
 import { RuleResV1LevelEnum } from '../../../../api/common.enum';
 import './index.less';
 
-const AuditResultColumn: React.FC<AuditResultColumnProps> = (props) => {
+const AuditResultDetail: React.FC<AuditResultColumnProps> = (props) => {
   const auditResult = useMemo(
     () => props?.auditResult ?? [],
     [props.auditResult]
@@ -94,4 +94,4 @@ const AuditResultColumn: React.FC<AuditResultColumnProps> = (props) => {
   return <>{renderAuditColumn()}</>;
 };
 
-export default AuditResultColumn;
+export default AuditResultDetail;
