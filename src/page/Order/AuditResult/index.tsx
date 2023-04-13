@@ -159,12 +159,14 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
             !!record.audit_result && record.audit_result.length > 1,
           expandIconColumnIndex: 3,
           expandIcon: ({ expanded, onExpand, record }) =>
-          expanded ? (
-            <UpOutlined onClick={e => onExpand(record, e)} />
-          ) : (
-            <DownOutlined onClick={e => onExpand(record, e)} />
-          ),
-          columnWidth: 14
+            !!record.audit_result && record.audit_result.length > 1 ? (
+              expanded ? (
+                <UpOutlined onClick={(e) => onExpand(record, e)} />
+              ) : (
+                <DownOutlined onClick={(e) => onExpand(record, e)} />
+              )
+            ) : null,
+          columnWidth: 14,
         }}
         scroll={{ x: 'max-content' }}
       />

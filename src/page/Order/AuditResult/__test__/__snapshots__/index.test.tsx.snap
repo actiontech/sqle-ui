@@ -1284,8 +1284,15 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
                           <div
                             class="ant-typography ant-typography-ellipsis margin-bottom-0"
                           >
-                            /* input your sql */
-use aaab;
+                            <span>
+                              <span
+                                aria-hidden="true"
+                                title="/* input your sql */
+use aaab;"
+                              >
+                                ...
+                              </span>
+                            </span>
                             <div
                               aria-label="Copy"
                               class="ant-typography-copy"
@@ -1389,28 +1396,7 @@ use aaab;
                         </td>
                         <td
                           class="ant-table-cell ant-table-row-expand-icon-cell"
-                        >
-                          <span
-                            aria-label="down"
-                            class="anticon anticon-down"
-                            role="img"
-                            tabindex="-1"
-                          >
-                            <svg
-                              aria-hidden="true"
-                              data-icon="down"
-                              fill="currentColor"
-                              focusable="false"
-                              height="1em"
-                              viewBox="64 64 896 896"
-                              width="1em"
-                            >
-                              <path
-                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                              />
-                            </svg>
-                          </span>
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
@@ -1485,7 +1471,14 @@ use aaab;
                           <div
                             class="ant-typography ant-typography-ellipsis margin-bottom-0"
                           >
-                            use bbbbe;
+                            <span>
+                              <span
+                                aria-hidden="true"
+                                title="use bbbbe;"
+                              >
+                                ...
+                              </span>
+                            </span>
                             <div
                               aria-label="Copy"
                               class="ant-typography-copy"
@@ -1549,28 +1542,7 @@ use aaab;
                         </td>
                         <td
                           class="ant-table-cell ant-table-row-expand-icon-cell"
-                        >
-                          <span
-                            aria-label="down"
-                            class="anticon anticon-down"
-                            role="img"
-                            tabindex="-1"
-                          >
-                            <svg
-                              aria-hidden="true"
-                              data-icon="down"
-                              fill="currentColor"
-                              focusable="false"
-                              height="1em"
-                              viewBox="64 64 896 896"
-                              width="1em"
-                            >
-                              <path
-                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                              />
-                            </svg>
-                          </span>
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         >
@@ -1645,7 +1617,10 @@ use aaab;
                           <div
                             class="ant-typography ant-typography-ellipsis margin-bottom-0"
                           >
-                            CREATE TABLE \`tasks\` (
+                            <span>
+                              <span
+                                aria-hidden="true"
+                                title="CREATE TABLE \`tasks\` (
       \`id\` int(10) unsigned NOT NULL AUTO_INCREMENT,
       \`created_at\` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
       \`updated_at\` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -1659,7 +1634,11 @@ use aaab;
       \`create_user_id\` int(10) unsigned DEFAULT NULL,
       PRIMARY KEY (\`id\`),
       KEY \`idx_tasks_deleted_at\` (\`deleted_at\`)
-      ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+      ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+                              >
+                                ...
+                              </span>
+                            </span>
                             <div
                               aria-label="Copy"
                               class="ant-typography-copy"
@@ -1693,10 +1672,140 @@ use aaab;
                           class="ant-table-cell"
                         >
                           <div
+                            class="result-box-list"
+                          >
+                            <li>
+                              <div
+                                class="result-box result-box-error"
+                              >
+                                <span
+                                  aria-label="info-circle"
+                                  class="anticon anticon-info-circle"
+                                  role="img"
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    data-icon="info-circle"
+                                    fill="currentColor"
+                                    focusable="false"
+                                    height="1em"
+                                    viewBox="64 64 896 896"
+                                    width="1em"
+                                  >
+                                    <path
+                                      d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                    />
+                                    <path
+                                      d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                    />
+                                  </svg>
+                                </span>
+                                <span
+                                  class="result-box-level"
+                                >
+                                  error
+                                </span>
+                                <span>
+                                  2
+                                </span>
+                              </div>
+                            </li>
+                          </div>
+                        </td>
+                        <td
+                          class="ant-table-cell ant-table-row-expand-icon-cell"
+                        >
+                          <span
+                            aria-label="up"
+                            class="anticon anticon-up"
+                            role="img"
+                            tabindex="-1"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="up"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M890.5 755.3L537.9 269.2c-12.8-17.6-39-17.6-51.7 0L133.5 755.3A8 8 0 00140 768h75c5.1 0 9.9-2.5 12.9-6.6L512 369.8l284.1 391.6c3 4.1 7.8 6.6 12.9 6.6h75c6.5 0 10.3-7.4 6.5-12.7z"
+                              />
+                            </svg>
+                          </span>
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          audit.execStatus.initialized
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        />
+                        <td
+                          class="ant-table-cell"
+                        />
+                        <td
+                          class="ant-table-cell"
+                        >
+                          <div
+                            class="ant-typography"
+                          >
+                            this is a test
+                            <div
+                              aria-label="Edit"
+                              class="ant-typography-edit"
+                              role="button"
+                              style="border: 0px; background: transparent; padding: 0px; line-height: inherit; display: inline-block;"
+                              tabindex="0"
+                            >
+                              <span
+                                aria-label="edit"
+                                class="anticon anticon-edit"
+                                role="button"
+                              >
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="edit"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 000-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 009.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                        </td>
+                        <td
+                          class="ant-table-cell"
+                        >
+                          <a
+                            class="ant-typography"
+                          >
+                            audit.table.analyze
+                          </a>
+                        </td>
+                      </tr>
+                      <tr
+                        class="ant-table-expanded-row ant-table-expanded-row-level-1"
+                      >
+                        <td
+                          class="ant-table-cell"
+                          colspan="9"
+                        >
+                          <div
                             class="ant-space ant-space-vertical audit-result-error-message-wrapper"
                           >
                             <div
                               class="ant-space-item"
+                              style="margin-bottom: 5px;"
                             >
                               <div
                                 class="ant-row ant-row-no-wrap"
@@ -1759,87 +1868,71 @@ use aaab;
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </td>
-                        <td
-                          class="ant-table-cell ant-table-row-expand-icon-cell"
-                        >
-                          <span
-                            aria-label="down"
-                            class="anticon anticon-down"
-                            role="img"
-                            tabindex="-1"
-                          >
-                            <svg
-                              aria-hidden="true"
-                              data-icon="down"
-                              fill="currentColor"
-                              focusable="false"
-                              height="1em"
-                              viewBox="64 64 896 896"
-                              width="1em"
-                            >
-                              <path
-                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                              />
-                            </svg>
-                          </span>
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          audit.execStatus.initialized
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        />
-                        <td
-                          class="ant-table-cell"
-                        />
-                        <td
-                          class="ant-table-cell"
-                        >
-                          <div
-                            class="ant-typography"
-                          >
-                            this is a test
                             <div
-                              aria-label="Edit"
-                              class="ant-typography-edit"
-                              role="button"
-                              style="border: 0px; background: transparent; padding: 0px; line-height: inherit; display: inline-block;"
-                              tabindex="0"
+                              class="ant-space-item"
                             >
-                              <span
-                                aria-label="edit"
-                                class="anticon anticon-edit"
-                                role="button"
+                              <div
+                                class="ant-row ant-row-no-wrap"
                               >
-                                <svg
-                                  aria-hidden="true"
-                                  data-icon="edit"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="1em"
-                                  viewBox="64 64 896 896"
-                                  width="1em"
+                                <div
+                                  class="ant-col"
+                                  style="flex: 0 0 50px;"
                                 >
-                                  <path
-                                    d="M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 000-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 009.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z"
-                                  />
-                                </svg>
-                              </span>
+                                  <div
+                                    class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+                                  >
+                                    <div
+                                      class="ant-space-item"
+                                      style="margin-bottom: 1px;"
+                                    >
+                                      <div>
+                                        <span
+                                          aria-label="info-circle"
+                                          class="anticon anticon-info-circle"
+                                          role="img"
+                                          style="font-size: 25px; color: rgb(240, 0, 0);"
+                                        >
+                                          <svg
+                                            aria-hidden="true"
+                                            data-icon="info-circle"
+                                            fill="currentColor"
+                                            focusable="false"
+                                            height="1em"
+                                            viewBox="64 64 896 896"
+                                            width="1em"
+                                          >
+                                            <path
+                                              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                                            />
+                                            <path
+                                              d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                                            />
+                                          </svg>
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="ant-space-item"
+                                    >
+                                      <span
+                                        class="ant-typography ant-typography-secondary"
+                                      >
+                                        error
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="ant-col message"
+                                  style="flex: 1 1 auto;"
+                                >
+                                  <span>
+                                    schema ddgrf 不存在
+                                  </span>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                        </td>
-                        <td
-                          class="ant-table-cell"
-                        >
-                          <a
-                            class="ant-typography"
-                          >
-                            audit.table.analyze
-                          </a>
                         </td>
                       </tr>
                     </tbody>
