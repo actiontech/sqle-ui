@@ -60,7 +60,13 @@ const DataSource: React.FC<DataSourceProps> = (props) => {
     }
   };
 
-  const handleDbTypeChange = (dbType: string) => {
+  const handleDbTypeChange = (dbType: string, resetDataSource = false) => {
+    if (resetDataSource) {
+      props.dataSourceChange?.('');
+      form.setFieldsValue({
+        databaseName: '',
+      });
+    }
     props.dbTypeChange?.(dbType);
     updateInstanceList({ ...getInstanceParams, filter_db_type: dbType });
   };
@@ -119,9 +125,9 @@ const DataSource: React.FC<DataSourceProps> = (props) => {
         ]}
       >
         <Select<string>
-          disabled={!!dataSource || !!defaultValue}
+          disabled={!!defaultValue}
           placeholder={t('common.form.placeholder.select')}
-          onChange={handleDbTypeChange}
+          onChange={(dnType) => handleDbTypeChange(dnType, true)}
           allowClear
         >
           {generateDriverSelectOptions()}

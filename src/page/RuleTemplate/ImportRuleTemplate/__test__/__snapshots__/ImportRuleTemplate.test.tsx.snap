@@ -282,7 +282,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             annotation1
                           </span>
@@ -665,7 +665,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             annotation2
                           </span>
@@ -757,7 +757,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -858,7 +858,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -950,7 +950,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1042,7 +1042,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1134,7 +1134,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1226,7 +1226,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1318,7 +1318,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1410,7 +1410,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1502,7 +1502,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1594,7 +1594,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1686,7 +1686,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1778,7 +1778,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1879,7 +1879,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1971,7 +1971,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2063,7 +2063,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2155,7 +2155,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2247,7 +2247,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2339,7 +2339,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2431,7 +2431,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2523,7 +2523,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2624,7 +2624,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2725,7 +2725,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2817,7 +2817,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2909,7 +2909,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3001,7 +3001,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3093,7 +3093,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3185,7 +3185,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3277,7 +3277,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3369,7 +3369,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3461,7 +3461,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3553,7 +3553,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3645,7 +3645,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3737,7 +3737,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3829,7 +3829,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3921,7 +3921,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4013,7 +4013,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4105,7 +4105,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4197,7 +4197,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4289,7 +4289,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4381,7 +4381,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4473,7 +4473,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4562,7 +4562,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4663,7 +4663,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4761,7 +4761,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4859,7 +4859,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4948,7 +4948,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5040,7 +5040,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5132,7 +5132,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5224,7 +5224,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5316,7 +5316,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5408,7 +5408,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5509,7 +5509,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5610,7 +5610,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5702,7 +5702,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5794,7 +5794,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5886,7 +5886,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5978,7 +5978,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -6070,7 +6070,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -6162,7 +6162,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -6254,7 +6254,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -6346,7 +6346,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -6438,7 +6438,7 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
