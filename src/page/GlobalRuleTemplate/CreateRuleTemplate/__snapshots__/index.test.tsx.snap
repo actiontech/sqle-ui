@@ -226,7 +226,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -331,7 +331,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -436,7 +436,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -541,7 +541,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -646,7 +646,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -751,7 +751,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1469,7 +1469,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1561,7 +1561,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1653,7 +1653,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1745,7 +1745,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1837,7 +1837,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1929,7 +1929,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2258,7 +2258,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2363,7 +2363,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2468,7 +2468,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2573,7 +2573,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2678,7 +2678,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2783,7 +2783,7 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>

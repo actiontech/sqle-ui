@@ -203,7 +203,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             annotation1
                           </span>
@@ -299,7 +299,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             annotation2
                           </span>
@@ -377,7 +377,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             annotation3
                           </span>
@@ -452,7 +452,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             annotation4
                           </span>
@@ -527,7 +527,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             annotation5
                           </span>
@@ -602,7 +602,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             annotation6
                           </span>
@@ -703,7 +703,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             annotation1
                           </span>
@@ -799,7 +799,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             annotation6
                           </span>
@@ -900,7 +900,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             annotation2
                           </span>
@@ -975,7 +975,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             annotation5
                           </span>
@@ -1079,7 +1079,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             annotation3
                           </span>
@@ -1154,7 +1154,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             annotation4
                           </span>
