@@ -282,7 +282,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -387,7 +387,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -492,7 +492,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -597,7 +597,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -702,7 +702,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -807,7 +807,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1190,7 +1190,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1291,7 +1291,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1383,7 +1383,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1475,7 +1475,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1567,7 +1567,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1659,7 +1659,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1751,7 +1751,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1843,7 +1843,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -1944,7 +1944,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2036,7 +2036,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2128,7 +2128,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2220,7 +2220,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2312,7 +2312,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2404,7 +2404,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2496,7 +2496,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2588,7 +2588,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2689,7 +2689,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2790,7 +2790,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2882,7 +2882,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -2974,7 +2974,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3066,7 +3066,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3158,7 +3158,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3250,7 +3250,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3342,7 +3342,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3434,7 +3434,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3526,7 +3526,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3618,7 +3618,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3710,7 +3710,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3802,7 +3802,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3894,7 +3894,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -3986,7 +3986,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4078,7 +4078,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4170,7 +4170,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4262,7 +4262,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4354,7 +4354,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4446,7 +4446,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4538,7 +4538,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4627,7 +4627,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4728,7 +4728,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4826,7 +4826,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -4924,7 +4924,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5013,7 +5013,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5105,7 +5105,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5197,7 +5197,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5289,7 +5289,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5381,7 +5381,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5473,7 +5473,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5574,7 +5574,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5675,7 +5675,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5767,7 +5767,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5859,7 +5859,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -5951,7 +5951,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -6643,7 +6643,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             annotation1
                           </span>
@@ -6735,7 +6735,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             annotation2
                           </span>
@@ -6827,7 +6827,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -6928,7 +6928,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -7020,7 +7020,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -7112,7 +7112,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -7204,7 +7204,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -7296,7 +7296,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -7388,7 +7388,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -7480,7 +7480,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -7572,7 +7572,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -7664,7 +7664,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -7756,7 +7756,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -7848,7 +7848,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -7949,7 +7949,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -8041,7 +8041,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -8133,7 +8133,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -8225,7 +8225,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -8317,7 +8317,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -8409,7 +8409,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -8501,7 +8501,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -8593,7 +8593,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -8694,7 +8694,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -8795,7 +8795,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -8887,7 +8887,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -8979,7 +8979,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -9071,7 +9071,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -9163,7 +9163,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -9255,7 +9255,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -9347,7 +9347,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -9439,7 +9439,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -9531,7 +9531,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -9623,7 +9623,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -9715,7 +9715,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -9807,7 +9807,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -9899,7 +9899,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -9991,7 +9991,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -10083,7 +10083,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -10175,7 +10175,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -10267,7 +10267,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -10359,7 +10359,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -10451,7 +10451,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -10543,7 +10543,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -10632,7 +10632,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -10733,7 +10733,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -10831,7 +10831,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -10929,7 +10929,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -11018,7 +11018,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -11110,7 +11110,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -11202,7 +11202,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -11294,7 +11294,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -11386,7 +11386,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -11478,7 +11478,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -11579,7 +11579,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -11680,7 +11680,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -11772,7 +11772,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -11864,7 +11864,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -11956,7 +11956,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -12368,7 +12368,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             annotation1
                           </span>
@@ -12473,7 +12473,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             annotation2
                           </span>
@@ -12578,7 +12578,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -12692,7 +12692,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -12797,7 +12797,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -12902,7 +12902,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -13007,7 +13007,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -13112,7 +13112,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -13217,7 +13217,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -13322,7 +13322,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -13427,7 +13427,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -13532,7 +13532,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -13637,7 +13637,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -13742,7 +13742,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -13856,7 +13856,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -13961,7 +13961,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -14066,7 +14066,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -14171,7 +14171,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -14276,7 +14276,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -14381,7 +14381,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -14486,7 +14486,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -14591,7 +14591,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -14705,7 +14705,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -14819,7 +14819,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -14924,7 +14924,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -15029,7 +15029,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -15134,7 +15134,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -15239,7 +15239,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -15344,7 +15344,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -15449,7 +15449,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -15554,7 +15554,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -15659,7 +15659,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -15764,7 +15764,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -15869,7 +15869,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -15974,7 +15974,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -16079,7 +16079,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -16184,7 +16184,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -16289,7 +16289,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -16394,7 +16394,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -16499,7 +16499,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -16604,7 +16604,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -16709,7 +16709,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -16814,7 +16814,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -16916,7 +16916,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -17030,7 +17030,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -17141,7 +17141,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -17252,7 +17252,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -17354,7 +17354,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -17459,7 +17459,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -17564,7 +17564,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -17669,7 +17669,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -17774,7 +17774,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -17879,7 +17879,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -17993,7 +17993,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -18107,7 +18107,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -18212,7 +18212,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -18317,7 +18317,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -18422,7 +18422,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px;"
+                            style="max-width: 500px; width: 100%;"
                           >
                             
                           </span>
@@ -20281,7 +20281,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                                   >
                                     <span
                                       class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                                      style="max-width: 500px;"
+                                      style="max-width: 500px; width: 100%;"
                                     >
                                       
                                     </span>
@@ -20386,7 +20386,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                                   >
                                     <span
                                       class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                                      style="max-width: 500px;"
+                                      style="max-width: 500px; width: 100%;"
                                     >
                                       
                                     </span>
@@ -20491,7 +20491,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                                   >
                                     <span
                                       class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                                      style="max-width: 500px;"
+                                      style="max-width: 500px; width: 100%;"
                                     >
                                       
                                     </span>
@@ -20596,7 +20596,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                                   >
                                     <span
                                       class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                                      style="max-width: 500px;"
+                                      style="max-width: 500px; width: 100%;"
                                     >
                                       
                                     </span>
@@ -20701,7 +20701,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                                   >
                                     <span
                                       class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                                      style="max-width: 500px;"
+                                      style="max-width: 500px; width: 100%;"
                                     >
                                       
                                     </span>
@@ -20806,7 +20806,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                                   >
                                     <span
                                       class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                                      style="max-width: 500px;"
+                                      style="max-width: 500px; width: 100%;"
                                     >
                                       
                                     </span>

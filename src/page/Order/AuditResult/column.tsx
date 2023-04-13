@@ -22,7 +22,7 @@ import { formatTime } from '../../../utils/Common';
 import { floatToPercent } from '../../../utils/Math';
 import { checkTimeInWithMaintenanceTime } from '../Detail/OrderSteps/utils';
 import InstanceTasksStatus from './InstanceTasksStatus';
-import AuditResultDetail from './AuditResultDetail';
+import AuditResultInfo from './AuditResultInfo';
 
 export const expandedRowRender = (record: IAuditTaskSQLResV2) => (
   <AuditResultErrorMessage auditResult={record?.audit_result ?? []} />
@@ -68,7 +68,7 @@ export const orderAuditResultColumn = (
       title: () => i18n.t('audit.table.auditResult'),
       width: 200,
       render: (auditResult: IAuditResult[]) => {
-        return <AuditResultDetail auditResult={auditResult} />;
+        return <AuditResultInfo auditResult={auditResult} />;
       },
     },
     {
