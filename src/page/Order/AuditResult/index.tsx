@@ -8,14 +8,13 @@ import { ResponseCode } from '../../../data/common';
 import useTable from '../../../hooks/useTable';
 import { floatToPercent } from '../../../utils/Math';
 import AuditResultFilterForm from './AuditResultFilterForm';
-import { orderAuditResultColumn } from './column';
+import { orderAuditResultColumn, expandedRowRender } from './column';
 import { AuditResultProps, OrderAuditResultFilterFields } from './index.type';
+import { DownOutlined, UpOutlined } from '@ant-design/icons';
 
 const AuditResult: React.FC<AuditResultProps> = (props) => {
   const { t } = useTranslation();
-
   const [duplicate, { toggle: toggleDuplicate }] = useBoolean();
-
   const {
     filterInfo,
     pagination,
@@ -154,6 +153,22 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
         columns={orderAuditResultColumn(updateSqlDescribe, handleClickAnalyze)}
         dataSource={data?.list}
         onChange={tableChange}
+        expandable={{
+          expandedRowRender,
+          rowExpandable: (record) =>
+            !!record.audit_result && record.audit_result.length > 1,
+          expandIconColumnIndex: 3,
+          expandIcon: ({ expanded, onExpand, record }) =>
+            !!record.audit_result && record.audit_result.length > 1 ? (
+              expanded ? (
+                <UpOutlined onClick={(e) => onExpand(record, e)} />
+              ) : (
+                <DownOutlined onClick={(e) => onExpand(record, e)} />
+              )
+            ) : null,
+          columnWidth: 14,
+        }}
+        scroll={{ x: 'max-content' }}
       />
     </Card>
   );

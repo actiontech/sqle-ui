@@ -57,7 +57,12 @@ describe('Order/Detail/AuditResult', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+    expect(getBySelector('.result-box-error')).toBeInTheDocument();
+    expect(getBySelector('.ant-table-row-expand-icon-cell .anticon-down')).toBeVisible();
 
+    fireEvent.click(getBySelector('.ant-table-row-expand-icon-cell .anticon-down'));
+    await waitFor(() => expect(getBySelector('.ant-table-row-expand-icon-cell .anticon-up')));
+    expect(getBySelector('.ant-table-expanded-row')).toBeVisible();
     expect(container).toMatchSnapshot();
   });
 

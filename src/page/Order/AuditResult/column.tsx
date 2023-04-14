@@ -10,22 +10,42 @@ import {
   GetWorkflowTasksItemV2StatusEnum,
   WorkflowRecordResV2StatusEnum,
 } from '../../../api/common.enum';
-import {
-  getAuditTaskSQLsV1FilterExecStatusEnum,
-} from '../../../api/task/index.enum';
+import { getAuditTaskSQLsV1FilterExecStatusEnum } from '../../../api/task/index.enum';
 import AuditResultErrorMessage from '../../../components/AuditResultErrorMessage';
 import EditText from '../../../components/EditText/EditText';
 import EmptyBox from '../../../components/EmptyBox';
-import {
-  execStatusDictionary,
-} from '../../../hooks/useStaticStatus/index.data';
+import IconTipsLabel from '../../../components/IconTipsLabel';
+import { execStatusDictionary } from '../../../hooks/useStaticStatus/index.data';
 import i18n from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import { formatTime } from '../../../utils/Common';
-import HighlightCode from '../../../utils/HighlightCode';
 import { floatToPercent } from '../../../utils/Math';
 import { checkTimeInWithMaintenanceTime } from '../Detail/OrderSteps/utils';
 import InstanceTasksStatus from './InstanceTasksStatus';
+import AuditResultInfo from './AuditResultInfo';
+
+export const expandedRowRender = (record: IAuditTaskSQLResV2) => (
+  <AuditResultErrorMessage auditResult={record?.audit_result ?? []} />
+);
+
+const renderSqlColumn = (sql: string) => (
+  <Typography.Paragraph
+    copyable={true}
+    ellipsis={{
+      expandable: false,
+      tooltip: <pre className="pre-warp-break-all">{sql}</pre>,
+      // todo: 由于antd版本的原因，导致下面这样的写法在页面上会报错，待升级之后再验证是否可以使用下面的写法去替代全局的has伪类， Closes to issue 1427
+      // tooltip: {
+      //   overlay:() => <pre className="pre-warp-break-all">{sql}</pre>,
+      //   overlayClassName: 'sql-tooltip-width'
+      // },
+      rows: 10,
+    }}
+    className="margin-bottom-0"
+  >
+    {sql}
+  </Typography.Paragraph>
+);
 
 export const orderAuditResultColumn = (
   updateSqlDescribe: (sqlNum: number, sqlDescribe: string) => void,
@@ -35,29 +55,25 @@ export const orderAuditResultColumn = (
     {
       dataIndex: 'number',
       title: () => i18n.t('audit.table.number'),
-    },
-    {
-      dataIndex: 'audit_result',
-      title: () => i18n.t('audit.table.auditResult'),
-      render: (auditResult: IAuditResult[]) => {
-        return <AuditResultErrorMessage auditResult={auditResult} />;
-      },
+      width: 60,
     },
     {
       dataIndex: 'exec_sql',
       title: () => i18n.t('audit.table.execSql'),
+      width: 300,
       render: (sql?: string) => {
         if (!!sql) {
-          return (
-            <pre
-              dangerouslySetInnerHTML={{
-                __html: HighlightCode.highlightSql(sql),
-              }}
-              className="pre-warp-break-all"
-            ></pre>
-          );
+          return renderSqlColumn(sql);
         }
         return null;
+      },
+    },
+    {
+      dataIndex: 'audit_result',
+      title: () => i18n.t('audit.table.auditResult'),
+      width: 200,
+      render: (auditResult: IAuditResult[]) => {
+        return <AuditResultInfo auditResult={auditResult} />;
       },
     },
     {
@@ -66,24 +82,25 @@ export const orderAuditResultColumn = (
       render: (status: getAuditTaskSQLsV1FilterExecStatusEnum) => {
         return status ? i18n.t(execStatusDictionary[status]) : '';
       },
+      width: 100,
     },
     {
       dataIndex: 'exec_result',
       title: () => i18n.t('audit.table.execResult'),
+      width: 140,
     },
     {
       dataIndex: 'rollback_sql',
-      title: () => i18n.t('audit.table.rollback'),
+      title: () => (
+        <Space>
+          <span>{i18n.t('audit.table.rollback')}</span>
+          <IconTipsLabel tips={i18n.t('audit.table.rollbackTips')} />
+        </Space>
+      ),
+      width: 300,
       render: (sql?: string) => {
         if (!!sql) {
-          return (
-            <pre
-              dangerouslySetInnerHTML={{
-                __html: HighlightCode.highlightSql(sql),
-              }}
-              className="pre-warp-break-all"
-            ></pre>
-          );
+          return renderSqlColumn(sql);
         }
         return null;
       },
@@ -91,7 +108,7 @@ export const orderAuditResultColumn = (
     {
       dataIndex: 'description',
       title: () => i18n.t('audit.table.describe'),
-      width: '200px',
+      width: 200,
       render: (description: string, record) => {
         return (
           <EditText
@@ -111,7 +128,7 @@ export const orderAuditResultColumn = (
     {
       dataIndex: 'operator',
       title: () => i18n.t('common.operate'),
-      width: '70px',
+      width: 70,
       render: (_, record) => {
         return (
           <Typography.Link onClick={() => clickAnalyze(record.number ?? 0)}>

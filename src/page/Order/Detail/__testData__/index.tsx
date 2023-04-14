@@ -563,6 +563,11 @@ export const taskSqls = [
         message: 'schema bbbbe 不存在',
         rule_name: '',
       },
+      {
+        level: 'error',
+        message: 'schema ddgrf 不存在',
+        rule_name: '',
+      },
     ],
     audit_level: 'error',
     audit_status: 'finished',
