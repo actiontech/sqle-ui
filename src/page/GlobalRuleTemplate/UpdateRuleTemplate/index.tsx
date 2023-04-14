@@ -112,7 +112,9 @@ const UpdateRuleTemplate = () => {
         >
           <Result
             status="success"
-            title={t('ruleTemplate.updateRuleTemplate.successTitle')}
+            title={t('ruleTemplate.updateRuleTemplate.successTitle', {
+              name: urlParams.templateName,
+            })}
           />
           <Row justify="center">
             <Link to="/rule/template">
