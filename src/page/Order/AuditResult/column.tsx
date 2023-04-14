@@ -34,6 +34,11 @@ const renderSqlColumn = (sql: string) => (
     ellipsis={{
       expandable: false,
       tooltip: <pre className="pre-warp-break-all">{sql}</pre>,
+      // todo: 由于antd版本的原因，导致下面这样的写法在页面上会报错，待升级之后再验证是否可以使用下面的写法去替代全局的has伪类， Closes to issue 1427
+      // tooltip: {
+      //   overlay:() => <pre className="pre-warp-break-all">{sql}</pre>,
+      //   overlayClassName: 'sql-tooltip-width'
+      // },
       rows: 10,
     }}
     className="margin-bottom-0"
