@@ -4,399 +4,6 @@ exports[`useSQLExecPlan should render info message when sql exec plan include "m
 <div>
   <div>
     <div
-      class="ant-result ant-result-error"
-    >
-      <div
-        class="ant-result-icon"
-      >
-        <span
-          aria-label="close-circle"
-          class="anticon anticon-close-circle"
-          role="img"
-        >
-          <svg
-            aria-hidden="true"
-            data-icon="close-circle"
-            fill="currentColor"
-            focusable="false"
-            height="1em"
-            viewBox="64 64 896 896"
-            width="1em"
-          >
-            <path
-              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
-            />
-          </svg>
-        </span>
-      </div>
-      <div
-        class="ant-result-title"
-      >
-        123
-      </div>
-    </div>
-    <div
-      class="ant-space ant-space-vertical full-width-element"
-    >
-      <div
-        class="ant-space-item"
-        style="margin-bottom: 8px;"
-      >
-        <div
-          class="ant-card ant-card-bordered"
-        >
-          <div
-            class="ant-card-head"
-          >
-            <div
-              class="ant-card-head-wrapper"
-            >
-              <div
-                class="ant-card-head-title"
-              >
-                sqlQuery.executePlan.sql
-              </div>
-            </div>
-          </div>
-          <div
-            class="ant-card-body"
-          >
-            <pre>
-              <span
-                class="hljs-keyword"
-              >
-                SELECT
-              </span>
-               
-              <span
-                class="hljs-operator"
-              >
-                *
-              </span>
-               
-              <span
-                class="hljs-keyword"
-              >
-                from
-              </span>
-               users;
-            </pre>
-          </div>
-        </div>
-      </div>
-      <div
-        class="ant-space-item"
-      >
-        <div
-          class="ant-card ant-card-bordered"
-        >
-          <div
-            class="ant-card-head"
-          >
-            <div
-              class="ant-card-head-wrapper"
-            >
-              <div
-                class="ant-card-head-title"
-              >
-                sqlQuery.executePlan.sqlExplain
-              </div>
-            </div>
-          </div>
-          <div
-            class="ant-card-body"
-          >
-            <div
-              class="ant-table-wrapper"
-            >
-              <div
-                class="ant-spin-nested-loading"
-              >
-                <div
-                  class="ant-spin-container"
-                >
-                  <div
-                    class="ant-table ant-table-scroll-horizontal"
-                  >
-                    <div
-                      class="ant-table-container"
-                    >
-                      <div
-                        class="ant-table-content"
-                        style="overflow-x: auto; overflow-y: hidden;"
-                      >
-                        <table
-                          style="min-width: 100%; table-layout: auto;"
-                        >
-                          <colgroup />
-                          <thead
-                            class="ant-table-thead"
-                          >
-                            <tr>
-                              <th
-                                class="ant-table-cell"
-                              >
-                                id
-                              </th>
-                              <th
-                                class="ant-table-cell"
-                              >
-                                select_type
-                              </th>
-                              <th
-                                class="ant-table-cell"
-                              >
-                                table
-                              </th>
-                              <th
-                                class="ant-table-cell"
-                              >
-                                partitions
-                              </th>
-                              <th
-                                class="ant-table-cell"
-                              >
-                                type
-                              </th>
-                              <th
-                                class="ant-table-cell"
-                              >
-                                possible_keys
-                              </th>
-                              <th
-                                class="ant-table-cell"
-                              >
-                                key
-                              </th>
-                              <th
-                                class="ant-table-cell"
-                              >
-                                key_len
-                              </th>
-                              <th
-                                class="ant-table-cell"
-                              >
-                                ref
-                              </th>
-                              <th
-                                class="ant-table-cell"
-                              >
-                                rows
-                              </th>
-                              <th
-                                class="ant-table-cell"
-                              >
-                                filtered
-                              </th>
-                              <th
-                                class="ant-table-cell"
-                              >
-                                Extra
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody
-                            class="ant-table-tbody"
-                          >
-                            <tr
-                              aria-hidden="true"
-                              class="ant-table-measure-row"
-                              style="height: 0px; font-size: 0px;"
-                            >
-                              <td
-                                style="padding: 0px; border: 0px; height: 0px;"
-                              >
-                                <div
-                                  style="height: 0px; overflow: hidden;"
-                                >
-                                   
-                                </div>
-                              </td>
-                              <td
-                                style="padding: 0px; border: 0px; height: 0px;"
-                              >
-                                <div
-                                  style="height: 0px; overflow: hidden;"
-                                >
-                                   
-                                </div>
-                              </td>
-                              <td
-                                style="padding: 0px; border: 0px; height: 0px;"
-                              >
-                                <div
-                                  style="height: 0px; overflow: hidden;"
-                                >
-                                   
-                                </div>
-                              </td>
-                              <td
-                                style="padding: 0px; border: 0px; height: 0px;"
-                              >
-                                <div
-                                  style="height: 0px; overflow: hidden;"
-                                >
-                                   
-                                </div>
-                              </td>
-                              <td
-                                style="padding: 0px; border: 0px; height: 0px;"
-                              >
-                                <div
-                                  style="height: 0px; overflow: hidden;"
-                                >
-                                   
-                                </div>
-                              </td>
-                              <td
-                                style="padding: 0px; border: 0px; height: 0px;"
-                              >
-                                <div
-                                  style="height: 0px; overflow: hidden;"
-                                >
-                                   
-                                </div>
-                              </td>
-                              <td
-                                style="padding: 0px; border: 0px; height: 0px;"
-                              >
-                                <div
-                                  style="height: 0px; overflow: hidden;"
-                                >
-                                   
-                                </div>
-                              </td>
-                              <td
-                                style="padding: 0px; border: 0px; height: 0px;"
-                              >
-                                <div
-                                  style="height: 0px; overflow: hidden;"
-                                >
-                                   
-                                </div>
-                              </td>
-                              <td
-                                style="padding: 0px; border: 0px; height: 0px;"
-                              >
-                                <div
-                                  style="height: 0px; overflow: hidden;"
-                                >
-                                   
-                                </div>
-                              </td>
-                              <td
-                                style="padding: 0px; border: 0px; height: 0px;"
-                              >
-                                <div
-                                  style="height: 0px; overflow: hidden;"
-                                >
-                                   
-                                </div>
-                              </td>
-                              <td
-                                style="padding: 0px; border: 0px; height: 0px;"
-                              >
-                                <div
-                                  style="height: 0px; overflow: hidden;"
-                                >
-                                   
-                                </div>
-                              </td>
-                              <td
-                                style="padding: 0px; border: 0px; height: 0px;"
-                              >
-                                <div
-                                  style="height: 0px; overflow: hidden;"
-                                >
-                                   
-                                </div>
-                              </td>
-                            </tr>
-                            <tr
-                              class="ant-table-row ant-table-row-level-0"
-                              data-row-key=""
-                            >
-                              <td
-                                class="ant-table-cell"
-                              >
-                                1
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                SIMPLE
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                users
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                -
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                ALL
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                -
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                -
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                -
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                -
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                1
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                100.00
-                              </td>
-                              <td
-                                class="ant-table-cell"
-                              >
-                                -
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`useSQLExecPlan should render sqlExecPlan cad when user call "generateSQLExecPlanContent" method 1`] = `
-<div>
-  <div>
-    <div
       class="ant-space ant-space-vertical full-width-element"
     >
       <div
@@ -447,6 +54,7 @@ exports[`useSQLExecPlan should render sqlExecPlan cad when user call "generateSQ
       </div>
       <div
         class="ant-space-item"
+        style="margin-bottom: 8px;"
       >
         <div
           class="ant-card ant-card-bordered"
@@ -749,6 +357,93 @@ exports[`useSQLExecPlan should render sqlExecPlan cad when user call "generateSQ
           </div>
         </div>
       </div>
+      <div
+        class="ant-space-item"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                sqlQuery.executePlan.performanceStatistics
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-card ant-card-bordered ant-card-type-inner"
+              style="width: 25%;"
+            >
+              <div
+                class="ant-card-head"
+              >
+                <div
+                  class="ant-card-head-wrapper"
+                >
+                  <div
+                    class="ant-card-head-title"
+                  >
+                    <div
+                      class="ant-space ant-space-horizontal ant-space-align-center"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-right: 8px;"
+                      >
+                        <span
+                          aria-label="info-circle"
+                          class="anticon anticon-info-circle text-orange"
+                          role="img"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="info-circle"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                            />
+                            <path
+                              d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        sqlQuery.executePlan.affectRows
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-card-body"
+              >
+                <span
+                  class="ant-typography"
+                >
+                  --
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div
       class="ant-space ant-space-vertical full-width-element"
@@ -801,6 +496,7 @@ exports[`useSQLExecPlan should render sqlExecPlan cad when user call "generateSQ
       </div>
       <div
         class="ant-space-item"
+        style="margin-bottom: 8px;"
       >
         <div
           class="ant-card ant-card-bordered"
@@ -1098,6 +794,1877 @@ exports[`useSQLExecPlan should render sqlExecPlan cad when user call "generateSQ
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-space-item"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                sqlQuery.executePlan.performanceStatistics
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-card ant-card-bordered ant-card-type-inner"
+              style="width: 25%;"
+            >
+              <div
+                class="ant-card-head"
+              >
+                <div
+                  class="ant-card-head-wrapper"
+                >
+                  <div
+                    class="ant-card-head-title"
+                  >
+                    <div
+                      class="ant-space ant-space-horizontal ant-space-align-center"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-right: 8px;"
+                      >
+                        <span
+                          aria-label="info-circle"
+                          class="anticon anticon-info-circle text-orange"
+                          role="img"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="info-circle"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                            />
+                            <path
+                              d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        sqlQuery.executePlan.affectRows
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-card-body"
+              >
+                <span
+                  class="ant-typography"
+                >
+                  --
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`useSQLExecPlan should render sqlExecPlan cad when user call "generateSQLExecPlanContent" method 1`] = `
+<div>
+  <div>
+    <div
+      class="ant-space ant-space-vertical full-width-element"
+    >
+      <div
+        class="ant-space-item"
+        style="margin-bottom: 8px;"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                sqlQuery.executePlan.sql
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <pre>
+              <span
+                class="hljs-keyword"
+              >
+                SELECT
+              </span>
+               
+              <span
+                class="hljs-operator"
+              >
+                *
+              </span>
+               
+              <span
+                class="hljs-keyword"
+              >
+                from
+              </span>
+               tasks;
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-space-item"
+        style="margin-bottom: 8px;"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                sqlQuery.executePlan.sqlExplain
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-table-wrapper"
+            >
+              <div
+                class="ant-spin-nested-loading"
+              >
+                <div
+                  class="ant-spin-container"
+                >
+                  <div
+                    class="ant-table ant-table-scroll-horizontal"
+                  >
+                    <div
+                      class="ant-table-container"
+                    >
+                      <div
+                        class="ant-table-content"
+                        style="overflow-x: auto; overflow-y: hidden;"
+                      >
+                        <table
+                          style="min-width: 100%; table-layout: auto;"
+                        >
+                          <colgroup />
+                          <thead
+                            class="ant-table-thead"
+                          >
+                            <tr>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                id
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                select_type
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                table
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                partitions
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                type
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                possible_keys
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                key
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                key_len
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                ref
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                rows
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                filtered
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                Extra
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody
+                            class="ant-table-tbody"
+                          >
+                            <tr
+                              aria-hidden="true"
+                              class="ant-table-measure-row"
+                              style="height: 0px; font-size: 0px;"
+                            >
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                            </tr>
+                            <tr
+                              class="ant-table-row ant-table-row-level-0"
+                              data-row-key=""
+                            >
+                              <td
+                                class="ant-table-cell"
+                              >
+                                1
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                SIMPLE
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                tasks
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                ALL
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                1
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                100.00
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-space-item"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                sqlQuery.executePlan.performanceStatistics
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-card ant-card-bordered ant-card-type-inner"
+              style="width: 25%;"
+            >
+              <div
+                class="ant-card-head"
+              >
+                <div
+                  class="ant-card-head-wrapper"
+                >
+                  <div
+                    class="ant-card-head-title"
+                  >
+                    <div
+                      class="ant-space ant-space-horizontal ant-space-align-center"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-right: 8px;"
+                      >
+                        <span
+                          aria-label="info-circle"
+                          class="anticon anticon-info-circle text-orange"
+                          role="img"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="info-circle"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                            />
+                            <path
+                              d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        sqlQuery.executePlan.affectRows
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-card-body"
+              >
+                <span
+                  class="ant-typography"
+                >
+                  10
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-space ant-space-vertical full-width-element"
+    >
+      <div
+        class="ant-space-item"
+        style="margin-bottom: 8px;"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                sqlQuery.executePlan.sql
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <pre>
+              <span
+                class="hljs-keyword"
+              >
+                SELECT
+              </span>
+               
+              <span
+                class="hljs-operator"
+              >
+                *
+              </span>
+               
+              <span
+                class="hljs-keyword"
+              >
+                from
+              </span>
+               users;
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-space-item"
+        style="margin-bottom: 8px;"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                sqlQuery.executePlan.sqlExplain
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-table-wrapper"
+            >
+              <div
+                class="ant-spin-nested-loading"
+              >
+                <div
+                  class="ant-spin-container"
+                >
+                  <div
+                    class="ant-table ant-table-scroll-horizontal"
+                  >
+                    <div
+                      class="ant-table-container"
+                    >
+                      <div
+                        class="ant-table-content"
+                        style="overflow-x: auto; overflow-y: hidden;"
+                      >
+                        <table
+                          style="min-width: 100%; table-layout: auto;"
+                        >
+                          <colgroup />
+                          <thead
+                            class="ant-table-thead"
+                          >
+                            <tr>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                id
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                select_type
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                table
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                partitions
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                type
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                possible_keys
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                key
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                key_len
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                ref
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                rows
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                filtered
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                Extra
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody
+                            class="ant-table-tbody"
+                          >
+                            <tr
+                              aria-hidden="true"
+                              class="ant-table-measure-row"
+                              style="height: 0px; font-size: 0px;"
+                            >
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                            </tr>
+                            <tr
+                              class="ant-table-row ant-table-row-level-0"
+                              data-row-key=""
+                            >
+                              <td
+                                class="ant-table-cell"
+                              >
+                                1
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                SIMPLE
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                users
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                ALL
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                1
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                100.00
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-space-item"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                sqlQuery.executePlan.performanceStatistics
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-card ant-card-bordered ant-card-type-inner"
+              style="width: 25%;"
+            >
+              <div
+                class="ant-card-head"
+              >
+                <div
+                  class="ant-card-head-wrapper"
+                >
+                  <div
+                    class="ant-card-head-title"
+                  >
+                    <div
+                      class="ant-space ant-space-horizontal ant-space-align-center"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-right: 8px;"
+                      >
+                        <span
+                          aria-label="info-circle"
+                          class="anticon anticon-info-circle text-orange"
+                          role="img"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="info-circle"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                            />
+                            <path
+                              d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        sqlQuery.executePlan.affectRows
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-card-body"
+              >
+                <span
+                  class="ant-typography"
+                >
+                  10
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`useSQLExecPlan should render sqlExecPlan cad when user call "generateSQLExecPlanContent" method 2`] = `
+<div>
+  <div>
+    <div
+      class="ant-space ant-space-vertical full-width-element"
+    >
+      <div
+        class="ant-space-item"
+        style="margin-bottom: 8px;"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                sqlQuery.executePlan.sql
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <pre>
+              <span
+                class="hljs-keyword"
+              >
+                SELECT
+              </span>
+               
+              <span
+                class="hljs-operator"
+              >
+                *
+              </span>
+               
+              <span
+                class="hljs-keyword"
+              >
+                from
+              </span>
+               tasks;
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-space-item"
+        style="margin-bottom: 8px;"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                sqlQuery.executePlan.sqlExplain
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-table-wrapper"
+            >
+              <div
+                class="ant-spin-nested-loading"
+              >
+                <div
+                  class="ant-spin-container"
+                >
+                  <div
+                    class="ant-table ant-table-scroll-horizontal"
+                  >
+                    <div
+                      class="ant-table-container"
+                    >
+                      <div
+                        class="ant-table-content"
+                        style="overflow-x: auto; overflow-y: hidden;"
+                      >
+                        <table
+                          style="min-width: 100%; table-layout: auto;"
+                        >
+                          <colgroup />
+                          <thead
+                            class="ant-table-thead"
+                          >
+                            <tr>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                id
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                select_type
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                table
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                partitions
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                type
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                possible_keys
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                key
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                key_len
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                ref
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                rows
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                filtered
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                Extra
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody
+                            class="ant-table-tbody"
+                          >
+                            <tr
+                              aria-hidden="true"
+                              class="ant-table-measure-row"
+                              style="height: 0px; font-size: 0px;"
+                            >
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                            </tr>
+                            <tr
+                              class="ant-table-row ant-table-row-level-0"
+                              data-row-key=""
+                            >
+                              <td
+                                class="ant-table-cell"
+                              >
+                                1
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                SIMPLE
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                tasks
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                ALL
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                1
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                100.00
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-space-item"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                sqlQuery.executePlan.performanceStatistics
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-card ant-card-bordered ant-card-type-inner"
+              style="width: 25%;"
+            >
+              <div
+                class="ant-card-head"
+              >
+                <div
+                  class="ant-card-head-wrapper"
+                >
+                  <div
+                    class="ant-card-head-title"
+                  >
+                    <div
+                      class="ant-space ant-space-horizontal ant-space-align-center"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-right: 8px;"
+                      >
+                        <span
+                          aria-label="info-circle"
+                          class="anticon anticon-info-circle text-orange"
+                          role="img"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="info-circle"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                            />
+                            <path
+                              d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        sqlQuery.executePlan.affectRows
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-card-body"
+              >
+                <span
+                  class="ant-typography ant-typography-danger"
+                >
+                  ERROR: 
+                  error
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-space ant-space-vertical full-width-element"
+    >
+      <div
+        class="ant-space-item"
+        style="margin-bottom: 8px;"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                sqlQuery.executePlan.sql
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <pre>
+              <span
+                class="hljs-keyword"
+              >
+                SELECT
+              </span>
+               
+              <span
+                class="hljs-operator"
+              >
+                *
+              </span>
+               
+              <span
+                class="hljs-keyword"
+              >
+                from
+              </span>
+               users;
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-space-item"
+        style="margin-bottom: 8px;"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                sqlQuery.executePlan.sqlExplain
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-table-wrapper"
+            >
+              <div
+                class="ant-spin-nested-loading"
+              >
+                <div
+                  class="ant-spin-container"
+                >
+                  <div
+                    class="ant-table ant-table-scroll-horizontal"
+                  >
+                    <div
+                      class="ant-table-container"
+                    >
+                      <div
+                        class="ant-table-content"
+                        style="overflow-x: auto; overflow-y: hidden;"
+                      >
+                        <table
+                          style="min-width: 100%; table-layout: auto;"
+                        >
+                          <colgroup />
+                          <thead
+                            class="ant-table-thead"
+                          >
+                            <tr>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                id
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                select_type
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                table
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                partitions
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                type
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                possible_keys
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                key
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                key_len
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                ref
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                rows
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                filtered
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
+                                Extra
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody
+                            class="ant-table-tbody"
+                          >
+                            <tr
+                              aria-hidden="true"
+                              class="ant-table-measure-row"
+                              style="height: 0px; font-size: 0px;"
+                            >
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                              <td
+                                style="padding: 0px; border: 0px; height: 0px;"
+                              >
+                                <div
+                                  style="height: 0px; overflow: hidden;"
+                                >
+                                   
+                                </div>
+                              </td>
+                            </tr>
+                            <tr
+                              class="ant-table-row ant-table-row-level-0"
+                              data-row-key=""
+                            >
+                              <td
+                                class="ant-table-cell"
+                              >
+                                1
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                SIMPLE
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                users
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                ALL
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                1
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                100.00
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                -
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-space-item"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                sqlQuery.executePlan.performanceStatistics
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-card ant-card-bordered ant-card-type-inner"
+              style="width: 25%;"
+            >
+              <div
+                class="ant-card-head"
+              >
+                <div
+                  class="ant-card-head-wrapper"
+                >
+                  <div
+                    class="ant-card-head-title"
+                  >
+                    <div
+                      class="ant-space ant-space-horizontal ant-space-align-center"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-right: 8px;"
+                      >
+                        <span
+                          aria-label="info-circle"
+                          class="anticon anticon-info-circle text-orange"
+                          role="img"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="info-circle"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                            />
+                            <path
+                              d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        sqlQuery.executePlan.affectRows
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-card-body"
+              >
+                <span
+                  class="ant-typography ant-typography-danger"
+                >
+                  ERROR: 
+                  error
+                </span>
               </div>
             </div>
           </div>

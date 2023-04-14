@@ -25,5 +25,8 @@ export default {
     title: '执行计划{{index}}',
     sql: 'SQL语句',
     sqlExplain: '执行计划',
+    performanceStatistics: '性能统计',
+    affectRows: '影响行数',
+    affectRowTips: '区别于执行计划的rows列，显示SQL的实际影响行数',
   },
 };

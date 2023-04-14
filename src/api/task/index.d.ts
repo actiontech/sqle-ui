@@ -8,7 +8,8 @@ import {
   IUpdateAuditTaskSQLsReqV1,
   IBaseRes,
   IGetTaskAnalysisDataResV1,
-  IGetAuditTaskSQLsResV2
+  IGetAuditTaskSQLsResV2,
+  IGetTaskAnalysisDataResV2
 } from '../common.d';
 
 import {
@@ -130,3 +131,12 @@ export interface IGetAuditTaskSQLsV2Params {
 }
 
 export interface IGetAuditTaskSQLsV2Return extends IGetAuditTaskSQLsResV2 {}
+
+export interface IGetTaskAnalysisDataV2Params {
+  task_id: string;
+
+  number: number;
+}
+
+export interface IGetTaskAnalysisDataV2Return
+  extends IGetTaskAnalysisDataResV2 {}

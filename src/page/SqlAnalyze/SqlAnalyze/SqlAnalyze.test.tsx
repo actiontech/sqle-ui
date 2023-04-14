@@ -28,17 +28,27 @@ describe('SqlAnalyze/SqlAnalyze', () => {
   test('should render loading status by "loading" value of props', () => {
     const { container, rerender } = render(
       <SqlAnalyze
-        tableSchemas={tableSchemas.map((e) => e.tableMeta)}
+        tableMetas={{
+          table_meta_items: tableSchemas.map((e) => e.tableMeta),
+          err_message: '',
+        }}
         sqlExplain={sqlExecPlans[0]}
         loading={true}
+        performanceStatistics={{ affect_rows: { count: 10, err_message: '' } }}
         errorMessage=""
       />
     );
     expect(container).toMatchSnapshot();
     rerender(
       <SqlAnalyze
-        tableSchemas={tableSchemas.map((e) => e.tableMeta)}
+        tableMetas={{
+          table_meta_items: tableSchemas.map((e) => e.tableMeta),
+          err_message: '',
+        }}
         sqlExplain={sqlExecPlans[0]}
+        performanceStatistics={{
+          affect_rows: { count: 0, err_message: 'error' },
+        }}
         loading={false}
         errorMessage=""
       />
@@ -52,10 +62,14 @@ describe('SqlAnalyze/SqlAnalyze', () => {
   test('should render errorMessage when "errorMessage" is not empty', () => {
     const { container } = render(
       <SqlAnalyze
-        tableSchemas={tableSchemas.map((e) => e.tableMeta)}
+        tableMetas={{
+          table_meta_items: tableSchemas.map((e) => e.tableMeta),
+          err_message: '',
+        }}
         sqlExplain={sqlExecPlans[0]}
         loading={false}
         errorMessage="error"
+        performanceStatistics={{ affect_rows: { count: 10, err_message: '' } }}
       />
     );
     expect(container).toMatchSnapshot();
@@ -64,11 +78,15 @@ describe('SqlAnalyze/SqlAnalyze', () => {
   test('should render errorMessage by errorType field when "errorMessage" is not empty', () => {
     const { container } = render(
       <SqlAnalyze
-        tableSchemas={tableSchemas.map((e) => e.tableMeta)}
+        tableMetas={{
+          table_meta_items: tableSchemas.map((e) => e.tableMeta),
+          err_message: '',
+        }}
         sqlExplain={sqlExecPlans[0]}
         loading={false}
         errorMessage="error"
         errorType="info"
+        performanceStatistics={{ affect_rows: { count: 10, err_message: '' } }}
       />
     );
     expect(container).toMatchSnapshot();
