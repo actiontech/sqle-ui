@@ -52,7 +52,7 @@ describe('SqlAnalyze/Order', () => {
   });
 
   const mockGetAnalyzeData = () => {
-    const spy = jest.spyOn(task, 'getTaskAnalysisData');
+    const spy = jest.spyOn(task, 'getTaskAnalysisDataV2');
     spy.mockImplementation(() => resolveThreeSecond(AuditPlanSqlAnalyzeData));
     return spy;
   };

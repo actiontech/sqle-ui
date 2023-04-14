@@ -8,10 +8,11 @@ import useSQLExecPlan from './useSQLExecPlan';
 const SqlAnalyze: React.FC<SqlAnalyzeProps> = (props) => {
   const { t } = useTranslation();
   const {
-    tableSchemas,
+    tableMetas,
     sqlExplain,
     errorMessage,
     loading = false,
+    performanceStatistics,
     errorType = 'error',
   } = props;
 
@@ -41,9 +42,11 @@ const SqlAnalyze: React.FC<SqlAnalyzeProps> = (props) => {
           <EmptyBox if={!errorMessage} defaultNode={createError()}>
             <Tabs>
               <Tabs.TabPane tab={t('sqlAnalyze.sqlExplain')}>
-                {generateSQLExecPlanContent(sqlExplain ?? {})}
+                {generateSQLExecPlanContent(
+                  { ...sqlExplain, ...performanceStatistics } ?? {}
+                )}
               </Tabs.TabPane>
-              {tableSchemas.map((table) => {
+              {tableMetas?.table_meta_items?.map((table) => {
                 return (
                   <Tabs.TabPane
                     tab={t('sqlAnalyze.tableTitle', {
