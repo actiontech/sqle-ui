@@ -116,7 +116,7 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                     >
                       <div
                         class="ant-input-textarea ant-input-textarea-show-count"
-                        data-count="0 / 50"
+                        data-count="0 / 3000"
                       >
                         <textarea
                           class="ant-input"
@@ -2253,7 +2253,7 @@ exports[`Order/Create should audit sql when user click audit button 2`] = `
                     >
                       <div
                         class="ant-input-textarea ant-input-textarea-show-count"
-                        data-count="0 / 50"
+                        data-count="0 / 3000"
                       >
                         <textarea
                           class="ant-input"
@@ -3993,7 +3993,7 @@ exports[`Order/Create should render page header 1`] = `
                       >
                         <div
                           class="ant-input-textarea ant-input-textarea-show-count"
-                          data-count="0 / 50"
+                          data-count="0 / 3000"
                         >
                           <textarea
                             class="ant-input"

@@ -26,7 +26,7 @@ import {
   taskSqls,
 } from '../Detail/__testData__';
 
-const orderDescMaxLength = 50;
+const orderDescMaxLength = 3000;
 
 jest.mock('moment', () => {
   return () => ({
