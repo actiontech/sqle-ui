@@ -37,7 +37,9 @@ import {
   IGetInstanceListV2Params,
   IGetInstanceListV2Return,
   ICreateInstanceV2Params,
-  ICreateInstanceV2Return
+  ICreateInstanceV2Return,
+  IGetInstanceV2Params,
+  IGetInstanceV2Return
 } from './index.d';
 
 class InstanceService extends ServiceBase {
@@ -299,6 +301,24 @@ class InstanceService extends ServiceBase {
 
     return this.post<ICreateInstanceV2Return>(
       `/v2/projects/${project_name}/instances`,
+      paramsData,
+      options
+    );
+  }
+
+  public getInstanceV2(
+    params: IGetInstanceV2Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    const instance_name = paramsData.instance_name;
+    delete paramsData.instance_name;
+
+    return this.get<IGetInstanceV2Return>(
+      `/v2/projects/${project_name}/instances/${instance_name}/`,
       paramsData,
       options
     );

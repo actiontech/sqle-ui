@@ -1,4 +1,5 @@
 import { FormInstance } from 'antd';
+import { IRuleTemplateV2 } from '../../../../api/common';
 import { SqlStatementFields } from '../../SqlStatementFormTabs';
 
 export type SqlInfoFormProps = {
@@ -55,3 +56,4 @@ export type DifferenceSqlModeProps = Omit<
 
 export type InstanceNamesType = Map<number, string>;
 export type SchemaListType = Map<number, string[]>;
+export type RuleTemplateListType = Map<number, IRuleTemplateV2 | undefined>;

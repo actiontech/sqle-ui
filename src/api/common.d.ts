@@ -2771,6 +2771,14 @@ export interface IGetAuditTaskSQLsResV2 {
   total_nums?: number;
 }
 
+export interface IGetInstanceResV2 {
+  code?: number;
+
+  data?: IInstanceResV2;
+
+  message?: string;
+}
+
 export interface IGetInstancesResV2 {
   code?: number;
 
