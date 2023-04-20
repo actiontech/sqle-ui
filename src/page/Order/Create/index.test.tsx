@@ -27,7 +27,7 @@ import {
 } from '../Detail/__testData__';
 import { mockGetInstance } from './SqlInfoForm/__test__/index.test';
 
-const orderDescMaxLength = 50;
+const orderDescMaxLength = 3000;
 
 jest.mock('moment', () => {
   return () => ({
