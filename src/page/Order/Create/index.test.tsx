@@ -25,6 +25,7 @@ import {
   taskInfoErrorAuditLevel,
   taskSqls,
 } from '../Detail/__testData__';
+import { mockGetInstance } from './SqlInfoForm/__test__/index.test';
 
 const orderDescMaxLength = 50;
 
@@ -51,6 +52,7 @@ describe('Order/Create', () => {
     mockUseInstanceSchema();
     mockDriver();
     mockGetAllRules();
+    mockGetInstance();
     useParamsMock.mockReturnValue({ projectName });
   });
 

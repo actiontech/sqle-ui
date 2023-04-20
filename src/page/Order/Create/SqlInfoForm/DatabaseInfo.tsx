@@ -1,14 +1,20 @@
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Col, Form, Row, Select } from 'antd';
 import { cloneDeep } from 'lodash';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import instance from '../../../../api/instance';
 import { getInstanceTipListV1FunctionalModuleEnum } from '../../../../api/instance/index.enum';
 import EmptyBox from '../../../../components/EmptyBox';
 import { ResponseCode } from '../../../../data/common';
 import useInstance from '../../../../hooks/useInstance';
-import { DatabaseInfoProps, SchemaListType } from './index.type';
+import { RuleUrlParamKey } from '../../../Rule/useRuleFilterForm';
+import {
+  DatabaseInfoProps,
+  RuleTemplateListType,
+  SchemaListType,
+} from './index.type';
 
 const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
   form,
@@ -24,25 +30,44 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
     new Map([[0, []]])
   );
 
+  const [ruleTemplates, setRuleTemplates] = useState<RuleTemplateListType>(
+    new Map([[0, undefined]])
+  );
+
   const instanceTypeMap = useRef<Map<number, string>>(new Map());
   const { updateInstanceList, generateInstanceSelectOption, instanceList } =
     useInstance();
 
-  const handleInstanceNameChange = (name: string, index: number) => {
+  const handleInstanceNameChange = (name: string, fieldKey: number) => {
     setInstanceNames((values) => {
       const cloneValue = cloneDeep(values);
-      cloneValue.set(index, name);
+      cloneValue.set(fieldKey, name);
       return cloneValue;
     });
 
     instanceNameChange?.(name);
-    updateSchemaList(name, index);
+    updateSchemaList(name, fieldKey);
+    updateRuleTemplateName(name, fieldKey);
     const currentInstance = instanceList.find((v) => v.instance_name === name);
 
-    getInstanceTypeWithAction(index, 'add', currentInstance?.instance_type);
+    getInstanceTypeWithAction(fieldKey, 'add', currentInstance?.instance_type);
   };
 
-  const updateSchemaList = (name: string, index: number) => {
+  const updateRuleTemplateName = (name: string, fieldKey: number) => {
+    instance
+      .getInstanceV2({ instance_name: name, project_name: projectName })
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          setRuleTemplates((values) => {
+            const cloneValue = cloneDeep(values);
+            cloneValue.set(fieldKey, res.data.data?.rule_template);
+            return cloneValue;
+          });
+        }
+      });
+  };
+
+  const updateSchemaList = (name: string, fieldKey: number) => {
     instance
       .getInstanceSchemasV1({
         instance_name: name,
@@ -52,7 +77,7 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
         if (res.data.code === ResponseCode.SUCCESS) {
           setSchemaList((values) => {
             const cloneValue = cloneDeep(values);
-            cloneValue.set(index, res.data.data?.schema_name_list ?? []);
+            cloneValue.set(fieldKey, res.data.data?.schema_name_list ?? []);
             return cloneValue;
           });
         }
@@ -83,6 +108,32 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
     const isExistDifferentInstanceType = instanceTypeSet.size > 1;
     setChangeSqlModeDisabled(isExistDifferentInstanceType);
   };
+
+  const ruleTemplateDisplay = useCallback(
+    (fieldKey: number) => {
+      const rule = ruleTemplates.get(fieldKey);
+      if (!rule) {
+        return undefined;
+      }
+
+      if (rule.is_global_rule_template) {
+        return (
+          <Link to={`/rule?${RuleUrlParamKey.ruleTemplateName}=${rule.name}`}>
+            {t('rule.form.ruleTemplate')}: {rule.name}
+          </Link>
+        );
+      }
+
+      return (
+        <Link
+          to={`/rule?${RuleUrlParamKey.ruleTemplateName}=${rule.name}&${RuleUrlParamKey.projectName}=${projectName}`}
+        >
+          {t('rule.form.ruleTemplate')}: {rule.name}
+        </Link>
+      );
+    },
+    [projectName, ruleTemplates, t]
+  );
 
   useEffect(() => {
     updateInstanceList({
@@ -186,11 +237,25 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
                           getInstanceTypeWithAction(field.key, 'remove');
                           remove(index);
                           clearTaskInfoWithKey(field.key.toString());
+                          setSchemaList((values) => {
+                            const cloneValue = cloneDeep(values);
+                            cloneValue.delete(field.key);
+                            return cloneValue;
+                          });
+                          setRuleTemplates((values) => {
+                            const cloneValue = cloneDeep(values);
+                            cloneValue.delete(field.key);
+                            return cloneValue;
+                          });
                         }}
                       />
                     </EmptyBox>
                   </Col>
                 </Row>
+              </Col>
+
+              <Col span={4} style={{ marginTop: 4 }}>
+                {ruleTemplateDisplay(field.key)}
               </Col>
             </Row>
           ))}

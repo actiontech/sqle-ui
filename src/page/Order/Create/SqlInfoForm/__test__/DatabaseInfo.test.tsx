@@ -1,12 +1,16 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks/dom';
 import Form, { useForm } from 'antd/lib/form/Form';
 import { getInstanceTipListV1FunctionalModuleEnum } from '../../../../../api/instance/index.enum';
+import { renderWithRouter } from '../../../../../testUtils/customRender';
 import {
   mockInstanceTip,
   mockUseInstanceSchema,
+  resolveThreeSecond,
 } from '../../../../../testUtils/mockRequest';
+import { RuleUrlParamKey } from '../../../../Rule/useRuleFilterForm';
 import DatabaseInfo from '../DatabaseInfo';
+import { mockGetInstance } from './index.test';
 
 const selectOptionByIndex = (
   label: string,
@@ -33,11 +37,13 @@ describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
   const projectName = 'default';
   let getInstanceListSpy: jest.SpyInstance;
   let getInstanceSchemaSpy: jest.SpyInstance;
+  let getInstanceSpy: jest.SpyInstance;
 
   beforeEach(() => {
     jest.useFakeTimers();
     getInstanceListSpy = mockInstanceTip();
     getInstanceSchemaSpy = mockUseInstanceSchema();
+    getInstanceSpy = mockGetInstance();
   });
 
   afterEach(() => {
@@ -48,7 +54,7 @@ describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
 
   const renderComponent = () => {
     const { result } = renderHook(() => useForm());
-    return render(
+    return renderWithRouter(
       <Form form={result.current[0]}>
         <DatabaseInfo
           form={result.current[0]}
@@ -83,6 +89,7 @@ describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
     expect(setInstanceNames).toBeCalledTimes(0);
     expect(clearTaskInfoWithKey).toBeCalledTimes(0);
 
+    expect(getInstanceSpy).toBeCalledTimes(0);
     expect(getInstanceListSpy).toBeCalledTimes(1);
     expect(getInstanceListSpy).toBeCalledWith({
       project_name: projectName,
@@ -127,6 +134,12 @@ describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
       project_name: projectName,
     });
 
+    expect(getInstanceSpy).toBeCalledTimes(1);
+    expect(getInstanceSpy).toBeCalledWith({
+      instance_name: 'mysql-test',
+      project_name: projectName,
+    });
+
     expect(
       screen.queryAllByLabelText('order.sqlInfo.instanceSchema')[0]
     ).not.toBeDisabled();
@@ -134,6 +147,17 @@ describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
     await waitFor(() => {
       jest.advanceTimersByTime(3000);
     });
+
+    expect(
+      screen.getByText('rule.form.ruleTemplate: not_submit_test_rule33')
+    ).toBeInTheDocument();
+
+    expect(
+      screen
+        .getByText('rule.form.ruleTemplate: not_submit_test_rule33')
+        .getAttribute('href')
+    ).toBe(`/rule?${RuleUrlParamKey.ruleTemplateName}=not_submit_test_rule33`);
+
     selectOptionByIndex('order.sqlInfo.instanceSchema', 'schema1');
     await waitFor(() => {
       jest.advanceTimersByTime(0);
@@ -186,13 +210,23 @@ describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
     expect(instanceNameChange).toBeCalledTimes(2);
 
     expect(setChangeSqlModeDisabled).toBeCalledTimes(2);
-    expect(setChangeSqlModeDisabled).toBeCalledWith(false);
+    expect(setChangeSqlModeDisabled).nthCalledWith(2, false);
 
     expect(getInstanceSchemaSpy).toBeCalledTimes(2);
-    expect(getInstanceSchemaSpy).toBeCalledWith({
+    expect(getInstanceSchemaSpy).nthCalledWith(2, {
       instance_name: 'mysql-test',
       project_name: projectName,
     });
+
+    expect(getInstanceSpy).toBeCalledTimes(2);
+    expect(getInstanceSpy).nthCalledWith(2, {
+      instance_name: 'mysql-test',
+      project_name: projectName,
+    });
+    expect(
+      screen.getAllByText('rule.form.ruleTemplate: not_submit_test_rule33')
+        .length
+    ).toBe(2);
 
     //remove
     fireEvent.click(screen.getByTestId('remove-item'));
@@ -203,6 +237,11 @@ describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
     expect(
       screen.queryAllByLabelText('order.sqlInfo.instanceSchema').length
     ).toBe(1);
+    expect(
+      screen.getAllByText('rule.form.ruleTemplate: not_submit_test_rule33')
+        .length
+    ).toBe(1);
+
     expect(screen.queryByTestId('remove-item')).not.toBeInTheDocument();
 
     expect(setInstanceNames).toBeCalledTimes(4);
@@ -261,10 +300,16 @@ describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
     expect(instanceNameChange).toBeCalledTimes(3);
 
     expect(setChangeSqlModeDisabled).toBeCalledTimes(4);
-    expect(setChangeSqlModeDisabled).toBeCalledWith(true);
+    expect(setChangeSqlModeDisabled).nthCalledWith(4, true);
 
     expect(getInstanceSchemaSpy).toBeCalledTimes(3);
-    expect(getInstanceSchemaSpy).toBeCalledWith({
+    expect(getInstanceSchemaSpy).nthCalledWith(3, {
+      instance_name: 'oracle-test',
+      project_name: projectName,
+    });
+
+    expect(getInstanceSpy).toBeCalledTimes(3);
+    expect(getInstanceSpy).nthCalledWith(3, {
       instance_name: 'oracle-test',
       project_name: projectName,
     });
@@ -293,5 +338,41 @@ describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
 
     expect(clearTaskInfoWithKey).toBeCalledTimes(2);
     expect(clearTaskInfoWithKey).toBeCalledWith('2');
+  });
+
+  test('should set project name when rule template is not global', async () => {
+    getInstanceSpy.mockImplementation(() =>
+      resolveThreeSecond({
+        rule_template: {
+          is_global_rule_template: false,
+          name: 'default_rule_template',
+        },
+      })
+    );
+
+    renderComponent();
+
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    selectOptionByIndex('order.sqlInfo.instanceName', 'mysql-test');
+    await waitFor(() => {
+      jest.advanceTimersByTime(0);
+    });
+
+    expect(getInstanceSpy).toBeCalled();
+    await waitFor(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(
+      screen.getByText('rule.form.ruleTemplate: default_rule_template')
+    ).toBeInTheDocument();
+    expect(
+      screen
+        .getByText('rule.form.ruleTemplate: default_rule_template')
+        .getAttribute('href')
+    ).toBe(
+      `/rule?${RuleUrlParamKey.ruleTemplateName}=default_rule_template&${RuleUrlParamKey.projectName}=${projectName}`
+    );
   });
 });
