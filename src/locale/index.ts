@@ -4,7 +4,7 @@ import StorageKey from '../data/StorageKey';
 import { Dictionary, I18nKey } from '../types/common.type';
 import LocalStorageWrapper from '../utils/LocalStorageWrapper';
 import enUS from './en-US';
-import zhCn from './zh-CN';
+import zhCN from './zh-CN';
 
 enum SupportLanguage {
   zhCN = 'zh-CN',
@@ -13,7 +13,7 @@ enum SupportLanguage {
 
 i18n.use(initReactI18next).init({
   resources: {
-    [SupportLanguage.zhCN]: zhCn,
+    [SupportLanguage.zhCN]: zhCN,
     [SupportLanguage.enUS]: enUS,
   },
   lng: LocalStorageWrapper.getOrDefault(
@@ -23,6 +23,17 @@ i18n.use(initReactI18next).init({
   fallbackLng: SupportLanguage.zhCN,
   interpolation: {
     escapeValue: false,
+    /*
+     * 避免语言包存在插值但是没有在没有传递值的情况下渲染出原始内容
+     * example:
+     *  {
+     *    key: ‘请输入 {{name}}’
+     *  }
+     *  t('key')
+     *  1. skipOnVariables 为 true 时: 请输入 {{name}}
+     *  2. skipOnVariables 为 false 时: 请输入
+     */
+    skipOnVariables: false,
   },
 });
 
