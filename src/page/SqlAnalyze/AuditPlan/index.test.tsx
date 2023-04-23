@@ -44,7 +44,7 @@ describe('SqlAnalyze/AuditPlan', () => {
       reportId: 'reportId1',
       sqlNum: '123',
       projectName,
-      auditPlanName: '123',
+      auditPlanName: 'api_test_1',
     });
   });
 
@@ -60,7 +60,7 @@ describe('SqlAnalyze/AuditPlan', () => {
   });
 
   const mockGetAnalyzeData = () => {
-    const spy = jest.spyOn(audit_plan, 'getTaskAnalysisData');
+    const spy = jest.spyOn(audit_plan, 'getAuditPlantAnalysisDataV2');
     spy.mockImplementation(() => resolveThreeSecond(AuditPlanSqlAnalyzeData));
     return spy;
   };
@@ -73,7 +73,7 @@ describe('SqlAnalyze/AuditPlan', () => {
       project_name: projectName,
       audit_plan_report_id: 'reportId1',
       number: '123',
-      audit_plan_name: '123',
+      audit_plan_name: 'api_test_1',
     });
     expect(container).toMatchSnapshot();
     await act(async () => jest.advanceTimersByTime(3000));

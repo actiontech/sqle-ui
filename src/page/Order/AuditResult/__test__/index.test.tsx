@@ -6,12 +6,15 @@ import {
   getBySelector,
 } from '../../../../testUtils/customQuery';
 import { resolveThreeSecond } from '../../../../testUtils/mockRequest';
+import { mockGetAllRules } from '../../../Rule/__test__/utils';
 import { taskSqls } from '../../Detail/__testData__';
 
 describe('Order/Detail/AuditResult', () => {
   const projectName = 'default';
+  let getAllRulesSpy: jest.SpyInstance;
   beforeEach(() => {
     jest.useFakeTimers();
+    getAllRulesSpy = mockGetAllRules();
   });
 
   afterEach(() => {
@@ -20,7 +23,7 @@ describe('Order/Detail/AuditResult', () => {
   });
 
   const mockGetTaskSqls = () => {
-    const spy = jest.spyOn(task, 'getAuditTaskSQLsV1');
+    const spy = jest.spyOn(task, 'getAuditTaskSQLsV2');
     spy.mockImplementation(() =>
       resolveThreeSecond(taskSqls, { otherData: { total_nums: 20 } })
     );
@@ -53,6 +56,18 @@ describe('Order/Detail/AuditResult', () => {
     expect(container).toMatchSnapshot();
     await act(async () => jest.advanceTimersByTime(3000));
 
+    expect(getBySelector('.result-box-error')).toBeInTheDocument();
+    expect(
+      getBySelector('.ant-table-row-expand-icon-cell .anticon-down')
+    ).toBeVisible();
+
+    fireEvent.click(
+      getBySelector('.ant-table-row-expand-icon-cell .anticon-down')
+    );
+    await act(() =>
+      expect(getBySelector('.ant-table-row-expand-icon-cell .anticon-up'))
+    );
+    expect(getBySelector('.ant-table-expanded-row')).toBeVisible();
     expect(container).toMatchSnapshot();
   });
 
@@ -186,7 +201,7 @@ describe('Order/Detail/AuditResult', () => {
     expect(getSqlSpy).toBeCalledTimes(2);
   });
 
-  it('should jump to sql analyze page when click analyze button', async () => {
+  test('should jump to sql analyze page when click analyze button', async () => {
     mockGetTaskSqls();
     render(<AuditResult taskId={9999} passRate={0.33} projectName="default" />);
     await act(async () => jest.advanceTimersByTime(3000));
@@ -197,5 +212,17 @@ describe('Order/Detail/AuditResult', () => {
     expect(openSpy).toBeCalledTimes(1);
     expect(openSpy).toBeCalledWith(`/project/default/order/9999/1/analyze`);
     openSpy.mockRestore();
+  });
+
+  test('should call get all rules request', async () => {
+    mockGetTaskSqls();
+    render(<AuditResult taskId={9999} projectName="default" />);
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    expect(getAllRulesSpy).toBeCalledTimes(1);
+    expect(getAllRulesSpy).nthCalledWith(1, {
+      filter_rule_names: 'all_check_where_is_invalid',
+    });
   });
 });

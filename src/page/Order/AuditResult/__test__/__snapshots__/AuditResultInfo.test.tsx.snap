@@ -1,0 +1,254 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order/AuditResult/AuditResultInfo should render audit result overview when get more than 2 audit results 1`] = `
+<div>
+  <div
+    class="result-box-list"
+  >
+    <li>
+      <div
+        class="result-box result-box-error"
+      >
+        <span
+          aria-label="info-circle"
+          class="anticon anticon-info-circle"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="info-circle"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+            />
+            <path
+              d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+            />
+          </svg>
+        </span>
+        <span
+          class="result-box-level"
+        >
+          error
+        </span>
+        <span>
+          2
+        </span>
+      </div>
+    </li>
+    <li>
+      <div
+        class="result-box result-box-warning"
+      >
+        <span
+          aria-label="warning"
+          class="anticon anticon-warning"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="warning"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M464 720a48 48 0 1096 0 48 48 0 10-96 0zm16-304v184c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V416c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8zm475.7 440l-416-720c-6.2-10.7-16.9-16-27.7-16s-21.6 5.3-27.7 16l-416 720C56 877.4 71.4 904 96 904h832c24.6 0 40-26.6 27.7-48zm-783.5-27.9L512 239.9l339.8 588.2H172.2z"
+            />
+          </svg>
+        </span>
+        <span
+          class="result-box-level"
+        >
+          warn
+        </span>
+        <span>
+          1
+        </span>
+      </div>
+    </li>
+    <li>
+      <div
+        class="result-box result-box-warning"
+      >
+        <span
+          aria-label="warning"
+          class="anticon anticon-warning"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="warning"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M464 720a48 48 0 1096 0 48 48 0 10-96 0zm16-304v184c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V416c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8zm475.7 440l-416-720c-6.2-10.7-16.9-16-27.7-16s-21.6 5.3-27.7 16l-416 720C56 877.4 71.4 904 96 904h832c24.6 0 40-26.6 27.7-48zm-783.5-27.9L512 239.9l339.8 588.2H172.2z"
+            />
+          </svg>
+        </span>
+        <span
+          class="result-box-level"
+        >
+          normal
+        </span>
+        <span>
+          1
+        </span>
+      </div>
+    </li>
+    <li>
+      <div
+        class="result-box "
+      >
+        <span
+          aria-label="info-circle"
+          class="anticon anticon-info-circle"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="info-circle"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+            />
+            <path
+              d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+            />
+          </svg>
+        </span>
+        <span
+          class="result-box-level"
+        >
+          notice
+        </span>
+        <span>
+          1
+        </span>
+      </div>
+    </li>
+  </div>
+</div>
+`;
+
+exports[`Order/AuditResult/AuditResultInfo should render passed when there is no audit result 1`] = `
+<div>
+  <div
+    class="result-box result-box-success"
+  >
+    <span
+      aria-label="check"
+      class="anticon anticon-check"
+      role="img"
+    >
+      <svg
+        aria-hidden="true"
+        data-icon="check"
+        fill="currentColor"
+        focusable="false"
+        height="1em"
+        viewBox="64 64 896 896"
+        width="1em"
+      >
+        <path
+          d="M912 190h-69.9c-9.8 0-19.1 4.5-25.1 12.2L404.7 724.5 207 474a32 32 0 00-25.1-12.2H112c-6.7 0-10.4 7.7-6.3 12.9l273.9 347c12.8 16.2 37.4 16.2 50.3 0l488.4-618.9c4.1-5.1.4-12.8-6.3-12.8z"
+        />
+      </svg>
+    </span>
+    <span
+      class="result-box-level"
+    >
+      passed
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Order/AuditResult/AuditResultInfo should render single audit result detail when only get one audit result 1`] = `
+<div>
+  <div
+    class="ant-space ant-space-vertical audit-result-error-message-wrapper"
+  >
+    <div
+      class="ant-space-item"
+    >
+      <div
+        class="ant-row ant-row-no-wrap"
+      >
+        <div
+          class="ant-col"
+          style="flex: 0 0 50px; min-width: 0;"
+        >
+          <div
+            class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
+          >
+            <div
+              class="ant-space-item"
+              style="margin-bottom: 1px;"
+            >
+              <div>
+                <span
+                  aria-label="info-circle"
+                  class="anticon anticon-info-circle"
+                  role="img"
+                  style="font-size: 25px; color: rgb(240, 0, 0);"
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-icon="info-circle"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                    />
+                    <path
+                      d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div
+              class="ant-space-item"
+            >
+              <span
+                class="ant-typography ant-typography-secondary"
+              >
+                error
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-col message"
+          style="flex: 1 1 auto; min-width: 0;"
+        >
+          <span>
+            schema 不存在
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -208,6 +208,10 @@ exports[`order/create/sqlInfoForm should match snapshot 1`] = `
           />
         </div>
       </div>
+      <div
+        class="ant-col ant-col-4"
+        style="margin-top: 4px;"
+      />
     </div>
     <div
       class="ant-form-item"

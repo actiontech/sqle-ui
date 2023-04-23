@@ -26,6 +26,7 @@ import {
 import { SupportTheme } from '../../../theme';
 import { AuditTaskResV1AuditLevelEnum } from '../../../api/common.enum';
 import { useDispatch, useSelector } from 'react-redux';
+import { mockGetAllRules } from '../../Rule/__test__/utils';
 
 jest.mock('react-router', () => {
   return {
@@ -74,6 +75,7 @@ describe('Order/Detail', () => {
     );
     (useDispatch as jest.Mock).mockImplementation(() => jest.fn());
     mockGetInstanceWorkflowTemplate();
+    mockGetAllRules();
     getInstanceSummarySpy = mockGetSummaryOfInstanceTasks();
     jest.useFakeTimers();
   });
@@ -110,7 +112,7 @@ describe('Order/Detail', () => {
   };
 
   const mockGetTaskSqls = () => {
-    const spy = jest.spyOn(task, 'getAuditTaskSQLsV1');
+    const spy = jest.spyOn(task, 'getAuditTaskSQLsV2');
     spy.mockImplementation(() =>
       resolveThreeSecond(taskSqls, { otherData: { total_nums: 20 } })
     );

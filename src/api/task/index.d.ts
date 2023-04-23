@@ -7,13 +7,18 @@ import {
   IGetAuditTaskSQLsResV1,
   IUpdateAuditTaskSQLsReqV1,
   IBaseRes,
-  IGetTaskAnalysisDataResV1
+  IGetTaskAnalysisDataResV1,
+  IGetAuditTaskSQLsResV2,
+  IGetTaskAnalysisDataResV2
 } from '../common.d';
 
 import {
   getAuditTaskSQLsV1FilterExecStatusEnum,
   getAuditTaskSQLsV1FilterAuditStatusEnum,
-  getAuditTaskSQLsV1FilterAuditLevelEnum
+  getAuditTaskSQLsV1FilterAuditLevelEnum,
+  getAuditTaskSQLsV2FilterExecStatusEnum,
+  getAuditTaskSQLsV2FilterAuditStatusEnum,
+  getAuditTaskSQLsV2FilterAuditLevelEnum
 } from './index.enum';
 
 export interface ICreateAuditTasksV1Params extends ICreateAuditTasksGroupReqV1 {
@@ -108,3 +113,30 @@ export interface IGetTaskAnalysisDataParams {
 }
 
 export interface IGetTaskAnalysisDataReturn extends IGetTaskAnalysisDataResV1 {}
+
+export interface IGetAuditTaskSQLsV2Params {
+  task_id: string;
+
+  filter_exec_status?: getAuditTaskSQLsV2FilterExecStatusEnum;
+
+  filter_audit_status?: getAuditTaskSQLsV2FilterAuditStatusEnum;
+
+  filter_audit_level?: getAuditTaskSQLsV2FilterAuditLevelEnum;
+
+  no_duplicate?: boolean;
+
+  page_index: string;
+
+  page_size: string;
+}
+
+export interface IGetAuditTaskSQLsV2Return extends IGetAuditTaskSQLsResV2 {}
+
+export interface IGetTaskAnalysisDataV2Params {
+  task_id: string;
+
+  number: number;
+}
+
+export interface IGetTaskAnalysisDataV2Return
+  extends IGetTaskAnalysisDataResV2 {}

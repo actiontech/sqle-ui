@@ -1,7 +1,8 @@
-import { Popconfirm, Space, Tag, Typography } from 'antd';
+import { Popconfirm, Space, Table, Tag, Typography } from 'antd';
 import moment from 'moment';
 import {
-  IAuditTaskSQLResV1,
+  IAuditResult,
+  IAuditTaskSQLResV2,
   IGetWorkflowTasksItemV2,
   IMaintenanceTimeResV1,
 } from '../../../api/common';
@@ -9,89 +10,103 @@ import {
   GetWorkflowTasksItemV2StatusEnum,
   WorkflowRecordResV2StatusEnum,
 } from '../../../api/common.enum';
-import {
-  getAuditTaskSQLsV1FilterAuditStatusEnum,
-  getAuditTaskSQLsV1FilterExecStatusEnum,
-} from '../../../api/task/index.enum';
+import { getAuditTaskSQLsV1FilterExecStatusEnum } from '../../../api/task/index.enum';
 import AuditResultErrorMessage from '../../../components/AuditResultErrorMessage';
 import EditText from '../../../components/EditText/EditText';
 import EmptyBox from '../../../components/EmptyBox';
-import {
-  auditStatusDictionary,
-  execStatusDictionary,
-} from '../../../hooks/useStaticStatus/index.data';
+import { execStatusDictionary } from '../../../hooks/useStaticStatus/index.data';
 import { t } from '../../../locale';
+import IconTipsLabel from '../../../components/IconTipsLabel';
 import { TableColumn } from '../../../types/common.type';
 import { formatTime } from '../../../utils/Common';
-import HighlightCode from '../../../utils/HighlightCode';
 import { floatToPercent } from '../../../utils/Math';
 import { checkTimeInWithMaintenanceTime } from '../Detail/OrderSteps/utils';
 import InstanceTasksStatus from './InstanceTasksStatus';
+import AuditResultInfo from './AuditResultInfo';
+import { ColumnGroupType, ColumnType } from 'antd/lib/table';
+
+export const expandedRowRender = (record: IAuditTaskSQLResV2) => (
+  <AuditResultErrorMessage auditResult={record?.audit_result ?? []} />
+);
+
+const renderSqlColumn = (sql: string) => (
+  <Typography.Paragraph
+    copyable={true}
+    ellipsis={{
+      expandable: false,
+      tooltip: <pre className="pre-warp-break-all">{sql}</pre>,
+      // todo: 由于antd版本的原因，导致下面这样的写法在页面上会报错，待升级之后再验证是否可以使用下面的写法去替代全局的has伪类， Closes to issue 1427
+      // tooltip: {
+      //   overlay:() => <pre className="pre-warp-break-all">{sql}</pre>,
+      //   overlayClassName: 'sql-tooltip-width'
+      // },
+      rows: 10,
+    }}
+    className="margin-bottom-0"
+  >
+    {sql}
+  </Typography.Paragraph>
+);
 
 export const orderAuditResultColumn = (
   updateSqlDescribe: (sqlNum: number, sqlDescribe: string) => void,
   clickAnalyze: (sqlNum: number) => void
-): TableColumn<IAuditTaskSQLResV1, 'operator'> => {
+): Array<
+  | (ColumnGroupType<IAuditTaskSQLResV2> | ColumnType<IAuditTaskSQLResV2>) & {
+      dataIndex?: keyof IAuditTaskSQLResV2 | 'operator';
+    }
+> => {
   return [
     {
       dataIndex: 'number',
       title: () => t('audit.table.number'),
+      width: 60,
     },
     {
-      dataIndex: 'audit_status',
-      title: () => t('audit.table.auditStatus'),
-      render: (status: getAuditTaskSQLsV1FilterAuditStatusEnum) => {
-        return status ? t(auditStatusDictionary[status]) : '';
+      dataIndex: 'exec_sql',
+      title: () => t('audit.table.execSql'),
+      width: 300,
+      render: (sql?: string) => {
+        if (!!sql) {
+          return renderSqlColumn(sql);
+        }
+        return null;
       },
     },
     {
       dataIndex: 'audit_result',
       title: () => t('audit.table.auditResult'),
-      render: (errorMessage) => {
-        return <AuditResultErrorMessage resultErrorMessage={errorMessage} />;
+      width: 200,
+      render: (auditResult: IAuditResult[]) => {
+        return <AuditResultInfo auditResult={auditResult} />;
       },
     },
-    {
-      dataIndex: 'exec_sql',
-      title: () => t('audit.table.execSql'),
-      render: (sql?: string) => {
-        if (!!sql) {
-          return (
-            <pre
-              dangerouslySetInnerHTML={{
-                __html: HighlightCode.highlightSql(sql),
-              }}
-              className="pre-warp-break-all"
-            ></pre>
-          );
-        }
-        return null;
-      },
-    },
+    Table.EXPAND_COLUMN,
     {
       dataIndex: 'exec_status',
       title: () => t('audit.table.execStatus'),
       render: (status: getAuditTaskSQLsV1FilterExecStatusEnum) => {
         return status ? t(execStatusDictionary[status]) : '';
       },
+      width: 100,
     },
     {
       dataIndex: 'exec_result',
       title: () => t('audit.table.execResult'),
+      width: 140,
     },
     {
       dataIndex: 'rollback_sql',
-      title: () => t('audit.table.rollback'),
+      title: () => (
+        <Space>
+          <span>{t('audit.table.rollback')}</span>
+          <IconTipsLabel tips={t('audit.table.rollbackTips')} />
+        </Space>
+      ),
+      width: 300,
       render: (sql?: string) => {
         if (!!sql) {
-          return (
-            <pre
-              dangerouslySetInnerHTML={{
-                __html: HighlightCode.highlightSql(sql),
-              }}
-              className="pre-warp-break-all"
-            ></pre>
-          );
+          return renderSqlColumn(sql);
         }
         return null;
       },

@@ -8,6 +8,7 @@ import { AuditPlan } from '../PlanList/__testData__';
 import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
 import { AuditPlanReportList } from './__testData__';
 import { useSelector } from 'react-redux';
+import { mockGetAllRules } from '../../Rule/__test__/utils';
 
 jest.mock('react-router', () => {
   return {
@@ -29,6 +30,7 @@ describe('PlanDetail', () => {
   beforeEach(() => {
     useParamsMock.mockReturnValue({ auditPlanName: 'plan name', projectName });
     jest.useFakeTimers();
+    mockGetAllRules();
     mockGetAuditPlanV1();
     mockGetAuditPlanReport();
     (useSelector as jest.Mock).mockImplementation((selector) =>

@@ -60,7 +60,8 @@ export const allRules = [
   {
     rule_name: 'all_check_where_is_invalid',
     desc: '禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql',
-    annotation: '',
+    annotation:
+      'SQL缺少where条件在执行时会进行全表扫描产生额外开销，建议在大数据量高并发环境下开启，避免影响数据库查询性能',
     level: 'error',
     type: 'DML规范',
     db_type: 'MySQL',

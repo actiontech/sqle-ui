@@ -28,6 +28,8 @@ import {
   WorkflowStepResV1StateEnum,
   WorkflowStepResV1TypeEnum,
   WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
+  AuditResDataV2AuditLevelEnum,
+  DirectAuditReqV2SqlTypeEnum,
   GetWorkflowTasksItemV2StatusEnum,
   WorkflowRecordResV2StatusEnum,
   WorkflowResV2ModeEnum,
@@ -1882,7 +1884,7 @@ export interface ISMTPConfigurationResV1 {
 export interface ISQLExplain {
   classic_result?: IExplainClassicResult;
 
-  message?: string;
+  err_message?: string;
 
   sql?: string;
 }
@@ -2595,6 +2597,20 @@ export interface IWorkflowTemplateDetailResV1 {
   workflow_template_name?: string;
 }
 
+export interface IAffectRows {
+  count?: number;
+
+  err_message?: string;
+}
+
+export interface IAuditPlanReportSQLResV2 {
+  audit_plan_report_sql?: string;
+
+  audit_plan_report_sql_audit_result?: IAuditResult[];
+
+  number?: number;
+}
+
 export interface IAuditPlanResV2 {
   audit_plan_cron?: string;
 
@@ -2611,6 +2627,54 @@ export interface IAuditPlanResV2 {
   audit_plan_token?: string;
 
   rule_template?: IRuleTemplateV2;
+}
+
+export interface IAuditResDataV2 {
+  audit_level?: AuditResDataV2AuditLevelEnum;
+
+  pass_rate?: number;
+
+  score?: number;
+
+  sql_results?: IAuditSQLResV2[];
+}
+
+export interface IAuditResult {
+  level?: string;
+
+  message?: string;
+
+  rule_name?: string;
+}
+
+export interface IAuditSQLResV2 {
+  audit_level?: string;
+
+  audit_result?: IAuditResult[];
+
+  exec_sql?: string;
+
+  number?: number;
+}
+
+export interface IAuditTaskSQLResV2 {
+  audit_level?: string;
+
+  audit_result?: IAuditResult[];
+
+  audit_status?: string;
+
+  description?: string;
+
+  exec_result?: string;
+
+  exec_sql?: string;
+
+  exec_status?: string;
+
+  number?: number;
+
+  rollback_sql?: string;
 }
 
 export interface IBatchCancelWorkflowsReqV2 {
@@ -2653,6 +2717,40 @@ export interface ICreateWorkflowReqV2 {
   workflow_subject?: string;
 }
 
+export interface IDirectAuditReqV2 {
+  instance_type?: string;
+
+  sql_content?: string;
+
+  sql_type?: DirectAuditReqV2SqlTypeEnum;
+}
+
+export interface IDirectAuditResV2 {
+  code?: number;
+
+  data?: IAuditResDataV2;
+
+  message?: string;
+}
+
+export interface IGetAuditPlanAnalysisDataResV2 {
+  code?: number;
+
+  data?: ITaskAnalysisDataV2;
+
+  message?: string;
+}
+
+export interface IGetAuditPlanReportSQLsResV2 {
+  code?: number;
+
+  data?: IAuditPlanReportSQLResV2[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
 export interface IGetAuditPlansResV2 {
   code?: number;
 
@@ -2663,6 +2761,24 @@ export interface IGetAuditPlansResV2 {
   total_nums?: number;
 }
 
+export interface IGetAuditTaskSQLsResV2 {
+  code?: number;
+
+  data?: IAuditTaskSQLResV2[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
+export interface IGetInstanceResV2 {
+  code?: number;
+
+  data?: IInstanceResV2;
+
+  message?: string;
+}
+
 export interface IGetInstancesResV2 {
   code?: number;
 
@@ -2671,6 +2787,14 @@ export interface IGetInstancesResV2 {
   message?: string;
 
   total_nums?: number;
+}
+
+export interface IGetTaskAnalysisDataResV2 {
+  code?: number;
+
+  data?: ITaskAnalysisDataV2;
+
+  message?: string;
 }
 
 export interface IGetWorkflowResV2 {
@@ -2737,6 +2861,10 @@ export interface IInstanceResV2 {
   sql_query_config?: ISQLQueryConfigResV1;
 }
 
+export interface IPerformanceStatistics {
+  affect_rows?: IAffectRows;
+}
+
 export interface IRejectWorkflowReqV2 {
   reason?: string;
 }
@@ -2745,6 +2873,20 @@ export interface IRuleTemplateV2 {
   is_global_rule_template?: boolean;
 
   name?: string;
+}
+
+export interface ITableMetas {
+  err_message?: string;
+
+  table_meta_items?: ITableMeta[];
+}
+
+export interface ITaskAnalysisDataV2 {
+  performance_statistics?: IPerformanceStatistics;
+
+  sql_explain?: ISQLExplain;
+
+  table_metas?: ITableMetas;
 }
 
 export interface IUpdateWorkflowReqV2 {

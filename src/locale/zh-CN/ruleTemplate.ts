@@ -80,7 +80,7 @@ export default {
 
   updateRuleTemplate: {
     title: '更新审核规则模版',
-    successTitle: '更新审核规则模版成功',
+    successTitle: '更新审核规则模版 ({{name}}) 成功',
   },
 
   editModal: {

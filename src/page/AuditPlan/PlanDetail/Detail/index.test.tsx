@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 import { useTheme } from '@mui/styles';
 import { useSelector } from 'react-redux';
+import { mockGetAllRules } from '../../../Rule/__test__/utils';
 
 jest.mock('react-router-dom', () => {
   return {
@@ -46,6 +47,8 @@ describe('PlanDetail', () => {
         projectManage: { archived: false },
       })
     );
+
+    mockGetAllRules();
   });
 
   test('should should match snapshot without report', () => {

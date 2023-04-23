@@ -5,7 +5,10 @@ import audit_plan from '../../../api/audit_plan';
 import { IAuditPlanResV1 } from '../../../api/common';
 import instance from '../../../api/instance';
 import EmitterKey from '../../../data/EmitterKey';
-import { getBySelector } from '../../../testUtils/customQuery';
+import {
+  getBySelector,
+  selectOptionByIndex,
+} from '../../../testUtils/customQuery';
 import {
   mockDriver,
   mockUseGlobalRuleTemplate,
@@ -366,12 +369,17 @@ describe('PlanForm', () => {
     );
   });
 
-  test('should filter instance when changing database type', async () => {
+  test('should filter instance when changing database type and empty database', async () => {
     const submitFn = jest.fn();
+    const getInstanceSpy = mockGetInstance();
+    getInstanceSpy.mockImplementation(() =>
+      resolveThreeSecond({ db_type: 'oracle' })
+    );
+
     render(<PlanForm submit={submitFn} projectName={projectName} />);
 
     expect(useInstanceSpy).toBeCalledTimes(1);
-    expect(useInstanceSpy).toBeCalledWith({
+    expect(useInstanceSpy).nthCalledWith(1, {
       functional_module: 'create_audit_plan',
       project_name: projectName,
     });
@@ -383,14 +391,44 @@ describe('PlanForm', () => {
     const mysqlOptions = screen.getAllByText('mysql');
     const mysql = mysqlOptions[1];
     fireEvent.click(mysql);
+    selectOptionByIndex('auditPlan.planForm.databaseName', 'instance1');
+
     await act(async () => jest.advanceTimersByTime(0));
     await act(async () => jest.advanceTimersByTime(3000));
 
-    expect(useInstanceSpy).toBeCalledTimes(2);
-    expect(useInstanceSpy).toBeCalledWith({
+    expect(useInstanceSpy).toBeCalledTimes(3);
+    expect(useInstanceSpy).nthCalledWith(3, {
+      filter_db_type: 'oracle',
+      functional_module: 'create_audit_plan',
+      project_name: projectName,
+    });
+
+    expect(
+      getBySelector(
+        '.ant-select-selection-item',
+        screen.getByLabelText('auditPlan.planForm.dbType').parentNode
+          ?.parentNode as Element
+      )
+    ).toHaveTextContent('oracle');
+    fireEvent.mouseDown(screen.getByLabelText('auditPlan.planForm.dbType'));
+    await act(async () => jest.advanceTimersByTime(0));
+
+    selectOptionByIndex('auditPlan.planForm.dbType', 'mysql', 1);
+    await act(async () => jest.advanceTimersByTime(0));
+
+    expect(useInstanceSpy).toBeCalledTimes(4);
+    expect(useInstanceSpy).nthCalledWith(4, {
       filter_db_type: 'mysql',
       functional_module: 'create_audit_plan',
       project_name: projectName,
     });
+
+    expect(
+      getBySelector(
+        '.ant-select-selection-item',
+        screen.getByLabelText('auditPlan.planForm.databaseName').parentNode
+          ?.parentNode as Element
+      )
+    ).toHaveTextContent('');
   });
 });

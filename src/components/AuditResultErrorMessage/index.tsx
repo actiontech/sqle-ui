@@ -1,60 +1,56 @@
-import { Col, Row, Space } from 'antd';
-import React from 'react';
+import { Col, Row, Space, Tooltip } from 'antd';
+import React, { useMemo } from 'react';
 import RuleLevelIcon from '../RuleList/RuleLevelIcon';
 import { AuditResultErrorMessageProps } from './index.type';
-import './index.less';
 import EmptyBox from '../EmptyBox';
+import { useRequest } from 'ahooks';
+import rule_template from '../../api/rule_template';
+
+import './index.less';
 
 const AuditResultErrorMessage: React.FC<AuditResultErrorMessageProps> = (
   props
 ) => {
-  const errorMessageList = React.useMemo(() => {
-    if (props.resultErrorMessage === undefined) {
-      return [];
-    }
-    const errors = props.resultErrorMessage.split('\n');
-    const errorMessageList: {
-      level: string;
-      message: string;
-    }[] = [];
+  const filterRuleNames = useMemo(
+    () =>
+      (props.auditResult?.map((v) => v.rule_name ?? '') ?? []).filter(
+        (v) => !!v
+      ),
+    [props.auditResult]
+  );
 
-    errors.forEach((error) => {
-      if (!error.trim().startsWith('[')) {
-        errorMessageList.push({
-          level: 'normal',
-          message: error.trim(),
-        });
-      } else {
-        const levelRegResult = error.match(/^\[(.+)\]/);
-        let level = 'normal';
-        if (levelRegResult != null) {
-          level = levelRegResult[1];
-        }
-        const message = error.slice(level.length + 2).trim();
-        errorMessageList.push({
-          level,
-          message,
-        });
-      }
-    });
-    return errorMessageList;
-  }, [props.resultErrorMessage]);
+  const { data: ruleInfo } = useRequest(
+    () =>
+      rule_template
+        .getRuleListV1({
+          filter_rule_names: filterRuleNames.join(','),
+        })
+        .then((res) => res.data.data),
+    { ready: !!filterRuleNames.length, refreshDeps: [filterRuleNames] }
+  );
 
   return (
-    <EmptyBox if={!!props.resultErrorMessage}>
+    <EmptyBox if={!!props.auditResult}>
       <Space
         direction="vertical"
         size={5}
         className="audit-result-error-message-wrapper"
       >
-        {errorMessageList.map((err) => {
+        {props.auditResult?.map((v) => {
           return (
-            <Row wrap={false} key={err.message}>
+            <Row wrap={false} key={v.message}>
               <Col flex="50px">
-                <RuleLevelIcon ruleLevel={err.level} />
+                <RuleLevelIcon ruleLevel={v.level} />
               </Col>
               <Col flex={1} className="message">
-                {err.message}
+                <Tooltip
+                  title={
+                    ruleInfo?.find((rule) => rule.rule_name === v.rule_name)
+                      ?.annotation ?? ''
+                  }
+                >
+                  {v.message}
+                </Tooltip>
               </Col>
             </Row>
           );

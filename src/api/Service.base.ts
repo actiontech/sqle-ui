@@ -20,7 +20,7 @@ class ServiceBase {
     options?: AxiosRequestConfig
   ) {
     return ApiBase.delete<T>(url, {
-      params: data,
+      data,
       ...options
     });
   }

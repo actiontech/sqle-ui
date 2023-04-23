@@ -1049,7 +1049,9 @@ exports[`test Rule should call get rule request with filter rule template 1`] = 
                                     <span
                                       class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                                       style="max-width: 500px;"
-                                    />
+                                    >
+                                      SQL缺少where条件在执行时会进行全表扫描产生额外开销，建议在大数据量高并发环境下开启，避免影响数据库查询性能
+                                    </span>
                                   </div>
                                 </div>
                               </div>
@@ -3586,7 +3588,9 @@ exports[`test Rule should match snapshot 2`] = `
                                     <span
                                       class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                                       style="max-width: 500px;"
-                                    />
+                                    >
+                                      SQL缺少where条件在执行时会进行全表扫描产生额外开销，建议在大数据量高并发环境下开启，避免影响数据库查询性能
+                                    </span>
                                   </div>
                                 </div>
                               </div>

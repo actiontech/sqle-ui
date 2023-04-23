@@ -8,7 +8,7 @@ import {
   GetWorkflowTasksItemV1StatusEnum,
   WorkflowRecordResV2StatusEnum,
 } from '../../../api/common.enum';
-import { IGetAuditTaskSQLsV1Params } from '../../../api/task/index.d';
+import { IGetAuditTaskSQLsV2Params } from '../../../api/task/index.d';
 import { I18nKey } from '../../../types/common.type';
 
 export type AuditResultProps = {
@@ -55,7 +55,7 @@ export type FilterFormProps = {
 };
 
 export type OrderAuditResultFilterFields = Omit<
-  IGetAuditTaskSQLsV1Params,
+  IGetAuditTaskSQLsV2Params,
   'page_index' | 'page_size' | 'task_id'
 >;
 

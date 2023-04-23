@@ -17,6 +17,7 @@ import {
 } from '../../../testUtils/mockRequest';
 import { SupportTheme } from '../../../theme';
 import EventEmitter from '../../../utils/EventEmitter';
+import { mockGetAllRules } from '../../Rule/__test__/utils';
 import {
   instanceWorkflowTemplate,
   taskInfo,
@@ -24,8 +25,9 @@ import {
   taskSqls,
 } from '../Detail/__testData__';
 import { useDispatch, useSelector } from 'react-redux';
+import { mockGetInstance } from './SqlInfoForm/__test__/index.test';
 
-const orderDescMaxLength = 50;
+const orderDescMaxLength = 3000;
 
 jest.mock('moment', () => {
   return () => ({
@@ -62,6 +64,8 @@ describe('Order/Create', () => {
     mockUseInstance();
     mockUseInstanceSchema();
     mockDriver();
+    mockGetAllRules();
+    mockGetInstance();
     useParamsMock.mockReturnValue({ projectName });
   });
 
@@ -99,7 +103,7 @@ describe('Order/Create', () => {
   };
 
   const mockGetTaskSql = () => {
-    const spy = jest.spyOn(task, 'getAuditTaskSQLsV1');
+    const spy = jest.spyOn(task, 'getAuditTaskSQLsV2');
     spy.mockImplementation(() =>
       resolveThreeSecond(taskSqls, { otherData: { total_nums: 20 } })
     );
