@@ -24,7 +24,7 @@ i18n.use(initReactI18next).init({
   interpolation: {
     escapeValue: false,
     /*
-     * 避免语言包存在插值但是没有在没有传递值的情况下渲染出原始内容
+     * 避免语言包存在插值但是在没有传递值的情况下渲染出原始内容
      * example:
      *  {
      *    key: ‘请输入 {{name}}’
