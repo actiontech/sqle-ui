@@ -1,18 +1,24 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, act } from '@testing-library/react';
 import { ModalName } from '../../../../../data/ModalName';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../../testUtils/mockRedux';
+
 import VersionModal from './index';
 import GlobalService from '../../../../../api/global';
 import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
+import { useDispatch, useSelector } from 'react-redux';
 
 const serverVersion = `"issue_201 b1c2baedcb37f27feb7cef34f088212938fad1ba"`;
 const formatServerVersion = `Server Version: issue_201 b1c2baedcb`;
 
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
+
 describe('Nav/Header/VersionModal', () => {
-  let scopeDispatch: jest.Mock;
+  const scopeDispatch = jest.fn();
   const mockGetSQLEInfo = () => {
     const spy = jest.spyOn(GlobalService, 'getSQLEInfoV1');
     spy.mockImplementation(() =>
@@ -21,11 +27,12 @@ describe('Nav/Header/VersionModal', () => {
     return spy;
   };
   beforeEach(() => {
-    mockUseSelector({
-      nav: { modalStatus: { [ModalName.SHOW_VERSION]: true } },
-    });
-
-    scopeDispatch = mockUseDispatch().scopeDispatch;
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        nav: { modalStatus: { [ModalName.SHOW_VERSION]: true } },
+      })
+    );
+    (useDispatch as jest.Mock).mockImplementation(() => scopeDispatch);
     jest.useFakeTimers();
   });
 
@@ -65,9 +72,8 @@ describe('Nav/Header/VersionModal', () => {
     const getSQLEInfo = mockGetSQLEInfo();
     render(<VersionModal />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getSQLEInfo).toBeCalledTimes(1);
     expect(screen.getByText(formatServerVersion)).toBeInTheDocument();
   });

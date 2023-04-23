@@ -1,4 +1,4 @@
-import { Popconfirm, Space, Tag, Typography } from 'antd';
+import { Popconfirm, Space, Table, Tag, Typography } from 'antd';
 import moment from 'moment';
 import {
   IAuditResult,
@@ -14,15 +14,16 @@ import { getAuditTaskSQLsV1FilterExecStatusEnum } from '../../../api/task/index.
 import AuditResultErrorMessage from '../../../components/AuditResultErrorMessage';
 import EditText from '../../../components/EditText/EditText';
 import EmptyBox from '../../../components/EmptyBox';
-import IconTipsLabel from '../../../components/IconTipsLabel';
 import { execStatusDictionary } from '../../../hooks/useStaticStatus/index.data';
-import i18n from '../../../locale';
+import { t } from '../../../locale';
+import IconTipsLabel from '../../../components/IconTipsLabel';
 import { TableColumn } from '../../../types/common.type';
 import { formatTime } from '../../../utils/Common';
 import { floatToPercent } from '../../../utils/Math';
 import { checkTimeInWithMaintenanceTime } from '../Detail/OrderSteps/utils';
 import InstanceTasksStatus from './InstanceTasksStatus';
 import AuditResultInfo from './AuditResultInfo';
+import { ColumnGroupType, ColumnType } from 'antd/lib/table';
 
 export const expandedRowRender = (record: IAuditTaskSQLResV2) => (
   <AuditResultErrorMessage auditResult={record?.audit_result ?? []} />
@@ -50,16 +51,20 @@ const renderSqlColumn = (sql: string) => (
 export const orderAuditResultColumn = (
   updateSqlDescribe: (sqlNum: number, sqlDescribe: string) => void,
   clickAnalyze: (sqlNum: number) => void
-): TableColumn<IAuditTaskSQLResV2, 'operator'> => {
+): Array<
+  | (ColumnGroupType<IAuditTaskSQLResV2> | ColumnType<IAuditTaskSQLResV2>) & {
+      dataIndex?: keyof IAuditTaskSQLResV2 | 'operator';
+    }
+> => {
   return [
     {
       dataIndex: 'number',
-      title: () => i18n.t('audit.table.number'),
+      title: () => t('audit.table.number'),
       width: 60,
     },
     {
       dataIndex: 'exec_sql',
-      title: () => i18n.t('audit.table.execSql'),
+      title: () => t('audit.table.execSql'),
       width: 300,
       render: (sql?: string) => {
         if (!!sql) {
@@ -70,31 +75,32 @@ export const orderAuditResultColumn = (
     },
     {
       dataIndex: 'audit_result',
-      title: () => i18n.t('audit.table.auditResult'),
+      title: () => t('audit.table.auditResult'),
       width: 200,
       render: (auditResult: IAuditResult[]) => {
         return <AuditResultInfo auditResult={auditResult} />;
       },
     },
+    Table.EXPAND_COLUMN,
     {
       dataIndex: 'exec_status',
-      title: () => i18n.t('audit.table.execStatus'),
+      title: () => t('audit.table.execStatus'),
       render: (status: getAuditTaskSQLsV1FilterExecStatusEnum) => {
-        return status ? i18n.t(execStatusDictionary[status]) : '';
+        return status ? t(execStatusDictionary[status]) : '';
       },
       width: 100,
     },
     {
       dataIndex: 'exec_result',
-      title: () => i18n.t('audit.table.execResult'),
+      title: () => t('audit.table.execResult'),
       width: 140,
     },
     {
       dataIndex: 'rollback_sql',
       title: () => (
         <Space>
-          <span>{i18n.t('audit.table.rollback')}</span>
-          <IconTipsLabel tips={i18n.t('audit.table.rollbackTips')} />
+          <span>{t('audit.table.rollback')}</span>
+          <IconTipsLabel tips={t('audit.table.rollbackTips')} />
         </Space>
       ),
       width: 300,
@@ -107,8 +113,8 @@ export const orderAuditResultColumn = (
     },
     {
       dataIndex: 'description',
-      title: () => i18n.t('audit.table.describe'),
-      width: 200,
+      title: () => t('audit.table.describe'),
+      width: '200px',
       render: (description: string, record) => {
         return (
           <EditText
@@ -127,12 +133,12 @@ export const orderAuditResultColumn = (
     /* IFTRUE_isEE */
     {
       dataIndex: 'operator',
-      title: () => i18n.t('common.operate'),
-      width: 70,
+      title: () => t('common.operate'),
+      width: '70px',
       render: (_, record) => {
         return (
           <Typography.Link onClick={() => clickAnalyze(record.number ?? 0)}>
-            {i18n.t('audit.table.analyze')}
+            {t('audit.table.analyze')}
           </Typography.Link>
         );
       },
@@ -212,59 +218,58 @@ export const auditResultOverviewColumn: (
   return [
     {
       dataIndex: 'instance_name',
-      title: () => i18n.t('order.auditResultCollection.table.instanceName'),
+      title: () => t('order.auditResultCollection.table.instanceName'),
     },
     {
       dataIndex: 'status',
-      title: () => i18n.t('order.auditResultCollection.table.status'),
+      title: () => t('order.auditResultCollection.table.status'),
       render: (status: GetWorkflowTasksItemV2StatusEnum) => (
         <InstanceTasksStatus status={status} />
       ),
     },
     {
       dataIndex: 'task_pass_rate',
-      title: () => i18n.t('order.auditResultCollection.table.passRate'),
+      title: () => t('order.auditResultCollection.table.passRate'),
       render: (rate: number = 0) => `${floatToPercent(rate)}%`,
     },
     {
       dataIndex: 'task_score',
-      title: () => i18n.t('order.auditResultCollection.table.score'),
+      title: () => t('order.auditResultCollection.table.score'),
     },
     {
       dataIndex: 'current_step_assignee_user_name_list',
-      title: () => i18n.t('order.auditResultCollection.table.assigneeUserName'),
+      title: () => t('order.auditResultCollection.table.assigneeUserName'),
       render: (names: string[] = []) =>
         names.map((v) => <Tag key={v}>{v}</Tag>),
     },
     {
       dataIndex: 'execution_user_name',
-      title: () => i18n.t('order.auditResultCollection.table.executeUserName'),
+      title: () => t('order.auditResultCollection.table.executeUserName'),
     },
     {
       dataIndex: 'exec_start_time',
-      title: () => i18n.t('order.auditResultCollection.table.execStartTime'),
+      title: () => t('order.auditResultCollection.table.execStartTime'),
       render: (time) => {
         return formatTime(time);
       },
     },
     {
       dataIndex: 'exec_end_time',
-      title: () => i18n.t('order.auditResultCollection.table.execEndTime'),
+      title: () => t('order.auditResultCollection.table.execEndTime'),
       render: (time) => {
         return formatTime(time);
       },
     },
     {
       dataIndex: 'schedule_time',
-      title: () =>
-        i18n.t('order.auditResultCollection.table.scheduleExecuteTime'),
+      title: () => t('order.auditResultCollection.table.scheduleExecuteTime'),
       render: (time) => {
         return formatTime(time);
       },
     },
     {
       dataIndex: 'operator',
-      title: () => i18n.t('common.operate'),
+      title: () => t('common.operate'),
       render: (_, record) => {
         const taskId = record.task_id?.toString() ?? '';
         return (
@@ -272,7 +277,7 @@ export const auditResultOverviewColumn: (
             <Popconfirm
               overlayClassName="popconfirm-small"
               placement="topRight"
-              okText={i18n.t('common.ok')}
+              okText={t('common.ok')}
               disabled={
                 !enableSqlExecute(
                   record.current_step_assignee_user_name_list,
@@ -280,7 +285,7 @@ export const auditResultOverviewColumn: (
                   record.instance_maintenance_times
                 )
               }
-              title={i18n.t(
+              title={t(
                 'order.auditResultCollection.table.sqlExecuteConfirmTips'
               )}
               onConfirm={(e) => {
@@ -303,7 +308,7 @@ export const auditResultOverviewColumn: (
                   e.stopPropagation();
                 }}
               >
-                {i18n.t('order.auditResultCollection.table.sqlExecute')}
+                {t('order.auditResultCollection.table.sqlExecute')}
               </Typography.Link>
             </Popconfirm>
             <EmptyBox
@@ -324,7 +329,7 @@ export const auditResultOverviewColumn: (
                     openScheduleModalAndSetCurrentTask(record);
                   }}
                 >
-                  {i18n.t('order.auditResultCollection.table.scheduleTime')}
+                  {t('order.auditResultCollection.table.scheduleTime')}
                 </Typography.Link>
               }
             >
@@ -338,9 +343,7 @@ export const auditResultOverviewColumn: (
                   );
                 }}
               >
-                {i18n.t(
-                  'order.auditResultCollection.table.cancelExecScheduled'
-                )}
+                {t('order.auditResultCollection.table.cancelExecScheduled')}
               </Typography.Link>
             </EmptyBox>
           </Space>

@@ -1,5 +1,5 @@
 import { WarningOutlined } from '@ant-design/icons';
-import { useTheme } from '@material-ui/styles';
+import { useTheme } from '@mui/styles';
 import { useRequest } from 'ahooks';
 import { Card, PageHeader, Space, Typography } from 'antd';
 import { useEffect, useRef } from 'react';
@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
 import configuration from '../../api/configuration';
 import EmptyBox from '../../components/EmptyBox';
 import { OPEN_CLOUD_BEAVER_URL_PARAM_NAME } from '../../data/common';
-import { Theme } from '../../types/theme.type';
+import { Theme } from '@mui/material/styles';
 
 const SqlQueryEE = () => {
   const { t } = useTranslation();

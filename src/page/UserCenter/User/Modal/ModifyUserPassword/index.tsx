@@ -54,7 +54,7 @@ const ModifyUserPassword = () => {
 
   return (
     <Modal
-      visible={visible}
+      open={visible}
       title={t('user.updateUserPassword.title', {
         name: selectUser?.user_name,
       })}

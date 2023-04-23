@@ -51,6 +51,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
         >
           <div
             class="ant-tabs-tab ant-tabs-tab-active"
+            data-node-key="ALL"
           >
             <div
               aria-controls="rc-tabs-test-panel-ALL"
@@ -65,6 +66,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DDL规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DDL规范"
@@ -79,6 +81,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DML规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DML规范"
@@ -93,6 +96,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="使用建议"
           >
             <div
               aria-controls="rc-tabs-test-panel-使用建议"
@@ -107,6 +111,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="全局配置"
           >
             <div
               aria-controls="rc-tabs-test-panel-全局配置"
@@ -121,6 +126,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="命名规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-命名规范"
@@ -135,6 +141,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="索引规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-索引规范"
@@ -210,6 +217,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
             >
               <div>
                 <div
+                  aria-busy="true"
+                  aria-live="polite"
                   class="ant-spin ant-spin-spinning"
                 >
                   <span
@@ -240,60 +249,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
             </div>
           </div>
         </div>
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DDL规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DDL规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DML规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DML规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-使用建议"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-使用建议"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-全局配置"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-全局配置"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-命名规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-命名规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-索引规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-索引规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
       </div>
     </div>
   </div>
@@ -349,6 +304,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
         >
           <div
             class="ant-tabs-tab ant-tabs-tab-active"
+            data-node-key="ALL"
           >
             <div
               aria-controls="rc-tabs-test-panel-ALL"
@@ -363,6 +319,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DDL规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DDL规范"
@@ -377,6 +334,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DML规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DML规范"
@@ -391,6 +349,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="使用建议"
           >
             <div
               aria-controls="rc-tabs-test-panel-使用建议"
@@ -405,6 +364,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="全局配置"
           >
             <div
               aria-controls="rc-tabs-test-panel-全局配置"
@@ -419,6 +379,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="命名规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-命名规范"
@@ -433,6 +394,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="索引规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-索引规范"
@@ -508,6 +470,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
             >
               <div>
                 <div
+                  aria-busy="true"
+                  aria-live="polite"
                   class="ant-spin ant-spin-spinning"
                 >
                   <span
@@ -600,7 +564,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
+                            style="max-width: 500px;"
                           >
                             annotation1
                           </span>
@@ -692,7 +656,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
+                            style="max-width: 500px;"
                           >
                             annotation2
                           </span>
@@ -784,10 +748,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -885,10 +847,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -977,10 +937,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -1069,10 +1027,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -1161,10 +1117,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -1253,10 +1207,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -1345,10 +1297,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -1437,10 +1387,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -1529,10 +1477,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -1621,10 +1567,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -1713,10 +1657,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -1805,10 +1747,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -1906,10 +1846,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -1998,10 +1936,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -2090,10 +2026,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -2182,10 +2116,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -2274,10 +2206,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -2366,10 +2296,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -2458,10 +2386,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -2550,10 +2476,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -2651,10 +2575,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -2752,10 +2674,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -2844,10 +2764,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -2936,10 +2854,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -3028,10 +2944,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -3120,10 +3034,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -3212,10 +3124,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -3304,10 +3214,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -3396,10 +3304,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -3488,10 +3394,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -3580,10 +3484,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -3672,10 +3574,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -3764,10 +3664,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -3856,10 +3754,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -3948,10 +3844,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -4040,10 +3934,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -4132,10 +4024,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -4224,10 +4114,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -4316,10 +4204,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -4408,10 +4294,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -4500,10 +4384,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -4589,10 +4471,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -4690,10 +4570,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -4788,10 +4666,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -4886,10 +4762,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -4975,10 +4849,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -5067,10 +4939,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -5159,10 +5029,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -5251,10 +5119,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -5343,10 +5209,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -5435,10 +5299,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -5536,10 +5398,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -5637,10 +5497,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -5729,10 +5587,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -5821,10 +5677,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -5913,10 +5767,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -6005,10 +5857,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -6097,10 +5947,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -6189,10 +6037,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -6281,10 +6127,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -6373,10 +6217,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -6465,10 +6307,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -6505,60 +6345,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
             </div>
           </div>
         </div>
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DDL规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DDL规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DML规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DML规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-使用建议"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-使用建议"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-全局配置"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-全局配置"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-命名规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-命名规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-索引规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-索引规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
       </div>
     </div>
   </div>
@@ -6616,6 +6402,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
         >
           <div
             class="ant-tabs-tab ant-tabs-tab-active"
+            data-node-key="ALL"
           >
             <div
               aria-controls="rc-tabs-test-panel-ALL"
@@ -6630,6 +6417,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DDL规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DDL规范"
@@ -6644,6 +6432,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DML规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DML规范"
@@ -6658,6 +6447,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="使用建议"
           >
             <div
               aria-controls="rc-tabs-test-panel-使用建议"
@@ -6672,6 +6462,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="全局配置"
           >
             <div
               aria-controls="rc-tabs-test-panel-全局配置"
@@ -6686,6 +6477,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="命名规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-命名规范"
@@ -6700,6 +6492,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="索引规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-索引规范"
@@ -6773,8 +6566,32 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
             <div
               class="ant-spin-nested-loading"
             >
+              <div>
+                <div
+                  aria-busy="true"
+                  aria-live="polite"
+                  class="ant-spin ant-spin-spinning"
+                >
+                  <span
+                    class="ant-spin-dot ant-spin-dot-spin"
+                  >
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                  </span>
+                </div>
+              </div>
               <div
-                class="ant-spin-container"
+                class="ant-spin-container ant-spin-blur"
               >
                 <div
                   class="ant-list-empty-text"
@@ -6786,60 +6603,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
             </div>
           </div>
         </div>
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DDL规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DDL规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DML规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DML规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-使用建议"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-使用建议"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-全局配置"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-全局配置"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-命名规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-命名规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-索引规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-索引规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
       </div>
     </div>
   </div>
@@ -6895,6 +6658,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
         >
           <div
             class="ant-tabs-tab ant-tabs-tab-active"
+            data-node-key="ALL"
           >
             <div
               aria-controls="rc-tabs-test-panel-ALL"
@@ -6909,6 +6673,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DDL规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DDL规范"
@@ -6923,6 +6688,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DML规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DML规范"
@@ -6937,6 +6703,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="使用建议"
           >
             <div
               aria-controls="rc-tabs-test-panel-使用建议"
@@ -6951,6 +6718,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="全局配置"
           >
             <div
               aria-controls="rc-tabs-test-panel-全局配置"
@@ -6965,6 +6733,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="命名规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-命名规范"
@@ -6979,6 +6748,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="索引规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-索引规范"
@@ -7052,8 +6822,32 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
             <div
               class="ant-spin-nested-loading"
             >
+              <div>
+                <div
+                  aria-busy="true"
+                  aria-live="polite"
+                  class="ant-spin ant-spin-spinning"
+                >
+                  <span
+                    class="ant-spin-dot ant-spin-dot-spin"
+                  >
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                  </span>
+                </div>
+              </div>
               <div
-                class="ant-spin-container"
+                class="ant-spin-container ant-spin-blur"
               >
                 <ul
                   class="ant-list-items"
@@ -7124,7 +6918,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
+                            style="max-width: 500px;"
                           >
                             annotation1
                           </span>
@@ -7216,7 +7010,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
+                            style="max-width: 500px;"
                           >
                             annotation2
                           </span>
@@ -7308,10 +7102,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -7409,10 +7201,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -7501,10 +7291,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -7593,10 +7381,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -7685,10 +7471,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -7777,10 +7561,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -7869,10 +7651,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -7961,10 +7741,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -8053,10 +7831,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -8145,10 +7921,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -8237,10 +8011,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -8329,10 +8101,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -8430,10 +8200,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -8522,10 +8290,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -8614,10 +8380,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -8706,10 +8470,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -8798,10 +8560,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -8890,10 +8650,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -8982,10 +8740,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -9074,10 +8830,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -9175,10 +8929,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -9276,10 +9028,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -9368,10 +9118,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -9460,10 +9208,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -9552,10 +9298,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -9644,10 +9388,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -9736,10 +9478,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -9828,10 +9568,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -9920,10 +9658,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -10012,10 +9748,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -10104,10 +9838,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -10196,10 +9928,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -10288,10 +10018,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -10380,10 +10108,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -10472,10 +10198,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -10564,10 +10288,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -10656,10 +10378,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -10748,10 +10468,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -10840,10 +10558,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -10932,10 +10648,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -11024,10 +10738,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -11113,10 +10825,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -11214,10 +10924,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -11312,10 +11020,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -11410,10 +11116,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -11499,10 +11203,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -11591,10 +11293,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -11683,10 +11383,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -11775,10 +11473,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -11867,10 +11563,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -11959,10 +11653,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -12060,10 +11752,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -12161,10 +11851,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -12253,10 +11941,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -12345,10 +12031,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -12437,10 +12121,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -12529,10 +12211,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -12621,10 +12301,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -12713,10 +12391,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -12805,10 +12481,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -12897,10 +12571,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -12989,10 +12661,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -13029,60 +12699,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
             </div>
           </div>
         </div>
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DDL规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DDL规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DML规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DML规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-使用建议"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-使用建议"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-全局配置"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-全局配置"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-命名规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-命名规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-索引规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-索引规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
       </div>
     </div>
   </div>
@@ -13139,6 +12755,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
         >
           <div
             class="ant-tabs-tab ant-tabs-tab-active"
+            data-node-key="ALL"
           >
             <div
               aria-controls="rc-tabs-test-panel-ALL"
@@ -13153,6 +12770,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DDL规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DDL规范"
@@ -13167,6 +12785,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DML规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DML规范"
@@ -13181,6 +12800,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="使用建议"
           >
             <div
               aria-controls="rc-tabs-test-panel-使用建议"
@@ -13195,6 +12815,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="全局配置"
           >
             <div
               aria-controls="rc-tabs-test-panel-全局配置"
@@ -13209,6 +12830,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="命名规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-命名规范"
@@ -13223,6 +12845,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="索引规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-索引规范"
@@ -13296,8 +12919,32 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
             <div
               class="ant-spin-nested-loading"
             >
+              <div>
+                <div
+                  aria-busy="true"
+                  aria-live="polite"
+                  class="ant-spin ant-spin-spinning"
+                >
+                  <span
+                    class="ant-spin-dot ant-spin-dot-spin"
+                  >
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                  </span>
+                </div>
+              </div>
               <div
-                class="ant-spin-container"
+                class="ant-spin-container ant-spin-blur"
               >
                 <ul
                   class="ant-list-items"
@@ -13368,7 +13015,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
+                            style="max-width: 500px;"
                           >
                             annotation1
                           </span>
@@ -13473,7 +13120,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
+                            style="max-width: 500px;"
                           >
                             annotation2
                           </span>
@@ -13578,10 +13225,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -13692,10 +13337,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -13797,10 +13440,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -13902,10 +13543,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -14007,10 +13646,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -14112,10 +13749,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -14217,10 +13852,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -14322,10 +13955,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -14427,10 +14058,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -14532,10 +14161,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -14637,10 +14264,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -14742,10 +14367,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -14856,10 +14479,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -14961,10 +14582,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -15066,10 +14685,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -15171,10 +14788,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -15276,10 +14891,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -15381,10 +14994,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -15486,10 +15097,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -15591,10 +15200,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -15705,10 +15312,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -15819,10 +15424,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -15924,10 +15527,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -16029,10 +15630,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -16134,10 +15733,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -16239,10 +15836,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -16344,10 +15939,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -16449,10 +16042,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -16554,10 +16145,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -16659,10 +16248,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -16703,60 +16290,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
             </div>
           </div>
         </div>
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DDL规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DDL规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DML规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DML规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-使用建议"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-使用建议"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-全局配置"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-全局配置"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-命名规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-命名规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-索引规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-索引规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
       </div>
     </div>
   </div>
@@ -16812,6 +16345,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
         >
           <div
             class="ant-tabs-tab ant-tabs-tab-active"
+            data-node-key="ALL"
           >
             <div
               aria-controls="rc-tabs-test-panel-ALL"
@@ -16826,6 +16360,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DDL规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DDL规范"
@@ -16840,6 +16375,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DML规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DML规范"
@@ -16854,6 +16390,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="使用建议"
           >
             <div
               aria-controls="rc-tabs-test-panel-使用建议"
@@ -16868,6 +16405,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="全局配置"
           >
             <div
               aria-controls="rc-tabs-test-panel-全局配置"
@@ -16882,6 +16420,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="命名规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-命名规范"
@@ -16896,6 +16435,7 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="索引规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-索引规范"
@@ -16969,8 +16509,32 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
             <div
               class="ant-spin-nested-loading"
             >
+              <div>
+                <div
+                  aria-busy="true"
+                  aria-live="polite"
+                  class="ant-spin ant-spin-spinning"
+                >
+                  <span
+                    class="ant-spin-dot ant-spin-dot-spin"
+                  >
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                  </span>
+                </div>
+              </div>
               <div
-                class="ant-spin-container"
+                class="ant-spin-container ant-spin-blur"
               >
                 <ul
                   class="ant-list-items"
@@ -17041,10 +16605,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -17133,10 +16695,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -17225,10 +16785,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -17317,10 +16875,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -17409,10 +16965,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -17501,10 +17055,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -17593,10 +17145,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -17685,10 +17235,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -17777,10 +17325,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -17869,10 +17415,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -17961,10 +17505,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -18050,10 +17592,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -18151,10 +17691,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -18249,10 +17787,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -18347,10 +17883,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -18436,10 +17970,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -18528,10 +18060,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -18620,10 +18150,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -18712,10 +18240,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -18804,10 +18330,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -18896,10 +18420,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -18997,10 +18519,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -19098,10 +18618,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -19190,10 +18708,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -19282,10 +18798,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -19374,10 +18888,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -19466,10 +18978,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -19558,10 +19068,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -19650,10 +19158,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -19742,10 +19248,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -19834,10 +19338,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -19926,10 +19428,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
                         >
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                            style="max-width: 500px; width: 100%;"
-                          >
-                            
-                          </span>
+                            style="max-width: 500px;"
+                          />
                         </div>
                       </div>
                     </div>
@@ -19966,60 +19466,6 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
             </div>
           </div>
         </div>
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DDL规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DDL规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DML规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DML规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-使用建议"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-使用建议"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-全局配置"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-全局配置"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-命名规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-命名规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-索引规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-索引规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
       </div>
     </div>
   </div>

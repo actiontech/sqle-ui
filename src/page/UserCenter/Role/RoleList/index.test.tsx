@@ -1,24 +1,30 @@
-import { fireEvent, render, waitFor, screen } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { fireEvent, render, act, screen } from '@testing-library/react';
 import RoleList from '.';
 import role from '../../../../api/role';
 import EmitterKey from '../../../../data/EmitterKey';
 import { getBySelector } from '../../../../testUtils/customQuery';
-import { mockUseDispatch } from '../../../../testUtils/mockRedux';
 import {
   mockUseRole,
   resolveThreeSecond,
 } from '../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../utils/EventEmitter';
 import { RoleListData } from './__testData__';
+import { useDispatch } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('User/RoleList', () => {
-  let dispatchMock: jest.Mock;
   let getRoleListSpy: jest.SpyInstance;
+  const dispatchMock = jest.fn();
 
   beforeEach(() => {
-    const { scopeDispatch } = mockUseDispatch();
-    dispatchMock = scopeDispatch;
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchMock);
+
     jest.useFakeTimers();
     mockUseRole();
     getRoleListSpy = mockGetRoleList();
@@ -41,9 +47,8 @@ describe('User/RoleList', () => {
   test('should match snapshot', async () => {
     const { container } = render(<RoleList />);
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -55,9 +60,8 @@ describe('User/RoleList', () => {
 
   test('should jump to next page when user click next page button', async () => {
     render(<RoleList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(getBySelector('.ant-pagination-next'));
     expect(getRoleListSpy).toBeCalledWith({
       page_index: 2,
@@ -72,18 +76,15 @@ describe('User/RoleList', () => {
 
   test('should filter table data when user input filter data and click search button', async () => {
     render(<RoleList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.mouseDown(screen.getByLabelText('role.roleForm.roleName'));
     const option = screen.getAllByText('role_name1')[1];
     expect(option).toHaveClass('ant-select-item-option-content');
     fireEvent.click(option);
 
     fireEvent.click(screen.getByText('common.search'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(getRoleListSpy).toBeCalledWith({
       page_index: 1,
@@ -94,9 +95,8 @@ describe('User/RoleList', () => {
 
   test('should dispatch open create role modal event when user click create role button', async () => {
     render(<RoleList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('role.createRole.button'));
     expect(dispatchMock).toBeCalledTimes(1);
     expect(dispatchMock).toBeCalledWith({
@@ -110,9 +110,8 @@ describe('User/RoleList', () => {
 
   test('should dispatch open create role modal event and set select role data when user click update role button', async () => {
     render(<RoleList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getAllByText('common.edit')[0]);
     expect(dispatchMock).toBeCalledTimes(2);
     expect(dispatchMock).nthCalledWith(1, {
@@ -135,14 +134,11 @@ describe('User/RoleList', () => {
     deleteRoleSpy.mockImplementation(() => resolveThreeSecond({}));
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
     render(<RoleList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getRoleListSpy).toBeCalledTimes(1);
     fireEvent.click(screen.getAllByText('common.delete')[0]);
-    expect(
-      screen.queryByText('role.deleteRole.deleteTips')
-    ).toBeInTheDocument();
+    expect(screen.getByText('role.deleteRole.deleteTips')).toBeInTheDocument();
     fireEvent.click(screen.getByText('common.ok'));
 
     expect(deleteRoleSpy).toBeCalledTimes(1);
@@ -150,9 +146,8 @@ describe('User/RoleList', () => {
       role_name: RoleListData[0].role_name,
     });
     expect(screen.getByText('role.deleteRole.deleting')).toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByText('role.deleteRole.deleting')).toBeInTheDocument();
     expect(
       screen.getByText('role.deleteRole.deleteSuccessTips')
@@ -166,9 +161,8 @@ describe('User/RoleList', () => {
       page_size: 10,
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(300);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('role.deleteRole.deleting')
     ).not.toBeInTheDocument();
@@ -182,9 +176,8 @@ describe('User/RoleList', () => {
       page_index: 1,
       page_size: 10,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     act(() => {
       EventEmitter.emit(EmitterKey.Refresh_Role_list);
     });

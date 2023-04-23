@@ -34,9 +34,9 @@ const AuditPlanSqlAnalyze = () => {
     try {
       const res = await audit_plan.getAuditPlantAnalysisDataV2({
         project_name: projectName,
-        audit_plan_report_id: urlParams.reportId,
-        number: urlParams.sqlNum,
-        audit_plan_name: urlParams.auditPlanName,
+        audit_plan_report_id: urlParams.reportId ?? '',
+        number: urlParams.sqlNum ?? '',
+        audit_plan_name: urlParams.auditPlanName ?? '',
       });
       if (res.data.code === ResponseCode.SUCCESS) {
         setErrorMessage('');

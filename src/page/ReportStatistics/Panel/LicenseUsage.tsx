@@ -104,7 +104,7 @@ const LicenseUsage: React.FC = () => {
   }, [instancesUsage, t, userUsage]);
 
   const color: RadialBarConfig['color'] = useCallback(
-    ({ type }) => {
+    ({ type }: Datum) => {
       if (type === userUsage.resource_type) {
         return CommonChartsColors[1];
       }

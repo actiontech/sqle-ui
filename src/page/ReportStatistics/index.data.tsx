@@ -6,7 +6,7 @@ import {
   ISqlAverageExecutionTime,
   ISqlExecutionFailPercent,
 } from '../../api/common';
-import i18n from '../../locale';
+import { t } from '../../locale';
 import { TableColumn } from '../../types/common.type';
 import { floatRound } from '../../utils/Math';
 import { ReportStatisticsPanelEnum } from './index.enum';
@@ -258,21 +258,15 @@ const tableColumns: {
     return [
       {
         dataIndex: 'creator',
-        title: i18n.t(
-          'reportStatistics.diffUserOrderRejectRate.columns.username'
-        ),
+        title: t('reportStatistics.diffUserOrderRejectRate.columns.username'),
       },
       {
         dataIndex: 'workflow_total_num',
-        title: i18n.t(
-          'reportStatistics.diffUserOrderRejectRate.columns.totalOrder'
-        ),
+        title: t('reportStatistics.diffUserOrderRejectRate.columns.totalOrder'),
       },
       {
         dataIndex: 'rejected_percent',
-        title: i18n.t(
-          'reportStatistics.diffUserOrderRejectRate.columns.rejectRate'
-        ),
+        title: t('reportStatistics.diffUserOrderRejectRate.columns.rejectRate'),
         render(v) {
           if (!v) {
             return '';
@@ -290,19 +284,19 @@ const tableColumns: {
     return [
       {
         dataIndex: 'instance_name',
-        title: i18n.t(
+        title: t(
           'reportStatistics.diffInstanceOrderRejectRate.columns.instanceName'
         ),
       },
       {
         dataIndex: 'workflow_total_num',
-        title: i18n.t(
+        title: t(
           'reportStatistics.diffInstanceOrderRejectRate.columns.totalOrder'
         ),
       },
       {
         dataIndex: 'rejected_percent',
-        title: i18n.t(
+        title: t(
           'reportStatistics.diffInstanceOrderRejectRate.columns.rejectRate'
         ),
         render(v) {
@@ -319,13 +313,13 @@ const tableColumns: {
     return [
       {
         dataIndex: 'instance_name',
-        title: i18n.t(
+        title: t(
           'reportStatistics.orderAverageExecuteTimeTopN.columns.dataSourceName'
         ),
       },
       {
         dataIndex: 'average_execution_seconds',
-        title: i18n.t(
+        title: t(
           'reportStatistics.orderAverageExecuteTimeTopN.columns.average'
         ),
         render(text) {
@@ -334,18 +328,14 @@ const tableColumns: {
       },
       {
         dataIndex: 'max_execution_seconds',
-        title: i18n.t(
-          'reportStatistics.orderAverageExecuteTimeTopN.columns.max'
-        ),
+        title: t('reportStatistics.orderAverageExecuteTimeTopN.columns.max'),
         render(text) {
           return `${text}s`;
         },
       },
       {
         dataIndex: 'min_execution_seconds',
-        title: i18n.t(
-          'reportStatistics.orderAverageExecuteTimeTopN.columns.min'
-        ),
+        title: t('reportStatistics.orderAverageExecuteTimeTopN.columns.min'),
         render(text) {
           return `${text}s`;
         },
@@ -356,13 +346,11 @@ const tableColumns: {
     return [
       {
         dataIndex: 'instance_name',
-        title: i18n.t(
-          'reportStatistics.sqlExecFailedTopN.columns.dataSourceName'
-        ),
+        title: t('reportStatistics.sqlExecFailedTopN.columns.dataSourceName'),
       },
       {
         dataIndex: 'percent',
-        title: i18n.t(
+        title: t(
           'reportStatistics.sqlExecFailedTopN.columns.sqlExecFailedPercent'
         ),
         render(v) {

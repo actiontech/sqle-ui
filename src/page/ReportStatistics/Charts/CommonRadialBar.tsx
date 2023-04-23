@@ -1,12 +1,12 @@
 import { RadialBar } from '@ant-design/plots';
-import { useTheme } from '@material-ui/styles';
+import { useTheme } from '@mui/styles';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { CommonChartsColors, CommonRadialBarProps } from '.';
 import { IReduxState } from '../../../store';
-import { Theme } from '../../../types/theme.type';
 import reportStatisticsData from '../index.data';
 import logo from '../../../assets/img/logo.png';
+import { Theme } from '@mui/material/styles';
 
 const { rowHeight } = reportStatisticsData;
 

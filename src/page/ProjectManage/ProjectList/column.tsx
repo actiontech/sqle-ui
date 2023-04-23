@@ -1,10 +1,10 @@
 import { Divider, Popconfirm, Space, Typography } from 'antd';
-import { Link } from 'react-router-dom';
 import { IProjectListItem } from '../../../api/common';
 import EmptyBox from '../../../components/EmptyBox';
-import i18n from '../../../locale';
+import { t } from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import { formatTime } from '../../../utils/Common';
+import { Link } from '../../../components/Link';
 
 type ProjectListTableColumnFactoryParam = {
   deleteAction: (projectName: string) => void;
@@ -29,12 +29,12 @@ export const ProjectListTableColumnFactory = ({
   return [
     {
       dataIndex: 'name',
-      title: () => i18n.t('projectManage.projectList.column.name'),
+      title: () => t('projectManage.projectList.column.name'),
       render(name: string) {
         return (
           <Link
             onClick={() => updateRecentlyProject(name)}
-            to={`/project/${name}`}
+            to={`project/${name}/overview`}
           >
             {name}
           </Link>
@@ -44,25 +44,25 @@ export const ProjectListTableColumnFactory = ({
     {
       dataIndex: 'desc',
       ellipsis: true,
-      title: () => i18n.t('projectManage.projectList.column.desc'),
+      title: () => t('projectManage.projectList.column.desc'),
     },
     /* IFTRUE_isEE */
     {
       dataIndex: 'archived',
-      title: () => i18n.t('projectManage.projectList.column.status'),
+      title: () => t('projectManage.projectList.column.status'),
       render(archived: boolean) {
         if (archived) {
-          return i18n.t('projectManage.projectList.column.unavailable');
+          return t('projectManage.projectList.column.unavailable');
         }
 
-        return i18n.t('projectManage.projectList.column.available');
+        return t('projectManage.projectList.column.available');
       },
     },
     /* FITRUE_isEE */
     {
       dataIndex: 'create_time',
       ellipsis: true,
-      title: () => i18n.t('projectManage.projectList.column.createTime'),
+      title: () => t('projectManage.projectList.column.createTime'),
       render: (time) => {
         return formatTime(time);
       },
@@ -70,11 +70,11 @@ export const ProjectListTableColumnFactory = ({
     {
       dataIndex: 'create_user_name',
       ellipsis: true,
-      title: () => i18n.t('projectManage.projectList.column.createUser'),
+      title: () => t('projectManage.projectList.column.createUser'),
     },
     {
       dataIndex: 'operator',
-      title: () => i18n.t('common.operate'),
+      title: () => t('common.operate'),
       width: 190,
       render: (_, record) => {
         return (
@@ -86,18 +86,15 @@ export const ProjectListTableColumnFactory = ({
                 !allowOperateProject(record.name ?? '') || record.archived
               }
             >
-              {i18n.t('common.edit')}
+              {t('common.edit')}
             </Typography.Link>
             <Divider type="vertical" />
             <Popconfirm
-              title={i18n.t(
-                'projectManage.projectList.column.deleteProjectTips',
-                {
-                  name: record.name,
-                }
-              )}
-              okText={i18n.t('common.ok')}
-              cancelText={i18n.t('common.cancel')}
+              title={t('projectManage.projectList.column.deleteProjectTips', {
+                name: record.name,
+              })}
+              okText={t('common.ok')}
+              cancelText={t('common.cancel')}
               placement="topRight"
               onConfirm={() => deleteAction(record.name ?? '')}
               disabled={!allowOperateProject(record.name ?? '')}
@@ -107,7 +104,7 @@ export const ProjectListTableColumnFactory = ({
                 className="pointer"
                 disabled={!allowOperateProject(record.name ?? '')}
               >
-                {i18n.t('common.delete')}
+                {t('common.delete')}
               </Typography.Text>
             </Popconfirm>
 
@@ -117,14 +114,14 @@ export const ProjectListTableColumnFactory = ({
               if={record.archived}
               defaultNode={
                 <Popconfirm
-                  title={i18n.t(
+                  title={t(
                     'projectManage.projectList.column.archiveProjectTips',
                     {
                       name: record.name,
                     }
                   )}
-                  okText={i18n.t('common.ok')}
-                  cancelText={i18n.t('common.cancel')}
+                  okText={t('common.ok')}
+                  cancelText={t('common.cancel')}
                   placement="topRight"
                   onConfirm={() => archiveProject(record.name ?? '')}
                   disabled={!allowOperateProject(record.name ?? '')}
@@ -133,20 +130,20 @@ export const ProjectListTableColumnFactory = ({
                     className="pointer"
                     disabled={!allowOperateProject(record.name ?? '')}
                   >
-                    {i18n.t('projectManage.projectList.column.archive')}
+                    {t('projectManage.projectList.column.archive')}
                   </Typography.Link>
                 </Popconfirm>
               }
             >
               <Popconfirm
-                title={i18n.t(
+                title={t(
                   'projectManage.projectList.column.unarchiveProjectTips',
                   {
                     name: record.name,
                   }
                 )}
-                okText={i18n.t('common.ok')}
-                cancelText={i18n.t('common.cancel')}
+                okText={t('common.ok')}
+                cancelText={t('common.cancel')}
                 placement="topRight"
                 onConfirm={() => unarchiveProject(record.name ?? '')}
                 disabled={!allowOperateProject(record.name ?? '')}
@@ -155,7 +152,7 @@ export const ProjectListTableColumnFactory = ({
                   className="pointer"
                   disabled={!allowOperateProject(record.name ?? '')}
                 >
-                  {i18n.t('projectManage.projectList.column.unarchive')}
+                  {t('projectManage.projectList.column.unarchive')}
                 </Typography.Link>
               </Popconfirm>
             </EmptyBox>

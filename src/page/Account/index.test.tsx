@@ -1,21 +1,16 @@
-import {
-  act,
-  render,
-  waitFor,
-  screen,
-  fireEvent,
-} from '@testing-library/react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { act, screen, fireEvent } from '@testing-library/react';
+import { useLocation } from 'react-router-dom';
 import Account from '.';
 import user from '../../api/user';
-import { mockUseDispatch } from '../../testUtils/mockRedux';
 import { resolveThreeSecond } from '../../testUtils/mockRequest';
+import { renderWithRedux } from '../../testUtils/customRender';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useLocation: jest.fn(),
-  useHistory: jest.fn(),
 }));
+
+jest.mock('../../hooks/useNavigate', () => jest.fn());
 
 describe('Account', () => {
   const mockRequest = () => {
@@ -23,8 +18,6 @@ describe('Account', () => {
     return spy;
   };
   const useLocationMock: jest.Mock = useLocation as jest.Mock;
-  const useHistoryMock: jest.Mock = useHistory as jest.Mock;
-  const replaceMock = jest.fn();
   beforeEach(() => {
     const userSpy = mockRequest();
     userSpy.mockImplementation(() =>
@@ -36,16 +29,12 @@ describe('Account', () => {
       })
     );
     jest.useFakeTimers();
-    mockUseDispatch();
     useLocationMock.mockReturnValue({
       pathname: '/rule',
       search: '',
       hash: '',
       state: null,
       key: '5nvxpbdafa',
-    });
-    useHistoryMock.mockReturnValue({
-      replace: replaceMock,
     });
   });
 
@@ -54,25 +43,22 @@ describe('Account', () => {
     jest.clearAllMocks();
     jest.clearAllTimers();
     useLocationMock.mockRestore();
-    useHistoryMock.mockRestore();
   });
 
   test('should render user Info when request is success', async () => {
-    const { container } = render(<Account />);
+    const { container } = renderWithRedux(<Account />);
     expect(container).toMatchSnapshot();
-    act(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => screen.findByText('user_test1'));
+    await act(async () => jest.advanceTimersByTime(3000));
+    await screen.findByText('user_test1');
     expect(container).toMatchSnapshot();
     expect(screen.getByTestId('accountModifyPasswordBtn')).not.toBeDisabled();
   });
 
   test('should open modify password modal when user click modify password button', () => {
-    render(<Account />);
+    renderWithRedux(<Account />);
     fireEvent.click(screen.getByText('account.modifyPassword.button'));
     expect(
-      screen.queryByText('account.modifyPassword.title')
+      screen.getByText('account.modifyPassword.title')
     ).toBeInTheDocument();
   });
 
@@ -89,10 +75,9 @@ describe('Account', () => {
         login_type: 'ldap',
       })
     );
-    render(<Account />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    renderWithRedux(<Account />);
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByTestId('accountModifyPasswordBtn')).toBeDisabled();
   });
 });

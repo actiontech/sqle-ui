@@ -31,10 +31,7 @@ exports[`PlanDetail should should match snapshot with report 1`] = `
       />
     </Col>
   </Row>
-  <Route
-    component={[Function]}
-    path="/project/:projectName/auditPlan/detail/:auditPlanName/report/:reportId"
-  />
+  <Outlet />
 </Fragment>
 `;
 
@@ -42,7 +39,7 @@ exports[`PlanDetail should should match snapshot without report 1`] = `
 <Fragment>
   <Row
     gutter={24}
-    hidden={false}
+    hidden={true}
   >
     <Col
       sm={24}
@@ -69,9 +66,6 @@ exports[`PlanDetail should should match snapshot without report 1`] = `
       />
     </Col>
   </Row>
-  <Route
-    component={[Function]}
-    path="/project/:projectName/auditPlan/detail/:auditPlanName/report/:reportId"
-  />
+  <Outlet />
 </Fragment>
 `;

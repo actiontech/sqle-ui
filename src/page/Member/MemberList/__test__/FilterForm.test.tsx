@@ -37,9 +37,8 @@ describe('test MemberListFilterForm', () => {
   });
   test('should match snapshot', async () => {
     const { container } = render(<MemberListFilterForm submit={submitSpy} />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -65,11 +64,9 @@ describe('test MemberListFilterForm', () => {
       project_name: projectName,
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    act(() => {
+    await act(() => {
       EventEmitter.emit(EmitterKey.Refresh_Filter_User_Tips);
     });
     expect(useMemberSpy).toBeCalledTimes(2);
@@ -80,18 +77,16 @@ describe('test MemberListFilterForm', () => {
 
   test('should perform submission request when clicking a reset or search', async () => {
     render(<MemberListFilterForm submit={submitSpy} />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(submitSpy).toBeCalledTimes(0);
 
     selectOptionByIndex('member.memberList.filterForm.username', 'member1');
     selectOptionByIndex('member.memberList.filterForm.instance', 'instance1');
 
     fireEvent.click(screen.getByText('common.search'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(submitSpy).toBeCalledTimes(1);
     expect(submitSpy).toBeCalledWith({
       filterUserName: 'member1',

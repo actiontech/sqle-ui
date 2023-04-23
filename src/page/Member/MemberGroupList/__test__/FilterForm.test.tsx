@@ -38,9 +38,8 @@ describe('test MemberGroupListFilterForm', () => {
     const { container } = render(
       <MemberGroupListFilterForm submit={submitSpy} />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -63,11 +62,9 @@ describe('test MemberGroupListFilterForm', () => {
       filter_project: projectName,
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    act(() => {
+    await act(() => {
       EventEmitter.emit(EmitterKey.Refresh_Filter_User_Group_Tips);
     });
     expect(useUserGroupSpy).toBeCalledTimes(2);
@@ -78,9 +75,8 @@ describe('test MemberGroupListFilterForm', () => {
 
   test('should perform submission request when clicking a reset or search', async () => {
     render(<MemberGroupListFilterForm submit={submitSpy} />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(submitSpy).toBeCalledTimes(0);
 
     selectOptionByIndex(
@@ -93,9 +89,8 @@ describe('test MemberGroupListFilterForm', () => {
     );
 
     fireEvent.click(screen.getByText('common.search'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(submitSpy).toBeCalledTimes(1);
     expect(submitSpy).toBeCalledWith({
       filterUserGroupName: 'user_group_name1',

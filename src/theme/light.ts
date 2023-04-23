@@ -1,6 +1,6 @@
-import { Theme } from '../types/theme.type';
+import { createTheme } from '@mui/material/styles';
 
-const lightTheme: Theme = {
+const lightTheme = createTheme({
   common: {
     padding: 24,
     color: {
@@ -22,6 +22,6 @@ const lightTheme: Theme = {
   optionsHover: {
     background: '#f5f5f5',
   },
-};
+});
 
 export default lightTheme;

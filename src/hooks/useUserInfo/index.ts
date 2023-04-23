@@ -13,11 +13,12 @@ import {
 } from '../../data/common';
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import useNavigate from '../useNavigate';
 
 const useUserInfo = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
 
   const clearUserInfo = useCallback(() => {
@@ -62,16 +63,17 @@ const useUserInfo = () => {
         );
       } else {
         clearUserInfo();
-        history.replace(
-          `/login?${SQLE_REDIRECT_KEY_PARAMS_NAME}=${location.pathname}`
+        navigate(
+          `/login?${SQLE_REDIRECT_KEY_PARAMS_NAME}=${location.pathname}`,
+          { replace: true }
         );
       }
     },
     onError: () => {
       clearUserInfo();
-      history.replace(
-        `/login?${SQLE_REDIRECT_KEY_PARAMS_NAME}=${location.pathname}`
-      );
+      navigate(`/login?${SQLE_REDIRECT_KEY_PARAMS_NAME}=${location.pathname}`, {
+        replace: true,
+      });
     },
   });
 

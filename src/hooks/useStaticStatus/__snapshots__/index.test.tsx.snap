@@ -82,7 +82,7 @@ exports[`useRuleTemplate should render static option for audit status 2`] = `
           class="ant-select-selection-search"
         >
           <input
-            aria-activedescendant="rc_select_TEST_OR_SSR_list_-1"
+            aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
             aria-autocomplete="list"
             aria-controls="rc_select_TEST_OR_SSR_list"
             aria-expanded="true"
@@ -140,7 +140,7 @@ exports[`useRuleTemplate should render static option for audit status 2`] = `
     <div>
       <div
         class="ant-select-dropdown"
-        style="opacity: 0; pointer-events: none; min-width: 0; width: 0px;"
+        style="opacity: 0; min-width: 0; width: 0px;"
       >
         <div>
           <div
@@ -155,6 +155,14 @@ exports[`useRuleTemplate should render static option for audit status 2`] = `
               role="option"
             >
               initialized
+            </div>
+            <div
+              aria-label="audit.auditStatus.doing"
+              aria-selected="false"
+              id="rc_select_TEST_OR_SSR_list_1"
+              role="option"
+            >
+              doing
             </div>
           </div>
           <div
@@ -172,7 +180,7 @@ exports[`useRuleTemplate should render static option for audit status 2`] = `
                 >
                   <div
                     aria-selected="false"
-                    class="ant-select-item ant-select-item-option"
+                    class="ant-select-item ant-select-item-option ant-select-item-option-active"
                     title="audit.auditStatus.initialized"
                   >
                     <div
@@ -323,7 +331,7 @@ exports[`useRuleTemplate should render static option for exec status 2`] = `
           class="ant-select-selection-search"
         >
           <input
-            aria-activedescendant="rc_select_TEST_OR_SSR_list_-1"
+            aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
             aria-autocomplete="list"
             aria-controls="rc_select_TEST_OR_SSR_list"
             aria-expanded="true"
@@ -381,7 +389,7 @@ exports[`useRuleTemplate should render static option for exec status 2`] = `
     <div>
       <div
         class="ant-select-dropdown"
-        style="opacity: 0; pointer-events: none; min-width: 0; width: 0px;"
+        style="opacity: 0; min-width: 0; width: 0px;"
       >
         <div>
           <div
@@ -396,6 +404,14 @@ exports[`useRuleTemplate should render static option for exec status 2`] = `
               role="option"
             >
               initialized
+            </div>
+            <div
+              aria-label="audit.execStatus.doing"
+              aria-selected="false"
+              id="rc_select_TEST_OR_SSR_list_1"
+              role="option"
+            >
+              doing
             </div>
           </div>
           <div
@@ -413,7 +429,7 @@ exports[`useRuleTemplate should render static option for exec status 2`] = `
                 >
                   <div
                     aria-selected="false"
-                    class="ant-select-item ant-select-item-option"
+                    class="ant-select-item ant-select-item-option ant-select-item-option-active"
                     title="audit.execStatus.initialized"
                   >
                     <div
@@ -581,7 +597,7 @@ exports[`useRuleTemplate should render static option for order status 2`] = `
           class="ant-select-selection-search"
         >
           <input
-            aria-activedescendant="rc_select_TEST_OR_SSR_list_-1"
+            aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
             aria-autocomplete="list"
             aria-controls="rc_select_TEST_OR_SSR_list"
             aria-expanded="true"
@@ -639,7 +655,7 @@ exports[`useRuleTemplate should render static option for order status 2`] = `
     <div>
       <div
         class="ant-select-dropdown"
-        style="opacity: 0; pointer-events: none; min-width: 0; width: 0px;"
+        style="opacity: 0; min-width: 0; width: 0px;"
       >
         <div>
           <div
@@ -654,6 +670,14 @@ exports[`useRuleTemplate should render static option for order status 2`] = `
               role="option"
             >
               wait_for_audit
+            </div>
+            <div
+              aria-label="order.status.wait_for_execution"
+              aria-selected="false"
+              id="rc_select_TEST_OR_SSR_list_1"
+              role="option"
+            >
+              wait_for_execution
             </div>
           </div>
           <div
@@ -671,7 +695,7 @@ exports[`useRuleTemplate should render static option for order status 2`] = `
                 >
                   <div
                     aria-selected="false"
-                    class="ant-select-item ant-select-item-option"
+                    class="ant-select-item ant-select-item-option ant-select-item-option-active"
                     title="order.status.wait_for_audit"
                   >
                     <div

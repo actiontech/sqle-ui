@@ -11,23 +11,15 @@ exports[`PlanDetail should match snapshot 1`] = `
     ghost={false}
     title="auditPlan.detailPage.pageTitle"
   >
-    <Paragraph>
+    <ForwardRef>
       auditPlan.detailPage.auditTaskType
-    </Paragraph>
+    </ForwardRef>
     auditPlan.detailPage.pageDesc
   </PageHeader>
   <section
     className="padding-content"
   >
-    <Switch>
-      <Route
-        component={[Function]}
-        path="/project/:projectName/auditPlan/detail/:auditPlanName"
-      />
-      <Redirect
-        to="/project/:projectName/auditPlan"
-      />
-    </Switch>
+    <PlanDetail />
   </section>
 </Fragment>
 `;

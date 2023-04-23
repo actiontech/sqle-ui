@@ -1,5 +1,5 @@
 import { InfoCircleOutlined } from '@ant-design/icons';
-import { useTheme } from '@material-ui/styles';
+import { useTheme } from '@mui/styles';
 import { useBoolean } from 'ahooks';
 import {
   Form,
@@ -17,13 +17,13 @@ import EmptyBox from '../../../../components/EmptyBox';
 import TestDatabaseConnectButton from '../../../../components/TestDatabaseConnectButton';
 import { ResponseCode } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
-import { Theme } from '../../../../types/theme.type';
 import EventEmitter from '../../../../utils/EventEmitter';
 import { DataSourceFormField } from '../index.type';
 import useDatabaseType from '../../../../hooks/useDatabaseType';
 import useAsyncParams from '../../../../components/BackendForm/useAsyncParams';
 import BackendForm, { FormItem } from '../../../../components/BackendForm';
 import { turnCommonToDataSourceParams } from '../../tool';
+import { Theme } from '@mui/material/styles';
 
 const DatabaseFormItem: React.FC<{
   form: FormInstance<DataSourceFormField>;

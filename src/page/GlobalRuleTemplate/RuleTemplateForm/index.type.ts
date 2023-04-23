@@ -15,4 +15,5 @@ export type RuleTemplateFormProps = {
   prevStep: () => void;
   submit: () => void;
   mode: 'import' | 'update' | 'create';
+  children: React.ReactNode;
 };

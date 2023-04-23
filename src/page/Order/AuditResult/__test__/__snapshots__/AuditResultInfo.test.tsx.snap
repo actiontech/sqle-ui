@@ -193,7 +193,7 @@ exports[`Order/AuditResult/AuditResultInfo should render single audit result det
       >
         <div
           class="ant-col"
-          style="flex: 0 0 50px;"
+          style="flex: 0 0 50px; min-width: 0;"
         >
           <div
             class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
@@ -241,7 +241,7 @@ exports[`Order/AuditResult/AuditResultInfo should render single audit result det
         </div>
         <div
           class="ant-col message"
-          style="flex: 1 1 auto;"
+          style="flex: 1 1 auto; min-width: 0;"
         >
           <span>
             schema 不存在

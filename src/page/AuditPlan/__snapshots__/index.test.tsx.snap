@@ -11,24 +11,7 @@ exports[`AuditPlan should match snapshot 1`] = `
   <section
     className="padding-content"
   >
-    <Switch>
-      <Route
-        component={[Function]}
-        exact={true}
-        path="/project/:projectName/auditPlan"
-      />
-      <Route
-        component={[Function]}
-        path="/project/:projectName/auditPlan/create"
-      />
-      <Route
-        component={[Function]}
-        path="/project/:projectName/auditPlan/update/:auditPlanName"
-      />
-      <Redirect
-        to="/project/:projectName/auditPlan"
-      />
-    </Switch>
+    <Outlet />
   </section>
 </Fragment>
 `;

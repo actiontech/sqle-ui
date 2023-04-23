@@ -8,8 +8,6 @@ describe('store/user', () => {
         role: {
           role_name: 'role_name1',
           role_desc: 'desc',
-          user_name_list: ['user1'],
-          instance_name_list: ['instance1'],
         },
       })
     ).toEqual({
@@ -17,8 +15,6 @@ describe('store/user', () => {
         role: {
           role_name: 'role_name1',
           role_desc: 'desc',
-          user_name_list: ['user1'],
-          instance_name_list: ['instance1'],
         },
       },
       type: 'user/updateSelectRole',
@@ -27,7 +23,6 @@ describe('store/user', () => {
       updateSelectUser({
         user: {
           email: '22222@163.com',
-          role_name_list: ['role1'],
           user_name: 'user1',
         },
       })
@@ -35,7 +30,6 @@ describe('store/user', () => {
       payload: {
         user: {
           email: '22222@163.com',
-          role_name_list: ['role1'],
           user_name: 'user1',
         },
       },
@@ -47,6 +41,7 @@ describe('store/user', () => {
     selectRole: null,
     selectUser: null,
     modalStatus: {},
+    selectUserGroup: null,
   };
 
   test('should update selectUser when dispatch updateUser action', () => {
@@ -55,7 +50,6 @@ describe('store/user', () => {
       updateSelectUser({
         user: {
           email: '22222@163.com',
-          role_name_list: ['role1'],
           user_name: 'user1',
         },
       })
@@ -65,9 +59,9 @@ describe('store/user', () => {
       selectRole: null,
       selectUser: {
         email: '22222@163.com',
-        role_name_list: ['role1'],
         user_name: 'user1',
       },
+      selectUserGroup: null,
       modalStatus: {},
     });
   });
@@ -79,8 +73,6 @@ describe('store/user', () => {
         role: {
           role_name: 'role_name1',
           role_desc: 'desc',
-          user_name_list: ['user1'],
-          instance_name_list: ['instance1'],
         },
       })
     );
@@ -89,9 +81,8 @@ describe('store/user', () => {
       selectRole: {
         role_name: 'role_name1',
         role_desc: 'desc',
-        user_name_list: ['user1'],
-        instance_name_list: ['instance1'],
       },
+      selectUserGroup: null,
       selectUser: null,
       modalStatus: {},
     });

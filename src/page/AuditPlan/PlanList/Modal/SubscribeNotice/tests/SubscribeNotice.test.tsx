@@ -1,28 +1,32 @@
 /* eslint-disable no-console */
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, screen, waitFor } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import SubscribeNotice from '..';
 import audit_plan from '../../../../../../api/audit_plan';
 import { ModalName } from '../../../../../../data/ModalName';
 import { getBySelector } from '../../../../../../testUtils/customQuery';
 import { renderWithTheme } from '../../../../../../testUtils/customRender';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../../../testUtils/mockRedux';
 import { resolveThreeSecond } from '../../../../../../testUtils/mockRequest';
 import { mockUseStyle } from '../../../../../../testUtils/mockStyle';
 import { AuditPlanList } from '../../../__testData__';
 import { auditPlanSubscribeNoticeConfig } from './__testData__';
+import { useDispatch, useSelector } from 'react-redux';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn(),
 }));
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 const projectName = 'default';
 
 describe('SubscribeNotice', () => {
-  let dispatchSpy!: jest.SpyInstance;
+  let dispatchSpy = jest.fn();
   const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   let conoleError: any;
@@ -42,18 +46,21 @@ describe('SubscribeNotice', () => {
 
   beforeEach(() => {
     jest.useFakeTimers();
-    dispatchSpy = mockUseDispatch().scopeDispatch;
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
+    (useSelector as jest.Mock).mockImplementation((selector) =>
+      selector({
+        auditPlan: {
+          modalStatus: {
+            [ModalName.Subscribe_Notice]: true,
+          },
+          selectAuditPlan: AuditPlanList[0],
+        },
+        user: {},
+      })
+    );
     mockGetAuditPlanNotifyConfigV1();
     mockUseStyle();
-    mockUseSelector({
-      auditPlan: {
-        modalStatus: {
-          [ModalName.Subscribe_Notice]: true,
-        },
-        selectAuditPlan: AuditPlanList[0],
-      },
-      user: {},
-    });
+
     useParamsMock.mockReturnValue({ projectName });
   });
 
@@ -101,18 +108,15 @@ describe('SubscribeNotice', () => {
       audit_plan_name: 'audit_for_java_app11',
       project_name: projectName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(baseElement).toMatchSnapshot();
   });
 
   it('should clean form when user close modal', async () => {
     renderWithTheme(<SubscribeNotice />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.getByLabelText('auditPlan.subscribeNotice.form.interval')
     ).toHaveValue('6');
@@ -140,18 +144,16 @@ describe('SubscribeNotice', () => {
     // ).toBeChecked();
 
     expect(getBySelector('.ant-modal')).toHaveStyle({ width: '1000px' });
-    await waitFor(() => {
-      jest.advanceTimersByTime(300);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getBySelector('.ant-modal')).toHaveStyle({ width: '520px' });
   });
 
   it('should update config when user input all field and click submit', async () => {
     renderWithTheme(<SubscribeNotice />);
     const submitSpy = mockUpdateAuditPlanNotifyConfigV1();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.input(
       screen.getByLabelText('auditPlan.subscribeNotice.form.interval'),
       {
@@ -164,9 +166,8 @@ describe('SubscribeNotice', () => {
 
     fireEvent.click(screen.getByText('common.submit'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByText('common.submit').parentNode).toHaveClass(
       'ant-btn-loading'
     );
@@ -189,22 +190,17 @@ describe('SubscribeNotice', () => {
       web_hook_url: 'prospero://kdmgujzl.tw/kgkredqxr',
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByText('common.submit').parentNode).not.toHaveClass(
       'ant-btn-loading'
     );
     expect(screen.getByText('common.close').parentNode).not.toBeDisabled();
 
     expect(
-      screen.queryByText(
-        'auditPlan.subscribeNotice.form.subscribeNoticeSuccess'
-      )
+      screen.getByText('auditPlan.subscribeNotice.form.subscribeNoticeSuccess')
     ).toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.queryByText(
@@ -216,20 +212,18 @@ describe('SubscribeNotice', () => {
   it('should test config when user click test button', async () => {
     const testSpy = mockTestAuditPlanNotifyConfigV1();
     renderWithTheme(<SubscribeNotice />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.mouseEnter(screen.getByTestId('testMessage'));
 
-    await waitFor(() => {
-      jest.runAllTimers();
-    });
+    await act(async () => jest.runAllTimers());
+
     expect(
-      screen.queryByText('auditPlan.subscribeNotice.form.testTips')
+      screen.getByText('auditPlan.subscribeNotice.form.testTips')
     ).toBeInTheDocument();
     fireEvent.click(screen.getByTestId('testMessage'));
     expect(
-      screen.queryByText('auditPlan.subscribeNotice.form.testLoading')
+      screen.getByText('auditPlan.subscribeNotice.form.testLoading')
     ).toBeInTheDocument();
     expect(testSpy).toBeCalledTimes(1);
     expect(testSpy).toBeCalledWith({
@@ -238,24 +232,22 @@ describe('SubscribeNotice', () => {
     });
     fireEvent.click(screen.getByTestId('testMessage'));
     expect(testSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('auditPlan.subscribeNotice.form.testLoading')
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText('auditPlan.subscribeNotice.form.testSuccess')
+      screen.getByText('auditPlan.subscribeNotice.form.testSuccess')
     ).toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('auditPlan.subscribeNotice.form.testSuccess')
     ).not.toBeInTheDocument();
   });
 
-  test('should show error message when request is_smtp_send_normal is equal false', async () => {
+  it('should show error message when request is_smtp_send_normal is equal false', async () => {
     const testSpy = mockTestAuditPlanNotifyConfigV1();
     testSpy.mockImplementation(() =>
       resolveThreeSecond({
@@ -264,20 +256,18 @@ describe('SubscribeNotice', () => {
       })
     );
     renderWithTheme(<SubscribeNotice />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.mouseEnter(screen.getByTestId('testMessage'));
 
-    await waitFor(() => {
-      jest.runAllTimers();
-    });
+    await act(async () => jest.runAllTimers());
+
     expect(
-      screen.queryByText('auditPlan.subscribeNotice.form.testTips')
+      screen.getByText('auditPlan.subscribeNotice.form.testTips')
     ).toBeInTheDocument();
     fireEvent.click(screen.getByTestId('testMessage'));
     expect(
-      screen.queryByText('auditPlan.subscribeNotice.form.testLoading')
+      screen.getByText('auditPlan.subscribeNotice.form.testLoading')
     ).toBeInTheDocument();
     expect(testSpy).toBeCalledTimes(1);
     expect(testSpy).toBeCalledWith({
@@ -286,27 +276,24 @@ describe('SubscribeNotice', () => {
     });
     fireEvent.click(screen.getByTestId('testMessage'));
     expect(testSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('auditPlan.subscribeNotice.form.testLoading')
     ).not.toBeInTheDocument();
     expect(
       screen.queryByText('auditPlan.subscribeNotice.form.testSuccess')
     ).not.toBeInTheDocument();
-    expect(screen.queryByText('error message')).toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    expect(screen.getByText('error message')).toBeInTheDocument();
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.queryByText('error message')).not.toBeInTheDocument();
   });
 
-  test('should set template to default when user click reset template button', async () => {
+  it('should set template to default when user click reset template button', async () => {
     renderWithTheme(<SubscribeNotice />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.getByLabelText('auditPlan.subscribeNotice.form.webhooksTemplate')
     ).toHaveValue(

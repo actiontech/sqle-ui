@@ -1,10 +1,18 @@
 import { DownOutlined } from '@ant-design/icons';
-import { Divider, Dropdown, Menu, Popconfirm, Space, Typography } from 'antd';
-import { Link } from 'react-router-dom';
+import {
+  Divider,
+  Dropdown,
+  Menu,
+  MenuProps,
+  Popconfirm,
+  Space,
+  Typography,
+} from 'antd';
 import { IRuleTemplateResV1 } from '../../../api/common';
-import i18n from '../../../locale';
+import { t } from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import { RuleUrlParamKey } from '../../Rule/useRuleFilterForm';
+import { Link } from '../../../components/Link';
 
 export const RuleTemplateListTableColumnFactory = (
   deleteTemplate: (name: string) => void,
@@ -15,14 +23,14 @@ export const RuleTemplateListTableColumnFactory = (
   const columns: TableColumn<IRuleTemplateResV1, 'operator'> = [
     {
       dataIndex: 'rule_template_name',
-      title: () => i18n.t('ruleTemplate.ruleTemplateList.table.templateName'),
+      title: () => t('ruleTemplate.ruleTemplateList.table.templateName'),
       render(name: string) {
         if (!name) {
           return '';
         }
 
         return (
-          <Link to={`/rule?${RuleUrlParamKey.ruleTemplateName}=${name}`}>
+          <Link to={`rule?${RuleUrlParamKey.ruleTemplateName}=${name}`}>
             {name}
           </Link>
         );
@@ -31,24 +39,36 @@ export const RuleTemplateListTableColumnFactory = (
     {
       dataIndex: 'desc',
       ellipsis: true,
-      title: () => i18n.t('ruleTemplate.ruleTemplateList.table.desc'),
+      title: () => t('ruleTemplate.ruleTemplateList.table.desc'),
     },
     {
       dataIndex: 'db_type',
-      title: () => i18n.t('ruleTemplate.ruleTemplateList.table.dbType'),
+      title: () => t('ruleTemplate.ruleTemplateList.table.dbType'),
     },
     {
       dataIndex: 'operator',
-      title: () => i18n.t('common.operate'),
+      title: () => t('common.operate'),
       render: (_, record) => {
+        const menuItems: MenuProps['items'] = [
+          {
+            key: 'clone-rule-template',
+            onClick: () => openCloneRuleTemplateModal(record),
+            label: t('ruleTemplate.cloneRuleTemplate.button'),
+          },
+          {
+            key: 'export-rule-template',
+            onClick: () => exportRuleTemplate(record.rule_template_name ?? ''),
+            label: t('ruleTemplate.exportRuleTemplate.button'),
+          },
+        ];
         return (
           <Space className="user-cell flex-end-horizontal">
-            <Link to={`/rule/template/update/${record.rule_template_name}`}>
-              {i18n.t('common.edit')}
+            <Link to={`rule/template/update/${record.rule_template_name}`}>
+              {t('common.edit')}
             </Link>
             <Divider type="vertical" />
             <Popconfirm
-              title={i18n.t('ruleTemplate.deleteRuleTemplate.tips', {
+              title={t('ruleTemplate.deleteRuleTemplate.tips', {
                 name: record.rule_template_name,
               })}
               placement="topRight"
@@ -58,34 +78,13 @@ export const RuleTemplateListTableColumnFactory = (
               )}
             >
               <Typography.Text type="danger" className="pointer">
-                {i18n.t('common.delete')}
+                {t('common.delete')}
               </Typography.Text>
             </Popconfirm>
             <Divider type="vertical" />
-            <Dropdown
-              placement="bottomRight"
-              overlay={
-                <Menu>
-                  <Menu.Item
-                    key="clone-rule-template"
-                    onClick={openCloneRuleTemplateModal.bind(null, record)}
-                  >
-                    {i18n.t('ruleTemplate.cloneRuleTemplate.button')}
-                  </Menu.Item>
-                  <Menu.Item
-                    key="export-rule-template"
-                    onClick={exportRuleTemplate.bind(
-                      null,
-                      record.rule_template_name ?? ''
-                    )}
-                  >
-                    {i18n.t('ruleTemplate.exportRuleTemplate.button')}
-                  </Menu.Item>
-                </Menu>
-              }
-            >
+            <Dropdown placement="bottomRight" menu={{ items: menuItems }}>
               <Typography.Link className="pointer">
-                {i18n.t('common.more')}
+                {t('common.more')}
                 <DownOutlined />
               </Typography.Link>
             </Dropdown>

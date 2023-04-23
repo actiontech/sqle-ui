@@ -1,10 +1,4 @@
-import {
-  fireEvent,
-  render,
-  waitFor,
-  screen,
-  act,
-} from '@testing-library/react';
+import { fireEvent, render, screen, act } from '@testing-library/react';
 import { cloneDeep } from 'lodash';
 import PlanForm from '.';
 import audit_plan from '../../../api/audit_plan';
@@ -83,9 +77,8 @@ describe('PlanForm', () => {
     const { container } = render(
       <PlanForm submit={submitFn} projectName={projectName} />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -93,16 +86,13 @@ describe('PlanForm', () => {
     const submitFn = jest.fn();
     const getInstanceSpy = mockGetInstance();
     render(<PlanForm submit={submitFn} projectName={projectName} />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.mouseDown(
       screen.getByLabelText('auditPlan.planForm.databaseName')
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const instanceOptions = screen.getAllByText('instance1');
     const instance = instanceOptions[1];
     expect(instance).toHaveClass('ant-select-item-option-content');
@@ -114,9 +104,8 @@ describe('PlanForm', () => {
       project_name: projectName,
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       getBySelector(
         '.ant-select-selection-item',
@@ -132,73 +121,63 @@ describe('PlanForm', () => {
     const { container } = render(
       <PlanForm submit={submitFn} projectName={projectName} />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.input(screen.getByLabelText('auditPlan.planForm.name'), {
       target: { value: 'planName1' },
     });
 
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.mouseDown(
       screen.getByLabelText('auditPlan.planForm.databaseName')
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const instanceOptions = screen.getAllByText('instance1');
     const instance = instanceOptions[1];
     expect(instance).toHaveClass('ant-select-item-option-content');
     fireEvent.click(instance);
+    await act(async () => jest.advanceTimersByTime(0));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.mouseDown(screen.getByLabelText('auditPlan.planForm.schema'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const schemaOptions = screen.getAllByText('schema1');
     expect(schemaOptions[1]).toHaveClass('ant-select-item-option-content');
     fireEvent.click(schemaOptions[1]);
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(getAuditMetasSpy).toBeCalledTimes(1);
     expect(getAuditMetasSpy).toBeCalledWith({
       filter_instance_type: 'mysql',
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.mouseDown(screen.getByLabelText('auditPlan.planForm.taskType'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const auditTaskTypeOptions = screen.getAllByText('普通的SQL审核');
     expect(auditTaskTypeOptions[0]).toHaveClass(
       'ant-select-item-option-content'
     );
     fireEvent.click(auditTaskTypeOptions[0]);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     fireEvent.mouseDown(
       screen.getByLabelText('auditPlan.planForm.ruleTemplateName')
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const ruleTemplateOptions = screen.getAllByText('rule_template_name1');
     fireEvent.click(ruleTemplateOptions[1]);
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(screen.getByText('common.submit').parentNode).toHaveClass(
       'ant-btn-loading'
@@ -230,16 +209,15 @@ describe('PlanForm', () => {
       ruleTemplateName: 'rule_template_name1',
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.getByText('common.submit').parentNode).not.toHaveClass(
       'ant-btn-loading'
     );
     expect(screen.getByText('common.reset').parentNode).not.toBeDisabled();
 
-    fireEvent.click(screen.getByText('common.reset'));
+    await fireEvent.click(screen.getByText('common.reset'));
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(container).toMatchSnapshot();
   });
@@ -247,10 +225,10 @@ describe('PlanForm', () => {
   test('should rest form when component "Rest_Audit_Plan_Form" event', async () => {
     const submitFn = jest.fn();
     render(<PlanForm submit={submitFn} projectName={projectName} />);
-    fireEvent.input(screen.getByLabelText('auditPlan.planForm.name'), {
+    await fireEvent.input(screen.getByLabelText('auditPlan.planForm.name'), {
       target: { value: 'planName1' },
     });
-    act(() => {
+    await act(() => {
       EventEmitter.emit(EmitterKey.Rest_Audit_Plan_Form);
     });
     expect(screen.getByLabelText('auditPlan.planForm.name')).toHaveValue('');
@@ -267,12 +245,10 @@ describe('PlanForm', () => {
         projectName={projectName}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(useInstanceSpy).toBeCalledTimes(1);
     expect(useInstanceSpy).toBeCalledWith({
       filter_db_type: 'oracle',
@@ -281,6 +257,7 @@ describe('PlanForm', () => {
     });
     expect(container).toMatchSnapshot();
     fireEvent.click(screen.getByText('common.reset'));
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(emitSpy).toBeCalledTimes(1);
     expect(emitSpy).toBeCalledWith(
@@ -302,12 +279,10 @@ describe('PlanForm', () => {
       />
     );
     expect(getMeta).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
     const auditPlanClone = cloneDeep(AuditPlan);
     rerender(
       <PlanForm
@@ -317,9 +292,8 @@ describe('PlanForm', () => {
       />
     );
     expect(getMeta).toBeCalledTimes(2);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.getByText(AuditPlan.audit_plan_meta.audit_plan_type_desc)
     ).toHaveClass('ant-select-selection-item');
@@ -333,29 +307,26 @@ describe('PlanForm', () => {
     expect(useRuleTemplateSpy).toBeCalledTimes(1);
     expect(useRuleTemplateSpy).toBeCalledWith({ project_name: projectName });
     expect(useGlobalRuleTemplateSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('auditPlan.planForm.ruleTemplateName')?.parentElement
-        ?.parentElement
+        ?.parentElement?.parentElement
     ).toHaveClass('ant-form-item-hidden');
 
     fireEvent.mouseDown(
       screen.getByLabelText('auditPlan.planForm.databaseName')
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const instanceOptions = screen.getAllByText('instance1');
     const instance = instanceOptions[1];
     fireEvent.click(instance);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('auditPlan.planForm.ruleTemplateName')?.parentElement
-        ?.parentElement
+        ?.parentElement?.parentElement
     ).not.toHaveClass('ant-form-item-hidden');
   });
 
@@ -363,27 +334,21 @@ describe('PlanForm', () => {
     const submitFn = jest.fn();
     render(<PlanForm submit={submitFn} projectName={projectName} />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.mouseDown(screen.getByLabelText('auditPlan.planForm.dbType'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const mysqlOptions = screen.getAllByText('mysql');
     const mysql = mysqlOptions[1];
     fireEvent.click(mysql);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.mouseDown(
       screen.getByLabelText('auditPlan.planForm.ruleTemplateName')
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const ruleTemplateOptions = screen.getAllByText('rule_template_name1');
     fireEvent.click(ruleTemplateOptions[1]);
 
@@ -392,15 +357,13 @@ describe('PlanForm', () => {
     );
 
     fireEvent.mouseDown(screen.getByLabelText('auditPlan.planForm.dbType'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const oracleOptions = screen.getAllByText('oracle');
     const oracle = oracleOptions[1];
     fireEvent.click(oracle);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getAllByText('rule_template_name1')[0]).not.toHaveClass(
       'ant-select-selection-item'
     );
@@ -420,19 +383,21 @@ describe('PlanForm', () => {
       functional_module: 'create_audit_plan',
       project_name: projectName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
+    fireEvent.mouseDown(screen.getByLabelText('auditPlan.planForm.dbType'));
+    await act(async () => jest.advanceTimersByTime(0));
+
+    const mysqlOptions = screen.getAllByText('mysql');
+    const mysql = mysqlOptions[1];
+    fireEvent.click(mysql);
     selectOptionByIndex('auditPlan.planForm.databaseName', 'instance1');
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    expect(useInstanceSpy).toBeCalledTimes(2);
-    expect(useInstanceSpy).nthCalledWith(2, {
+
+    await act(async () => jest.advanceTimersByTime(0));
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    expect(useInstanceSpy).toBeCalledTimes(3);
+    expect(useInstanceSpy).nthCalledWith(3, {
       filter_db_type: 'oracle',
       functional_module: 'create_audit_plan',
       project_name: projectName,
@@ -446,16 +411,13 @@ describe('PlanForm', () => {
       )
     ).toHaveTextContent('oracle');
     fireEvent.mouseDown(screen.getByLabelText('auditPlan.planForm.dbType'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
-    selectOptionByIndex('auditPlan.planForm.dbType', 'mysql', 2);
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    expect(useInstanceSpy).toBeCalledTimes(3);
-    expect(useInstanceSpy).nthCalledWith(3, {
+    selectOptionByIndex('auditPlan.planForm.dbType', 'mysql', 1);
+    await act(async () => jest.advanceTimersByTime(0));
+
+    expect(useInstanceSpy).toBeCalledTimes(4);
+    expect(useInstanceSpy).nthCalledWith(4, {
       filter_db_type: 'mysql',
       functional_module: 'create_audit_plan',
       project_name: projectName,

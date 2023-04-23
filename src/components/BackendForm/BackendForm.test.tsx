@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { Form } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
@@ -6,6 +6,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import BackendForm, { FormItem } from '.';
 import { getAllBySelector, getBySelector } from '../../testUtils/customQuery';
+import { act } from 'react-dom/test-utils';
 
 describe('BackendForm', () => {
   beforeEach(() => {
@@ -50,10 +51,17 @@ describe('BackendForm', () => {
       </Form>
     );
     fireEvent.click(getBySelector('button'));
-    fireEvent.input(getAllBySelector('input')[0], { target: { value: '123' } });
-    fireEvent.input(getAllBySelector('input')[1], {
-      target: { value: 'this is a string' },
+
+    await act(() => {
+      fireEvent.input(getAllBySelector('input')[0], {
+        target: { value: '123' },
+      });
+
+      fireEvent.input(getAllBySelector('input')[1], {
+        target: { value: 'this is a string' },
+      });
     });
+
     expect(form.result.current[0].getFieldsValue()).toEqual({
       params: {
         boolKey: true,
@@ -71,10 +79,17 @@ describe('BackendForm', () => {
       </Form>
     );
     fireEvent.click(getBySelector('button'));
-    fireEvent.input(getAllBySelector('input')[0], { target: { value: '123' } });
-    fireEvent.input(getAllBySelector('input')[1], {
-      target: { value: 'this is a string' },
+
+    await act(() => {
+      fireEvent.input(getAllBySelector('input')[0], {
+        target: { value: '123' },
+      });
+
+      fireEvent.input(getAllBySelector('input')[1], {
+        target: { value: 'this is a string' },
+      });
     });
+
     expect(form.result.current[0].getFieldsValue()).toEqual({
       custom: {
         boolKey: true,

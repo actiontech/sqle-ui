@@ -65,7 +65,7 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -78,7 +78,7 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -128,83 +128,87 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
             style="padding-left: 12px; padding-right: 12px;"
           >
             <div
-              class="ant-row ant-form-item"
+              class="ant-form-item"
             >
               <div
-                class="ant-col ant-col-7 ant-form-item-label"
-              >
-                <label
-                  class=""
-                  for="filter_exec_status"
-                  title="audit.table.execStatus"
-                >
-                  audit.table.execStatus
-                </label>
-              </div>
-              <div
-                class="ant-col ant-col-17 ant-form-item-control"
+                class="ant-row ant-form-item-row"
               >
                 <div
-                  class="ant-form-item-control-input"
+                  class="ant-col ant-col-7 ant-form-item-label"
+                >
+                  <label
+                    class=""
+                    for="filter_exec_status"
+                    title="audit.table.execStatus"
+                  >
+                    audit.table.execStatus
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-col-17 ant-form-item-control"
                 >
                   <div
-                    class="ant-form-item-control-input-content"
+                    class="ant-form-item-control-input"
                   >
                     <div
-                      class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
+                      class="ant-form-item-control-input-content"
                     >
                       <div
-                        class="ant-select-selector"
+                        class="ant-select ant-select-in-form-item ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
                       >
-                        <span
-                          class="ant-select-selection-search"
+                        <div
+                          class="ant-select-selector"
                         >
-                          <input
-                            aria-activedescendant="filter_exec_status_list_0"
-                            aria-autocomplete="list"
-                            aria-controls="filter_exec_status_list"
-                            aria-haspopup="listbox"
-                            aria-owns="filter_exec_status_list"
-                            autocomplete="off"
-                            class="ant-select-selection-search-input"
-                            id="filter_exec_status"
-                            role="combobox"
-                            type="search"
-                            value=""
-                          />
-                        </span>
+                          <span
+                            class="ant-select-selection-search"
+                          >
+                            <input
+                              aria-activedescendant="filter_exec_status_list_0"
+                              aria-autocomplete="list"
+                              aria-controls="filter_exec_status_list"
+                              aria-haspopup="listbox"
+                              aria-owns="filter_exec_status_list"
+                              autocomplete="off"
+                              class="ant-select-selection-search-input"
+                              id="filter_exec_status"
+                              role="combobox"
+                              type="search"
+                              value=""
+                            />
+                          </span>
+                          <span
+                            class="ant-select-selection-placeholder"
+                          >
+                            common.form.placeholder.searchSelect
+                          </span>
+                        </div>
                         <span
-                          class="ant-select-selection-placeholder"
+                          aria-hidden="true"
+                          class="ant-select-arrow"
+                          style="user-select: none;"
+                          unselectable="on"
                         >
-                          common.form.placeholder.searchSelect
+                          <span
+                            aria-label="down"
+                            class="anticon anticon-down ant-select-suffix"
+                            role="img"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="down"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                              />
+                            </svg>
+                          </span>
                         </span>
                       </div>
-                      <span
-                        aria-hidden="true"
-                        class="ant-select-arrow"
-                        style="user-select: none;"
-                        unselectable="on"
-                      >
-                        <span
-                          aria-label="down"
-                          class="anticon anticon-down ant-select-suffix"
-                          role="img"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            data-icon="down"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                            />
-                          </svg>
-                        </span>
-                      </span>
                     </div>
                   </div>
                 </div>
@@ -216,83 +220,87 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
             style="padding-left: 12px; padding-right: 12px;"
           >
             <div
-              class="ant-row ant-form-item"
+              class="ant-form-item"
             >
               <div
-                class="ant-col ant-col-7 ant-form-item-label"
-              >
-                <label
-                  class=""
-                  for="filter_audit_level"
-                  title="audit.table.auditResult"
-                >
-                  audit.table.auditResult
-                </label>
-              </div>
-              <div
-                class="ant-col ant-col-17 ant-form-item-control"
+                class="ant-row ant-form-item-row"
               >
                 <div
-                  class="ant-form-item-control-input"
+                  class="ant-col ant-col-7 ant-form-item-label"
+                >
+                  <label
+                    class=""
+                    for="filter_audit_level"
+                    title="audit.table.auditResult"
+                  >
+                    audit.table.auditResult
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-col-17 ant-form-item-control"
                 >
                   <div
-                    class="ant-form-item-control-input-content"
+                    class="ant-form-item-control-input"
                   >
                     <div
-                      class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
+                      class="ant-form-item-control-input-content"
                     >
                       <div
-                        class="ant-select-selector"
+                        class="ant-select ant-select-in-form-item ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
                       >
-                        <span
-                          class="ant-select-selection-search"
+                        <div
+                          class="ant-select-selector"
                         >
-                          <input
-                            aria-activedescendant="filter_audit_level_list_0"
-                            aria-autocomplete="list"
-                            aria-controls="filter_audit_level_list"
-                            aria-haspopup="listbox"
-                            aria-owns="filter_audit_level_list"
-                            autocomplete="off"
-                            class="ant-select-selection-search-input"
-                            id="filter_audit_level"
-                            role="combobox"
-                            type="search"
-                            value=""
-                          />
-                        </span>
+                          <span
+                            class="ant-select-selection-search"
+                          >
+                            <input
+                              aria-activedescendant="filter_audit_level_list_0"
+                              aria-autocomplete="list"
+                              aria-controls="filter_audit_level_list"
+                              aria-haspopup="listbox"
+                              aria-owns="filter_audit_level_list"
+                              autocomplete="off"
+                              class="ant-select-selection-search-input"
+                              id="filter_audit_level"
+                              role="combobox"
+                              type="search"
+                              value=""
+                            />
+                          </span>
+                          <span
+                            class="ant-select-selection-placeholder"
+                          >
+                            common.form.placeholder.searchSelect
+                          </span>
+                        </div>
                         <span
-                          class="ant-select-selection-placeholder"
+                          aria-hidden="true"
+                          class="ant-select-arrow"
+                          style="user-select: none;"
+                          unselectable="on"
                         >
-                          common.form.placeholder.searchSelect
+                          <span
+                            aria-label="down"
+                            class="anticon anticon-down ant-select-suffix"
+                            role="img"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="down"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                              />
+                            </svg>
+                          </span>
                         </span>
                       </div>
-                      <span
-                        aria-hidden="true"
-                        class="ant-select-arrow"
-                        style="user-select: none;"
-                        unselectable="on"
-                      >
-                        <span
-                          aria-label="down"
-                          class="anticon anticon-down ant-select-suffix"
-                          role="img"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            data-icon="down"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                            />
-                          </svg>
-                        </span>
-                      </span>
                     </div>
                   </div>
                 </div>
@@ -304,44 +312,48 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
             style="padding-left: 12px; padding-right: 12px;"
           >
             <div
-              class="ant-row ant-form-item"
+              class="ant-form-item"
             >
               <div
-                class="ant-col ant-col-24 ant-form-item-control"
+                class="ant-row ant-form-item-row"
               >
                 <div
-                  class="ant-form-item-control-input"
+                  class="ant-col ant-col-24 ant-form-item-control"
                 >
                   <div
-                    class="ant-form-item-control-input-content"
+                    class="ant-form-item-control-input"
                   >
                     <div
-                      class="ant-space ant-space-horizontal ant-space-align-center"
+                      class="ant-form-item-control-input-content"
                     >
                       <div
-                        class="ant-space-item"
-                        style="margin-right: 8px;"
+                        class="ant-space ant-space-horizontal ant-space-align-center"
                       >
-                        <button
-                          class="ant-btn"
-                          type="button"
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 8px;"
                         >
-                          <span>
-                            common.reset
-                          </span>
-                        </button>
-                      </div>
-                      <div
-                        class="ant-space-item"
-                      >
-                        <button
-                          class="ant-btn ant-btn-primary"
-                          type="button"
+                          <button
+                            class="ant-btn ant-btn-default"
+                            type="button"
+                          >
+                            <span>
+                              common.reset
+                            </span>
+                          </button>
+                        </div>
+                        <div
+                          class="ant-space-item"
                         >
-                          <span>
-                            common.search
-                          </span>
-                        </button>
+                          <button
+                            class="ant-btn ant-btn-primary"
+                            type="button"
+                          >
+                            <span>
+                              common.search
+                            </span>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -357,30 +369,8 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
         <div
           class="ant-spin-nested-loading"
         >
-          <div>
-            <div
-              class="ant-spin ant-spin-spinning"
-            >
-              <span
-                class="ant-spin-dot ant-spin-dot-spin"
-              >
-                <i
-                  class="ant-spin-dot-item"
-                />
-                <i
-                  class="ant-spin-dot-item"
-                />
-                <i
-                  class="ant-spin-dot-item"
-                />
-                <i
-                  class="ant-spin-dot-item"
-                />
-              </span>
-            </div>
-          </div>
           <div
-            class="ant-spin-container ant-spin-blur"
+            class="ant-spin-container"
           >
             <div
               class="ant-table ant-table-empty ant-table-scroll-horizontal"
@@ -619,54 +609,7 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
                           <div
                             class="ant-table-expanded-row-fixed"
                             style="width: 0px; position: sticky; left: 0px; overflow: hidden;"
-                          >
-                            <div
-                              class="ant-empty ant-empty-normal"
-                            >
-                              <div
-                                class="ant-empty-image"
-                              >
-                                <svg
-                                  class="ant-empty-img-simple"
-                                  height="41"
-                                  viewBox="0 0 64 41"
-                                  width="64"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <g
-                                    fill="none"
-                                    fill-rule="evenodd"
-                                    transform="translate(0 1)"
-                                  >
-                                    <ellipse
-                                      class="ant-empty-img-simple-ellipse"
-                                      cx="32"
-                                      cy="33"
-                                      rx="32"
-                                      ry="7"
-                                    />
-                                    <g
-                                      class="ant-empty-img-simple-g"
-                                      fill-rule="nonzero"
-                                    >
-                                      <path
-                                        d="M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z"
-                                      />
-                                      <path
-                                        class="ant-empty-img-simple-path"
-                                        d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z"
-                                      />
-                                    </g>
-                                  </g>
-                                </svg>
-                              </div>
-                              <div
-                                class="ant-empty-description"
-                              >
-                                No Data
-                              </div>
-                            </div>
-                          </div>
+                          />
                         </td>
                       </tr>
                     </tbody>
@@ -747,7 +690,7 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -760,7 +703,7 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -810,83 +753,87 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
             style="padding-left: 12px; padding-right: 12px;"
           >
             <div
-              class="ant-row ant-form-item"
+              class="ant-form-item"
             >
               <div
-                class="ant-col ant-col-7 ant-form-item-label"
-              >
-                <label
-                  class=""
-                  for="filter_exec_status"
-                  title="audit.table.execStatus"
-                >
-                  audit.table.execStatus
-                </label>
-              </div>
-              <div
-                class="ant-col ant-col-17 ant-form-item-control"
+                class="ant-row ant-form-item-row"
               >
                 <div
-                  class="ant-form-item-control-input"
+                  class="ant-col ant-col-7 ant-form-item-label"
+                >
+                  <label
+                    class=""
+                    for="filter_exec_status"
+                    title="audit.table.execStatus"
+                  >
+                    audit.table.execStatus
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-col-17 ant-form-item-control"
                 >
                   <div
-                    class="ant-form-item-control-input-content"
+                    class="ant-form-item-control-input"
                   >
                     <div
-                      class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
+                      class="ant-form-item-control-input-content"
                     >
                       <div
-                        class="ant-select-selector"
+                        class="ant-select ant-select-in-form-item ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
                       >
-                        <span
-                          class="ant-select-selection-search"
+                        <div
+                          class="ant-select-selector"
                         >
-                          <input
-                            aria-activedescendant="filter_exec_status_list_0"
-                            aria-autocomplete="list"
-                            aria-controls="filter_exec_status_list"
-                            aria-haspopup="listbox"
-                            aria-owns="filter_exec_status_list"
-                            autocomplete="off"
-                            class="ant-select-selection-search-input"
-                            id="filter_exec_status"
-                            role="combobox"
-                            type="search"
-                            value=""
-                          />
-                        </span>
+                          <span
+                            class="ant-select-selection-search"
+                          >
+                            <input
+                              aria-activedescendant="filter_exec_status_list_0"
+                              aria-autocomplete="list"
+                              aria-controls="filter_exec_status_list"
+                              aria-haspopup="listbox"
+                              aria-owns="filter_exec_status_list"
+                              autocomplete="off"
+                              class="ant-select-selection-search-input"
+                              id="filter_exec_status"
+                              role="combobox"
+                              type="search"
+                              value=""
+                            />
+                          </span>
+                          <span
+                            class="ant-select-selection-placeholder"
+                          >
+                            common.form.placeholder.searchSelect
+                          </span>
+                        </div>
                         <span
-                          class="ant-select-selection-placeholder"
+                          aria-hidden="true"
+                          class="ant-select-arrow"
+                          style="user-select: none;"
+                          unselectable="on"
                         >
-                          common.form.placeholder.searchSelect
+                          <span
+                            aria-label="down"
+                            class="anticon anticon-down ant-select-suffix"
+                            role="img"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="down"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                              />
+                            </svg>
+                          </span>
                         </span>
                       </div>
-                      <span
-                        aria-hidden="true"
-                        class="ant-select-arrow"
-                        style="user-select: none;"
-                        unselectable="on"
-                      >
-                        <span
-                          aria-label="down"
-                          class="anticon anticon-down ant-select-suffix"
-                          role="img"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            data-icon="down"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                            />
-                          </svg>
-                        </span>
-                      </span>
                     </div>
                   </div>
                 </div>
@@ -898,83 +845,87 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
             style="padding-left: 12px; padding-right: 12px;"
           >
             <div
-              class="ant-row ant-form-item"
+              class="ant-form-item"
             >
               <div
-                class="ant-col ant-col-7 ant-form-item-label"
-              >
-                <label
-                  class=""
-                  for="filter_audit_level"
-                  title="audit.table.auditResult"
-                >
-                  audit.table.auditResult
-                </label>
-              </div>
-              <div
-                class="ant-col ant-col-17 ant-form-item-control"
+                class="ant-row ant-form-item-row"
               >
                 <div
-                  class="ant-form-item-control-input"
+                  class="ant-col ant-col-7 ant-form-item-label"
+                >
+                  <label
+                    class=""
+                    for="filter_audit_level"
+                    title="audit.table.auditResult"
+                  >
+                    audit.table.auditResult
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-col-17 ant-form-item-control"
                 >
                   <div
-                    class="ant-form-item-control-input-content"
+                    class="ant-form-item-control-input"
                   >
                     <div
-                      class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
+                      class="ant-form-item-control-input-content"
                     >
                       <div
-                        class="ant-select-selector"
+                        class="ant-select ant-select-in-form-item ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
                       >
-                        <span
-                          class="ant-select-selection-search"
+                        <div
+                          class="ant-select-selector"
                         >
-                          <input
-                            aria-activedescendant="filter_audit_level_list_0"
-                            aria-autocomplete="list"
-                            aria-controls="filter_audit_level_list"
-                            aria-haspopup="listbox"
-                            aria-owns="filter_audit_level_list"
-                            autocomplete="off"
-                            class="ant-select-selection-search-input"
-                            id="filter_audit_level"
-                            role="combobox"
-                            type="search"
-                            value=""
-                          />
-                        </span>
+                          <span
+                            class="ant-select-selection-search"
+                          >
+                            <input
+                              aria-activedescendant="filter_audit_level_list_0"
+                              aria-autocomplete="list"
+                              aria-controls="filter_audit_level_list"
+                              aria-haspopup="listbox"
+                              aria-owns="filter_audit_level_list"
+                              autocomplete="off"
+                              class="ant-select-selection-search-input"
+                              id="filter_audit_level"
+                              role="combobox"
+                              type="search"
+                              value=""
+                            />
+                          </span>
+                          <span
+                            class="ant-select-selection-placeholder"
+                          >
+                            common.form.placeholder.searchSelect
+                          </span>
+                        </div>
                         <span
-                          class="ant-select-selection-placeholder"
+                          aria-hidden="true"
+                          class="ant-select-arrow"
+                          style="user-select: none;"
+                          unselectable="on"
                         >
-                          common.form.placeholder.searchSelect
+                          <span
+                            aria-label="down"
+                            class="anticon anticon-down ant-select-suffix"
+                            role="img"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="down"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                              />
+                            </svg>
+                          </span>
                         </span>
                       </div>
-                      <span
-                        aria-hidden="true"
-                        class="ant-select-arrow"
-                        style="user-select: none;"
-                        unselectable="on"
-                      >
-                        <span
-                          aria-label="down"
-                          class="anticon anticon-down ant-select-suffix"
-                          role="img"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            data-icon="down"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                            />
-                          </svg>
-                        </span>
-                      </span>
                     </div>
                   </div>
                 </div>
@@ -986,44 +937,48 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
             style="padding-left: 12px; padding-right: 12px;"
           >
             <div
-              class="ant-row ant-form-item"
+              class="ant-form-item"
             >
               <div
-                class="ant-col ant-col-24 ant-form-item-control"
+                class="ant-row ant-form-item-row"
               >
                 <div
-                  class="ant-form-item-control-input"
+                  class="ant-col ant-col-24 ant-form-item-control"
                 >
                   <div
-                    class="ant-form-item-control-input-content"
+                    class="ant-form-item-control-input"
                   >
                     <div
-                      class="ant-space ant-space-horizontal ant-space-align-center"
+                      class="ant-form-item-control-input-content"
                     >
                       <div
-                        class="ant-space-item"
-                        style="margin-right: 8px;"
+                        class="ant-space ant-space-horizontal ant-space-align-center"
                       >
-                        <button
-                          class="ant-btn"
-                          type="button"
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 8px;"
                         >
-                          <span>
-                            common.reset
-                          </span>
-                        </button>
-                      </div>
-                      <div
-                        class="ant-space-item"
-                      >
-                        <button
-                          class="ant-btn ant-btn-primary"
-                          type="button"
+                          <button
+                            class="ant-btn ant-btn-default"
+                            type="button"
+                          >
+                            <span>
+                              common.reset
+                            </span>
+                          </button>
+                        </div>
+                        <div
+                          class="ant-space-item"
                         >
-                          <span>
-                            common.search
-                          </span>
-                        </button>
+                          <button
+                            class="ant-btn ant-btn-primary"
+                            type="button"
+                          >
+                            <span>
+                              common.search
+                            </span>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1039,8 +994,32 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
         <div
           class="ant-spin-nested-loading"
         >
+          <div>
+            <div
+              aria-busy="true"
+              aria-live="polite"
+              class="ant-spin ant-spin-spinning"
+            >
+              <span
+                class="ant-spin-dot ant-spin-dot-spin"
+              >
+                <i
+                  class="ant-spin-dot-item"
+                />
+                <i
+                  class="ant-spin-dot-item"
+                />
+                <i
+                  class="ant-spin-dot-item"
+                />
+                <i
+                  class="ant-spin-dot-item"
+                />
+              </span>
+            </div>
+          </div>
           <div
-            class="ant-spin-container"
+            class="ant-spin-container ant-spin-blur"
           >
             <div
               class="ant-table ant-table-scroll-horizontal"
@@ -1282,17 +1261,12 @@ exports[`Order/Detail/AuditResult should get task sql info when pass task id int
                           class="ant-table-cell"
                         >
                           <div
+                            aria-label="/* input your sql */
+use aaab;"
                             class="ant-typography ant-typography-ellipsis margin-bottom-0"
                           >
-                            <span>
-                              <span
-                                aria-hidden="true"
-                                title="/* input your sql */
-use aaab;"
-                              >
-                                ...
-                              </span>
-                            </span>
+                            /* input your sql */
+use aaab;
                             <div
                               aria-label="Copy"
                               class="ant-typography-copy"
@@ -1320,6 +1294,49 @@ use aaab;"
                                 </svg>
                               </span>
                             </div>
+                            <span
+                              aria-hidden="true"
+                              style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; word-break: keep-all; white-space: nowrap;"
+                            >
+                              lg
+                            </span>
+                            <span
+                              aria-hidden="true"
+                              style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
+                            >
+                              <span
+                                aria-hidden="true"
+                              >
+                                ...
+                              </span>
+                              <div
+                                aria-label="Copy"
+                                class="ant-typography-copy"
+                                role="button"
+                                style="border: 0px; background: transparent; padding: 0px; line-height: inherit; display: inline-block;"
+                                tabindex="0"
+                              >
+                                <span
+                                  aria-label="copy"
+                                  class="anticon anticon-copy"
+                                  role="img"
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    data-icon="copy"
+                                    fill="currentColor"
+                                    focusable="false"
+                                    height="1em"
+                                    viewBox="64 64 896 896"
+                                    width="1em"
+                                  >
+                                    <path
+                                      d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                                    />
+                                  </svg>
+                                </span>
+                              </div>
+                            </span>
                           </div>
                         </td>
                         <td
@@ -1336,7 +1353,7 @@ use aaab;"
                               >
                                 <div
                                   class="ant-col"
-                                  style="flex: 0 0 50px;"
+                                  style="flex: 0 0 50px; min-width: 0;"
                                 >
                                   <div
                                     class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
@@ -1384,7 +1401,7 @@ use aaab;"
                                 </div>
                                 <div
                                   class="ant-col message"
-                                  style="flex: 1 1 auto;"
+                                  style="flex: 1 1 auto; min-width: 0;"
                                 >
                                   <span>
                                     禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql
@@ -1404,9 +1421,7 @@ use aaab;"
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         />
@@ -1416,7 +1431,6 @@ use aaab;"
                           <div
                             class="ant-typography"
                           >
-                            
                             <div
                               aria-label="Edit"
                               class="ant-typography-edit"
@@ -1469,16 +1483,10 @@ use aaab;"
                           class="ant-table-cell"
                         >
                           <div
+                            aria-label="use bbbbe;"
                             class="ant-typography ant-typography-ellipsis margin-bottom-0"
                           >
-                            <span>
-                              <span
-                                aria-hidden="true"
-                                title="use bbbbe;"
-                              >
-                                ...
-                              </span>
-                            </span>
+                            use bbbbe;
                             <div
                               aria-label="Copy"
                               class="ant-typography-copy"
@@ -1506,6 +1514,49 @@ use aaab;"
                                 </svg>
                               </span>
                             </div>
+                            <span
+                              aria-hidden="true"
+                              style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; word-break: keep-all; white-space: nowrap;"
+                            >
+                              lg
+                            </span>
+                            <span
+                              aria-hidden="true"
+                              style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
+                            >
+                              <span
+                                aria-hidden="true"
+                              >
+                                ...
+                              </span>
+                              <div
+                                aria-label="Copy"
+                                class="ant-typography-copy"
+                                role="button"
+                                style="border: 0px; background: transparent; padding: 0px; line-height: inherit; display: inline-block;"
+                                tabindex="0"
+                              >
+                                <span
+                                  aria-label="copy"
+                                  class="anticon anticon-copy"
+                                  role="img"
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    data-icon="copy"
+                                    fill="currentColor"
+                                    focusable="false"
+                                    height="1em"
+                                    viewBox="64 64 896 896"
+                                    width="1em"
+                                  >
+                                    <path
+                                      d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                                    />
+                                  </svg>
+                                </span>
+                              </div>
+                            </span>
                           </div>
                         </td>
                         <td
@@ -1550,9 +1601,7 @@ use aaab;"
                         </td>
                         <td
                           class="ant-table-cell"
-                        >
-                          
-                        </td>
+                        />
                         <td
                           class="ant-table-cell"
                         />
@@ -1615,12 +1664,7 @@ use aaab;"
                           class="ant-table-cell"
                         >
                           <div
-                            class="ant-typography ant-typography-ellipsis margin-bottom-0"
-                          >
-                            <span>
-                              <span
-                                aria-hidden="true"
-                                title="CREATE TABLE \`tasks\` (
+                            aria-label="CREATE TABLE \`tasks\` (
       \`id\` int(10) unsigned NOT NULL AUTO_INCREMENT,
       \`created_at\` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
       \`updated_at\` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -1635,10 +1679,23 @@ use aaab;"
       PRIMARY KEY (\`id\`),
       KEY \`idx_tasks_deleted_at\` (\`deleted_at\`)
       ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
-                              >
-                                ...
-                              </span>
-                            </span>
+                            class="ant-typography ant-typography-ellipsis margin-bottom-0"
+                          >
+                            CREATE TABLE \`tasks\` (
+      \`id\` int(10) unsigned NOT NULL AUTO_INCREMENT,
+      \`created_at\` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+      \`updated_at\` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      \`deleted_at\` timestamp NULL DEFAULT NULL,
+      \`instance_id\` int(10) unsigned DEFAULT NULL,
+      \`instance_schema\` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      \`pass_rate\` double DEFAULT NULL,
+      \`sql_type\` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      \`sql_source\` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      \`status\` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'initialized',
+      \`create_user_id\` int(10) unsigned DEFAULT NULL,
+      PRIMARY KEY (\`id\`),
+      KEY \`idx_tasks_deleted_at\` (\`deleted_at\`)
+      ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
                             <div
                               aria-label="Copy"
                               class="ant-typography-copy"
@@ -1666,6 +1723,49 @@ use aaab;"
                                 </svg>
                               </span>
                             </div>
+                            <span
+                              aria-hidden="true"
+                              style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; word-break: keep-all; white-space: nowrap;"
+                            >
+                              lg
+                            </span>
+                            <span
+                              aria-hidden="true"
+                              style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
+                            >
+                              <span
+                                aria-hidden="true"
+                              >
+                                ...
+                              </span>
+                              <div
+                                aria-label="Copy"
+                                class="ant-typography-copy"
+                                role="button"
+                                style="border: 0px; background: transparent; padding: 0px; line-height: inherit; display: inline-block;"
+                                tabindex="0"
+                              >
+                                <span
+                                  aria-label="copy"
+                                  class="anticon anticon-copy"
+                                  role="img"
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    data-icon="copy"
+                                    fill="currentColor"
+                                    focusable="false"
+                                    height="1em"
+                                    viewBox="64 64 896 896"
+                                    width="1em"
+                                  >
+                                    <path
+                                      d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+                                    />
+                                  </svg>
+                                </span>
+                              </div>
+                            </span>
                           </div>
                         </td>
                         <td
@@ -1812,7 +1912,7 @@ use aaab;"
                               >
                                 <div
                                   class="ant-col"
-                                  style="flex: 0 0 50px;"
+                                  style="flex: 0 0 50px; min-width: 0;"
                                 >
                                   <div
                                     class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
@@ -1860,7 +1960,7 @@ use aaab;"
                                 </div>
                                 <div
                                   class="ant-col message"
-                                  style="flex: 1 1 auto;"
+                                  style="flex: 1 1 auto; min-width: 0;"
                                 >
                                   <span>
                                     schema bbbbe 不存在
@@ -1876,7 +1976,7 @@ use aaab;"
                               >
                                 <div
                                   class="ant-col"
-                                  style="flex: 0 0 50px;"
+                                  style="flex: 0 0 50px; min-width: 0;"
                                 >
                                   <div
                                     class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
@@ -1924,7 +2024,7 @@ use aaab;"
                                 </div>
                                 <div
                                   class="ant-col message"
-                                  style="flex: 1 1 auto;"
+                                  style="flex: 1 1 auto; min-width: 0;"
                                 >
                                   <span>
                                     schema ddgrf 不存在
@@ -1942,7 +2042,6 @@ use aaab;"
             </div>
             <ul
               class="ant-pagination ant-table-pagination ant-table-pagination-right"
-              unselectable="unselectable"
             >
               <li
                 aria-disabled="true"
@@ -2034,6 +2133,7 @@ use aaab;"
                 class="ant-pagination-options"
               >
                 <div
+                  aria-label="Page Size"
                   class="ant-select ant-pagination-options-size-changer ant-select-single ant-select-show-arrow"
                 >
                   <div
@@ -2046,7 +2146,9 @@ use aaab;"
                         aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
                         aria-autocomplete="list"
                         aria-controls="rc_select_TEST_OR_SSR_list"
+                        aria-expanded="false"
                         aria-haspopup="listbox"
+                        aria-label="Page Size"
                         aria-owns="rc_select_TEST_OR_SSR_list"
                         autocomplete="off"
                         class="ant-select-selection-search-input"

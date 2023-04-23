@@ -11,59 +11,57 @@ exports[`System should match snapshot 1`] = `
   <section
     className="padding-content"
   >
-    <Card>
-      <Tabs>
-        <TabPane
-          key="pushNotification"
-          tab="system.tabPaneTitle.pushNotification"
-        >
-          <Space
-            className="full-width-element"
-            direction="vertical"
-          >
-            <SMTPSetting />
-            <Wechat />
-            <LarkSetting />
-          </Space>
-        </TabPane>
-        <TabPane
-          key="processConnection"
-          tab="system.tabPaneTitle.processConnection"
-        >
-          <DingTalkSetting />
-        </TabPane>
-        <TabPane
-          key="loginConnection"
-          tab="system.tabPaneTitle.loginConnection"
-        >
-          <Space
-            className="full-width-element"
-            direction="vertical"
-          >
-            <LDAPSetting />
-            <Oauth />
-          </Space>
-        </TabPane>
-        <TabPane
-          key="globalCOnfiguration"
-          tab="system.tabPaneTitle.globalConfiguration"
-        >
-          <GlobalSetting />
-        </TabPane>
-        <TabPane
-          key="license"
-          tab="system.tabPaneTitle.license"
-        >
-          <License />
-        </TabPane>
-        <TabPane
-          key="personalize"
-          tab="system.tabPaneTitle.personalize"
-        >
-          <PersonalizeSetting />
-        </TabPane>
-      </Tabs>
-    </Card>
+    <ForwardRef>
+      <Tabs
+        items={
+          Array [
+            Object {
+              "children": <Space
+                className="full-width-element"
+                direction="vertical"
+              >
+                <SMTPSetting />
+                <Wechat />
+                <LarkSetting />
+              </Space>,
+              "key": "pushNotification",
+              "label": "system.tabPaneTitle.pushNotification",
+            },
+            Object {
+              "children": <DingTalkSetting />,
+              "key": "processConnection",
+              "label": "system.tabPaneTitle.processConnection",
+            },
+            Object {
+              "children": <Space
+                className="full-width-element"
+                direction="vertical"
+              >
+                <LDAPSetting />
+                <Oauth />
+              </Space>,
+              "key": "loginConnection",
+              "label": "system.tabPaneTitle.loginConnection",
+            },
+            Object {
+              "children": <GlobalSetting />,
+              "key": "globalConfiguration",
+              "label": "system.tabPaneTitle.globalConfiguration",
+            },
+            Object {
+              "children": <License />,
+              "key": "license",
+              "label": "system.tabPaneTitle.license",
+            },
+            Object {
+              "children": <PersonalizeSetting />,
+              "key": "personalize",
+              "label": "system.tabPaneTitle.personalize",
+            },
+          ]
+        }
+      />
+    </ForwardRef>
   </section>
 </Fragment>
 `;

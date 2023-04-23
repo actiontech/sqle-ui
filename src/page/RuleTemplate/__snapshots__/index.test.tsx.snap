@@ -13,28 +13,7 @@ exports[`RuleTemplate should render page header and describe 1`] = `
   <section
     className="padding-content"
   >
-    <Switch>
-      <Route
-        component={[Function]}
-        exact={true}
-        path="/project/:projectName/rule/template"
-      />
-      <Route
-        component={[Function]}
-        path="/project/:projectName/rule/template/create"
-      />
-      <Route
-        component={[Function]}
-        path="/project/:projectName/rule/template/import"
-      />
-      <Route
-        component={[Function]}
-        path="/project/:projectName/rule/template/update/:templateName"
-      />
-      <Redirect
-        to="/project/:projectName/rule/template"
-      />
-    </Switch>
+    <Outlet />
   </section>
 </article>
 `;

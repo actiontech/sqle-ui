@@ -1,12 +1,12 @@
 import { Pie } from '@ant-design/plots';
-import { useTheme } from '@material-ui/styles';
+import { useTheme } from '@mui/styles';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { CommonChartsColors, CommonPieProps } from '.';
 import { IReduxState } from '../../../store';
-import { Theme } from '../../../types/theme.type';
 import { floatToPercent } from '../../../utils/Math';
 import reportStatisticsData from '../index.data';
+import { Theme } from '@mui/material/styles';
 
 const { rowHeight } = reportStatisticsData;
 const CommonLine: React.FC<CommonPieProps> = (props) => {

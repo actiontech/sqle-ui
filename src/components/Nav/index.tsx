@@ -8,7 +8,7 @@ import { IReduxState } from '../../store';
 
 import './index.less';
 
-const Nav: React.FC = (props) => {
+const Nav: React.FC<{ children: React.ReactNode }> = (props) => {
   const username = useSelector<IReduxState, string>(
     (state) => state.user.username
   );

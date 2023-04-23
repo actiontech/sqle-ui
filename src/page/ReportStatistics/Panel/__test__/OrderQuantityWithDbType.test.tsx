@@ -1,9 +1,8 @@
 /* eslint-disable no-console */
-import { useTheme } from '@material-ui/styles';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { useTheme } from '@mui/styles';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import statistic from '../../../../api/statistic';
 import { SupportLanguage } from '../../../../locale';
-import { mockUseSelector } from '../../../../testUtils/mockRedux';
 import {
   resolveErrorThreeSecond,
   resolveThreeSecond,
@@ -11,11 +10,19 @@ import {
 import { SupportTheme } from '../../../../theme';
 import OrderQuantityWithDbType from '../OrderQuantityWithDbType';
 import mockRequestData from './mockRequestData';
+import { useSelector } from 'react-redux';
 
-jest.mock('@material-ui/styles', () => {
+jest.mock('@mui/styles', () => {
   return {
-    ...jest.requireActual('@material-ui/styles'),
+    ...jest.requireActual('@mui/styles'),
     useTheme: jest.fn(),
+  };
+});
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
   };
 });
 
@@ -57,11 +64,13 @@ describe('test OrderQuantityWithDbType', () => {
 
     jest.useFakeTimers();
 
-    mockUseSelector({
-      user: { theme: SupportTheme.LIGHT },
-      locale: { language: SupportLanguage.zhCN },
-      reportStatistics: { refreshFlag: false },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { theme: SupportTheme.LIGHT },
+        locale: { language: SupportLanguage.zhCN },
+        reportStatistics: { refreshFlag: false },
+      })
+    );
     useThemeMock.mockReturnValue({ common: { padding: 24 } });
   });
 
@@ -75,13 +84,10 @@ describe('test OrderQuantityWithDbType', () => {
     mockGetTasksPercentCountedByInstanceTypeV1();
     const { baseElement } = render(<OrderQuantityWithDbType />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.mouseEnter(screen.getByTestId('order-db-type-scale-tips'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(baseElement).toMatchSnapshot();
   });
@@ -90,9 +96,8 @@ describe('test OrderQuantityWithDbType', () => {
     mockErrorGetTasksPercentCountedByInstanceTypeV1();
     const { container } = render(<OrderQuantityWithDbType />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -101,8 +106,6 @@ describe('test OrderQuantityWithDbType', () => {
       mockGetTasksPercentCountedByInstanceTypeV1();
     render(<OrderQuantityWithDbType />);
     expect(getTasksPercentCountedByInstanceTypeV1Spy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
   });
 });

@@ -1,6 +1,6 @@
 import { EditOutlined, EnterOutlined } from '@ant-design/icons';
 import { useBoolean, useKeyPress } from 'ahooks';
-import { Col, Input, message, Row, Typography } from 'antd';
+import { Col, Input, InputRef, message, Row, Typography } from 'antd';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import configuration from '../../../api/configuration';
@@ -14,7 +14,7 @@ const CustomTitle: React.FC<{
   const { t } = useTranslation();
   const [editTitle, { setTrue: startEditTitle, setFalse: closeEditTitle }] =
     useBoolean(false);
-  const inputRef = useRef<Input | null>(null);
+  const inputRef = useRef<InputRef | null>(null);
   const [inputValue, setInputValue] = useState('');
   const updateTitle = async (event: KeyboardEvent) => {
     const value = (event.target as HTMLInputElement).value;
@@ -60,8 +60,8 @@ const CustomTitle: React.FC<{
             <EmptyBox if={!!title} defaultNode="--">
               {title}
             </EmptyBox>
-            <Typography.Link onClick={startEditTitle}>
-              <EditOutlined />
+            <Typography.Link>
+              <EditOutlined onClick={startEditTitle} />
             </Typography.Link>
           </Typography.Text>
         </div>

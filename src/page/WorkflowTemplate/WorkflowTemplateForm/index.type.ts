@@ -13,4 +13,5 @@ export type WorkflowTemplateFormProps = {
   submitProgress: (
     process: IWorkFlowStepTemplateReqV1[]
   ) => Promise<AxiosResponse<IUpdateWorkflowTemplateV1Return>>;
+  children?: React.ReactNode;
 };

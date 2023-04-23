@@ -1,6 +1,5 @@
-import { render, waitFor } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import statistic from '../../../../api/statistic';
-import { mockUseSelector } from '../../../../testUtils/mockRedux';
 import {
   resolveErrorThreeSecond,
   resolveThreeSecond,
@@ -8,9 +7,17 @@ import {
 import reportStatisticsData from '../../index.data';
 import SqlExecFailedTopN from '../SqlExecFailedTopN';
 import mockRequestData from './mockRequestData';
+import { useSelector } from 'react-redux';
 
 const { tableLimit } = reportStatisticsData;
 const { SqlExecFailedTopNData } = mockRequestData;
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+  };
+});
 
 describe('test SqlExecFailedTopN', () => {
   const mockGetSqlExecutionFailPercentV1 = () => {
@@ -30,9 +37,12 @@ describe('test SqlExecFailedTopN', () => {
 
   beforeEach(() => {
     jest.useFakeTimers();
-    mockUseSelector({
-      reportStatistics: { refreshFlag: false },
-    });
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        reportStatistics: { refreshFlag: false },
+      })
+    );
   });
 
   afterEach(() => {
@@ -44,18 +54,16 @@ describe('test SqlExecFailedTopN', () => {
   test('should match snapshot', async () => {
     mockGetSqlExecutionFailPercentV1();
     const { container } = render(<SqlExecFailedTopN />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
   test('should match snapshot when request goes wrong', async () => {
     mockErrorGetSqlExecutionFailPercentV1();
     const { container } = render(<SqlExecFailedTopN />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -66,8 +74,6 @@ describe('test SqlExecFailedTopN', () => {
     expect(getSqlExecutionFailPercentV1Spy).toBeCalledWith({
       limit: tableLimit,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
   });
 });

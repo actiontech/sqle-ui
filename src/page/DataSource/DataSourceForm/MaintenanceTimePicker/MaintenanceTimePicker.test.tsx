@@ -62,7 +62,7 @@ describe('MaintenanceTimePicker', () => {
     render(<MaintenanceTimePicker value={value} onChange={onChange} />);
     fireEvent.click(getAllBySelector('.ant-tag-close-icon')[1]);
     expect(onChange).toBeCalledWith([value[0], value[2]]);
-    expect(screen.queryByText('03:00 -04:30')).toBeInTheDocument();
+    expect(screen.getByText('03:00 -04:30')).toBeInTheDocument();
   });
 
   it('should add value when use add time', async () => {
@@ -79,13 +79,13 @@ describe('MaintenanceTimePicker', () => {
 
     fireEvent.click(screen.getAllByText('23')[0]);
     fireEvent.click(screen.getAllByText('00')[1]);
-    fireEvent.click(screen.getByText('Ok'));
+    fireEvent.click(screen.getByText('OK'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
     fireEvent.click(screen.getAllByText('02')[0]);
     fireEvent.click(screen.getAllByText('00')[1]);
-    fireEvent.click(screen.getByText('Ok'));
+    fireEvent.click(screen.getByText('OK'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
@@ -118,13 +118,13 @@ describe('MaintenanceTimePicker', () => {
 
     fireEvent.click(screen.getAllByText('23')[0]);
     fireEvent.click(screen.getAllByText('00')[1]);
-    fireEvent.click(screen.getByText('Ok'));
+    fireEvent.click(screen.getByText('OK'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });
     fireEvent.click(screen.getAllByText('23')[0]);
     fireEvent.click(screen.getAllByText('59')[0]);
-    fireEvent.click(screen.getByText('Ok'));
+    fireEvent.click(screen.getByText('OK'));
     await waitFor(() => {
       jest.advanceTimersByTime(0);
     });

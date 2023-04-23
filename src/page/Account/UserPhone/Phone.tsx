@@ -1,6 +1,6 @@
 import { EditOutlined, EnterOutlined } from '@ant-design/icons';
 import { useBoolean, useKeyPress } from 'ahooks';
-import { Col, Typography, Input, Row, message } from 'antd';
+import { Col, Typography, Input, Row, message, InputRef } from 'antd';
 import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import EmptyBox from '../../../components/EmptyBox';
@@ -10,7 +10,7 @@ import { ResponseCode } from '../../../data/common';
 
 const UserPhone: React.FC<UserPhoneProps> = (props) => {
   const { t } = useTranslation();
-  const inputRef = useRef<Input | null>(null);
+  const inputRef = useRef<InputRef | null>(null);
   const [editPhone, { setTrue: startEditPhone, setFalse: closeEditPhone }] =
     useBoolean(false);
 
@@ -71,8 +71,8 @@ const UserPhone: React.FC<UserPhoneProps> = (props) => {
             <EmptyBox if={!!props.userInfo?.phone} defaultNode="--">
               {props.userInfo?.phone}
             </EmptyBox>
-            <Typography.Link onClick={startEditPhone}>
-              <EditOutlined />
+            <Typography.Link>
+              <EditOutlined onClick={startEditPhone} />
             </Typography.Link>
           </Typography.Text>
         </div>

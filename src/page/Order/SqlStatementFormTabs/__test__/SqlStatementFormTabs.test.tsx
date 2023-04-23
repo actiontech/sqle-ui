@@ -4,17 +4,27 @@ import Form, { useForm } from 'antd/lib/form/Form';
 import { useRef } from 'react';
 import { SqlStatementFormTabs, SqlStatementFormTabsRefType } from '..';
 import { renderWithTheme } from '../../../../testUtils/customRender';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../testUtils/mockRedux';
+
 import { SupportTheme } from '../../../../theme';
 import { sqlStatementInfo } from './test.data';
+import { useDispatch, useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('test Order/SqlStatementFormTabs', () => {
   beforeEach(() => {
-    mockUseDispatch();
-    mockUseSelector({ user: { theme: SupportTheme.LIGHT } });
+    (useDispatch as jest.Mock).mockImplementation(() => jest.fn());
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { theme: SupportTheme.LIGHT },
+      })
+    );
     jest.useFakeTimers();
   });
 

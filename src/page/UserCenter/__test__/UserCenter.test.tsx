@@ -1,10 +1,9 @@
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { fireEvent, screen, act } from '@testing-library/react';
 import UserCenter from '..';
 import role from '../../../api/role';
 import user from '../../../api/user';
 import user_group from '../../../api/user_group';
 import { renderWithRedux } from '../../../testUtils/customRender';
-import { mockUseDispatch } from '../../../testUtils/mockRedux';
 import {
   mockUseRole,
   mockUseUserGroup,
@@ -14,6 +13,14 @@ import {
 import { RoleListData } from '../Role/RoleList/__testData__';
 import { UserListData } from '../User/UserList/__testData__';
 import { userGroupList } from '../UserGroup/UserGroupList/__testData__';
+import { useDispatch } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('first', () => {
   let getUserListSpy: jest.SpyInstance;
@@ -51,7 +58,8 @@ describe('first', () => {
     mockUseUsername();
     mockUseUserGroup();
     mockUseRole();
-    mockUseDispatch();
+    (useDispatch as jest.Mock).mockImplementation(() => jest.fn());
+
     getUserListSpy = mockGetUserList();
     getRoleListSpy = mockGetRoleList();
     getUserGroupListSpy = mockGetUserGroupList();
@@ -67,9 +75,7 @@ describe('first', () => {
     expect(getUserListSpy).toBeCalledTimes(1);
     expect(getRoleListSpy).toBeCalledTimes(0);
     expect(getUserGroupListSpy).toBeCalledTimes(0);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.getByText('menu.user').parentNode).toHaveClass(
       'ant-tabs-tab-active'
@@ -79,23 +85,19 @@ describe('first', () => {
 
   test('should get corresponding data when switching tabs', async () => {
     renderWithRedux(<UserCenter />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByText('menu.role'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByText('menu.role').parentNode).toHaveClass(
       'ant-tabs-tab-active'
     );
     expect(getRoleListSpy).toBeCalledTimes(1);
 
     fireEvent.click(screen.getByText('menu.userGroup'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByText('menu.userGroup').parentNode).toHaveClass(
       'ant-tabs-tab-active'
     );

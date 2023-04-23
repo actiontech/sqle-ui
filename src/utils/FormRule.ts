@@ -1,5 +1,5 @@
 import { Rule } from 'rc-field-form/lib/interface';
-import { translation } from '../locale';
+import { t } from '../locale';
 import { FormValidatorRule } from '../types/common.type';
 
 export const nameRule = (): Rule[] => {
@@ -17,13 +17,11 @@ export const nameRuleValidator = (): FormValidatorRule => {
   return (_, value) => {
     const startReg = /^[a-zA-Z]/;
     if (!startReg.test(value)) {
-      return Promise.reject(translation('common.form.rule.startWithLetter'));
+      return Promise.reject(t('common.form.rule.startWithLetter'));
     }
     const reg = /^[a-zA-Z0-9_-]*$/;
     if (!reg.test(value)) {
-      return Promise.reject(
-        translation('common.form.rule.onlyLetterAndNumber')
-      );
+      return Promise.reject(t('common.form.rule.onlyLetterAndNumber'));
     }
     return Promise.resolve();
   };
@@ -42,8 +40,8 @@ export const whiteSpaceSqlValidator = (): FormValidatorRule => {
     const placeholder = '/* input your sql */';
     if (values === placeholder) {
       return Promise.reject(
-        translation('common.form.rule.require', {
-          name: translation('whitelist.table.sql'),
+        t('common.form.rule.require', {
+          name: t('whitelist.table.sql'),
         })
       );
     }
@@ -55,12 +53,12 @@ export const validatorPort = (min = 1, max = 65535): FormValidatorRule => {
   return (_, value) => {
     const reg = /^[0-9]*$/;
     if (!reg.test(value)) {
-      return Promise.reject(translation('common.form.rule.onlyNumber'));
+      return Promise.reject(t('common.form.rule.onlyNumber'));
     }
     const port = parseInt(value, 10);
     if (port < min || port > max) {
       return Promise.reject(
-        translation('common.form.rule.portRange', {
+        t('common.form.rule.portRange', {
           min,
           max,
         })
@@ -85,7 +83,7 @@ export const phoneRuleValidator = (): FormValidatorRule => {
     }
     const reg = /^1\d{10}$/;
     if (!reg.test(value)) {
-      return Promise.reject(translation('common.form.rule.phone'));
+      return Promise.reject(t('common.form.rule.phone'));
     }
     return Promise.resolve();
   };

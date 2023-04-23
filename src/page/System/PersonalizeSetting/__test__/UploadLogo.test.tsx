@@ -1,12 +1,10 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, act } from '@testing-library/react';
 import configuration from '../../../../api/configuration';
 import { resolveThreeSecond } from '../../../../testUtils/mockRequest';
 import UploadLogo from '../UploadLogo';
 
 describe('test UploadLogo', () => {
   const refresh = jest.fn();
-  const logoFile = new File([new ArrayBuffer(1)], 'file.png');
-
   const original = window.location;
   const mockReload = jest.fn();
 
@@ -46,15 +44,11 @@ describe('test UploadLogo', () => {
       target: { files: [{ name: 'foo.png' }] },
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(uploadLogoSpy).toBeCalledTimes(1);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(mockReload).toBeCalledTimes(1);
     expect(refresh).toBeCalledTimes(1);

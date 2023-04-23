@@ -103,8 +103,8 @@ const MaintenanceTimePicker: React.FC<MaintenanceTimePickerProps> = (props) => {
         ))}
       </EmptyBox>
       <Popover
-        visible={popoverVisible}
-        onVisibleChange={popoverVisibleChange}
+        open={popoverVisible}
+        onOpenChange={popoverVisibleChange}
         content={
           <Row className="maintenance-time-picker-popover-wrapper">
             <Col

@@ -168,7 +168,7 @@ exports[`test OrderSteps should disable execute button and render disable tips w
                 style="margin-right: 8px; padding-bottom: 8px;"
               >
                 <button
-                  class="ant-btn ant-btn-dangerous"
+                  class="ant-btn ant-btn-default ant-btn-dangerous"
                   type="button"
                 >
                   <span>

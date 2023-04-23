@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor, screen } from '@testing-library/react';
+import { fireEvent, render, act, screen } from '@testing-library/react';
 import LdapConfig from '.';
 import configuration from '../../../api/configuration';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
@@ -41,9 +41,8 @@ describe('System/LdapConfig', () => {
     mockGetLdapConfig();
     const { container } = render(<LdapConfig />);
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -51,9 +50,8 @@ describe('System/LdapConfig', () => {
     const getSpy = mockGetLdapConfig();
     const updateSpy = mockUpdateldapConfig();
     const { container } = render(<LdapConfig />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('common.modify'));
     expect(container).toMatchSnapshot();
     fireEvent.click(screen.getByLabelText('system.ldap.enableLdap'));
@@ -66,9 +64,7 @@ describe('System/LdapConfig', () => {
     });
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
@@ -89,14 +85,12 @@ describe('System/LdapConfig', () => {
       'disabled'
     );
     expect(getSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getSpy).toBeCalledTimes(2);
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByText('common.submit').parentNode).not.toHaveClass(
       'ant-btn-loading'
     );

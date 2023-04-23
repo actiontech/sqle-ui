@@ -1,13 +1,16 @@
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import useNavigate from '../../../../hooks/useNavigate';
 import { DEFAULT_PROJECT_NAME } from '../../../../page/ProjectManage/ProjectDetail';
 import { globalRouterConfig } from '../../../../router/config';
 import {
   GlobalRouterItemKeyLiteral,
-  RouterItem,
+  ProjectDetailRouterItemKeyLiteral,
+  RouterConfigItem,
 } from '../../../../types/router.type';
 import ProjectNavigation from './ProjectNavigation';
+import { SQLE_BASE_URL } from '../../../../data/common';
 
 const headerMenuKeys: Array<typeof globalRouterConfig[number]['key']> = [
   'dashboard',
@@ -24,39 +27,50 @@ const headerMenuKeys: Array<typeof globalRouterConfig[number]['key']> = [
 const HeaderMenu: React.FC = () => {
   const { t } = useTranslation();
   const location = useLocation();
-  const history = useHistory();
+  const navigate = useNavigate();
 
-  const jumpToPath = (path: string) => {
+  const jumpToPath = (
+    path: string,
+    key: GlobalRouterItemKeyLiteral | ProjectDetailRouterItemKeyLiteral
+  ) => {
     /* IFTRUE_isCE */
-    if (path.includes(':projectName')) {
-      path = path.replace(':projectName', DEFAULT_PROJECT_NAME);
+    if (key === 'projectDetail') {
+      path = `project/${DEFAULT_PROJECT_NAME}/overview`;
     }
     /* FITRUE_isCE */
 
-    history.push(path);
+    navigate(path);
   };
 
   const [projectNavigationVisible, setProjectNavigationVisible] =
     useState(false);
 
   const isActiveMenu = useCallback(
-    (router: RouterItem<GlobalRouterItemKeyLiteral>) => {
+    (
+      router: RouterConfigItem<
+        GlobalRouterItemKeyLiteral | ProjectDetailRouterItemKeyLiteral
+      >
+    ) => {
       if (router.key === 'projectList' || router.key === 'projectDetail') {
-        return /^\/project.*/.test(location.pathname);
+        return location.pathname.startsWith(`${SQLE_BASE_URL}project`);
       }
 
-      return router.path === location.pathname;
+      return SQLE_BASE_URL + router.path === location.pathname;
     },
     [location.pathname]
   );
 
-  const generateMenu = (router: RouterItem<GlobalRouterItemKeyLiteral>) => {
+  const generateMenu = (
+    router: RouterConfigItem<
+      GlobalRouterItemKeyLiteral | ProjectDetailRouterItemKeyLiteral
+    >
+  ) => {
     if (router.key === 'projectList') {
       return (
         <ProjectNavigation
           key="projectList"
-          visible={projectNavigationVisible}
-          onVisibleChange={setProjectNavigationVisible}
+          open={projectNavigationVisible}
+          onOpenChange={setProjectNavigationVisible}
         >
           <div
             className={`${
@@ -64,8 +78,10 @@ const HeaderMenu: React.FC = () => {
             } header-menu-item`}
             onClick={() => setProjectNavigationVisible(true)}
           >
-            <span className="header-menu-item-icon">{router.icon}</span>
-            {t(router.label)}
+            <>
+              <span className="header-menu-item-icon">{router.icon}</span>
+              {router.label ? t(router.label) : ''}
+            </>
           </div>
         </ProjectNavigation>
       );
@@ -77,10 +93,12 @@ const HeaderMenu: React.FC = () => {
         className={`${
           isActiveMenu(router) ? 'header-menu-item-active' : ''
         } header-menu-item`}
-        onClick={() => jumpToPath(router.path as string)}
+        onClick={() => jumpToPath(router.path as string, router.key)}
       >
-        <span className="header-menu-item-icon">{router.icon}</span>
-        {t(router.label)}
+        <>
+          <span className="header-menu-item-icon">{router.icon}</span>
+          {router.label ? t(router.label) : ''}
+        </>
       </div>
     );
   };

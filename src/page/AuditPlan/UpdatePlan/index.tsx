@@ -2,7 +2,7 @@ import { useBoolean } from 'ahooks';
 import { Card, Modal, Result, Button } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import audit_plan from '../../../api/audit_plan';
 import { IAuditPlanResV1 } from '../../../api/common';
 import BackButton from '../../../components/BackButton';
@@ -13,6 +13,7 @@ import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import PlanForm from '../PlanForm';
 import { PlanFormField } from '../PlanForm/index.type';
 import { UpdateAuditPlanUrlParams } from './index.type';
+import { Link } from '../../../components/Link';
 
 const UpdateAuditPlan = () => {
   const { t } = useTranslation();
@@ -27,7 +28,7 @@ const UpdateAuditPlan = () => {
         audit_plan_cron: values.cron,
         audit_plan_instance_database: values.schema,
         audit_plan_instance_name: values.databaseName,
-        audit_plan_name: urlParams.auditPlanName,
+        audit_plan_name: urlParams.auditPlanName ?? '',
         audit_plan_params: values.asyncParams,
         rule_template_name: values.ruleTemplateName,
         project_name: projectName,
@@ -48,7 +49,7 @@ const UpdateAuditPlan = () => {
   const getCurrentAuditPlan = () => {
     audit_plan
       .getAuditPlanV1({
-        audit_plan_name: urlParams.auditPlanName,
+        audit_plan_name: urlParams.auditPlanName ?? '',
         project_name: projectName,
       })
       .then((res) => {
@@ -77,13 +78,13 @@ const UpdateAuditPlan = () => {
         title={t('common.operateSuccess')}
         footer={null}
         closable={false}
-        visible={visible}
+        open={visible}
       >
         <Result
           status="success"
           title={t('auditPlan.update.successTitle')}
           subTitle={
-            <Link to={`/project/${projectName}/auditPlan`}>
+            <Link to={`project/${projectName}/auditPlan`}>
               {t('auditPlan.update.successGuide')} {'>'}
             </Link>
           }

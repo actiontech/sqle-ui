@@ -1,5 +1,5 @@
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
-import { useTheme } from '@material-ui/styles';
+import { useTheme } from '@mui/styles';
 import { useBoolean } from 'ahooks';
 import {
   Alert,
@@ -13,6 +13,7 @@ import {
   Button,
   Tooltip,
   Radio,
+  StepProps,
 } from 'antd';
 import { cloneDeep } from 'lodash';
 import React, { ChangeEvent, useState } from 'react';
@@ -22,13 +23,13 @@ import { WorkFlowStepTemplateReqV1TypeEnum } from '../../../../api/common.enum';
 import EmptyBox from '../../../../components/EmptyBox';
 import EmitterKey from '../../../../data/EmitterKey';
 import useUsername from '../../../../hooks/useUsername';
-import { Theme } from '../../../../types/theme.type';
 import EventEmitter from '../../../../utils/EventEmitter';
 import {
   ExecProgressConfigItem,
   ProgressConfigItem,
   ProgressConfigProps,
 } from './index.type';
+import { Theme } from '@mui/material/styles';
 
 export enum ProgressConfigReviewTypeEnum {
   specify = 'specify',
@@ -275,19 +276,24 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
     <Space direction="vertical" className="full-width-element" size={24}>
       <Row>
         <Col span={10} offset={3}>
-          <Steps direction="vertical">
-            <Steps.Step
-              status="process"
-              title={t('workflowTemplate.progressConfig.createStep.title')}
-              description={t('workflowTemplate.progressConfig.createStep.desc')}
-            />
-            {progressData.map((progressItem, index) => (
-              <Steps.Step
-                key={index}
-                status={progressError.includes(index) ? 'error' : 'process'}
-                title={t('workflowTemplate.progressConfig.review.title')}
-                subTitle={t('workflowTemplate.progressConfig.review.subTitle')}
-                description={
+          <Steps
+            direction="vertical"
+            items={[
+              {
+                status: 'process',
+                title: t('workflowTemplate.progressConfig.createStep.title'),
+                description: t(
+                  'workflowTemplate.progressConfig.createStep.desc'
+                ),
+              },
+              ...progressData.map((progressItem, index) => ({
+                key: index,
+                status: (progressError.includes(index)
+                  ? 'error'
+                  : 'process') as StepProps['status'],
+                title: t('workflowTemplate.progressConfig.review.title'),
+                subTitle: t('workflowTemplate.progressConfig.review.subTitle'),
+                description: (
                   <Row>
                     <Col span={18}>
                       <Space
@@ -410,98 +416,104 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
                       </Button>
                     </Col>
                   </Row>
-                }
-              />
-            ))}
-            <Steps.Step
-              title={t('workflowTemplate.progressConfig.exec.title')}
-              status={execProgressError ? 'error' : 'process'}
-              subTitle={t('workflowTemplate.progressConfig.exec.subTitle')}
-              description={
-                <Row>
-                  <Col span={18}>
-                    <Space
-                      size={theme.common.padding}
-                      direction="vertical"
-                      className="full-width-element"
-                    >
-                      <Row>
-                        <Col span={5} className="text-black">
-                          {t('workflowTemplate.form.label.execUserType')}
-                        </Col>
-                        <Col span={18}>
-                          <Radio.Group
-                            onChange={(e) => updateExecuteType(e.target.value)}
-                            value={
-                              execProgressData.execute_by_authorized
-                                ? ProgressConfigExecuteTypeEnum.matchExecute
-                                : ProgressConfigExecuteTypeEnum.specify
-                            }
-                          >
-                            <Radio
-                              value={ProgressConfigExecuteTypeEnum.specify}
+                ),
+              })),
+              {
+                title: t('workflowTemplate.progressConfig.exec.title'),
+                status: (execProgressError
+                  ? 'error'
+                  : 'process') as StepProps['status'],
+                subTitle: t('workflowTemplate.progressConfig.exec.subTitle'),
+                description: (
+                  <Row>
+                    <Col span={18}>
+                      <Space
+                        size={theme.common.padding}
+                        direction="vertical"
+                        className="full-width-element"
+                      >
+                        <Row>
+                          <Col span={5} className="text-black">
+                            {t('workflowTemplate.form.label.execUserType')}
+                          </Col>
+                          <Col span={18}>
+                            <Radio.Group
+                              onChange={(e) =>
+                                updateExecuteType(e.target.value)
+                              }
+                              value={
+                                execProgressData.execute_by_authorized
+                                  ? ProgressConfigExecuteTypeEnum.matchExecute
+                                  : ProgressConfigExecuteTypeEnum.specify
+                              }
                             >
-                              {t(
-                                'workflowTemplate.progressConfig.exec.executeUserType.specifyExecute'
-                              )}
-                            </Radio>
-                            <Radio
-                              value={ProgressConfigExecuteTypeEnum.matchExecute}
+                              <Radio
+                                value={ProgressConfigExecuteTypeEnum.specify}
+                              >
+                                {t(
+                                  'workflowTemplate.progressConfig.exec.executeUserType.specifyExecute'
+                                )}
+                              </Radio>
+                              <Radio
+                                value={
+                                  ProgressConfigExecuteTypeEnum.matchExecute
+                                }
+                              >
+                                {t(
+                                  'workflowTemplate.progressConfig.exec.executeUserType.matchExecute'
+                                )}
+                              </Radio>
+                            </Radio.Group>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col span={5}>
+                            {t('workflowTemplate.form.label.execUser')}
+                          </Col>
+                          <Col span={18}>
+                            <Select
+                              disabled={execProgressData.execute_by_authorized}
+                              onChange={updateExecUsername}
+                              value={execProgressData.assignee_user_name_list}
+                              className="full-width-element"
+                              mode="multiple"
+                              showSearch
+                              placeholder={t('common.form.placeholder.select')}
+                              data-testid="exec-user-select"
                             >
-                              {t(
-                                'workflowTemplate.progressConfig.exec.executeUserType.matchExecute'
-                              )}
-                            </Radio>
-                          </Radio.Group>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col span={5}>
-                          {t('workflowTemplate.form.label.execUser')}
-                        </Col>
-                        <Col span={18}>
-                          <Select
-                            disabled={execProgressData.execute_by_authorized}
-                            onChange={updateExecUsername}
-                            value={execProgressData.assignee_user_name_list}
-                            className="full-width-element"
-                            mode="multiple"
-                            showSearch
-                            placeholder={t('common.form.placeholder.select')}
-                            data-testid="exec-user-select"
-                          >
-                            {generateUsernameSelectOption()}
-                          </Select>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col span={5} className="text-black">
-                          {t('workflowTemplate.form.label.reviewDesc')}
-                        </Col>
-                        <Col span={18}>
-                          <Input.TextArea
-                            value={execProgressData.desc}
-                            onChange={updateExecDesc}
-                            className="textarea-no-resize"
-                            placeholder={t('common.form.placeholder.input')}
-                            data-testid="exec-user-desc"
+                              {generateUsernameSelectOption()}
+                            </Select>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col span={5} className="text-black">
+                            {t('workflowTemplate.form.label.reviewDesc')}
+                          </Col>
+                          <Col span={18}>
+                            <Input.TextArea
+                              value={execProgressData.desc}
+                              onChange={updateExecDesc}
+                              className="textarea-no-resize"
+                              placeholder={t('common.form.placeholder.input')}
+                              data-testid="exec-user-desc"
+                            />
+                          </Col>
+                        </Row>
+                        <EmptyBox if={execProgressError}>
+                          <Alert
+                            type="error"
+                            message={t(
+                              'workflowTemplate.progressConfig.ruler.rule3'
+                            )}
                           />
-                        </Col>
-                      </Row>
-                      <EmptyBox if={execProgressError}>
-                        <Alert
-                          type="error"
-                          message={t(
-                            'workflowTemplate.progressConfig.ruler.rule3'
-                          )}
-                        />
-                      </EmptyBox>
-                    </Space>
-                  </Col>
-                </Row>
-              }
-            />
-          </Steps>
+                        </EmptyBox>
+                      </Space>
+                    </Col>
+                  </Row>
+                ),
+              },
+            ]}
+          />
         </Col>
         <Col span={7}>
           <Space direction="vertical" size={theme.common.padding}>

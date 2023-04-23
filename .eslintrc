@@ -1,10 +1,10 @@
 {
-  "extends": [
-    "react-app",
-    "react-app/jest"
-  ],
+  "extends": ["react-app", "react-app/jest"],
   "rules": {
-    "no-console": "warn"
+    "no-console": "warn",
+    "testing-library/render-result-naming-convention": 0,
+    "testing-library/no-unnecessary-act": 0,
+    "testing-library/no-node-access": 0
   },
   "ignorePatterns": "src/api/**/*.ts"
 }

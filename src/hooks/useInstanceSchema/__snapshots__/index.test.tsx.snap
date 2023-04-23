@@ -146,7 +146,7 @@ exports[`useInstanceSchema should get instance schema data from request 3`] = `
           class="ant-select-selection-search"
         >
           <input
-            aria-activedescendant="rc_select_TEST_OR_SSR_list_-1"
+            aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
             aria-autocomplete="list"
             aria-controls="rc_select_TEST_OR_SSR_list"
             aria-expanded="true"
@@ -204,7 +204,7 @@ exports[`useInstanceSchema should get instance schema data from request 3`] = `
     <div>
       <div
         class="ant-select-dropdown"
-        style="opacity: 0; pointer-events: none; min-width: 0; width: 0px;"
+        style="opacity: 0; min-width: 0; width: 0px;"
       >
         <div>
           <div
@@ -236,7 +236,7 @@ exports[`useInstanceSchema should get instance schema data from request 3`] = `
                 >
                   <div
                     aria-selected="false"
-                    class="ant-select-item ant-select-item-option"
+                    class="ant-select-item ant-select-item-option ant-select-item-option-active"
                     title="schema1"
                   >
                     <div

@@ -1,12 +1,9 @@
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { fireEvent, screen, act } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import UpdateSyncTask from '.';
 import { IInstanceTaskDetailResV1 } from '../../../api/common';
 import sync_instance from '../../../api/sync_instance';
-import {
-  renderWithRouter,
-  renderWithServerRouter,
-} from '../../../testUtils/customRender';
+import { renderWithRouter } from '../../../testUtils/customRender';
 import {
   mockDriver,
   mockUseGlobalRuleTemplate,
@@ -14,7 +11,7 @@ import {
   resolveErrorThreeSecond,
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
-import { createMemoryHistory } from 'history';
+import useNavigate from '../../../hooks/useNavigate';
 
 const defaultSyncTask: IInstanceTaskDetailResV1 = {
   db_type: 'mysql',
@@ -31,13 +28,14 @@ jest.mock('react-router-dom', () => ({
   useParams: jest.fn(),
 }));
 
+jest.mock('../../../hooks/useNavigate', () => jest.fn());
 const taskId = '99';
 
 describe('test UpdateSyncTask', () => {
   let updateSyncInstanceTaskSpy: jest.SpyInstance;
   let getSyncInstanceTaskSpy: jest.SpyInstance;
   const useParamsMock: jest.Mock = useParams as jest.Mock;
-
+  const navigateSpy = jest.fn();
   beforeEach(() => {
     jest.useFakeTimers();
     mockDriver();
@@ -46,6 +44,7 @@ describe('test UpdateSyncTask', () => {
     updateSyncInstanceTaskSpy = mockUpdateSyncInstanceTask();
     getSyncInstanceTaskSpy = mockGetSyncInstanceTask();
     useParamsMock.mockReturnValue({ taskId });
+    (useNavigate as jest.Mock).mockImplementation(() => navigateSpy);
   });
 
   afterEach(() => {
@@ -74,9 +73,8 @@ describe('test UpdateSyncTask', () => {
   test('should get default value with request and taskId', async () => {
     expect(getSyncInstanceTaskSpy).toBeCalledTimes(0);
     renderWithRouter(<UpdateSyncTask />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getSyncInstanceTaskSpy).toBeCalledTimes(1);
     expect(getSyncInstanceTaskSpy).toBeCalledWith({ task_id: taskId });
   });
@@ -86,9 +84,8 @@ describe('test UpdateSyncTask', () => {
       resolveErrorThreeSecond({})
     );
     const { container } = renderWithRouter(<UpdateSyncTask />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
 
     fireEvent.click(screen.getByText('common.retry'));
@@ -97,21 +94,18 @@ describe('test UpdateSyncTask', () => {
     expect(screen.getByText('common.retry').closest('button')).toHaveClass(
       'ant-btn-loading'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByText('common.retry').closest('button')).not.toHaveClass(
       'ant-btn-loading'
     );
   });
 
   test('should send update request when clicking submit button', async () => {
-    const history = createMemoryHistory();
-    renderWithServerRouter(<UpdateSyncTask />, undefined, { history });
+    renderWithRouter(<UpdateSyncTask />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.getByLabelText('syncDataSource.syncTaskForm.source')
     ).toBeDisabled();
@@ -130,9 +124,8 @@ describe('test UpdateSyncTask', () => {
     expect(updateSyncInstanceTaskSpy).toBeCalledTimes(0);
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(updateSyncInstanceTaskSpy).toBeCalledTimes(1);
     expect(updateSyncInstanceTaskSpy).toBeCalledWith({
       task_id: '99',
@@ -142,18 +135,14 @@ describe('test UpdateSyncTask', () => {
       version: '3.33',
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
-      screen.queryByText('syncDataSource.updateSyncTask.successTips')
+      screen.getByText('syncDataSource.updateSyncTask.successTips')
     ).toBeInTheDocument();
-    expect(history.location.pathname).toBe('/syncDataSource');
-
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    expect(navigateSpy).toBeCalledTimes(1);
+    expect(navigateSpy).toBeCalledWith('syncDataSource', { replace: true });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.queryByText('syncDataSource.updateSyncTask.successTips')

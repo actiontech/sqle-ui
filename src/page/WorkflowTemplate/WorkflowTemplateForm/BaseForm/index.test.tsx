@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, act } from '@testing-library/react';
 import BaseForm from '.';
 import { WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum } from '../../../../api/common.enum';
 import { selectOptionByIndex } from '../../../../testUtils/customQuery';
@@ -54,9 +54,7 @@ describe('WorkflowTemplateForm', () => {
       1
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     fireEvent.click(screen.getByText('common.reset'));
     expect(container).toMatchSnapshot();

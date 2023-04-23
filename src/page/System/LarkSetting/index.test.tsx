@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, act } from '@testing-library/react';
 import LarkSetting from './LarkSetting';
 import configuration from '../../../api/configuration';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
@@ -53,9 +53,8 @@ describe('test System/LarkSetting', () => {
     expect(container).toMatchSnapshot();
 
     expect(getLarkConfigSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
     fireEvent.click(screen.getByText('common.modify'));
     expect(container).toMatchSnapshot();
@@ -70,9 +69,7 @@ describe('test System/LarkSetting', () => {
     );
     const { container } = render(<LarkSetting />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
 
@@ -90,9 +87,7 @@ describe('test System/LarkSetting', () => {
   test('should be able to update dingTalk configuration', async () => {
     render(<LarkSetting />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByText('common.modify'));
     fireEvent.click(screen.getByLabelText('system.lark.enable'));
@@ -105,9 +100,8 @@ describe('test System/LarkSetting', () => {
     expect(updateLarkConfigSpy).toBeCalledTimes(0);
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(updateLarkConfigSpy).toBeCalledTimes(1);
     expect(updateLarkConfigSpy).toBeCalledWith({
       is_feishu_notification_enabled: false,
@@ -120,9 +114,7 @@ describe('test System/LarkSetting', () => {
 
     expect(screen.getByText('common.cancel').closest('button')).toBeDisabled();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.getByText('common.submit').closest('button')).not.toHaveClass(
       'ant-btn-loading'
@@ -142,13 +134,11 @@ describe('test System/LarkSetting', () => {
     const { baseElement } = render(<LarkSetting />);
     expect(testLarkConfigSpy).toBeCalledTimes(0);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByText('system.lark.test'));
 
-    expect(screen.queryByText('system.lark.receiveType')).toBeInTheDocument();
+    expect(screen.getByText('system.lark.receiveType')).toBeInTheDocument();
     expect(baseElement).toMatchSnapshot();
     fireEvent.change(screen.getAllByLabelText('system.lark.email')[1], {
       target: { value: 'demo@gmail.com' },
@@ -156,9 +146,7 @@ describe('test System/LarkSetting', () => {
 
     fireEvent.click(screen.getByText('common.ok'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(testLarkConfigSpy).toBeCalledTimes(1);
     expect(testLarkConfigSpy).nthCalledWith(1, {
@@ -166,16 +154,17 @@ describe('test System/LarkSetting', () => {
       account_type: TestFeishuConfigurationReqV1AccountTypeEnum.email,
     });
 
-    expect(screen.queryByText('system.lark.testing')).toBeInTheDocument();
+    expect(screen.getByText('system.lark.testing')).toBeInTheDocument();
     expect(
       screen.getByText('system.lark.test').closest('button')
     ).not.toBeDisabled();
 
-    expect(screen.getByText('common.modify').closest('button')).not.toBeDisabled();
+    expect(
+      screen.getByText('common.modify').closest('button')
+    ).not.toBeDisabled();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.queryByText('system.lark.testing')).not.toBeInTheDocument();
     expect(
       screen.getByText('system.lark.test').closest('button')
@@ -184,11 +173,9 @@ describe('test System/LarkSetting', () => {
       screen.getByText('common.modify').closest('button')
     ).not.toBeDisabled();
 
-    expect(screen.queryByText('system.lark.testSuccess')).toBeInTheDocument();
+    expect(screen.getByText('system.lark.testSuccess')).toBeInTheDocument();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.queryByText('system.lark.testSuccess')
@@ -201,21 +188,15 @@ describe('test System/LarkSetting', () => {
 
     fireEvent.click(screen.getByText('common.ok'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(testLarkConfigSpy).toBeCalledTimes(2);
     expect(testLarkConfigSpy).nthCalledWith(2, {
       account: '13112341234',
       account_type: TestFeishuConfigurationReqV1AccountTypeEnum.phone,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
 
     jest.clearAllMocks();
     testLarkConfigSpy.mockImplementation(() => {
@@ -231,23 +212,18 @@ describe('test System/LarkSetting', () => {
 
     fireEvent.click(screen.getByText('common.ok'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(testLarkConfigSpy).toBeCalledTimes(1);
     expect(testLarkConfigSpy).nthCalledWith(1, {
       account: 'demo@gmail.com',
       account_type: TestFeishuConfigurationReqV1AccountTypeEnum.email,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    expect(screen.queryByText('error message')).toBeInTheDocument();
+    expect(screen.getByText('error message')).toBeInTheDocument();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.queryByText('error message')).not.toBeInTheDocument();
   });

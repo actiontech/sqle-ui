@@ -2,13 +2,14 @@ import { Card, Button, message, Empty, Typography, Spin } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { IInstanceResV1 } from '../../../api/common';
 import instance from '../../../api/instance';
 import { IUpdateInstanceV1Params } from '../../../api/instance/index.d';
 import BackButton from '../../../components/BackButton';
 import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode, SQLE_INSTANCE_SOURCE_NAME } from '../../../data/common';
+import useNavigate from '../../../hooks/useNavigate';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import DataSourceForm from '../DataSourceForm';
 import { DataSourceFormField } from '../DataSourceForm/index.type';
@@ -18,7 +19,7 @@ import { UpdateDataSourceUrlParams } from './index.type';
 const UpdateDataSource = () => {
   const { t } = useTranslation();
   const [form] = useForm<DataSourceFormField>();
-  const history = useHistory();
+  const navigate = useNavigate();
   const urlParams = useParams<UpdateDataSourceUrlParams>();
   const { projectName } = useCurrentProjectName();
   const [initError, setInitError] = useState('');
@@ -60,7 +61,7 @@ const UpdateDataSource = () => {
             name: values.name,
           })
         );
-        history.replace(`/project/${projectName}/data`);
+        navigate(`project/${projectName}/data`, { replace: true });
       }
     });
   };
@@ -69,7 +70,7 @@ const UpdateDataSource = () => {
     setRetryLoading(true);
     instance
       .getInstanceV1({
-        instance_name: urlParams.instanceName,
+        instance_name: urlParams.instanceName ?? '',
         project_name: projectName,
       })
       .then((res) => {

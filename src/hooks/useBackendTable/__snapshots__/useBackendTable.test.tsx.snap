@@ -240,7 +240,6 @@ exports[`useBackendTable should render table by "head" fields 1`] = `
         </div>
         <ul
           class="ant-pagination ant-table-pagination ant-table-pagination-right"
-          unselectable="unselectable"
         >
           <li
             aria-disabled="true"
@@ -564,7 +563,6 @@ exports[`useBackendTable should render table by "head" fields 2`] = `
         </div>
         <ul
           class="ant-pagination ant-table-pagination ant-table-pagination-right"
-          unselectable="unselectable"
         >
           <li
             aria-disabled="true"
@@ -888,7 +886,6 @@ exports[`useBackendTable should render table by "head" fields 3`] = `
         </div>
         <ul
           class="ant-pagination ant-table-pagination ant-table-pagination-right"
-          unselectable="unselectable"
         >
           <li
             aria-disabled="true"

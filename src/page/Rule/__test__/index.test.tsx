@@ -1,4 +1,4 @@
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, screen } from '@testing-library/react';
 import Rule from '..';
 import { getBySelector } from '../../../testUtils/customQuery';
 import { renderWithTheme } from '../../../testUtils/customRender';
@@ -13,13 +13,17 @@ import {
   mockGetGlobalTemplateRules,
   mockGetProjectTemplateRules,
 } from './utils';
-import route from 'react-router';
+import { useLocation } from 'react-router-dom';
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLocation: jest.fn(),
+}));
 
 const clickSelectOption = async (id: string, value: string) => {
   fireEvent.mouseDown(getBySelector('input', screen.getByTestId(id)));
-  await waitFor(() => {
-    jest.advanceTimersByTime(0);
-  });
+  await act(async () => jest.advanceTimersByTime(0));
+
   const allOptions = screen.getAllByText(value);
   const option = allOptions[1];
   expect(option).toHaveClass('ant-select-item-option-content');
@@ -30,6 +34,7 @@ describe('test Rule', () => {
   let getProjectRuleTemplateSpy: jest.SpyInstance;
   let getRuleTemplateSpy: jest.SpyInstance;
   let getRuleListSpy: jest.SpyInstance;
+  const useLocationMock: jest.Mock = useLocation as jest.Mock;
 
   beforeEach(() => {
     mockDriver();
@@ -39,11 +44,13 @@ describe('test Rule', () => {
     getProjectRuleTemplateSpy = mockGetProjectTemplateRules();
     getRuleTemplateSpy = mockGetGlobalTemplateRules();
     getRuleListSpy = mockGetAllRules();
-    jest.spyOn(route, 'useLocation').mockReturnValue({
+
+    useLocationMock.mockReturnValue({
       pathname: '/rule',
-      hash: '',
       search: '',
-      state: '',
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
     });
 
     jest.useFakeTimers();
@@ -58,14 +65,10 @@ describe('test Rule', () => {
   test('should match snapshot', async () => {
     const { container } = renderWithTheme(<Rule />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
   });
@@ -75,9 +78,7 @@ describe('test Rule', () => {
 
     expect(getRuleListSpy).toBeCalledTimes(0);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(getRuleListSpy).toBeCalledTimes(1);
     expect(getRuleListSpy).toBeCalledWith({
@@ -87,16 +88,13 @@ describe('test Rule', () => {
     fireEvent.mouseDown(
       getBySelector('input', screen.getByTestId('database-type'))
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const allOptions = screen.getAllByText('mysql');
     const option = allOptions[1];
     expect(option).toHaveClass('ant-select-item-option-content');
     fireEvent.click(option);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(getRuleListSpy).toBeCalledTimes(2);
     expect(getRuleListSpy).toBeCalledWith({
@@ -107,13 +105,9 @@ describe('test Rule', () => {
   test('should call get rule request with filter rule template', async () => {
     const { container } = renderWithTheme(<Rule />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(getRuleListSpy).toBeCalledTimes(1);
     expect(getProjectRuleTemplateSpy).toBeCalledTimes(0);
@@ -128,9 +122,7 @@ describe('test Rule', () => {
       rule_template_name: 'global_rule_template_name1',
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.getByText('Oracle')).toHaveClass('ant-select-selection-item');
     expect(screen.getByTestId('database-type')).toHaveClass(
@@ -141,21 +133,16 @@ describe('test Rule', () => {
     expect(getRuleListSpy).toBeCalledWith({
       filter_db_type: 'Oracle',
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
 
     await clickSelectOption('project-name', 'project_name_1');
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     await clickSelectOption('rule-template-name', 'rule_template_name1');
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByText('MySQL')).toHaveClass('ant-select-selection-item');
     expect(screen.getByTestId('database-type')).toHaveClass(
       'ant-select-disabled'
@@ -173,9 +160,7 @@ describe('test Rule', () => {
       project_name: 'project_name_1',
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
   });

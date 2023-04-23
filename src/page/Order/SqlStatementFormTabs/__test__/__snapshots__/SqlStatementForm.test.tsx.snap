@@ -6,127 +6,136 @@ exports[`test Order/SqlStatementForm should match snapshot 1`] = `
     class="ant-form ant-form-horizontal"
   >
     <div
-      class="ant-row ant-form-item"
+      class="ant-form-item"
     >
       <div
-        class="ant-col ant-form-item-label"
-      >
-        <label
-          class=""
-          for="0_sqlInputType"
-          title="order.sqlInfo.uploadType"
-        >
-          order.sqlInfo.uploadType
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label"
+        >
+          <label
+            class=""
+            for="0_sqlInputType"
+            title="order.sqlInfo.uploadType"
+          >
+            order.sqlInfo.uploadType
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control"
         >
           <div
-            class="ant-form-item-control-input-content"
+            class="ant-form-item-control-input"
           >
             <div
-              class="ant-radio-group ant-radio-group-outline"
-              id="0_sqlInputType"
+              class="ant-form-item-control-input-content"
             >
-              <label
-                class="ant-radio-wrapper ant-radio-wrapper-checked"
+              <div
+                class="ant-radio-group ant-radio-group-outline"
+                id="0_sqlInputType"
               >
-                <span
-                  class="ant-radio ant-radio-checked"
+                <label
+                  class="ant-radio-wrapper ant-radio-wrapper-checked ant-radio-wrapper-in-form-item"
                 >
-                  <input
-                    checked=""
-                    class="ant-radio-input"
-                    type="radio"
-                    value="0"
-                  />
                   <span
-                    class="ant-radio-inner"
-                  />
-                </span>
-                <span>
-                  order.sqlInfo.manualInput
-                </span>
-              </label>
-              <label
-                class="ant-radio-wrapper"
-              >
-                <span
-                  class="ant-radio"
+                    class="ant-radio ant-radio-checked"
+                  >
+                    <input
+                      checked=""
+                      class="ant-radio-input"
+                      type="radio"
+                      value="0"
+                    />
+                    <span
+                      class="ant-radio-inner"
+                    />
+                  </span>
+                  <span>
+                    order.sqlInfo.manualInput
+                  </span>
+                </label>
+                <label
+                  class="ant-radio-wrapper ant-radio-wrapper-in-form-item"
                 >
-                  <input
-                    class="ant-radio-input"
-                    type="radio"
-                    value="1"
-                  />
                   <span
-                    class="ant-radio-inner"
-                  />
-                </span>
-                <span>
-                  order.sqlInfo.uploadFile
-                </span>
-              </label>
-              <label
-                class="ant-radio-wrapper"
-              >
-                <span
-                  class="ant-radio"
+                    class="ant-radio"
+                  >
+                    <input
+                      class="ant-radio-input"
+                      type="radio"
+                      value="1"
+                    />
+                    <span
+                      class="ant-radio-inner"
+                    />
+                  </span>
+                  <span>
+                    order.sqlInfo.uploadFile
+                  </span>
+                </label>
+                <label
+                  class="ant-radio-wrapper ant-radio-wrapper-in-form-item"
                 >
-                  <input
-                    class="ant-radio-input"
-                    type="radio"
-                    value="2"
-                  />
                   <span
-                    class="ant-radio-inner"
-                  />
-                </span>
-                <span>
-                  order.sqlInfo.updateMybatisFile
-                </span>
-              </label>
+                    class="ant-radio"
+                  >
+                    <input
+                      class="ant-radio-input"
+                      type="radio"
+                      value="2"
+                    />
+                    <span
+                      class="ant-radio-inner"
+                    />
+                  </span>
+                  <span>
+                    order.sqlInfo.updateMybatisFile
+                  </span>
+                </label>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="ant-row ant-form-item"
+      class="ant-form-item"
     >
       <div
-        class="ant-col ant-form-item-label"
-      >
-        <label
-          class="ant-form-item-required"
-          for="0_sql"
-          title="order.sqlInfo.sql"
-        >
-          order.sqlInfo.sql
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control makeStyles-editor-2 ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label"
+        >
+          <label
+            class="ant-form-item-required"
+            for="0_sql"
+            title="order.sqlInfo.sql"
+          >
+            order.sqlInfo.sql
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control makeStyles-editor-2 ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
         >
           <div
-            class="ant-form-item-control-input-content"
+            class="ant-form-item-control-input"
           >
-            <input
-              height="500"
-              id="0_sql"
-              language="sql"
-              options="[object Object]"
-              theme="vs"
-              value="/* input your sql */"
-              width="100%"
-            />
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <input
+                aria-required="true"
+                height="500"
+                id="0_sql"
+                language="sql"
+                options="[object Object]"
+                theme="vs"
+                value="/* input your sql */"
+                width="100%"
+              />
+            </div>
           </div>
         </div>
       </div>

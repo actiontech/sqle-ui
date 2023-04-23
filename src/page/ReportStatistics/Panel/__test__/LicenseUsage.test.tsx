@@ -1,10 +1,8 @@
 /* eslint-disable no-console */
-import { useTheme } from '@material-ui/styles';
-import { render, waitFor } from '@testing-library/react';
-import React from 'react';
+import { useTheme } from '@mui/styles';
+import { act, render } from '@testing-library/react';
 import statistic from '../../../../api/statistic';
 import { SupportLanguage } from '../../../../locale';
-import { mockUseSelector } from '../../../../testUtils/mockRedux';
 import {
   resolveErrorThreeSecond,
   resolveThreeSecond,
@@ -12,11 +10,19 @@ import {
 import { SupportTheme } from '../../../../theme';
 import LicenseUsage from '../LicenseUsage';
 import mockRequestData from './mockRequestData';
+import { useSelector } from 'react-redux';
 
-jest.mock('@material-ui/styles', () => {
+jest.mock('@mui/styles', () => {
   return {
-    ...jest.requireActual('@material-ui/styles'),
+    ...jest.requireActual('@mui/styles'),
     useTheme: jest.fn(),
+  };
+});
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
   };
 });
 
@@ -56,11 +62,13 @@ describe('test LicenseUsage', () => {
 
     jest.useFakeTimers();
 
-    mockUseSelector({
-      user: { theme: SupportTheme.LIGHT },
-      locale: { language: SupportLanguage.zhCN },
-      reportStatistics: { refreshFlag: false },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { theme: SupportTheme.LIGHT },
+        locale: { language: SupportLanguage.zhCN },
+        reportStatistics: { refreshFlag: false },
+      })
+    );
     useThemeMock.mockReturnValue({ common: { padding: 24 } });
   });
 
@@ -74,18 +82,16 @@ describe('test LicenseUsage', () => {
   test('should match snapshot', async () => {
     mockGetLicenseUsageV1();
     const { container } = render(<LicenseUsage />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
   test('should match snapshot when request goes wrong', async () => {
     mockErrorGetLicenseUsageV1();
     const { container } = render(<LicenseUsage />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -124,9 +130,8 @@ describe('test LicenseUsage', () => {
 
     const { container } = render(<LicenseUsage />);
     expect(spy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 });

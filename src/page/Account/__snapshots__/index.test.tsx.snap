@@ -92,6 +92,7 @@ exports[`Account should render user Info when request is success 1`] = `
                     aria-label="edit"
                     class="anticon anticon-edit"
                     role="img"
+                    tabindex="-1"
                   >
                     <svg
                       aria-hidden="true"
@@ -179,6 +180,7 @@ exports[`Account should render user Info when request is success 1`] = `
                         aria-label="edit"
                         class="anticon anticon-edit"
                         role="img"
+                        tabindex="-1"
                       >
                         <svg
                           aria-hidden="true"
@@ -268,6 +270,7 @@ exports[`Account should render user Info when request is success 1`] = `
                         aria-label="edit"
                         class="anticon anticon-edit"
                         role="img"
+                        tabindex="-1"
                       >
                         <svg
                           aria-hidden="true"
@@ -443,6 +446,7 @@ exports[`Account should render user Info when request is success 2`] = `
                     aria-label="edit"
                     class="anticon anticon-edit"
                     role="img"
+                    tabindex="-1"
                   >
                     <svg
                       aria-hidden="true"
@@ -530,6 +534,7 @@ exports[`Account should render user Info when request is success 2`] = `
                         aria-label="edit"
                         class="anticon anticon-edit"
                         role="img"
+                        tabindex="-1"
                       >
                         <svg
                           aria-hidden="true"
@@ -619,6 +624,7 @@ exports[`Account should render user Info when request is success 2`] = `
                         aria-label="edit"
                         class="anticon anticon-edit"
                         role="img"
+                        tabindex="-1"
                       >
                         <svg
                           aria-hidden="true"

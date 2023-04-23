@@ -1,9 +1,6 @@
 import { PageHeader } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { Redirect, Route, Switch } from 'react-router-dom';
-import CreateAuditPlan from './CreatePlan';
-import PlanList from './PlanList';
-import UpdateAuditPlan from './UpdatePlan';
+import { Outlet } from 'react-router-dom';
 
 const AuditPlan = () => {
   const { t } = useTranslation();
@@ -14,22 +11,7 @@ const AuditPlan = () => {
       </PageHeader>
 
       <section className="padding-content">
-        <Switch>
-          <Route
-            path={`/project/:projectName/auditPlan`}
-            exact={true}
-            component={PlanList}
-          />
-          <Route
-            path={`/project/:projectName/auditPlan/create`}
-            component={CreateAuditPlan}
-          />
-          <Route
-            path={`/project/:projectName/auditPlan/update/:auditPlanName`}
-            component={UpdateAuditPlan}
-          />
-          <Redirect to={`/project/:projectName/auditPlan`} />
-        </Switch>
+        <Outlet />
       </section>
     </>
   );

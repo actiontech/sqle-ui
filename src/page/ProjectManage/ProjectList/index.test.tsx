@@ -1,10 +1,4 @@
-import {
-  act,
-  cleanup,
-  fireEvent,
-  screen,
-  waitFor,
-} from '@testing-library/react';
+import { act, cleanup, fireEvent, screen } from '@testing-library/react';
 import ProjectList from '.';
 import { SystemRole } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
@@ -13,7 +7,6 @@ import StorageKey from '../../../data/StorageKey';
 import { mockManagementPermissions } from '../../../hooks/useCurrentUser/index.test';
 import { getBySelector } from '../../../testUtils/customQuery';
 import { renderWithRouter } from '../../../testUtils/customRender';
-import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
 import EventEmitter from '../../../utils/EventEmitter';
 import {
   mockArchiveProject,
@@ -21,35 +14,47 @@ import {
   mockGetProjectList,
   mockUnarchiveProject,
 } from '../__test__/utils';
+import { useDispatch, useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('test ProjectManage/ProjectList', () => {
   let archiveProjectSpy: jest.SpyInstance;
   let unarchiveProjectSpy: jest.SpyInstance;
   let getProjectListSpy: jest.SpyInstance;
   let deleteProjectList: jest.SpyInstance;
-  let dispatchSpy: jest.SpyInstance;
+  const dispatchSpy = jest.fn();
+  const useSelectorMock = useSelector as jest.Mock;
+
   const username = 'test';
   beforeEach(() => {
-    mockUseSelector({
-      projectManage: {
-        modalStatus: {
-          [ModalName.Create_Project]: false,
-          [ModalName.Update_Project]: false,
+    useSelectorMock.mockImplementation((e) =>
+      e({
+        projectManage: {
+          modalStatus: {
+            [ModalName.Create_Project]: false,
+            [ModalName.Update_Project]: false,
+          },
         },
-      },
-      user: {
-        role: SystemRole.admin,
-        bindProjects: [],
-        managementPermissions: [],
-        username,
-      },
-    });
+        user: {
+          role: SystemRole.admin,
+          bindProjects: [],
+          managementPermissions: [],
+          username,
+        },
+      })
+    );
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
     getProjectListSpy = mockGetProjectList();
     deleteProjectList = mockDeleteProject();
     archiveProjectSpy = mockArchiveProject();
     unarchiveProjectSpy = mockUnarchiveProject();
-    const { scopeDispatch } = mockUseDispatch();
-    dispatchSpy = scopeDispatch;
     jest.useFakeTimers();
   });
 
@@ -64,10 +69,8 @@ describe('test ProjectManage/ProjectList', () => {
     const { container } = renderWithRouter(<ProjectList />);
     expect(container).toMatchSnapshot();
     expect(getProjectListSpy).toBeCalledTimes(1);
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
     expect(container).toMatchSnapshot();
   });
 
@@ -83,9 +86,8 @@ describe('test ProjectManage/ProjectList', () => {
       'anticon-spin'
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByTestId('refresh-project').children[0]).not.toHaveClass(
       'anticon-spin'
     );
@@ -114,9 +116,8 @@ describe('test ProjectManage/ProjectList', () => {
 
   test('should be called delete request when clicking the delete button', async () => {
     renderWithRouter(<ProjectList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(deleteProjectList).toBeCalledTimes(0);
 
     expect(screen.getAllByText('common.delete')[0]).toBeInTheDocument();
@@ -129,17 +130,15 @@ describe('test ProjectManage/ProjectList', () => {
     fireEvent.click(screen.getByText('common.ok'));
     expect(deleteProjectList).toBeCalledTimes(1);
     expect(deleteProjectList).toBeCalledWith({ project_name: 'project1' });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText('projectManage.projectList.deleteSuccessTips')
+      screen.getByText('projectManage.projectList.deleteSuccessTips')
     ).toBeInTheDocument();
     expect(getProjectListSpy).toBeCalledTimes(2);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('projectManage.projectList.deleteSuccessTips')
     ).not.toBeInTheDocument();
@@ -147,9 +146,8 @@ describe('test ProjectManage/ProjectList', () => {
 
   test('should be called archive request when clicking the archive button', async () => {
     renderWithRouter(<ProjectList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(archiveProjectSpy).toBeCalledTimes(0);
 
     expect(
@@ -166,17 +164,15 @@ describe('test ProjectManage/ProjectList', () => {
     fireEvent.click(screen.getByText('common.ok'));
     expect(archiveProjectSpy).toBeCalledTimes(1);
     expect(archiveProjectSpy).toBeCalledWith({ project_name: 'project2' });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText('projectManage.projectList.archiveProjectSuccessTips')
+      screen.getByText('projectManage.projectList.archiveProjectSuccessTips')
     ).toBeInTheDocument();
     expect(getProjectListSpy).toBeCalledTimes(2);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('projectManage.projectList.archiveProjectSuccessTips')
     ).not.toBeInTheDocument();
@@ -184,9 +180,8 @@ describe('test ProjectManage/ProjectList', () => {
 
   test('should be called unarchive request when clicking the unarchive button', async () => {
     renderWithRouter(<ProjectList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(unarchiveProjectSpy).toBeCalledTimes(0);
 
     expect(
@@ -203,19 +198,15 @@ describe('test ProjectManage/ProjectList', () => {
     fireEvent.click(screen.getByText('common.ok'));
     expect(unarchiveProjectSpy).toBeCalledTimes(1);
     expect(unarchiveProjectSpy).toBeCalledWith({ project_name: 'project1' });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText(
-        'projectManage.projectList.unarchiveProjectSuccessTips'
-      )
+      screen.getByText('projectManage.projectList.unarchiveProjectSuccessTips')
     ).toBeInTheDocument();
     expect(getProjectListSpy).toBeCalledTimes(2);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText(
         'projectManage.projectList.unarchiveProjectSuccessTips'
@@ -226,9 +217,7 @@ describe('test ProjectManage/ProjectList', () => {
   test('should open the modal for updating a project when click the Update Project button', async () => {
     renderWithRouter(<ProjectList />);
     expect(dispatchSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.getAllByText('common.edit')[1]).toBeInTheDocument();
 
@@ -260,9 +249,8 @@ describe('test ProjectManage/ProjectList', () => {
     renderWithRouter(<ProjectList />);
     expect(getProjectListSpy).toBeCalledTimes(1);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     act(() => {
       EventEmitter.emit(EmitterKey.Refresh_Project_List);
     });
@@ -275,9 +263,8 @@ describe('test ProjectManage/ProjectList', () => {
 
   test('should jump to next page when user click next page button', async () => {
     renderWithRouter(<ProjectList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(getBySelector('.ant-pagination-next'));
     expect(getProjectListSpy).toBeCalledWith({
       page_index: 2,
@@ -291,77 +278,78 @@ describe('test ProjectManage/ProjectList', () => {
   });
 
   test('should hide the Create feature when project permissions are not created and the is not a admin', async () => {
-    mockUseSelector({
-      projectManage: {
-        modalStatus: {
-          [ModalName.Create_Project]: false,
-          [ModalName.Update_Project]: false,
+    useSelectorMock.mockImplementation((e) =>
+      e({
+        projectManage: {
+          modalStatus: {
+            [ModalName.Create_Project]: false,
+            [ModalName.Update_Project]: false,
+          },
         },
-      },
-      user: {
-        role: SystemRole.admin,
-        bindProjects: [],
-        managementPermissions: [],
-      },
-    });
+        user: {
+          role: SystemRole.admin,
+          bindProjects: [],
+          managementPermissions: [],
+        },
+      })
+    );
 
     renderWithRouter(<ProjectList />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
-      screen.queryByText('projectManage.projectList.createProject')
+      screen.getByText('projectManage.projectList.createProject')
     ).toBeInTheDocument();
 
     cleanup();
     jest.clearAllMocks();
 
-    mockUseSelector({
-      projectManage: {
-        modalStatus: {
-          [ModalName.Create_Project]: false,
-          [ModalName.Update_Project]: false,
+    useSelectorMock.mockImplementation((e) =>
+      e({
+        projectManage: {
+          modalStatus: {
+            [ModalName.Create_Project]: false,
+            [ModalName.Update_Project]: false,
+          },
         },
-      },
-      user: {
-        role: '',
-        bindProjects: [],
-        managementPermissions: mockManagementPermissions,
-      },
-    });
+        user: {
+          role: '',
+          bindProjects: [],
+          managementPermissions: mockManagementPermissions,
+        },
+      })
+    );
+
     renderWithRouter(<ProjectList />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
-      screen.queryByText('projectManage.projectList.createProject')
+      screen.getByText('projectManage.projectList.createProject')
     ).toBeInTheDocument();
 
     cleanup();
     jest.clearAllMocks();
 
-    mockUseSelector({
-      projectManage: {
-        modalStatus: {
-          [ModalName.Create_Project]: false,
-          [ModalName.Update_Project]: false,
+    useSelectorMock.mockImplementation((e) =>
+      e({
+        projectManage: {
+          modalStatus: {
+            [ModalName.Create_Project]: false,
+            [ModalName.Update_Project]: false,
+          },
         },
-      },
-      user: {
-        role: '',
-        bindProjects: [],
-        managementPermissions: [],
-      },
-    });
+        user: {
+          role: '',
+          bindProjects: [],
+          managementPermissions: [],
+        },
+      })
+    );
     renderWithRouter(<ProjectList />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.queryByText('projectManage.projectList.createProject')
@@ -369,24 +357,24 @@ describe('test ProjectManage/ProjectList', () => {
   });
 
   test('should disabled the Delete, Edit, Archive, Unarchive feature when not currently a project manager or admin', async () => {
-    mockUseSelector({
-      projectManage: {
-        modalStatus: {
-          [ModalName.Create_Project]: false,
-          [ModalName.Update_Project]: false,
+    useSelectorMock.mockImplementation((e) =>
+      e({
+        projectManage: {
+          modalStatus: {
+            [ModalName.Create_Project]: false,
+            [ModalName.Update_Project]: false,
+          },
         },
-      },
-      user: {
-        role: '',
-        bindProjects: [],
-        managementPermissions: [],
-      },
-    });
+        user: {
+          role: '',
+          bindProjects: [],
+          managementPermissions: [],
+        },
+      })
+    );
 
     renderWithRouter(<ProjectList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.queryAllByText('common.delete')[0]).toHaveClass(
       'ant-typography-disabled'
@@ -429,30 +417,31 @@ describe('test ProjectManage/ProjectList', () => {
     cleanup();
     jest.clearAllMocks();
 
-    mockUseSelector({
-      projectManage: {
-        modalStatus: {
-          [ModalName.Create_Project]: false,
-          [ModalName.Update_Project]: false,
+    useSelectorMock.mockImplementation((e) =>
+      e({
+        projectManage: {
+          modalStatus: {
+            [ModalName.Create_Project]: false,
+            [ModalName.Update_Project]: false,
+          },
         },
-      },
-      user: {
-        role: SystemRole.admin,
-        bindProjects: [],
-        managementPermissions: [],
-      },
-    });
+        user: {
+          role: SystemRole.admin,
+          bindProjects: [],
+          managementPermissions: [],
+        },
+      })
+    );
+
     renderWithRouter(<ProjectList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.queryAllByText('common.delete')[0]).not.toHaveClass(
       'ant-typography-disabled'
     );
     fireEvent.click(screen.queryAllByText('common.delete')[0]);
     expect(
-      screen.queryByText('projectManage.projectList.column.deleteProjectTips')
+      screen.getByText('projectManage.projectList.column.deleteProjectTips')
     ).toBeInTheDocument();
 
     expect(screen.queryAllByText('common.edit')[1]).not.toHaveClass(
@@ -470,9 +459,7 @@ describe('test ProjectManage/ProjectList', () => {
       screen.queryAllByText('projectManage.projectList.column.unarchive')[0]
     );
     expect(
-      screen.queryByText(
-        'projectManage.projectList.column.unarchiveProjectTips'
-      )
+      screen.getByText('projectManage.projectList.column.unarchiveProjectTips')
     ).toBeInTheDocument();
 
     expect(
@@ -482,39 +469,39 @@ describe('test ProjectManage/ProjectList', () => {
       screen.queryAllByText('projectManage.projectList.column.archive')[0]
     );
     expect(
-      screen.queryByText('projectManage.projectList.column.archiveProjectTips')
+      screen.getByText('projectManage.projectList.column.archiveProjectTips')
     ).toBeInTheDocument();
 
     cleanup();
     jest.clearAllMocks();
 
-    mockUseSelector({
-      projectManage: {
-        modalStatus: {
-          [ModalName.Create_Project]: false,
-          [ModalName.Update_Project]: false,
+    useSelectorMock.mockImplementation((e) =>
+      e({
+        projectManage: {
+          modalStatus: {
+            [ModalName.Create_Project]: false,
+            [ModalName.Update_Project]: false,
+          },
         },
-      },
-      user: {
-        role: '',
-        bindProjects: [
-          { project_name: 'project1', is_manager: true },
-          { project_name: 'project2', is_manager: true },
-        ],
-        managementPermissions: [],
-      },
-    });
+        user: {
+          role: '',
+          bindProjects: [
+            { project_name: 'project1', is_manager: true },
+            { project_name: 'project2', is_manager: true },
+          ],
+          managementPermissions: [],
+        },
+      })
+    );
     renderWithRouter(<ProjectList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.queryAllByText('common.delete')[0]).not.toHaveClass(
       'ant-typography-disabled'
     );
     fireEvent.click(screen.queryAllByText('common.delete')[0]);
     expect(
-      screen.queryByText('projectManage.projectList.column.deleteProjectTips')
+      screen.getByText('projectManage.projectList.column.deleteProjectTips')
     ).toBeInTheDocument();
 
     expect(screen.queryAllByText('common.edit')[1]).not.toHaveClass(
@@ -532,9 +519,7 @@ describe('test ProjectManage/ProjectList', () => {
       screen.queryAllByText('projectManage.projectList.column.unarchive')[0]
     );
     expect(
-      screen.queryByText(
-        'projectManage.projectList.column.unarchiveProjectTips'
-      )
+      screen.getByText('projectManage.projectList.column.unarchiveProjectTips')
     ).toBeInTheDocument();
 
     expect(
@@ -544,7 +529,7 @@ describe('test ProjectManage/ProjectList', () => {
       screen.queryAllByText('projectManage.projectList.column.archive')[0]
     );
     expect(
-      screen.queryByText('projectManage.projectList.column.archiveProjectTips')
+      screen.getByText('projectManage.projectList.column.archiveProjectTips')
     ).toBeInTheDocument();
 
     cleanup();
@@ -558,9 +543,7 @@ describe('test ProjectManage/ProjectList', () => {
     expect(emitSpy).toBeCalledTimes(0);
     expect(localStorageSetItemSpy).toBeCalledTimes(0);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByText('project1'));
 
@@ -577,24 +560,24 @@ describe('test ProjectManage/ProjectList', () => {
   });
 
   test('should disabled the Edit feature when project is archive', async () => {
-    mockUseSelector({
-      projectManage: {
-        modalStatus: {
-          [ModalName.Create_Project]: false,
-          [ModalName.Update_Project]: false,
+    useSelectorMock.mockImplementation((e) =>
+      e({
+        projectManage: {
+          modalStatus: {
+            [ModalName.Create_Project]: false,
+            [ModalName.Update_Project]: false,
+          },
         },
-      },
-      user: {
-        role: SystemRole.admin,
-        bindProjects: [{ project_name: 'project1', is_manager: true }],
-        managementPermissions: [],
-      },
-    });
-    renderWithRouter(<ProjectList />);
+        user: {
+          role: SystemRole.admin,
+          bindProjects: [{ project_name: 'project1', is_manager: true }],
+          managementPermissions: [],
+        },
+      })
+    );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    renderWithRouter(<ProjectList />);
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.queryAllByText('common.edit')[0]).toHaveClass(
       'ant-typography-disabled'

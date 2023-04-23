@@ -1,7 +1,6 @@
 import { useBoolean } from 'ahooks';
 import { Button, Card, Modal, Result } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import audit_plan from '../../../api/audit_plan';
 import BackButton from '../../../components/BackButton';
 import { ResponseCode } from '../../../data/common';
@@ -10,6 +9,7 @@ import EventEmitter from '../../../utils/EventEmitter';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import PlanForm from '../PlanForm';
 import { PlanFormField } from '../PlanForm/index.type';
+import { Link } from '../../../components/Link';
 
 const CreateAuditPlan = () => {
   const { t } = useTranslation();
@@ -52,13 +52,13 @@ const CreateAuditPlan = () => {
         title={t('common.operateSuccess')}
         footer={null}
         closable={false}
-        visible={visible}
+        open={visible}
       >
         <Result
           status="success"
           title={t('auditPlan.create.successTitle')}
           subTitle={
-            <Link to={`/project/${projectName}/auditPlan`}>
+            <Link to={`project/${projectName}/auditPlan`}>
               {t('auditPlan.create.successGuide')} {'>'}
             </Link>
           }

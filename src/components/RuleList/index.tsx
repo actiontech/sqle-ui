@@ -1,4 +1,4 @@
-import { Col, List, Tabs, Tooltip, Typography } from 'antd';
+import { Col, List, Tabs, TabsProps, Tooltip, Typography } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RuleListDefaultTabKey } from '../../data/common';
@@ -50,6 +50,52 @@ const RuleList: React.FC<RuleListProps> = (props) => {
     setTabRules(values);
   };
 
+  const tabItems: TabsProps['items'] = tabRules.map((tab) => {
+    return {
+      key: tab.tabTitle,
+      label: tab.tabTitle,
+      children: (
+        <List
+          className="rule-list-namespace"
+          itemLayout="horizontal"
+          dataSource={tab.rules}
+          locale={{
+            emptyText: t('ruleTemplate.ruleTemplateForm.emptyRule'),
+          }}
+          {...props.listProps}
+          renderItem={(item) => (
+            <List.Item actions={props.actions?.(item)}>
+              <List.Item.Meta
+                avatar={<RuleLevelIcon ruleLevel={item.level} />}
+                title={item.desc}
+                description={
+                  <Tooltip title={item.annotation}>
+                    <Typography.Text
+                      ellipsis={true}
+                      type="secondary"
+                      style={{ maxWidth: 500 }}
+                    >
+                      {item.annotation}
+                    </Typography.Text>
+                  </Tooltip>
+                }
+              />
+              <Col flex="20%">
+                {item.params &&
+                  item.params.map((v) => (
+                    <div key={v.key}>
+                      <span>{!!v.desc ? `${v.desc}: ` : ''}</span>
+                      <span>{v.value ?? ''}</span>
+                    </div>
+                  ))}
+              </Col>
+            </List.Item>
+          )}
+        />
+      ),
+    };
+  });
+
   useEffect(() => {
     generateTabRule();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -61,53 +107,7 @@ const RuleList: React.FC<RuleListProps> = (props) => {
     }
   }, [props.currentTab]);
 
-  return (
-    <Tabs activeKey={currentTab} onChange={tabChange}>
-      {tabRules.map((tab) => {
-        return (
-          <Tabs.TabPane tab={tab.tabTitle} key={tab.tabTitle}>
-            <List
-              className="rule-list-namespace"
-              itemLayout="horizontal"
-              dataSource={tab.rules}
-              locale={{
-                emptyText: t('ruleTemplate.ruleTemplateForm.emptyRule'),
-              }}
-              {...props.listProps}
-              renderItem={(item) => (
-                <List.Item actions={props.actions?.(item)}>
-                  <List.Item.Meta
-                    avatar={<RuleLevelIcon ruleLevel={item.level} />}
-                    title={item.desc}
-                    description={
-                      <Tooltip title={item.annotation}>
-                        <Typography.Text
-                          ellipsis={true}
-                          type="secondary"
-                          style={{ maxWidth: 500, width: '100%' }}
-                        >
-                          {item.annotation}
-                        </Typography.Text>
-                      </Tooltip>
-                    }
-                  />
-                  <Col flex="20%">
-                    {item.params &&
-                      item.params.map((v) => (
-                        <div key={v.key}>
-                          <span>{!!v.desc ? `${v.desc}: ` : ''}</span>
-                          <span>{v.value ?? ''}</span>
-                        </div>
-                      ))}
-                  </Col>
-                </List.Item>
-              )}
-            />
-          </Tabs.TabPane>
-        );
-      })}
-    </Tabs>
-  );
+  return <Tabs activeKey={currentTab} onChange={tabChange} items={tabItems} />;
 };
 
 export default RuleList;

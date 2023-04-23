@@ -29,6 +29,7 @@ exports[`test Account/UserPhone should render phone by userInfo of props 1`] = `
               aria-label="edit"
               class="anticon anticon-edit"
               role="img"
+              tabindex="-1"
             >
               <svg
                 aria-hidden="true"
@@ -119,6 +120,7 @@ exports[`test Account/UserPhone should render phone by userInfo of props 2`] = `
               aria-label="edit"
               class="anticon anticon-edit"
               role="img"
+              tabindex="-1"
             >
               <svg
                 aria-hidden="true"

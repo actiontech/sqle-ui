@@ -1,4 +1,4 @@
-import { Tabs } from 'antd';
+import { Tabs, TabsProps } from 'antd';
 import {
   forwardRef,
   useCallback,
@@ -28,6 +28,14 @@ const SqlStatementFormTabs: React.ForwardRefRenderFunction<
     [onChange]
   );
 
+  const tabItems: TabsProps['items'] = sqlStatementInfo.map((v) => ({
+    label: v.instanceName,
+    key: v.key,
+    children: (
+      <SqlStatementForm fieldName={v.key} sqlStatement={v.sql} {...props} />
+    ),
+  }));
+
   useImperativeHandle(
     ref,
     () => ({ activeKey, activeIndex, tabsChangeHandle }),
@@ -42,8 +50,12 @@ const SqlStatementFormTabs: React.ForwardRefRenderFunction<
 
   return (
     <>
-      <Tabs activeKey={activeKey} onChange={tabsChangeHandle}>
-        {sqlStatementInfo.map((v) => {
+      <Tabs
+        activeKey={activeKey}
+        onChange={tabsChangeHandle}
+        items={tabItems}
+      />
+      {/* {sqlStatementInfo.map((v) => {
           return (
             <Tabs.TabPane key={v.key} tab={v.instanceName}>
               <SqlStatementForm
@@ -53,8 +65,7 @@ const SqlStatementFormTabs: React.ForwardRefRenderFunction<
               />
             </Tabs.TabPane>
           );
-        })}
-      </Tabs>
+        })} */}
     </>
   );
 };

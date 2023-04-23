@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor, screen } from '@testing-library/react';
+import { fireEvent, render, act, screen } from '@testing-library/react';
 import GlobalConfig from '.';
 import configuration from '../../../api/configuration';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
@@ -35,9 +35,8 @@ describe('System/GlobalConfig', () => {
     mockGetGlobalConfig();
     const { container } = render(<GlobalConfig />);
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -46,9 +45,8 @@ describe('System/GlobalConfig', () => {
     const updateSpy = mockUpdateGlobalConfig();
 
     render(<GlobalConfig />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('common.modify'));
     fireEvent.input(
       screen.getByLabelText(
@@ -64,9 +62,7 @@ describe('System/GlobalConfig', () => {
     });
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
@@ -79,9 +75,8 @@ describe('System/GlobalConfig', () => {
     expect(screen.getByText('common.cancel').parentNode).toHaveAttribute(
       'disabled'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByText('common.submit').parentNode).not.toHaveClass(
       'ant-btn-loading'
     );

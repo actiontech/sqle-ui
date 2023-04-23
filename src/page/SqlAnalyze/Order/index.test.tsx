@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import OrderSqlAnalyze from '.';
 import task from '../../../api/task';
@@ -7,6 +7,7 @@ import {
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
 import { AuditPlanSqlAnalyzeData } from '../__testData__';
+import { getAllBySelector } from '../../../testUtils/customQuery';
 
 jest.mock('react-router', () => {
   return {
@@ -66,14 +67,12 @@ describe('SqlAnalyze/Order', () => {
       number: 123,
     });
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    fireEvent.click(container.querySelectorAll('.ant-tabs-tab-btn')[1]);
-    fireEvent.click(container.querySelectorAll('.ant-tabs-tab-btn')[2]);
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    fireEvent.click(getAllBySelector('.ant-tabs-tab-btn')[1]);
+    fireEvent.click(getAllBySelector('.ant-tabs-tab-btn')[2]);
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -87,9 +86,8 @@ describe('SqlAnalyze/Order', () => {
       })
     );
     const { container } = render(<OrderSqlAnalyze />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 });

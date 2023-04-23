@@ -4,7 +4,7 @@ import {
   IAuditResult,
 } from '../../../../../api/common';
 import AuditResultErrorMessage from '../../../../../components/AuditResultErrorMessage';
-import i18n from '../../../../../locale';
+import { t } from '../../../../../locale';
 import { TableColumn } from '../../../../../types/common.type';
 import HighlightCode from '../../../../../utils/HighlightCode';
 
@@ -14,7 +14,7 @@ export const AuditPlanReportTableHeader = (
   return [
     {
       dataIndex: 'audit_plan_report_sql',
-      title: () => i18n.t('auditPlan.report.table.sql'),
+      title: () => t('auditPlan.report.table.sql'),
       render: (sql) => {
         if (!!sql) {
           return (
@@ -31,7 +31,7 @@ export const AuditPlanReportTableHeader = (
     },
     {
       dataIndex: 'audit_plan_report_sql_audit_result',
-      title: () => i18n.t('auditPlan.report.table.result'),
+      title: () => t('auditPlan.report.table.result'),
       render: (result: IAuditResult[]) => {
         return <AuditResultErrorMessage auditResult={result} />;
       },
@@ -39,12 +39,12 @@ export const AuditPlanReportTableHeader = (
     /* IFTRUE_isEE */
     {
       dataIndex: 'operator',
-      title: () => i18n.t('common.operate'),
+      title: () => t('common.operate'),
       width: 75,
       render: (_, record) => {
         return (
           <Typography.Link onClick={() => clickAnalyze(record.number ?? 0)}>
-            {i18n.t('auditPlan.report.table.analyze')}
+            {t('auditPlan.report.table.analyze')}
           </Typography.Link>
         );
       },

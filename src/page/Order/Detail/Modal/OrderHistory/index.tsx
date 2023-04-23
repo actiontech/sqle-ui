@@ -10,7 +10,7 @@ const OrderHistory: React.FC<OrderHistoryProps> = (props) => {
 
   return (
     <Modal
-      visible={props.visible}
+      open={props.visible}
       width={ModalSize.mid}
       title={t('order.history.title')}
       footer={

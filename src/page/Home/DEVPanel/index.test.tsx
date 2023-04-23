@@ -1,16 +1,13 @@
-import { cleanup, fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, cleanup, fireEvent, screen } from '@testing-library/react';
 import workflow from '../../../api/workflow';
 import { getGlobalWorkflowsV1FilterStatusEnum } from '../../../api/workflow/index.enum';
-import {
-  renderWithRouter,
-  renderWithServerRouter,
-} from '../../../testUtils/customRender';
-import { mockUseSelector } from '../../../testUtils/mockRedux';
+import { renderWithRouter } from '../../../testUtils/customRender';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import { DASHBOARD_COMMON_GET_ORDER_NUMBER } from '../CommonTable';
 import DEVPanel from './index';
-import { createMemoryHistory } from 'history';
+
 import { ALL_PROJECT_NAME } from '..';
+import { useSelector } from 'react-redux';
 
 const resList = [
   {
@@ -25,6 +22,13 @@ const resList = [
     workflow_id: '1',
   },
 ];
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+  };
+});
 
 describe('test home/DEVPanel', () => {
   const mockRequest = () => {
@@ -41,7 +45,11 @@ describe('test home/DEVPanel', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     getMockRequestSpy = mockRequest();
-    mockUseSelector({ user: { username } });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { username },
+      })
+    );
   });
 
   afterEach(() => {
@@ -69,9 +77,8 @@ describe('test home/DEVPanel', () => {
         projectName={projectName}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getMockRequestSpy).toBeCalledTimes(3);
   });
 
@@ -82,9 +89,7 @@ describe('test home/DEVPanel', () => {
         projectName={projectName}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.getByText('dashboard.myOrderSituation.pendingReviewByMe')
@@ -115,19 +120,15 @@ describe('test home/DEVPanel', () => {
   });
 
   test('should be execute correspond event on the current tab', async () => {
-    const history = createMemoryHistory();
     expect(getMockRequestSpy).toBeCalledTimes(0);
-    renderWithServerRouter(
+    renderWithRouter(
       <DEVPanel
         getWorkflowStatistics={mockGetWorkflowStatistics}
         projectName={projectName}
-      />,
-      undefined,
-      { history }
+      />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getMockRequestSpy).toBeCalledTimes(3);
     expect(mockGetWorkflowStatistics).toBeCalledTimes(0);
 
@@ -137,9 +138,8 @@ describe('test home/DEVPanel', () => {
     ).toHaveClass('ant-tabs-tab-active');
 
     fireEvent.click(screen.getByTestId('refreshTable'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(mockGetWorkflowStatistics).toBeCalledTimes(1);
     expect(getMockRequestSpy).toBeCalledTimes(6);
     expect(getMockRequestSpy.mock.calls[3][0]).toEqual({
@@ -168,9 +168,8 @@ describe('test home/DEVPanel', () => {
       screen.getByText('dashboard.myOrderSituation.pendingExecByMe')
     );
     fireEvent.click(screen.getByTestId('refreshTable'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getMockRequestSpy).toBeCalledTimes(9);
     expect(mockGetWorkflowStatistics).toBeCalledTimes(2);
 
@@ -178,9 +177,8 @@ describe('test home/DEVPanel', () => {
       screen.getByText('dashboard.myOrderSituation.rejectedOrderByMe')
     );
     fireEvent.click(screen.getByTestId('refreshTable'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getMockRequestSpy).toBeCalledTimes(12);
     expect(mockGetWorkflowStatistics).toBeCalledTimes(3);
   });
@@ -196,9 +194,8 @@ describe('test home/DEVPanel', () => {
       />
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getMockRequestSpy).toBeCalledTimes(3);
     expect(getMockRequestSpy).toBeCalledWith({
       filter_create_user_name: 'admin',
@@ -223,9 +220,8 @@ describe('test home/DEVPanel', () => {
     });
 
     fireEvent.click(screen.getByTestId('refreshTable'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getMockRequestSpy).toBeCalledTimes(6);
   });
 });

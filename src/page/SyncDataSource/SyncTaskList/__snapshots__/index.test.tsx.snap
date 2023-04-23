@@ -27,7 +27,7 @@ exports[`test SyncTaskList should be called request to get data for the render t
               class="ant-space-item"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 data-testid="refreshTable"
                 type="button"
               >
@@ -79,8 +79,32 @@ exports[`test SyncTaskList should be called request to get data for the render t
         <div
           class="ant-spin-nested-loading"
         >
+          <div>
+            <div
+              aria-busy="true"
+              aria-live="polite"
+              class="ant-spin ant-spin-spinning"
+            >
+              <span
+                class="ant-spin-dot ant-spin-dot-spin"
+              >
+                <i
+                  class="ant-spin-dot-item"
+                />
+                <i
+                  class="ant-spin-dot-item"
+                />
+                <i
+                  class="ant-spin-dot-item"
+                />
+                <i
+                  class="ant-spin-dot-item"
+                />
+              </span>
+            </div>
+          </div>
           <div
-            class="ant-spin-container"
+            class="ant-spin-container ant-spin-blur"
           >
             <div
               class="ant-table"
@@ -359,7 +383,7 @@ exports[`test SyncTaskList should match snapshot 1`] = `
               class="ant-space-item"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 data-testid="refreshTable"
                 type="button"
               >
@@ -413,6 +437,8 @@ exports[`test SyncTaskList should match snapshot 1`] = `
         >
           <div>
             <div
+              aria-busy="true"
+              aria-live="polite"
               class="ant-spin ant-spin-spinning"
             >
               <span
@@ -553,7 +579,7 @@ exports[`test SyncTaskList should match snapshot 1`] = `
                             <div
                               class="ant-empty-description"
                             >
-                              No Data
+                              No data
                             </div>
                           </div>
                         </td>

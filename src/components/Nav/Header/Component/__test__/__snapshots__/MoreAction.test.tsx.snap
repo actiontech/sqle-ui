@@ -30,7 +30,7 @@ exports[`test Nav/Header/MoreAction should match snapshot 1`] = `
     <div>
       <div
         class="ant-dropdown"
-        style="opacity: 0; pointer-events: none;"
+        style="opacity: 0;"
       >
         <ul
           class="ant-dropdown-menu ant-dropdown-menu-root ant-dropdown-menu-vertical ant-dropdown-menu-light"
@@ -40,7 +40,6 @@ exports[`test Nav/Header/MoreAction should match snapshot 1`] = `
         >
           <li
             class="ant-dropdown-menu-item ant-dropdown-menu-item-only-child"
-            data-menu-id="rc-menu-uuid-test-version"
             role="menuitem"
             tabindex="-1"
           >
@@ -54,8 +53,7 @@ exports[`test Nav/Header/MoreAction should match snapshot 1`] = `
             class="ant-dropdown-menu-item-divider"
           />
           <li
-            class="ant-dropdown-menu-item ant-dropdown-menu-item-active ant-dropdown-menu-item-only-child"
-            data-menu-id="rc-menu-uuid-test-undefined"
+            class="ant-dropdown-menu-item ant-dropdown-menu-item-only-child"
             role="menuitem"
             tabindex="-1"
           >
@@ -70,19 +68,21 @@ exports[`test Nav/Header/MoreAction should match snapshot 1`] = `
           />
           <li
             class="ant-dropdown-menu-item-group"
+            role="presentation"
           >
             <div
               class="ant-dropdown-menu-item-group-title"
+              role="presentation"
               title="menu.platformManage"
             >
               menu.platformManage
             </div>
             <ul
               class="ant-dropdown-menu-item-group-list"
+              role="group"
             >
               <li
                 class="ant-dropdown-menu-item ant-dropdown-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-userCenter"
                 role="menuitem"
                 tabindex="-1"
               >
@@ -94,7 +94,6 @@ exports[`test Nav/Header/MoreAction should match snapshot 1`] = `
               </li>
               <li
                 class="ant-dropdown-menu-item ant-dropdown-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-ruleTemplate"
                 role="menuitem"
                 tabindex="-1"
               >
@@ -106,7 +105,6 @@ exports[`test Nav/Header/MoreAction should match snapshot 1`] = `
               </li>
               <li
                 class="ant-dropdown-menu-item ant-dropdown-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-syncDataSource"
                 role="menuitem"
                 tabindex="-1"
               >
@@ -118,7 +116,6 @@ exports[`test Nav/Header/MoreAction should match snapshot 1`] = `
               </li>
               <li
                 class="ant-dropdown-menu-item ant-dropdown-menu-item-only-child"
-                data-menu-id="rc-menu-uuid-test-systemSetting"
                 role="menuitem"
                 tabindex="-1"
               >
@@ -171,7 +168,7 @@ exports[`test Nav/Header/MoreAction should match snapshot 2`] = `
     <div>
       <div
         class="ant-dropdown"
-        style="opacity: 0; pointer-events: none;"
+        style="opacity: 0;"
       >
         <ul
           class="ant-dropdown-menu ant-dropdown-menu-root ant-dropdown-menu-vertical ant-dropdown-menu-light"

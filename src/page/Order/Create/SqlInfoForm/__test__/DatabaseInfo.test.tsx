@@ -1,5 +1,4 @@
-import { fireEvent, screen, waitFor } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks/dom';
+import { act, fireEvent, screen } from '@testing-library/react';
 import Form, { useForm } from 'antd/lib/form/Form';
 import { getInstanceTipListV1FunctionalModuleEnum } from '../../../../../api/instance/index.enum';
 import { renderWithRouter } from '../../../../../testUtils/customRender';
@@ -10,6 +9,7 @@ import {
 } from '../../../../../testUtils/mockRequest';
 import { RuleUrlParamKey } from '../../../../Rule/useRuleFilterForm';
 import DatabaseInfo from '../DatabaseInfo';
+import { renderHook } from '@testing-library/react-hooks';
 import { mockGetInstance } from './index.test';
 
 const selectOptionByIndex = (
@@ -71,9 +71,7 @@ describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
   test('should match snapshot', async () => {
     const { container } = renderComponent();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
   });
@@ -97,9 +95,7 @@ describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
         getInstanceTipListV1FunctionalModuleEnum.create_workflow,
     });
     expect(getInstanceSchemaSpy).toBeCalledTimes(0);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.queryAllByLabelText('order.sqlInfo.instanceName').length
@@ -113,9 +109,7 @@ describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
     expect(screen.queryByTestId('remove-item')).not.toBeInTheDocument();
 
     selectOptionByIndex('order.sqlInfo.instanceName', 'mysql-test');
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(setInstanceNames).toBeCalledTimes(1);
     expect(setInstanceNames.mock.calls[0][0](new Map([[0, '']]))).toEqual(
@@ -144,9 +138,7 @@ describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
       screen.queryAllByLabelText('order.sqlInfo.instanceSchema')[0]
     ).not.toBeDisabled();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.getByText('rule.form.ruleTemplate: not_submit_test_rule33')
@@ -159,9 +151,7 @@ describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
     ).toBe(`/rule?${RuleUrlParamKey.ruleTemplateName}=not_submit_test_rule33`);
 
     selectOptionByIndex('order.sqlInfo.instanceSchema', 'schema1');
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     //add
     fireEvent.click(screen.getByText('order.sqlInfo.addInstance'));
@@ -182,15 +172,12 @@ describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
     expect(
       screen.queryAllByLabelText('order.sqlInfo.instanceSchema').length
     ).toBe(2);
-    expect(screen.queryByTestId('remove-item')).toBeInTheDocument();
+    expect(screen.getByTestId('remove-item')).toBeInTheDocument();
 
     selectOptionByIndex('order.sqlInfo.instanceName', 'mysql-test', 4, 1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(setInstanceNames).toBeCalledTimes(3);
     expect(
@@ -274,12 +261,9 @@ describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
     );
 
     selectOptionByIndex('order.sqlInfo.instanceName', 'oracle-test', 1, 1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(setInstanceNames).toBeCalledTimes(6);
     expect(
@@ -352,18 +336,14 @@ describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
 
     renderComponent();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     selectOptionByIndex('order.sqlInfo.instanceName', 'mysql-test');
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(getInstanceSpy).toBeCalled();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.getByText('rule.form.ruleTemplate: default_rule_template')
     ).toBeInTheDocument();

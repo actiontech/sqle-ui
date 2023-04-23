@@ -1,15 +1,21 @@
 /* eslint-disable no-console */
-import { act, fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, screen } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import Form, { useForm } from 'antd/lib/form/Form';
 import { SqlStatementForm } from '..';
 import { getBySelector } from '../../../../testUtils/customQuery';
 import { renderWithTheme } from '../../../../testUtils/customRender';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../testUtils/mockRedux';
+
 import { SupportTheme } from '../../../../theme';
+import { useDispatch, useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('test Order/SqlStatementForm', () => {
   let tempWarnConsole: typeof console.warn;
@@ -29,8 +35,12 @@ describe('test Order/SqlStatementForm', () => {
   });
 
   beforeEach(() => {
-    mockUseDispatch();
-    mockUseSelector({ user: { theme: SupportTheme.LIGHT } });
+    (useDispatch as jest.Mock).mockImplementation(() => jest.fn());
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { theme: SupportTheme.LIGHT },
+      })
+    );
     jest.useFakeTimers();
   });
 
@@ -49,7 +59,7 @@ describe('test Order/SqlStatementForm', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('should render corresponding form items with current input type', () => {
+  test('should render corresponding form items with current input type', async () => {
     const { result } = renderHook(() => useForm());
 
     renderWithTheme(
@@ -69,8 +79,8 @@ describe('test Order/SqlStatementForm', () => {
     fireEvent.change(screen.getByLabelText('order.sqlInfo.sql'), {
       target: { value: 'select (1)' },
     });
-
-    expect(screen.queryByLabelText('order.sqlInfo.sql')).toBeInTheDocument();
+    await act(async () => jest.advanceTimersByTime(0));
+    expect(screen.getByLabelText('order.sqlInfo.sql')).toBeInTheDocument();
     expect(
       screen.queryByLabelText('order.sqlInfo.sqlFile')
     ).not.toBeInTheDocument();
@@ -82,9 +92,7 @@ describe('test Order/SqlStatementForm', () => {
     expect(
       screen.queryByLabelText('order.sqlInfo.sql')
     ).not.toBeInTheDocument();
-    expect(
-      screen.queryByLabelText('order.sqlInfo.sqlFile')
-    ).toBeInTheDocument();
+    expect(screen.getByLabelText('order.sqlInfo.sqlFile')).toBeInTheDocument();
     expect(
       screen.queryByLabelText('order.sqlInfo.mybatisFile')
     ).not.toBeInTheDocument();
@@ -97,7 +105,7 @@ describe('test Order/SqlStatementForm', () => {
       screen.queryByLabelText('order.sqlInfo.sqlFile')
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByLabelText('order.sqlInfo.mybatisFile')
+      screen.getByLabelText('order.sqlInfo.mybatisFile')
     ).toBeInTheDocument();
 
     fireEvent.click(screen.getByLabelText('order.sqlInfo.manualInput'));
@@ -106,7 +114,7 @@ describe('test Order/SqlStatementForm', () => {
     );
   });
 
-  test('should remove form value when isClearFormWhenChangeSqlType is equal true and change current sql input', () => {
+  test('should remove form value when isClearFormWhenChangeSqlType is equal true and change current sql input', async () => {
     const { result } = renderHook(() => useForm());
     renderWithTheme(
       <Form form={result.current[0]}>
@@ -122,6 +130,7 @@ describe('test Order/SqlStatementForm', () => {
     fireEvent.change(screen.getByLabelText('order.sqlInfo.sql'), {
       target: { value: 'select (1)' },
     });
+    await act(async () => jest.advanceTimersByTime(0));
     fireEvent.click(screen.getByLabelText('order.sqlInfo.uploadFile'));
     fireEvent.click(screen.getByLabelText('order.sqlInfo.manualInput'));
     expect(screen.queryByLabelText('order.sqlInfo.sql')).toHaveValue(
@@ -149,17 +158,13 @@ describe('test Order/SqlStatementForm', () => {
       target: { files: [sqlFile] },
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    expect(screen.queryByText('test.sql')).toBeInTheDocument();
+    await act(async () => jest.advanceTimersByTime(0));
 
-    act(() => {
-      fireEvent.click(getBySelector('button[title="Remove file"]'));
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    expect(screen.getByText('test.sql')).toBeInTheDocument();
+
+    fireEvent.click(getBySelector('button[title="Remove file"]'));
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.queryByText('test.sql')).not.toBeInTheDocument();
   });
 

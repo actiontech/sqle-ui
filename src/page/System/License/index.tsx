@@ -7,7 +7,7 @@ import { ILicenseItem } from '../../../api/common';
 import configuration from '../../../api/configuration';
 import EmitterKey from '../../../data/EmitterKey';
 import { ModalName } from '../../../data/ModalName';
-import i18n from '../../../locale';
+import { t } from '../../../locale';
 import { updateSystemModalStatus } from '../../../store/system';
 import { TableColumn } from '../../../types/common.type';
 import EventEmitter from '../../../utils/EventEmitter';
@@ -16,11 +16,11 @@ import ImportLicense from './Modal/ImportLicense';
 export const licenseColumn: TableColumn<ILicenseItem, 'operator'> = [
   {
     dataIndex: 'description',
-    title: i18n.t('system.license.table.name'),
+    title: t('system.license.table.name'),
   },
   {
     dataIndex: 'limit',
-    title: i18n.t('system.license.table.limit'),
+    title: t('system.license.table.limit'),
     render: (text) => {
       return (
         <span

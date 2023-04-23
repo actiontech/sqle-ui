@@ -157,7 +157,6 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
           expandedRowRender,
           rowExpandable: (record) =>
             !!record.audit_result && record.audit_result.length > 1,
-          expandIconColumnIndex: 3,
           expandIcon: ({ expanded, onExpand, record }) =>
             !!record.audit_result && record.audit_result.length > 1 ? (
               expanded ? (

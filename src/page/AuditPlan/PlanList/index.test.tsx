@@ -1,17 +1,15 @@
 /* eslint-disable no-console */
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, screen } from '@testing-library/react';
 import { useLocation, useParams } from 'react-router-dom';
 import PlanList from '.';
 import audit_plan from '../../../api/audit_plan';
 import {
   getBySelector,
+  getHrefByText,
   selectOptionByIndex,
 } from '../../../testUtils/customQuery';
-import {
-  renderWithRouter,
-  renderWithServerRouter,
-} from '../../../testUtils/customRender';
-import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
+import { renderWithRouter } from '../../../testUtils/customRender';
+
 import {
   mockDriver,
   mockUseAuditPlanTypes,
@@ -20,17 +18,24 @@ import {
 } from '../../../testUtils/mockRequest';
 import { mockUseStyle } from '../../../testUtils/mockStyle';
 import { AuditPlanList } from './__testData__';
-import { createMemoryHistory } from 'history';
+import { useDispatch, useSelector } from 'react-redux';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useLocation: jest.fn(),
   useParams: jest.fn(),
 }));
+
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux'),
+  useDispatch: jest.fn(),
+  useSelector: jest.fn(),
+}));
+
 const projectName = 'default';
 
 describe('PlanList', () => {
-  let dispatchSpy!: jest.SpyInstance;
+  let dispatchSpy = jest.fn();
   const useLocationMock: jest.Mock = useLocation as jest.Mock;
   const useParamsMock: jest.Mock = useParams as jest.Mock;
 
@@ -55,16 +60,19 @@ describe('PlanList', () => {
     mockUseInstance();
     mockDriver();
     mockUseAuditPlanTypes();
-    dispatchSpy = mockUseDispatch().scopeDispatch;
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
+    (useSelector as jest.Mock).mockImplementation((selector) =>
+      selector({
+        auditPlan: {
+          modalStatus: {},
+          selectAuditPlan: null,
+        },
+        user: {},
+        projectManage: { archived: false },
+      })
+    );
     mockUseStyle();
-    mockUseSelector({
-      auditPlan: {
-        modalStatus: {},
-        selectAuditPlan: null,
-      },
-      user: {},
-      projectManage: { archived: false },
-    });
+
     useParamsMock.mockReturnValue({ projectName });
     useLocationMock.mockReturnValue({
       pathname: '/auditPlan',
@@ -101,9 +109,8 @@ describe('PlanList', () => {
   test('should match snapshot', async () => {
     const { container } = renderWithRouter(<PlanList />);
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(dispatchSpy).toBeCalledTimes(1);
     expect(dispatchSpy).toBeCalledWith({
       payload: {
@@ -118,9 +125,8 @@ describe('PlanList', () => {
 
     fireEvent.click(screen.getAllByText('common.more')[0]);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -129,31 +135,26 @@ describe('PlanList', () => {
     const deleteSpy = mockRemoveAuditPlan();
     renderWithRouter(<PlanList />);
     expect(getAuditPlanSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getAllByText('common.more')[0]);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     const allRemoveButton = screen.getAllByText('common.delete');
     fireEvent.click(allRemoveButton[0]);
-    expect(screen.queryByText('auditPlan.remove.confirm')).toBeInTheDocument();
+    expect(screen.getByText('auditPlan.remove.confirm')).toBeInTheDocument();
     fireEvent.click(screen.getByText('OK'));
-    expect(screen.queryByText('auditPlan.remove.loading')).toBeInTheDocument();
+    expect(screen.getByText('auditPlan.remove.loading')).toBeInTheDocument();
     expect(deleteSpy).toBeCalledTimes(1);
     expect(deleteSpy).toBeCalledWith({
       project_name: projectName,
       audit_plan_name: AuditPlanList[0].audit_plan_name,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText('auditPlan.remove.successTips')
+      screen.getByText('auditPlan.remove.successTips')
     ).toBeInTheDocument();
     expect(getAuditPlanSpy).toBeCalledTimes(2);
   });
@@ -162,15 +163,11 @@ describe('PlanList', () => {
     const getAuditPlanSpy = mockGetAuditPlan();
     renderWithRouter(<PlanList />);
     expect(getAuditPlanSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getAllByText('common.more')[0]);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     fireEvent.click(screen.getByText('auditPlan.list.operator.notice'));
 
@@ -212,9 +209,7 @@ describe('PlanList', () => {
       page_index: 1,
       page_size: 10,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.input(
       screen.getByLabelText('auditPlan.list.table.audit_plan_name'),
@@ -237,9 +232,7 @@ describe('PlanList', () => {
 
     fireEvent.click(screen.getByText('common.search'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(getAuditPlanSpy).toBeCalledTimes(2);
     expect(getAuditPlanSpy).nthCalledWith(2, {
@@ -252,15 +245,11 @@ describe('PlanList', () => {
       project_name: projectName,
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByText('common.reset'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(getAuditPlanSpy).toBeCalledTimes(3);
     expect(getAuditPlanSpy).nthCalledWith(3, {
@@ -280,9 +269,8 @@ describe('PlanList', () => {
       key: '5nvxpbdafa',
     });
     renderWithRouter(<PlanList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(100);
-    });
+    await act(async () => jest.advanceTimersByTime(100));
+
     expect(getAuditPlanSpy).toBeCalledTimes(1);
     expect(getAuditPlanSpy).toBeCalledWith({
       project_name: projectName,
@@ -311,9 +299,8 @@ describe('PlanList', () => {
       page_size: 10,
       project_name: projectName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(getBySelector('.ant-pagination-next'));
     expect(getAuditPlanSpy).nthCalledWith(2, {
       page_index: 2,
@@ -330,38 +317,31 @@ describe('PlanList', () => {
   });
 
   test('should render rule link when rule template name is not empty', async () => {
-    let history = createMemoryHistory();
-    renderWithServerRouter(<PlanList />, undefined, { history });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    fireEvent.click(screen.getByText(AuditPlanList[0].rule_template?.name!));
-    expect(history.location.pathname).toBe('/rule');
-    expect(history.location.search).toBe(
-      '?ruleTemplateName=rule_template_name1'
-    );
+    renderWithRouter(<PlanList />);
 
-    fireEvent.click(screen.getByText(AuditPlanList[1].rule_template?.name!));
-    expect(history.location.pathname).toBe('/rule');
-    expect(history.location.search).toBe(
-      '?projectName=default&ruleTemplateName=rule_template_name2'
+    await act(async () => jest.advanceTimersByTime(3000));
+    expect(getHrefByText(AuditPlanList[0].rule_template?.name!)).toBe(
+      '/rule?ruleTemplateName=rule_template_name1'
+    );
+    expect(getHrefByText(AuditPlanList[1].rule_template?.name!)).toBe(
+      '/rule?projectName=default&ruleTemplateName=rule_template_name2'
     );
   });
 
   test('should hide the Add, Edit feature when project is archived', async () => {
-    mockUseSelector({
-      projectManage: { archived: true },
-      user: {},
-      auditPlan: {
-        modalStatus: {},
-        selectAuditPlan: null,
-      },
-    });
+    (useSelector as jest.Mock).mockImplementation((selector) =>
+      selector({
+        projectManage: { archived: true },
+        user: {},
+        auditPlan: {
+          modalStatus: {},
+          selectAuditPlan: null,
+        },
+      })
+    );
 
     renderWithRouter(<PlanList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.queryAllByText('common.delete')[0]).toBeUndefined();
     expect(screen.queryAllByText('common.edit')[0]).toBeUndefined();

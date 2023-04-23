@@ -2,7 +2,7 @@ import { Button, Card, Result, Row } from 'antd';
 import { AxiosResponse } from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import {
   IWorkFlowStepTemplateReqV1,
   IWorkflowTemplateDetailResV1,
@@ -14,6 +14,7 @@ import { ResponseCode } from '../../../data/common';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import WorkflowTemplateForm from '../WorkflowTemplateForm';
 import { BaseFormFields } from '../WorkflowTemplateForm/BaseForm/index.type';
+import { Link } from '../../../components/Link';
 
 const UpdateWorkflowTemplate = () => {
   const { t } = useTranslation();
@@ -21,7 +22,6 @@ const UpdateWorkflowTemplate = () => {
   const [workflowTemplate, setWorkflowTemplate] =
     useState<IWorkflowTemplateDetailResV1>();
   const urlParams = useParams<{ workflowName: string }>();
-  const history = useHistory();
   const { projectName } = useCurrentProjectName();
 
   const updateBaseInfo = (info: BaseFormFields) => {
@@ -64,13 +64,13 @@ const UpdateWorkflowTemplate = () => {
     if (!!urlParams.workflowName) {
       getWorkflowProgress();
     }
-  }, [history, projectName, urlParams]);
+  }, [projectName, urlParams]);
 
   return (
     <Card
       title={t('workflowTemplate.update.title.wrapper')}
       extra={[
-        <Link to={`/project/${projectName}/progress`} key="go-back">
+        <Link to={`project/${projectName}/progress`} key="go-back">
           <Button type="primary">{t('common.back')}</Button>
         </Link>,
       ]}
@@ -86,7 +86,7 @@ const UpdateWorkflowTemplate = () => {
           title={t('workflowTemplate.update.result.title')}
         />
         <Row justify="center">
-          <Link to={`/project/${projectName}/progress`}>
+          <Link to={`project/${projectName}/progress`}>
             <Button type="primary">
               {t('workflowTemplate.update.result.showNow')}
             </Button>

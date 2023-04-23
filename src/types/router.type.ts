@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { RouteProps } from 'react-router-dom';
+import { RouteObject } from 'react-router-dom';
 import { SystemRole } from '../data/common';
 import { I18nKey } from './common.type';
 
@@ -14,11 +14,15 @@ export type GlobalRouterItemKeyLiteral =
   | 'role'
   | 'userGroup'
   | 'globalRuleTemplate'
+  | 'globalRuleTemplateCreate'
+  | 'globalRuleTemplateImport'
+  | 'globalRuleTemplateUpdate'
   | 'projectDetail'
   | 'projectList'
   | 'System'
   | 'syncDataSource'
   | 'operationRecord'
+  | 'redirect';
 
 export type ProjectDetailRouterItemKeyLiteral =
   | 'order'
@@ -28,24 +32,35 @@ export type ProjectDetailRouterItemKeyLiteral =
   | 'orderAnalyze'
   | 'plane'
   | 'auditPlanDetail'
+  | 'auditPlanDetailReport'
   | 'auditPlan'
+  | 'auditPlanCreate'
+  | 'auditPlanUpdate'
   | 'platformManage'
   | 'progress'
+  | 'progressDetail'
+  | 'progressUpdate'
   | 'Whitelist'
   | 'data'
+  | 'dataCreate'
+  | 'dataUpdate'
   | 'ruleTemplate'
+  | 'ruleTemplateCreate'
+  | 'ruleTemplateImport'
+  | 'ruleTemplateUpdate'
   | 'member'
-  | 'projectOverview';
+  | 'projectOverview'
+  | 'projectRedirect';
 
-export type RouterItem<T extends string> = {
+export type RouterConfigItem<T extends string> = {
   role?: Array<SystemRole | ''>;
-  label: I18nKey;
+  label?: I18nKey;
   labelWithoutI18n?: string;
   key: T;
-  path?: string;
   icon?: ReactNode;
-  components?: RouterItem<T>[];
+  children?: RouterConfigItem<T>[];
+  hideChildrenInSliderMenu?: boolean;
   hideInSliderMenu?: boolean;
   hightLightMenuKey?: string;
-  groups?: Array<{ title: string; values: RouterItem<T>[] }>;
-} & RouteProps;
+  groups?: Array<{ title: string; values: RouterConfigItem<T>[] }>;
+} & RouteObject;

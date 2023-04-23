@@ -1,21 +1,21 @@
-import i18n from 'i18next';
-import { Link } from 'react-router-dom';
 import { IWorkflowDetailResV1 } from '../../../api/common';
 import EmptyBox from '../../../components/EmptyBox';
+import { Link } from '../../../components/Link';
 import OrderStatusTag from '../../../components/OrderStatusTag';
+import { t } from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import { formatTime } from '../../../utils/Common';
 
 export const customColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
-  return [
+  const columns: TableColumn<IWorkflowDetailResV1> = [
     {
       dataIndex: 'workflow_name',
-      title: () => i18n.t('order.order.name'),
+      title: () => t('order.order.name'),
       render: (text, record) => {
         return (
           <EmptyBox if={text && record.project_name} defaultNode={text}>
             <Link
-              to={`/project/${record.project_name}/order/${record.workflow_id}`}
+              to={`project/${record.project_name}/order/${record.workflow_id}`}
             >
               {text}
             </Link>
@@ -26,35 +26,37 @@ export const customColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
     },
     {
       dataIndex: 'project_name',
-      title: () => i18n.t('projectManage.projectForm.projectName'),
+      title: () => t('projectManage.projectForm.projectName'),
       width: 'auto',
       render: (projectName) => {
         return (
           <EmptyBox if={projectName} defaultNode={projectName}>
-            <Link to={`/project/${projectName}/overview`}>{projectName}</Link>
+            <Link to={`project/${projectName}/overview`}>{projectName}</Link>
           </EmptyBox>
         );
       },
     },
     {
       dataIndex: 'desc',
-      title: () => i18n.t('order.order.desc'),
+      title: () => t('order.order.desc'),
       width: 'auto',
     },
     {
       dataIndex: 'create_time',
-      title: () => i18n.t('order.order.createTime'),
+      title: () => t('order.order.createTime'),
       render: (time) => {
         return formatTime(time);
       },
     },
     {
       dataIndex: 'status',
-      title: () => i18n.t('order.order.status'),
+      title: () => t('order.order.status'),
       render: (status) => {
         return <OrderStatusTag status={status} />;
       },
       width: 'auto',
     },
   ];
+
+  return columns;
 };

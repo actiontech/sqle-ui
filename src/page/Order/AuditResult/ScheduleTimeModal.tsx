@@ -133,7 +133,7 @@ const ScheduleTimeModal: React.FC<ScheduleTimeModalProps> = ({
   return (
     <Modal
       title={t('order.operator.onlineRegularly')}
-      visible={visible}
+      open={visible}
       closable={false}
       footer={null}
     >

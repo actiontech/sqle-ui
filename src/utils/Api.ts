@@ -8,7 +8,7 @@ import {
 } from '../store/user';
 import { ResponseCode, SQLE_REDIRECT_KEY_PARAMS_NAME } from '../data/common';
 import { notification } from 'antd';
-import i18n from '../locale';
+import { t } from '../locale';
 import Download from './Download';
 
 const ApiBase = axios.create();
@@ -31,7 +31,7 @@ ApiBase.interceptors.response.use(
     if (res.status === 401) {
       authInvalid();
     } else if (res.headers?.['content-disposition']?.includes('attachment')) {
-      const disposition: string = res.headers?.['content-disposition'];
+      const disposition: string = res.headers?.['content-disposition'] ?? '';
       const flag = 'filename=';
       const flagCharset = 'filename*=';
       let filename = '';
@@ -49,8 +49,8 @@ ApiBase.interceptors.response.use(
       res.status !== 200
     ) {
       notification.error({
-        message: i18n.t('common.request.noticeFailTitle'),
-        description: res?.data?.message ?? i18n.t('common.unknownError'),
+        message: t('common.request.noticeFailTitle'),
+        description: res?.data?.message ?? t('common.unknownError'),
       });
     }
     return res;
@@ -61,11 +61,11 @@ ApiBase.interceptors.response.use(
     } else if (error?.response?.status !== 200) {
       const response = error?.response;
       notification.error({
-        message: i18n.t('common.request.noticeFailTitle'),
+        message: t('common.request.noticeFailTitle'),
         description:
           response?.data?.message ??
           response?.statusText ??
-          i18n.t('common.unknownError'),
+          t('common.unknownError'),
       });
     }
     return Promise.reject(error);

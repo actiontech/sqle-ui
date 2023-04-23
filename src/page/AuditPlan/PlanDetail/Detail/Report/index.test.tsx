@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import AuditPlanReport from '.';
 import audit_plan from '../../../../../api/audit_plan';
@@ -64,9 +64,7 @@ describe('AuditPlanReport', () => {
       page_index: 1,
       page_size: 10,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
     expect(container).toMatchSnapshot();
   });
 
@@ -74,9 +72,7 @@ describe('AuditPlanReport', () => {
     mockGetReport();
     mockGetReportInfo();
     render(<AuditPlanReport />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
     const openSpy = jest.spyOn(window, 'open');
     openSpy.mockImplementationOnce(() => null);
     fireEvent.click(screen.getAllByText('auditPlan.report.table.analyze')[0]);
@@ -91,9 +87,7 @@ describe('AuditPlanReport', () => {
     mockGetReport();
     mockGetReportInfo();
     render(<AuditPlanReport />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
     expect(getAllRulesSpy).toBeCalledTimes(AuditReport.length);
   });
 });

@@ -1,5 +1,5 @@
-import { screen, waitFor } from '@testing-library/react';
-import { act, renderHook } from '@testing-library/react-hooks';
+import { screen, act } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 import { cloneDeep } from 'lodash';
 import { IGetWorkflowTasksItemV2 } from '../../../../../api/common';
 import { GetWorkflowTasksItemV2StatusEnum } from '../../../../../api/common.enum';
@@ -107,18 +107,15 @@ describe('test Order/Detail/useGenerateOrderStepsProps', () => {
       workflow_step_id: `${stepId}`,
       project_name: projectName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.getByText('order.operator.approveSuccessTips')
     ).toBeInTheDocument();
     expect(refreshOrder).toBeCalledTimes(1);
     expect(refreshTask).toBeCalledTimes(0);
     expect(refreshOverviewAction).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
   });
 
   test('should be call refreshOrder, refreshTask and refreshOverviewAction when executed executing', async () => {
@@ -131,18 +128,15 @@ describe('test Order/Detail/useGenerateOrderStepsProps', () => {
       workflow_id: workflowId,
       project_name: projectName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.getByText('order.operator.executingTips')
     ).toBeInTheDocument();
     expect(refreshOrder).toBeCalledTimes(1);
     expect(refreshTask).toBeCalledTimes(1);
     expect(refreshOverviewAction).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
   });
 
   test('should be call refreshOrder and refreshOverviewAction when executed reject', async () => {
@@ -158,18 +152,15 @@ describe('test Order/Detail/useGenerateOrderStepsProps', () => {
       project_name: projectName,
       reason,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.getByText('order.operator.rejectSuccessTips')
     ).toBeInTheDocument();
     expect(refreshOrder).toBeCalledTimes(1);
     expect(refreshTask).toBeCalledTimes(0);
     expect(refreshOverviewAction).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
   });
 
   test('should be call refreshOrder, refreshTask and refreshOverviewAction when executed complete', async () => {
@@ -182,18 +173,15 @@ describe('test Order/Detail/useGenerateOrderStepsProps', () => {
       workflow_id_list: [workflowId],
       project_name: projectName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.getByText('order.operator.completeSuccessTips')
     ).toBeInTheDocument();
     expect(refreshOrder).toBeCalledTimes(1);
     expect(refreshTask).toBeCalledTimes(1);
     expect(refreshOverviewAction).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
   });
 
   test('should set can reject order and set maintenance times when executed getOverviewListSuccessHandle', () => {

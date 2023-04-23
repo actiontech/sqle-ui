@@ -1,6 +1,6 @@
-import { Theme } from '../types/theme.type';
+import { createTheme } from '@mui/material/styles';
 
-const darkTheme: Theme = {
+const darkTheme = createTheme({
   common: {
     padding: 24,
     color: {
@@ -21,6 +21,6 @@ const darkTheme: Theme = {
   optionsHover: {
     background: 'hsla(0, 0%, 100%, 0.08)',
   },
-};
+});
 
 export default darkTheme;

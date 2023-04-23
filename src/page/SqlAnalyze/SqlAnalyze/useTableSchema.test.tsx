@@ -1,4 +1,4 @@
-import { render, waitFor } from '@testing-library/react';
+import { render, act as reactAct } from '@testing-library/react';
 import { act, renderHook } from '@testing-library/react-hooks';
 import { cloneDeep } from 'lodash';
 import instance from '../../../api/instance';
@@ -50,9 +50,8 @@ describe('useTableSchema', () => {
     const request = mockGetTableSchemas();
     const { result } = renderHook(() => useTableSchema());
     result.current.getTableSchemas('123', projectName);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
+
     expect(request).not.toBeCalled();
   });
 
@@ -71,7 +70,7 @@ describe('useTableSchema', () => {
       project_name: projectName,
     });
     expect(result.current.tableSchemas).toEqual([]);
-    await waitFor(() => {
+    await reactAct(() => {
       jest.runOnlyPendingTimers();
     });
 
@@ -87,7 +86,7 @@ describe('useTableSchema', () => {
     );
     result.current.getTableSchemas('table1', projectName);
     expect(result.current.tableSchemas).toEqual([]);
-    await waitFor(() => {
+    await reactAct(() => {
       jest.runOnlyPendingTimers();
     });
     const res = cloneDeep(tableSchemas[0]);

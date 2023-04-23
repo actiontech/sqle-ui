@@ -1,23 +1,32 @@
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { fireEvent, screen, act } from '@testing-library/react';
 import UserGroupList from '.';
 import user_group from '../../../../api/user_group';
 import { selectOptionByIndex } from '../../../../testUtils/customQuery';
 import { renderWithRedux } from '../../../../testUtils/customRender';
-import { mockUseDispatch } from '../../../../testUtils/mockRedux';
 import {
   mockUseUserGroup,
   resolveThreeSecond,
 } from '../../../../testUtils/mockRequest';
 import { userGroupList } from './__testData__';
+import { useDispatch } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('UserGroupList', () => {
-  let dispatchSpy: jest.SpyInstance;
+  const dispatchSpy = jest.fn();
+
   let getUserGroupListSpy: jest.SpyInstance;
   beforeEach(() => {
     jest.useFakeTimers();
-    dispatchSpy = mockUseDispatch().scopeDispatch;
-    getUserGroupListSpy = mockGetUserGroupList();
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
     mockUseUserGroup();
+    getUserGroupListSpy = mockGetUserGroupList();
   });
 
   afterEach(() => {
@@ -52,9 +61,8 @@ describe('UserGroupList', () => {
       page_index: 1,
       page_size: 10,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
     expect(getUserGroupListSpy).toBeCalledTimes(1);
   });
@@ -66,17 +74,15 @@ describe('UserGroupList', () => {
       page_index: 1,
       page_size: 10,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     selectOptionByIndex(
       'userGroup.userGroupField.userGroupName',
       'user_group_name1'
     );
     fireEvent.click(screen.getByText('common.search'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(getUserGroupListSpy).toBeCalledTimes(2);
     expect(getUserGroupListSpy).nthCalledWith(2, {
       page_index: 1,
@@ -85,9 +91,8 @@ describe('UserGroupList', () => {
     });
     fireEvent.click(screen.getByText('common.reset'));
     fireEvent.click(screen.getByText('common.search'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(getUserGroupListSpy).toBeCalledTimes(3);
     expect(getUserGroupListSpy).nthCalledWith(3, {
       page_index: 1,
@@ -97,9 +102,8 @@ describe('UserGroupList', () => {
 
   it('should update addUserGroup modal status when user click create user group button', async () => {
     renderWithRedux(<UserGroupList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('userGroup.createUserGroup.title'));
     expect(dispatchSpy).toBeCalledTimes(1);
     expect(dispatchSpy).toBeCalledWith({
@@ -113,9 +117,8 @@ describe('UserGroupList', () => {
 
   it('should update updateUserGroup modal status when user click editor user group button', async () => {
     renderWithRedux(<UserGroupList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getAllByText('common.edit')[0]);
     expect(dispatchSpy).toBeCalledTimes(2);
     expect(dispatchSpy).nthCalledWith(1, {
@@ -137,9 +140,8 @@ describe('UserGroupList', () => {
   it('should delete a user group when user click delete user group', async () => {
     const deleteSpy = mockDeleteUserGroup();
     const { baseElement } = renderWithRedux(<UserGroupList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getUserGroupListSpy).toBeCalledTimes(1);
     fireEvent.click(screen.getAllByText('common.delete')[0]);
     expect(baseElement).toMatchSnapshot();
@@ -150,22 +152,19 @@ describe('UserGroupList', () => {
       user_group_name: userGroupList[0].user_group_name,
     });
     expect(baseElement).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(baseElement).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(baseElement).toMatchSnapshot();
     expect(getUserGroupListSpy).toBeCalledTimes(2);
   });
 
   it('should refresh table list when user click refresh button', async () => {
     renderWithRedux(<UserGroupList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getUserGroupListSpy).toBeCalledTimes(1);
     fireEvent.click(screen.getByTestId('refresh-button'));
     expect(getUserGroupListSpy).toBeCalledTimes(2);

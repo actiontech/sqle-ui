@@ -1,4 +1,4 @@
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { fireEvent, screen, act } from '@testing-library/react';
 import SyncTaskList from '.';
 import { IInstanceTaskResV1 } from '../../../api/common';
 import { InstanceTaskResV1LastSyncStatusEnum } from '../../../api/common.enum';
@@ -8,7 +8,10 @@ import {
   renderWithServerRouter,
 } from '../../../testUtils/customRender';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
-import { createMemoryHistory } from 'history';
+import {
+  getAllHrefByText,
+  getHrefByText,
+} from '../../../testUtils/customQuery';
 
 const tableList: IInstanceTaskResV1[] = [
   {
@@ -74,55 +77,39 @@ describe('test SyncTaskList', () => {
     expect(getSyncInstanceTaskListSpy).toBeCalledTimes(0);
     const { container } = renderWithRouter(<SyncTaskList />);
     expect(getSyncInstanceTaskListSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
 
     fireEvent.click(screen.getByTestId('refreshTable'));
     expect(getSyncInstanceTaskListSpy).toBeCalledTimes(2);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
   });
 
   test('should jump to "/syncDataSource/create" when clicking add sync task button', () => {
-    const history = createMemoryHistory();
-    renderWithServerRouter(<SyncTaskList />, undefined, { history });
-    expect(history.location.pathname).toBe('/');
-
-    fireEvent.click(
-      screen.getByText('syncDataSource.syncTaskList.addSyncTask')
+    renderWithRouter(<SyncTaskList />);
+    expect(getHrefByText('syncDataSource.syncTaskList.addSyncTask')).toBe(
+      '/syncDataSource/create'
     );
-    expect(history.location.pathname).toBe('/syncDataSource/create');
   });
 
   test('should jump to "/syncDataSource/update" when clicking edit sync task button', async () => {
-    const history = createMemoryHistory();
-    renderWithServerRouter(<SyncTaskList />, undefined, { history });
-    expect(history.location.pathname).toBe('/');
+    renderWithRouter(<SyncTaskList />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(() => jest.advanceTimersByTime(3000));
 
     expect(screen.queryAllByText('common.edit').length).toBe(2);
 
     fireEvent.click(screen.queryAllByText('common.edit')[0]);
-
-    expect(history.location.pathname).toBe('/syncDataSource/update/0');
-
-    fireEvent.click(screen.queryAllByText('common.edit')[1]);
-
-    expect(history.location.pathname).toBe('/syncDataSource/update/1');
+    expect(getAllHrefByText('common.edit')[0]).toBe('/syncDataSource/update/0');
+    expect(getAllHrefByText('common.edit')[1]).toBe('/syncDataSource/update/1');
   });
 
   test('should be send sync request when clicking sync task button', async () => {
     expect(triggerSyncInstanceSpy).toBeCalledTimes(0);
     renderWithRouter(<SyncTaskList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(
       screen.queryAllByText('syncDataSource.syncTaskList.columns.sync')[0]
     );
@@ -131,22 +118,20 @@ describe('test SyncTaskList', () => {
       task_id: '0',
     });
     expect(
-      screen.queryByText('syncDataSource.syncTaskList.syncTaskLoading')
+      screen.getByText('syncDataSource.syncTaskList.syncTaskLoading')
     ).toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('syncDataSource.syncTaskList.syncTaskLoading')
     ).not.toBeInTheDocument();
 
     expect(
-      screen.queryByText('syncDataSource.syncTaskList.syncTaskSuccessTips')
+      screen.getByText('syncDataSource.syncTaskList.syncTaskSuccessTips')
     ).toBeInTheDocument();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('syncDataSource.syncTaskList.syncTaskSuccessTips')
     ).not.toBeInTheDocument();
@@ -155,17 +140,13 @@ describe('test SyncTaskList', () => {
   test('should be send delete request when clicking delete task button', async () => {
     expect(deleteSyncInstanceTaskSpy).toBeCalledTimes(0);
     renderWithRouter(<SyncTaskList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.queryAllByText('common.delete')[0]);
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(
-      screen.queryByText(
-        'syncDataSource.syncTaskList.columns.deleteConfirmTitle'
-      )
+      screen.getByText('syncDataSource.syncTaskList.columns.deleteConfirmTitle')
     ).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('common.ok'));
@@ -175,22 +156,20 @@ describe('test SyncTaskList', () => {
       task_id: '0',
     });
     expect(
-      screen.queryByText('syncDataSource.syncTaskList.deleteTaskLoading')
+      screen.getByText('syncDataSource.syncTaskList.deleteTaskLoading')
     ).toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('syncDataSource.syncTaskList.deleteTaskLoading')
     ).not.toBeInTheDocument();
 
     expect(
-      screen.queryByText('syncDataSource.syncTaskList.deleteTaskSuccessTips')
+      screen.getByText('syncDataSource.syncTaskList.deleteTaskSuccessTips')
     ).toBeInTheDocument();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('syncDataSource.syncTaskList.deleteTaskSuccessTips')
     ).not.toBeInTheDocument();

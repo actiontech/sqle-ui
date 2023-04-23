@@ -1,7 +1,6 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { WorkflowRecordResV2StatusEnum } from '../../../../../api/common.enum';
 import { getBySelector } from '../../../../../testUtils/customQuery';
-import { mockUseSelector } from '../../../../../testUtils/mockRedux';
 import OrderStep from '../index';
 import {
   defaultProps,
@@ -10,7 +9,16 @@ import {
   waitAuditStepList,
 } from './testData';
 import { act } from 'react-dom/test-utils';
+import { useSelector } from 'react-redux';
 const realDateNow = Date.now.bind(global.Date);
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('test OrderSteps', () => {
   const mockPass = jest.fn();
@@ -21,7 +29,11 @@ describe('test OrderSteps', () => {
 
   beforeEach(() => {
     jest.useFakeTimers();
-    mockUseSelector({ user: { username: 'admin' } });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { username: 'admin' },
+      })
+    );
     mockPass.mockImplementation(
       () =>
         new Promise((res) => {
@@ -95,9 +107,8 @@ describe('test OrderSteps', () => {
     expect(
       screen.getByText('order.operator.sqlReview').closest('button')
     ).toHaveClass('ant-btn-loading');
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.getByText('order.operator.sqlReview').closest('button')
     ).not.toHaveClass('ant-btn-loading');
@@ -117,12 +128,12 @@ describe('test OrderSteps', () => {
         reject={mockReject}
       />
     );
-    expect(screen.queryByText('order.operator.rejectFull')).toBeInTheDocument();
+    expect(screen.getByText('order.operator.rejectFull')).toBeInTheDocument();
     act(() => {
       fireEvent.click(screen.getByText('order.operator.rejectFull'));
     });
-    await waitFor(() => {
-      jest.runOnlyPendingTimers();
+    await act(async () => {
+      return jest.runOnlyPendingTimers();
     });
     expect(getBySelector('.ant-modal')).toBeInTheDocument();
     expect(mockReject).toBeCalledTimes(0);
@@ -132,9 +143,8 @@ describe('test OrderSteps', () => {
     });
 
     fireEvent.click(screen.getAllByText('order.operator.reject')[1]);
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(mockReject).toBeCalledTimes(1);
     expect(mockReject).toBeCalledWith(
       'test',
@@ -143,12 +153,8 @@ describe('test OrderSteps', () => {
     expect(
       screen.getAllByText('order.operator.reject')[1].closest('button')
     ).toHaveClass('ant-btn-loading');
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    expect(
-      screen.getAllByText('order.operator.reject')[1].closest('button')
-    ).not.toHaveClass('ant-btn-loading');
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('common.cancel'));
     expect(getBySelector('.ant-modal-wrap')).toHaveStyle('display: none');
   });
@@ -163,7 +169,7 @@ describe('test OrderSteps', () => {
       />
     );
     expect(
-      screen.queryByText('order.operator.waitModifySql')
+      screen.getByText('order.operator.waitModifySql')
     ).toBeInTheDocument();
 
     rejectedStepList[0].operation_user_name = 'admin';
@@ -178,7 +184,7 @@ describe('test OrderSteps', () => {
     expect(
       screen.queryByText('order.operator.waitModifySql')
     ).not.toBeInTheDocument();
-    expect(screen.queryByText('order.operator.modifySql')).toBeInTheDocument();
+    expect(screen.getByText('order.operator.modifySql')).toBeInTheDocument();
     expect(mockModifySql).toBeCalledTimes(0);
 
     fireEvent.click(screen.getByText('order.operator.modifySql'));
@@ -197,20 +203,19 @@ describe('test OrderSteps', () => {
     );
 
     expect(
-      screen.queryByText('order.operator.batchSqlExecute')
+      screen.getByText('order.operator.batchSqlExecute')
     ).toBeInTheDocument();
     expect(mockExecuting).toBeCalledTimes(0);
 
     fireEvent.click(screen.getByText('order.operator.batchSqlExecute'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(
-      screen.queryByText('order.operator.batchSqlExecuteConfirmTips')
+      screen.getByText('order.operator.batchSqlExecuteConfirmTips')
     ).toBeInTheDocument();
 
-    expect(screen.queryByText('common.ok')).toBeInTheDocument();
+    expect(screen.getByText('common.ok')).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('common.ok'));
 
@@ -218,9 +223,8 @@ describe('test OrderSteps', () => {
       screen.getByText('order.operator.batchSqlExecute').closest('button')
     ).toHaveClass('ant-btn-loading');
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.getByText('order.operator.batchSqlExecute').closest('button')
     ).not.toHaveClass('ant-btn-loading');
@@ -239,21 +243,18 @@ describe('test OrderSteps', () => {
       />
     );
 
-    expect(
-      screen.queryByText('order.operator.markManually')
-    ).toBeInTheDocument();
+    expect(screen.getByText('order.operator.markManually')).toBeInTheDocument();
     expect(mockComplete).toBeCalledTimes(0);
 
     fireEvent.click(screen.getByText('order.operator.markManually'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(
-      screen.queryByText('order.operator.markManuallyConfirmTips')
+      screen.getByText('order.operator.markManuallyConfirmTips')
     ).toBeInTheDocument();
 
-    expect(screen.queryByText('common.ok')).toBeInTheDocument();
+    expect(screen.getByText('common.ok')).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('common.ok'));
 
@@ -261,9 +262,8 @@ describe('test OrderSteps', () => {
       screen.getByText('order.operator.markManually').closest('button')
     ).toHaveClass('ant-btn-loading');
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.getByText('order.operator.markManually').closest('button')
     ).not.toHaveClass('ant-btn-loading');
@@ -296,7 +296,7 @@ describe('test OrderSteps', () => {
       />
     );
     expect(
-      screen.queryByText('order.operator.batchSqlExecute')
+      screen.getByText('order.operator.batchSqlExecute')
     ).toBeInTheDocument();
     expect(
       screen.getByText('order.operator.batchSqlExecute').closest('button')

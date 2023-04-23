@@ -1,15 +1,19 @@
-import { cleanup, fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, cleanup, fireEvent, screen } from '@testing-library/react';
 import workflow from '../../../api/workflow';
-import {
-  renderWithRouter,
-  renderWithServerRouter,
-} from '../../../testUtils/customRender';
-import { mockUseSelector } from '../../../testUtils/mockRedux';
+import { renderWithRouter } from '../../../testUtils/customRender';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import { DASHBOARD_COMMON_GET_ORDER_NUMBER } from '../CommonTable';
 import DBAPanel from './index';
-import { createMemoryHistory } from 'history';
+
 import { ALL_PROJECT_NAME } from '..';
+import { useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+  };
+});
 
 const resList = [
   {
@@ -40,7 +44,11 @@ describe('test home/DBAPanel', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     getMockRequestSpy = mockRequest();
-    mockUseSelector({ user: { username } });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { username },
+      })
+    );
   });
 
   afterEach(() => {
@@ -68,9 +76,8 @@ describe('test home/DBAPanel', () => {
         projectName={projectName}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getMockRequestSpy).toBeCalledTimes(2);
   });
 
@@ -81,9 +88,7 @@ describe('test home/DBAPanel', () => {
         projectName={projectName}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.getByText('dashboard.pendingOrder.needMeReview').parentNode
@@ -103,19 +108,15 @@ describe('test home/DBAPanel', () => {
   });
 
   test('should be execute correspond event on the current tab', async () => {
-    const history = createMemoryHistory();
     expect(getMockRequestSpy).toBeCalledTimes(0);
-    renderWithServerRouter(
+    renderWithRouter(
       <DBAPanel
         getWorkflowStatistics={mockGetWorkflowStatistics}
         projectName={projectName}
-      />,
-      undefined,
-      { history }
+      />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getMockRequestSpy).toBeCalledTimes(2);
 
     expect(
@@ -123,9 +124,8 @@ describe('test home/DBAPanel', () => {
     ).toHaveClass('ant-tabs-tab-active');
 
     fireEvent.click(screen.getByTestId('refreshTable'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(mockGetWorkflowStatistics).toBeCalledTimes(1);
     expect(getMockRequestSpy).toBeCalledTimes(4);
     expect(getMockRequestSpy.mock.calls[2][0]).toEqual({
@@ -145,9 +145,8 @@ describe('test home/DBAPanel', () => {
 
     fireEvent.click(screen.getByText('dashboard.pendingOrder.needMeExec'));
     fireEvent.click(screen.getByTestId('refreshTable'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(mockGetWorkflowStatistics).toBeCalledTimes(2);
     expect(getMockRequestSpy).toBeCalledTimes(6);
   });
@@ -163,9 +162,8 @@ describe('test home/DBAPanel', () => {
       />
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getMockRequestSpy).toBeCalledTimes(2);
     expect(getMockRequestSpy).toBeCalledWith({
       filter_current_step_assignee_user_name: 'admin',
@@ -184,9 +182,8 @@ describe('test home/DBAPanel', () => {
     });
 
     fireEvent.click(screen.getByTestId('refreshTable'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getMockRequestSpy).toBeCalledTimes(4);
   });
 });

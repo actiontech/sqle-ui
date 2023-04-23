@@ -1,4 +1,4 @@
-import { useTheme } from '@material-ui/styles';
+import { useTheme } from '@mui/styles';
 import { useBoolean } from 'ahooks';
 import { Col, Row, Space, Steps } from 'antd';
 import { useEffect, useState } from 'react';
@@ -6,11 +6,11 @@ import { useTranslation } from 'react-i18next';
 import { IWorkFlowStepTemplateReqV1 } from '../../../api/common';
 import { ResponseCode } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
-import { Theme } from '../../../types/theme.type';
 import EventEmitter from '../../../utils/EventEmitter';
 import BaseForm from './BaseForm';
 import { WorkflowTemplateFormProps } from './index.type';
 import ProgressConfig from './ProgressConfig';
+import { Theme } from '@mui/material/styles';
 
 const WorkflowTemplateForm: React.FC<WorkflowTemplateFormProps> = (props) => {
   const theme = useTheme<Theme>();
@@ -41,6 +41,21 @@ const WorkflowTemplateForm: React.FC<WorkflowTemplateFormProps> = (props) => {
       });
   };
 
+  const stepItems = [
+    {
+      title: t('workflowTemplate.step.baseFormTitle'),
+      description: t('workflowTemplate.step.baseFormDesc'),
+    },
+    {
+      title: t('workflowTemplate.step.progressTitle'),
+      description: t('workflowTemplate.step.progressDesc'),
+    },
+    {
+      title: t('workflowTemplate.step.resultTitle'),
+      description: t('workflowTemplate.step.resultDesc'),
+    },
+  ];
+
   useEffect(() => {
     const resetAllForm = () => {
       setStep(0);
@@ -65,20 +80,7 @@ const WorkflowTemplateForm: React.FC<WorkflowTemplateFormProps> = (props) => {
     >
       <Row>
         <Col span={12} offset={6}>
-          <Steps current={step}>
-            <Steps.Step
-              title={t('workflowTemplate.step.baseFormTitle')}
-              description={t('workflowTemplate.step.baseFormDesc')}
-            />
-            <Steps.Step
-              title={t('workflowTemplate.step.progressTitle')}
-              description={t('workflowTemplate.step.progressDesc')}
-            />
-            <Steps.Step
-              title={t('workflowTemplate.step.resultTitle')}
-              description={t('workflowTemplate.step.resultDesc')}
-            />
-          </Steps>
+          <Steps current={step} items={stepItems} />
         </Col>
       </Row>
       <div hidden={step !== 0} data-testid="base-form">

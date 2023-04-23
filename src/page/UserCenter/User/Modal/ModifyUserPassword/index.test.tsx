@@ -1,29 +1,37 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, act } from '@testing-library/react';
 import ModifyUserPassword from '.';
 import user from '../../../../../api/user';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../../testUtils/mockRedux';
 import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
 import { ModalName } from '../../../../../data/ModalName';
+import { useDispatch, useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('User/ModifyUserPassword', () => {
-  let dispatchSpy: jest.Mock;
+  const dispatchSpy = jest.fn();
+
   beforeEach(() => {
     jest.useFakeTimers();
-    mockUseSelector({
-      userManage: {
-        modalStatus: { [ModalName.Update_User_Password]: true },
-        selectUser: {
-          user_name: 'root',
-          email: 'user@123.com',
-          role_name_list: ['role_name1'],
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        userManage: {
+          modalStatus: { [ModalName.Update_User_Password]: true },
+          selectUser: {
+            user_name: 'root',
+            email: 'user@123.com',
+            role_name_list: ['role_name1'],
+          },
         },
-      },
-    });
-    const { scopeDispatch } = mockUseDispatch();
-    dispatchSpy = scopeDispatch;
+      })
+    );
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
   });
 
   afterEach(() => {
@@ -37,28 +45,33 @@ describe('User/ModifyUserPassword', () => {
   };
 
   test('should match snapshot', async () => {
-    mockUseSelector({
-      userManage: {
-        modalStatus: { [ModalName.Update_User_Password]: false },
-        selectUser: {
-          user_name: 'root',
-          email: 'user@123.com',
-          role_name_list: ['role_name1'],
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        userManage: {
+          modalStatus: { [ModalName.Update_User_Password]: false },
+          selectUser: {
+            user_name: 'root',
+            email: 'user@123.com',
+            role_name_list: ['role_name1'],
+          },
         },
-      },
-    });
+      })
+    );
     const { baseElement, rerender } = render(<ModifyUserPassword />);
     expect(baseElement).toMatchSnapshot();
-    mockUseSelector({
-      userManage: {
-        modalStatus: { [ModalName.Update_User_Password]: true },
-        selectUser: {
-          user_name: 'root',
-          email: 'user@123.com',
-          role_name_list: ['role_name1'],
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        userManage: {
+          modalStatus: { [ModalName.Update_User_Password]: true },
+          selectUser: {
+            user_name: 'root',
+            email: 'user@123.com',
+            role_name_list: ['role_name1'],
+          },
         },
-      },
-    });
+      })
+    );
     rerender(<ModifyUserPassword />);
     expect(baseElement).toMatchSnapshot();
   });
@@ -74,9 +87,8 @@ describe('User/ModifyUserPassword', () => {
       target: { value: '222' },
     });
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
       password: '222',
@@ -88,9 +100,8 @@ describe('User/ModifyUserPassword', () => {
     expect(screen.getByText('common.close').parentNode).toHaveAttribute(
       'disabled'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(dispatchSpy).toBeCalledTimes(1);
     expect(dispatchSpy).toBeCalledWith({
       payload: { modalName: 'Update_User_Password', status: false },
@@ -108,6 +119,7 @@ describe('User/ModifyUserPassword', () => {
       target: { value: '222' },
     });
     fireEvent.click(screen.getByText('common.close'));
+    await act(async () => jest.advanceTimersByTime(0));
     expect(dispatchSpy).toBeCalledWith({
       payload: { modalName: 'Update_User_Password', status: false },
       type: 'user/updateModalStatus',

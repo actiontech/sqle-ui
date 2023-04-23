@@ -1,4 +1,9 @@
-import { fireEvent, render, waitFor, screen } from '@testing-library/react';
+import {
+  fireEvent,
+  render,
+  act as reactAct,
+  screen,
+} from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import RoleListFilterForm from '.';
 import EmitterKey from '../../../../../data/EmitterKey';
@@ -34,9 +39,8 @@ describe('User/RoleList/RoleLIstFilterForm', () => {
   test('should refresh options when receive event from EventEmit', async () => {
     render(<RoleListFilterForm updateRoleListFilter={jest.fn()} />);
     expect(roleSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(300);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
+
     act(() => {
       EventEmitter.emit(EmitterKey.Refresh_Role_list);
     });
@@ -49,9 +53,8 @@ describe('User/RoleList/RoleLIstFilterForm', () => {
       <RoleListFilterForm updateRoleListFilter={updateRoleListFilterMock} />
     );
     expect(roleSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(300);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('common.reset'));
     expect(updateRoleListFilterMock).toBeCalledTimes(1);
     expect(updateRoleListFilterMock).toBeCalledWith({});

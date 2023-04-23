@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import PlanListFilterForm from '.';
 import { selectOptionByIndex } from '../../../../testUtils/customQuery';
 import {
@@ -43,9 +43,8 @@ describe('PlanListFilerForm', () => {
     const { container } = render(
       <PlanListFilterForm projectName={projectName} />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -55,9 +54,7 @@ describe('PlanListFilerForm', () => {
     const { container } = render(
       <PlanListFilterForm submit={submitSpy} projectName={projectName} />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.input(
       screen.getByLabelText('auditPlan.list.table.audit_plan_name'),
@@ -80,9 +77,7 @@ describe('PlanListFilerForm', () => {
 
     expect(container).toMatchSnapshot();
     fireEvent.click(screen.getByText('common.search'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(submitSpy).toBeCalledTimes(2);
     expect(submitSpy).nthCalledWith(2, {
@@ -93,9 +88,8 @@ describe('PlanListFilerForm', () => {
     });
 
     fireEvent.click(screen.getByText('common.reset'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(container).toMatchSnapshot();
 
     expect(submitSpy).toBeCalledTimes(3);
@@ -116,9 +110,7 @@ describe('PlanListFilerForm', () => {
       <PlanListFilterForm submit={submitSpy} projectName={projectName} />
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
     expect(submitSpy).toBeCalledTimes(1);

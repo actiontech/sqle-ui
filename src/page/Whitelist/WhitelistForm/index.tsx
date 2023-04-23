@@ -1,6 +1,6 @@
 import { Form, Input, Radio } from 'antd';
 import { useTranslation } from 'react-i18next';
-import MonacoEditor from 'react-monaco-editor';
+import MonacoEditor, { MonacoEditorProps } from 'react-monaco-editor';
 import { ModalFormLayout } from '../../../data/common';
 import useChangeTheme from '../../../hooks/useChangeTheme';
 import useStyles from '../../../theme';
@@ -9,6 +9,7 @@ import { CreateAuditWhitelistReqV1MatchTypeEnum } from '../../../api/common.enum
 import { I18nKey } from '../../../types/common.type';
 import useMonacoEditor from '../../../hooks/useMonacoEditor';
 import { whiteSpaceSql } from '../../../utils/FormRule';
+import { ComponentType } from 'react';
 
 export const WhitelistMatchTypeLabel: {
   [key in CreateAuditWhitelistReqV1MatchTypeEnum]: I18nKey;
@@ -18,6 +19,9 @@ export const WhitelistMatchTypeLabel: {
   [CreateAuditWhitelistReqV1MatchTypeEnum.exact_match]:
     'whitelist.matchType.exact',
 };
+
+const MonacoEditorFunComponent =
+  MonacoEditor as ComponentType<MonacoEditorProps>;
 
 const WhitelistForm: React.FC<WhitelistFormProps> = (props) => {
   const { t } = useTranslation();
@@ -75,7 +79,7 @@ const WhitelistForm: React.FC<WhitelistFormProps> = (props) => {
           ...whiteSpaceSql(),
         ]}
       >
-        <MonacoEditor
+        <MonacoEditorFunComponent
           theme={currentEditorTheme}
           width="100%"
           height="500"

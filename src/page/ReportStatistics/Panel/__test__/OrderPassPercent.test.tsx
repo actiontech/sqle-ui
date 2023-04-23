@@ -1,14 +1,21 @@
-import { render, waitFor } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import statistic from '../../../../api/statistic';
-import { mockUseSelector } from '../../../../testUtils/mockRedux';
 import {
   resolveErrorThreeSecond,
   resolveThreeSecond,
 } from '../../../../testUtils/mockRequest';
 import OrderPassPercent from '../OrderPassPercent';
 import mockRequestData from './mockRequestData';
+import { useSelector } from 'react-redux';
 
 const { OrderPassPercentData } = mockRequestData;
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+  };
+});
 
 describe('test OrderPassPercent', () => {
   const mockGetTaskPassPercentV1 = () => {
@@ -25,9 +32,12 @@ describe('test OrderPassPercent', () => {
 
   beforeEach(() => {
     jest.useFakeTimers();
-    mockUseSelector({
-      reportStatistics: { refreshFlag: false },
-    });
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        reportStatistics: { refreshFlag: false },
+      })
+    );
   });
 
   afterEach(() => {
@@ -40,9 +50,8 @@ describe('test OrderPassPercent', () => {
     mockGetTaskPassPercentV1();
     const { container } = render(<OrderPassPercent />);
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -57,9 +66,8 @@ describe('test OrderPassPercent', () => {
     const getTaskPassPercentV1Spy = mockErrorGetTaskPassPercentV1();
     const { container } = render(<OrderPassPercent />);
     expect(getTaskPassPercentV1Spy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 });

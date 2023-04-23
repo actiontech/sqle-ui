@@ -8,9 +8,9 @@ import {
   sameSqlValues,
 } from '../../../hooks/__test__/test.data';
 import task from '../../../../../api/task';
-import { waitFor } from '@testing-library/react';
 import workflow from '../../../../../api/workflow';
 import { useParams } from 'react-router-dom';
+import { act as reactAct } from '@testing-library/react';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -115,9 +115,7 @@ describe('Order/useModifySql', () => {
     });
     expect(createAndAuditTaskSpy).toBeCalledTimes(0);
     expect(createAuditTasksSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
     expect(result.current.modifySqlModalVisibility).toBe(true);
     expect(auditTasksGroupIdSpy).toBeCalledTimes(1);
     jest.advanceTimersByTime(3000);

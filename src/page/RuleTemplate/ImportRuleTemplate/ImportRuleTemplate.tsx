@@ -12,7 +12,6 @@ import {
 import { useForm } from 'antd/lib/form/Form';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import { SelectFileFormFields } from '.';
 import { IRuleReqV1, IRuleResV1 } from '../../../api/common';
 import rule_template from '../../../api/rule_template';
@@ -24,6 +23,7 @@ import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import RuleTemplateForm from '../RuleTemplateForm';
 import { RuleTemplateBaseInfoFields } from '../RuleTemplateForm/BaseInfoForm/index.type';
 import { RuleTemplateFormProps } from '../RuleTemplateForm/index.type';
+import { Link } from '../../../components/Link';
 
 const ImportRuleTemplate: React.FC = () => {
   const { t } = useTranslation();
@@ -232,7 +232,7 @@ const ImportRuleTemplate: React.FC = () => {
             }
           />
           <Row justify="center">
-            <Link to={`/project/${projectName}/rule/template`}>
+            <Link to={`project/${projectName}/rule/template`}>
               <Button type="primary">{t('ruleTemplate.backToList')}</Button>
             </Link>
           </Row>

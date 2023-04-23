@@ -2,13 +2,14 @@ import { Button, Card, Empty, message, Spin, Typography } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { IInstanceTaskDetailResV1 } from '../../../api/common';
 import sync_instance from '../../../api/sync_instance';
 import { IUpdateSyncInstanceTaskV1Params } from '../../../api/sync_instance/index.d';
 import BackButton from '../../../components/BackButton';
 import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode } from '../../../data/common';
+import useNavigate from '../../../hooks/useNavigate';
 import SyncTaskForm, { SyncTaskFormFields } from '../SyncTaskForm';
 
 const UpdateSyncTask: React.FC = () => {
@@ -16,7 +17,7 @@ const UpdateSyncTask: React.FC = () => {
   const [form] = useForm<SyncTaskFormFields>();
   const { taskId } = useParams<{ taskId: string }>();
   const [initError, setInitError] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
   const [retryLoading, setRetryLoading] = useState(false);
   const [finishGetSyncInstanceTask, setFinishGetSyncInstanceTask] =
     useState(false);
@@ -26,7 +27,7 @@ const UpdateSyncTask: React.FC = () => {
 
   const submit = (values: SyncTaskFormFields) => {
     const params: IUpdateSyncInstanceTaskV1Params = {
-      task_id: taskId,
+      task_id: taskId ?? '',
       global_rule_template: values.ruleTemplateName,
       sync_instance_interval: values.syncInterval,
       url: values.url,
@@ -35,14 +36,14 @@ const UpdateSyncTask: React.FC = () => {
     return sync_instance.updateSyncInstanceTaskV1(params).then((res) => {
       if (res.data.code === ResponseCode.SUCCESS) {
         message.success(t('syncDataSource.updateSyncTask.successTips'));
-        history.replace(`/syncDataSource`);
+        navigate(`syncDataSource`, { replace: true });
       }
     });
   };
   const getSyncInstanceTask = useCallback(() => {
     setRetryLoading(true);
     sync_instance
-      .GetSyncInstanceTask({ task_id: taskId })
+      .GetSyncInstanceTask({ task_id: taskId ?? '' })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           setSyncInstanceTask(res.data.data);

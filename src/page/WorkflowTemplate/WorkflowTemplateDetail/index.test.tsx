@@ -1,13 +1,20 @@
-import { cleanup, screen, waitFor } from '@testing-library/react';
+import { cleanup, screen, act } from '@testing-library/react';
 import WorkflowTemplateDetail from '.';
 import workflow from '../../../api/workflow';
 import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import { workflowData, workflowData2 } from '../__testData__';
 import { useParams } from 'react-router-dom';
-import { mockUseSelector } from '../../../testUtils/mockRedux';
 import { SystemRole } from '../../../data/common';
 import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
+import { useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+  };
+});
 
 jest.mock('react-router', () => {
   return {
@@ -31,10 +38,13 @@ describe('WorkflowTemplate/WorkflowTemplateDetail', () => {
     jest.useFakeTimers();
     useParamsMock.mockReturnValue({ workflowName: 'default', projectName });
     getWorkflowTemplateDetail = mockGetWorkflowTemplateDetail();
-    mockUseSelector({
-      user: { role: SystemRole.admin, bindProjects: mockBindProjects },
-      projectManage: { archived: false },
-    });
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { role: SystemRole.admin, bindProjects: mockBindProjects },
+        projectManage: { archived: false },
+      })
+    );
   });
 
   afterEach(() => {
@@ -47,63 +57,63 @@ describe('WorkflowTemplate/WorkflowTemplateDetail', () => {
     expect(getWorkflowTemplateDetail).toBeCalledWith({
       project_name: projectName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
   test('should hide update template feature when not currently a project manager or admin', async () => {
-    mockUseSelector({
-      user: {
-        role: SystemRole.admin,
-        bindProjects: [{ projectName: 'test', isManager: false }],
-      },
-      projectManage: { archived: false },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: {
+          role: SystemRole.admin,
+          bindProjects: [{ projectName: 'test', isManager: false }],
+        },
+        projectManage: { archived: false },
+      })
+    );
 
     renderWithThemeAndRouter(<WorkflowTemplateDetail />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
-      screen.queryByText('workflowTemplate.detail.updateTemplate')
+      screen.getByText('workflowTemplate.detail.updateTemplate')
     ).toBeInTheDocument();
 
     cleanup();
     jest.clearAllMocks();
 
-    mockUseSelector({
-      user: {
-        role: '',
-        bindProjects: mockBindProjects,
-      },
-      projectManage: { archived: false },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: {
+          role: '',
+          bindProjects: mockBindProjects,
+        },
+        projectManage: { archived: false },
+      })
+    );
+
     renderWithThemeAndRouter(<WorkflowTemplateDetail />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
-      screen.queryByText('workflowTemplate.detail.updateTemplate')
+      screen.getByText('workflowTemplate.detail.updateTemplate')
     ).toBeInTheDocument();
 
     cleanup();
     jest.clearAllMocks();
 
-    mockUseSelector({
-      user: {
-        role: '',
-        bindProjects: [{ projectName: 'default', isManager: false }],
-      },
-      projectManage: { archived: false },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: {
+          role: '',
+          bindProjects: [{ projectName: 'default', isManager: false }],
+        },
+        projectManage: { archived: false },
+      })
+    );
     renderWithThemeAndRouter(<WorkflowTemplateDetail />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.queryByText('workflowTemplate.detail.updateTemplate')
@@ -115,17 +125,16 @@ describe('WorkflowTemplate/WorkflowTemplateDetail', () => {
       resolveThreeSecond(workflowData2)
     );
     const { container } = renderWithThemeAndRouter(<WorkflowTemplateDetail />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
     expect(
-      screen.queryByText(
+      screen.getByText(
         'workflowTemplate.form.label.reviewUser : workflowTemplate.progressConfig.review.reviewUserType.matchAudit'
       )
     ).toBeInTheDocument();
     expect(
-      screen.queryByText(
+      screen.getByText(
         'workflowTemplate.form.label.execUser : workflowTemplate.progressConfig.exec.executeUserType.matchExecute'
       )
     ).toBeInTheDocument();
@@ -137,9 +146,7 @@ describe('WorkflowTemplate/WorkflowTemplateDetail', () => {
     );
 
     renderWithThemeAndRouter(<WorkflowTemplateDetail />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.getByText('workflowTemplate.auditLevel.warn')
@@ -147,18 +154,18 @@ describe('WorkflowTemplate/WorkflowTemplateDetail', () => {
   });
 
   test('should hide the Create, Delete, Edit feature when project is archived', async () => {
-    mockUseSelector({
-      user: {
-        role: SystemRole.admin,
-        bindProjects: [{ projectName, isManager: true }],
-      },
-      projectManage: { archived: true },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: {
+          role: SystemRole.admin,
+          bindProjects: [{ projectName, isManager: true }],
+        },
+        projectManage: { archived: true },
+      })
+    );
 
     renderWithThemeAndRouter(<WorkflowTemplateDetail />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.queryByText('workflowTemplate.detail.updateTemplate')

@@ -1,6 +1,6 @@
 import { EditOutlined, EnterOutlined } from '@ant-design/icons';
 import { useBoolean, useKeyPress } from 'ahooks';
-import { Col, Typography, Input, Row, message } from 'antd';
+import { Col, Typography, Input, Row, message, InputRef } from 'antd';
 import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import EmptyBox from '../../../components/EmptyBox';
@@ -10,7 +10,7 @@ import { ResponseCode } from '../../../data/common';
 
 const Wechat: React.FC<WechatProps> = (props) => {
   const { t } = useTranslation();
-  const inputRef = useRef<Input | null>(null);
+  const inputRef = useRef<InputRef | null>(null);
   const [editWechat, { setTrue: startEditWechat, setFalse: closeEditWechat }] =
     useBoolean(false);
 
@@ -58,8 +58,8 @@ const Wechat: React.FC<WechatProps> = (props) => {
             <EmptyBox if={!!props.userInfo?.wechat_id} defaultNode="--">
               {props.userInfo?.wechat_id}
             </EmptyBox>
-            <Typography.Link onClick={startEditWechat}>
-              <EditOutlined />
+            <Typography.Link>
+              <EditOutlined onClick={startEditWechat} />
             </Typography.Link>
           </Typography.Text>
         </div>

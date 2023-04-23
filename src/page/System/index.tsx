@@ -1,4 +1,4 @@
-import { Card, PageHeader, Space, Tabs } from 'antd';
+import { Card, PageHeader, Space, Tabs, TabsProps } from 'antd';
 import { useTranslation } from 'react-i18next';
 import GlobalSetting from './GlobalSetting';
 import LDAPSetting from './LDAPSetting';
@@ -20,6 +20,55 @@ const System = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
+  const tabsItems: TabsProps['items'] = [
+    {
+      label: t('system.tabPaneTitle.pushNotification'),
+      key: 'pushNotification',
+      children: (
+        <Space direction="vertical" className="full-width-element">
+          <SMTPSetting />
+          <Wechat />
+          <LarkSetting />
+        </Space>
+      ),
+    },
+    {
+      label: t('system.tabPaneTitle.processConnection'),
+      key: 'processConnection',
+      children: <DingTalkSetting />,
+    },
+    {
+      label: t('system.tabPaneTitle.loginConnection'),
+      key: 'loginConnection',
+      children: (
+        <Space direction="vertical" className="full-width-element">
+          <LDAPSetting />
+          <Oauth />
+        </Space>
+      ),
+    },
+    {
+      label: t('system.tabPaneTitle.globalConfiguration'),
+      key: 'globalConfiguration',
+      children: <GlobalSetting />,
+    },
+    /* IFTRUE_isEE */
+    {
+      label: t('system.tabPaneTitle.license'),
+      key: 'license',
+      children: <License />,
+    },
+    /* FITRUE_isEE */
+
+    /* IFTRUE_isEE */
+    {
+      label: t('system.tabPaneTitle.personalize'),
+      key: 'personalize',
+      children: <PersonalizeSetting />,
+    },
+    /* FITRUE_isEE */
+  ];
+
   useEffect(() => {
     dispatch(
       initSystemModalStatus({
@@ -38,54 +87,7 @@ const System = () => {
       </PageHeader>
       <section className="padding-content">
         <Card>
-          <Tabs>
-            <Tabs.TabPane
-              tab={t('system.tabPaneTitle.pushNotification')}
-              key="pushNotification"
-            >
-              <Space direction="vertical" className="full-width-element">
-                <SMTPSetting />
-                <Wechat />
-                <LarkSetting />
-              </Space>
-            </Tabs.TabPane>
-            <Tabs.TabPane
-              tab={t('system.tabPaneTitle.processConnection')}
-              key="processConnection"
-            >
-              <DingTalkSetting />
-            </Tabs.TabPane>
-            <Tabs.TabPane
-              tab={t('system.tabPaneTitle.loginConnection')}
-              key="loginConnection"
-            >
-              <Space direction="vertical" className="full-width-element">
-                <LDAPSetting />
-                <Oauth />
-              </Space>
-            </Tabs.TabPane>
-            <Tabs.TabPane
-              tab={t('system.tabPaneTitle.globalConfiguration')}
-              key="globalCOnfiguration"
-            >
-              <GlobalSetting />
-            </Tabs.TabPane>
-
-            {/* IFTRUE_isEE */}
-            <Tabs.TabPane tab={t('system.tabPaneTitle.license')} key="license">
-              <License />
-            </Tabs.TabPane>
-            {/* FITRUE_isEE */}
-
-            {/* IFTRUE_isEE */}
-            <Tabs.TabPane
-              tab={t('system.tabPaneTitle.personalize')}
-              key="personalize"
-            >
-              <PersonalizeSetting />
-            </Tabs.TabPane>
-            {/* FITRUE_isEE */}
-          </Tabs>
+          <Tabs items={tabsItems} />
         </Card>
       </section>
     </>

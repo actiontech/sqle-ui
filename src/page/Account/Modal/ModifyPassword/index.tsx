@@ -3,10 +3,10 @@ import { Button, Form, Input, Space } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import Modal from 'antd/lib/modal/Modal';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
 import user from '../../../../api/user';
 import { ModalFormLayout, ResponseCode } from '../../../../data/common';
 import { ModalName } from '../../../../data/ModalName';
+import useNavigate from '../../../../hooks/useNavigate';
 import useUserInfo from '../../../../hooks/useUserInfo';
 import { ModifyPasswordFormFields, ModifyPasswordProps } from './index.type';
 
@@ -14,7 +14,7 @@ const ModifyPasswordModal: React.FC<ModifyPasswordProps> = (props) => {
   const { t } = useTranslation();
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
     useBoolean();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [form] = useForm<ModifyPasswordFormFields>();
   const { clearUserInfo } = useUserInfo();
 
@@ -28,7 +28,7 @@ const ModifyPasswordModal: React.FC<ModifyPasswordProps> = (props) => {
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           clearUserInfo();
-          history.replace('/login');
+          navigate('/login', { replace: true });
         } else {
           submitFinish();
         }
@@ -45,7 +45,7 @@ const ModifyPasswordModal: React.FC<ModifyPasswordProps> = (props) => {
 
   return (
     <Modal
-      visible={props.visible}
+      open={props.visible}
       title={t('account.modifyPassword.title')}
       footer={null}
       onCancel={close}

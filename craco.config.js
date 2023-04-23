@@ -83,10 +83,10 @@ module.exports = {
   devServer: (config, { proxy }) => {
     config.proxy = {
       ...(function () {
-        const url = [];
+        const url = ['/static/media'];
         return url.reduce((acc, cur) => {
           acc[cur] = {
-            target: 'http://localhost:4200',
+            target: 'http://124.70.158.246:8889',
             secure: false,
             changeOrigin: true,
             ws: true,
@@ -99,7 +99,7 @@ module.exports = {
         const res = {};
         for (let i = 0; i < 10; i++) {
           res[`/v${i}`] = {
-            target: 'http://10.186.63.35:10000',
+            target: 'http://124.70.158.246:8889',
             secure: false,
             changeOrigin: true,
             ws: true,

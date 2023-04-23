@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test useNavigate correctly encodes the param in the URL and decodes the param when it is used 1`] = `
+<div>
+  <h1>
+    Blog: 
+    react router
+  </h1>
+</div>
+`;

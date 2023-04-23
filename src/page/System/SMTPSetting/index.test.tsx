@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor, screen } from '@testing-library/react';
+import { fireEvent, render, act, screen } from '@testing-library/react';
 import SMTPSetting from '.';
 import configuration from '../../../api/configuration';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
@@ -58,9 +58,8 @@ describe('System/SMTPSetting', () => {
     mockGetSMTPInfo();
     const { container } = render(<SMTPSetting />);
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -69,9 +68,8 @@ describe('System/SMTPSetting', () => {
     const updateSpy = mockUpdateSMTPInfo();
 
     render(<SMTPSetting />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('common.modify'));
 
     fireEvent.click(screen.getByLabelText('system.smtp.enable'));
@@ -85,9 +83,7 @@ describe('System/SMTPSetting', () => {
       target: { value: 'temp' },
     });
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
@@ -103,9 +99,8 @@ describe('System/SMTPSetting', () => {
     expect(screen.getByText('common.cancel').parentNode).toHaveAttribute(
       'disabled'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByText('common.submit').parentNode).not.toHaveClass(
       'ant-btn-loading'
     );
@@ -118,83 +113,71 @@ describe('System/SMTPSetting', () => {
     mockGetSMTPInfo();
     const testSpy = mockSuccessTestEmail();
     render(<SMTPSetting />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('system.smtp.test'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.input(screen.getByLabelText('system.smtp.receiver'), {
       target: { value: '123@123.com' },
     });
     fireEvent.click(screen.getByText('common.ok'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(testSpy).toBeCalledTimes(1);
     expect(testSpy).toBeCalledWith({
       recipient_addr: '123@123.com',
     });
-    expect(screen.queryByText('system.smtp.testing')).toBeInTheDocument();
+    expect(screen.getByText('system.smtp.testing')).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('system.smtp.test'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.click(screen.getByText('common.ok'));
 
     expect(testSpy).toBeCalledTimes(1);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.queryByText('system.smtp.testing')).not.toBeInTheDocument();
-    expect(screen.queryByText('system.smtp.testSuccess')).toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    expect(screen.getByText('system.smtp.testSuccess')).toBeInTheDocument();
+    await act(async () => jest.advanceTimersByTime(3000));
   });
 
   test('should show error message when request is_smtp_send_normal is equal false', async () => {
     mockGetSMTPInfo();
     const testSpy = mockErrorTestEmail();
     render(<SMTPSetting />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('system.smtp.test'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.input(screen.getByLabelText('system.smtp.receiver'), {
       target: { value: '123@123.com' },
     });
     fireEvent.click(screen.getByText('common.ok'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(testSpy).toBeCalledTimes(1);
     expect(testSpy).toBeCalledWith({
       recipient_addr: '123@123.com',
     });
-    expect(screen.queryByText('system.smtp.testing')).toBeInTheDocument();
+    expect(screen.getByText('system.smtp.testing')).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('system.smtp.test'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.click(screen.getByText('common.ok'));
 
     expect(testSpy).toBeCalledTimes(1);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.queryByText('system.smtp.testing')).not.toBeInTheDocument();
     expect(
       screen.queryByText('system.smtp.testSuccess')
     ).not.toBeInTheDocument();
-    expect(screen.queryByText('error message')).toBeInTheDocument();
+    expect(screen.getByText('error message')).toBeInTheDocument();
   });
 });

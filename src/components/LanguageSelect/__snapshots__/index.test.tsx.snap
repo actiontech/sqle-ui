@@ -168,7 +168,7 @@ exports[`LanguageSelect should render all support language option in select 2`] 
     <div>
       <div
         class="ant-select-dropdown login-page-language"
-        style="opacity: 0; pointer-events: none; min-width: 0;"
+        style="opacity: 0; min-width: 0;"
       >
         <div>
           <div

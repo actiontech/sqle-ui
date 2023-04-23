@@ -1,4 +1,4 @@
-import { waitFor } from '@testing-library/react';
+import { act } from '@testing-library/react';
 import { shallow } from 'enzyme';
 import { useParams } from 'react-router-dom';
 import UpdateWorkflowTemplate from '.';
@@ -59,9 +59,8 @@ describe('UpdateWorkflowTemplate', () => {
     expect(getWorkflowTemplateSpy).toBeCalledWith({
       project_name: projectName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 

@@ -2,11 +2,10 @@ import Login from '.';
 import { SupportLanguage } from '../../locale';
 import {
   renderWithTheme,
-  renderWithThemeAndServerRouter,
+  renderWithThemeAndRouter,
 } from '../../testUtils/customRender';
-import { mockUseDispatch, mockUseSelector } from '../../testUtils/mockRedux';
-import { createMemoryHistory } from 'history';
-import { fireEvent, screen, act, waitFor } from '@testing-library/react';
+
+import { fireEvent, screen, act } from '@testing-library/react';
 import user from '../../api/user';
 import { resolveThreeSecond } from '../../testUtils/mockRequest';
 import configuration from '../../api/configuration';
@@ -15,23 +14,39 @@ import {
   OPEN_CLOUD_BEAVER_URL_PARAM_NAME,
   SQLE_DEFAULT_WEB_TITLE,
 } from '../../data/common';
+import { useDispatch, useSelector } from 'react-redux';
+import useNavigate from '../../hooks/useNavigate';
+import { getHrefByText } from '../../testUtils/customQuery';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useLocation: jest.fn(),
 }));
 
+jest.mock('../../hooks/useNavigate', () => jest.fn());
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
+
 describe('Login', () => {
-  let dispatchMock: jest.Mock;
+  const dispatchMock = jest.fn();
+  const navigateSpy = jest.fn();
   const useLocationMock: jest.Mock = useLocation as jest.Mock;
 
   beforeEach(() => {
-    const temp = mockUseDispatch();
-    dispatchMock = temp.scopeDispatch;
-    mockUseSelector({
-      locale: { language: SupportLanguage.zhCN },
-      system: { webTitle: SQLE_DEFAULT_WEB_TITLE, webLogoUrl: '' },
-    });
+    (useNavigate as jest.Mock).mockImplementation(() => navigateSpy);
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchMock);
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        locale: { language: SupportLanguage.zhCN },
+        system: { webTitle: SQLE_DEFAULT_WEB_TITLE, webLogoUrl: '' },
+      })
+    );
     mockGetOauth2Tips();
     jest.useFakeTimers();
     useLocationMock.mockReturnValue({
@@ -82,47 +97,36 @@ describe('Login', () => {
   test('should render login form', async () => {
     const { container } = renderWithTheme(<Login />);
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
   test('should sent login request when click the login button', async () => {
-    const history = createMemoryHistory();
     const request = mockRequest();
-    history.push('/login');
-    renderWithThemeAndServerRouter(<Login />, undefined, {
-      history,
-    });
+
+    renderWithThemeAndRouter(<Login />);
     fireEvent.input(screen.getByPlaceholderText('common.username'), {
       target: { value: 'root' },
     });
     fireEvent.input(screen.getByPlaceholderText('common.password'), {
       target: { value: '123456' },
     });
-    act(() => {
-      fireEvent.click(screen.getByText('login.login'));
-    });
 
-    await waitFor(() => {
-      jest.runOnlyPendingTimers();
-    });
+    fireEvent.click(screen.getByText('login.login'));
 
-    expect(history.location.pathname).toBe('/login');
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    expect(navigateSpy).toBeCalledTimes(0);
     expect(request).not.toBeCalled();
     expect(
-      screen.queryByText('login.errorMessage.userAgreement')
+      screen.getByText('login.errorMessage.userAgreement')
     ).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('login.userAgreementTips'));
-    act(() => {
-      fireEvent.click(screen.getByText('login.login'));
-    });
+    fireEvent.click(screen.getByText('login.login'));
 
-    await waitFor(() => {
-      jest.runOnlyPendingTimers();
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(request).toBeCalledTimes(1);
     expect(request).toBeCalledWith({
@@ -131,9 +135,7 @@ describe('Login', () => {
     });
     expect(dispatchMock).not.toBeCalled();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(dispatchMock).toBeCalledWith({
       payload: {
@@ -142,18 +144,15 @@ describe('Login', () => {
       },
       type: 'user/updateToken',
     });
-    expect(history.location.pathname).toBe('/');
+    expect(navigateSpy).toBeCalledTimes(1);
+    expect(navigateSpy).toBeCalledWith('home');
   });
 
   test('click oauth login button will jump to `/v1/oauth2/link`', async () => {
     renderWithTheme(<Login />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    expect(screen.getByText('login with QQ').closest('a')).toHaveAttribute(
-      'href',
-      '/v1/oauth2/link'
-    );
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    expect(getHrefByText('login with QQ')).toBe('/v1/oauth2/link');
   });
 
   test('should jump path when url target params is exists', async () => {
@@ -165,46 +164,35 @@ describe('Login', () => {
       key: '5nvxpbdafa',
     });
 
-    const history = createMemoryHistory();
     const request = mockRequest();
-    history.push('/login');
-    renderWithThemeAndServerRouter(<Login />, undefined, {
-      history,
-    });
+    renderWithThemeAndRouter(<Login />);
     fireEvent.input(screen.getByPlaceholderText('common.username'), {
       target: { value: 'root' },
     });
     fireEvent.input(screen.getByPlaceholderText('common.password'), {
       target: { value: '123456' },
     });
-    act(() => {
-      fireEvent.click(screen.getByText('login.login'));
-    });
 
-    await waitFor(() => {
-      jest.runOnlyPendingTimers();
-    });
+    fireEvent.click(screen.getByText('login.login'));
 
-    expect(history.location.pathname).toBe('/login');
+    await act(async () => jest.advanceTimersByTime(0));
+
+    expect(navigateSpy).not.toBeCalled();
+
     expect(request).not.toBeCalled();
     expect(
-      screen.queryByText('login.errorMessage.userAgreement')
+      screen.getByText('login.errorMessage.userAgreement')
     ).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('login.userAgreementTips'));
-    act(() => {
-      fireEvent.click(screen.getByText('login.login'));
-    });
 
-    await waitFor(() => {
-      jest.runOnlyPendingTimers();
-    });
+    fireEvent.click(screen.getByText('login.login'));
+    await act(async () => jest.advanceTimersByTime(0));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    expect(history.location.pathname).toBe('/rule');
+    expect(navigateSpy).toBeCalledTimes(1);
+    expect(navigateSpy).toBeCalledWith('/rule');
   });
 
   test('should set url params when url search is "/sqlQuery"', async () => {
@@ -216,47 +204,35 @@ describe('Login', () => {
       key: '5nvxpbdafa',
     });
 
-    const history = createMemoryHistory();
     const request = mockRequest();
-    history.push('/login');
-    renderWithThemeAndServerRouter(<Login />, undefined, {
-      history,
-    });
+    renderWithThemeAndRouter(<Login />);
     fireEvent.input(screen.getByPlaceholderText('common.username'), {
       target: { value: 'root' },
     });
     fireEvent.input(screen.getByPlaceholderText('common.password'), {
       target: { value: '123456' },
     });
-    act(() => {
-      fireEvent.click(screen.getByText('login.login'));
-    });
+    fireEvent.click(screen.getByText('login.login'));
 
-    await waitFor(() => {
-      jest.runOnlyPendingTimers();
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
-    expect(history.location.pathname).toBe('/login');
+    expect(navigateSpy).not.toBeCalled();
+
     expect(request).not.toBeCalled();
     expect(
-      screen.queryByText('login.errorMessage.userAgreement')
+      screen.getByText('login.errorMessage.userAgreement')
     ).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('login.userAgreementTips'));
-    act(() => {
-      fireEvent.click(screen.getByText('login.login'));
-    });
+    fireEvent.click(screen.getByText('login.login'));
 
-    await waitFor(() => {
-      jest.runOnlyPendingTimers();
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    expect(history.location.pathname).toBe('/sqlQuery');
-    expect(history.location.search).toBe(
-      `?${OPEN_CLOUD_BEAVER_URL_PARAM_NAME}=true`
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    expect(navigateSpy).toBeCalledTimes(1);
+    expect(navigateSpy).toBeCalledWith(
+      `sqlQuery?${OPEN_CLOUD_BEAVER_URL_PARAM_NAME}=true`
     );
   });
 });

@@ -3,7 +3,7 @@ import { Button, Card, Result, Row } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import {
   IRuleReqV1,
   IRuleResV1,
@@ -13,6 +13,8 @@ import ruleTemplateService from '../../../api/rule_template';
 import { ResponseCode } from '../../../data/common';
 import RuleTemplateForm from '../RuleTemplateForm';
 import { RuleTemplateBaseInfoFields } from '../RuleTemplateForm/BaseInfoForm/index.type';
+import { Link } from '../../../components/Link';
+import BackButton from '../../../components/BackButton';
 
 const UpdateRuleTemplate = () => {
   const { t } = useTranslation();
@@ -75,7 +77,7 @@ const UpdateRuleTemplate = () => {
   React.useEffect(() => {
     ruleTemplateService
       .getRuleTemplateV1({
-        rule_template_name: urlParams.templateName,
+        rule_template_name: urlParams.templateName ?? '',
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -90,11 +92,7 @@ const UpdateRuleTemplate = () => {
     <>
       <Card
         title={t('ruleTemplate.updateRuleTemplate.title')}
-        extra={[
-          <Link to="/rule/template" key="back">
-            <Button type="primary">{t('common.back')}</Button>
-          </Link>,
-        ]}
+        extra={[<BackButton key="back" />]}
       >
         <RuleTemplateForm
           form={form}
@@ -117,7 +115,7 @@ const UpdateRuleTemplate = () => {
             })}
           />
           <Row justify="center">
-            <Link to="/rule/template">
+            <Link to="rule/template">
               <Button type="primary">{t('ruleTemplate.backToList')}</Button>
             </Link>
           </Row>

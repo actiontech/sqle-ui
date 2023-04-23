@@ -88,7 +88,7 @@ const ImportModal = () => {
   return (
     <Modal
       title={t('system.license.import')}
-      visible={visible}
+      open={visible}
       closable={false}
       width={ModalSize.big}
       footer={

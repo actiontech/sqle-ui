@@ -1,9 +1,9 @@
 import {
   act,
   fireEvent,
+  getByLabelText,
   render,
   screen,
-  waitFor,
 } from '@testing-library/react';
 import moment from 'moment';
 import { IMaintenanceTimeResV1 } from '../../../../api/common';
@@ -58,9 +58,9 @@ describe('Order/AuditResult/ScheduleTimeModal', () => {
     );
 
     expect(
-      screen.queryAllByText('order.operator.onlineRegularly')[0]
+      screen.getAllByText('order.operator.onlineRegularly')[0]
     ).toBeInTheDocument();
-    act(() => {
+    await act(async () => {
       fireEvent.click(
         screen.queryAllByText('order.operator.onlineRegularly')[0]
       );
@@ -78,9 +78,12 @@ describe('Order/AuditResult/ScheduleTimeModal', () => {
           .toString(),
       },
     });
-    fireEvent.click(
-      getBySelector('.ant-btn-primary', getBySelector('.ant-picker-footer'))
-    );
+    await act(async () => {
+      fireEvent.click(
+        getBySelector('.ant-btn-primary', getBySelector('.ant-picker-footer'))
+      );
+    });
+
     expect(mockSubmit).toBeCalledTimes(0);
     expect(screen.getByTestId('confirm-button')).toHaveTextContent(
       'order.operator.onlineRegularly'
@@ -95,9 +98,8 @@ describe('Order/AuditResult/ScheduleTimeModal', () => {
         .toString()
     );
     fireEvent.click(screen.getByTestId('confirm-button'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(mockSubmit).toBeCalledTimes(1);
     expect(screen.getByTestId('confirm-button')).toHaveClass('ant-btn-loading');
     expect(mockSubmit).toBeCalledWith(
@@ -109,9 +111,8 @@ describe('Order/AuditResult/ScheduleTimeModal', () => {
         .format('YYYY-MM-DDTHH:mm:ssZ')
         .toString()
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByTestId('confirm-button')).not.toHaveClass(
       'ant-btn-loading'
     );
@@ -138,14 +139,11 @@ describe('Order/AuditResult/ScheduleTimeModal', () => {
       />
     );
 
-    fireEvent.mouseDown(getBySelector('.ant-picker'));
-    fireEvent.mouseUp(getBySelector('.ant-picker'));
+    fireEvent.click(getBySelector('.ant-picker'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
-    expect(getBySelector('.ant-picker-time-panel')).toMatchSnapshot();
+    expect(getBySelector('.ant-picker-datetime-panel')).toMatchSnapshot();
   });
 
   test('user should set any time when maintenanceTime is empty', async () => {
@@ -161,16 +159,13 @@ describe('Order/AuditResult/ScheduleTimeModal', () => {
       />
     );
 
-    fireEvent.mouseDown(getBySelector('.ant-picker'));
-    fireEvent.mouseUp(getBySelector('.ant-picker'));
+    fireEvent.click(getBySelector('.ant-picker'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.click(screen.getAllByText('30')[1]);
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(getBySelector('.ant-picker-time-panel')).toMatchSnapshot();
     nowSpy.mockRestore();
   });
@@ -188,9 +183,9 @@ describe('Order/AuditResult/ScheduleTimeModal', () => {
     warnSpy.mockImplementation(() => void 0);
     fireEvent.mouseDown(getBySelector('#schedule_time'));
     fireEvent.click(screen.getAllByText('00')[2]);
-    fireEvent.click(screen.getByText('Ok'));
-    await waitFor(() => {
-      jest.runOnlyPendingTimers();
+    fireEvent.click(screen.getByText('OK'));
+    await act(async () => {
+      return jest.runOnlyPendingTimers();
     });
     expect(warnSpy).toBeCalledTimes(1);
     expect(warnSpy).toBeCalledWith('async-validator:', [

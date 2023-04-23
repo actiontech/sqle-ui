@@ -1,29 +1,37 @@
-import { useHistory, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import PlanDetail from '.';
 import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
-import { useTheme } from '@material-ui/styles';
-import { mockUseSelector } from '../../../../testUtils/mockRedux';
+import { useTheme } from '@mui/styles';
+import { useSelector } from 'react-redux';
 import { mockGetAllRules } from '../../../Rule/__test__/utils';
 
-jest.mock('react-router', () => {
+jest.mock('react-router-dom', () => {
   return {
     ...jest.requireActual('react-router'),
     useParams: jest.fn(),
-    useHistory: jest.fn(),
+    useNavigate: jest.fn(),
+    useLocation: jest.fn(),
   };
 });
 
-jest.mock('@material-ui/styles', () => {
+jest.mock('@mui/styles', () => {
   return {
-    ...jest.requireActual('@material-ui/styles'),
+    ...jest.requireActual('@mui/styles'),
     useTheme: jest.fn(),
+  };
+});
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
   };
 });
 
 describe('PlanDetail', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
-  const useHistoryMock: jest.Mock = useHistory as jest.Mock;
+  const useHistoryMock: jest.Mock = useNavigate as jest.Mock;
   const useThemeMock: jest.Mock = useTheme as jest.Mock;
   beforeEach(() => {
     useParamsMock.mockReturnValue({
@@ -31,9 +39,15 @@ describe('PlanDetail', () => {
     });
     useHistoryMock.mockReturnValue({ location: { pathname: '/' } });
     useThemeMock.mockReturnValue({ common: { padding: 24 } });
-    mockUseSelector({
-      projectManage: { archived: false },
-    });
+    (useLocation as jest.Mock).mockImplementation(() => ({
+      pathname: '/auditPlan/detail/:auditPlanName/report/:reportId',
+    }));
+    (useSelector as jest.Mock).mockImplementation((selector) =>
+      selector({
+        projectManage: { archived: false },
+      })
+    );
+
     mockGetAllRules();
   });
 

@@ -26,9 +26,9 @@ i18n.use(initReactI18next).init({
   },
 });
 
-const translation = (key: I18nKey, dic?: Dictionary) => {
+const t = (key: I18nKey, dic?: Dictionary) => {
   return i18n.t(key, dic);
 };
 
-export { SupportLanguage, translation };
+export { SupportLanguage, t };
 export default i18n;

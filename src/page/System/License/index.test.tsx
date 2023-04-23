@@ -1,23 +1,35 @@
-import { act, fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, screen } from '@testing-library/react';
 import License from '.';
 import configuration from '../../../api/configuration';
 import EmitterKey from '../../../data/EmitterKey';
 import { renderWithRedux } from '../../../testUtils/customRender';
-import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 import { licenseList } from './__testData__';
+import { useDispatch, useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('license', () => {
-  let dispatchSpy: jest.SpyInstance;
+  const dispatchSpy = jest.fn();
+
   let getLicenseSpy: jest.SpyInstance;
   beforeEach(() => {
     jest.useFakeTimers();
     getLicenseSpy = mockGetLicense();
-    dispatchSpy = mockUseDispatch().scopeDispatch;
-    mockUseSelector({
-      system: { modalStatus: {} },
-    });
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        system: { modalStatus: {} },
+      })
+    );
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
   });
 
   afterEach(() => {
@@ -46,9 +58,8 @@ describe('license', () => {
     expect(container).toMatchSnapshot();
     expect(getLicenseSpy).toBeCalledTimes(1);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -56,9 +67,8 @@ describe('license', () => {
     const collectSpy = jest.spyOn(configuration, 'GetSQLELicenseInfoV1');
     collectSpy.mockImplementation(() => resolveThreeSecond({}));
     renderWithRedux(<License />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('system.license.collect'));
     expect(collectSpy).toBeCalledTimes(1);
     expect(collectSpy).toBeCalledWith({ responseType: 'blob' });
@@ -66,9 +76,8 @@ describe('license', () => {
 
   it('should open import modal when user click import button', async () => {
     renderWithRedux(<License />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('system.license.import'));
     expect(dispatchSpy).toBeCalledTimes(1);
     expect(dispatchSpy).toBeCalledWith({
@@ -82,9 +91,8 @@ describe('license', () => {
 
   it('should refresh table when receive refresh license event', async () => {
     renderWithRedux(<License />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getLicenseSpy).toBeCalledTimes(1);
     act(() => {
       EventEmitter.emit(EmitterKey.Refresh_License);

@@ -1,49 +1,44 @@
-import { useTheme } from '@material-ui/styles';
+import { useTheme } from '@mui/styles';
 import { Row, Col } from 'antd';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { Route, useHistory, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { IReduxState } from '../../../../store';
-import { Theme } from '../../../../types/theme.type';
 import { useCurrentProjectName } from '../../../ProjectManage/ProjectDetail';
 import { PlanDetailUrlParams } from '../index.type';
 import PlanAuditRecord from './Record';
-import AuditPlanReport from './Report';
 import SqlPool from './SqlPool';
 
 const PlanDetail = () => {
   const urlParams = useParams<PlanDetailUrlParams>();
-  const theme = useTheme<Theme>();
-  const history = useHistory();
+  const theme = useTheme();
   const { projectName } = useCurrentProjectName();
   const projectIsArchive = useSelector(
     (state: IReduxState) => state.projectManage.archived
   );
+  const location = useLocation();
   const hideReportList = useMemo(() => {
-    return history.location.pathname.includes('/report');
-  }, [history.location.pathname]);
+    return location.pathname.includes('/report');
+  }, [location.pathname]);
 
   return (
     <>
       <Row gutter={theme.common.padding} hidden={hideReportList}>
         <Col xxl={16} sm={24} style={{ marginBottom: theme.common.padding }}>
           <SqlPool
-            auditPlanName={urlParams.auditPlanName}
+            auditPlanName={urlParams.auditPlanName ?? ''}
             projectName={projectName}
             projectIsArchive={projectIsArchive}
           />
         </Col>
         <Col xxl={8} sm={24}>
           <PlanAuditRecord
-            auditPlanName={urlParams.auditPlanName}
+            auditPlanName={urlParams.auditPlanName ?? ''}
             projectName={projectName}
           />
         </Col>
       </Row>
-      <Route
-        path="/project/:projectName/auditPlan/detail/:auditPlanName/report/:reportId"
-        component={AuditPlanReport}
-      />
+      <Outlet />
     </>
   );
 };

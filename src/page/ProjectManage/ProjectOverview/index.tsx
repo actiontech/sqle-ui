@@ -2,10 +2,10 @@ import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Button, Card, Col, PageHeader, Row, Spin, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
 import project from '../../../api/project';
 import statistic from '../../../api/statistic';
 import EmptyBox from '../../../components/EmptyBox';
+import useNavigate from '../../../hooks/useNavigate';
 import { useCurrentProjectName } from '../ProjectDetail';
 import ProjectInfoBox from './ProjectInfoBox';
 
@@ -33,7 +33,7 @@ const renderCard = ({
 
 const ProjectOverview: React.FC = () => {
   const { t } = useTranslation();
-  const history = useHistory();
+  const navigate = useNavigate();
   const { projectName } = useCurrentProjectName();
 
   const {
@@ -97,7 +97,7 @@ const ProjectOverview: React.FC = () => {
                 title: t('projectManage.projectOverview.orderTotal'),
                 content: projectStatistics?.workflow_total,
                 handleClick: () => {
-                  history.push(`/project/${projectName}/order`);
+                  navigate(`project/${projectName}/order`);
                 },
               })}
             </Col>
@@ -106,7 +106,7 @@ const ProjectOverview: React.FC = () => {
                 title: t('projectManage.projectOverview.auditPlanTotal'),
                 content: projectStatistics?.audit_plan_total,
                 handleClick: () => {
-                  history.push(`/project/${projectName}/auditPlan`);
+                  navigate(`project/${projectName}/auditPlan`);
                 },
               })}
             </Col>
@@ -115,7 +115,7 @@ const ProjectOverview: React.FC = () => {
                 title: t('projectManage.projectOverview.instanceTotal'),
                 content: projectStatistics?.instance_total,
                 handleClick: () => {
-                  history.push(`/project/${projectName}/data`);
+                  navigate(`project/${projectName}/data`);
                 },
               })}
             </Col>
@@ -124,7 +124,7 @@ const ProjectOverview: React.FC = () => {
                 title: t('projectManage.projectOverview.memberTotal'),
                 content: projectStatistics?.member_total,
                 handleClick: () => {
-                  history.push(`/project/${projectName}/member`);
+                  navigate(`project/${projectName}/member`);
                 },
               })}
             </Col>
@@ -133,7 +133,7 @@ const ProjectOverview: React.FC = () => {
                 title: t('projectManage.projectOverview.ruleTemplateTotal'),
                 content: projectStatistics?.rule_template_total,
                 handleClick: () => {
-                  history.push(`/project/${projectName}/rule/template`);
+                  navigate(`project/${projectName}/rule/template`);
                 },
               })}
             </Col>
@@ -142,7 +142,7 @@ const ProjectOverview: React.FC = () => {
                 title: t('projectManage.projectOverview.whiteListTotal'),
                 content: projectStatistics?.whitelist_total,
                 handleClick: () => {
-                  history.push(`/project/${projectName}/whitelist`);
+                  navigate(`project/${projectName}/whitelist`);
                 },
               })}
             </Col>

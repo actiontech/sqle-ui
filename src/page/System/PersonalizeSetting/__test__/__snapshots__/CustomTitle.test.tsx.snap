@@ -30,6 +30,7 @@ exports[`test CustomTitle should match snapshot 1`] = `
               aria-label="edit"
               class="anticon anticon-edit"
               role="img"
+              tabindex="-1"
             >
               <svg
                 aria-hidden="true"

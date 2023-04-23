@@ -1,12 +1,20 @@
 import { DownOutlined } from '@ant-design/icons';
-import { Divider, Dropdown, Menu, Popconfirm, Tag, Typography } from 'antd';
-import { Link } from 'react-router-dom';
+import {
+  Divider,
+  Dropdown,
+  Menu,
+  MenuProps,
+  Popconfirm,
+  Tag,
+  Typography,
+} from 'antd';
 import { IInstanceResV2 } from '../../../api/common';
 import EmptyBox from '../../../components/EmptyBox';
-import i18n from '../../../locale';
+import { t } from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import { timeAddZero } from '../../../utils/Common';
 import { RuleUrlParamKey } from '../../Rule/useRuleFilterForm';
+import { Link } from '../../../components/Link';
 
 export const dataSourceColumns = (
   deleteDatabase: (instanceName: string) => void,
@@ -18,11 +26,11 @@ export const dataSourceColumns = (
   return [
     {
       dataIndex: 'instance_name',
-      title: () => i18n.t('dataSource.databaseList.instanceName'),
+      title: () => t('dataSource.databaseList.instanceName'),
     },
     {
       dataIndex: 'address',
-      title: () => i18n.t('dataSource.databaseList.address'),
+      title: () => t('dataSource.databaseList.address'),
       render(_, record) {
         if (!record.db_host || !record.db_port) {
           return '--';
@@ -32,34 +40,34 @@ export const dataSourceColumns = (
     },
     {
       dataIndex: 'source',
-      title: () => i18n.t('dataSource.databaseList.source'),
+      title: () => t('dataSource.databaseList.source'),
     },
     {
       dataIndex: 'desc',
-      title: () => i18n.t('dataSource.databaseList.describe'),
+      title: () => t('dataSource.databaseList.describe'),
     },
     {
       dataIndex: 'db_type',
-      title: () => i18n.t('dataSource.databaseList.type'),
+      title: () => t('dataSource.databaseList.type'),
     },
     {
       dataIndex: 'rule_template',
-      title: () => i18n.t('dataSource.databaseList.ruleTemplate'),
+      title: () => t('dataSource.databaseList.ruleTemplate'),
       render(ruleTemplate: IInstanceResV2['rule_template']) {
         if (!ruleTemplate?.name) {
           return '';
         }
 
         const path = ruleTemplate.is_global_rule_template
-          ? `/rule?${RuleUrlParamKey.ruleTemplateName}=${ruleTemplate.name}`
-          : `/rule?${RuleUrlParamKey.projectName}=${projectName}&${RuleUrlParamKey.ruleTemplateName}=${ruleTemplate.name}`;
+          ? `rule?${RuleUrlParamKey.ruleTemplateName}=${ruleTemplate.name}`
+          : `rule?${RuleUrlParamKey.projectName}=${projectName}&${RuleUrlParamKey.ruleTemplateName}=${ruleTemplate.name}`;
 
         return <Link to={path}>{ruleTemplate.name}</Link>;
       },
     },
     {
       dataIndex: 'maintenance_times',
-      title: () => i18n.t('dataSource.databaseList.maintenanceTime'),
+      title: () => t('dataSource.databaseList.maintenanceTime'),
       render(value: IInstanceResV2['maintenance_times']) {
         return value?.map((t, i) => (
           <Tag key={i}>
@@ -73,20 +81,27 @@ export const dataSourceColumns = (
     },
     {
       dataIndex: 'operate',
-      title: i18n.t('common.operate'),
+      title: t('common.operate'),
       width: actionPermission && !projectIsArchive ? 180 : 80,
       render: (_, record) => {
+        const menuItems: MenuProps['items'] = [
+          {
+            key: 'test-connection',
+            onClick: () => testDatabaseConnection(record.instance_name ?? ''),
+            label: t('dataSource.dataSourceForm.testDatabaseConnection'),
+          },
+        ];
         return (
           <>
             <EmptyBox if={actionPermission && !projectIsArchive}>
               <Link
-                to={`/project/${projectName}/data/update/${record.instance_name}`}
+                to={`project/${projectName}/data/update/${record.instance_name}`}
               >
-                {i18n.t('common.edit')}
+                {t('common.edit')}
               </Link>
               <Divider type="vertical" />
               <Popconfirm
-                title={i18n.t('dataSource.deleteDatabase.confirmMessage', {
+                title={t('dataSource.deleteDatabase.confirmMessage', {
                   name: record.instance_name,
                 })}
                 onConfirm={deleteDatabase.bind(
@@ -95,29 +110,15 @@ export const dataSourceColumns = (
                 )}
               >
                 <Typography.Link type="danger">
-                  {i18n.t('common.delete')}
+                  {t('common.delete')}
                 </Typography.Link>
               </Popconfirm>
               <Divider type="vertical" />
             </EmptyBox>
 
-            <Dropdown
-              overlay={
-                <Menu>
-                  <Menu.Item
-                    key="test-connection"
-                    onClick={testDatabaseConnection.bind(
-                      null,
-                      record.instance_name ?? ''
-                    )}
-                  >
-                    {i18n.t('dataSource.dataSourceForm.testDatabaseConnection')}
-                  </Menu.Item>
-                </Menu>
-              }
-            >
+            <Dropdown menu={{ items: menuItems }}>
               <Typography.Link>
-                {i18n.t('common.more')}
+                {t('common.more')}
                 <DownOutlined />
               </Typography.Link>
             </Dropdown>

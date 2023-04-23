@@ -1,15 +1,15 @@
-import { Menu } from 'antd';
+import { MenuProps } from 'antd';
 import { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
 import { ProjectDetailUrlParamType } from '..';
 import { IProjectDetailItem } from '../../../../api/common';
 import { SystemRole } from '../../../../data/common';
-import i18n from '../../../../locale';
+import { t } from '../../../../locale';
 import {
   ProjectDetailRouterItemKeyLiteral,
-  RouterItem,
+  RouterConfigItem,
 } from '../../../../types/router.type';
 import ProjectDetailLayout from './Layout';
+import { Link } from '../../../../components/Link';
 
 export type ProjectDetailLayoutProps = {
   children: ReactNode;
@@ -21,51 +21,61 @@ export type ProjectInfoBoxProps = {
 };
 
 export const generateNavigateMenu = (
-  config: Array<RouterItem<ProjectDetailRouterItemKeyLiteral>>,
+  config: Array<RouterConfigItem<ProjectDetailRouterItemKeyLiteral>>,
   userRole: SystemRole | '',
   projectName: string
-) => {
-  return config.map((route) => {
-    if (Array.isArray(route.role) && !route.role?.includes(userRole)) {
-      return null;
-    }
-    if (route.hideInSliderMenu) {
-      return null;
-    }
-    if (!!route.components) {
-      return (
-        <Menu.SubMenu
-          key={route.key}
-          icon={route.icon}
-          title={route.labelWithoutI18n ?? i18n.t(route.label)}
-        >
-          {generateNavigateMenu(route.components, userRole, projectName)}
-        </Menu.SubMenu>
-      );
-    }
+): MenuProps['items'] => {
+  return config.reduce<MenuProps['items']>((acc, route) => {
+    // eslint-disable-next-line no-lone-blocks
+    {
+      if (Array.isArray(route.role) && !route.role?.includes(userRole)) {
+        return acc;
+      }
+      if (route.hideInSliderMenu) {
+        return acc;
+      }
+      if (!!route.children && !route.hideChildrenInSliderMenu) {
+        return [
+          ...(acc ?? []),
+          {
+            key: route.key,
+            icon: route.icon,
+            label: route.labelWithoutI18n ?? t(route.label!),
+            children: generateNavigateMenu(
+              route.children,
+              userRole,
+              projectName
+            ),
+          },
+        ];
+      }
 
-    if (!!route.groups) {
-      return route.groups.map((v) => {
-        return (
-          <Menu.ItemGroup title={v.title} key={v.title}>
-            {generateNavigateMenu(v.values, userRole, projectName)}
-          </Menu.ItemGroup>
-        );
-      });
-    }
+      if (!!route.groups) {
+        return route.groups.map((v) => {
+          return {
+            type: 'group',
+            key: v.title,
+            label: v.title,
+            children: generateNavigateMenu(v.values, userRole, projectName),
+          };
+        });
+      }
 
-    return (
-      <Menu.Item
-        key={route.key}
-        icon={route.icon}
-        title={route.labelWithoutI18n ?? i18n.t(route.label)}
-      >
-        <Link to={(route.path as string).replace(':projectName', projectName)}>
-          {route.labelWithoutI18n ?? i18n.t(route.label)}
-        </Link>
-      </Menu.Item>
-    );
-  });
+      return [
+        ...(acc ?? []),
+        {
+          key: route.key,
+          icon: route.icon,
+          title: route.labelWithoutI18n ?? t(route.label!),
+          label: (
+            <Link to={`project/${projectName}/${route.path}`}>
+              {route.labelWithoutI18n ?? t(route.label!)}
+            </Link>
+          ),
+        },
+      ];
+    }
+  }, []);
 };
 
 export default ProjectDetailLayout;

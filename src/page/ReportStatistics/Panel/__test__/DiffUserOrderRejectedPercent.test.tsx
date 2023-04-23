@@ -1,6 +1,5 @@
-import { render, waitFor } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import statistic from '../../../../api/statistic';
-import { mockUseSelector } from '../../../../testUtils/mockRedux';
 import {
   resolveErrorThreeSecond,
   resolveThreeSecond,
@@ -8,9 +7,17 @@ import {
 import reportStatisticsData from '../../index.data';
 import DiffUserOrderRejectedPercent from '../DiffUserOrderRejectedPercent';
 import mockRequestData from './mockRequestData';
+import { useSelector } from 'react-redux';
 
 const { tableLimit } = reportStatisticsData;
 const { DiffUserOrderRejectedPercentData } = mockRequestData;
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+  };
+});
 
 describe('test DiffUserOrderRejectedPercent', () => {
   const mockGetTaskRejectedPercentGroupByCreatorV1 = () => {
@@ -36,9 +43,12 @@ describe('test DiffUserOrderRejectedPercent', () => {
 
   beforeEach(() => {
     jest.useFakeTimers();
-    mockUseSelector({
-      reportStatistics: { refreshFlag: false },
-    });
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        reportStatistics: { refreshFlag: false },
+      })
+    );
   });
 
   afterEach(() => {
@@ -50,18 +60,16 @@ describe('test DiffUserOrderRejectedPercent', () => {
   test('should match snapshot', async () => {
     mockGetTaskRejectedPercentGroupByCreatorV1();
     const { container } = render(<DiffUserOrderRejectedPercent />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
   test('should match snapshot when request goes wrong', async () => {
     mockErrorGetTaskRejectedPercentGroupByCreatorV1();
     const { container } = render(<DiffUserOrderRejectedPercent />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -73,8 +81,6 @@ describe('test DiffUserOrderRejectedPercent', () => {
     expect(getTaskRejectedPercentGroupByCreatorV1Spy).toBeCalledWith({
       limit: tableLimit,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
   });
 });

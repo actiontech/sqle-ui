@@ -1,9 +1,9 @@
 import React from 'react';
-import { RouteProps } from 'react-router-dom';
+import { Navigate, RouteObject } from 'react-router-dom';
 import {
   GlobalRouterItemKeyLiteral,
   ProjectDetailRouterItemKeyLiteral,
-  RouterItem,
+  RouterConfigItem,
 } from '../types/router.type';
 import {
   PieChartOutlined,
@@ -12,7 +12,6 @@ import {
   DatabaseOutlined,
   AuditOutlined,
   ConsoleSqlOutlined,
-  BarsOutlined,
   ProfileOutlined,
   SettingOutlined,
   NodeIndexOutlined,
@@ -155,248 +154,463 @@ const OperationRecord = React.lazy(
     import(/* webpackChunkName: "OperationRecord" */ '../page/OperationRecord')
 );
 
-export const unAuthRouter: Array<RouteProps & { key: string }> = [
+const CreateAuditPlan = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "CreateAuditPlan" */ '../page/AuditPlan/CreatePlan'
+    )
+);
+const AuditPlanReport = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "AuditPlanReport" */ '../page/AuditPlan/PlanDetail/Detail/Report'
+    )
+);
+const AuditPlanList = React.lazy(
+  () =>
+    import(/* webpackChunkName: "AuditPlanList" */ '../page/AuditPlan/PlanList')
+);
+const UpdateAuditPlan = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "AuditPlanList" */ '../page/AuditPlan/UpdatePlan'
+    )
+);
+const AddDataSource = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "AddDataSource" */ '../page/DataSource/AddDataSource'
+    )
+);
+const DataSourceList = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "DataSourceList" */ '../page/DataSource/DataSourceList'
+    )
+);
+
+const UpdateDataSource = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "UpdateDataSource" */ '../page/DataSource/UpdateDataSource'
+    )
+);
+
+const GlobalCreateRuleTemplate = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "GlobalCreateRuleTemplate" */ '../page/GlobalRuleTemplate/CreateRuleTemplate'
+    )
+);
+
+const GlobalImportRuleTemplate = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "GlobalImportRuleTemplate" */ '../page/GlobalRuleTemplate/ImportRuleTemplate'
+    )
+);
+
+const GlobalRuleTemplateList = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "GlobalRuleTemplateList" */ '../page/GlobalRuleTemplate/RuleTemplateList'
+    )
+);
+
+const GlobalUpdateRuleTemplate = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "GlobalUpdateRuleTemplate" */ '../page/GlobalRuleTemplate/UpdateRuleTemplate'
+    )
+);
+
+const CreateRuleTemplate = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "CreateRuleTemplate" */ '../page/RuleTemplate/CreateRuleTemplate'
+    )
+);
+
+const ImportRuleTemplate = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "ImportRuleTemplate" */ '../page/RuleTemplate/ImportRuleTemplate'
+    )
+);
+
+const RuleTemplateList = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "RuleTemplateList" */ '../page/RuleTemplate/RuleTemplateList'
+    )
+);
+
+const UpdateRuleTemplate = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "UpdateRuleTemplate" */ '../page/RuleTemplate/UpdateRuleTemplate'
+    )
+);
+
+const UpdateWorkflowTemplate = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "UpdateWorkflowTemplate" */ '../page/WorkflowTemplate/UpdateWorkflowTemplate'
+    )
+);
+
+const WorkflowTemplateDetail = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "WorkflowTemplateDetail" */ '../page/WorkflowTemplate/WorkflowTemplateDetail'
+    )
+);
+
+export const unAuthRouter: RouteObject[] = [
   {
     path: '/login',
-    component: Login,
-    exact: true,
-    key: 'login',
+    element: <Login />,
   },
   {
     path: '/user/bind',
-    component: BindUser,
-    exact: true,
-    key: 'bindUser',
+    element: <BindUser />,
+  },
+  {
+    path: '*',
+    element: <Navigate to="/login" />,
   },
 ];
 
-export const globalRouterConfig: RouterItem<GlobalRouterItemKeyLiteral>[] = [
+export const projectDetailRouterConfig: RouterConfigItem<ProjectDetailRouterItemKeyLiteral>[] =
+  [
+    {
+      label: 'menu.projectOverview',
+      key: 'projectOverview',
+      icon: <ProjectOutlined />,
+      path: 'overview',
+      element: <ProjectOverview />,
+    },
+    {
+      label: 'menu.order',
+      key: 'order',
+      icon: <ConsoleSqlOutlined />,
+      hideChildrenInSliderMenu: true,
+      path: 'order',
+      children: [
+        {
+          index: true,
+          element: <OrderList />,
+          key: 'orderList',
+        },
+        {
+          path: 'create',
+          element: <CreateOrder />,
+          icon: <DesktopOutlined />,
+          key: 'orderCreate',
+        },
+        {
+          path: ':orderId',
+          element: <OrderDetail />,
+          key: 'orderDetail',
+        },
+        /* IFTRUE_isEE */
+        {
+          path: ':taskId/:sqlNum/analyze',
+          label: 'menu.orderSqlAnalyze',
+          hideInSliderMenu: true,
+          element: <OrderSqlAnalyze />,
+          key: 'orderAnalyze',
+        },
+        /* FITRUE_isEE */
+      ] as RouterConfigItem<ProjectDetailRouterItemKeyLiteral>[],
+    },
+    {
+      key: 'plane',
+      label: 'menu.auditPlane',
+      icon: <CiCircleOutlined />,
+      element: <AuditPlan />,
+      children: [
+        {
+          key: 'auditPlan',
+          label: 'menu.auditPlaneList',
+          path: 'auditPlan',
+          hideChildrenInSliderMenu: true,
+          children: [
+            {
+              index: true,
+              element: <AuditPlanList />,
+              key: 'auditPlan',
+            },
+            {
+              path: 'create',
+              element: <CreateAuditPlan />,
+              key: 'auditPlanCreate',
+            },
+            {
+              path: 'update/:auditPlanName',
+              element: <UpdateAuditPlan />,
+              key: 'auditPlanUpdate',
+            },
+            {
+              path: 'detail/:auditPlanName',
+              key: 'auditPlanDetail',
+              label: 'menu.auditPlane',
+              hideInSliderMenu: true,
+              element: <AuditPlanDetail />,
+              children: [
+                {
+                  path: 'report/:reportId',
+                  key: 'auditPlanDetailReport',
+                  hideInSliderMenu: true,
+                  element: <AuditPlanReport />,
+                },
+              ],
+            },
+            /* IFTRUE_isEE */
+            {
+              path: ':reportId/:sqlNum/:auditPlanName/analyze',
+              key: 'auditPlanDetail',
+              label: 'menu.auditPlanSqlAnalyze',
+              element: <AuditPlanSqlAnalyze />,
+              hideInSliderMenu: true,
+            },
+            /* FITRUE_isEE */
+          ],
+          groups: [
+            {
+              title: '',
+              values: [
+                {
+                  path: 'auditPlan',
+                  key: 'auditPlan',
+                  label: 'menu.auditPlane',
+                  element: <AuditPlan />,
+                },
+              ],
+            },
+          ],
+        },
+      ] as RouterConfigItem<ProjectDetailRouterItemKeyLiteral>[],
+    },
+    {
+      path: 'data',
+      key: 'data',
+      label: 'menu.dataSource',
+      icon: <DatabaseOutlined />,
+      element: <DataSource />,
+      hideChildrenInSliderMenu: true,
+      children: [
+        {
+          index: true,
+          element: <DataSourceList />,
+          key: 'data',
+        },
+        {
+          path: 'create',
+          element: <AddDataSource />,
+          key: 'dataCreate',
+        },
+        {
+          path: 'update/:instanceName',
+          element: <UpdateDataSource />,
+          key: 'dataUpdate',
+        },
+      ] as RouterConfigItem<ProjectDetailRouterItemKeyLiteral>[],
+    },
+    {
+      path: 'member',
+      key: 'member',
+      label: 'menu.member',
+      icon: <UserOutlined />,
+      element: <Member />,
+    },
+    {
+      path: 'rule/template',
+      key: 'ruleTemplate',
+      label: 'menu.ruleTemplate',
+      icon: <AuditOutlined />,
+      element: <RuleTemplate />,
+      hideChildrenInSliderMenu: true,
+      children: [
+        {
+          index: true,
+          element: <RuleTemplateList />,
+          key: 'ruleTemplate',
+        },
+        {
+          path: 'create',
+          element: <CreateRuleTemplate />,
+          key: 'ruleTemplateCreate',
+        },
+        {
+          path: 'import',
+          element: <ImportRuleTemplate />,
+          key: 'ruleTemplateImport',
+        },
+        {
+          path: 'update/:templateName',
+          element: <UpdateRuleTemplate />,
+          key: 'ruleTemplateImport',
+        },
+      ] as RouterConfigItem<ProjectDetailRouterItemKeyLiteral>[],
+    },
+    {
+      path: 'progress',
+      key: 'progress',
+      label: 'menu.progressManage',
+      icon: <NodeIndexOutlined />,
+      element: <WorkflowTemplate />,
+      hideChildrenInSliderMenu: true,
+      children: [
+        {
+          index: true,
+          element: <WorkflowTemplateDetail />,
+          key: 'progressDetail',
+        },
+        {
+          path: 'update/:workflowName',
+          element: <UpdateWorkflowTemplate />,
+          key: 'progressUpdate',
+        },
+      ] as RouterConfigItem<ProjectDetailRouterItemKeyLiteral>[],
+    },
+    /* IFTRUE_isEE */
+    {
+      path: 'whitelist',
+      key: 'Whitelist',
+      label: 'menu.whitelist',
+      element: <Whitelist />,
+      icon: <ProfileOutlined />,
+    },
+    {
+      path: '*',
+      key: 'projectRedirect',
+      element: <Navigate to="overview" />,
+      hideInSliderMenu: true,
+      label: 'menu.projectOverview',
+    },
+    /* FITRUE_isEE */
+  ];
+
+export const globalRouterConfig: RouterConfigItem<
+  GlobalRouterItemKeyLiteral | ProjectDetailRouterItemKeyLiteral
+>[] = [
   {
-    path: '/',
-    exact: true,
+    path: 'home',
     label: 'menu.dashboard',
-    component: Home,
+    element: <Home />,
     icon: <PieChartOutlined />,
     key: 'dashboard',
   },
   {
-    path: '/rule',
-    exact: true,
+    path: 'rule',
     label: 'menu.rule',
-    component: Rule,
+    element: <Rule />,
     icon: <DesktopOutlined />,
     key: 'rule',
   },
   {
-    path: '/sqlQuery',
-    exact: true,
+    path: 'sqlQuery',
     label: 'menu.sqlQuery',
-    component: SqlQuery,
+    element: <SqlQuery />,
     icon: <SearchOutlined />,
     key: 'sqlQuery',
   },
 
   {
-    path: '/reportStatistics',
-    exact: true,
+    path: 'reportStatistics',
     label: 'menu.reportStatistics',
-    component: ReportStatistics,
+    element: <ReportStatistics />,
     icon: <BarChartOutlined />,
     key: 'reportStatistics',
     role: [SystemRole.admin],
   },
   {
-    path: '/account',
-    exact: true,
+    path: 'account',
     label: 'common.account',
-    component: Account,
+    element: <Account />,
     hideInSliderMenu: true,
     key: 'account',
   },
   {
-    path: '/userCenter',
+    path: 'userCenter',
     label: 'menu.userCenter',
     icon: <UserOutlined />,
     key: 'userCenter',
-    component: UserCenter,
+    element: <UserCenter />,
   },
   {
-    path: '/rule/template',
+    path: 'rule/template',
     key: 'globalRuleTemplate',
     label: 'menu.ruleTemplate',
     icon: <AuditOutlined />,
-    component: GlobalRuleTemplate,
+    element: <GlobalRuleTemplate />,
+    hideChildrenInSliderMenu: true,
+    children: [
+      {
+        index: true,
+        element: <GlobalRuleTemplateList />,
+        key: 'globalRuleTemplate',
+      },
+      {
+        path: 'create',
+        element: <GlobalCreateRuleTemplate />,
+        key: 'globalRuleTemplateCreate',
+      },
+      {
+        path: 'import',
+        element: <GlobalImportRuleTemplate />,
+        key: 'globalRuleTemplateImport',
+      },
+      {
+        path: 'update/:templateName',
+        element: <GlobalUpdateRuleTemplate />,
+        key: 'globalRuleTemplateUpdate',
+      },
+    ] as RouterConfigItem<GlobalRouterItemKeyLiteral>[],
   },
   {
-    path: '/system',
+    path: 'system',
     key: 'System',
     label: 'menu.systemSetting',
-    exact: true,
-    component: System,
+    element: <System />,
     icon: <SettingOutlined />,
   },
   {
     label: 'menu.projectManage',
     key: 'projectList',
     icon: <ProjectOutlined />,
-    path: '/project',
-    exact: true,
-    component: ProjectList,
+    path: 'project',
+    element: <ProjectList />,
   },
   {
     label: 'menu.projectManage',
     key: 'projectDetail',
     icon: <ProjectOutlined />,
-    path: '/project/:projectName',
-    component: ProjectDetail,
+    path: 'project/:projectName',
+    element: <ProjectDetail />,
+    children: projectDetailRouterConfig,
   },
   {
-    path: '/SyncDataSource',
+    path: 'syncDataSource',
     label: 'menu.syncDataSource',
     key: 'syncDataSource',
-    component: SyncDataSource,
+    element: <SyncDataSource />,
   },
   /* IFTRUE_isEE */
   {
-    path: '/operationRecord',
+    path: 'operationRecord',
     label: 'menu.operationRecord',
     key: 'operationRecord',
-    component: OperationRecord,
+    element: <OperationRecord />,
     role: [SystemRole.admin],
   },
   /* FITRUE_isEE */
+  {
+    path: '*',
+    key: 'redirect',
+    element: <Navigate to="home" />,
+    hideInSliderMenu: true,
+    label: 'menu.dashboard',
+  },
 ];
-
-export const projectDetailRouterConfig: RouterItem<ProjectDetailRouterItemKeyLiteral>[] =
-  [
-    {
-      label: 'menu.projectOverview',
-      key: 'projectOverview',
-      icon: <ProjectOutlined />,
-      path: '/project/:projectName/overview',
-      component: ProjectOverview,
-    },
-    {
-      path: '/project/:projectName/order',
-      exact: true,
-      label: 'menu.order',
-      icon: <BarsOutlined />,
-      component: OrderList,
-      key: 'orderList',
-    },
-    {
-      label: 'menu.order',
-      key: 'order',
-      icon: <ConsoleSqlOutlined />,
-      hideInSliderMenu: true,
-      components: [
-        {
-          path: '/project/:projectName/order/create',
-          exact: true,
-          label: 'menu.workflow',
-          component: CreateOrder,
-          icon: <DesktopOutlined />,
-          key: 'orderCreate',
-          hideInSliderMenu: true,
-        },
-        {
-          path: '/project/:projectName/order/:orderId',
-          exact: true,
-          label: 'menu.orderDetail',
-          hideInSliderMenu: true,
-          component: OrderDetail,
-          key: 'orderDetail',
-        },
-        /* IFTRUE_isEE */
-        {
-          path: '/project/:projectName/order/:taskId/:sqlNum/analyze',
-          exact: true,
-          label: 'menu.orderSqlAnalyze',
-          hideInSliderMenu: true,
-          component: OrderSqlAnalyze,
-          key: 'orderAnalyze',
-        },
-        /* FITRUE_isEE */
-      ],
-    },
-    {
-      label: 'menu.auditPlane',
-      key: 'plane',
-      icon: <CiCircleOutlined />,
-      components: [
-        {
-          path: '/project/:projectName/auditPlan/detail/:auditPlanName',
-          key: 'auditPlanDetail',
-          label: 'menu.auditPlane',
-          hideInSliderMenu: true,
-          component: AuditPlanDetail,
-        },
-        /* IFTRUE_isEE */
-        {
-          path: '/project/:projectName/auditPlan/:reportId/:sqlNum/:auditPlanName/analyze',
-          key: 'auditPlanDetail',
-          exact: true,
-          label: 'menu.auditPlanSqlAnalyze',
-          component: AuditPlanSqlAnalyze,
-          hideInSliderMenu: true,
-        },
-        /* FITRUE_isEE */
-        {
-          key: 'auditPlan',
-          label: 'menu.auditPlaneList',
-          path: '/project/:projectName/auditPlan',
-          groups: [
-            //default data for register router
-            {
-              title: '',
-              values: [
-                {
-                  path: '/project/:projectName/auditPlan',
-                  key: 'auditPlan',
-                  label: 'menu.auditPlaneList',
-                  component: AuditPlan,
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      path: '/project/:projectName/data',
-      key: 'data',
-      label: 'menu.dataSource',
-      icon: <DatabaseOutlined />,
-      component: DataSource,
-    },
-    {
-      path: '/project/:projectName/member',
-      key: 'member',
-      label: 'menu.member',
-      icon: <UserOutlined />,
-      component: Member,
-    },
-    {
-      path: '/project/:projectName/rule/template',
-      key: 'ruleTemplate',
-      label: 'menu.ruleTemplate',
-      icon: <AuditOutlined />,
-      component: RuleTemplate,
-    },
-    {
-      path: '/project/:projectName/progress',
-      key: 'progress',
-      label: 'menu.progressManage',
-      icon: <NodeIndexOutlined />,
-      component: WorkflowTemplate,
-    },
-    /* IFTRUE_isEE */
-    {
-      path: '/project/:projectName/whitelist',
-      key: 'Whitelist',
-      label: 'menu.whitelist',
-      component: Whitelist,
-      icon: <ProfileOutlined />,
-    },
-    /* FITRUE_isEE */
-  ];

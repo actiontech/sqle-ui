@@ -1,10 +1,10 @@
 import { languageData } from '.';
 import moment from 'moment';
-import { renderHooksWithRedux } from '../../testUtils/customRender';
 import useLanguage from '.';
 import { SupportLanguage } from '../../locale';
-import { mockUseDispatch } from '../../testUtils/mockRedux';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { renderHook } from '@testing-library/react-hooks';
 
 jest.mock('react-i18next', () => {
   return {
@@ -17,8 +17,18 @@ jest.mock('react-i18next', () => {
   };
 });
 
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
+
 describe('useLanguage', () => {
   let i18nChangeLanguage: jest.Mock;
+  const dispatchSpy = jest.fn();
+
   beforeEach(() => {
     i18nChangeLanguage = jest.fn();
     (useTranslation as jest.Mock).mockReturnValue({
@@ -27,6 +37,7 @@ describe('useLanguage', () => {
       },
     } as any);
     jest.useFakeTimers();
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
   });
 
   afterEach(() => {
@@ -40,27 +51,36 @@ describe('useLanguage', () => {
   };
 
   test('should return antd locale by redux language', () => {
-    const { result } = renderHooksWithRedux(() => useLanguage(), {
-      locale: { language: SupportLanguage.zhCN },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        locale: { language: SupportLanguage.zhCN },
+      })
+    );
+    const { result } = renderHook(() => useLanguage());
     expect(result.current.antdLocale).toBe(
       languageData[SupportLanguage.zhCN].antd
     );
-    const { result: resultEn } = renderHooksWithRedux(() => useLanguage(), {
-      locale: { language: SupportLanguage.enUS },
-    });
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        locale: { language: SupportLanguage.enUS },
+      })
+    );
+    const { result: resultEn } = renderHook(() => useLanguage());
     expect(resultEn.current.antdLocale).toBe(
       languageData[SupportLanguage.enUS].antd
     );
   });
 
   test('should dispatch update language action when language in redux is invalid', async () => {
-    const { scopeDispatch } = mockUseDispatch();
-    renderHooksWithRedux(() => useLanguage(), {
-      locale: { language: 'xxxxx' },
-    });
-    expect(scopeDispatch).toBeCalledTimes(1);
-    expect(scopeDispatch).toBeCalledWith({
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        locale: { language: 'xxxxx' },
+      })
+    );
+    renderHook(() => useLanguage());
+    expect(dispatchSpy).toBeCalledTimes(1);
+    expect(dispatchSpy).toBeCalledWith({
       type: 'locale/updateLanguage',
       payload: {
         language: SupportLanguage.zhCN,
@@ -69,12 +89,14 @@ describe('useLanguage', () => {
   });
 
   test('should set language for moment and i18n', async () => {
-    const { scopeDispatch } = mockUseDispatch();
     const momentLocalSpy = mockMoment();
-    renderHooksWithRedux(() => useLanguage(), {
-      locale: { language: SupportLanguage.zhCN },
-    });
-    expect(scopeDispatch).not.toBeCalled();
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        locale: { language: SupportLanguage.zhCN },
+      })
+    );
+    renderHook(() => useLanguage());
+    expect(dispatchSpy).not.toBeCalled();
     expect(momentLocalSpy).toBeCalledTimes(1);
     expect(momentLocalSpy).toBeCalledWith(
       languageData[SupportLanguage.zhCN].moment

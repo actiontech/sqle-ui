@@ -1,10 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test Nav/Header/Modal should match snapshot 1`] = `
-<body
-  class="ant-scrolling-effect"
-  style="width: calc(100% - 0px); overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
->
+<body>
   <div />
   <div>
     <div
@@ -14,14 +11,14 @@ exports[`test Nav/Header/Modal should match snapshot 1`] = `
         class="ant-modal-mask"
       />
       <div
-        aria-labelledby="rcDialogTitle0"
         class="ant-modal-wrap"
-        role="dialog"
         tabindex="-1"
       >
         <div
+          aria-labelledby="test-id"
+          aria-modal="true"
           class="ant-modal version-modal-namespace"
-          role="document"
+          role="dialog"
           style="width: 520px;"
         >
           <div
@@ -66,7 +63,7 @@ exports[`test Nav/Header/Modal should match snapshot 1`] = `
             >
               <div
                 class="ant-modal-title"
-                id="rcDialogTitle0"
+                id="test-id"
               >
                 system.log.version_title
               </div>

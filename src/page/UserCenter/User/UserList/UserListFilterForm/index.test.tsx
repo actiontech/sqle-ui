@@ -1,5 +1,4 @@
-import { fireEvent, render, waitFor, screen } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { fireEvent, render, act, screen } from '@testing-library/react';
 import UserListFilterForm from '.';
 import EmitterKey from '../../../../../data/EmitterKey';
 import { mockUseUsername } from '../../../../../testUtils/mockRequest';
@@ -34,13 +33,11 @@ describe('User/UserList/UserLIstFilterForm', () => {
   test('should refresh options when receive event from EventEmit', async () => {
     render(<UserListFilterForm updateUserListFilter={jest.fn()} />);
     expect(usernameSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(300);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(usernameSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(300);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     act(() => {
       EventEmitter.emit(EmitterKey.Refresh_User_list);
     });
@@ -53,9 +50,8 @@ describe('User/UserList/UserLIstFilterForm', () => {
       <UserListFilterForm updateUserListFilter={updateRoleListFilterMock} />
     );
     expect(usernameSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(300);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('common.reset'));
     expect(updateRoleListFilterMock).toBeCalledTimes(1);
     expect(updateRoleListFilterMock).toBeCalledWith({});

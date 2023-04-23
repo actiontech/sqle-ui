@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import configuration from '../../../api/configuration';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import Oauth from './Oauth';
@@ -31,18 +31,16 @@ describe('Oauth', () => {
   it('should render oauth config after request finish', async () => {
     const { container } = render(<Oauth />);
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
   it('should update oauth config after user input config form', async () => {
     const getConfigSpy = mockGetOauthConfig();
     const { container } = render(<Oauth />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('common.modify'));
 
     expect(container).toMatchSnapshot();
@@ -59,9 +57,8 @@ describe('Oauth', () => {
 
     const updateSpy = mockUpdateOauthConfig();
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(container).toMatchSnapshot();
 
     expect(updateSpy).toBeCalledTimes(1);
@@ -78,9 +75,8 @@ describe('Oauth', () => {
       server_user_id_url: 'cid://hqpbmxvbpl.cd/lcfyjtlkuj',
       user_id_tag: 'NFkVxY[4Xv^UFU&x&t5y',
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
     expect(getConfigSpy).toBeCalledTimes(2);
   });

@@ -1,13 +1,13 @@
 import { Layout, Menu, MenuTheme, Space, Typography } from 'antd';
 import { SiderTheme } from 'antd/lib/layout/Sider';
 import { cloneDeep, groupBy } from 'lodash';
-import { lazy, useCallback, useEffect, useState } from 'react';
+import { lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { generateNavigateMenu, ProjectDetailLayoutProps } from '.';
 import EmptyBox from '../../../../components/EmptyBox';
-import { SystemRole } from '../../../../data/common';
+import { SQLE_BASE_URL, SystemRole } from '../../../../data/common';
 import useAuditPlanTypes from '../../../../hooks/useAuditPlanTypes';
 import useChangeTheme from '../../../../hooks/useChangeTheme';
 import { projectDetailRouterConfig } from '../../../../router/config';
@@ -15,7 +15,7 @@ import { IReduxState } from '../../../../store';
 import useStyles from '../../../../theme';
 import {
   ProjectDetailRouterItemKeyLiteral,
-  RouterItem,
+  RouterConfigItem,
 } from '../../../../types/router.type';
 
 import './index.less';
@@ -44,11 +44,11 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
   );
 
   const selectMenu = useCallback(
-    (config: RouterItem<string>[], pathname: string): string[] => {
+    (config: RouterConfigItem<string>[], pathname: string): string[] => {
       for (const route of config) {
-        const realPath = route.path?.replace(':projectName', projectName);
+        const realPath = `${SQLE_BASE_URL}project/${projectName}/${route.path}`;
         if (realPath === pathname && route.hideInSliderMenu !== true) {
-          if (pathname === `/project/${projectName}/auditPlan`) {
+          if (pathname === `${SQLE_BASE_URL}project/${projectName}/auditPlan`) {
             const params = new URLSearchParams(location.search);
             if (params.has('type')) {
               return [`auditPlan${params.get('type')}`];
@@ -56,8 +56,8 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
           }
           return [route.key];
         }
-        if (!!route.components) {
-          const key = selectMenu(route.components, pathname);
+        if (!!route.children) {
+          const key = selectMenu(route.children, pathname);
           if (key.length > 0) {
             return key;
           }
@@ -84,6 +84,11 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
     return selectKey;
   }, [innerRouterConfig, location.pathname, selectMenu]);
 
+  const menuItems = useMemo(
+    () => generateNavigateMenu(innerRouterConfig, userRole, projectName),
+    [innerRouterConfig, userRole, projectName]
+  );
+
   useEffect(() => {
     updateAuditPlanTypes();
   }, [updateAuditPlanTypes]);
@@ -93,7 +98,7 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
       const newRouterConfig = cloneDeep(projectDetailRouterConfig);
       const plan = newRouterConfig
         .find((item) => item.key === 'plane')
-        ?.components?.find((item) => item.key === 'auditPlan');
+        ?.children?.find((item) => item.key === 'auditPlan');
       if (!plan) {
         return;
       }
@@ -117,11 +122,11 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
         return {
           title: key === ALL_INSTANCE_TYPE ? t('menu.allInstanceType') : key,
           values: value.map((e) => ({
-            path: `/project/:projectName/auditPlan?type=${e.type}`,
+            path: `auditPlan?type=${e.type}`,
             key: `auditPlan${e.type}` as ProjectDetailRouterItemKeyLiteral,
-            label: 'menu',
+            label: 'menu.auditPlane',
             labelWithoutI18n: e.desc,
-            component: AuditPlan,
+            element: <AuditPlan />,
           })),
         };
       });
@@ -163,9 +168,8 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
           selectedKeys={selectMenuWrapper()}
           mode="inline"
           theme={currentTheme as MenuTheme}
-        >
-          {generateNavigateMenu(innerRouterConfig, userRole, projectName)}
-        </Menu>
+          items={menuItems}
+        />
       </Layout.Sider>
       <Layout.Content>{children}</Layout.Content>
     </Layout>

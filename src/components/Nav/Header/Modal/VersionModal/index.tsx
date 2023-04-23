@@ -48,7 +48,7 @@ const VersionModal: React.FC = () => {
     <Modal
       title={t('system.log.version_title')}
       onCancel={handleCloseModal}
-      visible={visible}
+      open={visible}
       className="version-modal-namespace"
       footer={
         <>

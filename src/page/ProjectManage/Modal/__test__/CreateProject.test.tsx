@@ -1,24 +1,32 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../testUtils/mockRedux';
 import EventEmitter from '../../../../utils/EventEmitter';
 import { mockCreateProject } from '../../__test__/utils';
 import CreateProject from '../CreateProject';
+import { useDispatch, useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('test ProjectManage/Modal/CreateProject', () => {
-  let dispatchSpy: jest.Mock;
+  const dispatchSpy = jest.fn();
+
   let createProjectSpy: jest.SpyInstance;
   let emitSpy: jest.SpyInstance;
   beforeEach(() => {
-    mockUseSelector({
-      projectManage: { modalStatus: { [ModalName.Create_Project]: true } },
-    });
-    const { scopeDispatch } = mockUseDispatch();
-    dispatchSpy = scopeDispatch;
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        projectManage: { modalStatus: { [ModalName.Create_Project]: true } },
+      })
+    );
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
+
     createProjectSpy = mockCreateProject();
     emitSpy = jest.spyOn(EventEmitter, 'emit');
     jest.useFakeTimers();
@@ -52,9 +60,8 @@ describe('test ProjectManage/Modal/CreateProject', () => {
     );
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByText('common.submit').parentNode).toHaveClass(
       'ant-btn-loading'
     );
@@ -68,12 +75,10 @@ describe('test ProjectManage/Modal/CreateProject', () => {
       desc: 'desc',
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
-      screen.queryByText('projectManage.createProject.createSuccessTips')
+      screen.getByText('projectManage.createProject.createSuccessTips')
     ).toBeInTheDocument();
     expect(emitSpy).toBeCalledTimes(1);
     expect(emitSpy).toBeCalledWith(EmitterKey.Refresh_Project_List);

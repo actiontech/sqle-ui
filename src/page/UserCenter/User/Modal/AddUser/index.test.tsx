@@ -2,7 +2,7 @@ import {
   cleanup,
   fireEvent,
   render,
-  waitFor,
+  act,
   screen,
 } from '@testing-library/react';
 import AddUser from '.';
@@ -11,29 +11,36 @@ import EmitterKey from '../../../../../data/EmitterKey';
 import { ModalName } from '../../../../../data/ModalName';
 import { selectOptionByIndex } from '../../../../../testUtils/customQuery';
 import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../../testUtils/mockRedux';
-import {
   mockUseUserGroup,
   resolveThreeSecond,
   mockManagerPermission,
 } from '../../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../../utils/EventEmitter';
+import { useDispatch, useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('User/Modal/AddUser', () => {
   let useUserGroupSpy: jest.SpyInstance;
   let managerPermissionSpy: jest.SpyInstance;
-  let dispatchSpy: jest.Mock;
+  const dispatchSpy = jest.fn();
 
   beforeEach(() => {
     useUserGroupSpy = mockUseUserGroup();
     managerPermissionSpy = mockManagerPermission();
-    mockUseSelector({
-      userManage: { modalStatus: { [ModalName.Add_User]: true } },
-    });
-    const { scopeDispatch } = mockUseDispatch();
-    dispatchSpy = scopeDispatch;
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        userManage: { modalStatus: { [ModalName.Add_User]: true } },
+      })
+    );
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
     jest.useFakeTimers();
   });
 
@@ -51,9 +58,12 @@ describe('User/Modal/AddUser', () => {
     cleanup();
     managerPermissionSpy.mockClear();
     useUserGroupSpy.mockClear();
-    mockUseSelector({
-      userManage: { modalStatus: { [ModalName.Add_User]: false } },
-    });
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        userManage: { modalStatus: { [ModalName.Add_User]: false } },
+      })
+    );
     render(<AddUser />);
     expect(managerPermissionSpy).not.toBeCalled();
     expect(useUserGroupSpy).not.toBeCalled();
@@ -64,9 +74,7 @@ describe('User/Modal/AddUser', () => {
     const createUserSpy = jest.spyOn(user, 'createUserV1');
     createUserSpy.mockImplementation(() => resolveThreeSecond({}));
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.input(screen.getByLabelText('user.userForm.username'), {
       target: { value: 'username1' },
@@ -99,9 +107,8 @@ describe('User/Modal/AddUser', () => {
     fireEvent.click(userGroupOption);
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByText('common.submit').parentNode).toHaveClass(
       'ant-btn-loading'
     );
@@ -118,11 +125,10 @@ describe('User/Modal/AddUser', () => {
       wechat_id: '123asdf',
       phone: '13312341234',
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText('user.createUser.createSuccessTips')
+      screen.getByText('user.createUser.createSuccessTips')
     ).toBeInTheDocument();
     expect(emitSpy).toBeCalledTimes(1);
     expect(emitSpy).toBeCalledWith(EmitterKey.Refresh_User_list);

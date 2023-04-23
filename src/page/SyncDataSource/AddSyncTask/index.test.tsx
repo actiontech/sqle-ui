@@ -1,4 +1,4 @@
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { fireEvent, screen, act } from '@testing-library/react';
 import AddSyncTask from '.';
 import sync_instance from '../../../api/sync_instance';
 import EmitterKey from '../../../data/EmitterKey';
@@ -34,9 +34,8 @@ describe('test AddSyncTask', () => {
 
   test('should match snapshot', async () => {
     const { container } = renderWithRouter(<AddSyncTask />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -45,14 +44,11 @@ describe('test AddSyncTask', () => {
     const { baseElement } = renderWithRouter(<AddSyncTask />);
     expect(createSyncInstanceTaskSpy).toBeCalledTimes(0);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     selectOptionByIndex('syncDataSource.syncTaskForm.source', 'source1');
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.change(
       screen.getByLabelText('syncDataSource.syncTaskForm.version'),
       { target: { value: '4.22.0' } }
@@ -62,21 +58,17 @@ describe('test AddSyncTask', () => {
     });
 
     selectOptionByIndex('syncDataSource.syncTaskForm.instanceType', 'mysql');
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     selectOptionByIndex(
       'syncDataSource.syncTaskForm.ruleTemplateName',
       'global_rule_template_name1'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(createSyncInstanceTaskSpy).toBeCalledTimes(1);
     expect(createSyncInstanceTaskSpy).toBeCalledWith({
       db_type: 'mysql',
@@ -87,9 +79,7 @@ describe('test AddSyncTask', () => {
       version: '4.22.0',
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.getByText('syncDataSource.addSyncTask.successTips')
@@ -99,6 +89,7 @@ describe('test AddSyncTask', () => {
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
     expect(emitSpy).toBeCalledTimes(0);
     fireEvent.click(screen.getByText('common.resetAndClose'));
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(emitSpy).toBeCalledTimes(1);
     expect(emitSpy).toBeCalledWith(

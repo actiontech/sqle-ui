@@ -1,34 +1,42 @@
-import { fireEvent, waitFor, screen, act } from '@testing-library/react';
+import { fireEvent, screen, act } from '@testing-library/react';
 import RuleTemplateList from '.';
 import rule_template from '../../../api/rule_template';
 import { SystemRole } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
-import {
-  renderWithRouter,
-  renderWithServerRouter,
-} from '../../../testUtils/customRender';
-import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
+import { renderWithRouter } from '../../../testUtils/customRender';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 import { ruleTemplateListData } from '../__testData__';
-import { createMemoryHistory } from 'history';
-import { getBySelector } from '../../../testUtils/customQuery';
+
+import { getBySelector, getHrefByText } from '../../../testUtils/customQuery';
+import { useDispatch, useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('RuleTemplate/RuleTemplateList', () => {
-  let mockDispatch: jest.Mock;
+  const mockDispatch = jest.fn();
   let getRuleTemplateListSpy: jest.SpyInstance;
 
   beforeEach(() => {
     jest.useFakeTimers();
     getRuleTemplateListSpy = mockGetRuleTemplateList();
-    const { scopeDispatch } = mockUseDispatch();
-    mockUseSelector({
-      globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
-      user: {
-        role: SystemRole.admin,
-      },
-    });
-    mockDispatch = scopeDispatch;
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
+        user: {
+          role: SystemRole.admin,
+        },
+      })
+    );
+
+    (useDispatch as jest.Mock).mockImplementation(() => mockDispatch);
   });
 
   afterEach(() => {
@@ -60,9 +68,8 @@ describe('RuleTemplate/RuleTemplateList', () => {
   test('should match snapshot', async () => {
     const { container } = renderWithRouter(<RuleTemplateList />);
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(mockDispatch).toBeCalledWith({
       payload: {
         modalStatus: {
@@ -78,13 +85,12 @@ describe('RuleTemplate/RuleTemplateList', () => {
     const getListSpy = mockGetRuleTemplateList();
     const deleteSpy = mockDeleteRuleTemplate();
     renderWithRouter(<RuleTemplateList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getListSpy).toBeCalledTimes(1);
     fireEvent.click(screen.getAllByText('common.delete')[1]);
     expect(
-      screen.queryByText('ruleTemplate.deleteRuleTemplate.tips')
+      screen.getByText('ruleTemplate.deleteRuleTemplate.tips')
     ).toBeInTheDocument();
     fireEvent.click(screen.getByText('OK'));
     expect(deleteSpy).toBeCalledTimes(1);
@@ -92,13 +98,12 @@ describe('RuleTemplate/RuleTemplateList', () => {
       rule_template_name: ruleTemplateListData[1].rule_template_name,
     });
     expect(
-      screen.queryByText('ruleTemplate.deleteRuleTemplate.deleting')
+      screen.getByText('ruleTemplate.deleteRuleTemplate.deleting')
     ).toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText('ruleTemplate.deleteRuleTemplate.deleteSuccessTips')
+      screen.getByText('ruleTemplate.deleteRuleTemplate.deleteSuccessTips')
     ).toBeInTheDocument();
     expect(
       screen.queryByText('ruleTemplate.deleteRuleTemplate.deleting')
@@ -109,15 +114,13 @@ describe('RuleTemplate/RuleTemplateList', () => {
   test('should send export rule template request when user click export rule template button', async () => {
     const exportSpy = mockExportRuleTemplate();
     renderWithRouter(<RuleTemplateList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.mouseEnter(screen.getAllByText('common.more')[0]);
-    await waitFor(() => {
-      jest.advanceTimersByTime(300);
-    });
+    await screen.findByText('ruleTemplate.exportRuleTemplate.button');
+
     expect(
-      screen.queryByText('ruleTemplate.exportRuleTemplate.button')
+      screen.getByText('ruleTemplate.exportRuleTemplate.button')
     ).toBeInTheDocument();
     expect(exportSpy).toBeCalledTimes(0);
 
@@ -130,13 +133,12 @@ describe('RuleTemplate/RuleTemplateList', () => {
       { responseType: 'blob' }
     );
     expect(
-      screen.queryByText('ruleTemplate.exportRuleTemplate.exporting')
+      screen.getByText('ruleTemplate.exportRuleTemplate.exporting')
     ).toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText('ruleTemplate.exportRuleTemplate.exportSuccessTips')
+      screen.getByText('ruleTemplate.exportRuleTemplate.exportSuccessTips')
     ).toBeInTheDocument();
     expect(
       screen.queryByText('ruleTemplate.exportRuleTemplate.exporting')
@@ -145,17 +147,14 @@ describe('RuleTemplate/RuleTemplateList', () => {
 
   test('should open clone rule template modal when use click clone this template', async () => {
     renderWithRouter(<RuleTemplateList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     mockDispatch.mockClear();
     fireEvent.mouseEnter(screen.getAllByText('common.more')[0]);
-    await waitFor(() => {
-      jest.advanceTimersByTime(300);
-    });
+    await screen.findByText('ruleTemplate.cloneRuleTemplate.button');
 
     expect(
-      screen.queryByText('ruleTemplate.cloneRuleTemplate.button')
+      screen.getByText('ruleTemplate.cloneRuleTemplate.button')
     ).toBeInTheDocument();
     fireEvent.click(screen.getByText('ruleTemplate.cloneRuleTemplate.button'));
     expect(mockDispatch).toBeCalledTimes(2);
@@ -176,9 +175,8 @@ describe('RuleTemplate/RuleTemplateList', () => {
 
   test('should refresh list when receive "Refresh_Global_Rule_Template_List" event', async () => {
     renderWithRouter(<RuleTemplateList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getRuleTemplateListSpy).toBeCalledTimes(1);
     act(() => {
       EventEmitter.emit(EmitterKey.Refresh_Global_Rule_Template_List);
@@ -187,12 +185,14 @@ describe('RuleTemplate/RuleTemplateList', () => {
   });
 
   test('should hide the creation button and the action column when the user role is not an admin', () => {
-    mockUseSelector({
-      globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
-      user: {
-        role: 'test',
-      },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
+        user: {
+          role: 'test',
+        },
+      })
+    );
 
     renderWithRouter(<RuleTemplateList />);
 
@@ -204,16 +204,12 @@ describe('RuleTemplate/RuleTemplateList', () => {
   });
 
   test('should render rule link when rule template name is not empty', async () => {
-    let history = createMemoryHistory();
-    renderWithServerRouter(<RuleTemplateList />, undefined, { history });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    fireEvent.click(
-      screen.getByText(ruleTemplateListData[0].rule_template_name!)
+    renderWithRouter(<RuleTemplateList />);
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    expect(getHrefByText(ruleTemplateListData[0].rule_template_name!)).toBe(
+      '/rule?ruleTemplateName=default_mysql'
     );
-    expect(history.location.pathname).toBe('/rule');
-    expect(history.location.search).toBe('?ruleTemplateName=default_mysql');
   });
 
   test('should jump to next page when user click next page button', async () => {
@@ -227,9 +223,8 @@ describe('RuleTemplate/RuleTemplateList', () => {
       )
     );
     renderWithRouter(<RuleTemplateList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(getBySelector('.ant-pagination-next'));
     expect(getRuleTemplateListSpy).toBeCalledWith({
       page_index: 2,

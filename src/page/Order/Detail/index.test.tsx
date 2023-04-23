@@ -15,9 +15,8 @@ import {
   taskInfoErrorAuditLevel,
   workflowTasks,
 } from './__testData__';
-import { waitFor, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { useParams } from 'react-router';
-import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
 import task from '../../../api/task';
 import { act } from 'react-dom/test-utils';
 import {
@@ -26,12 +25,21 @@ import {
 } from '../../../testUtils/customQuery';
 import { SupportTheme } from '../../../theme';
 import { AuditTaskResV1AuditLevelEnum } from '../../../api/common.enum';
+import { useDispatch, useSelector } from 'react-redux';
 import { mockGetAllRules } from '../../Rule/__test__/utils';
 
 jest.mock('react-router', () => {
   return {
     ...jest.requireActual('react-router'),
     useParams: jest.fn(),
+  };
+});
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
   };
 });
 
@@ -60,8 +68,12 @@ describe('Order/Detail', () => {
     });
 
     useParamsMock.mockReturnValue({ orderId, projectName });
-    mockUseSelector({ user: { username: 'admin', theme: SupportTheme.LIGHT } });
-    mockUseDispatch();
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { username: 'admin', theme: SupportTheme.LIGHT },
+      })
+    );
+    (useDispatch as jest.Mock).mockImplementation(() => jest.fn());
     mockGetInstanceWorkflowTemplate();
     mockGetAllRules();
     getInstanceSummarySpy = mockGetSummaryOfInstanceTasks();
@@ -168,16 +180,13 @@ describe('Order/Detail', () => {
     });
     expect(getTaskSpy).not.toBeCalled();
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getTaskSpy).toBeCalledTimes(1);
     expect(getTaskSpy).toBeCalledWith({
       task_id: String(order.record?.tasks?.map((v) => v.task_id)),
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
   });
@@ -193,20 +202,18 @@ describe('Order/Detail', () => {
       project_name: projectName,
     });
     expect(getTaskSpy).not.toBeCalled();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getTaskSpy).toBeCalledTimes(1);
     expect(getTaskSpy).toBeCalledWith({
       task_id: String(orderCancel.record?.tasks?.map((v) => v.task_id)),
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('order.closeOrder.button')?.parentNode
     ).toHaveAttribute('hidden');
-    expect(screen.queryByText('order.status.canceled')).toBeInTheDocument();
+    expect(screen.getByText('order.status.canceled')).toBeInTheDocument();
   });
 
   test('should render reject order info by request', async () => {
@@ -221,16 +228,15 @@ describe('Order/Detail', () => {
       project_name: projectName,
     });
     expect(getTaskSpy).not.toBeCalled();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getTaskSpy).toBeCalledTimes(1);
     expect(getTaskSpy).toBeCalledWith({
       task_id: String(orderReject.record?.tasks?.map((v) => v.task_id)),
     });
 
-    expect(screen.queryByText('order.closeOrder.button')).toBeInTheDocument();
-    expect(screen.queryByText('order.status.reject')).toBeInTheDocument();
+    expect(screen.getByText('order.closeOrder.button')).toBeInTheDocument();
+    expect(screen.getByText('order.status.reject')).toBeInTheDocument();
   });
 
   test('should render pass order info by request', async () => {
@@ -245,9 +251,8 @@ describe('Order/Detail', () => {
       project_name: projectName,
     });
     expect(getTaskSpy).not.toBeCalled();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getTaskSpy).toBeCalledTimes(1);
     expect(getTaskSpy).toBeCalledWith({
       task_id: String(orderPass.record?.tasks?.map((v) => v.task_id)),
@@ -255,9 +260,7 @@ describe('Order/Detail', () => {
     expect(
       screen.queryByText('order.closeOrder.button')?.parentNode
     ).toHaveAttribute('hidden');
-    expect(
-      screen.queryAllByText('order.status.finished')[0]
-    ).toBeInTheDocument();
+    expect(screen.getAllByText('order.status.finished')[0]).toBeInTheDocument();
   });
 
   test('should render process order with order step history info by request', async () => {
@@ -274,19 +277,16 @@ describe('Order/Detail', () => {
       project_name: projectName,
     });
     expect(getTaskSpy).not.toBeCalled();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getTaskSpy).toBeCalledTimes(1);
     expect(getTaskSpy).toBeCalledWith({
       task_id: String(orderWithHistory.record?.tasks?.map((v) => v.task_id)),
     });
 
-    expect(screen.queryByText('order.closeOrder.button')).toBeInTheDocument();
-    expect(screen.queryByText('order.history.showHistory')).toBeInTheDocument();
-    expect(
-      screen.queryByText('order.status.wait_for_audit')
-    ).toBeInTheDocument();
+    expect(screen.getByText('order.closeOrder.button')).toBeInTheDocument();
+    expect(screen.getByText('order.history.showHistory')).toBeInTheDocument();
+    expect(screen.getByText('order.status.wait_for_audit')).toBeInTheDocument();
   });
 
   test('should send resolve order request when click resolve button', async () => {
@@ -299,23 +299,20 @@ describe('Order/Detail', () => {
     renderWithThemeAndRouter(<Order />);
     expect(getWorkflowSpy).toBeCalledTimes(1);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
-      screen.queryByText('order.operator.batchSqlExecute')
+      screen.getByText('order.operator.batchSqlExecute')
     ).toBeInTheDocument();
     fireEvent.click(screen.getByText('order.operator.batchSqlExecute'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(
-      screen.queryByText('order.operator.batchSqlExecuteConfirmTips')
+      screen.getByText('order.operator.batchSqlExecuteConfirmTips')
     ).toBeInTheDocument();
 
-    expect(screen.queryByText('common.ok')).toBeInTheDocument();
+    expect(screen.getByText('common.ok')).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('common.ok'));
 
@@ -324,14 +321,11 @@ describe('Order/Detail', () => {
       workflow_id: order.workflow_id,
       project_name: projectName,
     });
-
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(getWorkflowSpy).toBeCalledTimes(2);
     expect(
-      screen.queryByText('order.operator.executingTips')
+      screen.getByText('order.operator.executingTips')
     ).toBeInTheDocument();
   });
 
@@ -347,13 +341,10 @@ describe('Order/Detail', () => {
     renderWithThemeAndRouter(<Order />);
     expect(getWorkflowSpy).toBeCalledTimes(1);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    act(() => {
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(() => {
       fireEvent.click(screen.getByText('order.operator.rejectFull'));
     });
 
@@ -371,8 +362,8 @@ describe('Order/Detail', () => {
 
     fireEvent.click(rejectButton);
 
-    await waitFor(() => {
-      jest.runOnlyPendingTimers();
+    await act(async () => {
+      return jest.runOnlyPendingTimers();
     });
 
     expect(rejectOrderSpy).toBeCalledTimes(1);
@@ -387,13 +378,11 @@ describe('Order/Detail', () => {
       ),
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(getWorkflowSpy).toBeCalledTimes(2);
     expect(
-      screen.queryByText('order.operator.rejectSuccessTips')
+      screen.getByText('order.operator.rejectSuccessTips')
     ).toBeInTheDocument();
   });
 
@@ -406,15 +395,11 @@ describe('Order/Detail', () => {
     const auditTaskGroupIdSpy = mockAuditTaskGroupId();
     const getSqlContentSpy = mockGetSqlContent();
     const { container } = renderWithThemeAndRouter(<Order />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByText('order.operator.modifySql'));
-    expect(screen.queryByText('order.modifySql.title')).toBeInTheDocument();
+    expect(screen.getByText('order.modifySql.title')).toBeInTheDocument();
     expect(getSqlContentSpy).toBeCalledTimes(1);
     expect(getSqlContentSpy).toBeCalledWith({
       task_id: String(taskInfo.task_id),
@@ -422,9 +407,8 @@ describe('Order/Detail', () => {
     expect(screen.getByLabelText('order.sqlInfo.sql')).toHaveValue(
       '/* input your sql */'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByLabelText('order.sqlInfo.sql')).toHaveValue('old sql');
     fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
       target: { value: 'new sql' },
@@ -432,17 +416,15 @@ describe('Order/Detail', () => {
     act(() => {
       fireEvent.click(screen.getByText('common.submit'));
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(createAuditTaskSpy).toBeCalledWith({
       instances: [{ instance_name: 'db1', instance_schema: '' }],
       project_name: projectName,
     });
     expect(auditTaskGroupIdSpy).toBeCalledTimes(0);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(auditTaskGroupIdSpy).toBeCalledTimes(1);
 
     expect(auditTaskGroupIdSpy).toBeCalledWith({
@@ -454,9 +436,8 @@ describe('Order/Detail', () => {
       'ant-btn-loading'
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -472,36 +453,28 @@ describe('Order/Detail', () => {
     mockGetTaskSqls();
     mockGetSqlContent();
     const { container } = renderWithThemeAndRouter(<Order />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('order.operator.modifySql'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    act(() => {
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(() => {
       fireEvent.click(screen.getByText('common.submit'));
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
     expect(screen.getByText('order.modifySql.updateOrder')).toBeInTheDocument();
     expect(
       screen.getByText('order.modifySql.giveUpUpdate')
     ).toBeInTheDocument();
     fireEvent.click(screen.getByText('order.modifySql.updateOrder'));
-    await waitFor(() => {
-      jest.runOnlyPendingTimers();
+    await act(async () => {
+      return jest.runOnlyPendingTimers();
     });
     fireEvent.click(screen.getByText('OK'));
     expect(workflowUpdateSpy).toBeCalledTimes(1);
@@ -514,9 +487,8 @@ describe('Order/Detail', () => {
     expect(
       screen.getByText('order.modifySql.updateOrder').parentNode
     ).toHaveClass('ant-btn-loading');
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('order.modifySql.updateOrder')
     ).not.toBeInTheDocument();
@@ -534,35 +506,26 @@ describe('Order/Detail', () => {
     mockGetTaskSqls();
     mockGetSqlContent();
     renderWithThemeAndRouter(<Order />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('order.operator.modifySql'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    act(() => {
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(() => {
       fireEvent.click(screen.getByText('common.submit'));
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByText('order.modifySql.updateOrder')).toBeInTheDocument();
     expect(
       screen.getByText('order.modifySql.giveUpUpdate')
     ).toBeInTheDocument();
     fireEvent.click(screen.getByText('order.modifySql.giveUpUpdate'));
-    await waitFor(() => {
-      jest.runOnlyPendingTimers();
+    await act(async () => {
+      return jest.runOnlyPendingTimers();
     });
     fireEvent.click(screen.getByText('OK'));
     expect(
@@ -592,31 +555,20 @@ describe('Order/Detail', () => {
     mockGetTaskSqls();
     mockGetSqlContent();
     renderWithThemeAndRouter(<Order />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('order.operator.modifySql'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     act(() => {
       fireEvent.click(screen.getByText('common.submit'));
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.getByText('order.modifySql.updateOrder').closest('button')
@@ -630,24 +582,16 @@ describe('Order/Detail', () => {
     );
 
     fireEvent.click(screen.getByText('order.operator.modifySql'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     act(() => {
       fireEvent.click(screen.getByText('common.submit'));
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.getByText('order.modifySql.updateOrder').closest('button')
     ).not.toBeDisabled();
@@ -670,36 +614,26 @@ describe('Order/Detail', () => {
     );
     mockGetSqlContent();
     renderWithThemeAndRouter(<Order />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('order.operator.modifySql'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     act(() => {
       fireEvent.click(screen.getByText('common.submit'));
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('order.modifySql.updateOrder'));
-    await waitFor(() => {
-      jest.runOnlyPendingTimers();
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('OK'));
     expect(workflowUpdateSpy).toBeCalledTimes(0);
     expect(
-      screen.queryByText('order.modifySql.updateEmptyOrderTips')
+      screen.getByText('order.modifySql.updateEmptyOrderTips')
     ).toBeInTheDocument();
   });
 
@@ -710,13 +644,11 @@ describe('Order/Detail', () => {
     mockGetTask();
     mockGetTaskSqls();
     renderWithThemeAndRouter(<Order />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByText('order.closeOrder.button'));
     expect(
-      screen.queryByText('order.closeOrder.closeConfirm')
+      screen.getByText('order.closeOrder.closeConfirm')
     ).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('common.ok'));
@@ -725,16 +657,14 @@ describe('Order/Detail', () => {
       project_name: projectName,
       workflow_id: orderReject.workflow_id,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText('order.closeOrder.closeOrderSuccessTips')
+      screen.getByText('order.closeOrder.closeOrderSuccessTips')
     ).toBeInTheDocument();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('order.closeOrder.closeOrderSuccessTips')
     ).not.toBeInTheDocument();

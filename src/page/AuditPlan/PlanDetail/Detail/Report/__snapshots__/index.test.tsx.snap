@@ -37,6 +37,8 @@ exports[`AuditPlanReport should match snapshot 1`] = `
         >
           <div>
             <div
+              aria-busy="true"
+              aria-live="polite"
               class="ant-spin ant-spin-spinning"
             >
               <span
@@ -153,7 +155,7 @@ exports[`AuditPlanReport should match snapshot 1`] = `
                             <div
                               class="ant-empty-description"
                             >
-                              No Data
+                              No data
                             </div>
                           </div>
                         </td>
@@ -206,8 +208,32 @@ exports[`AuditPlanReport should match snapshot 2`] = `
         <div
           class="ant-spin-nested-loading"
         >
+          <div>
+            <div
+              aria-busy="true"
+              aria-live="polite"
+              class="ant-spin ant-spin-spinning"
+            >
+              <span
+                class="ant-spin-dot ant-spin-dot-spin"
+              >
+                <i
+                  class="ant-spin-dot-item"
+                />
+                <i
+                  class="ant-spin-dot-item"
+                />
+                <i
+                  class="ant-spin-dot-item"
+                />
+                <i
+                  class="ant-spin-dot-item"
+                />
+              </span>
+            </div>
+          </div>
           <div
-            class="ant-spin-container"
+            class="ant-spin-container ant-spin-blur"
           >
             <div
               class="ant-table"
@@ -308,7 +334,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                               >
                                 <div
                                   class="ant-col"
-                                  style="flex: 0 0 50px;"
+                                  style="flex: 0 0 50px; min-width: 0;"
                                 >
                                   <div
                                     class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
@@ -356,7 +382,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                                 </div>
                                 <div
                                   class="ant-col message"
-                                  style="flex: 1 1 auto;"
+                                  style="flex: 1 1 auto; min-width: 0;"
                                 >
                                   <span>
                                     禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql
@@ -432,7 +458,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                               >
                                 <div
                                   class="ant-col"
-                                  style="flex: 0 0 50px;"
+                                  style="flex: 0 0 50px; min-width: 0;"
                                 >
                                   <div
                                     class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
@@ -480,7 +506,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                                 </div>
                                 <div
                                   class="ant-col message"
-                                  style="flex: 1 1 auto;"
+                                  style="flex: 1 1 auto; min-width: 0;"
                                 >
                                   <span>
                                     禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql
@@ -556,7 +582,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                               >
                                 <div
                                   class="ant-col"
-                                  style="flex: 0 0 50px;"
+                                  style="flex: 0 0 50px; min-width: 0;"
                                 >
                                   <div
                                     class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
@@ -604,7 +630,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                                 </div>
                                 <div
                                   class="ant-col message"
-                                  style="flex: 1 1 auto;"
+                                  style="flex: 1 1 auto; min-width: 0;"
                                 >
                                   <span>
                                     禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql
@@ -680,7 +706,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                               >
                                 <div
                                   class="ant-col"
-                                  style="flex: 0 0 50px;"
+                                  style="flex: 0 0 50px; min-width: 0;"
                                 >
                                   <div
                                     class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
@@ -728,7 +754,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                                 </div>
                                 <div
                                   class="ant-col message"
-                                  style="flex: 1 1 auto;"
+                                  style="flex: 1 1 auto; min-width: 0;"
                                 >
                                   <span>
                                     禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql
@@ -804,7 +830,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                               >
                                 <div
                                   class="ant-col"
-                                  style="flex: 0 0 50px;"
+                                  style="flex: 0 0 50px; min-width: 0;"
                                 >
                                   <div
                                     class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
@@ -852,7 +878,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                                 </div>
                                 <div
                                   class="ant-col message"
-                                  style="flex: 1 1 auto;"
+                                  style="flex: 1 1 auto; min-width: 0;"
                                 >
                                   <span>
                                     禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql
@@ -928,7 +954,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                               >
                                 <div
                                   class="ant-col"
-                                  style="flex: 0 0 50px;"
+                                  style="flex: 0 0 50px; min-width: 0;"
                                 >
                                   <div
                                     class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
@@ -976,7 +1002,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                                 </div>
                                 <div
                                   class="ant-col message"
-                                  style="flex: 1 1 auto;"
+                                  style="flex: 1 1 auto; min-width: 0;"
                                 >
                                   <span>
                                     禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql
@@ -1052,7 +1078,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                               >
                                 <div
                                   class="ant-col"
-                                  style="flex: 0 0 50px;"
+                                  style="flex: 0 0 50px; min-width: 0;"
                                 >
                                   <div
                                     class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
@@ -1100,7 +1126,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                                 </div>
                                 <div
                                   class="ant-col message"
-                                  style="flex: 1 1 auto;"
+                                  style="flex: 1 1 auto; min-width: 0;"
                                 >
                                   <span>
                                     禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql
@@ -1176,7 +1202,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                               >
                                 <div
                                   class="ant-col"
-                                  style="flex: 0 0 50px;"
+                                  style="flex: 0 0 50px; min-width: 0;"
                                 >
                                   <div
                                     class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
@@ -1224,7 +1250,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                                 </div>
                                 <div
                                   class="ant-col message"
-                                  style="flex: 1 1 auto;"
+                                  style="flex: 1 1 auto; min-width: 0;"
                                 >
                                   <span>
                                     禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql
@@ -1300,7 +1326,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                               >
                                 <div
                                   class="ant-col"
-                                  style="flex: 0 0 50px;"
+                                  style="flex: 0 0 50px; min-width: 0;"
                                 >
                                   <div
                                     class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
@@ -1348,7 +1374,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                                 </div>
                                 <div
                                   class="ant-col message"
-                                  style="flex: 1 1 auto;"
+                                  style="flex: 1 1 auto; min-width: 0;"
                                 >
                                   <span>
                                     禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql
@@ -1424,7 +1450,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                               >
                                 <div
                                   class="ant-col"
-                                  style="flex: 0 0 50px;"
+                                  style="flex: 0 0 50px; min-width: 0;"
                                 >
                                   <div
                                     class="ant-space ant-space-vertical ant-space-align-center sqle-rule-icon"
@@ -1472,7 +1498,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                                 </div>
                                 <div
                                   class="ant-col message"
-                                  style="flex: 1 1 auto;"
+                                  style="flex: 1 1 auto; min-width: 0;"
                                 >
                                   <span>
                                     禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql
@@ -1499,7 +1525,6 @@ exports[`AuditPlanReport should match snapshot 2`] = `
             </div>
             <ul
               class="ant-pagination ant-table-pagination ant-table-pagination-right"
-              unselectable="unselectable"
             >
               <li
                 aria-disabled="true"
@@ -1646,6 +1671,7 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                 class="ant-pagination-options"
               >
                 <div
+                  aria-label="Page Size"
                   class="ant-select ant-pagination-options-size-changer ant-select-single ant-select-show-arrow"
                 >
                   <div
@@ -1658,7 +1684,9 @@ exports[`AuditPlanReport should match snapshot 2`] = `
                         aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
                         aria-autocomplete="list"
                         aria-controls="rc_select_TEST_OR_SSR_list"
+                        aria-expanded="false"
                         aria-haspopup="listbox"
+                        aria-label="Page Size"
                         aria-owns="rc_select_TEST_OR_SSR_list"
                         autocomplete="off"
                         class="ant-select-selection-search-input"

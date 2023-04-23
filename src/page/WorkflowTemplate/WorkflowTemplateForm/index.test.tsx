@@ -1,4 +1,4 @@
-import { act, fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, screen } from '@testing-library/react';
 import WorkflowTemplateForm from '.';
 import { WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum } from '../../../api/common.enum';
 import EmitterKey from '../../../data/EmitterKey';
@@ -52,9 +52,8 @@ describe('WorkflowTemplateForm', () => {
         test id
       </WorkflowTemplateForm>
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByTestId('base-form')).not.toHaveAttribute('hidden');
     expect(screen.getByTestId('progress-config')).toHaveAttribute('hidden');
     expect(screen.getByTestId('submit-result')).toHaveAttribute('hidden');
@@ -63,13 +62,11 @@ describe('WorkflowTemplateForm', () => {
       'workflowTemplate.auditLevel.warn',
       1
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.click(screen.getByText('common.nextStep'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(updateBaseInfoMock).toBeCalledWith({
       allowSubmitWhenLessAuditLevel:
         WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.warn,
@@ -83,9 +80,8 @@ describe('WorkflowTemplateForm', () => {
         screen.getByTestId('exec-user-select')
       )
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const option = screen.getAllByText('user_name1')[1];
     fireEvent.click(option);
     expect(option).toHaveClass('ant-select-item-option-content');
@@ -110,9 +106,8 @@ describe('WorkflowTemplateForm', () => {
         type: 'sql_execute',
       },
     ]);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByTestId('base-form')).toHaveAttribute('hidden');
     expect(screen.getByTestId('progress-config')).toHaveAttribute('hidden');
     expect(screen.getByTestId('submit-result')).not.toHaveAttribute('hidden');
@@ -131,9 +126,8 @@ describe('WorkflowTemplateForm', () => {
         test id
       </WorkflowTemplateForm>
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByTestId('base-form')).not.toHaveAttribute('hidden');
     expect(screen.getByTestId('progress-config')).toHaveAttribute('hidden');
     expect(screen.getByTestId('submit-result')).toHaveAttribute('hidden');
@@ -142,13 +136,11 @@ describe('WorkflowTemplateForm', () => {
       'workflowTemplate.auditLevel.warn',
       1
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.click(screen.getByText('common.nextStep'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByTestId('base-form')).toHaveAttribute('hidden');
     expect(screen.getByTestId('progress-config')).not.toHaveAttribute('hidden');
     expect(screen.getByTestId('submit-result')).toHaveAttribute('hidden');
@@ -172,9 +164,8 @@ describe('WorkflowTemplateForm', () => {
         test id
       </WorkflowTemplateForm>
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByTestId('base-form')).not.toHaveAttribute('hidden');
     expect(screen.getByTestId('progress-config')).toHaveAttribute('hidden');
     expect(screen.getByTestId('submit-result')).toHaveAttribute('hidden');
@@ -183,13 +174,11 @@ describe('WorkflowTemplateForm', () => {
       'workflowTemplate.auditLevel.warn',
       1
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.click(screen.getByText('common.nextStep'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByTestId('base-form')).toHaveAttribute('hidden');
     expect(screen.getByTestId('progress-config')).not.toHaveAttribute('hidden');
     expect(screen.getByTestId('submit-result')).toHaveAttribute('hidden');

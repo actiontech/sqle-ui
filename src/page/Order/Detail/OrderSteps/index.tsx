@@ -237,7 +237,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
       </Timeline>
       <Modal
         title={t('order.operator.reject')}
-        visible={rejectModalVisible}
+        open={rejectModalVisible}
         closable={false}
         footer={null}
       >

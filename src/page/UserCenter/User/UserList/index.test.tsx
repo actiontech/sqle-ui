@@ -1,30 +1,32 @@
-import {
-  fireEvent,
-  render,
-  waitFor,
-  screen,
-  act,
-} from '@testing-library/react';
+import { fireEvent, render, screen, act } from '@testing-library/react';
 import UserList from '.';
 import user from '../../../../api/user';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
 import { getBySelector } from '../../../../testUtils/customQuery';
-import { mockUseDispatch } from '../../../../testUtils/mockRedux';
 import {
   mockUseUsername,
   resolveThreeSecond,
 } from '../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../utils/EventEmitter';
 import { UserListData } from './__testData__';
+import { useDispatch } from 'react-redux';
 
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 describe('User/UserList', () => {
-  let dispatchMock: jest.Mock;
+  const dispatchMock = jest.fn();
+
   let getUserListSpy: jest.SpyInstance;
 
   beforeEach(() => {
-    const { scopeDispatch } = mockUseDispatch();
-    dispatchMock = scopeDispatch;
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchMock);
+
     jest.useFakeTimers();
     mockUseUsername();
     getUserListSpy = mockGetUserList();
@@ -48,9 +50,8 @@ describe('User/UserList', () => {
   test('should match snapshot', async () => {
     const { container } = render(<UserList />);
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -62,9 +63,8 @@ describe('User/UserList', () => {
 
   test('should jump to next page when user click next page button', async () => {
     render(<UserList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(getBySelector('.ant-pagination-next'));
     expect(getUserListSpy).toBeCalledWith({
       page_index: 2,
@@ -79,18 +79,15 @@ describe('User/UserList', () => {
 
   test('should filter table data when user input filter data and click search button', async () => {
     render(<UserList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.mouseDown(screen.getByLabelText('user.userForm.username'));
     const option = screen.getAllByText('user_name1')[1];
     expect(option).toHaveClass('ant-select-item-option-content');
     fireEvent.click(option);
 
     fireEvent.click(screen.getByText('common.search'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(getUserListSpy).toBeCalledWith({
       page_index: 1,
@@ -101,9 +98,8 @@ describe('User/UserList', () => {
 
   test('should dispatch open create user modal event when user click creat user button', async () => {
     render(<UserList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('user.createUser.button'));
     expect(dispatchMock).toBeCalledTimes(1);
     expect(dispatchMock).toBeCalledWith({
@@ -117,9 +113,8 @@ describe('User/UserList', () => {
 
   test('should dispatch open create user modal event and set select user data when user click update user button', async () => {
     render(<UserList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getAllByText('common.edit')[0]);
     expect(dispatchMock).toBeCalledTimes(2);
     expect(dispatchMock).nthCalledWith(1, {
@@ -139,14 +134,10 @@ describe('User/UserList', () => {
 
   test('should dispatch open modify password modal event and set select user data when user click update user password button', async () => {
     render(<UserList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.mouseEnter(screen.getAllByText('common.more')[0]);
-    await waitFor(() => {
-      jest.advanceTimersByTime(300);
-    });
+    await screen.findByText('user.updateUserPassword.button');
     fireEvent.click(screen.getByText('user.updateUserPassword.button'));
     expect(dispatchMock).toBeCalledTimes(2);
     expect(dispatchMock).nthCalledWith(1, {
@@ -169,13 +160,12 @@ describe('User/UserList', () => {
     deleteUserSpy.mockImplementation(() => resolveThreeSecond({}));
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
     render(<UserList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getUserListSpy).toBeCalledTimes(1);
     fireEvent.click(screen.getAllByText('common.delete')[0]);
     expect(
-      screen.queryByText('user.deleteUser.confirmTitle')
+      screen.getByText('user.deleteUser.confirmTitle')
     ).toBeInTheDocument();
     fireEvent.click(screen.getByText('common.ok'));
 
@@ -184,9 +174,8 @@ describe('User/UserList', () => {
       user_name: UserListData[1].user_name,
     });
     expect(screen.getByText('user.deleteUser.deleting')).toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('user.deleteUser.deleting')
     ).not.toBeInTheDocument();
@@ -211,9 +200,8 @@ describe('User/UserList', () => {
       page_index: 1,
       page_size: 10,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     act(() => {
       EventEmitter.emit(EmitterKey.Refresh_User_list);
     });
@@ -226,9 +214,8 @@ describe('User/UserList', () => {
 
   test('should not be rendered delete and more when the username is admin and do not render more when user login type is ldap', async () => {
     render(<UserList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getAllByText('common.more').length).toBe(4);
     expect(screen.getAllByText('common.delete').length).toBe(9);
   });

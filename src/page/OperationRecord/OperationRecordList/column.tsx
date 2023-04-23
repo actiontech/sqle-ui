@@ -1,7 +1,7 @@
 import { Tag } from 'antd';
 import { IOperationRecordList, IOperationUser } from '../../../api/common';
 import { OperationRecordListStatusEnum } from '../../../api/common.enum';
-import i18n from '../../../locale';
+import { t } from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import { formatTime } from '../../../utils/Common';
 
@@ -10,29 +10,29 @@ const OperationRecordListTableHeader =
     return [
       {
         dataIndex: 'operation_time',
-        title: () => i18n.t('operationRecord.list.column.operatingTime'),
+        title: () => t('operationRecord.list.column.operatingTime'),
         render: (time) => {
           return formatTime(time);
         },
       },
       {
         dataIndex: 'operation_user',
-        title: () => i18n.t('operationRecord.list.column.operator'),
+        title: () => t('operationRecord.list.column.operator'),
         render: (userInfo: IOperationUser) => {
           return `${userInfo.user_name ?? ''}  ${userInfo.ip ?? ''}`;
         },
       },
       {
         dataIndex: 'operation_type_name',
-        title: () => i18n.t('operationRecord.list.column.operationType'),
+        title: () => t('operationRecord.list.column.operationType'),
       },
       {
         dataIndex: 'operation_content',
-        title: () => i18n.t('operationRecord.list.column.operationAction'),
+        title: () => t('operationRecord.list.column.operationAction'),
       },
       {
         dataIndex: 'project_name',
-        title: () => i18n.t('operationRecord.list.column.projectName'),
+        title: () => t('operationRecord.list.column.projectName'),
         render(name?: string) {
           if (!name) {
             return '--';
@@ -42,12 +42,12 @@ const OperationRecordListTableHeader =
       },
       {
         dataIndex: 'status',
-        title: () => i18n.t('operationRecord.list.column.status'),
+        title: () => t('operationRecord.list.column.status'),
         render: (status: OperationRecordListStatusEnum) => {
           if (status === OperationRecordListStatusEnum.succeeded) {
-            return <Tag color="green">{i18n.t('common.success')}</Tag>;
+            return <Tag color="green">{t('common.success')}</Tag>;
           } else if (status === OperationRecordListStatusEnum.failed) {
-            return <Tag color="red">{i18n.t('common.fail')}</Tag>;
+            return <Tag color="red">{t('common.fail')}</Tag>;
           }
         },
       },

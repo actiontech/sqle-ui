@@ -1,12 +1,9 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
 import { selectOptionByIndex } from '../../../../testUtils/customQuery';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../testUtils/mockRedux';
+
 import {
   mockUseInstance,
   mockUseRole,
@@ -15,16 +12,24 @@ import {
 import EventEmitter from '../../../../utils/EventEmitter';
 import AddMemberGroup from '../AddMemberGroup';
 import { mockAddMemberGroup } from './utils';
+import { useDispatch, useSelector } from 'react-redux';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn(),
 }));
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 const projectName = 'default';
 
 describe('test AddMemberGroup', () => {
   let addMemberGroupSpy: jest.SpyInstance;
-  let dispatchSpy: jest.SpyInstance;
+  const dispatchSpy = jest.fn();
   const emitSpy = jest.spyOn(EventEmitter, 'emit');
 
   const useParamsMock: jest.Mock = useParams as jest.Mock;
@@ -36,14 +41,16 @@ describe('test AddMemberGroup', () => {
     addMemberGroupSpy = mockAddMemberGroup();
     useParamsMock.mockReturnValue({ projectName });
 
-    dispatchSpy = mockUseDispatch().scopeDispatch;
-    mockUseSelector({
-      member: {
-        modalStatus: {
-          [ModalName.Add_Member_Group]: true,
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        member: {
+          modalStatus: {
+            [ModalName.Add_Member_Group]: true,
+          },
         },
-      },
-    });
+      })
+    );
     jest.useFakeTimers();
   });
 
@@ -60,9 +67,8 @@ describe('test AddMemberGroup', () => {
 
   test('should call add member group request when clicking submit button', async () => {
     render(<AddMemberGroup />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(addMemberGroupSpy).toBeCalledTimes(0);
     expect(dispatchSpy).toBeCalledTimes(0);
     expect(emitSpy).toBeCalledTimes(0);
@@ -71,17 +77,14 @@ describe('test AddMemberGroup', () => {
       'member.memberGroupForm.userGroupName',
       'user_group_name1'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.click(screen.getByText('member.roleSelector.addRole'));
     selectOptionByIndex('member.roleSelector.role', 'role_name1');
     selectOptionByIndex('member.roleSelector.instance', 'instance1');
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(screen.getByText('common.close').closest('button')).toBeDisabled();
     expect(screen.getByText('common.submit').closest('button')).toHaveClass(
@@ -95,11 +98,10 @@ describe('test AddMemberGroup', () => {
       user_group_name: 'user_group_name1',
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText('member.addMemberGroup.successTips')
+      screen.getByText('member.addMemberGroup.successTips')
     ).toBeInTheDocument();
     expect(dispatchSpy).toBeCalledTimes(1);
     expect(dispatchSpy).toBeCalledWith({
@@ -118,9 +120,8 @@ describe('test AddMemberGroup', () => {
     expect(screen.getByText('common.submit').closest('button')).not.toHaveClass(
       'ant-btn-loading'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('member.addMemberGroup.successTips')
     ).not.toBeInTheDocument();
@@ -128,18 +129,15 @@ describe('test AddMemberGroup', () => {
 
   test('should clear form and dispatch "updateMemberModalStatus" when clicking close button', async () => {
     render(<AddMemberGroup />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(dispatchSpy).toBeCalledTimes(0);
 
     selectOptionByIndex(
       'member.memberGroupForm.userGroupName',
       'user_group_name1'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     fireEvent.click(screen.getByText('common.close'));
 

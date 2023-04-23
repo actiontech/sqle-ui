@@ -1,14 +1,21 @@
-import { render, waitFor } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import statistic from '../../../../api/statistic';
-import { mockUseSelector } from '../../../../testUtils/mockRedux';
 import {
   resolveErrorThreeSecond,
   resolveThreeSecond,
 } from '../../../../testUtils/mockRequest';
 import OrderAverageReviewTime from '../OrderAverageReviewTime';
 import mockRequestData from './mockRequestData';
+import { useSelector } from 'react-redux';
 
 const { OrderAverageReviewTimeData } = mockRequestData;
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+  };
+});
 
 describe('test OrderAverageReviewTime', () => {
   const mockGetTaskDurationOfWaitingForAuditV1 = () => {
@@ -27,9 +34,12 @@ describe('test OrderAverageReviewTime', () => {
 
   beforeEach(() => {
     jest.useFakeTimers();
-    mockUseSelector({
-      reportStatistics: { refreshFlag: false },
-    });
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        reportStatistics: { refreshFlag: false },
+      })
+    );
   });
 
   afterEach(() => {
@@ -42,9 +52,8 @@ describe('test OrderAverageReviewTime', () => {
     mockGetTaskDurationOfWaitingForAuditV1();
     const { container } = render(<OrderAverageReviewTime />);
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -61,9 +70,8 @@ describe('test OrderAverageReviewTime', () => {
       mockErrorGetTaskDurationOfWaitingForAuditV1();
     const { container } = render(<OrderAverageReviewTime />);
     expect(getTaskDurationOfWaitingForAuditV1Spy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 });

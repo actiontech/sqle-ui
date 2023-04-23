@@ -4,7 +4,6 @@ import {
   WorkflowDetailResV1StatusEnum,
   WorkflowStepResV2TypeEnum,
 } from '../../../../../api/common.enum';
-import { mockUseSelector } from '../../../../../testUtils/mockRedux';
 import { useGenerateOrderStepInfo } from '../useGenerateOrderStepInfo';
 import {
   defaultProps,
@@ -12,6 +11,7 @@ import {
   otherStepList,
   stepList,
 } from './testData';
+import { useSelector } from 'react-redux';
 
 const modifySqlNode = <>modifySqlNode</>;
 const sqlReviewNode = <>sqlReviewNode</>;
@@ -29,6 +29,13 @@ const actionNode = {
   finishNode,
 };
 
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+  };
+});
+
 const renderJsx = (jsx?: JSX.Element | string | null) => {
   const Element = () => <>{jsx}</>;
   return render(<Element />);
@@ -36,7 +43,11 @@ const renderJsx = (jsx?: JSX.Element | string | null) => {
 
 describe('test useGenerateOrderStepInfo', () => {
   beforeEach(() => {
-    mockUseSelector({ user: { username: 'admin' } });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { username: 'admin' },
+      })
+    );
   });
 
   afterEach(() => {
@@ -208,11 +219,9 @@ describe('test useGenerateOrderStepInfo', () => {
 
     renderJsx(executeNode);
 
-    expect(screen.queryByText('order.status.finished：1')).toBeInTheDocument();
-    expect(
-      screen.queryByText('order.status.exec_failed：0')
-    ).toBeInTheDocument();
-    expect(screen.queryByText('order.status.executing：0')).toBeInTheDocument();
+    expect(screen.getByText('order.status.finished：1')).toBeInTheDocument();
+    expect(screen.getByText('order.status.exec_failed：0')).toBeInTheDocument();
+    expect(screen.getByText('order.status.executing：0')).toBeInTheDocument();
     cleanup();
 
     const otherNode = result.current.generateOperateInfo(otherStepList[0]);

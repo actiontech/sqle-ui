@@ -1,26 +1,34 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import ModifyPasswordModal from '.';
 import user from '../../../../api/user';
-import { renderWithServerRouter } from '../../../../testUtils/customRender';
-import { mockUseDispatch } from '../../../../testUtils/mockRedux';
 import { resolveThreeSecond } from '../../../../testUtils/mockRequest';
-import { createMemoryHistory } from 'history';
+
 import { ModalName } from '../../../../data/ModalName';
 import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import useNavigate from '../../../../hooks/useNavigate';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useLocation: jest.fn(),
 }));
 
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux'),
+  useDispatch: jest.fn(),
+}));
+
+jest.mock('../../../../hooks/useNavigate', () => jest.fn());
+
 describe('Account/ModifyPassword', () => {
-  let dispatchSpy: jest.Mock;
+  const dispatchSpy = jest.fn();
+  const navigateSpy = jest.fn();
   const useLocationMock: jest.Mock = useLocation as jest.Mock;
 
   beforeEach(() => {
     jest.useFakeTimers();
-    const { scopeDispatch } = mockUseDispatch();
-    dispatchSpy = scopeDispatch;
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
+    (useNavigate as jest.Mock).mockImplementation(() => navigateSpy);
     useLocationMock.mockReturnValue({
       pathname: '/rule',
       search: '',
@@ -52,29 +60,24 @@ describe('Account/ModifyPassword', () => {
 
   test('should send modify password request when user input all fields', async () => {
     const updateSpy = mockUpdateCurrentUserPasswordV1();
-    const history = createMemoryHistory();
-    renderWithServerRouter(
-      <ModifyPasswordModal visible={true} setModalStatus={jest.fn()} />,
-      undefined,
-      { history }
-    );
+    render(<ModifyPasswordModal visible={true} setModalStatus={jest.fn()} />);
 
-    fireEvent.input(
-      screen.getByLabelText('account.modifyPassword.oldPassword'),
-      { target: { value: '123' } }
-    );
-    fireEvent.input(
-      screen.getByLabelText('account.modifyPassword.newPassword'),
-      { target: { value: '222' } }
-    );
-    fireEvent.input(
-      screen.getByLabelText('account.modifyPassword.newPasswordConfirm'),
-      { target: { value: '222' } }
-    );
-    fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
+    await act(() => {
+      fireEvent.input(
+        screen.getByLabelText('account.modifyPassword.oldPassword'),
+        { target: { value: '123' } }
+      );
+      fireEvent.input(
+        screen.getByLabelText('account.modifyPassword.newPassword'),
+        { target: { value: '222' } }
+      );
+      fireEvent.input(
+        screen.getByLabelText('account.modifyPassword.newPasswordConfirm'),
+        { target: { value: '222' } }
+      );
+      fireEvent.click(screen.getByText('common.submit'));
     });
+
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
       new_password: '222',
@@ -86,11 +89,10 @@ describe('Account/ModifyPassword', () => {
     expect(screen.getByText('common.cancel').parentNode).toHaveAttribute(
       'disabled'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+    expect(navigateSpy).toBeCalledTimes(1);
+    expect(navigateSpy).nthCalledWith(1, '/login', { replace: true });
 
-    expect(history.location.pathname).toBe('/login');
     expect(dispatchSpy).toBeCalledTimes(4);
     expect(dispatchSpy).nthCalledWith(1, {
       payload: { bindProjects: [] },
@@ -116,19 +118,22 @@ describe('Account/ModifyPassword', () => {
       <ModifyPasswordModal visible={true} setModalStatus={setModalStatusMock} />
     );
 
-    fireEvent.input(
-      screen.getByLabelText('account.modifyPassword.oldPassword'),
-      { target: { value: '123' } }
-    );
-    fireEvent.input(
-      screen.getByLabelText('account.modifyPassword.newPassword'),
-      { target: { value: '222' } }
-    );
-    fireEvent.input(
-      screen.getByLabelText('account.modifyPassword.newPasswordConfirm'),
-      { target: { value: '222' } }
-    );
-    fireEvent.click(screen.getByText('common.cancel'));
+    await act(() => {
+      fireEvent.input(
+        screen.getByLabelText('account.modifyPassword.oldPassword'),
+        { target: { value: '123' } }
+      );
+      fireEvent.input(
+        screen.getByLabelText('account.modifyPassword.newPassword'),
+        { target: { value: '222' } }
+      );
+      fireEvent.input(
+        screen.getByLabelText('account.modifyPassword.newPasswordConfirm'),
+        { target: { value: '222' } }
+      );
+      fireEvent.click(screen.getByText('common.cancel'));
+    });
+
     expect(setModalStatusMock).toBeCalledWith(ModalName.Modify_Password, false);
     expect(
       screen.getByLabelText('account.modifyPassword.oldPassword')

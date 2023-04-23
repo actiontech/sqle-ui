@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, act } from '@testing-library/react';
 import AuditResultErrorMessage from '.';
 import { IAuditResult } from '../../api/common';
 import { mockGetAllRules } from '../../page/Rule/__test__/utils';
@@ -35,18 +35,14 @@ describe('AuditResultErrorMessage', () => {
   test('should call getRuleList when rule name is not empty', async () => {
     const { rerender, baseElement } = render(<AuditResultErrorMessage />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(baseElement).toMatchSnapshot();
     expect(getRulesSpy).toBeCalledTimes(0);
 
     rerender(<AuditResultErrorMessage auditResult={auditResult} />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(baseElement).toMatchSnapshot();
     expect(getRulesSpy).toBeCalledTimes(1);
@@ -60,11 +56,10 @@ describe('AuditResultErrorMessage', () => {
       )
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(1000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText(
+      screen.getByText(
         'SQL缺少where条件在执行时会进行全表扫描产生额外开销，建议在大数据量高并发环境下开启，避免影响数据库查询性能'
       )
     ).toBeInTheDocument();

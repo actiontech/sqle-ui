@@ -86,7 +86,7 @@ const UpdateUserGroup = () => {
   return (
     <Modal
       title={t('userGroup.updateUserGroup.title')}
-      visible={visible}
+      open={visible}
       closable={false}
       footer={
         <>

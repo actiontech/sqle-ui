@@ -1,4 +1,4 @@
-import { act, fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, screen } from '@testing-library/react';
 import ProgressConfig from '.';
 import { IWorkflowTemplateDetailResV1 } from '../../../../api/common';
 import EmitterKey from '../../../../data/EmitterKey';
@@ -54,9 +54,8 @@ describe('progressConfig', () => {
         projectName={projectName}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(
       screen.getByText('workflowTemplate.progressConfig.operator.addReview')
     );
@@ -72,9 +71,8 @@ describe('progressConfig', () => {
       )
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const usernameOption = screen.getAllByText('user_name1');
     const username = usernameOption[1];
     expect(username).toHaveClass('ant-select-item-option-content');
@@ -92,9 +90,8 @@ describe('progressConfig', () => {
         projectName={projectName}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('common.submit'));
     expect(container).toMatchSnapshot();
     fireEvent.input(screen.getByTestId('exec-user-desc'), {
@@ -108,9 +105,8 @@ describe('progressConfig', () => {
       )
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const usernameOption = screen.getAllByText('user_name1');
     const username = usernameOption[1];
     expect(username).toHaveClass('ant-select-item-option-content');
@@ -128,9 +124,8 @@ describe('progressConfig', () => {
         projectName={projectName}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(
       screen.getByText('workflowTemplate.progressConfig.operator.addReview')
     );
@@ -155,9 +150,8 @@ describe('progressConfig', () => {
         projectName={projectName}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(
       screen.getByText('workflowTemplate.progressConfig.operator.addReview')
     );
@@ -185,9 +179,8 @@ describe('progressConfig', () => {
         projectName={projectName}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(
       screen.getByText('workflowTemplate.progressConfig.operator.addReview')
     );
@@ -206,9 +199,8 @@ describe('progressConfig', () => {
         screen.getByTestId('review-user-0')
       )
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const usernameOption = screen.getAllByText('user_name1');
     const username = usernameOption[1];
     expect(username).toHaveClass('ant-select-item-option-content');
@@ -223,9 +215,8 @@ describe('progressConfig', () => {
         screen.getByTestId('review-user-1')
       )
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const usernameOption1 = screen.getAllByText('user_name1');
     const username1 = usernameOption1[4];
     expect(username1).toHaveClass('ant-select-item-option-content');
@@ -240,9 +231,8 @@ describe('progressConfig', () => {
         screen.getByTestId('review-user-2')
       )
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const usernameOption2 = screen.getAllByText('user_name1');
     const username2 = usernameOption2[7];
     expect(username2).toHaveClass('ant-select-item-option-content');
@@ -260,9 +250,8 @@ describe('progressConfig', () => {
         screen.getByTestId('exec-user-select')
       )
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const usernameOption3 = screen.getAllByText('user_name1');
     const username3 = usernameOption3[10];
     expect(username3).toHaveClass('ant-select-item-option-content');
@@ -311,9 +300,8 @@ describe('progressConfig', () => {
         projectName={projectName}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(
       screen.getByText('workflowTemplate.progressConfig.operator.addReview')
     );
@@ -344,9 +332,8 @@ describe('progressConfig', () => {
         projectName={projectName}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(
       screen.getByText('workflowTemplate.progressConfig.operator.addReview')
     );
@@ -364,9 +351,8 @@ describe('progressConfig', () => {
         screen.getByTestId('review-user-0')
       )
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const usernameOption = screen.getAllByText('user_name1');
     const username = usernameOption[1];
     expect(username).toHaveClass('ant-select-item-option-content');
@@ -387,9 +373,8 @@ describe('progressConfig', () => {
         screen.getByTestId('exec-user-select')
       )
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const usernameOption3 = screen.getAllByText('user_name1');
 
     const username1 = usernameOption3[3];
@@ -427,9 +412,8 @@ describe('progressConfig', () => {
         projectName={projectName}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(
       screen.getByText('workflowTemplate.progressConfig.operator.addReview')
     );
@@ -447,9 +431,8 @@ describe('progressConfig', () => {
         screen.getByTestId('review-user-0')
       )
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const usernameOption = screen.getAllByText('user_name1');
     const username = usernameOption[1];
     expect(username).toHaveClass('ant-select-item-option-content');
@@ -461,9 +444,8 @@ describe('progressConfig', () => {
         screen.getByTestId('exec-user-select')
       )
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const usernameOption3 = screen.getAllByText('user_name1');
 
     const username1 = usernameOption3[4];

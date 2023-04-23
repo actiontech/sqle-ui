@@ -1,29 +1,40 @@
-import { render } from '@testing-library/react';
-import { mockUseSelector } from '../../../../../testUtils/mockRedux';
 import OperationRecordNavigation from '../OperationRecordNavigation';
+import { renderWithRedux } from '../../../../../testUtils/customRender';
+import useNavigate from '../../../../../hooks/useNavigate';
+
+jest.mock('../../../../../hooks/useNavigate', () => jest.fn());
 
 describe('test Nav/Header/OperationRecordNavigation', () => {
   beforeEach(() => {
-    mockUseSelector({
-      user: { username: 'admin', role: 'admin' },
-    });
+    (useNavigate as jest.Mock).mockImplementation(() => navigateSpy);
   });
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
+  const navigateSpy = jest.fn();
+
   test('should match snapshot', () => {
-    const { container } = render(<OperationRecordNavigation />);
+    const { container } = renderWithRedux(
+      <OperationRecordNavigation />,
+      undefined,
+      {
+        user: { username: 'admin', role: 'admin' },
+      }
+    );
 
     expect(container).toMatchSnapshot();
   });
 
   test('should match snapshot when role is not admin', () => {
-    mockUseSelector({
-      user: { username: 'test', role: '' },
-    });
-    const { container } = render(<OperationRecordNavigation />);
+    const { container } = renderWithRedux(
+      <OperationRecordNavigation />,
+      undefined,
+      {
+        user: { username: 'test', role: '' },
+      }
+    );
     expect(container).toMatchSnapshot();
   });
 });

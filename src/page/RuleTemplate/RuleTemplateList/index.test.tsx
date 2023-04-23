@@ -1,43 +1,41 @@
-import { useTheme } from '@material-ui/styles';
-import {
-  fireEvent,
-  waitFor,
-  screen,
-  act,
-  cleanup,
-} from '@testing-library/react';
+import { useTheme } from '@mui/styles';
+import { fireEvent, screen, act, cleanup } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import RuleTemplateList from '.';
 import rule_template from '../../../api/rule_template';
 import { SystemRole } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
-import {
-  renderWithRouter,
-  renderWithServerRouter,
-} from '../../../testUtils/customRender';
-import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
+import { renderWithRouter } from '../../../testUtils/customRender';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 import { ruleTemplateListData } from '../__testData__';
-import { createMemoryHistory } from 'history';
-import { getBySelector } from '../../../testUtils/customQuery';
+
+import { getBySelector, getHrefByText } from '../../../testUtils/customQuery';
+import { useDispatch, useSelector } from 'react-redux';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn(),
 }));
 const projectName = 'default';
-
-jest.mock('@material-ui/styles', () => {
+jest.mock('react-redux', () => {
   return {
-    ...jest.requireActual('@material-ui/styles'),
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
+jest.mock('@mui/styles', () => {
+  return {
+    ...jest.requireActual('@mui/styles'),
     useTheme: jest.fn(),
   };
 });
 
 describe('RuleTemplate/RuleTemplateList', () => {
-  let mockDispatch: jest.Mock;
+  const mockDispatch = jest.fn();
+
   let getRuleTemplateListSpy: jest.SpyInstance;
   const useParamsMock: jest.Mock = useParams as jest.Mock;
   const useThemeMock: jest.Mock = useTheme as jest.Mock;
@@ -45,16 +43,19 @@ describe('RuleTemplate/RuleTemplateList', () => {
   beforeEach(() => {
     jest.useFakeTimers();
     getRuleTemplateListSpy = mockGetRuleTemplateList();
-    const { scopeDispatch } = mockUseDispatch();
     useParamsMock.mockReturnValue({ projectName });
     mockGetGlobalRuleTemplateList();
-    mockUseSelector({
-      globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
-      ruleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
-      user: { role: SystemRole.admin, bindProjects: mockBindProjects },
-      projectManage: { archived: false },
-    });
-    mockDispatch = scopeDispatch;
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
+        ruleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
+        user: { role: SystemRole.admin, bindProjects: mockBindProjects },
+        projectManage: { archived: false },
+      })
+    );
+
+    (useDispatch as jest.Mock).mockImplementation(() => mockDispatch);
     useThemeMock.mockReturnValue({ common: { padding: 24 } });
   });
 
@@ -95,9 +96,8 @@ describe('RuleTemplate/RuleTemplateList', () => {
   test('should match snapshot', async () => {
     const { container } = renderWithRouter(<RuleTemplateList />);
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(mockDispatch).toBeCalledWith({
       payload: {
         modalStatus: {
@@ -113,9 +113,8 @@ describe('RuleTemplate/RuleTemplateList', () => {
     const getListSpy = mockGetRuleTemplateList();
     const deleteSpy = mockDeleteRuleTemplate();
     renderWithRouter(<RuleTemplateList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getListSpy).toBeCalledTimes(1);
     expect(getListSpy).toBeCalledWith({
       page_index: 1,
@@ -124,7 +123,7 @@ describe('RuleTemplate/RuleTemplateList', () => {
     });
     fireEvent.click(screen.getAllByText('common.delete')[1]);
     expect(
-      screen.queryByText('ruleTemplate.deleteRuleTemplate.tips')
+      screen.getByText('ruleTemplate.deleteRuleTemplate.tips')
     ).toBeInTheDocument();
     fireEvent.click(screen.getByText('OK'));
     expect(deleteSpy).toBeCalledTimes(1);
@@ -133,13 +132,12 @@ describe('RuleTemplate/RuleTemplateList', () => {
       project_name: projectName,
     });
     expect(
-      screen.queryByText('ruleTemplate.deleteRuleTemplate.deleting')
+      screen.getByText('ruleTemplate.deleteRuleTemplate.deleting')
     ).toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText('ruleTemplate.deleteRuleTemplate.deleteSuccessTips')
+      screen.getByText('ruleTemplate.deleteRuleTemplate.deleteSuccessTips')
     ).toBeInTheDocument();
     expect(
       screen.queryByText('ruleTemplate.deleteRuleTemplate.deleting')
@@ -155,15 +153,13 @@ describe('RuleTemplate/RuleTemplateList', () => {
   test('should send export rule template request when user click export rule template button', async () => {
     const exportSpy = mockExportRuleTemplate();
     renderWithRouter(<RuleTemplateList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.mouseEnter(screen.getAllByText('common.more')[0]);
-    await waitFor(() => {
-      jest.advanceTimersByTime(300);
-    });
+    await screen.findByText('ruleTemplate.exportRuleTemplate.button');
+
     expect(
-      screen.queryByText('ruleTemplate.exportRuleTemplate.button')
+      screen.getByText('ruleTemplate.exportRuleTemplate.button')
     ).toBeInTheDocument();
     expect(exportSpy).toBeCalledTimes(0);
 
@@ -177,13 +173,12 @@ describe('RuleTemplate/RuleTemplateList', () => {
       { responseType: 'blob' }
     );
     expect(
-      screen.queryByText('ruleTemplate.exportRuleTemplate.exporting')
+      screen.getByText('ruleTemplate.exportRuleTemplate.exporting')
     ).toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText('ruleTemplate.exportRuleTemplate.exportSuccessTips')
+      screen.getByText('ruleTemplate.exportRuleTemplate.exportSuccessTips')
     ).toBeInTheDocument();
     expect(
       screen.queryByText('ruleTemplate.exportRuleTemplate.exporting')
@@ -192,17 +187,14 @@ describe('RuleTemplate/RuleTemplateList', () => {
 
   test('should open clone rule template modal when use click clone this template', async () => {
     renderWithRouter(<RuleTemplateList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     mockDispatch.mockClear();
     fireEvent.mouseEnter(screen.getAllByText('common.more')[0]);
-    await waitFor(() => {
-      jest.advanceTimersByTime(300);
-    });
+    await screen.findByText('ruleTemplate.cloneRuleTemplate.button');
 
     expect(
-      screen.queryByText('ruleTemplate.cloneRuleTemplate.button')
+      screen.getByText('ruleTemplate.cloneRuleTemplate.button')
     ).toBeInTheDocument();
     fireEvent.click(screen.getByText('ruleTemplate.cloneRuleTemplate.button'));
     expect(mockDispatch).toBeCalledTimes(2);
@@ -223,9 +215,8 @@ describe('RuleTemplate/RuleTemplateList', () => {
 
   test('should refresh list when receive "Refresh_Rule_Template_List" event', async () => {
     renderWithRouter(<RuleTemplateList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getRuleTemplateListSpy).toBeCalledTimes(1);
     act(() => {
       EventEmitter.emit(EmitterKey.Refresh_Rule_Template_List);
@@ -234,75 +225,75 @@ describe('RuleTemplate/RuleTemplateList', () => {
   });
 
   test('should hide the Create, Add, Edit feature when not currently a project manager or admin', async () => {
-    mockUseSelector({
-      globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
-      ruleTemplate: {
-        modalStatus: {},
-        selectRuleTemplate: undefined,
-      },
-      user: {
-        role: SystemRole.admin,
-        bindProjects: [{ projectName: 'test', isManager: false }],
-      },
-      projectManage: { archived: false },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
+        ruleTemplate: {
+          modalStatus: {},
+          selectRuleTemplate: undefined,
+        },
+        user: {
+          role: SystemRole.admin,
+          bindProjects: [{ projectName: 'test', isManager: false }],
+        },
+        projectManage: { archived: false },
+      })
+    );
 
     renderWithRouter(<RuleTemplateList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    expect(screen.queryAllByText('common.delete')[0]).toBeInTheDocument();
-    expect(screen.queryAllByText('common.edit')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('common.delete')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('common.edit')[0]).toBeInTheDocument();
     expect(
-      screen.queryByText('ruleTemplate.createRuleTemplate.button')
+      screen.getByText('ruleTemplate.createRuleTemplate.button')
     ).toBeInTheDocument();
 
     cleanup();
     jest.clearAllMocks();
 
-    mockUseSelector({
-      globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
-      ruleTemplate: {
-        modalStatus: {},
-        selectRuleTemplate: undefined,
-      },
-      user: {
-        role: '',
-        bindProjects: mockBindProjects,
-      },
-      projectManage: { archived: false },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
+        ruleTemplate: {
+          modalStatus: {},
+          selectRuleTemplate: undefined,
+        },
+        user: {
+          role: '',
+          bindProjects: mockBindProjects,
+        },
+        projectManage: { archived: false },
+      })
+    );
     renderWithRouter(<RuleTemplateList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    expect(screen.queryAllByText('common.delete')[0]).toBeInTheDocument();
-    expect(screen.queryAllByText('common.edit')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('common.delete')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('common.edit')[0]).toBeInTheDocument();
     expect(
-      screen.queryByText('ruleTemplate.createRuleTemplate.button')
+      screen.getByText('ruleTemplate.createRuleTemplate.button')
     ).toBeInTheDocument();
 
     cleanup();
     jest.clearAllMocks();
 
-    mockUseSelector({
-      globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
-      ruleTemplate: {
-        modalStatus: {},
-        selectRuleTemplate: undefined,
-      },
-      user: {
-        role: '',
-        bindProjects: [{ projectName: 'default', isManager: false }],
-      },
-      projectManage: { archived: false },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
+        ruleTemplate: {
+          modalStatus: {},
+          selectRuleTemplate: undefined,
+        },
+        user: {
+          role: '',
+          bindProjects: [{ projectName: 'default', isManager: false }],
+        },
+        projectManage: { archived: false },
+      })
+    );
     renderWithRouter(<RuleTemplateList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.queryByText('common.delete')).not.toBeInTheDocument();
     expect(screen.queryByText('common.edit')).not.toBeInTheDocument();
@@ -312,17 +303,11 @@ describe('RuleTemplate/RuleTemplateList', () => {
   });
 
   test('should render rule link when rule template name is not empty', async () => {
-    let history = createMemoryHistory();
-    renderWithServerRouter(<RuleTemplateList />, undefined, { history });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    fireEvent.click(
-      screen.getByText(ruleTemplateListData[0].rule_template_name!)
-    );
-    expect(history.location.pathname).toBe('/rule');
-    expect(history.location.search).toBe(
-      '?projectName=default&ruleTemplateName=default_mysql'
+    renderWithRouter(<RuleTemplateList />);
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    expect(getHrefByText(ruleTemplateListData[0].rule_template_name!)).toBe(
+      `/rule?projectName=default&ruleTemplateName=default_mysql`
     );
   });
 
@@ -337,9 +322,8 @@ describe('RuleTemplate/RuleTemplateList', () => {
       )
     );
     renderWithRouter(<RuleTemplateList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(getBySelector('.ant-pagination-next'));
     expect(getRuleTemplateListSpy).toBeCalledWith({
       page_index: 2,
@@ -355,23 +339,22 @@ describe('RuleTemplate/RuleTemplateList', () => {
   });
 
   test('should hide the Create, Delete, Edit, Import, Clone feature when project is archived', async () => {
-    mockUseSelector({
-      globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
-      ruleTemplate: {
-        modalStatus: {},
-        selectRuleTemplate: undefined,
-      },
-      user: {
-        role: SystemRole.admin,
-        bindProjects: [{ projectName, isManager: true }],
-      },
-      projectManage: { archived: true },
-    });
-
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        globalRuleTemplate: { modalStatus: {}, selectRuleTemplate: undefined },
+        ruleTemplate: {
+          modalStatus: {},
+          selectRuleTemplate: undefined,
+        },
+        user: {
+          role: SystemRole.admin,
+          bindProjects: [{ projectName, isManager: true }],
+        },
+        projectManage: { archived: true },
+      })
+    );
     renderWithRouter(<RuleTemplateList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.queryAllByText('common.delete')[0]).toBeUndefined();
     expect(screen.queryAllByText('common.edit')[0]).toBeUndefined();
@@ -383,11 +366,10 @@ describe('RuleTemplate/RuleTemplateList', () => {
     ).not.toBeInTheDocument();
 
     fireEvent.mouseEnter(screen.getAllByText('common.more')[0]);
-    await waitFor(() => {
-      jest.advanceTimersByTime(300);
-    });
+    await screen.findByText('ruleTemplate.exportRuleTemplate.button');
+
     expect(
-      screen.queryByText('ruleTemplate.exportRuleTemplate.button')
+      screen.getByText('ruleTemplate.exportRuleTemplate.button')
     ).toBeInTheDocument();
     expect(
       screen.queryByText('ruleTemplate.cloneRuleTemplate.button')

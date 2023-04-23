@@ -6,12 +6,12 @@ import { useTranslation } from 'react-i18next';
 import useStaticStatus from '../../../../../hooks/useStaticStatus';
 import { useForm } from 'antd/lib/form/Form';
 import './index.less';
-import { useTheme } from '@material-ui/styles';
-import { Theme } from '../../../../../types/theme.type';
+import { useTheme } from '@mui/styles';
 import EmptyBox from '../../../../../components/EmptyBox';
 import BackendForm from '../../../../../components/BackendForm';
 import useAsyncParams from '../../../../../components/BackendForm/useAsyncParams';
 import { IRuleParamResV1 } from '../../../../../api/common';
+import { Theme } from '@mui/material/styles';
 
 const RuleManagerModal: React.FC<RuleManagerFormProps> = (props) => {
   const { t } = useTranslation();
@@ -84,7 +84,7 @@ const RuleManagerModal: React.FC<RuleManagerFormProps> = (props) => {
     <>
       <Modal
         title={t('ruleTemplate.editModal.title')}
-        visible={props.visible}
+        open={props.visible}
         cancelText={t('common.close')}
         closable={false}
         okText={t('common.submit')}

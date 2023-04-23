@@ -1,4 +1,4 @@
-import { useTheme } from '@material-ui/styles';
+import { useTheme } from '@mui/styles';
 import { useBoolean } from 'ahooks';
 import {
   Button,
@@ -18,28 +18,28 @@ import { cloneDeep } from 'lodash';
 import moment from 'moment';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import { AuditTaskResV1SqlSourceEnum } from '../../../api/common.enum';
 import workflow from '../../../api/workflow';
 import { ICreateWorkflowV2Params } from '../../../api/workflow/index.d';
 import EmptyBox from '../../../components/EmptyBox';
 import { ResponseCode, PageFormLayout } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
-import { translation } from '../../../locale';
+import { t } from '../../../locale';
 import { FormValidatorRule } from '../../../types/common.type';
-import { Theme } from '../../../types/theme.type';
 import EventEmitter from '../../../utils/EventEmitter';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import AuditResultCollection from '../AuditResult/AuditResultCollection';
 import useAuditOrder from '../hooks/useAuditOrder';
 import SqlInfoForm from './SqlInfoForm';
 import { SqlInfoFormFields } from './SqlInfoForm/index.type';
+import { Theme } from '@mui/material/styles';
+import { Link } from '../../../components/Link';
 
 export const workflowNameRule = (): FormValidatorRule => {
   return (_, value) => {
     const reg = /^[\u4e00-\u9fa5_a-zA-Z0-9_-]*$/;
     if (!reg.test(value)) {
-      return Promise.reject(translation('order.createOrder.workflowNameRule'));
+      return Promise.reject(t('order.createOrder.workflowNameRule'));
     }
     return Promise.resolve();
   };
@@ -311,13 +311,13 @@ const CreateOrder = () => {
         title={t('common.operateSuccess')}
         footer={null}
         closable={false}
-        visible={visible}
+        open={visible}
       >
         <Result
           status="success"
           title={t('order.create.success')}
           subTitle={
-            <Link to={`/project/${projectName}/order`}>
+            <Link to={`project/${projectName}/order`}>
               {t('order.create.guide')} {'>'}
             </Link>
           }

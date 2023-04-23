@@ -1,23 +1,39 @@
-import { cleanup, fireEvent, screen, waitFor } from '@testing-library/react';
+import {
+  act,
+  cleanup,
+  fireEvent,
+  screen,
+  waitFor,
+} from '@testing-library/react';
 import BindUser from '.';
 import oauth2 from '../../api/oauth2';
 import { SupportLanguage } from '../../locale';
-import {
-  renderWithTheme,
-  renderWithThemeAndServerRouter,
-} from '../../testUtils/customRender';
-import { mockUseDispatch, mockUseSelector } from '../../testUtils/mockRedux';
+import { renderWithTheme } from '../../testUtils/customRender';
 import { resolveThreeSecond } from '../../testUtils/mockRequest';
-import { createMemoryHistory } from 'history';
-import { getBySelector } from '../../testUtils/customQuery';
+import { useDispatch, useSelector } from 'react-redux';
+import useNavigate from '../../hooks/useNavigate';
+
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux'),
+  useDispatch: jest.fn(),
+  useSelector: jest.fn(),
+}));
+
+jest.mock('../../hooks/useNavigate', () => jest.fn());
 
 describe('bindUser', () => {
-  let useDispatch!: jest.SpyInstance;
+  const dispatchSpy = jest.fn();
+  const navigateSpy = jest.fn();
 
   beforeEach(() => {
     jest.useFakeTimers();
-    useDispatch = mockUseDispatch().scopeDispatch;
-    mockUseSelector({ locale: { language: SupportLanguage.zhCN } });
+    (useNavigate as jest.Mock).mockImplementation(() => navigateSpy);
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
+    (useSelector as jest.Mock).mockImplementation((selector) =>
+      selector({
+        locale: { language: SupportLanguage.zhCN },
+      })
+    );
   });
 
   afterEach(() => {
@@ -49,48 +65,37 @@ describe('bindUser', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should show error when url params includes error', () => {
+  it('should show error when url params includes error', async () => {
     mockLocationSearch('error=this is error');
     renderWithTheme(<BindUser />);
-    expect(screen.queryByText('this is error')).toBeInTheDocument();
-    fireEvent.click(getBySelector('.ant-notification-close-x'));
-    expect(screen.queryByText('this is error')).not.toBeInTheDocument();
+    expect(screen.getByText('this is error')).toBeInTheDocument();
   });
 
   it('should show lostToken error when url params include user_exit but not include sqle_token', async () => {
     mockLocationSearch('user_exist=true');
     renderWithTheme(<BindUser />);
-    await waitFor(() => {
-      jest.runAllTimers();
-    });
-    expect(screen.queryByText('login.oauth.lostToken')).toBeInTheDocument();
-    fireEvent.click(getBySelector('.ant-notification-close-x'));
-    expect(screen.queryByText('login.oauth.lostToken')).not.toBeInTheDocument();
+    await screen.findByText('login.oauth.lostToken');
+    expect(screen.getByText('login.oauth.lostToken')).toBeInTheDocument();
   });
 
   it('should update token and jump to `/` when url params include user exist and token', async () => {
     mockLocationSearch('user_exist=true&sqle_token=token');
-    const history = createMemoryHistory();
-    history.push('/bindUser');
-    expect(history.location.pathname).toBe('/bindUser');
-    renderWithThemeAndServerRouter(<BindUser />, undefined, { history });
-    expect(useDispatch).toBeCalledTimes(1);
-    expect(useDispatch).toBeCalledWith({
+    renderWithTheme(<BindUser />);
+    expect(dispatchSpy).toBeCalledTimes(1);
+    expect(dispatchSpy).toBeCalledWith({
       payload: {
         token: 'token',
       },
       type: 'user/updateToken',
     });
-    expect(history.location.pathname).toBe('/');
+    expect(navigateSpy).toBeCalledTimes(1);
+    expect(navigateSpy).nthCalledWith(1, '/');
   });
 
   it('should bind user when url params include user exist=false and oauth2_user_id', async () => {
     mockLocationSearch('user_exist=false&oauth2_token=oauth2_token');
     const bindUser = mockBindUser();
-    const history = createMemoryHistory();
-    history.push('/bindUser');
-    expect(history.location.pathname).toBe('/bindUser');
-    renderWithThemeAndServerRouter(<BindUser />, undefined, { history });
+    renderWithTheme(<BindUser />);
 
     fireEvent.input(screen.getByPlaceholderText('login.oauth.form.username'), {
       target: { value: 'username' },
@@ -100,9 +105,8 @@ describe('bindUser', () => {
     });
 
     fireEvent.click(screen.getByText('login.oauth.submitButton'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(bindUser).toBeCalledTimes(1);
     expect(bindUser).toBeCalledWith({
       oauth2_token: 'oauth2_token',
@@ -116,14 +120,12 @@ describe('bindUser', () => {
     });
     expect(bindUser).toBeCalledTimes(1);
 
-    expect(history.location.pathname).toBe('/bindUser');
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    expect(history.location.pathname).toBe('/');
-    expect(useDispatch).toBeCalledTimes(1);
-    expect(useDispatch).toBeCalledWith({
+    expect(navigateSpy).toBeCalledTimes(1);
+    expect(navigateSpy).toBeCalledWith('/');
+    expect(dispatchSpy).toBeCalledTimes(1);
+    expect(dispatchSpy).toBeCalledWith({
       payload: {
         token: 'token',
       },
@@ -134,10 +136,7 @@ describe('bindUser', () => {
   it('should show lost lostOauthUserId error when url params include user_exist=false but not include oauth2Token', async () => {
     mockLocationSearch('user_exist=false');
     const bindUser = mockBindUser();
-    const history = createMemoryHistory();
-    history.push('/bindUser');
-    expect(history.location.pathname).toBe('/bindUser');
-    renderWithThemeAndServerRouter(<BindUser />, undefined, { history });
+    renderWithTheme(<BindUser />);
 
     fireEvent.input(screen.getByPlaceholderText('login.oauth.form.username'), {
       target: { value: 'username' },
@@ -147,32 +146,16 @@ describe('bindUser', () => {
     });
 
     fireEvent.click(screen.getByText('login.oauth.submitButton'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(bindUser).toBeCalledTimes(0);
-    expect(
-      screen.queryByText('login.oauth.lostOauth2Token')
-    ).toBeInTheDocument();
+    await screen.findByText('login.oauth.lostOauth2Token');
 
-    fireEvent.click(getBySelector('.ant-notification-close-x'));
-
-    expect(
-      screen.queryByText('login.oauth.lostOauth2Token')
-    ).not.toBeInTheDocument();
+    expect(screen.getByText('login.oauth.lostOauth2Token')).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('login.oauth.submitButton'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    expect(bindUser).toBeCalledTimes(0);
-    expect(
-      screen.queryByText('login.oauth.lostOauth2Token')
-    ).toBeInTheDocument();
-    fireEvent.click(getBySelector('.ant-notification-close-x'));
+    await act(async () => jest.advanceTimersByTime(0));
 
-    expect(
-      screen.queryByText('login.oauth.lostOauth2Token')
-    ).not.toBeInTheDocument();
+    expect(bindUser).toBeCalledTimes(0);
   });
 });

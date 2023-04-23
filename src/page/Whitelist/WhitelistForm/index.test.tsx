@@ -2,15 +2,11 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useForm } from 'antd/lib/form/Form';
 import WhitelistForm from '.';
 import { CreateAuditWhitelistReqV1MatchTypeEnum } from '../../../api/common.enum';
-import { renderWithTheme } from '../../../testUtils/customRender';
-import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
+import { renderWithThemeAndRedux } from '../../../testUtils/customRender';
 import { SupportTheme } from '../../../theme';
 
 describe('Whitelist/WhitelistForm', () => {
-  beforeEach(() => {
-    mockUseDispatch();
-    mockUseSelector({ user: { theme: SupportTheme.LIGHT } });
-  });
+  beforeEach(() => {});
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -19,8 +15,12 @@ describe('Whitelist/WhitelistForm', () => {
 
   test('should match snapshot', () => {
     const { result } = renderHook(() => useForm());
-    const { container } = renderWithTheme(
-      <WhitelistForm form={result.current[0]} />
+    const { container } = renderWithThemeAndRedux(
+      <WhitelistForm form={result.current[0]} />,
+      undefined,
+      {
+        user: { theme: SupportTheme.LIGHT },
+      }
     );
     expect(container).toMatchSnapshot();
     expect(Object.keys(result.current[0].getFieldsValue())).toEqual([

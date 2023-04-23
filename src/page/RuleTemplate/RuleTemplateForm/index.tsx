@@ -1,15 +1,30 @@
-import { useTheme } from '@material-ui/styles';
+import { useTheme } from '@mui/styles';
 import { Button, Col, Divider, Row, Space, Steps } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Theme } from '../../../types/theme.type';
 import BaseInfoForm from './BaseInfoForm';
 import { RuleTemplateFormProps } from './index.type';
 import RuleSelect from './RuleSelect';
+import { Theme } from '@mui/material/styles';
 
 const RuleTemplateForm: React.FC<RuleTemplateFormProps> = (props) => {
   const { t } = useTranslation();
   const theme = useTheme<Theme>();
+
+  const stepItems = [
+    {
+      title: t('ruleTemplate.ruleTemplateForm.baseInfoTitle'),
+      description: t('ruleTemplate.ruleTemplateForm.baseInfoDesc'),
+    },
+    {
+      title: t('ruleTemplate.ruleTemplateForm.ruleTitle'),
+      description: t('ruleTemplate.ruleTemplateForm.ruleDesc'),
+    },
+    {
+      title: t('ruleTemplate.ruleTemplateForm.result'),
+      description: t('ruleTemplate.ruleTemplateForm.resultDesc'),
+    },
+  ];
 
   return (
     <>
@@ -20,20 +35,7 @@ const RuleTemplateForm: React.FC<RuleTemplateFormProps> = (props) => {
       >
         <Row>
           <Col span={12} offset={6}>
-            <Steps current={props.step}>
-              <Steps.Step
-                title={t('ruleTemplate.ruleTemplateForm.baseInfoTitle')}
-                description={t('ruleTemplate.ruleTemplateForm.baseInfoDesc')}
-              />
-              <Steps.Step
-                title={t('ruleTemplate.ruleTemplateForm.ruleTitle')}
-                description={t('ruleTemplate.ruleTemplateForm.ruleDesc')}
-              />
-              <Steps.Step
-                title={t('ruleTemplate.ruleTemplateForm.result')}
-                description={t('ruleTemplate.ruleTemplateForm.resultDesc')}
-              />
-            </Steps>
+            <Steps current={props.step} items={stepItems}></Steps>
           </Col>
         </Row>
         <div hidden={props.step !== 0} data-testid="base-form">

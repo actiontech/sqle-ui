@@ -1,6 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import { sqlExecPlans, tableSchemas } from '../../SqlQuery/__testData__';
 import SqlAnalyze from './SqlAnalyze';
+import { getAllBySelector } from '../../../testUtils/customQuery';
 
 describe('SqlAnalyze/SqlAnalyze', () => {
   // eslint-disable-next-line no-console
@@ -54,8 +55,8 @@ describe('SqlAnalyze/SqlAnalyze', () => {
       />
     );
     expect(container).toMatchSnapshot();
-    fireEvent.click(container.querySelectorAll('.ant-tabs-tab-btn')[1]);
-    fireEvent.click(container.querySelectorAll('.ant-tabs-tab-btn')[2]);
+    fireEvent.click(getAllBySelector('.ant-tabs-tab-btn')[1]);
+    fireEvent.click(getAllBySelector('.ant-tabs-tab-btn')[2]);
     expect(container).toMatchSnapshot();
   });
 

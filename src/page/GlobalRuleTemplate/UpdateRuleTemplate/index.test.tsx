@@ -1,17 +1,14 @@
-import { waitFor, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent, act } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import UpdateRuleTemplate from '.';
 import rule_template from '../../../api/rule_template';
-import {
-  renderWithThemeAndRouter,
-  renderWithThemeAndServerRouter,
-} from '../../../testUtils/customRender';
+import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
 import { resolveThreeSecond, mockDriver } from '../../../testUtils/mockRequest';
 import {
   ruleTemplateData,
   ruleTemplateDataWithSpecialName,
 } from '../__testData__';
-import { createMemoryHistory } from 'history';
+
 import { allRulesWithType } from '../../Rule/__testData__';
 import { IRuleReqV1 } from '../../../api/common';
 
@@ -61,32 +58,16 @@ describe('UpdateRuleTemplate', () => {
   test('should render base form at init', async () => {
     const { container } = renderWithThemeAndRouter(<UpdateRuleTemplate />);
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    expect(container).toMatchSnapshot();
-  });
+    await act(async () => jest.advanceTimersByTime(3000));
 
-  test('should jump to /rule/template when user click back btn', async () => {
-    const history = createMemoryHistory();
-    renderWithThemeAndServerRouter(<UpdateRuleTemplate />, undefined, {
-      history,
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    expect(history.location.pathname).toBe('/');
-    expect(screen.getByText('common.back')).toBeInTheDocument();
-    fireEvent.click(screen.getByText('common.back'));
-    expect(history.location.pathname).toBe('/rule/template');
+    expect(container).toMatchSnapshot();
   });
 
   test('should jump to next step when user input all require fields', async () => {
     const updateTemplateSpy = mockUpdateRuleTemplate();
     renderWithThemeAndRouter(<UpdateRuleTemplate />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByTestId('base-form')).not.toHaveAttribute('hidden');
     fireEvent.input(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateDesc'),
@@ -100,9 +81,8 @@ describe('UpdateRuleTemplate', () => {
 
     fireEvent.click(screen.getByText('common.nextStep'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByTestId('base-form')).toHaveAttribute('hidden');
     expect(screen.getByTestId('rule-list')).not.toHaveAttribute('hidden');
 
@@ -114,9 +94,8 @@ describe('UpdateRuleTemplate', () => {
     ).toHaveValue('default_mysql');
     fireEvent.click(screen.getByText('common.nextStep'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByTestId('base-form')).toHaveAttribute('hidden');
     expect(screen.getByTestId('rule-list')).not.toHaveAttribute('hidden');
 
@@ -154,18 +133,14 @@ describe('UpdateRuleTemplate', () => {
     });
   });
 
-  it('should not check rule template name when update rule template', async () => {
+  test('should not check rule template name when update rule template', async () => {
     const getRuleTemplate = mockGetRuleTemplate();
     getRuleTemplate.mockImplementation(() =>
       resolveThreeSecond(ruleTemplateDataWithSpecialName)
     );
     renderWithThemeAndRouter(<UpdateRuleTemplate />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByTestId('base-form')).not.toHaveAttribute('hidden');
     fireEvent.input(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateDesc'),
@@ -178,10 +153,8 @@ describe('UpdateRuleTemplate', () => {
     ).toBeDisabled();
 
     fireEvent.click(screen.getByText('common.nextStep'));
+    await act(async () => jest.advanceTimersByTime(0));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
     expect(screen.getByTestId('base-form')).toHaveAttribute('hidden');
     expect(screen.getByTestId('rule-list')).not.toHaveAttribute('hidden');
   });

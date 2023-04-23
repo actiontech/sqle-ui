@@ -1,27 +1,32 @@
 import { render } from '@testing-library/react';
 import ProjectManageModal from '..';
 import { ModalName } from '../../../../data/ModalName';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../testUtils/mockRedux';
+import { useDispatch, useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('test Project/Modal', () => {
-  let dispatchSpy: jest.Mock;
+  const dispatchSpy = jest.fn();
 
   beforeEach(() => {
-    const { scopeDispatch } = mockUseDispatch();
-    dispatchSpy = scopeDispatch;
-
-    mockUseSelector({
-      projectManage: {
-        modalStatus: {
-          [ModalName.Update_Project]: false,
-          [ModalName.Create_Project]: false,
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        projectManage: {
+          modalStatus: {
+            [ModalName.Update_Project]: false,
+            [ModalName.Create_Project]: false,
+          },
+          selectProject: { name: 'name', desc: 'desc', id: 1 },
         },
-        selectProject: { name: 'name', desc: 'desc', id: 1 },
-      },
-    });
+      })
+    );
   });
 
   afterEach(() => {

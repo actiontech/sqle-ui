@@ -1,10 +1,17 @@
-import { cleanup, fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, cleanup, fireEvent, screen } from '@testing-library/react';
 import Home from '.';
 import dashboard from '../../api/dashboard';
 import workflow from '../../api/workflow';
 import { renderWithRouter } from '../../testUtils/customRender';
-import { mockUseSelector } from '../../testUtils/mockRedux';
 import { resolveThreeSecond } from '../../testUtils/mockRequest';
+import { useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+  };
+});
 
 describe('Home', () => {
   const mockGetDashboardV1 = () => {
@@ -54,7 +61,11 @@ describe('Home', () => {
 
   beforeEach(() => {
     jest.useFakeTimers();
-    mockUseSelector({ user: { username: 'admin' } });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { username: 'admin' },
+      })
+    );
     getGlobalWorkflowsSpy = mockGetGlobalWorkflows();
     getWorkflowsSpy = mockGetWorkflows();
   });
@@ -90,14 +101,10 @@ describe('Home', () => {
     mockGetDashboardProjectTipsV1();
     const { container } = renderWithRouter(<Home />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     // fix local snapshot are different from github actions
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
   });
@@ -109,9 +116,7 @@ describe('Home', () => {
     expect(getDashboardProjectTipsSpy).toBeCalledTimes(0);
     renderWithRouter(<Home />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(getDashboardSpy).toBeCalledTimes(1);
     expect(getDashboardProjectTipsSpy).toBeCalledTimes(1);
@@ -122,23 +127,18 @@ describe('Home', () => {
     mockGetDashboardProjectTipsV1();
 
     renderWithRouter(<Home />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByText('dashboard.allProjectTip')).toBeInTheDocument();
     expect(getGlobalWorkflowsSpy).toBeCalledTimes(6);
 
     fireEvent.mouseDown(screen.getByText('dashboard.allProjectTip'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     fireEvent.click(screen.getAllByText('default')[1]);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(getWorkflowsSpy).toBeCalledTimes(6);
   });

@@ -22,112 +22,21 @@ exports[`Oauth should render oauth config after request finish 1`] = `
       class="ant-card-body"
     >
       <div
-        class="ant-card-loading-content"
+        class="ant-skeleton ant-skeleton-active"
       >
         <div
-          class="ant-row"
-          style="margin-left: -4px; margin-right: -4px;"
+          class="ant-skeleton-content"
         >
-          <div
-            class="ant-col ant-col-22"
-            style="padding-left: 4px; padding-right: 4px;"
+          <ul
+            class="ant-skeleton-paragraph"
           >
-            <div
-              class="ant-card-loading-block"
+            <li />
+            <li />
+            <li />
+            <li
+              style="width: 61%;"
             />
-          </div>
-        </div>
-        <div
-          class="ant-row"
-          style="margin-left: -4px; margin-right: -4px;"
-        >
-          <div
-            class="ant-col ant-col-8"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-          <div
-            class="ant-col ant-col-15"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-        </div>
-        <div
-          class="ant-row"
-          style="margin-left: -4px; margin-right: -4px;"
-        >
-          <div
-            class="ant-col ant-col-6"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-          <div
-            class="ant-col ant-col-18"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-        </div>
-        <div
-          class="ant-row"
-          style="margin-left: -4px; margin-right: -4px;"
-        >
-          <div
-            class="ant-col ant-col-13"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-          <div
-            class="ant-col ant-col-9"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-        </div>
-        <div
-          class="ant-row"
-          style="margin-left: -4px; margin-right: -4px;"
-        >
-          <div
-            class="ant-col ant-col-4"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-          <div
-            class="ant-col ant-col-3"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-          <div
-            class="ant-col ant-col-16"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
+          </ul>
         </div>
       </div>
     </div>
@@ -600,747 +509,63 @@ exports[`Oauth should render oauth config after request finish 2`] = `
         hidden=""
       >
         <div
-          class="ant-row ant-form-item"
+          class="ant-form-item"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="enable"
-              title="system.oauth.enable"
-            >
-              system.oauth.enable
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
             >
-              <div
-                class="ant-form-item-control-input-content"
+              <label
+                class=""
+                for="enable"
+                title="system.oauth.enable"
               >
-                <button
-                  aria-checked="false"
-                  class="ant-switch"
-                  id="enable"
-                  role="switch"
-                  type="button"
-                >
-                  <div
-                    class="ant-switch-handle"
-                  />
-                  <span
-                    class="ant-switch-inner"
-                  />
-                </button>
-              </div>
+                system.oauth.enable
+              </label>
             </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="clientId"
-              title=""
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
             >
               <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
+                class="ant-form-item-control-input"
               >
                 <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
+                  class="ant-form-item-control-input-content"
                 >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
+                  <button
+                    aria-checked="false"
+                    class="ant-switch"
+                    id="enable"
+                    role="switch"
+                    type="button"
                   >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
+                    <div
+                      class="ant-switch-handle"
+                    />
+                    <span
+                      class="ant-switch-inner"
+                    />
+                  </button>
                 </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.clientId
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="clientId"
-                  type="text"
-                  value=""
-                />
               </div>
             </div>
           </div>
         </div>
         <div
-          class="ant-row ant-form-item"
+          class="ant-form-item"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="clientSecret"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.clientSecret
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
             >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="clientSecret"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="clientHost"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.clientHost
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="clientHost"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="serverAuthUrl"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.serverAuthUrl
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="serverAuthUrl"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="serverTokenUrl"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.serverTokenUrl
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="serverTokenUrl"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="serverUserIdUrl"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.serverUserIdUrl
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="serverUserIdUrl"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="scopes"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.scopes
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="scopes"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="accessTokenKeyName"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.accessTokenKeyName
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="accessTokenKeyName"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="userIdKeyName"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.userIdKeyName
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="userIdKeyName"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="loginButtonText"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.loginButtonText
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="loginButtonText"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-no-colon"
-              title=" "
-            >
-               
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
+              <label
+                class="ant-form-item-required"
+                for="clientId"
+                title=""
               >
                 <div
                   class="ant-space ant-space-horizontal ant-space-align-center"
@@ -1349,26 +574,765 @@ exports[`Oauth should render oauth config after request finish 2`] = `
                     class="ant-space-item"
                     style="margin-right: 8px;"
                   >
-                    <button
-                      class="ant-btn ant-btn-primary"
-                      type="submit"
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
                     >
-                      <span>
-                        common.submit
-                      </span>
-                    </button>
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
                   </div>
                   <div
                     class="ant-space-item"
                   >
-                    <button
-                      class="ant-btn"
-                      type="button"
+                    system.oauth.clientId
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input"
+                    id="clientId"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class=""
+                for="clientSecret"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
                     >
-                      <span>
-                        common.cancel
-                      </span>
-                    </button>
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.clientSecret
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    class="ant-input"
+                    id="clientSecret"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="clientHost"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.clientHost
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input"
+                    id="clientHost"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="serverAuthUrl"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.serverAuthUrl
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input"
+                    id="serverAuthUrl"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="serverTokenUrl"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.serverTokenUrl
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input"
+                    id="serverTokenUrl"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="serverUserIdUrl"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.serverUserIdUrl
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input"
+                    id="serverUserIdUrl"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class=""
+                for="scopes"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.scopes
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    class="ant-input"
+                    id="scopes"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="accessTokenKeyName"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.accessTokenKeyName
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input"
+                    id="accessTokenKeyName"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="userIdKeyName"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.userIdKeyName
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input"
+                    id="userIdKeyName"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class=""
+                for="loginButtonText"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.loginButtonText
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    class="ant-input"
+                    id="loginButtonText"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-no-colon"
+                title=" "
+              >
+                 
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <div
+                    class="ant-space ant-space-horizontal ant-space-align-center"
+                  >
+                    <div
+                      class="ant-space-item"
+                      style="margin-right: 8px;"
+                    >
+                      <button
+                        class="ant-btn ant-btn-primary"
+                        type="submit"
+                      >
+                        <span>
+                          common.submit
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                    >
+                      <button
+                        class="ant-btn ant-btn-default"
+                        type="button"
+                      >
+                        <span>
+                          common.cancel
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1848,747 +1812,63 @@ exports[`Oauth should update oauth config after user input config form 1`] = `
         class="ant-form ant-form-horizontal"
       >
         <div
-          class="ant-row ant-form-item ant-form-item-has-success"
+          class="ant-form-item ant-form-item-has-success"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="enable"
-              title="system.oauth.enable"
-            >
-              system.oauth.enable
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
             >
-              <div
-                class="ant-form-item-control-input-content"
+              <label
+                class=""
+                for="enable"
+                title="system.oauth.enable"
               >
-                <button
-                  aria-checked="false"
-                  class="ant-switch"
-                  id="enable"
-                  role="switch"
-                  type="button"
-                >
-                  <div
-                    class="ant-switch-handle"
-                  />
-                  <span
-                    class="ant-switch-inner"
-                  />
-                </button>
-              </div>
+                system.oauth.enable
+              </label>
             </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="clientId"
-              title=""
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
             >
               <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
+                class="ant-form-item-control-input"
               >
                 <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
+                  class="ant-form-item-control-input-content"
                 >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
+                  <button
+                    aria-checked="false"
+                    class="ant-switch"
+                    id="enable"
+                    role="switch"
+                    type="button"
                   >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
+                    <div
+                      class="ant-switch-handle"
+                    />
+                    <span
+                      class="ant-switch-inner"
+                    />
+                  </button>
                 </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.clientId
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="clientId"
-                  type="text"
-                  value="6lq#s#aRibpMvhp48ztHOg@sZ3PxA2e(MYdS!CJANzLPBdg]m)"
-                />
               </div>
             </div>
           </div>
         </div>
         <div
-          class="ant-row ant-form-item"
+          class="ant-form-item ant-form-item-has-success"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="clientSecret"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.clientSecret
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
             >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="clientSecret"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="clientHost"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.clientHost
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="clientHost"
-                  type="text"
-                  value="news://egyolphgg.tm/lundgwlpz"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="serverAuthUrl"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.serverAuthUrl
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="serverAuthUrl"
-                  type="text"
-                  value="prospero://tpmui.cf/timilp"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="serverTokenUrl"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.serverTokenUrl
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="serverTokenUrl"
-                  type="text"
-                  value="mid://juckyny.na/xxsxnmf"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="serverUserIdUrl"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.serverUserIdUrl
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="serverUserIdUrl"
-                  type="text"
-                  value="cid://hqpbmxvbpl.cd/lcfyjtlkuj"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="scopes"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.scopes
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="scopes"
-                  type="text"
-                  value="1XGCBu%brJrwjse@R^Ox,lpSLVoFnqZBfGHeI8023"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="accessTokenKeyName"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.accessTokenKeyName
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="accessTokenKeyName"
-                  type="text"
-                  value="rpYV2tN4&545Jvkd3%J6"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="userIdKeyName"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.userIdKeyName
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="userIdKeyName"
-                  type="text"
-                  value="NFkVxY[4Xv^UFU&x&t5y"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="loginButtonText"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.loginButtonText
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="loginButtonText"
-                  type="text"
-                  value="VT[9[I$M(EW5R9o12*&Z"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-no-colon"
-              title=" "
-            >
-               
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
+              <label
+                class="ant-form-item-required"
+                for="clientId"
+                title=""
               >
                 <div
                   class="ant-space ant-space-horizontal ant-space-align-center"
@@ -2597,26 +1877,765 @@ exports[`Oauth should update oauth config after user input config form 1`] = `
                     class="ant-space-item"
                     style="margin-right: 8px;"
                   >
-                    <button
-                      class="ant-btn ant-btn-primary"
-                      type="submit"
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
                     >
-                      <span>
-                        common.submit
-                      </span>
-                    </button>
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
                   </div>
                   <div
                     class="ant-space-item"
                   >
-                    <button
-                      class="ant-btn"
-                      type="button"
+                    system.oauth.clientId
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input ant-input-status-success"
+                    id="clientId"
+                    type="text"
+                    value="6lq#s#aRibpMvhp48ztHOg@sZ3PxA2e(MYdS!CJANzLPBdg]m)"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class=""
+                for="clientSecret"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
                     >
-                      <span>
-                        common.cancel
-                      </span>
-                    </button>
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.clientSecret
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    class="ant-input"
+                    id="clientSecret"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="clientHost"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.clientHost
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input ant-input-status-success"
+                    id="clientHost"
+                    type="text"
+                    value="news://egyolphgg.tm/lundgwlpz"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="serverAuthUrl"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.serverAuthUrl
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input ant-input-status-success"
+                    id="serverAuthUrl"
+                    type="text"
+                    value="prospero://tpmui.cf/timilp"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="serverTokenUrl"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.serverTokenUrl
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input ant-input-status-success"
+                    id="serverTokenUrl"
+                    type="text"
+                    value="mid://juckyny.na/xxsxnmf"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="serverUserIdUrl"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.serverUserIdUrl
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input ant-input-status-success"
+                    id="serverUserIdUrl"
+                    type="text"
+                    value="cid://hqpbmxvbpl.cd/lcfyjtlkuj"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class=""
+                for="scopes"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.scopes
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    class="ant-input ant-input-status-success"
+                    id="scopes"
+                    type="text"
+                    value="1XGCBu%brJrwjse@R^Ox,lpSLVoFnqZBfGHeI8023"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="accessTokenKeyName"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.accessTokenKeyName
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input ant-input-status-success"
+                    id="accessTokenKeyName"
+                    type="text"
+                    value="rpYV2tN4&545Jvkd3%J6"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="userIdKeyName"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.userIdKeyName
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input ant-input-status-success"
+                    id="userIdKeyName"
+                    type="text"
+                    value="NFkVxY[4Xv^UFU&x&t5y"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class=""
+                for="loginButtonText"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.loginButtonText
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    class="ant-input ant-input-status-success"
+                    id="loginButtonText"
+                    type="text"
+                    value="VT[9[I$M(EW5R9o12*&Z"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-no-colon"
+                title=" "
+              >
+                 
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <div
+                    class="ant-space ant-space-horizontal ant-space-align-center"
+                  >
+                    <div
+                      class="ant-space-item"
+                      style="margin-right: 8px;"
+                    >
+                      <button
+                        class="ant-btn ant-btn-primary"
+                        type="submit"
+                      >
+                        <span>
+                          common.submit
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                    >
+                      <button
+                        class="ant-btn ant-btn-default"
+                        type="button"
+                      >
+                        <span>
+                          common.cancel
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -3096,752 +3115,68 @@ exports[`Oauth should update oauth config after user input config form 2`] = `
         class="ant-form ant-form-horizontal"
       >
         <div
-          class="ant-row ant-form-item ant-form-item-has-success"
+          class="ant-form-item ant-form-item-has-success"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="enable"
-              title="system.oauth.enable"
-            >
-              system.oauth.enable
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
             >
-              <div
-                class="ant-form-item-control-input-content"
+              <label
+                class=""
+                for="enable"
+                title="system.oauth.enable"
               >
-                <button
-                  ant-click-animating="true"
-                  aria-checked="true"
-                  class="ant-switch ant-switch-checked"
-                  id="enable"
-                  role="switch"
-                  type="button"
-                >
-                  <div
-                    class="ant-switch-handle"
-                  />
-                  <span
-                    class="ant-switch-inner"
-                  />
-                  <div
-                    class="ant-click-animating-node"
-                    style="border-color: buttonface;"
-                  />
-                </button>
-              </div>
+                system.oauth.enable
+              </label>
             </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="clientId"
-              title=""
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
             >
               <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
+                class="ant-form-item-control-input"
               >
                 <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
+                  class="ant-form-item-control-input-content"
                 >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
+                  <button
+                    ant-click-animating="true"
+                    aria-checked="true"
+                    class="ant-switch ant-switch-checked"
+                    id="enable"
+                    role="switch"
+                    type="button"
                   >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
+                    <div
+                      class="ant-switch-handle"
+                    />
+                    <span
+                      class="ant-switch-inner"
+                    />
+                    <div
+                      class="ant-click-animating-node"
+                      style="border-color: buttonface;"
+                    />
+                  </button>
                 </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.clientId
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="clientId"
-                  type="text"
-                  value="6lq#s#aRibpMvhp48ztHOg@sZ3PxA2e(MYdS!CJANzLPBdg]m)"
-                />
               </div>
             </div>
           </div>
         </div>
         <div
-          class="ant-row ant-form-item ant-form-item-has-success"
+          class="ant-form-item ant-form-item-has-success"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="clientSecret"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.clientSecret
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
             >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="clientSecret"
-                  type="text"
-                  value="1234567"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="clientHost"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.clientHost
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="clientHost"
-                  type="text"
-                  value="aaabbb"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="serverAuthUrl"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.serverAuthUrl
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="serverAuthUrl"
-                  type="text"
-                  value="prospero://tpmui.cf/timilp"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="serverTokenUrl"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.serverTokenUrl
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="serverTokenUrl"
-                  type="text"
-                  value="mid://juckyny.na/xxsxnmf"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="serverUserIdUrl"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.serverUserIdUrl
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="serverUserIdUrl"
-                  type="text"
-                  value="cid://hqpbmxvbpl.cd/lcfyjtlkuj"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="scopes"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.scopes
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="scopes"
-                  type="text"
-                  value="1XGCBu%brJrwjse@R^Ox,lpSLVoFnqZBfGHeI8023"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="accessTokenKeyName"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.accessTokenKeyName
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="accessTokenKeyName"
-                  type="text"
-                  value="rpYV2tN4&545Jvkd3%J6"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="userIdKeyName"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.userIdKeyName
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="userIdKeyName"
-                  type="text"
-                  value="NFkVxY[4Xv^UFU&x&t5y"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="loginButtonText"
-              title=""
-            >
-              <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
-              >
-                <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
-                >
-                  <span
-                    aria-label="info-circle"
-                    class="anticon anticon-info-circle text-orange"
-                    role="img"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      data-icon="info-circle"
-                      fill="currentColor"
-                      focusable="false"
-                      height="1em"
-                      viewBox="64 64 896 896"
-                      width="1em"
-                    >
-                      <path
-                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                      />
-                      <path
-                        d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  system.oauth.loginButtonText
-                </div>
-              </div>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="loginButtonText"
-                  type="text"
-                  value="VT[9[I$M(EW5R9o12*&Z"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-no-colon"
-              title=" "
-            >
-               
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
+              <label
+                class="ant-form-item-required"
+                for="clientId"
+                title=""
               >
                 <div
                   class="ant-space ant-space-horizontal ant-space-align-center"
@@ -3850,51 +3185,790 @@ exports[`Oauth should update oauth config after user input config form 2`] = `
                     class="ant-space-item"
                     style="margin-right: 8px;"
                   >
-                    <button
-                      ant-click-animating-without-extra-node="true"
-                      class="ant-btn ant-btn-primary ant-btn-loading"
-                      type="submit"
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
                     >
-                      <span
-                        class="ant-btn-loading-icon"
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
                       >
-                        <span
-                          aria-label="loading"
-                          class="anticon anticon-loading anticon-spin"
-                          role="img"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            data-icon="loading"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            viewBox="0 0 1024 1024"
-                            width="1em"
-                          >
-                            <path
-                              d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 00-94.3-139.9 437.71 437.71 0 00-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"
-                            />
-                          </svg>
-                        </span>
-                      </span>
-                      <span>
-                        common.submit
-                      </span>
-                    </button>
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
                   </div>
                   <div
                     class="ant-space-item"
                   >
-                    <button
-                      class="ant-btn"
-                      disabled=""
-                      type="button"
+                    system.oauth.clientId
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input ant-input-status-success"
+                    id="clientId"
+                    type="text"
+                    value="6lq#s#aRibpMvhp48ztHOg@sZ3PxA2e(MYdS!CJANzLPBdg]m)"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class=""
+                for="clientSecret"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
                     >
-                      <span>
-                        common.cancel
-                      </span>
-                    </button>
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.clientSecret
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    class="ant-input ant-input-status-success"
+                    id="clientSecret"
+                    type="text"
+                    value="1234567"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="clientHost"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.clientHost
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input ant-input-status-success"
+                    id="clientHost"
+                    type="text"
+                    value="aaabbb"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="serverAuthUrl"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.serverAuthUrl
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input ant-input-status-success"
+                    id="serverAuthUrl"
+                    type="text"
+                    value="prospero://tpmui.cf/timilp"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="serverTokenUrl"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.serverTokenUrl
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input ant-input-status-success"
+                    id="serverTokenUrl"
+                    type="text"
+                    value="mid://juckyny.na/xxsxnmf"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="serverUserIdUrl"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.serverUserIdUrl
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input ant-input-status-success"
+                    id="serverUserIdUrl"
+                    type="text"
+                    value="cid://hqpbmxvbpl.cd/lcfyjtlkuj"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class=""
+                for="scopes"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.scopes
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    class="ant-input ant-input-status-success"
+                    id="scopes"
+                    type="text"
+                    value="1XGCBu%brJrwjse@R^Ox,lpSLVoFnqZBfGHeI8023"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="accessTokenKeyName"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.accessTokenKeyName
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input ant-input-status-success"
+                    id="accessTokenKeyName"
+                    type="text"
+                    value="rpYV2tN4&545Jvkd3%J6"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="userIdKeyName"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.userIdKeyName
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input ant-input-status-success"
+                    id="userIdKeyName"
+                    type="text"
+                    value="NFkVxY[4Xv^UFU&x&t5y"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class=""
+                for="loginButtonText"
+                title=""
+              >
+                <div
+                  class="ant-space ant-space-horizontal ant-space-align-center"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
+                  >
+                    <span
+                      aria-label="info-circle"
+                      class="anticon anticon-info-circle text-orange"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="info-circle"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                        />
+                        <path
+                          d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    system.oauth.loginButtonText
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    class="ant-input ant-input-status-success"
+                    id="loginButtonText"
+                    type="text"
+                    value="VT[9[I$M(EW5R9o12*&Z"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-no-colon"
+                title=" "
+              >
+                 
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <div
+                    class="ant-space ant-space-horizontal ant-space-align-center"
+                  >
+                    <div
+                      class="ant-space-item"
+                      style="margin-right: 8px;"
+                    >
+                      <button
+                        ant-click-animating-without-extra-node="true"
+                        class="ant-btn ant-btn-primary ant-btn-loading"
+                        type="submit"
+                      >
+                        <span
+                          class="ant-btn-loading-icon"
+                        >
+                          <span
+                            aria-label="loading"
+                            class="anticon anticon-loading anticon-spin"
+                            role="img"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="loading"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="0 0 1024 1024"
+                              width="1em"
+                            >
+                              <path
+                                d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 00-94.3-139.9 437.71 437.71 0 00-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"
+                              />
+                            </svg>
+                          </span>
+                        </span>
+                        <span>
+                          common.submit
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                    >
+                      <button
+                        class="ant-btn ant-btn-default"
+                        disabled=""
+                        type="button"
+                      >
+                        <span>
+                          common.cancel
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -3929,112 +4003,21 @@ exports[`Oauth should update oauth config after user input config form 3`] = `
       class="ant-card-body"
     >
       <div
-        class="ant-card-loading-content"
+        class="ant-skeleton ant-skeleton-active"
       >
         <div
-          class="ant-row"
-          style="margin-left: -4px; margin-right: -4px;"
+          class="ant-skeleton-content"
         >
-          <div
-            class="ant-col ant-col-22"
-            style="padding-left: 4px; padding-right: 4px;"
+          <ul
+            class="ant-skeleton-paragraph"
           >
-            <div
-              class="ant-card-loading-block"
+            <li />
+            <li />
+            <li />
+            <li
+              style="width: 61%;"
             />
-          </div>
-        </div>
-        <div
-          class="ant-row"
-          style="margin-left: -4px; margin-right: -4px;"
-        >
-          <div
-            class="ant-col ant-col-8"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-          <div
-            class="ant-col ant-col-15"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-        </div>
-        <div
-          class="ant-row"
-          style="margin-left: -4px; margin-right: -4px;"
-        >
-          <div
-            class="ant-col ant-col-6"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-          <div
-            class="ant-col ant-col-18"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-        </div>
-        <div
-          class="ant-row"
-          style="margin-left: -4px; margin-right: -4px;"
-        >
-          <div
-            class="ant-col ant-col-13"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-          <div
-            class="ant-col ant-col-9"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-        </div>
-        <div
-          class="ant-row"
-          style="margin-left: -4px; margin-right: -4px;"
-        >
-          <div
-            class="ant-col ant-col-4"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-          <div
-            class="ant-col ant-col-3"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
-          <div
-            class="ant-col ant-col-16"
-            style="padding-left: 4px; padding-right: 4px;"
-          >
-            <div
-              class="ant-card-loading-block"
-            />
-          </div>
+          </ul>
         </div>
       </div>
     </div>

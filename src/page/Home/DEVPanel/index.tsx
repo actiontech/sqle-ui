@@ -84,6 +84,58 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
     rejectedOrderByMeResponse.refresh();
     getWorkflowStatistics();
   };
+
+  const tabItems: TabsProps['items'] = [
+    {
+      key: tabsKeyEnum.pendingReviewByMe,
+      label: genTabPaneTitle(
+        t('dashboard.myOrderSituation.pendingReviewByMe'),
+        workflowStatistics?.my_need_review_workflow_number
+      ),
+      children: (
+        <CommonTable
+          tableInfo={{
+            loading: pendingReviewByMeResponse.loading,
+            data: pendingReviewByMeResponse.data ?? [],
+            error: pendingReviewByMeResponse.error,
+          }}
+        />
+      ),
+    },
+    {
+      key: tabsKeyEnum.pendingExecByMe,
+      label: genTabPaneTitle(
+        t('dashboard.myOrderSituation.pendingExecByMe'),
+        workflowStatistics?.my_need_execute_workflow_number
+      ),
+      children: (
+        <CommonTable
+          tableInfo={{
+            loading: pendingExecByMeResponse.loading,
+            data: pendingExecByMeResponse.data ?? [],
+            error: pendingExecByMeResponse.error,
+          }}
+        />
+      ),
+    },
+    {
+      key: tabsKeyEnum.rejectedOrderByMe,
+      label: genTabPaneTitle(
+        t('dashboard.myOrderSituation.rejectedOrderByMe'),
+        workflowStatistics?.my_rejected_workflow_number
+      ),
+      children: (
+        <CommonTable
+          tableInfo={{
+            loading: rejectedOrderByMeResponse.loading,
+            data: rejectedOrderByMeResponse.data ?? [],
+            error: rejectedOrderByMeResponse.error,
+          }}
+        />
+      ),
+    },
+  ];
+
   return (
     <Card className="full-width-element">
       <Tabs
@@ -114,53 +166,8 @@ const DBAPanel: React.FC<IDEVPanelProps> = ({
             </Space>
           ),
         }}
-      >
-        <Tabs.TabPane
-          tab={genTabPaneTitle(
-            t('dashboard.myOrderSituation.pendingReviewByMe'),
-            workflowStatistics?.my_need_review_workflow_number
-          )}
-          key={tabsKeyEnum.pendingReviewByMe}
-        >
-          <CommonTable
-            tableInfo={{
-              loading: pendingReviewByMeResponse.loading,
-              data: pendingReviewByMeResponse.data ?? [],
-              error: pendingReviewByMeResponse.error,
-            }}
-          />
-        </Tabs.TabPane>
-        <Tabs.TabPane
-          tab={genTabPaneTitle(
-            t('dashboard.myOrderSituation.pendingExecByMe'),
-            workflowStatistics?.my_need_execute_workflow_number
-          )}
-          key={tabsKeyEnum.pendingExecByMe}
-        >
-          <CommonTable
-            tableInfo={{
-              loading: pendingExecByMeResponse.loading,
-              data: pendingExecByMeResponse.data ?? [],
-              error: pendingExecByMeResponse.error,
-            }}
-          />
-        </Tabs.TabPane>
-        <Tabs.TabPane
-          tab={genTabPaneTitle(
-            t('dashboard.myOrderSituation.rejectedOrderByMe'),
-            workflowStatistics?.my_rejected_workflow_number
-          )}
-          key={tabsKeyEnum.rejectedOrderByMe}
-        >
-          <CommonTable
-            tableInfo={{
-              loading: rejectedOrderByMeResponse.loading,
-              data: rejectedOrderByMeResponse.data ?? [],
-              error: rejectedOrderByMeResponse.error,
-            }}
-          />
-        </Tabs.TabPane>
-      </Tabs>
+        items={tabItems}
+      />
     </Card>
   );
 };

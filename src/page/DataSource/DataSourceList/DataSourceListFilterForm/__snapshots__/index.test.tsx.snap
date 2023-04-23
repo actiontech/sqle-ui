@@ -14,403 +14,69 @@ exports[`DataSource/DataSourceList/DataSourceListFilterForm should match snapsho
         style="padding-left: 12px; padding-right: 12px;"
       >
         <div
-          class="ant-row ant-form-item"
+          class="ant-form-item"
         >
           <div
-            class="ant-col ant-col-7 ant-form-item-label"
-          >
-            <label
-              class=""
-              for="filter_instance_name"
-              title="dataSource.dataSourceForm.name"
-            >
-              dataSource.dataSourceForm.name
-            </label>
-          </div>
-          <div
-            class="ant-col ant-col-17 ant-form-item-control"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-col-7 ant-form-item-label"
+            >
+              <label
+                class=""
+                for="filter_instance_name"
+                title="dataSource.dataSourceForm.name"
+              >
+                dataSource.dataSourceForm.name
+              </label>
+            </div>
+            <div
+              class="ant-col ant-col-17 ant-form-item-control"
             >
               <div
-                class="ant-form-item-control-input-content"
+                class="ant-form-item-control-input"
               >
                 <div
-                  class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
+                  class="ant-form-item-control-input-content"
                 >
                   <div
-                    class="ant-select-selector"
+                    class="ant-select ant-select-in-form-item ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
                   >
-                    <span
-                      class="ant-select-selection-search"
+                    <div
+                      class="ant-select-selector"
                     >
-                      <input
-                        aria-activedescendant="filter_instance_name_list_0"
-                        aria-autocomplete="list"
-                        aria-controls="filter_instance_name_list"
-                        aria-haspopup="listbox"
-                        aria-owns="filter_instance_name_list"
-                        autocomplete="off"
-                        class="ant-select-selection-search-input"
-                        id="filter_instance_name"
-                        role="combobox"
-                        type="search"
-                        value=""
-                      />
-                    </span>
-                    <span
-                      class="ant-select-selection-placeholder"
-                    >
-                      common.form.placeholder.searchSelect
-                    </span>
-                  </div>
-                  <span
-                    aria-hidden="true"
-                    class="ant-select-arrow"
-                    style="user-select: none;"
-                    unselectable="on"
-                  >
-                    <span
-                      aria-label="down"
-                      class="anticon anticon-down ant-select-suffix"
-                      role="img"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="down"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
+                      <span
+                        class="ant-select-selection-search"
                       >
-                        <path
-                          d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                        <input
+                          aria-activedescendant="filter_instance_name_list_0"
+                          aria-autocomplete="list"
+                          aria-controls="filter_instance_name_list"
+                          aria-haspopup="listbox"
+                          aria-owns="filter_instance_name_list"
+                          autocomplete="off"
+                          class="ant-select-selection-search-input"
+                          id="filter_instance_name"
+                          role="combobox"
+                          type="search"
+                          value=""
                         />
-                      </svg>
-                    </span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
-        style="padding-left: 12px; padding-right: 12px;"
-      >
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-col-7 ant-form-item-label"
-          >
-            <label
-              class=""
-              for="filter_db_host"
-              title="dataSource.dataSourceForm.ip"
-            >
-              dataSource.dataSourceForm.ip
-            </label>
-          </div>
-          <div
-            class="ant-col ant-col-17 ant-form-item-control"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="filter_db_host"
-                  placeholder="common.form.placeholder.searchInput"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
-        style="padding-left: 12px; padding-right: 12px;"
-      >
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-col-7 ant-form-item-label"
-          >
-            <label
-              class=""
-              for="filter_db_port"
-              title="dataSource.dataSourceForm.port"
-            >
-              dataSource.dataSourceForm.port
-            </label>
-          </div>
-          <div
-            class="ant-col ant-col-17 ant-form-item-control"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="filter_db_port"
-                  placeholder="common.form.placeholder.searchInput"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
-        hidden=""
-        style="padding-left: 12px; padding-right: 12px;"
-      >
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-col-7 ant-form-item-label"
-          >
-            <label
-              class=""
-              for="filter_db_type"
-              title="dataSource.dataSourceForm.type"
-            >
-              dataSource.dataSourceForm.type
-            </label>
-          </div>
-          <div
-            class="ant-col ant-col-17 ant-form-item-control"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <div
-                  class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow"
-                >
-                  <div
-                    class="ant-select-selector"
-                  >
-                    <span
-                      class="ant-select-selection-search"
-                    >
-                      <input
-                        aria-activedescendant="filter_db_type_list_0"
-                        aria-autocomplete="list"
-                        aria-controls="filter_db_type_list"
-                        aria-haspopup="listbox"
-                        aria-owns="filter_db_type_list"
-                        autocomplete="off"
-                        class="ant-select-selection-search-input"
-                        id="filter_db_type"
-                        readonly=""
-                        role="combobox"
-                        style="opacity: 0;"
-                        type="search"
-                        unselectable="on"
-                        value=""
-                      />
-                    </span>
-                    <span
-                      class="ant-select-selection-placeholder"
-                    >
-                      common.form.placeholder.select
-                    </span>
-                  </div>
-                  <span
-                    aria-hidden="true"
-                    class="ant-select-arrow"
-                    style="user-select: none;"
-                    unselectable="on"
-                  >
-                    <span
-                      aria-label="down"
-                      class="anticon anticon-down ant-select-suffix"
-                      role="img"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="down"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
-                      >
-                        <path
-                          d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
-        hidden=""
-        style="padding-left: 12px; padding-right: 12px;"
-      >
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-col-7 ant-form-item-label"
-          >
-            <label
-              class=""
-              for="filter_rule_template_name"
-              title="dataSource.dataSourceForm.ruleTemplate"
-            >
-              dataSource.dataSourceForm.ruleTemplate
-            </label>
-          </div>
-          <div
-            class="ant-col ant-col-17 ant-form-item-control"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <div
-                  class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
-                >
-                  <div
-                    class="ant-select-selector"
-                  >
-                    <span
-                      class="ant-select-selection-search"
-                    >
-                      <input
-                        aria-activedescendant="filter_rule_template_name_list_0"
-                        aria-autocomplete="list"
-                        aria-controls="filter_rule_template_name_list"
-                        aria-haspopup="listbox"
-                        aria-owns="filter_rule_template_name_list"
-                        autocomplete="off"
-                        class="ant-select-selection-search-input"
-                        id="filter_rule_template_name"
-                        role="combobox"
-                        type="search"
-                        value=""
-                      />
-                    </span>
-                    <span
-                      class="ant-select-selection-placeholder"
-                    >
-                      common.form.placeholder.searchSelect
-                    </span>
-                  </div>
-                  <span
-                    aria-hidden="true"
-                    class="ant-select-arrow"
-                    style="user-select: none;"
-                    unselectable="on"
-                  >
-                    <span
-                      aria-label="down"
-                      class="anticon anticon-down ant-select-suffix"
-                      role="img"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="down"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
-                      >
-                        <path
-                          d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-0 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-0"
-        style="padding-left: 12px; padding-right: 12px;"
-      >
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-col-24 ant-form-item-control"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <div
-                  class="ant-space ant-space-horizontal ant-space-align-center"
-                >
-                  <div
-                    class="ant-space-item"
-                    style="margin-right: 8px;"
-                  >
-                    <button
-                      class="ant-btn"
-                      type="button"
-                    >
-                      <span>
-                        common.reset
                       </span>
-                    </button>
-                  </div>
-                  <div
-                    class="ant-space-item"
-                    style="margin-right: 8px;"
-                  >
-                    <button
-                      class="ant-btn ant-btn-primary"
-                      type="button"
-                    >
-                      <span>
-                        common.search
+                      <span
+                        class="ant-select-selection-placeholder"
+                      >
+                        common.form.placeholder.searchSelect
                       </span>
-                    </button>
-                  </div>
-                  <div
-                    class="ant-space-item"
-                  >
-                    <a
-                      class="ant-typography"
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      class="ant-select-arrow"
+                      style="user-select: none;"
+                      unselectable="on"
                     >
-                      common.expansion
                       <span
                         aria-label="down"
-                        class="anticon anticon-down"
+                        class="anticon anticon-down ant-select-suffix"
                         role="img"
                       >
                         <svg
@@ -427,7 +93,365 @@ exports[`DataSource/DataSourceList/DataSourceListFilterForm should match snapsho
                           />
                         </svg>
                       </span>
-                    </a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
+        style="padding-left: 12px; padding-right: 12px;"
+      >
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-col-7 ant-form-item-label"
+            >
+              <label
+                class=""
+                for="filter_db_host"
+                title="dataSource.dataSourceForm.ip"
+              >
+                dataSource.dataSourceForm.ip
+              </label>
+            </div>
+            <div
+              class="ant-col ant-col-17 ant-form-item-control"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    class="ant-input"
+                    id="filter_db_host"
+                    placeholder="common.form.placeholder.searchInput"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
+        style="padding-left: 12px; padding-right: 12px;"
+      >
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-col-7 ant-form-item-label"
+            >
+              <label
+                class=""
+                for="filter_db_port"
+                title="dataSource.dataSourceForm.port"
+              >
+                dataSource.dataSourceForm.port
+              </label>
+            </div>
+            <div
+              class="ant-col ant-col-17 ant-form-item-control"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    class="ant-input"
+                    id="filter_db_port"
+                    placeholder="common.form.placeholder.searchInput"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
+        hidden=""
+        style="padding-left: 12px; padding-right: 12px;"
+      >
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-col-7 ant-form-item-label"
+            >
+              <label
+                class=""
+                for="filter_db_type"
+                title="dataSource.dataSourceForm.type"
+              >
+                dataSource.dataSourceForm.type
+              </label>
+            </div>
+            <div
+              class="ant-col ant-col-17 ant-form-item-control"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <div
+                    class="ant-select ant-select-in-form-item ant-select-single ant-select-allow-clear ant-select-show-arrow"
+                  >
+                    <div
+                      class="ant-select-selector"
+                    >
+                      <span
+                        class="ant-select-selection-search"
+                      >
+                        <input
+                          aria-activedescendant="filter_db_type_list_0"
+                          aria-autocomplete="list"
+                          aria-controls="filter_db_type_list"
+                          aria-haspopup="listbox"
+                          aria-owns="filter_db_type_list"
+                          autocomplete="off"
+                          class="ant-select-selection-search-input"
+                          id="filter_db_type"
+                          readonly=""
+                          role="combobox"
+                          style="opacity: 0;"
+                          type="search"
+                          unselectable="on"
+                          value=""
+                        />
+                      </span>
+                      <span
+                        class="ant-select-selection-placeholder"
+                      >
+                        common.form.placeholder.select
+                      </span>
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      class="ant-select-arrow"
+                      style="user-select: none;"
+                      unselectable="on"
+                    >
+                      <span
+                        aria-label="down"
+                        class="anticon anticon-down ant-select-suffix"
+                        role="img"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="down"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
+        hidden=""
+        style="padding-left: 12px; padding-right: 12px;"
+      >
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-col-7 ant-form-item-label"
+            >
+              <label
+                class=""
+                for="filter_rule_template_name"
+                title="dataSource.dataSourceForm.ruleTemplate"
+              >
+                dataSource.dataSourceForm.ruleTemplate
+              </label>
+            </div>
+            <div
+              class="ant-col ant-col-17 ant-form-item-control"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <div
+                    class="ant-select ant-select-in-form-item ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
+                  >
+                    <div
+                      class="ant-select-selector"
+                    >
+                      <span
+                        class="ant-select-selection-search"
+                      >
+                        <input
+                          aria-activedescendant="filter_rule_template_name_list_0"
+                          aria-autocomplete="list"
+                          aria-controls="filter_rule_template_name_list"
+                          aria-haspopup="listbox"
+                          aria-owns="filter_rule_template_name_list"
+                          autocomplete="off"
+                          class="ant-select-selection-search-input"
+                          id="filter_rule_template_name"
+                          role="combobox"
+                          type="search"
+                          value=""
+                        />
+                      </span>
+                      <span
+                        class="ant-select-selection-placeholder"
+                      >
+                        common.form.placeholder.searchSelect
+                      </span>
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      class="ant-select-arrow"
+                      style="user-select: none;"
+                      unselectable="on"
+                    >
+                      <span
+                        aria-label="down"
+                        class="anticon anticon-down ant-select-suffix"
+                        role="img"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="down"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-0 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-0"
+        style="padding-left: 12px; padding-right: 12px;"
+      >
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-col-24 ant-form-item-control"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <div
+                    class="ant-space ant-space-horizontal ant-space-align-center"
+                  >
+                    <div
+                      class="ant-space-item"
+                      style="margin-right: 8px;"
+                    >
+                      <button
+                        class="ant-btn ant-btn-default"
+                        type="button"
+                      >
+                        <span>
+                          common.reset
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-right: 8px;"
+                    >
+                      <button
+                        class="ant-btn ant-btn-primary"
+                        type="button"
+                      >
+                        <span>
+                          common.search
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                    >
+                      <a
+                        class="ant-typography"
+                      >
+                        common.expansion
+                        <span
+                          aria-label="down"
+                          class="anticon anticon-down"
+                          role="img"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="down"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                            />
+                          </svg>
+                        </span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
