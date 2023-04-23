@@ -52,7 +52,7 @@ describe('Api', () => {
       })
     );
     const dispatchSpy = jest.spyOn(store, 'dispatch');
-    let result;
+    let result: any;
     try {
       await ApiBase.post('/test');
     } catch (error) {
@@ -146,7 +146,7 @@ describe('Api', () => {
         );
       })
     );
-    let result;
+    let result: any;
     try {
       await ApiBase.post('/test');
     } catch (error) {
@@ -180,7 +180,7 @@ describe('Api', () => {
       })
     );
     const dispatchSpy = jest.spyOn(store, 'dispatch');
-    let result;
+    let result: any;
     try {
       await ApiBase.post('/test');
     } catch (error) {

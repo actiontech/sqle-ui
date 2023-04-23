@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, act } from '@testing-library/react';
 import DingTalkSetting from '.';
 import configuration from '../../../api/configuration';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
@@ -51,9 +51,7 @@ describe('test DingTalkSetting', () => {
     const { container } = render(<DingTalkSetting />);
     expect(getDingTalkConfigSpy).toBeCalledTimes(1);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
 
@@ -72,9 +70,7 @@ describe('test DingTalkSetting', () => {
     const { container } = render(<DingTalkSetting />);
     expect(getDingTalkConfigSpy).toBeCalledTimes(1);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
 
@@ -85,9 +81,7 @@ describe('test DingTalkSetting', () => {
   test('should be able to update dingTalk configuration', async () => {
     render(<DingTalkSetting />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByText('common.modify'));
     fireEvent.click(screen.getByLabelText('system.dingTalk.enable'));
@@ -100,9 +94,8 @@ describe('test DingTalkSetting', () => {
     expect(updateDingTalkConfigSpy).toBeCalledTimes(0);
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(updateDingTalkConfigSpy).toBeCalledTimes(1);
     expect(updateDingTalkConfigSpy).toBeCalledWith({
       is_enable_ding_talk_notify: true,
@@ -115,9 +108,7 @@ describe('test DingTalkSetting', () => {
 
     expect(screen.getByText('common.cancel').closest('button')).toBeDisabled();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.getByText('common.submit').closest('button')).not.toHaveClass(
       'ant-btn-loading'
@@ -137,25 +128,17 @@ describe('test DingTalkSetting', () => {
     render(<DingTalkSetting />);
     expect(testDingTalkConfigSpy).toBeCalledTimes(0);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByText('system.dingTalk.test'));
 
     expect(testDingTalkConfigSpy).toBeCalledTimes(1);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    expect(
-      screen.queryByText('system.dingTalk.testSuccess')
-    ).toBeInTheDocument();
+    expect(screen.getByText('system.dingTalk.testSuccess')).toBeInTheDocument();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.queryByText('system.dingTalk.testSuccess')
@@ -169,15 +152,11 @@ describe('test DingTalkSetting', () => {
       });
     });
     fireEvent.click(screen.getByText('system.dingTalk.test'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    expect(screen.queryByText('error message')).toBeInTheDocument();
+    expect(screen.getByText('error message')).toBeInTheDocument();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.queryByText('error message')).not.toBeInTheDocument();
   });

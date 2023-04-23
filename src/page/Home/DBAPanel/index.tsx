@@ -69,6 +69,41 @@ const DBAPanel: React.FC<IDBAPanelProps> = ({
     getWorkflowStatistics();
   };
 
+  const tabItems: TabsProps['items'] = [
+    {
+      key: tabsKeyEnum.needMeReview,
+      label: genTabPaneTitle(
+        t('dashboard.pendingOrder.needMeReview'),
+        workflowStatistics?.need_me_to_review_workflow_number
+      ),
+      children: (
+        <CommonTable
+          tableInfo={{
+            loading: needMeReviewResponse.loading,
+            data: needMeReviewResponse.data ?? [],
+            error: needMeReviewResponse.error,
+          }}
+        />
+      ),
+    },
+    {
+      key: tabsKeyEnum.needMeExec,
+      label: genTabPaneTitle(
+        t('dashboard.pendingOrder.needMeExec'),
+        workflowStatistics?.need_me_to_execute_workflow_number
+      ),
+      children: (
+        <CommonTable
+          tableInfo={{
+            loading: needMeExecResponse.loading,
+            data: needMeExecResponse.data ?? [],
+            error: needMeExecResponse.error,
+          }}
+        />
+      ),
+    },
+  ];
+
   return (
     <Card className="full-width-element">
       <Tabs
@@ -98,38 +133,8 @@ const DBAPanel: React.FC<IDBAPanelProps> = ({
             </Space>
           ),
         }}
-      >
-        <Tabs.TabPane
-          tab={genTabPaneTitle(
-            t('dashboard.pendingOrder.needMeReview'),
-            workflowStatistics?.need_me_to_review_workflow_number
-          )}
-          key={tabsKeyEnum.needMeReview}
-        >
-          <CommonTable
-            tableInfo={{
-              loading: needMeReviewResponse.loading,
-              data: needMeReviewResponse.data ?? [],
-              error: needMeReviewResponse.error,
-            }}
-          />
-        </Tabs.TabPane>
-        <Tabs.TabPane
-          tab={genTabPaneTitle(
-            t('dashboard.pendingOrder.needMeExec'),
-            workflowStatistics?.need_me_to_execute_workflow_number
-          )}
-          key={tabsKeyEnum.needMeExec}
-        >
-          <CommonTable
-            tableInfo={{
-              loading: needMeExecResponse.loading,
-              data: needMeExecResponse.data ?? [],
-              error: needMeExecResponse.error,
-            }}
-          />
-        </Tabs.TabPane>
-      </Tabs>
+        items={tabItems}
+      />
     </Card>
   );
 };

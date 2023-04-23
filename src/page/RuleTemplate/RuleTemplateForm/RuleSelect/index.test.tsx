@@ -1,11 +1,20 @@
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, screen } from '@testing-library/react';
 import { cloneDeep } from 'lodash';
 import RuleSelect from '.';
 import { IRuleResV1 } from '../../../../api/common';
 import { allRulesWithType } from '../../../Rule/__testData__';
 import { renderWithTheme } from '../../../../testUtils/customRender';
-import { ThemeProvider } from '@material-ui/styles';
+import {
+  ThemeProvider,
+  Theme,
+  StyledEngineProvider,
+} from '@mui/material/styles';
 import lightTheme from '../../../../theme/light';
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
 
 describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
   beforeEach(() => {
@@ -26,30 +35,34 @@ describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
     );
     expect(container).toMatchSnapshot();
     rerender(
-      <ThemeProvider theme={lightTheme}>
-        <RuleSelect
-          listLoading={false}
-          allRules={allRulesWithType as IRuleResV1[]}
-          activeRule={[]}
-          updateActiveRule={jest.fn()}
-        />
-      </ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={lightTheme}>
+          <RuleSelect
+            listLoading={false}
+            allRules={allRulesWithType as IRuleResV1[]}
+            activeRule={[]}
+            updateActiveRule={jest.fn()}
+          />
+        </ThemeProvider>
+      </StyledEngineProvider>
     );
     expect(container).toMatchSnapshot();
     rerender(
-      <ThemeProvider theme={lightTheme}>
-        <RuleSelect
-          listLoading={false}
-          allRules={allRulesWithType as IRuleResV1[]}
-          activeRule={
-            allRulesWithType.slice(
-              0,
-              Math.floor(allRulesWithType.length / 2)
-            ) as IRuleResV1[]
-          }
-          updateActiveRule={jest.fn()}
-        />
-      </ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={lightTheme}>
+          <RuleSelect
+            listLoading={false}
+            allRules={allRulesWithType as IRuleResV1[]}
+            activeRule={
+              allRulesWithType.slice(
+                0,
+                Math.floor(allRulesWithType.length / 2)
+              ) as IRuleResV1[]
+            }
+            updateActiveRule={jest.fn()}
+          />
+        </ThemeProvider>
+      </StyledEngineProvider>
     );
     expect(container).toMatchSnapshot();
   });
@@ -57,14 +70,16 @@ describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
   test('should call update rules func of props when user active or disable rule', () => {
     const updateActiveRuleMock = jest.fn();
     const { rerender } = renderWithTheme(
-      <ThemeProvider theme={lightTheme}>
-        <RuleSelect
-          listLoading={false}
-          allRules={allRulesWithType as IRuleResV1[]}
-          activeRule={[]}
-          updateActiveRule={updateActiveRuleMock}
-        />
-      </ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={lightTheme}>
+          <RuleSelect
+            listLoading={false}
+            allRules={allRulesWithType as IRuleResV1[]}
+            activeRule={[]}
+            updateActiveRule={updateActiveRuleMock}
+          />
+        </ThemeProvider>
+      </StyledEngineProvider>
     );
     fireEvent.click(
       screen.getAllByText('ruleTemplate.ruleTemplateForm.activeRule')[0]
@@ -80,14 +95,16 @@ describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
     expect(updateActiveRuleMock).toBeCalledWith(allRulesWithType);
 
     rerender(
-      <ThemeProvider theme={lightTheme}>
-        <RuleSelect
-          listLoading={false}
-          allRules={allRulesWithType as IRuleResV1[]}
-          activeRule={allRulesWithType as IRuleResV1[]}
-          updateActiveRule={updateActiveRuleMock}
-        />
-      </ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={lightTheme}>
+          <RuleSelect
+            listLoading={false}
+            allRules={allRulesWithType as IRuleResV1[]}
+            activeRule={allRulesWithType as IRuleResV1[]}
+            updateActiveRule={updateActiveRuleMock}
+          />
+        </ThemeProvider>
+      </StyledEngineProvider>
     );
 
     fireEvent.click(
@@ -127,9 +144,8 @@ describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
       screen.getAllByText('ruleTemplate.editModal.title')[0]
     ).toHaveTextContent('ruleTemplate.editModal.title');
     fireEvent.click(screen.getAllByText('common.submit')[0]);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(updateActiveRuleFunction).toBeCalledTimes(1);
     expect(updateActiveRuleFunction).toBeCalledWith(allRulesWithType);
   });

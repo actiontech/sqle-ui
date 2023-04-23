@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks/dom';
 import { useForm } from 'antd/lib/form/Form';
 import ProjectForm from '.';
+import { renderHook } from '@testing-library/react-hooks';
 
 describe('test ProjectManage/Modal/ProjectForm', () => {
   test('should match snapshot', () => {

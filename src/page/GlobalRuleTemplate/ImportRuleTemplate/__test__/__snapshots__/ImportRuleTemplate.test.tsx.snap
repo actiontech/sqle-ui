@@ -52,6 +52,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
         >
           <div
             class="ant-tabs-tab ant-tabs-tab-active"
+            data-node-key="ALL"
           >
             <div
               aria-controls="rc-tabs-test-panel-ALL"
@@ -66,6 +67,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DDL规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DDL规范"
@@ -80,6 +82,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DML规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DML规范"
@@ -94,6 +97,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="使用建议"
           >
             <div
               aria-controls="rc-tabs-test-panel-使用建议"
@@ -108,6 +112,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="全局配置"
           >
             <div
               aria-controls="rc-tabs-test-panel-全局配置"
@@ -122,6 +127,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="命名规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-命名规范"
@@ -136,6 +142,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="索引规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-索引规范"
@@ -326,60 +333,6 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
             </div>
           </div>
         </div>
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DDL规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DDL规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DML规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DML规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-使用建议"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-使用建议"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-全局配置"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-全局配置"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-命名规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-命名规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-索引规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-索引规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
       </div>
     </div>
   </div>
@@ -435,6 +388,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
         >
           <div
             class="ant-tabs-tab ant-tabs-tab-active"
+            data-node-key="ALL"
           >
             <div
               aria-controls="rc-tabs-test-panel-ALL"
@@ -449,6 +403,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DDL规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DDL规范"
@@ -463,6 +418,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DML规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DML规范"
@@ -477,6 +433,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="使用建议"
           >
             <div
               aria-controls="rc-tabs-test-panel-使用建议"
@@ -491,6 +448,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="全局配置"
           >
             <div
               aria-controls="rc-tabs-test-panel-全局配置"
@@ -505,6 +463,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="命名规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-命名规范"
@@ -519,6 +478,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="索引规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-索引规范"
@@ -758,9 +718,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -859,9 +817,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -951,9 +907,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1043,9 +997,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1135,9 +1087,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1227,9 +1177,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1319,9 +1267,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1411,9 +1357,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1503,9 +1447,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1595,9 +1537,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1687,9 +1627,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1779,9 +1717,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1880,9 +1816,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1972,9 +1906,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2064,9 +1996,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2156,9 +2086,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2248,9 +2176,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2340,9 +2266,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2432,9 +2356,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2524,9 +2446,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2625,9 +2545,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2726,9 +2644,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2818,9 +2734,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2910,9 +2824,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3002,9 +2914,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3094,9 +3004,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3186,9 +3094,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3278,9 +3184,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3370,9 +3274,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3462,9 +3364,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3554,9 +3454,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3646,9 +3544,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3738,9 +3634,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3830,9 +3724,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3922,9 +3814,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4014,9 +3904,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4106,9 +3994,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4198,9 +4084,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4290,9 +4174,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4382,9 +4264,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4474,9 +4354,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4563,9 +4441,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4664,9 +4540,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4762,9 +4636,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4860,9 +4732,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4949,9 +4819,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5041,9 +4909,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5133,9 +4999,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5225,9 +5089,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5317,9 +5179,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5409,9 +5269,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5510,9 +5368,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5611,9 +5467,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5703,9 +5557,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5795,9 +5647,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5887,9 +5737,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5979,9 +5827,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -6071,9 +5917,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -6163,9 +6007,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -6255,9 +6097,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -6347,9 +6187,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -6439,9 +6277,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -6478,60 +6314,6 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
             </div>
           </div>
         </div>
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DDL规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DDL规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DML规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DML规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-使用建议"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-使用建议"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-全局配置"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-全局配置"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-命名规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-命名规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-索引规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-索引规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
       </div>
     </div>
   </div>
@@ -6551,7 +6333,7 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should display the create ru
       >
         <button
           ant-click-animating-without-extra-node="true"
-          class="ant-btn"
+          class="ant-btn ant-btn-default"
           type="button"
         >
           <span>
@@ -6613,93 +6395,100 @@ exports[`test GlobalRuleTemplate/ImportRuleTemplate should render select file fo
         class="ant-form ant-form-horizontal"
       >
         <div
-          class="ant-row ant-form-item"
+          class="ant-form-item"
         >
           <div
-            class="ant-col ant-form-item-label"
-          >
-            <label
-              class="ant-form-item-required"
-              for="ruleTemplateFile"
-              title="ruleTemplate.importRuleTemplate.selectFile"
-            >
-              ruleTemplate.importRuleTemplate.selectFile
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label"
+            >
+              <label
+                class="ant-form-item-required"
+                for="ruleTemplateFile"
+                title="ruleTemplate.importRuleTemplate.selectFile"
+              >
+                ruleTemplate.importRuleTemplate.selectFile
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control"
             >
               <div
-                class="ant-form-item-control-input-content"
+                class="ant-form-item-control-input"
               >
-                <span
-                  class=""
+                <div
+                  class="ant-form-item-control-input-content"
                 >
-                  <div
-                    class="ant-upload ant-upload-select ant-upload-select-text"
-                  >
-                    <span
-                      class="ant-upload"
-                      role="button"
-                      tabindex="0"
+                  <span>
+                    <div
+                      class="ant-upload ant-upload-select ant-upload-select-text"
                     >
-                      <input
-                        accept=".json"
-                        id="ruleTemplateFile"
-                        style="display: none;"
-                        type="file"
-                      />
-                      <button
-                        class="ant-btn"
-                        type="button"
+                      <span
+                        class="ant-upload"
+                        role="button"
+                        tabindex="0"
                       >
-                        <span>
-                          common.upload
-                        </span>
-                      </button>
-                    </span>
-                  </div>
-                  <div
-                    class="ant-upload-list ant-upload-list-text"
-                  />
-                </span>
+                        <input
+                          accept=".json"
+                          aria-required="true"
+                          id="ruleTemplateFile"
+                          style="display: none;"
+                          type="file"
+                        />
+                        <button
+                          class="ant-btn ant-btn-default"
+                          type="button"
+                        >
+                          <span>
+                            common.upload
+                          </span>
+                        </button>
+                      </span>
+                    </div>
+                    <div
+                      class="ant-upload-list ant-upload-list-text"
+                    />
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          class="ant-row ant-form-item"
+          class="ant-form-item"
         >
           <div
-            class="ant-col ant-form-item-label"
-          >
-            <label
-              class="ant-form-item-no-colon"
-              title=" "
-            >
-               
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label"
+            >
+              <label
+                class="ant-form-item-no-colon"
+                title=" "
+              >
+                 
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control"
             >
               <div
-                class="ant-form-item-control-input-content"
+                class="ant-form-item-control-input"
               >
-                <button
-                  class="ant-btn ant-btn-primary"
-                  type="submit"
+                <div
+                  class="ant-form-item-control-input-content"
                 >
-                  <span>
-                    ruleTemplate.importRuleTemplate.submitText
-                  </span>
-                </button>
+                  <button
+                    class="ant-btn ant-btn-primary"
+                    type="submit"
+                  >
+                    <span>
+                      ruleTemplate.importRuleTemplate.submitText
+                    </span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>

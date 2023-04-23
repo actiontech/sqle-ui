@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { getBySelector } from '../../testUtils/customQuery';
 import IconTipsLabel from './IconTipsLabel';
 
@@ -16,7 +16,7 @@ describe('IconTipsLabel', () => {
     fireEvent.mouseEnter(getBySelector('.text-orange'));
 
     await waitFor(() => {
-      jest.runAllTimers();
+      screen.getByText('this is tips');
     });
 
     expect(baseElement).toMatchSnapshot();

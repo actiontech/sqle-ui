@@ -1,4 +1,4 @@
-import { fireEvent, waitFor, screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { useForm } from 'antd/lib/form/Form';
 import { act } from 'react-dom/test-utils';
@@ -6,10 +6,7 @@ import SqlInfoForm from '..';
 import instance from '../../../../../api/instance';
 import EmitterKey from '../../../../../data/EmitterKey';
 import { renderWithTheme } from '../../../../../testUtils/customRender';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../../testUtils/mockRedux';
+
 import {
   mockUseInstance,
   mockUseInstanceSchema,
@@ -20,6 +17,15 @@ import { SupportTheme } from '../../../../../theme';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import { SQLInputType } from '../../index.enum';
 import { SqlInfoFormFields, SqlInfoFormProps } from '../index.type';
+import { useDispatch, useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('order/create/sqlInfoForm', () => {
   const mockSubmit = jest.fn();
@@ -28,11 +34,16 @@ describe('order/create/sqlInfoForm', () => {
   const clearTaskInfos = jest.fn();
   const clearTaskInfoWithKey = jest.fn();
   let checkInstanceConnectSpy: jest.SpyInstance;
+  const dispatchSpy = jest.fn();
 
   beforeEach(() => {
     jest.useFakeTimers();
-    mockUseSelector({ user: { theme: SupportTheme.LIGHT } });
-    mockUseDispatch();
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { theme: SupportTheme.LIGHT },
+      })
+    );
     mockUseInstance();
     mockUseInstanceSchema();
     mockDriver();
@@ -81,31 +92,25 @@ describe('order/create/sqlInfoForm', () => {
   test('should call submit of props when user click audit button', async () => {
     renderComponent();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(6000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.mouseDown(
       screen.getAllByLabelText('order.sqlInfo.instanceName')[0]
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const instanceOptions1 = screen.getAllByText('instance1');
     const instance1 = instanceOptions1[1];
     expect(instance1).toHaveClass('ant-select-item-option-content');
     fireEvent.click(instance1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.mouseDown(
       screen.getAllByLabelText('order.sqlInfo.instanceSchema')[0]
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const schemaOptions1 = screen.getAllByText('schema1');
     const schema1 = schemaOptions1[1];
     expect(schema1).toHaveClass('ant-select-item-option-content');
@@ -127,16 +132,14 @@ describe('order/create/sqlInfoForm', () => {
         },
       ],
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(
       screen.getByText('dataSource.dataSourceForm.testDatabaseConnection')
         .parentNode
     ).toHaveClass('ant-btn-loading');
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.getByText('dataSource.dataSourceForm.testDatabaseConnection')
         .parentNode
@@ -150,9 +153,8 @@ describe('order/create/sqlInfoForm', () => {
       'ant-btn-loading'
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(mockSubmit).toBeCalledTimes(1);
     expect(mockSubmit).toBeCalledWith(
       {
@@ -172,9 +174,8 @@ describe('order/create/sqlInfoForm', () => {
       ''
     );
     expect(updateDirtyDataMock).toBeCalledTimes(0);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByText('order.sqlInfo.audit').parentNode).not.toHaveClass(
       'ant-btn-loading'
     );
@@ -200,9 +201,8 @@ describe('order/create/sqlInfoForm', () => {
       'ant-btn-loading'
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(mockSubmit).toBeCalledTimes(2);
     expect(mockSubmit).toBeCalledWith(
       {
@@ -222,12 +222,11 @@ describe('order/create/sqlInfoForm', () => {
       '0'
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(updateDirtyDataMock).toBeCalledTimes(5);
 
-    act(() => {
+    await act(() => {
       EventEmitter.emit(EmitterKey.Reset_Create_Order_Form);
     });
 
@@ -237,26 +236,23 @@ describe('order/create/sqlInfoForm', () => {
     fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
       target: { value: 'select * from table3' },
     });
+    await act(async () => jest.advanceTimersByTime(0));
     expect(updateDirtyDataMock).toBeCalledTimes(5);
   });
 
   test('should upload file when user select upload sql file', async () => {
     renderComponent();
-    await waitFor(() => {
-      jest.advanceTimersByTime(6000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.mouseDown(screen.getByLabelText('order.sqlInfo.instanceName'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const instanceOptions = screen.getAllByText('instance1');
     const instance = instanceOptions[1];
     expect(instance).toHaveClass('ant-select-item-option-content');
     fireEvent.click(instance);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByText('order.sqlInfo.uploadFile'));
     const sqlFile = new File(
@@ -267,14 +263,11 @@ describe('order/create/sqlInfoForm', () => {
       target: { files: [sqlFile] },
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     fireEvent.click(screen.getByText('order.sqlInfo.audit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByText('order.sqlInfo.audit').parentNode).toHaveClass(
       'ant-btn-loading'
     );
@@ -299,21 +292,17 @@ describe('order/create/sqlInfoForm', () => {
 
   test('should upload mybatis file when user select upload mybits file', async () => {
     renderComponent();
-    await waitFor(() => {
-      jest.advanceTimersByTime(6000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.mouseDown(screen.getByLabelText('order.sqlInfo.instanceName'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const instanceOptions = screen.getAllByText('instance1');
     const instance = instanceOptions[1];
     expect(instance).toHaveClass('ant-select-item-option-content');
     fireEvent.click(instance);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByText('order.sqlInfo.updateMybatisFile'));
 
@@ -338,14 +327,11 @@ describe('order/create/sqlInfoForm', () => {
       target: { files: [mybatisFile] },
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     fireEvent.click(screen.getByText('order.sqlInfo.audit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByText('order.sqlInfo.audit').parentNode).toHaveClass(
       'ant-btn-loading'
     );
@@ -381,31 +367,26 @@ describe('order/create/sqlInfoForm', () => {
       ])
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(6000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.mouseDown(
       screen.getAllByLabelText('order.sqlInfo.instanceName')[0]
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const instanceOptions1 = screen.getAllByText('instance1');
     const instance1 = instanceOptions1[1];
     expect(instance1).toHaveClass('ant-select-item-option-content');
     fireEvent.click(instance1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.mouseDown(
       screen.getAllByLabelText('order.sqlInfo.instanceSchema')[0]
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const schemaOptions1 = screen.getAllByText('schema1');
     const schema1 = schemaOptions1[1];
     expect(schema1).toHaveClass('ant-select-item-option-content');
@@ -427,16 +408,14 @@ describe('order/create/sqlInfoForm', () => {
         },
       ],
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(
       screen.getByText('dataSource.dataSourceForm.testDatabaseConnection')
         .parentNode
     ).toHaveClass('ant-btn-loading');
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.getByText('dataSource.dataSourceForm.testDatabaseConnection')
         .parentNode
@@ -446,7 +425,7 @@ describe('order/create/sqlInfoForm', () => {
     ).not.toBeInTheDocument();
 
     expect(
-      screen.queryByText('dataSource.dataSourceForm.testFailed')
+      screen.getByText('dataSource.dataSourceForm.testFailed')
     ).toBeInTheDocument();
   });
 });

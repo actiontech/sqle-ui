@@ -1,11 +1,10 @@
 import ProjectDetail, { useRecentlyOpenedProjects } from '.';
-import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
-import { useHistory, useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import {
   mockBindProjects,
   mockManagementPermissions,
 } from '../../../hooks/useCurrentUser/index.test';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, act as reactAct } from '@testing-library/react';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import {
   mockUseAuditPlanTypes,
@@ -20,28 +19,40 @@ import {
   mockGetProjectStatistics,
 } from '../__test__/utils';
 import { mockUseStyle } from '../../../testUtils/mockStyle';
-import { act, renderHook } from '@testing-library/react-hooks/dom';
 import EventEmitter from '../../../utils/EventEmitter';
 import EmitterKey from '../../../data/EmitterKey';
 import StorageKey from '../../../data/StorageKey';
 import { SystemRole } from '../../../data/common';
+import { act, renderHook } from '@testing-library/react-hooks';
+import useNavigate from '../../../hooks/useNavigate';
+import { useDispatch, useSelector } from 'react-redux';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn(),
   useLocation: jest.fn(),
-  useHistory: jest.fn(),
 }));
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
+
+jest.mock('../../../hooks/useNavigate', () => jest.fn());
+
 const projectName = mockBindProjects[0].project_name;
 
 describe('test ProjectManage/ProjectDetail', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
   let getUserSpy: jest.SpyInstance;
-  let dispatchSpy: jest.SpyInstance;
+  const dispatchSpy = jest.fn();
   let getProjectDetailSpy: jest.SpyInstance;
   const useLocationMock: jest.Mock = useLocation as jest.Mock;
-  const useHistoryMock: jest.Mock = useHistory as jest.Mock;
-  const replaceMock = jest.fn();
+  const useHistoryMock: jest.Mock = useNavigate as jest.Mock;
+  const navigateSpy = jest.fn();
   beforeEach(() => {
     getUserSpy = jest.spyOn(user, 'getCurrentUserV1');
     getUserSpy.mockImplementation(() =>
@@ -52,8 +63,8 @@ describe('test ProjectManage/ProjectDetail', () => {
       })
     );
     getProjectDetailSpy = mockGetProjectDetail();
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
 
-    dispatchSpy = mockUseDispatch().scopeDispatch;
     mockUseAuditPlanTypes();
     mockUseUsername();
     mockUseInstance();
@@ -65,9 +76,7 @@ describe('test ProjectManage/ProjectDetail', () => {
       state: null,
       key: '5nvxpbdafa',
     });
-    useHistoryMock.mockReturnValue({
-      replace: replaceMock,
-    });
+    useHistoryMock.mockImplementation(() => navigateSpy);
     useParamsMock.mockReturnValue({ projectName });
     jest.useFakeTimers();
   });
@@ -92,9 +101,7 @@ describe('test ProjectManage/ProjectDetail', () => {
     render(<ProjectDetail />);
     expect(getUserSpy).toBeCalledTimes(1);
     expect(getProjectDetailSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
     expect(
       screen.getByText('projectManage.projectDetail.unboundProjectTips')
     ).toBeInTheDocument();
@@ -104,9 +111,7 @@ describe('test ProjectManage/ProjectDetail', () => {
     getUserSpy.mockImplementation(() => resolveErrorThreeSecond(undefined));
     expect(dispatchSpy).toBeCalledTimes(0);
     render(<ProjectDetail />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
 
     expect(dispatchSpy).toBeCalledTimes(5);
     expect(dispatchSpy).nthCalledWith(1, {
@@ -132,17 +137,12 @@ describe('test ProjectManage/ProjectDetail', () => {
   });
 
   test('should match snapshot when bound project exists', async () => {
-    const getProjectStatistics = mockGetProjectStatistics();
     const { container } = renderWithRouter(<ProjectDetail />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
+    await reactAct(async () => jest.advanceTimersByTime(0));
+
     expect(container).toMatchSnapshot();
-    expect(getProjectDetailSpy).toBeCalledTimes(2);
-    expect(getProjectStatistics).toBeCalledTimes(1);
+    expect(getProjectDetailSpy).toBeCalledTimes(1);
   });
 
   test('should show unavailable when project archived is equal true', async () => {
@@ -158,12 +158,9 @@ describe('test ProjectManage/ProjectDetail', () => {
     );
 
     const { container } = renderWithRouter(<ProjectDetail />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
+    await reactAct(async () => jest.advanceTimersByTime(0));
+
     expect(
       screen.getByText('(projectManage.projectList.column.unavailable)')
     ).toBeInTheDocument();
@@ -200,14 +197,16 @@ describe('test useRecentlyOpenedProjects', () => {
 
   beforeEach(() => {
     jest.useFakeTimers();
-    mockUseSelector({
-      user: {
-        username: username1,
-        role: SystemRole.admin,
-        bindProjects: bindProjects,
-        managementPermissions: mockManagementPermissions,
-      },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: {
+          username: username1,
+          role: SystemRole.admin,
+          bindProjects: bindProjects,
+          managementPermissions: mockManagementPermissions,
+        },
+      })
+    );
   });
 
   afterEach(() => {
@@ -315,14 +314,16 @@ describe('test useRecentlyOpenedProjects', () => {
     expect(result.current.recentlyProjects).toEqual(['default1']);
     jest.clearAllMocks();
 
-    mockUseSelector({
-      user: {
-        username: username2,
-        role: SystemRole.admin,
-        bindProjects: bindProjects,
-        managementPermissions: mockManagementPermissions,
-      },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: {
+          username: username2,
+          role: SystemRole.admin,
+          bindProjects: bindProjects,
+          managementPermissions: mockManagementPermissions,
+        },
+      })
+    );
 
     rerender();
 
@@ -339,14 +340,16 @@ describe('test useRecentlyOpenedProjects', () => {
 
     jest.clearAllMocks();
 
-    mockUseSelector({
-      user: {
-        username: username2,
-        role: SystemRole.admin,
-        bindProjects: [],
-        managementPermissions: mockManagementPermissions,
-      },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: {
+          username: username2,
+          role: SystemRole.admin,
+          bindProjects: [],
+          managementPermissions: mockManagementPermissions,
+        },
+      })
+    );
 
     rerender();
     expect(result.current.recentlyProjects).toEqual([]);

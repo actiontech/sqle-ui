@@ -1,5 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks/dom';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { useForm } from 'antd/lib/form/Form';
 import { getProjectTipsV1FunctionalModuleEnum } from '../../../../api/project/index.enum';
 import { selectOptionByIndex } from '../../../../testUtils/customQuery';
@@ -10,6 +9,7 @@ import {
   resolveThreeSecond,
 } from '../../../../testUtils/mockRequest';
 import FilterForm from '../FilterForm';
+import { renderHook } from '@testing-library/react-hooks';
 
 describe('test OperationRecordList/FilterForm', () => {
   const mockUpdateOperationRecordListFilter = jest.fn();
@@ -50,9 +50,8 @@ describe('test OperationRecordList/FilterForm', () => {
 
     expect(container).toMatchSnapshot();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -67,35 +66,27 @@ describe('test OperationRecordList/FilterForm', () => {
 
     expect(mockUpdateOperationRecordListFilter).toBeCalledTimes(0);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     selectOptionByIndex(
       'operationRecord.list.filterForm.projectName',
       'project_name_1'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     selectOptionByIndex(
       'operationRecord.list.filterForm.operationType',
       '数据源',
       0
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     selectOptionByIndex(
       'operationRecord.list.filterForm.operationAction',
       '编辑数据源',
       0
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     fireEvent.change(
       screen.getByLabelText('operationRecord.list.filterForm.operator'),
@@ -103,9 +94,8 @@ describe('test OperationRecordList/FilterForm', () => {
     );
 
     fireEvent.click(screen.getByText('common.search'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(mockUpdateOperationRecordListFilter).toBeCalledTimes(1);
     expect(mockUpdateOperationRecordListFilter).toBeCalledWith({
       operationAction: 'edit_instance',
@@ -130,9 +120,7 @@ describe('test OperationRecordList/FilterForm', () => {
       '项目',
       0
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(baseElement).toMatchSnapshot();
   });
@@ -151,22 +139,17 @@ describe('test OperationRecordList/FilterForm', () => {
       />
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     selectOptionByIndex(
       'operationRecord.list.filterForm.projectName',
       'operationRecord.list.filterForm.platformOperation',
       0
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.click(screen.getByText('common.search'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(mockUpdateOperationRecordListFilter).toBeCalledTimes(1);
     expect(mockUpdateOperationRecordListFilter).toBeCalledWith({

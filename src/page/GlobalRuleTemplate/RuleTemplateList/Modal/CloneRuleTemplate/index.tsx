@@ -3,7 +3,6 @@ import { Col, Form, Input, message, Modal, Row, Space, Typography } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { IRuleTemplateResV1 } from '../../../../../api/common';
 import ruleTemplate from '../../../../../api/rule_template';
 import { ModalFormLayout, ResponseCode } from '../../../../../data/common';
@@ -14,6 +13,7 @@ import { updateGlobalRuleTemplateListModalStatus } from '../../../../../store/gl
 import EventEmitter from '../../../../../utils/EventEmitter';
 import { nameRule } from '../../../../../utils/FormRule';
 import { CloneRuleTemplateFormFields } from './index.type';
+import { Link } from '../../../../../components/Link';
 
 const CloneRuleTemplateModal = () => {
   const { t } = useTranslation();
@@ -68,7 +68,7 @@ const CloneRuleTemplateModal = () => {
 
   return (
     <Modal
-      visible={visible}
+      open={visible}
       title={t('ruleTemplate.cloneRuleTemplate.title')}
       closable={false}
       onOk={submit}
@@ -82,7 +82,7 @@ const CloneRuleTemplateModal = () => {
             {t('ruleTemplate.cloneRuleTemplate.currentTemplateTips')}
             <Link
               target="_blank"
-              to={`/rule/template/update/${currentRuleTemplate?.rule_template_name}`}
+              to={`rule/template/update/${currentRuleTemplate?.rule_template_name}`}
             >
               {currentRuleTemplate?.rule_template_name}
             </Link>

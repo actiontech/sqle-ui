@@ -27,7 +27,7 @@ exports[`AuditPlanRecord should match snapshot 1`] = `
               class="ant-space-item"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span
@@ -113,7 +113,7 @@ exports[`AuditPlanRecord should match snapshot 1`] = `
                 <div
                   class="ant-empty-description"
                 >
-                  No Data
+                  No data
                 </div>
               </div>
             </div>
@@ -124,7 +124,6 @@ exports[`AuditPlanRecord should match snapshot 1`] = `
         >
           <ul
             class="ant-pagination"
-            unselectable="unselectable"
           >
             <li
               aria-disabled="true"
@@ -159,14 +158,14 @@ exports[`AuditPlanRecord should match snapshot 1`] = `
               </button>
             </li>
             <li
-              class="ant-pagination-item ant-pagination-item-0 ant-pagination-disabled ant-pagination-item-disabled"
+              class="ant-pagination-item ant-pagination-item-1 ant-pagination-item-disabled"
               tabindex="0"
-              title="0"
+              title="1"
             >
               <a
                 rel="nofollow"
               >
-                0
+                1
               </a>
             </li>
             <li
@@ -205,6 +204,7 @@ exports[`AuditPlanRecord should match snapshot 1`] = `
               class="ant-pagination-options"
             >
               <div
+                aria-label="Page Size"
                 class="ant-select ant-pagination-options-size-changer ant-select-single ant-select-show-arrow"
               >
                 <div
@@ -217,7 +217,9 @@ exports[`AuditPlanRecord should match snapshot 1`] = `
                       aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
                       aria-autocomplete="list"
                       aria-controls="rc_select_TEST_OR_SSR_list"
+                      aria-expanded="false"
                       aria-haspopup="listbox"
+                      aria-label="Page Size"
                       aria-owns="rc_select_TEST_OR_SSR_list"
                       autocomplete="off"
                       class="ant-select-selection-search-input"
@@ -300,7 +302,7 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
               class="ant-space-item"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span
@@ -1333,7 +1335,6 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
         >
           <ul
             class="ant-pagination"
-            unselectable="unselectable"
           >
             <li
               aria-disabled="true"
@@ -1368,14 +1369,14 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
               </button>
             </li>
             <li
-              class="ant-pagination-item ant-pagination-item-0 ant-pagination-disabled ant-pagination-item-disabled"
+              class="ant-pagination-item ant-pagination-item-1 ant-pagination-item-disabled"
               tabindex="0"
-              title="0"
+              title="1"
             >
               <a
                 rel="nofollow"
               >
-                0
+                1
               </a>
             </li>
             <li
@@ -1414,6 +1415,7 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
               class="ant-pagination-options"
             >
               <div
+                aria-label="Page Size"
                 class="ant-select ant-pagination-options-size-changer ant-select-single ant-select-show-arrow"
               >
                 <div
@@ -1426,7 +1428,9 @@ exports[`AuditPlanRecord should match snapshot 2`] = `
                       aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
                       aria-autocomplete="list"
                       aria-controls="rc_select_TEST_OR_SSR_list"
+                      aria-expanded="false"
                       aria-haspopup="listbox"
+                      aria-label="Page Size"
                       aria-owns="rc_select_TEST_OR_SSR_list"
                       autocomplete="off"
                       class="ant-select-selection-search-input"

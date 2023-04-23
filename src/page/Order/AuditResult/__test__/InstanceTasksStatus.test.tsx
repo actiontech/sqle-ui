@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { GetWorkflowTasksItemV1StatusEnum } from '../../../../api/common.enum';
+import { GetWorkflowTasksItemV2StatusEnum } from '../../../../api/common.enum';
 import InstanceTasksStatus from '../InstanceTasksStatus';
 
 describe('test Order/AuditResult/InstanceTasksStatus', () => {
@@ -9,44 +9,44 @@ describe('test Order/AuditResult/InstanceTasksStatus', () => {
 
     rerender(
       <InstanceTasksStatus
-        status={GetWorkflowTasksItemV1StatusEnum.wait_for_audit}
+        status={GetWorkflowTasksItemV2StatusEnum.wait_for_audit}
       />
     );
     expect(container).toMatchSnapshot();
     rerender(
       <InstanceTasksStatus
-        status={GetWorkflowTasksItemV1StatusEnum.wait_for_execution}
+        status={GetWorkflowTasksItemV2StatusEnum.wait_for_execution}
       />
     );
     expect(container).toMatchSnapshot();
     rerender(
       <InstanceTasksStatus
-        status={GetWorkflowTasksItemV1StatusEnum.exec_failed}
+        status={GetWorkflowTasksItemV2StatusEnum.exec_failed}
       />
     );
     expect(container).toMatchSnapshot();
     rerender(
       <InstanceTasksStatus
-        status={GetWorkflowTasksItemV1StatusEnum.exec_scheduled}
+        status={GetWorkflowTasksItemV2StatusEnum.exec_scheduled}
       />
     );
     expect(container).toMatchSnapshot();
     rerender(
       <InstanceTasksStatus
-        status={GetWorkflowTasksItemV1StatusEnum.exec_succeeded}
+        status={GetWorkflowTasksItemV2StatusEnum.exec_succeeded}
       />
     );
     expect(container).toMatchSnapshot();
     rerender(
       <InstanceTasksStatus
-        status={GetWorkflowTasksItemV1StatusEnum.executing}
+        status={GetWorkflowTasksItemV2StatusEnum.executing}
       />
     );
     expect(container).toMatchSnapshot();
 
     rerender(
       <InstanceTasksStatus
-        status={GetWorkflowTasksItemV1StatusEnum.manually_executed}
+        status={GetWorkflowTasksItemV2StatusEnum.manually_executed}
       />
     );
     expect(container).toMatchSnapshot();

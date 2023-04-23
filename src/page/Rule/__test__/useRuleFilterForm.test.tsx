@@ -1,5 +1,4 @@
-import { waitFor } from '@testing-library/react';
-import { act, renderHook } from '@testing-library/react-hooks/dom';
+import { act as reactAct } from '@testing-library/react';
 import {
   mockDriver,
   mockUseGlobalRuleTemplate,
@@ -7,7 +6,15 @@ import {
   mockUseRuleTemplate,
 } from '../../../testUtils/mockRequest';
 import useRuleFilterForm from '../useRuleFilterForm';
-import route from 'react-router';
+import { renderHook, act } from '@testing-library/react-hooks';
+import { useLocation } from 'react-router-dom';
+
+jest.mock('react-router-dom', () => {
+  return {
+    ...jest.requireActual('react-router-dom'),
+    useLocation: jest.fn(),
+  };
+});
 
 describe('test useRuleFilterForm', () => {
   const projectName = 'default';
@@ -18,20 +25,19 @@ describe('test useRuleFilterForm', () => {
   let getGlobalRuleTemplateSpy: jest.SpyInstance;
   const getProjectTemplateRulesSpy = jest.fn();
   const getGlobalTemplateRulesSpy = jest.fn();
-
+  const useLocationMock = useLocation as jest.Mock;
   beforeEach(() => {
     getDriverSpy = mockDriver();
     getProjectSpy = mockUseProject();
     getRuleTemplateSpy = mockUseRuleTemplate();
     getGlobalRuleTemplateSpy = mockUseGlobalRuleTemplate();
-
-    jest.useFakeTimers();
-    jest.spyOn(route, 'useLocation').mockReturnValue({
+    useLocationMock.mockReturnValue(() => ({
       pathname: '/rule',
       hash: '',
       search: '',
       state: '',
-    });
+    }));
+    jest.useFakeTimers();
   });
   afterEach(() => {
     jest.clearAllMocks();
@@ -48,6 +54,10 @@ describe('test useRuleFilterForm', () => {
       useRuleFilterForm(getProjectTemplateRulesSpy, getGlobalTemplateRulesSpy)
     );
 
+    await act(async () => {
+      jest.advanceTimersByTime(3000);
+    });
+
     expect(getDriverSpy).toBeCalledTimes(1);
     expect(getProjectSpy).toBeCalledTimes(1);
     expect(getRuleTemplateSpy).toBeCalledTimes(0);
@@ -61,9 +71,7 @@ describe('test useRuleFilterForm', () => {
 
     expect(result.current.dbType).toBeUndefined();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
 
     expect(result.current.dbType).toBe('oracle');
   });
@@ -75,9 +83,7 @@ describe('test useRuleFilterForm', () => {
 
     expect(result.current.generateRuleTemplateSelectOptions()).toBeNull();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
 
     expect(
       result.current.generateRuleTemplateSelectOptions()
@@ -92,9 +98,7 @@ describe('test useRuleFilterForm', () => {
       project_name: projectName,
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
 
     expect(
       result.current.generateRuleTemplateSelectOptions()
@@ -111,9 +115,7 @@ describe('test useRuleFilterForm', () => {
       useRuleFilterForm(getProjectTemplateRulesSpy, getGlobalTemplateRulesSpy)
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
 
     expect(getGlobalTemplateRulesSpy).toBeCalledTimes(0);
 
@@ -150,12 +152,12 @@ describe('test useRuleFilterForm', () => {
   });
 
   test('should be executed change event with url search parameter', async () => {
-    jest.spyOn(route, 'useLocation').mockReturnValue({
+    useLocationMock.mockImplementationOnce(() => ({
       pathname: '/rule',
       hash: '',
       search: `?projectName=${projectName}&ruleTemplateName=${ruleTemplateName}`,
       state: '',
-    });
+    }));
 
     const { result, rerender } = renderHook(() =>
       useRuleFilterForm(getProjectTemplateRulesSpy, getGlobalTemplateRulesSpy)
@@ -177,12 +179,12 @@ describe('test useRuleFilterForm', () => {
     jest.clearAllMocks();
     jest.clearAllTimers();
 
-    jest.spyOn(route, 'useLocation').mockReturnValue({
+    useLocationMock.mockImplementationOnce(() => ({
       pathname: '/rule',
       hash: '',
       search: `ruleTemplateName=${ruleTemplateName}`,
       state: '',
-    });
+    }));
 
     rerender();
     expect(getRuleTemplateSpy).toBeCalledTimes(0);

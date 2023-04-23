@@ -1,30 +1,37 @@
-import { waitFor, screen, cleanup, fireEvent } from '@testing-library/react';
+import { act, screen, cleanup, fireEvent } from '@testing-library/react';
 import OrderList from '.';
 import workflow from '../../../api/workflow';
 import {
   renderWithRouter,
   renderWithThemeAndRouter,
-  renderWithThemeAndServerRouter,
 } from '../../../testUtils/customRender';
 import {
   mockUseInstance,
   mockUseUsername,
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
-import { createMemoryHistory } from 'history';
+
 import { CustomProvider } from '../../../testUtils/mockRedux';
 import { SystemRole } from '../../../data/common';
 import {
   getAllBySelector,
   selectOptionByIndex,
 } from '../../../testUtils/customQuery';
-import { mockUseSelector } from '../../../testUtils/mockRedux';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn(),
 }));
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+  };
+});
+
 const projectName = 'default';
 
 describe('Order/List', () => {
@@ -34,10 +41,13 @@ describe('Order/List', () => {
     mockUseInstance();
     mockUseUsername();
     jest.useFakeTimers();
-    mockUseSelector({
-      user: { role: SystemRole.admin },
-      projectManage: { archived: false },
-    });
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { role: SystemRole.admin },
+        projectManage: { archived: false },
+      })
+    );
     useParamsMock.mockReturnValue({ projectName });
   });
 
@@ -94,20 +104,18 @@ describe('Order/List', () => {
       page_size: 10,
       project_name: projectName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
   test('should set filter info when url includes request params', async () => {
     const request = mockRequest();
-    const history = createMemoryHistory();
-    history.push(
-      '/order?currentStepAssignee=admin&currentStepType=sql_execute&status=wait_for_audit&createUsername=createUser&executeTimeForm=2022-07-20%2011:15:02&executeTimeTo=2022-07-21%2011:15:02'
-    );
-    renderWithThemeAndServerRouter(<OrderList />, undefined, {
-      history,
+
+    renderWithThemeAndRouter(<OrderList />, undefined, {
+      initialEntries: [
+        '/order?currentStepAssignee=admin&currentStepType=sql_execute&status=wait_for_audit&createUsername=createUser&executeTimeForm=2022-07-20%2011:15:02&executeTimeTo=2022-07-21%2011:15:02',
+      ],
     });
     expect(request).toBeCalledTimes(1);
     expect(request).toBeCalledWith({
@@ -156,9 +164,8 @@ describe('Order/List', () => {
       page_size: 10,
       project_name: projectName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     const batchCancel = screen.getAllByText('order.batchCancel.batchDelete')[0];
     expect(batchCancel.parentNode).toBeDisabled();
     expect(getAllBySelector('.ant-checkbox-input')[0]).toBeEnabled();
@@ -168,7 +175,7 @@ describe('Order/List', () => {
     ).toBeEnabled();
     fireEvent.click(screen.getAllByText('order.batchCancel.batchDelete')[0]);
     expect(
-      screen.queryByText('order.batchCancel.cancelPopTitle')
+      screen.getByText('order.batchCancel.cancelPopTitle')
     ).toBeInTheDocument();
     fireEvent.click(screen.getAllByText('common.ok')[0]);
     expect(batchCancelSpy).toBeCalledTimes(1);
@@ -176,9 +183,8 @@ describe('Order/List', () => {
       workflow_id_list: ['1'],
       project_name: projectName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(request).toBeCalledTimes(2);
     expect(request).toBeCalledWith({
       page_index: 1,
@@ -191,9 +197,8 @@ describe('Order/List', () => {
     mockRequest();
     renderWithThemeAndRouter(<OrderList />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('order.exportOrder.buttonText'));
     expect(exportWorkflowSpy).toBeCalledTimes(1);
     expect(exportWorkflowSpy).nthCalledWith(
@@ -205,37 +210,32 @@ describe('Order/List', () => {
         responseType: 'blob',
       }
     );
-    expect(
-      screen.queryByText('order.exportOrder.exporting')
-    ).toBeInTheDocument();
+    expect(screen.getByText('order.exportOrder.exporting')).toBeInTheDocument();
     expect(
       screen.getByText('order.exportOrder.buttonText').closest('button')
     ).toBeDisabled();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('order.exportOrder.exporting')
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText('order.exportOrder.exportSuccessTips')
+      screen.getByText('order.exportOrder.exportSuccessTips')
     ).toBeInTheDocument();
     expect(
       screen.getByText('order.exportOrder.buttonText').closest('button')
     ).not.toBeDisabled();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('order.exportOrder.exportSuccessTips')
     ).not.toBeInTheDocument();
 
     selectOptionByIndex('order.order.createUser', 'user_name1');
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('order.exportOrder.buttonText'));
     expect(exportWorkflowSpy).nthCalledWith(
       2,
@@ -250,16 +250,16 @@ describe('Order/List', () => {
   });
 
   test('should hide create order button when project is archived', async () => {
-    mockUseSelector({
-      user: { role: SystemRole.admin },
-      projectManage: { archived: true },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { role: SystemRole.admin },
+        projectManage: { archived: true },
+      })
+    );
     mockRequest();
     renderWithThemeAndRouter(<OrderList />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.queryByText('order.createOrder.title')

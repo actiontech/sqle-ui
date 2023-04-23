@@ -4,7 +4,7 @@ import {
   IGetMemberGroupRespDataV1,
   IMemberGroupUserItem,
 } from '../../../api/common';
-import i18n from '../../../locale';
+import { t } from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import renderRolesInfo from '../Common/renderRolesInfo';
 
@@ -22,11 +22,11 @@ const MemberGroupListTableColumnFactory: (
   const columns: TableColumn<IGetMemberGroupRespDataV1, 'operator'> = [
     {
       dataIndex: 'user_group_name',
-      title: i18n.t('member.memberGroupList.tableColumn.userGroupName'),
+      title: t('member.memberGroupList.tableColumn.userGroupName'),
     },
     {
       dataIndex: 'users',
-      title: i18n.t('member.memberGroupList.tableColumn.users'),
+      title: t('member.memberGroupList.tableColumn.users'),
       render(users: IMemberGroupUserItem[]) {
         if (!Array.isArray(users)) {
           return null;
@@ -40,7 +40,7 @@ const MemberGroupListTableColumnFactory: (
     },
     {
       dataIndex: 'roles',
-      title: i18n.t('member.memberGroupList.tableColumn.role'),
+      title: t('member.memberGroupList.tableColumn.role'),
       render(roles?: IBindRoleReqV1[]) {
         if (!Array.isArray(roles) || roles.length === 0) {
           return null;
@@ -55,7 +55,7 @@ const MemberGroupListTableColumnFactory: (
     },
     {
       dataIndex: 'operator',
-      title: i18n.t('common.operate'),
+      title: t('common.operate'),
       width: 160,
       render: (_, record) => {
         return (
@@ -64,21 +64,21 @@ const MemberGroupListTableColumnFactory: (
               className="pointer"
               onClick={updateAction.bind(null, record)}
             >
-              {i18n.t('common.edit')}
+              {t('common.edit')}
             </Typography.Link>
             {/* <EmptyBox if={record.user_name !== 'admin'}> */}
             <Divider type="vertical" />
             <Popconfirm
-              title={i18n.t('member.memberGroupList.tableColumn.confirmTitle', {
+              title={t('member.memberGroupList.tableColumn.confirmTitle', {
                 username: record.user_group_name,
               })}
               placement="topRight"
-              okText={i18n.t('common.ok')}
-              cancelText={i18n.t('common.cancel')}
+              okText={t('common.ok')}
+              cancelText={t('common.cancel')}
               onConfirm={deleteAction.bind(null, record.user_group_name ?? '')}
             >
               <Typography.Text type="danger" className="pointer">
-                {i18n.t('common.delete')}
+                {t('common.delete')}
               </Typography.Text>
             </Popconfirm>
             {/* </EmptyBox> */}

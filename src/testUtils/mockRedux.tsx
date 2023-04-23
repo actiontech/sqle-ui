@@ -1,13 +1,13 @@
 import { Dictionary } from '../types/common.type';
-import * as redux from 'react-redux';
 import locale from '../store/locale';
 import user from '../store/user';
 import userManage from '../store/userManage';
 import whitelist from '../store/whitelist';
 import nav from '../store/nav';
-import { combineReducers, createStore } from 'redux';
+import system from '../store/system';
 import React from 'react';
 import { Provider } from 'react-redux';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 const reducers = combineReducers({
   locale,
@@ -15,31 +15,22 @@ const reducers = combineReducers({
   userManage,
   whitelist,
   nav,
+  system,
 });
 
 export const storeFactory = (initStore: Dictionary = {}) => {
-  return createStore(reducers, initStore);
-};
-
-export const mockUseSelector = (store?: any) => {
-  const spy = jest.spyOn(redux, 'useSelector');
-  spy.mockImplementation((getFn: Function) => {
-    return getFn(store);
+  return configureStore({
+    reducer: reducers,
+    preloadedState: initStore,
   });
-  return spy;
 };
 
-export const mockUseDispatch = () => {
-  const scopeDispatch = jest.fn();
-  const spy = jest.spyOn(redux, 'useDispatch');
-  spy.mockImplementation(() => scopeDispatch);
-  return { spy, scopeDispatch };
-};
+export const mockUseLocation = () => {};
 
-export const mockUseLocation = () => {}
-
-
-export const CustomProvider: React.FC<{ initStore: Dictionary }> = (props) => {
+export const CustomProvider: React.FC<{
+  initStore: Dictionary;
+  children: JSX.Element;
+}> = (props) => {
   return (
     <Provider store={storeFactory(props.initStore)}>{props.children}</Provider>
   );

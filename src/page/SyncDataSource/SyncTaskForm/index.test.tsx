@@ -1,5 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks/dom';
+import { fireEvent, render, screen, act } from '@testing-library/react';
 import { useForm } from 'antd/lib/form/Form';
 import SyncTaskForm from '.';
 import { IInstanceTaskDetailResV1 } from '../../../api/common';
@@ -8,6 +7,7 @@ import {
   mockUseGlobalRuleTemplate,
   mockUseTaskSource,
 } from '../../../testUtils/mockRequest';
+import { renderHook } from '@testing-library/react-hooks';
 
 const defaultSyncTask: IInstanceTaskDetailResV1 = {
   db_type: 'mysql',
@@ -20,14 +20,16 @@ const defaultSyncTask: IInstanceTaskDetailResV1 = {
 };
 
 const mockSubmit = jest.fn();
-const renderComponent = (defaultValue?: IInstanceTaskDetailResV1) => {
+const renderComponent = async (defaultValue?: IInstanceTaskDetailResV1) => {
   const { result } = renderHook(() => useForm());
-  return render(
-    <SyncTaskForm
-      form={result.current[0]}
-      submit={mockSubmit}
-      defaultValue={defaultValue}
-    />
+  return await act(async () =>
+    render(
+      <SyncTaskForm
+        form={result.current[0]}
+        submit={mockSubmit}
+        defaultValue={defaultValue}
+      />
+    )
   );
 };
 
@@ -52,23 +54,20 @@ describe('test SyncTaskForm', () => {
     jest.clearAllMocks();
     jest.clearAllTimers();
   });
-  test('should match snapshot', () => {
-    const { container } = renderComponent();
+  test('should match snapshot', async () => {
+    const { container } = await renderComponent();
     expect(container).toMatchSnapshot();
   });
 
   test('should be call submit when clicking submit button', async () => {
-    renderComponent();
+    await renderComponent();
     expect(mockSubmit).toBeCalledTimes(0);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     selectOptionByIndex('syncDataSource.syncTaskForm.source', 'source1');
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.change(
       screen.getByLabelText('syncDataSource.syncTaskForm.version'),
       { target: { value: '4.22.0' } }
@@ -78,21 +77,17 @@ describe('test SyncTaskForm', () => {
     });
 
     selectOptionByIndex('syncDataSource.syncTaskForm.instanceType', 'mysql');
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     selectOptionByIndex(
       'syncDataSource.syncTaskForm.ruleTemplateName',
       'global_rule_template_name1'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(mockSubmit).toBeCalledTimes(1);
     expect(mockSubmit).toBeCalledWith({
       instanceType: 'mysql',
@@ -107,9 +102,7 @@ describe('test SyncTaskForm', () => {
     );
     expect(screen.getByText('common.reset').closest('button')).toBeDisabled();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.getByText('common.submit').closest('button')).not.toHaveClass(
       'ant-btn-loading'
@@ -120,10 +113,9 @@ describe('test SyncTaskForm', () => {
   });
 
   test('should reset fields when clicking reset button', async () => {
-    renderComponent();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await renderComponent();
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.change(
       screen.getByLabelText('syncDataSource.syncTaskForm.version'),
       { target: { value: '4.22.0' } }
@@ -133,6 +125,7 @@ describe('test SyncTaskForm', () => {
     });
 
     fireEvent.click(screen.getByText('common.reset'));
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(
       screen.getByLabelText('syncDataSource.syncTaskForm.version')
@@ -143,28 +136,25 @@ describe('test SyncTaskForm', () => {
   });
 
   test('should set default value when defaultValue is not undefined', async () => {
-    const { container } = renderComponent(defaultSyncTask);
+    const { container } = await renderComponent(defaultSyncTask);
     expect(getGlobalRuleTemplateSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
     fireEvent.click(screen.getByText('common.reset'));
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(getGlobalRuleTemplateSpy).toBeCalledTimes(2);
     expect(container).toMatchSnapshot();
   });
 
   test('should empty rule template name when changing database type', async () => {
-    renderComponent();
+    await renderComponent();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     selectOptionByIndex('syncDataSource.syncTaskForm.source', 'source1');
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     selectOptionByIndex('syncDataSource.syncTaskForm.instanceType', 'mysql');
 
@@ -172,9 +162,7 @@ describe('test SyncTaskForm', () => {
       'ant-select-selection-item'
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     selectOptionByIndex(
       'syncDataSource.syncTaskForm.ruleTemplateName',
@@ -183,23 +171,18 @@ describe('test SyncTaskForm', () => {
     expect(screen.getAllByText('global_rule_template_name1')[0]).toHaveClass(
       'ant-select-selection-item'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     selectOptionByIndex('syncDataSource.syncTaskForm.source', 'source2');
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(screen.getAllByText('mysql')[0]).not.toHaveClass(
       'ant-select-selection-item'
     );
 
     selectOptionByIndex('syncDataSource.syncTaskForm.instanceType', 'oracle');
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(
       screen.getAllByText('global_rule_template_name1')[0]
     ).not.toHaveClass('ant-select-selection-item');

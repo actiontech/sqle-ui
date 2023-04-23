@@ -1,11 +1,19 @@
 import { DownOutlined } from '@ant-design/icons';
-import { Divider, Dropdown, Menu, Popconfirm, Typography } from 'antd';
-import { Link } from 'react-router-dom';
+import {
+  Divider,
+  Dropdown,
+  Menu,
+  MenuProps,
+  Popconfirm,
+  Typography,
+} from 'antd';
 import { IProjectRuleTemplateResV1 } from '../../../api/common';
 import EmptyBox from '../../../components/EmptyBox';
-import i18n from '../../../locale';
+import { t } from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import { RuleUrlParamKey } from '../../Rule/useRuleFilterForm';
+import { Link } from '../../../components/Link';
+import { ItemType } from 'antd/lib/menu/hooks/useItems';
 
 export const RuleTemplateListTableColumnFactory = (
   deleteTemplate: (name: string) => void,
@@ -18,7 +26,7 @@ export const RuleTemplateListTableColumnFactory = (
   const columns: TableColumn<IProjectRuleTemplateResV1, 'operator'> = [
     {
       dataIndex: 'rule_template_name',
-      title: () => i18n.t('ruleTemplate.ruleTemplateList.table.templateName'),
+      title: () => t('ruleTemplate.ruleTemplateList.table.templateName'),
       render(name: string) {
         if (!name) {
           return '';
@@ -26,7 +34,7 @@ export const RuleTemplateListTableColumnFactory = (
 
         return (
           <Link
-            to={`/rule?${RuleUrlParamKey.projectName}=${projectName}&${RuleUrlParamKey.ruleTemplateName}=${name}`}
+            to={`rule?${RuleUrlParamKey.projectName}=${projectName}&${RuleUrlParamKey.ruleTemplateName}=${name}`}
           >
             {name}
           </Link>
@@ -36,28 +44,43 @@ export const RuleTemplateListTableColumnFactory = (
     {
       dataIndex: 'desc',
       ellipsis: true,
-      title: () => i18n.t('ruleTemplate.ruleTemplateList.table.desc'),
+      title: () => t('ruleTemplate.ruleTemplateList.table.desc'),
     },
     {
       dataIndex: 'db_type',
-      title: () => i18n.t('ruleTemplate.ruleTemplateList.table.dbType'),
+      title: () => t('ruleTemplate.ruleTemplateList.table.dbType'),
     },
     {
       dataIndex: 'operator',
-      title: () => i18n.t('common.operate'),
+      title: () => t('common.operate'),
       width: projectIsArchive ? 80 : 180,
       render: (_, record) => {
+        const exportRuleItems: ItemType = {
+          key: 'export-rule-template',
+          onClick: () => exportRuleTemplate(record.rule_template_name ?? ''),
+          label: t('ruleTemplate.exportRuleTemplate.button'),
+        };
+        const menuItems: MenuProps['items'] = projectIsArchive
+          ? [exportRuleItems]
+          : [
+              {
+                key: 'clone-rule-template',
+                onClick: () => openCloneRuleTemplateModal(record),
+                label: t('ruleTemplate.cloneRuleTemplate.button'),
+              },
+              exportRuleItems,
+            ];
         return (
           <>
             <EmptyBox if={!projectIsArchive}>
               <Link
-                to={`/project/${projectName}/rule/template/update/${record.rule_template_name}`}
+                to={`project/${projectName}/rule/template/update/${record.rule_template_name}`}
               >
-                {i18n.t('common.edit')}
+                {t('common.edit')}
               </Link>
               <Divider type="vertical" />
               <Popconfirm
-                title={i18n.t('ruleTemplate.deleteRuleTemplate.tips', {
+                title={t('ruleTemplate.deleteRuleTemplate.tips', {
                   name: record.rule_template_name,
                 })}
                 placement="topRight"
@@ -67,39 +90,15 @@ export const RuleTemplateListTableColumnFactory = (
                 )}
               >
                 <Typography.Link type="danger">
-                  {i18n.t('common.delete')}
+                  {t('common.delete')}
                 </Typography.Link>
               </Popconfirm>
               <Divider type="vertical" />
             </EmptyBox>
 
-            <Dropdown
-              placement="bottomRight"
-              overlay={
-                <Menu>
-                  <EmptyBox if={!projectIsArchive}>
-                    <Menu.Item
-                      key="update-user-password"
-                      onClick={openCloneRuleTemplateModal.bind(null, record)}
-                    >
-                      {i18n.t('ruleTemplate.cloneRuleTemplate.button')}
-                    </Menu.Item>
-                  </EmptyBox>
-
-                  <Menu.Item
-                    key="export-rule-template"
-                    onClick={exportRuleTemplate.bind(
-                      null,
-                      record.rule_template_name ?? ''
-                    )}
-                  >
-                    {i18n.t('ruleTemplate.exportRuleTemplate.button')}
-                  </Menu.Item>
-                </Menu>
-              }
-            >
+            <Dropdown placement="bottomRight" menu={{ items: menuItems }}>
               <Typography.Link className="pointer">
-                {i18n.t('common.more')}
+                {t('common.more')}
                 <DownOutlined />
               </Typography.Link>
             </Dropdown>

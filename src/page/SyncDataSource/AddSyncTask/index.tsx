@@ -3,7 +3,6 @@ import { Button, Card, Modal, Result } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import sync_instance from '../../../api/sync_instance';
 import { ICreateSyncInstanceTaskV1Params } from '../../../api/sync_instance/index.d';
 import BackButton from '../../../components/BackButton';
@@ -11,6 +10,7 @@ import { ResponseCode } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import EventEmitter from '../../../utils/EventEmitter';
 import SyncTaskForm, { SyncTaskFormFields } from '../SyncTaskForm';
+import { Link } from '../../../components/Link';
 
 const AddSyncTask: React.FC = () => {
   const { t } = useTranslation();
@@ -53,13 +53,13 @@ const AddSyncTask: React.FC = () => {
         title={t('common.operateSuccess')}
         footer={null}
         closable={false}
-        visible={resultModalVisibility}
+        open={resultModalVisibility}
       >
         <Result
           status="success"
           title={t('syncDataSource.addSyncTask.successTips')}
           subTitle={
-            <Link to={`/syncDataSource`}>
+            <Link to={`syncDataSource`}>
               {t('syncDataSource.addSyncTask.successGuide')} {'>'}
             </Link>
           }

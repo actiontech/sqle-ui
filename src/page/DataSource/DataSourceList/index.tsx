@@ -10,11 +10,11 @@ import DataSourceListFilterForm from './DataSourceListFilterForm';
 import { DataSourceListFilterFields } from './DataSourceListFilterForm/index.type';
 import useTable from '../../../hooks/useTable';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
-import { Link } from 'react-router-dom';
 import useCurrentUser from '../../../hooks/useCurrentUser';
 import EmptyBox from '../../../components/EmptyBox';
 import { useSelector } from 'react-redux';
 import { IReduxState } from '../../../store';
+import { Link } from '../../../components/Link';
 
 const DataSourceList = () => {
   const { t } = useTranslation();
@@ -119,7 +119,7 @@ const DataSourceList = () => {
       }
       extra={
         <EmptyBox if={actionPermission && !projectIsArchive}>
-          <Link to={`/project/${projectName}/data/create`}>
+          <Link to={`project/${projectName}/data/create`}>
             <Button type="primary">{t('dataSource.addDatabase')}</Button>
           </Link>
         </EmptyBox>

@@ -1,4 +1,4 @@
-import { useTheme } from '@material-ui/styles';
+import { useTheme } from '@mui/styles';
 import { useRequest } from 'ahooks';
 import {
   Card,
@@ -19,8 +19,8 @@ import EmptyBox from '../../components/EmptyBox';
 import RuleList from '../../components/RuleList';
 import useSyncRuleListTab from '../../components/RuleList/useSyncRuleListTab';
 import { FilterFormColLayout, FilterFormRowLayout } from '../../data/common';
-import { Theme } from '../../types/theme.type';
 import useRuleFilterForm from './useRuleFilterForm';
+import { Theme } from '@mui/material/styles';
 
 const Rule = () => {
   const { t } = useTranslation();
@@ -126,7 +126,9 @@ const Rule = () => {
                       data-testid="project-name"
                       value={projectName}
                       onChange={projectNameChangeHandle}
-                      placeholder={t('common.form.placeholder.select')}
+                      placeholder={t('common.form.placeholder.select', {
+                        name: '',
+                      })}
                       className="middle-select"
                       allowClear
                       showSearch
@@ -144,7 +146,9 @@ const Rule = () => {
                       data-testid="rule-template-name"
                       value={ruleTemplateName}
                       onChange={ruleTemplateNameChangeHandle}
-                      placeholder={t('common.form.placeholder.select')}
+                      placeholder={t('common.form.placeholder.select', {
+                        name: '',
+                      })}
                       className="middle-select"
                       allowClear
                       showSearch
@@ -160,7 +164,9 @@ const Rule = () => {
                       data-testid="database-type"
                       value={dbType}
                       onChange={setDbType}
-                      placeholder={t('common.form.placeholder.select')}
+                      placeholder={t('common.form.placeholder.select', {
+                        name: '',
+                      })}
                       className="middle-select"
                     >
                       {generateDriverSelectOptions()}

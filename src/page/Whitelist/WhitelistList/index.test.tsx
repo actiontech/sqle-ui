@@ -1,21 +1,20 @@
 import {
   fireEvent,
   render,
-  waitFor,
+  act,
   screen,
   cleanup,
 } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
 import { useParams } from 'react-router-dom';
 import WhitelistList from '.';
 import audit_whitelist from '../../../api/audit_whitelist';
 import { SystemRole } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
-import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 import { WhitelistData } from '../__testData__';
+import { useDispatch, useSelector } from 'react-redux';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -23,21 +22,30 @@ jest.mock('react-router-dom', () => ({
 }));
 const projectName = 'default';
 
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
+
 describe('Whitelist/WhitelistList', () => {
-  let dispatchMock: jest.Mock;
   let getWhitelistSpy: jest.SpyInstance;
   const useParamsMock: jest.Mock = useParams as jest.Mock;
+  const dispatchMock = jest.fn();
 
   beforeEach(() => {
     jest.useFakeTimers();
-    const { scopeDispatch } = mockUseDispatch();
-    dispatchMock = scopeDispatch;
     getWhitelistSpy = mockGetWhitelistList();
-    mockUseSelector({
-      whitelist: { modalStatus: {} },
-      user: { role: SystemRole.admin, bindProjects: mockBindProjects },
-      projectManage: { archived: false },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        whitelist: { modalStatus: {} },
+        user: { role: SystemRole.admin, bindProjects: mockBindProjects },
+        projectManage: { archived: false },
+      })
+    );
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchMock);
     useParamsMock.mockReturnValue({ projectName });
   });
 
@@ -74,9 +82,8 @@ describe('Whitelist/WhitelistList', () => {
       },
       type: 'whitelist/initModalStatus',
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -96,9 +103,8 @@ describe('Whitelist/WhitelistList', () => {
 
   test('should set update whitelist modal visible to true and set select whitelist when user click update whitelist button', async () => {
     render(<WhitelistList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getAllByText('common.edit')[0]);
 
     expect(dispatchMock).toBeCalledTimes(3);
@@ -125,18 +131,14 @@ describe('Whitelist/WhitelistList', () => {
     deleteWhiteListSpy.mockImplementation(() => resolveThreeSecond({}));
     render(<WhitelistList />);
     expect(getWhitelistSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getAllByText('common.delete')[0]);
     expect(
-      screen.queryByText('whitelist.operate.confirmDelete')
+      screen.getByText('whitelist.operate.confirmDelete')
     ).toBeInTheDocument();
     fireEvent.click(screen.getByText('OK'));
-    expect(
-      screen.queryByText('whitelist.operate.deleting')
-    ).toBeInTheDocument();
+    expect(screen.getByText('whitelist.operate.deleting')).toBeInTheDocument();
 
     expect(deleteWhiteListSpy).toBeCalledTimes(1);
     expect(deleteWhiteListSpy).toBeCalledWith({
@@ -144,14 +146,13 @@ describe('Whitelist/WhitelistList', () => {
       project_name: projectName,
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('whitelist.operate.deleting')
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText('whitelist.operate.deleteSuccess')
+      screen.getByText('whitelist.operate.deleteSuccess')
     ).toBeInTheDocument();
 
     expect(getWhitelistSpy).toBeCalledTimes(2);
@@ -160,9 +161,8 @@ describe('Whitelist/WhitelistList', () => {
   test('should refresh table data when receive Refresh_Whitelist_List event', async () => {
     render(<WhitelistList />);
     expect(getWhitelistSpy).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     act(() => {
       EventEmitter.emit(EmitterKey.Refresh_Whitelist_List);
     });
@@ -170,63 +170,63 @@ describe('Whitelist/WhitelistList', () => {
   });
 
   test('should hide the Create, Add, Edit feature when not currently a project manager or admin', async () => {
-    mockUseSelector({
-      whitelist: { modalStatus: {} },
-      user: {
-        role: SystemRole.admin,
-        bindProjects: [{ projectName: 'test', isManager: false }],
-      },
-      projectManage: { archived: false },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        whitelist: { modalStatus: {} },
+        user: {
+          role: SystemRole.admin,
+          bindProjects: [{ projectName: 'test', isManager: false }],
+        },
+        projectManage: { archived: false },
+      })
+    );
 
     render(<WhitelistList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    expect(screen.queryAllByText('common.delete')[0]).toBeInTheDocument();
-    expect(screen.queryAllByText('common.edit')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('common.delete')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('common.edit')[0]).toBeInTheDocument();
     expect(
-      screen.queryByText('whitelist.operate.addWhitelist')
+      screen.getByText('whitelist.operate.addWhitelist')
     ).toBeInTheDocument();
 
     cleanup();
     jest.clearAllMocks();
 
-    mockUseSelector({
-      whitelist: { modalStatus: {} },
-      user: {
-        role: '',
-        bindProjects: mockBindProjects,
-      },
-      projectManage: { archived: false },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        whitelist: { modalStatus: {} },
+        user: {
+          role: '',
+          bindProjects: mockBindProjects,
+        },
+        projectManage: { archived: false },
+      })
+    );
     render(<WhitelistList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    expect(screen.queryAllByText('common.delete')[0]).toBeInTheDocument();
-    expect(screen.queryAllByText('common.edit')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('common.delete')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('common.edit')[0]).toBeInTheDocument();
     expect(
-      screen.queryByText('whitelist.operate.addWhitelist')
+      screen.getByText('whitelist.operate.addWhitelist')
     ).toBeInTheDocument();
 
     cleanup();
     jest.clearAllMocks();
 
-    mockUseSelector({
-      whitelist: { modalStatus: {} },
-      user: {
-        role: '',
-        bindProjects: [{ projectName: 'default', isManager: false }],
-      },
-      projectManage: { archived: false },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        whitelist: { modalStatus: {} },
+        user: {
+          role: '',
+          bindProjects: [{ projectName: 'default', isManager: false }],
+        },
+        projectManage: { archived: false },
+      })
+    );
     render(<WhitelistList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.queryByText('common.delete')).not.toBeInTheDocument();
     expect(screen.queryByText('common.edit')).not.toBeInTheDocument();
@@ -236,19 +236,18 @@ describe('Whitelist/WhitelistList', () => {
   });
 
   test('should hide the Create, Delete, Edit feature when project is archived', async () => {
-    mockUseSelector({
-      whitelist: { modalStatus: {} },
-      user: {
-        role: SystemRole.admin,
-        bindProjects: [{ projectName: projectName, isManager: true }],
-      },
-      projectManage: { archived: true },
-    });
-
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        whitelist: { modalStatus: {} },
+        user: {
+          role: SystemRole.admin,
+          bindProjects: [{ projectName: projectName, isManager: true }],
+        },
+        projectManage: { archived: true },
+      })
+    );
     render(<WhitelistList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.queryByText('common.delete')).not.toBeInTheDocument();
     expect(screen.queryByText('common.edit')).not.toBeInTheDocument();

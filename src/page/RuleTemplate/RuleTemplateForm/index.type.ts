@@ -19,4 +19,5 @@ export type RuleTemplateFormProps = {
   submit: () => void;
   projectName: string;
   mode: 'import' | 'update' | 'create';
+  children: React.ReactNode;
 };

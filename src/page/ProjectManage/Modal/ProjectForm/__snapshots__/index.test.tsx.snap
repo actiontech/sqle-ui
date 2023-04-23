@@ -6,65 +6,74 @@ exports[`test ProjectManage/Modal/ProjectForm should match snapshot 1`] = `
     class="ant-form ant-form-horizontal"
   >
     <div
-      class="ant-row ant-form-item"
+      class="ant-form-item"
     >
       <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class="ant-form-item-required"
-          for="projectName"
-          title="projectManage.projectForm.projectName"
-        >
-          projectManage.projectForm.projectName
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class="ant-form-item-required"
+            for="projectName"
+            title="projectManage.projectForm.projectName"
+          >
+            projectManage.projectForm.projectName
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
         >
           <div
-            class="ant-form-item-control-input-content"
+            class="ant-form-item-control-input"
           >
-            <input
-              class="ant-input"
-              id="projectName"
-              type="text"
-              value=""
-            />
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <input
+                aria-required="true"
+                class="ant-input"
+                id="projectName"
+                type="text"
+                value=""
+              />
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="ant-row ant-form-item"
+      class="ant-form-item"
     >
       <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class=""
-          for="projectDesc"
-          title="projectManage.projectForm.projectDesc"
-        >
-          projectManage.projectForm.projectDesc
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class=""
+            for="projectDesc"
+            title="projectManage.projectForm.projectDesc"
+          >
+            projectManage.projectForm.projectDesc
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
         >
           <div
-            class="ant-form-item-control-input-content"
+            class="ant-form-item-control-input"
           >
-            <textarea
-              class="ant-input"
-              id="projectDesc"
-            />
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <textarea
+                class="ant-input"
+                id="projectDesc"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -79,66 +88,75 @@ exports[`test ProjectManage/Modal/ProjectForm should match snapshot 2`] = `
     class="ant-form ant-form-horizontal"
   >
     <div
-      class="ant-row ant-form-item"
+      class="ant-form-item"
     >
       <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class="ant-form-item-required"
-          for="projectName"
-          title="projectManage.projectForm.projectName"
-        >
-          projectManage.projectForm.projectName
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class="ant-form-item-required"
+            for="projectName"
+            title="projectManage.projectForm.projectName"
+          >
+            projectManage.projectForm.projectName
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
         >
           <div
-            class="ant-form-item-control-input-content"
+            class="ant-form-item-control-input"
           >
-            <input
-              class="ant-input ant-input-disabled"
-              disabled=""
-              id="projectName"
-              type="text"
-              value=""
-            />
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <input
+                aria-required="true"
+                class="ant-input ant-input-disabled"
+                disabled=""
+                id="projectName"
+                type="text"
+                value=""
+              />
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="ant-row ant-form-item"
+      class="ant-form-item"
     >
       <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class=""
-          for="projectDesc"
-          title="projectManage.projectForm.projectDesc"
-        >
-          projectManage.projectForm.projectDesc
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class=""
+            for="projectDesc"
+            title="projectManage.projectForm.projectDesc"
+          >
+            projectManage.projectForm.projectDesc
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
         >
           <div
-            class="ant-form-item-control-input-content"
+            class="ant-form-item-control-input"
           >
-            <textarea
-              class="ant-input"
-              id="projectDesc"
-            />
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <textarea
+                class="ant-input"
+                id="projectDesc"
+              />
+            </div>
           </div>
         </div>
       </div>

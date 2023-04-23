@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { RenderResult, render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import {
   BrowserRouter,
@@ -6,12 +6,13 @@ import {
   RouterProps,
   MemoryRouter,
   MemoryRouterProps,
+  useLocation,
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { Dictionary } from '../types/common.type';
 import { storeFactory } from './mockRedux';
 import lightTheme from '../theme/light';
-import { ThemeProvider } from '@material-ui/styles';
+import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import { mount, shallow } from 'enzyme';
 
 type RenderParams = Parameters<typeof render>;
@@ -20,6 +21,17 @@ type ShallowParams = Parameters<typeof shallow>;
 
 export const renderWithRouter = (...[ui, option]: [...RenderParams]) => {
   return render(<BrowserRouter>{ui}</BrowserRouter>, option);
+};
+
+export const renderWithRouterAndRedux = (
+  ...[ui, option, initStore]: [...RenderParams, Dictionary?]
+) => {
+  return render(
+    <BrowserRouter>
+      <Provider store={storeFactory(initStore)}>{ui}</Provider>
+    </BrowserRouter>,
+    option
+  );
 };
 
 export const renderWithRedux = (
@@ -56,7 +68,25 @@ export const renderWithMemoryRouter = (
 };
 
 export const renderWithTheme = (...[ui, option]: [...RenderParams]) => {
-  return render(<ThemeProvider theme={lightTheme}>{ui}</ThemeProvider>, option);
+  return render(
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={lightTheme}>{ui}</ThemeProvider>
+    </StyledEngineProvider>,
+    option
+  );
+};
+
+export const renderWithThemeAndRedux = (
+  ...[ui, option, initStore]: [...RenderParams, Dictionary?]
+) => {
+  return render(
+    <Provider store={storeFactory(initStore)}>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={lightTheme}>{ui}</ThemeProvider>
+      </StyledEngineProvider>
+    </Provider>,
+    option
+  );
 };
 
 export const renderWithThemeAndServerRouter = (
@@ -64,7 +94,9 @@ export const renderWithThemeAndServerRouter = (
 ) => {
   return render(
     <Router {...props}>
-      <ThemeProvider theme={lightTheme}>{ui}</ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={lightTheme}>{ui}</ThemeProvider>
+      </StyledEngineProvider>
     </Router>,
     option
   );
@@ -75,7 +107,9 @@ export const renderWithThemeAndRouter = (
 ) => {
   return render(
     <MemoryRouter {...props}>
-      <ThemeProvider theme={lightTheme}>{ui}</ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={lightTheme}>{ui}</ThemeProvider>
+      </StyledEngineProvider>
     </MemoryRouter>,
     option
   );
@@ -96,4 +130,17 @@ export const shallowWithRouter = (...[ui, option]: [...ShallowParams]) => {
     ...option,
     wrappingComponent: MemoryRouter,
   });
+};
+
+export const renderLocationDisplay = (): [
+  () => RenderResult,
+  () => JSX.Element
+] => {
+  const LocationComponent = () => {
+    const location = useLocation();
+
+    return <div data-testid="location-display">{location.pathname}</div>;
+  };
+
+  return [() => renderWithRouter(<LocationComponent />), LocationComponent];
 };

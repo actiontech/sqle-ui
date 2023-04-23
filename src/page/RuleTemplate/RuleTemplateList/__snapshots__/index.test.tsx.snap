@@ -28,7 +28,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 1`] = `
               class="ant-space-item"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span
@@ -108,6 +108,8 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 1`] = `
         >
           <div>
             <div
+              aria-busy="true"
+              aria-live="polite"
               class="ant-spin ant-spin-spinning"
             >
               <span
@@ -231,7 +233,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 1`] = `
                             <div
                               class="ant-empty-description"
                             >
-                              No Data
+                              No data
                             </div>
                           </div>
                         </td>
@@ -271,7 +273,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 1`] = `
               class="ant-space-item"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span
@@ -313,6 +315,8 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 1`] = `
         >
           <div>
             <div
+              aria-busy="true"
+              aria-live="polite"
               class="ant-spin ant-spin-spinning"
             >
               <span
@@ -424,7 +428,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 1`] = `
                             <div
                               class="ant-empty-description"
                             >
-                              No Data
+                              No data
                             </div>
                           </div>
                         </td>
@@ -470,7 +474,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
               class="ant-space-item"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span
@@ -548,8 +552,32 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
         <div
           class="ant-spin-nested-loading"
         >
+          <div>
+            <div
+              aria-busy="true"
+              aria-live="polite"
+              class="ant-spin ant-spin-spinning"
+            >
+              <span
+                class="ant-spin-dot ant-spin-dot-spin"
+              >
+                <i
+                  class="ant-spin-dot-item"
+                />
+                <i
+                  class="ant-spin-dot-item"
+                />
+                <i
+                  class="ant-spin-dot-item"
+                />
+                <i
+                  class="ant-spin-dot-item"
+                />
+              </span>
+            </div>
+          </div>
           <div
-            class="ant-spin-container"
+            class="ant-spin-container ant-spin-blur"
           >
             <div
               class="ant-table"
@@ -750,7 +778,6 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
             </div>
             <ul
               class="ant-pagination ant-table-pagination ant-table-pagination-right"
-              unselectable="unselectable"
             >
               <li
                 aria-disabled="true"
@@ -831,6 +858,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                 class="ant-pagination-options"
               >
                 <div
+                  aria-label="Page Size"
                   class="ant-select ant-pagination-options-size-changer ant-select-single ant-select-show-arrow"
                 >
                   <div
@@ -843,7 +871,9 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                         aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
                         aria-autocomplete="list"
                         aria-controls="rc_select_TEST_OR_SSR_list"
+                        aria-expanded="false"
                         aria-haspopup="listbox"
+                        aria-label="Page Size"
                         aria-owns="rc_select_TEST_OR_SSR_list"
                         autocomplete="off"
                         class="ant-select-selection-search-input"
@@ -922,7 +952,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
               class="ant-space-item"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span
@@ -962,8 +992,32 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
         <div
           class="ant-spin-nested-loading"
         >
+          <div>
+            <div
+              aria-busy="true"
+              aria-live="polite"
+              class="ant-spin ant-spin-spinning"
+            >
+              <span
+                class="ant-spin-dot ant-spin-dot-spin"
+              >
+                <i
+                  class="ant-spin-dot-item"
+                />
+                <i
+                  class="ant-spin-dot-item"
+                />
+                <i
+                  class="ant-spin-dot-item"
+                />
+                <i
+                  class="ant-spin-dot-item"
+                />
+              </span>
+            </div>
+          </div>
           <div
-            class="ant-spin-container"
+            class="ant-spin-container ant-spin-blur"
           >
             <div
               class="ant-table ant-table-empty"
@@ -1053,7 +1107,7 @@ exports[`RuleTemplate/RuleTemplateList should match snapshot 2`] = `
                             <div
                               class="ant-empty-description"
                             >
-                              No Data
+                              No data
                             </div>
                           </div>
                         </td>

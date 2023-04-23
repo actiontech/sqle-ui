@@ -1,5 +1,4 @@
-import { waitFor } from '@testing-library/react';
-import { act, renderHook } from '@testing-library/react-hooks/dom';
+import { act as reactAct } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import task from '../../../../api/task';
 import workflow from '../../../../api/workflow';
@@ -12,6 +11,7 @@ import {
 } from '../../Detail/__testData__';
 import useAuditOrder from '../useAuditOrder';
 import { differenceSqlValues, sameSqlValues } from './test.data';
+import { act, renderHook } from '@testing-library/react-hooks';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -88,9 +88,7 @@ describe('test Order/hooks/useAuditOrder', () => {
       result.current.auditOrderWithSameSql(sameSqlValues);
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
 
     expect(createAuditTasksSpy).toBeCalledTimes(1);
     expect(createAuditTasksSpy).toBeCalledWith({
@@ -117,9 +115,7 @@ describe('test Order/hooks/useAuditOrder', () => {
       sql: 'SELECT (1)',
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
 
     expect(result.current.taskInfos).toEqual([taskInfo]);
 
@@ -127,9 +123,8 @@ describe('test Order/hooks/useAuditOrder', () => {
       taskInfo.task_id?.toString()
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
+
     expect(result.current.isDisableFinallySubmitButton).toBeFalsy();
     expect(result.current.disabledOperatorOrderBtnTips).toBe('');
 
@@ -144,20 +139,16 @@ describe('test Order/hooks/useAuditOrder', () => {
       result.current.auditOrderWithSameSql(sameSqlValues);
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
+
     expect(createAuditTasksSpy).toBeCalledTimes(2);
     expect(auditTasksGroupIdSpy).toBeCalledTimes(2);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
 
     expect(result.current.taskInfos).toEqual([taskInfoErrorAuditLevel]);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
+
     expect(result.current.auditResultActiveKey).toBe(
       taskInfoErrorAuditLevel.task_id?.toString()
     );
@@ -191,13 +182,11 @@ describe('test Order/hooks/useAuditOrder', () => {
       sql: 'SELECT (1)',
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
+
     expect(result.current.taskInfos).toEqual([taskInfo]);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
+
     expect(result.current.isDisableFinallySubmitButton).toBeFalsy();
     expect(result.current.disabledOperatorOrderBtnTips).toBe('');
 
@@ -215,17 +204,15 @@ describe('test Order/hooks/useAuditOrder', () => {
       sql: 'SELECT (2)',
       project_name: projectName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
+
     expect(result.current.taskInfos).toEqual([
       taskInfo,
       taskInfoErrorAuditLevel,
     ]);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
+
     expect(result.current.isDisableFinallySubmitButton).toBeTruthy();
     expect(result.current.disabledOperatorOrderBtnTips).toBe(
       'order.operator.disabledOperatorOrderBtnTips'
@@ -245,17 +232,15 @@ describe('test Order/hooks/useAuditOrder', () => {
       sql: 'SELECT (3)',
       project_name: projectName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
+
     expect(result.current.taskInfos).toEqual([
       taskInfo,
       taskInfoErrorAuditLevel,
       taskInfoWarnAuditLevel,
     ]);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
+
     expect(result.current.isDisableFinallySubmitButton).toBeTruthy();
     expect(result.current.disabledOperatorOrderBtnTips).toBe(
       'order.operator.disabledOperatorOrderBtnTips'
@@ -272,17 +257,15 @@ describe('test Order/hooks/useAuditOrder', () => {
       sql: 'SELECT (2)',
       project_name: projectName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
+
     expect(result.current.taskInfos).toEqual([
       taskInfo,
       taskInfoWarnAuditLevel,
       taskInfoWarnAuditLevel,
     ]);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await reactAct(async () => jest.advanceTimersByTime(3000));
+
     expect(result.current.isDisableFinallySubmitButton).toBeFalsy();
     expect(result.current.disabledOperatorOrderBtnTips).toBe('');
 

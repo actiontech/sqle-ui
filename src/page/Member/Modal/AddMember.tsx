@@ -66,7 +66,7 @@ const AddMember: React.FC = () => {
 
   return (
     <Modal
-      visible={modalVisibility}
+      open={modalVisibility}
       title={t('member.addMember.modalTitle')}
       closable={false}
       footer={

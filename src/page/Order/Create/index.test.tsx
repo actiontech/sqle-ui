@@ -1,4 +1,4 @@
-import { fireEvent, waitFor, screen } from '@testing-library/react';
+import { act, fireEvent, screen } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import CreateOrder, { workflowNameRule } from '.';
 import task from '../../../api/task';
@@ -9,7 +9,6 @@ import {
   selectOptionByIndex,
 } from '../../../testUtils/customQuery';
 import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
-import { mockUseDispatch, mockUseSelector } from '../../../testUtils/mockRedux';
 import {
   mockUseInstance,
   mockUseInstanceSchema,
@@ -24,6 +23,7 @@ import {
   taskInfoErrorAuditLevel,
   taskSqls,
 } from '../Detail/__testData__';
+import { useDispatch, useSelector } from 'react-redux';
 
 const orderDescMaxLength = 50;
 
@@ -39,13 +39,26 @@ jest.mock('react-router-dom', () => ({
 }));
 const projectName = 'default';
 
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
+
 describe('Order/Create', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
+  const dispatchSpy = jest.fn();
 
   beforeEach(() => {
     jest.useFakeTimers();
-    mockUseSelector({ user: { theme: SupportTheme.LIGHT } });
-    mockUseDispatch();
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { theme: SupportTheme.LIGHT },
+      })
+    );
     mockUseInstance();
     mockUseInstanceSchema();
     mockDriver();
@@ -125,31 +138,24 @@ describe('Order/Create', () => {
     );
     mockGetTaskSql();
     const { container } = renderWithThemeAndRouter(<CreateOrder />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.change(screen.getByLabelText('order.baseInfo.name'), {
       target: { value: '数据源测试' },
     });
 
     fireEvent.mouseDown(screen.getByLabelText('order.sqlInfo.instanceName'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     const instanceOptions = screen.getAllByText('instance1');
     const instance = instanceOptions[1];
     expect(instance).toHaveClass('ant-select-item-option-content');
     fireEvent.click(instance);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.mouseDown(screen.getByLabelText('order.sqlInfo.instanceSchema'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const schemaOptions = screen.getAllByText('schema1');
     const schema = schemaOptions[1];
     expect(instance).toHaveClass('ant-select-item-option-content');
@@ -160,12 +166,10 @@ describe('Order/Create', () => {
     });
 
     fireEvent.click(screen.getByText('order.sqlInfo.audit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(createAuditTasksSpy).toBeCalledTimes(1);
     expect(createAuditTasksSpy).toBeCalledWith({
       project_name: projectName,
@@ -183,14 +187,10 @@ describe('Order/Create', () => {
       sql: 'select * from table2',
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(getInstanceWorkflow).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
 
@@ -200,9 +200,8 @@ describe('Order/Create', () => {
       target: { value: 'select * from table5' },
     });
     fireEvent.click(screen.getByText('order.sqlInfo.audit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(createAndAuditTaskSpy).toBeCalledTimes(1);
     expect(createAndAuditTaskSpy).toBeCalledWith({
       project_name: projectName,
@@ -211,9 +210,7 @@ describe('Order/Create', () => {
       sql: 'select * from table5',
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
     dateSpy.mockRestore();
@@ -227,9 +224,7 @@ describe('Order/Create', () => {
 
     const createOrderSpy = mockCreateOrder();
     renderWithThemeAndRouter(<CreateOrder />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.input(screen.getByLabelText('order.baseInfo.name'), {
       target: { value: 'orderName' },
@@ -243,22 +238,18 @@ describe('Order/Create', () => {
     });
 
     fireEvent.mouseDown(screen.getByLabelText('order.sqlInfo.instanceName'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const instanceOptions = screen.getAllByText('instance1');
     const instance = instanceOptions[1];
     expect(instance).toHaveClass('ant-select-item-option-content');
     fireEvent.click(instance);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.mouseDown(screen.getByLabelText('order.sqlInfo.instanceSchema'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const schemaOptions = screen.getAllByText('schema1');
     const schema = schemaOptions[1];
     expect(instance).toHaveClass('ant-select-item-option-content');
@@ -269,31 +260,24 @@ describe('Order/Create', () => {
     });
 
     fireEvent.click(screen.getByText('order.createOrder.button'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(
-      screen.queryByText('order.createOrder.mustAuditTips')
+      screen.getByText('order.createOrder.mustAuditTips')
     ).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('order.sqlInfo.audit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByText('order.createOrder.button'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(createOrderSpy).toBeCalledTimes(1);
     expect(screen.getByText('order.createOrder.button').parentNode).toHaveClass(
       'ant-btn-loading'
@@ -304,9 +288,8 @@ describe('Order/Create', () => {
       workflow_subject: 'orderName',
       project_name: projectName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.getByText('order.createOrder.button').parentNode
     ).not.toHaveClass('ant-btn-loading');
@@ -328,9 +311,7 @@ describe('Order/Create', () => {
     mockGetInstanceWorkflowTemplate();
     mockGetTaskSql();
     renderWithThemeAndRouter(<CreateOrder />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.input(screen.getByLabelText('order.baseInfo.name'), {
       target: { value: 'orderName' },
@@ -340,22 +321,18 @@ describe('Order/Create', () => {
     });
 
     fireEvent.mouseDown(screen.getByLabelText('order.sqlInfo.instanceName'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const instanceOptions = screen.getAllByText('instance1');
     const instance = instanceOptions[1];
     expect(instance).toHaveClass('ant-select-item-option-content');
     fireEvent.click(instance);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.mouseDown(screen.getByLabelText('order.sqlInfo.instanceSchema'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const schemaOptions = screen.getAllByText('schema1');
     const schema = schemaOptions[1];
     expect(instance).toHaveClass('ant-select-item-option-content');
@@ -366,23 +343,19 @@ describe('Order/Create', () => {
     });
 
     fireEvent.click(screen.getByText('order.sqlInfo.audit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
       target: { value: 'select * from table3' },
     });
 
     fireEvent.click(screen.getByText('order.createOrder.button'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(
-      screen.queryByText('order.createOrder.dirtyDataTips')
+      screen.getByText('order.createOrder.dirtyDataTips')
     ).toBeInTheDocument();
   });
 
@@ -400,9 +373,8 @@ describe('Order/Create', () => {
     const getInstanceWorkflowTemplate = mockGetInstanceWorkflowTemplate();
     mockGetTaskSql();
     renderWithThemeAndRouter(<CreateOrder />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getInstanceWorkflowTemplate).toBeCalledTimes(0);
     expect(createAuditTasksSpy).toBeCalledTimes(0);
     expect(createOrderSpy).toBeCalledTimes(0);
@@ -412,33 +384,26 @@ describe('Order/Create', () => {
     });
 
     fireEvent.mouseDown(screen.getByLabelText('order.sqlInfo.instanceName'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const instanceOptions = screen.getAllByText('instance1');
     const instance = instanceOptions[1];
     fireEvent.click(instance);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
       target: { value: 'select * from table2' },
     });
 
     fireEvent.click(screen.getByText('order.sqlInfo.audit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getInstanceWorkflowTemplate).toBeCalledTimes(1);
     expect(createAuditTasksSpy).toBeCalledTimes(1);
     expect(auditTasksGroupIdSpy).toBeCalledTimes(1);
@@ -448,9 +413,8 @@ describe('Order/Create', () => {
     ).toBeDisabled();
 
     fireEvent.click(screen.getByText('order.createOrder.button'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(createOrderSpy).toBeCalledTimes(0);
 
     fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
@@ -467,18 +431,13 @@ describe('Order/Create', () => {
       })
     );
     fireEvent.click(screen.getByText('order.sqlInfo.audit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
     expect(
       screen.getByText('order.createOrder.button').closest('button')
     ).not.toBeDisabled();
@@ -501,85 +460,59 @@ describe('Order/Create', () => {
       resolveThreeSecond(taskSqls, { otherData: { total_nums: 0 } })
     );
     renderWithThemeAndRouter(<CreateOrder />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.input(screen.getByLabelText('order.baseInfo.name'), {
       target: { value: 'orderName' },
     });
 
     fireEvent.mouseDown(screen.getByLabelText('order.sqlInfo.instanceName'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const instanceOptions = screen.getAllByText('instance1');
     const instance = instanceOptions[1];
     fireEvent.click(instance);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
       target: { value: 'select * from table2' },
     });
 
     fireEvent.click(screen.getByText('order.sqlInfo.audit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByText('order.createOrder.button'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(createOrderSpy).toBeCalledTimes(0);
 
     fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
       target: { value: 'select * from table3' },
     });
     fireEvent.click(screen.getByText('order.sqlInfo.audit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('order.createOrder.button'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(createOrderSpy).toBeCalledTimes(0);
     expect(
-      screen.queryByText('order.createOrder.mustHaveAuditResultTips')
+      screen.getByText('order.createOrder.mustHaveAuditResultTips')
     ).toBeInTheDocument();
   });
 
   test('should generate order name after user select a data source when user do not input order name', async () => {
     renderWithThemeAndRouter(<CreateOrder />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     selectOptionByIndex('order.sqlInfo.instanceName', 'instance1', 1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.getByLabelText('order.baseInfo.name')).toHaveValue(
       'instance1_19700101010101'
@@ -592,35 +525,35 @@ describe('Order/Create', () => {
     try {
       await check({} as any, '测试数据源', {} as any);
     } catch (error) {
-      message = error;
+      message = error as any as string;
     }
     expect(message).toBe('');
 
     try {
       await check({} as any, 'orderName', {} as any);
     } catch (error) {
-      message = error;
+      message = error as any as string;
     }
     expect(message).toBe('');
 
     try {
       await check({} as any, '123456', {} as any);
     } catch (error) {
-      message = error;
+      message = error as any as string;
     }
     expect(message).toBe('');
 
     try {
       await check({} as any, '测试数据源_123456-orderName', {} as any);
     } catch (error) {
-      message = error;
+      message = error as any as string;
     }
     expect(message).toBe('');
 
     try {
       await check({} as any, '测试数据源_123456-orderName*', {} as any);
     } catch (error) {
-      message = error;
+      message = error as any as string;
     }
     expect(message).toBe('order.createOrder.workflowNameRule');
   });

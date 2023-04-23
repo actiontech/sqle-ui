@@ -1,9 +1,6 @@
 import UpdateWhitelist from '.';
-import { cleanup, fireEvent, screen, waitFor } from '@testing-library/react';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../../testUtils/mockRedux';
+import { cleanup, fireEvent, screen, act } from '@testing-library/react';
+
 import { SupportTheme } from '../../../../../theme';
 import { ModalName } from '../../../../../data/ModalName';
 import { renderWithTheme } from '../../../../../testUtils/customRender';
@@ -14,12 +11,21 @@ import EmitterKey from '../../../../../data/EmitterKey';
 import { WhitelistData } from '../../../__testData__';
 import { UpdateAuditWhitelistReqV1MatchTypeEnum } from '../../../../../api/common.enum';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn(),
 }));
 const projectName = 'default';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 // https://github.com/react-monaco-editor/react-monaco-editor/issues/176
 jest.mock('react-monaco-editor', () => {
@@ -30,21 +36,24 @@ jest.mock('react-monaco-editor', () => {
 });
 
 describe('Whitelist/WhitelistList/Modal/UpdateWhitelist', () => {
-  let dispatchMock: jest.Mock;
   const useParamsMock: jest.Mock = useParams as jest.Mock;
+  const dispatchMock = jest.fn();
 
   beforeEach(() => {
     jest.useFakeTimers();
-    mockUseSelector({
-      user: { theme: SupportTheme.LIGHT },
-      whitelist: {
-        modalStatus: { [ModalName.Update_Whitelist]: true },
-        selectWhitelist: WhitelistData[0],
-      },
-    });
+
     useParamsMock.mockReturnValue({ projectName });
-    const { scopeDispatch } = mockUseDispatch();
-    dispatchMock = scopeDispatch;
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { theme: SupportTheme.LIGHT },
+        whitelist: {
+          modalStatus: { [ModalName.Update_Whitelist]: true },
+          selectWhitelist: WhitelistData[0],
+        },
+      })
+    );
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchMock);
   });
 
   afterEach(() => {
@@ -61,10 +70,13 @@ describe('Whitelist/WhitelistList/Modal/UpdateWhitelist', () => {
     );
     expect(baseElement).toMatchSnapshot();
     cleanup();
-    mockUseSelector({
-      user: { theme: SupportTheme.LIGHT },
-      whitelist: { modalStatus: { [ModalName.Update_Whitelist]: false } },
-    });
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { theme: SupportTheme.LIGHT },
+        whitelist: { modalStatus: { [ModalName.Update_Whitelist]: false } },
+      })
+    );
     const { baseElement: closedContainer } = renderWithTheme(
       <UpdateWhitelist />
     );
@@ -105,9 +117,7 @@ describe('Whitelist/WhitelistList/Modal/UpdateWhitelist', () => {
 
     fireEvent.click(screen.getByText('common.submit'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(createAuditWhitelistSpy).toBeCalledTimes(1);
     expect(createAuditWhitelistSpy).toBeCalledWith({
@@ -118,9 +128,7 @@ describe('Whitelist/WhitelistList/Modal/UpdateWhitelist', () => {
       project_name: projectName,
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(emitSpy).toBeCalledTimes(1);
     expect(emitSpy).toBeCalledWith(EmitterKey.Refresh_Whitelist_List);

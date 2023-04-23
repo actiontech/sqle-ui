@@ -18,8 +18,8 @@ const AuditPlanReport: React.FC = () => {
   const { data: reportInfo } = useRequest(() =>
     audit_plan
       .getAuditPlanReportV1({
-        audit_plan_report_id: urlParams.reportId,
-        audit_plan_name: urlParams.auditPlanName,
+        audit_plan_report_id: urlParams.reportId ?? '',
+        audit_plan_name: urlParams.auditPlanName ?? '',
         project_name: projectName,
       })
       .then((res) => res.data?.data ?? {})
@@ -30,8 +30,8 @@ const AuditPlanReport: React.FC = () => {
       audit_plan
         .getAuditPlanReportsSQLsV1({
           project_name: projectName,
-          audit_plan_name: urlParams.auditPlanName,
-          audit_plan_report_id: urlParams.reportId,
+          audit_plan_name: urlParams.auditPlanName ?? '',
+          audit_plan_report_id: urlParams.reportId ?? '',
           page_index: pagination.pageIndex,
           page_size: pagination.pageSize,
         })

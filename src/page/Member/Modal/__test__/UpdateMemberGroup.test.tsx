@@ -1,11 +1,8 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../testUtils/mockRedux';
+
 import {
   mockUseInstance,
   mockUseRole,
@@ -15,16 +12,25 @@ import EventEmitter from '../../../../utils/EventEmitter';
 import { mockMemberGroupList } from '../../MemberGroupList/__test__/utils';
 import UpdateMemberGroup from '../UpdateMemberGroup';
 import { mockUpdateMemberGroup } from './utils';
+import { useDispatch, useSelector } from 'react-redux';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn(),
 }));
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 const projectName = 'default';
 
 describe('test UpdateMemberGroup', () => {
   let updateMemberGroupSpy: jest.SpyInstance;
-  let dispatchSpy: jest.SpyInstance;
+  const dispatchSpy = jest.fn();
+
   const emitSpy = jest.spyOn(EventEmitter, 'emit');
 
   const useParamsMock: jest.Mock = useParams as jest.Mock;
@@ -35,16 +41,17 @@ describe('test UpdateMemberGroup', () => {
     mockUseInstance();
     updateMemberGroupSpy = mockUpdateMemberGroup();
     useParamsMock.mockReturnValue({ projectName });
-
-    dispatchSpy = mockUseDispatch().scopeDispatch;
-    mockUseSelector({
-      member: {
-        modalStatus: {
-          [ModalName.Update_Member_Group]: true,
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        member: {
+          modalStatus: {
+            [ModalName.Update_Member_Group]: true,
+          },
+          selectMemberGroup: mockMemberGroupList[0],
         },
-        selectMemberGroup: mockMemberGroupList[0],
-      },
-    });
+      })
+    );
     jest.useFakeTimers();
   });
 
@@ -61,17 +68,14 @@ describe('test UpdateMemberGroup', () => {
 
   test('should call update member group request when clicking submit button', async () => {
     render(<UpdateMemberGroup />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(updateMemberGroupSpy).toBeCalledTimes(0);
     expect(dispatchSpy).toBeCalledTimes(0);
     expect(emitSpy).toBeCalledTimes(0);
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(screen.getByText('common.close').closest('button')).toBeDisabled();
     expect(screen.getByText('common.submit').closest('button')).toHaveClass(
@@ -85,11 +89,10 @@ describe('test UpdateMemberGroup', () => {
       user_group_name: mockMemberGroupList[0].user_group_name,
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText('member.updateMemberGroup.successTips')
+      screen.getByText('member.updateMemberGroup.successTips')
     ).toBeInTheDocument();
     expect(dispatchSpy).toBeCalledTimes(1);
     expect(dispatchSpy).toBeCalledWith({
@@ -107,9 +110,8 @@ describe('test UpdateMemberGroup', () => {
     expect(screen.getByText('common.submit').closest('button')).not.toHaveClass(
       'ant-btn-loading'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('member.updateMemberGroup.successTips')
     ).not.toBeInTheDocument();
@@ -117,9 +119,8 @@ describe('test UpdateMemberGroup', () => {
 
   test('should clear form and dispatch "updateMemberModalStatus" when clicking close button', async () => {
     render(<UpdateMemberGroup />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(dispatchSpy).toBeCalledTimes(0);
 
     expect(

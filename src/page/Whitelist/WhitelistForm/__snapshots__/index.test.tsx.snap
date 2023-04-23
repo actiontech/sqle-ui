@@ -6,140 +6,153 @@ exports[`Whitelist/WhitelistForm should match snapshot 1`] = `
     class="ant-form ant-form-horizontal"
   >
     <div
-      class="ant-row ant-form-item"
+      class="ant-form-item"
     >
       <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class=""
-          for="matchType"
-          title="whitelist.table.matchType"
-        >
-          whitelist.table.matchType
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class=""
+            for="matchType"
+            title="whitelist.table.matchType"
+          >
+            whitelist.table.matchType
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
         >
           <div
-            class="ant-form-item-control-input-content"
+            class="ant-form-item-control-input"
           >
             <div
-              class="ant-radio-group ant-radio-group-outline"
-              id="matchType"
+              class="ant-form-item-control-input-content"
             >
-              <label
-                class="ant-radio-wrapper ant-radio-wrapper-checked"
+              <div
+                class="ant-radio-group ant-radio-group-outline"
+                id="matchType"
               >
-                <span
-                  class="ant-radio ant-radio-checked"
+                <label
+                  class="ant-radio-wrapper ant-radio-wrapper-checked ant-radio-wrapper-in-form-item"
                 >
-                  <input
-                    checked=""
-                    class="ant-radio-input"
-                    type="radio"
-                    value="exact_match"
-                  />
                   <span
-                    class="ant-radio-inner"
-                  />
-                </span>
-                <span>
-                  whitelist.matchType.exact
-                </span>
-              </label>
-              <label
-                class="ant-radio-wrapper"
-              >
-                <span
-                  class="ant-radio"
+                    class="ant-radio ant-radio-checked"
+                  >
+                    <input
+                      checked=""
+                      class="ant-radio-input"
+                      type="radio"
+                      value="exact_match"
+                    />
+                    <span
+                      class="ant-radio-inner"
+                    />
+                  </span>
+                  <span>
+                    whitelist.matchType.exact
+                  </span>
+                </label>
+                <label
+                  class="ant-radio-wrapper ant-radio-wrapper-in-form-item"
                 >
-                  <input
-                    class="ant-radio-input"
-                    type="radio"
-                    value="fp_match"
-                  />
                   <span
-                    class="ant-radio-inner"
-                  />
-                </span>
-                <span>
-                  whitelist.matchType.fingerPrint
-                </span>
-              </label>
+                    class="ant-radio"
+                  >
+                    <input
+                      class="ant-radio-input"
+                      type="radio"
+                      value="fp_match"
+                    />
+                    <span
+                      class="ant-radio-inner"
+                    />
+                  </span>
+                  <span>
+                    whitelist.matchType.fingerPrint
+                  </span>
+                </label>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="ant-row ant-form-item"
+      class="ant-form-item"
     >
       <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class=""
-          for="desc"
-          title="whitelist.table.desc"
-        >
-          whitelist.table.desc
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class=""
+            for="desc"
+            title="whitelist.table.desc"
+          >
+            whitelist.table.desc
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
         >
           <div
-            class="ant-form-item-control-input-content"
+            class="ant-form-item-control-input"
           >
-            <textarea
-              class="ant-input textarea-no-resize"
-              id="desc"
-              placeholder="common.form.placeholder.input"
-              style="height: -40px; min-height: -12px; max-height: -40px; overflow-y: hidden; resize: none; overflow-x: hidden;"
-            />
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <textarea
+                class="ant-input textarea-no-resize"
+                id="desc"
+                placeholder="common.form.placeholder.input"
+                style="height: -40px; resize: none; min-height: -12px; max-height: -40px;"
+              />
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="ant-row ant-form-item"
+      class="ant-form-item"
     >
       <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class="ant-form-item-required"
-          for="sql"
-          title="order.sqlInfo.sql"
-        >
-          order.sqlInfo.sql
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control makeStyles-editor-2 ant-col-xs-24 ant-col-sm-13"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class="ant-form-item-required"
+            for="sql"
+            title="order.sqlInfo.sql"
+          >
+            order.sqlInfo.sql
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control makeStyles-editor-2 ant-col-xs-24 ant-col-sm-13"
         >
           <div
-            class="ant-form-item-control-input-content"
+            class="ant-form-item-control-input"
           >
-            <input
-              height="500"
-              id="sql"
-              language="sql"
-              theme="vs"
-              value="/* input your sql */"
-              width="100%"
-            />
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <input
+                aria-required="true"
+                height="500"
+                id="sql"
+                language="sql"
+                theme="vs"
+                value="/* input your sql */"
+                width="100%"
+              />
+            </div>
           </div>
         </div>
       </div>

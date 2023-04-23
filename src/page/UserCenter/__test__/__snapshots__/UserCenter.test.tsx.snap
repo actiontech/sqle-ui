@@ -51,6 +51,7 @@ exports[`first should be rendered UserManage page when it first entered the user
                 >
                   <div
                     class="ant-tabs-tab ant-tabs-tab-active"
+                    data-node-key="user"
                   >
                     <div
                       aria-controls="rc-tabs-test-panel-user"
@@ -65,6 +66,7 @@ exports[`first should be rendered UserManage page when it first entered the user
                   </div>
                   <div
                     class="ant-tabs-tab"
+                    data-node-key="role"
                   >
                     <div
                       aria-controls="rc-tabs-test-panel-role"
@@ -79,6 +81,7 @@ exports[`first should be rendered UserManage page when it first entered the user
                   </div>
                   <div
                     class="ant-tabs-tab"
+                    data-node-key="userGroup"
                   >
                     <div
                       aria-controls="rc-tabs-test-panel-userGroup"
@@ -172,7 +175,7 @@ exports[`first should be rendered UserManage page when it first entered the user
                               class="ant-space-item"
                             >
                               <button
-                                class="ant-btn"
+                                class="ant-btn ant-btn-default"
                                 type="button"
                               >
                                 <span
@@ -227,83 +230,87 @@ exports[`first should be rendered UserManage page when it first entered the user
                             style="padding-left: 12px; padding-right: 12px;"
                           >
                             <div
-                              class="ant-row ant-form-item"
+                              class="ant-form-item"
                             >
                               <div
-                                class="ant-col ant-form-item-label"
-                              >
-                                <label
-                                  class=""
-                                  for="filter_user_name"
-                                  title="user.userForm.username"
-                                >
-                                  user.userForm.username
-                                </label>
-                              </div>
-                              <div
-                                class="ant-col ant-form-item-control"
+                                class="ant-row ant-form-item-row"
                               >
                                 <div
-                                  class="ant-form-item-control-input"
+                                  class="ant-col ant-form-item-label"
+                                >
+                                  <label
+                                    class=""
+                                    for="filter_user_name"
+                                    title="user.userForm.username"
+                                  >
+                                    user.userForm.username
+                                  </label>
+                                </div>
+                                <div
+                                  class="ant-col ant-form-item-control"
                                 >
                                   <div
-                                    class="ant-form-item-control-input-content"
+                                    class="ant-form-item-control-input"
                                   >
                                     <div
-                                      class="ant-select ant-select-single ant-select-show-arrow ant-select-show-search"
+                                      class="ant-form-item-control-input-content"
                                     >
                                       <div
-                                        class="ant-select-selector"
+                                        class="ant-select ant-select-in-form-item ant-select-single ant-select-show-arrow ant-select-show-search"
                                       >
-                                        <span
-                                          class="ant-select-selection-search"
+                                        <div
+                                          class="ant-select-selector"
                                         >
-                                          <input
-                                            aria-activedescendant="filter_user_name_list_0"
-                                            aria-autocomplete="list"
-                                            aria-controls="filter_user_name_list"
-                                            aria-haspopup="listbox"
-                                            aria-owns="filter_user_name_list"
-                                            autocomplete="off"
-                                            class="ant-select-selection-search-input"
-                                            id="filter_user_name"
-                                            role="combobox"
-                                            type="search"
-                                            value=""
-                                          />
-                                        </span>
+                                          <span
+                                            class="ant-select-selection-search"
+                                          >
+                                            <input
+                                              aria-activedescendant="filter_user_name_list_0"
+                                              aria-autocomplete="list"
+                                              aria-controls="filter_user_name_list"
+                                              aria-haspopup="listbox"
+                                              aria-owns="filter_user_name_list"
+                                              autocomplete="off"
+                                              class="ant-select-selection-search-input"
+                                              id="filter_user_name"
+                                              role="combobox"
+                                              type="search"
+                                              value=""
+                                            />
+                                          </span>
+                                          <span
+                                            class="ant-select-selection-placeholder"
+                                          >
+                                            user.userListFilter.usernamePlaceholder
+                                          </span>
+                                        </div>
                                         <span
-                                          class="ant-select-selection-placeholder"
+                                          aria-hidden="true"
+                                          class="ant-select-arrow"
+                                          style="user-select: none;"
+                                          unselectable="on"
                                         >
-                                          user.userListFilter.usernamePlaceholder
+                                          <span
+                                            aria-label="down"
+                                            class="anticon anticon-down ant-select-suffix"
+                                            role="img"
+                                          >
+                                            <svg
+                                              aria-hidden="true"
+                                              data-icon="down"
+                                              fill="currentColor"
+                                              focusable="false"
+                                              height="1em"
+                                              viewBox="64 64 896 896"
+                                              width="1em"
+                                            >
+                                              <path
+                                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                                              />
+                                            </svg>
+                                          </span>
                                         </span>
                                       </div>
-                                      <span
-                                        aria-hidden="true"
-                                        class="ant-select-arrow"
-                                        style="user-select: none;"
-                                        unselectable="on"
-                                      >
-                                        <span
-                                          aria-label="down"
-                                          class="anticon anticon-down ant-select-suffix"
-                                          role="img"
-                                        >
-                                          <svg
-                                            aria-hidden="true"
-                                            data-icon="down"
-                                            fill="currentColor"
-                                            focusable="false"
-                                            height="1em"
-                                            viewBox="64 64 896 896"
-                                            width="1em"
-                                          >
-                                            <path
-                                              d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                                            />
-                                          </svg>
-                                        </span>
-                                      </span>
                                     </div>
                                   </div>
                                 </div>
@@ -315,44 +322,48 @@ exports[`first should be rendered UserManage page when it first entered the user
                             style="padding-left: 12px; padding-right: 12px;"
                           >
                             <div
-                              class="ant-row ant-form-item clear-margin-right"
+                              class="ant-form-item clear-margin-right"
                             >
                               <div
-                                class="ant-col ant-form-item-control"
+                                class="ant-row ant-form-item-row"
                               >
                                 <div
-                                  class="ant-form-item-control-input"
+                                  class="ant-col ant-form-item-control"
                                 >
                                   <div
-                                    class="ant-form-item-control-input-content"
+                                    class="ant-form-item-control-input"
                                   >
                                     <div
-                                      class="ant-space ant-space-horizontal ant-space-align-center"
+                                      class="ant-form-item-control-input-content"
                                     >
                                       <div
-                                        class="ant-space-item"
-                                        style="margin-right: 8px;"
+                                        class="ant-space ant-space-horizontal ant-space-align-center"
                                       >
-                                        <button
-                                          class="ant-btn"
-                                          type="button"
+                                        <div
+                                          class="ant-space-item"
+                                          style="margin-right: 8px;"
                                         >
-                                          <span>
-                                            common.reset
-                                          </span>
-                                        </button>
-                                      </div>
-                                      <div
-                                        class="ant-space-item"
-                                      >
-                                        <button
-                                          class="ant-btn ant-btn-primary"
-                                          type="submit"
+                                          <button
+                                            class="ant-btn ant-btn-default"
+                                            type="button"
+                                          >
+                                            <span>
+                                              common.reset
+                                            </span>
+                                          </button>
+                                        </div>
+                                        <div
+                                          class="ant-space-item"
                                         >
-                                          <span>
-                                            common.search
-                                          </span>
-                                        </button>
+                                          <button
+                                            class="ant-btn ant-btn-primary"
+                                            type="submit"
+                                          >
+                                            <span>
+                                              common.search
+                                            </span>
+                                          </button>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
@@ -368,8 +379,32 @@ exports[`first should be rendered UserManage page when it first entered the user
                         <div
                           class="ant-spin-nested-loading"
                         >
+                          <div>
+                            <div
+                              aria-busy="true"
+                              aria-live="polite"
+                              class="ant-spin ant-spin-spinning"
+                            >
+                              <span
+                                class="ant-spin-dot ant-spin-dot-spin"
+                              >
+                                <i
+                                  class="ant-spin-dot-item"
+                                />
+                                <i
+                                  class="ant-spin-dot-item"
+                                />
+                                <i
+                                  class="ant-spin-dot-item"
+                                />
+                                <i
+                                  class="ant-spin-dot-item"
+                                />
+                              </span>
+                            </div>
+                          </div>
                           <div
-                            class="ant-spin-container"
+                            class="ant-spin-container ant-spin-blur"
                           >
                             <div
                               class="ant-table"
@@ -477,9 +512,7 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         </td>
                                         <td
                                           class="ant-table-cell"
-                                        >
-                                          
-                                        </td>
+                                        />
                                         <td
                                           class="ant-table-cell"
                                         >
@@ -540,9 +573,7 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         />
                                         <td
                                           class="ant-table-cell"
-                                        >
-                                          
-                                        </td>
+                                        />
                                         <td
                                           class="ant-table-cell"
                                         >
@@ -617,9 +648,7 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         </td>
                                         <td
                                           class="ant-table-cell"
-                                        >
-                                          
-                                        </td>
+                                        />
                                         <td
                                           class="ant-table-cell"
                                         >
@@ -716,9 +745,7 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         />
                                         <td
                                           class="ant-table-cell"
-                                        >
-                                          
-                                        </td>
+                                        />
                                         <td
                                           class="ant-table-cell"
                                         >
@@ -793,9 +820,7 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         </td>
                                         <td
                                           class="ant-table-cell"
-                                        >
-                                          
-                                        </td>
+                                        />
                                         <td
                                           class="ant-table-cell"
                                         >
@@ -898,9 +923,7 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         </td>
                                         <td
                                           class="ant-table-cell"
-                                        >
-                                          
-                                        </td>
+                                        />
                                         <td
                                           class="ant-table-cell"
                                         >
@@ -980,9 +1003,7 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         </td>
                                         <td
                                           class="ant-table-cell"
-                                        >
-                                          
-                                        </td>
+                                        />
                                         <td
                                           class="ant-table-cell"
                                         >
@@ -1085,9 +1106,7 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         </td>
                                         <td
                                           class="ant-table-cell"
-                                        >
-                                          
-                                        </td>
+                                        />
                                         <td
                                           class="ant-table-cell"
                                         >
@@ -1156,9 +1175,7 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         />
                                         <td
                                           class="ant-table-cell"
-                                        >
-                                          
-                                        </td>
+                                        />
                                         <td
                                           class="ant-table-cell"
                                         >
@@ -1261,9 +1278,7 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         </td>
                                         <td
                                           class="ant-table-cell"
-                                        >
-                                          
-                                        </td>
+                                        />
                                         <td
                                           class="ant-table-cell"
                                         >
@@ -1303,7 +1318,6 @@ exports[`first should be rendered UserManage page when it first entered the user
                             </div>
                             <ul
                               class="ant-pagination ant-table-pagination ant-table-pagination-right"
-                              unselectable="unselectable"
                             >
                               <li
                                 aria-disabled="true"
@@ -1395,6 +1409,7 @@ exports[`first should be rendered UserManage page when it first entered the user
                                 class="ant-pagination-options"
                               >
                                 <div
+                                  aria-label="Page Size"
                                   class="ant-select ant-pagination-options-size-changer ant-select-single ant-select-show-arrow"
                                 >
                                   <div
@@ -1407,7 +1422,9 @@ exports[`first should be rendered UserManage page when it first entered the user
                                         aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
                                         aria-autocomplete="list"
                                         aria-controls="rc_select_TEST_OR_SSR_list"
+                                        aria-expanded="false"
                                         aria-haspopup="listbox"
+                                        aria-label="Page Size"
                                         aria-owns="rc_select_TEST_OR_SSR_list"
                                         autocomplete="off"
                                         class="ant-select-selection-search-input"
@@ -1462,24 +1479,6 @@ exports[`first should be rendered UserManage page when it first entered the user
                     </div>
                   </div>
                 </div>
-                <div
-                  aria-hidden="true"
-                  aria-labelledby="rc-tabs-test-tab-role"
-                  class="ant-tabs-tabpane"
-                  id="rc-tabs-test-panel-role"
-                  role="tabpanel"
-                  style="display: none;"
-                  tabindex="-1"
-                />
-                <div
-                  aria-hidden="true"
-                  aria-labelledby="rc-tabs-test-tab-userGroup"
-                  class="ant-tabs-tabpane"
-                  id="rc-tabs-test-panel-userGroup"
-                  role="tabpanel"
-                  style="display: none;"
-                  tabindex="-1"
-                />
               </div>
             </div>
           </div>

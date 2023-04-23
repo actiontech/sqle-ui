@@ -4,7 +4,6 @@ import './index.less';
 import { Button, Checkbox, Form, Input, message, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
 import logo from '../../assets/img/logo.png';
-import { useHistory } from 'react-router';
 import { updateToken } from '../../store/user';
 import { useDispatch, useSelector } from 'react-redux';
 import user from '../../api/user';
@@ -21,9 +20,10 @@ import leftBg from '../../assets/img/login-left-bg.png';
 import { useLocation } from 'react-router-dom';
 import { getCookie } from '../../utils/Common';
 import { IReduxState } from '../../store';
+import useNavigate from '../../hooks/useNavigate';
 
 const Login = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const location = useLocation();
@@ -53,14 +53,12 @@ const Login = () => {
           const target = params.get(SQLE_REDIRECT_KEY_PARAMS_NAME);
           if (target) {
             if (target === '/sqlQuery') {
-              history.push(
-                `/sqlQuery?${OPEN_CLOUD_BEAVER_URL_PARAM_NAME}=true`
-              );
+              navigate(`sqlQuery?${OPEN_CLOUD_BEAVER_URL_PARAM_NAME}=true`);
             } else {
-              history.push(target);
+              navigate(target);
             }
           } else {
-            history.push('/');
+            navigate('home');
           }
         }
       });

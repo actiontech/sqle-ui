@@ -1,4 +1,10 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react';
 import { message } from 'antd';
 import { shallow } from 'enzyme';
 import user from '../../../api/user';
@@ -39,7 +45,7 @@ describe('test Account/UserPhone', () => {
     expect(textWrapper.prop('hidden')).toBe(false);
     expect(editWrapper.prop('hidden')).toBe(true);
 
-    const editIcon = wrapper.find('ForwardRef(Link)');
+    const editIcon = wrapper.find('ForwardRef(EditOutlined)');
     editIcon.simulate('click');
     wrapper.update();
 
@@ -149,10 +155,8 @@ describe('test Account/UserPhone', () => {
     expect(requestSpy).toBeCalledTimes(1);
     expect(requestSpy).toBeCalledWith({ phone: '12312341235' });
 
-    await waitFor(() => jest.advanceTimersByTime(3000));
-    expect(
-      screen.queryByText('account.updatePhoneSuccess')
-    ).toBeInTheDocument();
+    await act(async () => jest.advanceTimersByTime(3000));
+    expect(screen.getByText('account.updatePhoneSuccess')).toBeInTheDocument();
     expect(refreshUserInfoMock).toBeCalledTimes(1);
     expect(
       getBySelector('.ant-input-affix-wrapper').parentNode

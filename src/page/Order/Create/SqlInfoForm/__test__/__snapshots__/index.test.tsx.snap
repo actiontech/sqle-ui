@@ -12,83 +12,89 @@ exports[`order/create/sqlInfoForm should match snapshot 1`] = `
         class="ant-col ant-col-12"
       >
         <div
-          class="ant-row ant-form-item"
+          class="ant-form-item"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-16"
-          >
-            <label
-              class="ant-form-item-required"
-              for="dataBaseInfo_0_instanceName"
-              title="order.sqlInfo.instanceName"
-            >
-              order.sqlInfo.instanceName
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-8"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-16"
+            >
+              <label
+                class="ant-form-item-required"
+                for="dataBaseInfo_0_instanceName"
+                title="order.sqlInfo.instanceName"
+              >
+                order.sqlInfo.instanceName
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-8"
             >
               <div
-                class="ant-form-item-control-input-content"
+                class="ant-form-item-control-input"
               >
                 <div
-                  class="ant-select ant-select-single ant-select-show-arrow ant-select-show-search"
+                  class="ant-form-item-control-input-content"
                 >
                   <div
-                    class="ant-select-selector"
+                    aria-required="true"
+                    class="ant-select ant-select-in-form-item ant-select-single ant-select-show-arrow ant-select-show-search"
                   >
-                    <span
-                      class="ant-select-selection-search"
+                    <div
+                      class="ant-select-selector"
                     >
-                      <input
-                        aria-activedescendant="dataBaseInfo_0_instanceName_list_0"
-                        aria-autocomplete="list"
-                        aria-controls="dataBaseInfo_0_instanceName_list"
-                        aria-haspopup="listbox"
-                        aria-owns="dataBaseInfo_0_instanceName_list"
-                        autocomplete="off"
-                        class="ant-select-selection-search-input"
-                        id="dataBaseInfo_0_instanceName"
-                        role="combobox"
-                        type="search"
-                        value=""
-                      />
-                    </span>
+                      <span
+                        class="ant-select-selection-search"
+                      >
+                        <input
+                          aria-activedescendant="dataBaseInfo_0_instanceName_list_0"
+                          aria-autocomplete="list"
+                          aria-controls="dataBaseInfo_0_instanceName_list"
+                          aria-haspopup="listbox"
+                          aria-owns="dataBaseInfo_0_instanceName_list"
+                          aria-required="true"
+                          autocomplete="off"
+                          class="ant-select-selection-search-input"
+                          id="dataBaseInfo_0_instanceName"
+                          role="combobox"
+                          type="search"
+                          value=""
+                        />
+                      </span>
+                      <span
+                        class="ant-select-selection-placeholder"
+                      >
+                        common.form.placeholder.select
+                      </span>
+                    </div>
                     <span
-                      class="ant-select-selection-placeholder"
+                      aria-hidden="true"
+                      class="ant-select-arrow"
+                      style="user-select: none;"
+                      unselectable="on"
                     >
-                      common.form.placeholder.select
+                      <span
+                        aria-label="down"
+                        class="anticon anticon-down ant-select-suffix"
+                        role="img"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="down"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                          />
+                        </svg>
+                      </span>
                     </span>
                   </div>
-                  <span
-                    aria-hidden="true"
-                    class="ant-select-arrow"
-                    style="user-select: none;"
-                    unselectable="on"
-                  >
-                    <span
-                      aria-label="down"
-                      class="anticon anticon-down ant-select-suffix"
-                      role="img"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="down"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
-                      >
-                        <path
-                          d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
                 </div>
               </div>
             </div>
@@ -107,85 +113,89 @@ exports[`order/create/sqlInfoForm should match snapshot 1`] = `
             style="padding-left: 4px; padding-right: 4px;"
           >
             <div
-              class="ant-row ant-form-item"
+              class="ant-form-item"
             >
               <div
-                class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-              >
-                <label
-                  class=""
-                  for="dataBaseInfo_0_instanceSchema"
-                  title="order.sqlInfo.instanceSchema"
-                >
-                  order.sqlInfo.instanceSchema
-                </label>
-              </div>
-              <div
-                class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-24 ant-col-md-24"
+                class="ant-row ant-form-item-row"
               >
                 <div
-                  class="ant-form-item-control-input"
+                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                >
+                  <label
+                    class=""
+                    for="dataBaseInfo_0_instanceSchema"
+                    title="order.sqlInfo.instanceSchema"
+                  >
+                    order.sqlInfo.instanceSchema
+                  </label>
+                </div>
+                <div
+                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-24 ant-col-md-24"
                 >
                   <div
-                    class="ant-form-item-control-input-content"
+                    class="ant-form-item-control-input"
                   >
                     <div
-                      class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-disabled ant-select-show-search"
+                      class="ant-form-item-control-input-content"
                     >
                       <div
-                        class="ant-select-selector"
+                        class="ant-select ant-select-in-form-item ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-disabled ant-select-show-search"
                       >
-                        <span
-                          class="ant-select-selection-search"
+                        <div
+                          class="ant-select-selector"
                         >
-                          <input
-                            aria-activedescendant="dataBaseInfo_0_instanceSchema_list_0"
-                            aria-autocomplete="list"
-                            aria-controls="dataBaseInfo_0_instanceSchema_list"
-                            aria-expanded="false"
-                            aria-haspopup="listbox"
-                            aria-owns="dataBaseInfo_0_instanceSchema_list"
-                            autocomplete="off"
-                            class="ant-select-selection-search-input"
-                            disabled=""
-                            id="dataBaseInfo_0_instanceSchema"
-                            role="combobox"
-                            type="search"
-                            value=""
-                          />
-                        </span>
+                          <span
+                            class="ant-select-selection-search"
+                          >
+                            <input
+                              aria-activedescendant="dataBaseInfo_0_instanceSchema_list_0"
+                              aria-autocomplete="list"
+                              aria-controls="dataBaseInfo_0_instanceSchema_list"
+                              aria-expanded="false"
+                              aria-haspopup="listbox"
+                              aria-owns="dataBaseInfo_0_instanceSchema_list"
+                              autocomplete="off"
+                              class="ant-select-selection-search-input"
+                              disabled=""
+                              id="dataBaseInfo_0_instanceSchema"
+                              role="combobox"
+                              type="search"
+                              value=""
+                            />
+                          </span>
+                          <span
+                            class="ant-select-selection-placeholder"
+                          >
+                            common.form.placeholder.select
+                          </span>
+                        </div>
                         <span
-                          class="ant-select-selection-placeholder"
+                          aria-hidden="true"
+                          class="ant-select-arrow"
+                          style="user-select: none;"
+                          unselectable="on"
                         >
-                          common.form.placeholder.select
+                          <span
+                            aria-label="down"
+                            class="anticon anticon-down ant-select-suffix"
+                            role="img"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="down"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                              />
+                            </svg>
+                          </span>
                         </span>
                       </div>
-                      <span
-                        aria-hidden="true"
-                        class="ant-select-arrow"
-                        style="user-select: none;"
-                        unselectable="on"
-                      >
-                        <span
-                          aria-label="down"
-                          class="anticon anticon-down ant-select-suffix"
-                          role="img"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            data-icon="down"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                            />
-                          </svg>
-                        </span>
-                      </span>
                     </div>
                   </div>
                 </div>
@@ -200,329 +210,356 @@ exports[`order/create/sqlInfoForm should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class="ant-row ant-form-item"
+      class="ant-form-item"
     >
       <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-      >
-        <label
-          class="ant-form-item-no-colon"
-          title=" "
-        >
-           
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+        >
+          <label
+            class="ant-form-item-no-colon"
+            title=" "
+          >
+             
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
         >
           <div
-            class="ant-form-item-control-input-content"
+            class="ant-form-item-control-input"
           >
-            <button
-              class="ant-btn ant-btn-dashed ant-btn-block"
-              type="button"
+            <div
+              class="ant-form-item-control-input-content"
             >
-              <span
-                aria-label="plus"
-                class="anticon anticon-plus"
-                role="img"
+              <button
+                class="ant-btn ant-btn-dashed ant-btn-block"
+                type="button"
               >
-                <svg
-                  aria-hidden="true"
-                  data-icon="plus"
-                  fill="currentColor"
-                  focusable="false"
-                  height="1em"
-                  viewBox="64 64 896 896"
-                  width="1em"
+                <span
+                  aria-label="plus"
+                  class="anticon anticon-plus"
+                  role="img"
                 >
-                  <defs>
-                    <style />
-                  </defs>
-                  <path
-                    d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"
-                  />
-                  <path
-                    d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"
-                  />
-                </svg>
-              </span>
-              <span>
-                order.sqlInfo.addInstance
-              </span>
-            </button>
+                  <svg
+                    aria-hidden="true"
+                    data-icon="plus"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <defs>
+                      <style />
+                    </defs>
+                    <path
+                      d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"
+                    />
+                    <path
+                      d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"
+                    />
+                  </svg>
+                </span>
+                <span>
+                  order.sqlInfo.addInstance
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="ant-row ant-form-item ant-form-item-hidden"
+      class="ant-form-item ant-form-item-hidden"
     >
       <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-      >
-        <label
-          class="ant-form-item-no-colon"
-          title=" "
-        >
-           
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+        >
+          <label
+            class="ant-form-item-no-colon"
+            title=" "
+          >
+             
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
         >
           <div
-            class="ant-form-item-control-input-content"
+            class="ant-form-item-control-input"
           >
             <div
-              class="ant-space ant-space-horizontal ant-space-align-center"
+              class="ant-form-item-control-input-content"
             >
               <div
-                class="ant-space-item"
-                style="margin-right: 8px;"
+                class="ant-space ant-space-horizontal ant-space-align-center"
               >
-                <button
-                  class="ant-btn"
-                  type="button"
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
                 >
-                  <span>
-                    dataSource.dataSourceForm.testDatabaseConnection
-                  </span>
-                </button>
+                  <button
+                    class="ant-btn ant-btn-default"
+                    type="button"
+                  >
+                    <span>
+                      dataSource.dataSourceForm.testDatabaseConnection
+                    </span>
+                  </button>
+                </div>
+                <div
+                  class="ant-space-item"
+                />
               </div>
-              <div
-                class="ant-space-item"
-              />
             </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="ant-row ant-form-item ant-form-item-hidden"
+      class="ant-form-item ant-form-item-hidden"
     >
       <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-      >
-        <label
-          class="ant-form-item-required"
-          for="isSameSqlOrder"
-          title="order.sqlInfo.isSameSqlOrder"
-        >
-          order.sqlInfo.isSameSqlOrder
-          <span
-            aria-label="question-circle"
-            class="anticon anticon-question-circle ant-form-item-tooltip"
-            role="img"
-          >
-            <svg
-              aria-hidden="true"
-              data-icon="question-circle"
-              fill="currentColor"
-              focusable="false"
-              height="1em"
-              viewBox="64 64 896 896"
-              width="1em"
-            >
-              <path
-                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-              />
-              <path
-                d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"
-              />
-            </svg>
-          </span>
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
         >
-          <div
-            class="ant-form-item-control-input-content"
+          <label
+            class="ant-form-item-required"
+            for="isSameSqlOrder"
+            title="order.sqlInfo.isSameSqlOrder"
           >
-            <button
-              aria-checked="true"
-              class="ant-switch ant-switch-checked"
-              id="isSameSqlOrder"
-              role="switch"
-              type="button"
+            order.sqlInfo.isSameSqlOrder
+            <span
+              aria-label="question-circle"
+              class="anticon anticon-question-circle ant-form-item-tooltip"
+              role="img"
+              title=""
             >
-              <div
-                class="ant-switch-handle"
-              />
-              <span
-                class="ant-switch-inner"
-              />
-            </button>
-          </div>
+              <svg
+                aria-hidden="true"
+                data-icon="question-circle"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                />
+                <path
+                  d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"
+                />
+              </svg>
+            </span>
+          </label>
         </div>
-      </div>
-    </div>
-    <div
-      class="ant-row ant-form-item"
-    >
-      <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-      >
-        <label
-          class=""
-          for="0_sqlInputType"
-          title="order.sqlInfo.uploadType"
-        >
-          order.sqlInfo.uploadType
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-      >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
         >
           <div
-            class="ant-form-item-control-input-content"
+            class="ant-form-item-control-input"
           >
             <div
-              class="ant-radio-group ant-radio-group-outline"
-              id="0_sqlInputType"
+              class="ant-form-item-control-input-content"
             >
-              <label
-                class="ant-radio-wrapper ant-radio-wrapper-checked"
+              <button
+                aria-checked="true"
+                aria-required="true"
+                class="ant-switch ant-switch-checked"
+                id="isSameSqlOrder"
+                role="switch"
+                type="button"
               >
+                <div
+                  class="ant-switch-handle"
+                />
                 <span
-                  class="ant-radio ant-radio-checked"
-                >
-                  <input
-                    checked=""
-                    class="ant-radio-input"
-                    type="radio"
-                    value="0"
-                  />
-                  <span
-                    class="ant-radio-inner"
-                  />
-                </span>
-                <span>
-                  order.sqlInfo.manualInput
-                </span>
-              </label>
-              <label
-                class="ant-radio-wrapper"
-              >
-                <span
-                  class="ant-radio"
-                >
-                  <input
-                    class="ant-radio-input"
-                    type="radio"
-                    value="1"
-                  />
-                  <span
-                    class="ant-radio-inner"
-                  />
-                </span>
-                <span>
-                  order.sqlInfo.uploadFile
-                </span>
-              </label>
-              <label
-                class="ant-radio-wrapper"
-              >
-                <span
-                  class="ant-radio"
-                >
-                  <input
-                    class="ant-radio-input"
-                    type="radio"
-                    value="2"
-                  />
-                  <span
-                    class="ant-radio-inner"
-                  />
-                </span>
-                <span>
-                  order.sqlInfo.updateMybatisFile
-                </span>
-              </label>
+                  class="ant-switch-inner"
+                />
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="ant-row ant-form-item"
+      class="ant-form-item"
     >
       <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-      >
-        <label
-          class="ant-form-item-required"
-          for="0_sql"
-          title="order.sqlInfo.sql"
-        >
-          order.sqlInfo.sql
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control makeStyles-editor-2 ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+        >
+          <label
+            class=""
+            for="0_sqlInputType"
+            title="order.sqlInfo.uploadType"
+          >
+            order.sqlInfo.uploadType
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
         >
           <div
-            class="ant-form-item-control-input-content"
+            class="ant-form-item-control-input"
           >
-            <input
-              height="500"
-              id="0_sql"
-              language="sql"
-              options="[object Object]"
-              theme="vs"
-              value="/* input your sql */"
-              width="100%"
-            />
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <div
+                class="ant-radio-group ant-radio-group-outline"
+                id="0_sqlInputType"
+              >
+                <label
+                  class="ant-radio-wrapper ant-radio-wrapper-checked ant-radio-wrapper-in-form-item"
+                >
+                  <span
+                    class="ant-radio ant-radio-checked"
+                  >
+                    <input
+                      checked=""
+                      class="ant-radio-input"
+                      type="radio"
+                      value="0"
+                    />
+                    <span
+                      class="ant-radio-inner"
+                    />
+                  </span>
+                  <span>
+                    order.sqlInfo.manualInput
+                  </span>
+                </label>
+                <label
+                  class="ant-radio-wrapper ant-radio-wrapper-in-form-item"
+                >
+                  <span
+                    class="ant-radio"
+                  >
+                    <input
+                      class="ant-radio-input"
+                      type="radio"
+                      value="1"
+                    />
+                    <span
+                      class="ant-radio-inner"
+                    />
+                  </span>
+                  <span>
+                    order.sqlInfo.uploadFile
+                  </span>
+                </label>
+                <label
+                  class="ant-radio-wrapper ant-radio-wrapper-in-form-item"
+                >
+                  <span
+                    class="ant-radio"
+                  >
+                    <input
+                      class="ant-radio-input"
+                      type="radio"
+                      value="2"
+                    />
+                    <span
+                      class="ant-radio-inner"
+                    />
+                  </span>
+                  <span>
+                    order.sqlInfo.updateMybatisFile
+                  </span>
+                </label>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="ant-row ant-form-item"
+      class="ant-form-item"
     >
       <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-      >
-        <label
-          class="ant-form-item-no-colon"
-          title=" "
-        >
-           
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+        >
+          <label
+            class="ant-form-item-required"
+            for="0_sql"
+            title="order.sqlInfo.sql"
+          >
+            order.sqlInfo.sql
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control makeStyles-editor-2 ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
         >
           <div
-            class="ant-form-item-control-input-content"
+            class="ant-form-item-control-input"
           >
-            <button
-              class="ant-btn ant-btn-primary"
-              type="button"
+            <div
+              class="ant-form-item-control-input-content"
             >
-              <span>
-                order.sqlInfo.audit
-              </span>
-            </button>
+              <input
+                aria-required="true"
+                height="500"
+                id="0_sql"
+                language="sql"
+                options="[object Object]"
+                theme="vs"
+                value="/* input your sql */"
+                width="100%"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-form-item"
+    >
+      <div
+        class="ant-row ant-form-item-row"
+      >
+        <div
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+        >
+          <label
+            class="ant-form-item-no-colon"
+            title=" "
+          >
+             
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+        >
+          <div
+            class="ant-form-item-control-input"
+          >
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <button
+                class="ant-btn ant-btn-primary"
+                type="button"
+              >
+                <span>
+                  order.sqlInfo.audit
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

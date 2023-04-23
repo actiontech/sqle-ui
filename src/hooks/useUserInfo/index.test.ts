@@ -1,10 +1,10 @@
 import { waitFor } from '@testing-library/react';
 import { act, renderHook } from '@testing-library/react-hooks';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import useUserInfo from '.';
 import user from '../../api/user';
 import { SQLE_REDIRECT_KEY_PARAMS_NAME } from '../../data/common';
-import { mockUseDispatch } from '../../testUtils/mockRedux';
 import {
   resolveErrorThreeSecond,
   resolveThreeSecond,
@@ -13,12 +13,22 @@ import {
   mockBindProjects,
   mockManagementPermissions,
 } from '../useCurrentUser/index.test';
+import useNavigate from '../useNavigate';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useLocation: jest.fn(),
-  useHistory: jest.fn(),
 }));
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useDispatch: jest.fn(),
+    useSelector: jest.fn(),
+  };
+});
+
+jest.mock('../../hooks/useNavigate', () => jest.fn());
 
 export const mockGetCurrentUser = () => {
   const spy = jest.spyOn(user, 'getCurrentUserV1');
@@ -36,13 +46,13 @@ export const mockGetCurrentUser = () => {
 
 describe('test useUserInfo', () => {
   let getUserSpy: jest.SpyInstance;
-  let dispatchSpy: jest.SpyInstance;
+  const dispatchSpy = jest.fn();
+  const navigateSpy = jest.fn();
+
   const useLocationMock: jest.Mock = useLocation as jest.Mock;
-  const useHistoryMock: jest.Mock = useHistory as jest.Mock;
-  const replaceMock = jest.fn();
+  const useHistoryMock: jest.Mock = useNavigate as jest.Mock;
   beforeEach(() => {
     jest.useFakeTimers();
-    dispatchSpy = mockUseDispatch().scopeDispatch;
     getUserSpy = mockGetCurrentUser();
     useLocationMock.mockReturnValue({
       pathname: '/rule',
@@ -51,9 +61,8 @@ describe('test useUserInfo', () => {
       state: null,
       key: '5nvxpbdafa',
     });
-    useHistoryMock.mockReturnValue({
-      replace: replaceMock,
-    });
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
+    useHistoryMock.mockImplementation(() => navigateSpy);
   });
   afterEach(() => {
     jest.useRealTimers();
@@ -148,10 +157,11 @@ describe('test useUserInfo', () => {
       payload: { managementPermissions: [] },
       type: 'user/updateManagementPermissions',
     });
-    expect(replaceMock).toBeCalledTimes(1);
-    expect(replaceMock).nthCalledWith(
+    expect(navigateSpy).toBeCalledTimes(1);
+    expect(navigateSpy).nthCalledWith(
       1,
-      `/login?${SQLE_REDIRECT_KEY_PARAMS_NAME}=/rule`
+      `/login?${SQLE_REDIRECT_KEY_PARAMS_NAME}=/rule`,
+      { replace: true }
     );
   });
 });

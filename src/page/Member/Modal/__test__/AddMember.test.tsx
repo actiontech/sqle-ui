@@ -1,12 +1,9 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
 import { selectOptionByIndex } from '../../../../testUtils/customQuery';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../testUtils/mockRedux';
+
 import {
   mockUseInstance,
   mockUseRole,
@@ -15,16 +12,24 @@ import {
 import EventEmitter from '../../../../utils/EventEmitter';
 import AddMember from '../AddMember';
 import { mockAddMember } from './utils';
+import { useDispatch, useSelector } from 'react-redux';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn(),
 }));
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 const projectName = 'default';
 
 describe('test AddMember', () => {
   let addMemberSpy: jest.SpyInstance;
-  let dispatchSpy: jest.SpyInstance;
+  const dispatchSpy = jest.fn();
   const emitSpy = jest.spyOn(EventEmitter, 'emit');
   const useParamsMock: jest.Mock = useParams as jest.Mock;
 
@@ -33,15 +38,17 @@ describe('test AddMember', () => {
     mockUseUsername();
     mockUseInstance();
     addMemberSpy = mockAddMember();
-
-    dispatchSpy = mockUseDispatch().scopeDispatch;
-    mockUseSelector({
-      member: {
-        modalStatus: {
-          [ModalName.Add_Member]: true,
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        member: {
+          modalStatus: {
+            [ModalName.Add_Member]: true,
+          },
         },
-      },
-    });
+      })
+    );
+
     useParamsMock.mockReturnValue({ projectName });
     jest.useFakeTimers();
   });
@@ -59,17 +66,15 @@ describe('test AddMember', () => {
 
   test('should call add member request when clicking submit button', async () => {
     render(<AddMember />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(addMemberSpy).toBeCalledTimes(0);
     expect(dispatchSpy).toBeCalledTimes(0);
     expect(emitSpy).toBeCalledTimes(0);
 
     selectOptionByIndex('member.memberForm.username', 'user_name1');
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.click(screen.getByLabelText('member.memberForm.projectAdmin'));
 
     fireEvent.click(screen.getByText('member.roleSelector.addRole'));
@@ -77,9 +82,7 @@ describe('test AddMember', () => {
     selectOptionByIndex('member.roleSelector.instance', 'instance1');
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(screen.getByText('common.close').closest('button')).toBeDisabled();
     expect(screen.getByText('common.submit').closest('button')).toHaveClass(
@@ -94,11 +97,10 @@ describe('test AddMember', () => {
       is_manager: true,
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText('member.addMember.successTips')
+      screen.getByText('member.addMember.successTips')
     ).toBeInTheDocument();
     expect(dispatchSpy).toBeCalledTimes(1);
     expect(dispatchSpy).toBeCalledWith({
@@ -117,9 +119,8 @@ describe('test AddMember', () => {
     expect(screen.getByText('common.submit').closest('button')).not.toHaveClass(
       'ant-btn-loading'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('member.addMember.successTips')
     ).not.toBeInTheDocument();
@@ -127,15 +128,13 @@ describe('test AddMember', () => {
 
   test('should clear form and dispatch "updateMemberModalStatus" when clicking close button', async () => {
     render(<AddMember />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(dispatchSpy).toBeCalledTimes(0);
 
     selectOptionByIndex('member.memberForm.username', 'user_name1');
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.click(screen.getByText('common.close'));
 
     expect(screen.getByLabelText('member.memberForm.username')).toHaveValue('');

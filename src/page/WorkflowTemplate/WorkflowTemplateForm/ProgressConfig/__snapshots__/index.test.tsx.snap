@@ -188,6 +188,7 @@ exports[`progressConfig should match snapshot with default data 1`] = `
                                       >
                                         <span
                                           class="ant-select-selection-item"
+                                          title="admin"
                                         >
                                           <span
                                             class="ant-select-selection-item-content"
@@ -250,7 +251,6 @@ exports[`progressConfig should match snapshot with default data 1`] = `
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -500,6 +500,7 @@ exports[`progressConfig should match snapshot with default data 1`] = `
                                       >
                                         <span
                                           class="ant-select-selection-item"
+                                          title="admin"
                                         >
                                           <span
                                             class="ant-select-selection-item-content"
@@ -538,7 +539,6 @@ exports[`progressConfig should match snapshot with default data 1`] = `
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -788,6 +788,7 @@ exports[`progressConfig should match snapshot with default data 1`] = `
                                       >
                                         <span
                                           class="ant-select-selection-item"
+                                          title="admin"
                                         >
                                           <span
                                             class="ant-select-selection-item-content"
@@ -850,7 +851,6 @@ exports[`progressConfig should match snapshot with default data 1`] = `
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -942,9 +942,6 @@ exports[`progressConfig should match snapshot with default data 1`] = `
                       </ul>
                     </article>
                   </div>
-                  <div
-                    class="ant-alert-description"
-                  />
                 </div>
               </div>
             </div>
@@ -981,7 +978,7 @@ exports[`progressConfig should match snapshot with default data 1`] = `
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -994,7 +991,7 @@ exports[`progressConfig should match snapshot with default data 1`] = `
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -1232,7 +1229,6 @@ exports[`progressConfig should match snapshot without default data 1`] = `
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -1327,9 +1323,6 @@ exports[`progressConfig should match snapshot without default data 1`] = `
                       </ul>
                     </article>
                   </div>
-                  <div
-                    class="ant-alert-description"
-                  />
                 </div>
               </div>
             </div>
@@ -1366,7 +1359,7 @@ exports[`progressConfig should match snapshot without default data 1`] = `
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -1379,7 +1372,7 @@ exports[`progressConfig should match snapshot without default data 1`] = `
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -1635,7 +1628,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -1692,9 +1684,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -1931,7 +1920,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -2224,7 +2212,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -2279,9 +2266,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -2338,9 +2322,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                       </ul>
                     </article>
                   </div>
-                  <div
-                    class="ant-alert-description"
-                  />
                 </div>
               </div>
             </div>
@@ -2378,7 +2359,7 @@ exports[`progressConfig should move a step and step error index if step which wa
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -2391,7 +2372,7 @@ exports[`progressConfig should move a step and step error index if step which wa
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -2648,7 +2629,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -2703,9 +2683,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -2942,7 +2919,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -3237,7 +3213,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -3292,9 +3267,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -3351,9 +3323,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                       </ul>
                     </article>
                   </div>
-                  <div
-                    class="ant-alert-description"
-                  />
                 </div>
               </div>
             </div>
@@ -3391,7 +3360,7 @@ exports[`progressConfig should move a step and step error index if step which wa
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -3404,7 +3373,7 @@ exports[`progressConfig should move a step and step error index if step which wa
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -3643,7 +3612,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -3938,7 +3906,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -3993,9 +3960,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -4250,7 +4214,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -4305,9 +4268,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -4364,9 +4324,6 @@ exports[`progressConfig should move a step and step error index if step which wa
                       </ul>
                     </article>
                   </div>
-                  <div
-                    class="ant-alert-description"
-                  />
                 </div>
               </div>
             </div>
@@ -4404,7 +4361,7 @@ exports[`progressConfig should move a step and step error index if step which wa
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -4417,7 +4374,7 @@ exports[`progressConfig should move a step and step error index if step which wa
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -4674,7 +4631,6 @@ exports[`progressConfig should remove step and remove error step index if step w
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -4729,9 +4685,6 @@ exports[`progressConfig should remove step and remove error step index if step w
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -4968,7 +4921,6 @@ exports[`progressConfig should remove step and remove error step index if step w
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -5261,7 +5213,6 @@ exports[`progressConfig should remove step and remove error step index if step w
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -5316,9 +5267,6 @@ exports[`progressConfig should remove step and remove error step index if step w
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -5375,9 +5323,6 @@ exports[`progressConfig should remove step and remove error step index if step w
                       </ul>
                     </article>
                   </div>
-                  <div
-                    class="ant-alert-description"
-                  />
                 </div>
               </div>
             </div>
@@ -5415,7 +5360,7 @@ exports[`progressConfig should remove step and remove error step index if step w
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -5428,7 +5373,7 @@ exports[`progressConfig should remove step and remove error step index if step w
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -5667,7 +5612,6 @@ exports[`progressConfig should remove step and remove error step index if step w
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -5962,7 +5906,6 @@ exports[`progressConfig should remove step and remove error step index if step w
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -6017,9 +5960,6 @@ exports[`progressConfig should remove step and remove error step index if step w
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -6076,9 +6016,6 @@ exports[`progressConfig should remove step and remove error step index if step w
                       </ul>
                     </article>
                   </div>
-                  <div
-                    class="ant-alert-description"
-                  />
                 </div>
               </div>
             </div>
@@ -6116,7 +6053,7 @@ exports[`progressConfig should remove step and remove error step index if step w
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -6129,7 +6066,7 @@ exports[`progressConfig should remove step and remove error step index if step w
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -6386,7 +6323,6 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -6443,9 +6379,6 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -6700,7 +6633,6 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -6755,9 +6687,6 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -7010,7 +6939,6 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -7065,9 +6993,6 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -7322,7 +7247,6 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -7377,9 +7301,6 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -7436,9 +7357,6 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                       </ul>
                     </article>
                   </div>
-                  <div
-                    class="ant-alert-description"
-                  />
                 </div>
               </div>
             </div>
@@ -7476,7 +7394,7 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -7489,7 +7407,7 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -7728,7 +7646,6 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -7823,9 +7740,6 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
                       </ul>
                     </article>
                   </div>
-                  <div
-                    class="ant-alert-description"
-                  />
                 </div>
               </div>
             </div>
@@ -7863,7 +7777,7 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -7876,7 +7790,7 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -8133,7 +8047,6 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -8190,9 +8103,6 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -8449,7 +8359,6 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -8504,9 +8413,6 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -8563,9 +8469,6 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
                       </ul>
                     </article>
                   </div>
-                  <div
-                    class="ant-alert-description"
-                  />
                 </div>
               </div>
             </div>
@@ -8603,7 +8506,7 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -8616,7 +8519,7 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -8856,7 +8759,6 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -8951,9 +8853,6 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
                       </ul>
                     </article>
                   </div>
-                  <div
-                    class="ant-alert-description"
-                  />
                 </div>
               </div>
             </div>
@@ -8991,7 +8890,7 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -9005,7 +8904,7 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
             >
               <button
                 ant-click-animating-without-extra-node="false"
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -9262,7 +9161,6 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -9319,9 +9217,6 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -9578,7 +9473,6 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -9633,9 +9527,6 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -9692,9 +9583,6 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
                       </ul>
                     </article>
                   </div>
-                  <div
-                    class="ant-alert-description"
-                  />
                 </div>
               </div>
             </div>
@@ -9732,7 +9620,7 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -9745,7 +9633,7 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -9985,7 +9873,6 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -10080,9 +9967,6 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
                       </ul>
                     </article>
                   </div>
-                  <div
-                    class="ant-alert-description"
-                  />
                 </div>
               </div>
             </div>
@@ -10120,7 +10004,7 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -10134,7 +10018,7 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
             >
               <button
                 ant-click-animating-without-extra-node="false"
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -10391,7 +10275,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -10446,9 +10329,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -10505,9 +10385,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                       </ul>
                     </article>
                   </div>
-                  <div
-                    class="ant-alert-description"
-                  />
                 </div>
               </div>
             </div>
@@ -10544,7 +10421,7 @@ exports[`progressConfig should update username and remove error tips if error ex
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -10557,7 +10434,7 @@ exports[`progressConfig should update username and remove error tips if error ex
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -10774,6 +10651,7 @@ exports[`progressConfig should update username and remove error tips if error ex
                                       >
                                         <span
                                           class="ant-select-selection-item"
+                                          title="user_name1"
                                         >
                                           <span
                                             class="ant-select-selection-item-content"
@@ -10835,7 +10713,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -10927,9 +10804,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                       </ul>
                     </article>
                   </div>
-                  <div
-                    class="ant-alert-description"
-                  />
                 </div>
               </div>
             </div>
@@ -10966,7 +10840,7 @@ exports[`progressConfig should update username and remove error tips if error ex
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -10979,7 +10853,7 @@ exports[`progressConfig should update username and remove error tips if error ex
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -11236,7 +11110,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -11291,9 +11164,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -11550,7 +11420,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -11605,9 +11474,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -11664,9 +11530,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                       </ul>
                     </article>
                   </div>
-                  <div
-                    class="ant-alert-description"
-                  />
                 </div>
               </div>
             </div>
@@ -11704,7 +11567,7 @@ exports[`progressConfig should update username and remove error tips if error ex
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -11717,7 +11580,7 @@ exports[`progressConfig should update username and remove error tips if error ex
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -11934,6 +11797,7 @@ exports[`progressConfig should update username and remove error tips if error ex
                                       >
                                         <span
                                           class="ant-select-selection-item"
+                                          title="user_name1"
                                         >
                                           <span
                                             class="ant-select-selection-item-content"
@@ -11995,7 +11859,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -12287,7 +12150,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -12342,9 +12204,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                                 >
                                   workflowTemplate.progressConfig.ruler.rule3
                                 </div>
-                                <div
-                                  class="ant-alert-description"
-                                />
                               </div>
                             </div>
                           </div>
@@ -12401,9 +12260,6 @@ exports[`progressConfig should update username and remove error tips if error ex
                       </ul>
                     </article>
                   </div>
-                  <div
-                    class="ant-alert-description"
-                  />
                 </div>
               </div>
             </div>
@@ -12441,7 +12297,7 @@ exports[`progressConfig should update username and remove error tips if error ex
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -12454,7 +12310,7 @@ exports[`progressConfig should update username and remove error tips if error ex
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -12694,7 +12550,6 @@ exports[`progressConfig should validate step and update progress config when use
                                             aria-hidden="true"
                                             class="ant-select-selection-search-mirror"
                                           >
-                                            
                                              
                                           </span>
                                         </div>
@@ -12789,9 +12644,6 @@ exports[`progressConfig should validate step and update progress config when use
                       </ul>
                     </article>
                   </div>
-                  <div
-                    class="ant-alert-description"
-                  />
                 </div>
               </div>
             </div>
@@ -12829,7 +12681,7 @@ exports[`progressConfig should validate step and update progress config when use
               style="margin-right: 8px;"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -12843,7 +12695,7 @@ exports[`progressConfig should validate step and update progress config when use
             >
               <button
                 ant-click-animating-without-extra-node="false"
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>

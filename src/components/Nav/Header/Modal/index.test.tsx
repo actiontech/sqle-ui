@@ -1,17 +1,23 @@
-import { render, waitFor } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
+import { useDispatch, useSelector } from 'react-redux';
 import InfoModalManager from '.';
 import global from '../../../../api/global';
 import { ModalName } from '../../../../data/ModalName';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../testUtils/mockRedux';
+
 import { resolveThreeSecond } from '../../../../testUtils/mockRequest';
 
 const serverVersion = `"issue_201 b1c2baedcb37f27feb7cef34f088212938fad1ba"`;
 
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
+
 describe('test Nav/Header/Modal', () => {
-  let scopeDispatch: jest.Mock;
+  const scopeDispatch = jest.fn();
 
   const mockGetSQLEInfo = () => {
     const spy = jest.spyOn(global, 'getSQLEInfoV1');
@@ -23,10 +29,13 @@ describe('test Nav/Header/Modal', () => {
 
   beforeEach(() => {
     mockGetSQLEInfo();
-    mockUseSelector({
-      nav: { modalStatus: { [ModalName.SHOW_VERSION]: true } },
-    });
-    scopeDispatch = mockUseDispatch().scopeDispatch;
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        nav: { modalStatus: { [ModalName.SHOW_VERSION]: true } },
+      })
+    );
+    (useDispatch as jest.Mock).mockImplementation(() => scopeDispatch);
     jest.useFakeTimers();
   });
 
@@ -39,9 +48,8 @@ describe('test Nav/Header/Modal', () => {
   test('should match snapshot', async () => {
     const { baseElement } = render(<InfoModalManager />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(baseElement).toMatchSnapshot();
   });
 

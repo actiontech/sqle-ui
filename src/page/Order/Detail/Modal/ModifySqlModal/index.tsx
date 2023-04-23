@@ -141,7 +141,7 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
     <Modal
       title={t('order.modifySql.title')}
       width={ModalSize.big}
-      visible={visible}
+      open={visible}
       closable={false}
       footer={
         <Space>

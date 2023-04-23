@@ -5,9 +5,9 @@ exports[`test SyncDataSource should match snapshot 1`] = `
   <section
     className="padding-content"
   >
-    <Card>
+    <ForwardRef>
       syncDataSource.ceTips
-      <Paragraph>
+      <ForwardRef>
         <ul>
           <li>
             <a
@@ -24,8 +24,8 @@ exports[`test SyncDataSource should match snapshot 1`] = `
             </a>
           </li>
         </ul>
-      </Paragraph>
-    </Card>
+      </ForwardRef>
+    </ForwardRef>
   </section>
   <article>
     <PageHeader
@@ -37,24 +37,28 @@ exports[`test SyncDataSource should match snapshot 1`] = `
     <section
       className="padding-content"
     >
-      <Switch>
+      <Routes>
         <Route
-          component={[Function]}
-          exact={true}
+          element={<SyncTaskList />}
           path="/syncDataSource"
         />
         <Route
-          component={[Function]}
+          element={<AddSyncTask />}
           path="/syncDataSource/create"
         />
         <Route
-          component={[Function]}
+          element={<UpdateSyncTask />}
           path="/syncDataSource/update/:taskId"
         />
-        <Redirect
-          to="/syncDataSource"
+        <Route
+          element={
+            <Navigate
+              to="/syncDataSource"
+            />
+          }
+          path="*"
         />
-      </Switch>
+      </Routes>
     </section>
   </article>
 </Fragment>

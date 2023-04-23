@@ -1,17 +1,14 @@
-import { fireEvent, waitFor, screen } from '@testing-library/react';
+import { fireEvent, screen, act } from '@testing-library/react';
 import UpdateDataSource from '.';
 import instance from '../../../api/instance';
-import {
-  renderWithThemeAndRouter,
-  renderWithThemeAndServerRouter,
-} from '../../../testUtils/customRender';
+import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
 import {
   mockUseGlobalRuleTemplate,
   mockUseRuleTemplate,
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
 import { useParams } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
+
 import { mockDriver } from '../../../testUtils/mockRequest';
 import { dataSourceMetas } from '../__testData__';
 import {
@@ -19,6 +16,7 @@ import {
   getSelectValueByFormLabel,
 } from '../../../testUtils/customQuery';
 import { SQLE_INSTANCE_SOURCE_NAME } from '../../../data/common';
+import useNavigate from '../../../hooks/useNavigate';
 
 jest.mock('react-router', () => {
   return {
@@ -26,6 +24,8 @@ jest.mock('react-router', () => {
     useParams: jest.fn(),
   };
 });
+
+jest.mock('../../../hooks/useNavigate', () => jest.fn());
 const projectName = 'default';
 
 const instanceData = {
@@ -73,6 +73,7 @@ const instanceData = {
 describe('UpdateDataSource', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
   let getInstanceSpy: jest.SpyInstance;
+  const navigateSpy = jest.fn();
   beforeEach(() => {
     jest.useFakeTimers();
     useParamsMock.mockReturnValue({ instanceName: '1', projectName });
@@ -81,6 +82,7 @@ describe('UpdateDataSource', () => {
     mockDriver();
     mockGetDataSourceMetas();
     mockUseGlobalRuleTemplate();
+    (useNavigate as jest.Mock).mockImplementation(() => navigateSpy);
   });
 
   afterEach(() => {
@@ -108,29 +110,18 @@ describe('UpdateDataSource', () => {
   };
 
   test('should render data source form', async () => {
-    const { container } = renderWithThemeAndRouter(
-      <UpdateDataSource />,
-      undefined
-    );
+    const { container } = renderWithThemeAndRouter(<UpdateDataSource />);
     expect(container).toMatchSnapshot();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
     expect(container).toMatchSnapshot();
   });
 
   test('should send update instance request when click submit', async () => {
     const updateSpy = mockUpdateInstanceRequest();
-    const history = createMemoryHistory();
-    history.push('/data/update/db1');
-    renderWithThemeAndServerRouter(<UpdateDataSource />, undefined, {
-      history,
-    });
+    renderWithThemeAndRouter(<UpdateDataSource />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.input(screen.getByLabelText('dataSource.dataSourceForm.name'), {
       target: { value: 'instance_name1' },
@@ -141,6 +132,7 @@ describe('UpdateDataSource', () => {
         target: { value: 'desc1' },
       }
     );
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(
       screen.getByLabelText('dataSource.dataSourceForm.type')
@@ -171,6 +163,7 @@ describe('UpdateDataSource', () => {
     const instanceOption = allInstanceOptions[1];
     expect(instanceOption).toHaveClass('ant-select-item-option-content');
     fireEvent.click(instanceOption);
+    await act(async () => jest.advanceTimersByTime(0));
 
     fireEvent.click(
       screen.getByLabelText('dataSource.dataSourceForm.needAuditForSqlQuery')
@@ -181,31 +174,23 @@ describe('UpdateDataSource', () => {
     );
 
     fireEvent.click(screen.getByText('common.add'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(getBySelector('.ant-picker-range'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     fireEvent.click(screen.getAllByText('04')[0]);
     fireEvent.click(screen.getAllByText('00')[1]);
-    fireEvent.click(screen.getByText('Ok'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    fireEvent.click(screen.getByText('OK'));
+
     fireEvent.click(screen.getAllByText('05')[0]);
     fireEvent.click(screen.getAllByText('00')[1]);
-    fireEvent.click(screen.getByText('Ok'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    fireEvent.click(screen.getByText('OK'));
+
     fireEvent.click(screen.getByText('common.ok'));
 
-    await waitFor(() => {
-      fireEvent.click(screen.getByText('common.submit'));
-    });
+    fireEvent.click(screen.getByText('common.submit'));
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
@@ -271,18 +256,16 @@ describe('UpdateDataSource', () => {
       },
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.getByText('dataSource.updateDatabase.updateDatabaseSuccess')
     ).toBeInTheDocument();
-
-    expect(history.location.pathname).toBe(`/project/${projectName}/data`);
-
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
+    expect(navigateSpy).toBeCalledTimes(1);
+    expect(navigateSpy).toBeCalledWith(`project/${projectName}/data`, {
+      replace: true,
     });
+    await act(async () => jest.advanceTimersByTime(3000));
   });
 
   test('should be disabled partial form items when the instance source is not SQLE', async () => {
@@ -295,9 +278,7 @@ describe('UpdateDataSource', () => {
       <UpdateDataSource />,
       undefined
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.getByLabelText('dataSource.dataSourceForm.name')
@@ -339,9 +320,8 @@ describe('UpdateDataSource', () => {
 
     expect(container).toMatchSnapshot();
 
-    await waitFor(() => {
-      fireEvent.click(screen.getByText('common.submit'));
-    });
+    fireEvent.click(screen.getByText('common.submit'));
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
@@ -391,16 +371,12 @@ describe('UpdateDataSource', () => {
       },
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    expect(
-      screen.queryByText('dataSource.updateDatabase.updateDatabaseSuccess')
-    ).toBeInTheDocument();
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    expect(
+      screen.getByText('dataSource.updateDatabase.updateDatabaseSuccess')
+    ).toBeInTheDocument();
+    await act(async () => jest.advanceTimersByTime(3000));
   });
 
   test('should be hidden "allowQueryWhenLessThanAuditLevel" field when audit enabled is equal false', async () => {
@@ -408,14 +384,12 @@ describe('UpdateDataSource', () => {
 
     renderWithThemeAndRouter(<UpdateDataSource />, undefined);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.getByTitle(
         'dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel'
-      )?.parentElement?.parentElement
+      )?.parentElement?.parentElement?.parentElement
     ).not.toHaveClass('ant-form-item-hidden');
 
     fireEvent.click(
@@ -424,12 +398,11 @@ describe('UpdateDataSource', () => {
     expect(
       screen.getByTitle(
         'dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel'
-      )?.parentElement?.parentElement
+      )?.parentElement?.parentElement?.parentElement
     ).toHaveClass('ant-form-item-hidden');
 
-    await waitFor(() => {
-      fireEvent.click(screen.getByText('common.submit'));
-    });
+    fireEvent.click(screen.getByText('common.submit'));
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({

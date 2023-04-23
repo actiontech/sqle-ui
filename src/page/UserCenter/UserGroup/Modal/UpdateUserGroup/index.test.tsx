@@ -1,13 +1,9 @@
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { fireEvent, screen, act } from '@testing-library/react';
 import UpdateUserGroup from '.';
 import user_group from '../../../../../api/user_group';
 import EmitterKey from '../../../../../data/EmitterKey';
 import { ModalName } from '../../../../../data/ModalName';
 import { renderWithRedux } from '../../../../../testUtils/customRender';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../../testUtils/mockRedux';
 import {
   mockUseRole,
   mockUseUsername,
@@ -15,29 +11,41 @@ import {
   resolveThreeSecond,
 } from '../../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../../utils/EventEmitter';
+import { useDispatch, useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('updateUserGroup', () => {
-  let dispatchSpy: jest.SpyInstance;
+  const dispatchSpy = jest.fn();
 
   beforeEach(() => {
     jest.useFakeTimers();
     mockUseRole();
     mockUseUsername();
-    dispatchSpy = mockUseDispatch().scopeDispatch;
-    mockUseSelector({
-      userManage: {
-        modalStatus: {
-          [ModalName.Update_User_Group]: true,
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        userManage: {
+          modalStatus: {
+            [ModalName.Update_User_Group]: true,
+          },
+          selectUserGroup: {
+            is_disabled: true,
+            role_name_list: ['role_name1'],
+            user_group_desc: 'user group desc',
+            user_group_name: 'userGroupName1',
+            user_name_list: ['user_name1'],
+          },
         },
-        selectUserGroup: {
-          is_disabled: true,
-          role_name_list: ['role_name1'],
-          user_group_desc: 'user group desc',
-          user_group_name: 'userGroupName1',
-          user_name_list: ['user_name1'],
-        },
-      },
-    });
+      })
+    );
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
   });
 
   afterEach(() => {
@@ -53,31 +61,33 @@ describe('updateUserGroup', () => {
   };
 
   it('should match snapshot when visible is falsy', () => {
-    mockUseSelector({
-      userManage: {
-        modalStatus: {
-          [ModalName.Update_User_Group]: false,
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        userManage: {
+          modalStatus: {
+            [ModalName.Update_User_Group]: false,
+          },
         },
-      },
-    });
+      })
+    );
     const { baseElement } = renderWithRedux(<UpdateUserGroup />);
     expect(baseElement).toMatchSnapshot();
   });
 
   it('should match snapshot when visible is truthy', async () => {
     const { baseElement } = renderWithRedux(<UpdateUserGroup />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(baseElement).toMatchSnapshot();
   });
 
   it('should close modal and reset form when user click cancel button', async () => {
     renderWithRedux(<UpdateUserGroup />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('common.close'));
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(dispatchSpy).toBeCalledTimes(1);
     expect(dispatchSpy).toBeCalledWith({
       payload: {
@@ -95,9 +105,8 @@ describe('updateUserGroup', () => {
   it('should update user group when user input all field and click submit button', async () => {
     renderWithRedux(<UpdateUserGroup />);
     const updateSpy = mockUpdateUserGroup();
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.input(
       screen.getByLabelText('userGroup.userGroupField.userGroupDesc'),
       {
@@ -110,9 +119,8 @@ describe('updateUserGroup', () => {
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
     fireEvent.click(screen.getByText('common.submit'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
       is_disabled: false,
@@ -124,9 +132,8 @@ describe('updateUserGroup', () => {
       'ant-btn-loading'
     );
     expect(screen.getByText('common.close').parentNode).toBeDisabled();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(dispatchSpy).toBeCalledTimes(1);
     expect(dispatchSpy).toBeCalledWith({
       payload: {
@@ -145,11 +152,10 @@ describe('updateUserGroup', () => {
     );
     expect(screen.getByText('common.close').parentNode).not.toBeDisabled();
     expect(
-      screen.queryByText('userGroup.updateUserGroup.successTips')
+      screen.getByText('userGroup.updateUserGroup.successTips')
     ).toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('userGroup.updateUserGroup.successTips')
     ).not.toBeInTheDocument();
@@ -159,21 +165,17 @@ describe('updateUserGroup', () => {
     const updateSpy = mockUpdateUserGroup();
     updateSpy.mockImplementation(() => resolveErrorThreeSecond({}));
     renderWithRedux(<UpdateUserGroup />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByText('common.submit').parentNode).toHaveClass(
       'ant-btn-loading'
     );
     expect(screen.getByText('common.close').parentNode).toBeDisabled();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByText('common.submit').parentNode).not.toHaveClass(
       'ant-btn-loading'
     );

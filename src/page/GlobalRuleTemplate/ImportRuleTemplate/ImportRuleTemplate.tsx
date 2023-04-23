@@ -11,7 +11,6 @@ import {
 import { useForm } from 'antd/lib/form/Form';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import { SelectFileFormFields } from '.';
 import { IRuleReqV1, IRuleResV1 } from '../../../api/common';
 import rule_template from '../../../api/rule_template';
@@ -22,6 +21,7 @@ import { getFileFromUploadChangeEvent } from '../../../utils/Common';
 import RuleTemplateForm from '../RuleTemplateForm';
 import { RuleTemplateBaseInfoFields } from '../RuleTemplateForm/BaseInfoForm/index.type';
 import { RuleTemplateFormProps } from '../RuleTemplateForm/index.type';
+import { Link } from '../../../components/Link';
 
 const ImportRuleTemplate: React.FC = () => {
   const { t } = useTranslation();
@@ -219,7 +219,7 @@ const ImportRuleTemplate: React.FC = () => {
             }
           />
           <Row justify="center">
-            <Link to="/rule/template">
+            <Link to="rule/template">
               <Button type="primary">{t('ruleTemplate.backToList')}</Button>
             </Link>
           </Row>

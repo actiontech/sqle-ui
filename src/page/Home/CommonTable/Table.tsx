@@ -8,7 +8,6 @@ const CommonTable: React.FC<ICommonTableProps> = ({
   customColumn,
 }) => {
   const { t } = useTranslation();
-
   return (
     <>
       <Table
@@ -22,7 +21,7 @@ const CommonTable: React.FC<ICommonTableProps> = ({
             <Result
               status="error"
               title={t('common.request.noticeFailTitle')}
-              subTitle={tableInfo.error?.message ?? t('common.unknownError')}
+              subTitle={tableInfo?.error.message ?? t('common.unknownError')}
             />
           ) : undefined,
         }}

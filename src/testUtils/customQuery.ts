@@ -68,3 +68,11 @@ export const selectOptionByIndex = (
   expect(option).toHaveClass('ant-select-item-option-content');
   fireEvent.click(option);
 };
+
+export const getHrefByText = (name: string) => {
+  return screen.getByText(name).getAttribute('href');
+};
+
+export const getAllHrefByText = (name: string) => {
+  return screen.getAllByText(name).map((v) => v.getAttribute('href'));
+};

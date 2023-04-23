@@ -1,4 +1,4 @@
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, screen } from '@testing-library/react';
 import AddUserGroup from '.';
 import user_group from '../../../../../api/user_group';
 import EmitterKey from '../../../../../data/EmitterKey';
@@ -6,32 +6,40 @@ import { ModalName } from '../../../../../data/ModalName';
 import { selectOptionByIndex } from '../../../../../testUtils/customQuery';
 import { renderWithRedux } from '../../../../../testUtils/customRender';
 import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../../testUtils/mockRedux';
-import {
   mockUseRole,
   mockUseUsername,
   resolveErrorThreeSecond,
   resolveThreeSecond,
 } from '../../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../../utils/EventEmitter';
+import { useDispatch, useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('AddUserGroup', () => {
-  let dispatchSpy: jest.SpyInstance;
+  const dispatchSpy = jest.fn();
 
   beforeEach(() => {
     jest.useFakeTimers();
     mockUseRole();
     mockUseUsername();
-    dispatchSpy = mockUseDispatch().scopeDispatch;
-    mockUseSelector({
-      userManage: {
-        modalStatus: {
-          [ModalName.Add_User_Group]: true,
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        userManage: {
+          modalStatus: {
+            [ModalName.Add_User_Group]: true,
+          },
         },
-      },
-    });
+      })
+    );
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
   });
 
   afterEach(() => {
@@ -47,13 +55,15 @@ describe('AddUserGroup', () => {
   };
 
   it('should match snapshot when visible is falsy', () => {
-    mockUseSelector({
-      userManage: {
-        modalStatus: {
-          [ModalName.Add_User_Group]: false,
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        userManage: {
+          modalStatus: {
+            [ModalName.Add_User_Group]: false,
+          },
         },
-      },
-    });
+      })
+    );
     const { baseElement } = renderWithRedux(<AddUserGroup />);
     expect(baseElement).toMatchSnapshot();
   });
@@ -65,9 +75,7 @@ describe('AddUserGroup', () => {
 
   it('should close and reset form when user close modal', async () => {
     renderWithRedux(<AddUserGroup />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.input(
       screen.getByLabelText('userGroup.userGroupField.userGroupName'),
@@ -81,6 +89,7 @@ describe('AddUserGroup', () => {
     ).toHaveValue('test');
 
     fireEvent.click(screen.getByText('common.close'));
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(dispatchSpy).toBeCalledTimes(1);
     expect(dispatchSpy).toBeCalledWith({
@@ -99,9 +108,7 @@ describe('AddUserGroup', () => {
   it('should create user group when user input all field and click submit button', async () => {
     const createUserSpy = mockCreateUser();
     renderWithRedux(<AddUserGroup />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.input(
       screen.getByLabelText('userGroup.userGroupField.userGroupName'),
@@ -121,9 +128,7 @@ describe('AddUserGroup', () => {
 
     fireEvent.click(screen.getByText('common.submit'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(screen.getByText('common.submit').parentNode).toHaveClass(
       'ant-btn-loading'
@@ -138,9 +143,7 @@ describe('AddUserGroup', () => {
     });
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(dispatchSpy).toBeCalledWith({
       payload: {
@@ -159,11 +162,10 @@ describe('AddUserGroup', () => {
     );
     expect(screen.getByText('common.close').parentNode).not.toBeDisabled();
     expect(
-      screen.queryByText('userGroup.createUserGroup.successTips')
+      screen.getByText('userGroup.createUserGroup.successTips')
     ).toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('userGroup.createUserGroup.successTips')
     ).not.toBeInTheDocument();
@@ -173,9 +175,7 @@ describe('AddUserGroup', () => {
     const createUserSpy = mockCreateUser();
     createUserSpy.mockImplementation(() => resolveErrorThreeSecond({}));
     renderWithRedux(<AddUserGroup />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.input(
       screen.getByLabelText('userGroup.userGroupField.userGroupName'),
@@ -185,18 +185,15 @@ describe('AddUserGroup', () => {
     );
     fireEvent.click(screen.getByText('common.submit'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(screen.getByText('common.submit').parentNode).toHaveClass(
       'ant-btn-loading'
     );
     expect(screen.getByText('common.close').parentNode).toBeDisabled();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByText('common.submit').parentNode).not.toHaveClass(
       'ant-btn-loading'
     );

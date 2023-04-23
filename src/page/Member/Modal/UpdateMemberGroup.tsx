@@ -82,7 +82,7 @@ const UpdateMemberGroup: React.FC = () => {
 
   return (
     <Modal
-      visible={modalVisibility}
+      open={modalVisibility}
       title={t('member.updateMemberGroup.modalTitle')}
       closable={false}
       footer={

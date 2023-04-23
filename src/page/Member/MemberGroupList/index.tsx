@@ -1,5 +1,5 @@
 import { SyncOutlined } from '@ant-design/icons';
-import { useTheme } from '@material-ui/styles';
+import { useTheme } from '@mui/styles';
 import { useRequest } from 'ahooks';
 import { Button, Card, message, Space, Table } from 'antd';
 import { useEffect, useMemo } from 'react';
@@ -19,12 +19,12 @@ import {
   updateMemberModalStatus,
   updateSelectMemberGroup,
 } from '../../../store/member';
-import { Theme } from '../../../types/theme.type';
 import EventEmitter from '../../../utils/EventEmitter';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import MemberGroupListTableColumnFactory from './column';
 import MemberGroupListFilterForm from './FilterForm';
 import { MemberGroupListFilterFormFields } from './index.type';
+import { Theme } from '@mui/material/styles';
 
 const UserGroupList: React.FC = () => {
   const { t } = useTranslation();

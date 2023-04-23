@@ -52,6 +52,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
         >
           <div
             class="ant-tabs-tab ant-tabs-tab-active"
+            data-node-key="ALL"
           >
             <div
               aria-controls="rc-tabs-test-panel-ALL"
@@ -66,6 +67,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DDL规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DDL规范"
@@ -80,6 +82,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DML规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DML规范"
@@ -94,6 +97,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="使用建议"
           >
             <div
               aria-controls="rc-tabs-test-panel-使用建议"
@@ -108,6 +112,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="全局配置"
           >
             <div
               aria-controls="rc-tabs-test-panel-全局配置"
@@ -122,6 +127,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="命名规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-命名规范"
@@ -136,6 +142,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="索引规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-索引规范"
@@ -283,9 +290,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -388,9 +393,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -493,9 +496,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -598,9 +599,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -703,9 +702,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -808,9 +805,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -851,60 +846,6 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
             </div>
           </div>
         </div>
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DDL规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DDL规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DML规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DML规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-使用建议"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-使用建议"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-全局配置"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-全局配置"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-命名规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-命名规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-索引规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-索引规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
       </div>
     </div>
   </div>
@@ -960,6 +901,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
         >
           <div
             class="ant-tabs-tab ant-tabs-tab-active"
+            data-node-key="ALL"
           >
             <div
               aria-controls="rc-tabs-test-panel-ALL"
@@ -974,6 +916,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DDL规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DDL规范"
@@ -988,6 +931,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DML规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DML规范"
@@ -1002,6 +946,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="使用建议"
           >
             <div
               aria-controls="rc-tabs-test-panel-使用建议"
@@ -1016,6 +961,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="全局配置"
           >
             <div
               aria-controls="rc-tabs-test-panel-全局配置"
@@ -1030,6 +976,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="命名规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-命名规范"
@@ -1044,6 +991,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="索引规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-索引规范"
@@ -1191,9 +1139,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1292,9 +1238,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1384,9 +1328,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1476,9 +1418,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1568,9 +1508,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1660,9 +1598,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1752,9 +1688,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1844,9 +1778,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -1945,9 +1877,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2037,9 +1967,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2129,9 +2057,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2221,9 +2147,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2313,9 +2237,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2405,9 +2327,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2497,9 +2417,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2589,9 +2507,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2690,9 +2606,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2791,9 +2705,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2883,9 +2795,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -2975,9 +2885,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3067,9 +2975,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3159,9 +3065,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3251,9 +3155,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3343,9 +3245,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3435,9 +3335,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3527,9 +3425,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3619,9 +3515,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3711,9 +3605,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3803,9 +3695,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3895,9 +3785,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -3987,9 +3875,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4079,9 +3965,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4171,9 +4055,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4263,9 +4145,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4355,9 +4235,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4447,9 +4325,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4539,9 +4415,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4628,9 +4502,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4729,9 +4601,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4827,9 +4697,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -4925,9 +4793,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5014,9 +4880,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5106,9 +4970,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5198,9 +5060,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5290,9 +5150,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5382,9 +5240,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5474,9 +5330,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5575,9 +5429,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5676,9 +5528,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5768,9 +5618,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5860,9 +5708,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5952,9 +5798,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -5982,60 +5826,6 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
             </div>
           </div>
         </div>
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DDL规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DDL规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DML规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DML规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-使用建议"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-使用建议"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-全局配置"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-全局配置"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-命名规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-命名规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-索引规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-索引规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
       </div>
     </div>
   </div>
@@ -6055,7 +5845,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
       >
         <button
           ant-click-animating-without-extra-node="true"
-          class="ant-btn"
+          class="ant-btn ant-btn-default"
           type="button"
         >
           <span>
@@ -6134,6 +5924,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
         >
           <div
             class="ant-tabs-tab ant-tabs-tab-active"
+            data-node-key="ALL"
           >
             <div
               aria-controls="rc-tabs-test-panel-ALL"
@@ -6148,6 +5939,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DDL规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DDL规范"
@@ -6162,6 +5954,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DML规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DML规范"
@@ -6176,6 +5969,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="使用建议"
           >
             <div
               aria-controls="rc-tabs-test-panel-使用建议"
@@ -6190,6 +5984,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="全局配置"
           >
             <div
               aria-controls="rc-tabs-test-panel-全局配置"
@@ -6204,6 +5999,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="命名规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-命名规范"
@@ -6218,6 +6014,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="索引规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-索引规范"
@@ -6304,60 +6101,6 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
             </div>
           </div>
         </div>
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DDL规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DDL规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DML规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DML规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-使用建议"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-使用建议"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-全局配置"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-全局配置"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-命名规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-命名规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-索引规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-索引规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
       </div>
     </div>
   </div>
@@ -6413,6 +6156,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
         >
           <div
             class="ant-tabs-tab ant-tabs-tab-active"
+            data-node-key="ALL"
           >
             <div
               aria-controls="rc-tabs-test-panel-ALL"
@@ -6427,6 +6171,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DDL规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DDL规范"
@@ -6441,6 +6186,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DML规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DML规范"
@@ -6455,6 +6201,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="使用建议"
           >
             <div
               aria-controls="rc-tabs-test-panel-使用建议"
@@ -6469,6 +6216,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="全局配置"
           >
             <div
               aria-controls="rc-tabs-test-panel-全局配置"
@@ -6483,6 +6231,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="命名规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-命名规范"
@@ -6497,6 +6246,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="索引规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-索引规范"
@@ -6828,9 +6578,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -6929,9 +6677,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -7021,9 +6767,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -7113,9 +6857,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -7205,9 +6947,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -7297,9 +7037,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -7389,9 +7127,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -7481,9 +7217,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -7573,9 +7307,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -7665,9 +7397,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -7757,9 +7487,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -7849,9 +7577,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -7950,9 +7676,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -8042,9 +7766,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -8134,9 +7856,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -8226,9 +7946,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -8318,9 +8036,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -8410,9 +8126,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -8502,9 +8216,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -8594,9 +8306,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -8695,9 +8405,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -8796,9 +8504,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -8888,9 +8594,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -8980,9 +8684,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -9072,9 +8774,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -9164,9 +8864,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -9256,9 +8954,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -9348,9 +9044,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -9440,9 +9134,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -9532,9 +9224,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -9624,9 +9314,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -9716,9 +9404,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -9808,9 +9494,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -9900,9 +9584,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -9992,9 +9674,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -10084,9 +9764,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -10176,9 +9854,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -10268,9 +9944,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -10360,9 +10034,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -10452,9 +10124,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -10544,9 +10214,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -10633,9 +10301,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -10734,9 +10400,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -10832,9 +10496,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -10930,9 +10592,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -11019,9 +10679,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -11111,9 +10769,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -11203,9 +10859,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -11295,9 +10949,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -11387,9 +11039,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -11479,9 +11129,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -11580,9 +11228,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -11681,9 +11327,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -11773,9 +11417,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -11865,9 +11507,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -11957,9 +11597,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -11987,60 +11625,6 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
             </div>
           </div>
         </div>
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DDL规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DDL规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DML规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DML规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-使用建议"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-使用建议"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-全局配置"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-全局配置"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-命名规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-命名规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-索引规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-索引规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
       </div>
     </div>
   </div>
@@ -12060,7 +11644,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
       >
         <button
           ant-click-animating-without-extra-node="true"
-          class="ant-btn"
+          class="ant-btn ant-btn-default"
           type="button"
         >
           <span>
@@ -12138,6 +11722,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
         >
           <div
             class="ant-tabs-tab ant-tabs-tab-active"
+            data-node-key="ALL"
           >
             <div
               aria-controls="rc-tabs-test-panel-ALL"
@@ -12152,6 +11737,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DDL规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DDL规范"
@@ -12166,6 +11752,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DML规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DML规范"
@@ -12180,6 +11767,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="使用建议"
           >
             <div
               aria-controls="rc-tabs-test-panel-使用建议"
@@ -12194,6 +11782,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="全局配置"
           >
             <div
               aria-controls="rc-tabs-test-panel-全局配置"
@@ -12208,6 +11797,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="命名规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-命名规范"
@@ -12222,6 +11812,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="索引规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-索引规范"
@@ -12579,9 +12170,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -12693,9 +12282,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -12798,9 +12385,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -12903,9 +12488,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -13008,9 +12591,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -13113,9 +12694,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -13218,9 +12797,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -13323,9 +12900,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -13428,9 +13003,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -13533,9 +13106,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -13638,9 +13209,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -13743,9 +13312,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -13857,9 +13424,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -13962,9 +13527,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -14067,9 +13630,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -14172,9 +13733,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -14277,9 +13836,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -14382,9 +13939,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -14487,9 +14042,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -14592,9 +14145,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -14706,9 +14257,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -14820,9 +14369,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -14925,9 +14472,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -15030,9 +14575,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -15135,9 +14678,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -15240,9 +14781,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -15345,9 +14884,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -15450,9 +14987,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -15555,9 +15090,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -15660,9 +15193,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -15765,9 +15296,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -15870,9 +15399,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -15975,9 +15502,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -16080,9 +15605,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -16185,9 +15708,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -16290,9 +15811,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -16395,9 +15914,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -16500,9 +16017,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -16605,9 +16120,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -16710,9 +16223,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -16815,9 +16326,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -16917,9 +16426,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -17031,9 +16538,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -17142,9 +16647,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -17253,9 +16756,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -17355,9 +16856,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -17460,9 +16959,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -17565,9 +17062,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -17670,9 +17165,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -17775,9 +17268,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -17880,9 +17371,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -17994,9 +17483,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -18108,9 +17595,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -18213,9 +17698,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -18318,9 +17801,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -18423,9 +17904,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
                           <span
                             class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                             style="max-width: 500px;"
-                          >
-                            
-                          </span>
+                          />
                         </div>
                       </div>
                     </div>
@@ -18466,60 +17945,6 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
             </div>
           </div>
         </div>
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DDL规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DDL规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DML规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DML规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-使用建议"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-使用建议"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-全局配置"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-全局配置"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-命名规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-命名规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-索引规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-索引规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
       </div>
     </div>
   </div>
@@ -18577,6 +18002,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
         >
           <div
             class="ant-tabs-tab ant-tabs-tab-active"
+            data-node-key="ALL"
           >
             <div
               aria-controls="rc-tabs-test-panel-ALL"
@@ -18591,6 +18017,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DDL规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DDL规范"
@@ -18605,6 +18032,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="DML规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-DML规范"
@@ -18619,6 +18047,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="使用建议"
           >
             <div
               aria-controls="rc-tabs-test-panel-使用建议"
@@ -18633,6 +18062,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="全局配置"
           >
             <div
               aria-controls="rc-tabs-test-panel-全局配置"
@@ -18647,6 +18077,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="命名规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-命名规范"
@@ -18661,6 +18092,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="索引规范"
           >
             <div
               aria-controls="rc-tabs-test-panel-索引规范"
@@ -18747,60 +18179,6 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
             </div>
           </div>
         </div>
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DDL规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DDL规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-DML规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-DML规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-使用建议"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-使用建议"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-全局配置"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-全局配置"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-命名规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-命名规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
-        <div
-          aria-hidden="true"
-          aria-labelledby="rc-tabs-test-tab-索引规范"
-          class="ant-tabs-tabpane"
-          id="rc-tabs-test-panel-索引规范"
-          role="tabpanel"
-          style="display: none;"
-          tabindex="-1"
-        />
       </div>
     </div>
   </div>
@@ -18820,7 +18198,7 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
       >
         <button
           ant-click-animating-without-extra-node="true"
-          class="ant-btn"
+          class="ant-btn ant-btn-default"
           type="button"
         >
           <span>
@@ -19015,206 +18393,225 @@ exports[`UpdateRuleTemplate should render base form at init 1`] = `
               class="ant-form ant-form-horizontal"
             >
               <div
-                class="ant-row ant-form-item"
+                class="ant-form-item"
               >
                 <div
-                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-                >
-                  <label
-                    class="ant-form-item-required"
-                    for="templateName"
-                    title="ruleTemplate.ruleTemplateForm.templateName"
-                  >
-                    ruleTemplate.ruleTemplateForm.templateName
-                  </label>
-                </div>
-                <div
-                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  class="ant-row ant-form-item-row"
                 >
                   <div
-                    class="ant-form-item-control-input"
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
                   >
-                    <div
-                      class="ant-form-item-control-input-content"
+                    <label
+                      class="ant-form-item-required"
+                      for="templateName"
+                      title="ruleTemplate.ruleTemplateForm.templateName"
                     >
-                      <input
-                        class="ant-input"
-                        id="templateName"
-                        placeholder="common.form.placeholder.input"
-                        type="text"
-                        value=""
-                      />
-                    </div>
+                      ruleTemplate.ruleTemplateForm.templateName
+                    </label>
                   </div>
-                </div>
-              </div>
-              <div
-                class="ant-row ant-form-item"
-              >
-                <div
-                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-                >
-                  <label
-                    class=""
-                    for="templateDesc"
-                    title="ruleTemplate.ruleTemplateForm.templateDesc"
-                  >
-                    ruleTemplate.ruleTemplateForm.templateDesc
-                  </label>
-                </div>
-                <div
-                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-                >
                   <div
-                    class="ant-form-item-control-input"
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
                   >
                     <div
-                      class="ant-form-item-control-input-content"
-                    >
-                      <textarea
-                        class="ant-input textarea-no-resize"
-                        id="templateDesc"
-                        placeholder="common.form.placeholder.input"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="ant-row ant-form-item"
-              >
-                <div
-                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-                >
-                  <label
-                    class="ant-form-item-required"
-                    for="db_type"
-                    title="ruleTemplate.ruleTemplateForm.databaseType"
-                  >
-                    ruleTemplate.ruleTemplateForm.databaseType
-                  </label>
-                </div>
-                <div
-                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-                >
-                  <div
-                    class="ant-form-item-control-input"
-                  >
-                    <div
-                      class="ant-form-item-control-input-content"
+                      class="ant-form-item-control-input"
                     >
                       <div
-                        class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow"
+                        class="ant-form-item-control-input-content"
                       >
-                        <div
-                          class="ant-select-selector"
-                        >
-                          <span
-                            class="ant-select-selection-search"
-                          >
-                            <input
-                              aria-activedescendant="db_type_list_0"
-                              aria-autocomplete="list"
-                              aria-controls="db_type_list"
-                              aria-haspopup="listbox"
-                              aria-owns="db_type_list"
-                              autocomplete="off"
-                              class="ant-select-selection-search-input"
-                              id="db_type"
-                              readonly=""
-                              role="combobox"
-                              style="opacity: 0;"
-                              type="search"
-                              unselectable="on"
-                              value=""
-                            />
-                          </span>
-                          <span
-                            class="ant-select-selection-placeholder"
-                          >
-                            common.form.placeholder.select
-                          </span>
-                        </div>
-                        <span
-                          aria-hidden="true"
-                          class="ant-select-arrow"
-                          style="user-select: none;"
-                          unselectable="on"
-                        >
-                          <span
-                            aria-label="down"
-                            class="anticon anticon-down ant-select-suffix"
-                            role="img"
-                          >
-                            <svg
-                              aria-hidden="true"
-                              data-icon="down"
-                              fill="currentColor"
-                              focusable="false"
-                              height="1em"
-                              viewBox="64 64 896 896"
-                              width="1em"
-                            >
-                              <path
-                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                              />
-                            </svg>
-                          </span>
-                        </span>
+                        <input
+                          aria-required="true"
+                          class="ant-input"
+                          id="templateName"
+                          placeholder="common.form.placeholder.input"
+                          type="text"
+                          value=""
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div
-                class="ant-row ant-form-item"
+                class="ant-form-item"
               >
                 <div
-                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-                >
-                  <label
-                    class="ant-form-item-no-colon"
-                    title=" "
-                  >
-                     
-                  </label>
-                </div>
-                <div
-                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  class="ant-row ant-form-item-row"
                 >
                   <div
-                    class="ant-form-item-control-input"
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class=""
+                      for="templateDesc"
+                      title="ruleTemplate.ruleTemplateForm.templateDesc"
+                    >
+                      ruleTemplate.ruleTemplateForm.templateDesc
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
                   >
                     <div
-                      class="ant-form-item-control-input-content"
+                      class="ant-form-item-control-input"
                     >
                       <div
-                        class="ant-space ant-space-horizontal ant-space-align-center"
+                        class="ant-form-item-control-input-content"
+                      >
+                        <textarea
+                          class="ant-input textarea-no-resize"
+                          id="templateDesc"
+                          placeholder="common.form.placeholder.input"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-form-item"
+              >
+                <div
+                  class="ant-row ant-form-item-row"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class="ant-form-item-required"
+                      for="db_type"
+                      title="ruleTemplate.ruleTemplateForm.databaseType"
+                    >
+                      ruleTemplate.ruleTemplateForm.databaseType
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
                       >
                         <div
-                          class="ant-space-item"
-                          style="margin-right: 8px;"
+                          aria-required="true"
+                          class="ant-select ant-select-in-form-item ant-select-single ant-select-allow-clear ant-select-show-arrow"
                         >
-                          <button
-                            class="ant-btn"
-                            type="button"
+                          <div
+                            class="ant-select-selector"
                           >
-                            <span>
-                              common.reset
+                            <span
+                              class="ant-select-selection-search"
+                            >
+                              <input
+                                aria-activedescendant="db_type_list_0"
+                                aria-autocomplete="list"
+                                aria-controls="db_type_list"
+                                aria-haspopup="listbox"
+                                aria-owns="db_type_list"
+                                aria-required="true"
+                                autocomplete="off"
+                                class="ant-select-selection-search-input"
+                                id="db_type"
+                                readonly=""
+                                role="combobox"
+                                style="opacity: 0;"
+                                type="search"
+                                unselectable="on"
+                                value=""
+                              />
                             </span>
-                          </button>
+                            <span
+                              class="ant-select-selection-placeholder"
+                            >
+                              common.form.placeholder.select
+                            </span>
+                          </div>
+                          <span
+                            aria-hidden="true"
+                            class="ant-select-arrow"
+                            style="user-select: none;"
+                            unselectable="on"
+                          >
+                            <span
+                              aria-label="down"
+                              class="anticon anticon-down ant-select-suffix"
+                              role="img"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                data-icon="down"
+                                fill="currentColor"
+                                focusable="false"
+                                height="1em"
+                                viewBox="64 64 896 896"
+                                width="1em"
+                              >
+                                <path
+                                  d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                                />
+                              </svg>
+                            </span>
+                          </span>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-form-item"
+              >
+                <div
+                  class="ant-row ant-form-item-row"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class="ant-form-item-no-colon"
+                      title=" "
+                    >
+                       
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
                         <div
-                          class="ant-space-item"
+                          class="ant-space ant-space-horizontal ant-space-align-center"
                         >
-                          <button
-                            class="ant-btn ant-btn-primary"
-                            type="button"
+                          <div
+                            class="ant-space-item"
+                            style="margin-right: 8px;"
                           >
-                            <span>
-                              common.nextStep
-                            </span>
-                          </button>
+                            <button
+                              class="ant-btn ant-btn-default"
+                              type="button"
+                            >
+                              <span>
+                                common.reset
+                              </span>
+                            </button>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <button
+                              class="ant-btn ant-btn-primary"
+                              type="button"
+                            >
+                              <span>
+                                common.nextStep
+                              </span>
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -19281,6 +18678,7 @@ exports[`UpdateRuleTemplate should render base form at init 1`] = `
                   >
                     <div
                       class="ant-tabs-tab ant-tabs-tab-active"
+                      data-node-key="ALL"
                     >
                       <div
                         aria-controls="rc-tabs-test-panel-ALL"
@@ -19356,6 +18754,8 @@ exports[`UpdateRuleTemplate should render base form at init 1`] = `
                       >
                         <div>
                           <div
+                            aria-busy="true"
+                            aria-live="polite"
                             class="ant-spin ant-spin-spinning"
                           >
                             <span
@@ -19442,6 +18842,7 @@ exports[`UpdateRuleTemplate should render base form at init 1`] = `
                   >
                     <div
                       class="ant-tabs-tab ant-tabs-tab-active"
+                      data-node-key="ALL"
                     >
                       <div
                         aria-controls="rc-tabs-test-panel-ALL"
@@ -19517,6 +18918,8 @@ exports[`UpdateRuleTemplate should render base form at init 1`] = `
                       >
                         <div>
                           <div
+                            aria-busy="true"
+                            aria-live="polite"
                             class="ant-spin ant-spin-spinning"
                           >
                             <span
@@ -19565,7 +18968,7 @@ exports[`UpdateRuleTemplate should render base form at init 1`] = `
                   style="margin-right: 8px;"
                 >
                   <button
-                    class="ant-btn"
+                    class="ant-btn ant-btn-default"
                     type="button"
                   >
                     <span>
@@ -19822,212 +19225,231 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
               class="ant-form ant-form-horizontal"
             >
               <div
-                class="ant-row ant-form-item ant-form-item-has-success"
+                class="ant-form-item ant-form-item-has-success"
               >
                 <div
-                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-                >
-                  <label
-                    class="ant-form-item-required"
-                    for="templateName"
-                    title="ruleTemplate.ruleTemplateForm.templateName"
-                  >
-                    ruleTemplate.ruleTemplateForm.templateName
-                  </label>
-                </div>
-                <div
-                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  class="ant-row ant-form-item-row"
                 >
                   <div
-                    class="ant-form-item-control-input"
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
                   >
-                    <div
-                      class="ant-form-item-control-input-content"
+                    <label
+                      class="ant-form-item-required"
+                      for="templateName"
+                      title="ruleTemplate.ruleTemplateForm.templateName"
                     >
-                      <input
-                        class="ant-input ant-input-disabled"
-                        disabled=""
-                        id="templateName"
-                        placeholder="common.form.placeholder.input"
-                        type="text"
-                        value="default_mysql"
-                      />
-                    </div>
+                      ruleTemplate.ruleTemplateForm.templateName
+                    </label>
                   </div>
-                </div>
-              </div>
-              <div
-                class="ant-row ant-form-item ant-form-item-has-success"
-              >
-                <div
-                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-                >
-                  <label
-                    class=""
-                    for="templateDesc"
-                    title="ruleTemplate.ruleTemplateForm.templateDesc"
-                  >
-                    ruleTemplate.ruleTemplateForm.templateDesc
-                  </label>
-                </div>
-                <div
-                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-                >
                   <div
-                    class="ant-form-item-control-input"
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
                   >
                     <div
-                      class="ant-form-item-control-input-content"
-                    >
-                      <textarea
-                        class="ant-input textarea-no-resize"
-                        id="templateDesc"
-                        placeholder="common.form.placeholder.input"
-                      >
-                        默认规则模板
-                      </textarea>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="ant-row ant-form-item ant-form-item-has-success"
-              >
-                <div
-                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-                >
-                  <label
-                    class="ant-form-item-required"
-                    for="db_type"
-                    title="ruleTemplate.ruleTemplateForm.databaseType"
-                  >
-                    ruleTemplate.ruleTemplateForm.databaseType
-                  </label>
-                </div>
-                <div
-                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-                >
-                  <div
-                    class="ant-form-item-control-input"
-                  >
-                    <div
-                      class="ant-form-item-control-input-content"
+                      class="ant-form-item-control-input"
                     >
                       <div
-                        class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-disabled"
+                        class="ant-form-item-control-input-content"
                       >
-                        <div
-                          class="ant-select-selector"
-                        >
-                          <span
-                            class="ant-select-selection-search"
-                          >
-                            <input
-                              aria-activedescendant="db_type_list_0"
-                              aria-autocomplete="list"
-                              aria-controls="db_type_list"
-                              aria-expanded="false"
-                              aria-haspopup="listbox"
-                              aria-owns="db_type_list"
-                              autocomplete="off"
-                              class="ant-select-selection-search-input"
-                              disabled=""
-                              id="db_type"
-                              readonly=""
-                              role="combobox"
-                              style="opacity: 0;"
-                              type="search"
-                              unselectable="on"
-                              value=""
-                            />
-                          </span>
-                          <span
-                            class="ant-select-selection-item"
-                            title="mysql"
-                          >
-                            mysql
-                          </span>
-                        </div>
-                        <span
-                          aria-hidden="true"
-                          class="ant-select-arrow"
-                          style="user-select: none;"
-                          unselectable="on"
-                        >
-                          <span
-                            aria-label="down"
-                            class="anticon anticon-down ant-select-suffix"
-                            role="img"
-                          >
-                            <svg
-                              aria-hidden="true"
-                              data-icon="down"
-                              fill="currentColor"
-                              focusable="false"
-                              height="1em"
-                              viewBox="64 64 896 896"
-                              width="1em"
-                            >
-                              <path
-                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                              />
-                            </svg>
-                          </span>
-                        </span>
+                        <input
+                          aria-required="true"
+                          class="ant-input ant-input-disabled ant-input-status-success"
+                          disabled=""
+                          id="templateName"
+                          placeholder="common.form.placeholder.input"
+                          type="text"
+                          value="default_mysql"
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div
-                class="ant-row ant-form-item"
+                class="ant-form-item ant-form-item-has-success"
               >
                 <div
-                  class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-                >
-                  <label
-                    class="ant-form-item-no-colon"
-                    title=" "
-                  >
-                     
-                  </label>
-                </div>
-                <div
-                  class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  class="ant-row ant-form-item-row"
                 >
                   <div
-                    class="ant-form-item-control-input"
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class=""
+                      for="templateDesc"
+                      title="ruleTemplate.ruleTemplateForm.templateDesc"
+                    >
+                      ruleTemplate.ruleTemplateForm.templateDesc
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
                   >
                     <div
-                      class="ant-form-item-control-input-content"
+                      class="ant-form-item-control-input"
                     >
                       <div
-                        class="ant-space ant-space-horizontal ant-space-align-center"
+                        class="ant-form-item-control-input-content"
+                      >
+                        <textarea
+                          class="ant-input textarea-no-resize ant-input-status-success"
+                          id="templateDesc"
+                          placeholder="common.form.placeholder.input"
+                        >
+                          默认规则模板
+                        </textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-form-item ant-form-item-has-success"
+              >
+                <div
+                  class="ant-row ant-form-item-row"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class="ant-form-item-required"
+                      for="db_type"
+                      title="ruleTemplate.ruleTemplateForm.databaseType"
+                    >
+                      ruleTemplate.ruleTemplateForm.databaseType
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
                       >
                         <div
-                          class="ant-space-item"
-                          style="margin-right: 8px;"
+                          aria-required="true"
+                          class="ant-select ant-select-in-form-item ant-select-status-success ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-disabled"
                         >
-                          <button
-                            class="ant-btn"
-                            type="button"
+                          <div
+                            class="ant-select-selector"
                           >
-                            <span>
-                              common.reset
+                            <span
+                              class="ant-select-selection-search"
+                            >
+                              <input
+                                aria-activedescendant="db_type_list_0"
+                                aria-autocomplete="list"
+                                aria-controls="db_type_list"
+                                aria-expanded="false"
+                                aria-haspopup="listbox"
+                                aria-owns="db_type_list"
+                                aria-required="true"
+                                autocomplete="off"
+                                class="ant-select-selection-search-input"
+                                disabled=""
+                                id="db_type"
+                                readonly=""
+                                role="combobox"
+                                style="opacity: 0;"
+                                type="search"
+                                unselectable="on"
+                                value=""
+                              />
                             </span>
-                          </button>
+                            <span
+                              class="ant-select-selection-item"
+                              title="mysql"
+                            >
+                              mysql
+                            </span>
+                          </div>
+                          <span
+                            aria-hidden="true"
+                            class="ant-select-arrow"
+                            style="user-select: none;"
+                            unselectable="on"
+                          >
+                            <span
+                              aria-label="down"
+                              class="anticon anticon-down ant-select-suffix"
+                              role="img"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                data-icon="down"
+                                fill="currentColor"
+                                focusable="false"
+                                height="1em"
+                                viewBox="64 64 896 896"
+                                width="1em"
+                              >
+                                <path
+                                  d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                                />
+                              </svg>
+                            </span>
+                          </span>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-form-item"
+              >
+                <div
+                  class="ant-row ant-form-item-row"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class="ant-form-item-no-colon"
+                      title=" "
+                    >
+                       
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
                         <div
-                          class="ant-space-item"
+                          class="ant-space ant-space-horizontal ant-space-align-center"
                         >
-                          <button
-                            class="ant-btn ant-btn-primary"
-                            type="button"
+                          <div
+                            class="ant-space-item"
+                            style="margin-right: 8px;"
                           >
-                            <span>
-                              common.nextStep
-                            </span>
-                          </button>
+                            <button
+                              class="ant-btn ant-btn-default"
+                              type="button"
+                            >
+                              <span>
+                                common.reset
+                              </span>
+                            </button>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          >
+                            <button
+                              class="ant-btn ant-btn-primary"
+                              type="button"
+                            >
+                              <span>
+                                common.nextStep
+                              </span>
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -20093,6 +19515,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                   >
                     <div
                       class="ant-tabs-tab ant-tabs-tab-active"
+                      data-node-key="ALL"
                     >
                       <div
                         aria-controls="rc-tabs-test-panel-ALL"
@@ -20107,6 +19530,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                     </div>
                     <div
                       class="ant-tabs-tab"
+                      data-node-key="DDL规范"
                     >
                       <div
                         aria-controls="rc-tabs-test-panel-DDL规范"
@@ -20121,6 +19545,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                     </div>
                     <div
                       class="ant-tabs-tab"
+                      data-node-key="DML规范"
                     >
                       <div
                         aria-controls="rc-tabs-test-panel-DML规范"
@@ -20135,6 +19560,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                     </div>
                     <div
                       class="ant-tabs-tab"
+                      data-node-key="使用建议"
                     >
                       <div
                         aria-controls="rc-tabs-test-panel-使用建议"
@@ -20209,8 +19635,32 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                       <div
                         class="ant-spin-nested-loading"
                       >
+                        <div>
+                          <div
+                            aria-busy="true"
+                            aria-live="polite"
+                            class="ant-spin ant-spin-spinning"
+                          >
+                            <span
+                              class="ant-spin-dot ant-spin-dot-spin"
+                            >
+                              <i
+                                class="ant-spin-dot-item"
+                              />
+                              <i
+                                class="ant-spin-dot-item"
+                              />
+                              <i
+                                class="ant-spin-dot-item"
+                              />
+                              <i
+                                class="ant-spin-dot-item"
+                              />
+                            </span>
+                          </div>
+                        </div>
                         <div
-                          class="ant-spin-container"
+                          class="ant-spin-container ant-spin-blur"
                         >
                           <ul
                             class="ant-list-items"
@@ -20282,9 +19732,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                                     <span
                                       class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                                       style="max-width: 500px;"
-                                    >
-                                      
-                                    </span>
+                                    />
                                   </div>
                                 </div>
                               </div>
@@ -20387,9 +19835,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                                     <span
                                       class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                                       style="max-width: 500px;"
-                                    >
-                                      
-                                    </span>
+                                    />
                                   </div>
                                 </div>
                               </div>
@@ -20492,9 +19938,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                                     <span
                                       class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                                       style="max-width: 500px;"
-                                    >
-                                      
-                                    </span>
+                                    />
                                   </div>
                                 </div>
                               </div>
@@ -20597,9 +20041,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                                     <span
                                       class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                                       style="max-width: 500px;"
-                                    >
-                                      
-                                    </span>
+                                    />
                                   </div>
                                 </div>
                               </div>
@@ -20702,9 +20144,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                                     <span
                                       class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                                       style="max-width: 500px;"
-                                    >
-                                      
-                                    </span>
+                                    />
                                   </div>
                                 </div>
                               </div>
@@ -20807,9 +20247,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                                     <span
                                       class="ant-typography ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
                                       style="max-width: 500px;"
-                                    >
-                                      
-                                    </span>
+                                    />
                                   </div>
                                 </div>
                               </div>
@@ -20850,33 +20288,6 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                       </div>
                     </div>
                   </div>
-                  <div
-                    aria-hidden="true"
-                    aria-labelledby="rc-tabs-test-tab-DDL规范"
-                    class="ant-tabs-tabpane"
-                    id="rc-tabs-test-panel-DDL规范"
-                    role="tabpanel"
-                    style="display: none;"
-                    tabindex="-1"
-                  />
-                  <div
-                    aria-hidden="true"
-                    aria-labelledby="rc-tabs-test-tab-DML规范"
-                    class="ant-tabs-tabpane"
-                    id="rc-tabs-test-panel-DML规范"
-                    role="tabpanel"
-                    style="display: none;"
-                    tabindex="-1"
-                  />
-                  <div
-                    aria-hidden="true"
-                    aria-labelledby="rc-tabs-test-tab-使用建议"
-                    class="ant-tabs-tabpane"
-                    id="rc-tabs-test-panel-使用建议"
-                    role="tabpanel"
-                    style="display: none;"
-                    tabindex="-1"
-                  />
                 </div>
               </div>
             </div>
@@ -20933,6 +20344,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                   >
                     <div
                       class="ant-tabs-tab ant-tabs-tab-active"
+                      data-node-key="ALL"
                     >
                       <div
                         aria-controls="rc-tabs-test-panel-ALL"
@@ -21007,8 +20419,32 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                       <div
                         class="ant-spin-nested-loading"
                       >
+                        <div>
+                          <div
+                            aria-busy="true"
+                            aria-live="polite"
+                            class="ant-spin ant-spin-spinning"
+                          >
+                            <span
+                              class="ant-spin-dot ant-spin-dot-spin"
+                            >
+                              <i
+                                class="ant-spin-dot-item"
+                              />
+                              <i
+                                class="ant-spin-dot-item"
+                              />
+                              <i
+                                class="ant-spin-dot-item"
+                              />
+                              <i
+                                class="ant-spin-dot-item"
+                              />
+                            </span>
+                          </div>
+                        </div>
                         <div
-                          class="ant-spin-container"
+                          class="ant-spin-container ant-spin-blur"
                         >
                           <div
                             class="ant-list-empty-text"
@@ -21038,7 +20474,7 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                   style="margin-right: 8px;"
                 >
                   <button
-                    class="ant-btn"
+                    class="ant-btn ant-btn-default"
                     type="button"
                   >
                     <span>

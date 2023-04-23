@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { RuleResV1LevelEnum } from '../../../../api/common.enum';
 import rule_template from '../../../../api/rule_template';
 import { renderWithThemeAndRouter } from '../../../../testUtils/customRender';
@@ -8,6 +8,7 @@ import {
 } from '../../../../testUtils/mockRequest';
 import { allRulesWithType } from '../../../Rule/__testData__';
 import ImportRuleTemplate from '../ImportRuleTemplate';
+import useNavigate from '../../../../hooks/useNavigate';
 
 const parseFileData = {
   name: 'test1',
@@ -31,16 +32,19 @@ const sqlFile = new File(
   'test.txt'
 );
 
+jest.mock('../../../../hooks/useNavigate', () => jest.fn());
+
 describe('test GlobalRuleTemplate/ImportRuleTemplate', () => {
   let getAllRulesSpy: jest.SpyInstance;
   let importProjectRuleTemplateSpy: jest.SpyInstance;
   let createTemplateSpy: jest.SpyInstance;
-
+  const navigateSpy = jest.fn();
   beforeEach(() => {
     mockDriver();
     createTemplateSpy = mockCreateTemplate();
     getAllRulesSpy = mockGetAllRules();
     importProjectRuleTemplateSpy = mockImportProjectRuleTemplate();
+    (useNavigate as jest.Mock).mockImplementation(() => navigateSpy);
     jest.useFakeTimers();
   });
   afterEach(() => {
@@ -81,26 +85,22 @@ describe('test GlobalRuleTemplate/ImportRuleTemplate', () => {
         target: { files: [sqlFile] },
       }
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
     fireEvent.click(
       screen.getByText('ruleTemplate.importRuleTemplate.submitText')
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(
-      screen.queryByText('ruleTemplate.importRuleTemplate.importingFile')
+      screen.getByText('ruleTemplate.importRuleTemplate.importingFile')
     ).toBeInTheDocument();
     expect(importProjectRuleTemplateSpy).toBeCalledTimes(1);
     expect(importProjectRuleTemplateSpy).toBeCalledWith({
       rule_template_file: sqlFile,
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('ruleTemplate.importRuleTemplate.importingFile')
     ).not.toBeInTheDocument();
@@ -108,9 +108,7 @@ describe('test GlobalRuleTemplate/ImportRuleTemplate', () => {
     expect(getAllRulesSpy).toBeCalledWith({
       filter_db_type: parseFileData.db_type,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName')
@@ -127,9 +125,8 @@ describe('test GlobalRuleTemplate/ImportRuleTemplate', () => {
 
     fireEvent.click(screen.getByText('common.nextStep'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByTestId('base-form')).toHaveAttribute('hidden');
     expect(screen.getByTestId('rule-list')).not.toHaveAttribute('hidden');
 
@@ -139,9 +136,8 @@ describe('test GlobalRuleTemplate/ImportRuleTemplate', () => {
 
     fireEvent.click(screen.getByText('common.nextStep'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByTestId('base-form')).toHaveAttribute('hidden');
     expect(screen.getByTestId('rule-list')).not.toHaveAttribute('hidden');
 
@@ -166,9 +162,7 @@ describe('test GlobalRuleTemplate/ImportRuleTemplate', () => {
       ],
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.getByText('ruleTemplate.importRuleTemplate.successTitle')

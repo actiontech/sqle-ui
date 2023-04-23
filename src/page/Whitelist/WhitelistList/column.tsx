@@ -1,7 +1,7 @@
 import { Space, Typography, Divider, Popconfirm } from 'antd';
 import { IAuditWhitelistResV1 } from '../../../api/common.d';
 import { CreateAuditWhitelistReqV1MatchTypeEnum } from '../../../api/common.enum';
-import i18n from '../../../locale';
+import { t } from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import HighlightCode from '../../../utils/HighlightCode';
 import { WhitelistMatchTypeLabel } from '../WhitelistForm';
@@ -15,7 +15,7 @@ export const WhitelistColumn = (
   const columns: TableColumn<IAuditWhitelistResV1, 'operator'> = [
     {
       dataIndex: 'value',
-      title: () => i18n.t('whitelist.table.sql'),
+      title: () => t('whitelist.table.sql'),
       render: (sql?: string) => {
         if (!!sql) {
           return (
@@ -32,29 +32,29 @@ export const WhitelistColumn = (
     },
     {
       dataIndex: 'desc',
-      title: () => i18n.t('whitelist.table.desc'),
+      title: () => t('whitelist.table.desc'),
     },
     {
       dataIndex: 'match_type',
-      title: () => i18n.t('whitelist.table.matchType'),
+      title: () => t('whitelist.table.matchType'),
       render: (matchType?: CreateAuditWhitelistReqV1MatchTypeEnum) => {
-        return matchType ? i18n.t(WhitelistMatchTypeLabel[matchType]) : null;
+        return matchType ? t(WhitelistMatchTypeLabel[matchType]) : null;
       },
     },
     {
       dataIndex: 'operator',
-      title: () => i18n.t('common.operate'),
+      title: () => t('common.operate'),
       render: (_, record) => (
         <Space>
           <Typography.Link
             className="pointer"
             onClick={updateWhitelist.bind(null, record)}
           >
-            {i18n.t('common.edit')}
+            {t('common.edit')}
           </Typography.Link>
           <Divider type="vertical" />
           <Popconfirm
-            title={i18n.t('whitelist.operate.confirmDelete')}
+            title={t('whitelist.operate.confirmDelete')}
             placement="topRight"
             onConfirm={deleteWhitelist.bind(
               null,
@@ -62,7 +62,7 @@ export const WhitelistColumn = (
             )}
           >
             <Typography.Text type="danger" className="pointer">
-              {i18n.t('common.delete')}
+              {t('common.delete')}
             </Typography.Text>
           </Popconfirm>
         </Space>

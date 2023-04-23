@@ -3,7 +3,7 @@ import { Button, Card, Result, Row } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import {
   IRuleReqV1,
   IRuleResV1,
@@ -14,6 +14,7 @@ import { ResponseCode } from '../../../data/common';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import RuleTemplateForm from '../RuleTemplateForm';
 import { RuleTemplateBaseInfoFields } from '../RuleTemplateForm/BaseInfoForm/index.type';
+import { Link } from '../../../components/Link';
 
 const UpdateRuleTemplate = () => {
   const { t } = useTranslation();
@@ -78,7 +79,7 @@ const UpdateRuleTemplate = () => {
   React.useEffect(() => {
     ruleTemplateService
       .getProjectRuleTemplateV1({
-        rule_template_name: urlParams.templateName,
+        rule_template_name: urlParams.templateName ?? '',
         project_name: projectName,
       })
       .then((res) => {
@@ -95,7 +96,7 @@ const UpdateRuleTemplate = () => {
       <Card
         title={t('ruleTemplate.updateRuleTemplate.title')}
         extra={[
-          <Link to={`/project/${projectName}/rule/template`} key="back">
+          <Link to={`project/${projectName}/rule/template`} key="back">
             <Button type="primary">{t('common.back')}</Button>
           </Link>,
         ]}
@@ -120,7 +121,7 @@ const UpdateRuleTemplate = () => {
             title={t('ruleTemplate.updateRuleTemplate.successTitle')}
           />
           <Row justify="center">
-            <Link to={`/project/${projectName}/rule/template`}>
+            <Link to={`project/${projectName}/rule/template`}>
               <Button type="primary">{t('ruleTemplate.backToList')}</Button>
             </Link>
           </Row>

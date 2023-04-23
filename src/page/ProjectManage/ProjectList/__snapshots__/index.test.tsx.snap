@@ -56,7 +56,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                   class="ant-space-item"
                 >
                   <button
-                    class="ant-btn"
+                    class="ant-btn ant-btn-default"
                     data-testid="refresh-project"
                     type="button"
                   >
@@ -108,6 +108,8 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
             >
               <div>
                 <div
+                  aria-busy="true"
+                  aria-live="polite"
                   class="ant-spin ant-spin-spinning"
                 >
                   <span
@@ -245,7 +247,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                                 <div
                                   class="ant-empty-description"
                                 >
-                                  No Data
+                                  No data
                                 </div>
                               </div>
                             </td>
@@ -321,7 +323,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                   class="ant-space-item"
                 >
                   <button
-                    class="ant-btn"
+                    class="ant-btn ant-btn-default"
                     data-testid="refresh-project"
                     type="button"
                   >
@@ -371,8 +373,32 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
             <div
               class="ant-spin-nested-loading"
             >
+              <div>
+                <div
+                  aria-busy="true"
+                  aria-live="polite"
+                  class="ant-spin ant-spin-spinning"
+                >
+                  <span
+                    class="ant-spin-dot ant-spin-dot-spin"
+                  >
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                    <i
+                      class="ant-spin-dot-item"
+                    />
+                  </span>
+                </div>
+              </div>
               <div
-                class="ant-spin-container"
+                class="ant-spin-container ant-spin-blur"
               >
                 <div
                   class="ant-table"
@@ -446,7 +472,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project1"
+                                href="/project/project1/overview"
                               >
                                 project1
                               </a>
@@ -538,7 +564,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project2"
+                                href="/project/project2/overview"
                               >
                                 project2
                               </a>
@@ -630,7 +656,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project3"
+                                href="/project/project3/overview"
                               >
                                 project3
                               </a>
@@ -722,7 +748,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project4"
+                                href="/project/project4/overview"
                               >
                                 project4
                               </a>
@@ -814,7 +840,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project5"
+                                href="/project/project5/overview"
                               >
                                 project5
                               </a>
@@ -906,7 +932,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project6"
+                                href="/project/project6/overview"
                               >
                                 project6
                               </a>
@@ -998,7 +1024,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project7"
+                                href="/project/project7/overview"
                               >
                                 project7
                               </a>
@@ -1090,7 +1116,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project8"
+                                href="/project/project8/overview"
                               >
                                 project8
                               </a>
@@ -1182,7 +1208,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project9"
+                                href="/project/project9/overview"
                               >
                                 project9
                               </a>
@@ -1274,7 +1300,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                               class="ant-table-cell"
                             >
                               <a
-                                href="/project/project10"
+                                href="/project/project10/overview"
                               >
                                 project10
                               </a>
@@ -1365,7 +1391,6 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                 </div>
                 <ul
                   class="ant-pagination ant-table-pagination ant-table-pagination-right"
-                  unselectable="unselectable"
                 >
                   <li
                     aria-disabled="true"
@@ -1457,6 +1482,7 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                     class="ant-pagination-options"
                   >
                     <div
+                      aria-label="Page Size"
                       class="ant-select ant-pagination-options-size-changer ant-select-single ant-select-show-arrow"
                     >
                       <div
@@ -1469,7 +1495,9 @@ exports[`test ProjectManage/ProjectList should be get data from the request to r
                             aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
                             aria-autocomplete="list"
                             aria-controls="rc_select_TEST_OR_SSR_list"
+                            aria-expanded="false"
                             aria-haspopup="listbox"
+                            aria-label="Page Size"
                             aria-owns="rc_select_TEST_OR_SSR_list"
                             autocomplete="off"
                             class="ant-select-selection-search-input"

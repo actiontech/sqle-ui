@@ -1,4 +1,4 @@
-import { act, waitFor } from '@testing-library/react';
+import { act } from '@testing-library/react';
 import PlanAuditRecord from '.';
 import audit_plan from '../../../../../api/audit_plan';
 import EmitterKey from '../../../../../data/EmitterKey';
@@ -31,9 +31,7 @@ describe('AuditPlanRecord', () => {
       <PlanAuditRecord auditPlanName="planName" projectName={projectName} />
     );
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
     expect(container).toMatchSnapshot();
     expect(getReportSpy).toBeCalledTimes(1);
     act(() => {

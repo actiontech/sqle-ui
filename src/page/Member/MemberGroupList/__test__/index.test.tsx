@@ -1,10 +1,4 @@
-import {
-  cleanup,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from '@testing-library/react';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import { useParams } from 'react-router-dom';
 import MemberGroupList from '..';
@@ -13,10 +7,6 @@ import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
 import { mockBindProjects } from '../../../../hooks/useCurrentUser/index.test';
 import { selectOptionByIndex } from '../../../../testUtils/customQuery';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../testUtils/mockRedux';
 import {
   mockUseInstance,
   mockUseUserGroup,
@@ -27,17 +17,26 @@ import {
   mockGetMemberGroups,
   mockMemberGroupList,
 } from './utils';
-import { useTheme } from '@material-ui/styles';
+import { useTheme } from '@mui/styles';
+import { useDispatch, useSelector } from 'react-redux';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn(),
 }));
 
-jest.mock('@material-ui/styles', () => {
+jest.mock('@mui/styles', () => {
   return {
-    ...jest.requireActual('@material-ui/styles'),
+    ...jest.requireActual('@mui/styles'),
     useTheme: jest.fn(),
+  };
+});
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
   };
 });
 
@@ -47,7 +46,7 @@ describe('test MemberGroupList', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
   let getMemberGroupsSpy: jest.SpyInstance;
   let deleteMemberGroupSpy: jest.SpyInstance;
-  let dispatchSpy: jest.SpyInstance;
+  const dispatchSpy = jest.fn();
   const useThemeMock: jest.Mock = useTheme as jest.Mock;
 
   beforeEach(() => {
@@ -56,11 +55,14 @@ describe('test MemberGroupList', () => {
     mockUseUserGroup();
     mockUseInstance();
     useParamsMock.mockReturnValue({ projectName });
-    dispatchSpy = mockUseDispatch().scopeDispatch;
-    mockUseSelector({
-      user: { role: SystemRole.admin, bindProjects: mockBindProjects },
-      projectManage: { archived: false },
-    });
+
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { role: SystemRole.admin, bindProjects: mockBindProjects },
+        projectManage: { archived: false },
+      })
+    );
     useThemeMock.mockReturnValue({ common: { padding: 24 } });
 
     jest.useFakeTimers();
@@ -74,18 +76,16 @@ describe('test MemberGroupList', () => {
   test('should match snapshot', async () => {
     const { container } = render(<MemberGroupList />);
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
   test('should call refresh list request when receive event from EventEmit', async () => {
     expect(getMemberGroupsSpy).toBeCalledTimes(0);
     render(<MemberGroupList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getMemberGroupsSpy).toBeCalledTimes(1);
     expect(getMemberGroupsSpy).toBeCalledWith({
       page_index: 1,
@@ -93,7 +93,7 @@ describe('test MemberGroupList', () => {
       project_name: projectName,
     });
 
-    act(() => {
+    await act(() => {
       EventEmitter.emit(EmitterKey.Refresh_Member_Group_List);
     });
 
@@ -108,9 +108,8 @@ describe('test MemberGroupList', () => {
   test('should call refresh list request when clicking search button and reset button', async () => {
     expect(getMemberGroupsSpy).toBeCalledTimes(0);
     render(<MemberGroupList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getMemberGroupsSpy).toBeCalledTimes(1);
     expect(getMemberGroupsSpy).toBeCalledWith({
       page_index: 1,
@@ -127,9 +126,7 @@ describe('test MemberGroupList', () => {
       'instance1'
     );
     fireEvent.click(screen.getByText('common.search'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(getMemberGroupsSpy).toBeCalledTimes(2);
     expect(getMemberGroupsSpy).toBeCalledWith({
@@ -151,9 +148,8 @@ describe('test MemberGroupList', () => {
 
   test('should dispatch "updateMemberModalStatus" when clicking create button', async () => {
     render(<MemberGroupList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(dispatchSpy).toBeCalledTimes(0);
 
     fireEvent.click(screen.getByText('member.memberGroupList.createAction'));
@@ -170,11 +166,9 @@ describe('test MemberGroupList', () => {
   test('should dispatch "updateSelectMemberGroup" and "updateMemberModalStatus" when clicking edit button', async () => {
     render(<MemberGroupList />);
     expect(screen.queryByText('common.edit')).not.toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    expect(screen.queryByText('common.edit')).toBeInTheDocument();
+    expect(screen.getByText('common.edit')).toBeInTheDocument();
 
     expect(dispatchSpy).toBeCalledTimes(0);
 
@@ -201,16 +195,14 @@ describe('test MemberGroupList', () => {
     expect(getMemberGroupsSpy).toBeCalledTimes(1);
 
     expect(screen.queryByText('common.delete')).not.toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    expect(screen.queryByText('common.delete')).toBeInTheDocument();
+    expect(screen.getByText('common.delete')).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('common.delete'));
 
     expect(
-      screen.queryByText('member.memberGroupList.tableColumn.confirmTitle')
+      screen.getByText('member.memberGroupList.tableColumn.confirmTitle')
     ).toBeInTheDocument();
 
     expect(deleteMemberGroupSpy).toBeCalledTimes(0);
@@ -221,76 +213,75 @@ describe('test MemberGroupList', () => {
       user_group_name: mockMemberGroupList[0].user_group_name,
       project_name: projectName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText('member.memberGroupList.deleteSuccessTips')
+      screen.getByText('member.memberGroupList.deleteSuccessTips')
     ).toBeInTheDocument();
     expect(getMemberGroupsSpy).toBeCalledTimes(2);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('member.memberGroupList.deleteSuccessTips')
     ).not.toBeInTheDocument();
   });
 
   test('should hide the Create, Add, Edit feature when not currently a project manager or admin', async () => {
-    mockUseSelector({
-      user: {
-        role: SystemRole.admin,
-        bindProjects: [{ projectName: 'test', isManager: false }],
-      },
-      projectManage: { archived: false },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: {
+          role: SystemRole.admin,
+          bindProjects: [{ projectName: 'test', isManager: false }],
+        },
+        projectManage: { archived: false },
+      })
+    );
 
     render(<MemberGroupList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    expect(screen.queryByText('common.delete')).toBeInTheDocument();
-    expect(screen.queryByText('common.edit')).toBeInTheDocument();
+    expect(screen.getByText('common.delete')).toBeInTheDocument();
+    expect(screen.getByText('common.edit')).toBeInTheDocument();
     expect(
-      screen.queryByText('member.memberGroupList.createAction')
+      screen.getByText('member.memberGroupList.createAction')
     ).toBeInTheDocument();
 
     cleanup();
     jest.clearAllMocks();
 
-    mockUseSelector({
-      user: {
-        role: '',
-        bindProjects: mockBindProjects,
-      },
-      projectManage: { archived: false },
-    });
-    render(<MemberGroupList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: {
+          role: '',
+          bindProjects: mockBindProjects,
+        },
+        projectManage: { archived: false },
+      })
+    );
 
-    expect(screen.queryByText('common.delete')).toBeInTheDocument();
-    expect(screen.queryByText('common.edit')).toBeInTheDocument();
+    render(<MemberGroupList />);
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    expect(screen.getByText('common.delete')).toBeInTheDocument();
+    expect(screen.getByText('common.edit')).toBeInTheDocument();
     expect(
-      screen.queryByText('member.memberGroupList.createAction')
+      screen.getByText('member.memberGroupList.createAction')
     ).toBeInTheDocument();
 
     cleanup();
     jest.clearAllMocks();
 
-    mockUseSelector({
-      user: {
-        role: '',
-        bindProjects: [{ projectName: 'default', isManager: false }],
-      },
-      projectManage: { archived: false },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: {
+          role: '',
+          bindProjects: [{ projectName: 'default', isManager: false }],
+        },
+        projectManage: { archived: false },
+      })
+    );
     render(<MemberGroupList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.queryByText('common.delete')).not.toBeInTheDocument();
     expect(screen.queryByText('common.edit')).not.toBeInTheDocument();
@@ -300,18 +291,17 @@ describe('test MemberGroupList', () => {
   });
 
   test('should hide the Create, Delete, Edit feature when project is archived', async () => {
-    mockUseSelector({
-      user: {
-        role: SystemRole.admin,
-        bindProjects: [{ projectName: projectName, isManager: true }],
-      },
-      projectManage: { archived: true },
-    });
-
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: {
+          role: SystemRole.admin,
+          bindProjects: [{ projectName: projectName, isManager: true }],
+        },
+        projectManage: { archived: true },
+      })
+    );
     render(<MemberGroupList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.queryAllByText('common.delete')[0]).toBeUndefined();
     expect(screen.queryAllByText('common.edit')[0]).toBeUndefined();

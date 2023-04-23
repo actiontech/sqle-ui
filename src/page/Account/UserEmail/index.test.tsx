@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, waitFor } from '@testing-library/react';
 import { message } from 'antd';
 import { shallow } from 'enzyme';
 import UserEmail from '.';
@@ -44,7 +44,7 @@ describe('UserEmail', () => {
     expect(textWrapper.prop('hidden')).toBe(false);
     expect(editWrapper.prop('hidden')).toBe(true);
 
-    const editIcon = wrapper.find('ForwardRef(Link)');
+    const editIcon = wrapper.find('ForwardRef(EditOutlined)');
     editIcon.simulate('click');
     wrapper.update();
 
@@ -184,7 +184,7 @@ describe('UserEmail', () => {
 
     expect(requestSpy).toBeCalledTimes(1);
 
-    await waitFor(() => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(successMessageSyp).toBeCalledTimes(1);
     expect(successMessageSyp).toBeCalledWith('account.updateEmailSuccess');

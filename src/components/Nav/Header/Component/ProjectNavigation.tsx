@@ -5,22 +5,25 @@ import {
   DropDownProps,
   Input,
   Menu,
+  MenuProps,
   Space,
   Spin,
   Typography,
 } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
 import { IUserBindProjectResV1 } from '../../../../api/common';
 import useCurrentUser from '../../../../hooks/useCurrentUser';
+import useNavigate from '../../../../hooks/useNavigate';
 import { useRecentlyOpenedProjects } from '../../../../page/ProjectManage/ProjectDetail';
 import useStyles from '../../../../theme';
 import EmptyBox from '../../../EmptyBox';
 
 const ProjectNavigation: React.FC<
-  Pick<DropDownProps, 'visible' | 'onVisibleChange'>
-> = ({ children, visible, onVisibleChange }) => {
+  Pick<DropDownProps, 'open' | 'onOpenChange'> & {
+    children: React.ReactNode;
+  }
+> = ({ children, open, onOpenChange }) => {
   const { t } = useTranslation();
   const styles = useStyles();
   const { bindProjects } = useCurrentUser();
@@ -29,7 +32,7 @@ const ProjectNavigation: React.FC<
   const [showProjects, setShowProjects] = useState<IUserBindProjectResV1[]>([]);
   const { recentlyProjects, updateRecentlyProject } =
     useRecentlyOpenedProjects();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const filterProject = (val: string) => {
     setSearchLoading(false);
@@ -51,13 +54,13 @@ const ProjectNavigation: React.FC<
 
   const jumpToProject = (name: string) => {
     updateRecentlyProject(name);
-    history.push(`/project/${name}`);
-    onVisibleChange?.(false);
+    navigate(`project/${name}/overview`);
+    onOpenChange?.(false);
   };
 
   const showAllProjects = () => {
-    history.push(`/project`);
-    onVisibleChange?.(false);
+    navigate(`project`);
+    onOpenChange?.(false);
   };
 
   useEffect(() => {
@@ -66,10 +69,10 @@ const ProjectNavigation: React.FC<
       setSearchText('');
       setShowProjects([]);
     };
-    if (visible) {
+    if (open) {
       reset();
     }
-  }, [visible]);
+  }, [open]);
 
   const render = () => {
     if (searchLoading) {
@@ -150,41 +153,56 @@ const ProjectNavigation: React.FC<
     <>
       <Dropdown
         trigger={['click']}
-        visible={visible}
-        onVisibleChange={onVisibleChange}
-        overlay={
-          <Menu className="project-dropdown-wrapper">
-            <Space direction="vertical" key="plane">
-              <Input
-                data-testid="search-project-input"
-                prefix={<SearchOutlined />}
-                placeholder={t(
-                  'projectManage.projectList.searchProject.placeholder'
-                )}
-                allowClear
-                value={searchText}
-                onChange={(e) => {
-                  if (e.target.value) {
-                    setSearchLoading(true);
-                  } else {
-                    setShowProjects([]);
-                  }
-                  setSearchText(e.target.value);
-                  run(e.target.value);
-                }}
-              />
+        open={open}
+        onOpenChange={onOpenChange}
+        dropdownRender={() => {
+          const menuItems: MenuProps['items'] = [
+            {
+              type: 'group',
+              key: 'plane',
+              label: (
+                <Space direction="vertical" key="plane">
+                  <Input
+                    data-testid="search-project-input"
+                    prefix={<SearchOutlined />}
+                    placeholder={t(
+                      'projectManage.projectList.searchProject.placeholder'
+                    )}
+                    allowClear
+                    value={searchText}
+                    onChange={(e) => {
+                      if (e.target.value) {
+                        setSearchLoading(true);
+                      } else {
+                        setShowProjects([]);
+                      }
+                      setSearchText(e.target.value);
+                      run(e.target.value);
+                    }}
+                  />
 
-              <>{render()}</>
-            </Space>
-
-            <Menu.Divider />
-            <Menu.Item key="allProject" onClick={showAllProjects}>
-              <Typography.Text strong>
-                {t('projectManage.projectList.allProject')}
-              </Typography.Text>
-            </Menu.Item>
-          </Menu>
-        }
+                  <>{render()}</>
+                </Space>
+              ),
+            },
+            {
+              key: 'divider',
+              type: 'divider',
+            },
+            {
+              key: 'allProject',
+              onClick: showAllProjects,
+              label: (
+                <Typography.Text strong>
+                  {t('projectManage.projectList.allProject')}
+                </Typography.Text>
+              ),
+            },
+          ];
+          return (
+            <Menu className="project-dropdown-wrapper" items={menuItems} />
+          );
+        }}
       >
         <>{children}</>
       </Dropdown>

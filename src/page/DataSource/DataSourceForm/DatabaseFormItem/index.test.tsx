@@ -1,4 +1,3 @@
-import { waitFor } from '@testing-library/react';
 import { Form } from 'antd';
 import { act } from 'react-dom/test-utils';
 import DatabaseFormItem from '.';
@@ -67,9 +66,8 @@ describe('DatabaseFormItem', () => {
     act(() => {
       wrapper.find('Button').simulate('click');
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     wrapper.update();
     expect(request).toBeCalledTimes(1);
     expect(request).toBeCalledWith({
@@ -96,9 +94,8 @@ describe('DatabaseFormItem', () => {
     let connectButton = wrapper.find('TestDatabaseConnectButton');
     expect(connectButton.prop('loading')).toBe(true);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     wrapper.update();
 
     connectButton = wrapper.find('TestDatabaseConnectButton');
@@ -132,12 +129,11 @@ describe('DatabaseFormItem', () => {
     act(() => {
       wrapper.find('Button').simulate('click');
     });
-    await waitFor(() => {
-      jest.runOnlyPendingTimers();
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+
+    await act(async () => jest.runOnlyPendingTimers());
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
     wrapper.update();
     let connectButton = wrapper.find('TestDatabaseConnectButton');
     expect(connectButton.prop('initHide')).toBe(false);

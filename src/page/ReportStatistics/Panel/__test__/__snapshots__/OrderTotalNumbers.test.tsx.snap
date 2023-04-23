@@ -41,10 +41,8 @@ exports[`test OrderTotalNumbers should match snapshot 1`] = `
                 <span
                   class="ant-statistic-content-value-int"
                 >
-                  
                   0
                 </span>
-                
               </span>
             </div>
           </div>
@@ -72,10 +70,8 @@ exports[`test OrderTotalNumbers should match snapshot 1`] = `
                 <span
                   class="ant-statistic-content-value-int"
                 >
-                  
                   0
                 </span>
-                
               </span>
             </div>
           </div>
@@ -127,10 +123,8 @@ exports[`test OrderTotalNumbers should match snapshot 2`] = `
                 <span
                   class="ant-statistic-content-value-int"
                 >
-                  
                   100
                 </span>
-                
               </span>
             </div>
           </div>
@@ -158,10 +152,8 @@ exports[`test OrderTotalNumbers should match snapshot 2`] = `
                 <span
                   class="ant-statistic-content-value-int"
                 >
-                  
                   10
                 </span>
-                
               </span>
             </div>
           </div>

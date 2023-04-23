@@ -75,7 +75,7 @@ const AddUser = () => {
   return (
     <Modal
       title={t('user.createUser.modalTitle')}
-      visible={visible}
+      open={visible}
       closable={false}
       footer={
         <>

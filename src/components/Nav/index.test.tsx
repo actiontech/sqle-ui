@@ -1,25 +1,35 @@
 import { waitFor } from '@testing-library/react';
+import { useDispatch, useSelector } from 'react-redux';
 import Nav from '.';
 import { SQLE_DEFAULT_WEB_TITLE } from '../../data/common';
 import { ModalName } from '../../data/ModalName';
 import { SupportLanguage } from '../../locale';
 import { renderWithRouter } from '../../testUtils/customRender';
-import { mockUseDispatch, mockUseSelector } from '../../testUtils/mockRedux';
 import { mockUseAuditPlanTypes } from '../../testUtils/mockRequest';
 import { mockUseStyle } from '../../testUtils/mockStyle';
 
-describe('Nav', () => {
-  let useSelectorSpy: jest.SpyInstance;
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
+describe('Nav', () => {
   beforeEach(() => {
-    useSelectorSpy = mockUseSelector({
-      user: { role: '', username: 'test' },
-      locale: { language: SupportLanguage.zhCN },
-      nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
-      system: { webTitle: SQLE_DEFAULT_WEB_TITLE, webLogoUrl: 'test' },
-    });
     mockUseStyle();
-    mockUseDispatch();
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { role: '', username: 'test' },
+        locale: { language: SupportLanguage.zhCN },
+        nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
+        system: { webTitle: SQLE_DEFAULT_WEB_TITLE, webLogoUrl: 'test' },
+      })
+    );
+    (useDispatch as jest.Mock).mockImplementation(() => jest.fn());
+
     mockUseAuditPlanTypes();
     jest.useFakeTimers();
   });
@@ -36,13 +46,14 @@ describe('Nav', () => {
     });
     expect(container).toMatchSnapshot();
 
-    useSelectorSpy.mockClear();
-    useSelectorSpy = mockUseSelector({
-      user: { role: '', username: '' },
-      locale: { language: SupportLanguage.zhCN },
-      nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
-      system: { webTitle: SQLE_DEFAULT_WEB_TITLE, webLogoUrl: 'test' },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { role: '', username: '' },
+        locale: { language: SupportLanguage.zhCN },
+        nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
+        system: { webTitle: SQLE_DEFAULT_WEB_TITLE, webLogoUrl: 'test' },
+      })
+    );
     const { container: notShowContainer } = renderWithRouter(
       <Nav>notshow</Nav>
     );

@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/styles';
-import { Theme } from '../types/theme.type';
+import { makeStyles } from '@mui/styles';
 import darkTheme from './dark';
 import lightTheme from './light';
+import { Theme } from '@mui/material/styles';
 
 enum SupportTheme {
   DARK = 'dark',

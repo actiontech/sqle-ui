@@ -1,11 +1,8 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../testUtils/mockRedux';
+
 import {
   mockUseInstance,
   mockUseRole,
@@ -15,16 +12,25 @@ import EventEmitter from '../../../../utils/EventEmitter';
 import { mockMemberList } from '../../MemberList/__test__/utils';
 import UpdateMember from '../UpdateMember';
 import { mockUpdateMember } from './utils';
+import { useDispatch, useSelector } from 'react-redux';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn(),
 }));
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 const projectName = 'default';
 
 describe('test UpdateMember', () => {
   let updateMemberSpy: jest.SpyInstance;
-  let dispatchSpy: jest.SpyInstance;
+  const dispatchSpy = jest.fn();
+
   const emitSpy = jest.spyOn(EventEmitter, 'emit');
 
   const useParamsMock: jest.Mock = useParams as jest.Mock;
@@ -35,16 +41,18 @@ describe('test UpdateMember', () => {
     mockUseInstance();
     updateMemberSpy = mockUpdateMember();
     useParamsMock.mockReturnValue({ projectName });
-
-    dispatchSpy = mockUseDispatch().scopeDispatch;
-    mockUseSelector({
-      member: {
-        modalStatus: {
-          [ModalName.Update_Member]: true,
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        member: {
+          modalStatus: {
+            [ModalName.Update_Member]: true,
+          },
+          selectMember: mockMemberList[0],
         },
-        selectMember: mockMemberList[0],
-      },
-    });
+      })
+    );
+
     jest.useFakeTimers();
   });
 
@@ -61,9 +69,8 @@ describe('test UpdateMember', () => {
 
   test('should call update member request when clicking submit button', async () => {
     render(<UpdateMember />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(updateMemberSpy).toBeCalledTimes(0);
     expect(dispatchSpy).toBeCalledTimes(0);
     expect(emitSpy).toBeCalledTimes(0);
@@ -71,9 +78,7 @@ describe('test UpdateMember', () => {
     fireEvent.click(screen.getByLabelText('member.memberForm.projectAdmin'));
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(screen.getByText('common.close').closest('button')).toBeDisabled();
     expect(screen.getByText('common.submit').closest('button')).toHaveClass(
@@ -88,11 +93,10 @@ describe('test UpdateMember', () => {
       is_manager: true,
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText('member.updateMember.successTips')
+      screen.getByText('member.updateMember.successTips')
     ).toBeInTheDocument();
     expect(dispatchSpy).toBeCalledTimes(1);
     expect(dispatchSpy).toBeCalledWith({
@@ -110,9 +114,8 @@ describe('test UpdateMember', () => {
     expect(screen.getByText('common.submit').closest('button')).not.toHaveClass(
       'ant-btn-loading'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('member.updateMember.successTips')
     ).not.toBeInTheDocument();
@@ -120,9 +123,8 @@ describe('test UpdateMember', () => {
 
   test('should clear form and dispatch "updateMemberModalStatus" when clicking close button', async () => {
     render(<UpdateMember />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(dispatchSpy).toBeCalledTimes(0);
 
     expect(screen.getAllByText(mockMemberList[0].user_name!)[0]).toHaveClass(

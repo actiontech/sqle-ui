@@ -8,7 +8,7 @@ import {
 } from 'antd';
 import { IBindRoleReqV1, IGetMemberRespDataV1 } from '../../../api/common';
 import EmptyBox from '../../../components/EmptyBox';
-import i18n from '../../../locale';
+import { t } from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import renderRolesInfo from '../Common/renderRolesInfo';
 
@@ -26,11 +26,11 @@ const MemberListTableColumnFactory: (
   const columns: TableColumn<IGetMemberRespDataV1, 'operator'> = [
     {
       dataIndex: 'user_name',
-      title: i18n.t('member.memberList.tableColumn.username'),
+      title: t('member.memberList.tableColumn.username'),
     },
     {
       dataIndex: 'roles',
-      title: i18n.t('member.memberList.tableColumn.role'),
+      title: t('member.memberList.tableColumn.role'),
       render(roles?: IBindRoleReqV1[]) {
         if (!Array.isArray(roles) || roles.length === 0) {
           return null;
@@ -45,10 +45,10 @@ const MemberListTableColumnFactory: (
     },
     {
       dataIndex: 'is_manager',
-      title: i18n.t('member.memberList.tableColumn.isManager'),
+      title: t('member.memberList.tableColumn.isManager'),
       render(isManager: boolean | unknown) {
         if (typeof isManager !== 'boolean') {
-          return i18n.t('common.unknownStatus');
+          return t('common.unknownStatus');
         }
 
         return <Checkbox checked={isManager} disabled={true} />;
@@ -56,7 +56,7 @@ const MemberListTableColumnFactory: (
     },
     {
       dataIndex: 'operator',
-      title: i18n.t('common.operate'),
+      title: t('common.operate'),
       width: 160,
       render: (_, record) => {
         return (
@@ -65,21 +65,21 @@ const MemberListTableColumnFactory: (
               className="pointer"
               onClick={updateAction.bind(null, record)}
             >
-              {i18n.t('common.edit')}
+              {t('common.edit')}
             </Typography.Link>
             <EmptyBox if={record.user_name !== 'admin'}>
               <Divider type="vertical" />
               <Popconfirm
-                title={i18n.t('member.memberList.tableColumn.confirmTitle', {
+                title={t('member.memberList.tableColumn.confirmTitle', {
                   name: record.user_name,
                 })}
                 placement="topRight"
-                okText={i18n.t('common.ok')}
-                cancelText={i18n.t('common.cancel')}
+                okText={t('common.ok')}
+                cancelText={t('common.cancel')}
                 onConfirm={deleteAction.bind(null, record.user_name ?? '')}
               >
                 <Typography.Text type="danger" className="pointer">
-                  {i18n.t('common.delete')}
+                  {t('common.delete')}
                 </Typography.Text>
               </Popconfirm>
             </EmptyBox>

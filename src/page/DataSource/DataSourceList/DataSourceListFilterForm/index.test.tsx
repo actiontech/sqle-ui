@@ -1,4 +1,10 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react';
 import { isEqual } from 'lodash';
 import DataSourceListFilterForm from '.';
 import {
@@ -37,15 +43,11 @@ describe('DataSource/DataSourceList/DataSourceListFilterForm', () => {
     render(
       <DataSourceListFilterForm submit={submitFn} projectName={projectName} />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
     fireEvent.mouseDown(
       screen.getByLabelText('dataSource.dataSourceForm.name')
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
     const option = screen.getAllByText('instance1')[1];
     fireEvent.click(option);
     fireEvent.click(screen.getByText('common.search'));
@@ -65,15 +67,11 @@ describe('DataSource/DataSourceList/DataSourceListFilterForm', () => {
     render(
       <DataSourceListFilterForm submit={submitFn} projectName={projectName} />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
     fireEvent.mouseDown(
       screen.getByLabelText('dataSource.dataSourceForm.name')
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
     const option = screen.getAllByText('instance1')[1];
     fireEvent.click(option);
     fireEvent.click(screen.getByText('common.search'));
@@ -89,9 +87,7 @@ describe('DataSource/DataSourceList/DataSourceListFilterForm', () => {
     render(
       <DataSourceListFilterForm submit={submitFn} projectName={projectName} />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.queryByText('common.collapse')).not.toBeInTheDocument();
     fireEvent.click(screen.getByText('common.expansion'));
@@ -107,7 +103,7 @@ describe('DataSource/DataSourceList/DataSourceListFilterForm', () => {
     fireEvent.click(option);
 
     fireEvent.click(screen.getByText('common.collapse'));
-    expect(screen.queryByText('common.expansion')).toBeInTheDocument();
+    expect(screen.getByText('common.expansion')).toBeInTheDocument();
 
     expect(submitFn).toBeCalledTimes(1);
     expect(

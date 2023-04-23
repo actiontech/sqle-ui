@@ -37,1264 +37,176 @@ exports[`CreatePlan should send create audit plan request 1`] = `
         class="ant-form ant-form-horizontal"
       >
         <div
-          class="ant-row ant-form-item ant-form-item-has-success"
+          class="ant-form-item ant-form-item-has-success"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
-          >
-            <label
-              class="ant-form-item-required"
-              for="name"
-              title="auditPlan.planForm.name"
-            >
-              auditPlan.planForm.name
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
             >
-              <div
-                class="ant-form-item-control-input-content"
+              <label
+                class="ant-form-item-required"
+                for="name"
+                title="auditPlan.planForm.name"
               >
-                <input
-                  class="ant-input"
-                  id="name"
-                  placeholder="common.form.placeholder.input"
-                  type="text"
-                  value="planName1"
-                />
-              </div>
+                auditPlan.planForm.name
+              </label>
             </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
-          >
-            <label
-              class=""
-              for="databaseName"
-              title="auditPlan.planForm.databaseName"
-            >
-              auditPlan.planForm.databaseName
-              <span
-                aria-label="question-circle"
-                class="anticon anticon-question-circle ant-form-item-tooltip"
-                role="img"
-              >
-                <svg
-                  aria-hidden="true"
-                  data-icon="question-circle"
-                  fill="currentColor"
-                  focusable="false"
-                  height="1em"
-                  viewBox="64 64 896 896"
-                  width="1em"
-                >
-                  <path
-                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                  />
-                  <path
-                    d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"
-                  />
-                </svg>
-              </span>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
-          >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
             >
               <div
-                class="ant-form-item-control-input-content"
+                class="ant-form-item-control-input"
               >
                 <div
-                  class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
+                  class="ant-form-item-control-input-content"
                 >
-                  <div
-                    class="ant-select-selector"
-                  >
-                    <span
-                      class="ant-select-selection-search"
-                    >
-                      <input
-                        aria-activedescendant="databaseName_list_1"
-                        aria-autocomplete="list"
-                        aria-controls="databaseName_list"
-                        aria-expanded="false"
-                        aria-haspopup="listbox"
-                        aria-owns="databaseName_list"
-                        autocomplete="off"
-                        class="ant-select-selection-search-input"
-                        id="databaseName"
-                        role="combobox"
-                        type="search"
-                        value=""
-                      />
-                    </span>
-                    <span
-                      class="ant-select-selection-item"
-                      title="instance1"
-                    >
-                      instance1
-                    </span>
-                  </div>
-                  <span
-                    aria-hidden="true"
-                    class="ant-select-arrow"
-                    style="user-select: none;"
-                    unselectable="on"
-                  >
-                    <span
-                      aria-label="down"
-                      class="anticon anticon-down ant-select-suffix"
-                      role="img"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="down"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
-                      >
-                        <path
-                          d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                  <span
-                    aria-hidden="true"
-                    class="ant-select-clear"
-                    style="user-select: none;"
-                    unselectable="on"
-                  >
-                    <span
-                      aria-label="close-circle"
-                      class="anticon anticon-close-circle"
-                      role="img"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="close-circle"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
-                      >
-                        <path
-                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
+                  <input
+                    aria-required="true"
+                    class="ant-input ant-input-status-success"
+                    id="name"
+                    placeholder="common.form.placeholder.input"
+                    type="text"
+                    value="planName1"
+                  />
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          class="ant-row ant-form-item ant-form-item-has-success"
+          class="ant-form-item ant-form-item-has-success"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
-          >
-            <label
-              class=""
-              for="schema"
-              title="auditPlan.planForm.schema"
-            >
-              auditPlan.planForm.schema
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
             >
-              <div
-                class="ant-form-item-control-input-content"
+              <label
+                class=""
+                for="databaseName"
+                title="auditPlan.planForm.databaseName"
               >
-                <div
-                  class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow"
+                auditPlan.planForm.databaseName
+                <span
+                  aria-label="question-circle"
+                  class="anticon anticon-question-circle ant-form-item-tooltip"
+                  role="img"
+                  title=""
                 >
-                  <div
-                    class="ant-select-selector"
-                  >
-                    <span
-                      class="ant-select-selection-search"
-                    >
-                      <input
-                        aria-activedescendant="schema_list_0"
-                        aria-autocomplete="list"
-                        aria-controls="schema_list"
-                        aria-expanded="false"
-                        aria-haspopup="listbox"
-                        aria-owns="schema_list"
-                        autocomplete="off"
-                        class="ant-select-selection-search-input"
-                        id="schema"
-                        readonly=""
-                        role="combobox"
-                        style="opacity: 0;"
-                        type="search"
-                        unselectable="on"
-                        value=""
-                      />
-                    </span>
-                    <span
-                      class="ant-select-selection-item"
-                      title="schema1"
-                    >
-                      schema1
-                    </span>
-                  </div>
-                  <span
+                  <svg
                     aria-hidden="true"
-                    class="ant-select-arrow"
-                    style="user-select: none;"
-                    unselectable="on"
+                    data-icon="question-circle"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
                   >
-                    <span
-                      aria-label="down"
-                      class="anticon anticon-down ant-select-suffix"
-                      role="img"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="down"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
-                      >
-                        <path
-                          d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                  <span
-                    aria-hidden="true"
-                    class="ant-select-clear"
-                    style="user-select: none;"
-                    unselectable="on"
-                  >
-                    <span
-                      aria-label="close-circle"
-                      class="anticon anticon-close-circle"
-                      role="img"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="close-circle"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
-                      >
-                        <path
-                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
-          >
-            <label
-              class="ant-form-item-required"
-              for="dbType"
-              title="auditPlan.planForm.dbType"
-            >
-              auditPlan.planForm.dbType
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <div
-                  class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-disabled"
-                >
-                  <div
-                    class="ant-select-selector"
-                  >
-                    <span
-                      class="ant-select-selection-search"
-                    >
-                      <input
-                        aria-activedescendant="dbType_list_0"
-                        aria-autocomplete="list"
-                        aria-controls="dbType_list"
-                        aria-expanded="false"
-                        aria-haspopup="listbox"
-                        aria-owns="dbType_list"
-                        autocomplete="off"
-                        class="ant-select-selection-search-input"
-                        disabled=""
-                        id="dbType"
-                        readonly=""
-                        role="combobox"
-                        style="opacity: 0;"
-                        type="search"
-                        unselectable="on"
-                        value=""
-                      />
-                    </span>
-                    <span
-                      class="ant-select-selection-item"
-                      title="mysql"
-                    >
-                      mysql
-                    </span>
-                  </div>
-                  <span
-                    aria-hidden="true"
-                    class="ant-select-arrow"
-                    style="user-select: none;"
-                    unselectable="on"
-                  >
-                    <span
-                      aria-label="down"
-                      class="anticon anticon-down ant-select-suffix"
-                      role="img"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="down"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
-                      >
-                        <path
-                          d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
-          >
-            <label
-              class="ant-form-item-required"
-              for="auditTaskType"
-              title="auditPlan.planForm.taskType"
-            >
-              auditPlan.planForm.taskType
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <div
-                  class="ant-select ant-select-single ant-select-show-arrow"
-                >
-                  <div
-                    class="ant-select-selector"
-                  >
-                    <span
-                      class="ant-select-selection-search"
-                    >
-                      <input
-                        aria-activedescendant="auditTaskType_list_0"
-                        aria-autocomplete="list"
-                        aria-controls="auditTaskType_list"
-                        aria-expanded="false"
-                        aria-haspopup="listbox"
-                        aria-owns="auditTaskType_list"
-                        autocomplete="off"
-                        class="ant-select-selection-search-input"
-                        id="auditTaskType"
-                        readonly=""
-                        role="combobox"
-                        style="opacity: 0;"
-                        type="search"
-                        unselectable="on"
-                        value=""
-                      />
-                    </span>
-                    <span
-                      class="ant-select-selection-item"
-                      title="普通的SQL审核"
-                    >
-                      普通的SQL审核
-                    </span>
-                  </div>
-                  <span
-                    aria-hidden="true"
-                    class="ant-select-arrow"
-                    style="user-select: none;"
-                    unselectable="on"
-                  >
-                    <span
-                      aria-label="down"
-                      class="anticon anticon-down ant-select-suffix"
-                      role="img"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="down"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
-                      >
-                        <path
-                          d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
-          >
-            <label
-              class=""
-              for="params_a"
-              title="字段a"
-            >
-              字段a
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="params_a"
-                  type="text"
-                  value="123"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
-          >
-            <label
-              class=""
-              for="params_b"
-              title="字段b"
-            >
-              字段b
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="params_b"
-                  type="text"
-                  value="123"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
-          >
-            <label
-              class=""
-              for="params_c"
-              title="字段c"
-            >
-              字段c
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <button
-                  aria-checked="true"
-                  class="ant-switch ant-switch-checked"
-                  id="params_c"
-                  role="switch"
-                  type="button"
-                >
-                  <div
-                    class="ant-switch-handle"
-                  />
-                  <span
-                    class="ant-switch-inner"
-                  />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
-          >
-            <label
-              class=""
-              for="ruleTemplateName"
-              title="auditPlan.planForm.ruleTemplateName"
-            >
-              auditPlan.planForm.ruleTemplateName
-              <span
-                aria-label="question-circle"
-                class="anticon anticon-question-circle ant-form-item-tooltip"
-                role="img"
-              >
-                <svg
-                  aria-hidden="true"
-                  data-icon="question-circle"
-                  fill="currentColor"
-                  focusable="false"
-                  height="1em"
-                  viewBox="64 64 896 896"
-                  width="1em"
-                >
-                  <path
-                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                  />
-                  <path
-                    d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"
-                  />
-                </svg>
-              </span>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <div
-                  class="ant-select ant-select-single ant-select-show-arrow"
-                >
-                  <div
-                    class="ant-select-selector"
-                  >
-                    <span
-                      class="ant-select-selection-search"
-                    >
-                      <input
-                        aria-activedescendant="ruleTemplateName_list_0"
-                        aria-autocomplete="list"
-                        aria-controls="ruleTemplateName_list"
-                        aria-expanded="false"
-                        aria-haspopup="listbox"
-                        aria-owns="ruleTemplateName_list"
-                        autocomplete="off"
-                        class="ant-select-selection-search-input"
-                        id="ruleTemplateName"
-                        readonly=""
-                        role="combobox"
-                        style="opacity: 0;"
-                        type="search"
-                        unselectable="on"
-                        value=""
-                      />
-                    </span>
-                    <span
-                      class="ant-select-selection-item"
-                      title="rule_template_name1"
-                    >
-                      rule_template_name1
-                    </span>
-                  </div>
-                  <span
-                    aria-hidden="true"
-                    class="ant-select-arrow"
-                    style="user-select: none;"
-                    unselectable="on"
-                  >
-                    <span
-                      aria-label="down"
-                      class="anticon anticon-down ant-select-suffix"
-                      role="img"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="down"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
-                      >
-                        <path
-                          d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
-          >
-            <label
-              class="ant-form-item-required"
-              for="cron"
-              title="auditPlan.planForm.cron"
-            >
-              auditPlan.planForm.cron
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <div
-                  class="cron-input-wrapper"
-                >
-                  <div
-                    style="line-height: 32px;"
-                  >
-                    <div
-                      class="ant-radio-group ant-radio-group-outline"
-                    >
-                      <label
-                        class="ant-radio-wrapper ant-radio-wrapper-checked"
-                      >
-                        <span
-                          class="ant-radio ant-radio-checked"
-                        >
-                          <input
-                            checked=""
-                            class="ant-radio-input"
-                            type="radio"
-                            value="Select"
-                          />
-                          <span
-                            class="ant-radio-inner"
-                          />
-                        </span>
-                        <span>
-                          common.cron.mode.select
-                        </span>
-                      </label>
-                      <label
-                        class="ant-radio-wrapper"
-                      >
-                        <span
-                          class="ant-radio"
-                        >
-                          <input
-                            class="ant-radio-input"
-                            type="radio"
-                            value="Manual"
-                          />
-                          <span
-                            class="ant-radio-inner"
-                          />
-                        </span>
-                        <span>
-                          common.cron.mode.manual
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-                  <div
-                    class="cron-user-select"
-                  >
-                    <div
-                      class="ant-space ant-space-vertical full-width-element"
-                    >
-                      <div
-                        class="ant-space-item"
-                        style="margin-bottom: 8px;"
-                      >
-                        <div
-                          class="ant-space ant-space-horizontal ant-space-align-center"
-                        >
-                          <div
-                            class="ant-space-item"
-                            style="margin-right: 8px;"
-                          >
-                            <span>
-                              common.cron.label.interval
-                              :
-                            </span>
-                          </div>
-                          <div
-                            class="ant-space-item"
-                          >
-                            <div
-                              class="ant-select cron-every-select ant-select-single ant-select-show-arrow"
-                            >
-                              <div
-                                class="ant-select-selector"
-                              >
-                                <span
-                                  class="ant-select-selection-search"
-                                >
-                                  <input
-                                    aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
-                                    aria-autocomplete="list"
-                                    aria-controls="rc_select_TEST_OR_SSR_list"
-                                    aria-haspopup="listbox"
-                                    aria-owns="rc_select_TEST_OR_SSR_list"
-                                    autocomplete="off"
-                                    class="ant-select-selection-search-input"
-                                    id="rc_select_TEST_OR_SSR"
-                                    readonly=""
-                                    role="combobox"
-                                    style="opacity: 0;"
-                                    type="search"
-                                    unselectable="on"
-                                    value=""
-                                  />
-                                </span>
-                                <span
-                                  class="ant-select-selection-item"
-                                  title="common.cron.time.everyDay"
-                                >
-                                  common.cron.time.everyDay
-                                </span>
-                              </div>
-                              <span
-                                aria-hidden="true"
-                                class="ant-select-arrow"
-                                style="user-select: none;"
-                                unselectable="on"
-                              >
-                                <span
-                                  aria-label="down"
-                                  class="anticon anticon-down ant-select-suffix"
-                                  role="img"
-                                >
-                                  <svg
-                                    aria-hidden="true"
-                                    data-icon="down"
-                                    fill="currentColor"
-                                    focusable="false"
-                                    height="1em"
-                                    viewBox="64 64 896 896"
-                                    width="1em"
-                                  >
-                                    <path
-                                      d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                                    />
-                                  </svg>
-                                </span>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="ant-space-item"
-                        style="margin-bottom: 8px;"
-                      >
-                        <div
-                          class="ant-space ant-space-horizontal ant-space-align-center cron-week-wrapper"
-                          hidden=""
-                        >
-                          <div
-                            class="ant-space-item"
-                          >
-                            <div
-                              class="ant-checkbox-group"
-                            >
-                              <label
-                                class="ant-checkbox-wrapper"
-                              >
-                                <span
-                                  class="ant-checkbox"
-                                >
-                                  <input
-                                    class="ant-checkbox-input"
-                                    type="checkbox"
-                                    value="0"
-                                  />
-                                  <span
-                                    class="ant-checkbox-inner"
-                                  />
-                                </span>
-                                <span>
-                                  common.week.sunday
-                                </span>
-                              </label>
-                              <label
-                                class="ant-checkbox-wrapper"
-                              >
-                                <span
-                                  class="ant-checkbox"
-                                >
-                                  <input
-                                    class="ant-checkbox-input"
-                                    type="checkbox"
-                                    value="1"
-                                  />
-                                  <span
-                                    class="ant-checkbox-inner"
-                                  />
-                                </span>
-                                <span>
-                                  common.week.monday
-                                </span>
-                              </label>
-                              <label
-                                class="ant-checkbox-wrapper"
-                              >
-                                <span
-                                  class="ant-checkbox"
-                                >
-                                  <input
-                                    class="ant-checkbox-input"
-                                    type="checkbox"
-                                    value="2"
-                                  />
-                                  <span
-                                    class="ant-checkbox-inner"
-                                  />
-                                </span>
-                                <span>
-                                  common.week.tuesday
-                                </span>
-                              </label>
-                              <label
-                                class="ant-checkbox-wrapper"
-                              >
-                                <span
-                                  class="ant-checkbox"
-                                >
-                                  <input
-                                    class="ant-checkbox-input"
-                                    type="checkbox"
-                                    value="3"
-                                  />
-                                  <span
-                                    class="ant-checkbox-inner"
-                                  />
-                                </span>
-                                <span>
-                                  common.week.wednesday
-                                </span>
-                              </label>
-                              <label
-                                class="ant-checkbox-wrapper"
-                              >
-                                <span
-                                  class="ant-checkbox"
-                                >
-                                  <input
-                                    class="ant-checkbox-input"
-                                    type="checkbox"
-                                    value="4"
-                                  />
-                                  <span
-                                    class="ant-checkbox-inner"
-                                  />
-                                </span>
-                                <span>
-                                  common.week.thursday
-                                </span>
-                              </label>
-                              <label
-                                class="ant-checkbox-wrapper"
-                              >
-                                <span
-                                  class="ant-checkbox"
-                                >
-                                  <input
-                                    class="ant-checkbox-input"
-                                    type="checkbox"
-                                    value="5"
-                                  />
-                                  <span
-                                    class="ant-checkbox-inner"
-                                  />
-                                </span>
-                                <span>
-                                  common.week.friday
-                                </span>
-                              </label>
-                              <label
-                                class="ant-checkbox-wrapper"
-                              >
-                                <span
-                                  class="ant-checkbox"
-                                >
-                                  <input
-                                    class="ant-checkbox-input"
-                                    type="checkbox"
-                                    value="6"
-                                  />
-                                  <span
-                                    class="ant-checkbox-inner"
-                                  />
-                                </span>
-                                <span>
-                                  common.week.saturday
-                                </span>
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="ant-space-item"
-                      >
-                        <div
-                          class="ant-space ant-space-horizontal ant-space-align-center full-width-element"
-                        >
-                          <div
-                            class="ant-space-item"
-                            style="margin-right: 8px;"
-                          >
-                            <span>
-                              common.cron.label.point
-                              :
-                            </span>
-                          </div>
-                          <div
-                            class="ant-space-item"
-                            style="margin-right: 8px;"
-                          >
-                            <div
-                              class="ant-select cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
-                            >
-                              <div
-                                class="ant-select-selector"
-                              >
-                                <div
-                                  class="ant-select-selection-overflow"
-                                >
-                                  <div
-                                    class="ant-select-selection-overflow-item"
-                                    style="opacity: 1;"
-                                  >
-                                    <span
-                                      class="ant-select-selection-item"
-                                    >
-                                      <span
-                                        class="ant-select-selection-item-content"
-                                      >
-                                        0
-                                      </span>
-                                      <span
-                                        aria-hidden="true"
-                                        class="ant-select-selection-item-remove"
-                                        style="user-select: none;"
-                                        unselectable="on"
-                                      >
-                                        <span
-                                          aria-label="close"
-                                          class="anticon anticon-close"
-                                          role="img"
-                                        >
-                                          <svg
-                                            aria-hidden="true"
-                                            data-icon="close"
-                                            fill="currentColor"
-                                            focusable="false"
-                                            height="1em"
-                                            viewBox="64 64 896 896"
-                                            width="1em"
-                                          >
-                                            <path
-                                              d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
-                                            />
-                                          </svg>
-                                        </span>
-                                      </span>
-                                    </span>
-                                  </div>
-                                  <div
-                                    class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
-                                    style="opacity: 1;"
-                                  >
-                                    <div
-                                      class="ant-select-selection-search"
-                                      style="width: 0px;"
-                                    >
-                                      <input
-                                        aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
-                                        aria-autocomplete="list"
-                                        aria-controls="rc_select_TEST_OR_SSR_list"
-                                        aria-haspopup="listbox"
-                                        aria-owns="rc_select_TEST_OR_SSR_list"
-                                        autocomplete="off"
-                                        class="ant-select-selection-search-input"
-                                        id="rc_select_TEST_OR_SSR"
-                                        readonly=""
-                                        role="combobox"
-                                        style="opacity: 0;"
-                                        type="search"
-                                        unselectable="on"
-                                        value=""
-                                      />
-                                      <span
-                                        aria-hidden="true"
-                                        class="ant-select-selection-search-mirror"
-                                      >
-                                        
-                                         
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <span
-                                aria-hidden="true"
-                                class="ant-select-clear"
-                                style="user-select: none;"
-                                unselectable="on"
-                              >
-                                <span
-                                  aria-label="close-circle"
-                                  class="anticon anticon-close-circle"
-                                  role="img"
-                                >
-                                  <svg
-                                    aria-hidden="true"
-                                    data-icon="close-circle"
-                                    fill="currentColor"
-                                    focusable="false"
-                                    height="1em"
-                                    viewBox="64 64 896 896"
-                                    width="1em"
-                                  >
-                                    <path
-                                      d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
-                                    />
-                                  </svg>
-                                </span>
-                              </span>
-                            </div>
-                          </div>
-                          <div
-                            class="ant-space-item"
-                            style="margin-right: 8px;"
-                          >
-                            :
-                          </div>
-                          <div
-                            class="ant-space-item"
-                          >
-                            <div
-                              class="ant-select cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
-                            >
-                              <div
-                                class="ant-select-selector"
-                              >
-                                <div
-                                  class="ant-select-selection-overflow"
-                                >
-                                  <div
-                                    class="ant-select-selection-overflow-item"
-                                    style="opacity: 1;"
-                                  >
-                                    <span
-                                      class="ant-select-selection-item"
-                                    >
-                                      <span
-                                        class="ant-select-selection-item-content"
-                                      >
-                                        0
-                                      </span>
-                                      <span
-                                        aria-hidden="true"
-                                        class="ant-select-selection-item-remove"
-                                        style="user-select: none;"
-                                        unselectable="on"
-                                      >
-                                        <span
-                                          aria-label="close"
-                                          class="anticon anticon-close"
-                                          role="img"
-                                        >
-                                          <svg
-                                            aria-hidden="true"
-                                            data-icon="close"
-                                            fill="currentColor"
-                                            focusable="false"
-                                            height="1em"
-                                            viewBox="64 64 896 896"
-                                            width="1em"
-                                          >
-                                            <path
-                                              d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
-                                            />
-                                          </svg>
-                                        </span>
-                                      </span>
-                                    </span>
-                                  </div>
-                                  <div
-                                    class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
-                                    style="opacity: 1;"
-                                  >
-                                    <div
-                                      class="ant-select-selection-search"
-                                      style="width: 0px;"
-                                    >
-                                      <input
-                                        aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
-                                        aria-autocomplete="list"
-                                        aria-controls="rc_select_TEST_OR_SSR_list"
-                                        aria-haspopup="listbox"
-                                        aria-owns="rc_select_TEST_OR_SSR_list"
-                                        autocomplete="off"
-                                        class="ant-select-selection-search-input"
-                                        id="rc_select_TEST_OR_SSR"
-                                        readonly=""
-                                        role="combobox"
-                                        style="opacity: 0;"
-                                        type="search"
-                                        unselectable="on"
-                                        value=""
-                                      />
-                                      <span
-                                        aria-hidden="true"
-                                        class="ant-select-selection-search-mirror"
-                                      >
-                                        
-                                         
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <span
-                                aria-hidden="true"
-                                class="ant-select-clear"
-                                style="user-select: none;"
-                                unselectable="on"
-                              >
-                                <span
-                                  aria-label="close-circle"
-                                  class="anticon anticon-close-circle"
-                                  role="img"
-                                >
-                                  <svg
-                                    aria-hidden="true"
-                                    data-icon="close-circle"
-                                    fill="currentColor"
-                                    focusable="false"
-                                    height="1em"
-                                    viewBox="64 64 896 896"
-                                    width="1em"
-                                  >
-                                    <path
-                                      d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
-                                    />
-                                  </svg>
-                                </span>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      data-testid="cron-preview"
-                    >
-                      common.preview
-                      : 
-                      0 0 * * *
-                    </div>
-                  </div>
-                  <div
-                    class="cron-user-manual"
-                    hidden=""
-                  >
-                    <input
-                      class="ant-input"
-                      type="text"
-                      value="0 0 * * *"
+                    <path
+                      d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
                     />
+                    <path
+                      d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"
+                    />
+                  </svg>
+                </span>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <div
+                    class="ant-select ant-select-in-form-item ant-select-status-success ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
+                  >
+                    <div
+                      class="ant-select-selector"
+                    >
+                      <span
+                        class="ant-select-selection-search"
+                      >
+                        <input
+                          aria-activedescendant="databaseName_list_1"
+                          aria-autocomplete="list"
+                          aria-controls="databaseName_list"
+                          aria-expanded="false"
+                          aria-haspopup="listbox"
+                          aria-owns="databaseName_list"
+                          autocomplete="off"
+                          class="ant-select-selection-search-input"
+                          id="databaseName"
+                          role="combobox"
+                          type="search"
+                          value=""
+                        />
+                      </span>
+                      <span
+                        class="ant-select-selection-item"
+                        title="instance1"
+                      >
+                        instance1
+                      </span>
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      class="ant-select-arrow"
+                      style="user-select: none;"
+                      unselectable="on"
+                    >
+                      <span
+                        aria-label="down"
+                        class="anticon anticon-down ant-select-suffix"
+                        role="img"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="down"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      class="ant-select-clear"
+                      style="user-select: none;"
+                      unselectable="on"
+                    >
+                      <span
+                        aria-label="close-circle"
+                        class="anticon anticon-close-circle"
+                        role="img"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="close-circle"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
+                          />
+                        </svg>
+                      </span>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -1302,55 +214,1194 @@ exports[`CreatePlan should send create audit plan request 1`] = `
           </div>
         </div>
         <div
-          class="ant-row ant-form-item"
+          class="ant-form-item ant-form-item-has-success"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
-          >
-            <label
-              class="ant-form-item-no-colon"
-              title=" "
-            >
-               
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
+            >
+              <label
+                class=""
+                for="schema"
+                title="auditPlan.planForm.schema"
+              >
+                auditPlan.planForm.schema
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
             >
               <div
-                class="ant-form-item-control-input-content"
+                class="ant-form-item-control-input"
               >
                 <div
-                  class="ant-space ant-space-horizontal ant-space-align-center"
+                  class="ant-form-item-control-input-content"
                 >
                   <div
-                    class="ant-space-item"
-                    style="margin-right: 8px;"
+                    class="ant-select ant-select-in-form-item ant-select-status-success ant-select-single ant-select-allow-clear ant-select-show-arrow"
                   >
-                    <button
-                      ant-click-animating-without-extra-node="true"
-                      class="ant-btn ant-btn-primary"
-                      type="submit"
+                    <div
+                      class="ant-select-selector"
                     >
-                      <span>
-                        common.submit
+                      <span
+                        class="ant-select-selection-search"
+                      >
+                        <input
+                          aria-activedescendant="schema_list_0"
+                          aria-autocomplete="list"
+                          aria-controls="schema_list"
+                          aria-expanded="false"
+                          aria-haspopup="listbox"
+                          aria-owns="schema_list"
+                          autocomplete="off"
+                          class="ant-select-selection-search-input"
+                          id="schema"
+                          readonly=""
+                          role="combobox"
+                          style="opacity: 0;"
+                          type="search"
+                          unselectable="on"
+                          value=""
+                        />
                       </span>
-                    </button>
+                      <span
+                        class="ant-select-selection-item"
+                        title="schema1"
+                      >
+                        schema1
+                      </span>
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      class="ant-select-arrow"
+                      style="user-select: none;"
+                      unselectable="on"
+                    >
+                      <span
+                        aria-label="down"
+                        class="anticon anticon-down ant-select-suffix"
+                        role="img"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="down"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      class="ant-select-clear"
+                      style="user-select: none;"
+                      unselectable="on"
+                    >
+                      <span
+                        aria-label="close-circle"
+                        class="anticon anticon-close-circle"
+                        role="img"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="close-circle"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
+                          />
+                        </svg>
+                      </span>
+                    </span>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
+            >
+              <label
+                class="ant-form-item-required"
+                for="dbType"
+                title="auditPlan.planForm.dbType"
+              >
+                auditPlan.planForm.dbType
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
                   <div
-                    class="ant-space-item"
+                    aria-required="true"
+                    class="ant-select ant-select-in-form-item ant-select-status-success ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-disabled"
                   >
-                    <button
-                      class="ant-btn"
-                      type="button"
+                    <div
+                      class="ant-select-selector"
                     >
-                      <span>
-                        common.reset
+                      <span
+                        class="ant-select-selection-search"
+                      >
+                        <input
+                          aria-activedescendant="dbType_list_0"
+                          aria-autocomplete="list"
+                          aria-controls="dbType_list"
+                          aria-expanded="false"
+                          aria-haspopup="listbox"
+                          aria-owns="dbType_list"
+                          aria-required="true"
+                          autocomplete="off"
+                          class="ant-select-selection-search-input"
+                          disabled=""
+                          id="dbType"
+                          readonly=""
+                          role="combobox"
+                          style="opacity: 0;"
+                          type="search"
+                          unselectable="on"
+                          value=""
+                        />
                       </span>
-                    </button>
+                      <span
+                        class="ant-select-selection-item"
+                        title="mysql"
+                      >
+                        mysql
+                      </span>
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      class="ant-select-arrow"
+                      style="user-select: none;"
+                      unselectable="on"
+                    >
+                      <span
+                        aria-label="down"
+                        class="anticon anticon-down ant-select-suffix"
+                        role="img"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="down"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
+            >
+              <label
+                class="ant-form-item-required"
+                for="auditTaskType"
+                title="auditPlan.planForm.taskType"
+              >
+                auditPlan.planForm.taskType
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <div
+                    aria-required="true"
+                    class="ant-select ant-select-in-form-item ant-select-status-success ant-select-single ant-select-show-arrow"
+                  >
+                    <div
+                      class="ant-select-selector"
+                    >
+                      <span
+                        class="ant-select-selection-search"
+                      >
+                        <input
+                          aria-activedescendant="auditTaskType_list_0"
+                          aria-autocomplete="list"
+                          aria-controls="auditTaskType_list"
+                          aria-expanded="false"
+                          aria-haspopup="listbox"
+                          aria-owns="auditTaskType_list"
+                          aria-required="true"
+                          autocomplete="off"
+                          class="ant-select-selection-search-input"
+                          id="auditTaskType"
+                          readonly=""
+                          role="combobox"
+                          style="opacity: 0;"
+                          type="search"
+                          unselectable="on"
+                          value=""
+                        />
+                      </span>
+                      <span
+                        class="ant-select-selection-item"
+                        title="普通的SQL审核"
+                      >
+                        普通的SQL审核
+                      </span>
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      class="ant-select-arrow"
+                      style="user-select: none;"
+                      unselectable="on"
+                    >
+                      <span
+                        aria-label="down"
+                        class="anticon anticon-down ant-select-suffix"
+                        role="img"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="down"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
+            >
+              <label
+                class=""
+                for="params_a"
+                title="字段a"
+              >
+                字段a
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    class="ant-input ant-input-status-success"
+                    id="params_a"
+                    type="text"
+                    value="123"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
+            >
+              <label
+                class=""
+                for="params_b"
+                title="字段b"
+              >
+                字段b
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    class="ant-input ant-input-status-success"
+                    id="params_b"
+                    type="text"
+                    value="123"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
+            >
+              <label
+                class=""
+                for="params_c"
+                title="字段c"
+              >
+                字段c
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <button
+                    aria-checked="true"
+                    class="ant-switch ant-switch-checked"
+                    id="params_c"
+                    role="switch"
+                    type="button"
+                  >
+                    <div
+                      class="ant-switch-handle"
+                    />
+                    <span
+                      class="ant-switch-inner"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
+            >
+              <label
+                class=""
+                for="ruleTemplateName"
+                title="auditPlan.planForm.ruleTemplateName"
+              >
+                auditPlan.planForm.ruleTemplateName
+                <span
+                  aria-label="question-circle"
+                  class="anticon anticon-question-circle ant-form-item-tooltip"
+                  role="img"
+                  title=""
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-icon="question-circle"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                    />
+                    <path
+                      d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"
+                    />
+                  </svg>
+                </span>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <div
+                    class="ant-select ant-select-in-form-item ant-select-status-success ant-select-single ant-select-show-arrow"
+                  >
+                    <div
+                      class="ant-select-selector"
+                    >
+                      <span
+                        class="ant-select-selection-search"
+                      >
+                        <input
+                          aria-activedescendant="ruleTemplateName_list_0"
+                          aria-autocomplete="list"
+                          aria-controls="ruleTemplateName_list"
+                          aria-expanded="false"
+                          aria-haspopup="listbox"
+                          aria-owns="ruleTemplateName_list"
+                          autocomplete="off"
+                          class="ant-select-selection-search-input"
+                          id="ruleTemplateName"
+                          readonly=""
+                          role="combobox"
+                          style="opacity: 0;"
+                          type="search"
+                          unselectable="on"
+                          value=""
+                        />
+                      </span>
+                      <span
+                        class="ant-select-selection-item"
+                        title="rule_template_name1"
+                      >
+                        rule_template_name1
+                      </span>
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      class="ant-select-arrow"
+                      style="user-select: none;"
+                      unselectable="on"
+                    >
+                      <span
+                        aria-label="down"
+                        class="anticon anticon-down ant-select-suffix"
+                        role="img"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="down"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
+            >
+              <label
+                class="ant-form-item-required"
+                for="cron"
+                title="auditPlan.planForm.cron"
+              >
+                auditPlan.planForm.cron
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <div
+                    class="cron-input-wrapper"
+                  >
+                    <div
+                      style="line-height: 32px;"
+                    >
+                      <div
+                        class="ant-radio-group ant-radio-group-outline"
+                      >
+                        <label
+                          class="ant-radio-wrapper ant-radio-wrapper-checked ant-radio-wrapper-in-form-item"
+                        >
+                          <span
+                            class="ant-radio ant-radio-checked"
+                          >
+                            <input
+                              checked=""
+                              class="ant-radio-input"
+                              type="radio"
+                              value="Select"
+                            />
+                            <span
+                              class="ant-radio-inner"
+                            />
+                          </span>
+                          <span>
+                            common.cron.mode.select
+                          </span>
+                        </label>
+                        <label
+                          class="ant-radio-wrapper ant-radio-wrapper-in-form-item"
+                        >
+                          <span
+                            class="ant-radio"
+                          >
+                            <input
+                              class="ant-radio-input"
+                              type="radio"
+                              value="Manual"
+                            />
+                            <span
+                              class="ant-radio-inner"
+                            />
+                          </span>
+                          <span>
+                            common.cron.mode.manual
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                    <div
+                      class="cron-user-select"
+                    >
+                      <div
+                        class="ant-space ant-space-vertical full-width-element"
+                      >
+                        <div
+                          class="ant-space-item"
+                          style="margin-bottom: 8px;"
+                        >
+                          <div
+                            class="ant-space ant-space-horizontal ant-space-align-center"
+                          >
+                            <div
+                              class="ant-space-item"
+                              style="margin-right: 8px;"
+                            >
+                              <span>
+                                common.cron.label.interval
+                                :
+                              </span>
+                            </div>
+                            <div
+                              class="ant-space-item"
+                            >
+                              <div
+                                class="ant-select ant-select-in-form-item ant-select-status-success cron-every-select ant-select-single ant-select-show-arrow"
+                              >
+                                <div
+                                  class="ant-select-selector"
+                                >
+                                  <span
+                                    class="ant-select-selection-search"
+                                  >
+                                    <input
+                                      aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
+                                      aria-autocomplete="list"
+                                      aria-controls="rc_select_TEST_OR_SSR_list"
+                                      aria-haspopup="listbox"
+                                      aria-owns="rc_select_TEST_OR_SSR_list"
+                                      autocomplete="off"
+                                      class="ant-select-selection-search-input"
+                                      id="rc_select_TEST_OR_SSR"
+                                      readonly=""
+                                      role="combobox"
+                                      style="opacity: 0;"
+                                      type="search"
+                                      unselectable="on"
+                                      value=""
+                                    />
+                                  </span>
+                                  <span
+                                    class="ant-select-selection-item"
+                                    title="common.cron.time.everyDay"
+                                  >
+                                    common.cron.time.everyDay
+                                  </span>
+                                </div>
+                                <span
+                                  aria-hidden="true"
+                                  class="ant-select-arrow"
+                                  style="user-select: none;"
+                                  unselectable="on"
+                                >
+                                  <span
+                                    aria-label="down"
+                                    class="anticon anticon-down ant-select-suffix"
+                                    role="img"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      data-icon="down"
+                                      fill="currentColor"
+                                      focusable="false"
+                                      height="1em"
+                                      viewBox="64 64 896 896"
+                                      width="1em"
+                                    >
+                                      <path
+                                        d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                                      />
+                                    </svg>
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                          style="margin-bottom: 8px;"
+                        >
+                          <div
+                            class="ant-space ant-space-horizontal ant-space-align-center cron-week-wrapper"
+                            hidden=""
+                          >
+                            <div
+                              class="ant-space-item"
+                            >
+                              <div
+                                class="ant-checkbox-group"
+                              >
+                                <label
+                                  class="ant-checkbox-wrapper ant-checkbox-wrapper-in-form-item"
+                                >
+                                  <span
+                                    class="ant-checkbox"
+                                  >
+                                    <input
+                                      class="ant-checkbox-input"
+                                      type="checkbox"
+                                      value="0"
+                                    />
+                                    <span
+                                      class="ant-checkbox-inner"
+                                    />
+                                  </span>
+                                  <span>
+                                    common.week.sunday
+                                  </span>
+                                </label>
+                                <label
+                                  class="ant-checkbox-wrapper ant-checkbox-wrapper-in-form-item"
+                                >
+                                  <span
+                                    class="ant-checkbox"
+                                  >
+                                    <input
+                                      class="ant-checkbox-input"
+                                      type="checkbox"
+                                      value="1"
+                                    />
+                                    <span
+                                      class="ant-checkbox-inner"
+                                    />
+                                  </span>
+                                  <span>
+                                    common.week.monday
+                                  </span>
+                                </label>
+                                <label
+                                  class="ant-checkbox-wrapper ant-checkbox-wrapper-in-form-item"
+                                >
+                                  <span
+                                    class="ant-checkbox"
+                                  >
+                                    <input
+                                      class="ant-checkbox-input"
+                                      type="checkbox"
+                                      value="2"
+                                    />
+                                    <span
+                                      class="ant-checkbox-inner"
+                                    />
+                                  </span>
+                                  <span>
+                                    common.week.tuesday
+                                  </span>
+                                </label>
+                                <label
+                                  class="ant-checkbox-wrapper ant-checkbox-wrapper-in-form-item"
+                                >
+                                  <span
+                                    class="ant-checkbox"
+                                  >
+                                    <input
+                                      class="ant-checkbox-input"
+                                      type="checkbox"
+                                      value="3"
+                                    />
+                                    <span
+                                      class="ant-checkbox-inner"
+                                    />
+                                  </span>
+                                  <span>
+                                    common.week.wednesday
+                                  </span>
+                                </label>
+                                <label
+                                  class="ant-checkbox-wrapper ant-checkbox-wrapper-in-form-item"
+                                >
+                                  <span
+                                    class="ant-checkbox"
+                                  >
+                                    <input
+                                      class="ant-checkbox-input"
+                                      type="checkbox"
+                                      value="4"
+                                    />
+                                    <span
+                                      class="ant-checkbox-inner"
+                                    />
+                                  </span>
+                                  <span>
+                                    common.week.thursday
+                                  </span>
+                                </label>
+                                <label
+                                  class="ant-checkbox-wrapper ant-checkbox-wrapper-in-form-item"
+                                >
+                                  <span
+                                    class="ant-checkbox"
+                                  >
+                                    <input
+                                      class="ant-checkbox-input"
+                                      type="checkbox"
+                                      value="5"
+                                    />
+                                    <span
+                                      class="ant-checkbox-inner"
+                                    />
+                                  </span>
+                                  <span>
+                                    common.week.friday
+                                  </span>
+                                </label>
+                                <label
+                                  class="ant-checkbox-wrapper ant-checkbox-wrapper-in-form-item"
+                                >
+                                  <span
+                                    class="ant-checkbox"
+                                  >
+                                    <input
+                                      class="ant-checkbox-input"
+                                      type="checkbox"
+                                      value="6"
+                                    />
+                                    <span
+                                      class="ant-checkbox-inner"
+                                    />
+                                  </span>
+                                  <span>
+                                    common.week.saturday
+                                  </span>
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                        >
+                          <div
+                            class="ant-space ant-space-horizontal ant-space-align-center full-width-element"
+                          >
+                            <div
+                              class="ant-space-item"
+                              style="margin-right: 8px;"
+                            >
+                              <span>
+                                common.cron.label.point
+                                :
+                              </span>
+                            </div>
+                            <div
+                              class="ant-space-item"
+                              style="margin-right: 8px;"
+                            >
+                              <div
+                                class="ant-select ant-select-in-form-item ant-select-status-success cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
+                              >
+                                <div
+                                  class="ant-select-selector"
+                                >
+                                  <div
+                                    class="ant-select-selection-overflow"
+                                  >
+                                    <div
+                                      class="ant-select-selection-overflow-item"
+                                      style="opacity: 1;"
+                                    >
+                                      <span
+                                        class="ant-select-selection-item"
+                                        title="0"
+                                      >
+                                        <span
+                                          class="ant-select-selection-item-content"
+                                        >
+                                          0
+                                        </span>
+                                        <span
+                                          aria-hidden="true"
+                                          class="ant-select-selection-item-remove"
+                                          style="user-select: none;"
+                                          unselectable="on"
+                                        >
+                                          <span
+                                            aria-label="close"
+                                            class="anticon anticon-close"
+                                            role="img"
+                                          >
+                                            <svg
+                                              aria-hidden="true"
+                                              data-icon="close"
+                                              fill="currentColor"
+                                              focusable="false"
+                                              height="1em"
+                                              viewBox="64 64 896 896"
+                                              width="1em"
+                                            >
+                                              <path
+                                                d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
+                                              />
+                                            </svg>
+                                          </span>
+                                        </span>
+                                      </span>
+                                    </div>
+                                    <div
+                                      class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
+                                      style="opacity: 1;"
+                                    >
+                                      <div
+                                        class="ant-select-selection-search"
+                                        style="width: 0px;"
+                                      >
+                                        <input
+                                          aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
+                                          aria-autocomplete="list"
+                                          aria-controls="rc_select_TEST_OR_SSR_list"
+                                          aria-haspopup="listbox"
+                                          aria-owns="rc_select_TEST_OR_SSR_list"
+                                          autocomplete="off"
+                                          class="ant-select-selection-search-input"
+                                          id="rc_select_TEST_OR_SSR"
+                                          readonly=""
+                                          role="combobox"
+                                          style="opacity: 0;"
+                                          type="search"
+                                          unselectable="on"
+                                          value=""
+                                        />
+                                        <span
+                                          aria-hidden="true"
+                                          class="ant-select-selection-search-mirror"
+                                        >
+                                           
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <span
+                                  aria-hidden="true"
+                                  class="ant-select-clear"
+                                  style="user-select: none;"
+                                  unselectable="on"
+                                >
+                                  <span
+                                    aria-label="close-circle"
+                                    class="anticon anticon-close-circle"
+                                    role="img"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      data-icon="close-circle"
+                                      fill="currentColor"
+                                      focusable="false"
+                                      height="1em"
+                                      viewBox="64 64 896 896"
+                                      width="1em"
+                                    >
+                                      <path
+                                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
+                                      />
+                                    </svg>
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+                            <div
+                              class="ant-space-item"
+                              style="margin-right: 8px;"
+                            >
+                              :
+                            </div>
+                            <div
+                              class="ant-space-item"
+                            >
+                              <div
+                                class="ant-select ant-select-in-form-item ant-select-status-success cron-inline-select ant-select-multiple ant-select-allow-clear ant-select-show-search"
+                              >
+                                <div
+                                  class="ant-select-selector"
+                                >
+                                  <div
+                                    class="ant-select-selection-overflow"
+                                  >
+                                    <div
+                                      class="ant-select-selection-overflow-item"
+                                      style="opacity: 1;"
+                                    >
+                                      <span
+                                        class="ant-select-selection-item"
+                                        title="0"
+                                      >
+                                        <span
+                                          class="ant-select-selection-item-content"
+                                        >
+                                          0
+                                        </span>
+                                        <span
+                                          aria-hidden="true"
+                                          class="ant-select-selection-item-remove"
+                                          style="user-select: none;"
+                                          unselectable="on"
+                                        >
+                                          <span
+                                            aria-label="close"
+                                            class="anticon anticon-close"
+                                            role="img"
+                                          >
+                                            <svg
+                                              aria-hidden="true"
+                                              data-icon="close"
+                                              fill="currentColor"
+                                              focusable="false"
+                                              height="1em"
+                                              viewBox="64 64 896 896"
+                                              width="1em"
+                                            >
+                                              <path
+                                                d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
+                                              />
+                                            </svg>
+                                          </span>
+                                        </span>
+                                      </span>
+                                    </div>
+                                    <div
+                                      class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
+                                      style="opacity: 1;"
+                                    >
+                                      <div
+                                        class="ant-select-selection-search"
+                                        style="width: 0px;"
+                                      >
+                                        <input
+                                          aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
+                                          aria-autocomplete="list"
+                                          aria-controls="rc_select_TEST_OR_SSR_list"
+                                          aria-haspopup="listbox"
+                                          aria-owns="rc_select_TEST_OR_SSR_list"
+                                          autocomplete="off"
+                                          class="ant-select-selection-search-input"
+                                          id="rc_select_TEST_OR_SSR"
+                                          readonly=""
+                                          role="combobox"
+                                          style="opacity: 0;"
+                                          type="search"
+                                          unselectable="on"
+                                          value=""
+                                        />
+                                        <span
+                                          aria-hidden="true"
+                                          class="ant-select-selection-search-mirror"
+                                        >
+                                           
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <span
+                                  aria-hidden="true"
+                                  class="ant-select-clear"
+                                  style="user-select: none;"
+                                  unselectable="on"
+                                >
+                                  <span
+                                    aria-label="close-circle"
+                                    class="anticon anticon-close-circle"
+                                    role="img"
+                                  >
+                                    <svg
+                                      aria-hidden="true"
+                                      data-icon="close-circle"
+                                      fill="currentColor"
+                                      focusable="false"
+                                      height="1em"
+                                      viewBox="64 64 896 896"
+                                      width="1em"
+                                    >
+                                      <path
+                                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
+                                      />
+                                    </svg>
+                                  </span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        data-testid="cron-preview"
+                      >
+                        common.preview
+                        : 
+                        0 0 * * *
+                      </div>
+                    </div>
+                    <div
+                      class="cron-user-manual"
+                      hidden=""
+                    >
+                      <input
+                        class="ant-input ant-input-status-success"
+                        type="text"
+                        value="0 0 * * *"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-6"
+            >
+              <label
+                class="ant-form-item-no-colon"
+                title=" "
+              >
+                 
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-14"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <div
+                    class="ant-space ant-space-horizontal ant-space-align-center"
+                  >
+                    <div
+                      class="ant-space-item"
+                      style="margin-right: 8px;"
+                    >
+                      <button
+                        ant-click-animating-without-extra-node="true"
+                        class="ant-btn ant-btn-primary"
+                        type="submit"
+                      >
+                        <span>
+                          common.submit
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                    >
+                      <button
+                        class="ant-btn ant-btn-default"
+                        type="button"
+                      >
+                        <span>
+                          common.reset
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -11,21 +11,7 @@ exports[`WorkflowTemplate should match snapshot 1`] = `
   <section
     className="padding-content"
   >
-    <Switch>
-      <Route
-        component={[Function]}
-        exact={true}
-        path="/project/:projectName/progress"
-      />
-      <Route
-        component={[Function]}
-        exact={true}
-        path="/project/:projectName/progress/update/:workflowName"
-      />
-      <Redirect
-        to="/project/:projectName/progress"
-      />
-    </Switch>
+    <Outlet />
   </section>
 </article>
 `;

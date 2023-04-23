@@ -1,6 +1,6 @@
 import { EditOutlined, EnterOutlined } from '@ant-design/icons';
 import { useBoolean } from 'ahooks';
-import { Col, Typography, Input } from 'antd';
+import { Col, Typography, Input, InputRef } from 'antd';
 import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import EmptyBox from '../../../components/EmptyBox';
@@ -9,7 +9,7 @@ import useInputChange from './hooks/useInputChange';
 
 const UserEmail: React.FC<UserEmailProps> = (props) => {
   const { t } = useTranslation();
-  const inputRef = useRef<Input | null>(null);
+  const inputRef = useRef<InputRef | null>(null);
   const [editEmail, { setTrue: startEditEmail, setFalse: closeEditEmail }] =
     useBoolean(false);
 
@@ -40,8 +40,8 @@ const UserEmail: React.FC<UserEmailProps> = (props) => {
             <EmptyBox if={!!props.userInfo?.email} defaultNode="--">
               {props.userInfo?.email}
             </EmptyBox>
-            <Typography.Link onClick={startEditEmail}>
-              <EditOutlined />
+            <Typography.Link>
+              <EditOutlined onClick={startEditEmail} />
             </Typography.Link>
           </Typography.Text>
         </div>

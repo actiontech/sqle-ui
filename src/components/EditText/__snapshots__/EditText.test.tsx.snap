@@ -40,11 +40,12 @@ exports[`EditText should call onEnd with user input when user press enter key 1`
 exports[`EditText should call onEnd with user input when user press enter key 2`] = `
 <div>
   <div
-    class="ant-typography ant-typography-edit-content"
+    class="ant-typography ant-typography-edit-content ant-typography-div"
   >
     <textarea
       class="ant-input"
-      style="height: 0px; min-height: -9007199254740991px; max-height: 9007199254740991px; overflow-y: hidden; resize: none; overflow-x: hidden;"
+      rows="1"
+      style="height: 0px; resize: none;"
     >
       new value
     </textarea>

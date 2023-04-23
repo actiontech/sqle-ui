@@ -60,7 +60,7 @@ const AddWhitelist = () => {
   return (
     <Modal
       title={t('whitelist.modal.add.title')}
-      visible={visible}
+      open={visible}
       closable={false}
       width={ModalSize.big}
       footer={

@@ -10,7 +10,7 @@ exports[`TestDatabaseConnectButton controlled mode should call onClickTestButton
       style="margin-right: 8px;"
     >
       <button
-        class="ant-btn"
+        class="ant-btn ant-btn-default"
         type="button"
       >
         <span>
@@ -36,7 +36,7 @@ exports[`TestDatabaseConnectButton controlled mode should call onClickTestButton
     >
       <button
         ant-click-animating-without-extra-node="false"
-        class="ant-btn"
+        class="ant-btn ant-btn-default"
         type="button"
       >
         <span>
@@ -61,7 +61,7 @@ exports[`TestDatabaseConnectButton controlled mode should render message by init
       style="margin-right: 8px;"
     >
       <button
-        class="ant-btn"
+        class="ant-btn ant-btn-default"
         type="button"
       >
         <span>
@@ -86,7 +86,7 @@ exports[`TestDatabaseConnectButton controlled mode should render message by init
       style="margin-right: 8px;"
     >
       <button
-        class="ant-btn ant-btn-loading"
+        class="ant-btn ant-btn-default ant-btn-loading"
         type="button"
       >
         <span
@@ -134,7 +134,7 @@ exports[`TestDatabaseConnectButton controlled mode should render message by init
       style="margin-right: 8px;"
     >
       <button
-        class="ant-btn ant-btn-loading"
+        class="ant-btn ant-btn-default ant-btn-loading"
         type="button"
       >
         <span
@@ -188,7 +188,7 @@ exports[`TestDatabaseConnectButton controlled mode should render message by init
       style="margin-right: 8px;"
     >
       <button
-        class="ant-btn"
+        class="ant-btn ant-btn-default"
         type="button"
       >
         <span>
@@ -238,7 +238,7 @@ exports[`TestDatabaseConnectButton controlled mode should render message by init
       style="margin-right: 8px;"
     >
       <button
-        class="ant-btn"
+        class="ant-btn ant-btn-default"
         type="button"
       >
         <span>
@@ -288,7 +288,7 @@ exports[`TestDatabaseConnectButton uncontrolled mode should render message by in
       style="margin-right: 8px;"
     >
       <button
-        class="ant-btn ant-btn-loading"
+        class="ant-btn ant-btn-default ant-btn-loading"
         type="button"
       >
         <span
@@ -336,7 +336,7 @@ exports[`TestDatabaseConnectButton uncontrolled mode should render message by in
       style="margin-right: 8px;"
     >
       <button
-        class="ant-btn"
+        class="ant-btn ant-btn-default"
         type="button"
       >
         <span>
@@ -362,7 +362,7 @@ exports[`TestDatabaseConnectButton uncontrolled mode should show connect result 
     >
       <button
         ant-click-animating-without-extra-node="false"
-        class="ant-btn"
+        class="ant-btn ant-btn-default"
         type="button"
       >
         <span>
@@ -388,7 +388,7 @@ exports[`TestDatabaseConnectButton uncontrolled mode should show connect result 
     >
       <button
         ant-click-animating-without-extra-node="false"
-        class="ant-btn"
+        class="ant-btn ant-btn-default"
         type="button"
       >
         <span>
@@ -438,7 +438,7 @@ exports[`TestDatabaseConnectButton uncontrolled mode should show connect result 
       style="margin-right: 8px;"
     >
       <button
-        class="ant-btn"
+        class="ant-btn ant-btn-default"
         type="button"
       >
         <span>
@@ -464,7 +464,7 @@ exports[`TestDatabaseConnectButton uncontrolled mode should show connect result 
     >
       <button
         ant-click-animating-without-extra-node="false"
-        class="ant-btn"
+        class="ant-btn ant-btn-default"
         type="button"
       >
         <span>

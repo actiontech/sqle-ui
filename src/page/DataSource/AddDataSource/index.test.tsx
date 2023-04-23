@@ -1,4 +1,4 @@
-import { fireEvent, waitFor, screen } from '@testing-library/react';
+import { fireEvent, waitFor, screen, act } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import AddDataSource from '.';
 import instance from '../../../api/instance';
@@ -20,16 +20,20 @@ import {
 } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 import { dataSourceMetas } from '../__testData__';
+import useNavigate from '../../../hooks/useNavigate';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn(),
 }));
 
+jest.mock('../../../hooks/useNavigate', () => jest.fn());
+
 const projectName = 'default';
 
 describe('AddDataSource', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
+  const navigateSpy = jest.fn();
 
   beforeEach(() => {
     jest.useFakeTimers();
@@ -38,6 +42,7 @@ describe('AddDataSource', () => {
     mockDriver();
     mockUseGlobalRuleTemplate();
     useParamsMock.mockReturnValue({ projectName });
+    (useNavigate as jest.Mock).mockImplementation(() => navigateSpy);
   });
 
   afterEach(() => {
@@ -72,13 +77,12 @@ describe('AddDataSource', () => {
     const create = mockCreateInstanceRequest();
     renderWithThemeAndRouter(<AddDataSource />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.input(screen.getByLabelText('dataSource.dataSourceForm.name'), {
       target: { value: 'instance_name1' },
     });
+
     fireEvent.input(
       screen.getByLabelText('dataSource.dataSourceForm.describe'),
       {
@@ -89,28 +93,30 @@ describe('AddDataSource', () => {
     fireEvent.mouseDown(
       screen.getByLabelText('dataSource.dataSourceForm.type')
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
     const databaseTypeOption = screen.getAllByText('mysql')[1];
     expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
     fireEvent.click(databaseTypeOption);
+    await act(async () => jest.advanceTimersByTime(0));
 
     fireEvent.input(screen.getByLabelText('dataSource.dataSourceForm.ip'), {
       target: { value: '1.1.1.1' },
     });
+
     fireEvent.input(screen.getByLabelText('dataSource.dataSourceForm.port'), {
       target: { value: 4444 },
     });
+
     fireEvent.input(screen.getByLabelText('dataSource.dataSourceForm.user'), {
       target: { value: 'root' },
     });
+
     fireEvent.input(
       screen.getByLabelText('dataSource.dataSourceForm.password'),
       {
         target: { value: '123456' },
       }
     );
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(
       screen.getByLabelText('dataSource.dataSourceForm.ruleTemplate')
@@ -118,36 +124,26 @@ describe('AddDataSource', () => {
     fireEvent.mouseDown(
       screen.getByLabelText('dataSource.dataSourceForm.ruleTemplate')
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+
     await screen.findAllByText('rule_template_name1');
     const allInstanceOptions = screen.getAllByText('rule_template_name1');
     const instanceOption = allInstanceOptions[1];
     expect(instanceOption).toHaveClass('ant-select-item-option-content');
     fireEvent.click(instanceOption);
+    await act(async () => jest.advanceTimersByTime(0));
 
     fireEvent.click(screen.getByText('common.add'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+
     fireEvent.click(getBySelector('.ant-picker-range'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
 
     fireEvent.click(screen.getAllByText('23')[0]);
     fireEvent.click(screen.getAllByText('00')[1]);
-    fireEvent.click(screen.getByText('Ok'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    fireEvent.click(screen.getByText('OK'));
+
     fireEvent.click(screen.getAllByText('02')[0]);
     fireEvent.click(screen.getAllByText('00')[1]);
-    fireEvent.click(screen.getByText('Ok'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    fireEvent.click(screen.getByText('OK'));
+
     fireEvent.click(screen.getByText('common.ok'));
 
     fireEvent.mouseDown(
@@ -155,9 +151,8 @@ describe('AddDataSource', () => {
         'dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel'
       )
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const noticeOptions = screen.getAllByText('notice');
     const noticeOption = noticeOptions[1];
     fireEvent.click(noticeOption);
@@ -166,9 +161,10 @@ describe('AddDataSource', () => {
       screen.getByLabelText('dataSource.dataSourceForm.needAuditForSqlQuery')
     );
 
-    await waitFor(() => {
+    await act(() => {
       fireEvent.click(screen.getByText('common.submit'));
     });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(create).toBeCalledTimes(1);
     expect(create).toBeCalledWith({
@@ -213,9 +209,8 @@ describe('AddDataSource', () => {
       },
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     const emit = mockEventEmit();
     expect(screen.getByText('dataSource.addDatabaseSuccess')).not.toBeNull();
 
@@ -232,13 +227,13 @@ describe('AddDataSource', () => {
   test('should reset all fields when click reset button', async () => {
     renderWithTheme(<AddDataSource />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.input(screen.getByLabelText('dataSource.dataSourceForm.name'), {
       target: { value: 'instance_name1' },
     });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByLabelText('dataSource.dataSourceForm.name')).toHaveValue(
       'instance_name1'
     );
@@ -246,6 +241,8 @@ describe('AddDataSource', () => {
     fireEvent.input(screen.getByLabelText('dataSource.dataSourceForm.port'), {
       target: { value: 4444 },
     });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByLabelText('dataSource.dataSourceForm.port')).toHaveValue(
       '4444'
     );
@@ -266,14 +263,12 @@ describe('AddDataSource', () => {
   test('should be hidden "allowQueryWhenLessThanAuditLevel" field when audit enabled is equal false', async () => {
     renderWithThemeAndRouter(<AddDataSource />, undefined);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.getByTitle(
         'dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel'
-      )?.parentElement?.parentElement
+      )?.parentElement?.parentElement?.parentElement
     ).toHaveClass('ant-form-item-hidden');
 
     fireEvent.click(
@@ -282,7 +277,7 @@ describe('AddDataSource', () => {
     expect(
       screen.getByTitle(
         'dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel'
-      )?.parentElement?.parentElement
+      )?.parentElement?.parentElement?.parentElement
     ).not.toHaveClass('ant-form-item-hidden');
 
     selectOptionByIndex(
@@ -290,9 +285,7 @@ describe('AddDataSource', () => {
       'error',
       0
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(
       getSelectValueByFormLabel(
@@ -307,7 +300,7 @@ describe('AddDataSource', () => {
     expect(
       screen.getByTitle(
         'dataSource.dataSourceForm.allowQueryWhenLessThanAuditLevel'
-      )?.parentElement?.parentElement
+      )?.parentElement?.parentElement?.parentElement
     ).toHaveClass('ant-form-item-hidden');
   });
 });

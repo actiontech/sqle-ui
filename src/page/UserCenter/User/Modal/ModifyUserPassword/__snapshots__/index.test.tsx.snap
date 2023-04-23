@@ -7,10 +7,7 @@ exports[`User/ModifyUserPassword should match snapshot 1`] = `
 `;
 
 exports[`User/ModifyUserPassword should match snapshot 2`] = `
-<body
-  class="ant-scrolling-effect"
-  style="width: calc(100% - 0px); overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
->
+<body>
   <div />
   <div>
     <div
@@ -20,14 +17,14 @@ exports[`User/ModifyUserPassword should match snapshot 2`] = `
         class="ant-modal-mask"
       />
       <div
-        aria-labelledby="rcDialogTitle0"
         class="ant-modal-wrap"
-        role="dialog"
         tabindex="-1"
       >
         <div
+          aria-labelledby="test-id"
+          aria-modal="true"
           class="ant-modal"
-          role="document"
+          role="dialog"
           style="width: 520px;"
         >
           <div
@@ -43,7 +40,7 @@ exports[`User/ModifyUserPassword should match snapshot 2`] = `
             >
               <div
                 class="ant-modal-title"
-                id="rcDialogTitle0"
+                id="test-id"
               >
                 user.updateUserPassword.title
               </div>
@@ -55,133 +52,141 @@ exports[`User/ModifyUserPassword should match snapshot 2`] = `
                 class="ant-form ant-form-horizontal"
               >
                 <div
-                  class="ant-row ant-form-item"
+                  class="ant-form-item"
                 >
                   <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                  >
-                    <label
-                      class="ant-form-item-required"
-                      for="password"
-                      title="user.userForm.password"
-                    >
-                      user.userForm.password
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                    class="ant-row ant-form-item-row"
                   >
                     <div
-                      class="ant-form-item-control-input"
+                      class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                    >
+                      <label
+                        class="ant-form-item-required"
+                        for="password"
+                        title="user.userForm.password"
+                      >
+                        user.userForm.password
+                      </label>
+                    </div>
+                    <div
+                      class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
                     >
                       <div
-                        class="ant-form-item-control-input-content"
+                        class="ant-form-item-control-input"
                       >
-                        <span
-                          class="ant-input-affix-wrapper ant-input-password"
+                        <div
+                          class="ant-form-item-control-input-content"
                         >
-                          <input
-                            action="click"
-                            class="ant-input"
-                            id="password"
-                            placeholder="common.form.placeholder.input"
-                            type="password"
-                            value=""
-                          />
                           <span
-                            class="ant-input-suffix"
+                            class="ant-input-affix-wrapper ant-input-password"
                           >
+                            <input
+                              aria-required="true"
+                              class="ant-input"
+                              id="password"
+                              placeholder="common.form.placeholder.input"
+                              type="password"
+                              value=""
+                            />
                             <span
-                              aria-label="eye-invisible"
-                              class="anticon anticon-eye-invisible ant-input-password-icon"
-                              role="img"
-                              tabindex="-1"
+                              class="ant-input-suffix"
                             >
-                              <svg
-                                aria-hidden="true"
-                                data-icon="eye-invisible"
-                                fill="currentColor"
-                                focusable="false"
-                                height="1em"
-                                viewBox="64 64 896 896"
-                                width="1em"
+                              <span
+                                aria-label="eye-invisible"
+                                class="anticon anticon-eye-invisible ant-input-password-icon"
+                                role="img"
+                                tabindex="-1"
                               >
-                                <path
-                                  d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
-                                />
-                                <path
-                                  d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
-                                />
-                              </svg>
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="eye-invisible"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
+                                  />
+                                  <path
+                                    d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
+                                  />
+                                </svg>
+                              </span>
                             </span>
                           </span>
-                        </span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div
-                  class="ant-row ant-form-item"
+                  class="ant-form-item"
                 >
                   <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                  >
-                    <label
-                      class="ant-form-item-required"
-                      for="passwordConfirm"
-                      title="user.userForm.passwordConfirm"
-                    >
-                      user.userForm.passwordConfirm
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                    class="ant-row ant-form-item-row"
                   >
                     <div
-                      class="ant-form-item-control-input"
+                      class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                    >
+                      <label
+                        class="ant-form-item-required"
+                        for="passwordConfirm"
+                        title="user.userForm.passwordConfirm"
+                      >
+                        user.userForm.passwordConfirm
+                      </label>
+                    </div>
+                    <div
+                      class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
                     >
                       <div
-                        class="ant-form-item-control-input-content"
+                        class="ant-form-item-control-input"
                       >
-                        <span
-                          class="ant-input-affix-wrapper ant-input-password"
+                        <div
+                          class="ant-form-item-control-input-content"
                         >
-                          <input
-                            action="click"
-                            class="ant-input"
-                            id="passwordConfirm"
-                            placeholder="user.userForm.passwordConfirmPlaceholder"
-                            type="password"
-                            value=""
-                          />
                           <span
-                            class="ant-input-suffix"
+                            class="ant-input-affix-wrapper ant-input-password"
                           >
+                            <input
+                              aria-required="true"
+                              class="ant-input"
+                              id="passwordConfirm"
+                              placeholder="user.userForm.passwordConfirmPlaceholder"
+                              type="password"
+                              value=""
+                            />
                             <span
-                              aria-label="eye-invisible"
-                              class="anticon anticon-eye-invisible ant-input-password-icon"
-                              role="img"
-                              tabindex="-1"
+                              class="ant-input-suffix"
                             >
-                              <svg
-                                aria-hidden="true"
-                                data-icon="eye-invisible"
-                                fill="currentColor"
-                                focusable="false"
-                                height="1em"
-                                viewBox="64 64 896 896"
-                                width="1em"
+                              <span
+                                aria-label="eye-invisible"
+                                class="anticon anticon-eye-invisible ant-input-password-icon"
+                                role="img"
+                                tabindex="-1"
                               >
-                                <path
-                                  d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
-                                />
-                                <path
-                                  d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
-                                />
-                              </svg>
+                                <svg
+                                  aria-hidden="true"
+                                  data-icon="eye-invisible"
+                                  fill="currentColor"
+                                  focusable="false"
+                                  height="1em"
+                                  viewBox="64 64 896 896"
+                                  width="1em"
+                                >
+                                  <path
+                                    d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
+                                  />
+                                  <path
+                                    d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
+                                  />
+                                </svg>
+                              </span>
                             </span>
                           </span>
-                        </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -192,7 +197,7 @@ exports[`User/ModifyUserPassword should match snapshot 2`] = `
               class="ant-modal-footer"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>

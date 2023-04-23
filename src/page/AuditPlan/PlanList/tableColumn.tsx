@@ -1,13 +1,13 @@
 import { DownOutlined } from '@ant-design/icons';
-import { Dropdown, Menu, Popconfirm, Space, Typography } from 'antd';
-import { Link } from 'react-router-dom';
+import { Dropdown, MenuProps, Popconfirm, Space, Typography } from 'antd';
 import { IAuditPlanMetaV1, IAuditPlanResV2 } from '../../../api/common';
 import IconTipsLabel from '../../../components/IconTipsLabel';
 import { ModalName } from '../../../data/ModalName';
-import i18n from '../../../locale';
+import { t } from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import { RuleUrlParamKey } from '../../Rule/useRuleFilterForm';
 import TokenText from './component/TokenText';
+import { Link } from '../../../components/Link';
 
 export const planListTableHeader = (
   removeAuditPlan: (auditPlanName: string) => void,
@@ -18,10 +18,10 @@ export const planListTableHeader = (
   const column: TableColumn<IAuditPlanResV2, 'operate'> = [
     {
       dataIndex: 'audit_plan_name',
-      title: () => i18n.t('auditPlan.list.table.audit_plan_name'),
+      title: () => t('auditPlan.list.table.audit_plan_name'),
       render: (text: string) => {
         return (
-          <Link to={`/project/${projectName}/auditPlan/detail/${text}`}>
+          <Link to={`project/${projectName}/auditPlan/detail/${text}`}>
             {text}
           </Link>
         );
@@ -29,38 +29,38 @@ export const planListTableHeader = (
     },
     {
       dataIndex: 'audit_plan_meta',
-      title: () => i18n.t('auditPlan.list.table.audit_plan_type'),
+      title: () => t('auditPlan.list.table.audit_plan_type'),
       render: (meta: IAuditPlanMetaV1) => {
         return meta?.audit_plan_type_desc;
       },
     },
     {
       dataIndex: 'audit_plan_cron',
-      title: () => i18n.t('auditPlan.list.table.audit_plan_cron'),
+      title: () => t('auditPlan.list.table.audit_plan_cron'),
     },
     {
       dataIndex: 'audit_plan_instance_name',
-      title: () => i18n.t('auditPlan.list.table.audit_plan_instance_name'),
+      title: () => t('auditPlan.list.table.audit_plan_instance_name'),
     },
     {
       dataIndex: 'audit_plan_instance_database',
-      title: () => i18n.t('auditPlan.list.table.audit_plan_instance_database'),
+      title: () => t('auditPlan.list.table.audit_plan_instance_database'),
     },
     {
       dataIndex: 'audit_plan_db_type',
-      title: () => i18n.t('auditPlan.list.table.audit_plan_db_type'),
+      title: () => t('auditPlan.list.table.audit_plan_db_type'),
     },
     {
       dataIndex: 'rule_template',
-      title: () => i18n.t('auditPlan.list.table.audit_rule_template'),
+      title: () => t('auditPlan.list.table.audit_rule_template'),
       render(ruleTemplate: IAuditPlanResV2['rule_template']) {
         if (!ruleTemplate?.name) {
           return '';
         }
 
         const path = ruleTemplate.is_global_rule_template
-          ? `/rule?${RuleUrlParamKey.ruleTemplateName}=${ruleTemplate.name}`
-          : `/rule?${RuleUrlParamKey.projectName}=${projectName}&${RuleUrlParamKey.ruleTemplateName}=${ruleTemplate.name}`;
+          ? `rule?${RuleUrlParamKey.ruleTemplateName}=${ruleTemplate.name}`
+          : `rule?${RuleUrlParamKey.projectName}=${projectName}&${RuleUrlParamKey.ruleTemplateName}=${ruleTemplate.name}`;
 
         return <Link to={path}>{ruleTemplate.name}</Link>;
       },
@@ -69,10 +69,8 @@ export const planListTableHeader = (
       dataIndex: 'audit_plan_token',
       title: () => (
         <>
-          <IconTipsLabel
-            tips={i18n.t('auditPlan.list.table.audit_plan_token_tips')}
-          >
-            {i18n.t('auditPlan.list.table.audit_plan_token')}
+          <IconTipsLabel tips={t('auditPlan.list.table.audit_plan_token_tips')}>
+            {t('auditPlan.list.table.audit_plan_token')}
           </IconTipsLabel>
         </>
       ),
@@ -82,8 +80,38 @@ export const planListTableHeader = (
     },
     {
       dataIndex: 'operate',
-      title: () => i18n.t('common.operate'),
+      title: () => t('common.operate'),
+      width: 120,
       render: (_, record) => {
+        const menuItems: MenuProps['items'] = [
+          {
+            key: 'remove',
+            label: (
+              <Popconfirm
+                placement="topLeft"
+                title={t('auditPlan.remove.confirm', {
+                  name: record.audit_plan_name,
+                })}
+                onConfirm={() => removeAuditPlan(record.audit_plan_name ?? '')}
+              >
+                <div
+                  className="text-red"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                >
+                  {t('common.delete')}
+                </div>
+              </Popconfirm>
+            ),
+          },
+
+          {
+            key: 'subscribe',
+            onClick: () => openModal(ModalName.Subscribe_Notice, record),
+            label: t('auditPlan.list.operator.notice'),
+          },
+        ];
         return (
           <Space
             onClick={(e) => {
@@ -94,45 +122,11 @@ export const planListTableHeader = (
               type="link"
               to={`/project/${projectName}/auditPlan/update/${record.audit_plan_name}`}
             >
-              {i18n.t('common.edit')}
+              {t('common.edit')}
             </Link>
-            <Dropdown
-              trigger={['click']}
-              overlay={
-                <Menu>
-                  <Menu.Item key="remove">
-                    <Popconfirm
-                      placement="topLeft"
-                      title={i18n.t('auditPlan.remove.confirm', {
-                        name: record.audit_plan_name,
-                      })}
-                      onConfirm={() =>
-                        removeAuditPlan(record.audit_plan_name ?? '')
-                      }
-                    >
-                      <div
-                        className="text-red"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                        }}
-                      >
-                        {i18n.t('common.delete')}
-                      </div>
-                    </Popconfirm>
-                  </Menu.Item>
-                  <Menu.Item
-                    key="subscribe"
-                    onClick={() =>
-                      openModal(ModalName.Subscribe_Notice, record)
-                    }
-                  >
-                    {i18n.t('auditPlan.list.operator.notice')}
-                  </Menu.Item>
-                </Menu>
-              }
-            >
+            <Dropdown trigger={['click']} menu={{ items: menuItems }}>
               <Typography.Link className="pointer">
-                {i18n.t('common.more')}
+                {t('common.more')}
                 <DownOutlined />
               </Typography.Link>
             </Dropdown>

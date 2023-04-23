@@ -40,7 +40,7 @@ describe('test PanelWrapper', () => {
     );
 
     expect(screen.queryByText('children')).not.toBeInTheDocument();
-    expect(screen.queryByText('error message')).toBeInTheDocument();
+    expect(screen.getByText('error message')).toBeInTheDocument();
 
     expect(container).toMatchSnapshot();
   });

@@ -1,15 +1,11 @@
-import { waitFor, screen, fireEvent, cleanup } from '@testing-library/react';
+import { screen, fireEvent, cleanup, act } from '@testing-library/react';
 import { Modal } from 'antd';
 import { useParams } from 'react-router-dom';
 import DataSourceList from '.';
 import instance from '../../../api/instance';
 import { SystemRole } from '../../../data/common';
 import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
-import {
-  renderWithRouter,
-  renderWithServerRouter,
-} from '../../../testUtils/customRender';
-import { mockUseSelector } from '../../../testUtils/mockRedux';
+import { renderWithRouter } from '../../../testUtils/customRender';
 import {
   mockUseInstance,
   mockUseRole,
@@ -19,17 +15,23 @@ import {
   mockUseGlobalRuleTemplate,
 } from '../../../testUtils/mockRequest';
 import { dataSourceList } from '../__testData__';
-import { createMemoryHistory } from 'history';
-import { getBySelector } from '../../../testUtils/customQuery';
+
+import { getBySelector, getHrefByText } from '../../../testUtils/customQuery';
+import { useSelector } from 'react-redux';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn(),
 }));
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux'),
+  useSelector: jest.fn(),
+}));
 const projectName = mockBindProjects[0].project_name;
 
 describe('DataSource/DataSourceList', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
+  const mockUseSelector = useSelector as jest.Mock;
 
   beforeEach(() => {
     jest.useFakeTimers();
@@ -40,10 +42,12 @@ describe('DataSource/DataSourceList', () => {
     mockDriver();
     mockUseGlobalRuleTemplate();
     useParamsMock.mockReturnValue({ projectName });
-    mockUseSelector({
-      user: { role: SystemRole.admin, bindProjects: mockBindProjects },
-      projectManage: { archived: false },
-    });
+    mockUseSelector.mockImplementation((e) =>
+      e({
+        user: { role: SystemRole.admin, bindProjects: mockBindProjects },
+        projectManage: { archived: false },
+      })
+    );
   });
 
   afterEach(() => {
@@ -70,9 +74,8 @@ describe('DataSource/DataSourceList', () => {
       project_name: projectName,
     });
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+
+    await act(async () => jest.advanceTimersByTime(3000));
     expect(container).toMatchSnapshot();
   });
 
@@ -83,30 +86,28 @@ describe('DataSource/DataSourceList', () => {
 
     const deleteSpy = jest.spyOn(instance, 'deleteInstanceV1');
     deleteSpy.mockImplementation(() => resolveThreeSecond({}));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getAllByText('common.delete')[0]);
     expect(
-      screen.queryByText('dataSource.deleteDatabase.confirmMessage')
+      screen.getByText('dataSource.deleteDatabase.confirmMessage')
     ).toBeInTheDocument();
     fireEvent.click(screen.getByText('OK'));
     expect(
-      screen.queryByText('dataSource.deleteDatabase.deletingDatabase')
+      screen.getByText('dataSource.deleteDatabase.deletingDatabase')
     ).toBeInTheDocument();
     expect(deleteSpy).toBeCalledTimes(1);
     expect(deleteSpy).toBeCalledWith({
       project_name: projectName,
       instance_name: dataSourceList[0].instance_name,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('dataSource.deleteDatabase.deletingDatabase')
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText('dataSource.deleteDatabase.deleteSuccessTips')
+      screen.getByText('dataSource.deleteDatabase.deleteSuccessTips')
     ).toBeInTheDocument();
     expect(getInstanceSpy).toBeCalledTimes(2);
   });
@@ -122,32 +123,29 @@ describe('DataSource/DataSourceList', () => {
         is_instance_connectable: true,
       })
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.mouseEnter(screen.getAllByText('common.more')[0]);
-    await waitFor(() => {
-      jest.advanceTimersByTime(300);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(
       screen.getByText('dataSource.dataSourceForm.testDatabaseConnection')
     );
     expect(
-      screen.queryByText('dataSource.dataSourceForm.testing')
+      screen.getByText('dataSource.dataSourceForm.testing')
     ).toBeInTheDocument();
     expect(checkInstanceConnectable).toBeCalledTimes(1);
     expect(checkInstanceConnectable).toBeCalledWith({
       project_name: projectName,
       instance_name: dataSourceList[0].instance_name,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('dataSource.dataSourceForm.testing')
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText('dataSource.dataSourceForm.testSuccess')
+      screen.getByText('dataSource.dataSourceForm.testSuccess')
     ).toBeInTheDocument();
   });
 
@@ -164,27 +162,24 @@ describe('DataSource/DataSourceList', () => {
         connect_error_message: 'can not connect',
       })
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.mouseEnter(screen.getAllByText('common.more')[0]);
-    await waitFor(() => {
-      jest.advanceTimersByTime(300);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(
       screen.getByText('dataSource.dataSourceForm.testDatabaseConnection')
     );
     expect(
-      screen.queryByText('dataSource.dataSourceForm.testing')
+      screen.getByText('dataSource.dataSourceForm.testing')
     ).toBeInTheDocument();
     expect(checkInstanceConnectable).toBeCalledTimes(1);
     expect(checkInstanceConnectable).toBeCalledWith({
       project_name: projectName,
       instance_name: dataSourceList[0].instance_name,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('dataSource.dataSourceForm.testing')
     ).not.toBeInTheDocument();
@@ -196,58 +191,58 @@ describe('DataSource/DataSourceList', () => {
   });
 
   test('should hide the Create, Add, Edit feature when not currently a project manager or admin', async () => {
-    mockUseSelector({
-      user: {
-        role: SystemRole.admin,
-        bindProjects: [{ projectName: 'test', isManager: false }],
-      },
-      projectManage: { archived: false },
-    });
+    mockUseSelector.mockImplementation((e) =>
+      e({
+        user: {
+          role: SystemRole.admin,
+          bindProjects: [{ projectName: 'test', isManager: false }],
+        },
+        projectManage: { archived: false },
+      })
+    );
 
     renderWithRouter(<DataSourceList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    expect(screen.queryAllByText('common.delete')[0]).toBeInTheDocument();
-    expect(screen.queryAllByText('common.edit')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('common.delete')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('common.edit')[0]).toBeInTheDocument();
     expect(
-      screen.queryAllByText('dataSource.addDatabase')[0]
+      screen.getAllByText('dataSource.addDatabase')[0]
     ).toBeInTheDocument();
 
     cleanup();
     jest.clearAllMocks();
 
-    mockUseSelector({
-      user: {
-        role: '',
-        bindProjects: mockBindProjects,
-      },
-      projectManage: { archived: false },
-    });
+    mockUseSelector.mockImplementation((e) =>
+      e({
+        user: {
+          role: '',
+          bindProjects: mockBindProjects,
+        },
+        projectManage: { archived: false },
+      })
+    );
     renderWithRouter(<DataSourceList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    expect(screen.queryAllByText('common.delete')[0]).toBeInTheDocument();
-    expect(screen.queryAllByText('common.edit')[0]).toBeInTheDocument();
-    expect(screen.queryByText('dataSource.addDatabase')).toBeInTheDocument();
+    expect(screen.getAllByText('common.delete')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('common.edit')[0]).toBeInTheDocument();
+    expect(screen.getByText('dataSource.addDatabase')).toBeInTheDocument();
 
     cleanup();
     jest.clearAllMocks();
 
-    mockUseSelector({
-      user: {
-        role: '',
-        bindProjects: [{ projectName: 'default', isManager: false }],
-      },
-      projectManage: { archived: false },
-    });
+    mockUseSelector.mockImplementation((e) =>
+      e({
+        user: {
+          role: '',
+          bindProjects: [{ projectName: 'default', isManager: false }],
+        },
+        projectManage: { archived: false },
+      })
+    );
     renderWithRouter(<DataSourceList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.queryAllByText('common.delete')[0]).toBeUndefined();
     expect(screen.queryAllByText('common.edit')[0]).toBeUndefined();
@@ -273,9 +268,8 @@ describe('DataSource/DataSourceList', () => {
       page_size: 10,
       project_name: projectName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(getBySelector('.ant-pagination-next'));
     expect(getInstanceSpy).nthCalledWith(2, {
       page_index: 2,
@@ -292,35 +286,31 @@ describe('DataSource/DataSourceList', () => {
   });
 
   test('should render rule link when rule template name is not empty', async () => {
-    let history = createMemoryHistory();
-    renderWithServerRouter(<DataSourceList />, undefined, { history });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    fireEvent.click(screen.getByText(dataSourceList[0].rule_template?.name!));
-    expect(history.location.pathname).toBe('/rule');
-    expect(history.location.search).toBe('?ruleTemplateName=default');
+    renderWithRouter(<DataSourceList />);
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    fireEvent.click(screen.getByText(dataSourceList[1].rule_template?.name!));
-    expect(history.location.pathname).toBe('/rule');
-    expect(history.location.search).toBe(
-      '?projectName=default&ruleTemplateName=test'
+    expect(getHrefByText(dataSourceList[0].rule_template?.name!)).toBe(
+      '/rule?ruleTemplateName=default'
+    );
+
+    expect(getHrefByText(dataSourceList[1].rule_template?.name!)).toBe(
+      '/rule?projectName=default&ruleTemplateName=test'
     );
   });
 
   test('should hide the Create, Delete, Edit feature when project is archived', async () => {
-    mockUseSelector({
-      user: {
-        role: SystemRole.admin,
-        bindProjects: [{ projectName: projectName, isManager: true }],
-      },
-      projectManage: { archived: true },
-    });
+    mockUseSelector.mockImplementation((e) =>
+      e({
+        user: {
+          role: SystemRole.admin,
+          bindProjects: [{ projectName: projectName, isManager: true }],
+        },
+        projectManage: { archived: true },
+      })
+    );
 
     renderWithRouter(<DataSourceList />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.queryAllByText('common.delete')[0]).toBeUndefined();
     expect(screen.queryAllByText('common.edit')[0]).toBeUndefined();

@@ -1,4 +1,4 @@
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, screen } from '@testing-library/react';
 import { useLocation } from 'react-router-dom';
 import SqlQueryEE from '.';
 import configuration from '../../api/configuration';
@@ -50,9 +50,8 @@ describe('SqlQueryEE', () => {
     const { container } = renderWithThemeAndRouter(<SqlQueryEE />);
     expect(container).toMatchSnapshot();
     expect(req).toBeCalledTimes(1);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -60,9 +59,8 @@ describe('SqlQueryEE', () => {
     const req = mockGetQueryUrl();
     req.mockImplementation(() => resolveErrorThreeSecond({}));
     const { container } = renderWithThemeAndRouter(<SqlQueryEE />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -77,9 +75,8 @@ describe('SqlQueryEE', () => {
     const openSpy = jest.spyOn(window, 'open');
     openSpy.mockImplementation(() => void 0 as any);
     const { container } = renderWithThemeAndRouter(<SqlQueryEE />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(openSpy).toBeCalledTimes(0);
     expect(container).toMatchSnapshot();
 
@@ -105,9 +102,8 @@ describe('SqlQueryEE', () => {
     const openSpy = jest.spyOn(window, 'open');
     openSpy.mockImplementation(() => void 0 as any);
     renderWithThemeAndRouter(<SqlQueryEE />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(openSpy).toBeCalledTimes(1);
     expect(openSpy).toBeCalledWith('/new_sql_query');
   });

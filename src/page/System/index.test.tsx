@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import System from '.';
-import { mockUseDispatch } from '../../testUtils/mockRedux';
+import { useDispatch } from 'react-redux';
 
 jest.mock('react', () => {
   return {
@@ -12,11 +12,19 @@ jest.mock('react', () => {
   };
 });
 
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
+
 describe('System', () => {
-  let dispatchSpy: jest.SpyInstance;
+  const dispatchSpy = jest.fn();
 
   beforeEach(() => {
-    dispatchSpy = mockUseDispatch().scopeDispatch;
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
   });
 
   afterEach(() => {

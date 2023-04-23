@@ -3,7 +3,6 @@ import { Button, Card, Modal, Result } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import instance from '../../../api/instance';
 import BackButton from '../../../components/BackButton';
 import { ResponseCode } from '../../../data/common';
@@ -13,6 +12,7 @@ import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import DataSourceForm from '../DataSourceForm';
 import { DataSourceFormField } from '../DataSourceForm/index.type';
 import { turnCommonToDataSourceParams } from '../tool';
+import Link from '../../../components/Link/Link';
 
 const AddDataSource = () => {
   const { t } = useTranslation();
@@ -75,7 +75,7 @@ const AddDataSource = () => {
         title={t('common.operateSuccess')}
         footer={null}
         closable={false}
-        visible={visible}
+        open={visible}
       >
         <Result
           status="success"

@@ -2,54 +2,62 @@ import {
   cleanup,
   fireEvent,
   render,
-  waitFor,
+  act,
   screen,
 } from '@testing-library/react';
 import UpdateUser from '.';
 import user from '../../../../../api/user';
 import EmitterKey from '../../../../../data/EmitterKey';
 import { ModalName } from '../../../../../data/ModalName';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../../testUtils/mockRedux';
+
 import {
   mockManagerPermission,
   mockUseUserGroup,
   resolveThreeSecond,
 } from '../../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../../utils/EventEmitter';
+import { useDispatch, useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('User/Modal/UpdateUser', () => {
   let useUserGroupSpy: jest.SpyInstance;
   let managerPermissionSpy: jest.SpyInstance;
-  let dispatchSpy: jest.Mock;
+  const dispatchSpy = jest.fn();
 
   beforeEach(() => {
     useUserGroupSpy = mockUseUserGroup();
     managerPermissionSpy = mockManagerPermission();
 
-    mockUseSelector({
-      userManage: {
-        modalStatus: { [ModalName.Update_User]: true },
-        selectUser: {
-          user_name: 'root',
-          email: 'user@123.com',
-          management_permission_list: [
-            {
-              desc: '创建项目',
-              code: 1,
-            },
-          ],
-          user_group_name_list: ['user_group_name1'],
-          wechat_id: '11231123',
-          phone: '13312341234',
-          is_disabled: false,
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        userManage: {
+          modalStatus: { [ModalName.Update_User]: true },
+          selectUser: {
+            user_name: 'root',
+            email: 'user@123.com',
+            management_permission_list: [
+              {
+                desc: '创建项目',
+                code: 1,
+              },
+            ],
+            user_group_name_list: ['user_group_name1'],
+            wechat_id: '11231123',
+            phone: '13312341234',
+            is_disabled: false,
+          },
         },
-      },
-    });
-    const { scopeDispatch } = mockUseDispatch();
-    dispatchSpy = scopeDispatch;
+      })
+    );
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
+
     jest.useFakeTimers();
   });
 
@@ -61,33 +69,34 @@ describe('User/Modal/UpdateUser', () => {
 
   test('should match snapshot', async () => {
     const { baseElement, rerender } = render(<UpdateUser />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    expect(baseElement).toMatchSnapshot();
-    cleanup();
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    mockUseSelector({
-      userManage: {
-        modalStatus: { [ModalName.Update_User]: true },
-        selectUser: {
-          user_name: 'root',
-          email: 'user@123.com',
-          management_permission_list: [
-            {
-              desc: '创建项目',
-              code: 1,
-            },
-          ],
-          user_group_name_list: ['user_group_name1'],
-          wechat_id: '11231123',
-          phone: '13312341234',
-          is_disabled: false,
+    expect(baseElement).toMatchSnapshot();
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        userManage: {
+          modalStatus: { [ModalName.Update_User]: true },
+          selectUser: {
+            user_name: 'root',
+            email: 'user@123.com',
+            management_permission_list: [
+              {
+                desc: '创建项目',
+                code: 1,
+              },
+            ],
+            user_group_name_list: ['user_group_name1'],
+            wechat_id: '11231123',
+            phone: '13312341234',
+            is_disabled: false,
+          },
         },
-      },
-    });
+      })
+    );
 
     rerender(<UpdateUser />);
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(baseElement).toMatchSnapshot();
   });
@@ -100,9 +109,12 @@ describe('User/Modal/UpdateUser', () => {
     cleanup();
     managerPermissionSpy.mockClear();
     useUserGroupSpy.mockClear();
-    mockUseSelector({
-      userManage: { modalStatus: { [ModalName.Update_User]: false } },
-    });
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        userManage: { modalStatus: { [ModalName.Update_User]: false } },
+      })
+    );
     render(<UpdateUser />);
     expect(managerPermissionSpy).not.toBeCalled();
     expect(useUserGroupSpy).not.toBeCalled();
@@ -113,9 +125,7 @@ describe('User/Modal/UpdateUser', () => {
     const updateUserSpy = jest.spyOn(user, 'updateUserV1');
     updateUserSpy.mockImplementation(() => resolveThreeSecond({}));
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.getByLabelText('user.userForm.username')).toHaveValue('root');
     expect(screen.getByLabelText('user.userForm.username')).toHaveAttribute(
@@ -132,9 +142,8 @@ describe('User/Modal/UpdateUser', () => {
     fireEvent.click(screen.getByText('user.userForm.disabled'));
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByText('common.submit').parentNode).toHaveClass(
       'ant-btn-loading'
     );
@@ -151,11 +160,10 @@ describe('User/Modal/UpdateUser', () => {
       wechat_id: '11231123',
       phone: '13312341234',
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText('user.updateUser.updateSuccessTips')
+      screen.getByText('user.updateUser.updateSuccessTips')
     ).toBeInTheDocument();
     expect(emitSpy).toBeCalledTimes(1);
     expect(emitSpy).toBeCalledWith(EmitterKey.Refresh_User_list);
@@ -178,40 +186,41 @@ describe('User/Modal/UpdateUser', () => {
 
   test('should send update user request when the username is any value', async () => {
     managerPermissionSpy.mockClear();
-    mockUseSelector({
-      userManage: {
-        modalStatus: { [ModalName.Update_User]: true },
-        selectUser: {
-          user_name: 'san.zhang',
-          email: 'user@123.com',
-          phone: '13312341234',
 
-          management_permission_list: [
-            {
-              desc: '创建项目',
-              code: 1,
-            },
-          ],
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        userManage: {
+          modalStatus: { [ModalName.Update_User]: true },
+          selectUser: {
+            user_name: 'san.zhang',
+            email: 'user@123.com',
+            phone: '13312341234',
+
+            management_permission_list: [
+              {
+                desc: '创建项目',
+                code: 1,
+              },
+            ],
+          },
         },
-      },
-    });
+      })
+    );
+
     render(<UpdateUser />);
     expect(managerPermissionSpy).toBeCalledTimes(1);
 
     const updateUserSpy = jest.spyOn(user, 'updateUserV1');
     updateUserSpy.mockImplementation(() => resolveThreeSecond({}));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.getByLabelText('user.userForm.username')).toHaveValue(
       'san.zhang'
     );
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(managerPermissionSpy).toBeCalledTimes(1);
     expect(updateUserSpy).toBeCalledWith({
       email: 'user@123.com',
@@ -225,40 +234,40 @@ describe('User/Modal/UpdateUser', () => {
 
   test('should not set disable filed when user name is admin', async () => {
     managerPermissionSpy.mockClear();
-    mockUseSelector({
-      userManage: {
-        modalStatus: { [ModalName.Update_User]: true },
-        selectUser: {
-          user_name: 'admin',
-          email: 'user@123.com',
-          phone: '13312341234',
 
-          management_permission_list: [
-            {
-              desc: '创建项目',
-              code: 1,
-            },
-          ],
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        userManage: {
+          modalStatus: { [ModalName.Update_User]: true },
+          selectUser: {
+            user_name: 'admin',
+            email: 'user@123.com',
+            phone: '13312341234',
+
+            management_permission_list: [
+              {
+                desc: '创建项目',
+                code: 1,
+              },
+            ],
+          },
         },
-      },
-    });
+      })
+    );
     render(<UpdateUser />);
     expect(managerPermissionSpy).toBeCalledTimes(1);
 
     const updateUserSpy = jest.spyOn(user, 'updateUserV1');
     updateUserSpy.mockImplementation(() => resolveThreeSecond({}));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.queryByLabelText('user.userForm.disabled')
     ).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(managerPermissionSpy).toBeCalledTimes(1);
     expect(updateUserSpy).toBeCalledWith({
       email: 'user@123.com',
@@ -271,30 +280,31 @@ describe('User/Modal/UpdateUser', () => {
 
   test('should send update user request when user clear email', async () => {
     managerPermissionSpy.mockClear();
-    mockUseSelector({
-      userManage: {
-        modalStatus: { [ModalName.Update_User]: true },
-        selectUser: {
-          user_name: 'san.zhang',
-          email: 'user@123.com',
-          phone: '13312341234',
-          management_permission_list: [
-            {
-              desc: '创建项目',
-              code: 1,
-            },
-          ],
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        userManage: {
+          modalStatus: { [ModalName.Update_User]: true },
+          selectUser: {
+            user_name: 'san.zhang',
+            email: 'user@123.com',
+            phone: '13312341234',
+            management_permission_list: [
+              {
+                desc: '创建项目',
+                code: 1,
+              },
+            ],
+          },
         },
-      },
-    });
+      })
+    );
     render(<UpdateUser />);
     expect(managerPermissionSpy).toBeCalledTimes(1);
 
     const updateUserSpy = jest.spyOn(user, 'updateUserV1');
     updateUserSpy.mockImplementation(() => resolveThreeSecond({}));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.getByLabelText('user.userForm.username')).toHaveValue(
       'san.zhang'
@@ -305,9 +315,8 @@ describe('User/Modal/UpdateUser', () => {
     });
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(managerPermissionSpy).toBeCalledTimes(1);
     expect(updateUserSpy).toBeCalledWith({
       email: '',

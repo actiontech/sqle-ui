@@ -22,7 +22,7 @@ exports[`Nav should render page by props of username 1`] = `
               style="margin-right: 8px;"
             >
               <a
-                href="/"
+                href="/home"
               >
                 <div
                   class="sqle-nav-title"
@@ -42,7 +42,7 @@ exports[`Nav should render page by props of username 1`] = `
                 class="header-menu"
               >
                 <div
-                  class="header-menu-item-active header-menu-item"
+                  class=" header-menu-item"
                 >
                   <span
                     class="header-menu-item-icon"
@@ -288,7 +288,7 @@ exports[`Nav should render page by props of username 2`] = `
               style="margin-right: 8px;"
             >
               <a
-                href="/"
+                href="/home"
               >
                 <div
                   class="sqle-nav-title"
@@ -308,7 +308,7 @@ exports[`Nav should render page by props of username 2`] = `
                 class="header-menu"
               >
                 <div
-                  class="header-menu-item-active header-menu-item"
+                  class=" header-menu-item"
                 >
                   <span
                     class="header-menu-item-icon"

@@ -26,20 +26,21 @@ import { OrderListFilterFormFields } from './OrderListFilterForm/index.type';
 import { IWorkflowDetailResV1 } from '../../../api/common.d';
 import useRole from '../../../hooks/useCurrentUser';
 import { ResponseCode } from '../../../data/common';
-import { Theme } from '../../../types/theme.type';
-import { useTheme } from '@material-ui/styles';
+import { useTheme } from '@mui/styles';
 import { TableRowSelection } from 'antd/lib/table/interface';
 import moment from 'moment';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import { WorkflowDetailResV1StatusEnum } from '../../../api/common.enum';
-import { Link, useHistory } from 'react-router-dom';
 import { IExportWorkflowV1Params } from '../../../api/workflow/index.d';
 import { useSelector } from 'react-redux';
 import { IReduxState } from '../../../store';
 import EmptyBox from '../../../components/EmptyBox';
+import useNavigate from '../../../hooks/useNavigate';
+import { Theme } from '@mui/material/styles';
+import { Link } from '../../../components/Link';
 
 const OrderList = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const location = useLocation();
   const theme = useTheme<Theme>();
@@ -270,7 +271,7 @@ const OrderList = () => {
         ghost={false}
         extra={[
           <EmptyBox if={!projectIsArchive} key="createOrder">
-            <Link to={`/project/${projectName}/order/create`}>
+            <Link to={`project/${projectName}/order/create`}>
               <Button type="primary">{t('order.createOrder.title')}</Button>
             </Link>
           </EmptyBox>,
@@ -313,7 +314,7 @@ const OrderList = () => {
                     setVisibleFalse();
                   }}
                   okButtonProps={{ loading: confirmLoading }}
-                  visible={visible}
+                  open={visible}
                 >
                   <Button
                     danger
@@ -353,8 +354,8 @@ const OrderList = () => {
               onChange={tableChange}
               onRow={(record) => ({
                 onClick() {
-                  history.push(
-                    `/project/${projectName}/order/${record.workflow_id}`
+                  navigate(
+                    `project/${projectName}/order/${record.workflow_id}`
                   );
                 },
               })}

@@ -3,7 +3,7 @@
 exports[`test Nav/Header/Logo should match snapshot 1`] = `
 <div>
   <a
-    href="/"
+    href="/home"
   >
     <div
       class="sqle-nav-title"

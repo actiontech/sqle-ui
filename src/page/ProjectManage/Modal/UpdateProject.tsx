@@ -77,7 +77,7 @@ const UpdateProject: React.FC = () => {
 
   return (
     <Modal
-      visible={modalVisibility}
+      open={modalVisibility}
       title={t('projectManage.updateProject.modalTitle')}
       closable={false}
       footer={

@@ -14,7 +14,7 @@ exports[`useInstance should be group instance by database type 1`] = `
           class="ant-select-selection-search"
         >
           <input
-            aria-activedescendant="rc_select_TEST_OR_SSR_list_-1"
+            aria-activedescendant="rc_select_TEST_OR_SSR_list_1"
             aria-autocomplete="list"
             aria-controls="rc_select_TEST_OR_SSR_list"
             aria-expanded="true"
@@ -72,7 +72,7 @@ exports[`useInstance should be group instance by database type 1`] = `
     <div>
       <div
         class="ant-select-dropdown"
-        style="opacity: 0; pointer-events: none; min-width: 0; width: 0px;"
+        style="opacity: 0; min-width: 0; width: 0px;"
       >
         <div>
           <div
@@ -83,8 +83,24 @@ exports[`useInstance should be group instance by database type 1`] = `
             <div
               aria-selected="false"
               id="rc_select_TEST_OR_SSR_list_0"
-              role="option"
+              role="presentation"
             />
+            <div
+              aria-label="mysql_instance_test_name_1"
+              aria-selected="false"
+              id="rc_select_TEST_OR_SSR_list_1"
+              role="option"
+            >
+              mysql_instance_test_name_1
+            </div>
+            <div
+              aria-label="mysql_instance_test_name_2"
+              aria-selected="false"
+              id="rc_select_TEST_OR_SSR_list_2"
+              role="option"
+            >
+              mysql_instance_test_name_2
+            </div>
           </div>
           <div
             class="rc-virtual-list"
@@ -101,12 +117,13 @@ exports[`useInstance should be group instance by database type 1`] = `
                 >
                   <div
                     class="ant-select-item ant-select-item-group"
+                    title="mysql"
                   >
                     mysql
                   </div>
                   <div
                     aria-selected="false"
-                    class="ant-select-item ant-select-item-option ant-select-item-option-grouped"
+                    class="ant-select-item ant-select-item-option ant-select-item-option-grouped ant-select-item-option-active"
                     title="mysql_instance_test_name_1"
                   >
                     <div
@@ -140,6 +157,7 @@ exports[`useInstance should be group instance by database type 1`] = `
                   </div>
                   <div
                     class="ant-select-item ant-select-item-group"
+                    title="oracle"
                   >
                     oracle
                   </div>
@@ -162,6 +180,7 @@ exports[`useInstance should be group instance by database type 1`] = `
                   </div>
                   <div
                     class="ant-select-item ant-select-item-group"
+                    title="sqlserver"
                   >
                     sqlserver
                   </div>
@@ -348,7 +367,7 @@ exports[`useInstance should get instance data from request 3`] = `
           class="ant-select-selection-search"
         >
           <input
-            aria-activedescendant="rc_select_TEST_OR_SSR_list_-1"
+            aria-activedescendant="rc_select_TEST_OR_SSR_list_1"
             aria-autocomplete="list"
             aria-controls="rc_select_TEST_OR_SSR_list"
             aria-expanded="true"
@@ -406,7 +425,7 @@ exports[`useInstance should get instance data from request 3`] = `
     <div>
       <div
         class="ant-select-dropdown"
-        style="opacity: 0; pointer-events: none; min-width: 0; width: 0px;"
+        style="opacity: 0; min-width: 0; width: 0px;"
       >
         <div>
           <div
@@ -417,8 +436,16 @@ exports[`useInstance should get instance data from request 3`] = `
             <div
               aria-selected="false"
               id="rc_select_TEST_OR_SSR_list_0"
-              role="option"
+              role="presentation"
             />
+            <div
+              aria-label="instance_test_name (127.0.0.1:8081)"
+              aria-selected="false"
+              id="rc_select_TEST_OR_SSR_list_1"
+              role="option"
+            >
+              instance_test_name
+            </div>
           </div>
           <div
             class="rc-virtual-list"
@@ -435,12 +462,13 @@ exports[`useInstance should get instance data from request 3`] = `
                 >
                   <div
                     class="ant-select-item ant-select-item-group"
+                    title="mysql"
                   >
                     mysql
                   </div>
                   <div
                     aria-selected="false"
-                    class="ant-select-item ant-select-item-option ant-select-item-option-grouped"
+                    class="ant-select-item ant-select-item-option ant-select-item-option-grouped ant-select-item-option-active"
                     title="instance_test_name (127.0.0.1:8081)"
                   >
                     <div
@@ -615,7 +643,7 @@ exports[`useInstance should show one database type which your choose 2`] = `
     <div>
       <div
         class="ant-select-dropdown"
-        style="opacity: 0; pointer-events: none; min-width: 0; width: 0px;"
+        style="opacity: 0; min-width: 0; width: 0px;"
       >
         <div>
           <div
@@ -626,7 +654,7 @@ exports[`useInstance should show one database type which your choose 2`] = `
             <div
               aria-selected="false"
               id="rc_select_TEST_OR_SSR_list_0"
-              role="option"
+              role="presentation"
             />
             <div
               aria-label="oracle_instance_test_name"
@@ -652,6 +680,7 @@ exports[`useInstance should show one database type which your choose 2`] = `
                 >
                   <div
                     class="ant-select-item ant-select-item-group"
+                    title="oracle"
                   >
                     oracle
                   </div>

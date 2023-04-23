@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, act } from '@testing-library/react';
 import { message } from 'antd';
 import { shallow } from 'enzyme';
 import configuration from '../../../../api/configuration';
@@ -40,7 +40,7 @@ describe('test CustomTitle', () => {
     expect(textWrapper.prop('hidden')).toBe(false);
     expect(editWrapper.prop('hidden')).toBe(true);
 
-    const editIcon = wrapper.find('ForwardRef(Link)');
+    const editIcon = wrapper.find('ForwardRef(EditOutlined)');
     editIcon.simulate('click');
     wrapper.update();
 
@@ -120,9 +120,10 @@ describe('test CustomTitle', () => {
     expect(requestSpy).toBeCalledTimes(1);
     expect(requestSpy).toBeCalledWith({ title: 'newTitle' });
 
-    await waitFor(() => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText('system.personalize.updateTitleSuccessTips')
+      screen.getByText('system.personalize.updateTitleSuccessTips')
     ).toBeInTheDocument();
     expect(refresh).toBeCalledTimes(1);
     expect(

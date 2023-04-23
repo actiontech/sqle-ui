@@ -1,4 +1,4 @@
-import { Card, message, Result, Table, Tabs } from 'antd';
+import { Card, message, Result, Table, Tabs, TabsProps } from 'antd';
 import { useTranslation } from 'react-i18next';
 import AuditResult from '.';
 import { AuditResultCollectionProps } from './index.type';
@@ -11,7 +11,7 @@ import {
 import { ResponseCode } from '../../../data/common';
 import ScheduleTimeModal from './ScheduleTimeModal';
 import { useBoolean, useRequest } from 'ahooks';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { IGetWorkflowTasksItemV2 } from '../../../api/common';
 import { useSelector } from 'react-redux';
 import { IReduxState } from '../../../store';
@@ -41,6 +41,26 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
     scheduleVisible,
     { setTrue: openScheduleModal, setFalse: closeScheduleModal },
   ] = useBoolean();
+
+  const {
+    loading,
+    data: overviewList,
+    error,
+    refresh: refreshOverview,
+  } = useRequest(
+    () =>
+      workflow
+        .getSummaryOfInstanceTasksV2({
+          workflow_id: workflowId ?? '',
+          project_name: projectName,
+        })
+        .then((res) => res.data.data ?? []),
+    {
+      refreshDeps: [refreshOverviewFlag],
+      ready: !!showOverview && !!workflowId,
+      onSuccess: getOverviewListSuccessHandle,
+    }
+  );
 
   const sqlExecuteHandle = (taskId: string) => {
     if (!workflowId) {
@@ -94,25 +114,63 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
     setAuditResultActiveKey(record.task_id?.toString() ?? '');
   };
 
-  const {
-    loading,
-    data: overviewList,
-    error,
-    refresh: refreshOverview,
-  } = useRequest(
-    () =>
-      workflow
-        .getSummaryOfInstanceTasksV2({
-          workflow_id: workflowId ?? '',
-          project_name: projectName,
-        })
-        .then((res) => res.data.data ?? []),
-    {
-      refreshDeps: [refreshOverviewFlag],
-      ready: !!showOverview && !!workflowId,
-      onSuccess: getOverviewListSuccessHandle,
-    }
-  );
+  const tabItems = (): TabsProps['items'] => {
+    const tabs: TabsProps['items'] = taskInfos.map((v) => {
+      return {
+        key: `${v.task_id}`,
+        label: v.instance_name ?? '',
+        children: (
+          <>
+            <AuditResult
+              taskId={v?.task_id}
+              passRate={v?.pass_rate}
+              auditScore={v?.score}
+              updateTaskRecordTotalNum={updateTaskRecordTotalNum}
+              instanceSchema={v.instance_schema}
+              projectName={projectName}
+            />
+          </>
+        ),
+      };
+    });
+
+    const overviewTab = {
+      key: OVERVIEW_TAB_KEY,
+      label: t('order.auditResultCollection.overview'),
+      children: (
+        <Table
+          rowClassName="pointer"
+          rowKey="task_id"
+          loading={loading}
+          columns={auditResultOverviewColumn(
+            sqlExecuteHandle,
+            openScheduleModalAndSetCurrentTask,
+            scheduleTimeHandle,
+            username,
+            orderStatus
+          )}
+          dataSource={overviewList ?? []}
+          onRow={(record) => {
+            return {
+              onClick: () => overviewTableRowClick(record),
+            };
+          }}
+          pagination={false}
+          locale={{
+            emptyText: error ? (
+              <Result
+                status="error"
+                title={t('common.request.noticeFailTitle')}
+                subTitle={error?.message ?? t('common.unknownError')}
+              />
+            ) : undefined,
+          }}
+        />
+      ),
+    };
+
+    return showOverview ? [overviewTab, ...tabs] : tabs;
+  };
 
   useEffect(() => {
     if (showOverview) {
@@ -126,62 +184,8 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
         <Tabs
           activeKey={auditResultActiveKey}
           onChange={setAuditResultActiveKey}
-        >
-          <>
-            {showOverview && (
-              <Tabs.TabPane
-                tab={t('order.auditResultCollection.overview')}
-                key={OVERVIEW_TAB_KEY}
-              >
-                <Table
-                  rowClassName="pointer"
-                  rowKey="task_id"
-                  loading={loading}
-                  columns={auditResultOverviewColumn(
-                    sqlExecuteHandle,
-                    openScheduleModalAndSetCurrentTask,
-                    scheduleTimeHandle,
-                    username,
-                    orderStatus
-                  )}
-                  dataSource={overviewList ?? []}
-                  onRow={(record) => {
-                    return {
-                      onClick: () => overviewTableRowClick(record),
-                    };
-                  }}
-                  pagination={false}
-                  locale={{
-                    emptyText: error ? (
-                      <Result
-                        status="error"
-                        title={t('common.request.noticeFailTitle')}
-                        subTitle={error?.message ?? t('common.unknownError')}
-                      />
-                    ) : undefined,
-                  }}
-                />
-              </Tabs.TabPane>
-            )}
-            {taskInfos.map((v) => {
-              if (!v.task_id) {
-                return null;
-              }
-              return (
-                <Tabs.TabPane tab={v?.instance_name} key={v?.task_id}>
-                  <AuditResult
-                    taskId={v?.task_id}
-                    passRate={v?.pass_rate}
-                    auditScore={v?.score}
-                    updateTaskRecordTotalNum={updateTaskRecordTotalNum}
-                    instanceSchema={v.instance_schema}
-                    projectName={projectName}
-                  />
-                </Tabs.TabPane>
-              );
-            })}
-          </>
-        </Tabs>
+          items={tabItems()}
+        />
       </Card>
 
       <ScheduleTimeModal

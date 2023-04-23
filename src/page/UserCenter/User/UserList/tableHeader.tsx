@@ -1,10 +1,18 @@
 import { DownOutlined } from '@ant-design/icons';
-import { Divider, Dropdown, Menu, Popconfirm, Space, Typography } from 'antd';
+import {
+  Divider,
+  Dropdown,
+  Menu,
+  MenuProps,
+  Popconfirm,
+  Space,
+  Typography,
+} from 'antd';
 import { orderBy } from 'lodash';
 import { IManagementPermissionResV1, IUserResV1 } from '../../../../api/common';
 import EmptyBox from '../../../../components/EmptyBox';
 import { LoginTypeEnum } from '../../../../data/common';
-import i18n from '../../../../locale';
+import { t } from '../../../../locale';
 import { TableColumn } from '../../../../types/common.type';
 import generateTag from '../../Common/generateTag';
 
@@ -16,36 +24,36 @@ const tableHeaderFactory = (
   return [
     {
       dataIndex: 'user_name',
-      title: () => i18n.t('user.userForm.username'),
+      title: () => t('user.userForm.username'),
     },
     {
       dataIndex: 'email',
-      title: () => i18n.t('user.userForm.email'),
+      title: () => t('user.userForm.email'),
     },
     {
       dataIndex: 'phone',
-      title: () => i18n.t('user.userForm.phone'),
+      title: () => t('user.userForm.phone'),
     },
     {
       dataIndex: 'is_disabled',
-      title: () => i18n.t('user.table.status'),
+      title: () => t('user.table.status'),
       render: (isDisabled: boolean) => {
         return (
           <Typography.Text type={isDisabled ? 'danger' : undefined}>
             {isDisabled
-              ? i18n.t('user.userState.disabled')
-              : i18n.t('user.userState.normal')}
+              ? t('user.userState.disabled')
+              : t('user.userState.normal')}
           </Typography.Text>
         );
       },
     },
     {
       dataIndex: 'login_type',
-      title: () => i18n.t('user.table.userType'),
+      title: () => t('user.table.userType'),
     },
     {
       dataIndex: 'user_group_name_list',
-      title: () => i18n.t('user.userForm.userGroup'),
+      title: () => t('user.userForm.userGroup'),
       render: (userGroupList?: string[]) => {
         if (!Array.isArray(userGroupList)) {
           return '';
@@ -55,7 +63,7 @@ const tableHeaderFactory = (
     },
     {
       dataIndex: 'management_permission_list',
-      title: () => i18n.t('user.table.operation'),
+      title: () => t('user.table.operation'),
       render: (list: IManagementPermissionResV1[]) => {
         if (!Array.isArray(list)) {
           return '';
@@ -67,48 +75,43 @@ const tableHeaderFactory = (
     },
     {
       dataIndex: 'operation',
-      title: () => i18n.t('common.operate'),
+      title: () => t('common.operate'),
       render: (_, record) => {
+        const menuItems: MenuProps['items'] = [
+          {
+            key: 'update-user-password',
+            label: t('user.updateUserPassword.button'),
+            onClick: () => updateUserPassword(record),
+          },
+        ];
         return (
           <Space className="user-cell flex-end-horizontal">
             <Typography.Link
               className="pointer"
               onClick={updateUser.bind(null, record)}
             >
-              {i18n.t('common.edit')}
+              {t('common.edit')}
             </Typography.Link>
             <EmptyBox if={record.user_name !== 'admin'}>
               <Divider type="vertical" />
               <Popconfirm
-                title={i18n.t('user.deleteUser.confirmTitle', {
+                title={t('user.deleteUser.confirmTitle', {
                   username: record.user_name,
                 })}
                 placement="topRight"
-                okText={i18n.t('common.ok')}
-                cancelText={i18n.t('common.cancel')}
+                okText={t('common.ok')}
+                cancelText={t('common.cancel')}
                 onConfirm={removeUser.bind(null, record.user_name ?? '')}
               >
                 <Typography.Text type="danger" className="pointer">
-                  {i18n.t('common.delete')}
+                  {t('common.delete')}
                 </Typography.Text>
               </Popconfirm>
               <EmptyBox if={record?.login_type !== LoginTypeEnum.ldap}>
                 <Divider type="vertical" />
-                <Dropdown
-                  placement="bottomRight"
-                  overlay={
-                    <Menu>
-                      <Menu.Item
-                        onClick={updateUserPassword.bind(null, record)}
-                        key="update-user-password"
-                      >
-                        {i18n.t('user.updateUserPassword.button')}
-                      </Menu.Item>
-                    </Menu>
-                  }
-                >
+                <Dropdown placement="bottomRight" menu={{ items: menuItems }}>
                   <Typography.Link className="pointer">
-                    {i18n.t('common.more')}
+                    {t('common.more')}
                     <DownOutlined />
                   </Typography.Link>
                 </Dropdown>

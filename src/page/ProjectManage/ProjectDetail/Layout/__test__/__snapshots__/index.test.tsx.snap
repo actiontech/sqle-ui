@@ -2,188 +2,198 @@
 
 exports[`test ProjectManage/ProjectDetailLayout/index should match snapshot 1`] = `
 Array [
-  <MenuItem
-    icon={<ForwardRef(ProjectOutlined) />}
-    title="menu.projectOverview"
-  >
-    <Link
-      to="/project/test/overview"
+  Object {
+    "icon": <ForwardRef(ProjectOutlined) />,
+    "key": "projectOverview",
+    "label": <CustomLink
+      to="project/test/overview"
     >
       menu.projectOverview
-    </Link>
-  </MenuItem>,
-  <MenuItem
-    icon={<ForwardRef(BarsOutlined) />}
-    title="menu.order"
-  >
-    <Link
-      to="/project/test/order"
+    </CustomLink>,
+    "title": "menu.projectOverview",
+  },
+  Object {
+    "icon": <ForwardRef(ConsoleSqlOutlined) />,
+    "key": "order",
+    "label": <CustomLink
+      to="project/test/order"
     >
       menu.order
-    </Link>
-  </MenuItem>,
-  null,
-  <SubMenu
-    icon={<ForwardRef(CiCircleOutlined) />}
-    title="menu.auditPlane"
-  >
-    <MenuItemGroup
-      title=""
-    >
-      <MenuItem
-        title="menu.auditPlaneList"
-      >
-        <Link
-          to="/project/test/auditPlan"
-        >
-          menu.auditPlaneList
-        </Link>
-      </MenuItem>
-    </MenuItemGroup>
-  </SubMenu>,
-  <MenuItem
-    icon={<ForwardRef(DatabaseOutlined) />}
-    title="menu.dataSource"
-  >
-    <Link
-      to="/project/test/data"
+    </CustomLink>,
+    "title": "menu.order",
+  },
+  Object {
+    "children": Array [
+      Object {
+        "children": Array [
+          Object {
+            "icon": undefined,
+            "key": "auditPlan",
+            "label": <CustomLink
+              to="project/test/auditPlan"
+            >
+              menu.auditPlane
+            </CustomLink>,
+            "title": "menu.auditPlane",
+          },
+        ],
+        "key": "",
+        "label": "",
+        "type": "group",
+      },
+    ],
+    "icon": <ForwardRef(CiCircleOutlined) />,
+    "key": "plane",
+    "label": "menu.auditPlane",
+  },
+  Object {
+    "icon": <ForwardRef(DatabaseOutlined) />,
+    "key": "data",
+    "label": <CustomLink
+      to="project/test/data"
     >
       menu.dataSource
-    </Link>
-  </MenuItem>,
-  <MenuItem
-    icon={<ForwardRef(UserOutlined) />}
-    title="menu.member"
-  >
-    <Link
-      to="/project/test/member"
+    </CustomLink>,
+    "title": "menu.dataSource",
+  },
+  Object {
+    "icon": <ForwardRef(UserOutlined) />,
+    "key": "member",
+    "label": <CustomLink
+      to="project/test/member"
     >
       menu.member
-    </Link>
-  </MenuItem>,
-  <MenuItem
-    icon={<ForwardRef(AuditOutlined) />}
-    title="menu.ruleTemplate"
-  >
-    <Link
-      to="/project/test/rule/template"
+    </CustomLink>,
+    "title": "menu.member",
+  },
+  Object {
+    "icon": <ForwardRef(AuditOutlined) />,
+    "key": "ruleTemplate",
+    "label": <CustomLink
+      to="project/test/rule/template"
     >
       menu.ruleTemplate
-    </Link>
-  </MenuItem>,
-  <MenuItem
-    icon={<ForwardRef(NodeIndexOutlined) />}
-    title="menu.progressManage"
-  >
-    <Link
-      to="/project/test/progress"
+    </CustomLink>,
+    "title": "menu.ruleTemplate",
+  },
+  Object {
+    "icon": <ForwardRef(NodeIndexOutlined) />,
+    "key": "progress",
+    "label": <CustomLink
+      to="project/test/progress"
     >
       menu.progressManage
-    </Link>
-  </MenuItem>,
-  <MenuItem
-    icon={<ForwardRef(ProfileOutlined) />}
-    title="menu.whitelist"
-  >
-    <Link
-      to="/project/test/whitelist"
+    </CustomLink>,
+    "title": "menu.progressManage",
+  },
+  Object {
+    "icon": <ForwardRef(ProfileOutlined) />,
+    "key": "Whitelist",
+    "label": <CustomLink
+      to="project/test/whitelist"
     >
       menu.whitelist
-    </Link>
-  </MenuItem>,
+    </CustomLink>,
+    "title": "menu.whitelist",
+  },
 ]
 `;
 
 exports[`test ProjectManage/ProjectDetailLayout/index should match snapshot 2`] = `
 Array [
-  <MenuItem
-    icon={<ForwardRef(ProjectOutlined) />}
-    title="menu.projectOverview"
-  >
-    <Link
-      to="/project/test/overview"
+  Object {
+    "icon": <ForwardRef(ProjectOutlined) />,
+    "key": "projectOverview",
+    "label": <CustomLink
+      to="project/test/overview"
     >
       menu.projectOverview
-    </Link>
-  </MenuItem>,
-  <MenuItem
-    icon={<ForwardRef(BarsOutlined) />}
-    title="menu.order"
-  >
-    <Link
-      to="/project/test/order"
+    </CustomLink>,
+    "title": "menu.projectOverview",
+  },
+  Object {
+    "icon": <ForwardRef(ConsoleSqlOutlined) />,
+    "key": "order",
+    "label": <CustomLink
+      to="project/test/order"
     >
       menu.order
-    </Link>
-  </MenuItem>,
-  null,
-  <SubMenu
-    icon={<ForwardRef(CiCircleOutlined) />}
-    title="menu.auditPlane"
-  >
-    <MenuItemGroup
-      title=""
-    >
-      <MenuItem
-        title="menu.auditPlaneList"
-      >
-        <Link
-          to="/project/test/auditPlan"
-        >
-          menu.auditPlaneList
-        </Link>
-      </MenuItem>
-    </MenuItemGroup>
-  </SubMenu>,
-  <MenuItem
-    icon={<ForwardRef(DatabaseOutlined) />}
-    title="menu.dataSource"
-  >
-    <Link
-      to="/project/test/data"
+    </CustomLink>,
+    "title": "menu.order",
+  },
+  Object {
+    "children": Array [
+      Object {
+        "children": Array [
+          Object {
+            "icon": undefined,
+            "key": "auditPlan",
+            "label": <CustomLink
+              to="project/test/auditPlan"
+            >
+              menu.auditPlane
+            </CustomLink>,
+            "title": "menu.auditPlane",
+          },
+        ],
+        "key": "",
+        "label": "",
+        "type": "group",
+      },
+    ],
+    "icon": <ForwardRef(CiCircleOutlined) />,
+    "key": "plane",
+    "label": "menu.auditPlane",
+  },
+  Object {
+    "icon": <ForwardRef(DatabaseOutlined) />,
+    "key": "data",
+    "label": <CustomLink
+      to="project/test/data"
     >
       menu.dataSource
-    </Link>
-  </MenuItem>,
-  <MenuItem
-    icon={<ForwardRef(UserOutlined) />}
-    title="menu.member"
-  >
-    <Link
-      to="/project/test/member"
+    </CustomLink>,
+    "title": "menu.dataSource",
+  },
+  Object {
+    "icon": <ForwardRef(UserOutlined) />,
+    "key": "member",
+    "label": <CustomLink
+      to="project/test/member"
     >
       menu.member
-    </Link>
-  </MenuItem>,
-  <MenuItem
-    icon={<ForwardRef(AuditOutlined) />}
-    title="menu.ruleTemplate"
-  >
-    <Link
-      to="/project/test/rule/template"
+    </CustomLink>,
+    "title": "menu.member",
+  },
+  Object {
+    "icon": <ForwardRef(AuditOutlined) />,
+    "key": "ruleTemplate",
+    "label": <CustomLink
+      to="project/test/rule/template"
     >
       menu.ruleTemplate
-    </Link>
-  </MenuItem>,
-  <MenuItem
-    icon={<ForwardRef(NodeIndexOutlined) />}
-    title="menu.progressManage"
-  >
-    <Link
-      to="/project/test/progress"
+    </CustomLink>,
+    "title": "menu.ruleTemplate",
+  },
+  Object {
+    "icon": <ForwardRef(NodeIndexOutlined) />,
+    "key": "progress",
+    "label": <CustomLink
+      to="project/test/progress"
     >
       menu.progressManage
-    </Link>
-  </MenuItem>,
-  <MenuItem
-    icon={<ForwardRef(ProfileOutlined) />}
-    title="menu.whitelist"
-  >
-    <Link
-      to="/project/test/whitelist"
+    </CustomLink>,
+    "title": "menu.progressManage",
+  },
+  Object {
+    "icon": <ForwardRef(ProfileOutlined) />,
+    "key": "Whitelist",
+    "label": <CustomLink
+      to="project/test/whitelist"
     >
       menu.whitelist
-    </Link>
-  </MenuItem>,
+    </CustomLink>,
+    "title": "menu.whitelist",
+  },
 ]
 `;

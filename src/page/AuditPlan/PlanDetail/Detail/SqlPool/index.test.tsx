@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { render, waitFor, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import SqlPool from '.';
 import audit_plan from '../../../../../api/audit_plan';
 import EmitterKey from '../../../../../data/EmitterKey';
@@ -58,9 +58,7 @@ describe('SqlPool', () => {
       />
     );
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
     expect(container).toMatchSnapshot();
   });
 
@@ -73,9 +71,7 @@ describe('SqlPool', () => {
         projectIsArchive={false}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
     fireEvent.click(screen.getByText('auditPlan.sqlPool.action.trigger'));
     expect(triggerSpy).toBeCalledTimes(1);
     expect(triggerSpy).toBeCalledWith({
@@ -83,19 +79,16 @@ describe('SqlPool', () => {
       project_name: projectName,
     });
     expect(
-      screen.queryByText('auditPlan.sqlPool.action.loading')
+      screen.getByText('auditPlan.sqlPool.action.loading')
     ).toBeInTheDocument();
     const jestSpy = jest.spyOn(EventEmitter, 'emit');
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-
+    await act(async () => jest.advanceTimersByTime(3000));
     expect(
       screen.queryByText('auditPlan.sqlPool.action.loading')
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText('auditPlan.sqlPool.action.triggerSuccess')
+      screen.getByText('auditPlan.sqlPool.action.triggerSuccess')
     ).toBeInTheDocument();
     expect(jestSpy).toBeCalledTimes(1);
     expect(jestSpy).toBeCalledWith(EmitterKey.Refresh_Audit_Plan_Record);
@@ -109,10 +102,7 @@ describe('SqlPool', () => {
         projectIsArchive={true}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-
+    await act(async () => jest.advanceTimersByTime(3000));
     expect(
       screen.queryByText('auditPlan.sqlPool.action.trigger')
     ).not.toBeInTheDocument();

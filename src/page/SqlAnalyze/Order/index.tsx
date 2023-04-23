@@ -25,8 +25,8 @@ const OrderSqlAnalyze = () => {
     startGetSqlAnalyze();
     try {
       const res = await task.getTaskAnalysisData({
-        task_id: urlParams.taskId,
-        number: Number.parseInt(urlParams.sqlNum, 10),
+        task_id: urlParams.taskId ?? '',
+        number: Number.parseInt(urlParams.sqlNum ?? '0', 10),
       });
       if (res.data.code === ResponseCode.SUCCESS) {
         setErrorMessage('');

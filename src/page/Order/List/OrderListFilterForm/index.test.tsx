@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { useForm } from 'antd/lib/form/Form';
 import { isEqual } from 'lodash';
@@ -76,9 +76,8 @@ describe('Order/List/OrderListFilterForm', () => {
         projectName={projectName}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByText('common.expansion')).toBeInTheDocument();
     fireEvent.click(screen.getByText('common.expansion'));
     expect(screen.queryByText('common.expansion')).not.toBeInTheDocument();
@@ -96,7 +95,7 @@ describe('Order/List/OrderListFilterForm', () => {
     );
     fireEvent.mouseDown(assigneeInput);
 
-    await waitFor(() => {
+    await act(() => {
       jest.runOnlyPendingTimers();
     });
     const usernameOption = screen.getAllByText('user_name1')[1];
@@ -109,7 +108,7 @@ describe('Order/List/OrderListFilterForm', () => {
 
     fireEvent.mouseDown(getBySelector('#filter_task_instance_name'));
 
-    await waitFor(() => {
+    await act(() => {
       jest.runOnlyPendingTimers();
     });
 
@@ -169,9 +168,8 @@ describe('Order/List/OrderListFilterForm', () => {
         projectName={projectName}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByText('common.expansion')).toBeInTheDocument();
     fireEvent.click(screen.getByText('common.expansion'));
     expect(screen.queryByText('common.collapse')).not.toBeInTheDocument();
@@ -190,7 +188,7 @@ describe('Order/List/OrderListFilterForm', () => {
         projectName={projectName}
       />
     );
-    await waitFor(() => {
+    await act(() => {
       jest.advanceTimersByTime(3000);
     });
     expect(screen.getByText('common.collapse')).toBeInTheDocument();

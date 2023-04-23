@@ -1,5 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks/dom';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { Form } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import {
@@ -7,6 +6,7 @@ import {
   mockUseRole,
 } from '../../../../testUtils/mockRequest';
 import RoleSelector from '../RoleSelector';
+import { renderHook } from '@testing-library/react-hooks';
 
 describe('test RoleSelector', () => {
   const projectName = 'default';
@@ -36,9 +36,8 @@ describe('test RoleSelector', () => {
 
   test('should match snapshot', async () => {
     const { container } = renderComponent();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
     expect(useRoleSpy).toBeCalledTimes(1);
     expect(useInstanceSpy).toBeCalledTimes(1);
@@ -73,7 +72,7 @@ describe('test RoleSelector', () => {
       screen.queryAllByLabelText('member.roleSelector.instance').length
     ).toBe(2);
 
-    expect(screen.queryAllByTestId('remove-item')[0]).toBeInTheDocument();
+    expect(screen.getAllByTestId('remove-item')[0]).toBeInTheDocument();
 
     fireEvent.click(screen.getAllByTestId('remove-item')[0]);
     expect(screen.queryAllByLabelText('member.roleSelector.role').length).toBe(

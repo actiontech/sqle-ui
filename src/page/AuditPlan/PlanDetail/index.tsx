@@ -1,7 +1,7 @@
 import { useRequest } from 'ahooks';
 import { PageHeader, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { Redirect, Route, Switch, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import audit_plan from '../../../api/audit_plan';
 import BackButton from '../../../components/BackButton';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
@@ -15,7 +15,7 @@ const PlanDetailPage = () => {
   const { data: auditTask } = useRequest(() => {
     return audit_plan
       .getAuditPlanV1({
-        audit_plan_name: urlParams.auditPlanName,
+        audit_plan_name: urlParams.auditPlanName ?? '',
         project_name: projectName,
       })
       .then((res) => res.data);
@@ -39,13 +39,7 @@ const PlanDetailPage = () => {
         {t('auditPlan.detailPage.pageDesc')}
       </PageHeader>
       <section className="padding-content">
-        <Switch>
-          <Route
-            path="/project/:projectName/auditPlan/detail/:auditPlanName"
-            component={PlanDetail}
-          />
-          <Redirect to="/project/:projectName/auditPlan" />
-        </Switch>
+        <PlanDetail />
       </section>
     </>
   );

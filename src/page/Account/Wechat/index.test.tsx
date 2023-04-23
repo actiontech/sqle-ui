@@ -1,9 +1,10 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { shallow } from 'enzyme';
 import Wechat from './Wechat';
 import user from '../../../api/user';
 import { getBySelector } from '../../../testUtils/customQuery';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
+import { act } from 'react-dom/test-utils';
 
 describe('Wechat', () => {
   const mockRequest = () => {
@@ -33,7 +34,7 @@ describe('Wechat', () => {
     expect(textWrapper.prop('hidden')).toBe(false);
     expect(editWrapper.prop('hidden')).toBe(true);
 
-    const editIcon = wrapper.find('ForwardRef(Link)');
+    const editIcon = wrapper.find('ForwardRef(EditOutlined)');
     editIcon.simulate('click');
     wrapper.update();
 
@@ -116,10 +117,8 @@ describe('Wechat', () => {
     expect(requestSpy).toBeCalledTimes(1);
     expect(requestSpy).toBeCalledWith({ wechat_id: 'aaabbb' });
 
-    await waitFor(() => jest.advanceTimersByTime(3000));
-    expect(
-      screen.queryByText('account.updateWechatSuccess')
-    ).toBeInTheDocument();
+    await act(async () => jest.advanceTimersByTime(3000));
+    expect(screen.getByText('account.updateWechatSuccess')).toBeInTheDocument();
     expect(refreshUserInfoMock).toBeCalledTimes(1);
     expect(
       getBySelector('.ant-input-affix-wrapper').parentNode

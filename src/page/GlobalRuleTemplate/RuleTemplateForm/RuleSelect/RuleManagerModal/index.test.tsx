@@ -1,5 +1,5 @@
 import RuleManagerModal from '.';
-import { fireEvent, screen, waitFor, cleanup } from '@testing-library/react';
+import { fireEvent, screen, cleanup, act } from '@testing-library/react';
 import { ruleData, editRuleData } from './__testData__';
 import { renderWithTheme } from '../../../../../testUtils/customRender';
 
@@ -76,13 +76,11 @@ describe('RuleSelect/RuleManagerModal', () => {
       'ant-select-item-option-content'
     );
     fireEvent.click(option);
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(submitFunction).toBeCalledTimes(1);
     expect(submitFunction).toBeCalledWith({
       rule_name: 'ddl_check_collation_database',
@@ -133,9 +131,8 @@ describe('RuleSelect/RuleManagerModal', () => {
     );
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(submitFunction).toBeCalledTimes(1);
     expect(submitFunction).toBeCalledWith({
       ...editRuleData,
@@ -163,9 +160,8 @@ describe('RuleSelect/RuleManagerModal', () => {
       />
     );
     fireEvent.click(screen.getByText('common.close'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByLabelText('ruleTemplate.editModal.rule')).toHaveValue(
       ''
     );

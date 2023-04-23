@@ -18,6 +18,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
         >
           <div
             class="ant-tabs-tab"
+            data-node-key="ALL"
           >
             <div
               aria-controls="rc-tabs-test-panel-ALL"
@@ -32,6 +33,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="type1"
           >
             <div
               aria-controls="rc-tabs-test-panel-type1"
@@ -46,6 +48,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
           </div>
           <div
             class="ant-tabs-tab"
+            data-node-key="type2"
           >
             <div
               aria-controls="rc-tabs-test-panel-type2"
@@ -60,6 +63,7 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
           </div>
           <div
             class="ant-tabs-tab ant-tabs-tab-active"
+            data-node-key="type3"
           >
             <div
               aria-controls="rc-tabs-test-panel-type3"
@@ -122,10 +126,9 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
         <div
           aria-hidden="true"
           aria-labelledby="rc-tabs-test-tab-ALL"
-          class="ant-tabs-tabpane"
+          class="ant-tabs-tabpane ant-tabs-tabpane-hidden"
           id="rc-tabs-test-panel-ALL"
           role="tabpanel"
-          style="display: none;"
           tabindex="-1"
         >
           <div
@@ -622,10 +625,9 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
         <div
           aria-hidden="true"
           aria-labelledby="rc-tabs-test-tab-type1"
-          class="ant-tabs-tabpane"
+          class="ant-tabs-tabpane ant-tabs-tabpane-hidden"
           id="rc-tabs-test-panel-type1"
           role="tabpanel"
-          style="display: none;"
           tabindex="-1"
         >
           <div
@@ -819,10 +821,9 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
         <div
           aria-hidden="true"
           aria-labelledby="rc-tabs-test-tab-type2"
-          class="ant-tabs-tabpane"
+          class="ant-tabs-tabpane ant-tabs-tabpane-hidden"
           id="rc-tabs-test-panel-type2"
           role="tabpanel"
-          style="display: none;"
           tabindex="-1"
         >
           <div
@@ -998,7 +999,6 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
           class="ant-tabs-tabpane ant-tabs-tabpane-active"
           id="rc-tabs-test-panel-type3"
           role="tabpanel"
-          style=""
           tabindex="0"
         >
           <div

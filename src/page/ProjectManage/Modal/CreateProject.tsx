@@ -64,7 +64,7 @@ const CreateProject: React.FC = () => {
 
   return (
     <Modal
-      visible={modalVisibility}
+      open={modalVisibility}
       title={t('projectManage.createProject.modalTitle')}
       closable={false}
       footer={

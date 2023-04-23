@@ -145,7 +145,7 @@ const CronInput: React.FC<CronInputProps> = (props) => {
               onChange={updateHour}
               value={hour}
               mode="multiple"
-              dropdownClassName="cron-inline-select-dropdown"
+              popupClassName="cron-inline-select-dropdown"
               maxTagCount={3}
               className="cron-inline-select"
               placeholder={`${t('common.time.per')}${t('common.time.hour')}`}
@@ -169,7 +169,7 @@ const CronInput: React.FC<CronInputProps> = (props) => {
               onChange={updateMinute}
               value={minute}
               mode="multiple"
-              dropdownClassName="cron-inline-select-dropdown"
+              popupClassName="cron-inline-select-dropdown"
               maxTagCount={3}
               className="cron-inline-select"
               placeholder={`${t('common.time.per')}${t('common.time.minute')}`}

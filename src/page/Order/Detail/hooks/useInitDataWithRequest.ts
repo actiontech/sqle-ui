@@ -23,7 +23,7 @@ const useInitDataWithRequest = () => {
     workflow
       .getWorkflowV2({
         project_name: projectName,
-        workflow_id: urlParams.orderId,
+        workflow_id: urlParams.orderId ?? '',
       })
       .then((res) => res.data.data)
   );

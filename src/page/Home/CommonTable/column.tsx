@@ -1,20 +1,20 @@
 import { TableColumn } from '../../../types/common.type';
-import i18n from 'i18next';
+import { t } from '../../../locale';
 import { formatTime } from '../../../utils/Common';
-import { Link } from 'react-router-dom';
 import { IWorkflowDetailResV1 } from '../../../api/common';
 import EmptyBox from '../../../components/EmptyBox';
+import { Link } from '../../../components/Link';
 
 export const commonColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
-  return [
+  const column: TableColumn<IWorkflowDetailResV1> = [
     {
       dataIndex: 'workflow_name',
-      title: () => i18n.t('order.order.name'),
+      title: () => t('order.order.name'),
       render: (text, record) => {
         return (
-          <EmptyBox if={text && record.project_name} defaultNode={text}>
+          <EmptyBox if={!!text && !!record.project_name} defaultNode={text}>
             <Link
-              to={`/project/${record.project_name}/order/${record.workflow_id}`}
+              to={`project/${record.project_name}/order/${record.workflow_id}`}
             >
               {text}
             </Link>
@@ -25,28 +25,30 @@ export const commonColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
     },
     {
       dataIndex: 'project_name',
-      title: () => i18n.t('projectManage.projectForm.projectName'),
+      title: () => t('projectManage.projectForm.projectName'),
       width: 'auto',
       render: (projectName) => {
         return (
-          <EmptyBox if={projectName} defaultNode={projectName}>
-            <Link to={`/project/${projectName}/overview`}>{projectName}</Link>
+          <EmptyBox if={!!projectName} defaultNode={projectName}>
+            <Link to={`project/${projectName}/overview`}>{projectName}</Link>
           </EmptyBox>
         );
       },
     },
     {
       dataIndex: 'desc',
-      title: () => i18n.t('order.order.desc'),
+      title: () => t('order.order.desc'),
       width: 'auto',
     },
     {
       dataIndex: 'create_time',
-      title: () => i18n.t('order.order.createTime'),
+      title: () => t('order.order.createTime'),
       render: (time) => {
         return formatTime(time);
       },
       width: 'auto',
     },
   ];
+
+  return column;
 };

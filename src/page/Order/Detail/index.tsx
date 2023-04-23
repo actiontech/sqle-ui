@@ -1,4 +1,4 @@
-import { useTheme } from '@material-ui/styles';
+import { useTheme } from '@mui/styles';
 import { useBoolean, useToggle } from 'ahooks';
 import {
   Button,
@@ -23,7 +23,6 @@ import BackButton from '../../../components/BackButton';
 import EmptyBox from '../../../components/EmptyBox';
 import OrderStatusTag from '../../../components/OrderStatusTag';
 import { ResponseCode } from '../../../data/common';
-import { Theme } from '../../../types/theme.type';
 import { formatTime } from '../../../utils/Common';
 import AuditResultCollection from '../AuditResult/AuditResultCollection';
 import ModifySqlModal from './Modal/ModifySqlModal';
@@ -33,6 +32,7 @@ import useModifySql from './hooks/useModifySql';
 import useInitDataWithRequest from './hooks/useInitDataWithRequest';
 import useGenerateOrderStepsProps from './hooks/useGenerateOrderStepsProps';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
+import { Theme } from '@mui/material/styles';
 
 const Order = () => {
   const theme = useTheme<Theme>();

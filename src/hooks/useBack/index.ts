@@ -1,12 +1,12 @@
 import React from 'react';
-import { useHistory } from 'react-router';
+import useNavigate from '../useNavigate';
 
 const useBack = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const goBack = React.useCallback(() => {
-    history.goBack();
-  }, [history]);
+    navigate(-1);
+  }, [navigate]);
 
   return { goBack };
 };

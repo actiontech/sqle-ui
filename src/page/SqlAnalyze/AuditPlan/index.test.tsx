@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import AuditPlanSqlAnalyze from '.';
 import audit_plan from '../../../api/audit_plan';
@@ -7,6 +7,7 @@ import {
   resolveThreeSecond,
 } from '../../../testUtils/mockRequest';
 import { AuditPlanSqlAnalyzeData } from '../__testData__';
+import { getAllBySelector } from '../../../testUtils/customQuery';
 
 jest.mock('react-router', () => {
   return {
@@ -43,6 +44,7 @@ describe('SqlAnalyze/AuditPlan', () => {
       reportId: 'reportId1',
       sqlNum: '123',
       projectName,
+      auditPlanName: '123',
     });
   });
 
@@ -71,16 +73,15 @@ describe('SqlAnalyze/AuditPlan', () => {
       project_name: projectName,
       audit_plan_report_id: 'reportId1',
       number: '123',
+      audit_plan_name: '123',
     });
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    fireEvent.click(container.querySelectorAll('.ant-tabs-tab-btn')[1]);
-    fireEvent.click(container.querySelectorAll('.ant-tabs-tab-btn')[2]);
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    fireEvent.click(getAllBySelector('.ant-tabs-tab-btn')[1]);
+    fireEvent.click(getAllBySelector('.ant-tabs-tab-btn')[2]);
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -94,9 +95,8 @@ describe('SqlAnalyze/AuditPlan', () => {
       })
     );
     const { container } = render(<AuditPlanSqlAnalyze />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 });

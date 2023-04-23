@@ -1,6 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import OrderHistory from '.';
-import { mockUseSelector } from '../../../../../testUtils/mockRedux';
 import {
   order,
   orderCancel,
@@ -9,11 +8,24 @@ import {
   orderWithExecScheduled,
   orderWithExecuting,
 } from '../../__testData__';
+import { useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('Order/Detail/OrderHistory', () => {
   beforeEach(() => {
     jest.useFakeTimers();
-    mockUseSelector({ user: { username: '123' } });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { username: '123' },
+      })
+    );
   });
 
   afterEach(() => {
@@ -85,7 +97,7 @@ describe('Order/Detail/OrderHistory', () => {
         close={close}
       />
     );
-    expect(screen.queryByText('common.ok')).toBeInTheDocument();
+    expect(screen.getByText('common.ok')).toBeInTheDocument();
     fireEvent.click(screen.getByText('common.ok'));
     expect(close).toBeCalledTimes(1);
   });

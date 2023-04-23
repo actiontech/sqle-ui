@@ -65,7 +65,7 @@ const AddMemberGroup: React.FC = () => {
 
   return (
     <Modal
-      visible={modalVisibility}
+      open={modalVisibility}
       title={t('member.addMemberGroup.modalTitle')}
       closable={false}
       footer={

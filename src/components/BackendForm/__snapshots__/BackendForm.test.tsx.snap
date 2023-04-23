@@ -2,7 +2,7 @@
 
 exports[`BackendForm should render form item by params key 1`] = `
 <Fragment>
-  <FormItem
+  <InternalFormItem
     key="boolKey"
     label="boolDesc"
     name={
@@ -14,8 +14,8 @@ exports[`BackendForm should render form item by params key 1`] = `
     valuePropName="checked"
   >
     <Switch />
-  </FormItem>
-  <FormItem
+  </InternalFormItem>
+  <InternalFormItem
     key="intKey"
     label="intDesc"
     name={
@@ -33,11 +33,9 @@ exports[`BackendForm should render form item by params key 1`] = `
       ]
     }
   >
-    <Input
-      type="text"
-    />
-  </FormItem>
-  <FormItem
+    <ForwardRef />
+  </InternalFormItem>
+  <InternalFormItem
     key="stringKey"
     label="stringDesc"
     name={
@@ -47,9 +45,7 @@ exports[`BackendForm should render form item by params key 1`] = `
       ]
     }
   >
-    <Input
-      type="text"
-    />
-  </FormItem>
+    <ForwardRef />
+  </InternalFormItem>
 </Fragment>
 `;

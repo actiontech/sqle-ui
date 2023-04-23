@@ -1,8 +1,8 @@
 import { Card, PageHeader, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 /* IFTRUE_isEE */
-import { Redirect, Route, Switch } from 'react-router-dom';
 import AddSyncTask from './AddSyncTask';
 import SyncTaskList from './SyncTaskList';
 import UpdateSyncTask from './UpdateSyncTask';
@@ -41,21 +41,17 @@ const SyncDataSource: React.FC = () => {
           {t('syncDataSource.pageDesc')}
         </PageHeader>
         <section className="padding-content">
-          <Switch>
-            <Route
-              path="/syncDataSource"
-              exact={true}
-              component={SyncTaskList}
-            />
+          <Routes>
+            <Route path="/syncDataSource" element={<SyncTaskList />} />
 
-            <Route path="/syncDataSource/create" component={AddSyncTask} />
+            <Route path="/syncDataSource/create" element={<AddSyncTask />} />
             <Route
               path="/syncDataSource/update/:taskId"
-              component={UpdateSyncTask}
+              element={<UpdateSyncTask />}
             />
 
-            <Redirect to="/syncDataSource" />
-          </Switch>
+            <Route path="*" element={<Navigate to="/syncDataSource" />} />
+          </Routes>
         </section>
       </article>
       {/* FITRUE_isEE */}

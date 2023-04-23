@@ -7,12 +7,19 @@ import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import { AuditPlan } from '../PlanList/__testData__';
 import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
 import { AuditPlanReportList } from './__testData__';
-import { mockUseSelector } from '../../../testUtils/mockRedux';
+import { useSelector } from 'react-redux';
 
 jest.mock('react-router', () => {
   return {
     ...jest.requireActual('react-router'),
     useParams: jest.fn(),
+  };
+});
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
   };
 });
 
@@ -24,9 +31,11 @@ describe('PlanDetail', () => {
     jest.useFakeTimers();
     mockGetAuditPlanV1();
     mockGetAuditPlanReport();
-    mockUseSelector({
-      projectManage: { archived: false },
-    });
+    (useSelector as jest.Mock).mockImplementation((selector) =>
+      selector({
+        projectManage: { archived: false },
+      })
+    );
   });
 
   afterEach(() => {

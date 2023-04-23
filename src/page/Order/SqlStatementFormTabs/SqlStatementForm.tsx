@@ -1,7 +1,7 @@
 import { Button, Form, Radio, RadioChangeEvent, Upload } from 'antd';
-import { useCallback, useEffect, useState } from 'react';
+import { ComponentType, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import MonacoEditor from 'react-monaco-editor';
+import MonacoEditor, { MonacoEditorProps } from 'react-monaco-editor';
 import { SQLInputType, SqlStatementFields, SqlStatementFormProps } from '.';
 import EmptyBox from '../../../components/EmptyBox';
 import { PageFormLayout } from '../../../data/common';
@@ -9,6 +9,9 @@ import useChangeTheme from '../../../hooks/useChangeTheme';
 import useMonacoEditor from '../../../hooks/useMonacoEditor';
 import useStyles from '../../../theme';
 import { getFileFromUploadChangeEvent } from '../../../utils/Common';
+
+const MonacoEditorFunComponent =
+  MonacoEditor as ComponentType<MonacoEditorProps>;
 
 const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
   form,
@@ -101,7 +104,7 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
             },
           ]}
         >
-          <MonacoEditor
+          <MonacoEditorFunComponent
             theme={currentEditorTheme}
             width="100%"
             height="500"

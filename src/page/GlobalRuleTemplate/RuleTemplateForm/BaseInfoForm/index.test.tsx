@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { useForm } from 'antd/lib/form/Form';
 import BaseInfoForm from '.';
@@ -21,9 +21,7 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
     render(
       <BaseInfoForm form={result.current[0]} submit={jest.fn()} mode="create" />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
     fireEvent.input(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName'),
       { target: { value: 'templateName' } }
@@ -35,17 +33,15 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
     fireEvent.mouseDown(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const databaseTypeOption = screen.getAllByText('mysql')[1];
     expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
     fireEvent.click(databaseTypeOption);
 
     fireEvent.click(screen.getByText('common.reset'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName')
     ).toHaveValue('');
@@ -64,12 +60,13 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
         defaultData={{}}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    result.current[0].setFieldsValue({
-      templateName: 'name1',
-      db_type: 'mysql',
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(() => {
+      result.current[0].setFieldsValue({
+        templateName: 'name1',
+        db_type: 'mysql',
+      });
     });
 
     expect(
@@ -88,13 +85,11 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
       { target: { value: 'template describe' } }
     );
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.click(screen.getByText('common.reset'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateName')
     ).toHaveValue('name1');
@@ -117,9 +112,7 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
         defaultData={{}}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import logo from '../../../../assets/img/logo.png';
 import { IReduxState } from '../../../../store';
+import { Link } from '../../../Link';
 
 const Logo: React.FC = () => {
   const { webLogoUrl, webTitle } = useSelector((state: IReduxState) => ({
@@ -9,7 +9,7 @@ const Logo: React.FC = () => {
     webLogoUrl: state.system.webLogoUrl,
   }));
   return (
-    <Link to="/">
+    <Link to="home">
       <div className="sqle-nav-title">
         <img src={webLogoUrl ? webLogoUrl : logo} alt="" />
         {webTitle}

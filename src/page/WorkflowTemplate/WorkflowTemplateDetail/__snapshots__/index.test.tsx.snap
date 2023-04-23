@@ -62,9 +62,7 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 1`] = `
             >
               <span
                 class="ant-typography"
-              >
-                
-              </span>
+              />
             </div>
           </div>
         </div>
@@ -197,7 +195,6 @@ exports[`WorkflowTemplate/WorkflowTemplateDetail should match snapshot 1`] = `
                             workflowTemplate.form.label.reviewDesc
                              : 
                           </span>
-                          
                         </span>
                       </div>
                     </div>

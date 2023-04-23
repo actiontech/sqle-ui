@@ -1,10 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal should match snapshot 1`] = `
-<body
-  class="ant-scrolling-effect"
-  style="width: calc(100% - 0px); overflow: hidden; overflow-x: hidden; overflow-y: hidden;"
->
+<body>
   <div />
   <div>
     <div
@@ -14,14 +11,14 @@ exports[`RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal should match
         class="ant-modal-mask"
       />
       <div
-        aria-labelledby="rcDialogTitle0"
         class="ant-modal-wrap"
-        role="dialog"
         tabindex="-1"
       >
         <div
+          aria-labelledby="test-id"
+          aria-modal="true"
           class="ant-modal"
-          role="document"
+          role="dialog"
           style="width: 520px;"
         >
           <div
@@ -37,7 +34,7 @@ exports[`RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal should match
             >
               <div
                 class="ant-modal-title"
-                id="rcDialogTitle0"
+                id="test-id"
               >
                 ruleTemplate.cloneRuleTemplate.title
               </div>
@@ -84,67 +81,76 @@ exports[`RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal should match
                     class="ant-form ant-form-horizontal"
                   >
                     <div
-                      class="ant-row ant-form-item"
+                      class="ant-form-item"
                     >
                       <div
-                        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                      >
-                        <label
-                          class="ant-form-item-required"
-                          for="templateName"
-                          title="ruleTemplate.ruleTemplateForm.templateName"
-                        >
-                          ruleTemplate.ruleTemplateForm.templateName
-                        </label>
-                      </div>
-                      <div
-                        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                        class="ant-row ant-form-item-row"
                       >
                         <div
-                          class="ant-form-item-control-input"
+                          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                        >
+                          <label
+                            class="ant-form-item-required"
+                            for="templateName"
+                            title="ruleTemplate.ruleTemplateForm.templateName"
+                          >
+                            ruleTemplate.ruleTemplateForm.templateName
+                          </label>
+                        </div>
+                        <div
+                          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
                         >
                           <div
-                            class="ant-form-item-control-input-content"
+                            class="ant-form-item-control-input"
                           >
-                            <input
-                              class="ant-input"
-                              id="templateName"
-                              placeholder="common.form.placeholder.input"
-                              type="text"
-                              value=""
-                            />
+                            <div
+                              class="ant-form-item-control-input-content"
+                            >
+                              <input
+                                aria-required="true"
+                                class="ant-input"
+                                id="templateName"
+                                placeholder="common.form.placeholder.input"
+                                type="text"
+                                value=""
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div
-                      class="ant-row ant-form-item"
+                      class="ant-form-item"
                     >
                       <div
-                        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-                      >
-                        <label
-                          class=""
-                          for="templateDesc"
-                          title="ruleTemplate.ruleTemplateForm.templateDesc"
-                        >
-                          ruleTemplate.ruleTemplateForm.templateDesc
-                        </label>
-                      </div>
-                      <div
-                        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                        class="ant-row ant-form-item-row"
                       >
                         <div
-                          class="ant-form-item-control-input"
+                          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                        >
+                          <label
+                            class=""
+                            for="templateDesc"
+                            title="ruleTemplate.ruleTemplateForm.templateDesc"
+                          >
+                            ruleTemplate.ruleTemplateForm.templateDesc
+                          </label>
+                        </div>
+                        <div
+                          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
                         >
                           <div
-                            class="ant-form-item-control-input-content"
+                            class="ant-form-item-control-input"
                           >
-                            <textarea
-                              class="ant-input textarea-no-resize"
-                              id="templateDesc"
-                              placeholder="common.form.placeholder.input"
-                            />
+                            <div
+                              class="ant-form-item-control-input-content"
+                            >
+                              <textarea
+                                class="ant-input textarea-no-resize"
+                                id="templateDesc"
+                                placeholder="common.form.placeholder.input"
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -157,7 +163,7 @@ exports[`RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal should match
               class="ant-modal-footer"
             >
               <button
-                class="ant-btn"
+                class="ant-btn ant-btn-default"
                 type="button"
               >
                 <span>
@@ -187,10 +193,7 @@ exports[`RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal should match
 `;
 
 exports[`RuleTemplate/RuleTemplateList/Modal/CloneRuleTemplateModal should match snapshot 2`] = `
-<body
-  class=""
-  style=""
->
+<body>
   <div />
 </body>
 `;

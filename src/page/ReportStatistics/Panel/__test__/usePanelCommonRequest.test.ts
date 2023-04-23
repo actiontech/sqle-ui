@@ -1,10 +1,17 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { mockUseSelector } from '../../../../testUtils/mockRedux';
 import {
   resolveErrorThreeSecond,
   resolveThreeSecond,
 } from '../../../../testUtils/mockRequest';
 import usePanelCommonRequest from '../usePanelCommonRequest';
+import { useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+  };
+});
 
 describe('test reportStatistics/usePanelCommonRequest', () => {
   const mockSuccessServer = () => {
@@ -22,9 +29,12 @@ describe('test reportStatistics/usePanelCommonRequest', () => {
   };
   beforeEach(() => {
     jest.useFakeTimers();
-    mockUseSelector({
-      reportStatistics: { refreshFlag: false },
-    });
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        reportStatistics: { refreshFlag: false },
+      })
+    );
   });
 
   afterEach(() => {

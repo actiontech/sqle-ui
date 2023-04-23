@@ -29,4 +29,5 @@ export interface PanelWrapperProps {
   subTitle?: React.ReactNode;
   loading: boolean;
   error?: React.ReactNode;
+  children?: React.ReactNode;
 }

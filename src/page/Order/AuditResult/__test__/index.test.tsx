@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import AuditResult from '..';
 import task from '../../../../api/task';
 import {
@@ -51,9 +51,7 @@ describe('Order/Detail/AuditResult', () => {
     });
 
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
   });
@@ -69,9 +67,8 @@ describe('Order/Detail/AuditResult', () => {
         projectName={projectName}
       />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(updateTotalNum).toBeCalledTimes(1);
     expect(updateTotalNum).toBeCalledWith(`${taskId}`, 20);
   });
@@ -140,9 +137,8 @@ describe('Order/Detail/AuditResult', () => {
     render(
       <AuditResult taskId={9999} passRate={0.33} projectName={projectName} />
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(getAllBySelector('.ant-typography-edit')[0]);
     fireEvent.change(getBySelector('.ant-input'), {
       target: { value: 'new value' },
@@ -185,18 +181,16 @@ describe('Order/Detail/AuditResult', () => {
     expect(updateTaskSqlSpy).toBeCalledTimes(1);
     expect(getSqlSpy).toBeCalledTimes(1);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getSqlSpy).toBeCalledTimes(2);
   });
 
   it('should jump to sql analyze page when click analyze button', async () => {
     mockGetTaskSqls();
     render(<AuditResult taskId={9999} passRate={0.33} projectName="default" />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     const openSpy = jest.spyOn(window, 'open');
     openSpy.mockImplementation(() => null);
     fireEvent.click(screen.getAllByText('audit.table.analyze')[0]);

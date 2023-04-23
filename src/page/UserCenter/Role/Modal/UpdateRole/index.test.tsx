@@ -2,7 +2,7 @@ import {
   cleanup,
   fireEvent,
   render,
-  waitFor,
+  act,
   screen,
 } from '@testing-library/react';
 import UpdateRole from '.';
@@ -11,34 +11,41 @@ import EmitterKey from '../../../../../data/EmitterKey';
 import { ModalName } from '../../../../../data/ModalName';
 import { getSelectContentByFormLabel } from '../../../../../testUtils/customQuery';
 import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../../testUtils/mockRedux';
-import {
   mockUseOperation,
   resolveThreeSecond,
 } from '../../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../../utils/EventEmitter';
+import { useDispatch, useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('User/Modal/AddRole', () => {
   let useOperationSpy: jest.SpyInstance;
-  let dispatchSpy: jest.Mock;
+  const dispatchSpy = jest.fn();
 
   beforeEach(() => {
     useOperationSpy = mockUseOperation();
-    mockUseSelector({
-      userManage: {
-        modalStatus: { [ModalName.Update_Role]: true },
-        selectRole: {
-          role_name: 'oldName',
-          role_desc: 'oldDesc',
-          operation_list: [{ op_code: 20100 }],
-          is_disabled: false,
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        userManage: {
+          modalStatus: { [ModalName.Update_Role]: true },
+          selectRole: {
+            role_name: 'oldName',
+            role_desc: 'oldDesc',
+            operation_list: [{ op_code: 20100 }],
+            is_disabled: false,
+          },
         },
-      },
-    });
-    const { scopeDispatch } = mockUseDispatch();
-    dispatchSpy = scopeDispatch;
+      })
+    );
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
     jest.useFakeTimers();
   });
 
@@ -53,9 +60,12 @@ describe('User/Modal/AddRole', () => {
     expect(useOperationSpy).toBeCalledTimes(1);
     cleanup();
     useOperationSpy.mockClear();
-    mockUseSelector({
-      userManage: { modalStatus: { [ModalName.Add_Role]: false } },
-    });
+
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        userManage: { modalStatus: { [ModalName.Add_Role]: false } },
+      })
+    );
     render(<UpdateRole />);
     expect(useOperationSpy).not.toBeCalled();
   });
@@ -65,9 +75,8 @@ describe('User/Modal/AddRole', () => {
     const updateRoleSpy = jest.spyOn(role, 'updateRoleV1');
     updateRoleSpy.mockImplementation(() => resolveThreeSecond({}));
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByLabelText('role.roleForm.roleName')).toHaveAttribute(
       'disabled'
     );
@@ -90,9 +99,8 @@ describe('User/Modal/AddRole', () => {
     expect(operationCodeSelect).toHaveTextContent('查看工单');
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByText('common.submit').parentNode).toHaveClass(
       'ant-btn-loading'
     );
@@ -106,11 +114,10 @@ describe('User/Modal/AddRole', () => {
       operation_code_list: [20100],
       is_disabled: false,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
-      screen.queryByText('role.updateRole.updateSuccessTips')
+      screen.getByText('role.updateRole.updateSuccessTips')
     ).toBeInTheDocument();
     expect(emitSpy).toBeCalledTimes(1);
     expect(emitSpy).toBeCalledWith(EmitterKey.Refresh_Role_list);

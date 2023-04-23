@@ -1,7 +1,7 @@
 import { Button, Card, PageHeader, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
 import useResizeObserver from 'use-resize-observer';
-import { Responsive as ResponsiveReactGridLayout } from 'react-grid-layout';
+import { ResponsiveProps, Responsive } from 'react-grid-layout';
 import { ReportStatisticsPanelEnum } from './index.enum';
 import {
   DiffUserOrderRejectedPercent,
@@ -17,16 +17,18 @@ import {
   OrderAverageExecuteTimeTopN,
 } from './Panel';
 import reportStatisticsData from './index.data';
-import { Theme } from '../../types/theme.type';
-import { useTheme } from '@material-ui/styles';
+import { useTheme } from '@mui/styles';
 import IconTipsLabel from '../../components/IconTipsLabel';
 import { SyncOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import { refreshReportStatistics } from '../../store/reportStatistics';
+import { ComponentType } from 'react';
 
 import './index.less';
 import 'react-grid-layout/css/styles.css';
+import { Theme } from '@mui/material/styles';
 
+const ResponsiveReactGridLayout = Responsive as ComponentType<ResponsiveProps>;
 const { initialLayouts, gridLayoutCols, rowHeight } = reportStatisticsData;
 const ReportStatistics: React.FC = () => {
   const { t } = useTranslation();

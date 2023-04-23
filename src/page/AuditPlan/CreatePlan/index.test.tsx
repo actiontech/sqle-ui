@@ -1,10 +1,13 @@
-import { waitFor, fireEvent, screen } from '@testing-library/react';
+import { fireEvent, screen, act } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import CreateAuditPlan from '.';
 import audit_plan from '../../../api/audit_plan';
 import instance from '../../../api/instance';
 import EmitterKey from '../../../data/EmitterKey';
-import { getBySelector } from '../../../testUtils/customQuery';
+import {
+  getBySelector,
+  selectOptionByIndex,
+} from '../../../testUtils/customQuery';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import {
   mockDriver,
@@ -82,68 +85,38 @@ describe('CreatePlan', () => {
   test('should send create audit plan request', async () => {
     const createRequest = mockCreateAuditPlan();
     const { container } = renderWithRouter(<CreateAuditPlan />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.input(screen.getByLabelText('auditPlan.planForm.name'), {
       target: { value: 'planName1' },
     });
 
-    fireEvent.mouseDown(
-      screen.getByLabelText('auditPlan.planForm.databaseName')
+    await act(async () => jest.advanceTimersByTime(0));
+
+    selectOptionByIndex('auditPlan.planForm.databaseName', 'instance1');
+    await act(async () => jest.advanceTimersByTime(0));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    selectOptionByIndex('auditPlan.planForm.schema', 'schema1');
+    await act(async () => jest.advanceTimersByTime(0));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    selectOptionByIndex('auditPlan.planForm.taskType', '普通的SQL审核', 0);
+    await act(async () => jest.advanceTimersByTime(0));
+
+    selectOptionByIndex(
+      'auditPlan.planForm.ruleTemplateName',
+      'rule_template_name1'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    const instanceOptions = screen.getAllByText('instance1');
-    const instance = instanceOptions[1];
-    expect(instance).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(instance);
+    await act(async () => jest.advanceTimersByTime(0));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
+    act(() => {
+      fireEvent.click(screen.getByText('common.submit'));
     });
 
-    fireEvent.mouseDown(screen.getByLabelText('auditPlan.planForm.schema'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    const schemaOptions = screen.getAllByText('schema1');
-    expect(schemaOptions[1]).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(schemaOptions[1]);
-
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-
-    fireEvent.mouseDown(screen.getByLabelText('auditPlan.planForm.taskType'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    const auditTaskTypeOptions = screen.getAllByText('普通的SQL审核');
-    expect(auditTaskTypeOptions[0]).toHaveClass(
-      'ant-select-item-option-content'
-    );
-    fireEvent.click(auditTaskTypeOptions[0]);
-
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-
-    fireEvent.mouseDown(
-      screen.getByLabelText('auditPlan.planForm.ruleTemplateName')
-    );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
-    const ruleTemplateOptions = screen.getAllByText('rule_template_name1');
-    fireEvent.click(ruleTemplateOptions[1]);
-
-    fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(createRequest).toBeCalledTimes(1);
     expect(createRequest).toBeCalledWith({
@@ -170,15 +143,13 @@ describe('CreatePlan', () => {
       audit_plan_type: 'normal',
       rule_template_name: 'rule_template_name1',
     });
-
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
 
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
     fireEvent.click(screen.getByText('common.resetAndClose'));
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(emitSpy).toBeCalledTimes(2);
     expect(emitSpy).toBeCalledWith(EmitterKey.Rest_Audit_Plan_Form);

@@ -13,24 +13,7 @@ exports[`DataSource should render page title and page describe 1`] = `
   <section
     className="padding-content"
   >
-    <Switch>
-      <Route
-        component={[Function]}
-        exact={true}
-        path="/project/:projectName/data"
-      />
-      <Route
-        component={[Function]}
-        path="/project/:projectName/data/create"
-      />
-      <Route
-        component={[Function]}
-        path="/project/:projectName/data/update/:instanceName"
-      />
-      <Redirect
-        to="/project/:projectName/data"
-      />
-    </Switch>
+    <Outlet />
   </section>
 </article>
 `;

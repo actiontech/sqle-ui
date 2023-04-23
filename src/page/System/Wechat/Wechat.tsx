@@ -130,8 +130,8 @@ const Wechat = () => {
             <Space>
               <Popover
                 trigger="click"
-                visible={testPopoverVisible}
-                onVisibleChange={(visible) => {
+                open={testPopoverVisible}
+                onOpenChange={(visible) => {
                   if (!visible) {
                     setReceiveId('');
                   }

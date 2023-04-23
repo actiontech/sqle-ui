@@ -1,12 +1,11 @@
 import useCurrentUser from '.';
-import { renderHooksWithRedux } from '../../testUtils/customRender';
 import { SystemRole } from '../../data/common';
 import {
   IManagementPermissionResV1,
   IUserBindProjectResV1,
 } from '../../api/common';
 import { renderHook } from '@testing-library/react-hooks';
-import { mockUseDispatch, mockUseSelector } from '../../testUtils/mockRedux';
+import { useSelector } from 'react-redux';
 
 export const mockBindProjects: IUserBindProjectResV1[] = [
   {
@@ -26,6 +25,11 @@ export const mockManagementPermissions: IManagementPermissionResV1[] = [
   },
 ];
 
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux'),
+  useSelector: jest.fn(),
+}));
+
 describe('hooks/useCurrentUser', () => {
   beforeEach(() => {
     jest.useFakeTimers();
@@ -37,21 +41,27 @@ describe('hooks/useCurrentUser', () => {
   });
 
   test('should return true while role is admin', () => {
-    const { result } = renderHooksWithRedux(() => useCurrentUser(), {
-      user: { role: SystemRole.admin },
+    (useSelector as jest.Mock).mockImplementation((selector) => {
+      return selector({
+        user: { role: SystemRole.admin },
+      });
     });
+    const { result } = renderHook(() => useCurrentUser());
     expect(result.current.isAdmin).toBeTruthy();
   });
 
   test('should judge whether project manager based on bound project data and the current project name', () => {
-    mockUseSelector({
-      user: {
-        username: 'test',
-        role: SystemRole.admin,
-        bindProjects: mockBindProjects,
-        managementPermissions: mockManagementPermissions,
-      },
+    (useSelector as jest.Mock).mockImplementation((selector) => {
+      return selector({
+        user: {
+          username: 'test',
+          role: SystemRole.admin,
+          bindProjects: mockBindProjects,
+          managementPermissions: mockManagementPermissions,
+        },
+      });
     });
+
     const { result } = renderHook(() => useCurrentUser());
     expect(result.current.bindProjects).toEqual(mockBindProjects);
     expect(result.current.username).toBe('test');

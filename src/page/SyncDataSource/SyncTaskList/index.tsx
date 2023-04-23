@@ -2,10 +2,10 @@ import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
 import { Button, Card, message, Space, Table } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import sync_instance from '../../../api/sync_instance';
 import { ResponseCode } from '../../../data/common';
 import { SyncTaskListTableColumnFactory } from './column';
+import { Link } from '../../../components/Link';
 
 const SyncTaskList: React.FC = () => {
   const { t } = useTranslation();
@@ -67,7 +67,7 @@ const SyncTaskList: React.FC = () => {
       }
       extra={[
         <Button type="primary" key="addSyncTask">
-          <Link to="/syncDataSource/create">
+          <Link to="syncDataSource/create">
             {t('syncDataSource.syncTaskList.addSyncTask')}
           </Link>
         </Button>,

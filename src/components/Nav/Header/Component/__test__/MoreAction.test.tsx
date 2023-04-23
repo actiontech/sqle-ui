@@ -1,25 +1,40 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { ModalName } from '../../../../../data/ModalName';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../../testUtils/mockRedux';
 import { SupportTheme } from '../../../../../theme';
 import MoreAction from '../MoreAction';
-import { createMemoryHistory } from 'history';
-import { renderWithServerRouter } from '../../../../../testUtils/customRender';
+import { useDispatch, useSelector } from 'react-redux';
+import useNavigate from '../../../../../hooks/useNavigate';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useDispatch: jest.fn(),
+    useSelector: jest.fn(),
+  };
+});
+
+jest.mock('../../../../../hooks/useNavigate', () => jest.fn());
 
 describe('test Nav/Header/MoreAction', () => {
-  let scopeDispatch: jest.Mock;
+  const dispatchMock = jest.fn();
+  const mockNavigate = jest.fn();
+
+  const useSelectorMock: jest.Mock = useSelector as jest.Mock;
+  const useDispatchMock: jest.Mock = useDispatch as jest.Mock;
+  const useNavigateMock: jest.Mock = useNavigate as jest.Mock;
+
   beforeEach(() => {
-    mockUseSelector({
-      user: { username: 'admin', theme: SupportTheme.LIGHT, role: 'admin' },
+    useSelectorMock.mockImplementation((selector) => {
+      return selector({
+        user: { username: 'admin', theme: SupportTheme.LIGHT, role: 'admin' },
+      });
     });
-    scopeDispatch = mockUseDispatch().scopeDispatch;
+    useDispatchMock.mockImplementation(() => dispatchMock);
+    useNavigateMock.mockImplementation(() => mockNavigate);
   });
 
   afterEach(() => {
-    scopeDispatch.mockClear();
+    dispatchMock.mockClear();
     jest.clearAllMocks();
   });
 
@@ -27,17 +42,19 @@ describe('test Nav/Header/MoreAction', () => {
     const { baseElement, rerender } = render(<MoreAction />);
     fireEvent.mouseEnter(screen.getByTestId('more-action-icon'));
 
-    await waitFor(() => screen.getByText('system.log.version'));
+    await screen.findByText('system.log.version');
     expect(baseElement).toMatchSnapshot();
 
-    mockUseSelector({
-      user: { username: 'test', role: 'role' },
+    useSelectorMock.mockImplementation((selector) => {
+      return selector({
+        user: { username: 'test', role: 'role' },
+      });
     });
     rerender(<MoreAction />);
 
     fireEvent.mouseEnter(screen.getByTestId('more-action-icon'));
 
-    await waitFor(() => screen.getByText('system.log.version'));
+    await screen.findByText('system.log.version');
     expect(baseElement).toMatchSnapshot();
   });
 
@@ -45,37 +62,38 @@ describe('test Nav/Header/MoreAction', () => {
     render(<MoreAction />);
     fireEvent.mouseEnter(screen.getByTestId('more-action-icon'));
 
-    await waitFor(() => screen.getByText('system.log.version'));
-    expect(scopeDispatch).toBeCalledTimes(0);
+    await screen.findByText('system.log.version');
+    expect(dispatchMock).toBeCalledTimes(0);
 
     fireEvent.click(screen.getByText('system.log.version'));
-    expect(scopeDispatch).toBeCalledTimes(1);
-    expect(scopeDispatch).toBeCalledWith({
+    expect(dispatchMock).toBeCalledTimes(1);
+    expect(dispatchMock).toBeCalledWith({
       payload: { modalName: ModalName.SHOW_VERSION, status: true },
       type: 'nav/updateModalStatus',
     });
   });
 
   test('should jump to path when clicking menu item', async () => {
-    const history = createMemoryHistory();
-    history.push('/test');
-    renderWithServerRouter(<MoreAction />, undefined, { history });
-    expect(history.location.pathname).toBe('/test');
+    render(<MoreAction />);
 
     fireEvent.mouseEnter(screen.getByTestId('more-action-icon'));
 
-    await waitFor(() => screen.getByText('system.log.version'));
+    await screen.findByText('system.log.version');
 
     fireEvent.click(screen.getByText('menu.reportStatistics'));
-    expect(history.location.pathname).toBe('/reportStatistics');
+    expect(mockNavigate).nthCalledWith(1, 'reportStatistics');
+    expect(mockNavigate).toBeCalledTimes(1);
 
     fireEvent.click(screen.getByText('menu.userCenter'));
-    expect(history.location.pathname).toBe('/userCenter');
+    expect(mockNavigate).nthCalledWith(2, 'userCenter');
+    expect(mockNavigate).toBeCalledTimes(2);
 
     fireEvent.click(screen.getByText('menu.globalRuleTemplate'));
-    expect(history.location.pathname).toBe('/rule/template');
+    expect(mockNavigate).nthCalledWith(3, 'rule/template');
+    expect(mockNavigate).toBeCalledTimes(3);
 
     fireEvent.click(screen.getByText('menu.systemSetting'));
-    expect(history.location.pathname).toBe('/system');
+    expect(mockNavigate).nthCalledWith(4, 'system');
+    expect(mockNavigate).toBeCalledTimes(4);
   });
 });

@@ -6,344 +6,372 @@ exports[`User/Modal/UserForm should match snapshot when isUpdate is falsy 1`] = 
     class="ant-form ant-form-horizontal"
   >
     <div
-      class="ant-row ant-form-item"
+      class="ant-form-item"
     >
       <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class="ant-form-item-required"
-          for="username"
-          title="user.userForm.username"
-        >
-          user.userForm.username
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
         >
-          <div
-            class="ant-form-item-control-input-content"
+          <label
+            class="ant-form-item-required"
+            for="username"
+            title="user.userForm.username"
           >
-            <input
-              class="ant-input"
-              id="username"
-              placeholder="common.form.placeholder.input"
-              type="text"
-              value=""
-            />
-          </div>
+            user.userForm.username
+          </label>
         </div>
-      </div>
-    </div>
-    <div
-      class="ant-row ant-form-item"
-    >
-      <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class="ant-form-item-required"
-          for="password"
-          title="user.userForm.password"
-        >
-          user.userForm.password
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-      >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
         >
           <div
-            class="ant-form-item-control-input-content"
-          >
-            <span
-              class="ant-input-affix-wrapper ant-input-password"
-            >
-              <input
-                action="click"
-                class="ant-input"
-                id="password"
-                placeholder="common.form.placeholder.input"
-                type="password"
-                value=""
-              />
-              <span
-                class="ant-input-suffix"
-              >
-                <span
-                  aria-label="eye-invisible"
-                  class="anticon anticon-eye-invisible ant-input-password-icon"
-                  role="img"
-                  tabindex="-1"
-                >
-                  <svg
-                    aria-hidden="true"
-                    data-icon="eye-invisible"
-                    fill="currentColor"
-                    focusable="false"
-                    height="1em"
-                    viewBox="64 64 896 896"
-                    width="1em"
-                  >
-                    <path
-                      d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
-                    />
-                    <path
-                      d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
-                    />
-                  </svg>
-                </span>
-              </span>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="ant-row ant-form-item"
-    >
-      <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class="ant-form-item-required"
-          for="passwordConfirm"
-          title="user.userForm.passwordConfirm"
-        >
-          user.userForm.passwordConfirm
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-      >
-        <div
-          class="ant-form-item-control-input"
-        >
-          <div
-            class="ant-form-item-control-input-content"
-          >
-            <span
-              class="ant-input-affix-wrapper ant-input-password"
-            >
-              <input
-                action="click"
-                class="ant-input"
-                id="passwordConfirm"
-                placeholder="user.userForm.passwordConfirmPlaceholder"
-                type="password"
-                value=""
-              />
-              <span
-                class="ant-input-suffix"
-              >
-                <span
-                  aria-label="eye-invisible"
-                  class="anticon anticon-eye-invisible ant-input-password-icon"
-                  role="img"
-                  tabindex="-1"
-                >
-                  <svg
-                    aria-hidden="true"
-                    data-icon="eye-invisible"
-                    fill="currentColor"
-                    focusable="false"
-                    height="1em"
-                    viewBox="64 64 896 896"
-                    width="1em"
-                  >
-                    <path
-                      d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
-                    />
-                    <path
-                      d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
-                    />
-                  </svg>
-                </span>
-              </span>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="ant-row ant-form-item"
-    >
-      <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class=""
-          for="email"
-          title="user.userForm.email"
-        >
-          user.userForm.email
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-      >
-        <div
-          class="ant-form-item-control-input"
-        >
-          <div
-            class="ant-form-item-control-input-content"
-          >
-            <input
-              class="ant-input"
-              id="email"
-              placeholder="common.form.placeholder.input"
-              type="text"
-              value=""
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="ant-row ant-form-item input-number-hide-arrows"
-    >
-      <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class=""
-          for="phone"
-          title="user.userForm.phone"
-        >
-          user.userForm.phone
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-      >
-        <div
-          class="ant-form-item-control-input"
-        >
-          <div
-            class="ant-form-item-control-input-content"
-          >
-            <input
-              class="ant-input"
-              id="phone"
-              placeholder="common.form.placeholder.input"
-              type="number"
-              value=""
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="ant-row ant-form-item"
-    >
-      <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class=""
-          for="wechat"
-          title="user.userForm.wechat"
-        >
-          user.userForm.wechat
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-      >
-        <div
-          class="ant-form-item-control-input"
-        >
-          <div
-            class="ant-form-item-control-input-content"
-          >
-            <input
-              class="ant-input"
-              id="wechat"
-              placeholder="common.form.placeholder.input"
-              type="text"
-              value=""
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="ant-row ant-form-item"
-    >
-      <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class=""
-          for="managementPermissionCodeList"
-          title="user.userForm.managerPermission"
-        >
-          user.userForm.managerPermission
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-      >
-        <div
-          class="ant-form-item-control-input"
-        >
-          <div
-            class="ant-form-item-control-input-content"
+            class="ant-form-item-control-input"
           >
             <div
-              class="ant-select ant-select-multiple ant-select-show-search"
+              class="ant-form-item-control-input-content"
+            >
+              <input
+                aria-required="true"
+                class="ant-input"
+                id="username"
+                placeholder="common.form.placeholder.input"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-form-item"
+    >
+      <div
+        class="ant-row ant-form-item-row"
+      >
+        <div
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class="ant-form-item-required"
+            for="password"
+            title="user.userForm.password"
+          >
+            user.userForm.password
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        >
+          <div
+            class="ant-form-item-control-input"
+          >
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <span
+                class="ant-input-affix-wrapper ant-input-password"
+              >
+                <input
+                  aria-required="true"
+                  class="ant-input"
+                  id="password"
+                  placeholder="common.form.placeholder.input"
+                  type="password"
+                  value=""
+                />
+                <span
+                  class="ant-input-suffix"
+                >
+                  <span
+                    aria-label="eye-invisible"
+                    class="anticon anticon-eye-invisible ant-input-password-icon"
+                    role="img"
+                    tabindex="-1"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="eye-invisible"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
+                      />
+                      <path
+                        d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-form-item"
+    >
+      <div
+        class="ant-row ant-form-item-row"
+      >
+        <div
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class="ant-form-item-required"
+            for="passwordConfirm"
+            title="user.userForm.passwordConfirm"
+          >
+            user.userForm.passwordConfirm
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        >
+          <div
+            class="ant-form-item-control-input"
+          >
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <span
+                class="ant-input-affix-wrapper ant-input-password"
+              >
+                <input
+                  aria-required="true"
+                  class="ant-input"
+                  id="passwordConfirm"
+                  placeholder="user.userForm.passwordConfirmPlaceholder"
+                  type="password"
+                  value=""
+                />
+                <span
+                  class="ant-input-suffix"
+                >
+                  <span
+                    aria-label="eye-invisible"
+                    class="anticon anticon-eye-invisible ant-input-password-icon"
+                    role="img"
+                    tabindex="-1"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      data-icon="eye-invisible"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
+                      />
+                      <path
+                        d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-form-item"
+    >
+      <div
+        class="ant-row ant-form-item-row"
+      >
+        <div
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class=""
+            for="email"
+            title="user.userForm.email"
+          >
+            user.userForm.email
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        >
+          <div
+            class="ant-form-item-control-input"
+          >
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <input
+                class="ant-input"
+                id="email"
+                placeholder="common.form.placeholder.input"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-form-item input-number-hide-arrows"
+    >
+      <div
+        class="ant-row ant-form-item-row"
+      >
+        <div
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class=""
+            for="phone"
+            title="user.userForm.phone"
+          >
+            user.userForm.phone
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        >
+          <div
+            class="ant-form-item-control-input"
+          >
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <input
+                class="ant-input"
+                id="phone"
+                placeholder="common.form.placeholder.input"
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-form-item"
+    >
+      <div
+        class="ant-row ant-form-item-row"
+      >
+        <div
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class=""
+            for="wechat"
+            title="user.userForm.wechat"
+          >
+            user.userForm.wechat
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        >
+          <div
+            class="ant-form-item-control-input"
+          >
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <input
+                class="ant-input"
+                id="wechat"
+                placeholder="common.form.placeholder.input"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-form-item"
+    >
+      <div
+        class="ant-row ant-form-item-row"
+      >
+        <div
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class=""
+            for="managementPermissionCodeList"
+            title="user.userForm.managerPermission"
+          >
+            user.userForm.managerPermission
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        >
+          <div
+            class="ant-form-item-control-input"
+          >
+            <div
+              class="ant-form-item-control-input-content"
             >
               <div
-                class="ant-select-selector"
+                class="ant-select ant-select-in-form-item ant-select-multiple ant-select-show-search"
               >
                 <div
-                  class="ant-select-selection-overflow"
+                  class="ant-select-selector"
                 >
                   <div
-                    class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
-                    style="opacity: 1;"
+                    class="ant-select-selection-overflow"
                   >
                     <div
-                      class="ant-select-selection-search"
-                      style="width: 0px;"
+                      class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
+                      style="opacity: 1;"
                     >
-                      <input
-                        aria-activedescendant="managementPermissionCodeList_list_0"
-                        aria-autocomplete="list"
-                        aria-controls="managementPermissionCodeList_list"
-                        aria-haspopup="listbox"
-                        aria-owns="managementPermissionCodeList_list"
-                        autocomplete="off"
-                        class="ant-select-selection-search-input"
-                        id="managementPermissionCodeList"
-                        readonly=""
-                        role="combobox"
-                        style="opacity: 0;"
-                        type="search"
-                        unselectable="on"
-                        value=""
-                      />
-                      <span
-                        aria-hidden="true"
-                        class="ant-select-selection-search-mirror"
+                      <div
+                        class="ant-select-selection-search"
+                        style="width: 0px;"
                       >
-                        
-                         
-                      </span>
+                        <input
+                          aria-activedescendant="managementPermissionCodeList_list_0"
+                          aria-autocomplete="list"
+                          aria-controls="managementPermissionCodeList_list"
+                          aria-haspopup="listbox"
+                          aria-owns="managementPermissionCodeList_list"
+                          autocomplete="off"
+                          class="ant-select-selection-search-input"
+                          id="managementPermissionCodeList"
+                          readonly=""
+                          role="combobox"
+                          style="opacity: 0;"
+                          type="search"
+                          unselectable="on"
+                          value=""
+                        />
+                        <span
+                          aria-hidden="true"
+                          class="ant-select-selection-search-mirror"
+                        >
+                           
+                        </span>
+                      </div>
                     </div>
                   </div>
+                  <span
+                    class="ant-select-selection-placeholder"
+                  >
+                    common.form.placeholder.select
+                  </span>
                 </div>
-                <span
-                  class="ant-select-selection-placeholder"
-                >
-                  common.form.placeholder.select
-                </span>
               </div>
             </div>
           </div>
@@ -351,76 +379,79 @@ exports[`User/Modal/UserForm should match snapshot when isUpdate is falsy 1`] = 
       </div>
     </div>
     <div
-      class="ant-row ant-form-item"
+      class="ant-form-item"
     >
       <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class=""
-          for="userGroupList"
-          title="user.userForm.userGroup"
-        >
-          user.userForm.userGroup
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class=""
+            for="userGroupList"
+            title="user.userForm.userGroup"
+          >
+            user.userForm.userGroup
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
         >
           <div
-            class="ant-form-item-control-input-content"
+            class="ant-form-item-control-input"
           >
             <div
-              class="ant-select ant-select-multiple ant-select-show-search"
+              class="ant-form-item-control-input-content"
             >
               <div
-                class="ant-select-selector"
+                class="ant-select ant-select-in-form-item ant-select-multiple ant-select-show-search"
               >
                 <div
-                  class="ant-select-selection-overflow"
+                  class="ant-select-selector"
                 >
                   <div
-                    class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
-                    style="opacity: 1;"
+                    class="ant-select-selection-overflow"
                   >
                     <div
-                      class="ant-select-selection-search"
-                      style="width: 0px;"
+                      class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
+                      style="opacity: 1;"
                     >
-                      <input
-                        aria-activedescendant="userGroupList_list_0"
-                        aria-autocomplete="list"
-                        aria-controls="userGroupList_list"
-                        aria-haspopup="listbox"
-                        aria-owns="userGroupList_list"
-                        autocomplete="off"
-                        class="ant-select-selection-search-input"
-                        id="userGroupList"
-                        readonly=""
-                        role="combobox"
-                        style="opacity: 0;"
-                        type="search"
-                        unselectable="on"
-                        value=""
-                      />
-                      <span
-                        aria-hidden="true"
-                        class="ant-select-selection-search-mirror"
+                      <div
+                        class="ant-select-selection-search"
+                        style="width: 0px;"
                       >
-                        
-                         
-                      </span>
+                        <input
+                          aria-activedescendant="userGroupList_list_0"
+                          aria-autocomplete="list"
+                          aria-controls="userGroupList_list"
+                          aria-haspopup="listbox"
+                          aria-owns="userGroupList_list"
+                          autocomplete="off"
+                          class="ant-select-selection-search-input"
+                          id="userGroupList"
+                          readonly=""
+                          role="combobox"
+                          style="opacity: 0;"
+                          type="search"
+                          unselectable="on"
+                          value=""
+                        />
+                        <span
+                          aria-hidden="true"
+                          class="ant-select-selection-search-mirror"
+                        >
+                           
+                        </span>
+                      </div>
                     </div>
                   </div>
+                  <span
+                    class="ant-select-selection-placeholder"
+                  >
+                    common.form.placeholder.select
+                  </span>
                 </div>
-                <span
-                  class="ant-select-selection-placeholder"
-                >
-                  common.form.placeholder.select
-                </span>
               </div>
             </div>
           </div>
@@ -437,213 +468,233 @@ exports[`User/Modal/UserForm should match snapshot when isUpdate is truthy 1`] =
     class="ant-form ant-form-horizontal"
   >
     <div
-      class="ant-row ant-form-item"
+      class="ant-form-item"
     >
       <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class="ant-form-item-required"
-          for="username"
-          title="user.userForm.username"
-        >
-          user.userForm.username
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
         >
-          <div
-            class="ant-form-item-control-input-content"
+          <label
+            class="ant-form-item-required"
+            for="username"
+            title="user.userForm.username"
           >
-            <input
-              class="ant-input ant-input-disabled"
-              disabled=""
-              id="username"
-              placeholder="common.form.placeholder.input"
-              type="text"
-              value=""
-            />
-          </div>
+            user.userForm.username
+          </label>
         </div>
-      </div>
-    </div>
-    <div
-      class="ant-row ant-form-item"
-    >
-      <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class=""
-          for="email"
-          title="user.userForm.email"
-        >
-          user.userForm.email
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-      >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
         >
           <div
-            class="ant-form-item-control-input-content"
-          >
-            <input
-              class="ant-input"
-              id="email"
-              placeholder="common.form.placeholder.input"
-              type="text"
-              value=""
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="ant-row ant-form-item input-number-hide-arrows"
-    >
-      <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class=""
-          for="phone"
-          title="user.userForm.phone"
-        >
-          user.userForm.phone
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-      >
-        <div
-          class="ant-form-item-control-input"
-        >
-          <div
-            class="ant-form-item-control-input-content"
-          >
-            <input
-              class="ant-input"
-              id="phone"
-              placeholder="common.form.placeholder.input"
-              type="number"
-              value=""
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="ant-row ant-form-item"
-    >
-      <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class=""
-          for="wechat"
-          title="user.userForm.wechat"
-        >
-          user.userForm.wechat
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-      >
-        <div
-          class="ant-form-item-control-input"
-        >
-          <div
-            class="ant-form-item-control-input-content"
-          >
-            <input
-              class="ant-input"
-              id="wechat"
-              placeholder="common.form.placeholder.input"
-              type="text"
-              value=""
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="ant-row ant-form-item"
-    >
-      <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class=""
-          for="managementPermissionCodeList"
-          title="user.userForm.managerPermission"
-        >
-          user.userForm.managerPermission
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
-      >
-        <div
-          class="ant-form-item-control-input"
-        >
-          <div
-            class="ant-form-item-control-input-content"
+            class="ant-form-item-control-input"
           >
             <div
-              class="ant-select ant-select-multiple ant-select-show-search"
+              class="ant-form-item-control-input-content"
+            >
+              <input
+                aria-required="true"
+                class="ant-input ant-input-disabled"
+                disabled=""
+                id="username"
+                placeholder="common.form.placeholder.input"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-form-item"
+    >
+      <div
+        class="ant-row ant-form-item-row"
+      >
+        <div
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class=""
+            for="email"
+            title="user.userForm.email"
+          >
+            user.userForm.email
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        >
+          <div
+            class="ant-form-item-control-input"
+          >
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <input
+                class="ant-input"
+                id="email"
+                placeholder="common.form.placeholder.input"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-form-item input-number-hide-arrows"
+    >
+      <div
+        class="ant-row ant-form-item-row"
+      >
+        <div
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class=""
+            for="phone"
+            title="user.userForm.phone"
+          >
+            user.userForm.phone
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        >
+          <div
+            class="ant-form-item-control-input"
+          >
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <input
+                class="ant-input"
+                id="phone"
+                placeholder="common.form.placeholder.input"
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-form-item"
+    >
+      <div
+        class="ant-row ant-form-item-row"
+      >
+        <div
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class=""
+            for="wechat"
+            title="user.userForm.wechat"
+          >
+            user.userForm.wechat
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        >
+          <div
+            class="ant-form-item-control-input"
+          >
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <input
+                class="ant-input"
+                id="wechat"
+                placeholder="common.form.placeholder.input"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-form-item"
+    >
+      <div
+        class="ant-row ant-form-item-row"
+      >
+        <div
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class=""
+            for="managementPermissionCodeList"
+            title="user.userForm.managerPermission"
+          >
+            user.userForm.managerPermission
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        >
+          <div
+            class="ant-form-item-control-input"
+          >
+            <div
+              class="ant-form-item-control-input-content"
             >
               <div
-                class="ant-select-selector"
+                class="ant-select ant-select-in-form-item ant-select-multiple ant-select-show-search"
               >
                 <div
-                  class="ant-select-selection-overflow"
+                  class="ant-select-selector"
                 >
                   <div
-                    class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
-                    style="opacity: 1;"
+                    class="ant-select-selection-overflow"
                   >
                     <div
-                      class="ant-select-selection-search"
-                      style="width: 0px;"
+                      class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
+                      style="opacity: 1;"
                     >
-                      <input
-                        aria-activedescendant="managementPermissionCodeList_list_0"
-                        aria-autocomplete="list"
-                        aria-controls="managementPermissionCodeList_list"
-                        aria-haspopup="listbox"
-                        aria-owns="managementPermissionCodeList_list"
-                        autocomplete="off"
-                        class="ant-select-selection-search-input"
-                        id="managementPermissionCodeList"
-                        readonly=""
-                        role="combobox"
-                        style="opacity: 0;"
-                        type="search"
-                        unselectable="on"
-                        value=""
-                      />
-                      <span
-                        aria-hidden="true"
-                        class="ant-select-selection-search-mirror"
+                      <div
+                        class="ant-select-selection-search"
+                        style="width: 0px;"
                       >
-                        
-                         
-                      </span>
+                        <input
+                          aria-activedescendant="managementPermissionCodeList_list_0"
+                          aria-autocomplete="list"
+                          aria-controls="managementPermissionCodeList_list"
+                          aria-haspopup="listbox"
+                          aria-owns="managementPermissionCodeList_list"
+                          autocomplete="off"
+                          class="ant-select-selection-search-input"
+                          id="managementPermissionCodeList"
+                          readonly=""
+                          role="combobox"
+                          style="opacity: 0;"
+                          type="search"
+                          unselectable="on"
+                          value=""
+                        />
+                        <span
+                          aria-hidden="true"
+                          class="ant-select-selection-search-mirror"
+                        >
+                           
+                        </span>
+                      </div>
                     </div>
                   </div>
+                  <span
+                    class="ant-select-selection-placeholder"
+                  >
+                    common.form.placeholder.select
+                  </span>
                 </div>
-                <span
-                  class="ant-select-selection-placeholder"
-                >
-                  common.form.placeholder.select
-                </span>
               </div>
             </div>
           </div>
@@ -651,76 +702,79 @@ exports[`User/Modal/UserForm should match snapshot when isUpdate is truthy 1`] =
       </div>
     </div>
     <div
-      class="ant-row ant-form-item"
+      class="ant-form-item"
     >
       <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class=""
-          for="userGroupList"
-          title="user.userForm.userGroup"
-        >
-          user.userForm.userGroup
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+        >
+          <label
+            class=""
+            for="userGroupList"
+            title="user.userForm.userGroup"
+          >
+            user.userForm.userGroup
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
         >
           <div
-            class="ant-form-item-control-input-content"
+            class="ant-form-item-control-input"
           >
             <div
-              class="ant-select ant-select-multiple ant-select-show-search"
+              class="ant-form-item-control-input-content"
             >
               <div
-                class="ant-select-selector"
+                class="ant-select ant-select-in-form-item ant-select-multiple ant-select-show-search"
               >
                 <div
-                  class="ant-select-selection-overflow"
+                  class="ant-select-selector"
                 >
                   <div
-                    class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
-                    style="opacity: 1;"
+                    class="ant-select-selection-overflow"
                   >
                     <div
-                      class="ant-select-selection-search"
-                      style="width: 0px;"
+                      class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix"
+                      style="opacity: 1;"
                     >
-                      <input
-                        aria-activedescendant="userGroupList_list_0"
-                        aria-autocomplete="list"
-                        aria-controls="userGroupList_list"
-                        aria-haspopup="listbox"
-                        aria-owns="userGroupList_list"
-                        autocomplete="off"
-                        class="ant-select-selection-search-input"
-                        id="userGroupList"
-                        readonly=""
-                        role="combobox"
-                        style="opacity: 0;"
-                        type="search"
-                        unselectable="on"
-                        value=""
-                      />
-                      <span
-                        aria-hidden="true"
-                        class="ant-select-selection-search-mirror"
+                      <div
+                        class="ant-select-selection-search"
+                        style="width: 0px;"
                       >
-                        
-                         
-                      </span>
+                        <input
+                          aria-activedescendant="userGroupList_list_0"
+                          aria-autocomplete="list"
+                          aria-controls="userGroupList_list"
+                          aria-haspopup="listbox"
+                          aria-owns="userGroupList_list"
+                          autocomplete="off"
+                          class="ant-select-selection-search-input"
+                          id="userGroupList"
+                          readonly=""
+                          role="combobox"
+                          style="opacity: 0;"
+                          type="search"
+                          unselectable="on"
+                          value=""
+                        />
+                        <span
+                          aria-hidden="true"
+                          class="ant-select-selection-search-mirror"
+                        >
+                           
+                        </span>
+                      </div>
                     </div>
                   </div>
+                  <span
+                    class="ant-select-selection-placeholder"
+                  >
+                    common.form.placeholder.select
+                  </span>
                 </div>
-                <span
-                  class="ant-select-selection-placeholder"
-                >
-                  common.form.placeholder.select
-                </span>
               </div>
             </div>
           </div>
@@ -728,77 +782,81 @@ exports[`User/Modal/UserForm should match snapshot when isUpdate is truthy 1`] =
       </div>
     </div>
     <div
-      class="ant-row ant-form-item"
+      class="ant-form-item"
     >
       <div
-        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
-      >
-        <label
-          class=""
-          for="disabled"
-          title=""
-        >
-          <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
-          >
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <span
-                aria-label="info-circle"
-                class="anticon anticon-info-circle text-orange"
-                role="img"
-              >
-                <svg
-                  aria-hidden="true"
-                  data-icon="info-circle"
-                  fill="currentColor"
-                  focusable="false"
-                  height="1em"
-                  viewBox="64 64 896 896"
-                  width="1em"
-                >
-                  <path
-                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                  />
-                  <path
-                    d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
-                  />
-                </svg>
-              </span>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              user.userForm.disabled
-            </div>
-          </div>
-        </label>
-      </div>
-      <div
-        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        class="ant-row ant-form-item-row"
       >
         <div
-          class="ant-form-item-control-input"
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
         >
-          <div
-            class="ant-form-item-control-input-content"
+          <label
+            class=""
+            for="disabled"
+            title=""
           >
-            <button
-              aria-checked="false"
-              class="ant-switch"
-              id="disabled"
-              role="switch"
-              type="button"
+            <div
+              class="ant-space ant-space-horizontal ant-space-align-center"
             >
               <div
-                class="ant-switch-handle"
-              />
-              <span
-                class="ant-switch-inner"
-              />
-            </button>
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              >
+                <span
+                  aria-label="info-circle"
+                  class="anticon anticon-info-circle text-orange"
+                  role="img"
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-icon="info-circle"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                    />
+                    <path
+                      d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="ant-space-item"
+              >
+                user.userForm.disabled
+              </div>
+            </div>
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+        >
+          <div
+            class="ant-form-item-control-input"
+          >
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <button
+                aria-checked="false"
+                class="ant-switch"
+                id="disabled"
+                role="switch"
+                type="button"
+              >
+                <div
+                  class="ant-switch-handle"
+                />
+                <span
+                  class="ant-switch-inner"
+                />
+              </button>
+            </div>
           </div>
         </div>
       </div>

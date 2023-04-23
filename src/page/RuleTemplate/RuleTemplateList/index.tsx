@@ -4,7 +4,6 @@ import { Button, Card, message, Space, Table } from 'antd';
 import React, { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { IProjectRuleTemplateResV1 } from '../../../api/common';
 import ruleTemplate from '../../../api/rule_template';
 import EmptyBox from '../../../components/EmptyBox';
@@ -22,9 +21,10 @@ import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import { RuleTemplateListTableColumnFactory } from './column';
 import RuleTemplateListModal from './Modal';
 import GlobalRuleTemplateList from '../../GlobalRuleTemplate/RuleTemplateList';
-import { useTheme } from '@material-ui/styles';
-import { Theme } from '../../../types/theme.type';
+import { useTheme } from '@mui/styles';
 import { IReduxState } from '../../../store';
+import { Theme } from '@mui/material/styles';
+import { Link } from '../../../components/Link';
 
 const RuleTemplateList = () => {
   const { t } = useTranslation();
@@ -185,13 +185,13 @@ const RuleTemplateList = () => {
             key="ruleTemplateButton"
           >
             <Space>
-              <Link to={`/project/${projectName}/rule/template/import`}>
+              <Link to={`project/${projectName}/rule/template/import`}>
                 <Button type="primary">
                   {t('ruleTemplate.importRuleTemplate.button')}
                 </Button>
               </Link>
 
-              <Link to={`/project/${projectName}/rule/template/create`}>
+              <Link to={`project/${projectName}/rule/template/create`}>
                 <Button type="primary">
                   {t('ruleTemplate.createRuleTemplate.button')}
                 </Button>

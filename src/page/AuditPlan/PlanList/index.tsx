@@ -4,7 +4,6 @@ import { Button, Card, message, Space, Table } from 'antd';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import audit_plan from '../../../api/audit_plan';
 import { IAuditPlanResV2 } from '../../../api/common';
 import EmptyBox from '../../../components/EmptyBox';
@@ -22,6 +21,7 @@ import PlanListModal from './Modal';
 import PlanListFilterForm from './PlanListFilterForm';
 import { PlanListFilterFormFields } from './PlanListFilterForm/index.type';
 import { planListTableHeader } from './tableColumn';
+import { Link } from '../../../components/Link';
 
 const PlanList = () => {
   const { t } = useTranslation();
@@ -141,7 +141,7 @@ const PlanList = () => {
       }
       extra={[
         <EmptyBox if={!projectIsArchive} key="create-audit-plan">
-          <Link to={`/project/${projectName}/auditPlan/create`}>
+          <Link to={`project/${projectName}/auditPlan/create`}>
             <Button type="primary">{t('auditPlan.action.create')}</Button>
           </Link>
         </EmptyBox>,

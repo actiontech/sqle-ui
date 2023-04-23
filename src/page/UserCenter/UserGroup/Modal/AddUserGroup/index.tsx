@@ -66,7 +66,7 @@ const AddUserGroup = () => {
   return (
     <Modal
       title={t('userGroup.createUserGroup.title')}
-      visible={visible}
+      open={visible}
       closable={false}
       footer={
         <>

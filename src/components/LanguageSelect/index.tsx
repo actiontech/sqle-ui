@@ -24,8 +24,7 @@ const LanguageSelect: React.FC<{}> = () => {
       value={language}
       onChange={changeLanguage}
       dropdownMatchSelectWidth={false}
-      dropdownAlign="right"
-      dropdownClassName="login-page-language"
+      popupClassName="login-page-language"
       size="small"
       className="font-size-small"
     >

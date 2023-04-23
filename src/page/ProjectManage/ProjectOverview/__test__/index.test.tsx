@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import ProjectOverview from '..';
 import { resolveErrorThreeSecond } from '../../../../testUtils/mockRequest';
@@ -6,23 +6,26 @@ import {
   mockGetProjectDetail,
   mockGetProjectStatistics,
 } from '../../__test__/utils';
-import { createMemoryHistory } from 'history';
-import { renderWithServerRouter } from '../../../../testUtils/customRender';
+import useNavigate from '../../../../hooks/useNavigate';
+import { renderWithRouter } from '../../../../testUtils/customRender';
+import { getHrefByText } from '../../../../testUtils/customQuery';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: jest.fn(),
 }));
+jest.mock('../../../../hooks/useNavigate', () => jest.fn());
 const projectName = 'default';
 
 describe('test ProjectOverview', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
   let getProjectDetailSpy: jest.SpyInstance;
   let getProjectStatistics: jest.SpyInstance;
+  const navigateSpy = jest.fn();
   beforeEach(() => {
     getProjectDetailSpy = mockGetProjectDetail();
     getProjectStatistics = mockGetProjectStatistics();
-
+    (useNavigate as jest.Mock).mockImplementation(() => navigateSpy);
     useParamsMock.mockReturnValue({ projectName });
     jest.useFakeTimers();
   });
@@ -35,9 +38,7 @@ describe('test ProjectOverview', () => {
   test('should match snapshot', async () => {
     const { container } = render(<ProjectOverview />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
   });
@@ -48,9 +49,7 @@ describe('test ProjectOverview', () => {
     );
 
     const { container } = render(<ProjectOverview />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
   });
@@ -67,9 +66,7 @@ describe('test ProjectOverview', () => {
     expect(getProjectStatistics).toBeCalledWith({
       project_name: projectName,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByTestId('refresh-project-info'));
     expect(getProjectDetailSpy).toBeCalledTimes(2);
@@ -83,45 +80,47 @@ describe('test ProjectOverview', () => {
   });
 
   test('should jump to path when clicking card', async () => {
-    const history = createMemoryHistory();
-    history.push('/test');
-    renderWithServerRouter(<ProjectOverview />, undefined, { history });
-    expect(history.location.pathname).toBe('/test');
+    renderWithRouter(<ProjectOverview />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(
       screen.getByText('projectManage.projectOverview.orderTotal')
     );
-    expect(history.location.pathname).toBe(`/project/${projectName}/order`);
+    expect(navigateSpy).toBeCalledTimes(1);
+    expect(navigateSpy).nthCalledWith(1, `project/${projectName}/order`);
 
     fireEvent.click(
       screen.getByText('projectManage.projectOverview.auditPlanTotal')
     );
-    expect(history.location.pathname).toBe(`/project/${projectName}/auditPlan`);
+    expect(navigateSpy).toBeCalledTimes(2);
+    expect(navigateSpy).nthCalledWith(2, `project/${projectName}/auditPlan`);
 
     fireEvent.click(
       screen.getByText('projectManage.projectOverview.instanceTotal')
     );
-    expect(history.location.pathname).toBe(`/project/${projectName}/data`);
+    expect(navigateSpy).toBeCalledTimes(3);
+    expect(navigateSpy).nthCalledWith(3, `project/${projectName}/data`);
 
     fireEvent.click(
       screen.getByText('projectManage.projectOverview.memberTotal')
     );
-    expect(history.location.pathname).toBe(`/project/${projectName}/member`);
+    expect(navigateSpy).toBeCalledTimes(4);
+    expect(navigateSpy).nthCalledWith(4, `project/${projectName}/member`);
 
     fireEvent.click(
       screen.getByText('projectManage.projectOverview.ruleTemplateTotal')
     );
-    expect(history.location.pathname).toBe(
-      `/project/${projectName}/rule/template`
+    expect(navigateSpy).toBeCalledTimes(5);
+    expect(navigateSpy).nthCalledWith(
+      5,
+      `project/${projectName}/rule/template`
     );
 
     fireEvent.click(
       screen.getByText('projectManage.projectOverview.whiteListTotal')
     );
-    expect(history.location.pathname).toBe(`/project/${projectName}/whitelist`);
+    expect(navigateSpy).toBeCalledTimes(6);
+    expect(navigateSpy).nthCalledWith(6, `project/${projectName}/whitelist`);
   });
 });

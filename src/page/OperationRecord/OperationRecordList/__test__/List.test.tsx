@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { IOperationRecordList } from '../../../../api/common';
 import { OperationRecordListStatusEnum } from '../../../../api/common.enum';
 import OperationRecord from '../../../../api/OperationRecord';
@@ -66,9 +66,8 @@ describe('test OperationRecordList', () => {
 
     expect(container).toMatchSnapshot();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -81,35 +80,27 @@ describe('test OperationRecordList', () => {
       page_size: 10,
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     selectOptionByIndex(
       'operationRecord.list.filterForm.projectName',
       'project_name_1'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     selectOptionByIndex(
       'operationRecord.list.filterForm.operationType',
       '数据源',
       0
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     selectOptionByIndex(
       'operationRecord.list.filterForm.operationAction',
       '编辑数据源',
       0
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     fireEvent.change(
       screen.getByLabelText('operationRecord.list.filterForm.operator'),
@@ -117,9 +108,7 @@ describe('test OperationRecordList', () => {
     );
 
     fireEvent.click(screen.getByText('common.search'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(getOperationRecordListSpy).toBeCalledTimes(2);
     expect(getOperationRecordListSpy).toBeCalledWith({
@@ -150,9 +139,7 @@ describe('test OperationRecordList', () => {
       page_size: 10,
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByTestId('refresh-table'));
     expect(getOperationRecordListSpy).toBeCalledTimes(2);
@@ -167,9 +154,7 @@ describe('test OperationRecordList', () => {
 
     expect(exportOperationRecordListSpy).toBeCalledTimes(0);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByText('operationRecord.list.exportButtonText'));
     expect(exportOperationRecordListSpy).toBeCalledTimes(1);
@@ -180,7 +165,7 @@ describe('test OperationRecordList', () => {
     );
 
     expect(
-      screen.queryByText('operationRecord.list.exporting')
+      screen.getByText('operationRecord.list.exporting')
     ).toBeInTheDocument();
     expect(
       screen
@@ -188,9 +173,8 @@ describe('test OperationRecordList', () => {
         .closest('button')
     ).toBeDisabled();
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('operationRecord.list.exporting')
     ).not.toBeInTheDocument();
@@ -201,11 +185,10 @@ describe('test OperationRecordList', () => {
     ).not.toBeDisabled();
 
     expect(
-      screen.queryByText('operationRecord.list.exportSuccessTips')
+      screen.getByText('operationRecord.list.exportSuccessTips')
     ).toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('operationRecord.list.exportSuccessTips')
     ).not.toBeInTheDocument();
@@ -214,27 +197,21 @@ describe('test OperationRecordList', () => {
       'operationRecord.list.filterForm.projectName',
       'project_name_1'
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     selectOptionByIndex(
       'operationRecord.list.filterForm.operationType',
       '数据源',
       0
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     selectOptionByIndex(
       'operationRecord.list.filterForm.operationAction',
       '编辑数据源',
       0
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     fireEvent.change(
       screen.getByLabelText('operationRecord.list.filterForm.operator'),

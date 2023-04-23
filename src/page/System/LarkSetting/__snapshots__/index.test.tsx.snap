@@ -136,194 +136,211 @@ exports[`test System/LarkSetting should disabled edit lark configuration when "i
         hidden=""
       >
         <div
-          class="ant-row ant-form-item"
+          class="ant-form-item"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="enabled"
-              title="system.lark.enable"
-            >
-              system.lark.enable
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
             >
-              <div
-                class="ant-form-item-control-input-content"
+              <label
+                class=""
+                for="enabled"
+                title="system.lark.enable"
               >
-                <button
-                  aria-checked="false"
-                  class="ant-switch"
-                  id="enabled"
-                  role="switch"
-                  type="button"
-                >
-                  <div
-                    class="ant-switch-handle"
-                  />
-                  <span
-                    class="ant-switch-inner"
-                  />
-                </button>
-              </div>
+                system.lark.enable
+              </label>
             </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="appKey"
-              title="App ID"
-            >
-              App ID
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
             >
               <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="appKey"
-                  placeholder="common.form.placeholder.input"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="appSecret"
-              title="App Secret"
-            >
-              App Secret
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <span
-                  class="ant-input-affix-wrapper ant-input-password"
-                >
-                  <input
-                    action="click"
-                    class="ant-input"
-                    id="appSecret"
-                    placeholder="common.form.placeholder.input"
-                    type="password"
-                  />
-                  <span
-                    class="ant-input-suffix"
-                  >
-                    <span
-                      aria-label="eye-invisible"
-                      class="anticon anticon-eye-invisible ant-input-password-icon"
-                      role="img"
-                      tabindex="-1"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="eye-invisible"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
-                      >
-                        <path
-                          d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
-                        />
-                        <path
-                          d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-no-colon"
-              title=" "
-            >
-               
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
+                class="ant-form-item-control-input"
               >
                 <div
-                  class="ant-space ant-space-horizontal ant-space-align-center"
+                  class="ant-form-item-control-input-content"
+                >
+                  <button
+                    aria-checked="false"
+                    class="ant-switch"
+                    id="enabled"
+                    role="switch"
+                    type="button"
+                  >
+                    <div
+                      class="ant-switch-handle"
+                    />
+                    <span
+                      class="ant-switch-inner"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="appKey"
+                title="App ID"
+              >
+                App ID
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input"
+                    id="appKey"
+                    placeholder="common.form.placeholder.input"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="appSecret"
+                title="App Secret"
+              >
+                App Secret
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <span
+                    class="ant-input-affix-wrapper ant-input-password"
+                  >
+                    <input
+                      aria-required="true"
+                      class="ant-input"
+                      id="appSecret"
+                      placeholder="common.form.placeholder.input"
+                      type="password"
+                    />
+                    <span
+                      class="ant-input-suffix"
+                    >
+                      <span
+                        aria-label="eye-invisible"
+                        class="anticon anticon-eye-invisible ant-input-password-icon"
+                        role="img"
+                        tabindex="-1"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="eye-invisible"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
+                          />
+                          <path
+                            d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-no-colon"
+                title=" "
+              >
+                 
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
                 >
                   <div
-                    class="ant-space-item"
-                    style="margin-right: 8px;"
+                    class="ant-space ant-space-horizontal ant-space-align-center"
                   >
-                    <button
-                      class="ant-btn ant-btn-primary"
-                      type="submit"
+                    <div
+                      class="ant-space-item"
+                      style="margin-right: 8px;"
                     >
-                      <span>
-                        common.submit
-                      </span>
-                    </button>
-                  </div>
-                  <div
-                    class="ant-space-item"
-                  >
-                    <button
-                      class="ant-btn"
-                      type="button"
+                      <button
+                        class="ant-btn ant-btn-primary"
+                        type="submit"
+                      >
+                        <span>
+                          common.submit
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      class="ant-space-item"
                     >
-                      <span>
-                        common.cancel
-                      </span>
-                    </button>
+                      <button
+                        class="ant-btn ant-btn-default"
+                        type="button"
+                      >
+                        <span>
+                          common.cancel
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -474,194 +491,211 @@ exports[`test System/LarkSetting should disabled edit lark configuration when "i
         class="ant-form ant-form-horizontal"
       >
         <div
-          class="ant-row ant-form-item ant-form-item-has-success"
+          class="ant-form-item ant-form-item-has-success"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="enabled"
-              title="system.lark.enable"
-            >
-              system.lark.enable
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
             >
-              <div
-                class="ant-form-item-control-input-content"
+              <label
+                class=""
+                for="enabled"
+                title="system.lark.enable"
               >
-                <button
-                  aria-checked="false"
-                  class="ant-switch"
-                  id="enabled"
-                  role="switch"
-                  type="button"
-                >
-                  <div
-                    class="ant-switch-handle"
-                  />
-                  <span
-                    class="ant-switch-inner"
-                  />
-                </button>
-              </div>
+                system.lark.enable
+              </label>
             </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="appKey"
-              title="App ID"
-            >
-              App ID
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
             >
               <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="appKey"
-                  placeholder="common.form.placeholder.input"
-                  type="text"
-                  value="app_key"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="appSecret"
-              title="App Secret"
-            >
-              App Secret
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <span
-                  class="ant-input-affix-wrapper ant-input-password"
-                >
-                  <input
-                    action="click"
-                    class="ant-input"
-                    id="appSecret"
-                    placeholder="common.form.placeholder.input"
-                    type="password"
-                  />
-                  <span
-                    class="ant-input-suffix"
-                  >
-                    <span
-                      aria-label="eye-invisible"
-                      class="anticon anticon-eye-invisible ant-input-password-icon"
-                      role="img"
-                      tabindex="-1"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="eye-invisible"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
-                      >
-                        <path
-                          d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
-                        />
-                        <path
-                          d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-no-colon"
-              title=" "
-            >
-               
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
+                class="ant-form-item-control-input"
               >
                 <div
-                  class="ant-space ant-space-horizontal ant-space-align-center"
+                  class="ant-form-item-control-input-content"
+                >
+                  <button
+                    aria-checked="false"
+                    class="ant-switch"
+                    id="enabled"
+                    role="switch"
+                    type="button"
+                  >
+                    <div
+                      class="ant-switch-handle"
+                    />
+                    <span
+                      class="ant-switch-inner"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="appKey"
+                title="App ID"
+              >
+                App ID
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input ant-input-status-success"
+                    id="appKey"
+                    placeholder="common.form.placeholder.input"
+                    type="text"
+                    value="app_key"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="appSecret"
+                title="App Secret"
+              >
+                App Secret
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <span
+                    class="ant-input-affix-wrapper ant-input-password"
+                  >
+                    <input
+                      aria-required="true"
+                      class="ant-input"
+                      id="appSecret"
+                      placeholder="common.form.placeholder.input"
+                      type="password"
+                    />
+                    <span
+                      class="ant-input-suffix"
+                    >
+                      <span
+                        aria-label="eye-invisible"
+                        class="anticon anticon-eye-invisible ant-input-password-icon"
+                        role="img"
+                        tabindex="-1"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="eye-invisible"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
+                          />
+                          <path
+                            d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-no-colon"
+                title=" "
+              >
+                 
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
                 >
                   <div
-                    class="ant-space-item"
-                    style="margin-right: 8px;"
+                    class="ant-space ant-space-horizontal ant-space-align-center"
                   >
-                    <button
-                      class="ant-btn ant-btn-primary"
-                      type="submit"
+                    <div
+                      class="ant-space-item"
+                      style="margin-right: 8px;"
                     >
-                      <span>
-                        common.submit
-                      </span>
-                    </button>
-                  </div>
-                  <div
-                    class="ant-space-item"
-                  >
-                    <button
-                      class="ant-btn"
-                      type="button"
+                      <button
+                        class="ant-btn ant-btn-primary"
+                        type="submit"
+                      >
+                        <span>
+                          common.submit
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      class="ant-space-item"
                     >
-                      <span>
-                        common.cancel
-                      </span>
-                    </button>
+                      <button
+                        class="ant-btn ant-btn-default"
+                        type="button"
+                      >
+                        <span>
+                          common.cancel
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -810,195 +844,212 @@ exports[`test System/LarkSetting should match snapshot 1`] = `
         hidden=""
       >
         <div
-          class="ant-row ant-form-item"
+          class="ant-form-item"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="enabled"
-              title="system.lark.enable"
-            >
-              system.lark.enable
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
             >
-              <div
-                class="ant-form-item-control-input-content"
+              <label
+                class=""
+                for="enabled"
+                title="system.lark.enable"
               >
-                <button
-                  aria-checked="false"
-                  class="ant-switch"
-                  id="enabled"
-                  role="switch"
-                  type="button"
-                >
-                  <div
-                    class="ant-switch-handle"
-                  />
-                  <span
-                    class="ant-switch-inner"
-                  />
-                </button>
-              </div>
+                system.lark.enable
+              </label>
             </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="appKey"
-              title="App ID"
-            >
-              App ID
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
             >
               <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="appKey"
-                  placeholder="common.form.placeholder.input"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="appSecret"
-              title="App Secret"
-            >
-              App Secret
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <span
-                  class="ant-input-affix-wrapper ant-input-password"
-                >
-                  <input
-                    action="click"
-                    class="ant-input"
-                    id="appSecret"
-                    placeholder="common.form.placeholder.input"
-                    type="password"
-                    value=""
-                  />
-                  <span
-                    class="ant-input-suffix"
-                  >
-                    <span
-                      aria-label="eye-invisible"
-                      class="anticon anticon-eye-invisible ant-input-password-icon"
-                      role="img"
-                      tabindex="-1"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="eye-invisible"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
-                      >
-                        <path
-                          d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
-                        />
-                        <path
-                          d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-no-colon"
-              title=" "
-            >
-               
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
+                class="ant-form-item-control-input"
               >
                 <div
-                  class="ant-space ant-space-horizontal ant-space-align-center"
+                  class="ant-form-item-control-input-content"
+                >
+                  <button
+                    aria-checked="false"
+                    class="ant-switch"
+                    id="enabled"
+                    role="switch"
+                    type="button"
+                  >
+                    <div
+                      class="ant-switch-handle"
+                    />
+                    <span
+                      class="ant-switch-inner"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="appKey"
+                title="App ID"
+              >
+                App ID
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input"
+                    id="appKey"
+                    placeholder="common.form.placeholder.input"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="appSecret"
+                title="App Secret"
+              >
+                App Secret
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <span
+                    class="ant-input-affix-wrapper ant-input-password"
+                  >
+                    <input
+                      aria-required="true"
+                      class="ant-input"
+                      id="appSecret"
+                      placeholder="common.form.placeholder.input"
+                      type="password"
+                      value=""
+                    />
+                    <span
+                      class="ant-input-suffix"
+                    >
+                      <span
+                        aria-label="eye-invisible"
+                        class="anticon anticon-eye-invisible ant-input-password-icon"
+                        role="img"
+                        tabindex="-1"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="eye-invisible"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
+                          />
+                          <path
+                            d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-no-colon"
+                title=" "
+              >
+                 
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
                 >
                   <div
-                    class="ant-space-item"
-                    style="margin-right: 8px;"
+                    class="ant-space ant-space-horizontal ant-space-align-center"
                   >
-                    <button
-                      class="ant-btn ant-btn-primary"
-                      type="submit"
+                    <div
+                      class="ant-space-item"
+                      style="margin-right: 8px;"
                     >
-                      <span>
-                        common.submit
-                      </span>
-                    </button>
-                  </div>
-                  <div
-                    class="ant-space-item"
-                  >
-                    <button
-                      class="ant-btn"
-                      type="button"
+                      <button
+                        class="ant-btn ant-btn-primary"
+                        type="submit"
+                      >
+                        <span>
+                          common.submit
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      class="ant-space-item"
                     >
-                      <span>
-                        common.cancel
-                      </span>
-                    </button>
+                      <button
+                        class="ant-btn ant-btn-default"
+                        type="button"
+                      >
+                        <span>
+                          common.cancel
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1147,194 +1198,211 @@ exports[`test System/LarkSetting should match snapshot 2`] = `
         hidden=""
       >
         <div
-          class="ant-row ant-form-item"
+          class="ant-form-item"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="enabled"
-              title="system.lark.enable"
-            >
-              system.lark.enable
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
             >
-              <div
-                class="ant-form-item-control-input-content"
+              <label
+                class=""
+                for="enabled"
+                title="system.lark.enable"
               >
-                <button
-                  aria-checked="false"
-                  class="ant-switch"
-                  id="enabled"
-                  role="switch"
-                  type="button"
-                >
-                  <div
-                    class="ant-switch-handle"
-                  />
-                  <span
-                    class="ant-switch-inner"
-                  />
-                </button>
-              </div>
+                system.lark.enable
+              </label>
             </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="appKey"
-              title="App ID"
-            >
-              App ID
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
             >
               <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="appKey"
-                  placeholder="common.form.placeholder.input"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="appSecret"
-              title="App Secret"
-            >
-              App Secret
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <span
-                  class="ant-input-affix-wrapper ant-input-password"
-                >
-                  <input
-                    action="click"
-                    class="ant-input"
-                    id="appSecret"
-                    placeholder="common.form.placeholder.input"
-                    type="password"
-                  />
-                  <span
-                    class="ant-input-suffix"
-                  >
-                    <span
-                      aria-label="eye-invisible"
-                      class="anticon anticon-eye-invisible ant-input-password-icon"
-                      role="img"
-                      tabindex="-1"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="eye-invisible"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
-                      >
-                        <path
-                          d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
-                        />
-                        <path
-                          d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-no-colon"
-              title=" "
-            >
-               
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
+                class="ant-form-item-control-input"
               >
                 <div
-                  class="ant-space ant-space-horizontal ant-space-align-center"
+                  class="ant-form-item-control-input-content"
+                >
+                  <button
+                    aria-checked="false"
+                    class="ant-switch"
+                    id="enabled"
+                    role="switch"
+                    type="button"
+                  >
+                    <div
+                      class="ant-switch-handle"
+                    />
+                    <span
+                      class="ant-switch-inner"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="appKey"
+                title="App ID"
+              >
+                App ID
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input"
+                    id="appKey"
+                    placeholder="common.form.placeholder.input"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="appSecret"
+                title="App Secret"
+              >
+                App Secret
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <span
+                    class="ant-input-affix-wrapper ant-input-password"
+                  >
+                    <input
+                      aria-required="true"
+                      class="ant-input"
+                      id="appSecret"
+                      placeholder="common.form.placeholder.input"
+                      type="password"
+                    />
+                    <span
+                      class="ant-input-suffix"
+                    >
+                      <span
+                        aria-label="eye-invisible"
+                        class="anticon anticon-eye-invisible ant-input-password-icon"
+                        role="img"
+                        tabindex="-1"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="eye-invisible"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
+                          />
+                          <path
+                            d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-no-colon"
+                title=" "
+              >
+                 
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
                 >
                   <div
-                    class="ant-space-item"
-                    style="margin-right: 8px;"
+                    class="ant-space ant-space-horizontal ant-space-align-center"
                   >
-                    <button
-                      class="ant-btn ant-btn-primary"
-                      type="submit"
+                    <div
+                      class="ant-space-item"
+                      style="margin-right: 8px;"
                     >
-                      <span>
-                        common.submit
-                      </span>
-                    </button>
-                  </div>
-                  <div
-                    class="ant-space-item"
-                  >
-                    <button
-                      class="ant-btn"
-                      type="button"
+                      <button
+                        class="ant-btn ant-btn-primary"
+                        type="submit"
+                      >
+                        <span>
+                          common.submit
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      class="ant-space-item"
                     >
-                      <span>
-                        common.cancel
-                      </span>
-                    </button>
+                      <button
+                        class="ant-btn ant-btn-default"
+                        type="button"
+                      >
+                        <span>
+                          common.cancel
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1485,194 +1553,211 @@ exports[`test System/LarkSetting should match snapshot 3`] = `
         class="ant-form ant-form-horizontal"
       >
         <div
-          class="ant-row ant-form-item ant-form-item-has-success"
+          class="ant-form-item ant-form-item-has-success"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="enabled"
-              title="system.lark.enable"
-            >
-              system.lark.enable
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
             >
-              <div
-                class="ant-form-item-control-input-content"
+              <label
+                class=""
+                for="enabled"
+                title="system.lark.enable"
               >
-                <button
-                  aria-checked="true"
-                  class="ant-switch ant-switch-checked"
-                  id="enabled"
-                  role="switch"
-                  type="button"
-                >
-                  <div
-                    class="ant-switch-handle"
-                  />
-                  <span
-                    class="ant-switch-inner"
-                  />
-                </button>
-              </div>
+                system.lark.enable
+              </label>
             </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="appKey"
-              title="App ID"
-            >
-              App ID
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
             >
               <div
-                class="ant-form-item-control-input-content"
-              >
-                <input
-                  class="ant-input"
-                  id="appKey"
-                  placeholder="common.form.placeholder.input"
-                  type="text"
-                  value="app_id"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="appSecret"
-              title="App Secret"
-            >
-              App Secret
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <span
-                  class="ant-input-affix-wrapper ant-input-password"
-                >
-                  <input
-                    action="click"
-                    class="ant-input"
-                    id="appSecret"
-                    placeholder="common.form.placeholder.input"
-                    type="password"
-                  />
-                  <span
-                    class="ant-input-suffix"
-                  >
-                    <span
-                      aria-label="eye-invisible"
-                      class="anticon anticon-eye-invisible ant-input-password-icon"
-                      role="img"
-                      tabindex="-1"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="eye-invisible"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
-                      >
-                        <path
-                          d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
-                        />
-                        <path
-                          d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-no-colon"
-              title=" "
-            >
-               
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
+                class="ant-form-item-control-input"
               >
                 <div
-                  class="ant-space ant-space-horizontal ant-space-align-center"
+                  class="ant-form-item-control-input-content"
+                >
+                  <button
+                    aria-checked="true"
+                    class="ant-switch ant-switch-checked"
+                    id="enabled"
+                    role="switch"
+                    type="button"
+                  >
+                    <div
+                      class="ant-switch-handle"
+                    />
+                    <span
+                      class="ant-switch-inner"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="appKey"
+                title="App ID"
+              >
+                App ID
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input ant-input-status-success"
+                    id="appKey"
+                    placeholder="common.form.placeholder.input"
+                    type="text"
+                    value="app_id"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="appSecret"
+                title="App Secret"
+              >
+                App Secret
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <span
+                    class="ant-input-affix-wrapper ant-input-password"
+                  >
+                    <input
+                      aria-required="true"
+                      class="ant-input"
+                      id="appSecret"
+                      placeholder="common.form.placeholder.input"
+                      type="password"
+                    />
+                    <span
+                      class="ant-input-suffix"
+                    >
+                      <span
+                        aria-label="eye-invisible"
+                        class="anticon anticon-eye-invisible ant-input-password-icon"
+                        role="img"
+                        tabindex="-1"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="eye-invisible"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
+                          />
+                          <path
+                            d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-no-colon"
+                title=" "
+              >
+                 
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
                 >
                   <div
-                    class="ant-space-item"
-                    style="margin-right: 8px;"
+                    class="ant-space ant-space-horizontal ant-space-align-center"
                   >
-                    <button
-                      class="ant-btn ant-btn-primary"
-                      type="submit"
+                    <div
+                      class="ant-space-item"
+                      style="margin-right: 8px;"
                     >
-                      <span>
-                        common.submit
-                      </span>
-                    </button>
-                  </div>
-                  <div
-                    class="ant-space-item"
-                  >
-                    <button
-                      class="ant-btn"
-                      type="button"
+                      <button
+                        class="ant-btn ant-btn-primary"
+                        type="submit"
+                      >
+                        <span>
+                          common.submit
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      class="ant-space-item"
                     >
-                      <span>
-                        common.cancel
-                      </span>
-                    </button>
+                      <button
+                        class="ant-btn ant-btn-default"
+                        type="button"
+                      >
+                        <span>
+                          common.cancel
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1687,7 +1772,10 @@ exports[`test System/LarkSetting should match snapshot 3`] = `
 
 exports[`test System/LarkSetting should send request when clicking test DingTalk button 1`] = `
 <body>
-  <style />
+  <style
+    data-rc-order="append"
+    rc-util-key="antd-wave"
+  />
   <div>
     <div
       class="ant-card ant-card-bordered"
@@ -1824,194 +1912,211 @@ exports[`test System/LarkSetting should send request when clicking test DingTalk
           hidden=""
         >
           <div
-            class="ant-row ant-form-item"
+            class="ant-form-item"
           >
             <div
-              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-            >
-              <label
-                class=""
-                for="enabled"
-                title="system.lark.enable"
-              >
-                system.lark.enable
-              </label>
-            </div>
-            <div
-              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+              class="ant-row ant-form-item-row"
             >
               <div
-                class="ant-form-item-control-input"
+                class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
               >
-                <div
-                  class="ant-form-item-control-input-content"
+                <label
+                  class=""
+                  for="enabled"
+                  title="system.lark.enable"
                 >
-                  <button
-                    aria-checked="false"
-                    class="ant-switch"
-                    id="enabled"
-                    role="switch"
-                    type="button"
-                  >
-                    <div
-                      class="ant-switch-handle"
-                    />
-                    <span
-                      class="ant-switch-inner"
-                    />
-                  </button>
-                </div>
+                  system.lark.enable
+                </label>
               </div>
-            </div>
-          </div>
-          <div
-            class="ant-row ant-form-item"
-          >
-            <div
-              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-            >
-              <label
-                class="ant-form-item-required"
-                for="appKey"
-                title="App ID"
-              >
-                App ID
-              </label>
-            </div>
-            <div
-              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-            >
               <div
-                class="ant-form-item-control-input"
+                class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
               >
                 <div
-                  class="ant-form-item-control-input-content"
-                >
-                  <input
-                    class="ant-input"
-                    id="appKey"
-                    placeholder="common.form.placeholder.input"
-                    type="text"
-                    value=""
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="ant-row ant-form-item"
-          >
-            <div
-              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-            >
-              <label
-                class="ant-form-item-required"
-                for="appSecret"
-                title="App Secret"
-              >
-                App Secret
-              </label>
-            </div>
-            <div
-              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-            >
-              <div
-                class="ant-form-item-control-input"
-              >
-                <div
-                  class="ant-form-item-control-input-content"
-                >
-                  <span
-                    class="ant-input-affix-wrapper ant-input-password"
-                  >
-                    <input
-                      action="click"
-                      class="ant-input"
-                      id="appSecret"
-                      placeholder="common.form.placeholder.input"
-                      type="password"
-                    />
-                    <span
-                      class="ant-input-suffix"
-                    >
-                      <span
-                        aria-label="eye-invisible"
-                        class="anticon anticon-eye-invisible ant-input-password-icon"
-                        role="img"
-                        tabindex="-1"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          data-icon="eye-invisible"
-                          fill="currentColor"
-                          focusable="false"
-                          height="1em"
-                          viewBox="64 64 896 896"
-                          width="1em"
-                        >
-                          <path
-                            d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
-                          />
-                          <path
-                            d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
-                          />
-                        </svg>
-                      </span>
-                    </span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="ant-row ant-form-item"
-          >
-            <div
-              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-            >
-              <label
-                class="ant-form-item-no-colon"
-                title=" "
-              >
-                 
-              </label>
-            </div>
-            <div
-              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-            >
-              <div
-                class="ant-form-item-control-input"
-              >
-                <div
-                  class="ant-form-item-control-input-content"
+                  class="ant-form-item-control-input"
                 >
                   <div
-                    class="ant-space ant-space-horizontal ant-space-align-center"
+                    class="ant-form-item-control-input-content"
+                  >
+                    <button
+                      aria-checked="false"
+                      class="ant-switch"
+                      id="enabled"
+                      role="switch"
+                      type="button"
+                    >
+                      <div
+                        class="ant-switch-handle"
+                      />
+                      <span
+                        class="ant-switch-inner"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-form-item"
+          >
+            <div
+              class="ant-row ant-form-item-row"
+            >
+              <div
+                class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+              >
+                <label
+                  class="ant-form-item-required"
+                  for="appKey"
+                  title="App ID"
+                >
+                  App ID
+                </label>
+              </div>
+              <div
+                class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+              >
+                <div
+                  class="ant-form-item-control-input"
+                >
+                  <div
+                    class="ant-form-item-control-input-content"
+                  >
+                    <input
+                      aria-required="true"
+                      class="ant-input"
+                      id="appKey"
+                      placeholder="common.form.placeholder.input"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-form-item"
+          >
+            <div
+              class="ant-row ant-form-item-row"
+            >
+              <div
+                class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+              >
+                <label
+                  class="ant-form-item-required"
+                  for="appSecret"
+                  title="App Secret"
+                >
+                  App Secret
+                </label>
+              </div>
+              <div
+                class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+              >
+                <div
+                  class="ant-form-item-control-input"
+                >
+                  <div
+                    class="ant-form-item-control-input-content"
+                  >
+                    <span
+                      class="ant-input-affix-wrapper ant-input-password"
+                    >
+                      <input
+                        aria-required="true"
+                        class="ant-input"
+                        id="appSecret"
+                        placeholder="common.form.placeholder.input"
+                        type="password"
+                      />
+                      <span
+                        class="ant-input-suffix"
+                      >
+                        <span
+                          aria-label="eye-invisible"
+                          class="anticon anticon-eye-invisible ant-input-password-icon"
+                          role="img"
+                          tabindex="-1"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-icon="eye-invisible"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z"
+                            />
+                            <path
+                              d="M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z"
+                            />
+                          </svg>
+                        </span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-form-item"
+          >
+            <div
+              class="ant-row ant-form-item-row"
+            >
+              <div
+                class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+              >
+                <label
+                  class="ant-form-item-no-colon"
+                  title=" "
+                >
+                   
+                </label>
+              </div>
+              <div
+                class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+              >
+                <div
+                  class="ant-form-item-control-input"
+                >
+                  <div
+                    class="ant-form-item-control-input-content"
                   >
                     <div
-                      class="ant-space-item"
-                      style="margin-right: 8px;"
+                      class="ant-space ant-space-horizontal ant-space-align-center"
                     >
-                      <button
-                        class="ant-btn ant-btn-primary"
-                        type="submit"
+                      <div
+                        class="ant-space-item"
+                        style="margin-right: 8px;"
                       >
-                        <span>
-                          common.submit
-                        </span>
-                      </button>
-                    </div>
-                    <div
-                      class="ant-space-item"
-                    >
-                      <button
-                        class="ant-btn"
-                        type="button"
+                        <button
+                          class="ant-btn ant-btn-primary"
+                          type="submit"
+                        >
+                          <span>
+                            common.submit
+                          </span>
+                        </button>
+                      </div>
+                      <div
+                        class="ant-space-item"
                       >
-                        <span>
-                          common.cancel
-                        </span>
-                      </button>
+                        <button
+                          class="ant-btn ant-btn-default"
+                          type="button"
+                        >
+                          <span>
+                            common.cancel
+                          </span>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2028,7 +2133,7 @@ exports[`test System/LarkSetting should send request when clicking test DingTalk
     <div>
       <div
         class="ant-popover"
-        style="opacity: 0; pointer-events: none;"
+        style="opacity: 0;"
       >
         <div
           class="ant-popover-content"
@@ -2058,107 +2163,116 @@ exports[`test System/LarkSetting should send request when clicking test DingTalk
                     class="ant-form ant-form-horizontal"
                   >
                     <div
-                      class="ant-row ant-form-item"
+                      class="ant-form-item"
                       style="margin-bottom: 6px;"
                     >
                       <div
-                        class="ant-col ant-form-item-label"
-                      >
-                        <label
-                          class=""
-                          for="receiveType"
-                          title="system.lark.receiveType"
-                        >
-                          system.lark.receiveType
-                        </label>
-                      </div>
-                      <div
-                        class="ant-col ant-form-item-control"
+                        class="ant-row ant-form-item-row"
                       >
                         <div
-                          class="ant-form-item-control-input"
+                          class="ant-col ant-form-item-label"
+                        >
+                          <label
+                            class=""
+                            for="receiveType"
+                            title="system.lark.receiveType"
+                          >
+                            system.lark.receiveType
+                          </label>
+                        </div>
+                        <div
+                          class="ant-col ant-form-item-control"
                         >
                           <div
-                            class="ant-form-item-control-input-content"
+                            class="ant-form-item-control-input"
                           >
                             <div
-                              class="ant-radio-group ant-radio-group-outline"
-                              id="receiveType"
+                              class="ant-form-item-control-input-content"
                             >
-                              <label
-                                class="ant-radio-wrapper ant-radio-wrapper-checked"
+                              <div
+                                class="ant-radio-group ant-radio-group-outline"
+                                id="receiveType"
                               >
-                                <span
-                                  class="ant-radio ant-radio-checked"
+                                <label
+                                  class="ant-radio-wrapper ant-radio-wrapper-checked ant-radio-wrapper-in-form-item"
                                 >
-                                  <input
-                                    checked=""
-                                    class="ant-radio-input"
-                                    type="radio"
-                                    value="email"
-                                  />
                                   <span
-                                    class="ant-radio-inner"
-                                  />
-                                </span>
-                                <span>
-                                  system.lark.email
-                                </span>
-                              </label>
-                              <label
-                                class="ant-radio-wrapper"
-                              >
-                                <span
-                                  class="ant-radio"
+                                    class="ant-radio ant-radio-checked"
+                                  >
+                                    <input
+                                      checked=""
+                                      class="ant-radio-input"
+                                      type="radio"
+                                      value="email"
+                                    />
+                                    <span
+                                      class="ant-radio-inner"
+                                    />
+                                  </span>
+                                  <span>
+                                    system.lark.email
+                                  </span>
+                                </label>
+                                <label
+                                  class="ant-radio-wrapper ant-radio-wrapper-in-form-item"
                                 >
-                                  <input
-                                    class="ant-radio-input"
-                                    type="radio"
-                                    value="phone"
-                                  />
                                   <span
-                                    class="ant-radio-inner"
-                                  />
-                                </span>
-                                <span>
-                                  system.lark.phone
-                                </span>
-                              </label>
+                                    class="ant-radio"
+                                  >
+                                    <input
+                                      class="ant-radio-input"
+                                      type="radio"
+                                      value="phone"
+                                    />
+                                    <span
+                                      class="ant-radio-inner"
+                                    />
+                                  </span>
+                                  <span>
+                                    system.lark.phone
+                                  </span>
+                                </label>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div
-                      class="ant-row ant-form-item"
+                      class="ant-form-item"
                       style="margin-bottom: 0px;"
                     >
                       <div
-                        class="ant-col ant-form-item-label"
-                      >
-                        <label
-                          class="ant-form-item-required"
-                          for="receiveEmail"
-                          title="system.lark.email"
-                        >
-                          system.lark.email
-                        </label>
-                      </div>
-                      <div
-                        class="ant-col ant-form-item-control"
+                        class="ant-row ant-form-item-row"
                       >
                         <div
-                          class="ant-form-item-control-input"
+                          class="ant-col ant-form-item-label"
+                        >
+                          <label
+                            class="ant-form-item-required"
+                            for="receiveEmail"
+                            title="system.lark.email"
+                          >
+                            system.lark.email
+                          </label>
+                        </div>
+                        <div
+                          class="ant-col ant-form-item-control"
                         >
                           <div
-                            class="ant-form-item-control-input-content"
+                            class="ant-form-item-control-input"
                           >
-                            <input
-                              class="ant-input"
-                              id="receiveEmail"
-                              type="text"
-                              value=""
-                            />
+                            <div
+                              class="ant-form-item-control-input-content"
+                            >
+                              <input
+                                aria-required="true"
+                                class="ant-input"
+                                id="receiveEmail"
+                                type="text"
+                                value=""
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>

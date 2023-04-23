@@ -1,9 +1,5 @@
 import AddWhitelist from '.';
-import { cleanup, fireEvent, screen, waitFor } from '@testing-library/react';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../../testUtils/mockRedux';
+import { cleanup, fireEvent, screen, act } from '@testing-library/react';
 import { SupportTheme } from '../../../../../theme';
 import { ModalName } from '../../../../../data/ModalName';
 import { renderWithTheme } from '../../../../../testUtils/customRender';
@@ -13,6 +9,7 @@ import EventEmitter from '../../../../../utils/EventEmitter';
 import EmitterKey from '../../../../../data/EmitterKey';
 import { CreateAuditWhitelistReqV1MatchTypeEnum } from '../../../../../api/common.enum';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -20,20 +17,30 @@ jest.mock('react-router-dom', () => ({
 }));
 const projectName = 'default';
 
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
+
 describe('Whitelist/WhitelistList/Modal/AddWhitelist', () => {
-  let dispatchMock: jest.Mock;
+  const dispatchMock = jest.fn();
   const useParamsMock: jest.Mock = useParams as jest.Mock;
 
   beforeEach(() => {
     jest.useFakeTimers();
-    mockUseSelector({
-      user: { theme: SupportTheme.LIGHT },
-      whitelist: { modalStatus: { [ModalName.Add_Whitelist]: true } },
-    });
-    const { scopeDispatch } = mockUseDispatch();
+
     useParamsMock.mockReturnValue({ projectName });
 
-    dispatchMock = scopeDispatch;
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { theme: SupportTheme.LIGHT },
+        whitelist: { modalStatus: { [ModalName.Add_Whitelist]: true } },
+      })
+    );
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchMock);
   });
 
   afterEach(() => {
@@ -44,10 +51,12 @@ describe('Whitelist/WhitelistList/Modal/AddWhitelist', () => {
     const { baseElement } = renderWithTheme(<AddWhitelist />);
     expect(baseElement).toMatchSnapshot();
     cleanup();
-    mockUseSelector({
-      user: { theme: SupportTheme.LIGHT },
-      whitelist: { modalStatus: { [ModalName.Add_Whitelist]: false } },
-    });
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { theme: SupportTheme.LIGHT },
+        whitelist: { modalStatus: { [ModalName.Add_Whitelist]: false } },
+      })
+    );
     const { baseElement: closedContainer } = renderWithTheme(<AddWhitelist />);
     expect(closedContainer).toMatchSnapshot();
   });
@@ -88,9 +97,7 @@ describe('Whitelist/WhitelistList/Modal/AddWhitelist', () => {
 
     fireEvent.click(screen.getByText('common.submit'));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(createAuditWhitelistSpy).toBeCalledTimes(1);
     expect(createAuditWhitelistSpy).toBeCalledWith({
@@ -99,10 +106,7 @@ describe('Whitelist/WhitelistList/Modal/AddWhitelist', () => {
       value: 'select * from table1;',
       project_name: projectName,
     });
-
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(emitSpy).toBeCalledTimes(1);
     expect(emitSpy).toBeCalledWith(EmitterKey.Refresh_Whitelist_List);

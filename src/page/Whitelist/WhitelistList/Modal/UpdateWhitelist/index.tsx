@@ -91,7 +91,7 @@ const UpdateWhitelist = () => {
   return (
     <Modal
       title={t('whitelist.modal.update.title')}
-      visible={visible}
+      open={visible}
       closable={false}
       width={ModalSize.big}
       footer={

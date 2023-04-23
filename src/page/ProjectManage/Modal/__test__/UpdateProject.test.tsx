@@ -1,27 +1,34 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
-import {
-  mockUseDispatch,
-  mockUseSelector,
-} from '../../../../testUtils/mockRedux';
 import EventEmitter from '../../../../utils/EventEmitter';
 import { mockUpdateProject } from '../../__test__/utils';
 import UpdateProject from '../UpdateProject';
+import { useDispatch, useSelector } from 'react-redux';
+
+jest.mock('react-redux', () => {
+  return {
+    ...jest.requireActual('react-redux'),
+    useSelector: jest.fn(),
+    useDispatch: jest.fn(),
+  };
+});
 
 describe('test ProjectManage/Modal/UpdateProject', () => {
-  let dispatchSpy: jest.Mock;
+  const dispatchSpy = jest.fn();
+
   let updateProjectSpy: jest.SpyInstance;
   let emitSpy: jest.SpyInstance;
   beforeEach(() => {
-    mockUseSelector({
-      projectManage: {
-        modalStatus: { [ModalName.Update_Project]: true },
-        selectProject: { name: 'name', desc: 'desc', id: 1 },
-      },
-    });
-    const { scopeDispatch } = mockUseDispatch();
-    dispatchSpy = scopeDispatch;
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        projectManage: {
+          modalStatus: { [ModalName.Update_Project]: true },
+          selectProject: { name: 'name', desc: 'desc', id: 1 },
+        },
+      })
+    );
+    (useDispatch as jest.Mock).mockImplementation(() => dispatchSpy);
     updateProjectSpy = mockUpdateProject();
     emitSpy = jest.spyOn(EventEmitter, 'emit');
     jest.useFakeTimers();
@@ -65,9 +72,8 @@ describe('test ProjectManage/Modal/UpdateProject', () => {
     );
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(screen.getByText('common.submit').parentNode).toHaveClass(
       'ant-btn-loading'
     );
@@ -81,12 +87,10 @@ describe('test ProjectManage/Modal/UpdateProject', () => {
       desc: 'update_desc',
     });
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(
-      screen.queryByText('projectManage.updateProject.updateSuccessTips')
+      screen.getByText('projectManage.updateProject.updateSuccessTips')
     ).toBeInTheDocument();
 
     expect(emitSpy).toBeCalledTimes(1);

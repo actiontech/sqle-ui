@@ -1,4 +1,4 @@
-import { fireEvent, waitFor, screen } from '@testing-library/react';
+import { fireEvent, waitFor, screen, act } from '@testing-library/react';
 import { cloneDeep } from 'lodash';
 import { useParams } from 'react-router-dom';
 import UpdateAuditPlan from '.';
@@ -88,9 +88,8 @@ describe('UpdateAuditPlan', () => {
 
   test('should set form default value to specify instance', async () => {
     const { container } = renderWithRouter(<UpdateAuditPlan />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -98,12 +97,9 @@ describe('UpdateAuditPlan', () => {
     const updateSpy = mockUpdateAuditPlan();
     const getAuditPlanSpy = mockGetAuditPlan();
     const { container } = renderWithRouter(<UpdateAuditPlan />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(useInstanceSpy).toBeCalledWith({
       project_name: projectName,
@@ -112,9 +108,8 @@ describe('UpdateAuditPlan', () => {
     });
 
     fireEvent.mouseDown(screen.getByLabelText('auditPlan.planForm.schema'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const schemaOptions = screen.getAllByText('schema1');
     expect(schemaOptions[1]).toHaveClass('ant-select-item-option-content');
     fireEvent.click(schemaOptions[1]);
@@ -122,18 +117,15 @@ describe('UpdateAuditPlan', () => {
     fireEvent.mouseDown(
       screen.getByLabelText('auditPlan.planForm.ruleTemplateName')
     );
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     const ruleTemplateOptions = screen.getAllByText('rule_template_name1');
     fireEvent.click(ruleTemplateOptions[0]);
 
     fireEvent.click(screen.getByText('字段c'));
 
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
@@ -158,9 +150,8 @@ describe('UpdateAuditPlan', () => {
         },
       ],
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
     expect(getAuditPlanSpy).toBeCalledTimes(1);
     getAuditPlanSpy.mockImplementation(() =>
@@ -180,9 +171,8 @@ describe('UpdateAuditPlan', () => {
     });
     expect(getAuditPlanSpy).toBeCalledTimes(2);
     expect(screen.getByLabelText('auditPlan.planForm.name')).toHaveValue('');
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.getByLabelText('auditPlan.planForm.name')).toHaveValue(
       'audit_for_java_app20'
     );

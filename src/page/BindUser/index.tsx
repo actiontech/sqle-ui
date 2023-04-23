@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import logo from '../../assets/img/logo.png';
 import { Typography, Form, Input, Button, notification } from 'antd';
 
@@ -11,9 +10,10 @@ import { OauthLoginFormFields } from './index.type';
 import { updateToken } from '../../store/user';
 import { ResponseCode } from '../../data/common';
 import leftBg from '../../assets/img/login-left-bg.png';
+import useNavigate from '../../hooks/useNavigate';
 
 const BindUser = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
@@ -43,7 +43,7 @@ const BindUser = () => {
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           dispatch(updateToken({ token: res.data.data?.token ?? '' }));
-          history.push('/');
+          navigate('/');
         }
       })
       .finally(() => {
@@ -71,10 +71,10 @@ const BindUser = () => {
         });
       } else {
         dispatch(updateToken({ token: token ?? '' }));
-        history.push('/');
+        navigate('/');
       }
     }
-  }, [dispatch, history, t]);
+  }, [dispatch, navigate, t]);
 
   return (
     <section className="login-page">

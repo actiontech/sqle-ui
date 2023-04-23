@@ -19,7 +19,7 @@ exports[`MaintenanceTimePicker should render defalut node whne value is undefine
       class="ant-space-item"
     >
       <button
-        class="ant-btn"
+        class="ant-btn ant-btn-default"
         type="button"
       >
         <span>
@@ -138,7 +138,7 @@ exports[`MaintenanceTimePicker should render time when value is not empty 1`] = 
       class="ant-space-item"
     >
       <button
-        class="ant-btn"
+        class="ant-btn ant-btn-default"
         type="button"
       >
         <span>

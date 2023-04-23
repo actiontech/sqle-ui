@@ -35,6 +35,8 @@ exports[`test UpdateSyncTask should match snapshot 1`] = `
         class="ant-card-body"
       >
         <div
+          aria-busy="false"
+          aria-live="polite"
           class="ant-spin"
         >
           <span

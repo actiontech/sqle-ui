@@ -80,6 +80,8 @@ exports[`license should match snapshot 1`] = `
         >
           <div>
             <div
+              aria-busy="true"
+              aria-live="polite"
               class="ant-spin ant-spin-spinning"
             >
               <span
@@ -185,7 +187,7 @@ exports[`license should match snapshot 1`] = `
                             <div
                               class="ant-empty-description"
                             >
-                              No Data
+                              No data
                             </div>
                           </div>
                         </td>
@@ -281,8 +283,32 @@ exports[`license should match snapshot 2`] = `
         <div
           class="ant-spin-nested-loading"
         >
+          <div>
+            <div
+              aria-busy="true"
+              aria-live="polite"
+              class="ant-spin ant-spin-spinning"
+            >
+              <span
+                class="ant-spin-dot ant-spin-dot-spin"
+              >
+                <i
+                  class="ant-spin-dot-item"
+                />
+                <i
+                  class="ant-spin-dot-item"
+                />
+                <i
+                  class="ant-spin-dot-item"
+                />
+                <i
+                  class="ant-spin-dot-item"
+                />
+              </span>
+            </div>
+          </div>
           <div
-            class="ant-spin-container"
+            class="ant-spin-container ant-spin-blur"
           >
             <div
               class="ant-table"
@@ -361,7 +387,6 @@ exports[`license should match snapshot 2`] = `
             </div>
             <ul
               class="ant-pagination ant-table-pagination ant-table-pagination-right"
-              unselectable="unselectable"
             >
               <li
                 aria-disabled="true"

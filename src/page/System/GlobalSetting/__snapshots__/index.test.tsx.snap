@@ -146,104 +146,109 @@ exports[`System/GlobalConfig should get smtp setting from origin 1`] = `
         hidden=""
       >
         <div
-          class="ant-row ant-form-item"
+          class="ant-form-item"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="orderExpiredHours"
-              title=""
-            >
-              system.global.orderExpiredHours
-              (
-              common.time.hour
-              )
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="orderExpiredHours"
+                title=""
+              >
+                system.global.orderExpiredHours
+                (
+                common.time.hour
+                )
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
             >
               <div
-                class="ant-form-item-control-input-content"
+                class="ant-form-item-control-input"
               >
                 <div
-                  class="ant-input-number"
+                  class="ant-form-item-control-input-content"
                 >
                   <div
-                    class="ant-input-number-handler-wrap"
+                    class="ant-input-number ant-input-number-in-form-item"
                   >
-                    <span
-                      aria-disabled="false"
-                      aria-label="Increase Value"
-                      class="ant-input-number-handler ant-input-number-handler-up"
-                      role="button"
-                      unselectable="on"
+                    <div
+                      class="ant-input-number-handler-wrap"
                     >
                       <span
-                        aria-label="up"
-                        class="anticon anticon-up ant-input-number-handler-up-inner"
-                        role="img"
+                        aria-disabled="false"
+                        aria-label="Increase Value"
+                        class="ant-input-number-handler ant-input-number-handler-up"
+                        role="button"
+                        unselectable="on"
                       >
-                        <svg
-                          aria-hidden="true"
-                          data-icon="up"
-                          fill="currentColor"
-                          focusable="false"
-                          height="1em"
-                          viewBox="64 64 896 896"
-                          width="1em"
+                        <span
+                          aria-label="up"
+                          class="anticon anticon-up ant-input-number-handler-up-inner"
+                          role="img"
                         >
-                          <path
-                            d="M890.5 755.3L537.9 269.2c-12.8-17.6-39-17.6-51.7 0L133.5 755.3A8 8 0 00140 768h75c5.1 0 9.9-2.5 12.9-6.6L512 369.8l284.1 391.6c3 4.1 7.8 6.6 12.9 6.6h75c6.5 0 10.3-7.4 6.5-12.7z"
-                          />
-                        </svg>
+                          <svg
+                            aria-hidden="true"
+                            data-icon="up"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M890.5 755.3L537.9 269.2c-12.8-17.6-39-17.6-51.7 0L133.5 755.3A8 8 0 00140 768h75c5.1 0 9.9-2.5 12.9-6.6L512 369.8l284.1 391.6c3 4.1 7.8 6.6 12.9 6.6h75c6.5 0 10.3-7.4 6.5-12.7z"
+                            />
+                          </svg>
+                        </span>
                       </span>
-                    </span>
-                    <span
-                      aria-disabled="false"
-                      aria-label="Decrease Value"
-                      class="ant-input-number-handler ant-input-number-handler-down"
-                      role="button"
-                      unselectable="on"
-                    >
                       <span
-                        aria-label="down"
-                        class="anticon anticon-down ant-input-number-handler-down-inner"
-                        role="img"
+                        aria-disabled="false"
+                        aria-label="Decrease Value"
+                        class="ant-input-number-handler ant-input-number-handler-down"
+                        role="button"
+                        unselectable="on"
                       >
-                        <svg
-                          aria-hidden="true"
-                          data-icon="down"
-                          fill="currentColor"
-                          focusable="false"
-                          height="1em"
-                          viewBox="64 64 896 896"
-                          width="1em"
+                        <span
+                          aria-label="down"
+                          class="anticon anticon-down ant-input-number-handler-down-inner"
+                          role="img"
                         >
-                          <path
-                            d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                          />
-                        </svg>
+                          <svg
+                            aria-hidden="true"
+                            data-icon="down"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                            />
+                          </svg>
+                        </span>
                       </span>
-                    </span>
-                  </div>
-                  <div
-                    class="ant-input-number-input-wrap"
-                  >
-                    <input
-                      aria-valuenow="720"
-                      autocomplete="off"
-                      class="ant-input-number-input"
-                      id="orderExpiredHours"
-                      role="spinbutton"
-                      step="1"
-                      value="720"
-                    />
+                    </div>
+                    <div
+                      class="ant-input-number-input-wrap"
+                    >
+                      <input
+                        aria-required="true"
+                        aria-valuenow="720"
+                        autocomplete="off"
+                        class="ant-input-number-input"
+                        id="orderExpiredHours"
+                        role="spinbutton"
+                        step="1"
+                        value="720"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -251,110 +256,119 @@ exports[`System/GlobalConfig should get smtp setting from origin 1`] = `
           </div>
         </div>
         <div
-          class="ant-row ant-form-item"
+          class="ant-form-item"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="url"
-              title="system.global.urlAddressPrefix"
-            >
-              system.global.urlAddressPrefix
-              <span
-                aria-label="question-circle"
-                class="anticon anticon-question-circle ant-form-item-tooltip"
-                role="img"
-              >
-                <svg
-                  aria-hidden="true"
-                  data-icon="question-circle"
-                  fill="currentColor"
-                  focusable="false"
-                  height="1em"
-                  viewBox="64 64 896 896"
-                  width="1em"
-                >
-                  <path
-                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                  />
-                  <path
-                    d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"
-                  />
-                </svg>
-              </span>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class=""
+                for="url"
+                title="system.global.urlAddressPrefix"
+              >
+                system.global.urlAddressPrefix
+                <span
+                  aria-label="question-circle"
+                  class="anticon anticon-question-circle ant-form-item-tooltip"
+                  role="img"
+                  title=""
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-icon="question-circle"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                    />
+                    <path
+                      d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"
+                    />
+                  </svg>
+                </span>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
             >
               <div
-                class="ant-form-item-control-input-content"
+                class="ant-form-item-control-input"
               >
-                <input
-                  class="ant-input"
-                  id="url"
-                  style="width: 200px;"
-                  type="text"
-                  value=""
-                />
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    class="ant-input"
+                    id="url"
+                    style="width: 200px;"
+                    type="text"
+                    value=""
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          class="ant-row ant-form-item"
+          class="ant-form-item"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-no-colon"
-              title=" "
-            >
-               
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-no-colon"
+                title=" "
+              >
+                 
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
             >
               <div
-                class="ant-form-item-control-input-content"
+                class="ant-form-item-control-input"
               >
                 <div
-                  class="ant-space ant-space-horizontal ant-space-align-center"
+                  class="ant-form-item-control-input-content"
                 >
                   <div
-                    class="ant-space-item"
-                    style="margin-right: 8px;"
+                    class="ant-space ant-space-horizontal ant-space-align-center"
                   >
-                    <button
-                      class="ant-btn ant-btn-primary"
-                      type="submit"
+                    <div
+                      class="ant-space-item"
+                      style="margin-right: 8px;"
                     >
-                      <span>
-                        common.submit
-                      </span>
-                    </button>
-                  </div>
-                  <div
-                    class="ant-space-item"
-                  >
-                    <button
-                      class="ant-btn"
-                      type="button"
+                      <button
+                        class="ant-btn ant-btn-primary"
+                        type="submit"
+                      >
+                        <span>
+                          common.submit
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      class="ant-space-item"
                     >
-                      <span>
-                        common.cancel
-                      </span>
-                    </button>
+                      <button
+                        class="ant-btn ant-btn-default"
+                        type="button"
+                      >
+                        <span>
+                          common.cancel
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -516,104 +530,109 @@ exports[`System/GlobalConfig should get smtp setting from origin 2`] = `
         hidden=""
       >
         <div
-          class="ant-row ant-form-item"
+          class="ant-form-item"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-required"
-              for="orderExpiredHours"
-              title=""
-            >
-              system.global.orderExpiredHours
-              (
-              common.time.hour
-              )
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
+                for="orderExpiredHours"
+                title=""
+              >
+                system.global.orderExpiredHours
+                (
+                common.time.hour
+                )
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
             >
               <div
-                class="ant-form-item-control-input-content"
+                class="ant-form-item-control-input"
               >
                 <div
-                  class="ant-input-number"
+                  class="ant-form-item-control-input-content"
                 >
                   <div
-                    class="ant-input-number-handler-wrap"
+                    class="ant-input-number ant-input-number-in-form-item"
                   >
-                    <span
-                      aria-disabled="false"
-                      aria-label="Increase Value"
-                      class="ant-input-number-handler ant-input-number-handler-up"
-                      role="button"
-                      unselectable="on"
+                    <div
+                      class="ant-input-number-handler-wrap"
                     >
                       <span
-                        aria-label="up"
-                        class="anticon anticon-up ant-input-number-handler-up-inner"
-                        role="img"
+                        aria-disabled="false"
+                        aria-label="Increase Value"
+                        class="ant-input-number-handler ant-input-number-handler-up"
+                        role="button"
+                        unselectable="on"
                       >
-                        <svg
-                          aria-hidden="true"
-                          data-icon="up"
-                          fill="currentColor"
-                          focusable="false"
-                          height="1em"
-                          viewBox="64 64 896 896"
-                          width="1em"
+                        <span
+                          aria-label="up"
+                          class="anticon anticon-up ant-input-number-handler-up-inner"
+                          role="img"
                         >
-                          <path
-                            d="M890.5 755.3L537.9 269.2c-12.8-17.6-39-17.6-51.7 0L133.5 755.3A8 8 0 00140 768h75c5.1 0 9.9-2.5 12.9-6.6L512 369.8l284.1 391.6c3 4.1 7.8 6.6 12.9 6.6h75c6.5 0 10.3-7.4 6.5-12.7z"
-                          />
-                        </svg>
+                          <svg
+                            aria-hidden="true"
+                            data-icon="up"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M890.5 755.3L537.9 269.2c-12.8-17.6-39-17.6-51.7 0L133.5 755.3A8 8 0 00140 768h75c5.1 0 9.9-2.5 12.9-6.6L512 369.8l284.1 391.6c3 4.1 7.8 6.6 12.9 6.6h75c6.5 0 10.3-7.4 6.5-12.7z"
+                            />
+                          </svg>
+                        </span>
                       </span>
-                    </span>
-                    <span
-                      aria-disabled="false"
-                      aria-label="Decrease Value"
-                      class="ant-input-number-handler ant-input-number-handler-down"
-                      role="button"
-                      unselectable="on"
-                    >
                       <span
-                        aria-label="down"
-                        class="anticon anticon-down ant-input-number-handler-down-inner"
-                        role="img"
+                        aria-disabled="false"
+                        aria-label="Decrease Value"
+                        class="ant-input-number-handler ant-input-number-handler-down"
+                        role="button"
+                        unselectable="on"
                       >
-                        <svg
-                          aria-hidden="true"
-                          data-icon="down"
-                          fill="currentColor"
-                          focusable="false"
-                          height="1em"
-                          viewBox="64 64 896 896"
-                          width="1em"
+                        <span
+                          aria-label="down"
+                          class="anticon anticon-down ant-input-number-handler-down-inner"
+                          role="img"
                         >
-                          <path
-                            d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
-                          />
-                        </svg>
+                          <svg
+                            aria-hidden="true"
+                            data-icon="down"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                            />
+                          </svg>
+                        </span>
                       </span>
-                    </span>
-                  </div>
-                  <div
-                    class="ant-input-number-input-wrap"
-                  >
-                    <input
-                      aria-valuenow="720"
-                      autocomplete="off"
-                      class="ant-input-number-input"
-                      id="orderExpiredHours"
-                      role="spinbutton"
-                      step="1"
-                      value="720"
-                    />
+                    </div>
+                    <div
+                      class="ant-input-number-input-wrap"
+                    >
+                      <input
+                        aria-required="true"
+                        aria-valuenow="720"
+                        autocomplete="off"
+                        class="ant-input-number-input"
+                        id="orderExpiredHours"
+                        role="spinbutton"
+                        step="1"
+                        value="720"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -621,110 +640,119 @@ exports[`System/GlobalConfig should get smtp setting from origin 2`] = `
           </div>
         </div>
         <div
-          class="ant-row ant-form-item"
+          class="ant-form-item"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class=""
-              for="url"
-              title="system.global.urlAddressPrefix"
-            >
-              system.global.urlAddressPrefix
-              <span
-                aria-label="question-circle"
-                class="anticon anticon-question-circle ant-form-item-tooltip"
-                role="img"
-              >
-                <svg
-                  aria-hidden="true"
-                  data-icon="question-circle"
-                  fill="currentColor"
-                  focusable="false"
-                  height="1em"
-                  viewBox="64 64 896 896"
-                  width="1em"
-                >
-                  <path
-                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                  />
-                  <path
-                    d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"
-                  />
-                </svg>
-              </span>
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class=""
+                for="url"
+                title="system.global.urlAddressPrefix"
+              >
+                system.global.urlAddressPrefix
+                <span
+                  aria-label="question-circle"
+                  class="anticon anticon-question-circle ant-form-item-tooltip"
+                  role="img"
+                  title=""
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-icon="question-circle"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                    />
+                    <path
+                      d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"
+                    />
+                  </svg>
+                </span>
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
             >
               <div
-                class="ant-form-item-control-input-content"
+                class="ant-form-item-control-input"
               >
-                <input
-                  class="ant-input"
-                  id="url"
-                  style="width: 200px;"
-                  type="text"
-                  value=""
-                />
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    class="ant-input"
+                    id="url"
+                    style="width: 200px;"
+                    type="text"
+                    value=""
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          class="ant-row ant-form-item"
+          class="ant-form-item"
         >
           <div
-            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-          >
-            <label
-              class="ant-form-item-no-colon"
-              title=" "
-            >
-               
-            </label>
-          </div>
-          <div
-            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            class="ant-row ant-form-item-row"
           >
             <div
-              class="ant-form-item-control-input"
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-no-colon"
+                title=" "
+              >
+                 
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
             >
               <div
-                class="ant-form-item-control-input-content"
+                class="ant-form-item-control-input"
               >
                 <div
-                  class="ant-space ant-space-horizontal ant-space-align-center"
+                  class="ant-form-item-control-input-content"
                 >
                   <div
-                    class="ant-space-item"
-                    style="margin-right: 8px;"
+                    class="ant-space ant-space-horizontal ant-space-align-center"
                   >
-                    <button
-                      class="ant-btn ant-btn-primary"
-                      type="submit"
+                    <div
+                      class="ant-space-item"
+                      style="margin-right: 8px;"
                     >
-                      <span>
-                        common.submit
-                      </span>
-                    </button>
-                  </div>
-                  <div
-                    class="ant-space-item"
-                  >
-                    <button
-                      class="ant-btn"
-                      type="button"
+                      <button
+                        class="ant-btn ant-btn-primary"
+                        type="submit"
+                      >
+                        <span>
+                          common.submit
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      class="ant-space-item"
                     >
-                      <span>
-                        common.cancel
-                      </span>
-                    </button>
+                      <button
+                        class="ant-btn ant-btn-default"
+                        type="button"
+                      >
+                        <span>
+                          common.cancel
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

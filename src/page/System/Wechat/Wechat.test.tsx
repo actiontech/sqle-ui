@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, act } from '@testing-library/react';
 import configuration from '../../../api/configuration';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import Wechat from './Wechat';
@@ -44,18 +44,16 @@ describe('wechat', () => {
   it('should render wechat config after request finish', async () => {
     const { container } = render(<Wechat />);
     expect(container).toMatchSnapshot();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
   });
 
   it('should update wechat config after user input config form', async () => {
     const getConfigSpy = mockGetWechatConfig();
     const { container } = render(<Wechat />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('common.modify'));
 
     expect(container).toMatchSnapshot();
@@ -74,9 +72,8 @@ describe('wechat', () => {
 
     const updateSpy = mockUpdateWechatConfig();
     fireEvent.click(screen.getByText('common.submit'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(0);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(container).toMatchSnapshot();
 
     expect(updateSpy).toBeCalledTimes(1);
@@ -88,9 +85,8 @@ describe('wechat', () => {
       proxy_ip: '1.1.1.1',
       safe_enabled: false,
     });
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(container).toMatchSnapshot();
     expect(getConfigSpy).toBeCalledTimes(2);
   });
@@ -109,15 +105,13 @@ describe('wechat', () => {
 
     expect(testSpy).toBeCalledTimes(1);
     expect(testSpy).toBeCalledWith({ recipient_id: 'test' });
-    expect(screen.queryByText('system.wechat.testing')).toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    expect(screen.getByText('system.wechat.testing')).toBeInTheDocument();
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(screen.queryByText('system.wechat.testing')).not.toBeInTheDocument();
-    expect(screen.queryByText('system.wechat.testSuccess')).toBeInTheDocument();
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    expect(screen.getByText('system.wechat.testSuccess')).toBeInTheDocument();
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(
       screen.queryByText('system.wechat.testSuccess')
     ).not.toBeInTheDocument();

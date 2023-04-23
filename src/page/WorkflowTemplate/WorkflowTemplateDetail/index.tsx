@@ -1,9 +1,17 @@
 import { useRequest } from 'ahooks';
-import { Card, Col, Row, Typography, Steps, Space, Button } from 'antd';
+import {
+  Card,
+  Col,
+  Row,
+  Typography,
+  Steps,
+  Space,
+  Button,
+  StepProps,
+} from 'antd';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { IWorkFlowStepTemplateResV1 } from '../../../api/common';
 import workflow from '../../../api/workflow';
 import EmptyBox from '../../../components/EmptyBox';
@@ -12,6 +20,7 @@ import useCurrentUser from '../../../hooks/useCurrentUser';
 import { auditLevelDictionary } from '../../../hooks/useStaticStatus/index.data';
 import { IReduxState } from '../../../store';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
+import { Link } from '../../../components/Link';
 
 const WorkflowTemplateDetail = () => {
   const { t } = useTranslation();
@@ -96,7 +105,7 @@ const WorkflowTemplateDetail = () => {
           key="update-workflow-template"
         >
           <Link
-            to={`/project/${projectName}/progress/update/${workflowTemplate?.workflow_template_name}`}
+            to={`project/${projectName}/progress/update/${workflowTemplate?.workflow_template_name}`}
           >
             <Button type="primary">
               {t('workflowTemplate.detail.updateTemplate')}
@@ -126,19 +135,22 @@ const WorkflowTemplateDetail = () => {
           <Typography.Title level={5}>
             {t('workflowTemplate.detail.title.step')}
           </Typography.Title>
-          <Steps direction="vertical">
-            <Steps.Step
-              style={{ marginBottom: 10 }}
-              status="process"
-              title={t('workflowTemplate.progressConfig.createStep.title')}
-              description={t('workflowTemplate.progressConfig.createStep.desc')}
-            />
-            {reviewSteps.map((progressItem, index) => (
-              <Steps.Step
-                style={{ marginBottom: 10 }}
-                key={index}
-                status="process"
-                title={
+          <Steps
+            direction="vertical"
+            items={[
+              {
+                style: { marginBottom: 10 },
+                status: 'process',
+                title: t('workflowTemplate.progressConfig.createStep.title'),
+                description: t(
+                  'workflowTemplate.progressConfig.createStep.desc'
+                ),
+              },
+              ...reviewSteps.map<StepProps>((progressItem, index) => ({
+                style: { marginBottom: 10 },
+                key: index,
+                status: 'process',
+                title: (
                   <>
                     {t('workflowTemplate.progressConfig.review.title')}
                     <IconTipsLabel
@@ -148,8 +160,8 @@ const WorkflowTemplateDetail = () => {
                       iconStyle={{ fontSize: 14, marginLeft: 6 }}
                     />
                   </>
-                }
-                description={
+                ),
+                description: (
                   <Space
                     size={0}
                     direction="vertical"
@@ -168,42 +180,42 @@ const WorkflowTemplateDetail = () => {
                       {progressItem.desc ?? '--'}
                     </span>
                   </Space>
-                }
-              />
-            ))}
-            <Steps.Step
-              title={
-                <>
-                  {t('workflowTemplate.progressConfig.exec.title')}
-                  <IconTipsLabel
-                    tips={t('workflowTemplate.progressConfig.exec.subTitle')}
-                    iconStyle={{ fontSize: 14, marginLeft: 6 }}
-                  />
-                </>
-              }
-              status="process"
-              description={
-                <Space
-                  size={0}
-                  direction="vertical"
-                  className="full-width-element"
-                >
-                  <span>
-                    {t('workflowTemplate.form.label.execUser')}
-                    {' : '}
-                    {renderExecuteUser(execSteps)}
-                  </span>
-                  <span>
-                    <span className="text-black">
-                      {t('workflowTemplate.form.label.reviewDesc')}
+                ),
+              })),
+              {
+                title: (
+                  <>
+                    {t('workflowTemplate.progressConfig.exec.title')}
+                    <IconTipsLabel
+                      tips={t('workflowTemplate.progressConfig.exec.subTitle')}
+                      iconStyle={{ fontSize: 14, marginLeft: 6 }}
+                    />
+                  </>
+                ),
+                status: 'process',
+                description: (
+                  <Space
+                    size={0}
+                    direction="vertical"
+                    className="full-width-element"
+                  >
+                    <span>
+                      {t('workflowTemplate.form.label.execUser')}
                       {' : '}
+                      {renderExecuteUser(execSteps)}
                     </span>
-                    {execSteps.desc ?? '--'}
-                  </span>
-                </Space>
-              }
-            />
-          </Steps>
+                    <span>
+                      <span className="text-black">
+                        {t('workflowTemplate.form.label.reviewDesc')}
+                        {' : '}
+                      </span>
+                      {execSteps.desc ?? '--'}
+                    </span>
+                  </Space>
+                ),
+              },
+            ]}
+          />
         </Col>
       </Row>
     </Card>

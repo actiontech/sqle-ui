@@ -1,16 +1,14 @@
-import { cleanup, fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, cleanup, fireEvent, screen } from '@testing-library/react';
 import workflow from '../../../api/workflow';
-import {
-  renderWithRouter,
-  renderWithServerRouter,
-} from '../../../testUtils/customRender';
+import { renderWithRouter } from '../../../testUtils/customRender';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import RecentlyOrderPanel from './index';
-import { createMemoryHistory } from 'history';
+
 import moment from 'moment';
 import { cloneDeep } from 'lodash';
 import { translateTimeForRequest } from '../../../utils/Common';
 import { ALL_PROJECT_NAME } from '..';
+import { getHrefByText } from '../../../testUtils/customQuery';
 
 describe('test home/RecentlyOrderPanel', () => {
   const list = [
@@ -59,30 +57,21 @@ describe('test home/RecentlyOrderPanel', () => {
   test('should be called getWorkflowsV2 interface', async () => {
     expect(getMockRequestSpy).toBeCalledTimes(0);
     renderWithRouter(<RecentlyOrderPanel projectName={projectName} />);
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getMockRequestSpy).toBeCalledTimes(1);
   });
 
   test('should execute corresponding event when clicking button', async () => {
-    const history = createMemoryHistory();
     expect(getMockRequestSpy).toBeCalledTimes(0);
-    renderWithServerRouter(
-      <RecentlyOrderPanel projectName={projectName} />,
-      undefined,
-      { history }
-    );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    renderWithRouter(<RecentlyOrderPanel projectName={projectName} />);
+    await act(async () => jest.advanceTimersByTime(3000));
+
     expect(getMockRequestSpy).toBeCalledTimes(1);
 
     fireEvent.click(screen.getByTestId('refreshTable'));
+    await act(async () => jest.advanceTimersByTime(0));
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
     const endTime = moment();
     const startTime = cloneDeep(endTime).subtract(1, 'day');
     expect(getMockRequestSpy).toBeCalledTimes(2);
@@ -96,25 +85,15 @@ describe('test home/RecentlyOrderPanel', () => {
   });
 
   test('should jump to the order page under the project when click on the corresponding link', async () => {
-    const history = createMemoryHistory();
+    renderWithRouter(<RecentlyOrderPanel projectName={projectName} />);
+    await act(async () => jest.advanceTimersByTime(3000));
 
-    renderWithServerRouter(
-      <RecentlyOrderPanel projectName={projectName} />,
-      undefined,
-      { history }
-    );
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    expect(screen.queryByText(list[0].workflow_name!)).toBeInTheDocument();
-    fireEvent.click(screen.getByText(list[0].workflow_name!));
-    expect(history.location.pathname).toBe(
+    expect(screen.getByText(list[0].workflow_name!)).toBeInTheDocument();
+    expect(getHrefByText(list[0].workflow_name!)).toBe(
       `/project/${list[0].project_name}/order/${list[0].workflow_id}`
     );
-
-    expect(screen.queryByText(list[0].project_name!)).toBeInTheDocument();
-    fireEvent.click(screen.getByText(list[0].project_name!));
-    expect(history.location.pathname).toBe(
+    expect(screen.getByText(list[0].project_name!)).toBeInTheDocument();
+    expect(getHrefByText(list[0].project_name!)).toBe(
       `/project/${list[0].project_name}/overview`
     );
   });
@@ -125,10 +104,8 @@ describe('test home/RecentlyOrderPanel', () => {
 
     renderWithRouter(<RecentlyOrderPanel projectName={'default'} />);
 
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
     expect(getMockRequestSpy).toBeCalledTimes(1);
+
     const endTime = moment();
     const startTime = cloneDeep(endTime).subtract(1, 'day');
     expect(getMockRequestSpy).toBeCalledWith({
@@ -138,11 +115,11 @@ describe('test home/RecentlyOrderPanel', () => {
       filter_task_execute_start_time_to: translateTimeForRequest(endTime),
       project_name: 'default',
     });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByTestId('refreshTable'));
-    await waitFor(() => {
-      jest.advanceTimersByTime(3000);
-    });
+    await act(async () => jest.advanceTimersByTime(0));
+
     expect(getMockRequestSpy).toBeCalledTimes(2);
   });
 });

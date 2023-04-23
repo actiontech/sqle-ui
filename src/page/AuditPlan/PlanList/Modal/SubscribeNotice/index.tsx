@@ -176,7 +176,7 @@ const SubscribeNotice = () => {
 
   return (
     <Modal
-      visible={visible}
+      open={visible}
       forceRender
       closable={false}
       width={webhooksEnable ? ModalSize.big : undefined}
@@ -250,12 +250,14 @@ const SubscribeNotice = () => {
           name="webhooksEnable"
           valuePropName="checked"
         >
-          {/* IFTRUE_isEE */}
-          {<Switch onChange={toggleWebhooksEnable} />}
-          {/* FITRUE_isEE */}
-          {/* IFTRUE_isCE */}
-          {t('auditPlan.subscribeNotice.form.webhooksEnableCe')}
-          {/* FITRUE_isCE */}
+          <>
+            {/* IFTRUE_isEE */}
+            {<Switch onChange={toggleWebhooksEnable} />}
+            {/* FITRUE_isEE */}
+            {/* IFTRUE_isCE */}
+            {t('auditPlan.subscribeNotice.form.webhooksEnableCe')}
+            {/* FITRUE_isCE */}
+          </>
         </Form.Item>
         <EmptyBox if={webhooksEnable}>
           <Form.Item

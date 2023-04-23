@@ -109,9 +109,9 @@ describe('RuleList', () => {
   });
   test('should render rule value list when params in the item', () => {
     render(<RuleList list={ruleList} />);
-    expect(screen.queryByText('desc1_1:')).toBeInTheDocument();
-    expect(screen.queryByText('true')).toBeInTheDocument();
-    expect(screen.queryByText('desc1_3:')).toBeInTheDocument();
-    expect(screen.queryByText('val')).toBeInTheDocument();
+    expect(screen.getByText('desc1_1:')).toBeInTheDocument();
+    expect(screen.getByText('true')).toBeInTheDocument();
+    expect(screen.getByText('desc1_3:')).toBeInTheDocument();
+    expect(screen.getByText('val')).toBeInTheDocument();
   });
 });

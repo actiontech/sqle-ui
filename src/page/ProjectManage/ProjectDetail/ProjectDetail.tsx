@@ -3,18 +3,15 @@ import { Result } from 'antd';
 import { Suspense, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { Redirect, Switch } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { useCurrentProjectName } from '.';
 import project from '../../../api/project';
 import HeaderProgress from '../../../components/HeaderProgress';
-import useRoutes from '../../../hooks/useRoutes';
 import useUserInfo from '../../../hooks/useUserInfo';
-import { projectDetailRouterConfig } from '../../../router/config';
 import { updateProjectStatus } from '../../../store/projectManage';
 import ProjectDetailLayout from './Layout';
 
 const ProjectDetail: React.FC = () => {
-  const { registerRouter } = useRoutes();
   const { projectName } = useCurrentProjectName();
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -57,14 +54,7 @@ const ProjectDetail: React.FC = () => {
         archive={!!projectInfo?.archived}
       >
         <Suspense fallback={<HeaderProgress />}>
-          <Switch>
-            {registerRouter(projectDetailRouterConfig)}
-            <Redirect
-              to={{
-                pathname: `/project/${projectName}/overview`,
-              }}
-            />
-          </Switch>
+          <Outlet />
         </Suspense>
       </ProjectDetailLayout>
     );
