@@ -2,7 +2,6 @@ import { DownOutlined } from '@ant-design/icons';
 import {
   Divider,
   Dropdown,
-  Menu,
   MenuProps,
   Popconfirm,
   Tag,
