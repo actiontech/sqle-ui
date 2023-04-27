@@ -2,7 +2,6 @@ import { ColumnGroupType, ColumnType, TableProps } from 'antd/lib/table';
 import { ValidatorRule } from 'rc-field-form/lib/interface';
 import zhCN from '../locale/zh-CN';
 import { Theme } from '@mui/material/styles';
-import { Table } from 'antd';
 
 export type Dictionary = {
   [key: string]: string | number | boolean | Dictionary | string[] | undefined;

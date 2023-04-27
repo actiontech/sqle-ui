@@ -266,6 +266,27 @@ const WorkflowTemplateDetail = React.lazy(
     )
 );
 
+const SyncTaskList = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "SyncTaskList" */ '../page/SyncDataSource/SyncTaskList'
+    )
+);
+
+const AddSyncTask = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "AddSyncTask" */ '../page/SyncDataSource/AddSyncTask'
+    )
+);
+
+const UpdateSyncTask = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "UpdateSyncTask" */ '../page/SyncDataSource/UpdateSyncTask'
+    )
+);
+
 export const unAuthRouter: RouteObject[] = [
   {
     path: '/login',
@@ -596,6 +617,23 @@ export const globalRouterConfig: RouterConfigItem<
     label: 'menu.syncDataSource',
     key: 'syncDataSource',
     element: <SyncDataSource />,
+    children: [
+      {
+        index: true,
+        element: <SyncTaskList />,
+        key: 'syncDataSourceList',
+      },
+      {
+        path: 'create',
+        element: <AddSyncTask />,
+        key: 'syncDataSourceCreate',
+      },
+      {
+        path: 'update/:taskId',
+        element: <UpdateSyncTask />,
+        key: 'syncDataSourceUpdate',
+      },
+    ] as RouterConfigItem<GlobalRouterItemKeyLiteral>[],
   },
   /* IFTRUE_isEE */
   {

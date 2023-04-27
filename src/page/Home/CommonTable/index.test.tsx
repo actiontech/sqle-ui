@@ -1,10 +1,7 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { IWorkflowDetailResV1 } from '../../../api/common';
 import CommonTable, { CommonTableInfoType, genTabPaneTitle } from './index';
-import {
-  renderWithRouter,
-  renderWithServerRouter,
-} from '../../../testUtils/customRender';
+import { renderWithRouter } from '../../../testUtils/customRender';
 import { TableColumn } from '../../../types/common.type';
 import { getHrefByText } from '../../../testUtils/customQuery';
 

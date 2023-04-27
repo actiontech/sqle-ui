@@ -1,4 +1,4 @@
-import { fireEvent, waitFor, screen, act } from '@testing-library/react';
+import { fireEvent, screen, act } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import AddDataSource from '.';
 import instance from '../../../api/instance';

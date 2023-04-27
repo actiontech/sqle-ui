@@ -1,10 +1,4 @@
-import {
-  act,
-  fireEvent,
-  getByLabelText,
-  render,
-  screen,
-} from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import moment from 'moment';
 import { IMaintenanceTimeResV1 } from '../../../../api/common';
 import { getBySelector } from '../../../../testUtils/customQuery';
@@ -121,6 +115,9 @@ describe('Order/AuditResult/ScheduleTimeModal', () => {
   });
 
   test('only can select maintenance time when user want to set schedule time', async () => {
+    const nowSpy = jest
+      .spyOn(Date, 'now')
+      .mockImplementation(() => new Date('2022-06-29').getTime());
     render(
       <ScheduleTimeModal
         visible={true}
@@ -144,6 +141,7 @@ describe('Order/AuditResult/ScheduleTimeModal', () => {
     await act(async () => jest.advanceTimersByTime(0));
 
     expect(getBySelector('.ant-picker-datetime-panel')).toMatchSnapshot();
+    nowSpy.mockRestore();
   });
 
   test('user should set any time when maintenanceTime is empty', async () => {

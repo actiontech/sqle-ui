@@ -1,4 +1,4 @@
-import { act, fireEvent, render, waitFor } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
 import { message } from 'antd';
 import { shallow } from 'enzyme';
 import UserEmail from '.';

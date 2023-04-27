@@ -1,14 +1,10 @@
-import {
-  renderWithThemeAndRouter,
-  renderWithThemeAndServerRouter,
-} from '../../../../../testUtils/customRender';
+import { renderWithThemeAndRouter } from '../../../../../testUtils/customRender';
 import HeaderMenu from '../HeaderMenu';
 import { cleanup, fireEvent, screen } from '@testing-library/react';
 import { DEFAULT_PROJECT_NAME } from '../../../../../page/ProjectManage/ProjectDetail';
 import { SystemRole } from '../../../../../data/common';
 import { mockBindProjects } from '../../../../../hooks/useCurrentUser/index.test';
 import { useSelector } from 'react-redux';
-import { getHrefByText } from '../../../../../testUtils/customQuery';
 import useNavigate from '../../../../../hooks/useNavigate';
 
 jest.mock('react-redux', () => ({

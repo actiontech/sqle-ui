@@ -8,7 +8,6 @@ import {
 } from '../../__test__/utils';
 import useNavigate from '../../../../hooks/useNavigate';
 import { renderWithRouter } from '../../../../testUtils/customRender';
-import { getHrefByText } from '../../../../testUtils/customQuery';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
