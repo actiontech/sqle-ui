@@ -3,10 +3,7 @@ import SyncTaskList from '.';
 import { IInstanceTaskResV1 } from '../../../api/common';
 import { InstanceTaskResV1LastSyncStatusEnum } from '../../../api/common.enum';
 import sync_instance from '../../../api/sync_instance';
-import {
-  renderWithRouter,
-  renderWithServerRouter,
-} from '../../../testUtils/customRender';
+import { renderWithRouter } from '../../../testUtils/customRender';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import {
   getAllHrefByText,

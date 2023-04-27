@@ -4,10 +4,7 @@ import { act, fireEvent, render, screen } from '@testing-library/react';
 import moment from 'moment';
 import statistic from '../../../../api/statistic';
 import { SupportLanguage } from '../../../../locale';
-import {
-  getAllBySelector,
-  getBySelector,
-} from '../../../../testUtils/customQuery';
+import { getAllBySelector } from '../../../../testUtils/customQuery';
 import {
   resolveErrorThreeSecond,
   resolveThreeSecond,
@@ -52,8 +49,7 @@ describe('test OrderQuantityTrend', () => {
   };
 
   const useThemeMock: jest.Mock = useTheme as jest.Mock;
-  const realDateNow = Date.now.bind(global.Date);
-
+  let nowSpy: jest.SpyInstance;
   beforeAll(() => {
     console.error = jest.fn((message: any) => {
       if (message.includes('React does not recognize the')) {
@@ -61,10 +57,8 @@ describe('test OrderQuantityTrend', () => {
       }
       error(message);
     });
-    Date.now = jest.fn().mockReturnValue(new Date('2022-08-11T12:33:37.000Z'));
   });
   afterAll(() => {
-    global.Date.now = realDateNow;
     console.error = error;
   });
   beforeEach(() => {
@@ -77,14 +71,18 @@ describe('test OrderQuantityTrend', () => {
     );
     useThemeMock.mockReturnValue({ common: { padding: 24 } });
     jest.useFakeTimers();
+    nowSpy = jest
+      .spyOn(Date, 'now')
+      .mockImplementation(() => new Date('2022-06-29').getTime());
   });
 
   afterEach(() => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
+    nowSpy.mockRestore();
   });
-  test.skip('should match snapshot', async () => {
+  test('should match snapshot', async () => {
     mockGetTaskCreatedCountEachDayV1();
     const { container } = render(<OrderQuantityTrend />);
     await act(async () => jest.advanceTimersByTime(3000));
@@ -92,7 +90,7 @@ describe('test OrderQuantityTrend', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test.skip('should match snapshot when request goes wrong', async () => {
+  test('should match snapshot when request goes wrong', async () => {
     mockErrorGetTaskCreatedCountEachDayV1();
     const { container } = render(<OrderQuantityTrend />);
     await act(async () => jest.advanceTimersByTime(3000));
@@ -122,40 +120,19 @@ describe('test OrderQuantityTrend', () => {
 
     expect(getTaskCreatedCountEachDayV1Spy).toBeCalledTimes(1);
 
-    // const startDate = getAllBySelector(
-    //   'input',
-    //   screen.getByTestId('filterRangePicker')
-    // )[0];
+    const startDate = getAllBySelector(
+      'input',
+      screen.getByTestId('filterRangePicker')
+    )[0];
 
-    // fireEvent.mouseDown(startDate);
-    // fireEvent.change(startDate, { target: { value: '2022-07-02' } });
-    // fireEvent.click(getBySelector('.ant-picker-cell-range-start'));
-    // fireEvent.mouseDown(startDate);
+    fireEvent.mouseDown(startDate);
+    fireEvent.change(startDate, { target: { value: '2022-06-12' } });
+    fireEvent.click(getAllBySelector('.ant-picker-cell-range-start')[0]);
 
-    // await act(async () => jest.advanceTimersByTime(3000));
-
-    // expect(getTaskCreatedCountEachDayV1Spy).toBeCalledTimes(2);
-    // expect(getTaskCreatedCountEachDayV1Spy.mock.calls[1][0]).toEqual({
-    //   filter_date_from: '2022-07-02',
-    //   filter_date_to: moment().format(dateFormat),
-    // });
-
-    // const endDate = getAllBySelector(
-    //   'input',
-    //   screen.getByTestId('filterRangePicker')
-    // )[1];
-
-    // fireEvent.mouseDown(endDate);
-    // fireEvent.change(endDate, { target: { value: '2022-08-02' } });
-    // fireEvent.click(getBySelector('.ant-picker-cell-selected'));
-    // fireEvent.mouseDown(endDate);
-
-    // await act(async () => jest.advanceTimersByTime(3000));
-
-    // expect(getTaskCreatedCountEachDayV1Spy).toBeCalledTimes(3);
-    // expect(getTaskCreatedCountEachDayV1Spy.mock.calls[2][0]).toEqual({
-    //   filter_date_from: '2022-07-02',
-    //   filter_date_to: '2022-08-02',
-    // });
+    expect(getTaskCreatedCountEachDayV1Spy).toBeCalledTimes(2);
+    expect(getTaskCreatedCountEachDayV1Spy).nthCalledWith(2, {
+      filter_date_from: '2022-06-12',
+      filter_date_to: moment().format(dateFormat),
+    });
   });
 });

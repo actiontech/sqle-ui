@@ -37,28 +37,7 @@ exports[`test SyncDataSource should match snapshot 1`] = `
     <section
       className="padding-content"
     >
-      <Routes>
-        <Route
-          element={<SyncTaskList />}
-          path="/syncDataSource"
-        />
-        <Route
-          element={<AddSyncTask />}
-          path="/syncDataSource/create"
-        />
-        <Route
-          element={<UpdateSyncTask />}
-          path="/syncDataSource/update/:taskId"
-        />
-        <Route
-          element={
-            <Navigate
-              to="/syncDataSource"
-            />
-          }
-          path="*"
-        />
-      </Routes>
+      <Outlet />
     </section>
   </article>
 </Fragment>

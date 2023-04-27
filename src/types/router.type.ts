@@ -21,6 +21,9 @@ export type GlobalRouterItemKeyLiteral =
   | 'projectList'
   | 'System'
   | 'syncDataSource'
+  | 'syncDataSourceList'
+  | 'syncDataSourceCreate'
+  | 'syncDataSourceUpdate'
   | 'operationRecord'
   | 'redirect';
 
