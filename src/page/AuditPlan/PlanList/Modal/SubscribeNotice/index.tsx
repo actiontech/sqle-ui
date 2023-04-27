@@ -7,6 +7,7 @@ import {
   message,
   Modal,
   Select,
+  Spin,
   Switch,
   Tooltip,
 } from 'antd';
@@ -77,6 +78,11 @@ const SubscribeNotice = () => {
 
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
     useBoolean();
+
+  const [
+    getDefaultDataLoading,
+    { setTrue: startGetDefaultData, setFalse: finishGetDefaultData },
+  ] = useBoolean();
   const submit = async () => {
     const values = await form.validateFields();
     startSubmit();
@@ -139,27 +145,32 @@ const SubscribeNotice = () => {
   };
 
   const setDefaultValue = async () => {
-    const response = await audit_plan.getAuditPlanNotifyConfigV1({
-      audit_plan_name: currentAuditPlan?.audit_plan_name ?? '',
-      project_name: projectName,
-    });
-    if (response.data.code === ResponseCode.SUCCESS) {
-      const config = response.data.data;
-
-      form.setFieldsValue({
-        interval: config?.notify_interval ?? 10,
-        level:
-          config?.notify_level as UpdateAuditPlanNotifyConfigReqV1NotifyLevelEnum,
-        emailEnable: config?.enable_email_notify,
-        /* IFTRUE_isEE */
-        webhooksEnable: config?.enable_web_hook_notify,
-        webhooksUrl: config?.web_hook_url,
-        template: config?.web_hook_template,
-        /* FITRUE_isEE */
+    startGetDefaultData();
+    try {
+      const response = await audit_plan.getAuditPlanNotifyConfigV1({
+        audit_plan_name: currentAuditPlan?.audit_plan_name ?? '',
+        project_name: projectName,
       });
-      if (config?.enable_web_hook_notify) {
-        toggleWebhooksEnable(true);
+      if (response.data.code === ResponseCode.SUCCESS) {
+        const config = response.data.data;
+
+        form.setFieldsValue({
+          interval: config?.notify_interval ?? 10,
+          level:
+            config?.notify_level as UpdateAuditPlanNotifyConfigReqV1NotifyLevelEnum,
+          emailEnable: config?.enable_email_notify,
+          /* IFTRUE_isEE */
+          webhooksEnable: config?.enable_web_hook_notify,
+          webhooksUrl: config?.web_hook_url,
+          template: config?.web_hook_template,
+          /* FITRUE_isEE */
+        });
+        if (config?.enable_web_hook_notify) {
+          toggleWebhooksEnable(true);
+        }
       }
+    } finally {
+      finishGetDefaultData();
     }
   };
 
@@ -192,116 +203,124 @@ const SubscribeNotice = () => {
       }
       title={t('auditPlan.subscribeNotice.title')}
     >
-      <Form {...ModalFormLayout} form={form}>
-        <Form.Item
-          name="interval"
-          label={
-            <IconTipsLabel
-              tips={t('auditPlan.subscribeNotice.form.intervalTips')}
-            >
-              {t('auditPlan.subscribeNotice.form.interval')}
-            </IconTipsLabel>
-          }
-          rules={[
-            {
-              required: true,
-            },
-            {
-              type: 'number',
-            },
-          ]}
-          initialValue={10}
-        >
-          <InputNumber min={0} max={99999} />
-        </Form.Item>
-        <Form.Item
-          label={
-            <IconTipsLabel tips={t('auditPlan.subscribeNotice.form.levelTips')}>
-              {t('auditPlan.subscribeNotice.form.level')}
-            </IconTipsLabel>
-          }
-          name="level"
-          rules={[
-            {
-              required: true,
-              message: t('common.form.rule.require', {
-                name: t('auditPlan.subscribeNotice.form.level'),
-              }),
-            },
-          ]}
-        >
-          <Select>{getRuleLevelStatusSelectOption()}</Select>
-        </Form.Item>
-        <Form.Item
-          label={
-            <IconTipsLabel
-              tips={t('auditPlan.subscribeNotice.form.emailEnableTips')}
-            >
-              {t('auditPlan.subscribeNotice.form.emailEnable')}
-            </IconTipsLabel>
-          }
-          name="emailEnable"
-          valuePropName="checked"
-        >
-          <Switch />
-        </Form.Item>
-        <Form.Item
-          label={t('auditPlan.subscribeNotice.form.webhooksEnable')}
-          name="webhooksEnable"
-          valuePropName="checked"
-        >
-          <>
-            {/* IFTRUE_isEE */}
+      <Spin spinning={getDefaultDataLoading} delay={500}>
+        <Form {...ModalFormLayout} form={form}>
+          <Form.Item
+            name="interval"
+            label={
+              <IconTipsLabel
+                tips={t('auditPlan.subscribeNotice.form.intervalTips')}
+              >
+                {t('auditPlan.subscribeNotice.form.interval')}
+              </IconTipsLabel>
+            }
+            rules={[
+              {
+                required: true,
+              },
+              {
+                type: 'number',
+              },
+            ]}
+            initialValue={10}
+          >
+            <InputNumber min={0} max={99999} />
+          </Form.Item>
+          <Form.Item
+            label={
+              <IconTipsLabel
+                tips={t('auditPlan.subscribeNotice.form.levelTips')}
+              >
+                {t('auditPlan.subscribeNotice.form.level')}
+              </IconTipsLabel>
+            }
+            name="level"
+            rules={[
+              {
+                required: true,
+                message: t('common.form.rule.require', {
+                  name: t('auditPlan.subscribeNotice.form.level'),
+                }),
+              },
+            ]}
+          >
+            <Select>{getRuleLevelStatusSelectOption()}</Select>
+          </Form.Item>
+          <Form.Item
+            label={
+              <IconTipsLabel
+                tips={t('auditPlan.subscribeNotice.form.emailEnableTips')}
+              >
+                {t('auditPlan.subscribeNotice.form.emailEnable')}
+              </IconTipsLabel>
+            }
+            name="emailEnable"
+            valuePropName="checked"
+          >
+            <Switch />
+          </Form.Item>
+
+          {/* IFTRUE_isEE */}
+          <Form.Item
+            label={t('auditPlan.subscribeNotice.form.webhooksEnable')}
+            name="webhooksEnable"
+            valuePropName="checked"
+          >
             {<Switch onChange={toggleWebhooksEnable} />}
-            {/* FITRUE_isEE */}
-            {/* IFTRUE_isCE */}
+          </Form.Item>
+
+          <EmptyBox if={webhooksEnable}>
+            <Form.Item
+              name="webhooksUrl"
+              label={t('auditPlan.subscribeNotice.form.webhooksUrl')}
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name="template"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+              label={t('auditPlan.subscribeNotice.form.webhooksTemplate')}
+              wrapperCol={{
+                ...ModalFormLayout.wrapperCol,
+                className: styles.editor,
+              }}
+              initialValue={webhooksTemplateDefault}
+              help={<WebhooksTemplateHelp resetTemplate={resetTemplate} />}
+            >
+              <MonacoEditor
+                theme={currentEditorTheme}
+                width="100%"
+                height="200"
+                language="json"
+              />
+            </Form.Item>
+          </EmptyBox>
+          {/* FITRUE_isEE */}
+
+          {/* IFTRUE_isCE */}
+          <Form.Item label={t('auditPlan.subscribeNotice.form.webhooksEnable')}>
             {t('auditPlan.subscribeNotice.form.webhooksEnableCe')}
-            {/* FITRUE_isCE */}
-          </>
-        </Form.Item>
-        <EmptyBox if={webhooksEnable}>
-          <Form.Item
-            name="webhooksUrl"
-            label={t('auditPlan.subscribeNotice.form.webhooksUrl')}
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input />
           </Form.Item>
-          <Form.Item
-            name="template"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-            label={t('auditPlan.subscribeNotice.form.webhooksTemplate')}
-            wrapperCol={{
-              ...ModalFormLayout.wrapperCol,
-              className: styles.editor,
-            }}
-            initialValue={webhooksTemplateDefault}
-            help={<WebhooksTemplateHelp resetTemplate={resetTemplate} />}
-          >
-            <MonacoEditor
-              theme={currentEditorTheme}
-              width="100%"
-              height="200"
-              language="json"
-            />
+          {/* FITRUE_isCE */}
+
+          <Form.Item label=" " colon={false} style={{ marginTop: 10 }}>
+            <Tooltip overlay={t('auditPlan.subscribeNotice.form.testTips')}>
+              <Button onClick={test} data-testid="testMessage">
+                {t('auditPlan.subscribeNotice.form.test')}
+              </Button>
+            </Tooltip>
           </Form.Item>
-        </EmptyBox>
-        <Form.Item label=" " colon={false} style={{ marginTop: 10 }}>
-          <Tooltip overlay={t('auditPlan.subscribeNotice.form.testTips')}>
-            <Button onClick={test} data-testid="testMessage">
-              {t('auditPlan.subscribeNotice.form.test')}
-            </Button>
-          </Tooltip>
-        </Form.Item>
-      </Form>
+        </Form>
+      </Spin>
     </Modal>
   );
 };
