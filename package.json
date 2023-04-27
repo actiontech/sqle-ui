@@ -60,7 +60,9 @@
     "build": "craco build",
     "test": "craco test",
     "test:c": "craco test --watchAll=false --coverage",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "eslint": "eslint ./.eslintrc src/",
+    "ts-check": "tsc --noEmit"
   },
   "browserslist": {
     "production": [

@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { getBySelector } from '../../testUtils/customQuery';
 import EditText from './EditText';
 

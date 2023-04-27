@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { act, fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, screen } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
 import SubscribeNotice from '..';
 import audit_plan from '../../../../../../api/audit_plan';

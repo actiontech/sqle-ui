@@ -1,12 +1,5 @@
 import { DownOutlined } from '@ant-design/icons';
-import {
-  Divider,
-  Dropdown,
-  Menu,
-  MenuProps,
-  Popconfirm,
-  Typography,
-} from 'antd';
+import { Divider, Dropdown, MenuProps, Popconfirm, Typography } from 'antd';
 import { IProjectRuleTemplateResV1 } from '../../../api/common';
 import EmptyBox from '../../../components/EmptyBox';
 import { t } from '../../../locale';
