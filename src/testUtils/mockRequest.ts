@@ -11,6 +11,7 @@ import management_permission from '../api/management_permission';
 import project from '../api/project';
 import sync_instance from '../api/sync_instance';
 import OperationRecord from '../api/OperationRecord';
+import { driverMeta } from '../hooks/useDatabaseType/index.test.data';
 
 export const successData = (data: any, otherData?: any) => {
   return {
@@ -220,10 +221,8 @@ export const mockUseUsername = () => {
 };
 
 export const mockDriver = () => {
-  const spy = jest.spyOn(configuration, 'getDriversV1');
-  spy.mockImplementation(() =>
-    resolveThreeSecond({ driver_name_list: ['oracle', 'mysql'] })
-  );
+  const spy = jest.spyOn(configuration, 'getDriversV2');
+  spy.mockImplementation(() => resolveThreeSecond(driverMeta));
   return spy;
 };
 

@@ -3,23 +3,29 @@ import { useBoolean } from 'ahooks';
 import { ResponseCode } from '../../data/common';
 import configurationService from '../../api/configuration';
 import { Select } from 'antd';
+import { IDriverMeta } from '../../api/common';
 
 const useDatabaseType = () => {
   const [driverNameList, setDriverNameList] = React.useState<string[]>([]);
+  const [driverMeta, setDriverMeta] = React.useState<IDriverMeta[]>([]);
   const [loading, { setTrue, setFalse }] = useBoolean();
-
   const updateDriverNameList = React.useCallback(() => {
     setTrue();
     configurationService
-      .getDriversV1()
+      .getDriversV2()
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
-          setDriverNameList(res.data?.data?.driver_name_list ?? []);
+          setDriverMeta(res.data.data ?? []);
+          setDriverNameList(
+            res.data.data?.map((v) => v.driver_name ?? '') ?? []
+          );
         } else {
           setDriverNameList([]);
+          setDriverMeta([]);
         }
       })
       .catch(() => {
+        setDriverMeta([]);
         setDriverNameList([]);
       })
       .finally(() => {
@@ -42,6 +48,7 @@ const useDatabaseType = () => {
     loading,
     updateDriverNameList,
     generateDriverSelectOptions,
+    driverMeta,
   };
 };
 export default useDatabaseType;

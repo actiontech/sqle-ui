@@ -98,6 +98,20 @@ describe('AddDataSource', () => {
     fireEvent.click(databaseTypeOption);
     await act(async () => jest.advanceTimersByTime(0));
 
+    expect(screen.getByLabelText('dataSource.dataSourceForm.port')).toHaveValue(
+      '3306'
+    );
+
+    selectOptionByIndex('dataSource.dataSourceForm.type', 'oracle');
+    await act(async () => jest.advanceTimersByTime(0));
+
+    expect(screen.getByLabelText('dataSource.dataSourceForm.port')).toHaveValue(
+      '4443'
+    );
+
+    selectOptionByIndex('dataSource.dataSourceForm.type', 'mysql');
+    await act(async () => jest.advanceTimersByTime(0));
+
     fireEvent.input(screen.getByLabelText('dataSource.dataSourceForm.ip'), {
       target: { value: '1.1.1.1' },
     });

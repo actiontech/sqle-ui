@@ -47,7 +47,8 @@ import {
   IUpdateWeChatConfigurationV1Return,
   ITestWeChatConfigurationV1Params,
   ITestWeChatConfigurationV1Return,
-  IGetLogoParams
+  IGetLogoParams,
+  IGetDriversV2Return,
 } from './index.d';
 
 class ConfigurationService extends ServiceBase {
@@ -156,7 +157,7 @@ class ConfigurationService extends ServiceBase {
     config.headers = {
       ...headers,
 
-      'Content-Type': 'multipart/form-data'
+      'Content-Type': 'multipart/form-data',
     };
 
     const paramsData = new FormData();
@@ -181,7 +182,7 @@ class ConfigurationService extends ServiceBase {
     config.headers = {
       ...headers,
 
-      'Content-Type': 'multipart/form-data'
+      'Content-Type': 'multipart/form-data',
     };
 
     const paramsData = new FormData();
@@ -244,7 +245,7 @@ class ConfigurationService extends ServiceBase {
     config.headers = {
       ...headers,
 
-      'Content-Type': 'multipart/form-data'
+      'Content-Type': 'multipart/form-data',
     };
 
     const paramsData = new FormData();
@@ -355,6 +356,14 @@ class ConfigurationService extends ServiceBase {
   public getLogo(params: IGetLogoParams, options?: AxiosRequestConfig) {
     const paramsData = this.cloneDeep(params);
     return this.get<any>('/v1/static/logo', paramsData, options);
+  }
+
+  public getDriversV2(options?: AxiosRequestConfig) {
+    return this.get<IGetDriversV2Return>(
+      '/v2/configurations/drivers',
+      undefined,
+      options
+    );
   }
 }
 

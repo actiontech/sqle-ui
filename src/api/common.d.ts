@@ -2733,6 +2733,12 @@ export interface IDirectAuditResV2 {
   message?: string;
 }
 
+export interface IDriverMeta {
+  default_port?: number;
+
+  driver_name?: string;
+}
+
 export interface IGetAuditPlanAnalysisDataResV2 {
   code?: number;
 
@@ -2769,6 +2775,14 @@ export interface IGetAuditTaskSQLsResV2 {
   message?: string;
 
   total_nums?: number;
+}
+
+export interface IGetDriversRes {
+  code?: number;
+
+  data?: IDriverMeta[];
+
+  message?: string;
 }
 
 export interface IGetInstanceResV2 {

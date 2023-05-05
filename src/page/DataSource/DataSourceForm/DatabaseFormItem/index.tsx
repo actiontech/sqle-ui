@@ -25,6 +25,8 @@ import BackendForm, { FormItem } from '../../../../components/BackendForm';
 import { turnCommonToDataSourceParams } from '../../tool';
 import { Theme } from '@mui/material/styles';
 
+const defaultProt = 3306;
+
 const DatabaseFormItem: React.FC<{
   form: FormInstance<DataSourceFormField>;
   isUpdate?: boolean;
@@ -32,7 +34,7 @@ const DatabaseFormItem: React.FC<{
   currentAsyncParams?: FormItem[];
   isExternalInstance?: boolean;
 }> = (props) => {
-  const { updateDriverNameList, generateDriverSelectOptions } =
+  const { updateDriverNameList, generateDriverSelectOptions, driverMeta } =
     useDatabaseType();
   const { t } = useTranslation();
   const theme = useTheme<Theme>();
@@ -86,6 +88,17 @@ const DatabaseFormItem: React.FC<{
       });
   };
 
+  const databaseTypeChange = (type: string) => {
+    props.databaseTypeChange?.(type);
+    if (type) {
+      props.form.setFieldsValue({
+        port:
+          driverMeta.find((v) => v.driver_name === type)?.default_port ??
+          defaultProt,
+      });
+    }
+  };
+
   React.useEffect(() => {
     const resetConnectAbleStatus = () => {
       setInitHideTrue();
@@ -125,7 +138,7 @@ const DatabaseFormItem: React.FC<{
           allowClear
           showSearch
           disabled={props.isUpdate}
-          onChange={props.databaseTypeChange}
+          onChange={databaseTypeChange}
         >
           {generateDriverSelectOptions()}
         </Select>
@@ -151,7 +164,7 @@ const DatabaseFormItem: React.FC<{
       </Form.Item>
       <Form.Item
         label={t('dataSource.dataSourceForm.port')}
-        initialValue={3306}
+        initialValue={defaultProt}
         name="port"
         rules={[
           {

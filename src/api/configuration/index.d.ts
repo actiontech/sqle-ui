@@ -27,7 +27,8 @@ import {
   IGetWeChatConfigurationResV1,
   IUpdateWeChatConfigurationReqV1,
   ITestWeChatConfigurationReqV1,
-  ITestWeChatConfigurationResV1
+  ITestWeChatConfigurationResV1,
+  IGetDriversRes
 } from '../common.d';
 
 export interface IGetDingTalkConfigurationV1Return
@@ -138,3 +139,5 @@ export interface ITestWeChatConfigurationV1Return
 export interface IGetLogoParams {
   timestamp?: string;
 }
+
+export interface IGetDriversV2Return extends IGetDriversRes {}
