@@ -320,7 +320,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
                       placeholder="Start date"
                       readonly=""
                       size="12"
-                      value="2023-03-20"
+                      value="2022-05-30"
                     />
                   </div>
                   <div
@@ -359,7 +359,7 @@ exports[`test ReportStatistics should match snapshot 1`] = `
                       placeholder="End date"
                       readonly=""
                       size="12"
-                      value="2023-04-19"
+                      value="2022-06-29"
                     />
                   </div>
                   <div
@@ -1385,7 +1385,7 @@ exports[`test ReportStatistics should match snapshot 2`] = `
                       placeholder="Start date"
                       readonly=""
                       size="12"
-                      value="2023-03-20"
+                      value="2022-05-30"
                     />
                   </div>
                   <div
@@ -1424,7 +1424,7 @@ exports[`test ReportStatistics should match snapshot 2`] = `
                       placeholder="End date"
                       readonly=""
                       size="12"
-                      value="2023-04-19"
+                      value="2022-06-29"
                     />
                   </div>
                   <div

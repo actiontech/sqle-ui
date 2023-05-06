@@ -127,7 +127,7 @@ describe('test ReportStatistics', () => {
 
   const useThemeMock: jest.Mock = useTheme as jest.Mock;
   const error = console.error;
-  const realDateNow = Date.now.bind(global.Date);
+  let nowSpy: jest.SpyInstance;
 
   let getTaskCountV1Spy: jest.SpyInstance;
   let getTaskStatusCountV1Spy: jest.SpyInstance;
@@ -180,6 +180,9 @@ describe('test ReportStatistics', () => {
       })
     );
     (useDispatch as jest.Mock).mockImplementation(() => scopeDispatch);
+    nowSpy = jest
+      .spyOn(Date, 'now')
+      .mockImplementation(() => new Date('2022-06-29').getTime());
   });
 
   afterEach(() => {
@@ -188,10 +191,10 @@ describe('test ReportStatistics', () => {
     jest.clearAllTimers();
     scopeDispatch.mockClear();
     console.error = error;
-    global.Date.now = realDateNow;
+    nowSpy.mockRestore();
   });
 
-  test.skip('should match snapshot', async () => {
+  test('should match snapshot', async () => {
     const { container } = renderWithRedux(<ReportStatistics />);
     expect(container).toMatchSnapshot();
 
