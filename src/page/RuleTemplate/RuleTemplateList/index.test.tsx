@@ -5,7 +5,6 @@ import RuleTemplateList from '.';
 import rule_template from '../../../api/rule_template';
 import { SystemRole } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
-import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
@@ -13,6 +12,7 @@ import { ruleTemplateListData } from '../__testData__';
 
 import { getBySelector, getHrefByText } from '../../../testUtils/customQuery';
 import { useDispatch, useSelector } from 'react-redux';
+import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test.data';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),

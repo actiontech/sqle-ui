@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import DataSourceList from '.';
 import instance from '../../../api/instance';
 import { SystemRole } from '../../../data/common';
-import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import {
   mockUseInstance,
@@ -18,6 +17,7 @@ import { dataSourceList } from '../__testData__';
 
 import { getBySelector, getHrefByText } from '../../../testUtils/customQuery';
 import { useSelector } from 'react-redux';
+import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test.data';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),

@@ -1,9 +1,5 @@
 import ProjectDetail, { useRecentlyOpenedProjects } from '.';
 import { useLocation, useParams } from 'react-router-dom';
-import {
-  mockBindProjects,
-  mockManagementPermissions,
-} from '../../../hooks/useCurrentUser/index.test';
 import { render, screen, act as reactAct } from '@testing-library/react';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import {
@@ -26,6 +22,10 @@ import { SystemRole } from '../../../data/common';
 import { act, renderHook } from '@testing-library/react-hooks';
 import useNavigate from '../../../hooks/useNavigate';
 import { useDispatch, useSelector } from 'react-redux';
+import {
+  mockBindProjects,
+  mockManagementPermissions,
+} from '../../../hooks/useCurrentUser/index.test.data';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),

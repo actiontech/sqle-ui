@@ -3,9 +3,9 @@ import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
 import { SupportLanguage } from '../../../locale';
 import { SupportTheme } from '../../../theme';
 import { ModalName } from '../../../data/ModalName';
-import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
 import { SQLE_DEFAULT_WEB_TITLE } from '../../../data/common';
 import { useDispatch, useSelector } from 'react-redux';
+import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test.data';
 
 jest.mock('react-redux', () => {
   return {

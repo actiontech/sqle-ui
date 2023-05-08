@@ -6,8 +6,8 @@ import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import { workflowData, workflowData2 } from '../__testData__';
 import { useParams } from 'react-router-dom';
 import { SystemRole } from '../../../data/common';
-import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
 import { useSelector } from 'react-redux';
+import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test.data';
 
 jest.mock('react-redux', () => {
   return {
