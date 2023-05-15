@@ -42,6 +42,10 @@ import {
   IGetSystemVariablesV1Return,
   IUpdateSystemVariablesV1Params,
   IUpdateSystemVariablesV1Return,
+  IGetGlobalWorkflowWebHookConfigReturn,
+  IUpdateGlobalWebHookConfigParams,
+  IUpdateGlobalWebHookConfigReturn,
+  ITestGlobalWorkflowWebHookConfigReturn,
   IGetWeChatConfigurationV1Return,
   IUpdateWeChatConfigurationV1Params,
   IUpdateWeChatConfigurationV1Return,
@@ -317,6 +321,34 @@ class ConfigurationService extends ServiceBase {
     return this.patch<IUpdateSystemVariablesV1Return>(
       '/v1/configurations/system_variables',
       paramsData,
+      options
+    );
+  }
+
+  public getGlobalWorkflowWebHookConfig(options?: AxiosRequestConfig) {
+    return this.get<IGetGlobalWorkflowWebHookConfigReturn>(
+      '/v1/configurations/webhook',
+      undefined,
+      options
+    );
+  }
+
+  public updateGlobalWebHookConfig(
+    params: IUpdateGlobalWebHookConfigParams,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.patch<IUpdateGlobalWebHookConfigReturn>(
+      '/v1/configurations/webhook',
+      paramsData,
+      options
+    );
+  }
+
+  public testGlobalWorkflowWebHookConfig(options?: AxiosRequestConfig) {
+    return this.post<ITestGlobalWorkflowWebHookConfigReturn>(
+      '/v1/configurations/webhook/test',
+      undefined,
       options
     );
   }

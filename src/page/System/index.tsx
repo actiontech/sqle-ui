@@ -15,6 +15,7 @@ import Oauth from './Oauth/Oauth';
 import DingTalkSetting from './DingTalkSetting';
 import LarkSetting from './LarkSetting';
 import PersonalizeSetting from './PersonalizeSetting';
+import WebHook from './WebhookSetting/Webhook';
 
 const System = () => {
   const { t } = useTranslation();
@@ -29,6 +30,7 @@ const System = () => {
           <SMTPSetting />
           <Wechat />
           <LarkSetting />
+          <WebHook />
         </Space>
       ),
     },

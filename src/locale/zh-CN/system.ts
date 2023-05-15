@@ -22,6 +22,7 @@ export default {
     oauth: 'Oauth2.0配置',
     lark: '飞书配置',
     personalize: '个性化设置',
+    webhook: 'Webhook配置',
   },
 
   personalize: {
@@ -131,6 +132,20 @@ export default {
     receiveWechat: '接收者UserID',
     testing: '正在向{{id}}发送测试消息...',
     testSuccess: '测试消息发送成功',
+  },
+
+  webhook: {
+    enableWebhookNotify: '是否开启Webhook通知',
+    maxRetryTimes: '最大重试次数',
+    retryIntervalSeconds: '最大重试间隔(秒)',
+    test: '测试',
+    testing: '正在向{{url}}推送测试信息...',
+    testSuccess: '测试消息发送成功',
+    maxRetryTimesTips: '默认3次，取值范围0-5',
+    retryIntervalSecondsTips: '默认1秒，取值范围1-5',
+    appIdTips: '默认为 sqle。用于标识推送方，过滤非法请求',
+    appSecretTips: '用于标识推送方，过滤非法请求',
+    webhookUrlTips: '用于工单消息推送的 API 地址',
   },
 
   oauth: {

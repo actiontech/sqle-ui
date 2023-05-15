@@ -1363,6 +1363,14 @@ export interface IGetWorkflowTemplateResV1 {
   message?: string;
 }
 
+export interface IGetWorkflowWebHookConfigResV1 {
+  code?: number;
+
+  data?: IWebHookConfigV1;
+
+  message?: string;
+}
+
 export interface IGetWorkflowsResV1 {
   code?: number;
 
@@ -2067,6 +2075,18 @@ export interface ITestWeChatConfigurationResV1 {
   message?: string;
 }
 
+export interface ITestWorkflowWebHookConfigResDataV1 {
+  send_error_message?: string;
+}
+
+export interface ITestWorkflowWebHookConfigResV1 {
+  code?: number;
+
+  data?: ITestWorkflowWebHookConfigResDataV1;
+
+  message?: string;
+}
+
 export interface ITimeReqV1 {
   hour?: number;
 
@@ -2397,6 +2417,20 @@ export interface IWeChatConfigurationResV1 {
   proxy_ip?: string;
 
   safe_enabled?: boolean;
+}
+
+export interface IWebHookConfigV1 {
+  app_id?: string;
+
+  app_secret?: string;
+
+  enable?: boolean;
+
+  max_retry_times?: number;
+
+  retry_interval_seconds?: number;
+
+  url?: string;
 }
 
 export interface IWorkFlowStepTemplateReqV1 {

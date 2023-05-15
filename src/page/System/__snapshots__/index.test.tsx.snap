@@ -23,6 +23,7 @@ exports[`System should match snapshot 1`] = `
                 <SMTPSetting />
                 <Wechat />
                 <LarkSetting />
+                <WebHook />
               </Space>,
               "key": "pushNotification",
               "label": "system.tabPaneTitle.pushNotification",
