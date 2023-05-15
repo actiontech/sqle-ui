@@ -5,7 +5,6 @@ import MemberGroupList from '..';
 import { SystemRole } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
-import { mockBindProjects } from '../../../../hooks/useCurrentUser/index.test';
 import { selectOptionByIndex } from '../../../../testUtils/customQuery';
 import {
   mockUseInstance,
@@ -19,6 +18,7 @@ import {
 } from './utils';
 import { useTheme } from '@mui/styles';
 import { useDispatch, useSelector } from 'react-redux';
+import { mockBindProjects } from '../../../../hooks/useCurrentUser/index.test.data';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),

@@ -5,7 +5,6 @@ import MemberList from '..';
 import { SystemRole } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import { ModalName } from '../../../../data/ModalName';
-import { mockBindProjects } from '../../../../hooks/useCurrentUser/index.test';
 import { selectOptionByIndex } from '../../../../testUtils/customQuery';
 
 import {
@@ -15,6 +14,7 @@ import {
 import EventEmitter from '../../../../utils/EventEmitter';
 import { mockDeleteMember, mockGetMembers, mockMemberList } from './utils';
 import { useDispatch, useSelector } from 'react-redux';
+import { mockBindProjects } from '../../../../hooks/useCurrentUser/index.test.data';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),

@@ -1568,6 +1568,591 @@ use aaab;
 </div>
 `;
 
+exports[`test AuditResultCollection should jump to the corresponding order tab when clicking on overview table row 1`] = `
+<div>
+  <div
+    class="ant-card ant-card-bordered"
+  >
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="ant-tabs ant-tabs-top"
+      >
+        <div
+          class="ant-tabs-nav"
+          role="tablist"
+        >
+          <div
+            class="ant-tabs-nav-wrap"
+          >
+            <div
+              class="ant-tabs-nav-list"
+              style="transform: translate(0px, 0px);"
+            >
+              <div
+                class="ant-tabs-tab ant-tabs-tab-active"
+                data-node-key="OVERVIEW_TAB_KEY"
+              >
+                <div
+                  aria-controls="rc-tabs-test-panel-OVERVIEW_TAB_KEY"
+                  aria-selected="true"
+                  class="ant-tabs-tab-btn"
+                  id="rc-tabs-test-tab-OVERVIEW_TAB_KEY"
+                  role="tab"
+                  tabindex="0"
+                >
+                  order.auditResultCollection.overview
+                </div>
+              </div>
+              <div
+                class="ant-tabs-tab"
+                data-node-key="27"
+              >
+                <div
+                  aria-controls="rc-tabs-test-panel-27"
+                  aria-selected="false"
+                  class="ant-tabs-tab-btn"
+                  id="rc-tabs-test-tab-27"
+                  role="tab"
+                  tabindex="0"
+                >
+                  mysql-1
+                </div>
+              </div>
+              <div
+                class="ant-tabs-tab"
+                data-node-key="28"
+              >
+                <div
+                  aria-controls="rc-tabs-test-panel-28"
+                  aria-selected="false"
+                  class="ant-tabs-tab-btn"
+                  id="rc-tabs-test-tab-28"
+                  role="tab"
+                  tabindex="0"
+                >
+                  mysql-2
+                </div>
+              </div>
+              <div
+                class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
+                style="left: 0px; width: 0px;"
+              />
+            </div>
+          </div>
+          <div
+            class="ant-tabs-nav-operations ant-tabs-nav-operations-hidden"
+          >
+            <button
+              aria-controls="rc-tabs-test-more-popup"
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-hidden="true"
+              class="ant-tabs-nav-more"
+              id="rc-tabs-test-more"
+              style="visibility: hidden; order: 1;"
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                aria-label="ellipsis"
+                class="anticon anticon-ellipsis"
+                role="img"
+              >
+                <svg
+                  aria-hidden="true"
+                  data-icon="ellipsis"
+                  fill="currentColor"
+                  focusable="false"
+                  height="1em"
+                  viewBox="64 64 896 896"
+                  width="1em"
+                >
+                  <path
+                    d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div
+          class="ant-tabs-content-holder"
+        >
+          <div
+            class="ant-tabs-content ant-tabs-content-top"
+          >
+            <div
+              aria-hidden="false"
+              aria-labelledby="rc-tabs-test-tab-OVERVIEW_TAB_KEY"
+              class="ant-tabs-tabpane ant-tabs-tabpane-active"
+              id="rc-tabs-test-panel-OVERVIEW_TAB_KEY"
+              role="tabpanel"
+              tabindex="0"
+            >
+              <div
+                class="ant-table-wrapper"
+              >
+                <div
+                  class="ant-spin-nested-loading"
+                >
+                  <div>
+                    <div
+                      aria-busy="true"
+                      aria-live="polite"
+                      class="ant-spin ant-spin-spinning"
+                    >
+                      <span
+                        class="ant-spin-dot ant-spin-dot-spin"
+                      >
+                        <i
+                          class="ant-spin-dot-item"
+                        />
+                        <i
+                          class="ant-spin-dot-item"
+                        />
+                        <i
+                          class="ant-spin-dot-item"
+                        />
+                        <i
+                          class="ant-spin-dot-item"
+                        />
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    class="ant-spin-container ant-spin-blur"
+                  >
+                    <div
+                      class="ant-table"
+                    >
+                      <div
+                        class="ant-table-container"
+                      >
+                        <div
+                          class="ant-table-content"
+                        >
+                          <table
+                            style="table-layout: auto;"
+                          >
+                            <colgroup />
+                            <thead
+                              class="ant-table-thead"
+                            >
+                              <tr>
+                                <th
+                                  class="ant-table-cell"
+                                >
+                                  order.auditResultCollection.table.instanceName
+                                </th>
+                                <th
+                                  class="ant-table-cell"
+                                >
+                                  order.auditResultCollection.table.status
+                                </th>
+                                <th
+                                  class="ant-table-cell"
+                                >
+                                  order.auditResultCollection.table.passRate
+                                </th>
+                                <th
+                                  class="ant-table-cell"
+                                >
+                                  order.auditResultCollection.table.score
+                                </th>
+                                <th
+                                  class="ant-table-cell"
+                                >
+                                  order.auditResultCollection.table.assigneeUserName
+                                </th>
+                                <th
+                                  class="ant-table-cell"
+                                >
+                                  order.auditResultCollection.table.executeUserName
+                                </th>
+                                <th
+                                  class="ant-table-cell"
+                                >
+                                  order.auditResultCollection.table.execStartTime
+                                </th>
+                                <th
+                                  class="ant-table-cell"
+                                >
+                                  order.auditResultCollection.table.execEndTime
+                                </th>
+                                <th
+                                  class="ant-table-cell"
+                                >
+                                  order.auditResultCollection.table.scheduleExecuteTime
+                                </th>
+                                <th
+                                  class="ant-table-cell"
+                                >
+                                  common.operate
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody
+                              class="ant-table-tbody"
+                            >
+                              <tr
+                                class="ant-table-row ant-table-row-level-0 pointer"
+                                data-row-key="27"
+                              >
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  mysql-1
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  <span
+                                    class="ant-tag ant-tag-blue"
+                                  >
+                                    order.status.wait_for_audit
+                                  </span>
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  30.99%
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  30
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  <span
+                                    class="ant-tag"
+                                  >
+                                    admin
+                                  </span>
+                                  <span
+                                    class="ant-tag"
+                                  >
+                                    admin2
+                                  </span>
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                />
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  2022-09-01 00:00:00
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  2022-09-30 00:00:00
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                />
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  <div
+                                    class="ant-space ant-space-horizontal ant-space-align-center"
+                                  >
+                                    <div
+                                      class="ant-space-item"
+                                      style="margin-right: 8px;"
+                                    >
+                                      <a
+                                        class="ant-typography ant-typography-disabled"
+                                      >
+                                        order.auditResultCollection.table.sqlExecute
+                                      </a>
+                                    </div>
+                                    <div
+                                      class="ant-space-item"
+                                    >
+                                      <a
+                                        class="ant-typography ant-typography-disabled"
+                                      >
+                                        order.auditResultCollection.table.scheduleTime
+                                      </a>
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr
+                                class="ant-table-row ant-table-row-level-0 pointer"
+                                data-row-key="28"
+                              >
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  mysql-2
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  <span
+                                    class="ant-tag ant-tag-blue"
+                                  >
+                                    order.status.wait_for_execution
+                                  </span>
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  0%
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  30
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  <span
+                                    class="ant-tag"
+                                  >
+                                    admin
+                                  </span>
+                                  <span
+                                    class="ant-tag"
+                                  >
+                                    admin1
+                                  </span>
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                />
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  2022-09-01 00:00:00
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  2022-09-30 00:00:00
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  2022-09-30 00:00:00
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  <div
+                                    class="ant-space ant-space-horizontal ant-space-align-center"
+                                  >
+                                    <div
+                                      class="ant-space-item"
+                                      style="margin-right: 8px;"
+                                    >
+                                      <a
+                                        class="ant-typography"
+                                      >
+                                        order.auditResultCollection.table.sqlExecute
+                                      </a>
+                                    </div>
+                                    <div
+                                      class="ant-space-item"
+                                    >
+                                      <a
+                                        class="ant-typography"
+                                      >
+                                        order.auditResultCollection.table.scheduleTime
+                                      </a>
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr
+                                class="ant-table-row ant-table-row-level-0 pointer"
+                                data-row-key="29"
+                              >
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  mysql-3
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  <span
+                                    class="ant-tag ant-tag-pink"
+                                  >
+                                    order.status.exec_scheduled
+                                  </span>
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  0%
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  30
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  <span
+                                    class="ant-tag"
+                                  >
+                                    admin
+                                  </span>
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                />
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  2022-09-01 00:00:00
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  2022-09-30 00:00:00
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  2022-09-30 00:00:00
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  <div
+                                    class="ant-space ant-space-horizontal ant-space-align-center"
+                                  >
+                                    <div
+                                      class="ant-space-item"
+                                      style="margin-right: 8px;"
+                                    >
+                                      <a
+                                        class="ant-typography ant-typography-disabled"
+                                      >
+                                        order.auditResultCollection.table.sqlExecute
+                                      </a>
+                                    </div>
+                                    <div
+                                      class="ant-space-item"
+                                    >
+                                      <a
+                                        class="ant-typography"
+                                      >
+                                        order.auditResultCollection.table.cancelExecScheduled
+                                      </a>
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr
+                                class="ant-table-row ant-table-row-level-0 pointer"
+                                data-row-key="30"
+                              >
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  mysql-4
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  <span
+                                    class="ant-tag ant-tag-blue"
+                                  >
+                                    order.status.executing
+                                  </span>
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  0%
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  30
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  <span
+                                    class="ant-tag"
+                                  >
+                                    admin
+                                  </span>
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                />
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  2022-09-01 00:00:00
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  2022-09-30 00:00:00
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  2022-09-30 00:00:00
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  <div
+                                    class="ant-space ant-space-horizontal ant-space-align-center"
+                                  >
+                                    <div
+                                      class="ant-space-item"
+                                      style="margin-right: 8px;"
+                                    >
+                                      <a
+                                        class="ant-typography ant-typography-disabled"
+                                      >
+                                        order.auditResultCollection.table.sqlExecute
+                                      </a>
+                                    </div>
+                                    <div
+                                      class="ant-space-item"
+                                    >
+                                      <a
+                                        class="ant-typography ant-typography-disabled"
+                                      >
+                                        order.auditResultCollection.table.scheduleTime
+                                      </a>
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`test AuditResultCollection should match snapshot when getSummaryOfInstanceTasks status was failed 1`] = `
 <div>
   <div

@@ -1,9 +1,24 @@
-import { render, screen } from '@testing-library/react';
+/* eslint-disable testing-library/no-container */
+import { act, render, screen } from '@testing-library/react';
 import { IWorkflowDetailResV1 } from '../../../api/common';
 import CommonTable, { CommonTableInfoType, genTabPaneTitle } from './index';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import { TableColumn } from '../../../types/common.type';
 import { getHrefByText } from '../../../testUtils/customQuery';
+import { spyElementPrototypes } from 'rc-util/lib/test/domHook';
+import { _rs as onResize } from 'rc-resize-observer/lib/utils/observerUtil';
+
+const triggerResize = (target: Element) => {
+  const originGetBoundingClientRect = target.getBoundingClientRect;
+
+  target.getBoundingClientRect = () => ({ width: 510, height: 903 } as DOMRect);
+
+  act(() => {
+    onResize([{ target } as ResizeObserverEntry]);
+  });
+
+  target.getBoundingClientRect = originGetBoundingClientRect;
+};
 
 const list: IWorkflowDetailResV1[] = [
   {
@@ -60,6 +75,19 @@ describe('test Home/CommonTable', () => {
     jest.clearAllMocks();
   });
 
+  let domSpy: ReturnType<typeof spyElementPrototypes>;
+
+  beforeAll(() => {
+    domSpy = spyElementPrototypes(HTMLDivElement, {
+      offsetWidth: {
+        get: () => 1000,
+      },
+    });
+  });
+  afterAll(() => {
+    domSpy.mockRestore();
+  });
+
   test('should match snapshot', () => {
     const { container } = renderWithRouter(
       <CommonTable tableInfo={mockTableInfo} />
@@ -75,14 +103,23 @@ describe('test Home/CommonTable', () => {
     expect(container).toMatchSnapshot();
   });
 
-  test.skip('should render error info when error has a value', () => {
+  test('should render error info when error has a value', async () => {
     mockTableInfo.error = new Error('error message');
     mockTableInfo.data = [];
-    const { container } = renderWithRouter(
+
+    const { asFragment, container } = renderWithRouter(
       <CommonTable tableInfo={mockTableInfo} />
     );
 
-    expect(container).toMatchSnapshot();
+    /*
+     *  jest dom未渲染出 ant-table emptyText 内容的解决办法:
+     *  方法参考至: https://github.com/ant-design/ant-design/blob/4.x-stable/components/table/__tests__/empty.test.tsx#LL74C61-L74C61
+     */
+    triggerResize(container.querySelector('.ant-table')!);
+
+    expect(asFragment().firstChild).toMatchSnapshot();
+
+    await screen.findByText('common.request.noticeFailTitle');
     expect(
       screen.getByText('common.request.noticeFailTitle')
     ).toBeInTheDocument();

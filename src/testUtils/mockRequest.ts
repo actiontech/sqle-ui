@@ -12,6 +12,10 @@ import project from '../api/project';
 import sync_instance from '../api/sync_instance';
 import OperationRecord from '../api/OperationRecord';
 import { driverMeta } from '../hooks/useDatabaseType/index.test.data';
+import {
+  mockBindProjects,
+  mockManagementPermissions,
+} from '../hooks/useCurrentUser/index.test.data';
 
 export const successData = (data: any, otherData?: any) => {
   return {
@@ -295,6 +299,20 @@ export const mockUseOperationTypeName = () => {
       { operation_type_name: 'project', desc: '项目' },
       { operation_type_name: 'instance', desc: '数据源' },
     ])
+  );
+  return spy;
+};
+
+export const mockGetCurrentUser = () => {
+  const spy = jest.spyOn(user, 'getCurrentUserV1');
+
+  spy.mockImplementation(() =>
+    resolveThreeSecond({
+      user_name: 'test',
+      is_admin: '',
+      bind_projects: mockBindProjects,
+      management_permission_list: mockManagementPermissions,
+    })
   );
   return spy;
 };

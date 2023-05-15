@@ -1,7 +1,6 @@
-import { cleanup, render, act } from '@testing-library/react';
-import { shallow } from 'enzyme';
+import { cleanup, render, act, screen } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter, useLocation } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import global from './api/global';
 import App, { Wrapper } from './App';
 import {
@@ -10,23 +9,25 @@ import {
   SystemRole,
 } from './data/common';
 import { ModalName } from './data/ModalName';
-import {
-  mockBindProjects,
-  mockManagementPermissions,
-} from './hooks/useCurrentUser/index.test';
 import useNavigate from './hooks/useNavigate';
-import { mockGetCurrentUser } from './hooks/useUserInfo/index.test';
 import { SupportLanguage } from './locale';
 import {
+  mockGetCurrentUser,
   mockUseAuditPlanTypes,
   resolveErrorThreeSecond,
   resolveThreeSecond,
 } from './testUtils/mockRequest';
-
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useLocation: jest.fn(),
-}));
+import {
+  mockBindProjects,
+  mockManagementPermissions,
+} from './hooks/useCurrentUser/index.test.data';
+import {
+  renderLocationDisplay,
+  renderWithMemoryRouter,
+  renderWithThemeAndRouter,
+} from './testUtils/customRender';
+import { getBySelector } from './testUtils/customQuery';
+import configuration from './api/configuration';
 
 jest.mock('react-redux', () => {
   return {
@@ -42,23 +43,23 @@ describe('App test', () => {
   let getUserSpy: jest.SpyInstance;
   const scopeDispatch = jest.fn();
   const navigateSpy = jest.fn();
-  const useLocationMock: jest.Mock = useLocation as jest.Mock;
   const useHistoryMock: jest.Mock = useNavigate as jest.Mock;
   let getSqleInfoSpy: jest.SpyInstance;
+
+  const mockGetOauth2Tips = () => {
+    const spy = jest.spyOn(configuration, 'getOauth2Tips');
+    spy.mockImplementation(() =>
+      resolveThreeSecond({ enable_oauth2: true, login_tip: 'login with QQ' })
+    );
+    return spy;
+  };
 
   beforeEach(() => {
     getUserSpy = mockGetCurrentUser();
     getSqleInfoSpy = mockGetSqleInfo();
-
+    mockGetOauth2Tips();
     mockUseAuditPlanTypes();
     jest.useFakeTimers();
-    useLocationMock.mockReturnValue({
-      pathname: '/rule',
-      search: '',
-      hash: '',
-      state: null,
-      key: '5nvxpbdafa',
-    });
 
     (useSelector as jest.Mock).mockImplementation((e) =>
       e({
@@ -73,7 +74,6 @@ describe('App test', () => {
     jest.clearAllMocks();
     jest.clearAllTimers();
     jest.useRealTimers();
-    useLocationMock.mockRestore();
     useHistoryMock.mockRestore();
   });
 
@@ -94,7 +94,9 @@ describe('App test', () => {
         user: { token: '' },
       })
     );
-    render(<Wrapper>children</Wrapper>);
+    renderWithMemoryRouter(<Wrapper>children</Wrapper>, undefined, {
+      initialEntries: ['/rule'],
+    });
 
     expect(navigateSpy).toBeCalledTimes(1);
     expect(navigateSpy).nthCalledWith(
@@ -109,7 +111,9 @@ describe('App test', () => {
         user: { token: 'token' },
       })
     );
-    render(<Wrapper>children</Wrapper>);
+    renderWithMemoryRouter(<Wrapper>children</Wrapper>, undefined, {
+      initialEntries: ['/rule'],
+    });
     expect(navigateSpy).toBeCalledTimes(0);
     cleanup();
     navigateSpy.mockClear();
@@ -119,84 +123,62 @@ describe('App test', () => {
         user: { token: '' },
       })
     );
-    useLocationMock.mockReturnValue({
-      pathname: '/login',
-      search: '',
-      hash: '',
-      state: null,
-      key: '5nvxpbdafa',
+
+    renderWithMemoryRouter(<Wrapper>children</Wrapper>, undefined, {
+      initialEntries: ['/login'],
     });
-    render(<Wrapper>children</Wrapper>);
     expect(navigateSpy).toBeCalledTimes(0);
     cleanup();
     navigateSpy.mockClear();
 
-    useLocationMock.mockReturnValue({
-      pathname: '/user/bind',
-      search: '',
-      hash: '',
-      state: null,
-      key: '5nvxpbdafa',
+    renderWithMemoryRouter(<Wrapper>children</Wrapper>, undefined, {
+      initialEntries: ['/user/bind'],
     });
-    render(<Wrapper>children</Wrapper>);
     expect(navigateSpy).toBeCalledTimes(0);
     cleanup();
     navigateSpy.mockClear();
   });
 
-  test.skip('should render login route when token is falsy', async () => {
+  test('should render login route when token is falsy', async () => {
     (useSelector as jest.Mock).mockImplementation((e) =>
       e({
         user: { token: '', role: '' },
         locale: { language: SupportLanguage.zhCN },
+        nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
+        system: { webTitle: SQLE_DEFAULT_WEB_TITLE, webLogoUrl: 'test' },
       })
     );
 
-    const wrapper = shallow(<App />);
-    const route = wrapper.find('Route');
-    expect(route.length).toBe(2);
-    expect(route.at(0).prop('path')).toBe('/login');
-    const redirect = wrapper.find('Redirect');
-    expect(redirect.length).toBe(1);
-    expect(redirect.at(0).prop('to')).toBe('/login');
+    const [, LocationComponent] = renderLocationDisplay();
+
+    renderWithThemeAndRouter(
+      <>
+        <App /> <LocationComponent />
+      </>
+    );
+
+    await act(async () => jest.advanceTimersByTime(3000));
+    expect(screen.getByText('login.login')).toBeInTheDocument();
+    expect(screen.getByTestId('location-display')).toHaveTextContent('/login');
   });
 
-  test.skip('should render Nav and inner route when token is truthy and role is admin', () => {
+  test('should render Nav and inner route when token is truthy and role is admin', async () => {
     (useSelector as jest.Mock).mockImplementation((e) =>
       e({
         user: { token: 'testToken', role: SystemRole.admin },
         locale: { language: SupportLanguage.zhCN },
+        nav: { modalStatus: { [ModalName.SHOW_VERSION]: false } },
+        system: { webTitle: SQLE_DEFAULT_WEB_TITLE, webLogoUrl: 'test' },
       })
     );
-    const wrapper = shallow(<App />);
-    const Nav = wrapper.find('Nav');
-    expect(Nav.length).toBe(1);
-    const Switch = Nav.find('Switch');
-    expect(Switch.length).toBe(1);
-    const routes = Switch.find('Route');
-    expect(routes.length).toBe(12);
-    const redirect = Switch.find('Redirect');
-    expect(redirect.length).toBe(1);
-    expect(redirect.at(0).prop('to')).toBe('/');
-  });
 
-  test.skip('should render Nav and some inner route when token is truthy and role is not admin', () => {
-    (useSelector as jest.Mock).mockImplementation((e) =>
-      e({
-        user: { token: 'testToken', role: '' },
-        locale: { language: SupportLanguage.zhCN },
-      })
+    renderWithThemeAndRouter(
+      <>
+        <App />
+      </>
     );
-    const wrapper = shallow(<App />);
-    const Nav = wrapper.find('Nav');
-    expect(Nav.length).toBe(1);
-    const Switch = Nav.find('Switch');
-    expect(Switch.length).toBe(1);
-    const routes = Switch.find('Route');
-    expect(routes.length).toBe(10);
-    const redirect = Switch.find('Redirect');
-    expect(redirect.length).toBe(1);
-    expect(redirect.at(0).prop('to')).toBe('/');
+    await act(async () => jest.advanceTimersByTime(3000));
+    expect(getBySelector('.sqle-layout')).toBeInTheDocument();
   });
 
   test('should get user info when token is not empty', async () => {

@@ -63,7 +63,6 @@ const Login = () => {
         }
       });
   };
-
   const { run: getOauth2Tips, data: oauthConfig } = useRequest(
     () => configuration.getOauth2Tips().then((res) => res.data?.data ?? {}),
     {

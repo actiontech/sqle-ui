@@ -1,29 +1,8 @@
 import useCurrentUser from '.';
 import { SystemRole } from '../../data/common';
-import {
-  IManagementPermissionResV1,
-  IUserBindProjectResV1,
-} from '../../api/common';
 import { renderHook } from '@testing-library/react-hooks';
 import { useSelector } from 'react-redux';
-
-export const mockBindProjects: IUserBindProjectResV1[] = [
-  {
-    is_manager: true,
-    project_name: 'default',
-  },
-  {
-    is_manager: false,
-    project_name: 'test',
-  },
-];
-
-export const mockManagementPermissions: IManagementPermissionResV1[] = [
-  {
-    code: 1,
-    desc: '创建项目',
-  },
-];
+import { mockBindProjects, mockManagementPermissions } from './index.test.data';
 
 jest.mock('react-redux', () => ({
   ...jest.requireActual('react-redux'),

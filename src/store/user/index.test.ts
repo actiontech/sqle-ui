@@ -11,7 +11,7 @@ import StorageKey from '../../data/StorageKey';
 import {
   mockBindProjects,
   mockManagementPermissions,
-} from '../../hooks/useCurrentUser/index.test';
+} from '../../hooks/useCurrentUser/index.test.data';
 import { SupportTheme } from '../../theme';
 import LocalStorageWrapper from '../../utils/LocalStorageWrapper';
 

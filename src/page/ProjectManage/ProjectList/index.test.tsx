@@ -4,7 +4,6 @@ import { SystemRole } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
 import { ModalName } from '../../../data/ModalName';
 import StorageKey from '../../../data/StorageKey';
-import { mockManagementPermissions } from '../../../hooks/useCurrentUser/index.test';
 import { getBySelector } from '../../../testUtils/customQuery';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import EventEmitter from '../../../utils/EventEmitter';
@@ -15,6 +14,7 @@ import {
   mockUnarchiveProject,
 } from '../__test__/utils';
 import { useDispatch, useSelector } from 'react-redux';
+import { mockManagementPermissions } from '../../../hooks/useCurrentUser/index.test.data';
 
 jest.mock('react-redux', () => {
   return {

@@ -3,17 +3,16 @@ import { act, renderHook } from '@testing-library/react-hooks';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import useUserInfo from '.';
-import user from '../../api/user';
 import { SQLE_REDIRECT_KEY_PARAMS_NAME } from '../../data/common';
 import {
+  mockGetCurrentUser,
   resolveErrorThreeSecond,
-  resolveThreeSecond,
 } from '../../testUtils/mockRequest';
+import useNavigate from '../useNavigate';
 import {
   mockBindProjects,
   mockManagementPermissions,
-} from '../useCurrentUser/index.test';
-import useNavigate from '../useNavigate';
+} from '../useCurrentUser/index.test.data';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -29,20 +28,6 @@ jest.mock('react-redux', () => {
 });
 
 jest.mock('../../hooks/useNavigate', () => jest.fn());
-
-export const mockGetCurrentUser = () => {
-  const spy = jest.spyOn(user, 'getCurrentUserV1');
-
-  spy.mockImplementation(() =>
-    resolveThreeSecond({
-      user_name: 'test',
-      is_admin: '',
-      bind_projects: mockBindProjects,
-      management_permission_list: mockManagementPermissions,
-    })
-  );
-  return spy;
-};
 
 describe('test useUserInfo', () => {
   let getUserSpy: jest.SpyInstance;

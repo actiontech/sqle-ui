@@ -13,7 +13,10 @@ import {
 } from '../../../../api/common.enum';
 import task from '../../../../api/task';
 import workflow from '../../../../api/workflow';
-import { getBySelector } from '../../../../testUtils/customQuery';
+import {
+  getAllBySelector,
+  getBySelector,
+} from '../../../../testUtils/customQuery';
 import {
   resolveErrorThreeSecond,
   resolveThreeSecond,
@@ -539,15 +542,17 @@ describe('test AuditResultCollection', () => {
     global.Date.now = RealDate;
   });
 
-  test.skip('should jump to the corresponding order tab when clicking on overview table row', async () => {
-    render(
+  test('should jump to the corresponding order tab when clicking on overview table row', async () => {
+    mockGetSummaryOfInstanceTasks();
+    const { container } = render(
       <AuditResultCollection
         taskInfos={taskInfos}
-        auditResultActiveKey={activeKey}
+        auditResultActiveKey={OVERVIEW_TAB_KEY}
         setAuditResultActiveKey={mockSetAuditResultActiveKey}
         updateTaskRecordTotalNum={jest.fn()}
         showOverview={true}
         projectName={projectName}
+        workflowId={workflowId}
       />
     );
     await act(async () => jest.advanceTimersByTime(3000));
@@ -555,12 +560,14 @@ describe('test AuditResultCollection', () => {
     expect(mockSetAuditResultActiveKey).toBeCalledTimes(1);
     expect(mockSetAuditResultActiveKey).toBeCalledWith(OVERVIEW_TAB_KEY);
 
-    await act(async () =>
-      fireEvent.click(screen.getByText(workflowTasks[0].instance_name ?? ''))
-    );
+    expect(container).toMatchSnapshot();
 
+    fireEvent.click(getAllBySelector('.ant-table-row')[0]);
+    await act(async () => jest.advanceTimersByTime(0));
     expect(mockSetAuditResultActiveKey).toBeCalledTimes(2);
-    expect(mockSetAuditResultActiveKey).toBeCalledWith(
+
+    expect(mockSetAuditResultActiveKey).nthCalledWith(
+      2,
       workflowTasks[0].task_id?.toString()
     );
   });

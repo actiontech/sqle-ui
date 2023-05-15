@@ -3,9 +3,9 @@ import HeaderMenu from '../HeaderMenu';
 import { cleanup, fireEvent, screen } from '@testing-library/react';
 import { DEFAULT_PROJECT_NAME } from '../../../../../page/ProjectManage/ProjectDetail';
 import { SystemRole } from '../../../../../data/common';
-import { mockBindProjects } from '../../../../../hooks/useCurrentUser/index.test';
 import { useSelector } from 'react-redux';
 import useNavigate from '../../../../../hooks/useNavigate';
+import { mockBindProjects } from '../../../../../hooks/useCurrentUser/index.test.data';
 
 jest.mock('react-redux', () => ({
   ...jest.requireActual('react-redux'),

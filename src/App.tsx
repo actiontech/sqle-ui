@@ -21,6 +21,7 @@ import global from './api/global';
 import { updateWebTitleAndLog } from './store/system';
 import useNavigate from './hooks/useNavigate';
 import { ThemeProvider } from '@mui/system';
+import RouterAuth from './router/RouterAuth';
 
 //fix  https://github.com/actiontech/sqle/issues/1350
 export const Wrapper: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -58,7 +59,6 @@ function App() {
       );
     })
   );
-
   React.useEffect(() => {
     if (!!token) {
       getUserInfo();
@@ -77,7 +77,7 @@ function App() {
                 <Nav>
                   <Suspense fallback={<HeaderProgress />}>
                     <EmptyBox if={!getUserInfoLoading}>
-                      <>{elements}</>
+                      <RouterAuth>{elements}</RouterAuth>
                     </EmptyBox>
                   </Suspense>
                 </Nav>

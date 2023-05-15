@@ -10,11 +10,11 @@ import WhitelistList from '.';
 import audit_whitelist from '../../../api/audit_whitelist';
 import { SystemRole } from '../../../data/common';
 import EmitterKey from '../../../data/EmitterKey';
-import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
 import EventEmitter from '../../../utils/EventEmitter';
 import { WhitelistData } from '../__testData__';
 import { useDispatch, useSelector } from 'react-redux';
+import { mockBindProjects } from '../../../hooks/useCurrentUser/index.test.data';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
