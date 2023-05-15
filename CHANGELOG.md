@@ -5,3 +5,4 @@
 * [fix]: 修复订阅审核失败消息表单数据错误的问题 <https://github.com/actiontech/sqle-ui/pull/260>
 * [feature]: 添加数据源时根据数据源类型自动切换默认端口 <https://github.com/actiontech/sqle-ui/pull/263>
 * [test]: 完成遗留的单元测试问题 <https://github.com/actiontech/sqle-ui/pull/264>
+* [feature]: API服务里，工单执行完成后，可以提供一个回调地址去通知调用API的服务 <https://github.com/actiontech/sqle-ui/pull/266>
