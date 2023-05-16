@@ -18,8 +18,7 @@ import { PageFormLayout, ResponseCode } from '../../../data/common';
 
 type WebhookFormFields = {
   enable: boolean;
-  appId: string;
-  appSecret: string;
+  token: string;
   maxRetryTimes: number;
   retryIntervalSeconds: number;
   url: string;
@@ -28,7 +27,6 @@ type WebhookFormFields = {
 const DEFAULT_CONSTANT = {
   maxRetryTimes: 3,
   retryIntervalSeconds: 1,
-  appId: 'sqle',
 };
 
 const WebHook: React.FC = () => {
@@ -53,8 +51,7 @@ const WebHook: React.FC = () => {
     configuration
       .updateGlobalWebHookConfig({
         enable: values.enable,
-        app_id: values.appId,
-        app_secret: values.appSecret,
+        token: values.token,
         max_retry_times: values.maxRetryTimes ?? DEFAULT_CONSTANT.maxRetryTimes,
         retry_interval_seconds:
           values.retryIntervalSeconds ?? DEFAULT_CONSTANT.retryIntervalSeconds,
@@ -77,7 +74,7 @@ const WebHook: React.FC = () => {
     setEnable(!!webhookConfig?.enable);
     form.setFieldsValue({
       enable: !!webhookConfig?.enable,
-      appId: webhookConfig?.app_id || DEFAULT_CONSTANT.appId,
+      token: webhookConfig?.token,
       maxRetryTimes:
         webhookConfig?.max_retry_times ?? DEFAULT_CONSTANT.maxRetryTimes,
       //retry_interval_seconds 后端默认返回 0, 而这个值的范围为 1-5
@@ -150,13 +147,25 @@ const WebHook: React.FC = () => {
         form={form}
         onFinish={submit}
       >
-        <Form.Item
-          label={t('system.webhook.enableWebhookNotify')}
-          name="enable"
-          valuePropName="checked"
-        >
-          <Switch checked={enable} onChange={setEnable} />
+        <Form.Item label={t('system.webhook.enableWebhookNotify')}>
+          <Space size={20}>
+            <Form.Item noStyle name="enable" valuePropName="checked">
+              <Switch
+                checked={enable}
+                onChange={setEnable}
+                data-testid="enableButton"
+              />
+            </Form.Item>
+            <a
+              href="https://actiontech.github.io/sqle-docs/docs/user-manual/sys-configuration/webhook"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t('system.webhook.configDocs')}
+            </a>
+          </Space>
         </Form.Item>
+
         <Form.Item
           label="Webhook url"
           name="url"
@@ -166,37 +175,33 @@ const WebHook: React.FC = () => {
               type: 'url',
             },
           ]}
-          tooltip={t('system.webhook.webhookUrlTips')}
         >
           <Input />
         </Form.Item>
         <Form.Item
           label={t('system.webhook.maxRetryTimes')}
           name="maxRetryTimes"
-          tooltip={t('system.webhook.maxRetryTimesTips')}
+          rules={[
+            {
+              required: enable,
+            },
+          ]}
         >
           <InputNumber className="full-width-element" max={5} min={0} />
         </Form.Item>
         <Form.Item
           label={t('system.webhook.retryIntervalSeconds')}
           name="retryIntervalSeconds"
-          tooltip={t('system.webhook.retryIntervalSecondsTips')}
+          rules={[
+            {
+              required: enable,
+            },
+          ]}
         >
           <InputNumber className="full-width-element" min={1} max={5} />
         </Form.Item>
-        <Form.Item
-          label="App ID"
-          name="appId"
-          tooltip={t('system.webhook.appIdTips')}
-        >
+        <Form.Item label="token" name="token">
           <Input />
-        </Form.Item>
-        <Form.Item
-          label="App Secret"
-          name="appSecret"
-          tooltip={t('system.webhook.appSecretTips')}
-        >
-          <Input.Password />
         </Form.Item>
         <Form.Item label=" " colon={false}>
           <Space>

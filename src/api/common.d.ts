@@ -2420,15 +2420,13 @@ export interface IWeChatConfigurationResV1 {
 }
 
 export interface IWebHookConfigV1 {
-  app_id?: string;
-
-  app_secret?: string;
-
   enable?: boolean;
 
   max_retry_times?: number;
 
   retry_interval_seconds?: number;
+
+  token?: string;
 
   url?: string;
 }

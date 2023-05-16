@@ -55,8 +55,9 @@ describe('webhook', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should update wechat config after user input config form', async () => {
+  it('should update webhook config after user input config form', async () => {
     const getConfigSpy = mockGetWebhookConfig();
+    const updateSpy = mockUpdateWebhookConfig();
     const { container } = render(<Webhook />);
     await act(async () => jest.advanceTimersByTime(3000));
 
@@ -64,19 +65,16 @@ describe('webhook', () => {
 
     expect(container).toMatchSnapshot();
 
-    fireEvent.click(
-      screen.getByLabelText('system.webhook.enableWebhookNotify')
-    );
+    fireEvent.click(screen.getByTestId('enableButton'));
 
     fireEvent.input(screen.getByLabelText('Webhook url'), {
       target: { value: 'http://test.com' },
     });
 
-    fireEvent.input(screen.getByLabelText('App Secret'), {
+    fireEvent.input(screen.getByLabelText('token'), {
       target: { value: 'test' },
     });
 
-    const updateSpy = mockUpdateWebhookConfig();
     fireEvent.click(screen.getByText('common.submit'));
     await act(async () => jest.advanceTimersByTime(0));
 
@@ -85,8 +83,7 @@ describe('webhook', () => {
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
       enable: true,
-      app_id: 'sqle',
-      app_secret: 'test',
+      token: 'test',
       max_retry_times: 3,
       retry_interval_seconds: 1,
       url: 'http://test.com',
@@ -95,6 +92,36 @@ describe('webhook', () => {
 
     expect(container).toMatchSnapshot();
     expect(getConfigSpy).toBeCalledTimes(2);
+
+    cleanup();
+    updateSpy.mockClear();
+
+    render(<Webhook />);
+    fireEvent.click(screen.getByText('common.modify'));
+
+    fireEvent.input(screen.getByLabelText('system.webhook.maxRetryTimes'), {
+      target: {
+        value: undefined,
+      },
+    });
+
+    fireEvent.input(
+      screen.getByLabelText('system.webhook.retryIntervalSeconds'),
+      {
+        target: {
+          value: undefined,
+        },
+      }
+    );
+
+    fireEvent.click(screen.getByText('common.submit'));
+    await act(async () => jest.advanceTimersByTime(0));
+    expect(updateSpy).toBeCalledTimes(1);
+    expect(updateSpy).toBeCalledWith({
+      enable: false,
+      max_retry_times: 3,
+      retry_interval_seconds: 1,
+    });
   });
 
   it('should send test request when user input receiver id and submit request', async () => {

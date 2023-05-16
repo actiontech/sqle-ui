@@ -141,11 +141,7 @@ export default {
     test: '测试',
     testing: '正在向{{url}}推送测试信息...',
     testSuccess: '测试消息发送成功',
-    maxRetryTimesTips: '默认3次，取值范围0-5',
-    retryIntervalSecondsTips: '默认1秒，取值范围1-5',
-    appIdTips: '默认为 sqle。用于标识推送方，过滤非法请求',
-    appSecretTips: '用于标识推送方，过滤非法请求',
-    webhookUrlTips: '用于工单消息推送的 API 地址',
+    configDocs: 'webhook配置文档',
   },
 
   oauth: {

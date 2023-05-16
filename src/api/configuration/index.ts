@@ -52,7 +52,7 @@ import {
   ITestWeChatConfigurationV1Params,
   ITestWeChatConfigurationV1Return,
   IGetLogoParams,
-  IGetDriversV2Return,
+  IGetDriversV2Return
 } from './index.d';
 
 class ConfigurationService extends ServiceBase {
@@ -161,7 +161,7 @@ class ConfigurationService extends ServiceBase {
     config.headers = {
       ...headers,
 
-      'Content-Type': 'multipart/form-data',
+      'Content-Type': 'multipart/form-data'
     };
 
     const paramsData = new FormData();
@@ -186,7 +186,7 @@ class ConfigurationService extends ServiceBase {
     config.headers = {
       ...headers,
 
-      'Content-Type': 'multipart/form-data',
+      'Content-Type': 'multipart/form-data'
     };
 
     const paramsData = new FormData();
@@ -249,7 +249,7 @@ class ConfigurationService extends ServiceBase {
     config.headers = {
       ...headers,
 
-      'Content-Type': 'multipart/form-data',
+      'Content-Type': 'multipart/form-data'
     };
 
     const paramsData = new FormData();
