@@ -24,6 +24,9 @@ import {
   IGetSQLQueryConfigurationResV1,
   IGetSystemVariablesResV1,
   IUpdateSystemVariablesReqV1,
+  IGetWorkflowWebHookConfigResV1,
+  IWebHookConfigV1,
+  ITestWorkflowWebHookConfigResV1,
   IGetWeChatConfigurationResV1,
   IUpdateWeChatConfigurationReqV1,
   ITestWeChatConfigurationReqV1,
@@ -121,6 +124,16 @@ export interface IUpdateSystemVariablesV1Params
   extends IUpdateSystemVariablesReqV1 {}
 
 export interface IUpdateSystemVariablesV1Return extends IBaseRes {}
+
+export interface IGetGlobalWorkflowWebHookConfigReturn
+  extends IGetWorkflowWebHookConfigResV1 {}
+
+export interface IUpdateGlobalWebHookConfigParams extends IWebHookConfigV1 {}
+
+export interface IUpdateGlobalWebHookConfigReturn extends IBaseRes {}
+
+export interface ITestGlobalWorkflowWebHookConfigReturn
+  extends ITestWorkflowWebHookConfigResV1 {}
 
 export interface IGetWeChatConfigurationV1Return
   extends IGetWeChatConfigurationResV1 {}
