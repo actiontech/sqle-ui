@@ -6,6 +6,8 @@ export default {
   unknownError: '未知错误...',
   unknownStatus: '未知状态...',
 
+  copied: '复制成功',
+
   true: '是',
   false: '否',
   ok: '确认',

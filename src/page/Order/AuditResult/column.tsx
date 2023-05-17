@@ -24,28 +24,10 @@ import { checkTimeInWithMaintenanceTime } from '../Detail/OrderSteps/utils';
 import InstanceTasksStatus from './InstanceTasksStatus';
 import AuditResultInfo from './AuditResultInfo';
 import { ColumnGroupType, ColumnType } from 'antd/lib/table';
+import RenderExecuteSql from './RenderExecuteSql';
 
 export const expandedRowRender = (record: IAuditTaskSQLResV2) => (
   <AuditResultErrorMessage auditResult={record?.audit_result ?? []} />
-);
-
-const renderSqlColumn = (sql: string) => (
-  <Typography.Paragraph
-    copyable={true}
-    ellipsis={{
-      expandable: false,
-      tooltip: <pre className="pre-warp-break-all">{sql}</pre>,
-      // todo: 由于antd版本的原因，导致下面这样的写法在页面上会报错，待升级之后再验证是否可以使用下面的写法去替代全局的has伪类， Closes to issue 1427
-      // tooltip: {
-      //   overlay:() => <pre className="pre-warp-break-all">{sql}</pre>,
-      //   overlayClassName: 'sql-tooltip-width'
-      // },
-      rows: 10,
-    }}
-    className="margin-bottom-0"
-  >
-    {sql}
-  </Typography.Paragraph>
 );
 
 export const orderAuditResultColumn = (
@@ -67,10 +49,7 @@ export const orderAuditResultColumn = (
       title: () => t('audit.table.execSql'),
       width: 300,
       render: (sql?: string) => {
-        if (!!sql) {
-          return renderSqlColumn(sql);
-        }
-        return null;
+        return <RenderExecuteSql sql={sql} />;
       },
     },
     {
@@ -94,6 +73,20 @@ export const orderAuditResultColumn = (
       dataIndex: 'exec_result',
       title: () => t('audit.table.execResult'),
       width: 140,
+      render(execResult: string) {
+        return (
+          <Typography.Paragraph
+            ellipsis={{
+              expandable: false,
+              tooltip: execResult,
+              rows: 3,
+            }}
+            className="margin-bottom-0"
+          >
+            {execResult}
+          </Typography.Paragraph>
+        );
+      },
     },
     {
       dataIndex: 'rollback_sql',
@@ -105,10 +98,7 @@ export const orderAuditResultColumn = (
       ),
       width: 300,
       render: (sql?: string) => {
-        if (!!sql) {
-          return renderSqlColumn(sql);
-        }
-        return null;
+        return <RenderExecuteSql sql={sql} />;
       },
     },
     {

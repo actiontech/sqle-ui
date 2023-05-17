@@ -1,0 +1,1120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test RenderExecuteSql should match snapshot 1`] = `<div />`;
+
+exports[`test RenderExecuteSql should match snapshot 2`] = `
+<div>
+  <div
+    class="ant-space ant-space-horizontal ant-space-align-center"
+  >
+    <div
+      class="ant-space-item"
+      style="margin-right: 8px;"
+    >
+      <div
+        class="ant-typography ant-typography-ellipsis ant-typography-ellipsis-multiple-line margin-bottom-0"
+      >
+        <span>
+          
+  
+          <span
+            class="hljs-keyword"
+          >
+            select
+          </span>
+           
+          <span
+            class="hljs-built_in"
+          >
+            count
+          </span>
+          (
+          <span
+            class="hljs-operator"
+          >
+            *
+          </span>
+          ) 
+          <span
+            class="hljs-keyword"
+          >
+            from
+          </span>
+           (
+          <span
+            class="hljs-keyword"
+          >
+            SELECT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            DISTINCT
+          </span>
+           t.con_no 
+          <span
+            class="hljs-keyword"
+          >
+            AS
+          </span>
+           con_no    , 
+          <span
+            class="hljs-keyword"
+          >
+            CASE
+          </span>
+            
+          <span
+            class="hljs-keyword"
+          >
+            WHEN
+          </span>
+           tgua.atime 
+          <span
+            class="hljs-keyword"
+          >
+            IS
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NOT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NULL
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            THEN
+          </span>
+           tgua.atime 
+          <span
+            class="hljs-keyword"
+          >
+            WHEN
+          </span>
+           tcc.CTIME 
+          <span
+            class="hljs-keyword"
+          >
+            IS
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NOT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NULL
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            THEN
+          </span>
+           tcc.CTIME 
+          <span
+            class="hljs-keyword"
+          >
+            WHEN
+          </span>
+           bb.CTIME 
+          <span
+            class="hljs-keyword"
+          >
+            IS
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NOT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NULL
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            THEN
+          </span>
+           bb.CTIME  
+          <span
+            class="hljs-keyword"
+          >
+            END
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            AS
+          </span>
+           CTIME, t.PRO_METHOD 
+          <span
+            class="hljs-keyword"
+          >
+            AS
+          </span>
+           pro_method 
+          <span
+            class="hljs-keyword"
+          >
+            FROM
+          </span>
+           my_customer t 
+          <span
+            class="hljs-keyword"
+          >
+            LEFT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            OUTER
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            JOIN
+          </span>
+           first_ auth tgua 
+          <span
+            class="hljs-keyword"
+          >
+            ON
+          </span>
+           t.con_no 
+          <span
+            class="hljs-operator"
+          >
+            =
+          </span>
+           tgua.con_no 
+          <span
+            class="hljs-keyword"
+          >
+            AND
+          </span>
+           tgua.stat 
+          <span
+            class="hljs-operator"
+          >
+            =
+          </span>
+           
+          <span
+            class="hljs-number"
+          >
+            1
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            AND
+          </span>
+           tgua.type 
+          <span
+            class="hljs-operator"
+          >
+            =
+          </span>
+           
+          <span
+            class="hljs-string"
+          >
+            'C'
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            and
+          </span>
+           (tgua.atime
+          <span
+            class="hljs-operator"
+          >
+            &gt;=
+          </span>
+           
+          <span
+            class="hljs-string"
+          >
+            '2017-06-22'
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            and
+          </span>
+           tgua.atime
+          <span
+            class="hljs-operator"
+          >
+            &lt;
+          </span>
+           
+          <span
+            class="hljs-string"
+          >
+            '2017-06-23'
+          </span>
+          ) 
+          <span
+            class="hljs-keyword"
+          >
+            LEFT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            OUTER
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            JOIN
+          </span>
+           my_ contact tcc 
+          <span
+            class="hljs-keyword"
+          >
+            ON
+          </span>
+           t.con_no 
+          <span
+            class="hljs-operator"
+          >
+            =
+          </span>
+           tcc.con_no 
+          <span
+            class="hljs-keyword"
+          >
+            AND
+          </span>
+           tcc.NAME 
+          <span
+            class="hljs-keyword"
+          >
+            IS
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NOT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NULL
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            and
+          </span>
+           (tcc.ctime
+          <span
+            class="hljs-operator"
+          >
+            &gt;=
+          </span>
+           
+          <span
+            class="hljs-string"
+          >
+            '2017-06-22'
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            and
+          </span>
+           tcc.ctime
+          <span
+            class="hljs-operator"
+          >
+            &lt;
+          </span>
+           
+          <span
+            class="hljs-string"
+          >
+            '2017-06-23'
+          </span>
+          ) 
+          <span
+            class="hljs-keyword"
+          >
+            LEFT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            OUTER
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            JOIN
+          </span>
+           ( 
+          <span
+            class="hljs-keyword"
+          >
+            SELECT
+          </span>
+           tcp.con_no 
+          <span
+            class="hljs-keyword"
+          >
+            AS
+          </span>
+           con_no, tcai.CTIME 
+          <span
+            class="hljs-keyword"
+          >
+            AS
+          </span>
+           CTIME 
+          <span
+            class="hljs-keyword"
+          >
+            FROM
+          </span>
+           my_ person tcp 
+          <span
+            class="hljs-keyword"
+          >
+            INNER
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            JOIN
+          </span>
+           my_auth_info tcai 
+          <span
+            class="hljs-keyword"
+          >
+            ON
+          </span>
+           tcp.CNO 
+          <span
+            class="hljs-operator"
+          >
+            =
+          </span>
+           tcai.CNO 
+          <span
+            class="hljs-keyword"
+          >
+            and
+          </span>
+           (tcai.ctime
+          <span
+            class="hljs-operator"
+          >
+            &gt;=
+          </span>
+           
+          <span
+            class="hljs-string"
+          >
+            '2017-06-22'
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            and
+          </span>
+           tcai.ctime
+          <span
+            class="hljs-operator"
+          >
+            &lt;
+          </span>
+           
+          <span
+            class="hljs-string"
+          >
+            '2017-06-23'
+          </span>
+          ) ) bb 
+          <span
+            class="hljs-keyword"
+          >
+            ON
+          </span>
+           t.con_no 
+          <span
+            class="hljs-operator"
+          >
+            =
+          </span>
+           bb.con_no  
+          <span
+            class="hljs-keyword"
+          >
+            WHERE
+          </span>
+           t.PRO_METHOD 
+          <span
+            class="hljs-operator"
+          >
+            =
+          </span>
+           
+          <span
+            class="hljs-string"
+          >
+            'uc'
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            and
+          </span>
+           (tgua.con_no 
+          <span
+            class="hljs-keyword"
+          >
+            IS
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NOT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NULL
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            OR
+          </span>
+           tcc.con_no 
+          <span
+            class="hljs-keyword"
+          >
+            IS
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NOT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NULL
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            OR
+          </span>
+           bb.con_no 
+          <span
+            class="hljs-keyword"
+          >
+            IS
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NOT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NULL
+          </span>
+          )) pp 
+          <span
+            class="hljs-keyword"
+          >
+            order
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            by
+          </span>
+           pp.con_nosql2：
+          <span
+            class="hljs-keyword"
+          >
+            select
+          </span>
+           
+          <span
+            class="hljs-built_in"
+          >
+            count
+          </span>
+          (
+          <span
+            class="hljs-operator"
+          >
+            *
+          </span>
+          ) 
+          <span
+            class="hljs-keyword"
+          >
+            from
+          </span>
+            (
+          <span
+            class="hljs-keyword"
+          >
+            SELECT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            DISTINCT
+          </span>
+           t.con_no 
+          <span
+            class="hljs-keyword"
+          >
+            AS
+          </span>
+           con_no , 
+          <span
+            class="hljs-keyword"
+          >
+            CASE
+          </span>
+                                          
+          <span
+            class="hljs-keyword"
+          >
+            WHEN
+          </span>
+           tgua.atime 
+          <span
+            class="hljs-keyword"
+          >
+            IS
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NOT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NULL
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            THEN
+          </span>
+           tgua.atime             
+          <span
+            class="hljs-keyword"
+          >
+            WHEN
+          </span>
+           tcc.CTIME 
+          <span
+            class="hljs-keyword"
+          >
+            IS
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NOT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NULL
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            THEN
+          </span>
+           tcc.CTIME             
+          <span
+            class="hljs-keyword"
+          >
+            WHEN
+          </span>
+           bb.CTIME 
+          <span
+            class="hljs-keyword"
+          >
+            IS
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NOT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NULL
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            THEN
+          </span>
+           bb.CTIME 
+          <span
+            class="hljs-keyword"
+          >
+            END
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            AS
+          </span>
+           CTIME, t.PRO_METHOD 
+          <span
+            class="hljs-keyword"
+          >
+            AS
+          </span>
+           pro_method 
+          <span
+            class="hljs-keyword"
+          >
+            FROM
+          </span>
+           my_customer t 
+          <span
+            class="hljs-keyword"
+          >
+            LEFT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            OUTER
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            JOIN
+          </span>
+           first_ auth tgua 
+          <span
+            class="hljs-keyword"
+          >
+            ON
+          </span>
+           t.con_no 
+          <span
+            class="hljs-operator"
+          >
+            =
+          </span>
+           tgua.con_no 
+          <span
+            class="hljs-keyword"
+          >
+            AND
+          </span>
+           tgua.status 
+          <span
+            class="hljs-operator"
+          >
+            =
+          </span>
+           
+          <span
+            class="hljs-number"
+          >
+            1
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            AND
+          </span>
+           tgua.type 
+          <span
+            class="hljs-operator"
+          >
+            =
+          </span>
+           
+          <span
+            class="hljs-string"
+          >
+            'C'
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            LEFT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            OUTER
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            JOIN
+          </span>
+           my_ contact tcc 
+          <span
+            class="hljs-keyword"
+          >
+            ON
+          </span>
+           t.con_no 
+          <span
+            class="hljs-operator"
+          >
+            =
+          </span>
+           tcc.con_no 
+          <span
+            class="hljs-keyword"
+          >
+            AND
+          </span>
+           tcc.NAME 
+          <span
+            class="hljs-keyword"
+          >
+            IS
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NOT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NULL
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            LEFT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            OUTER
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            JOIN
+          </span>
+           ( 
+          <span
+            class="hljs-keyword"
+          >
+            SELECT
+          </span>
+           tcp.con_no 
+          <span
+            class="hljs-keyword"
+          >
+            AS
+          </span>
+           con_no, tcai.CTIME 
+          <span
+            class="hljs-keyword"
+          >
+            AS
+          </span>
+           CTIME 
+          <span
+            class="hljs-keyword"
+          >
+            FROM
+          </span>
+           my_ person tcp 
+          <span
+            class="hljs-keyword"
+          >
+            INNER
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            JOIN
+          </span>
+           my_auth_info tcai 
+          <span
+            class="hljs-keyword"
+          >
+            ON
+          </span>
+           tcp.CNO 
+          <span
+            class="hljs-operator"
+          >
+            =
+          </span>
+           tcai.CNO ) bb 
+          <span
+            class="hljs-keyword"
+          >
+            ON
+          </span>
+           t.con_no 
+          <span
+            class="hljs-operator"
+          >
+            =
+          </span>
+           bb.con_no 
+          <span
+            class="hljs-keyword"
+          >
+            WHERE
+          </span>
+           t.pro_method 
+          <span
+            class="hljs-operator"
+          >
+            =
+          </span>
+           
+          <span
+            class="hljs-string"
+          >
+            'uc'
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            and
+          </span>
+           (tgua.con_no 
+          <span
+            class="hljs-keyword"
+          >
+            IS
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NOT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NULL
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            OR
+          </span>
+           tcc.con_no 
+          <span
+            class="hljs-keyword"
+          >
+            IS
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NOT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NULL
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            OR
+          </span>
+           bb.con_no 
+          <span
+            class="hljs-keyword"
+          >
+            IS
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NOT
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            NULL
+          </span>
+          )) p 
+          <span
+            class="hljs-keyword"
+          >
+            where
+          </span>
+           CTIME
+          <span
+            class="hljs-operator"
+          >
+            &gt;=
+          </span>
+           
+          <span
+            class="hljs-string"
+          >
+            '2017-06-22'
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            and
+          </span>
+           CTIME
+          <span
+            class="hljs-operator"
+          >
+            &lt;
+          </span>
+           
+          <span
+            class="hljs-string"
+          >
+            '2017-06-23'
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            order
+          </span>
+           
+          <span
+            class="hljs-keyword"
+          >
+            by
+          </span>
+           con_no 
+        </span>
+      </div>
+    </div>
+    <div
+      class="ant-space-item"
+    >
+      <div
+        class="actiontech-copy "
+      >
+        <span
+          aria-label="copy"
+          class="anticon anticon-copy"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="copy"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M832 64H296c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h496v688c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V96c0-17.7-14.3-32-32-32zM704 192H192c-17.7 0-32 14.3-32 32v530.7c0 8.5 3.4 16.6 9.4 22.6l173.3 173.3c2.2 2.2 4.7 4 7.4 5.5v1.9h4.2c3.5 1.3 7.2 2 11 2H704c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32zM350 856.2L263.9 770H350v86.2zM664 888H414V746c0-22.1-17.9-40-40-40H232V264h432v624z"
+            />
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

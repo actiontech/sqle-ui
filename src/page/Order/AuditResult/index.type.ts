@@ -67,3 +67,7 @@ export type MaintenanceTimeInfoType = Array<{
   instanceName: string;
   maintenanceTime: IMaintenanceTimeResV1[];
 }>;
+
+export type RenderExecuteSqlProps = {
+  sql?: string;
+};
