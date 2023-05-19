@@ -4,6 +4,7 @@ import { formatTime } from '../../../utils/Common';
 import { IWorkflowDetailResV1 } from '../../../api/common';
 import EmptyBox from '../../../components/EmptyBox';
 import { Link } from '../../../components/Link';
+import { renderOrderDesc } from '../../Order/List/column';
 
 export const commonColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
   const column: TableColumn<IWorkflowDetailResV1> = [
@@ -21,12 +22,12 @@ export const commonColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
           </EmptyBox>
         );
       },
-      width: 'auto',
+      width: 400,
     },
     {
       dataIndex: 'project_name',
       title: () => t('projectManage.projectForm.projectName'),
-      width: 'auto',
+      width: 300,
       render: (projectName) => {
         return (
           <EmptyBox if={!!projectName} defaultNode={projectName}>
@@ -38,7 +39,8 @@ export const commonColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
     {
       dataIndex: 'desc',
       title: () => t('order.order.desc'),
-      width: 'auto',
+      width: 600,
+      render: (desc: string) => renderOrderDesc(desc, 600),
     },
     {
       dataIndex: 'create_time',

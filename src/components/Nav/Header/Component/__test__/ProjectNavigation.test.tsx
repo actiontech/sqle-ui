@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import useNavigate from '../../../../../hooks/useNavigate';
 import { mockBindProjects } from '../../../../../hooks/useCurrentUser/index.test.data';
 import { fireEvent, screen } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
 
 const children = <div>test</div>;
 
@@ -18,14 +19,6 @@ jest.mock('react-redux', () => ({
 }));
 
 jest.mock('../../../../../hooks/useNavigate', () => jest.fn());
-
-function sleep(time: number) {
-  return new Promise<void>((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, time);
-  });
-}
 
 describe('test ProjectNavigation', () => {
   let errorSpy!: jest.SpyInstance;
@@ -57,12 +50,14 @@ describe('test ProjectNavigation', () => {
       });
     });
     (useNavigate as jest.Mock).mockImplementation(() => navigateSpy);
+    jest.useFakeTimers();
   });
 
   afterEach(() => {
     jest.clearAllMocks();
     jest.clearAllTimers();
     window.localStorage.clear();
+    jest.useRealTimers();
   });
 
   test('should match snapshot', async () => {
@@ -91,7 +86,7 @@ describe('test ProjectNavigation', () => {
     fireEvent.change(screen.getAllByTestId('search-project-input')[0], {
       target: { value: 'd' },
     });
-    await sleep(400);
+    await act(() => jest.advanceTimersByTime(400));
     expect(
       screen.queryAllByText(
         'projectManage.projectList.searchProject.notRecentlyOpenedProjects'
@@ -125,7 +120,7 @@ describe('test ProjectNavigation', () => {
 
     expect(screen.getAllByTestId('search-loading')[0]).toBeInTheDocument();
 
-    await sleep(400);
+    await act(() => jest.advanceTimersByTime(400));
 
     expect(screen.queryAllByTestId('search-loading')[0]).toBeUndefined();
     expect(baseElement).toMatchSnapshot();
@@ -134,7 +129,7 @@ describe('test ProjectNavigation', () => {
       target: { value: '' },
     });
 
-    await sleep(400);
+    await act(() => jest.advanceTimersByTime(400));
 
     expect(
       screen.getAllByText(
@@ -148,7 +143,7 @@ describe('test ProjectNavigation', () => {
 
     expect(screen.getAllByTestId('search-loading')[0]).toBeInTheDocument();
 
-    await sleep(400);
+    await act(() => jest.advanceTimersByTime(400));
 
     fireEvent.click(screen.getAllByText('default')[0]);
 

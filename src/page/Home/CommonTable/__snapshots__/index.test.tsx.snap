@@ -26,13 +26,13 @@ exports[`test Home/CommonTable should match snapshot 1`] = `
               >
                 <colgroup>
                   <col
-                    style="width: auto;"
+                    style="width: 400px;"
                   />
                   <col
-                    style="width: auto;"
+                    style="width: 300px;"
                   />
                   <col
-                    style="width: auto;"
+                    style="width: 600px;"
                   />
                   <col
                     style="width: auto;"
@@ -134,7 +134,12 @@ exports[`test Home/CommonTable should match snapshot 1`] = `
                     <td
                       class="ant-table-cell"
                     >
-                      desc1
+                      <div
+                        class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line margin-bottom-0"
+                        style="max-width: 600px;"
+                      >
+                        desc1
+                      </div>
                     </td>
                     <td
                       class="ant-table-cell"
@@ -289,13 +294,13 @@ exports[`test Home/CommonTable should render error info when error has a value 1
             >
               <colgroup>
                 <col
-                  style="width: auto;"
+                  style="width: 400px;"
                 />
                 <col
-                  style="width: auto;"
+                  style="width: 300px;"
                 />
                 <col
-                  style="width: auto;"
+                  style="width: 600px;"
                 />
                 <col
                   style="width: auto;"
@@ -445,13 +450,13 @@ exports[`test Home/CommonTable should render spin when loading equal true 1`] = 
               >
                 <colgroup>
                   <col
-                    style="width: auto;"
+                    style="width: 400px;"
                   />
                   <col
-                    style="width: auto;"
+                    style="width: 300px;"
                   />
                   <col
-                    style="width: auto;"
+                    style="width: 600px;"
                   />
                   <col
                     style="width: auto;"
@@ -553,7 +558,12 @@ exports[`test Home/CommonTable should render spin when loading equal true 1`] = 
                     <td
                       class="ant-table-cell"
                     >
-                      desc1
+                      <div
+                        class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line margin-bottom-0"
+                        style="max-width: 600px;"
+                      >
+                        desc1
+                      </div>
                     </td>
                     <td
                       class="ant-table-cell"

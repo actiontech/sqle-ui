@@ -5,6 +5,7 @@ import OrderStatusTag from '../../../components/OrderStatusTag';
 import { t } from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import { formatTime } from '../../../utils/Common';
+import { renderOrderDesc } from '../../Order/List/column';
 
 export const customColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
   const columns: TableColumn<IWorkflowDetailResV1> = [
@@ -22,12 +23,12 @@ export const customColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
           </EmptyBox>
         );
       },
-      width: 'auto',
+      width: 400,
     },
     {
       dataIndex: 'project_name',
       title: () => t('projectManage.projectForm.projectName'),
-      width: 'auto',
+      width: 300,
       render: (projectName) => {
         return (
           <EmptyBox if={projectName} defaultNode={projectName}>
@@ -39,7 +40,8 @@ export const customColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
     {
       dataIndex: 'desc',
       title: () => t('order.order.desc'),
-      width: 'auto',
+      width: 600,
+      render: (desc: string) => renderOrderDesc(desc, 600),
     },
     {
       dataIndex: 'create_time',

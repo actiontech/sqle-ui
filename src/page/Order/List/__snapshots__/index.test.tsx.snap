@@ -4266,10 +4266,7 @@ exports[`Order/List should render order list by response data 2`] = `
                               <td
                                 class="ant-table-cell"
                               >
-                                <span
-                                  class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                                  style="max-width: 300px;"
-                                />
+                                --
                               </td>
                               <td
                                 class="ant-table-cell"

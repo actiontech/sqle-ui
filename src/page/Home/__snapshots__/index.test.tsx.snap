@@ -358,13 +358,13 @@ exports[`Home should match snapshot 1`] = `
                                 >
                                   <colgroup>
                                     <col
-                                      style="width: auto;"
+                                      style="width: 400px;"
                                     />
                                     <col
-                                      style="width: auto;"
+                                      style="width: 300px;"
                                     />
                                     <col
-                                      style="width: auto;"
+                                      style="width: 600px;"
                                     />
                                     <col
                                       style="width: auto;"
@@ -728,13 +728,13 @@ exports[`Home should match snapshot 1`] = `
                                 >
                                   <colgroup>
                                     <col
-                                      style="width: auto;"
+                                      style="width: 400px;"
                                     />
                                     <col
-                                      style="width: auto;"
+                                      style="width: 300px;"
                                     />
                                     <col
-                                      style="width: auto;"
+                                      style="width: 600px;"
                                     />
                                     <col
                                       style="width: auto;"
@@ -923,13 +923,13 @@ exports[`Home should match snapshot 1`] = `
                         >
                           <colgroup>
                             <col
-                              style="width: auto;"
+                              style="width: 400px;"
                             />
                             <col
-                              style="width: auto;"
+                              style="width: 300px;"
                             />
                             <col
-                              style="width: auto;"
+                              style="width: 600px;"
                             />
                             <col />
                             <col

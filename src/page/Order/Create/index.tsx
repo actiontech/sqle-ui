@@ -37,6 +37,10 @@ import { Link } from '../../../components/Link';
 
 export const workflowNameRule = (): FormValidatorRule => {
   return (_, value) => {
+    const startReg = /^[\u4e00-\u9fa5a-zA-Z]/;
+    if (!startReg.test(value)) {
+      return Promise.reject(t('common.form.rule.startWithWords'));
+    }
     const reg = /^[\u4e00-\u9fa5_a-zA-Z0-9_-]*$/;
     if (!reg.test(value)) {
       return Promise.reject(t('order.createOrder.workflowNameRule'));
