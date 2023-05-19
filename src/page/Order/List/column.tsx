@@ -1,9 +1,30 @@
-import { Tag, Tooltip, Typography } from 'antd';
+import { Tag, Typography } from 'antd';
 import { t } from '../../../locale';
 import { IWorkflowDetailResV1 } from '../../../api/common';
 import OrderStatusTag from '../../../components/OrderStatusTag';
 import { TableColumn } from '../../../types/common.type';
 import { formatTime } from '../../../utils/Common';
+
+export const renderOrderDesc = (desc?: string, maxWidth = 300) => {
+  if (!desc) {
+    return '--';
+  }
+  return (
+    <Typography.Paragraph
+      style={{ maxWidth }}
+      className="margin-bottom-0"
+      ellipsis={{
+        expandable: false,
+        tooltip: (
+          <span>{desc.length > 200 ? `${desc.slice(0, 200)}...` : desc}</span>
+        ),
+        rows: 1,
+      }}
+    >
+      {desc}
+    </Typography.Paragraph>
+  );
+};
 
 export const orderListColumn = (): TableColumn<IWorkflowDetailResV1> => {
   return [
@@ -14,15 +35,7 @@ export const orderListColumn = (): TableColumn<IWorkflowDetailResV1> => {
     {
       dataIndex: 'desc',
       title: () => t('order.order.desc'),
-      render: (text) => {
-        return (
-          <Tooltip overlay={text}>
-            <Typography.Text style={{ maxWidth: 300 }} ellipsis={true}>
-              {text}
-            </Typography.Text>
-          </Tooltip>
-        );
-      },
+      render: (desc: string) => renderOrderDesc(desc),
     },
     {
       dataIndex: 'create_time',

@@ -7,7 +7,7 @@ const useBackendTable = () => {
   ): React.ReactNode => {
     return text ? (
       <div style={{ minWidth: 40 }}>
-        <Typography.Paragraph copyable={{ text }}>
+        <Typography.Paragraph>
           <Tooltip title={text}>
             <Typography.Text style={{ maxWidth: 300 }} ellipsis={true}>
               {text}

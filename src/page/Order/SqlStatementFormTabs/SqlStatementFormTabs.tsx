@@ -55,17 +55,6 @@ const SqlStatementFormTabs: React.ForwardRefRenderFunction<
         onChange={tabsChangeHandle}
         items={tabItems}
       />
-      {/* {sqlStatementInfo.map((v) => {
-          return (
-            <Tabs.TabPane key={v.key} tab={v.instanceName}>
-              <SqlStatementForm
-                fieldName={v.key}
-                sqlStatement={v.sql}
-                {...props}
-              />
-            </Tabs.TabPane>
-          );
-        })} */}
     </>
   );
 };

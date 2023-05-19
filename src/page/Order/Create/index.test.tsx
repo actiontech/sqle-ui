@@ -541,18 +541,26 @@ describe('Order/Create', () => {
     expect(message).toBe('');
 
     try {
-      await check({} as any, '123456', {} as any);
+      await check({} as any, '测试数据源_123456-orderName', {} as any);
     } catch (error) {
       message = error as any as string;
     }
     expect(message).toBe('');
 
     try {
-      await check({} as any, '测试数据源_123456-orderName', {} as any);
+      await check({} as any, '123456', {} as any);
     } catch (error) {
       message = error as any as string;
     }
-    expect(message).toBe('');
+    expect(message).toBe('common.form.rule.startWithWords');
+    message = '';
+
+    try {
+      await check({} as any, '_123测试数据源', {} as any);
+    } catch (error) {
+      message = error as any as string;
+    }
+    expect(message).toBe('common.form.rule.startWithWords');
 
     try {
       await check({} as any, '测试数据源_123456-orderName*', {} as any);
