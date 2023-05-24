@@ -12,6 +12,7 @@ import OrderStatusTag from '../../../../components/OrderStatusTag';
 import { IReduxState } from '../../../../store';
 import { formatTime } from '../../../../utils/Common';
 import { ActionNodeType, OrderStepsProps, StepStateStatus } from './index.type';
+import EmptyBox from '../../../../components/EmptyBox';
 
 const stepStateStatus: StepStateStatus = {
   [WorkflowStepResV2StateEnum.initialized]: {
@@ -126,6 +127,7 @@ export const useGenerateOrderStepInfo = ({
       batchSqlExecuteNode,
       rejectFullNode,
       finishNode,
+      terminateNode,
     }: ActionNodeType
   ) => {
     const genRejectedNode = () => {
@@ -203,9 +205,17 @@ export const useGenerateOrderStepInfo = ({
       if (orderStateIsApproved(step.state)) {
         return (
           <span>
-            {t('order.operator.status')}
-            ：
-            <OrderStatusTag status={currentOrderStatus} />
+            {t('order.operator.status')}：
+            <Space>
+              <OrderStatusTag status={currentOrderStatus} />
+              <EmptyBox
+                if={
+                  currentOrderStatus === WorkflowRecordResV2StatusEnum.executing
+                }
+              >
+                {terminateNode}
+              </EmptyBox>
+            </Space>
           </span>
         );
       }

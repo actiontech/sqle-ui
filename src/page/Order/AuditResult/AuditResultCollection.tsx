@@ -6,6 +6,7 @@ import { auditResultOverviewColumn } from './column';
 import workflow from '../../../api/workflow';
 import {
   IExecuteOneTaskOnWorkflowV2Params,
+  ITerminateSingleTaskByWorkflowV1Params,
   IUpdateWorkflowScheduleV2Params,
 } from '../../../api/workflow/index.d';
 import { ResponseCode } from '../../../data/common';
@@ -63,17 +64,29 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
   );
 
   const sqlExecuteHandle = (taskId: string) => {
-    if (!workflowId) {
-      return;
-    }
     const param: IExecuteOneTaskOnWorkflowV2Params = {
-      workflow_id: workflowId,
+      workflow_id: workflowId ?? '',
       task_id: taskId,
       project_name: projectName,
     };
     workflow.executeOneTaskOnWorkflowV2(param).then((res) => {
       if (res.data.code === ResponseCode.SUCCESS) {
         message.success(t('order.status.finished'));
+        refreshOverview();
+        refreshOrder?.();
+      }
+    });
+  };
+
+  const sqlTerminateHandle = (taskId: string) => {
+    const param: ITerminateSingleTaskByWorkflowV1Params = {
+      workflow_id: workflowId ?? '',
+      task_id: taskId,
+      project_name: projectName,
+    };
+    workflow.terminateSingleTaskByWorkflowV1(param).then((res) => {
+      if (res.data.code === ResponseCode.SUCCESS) {
+        message.success(t('order.operator.terminateSuccessTips'));
         refreshOverview();
         refreshOrder?.();
       }
@@ -144,6 +157,7 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
           loading={loading}
           columns={auditResultOverviewColumn(
             sqlExecuteHandle,
+            sqlTerminateHandle,
             openScheduleModalAndSetCurrentTask,
             scheduleTimeHandle,
             username,

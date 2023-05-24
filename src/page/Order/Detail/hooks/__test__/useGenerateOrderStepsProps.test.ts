@@ -47,12 +47,14 @@ describe('test Order/Detail/useGenerateOrderStepsProps', () => {
   let executeTasksOnWorkflowSpy: jest.SpyInstance;
   let rejectWorkflowSpy: jest.SpyInstance;
   let batchCompleteWorkflowSpy: jest.SpyInstance;
+  let terminateMultipleTaskByWorkflowSpy: jest.SpyInstance;
 
   beforeEach(() => {
     approveWorkflowSpy = mockApproveWorkflow();
     executeTasksOnWorkflowSpy = mockExecuteTasksOnWorkflow();
     rejectWorkflowSpy = mockRejectWorkflow();
     batchCompleteWorkflowSpy = mockBatchCompleteWorkflow();
+    terminateMultipleTaskByWorkflowSpy = mockTerminateMultipleTaskByWorkflow();
     jest.useFakeTimers();
   });
 
@@ -70,6 +72,12 @@ describe('test Order/Detail/useGenerateOrderStepsProps', () => {
 
   const mockExecuteTasksOnWorkflow = () => {
     const spy = jest.spyOn(workflow, 'executeTasksOnWorkflowV2');
+    spy.mockImplementation(() => resolveThreeSecond({}));
+    return spy;
+  };
+
+  const mockTerminateMultipleTaskByWorkflow = () => {
+    const spy = jest.spyOn(workflow, 'terminateMultipleTaskByWorkflowV1');
     spy.mockImplementation(() => resolveThreeSecond({}));
     return spy;
   };
@@ -132,6 +140,27 @@ describe('test Order/Detail/useGenerateOrderStepsProps', () => {
 
     expect(
       screen.getByText('order.operator.executingTips')
+    ).toBeInTheDocument();
+    expect(refreshOrder).toBeCalledTimes(1);
+    expect(refreshTask).toBeCalledTimes(1);
+    expect(refreshOverviewAction).toBeCalledTimes(1);
+    await act(async () => jest.advanceTimersByTime(3000));
+  });
+
+  test('should be call refreshOrder, refreshTask and refreshOverviewAction when executed terminate', async () => {
+    const { result } = renderHook(() => useGenerateOrderStepsProps(hooksParam));
+    expect(terminateMultipleTaskByWorkflowSpy).toBeCalledTimes(0);
+
+    result.current.terminate();
+    expect(terminateMultipleTaskByWorkflowSpy).toBeCalledTimes(1);
+    expect(terminateMultipleTaskByWorkflowSpy).toBeCalledWith({
+      workflow_id: workflowId,
+      project_name: projectName,
+    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    expect(
+      screen.getByText('order.operator.terminateSuccessTips')
     ).toBeInTheDocument();
     expect(refreshOrder).toBeCalledTimes(1);
     expect(refreshTask).toBeCalledTimes(1);

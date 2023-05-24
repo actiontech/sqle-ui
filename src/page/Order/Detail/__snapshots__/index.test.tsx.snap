@@ -851,29 +851,11 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            <div
-                                              class="ant-space ant-space-horizontal ant-space-align-center"
+                                            <a
+                                              class="ant-typography ant-typography-danger"
                                             >
-                                              <div
-                                                class="ant-space-item"
-                                                style="margin-right: 8px;"
-                                              >
-                                                <a
-                                                  class="ant-typography ant-typography-disabled"
-                                                >
-                                                  order.auditResultCollection.table.sqlExecute
-                                                </a>
-                                              </div>
-                                              <div
-                                                class="ant-space-item"
-                                              >
-                                                <a
-                                                  class="ant-typography ant-typography-disabled"
-                                                >
-                                                  order.auditResultCollection.table.scheduleTime
-                                                </a>
-                                              </div>
-                                            </div>
+                                              order.operator.terminate
+                                            </a>
                                           </td>
                                         </tr>
                                       </tbody>
@@ -2994,29 +2976,11 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            <div
-                                              class="ant-space ant-space-horizontal ant-space-align-center"
+                                            <a
+                                              class="ant-typography ant-typography-danger"
                                             >
-                                              <div
-                                                class="ant-space-item"
-                                                style="margin-right: 8px;"
-                                              >
-                                                <a
-                                                  class="ant-typography ant-typography-disabled"
-                                                >
-                                                  order.auditResultCollection.table.sqlExecute
-                                                </a>
-                                              </div>
-                                              <div
-                                                class="ant-space-item"
-                                              >
-                                                <a
-                                                  class="ant-typography ant-typography-disabled"
-                                                >
-                                                  order.auditResultCollection.table.scheduleTime
-                                                </a>
-                                              </div>
-                                            </div>
+                                              order.operator.terminate
+                                            </a>
                                           </td>
                                         </tr>
                                       </tbody>
@@ -3899,29 +3863,11 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            <div
-                                              class="ant-space ant-space-horizontal ant-space-align-center"
+                                            <a
+                                              class="ant-typography ant-typography-danger"
                                             >
-                                              <div
-                                                class="ant-space-item"
-                                                style="margin-right: 8px;"
-                                              >
-                                                <a
-                                                  class="ant-typography ant-typography-disabled"
-                                                >
-                                                  order.auditResultCollection.table.sqlExecute
-                                                </a>
-                                              </div>
-                                              <div
-                                                class="ant-space-item"
-                                              >
-                                                <a
-                                                  class="ant-typography ant-typography-disabled"
-                                                >
-                                                  order.auditResultCollection.table.scheduleTime
-                                                </a>
-                                              </div>
-                                            </div>
+                                              order.operator.terminate
+                                            </a>
                                           </td>
                                         </tr>
                                       </tbody>

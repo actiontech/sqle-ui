@@ -74,6 +74,29 @@ const useGenerateOrderStepsProps = ({
     workflowId,
   ]);
 
+  const terminate = useCallback(async () => {
+    return workflow
+      .terminateMultipleTaskByWorkflowV1({
+        workflow_id: workflowId,
+        project_name: projectName,
+      })
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          message.success(t('order.operator.terminateSuccessTips'));
+          refreshOrder();
+          refreshTask();
+          refreshOverviewAction();
+        }
+      });
+  }, [
+    projectName,
+    refreshOrder,
+    refreshOverviewAction,
+    refreshTask,
+    t,
+    workflowId,
+  ]);
+
   const reject = useCallback(
     async (reason: string, stepId: number) => {
       return workflow
@@ -164,6 +187,7 @@ const useGenerateOrderStepsProps = ({
     tasksStatusNumber,
     getOverviewListSuccessHandle,
     complete,
+    terminate,
   };
 };
 

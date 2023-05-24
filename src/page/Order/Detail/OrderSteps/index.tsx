@@ -48,6 +48,11 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     { setTrue: completeStart, setFalse: completeFinish },
   ] = useBoolean();
 
+  const [
+    terminateLoading,
+    { setTrue: terminateStart, setFalse: terminateFinish },
+  ] = useBoolean();
+
   const {
     generateStepTypeString,
     generateActionNode,
@@ -58,6 +63,11 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
   const pass = (stepId: number) => {
     passStart();
     props.pass(stepId).finally(passFinish);
+  };
+
+  const terminate = () => {
+    terminateStart();
+    props.terminate().finally(terminateFinish);
   };
 
   const handleClickRejectButton = (stepId: number) => {
@@ -141,6 +151,21 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
     </Popconfirm>
   );
 
+  const terminateNode = (
+    <Popconfirm
+      title={t('order.operator.terminateConfirmTips')}
+      onConfirm={terminate}
+      disabled={terminateLoading}
+      overlayClassName="popconfirm-small"
+      placement="topRight"
+      okText={t('common.ok')}
+    >
+      <Button loading={terminateLoading} danger={true}>
+        {t('order.operator.terminate')}
+      </Button>
+    </Popconfirm>
+  );
+
   const maintenanceTimeInfoNode = (
     <EmptyBox if={!checkInTimeWithMaintenanceTimeInfo(moment())}>
       <div>
@@ -180,7 +205,6 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
       {t('order.operator.modifySql')}
     </Button>
   );
-
   return (
     <>
       <Timeline>
@@ -214,6 +238,7 @@ const OrderSteps: React.FC<OrderStepsProps> = (props) => {
             rejectFullNode,
             maintenanceTimeInfoNode,
             finishNode,
+            terminateNode,
           });
 
           const operateInfoNode = generateOperateInfo(step);

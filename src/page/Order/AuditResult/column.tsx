@@ -10,7 +10,7 @@ import {
   GetWorkflowTasksItemV2StatusEnum,
   WorkflowRecordResV2StatusEnum,
 } from '../../../api/common.enum';
-import { getAuditTaskSQLsV1FilterExecStatusEnum } from '../../../api/task/index.enum';
+import { getAuditTaskSQLsV2FilterExecStatusEnum } from '../../../api/task/index.enum';
 import AuditResultErrorMessage from '../../../components/AuditResultErrorMessage';
 import EditText from '../../../components/EditText/EditText';
 import EmptyBox from '../../../components/EmptyBox';
@@ -64,7 +64,7 @@ export const orderAuditResultColumn = (
     {
       dataIndex: 'exec_status',
       title: () => t('audit.table.execStatus'),
-      render: (status: getAuditTaskSQLsV1FilterExecStatusEnum) => {
+      render: (status: getAuditTaskSQLsV2FilterExecStatusEnum) => {
         return status ? t(execStatusDictionary[status]) : '';
       },
       width: 100,
@@ -139,6 +139,7 @@ export const orderAuditResultColumn = (
 
 export const auditResultOverviewColumn: (
   sqlExecuteHandle: (taskId: string) => void,
+  sqlTerminateHandle: (taskId: string) => void,
   openScheduleModalAndSetCurrentTask: (record: IGetWorkflowTasksItemV2) => void,
   scheduleTimeHandle: (
     scheduleTime?: string | undefined,
@@ -148,6 +149,7 @@ export const auditResultOverviewColumn: (
   orderStatus?: WorkflowRecordResV2StatusEnum
 ) => TableColumn<IGetWorkflowTasksItemV2, 'operator'> = (
   sqlExecuteHandle,
+  sqlTerminateHandle,
   openScheduleModalAndSetCurrentTask,
   scheduleTimeHandle,
   currentUsername,
@@ -262,6 +264,42 @@ export const auditResultOverviewColumn: (
       title: () => t('common.operate'),
       render: (_, record) => {
         const taskId = record.task_id?.toString() ?? '';
+        if (record.status === GetWorkflowTasksItemV2StatusEnum.executing) {
+          return (
+            <Popconfirm
+              title={t('order.operator.terminateConfirmTips')}
+              overlayClassName="popconfirm-small"
+              placement="topRight"
+              okText={t('common.ok')}
+              disabled={
+                !record.current_step_assignee_user_name_list?.includes(
+                  currentUsername
+                )
+              }
+              onConfirm={(e) => {
+                e?.stopPropagation();
+                sqlTerminateHandle(taskId);
+              }}
+              onCancel={(e) => {
+                e?.stopPropagation();
+              }}
+            >
+              <Typography.Link
+                type="danger"
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+                disabled={
+                  !record.current_step_assignee_user_name_list?.includes(
+                    currentUsername
+                  )
+                }
+              >
+                {t('order.operator.terminate')}
+              </Typography.Link>
+            </Popconfirm>
+          );
+        }
         return (
           <Space>
             <Popconfirm
@@ -301,6 +339,7 @@ export const auditResultOverviewColumn: (
                 {t('order.auditResultCollection.table.sqlExecute')}
               </Typography.Link>
             </Popconfirm>
+
             <EmptyBox
               if={
                 record.status ===
