@@ -111,6 +111,24 @@ export interface IExportWorkflowV1Params {
   project_name: string;
 }
 
+export interface ITerminateMultipleTaskByWorkflowV1Params {
+  workflow_id: string;
+
+  project_name: string;
+}
+
+export interface ITerminateMultipleTaskByWorkflowV1Return extends IBaseRes {}
+
+export interface ITerminateSingleTaskByWorkflowV1Params {
+  workflow_id: string;
+
+  project_name: string;
+
+  task_id: string;
+}
+
+export interface ITerminateSingleTaskByWorkflowV1Return extends IBaseRes {}
+
 export interface IGetWorkflowV1Params {
   workflow_name: string;
 
@@ -300,14 +318,6 @@ export interface IExecuteTasksOnWorkflowV2Params {
 
 export interface IExecuteTasksOnWorkflowV2Return extends IBaseRes {}
 
-export interface ITerminateMultipleTaskByWorkflowV1Params {
-  workflow_id: string;
-
-  project_name: string;
-}
-
-export interface ITerminateMultipleTaskByWorkflowV1Return extends IBaseRes {}
-
 export interface IExecuteOneTaskOnWorkflowV2Params {
   workflow_id: string;
 
@@ -328,13 +338,3 @@ export interface IUpdateWorkflowScheduleV2Params
 }
 
 export interface IUpdateWorkflowScheduleV2Return extends IBaseRes {}
-
-export interface ITerminateSingleTaskByWorkflowV1Params {
-  workflow_id: string;
-
-  project_name: string;
-
-  task_id: string;
-}
-
-export interface ITerminateSingleTaskByWorkflowV1Return extends IBaseRes {}
