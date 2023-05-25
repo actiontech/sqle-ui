@@ -3,7 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   getAuditTaskSQLsV1FilterAuditStatusEnum,
-  getAuditTaskSQLsV1FilterExecStatusEnum,
+  getAuditTaskSQLsV2FilterExecStatusEnum,
 } from '../../api/task/index.enum';
 import { getGlobalWorkflowsV1FilterStatusEnum } from '../../api/workflow/index.enum';
 import {
@@ -24,42 +24,21 @@ const useStaticStatus = () => {
   const generateExecStatusSelectOption = React.useCallback(() => {
     return (
       <>
-        <Select.Option
-          value={getAuditTaskSQLsV1FilterExecStatusEnum.initialized}
-          key={getAuditTaskSQLsV1FilterExecStatusEnum.initialized}
-        >
-          {t(
-            execStatusDictionary[
-              getAuditTaskSQLsV1FilterExecStatusEnum.initialized
-            ]
-          )}
-        </Select.Option>
-        <Select.Option
-          value={getAuditTaskSQLsV1FilterExecStatusEnum.doing}
-          key={getAuditTaskSQLsV1FilterExecStatusEnum.doing}
-        >
-          {t(
-            execStatusDictionary[getAuditTaskSQLsV1FilterExecStatusEnum.doing]
-          )}
-        </Select.Option>
-        <Select.Option
-          value={getAuditTaskSQLsV1FilterExecStatusEnum.succeeded}
-          key={getAuditTaskSQLsV1FilterExecStatusEnum.succeeded}
-        >
-          {t(
-            execStatusDictionary[
-              getAuditTaskSQLsV1FilterExecStatusEnum.succeeded
-            ]
-          )}
-        </Select.Option>
-        <Select.Option
-          value={getAuditTaskSQLsV1FilterExecStatusEnum.failed}
-          key={getAuditTaskSQLsV1FilterExecStatusEnum.failed}
-        >
-          {t(
-            execStatusDictionary[getAuditTaskSQLsV1FilterExecStatusEnum.failed]
-          )}
-        </Select.Option>
+        {Object.keys(getAuditTaskSQLsV2FilterExecStatusEnum).map((v) => {
+          const key = v as keyof typeof getAuditTaskSQLsV2FilterExecStatusEnum;
+          return (
+            <Select.Option
+              key={key}
+              value={getAuditTaskSQLsV2FilterExecStatusEnum[key]}
+            >
+              {t(
+                execStatusDictionary[
+                  getAuditTaskSQLsV2FilterExecStatusEnum[key]
+                ]
+              )}
+            </Select.Option>
+          );
+        })}
       </>
     );
   }, [t]);

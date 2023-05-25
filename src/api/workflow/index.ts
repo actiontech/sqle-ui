@@ -60,10 +60,14 @@ import {
   IGetSummaryOfInstanceTasksV2Return,
   IExecuteTasksOnWorkflowV2Params,
   IExecuteTasksOnWorkflowV2Return,
+  ITerminateMultipleTaskByWorkflowV1Params,
+  ITerminateMultipleTaskByWorkflowV1Return,
   IExecuteOneTaskOnWorkflowV2Params,
   IExecuteOneTaskOnWorkflowV2Return,
   IUpdateWorkflowScheduleV2Params,
-  IUpdateWorkflowScheduleV2Return
+  IUpdateWorkflowScheduleV2Return,
+  ITerminateSingleTaskByWorkflowV1Params,
+  ITerminateSingleTaskByWorkflowV1Return
 } from './index.d';
 
 class WorkflowService extends ServiceBase {
@@ -535,6 +539,24 @@ class WorkflowService extends ServiceBase {
     );
   }
 
+  public terminateMultipleTaskByWorkflowV1(
+    params: ITerminateMultipleTaskByWorkflowV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    const workflow_id = paramsData.workflow_id;
+    delete paramsData.workflow_id;
+
+    return this.post<ITerminateMultipleTaskByWorkflowV1Return>(
+      `/v2/projects/${project_name}/workflows/${workflow_id}/tasks/terminate`,
+      paramsData,
+      options
+    );
+  }
+
   public executeOneTaskOnWorkflowV2(
     params: IExecuteOneTaskOnWorkflowV2Params,
     options?: AxiosRequestConfig
@@ -572,6 +594,27 @@ class WorkflowService extends ServiceBase {
 
     return this.put<IUpdateWorkflowScheduleV2Return>(
       `/v2/projects/${project_name}/workflows/${workflow_id}/tasks/${task_id}/schedule`,
+      paramsData,
+      options
+    );
+  }
+
+  public terminateSingleTaskByWorkflowV1(
+    params: ITerminateSingleTaskByWorkflowV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    const workflow_id = paramsData.workflow_id;
+    delete paramsData.workflow_id;
+
+    const task_id = paramsData.task_id;
+    delete paramsData.task_id;
+
+    return this.post<ITerminateSingleTaskByWorkflowV1Return>(
+      `/v2/projects/${project_name}/workflows/${workflow_id}/tasks/${task_id}/terminate`,
       paramsData,
       options
     );

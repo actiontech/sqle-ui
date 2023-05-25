@@ -1,6 +1,6 @@
 import {
   getAuditTaskSQLsV1FilterAuditStatusEnum,
-  getAuditTaskSQLsV1FilterExecStatusEnum,
+  getAuditTaskSQLsV2FilterExecStatusEnum,
 } from '../../api/task/index.enum';
 import { getWorkflowsV1FilterStatusEnum } from '../../api/workflow/index.enum';
 import { StaticEnumDictionary } from './index.type';
@@ -10,16 +10,22 @@ import {
   RuleResV1LevelEnum,
 } from '../../api/common.enum';
 
-export const execStatusDictionary: StaticEnumDictionary<getAuditTaskSQLsV1FilterExecStatusEnum> =
+export const execStatusDictionary: StaticEnumDictionary<getAuditTaskSQLsV2FilterExecStatusEnum> =
   {
-    [getAuditTaskSQLsV1FilterExecStatusEnum.initialized]:
+    [getAuditTaskSQLsV2FilterExecStatusEnum.initialized]:
       'audit.execStatus.initialized',
-    [getAuditTaskSQLsV1FilterExecStatusEnum.doing]: 'audit.execStatus.doing',
-    [getAuditTaskSQLsV1FilterExecStatusEnum.failed]: 'audit.execStatus.failed',
-    [getAuditTaskSQLsV1FilterExecStatusEnum.succeeded]:
+    [getAuditTaskSQLsV2FilterExecStatusEnum.doing]: 'audit.execStatus.doing',
+    [getAuditTaskSQLsV2FilterExecStatusEnum.failed]: 'audit.execStatus.failed',
+    [getAuditTaskSQLsV2FilterExecStatusEnum.succeeded]:
       'audit.execStatus.succeeded',
-    [getAuditTaskSQLsV1FilterExecStatusEnum.manually_executed]:
+    [getAuditTaskSQLsV2FilterExecStatusEnum.manually_executed]:
       'audit.execStatus.manually_executed',
+    [getAuditTaskSQLsV2FilterExecStatusEnum.terminate_fail]:
+      'audit.execStatus.terminate_fail',
+    [getAuditTaskSQLsV2FilterExecStatusEnum.terminate_succ]:
+      'audit.execStatus.terminate_succ',
+    [getAuditTaskSQLsV2FilterExecStatusEnum.terminating]:
+      'audit.execStatus.terminating',
   };
 
 export const auditStatusDictionary: StaticEnumDictionary<getAuditTaskSQLsV1FilterAuditStatusEnum> =

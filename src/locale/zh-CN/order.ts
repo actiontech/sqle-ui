@@ -92,6 +92,10 @@ export default {
     batchSqlExecuteConfirmTips:
       '当前操作将立即执行工单下的所有SQL语句，且已经设置了定时上线的数据源仍然在定时时间上线，不会立即上线，是否确认立即批量上线?',
     sqlReview: '审核通过',
+    terminate: '中止上线',
+    terminateSuccessTips: '中止上线成功',
+    terminateConfirmTips:
+      '此操作将中断当前上线操作, 并回滚当前正在执行的SQL, 是否确认中止上线?',
     unknown: '未知步骤',
 
     maintenanceTime:

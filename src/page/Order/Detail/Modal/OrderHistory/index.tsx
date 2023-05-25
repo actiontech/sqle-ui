@@ -7,7 +7,6 @@ import { OrderHistoryProps } from './index.type';
 
 const OrderHistory: React.FC<OrderHistoryProps> = (props) => {
   const { t } = useTranslation();
-
   return (
     <Modal
       open={props.visible}
@@ -32,6 +31,7 @@ const OrderHistory: React.FC<OrderHistoryProps> = (props) => {
               executing={() => Promise.resolve()}
               modifySql={() => void 0}
               complete={() => Promise.resolve()}
+              terminate={() => Promise.resolve()}
               readonly={true}
             />
             {index < props.history.length - 1 && (

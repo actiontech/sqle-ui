@@ -141,6 +141,12 @@ describe('test AuditResultCollection', () => {
     return spy;
   };
 
+  const mockTerminateSingleTaskByWorkflow = () => {
+    const spy = jest.spyOn(workflow, 'terminateSingleTaskByWorkflowV1');
+    spy.mockImplementation(() => resolveThreeSecond({}));
+    return spy;
+  };
+
   test('should match snapshot when showOverview is equal false', () => {
     const { container } = render(
       <AuditResultCollection
@@ -259,14 +265,20 @@ describe('test AuditResultCollection', () => {
     expect(
       screen.queryAllByText('order.auditResultCollection.table.sqlExecute')
         .length
-    ).toBe(workflowTasks.length);
+    ).toBe(
+      workflowTasks.filter(
+        (v) => v.status !== GetWorkflowTasksItemV2StatusEnum.executing
+      ).length
+    );
 
     expect(
       screen.queryAllByText('order.auditResultCollection.table.scheduleTime')
         .length
     ).toBe(
       workflowTasks.filter(
-        (v) => v.status !== GetWorkflowTasksItemV2StatusEnum.exec_scheduled
+        (v) =>
+          v.status !== GetWorkflowTasksItemV2StatusEnum.exec_scheduled &&
+          v.status !== GetWorkflowTasksItemV2StatusEnum.executing
       ).length
     );
 
@@ -383,6 +395,71 @@ describe('test AuditResultCollection', () => {
 
     expect(successMessageSyp).toBeCalledTimes(1);
     expect(successMessageSyp).toBeCalledWith('order.status.finished');
+    expect(getSummaryOfInstanceTasks).toBeCalledTimes(2);
+    expect(mockRefreshOrder).toBeCalledTimes(1);
+  });
+
+  test('should called terminate task request when clicking terminate sql button', async () => {
+    const getSummaryOfInstanceTasks = mockGetSummaryOfInstanceTasks();
+    const mockTerminateSingleTask = mockTerminateSingleTaskByWorkflow();
+    const successMessageSyp = mockSuccessMessage();
+
+    getSummaryOfInstanceTasks.mockImplementation(() =>
+      resolveThreeSecond([
+        ...workflowTasks,
+        {
+          ...workflowTasks[3],
+          task_id: workflowTasks[3].task_id! + 1,
+          current_step_assignee_user_name_list: ['user1'],
+        },
+      ])
+    );
+
+    render(
+      <AuditResultCollection
+        taskInfos={taskInfos}
+        auditResultActiveKey={OVERVIEW_TAB_KEY}
+        setAuditResultActiveKey={mockSetAuditResultActiveKey}
+        updateTaskRecordTotalNum={jest.fn()}
+        showOverview={true}
+        workflowId={workflowId}
+        refreshOrder={mockRefreshOrder}
+        projectName={projectName}
+      />
+    );
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    expect(mockTerminateSingleTask).toBeCalledTimes(0);
+    expect(mockRefreshOrder).toBeCalledTimes(0);
+    expect(screen.getAllByText('order.operator.terminate')).toHaveLength(2);
+    expect(screen.getAllByText('order.operator.terminate')[0]).not.toHaveClass(
+      'ant-typography-disabled'
+    );
+    expect(screen.getAllByText('order.operator.terminate')[1]).toHaveClass(
+      'ant-typography-disabled'
+    );
+    fireEvent.click(screen.getAllByText('order.operator.terminate')[0]);
+
+    expect(screen.getByText('common.ok')).toBeInTheDocument();
+    expect(
+      screen.getByText('order.operator.terminateConfirmTips')
+    ).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('common.ok'));
+
+    expect(mockTerminateSingleTask).toBeCalledTimes(1);
+    expect(mockTerminateSingleTask).nthCalledWith(1, {
+      workflow_id: workflowId,
+      task_id: workflowTasks[3].task_id?.toString(),
+      project_name: projectName,
+    });
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    expect(successMessageSyp).toBeCalledTimes(1);
+    expect(successMessageSyp).toBeCalledWith(
+      'order.operator.terminateSuccessTips'
+    );
     expect(getSummaryOfInstanceTasks).toBeCalledTimes(2);
     expect(mockRefreshOrder).toBeCalledTimes(1);
   });

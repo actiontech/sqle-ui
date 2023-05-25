@@ -552,11 +552,23 @@ exports[`Order/Detail/OrderHistory should render all order history 1`] = `
                         <span>
                           order.operator.status
                           ：
-                          <span
-                            class="ant-tag ant-tag-green"
+                          <div
+                            class="ant-space ant-space-horizontal ant-space-align-center"
                           >
-                            order.status.finished
-                          </span>
+                            <div
+                              class="ant-space-item"
+                              style="margin-right: 8px;"
+                            >
+                              <span
+                                class="ant-tag ant-tag-green"
+                              >
+                                order.status.finished
+                              </span>
+                            </div>
+                            <div
+                              class="ant-space-item"
+                            />
+                          </div>
                         </span>
                       </div>
                       <div

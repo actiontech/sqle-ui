@@ -2371,29 +2371,11 @@ exports[`test AuditResultCollection should jump to the corresponding order tab w
                                 <td
                                   class="ant-table-cell"
                                 >
-                                  <div
-                                    class="ant-space ant-space-horizontal ant-space-align-center"
+                                  <a
+                                    class="ant-typography ant-typography-danger"
                                   >
-                                    <div
-                                      class="ant-space-item"
-                                      style="margin-right: 8px;"
-                                    >
-                                      <a
-                                        class="ant-typography ant-typography-disabled"
-                                      >
-                                        order.auditResultCollection.table.sqlExecute
-                                      </a>
-                                    </div>
-                                    <div
-                                      class="ant-space-item"
-                                    >
-                                      <a
-                                        class="ant-typography ant-typography-disabled"
-                                      >
-                                        order.auditResultCollection.table.scheduleTime
-                                      </a>
-                                    </div>
-                                  </div>
+                                    order.operator.terminate
+                                  </a>
                                 </td>
                               </tr>
                             </tbody>

@@ -110,6 +110,34 @@ export const executeStepList: IWorkflowStepResV2[] = [
   },
 ];
 
+export const executingStepList: IWorkflowStepResV2[] = [
+  {
+    number: 1,
+    operation_time: '2022-10-13T15:13:20+08:00',
+    operation_user_name: 'admin',
+    type: WorkflowStepResV2TypeEnum.create_workflow,
+  },
+  {
+    assignee_user_name_list: ['admin'],
+    number: 2,
+    operation_time: '2022-10-13T15:13:45+08:00',
+    operation_user_name: 'admin',
+    state: WorkflowStepResV2StateEnum.approved,
+    type: WorkflowStepResV2TypeEnum.sql_review,
+    workflow_step_id: 40,
+  },
+  {
+    assignee_user_name_list: ['admin'],
+    number: 3,
+    operation_time: '2022-10-13T14:33:48+08:00',
+    operation_user_name: 'admin',
+    reason: 'test',
+    state: WorkflowStepResV2StateEnum.approved,
+    type: WorkflowStepResV2TypeEnum.sql_execute,
+    workflow_step_id: 41,
+  },
+];
+
 export const otherStepList: IWorkflowStepResV2[] = [
   {
     number: 1,
@@ -145,10 +173,11 @@ export const defaultProps: OrderStepsProps = {
   canRejectOrder: true,
   execEndTime: undefined,
   execStartTime: undefined,
-  executing: () => new Promise(() => { }),
+  executing: () => new Promise(() => {}),
   maintenanceTimeInfo: [],
-  modifySql: () => { },
-  pass: () => new Promise(() => { }),
-  reject: () => new Promise(() => { }),
-  complete: () => new Promise(() => { }),
+  modifySql: () => {},
+  pass: () => new Promise(() => {}),
+  reject: () => new Promise(() => {}),
+  complete: () => new Promise(() => {}),
+  terminate: () => new Promise(() => {}),
 };

@@ -5,6 +5,7 @@ import OrderStep from '../index';
 import {
   defaultProps,
   executeStepList,
+  executingStepList,
   rejectedStepList,
   waitAuditStepList,
 } from './testData';
@@ -26,6 +27,7 @@ describe('test OrderSteps', () => {
   const mockModifySql = jest.fn();
   const mockExecuting = jest.fn();
   const mockComplete = jest.fn();
+  const mockTerminate = jest.fn();
 
   beforeEach(() => {
     jest.useFakeTimers();
@@ -67,6 +69,14 @@ describe('test OrderSteps', () => {
         })
     );
     mockComplete.mockImplementation(
+      () =>
+        new Promise((res) => {
+          setTimeout(() => {
+            res(null);
+          }, 3000);
+        })
+    );
+    mockTerminate.mockImplementation(
       () =>
         new Promise((res) => {
           setTimeout(() => {
@@ -309,5 +319,40 @@ describe('test OrderSteps', () => {
     expect(container).toMatchSnapshot();
 
     global.Date.now = realDateNow;
+  });
+
+  test('should render terminate button when current order status is equal executing', async () => {
+    render(
+      <OrderStep
+        {...defaultProps}
+        stepList={executingStepList}
+        currentOrderStatus={WorkflowRecordResV2StatusEnum.executing}
+        currentStep={3}
+        terminate={mockTerminate}
+      />
+    );
+
+    expect(screen.getByText('order.operator.terminate')).toBeInTheDocument();
+    expect(mockTerminate).toBeCalledTimes(0);
+
+    fireEvent.click(screen.getByText('order.operator.terminate'));
+    await act(async () => jest.advanceTimersByTime(0));
+    expect(
+      screen.getByText('order.operator.terminateConfirmTips')
+    ).toBeInTheDocument();
+    expect(screen.getByText('common.ok')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('common.ok'));
+
+    expect(
+      screen.getByText('order.operator.terminate').closest('button')
+    ).toHaveClass('ant-btn-loading');
+
+    await act(async () => jest.advanceTimersByTime(3000));
+    expect(
+      screen.getByText('order.operator.terminate').closest('button')
+    ).not.toHaveClass('ant-btn-loading');
+
+    expect(mockTerminate).toBeCalledTimes(1);
   });
 });

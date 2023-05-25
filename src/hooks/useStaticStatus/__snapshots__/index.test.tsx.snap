@@ -495,6 +495,74 @@ exports[`useRuleTemplate should render static option for exec status 2`] = `
                       unselectable="on"
                     />
                   </div>
+                  <div
+                    aria-selected="false"
+                    class="ant-select-item ant-select-item-option"
+                    title="audit.execStatus.manually_executed"
+                  >
+                    <div
+                      class="ant-select-item-option-content"
+                    >
+                      audit.execStatus.manually_executed
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      class="ant-select-item-option-state"
+                      style="user-select: none;"
+                      unselectable="on"
+                    />
+                  </div>
+                  <div
+                    aria-selected="false"
+                    class="ant-select-item ant-select-item-option"
+                    title="audit.execStatus.terminating"
+                  >
+                    <div
+                      class="ant-select-item-option-content"
+                    >
+                      audit.execStatus.terminating
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      class="ant-select-item-option-state"
+                      style="user-select: none;"
+                      unselectable="on"
+                    />
+                  </div>
+                  <div
+                    aria-selected="false"
+                    class="ant-select-item ant-select-item-option"
+                    title="audit.execStatus.terminate_succ"
+                  >
+                    <div
+                      class="ant-select-item-option-content"
+                    >
+                      audit.execStatus.terminate_succ
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      class="ant-select-item-option-state"
+                      style="user-select: none;"
+                      unselectable="on"
+                    />
+                  </div>
+                  <div
+                    aria-selected="false"
+                    class="ant-select-item ant-select-item-option"
+                    title="audit.execStatus.terminate_fail"
+                  >
+                    <div
+                      class="ant-select-item-option-content"
+                    >
+                      audit.execStatus.terminate_fail
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      class="ant-select-item-option-state"
+                      style="user-select: none;"
+                      unselectable="on"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
