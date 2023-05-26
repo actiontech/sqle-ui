@@ -32,6 +32,18 @@ const statusColor: InstanceTasksStatusType = {
     color: 'green',
     label: 'order.status.manually_executed',
   },
+  [GetWorkflowTasksItemV2StatusEnum.terminate_fail]: {
+    color: 'orange',
+    label: 'order.status.terminate_fail',
+  },
+  [GetWorkflowTasksItemV2StatusEnum.terminate_succ]: {
+    color: 'green',
+    label: 'order.status.terminate_succ',
+  },
+  [GetWorkflowTasksItemV2StatusEnum.terminating]: {
+    color: 'blue',
+    label: 'order.status.terminating',
+  },
   unknown: {
     color: undefined,
     label: 'common.unknownStatus',

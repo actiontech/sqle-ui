@@ -50,5 +50,26 @@ describe('test Order/AuditResult/InstanceTasksStatus', () => {
       />
     );
     expect(container).toMatchSnapshot();
+
+    rerender(
+      <InstanceTasksStatus
+        status={GetWorkflowTasksItemV2StatusEnum.terminate_fail}
+      />
+    );
+    expect(container).toMatchSnapshot();
+
+    rerender(
+      <InstanceTasksStatus
+        status={GetWorkflowTasksItemV2StatusEnum.terminate_succ}
+      />
+    );
+    expect(container).toMatchSnapshot();
+
+    rerender(
+      <InstanceTasksStatus
+        status={GetWorkflowTasksItemV2StatusEnum.terminating}
+      />
+    );
+    expect(container).toMatchSnapshot();
   });
 });
