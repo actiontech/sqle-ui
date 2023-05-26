@@ -53,14 +53,14 @@ describe('test Order/AuditResult/InstanceTasksStatus', () => {
 
     rerender(
       <InstanceTasksStatus
-        status={GetWorkflowTasksItemV2StatusEnum.terminate_fail}
+        status={GetWorkflowTasksItemV2StatusEnum.exec_failed}
       />
     );
     expect(container).toMatchSnapshot();
 
     rerender(
       <InstanceTasksStatus
-        status={GetWorkflowTasksItemV2StatusEnum.terminate_succ}
+        status={GetWorkflowTasksItemV2StatusEnum.exec_succeeded}
       />
     );
     expect(container).toMatchSnapshot();
