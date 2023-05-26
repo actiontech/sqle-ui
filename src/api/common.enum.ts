@@ -305,7 +305,13 @@ export enum GetWorkflowTasksItemV2StatusEnum {
 
   'executing' = 'executing',
 
-  'manually_executed' = 'manually_executed'
+  'manually_executed' = 'manually_executed',
+
+  'terminating' = 'terminating',
+
+  'terminate_succ' = 'terminate_succ',
+
+  'terminate_fail' = 'terminate_fail'
 }
 
 export enum WorkflowRecordResV2StatusEnum {

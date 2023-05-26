@@ -60,6 +60,9 @@ export default {
     canceled: '已关闭',
     exec_succeeded: '上线成功',
     manually_executed: '人工上线',
+    terminate_fail: '中止失败',
+    terminate_succ: '中止成功',
+    terminating: '正在中止',
   },
 
   sqlTaskStatus: {
