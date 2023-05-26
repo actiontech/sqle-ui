@@ -5,7 +5,7 @@ import {
   IMaintenanceTimeResV1,
 } from '../../../api/common';
 import {
-  GetWorkflowTasksItemV1StatusEnum,
+  GetWorkflowTasksItemV2StatusEnum,
   WorkflowRecordResV2StatusEnum,
 } from '../../../api/common.enum';
 import { IGetAuditTaskSQLsV2Params } from '../../../api/task/index.d';
@@ -42,7 +42,7 @@ export type ScheduleTimeModalProps = {
 };
 
 export type InstanceTasksStatusType = {
-  [key in GetWorkflowTasksItemV1StatusEnum | 'unknown']: {
+  [key in GetWorkflowTasksItemV2StatusEnum | 'unknown']: {
     color: TagProps['color'];
     label: I18nKey;
   };

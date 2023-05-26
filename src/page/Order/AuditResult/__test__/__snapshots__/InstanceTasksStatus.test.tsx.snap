@@ -79,3 +79,33 @@ exports[`test Order/AuditResult/InstanceTasksStatus should match snapshot 8`] = 
   </span>
 </div>
 `;
+
+exports[`test Order/AuditResult/InstanceTasksStatus should match snapshot 9`] = `
+<div>
+  <span
+    class="ant-tag ant-tag-orange"
+  >
+    order.status.terminate_fail
+  </span>
+</div>
+`;
+
+exports[`test Order/AuditResult/InstanceTasksStatus should match snapshot 10`] = `
+<div>
+  <span
+    class="ant-tag ant-tag-green"
+  >
+    order.status.terminate_succ
+  </span>
+</div>
+`;
+
+exports[`test Order/AuditResult/InstanceTasksStatus should match snapshot 11`] = `
+<div>
+  <span
+    class="ant-tag ant-tag-blue"
+  >
+    order.status.terminating
+  </span>
+</div>
+`;
