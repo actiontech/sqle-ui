@@ -20,10 +20,10 @@ export const execStatusDictionary: StaticEnumDictionary<getAuditTaskSQLsV2Filter
       'audit.execStatus.succeeded',
     [getAuditTaskSQLsV2FilterExecStatusEnum.manually_executed]:
       'audit.execStatus.manually_executed',
-    [getAuditTaskSQLsV2FilterExecStatusEnum.terminate_fail]:
-      'audit.execStatus.terminate_fail',
-    [getAuditTaskSQLsV2FilterExecStatusEnum.terminate_succ]:
-      'audit.execStatus.terminate_succ',
+    [getAuditTaskSQLsV2FilterExecStatusEnum.terminate_failed]:
+      'audit.execStatus.terminate_failed',
+    [getAuditTaskSQLsV2FilterExecStatusEnum.terminate_succeeded]:
+      'audit.execStatus.terminate_succeeded',
     [getAuditTaskSQLsV2FilterExecStatusEnum.terminating]:
       'audit.execStatus.terminating',
   };

@@ -85,7 +85,7 @@ exports[`test Order/AuditResult/InstanceTasksStatus should match snapshot 9`] = 
   <span
     class="ant-tag ant-tag-orange"
   >
-    order.status.terminate_fail
+    order.status.exec_failed
   </span>
 </div>
 `;
@@ -95,7 +95,7 @@ exports[`test Order/AuditResult/InstanceTasksStatus should match snapshot 10`] =
   <span
     class="ant-tag ant-tag-green"
   >
-    order.status.terminate_succ
+    order.status.exec_succeeded
   </span>
 </div>
 `;

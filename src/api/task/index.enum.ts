@@ -43,9 +43,9 @@ export enum getAuditTaskSQLsV2FilterExecStatusEnum {
 
   'terminating' = 'terminating',
 
-  'terminate_succ' = 'terminate_succ',
+  'terminate_succeeded' = 'terminate_succeeded',
 
-  'terminate_fail' = 'terminate_fail'
+  'terminate_failed' = 'terminate_failed'
 }
 
 export enum getAuditTaskSQLsV2FilterAuditStatusEnum {

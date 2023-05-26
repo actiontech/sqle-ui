@@ -532,12 +532,12 @@ exports[`useRuleTemplate should render static option for exec status 2`] = `
                   <div
                     aria-selected="false"
                     class="ant-select-item ant-select-item-option"
-                    title="audit.execStatus.terminate_succ"
+                    title="audit.execStatus.terminate_succeeded"
                   >
                     <div
                       class="ant-select-item-option-content"
                     >
-                      audit.execStatus.terminate_succ
+                      audit.execStatus.terminate_succeeded
                     </div>
                     <span
                       aria-hidden="true"
@@ -549,12 +549,12 @@ exports[`useRuleTemplate should render static option for exec status 2`] = `
                   <div
                     aria-selected="false"
                     class="ant-select-item ant-select-item-option"
-                    title="audit.execStatus.terminate_fail"
+                    title="audit.execStatus.terminate_failed"
                   >
                     <div
                       class="ant-select-item-option-content"
                     >
-                      audit.execStatus.terminate_fail
+                      audit.execStatus.terminate_failed
                     </div>
                     <span
                       aria-hidden="true"

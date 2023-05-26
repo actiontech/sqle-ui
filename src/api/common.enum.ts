@@ -309,9 +309,9 @@ export enum GetWorkflowTasksItemV2StatusEnum {
 
   'terminating' = 'terminating',
 
-  'terminate_succ' = 'terminate_succ',
+  'terminate_succeeded' = 'terminate_succeeded',
 
-  'terminate_fail' = 'terminate_fail'
+  'terminate_failed' = 'terminate_failed'
 }
 
 export enum WorkflowRecordResV2StatusEnum {

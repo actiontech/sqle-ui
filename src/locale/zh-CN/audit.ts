@@ -26,8 +26,8 @@ export default {
     succeeded: '执行成功',
     failed: '执行失败',
     manually_executed: '人工执行',
-    terminate_fail: '中止失败',
-    terminate_succ: '中止成功',
+    terminate_failed: '中止失败',
+    terminate_succeeded: '中止成功',
     terminating: '正在中止',
   },
 
