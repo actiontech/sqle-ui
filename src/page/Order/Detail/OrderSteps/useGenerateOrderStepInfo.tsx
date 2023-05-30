@@ -140,9 +140,7 @@ export const useGenerateOrderStepInfo = ({
               })}
             </Typography.Text>
           </div>
-          <Typography.Text type="danger">
-            {t('order.operator.rejectReason')}:{step.reason}
-          </Typography.Text>
+          <Typography.Text type="danger">{step.reason}</Typography.Text>
           <div>
             <Typography.Text type="danger">
               ({t('order.operator.rejectTips')})

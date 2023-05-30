@@ -283,8 +283,6 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                           <span
                             class="ant-typography ant-typography-danger"
                           >
-                            order.operator.rejectReason
-                            :
                             test
                           </span>
                           <div>
@@ -3263,8 +3261,6 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                           <span
                             class="ant-typography ant-typography-danger"
                           >
-                            order.operator.rejectReason
-                            :
                             test
                           </span>
                           <div>

@@ -9,6 +9,11 @@ exports[`PlanDetail should match snapshot 1`] = `
       ]
     }
     ghost={false}
+    style={
+      Object {
+        "marginBottom": 24,
+      }
+    }
     title="auditPlan.detailPage.pageTitle"
   >
     <ForwardRef>
@@ -16,10 +21,6 @@ exports[`PlanDetail should match snapshot 1`] = `
     </ForwardRef>
     auditPlan.detailPage.pageDesc
   </PageHeader>
-  <section
-    className="padding-content"
-  >
-    <PlanDetail />
-  </section>
+  <PlanDetail />
 </Fragment>
 `;
