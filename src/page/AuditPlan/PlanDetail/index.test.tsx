@@ -9,6 +9,7 @@ import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
 import { AuditPlanReportList } from './__testData__';
 import { useSelector } from 'react-redux';
 import { mockGetAllRules } from '../../Rule/__test__/utils';
+import { useTheme } from '@mui/styles';
 
 jest.mock('react-router', () => {
   return {
@@ -24,11 +25,21 @@ jest.mock('react-redux', () => {
   };
 });
 
+jest.mock('@mui/styles', () => {
+  return {
+    ...jest.requireActual('@mui/styles'),
+    useTheme: jest.fn(),
+  };
+});
+
 describe('PlanDetail', () => {
   const useParamsMock: jest.Mock = useParams as jest.Mock;
   const projectName = 'default';
+  const useThemeMock: jest.Mock = useTheme as jest.Mock;
+
   beforeEach(() => {
     useParamsMock.mockReturnValue({ auditPlanName: 'plan name', projectName });
+    useThemeMock.mockReturnValue({ common: { padding: 24 } });
     jest.useFakeTimers();
     mockGetAllRules();
     mockGetAuditPlanV1();

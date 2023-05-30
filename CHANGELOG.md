@@ -8,3 +8,4 @@
 * [] [feature]: API服务里，工单执行完成后，可以提供一个回调地址去通知调用API的服务 <https://github.com/actiontech/sqle-ui/pull/266>
 * [] [fix]: 修复 sql 审核结果列表中的 执行语句未高亮的问题 <https://github.com/actiontech/sqle-ui/pull/267>
 * [] [feature]: 工单上线中止功能. 补充 useGenerateOrderStepInfo 单元测试 <https://github.com/actiontech/sqle-ui/pull/269>
+* [] [chore]: 2.2305.0 界面优化 <https://github.com/actiontech/sqle/issues/1508>

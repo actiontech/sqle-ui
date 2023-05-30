@@ -23,7 +23,7 @@ const PlanDetail = () => {
 
   return (
     <>
-      <Row gutter={theme.common.padding} hidden={hideReportList}>
+      <Row hidden={hideReportList}>
         <Col xxl={16} sm={24} style={{ marginBottom: theme.common.padding }}>
           <SqlPool
             auditPlanName={urlParams.auditPlanName ?? ''}
