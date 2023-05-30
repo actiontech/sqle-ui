@@ -598,7 +598,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              id="ORDER_OPERATE_COLUMN_ID"
+                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -679,7 +679,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              id="ORDER_OPERATE_COLUMN_ID"
+                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -755,7 +755,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              id="ORDER_OPERATE_COLUMN_ID"
+                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -830,11 +830,16 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            <a
-                                              class="ant-typography ant-typography-danger"
+                                            <div
+                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
+                                              style="cursor: default;"
                                             >
-                                              order.operator.terminate
-                                            </a>
+                                              <a
+                                                class="ant-typography ant-typography-danger"
+                                              >
+                                                order.operator.terminate
+                                              </a>
+                                            </div>
                                           </td>
                                         </tr>
                                       </tbody>
@@ -2702,7 +2707,7 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              id="ORDER_OPERATE_COLUMN_ID"
+                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -2783,7 +2788,7 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              id="ORDER_OPERATE_COLUMN_ID"
+                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -2859,7 +2864,7 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              id="ORDER_OPERATE_COLUMN_ID"
+                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -2934,11 +2939,16 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            <a
-                                              class="ant-typography ant-typography-danger"
+                                            <div
+                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
+                                              style="cursor: default;"
                                             >
-                                              order.operator.terminate
-                                            </a>
+                                              <a
+                                                class="ant-typography ant-typography-danger"
+                                              >
+                                                order.operator.terminate
+                                              </a>
+                                            </div>
                                           </td>
                                         </tr>
                                       </tbody>
@@ -3568,7 +3578,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              id="ORDER_OPERATE_COLUMN_ID"
+                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -3649,7 +3659,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              id="ORDER_OPERATE_COLUMN_ID"
+                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -3725,7 +3735,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              id="ORDER_OPERATE_COLUMN_ID"
+                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -3800,11 +3810,16 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                           <td
                                             class="ant-table-cell"
                                           >
-                                            <a
-                                              class="ant-typography ant-typography-danger"
+                                            <div
+                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
+                                              style="cursor: default;"
                                             >
-                                              order.operator.terminate
-                                            </a>
+                                              <a
+                                                class="ant-typography ant-typography-danger"
+                                              >
+                                                order.operator.terminate
+                                              </a>
+                                            </div>
                                           </td>
                                         </tr>
                                       </tbody>
