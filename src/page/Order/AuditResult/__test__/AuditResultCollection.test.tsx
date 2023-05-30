@@ -25,7 +25,6 @@ import { mockGetAllRules } from '../../../Rule/__test__/utils';
 import { taskSqls, workflowTasks } from '../../Detail/__testData__';
 import AuditResultCollection from '../AuditResultCollection';
 import { useSelector } from 'react-redux';
-import { ORDER_OPERATE_COLUMN_CLASS_CONSTANT } from '../column';
 const OVERVIEW_TAB_KEY = 'OVERVIEW_TAB_KEY';
 const projectName = 'default';
 jest.mock('react-redux', () => {
@@ -656,10 +655,10 @@ describe('test AuditResultCollection', () => {
 
     mockSetAuditResultActiveKey.mockClear();
     expect(
-      getAllBySelector(`.${ORDER_OPERATE_COLUMN_CLASS_CONSTANT}`)[0]
+      screen.getByTestId(`operate-column-wrapper-${taskInfos[0].task_id}`)
     ).toBeInTheDocument();
     fireEvent.click(
-      getAllBySelector(`.${ORDER_OPERATE_COLUMN_CLASS_CONSTANT}`)[0]
+      screen.getByTestId(`operate-column-wrapper-${taskInfos[0].task_id}`)
     );
     expect(mockSetAuditResultActiveKey).not.toBeCalled();
 

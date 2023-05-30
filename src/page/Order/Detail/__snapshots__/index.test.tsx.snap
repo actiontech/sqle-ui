@@ -598,7 +598,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
+                                              data-testid="operate-column-wrapper-27"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -679,7 +679,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
+                                              data-testid="operate-column-wrapper-28"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -755,7 +755,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
+                                              data-testid="operate-column-wrapper-29"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -831,7 +831,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
+                                              data-testid="operate-column-wrapper-30"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -2707,7 +2707,7 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
+                                              data-testid="operate-column-wrapper-27"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -2788,7 +2788,7 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
+                                              data-testid="operate-column-wrapper-28"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -2864,7 +2864,7 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
+                                              data-testid="operate-column-wrapper-29"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -2940,7 +2940,7 @@ exports[`Order/Detail should render on process order info by request 2`] = `
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
+                                              data-testid="operate-column-wrapper-30"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -3578,7 +3578,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
+                                              data-testid="operate-column-wrapper-27"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -3659,7 +3659,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
+                                              data-testid="operate-column-wrapper-28"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -3735,7 +3735,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
+                                              data-testid="operate-column-wrapper-29"
                                               style="cursor: default;"
                                             >
                                               <a
@@ -3811,7 +3811,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
+                                              data-testid="operate-column-wrapper-30"
                                               style="cursor: default;"
                                             >
                                               <a
