@@ -295,8 +295,6 @@ exports[`Order/Detail/OrderHistory should render all order history 1`] = `
                         <span
                           class="ant-typography ant-typography-danger"
                         >
-                          order.operator.rejectReason
-                          :
                           test
                         </span>
                         <div>

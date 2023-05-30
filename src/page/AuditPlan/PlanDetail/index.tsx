@@ -7,9 +7,11 @@ import BackButton from '../../../components/BackButton';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import PlanDetail from './Detail';
 import { PlanDetailUrlParams } from './index.type';
+import { useTheme } from '@mui/styles';
 
 const PlanDetailPage = () => {
   const urlParams = useParams<PlanDetailUrlParams>();
+  const theme = useTheme();
   const { projectName } = useCurrentProjectName();
   const { t } = useTranslation();
   const { data: auditTask } = useRequest(() => {
@@ -29,6 +31,7 @@ const PlanDetailPage = () => {
           name: urlParams.auditPlanName,
         })}
         extra={[<BackButton key="goBack" />]}
+        style={{ marginBottom: theme.common.padding }}
       >
         <Typography.Paragraph>
           {t('auditPlan.detailPage.auditTaskType', {
@@ -38,9 +41,8 @@ const PlanDetailPage = () => {
         </Typography.Paragraph>
         {t('auditPlan.detailPage.pageDesc')}
       </PageHeader>
-      <section className="padding-content">
-        <PlanDetail />
-      </section>
+
+      <PlanDetail />
     </>
   );
 };
