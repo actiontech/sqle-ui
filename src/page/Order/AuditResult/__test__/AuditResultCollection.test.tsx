@@ -25,7 +25,7 @@ import { mockGetAllRules } from '../../../Rule/__test__/utils';
 import { taskSqls, workflowTasks } from '../../Detail/__testData__';
 import AuditResultCollection from '../AuditResultCollection';
 import { useSelector } from 'react-redux';
-import { ORDER_OPERATE_COLUMN_ID } from '../column';
+import { ORDER_OPERATE_COLUMN_CLASS_CONSTANT } from '../column';
 const OVERVIEW_TAB_KEY = 'OVERVIEW_TAB_KEY';
 const projectName = 'default';
 jest.mock('react-redux', () => {
@@ -621,6 +621,11 @@ describe('test AuditResultCollection', () => {
   });
 
   test('should jump to the corresponding order tab when clicking on overview table row', async () => {
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { username: 'test' },
+      })
+    );
     mockGetSummaryOfInstanceTasks();
     const { container } = render(
       <AuditResultCollection
@@ -651,9 +656,11 @@ describe('test AuditResultCollection', () => {
 
     mockSetAuditResultActiveKey.mockClear();
     expect(
-      getAllBySelector(`#${ORDER_OPERATE_COLUMN_ID}`)[0]
+      getAllBySelector(`.${ORDER_OPERATE_COLUMN_CLASS_CONSTANT}`)[0]
     ).toBeInTheDocument();
-    fireEvent.click(getAllBySelector(`#${ORDER_OPERATE_COLUMN_ID}`)[0]);
+    fireEvent.click(
+      getAllBySelector(`.${ORDER_OPERATE_COLUMN_CLASS_CONSTANT}`)[0]
+    );
     expect(mockSetAuditResultActiveKey).not.toBeCalled();
 
     fireEvent.click(
@@ -663,6 +670,9 @@ describe('test AuditResultCollection', () => {
     fireEvent.click(
       screen.getAllByText('order.auditResultCollection.table.scheduleTime')[0]
     );
+    expect(mockSetAuditResultActiveKey).not.toBeCalled();
+
+    fireEvent.click(screen.getAllByText('order.operator.terminate')[0]);
     expect(mockSetAuditResultActiveKey).not.toBeCalled();
   });
 });

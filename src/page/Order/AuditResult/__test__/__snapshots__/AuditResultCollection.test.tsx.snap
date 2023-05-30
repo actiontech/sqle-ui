@@ -2118,7 +2118,7 @@ exports[`test AuditResultCollection should jump to the corresponding order tab w
                                   class="ant-table-cell"
                                 >
                                   <div
-                                    id="ORDER_OPERATE_COLUMN_ID"
+                                    class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
                                     style="cursor: default;"
                                   >
                                     <a
@@ -2199,17 +2199,17 @@ exports[`test AuditResultCollection should jump to the corresponding order tab w
                                   class="ant-table-cell"
                                 >
                                   <div
-                                    id="ORDER_OPERATE_COLUMN_ID"
+                                    class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
                                     style="cursor: default;"
                                   >
                                     <a
-                                      class="ant-typography"
+                                      class="ant-typography ant-typography-disabled"
                                       style="margin-right: 8px;"
                                     >
                                       order.auditResultCollection.table.sqlExecute
                                     </a>
                                     <a
-                                      class="ant-typography"
+                                      class="ant-typography ant-typography-disabled"
                                     >
                                       order.auditResultCollection.table.scheduleTime
                                     </a>
@@ -2275,7 +2275,7 @@ exports[`test AuditResultCollection should jump to the corresponding order tab w
                                   class="ant-table-cell"
                                 >
                                   <div
-                                    id="ORDER_OPERATE_COLUMN_ID"
+                                    class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
                                     style="cursor: default;"
                                   >
                                     <a
@@ -2350,11 +2350,16 @@ exports[`test AuditResultCollection should jump to the corresponding order tab w
                                 <td
                                   class="ant-table-cell"
                                 >
-                                  <a
-                                    class="ant-typography ant-typography-danger"
+                                  <div
+                                    class="ORDER_OPERATE_COLUMN_CLASS_CONSTANT"
+                                    style="cursor: default;"
                                   >
-                                    order.operator.terminate
-                                  </a>
+                                    <a
+                                      class="ant-typography ant-typography-danger ant-typography-disabled"
+                                    >
+                                      order.operator.terminate
+                                    </a>
+                                  </div>
                                 </td>
                               </tr>
                             </tbody>

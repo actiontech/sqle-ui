@@ -30,7 +30,8 @@ export const expandedRowRender = (record: IAuditTaskSQLResV2) => (
   <AuditResultErrorMessage auditResult={record?.audit_result ?? []} />
 );
 
-export const ORDER_OPERATE_COLUMN_ID = 'ORDER_OPERATE_COLUMN_ID';
+export const ORDER_OPERATE_COLUMN_CLASS_CONSTANT =
+  'ORDER_OPERATE_COLUMN_CLASS_CONSTANT';
 
 export const orderAuditResultColumn = (
   updateSqlDescribe: (sqlNum: number, sqlDescribe: string) => void,
@@ -268,42 +269,50 @@ export const auditResultOverviewColumn: (
         const taskId = record.task_id?.toString() ?? '';
         if (record.status === GetWorkflowTasksItemV2StatusEnum.executing) {
           return (
-            <Popconfirm
-              title={t('order.operator.terminateConfirmTips')}
-              overlayClassName="popconfirm-small"
-              placement="topRight"
-              okText={t('common.ok')}
-              disabled={
-                !record.current_step_assignee_user_name_list?.includes(
-                  currentUsername
-                )
-              }
-              onConfirm={(e) => {
-                e?.stopPropagation();
-                sqlTerminateHandle(taskId);
-              }}
-              onCancel={(e) => {
-                e?.stopPropagation();
-              }}
+            <div
+              className={ORDER_OPERATE_COLUMN_CLASS_CONSTANT}
+              style={{ cursor: 'default' }}
             >
-              <Typography.Link
-                type="danger"
-                onClick={(e) => {
-                  e.stopPropagation();
-                }}
+              <Popconfirm
+                title={t('order.operator.terminateConfirmTips')}
+                overlayClassName="popconfirm-small"
+                placement="topRight"
+                okText={t('common.ok')}
                 disabled={
                   !record.current_step_assignee_user_name_list?.includes(
                     currentUsername
                   )
                 }
+                onConfirm={(e) => {
+                  e?.stopPropagation();
+                  sqlTerminateHandle(taskId);
+                }}
+                onCancel={(e) => {
+                  e?.stopPropagation();
+                }}
               >
-                {t('order.operator.terminate')}
-              </Typography.Link>
-            </Popconfirm>
+                <Typography.Link
+                  type="danger"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                  disabled={
+                    !record.current_step_assignee_user_name_list?.includes(
+                      currentUsername
+                    )
+                  }
+                >
+                  {t('order.operator.terminate')}
+                </Typography.Link>
+              </Popconfirm>
+            </div>
           );
         }
         return (
-          <div id="ORDER_OPERATE_COLUMN_ID" style={{ cursor: 'default' }}>
+          <div
+            className={ORDER_OPERATE_COLUMN_CLASS_CONSTANT}
+            style={{ cursor: 'default' }}
+          >
             <Popconfirm
               overlayClassName="popconfirm-small"
               placement="topRight"

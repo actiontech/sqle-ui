@@ -2,7 +2,10 @@ import { Card, message, Result, Table, Tabs, TabsProps } from 'antd';
 import { useTranslation } from 'react-i18next';
 import AuditResult from '.';
 import { AuditResultCollectionProps } from './index.type';
-import { auditResultOverviewColumn, ORDER_OPERATE_COLUMN_ID } from './column';
+import {
+  auditResultOverviewColumn,
+  ORDER_OPERATE_COLUMN_CLASS_CONSTANT,
+} from './column';
 import workflow from '../../../api/workflow';
 import {
   IExecuteOneTaskOnWorkflowV2Params,
@@ -168,7 +171,9 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
             return {
               onClick: (e) => {
                 const target = e.target as HTMLElement;
-                if (target.id === ORDER_OPERATE_COLUMN_ID) {
+                if (
+                  target.classList.contains(ORDER_OPERATE_COLUMN_CLASS_CONSTANT)
+                ) {
                   return;
                 }
                 overviewTableRowClick(record);
