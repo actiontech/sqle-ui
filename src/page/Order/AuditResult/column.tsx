@@ -30,6 +30,8 @@ export const expandedRowRender = (record: IAuditTaskSQLResV2) => (
   <AuditResultErrorMessage auditResult={record?.audit_result ?? []} />
 );
 
+export const ORDER_OPERATE_COLUMN_ID = 'ORDER_OPERATE_COLUMN_ID';
+
 export const orderAuditResultColumn = (
   updateSqlDescribe: (sqlNum: number, sqlDescribe: string) => void,
   clickAnalyze: (sqlNum: number) => void
@@ -301,7 +303,7 @@ export const auditResultOverviewColumn: (
           );
         }
         return (
-          <Space>
+          <div id="ORDER_OPERATE_COLUMN_ID" style={{ cursor: 'default' }}>
             <Popconfirm
               overlayClassName="popconfirm-small"
               placement="topRight"
@@ -325,6 +327,7 @@ export const auditResultOverviewColumn: (
               }}
             >
               <Typography.Link
+                style={{ marginRight: 8 }}
                 disabled={
                   !enableSqlExecute(
                     record.current_step_assignee_user_name_list,
@@ -375,7 +378,7 @@ export const auditResultOverviewColumn: (
                 {t('order.auditResultCollection.table.cancelExecScheduled')}
               </Typography.Link>
             </EmptyBox>
-          </Space>
+          </div>
         );
       },
     },

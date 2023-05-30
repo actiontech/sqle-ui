@@ -25,6 +25,7 @@ import { mockGetAllRules } from '../../../Rule/__test__/utils';
 import { taskSqls, workflowTasks } from '../../Detail/__testData__';
 import AuditResultCollection from '../AuditResultCollection';
 import { useSelector } from 'react-redux';
+import { ORDER_OPERATE_COLUMN_ID } from '../column';
 const OVERVIEW_TAB_KEY = 'OVERVIEW_TAB_KEY';
 const projectName = 'default';
 jest.mock('react-redux', () => {
@@ -647,5 +648,21 @@ describe('test AuditResultCollection', () => {
       2,
       workflowTasks[0].task_id?.toString()
     );
+
+    mockSetAuditResultActiveKey.mockClear();
+    expect(
+      getAllBySelector(`#${ORDER_OPERATE_COLUMN_ID}`)[0]
+    ).toBeInTheDocument();
+    fireEvent.click(getAllBySelector(`#${ORDER_OPERATE_COLUMN_ID}`)[0]);
+    expect(mockSetAuditResultActiveKey).not.toBeCalled();
+
+    fireEvent.click(
+      screen.getAllByText('order.auditResultCollection.table.sqlExecute')[0]
+    );
+    expect(mockSetAuditResultActiveKey).not.toBeCalled();
+    fireEvent.click(
+      screen.getAllByText('order.auditResultCollection.table.scheduleTime')[0]
+    );
+    expect(mockSetAuditResultActiveKey).not.toBeCalled();
   });
 });

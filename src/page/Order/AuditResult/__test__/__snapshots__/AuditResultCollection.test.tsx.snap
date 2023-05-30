@@ -2118,27 +2118,20 @@ exports[`test AuditResultCollection should jump to the corresponding order tab w
                                   class="ant-table-cell"
                                 >
                                   <div
-                                    class="ant-space ant-space-horizontal ant-space-align-center"
+                                    id="ORDER_OPERATE_COLUMN_ID"
+                                    style="cursor: default;"
                                   >
-                                    <div
-                                      class="ant-space-item"
+                                    <a
+                                      class="ant-typography ant-typography-disabled"
                                       style="margin-right: 8px;"
                                     >
-                                      <a
-                                        class="ant-typography ant-typography-disabled"
-                                      >
-                                        order.auditResultCollection.table.sqlExecute
-                                      </a>
-                                    </div>
-                                    <div
-                                      class="ant-space-item"
+                                      order.auditResultCollection.table.sqlExecute
+                                    </a>
+                                    <a
+                                      class="ant-typography ant-typography-disabled"
                                     >
-                                      <a
-                                        class="ant-typography ant-typography-disabled"
-                                      >
-                                        order.auditResultCollection.table.scheduleTime
-                                      </a>
-                                    </div>
+                                      order.auditResultCollection.table.scheduleTime
+                                    </a>
                                   </div>
                                 </td>
                               </tr>
@@ -2206,27 +2199,20 @@ exports[`test AuditResultCollection should jump to the corresponding order tab w
                                   class="ant-table-cell"
                                 >
                                   <div
-                                    class="ant-space ant-space-horizontal ant-space-align-center"
+                                    id="ORDER_OPERATE_COLUMN_ID"
+                                    style="cursor: default;"
                                   >
-                                    <div
-                                      class="ant-space-item"
+                                    <a
+                                      class="ant-typography"
                                       style="margin-right: 8px;"
                                     >
-                                      <a
-                                        class="ant-typography"
-                                      >
-                                        order.auditResultCollection.table.sqlExecute
-                                      </a>
-                                    </div>
-                                    <div
-                                      class="ant-space-item"
+                                      order.auditResultCollection.table.sqlExecute
+                                    </a>
+                                    <a
+                                      class="ant-typography"
                                     >
-                                      <a
-                                        class="ant-typography"
-                                      >
-                                        order.auditResultCollection.table.scheduleTime
-                                      </a>
-                                    </div>
+                                      order.auditResultCollection.table.scheduleTime
+                                    </a>
                                   </div>
                                 </td>
                               </tr>
@@ -2289,27 +2275,20 @@ exports[`test AuditResultCollection should jump to the corresponding order tab w
                                   class="ant-table-cell"
                                 >
                                   <div
-                                    class="ant-space ant-space-horizontal ant-space-align-center"
+                                    id="ORDER_OPERATE_COLUMN_ID"
+                                    style="cursor: default;"
                                   >
-                                    <div
-                                      class="ant-space-item"
+                                    <a
+                                      class="ant-typography ant-typography-disabled"
                                       style="margin-right: 8px;"
                                     >
-                                      <a
-                                        class="ant-typography ant-typography-disabled"
-                                      >
-                                        order.auditResultCollection.table.sqlExecute
-                                      </a>
-                                    </div>
-                                    <div
-                                      class="ant-space-item"
+                                      order.auditResultCollection.table.sqlExecute
+                                    </a>
+                                    <a
+                                      class="ant-typography"
                                     >
-                                      <a
-                                        class="ant-typography"
-                                      >
-                                        order.auditResultCollection.table.cancelExecScheduled
-                                      </a>
-                                    </div>
+                                      order.auditResultCollection.table.cancelExecScheduled
+                                    </a>
                                   </div>
                                 </td>
                               </tr>
