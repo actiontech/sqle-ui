@@ -620,6 +620,11 @@ describe('test AuditResultCollection', () => {
   });
 
   test('should jump to the corresponding order tab when clicking on overview table row', async () => {
+    (useSelector as jest.Mock).mockImplementation((e) =>
+      e({
+        user: { username: 'test' },
+      })
+    );
     mockGetSummaryOfInstanceTasks();
     const { container } = render(
       <AuditResultCollection
@@ -647,5 +652,26 @@ describe('test AuditResultCollection', () => {
       2,
       workflowTasks[0].task_id?.toString()
     );
+
+    mockSetAuditResultActiveKey.mockClear();
+    expect(
+      screen.getByTestId(`operate-column-wrapper-${taskInfos[0].task_id}`)
+    ).toBeInTheDocument();
+    fireEvent.click(
+      screen.getByTestId(`operate-column-wrapper-${taskInfos[0].task_id}`)
+    );
+    expect(mockSetAuditResultActiveKey).not.toBeCalled();
+
+    fireEvent.click(
+      screen.getAllByText('order.auditResultCollection.table.sqlExecute')[0]
+    );
+    expect(mockSetAuditResultActiveKey).not.toBeCalled();
+    fireEvent.click(
+      screen.getAllByText('order.auditResultCollection.table.scheduleTime')[0]
+    );
+    expect(mockSetAuditResultActiveKey).not.toBeCalled();
+
+    fireEvent.click(screen.getAllByText('order.operator.terminate')[0]);
+    expect(mockSetAuditResultActiveKey).not.toBeCalled();
   });
 });

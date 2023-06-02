@@ -166,7 +166,9 @@ const AuditResultCollection: React.FC<AuditResultCollectionProps> = ({
           dataSource={overviewList ?? []}
           onRow={(record) => {
             return {
-              onClick: () => overviewTableRowClick(record),
+              onClick: () => {
+                overviewTableRowClick(record);
+              },
             };
           }}
           pagination={false}

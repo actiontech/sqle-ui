@@ -264,118 +264,124 @@ export const auditResultOverviewColumn: (
       title: () => t('common.operate'),
       render: (_, record) => {
         const taskId = record.task_id?.toString() ?? '';
-        if (record.status === GetWorkflowTasksItemV2StatusEnum.executing) {
-          return (
-            <Popconfirm
-              title={t('order.operator.terminateConfirmTips')}
-              overlayClassName="popconfirm-small"
-              placement="topRight"
-              okText={t('common.ok')}
-              disabled={
-                !record.current_step_assignee_user_name_list?.includes(
-                  currentUsername
-                )
-              }
-              onConfirm={(e) => {
-                e?.stopPropagation();
-                sqlTerminateHandle(taskId);
-              }}
-              onCancel={(e) => {
-                e?.stopPropagation();
-              }}
-            >
-              <Typography.Link
-                type="danger"
-                onClick={(e) => {
-                  e.stopPropagation();
-                }}
+        return (
+          <div
+            data-testid={`operate-column-wrapper-${record.task_id}`}
+            style={{ cursor: 'default' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {record.status === GetWorkflowTasksItemV2StatusEnum.executing ? (
+              <Popconfirm
+                title={t('order.operator.terminateConfirmTips')}
+                overlayClassName="popconfirm-small"
+                placement="topRight"
+                okText={t('common.ok')}
                 disabled={
                   !record.current_step_assignee_user_name_list?.includes(
                     currentUsername
                   )
                 }
-              >
-                {t('order.operator.terminate')}
-              </Typography.Link>
-            </Popconfirm>
-          );
-        }
-        return (
-          <Space>
-            <Popconfirm
-              overlayClassName="popconfirm-small"
-              placement="topRight"
-              okText={t('common.ok')}
-              disabled={
-                !enableSqlExecute(
-                  record.current_step_assignee_user_name_list,
-                  record.status,
-                  record.instance_maintenance_times
-                )
-              }
-              title={t(
-                'order.auditResultCollection.table.sqlExecuteConfirmTips'
-              )}
-              onConfirm={(e) => {
-                e?.stopPropagation();
-                sqlExecuteHandle(taskId);
-              }}
-              onCancel={(e) => {
-                e?.stopPropagation();
-              }}
-            >
-              <Typography.Link
-                disabled={
-                  !enableSqlExecute(
-                    record.current_step_assignee_user_name_list,
-                    record.status,
-                    record.instance_maintenance_times
-                  )
-                }
-                onClick={(e) => {
-                  e.stopPropagation();
+                onConfirm={(e) => {
+                  e?.stopPropagation();
+                  sqlTerminateHandle(taskId);
+                }}
+                onCancel={(e) => {
+                  e?.stopPropagation();
                 }}
               >
-                {t('order.auditResultCollection.table.sqlExecute')}
-              </Typography.Link>
-            </Popconfirm>
-
-            <EmptyBox
-              if={
-                record.status ===
-                GetWorkflowTasksItemV2StatusEnum.exec_scheduled
-              }
-              defaultNode={
                 <Typography.Link
-                  disabled={
-                    !enableSqlScheduleTime(
-                      record.current_step_assignee_user_name_list,
-                      record.status
-                    )
-                  }
+                  type="danger"
                   onClick={(e) => {
                     e.stopPropagation();
-                    openScheduleModalAndSetCurrentTask(record);
+                  }}
+                  disabled={
+                    !record.current_step_assignee_user_name_list?.includes(
+                      currentUsername
+                    )
+                  }
+                >
+                  {t('order.operator.terminate')}
+                </Typography.Link>
+              </Popconfirm>
+            ) : (
+              <>
+                <Popconfirm
+                  overlayClassName="popconfirm-small"
+                  placement="topRight"
+                  okText={t('common.ok')}
+                  disabled={
+                    !enableSqlExecute(
+                      record.current_step_assignee_user_name_list,
+                      record.status,
+                      record.instance_maintenance_times
+                    )
+                  }
+                  title={t(
+                    'order.auditResultCollection.table.sqlExecuteConfirmTips'
+                  )}
+                  onConfirm={(e) => {
+                    e?.stopPropagation();
+                    sqlExecuteHandle(taskId);
+                  }}
+                  onCancel={(e) => {
+                    e?.stopPropagation();
                   }}
                 >
-                  {t('order.auditResultCollection.table.scheduleTime')}
-                </Typography.Link>
-              }
-            >
-              <Typography.Link
-                disabled={!enableCancelSqlScheduleTime(record.status)}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  scheduleTimeHandle(
-                    undefined,
-                    record.task_id?.toString() ?? ''
-                  );
-                }}
-              >
-                {t('order.auditResultCollection.table.cancelExecScheduled')}
-              </Typography.Link>
-            </EmptyBox>
-          </Space>
+                  <Typography.Link
+                    style={{ marginRight: 8 }}
+                    disabled={
+                      !enableSqlExecute(
+                        record.current_step_assignee_user_name_list,
+                        record.status,
+                        record.instance_maintenance_times
+                      )
+                    }
+                    onClick={(e) => {
+                      e.stopPropagation();
+                    }}
+                  >
+                    {t('order.auditResultCollection.table.sqlExecute')}
+                  </Typography.Link>
+                </Popconfirm>
+
+                <EmptyBox
+                  if={
+                    record.status ===
+                    GetWorkflowTasksItemV2StatusEnum.exec_scheduled
+                  }
+                  defaultNode={
+                    <Typography.Link
+                      disabled={
+                        !enableSqlScheduleTime(
+                          record.current_step_assignee_user_name_list,
+                          record.status
+                        )
+                      }
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openScheduleModalAndSetCurrentTask(record);
+                      }}
+                    >
+                      {t('order.auditResultCollection.table.scheduleTime')}
+                    </Typography.Link>
+                  }
+                >
+                  <Typography.Link
+                    disabled={!enableCancelSqlScheduleTime(record.status)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      scheduleTimeHandle(
+                        undefined,
+                        record.task_id?.toString() ?? ''
+                      );
+                    }}
+                  >
+                    {t('order.auditResultCollection.table.cancelExecScheduled')}
+                  </Typography.Link>
+                </EmptyBox>
+              </>
+            )}
+          </div>
         );
       },
     },
