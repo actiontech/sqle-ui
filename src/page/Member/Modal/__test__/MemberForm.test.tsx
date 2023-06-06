@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { useForm } from 'antd/lib/form/Form';
 import {
@@ -7,6 +7,7 @@ import {
   mockUseUsername,
 } from '../../../../testUtils/mockRequest';
 import MemberForm from '../MemberForm';
+import { screen } from '@testing-library/react';
 
 describe('test MemberForm', () => {
   const projectName = 'default';
@@ -40,5 +41,34 @@ describe('test MemberForm', () => {
       />
     );
     expect(container).toMatchSnapshot();
+
+    rerender(
+      <MemberForm
+        form={result.current[0]}
+        isUpdate={true}
+        projectName={projectName}
+        isManager={true}
+      />
+    );
+    expect(
+      screen.queryByText('member.roleSelector.addRole')
+    ).not.toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
+
+  test('should be call changeIsManager when clicked "projectAdmin"', () => {
+    const { result } = renderHook(() => useForm());
+    const mockChangeIsManager = jest.fn();
+    render(
+      <MemberForm
+        form={result.current[0]}
+        projectName={projectName}
+        changeIsManager={mockChangeIsManager}
+      />
+    );
+    expect(mockChangeIsManager).not.toBeCalled();
+    fireEvent.click(screen.getByLabelText('member.memberForm.projectAdmin'));
+    expect(mockChangeIsManager).toBeCalled();
+    expect(mockChangeIsManager).toBeCalledWith(true);
   });
 });

@@ -12,6 +12,7 @@ export default {
       role: '权限 (格式 数据源: [角色1,角色2 ...])',
       isManager: '项目管理员',
       confirmTitle: '确定要删除成员:{{name}}?',
+      roleTips: '拥有对所有数据源的全部操作权限',
     },
 
     filterForm: {

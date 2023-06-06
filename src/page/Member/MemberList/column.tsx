@@ -11,6 +11,7 @@ import EmptyBox from '../../../components/EmptyBox';
 import { t } from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import renderRolesInfo from '../Common/renderRolesInfo';
+import IconTipsLabel from '../../../components/IconTipsLabel';
 
 const MemberListTableColumnFactory: (
   updateAction: (record: IGetMemberRespDataV1) => void,
@@ -31,7 +32,15 @@ const MemberListTableColumnFactory: (
     {
       dataIndex: 'roles',
       title: t('member.memberList.tableColumn.role'),
-      render(roles?: IBindRoleReqV1[]) {
+      render(roles: IBindRoleReqV1[], record: IGetMemberRespDataV1) {
+        if (record.is_manager) {
+          return (
+            <IconTipsLabel tips={t('member.memberList.tableColumn.roleTips')}>
+              ALL
+            </IconTipsLabel>
+          );
+        }
+
         if (!Array.isArray(roles) || roles.length === 0) {
           return null;
         }

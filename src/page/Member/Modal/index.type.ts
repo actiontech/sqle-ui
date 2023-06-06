@@ -11,6 +11,8 @@ export type MemberFormProps = {
   form: FormInstance<MemberFormFields>;
   isUpdate?: boolean;
   projectName: string;
+  isManager?: boolean;
+  changeIsManager?: (isManager: boolean) => void;
 };
 
 export type MemberGroupFormFields = {

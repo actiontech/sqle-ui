@@ -5,11 +5,14 @@ import { MemberFormProps } from './index.type';
 import RoleSelector from '../Common/RoleSelector';
 import useUsername from '../../../hooks/useUsername';
 import { useEffect } from 'react';
+import EmptyBox from '../../../components/EmptyBox';
 
 const MemberForm: React.FC<MemberFormProps> = ({
   form,
   isUpdate,
   projectName,
+  isManager,
+  changeIsManager,
 }) => {
   const { t } = useTranslation();
   const { updateUsernameList, generateUsernameSelectOption } = useUsername();
@@ -48,12 +51,19 @@ const MemberForm: React.FC<MemberFormProps> = ({
         name="isManager"
         label={t('member.memberForm.projectAdmin')}
         valuePropName="checked"
-        initialValue={false}
+        initialValue={!!isManager}
       >
-        <Switch />
+        <Switch
+          checked={isManager}
+          onChange={(v) => {
+            changeIsManager?.(v);
+          }}
+        />
       </Form.Item>
 
-      <RoleSelector projectName={projectName} />
+      <EmptyBox if={!isManager}>
+        <RoleSelector projectName={projectName} />
+      </EmptyBox>
     </Form>
   );
 };

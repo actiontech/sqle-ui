@@ -14,11 +14,13 @@ import EventEmitter from '../../../utils/EventEmitter';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import { MemberFormFields } from './index.type';
 import MemberForm from './MemberForm';
+import { useState } from 'react';
 
 const AddMember: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { projectName } = useCurrentProjectName();
+  const [isManager, setIsManager] = useState(false);
   const [form] = useForm<MemberFormFields>();
   const [submitLoading, { setFalse: submitFinish, setTrue: startSubmit }] =
     useBoolean();
@@ -31,7 +33,7 @@ const AddMember: React.FC = () => {
     const params: IAddMemberV1Params = {
       project_name: projectName,
       is_manager: values.isManager,
-      roles: values.roles,
+      roles: values.roles ?? [],
       user_name: values.username,
     };
     startSubmit();
@@ -56,6 +58,7 @@ const AddMember: React.FC = () => {
 
   const closeModal = () => {
     form.resetFields();
+    setIsManager(false);
     dispatch(
       updateMemberModalStatus({
         modalName: ModalName.Add_Member,
@@ -80,7 +83,12 @@ const AddMember: React.FC = () => {
         </>
       }
     >
-      <MemberForm form={form} projectName={projectName} />
+      <MemberForm
+        form={form}
+        projectName={projectName}
+        isManager={isManager}
+        changeIsManager={setIsManager}
+      />
     </Modal>
   );
 };
