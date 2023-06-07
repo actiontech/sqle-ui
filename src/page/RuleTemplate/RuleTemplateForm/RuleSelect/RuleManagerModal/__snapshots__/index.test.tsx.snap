@@ -339,7 +339,7 @@ exports[`RuleSelect/RuleManagerModal should render base form at init 1`] = `
                 type="button"
               >
                 <span>
-                  common.submit
+                  common.save
                 </span>
               </button>
             </div>

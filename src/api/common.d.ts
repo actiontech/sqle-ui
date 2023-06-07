@@ -1882,6 +1882,8 @@ export interface IRuleTemplateTipResV1 {
 export interface ISMTPConfigurationResV1 {
   enable_smtp_notify?: boolean;
 
+  is_skip_verify?: boolean;
+
   smtp_host?: string;
 
   smtp_port?: string;
@@ -2247,6 +2249,8 @@ export interface IUpdateRuleTemplateReqV1 {
 
 export interface IUpdateSMTPConfigurationReqV1 {
   enable_smtp_notify?: boolean;
+
+  is_skip_verify?: boolean;
 
   smtp_host?: string;
 
@@ -2747,6 +2751,18 @@ export interface ICreateWorkflowReqV2 {
   task_ids?: number[];
 
   workflow_subject?: string;
+}
+
+export interface ICreateWorkflowResV2 {
+  code?: number;
+
+  data?: ICreateWorkflowResV2Data;
+
+  message?: string;
+}
+
+export interface ICreateWorkflowResV2Data {
+  workflow_id?: string;
 }
 
 export interface IDirectAuditReqV2 {

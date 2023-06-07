@@ -130,7 +130,8 @@ export default {
 
   create: {
     success: '工单创建成功',
-    guide: '去工单列表查看刚刚创建的工单',
+    guide: '查看工单详情',
+    cloneOrder: '克隆工单',
   },
 
   baseInfo: {
@@ -143,10 +144,8 @@ export default {
   sqlInfo: {
     title: '审核SQL语句信息',
 
-    isSameSqlOrder: '是否选择相同sql',
+    isSameSqlOrder: '是否选择相同SQL',
     orderModeTips: '当数据源类型相同时才能使用相同Sql模式',
-    sameSql: '相同Sql',
-    differenceSql: '不同Sql',
 
     instanceName: '数据源',
     instanceNameTips: '后续添加的数据源流程模板与当前数据源相同',

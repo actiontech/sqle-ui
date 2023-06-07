@@ -6,6 +6,7 @@ import workflow from '../../../api/workflow';
 import EmitterKey from '../../../data/EmitterKey';
 import {
   getBySelector,
+  getHrefByText,
   selectOptionByIndex,
 } from '../../../testUtils/customQuery';
 import { renderWithThemeAndRouter } from '../../../testUtils/customRender';
@@ -568,5 +569,81 @@ describe('Order/Create', () => {
       message = error as any as string;
     }
     expect(message).toBe('order.createOrder.workflowNameRule');
+  });
+
+  test('should render result modal when created order', async () => {
+    mockCreateAuditTasks();
+    mockAuditTaskGroupId();
+    mockGetInstanceWorkflowTemplate();
+    mockGetTaskSql();
+
+    const createOrderSpy = mockCreateOrder();
+    createOrderSpy.mockImplementation(() =>
+      resolveThreeSecond({
+        workflow_id: '123',
+      })
+    );
+    const { container } = renderWithThemeAndRouter(<CreateOrder />);
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    fireEvent.input(screen.getByLabelText('order.baseInfo.name'), {
+      target: { value: 'orderName' },
+    });
+
+    selectOptionByIndex('order.sqlInfo.instanceName', 'instance1');
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(0));
+
+    fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
+      target: { value: 'select * from table2' },
+    });
+
+    fireEvent.click(screen.getByText('order.sqlInfo.audit'));
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    fireEvent.click(screen.getByText('order.createOrder.button'));
+    await act(async () => jest.advanceTimersByTime(0));
+
+    expect(createOrderSpy).toBeCalledTimes(1);
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await screen.findAllByText('order.create.success');
+
+    expect(getHrefByText('order.create.guide >')).toBe(
+      `/project/${projectName}/order/123`
+    );
+
+    fireEvent.click(screen.getByText('order.create.cloneOrder'));
+    expect(getBySelector('.ant-modal-wrap')).toHaveStyle('display: none');
+    expect(screen.getByLabelText('order.baseInfo.name')).toHaveTextContent('');
+
+    fireEvent.input(screen.getByLabelText('order.baseInfo.name'), {
+      target: { value: 'orderName2' },
+    });
+
+    fireEvent.click(screen.getByText('order.sqlInfo.audit'));
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    fireEvent.click(screen.getByText('order.createOrder.button'));
+    await act(async () => jest.advanceTimersByTime(0));
+
+    expect(createOrderSpy).toBeCalledTimes(2);
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    fireEvent.click(screen.getByText('common.resetAndClose'));
+    expect(container).toMatchSnapshot();
   });
 });

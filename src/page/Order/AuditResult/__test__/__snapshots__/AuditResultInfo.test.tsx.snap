@@ -13,6 +13,7 @@ exports[`Order/AuditResult/AuditResultInfo should render audit result overview w
           aria-label="info-circle"
           class="anticon anticon-info-circle"
           role="img"
+          style="font-size: 14px; color: rgb(240, 0, 0);"
         >
           <svg
             aria-hidden="true"
@@ -43,12 +44,13 @@ exports[`Order/AuditResult/AuditResultInfo should render audit result overview w
     </li>
     <li>
       <div
-        class="result-box result-box-warning"
+        class="result-box result-box-warn"
       >
         <span
           aria-label="warning"
           class="anticon anticon-warning"
           role="img"
+          style="font-size: 14px; color: rgb(255, 140, 0);"
         >
           <svg
             aria-hidden="true"
@@ -76,16 +78,17 @@ exports[`Order/AuditResult/AuditResultInfo should render audit result overview w
     </li>
     <li>
       <div
-        class="result-box result-box-warning"
+        class="result-box auditResultLevelNormalBox-test"
       >
         <span
-          aria-label="warning"
-          class="anticon anticon-warning"
+          aria-label="audit"
+          class="anticon anticon-audit"
           role="img"
+          style="font-size: 14px;"
         >
           <svg
             aria-hidden="true"
-            data-icon="warning"
+            data-icon="audit"
             fill="currentColor"
             focusable="false"
             height="1em"
@@ -93,7 +96,7 @@ exports[`Order/AuditResult/AuditResultInfo should render audit result overview w
             width="1em"
           >
             <path
-              d="M464 720a48 48 0 1096 0 48 48 0 10-96 0zm16-304v184c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V416c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8zm475.7 440l-416-720c-6.2-10.7-16.9-16-27.7-16s-21.6 5.3-27.7 16l-416 720C56 877.4 71.4 904 96 904h832c24.6 0 40-26.6 27.7-48zm-783.5-27.9L512 239.9l339.8 588.2H172.2z"
+              d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
             />
           </svg>
         </span>
@@ -109,12 +112,13 @@ exports[`Order/AuditResult/AuditResultInfo should render audit result overview w
     </li>
     <li>
       <div
-        class="result-box "
+        class="result-box result-box-notice"
       >
         <span
           aria-label="info-circle"
           class="anticon anticon-info-circle"
           role="img"
+          style="font-size: 14px; color: rgb(50, 130, 230);"
         >
           <svg
             aria-hidden="true"
@@ -150,16 +154,17 @@ exports[`Order/AuditResult/AuditResultInfo should render audit result overview w
 exports[`Order/AuditResult/AuditResultInfo should render passed when there is no audit result 1`] = `
 <div>
   <div
-    class="result-box result-box-success"
+    class="result-box result-box-passed"
   >
     <span
-      aria-label="check"
-      class="anticon anticon-check"
+      aria-label="audit"
+      class="anticon anticon-audit"
       role="img"
+      style="font-size: 14px;"
     >
       <svg
         aria-hidden="true"
-        data-icon="check"
+        data-icon="audit"
         fill="currentColor"
         focusable="false"
         height="1em"
@@ -167,7 +172,7 @@ exports[`Order/AuditResult/AuditResultInfo should render passed when there is no
         width="1em"
       >
         <path
-          d="M912 190h-69.9c-9.8 0-19.1 4.5-25.1 12.2L404.7 724.5 207 474a32 32 0 00-25.1-12.2H112c-6.7 0-10.4 7.7-6.3 12.9l273.9 347c12.8 16.2 37.4 16.2 50.3 0l488.4-618.9c4.1-5.1.4-12.8-6.3-12.8z"
+          d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
         />
       </svg>
     </span>

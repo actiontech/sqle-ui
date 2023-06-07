@@ -25,6 +25,7 @@ import { mockGetAllRules } from '../../../Rule/__test__/utils';
 import { taskSqls, workflowTasks } from '../../Detail/__testData__';
 import AuditResultCollection from '../AuditResultCollection';
 import { useSelector } from 'react-redux';
+import { mockUseStyle } from '../../../../testUtils/mockStyle';
 const OVERVIEW_TAB_KEY = 'OVERVIEW_TAB_KEY';
 const projectName = 'default';
 jest.mock('react-redux', () => {
@@ -76,6 +77,7 @@ describe('test AuditResultCollection', () => {
   const mockSetAuditResultActiveKey = jest.fn();
   const mockRefreshOrder = jest.fn();
   beforeEach(() => {
+    mockUseStyle();
     mockGetAllRules();
     mockGetTaskSqls();
     mockUpdateTaskSqlDesc();

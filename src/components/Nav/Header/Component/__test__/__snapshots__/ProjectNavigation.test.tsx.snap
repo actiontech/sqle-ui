@@ -107,7 +107,7 @@ exports[`test ProjectNavigation should be able to search for projects properly 1
                     class="project-dropdown-search-result-wrapper"
                   >
                     <div
-                      class="project-dropdown-name-wrapper makeStyles-optionsHover-12"
+                      class="project-dropdown-name-wrapper makeStyles-optionsHover-14"
                     >
                       default
                     </div>
@@ -428,7 +428,7 @@ exports[`test ProjectNavigation should update the recently used item when clicki
                     class="project-dropdown-search-result-wrapper"
                   >
                     <div
-                      class="project-dropdown-name-wrapper makeStyles-optionsHover-8"
+                      class="project-dropdown-name-wrapper makeStyles-optionsHover-9"
                     >
                       default
                     </div>

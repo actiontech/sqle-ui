@@ -21,6 +21,9 @@ import EventEmitter from '../../../utils/EventEmitter';
 import { dataSourceInstance } from '../../DataSource/__testData__';
 import { AuditPlan } from '../PlanList/__testData__';
 import { auditTaskMetas } from './__testData__/auditMeta';
+import { renderHook } from '@testing-library/react-hooks';
+import { useForm } from 'antd/lib/form/Form';
+import { PlanFormField } from './index.type';
 
 describe('PlanForm', () => {
   let warningSpy!: jest.SpyInstance;
@@ -73,9 +76,15 @@ describe('PlanForm', () => {
   };
 
   test('should match snapshot', async () => {
+    const { result } = renderHook(() => useForm<PlanFormField>());
+
     const submitFn = jest.fn();
     const { container } = render(
-      <PlanForm submit={submitFn} projectName={projectName} />
+      <PlanForm
+        form={result.current[0]}
+        submit={submitFn}
+        projectName={projectName}
+      />
     );
     await act(async () => jest.advanceTimersByTime(3000));
 
@@ -83,9 +92,16 @@ describe('PlanForm', () => {
   });
 
   test('should set db type to equal data source which user select', async () => {
+    const { result } = renderHook(() => useForm<PlanFormField>());
     const submitFn = jest.fn();
     const getInstanceSpy = mockGetInstance();
-    render(<PlanForm submit={submitFn} projectName={projectName} />);
+    render(
+      <PlanForm
+        form={result.current[0]}
+        submit={submitFn}
+        projectName={projectName}
+      />
+    );
     await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.mouseDown(
@@ -116,10 +132,15 @@ describe('PlanForm', () => {
   });
 
   test('should submit form value when user input all required fields and click submit button', async () => {
+    const { result } = renderHook(() => useForm<PlanFormField>());
     const submitFn = jest.fn().mockImplementation(() => resolveThreeSecond({}));
     const getAuditMetasSpy = mockGetAuditMeta();
     const { container } = render(
-      <PlanForm submit={submitFn} projectName={projectName} />
+      <PlanForm
+        form={result.current[0]}
+        submit={submitFn}
+        projectName={projectName}
+      />
     );
     await act(async () => jest.advanceTimersByTime(3000));
 
@@ -223,8 +244,15 @@ describe('PlanForm', () => {
   });
 
   test('should rest form when component "Rest_Audit_Plan_Form" event', async () => {
+    const { result } = renderHook(() => useForm<PlanFormField>());
     const submitFn = jest.fn();
-    render(<PlanForm submit={submitFn} projectName={projectName} />);
+    render(
+      <PlanForm
+        form={result.current[0]}
+        submit={submitFn}
+        projectName={projectName}
+      />
+    );
     await fireEvent.input(screen.getByLabelText('auditPlan.planForm.name'), {
       target: { value: 'planName1' },
     });
@@ -235,11 +263,13 @@ describe('PlanForm', () => {
   });
 
   test('should reset apart of form when props includes default values and user click reset button', async () => {
+    const { result } = renderHook(() => useForm<PlanFormField>());
     const submitFn = jest.fn();
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
 
     const { container } = render(
       <PlanForm
+        form={result.current[0]}
         submit={submitFn}
         defaultValue={AuditPlan as IAuditPlanResV1}
         projectName={projectName}
@@ -269,10 +299,12 @@ describe('PlanForm', () => {
   });
 
   test('should reset all field to new task field after user update audit task and stay this page', async () => {
+    const { result } = renderHook(() => useForm<PlanFormField>());
     const submitFn = jest.fn();
     const getMeta = mockGetAuditMeta();
     const { rerender } = render(
       <PlanForm
+        form={result.current[0]}
         submit={submitFn}
         defaultValue={AuditPlan as IAuditPlanResV1}
         projectName={projectName}
@@ -286,6 +318,7 @@ describe('PlanForm', () => {
     const auditPlanClone = cloneDeep(AuditPlan);
     rerender(
       <PlanForm
+        form={result.current[0]}
         submit={submitFn}
         defaultValue={auditPlanClone as IAuditPlanResV1}
         projectName={projectName}
@@ -300,10 +333,17 @@ describe('PlanForm', () => {
   });
 
   test('should be rendered rule template name select form item when data source type is selected', async () => {
+    const { result } = renderHook(() => useForm<PlanFormField>());
     const submitFn = jest.fn();
     expect(useRuleTemplateSpy).toBeCalledTimes(0);
     expect(useGlobalRuleTemplateSpy).toBeCalledTimes(0);
-    render(<PlanForm submit={submitFn} projectName={projectName} />);
+    render(
+      <PlanForm
+        form={result.current[0]}
+        submit={submitFn}
+        projectName={projectName}
+      />
+    );
     expect(useRuleTemplateSpy).toBeCalledTimes(1);
     expect(useRuleTemplateSpy).toBeCalledWith({ project_name: projectName });
     expect(useGlobalRuleTemplateSpy).toBeCalledTimes(1);
@@ -331,8 +371,17 @@ describe('PlanForm', () => {
   });
 
   test('should empty rule template name when changing database type', async () => {
+    const { result } = renderHook(() => useForm<PlanFormField>());
+
     const submitFn = jest.fn();
-    render(<PlanForm submit={submitFn} projectName={projectName} />);
+
+    render(
+      <PlanForm
+        form={result.current[0]}
+        submit={submitFn}
+        projectName={projectName}
+      />
+    );
 
     await act(async () => jest.advanceTimersByTime(3000));
 
@@ -370,13 +419,21 @@ describe('PlanForm', () => {
   });
 
   test('should filter instance when changing database type and empty database', async () => {
+    const { result } = renderHook(() => useForm<PlanFormField>());
+
     const submitFn = jest.fn();
     const getInstanceSpy = mockGetInstance();
     getInstanceSpy.mockImplementation(() =>
       resolveThreeSecond({ db_type: 'oracle' })
     );
 
-    render(<PlanForm submit={submitFn} projectName={projectName} />);
+    render(
+      <PlanForm
+        form={result.current[0]}
+        submit={submitFn}
+        projectName={projectName}
+      />
+    );
 
     expect(useInstanceSpy).toBeCalledTimes(1);
     expect(useInstanceSpy).nthCalledWith(1, {

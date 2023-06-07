@@ -22,6 +22,10 @@ const lightTheme = createTheme({
   optionsHover: {
     background: '#f5f5f5',
   },
+  auditResultLevelNormalBox: {
+    color: 'rgba(0, 0, 0, 0.85)',
+    border: '1px solid rgba(0, 0, 0, 0.85)',
+  },
 });
 
 export default lightTheme;

@@ -10,6 +10,7 @@ import {
 } from '../../../api/common.enum';
 import { IGetAuditTaskSQLsV2Params } from '../../../api/task/index.d';
 import { I18nKey } from '../../../types/common.type';
+import { AuditResultErrorMessageProps } from '../../../components/AuditResultErrorMessage/index.type';
 
 export type AuditResultProps = {
   taskId?: number;

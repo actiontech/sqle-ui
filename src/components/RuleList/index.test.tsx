@@ -77,19 +77,19 @@ describe('RuleList', () => {
 
   test('should render rule list when list is not empty array', () => {
     const { container } = render(<RuleList list={ruleList} />);
-    fireEvent.click(screen.getByText('type1'));
-    fireEvent.click(screen.getByText('type2'));
-    fireEvent.click(screen.getByText('type3'));
+    fireEvent.click(screen.getByText(/type1\s\(2\)/));
+    fireEvent.click(screen.getByText(/type2\s\(2\)/));
+    fireEvent.click(screen.getByText(/type3\s\(2\)/));
     expect(container).toMatchSnapshot();
   });
 
   test('should set active tab by currentTab of props', async () => {
     render(<RuleList list={ruleList} currentTab="type3" />);
-    expect(screen.getByText('type3').parentNode).toHaveClass(
+    expect(screen.getByText(/type3\s\(2\)/).parentNode).toHaveClass(
       'ant-tabs-tab-active'
     );
-    fireEvent.click(screen.getByText('type2'));
-    expect(screen.getByText('type2').parentNode).toHaveClass(
+    fireEvent.click(screen.getByText(/type2\s\(2\)/));
+    expect(screen.getByText(/type2\s\(2\)/).parentNode).toHaveClass(
       'ant-tabs-tab-active'
     );
   });
@@ -98,12 +98,12 @@ describe('RuleList', () => {
     render(
       <RuleList list={ruleList} currentTab="type3" tabChange={tabChangeFn} />
     );
-    expect(screen.getByText('type3').parentNode).toHaveClass(
+    expect(screen.getByText(/type3\s\(2\)/).parentNode).toHaveClass(
       'ant-tabs-tab-active'
     );
-    fireEvent.click(screen.getByText('type2'));
+    fireEvent.click(screen.getByText(/type2\s\(2\)/));
     expect(tabChangeFn).toBeCalledWith('type2');
-    expect(screen.getByText('type3').parentNode).toHaveClass(
+    expect(screen.getByText(/type3\s\(2\)/).parentNode).toHaveClass(
       'ant-tabs-tab-active'
     );
   });

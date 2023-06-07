@@ -1,8 +1,6 @@
 @import '../../../../styles/_variable.less';
 
 .result-box {
-  color: @text-blue;
-  border: 1px solid @text-blue;
   border-radius: 4px;
   padding: 2px 5px;
   display: flex;
@@ -12,17 +10,21 @@
     width: 110px;
     display: inline-box;
   }
-  &-success {
+  &-passed {
     color: @text-green;
-    border-color: @text-green;
+    border: 1px solid @text-green;
   }
-  &-warning {
+  &-warn {
     color: @text-orange;
-    border-color: @text-orange;
+    border: 1px solid @text-orange;
   }
   &-error {
     color: @text-red;
-    border-color: @text-red;
+    border: 1px solid @text-red;
+  }
+  &-notice {
+    color: @text-blue;
+    border: 1px solid @text-blue;
   }
 }
 

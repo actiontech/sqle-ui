@@ -87,7 +87,7 @@ const RuleManagerModal: React.FC<RuleManagerFormProps> = (props) => {
         open={props.visible}
         cancelText={t('common.close')}
         closable={false}
-        okText={t('common.submit')}
+        okText={t('common.save')}
         onCancel={onCancel}
         onOk={submit}
         className="rule-manager-modal"
