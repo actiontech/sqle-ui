@@ -60,6 +60,8 @@ export default {
     username: 'SMTP用户名',
     password: 'SMTP密码',
     passwordConfirm: '确认SMTP密码',
+    isSkipVerify: '是否跳过证书认证',
+    skipVerifyTips: '跳过证书可能会遇到中间人攻击以及无法验证数据完整性等问题',
 
     test: '测试',
     receiver: '接收邮箱',

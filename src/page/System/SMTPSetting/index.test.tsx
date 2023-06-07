@@ -19,6 +19,7 @@ describe('System/SMTPSetting', () => {
     spy.mockImplementation(() =>
       resolveThreeSecond({
         enable_smtp_notify: true,
+        is_skip_verify: false,
         smtp_host: '10.10.10.1',
         smtp_port: '3300',
         smtp_username: 'currentUser@gamil.com',
@@ -73,6 +74,7 @@ describe('System/SMTPSetting', () => {
     fireEvent.click(screen.getByText('common.modify'));
 
     fireEvent.click(screen.getByLabelText('system.smtp.enable'));
+    fireEvent.click(screen.getByLabelText('system.smtp.isSkipVerify'));
     fireEvent.input(screen.getByLabelText('system.smtp.username'), {
       target: { value: 'newEmail@163.com' },
     });
@@ -88,6 +90,7 @@ describe('System/SMTPSetting', () => {
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
       enable_smtp_notify: false,
+      is_skip_verify: true,
       smtp_host: '10.10.10.1',
       smtp_password: 'temp',
       smtp_port: '3300',

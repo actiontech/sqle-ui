@@ -18,9 +18,11 @@ import React, { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import configuration from '../../../api/configuration';
 import { PageFormLayout, ResponseCode } from '../../../data/common';
+import IconTipsLabel from '../../../components/IconTipsLabel';
 
 type SMTPSettingFormFields = {
   enable: boolean;
+  isSkipVerify: boolean;
   host: string;
   port: number;
   username: string;
@@ -48,6 +50,7 @@ const SMTPSetting = () => {
         ? Number.parseInt(smtpInfo.smtp_port, 10)
         : undefined,
       username: smtpInfo?.smtp_username,
+      isSkipVerify: smtpInfo?.is_skip_verify ?? false,
     });
   }, [form, smtpInfo]);
 
@@ -73,6 +76,7 @@ const SMTPSetting = () => {
           smtp_password: values.password,
           smtp_port: `${values.port}`,
           smtp_username: values.username,
+          is_skip_verify: values.isSkipVerify,
         })
         .then((res) => {
           if (res.data.code === ResponseCode.SUCCESS) {
@@ -145,6 +149,16 @@ const SMTPSetting = () => {
           <Descriptions.Item label={t('system.smtp.username')} span={3}>
             {smtpInfo?.smtp_username || '--'}
           </Descriptions.Item>
+          <Descriptions.Item
+            label={
+              <IconTipsLabel tips={t('system.smtp.skipVerifyTips')}>
+                {t('system.smtp.isSkipVerify')}
+              </IconTipsLabel>
+            }
+            span={3}
+          >
+            {smtpInfo?.is_skip_verify ? t('common.true') : t('common.false')}
+          </Descriptions.Item>
           <Descriptions.Item span={3}>
             <Space>
               <Popover
@@ -209,6 +223,17 @@ const SMTPSetting = () => {
         <Form.Item
           label={t('system.smtp.enable')}
           name="enable"
+          valuePropName="checked"
+        >
+          <Switch />
+        </Form.Item>
+        <Form.Item
+          label={
+            <IconTipsLabel tips={t('system.smtp.skipVerifyTips')}>
+              {t('system.smtp.isSkipVerify')}
+            </IconTipsLabel>
+          }
+          name="isSkipVerify"
           valuePropName="checked"
         >
           <Switch />
