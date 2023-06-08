@@ -1,5 +1,5 @@
 import { useTheme } from '@mui/styles';
-import { Button, Col, Divider, Row, Space, Steps } from 'antd';
+import { Anchor, Button, Col, Divider, Row, Space, Steps } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import BaseInfoForm from './BaseInfoForm';
@@ -48,12 +48,32 @@ const RuleTemplateForm: React.FC<RuleTemplateFormProps> = (props) => {
           />
         </div>
         <div hidden={props.step !== 1} data-testid="rule-list">
-          <RuleSelect
-            allRules={props.allRules}
-            listLoading={props.ruleListLoading}
-            activeRule={props.activeRule}
-            updateActiveRule={props.updateActiveRule}
-          />
+          <Space align="start" size={30}>
+            <Anchor
+              className="custom-anchor"
+              targetOffset={240}
+              onClick={(e) => e.preventDefault()}
+              getCurrentAnchor={(v) => {
+                return v || '#activeRuleTitle';
+              }}
+            >
+              <Anchor.Link
+                href="#activeRuleTitle"
+                title={t('ruleTemplate.ruleTemplateForm.activeAnchorTitle')}
+              ></Anchor.Link>
+              <Anchor.Link
+                href="#disableRuleTitle"
+                title={t('ruleTemplate.ruleTemplateForm.disableAnchorTitle')}
+              ></Anchor.Link>
+            </Anchor>
+            <RuleSelect
+              allRules={props.allRules}
+              listLoading={props.ruleListLoading}
+              activeRule={props.activeRule}
+              updateActiveRule={props.updateActiveRule}
+            />
+          </Space>
+
           <Divider dashed />
           <Row justify="end">
             <Space>

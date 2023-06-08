@@ -143,7 +143,7 @@ describe('RuleTemplate/RuleTemplateForm/RuleSelect', () => {
     expect(
       screen.getAllByText('ruleTemplate.editModal.title')[0]
     ).toHaveTextContent('ruleTemplate.editModal.title');
-    fireEvent.click(screen.getAllByText('common.submit')[0]);
+    fireEvent.click(screen.getAllByText('common.save')[0]);
     await act(async () => jest.advanceTimersByTime(3000));
 
     expect(updateActiveRuleFunction).toBeCalledTimes(1);

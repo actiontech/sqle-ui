@@ -14,4 +14,5 @@ export type RuleListProps = {
 export type TabRuleItem = {
   tabTitle: string;
   rules: IRuleResV1[];
+  len: number;
 };

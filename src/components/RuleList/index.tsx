@@ -1,5 +1,5 @@
 import { Col, List, Tabs, TabsProps, Tooltip, Typography } from 'antd';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RuleListDefaultTabKey } from '../../data/common';
 import { RuleListProps, TabRuleItem } from './index.type';
@@ -11,7 +11,6 @@ const RuleList: React.FC<RuleListProps> = (props) => {
   const [currentTab, setCurrentTab] = useState(
     props.currentTab ?? RuleListDefaultTabKey
   );
-  const [tabRules, setTabRules] = useState<TabRuleItem[]>([]);
   const tabChange = (activeKey: string) => {
     if (props.tabChange) {
       props.tabChange(activeKey);
@@ -20,15 +19,16 @@ const RuleList: React.FC<RuleListProps> = (props) => {
     }
   };
 
-  const generateTabRule = () => {
+  const tabRules = useMemo(() => {
     const map = new Map<string, TabRuleItem>();
     map.set(RuleListDefaultTabKey, {
       tabTitle: RuleListDefaultTabKey,
       rules: props.list,
+      len: props.list?.length ?? 0,
     });
     if (props.allRuleTabs) {
       props.allRuleTabs.forEach((tab) => {
-        map.set(tab, { tabTitle: tab, rules: [] });
+        map.set(tab, { tabTitle: tab, rules: [], len: 0 });
       });
     }
     props.list.forEach((rule) => {
@@ -36,24 +36,36 @@ const RuleList: React.FC<RuleListProps> = (props) => {
         return;
       }
       if (map.has(rule.type)) {
-        map.get(rule.type)?.rules.push(rule);
+        const currentRuleItem = map.get(rule.type);
+        if (currentRuleItem) {
+          map.set(rule.type, {
+            ...currentRuleItem,
+            rules: [...(currentRuleItem.rules ?? []), rule],
+            len: (currentRuleItem.len ?? 0) + 1,
+          });
+        }
       } else {
         map.set(rule.type, {
           tabTitle: rule.type,
           rules: [rule],
+          len: 1,
         });
       }
     });
-    const values = Array.from(map.values()).sort((a, b) =>
+
+    return Array.from(map.values()).sort((a, b) =>
       a.tabTitle > b.tabTitle ? 1 : -1
     );
-    setTabRules(values);
-  };
+  }, [props.allRuleTabs, props.list]);
 
   const tabItems: TabsProps['items'] = tabRules.map((tab) => {
     return {
       key: tab.tabTitle,
-      label: tab.tabTitle,
+      label: (
+        <>
+          {tab.tabTitle} {`(${tab.len})`}
+        </>
+      ),
       children: (
         <List
           className="rule-list-namespace"
@@ -95,11 +107,6 @@ const RuleList: React.FC<RuleListProps> = (props) => {
       ),
     };
   });
-
-  useEffect(() => {
-    generateTabRule();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.list, props.allRuleTabs]);
 
   useEffect(() => {
     if (props.currentTab) {

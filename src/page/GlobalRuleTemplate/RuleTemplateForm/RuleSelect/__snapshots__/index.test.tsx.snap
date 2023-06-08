@@ -11,7 +11,11 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
       <div
         class="ant-descriptions-title"
       >
-        ruleTemplate.ruleTemplateForm.activeRuleTitle
+        <span
+          id="activeRuleTitle"
+        >
+          ruleTemplate.ruleTemplateForm.activeRuleTitle
+        </span>
       </div>
       <div
         class="ant-descriptions-extra"
@@ -62,6 +66,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               ALL
+               
+              (0)
             </div>
           </div>
           <div
@@ -77,6 +83,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               DDL规范
+               
+              (0)
             </div>
           </div>
           <div
@@ -92,6 +100,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               DML规范
+               
+              (0)
             </div>
           </div>
           <div
@@ -107,6 +117,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               使用建议
+               
+              (0)
             </div>
           </div>
           <div
@@ -122,6 +134,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               全局配置
+               
+              (0)
             </div>
           </div>
           <div
@@ -137,6 +151,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               命名规范
+               
+              (0)
             </div>
           </div>
           <div
@@ -152,6 +168,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               索引规范
+               
+              (0)
             </div>
           </div>
           <div
@@ -265,7 +283,11 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
       <div
         class="ant-descriptions-title"
       >
-        ruleTemplate.ruleTemplateForm.disableRuleTitle
+        <span
+          id="disableRuleTitle"
+        >
+          ruleTemplate.ruleTemplateForm.disableRuleTitle
+        </span>
       </div>
       <div
         class="ant-descriptions-extra"
@@ -315,6 +337,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               ALL
+               
+              (64)
             </div>
           </div>
           <div
@@ -330,6 +354,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               DDL规范
+               
+              (14)
             </div>
           </div>
           <div
@@ -345,6 +371,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               DML规范
+               
+              (22)
             </div>
           </div>
           <div
@@ -360,6 +388,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               使用建议
+               
+              (9)
             </div>
           </div>
           <div
@@ -375,6 +405,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               全局配置
+               
+              (2)
             </div>
           </div>
           <div
@@ -390,6 +422,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               命名规范
+               
+              (8)
             </div>
           </div>
           <div
@@ -405,6 +439,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               索引规范
+               
+              (9)
             </div>
           </div>
           <div
@@ -6362,7 +6398,11 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
       <div
         class="ant-descriptions-title"
       >
-        ruleTemplate.ruleTemplateForm.activeRuleTitle
+        <span
+          id="activeRuleTitle"
+        >
+          ruleTemplate.ruleTemplateForm.activeRuleTitle
+        </span>
       </div>
       <div
         class="ant-descriptions-extra"
@@ -6413,6 +6453,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               ALL
+               
+              (0)
             </div>
           </div>
           <div
@@ -6428,6 +6470,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               DDL规范
+               
+              (0)
             </div>
           </div>
           <div
@@ -6443,6 +6487,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               DML规范
+               
+              (0)
             </div>
           </div>
           <div
@@ -6458,6 +6504,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               使用建议
+               
+              (0)
             </div>
           </div>
           <div
@@ -6473,6 +6521,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               全局配置
+               
+              (0)
             </div>
           </div>
           <div
@@ -6488,6 +6538,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               命名规范
+               
+              (0)
             </div>
           </div>
           <div
@@ -6503,6 +6555,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               索引规范
+               
+              (0)
             </div>
           </div>
           <div
@@ -6619,7 +6673,11 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
       <div
         class="ant-descriptions-title"
       >
-        ruleTemplate.ruleTemplateForm.disableRuleTitle
+        <span
+          id="disableRuleTitle"
+        >
+          ruleTemplate.ruleTemplateForm.disableRuleTitle
+        </span>
       </div>
       <div
         class="ant-descriptions-extra"
@@ -6669,6 +6727,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               ALL
+               
+              (64)
             </div>
           </div>
           <div
@@ -6684,6 +6744,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               DDL规范
+               
+              (14)
             </div>
           </div>
           <div
@@ -6699,6 +6761,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               DML规范
+               
+              (22)
             </div>
           </div>
           <div
@@ -6714,6 +6778,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               使用建议
+               
+              (9)
             </div>
           </div>
           <div
@@ -6729,6 +6795,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               全局配置
+               
+              (2)
             </div>
           </div>
           <div
@@ -6744,6 +6812,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               命名规范
+               
+              (8)
             </div>
           </div>
           <div
@@ -6759,6 +6829,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               索引规范
+               
+              (9)
             </div>
           </div>
           <div
@@ -12716,7 +12788,11 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
       <div
         class="ant-descriptions-title"
       >
-        ruleTemplate.ruleTemplateForm.activeRuleTitle
+        <span
+          id="activeRuleTitle"
+        >
+          ruleTemplate.ruleTemplateForm.activeRuleTitle
+        </span>
       </div>
       <div
         class="ant-descriptions-extra"
@@ -12766,6 +12842,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               ALL
+               
+              (32)
             </div>
           </div>
           <div
@@ -12781,6 +12859,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               DDL规范
+               
+              (12)
             </div>
           </div>
           <div
@@ -12796,6 +12876,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               DML规范
+               
+              (3)
             </div>
           </div>
           <div
@@ -12811,6 +12893,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               使用建议
+               
+              (5)
             </div>
           </div>
           <div
@@ -12826,6 +12910,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               全局配置
+               
+              (0)
             </div>
           </div>
           <div
@@ -12841,6 +12927,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               命名规范
+               
+              (6)
             </div>
           </div>
           <div
@@ -12856,6 +12944,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               索引规范
+               
+              (6)
             </div>
           </div>
           <div
@@ -16306,7 +16396,11 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
       <div
         class="ant-descriptions-title"
       >
-        ruleTemplate.ruleTemplateForm.disableRuleTitle
+        <span
+          id="disableRuleTitle"
+        >
+          ruleTemplate.ruleTemplateForm.disableRuleTitle
+        </span>
       </div>
       <div
         class="ant-descriptions-extra"
@@ -16356,6 +16450,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               ALL
+               
+              (32)
             </div>
           </div>
           <div
@@ -16371,6 +16467,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               DDL规范
+               
+              (2)
             </div>
           </div>
           <div
@@ -16386,6 +16484,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               DML规范
+               
+              (19)
             </div>
           </div>
           <div
@@ -16401,6 +16501,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               使用建议
+               
+              (4)
             </div>
           </div>
           <div
@@ -16416,6 +16518,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               全局配置
+               
+              (2)
             </div>
           </div>
           <div
@@ -16431,6 +16535,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               命名规范
+               
+              (2)
             </div>
           </div>
           <div
@@ -16446,6 +16552,8 @@ exports[`RuleTemplate/RuleTemplateForm/RuleSelect should render rule by active r
               tabindex="0"
             >
               索引规范
+               
+              (3)
             </div>
           </div>
           <div

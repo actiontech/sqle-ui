@@ -30,6 +30,10 @@ const useStyles = makeStyles<Theme>((theme) => ({
       background: theme.optionsHover.background,
     },
   },
+  auditResultLevelNormalBox: {
+    color: theme.auditResultLevelNormalBox.color,
+    border: theme.auditResultLevelNormalBox.border,
+  },
 }));
 
 export { SupportTheme, ThemeData };

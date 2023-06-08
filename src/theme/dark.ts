@@ -21,6 +21,10 @@ const darkTheme = createTheme({
   optionsHover: {
     background: 'hsla(0, 0%, 100%, 0.08)',
   },
+  auditResultLevelNormalBox: {
+    color: 'rgba(255, 255, 255, .85)',
+    border: '1px solid rgba(255, 255, 255, .85)',
+  },
 });
 
 export default darkTheme;

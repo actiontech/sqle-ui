@@ -80,7 +80,11 @@ const RuleSelect: React.FC<RuleSelectProps> = (props) => {
   return (
     <>
       <Descriptions
-        title={t('ruleTemplate.ruleTemplateForm.activeRuleTitle')}
+        title={
+          <span id="activeRuleTitle">
+            {t('ruleTemplate.ruleTemplateForm.activeRuleTitle')}
+          </span>
+        }
         extra={[
           <Button
             key="disable-all"
@@ -121,7 +125,11 @@ const RuleSelect: React.FC<RuleSelectProps> = (props) => {
       />
       <Divider dashed={true} />
       <Descriptions
-        title={t('ruleTemplate.ruleTemplateForm.disableRuleTitle')}
+        title={
+          <span id="disableRuleTitle">
+            {t('ruleTemplate.ruleTemplateForm.disableRuleTitle')}
+          </span>
+        }
         extra={[
           <Button
             key="active-all"

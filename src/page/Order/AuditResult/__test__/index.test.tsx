@@ -8,11 +8,13 @@ import {
 import { resolveThreeSecond } from '../../../../testUtils/mockRequest';
 import { mockGetAllRules } from '../../../Rule/__test__/utils';
 import { taskSqls } from '../../Detail/__testData__';
+import { mockUseStyle } from '../../../../testUtils/mockStyle';
 
 describe('Order/Detail/AuditResult', () => {
   const projectName = 'default';
   let getAllRulesSpy: jest.SpyInstance;
   beforeEach(() => {
+    mockUseStyle();
     jest.useFakeTimers();
     getAllRulesSpy = mockGetAllRules();
   });

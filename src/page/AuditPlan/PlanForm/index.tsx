@@ -1,6 +1,5 @@
 import { useBoolean } from 'ahooks';
 import { Button, Form, Input, Select, Space } from 'antd';
-import { useForm } from 'antd/lib/form/Form';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IAuditPlanParamResV1 } from '../../../api/common';
@@ -17,10 +16,8 @@ import { AuditTaskType } from './AuditTaskType';
 import { DataSource, DataSourceProps } from './DataSource';
 import { PlanFormField, PlanFormProps } from './index.type';
 
-const PlanForm: React.FC<PlanFormProps> = (props) => {
+const PlanForm: React.FC<PlanFormProps> = ({ form, ...props }) => {
   const { t } = useTranslation();
-
-  const [form] = useForm<PlanFormField>();
 
   const [dbType, setDbType] = useState('');
   const [dataSource, setDataSource] = useState('');
@@ -52,6 +49,7 @@ const PlanForm: React.FC<PlanFormProps> = (props) => {
 
   const resetForm = () => {
     setDataSource('');
+    setDbType('');
     EventEmitter.emit(EmitterKey.Reset_Audit_Plan_Form_Instance_List);
     if (!!props.defaultValue) {
       form.resetFields(['databaseName', 'cron', 'schema']);
