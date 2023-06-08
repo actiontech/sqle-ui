@@ -45,6 +45,8 @@ export interface IUpdateWorkflowTemplateV1Return extends IBaseRes {}
 export interface IGetWorkflowsV1Params {
   filter_subject?: string;
 
+  filter_workflow_id?: string;
+
   filter_create_time_from?: string;
 
   filter_create_time_to?: string;

@@ -117,6 +117,10 @@ describe('Order/List/OrderListFilterForm', () => {
       'ant-select-item-option-content'
     );
     fireEvent.click(taskInstanceNameOption);
+
+    fireEvent.input(screen.getByLabelText('order.order.id'), {
+      target: { value: '1234' },
+    });
     expect(result.current[0].getFieldsValue()).toEqual({
       filter_current_step_assignee_user_name: 'user_name1',
       filter_create_user_name: undefined,
@@ -126,6 +130,7 @@ describe('Order/List/OrderListFilterForm', () => {
       filter_subject: undefined,
       filter_order_createTime: undefined,
       filter_order_executeTime: undefined,
+      filter_workflow_id: '1234',
     });
 
     expect(screen.getByText('common.collapse')).toBeInTheDocument();
@@ -139,6 +144,7 @@ describe('Order/List/OrderListFilterForm', () => {
       // filter_current_step_type: 'sql_review',
       filter_status: undefined,
       filter_task_instance_name: undefined,
+      filter_workflow_id: '1234',
     });
 
     expect(setValueSpy).toBeCalledTimes(1);

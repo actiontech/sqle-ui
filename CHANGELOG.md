@@ -11,5 +11,6 @@
 * [] [fix]: 问题修复: 在点击工单概览中被禁用的按钮时，会切换到其他的tab选项卡  <https://github.com/actiontech/sqle-ui/pull/275>
 * [] [chore]: 2.2305.0 界面优化 <https://github.com/actiontech/sqle/issues/1508>
 * [] [fix]: react-monaco-editor 组件全部添加属性:  automaticLayout: true, 解决生产环境下在弹窗里第一次打开时无法输入的问题. <https://github.com/actiontech/sqle-ui/pull/276>
+* [] [feature]: 工单列表支持工单号展示以及筛选 <https://github.com/actiontech/sqle-ui/pull/280>
 * [] [chore]: 2.2306.0 界面优化 <https://github.com/actiontech/sqle-ui/pull/279>
 * [] [chore]: 项目成员界面优化(dms中已移除此页面) <https://github.com/actiontech/sqle-ui/pull/278>
