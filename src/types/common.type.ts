@@ -59,6 +59,10 @@ declare module '@mui/material/styles' {
     optionsHover: {
       background: string;
     };
+    auditResultLevelNormalBox: {
+      border: string;
+      color: string;
+    };
   }
 
   interface Theme extends ThemeOptions {

@@ -17,4 +17,11 @@ export default {
     ruleTemplateTips:
       '当未选择项目时, 当前规则模板为全局规则模板, 选择后为项目下的规则模板',
   },
+  ruleLevelIcon: {
+    normal: '普通',
+    notice: '提示',
+    warn: '告警',
+    error: '错误',
+    toolTipsTitle: '告警等级: {{ruleLevel}}({{text}})',
+  },
 };

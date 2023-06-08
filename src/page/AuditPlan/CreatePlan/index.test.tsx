@@ -6,6 +6,7 @@ import instance from '../../../api/instance';
 import EmitterKey from '../../../data/EmitterKey';
 import {
   getBySelector,
+  getHrefByText,
   selectOptionByIndex,
 } from '../../../testUtils/customQuery';
 import { renderWithRouter } from '../../../testUtils/customRender';
@@ -146,6 +147,52 @@ describe('CreatePlan', () => {
     await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
+    expect(screen.getByText('common.operateSuccess')).toBeInTheDocument();
+    expect(getHrefByText('auditPlan.create.successGuide >')).toBe(
+      `/project/${projectName}/auditPlan/detail/planName1`
+    );
+
+    fireEvent.click(screen.getByText('auditPlan.create.clonePlan'));
+    expect(getBySelector('.ant-modal-wrap')).toHaveStyle('display: none');
+    expect(screen.getByLabelText('auditPlan.planForm.name')).toHaveValue('');
+    expect(container).toMatchSnapshot();
+
+    fireEvent.input(screen.getByLabelText('auditPlan.planForm.name'), {
+      target: { value: 'planName2' },
+    });
+
+    act(() => {
+      fireEvent.click(screen.getByText('common.submit'));
+    });
+
+    await act(async () => jest.advanceTimersByTime(0));
+
+    expect(createRequest).toBeCalledTimes(2);
+    expect(createRequest).nthCalledWith(2, {
+      project_name: projectName,
+      audit_plan_cron: '0 0 * * *',
+      audit_plan_instance_database: 'schema1',
+      audit_plan_instance_name: 'instance1',
+      audit_plan_instance_type: 'mysql',
+      audit_plan_name: 'planName2',
+      audit_plan_params: [
+        {
+          key: 'a',
+          value: '123',
+        },
+        {
+          key: 'b',
+          value: '123',
+        },
+        {
+          key: 'c',
+          value: 'true',
+        },
+      ],
+      audit_plan_type: 'normal',
+      rule_template_name: 'rule_template_name1',
+    });
+    await act(async () => jest.advanceTimersByTime(3000));
 
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
     fireEvent.click(screen.getByText('common.resetAndClose'));

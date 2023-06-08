@@ -75,8 +75,6 @@ describe('test AddMember', () => {
     selectOptionByIndex('member.memberForm.username', 'user_name1');
     await act(async () => jest.advanceTimersByTime(0));
 
-    fireEvent.click(screen.getByLabelText('member.memberForm.projectAdmin'));
-
     fireEvent.click(screen.getByText('member.roleSelector.addRole'));
     selectOptionByIndex('member.roleSelector.role', 'role_name1');
     selectOptionByIndex('member.roleSelector.instance', 'instance1');
@@ -94,7 +92,7 @@ describe('test AddMember', () => {
       project_name: projectName,
       roles: [{ instance_name: 'instance1', role_names: ['role_name1'] }],
       user_name: 'user_name1',
-      is_manager: true,
+      is_manager: false,
     });
 
     await act(async () => jest.advanceTimersByTime(3000));
@@ -147,5 +145,32 @@ describe('test AddMember', () => {
         status: false,
       },
     });
+  });
+
+  test('should pass empty roles data when selecting current member as project admin', async () => {
+    render(<AddMember />);
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    selectOptionByIndex('member.memberForm.username', 'user_name1');
+    await act(async () => jest.advanceTimersByTime(0));
+
+    fireEvent.click(screen.getByText('member.roleSelector.addRole'));
+    selectOptionByIndex('member.roleSelector.role', 'role_name1');
+    selectOptionByIndex('member.roleSelector.instance', 'instance1');
+
+    fireEvent.click(screen.getByLabelText('member.memberForm.projectAdmin'));
+
+    fireEvent.click(screen.getByText('common.submit'));
+    await act(async () => jest.advanceTimersByTime(0));
+
+    expect(addMemberSpy).toBeCalledTimes(1);
+    expect(addMemberSpy).toBeCalledWith({
+      project_name: projectName,
+      roles: [],
+      user_name: 'user_name1',
+      is_manager: true,
+    });
+
+    await act(async () => jest.advanceTimersByTime(3000));
   });
 });

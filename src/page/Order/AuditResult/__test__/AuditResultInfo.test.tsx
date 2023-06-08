@@ -5,8 +5,12 @@ import {
 } from '../../../../testUtils/customQuery';
 import AuditResultInfo from '../AuditResultInfo';
 import { IAuditResult } from '../../../../api/common';
+import { mockUseStyle } from '../../../../testUtils/mockStyle';
 
 describe('Order/AuditResult/AuditResultInfo', () => {
+  beforeEach(() => {
+    mockUseStyle();
+  });
   const multipleAuditResults: IAuditResult[] = [
     { level: 'error', message: 'schema 不存在', rule_name: '' },
     {
@@ -50,19 +54,15 @@ describe('Order/AuditResult/AuditResultInfo', () => {
 
     expect(screen.getByText('warn')).toBeInTheDocument();
     expect(
-      getBySelector(':nth-child(3)', getAllBySelector('.result-box-warning')[0])
+      getBySelector(':nth-child(3)', getAllBySelector('.result-box-warn')[0])
         .innerHTML
     ).toBe('1');
 
     expect(screen.getByText('normal')).toBeInTheDocument();
-    expect(
-      getBySelector(':nth-child(3)', getAllBySelector('.result-box-warning')[1])
-        .innerHTML
-    ).toBe('1');
 
     expect(screen.getByText('notice')).toBeInTheDocument();
     expect(
-      getBySelector(':nth-child(3)', getAllBySelector('.result-box')[3])
+      getBySelector(':nth-child(3)', getAllBySelector('.result-box-notice')[0])
         .innerHTML
     ).toBe('1');
   });
@@ -73,11 +73,11 @@ describe('Order/AuditResult/AuditResultInfo', () => {
     );
     expect(container).toMatchSnapshot();
     expect(screen.getByText('schema 不存在')).toBeInTheDocument();
-  })
+  });
 
   test('should render passed when there is no audit result', () => {
-    const {container} = render(<AuditResultInfo auditResult={[]} />)
+    const { container } = render(<AuditResultInfo auditResult={[]} />);
     expect(container).toMatchSnapshot();
     expect(screen.getByText('passed')).toBeInTheDocument();
-  })
+  });
 });

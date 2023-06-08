@@ -14,9 +14,12 @@ import PlanForm from '../PlanForm';
 import { PlanFormField } from '../PlanForm/index.type';
 import { UpdateAuditPlanUrlParams } from './index.type';
 import { Link } from '../../../components/Link';
+import { useForm } from 'antd/lib/form/Form';
 
 const UpdateAuditPlan = () => {
   const { t } = useTranslation();
+  const [form] = useForm<PlanFormField>();
+
   const urlParams = useParams<UpdateAuditPlanUrlParams>();
   const [visible, { setTrue: openResultModal, setFalse: closeResultModal }] =
     useBoolean();
@@ -70,6 +73,7 @@ const UpdateAuditPlan = () => {
       extra={[<BackButton key="goBack" />]}
     >
       <PlanForm
+        form={form}
         submit={updateAuditPlan}
         defaultValue={defaultValue}
         projectName={projectName}
@@ -84,7 +88,9 @@ const UpdateAuditPlan = () => {
           status="success"
           title={t('auditPlan.update.successTitle')}
           subTitle={
-            <Link to={`project/${projectName}/auditPlan`}>
+            <Link
+              to={`project/${projectName}/auditPlan/detail/${urlParams.auditPlanName}`}
+            >
               {t('auditPlan.update.successGuide')} {'>'}
             </Link>
           }

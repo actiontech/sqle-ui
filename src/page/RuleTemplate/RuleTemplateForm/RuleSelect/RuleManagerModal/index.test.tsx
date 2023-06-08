@@ -79,7 +79,7 @@ describe('RuleSelect/RuleManagerModal', () => {
     fireEvent.click(option);
     await act(async () => jest.advanceTimersByTime(0));
 
-    fireEvent.click(screen.getByText('common.submit'));
+    fireEvent.click(screen.getByText('common.save'));
     await act(async () => jest.advanceTimersByTime(3000));
 
     expect(submitFunction).toBeCalledTimes(1);
@@ -131,7 +131,7 @@ describe('RuleSelect/RuleManagerModal', () => {
       screen.getByLabelText(editRuleData?.params?.[2].desc ?? '')
     );
 
-    fireEvent.click(screen.getByText('common.submit'));
+    fireEvent.click(screen.getByText('common.save'));
     await act(async () => jest.advanceTimersByTime(3000));
 
     expect(submitFunction).toBeCalledTimes(1);

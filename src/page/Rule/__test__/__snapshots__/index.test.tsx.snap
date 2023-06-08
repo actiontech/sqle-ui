@@ -459,6 +459,8 @@ exports[`test Rule should call get rule request with filter rule template 1`] = 
                         tabindex="0"
                       >
                         ALL
+                         
+                        (3)
                       </div>
                     </div>
                     <div
@@ -474,6 +476,8 @@ exports[`test Rule should call get rule request with filter rule template 1`] = 
                         tabindex="0"
                       >
                         DML规范
+                         
+                        (1)
                       </div>
                     </div>
                     <div
@@ -489,6 +493,8 @@ exports[`test Rule should call get rule request with filter rule template 1`] = 
                         tabindex="0"
                       >
                         使用建议
+                         
+                        (0)
                       </div>
                     </div>
                     <div
@@ -504,6 +510,8 @@ exports[`test Rule should call get rule request with filter rule template 1`] = 
                         tabindex="0"
                       >
                         索引规范
+                         
+                        (2)
                       </div>
                     </div>
                     <div
@@ -867,6 +875,8 @@ exports[`test Rule should call get rule request with filter rule template 1`] = 
                         tabindex="0"
                       >
                         ALL
+                         
+                        (3)
                       </div>
                     </div>
                     <div
@@ -882,6 +892,8 @@ exports[`test Rule should call get rule request with filter rule template 1`] = 
                         tabindex="0"
                       >
                         DML规范
+                         
+                        (1)
                       </div>
                     </div>
                     <div
@@ -897,6 +909,8 @@ exports[`test Rule should call get rule request with filter rule template 1`] = 
                         tabindex="0"
                       >
                         使用建议
+                         
+                        (1)
                       </div>
                     </div>
                     <div
@@ -912,6 +926,8 @@ exports[`test Rule should call get rule request with filter rule template 1`] = 
                         tabindex="0"
                       >
                         索引规范
+                         
+                        (1)
                       </div>
                     </div>
                     <div
@@ -1715,6 +1731,8 @@ exports[`test Rule should call get rule request with filter rule template 2`] = 
                         tabindex="0"
                       >
                         ALL
+                         
+                        (2)
                       </div>
                     </div>
                     <div
@@ -1730,6 +1748,8 @@ exports[`test Rule should call get rule request with filter rule template 2`] = 
                         tabindex="0"
                       >
                         DML规范
+                         
+                        (1)
                       </div>
                     </div>
                     <div
@@ -1745,6 +1765,8 @@ exports[`test Rule should call get rule request with filter rule template 2`] = 
                         tabindex="0"
                       >
                         使用建议
+                         
+                        (1)
                       </div>
                     </div>
                     <div
@@ -1760,6 +1782,8 @@ exports[`test Rule should call get rule request with filter rule template 2`] = 
                         tabindex="0"
                       >
                         索引规范
+                         
+                        (0)
                       </div>
                     </div>
                     <div
@@ -2041,6 +2065,8 @@ exports[`test Rule should call get rule request with filter rule template 2`] = 
                         tabindex="0"
                       >
                         ALL
+                         
+                        (4)
                       </div>
                     </div>
                     <div
@@ -2056,6 +2082,8 @@ exports[`test Rule should call get rule request with filter rule template 2`] = 
                         tabindex="0"
                       >
                         DML规范
+                         
+                        (1)
                       </div>
                     </div>
                     <div
@@ -2071,6 +2099,8 @@ exports[`test Rule should call get rule request with filter rule template 2`] = 
                         tabindex="0"
                       >
                         使用建议
+                         
+                        (0)
                       </div>
                     </div>
                     <div
@@ -2086,6 +2116,8 @@ exports[`test Rule should call get rule request with filter rule template 2`] = 
                         tabindex="0"
                       >
                         索引规范
+                         
+                        (3)
                       </div>
                     </div>
                     <div
@@ -2888,6 +2920,8 @@ exports[`test Rule should match snapshot 1`] = `
                         tabindex="0"
                       >
                         ALL
+                         
+                        (0)
                       </div>
                     </div>
                     <div
@@ -3382,6 +3416,8 @@ exports[`test Rule should match snapshot 2`] = `
                         tabindex="0"
                       >
                         ALL
+                         
+                        (6)
                       </div>
                     </div>
                     <div
@@ -3397,6 +3433,8 @@ exports[`test Rule should match snapshot 2`] = `
                         tabindex="0"
                       >
                         DML规范
+                         
+                        (2)
                       </div>
                     </div>
                     <div
@@ -3412,6 +3450,8 @@ exports[`test Rule should match snapshot 2`] = `
                         tabindex="0"
                       >
                         使用建议
+                         
+                        (1)
                       </div>
                     </div>
                     <div
@@ -3427,6 +3467,8 @@ exports[`test Rule should match snapshot 2`] = `
                         tabindex="0"
                       >
                         索引规范
+                         
+                        (3)
                       </div>
                     </div>
                     <div

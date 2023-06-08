@@ -10,12 +10,14 @@ import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import PlanForm from '../PlanForm';
 import { PlanFormField } from '../PlanForm/index.type';
 import { Link } from '../../../components/Link';
+import { useForm } from 'antd/lib/form/Form';
 
 const CreateAuditPlan = () => {
   const { t } = useTranslation();
   const [visible, { setTrue: openResultModal, setFalse: closeResultModal }] =
     useBoolean();
   const { projectName } = useCurrentProjectName();
+  const [form] = useForm<PlanFormField>();
 
   const createAuditPlan = (values: PlanFormField) => {
     return audit_plan
@@ -42,12 +44,23 @@ const CreateAuditPlan = () => {
     closeResultModal();
   };
 
+  const clonePlan = () => {
+    closeResultModal();
+    form.setFieldsValue({
+      name: '',
+    });
+  };
+
   return (
     <Card
       title={t('auditPlan.create.title')}
       extra={[<BackButton key="goBack" />]}
     >
-      <PlanForm submit={createAuditPlan} projectName={projectName} />
+      <PlanForm
+        form={form}
+        submit={createAuditPlan}
+        projectName={projectName}
+      />
       <Modal
         title={t('common.operateSuccess')}
         footer={null}
@@ -58,13 +71,17 @@ const CreateAuditPlan = () => {
           status="success"
           title={t('auditPlan.create.successTitle')}
           subTitle={
-            <Link to={`project/${projectName}/auditPlan`}>
+            <Link
+              to={`project/${projectName}/auditPlan/detail/${form.getFieldValue(
+                'name'
+              )}`}
+            >
               {t('auditPlan.create.successGuide')} {'>'}
             </Link>
           }
           extra={[
-            <Button key="close" onClick={closeResultModal}>
-              {t('common.close')}
+            <Button key="close" onClick={clonePlan}>
+              {t('auditPlan.create.clonePlan')}
             </Button>,
             <Button
               type="primary"

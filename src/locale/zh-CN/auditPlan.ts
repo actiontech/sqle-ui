@@ -36,13 +36,14 @@ export default {
   create: {
     title: '创建扫描任务',
     successTitle: '创建扫描任务成功',
-    successGuide: '到扫描任务列表查看刚刚添加的扫描任务',
+    successGuide: '查看扫描任务详情',
+    clonePlan: '克隆扫描任务',
   },
 
   update: {
     title: '更新扫描任务 {{name}}',
     successTitle: '更新扫描任务{{name}}成功',
-    successGuide: '返回扫描任务列表',
+    successGuide: '查看扫描任务详情',
   },
 
   planForm: {

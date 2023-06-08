@@ -52,6 +52,9 @@ export default {
 
     emptyRule: '没有找到对应规则',
     ruleValue: '规则值',
+
+    activeAnchorTitle: '已启用',
+    disableAnchorTitle: '已禁用',
   },
 
   createRuleTemplate: {

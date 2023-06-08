@@ -7,6 +7,7 @@ import { getInstanceTipListV1FunctionalModuleEnum } from '../../../api/instance/
 import EmitterKey from '../../../data/EmitterKey';
 import {
   getBySelector,
+  getHrefByText,
   getSelectValueByFormLabel,
 } from '../../../testUtils/customQuery';
 import { renderWithRouter } from '../../../testUtils/customRender';
@@ -151,6 +152,13 @@ describe('UpdateAuditPlan', () => {
       ],
     });
     await act(async () => jest.advanceTimersByTime(3000));
+
+    expect(
+      screen.getByText('auditPlan.update.successGuide >')
+    ).toBeInTheDocument();
+    expect(getHrefByText('auditPlan.update.successGuide >')).toBe(
+      `/project/${projectName}/auditPlan/detail/auditPlanName1`
+    );
 
     expect(container).toMatchSnapshot();
     expect(getAuditPlanSpy).toBeCalledTimes(1);

@@ -29,6 +29,8 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
               tabindex="0"
             >
               ALL
+               
+              (6)
             </div>
           </div>
           <div
@@ -44,6 +46,8 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
               tabindex="0"
             >
               type1
+               
+              (2)
             </div>
           </div>
           <div
@@ -59,6 +63,8 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
               tabindex="0"
             >
               type2
+               
+              (2)
             </div>
           </div>
           <div
@@ -74,6 +80,8 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
               tabindex="0"
             >
               type3
+               
+              (2)
             </div>
           </div>
           <div

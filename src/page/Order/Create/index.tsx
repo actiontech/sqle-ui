@@ -61,6 +61,7 @@ const CreateOrder = () => {
   const [taskSqlNum, setTaskSqlNum] = useState<Map<string, number>>(new Map());
   useState<Map<number, string>>(new Map());
   const { projectName } = useCurrentProjectName();
+  const [createdOrderId, setCreatedOrderId] = useState('');
   const {
     taskInfos,
     auditOrderWithSameSql,
@@ -134,6 +135,7 @@ const CreateOrder = () => {
         .then((res) => {
           if (res.data.code === ResponseCode.SUCCESS) {
             openModal();
+            setCreatedOrderId(res.data.data?.workflow_id ?? '');
           }
         })
         .finally(() => {
@@ -163,6 +165,13 @@ const CreateOrder = () => {
     resetAllForm();
     resetFinallySubmitButtonStatus();
   }, [closeModal, resetAllForm, resetFinallySubmitButtonStatus]);
+
+  const cloneOrder = () => {
+    closeModal();
+    baseForm.setFieldsValue({
+      name: '',
+    });
+  };
 
   const instanceNameChange = async (name: string) => {
     const orderName = baseForm.getFieldValue('name');
@@ -321,13 +330,13 @@ const CreateOrder = () => {
           status="success"
           title={t('order.create.success')}
           subTitle={
-            <Link to={`project/${projectName}/order`}>
+            <Link to={`project/${projectName}/order/${createdOrderId}`}>
               {t('order.create.guide')} {'>'}
             </Link>
           }
           extra={[
-            <Button key="close" onClick={closeModal}>
-              {t('common.close')}
+            <Button key="close" onClick={cloneOrder}>
+              {t('order.create.cloneOrder')}
             </Button>,
             <Button
               type="primary"

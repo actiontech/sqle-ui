@@ -1,64 +1,41 @@
-import { useMemo } from 'react';
 import { AuditResultColumnProps } from './index.type';
 import AuditResultErrorMessage from '../../../../components/AuditResultErrorMessage';
-import {
-  InfoCircleOutlined,
-  CheckOutlined,
-  WarningOutlined,
-} from '@ant-design/icons';
 import { RuleResV1LevelEnum } from '../../../../api/common.enum';
 import './index.less';
+import RuleLevelIcon from '../../../../components/RuleList/RuleLevelIcon';
+import useStyles from '../../../../theme';
 
-const AuditResultInfo: React.FC<AuditResultColumnProps> = (props) => {
-  const auditResult = useMemo(
-    () => props?.auditResult ?? [],
-    [props.auditResult]
-  );
-  const auditResultNum = auditResult.length;
+const AuditResultInfo: React.FC<AuditResultColumnProps> = ({
+  auditResult = [],
+}) => {
+  const auditResultNum = auditResult?.length ?? 0;
+  const styles = useStyles();
 
-  const getClassNameAndIconByStatus = (status: string) => {
-    const defaultClassName = 'result-box';
-    const defaultIcon = <InfoCircleOutlined />;
-
-    switch (status) {
-      case 'passed':
-        return {
-          className: `${defaultClassName}-success`,
-          icon: <CheckOutlined />,
-        };
-      case RuleResV1LevelEnum.normal:
-      case RuleResV1LevelEnum.warn:
-        return {
-          className: `${defaultClassName}-warning`,
-          icon: <WarningOutlined />,
-        };
-      case RuleResV1LevelEnum.error:
-        return {
-          className: `${defaultClassName}-error`,
-          icon: <InfoCircleOutlined />,
-        };
-      default:
-        return {
-          className: '',
-          icon: defaultIcon,
-        };
-    }
-  };
-
-  const renderResultBox = (resultLevel: string, resultNum?: number) => {
-    const { className, icon } = getClassNameAndIconByStatus(resultLevel);
-
+  const renderResultBox = (
+    ruleLevel: RuleResV1LevelEnum | 'passed',
+    resultNum?: number
+  ) => {
     return (
-      <div className={`result-box ${className}`}>
-        {icon}
-        <span className="result-box-level">{resultLevel}</span>
+      <div
+        className={`result-box ${
+          ruleLevel === RuleResV1LevelEnum.normal
+            ? `${styles.auditResultLevelNormalBox}`
+            : `result-box-${ruleLevel}`
+        }`}
+      >
+        <RuleLevelIcon
+          ruleLevel={ruleLevel}
+          iconFontSize={14}
+          onlyShowIcon={true}
+        />
+        <span className="result-box-level">{ruleLevel}</span>
         {resultNum && <span>{resultNum}</span>}
       </div>
     );
   };
 
-  const getResultNum = (status: string) =>
-    auditResult.filter((item) => item.level === status).length;
+  const getResultNum = (ruleLevel: RuleResV1LevelEnum) =>
+    auditResult.filter((item) => item.level === ruleLevel).length;
 
   const renderResultBoxList = () => {
     const renderLevelKey = [
@@ -71,10 +48,11 @@ const AuditResultInfo: React.FC<AuditResultColumnProps> = (props) => {
     return (
       <div className="result-box-list">
         {renderLevelKey.map((key) => {
-          const innerResultNum = getResultNum(key);
+          const level = key as RuleResV1LevelEnum;
+          const innerResultNum = getResultNum(level);
           return (
             !!innerResultNum && (
-              <li key={key}>{renderResultBox(key, innerResultNum)}</li>
+              <li key={level}>{renderResultBox(level, innerResultNum)}</li>
             )
           );
         })}

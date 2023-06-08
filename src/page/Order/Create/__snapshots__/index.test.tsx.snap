@@ -706,7 +706,7 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                     </label>
                   </div>
                   <div
-                    class="ant-col ant-form-item-control makeStyles-editor-26 ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                    class="ant-col ant-form-item-control makeStyles-editor-32 ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
                   >
                     <div
                       class="ant-form-item-control-input"
@@ -1746,16 +1746,17 @@ use aaab;
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              class="result-box result-box-success"
+                                              class="result-box result-box-passed"
                                             >
                                               <span
-                                                aria-label="check"
-                                                class="anticon anticon-check"
+                                                aria-label="audit"
+                                                class="anticon anticon-audit"
                                                 role="img"
+                                                style="font-size: 14px;"
                                               >
                                                 <svg
                                                   aria-hidden="true"
-                                                  data-icon="check"
+                                                  data-icon="audit"
                                                   fill="currentColor"
                                                   focusable="false"
                                                   height="1em"
@@ -1763,7 +1764,7 @@ use aaab;
                                                   width="1em"
                                                 >
                                                   <path
-                                                    d="M912 190h-69.9c-9.8 0-19.1 4.5-25.1 12.2L404.7 724.5 207 474a32 32 0 00-25.1-12.2H112c-6.7 0-10.4 7.7-6.3 12.9l273.9 347c12.8 16.2 37.4 16.2 50.3 0l488.4-618.9c4.1-5.1.4-12.8-6.3-12.8z"
+                                                    d="M296 250c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H296zm184 144H296c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm-48 458H208V148h560v320c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V108c0-17.7-14.3-32-32-32H168c-17.7 0-32 14.3-32 32v784c0 17.7 14.3 32 32 32h264c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm440-88H728v-36.6c46.3-13.8 80-56.6 80-107.4 0-61.9-50.1-112-112-112s-112 50.1-112 112c0 50.7 33.7 93.6 80 107.4V764H520c-8.8 0-16 7.2-16 16v152c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V780c0-8.8-7.2-16-16-16zM646 620c0-27.6 22.4-50 50-50s50 22.4 50 50-22.4 50-50 50-50-22.4-50-50zm180 266H566v-60h260v60z"
                                                   />
                                                 </svg>
                                               </span>
@@ -2279,6 +2280,7 @@ use aaab;
                                                     aria-label="info-circle"
                                                     class="anticon anticon-info-circle"
                                                     role="img"
+                                                    style="font-size: 14px; color: rgb(240, 0, 0);"
                                                   >
                                                     <svg
                                                       aria-hidden="true"
@@ -3410,7 +3412,7 @@ exports[`Order/Create should audit sql when user click audit button 2`] = `
                             </label>
                           </div>
                           <div
-                            class="ant-col ant-form-item-control makeStyles-editor-26 ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                            class="ant-col ant-form-item-control makeStyles-editor-32 ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
                           >
                             <div
                               class="ant-form-item-control-input"
@@ -4316,7 +4318,7 @@ exports[`Order/Create should create order when user input all require fields 1`]
             class="ant-result-subtitle"
           >
             <a
-              href="/project/default/order"
+              href="/project/default/order/"
             >
               order.create.guide
                
@@ -4331,7 +4333,7 @@ exports[`Order/Create should create order when user input all require fields 1`]
               type="button"
             >
               <span>
-                common.close
+                order.create.cloneOrder
               </span>
             </button>
             <button
@@ -5030,7 +5032,7 @@ exports[`Order/Create should render page header 1`] = `
                       </label>
                     </div>
                     <div
-                      class="ant-col ant-form-item-control makeStyles-editor-22 ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                      class="ant-col ant-form-item-control makeStyles-editor-27 ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
                     >
                       <div
                         class="ant-form-item-control-input"
@@ -5160,6 +5162,801 @@ exports[`Order/Create should render page header 1`] = `
     tab-index="-1"
   />
 </body>
+`;
+
+exports[`Order/Create should render result modal when created order 1`] = `
+<div>
+  <div
+    class="ant-page-header"
+  >
+    <div
+      class="ant-page-header-heading"
+    >
+      <div
+        class="ant-page-header-heading-left"
+      >
+        <span
+          class="ant-page-header-heading-title"
+          title="order.createOrder.title"
+        >
+          order.createOrder.title
+        </span>
+      </div>
+    </div>
+    <div
+      class="ant-page-header-content"
+    >
+      order.createOrder.pageDesc
+    </div>
+  </div>
+  <section
+    class="padding-content"
+  >
+    <div
+      class="ant-space ant-space-vertical full-width-element"
+    >
+      <div
+        class="ant-space-item"
+        style="margin-bottom: 24px;"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                order.baseInfo.title
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <form
+              class="ant-form ant-form-horizontal"
+            >
+              <div
+                class="ant-form-item"
+              >
+                <div
+                  class="ant-row ant-form-item-row"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class="ant-form-item-required"
+                      for="name"
+                      title="order.baseInfo.name"
+                    >
+                      order.baseInfo.name
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <input
+                          aria-required="true"
+                          class="ant-input"
+                          id="name"
+                          placeholder="common.form.placeholder.input"
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-form-item"
+              >
+                <div
+                  class="ant-row ant-form-item-row"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class=""
+                      for="describe"
+                      title="order.baseInfo.describe"
+                    >
+                      order.baseInfo.describe
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <div
+                          class="ant-input-textarea ant-input-textarea-show-count ant-input-textarea-in-form-item"
+                          data-count="0 / 3000"
+                        >
+                          <textarea
+                            class="ant-input"
+                            id="describe"
+                            placeholder="common.form.placeholder.input"
+                            style="resize: none; height: -40px; min-height: -12px; max-height: -40px;"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-space-item"
+        style="margin-bottom: 24px;"
+      >
+        <div
+          class="ant-card ant-card-bordered"
+        >
+          <div
+            class="ant-card-head"
+          >
+            <div
+              class="ant-card-head-wrapper"
+            >
+              <div
+                class="ant-card-head-title"
+              >
+                order.sqlInfo.title
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-card-body"
+          >
+            <form
+              class="ant-form ant-form-horizontal"
+            >
+              <div
+                class="ant-row"
+              >
+                <div
+                  class="ant-col ant-col-12"
+                >
+                  <div
+                    class="ant-form-item"
+                  >
+                    <div
+                      class="ant-row ant-form-item-row"
+                    >
+                      <div
+                        class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-16"
+                      >
+                        <label
+                          class="ant-form-item-required"
+                          for="dataBaseInfo_0_instanceName"
+                          title="order.sqlInfo.instanceName"
+                        >
+                          order.sqlInfo.instanceName
+                        </label>
+                      </div>
+                      <div
+                        class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-8"
+                      >
+                        <div
+                          class="ant-form-item-control-input"
+                        >
+                          <div
+                            class="ant-form-item-control-input-content"
+                          >
+                            <div
+                              aria-required="true"
+                              class="ant-select ant-select-in-form-item ant-select-single ant-select-show-arrow ant-select-show-search"
+                            >
+                              <div
+                                class="ant-select-selector"
+                              >
+                                <span
+                                  class="ant-select-selection-search"
+                                >
+                                  <input
+                                    aria-activedescendant="dataBaseInfo_0_instanceName_list_0"
+                                    aria-autocomplete="list"
+                                    aria-controls="dataBaseInfo_0_instanceName_list"
+                                    aria-haspopup="listbox"
+                                    aria-owns="dataBaseInfo_0_instanceName_list"
+                                    aria-required="true"
+                                    autocomplete="off"
+                                    class="ant-select-selection-search-input"
+                                    id="dataBaseInfo_0_instanceName"
+                                    role="combobox"
+                                    type="search"
+                                    value=""
+                                  />
+                                </span>
+                                <span
+                                  class="ant-select-selection-placeholder"
+                                >
+                                  common.form.placeholder.select
+                                </span>
+                              </div>
+                              <span
+                                aria-hidden="true"
+                                class="ant-select-arrow"
+                                style="user-select: none;"
+                                unselectable="on"
+                              >
+                                <span
+                                  aria-label="down"
+                                  class="anticon anticon-down ant-select-suffix"
+                                  role="img"
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    data-icon="down"
+                                    fill="currentColor"
+                                    focusable="false"
+                                    height="1em"
+                                    viewBox="64 64 896 896"
+                                    width="1em"
+                                  >
+                                    <path
+                                      d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                                    />
+                                  </svg>
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-col ant-col-6"
+                >
+                  <div
+                    class="ant-row"
+                    style="margin-left: -4px; margin-right: -4px;"
+                  >
+                    <div
+                      class="ant-col ant-col-22"
+                      style="padding-left: 4px; padding-right: 4px;"
+                    >
+                      <div
+                        class="ant-form-item"
+                      >
+                        <div
+                          class="ant-row ant-form-item-row"
+                        >
+                          <div
+                            class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                          >
+                            <label
+                              class=""
+                              for="dataBaseInfo_0_instanceSchema"
+                              title="order.sqlInfo.instanceSchema"
+                            >
+                              order.sqlInfo.instanceSchema
+                            </label>
+                          </div>
+                          <div
+                            class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-24 ant-col-md-24"
+                          >
+                            <div
+                              class="ant-form-item-control-input"
+                            >
+                              <div
+                                class="ant-form-item-control-input-content"
+                              >
+                                <div
+                                  class="ant-select ant-select-in-form-item ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-disabled ant-select-show-search"
+                                >
+                                  <div
+                                    class="ant-select-selector"
+                                  >
+                                    <span
+                                      class="ant-select-selection-search"
+                                    >
+                                      <input
+                                        aria-activedescendant="dataBaseInfo_0_instanceSchema_list_0"
+                                        aria-autocomplete="list"
+                                        aria-controls="dataBaseInfo_0_instanceSchema_list"
+                                        aria-expanded="false"
+                                        aria-haspopup="listbox"
+                                        aria-owns="dataBaseInfo_0_instanceSchema_list"
+                                        autocomplete="off"
+                                        class="ant-select-selection-search-input"
+                                        disabled=""
+                                        id="dataBaseInfo_0_instanceSchema"
+                                        role="combobox"
+                                        type="search"
+                                        value=""
+                                      />
+                                    </span>
+                                    <span
+                                      class="ant-select-selection-placeholder"
+                                    >
+                                      common.form.placeholder.select
+                                    </span>
+                                  </div>
+                                  <span
+                                    aria-hidden="true"
+                                    class="ant-select-arrow"
+                                    style="user-select: none;"
+                                    unselectable="on"
+                                  >
+                                    <span
+                                      aria-label="down"
+                                      class="anticon anticon-down ant-select-suffix"
+                                      role="img"
+                                    >
+                                      <svg
+                                        aria-hidden="true"
+                                        data-icon="down"
+                                        fill="currentColor"
+                                        focusable="false"
+                                        height="1em"
+                                        viewBox="64 64 896 896"
+                                        width="1em"
+                                      >
+                                        <path
+                                          d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                                        />
+                                      </svg>
+                                    </span>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="ant-col ant-col-2"
+                      style="padding-left: 4px; padding-right: 4px;"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-col ant-col-4"
+                  style="margin-top: 4px;"
+                >
+                  <a
+                    href="/rule?ruleTemplateName=not_submit_test_rule33"
+                  >
+                    rule.form.ruleTemplate
+                    : 
+                    not_submit_test_rule33
+                  </a>
+                </div>
+              </div>
+              <div
+                class="ant-form-item"
+              >
+                <div
+                  class="ant-row ant-form-item-row"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class="ant-form-item-no-colon"
+                      title=" "
+                    >
+                       
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <button
+                          class="ant-btn ant-btn-dashed ant-btn-block"
+                          type="button"
+                        >
+                          <span
+                            aria-label="plus"
+                            class="anticon anticon-plus"
+                            role="img"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="plus"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <defs>
+                                <style />
+                              </defs>
+                              <path
+                                d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"
+                              />
+                              <path
+                                d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"
+                              />
+                            </svg>
+                          </span>
+                          <span>
+                            order.sqlInfo.addInstance
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-form-item"
+              >
+                <div
+                  class="ant-row ant-form-item-row"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class="ant-form-item-no-colon"
+                      title=" "
+                    >
+                       
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <div
+                          class="ant-space ant-space-horizontal ant-space-align-center"
+                        >
+                          <div
+                            class="ant-space-item"
+                            style="margin-right: 8px;"
+                          >
+                            <button
+                              class="ant-btn ant-btn-default"
+                              type="button"
+                            >
+                              <span>
+                                dataSource.dataSourceForm.testDatabaseConnection
+                              </span>
+                            </button>
+                          </div>
+                          <div
+                            class="ant-space-item"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-form-item ant-form-item-hidden"
+              >
+                <div
+                  class="ant-row ant-form-item-row"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class="ant-form-item-required"
+                      for="isSameSqlOrder"
+                      title="order.sqlInfo.isSameSqlOrder"
+                    >
+                      order.sqlInfo.isSameSqlOrder
+                      <span
+                        aria-label="question-circle"
+                        class="anticon anticon-question-circle ant-form-item-tooltip"
+                        role="img"
+                        title=""
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="question-circle"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                          />
+                          <path
+                            d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z"
+                          />
+                        </svg>
+                      </span>
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <button
+                          aria-checked="true"
+                          aria-required="true"
+                          class="ant-switch ant-switch-checked"
+                          id="isSameSqlOrder"
+                          role="switch"
+                          type="button"
+                        >
+                          <div
+                            class="ant-switch-handle"
+                          />
+                          <span
+                            class="ant-switch-inner"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-form-item"
+              >
+                <div
+                  class="ant-row ant-form-item-row"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class=""
+                      for="0_sqlInputType"
+                      title="order.sqlInfo.uploadType"
+                    >
+                      order.sqlInfo.uploadType
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <div
+                          class="ant-radio-group ant-radio-group-outline"
+                          id="0_sqlInputType"
+                        >
+                          <label
+                            class="ant-radio-wrapper ant-radio-wrapper-checked ant-radio-wrapper-in-form-item"
+                          >
+                            <span
+                              class="ant-radio ant-radio-checked"
+                            >
+                              <input
+                                checked=""
+                                class="ant-radio-input"
+                                type="radio"
+                                value="0"
+                              />
+                              <span
+                                class="ant-radio-inner"
+                              />
+                            </span>
+                            <span>
+                              order.sqlInfo.manualInput
+                            </span>
+                          </label>
+                          <label
+                            class="ant-radio-wrapper ant-radio-wrapper-in-form-item"
+                          >
+                            <span
+                              class="ant-radio"
+                            >
+                              <input
+                                class="ant-radio-input"
+                                type="radio"
+                                value="1"
+                              />
+                              <span
+                                class="ant-radio-inner"
+                              />
+                            </span>
+                            <span>
+                              order.sqlInfo.uploadFile
+                            </span>
+                          </label>
+                          <label
+                            class="ant-radio-wrapper ant-radio-wrapper-in-form-item"
+                          >
+                            <span
+                              class="ant-radio"
+                            >
+                              <input
+                                class="ant-radio-input"
+                                type="radio"
+                                value="2"
+                              />
+                              <span
+                                class="ant-radio-inner"
+                              />
+                            </span>
+                            <span>
+                              order.sqlInfo.updateMybatisFile
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-form-item"
+              >
+                <div
+                  class="ant-row ant-form-item-row"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class="ant-form-item-required"
+                      for="0_sql"
+                      title="order.sqlInfo.sql"
+                    >
+                      order.sqlInfo.sql
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control makeStyles-editor-62 ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <input
+                          aria-required="true"
+                          height="500"
+                          id="0_sql"
+                          language="sql"
+                          options="[object Object]"
+                          theme="vs"
+                          value="/* input your sql */"
+                          width="100%"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-form-item"
+              >
+                <div
+                  class="ant-row ant-form-item-row"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class="ant-form-item-no-colon"
+                      title=" "
+                    >
+                       
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <button
+                          ant-click-animating-without-extra-node="false"
+                          class="ant-btn ant-btn-primary"
+                          type="button"
+                        >
+                          <span>
+                            order.sqlInfo.audit
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ant-space-item"
+        style="margin-bottom: 24px;"
+      />
+      <div
+        class="ant-space-item"
+      >
+        <div
+          class="ant-card ant-card-bordered text-align-right"
+        >
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-space ant-space-horizontal ant-space-align-center"
+            >
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
+              >
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.resetAll
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+              >
+                <button
+                  ant-click-animating-without-extra-node="true"
+                  class="ant-btn ant-btn-primary"
+                  type="submit"
+                >
+                  <span>
+                    order.createOrder.button
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 `;
 
 exports[`order/create/sqlInfoForm should match snapshot 1`] = `

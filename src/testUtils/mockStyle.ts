@@ -7,6 +7,7 @@ export const mockUseStyle = () => {
     headerBg: 'headerBg-test',
     editor: 'editor-test',
     projectLayoutSider: 'projectLayoutSider-test',
+    auditResultLevelNormalBox: 'auditResultLevelNormalBox-test',
   }));
   return useStylesSpy;
 };
