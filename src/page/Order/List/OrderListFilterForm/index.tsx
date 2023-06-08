@@ -107,6 +107,15 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
             </Select>
           </Form.Item>
         </Col>
+        <Col {...FilterFormColLayout}>
+          <Form.Item name="filter_workflow_id" label={t('order.order.id')}>
+            <Input
+              placeholder={t('common.form.placeholder.input', {
+                name: t('order.order.id'),
+              })}
+            />
+          </Form.Item>
+        </Col>
         <Col {...FilterFormColLayout} hidden={currentCollapse}>
           <Form.Item
             name="filter_task_instance_name"
@@ -159,9 +168,9 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
 
         <Col
           {...filterFormButtonLayoutFactory(
-            currentCollapse ? 0 : 12,
-            currentCollapse ? 16 : 0,
-            currentCollapse ? 0 : 6
+            currentCollapse ? 12 : 12,
+            currentCollapse ? 8 : 0,
+            currentCollapse ? 18 : 6
           )}
           className="text-align-right"
         >

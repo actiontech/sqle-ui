@@ -29,6 +29,10 @@ export const renderOrderDesc = (desc?: string, maxWidth = 300) => {
 export const orderListColumn = (): TableColumn<IWorkflowDetailResV1> => {
   return [
     {
+      dataIndex: 'workflow_id',
+      title: () => t('order.order.id'),
+    },
+    {
       dataIndex: 'workflow_name',
       title: () => t('order.order.name'),
     },

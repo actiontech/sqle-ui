@@ -12,6 +12,7 @@ import {
   IGetWorkflowTasksResV1,
   IUpdateWorkflowScheduleReqV1,
   ICreateWorkflowReqV2,
+  ICreateWorkflowResV2,
   IBatchCancelWorkflowsReqV2,
   IBatchCompleteWorkflowsReqV2,
   IGetWorkflowResV2,
@@ -43,6 +44,8 @@ export interface IUpdateWorkflowTemplateV1Return extends IBaseRes {}
 
 export interface IGetWorkflowsV1Params {
   filter_subject?: string;
+
+  filter_workflow_id?: string;
 
   filter_create_time_from?: string;
 
@@ -241,7 +244,7 @@ export interface ICreateWorkflowV2Params extends ICreateWorkflowReqV2 {
   project_name: string;
 }
 
-export interface ICreateWorkflowV2Return extends IBaseRes {}
+export interface ICreateWorkflowV2Return extends ICreateWorkflowResV2 {}
 
 export interface IBatchCancelWorkflowsV2Params
   extends IBatchCancelWorkflowsReqV2 {

@@ -2753,6 +2753,18 @@ export interface ICreateWorkflowReqV2 {
   workflow_subject?: string;
 }
 
+export interface ICreateWorkflowResV2 {
+  code?: number;
+
+  data?: ICreateWorkflowResV2Data;
+
+  message?: string;
+}
+
+export interface ICreateWorkflowResV2Data {
+  workflow_id?: string;
+}
+
 export interface IDirectAuditReqV2 {
   instance_type?: string;
 

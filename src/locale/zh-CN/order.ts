@@ -45,6 +45,7 @@ export default {
     instanceName: '数据源',
     passRate: '审核通过率',
     taskScore: '审核结果评分',
+    id: '工单号',
   },
 
   status: {

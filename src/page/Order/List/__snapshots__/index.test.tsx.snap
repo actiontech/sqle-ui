@@ -403,6 +403,49 @@ exports[`Order/List should can batch close order 1`] = `
                 </div>
                 <div
                   class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
+                  style="padding-left: 12px; padding-right: 12px;"
+                >
+                  <div
+                    class="ant-form-item"
+                  >
+                    <div
+                      class="ant-row ant-form-item-row"
+                    >
+                      <div
+                        class="ant-col ant-col-7 ant-form-item-label"
+                      >
+                        <label
+                          class=""
+                          for="filter_workflow_id"
+                          title="order.order.id"
+                        >
+                          order.order.id
+                        </label>
+                      </div>
+                      <div
+                        class="ant-col ant-col-17 ant-form-item-control"
+                      >
+                        <div
+                          class="ant-form-item-control-input"
+                        >
+                          <div
+                            class="ant-form-item-control-input-content"
+                          >
+                            <input
+                              class="ant-input"
+                              id="filter_workflow_id"
+                              placeholder="common.form.placeholder.input"
+                              type="text"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
                   hidden=""
                   style="padding-left: 12px; padding-right: 12px;"
                 >
@@ -779,7 +822,7 @@ exports[`Order/List should can batch close order 1`] = `
                   </div>
                 </div>
                 <div
-                  class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-0 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-0"
+                  class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-8 ant-col-xxl-6 ant-col-xxl-offset-18"
                   style="padding-left: 12px; padding-right: 12px;"
                 >
                   <div
@@ -967,6 +1010,11 @@ exports[`Order/List should can batch close order 1`] = `
                               <th
                                 class="ant-table-cell"
                               >
+                                order.order.id
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
                                 order.order.name
                               </th>
                               <th
@@ -1004,7 +1052,7 @@ exports[`Order/List should can batch close order 1`] = `
                             >
                               <td
                                 class="ant-table-cell"
-                                colspan="7"
+                                colspan="8"
                               >
                                 <div
                                   class="ant-empty ant-empty-normal"
@@ -1474,6 +1522,49 @@ exports[`Order/List should can batch close order 2`] = `
                   </div>
                   <div
                     class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
+                    style="padding-left: 12px; padding-right: 12px;"
+                  >
+                    <div
+                      class="ant-form-item"
+                    >
+                      <div
+                        class="ant-row ant-form-item-row"
+                      >
+                        <div
+                          class="ant-col ant-col-7 ant-form-item-label"
+                        >
+                          <label
+                            class=""
+                            for="filter_workflow_id"
+                            title="order.order.id"
+                          >
+                            order.order.id
+                          </label>
+                        </div>
+                        <div
+                          class="ant-col ant-col-17 ant-form-item-control"
+                        >
+                          <div
+                            class="ant-form-item-control-input"
+                          >
+                            <div
+                              class="ant-form-item-control-input-content"
+                            >
+                              <input
+                                class="ant-input"
+                                id="filter_workflow_id"
+                                placeholder="common.form.placeholder.input"
+                                type="text"
+                                value=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
                     hidden=""
                     style="padding-left: 12px; padding-right: 12px;"
                   >
@@ -1850,7 +1941,7 @@ exports[`Order/List should can batch close order 2`] = `
                     </div>
                   </div>
                   <div
-                    class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-0 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-0"
+                    class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-8 ant-col-xxl-6 ant-col-xxl-offset-18"
                     style="padding-left: 12px; padding-right: 12px;"
                   >
                     <div
@@ -2038,6 +2129,11 @@ exports[`Order/List should can batch close order 2`] = `
                                 <th
                                   class="ant-table-cell"
                                 >
+                                  order.order.id
+                                </th>
+                                <th
+                                  class="ant-table-cell"
+                                >
                                   order.order.name
                                 </th>
                                 <th
@@ -2075,7 +2171,7 @@ exports[`Order/List should can batch close order 2`] = `
                               >
                                 <td
                                   class="ant-table-cell"
-                                  colspan="7"
+                                  colspan="8"
                                 >
                                   <div
                                     class="ant-empty ant-empty-normal"
@@ -2545,6 +2641,49 @@ exports[`Order/List should render order list by response data 1`] = `
                 </div>
                 <div
                   class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
+                  style="padding-left: 12px; padding-right: 12px;"
+                >
+                  <div
+                    class="ant-form-item"
+                  >
+                    <div
+                      class="ant-row ant-form-item-row"
+                    >
+                      <div
+                        class="ant-col ant-col-7 ant-form-item-label"
+                      >
+                        <label
+                          class=""
+                          for="filter_workflow_id"
+                          title="order.order.id"
+                        >
+                          order.order.id
+                        </label>
+                      </div>
+                      <div
+                        class="ant-col ant-col-17 ant-form-item-control"
+                      >
+                        <div
+                          class="ant-form-item-control-input"
+                        >
+                          <div
+                            class="ant-form-item-control-input-content"
+                          >
+                            <input
+                              class="ant-input"
+                              id="filter_workflow_id"
+                              placeholder="common.form.placeholder.input"
+                              type="text"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
                   hidden=""
                   style="padding-left: 12px; padding-right: 12px;"
                 >
@@ -2921,7 +3060,7 @@ exports[`Order/List should render order list by response data 1`] = `
                   </div>
                 </div>
                 <div
-                  class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-0 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-0"
+                  class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-8 ant-col-xxl-6 ant-col-xxl-offset-18"
                   style="padding-left: 12px; padding-right: 12px;"
                 >
                   <div
@@ -3109,6 +3248,11 @@ exports[`Order/List should render order list by response data 1`] = `
                               <th
                                 class="ant-table-cell"
                               >
+                                order.order.id
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
                                 order.order.name
                               </th>
                               <th
@@ -3146,7 +3290,7 @@ exports[`Order/List should render order list by response data 1`] = `
                             >
                               <td
                                 class="ant-table-cell"
-                                colspan="7"
+                                colspan="8"
                               >
                                 <div
                                   class="ant-empty ant-empty-normal"
@@ -3615,6 +3759,49 @@ exports[`Order/List should render order list by response data 2`] = `
                 </div>
                 <div
                   class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
+                  style="padding-left: 12px; padding-right: 12px;"
+                >
+                  <div
+                    class="ant-form-item"
+                  >
+                    <div
+                      class="ant-row ant-form-item-row"
+                    >
+                      <div
+                        class="ant-col ant-col-7 ant-form-item-label"
+                      >
+                        <label
+                          class=""
+                          for="filter_workflow_id"
+                          title="order.order.id"
+                        >
+                          order.order.id
+                        </label>
+                      </div>
+                      <div
+                        class="ant-col ant-col-17 ant-form-item-control"
+                      >
+                        <div
+                          class="ant-form-item-control-input"
+                        >
+                          <div
+                            class="ant-form-item-control-input-content"
+                          >
+                            <input
+                              class="ant-input"
+                              id="filter_workflow_id"
+                              placeholder="common.form.placeholder.input"
+                              type="text"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
                   hidden=""
                   style="padding-left: 12px; padding-right: 12px;"
                 >
@@ -3991,7 +4178,7 @@ exports[`Order/List should render order list by response data 2`] = `
                   </div>
                 </div>
                 <div
-                  class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-0 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-0"
+                  class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-8 ant-col-xxl-6 ant-col-xxl-offset-18"
                   style="padding-left: 12px; padding-right: 12px;"
                 >
                   <div
@@ -4202,6 +4389,11 @@ exports[`Order/List should render order list by response data 2`] = `
                               <th
                                 class="ant-table-cell"
                               >
+                                order.order.id
+                              </th>
+                              <th
+                                class="ant-table-cell"
+                              >
                                 order.order.name
                               </th>
                               <th
@@ -4257,6 +4449,11 @@ exports[`Order/List should render order list by response data 2`] = `
                                     />
                                   </span>
                                 </label>
+                              </td>
+                              <td
+                                class="ant-table-cell"
+                              >
+                                1
                               </td>
                               <td
                                 class="ant-table-cell"
