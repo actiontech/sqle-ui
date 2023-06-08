@@ -10,6 +10,7 @@ import { selectOptionByIndex } from '../../../../testUtils/customQuery';
 import {
   mockUseInstance,
   mockUseMember,
+  resolveThreeSecond,
 } from '../../../../testUtils/mockRequest';
 import EventEmitter from '../../../../utils/EventEmitter';
 import { mockDeleteMember, mockGetMembers, mockMemberList } from './utils';
@@ -64,6 +65,23 @@ describe('test MemberList', () => {
     await act(async () => jest.advanceTimersByTime(3000));
 
     expect(container).toMatchSnapshot();
+
+    cleanup();
+
+    getMembersSpy.mockImplementation(() =>
+      resolveThreeSecond([
+        {
+          is_manager: true,
+          user_name: 'test2',
+          roles: [],
+        },
+      ])
+    );
+
+    const { container: container2 } = render(<MemberList />);
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    expect(container2).toMatchSnapshot();
   });
 
   test('should call refresh list request when receive event from EventEmit', async () => {

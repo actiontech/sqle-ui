@@ -76,6 +76,7 @@ describe('test UpdateMember', () => {
     expect(emitSpy).toBeCalledTimes(0);
 
     fireEvent.click(screen.getByLabelText('member.memberForm.projectAdmin'));
+    fireEvent.click(screen.getByLabelText('member.memberForm.projectAdmin'));
 
     fireEvent.click(screen.getByText('common.submit'));
     await act(async () => jest.advanceTimersByTime(0));
@@ -90,7 +91,7 @@ describe('test UpdateMember', () => {
       project_name: projectName,
       roles: mockMemberList[0].roles,
       user_name: mockMemberList[0].user_name,
-      is_manager: true,
+      is_manager: false,
     });
 
     await act(async () => jest.advanceTimersByTime(3000));
@@ -147,5 +148,24 @@ describe('test UpdateMember', () => {
         status: false,
       },
     });
+  });
+
+  test('should pass empty roles data when selecting current member as project admin', async () => {
+    render(<UpdateMember />);
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    fireEvent.click(screen.getByLabelText('member.memberForm.projectAdmin'));
+
+    fireEvent.click(screen.getByText('common.submit'));
+    await act(async () => jest.advanceTimersByTime(0));
+
+    expect(updateMemberSpy).toBeCalledTimes(1);
+    expect(updateMemberSpy).toBeCalledWith({
+      project_name: projectName,
+      roles: [],
+      user_name: mockMemberList[0].user_name,
+      is_manager: true,
+    });
+    await act(async () => jest.advanceTimersByTime(3000));
   });
 });

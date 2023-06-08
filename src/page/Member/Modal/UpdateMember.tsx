@@ -1,7 +1,7 @@
 import { useBoolean } from 'ahooks';
 import { Button, message, Modal } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import user from '../../../api/user';
@@ -21,6 +21,7 @@ const UpdateMember: React.FC = () => {
   const dispatch = useDispatch();
   const { projectName } = useCurrentProjectName();
   const [form] = useForm<MemberFormFields>();
+  const [isManager, setIsManager] = useState(false);
   const [submitLoading, { setFalse: submitFinish, setTrue: startSubmit }] =
     useBoolean();
   const { modalVisibility, selectMember } = useSelector(
@@ -35,7 +36,7 @@ const UpdateMember: React.FC = () => {
     const params: IUpdateMemberV1Params = {
       project_name: projectName,
       is_manager: values.isManager,
-      roles: values.roles,
+      roles: values.roles ?? [],
       user_name: values.username,
     };
     startSubmit();
@@ -59,6 +60,7 @@ const UpdateMember: React.FC = () => {
 
   const closeModal = () => {
     form.resetFields();
+    setIsManager(false);
     dispatch(
       updateMemberModalStatus({
         modalName: ModalName.Update_Member,
@@ -67,8 +69,19 @@ const UpdateMember: React.FC = () => {
     );
   };
 
+  const changeIsManager = (status: boolean) => {
+    if (!status) {
+      form.setFieldsValue({
+        roles: selectMember?.roles,
+      });
+    }
+
+    setIsManager(status);
+  };
+
   useEffect(() => {
     if (modalVisibility) {
+      setIsManager(!!selectMember?.is_manager);
       form.setFieldsValue({
         isManager: selectMember?.is_manager,
         roles: selectMember?.roles,
@@ -99,7 +112,13 @@ const UpdateMember: React.FC = () => {
         </>
       }
     >
-      <MemberForm form={form} isUpdate={true} projectName={projectName} />
+      <MemberForm
+        form={form}
+        isUpdate={true}
+        projectName={projectName}
+        isManager={isManager}
+        changeIsManager={changeIsManager}
+      />
     </Modal>
   );
 };
