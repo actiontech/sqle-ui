@@ -2,7 +2,6 @@ import { useBoolean, useRequest } from 'ahooks';
 import {
   Button,
   Card,
-  Descriptions,
   Form,
   Input,
   message,
@@ -10,11 +9,16 @@ import {
   Switch,
   Typography,
 } from 'antd';
-import { useForm } from 'antd/lib/form/Form';
 import { useTranslation } from 'react-i18next';
 import configuration from '../../../api/configuration';
 import IconTipsLabel from '../../../components/IconTipsLabel';
-import { PageFormLayout, ResponseCode } from '../../../data/common';
+import { ResponseCode } from '../../../data/common';
+import useConditionalConfig, {
+  ReadOnlyConfigColumnsType,
+  renderReadOnlyModeConfig,
+} from '../hooks/useConditionalConfig';
+import { IDingTalkConfigurationV1 } from '../../../api/common';
+import { useMemo } from 'react';
 
 type FormFields = {
   enabled: boolean;
@@ -24,16 +28,20 @@ type FormFields = {
 
 const DingTalkSetting: React.FC = () => {
   const { t } = useTranslation();
-  const [form] = useForm<FormFields>();
-  const [
+  const {
+    form,
+    renderEditingModeConfig,
+    startModify,
+    modifyFinish,
     modifyFlag,
-    { setTrue: setModifyFlagTrue, setFalse: setModifyFlagFalse },
-  ] = useBoolean(false);
+  } = useConditionalConfig<FormFields>({
+    switchFieldName: 'enabled',
+  });
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
     useBoolean();
 
   const handelClickModify = () => {
-    setModifyFlagTrue();
+    startModify();
     form.setFieldsValue({
       enabled: !!dingTalkInfo?.is_enable_ding_talk_notify,
       appKey: dingTalkInfo?.app_key,
@@ -75,7 +83,7 @@ const DingTalkSetting: React.FC = () => {
 
   const handelClickCancel = () => {
     form.resetFields();
-    setModifyFlagFalse();
+    modifyFinish();
   };
 
   const { data: dingTalkInfo, refresh: refreshDingTalkInfo } = useRequest(() =>
@@ -83,6 +91,27 @@ const DingTalkSetting: React.FC = () => {
       .getDingTalkConfigurationV1()
       .then((res) => res.data.data ?? {})
   );
+
+  const readonlyColumnsConfig: ReadOnlyConfigColumnsType<IDingTalkConfigurationV1> =
+    useMemo(() => {
+      return [
+        {
+          label: t('system.dingTalk.enable'),
+          span: 3,
+          dataIndex: 'is_enable_ding_talk_notify',
+          render: (val) => <>{!!val ? t('common.open') : t('common.close')}</>,
+        },
+        {
+          label: 'AppKey',
+          span: 3,
+          dataIndex: 'app_key',
+          hidden: !dingTalkInfo?.is_enable_ding_talk_notify,
+          render: (val) => (
+            <Typography.Paragraph>{val || '--'}</Typography.Paragraph>
+          ),
+        },
+      ];
+    }, [t, dingTalkInfo]);
 
   return (
     <Card
@@ -97,18 +126,10 @@ const DingTalkSetting: React.FC = () => {
       }
     >
       <section hidden={modifyFlag}>
-        <Descriptions>
-          <Descriptions.Item label={t('system.dingTalk.enable')} span={3}>
-            {dingTalkInfo?.is_enable_ding_talk_notify
-              ? t('common.open')
-              : t('common.close')}
-          </Descriptions.Item>
-          <Descriptions.Item label="AppKey" span={3}>
-            <Typography.Paragraph>
-              {dingTalkInfo?.app_key || '--'}
-            </Typography.Paragraph>
-          </Descriptions.Item>
-          <Descriptions.Item span={3}>
+        {renderReadOnlyModeConfig({
+          data: dingTalkInfo ?? {},
+          columns: readonlyColumnsConfig,
+          extra: (
             <Space>
               <Button
                 type="primary"
@@ -121,49 +142,59 @@ const DingTalkSetting: React.FC = () => {
                 {t('common.modify')}
               </Button>
             </Space>
-          </Descriptions.Item>
-        </Descriptions>
+          ),
+        })}
       </section>
-      <Form
-        form={form}
-        hidden={!modifyFlag}
-        onFinish={submitDingTalkConfig}
-        {...PageFormLayout}
-      >
-        <Form.Item
-          label={t('system.dingTalk.enable')}
-          name="enabled"
-          valuePropName="checked"
-        >
-          <Switch />
-        </Form.Item>
-        <Form.Item label="AppKey" name="appKey" rules={[{ required: true }]}>
-          <Input
-            placeholder={t('common.form.placeholder.input', { name: 'AppKey' })}
-          />
-        </Form.Item>
-        <Form.Item
-          label="AppSecret"
-          name="appSecret"
-          rules={[{ required: true }]}
-        >
-          <Input.Password
-            placeholder={t('common.form.placeholder.input', {
-              name: 'AppSecret',
-            })}
-          />
-        </Form.Item>
-        <Form.Item label=" " colon={false}>
-          <Space>
-            <Button htmlType="submit" type="primary" loading={submitLoading}>
-              {t('common.submit')}
-            </Button>
-            <Button onClick={handelClickCancel} disabled={submitLoading}>
-              {t('common.cancel')}
-            </Button>
-          </Space>
-        </Form.Item>
-      </Form>
+      {renderEditingModeConfig({
+        switchField: (
+          <Form.Item
+            label={t('system.dingTalk.enable')}
+            name="enabled"
+            valuePropName="checked"
+          >
+            <Switch />
+          </Form.Item>
+        ),
+        configField: (
+          <>
+            <Form.Item
+              label="AppKey"
+              name="appKey"
+              rules={[{ required: true }]}
+            >
+              <Input
+                placeholder={t('common.form.placeholder.input', {
+                  name: 'AppKey',
+                })}
+              />
+            </Form.Item>
+            <Form.Item
+              label="AppSecret"
+              name="appSecret"
+              rules={[{ required: true }]}
+            >
+              <Input.Password
+                placeholder={t('common.form.placeholder.input', {
+                  name: 'AppSecret',
+                })}
+              />
+            </Form.Item>
+          </>
+        ),
+        submitButtonField: (
+          <Form.Item label=" " colon={false}>
+            <Space>
+              <Button htmlType="submit" type="primary" loading={submitLoading}>
+                {t('common.submit')}
+              </Button>
+              <Button onClick={handelClickCancel} disabled={submitLoading}>
+                {t('common.cancel')}
+              </Button>
+            </Space>
+          </Form.Item>
+        ),
+        submit: submitDingTalkConfig,
+      })}
     </Card>
   );
 };

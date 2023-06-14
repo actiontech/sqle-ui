@@ -89,11 +89,23 @@ describe('wechat', () => {
 
     expect(container).toMatchSnapshot();
     expect(getConfigSpy).toBeCalledTimes(2);
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    fireEvent.click(screen.getByText('common.modify'));
+    fireEvent.click(screen.getByText('common.submit'));
+    await act(async () => jest.advanceTimersByTime(0));
+    expect(updateSpy).toBeCalledTimes(2);
+    expect(updateSpy).toBeCalledWith({
+      enable_wechat_notify: false,
+    });
+    await act(async () => jest.advanceTimersByTime(3000));
   });
 
   it('should send test request when user input receiver id and submit request', async () => {
     const testSpy = mockTestWechat();
     const { baseElement } = render(<Wechat />);
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.click(screen.getByText('system.wechat.test'));
     expect(baseElement).toMatchSnapshot();
 

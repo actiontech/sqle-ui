@@ -3,7 +3,6 @@ import {
   Button,
   Card,
   Col,
-  Descriptions,
   Form,
   Input,
   InputNumber,
@@ -14,11 +13,16 @@ import {
   Switch,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
-import React, { useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import configuration from '../../../api/configuration';
-import { PageFormLayout, ResponseCode } from '../../../data/common';
+import { ResponseCode } from '../../../data/common';
 import IconTipsLabel from '../../../components/IconTipsLabel';
+import useConditionalConfig, {
+  ReadOnlyConfigColumnsType,
+  renderReadOnlyModeConfig,
+} from '../hooks/useConditionalConfig';
+import { ISMTPConfigurationResV1 } from '../../../api/common';
 
 type SMTPSettingFormFields = {
   enable: boolean;
@@ -32,11 +36,15 @@ type SMTPSettingFormFields = {
 
 const SMTPSetting = () => {
   const { t } = useTranslation();
-  const [form] = useForm<SMTPSettingFormFields>();
-  const [
+  const {
+    form,
+    renderEditingModeConfig,
+    startModify,
+    modifyFinish,
     modifyFlag,
-    { setTrue: setModifyFlagTrue, setFalse: setModifyFlagFalse },
-  ] = useBoolean(false);
+  } = useConditionalConfig<SMTPSettingFormFields>({
+    switchFieldName: 'enable',
+  });
 
   const { data: smtpInfo, refresh: refreshSMTPInfo } = useRequest(() =>
     configuration.getSMTPConfigurationV1().then((res) => res.data.data ?? {})
@@ -55,14 +63,14 @@ const SMTPSetting = () => {
   }, [form, smtpInfo]);
 
   const handelClickModify = React.useCallback(() => {
-    setModifyFlagTrue();
+    startModify();
     setFormDefaultValue();
-  }, [setFormDefaultValue, setModifyFlagTrue]);
+  }, [setFormDefaultValue, startModify]);
 
   const handelClickCancel = React.useCallback(() => {
-    setModifyFlagFalse();
+    modifyFinish();
     form.resetFields();
-  }, [form, setModifyFlagFalse]);
+  }, [form, modifyFinish]);
 
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
     useBoolean();
@@ -74,7 +82,7 @@ const SMTPSetting = () => {
           enable_smtp_notify: values.enable,
           smtp_host: values.host,
           smtp_password: values.password,
-          smtp_port: `${values.port}`,
+          smtp_port: values.port ? `${values.port}` : undefined,
           smtp_username: values.username,
           is_skip_verify: values.isSkipVerify,
         })
@@ -128,38 +136,58 @@ const SMTPSetting = () => {
       .finally(() => {
         hide();
         testTing.current = false;
+        testForm.resetFields();
       });
   };
+
+  const readonlyColumnsConfig: ReadOnlyConfigColumnsType<ISMTPConfigurationResV1> =
+    useMemo(() => {
+      return [
+        {
+          label: t('system.smtp.enable'),
+          span: 3,
+          dataIndex: 'enable_smtp_notify',
+          render: (val) => <>{!!val ? t('common.open') : t('common.close')}</>,
+        },
+        {
+          label: t('system.smtp.host'),
+          span: 3,
+          dataIndex: 'smtp_host',
+          hidden: !smtpInfo?.enable_smtp_notify,
+        },
+        {
+          label: t('system.smtp.port'),
+          span: 3,
+          dataIndex: 'smtp_port',
+          hidden: !smtpInfo?.enable_smtp_notify,
+        },
+        {
+          label: t('system.smtp.username'),
+          span: 3,
+          dataIndex: 'smtp_username',
+          hidden: !smtpInfo?.enable_smtp_notify,
+        },
+        {
+          label: (
+            <IconTipsLabel tips={t('system.smtp.skipVerifyTips')}>
+              {t('system.smtp.isSkipVerify')}
+            </IconTipsLabel>
+          ),
+          span: 3,
+          dataIndex: 'is_skip_verify',
+          hidden: !smtpInfo?.enable_smtp_notify,
+          render: (val) => <>{!!val ? t('common.true') : t('common.false')}</>,
+        },
+      ];
+    }, [t, smtpInfo]);
 
   return (
     <Card title={t('system.title.smtp')}>
       <section hidden={modifyFlag}>
-        <Descriptions>
-          <Descriptions.Item label={t('system.smtp.enable')} span={3}>
-            {smtpInfo?.enable_smtp_notify
-              ? t('common.open')
-              : t('common.close')}
-          </Descriptions.Item>
-          <Descriptions.Item label={t('system.smtp.host')} span={3}>
-            {smtpInfo?.smtp_host || '--'}
-          </Descriptions.Item>
-          <Descriptions.Item label={t('system.smtp.port')} span={3}>
-            {smtpInfo?.smtp_port || '--'}
-          </Descriptions.Item>
-          <Descriptions.Item label={t('system.smtp.username')} span={3}>
-            {smtpInfo?.smtp_username || '--'}
-          </Descriptions.Item>
-          <Descriptions.Item
-            label={
-              <IconTipsLabel tips={t('system.smtp.skipVerifyTips')}>
-                {t('system.smtp.isSkipVerify')}
-              </IconTipsLabel>
-            }
-            span={3}
-          >
-            {smtpInfo?.is_skip_verify ? t('common.true') : t('common.false')}
-          </Descriptions.Item>
-          <Descriptions.Item span={3}>
+        {renderReadOnlyModeConfig({
+          data: smtpInfo ?? {},
+          columns: readonlyColumnsConfig,
+          extra: (
             <Space>
               <Popover
                 trigger="click"
@@ -211,118 +239,126 @@ const SMTPSetting = () => {
                 {t('common.modify')}
               </Button>
             </Space>
-          </Descriptions.Item>
-        </Descriptions>
+          ),
+        })}
       </section>
-      <Form
-        {...PageFormLayout}
-        hidden={!modifyFlag}
-        form={form}
-        onFinish={submit}
-      >
-        <Form.Item
-          label={t('system.smtp.enable')}
-          name="enable"
-          valuePropName="checked"
-        >
-          <Switch />
-        </Form.Item>
-        <Form.Item
-          label={
-            <IconTipsLabel tips={t('system.smtp.skipVerifyTips')}>
-              {t('system.smtp.isSkipVerify')}
-            </IconTipsLabel>
-          }
-          name="isSkipVerify"
-          valuePropName="checked"
-        >
-          <Switch />
-        </Form.Item>
-        <Form.Item
-          label={t('system.smtp.host')}
-          name="host"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input placeholder={t('common.form.placeholder.input')} />
-        </Form.Item>
-        <Form.Item
-          label={t('system.smtp.port')}
-          name="port"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <InputNumber
-            max={65535}
-            min={1}
-            placeholder={t('common.form.placeholder.input')}
-          />
-        </Form.Item>
-        <Form.Item
-          label={t('system.smtp.username')}
-          name="username"
-          rules={[
-            {
-              required: true,
-            },
-            {
-              type: 'email',
-            },
-          ]}
-        >
-          <Input placeholder={t('common.form.placeholder.input')} />
-        </Form.Item>
+      {renderEditingModeConfig({
+        switchField: (
+          <Form.Item
+            label={t('system.smtp.enable')}
+            name="enable"
+            valuePropName="checked"
+          >
+            <Switch />
+          </Form.Item>
+        ),
+        configField: (
+          <>
+            <Form.Item
+              label={
+                <IconTipsLabel tips={t('system.smtp.skipVerifyTips')}>
+                  {t('system.smtp.isSkipVerify')}
+                </IconTipsLabel>
+              }
+              name="isSkipVerify"
+              valuePropName="checked"
+            >
+              <Switch />
+            </Form.Item>
+            <Form.Item
+              label={t('system.smtp.host')}
+              name="host"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input placeholder={t('common.form.placeholder.input')} />
+            </Form.Item>
+            <Form.Item
+              label={t('system.smtp.port')}
+              name="port"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <InputNumber
+                max={65535}
+                min={1}
+                placeholder={t('common.form.placeholder.input')}
+              />
+            </Form.Item>
+            <Form.Item
+              label={t('system.smtp.username')}
+              name="username"
+              rules={[
+                {
+                  required: true,
+                },
+                {
+                  type: 'email',
+                },
+              ]}
+            >
+              <Input placeholder={t('common.form.placeholder.input')} />
+            </Form.Item>
 
-        <Form.Item
-          label={t('system.smtp.password')}
-          name="password"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input.Password placeholder={t('common.form.placeholder.input')} />
-        </Form.Item>
-        <Form.Item
-          label={t('system.smtp.passwordConfirm')}
-          name="passwordConfirm"
-          dependencies={['password']}
-          rules={[
-            {
-              required: true,
-            },
-            ({ getFieldValue }) => ({
-              validator(_, value) {
-                if (!value || getFieldValue('password') === value) {
-                  return Promise.resolve();
-                }
-                return Promise.reject(
-                  new Error(t('common.form.rule.passwordNotMatch'))
-                );
-              },
-            }),
-          ]}
-        >
-          <Input.Password placeholder={t('common.form.placeholder.input')} />
-        </Form.Item>
-        <Form.Item label=" " colon={false}>
-          <Space>
-            <Button htmlType="submit" type="primary" loading={submitLoading}>
-              {t('common.submit')}
-            </Button>
-            <Button onClick={handelClickCancel} disabled={submitLoading}>
-              {t('common.cancel')}
-            </Button>
-          </Space>
-        </Form.Item>
-      </Form>
+            <Form.Item
+              label={t('system.smtp.password')}
+              name="password"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input.Password
+                placeholder={t('common.form.placeholder.input')}
+              />
+            </Form.Item>
+            <Form.Item
+              label={t('system.smtp.passwordConfirm')}
+              name="passwordConfirm"
+              dependencies={['password']}
+              rules={[
+                {
+                  required: true,
+                },
+                ({ getFieldValue }) => ({
+                  validator(_, value) {
+                    if (!value || getFieldValue('password') === value) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject(
+                      new Error(t('common.form.rule.passwordNotMatch'))
+                    );
+                  },
+                }),
+              ]}
+            >
+              <Input.Password
+                placeholder={t('common.form.placeholder.input')}
+              />
+            </Form.Item>
+          </>
+        ),
+        submitButtonField: (
+          <Form.Item label=" " colon={false}>
+            <Space>
+              <Button htmlType="submit" type="primary" loading={submitLoading}>
+                {t('common.submit')}
+              </Button>
+              <Button onClick={handelClickCancel} disabled={submitLoading}>
+                {t('common.cancel')}
+              </Button>
+            </Space>
+          </Form.Item>
+        ),
+        submit,
+      })}
     </Card>
   );
 };

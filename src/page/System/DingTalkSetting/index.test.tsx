@@ -118,10 +118,16 @@ describe('test DingTalkSetting', () => {
       screen.getByText('common.cancel').closest('button')
     ).not.toBeDisabled();
 
-    expect(screen.getByLabelText('AppKey')).toHaveValue('');
-    expect(screen.getByLabelText('AppSecret')).toHaveValue('');
     expect(getDingTalkConfigSpy).toBeCalledTimes(2);
     expect(screen.getByText('common.modify')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('common.modify'));
+    fireEvent.click(screen.getByText('common.submit'));
+    await act(async () => jest.advanceTimersByTime(0));
+    expect(updateDingTalkConfigSpy).toBeCalledTimes(2);
+    expect(updateDingTalkConfigSpy).toBeCalledWith({
+      is_enable_ding_talk_notify: false,
+    });
   });
 
   test('should send request when clicking test DingTalk button', async () => {

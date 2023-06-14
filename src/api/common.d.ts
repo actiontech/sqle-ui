@@ -1948,6 +1948,8 @@ export interface ISyncTaskTipsResV1 {
 }
 
 export interface ISystemVariablesResV1 {
+  operation_record_expired_hours?: number;
+
   url?: string;
 
   workflow_expired_hours?: number;
@@ -2272,6 +2274,8 @@ export interface IUpdateSyncInstanceTaskReqV1 {
 }
 
 export interface IUpdateSystemVariablesReqV1 {
+  operation_record_expired_hours?: number;
+
   url?: string;
 
   workflow_expired_hours?: number;

@@ -2,7 +2,6 @@ import { useBoolean, useRequest } from 'ahooks';
 import {
   Button,
   Card,
-  Descriptions,
   Form,
   Input,
   Space,
@@ -10,23 +9,32 @@ import {
   Tag,
   Typography,
 } from 'antd';
-import { useForm } from 'antd/lib/form/Form';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import configuration from '../../../api/configuration';
 import { IUpdateOauth2ConfigurationV1Params } from '../../../api/configuration/index.d';
 import EmptyBox from '../../../components/EmptyBox';
 import IconTipsLabel from '../../../components/IconTipsLabel';
-import { PageFormLayout, ResponseCode } from '../../../data/common';
+import { ResponseCode } from '../../../data/common';
 import { OauthFormField } from './index.type';
+import useConditionalConfig, {
+  ReadOnlyConfigColumnsType,
+  renderReadOnlyModeConfig,
+} from '../hooks/useConditionalConfig';
+import { IGetOauth2ConfigurationResDataV1 } from '../../../api/common';
 
 const Oauth = () => {
   const { t } = useTranslation();
 
-  const [
+  const {
+    form,
+    renderEditingModeConfig,
+    startModify,
+    modifyFinish,
     modifyFlag,
-    { setTrue: setModifyFlagTrue, setFalse: setModifyFlagFalse },
-  ] = useBoolean();
+  } = useConditionalConfig<OauthFormField>({
+    switchFieldName: 'enable',
+  });
 
   const {
     loading: getConfigLoading,
@@ -36,11 +44,9 @@ const Oauth = () => {
     configuration.getOauth2ConfigurationV1().then((res) => res.data?.data ?? {})
   );
 
-  const [form] = useForm<OauthFormField>();
-
   const handleCancel = () => {
     form.resetFields();
-    setModifyFlagFalse();
+    modifyFinish();
   };
 
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
@@ -95,6 +101,99 @@ const Oauth = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modifyFlag]);
 
+  const readonlyColumnsConfig: ReadOnlyConfigColumnsType<IGetOauth2ConfigurationResDataV1> =
+    useMemo(() => {
+      return [
+        {
+          label: t('system.oauth.enable'),
+          span: 3,
+          dataIndex: 'enable_oauth2',
+          render: (val) => <>{!!val ? t('common.open') : t('common.close')}</>,
+        },
+        {
+          label: (
+            <IconTipsLabel tips={t('system.oauth.clientIdTips')}>
+              {t('system.oauth.clientId')}
+            </IconTipsLabel>
+          ),
+          span: 3,
+          dataIndex: 'client_id',
+          hidden: !oauthConfig?.enable_oauth2,
+        },
+        {
+          label: t('system.oauth.clientHostTips'),
+          span: 3,
+          dataIndex: 'client_host',
+          hidden: !oauthConfig?.enable_oauth2,
+        },
+        {
+          label: t('system.oauth.serverAuthUrl'),
+          span: 3,
+          dataIndex: 'server_auth_url',
+          hidden: !oauthConfig?.enable_oauth2,
+        },
+        {
+          label: t('system.oauth.serverTokenUrl'),
+          span: 3,
+          dataIndex: 'server_token_url',
+          hidden: !oauthConfig?.enable_oauth2,
+        },
+        {
+          label: t('system.oauth.serverUserIdUrl'),
+          span: 3,
+          dataIndex: 'server_user_id_url',
+          hidden: !oauthConfig?.enable_oauth2,
+        },
+        {
+          label: t('system.oauth.scopes'),
+          span: 3,
+          dataIndex: 'scopes',
+          hidden: !oauthConfig?.enable_oauth2,
+
+          render: (val) => {
+            const scopes = val as string[];
+            return (
+              <EmptyBox if={(scopes?.length ?? 0) > 0} defaultNode="--">
+                {scopes?.map((e) => (
+                  <Tag key={e}>{e}</Tag>
+                ))}
+              </EmptyBox>
+            );
+          },
+        },
+        {
+          label: (
+            <IconTipsLabel tips={t('system.oauth.accessTokenKeyNameTips')}>
+              {t('system.oauth.accessTokenKeyName')}
+            </IconTipsLabel>
+          ),
+          span: 3,
+          dataIndex: 'access_token_tag',
+          hidden: !oauthConfig?.enable_oauth2,
+        },
+        {
+          label: (
+            <IconTipsLabel tips={t('system.oauth.userIdKeyNameTips')}>
+              {t('system.oauth.userIdKeyName')}
+            </IconTipsLabel>
+          ),
+          span: 3,
+          dataIndex: 'user_id_tag',
+          hidden: !oauthConfig?.enable_oauth2,
+        },
+        {
+          label: (
+            <IconTipsLabel tips={t('system.oauth.loginButtonTextTips')}>
+              {t('system.oauth.loginButtonText')}
+            </IconTipsLabel>
+          ),
+          span: 3,
+          dataIndex: 'login_tip',
+          hidden: !oauthConfig?.enable_oauth2,
+        },
+      ];
+    }, [oauthConfig?.enable_oauth2, t]);
+
   return (
     <Card title={t('system.title.oauth')} loading={getConfigLoading}>
       {/* IFTRUE_isCE */}
@@ -114,7 +213,7 @@ const Oauth = () => {
       {/* FITRUE_isCE */}
       {/* IFTRUE_isEE */}
       <section hidden={modifyFlag}>
-        <Descriptions>
+        {/* <Descriptions>
           <Descriptions.Item label={t('system.oauth.enable')} span={3}>
             {oauthConfig?.enable_oauth2 ? t('common.open') : t('common.close')}
           </Descriptions.Item>
@@ -185,13 +284,204 @@ const Oauth = () => {
           </Descriptions.Item>
 
           <Descriptions.Item span={3}>
-            <Button type="primary" onClick={setModifyFlagTrue}>
+            <Button type="primary" onClick={startModify}>
               {t('common.modify')}
             </Button>
           </Descriptions.Item>
-        </Descriptions>
+        </Descriptions> */}
+        {renderReadOnlyModeConfig({
+          data: oauthConfig ?? {},
+          columns: readonlyColumnsConfig,
+          extra: (
+            <Button type="primary" onClick={startModify}>
+              {t('common.modify')}
+            </Button>
+          ),
+        })}
       </section>
-      <Form
+      {renderEditingModeConfig({
+        switchField: (
+          <Form.Item
+            name="enable"
+            valuePropName="checked"
+            label={t('system.oauth.enable')}
+          >
+            <Switch />
+          </Form.Item>
+        ),
+        configField: (
+          <>
+            <Form.Item
+              name="clientId"
+              label={
+                <IconTipsLabel tips={t('system.oauth.clientIdTips')}>
+                  {t('system.oauth.clientId')}
+                </IconTipsLabel>
+              }
+              rules={[
+                {
+                  required: true,
+                  message: t('common.form.rule.require', {
+                    name: t('system.oauth.clientId'),
+                  }),
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name="clientSecret"
+              label={
+                <IconTipsLabel tips={t('system.oauth.clientSecretTips')}>
+                  {t('system.oauth.clientSecret')}
+                </IconTipsLabel>
+              }
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name="clientHost"
+              label={
+                <IconTipsLabel tips={t('system.oauth.clientHostTips')}>
+                  {t('system.oauth.clientHost')}
+                </IconTipsLabel>
+              }
+              rules={[
+                {
+                  required: true,
+                  message: t('common.form.rule.require', {
+                    name: t('system.oauth.clientHost'),
+                  }),
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name="serverAuthUrl"
+              label={
+                <IconTipsLabel tips={t('system.oauth.serverAuthUrlTips')}>
+                  {t('system.oauth.serverAuthUrl')}
+                </IconTipsLabel>
+              }
+              rules={[
+                {
+                  required: true,
+                  message: t('common.form.rule.require', {
+                    name: t('system.oauth.serverAuthUrl'),
+                  }),
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name="serverTokenUrl"
+              label={
+                <IconTipsLabel tips={t('system.oauth.serverTokenUrlTips')}>
+                  {t('system.oauth.serverTokenUrl')}
+                </IconTipsLabel>
+              }
+              rules={[
+                {
+                  required: true,
+                  message: t('common.form.rule.require', {
+                    name: t('system.oauth.serverTokenUrl'),
+                  }),
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name="serverUserIdUrl"
+              label={
+                <IconTipsLabel tips={t('system.oauth.serverUserIdUrlTips')}>
+                  {t('system.oauth.serverUserIdUrl')}
+                </IconTipsLabel>
+              }
+              rules={[
+                {
+                  required: true,
+                  message: t('common.form.rule.require', {
+                    name: t('system.oauth.serverUserIdUrl'),
+                  }),
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name="scopes"
+              label={
+                <IconTipsLabel tips={t('system.oauth.scopesTips')}>
+                  {t('system.oauth.scopes')}
+                </IconTipsLabel>
+              }
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name="accessTokenKeyName"
+              label={
+                <IconTipsLabel tips={t('system.oauth.accessTokenKeyNameTips')}>
+                  {t('system.oauth.accessTokenKeyName')}
+                </IconTipsLabel>
+              }
+              rules={[
+                {
+                  required: true,
+                  message: t('common.form.rule.require', {
+                    name: t('system.oauth.accessTokenKeyName'),
+                  }),
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name="userIdKeyName"
+              label={
+                <IconTipsLabel tips={t('system.oauth.userIdKeyNameTips')}>
+                  {t('system.oauth.userIdKeyName')}
+                </IconTipsLabel>
+              }
+              rules={[
+                {
+                  required: true,
+                  message: t('common.form.rule.require', {
+                    name: t('system.oauth.userIdKeyName'),
+                  }),
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name="loginButtonText"
+              label={
+                <IconTipsLabel tips={t('system.oauth.loginButtonTextTips')}>
+                  {t('system.oauth.loginButtonText')}
+                </IconTipsLabel>
+              }
+            >
+              <Input />
+            </Form.Item>
+          </>
+        ),
+        submitButtonField: (
+          <Space>
+            <Button loading={submitLoading} htmlType="submit" type="primary">
+              {t('common.submit')}
+            </Button>
+            <Button disabled={submitLoading} onClick={handleCancel}>
+              {t('common.cancel')}
+            </Button>
+          </Space>
+        ),
+        submit: handleSubmit,
+      })}
+      {/* <Form
         {...PageFormLayout}
         form={form}
         hidden={!modifyFlag}
@@ -370,7 +660,7 @@ const Oauth = () => {
             </Button>
           </Space>
         </Form.Item>
-      </Form>
+      </Form> */}
       {/* FITRUE_isEE */}
     </Card>
   );
