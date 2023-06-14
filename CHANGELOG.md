@@ -14,3 +14,4 @@
 * [] [feature]: 工单列表支持工单号展示以及筛选 <https://github.com/actiontech/sqle-ui/pull/280>
 * [] [chore]: 2.2306.0 界面优化 <https://github.com/actiontech/sqle-ui/pull/279>
 * [] [chore]: 项目成员界面优化(dms中已移除此页面) <https://github.com/actiontech/sqle-ui/pull/278>
+* [ ] [feature]: 优化系统配置中开关的交互流程 <https://github.com/actiontech/sqle-ui/pull/283>
