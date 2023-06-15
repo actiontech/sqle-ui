@@ -19,6 +19,7 @@ describe('System/GlobalConfig', () => {
     spy.mockImplementation(() =>
       resolveThreeSecond({
         workflow_expired_hours: 720,
+        operation_record_expired_hours: 2160,
         url: 'http://127.0.0.1:5151',
       })
     );
@@ -32,7 +33,7 @@ describe('System/GlobalConfig', () => {
   };
 
   test('should get smtp setting from origin', async () => {
-    mockGetGlobalConfig();
+    mockGetGlobalConfig().mockImplementation(() => resolveThreeSecond({}));
     const { container } = render(<GlobalConfig />);
     expect(container).toMatchSnapshot();
     await act(async () => jest.advanceTimersByTime(3000));
@@ -57,6 +58,15 @@ describe('System/GlobalConfig', () => {
       }
     );
 
+    fireEvent.input(
+      screen.getByLabelText(
+        'system.global.operationRecordExpiredHours(common.time.hour)'
+      ),
+      {
+        target: { value: 2000 },
+      }
+    );
+
     fireEvent.input(screen.getByLabelText('system.global.urlAddressPrefix'), {
       target: 'http://127.0.0.1:5151',
     });
@@ -67,6 +77,7 @@ describe('System/GlobalConfig', () => {
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
       workflow_expired_hours: 800,
+      operation_record_expired_hours: 2000,
       url: 'http://127.0.0.1:5151',
     });
     expect(screen.getByText('common.submit').parentNode).toHaveClass(
