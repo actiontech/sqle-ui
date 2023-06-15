@@ -13,6 +13,7 @@ import EmitterKey from '../../../../../data/EmitterKey';
 import useTable from '../../../../../hooks/useTable';
 import EventEmitter from '../../../../../utils/EventEmitter';
 import HighlightCode from '../../../../../utils/HighlightCode';
+import { formatTime } from '../../../../../utils/Common';
 
 const SqlPool: React.FC<{
   auditPlanName: string;
@@ -60,6 +61,9 @@ const SqlPool: React.FC<{
                     className="pre-warp-break-all"
                   ></pre>
                 );
+              }
+              if (item.name === 'last_receive_timestamp') {
+                return formatTime(text);
               }
               return text;
             },

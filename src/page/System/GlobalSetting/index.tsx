@@ -10,6 +10,7 @@ import { renderReadOnlyModeConfig } from '../hooks/useConditionalConfig';
 
 type GlobalConfigFields = {
   orderExpiredHours: number;
+  operationRecordExpiredHours: number;
   url: string;
 };
 
@@ -36,6 +37,8 @@ const GlobalSetting = () => {
     setModifyFlagTrue();
     form.setFieldsValue({
       orderExpiredHours: globalConfig?.workflow_expired_hours ?? 720,
+      operationRecordExpiredHours:
+        globalConfig?.operation_record_expired_hours ?? 2160,
       url: globalConfig?.url,
     });
   };
@@ -45,6 +48,7 @@ const GlobalSetting = () => {
     configuration
       .updateSystemVariablesV1({
         workflow_expired_hours: values.orderExpiredHours,
+        operation_record_expired_hours: values.operationRecordExpiredHours,
         url: values.url,
       })
       .then((res) => {
@@ -68,6 +72,16 @@ const GlobalSetting = () => {
               label: t('system.global.orderExpiredHours'),
               span: 3,
               dataIndex: 'workflow_expired_hours',
+              render: (val) => (
+                <EmptyBox if={!!val} defaultNode="--">
+                  {val}({t('common.time.hour')})
+                </EmptyBox>
+              ),
+            },
+            {
+              label: t('system.global.operationRecordExpiredHours'),
+              span: 3,
+              dataIndex: 'operation_record_expired_hours',
               render: (val) => (
                 <EmptyBox if={!!val} defaultNode="--">
                   {val}({t('common.time.hour')})
@@ -112,6 +126,23 @@ const GlobalSetting = () => {
                 name: t('system.global.orderExpiredHours'),
               }),
             },
+            {
+              type: 'integer',
+            },
+          ]}
+        >
+          <InputNumber />
+        </Form.Item>
+        <Form.Item
+          label={
+            <>
+              {t('system.global.operationRecordExpiredHours')}(
+              {t('common.time.hour')})
+            </>
+          }
+          name="operationRecordExpiredHours"
+          initialValue={'2160'}
+          rules={[
             {
               type: 'integer',
             },
