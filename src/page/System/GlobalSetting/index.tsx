@@ -1,19 +1,12 @@
 import { useBoolean, useRequest } from 'ahooks';
-import {
-  Button,
-  Card,
-  Descriptions,
-  Form,
-  Input,
-  InputNumber,
-  Space,
-} from 'antd';
+import { Button, Card, Form, Input, InputNumber, Space } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import { useTranslation } from 'react-i18next';
 import configuration from '../../../api/configuration';
 import EmptyBox from '../../../components/EmptyBox';
 import IconTipsLabel from '../../../components/IconTipsLabel';
 import { PageFormLayout, ResponseCode } from '../../../data/common';
+import { renderReadOnlyModeConfig } from '../hooks/useConditionalConfig';
 
 type GlobalConfigFields = {
   orderExpiredHours: number;
@@ -72,48 +65,45 @@ const GlobalSetting = () => {
   return (
     <Card title={t('system.title.global')}>
       <section hidden={modifyFlag}>
-        <Descriptions>
-          <Descriptions.Item
-            label={t('system.global.orderExpiredHours')}
-            span={3}
-          >
-            <EmptyBox
-              if={!!globalConfig?.workflow_expired_hours}
-              defaultNode="--"
-            >
-              {globalConfig?.workflow_expired_hours}({t('common.time.hour')})
-            </EmptyBox>
-          </Descriptions.Item>
-          <Descriptions.Item
-            label={t('system.global.operationRecordExpiredHours')}
-            span={3}
-          >
-            <EmptyBox
-              if={!!globalConfig?.operation_record_expired_hours}
-              defaultNode="--"
-            >
-              {globalConfig?.operation_record_expired_hours}(
-              {t('common.time.hour')})
-            </EmptyBox>
-          </Descriptions.Item>
-          <Descriptions.Item
-            label={
-              <IconTipsLabel tips={t('system.global.urlAddressPrefixTips')}>
-                {t('system.global.urlAddressPrefix')}
-              </IconTipsLabel>
-            }
-            span={3}
-          >
-            <EmptyBox if={!!globalConfig?.url} defaultNode="--">
-              {globalConfig?.url}
-            </EmptyBox>
-          </Descriptions.Item>
-          <Descriptions.Item span={3}>
+        {renderReadOnlyModeConfig({
+          data: globalConfig ?? {},
+          columns: [
+            {
+              label: t('system.global.orderExpiredHours'),
+              span: 3,
+              dataIndex: 'workflow_expired_hours',
+              render: (val) => (
+                <EmptyBox if={!!val} defaultNode="--">
+                  {val}({t('common.time.hour')})
+                </EmptyBox>
+              ),
+            },
+            {
+              label: t('system.global.operationRecordExpiredHours'),
+              span: 3,
+              dataIndex: 'operation_record_expired_hours',
+              render: (val) => (
+                <EmptyBox if={!!val} defaultNode="--">
+                  {val}({t('common.time.hour')})
+                </EmptyBox>
+              ),
+            },
+            {
+              label: (
+                <IconTipsLabel tips={t('system.global.urlAddressPrefixTips')}>
+                  {t('system.global.urlAddressPrefix')}
+                </IconTipsLabel>
+              ),
+              span: 3,
+              dataIndex: 'url',
+            },
+          ],
+          extra: (
             <Button type="primary" onClick={handelClickModify}>
               {t('common.modify')}
             </Button>
-          </Descriptions.Item>
-        </Descriptions>
+          ),
+        })}
       </section>
       <Form
         form={form}

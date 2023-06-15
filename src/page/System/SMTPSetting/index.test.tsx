@@ -68,33 +68,19 @@ describe('System/SMTPSetting', () => {
     mockGetSMTPInfo();
     const updateSpy = mockUpdateSMTPInfo();
 
-    render(<SMTPSetting />);
+    const { container } = render(<SMTPSetting />);
     await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByText('common.modify'));
 
     fireEvent.click(screen.getByLabelText('system.smtp.enable'));
-    fireEvent.click(screen.getByLabelText('system.smtp.isSkipVerify'));
-    fireEvent.input(screen.getByLabelText('system.smtp.username'), {
-      target: { value: 'newEmail@163.com' },
-    });
-    fireEvent.input(screen.getByLabelText('system.smtp.password'), {
-      target: { value: 'temp' },
-    });
-    fireEvent.input(screen.getByLabelText('system.smtp.passwordConfirm'), {
-      target: { value: 'temp' },
-    });
+    expect(container).toMatchSnapshot();
     fireEvent.click(screen.getByText('common.submit'));
     await act(async () => jest.advanceTimersByTime(0));
 
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
       enable_smtp_notify: false,
-      is_skip_verify: true,
-      smtp_host: '10.10.10.1',
-      smtp_password: 'temp',
-      smtp_port: '3300',
-      smtp_username: 'newEmail@163.com',
     });
     expect(screen.getByText('common.submit').parentNode).toHaveClass(
       'ant-btn-loading'

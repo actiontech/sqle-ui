@@ -99,28 +99,11 @@ describe('webhook', () => {
     render(<Webhook />);
     fireEvent.click(screen.getByText('common.modify'));
 
-    fireEvent.input(screen.getByLabelText('system.webhook.maxRetryTimes'), {
-      target: {
-        value: undefined,
-      },
-    });
-
-    fireEvent.input(
-      screen.getByLabelText('system.webhook.retryIntervalSeconds'),
-      {
-        target: {
-          value: undefined,
-        },
-      }
-    );
-
     fireEvent.click(screen.getByText('common.submit'));
     await act(async () => jest.advanceTimersByTime(0));
     expect(updateSpy).toBeCalledTimes(1);
     expect(updateSpy).toBeCalledWith({
       enable: false,
-      max_retry_times: 3,
-      retry_interval_seconds: 1,
     });
   });
 

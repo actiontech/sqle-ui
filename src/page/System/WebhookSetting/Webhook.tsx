@@ -2,7 +2,6 @@ import { useBoolean, useRequest } from 'ahooks';
 import {
   Button,
   Card,
-  Descriptions,
   Form,
   Input,
   InputNumber,
@@ -10,11 +9,16 @@ import {
   Space,
   Switch,
 } from 'antd';
-import { useForm } from 'antd/lib/form/Form';
-import { useRef, useState } from 'react';
+import { useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import configuration from '../../../api/configuration';
-import { PageFormLayout, ResponseCode } from '../../../data/common';
+import { ResponseCode } from '../../../data/common';
+import useConditionalConfig, {
+  ReadOnlyConfigColumnsType,
+  renderReadOnlyModeConfig,
+} from '../hooks/useConditionalConfig';
+import { IWebHookConfigV1 } from '../../../api/common';
+import { IUpdateGlobalWebHookConfigParams } from '../../../api/configuration/index.d';
 
 type WebhookFormFields = {
   enable: boolean;
@@ -32,9 +36,15 @@ const DEFAULT_CONSTANT = {
 const WebHook: React.FC = () => {
   const { t } = useTranslation();
 
-  const [modifyFlag, { setTrue: startModify, setFalse: modifyFinish }] =
-    useBoolean();
-  const [enable, setEnable] = useState(false);
+  const {
+    form,
+    renderEditingModeConfig,
+    startModify,
+    modifyFinish,
+    modifyFlag,
+  } = useConditionalConfig<WebhookFormFields>({
+    switchFieldName: 'enable',
+  });
 
   const { data: webhookConfig, refresh } = useRequest(() =>
     configuration
@@ -42,27 +52,31 @@ const WebHook: React.FC = () => {
       .then((res) => res?.data?.data)
   );
 
-  const [form] = useForm<WebhookFormFields>();
-
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
     useBoolean();
   const submit = (values: WebhookFormFields) => {
     startSubmit();
+    const params: IUpdateGlobalWebHookConfigParams = values.enable
+      ? {
+          enable: values.enable,
+          token: values.token,
+          max_retry_times:
+            values.maxRetryTimes ?? DEFAULT_CONSTANT.maxRetryTimes,
+          retry_interval_seconds:
+            values.retryIntervalSeconds ??
+            DEFAULT_CONSTANT.retryIntervalSeconds,
+          url: values.url,
+        }
+      : {
+          enable: false,
+        };
     configuration
-      .updateGlobalWebHookConfig({
-        enable: values.enable,
-        token: values.token,
-        max_retry_times: values.maxRetryTimes ?? DEFAULT_CONSTANT.maxRetryTimes,
-        retry_interval_seconds:
-          values.retryIntervalSeconds ?? DEFAULT_CONSTANT.retryIntervalSeconds,
-        url: values.url,
-      })
+      .updateGlobalWebHookConfig(params)
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           modifyFinish();
           refresh();
           form.resetFields();
-          setEnable(false);
         }
       })
       .finally(() => {
@@ -71,7 +85,6 @@ const WebHook: React.FC = () => {
   };
 
   const handelClickModify = () => {
-    setEnable(!!webhookConfig?.enable);
     form.setFieldsValue({
       enable: !!webhookConfig?.enable,
       token: webhookConfig?.token,
@@ -116,20 +129,31 @@ const WebHook: React.FC = () => {
       });
   };
 
+  const readonlyColumnsConfig: ReadOnlyConfigColumnsType<IWebHookConfigV1> =
+    useMemo(() => {
+      return [
+        {
+          label: t('system.dingTalk.enable'),
+          span: 3,
+          dataIndex: 'enable',
+          render: (val) => <>{!!val ? t('common.open') : t('common.close')}</>,
+        },
+        {
+          label: 'Webhook url',
+          span: 3,
+          dataIndex: 'url',
+          hidden: !webhookConfig?.enable,
+        },
+      ];
+    }, [t, webhookConfig]);
+
   return (
     <Card title={t('system.title.webhook')}>
       <section hidden={modifyFlag}>
-        <Descriptions>
-          <Descriptions.Item
-            label={t('system.webhook.enableWebhookNotify')}
-            span={3}
-          >
-            {webhookConfig?.enable ? t('common.open') : t('common.close')}
-          </Descriptions.Item>
-          <Descriptions.Item label="Webhook url" span={3}>
-            {webhookConfig?.url ?? '--'}
-          </Descriptions.Item>
-          <Descriptions.Item span={3}>
+        {renderReadOnlyModeConfig({
+          data: webhookConfig ?? {},
+          columns: readonlyColumnsConfig,
+          extra: (
             <Space>
               <Button onClick={test} type="primary" loading={submitLoading}>
                 {t('system.webhook.test')}
@@ -138,82 +162,81 @@ const WebHook: React.FC = () => {
                 {t('common.modify')}
               </Button>
             </Space>
-          </Descriptions.Item>
-        </Descriptions>
+          ),
+        })}
       </section>
-      <Form
-        {...PageFormLayout}
-        hidden={!modifyFlag}
-        form={form}
-        onFinish={submit}
-      >
-        <Form.Item label={t('system.webhook.enableWebhookNotify')}>
-          <Space size={20}>
-            <Form.Item noStyle name="enable" valuePropName="checked">
-              <Switch
-                checked={enable}
-                onChange={setEnable}
-                data-testid="enableButton"
-              />
-            </Form.Item>
-            <a
-              href="https://actiontech.github.io/sqle-docs/docs/user-manual/sys-configuration/webhook"
-              target="_blank"
-              rel="noreferrer"
+      {renderEditingModeConfig({
+        switchField: (
+          <Form.Item label={t('system.webhook.enableWebhookNotify')}>
+            <Space size={20}>
+              <Form.Item noStyle name="enable" valuePropName="checked">
+                <Switch data-testid="enableButton" />
+              </Form.Item>
+              <a
+                href="https://actiontech.github.io/sqle-docs/docs/user-manual/sys-configuration/webhook"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {t('system.webhook.configDocs')}
+              </a>
+            </Space>
+          </Form.Item>
+        ),
+        configField: (
+          <>
+            <Form.Item
+              label="Webhook url"
+              name="url"
+              rules={[
+                {
+                  required: true,
+                  type: 'url',
+                },
+              ]}
             >
-              {t('system.webhook.configDocs')}
-            </a>
-          </Space>
-        </Form.Item>
-
-        <Form.Item
-          label="Webhook url"
-          name="url"
-          rules={[
-            {
-              required: enable,
-              type: 'url',
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label={t('system.webhook.maxRetryTimes')}
-          name="maxRetryTimes"
-          rules={[
-            {
-              required: enable,
-            },
-          ]}
-        >
-          <InputNumber className="full-width-element" max={5} min={0} />
-        </Form.Item>
-        <Form.Item
-          label={t('system.webhook.retryIntervalSeconds')}
-          name="retryIntervalSeconds"
-          rules={[
-            {
-              required: enable,
-            },
-          ]}
-        >
-          <InputNumber className="full-width-element" min={1} max={5} />
-        </Form.Item>
-        <Form.Item label="token" name="token">
-          <Input />
-        </Form.Item>
-        <Form.Item label=" " colon={false}>
-          <Space>
-            <Button htmlType="submit" type="primary" loading={submitLoading}>
-              {t('common.submit')}
-            </Button>
-            <Button disabled={submitLoading} onClick={modifyFinish}>
-              {t('common.cancel')}
-            </Button>
-          </Space>
-        </Form.Item>
-      </Form>
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label={t('system.webhook.maxRetryTimes')}
+              name="maxRetryTimes"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <InputNumber className="full-width-element" max={5} min={0} />
+            </Form.Item>
+            <Form.Item
+              label={t('system.webhook.retryIntervalSeconds')}
+              name="retryIntervalSeconds"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <InputNumber className="full-width-element" min={1} max={5} />
+            </Form.Item>
+            <Form.Item label="token" name="token">
+              <Input />
+            </Form.Item>
+          </>
+        ),
+        submitButtonField: (
+          <Form.Item label=" " colon={false}>
+            <Space>
+              <Button htmlType="submit" type="primary" loading={submitLoading}>
+                {t('common.submit')}
+              </Button>
+              <Button disabled={submitLoading} onClick={modifyFinish}>
+                {t('common.cancel')}
+              </Button>
+            </Space>
+          </Form.Item>
+        ),
+        submit,
+      })}
     </Card>
   );
 };

@@ -1,4 +1,10 @@
-import { fireEvent, render, screen, act } from '@testing-library/react';
+import {
+  fireEvent,
+  render,
+  screen,
+  act,
+  cleanup,
+} from '@testing-library/react';
 import LarkSetting from './LarkSetting';
 import configuration from '../../../api/configuration';
 import { resolveThreeSecond } from '../../../testUtils/mockRequest';
@@ -18,6 +24,7 @@ describe('test System/LarkSetting', () => {
     jest.clearAllMocks();
     jest.clearAllTimers();
     jest.useRealTimers();
+    cleanup();
   });
 
   const mockGetLarkConfiguration = () => {
@@ -75,13 +82,9 @@ describe('test System/LarkSetting', () => {
 
     fireEvent.click(screen.getByText('common.modify'));
     expect(container).toMatchSnapshot();
-    expect(screen.getByLabelText('App ID')).toHaveValue('app_key');
-    expect(screen.getByLabelText('App ID')).not.toBeDisabled();
-    expect(screen.getByLabelText('App Secret')).not.toBeDisabled();
 
     fireEvent.click(screen.getByLabelText('system.lark.enable'));
-    expect(screen.getByLabelText('App ID')).not.toBeDisabled();
-    expect(screen.getByLabelText('App Secret')).not.toBeDisabled();
+    expect(container).toMatchSnapshot();
   });
 
   test('should be able to update dingTalk configuration', async () => {
@@ -91,12 +94,9 @@ describe('test System/LarkSetting', () => {
 
     fireEvent.click(screen.getByText('common.modify'));
     fireEvent.click(screen.getByLabelText('system.lark.enable'));
-    fireEvent.change(screen.getByLabelText('App ID'), {
-      target: { value: 'update-appKey' },
-    });
-    fireEvent.change(screen.getByLabelText('App Secret'), {
-      target: { value: 'update-appSecret' },
-    });
+    expect(screen.queryByLabelText('App ID')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('App Secret')).not.toBeInTheDocument();
+
     expect(updateLarkConfigSpy).toBeCalledTimes(0);
 
     fireEvent.click(screen.getByText('common.submit'));
@@ -105,8 +105,6 @@ describe('test System/LarkSetting', () => {
     expect(updateLarkConfigSpy).toBeCalledTimes(1);
     expect(updateLarkConfigSpy).toBeCalledWith({
       is_feishu_notification_enabled: false,
-      app_id: 'update-appKey',
-      app_secret: 'update-appSecret',
     });
     expect(screen.getByText('common.submit').closest('button')).toHaveClass(
       'ant-btn-loading'
@@ -124,8 +122,6 @@ describe('test System/LarkSetting', () => {
       screen.getByText('common.cancel').closest('button')
     ).not.toBeDisabled();
 
-    expect(screen.getByLabelText('App ID')).toHaveValue('');
-    expect(screen.getByLabelText('App Secret')).toHaveValue('');
     expect(getLarkConfigSpy).toBeCalledTimes(2);
     expect(screen.getByText('common.modify')).toBeInTheDocument();
   });

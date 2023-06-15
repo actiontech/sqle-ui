@@ -3,7 +3,6 @@ import {
   Button,
   Card,
   Col,
-  Descriptions,
   Form,
   Input,
   message,
@@ -16,27 +15,36 @@ import {
   Typography,
 } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FormFields, TestFormFields } from '.';
 import { TestFeishuConfigurationReqV1AccountTypeEnum } from '../../../api/common.enum';
 import configuration from '../../../api/configuration';
 import EmptyBox from '../../../components/EmptyBox';
-import { PageFormLayout, ResponseCode } from '../../../data/common';
+import { ResponseCode } from '../../../data/common';
 import { phoneRule } from '../../../utils/FormRule';
+import useConditionalConfig, {
+  ReadOnlyConfigColumnsType,
+  renderReadOnlyModeConfig,
+} from '../hooks/useConditionalConfig';
+import { IFeishuConfigurationV1 } from '../../../api/common';
 
 const LarkSetting: React.FC = () => {
   const { t } = useTranslation();
-  const [form] = useForm<FormFields>();
   const [testForm] = useForm<TestFormFields>();
 
-  const [
+  const {
+    form,
+    renderEditingModeConfig,
+    startModify,
+    modifyFinish,
     modifyFlag,
-    { setTrue: setModifyFlagTrue, setFalse: setModifyFlagFalse },
-  ] = useBoolean(false);
+  } = useConditionalConfig<FormFields>({
+    switchFieldName: 'enabled',
+  });
+
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
     useBoolean();
-  const [enable, setEnable] = useState(false);
   const [testPopoverVisible, toggleTestPopoverVisible] = useState(false);
   const [receiveType, setReceiveType] =
     useState<TestFeishuConfigurationReqV1AccountTypeEnum>(
@@ -45,8 +53,7 @@ const LarkSetting: React.FC = () => {
   const testing = useRef(false);
 
   const handelClickModify = () => {
-    setModifyFlagTrue();
-    setEnable(!!larkInfo?.is_feishu_notification_enabled);
+    startModify();
     form.setFieldsValue({
       enabled: !!larkInfo?.is_feishu_notification_enabled,
       appKey: larkInfo?.app_id,
@@ -109,8 +116,7 @@ const LarkSetting: React.FC = () => {
 
   const handelClickCancel = () => {
     form.resetFields();
-    setEnable(false);
-    setModifyFlagFalse();
+    modifyFinish();
   };
 
   const handleChangeReceiveType: RadioGroupProps['onChange'] = (e) => {
@@ -128,21 +134,34 @@ const LarkSetting: React.FC = () => {
     configuration.getFeishuConfigurationV1().then((res) => res.data.data ?? {})
   );
 
+  const readonlyColumnsConfig: ReadOnlyConfigColumnsType<IFeishuConfigurationV1> =
+    useMemo(() => {
+      return [
+        {
+          label: t('system.lark.enable'),
+          span: 3,
+          dataIndex: 'is_feishu_notification_enabled',
+          render: (val) => <>{!!val ? t('common.open') : t('common.close')}</>,
+        },
+        {
+          label: 'App ID',
+          span: 3,
+          dataIndex: 'app_id',
+          hidden: !larkInfo?.is_feishu_notification_enabled,
+          render: (val) => (
+            <Typography.Paragraph>{val || '--'}</Typography.Paragraph>
+          ),
+        },
+      ];
+    }, [t, larkInfo]);
+
   return (
     <Card title={<>{t('system.title.lark')}</>}>
       <section hidden={modifyFlag}>
-        <Descriptions>
-          <Descriptions.Item label={t('system.lark.enable')} span={3}>
-            {larkInfo?.is_feishu_notification_enabled
-              ? t('common.open')
-              : t('common.close')}
-          </Descriptions.Item>
-          <Descriptions.Item label="App ID" span={3}>
-            <Typography.Paragraph>
-              {larkInfo?.app_id || '--'}
-            </Typography.Paragraph>
-          </Descriptions.Item>
-          <Descriptions.Item span={3}>
+        {renderReadOnlyModeConfig({
+          data: larkInfo ?? {},
+          columns: readonlyColumnsConfig,
+          extra: (
             <Space>
               <Popover
                 trigger="click"
@@ -248,49 +267,59 @@ const LarkSetting: React.FC = () => {
                 {t('common.modify')}
               </Button>
             </Space>
-          </Descriptions.Item>
-        </Descriptions>
+          ),
+        })}
       </section>
-      <Form
-        form={form}
-        hidden={!modifyFlag}
-        onFinish={submitLarkConfig}
-        {...PageFormLayout}
-      >
-        <Form.Item
-          label={t('system.lark.enable')}
-          name="enabled"
-          valuePropName="checked"
-        >
-          <Switch checked={enable} onChange={setEnable} />
-        </Form.Item>
-        <Form.Item label="App ID" name="appKey" rules={[{ required: true }]}>
-          <Input
-            placeholder={t('common.form.placeholder.input', { name: 'App ID' })}
-          />
-        </Form.Item>
-        <Form.Item
-          label="App Secret"
-          name="appSecret"
-          rules={[{ required: true }]}
-        >
-          <Input.Password
-            placeholder={t('common.form.placeholder.input', {
-              name: 'App Secret',
-            })}
-          />
-        </Form.Item>
-        <Form.Item label=" " colon={false}>
-          <Space>
-            <Button htmlType="submit" type="primary" loading={submitLoading}>
-              {t('common.submit')}
-            </Button>
-            <Button onClick={handelClickCancel} disabled={submitLoading}>
-              {t('common.cancel')}
-            </Button>
-          </Space>
-        </Form.Item>
-      </Form>
+      {renderEditingModeConfig({
+        switchField: (
+          <Form.Item
+            label={t('system.lark.enable')}
+            name="enabled"
+            valuePropName="checked"
+          >
+            <Switch />
+          </Form.Item>
+        ),
+        configField: (
+          <>
+            <Form.Item
+              label="App ID"
+              name="appKey"
+              rules={[{ required: true }]}
+            >
+              <Input
+                placeholder={t('common.form.placeholder.input', {
+                  name: 'App ID',
+                })}
+              />
+            </Form.Item>
+            <Form.Item
+              label="App Secret"
+              name="appSecret"
+              rules={[{ required: true }]}
+            >
+              <Input.Password
+                placeholder={t('common.form.placeholder.input', {
+                  name: 'App Secret',
+                })}
+              />
+            </Form.Item>
+          </>
+        ),
+        submitButtonField: (
+          <Form.Item label=" " colon={false}>
+            <Space>
+              <Button htmlType="submit" type="primary" loading={submitLoading}>
+                {t('common.submit')}
+              </Button>
+              <Button onClick={handelClickCancel} disabled={submitLoading}>
+                {t('common.cancel')}
+              </Button>
+            </Space>
+          </Form.Item>
+        ),
+        submit: submitLarkConfig,
+      })}
     </Card>
   );
 };

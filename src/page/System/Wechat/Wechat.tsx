@@ -3,7 +3,6 @@ import {
   Button,
   Card,
   Col,
-  Descriptions,
   Form,
   Input,
   message,
@@ -12,11 +11,15 @@ import {
   Space,
   Switch,
 } from 'antd';
-import { useForm } from 'antd/lib/form/Form';
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import configuration from '../../../api/configuration';
-import { PageFormLayout, ResponseCode } from '../../../data/common';
+import { ResponseCode } from '../../../data/common';
+import useConditionalConfig, {
+  ReadOnlyConfigColumnsType,
+  renderReadOnlyModeConfig,
+} from '../hooks/useConditionalConfig';
+import { IWeChatConfigurationResV1 } from '../../../api/common';
 
 type WechatFormFields = {
   enable_wechat_notify: boolean;
@@ -30,14 +33,23 @@ type WechatFormFields = {
 const Wechat = () => {
   const { t } = useTranslation();
 
-  const [modifyFlag, { setTrue: startModify, setFalse: modifyFinish }] =
-    useBoolean();
-
-  const { data: wechatConfig, refresh } = useRequest(() =>
+  const {
+    data: wechatConfig,
+    refresh,
+    loading,
+  } = useRequest(() =>
     configuration.getWeChatConfigurationV1().then((res) => res?.data?.data)
   );
 
-  const [form] = useForm<WechatFormFields>();
+  const {
+    form,
+    renderEditingModeConfig,
+    startModify,
+    modifyFinish,
+    modifyFlag,
+  } = useConditionalConfig<WechatFormFields>({
+    switchFieldName: 'enable_wechat_notify',
+  });
 
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
     useBoolean();
@@ -48,7 +60,9 @@ const Wechat = () => {
         enable_wechat_notify: values.enable_wechat_notify,
         corp_id: values.corp_id,
         corp_secret: values.corp_secret,
-        agent_id: Number.parseInt(values.agent_id ?? '0', 10),
+        agent_id: values.agent_id
+          ? Number.parseInt(values.agent_id ?? '0', 10)
+          : undefined,
         safe_enabled: values.safe_enabled,
         proxy_ip: values.proxy_ip,
       })
@@ -102,31 +116,50 @@ const Wechat = () => {
       });
   };
 
+  const readonlyColumnsConfig: ReadOnlyConfigColumnsType<IWeChatConfigurationResV1> =
+    useMemo(() => {
+      return [
+        {
+          label: t('system.wechat.enable_wechat_notify'),
+          span: 3,
+          dataIndex: 'enable_wechat_notify',
+          render: (val) => <>{!!val ? t('common.open') : t('common.close')}</>,
+        },
+        {
+          label: t('system.wechat.corp_id'),
+          span: 3,
+          dataIndex: 'corp_id',
+          hidden: !wechatConfig?.enable_wechat_notify,
+        },
+        {
+          label: t('system.wechat.agent_id'),
+          span: 3,
+          dataIndex: 'agent_id',
+          hidden: !wechatConfig?.enable_wechat_notify,
+        },
+        {
+          label: t('system.wechat.safe_enabled'),
+          span: 3,
+          dataIndex: 'safe_enabled',
+          render: (val) => <>{!!val ? t('common.open') : t('common.close')}</>,
+          hidden: !wechatConfig?.enable_wechat_notify,
+        },
+        {
+          label: t('system.wechat.proxy_ip'),
+          span: 3,
+          dataIndex: 'proxy_ip',
+          hidden: !wechatConfig?.enable_wechat_notify,
+        },
+      ];
+    }, [t, wechatConfig]);
+
   return (
-    <Card title={t('system.title.wechat')}>
+    <Card loading={loading} title={t('system.title.wechat')}>
       <section hidden={modifyFlag}>
-        <Descriptions>
-          <Descriptions.Item
-            label={t('system.wechat.enable_wechat_notify')}
-            span={3}
-          >
-            {wechatConfig?.enable_wechat_notify
-              ? t('common.open')
-              : t('common.close')}
-          </Descriptions.Item>
-          <Descriptions.Item label={t('system.wechat.corp_id')} span={3}>
-            {wechatConfig?.corp_id ?? '--'}
-          </Descriptions.Item>
-          <Descriptions.Item label={t('system.wechat.agent_id')} span={3}>
-            {wechatConfig?.agent_id ?? '--'}
-          </Descriptions.Item>
-          <Descriptions.Item label={t('system.wechat.safe_enabled')} span={3}>
-            {wechatConfig?.safe_enabled ? t('common.open') : t('common.close')}
-          </Descriptions.Item>
-          <Descriptions.Item label={t('system.wechat.proxy_ip')} span={3}>
-            {wechatConfig?.proxy_ip ?? '--'}
-          </Descriptions.Item>
-          <Descriptions.Item span={3}>
+        {renderReadOnlyModeConfig<IWeChatConfigurationResV1>({
+          data: wechatConfig ?? {},
+          columns: readonlyColumnsConfig,
+          extra: (
             <Space>
               <Popover
                 trigger="click"
@@ -173,79 +206,83 @@ const Wechat = () => {
                 {t('common.modify')}
               </Button>
             </Space>
-          </Descriptions.Item>
-        </Descriptions>
+          ),
+        })}
       </section>
-      <Form
-        {...PageFormLayout}
-        hidden={!modifyFlag}
-        form={form}
-        onFinish={submit}
-      >
-        <Form.Item
-          label={t('system.wechat.enable_wechat_notify')}
-          name="enable_wechat_notify"
-          valuePropName="checked"
-        >
-          <Switch />
-        </Form.Item>
-        <Form.Item
-          label={t('system.wechat.corp_id')}
-          name="corp_id"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label={t('system.wechat.corp_secret')}
-          name="corp_secret"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input.Password />
-        </Form.Item>
-        <Form.Item
-          label={t('system.wechat.agent_id')}
-          name="agent_id"
-          rules={[
-            {
-              required: true,
-            },
-            {
-              pattern: /^\d*$/,
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label={t('system.wechat.safe_enabled')}
-          name="safe_enabled"
-          valuePropName="checked"
-        >
-          <Switch />
-        </Form.Item>
-        <Form.Item label={t('system.wechat.proxy_ip')} name="proxy_ip">
-          <Input />
-        </Form.Item>
-        <Form.Item label=" " colon={false}>
-          <Space>
-            <Button htmlType="submit" type="primary" loading={submitLoading}>
-              {t('common.submit')}
-            </Button>
-            <Button disabled={submitLoading} onClick={modifyFinish}>
-              {t('common.cancel')}
-            </Button>
-          </Space>
-        </Form.Item>
-      </Form>
+      {renderEditingModeConfig({
+        switchField: (
+          <Form.Item
+            label={t('system.wechat.enable_wechat_notify')}
+            name="enable_wechat_notify"
+            valuePropName="checked"
+          >
+            <Switch />
+          </Form.Item>
+        ),
+        configField: (
+          <>
+            <Form.Item
+              label={t('system.wechat.corp_id')}
+              name="corp_id"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label={t('system.wechat.corp_secret')}
+              name="corp_secret"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input.Password />
+            </Form.Item>
+            <Form.Item
+              label={t('system.wechat.agent_id')}
+              name="agent_id"
+              rules={[
+                {
+                  required: true,
+                },
+                {
+                  pattern: /^\d*$/,
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label={t('system.wechat.safe_enabled')}
+              name="safe_enabled"
+              valuePropName="checked"
+            >
+              <Switch />
+            </Form.Item>
+            <Form.Item label={t('system.wechat.proxy_ip')} name="proxy_ip">
+              <Input />
+            </Form.Item>
+          </>
+        ),
+        submitButtonField: (
+          <Form.Item label=" " colon={false}>
+            <Space>
+              <Button htmlType="submit" type="primary" loading={submitLoading}>
+                {t('common.submit')}
+              </Button>
+              <Button disabled={submitLoading} onClick={modifyFinish}>
+                {t('common.cancel')}
+              </Button>
+            </Space>
+          </Form.Item>
+        ),
+        submit,
+      })}
     </Card>
   );
 };

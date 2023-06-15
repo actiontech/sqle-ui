@@ -97,5 +97,14 @@ describe('System/LdapConfig', () => {
     expect(screen.getByText('common.cancel').parentNode).not.toHaveAttribute(
       'disabled'
     );
+
+    fireEvent.click(screen.getByText('common.modify'));
+    fireEvent.click(screen.getByText('common.submit'));
+    await act(async () => jest.advanceTimersByTime(0));
+
+    expect(updateSpy).toBeCalledTimes(2);
+    expect(updateSpy).toBeCalledWith({
+      enable_ldap: false,
+    });
   });
 });

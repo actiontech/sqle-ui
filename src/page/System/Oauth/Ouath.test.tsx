@@ -79,5 +79,14 @@ describe('Oauth', () => {
 
     expect(container).toMatchSnapshot();
     expect(getConfigSpy).toBeCalledTimes(2);
+
+    await act(async () => jest.advanceTimersByTime(3000));
+    fireEvent.click(screen.getByText('common.modify'));
+    fireEvent.click(screen.getByText('common.submit'));
+    await act(async () => jest.advanceTimersByTime(0));
+    expect(updateSpy).toBeCalledTimes(2);
+    expect(updateSpy).toBeCalledWith({
+      enable_oauth2: false,
+    });
   });
 });
