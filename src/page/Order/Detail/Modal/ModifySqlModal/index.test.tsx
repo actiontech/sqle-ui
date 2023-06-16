@@ -13,12 +13,21 @@ import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
 import { SupportTheme } from '../../../../../theme';
 import { taskInfo, taskInfoErrorAuditLevel } from '../../__testData__';
 import { useDispatch, useSelector } from 'react-redux';
+import * as sqlFormatter from 'sql-formatter';
+import { selectOptionByIndex } from '../../../../../testUtils/customQuery';
 
 jest.mock('react-redux', () => {
   return {
     ...jest.requireActual('react-redux'),
     useSelector: jest.fn(),
     useDispatch: jest.fn(),
+  };
+});
+
+jest.mock('sql-formatter', () => {
+  return {
+    ...jest.requireActual('sql-formatter'),
+    format: jest.fn(),
   };
 });
 
@@ -447,5 +456,43 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
 
     fireEvent.click(screen.getByText('common.close'));
     expect(mockCancel).toBeCalledTimes(1);
+  });
+
+  test('should format sql when clicked format button', async () => {
+    const mockSqlFormatter = sqlFormatter.format as jest.Mock;
+    mockSqlFormatter.mockReturnValueOnce('SELECT * FROM table3;');
+    mockGetSqlContent();
+
+    renderWithTheme(
+      <ModifySqlModal
+        visible={true}
+        submit={jest.fn()}
+        cancel={jest.fn()}
+        sqlMode={WorkflowResV2ModeEnum.same_sqls}
+        currentOrderTasks={[taskInfoErrorAuditLevel]}
+      />
+    );
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    //same sql mode
+    fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
+      target: { value: 'select * from table2' },
+    });
+
+    await act(async () => {
+      fireEvent.click(screen.getByText('order.sqlInfo.format'));
+    });
+    expect(mockSqlFormatter).toBeCalledTimes(1);
+    expect(mockSqlFormatter).toBeCalledWith('select * from table2', {
+      language: 'sql',
+    });
+    expect(screen.getByLabelText('order.sqlInfo.sql')).toHaveValue(
+      'SELECT * FROM table3;'
+    );
+
+    fireEvent.click(screen.getByText('order.sqlInfo.uploadFile'));
+    fireEvent.click(screen.getByText('order.sqlInfo.format'));
+    expect(mockSqlFormatter).toBeCalledTimes(1);
   });
 });

@@ -8107,7 +8107,7 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
-nearley@^2.7.10:
+nearley@^2.20.1, nearley@^2.7.10:
   version "2.20.1"
   resolved "https://registry.yarnpkg.com/nearley/-/nearley-2.20.1.tgz#246cd33eff0d012faf197ff6774d7ac78acdd474"
   integrity sha512-+Mc8UaAebFzgV+KpI5n7DasuuQCHA89dmwm7JXw3TV43ukfNQ9DnBH3Mdb2g/I4Fdxc26pwimBWvjIw0UAILSQ==
@@ -10623,6 +10623,14 @@ sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==
+
+sql-formatter@^12.2.2:
+  version "12.2.2"
+  resolved "https://registry.yarnpkg.com/sql-formatter/-/sql-formatter-12.2.2.tgz#159129f69966e7c7bb826725473332c29de651e6"
+  integrity sha512-UBChSI2X6hd4GhmO+c7BmSFtc792FwogVaVqc9Y22/OqybvVfgl2OeAShc9fjivWVshXbm4UEK8WTM3tt+2Mvw==
+  dependencies:
+    argparse "^2.0.1"
+    nearley "^2.20.1"
 
 stable@^0.1.8:
   version "0.1.8"

@@ -25,6 +25,7 @@
     "react-monaco-editor": "^0.43.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.3.0",
+    "sql-formatter": "^12.2.2",
     "typescript": "^5.0.2",
     "use-resize-observer": "^9.0.2",
     "web-vitals": "^0.2.4"
@@ -50,9 +51,9 @@
     "enzyme-to-json": "^3.6.2",
     "jest-canvas-mock": "^2.2.0",
     "js-conditional-compile-loader": "^1.0.14",
+    "monaco-editor-webpack-plugin": "^7.0.1",
     "msw": "^0.29.0",
-    "react-scripts": "5.0.1",
-    "monaco-editor-webpack-plugin": "^7.0.1"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "craco start",

@@ -163,6 +163,7 @@ export default {
     updateMybatisFile: '上传Mybatis的XML文件',
 
     audit: '审核',
+    format: 'SQL美化',
   },
 
   modifySql: {

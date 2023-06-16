@@ -18,6 +18,9 @@ import EventEmitter from '../../../../../utils/EventEmitter';
 import { SQLInputType } from '../../index.enum';
 import { SqlInfoFormFields, SqlInfoFormProps } from '../index.type';
 import { useDispatch, useSelector } from 'react-redux';
+import * as sqlFormatter from 'sql-formatter';
+import { selectOptionByIndex } from '../../../../../testUtils/customQuery';
+import { mockGetInstance } from './common';
 
 jest.mock('react-redux', () => {
   return {
@@ -27,26 +30,12 @@ jest.mock('react-redux', () => {
   };
 });
 
-export const mockGetInstance = () => {
-  const spy = jest.spyOn(instance, 'getInstanceV2');
-  spy.mockImplementation(() =>
-    resolveThreeSecond({
-      instance_name: 'db1',
-      db_host: '20.20.20.2',
-      db_port: '3306',
-      db_user: 'root',
-      db_type: 'mysql',
-      desc: '',
-      workflow_template_name: 'workflow-template-name-1',
-      rule_template: {
-        name: 'not_submit_test_rule33',
-        is_global_rule_template: true,
-      },
-    })
-  );
-
-  return spy;
-};
+jest.mock('sql-formatter', () => {
+  return {
+    ...jest.requireActual('sql-formatter'),
+    format: jest.fn(),
+  };
+});
 
 describe('order/create/sqlInfoForm', () => {
   const mockSubmit = jest.fn();
@@ -77,6 +66,24 @@ describe('order/create/sqlInfoForm', () => {
     jest.useRealTimers();
     jest.clearAllMocks();
     jest.clearAllTimers();
+  });
+
+  const error = console.error;
+  beforeAll(() => {
+    console.error = jest.fn((message: any) => {
+      if (
+        message.includes(
+          'A component is changing an uncontrolled input to be controlled'
+        )
+      ) {
+        return;
+      }
+      error(message);
+    });
+  });
+
+  afterAll(() => {
+    console.error = error;
   });
 
   const mockCheckInstanceConnect = () => {
@@ -449,5 +456,66 @@ describe('order/create/sqlInfoForm', () => {
     expect(
       screen.getByText('dataSource.dataSourceForm.testFailed')
     ).toBeInTheDocument();
+  });
+
+  test('should format sql when clicked format button', async () => {
+    const mockSqlFormatter = sqlFormatter.format as jest.Mock;
+    mockSqlFormatter.mockReturnValueOnce('SELECT * FROM table3;');
+
+    renderComponent();
+    await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    //same sql mode
+    fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
+      target: { value: 'select * from table2' },
+    });
+
+    await act(async () => {
+      fireEvent.click(screen.getByText('order.sqlInfo.format'));
+    });
+    expect(mockSqlFormatter).toBeCalledTimes(1);
+    expect(mockSqlFormatter).toBeCalledWith('select * from table2', {
+      language: 'sql',
+    });
+    expect(screen.getByLabelText('order.sqlInfo.sql')).toHaveValue(
+      'SELECT * FROM table3;'
+    );
+
+    fireEvent.click(screen.getByText('order.sqlInfo.uploadFile'));
+    fireEvent.click(screen.getByText('order.sqlInfo.format'));
+    expect(mockSqlFormatter).toBeCalledTimes(1);
+
+    fireEvent.click(screen.getByText('order.sqlInfo.updateMybatisFile'));
+    fireEvent.click(screen.getByText('order.sqlInfo.format'));
+    expect(mockSqlFormatter).toBeCalledTimes(1);
+
+    //different sql mode
+    fireEvent.click(screen.getByLabelText('order.sqlInfo.isSameSqlOrder'));
+    selectOptionByIndex('order.sqlInfo.instanceName', 'instance1');
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    fireEvent.click(screen.getByText('order.sqlInfo.format'));
+    expect(mockSqlFormatter).toBeCalledTimes(1);
+
+    fireEvent.click(screen.getByText('order.sqlInfo.uploadFile'));
+    fireEvent.click(screen.getByText('order.sqlInfo.format'));
+    expect(mockSqlFormatter).toBeCalledTimes(1);
+
+    fireEvent.click(screen.getByText('order.sqlInfo.manualInput'));
+
+    await act(async () => {
+      fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
+        target: { value: 'select * from table4' },
+      });
+    });
+
+    await act(async () => {
+      fireEvent.click(screen.getByText('order.sqlInfo.format'));
+    });
+    expect(mockSqlFormatter).toBeCalledTimes(2);
+    expect(mockSqlFormatter).toBeCalledWith('select * from table4', {
+      language: 'sql',
+    });
   });
 });

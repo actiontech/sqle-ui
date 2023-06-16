@@ -10,7 +10,7 @@ import {
 import { RuleUrlParamKey } from '../../../../Rule/useRuleFilterForm';
 import DatabaseInfo from '../DatabaseInfo';
 import { renderHook } from '@testing-library/react-hooks';
-import { mockGetInstance } from './index.test';
+import { mockGetInstance } from './common';
 
 const selectOptionByIndex = (
   label: string,

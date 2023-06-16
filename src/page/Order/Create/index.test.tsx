@@ -26,7 +26,7 @@ import {
   taskSqls,
 } from '../Detail/__testData__';
 import { useDispatch, useSelector } from 'react-redux';
-import { mockGetInstance } from './SqlInfoForm/__test__/index.test';
+import { mockGetInstance } from './SqlInfoForm/__test__/common';
 
 const orderDescMaxLength = 3000;
 

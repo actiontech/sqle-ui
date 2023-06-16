@@ -17,12 +17,14 @@ import {
 } from '../../../../../data/common';
 import { DatabaseInfoFields } from '../../../Create/SqlInfoForm/index.type';
 import {
+  SQLInputType,
   SqlStatementFields,
   SqlStatementForm,
   SqlStatementFormTabs,
   SqlStatementFormTabsRefType,
 } from '../../../SqlStatementFormTabs';
 import { ModifySqlModalProps } from './index.type';
+import { format } from 'sql-formatter';
 
 const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
   currentOrderTasks = [],
@@ -76,6 +78,36 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
       );
     } finally {
       submitFinish();
+    }
+  };
+
+  const formatSql = async () => {
+    const params = await form.getFieldsValue();
+    if (sqlMode === WorkflowResV2ModeEnum.same_sqls) {
+      const sqlStatementInfo = params['0'] as SqlStatementFields;
+      if (sqlStatementInfo?.sqlInputType !== SQLInputType.manualInput) {
+        return;
+      }
+      form.setFields([
+        {
+          name: ['0', 'sql'],
+          value: format(sqlStatementInfo.sql, { language: 'sql' }),
+        },
+      ]);
+    } else {
+      const sqlStatementInfo = params[
+        sqlStatementFormTabsRef.current?.activeKey ?? ''
+      ] as SqlStatementFields;
+
+      if (sqlStatementInfo?.sqlInputType !== SQLInputType.manualInput) {
+        return;
+      }
+      form.setFields([
+        {
+          name: [sqlStatementFormTabsRef.current?.activeKey ?? '', 'sql'],
+          value: format(sqlStatementInfo.sql, { language: 'sql' }),
+        },
+      ]);
     }
   };
 
@@ -176,6 +208,12 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
               hideUpdateMybatisFile={true}
             />
           </EmptyBox>
+
+          <Form.Item label=" " colon={false} style={{ display: 'inline' }}>
+            <Button onClick={formatSql} loading={submitLoading}>
+              {t('order.sqlInfo.format')}
+            </Button>
+          </Form.Item>
         </Form>
       </Spin>
     </Modal>
