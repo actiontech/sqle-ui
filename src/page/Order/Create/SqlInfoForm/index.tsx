@@ -1,5 +1,5 @@
 import { useBoolean } from 'ahooks';
-import { Button, Form, Switch, SwitchProps } from 'antd';
+import { Button, Form, Space, Switch, SwitchProps } from 'antd';
 import React, {
   useCallback,
   useEffect,
@@ -8,7 +8,7 @@ import React, {
   useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { WorkflowResV1ModeEnum } from '../../../../api/common.enum';
+import { WorkflowResV2ModeEnum } from '../../../../api/common.enum';
 import instance from '../../../../api/instance';
 import { IBatchCheckInstanceIsConnectableByNameParams } from '../../../../api/instance/index.d';
 import EmptyBox from '../../../../components/EmptyBox';
@@ -17,19 +17,22 @@ import { ResponseCode, PageFormLayout } from '../../../../data/common';
 import EmitterKey from '../../../../data/EmitterKey';
 import EventEmitter from '../../../../utils/EventEmitter';
 import {
+  SQLInputType,
+  SqlStatementFields,
   SqlStatementForm,
   SqlStatementFormTabs,
   SqlStatementFormTabsRefType,
 } from '../../SqlStatementFormTabs';
 import DatabaseInfo from './DatabaseInfo';
 import { InstanceNamesType, SqlInfoFormProps } from './index.type';
+import { format } from 'sql-formatter';
 
 const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   const { t } = useTranslation();
   const alreadySubmit = useRef(false);
   const sqlStatementFormTabsRef = useRef<SqlStatementFormTabsRefType>(null);
   const [currentSqlMode, setCurrentSqlMode] = useState(
-    WorkflowResV1ModeEnum.same_sqls
+    WorkflowResV2ModeEnum.same_sqls
   );
 
   const [instanceNames, setInstanceNames] = useState<InstanceNamesType>(
@@ -107,8 +110,8 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
     props.clearTaskInfos();
     setCurrentSqlMode(
       flag
-        ? WorkflowResV1ModeEnum.same_sqls
-        : WorkflowResV1ModeEnum.different_sqls
+        ? WorkflowResV2ModeEnum.same_sqls
+        : WorkflowResV2ModeEnum.different_sqls
     );
   };
 
@@ -147,18 +150,48 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
         props.form.setFieldsValue({
           isSameSqlOrder: false,
         });
-        setCurrentSqlMode(WorkflowResV1ModeEnum.different_sqls);
+        setCurrentSqlMode(WorkflowResV2ModeEnum.different_sqls);
       }
     },
     [props.form]
   );
+
+  const formatSql = async () => {
+    const params = await props.form.getFieldsValue();
+    if (currentSqlMode === WorkflowResV2ModeEnum.same_sqls) {
+      const sqlStatementInfo = params['0'] as SqlStatementFields;
+      if (sqlStatementInfo?.sqlInputType !== SQLInputType.manualInput) {
+        return;
+      }
+      props.form.setFields([
+        {
+          name: ['0', 'sql'],
+          value: format(sqlStatementInfo.sql, { language: 'sql' }),
+        },
+      ]);
+    } else {
+      const sqlStatementInfo = params[
+        sqlStatementFormTabsRef.current?.activeKey ?? ''
+      ] as SqlStatementFields;
+
+      if (sqlStatementInfo?.sqlInputType !== SQLInputType.manualInput) {
+        return;
+      }
+      props.form.setFields([
+        {
+          name: [sqlStatementFormTabsRef.current?.activeKey ?? '', 'sql'],
+          value: format(sqlStatementInfo.sql, { language: 'sql' }),
+        },
+      ]);
+    }
+  };
 
   useEffect(() => {
     const resetAlreadySubmit = () => {
       alreadySubmit.current = false;
       setInstanceNames(new Map([[0, '']]));
       setConnectInitHideTrue();
-      setCurrentSqlMode(WorkflowResV1ModeEnum.same_sqls);
+      setCurrentSqlMode(WorkflowResV2ModeEnum.same_sqls);
     };
     EventEmitter.subscribe(
       EmitterKey.Reset_Create_Order_Form,
@@ -221,7 +254,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
 
         {/* IFTRUE_isEE */}
         <EmptyBox
-          if={WorkflowResV1ModeEnum.same_sqls === currentSqlMode}
+          if={WorkflowResV2ModeEnum.same_sqls === currentSqlMode}
           defaultNode={
             <SqlStatementFormTabs
               ref={sqlStatementFormTabsRef}
@@ -243,9 +276,14 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
         {/* FITRUE_isEE */}
 
         <Form.Item label=" " colon={false}>
-          <Button onClick={submit} type="primary" loading={submitLoading}>
-            {t('order.sqlInfo.audit')}
-          </Button>
+          <Space>
+            <Button onClick={submit} type="primary" loading={submitLoading}>
+              {t('order.sqlInfo.audit')}
+            </Button>
+            <Button onClick={formatSql} loading={submitLoading}>
+              {t('order.sqlInfo.format')}
+            </Button>
+          </Space>
         </Form.Item>
       </Form>
     </>

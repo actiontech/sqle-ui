@@ -223,6 +223,45 @@ exports[`Order/Detail/Modal/ModifySqlModal should send sql file when user upload
                         </div>
                       </div>
                     </div>
+                    <div
+                      class="ant-form-item"
+                      style="display: inline;"
+                    >
+                      <div
+                        class="ant-row ant-form-item-row"
+                      >
+                        <div
+                          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-7"
+                        >
+                          <label
+                            class="ant-form-item-no-colon"
+                            title=" "
+                          >
+                             
+                          </label>
+                        </div>
+                        <div
+                          class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-13"
+                        >
+                          <div
+                            class="ant-form-item-control-input"
+                          >
+                            <div
+                              class="ant-form-item-control-input-content"
+                            >
+                              <button
+                                class="ant-btn ant-btn-default"
+                                type="button"
+                              >
+                                <span>
+                                  order.sqlInfo.format
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </form>
                 </div>
               </div>

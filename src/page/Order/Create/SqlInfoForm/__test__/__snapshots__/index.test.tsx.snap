@@ -555,14 +555,35 @@ exports[`order/create/sqlInfoForm should match snapshot 1`] = `
             <div
               class="ant-form-item-control-input-content"
             >
-              <button
-                class="ant-btn ant-btn-primary"
-                type="button"
+              <div
+                class="ant-space ant-space-horizontal ant-space-align-center"
               >
-                <span>
-                  order.sqlInfo.audit
-                </span>
-              </button>
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
+                >
+                  <button
+                    class="ant-btn ant-btn-primary"
+                    type="button"
+                  >
+                    <span>
+                      order.sqlInfo.audit
+                    </span>
+                  </button>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  <button
+                    class="ant-btn ant-btn-default"
+                    type="button"
+                  >
+                    <span>
+                      order.sqlInfo.format
+                    </span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
