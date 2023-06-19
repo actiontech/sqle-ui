@@ -139,4 +139,12 @@ export default {
 
     range: '时间段',
   },
+
+  enterpriseFeatureDisplay: {
+    featureDescription: '功能说明',
+    additionalAttention: '更多关注',
+    businessLink:
+      '{{featureName}}为企业版功能。如您想使用该功能，可以通过以下链接联系我们。',
+    compareLink: '如您想了解更多关于企业版及社区版功能的差异，可参考用户手册：',
+  },
 };

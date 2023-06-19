@@ -149,8 +149,8 @@ export default {
 
   oauth: {
     ceTips:
-      'oauth登录为企业版功能。如果您要想使用这些功能，您可以按照以下链接中的商业支持里的联系方式进行咨询。',
-
+      '如果用户已有一套公司内的通用账号密码，想要用这套通用账号密码来登录SQLE时，用户可使用平台的OAuth2.0对接功能，开启并正确配置OAuth2.0，即可在SQLE登录界面使用第三方登录。\n由此，用户可以使用通用账号密码登录，无需额外再记录一套SQLE密码，可提高企业用户工作效率。',
+    featureName: '用户对接OAuth2.0',
     enable: '是否启用oauth登录',
     clientId: '应用 ID',
     clientIdTips:

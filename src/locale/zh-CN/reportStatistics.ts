@@ -1,7 +1,9 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
+  pageDesc:
+    '您可以在这里查看平台的整体情况，由此了解SQL审核效率以及提交的SQL质量。',
   ceTips:
-    '报表统计为企业版功能。如果您要想使用这些功能，您可以按照以下链接中的商业支持里的联系方式进行咨询。',
+    '如果管理员需要全面了解平台业务的审核进度以及平台的使用情况，可以使用报表统计功能。\n该功能提供多维度的业务分析视角，协助管理员了解工单的审核效率和提交的SQL质量，从而更高效、灵活地开展SQL审核工作。',
   title: '报表统计',
   titleTips: '当前页面统计信息不包含已被回收的数据',
   orderTotalNumbers: {

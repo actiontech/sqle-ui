@@ -86,36 +86,171 @@ exports[`test ReportStatistics should match snapshot 1`] = `
         </div>
       </span>
     </div>
+    <div
+      class="ant-page-header-content"
+    >
+      reportStatistics.pageDesc
+    </div>
   </div>
   <section
     class="padding-content"
   >
     <div
-      class="ant-card ant-card-bordered"
+      class="ant-card"
     >
       <div
         class="ant-card-body"
       >
-        reportStatistics.ceTips
         <div
-          class="ant-typography"
+          class="ant-space ant-space-vertical"
         >
-          <ul>
-            <li>
-              <a
-                href="https://actiontech.github.io/sqle-docs-cn/"
+          <div
+            class="ant-space-item"
+            style="margin-bottom: 26px;"
+          >
+            <article>
+              <h4
+                class="ant-typography"
               >
-                https://actiontech.github.io/sqle-docs-cn/
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.actionsky.com/"
+                common.enterpriseFeatureDisplay.featureDescription
+              </h4>
+              <span
+                class="ant-typography whitespace-pre-line"
               >
-                https://www.actionsky.com/
-              </a>
-            </li>
-          </ul>
+                <div
+                  class="ant-space ant-space-vertical"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-bottom: 8px;"
+                  >
+                    <span
+                      class="ant-typography"
+                    >
+                      reportStatistics.ceTips
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <div
+                      class="ant-image"
+                      style="width: 50%;"
+                    >
+                      <img
+                        alt="reportStatisticsPreview"
+                        class="ant-image-img"
+                        src="/static/image/report_statistics_preview.png"
+                        width="50%"
+                      />
+                      <div
+                        class="ant-image-mask"
+                      >
+                        <div
+                          class="ant-image-mask-info"
+                        >
+                          <span
+                            aria-label="eye"
+                            class="anticon anticon-eye"
+                            role="img"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="eye"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 000 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z"
+                              />
+                            </svg>
+                          </span>
+                          Preview
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </span>
+            </article>
+          </div>
+          <div
+            class="ant-space-item"
+          >
+            <article>
+              <div
+                class="ant-space ant-space-vertical"
+              >
+                <div
+                  class="ant-space-item"
+                  style="margin-bottom: 8px;"
+                >
+                  <h4
+                    class="ant-typography"
+                  >
+                    common.enterpriseFeatureDisplay.additionalAttention
+                  </h4>
+                </div>
+                <div
+                  class="ant-space-item"
+                  style="margin-bottom: 8px;"
+                >
+                  <span
+                    class="ant-typography"
+                  >
+                    common.enterpriseFeatureDisplay.businessLink
+                  </span>
+                </div>
+                <div
+                  class="ant-space-item"
+                  style="margin-bottom: 8px;"
+                >
+                  <ul>
+                    <li>
+                      <a
+                        href="https://actiontech.github.io/sqle-docs/docs/support/commercial-support"
+                      >
+                        https://actiontech.github.io/sqle-docs/docs/support/commercial-support
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.actionsky.com/"
+                      >
+                        https://www.actionsky.com/
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  class="ant-space-item"
+                  style="margin-bottom: 8px;"
+                >
+                  <span
+                    class="ant-typography"
+                  >
+                    common.enterpriseFeatureDisplay.compareLink
+                  </span>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  <ul>
+                    <li>
+                      <a
+                        href="https://actiontech.github.io/sqle-docs/docs/support/compare"
+                      >
+                        https://actiontech.github.io/sqle-docs/docs/support/compare
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </div>
@@ -1147,36 +1282,171 @@ exports[`test ReportStatistics should match snapshot 2`] = `
         </div>
       </span>
     </div>
+    <div
+      class="ant-page-header-content"
+    >
+      reportStatistics.pageDesc
+    </div>
   </div>
   <section
     class="padding-content"
   >
     <div
-      class="ant-card ant-card-bordered"
+      class="ant-card"
     >
       <div
         class="ant-card-body"
       >
-        reportStatistics.ceTips
         <div
-          class="ant-typography"
+          class="ant-space ant-space-vertical"
         >
-          <ul>
-            <li>
-              <a
-                href="https://actiontech.github.io/sqle-docs-cn/"
+          <div
+            class="ant-space-item"
+            style="margin-bottom: 26px;"
+          >
+            <article>
+              <h4
+                class="ant-typography"
               >
-                https://actiontech.github.io/sqle-docs-cn/
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.actionsky.com/"
+                common.enterpriseFeatureDisplay.featureDescription
+              </h4>
+              <span
+                class="ant-typography whitespace-pre-line"
               >
-                https://www.actionsky.com/
-              </a>
-            </li>
-          </ul>
+                <div
+                  class="ant-space ant-space-vertical"
+                >
+                  <div
+                    class="ant-space-item"
+                    style="margin-bottom: 8px;"
+                  >
+                    <span
+                      class="ant-typography"
+                    >
+                      reportStatistics.ceTips
+                    </span>
+                  </div>
+                  <div
+                    class="ant-space-item"
+                  >
+                    <div
+                      class="ant-image"
+                      style="width: 50%;"
+                    >
+                      <img
+                        alt="reportStatisticsPreview"
+                        class="ant-image-img"
+                        src="/static/image/report_statistics_preview.png"
+                        width="50%"
+                      />
+                      <div
+                        class="ant-image-mask"
+                      >
+                        <div
+                          class="ant-image-mask-info"
+                        >
+                          <span
+                            aria-label="eye"
+                            class="anticon anticon-eye"
+                            role="img"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              data-icon="eye"
+                              fill="currentColor"
+                              focusable="false"
+                              height="1em"
+                              viewBox="64 64 896 896"
+                              width="1em"
+                            >
+                              <path
+                                d="M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 000 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z"
+                              />
+                            </svg>
+                          </span>
+                          Preview
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </span>
+            </article>
+          </div>
+          <div
+            class="ant-space-item"
+          >
+            <article>
+              <div
+                class="ant-space ant-space-vertical"
+              >
+                <div
+                  class="ant-space-item"
+                  style="margin-bottom: 8px;"
+                >
+                  <h4
+                    class="ant-typography"
+                  >
+                    common.enterpriseFeatureDisplay.additionalAttention
+                  </h4>
+                </div>
+                <div
+                  class="ant-space-item"
+                  style="margin-bottom: 8px;"
+                >
+                  <span
+                    class="ant-typography"
+                  >
+                    common.enterpriseFeatureDisplay.businessLink
+                  </span>
+                </div>
+                <div
+                  class="ant-space-item"
+                  style="margin-bottom: 8px;"
+                >
+                  <ul>
+                    <li>
+                      <a
+                        href="https://actiontech.github.io/sqle-docs/docs/support/commercial-support"
+                      >
+                        https://actiontech.github.io/sqle-docs/docs/support/commercial-support
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.actionsky.com/"
+                      >
+                        https://www.actionsky.com/
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  class="ant-space-item"
+                  style="margin-bottom: 8px;"
+                >
+                  <span
+                    class="ant-typography"
+                  >
+                    common.enterpriseFeatureDisplay.compareLink
+                  </span>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  <ul>
+                    <li>
+                      <a
+                        href="https://actiontech.github.io/sqle-docs/docs/support/compare"
+                      >
+                        https://actiontech.github.io/sqle-docs/docs/support/compare
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </div>
