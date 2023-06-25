@@ -18,7 +18,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
-      - uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
+      - uses: artiomtr/jest-coverage-report-action@v2.0-rc.5
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           test-script: yarn test --coverage --watchAll=false --ci --silent --json --testLocationInResults --outputFile="report.json"
