@@ -2,31 +2,6 @@
 
 exports[`test SyncDataSource should match snapshot 1`] = `
 <Fragment>
-  <section
-    className="padding-content"
-  >
-    <ForwardRef>
-      syncDataSource.ceTips
-      <ForwardRef>
-        <ul>
-          <li>
-            <a
-              href="https://actiontech.github.io/sqle-docs-cn/"
-            >
-              https://actiontech.github.io/sqle-docs-cn/
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.actionsky.com/"
-            >
-              https://www.actionsky.com/
-            </a>
-          </li>
-        </ul>
-      </ForwardRef>
-    </ForwardRef>
-  </section>
   <article>
     <PageHeader
       ghost={false}
@@ -34,11 +9,16 @@ exports[`test SyncDataSource should match snapshot 1`] = `
     >
       syncDataSource.pageDesc
     </PageHeader>
-    <section
-      className="padding-content"
+    <EnterpriseFeatureDisplay
+      eeFeatureDescription="syncDataSource.ceTips"
+      featureName="syncDataSource.pageTitle"
     >
-      <Outlet />
-    </section>
+      <section
+        className="padding-content"
+      >
+        <Outlet />
+      </section>
+    </EnterpriseFeatureDisplay>
   </article>
 </Fragment>
 `;

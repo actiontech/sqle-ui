@@ -68,11 +68,11 @@ const OrderDetail = React.lazy(
 const OrderList = React.lazy(
   () => import(/* webpackChunkName: "Order" */ '../page/Order/List')
 );
-/* IFTRUE_isEE */
+
 const Whitelist = React.lazy(
   () => import(/* webpackChunkName: "Whitelist" */ '../page/Whitelist')
 );
-/* FITRUE_isEE */
+
 const WorkflowTemplate = React.lazy(
   () =>
     import(
@@ -495,7 +495,6 @@ export const projectDetailRouterConfig: RouterConfigItem<ProjectDetailRouterItem
         },
       ] as RouterConfigItem<ProjectDetailRouterItemKeyLiteral>[],
     },
-    /* IFTRUE_isEE */
     {
       path: 'whitelist',
       key: 'Whitelist',
@@ -503,6 +502,7 @@ export const projectDetailRouterConfig: RouterConfigItem<ProjectDetailRouterItem
       element: <Whitelist />,
       icon: <ProfileOutlined />,
     },
+    /* IFTRUE_isEE */
     {
       path: '*',
       key: 'projectRedirect',

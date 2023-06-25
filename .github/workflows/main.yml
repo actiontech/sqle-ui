@@ -17,8 +17,8 @@ jobs:
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v2
-      - uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
+      - uses: actions/checkout@v3
+      - uses: artiomtr/jest-coverage-report-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           test-script: yarn test --coverage --watchAll=false --ci --silent --json --testLocationInResults --outputFile="report.json"

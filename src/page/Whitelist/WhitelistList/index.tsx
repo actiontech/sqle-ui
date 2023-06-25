@@ -1,5 +1,14 @@
 import { useRequest } from 'ahooks';
-import { Button, Card, message, PageHeader, Space, Table } from 'antd';
+import {
+  Button,
+  Card,
+  Image,
+  message,
+  PageHeader,
+  Space,
+  Table,
+  Typography,
+} from 'antd';
 import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import auditWhitelist from '../../../api/audit_whitelist';
@@ -22,6 +31,7 @@ import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import useCurrentUser from '../../../hooks/useCurrentUser';
 import EmptyBox from '../../../components/EmptyBox';
 import { IReduxState } from '../../../store';
+import EnterpriseFeatureDisplay from '../../../components/EnterpriseFeatureDisplay/EnterpriseFeatureDisplay';
 
 const WhitelistList = () => {
   const { t } = useTranslation();
@@ -137,46 +147,62 @@ const WhitelistList = () => {
       <PageHeader title={t('whitelist.pageTitle')} ghost={false}>
         {t('whitelist.pageDesc')}
       </PageHeader>
-      <section className="padding-content">
-        <Card
-          title={
-            <Space>
-              {t('whitelist.allWhitelist')}
-              <Button onClick={refresh}>
-                <SyncOutlined spin={loading} />
-              </Button>
-            </Space>
-          }
-          extra={[
-            <EmptyBox
-              if={actionPermission && !projectIsArchive}
-              key="add-whitelist"
+      <EnterpriseFeatureDisplay
+        featureName={t('whitelist.pageTitle')}
+        eeFeatureDescription={
+          <Space direction="vertical">
+            <Typography.Text>{t('whitelist.ceTips')}</Typography.Text>
+            <Image
+              width="50%"
+              alt="reportStatisticsPreview"
+              src="/static/image/white_list_preview.png"
+            />
+          </Space>
+        }
+      >
+        <>
+          <section className="padding-content">
+            <Card
+              title={
+                <Space>
+                  {t('whitelist.allWhitelist')}
+                  <Button onClick={refresh}>
+                    <SyncOutlined spin={loading} />
+                  </Button>
+                </Space>
+              }
+              extra={[
+                <EmptyBox
+                  if={actionPermission && !projectIsArchive}
+                  key="add-whitelist"
+                >
+                  <Button type="primary" onClick={clickAddWhitelist}>
+                    {t('whitelist.operate.addWhitelist')}
+                  </Button>
+                </EmptyBox>,
+              ]}
             >
-              <Button type="primary" onClick={clickAddWhitelist}>
-                {t('whitelist.operate.addWhitelist')}
-              </Button>
-            </EmptyBox>,
-          ]}
-        >
-          <Table
-            loading={loading}
-            rowKey="audit_whitelist_id"
-            pagination={{
-              showSizeChanger: true,
-              total: whitelistList?.total,
-            }}
-            dataSource={whitelistList?.list}
-            columns={WhitelistColumn(
-              clickUpdateWhitelist,
-              removeWhitelist,
-              actionPermission,
-              projectIsArchive
-            )}
-            onChange={tableChange}
-          />
-        </Card>
-      </section>
-      <WhitelistModal />
+              <Table
+                loading={loading}
+                rowKey="audit_whitelist_id"
+                pagination={{
+                  showSizeChanger: true,
+                  total: whitelistList?.total,
+                }}
+                dataSource={whitelistList?.list}
+                columns={WhitelistColumn(
+                  clickUpdateWhitelist,
+                  removeWhitelist,
+                  actionPermission,
+                  projectIsArchive
+                )}
+                onChange={tableChange}
+              />
+            </Card>
+          </section>
+          <WhitelistModal />
+        </>
+      </EnterpriseFeatureDisplay>
     </>
   );
 };

@@ -17,3 +17,4 @@
 * [ ] [feature]: 全局配置添加 操作记录的过期时间配置项 <https://github.com/actiontech/sqle-ui/pull/281>
 * [ ] [feature]: 优化系统配置中开关的交互流程 <https://github.com/actiontech/sqle-ui/pull/283>
 * [ ] [feature]: 支持格式化 SQL 语句 <https://github.com/actiontech/sqle-ui/pull/284>
+* [ ] [feature]: 添加公共组件 EnterpriseFeatureDisplay 统一处理 ce 模式与 ee 模式下的某些页面的不同表现 <https://github.com/actiontech/sqle-ui/pull/285>
