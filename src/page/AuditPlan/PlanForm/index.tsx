@@ -15,6 +15,7 @@ import { nameRule } from '../../../utils/FormRule';
 import { AuditTaskType } from './AuditTaskType';
 import { DataSource, DataSourceProps } from './DataSource';
 import { PlanFormField, PlanFormProps } from './index.type';
+import FooterButtonWrapper from '../../../components/FooterButtonWrapper';
 
 const PlanForm: React.FC<PlanFormProps> = ({ form, ...props }) => {
   const { t } = useTranslation();
@@ -179,16 +180,14 @@ const PlanForm: React.FC<PlanFormProps> = ({ form, ...props }) => {
       >
         <CronInput />
       </Form.Item>
-      <Form.Item label=" " colon={false}>
-        <Space>
-          <Button htmlType="submit" type="primary" loading={submitLoading}>
-            {t('common.submit')}
-          </Button>
-          <Button onClick={resetForm} disabled={submitLoading}>
-            {t('common.reset')}
-          </Button>
-        </Space>
-      </Form.Item>
+      <FooterButtonWrapper>
+        <Button htmlType="submit" type="primary" loading={submitLoading}>
+          {t('common.submit')}
+        </Button>
+        <Button onClick={resetForm} disabled={submitLoading}>
+          {t('common.reset')}
+        </Button>
+      </FooterButtonWrapper>
     </Form>
   );
 };

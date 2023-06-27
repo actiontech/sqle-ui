@@ -34,6 +34,7 @@ import SqlInfoForm from './SqlInfoForm';
 import { SqlInfoFormFields } from './SqlInfoForm/index.type';
 import { Theme } from '@mui/material/styles';
 import { Link } from '../../../components/Link';
+import FooterButtonWrapper from '../../../components/FooterButtonWrapper';
 
 export const workflowNameRule = (): FormValidatorRule => {
   return (_, value) => {
@@ -262,62 +263,62 @@ const CreateOrder = () => {
               projectName={projectName}
             />
           </EmptyBox>
-          <Card className="text-align-right">
-            <Space>
-              <Button onClick={closeModalAndResetForm}>
-                {t('common.resetAll')}
-              </Button>
-              <EmptyBox
-                if={hasDirtyData}
-                defaultNode={
-                  <Tooltip
-                    title={
-                      isDisableFinallySubmitButton
-                        ? disabledOperatorOrderBtnTips
-                        : ''
-                    }
-                    overlayClassName="whitespace-pre-line"
-                  >
-                    <Button
-                      htmlType="submit"
-                      type="primary"
-                      onClick={create}
-                      disabled={isDisableFinallySubmitButton}
-                      loading={createLoading}
-                    >
-                      {t('order.createOrder.button')}
-                    </Button>
-                  </Tooltip>
-                }
-              >
-                <Popconfirm
-                  title={t('order.createOrder.dirtyDataTips')}
-                  onConfirm={create}
-                  overlayClassName="popconfirm-small"
-                  disabled={createLoading || isDisableFinallySubmitButton}
-                  placement="topRight"
+          {/* <Card className="text-align-right"> */}
+          <FooterButtonWrapper>
+            <Button onClick={closeModalAndResetForm}>
+              {t('common.resetAll')}
+            </Button>
+            <EmptyBox
+              if={hasDirtyData}
+              defaultNode={
+                <Tooltip
+                  title={
+                    isDisableFinallySubmitButton
+                      ? disabledOperatorOrderBtnTips
+                      : ''
+                  }
+                  overlayClassName="whitespace-pre-line"
                 >
-                  <Tooltip
-                    overlayClassName="whitespace-pre-line"
-                    title={
-                      isDisableFinallySubmitButton
-                        ? disabledOperatorOrderBtnTips
-                        : ''
-                    }
+                  <Button
+                    htmlType="submit"
+                    type="primary"
+                    onClick={create}
+                    disabled={isDisableFinallySubmitButton}
+                    loading={createLoading}
                   >
-                    <Button
-                      htmlType="submit"
-                      type="primary"
-                      loading={createLoading}
-                      disabled={isDisableFinallySubmitButton}
-                    >
-                      {t('order.createOrder.button')}
-                    </Button>
-                  </Tooltip>
-                </Popconfirm>
-              </EmptyBox>
-            </Space>
-          </Card>
+                    {t('order.createOrder.button')}
+                  </Button>
+                </Tooltip>
+              }
+            >
+              <Popconfirm
+                title={t('order.createOrder.dirtyDataTips')}
+                onConfirm={create}
+                overlayClassName="popconfirm-small"
+                disabled={createLoading || isDisableFinallySubmitButton}
+                placement="topRight"
+              >
+                <Tooltip
+                  overlayClassName="whitespace-pre-line"
+                  title={
+                    isDisableFinallySubmitButton
+                      ? disabledOperatorOrderBtnTips
+                      : ''
+                  }
+                >
+                  <Button
+                    htmlType="submit"
+                    type="primary"
+                    loading={createLoading}
+                    disabled={isDisableFinallySubmitButton}
+                  >
+                    {t('order.createOrder.button')}
+                  </Button>
+                </Tooltip>
+              </Popconfirm>
+            </EmptyBox>
+          </FooterButtonWrapper>
+          {/* </Card> */}
         </Space>
       </section>
       <Modal

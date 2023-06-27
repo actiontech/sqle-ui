@@ -964,56 +964,61 @@ exports[`progressConfig should match snapshot with default data 1`] = `
     <div
       class="ant-space-item"
     >
-      <div
-        class="ant-row"
+      <section
+        class="footer-button-wrapper inside-the-project-footer-button-wrapper"
       >
         <div
-          class="ant-col ant-col-offset-13"
+          class="ant-card ant-card-bordered"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-card-body"
+            style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
           >
             <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
+              class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
             >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.prevStep
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.prevStep
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.reset
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              <button
-                class="ant-btn ant-btn-primary"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.reset
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <button
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    common.submit
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -1345,56 +1350,61 @@ exports[`progressConfig should match snapshot without default data 1`] = `
     <div
       class="ant-space-item"
     >
-      <div
-        class="ant-row"
+      <section
+        class="footer-button-wrapper inside-the-project-footer-button-wrapper"
       >
         <div
-          class="ant-col ant-col-offset-13"
+          class="ant-card ant-card-bordered"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-card-body"
+            style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
           >
             <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
+              class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
             >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.prevStep
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.prevStep
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.reset
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              <button
-                class="ant-btn ant-btn-primary"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.reset
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <button
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    common.submit
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -2345,57 +2355,62 @@ exports[`progressConfig should move a step and step error index if step which wa
     <div
       class="ant-space-item"
     >
-      <div
-        class="ant-row"
+      <section
+        class="footer-button-wrapper inside-the-project-footer-button-wrapper"
       >
         <div
-          class="ant-col ant-col-offset-13"
+          class="ant-card ant-card-bordered"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-card-body"
+            style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
           >
             <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
+              class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
             >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.prevStep
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.prevStep
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.reset
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              <button
-                ant-click-animating-without-extra-node="false"
-                class="ant-btn ant-btn-primary"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.reset
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <button
+                  ant-click-animating-without-extra-node="false"
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    common.submit
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -3346,57 +3361,62 @@ exports[`progressConfig should move a step and step error index if step which wa
     <div
       class="ant-space-item"
     >
-      <div
-        class="ant-row"
+      <section
+        class="footer-button-wrapper inside-the-project-footer-button-wrapper"
       >
         <div
-          class="ant-col ant-col-offset-13"
+          class="ant-card ant-card-bordered"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-card-body"
+            style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
           >
             <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
+              class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
             >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.prevStep
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.prevStep
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.reset
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              <button
-                ant-click-animating-without-extra-node="false"
-                class="ant-btn ant-btn-primary"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.reset
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <button
+                  ant-click-animating-without-extra-node="false"
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    common.submit
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -4347,57 +4367,62 @@ exports[`progressConfig should move a step and step error index if step which wa
     <div
       class="ant-space-item"
     >
-      <div
-        class="ant-row"
+      <section
+        class="footer-button-wrapper inside-the-project-footer-button-wrapper"
       >
         <div
-          class="ant-col ant-col-offset-13"
+          class="ant-card ant-card-bordered"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-card-body"
+            style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
           >
             <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
+              class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
             >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.prevStep
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.prevStep
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.reset
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              <button
-                ant-click-animating-without-extra-node="false"
-                class="ant-btn ant-btn-primary"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.reset
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <button
+                  ant-click-animating-without-extra-node="false"
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    common.submit
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -5346,57 +5371,62 @@ exports[`progressConfig should remove step and remove error step index if step w
     <div
       class="ant-space-item"
     >
-      <div
-        class="ant-row"
+      <section
+        class="footer-button-wrapper inside-the-project-footer-button-wrapper"
       >
         <div
-          class="ant-col ant-col-offset-13"
+          class="ant-card ant-card-bordered"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-card-body"
+            style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
           >
             <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
+              class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
             >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.prevStep
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.prevStep
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.reset
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              <button
-                ant-click-animating-without-extra-node="false"
-                class="ant-btn ant-btn-primary"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.reset
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <button
+                  ant-click-animating-without-extra-node="false"
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    common.submit
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -6039,57 +6069,62 @@ exports[`progressConfig should remove step and remove error step index if step w
     <div
       class="ant-space-item"
     >
-      <div
-        class="ant-row"
+      <section
+        class="footer-button-wrapper inside-the-project-footer-button-wrapper"
       >
         <div
-          class="ant-col ant-col-offset-13"
+          class="ant-card ant-card-bordered"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-card-body"
+            style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
           >
             <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
+              class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
             >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.prevStep
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.prevStep
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.reset
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              <button
-                ant-click-animating-without-extra-node="false"
-                class="ant-btn ant-btn-primary"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.reset
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <button
+                  ant-click-animating-without-extra-node="false"
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    common.submit
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -7380,57 +7415,62 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
     <div
       class="ant-space-item"
     >
-      <div
-        class="ant-row"
+      <section
+        class="footer-button-wrapper inside-the-project-footer-button-wrapper"
       >
         <div
-          class="ant-col ant-col-offset-13"
+          class="ant-card ant-card-bordered"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-card-body"
+            style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
           >
             <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
+              class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
             >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.prevStep
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.prevStep
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.reset
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              <button
-                ant-click-animating-without-extra-node="false"
-                class="ant-btn ant-btn-primary"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.reset
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <button
+                  ant-click-animating-without-extra-node="false"
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    common.submit
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -7763,57 +7803,62 @@ exports[`progressConfig should reset all fields when dispatch reset workflow tem
     <div
       class="ant-space-item"
     >
-      <div
-        class="ant-row"
+      <section
+        class="footer-button-wrapper inside-the-project-footer-button-wrapper"
       >
         <div
-          class="ant-col ant-col-offset-13"
+          class="ant-card ant-card-bordered"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-card-body"
+            style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
           >
             <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
+              class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
             >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.prevStep
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.prevStep
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.reset
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              <button
-                ant-click-animating-without-extra-node="false"
-                class="ant-btn ant-btn-primary"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.reset
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <button
+                  ant-click-animating-without-extra-node="false"
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    common.submit
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -8492,57 +8537,62 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
     <div
       class="ant-space-item"
     >
-      <div
-        class="ant-row"
+      <section
+        class="footer-button-wrapper inside-the-project-footer-button-wrapper"
       >
         <div
-          class="ant-col ant-col-offset-13"
+          class="ant-card ant-card-bordered"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-card-body"
+            style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
           >
             <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
+              class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
             >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.prevStep
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.prevStep
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.reset
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              <button
-                ant-click-animating-without-extra-node="false"
-                class="ant-btn ant-btn-primary"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.reset
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <button
+                  ant-click-animating-without-extra-node="false"
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    common.submit
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -8876,58 +8926,63 @@ exports[`progressConfig should set approved_by_authorized to true when user sele
     <div
       class="ant-space-item"
     >
-      <div
-        class="ant-row"
+      <section
+        class="footer-button-wrapper inside-the-project-footer-button-wrapper"
       >
         <div
-          class="ant-col ant-col-offset-13"
+          class="ant-card ant-card-bordered"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-card-body"
+            style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
           >
             <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
+              class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
             >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.prevStep
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <button
-                ant-click-animating-without-extra-node="false"
-                class="ant-btn ant-btn-default"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.prevStep
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.reset
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              <button
-                ant-click-animating-without-extra-node="false"
-                class="ant-btn ant-btn-primary"
-                type="button"
+                <button
+                  ant-click-animating-without-extra-node="false"
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.reset
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <button
+                  ant-click-animating-without-extra-node="false"
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    common.submit
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -9606,57 +9661,62 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
     <div
       class="ant-space-item"
     >
-      <div
-        class="ant-row"
+      <section
+        class="footer-button-wrapper inside-the-project-footer-button-wrapper"
       >
         <div
-          class="ant-col ant-col-offset-13"
+          class="ant-card ant-card-bordered"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-card-body"
+            style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
           >
             <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
+              class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
             >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.prevStep
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.prevStep
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.reset
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              <button
-                ant-click-animating-without-extra-node="false"
-                class="ant-btn ant-btn-primary"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.reset
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <button
+                  ant-click-animating-without-extra-node="false"
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    common.submit
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -9990,58 +10050,63 @@ exports[`progressConfig should set execute_by_authorized to true when user selec
     <div
       class="ant-space-item"
     >
-      <div
-        class="ant-row"
+      <section
+        class="footer-button-wrapper inside-the-project-footer-button-wrapper"
       >
         <div
-          class="ant-col ant-col-offset-13"
+          class="ant-card ant-card-bordered"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-card-body"
+            style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
           >
             <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
+              class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
             >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.prevStep
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <button
-                ant-click-animating-without-extra-node="false"
-                class="ant-btn ant-btn-default"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.prevStep
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.reset
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              <button
-                ant-click-animating-without-extra-node="false"
-                class="ant-btn ant-btn-primary"
-                type="button"
+                <button
+                  ant-click-animating-without-extra-node="false"
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.reset
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <button
+                  ant-click-animating-without-extra-node="false"
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    common.submit
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -10407,57 +10472,62 @@ exports[`progressConfig should update username and remove error tips if error ex
     <div
       class="ant-space-item"
     >
-      <div
-        class="ant-row"
+      <section
+        class="footer-button-wrapper inside-the-project-footer-button-wrapper"
       >
         <div
-          class="ant-col ant-col-offset-13"
+          class="ant-card ant-card-bordered"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-card-body"
+            style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
           >
             <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
+              class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
             >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.prevStep
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.prevStep
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.reset
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              <button
-                ant-click-animating-without-extra-node="false"
-                class="ant-btn ant-btn-primary"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.reset
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <button
+                  ant-click-animating-without-extra-node="false"
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    common.submit
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -10826,57 +10896,62 @@ exports[`progressConfig should update username and remove error tips if error ex
     <div
       class="ant-space-item"
     >
-      <div
-        class="ant-row"
+      <section
+        class="footer-button-wrapper inside-the-project-footer-button-wrapper"
       >
         <div
-          class="ant-col ant-col-offset-13"
+          class="ant-card ant-card-bordered"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-card-body"
+            style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
           >
             <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
+              class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
             >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.prevStep
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.prevStep
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.reset
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              <button
-                ant-click-animating-without-extra-node="true"
-                class="ant-btn ant-btn-primary"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.reset
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <button
+                  ant-click-animating-without-extra-node="true"
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    common.submit
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -11553,57 +11628,62 @@ exports[`progressConfig should update username and remove error tips if error ex
     <div
       class="ant-space-item"
     >
-      <div
-        class="ant-row"
+      <section
+        class="footer-button-wrapper inside-the-project-footer-button-wrapper"
       >
         <div
-          class="ant-col ant-col-offset-13"
+          class="ant-card ant-card-bordered"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-card-body"
+            style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
           >
             <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
+              class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
             >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.prevStep
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.prevStep
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.reset
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              <button
-                ant-click-animating-without-extra-node="false"
-                class="ant-btn ant-btn-primary"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.reset
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <button
+                  ant-click-animating-without-extra-node="false"
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    common.submit
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -12283,57 +12363,62 @@ exports[`progressConfig should update username and remove error tips if error ex
     <div
       class="ant-space-item"
     >
-      <div
-        class="ant-row"
+      <section
+        class="footer-button-wrapper inside-the-project-footer-button-wrapper"
       >
         <div
-          class="ant-col ant-col-offset-13"
+          class="ant-card ant-card-bordered"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-card-body"
+            style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
           >
             <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
+              class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
             >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.prevStep
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.prevStep
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.reset
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              <button
-                ant-click-animating-without-extra-node="true"
-                class="ant-btn ant-btn-primary"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.reset
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <button
+                  ant-click-animating-without-extra-node="true"
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    common.submit
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>
@@ -12667,58 +12752,63 @@ exports[`progressConfig should validate step and update progress config when use
     <div
       class="ant-space-item"
     >
-      <div
-        class="ant-row"
+      <section
+        class="footer-button-wrapper inside-the-project-footer-button-wrapper"
       >
         <div
-          class="ant-col ant-col-offset-13"
+          class="ant-card ant-card-bordered"
         >
           <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
+            class="ant-card-body"
+            style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
           >
             <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
+              class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
             >
-              <button
-                class="ant-btn ant-btn-default"
-                type="button"
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.prevStep
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-              style="margin-right: 8px;"
-            >
-              <button
-                ant-click-animating-without-extra-node="false"
-                class="ant-btn ant-btn-default"
-                type="button"
+                <button
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.prevStep
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-right: 8px;"
               >
-                <span>
-                  common.reset
-                </span>
-              </button>
-            </div>
-            <div
-              class="ant-space-item"
-            >
-              <button
-                ant-click-animating-without-extra-node="false"
-                class="ant-btn ant-btn-primary"
-                type="button"
+                <button
+                  ant-click-animating-without-extra-node="false"
+                  class="ant-btn ant-btn-default"
+                  type="button"
+                >
+                  <span>
+                    common.reset
+                  </span>
+                </button>
+              </div>
+              <div
+                class="ant-space-item"
               >
-                <span>
-                  common.submit
-                </span>
-              </button>
+                <button
+                  ant-click-animating-without-extra-node="false"
+                  class="ant-btn ant-btn-primary"
+                  type="button"
+                >
+                  <span>
+                    common.submit
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </div>

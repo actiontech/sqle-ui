@@ -2594,43 +2594,48 @@ use aaab;
       <div
         class="ant-space-item"
       >
-        <div
-          class="ant-card ant-card-bordered text-align-right"
+        <section
+          class="footer-button-wrapper inside-the-project-footer-button-wrapper"
         >
           <div
-            class="ant-card-body"
+            class="ant-card ant-card-bordered"
           >
             <div
-              class="ant-space ant-space-horizontal ant-space-align-center"
+              class="ant-card-body"
+              style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
             >
               <div
-                class="ant-space-item"
-                style="margin-right: 8px;"
+                class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
               >
-                <button
-                  class="ant-btn ant-btn-default"
-                  type="button"
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
                 >
-                  <span>
-                    common.resetAll
-                  </span>
-                </button>
-              </div>
-              <div
-                class="ant-space-item"
-              >
-                <button
-                  class="ant-btn ant-btn-primary"
-                  type="submit"
+                  <button
+                    class="ant-btn ant-btn-default"
+                    type="button"
+                  >
+                    <span>
+                      common.resetAll
+                    </span>
+                  </button>
+                </div>
+                <div
+                  class="ant-space-item"
                 >
-                  <span>
-                    order.createOrder.button
-                  </span>
-                </button>
+                  <button
+                    class="ant-btn ant-btn-primary"
+                    type="submit"
+                  >
+                    <span>
+                      order.createOrder.button
+                    </span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   </section>
@@ -4249,43 +4254,48 @@ exports[`Order/Create should audit sql when user click audit button 2`] = `
       <div
         class="ant-space-item"
       >
-        <div
-          class="ant-card ant-card-bordered text-align-right"
+        <section
+          class="footer-button-wrapper inside-the-project-footer-button-wrapper"
         >
           <div
-            class="ant-card-body"
+            class="ant-card ant-card-bordered"
           >
             <div
-              class="ant-space ant-space-horizontal ant-space-align-center"
+              class="ant-card-body"
+              style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
             >
               <div
-                class="ant-space-item"
-                style="margin-right: 8px;"
+                class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
               >
-                <button
-                  class="ant-btn ant-btn-default"
-                  type="button"
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
                 >
-                  <span>
-                    common.resetAll
-                  </span>
-                </button>
-              </div>
-              <div
-                class="ant-space-item"
-              >
-                <button
-                  class="ant-btn ant-btn-primary"
-                  type="submit"
+                  <button
+                    class="ant-btn ant-btn-default"
+                    type="button"
+                  >
+                    <span>
+                      common.resetAll
+                    </span>
+                  </button>
+                </div>
+                <div
+                  class="ant-space-item"
                 >
-                  <span>
-                    order.createOrder.button
-                  </span>
-                </button>
+                  <button
+                    class="ant-btn ant-btn-primary"
+                    type="submit"
+                  >
+                    <span>
+                      order.createOrder.button
+                    </span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   </section>
@@ -5163,43 +5173,48 @@ exports[`Order/Create should render page header 1`] = `
         <div
           class="ant-space-item"
         >
-          <div
-            class="ant-card ant-card-bordered text-align-right"
+          <section
+            class="footer-button-wrapper inside-the-project-footer-button-wrapper"
           >
             <div
-              class="ant-card-body"
+              class="ant-card ant-card-bordered"
             >
               <div
-                class="ant-space ant-space-horizontal ant-space-align-center"
+                class="ant-card-body"
+                style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
               >
                 <div
-                  class="ant-space-item"
-                  style="margin-right: 8px;"
+                  class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
                 >
-                  <button
-                    class="ant-btn ant-btn-default"
-                    type="button"
+                  <div
+                    class="ant-space-item"
+                    style="margin-right: 8px;"
                   >
-                    <span>
-                      common.resetAll
-                    </span>
-                  </button>
-                </div>
-                <div
-                  class="ant-space-item"
-                >
-                  <button
-                    class="ant-btn ant-btn-primary"
-                    type="submit"
+                    <button
+                      class="ant-btn ant-btn-default"
+                      type="button"
+                    >
+                      <span>
+                        common.resetAll
+                      </span>
+                    </button>
+                  </div>
+                  <div
+                    class="ant-space-item"
                   >
-                    <span>
-                      order.createOrder.button
-                    </span>
-                  </button>
+                    <button
+                      class="ant-btn ant-btn-primary"
+                      type="submit"
+                    >
+                      <span>
+                        order.createOrder.button
+                      </span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </section>
@@ -5995,44 +6010,49 @@ exports[`Order/Create should render result modal when created order 1`] = `
       <div
         class="ant-space-item"
       >
-        <div
-          class="ant-card ant-card-bordered text-align-right"
+        <section
+          class="footer-button-wrapper inside-the-project-footer-button-wrapper"
         >
           <div
-            class="ant-card-body"
+            class="ant-card ant-card-bordered"
           >
             <div
-              class="ant-space ant-space-horizontal ant-space-align-center"
+              class="ant-card-body"
+              style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
             >
               <div
-                class="ant-space-item"
-                style="margin-right: 8px;"
+                class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
               >
-                <button
-                  class="ant-btn ant-btn-default"
-                  type="button"
+                <div
+                  class="ant-space-item"
+                  style="margin-right: 8px;"
                 >
-                  <span>
-                    common.resetAll
-                  </span>
-                </button>
-              </div>
-              <div
-                class="ant-space-item"
-              >
-                <button
-                  ant-click-animating-without-extra-node="true"
-                  class="ant-btn ant-btn-primary"
-                  type="submit"
+                  <button
+                    class="ant-btn ant-btn-default"
+                    type="button"
+                  >
+                    <span>
+                      common.resetAll
+                    </span>
+                  </button>
+                </div>
+                <div
+                  class="ant-space-item"
                 >
-                  <span>
-                    order.createOrder.button
-                  </span>
-                </button>
+                  <button
+                    ant-click-animating-without-extra-node="true"
+                    class="ant-btn ant-btn-primary"
+                    type="submit"
+                  >
+                    <span>
+                      order.createOrder.button
+                    </span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   </section>

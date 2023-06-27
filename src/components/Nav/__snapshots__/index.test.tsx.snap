@@ -31,7 +31,7 @@ exports[`Nav should render page by props of username 1`] = `
                     alt=""
                     src="test"
                   />
-                  Action SQLE
+                  common.defaultEEWebTitle
                 </div>
               </a>
             </div>
@@ -297,7 +297,7 @@ exports[`Nav should render page by props of username 2`] = `
                     alt=""
                     src="test"
                   />
-                  Action SQLE
+                  common.defaultEEWebTitle
                 </div>
               </a>
             </div>

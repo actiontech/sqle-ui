@@ -24,6 +24,7 @@ import {
 } from '../../../api/common.enum';
 import useGlobalRuleTemplate from '../../../hooks/useGlobalRuleTemplate';
 import IconTipsLabel from '../../../components/IconTipsLabel';
+import FooterButtonWrapper from '../../../components/FooterButtonWrapper';
 
 const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
   const { t } = useTranslation();
@@ -262,16 +263,14 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
           })}
         </Select>
       </Form.Item>
-      <Form.Item label=" " colon={false}>
-        <Space>
-          <EmptyBox if={!isUpdate}>
-            <Button onClick={reset}>{t('common.reset')}</Button>
-          </EmptyBox>
-          <Button type="primary" onClick={submit} loading={loading}>
-            {t('common.submit')}
-          </Button>
-        </Space>
-      </Form.Item>
+      <FooterButtonWrapper>
+        <EmptyBox if={!isUpdate}>
+          <Button onClick={reset}>{t('common.reset')}</Button>
+        </EmptyBox>
+        <Button type="primary" onClick={submit} loading={loading}>
+          {t('common.submit')}
+        </Button>
+      </FooterButtonWrapper>
     </Form>
   );
 };

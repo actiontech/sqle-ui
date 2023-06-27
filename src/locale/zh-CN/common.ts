@@ -53,6 +53,8 @@ export default {
   success: '成功',
   fail: '失败',
 
+  defaultEEWebTitle: 'SQLE企业版',
+
   theme: {
     light: '明亮模式',
     dark: '暗黑模式',

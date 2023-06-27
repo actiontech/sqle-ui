@@ -18,7 +18,7 @@ exports[`Login should render login form 1`] = `
       <div
         class="login-page-powered-title"
       >
-        Action SQLE
+        common.defaultEEWebTitle
       </div>
     </div>
     <div
@@ -221,7 +221,7 @@ exports[`Login should render login form 2`] = `
       <div
         class="login-page-powered-title"
       >
-        Action SQLE
+        common.defaultEEWebTitle
       </div>
     </div>
     <div

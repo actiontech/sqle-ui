@@ -260,65 +260,48 @@ exports[`UpdateWorkflowTemplate should match snapshot 1`] = `
                   </div>
                 </div>
               </div>
-              <div
-                class="ant-form-item"
+              <section
+                class="footer-button-wrapper inside-the-project-footer-button-wrapper"
               >
                 <div
-                  class="ant-row ant-form-item-row"
+                  class="ant-card ant-card-bordered"
                 >
                   <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-                  >
-                    <label
-                      class="ant-form-item-no-colon"
-                      title=" "
-                    >
-                       
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                    class="ant-card-body"
+                    style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
                   >
                     <div
-                      class="ant-form-item-control-input"
+                      class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
                     >
                       <div
-                        class="ant-form-item-control-input-content"
+                        class="ant-space-item"
+                        style="margin-right: 8px;"
                       >
-                        <div
-                          class="ant-space ant-space-horizontal ant-space-align-center"
+                        <button
+                          class="ant-btn ant-btn-default"
+                          type="button"
                         >
-                          <div
-                            class="ant-space-item"
-                            style="margin-right: 8px;"
-                          >
-                            <button
-                              class="ant-btn ant-btn-default"
-                              type="button"
-                            >
-                              <span>
-                                common.reset
-                              </span>
-                            </button>
-                          </div>
-                          <div
-                            class="ant-space-item"
-                          >
-                            <button
-                              class="ant-btn ant-btn-primary"
-                              type="button"
-                            >
-                              <span>
-                                common.nextStep
-                              </span>
-                            </button>
-                          </div>
-                        </div>
+                          <span>
+                            common.reset
+                          </span>
+                        </button>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <button
+                          class="ant-btn ant-btn-primary"
+                          type="button"
+                        >
+                          <span>
+                            common.nextStep
+                          </span>
+                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </section>
             </form>
           </div>
         </div>
@@ -654,56 +637,61 @@ exports[`UpdateWorkflowTemplate should match snapshot 1`] = `
               <div
                 class="ant-space-item"
               >
-                <div
-                  class="ant-row"
+                <section
+                  class="footer-button-wrapper inside-the-project-footer-button-wrapper"
                 >
                   <div
-                    class="ant-col ant-col-offset-13"
+                    class="ant-card ant-card-bordered"
                   >
                     <div
-                      class="ant-space ant-space-horizontal ant-space-align-center"
+                      class="ant-card-body"
+                      style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
                     >
                       <div
-                        class="ant-space-item"
-                        style="margin-right: 8px;"
+                        class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
                       >
-                        <button
-                          class="ant-btn ant-btn-default"
-                          type="button"
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 8px;"
                         >
-                          <span>
-                            common.prevStep
-                          </span>
-                        </button>
-                      </div>
-                      <div
-                        class="ant-space-item"
-                        style="margin-right: 8px;"
-                      >
-                        <button
-                          class="ant-btn ant-btn-default"
-                          type="button"
+                          <button
+                            class="ant-btn ant-btn-default"
+                            type="button"
+                          >
+                            <span>
+                              common.prevStep
+                            </span>
+                          </button>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 8px;"
                         >
-                          <span>
-                            common.reset
-                          </span>
-                        </button>
-                      </div>
-                      <div
-                        class="ant-space-item"
-                      >
-                        <button
-                          class="ant-btn ant-btn-primary"
-                          type="button"
+                          <button
+                            class="ant-btn ant-btn-default"
+                            type="button"
+                          >
+                            <span>
+                              common.reset
+                            </span>
+                          </button>
+                        </div>
+                        <div
+                          class="ant-space-item"
                         >
-                          <span>
-                            common.submit
-                          </span>
-                        </button>
+                          <button
+                            class="ant-btn ant-btn-primary"
+                            type="button"
+                          >
+                            <span>
+                              common.submit
+                            </span>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </section>
               </div>
             </div>
           </div>
@@ -1031,65 +1019,48 @@ exports[`UpdateWorkflowTemplate should match snapshot 2`] = `
                   </div>
                 </div>
               </div>
-              <div
-                class="ant-form-item"
+              <section
+                class="footer-button-wrapper inside-the-project-footer-button-wrapper"
               >
                 <div
-                  class="ant-row ant-form-item-row"
+                  class="ant-card ant-card-bordered"
                 >
                   <div
-                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-                  >
-                    <label
-                      class="ant-form-item-no-colon"
-                      title=" "
-                    >
-                       
-                    </label>
-                  </div>
-                  <div
-                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                    class="ant-card-body"
+                    style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
                   >
                     <div
-                      class="ant-form-item-control-input"
+                      class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
                     >
                       <div
-                        class="ant-form-item-control-input-content"
+                        class="ant-space-item"
+                        style="margin-right: 8px;"
                       >
-                        <div
-                          class="ant-space ant-space-horizontal ant-space-align-center"
+                        <button
+                          class="ant-btn ant-btn-default"
+                          type="button"
                         >
-                          <div
-                            class="ant-space-item"
-                            style="margin-right: 8px;"
-                          >
-                            <button
-                              class="ant-btn ant-btn-default"
-                              type="button"
-                            >
-                              <span>
-                                common.reset
-                              </span>
-                            </button>
-                          </div>
-                          <div
-                            class="ant-space-item"
-                          >
-                            <button
-                              class="ant-btn ant-btn-primary"
-                              type="button"
-                            >
-                              <span>
-                                common.nextStep
-                              </span>
-                            </button>
-                          </div>
-                        </div>
+                          <span>
+                            common.reset
+                          </span>
+                        </button>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <button
+                          class="ant-btn ant-btn-primary"
+                          type="button"
+                        >
+                          <span>
+                            common.nextStep
+                          </span>
+                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </section>
             </form>
           </div>
         </div>
@@ -2053,56 +2024,61 @@ exports[`UpdateWorkflowTemplate should match snapshot 2`] = `
               <div
                 class="ant-space-item"
               >
-                <div
-                  class="ant-row"
+                <section
+                  class="footer-button-wrapper inside-the-project-footer-button-wrapper"
                 >
                   <div
-                    class="ant-col ant-col-offset-13"
+                    class="ant-card ant-card-bordered"
                   >
                     <div
-                      class="ant-space ant-space-horizontal ant-space-align-center"
+                      class="ant-card-body"
+                      style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
                     >
                       <div
-                        class="ant-space-item"
-                        style="margin-right: 8px;"
+                        class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
                       >
-                        <button
-                          class="ant-btn ant-btn-default"
-                          type="button"
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 8px;"
                         >
-                          <span>
-                            common.prevStep
-                          </span>
-                        </button>
-                      </div>
-                      <div
-                        class="ant-space-item"
-                        style="margin-right: 8px;"
-                      >
-                        <button
-                          class="ant-btn ant-btn-default"
-                          type="button"
+                          <button
+                            class="ant-btn ant-btn-default"
+                            type="button"
+                          >
+                            <span>
+                              common.prevStep
+                            </span>
+                          </button>
+                        </div>
+                        <div
+                          class="ant-space-item"
+                          style="margin-right: 8px;"
                         >
-                          <span>
-                            common.reset
-                          </span>
-                        </button>
-                      </div>
-                      <div
-                        class="ant-space-item"
-                      >
-                        <button
-                          class="ant-btn ant-btn-primary"
-                          type="button"
+                          <button
+                            class="ant-btn ant-btn-default"
+                            type="button"
+                          >
+                            <span>
+                              common.reset
+                            </span>
+                          </button>
+                        </div>
+                        <div
+                          class="ant-space-item"
                         >
-                          <span>
-                            common.submit
-                          </span>
-                        </button>
+                          <button
+                            class="ant-btn ant-btn-primary"
+                            type="button"
+                          >
+                            <span>
+                              common.submit
+                            </span>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </section>
               </div>
             </div>
           </div>
