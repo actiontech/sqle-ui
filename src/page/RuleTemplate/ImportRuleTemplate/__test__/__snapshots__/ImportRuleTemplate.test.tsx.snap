@@ -6415,40 +6415,49 @@ exports[`test RuleTemplate/ImportRuleTemplate should display the create rule tem
     class="ant-divider ant-divider-horizontal ant-divider-dashed"
     role="separator"
   />
-  <div
-    class="ant-row ant-row-end"
+  <section
+    class="footer-button-wrapper inside-the-project-footer-button-wrapper"
   >
     <div
-      class="ant-space ant-space-horizontal ant-space-align-center"
+      class="ant-card ant-card-bordered"
     >
       <div
-        class="ant-space-item"
-        style="margin-right: 8px;"
+        class="ant-card-body"
+        style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
       >
-        <button
-          ant-click-animating-without-extra-node="true"
-          class="ant-btn ant-btn-default"
-          type="button"
+        <div
+          class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
         >
-          <span>
-            common.prevStep
-          </span>
-        </button>
-      </div>
-      <div
-        class="ant-space-item"
-      >
-        <button
-          class="ant-btn ant-btn-primary"
-          type="button"
-        >
-          <span>
-            common.submit
-          </span>
-        </button>
+          <div
+            class="ant-space-item"
+            style="margin-right: 8px;"
+          >
+            <button
+              ant-click-animating-without-extra-node="true"
+              class="ant-btn ant-btn-default"
+              type="button"
+            >
+              <span>
+                common.prevStep
+              </span>
+            </button>
+          </div>
+          <div
+            class="ant-space-item"
+          >
+            <button
+              class="ant-btn ant-btn-primary"
+              type="button"
+            >
+              <span>
+                common.submit
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </div>
 `;
 

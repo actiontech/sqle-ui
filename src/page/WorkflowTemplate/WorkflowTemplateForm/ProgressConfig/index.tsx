@@ -30,6 +30,7 @@ import {
   ProgressConfigProps,
 } from './index.type';
 import { Theme } from '@mui/material/styles';
+import FooterButtonWrapper from '../../../../components/FooterButtonWrapper';
 
 export enum ProgressConfigReviewTypeEnum {
   specify = 'specify',
@@ -542,25 +543,17 @@ const ProgressConfig: React.FC<ProgressConfigProps> = (props) => {
           </Space>
         </Col>
       </Row>
-      <Row>
-        <Col offset={13}>
-          <Space>
-            <Button disabled={props.submitLoading} onClick={props.prevStep}>
-              {t('common.prevStep')}
-            </Button>
-            <Button onClick={resetProgress} disabled={props.submitLoading}>
-              {t('common.reset')}
-            </Button>
-            <Button
-              type="primary"
-              onClick={submit}
-              loading={props.submitLoading}
-            >
-              {t('common.submit')}
-            </Button>
-          </Space>
-        </Col>
-      </Row>
+      <FooterButtonWrapper>
+        <Button disabled={props.submitLoading} onClick={props.prevStep}>
+          {t('common.prevStep')}
+        </Button>
+        <Button onClick={resetProgress} disabled={props.submitLoading}>
+          {t('common.reset')}
+        </Button>
+        <Button type="primary" onClick={submit} loading={props.submitLoading}>
+          {t('common.submit')}
+        </Button>
+      </FooterButtonWrapper>
     </Space>
   );
 };

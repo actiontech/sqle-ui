@@ -1014,6 +1014,44 @@ exports[`wechat should update wechat config after user input config form 2`] = `
             >
               <label
                 class="ant-form-item-required"
+                for="agent_id"
+                title="system.wechat.agent_id"
+              >
+                system.wechat.agent_id
+              </label>
+            </div>
+            <div
+              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+            >
+              <div
+                class="ant-form-item-control-input"
+              >
+                <div
+                  class="ant-form-item-control-input-content"
+                >
+                  <input
+                    aria-required="true"
+                    class="ant-input ant-input-status-success"
+                    id="agent_id"
+                    type="text"
+                    value="1234567"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-form-item ant-form-item-has-success"
+        >
+          <div
+            class="ant-row ant-form-item-row"
+          >
+            <div
+              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+            >
+              <label
+                class="ant-form-item-required"
                 for="corp_secret"
                 title="system.wechat.corp_secret"
               >
@@ -1067,44 +1105,6 @@ exports[`wechat should update wechat config after user input config form 2`] = `
                       </span>
                     </span>
                   </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-form-item ant-form-item-has-success"
-        >
-          <div
-            class="ant-row ant-form-item-row"
-          >
-            <div
-              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-            >
-              <label
-                class="ant-form-item-required"
-                for="agent_id"
-                title="system.wechat.agent_id"
-              >
-                system.wechat.agent_id
-              </label>
-            </div>
-            <div
-              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-            >
-              <div
-                class="ant-form-item-control-input"
-              >
-                <div
-                  class="ant-form-item-control-input-content"
-                >
-                  <input
-                    aria-required="true"
-                    class="ant-input ant-input-status-success"
-                    id="agent_id"
-                    type="text"
-                    value="1234567"
-                  />
                 </div>
               </div>
             </div>

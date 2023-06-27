@@ -8,6 +8,7 @@ import EmitterKey from '../../../../data/EmitterKey';
 import EventEmitter from '../../../../utils/EventEmitter';
 import { BaseFormFields, BaseFormProps } from './index.type';
 import useStaticStatus from '../../../../hooks/useStaticStatus';
+import FooterButtonWrapper from '../../../../components/FooterButtonWrapper';
 
 const BaseForm: React.FC<BaseFormProps> = (props) => {
   const { t } = useTranslation();
@@ -81,14 +82,12 @@ const BaseForm: React.FC<BaseFormProps> = (props) => {
           {getAuditLevelStatusSelectOption()}
         </Select>
       </Form.Item>
-      <Form.Item label=" " colon={false}>
-        <Space>
-          <Button onClick={resetForm}>{t('common.reset')}</Button>
-          <Button onClick={nextStep} type="primary">
-            {t('common.nextStep')}
-          </Button>
-        </Space>
-      </Form.Item>
+      <FooterButtonWrapper>
+        <Button onClick={resetForm}>{t('common.reset')}</Button>
+        <Button onClick={nextStep} type="primary">
+          {t('common.nextStep')}
+        </Button>
+      </FooterButtonWrapper>
     </Form>
   );
 };

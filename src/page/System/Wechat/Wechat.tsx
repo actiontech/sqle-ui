@@ -233,17 +233,6 @@ const Wechat = () => {
               <Input />
             </Form.Item>
             <Form.Item
-              label={t('system.wechat.corp_secret')}
-              name="corp_secret"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input.Password />
-            </Form.Item>
-            <Form.Item
               label={t('system.wechat.agent_id')}
               name="agent_id"
               rules={[
@@ -256,6 +245,17 @@ const Wechat = () => {
               ]}
             >
               <Input />
+            </Form.Item>
+            <Form.Item
+              label={t('system.wechat.corp_secret')}
+              name="corp_secret"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input.Password />
             </Form.Item>
             <Form.Item
               label={t('system.wechat.safe_enabled')}

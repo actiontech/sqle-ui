@@ -13,6 +13,7 @@ import { checkCron } from '../../../hooks/useCron/cron.tool';
 import useGlobalRuleTemplate from '../../../hooks/useGlobalRuleTemplate';
 import useTaskSource from '../../../hooks/useTaskSource';
 import EventEmitter from '../../../utils/EventEmitter';
+import FooterButtonWrapper from '../../../components/FooterButtonWrapper';
 
 const SyncTaskForm: React.FC<SyncTaskFormProps> = ({
   form,
@@ -187,16 +188,14 @@ const SyncTaskForm: React.FC<SyncTaskFormProps> = ({
         <CronInput />
       </Form.Item>
 
-      <Form.Item label=" " colon={false}>
-        <Space>
-          <Button htmlType="submit" type="primary" loading={submitLoading}>
-            {t('common.submit')}
-          </Button>
-          <Button onClick={resetForm} disabled={submitLoading}>
-            {t('common.reset')}
-          </Button>
-        </Space>
-      </Form.Item>
+      <FooterButtonWrapper insideProject={false}>
+        <Button htmlType="submit" type="primary" loading={submitLoading}>
+          {t('common.submit')}
+        </Button>
+        <Button onClick={resetForm} disabled={submitLoading}>
+          {t('common.reset')}
+        </Button>
+      </FooterButtonWrapper>
     </Form>
   );
 };

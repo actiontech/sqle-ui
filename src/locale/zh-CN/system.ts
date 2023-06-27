@@ -126,7 +126,7 @@ export default {
   wechat: {
     enable_wechat_notify: '是否启用微信通知',
     corp_id: 'CorpID(微信企业号ID)',
-    corp_secret: 'CorpSecret(CorpID对应密码)',
+    corp_secret: '企业微信应用Secret',
     agent_id: '企业微信应用ID',
     safe_enabled: '是否开启加密传输',
     proxy_ip: '代理服务器IP',

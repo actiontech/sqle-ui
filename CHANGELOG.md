@@ -12,7 +12,7 @@
 * [ ] [chore]: 2.2305.0 界面优化 <https://github.com/actiontech/sqle/issues/1508>
 * [ ] [fix]: react-monaco-editor 组件全部添加属性:  automaticLayout: true, 解决生产环境下在弹窗里第一次打开时无法输入的问题. <https://github.com/actiontech/sqle-ui/pull/276>
 * [ ] [feature]: 工单列表支持工单号展示以及筛选 <https://github.com/actiontech/sqle-ui/pull/280>
-* [ ] [chore]: 2.2306.0 界面优化 <https://github.com/actiontech/sqle-ui/pull/279>
+* [ ] [chore]: 2.2306.0 界面优化 <https://github.com/actiontech/sqle/issues/1549>
 * [ ] [chore]: 项目成员界面优化(dms中已移除此页面) <https://github.com/actiontech/sqle-ui/pull/278>
 * [ ] [feature]: 全局配置添加 操作记录的过期时间配置项 <https://github.com/actiontech/sqle-ui/pull/281>
 * [ ] [feature]: 优化系统配置中开关的交互流程 <https://github.com/actiontech/sqle-ui/pull/283>

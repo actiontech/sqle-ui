@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test FooterButtonWrapper should match snapshot 1`] = `
+<div>
+  <section
+    class="footer-button-wrapper inside-the-project-footer-button-wrapper"
+  >
+    <div
+      class="ant-card ant-card-bordered"
+    >
+      <div
+        class="ant-card-body"
+        style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
+      >
+        <div
+          class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
+        >
+          <div
+            class="ant-space-item"
+            style="margin-right: 8px;"
+          >
+            <button>
+              button1
+            </button>
+          </div>
+          <div
+            class="ant-space-item"
+          >
+            <button>
+              button2
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`test FooterButtonWrapper should match snapshot 2`] = `
+<div>
+  <section
+    class="footer-button-wrapper "
+  >
+    <div
+      class="ant-card ant-card-bordered"
+    >
+      <div
+        class="ant-card-body"
+        style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
+      >
+        <div
+          class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
+        >
+          <div
+            class="ant-space-item"
+            style="margin-right: 8px;"
+          >
+            <button>
+              button1
+            </button>
+          </div>
+          <div
+            class="ant-space-item"
+          >
+            <button>
+              button2
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;

@@ -6,6 +6,7 @@ import { nameRule } from '../../../../utils/FormRule';
 import { RuleTemplateBaseInfoFormProps } from './index.type';
 import useDatabaseType from '../../../../hooks/useDatabaseType';
 import { Rule } from 'antd/lib/form';
+import FooterButtonWrapper from '../../../../components/FooterButtonWrapper';
 
 const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
   const { t } = useTranslation();
@@ -98,14 +99,20 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
           {generateDriverSelectOptions()}
         </Select>
       </Form.Item>
-      <Form.Item label=" " colon={false}>
+      {/* <Form.Item label=" " colon={false}>
         <Space>
           <Button onClick={reset}>{t('common.reset')}</Button>
           <Button type="primary" onClick={props.submit}>
             {t('common.nextStep')}
           </Button>
         </Space>
-      </Form.Item>
+      </Form.Item> */}
+      <FooterButtonWrapper>
+        <Button onClick={reset}>{t('common.reset')}</Button>
+        <Button type="primary" onClick={props.submit}>
+          {t('common.nextStep')}
+        </Button>
+      </FooterButtonWrapper>
     </Form>
   );
 };

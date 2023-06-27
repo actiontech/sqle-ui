@@ -6,6 +6,7 @@ import BaseInfoForm from './BaseInfoForm';
 import { RuleTemplateFormProps } from './index.type';
 import RuleSelect from './RuleSelect';
 import { Theme } from '@mui/material/styles';
+import FooterButtonWrapper from '../../../components/FooterButtonWrapper';
 
 const RuleTemplateForm: React.FC<RuleTemplateFormProps> = (props) => {
   const { t } = useTranslation();
@@ -74,20 +75,18 @@ const RuleTemplateForm: React.FC<RuleTemplateFormProps> = (props) => {
           </Space>
 
           <Divider dashed />
-          <Row justify="end">
-            <Space>
-              <Button disabled={props.submitLoading} onClick={props.prevStep}>
-                {t('common.prevStep')}
-              </Button>
-              <Button
-                loading={props.submitLoading}
-                onClick={props.submit}
-                type="primary"
-              >
-                {t('common.submit')}
-              </Button>
-            </Space>
-          </Row>
+          <FooterButtonWrapper insideProject={false}>
+            <Button disabled={props.submitLoading} onClick={props.prevStep}>
+              {t('common.prevStep')}
+            </Button>
+            <Button
+              loading={props.submitLoading}
+              onClick={props.submit}
+              type="primary"
+            >
+              {t('common.submit')}
+            </Button>
+          </FooterButtonWrapper>
         </div>
         <div hidden={props.step !== 2} data-testid="submit-result">
           {props.children}

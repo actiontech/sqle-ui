@@ -1,3 +1,5 @@
+import { t } from '../locale';
+
 export enum ResponseCode {
   SUCCESS = 0,
 
@@ -113,6 +115,12 @@ export const SQLE_COOKIE_TOKEN_KEY_NAME = 'sqle-token';
 
 export const OPEN_CLOUD_BEAVER_URL_PARAM_NAME = 'open_cloud_beaver';
 
-export const SQLE_DEFAULT_WEB_TITLE = 'Action SQLE';
+const ALL_SQLE_DEFAULT_WEB_TITLE = [
+  /* IFTRUE_isEE */ t('common.defaultEEWebTitle') /* FITRUE_isEE */,
+  /* IFTRUE_isCE */ 'SQLE' /* FITRUE_isCE */,
+];
+
+export const SQLE_DEFAULT_WEB_TITLE =
+  ALL_SQLE_DEFAULT_WEB_TITLE[0] ?? ALL_SQLE_DEFAULT_WEB_TITLE[1];
 
 export const SQLE_BASE_URL = '/';
