@@ -1,5 +1,5 @@
 import { useBoolean } from 'ahooks';
-import { Alert, Button, Form, Modal, Space, Spin } from 'antd';
+import { Alert, Button, Form, Modal, Space, Spin, Tooltip } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -24,7 +24,11 @@ import {
   SqlStatementFormTabsRefType,
 } from '../../../SqlStatementFormTabs';
 import { ModifySqlModalProps } from './index.type';
-import { format } from 'sql-formatter';
+import {
+  FormatLanguageSupport,
+  formatterSQL,
+} from '../../../../../utils/FormatterSQL';
+import { InfoCircleOutlined } from '@ant-design/icons';
 
 const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
   currentOrderTasks = [],
@@ -91,7 +95,10 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
       form.setFields([
         {
           name: ['0', 'sql'],
-          value: format(sqlStatementInfo.sql, { language: 'sql' }),
+          value: formatterSQL(
+            sqlStatementInfo.sql,
+            currentOrderTasks?.[0].instance_db_type
+          ),
         },
       ]);
     } else {
@@ -105,7 +112,11 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
       form.setFields([
         {
           name: [sqlStatementFormTabsRef.current?.activeKey ?? '', 'sql'],
-          value: format(sqlStatementInfo.sql, { language: 'sql' }),
+          value: formatterSQL(
+            sqlStatementInfo.sql,
+            currentOrderTasks[sqlStatementFormTabsRef.current?.activeIndex ?? 0]
+              ?.instance_db_type
+          ),
         },
       ]);
     }
@@ -210,9 +221,19 @@ const ModifySqlModal: React.FC<ModifySqlModalProps> = ({
           </EmptyBox>
 
           <Form.Item label=" " colon={false} style={{ display: 'inline' }}>
-            <Button onClick={formatSql} loading={submitLoading}>
-              {t('order.sqlInfo.format')}
-            </Button>
+            <Space>
+              <Button onClick={formatSql} loading={submitLoading}>
+                {t('order.sqlInfo.format')}
+              </Button>
+
+              <Tooltip
+                overlay={t('order.sqlInfo.formatTips', {
+                  supportType: Object.keys(FormatLanguageSupport).join('、'),
+                })}
+              >
+                <InfoCircleOutlined className="text-orange" />
+              </Tooltip>
+            </Space>
           </Form.Item>
         </Form>
       </Spin>

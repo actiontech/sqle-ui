@@ -1,5 +1,5 @@
 import { useBoolean } from 'ahooks';
-import { Button, Form, Space, Switch, SwitchProps } from 'antd';
+import { Button, Form, Space, Switch, SwitchProps, Tooltip } from 'antd';
 import React, {
   useCallback,
   useEffect,
@@ -25,7 +25,11 @@ import {
 } from '../../SqlStatementFormTabs';
 import DatabaseInfo from './DatabaseInfo';
 import { InstanceNamesType, SqlInfoFormProps } from './index.type';
-import { format } from 'sql-formatter';
+import {
+  FormatLanguageSupport,
+  formatterSQL,
+} from '../../../../utils/FormatterSQL';
+import { InfoCircleOutlined } from '@ant-design/icons';
 
 const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
   const { t } = useTranslation();
@@ -158,31 +162,66 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
 
   const formatSql = async () => {
     const params = await props.form.getFieldsValue();
+    const getInstanceType = (name: string) => {
+      return instance
+        .getInstanceV2({
+          project_name: props.projectName,
+          instance_name: name,
+        })
+        .then((res) => res.data.data);
+    };
     if (currentSqlMode === WorkflowResV2ModeEnum.same_sqls) {
       const sqlStatementInfo = params['0'] as SqlStatementFields;
+      const instanceName = params.dataBaseInfo[0].instanceName;
       if (sqlStatementInfo?.sqlInputType !== SQLInputType.manualInput) {
         return;
       }
-      props.form.setFields([
-        {
-          name: ['0', 'sql'],
-          value: format(sqlStatementInfo.sql, { language: 'sql' }),
-        },
-      ]);
+      if (instanceName) {
+        getInstanceType(instanceName).then((res) => {
+          props.form.setFields([
+            {
+              name: ['0', 'sql'],
+              value: formatterSQL(sqlStatementInfo.sql, res?.db_type),
+            },
+          ]);
+        });
+      } else {
+        props.form.setFields([
+          {
+            name: ['0', 'sql'],
+            value: formatterSQL(sqlStatementInfo.sql),
+          },
+        ]);
+      }
     } else {
       const sqlStatementInfo = params[
         sqlStatementFormTabsRef.current?.activeKey ?? ''
       ] as SqlStatementFields;
 
+      const instanceName = params.dataBaseInfo.filter((v) => v.instanceName)[
+        sqlStatementFormTabsRef.current?.activeIndex ?? 0
+      ].instanceName;
       if (sqlStatementInfo?.sqlInputType !== SQLInputType.manualInput) {
         return;
       }
-      props.form.setFields([
-        {
-          name: [sqlStatementFormTabsRef.current?.activeKey ?? '', 'sql'],
-          value: format(sqlStatementInfo.sql, { language: 'sql' }),
-        },
-      ]);
+
+      if (instanceName) {
+        getInstanceType(instanceName).then((res) => {
+          props.form.setFields([
+            {
+              name: [sqlStatementFormTabsRef.current?.activeKey ?? '', 'sql'],
+              value: formatterSQL(sqlStatementInfo.sql, res?.db_type),
+            },
+          ]);
+        });
+      } else {
+        props.form.setFields([
+          {
+            name: [sqlStatementFormTabsRef.current?.activeKey ?? '', 'sql'],
+            value: formatterSQL(sqlStatementInfo.sql),
+          },
+        ]);
+      }
     }
   };
 
@@ -276,13 +315,23 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
         {/* FITRUE_isEE */}
 
         <Form.Item label=" " colon={false}>
-          <Space>
+          <Space size={16}>
             <Button onClick={submit} type="primary" loading={submitLoading}>
               {t('order.sqlInfo.audit')}
             </Button>
-            <Button onClick={formatSql} loading={submitLoading}>
-              {t('order.sqlInfo.format')}
-            </Button>
+            <Space>
+              <Button onClick={formatSql} loading={submitLoading}>
+                {t('order.sqlInfo.format')}
+              </Button>
+
+              <Tooltip
+                overlay={t('order.sqlInfo.formatTips', {
+                  supportType: Object.keys(FormatLanguageSupport).join('、'),
+                })}
+              >
+                <InfoCircleOutlined className="text-orange" />
+              </Tooltip>
+            </Space>
           </Space>
         </Form.Item>
       </Form>

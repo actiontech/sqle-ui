@@ -500,6 +500,7 @@ export const taskInfoErrorAuditLevel: IAuditTaskResV1 = {
   sql_source: 'form_data',
   audit_level: AuditTaskResV1AuditLevelEnum.error,
   score: 40,
+  instance_db_type: 'mysql',
 } as IAuditTaskResV1;
 
 export const taskInfoWarnAuditLevel: IAuditTaskResV1 = {

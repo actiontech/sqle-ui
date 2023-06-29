@@ -13,8 +13,7 @@ import { resolveThreeSecond } from '../../../../../testUtils/mockRequest';
 import { SupportTheme } from '../../../../../theme';
 import { taskInfo, taskInfoErrorAuditLevel } from '../../__testData__';
 import { useDispatch, useSelector } from 'react-redux';
-import * as sqlFormatter from 'sql-formatter';
-import { selectOptionByIndex } from '../../../../../testUtils/customQuery';
+import * as FormatterSQL from '../../../../../utils/FormatterSQL';
 
 jest.mock('react-redux', () => {
   return {
@@ -24,10 +23,10 @@ jest.mock('react-redux', () => {
   };
 });
 
-jest.mock('sql-formatter', () => {
+jest.mock('../../../../../utils/FormatterSQL', () => {
   return {
-    ...jest.requireActual('sql-formatter'),
-    format: jest.fn(),
+    ...jest.requireActual('../../../../../utils/FormatterSQL'),
+    formatterSQL: jest.fn(),
   };
 });
 
@@ -459,7 +458,7 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
   });
 
   test('should format sql when clicked format button', async () => {
-    const mockSqlFormatter = sqlFormatter.format as jest.Mock;
+    const mockSqlFormatter = FormatterSQL.formatterSQL as jest.Mock;
     mockSqlFormatter.mockReturnValueOnce('SELECT * FROM table3;');
     mockGetSqlContent();
 
@@ -484,9 +483,7 @@ describe('Order/Detail/Modal/ModifySqlModal', () => {
       fireEvent.click(screen.getByText('order.sqlInfo.format'));
     });
     expect(mockSqlFormatter).toBeCalledTimes(1);
-    expect(mockSqlFormatter).toBeCalledWith('select * from table2', {
-      language: 'sql',
-    });
+    expect(mockSqlFormatter).toBeCalledWith('select * from table2', 'mysql');
     expect(screen.getByLabelText('order.sqlInfo.sql')).toHaveValue(
       'SELECT * FROM table3;'
     );
