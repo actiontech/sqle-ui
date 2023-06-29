@@ -6,6 +6,7 @@ import audit_plan from '../../../api/audit_plan';
 import { getInstanceTipListV1FunctionalModuleEnum } from '../../../api/instance/index.enum';
 import EmitterKey from '../../../data/EmitterKey';
 import {
+  getAllBySelector,
   getBySelector,
   getHrefByText,
   getSelectValueByFormLabel,
@@ -187,5 +188,41 @@ describe('UpdateAuditPlan', () => {
     expect(
       getSelectValueByFormLabel('auditPlan.planForm.taskType')
     ).toHaveTextContent('普通的SQL审核');
+
+    fireEvent.mouseDown(
+      screen.getByLabelText('auditPlan.planForm.databaseName')
+    );
+
+    fireEvent.mouseDown(getAllBySelector('.ant-select-clear')[0]!);
+
+    await act(async () => jest.advanceTimersByTime(0));
+
+    fireEvent.click(screen.getByText('common.submit'));
+    await act(async () => jest.advanceTimersByTime(0));
+
+    expect(updateSpy).toBeCalledTimes(2);
+    expect(updateSpy).nthCalledWith(2, {
+      project_name: projectName,
+      audit_plan_cron: '* * * * *',
+      audit_plan_instance_database: '',
+      audit_plan_instance_name: '',
+      audit_plan_name: 'auditPlanName1',
+      rule_template_name: 'rule_template_name1',
+      audit_plan_params: [
+        {
+          key: 'a',
+          value: '123',
+        },
+        {
+          key: 'b',
+          value: '123',
+        },
+        {
+          key: 'c',
+          value: 'true',
+        },
+      ],
+    });
+    await act(async () => jest.advanceTimersByTime(3000));
   });
 });

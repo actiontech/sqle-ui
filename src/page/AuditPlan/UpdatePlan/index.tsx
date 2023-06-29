@@ -29,8 +29,8 @@ const UpdateAuditPlan = () => {
     return audit_plan
       .updateAuditPlanV1({
         audit_plan_cron: values.cron,
-        audit_plan_instance_database: values.schema,
-        audit_plan_instance_name: values.databaseName,
+        audit_plan_instance_database: values.schema ?? '',
+        audit_plan_instance_name: values.databaseName ?? '',
         audit_plan_name: urlParams.auditPlanName ?? '',
         audit_plan_params: values.asyncParams,
         rule_template_name: values.ruleTemplateName,
