@@ -1,8 +1,4 @@
-import {
-  FormatLanguageSupport,
-  formatterSQL,
-  isSupportLanguage,
-} from '../FormatterSQL';
+import { formatterSQL, isSupportLanguage } from '../FormatterSQL';
 
 describe('test FormatSQL', () => {
   test('isSupportLanguage', () => {
