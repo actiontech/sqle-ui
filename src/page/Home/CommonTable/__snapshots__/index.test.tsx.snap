@@ -25,17 +25,10 @@ exports[`test Home/CommonTable should match snapshot 1`] = `
                 style="min-width: 100%; table-layout: auto;"
               >
                 <colgroup>
+                  <col />
+                  <col />
                   <col
-                    style="width: 400px;"
-                  />
-                  <col
-                    style="width: 300px;"
-                  />
-                  <col
-                    style="width: 600px;"
-                  />
-                  <col
-                    style="width: auto;"
+                    style="width: 30%;"
                   />
                 </colgroup>
                 <thead
@@ -293,17 +286,10 @@ exports[`test Home/CommonTable should render error info when error has a value 1
               style="min-width: 100%; table-layout: auto;"
             >
               <colgroup>
+                <col />
+                <col />
                 <col
-                  style="width: 400px;"
-                />
-                <col
-                  style="width: 300px;"
-                />
-                <col
-                  style="width: 600px;"
-                />
-                <col
-                  style="width: auto;"
+                  style="width: 30%;"
                 />
               </colgroup>
               <thead
@@ -449,17 +435,10 @@ exports[`test Home/CommonTable should render spin when loading equal true 1`] = 
                 style="min-width: 100%; table-layout: auto;"
               >
                 <colgroup>
+                  <col />
+                  <col />
                   <col
-                    style="width: 400px;"
-                  />
-                  <col
-                    style="width: 300px;"
-                  />
-                  <col
-                    style="width: 600px;"
-                  />
-                  <col
-                    style="width: auto;"
+                    style="width: 30%;"
                   />
                 </colgroup>
                 <thead

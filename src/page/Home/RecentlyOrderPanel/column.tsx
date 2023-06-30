@@ -23,12 +23,10 @@ export const customColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
           </EmptyBox>
         );
       },
-      width: 400,
     },
     {
       dataIndex: 'project_name',
       title: () => t('projectManage.projectForm.projectName'),
-      width: 300,
       render: (projectName) => {
         return (
           <EmptyBox if={projectName} defaultNode={projectName}>
@@ -40,7 +38,7 @@ export const customColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
     {
       dataIndex: 'desc',
       title: () => t('order.order.desc'),
-      width: 600,
+      width: '30%',
       render: (desc: string) => renderOrderDesc(desc, 600),
     },
     {
@@ -56,7 +54,6 @@ export const customColumn: () => TableColumn<IWorkflowDetailResV1> = () => {
       render: (status) => {
         return <OrderStatusTag status={status} />;
       },
-      width: 'auto',
     },
   ];
 

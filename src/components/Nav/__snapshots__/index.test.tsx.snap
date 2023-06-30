@@ -76,13 +76,13 @@ exports[`Nav should render page by props of username 1`] = `
                     class="header-menu-item-icon"
                   >
                     <span
-                      aria-label="desktop"
-                      class="anticon anticon-desktop"
+                      aria-label="project"
+                      class="anticon anticon-project"
                       role="img"
                     >
                       <svg
                         aria-hidden="true"
-                        data-icon="desktop"
+                        data-icon="project"
                         fill="currentColor"
                         focusable="false"
                         height="1em"
@@ -90,12 +90,40 @@ exports[`Nav should render page by props of username 1`] = `
                         width="1em"
                       >
                         <path
-                          d="M928 140H96c-17.7 0-32 14.3-32 32v496c0 17.7 14.3 32 32 32h380v112H304c-8.8 0-16 7.2-16 16v48c0 4.4 3.6 8 8 8h432c4.4 0 8-3.6 8-8v-48c0-8.8-7.2-16-16-16H548V700h380c17.7 0 32-14.3 32-32V172c0-17.7-14.3-32-32-32zm-40 488H136V212h752v416z"
+                          d="M280 752h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v464c0 4.4 3.6 8 8 8zm192-280h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v184c0 4.4 3.6 8 8 8zm192 72h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v256c0 4.4 3.6 8 8 8zm216-432H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"
                         />
                       </svg>
                     </span>
                   </span>
-                  menu.rule
+                  menu.projectManage
+                </div>
+                <div
+                  class=" header-menu-item"
+                >
+                  <span
+                    class="header-menu-item-icon"
+                  >
+                    <span
+                      aria-label="project"
+                      class="anticon anticon-project"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="project"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M280 752h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v464c0 4.4 3.6 8 8 8zm192-280h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v184c0 4.4 3.6 8 8 8zm192 72h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v256c0 4.4 3.6 8 8 8zm216-432H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"
+                        />
+                      </svg>
+                    </span>
+                  </span>
+                  menu.projectManage
                 </div>
                 <div
                   class=" header-menu-item"
@@ -132,13 +160,13 @@ exports[`Nav should render page by props of username 1`] = `
                     class="header-menu-item-icon"
                   >
                     <span
-                      aria-label="project"
-                      class="anticon anticon-project"
+                      aria-label="desktop"
+                      class="anticon anticon-desktop"
                       role="img"
                     >
                       <svg
                         aria-hidden="true"
-                        data-icon="project"
+                        data-icon="desktop"
                         fill="currentColor"
                         focusable="false"
                         height="1em"
@@ -146,40 +174,12 @@ exports[`Nav should render page by props of username 1`] = `
                         width="1em"
                       >
                         <path
-                          d="M280 752h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v464c0 4.4 3.6 8 8 8zm192-280h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v184c0 4.4 3.6 8 8 8zm192 72h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v256c0 4.4 3.6 8 8 8zm216-432H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"
+                          d="M928 140H96c-17.7 0-32 14.3-32 32v496c0 17.7 14.3 32 32 32h380v112H304c-8.8 0-16 7.2-16 16v48c0 4.4 3.6 8 8 8h432c4.4 0 8-3.6 8-8v-48c0-8.8-7.2-16-16-16H548V700h380c17.7 0 32-14.3 32-32V172c0-17.7-14.3-32-32-32zm-40 488H136V212h752v416z"
                         />
                       </svg>
                     </span>
                   </span>
-                  menu.projectManage
-                </div>
-                <div
-                  class=" header-menu-item"
-                >
-                  <span
-                    class="header-menu-item-icon"
-                  >
-                    <span
-                      aria-label="project"
-                      class="anticon anticon-project"
-                      role="img"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="project"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
-                      >
-                        <path
-                          d="M280 752h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v464c0 4.4 3.6 8 8 8zm192-280h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v184c0 4.4 3.6 8 8 8zm192 72h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v256c0 4.4 3.6 8 8 8zm216-432H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                  menu.projectManage
+                  menu.rule
                 </div>
               </div>
             </div>
@@ -342,13 +342,13 @@ exports[`Nav should render page by props of username 2`] = `
                     class="header-menu-item-icon"
                   >
                     <span
-                      aria-label="desktop"
-                      class="anticon anticon-desktop"
+                      aria-label="project"
+                      class="anticon anticon-project"
                       role="img"
                     >
                       <svg
                         aria-hidden="true"
-                        data-icon="desktop"
+                        data-icon="project"
                         fill="currentColor"
                         focusable="false"
                         height="1em"
@@ -356,12 +356,40 @@ exports[`Nav should render page by props of username 2`] = `
                         width="1em"
                       >
                         <path
-                          d="M928 140H96c-17.7 0-32 14.3-32 32v496c0 17.7 14.3 32 32 32h380v112H304c-8.8 0-16 7.2-16 16v48c0 4.4 3.6 8 8 8h432c4.4 0 8-3.6 8-8v-48c0-8.8-7.2-16-16-16H548V700h380c17.7 0 32-14.3 32-32V172c0-17.7-14.3-32-32-32zm-40 488H136V212h752v416z"
+                          d="M280 752h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v464c0 4.4 3.6 8 8 8zm192-280h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v184c0 4.4 3.6 8 8 8zm192 72h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v256c0 4.4 3.6 8 8 8zm216-432H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"
                         />
                       </svg>
                     </span>
                   </span>
-                  menu.rule
+                  menu.projectManage
+                </div>
+                <div
+                  class=" header-menu-item"
+                >
+                  <span
+                    class="header-menu-item-icon"
+                  >
+                    <span
+                      aria-label="project"
+                      class="anticon anticon-project"
+                      role="img"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        data-icon="project"
+                        fill="currentColor"
+                        focusable="false"
+                        height="1em"
+                        viewBox="64 64 896 896"
+                        width="1em"
+                      >
+                        <path
+                          d="M280 752h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v464c0 4.4 3.6 8 8 8zm192-280h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v184c0 4.4 3.6 8 8 8zm192 72h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v256c0 4.4 3.6 8 8 8zm216-432H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"
+                        />
+                      </svg>
+                    </span>
+                  </span>
+                  menu.projectManage
                 </div>
                 <div
                   class=" header-menu-item"
@@ -398,13 +426,13 @@ exports[`Nav should render page by props of username 2`] = `
                     class="header-menu-item-icon"
                   >
                     <span
-                      aria-label="project"
-                      class="anticon anticon-project"
+                      aria-label="desktop"
+                      class="anticon anticon-desktop"
                       role="img"
                     >
                       <svg
                         aria-hidden="true"
-                        data-icon="project"
+                        data-icon="desktop"
                         fill="currentColor"
                         focusable="false"
                         height="1em"
@@ -412,40 +440,12 @@ exports[`Nav should render page by props of username 2`] = `
                         width="1em"
                       >
                         <path
-                          d="M280 752h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v464c0 4.4 3.6 8 8 8zm192-280h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v184c0 4.4 3.6 8 8 8zm192 72h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v256c0 4.4 3.6 8 8 8zm216-432H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"
+                          d="M928 140H96c-17.7 0-32 14.3-32 32v496c0 17.7 14.3 32 32 32h380v112H304c-8.8 0-16 7.2-16 16v48c0 4.4 3.6 8 8 8h432c4.4 0 8-3.6 8-8v-48c0-8.8-7.2-16-16-16H548V700h380c17.7 0 32-14.3 32-32V172c0-17.7-14.3-32-32-32zm-40 488H136V212h752v416z"
                         />
                       </svg>
                     </span>
                   </span>
-                  menu.projectManage
-                </div>
-                <div
-                  class=" header-menu-item"
-                >
-                  <span
-                    class="header-menu-item-icon"
-                  >
-                    <span
-                      aria-label="project"
-                      class="anticon anticon-project"
-                      role="img"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="project"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
-                      >
-                        <path
-                          d="M280 752h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v464c0 4.4 3.6 8 8 8zm192-280h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v184c0 4.4 3.6 8 8 8zm192 72h80c4.4 0 8-3.6 8-8V280c0-4.4-3.6-8-8-8h-80c-4.4 0-8 3.6-8 8v256c0 4.4 3.6 8 8 8zm216-432H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                  menu.projectManage
+                  menu.rule
                 </div>
               </div>
             </div>
