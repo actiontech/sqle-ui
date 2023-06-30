@@ -25,7 +25,7 @@ export default {
   back: '返回',
   more: '更多',
   upload: '选择文件上传',
-  resetAndClose: '关闭并重置工单',
+  resetAndClose: '关闭并重置表单',
   operateSuccess: '操作成功',
   operate: '操作',
   open: '开启',
