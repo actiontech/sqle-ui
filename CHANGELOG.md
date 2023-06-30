@@ -18,3 +18,5 @@
 * [ ] [feature]: 优化系统配置中开关的交互流程 <https://github.com/actiontech/sqle-ui/pull/283>
 * [ ] [feature]: 支持格式化 SQL 语句 <https://github.com/actiontech/sqle-ui/pull/284>
 * [ ] [feature]: 添加公共组件 EnterpriseFeatureDisplay 统一处理 ce 模式与 ee 模式下的某些页面的不同表现 <https://github.com/actiontech/sqle-ui/pull/285>
+* [ ] [fix]: 修复: 对创建好的扫描任务中的数据源跟数据库进行移除，点击保存之后还存在 <https://github.com/actiontech/sqle-ui/pull/287>
+* [ ] [fix]: 修复: 格式化 SQL 语句后审核时解析出错(后续格式化功能可能会移至后端处理) <https://github.com/actiontech/sqle-ui/pull/288>

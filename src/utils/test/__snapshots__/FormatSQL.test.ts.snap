@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test FormatSQL should match snapshot 1`] = `
+"select
+  *
+from
+  user"
+`;
+
+exports[`test FormatSQL should match snapshot 2`] = `
+"select
+  GROUP_CONCAT(a)
+from
+  t"
+`;
+
+exports[`test FormatSQL should match snapshot 3`] = `
+"select
+  GROUP_CONCAT (a)
+from
+  t"
+`;

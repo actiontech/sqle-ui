@@ -18,7 +18,7 @@ import EventEmitter from '../../../../../utils/EventEmitter';
 import { SQLInputType } from '../../index.enum';
 import { SqlInfoFormFields, SqlInfoFormProps } from '../index.type';
 import { useDispatch, useSelector } from 'react-redux';
-import * as sqlFormatter from 'sql-formatter';
+import * as sqlFormatter from '../../../../../utils/FormatterSQL';
 import { selectOptionByIndex } from '../../../../../testUtils/customQuery';
 import { mockGetInstance } from './common';
 
@@ -30,10 +30,10 @@ jest.mock('react-redux', () => {
   };
 });
 
-jest.mock('sql-formatter', () => {
+jest.mock('../../../../../utils/FormatterSQL', () => {
   return {
-    ...jest.requireActual('sql-formatter'),
-    format: jest.fn(),
+    ...jest.requireActual('../../../../../utils/FormatterSQL'),
+    formatterSQL: jest.fn(),
   };
 });
 
@@ -45,6 +45,7 @@ describe('order/create/sqlInfoForm', () => {
   const clearTaskInfoWithKey = jest.fn();
   let checkInstanceConnectSpy: jest.SpyInstance;
   const dispatchSpy = jest.fn();
+  let getInstanceSpy: jest.SpyInstance;
 
   beforeEach(() => {
     jest.useFakeTimers();
@@ -57,7 +58,7 @@ describe('order/create/sqlInfoForm', () => {
     mockUseInstance();
     mockUseInstanceSchema();
     mockDriver();
-    mockGetInstance();
+    getInstanceSpy = mockGetInstance();
     checkInstanceConnectSpy = mockCheckInstanceConnect();
     mockSubmit.mockImplementation(() => resolveThreeSecond({}));
   });
@@ -459,7 +460,7 @@ describe('order/create/sqlInfoForm', () => {
   });
 
   test('should format sql when clicked format button', async () => {
-    const mockSqlFormatter = sqlFormatter.format as jest.Mock;
+    const mockSqlFormatter = sqlFormatter.formatterSQL as jest.Mock;
     mockSqlFormatter.mockReturnValueOnce('SELECT * FROM table3;');
 
     renderComponent();
@@ -474,33 +475,46 @@ describe('order/create/sqlInfoForm', () => {
     await act(async () => {
       fireEvent.click(screen.getByText('order.sqlInfo.format'));
     });
+    expect(getInstanceSpy).toBeCalledTimes(0);
+
     expect(mockSqlFormatter).toBeCalledTimes(1);
-    expect(mockSqlFormatter).toBeCalledWith('select * from table2', {
-      language: 'sql',
-    });
+    expect(mockSqlFormatter).toBeCalledWith('select * from table2');
     expect(screen.getByLabelText('order.sqlInfo.sql')).toHaveValue(
       'SELECT * FROM table3;'
     );
 
+    selectOptionByIndex('order.sqlInfo.instanceName', 'instance1');
+    await act(async () => jest.advanceTimersByTime(0));
+
+    expect(getInstanceSpy).toBeCalledTimes(1);
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    await act(async () => {
+      fireEvent.click(screen.getByText('order.sqlInfo.format'));
+    });
+    expect(getInstanceSpy).toBeCalledTimes(2);
+    expect(mockSqlFormatter).toBeCalledTimes(1);
+    await act(async () => jest.advanceTimersByTime(3000));
+    expect(mockSqlFormatter).toBeCalledTimes(2);
+    expect(mockSqlFormatter).toBeCalledWith('SELECT * FROM table3;', 'mysql');
+
     fireEvent.click(screen.getByText('order.sqlInfo.uploadFile'));
     fireEvent.click(screen.getByText('order.sqlInfo.format'));
-    expect(mockSqlFormatter).toBeCalledTimes(1);
+    expect(mockSqlFormatter).toBeCalledTimes(2);
 
     fireEvent.click(screen.getByText('order.sqlInfo.updateMybatisFile'));
     fireEvent.click(screen.getByText('order.sqlInfo.format'));
-    expect(mockSqlFormatter).toBeCalledTimes(1);
+    expect(mockSqlFormatter).toBeCalledTimes(2);
 
     //different sql mode
     fireEvent.click(screen.getByLabelText('order.sqlInfo.isSameSqlOrder'));
-    selectOptionByIndex('order.sqlInfo.instanceName', 'instance1');
-    await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByText('order.sqlInfo.format'));
-    expect(mockSqlFormatter).toBeCalledTimes(1);
+    expect(mockSqlFormatter).toBeCalledTimes(2);
 
     fireEvent.click(screen.getByText('order.sqlInfo.uploadFile'));
     fireEvent.click(screen.getByText('order.sqlInfo.format'));
-    expect(mockSqlFormatter).toBeCalledTimes(1);
+    expect(mockSqlFormatter).toBeCalledTimes(2);
 
     fireEvent.click(screen.getByText('order.sqlInfo.manualInput'));
 
@@ -513,9 +527,10 @@ describe('order/create/sqlInfoForm', () => {
     await act(async () => {
       fireEvent.click(screen.getByText('order.sqlInfo.format'));
     });
-    expect(mockSqlFormatter).toBeCalledTimes(2);
-    expect(mockSqlFormatter).toBeCalledWith('select * from table4', {
-      language: 'sql',
-    });
+    await act(async () => jest.advanceTimersByTime(3000));
+    expect(getInstanceSpy).toBeCalledTimes(3);
+
+    expect(mockSqlFormatter).toBeCalledTimes(3);
+    expect(mockSqlFormatter).toBeCalledWith('select * from table4', 'mysql');
   });
 });
