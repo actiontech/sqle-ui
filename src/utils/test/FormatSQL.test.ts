@@ -16,16 +16,14 @@ describe('test FormatSQL', () => {
   });
 
   test('should match snapshot', () => {
+    expect(formatterSQL('select * from user', 'MySQL')).toMatchSnapshot();
+
     expect(
-      formatterSQL('select * from user', FormatLanguageSupport.MySQL)
+      formatterSQL('select GROUP_CONCAT(a) from t', 'MySQL')
     ).toMatchSnapshot();
 
     expect(
-      formatterSQL('select GROUP_CONCAT(a) from t', FormatLanguageSupport.MySQL)
-    ).toMatchSnapshot();
-
-    expect(
-      formatterSQL('select GROUP_CONCAT(a) from t', FormatLanguageSupport.DB2)
+      formatterSQL('select GROUP_CONCAT(a) from t', 'DB2')
     ).toMatchSnapshot();
   });
 });

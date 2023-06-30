@@ -9,7 +9,7 @@ from
 
 exports[`test FormatSQL should match snapshot 2`] = `
 "select
-  GROUP_CONCAT (a)
+  GROUP_CONCAT(a)
 from
   t"
 `;
