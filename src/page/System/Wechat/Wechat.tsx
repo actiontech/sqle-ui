@@ -107,7 +107,11 @@ const Wechat = () => {
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
-          message.success(t('system.wechat.testSuccess'));
+          if (res.data.data?.is_wechat_send_normal) {
+            message.success(t('system.wechat.testSuccess'));
+          } else {
+            message.error(res.data.data?.send_error_message);
+          }
         }
       })
       .finally(() => {
