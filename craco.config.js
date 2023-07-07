@@ -61,6 +61,7 @@ module.exports = {
         '!src/components/EditText/index.ts',
         '!src/hooks/useOperation/index.tsx',
         '!src/page/AuditPlan/PlanForm/AuditTaskType/index.tsx',
+        '!src/page/ProjectManage/ProjectOverview/Chats/CommonGauge/registerShape.ts',
       ],
       moduleNameMapper: {
         'react-monaco-editor': '<rootDir>/src/testUtils/mockEditor.jsx',
@@ -86,7 +87,7 @@ module.exports = {
         const url = ['/static/media'];
         return url.reduce((acc, cur) => {
           acc[cur] = {
-            target: 'http://124.70.158.246:8889',
+            arget: 'http://124.70.158.246:8889',
             secure: false,
             changeOrigin: true,
             ws: true,
@@ -99,7 +100,7 @@ module.exports = {
         const res = {};
         for (let i = 0; i < 10; i++) {
           res[`/v${i}`] = {
-            target: 'http://124.70.158.246:8889',
+            arget: 'http://124.70.158.246:8889',
             secure: false,
             changeOrigin: true,
             ws: true,

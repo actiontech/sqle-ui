@@ -43,6 +43,14 @@ export interface IBaseRes {
   message?: string;
 }
 
+export interface IAuditPlanCount {
+  audit_plan_count?: number;
+
+  audit_plan_desc?: string;
+
+  audit_plan_type?: string;
+}
+
 export interface IAuditPlanMetaV1 {
   audit_plan_params?: IAuditPlanParamResV1[];
 
@@ -237,6 +245,12 @@ export interface IAuditWhitelistResV1 {
   match_type?: string;
 
   value?: string;
+}
+
+export interface IAuditedSQLCount {
+  risk_sql_count?: number;
+
+  total_sql_count?: number;
 }
 
 export interface IBatchCancelWorkflowsReqV1 {
@@ -465,6 +479,20 @@ export interface ICreateWorkflowReqV1 {
   task_ids?: number[];
 
   workflow_subject?: string;
+}
+
+export interface IDBTypeAuditPlan {
+  data?: IAuditPlanCount[];
+
+  db_type?: string;
+}
+
+export interface IDBTypeHealth {
+  db_type?: string;
+
+  health_instance_names?: string[];
+
+  unhealth_instance_names?: string[];
 }
 
 export interface IDashboardProjectTipV1 {
@@ -729,6 +757,14 @@ export interface IGetInstanceConnectableResV1 {
   message?: string;
 }
 
+export interface IGetInstanceHealthResV1 {
+  code?: number;
+
+  data?: IDBTypeHealth[];
+
+  message?: string;
+}
+
 export interface IGetInstanceResV1 {
   code?: number;
 
@@ -979,6 +1015,14 @@ export interface IGetProjectRuleTemplatesResV1 {
   total_nums?: number;
 }
 
+export interface IGetProjectScoreResV1 {
+  code?: number;
+
+  data?: IProjectScore;
+
+  message?: string;
+}
+
 export interface IGetProjectStatisticsResDataV1 {
   audit_plan_total?: number;
 
@@ -1009,10 +1053,26 @@ export interface IGetProjectTipsResV1 {
   message?: string;
 }
 
+export interface IGetRiskAuditPlanResV1 {
+  code?: number;
+
+  data?: IRiskAuditPlan[];
+
+  message?: string;
+}
+
 export interface IGetRoleTipsResV1 {
   code?: number;
 
   data?: IRoleTipResV1[];
+
+  message?: string;
+}
+
+export interface IGetRoleUserCountResV1 {
+  code?: number;
+
+  data?: IRoleUserCount[];
 
   message?: string;
 }
@@ -1775,12 +1835,40 @@ export interface IProjectRuleTemplateResV1 {
   rule_template_name?: string;
 }
 
+export interface IProjectScore {
+  score?: number;
+}
+
 export interface IProjectTipResV1 {
   project_name?: string;
 }
 
 export interface IRejectWorkflowReqV1 {
   reason?: string;
+}
+
+export interface IRiskAuditPlan {
+  audit_plan_name?: string;
+
+  audit_plan_report_id?: number;
+
+  audit_plan_report_timestamp?: string;
+
+  risk_sql_count?: number;
+
+  trigger_audit_plan_time?: string;
+}
+
+export interface IRiskWorkflow {
+  create_user_name?: string;
+
+  update_time?: string;
+
+  workflow_id?: string;
+
+  workflow_name?: string;
+
+  workflow_status?: string;
 }
 
 export interface IRoleResV1 {
@@ -1797,6 +1885,12 @@ export interface IRoleTipResV1 {
   operations?: IOperation[];
 
   role_name?: string;
+}
+
+export interface IRoleUserCount {
+  count?: number;
+
+  role?: string;
 }
 
 export interface IRuleParamReqV1 {
@@ -1933,6 +2027,32 @@ export interface ISqlExecutionFailPercent {
   instance_name?: string;
 
   percent?: number;
+}
+
+export interface IStatisticAuditPlanResV1 {
+  code?: number;
+
+  data?: IDBTypeAuditPlan[];
+
+  message?: string;
+}
+
+export interface IStatisticRiskWorkflowResV1 {
+  code?: number;
+
+  data?: IRiskWorkflow[];
+
+  message?: string;
+}
+
+export interface IStatisticsAuditedSQLResV1 {
+  code?: number;
+
+  data?: IAuditedSQLCount;
+
+  message?: string;
+
+  risk_rate?: number;
 }
 
 export interface ISyncInstanceResV1 {

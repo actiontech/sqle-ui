@@ -8,6 +8,7 @@ import system from '../store/system';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import projectManage from '../store/projectManage';
 
 const reducers = combineReducers({
   locale,
@@ -16,6 +17,7 @@ const reducers = combineReducers({
   whitelist,
   nav,
   system,
+  projectManage,
 });
 
 export const storeFactory = (initStore: Dictionary = {}) => {

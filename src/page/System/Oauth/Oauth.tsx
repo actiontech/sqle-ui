@@ -1,14 +1,5 @@
 import { useBoolean, useRequest } from 'ahooks';
-import {
-  Button,
-  Card,
-  Form,
-  Input,
-  Space,
-  Switch,
-  Tag,
-  Typography,
-} from 'antd';
+import { Button, Card, Form, Input, Space, Switch, Tag } from 'antd';
 import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import configuration from '../../../api/configuration';

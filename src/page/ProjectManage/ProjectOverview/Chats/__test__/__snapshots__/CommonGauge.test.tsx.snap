@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test CommonGauge should match snapshot 1`] = `
+<div>
+  <div
+    axis="{\\"label\\":null}"
+    h="1"
+    height="200"
+    indicator="{\\"shape\\":\\"triangle-gauge-indicator\\",\\"pointer\\":{\\"style\\":{\\"fill\\":\\"#F4664A\\"}}}"
+    locale="zh-CN"
+    padding="auto"
+    percent="0.2"
+    range="{\\"ticks\\":[0,0.25,0.5,0.75,1],\\"color\\":[\\"#F4664A\\",\\"#FAAD14\\",\\"#59d9f9\\",\\"#30BF78\\"]}"
+    statistic="{\\"content\\":{\\"style\\":{\\"fontSize\\":\\"16px\\",\\"lineHeight\\":\\"16px\\",\\"color\\":\\"#F4664A\\"}}}"
+    theme="light"
+    type="meter"
+  />
+</div>
+`;
+
+exports[`test CommonGauge should match snapshot 2`] = `
+<div>
+  <div
+    axis="{\\"label\\":null}"
+    h="1"
+    height="200"
+    indicator="{\\"shape\\":\\"triangle-gauge-indicator\\",\\"pointer\\":{\\"style\\":{\\"fill\\":\\"#FAAD14\\"}}}"
+    locale="zh-CN"
+    padding="auto"
+    percent="0.4"
+    range="{\\"ticks\\":[0,0.25,0.5,0.75,1],\\"color\\":[\\"#F4664A\\",\\"#FAAD14\\",\\"#59d9f9\\",\\"#30BF78\\"]}"
+    statistic="{\\"content\\":{\\"style\\":{\\"fontSize\\":\\"16px\\",\\"lineHeight\\":\\"16px\\",\\"color\\":\\"#FAAD14\\"}}}"
+    theme="light"
+    type="meter"
+  />
+</div>
+`;
+
+exports[`test CommonGauge should match snapshot 3`] = `
+<div>
+  <div
+    axis="{\\"label\\":null}"
+    h="1"
+    height="200"
+    indicator="{\\"shape\\":\\"triangle-gauge-indicator\\",\\"pointer\\":{\\"style\\":{\\"fill\\":\\"#59d9f9\\"}}}"
+    locale="zh-CN"
+    padding="auto"
+    percent="0.7"
+    range="{\\"ticks\\":[0,0.25,0.5,0.75,1],\\"color\\":[\\"#F4664A\\",\\"#FAAD14\\",\\"#59d9f9\\",\\"#30BF78\\"]}"
+    statistic="{\\"content\\":{\\"style\\":{\\"fontSize\\":\\"16px\\",\\"lineHeight\\":\\"16px\\",\\"color\\":\\"#59d9f9\\"}}}"
+    theme="light"
+    type="meter"
+  />
+</div>
+`;
+
+exports[`test CommonGauge should match snapshot 4`] = `
+<div>
+  <div
+    axis="{\\"label\\":null}"
+    h="1"
+    height="200"
+    indicator="{\\"shape\\":\\"triangle-gauge-indicator\\",\\"pointer\\":{\\"style\\":{\\"fill\\":\\"#30BF78\\"}}}"
+    locale="zh-CN"
+    padding="auto"
+    percent="0.9"
+    range="{\\"ticks\\":[0,0.25,0.5,0.75,1],\\"color\\":[\\"#F4664A\\",\\"#FAAD14\\",\\"#59d9f9\\",\\"#30BF78\\"]}"
+    statistic="{\\"content\\":{\\"style\\":{\\"fontSize\\":\\"16px\\",\\"lineHeight\\":\\"16px\\",\\"color\\":\\"#30BF78\\"}}}"
+    theme="light"
+    type="meter"
+  />
+</div>
+`;
+
+exports[`test CommonGauge should match snapshot 5`] = `
+<div>
+  <div
+    axis="{\\"label\\":null}"
+    h="1"
+    height="200"
+    indicator="{\\"pointer\\":{\\"style\\":{\\"stroke\\":\\"#D0D0D0\\"}},\\"pin\\":{\\"style\\":{\\"stroke\\":\\"#D0D0D0\\"}}}"
+    locale="zh-CN"
+    padding="auto"
+    percent="0.9"
+    range="{\\"ticks\\":[0,0.25,0.5,0.75,1],\\"color\\":[\\"#F4664A\\",\\"#FAAD14\\",\\"#59d9f9\\",\\"#30BF78\\"]}"
+    statistic="{\\"title\\":{},\\"content\\":{\\"offsetY\\":36,\\"style\\":{\\"fontSize\\":\\"24px\\",\\"color\\":\\"#4B535E\\"}}}"
+    theme="light"
+    type="meter"
+  />
+</div>
+`;

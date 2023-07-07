@@ -1,0 +1,404 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test ApprovalProcess should match snapshot 1`] = `
+<div>
+  <div
+    class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+    style="height: 100%;"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          <div
+            class="ant-space ant-space-horizontal ant-space-align-center"
+          >
+            <div
+              class="ant-space-item"
+              style="margin-right: 12px;"
+            >
+              <span
+                class="ant-typography"
+              >
+                projectManage.projectOverview.approvalProcess.title
+              </span>
+            </div>
+            <div
+              class="ant-space-item"
+            >
+              <a
+                class="font-size-small"
+                href="/project/default/progress/update/undefined"
+              >
+                projectManage.projectOverview.approvalProcess.action
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="flex-all-center"
+        style="height: 200px;"
+      >
+        <div
+          class="ant-steps ant-steps-horizontal ant-steps-label-vertical"
+        >
+          <div
+            class="ant-steps-item ant-steps-item-process ant-steps-item-active"
+          >
+            <div
+              class="ant-steps-item-container"
+            >
+              <div
+                class="ant-steps-item-tail"
+              />
+              <div
+                class="ant-steps-item-icon"
+              >
+                <span
+                  class="ant-steps-icon"
+                >
+                  1
+                </span>
+              </div>
+              <div
+                class="ant-steps-item-content"
+              >
+                <div
+                  class="ant-steps-item-title"
+                >
+                  projectManage.projectOverview.approvalProcess.createStep
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-steps-item ant-steps-item-process"
+          >
+            <div
+              class="ant-steps-item-container"
+            >
+              <div
+                class="ant-steps-item-tail"
+              />
+              <div
+                class="ant-steps-item-icon"
+              >
+                <span
+                  class="ant-steps-icon"
+                >
+                  2
+                </span>
+              </div>
+              <div
+                class="ant-steps-item-content"
+              >
+                <div
+                  class="ant-steps-item-title"
+                >
+                  projectManage.projectOverview.approvalProcess.exec
+                </div>
+                <div
+                  class="ant-steps-item-description"
+                >
+                  projectManage.projectOverview.approvalProcess.match
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test ApprovalProcess should match snapshot 2`] = `
+<div>
+  <div
+    class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+    style="height: 100%;"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          <div
+            class="ant-space ant-space-horizontal ant-space-align-center"
+          >
+            <div
+              class="ant-space-item"
+              style="margin-right: 12px;"
+            >
+              <span
+                class="ant-typography"
+              >
+                projectManage.projectOverview.approvalProcess.title
+              </span>
+            </div>
+            <div
+              class="ant-space-item"
+            >
+              <a
+                class="font-size-small"
+                href="/project/default/progress/update/test"
+              >
+                projectManage.projectOverview.approvalProcess.action
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="flex-all-center"
+        style="height: 200px;"
+      >
+        <div
+          class="ant-steps ant-steps-horizontal ant-steps-label-vertical"
+        >
+          <div
+            class="ant-steps-item ant-steps-item-process ant-steps-item-active"
+          >
+            <div
+              class="ant-steps-item-container"
+            >
+              <div
+                class="ant-steps-item-tail"
+              />
+              <div
+                class="ant-steps-item-icon"
+              >
+                <span
+                  class="ant-steps-icon"
+                >
+                  1
+                </span>
+              </div>
+              <div
+                class="ant-steps-item-content"
+              >
+                <div
+                  class="ant-steps-item-title"
+                >
+                  projectManage.projectOverview.approvalProcess.createStep
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-steps-item ant-steps-item-process"
+          >
+            <div
+              class="ant-steps-item-container"
+            >
+              <div
+                class="ant-steps-item-tail"
+              />
+              <div
+                class="ant-steps-item-icon"
+              >
+                <span
+                  class="ant-steps-icon"
+                >
+                  2
+                </span>
+              </div>
+              <div
+                class="ant-steps-item-content"
+              >
+                <div
+                  class="ant-steps-item-title"
+                >
+                  projectManage.projectOverview.approvalProcess.review
+                </div>
+                <div
+                  class="ant-steps-item-description"
+                >
+                  projectManage.projectOverview.approvalProcess.match
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-steps-item ant-steps-item-process"
+          >
+            <div
+              class="ant-steps-item-container"
+            >
+              <div
+                class="ant-steps-item-tail"
+              />
+              <div
+                class="ant-steps-item-icon"
+              >
+                <span
+                  class="ant-steps-icon"
+                >
+                  3
+                </span>
+              </div>
+              <div
+                class="ant-steps-item-content"
+              >
+                <div
+                  class="ant-steps-item-title"
+                >
+                  projectManage.projectOverview.approvalProcess.review
+                </div>
+                <div
+                  class="ant-steps-item-description"
+                >
+                  projectManage.projectOverview.approvalProcess.match
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ant-steps-item ant-steps-item-process"
+          >
+            <div
+              class="ant-steps-item-container"
+            >
+              <div
+                class="ant-steps-item-tail"
+              />
+              <div
+                class="ant-steps-item-icon"
+              >
+                <span
+                  class="ant-steps-icon"
+                >
+                  4
+                </span>
+              </div>
+              <div
+                class="ant-steps-item-content"
+              >
+                <div
+                  class="ant-steps-item-title"
+                >
+                  projectManage.projectOverview.approvalProcess.exec
+                </div>
+                <div
+                  class="ant-steps-item-description"
+                >
+                  <div
+                    class="ant-typography ant-typography-ellipsis ant-typography-ellipsis-multiple-line"
+                  >
+                    admin
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test ApprovalProcess should render error message 1`] = `
+<div>
+  <div
+    class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+    style="height: 100%;"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          <div
+            class="ant-space ant-space-horizontal ant-space-align-center"
+          >
+            <div
+              class="ant-space-item"
+              style="margin-right: 12px;"
+            >
+              <span
+                class="ant-typography"
+              >
+                projectManage.projectOverview.approvalProcess.title
+              </span>
+            </div>
+            <div
+              class="ant-space-item"
+            >
+              <a
+                class="font-size-small"
+                href="/project/default/progress/update/undefined"
+              >
+                projectManage.projectOverview.approvalProcess.action
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="ant-result ant-result-error"
+      >
+        <div
+          class="ant-result-icon"
+        >
+          <span
+            aria-label="close-circle"
+            class="anticon anticon-close-circle"
+            role="img"
+          >
+            <svg
+              aria-hidden="true"
+              data-icon="close-circle"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
+              />
+            </svg>
+          </span>
+        </div>
+        <div
+          class="ant-result-title"
+        >
+          common.request.noticeFailTitle
+        </div>
+        <div
+          class="ant-result-subtitle"
+        >
+          error
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

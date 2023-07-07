@@ -1,4 +1,4 @@
-import { PageHeader, Typography } from 'antd';
+import { PageHeader } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router-dom';
 import EnterpriseFeatureDisplay from '../../components/EnterpriseFeatureDisplay/EnterpriseFeatureDisplay';
