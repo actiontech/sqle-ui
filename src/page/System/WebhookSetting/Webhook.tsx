@@ -133,7 +133,7 @@ const WebHook: React.FC = () => {
     useMemo(() => {
       return [
         {
-          label: t('system.dingTalk.enable'),
+          label: t('system.webhook.enableWebhookNotify'),
           span: 3,
           dataIndex: 'enable',
           render: (val) => <>{!!val ? t('common.open') : t('common.close')}</>,

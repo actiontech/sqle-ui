@@ -43,7 +43,7 @@ exports[`webhook should render webhook config after request finish 1`] = `
                       <span
                         class="ant-descriptions-item-label"
                       >
-                        system.dingTalk.enable
+                        system.webhook.enableWebhookNotify
                       </span>
                       <span
                         class="ant-descriptions-item-content"
@@ -281,7 +281,7 @@ exports[`webhook should render webhook config after request finish 2`] = `
                       <span
                         class="ant-descriptions-item-label"
                       >
-                        system.dingTalk.enable
+                        system.webhook.enableWebhookNotify
                       </span>
                       <span
                         class="ant-descriptions-item-content"
@@ -521,7 +521,7 @@ exports[`webhook should update webhook config after user input config form 1`] =
                       <span
                         class="ant-descriptions-item-label"
                       >
-                        system.dingTalk.enable
+                        system.webhook.enableWebhookNotify
                       </span>
                       <span
                         class="ant-descriptions-item-content"
@@ -761,7 +761,7 @@ exports[`webhook should update webhook config after user input config form 2`] =
                       <span
                         class="ant-descriptions-item-label"
                       >
-                        system.dingTalk.enable
+                        system.webhook.enableWebhookNotify
                       </span>
                       <span
                         class="ant-descriptions-item-content"
@@ -1340,7 +1340,7 @@ exports[`webhook should update webhook config after user input config form 3`] =
                       <span
                         class="ant-descriptions-item-label"
                       >
-                        system.dingTalk.enable
+                        system.webhook.enableWebhookNotify
                       </span>
                       <span
                         class="ant-descriptions-item-content"

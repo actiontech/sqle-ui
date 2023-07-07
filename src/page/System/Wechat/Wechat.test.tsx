@@ -37,7 +37,11 @@ describe('wechat', () => {
 
   const mockTestWechat = () => {
     const spy = jest.spyOn(configuration, 'testWeChatConfigurationV1');
-    spy.mockImplementation(() => resolveThreeSecond({}));
+    spy.mockImplementation(() =>
+      resolveThreeSecond({
+        is_wechat_send_normal: true,
+      })
+    );
     return spy;
   };
 
@@ -127,5 +131,32 @@ describe('wechat', () => {
     expect(
       screen.queryByText('system.wechat.testSuccess')
     ).not.toBeInTheDocument();
+  });
+
+  it('should render error message when test wechat config is failed', async () => {
+    const testSpy = mockTestWechat();
+    testSpy.mockImplementation(() =>
+      resolveThreeSecond({
+        is_wechat_send_normal: false,
+        send_error_message: 'error message',
+      })
+    );
+
+    render(<Wechat />);
+    await act(async () => jest.advanceTimersByTime(3000));
+    fireEvent.click(screen.getByText('system.wechat.test'));
+
+    fireEvent.input(screen.getByTestId('receivername'), {
+      target: { value: 'test' },
+    });
+
+    fireEvent.click(screen.getByText('common.ok'));
+
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    expect(screen.getByText('error message')).toBeInTheDocument();
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    expect(screen.queryByText('error message')).not.toBeInTheDocument();
   });
 });

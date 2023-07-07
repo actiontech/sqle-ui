@@ -15,6 +15,8 @@ import {
   RuleTemplateListType,
   SchemaListType,
 } from './index.type';
+import EventEmitter from '../../../../utils/EventEmitter';
+import EmitterKey from '../../../../data/EmitterKey';
 
 const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
   form,
@@ -142,6 +144,18 @@ const DatabaseInfo: React.FC<DatabaseInfoProps> = ({
         getInstanceTipListV1FunctionalModuleEnum.create_workflow,
     });
   }, [projectName, updateInstanceList]);
+
+  useEffect(() => {
+    const resetState = () => {
+      setRuleTemplates(new Map([[0, undefined]]));
+      setSchemaList(new Map([[0, []]]));
+    };
+    EventEmitter.subscribe(EmitterKey.Reset_Create_Order_Form, resetState);
+
+    return () => {
+      EventEmitter.unsubscribe(EmitterKey.Reset_Create_Order_Form, resetState);
+    };
+  }, []);
 
   return (
     <Form.List name="dataBaseInfo" initialValue={[{}]}>

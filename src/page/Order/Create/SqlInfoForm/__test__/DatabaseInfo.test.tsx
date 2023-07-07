@@ -11,6 +11,8 @@ import { RuleUrlParamKey } from '../../../../Rule/useRuleFilterForm';
 import DatabaseInfo from '../DatabaseInfo';
 import { renderHook } from '@testing-library/react-hooks';
 import { mockGetInstance } from './common';
+import EventEmitter from '../../../../../utils/EventEmitter';
+import EmitterKey from '../../../../../data/EmitterKey';
 
 const selectOptionByIndex = (
   label: string,
@@ -354,5 +356,13 @@ describe('test Order/Create/SqlInfoForm/DatabaseInfo', () => {
     ).toBe(
       `/rule?${RuleUrlParamKey.ruleTemplateName}=default_rule_template&${RuleUrlParamKey.projectName}=${projectName}`
     );
+
+    await act(() => {
+      EventEmitter.emit(EmitterKey.Reset_Create_Order_Form);
+    });
+
+    expect(
+      screen.queryByText('rule.form.ruleTemplate: default_rule_template')
+    ).not.toBeInTheDocument();
   });
 });
