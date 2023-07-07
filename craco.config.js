@@ -61,6 +61,7 @@ module.exports = {
         '!src/components/EditText/index.ts',
         '!src/hooks/useOperation/index.tsx',
         '!src/page/AuditPlan/PlanForm/AuditTaskType/index.tsx',
+        '!src/page/ProjectManage/ProjectOverview/Chats/CommonGauge/registerShape.ts',
       ],
       moduleNameMapper: {
         'react-monaco-editor': '<rootDir>/src/testUtils/mockEditor.jsx',

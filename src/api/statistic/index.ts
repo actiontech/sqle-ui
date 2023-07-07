@@ -7,6 +7,22 @@ import ServiceBase from '../Service.base';
 import { AxiosRequestConfig } from 'axios';
 
 import {
+  IStatisticAuditPlanV1Params,
+  IStatisticAuditPlanV1Return,
+  IStatisticsAuditedSQLV1Params,
+  IStatisticsAuditedSQLV1Return,
+  IGetInstanceHealthV1Params,
+  IGetInstanceHealthV1Return,
+  IGetProjectScoreV1Params,
+  IGetProjectScoreV1Return,
+  IGetRiskAuditPlanV1Params,
+  IGetRiskAuditPlanV1Return,
+  IStatisticRiskWorkflowV1Params,
+  IStatisticRiskWorkflowV1Return,
+  IGetRoleUserCountV1Params,
+  IGetRoleUserCountV1Return,
+  IStatisticWorkflowStatusV1Params,
+  IStatisticWorkflowStatusV1Return,
   IGetProjectStatisticsV1Params,
   IGetProjectStatisticsV1Return,
   IGetSqlAverageExecutionTimeV1Params,
@@ -31,6 +47,126 @@ import {
 } from './index.d';
 
 class StatisticService extends ServiceBase {
+  public statisticAuditPlanV1(
+    params: IStatisticAuditPlanV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.get<IStatisticAuditPlanV1Return>(
+      `/v1/projects/${project_name}/statistic/audit_plans`,
+      paramsData,
+      options
+    );
+  }
+
+  public statisticsAuditedSQLV1(
+    params: IStatisticsAuditedSQLV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.get<IStatisticsAuditedSQLV1Return>(
+      `/v1/projects/${project_name}/statistic/audited_sqls`,
+      paramsData,
+      options
+    );
+  }
+
+  public GetInstanceHealthV1(
+    params: IGetInstanceHealthV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.get<IGetInstanceHealthV1Return>(
+      `/v1/projects/${project_name}/statistic/instance_health`,
+      paramsData,
+      options
+    );
+  }
+
+  public GetProjectScoreV1(
+    params: IGetProjectScoreV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.get<IGetProjectScoreV1Return>(
+      `/v1/projects/${project_name}/statistic/project_score`,
+      paramsData,
+      options
+    );
+  }
+
+  public getRiskAuditPlanV1(
+    params: IGetRiskAuditPlanV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.get<IGetRiskAuditPlanV1Return>(
+      `/v1/projects/${project_name}/statistic/risk_audit_plans`,
+      paramsData,
+      options
+    );
+  }
+
+  public statisticRiskWorkflowV1(
+    params: IStatisticRiskWorkflowV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.get<IStatisticRiskWorkflowV1Return>(
+      `/v1/projects/${project_name}/statistic/risk_workflow`,
+      paramsData,
+      options
+    );
+  }
+
+  public getRoleUserCountV1(
+    params: IGetRoleUserCountV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.get<IGetRoleUserCountV1Return>(
+      `/v1/projects/${project_name}/statistic/role_user`,
+      paramsData,
+      options
+    );
+  }
+
+  public statisticWorkflowStatusV1(
+    params: IStatisticWorkflowStatusV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.get<IStatisticWorkflowStatusV1Return>(
+      `/v1/projects/${project_name}/statistic/workflow_status`,
+      paramsData,
+      options
+    );
+  }
+
   public getProjectStatisticsV1(
     params: IGetProjectStatisticsV1Params,
     options?: AxiosRequestConfig

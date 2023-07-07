@@ -108,19 +108,18 @@ exports[`test ProjectOverview should match snapshot 1`] = `
         </div>
       </div>
     </div>
-    <section
-      class="padding-content"
-    >
+    <section>
       <div
-        class="ant-row"
-        style="margin: -16px -24px -16px -24px;"
+        class="react-grid-layout"
+        style="height: 3368px;"
       >
         <div
-          class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 24px 16px 24px;"
+          class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
+          style="height: 280px; position: absolute; transform: translate(24px,24px); width: -48px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+            style="height: 100%;"
           >
             <div
               class="ant-card-head"
@@ -131,303 +130,43 @@ exports[`test ProjectOverview should match snapshot 1`] = `
                 <div
                   class="ant-card-head-title"
                 >
-                  projectManage.projectOverview.orderTotal
-                </div>
-              </div>
-            </div>
-            <div
-              class="ant-card-body"
-            >
-              <a
-                class="ant-typography"
-              >
-                12
-              </a>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 24px 16px 24px;"
-        >
-          <div
-            class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
-          >
-            <div
-              class="ant-card-head"
-            >
-              <div
-                class="ant-card-head-wrapper"
-              >
-                <div
-                  class="ant-card-head-title"
-                >
-                  projectManage.projectOverview.auditPlanTotal
-                </div>
-              </div>
-            </div>
-            <div
-              class="ant-card-body"
-            >
-              <a
-                class="ant-typography"
-              >
-                10
-              </a>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 24px 16px 24px;"
-        >
-          <div
-            class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
-          >
-            <div
-              class="ant-card-head"
-            >
-              <div
-                class="ant-card-head-wrapper"
-              >
-                <div
-                  class="ant-card-head-title"
-                >
-                  projectManage.projectOverview.instanceTotal
-                </div>
-              </div>
-            </div>
-            <div
-              class="ant-card-body"
-            >
-              <a
-                class="ant-typography"
-              >
-                3
-              </a>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 24px 16px 24px;"
-        >
-          <div
-            class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
-          >
-            <div
-              class="ant-card-head"
-            >
-              <div
-                class="ant-card-head-wrapper"
-              >
-                <div
-                  class="ant-card-head-title"
-                >
-                  projectManage.projectOverview.memberTotal
-                </div>
-              </div>
-            </div>
-            <div
-              class="ant-card-body"
-            >
-              <a
-                class="ant-typography"
-              >
-                22
-              </a>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 24px 16px 24px;"
-        >
-          <div
-            class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
-          >
-            <div
-              class="ant-card-head"
-            >
-              <div
-                class="ant-card-head-wrapper"
-              >
-                <div
-                  class="ant-card-head-title"
-                >
-                  projectManage.projectOverview.ruleTemplateTotal
-                </div>
-              </div>
-            </div>
-            <div
-              class="ant-card-body"
-            >
-              <a
-                class="ant-typography"
-              >
-                12
-              </a>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 24px 16px 24px;"
-        >
-          <div
-            class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
-          >
-            <div
-              class="ant-card-head"
-            >
-              <div
-                class="ant-card-head-wrapper"
-              >
-                <div
-                  class="ant-card-head-title"
-                >
-                  projectManage.projectOverview.whiteListTotal
-                </div>
-              </div>
-            </div>
-            <div
-              class="ant-card-body"
-            >
-              <a
-                class="ant-typography"
-              >
-                3
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </article>
-</div>
-`;
-
-exports[`test ProjectOverview should match snapshot when get project statistics is wrong 1`] = `
-<div>
-  <article>
-    <div
-      class="ant-page-header"
-    >
-      <div
-        class="ant-page-header-heading"
-      >
-        <div
-          class="ant-page-header-heading-left"
-        >
-          <span
-            class="ant-page-header-heading-title"
-            title="projectManage.projectOverview.pageTitle"
-          >
-            projectManage.projectOverview.pageTitle
-          </span>
-        </div>
-        <span
-          class="ant-page-header-heading-extra"
-        >
-          <div
-            class="ant-space ant-space-horizontal ant-space-align-center"
-          >
-            <div
-              class="ant-space-item"
-            >
-              <button
-                class="ant-btn ant-btn-default"
-                data-testid="refresh-project-info"
-                type="button"
-              >
-                <span
-                  aria-label="sync"
-                  class="anticon anticon-sync"
-                  role="img"
-                >
-                  <svg
-                    aria-hidden="true"
-                    data-icon="sync"
-                    fill="currentColor"
-                    focusable="false"
-                    height="1em"
-                    viewBox="64 64 896 896"
-                    width="1em"
+                  <span
+                    class="ant-typography"
                   >
-                    <path
-                      d="M168 504.2c1-43.7 10-86.1 26.9-126 17.3-41 42.1-77.7 73.7-109.4S337 212.3 378 195c42.4-17.9 87.4-27 133.9-27s91.5 9.1 133.8 27A341.5 341.5 0 01755 268.8c9.9 9.9 19.2 20.4 27.8 31.4l-60.2 47a8 8 0 003 14.1l175.7 43c5 1.2 9.9-2.6 9.9-7.7l.8-180.9c0-6.7-7.7-10.5-12.9-6.3l-56.4 44.1C765.8 155.1 646.2 92 511.8 92 282.7 92 96.3 275.6 92 503.8a8 8 0 008 8.2h60c4.4 0 7.9-3.5 8-7.8zm756 7.8h-60c-4.4 0-7.9 3.5-8 7.8-1 43.7-10 86.1-26.9 126-17.3 41-42.1 77.8-73.7 109.4A342.45 342.45 0 01512.1 856a342.24 342.24 0 01-243.2-100.8c-9.9-9.9-19.2-20.4-27.8-31.4l60.2-47a8 8 0 00-3-14.1l-175.7-43c-5-1.2-9.9 2.6-9.9 7.7l-.7 181c0 6.7 7.7 10.5 12.9 6.3l56.4-44.1C258.2 868.9 377.8 932 512.2 932c229.2 0 415.5-183.7 419.8-411.8a8 8 0 00-8-8.2z"
-                    />
-                  </svg>
-                </span>
-              </button>
+                    projectManage.projectOverview.projectScore.title
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-card-body"
+            >
+              <div
+                axis="{\\"label\\":null}"
+                h="1"
+                height="200"
+                indicator="{\\"shape\\":\\"triangle-gauge-indicator\\",\\"pointer\\":{\\"style\\":{\\"fill\\":\\"#30BF78\\"}}}"
+                locale="zh-CN"
+                padding="auto"
+                percent="0.85"
+                range="{\\"ticks\\":[0,0.25,0.5,0.75,1],\\"color\\":[\\"#F4664A\\",\\"#FAAD14\\",\\"#59d9f9\\",\\"#30BF78\\"]}"
+                statistic="{\\"content\\":{\\"style\\":{\\"fontSize\\":\\"16px\\",\\"lineHeight\\":\\"16px\\",\\"color\\":\\"#30BF78\\"}}}"
+                theme="light"
+                type="meter"
+              />
             </div>
           </div>
-        </span>
-      </div>
-      <div
-        class="ant-page-header-content"
-      >
-        <div
-          class="ant-space ant-space-horizontal ant-space-align-center"
-          style="flex-wrap: wrap; margin-bottom: -24px;"
-        >
-          <div
-            class="ant-space-item"
-            style="margin-right: 24px; padding-bottom: 24px;"
-          >
-            <span
-              class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-            >
-              projectManage.projectInfoBox.name
-            </span>
-          </div>
-          <div
-            class="ant-space-item"
-            style="margin-right: 24px; padding-bottom: 24px;"
-          >
-            <span
-              class="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-              style="max-width: 300px;"
-            >
-              projectManage.projectInfoBox.desc
-            </span>
-          </div>
-          <div
-            class="ant-space-item"
-            style="margin-right: 24px; padding-bottom: 24px;"
-          >
-            <span
-              class="ant-typography"
-            >
-              projectManage.projectInfoBox.createTime
-            </span>
-          </div>
-          <div
-            class="ant-space-item"
-            style="padding-bottom: 24px;"
-          >
-            <span
-              class="ant-typography"
-            >
-              projectManage.projectInfoBox.createUser
-            </span>
-          </div>
+          <span
+            class="react-resizable-handle react-resizable-handle-se"
+          />
         </div>
-      </div>
-    </div>
-    <section
-      class="padding-content"
-    >
-      <div
-        class="ant-row"
-        style="margin: -16px -24px -16px -24px;"
-      >
         <div
-          class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 24px 16px 24px;"
+          class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
+          style="height: 280px; position: absolute; transform: translate(24px,328px); width: -48px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+            style="height: 100%;"
           >
             <div
               class="ant-card-head"
@@ -438,27 +177,45 @@ exports[`test ProjectOverview should match snapshot when get project statistics 
                 <div
                   class="ant-card-head-title"
                 >
-                  projectManage.projectOverview.orderTotal
+                  <span
+                    class="ant-typography"
+                  >
+                    projectManage.projectOverview.sqlCount.title
+                  </span>
                 </div>
               </div>
             </div>
             <div
               class="ant-card-body"
             >
-              <a
-                class="ant-typography"
-              >
-                --
-              </a>
+              <div
+                annotations="[{\\"type\\":\\"html\\",\\"position\\":[\\"50%\\",\\"50%\\"]}]"
+                color="[\\"#fbd44d\\",\\"#42a2ff\\"]"
+                colorfield="type"
+                data="[{\\"type\\":\\"projectManage.projectOverview.sqlCount.riskSQL\\",\\"value\\":420},{\\"type\\":\\"projectManage.projectOverview.sqlCount.SQLCount\\",\\"value\\":1200}]"
+                height="200"
+                innerradius="0.8"
+                legend="{\\"position\\":\\"right\\",\\"layout\\":\\"vertical\\",\\"animate\\":true}"
+                locale="zh-CN"
+                maxangle="360"
+                radius="1"
+                theme="light"
+                xfield="type"
+                yfield="value"
+              />
             </div>
           </div>
+          <span
+            class="react-resizable-handle react-resizable-handle-se"
+          />
         </div>
         <div
-          class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 24px 16px 24px;"
+          class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
+          style="height: 280px; position: absolute; transform: translate(24px,632px); width: -48px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+            style="height: 100%;"
           >
             <div
               class="ant-card-head"
@@ -469,27 +226,88 @@ exports[`test ProjectOverview should match snapshot when get project statistics 
                 <div
                   class="ant-card-head-title"
                 >
-                  projectManage.projectOverview.auditPlanTotal
+                  <div
+                    class="ant-space ant-space-horizontal ant-space-align-center"
+                  >
+                    <div
+                      class="ant-space-item"
+                      style="margin-right: 8px;"
+                    >
+                      <span
+                        class="ant-typography"
+                      >
+                        projectManage.projectOverview.dataSourceCount.title
+                      </span>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                    >
+                      <span
+                        aria-label="info-circle"
+                        class="anticon anticon-info-circle text-orange"
+                        role="img"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          data-icon="info-circle"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                          />
+                          <path
+                            d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-card-extra"
+                >
+                  <a
+                    href="/project/default/data"
+                  >
+                    common.showMore
+                  </a>
                 </div>
               </div>
             </div>
             <div
               class="ant-card-body"
             >
-              <a
-                class="ant-typography"
-              >
-                --
-              </a>
+              <div
+                color="[\\"#fbd44d\\",\\"#42a2ff\\"]"
+                data="[{\\"type\\":\\"MySQL\\",\\"value\\":4,\\"category\\":\\"risk\\",\\"instanceNames\\":\\"mysql-4、mysql-5、mysql-6、mysql-7\\"},{\\"type\\":\\"MySQL\\",\\"value\\":3,\\"category\\":\\"health\\",\\"instanceNames\\":\\"mysql-1、mysql-2、mysql-3\\"},{\\"type\\":\\"Oracle\\",\\"value\\":2,\\"category\\":\\"risk\\",\\"instanceNames\\":\\"oracle-4、oracle-5\\"},{\\"type\\":\\"Oracle\\",\\"value\\":3,\\"category\\":\\"health\\",\\"instanceNames\\":\\"oracle-1、oracle-2、oracle-3\\"},{\\"type\\":\\"DB2\\",\\"value\\":2,\\"category\\":\\"risk\\",\\"instanceNames\\":\\"db-5、db-6\\"},{\\"type\\":\\"DB2\\",\\"value\\":4,\\"category\\":\\"health\\",\\"instanceNames\\":\\"db-1、db-2、db-3、db-4\\"}]"
+                height="200"
+                legend="{\\"position\\":\\"right\\",\\"itemName\\":{}}"
+                locale="zh-CN"
+                maxcolumnwidth="40"
+                mincolumnwidth="10"
+                seriesfield="category"
+                theme="light"
+                tooltip="{\\"shared\\":false}"
+                xfield="type"
+                yfield="value"
+              />
             </div>
           </div>
+          <span
+            class="react-resizable-handle react-resizable-handle-se"
+          />
         </div>
         <div
-          class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 24px 16px 24px;"
+          class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
+          style="height: 432px; position: absolute; transform: translate(24px,936px); width: -48px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+            style="height: 100%;"
           >
             <div
               class="ant-card-head"
@@ -500,27 +318,61 @@ exports[`test ProjectOverview should match snapshot when get project statistics 
                 <div
                   class="ant-card-head-title"
                 >
-                  projectManage.projectOverview.instanceTotal
+                  <div
+                    class="ant-space ant-space-horizontal ant-space-align-center"
+                  >
+                    <div
+                      class="ant-space-item"
+                      style="margin-right: 12px;"
+                    >
+                      <span
+                        class="ant-typography"
+                      >
+                        projectManage.projectOverview.orderClassification.title
+                      </span>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                    >
+                      <a
+                        class="font-size-small"
+                        href="/project/default/order/create"
+                      >
+                        order.createOrder.button
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <div
               class="ant-card-body"
             >
-              <a
-                class="ant-typography"
-              >
-                --
-              </a>
+              <div
+                anglefield="value"
+                color="[\\"#42a2ff\\",\\"#43cb77\\",\\"#fbd44d\\",\\"#f04864\\",\\"#9963e5\\",\\"#46cbcb\\"]"
+                colorfield="status"
+                data="[{\\"value\\":32,\\"status\\":\\"reportStatistics.orderStatus.waitingForAudit\\"},{\\"value\\":0,\\"status\\":\\"reportStatistics.orderStatus.waitingForExecution\\"},{\\"value\\":20,\\"status\\":\\"reportStatistics.orderStatus.executionSuccess\\"},{\\"value\\":11,\\"status\\":\\"reportStatistics.orderStatus.executionFailed\\"},{\\"value\\":33,\\"status\\":\\"reportStatistics.orderStatus.rejected\\"},{\\"value\\":10,\\"status\\":\\"reportStatistics.orderStatus.closed\\"}]"
+                height="352"
+                innerradius="0.8"
+                locale="zh-CN"
+                padding="auto"
+                radius="1"
+                theme="light"
+              />
             </div>
           </div>
+          <span
+            class="react-resizable-handle react-resizable-handle-se"
+          />
         </div>
         <div
-          class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 24px 16px 24px;"
+          class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
+          style="height: 432px; position: absolute; transform: translate(24px,1392px); width: -48px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+            style="height: 100%;"
           >
             <div
               class="ant-card-head"
@@ -531,27 +383,184 @@ exports[`test ProjectOverview should match snapshot when get project statistics 
                 <div
                   class="ant-card-head-title"
                 >
-                  projectManage.projectOverview.memberTotal
+                  <span
+                    class="ant-typography"
+                  >
+                    projectManage.projectOverview.orderRisk.title
+                  </span>
+                </div>
+                <div
+                  class="ant-card-extra"
+                >
+                  <a
+                    href="/project/default/order"
+                  >
+                    common.showMore
+                  </a>
                 </div>
               </div>
             </div>
             <div
               class="ant-card-body"
             >
-              <a
-                class="ant-typography"
+              <div
+                class="ant-table-wrapper"
               >
-                --
-              </a>
+                <div
+                  class="ant-spin-nested-loading"
+                >
+                  <div
+                    class="ant-spin-container"
+                  >
+                    <div
+                      class="ant-table ant-table-small ant-table-fixed-header"
+                    >
+                      <div
+                        class="ant-table-container"
+                      >
+                        <div
+                          class="ant-table-header"
+                          style="overflow: hidden;"
+                        >
+                          <table
+                            style="table-layout: fixed; visibility: hidden;"
+                          >
+                            <colgroup />
+                            <thead
+                              class="ant-table-thead"
+                            >
+                              <tr>
+                                <th
+                                  class="ant-table-cell"
+                                >
+                                  projectManage.projectOverview.orderRisk.tableColumn.name
+                                </th>
+                                <th
+                                  class="ant-table-cell"
+                                >
+                                  projectManage.projectOverview.orderRisk.tableColumn.status
+                                </th>
+                                <th
+                                  class="ant-table-cell"
+                                >
+                                  projectManage.projectOverview.orderRisk.tableColumn.time
+                                </th>
+                                <th
+                                  class="ant-table-cell"
+                                >
+                                  projectManage.projectOverview.orderRisk.tableColumn.createUser
+                                </th>
+                              </tr>
+                            </thead>
+                          </table>
+                        </div>
+                        <div
+                          class="ant-table-body"
+                          style="overflow-y: scroll; max-height: 302px;"
+                        >
+                          <table
+                            style="table-layout: fixed;"
+                          >
+                            <colgroup />
+                            <tbody
+                              class="ant-table-tbody"
+                            >
+                              <tr
+                                aria-hidden="true"
+                                class="ant-table-measure-row"
+                                style="height: 0px; font-size: 0px;"
+                              >
+                                <td
+                                  style="padding: 0px; border: 0px; height: 0px;"
+                                >
+                                  <div
+                                    style="height: 0px; overflow: hidden;"
+                                  >
+                                     
+                                  </div>
+                                </td>
+                                <td
+                                  style="padding: 0px; border: 0px; height: 0px;"
+                                >
+                                  <div
+                                    style="height: 0px; overflow: hidden;"
+                                  >
+                                     
+                                  </div>
+                                </td>
+                                <td
+                                  style="padding: 0px; border: 0px; height: 0px;"
+                                >
+                                  <div
+                                    style="height: 0px; overflow: hidden;"
+                                  >
+                                     
+                                  </div>
+                                </td>
+                                <td
+                                  style="padding: 0px; border: 0px; height: 0px;"
+                                >
+                                  <div
+                                    style="height: 0px; overflow: hidden;"
+                                  >
+                                     
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr
+                                class="ant-table-row ant-table-row-level-0"
+                                data-row-key="123"
+                              >
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  <a
+                                    href="/project/default/order/123"
+                                  >
+                                    test
+                                  </a>
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  <span
+                                    class="ant-tag ant-tag-orange"
+                                  >
+                                    order.status.exec_failed
+                                  </span>
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  2022-06-09 08:11:52
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  admin
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+          <span
+            class="react-resizable-handle react-resizable-handle-se"
+          />
         </div>
         <div
-          class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 24px 16px 24px;"
+          class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
+          style="height: 432px; position: absolute; transform: translate(24px,1848px); width: -48px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+            style="height: 100%;"
           >
             <div
               class="ant-card-head"
@@ -562,27 +571,63 @@ exports[`test ProjectOverview should match snapshot when get project statistics 
                 <div
                   class="ant-card-head-title"
                 >
-                  projectManage.projectOverview.ruleTemplateTotal
+                  <div
+                    class="ant-space ant-space-horizontal ant-space-align-center"
+                  >
+                    <div
+                      class="ant-space-item"
+                      style="margin-right: 12px;"
+                    >
+                      <span
+                        class="ant-typography"
+                      >
+                        projectManage.projectOverview.auditPlanClassification.title
+                      </span>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                    >
+                      <a
+                        class="font-size-small"
+                        href="/project/default/auditPlan/create"
+                      >
+                        auditPlan.action.create
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <div
               class="ant-card-body"
             >
-              <a
-                class="ant-typography"
-              >
-                --
-              </a>
+              <div
+                color="[\\"#fbd44d\\",\\"#43cb77\\",\\"#42a2ff\\"]"
+                data="[{\\"type\\":\\"MySQL\\",\\"value\\":1,\\"category\\":\\"desc1\\"},{\\"type\\":\\"MySQL\\",\\"value\\":3,\\"category\\":\\"desc2\\"},{\\"type\\":\\"Oracle\\",\\"value\\":2,\\"category\\":\\"desc1\\"},{\\"type\\":\\"Oracle\\",\\"value\\":1,\\"category\\":\\"desc2\\"}]"
+                height="352"
+                legend="{\\"position\\":\\"bottom\\"}"
+                locale="zh-CN"
+                maxcolumnwidth="40"
+                mincolumnwidth="6"
+                seriesfield="category"
+                theme="light"
+                tooltip="{\\"shared\\":false}"
+                xfield="type"
+                yfield="value"
+              />
             </div>
           </div>
+          <span
+            class="react-resizable-handle react-resizable-handle-se"
+          />
         </div>
         <div
-          class="ant-col ant-col-8 gutter-row"
-          style="padding: 16px 24px 16px 24px;"
+          class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
+          style="height: 432px; position: absolute; transform: translate(24px,2304px); width: -48px;"
         >
           <div
             class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+            style="height: 100%;"
           >
             <div
               class="ant-card-head"
@@ -593,20 +638,454 @@ exports[`test ProjectOverview should match snapshot when get project statistics 
                 <div
                   class="ant-card-head-title"
                 >
-                  projectManage.projectOverview.whiteListTotal
+                  <span
+                    class="ant-typography"
+                  >
+                    projectManage.projectOverview.auditPlanRisk.title
+                  </span>
+                </div>
+                <div
+                  class="ant-card-extra"
+                >
+                  <a
+                    href="/project/default/auditPlan"
+                  >
+                    common.showMore
+                  </a>
                 </div>
               </div>
             </div>
             <div
               class="ant-card-body"
             >
-              <a
-                class="ant-typography"
+              <div
+                class="ant-table-wrapper"
               >
-                --
-              </a>
+                <div
+                  class="ant-spin-nested-loading"
+                >
+                  <div
+                    class="ant-spin-container"
+                  >
+                    <div
+                      class="ant-table ant-table-small ant-table-fixed-header"
+                    >
+                      <div
+                        class="ant-table-container"
+                      >
+                        <div
+                          class="ant-table-header"
+                          style="overflow: hidden;"
+                        >
+                          <table
+                            style="table-layout: fixed; visibility: hidden;"
+                          >
+                            <colgroup />
+                            <thead
+                              class="ant-table-thead"
+                            >
+                              <tr>
+                                <th
+                                  class="ant-table-cell"
+                                >
+                                  projectManage.projectOverview.auditPlanRisk.tableColumn.name
+                                </th>
+                                <th
+                                  class="ant-table-cell"
+                                >
+                                  projectManage.projectOverview.auditPlanRisk.tableColumn.source
+                                </th>
+                                <th
+                                  class="ant-table-cell"
+                                >
+                                  projectManage.projectOverview.auditPlanRisk.tableColumn.time
+                                </th>
+                                <th
+                                  class="ant-table-cell"
+                                >
+                                  projectManage.projectOverview.auditPlanRisk.tableColumn.count
+                                </th>
+                              </tr>
+                            </thead>
+                          </table>
+                        </div>
+                        <div
+                          class="ant-table-body"
+                          style="overflow-y: scroll; max-height: 302px;"
+                        >
+                          <table
+                            style="table-layout: fixed;"
+                          >
+                            <colgroup>
+                              <col />
+                              <col
+                                style="width: 20%;"
+                              />
+                              <col />
+                              <col
+                                style="width: 10%;"
+                              />
+                            </colgroup>
+                            <tbody
+                              class="ant-table-tbody"
+                            >
+                              <tr
+                                aria-hidden="true"
+                                class="ant-table-measure-row"
+                                style="height: 0px; font-size: 0px;"
+                              >
+                                <td
+                                  style="padding: 0px; border: 0px; height: 0px;"
+                                >
+                                  <div
+                                    style="height: 0px; overflow: hidden;"
+                                  >
+                                     
+                                  </div>
+                                </td>
+                                <td
+                                  style="padding: 0px; border: 0px; height: 0px;"
+                                >
+                                  <div
+                                    style="height: 0px; overflow: hidden;"
+                                  >
+                                     
+                                  </div>
+                                </td>
+                                <td
+                                  style="padding: 0px; border: 0px; height: 0px;"
+                                >
+                                  <div
+                                    style="height: 0px; overflow: hidden;"
+                                  >
+                                     
+                                  </div>
+                                </td>
+                                <td
+                                  style="padding: 0px; border: 0px; height: 0px;"
+                                >
+                                  <div
+                                    style="height: 0px; overflow: hidden;"
+                                  >
+                                     
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr
+                                class="ant-table-row ant-table-row-level-0"
+                                data-row-key="1"
+                              >
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  <a
+                                    data-testid="report-time"
+                                    href="/project/default/auditPlan/detail/name/report/1"
+                                  >
+                                    auditPlan.record.generateTime 2022-06-09 08:11:52
+                                  </a>
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  <a
+                                    href="/project/default/auditPlan/detail/name"
+                                  >
+                                    name
+                                  </a>
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  2022-06-09 08:11:52
+                                </td>
+                                <td
+                                  class="ant-table-cell"
+                                >
+                                  <span
+                                    class="ant-typography"
+                                  >
+                                    <strong>
+                                      33
+                                    </strong>
+                                  </span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+          <span
+            class="react-resizable-handle react-resizable-handle-se"
+          />
+        </div>
+        <div
+          class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
+          style="height: 280px; position: absolute; transform: translate(24px,2760px); width: -48px;"
+        >
+          <div
+            class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+            style="height: 100%;"
+          >
+            <div
+              class="ant-card-head"
+            >
+              <div
+                class="ant-card-head-wrapper"
+              >
+                <div
+                  class="ant-card-head-title"
+                >
+                  <div
+                    class="ant-space ant-space-horizontal ant-space-align-center"
+                  >
+                    <div
+                      class="ant-space-item"
+                      style="margin-right: 12px;"
+                    >
+                      <span
+                        class="ant-typography"
+                      >
+                        projectManage.projectOverview.memberInfo.title
+                      </span>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                    >
+                      <a
+                        class="font-size-small"
+                        href="/project/default/member"
+                      >
+                        projectManage.projectOverview.memberInfo.action
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-card-body"
+            >
+              <div
+                color="#42a2ff"
+                data="[{\\"type\\":\\"dev\\",\\"value\\":12},{\\"type\\":\\"dba\\",\\"value\\":22}]"
+                height="200"
+                locale="zh-CN"
+                maxcolumnwidth="40"
+                meta="{\\"value\\":{\\"alias\\":\\"projectManage.projectOverview.memberInfo.count\\"}}"
+                mincolumnwidth="10"
+                theme="light"
+                xfield="type"
+                yfield="value"
+              />
+            </div>
+          </div>
+          <span
+            class="react-resizable-handle react-resizable-handle-se"
+          />
+        </div>
+        <div
+          class="react-grid-item static cssTransforms react-resizable-hide react-resizable"
+          style="height: 280px; position: absolute; transform: translate(24px,3064px); width: -48px;"
+        >
+          <div
+            class="ant-card ant-card-bordered ant-card-hoverable ant-card-type-inner"
+            style="height: 100%;"
+          >
+            <div
+              class="ant-card-head"
+            >
+              <div
+                class="ant-card-head-wrapper"
+              >
+                <div
+                  class="ant-card-head-title"
+                >
+                  <div
+                    class="ant-space ant-space-horizontal ant-space-align-center"
+                  >
+                    <div
+                      class="ant-space-item"
+                      style="margin-right: 12px;"
+                    >
+                      <span
+                        class="ant-typography"
+                      >
+                        projectManage.projectOverview.approvalProcess.title
+                      </span>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                    >
+                      <a
+                        class="font-size-small"
+                        href="/project/default/progress/update/test"
+                      >
+                        projectManage.projectOverview.approvalProcess.action
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ant-card-body"
+            >
+              <div
+                class="flex-all-center"
+                style="height: 200px;"
+              >
+                <div
+                  class="ant-steps ant-steps-horizontal ant-steps-label-vertical"
+                >
+                  <div
+                    class="ant-steps-item ant-steps-item-process ant-steps-item-active"
+                  >
+                    <div
+                      class="ant-steps-item-container"
+                    >
+                      <div
+                        class="ant-steps-item-tail"
+                      />
+                      <div
+                        class="ant-steps-item-icon"
+                      >
+                        <span
+                          class="ant-steps-icon"
+                        >
+                          1
+                        </span>
+                      </div>
+                      <div
+                        class="ant-steps-item-content"
+                      >
+                        <div
+                          class="ant-steps-item-title"
+                        >
+                          projectManage.projectOverview.approvalProcess.createStep
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="ant-steps-item ant-steps-item-process"
+                  >
+                    <div
+                      class="ant-steps-item-container"
+                    >
+                      <div
+                        class="ant-steps-item-tail"
+                      />
+                      <div
+                        class="ant-steps-item-icon"
+                      >
+                        <span
+                          class="ant-steps-icon"
+                        >
+                          2
+                        </span>
+                      </div>
+                      <div
+                        class="ant-steps-item-content"
+                      >
+                        <div
+                          class="ant-steps-item-title"
+                        >
+                          projectManage.projectOverview.approvalProcess.review
+                        </div>
+                        <div
+                          class="ant-steps-item-description"
+                        >
+                          projectManage.projectOverview.approvalProcess.match
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="ant-steps-item ant-steps-item-process"
+                  >
+                    <div
+                      class="ant-steps-item-container"
+                    >
+                      <div
+                        class="ant-steps-item-tail"
+                      />
+                      <div
+                        class="ant-steps-item-icon"
+                      >
+                        <span
+                          class="ant-steps-icon"
+                        >
+                          3
+                        </span>
+                      </div>
+                      <div
+                        class="ant-steps-item-content"
+                      >
+                        <div
+                          class="ant-steps-item-title"
+                        >
+                          projectManage.projectOverview.approvalProcess.review
+                        </div>
+                        <div
+                          class="ant-steps-item-description"
+                        >
+                          projectManage.projectOverview.approvalProcess.match
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="ant-steps-item ant-steps-item-process"
+                  >
+                    <div
+                      class="ant-steps-item-container"
+                    >
+                      <div
+                        class="ant-steps-item-tail"
+                      />
+                      <div
+                        class="ant-steps-item-icon"
+                      >
+                        <span
+                          class="ant-steps-icon"
+                        >
+                          4
+                        </span>
+                      </div>
+                      <div
+                        class="ant-steps-item-content"
+                      >
+                        <div
+                          class="ant-steps-item-title"
+                        >
+                          projectManage.projectOverview.approvalProcess.exec
+                        </div>
+                        <div
+                          class="ant-steps-item-description"
+                        >
+                          <div
+                            class="ant-typography ant-typography-ellipsis ant-typography-ellipsis-multiple-line"
+                          >
+                            admin
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span
+            class="react-resizable-handle react-resizable-handle-se"
+          />
         </div>
       </div>
     </section>

@@ -1,40 +1,47 @@
 import { SyncOutlined } from '@ant-design/icons';
 import { useRequest } from 'ahooks';
-import { Button, Card, Col, PageHeader, Row, Spin, Typography } from 'antd';
+import { Button, PageHeader } from 'antd';
 import { useTranslation } from 'react-i18next';
 import project from '../../../api/project';
-import statistic from '../../../api/statistic';
-import EmptyBox from '../../../components/EmptyBox';
-import useNavigate from '../../../hooks/useNavigate';
 import { useCurrentProjectName } from '../ProjectDetail';
 import ProjectInfoBox from './ProjectInfoBox';
+import useResizeObserver from 'use-resize-observer';
+import { Responsive, ResponsiveProps } from 'react-grid-layout';
+import { ComponentType } from 'react';
+import { useTheme } from '@mui/styles';
+import { projectOverviewData } from './index.data';
+import { ProjectOverviewPanelEnum } from './index.enum';
+import {
+  ApprovalProcess,
+  AuditPlanClassification,
+  DataSourceCount,
+  MemberInfo,
+  OrderClassification,
+  OrderRisk,
+  PanelCommonProps,
+  ProjectScore,
+  SqlCount,
+} from './Panel';
+import AuditPlanRisk from './Panel/AuditPlanRisk';
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshProjectOverview } from '../../../store/projectManage';
+import { IReduxState } from '../../../store';
 
-const renderCard = ({
-  title,
-  handleClick,
-  content = '--',
-}: {
-  title: string;
-  handleClick: () => void;
-  content?: number | string;
-}) => {
-  return (
-    <Card
-      title={title}
-      hoverable={true}
-      type="inner"
-      bordered
-      onClick={handleClick}
-    >
-      <Typography.Link>{content}</Typography.Link>
-    </Card>
-  );
-};
+const ResponsiveReactGridLayout = Responsive as ComponentType<ResponsiveProps>;
+const { rowHeight, initialLayouts, gridLayoutCols } = projectOverviewData;
 
 const ProjectOverview: React.FC = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const { projectName } = useCurrentProjectName();
+  const { ref, width = 0 } = useResizeObserver();
+  const { currentTheme, language } = useSelector((state: IReduxState) => {
+    return {
+      currentTheme: state.user.theme,
+      language: state.locale.language,
+    };
+  });
+  const theme = useTheme();
+  const dispatch = useDispatch();
 
   const {
     data: projectInfo,
@@ -50,23 +57,16 @@ const ProjectOverview: React.FC = () => {
     }
   );
 
-  const {
-    data: projectStatistics,
-    loading: getProjectStatisticsLoading,
-    refresh: refreshProjectStatistics,
-  } = useRequest(
-    () =>
-      statistic
-        .getProjectStatisticsV1({ project_name: projectName })
-        .then((res) => res.data.data),
-    {
-      ready: !!projectName,
-    }
-  );
-
   const refresh = () => {
+    dispatch(refreshProjectOverview());
     refreshProjectInfo();
-    refreshProjectStatistics();
+  };
+
+  const commonProps: PanelCommonProps = {
+    projectName,
+    commonPadding: theme.common.padding,
+    language,
+    currentTheme,
   };
 
   return (
@@ -80,74 +80,56 @@ const ProjectOverview: React.FC = () => {
             key="refresh-project-overview"
             data-testid="refresh-project-info"
           >
-            <SyncOutlined
-              spin={getProjectInfoLoading || getProjectStatisticsLoading}
-            />
+            <SyncOutlined spin={getProjectInfoLoading} />
           </Button>,
         ]}
       >
         <ProjectInfoBox projectInfo={projectInfo} />
       </PageHeader>
 
-      <section className="padding-content">
-        <EmptyBox if={!getProjectStatisticsLoading} defaultNode={<Spin />}>
-          <Row gutter={[{ xs: 8, sm: 28, md: 28, lg: 48 }, 32]}>
-            <Col className="gutter-row" span={8}>
-              {renderCard({
-                title: t('projectManage.projectOverview.orderTotal'),
-                content: projectStatistics?.workflow_total,
-                handleClick: () => {
-                  navigate(`project/${projectName}/order`);
-                },
-              })}
-            </Col>
-            <Col className="gutter-row" span={8}>
-              {renderCard({
-                title: t('projectManage.projectOverview.auditPlanTotal'),
-                content: projectStatistics?.audit_plan_total,
-                handleClick: () => {
-                  navigate(`project/${projectName}/auditPlan`);
-                },
-              })}
-            </Col>
-            <Col className="gutter-row" span={8}>
-              {renderCard({
-                title: t('projectManage.projectOverview.instanceTotal'),
-                content: projectStatistics?.instance_total,
-                handleClick: () => {
-                  navigate(`project/${projectName}/data`);
-                },
-              })}
-            </Col>
-            <Col className="gutter-row" span={8}>
-              {renderCard({
-                title: t('projectManage.projectOverview.memberTotal'),
-                content: projectStatistics?.member_total,
-                handleClick: () => {
-                  navigate(`project/${projectName}/member`);
-                },
-              })}
-            </Col>
-            <Col className="gutter-row" span={8}>
-              {renderCard({
-                title: t('projectManage.projectOverview.ruleTemplateTotal'),
-                content: projectStatistics?.rule_template_total,
-                handleClick: () => {
-                  navigate(`project/${projectName}/rule/template`);
-                },
-              })}
-            </Col>
-            <Col className="gutter-row" span={8}>
-              {renderCard({
-                title: t('projectManage.projectOverview.whiteListTotal'),
-                content: projectStatistics?.whitelist_total,
-                handleClick: () => {
-                  navigate(`project/${projectName}/whitelist`);
-                },
-              })}
-            </Col>
-          </Row>
-        </EmptyBox>
+      <section ref={ref}>
+        <ResponsiveReactGridLayout
+          width={width}
+          layouts={initialLayouts}
+          cols={gridLayoutCols}
+          rowHeight={rowHeight}
+          margin={[theme.common.padding, theme.common.padding]}
+          containerPadding={[theme.common.padding, theme.common.padding]}
+        >
+          <div key={ProjectOverviewPanelEnum.ProjectScore}>
+            <ProjectScore {...commonProps} />
+          </div>
+          <div key={ProjectOverviewPanelEnum.SqlCount}>
+            <SqlCount {...commonProps} />
+          </div>
+          <div key={ProjectOverviewPanelEnum.DataSourceCount}>
+            <DataSourceCount {...commonProps} />
+          </div>
+          <div key={ProjectOverviewPanelEnum.OrderClassification}>
+            <OrderClassification {...commonProps} />
+          </div>
+          <div key={ProjectOverviewPanelEnum.OrderRisk}>
+            <OrderRisk
+              projectName={projectName}
+              commonPadding={theme.common.padding}
+            />
+          </div>
+          <div key={ProjectOverviewPanelEnum.AuditPlanClassification}>
+            <AuditPlanClassification {...commonProps} />
+          </div>
+          <div key={ProjectOverviewPanelEnum.AuditPlanRisk}>
+            <AuditPlanRisk
+              projectName={projectName}
+              commonPadding={theme.common.padding}
+            />
+          </div>
+          <div key={ProjectOverviewPanelEnum.MemberInfo}>
+            <MemberInfo {...commonProps} />
+          </div>
+          <div key={ProjectOverviewPanelEnum.ApprovalProcess}>
+            <ApprovalProcess {...commonProps} />
+          </div>
+        </ResponsiveReactGridLayout>
       </section>
     </article>
   );

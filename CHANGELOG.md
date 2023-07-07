@@ -22,3 +22,4 @@
 * [ ] [fix]: 修复: 格式化 SQL 语句后审核时解析出错(后续格式化功能可能会移至后端处理) <https://github.com/actiontech/sqle-ui/pull/288>
 * [ ] [chore]: 一些界面优化:  <https://github.com/actiontech/sqle-ui/pull/289>  <https://github.com/actiontech/sqle-ui/pull/290>
 * [ ] [fix]:系统设置中 Webhook 配置文案错误 以及 测试微信推送永远显示成功  <https://github.com/actiontech/sqle-ui/pull/291>
+* [ ] [feature]: 重构项目概览页面 <https://github.com/actiontech/sqle-ui/pull/292>

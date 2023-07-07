@@ -1,4 +1,12 @@
 import {
+  IStatisticAuditPlanResV1,
+  IStatisticsAuditedSQLResV1,
+  IGetInstanceHealthResV1,
+  IGetProjectScoreResV1,
+  IGetRiskAuditPlanResV1,
+  IStatisticRiskWorkflowResV1,
+  IGetRoleUserCountResV1,
+  IGetWorkflowStatusCountResV1,
   IGetProjectStatisticsResV1,
   IGetSqlAverageExecutionTimeResV1,
   IGetSqlExecutionFailPercentResV1,
@@ -12,9 +20,59 @@ import {
   IGetWorkflowPercentCountedByInstanceTypeResV1,
   IGetWorkflowPassPercentResV1,
   IGetWorkflowRejectedPercentGroupByCreatorResV1,
-  IGetWorkflowRejectedPercentGroupByInstanceResV1,
-  IGetWorkflowStatusCountResV1
+  IGetWorkflowRejectedPercentGroupByInstanceResV1
 } from '../common.d';
+
+export interface IStatisticAuditPlanV1Params {
+  project_name: string;
+}
+
+export interface IStatisticAuditPlanV1Return extends IStatisticAuditPlanResV1 {}
+
+export interface IStatisticsAuditedSQLV1Params {
+  project_name: string;
+}
+
+export interface IStatisticsAuditedSQLV1Return
+  extends IStatisticsAuditedSQLResV1 {}
+
+export interface IGetInstanceHealthV1Params {
+  project_name: string;
+}
+
+export interface IGetInstanceHealthV1Return extends IGetInstanceHealthResV1 {}
+
+export interface IGetProjectScoreV1Params {
+  project_name: string;
+}
+
+export interface IGetProjectScoreV1Return extends IGetProjectScoreResV1 {}
+
+export interface IGetRiskAuditPlanV1Params {
+  project_name: string;
+}
+
+export interface IGetRiskAuditPlanV1Return extends IGetRiskAuditPlanResV1 {}
+
+export interface IStatisticRiskWorkflowV1Params {
+  project_name: string;
+}
+
+export interface IStatisticRiskWorkflowV1Return
+  extends IStatisticRiskWorkflowResV1 {}
+
+export interface IGetRoleUserCountV1Params {
+  project_name: string;
+}
+
+export interface IGetRoleUserCountV1Return extends IGetRoleUserCountResV1 {}
+
+export interface IStatisticWorkflowStatusV1Params {
+  project_name: string;
+}
+
+export interface IStatisticWorkflowStatusV1Return
+  extends IGetWorkflowStatusCountResV1 {}
 
 export interface IGetProjectStatisticsV1Params {
   project_name: string;

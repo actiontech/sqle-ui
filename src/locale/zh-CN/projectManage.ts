@@ -67,5 +67,60 @@ export default {
     memberTotal: '成员总数',
     ruleTemplateTotal: '规则模板总数',
     whiteListTotal: '白名单总数',
+
+    projectScore: {
+      title: '项目评分',
+    },
+    sqlCount: {
+      title: 'SQL',
+      riskRate: '风险率',
+      SQLCount: 'SQL总数',
+      riskSQL: '风险SQL',
+    },
+    dataSourceCount: {
+      title: '数据源',
+      health: '健康实例',
+      risk: '风险实例',
+      tips: '当实例上存在工单上线失败/被驳回、扫描扫描任务最新报告评分<60时，该实例为风险实例',
+      riskNum: '风险实例 {{num}} 个',
+      healthNum: '健康实例 {{num}} 个',
+    },
+    orderClassification: {
+      title: '工单',
+    },
+    orderRisk: {
+      title: '工单潜在风险',
+      tableColumn: {
+        name: '工单',
+        status: '状态',
+        time: '时间',
+        createUser: '创建人',
+      },
+    },
+    auditPlanClassification: {
+      title: '扫描任务',
+    },
+    auditPlanRisk: {
+      title: '扫描任务潜在风险',
+      tableColumn: {
+        name: '扫描任务报告',
+        source: '来源',
+        time: '时间',
+        count: '风险SQL',
+      },
+    },
+    memberInfo: {
+      title: '成员',
+      count: '成员数量',
+      action: '编辑成员',
+    },
+    approvalProcess: {
+      title: '审批流程',
+      action: '编辑当前审批流程模板',
+      createStep: '工单发起',
+      review: '工单审批',
+      exec: '工单上线',
+      match: '匹配权限',
+    },
   },
 };

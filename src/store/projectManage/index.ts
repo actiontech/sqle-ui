@@ -7,12 +7,14 @@ type ProjectManageReduxState = {
   modalStatus: ModalStatus;
   selectProject: IProjectListItem | null;
   archived: boolean;
+  overviewRefreshFlag: boolean;
 };
 
 const initialState: ProjectManageReduxState = {
   selectProject: null,
   modalStatus: {},
   archived: false,
+  overviewRefreshFlag: false,
 };
 
 const projectManage = createSlice({
@@ -30,6 +32,9 @@ const projectManage = createSlice({
     updateProjectStatus(state, { payload: archived }: PayloadAction<boolean>) {
       state.archived = archived;
     },
+    refreshProjectOverview(state) {
+      state.overviewRefreshFlag = !state.overviewRefreshFlag;
+    },
     ...commonModalReducer(),
   },
 });
@@ -37,6 +42,7 @@ const projectManage = createSlice({
 export const {
   updateProjectStatus,
   updateSelectProject,
+  refreshProjectOverview,
   initModalStatus: initProjectManageModalStatus,
   updateModalStatus: updateProjectManageModalStatus,
 } = projectManage.actions;

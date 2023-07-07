@@ -1,4 +1,8 @@
-import reducers, { updateProjectStatus, updateSelectProject } from '.';
+import reducers, {
+  refreshProjectOverview,
+  updateProjectStatus,
+  updateSelectProject,
+} from '.';
 import { IReduxState } from '..';
 
 describe('store/projectManage', () => {
@@ -23,12 +27,22 @@ describe('store/projectManage', () => {
       },
       type: 'projectManage/updateSelectProject',
     });
+
+    expect(updateProjectStatus(true)).toEqual({
+      payload: true,
+      type: 'projectManage/updateProjectStatus',
+    });
+
+    expect(refreshProjectOverview()).toEqual({
+      type: 'projectManage/refreshProjectOverview',
+    });
   });
 
   const state: IReduxState['projectManage'] = {
     selectProject: null,
     modalStatus: {},
     archived: false,
+    overviewRefreshFlag: false,
   };
 
   test('should update selectProject when dispatch updateSelectProject action', () => {
@@ -53,6 +67,7 @@ describe('store/projectManage', () => {
       },
       modalStatus: {},
       archived: false,
+      overviewRefreshFlag: false,
     });
   });
 
@@ -63,6 +78,18 @@ describe('store/projectManage', () => {
       selectProject: null,
       modalStatus: {},
       archived: true,
+      overviewRefreshFlag: false,
+    });
+  });
+
+  test('should update overviewRefreshFlag when dispatch refreshProjectOverview action', () => {
+    const newState = reducers(state, refreshProjectOverview());
+    expect(newState).not.toBe(state);
+    expect(newState).toEqual({
+      selectProject: null,
+      modalStatus: {},
+      archived: false,
+      overviewRefreshFlag: true,
     });
   });
 });
