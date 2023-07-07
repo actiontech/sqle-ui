@@ -56,8 +56,8 @@ const ApprovalProcess: React.FC<PanelCommonProps> = ({
   );
   const height = useMemo(() => {
     return (
-      rowHeight * fourthLineSize[0].h +
-      commonPadding * (fourthLineSize[0].h - 1) -
+      rowHeight * fourthLineSize[1].h +
+      commonPadding * (fourthLineSize[1].h - 1) -
       80
     );
   }, [commonPadding]);

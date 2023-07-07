@@ -74,8 +74,8 @@ const DataSourceCount: React.FC<PanelCommonProps> = ({
 
   const height = useMemo(() => {
     return (
-      rowHeight * firstLineSize[0].h +
-      commonPadding * (firstLineSize[0].h - 1) -
+      rowHeight * firstLineSize[2].h +
+      commonPadding * (firstLineSize[2].h - 1) -
       80
     );
   }, [commonPadding]);
