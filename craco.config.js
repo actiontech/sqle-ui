@@ -87,7 +87,7 @@ module.exports = {
         const url = ['/static/media'];
         return url.reduce((acc, cur) => {
           acc[cur] = {
-            arget: 'http://124.70.158.246:8889',
+            target: 'http://124.70.158.246:8889',
             secure: false,
             changeOrigin: true,
             ws: true,
@@ -100,7 +100,7 @@ module.exports = {
         const res = {};
         for (let i = 0; i < 10; i++) {
           res[`/v${i}`] = {
-            arget: 'http://124.70.158.246:8889',
+            target: 'http://124.70.158.246:8889',
             secure: false,
             changeOrigin: true,
             ws: true,
