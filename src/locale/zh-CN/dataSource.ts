@@ -41,8 +41,8 @@ export default {
     workflow: '应用的工作流',
     maintenanceTime: '运维时间',
     maintenanceTimeTips: '设置运维时间后，仅能在此运维时间段内上线工单',
-    needAuditForSqlQuery: 'SQL查询是否需要审核',
-    allowQueryWhenLessThanAuditLevel: '运行查询的最高审核等级',
+    needAuditForSqlQuery: 'SQL工作台是否应用审核规则',
+    allowQueryWhenLessThanAuditLevel: 'SQL工作台的最高审核等级',
     passwordTips:
       '这里不会显示您已经配置的当前数据库密码，提交时如果您没有填写密码，那么将不会对数据库密码进行变更。',
     testDatabaseConnection: '测试数据库连通性',
