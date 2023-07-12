@@ -34,6 +34,7 @@ const DingTalkSetting: React.FC = () => {
     startModify,
     modifyFinish,
     modifyFlag,
+    enabled,
   } = useConditionalConfig<FormFields>({
     switchFieldName: 'enabled',
   });
@@ -86,10 +87,20 @@ const DingTalkSetting: React.FC = () => {
     modifyFinish();
   };
 
-  const { data: dingTalkInfo, refresh: refreshDingTalkInfo } = useRequest(() =>
-    configuration
-      .getDingTalkConfigurationV1()
-      .then((res) => res.data.data ?? {})
+  const { data: dingTalkInfo, refresh: refreshDingTalkInfo } = useRequest(
+    () =>
+      configuration
+        .getDingTalkConfigurationV1()
+        .then((res) => res.data.data ?? {}),
+    {
+      onSuccess(res) {
+        if (res) {
+          form.setFieldsValue({
+            enabled: !!res.is_enable_ding_talk_notify,
+          });
+        }
+      },
+    }
   );
 
   const readonlyColumnsConfig: ReadOnlyConfigColumnsType<IDingTalkConfigurationV1> =
@@ -135,6 +146,7 @@ const DingTalkSetting: React.FC = () => {
                 type="primary"
                 loading={submitLoading}
                 onClick={testDingTalkConfiguration}
+                disabled={!enabled}
               >
                 {t('system.dingTalk.test')}
               </Button>

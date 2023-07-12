@@ -42,12 +42,23 @@ const SMTPSetting = () => {
     startModify,
     modifyFinish,
     modifyFlag,
+    enabled,
   } = useConditionalConfig<SMTPSettingFormFields>({
     switchFieldName: 'enable',
   });
 
-  const { data: smtpInfo, refresh: refreshSMTPInfo } = useRequest(() =>
-    configuration.getSMTPConfigurationV1().then((res) => res.data.data ?? {})
+  const { data: smtpInfo, refresh: refreshSMTPInfo } = useRequest(
+    () =>
+      configuration.getSMTPConfigurationV1().then((res) => res.data.data ?? {}),
+    {
+      onSuccess(res) {
+        if (res) {
+          form.setFieldsValue({
+            enable: !!res.enable_smtp_notify,
+          });
+        }
+      },
+    }
   );
 
   const setFormDefaultValue = React.useCallback(() => {
@@ -231,6 +242,7 @@ const SMTPSetting = () => {
                   htmlType="submit"
                   type="primary"
                   loading={submitLoading}
+                  disabled={!enabled}
                 >
                   {t('system.smtp.test')}
                 </Button>

@@ -131,6 +131,17 @@ describe('test DingTalkSetting', () => {
   });
 
   test('should send request when clicking test DingTalk button', async () => {
+    const getConfigSpy = () => {
+      const spy = mockGetDingTalkConfiguration();
+      spy.mockImplementation(() => resolveThreeSecond({
+        app_key: 'app_key',
+        app_secret: 'app_secret',
+        is_enable_ding_talk_notify: true,
+      }));
+      return spy;
+    }
+
+    getConfigSpy();
     render(<DingTalkSetting />);
     expect(testDingTalkConfigSpy).toBeCalledTimes(0);
 
@@ -151,6 +162,7 @@ describe('test DingTalkSetting', () => {
     ).not.toBeInTheDocument();
 
     jest.clearAllMocks();
+    getConfigSpy();
     testDingTalkConfigSpy.mockImplementation(() => {
       return resolveThreeSecond({
         is_ding_talk_send_normal: false,

@@ -91,6 +91,7 @@ function useConditionalConfig<T>({
     modifyFlag,
     renderEditingModeConfig,
     form,
+    enabled,
   };
 }
 

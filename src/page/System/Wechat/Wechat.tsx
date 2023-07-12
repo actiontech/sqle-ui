@@ -37,8 +37,18 @@ const Wechat = () => {
     data: wechatConfig,
     refresh,
     loading,
-  } = useRequest(() =>
-    configuration.getWeChatConfigurationV1().then((res) => res?.data?.data)
+  } = useRequest(
+    () =>
+      configuration.getWeChatConfigurationV1().then((res) => res?.data?.data),
+    {
+      onSuccess(res) {
+        if (res) {
+          form.setFieldsValue({
+            enable_wechat_notify: !!res.enable_wechat_notify,
+          });
+        }
+      },
+    }
   );
 
   const {
@@ -47,6 +57,7 @@ const Wechat = () => {
     startModify,
     modifyFinish,
     modifyFlag,
+    enabled,
   } = useConditionalConfig<WechatFormFields>({
     switchFieldName: 'enable_wechat_notify',
   });
@@ -202,6 +213,7 @@ const Wechat = () => {
                   htmlType="submit"
                   type="primary"
                   loading={submitLoading}
+                  disabled={!enabled}
                 >
                   {t('system.wechat.test')}
                 </Button>
