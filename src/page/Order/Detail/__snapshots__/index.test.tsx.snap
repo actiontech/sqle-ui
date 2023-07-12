@@ -1220,9 +1220,9 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                         <label
                                           class=""
                                           for="filter_audit_level"
-                                          title="audit.table.auditResult"
+                                          title="audit.filterForm.highestAuditLevel"
                                         >
-                                          audit.table.auditResult
+                                          audit.filterForm.highestAuditLevel
                                         </label>
                                       </div>
                                       <div
@@ -4199,9 +4199,9 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                         <label
                                           class=""
                                           for="filter_audit_level"
-                                          title="audit.table.auditResult"
+                                          title="audit.filterForm.highestAuditLevel"
                                         >
-                                          audit.table.auditResult
+                                          audit.filterForm.highestAuditLevel
                                         </label>
                                       </div>
                                       <div
