@@ -40,13 +40,13 @@ const AuditResultFilterForm: React.FC<FilterFormProps> = (props) => {
         <Col {...FilterFormColLayout}>
           <Form.Item
             name="filter_audit_level"
-            label={t('audit.table.auditResult')}
+            label={t('audit.filterForm.highestAuditLevel')}
           >
             <Select
               showSearch
               allowClear
               placeholder={t('common.form.placeholder.searchSelect', {
-                name: t('audit.table.auditResult'),
+                name: t('audit.filterForm.highestAuditLevel'),
               })}
             >
               {getAuditLevelStatusSelectOption()}

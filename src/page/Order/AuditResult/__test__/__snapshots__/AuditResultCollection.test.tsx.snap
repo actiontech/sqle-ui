@@ -355,9 +355,9 @@ exports[`test AuditResultCollection should be show overview tab when showOvervie
                               <label
                                 class=""
                                 for="filter_audit_level"
-                                title="audit.table.auditResult"
+                                title="audit.filterForm.highestAuditLevel"
                               >
-                                audit.table.auditResult
+                                audit.filterForm.highestAuditLevel
                               </label>
                             </div>
                             <div
@@ -2736,9 +2736,9 @@ exports[`test AuditResultCollection should match snapshot when getSummaryOfInsta
                               <label
                                 class=""
                                 for="filter_audit_level"
-                                title="audit.table.auditResult"
+                                title="audit.filterForm.highestAuditLevel"
                               >
-                                audit.table.auditResult
+                                audit.filterForm.highestAuditLevel
                               </label>
                             </div>
                             <div
@@ -4550,9 +4550,9 @@ exports[`test AuditResultCollection should match snapshot when showOverview is e
                               <label
                                 class=""
                                 for="filter_audit_level"
-                                title="audit.table.auditResult"
+                                title="audit.filterForm.highestAuditLevel"
                               >
-                                audit.table.auditResult
+                                audit.filterForm.highestAuditLevel
                               </label>
                             </div>
                             <div
