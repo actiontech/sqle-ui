@@ -13,13 +13,6 @@ export const regexMonarch: monaco.languages.IMonarchLanguage = {
       [/\b[A-Z]\w*\b/, 'type'], // match types
       [/\b(?:\d+\.?\d*|\.\d+)\b/, 'number'], // match numbers
       [/[{}[\]()?,.:;]/, 'delimiter'], // match delimiters
-      [/'(?:\\.|[^'\\\n\r])*'/, 'string'], // match single-quoted strings
-      [/"(?:\\.|[^"\\\n\r])*"/, 'string'], // match double-quoted strings
-      [/\b(?:try\s*\{)/, { token: 'keyword', next: '@catch' }], // match try-catch blocks
-    ],
-    catch: [
-      [/.*?\}/, { token: 'keyword', next: '@pop' }], // match catch block
-      [/./, 'comment'], // match everything else as a comment
     ],
   },
   defaultToken: 'invalid',
