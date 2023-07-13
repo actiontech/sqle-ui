@@ -9,11 +9,11 @@ const GlobalCreateRuleTemplate = lazy(() => import('./CreateRuleTemplate'));
 const GlobalRuleTemplate = () => {
   return (
     <Routes>
-      <Route index element={<GlobalRuleTemplateList />} />
-      <Route path="create" element={<GlobalCreateRuleTemplate />} />
-      <Route path="import" element={<GlobalImportRuleTemplate />} />
+      <Route path="template" element={<GlobalRuleTemplateList />} />
+      <Route path="template/create" element={<GlobalCreateRuleTemplate />} />
+      <Route path="template/import" element={<GlobalImportRuleTemplate />} />
       <Route
-        path="update/:templateName"
+        path="template/update/:templateName"
         element={<GlobalUpdateRuleTemplate />}
       />
     </Routes>

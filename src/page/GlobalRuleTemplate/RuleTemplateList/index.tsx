@@ -157,7 +157,6 @@ const RuleTemplateList: React.FC<{ hiddenOperations?: boolean }> = ({
   return (
     <>
       <Card
-        bordered={false}
         title={
           <Space>
             {t('ruleTemplate.globalRuleTemplateListTitle')}

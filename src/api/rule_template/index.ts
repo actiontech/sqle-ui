@@ -7,6 +7,18 @@ import ServiceBase from '../Service.base';
 import { AxiosRequestConfig } from 'axios';
 
 import {
+  IGetCustomRulesV1Params,
+  IGetCustomRulesV1Return,
+  ICreateCustomRuleV1Params,
+  ICreateCustomRuleV1Return,
+  IGetRuleTypeByDBTypeV1Params,
+  IGetRuleTypeByDBTypeV1Return,
+  IGetCustomRuleV1Params,
+  IGetCustomRuleV1Return,
+  IDeleteCustomRuleV1Params,
+  IDeleteCustomRuleV1Return,
+  IUpdateCustomRuleV1Params,
+  IUpdateCustomRuleV1Return,
   IGetProjectRuleTemplateTipsV1Params,
   IGetProjectRuleTemplateTipsV1Return,
   IGetProjectRuleTemplateListV1Params,
@@ -44,6 +56,90 @@ import {
 } from './index.d';
 
 class RuleTemplateService extends ServiceBase {
+  public getCustomRulesV1(
+    params: IGetCustomRulesV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.get<IGetCustomRulesV1Return>(
+      '/v1/custom_rules',
+      paramsData,
+      options
+    );
+  }
+
+  public createCustomRuleV1(
+    params: ICreateCustomRuleV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.post<ICreateCustomRuleV1Return>(
+      '/v1/custom_rules',
+      paramsData,
+      options
+    );
+  }
+
+  public getRuleTypeByDBTypeV1(
+    params: IGetRuleTypeByDBTypeV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const db_type = paramsData.db_type;
+    delete paramsData.db_type;
+
+    return this.get<IGetRuleTypeByDBTypeV1Return>(
+      `/v1/custom_rules/${db_type}/rule_types`,
+      paramsData,
+      options
+    );
+  }
+
+  public getCustomRuleV1(
+    params: IGetCustomRuleV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const rule_id = paramsData.rule_id;
+    delete paramsData.rule_id;
+
+    return this.get<IGetCustomRuleV1Return>(
+      `/v1/custom_rules/${rule_id}`,
+      paramsData,
+      options
+    );
+  }
+
+  public deleteCustomRuleV1(
+    params: IDeleteCustomRuleV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const rule_id = paramsData.rule_id;
+    delete paramsData.rule_id;
+
+    return this.delete<IDeleteCustomRuleV1Return>(
+      `/v1/custom_rules/${rule_id}`,
+      paramsData,
+      options
+    );
+  }
+
+  public updateCustomRuleV1(
+    params: IUpdateCustomRuleV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const rule_id = paramsData.rule_id;
+    delete paramsData.rule_id;
+
+    return this.patch<IUpdateCustomRuleV1Return>(
+      `/v1/custom_rules/${rule_id}`,
+      paramsData,
+      options
+    );
+  }
+
   public getProjectRuleTemplateTipsV1(
     params: IGetProjectRuleTemplateTipsV1Params,
     options?: AxiosRequestConfig

@@ -50,6 +50,17 @@ const RuleManager = React.lazy(
   () => import(/* webpackChunkName: "RuleManager" */ '../page/RuleManager')
 );
 
+const GlobalRuleTemplate = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "GlobalRuleTemplate" */ '../page/GlobalRuleTemplate'
+    )
+);
+
+const CustomRule = React.lazy(
+  () => import(/* webpackChunkName: "CustomRule" */ '../page/CustomRule')
+);
+
 const Account = React.lazy(
   () => import(/* webpackChunkName: "Account" */ '../page/Account')
 );
@@ -538,13 +549,22 @@ export const globalRouterConfig: RouterConfigItem<
     element: <UserCenter />,
   },
   {
+    path: 'rule',
+    label: 'menu.rule',
+    element: <Rule />,
+    icon: <DesktopOutlined />,
+    key: 'rule',
+  },
+  {
     key: 'ruleManager',
     icon: <AuditOutlined />,
+    element: <RuleManager />,
+    path: 'rule',
     children: [
       {
-        path: 'rule/template',
+        path: 'template',
         key: 'globalRuleTemplate',
-        element: <RuleManager />,
+        element: <GlobalRuleTemplate />,
         children: [
           {
             path: 'create',
@@ -562,16 +582,16 @@ export const globalRouterConfig: RouterConfigItem<
       },
       /* IFTRUE_isEE */
       {
-        path: 'rule/custom',
         key: 'customRule',
-        element: <RuleManager />,
+        element: <CustomRule />,
+        path: 'custom',
         children: [
           {
-            path: 'add',
+            path: 'create',
             key: 'createCustomRule',
           },
           {
-            path: 'edit/:ruleId',
+            path: 'update/:ruleID',
             key: 'updateCustomRule',
           },
         ],
@@ -585,13 +605,6 @@ export const globalRouterConfig: RouterConfigItem<
     label: 'menu.systemSetting',
     element: <System />,
     icon: <SettingOutlined />,
-  },
-  {
-    path: 'rule',
-    label: 'menu.rule',
-    element: <Rule />,
-    icon: <DesktopOutlined />,
-    key: 'rule',
   },
   {
     path: 'syncDataSource',

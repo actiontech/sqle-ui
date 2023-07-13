@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { t } from '../../locale';
 import { SQLE_BASE_URL } from '../../data/common';
+import EnterpriseFeatureDisplay from '../../components/EnterpriseFeatureDisplay/EnterpriseFeatureDisplay';
 
 const tabItems: TabsProps['items'] = [
   {
@@ -14,13 +15,19 @@ const tabItems: TabsProps['items'] = [
     children: <GlobalRuleTemplate />,
     key: `${SQLE_BASE_URL}rule/template`,
   },
-  /* IFTRUE_isEE */
   {
     label: t('customRule.title'),
-    children: <CustomRule />,
+    children: (
+      <EnterpriseFeatureDisplay
+        clearCEWrapperPadding
+        featureName={t('customRule.title')}
+        eeFeatureDescription={t('customRule.ceTips')}
+      >
+        <CustomRule />
+      </EnterpriseFeatureDisplay>
+    ),
     key: `${SQLE_BASE_URL}rule/custom`,
   },
-  /* FITRUE_isEE */
 ];
 
 const RuleManager: React.FC = () => {
@@ -40,7 +47,7 @@ const RuleManager: React.FC = () => {
   }, [location.pathname]);
 
   return (
-    <article className="rule-template-page-namespace">
+    <article>
       <PageHeader title={t('ruleManager.pageTitle')} ghost={false}>
         {t('ruleManager.pageDesc')}
       </PageHeader>

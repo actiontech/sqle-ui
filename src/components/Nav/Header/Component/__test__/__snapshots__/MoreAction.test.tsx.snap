@@ -100,7 +100,7 @@ exports[`test Nav/Header/MoreAction should match snapshot 1`] = `
                 <span
                   class="ant-dropdown-menu-title-content"
                 >
-                  menu.globalRuleTemplate
+                  menu.ruleManager
                 </span>
               </li>
               <li

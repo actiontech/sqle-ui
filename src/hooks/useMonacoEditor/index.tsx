@@ -6,13 +6,17 @@ import { createDependencyProposals } from './index.data';
 import { IRange } from './index.type';
 import * as monacoEditor from 'monaco-editor/esm/vs/editor/editor.api';
 import { NamePath } from 'antd/lib/form/interface';
+import { regexLanguage, regexMonarch } from './regexLanguage';
 
 const useMonacoEditor = (
   form?: FormInstance,
   {
     formName,
     placeholder = '/* input your sql */',
-  }: { formName?: NamePath; placeholder?: string } = {}
+  }: {
+    formName?: NamePath;
+    placeholder?: string;
+  } = {}
 ) => {
   const monacoProviderRef = React.useRef<IDisposable>();
   const editorRef =
@@ -67,6 +71,11 @@ const useMonacoEditor = (
     });
   };
 
+  const registerRegexLanguage: EditorDidMount = (_, monaco) => {
+    monaco.languages.register(regexLanguage);
+    monaco.languages.setMonarchTokensProvider('regexp', regexMonarch);
+  };
+
   React.useEffect(() => {
     return () => {
       monacoProviderRef.current?.dispose();
@@ -75,6 +84,7 @@ const useMonacoEditor = (
 
   return {
     editorDidMount,
+    registerRegexLanguage,
   };
 };
 

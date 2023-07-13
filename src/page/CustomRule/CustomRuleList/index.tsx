@@ -1,11 +1,7 @@
-import { Link } from '../../../components/Link';
+import CustomRuleList from './CustomRuleList';
 
-const CustomRuleList: React.FC = () => {
-  return (
-    <>
-      <Link to="rule/custom/add">create</Link>
-    </>
-  );
+export type FilterFormAndCreateButtonProps = {
+  getCustomRuleList: (dbType: string, ruleName: string) => void;
 };
 
 export default CustomRuleList;

@@ -88,6 +88,26 @@ export enum CreateAuditWhitelistReqV1MatchTypeEnum {
   'fp_match' = 'fp_match'
 }
 
+export enum CreateCustomRuleReqV1LevelEnum {
+  'normal' = 'normal',
+
+  'notice' = 'notice',
+
+  'warn' = 'warn',
+
+  'error' = 'error'
+}
+
+export enum CustomRuleResV1LevelEnum {
+  'normal' = 'normal',
+
+  'notice' = 'notice',
+
+  'warn' = 'warn',
+
+  'error' = 'error'
+}
+
 export enum DirectAuditReqV1SqlTypeEnum {
   'sql' = 'sql',
 
@@ -182,6 +202,16 @@ export enum UpdateAuditWhitelistReqV1MatchTypeEnum {
   'exact_match' = 'exact_match',
 
   'fp_match' = 'fp_match'
+}
+
+export enum UpdateCustomRuleReqV1LevelEnum {
+  'normal' = 'normal',
+
+  'notice' = 'notice',
+
+  'warn' = 'warn',
+
+  'error' = 'error'
 }
 
 export enum UpdateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum {

@@ -317,6 +317,24 @@ export const mockGetCurrentUser = () => {
   return spy;
 };
 
+export const mockUseRuleType = () => {
+  const spy = jest.spyOn(ruleTemplate, 'getRuleTypeByDBTypeV1');
+  spy.mockImplementation(() =>
+    resolveThreeSecond([
+      {
+        rule_count: 0,
+        rule_type: 'DML1',
+      },
+      {
+        rule_count: 3,
+        rule_type: 'DML2',
+      },
+    ])
+  );
+
+  return spy;
+};
+
 export const mockUseOperationActions = () => {
   const spy = jest.spyOn(OperationRecord, 'getOperationActionList');
   spy.mockImplementation(() =>

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { fireEvent, screen } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { useForm } from 'antd/lib/form/Form';

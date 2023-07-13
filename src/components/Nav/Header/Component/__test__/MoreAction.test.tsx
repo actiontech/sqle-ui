@@ -88,7 +88,7 @@ describe('test Nav/Header/MoreAction', () => {
     expect(mockNavigate).nthCalledWith(2, 'userCenter');
     expect(mockNavigate).toBeCalledTimes(2);
 
-    fireEvent.click(screen.getByText('menu.globalRuleTemplate'));
+    fireEvent.click(screen.getByText('menu.ruleManager'));
     expect(mockNavigate).nthCalledWith(3, 'rule/template');
     expect(mockNavigate).toBeCalledTimes(3);
 

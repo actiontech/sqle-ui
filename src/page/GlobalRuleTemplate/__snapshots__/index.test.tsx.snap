@@ -1,19 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RuleTemplate should render page header and describe 1`] = `
-<article
-  className="rule-template-page-namespace"
->
-  <PageHeader
-    ghost={false}
-    title="ruleTemplate.pageTitle"
-  >
-    ruleTemplate.pageDescribe
-  </PageHeader>
-  <section
-    className="padding-content"
-  >
-    <Outlet />
-  </section>
-</article>
+exports[`RuleTemplate should match snapshot 1`] = `
+<Routes>
+  <Route
+    element={<UNDEFINED />}
+    path="template"
+  />
+  <Route
+    element={<UNDEFINED />}
+    path="template/create"
+  />
+  <Route
+    element={<UNDEFINED />}
+    path="template/import"
+  />
+  <Route
+    element={<UNDEFINED />}
+    path="template/update/:templateName"
+  />
+</Routes>
 `;
