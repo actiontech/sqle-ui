@@ -24,4 +24,4 @@
 * [ ] [fix]:系统设置中 Webhook 配置文案错误 以及 测试微信推送永远显示成功  <https://github.com/actiontech/sqle-ui/pull/291>
 * [ ] [feature]: 重构项目概览页面 <https://github.com/actiontech/sqle-ui/pull/292>
 * [ ] [chore]: 界面优化长期任务【2.2307.0】 <https://github.com/actiontech/sqle/issues/1658>
-* [ ] [feature]: 新增自定义规则页面 <https://github.com/actiontech/sqle-ui/pull/292>
+* [ ] [feature]: 新增自定义规则页面 <https://github.com/actiontech/sqle-ui/pull/294>
