@@ -1,0 +1,718 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test CreateCustomRule should match snapshot 1`] = `
+<div>
+  <div
+    class="ant-card ant-card-bordered"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          customRule.addCustomRule.title
+        </div>
+        <div
+          class="ant-card-extra"
+        >
+          <button
+            class="ant-btn ant-btn-primary"
+            type="button"
+          >
+            <span>
+              common.back
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+    >
+      <div
+        class="ant-space ant-space-vertical full-width-element"
+      >
+        <div
+          class="ant-space-item"
+          style="margin-bottom: 24px;"
+        >
+          <div
+            class="ant-row"
+          >
+            <div
+              class="ant-col ant-col-12 ant-col-offset-6"
+            >
+              <div
+                class="ant-steps ant-steps-horizontal ant-steps-label-horizontal"
+              >
+                <div
+                  class="ant-steps-item ant-steps-item-process ant-steps-item-active"
+                >
+                  <div
+                    class="ant-steps-item-container"
+                  >
+                    <div
+                      class="ant-steps-item-tail"
+                    />
+                    <div
+                      class="ant-steps-item-icon"
+                    >
+                      <span
+                        class="ant-steps-icon"
+                      >
+                        1
+                      </span>
+                    </div>
+                    <div
+                      class="ant-steps-item-content"
+                    >
+                      <div
+                        class="ant-steps-item-title"
+                      >
+                        customRule.customRuleForm.baseInfoTitle
+                      </div>
+                      <div
+                        class="ant-steps-item-description"
+                      >
+                        customRule.customRuleForm.baseInfoDesc
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-steps-item ant-steps-item-wait"
+                >
+                  <div
+                    class="ant-steps-item-container"
+                  >
+                    <div
+                      class="ant-steps-item-tail"
+                    />
+                    <div
+                      class="ant-steps-item-icon"
+                    >
+                      <span
+                        class="ant-steps-icon"
+                      >
+                        2
+                      </span>
+                    </div>
+                    <div
+                      class="ant-steps-item-content"
+                    >
+                      <div
+                        class="ant-steps-item-title"
+                      >
+                        customRule.customRuleForm.editRuleTitle
+                      </div>
+                      <div
+                        class="ant-steps-item-description"
+                      >
+                        customRule.customRuleForm.editRuleDesc
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="ant-steps-item ant-steps-item-wait"
+                >
+                  <div
+                    class="ant-steps-item-container"
+                  >
+                    <div
+                      class="ant-steps-item-tail"
+                    />
+                    <div
+                      class="ant-steps-item-icon"
+                    >
+                      <span
+                        class="ant-steps-icon"
+                      >
+                        3
+                      </span>
+                    </div>
+                    <div
+                      class="ant-steps-item-content"
+                    >
+                      <div
+                        class="ant-steps-item-title"
+                      >
+                        customRule.customRuleForm.submit
+                      </div>
+                      <div
+                        class="ant-steps-item-description"
+                      >
+                        customRule.customRuleForm.submitCustomRule
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-bottom: 24px;"
+        >
+          <div
+            data-testid="base-form"
+          >
+            <form
+              class="ant-form ant-form-horizontal"
+            >
+              <div
+                class="ant-form-item"
+              >
+                <div
+                  class="ant-row ant-form-item-row"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class="ant-form-item-required"
+                      for="desc"
+                      title="customRule.baseInfoForm.ruleName"
+                    >
+                      customRule.baseInfoForm.ruleName
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <input
+                          aria-required="true"
+                          class="ant-input"
+                          id="desc"
+                          placeholder="common.form.placeholder.input"
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-form-item"
+              >
+                <div
+                  class="ant-row ant-form-item-row"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class=""
+                      for="annotation"
+                      title="customRule.baseInfoForm.ruleDesc"
+                    >
+                      customRule.baseInfoForm.ruleDesc
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <textarea
+                          class="ant-input textarea-no-resize"
+                          id="annotation"
+                          placeholder="common.form.placeholder.input"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-form-item"
+              >
+                <div
+                  class="ant-row ant-form-item-row"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class="ant-form-item-required"
+                      for="dbType"
+                      title="customRule.baseInfoForm.dbType"
+                    >
+                      customRule.baseInfoForm.dbType
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <div
+                          aria-required="true"
+                          class="ant-select ant-select-in-form-item ant-select-single ant-select-show-arrow"
+                        >
+                          <div
+                            class="ant-select-selector"
+                          >
+                            <span
+                              class="ant-select-selection-search"
+                            >
+                              <input
+                                aria-activedescendant="dbType_list_0"
+                                aria-autocomplete="list"
+                                aria-controls="dbType_list"
+                                aria-haspopup="listbox"
+                                aria-owns="dbType_list"
+                                aria-required="true"
+                                autocomplete="off"
+                                class="ant-select-selection-search-input"
+                                id="dbType"
+                                readonly=""
+                                role="combobox"
+                                style="opacity: 0;"
+                                type="search"
+                                unselectable="on"
+                                value=""
+                              />
+                            </span>
+                            <span
+                              class="ant-select-selection-placeholder"
+                            >
+                              common.form.placeholder.select
+                            </span>
+                          </div>
+                          <span
+                            aria-hidden="true"
+                            class="ant-select-arrow"
+                            style="user-select: none;"
+                            unselectable="on"
+                          >
+                            <span
+                              aria-label="down"
+                              class="anticon anticon-down ant-select-suffix"
+                              role="img"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                data-icon="down"
+                                fill="currentColor"
+                                focusable="false"
+                                height="1em"
+                                viewBox="64 64 896 896"
+                                width="1em"
+                              >
+                                <path
+                                  d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                                />
+                              </svg>
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-form-item"
+              >
+                <div
+                  class="ant-row ant-form-item-row"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class="ant-form-item-required"
+                      for="ruleType"
+                      title="customRule.baseInfoForm.ruleType"
+                    >
+                      customRule.baseInfoForm.ruleType
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <div
+                          aria-required="true"
+                          class="ant-select ant-select-in-form-item ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
+                        >
+                          <div
+                            class="ant-select-selector"
+                          >
+                            <span
+                              class="ant-select-selection-search"
+                            >
+                              <input
+                                aria-activedescendant="ruleType_list_0"
+                                aria-autocomplete="list"
+                                aria-controls="ruleType_list"
+                                aria-haspopup="listbox"
+                                aria-owns="ruleType_list"
+                                aria-required="true"
+                                autocomplete="off"
+                                class="ant-select-selection-search-input"
+                                id="ruleType"
+                                role="combobox"
+                                type="search"
+                                value=""
+                              />
+                            </span>
+                            <span
+                              class="ant-select-selection-placeholder"
+                            >
+                              common.form.placeholder.select
+                            </span>
+                          </div>
+                          <span
+                            aria-hidden="true"
+                            class="ant-select-arrow"
+                            style="user-select: none;"
+                            unselectable="on"
+                          >
+                            <span
+                              aria-label="down"
+                              class="anticon anticon-down ant-select-suffix"
+                              role="img"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                data-icon="down"
+                                fill="currentColor"
+                                focusable="false"
+                                height="1em"
+                                viewBox="64 64 896 896"
+                                width="1em"
+                              >
+                                <path
+                                  d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                                />
+                              </svg>
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ant-form-item"
+              >
+                <div
+                  class="ant-row ant-form-item-row"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class="ant-form-item-required"
+                      for="level"
+                      title="customRule.baseInfoForm.level"
+                    >
+                      customRule.baseInfoForm.level
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <div
+                          aria-required="true"
+                          class="ant-select ant-select-in-form-item ant-select-single ant-select-show-arrow"
+                        >
+                          <div
+                            class="ant-select-selector"
+                          >
+                            <span
+                              class="ant-select-selection-search"
+                            >
+                              <input
+                                aria-activedescendant="level_list_0"
+                                aria-autocomplete="list"
+                                aria-controls="level_list"
+                                aria-haspopup="listbox"
+                                aria-owns="level_list"
+                                aria-required="true"
+                                autocomplete="off"
+                                class="ant-select-selection-search-input"
+                                id="level"
+                                readonly=""
+                                role="combobox"
+                                style="opacity: 0;"
+                                type="search"
+                                unselectable="on"
+                                value=""
+                              />
+                            </span>
+                            <span
+                              class="ant-select-selection-item"
+                              title="ruleTemplate.ruleLevel.notice"
+                            >
+                              ruleTemplate.ruleLevel.notice
+                            </span>
+                          </div>
+                          <span
+                            aria-hidden="true"
+                            class="ant-select-arrow"
+                            style="user-select: none;"
+                            unselectable="on"
+                          >
+                            <span
+                              aria-label="down"
+                              class="anticon anticon-down ant-select-suffix"
+                              role="img"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                data-icon="down"
+                                fill="currentColor"
+                                focusable="false"
+                                height="1em"
+                                viewBox="64 64 896 896"
+                                width="1em"
+                              >
+                                <path
+                                  d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                                />
+                              </svg>
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <section
+                class="footer-button-wrapper "
+              >
+                <div
+                  class="ant-card ant-card-bordered"
+                >
+                  <div
+                    class="ant-card-body"
+                    style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
+                  >
+                    <div
+                      class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-right: 8px;"
+                      >
+                        <button
+                          class="ant-btn ant-btn-default"
+                          type="button"
+                        >
+                          <span>
+                            common.reset
+                          </span>
+                        </button>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <button
+                          class="ant-btn ant-btn-primary"
+                          type="button"
+                        >
+                          <span>
+                            common.nextStep
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </form>
+          </div>
+        </div>
+        <div
+          class="ant-space-item"
+          style="margin-bottom: 24px;"
+        >
+          <div
+            data-testid="rule-script"
+            hidden=""
+          >
+            <form
+              class="ant-form ant-form-horizontal"
+            >
+              <div
+                class="ant-form-item"
+              >
+                <div
+                  class="ant-row ant-form-item-row"
+                >
+                  <div
+                    class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+                  >
+                    <label
+                      class="ant-form-item-required"
+                      for="script"
+                      title="customRule.editScriptForm.inputRuleScript"
+                    >
+                      customRule.editScriptForm.inputRuleScript
+                    </label>
+                  </div>
+                  <div
+                    class="ant-col ant-form-item-control editor-test ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+                  >
+                    <div
+                      class="ant-form-item-control-input"
+                    >
+                      <div
+                        class="ant-form-item-control-input-content"
+                      >
+                        <input
+                          aria-required="true"
+                          height="500"
+                          id="script"
+                          language="regexp"
+                          options="[object Object]"
+                          theme="vs"
+                          value=""
+                          width="100%"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <section
+                class="footer-button-wrapper inside-the-project-footer-button-wrapper"
+              >
+                <div
+                  class="ant-card ant-card-bordered"
+                >
+                  <div
+                    class="ant-card-body"
+                    style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
+                  >
+                    <div
+                      class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-right: 8px;"
+                      >
+                        <button
+                          class="ant-btn ant-btn-default"
+                          type="button"
+                        >
+                          <span>
+                            common.prevStep
+                          </span>
+                        </button>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <button
+                          class="ant-btn ant-btn-primary"
+                          type="button"
+                        >
+                          <span>
+                            common.submit
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </form>
+          </div>
+        </div>
+        <div
+          class="ant-space-item"
+        >
+          <div
+            data-testid="submit-result"
+            hidden=""
+          >
+            <div
+              class="ant-result ant-result-success"
+            >
+              <div
+                class="ant-result-icon"
+              >
+                <span
+                  aria-label="check-circle"
+                  class="anticon anticon-check-circle"
+                  role="img"
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-icon="check-circle"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm193.5 301.7l-210.6 292a31.8 31.8 0 01-51.7 0L318.5 484.9c-3.8-5.3 0-12.7 6.5-12.7h46.9c10.2 0 19.9 4.9 25.9 13.3l71.2 98.8 157.2-218c6-8.3 15.6-13.3 25.9-13.3H699c6.5 0 10.3 7.4 6.5 12.7z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="ant-result-title"
+              >
+                customRule.addCustomRule.successTitle
+              </div>
+            </div>
+            <div
+              class="ant-row ant-row-center"
+            >
+              <button
+                class="ant-btn ant-btn-primary"
+                type="button"
+              >
+                <a
+                  href="/rule/custom"
+                >
+                  customRule.addCustomRule.backToList
+                </a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

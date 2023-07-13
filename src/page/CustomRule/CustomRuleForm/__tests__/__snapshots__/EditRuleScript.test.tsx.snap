@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test EditRuleScript should match snapshot 1`] = `
+<div>
+  <form
+    class="ant-form ant-form-horizontal"
+  >
+    <div
+      class="ant-form-item ant-form-item-has-success"
+    >
+      <div
+        class="ant-row ant-form-item-row"
+      >
+        <div
+          class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
+        >
+          <label
+            class="ant-form-item-required"
+            for="script"
+            title="customRule.editScriptForm.inputRuleScript"
+          >
+            customRule.editScriptForm.inputRuleScript
+          </label>
+        </div>
+        <div
+          class="ant-col ant-form-item-control editor-test ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
+        >
+          <div
+            class="ant-form-item-control-input"
+          >
+            <div
+              class="ant-form-item-control-input-content"
+            >
+              <input
+                aria-required="true"
+                height="500"
+                id="script"
+                language="regexp"
+                options="[object Object]"
+                theme="vs"
+                value="w+"
+                width="100%"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section
+      class="footer-button-wrapper inside-the-project-footer-button-wrapper"
+    >
+      <div
+        class="ant-card ant-card-bordered"
+      >
+        <div
+          class="ant-card-body"
+          style="padding-right: 24px; padding-top: 10px; padding-bottom: 10px;"
+        >
+          <div
+            class="ant-space ant-space-horizontal ant-space-align-center full-width-element flex-end-horizontal"
+          >
+            <div
+              class="ant-space-item"
+              style="margin-right: 8px;"
+            >
+              <button
+                class="ant-btn ant-btn-default"
+                type="button"
+              >
+                <span>
+                  common.prevStep
+                </span>
+              </button>
+            </div>
+            <div
+              class="ant-space-item"
+            >
+              <button
+                class="ant-btn ant-btn-primary"
+                type="button"
+              >
+                <span>
+                  common.submit
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </form>
+</div>
+`;

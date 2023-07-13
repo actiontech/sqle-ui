@@ -3,7 +3,7 @@ import RuleTemplate from '.';
 import toJson from 'enzyme-to-json';
 
 describe('RuleTemplate', () => {
-  test('should render page header and describe', () => {
+  test('should match snapshot', () => {
     const wrapper = shallow(<RuleTemplate />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });

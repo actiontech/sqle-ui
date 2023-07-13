@@ -58,7 +58,7 @@ const MoreAction: React.FC = () => {
           },
           {
             key: 'ruleTemplate',
-            label: t('menu.globalRuleTemplate'),
+            label: t('menu.ruleManager'),
             onClick: () => navigate('rule/template'),
           },
           {

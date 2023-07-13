@@ -1,8 +1,13 @@
 import {
+  IGetCustomRulesResV1,
+  ICreateCustomRuleReqV1,
+  IBaseRes,
+  IGetRuleTypeByDBTypeResV1,
+  IGetCustomRuleResV1,
+  IUpdateCustomRuleReqV1,
   IGetRuleTemplateTipsResV1,
   IGetProjectRuleTemplatesResV1,
   ICreateProjectRuleTemplateReqV1,
-  IBaseRes,
   IGetProjectRuleTemplateResV1,
   IUpdateProjectRuleTemplateReqV1,
   ICloneProjectRuleTemplateReqV1,
@@ -14,6 +19,43 @@ import {
   ICloneRuleTemplateReqV1,
   IGetRulesResV1
 } from '../common.d';
+
+export interface IGetCustomRulesV1Params {
+  filter_db_type?: string;
+
+  filter_desc?: string;
+}
+
+export interface IGetCustomRulesV1Return extends IGetCustomRulesResV1 {}
+
+export interface ICreateCustomRuleV1Params extends ICreateCustomRuleReqV1 {}
+
+export interface ICreateCustomRuleV1Return extends IBaseRes {}
+
+export interface IGetRuleTypeByDBTypeV1Params {
+  db_type: string;
+}
+
+export interface IGetRuleTypeByDBTypeV1Return
+  extends IGetRuleTypeByDBTypeResV1 {}
+
+export interface IGetCustomRuleV1Params {
+  rule_id: string;
+}
+
+export interface IGetCustomRuleV1Return extends IGetCustomRuleResV1 {}
+
+export interface IDeleteCustomRuleV1Params {
+  rule_id: string;
+}
+
+export interface IDeleteCustomRuleV1Return extends IBaseRes {}
+
+export interface IUpdateCustomRuleV1Params extends IUpdateCustomRuleReqV1 {
+  rule_id: string;
+}
+
+export interface IUpdateCustomRuleV1Return extends IBaseRes {}
 
 export interface IGetProjectRuleTemplateTipsV1Params {
   project_name: string;

@@ -8,7 +8,7 @@ export default {
   role: '角色管理',
   userGroup: '用户组管理',
   dataSource: '数据源',
-  globalRuleTemplate: '规则模版管理',
+  ruleManager: '规则管理',
   ruleTemplate: '规则模板',
   progressManage: '流程模板',
   systemSetting: '系统设置',
@@ -28,5 +28,5 @@ export default {
   projectOverview: '项目概览',
   allInstanceType: '所有数据库类型',
   syncDataSource: '外部数据源同步',
-  operationRecord: '操作记录'
+  operationRecord: '操作记录',
 };

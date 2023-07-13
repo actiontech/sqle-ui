@@ -8,6 +8,8 @@ import {
   AuditTaskResV1SqlSourceEnum,
   AuditTaskResV1StatusEnum,
   CreateAuditWhitelistReqV1MatchTypeEnum,
+  CreateCustomRuleReqV1LevelEnum,
+  CustomRuleResV1LevelEnum,
   DirectAuditReqV1SqlTypeEnum,
   GetWorkflowTasksItemV1StatusEnum,
   InstanceTaskResV1LastSyncStatusEnum,
@@ -19,6 +21,7 @@ import {
   TestFeishuConfigurationReqV1AccountTypeEnum,
   UpdateAuditPlanNotifyConfigReqV1NotifyLevelEnum,
   UpdateAuditWhitelistReqV1MatchTypeEnum,
+  UpdateCustomRuleReqV1LevelEnum,
   UpdateWorkflowTemplateReqV1AllowSubmitWhenLessAuditLevelEnum,
   WorkFlowStepTemplateReqV1TypeEnum,
   WorkflowDetailResV1CurrentStepTypeEnum,
@@ -361,6 +364,20 @@ export interface ICreateAuditWhitelistReqV1 {
   value?: string;
 }
 
+export interface ICreateCustomRuleReqV1 {
+  annotation?: string;
+
+  db_type?: string;
+
+  desc?: string;
+
+  level?: CreateCustomRuleReqV1LevelEnum;
+
+  rule_script?: string;
+
+  type?: string;
+}
+
 export interface ICreateInstanceReqV1 {
   additional_params?: IInstanceAdditionalParamReqV1[];
 
@@ -481,6 +498,22 @@ export interface ICreateWorkflowReqV1 {
   workflow_subject?: string;
 }
 
+export interface ICustomRuleResV1 {
+  annotation?: string;
+
+  db_type?: string;
+
+  desc?: string;
+
+  level?: CustomRuleResV1LevelEnum;
+
+  rule_id?: string;
+
+  rule_script?: string;
+
+  type?: string;
+}
+
 export interface IDBTypeAuditPlan {
   data?: IAuditPlanCount[];
 
@@ -523,6 +556,14 @@ export interface IDirectAuditResV1 {
   code?: number;
 
   data?: IAuditResDataV1;
+
+  message?: string;
+}
+
+export interface IDirectGetSQLAnalysisResV1 {
+  code?: number;
+
+  data?: ISqlAnalysisResDataV1[];
 
   message?: string;
 }
@@ -685,6 +726,22 @@ export interface IGetAuditWhitelistResV1 {
   message?: string;
 
   total_nums?: number;
+}
+
+export interface IGetCustomRuleResV1 {
+  code?: number;
+
+  data?: ICustomRuleResV1;
+
+  message?: string;
+}
+
+export interface IGetCustomRulesResV1 {
+  code?: number;
+
+  data?: ICustomRuleResV1[];
+
+  message?: string;
 }
 
 export interface IGetDashboardProjectTipsResV1 {
@@ -1113,6 +1170,14 @@ export interface IGetRuleTemplatesResV1 {
   total_nums?: number;
 }
 
+export interface IGetRuleTypeByDBTypeResV1 {
+  code?: number;
+
+  data?: IRuleTypeV1[];
+
+  message?: string;
+}
+
 export interface IGetRulesResV1 {
   code?: number;
 
@@ -1133,6 +1198,16 @@ export interface IGetSQLAnalysisDataResItemV1 {
   sql_explain?: ISQLExplain;
 
   table_metas?: ITableMeta[];
+}
+
+export interface IGetSQLAnalysisReq {
+  instance_name?: string;
+
+  project_name?: string;
+
+  schema_name?: string;
+
+  sql?: string;
 }
 
 export interface IGetSQLEInfoResDataV1 {
@@ -1973,6 +2048,12 @@ export interface IRuleTemplateTipResV1 {
   rule_template_name?: string;
 }
 
+export interface IRuleTypeV1 {
+  rule_count?: number;
+
+  rule_type?: string;
+}
+
 export interface ISMTPConfigurationResV1 {
   enable_smtp_notify?: boolean;
 
@@ -2011,6 +2092,12 @@ export interface ISQLQueryConfigResV1 {
   max_pre_query_rows?: number;
 
   query_timeout_second?: number;
+}
+
+export interface ISqlAnalysisResDataV1 {
+  sql_explain?: ISQLExplain;
+
+  table_metas?: ITableMeta[];
 }
 
 export interface ISqlAverageExecutionTime {
@@ -2289,6 +2376,18 @@ export interface IUpdateCurrentUserReqV1 {
   phone?: string;
 
   wechat_id?: string;
+}
+
+export interface IUpdateCustomRuleReqV1 {
+  annotation?: string;
+
+  desc?: string;
+
+  level?: UpdateCustomRuleReqV1LevelEnum;
+
+  rule_script?: string;
+
+  type?: string;
 }
 
 export interface IUpdateDingTalkConfigurationReqV1 {

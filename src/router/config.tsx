@@ -46,11 +46,19 @@ const RuleTemplate = React.lazy(
   () => import(/* webpackChunkName: "RuleTemplate" */ '../page/RuleTemplate')
 );
 
+const RuleManager = React.lazy(
+  () => import(/* webpackChunkName: "RuleManager" */ '../page/RuleManager')
+);
+
 const GlobalRuleTemplate = React.lazy(
   () =>
     import(
       /* webpackChunkName: "GlobalRuleTemplate" */ '../page/GlobalRuleTemplate'
     )
+);
+
+const CustomRule = React.lazy(
+  () => import(/* webpackChunkName: "CustomRule" */ '../page/CustomRule')
 );
 
 const Account = React.lazy(
@@ -193,34 +201,6 @@ const UpdateDataSource = React.lazy(
   () =>
     import(
       /* webpackChunkName: "UpdateDataSource" */ '../page/DataSource/UpdateDataSource'
-    )
-);
-
-const GlobalCreateRuleTemplate = React.lazy(
-  () =>
-    import(
-      /* webpackChunkName: "GlobalCreateRuleTemplate" */ '../page/GlobalRuleTemplate/CreateRuleTemplate'
-    )
-);
-
-const GlobalImportRuleTemplate = React.lazy(
-  () =>
-    import(
-      /* webpackChunkName: "GlobalImportRuleTemplate" */ '../page/GlobalRuleTemplate/ImportRuleTemplate'
-    )
-);
-
-const GlobalRuleTemplateList = React.lazy(
-  () =>
-    import(
-      /* webpackChunkName: "GlobalRuleTemplateList" */ '../page/GlobalRuleTemplate/RuleTemplateList'
-    )
-);
-
-const GlobalUpdateRuleTemplate = React.lazy(
-  () =>
-    import(
-      /* webpackChunkName: "GlobalUpdateRuleTemplate" */ '../page/GlobalRuleTemplate/UpdateRuleTemplate'
     )
 );
 
@@ -569,33 +549,54 @@ export const globalRouterConfig: RouterConfigItem<
     element: <UserCenter />,
   },
   {
-    path: 'rule/template',
-    key: 'globalRuleTemplate',
-    label: 'menu.ruleTemplate',
+    path: 'rule',
+    label: 'menu.rule',
+    element: <Rule />,
+    icon: <DesktopOutlined />,
+    key: 'rule',
+  },
+  {
+    key: 'ruleManager',
     icon: <AuditOutlined />,
-    element: <GlobalRuleTemplate />,
-    hideChildrenInSliderMenu: true,
+    element: <RuleManager />,
+    path: 'rule',
     children: [
       {
-        index: true,
-        element: <GlobalRuleTemplateList />,
+        path: 'template',
         key: 'globalRuleTemplate',
+        element: <GlobalRuleTemplate />,
+        children: [
+          {
+            path: 'create',
+            key: 'globalRuleTemplateCreate',
+          },
+          {
+            path: 'import',
+            key: 'globalRuleTemplateImport',
+          },
+          {
+            path: 'update/:templateName',
+            key: 'globalRuleTemplateUpdate',
+          },
+        ],
       },
+      /* IFTRUE_isEE */
       {
-        path: 'create',
-        element: <GlobalCreateRuleTemplate />,
-        key: 'globalRuleTemplateCreate',
+        key: 'customRule',
+        element: <CustomRule />,
+        path: 'custom',
+        children: [
+          {
+            path: 'create',
+            key: 'createCustomRule',
+          },
+          {
+            path: 'update/:ruleID',
+            key: 'updateCustomRule',
+          },
+        ],
       },
-      {
-        path: 'import',
-        element: <GlobalImportRuleTemplate />,
-        key: 'globalRuleTemplateImport',
-      },
-      {
-        path: 'update/:templateName',
-        element: <GlobalUpdateRuleTemplate />,
-        key: 'globalRuleTemplateUpdate',
-      },
+      /* FITRUE_isEE */
     ] as RouterConfigItem<GlobalRouterItemKeyLiteral>[],
   },
   {
@@ -604,13 +605,6 @@ export const globalRouterConfig: RouterConfigItem<
     label: 'menu.systemSetting',
     element: <System />,
     icon: <SettingOutlined />,
-  },
-  {
-    path: 'rule',
-    label: 'menu.rule',
-    element: <Rule />,
-    icon: <DesktopOutlined />,
-    key: 'rule',
   },
   {
     path: 'syncDataSource',

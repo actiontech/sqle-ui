@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomRule should match snapshot 1`] = `
+<Routes>
+  <Route
+    element={<UNDEFINED />}
+    path="custom"
+  />
+  <Route
+    element={<UNDEFINED />}
+    path="custom/create"
+  />
+  <Route
+    element={<UNDEFINED />}
+    path="custom/update/:ruleID"
+  />
+</Routes>
+`;

@@ -1,19 +1,22 @@
-import { PageHeader } from 'antd';
-import { useTranslation } from 'react-i18next';
-import { Outlet } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import { lazy } from 'react';
+
+const GlobalRuleTemplateList = lazy(() => import('./RuleTemplateList'));
+const GlobalImportRuleTemplate = lazy(() => import('./ImportRuleTemplate'));
+const GlobalUpdateRuleTemplate = lazy(() => import('./UpdateRuleTemplate'));
+const GlobalCreateRuleTemplate = lazy(() => import('./CreateRuleTemplate'));
 
 const GlobalRuleTemplate = () => {
-  const { t } = useTranslation();
-
   return (
-    <article className="rule-template-page-namespace">
-      <PageHeader title={t('ruleTemplate.pageTitle')} ghost={false}>
-        {t('ruleTemplate.pageDescribe')}
-      </PageHeader>
-      <section className="padding-content">
-        <Outlet />
-      </section>
-    </article>
+    <Routes>
+      <Route path="template" element={<GlobalRuleTemplateList />} />
+      <Route path="template/create" element={<GlobalCreateRuleTemplate />} />
+      <Route path="template/import" element={<GlobalImportRuleTemplate />} />
+      <Route
+        path="template/update/:templateName"
+        element={<GlobalUpdateRuleTemplate />}
+      />
+    </Routes>
   );
 };
 
