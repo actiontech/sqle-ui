@@ -39,6 +39,7 @@ const LarkSetting: React.FC = () => {
     startModify,
     modifyFinish,
     modifyFlag,
+    enabled,
   } = useConditionalConfig<FormFields>({
     switchFieldName: 'enabled',
   });
@@ -130,8 +131,20 @@ const LarkSetting: React.FC = () => {
     }
   };
 
-  const { data: larkInfo, refresh: refreshLarkInfo } = useRequest(() =>
-    configuration.getFeishuConfigurationV1().then((res) => res.data.data ?? {})
+  const { data: larkInfo, refresh: refreshLarkInfo } = useRequest(
+    () =>
+      configuration
+        .getFeishuConfigurationV1()
+        .then((res) => res.data.data ?? {}),
+    {
+      onSuccess(res) {
+        if (res) {
+          form.setFieldsValue({
+            enabled: !!res.is_feishu_notification_enabled,
+          });
+        }
+      },
+    }
   );
 
   const readonlyColumnsConfig: ReadOnlyConfigColumnsType<IFeishuConfigurationV1> =
@@ -259,6 +272,7 @@ const LarkSetting: React.FC = () => {
                   htmlType="submit"
                   type="primary"
                   loading={submitLoading}
+                  disabled={!enabled}
                 >
                   {t('system.lark.test')}
                 </Button>

@@ -36,6 +36,8 @@ export default {
     ruleTemplate: 'Rule Template',
     workflow: 'Workflow',
     maintenanceTime: '运维时间',
+    needAuditForSqlQuery: 'SQL工作台是否应用审核规则',
+    allowQueryWhenLessThanAuditLevel: 'SQL工作台的最高审核等级',
     maxPreQueryRows: 'SQL查询返回条数',
     queryTimeoutSecond: 'SQL超时限制(s)',
 

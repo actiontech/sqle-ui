@@ -1153,9 +1153,9 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                                     <label
                                       class=""
                                       for="filter_audit_level"
-                                      title="audit.table.auditResult"
+                                      title="audit.filterForm.highestAuditLevel"
                                     >
-                                      audit.table.auditResult
+                                      audit.filterForm.highestAuditLevel
                                     </label>
                                   </div>
                                   <div
@@ -3923,9 +3923,9 @@ exports[`Order/Create should audit sql when user click audit button 2`] = `
                                     <label
                                       class=""
                                       for="filter_audit_level"
-                                      title="audit.table.auditResult"
+                                      title="audit.filterForm.highestAuditLevel"
                                     >
-                                      audit.table.auditResult
+                                      audit.filterForm.highestAuditLevel
                                     </label>
                                   </div>
                                   <div

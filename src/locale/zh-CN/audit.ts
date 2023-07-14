@@ -20,6 +20,10 @@ export default {
     analyze: '分析',
   },
 
+  filterForm: {
+    highestAuditLevel: '最高审核告警等级',
+  },
+
   execStatus: {
     initialized: '准备执行',
     doing: '正在执行',

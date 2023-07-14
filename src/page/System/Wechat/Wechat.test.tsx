@@ -106,6 +106,20 @@ describe('wechat', () => {
   });
 
   it('should send test request when user input receiver id and submit request', async () => {
+    const getConfigSpy = () => {
+      const spy = mockGetWechatConfig();
+      spy.mockImplementation(() =>
+        resolveThreeSecond({
+          enable_wechat_notify: true,
+          corp_id: '123123123',
+          agent_id: 12312312312122,
+          safe_enabled: false,
+          proxy_ip: '1.1.1.1',
+        })
+      );
+    };
+
+    getConfigSpy();
     const testSpy = mockTestWechat();
     const { baseElement } = render(<Wechat />);
     await act(async () => jest.advanceTimersByTime(3000));
@@ -134,6 +148,20 @@ describe('wechat', () => {
   });
 
   it('should render error message when test wechat config is failed', async () => {
+    const getConfigSpy = () => {
+      const spy = mockGetWechatConfig();
+      spy.mockImplementation(() =>
+        resolveThreeSecond({
+          enable_wechat_notify: true,
+          corp_id: '123123123',
+          agent_id: 12312312312122,
+          safe_enabled: false,
+          proxy_ip: '1.1.1.1',
+        })
+      );
+    };
+
+    getConfigSpy();
     const testSpy = mockTestWechat();
     testSpy.mockImplementation(() =>
       resolveThreeSecond({

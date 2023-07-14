@@ -42,14 +42,25 @@ const WebHook: React.FC = () => {
     startModify,
     modifyFinish,
     modifyFlag,
+    enabled,
   } = useConditionalConfig<WebhookFormFields>({
     switchFieldName: 'enable',
   });
 
-  const { data: webhookConfig, refresh } = useRequest(() =>
-    configuration
-      .getGlobalWorkflowWebHookConfig()
-      .then((res) => res?.data?.data)
+  const { data: webhookConfig, refresh } = useRequest(
+    () =>
+      configuration
+        .getGlobalWorkflowWebHookConfig()
+        .then((res) => res?.data?.data),
+    {
+      onSuccess(res) {
+        if (res) {
+          form.setFieldsValue({
+            enable: !!res.enable,
+          });
+        }
+      },
+    }
   );
 
   const [submitLoading, { setTrue: startSubmit, setFalse: submitFinish }] =
@@ -155,7 +166,12 @@ const WebHook: React.FC = () => {
           columns: readonlyColumnsConfig,
           extra: (
             <Space>
-              <Button onClick={test} type="primary" loading={submitLoading}>
+              <Button
+                onClick={test}
+                type="primary"
+                loading={submitLoading}
+                disabled={!enabled}
+              >
                 {t('system.webhook.test')}
               </Button>
               <Button type="primary" onClick={handelClickModify}>

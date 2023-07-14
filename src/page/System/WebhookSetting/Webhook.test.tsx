@@ -108,8 +108,24 @@ describe('webhook', () => {
   });
 
   it('should send test request when user input receiver id and submit request', async () => {
+    const getConfigSpy = () => {
+      const spy = mockGetWebhookConfig();
+      spy.mockImplementation(() =>
+        resolveThreeSecond({
+          enable: true,
+          app_id: undefined,
+          max_retry_times: undefined,
+          retry_interval_seconds: undefined,
+          url: '',
+        })
+      );
+      return spy;
+    };
+
+    getConfigSpy();
     const testSpy = mockTestWebhook();
     render(<Webhook />);
+    await act(async () => jest.advanceTimersByTime(3000));
     fireEvent.click(screen.getByText('system.webhook.test'));
 
     expect(testSpy).toBeCalledTimes(1);
@@ -128,6 +144,7 @@ describe('webhook', () => {
 
     cleanup();
 
+    getConfigSpy();
     testSpy.mockImplementation(() =>
       resolveThreeSecond({
         send_error_message: 'error msg',
@@ -135,6 +152,7 @@ describe('webhook', () => {
     );
 
     render(<Webhook />);
+    await act(async () => jest.advanceTimersByTime(3000));
     fireEvent.click(screen.getByText('system.webhook.test'));
     await act(async () => jest.advanceTimersByTime(3000));
     expect(

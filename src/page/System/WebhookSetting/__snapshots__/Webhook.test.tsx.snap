@@ -75,6 +75,7 @@ exports[`webhook should render webhook config after request finish 1`] = `
                           >
                             <button
                               class="ant-btn ant-btn-primary"
+                              disabled=""
                               type="button"
                             >
                               <span>
@@ -313,6 +314,7 @@ exports[`webhook should render webhook config after request finish 2`] = `
                           >
                             <button
                               class="ant-btn ant-btn-primary"
+                              disabled=""
                               type="button"
                             >
                               <span>
@@ -553,6 +555,7 @@ exports[`webhook should update webhook config after user input config form 1`] =
                           >
                             <button
                               class="ant-btn ant-btn-primary"
+                              disabled=""
                               type="button"
                             >
                               <span>
@@ -1372,6 +1375,7 @@ exports[`webhook should update webhook config after user input config form 3`] =
                           >
                             <button
                               class="ant-btn ant-btn-primary"
+                              disabled=""
                               type="button"
                             >
                               <span>
