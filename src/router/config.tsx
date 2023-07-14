@@ -580,11 +580,11 @@ export const globalRouterConfig: RouterConfigItem<
           },
         ],
       },
-      /* IFTRUE_isEE */
       {
         key: 'customRule',
         element: <CustomRule />,
         path: 'custom',
+        /* IFTRUE_isEE */
         children: [
           {
             path: 'create',
@@ -595,8 +595,9 @@ export const globalRouterConfig: RouterConfigItem<
             key: 'updateCustomRule',
           },
         ],
+        /* FITRUE_isEE */
       },
-      /* FITRUE_isEE */
+      
     ] as RouterConfigItem<GlobalRouterItemKeyLiteral>[],
   },
   {
