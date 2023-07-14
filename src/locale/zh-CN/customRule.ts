@@ -32,7 +32,7 @@ export default {
     baseInfoDesc: '填写规则基本信息',
 
     editRuleTitle: '编写规则',
-    editRuleDesc: '编写规则脚本',
+    editRuleDesc: '填写规则脚本',
 
     submit: '提交',
     submitCustomRule: '提交自定义规则',

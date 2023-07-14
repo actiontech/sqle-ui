@@ -64,7 +64,7 @@ const EditRuleScript: React.FC<EditRuleScriptProps> = (props) => {
         />
       </Form.Item>
 
-      <FooterButtonWrapper>
+      <FooterButtonWrapper insideProject={false}>
         <Button disabled={props.submitLoading} onClick={props.prevStep}>
           {t('common.prevStep')}
         </Button>

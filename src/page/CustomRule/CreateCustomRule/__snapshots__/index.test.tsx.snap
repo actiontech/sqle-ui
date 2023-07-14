@@ -612,7 +612,7 @@ exports[`test CreateCustomRule should match snapshot 1`] = `
                 </div>
               </div>
               <section
-                class="footer-button-wrapper inside-the-project-footer-button-wrapper"
+                class="footer-button-wrapper "
               >
                 <div
                   class="ant-card ant-card-bordered"

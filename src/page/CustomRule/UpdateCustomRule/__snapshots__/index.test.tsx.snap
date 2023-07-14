@@ -618,7 +618,7 @@ exports[`test UpdateCustomRule should match snapshot 1`] = `
                     </div>
                   </div>
                   <section
-                    class="footer-button-wrapper inside-the-project-footer-button-wrapper"
+                    class="footer-button-wrapper "
                   >
                     <div
                       class="ant-card ant-card-bordered"
@@ -1399,7 +1399,7 @@ exports[`test UpdateCustomRule should match snapshot 2`] = `
                     </div>
                   </div>
                   <section
-                    class="footer-button-wrapper inside-the-project-footer-button-wrapper"
+                    class="footer-button-wrapper "
                   >
                     <div
                       class="ant-card ant-card-bordered"
@@ -2199,7 +2199,7 @@ exports[`test UpdateCustomRule should match snapshot 3`] = `
                     </div>
                   </div>
                   <section
-                    class="footer-button-wrapper inside-the-project-footer-button-wrapper"
+                    class="footer-button-wrapper "
                   >
                     <div
                       class="ant-card ant-card-bordered"
@@ -2981,7 +2981,7 @@ exports[`test UpdateCustomRule should match snapshot 4`] = `
                     </div>
                   </div>
                   <section
-                    class="footer-button-wrapper inside-the-project-footer-button-wrapper"
+                    class="footer-button-wrapper "
                   >
                     <div
                       class="ant-card ant-card-bordered"
