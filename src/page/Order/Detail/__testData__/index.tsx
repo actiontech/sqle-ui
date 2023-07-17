@@ -610,7 +610,7 @@ export const workflowTasks: IGetWorkflowTasksItemV2[] = [
     instance_maintenance_times: [
       {
         maintenance_start_time: { hour: 0, minute: 0 },
-        maintenance_stop_time: { hour: 20, minute: 0 },
+        maintenance_stop_time: { hour: 10, minute: 0 },
       },
     ],
   },
