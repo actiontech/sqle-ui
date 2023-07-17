@@ -76,6 +76,8 @@ const workflowId = '22';
 describe('test AuditResultCollection', () => {
   const mockSetAuditResultActiveKey = jest.fn();
   const mockRefreshOrder = jest.fn();
+  let nowSpy: jest.SpyInstance;
+
   beforeEach(() => {
     mockUseStyle();
     mockGetAllRules();
@@ -87,11 +89,17 @@ describe('test AuditResultCollection', () => {
         user: { username: 'admin' },
       })
     );
+    nowSpy = jest
+      .spyOn(Date, 'now')
+      .mockImplementation(() =>
+        new Date('2023-07-11T09:19:54+08:00').getTime()
+      );
   });
 
   afterEach(() => {
     jest.useRealTimers();
     jest.clearAllTimers();
+    nowSpy.mockRestore();
   });
 
   const mockSuccessMessage = () => {

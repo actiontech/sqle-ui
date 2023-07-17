@@ -51,6 +51,7 @@ describe('Order/Detail', () => {
 
   let getInstanceSummarySpy: jest.SpyInstance;
   const error = console.error;
+  let nowSpy: jest.SpyInstance;
 
   beforeEach(() => {
     console.error = jest.fn((message: any) => {
@@ -78,6 +79,12 @@ describe('Order/Detail', () => {
     mockGetAllRules();
     getInstanceSummarySpy = mockGetSummaryOfInstanceTasks();
     jest.useFakeTimers();
+
+    nowSpy = jest
+      .spyOn(Date, 'now')
+      .mockImplementation(() =>
+        new Date('2023-07-11T09:19:54+08:00').getTime()
+      );
   });
 
   afterEach(() => {
@@ -85,6 +92,7 @@ describe('Order/Detail', () => {
     jest.clearAllTimers();
     jest.clearAllMocks();
     console.error = error;
+    nowSpy.mockRestore();
   });
 
   const mockCancelWorkflow = () => {
