@@ -545,7 +545,13 @@ export interface IDingTalkConfigurationV1 {
 }
 
 export interface IDirectAuditReqV1 {
+  instance_name?: string;
+
   instance_type?: string;
+
+  project_name?: string;
+
+  schema_name?: string;
 
   sql_content?: string;
 
@@ -1198,16 +1204,6 @@ export interface IGetSQLAnalysisDataResItemV1 {
   sql_explain?: ISQLExplain;
 
   table_metas?: ITableMeta[];
-}
-
-export interface IGetSQLAnalysisReq {
-  instance_name?: string;
-
-  project_name?: string;
-
-  schema_name?: string;
-
-  sql?: string;
 }
 
 export interface IGetSQLEInfoResDataV1 {
@@ -1997,6 +1993,8 @@ export interface IRuleProjectTemplateDetailResV1 {
 }
 
 export interface IRuleReqV1 {
+  is_custom_rule?: boolean;
+
   level?: string;
 
   name?: string;
@@ -2010,6 +2008,8 @@ export interface IRuleResV1 {
   db_type?: string;
 
   desc?: string;
+
+  is_custom_rule?: boolean;
 
   level?: RuleResV1LevelEnum;
 
@@ -2049,6 +2049,8 @@ export interface IRuleTemplateTipResV1 {
 }
 
 export interface IRuleTypeV1 {
+  is_new_rule_type?: boolean;
+
   rule_count?: number;
 
   rule_type?: string;
@@ -3008,6 +3010,8 @@ export interface IDriverMeta {
   default_port?: number;
 
   driver_name?: string;
+
+  logo_url?: string;
 }
 
 export interface IGetAuditPlanAnalysisDataResV2 {

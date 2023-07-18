@@ -19,6 +19,8 @@ export default {
     title: '创建自定义审核规则',
     successTitle: '提交成功',
     backToList: '查看创建的自定义规则',
+    successTips:
+      '如果您需要应用创建的自定义规则，请及时在规则模板中开启相应的规则',
   },
 
   editCustomRule: {

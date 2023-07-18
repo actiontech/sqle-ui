@@ -366,7 +366,7 @@ exports[`test UpdateCustomRule should match snapshot 1`] = `
                           >
                             <div
                               aria-required="true"
-                              class="ant-select ant-select-in-form-item ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-show-search"
+                              class="ant-select ant-select-in-form-item ant-select-single ant-select-allow-clear ant-select-show-arrow ant-select-disabled ant-select-show-search"
                             >
                               <div
                                 class="ant-select-selector"
@@ -378,11 +378,13 @@ exports[`test UpdateCustomRule should match snapshot 1`] = `
                                     aria-activedescendant="ruleType_list_0"
                                     aria-autocomplete="list"
                                     aria-controls="ruleType_list"
+                                    aria-expanded="false"
                                     aria-haspopup="listbox"
                                     aria-owns="ruleType_list"
                                     aria-required="true"
                                     autocomplete="off"
                                     class="ant-select-selection-search-input"
+                                    disabled=""
                                     id="ruleType"
                                     role="combobox"
                                     type="search"
@@ -671,6 +673,7 @@ exports[`test UpdateCustomRule should match snapshot 1`] = `
               >
                 <div
                   class="ant-result ant-result-success"
+                  style="padding-bottom: 10px;"
                 >
                   <div
                     class="ant-result-icon"
@@ -1452,6 +1455,7 @@ exports[`test UpdateCustomRule should match snapshot 2`] = `
               >
                 <div
                   class="ant-result ant-result-success"
+                  style="padding-bottom: 10px;"
                 >
                   <div
                     class="ant-result-icon"
@@ -2252,6 +2256,7 @@ exports[`test UpdateCustomRule should match snapshot 3`] = `
               >
                 <div
                   class="ant-result ant-result-success"
+                  style="padding-bottom: 10px;"
                 >
                   <div
                     class="ant-result-icon"
@@ -3035,6 +3040,7 @@ exports[`test UpdateCustomRule should match snapshot 4`] = `
               >
                 <div
                   class="ant-result ant-result-success"
+                  style="padding-bottom: 10px;"
                 >
                   <div
                     class="ant-result-icon"

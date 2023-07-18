@@ -34,6 +34,7 @@ import {
   IListTableBySchemaReturn,
   IGetTableMetadataParams,
   IGetTableMetadataReturn,
+  IGetInstanceTypeLogoParams,
   IGetInstanceListV2Params,
   IGetInstanceListV2Return,
   ICreateInstanceV2Params,
@@ -274,6 +275,14 @@ class InstanceService extends ServiceBase {
       paramsData,
       options
     );
+  }
+
+  public getInstanceTypeLogo(
+    params: IGetInstanceTypeLogoParams,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.get<any>('/v1/static/instance_logo', paramsData, options);
   }
 
   public getInstanceListV2(
