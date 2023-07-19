@@ -87,6 +87,7 @@ const UpdateCustomRule: React.FC = () => {
           <Result
             status="success"
             title={t('customRule.editCustomRule.successTitle')}
+            style={{ paddingBottom: 10 }}
           />
           <Row justify="center">
             <Button type="primary">

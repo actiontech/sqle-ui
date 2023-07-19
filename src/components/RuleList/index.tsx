@@ -53,9 +53,17 @@ const RuleList: React.FC<RuleListProps> = (props) => {
       }
     });
 
-    return Array.from(map.values()).sort((a, b) =>
-      a.tabTitle > b.tabTitle ? 1 : -1
-    );
+    return Array.from(map.values()).sort((a, b) => {
+      //Fix RuleListDefaultTabKey in first place
+      if (a.tabTitle === RuleListDefaultTabKey) {
+        return -1;
+      }
+      if (b.tabTitle === RuleListDefaultTabKey) {
+        return 1;
+      }
+
+      return a.tabTitle > b.tabTitle ? 1 : -1;
+    });
   }, [props.allRuleTabs, props.list]);
 
   const tabItems: TabsProps['items'] = tabRules.map((tab) => {

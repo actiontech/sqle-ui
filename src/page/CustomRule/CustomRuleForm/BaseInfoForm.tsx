@@ -139,6 +139,7 @@ const BaseInfoForm: React.FC<BaseInfoFormProps> = (props) => {
         ]}
       >
         <Select
+          disabled={!currentDbType}
           allowClear
           showSearch
           placeholder={t('common.form.placeholder.select', {

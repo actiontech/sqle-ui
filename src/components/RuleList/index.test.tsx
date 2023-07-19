@@ -65,6 +65,18 @@ const ruleList: IRuleResV1[] = [
     rule_name: 'name4',
     type: 'type1',
   },
+  {
+    annotation: 'annotation7',
+    desc: 'desc7',
+    rule_name: 'name7',
+    type: '111',
+  },
+  {
+    annotation: 'annotation7',
+    desc: 'desc7',
+    rule_name: 'name7',
+    type: '222',
+  },
 ];
 
 describe('RuleList', () => {
@@ -113,5 +125,13 @@ describe('RuleList', () => {
     expect(screen.getByText('true')).toBeInTheDocument();
     expect(screen.getByText('desc1_3:')).toBeInTheDocument();
     expect(screen.getByText('val')).toBeInTheDocument();
+  });
+
+  test('should be guaranteed that ALL is always at the first position of the tab', () => {
+    const { container } = render(
+      <RuleList list={ruleList} tabChange={jest.fn()} />
+    );
+
+    expect(container).toMatchSnapshot();
   });
 });

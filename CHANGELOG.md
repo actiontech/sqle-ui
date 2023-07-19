@@ -25,4 +25,5 @@
 * [ ] [feature]: 重构项目概览页面 <https://github.com/actiontech/sqle-ui/pull/292>
 * [ ] [chore]: 界面优化长期任务【2.2307.0】 <https://github.com/actiontech/sqle/issues/1658>
 * [ ] [feature]: 新增自定义规则页面 <https://github.com/actiontech/sqle-ui/pull/294>
-* [ ] [fix]: 在不同时间段执行 Order/Detail/index.test.tsx 和  AuditResultCollection.test.tsx 时, 生成的快照文件不一致. 原因: 这两个页面中有些按钮的状态需要通过当前时间和工单概览接口返回的数据源运维时间做判断, 由于在 test case 中未 mock 当前时间, 导致不同时间段的按钮状态不一致.
+* [ ] [fix]: 在不同时间段执行 Order/Detail/index.test.tsx 和  AuditResultCollection.test.tsx 时, 生成的快照文件不一致. 原因: 这两个页面中有些按钮的状态需要通过当前时间和工单概览接口返回的数据源运维时间做判断, 由于在 test case 中未 mock 当前时间, 导致不同时间段的按钮状态不一致. <https://github.com/actiontech/sqle-ui/pull/298>
+* [ ] [fix]: 将 RuleList 中的 ALL Tab 固定在第一位. 优化自定义规则表单. 优化创建完自定义规则后的页面展示. 创建规则模板和修改规则模板新增参数: is_custom_rule. <https://github.com/actiontech/sqle-ui/pull/299>
