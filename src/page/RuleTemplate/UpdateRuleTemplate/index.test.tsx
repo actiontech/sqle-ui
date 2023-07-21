@@ -139,6 +139,7 @@ describe('UpdateRuleTemplate', () => {
       .filter((e) => e.db_type === 'mysql')
       .map((rule) => {
         return {
+          is_custom_rule: !!rule.is_custom_rule,
           name: rule.rule_name,
           level: rule.level,
           params: rule.params.map((v) => ({ key: v.key, value: v.value })),

@@ -1,4 +1,4 @@
-import { Button, Card, Form, Result, Row } from 'antd';
+import { Button, Card, Form, Result, Row, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
 import BackButton from '../../../components/BackButton';
 import CustomRuleForm from '../CustomRuleForm/CustomRuleForm';
@@ -70,6 +70,7 @@ const CreateCustomRule: React.FC = () => {
         <Result
           status="success"
           title={t('customRule.addCustomRule.successTitle')}
+          style={{ paddingBottom: 10 }}
         />
         <Row justify="center">
           <Button type="primary">
@@ -77,6 +78,11 @@ const CreateCustomRule: React.FC = () => {
               {t('customRule.addCustomRule.backToList')}
             </Link>
           </Button>
+        </Row>
+        <Row justify="center">
+          <Typography.Text>
+            {t('customRule.addCustomRule.successTips')}
+          </Typography.Text>
         </Row>
       </CustomRuleForm>
     </Card>

@@ -39,15 +39,18 @@ const CreateRuleTemplate = () => {
   const submit = React.useCallback(() => {
     updateCreateLoading(true);
     const baseInfo = form.getFieldsValue();
-    const activeRuleWithNewField: IRuleReqV1[] = activeRule.map((rule) => {
-      return {
-        name: rule.rule_name,
-        level: rule.level,
-        params: !!rule.params
-          ? rule.params.map((v) => ({ key: v.key, value: v.value }))
-          : [],
-      };
-    });
+    const activeRuleWithNewField: IRuleReqV1[] = activeRule.map<IRuleReqV1>(
+      (rule) => {
+        return {
+          is_custom_rule: !!rule.is_custom_rule,
+          name: rule.rule_name,
+          level: rule.level,
+          params: !!rule.params
+            ? rule.params.map((v) => ({ key: v.key, value: v.value }))
+            : [],
+        };
+      }
+    );
     ruleTemplate
       .createRuleTemplateV1({
         rule_template_name: baseInfo.templateName,

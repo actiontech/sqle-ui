@@ -424,6 +424,7 @@ export const allRulesWithType = [
     level: 'error',
     type: 'DML规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     annotation: 'annotation2',
@@ -433,6 +434,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: '使用建议',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_collation_database',
@@ -448,6 +450,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DDL规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_column_blob_default_is_not_null',
@@ -456,6 +459,7 @@ export const allRulesWithType = [
     level: 'error',
     type: 'DDL规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_column_blob_notice',
@@ -464,6 +468,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DDL规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_column_blob_with_not_null',
@@ -472,6 +477,7 @@ export const allRulesWithType = [
     level: 'error',
     type: 'DDL规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_column_char_length',
@@ -480,6 +486,7 @@ export const allRulesWithType = [
     level: 'error',
     type: 'DDL规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_column_enum_notice',
@@ -488,6 +495,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DDL规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_column_set_notice',
@@ -504,6 +512,7 @@ export const allRulesWithType = [
     level: 'error',
     type: 'DDL规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_column_varchar_max',
@@ -512,6 +521,7 @@ export const allRulesWithType = [
     level: 'error',
     type: 'DDL规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_column_without_comment',
@@ -520,6 +530,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DDL规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_column_without_default',
@@ -528,6 +539,7 @@ export const allRulesWithType = [
     level: 'error',
     type: 'DDL规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_composite_index_max',
@@ -543,6 +555,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: '索引规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_create_function',
@@ -551,6 +564,7 @@ export const allRulesWithType = [
     level: 'error',
     type: '使用建议',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_create_procedure',
@@ -559,6 +573,7 @@ export const allRulesWithType = [
     level: 'error',
     type: '使用建议',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_create_trigger',
@@ -567,6 +582,7 @@ export const allRulesWithType = [
     level: 'error',
     type: '使用建议',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_create_view',
@@ -575,6 +591,7 @@ export const allRulesWithType = [
     level: 'error',
     type: '使用建议',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_database_suffix',
@@ -583,6 +600,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: '命名规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_decimal_type_column',
@@ -591,6 +609,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DDL规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_index_column_with_blob',
@@ -599,6 +618,7 @@ export const allRulesWithType = [
     level: 'error',
     type: '索引规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_index_count',
@@ -614,6 +634,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: '索引规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_index_option',
@@ -629,6 +650,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DML规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_index_prefix',
@@ -637,6 +659,7 @@ export const allRulesWithType = [
     level: 'error',
     type: '命名规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_indexes_exist_before_creat_constraints',
@@ -645,6 +668,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: '索引规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_is_exist_limit_offset',
@@ -653,6 +677,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DML规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_object_name_length',
@@ -661,6 +686,7 @@ export const allRulesWithType = [
     level: 'error',
     type: '命名规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_object_name_using_cn',
@@ -669,6 +695,7 @@ export const allRulesWithType = [
     level: 'error',
     type: '命名规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_object_name_using_keyword',
@@ -677,6 +704,7 @@ export const allRulesWithType = [
     level: 'error',
     type: '命名规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_pk_name',
@@ -685,6 +713,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: '命名规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_pk_not_exist',
@@ -693,6 +722,7 @@ export const allRulesWithType = [
     level: 'error',
     type: '索引规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_pk_prohibit_auto_increment',
@@ -701,6 +731,7 @@ export const allRulesWithType = [
     level: 'error',
     type: '索引规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_pk_without_auto_increment',
@@ -709,6 +740,7 @@ export const allRulesWithType = [
     level: 'error',
     type: '索引规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_pk_without_bigint_unsigned',
@@ -717,6 +749,7 @@ export const allRulesWithType = [
     level: 'error',
     type: '索引规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_table_partition',
@@ -725,6 +758,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: '使用建议',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_table_without_comment',
@@ -733,6 +767,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DDL规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_table_without_if_not_exists',
@@ -741,6 +776,7 @@ export const allRulesWithType = [
     level: 'error',
     type: '使用建议',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_table_without_innodb_utf8mb4',
@@ -749,6 +785,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DDL规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_transaction_isolation_level',
@@ -757,6 +794,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: '使用建议',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_unique_index',
@@ -765,6 +803,7 @@ export const allRulesWithType = [
     level: 'error',
     type: '命名规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_check_unique_index_prefix',
@@ -773,6 +812,7 @@ export const allRulesWithType = [
     level: 'error',
     type: '命名规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_disable_drop_statement',
@@ -781,6 +821,7 @@ export const allRulesWithType = [
     level: 'error',
     type: '使用建议',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_disable_fk',
@@ -789,6 +830,7 @@ export const allRulesWithType = [
     level: 'error',
     type: '索引规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'ddl_osc_min_size',
@@ -804,6 +846,7 @@ export const allRulesWithType = [
     level: 'normal',
     type: '全局配置',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_check_batch_insert_lists_max',
@@ -819,6 +862,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DML规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_check_explain_access_type_all',
@@ -834,6 +878,7 @@ export const allRulesWithType = [
     level: 'warn',
     type: 'DML规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_check_explain_extra_using_filesort',
@@ -842,6 +887,7 @@ export const allRulesWithType = [
     level: 'warn',
     type: 'DML规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_check_explain_extra_using_temporary',
@@ -850,6 +896,7 @@ export const allRulesWithType = [
     level: 'warn',
     type: 'DML规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_check_fuzzy_search',
@@ -858,6 +905,7 @@ export const allRulesWithType = [
     level: 'error',
     type: 'DML规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_check_insert_columns_exist',
@@ -866,6 +914,7 @@ export const allRulesWithType = [
     level: 'error',
     type: 'DML规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_check_is_after_union_distinct',
@@ -874,6 +923,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DML规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_check_limit_must_exist',
@@ -882,6 +932,7 @@ export const allRulesWithType = [
     level: 'error',
     type: 'DML规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_check_needless_func',
@@ -897,6 +948,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DML规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_check_number_of_join_tables',
@@ -912,6 +964,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DML规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_check_select_for_update',
@@ -920,6 +973,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DML规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_check_where_exist_func',
@@ -928,6 +982,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DML规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_check_where_exist_implicit_conversion',
@@ -936,6 +991,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DML规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_check_where_exist_not',
@@ -944,6 +1000,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DML规范',
     db_type: 'mysql',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_check_where_exist_null',
@@ -952,6 +1009,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DML规范',
     db_type: 'oracle',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_check_where_exist_scalar_sub_queries',
@@ -960,6 +1018,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DML规范',
     db_type: 'oracle',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_check_with_limit',
@@ -968,6 +1027,7 @@ export const allRulesWithType = [
     level: 'error',
     type: 'DML规范',
     db_type: 'oracle',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_check_with_order_by',
@@ -976,6 +1036,7 @@ export const allRulesWithType = [
     level: 'error',
     type: 'DML规范',
     db_type: 'oracle',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_disable_select_all_column',
@@ -984,6 +1045,7 @@ export const allRulesWithType = [
     level: 'notice',
     type: 'DML规范',
     db_type: 'oracle',
+    is_custom_rule: false,
   },
   {
     rule_name: 'dml_rollback_max_rows',
@@ -999,5 +1061,6 @@ export const allRulesWithType = [
     level: 'notice',
     type: '全局配置',
     db_type: 'oracle',
+    is_custom_rule: false,
   },
 ];
