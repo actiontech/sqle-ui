@@ -69,5 +69,9 @@ export type RouterConfigItem<T extends string> = {
   hideChildrenInSliderMenu?: boolean;
   hideInSliderMenu?: boolean;
   hightLightMenuKey?: string;
-  groups?: Array<{ title: string; values: RouterConfigItem<T>[] }>;
+  groups?: Array<{
+    title: ReactNode;
+    values: RouterConfigItem<T>[];
+    key: string;
+  }>;
 } & RouteObject;

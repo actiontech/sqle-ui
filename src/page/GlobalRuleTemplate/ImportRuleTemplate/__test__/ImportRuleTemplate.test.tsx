@@ -119,9 +119,9 @@ describe('test GlobalRuleTemplate/ImportRuleTemplate', () => {
     expect(
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateDesc')
     ).toHaveValue(parseFileData.desc);
-    expect(screen.getByText(parseFileData.db_type)).toHaveClass(
-      'ant-select-selection-item'
-    );
+    expect(
+      screen.getByText(parseFileData.db_type).parentNode?.parentNode
+    ).toHaveClass('ant-select-selection-item');
 
     fireEvent.click(screen.getByText('common.nextStep'));
 

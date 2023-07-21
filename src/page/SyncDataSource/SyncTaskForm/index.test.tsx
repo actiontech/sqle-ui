@@ -158,7 +158,7 @@ describe('test SyncTaskForm', () => {
 
     selectOptionByIndex('syncDataSource.syncTaskForm.instanceType', 'mysql');
 
-    expect(screen.getAllByText('mysql')[0]).toHaveClass(
+    expect(screen.getAllByText('mysql')[0].parentNode?.parentNode).toHaveClass(
       'ant-select-selection-item'
     );
 

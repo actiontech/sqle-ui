@@ -10,6 +10,7 @@ import {
 } from '../../../../types/router.type';
 import ProjectDetailLayout from './Layout';
 import { Link } from '../../../../components/Link';
+import { MenuItemGroupType } from 'antd/lib/menu/hooks/useItems';
 
 export type ProjectDetailLayoutProps = {
   children: ReactNode;
@@ -51,10 +52,10 @@ export const generateNavigateMenu = (
       }
 
       if (!!route.groups) {
-        return route.groups.map((v) => {
+        return route.groups.map<MenuItemGroupType>((v) => {
           return {
             type: 'group',
-            key: v.title,
+            key: v.key,
             label: v.title,
             children: generateNavigateMenu(v.values, userRole, projectName),
           };

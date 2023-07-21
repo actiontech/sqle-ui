@@ -37,7 +37,7 @@ import {
   WorkflowRecordResV2StatusEnum,
   WorkflowResV2ModeEnum,
   WorkflowStepResV2StateEnum,
-  WorkflowStepResV2TypeEnum
+  WorkflowStepResV2TypeEnum,
 } from './common.enum';
 
 export interface IBaseRes {
@@ -2049,7 +2049,7 @@ export interface IRuleTemplateTipResV1 {
 }
 
 export interface IRuleTypeV1 {
-  is_new_rule_type?: boolean;
+  is_custom_rule_type?: boolean;
 
   rule_count?: number;
 

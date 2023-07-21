@@ -9,7 +9,7 @@ import reportStatisticsData from '../index.data';
 import { Theme } from '@mui/material/styles';
 
 const { rowHeight } = reportStatisticsData;
-const CommonLine: React.FC<CommonPieProps> = (props) => {
+const CommonPie: React.FC<CommonPieProps> = (props) => {
   const {
     h,
     padding = 'auto',
@@ -55,4 +55,4 @@ const CommonLine: React.FC<CommonPieProps> = (props) => {
   );
 };
 
-export default CommonLine;
+export default CommonPie;

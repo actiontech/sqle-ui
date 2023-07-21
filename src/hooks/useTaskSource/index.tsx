@@ -4,6 +4,7 @@ import React from 'react';
 import { ISyncTaskTipsResV1 } from '../../api/common';
 import sync_instance from '../../api/sync_instance';
 import { ResponseCode } from '../../data/common';
+import DatabaseTypeLogo from '../../components/DatabaseTypeLogo';
 
 const useTaskSource = () => {
   const [taskSourceList, setTaskSourceList] = React.useState<
@@ -47,7 +48,7 @@ const useTaskSource = () => {
       return dbTypes.map((type) => {
         return (
           <Select.Option key={type} value={type ?? ''}>
-            {type}
+            <DatabaseTypeLogo dbType={type} />
           </Select.Option>
         );
       });

@@ -195,7 +195,20 @@ exports[`test SyncTaskList should be called request to get data for the render t
                         <td
                           class="ant-table-cell"
                         >
-                          mysql
+                          <div
+                            class="database-type-logo-wrapper"
+                          >
+                            <img
+                              alt=""
+                              src="/v1/static/instance_logo?instance_type=mysql"
+                            />
+                            <span
+                              class="ant-select-item-option-content"
+                              title="mysql"
+                            >
+                              mysql
+                            </span>
+                          </div>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -280,7 +293,20 @@ exports[`test SyncTaskList should be called request to get data for the render t
                         <td
                           class="ant-table-cell"
                         >
-                          oracle
+                          <div
+                            class="database-type-logo-wrapper"
+                          >
+                            <img
+                              alt=""
+                              src="/v1/static/instance_logo?instance_type=oracle"
+                            />
+                            <span
+                              class="ant-select-item-option-content"
+                              title="oracle"
+                            >
+                              oracle
+                            </span>
+                          </div>
                         </td>
                         <td
                           class="ant-table-cell"

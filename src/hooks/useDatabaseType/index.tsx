@@ -4,6 +4,7 @@ import { ResponseCode } from '../../data/common';
 import configurationService from '../../api/configuration';
 import { Select } from 'antd';
 import { IDriverMeta } from '../../api/common';
+import DatabaseTypeLogo from '../../components/DatabaseTypeLogo';
 
 const useDatabaseType = () => {
   const [driverNameList, setDriverNameList] = React.useState<string[]>([]);
@@ -34,14 +35,14 @@ const useDatabaseType = () => {
   }, [setFalse, setTrue]);
 
   const generateDriverSelectOptions = React.useCallback(() => {
-    return driverNameList.map((driver: string) => {
+    return driverMeta.map((v) => {
       return (
-        <Select.Option key={driver} value={driver}>
-          {driver}
+        <Select.Option key={v.driver_name} value={v.driver_name}>
+          <DatabaseTypeLogo dbType={v.driver_name ?? ''} logoUrl={v.logo_url} />
         </Select.Option>
       );
     });
-  }, [driverNameList]);
+  }, [driverMeta]);
 
   return {
     driverNameList,
