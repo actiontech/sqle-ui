@@ -117,9 +117,21 @@ exports[`useInstance should be group instance by database type 1`] = `
                 >
                   <div
                     class="ant-select-item ant-select-item-group"
-                    title="mysql"
                   >
-                    mysql
+                    <div
+                      class="database-type-logo-wrapper"
+                    >
+                      <img
+                        alt=""
+                        src="/v1/static/instance_logo?instance_type=mysql"
+                      />
+                      <span
+                        class="ant-select-item-option-content"
+                        title="mysql"
+                      >
+                        mysql
+                      </span>
+                    </div>
                   </div>
                   <div
                     aria-selected="false"
@@ -157,9 +169,21 @@ exports[`useInstance should be group instance by database type 1`] = `
                   </div>
                   <div
                     class="ant-select-item ant-select-item-group"
-                    title="oracle"
                   >
-                    oracle
+                    <div
+                      class="database-type-logo-wrapper"
+                    >
+                      <img
+                        alt=""
+                        src="/v1/static/instance_logo?instance_type=oracle"
+                      />
+                      <span
+                        class="ant-select-item-option-content"
+                        title="oracle"
+                      >
+                        oracle
+                      </span>
+                    </div>
                   </div>
                   <div
                     aria-selected="false"
@@ -180,9 +204,21 @@ exports[`useInstance should be group instance by database type 1`] = `
                   </div>
                   <div
                     class="ant-select-item ant-select-item-group"
-                    title="sqlserver"
                   >
-                    sqlserver
+                    <div
+                      class="database-type-logo-wrapper"
+                    >
+                      <img
+                        alt=""
+                        src="/v1/static/instance_logo?instance_type=sqlserver"
+                      />
+                      <span
+                        class="ant-select-item-option-content"
+                        title="sqlserver"
+                      >
+                        sqlserver
+                      </span>
+                    </div>
                   </div>
                   <div
                     aria-selected="false"
@@ -462,9 +498,21 @@ exports[`useInstance should get instance data from request 3`] = `
                 >
                   <div
                     class="ant-select-item ant-select-item-group"
-                    title="mysql"
                   >
-                    mysql
+                    <div
+                      class="database-type-logo-wrapper"
+                    >
+                      <img
+                        alt=""
+                        src="/v1/static/instance_logo?instance_type=mysql"
+                      />
+                      <span
+                        class="ant-select-item-option-content"
+                        title="mysql"
+                      >
+                        mysql
+                      </span>
+                    </div>
                   </div>
                   <div
                     aria-selected="false"
@@ -680,9 +728,21 @@ exports[`useInstance should show one database type which your choose 2`] = `
                 >
                   <div
                     class="ant-select-item ant-select-item-group"
-                    title="oracle"
                   >
-                    oracle
+                    <div
+                      class="database-type-logo-wrapper"
+                    >
+                      <img
+                        alt=""
+                        src="/v1/static/instance_logo?instance_type=oracle"
+                      />
+                      <span
+                        class="ant-select-item-option-content"
+                        title="oracle"
+                      >
+                        oracle
+                      </span>
+                    </div>
                   </div>
                   <div
                     aria-selected="true"

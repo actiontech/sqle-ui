@@ -14,6 +14,7 @@ import { TableColumn } from '../../../types/common.type';
 import { timeAddZero } from '../../../utils/Common';
 import { RuleUrlParamKey } from '../../Rule/useRuleFilterForm';
 import { Link } from '../../../components/Link';
+import DatabaseTypeLogo from '../../../components/DatabaseTypeLogo';
 
 export const dataSourceColumns = (
   deleteDatabase: (instanceName: string) => void,
@@ -48,6 +49,13 @@ export const dataSourceColumns = (
     {
       dataIndex: 'db_type',
       title: () => t('dataSource.databaseList.type'),
+      render(type: string) {
+        if (!type) {
+          return '--';
+        }
+
+        return <DatabaseTypeLogo dbType={type} />;
+      },
     },
     {
       dataIndex: 'rule_template',

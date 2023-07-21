@@ -5,6 +5,7 @@ import { t } from '../../../locale';
 import { TableColumn } from '../../../types/common.type';
 import { formatTime } from '../../../utils/Common';
 import { Link } from '../../../components/Link';
+import DatabaseTypeLogo from '../../../components/DatabaseTypeLogo';
 
 export const SyncTaskListTableColumnFactory: (
   syncAction: (taskId: string) => void,
@@ -29,6 +30,13 @@ export const SyncTaskListTableColumnFactory: (
     {
       dataIndex: 'db_type',
       title: () => t('syncDataSource.syncTaskList.columns.instanceType'),
+      render(type: string) {
+        if (!type) {
+          return '--';
+        }
+
+        return <DatabaseTypeLogo dbType={type} />;
+      },
     },
     {
       dataIndex: 'last_sync_status',

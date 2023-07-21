@@ -389,9 +389,21 @@ exports[`UpdateAuditPlan should send update audit plan request when user input a
                       </span>
                       <span
                         class="ant-select-selection-item"
-                        title="oracle"
                       >
-                        oracle
+                        <div
+                          class="database-type-logo-wrapper"
+                        >
+                          <img
+                            alt=""
+                            src="/v1/static/instance_logo?instance_type=oracle"
+                          />
+                          <span
+                            class="ant-select-item-option-content"
+                            title="oracle"
+                          >
+                            oracle
+                          </span>
+                        </div>
                       </span>
                     </div>
                     <span
@@ -1667,9 +1679,21 @@ exports[`UpdateAuditPlan should set form default value to specify instance 1`] =
                       </span>
                       <span
                         class="ant-select-selection-item"
-                        title="oracle"
                       >
-                        oracle
+                        <div
+                          class="database-type-logo-wrapper"
+                        >
+                          <img
+                            alt=""
+                            src="/v1/static/instance_logo?instance_type=oracle"
+                          />
+                          <span
+                            class="ant-select-item-option-content"
+                            title="oracle"
+                          >
+                            oracle
+                          </span>
+                        </div>
                       </span>
                     </div>
                     <span

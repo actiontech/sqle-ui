@@ -213,7 +213,6 @@ exports[`hooks/useDatabaseType should get driver from request 3`] = `
             style="height: 0px; width: 0px; overflow: hidden;"
           >
             <div
-              aria-label="mysql"
               aria-selected="false"
               id="rc_select_TEST_OR_SSR_list_0"
               role="option"
@@ -237,12 +236,24 @@ exports[`hooks/useDatabaseType should get driver from request 3`] = `
                   <div
                     aria-selected="false"
                     class="ant-select-item ant-select-item-option ant-select-item-option-active"
-                    title="mysql"
                   >
                     <div
                       class="ant-select-item-option-content"
                     >
-                      mysql
+                      <div
+                        class="database-type-logo-wrapper"
+                      >
+                        <img
+                          alt=""
+                          src="/v1/static/instance_logo?instance_type=mysql"
+                        />
+                        <span
+                          class="ant-select-item-option-content"
+                          title="mysql"
+                        >
+                          mysql
+                        </span>
+                      </div>
                     </div>
                     <span
                       aria-hidden="true"

@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test DatabaseTypeLogo should match snapshot 1`] = `
+<div>
+  <div
+    class="database-type-logo-wrapper"
+  >
+    <img
+      alt=""
+      src="/v1/static/instance_logo?instance_type=mysql"
+    />
+    <span
+      class="ant-select-item-option-content"
+      title="mysql"
+    >
+      mysql
+    </span>
+  </div>
+</div>
+`;
+
+exports[`test DatabaseTypeLogo should match snapshot 2`] = `
+<div>
+  <div
+    class="database-type-logo-wrapper"
+  >
+    <img
+      alt=""
+      src="/static/medit/logo.png"
+    />
+    <span
+      class="ant-select-item-option-content"
+      title="db2"
+    >
+      db2
+    </span>
+  </div>
+</div>
+`;

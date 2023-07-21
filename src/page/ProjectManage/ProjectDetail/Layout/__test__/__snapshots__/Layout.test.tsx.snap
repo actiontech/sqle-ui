@@ -269,9 +269,21 @@ exports[`test ProjectManage/ProjectDetailLayout should render active menu by rou
                 <div
                   class="ant-menu-item-group-title"
                   role="presentation"
-                  title="MySQL"
                 >
-                  MySQL
+                  <div
+                    class="database-type-logo-wrapper"
+                  >
+                    <img
+                      alt=""
+                      src="/v1/static/instance_logo?instance_type=MySQL"
+                    />
+                    <span
+                      class="ant-select-item-option-content"
+                      title="MySQL"
+                    >
+                      MySQL
+                    </span>
+                  </div>
                 </div>
                 <ul
                   class="ant-menu-item-group-list"
@@ -376,9 +388,21 @@ exports[`test ProjectManage/ProjectDetailLayout should render active menu by rou
                 <div
                   class="ant-menu-item-group-title"
                   role="presentation"
-                  title="Oracle"
                 >
-                  Oracle
+                  <div
+                    class="database-type-logo-wrapper"
+                  >
+                    <img
+                      alt=""
+                      src="/v1/static/instance_logo?instance_type=Oracle"
+                    />
+                    <span
+                      class="ant-select-item-option-content"
+                      title="Oracle"
+                    >
+                      Oracle
+                    </span>
+                  </div>
                 </div>
                 <ul
                   class="ant-menu-item-group-list"
@@ -411,9 +435,21 @@ exports[`test ProjectManage/ProjectDetailLayout should render active menu by rou
                 <div
                   class="ant-menu-item-group-title"
                   role="presentation"
-                  title="TiDB"
                 >
-                  TiDB
+                  <div
+                    class="database-type-logo-wrapper"
+                  >
+                    <img
+                      alt=""
+                      src="/v1/static/instance_logo?instance_type=TiDB"
+                    />
+                    <span
+                      class="ant-select-item-option-content"
+                      title="TiDB"
+                    >
+                      TiDB
+                    </span>
+                  </div>
                 </div>
                 <ul
                   class="ant-menu-item-group-list"

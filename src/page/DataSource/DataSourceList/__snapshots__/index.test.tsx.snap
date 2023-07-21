@@ -1371,7 +1371,20 @@ exports[`DataSource/DataSourceList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          mysql
+                          <div
+                            class="database-type-logo-wrapper"
+                          >
+                            <img
+                              alt=""
+                              src="/v1/static/instance_logo?instance_type=mysql"
+                            />
+                            <span
+                              class="ant-select-item-option-content"
+                              title="mysql"
+                            >
+                              mysql
+                            </span>
+                          </div>
                         </td>
                         <td
                           class="ant-table-cell"
@@ -1480,7 +1493,20 @@ exports[`DataSource/DataSourceList should match snapshot 2`] = `
                         <td
                           class="ant-table-cell"
                         >
-                          mysql
+                          <div
+                            class="database-type-logo-wrapper"
+                          >
+                            <img
+                              alt=""
+                              src="/v1/static/instance_logo?instance_type=mysql"
+                            />
+                            <span
+                              class="ant-select-item-option-content"
+                              title="mysql"
+                            >
+                              mysql
+                            </span>
+                          </div>
                         </td>
                         <td
                           class="ant-table-cell"

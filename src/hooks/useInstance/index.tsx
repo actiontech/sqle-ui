@@ -6,6 +6,7 @@ import instance from '../../api/instance';
 import { IGetInstanceTipListV1Params } from '../../api/instance/index.d';
 import { ResponseCode } from '../../data/common';
 import { instanceListDefaultKey } from '../../data/common';
+import DatabaseTypeLogo from '../../components/DatabaseTypeLogo';
 
 const useInstance = () => {
   const [instanceList, setInstanceList] = React.useState<IInstanceTipResV1[]>(
@@ -51,7 +52,10 @@ const useInstance = () => {
       );
       return instanceTypeList.map((type) => {
         return (
-          <Select.OptGroup label={type} key={type}>
+          <Select.OptGroup
+            label={<DatabaseTypeLogo dbType={type} />}
+            key={type}
+          >
             {filterInstanceList
               .filter((instance) => instance.instance_type === type)
               .map((instance) => {

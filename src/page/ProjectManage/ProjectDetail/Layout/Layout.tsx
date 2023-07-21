@@ -17,6 +17,7 @@ import {
   ProjectDetailRouterItemKeyLiteral,
   RouterConfigItem,
 } from '../../../../types/router.type';
+import DatabaseTypeLogo from '../../../../components/DatabaseTypeLogo';
 
 import './index.less';
 
@@ -119,9 +120,18 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
           auditPlanTypesDictionary[
             key as keyof typeof auditPlanTypesDictionary
           ];
+
         return {
-          title: key === ALL_INSTANCE_TYPE ? t('menu.allInstanceType') : key,
-          values: value.map((e) => ({
+          key: key,
+          title:
+            key === ALL_INSTANCE_TYPE ? (
+              t('menu.allInstanceType')
+            ) : (
+              <DatabaseTypeLogo dbType={key} />
+            ),
+          values: value.map<
+            RouterConfigItem<ProjectDetailRouterItemKeyLiteral>
+          >((e) => ({
             path: `auditPlan?type=${e.type}`,
             key: `auditPlan${e.type}` as ProjectDetailRouterItemKeyLiteral,
             label: 'menu.auditPlane',
@@ -130,6 +140,7 @@ const ProjectDetailLayout: React.FC<ProjectDetailLayoutProps> = ({
           })),
         };
       });
+
       setInnerRouterConfig(newRouterConfig);
     }
   }, [auditPlanTypes, t]);

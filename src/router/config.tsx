@@ -379,6 +379,7 @@ export const projectDetailRouterConfig: RouterConfigItem<ProjectDetailRouterItem
           ],
           groups: [
             {
+              key: '',
               title: '',
               values: [
                 {
@@ -597,7 +598,6 @@ export const globalRouterConfig: RouterConfigItem<
         ],
         /* FITRUE_isEE */
       },
-      
     ] as RouterConfigItem<GlobalRouterItemKeyLiteral>[],
   },
   {

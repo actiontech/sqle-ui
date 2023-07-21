@@ -1320,9 +1320,21 @@ exports[`test AddSyncTask should send request when clicking submit button 1`] = 
                         </span>
                         <span
                           class="ant-select-selection-item"
-                          title="mysql"
                         >
-                          mysql
+                          <div
+                            class="database-type-logo-wrapper"
+                          >
+                            <img
+                              alt=""
+                              src="/v1/static/instance_logo?instance_type=mysql"
+                            />
+                            <span
+                              class="ant-select-item-option-content"
+                              title="mysql"
+                            >
+                              mysql
+                            </span>
+                          </div>
                         </span>
                       </div>
                       <span
@@ -2254,7 +2266,6 @@ exports[`test AddSyncTask should send request when clicking submit button 1`] = 
             style="height: 0px; width: 0px; overflow: hidden;"
           >
             <div
-              aria-label="mysql"
               aria-selected="true"
               id="instanceType_list_0"
               role="option"
@@ -2278,12 +2289,24 @@ exports[`test AddSyncTask should send request when clicking submit button 1`] = 
                   <div
                     aria-selected="true"
                     class="ant-select-item ant-select-item-option ant-select-item-option-active ant-select-item-option-selected"
-                    title="mysql"
                   >
                     <div
                       class="ant-select-item-option-content"
                     >
-                      mysql
+                      <div
+                        class="database-type-logo-wrapper"
+                      >
+                        <img
+                          alt=""
+                          src="/v1/static/instance_logo?instance_type=mysql"
+                        />
+                        <span
+                          class="ant-select-item-option-content"
+                          title="mysql"
+                        >
+                          mysql
+                        </span>
+                      </div>
                     </div>
                     <span
                       aria-hidden="true"

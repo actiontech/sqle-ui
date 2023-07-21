@@ -7,6 +7,7 @@ import { TableColumn } from '../../../types/common.type';
 import { RuleUrlParamKey } from '../../Rule/useRuleFilterForm';
 import { Link } from '../../../components/Link';
 import { ItemType } from 'antd/lib/menu/hooks/useItems';
+import DatabaseTypeLogo from '../../../components/DatabaseTypeLogo';
 
 export const RuleTemplateListTableColumnFactory = (
   deleteTemplate: (name: string) => void,
@@ -42,6 +43,13 @@ export const RuleTemplateListTableColumnFactory = (
     {
       dataIndex: 'db_type',
       title: () => t('ruleTemplate.ruleTemplateList.table.dbType'),
+      render(type: string) {
+        if (!type) {
+          return '--';
+        }
+
+        return <DatabaseTypeLogo dbType={type} />;
+      },
     },
     {
       dataIndex: 'operator',

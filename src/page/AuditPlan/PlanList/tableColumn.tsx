@@ -8,6 +8,7 @@ import { TableColumn } from '../../../types/common.type';
 import { RuleUrlParamKey } from '../../Rule/useRuleFilterForm';
 import TokenText from './component/TokenText';
 import { Link } from '../../../components/Link';
+import DatabaseTypeLogo from '../../../components/DatabaseTypeLogo';
 
 export const planListTableHeader = (
   removeAuditPlan: (auditPlanName: string) => void,
@@ -49,6 +50,13 @@ export const planListTableHeader = (
     {
       dataIndex: 'audit_plan_db_type',
       title: () => t('auditPlan.list.table.audit_plan_db_type'),
+      render(type: string) {
+        if (!type) {
+          return '--';
+        }
+
+        return <DatabaseTypeLogo dbType={type} />;
+      },
     },
     {
       dataIndex: 'rule_template',
