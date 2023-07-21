@@ -45,7 +45,6 @@ const EditRuleScript: React.FC<EditRuleScriptProps> = (props) => {
         rules={[
           {
             required: true,
-            type: 'regexp',
           },
         ]}
       >
