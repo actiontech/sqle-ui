@@ -3,7 +3,7 @@
 exports[`System/SMTPSetting should get smtp setting from origin 1`] = `
 <div>
   <div
-    class="ant-card ant-card-bordered"
+    class="ant-card ant-card-loading ant-card-bordered"
   >
     <div
       class="ant-card-head"
@@ -21,205 +21,24 @@ exports[`System/SMTPSetting should get smtp setting from origin 1`] = `
     <div
       class="ant-card-body"
     >
-      <section>
-        <div
-          class="ant-descriptions"
-        >
-          <div
-            class="ant-descriptions-view"
-          >
-            <table>
-              <tbody>
-                <tr
-                  class="ant-descriptions-row"
-                >
-                  <td
-                    class="ant-descriptions-item"
-                    colspan="3"
-                  >
-                    <div
-                      class="ant-descriptions-item-container"
-                    >
-                      <span
-                        class="ant-descriptions-item-label"
-                      >
-                        system.smtp.enable
-                      </span>
-                      <span
-                        class="ant-descriptions-item-content"
-                      >
-                        common.close
-                      </span>
-                    </div>
-                  </td>
-                </tr>
-                <tr
-                  class="ant-descriptions-row"
-                >
-                  <td
-                    class="ant-descriptions-item"
-                    colspan="3"
-                  >
-                    <div
-                      class="ant-descriptions-item-container"
-                    >
-                      <span
-                        class="ant-descriptions-item-content"
-                      >
-                        <div
-                          class="ant-space ant-space-horizontal ant-space-align-center"
-                        >
-                          <div
-                            class="ant-space-item"
-                            style="margin-right: 8px;"
-                          >
-                            <span
-                              class="ant-popover-disabled-compatible-wrapper"
-                              style="display: inline-block; cursor: not-allowed;"
-                            >
-                              <button
-                                class="ant-btn ant-btn-primary"
-                                disabled=""
-                                style="pointer-events: none;"
-                                type="submit"
-                              >
-                                <span>
-                                  system.smtp.test
-                                </span>
-                              </button>
-                            </span>
-                          </div>
-                          <div
-                            class="ant-space-item"
-                          >
-                            <button
-                              class="ant-btn ant-btn-primary"
-                              type="button"
-                            >
-                              <span>
-                                common.modify
-                              </span>
-                            </button>
-                          </div>
-                        </div>
-                      </span>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-      <form
-        class="ant-form ant-form-horizontal"
-        hidden=""
+      <div
+        class="ant-skeleton ant-skeleton-active"
       >
         <div
-          class="ant-form-item"
+          class="ant-skeleton-content"
         >
-          <div
-            class="ant-row ant-form-item-row"
+          <ul
+            class="ant-skeleton-paragraph"
           >
-            <div
-              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-            >
-              <label
-                class=""
-                for="enable"
-                title="system.smtp.enable"
-              >
-                system.smtp.enable
-              </label>
-            </div>
-            <div
-              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-            >
-              <div
-                class="ant-form-item-control-input"
-              >
-                <div
-                  class="ant-form-item-control-input-content"
-                >
-                  <button
-                    aria-checked="false"
-                    class="ant-switch"
-                    id="enable"
-                    role="switch"
-                    type="button"
-                  >
-                    <div
-                      class="ant-switch-handle"
-                    />
-                    <span
-                      class="ant-switch-inner"
-                    />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+            <li />
+            <li />
+            <li />
+            <li
+              style="width: 61%;"
+            />
+          </ul>
         </div>
-        <div
-          class="ant-form-item"
-        >
-          <div
-            class="ant-row ant-form-item-row"
-          >
-            <div
-              class="ant-col ant-form-item-label ant-col-xs-24 ant-col-sm-8"
-            >
-              <label
-                class="ant-form-item-no-colon"
-                title=" "
-              >
-                 
-              </label>
-            </div>
-            <div
-              class="ant-col ant-form-item-control ant-col-xs-24 ant-col-sm-12 ant-col-md-10"
-            >
-              <div
-                class="ant-form-item-control-input"
-              >
-                <div
-                  class="ant-form-item-control-input-content"
-                >
-                  <div
-                    class="ant-space ant-space-horizontal ant-space-align-center"
-                  >
-                    <div
-                      class="ant-space-item"
-                      style="margin-right: 8px;"
-                    >
-                      <button
-                        class="ant-btn ant-btn-primary"
-                        type="submit"
-                      >
-                        <span>
-                          common.submit
-                        </span>
-                      </button>
-                    </div>
-                    <div
-                      class="ant-space-item"
-                    >
-                      <button
-                        class="ant-btn ant-btn-default"
-                        type="button"
-                      >
-                        <span>
-                          common.cancel
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
   </div>
 </div>

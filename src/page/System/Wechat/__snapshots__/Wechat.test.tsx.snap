@@ -842,25 +842,49 @@ exports[`wechat should send test request when user input receiver id and submit 
                   class="ant-space-item"
                   style="margin-bottom: 8px;"
                 >
-                  <div
-                    class="ant-row"
+                  <form
+                    class="ant-form ant-form-horizontal"
                   >
                     <div
-                      class="ant-col ant-col-8 flex-all-center"
+                      class="ant-form-item"
+                      style="margin-bottom: 0px;"
                     >
-                      system.wechat.receiveWechat
+                      <div
+                        class="ant-row ant-form-item-row"
+                      >
+                        <div
+                          class="ant-col ant-form-item-label"
+                        >
+                          <label
+                            class="ant-form-item-required"
+                            for="receiveId"
+                            title="system.wechat.receiveWechat"
+                          >
+                            system.wechat.receiveWechat
+                          </label>
+                        </div>
+                        <div
+                          class="ant-col ant-form-item-control"
+                        >
+                          <div
+                            class="ant-form-item-control-input"
+                          >
+                            <div
+                              class="ant-form-item-control-input-content"
+                            >
+                              <input
+                                aria-required="true"
+                                class="ant-input"
+                                id="receiveId"
+                                type="text"
+                                value=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div
-                      class="ant-col ant-col-16"
-                    >
-                      <input
-                        class="ant-input"
-                        data-testid="receivername"
-                        type="text"
-                        value=""
-                      />
-                    </div>
-                  </div>
+                  </form>
                 </div>
                 <div
                   class="ant-space-item"

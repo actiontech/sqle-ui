@@ -47,7 +47,11 @@ const SMTPSetting = () => {
     switchFieldName: 'enable',
   });
 
-  const { data: smtpInfo, refresh: refreshSMTPInfo } = useRequest(
+  const {
+    data: smtpInfo,
+    refresh: refreshSMTPInfo,
+    loading,
+  } = useRequest(
     () =>
       configuration.getSMTPConfigurationV1().then((res) => res.data.data ?? {}),
     {
@@ -193,7 +197,7 @@ const SMTPSetting = () => {
     }, [t, smtpInfo]);
 
   return (
-    <Card title={t('system.title.smtp')}>
+    <Card title={t('system.title.smtp')} loading={loading}>
       <section hidden={modifyFlag}>
         {renderReadOnlyModeConfig({
           data: smtpInfo ?? {},
@@ -204,6 +208,9 @@ const SMTPSetting = () => {
                 trigger="click"
                 open={testPopoverVisible}
                 onOpenChange={(visible) => {
+                  if (!enabled) {
+                    return;
+                  }
                   if (!visible) {
                     testForm.resetFields();
                   }

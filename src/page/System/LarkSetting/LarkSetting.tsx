@@ -180,6 +180,9 @@ const LarkSetting: React.FC = () => {
                 trigger="click"
                 open={testPopoverVisible}
                 onOpenChange={(visible) => {
+                  if (!enabled) {
+                    return;
+                  }
                   if (!visible) {
                     testForm.resetFields();
                     setReceiveType(
