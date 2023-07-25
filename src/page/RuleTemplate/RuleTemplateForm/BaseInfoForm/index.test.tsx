@@ -3,6 +3,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useForm } from 'antd/lib/form/Form';
 import BaseInfoForm from '.';
 import { mockDriver } from '../../../../testUtils/mockRequest';
+import { selectCustomOptionByClassName } from '../../../../testUtils/customQuery';
 
 describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
   const projectName = 'default';
@@ -41,14 +42,11 @@ describe('ruleTemplate/RuleTemplateForm/BaseInfoForm', () => {
       screen.getByLabelText('ruleTemplate.ruleTemplateForm.templateDesc'),
       { target: { value: 'template describe' } }
     );
-    fireEvent.mouseDown(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
+    selectCustomOptionByClassName(
+      'ruleTemplate.ruleTemplateForm.databaseType',
+      'database-type-logo-wrapper',
+      1
     );
-    await act(async () => jest.advanceTimersByTime(0));
-
-    const databaseTypeOption = screen.getAllByText('mysql')[1];
-    expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(databaseTypeOption);
 
     await act(async () => jest.advanceTimersByTime(0));
 

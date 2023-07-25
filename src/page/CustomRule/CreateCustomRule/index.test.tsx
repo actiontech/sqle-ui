@@ -9,7 +9,7 @@ import { fireEvent } from '@testing-library/react';
 import { screen } from '@testing-library/react';
 import {
   getHrefByText,
-  selectOptionByIndex,
+  selectCustomOptionByClassName,
 } from '../../../testUtils/customQuery';
 import { mockCreateCustomRule } from '../__mockApi__';
 import { SQLE_BASE_URL } from '../../../data/common';
@@ -89,7 +89,11 @@ describe('test CreateCustomRule', () => {
       }
     );
 
-    selectOptionByIndex('customRule.baseInfoForm.dbType', 'mysql');
+    selectCustomOptionByClassName(
+      'customRule.baseInfoForm.dbType',
+      'database-type-logo-wrapper',
+      1
+    );
     await act(async () => jest.advanceTimersByTime(0));
 
     await act(async () => jest.advanceTimersByTime(3000));

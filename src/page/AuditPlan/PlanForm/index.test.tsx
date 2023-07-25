@@ -7,6 +7,7 @@ import instance from '../../../api/instance';
 import EmitterKey from '../../../data/EmitterKey';
 import {
   getBySelector,
+  selectCustomOptionByClassName,
   selectOptionByIndex,
 } from '../../../testUtils/customQuery';
 import {
@@ -470,7 +471,11 @@ describe('PlanForm', () => {
     fireEvent.mouseDown(screen.getByLabelText('auditPlan.planForm.dbType'));
     await act(async () => jest.advanceTimersByTime(0));
 
-    selectOptionByIndex('auditPlan.planForm.dbType', 'mysql', 1);
+    selectCustomOptionByClassName(
+      'auditPlan.planForm.dbType',
+      'database-type-logo-wrapper',
+      2
+    );
     await act(async () => jest.advanceTimersByTime(0));
 
     expect(useInstanceSpy).toBeCalledTimes(4);

@@ -1,6 +1,9 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import PlanListFilterForm from '.';
-import { selectOptionByIndex } from '../../../../testUtils/customQuery';
+import {
+  selectCustomOptionByClassName,
+  selectOptionByIndex,
+} from '../../../../testUtils/customQuery';
 import {
   mockDriver,
   mockUseAuditPlanTypes,
@@ -73,7 +76,11 @@ describe('PlanListFilerForm', () => {
       0
     );
 
-    selectOptionByIndex('auditPlan.list.table.audit_plan_db_type', 'mysql', -1);
+    selectCustomOptionByClassName(
+      'auditPlan.list.table.audit_plan_db_type',
+      'database-type-logo-wrapper',
+      -1
+    );
 
     expect(container).toMatchSnapshot();
     fireEvent.click(screen.getByText('common.search'));

@@ -6,6 +6,7 @@ import EmitterKey from '../../../data/EmitterKey';
 import {
   getBySelector,
   getSelectValueByFormLabel,
+  selectCustomOptionByClassName,
   selectOptionByIndex,
 } from '../../../testUtils/customQuery';
 import {
@@ -90,26 +91,36 @@ describe('AddDataSource', () => {
       }
     );
 
-    fireEvent.mouseDown(
-      screen.getByLabelText('dataSource.dataSourceForm.type')
+    selectCustomOptionByClassName(
+      'dataSource.dataSourceForm.type',
+      'database-type-logo-wrapper',
+      1
     );
-    const databaseTypeOption = screen.getAllByText('mysql')[1];
-    expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(databaseTypeOption);
+
     await act(async () => jest.advanceTimersByTime(0));
 
     expect(screen.getByLabelText('dataSource.dataSourceForm.port')).toHaveValue(
       '3306'
     );
 
-    selectOptionByIndex('dataSource.dataSourceForm.type', 'oracle');
+    selectCustomOptionByClassName(
+      'dataSource.dataSourceForm.type',
+      'database-type-logo-wrapper',
+      1
+    );
+
     await act(async () => jest.advanceTimersByTime(0));
 
     expect(screen.getByLabelText('dataSource.dataSourceForm.port')).toHaveValue(
       '4443'
     );
 
-    selectOptionByIndex('dataSource.dataSourceForm.type', 'mysql');
+    selectCustomOptionByClassName(
+      'dataSource.dataSourceForm.type',
+      'database-type-logo-wrapper',
+      2
+    );
+
     await act(async () => jest.advanceTimersByTime(0));
 
     fireEvent.input(screen.getByLabelText('dataSource.dataSourceForm.ip'), {

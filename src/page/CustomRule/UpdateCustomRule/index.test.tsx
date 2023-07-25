@@ -7,10 +7,7 @@ import { mockUseStyle } from '../../../testUtils/mockStyle';
 import { act } from 'react-dom/test-utils';
 import { fireEvent } from '@testing-library/react';
 import { screen } from '@testing-library/react';
-import {
-  getHrefByText,
-  selectOptionByIndex,
-} from '../../../testUtils/customQuery';
+import { getHrefByText } from '../../../testUtils/customQuery';
 import { mockGetCustomRule, mockUpdateCustomRule } from '../__mockApi__';
 import { SQLE_BASE_URL } from '../../../data/common';
 import { useParams } from 'react-router-dom';

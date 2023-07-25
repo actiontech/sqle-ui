@@ -6,7 +6,7 @@ import { mockDriver } from '../../../../testUtils/mockRequest';
 import {
   getAllHrefByText,
   getBySelector,
-  selectOptionByIndex,
+  selectCustomOptionByClassName,
 } from '../../../../testUtils/customQuery';
 import { fireEvent } from '@testing-library/react';
 import { screen } from '@testing-library/react';
@@ -48,7 +48,11 @@ describe('test CustomRuleList', () => {
 
     await act(async () => jest.advanceTimersByTime(3000));
 
-    selectOptionByIndex('customRule.filterForm.databaseType', 'mysql');
+    selectCustomOptionByClassName(
+      'customRule.filterForm.databaseType',
+      'database-type-logo-wrapper',
+      1
+    );
     await act(async () => jest.advanceTimersByTime(0));
 
     expect(getCustomRulesSpy).toBeCalledTimes(2);

@@ -2,7 +2,10 @@ import { fireEvent, render, screen, act } from '@testing-library/react';
 import { useForm } from 'antd/lib/form/Form';
 import SyncTaskForm from '.';
 import { IInstanceTaskDetailResV1 } from '../../../api/common';
-import { selectOptionByIndex } from '../../../testUtils/customQuery';
+import {
+  selectCustomOptionByClassName,
+  selectOptionByIndex,
+} from '../../../testUtils/customQuery';
 import {
   mockUseGlobalRuleTemplate,
   mockUseTaskSource,
@@ -76,7 +79,11 @@ describe('test SyncTaskForm', () => {
       target: { value: 'http://192.168.0.1:3000' },
     });
 
-    selectOptionByIndex('syncDataSource.syncTaskForm.instanceType', 'mysql');
+    selectCustomOptionByClassName(
+      'syncDataSource.syncTaskForm.instanceType',
+      'database-type-logo-wrapper',
+      0
+    );
     await act(async () => jest.advanceTimersByTime(0));
 
     selectOptionByIndex(
@@ -156,8 +163,11 @@ describe('test SyncTaskForm', () => {
     selectOptionByIndex('syncDataSource.syncTaskForm.source', 'source1');
     await act(async () => jest.advanceTimersByTime(0));
 
-    selectOptionByIndex('syncDataSource.syncTaskForm.instanceType', 'mysql');
-
+    selectCustomOptionByClassName(
+      'syncDataSource.syncTaskForm.instanceType',
+      'database-type-logo-wrapper',
+      0
+    );
     expect(screen.getAllByText('mysql')[0].parentNode?.parentNode).toHaveClass(
       'ant-select-selection-item'
     );
@@ -180,7 +190,12 @@ describe('test SyncTaskForm', () => {
       'ant-select-selection-item'
     );
 
-    selectOptionByIndex('syncDataSource.syncTaskForm.instanceType', 'oracle');
+    selectCustomOptionByClassName(
+      'syncDataSource.syncTaskForm.instanceType',
+      'database-type-logo-wrapper',
+      0
+    );
+
     await act(async () => jest.advanceTimersByTime(0));
 
     expect(

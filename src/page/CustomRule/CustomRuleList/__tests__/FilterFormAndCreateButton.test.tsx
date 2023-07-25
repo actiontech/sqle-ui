@@ -5,7 +5,7 @@ import FilterFormAndCreateButton from '../FilterFormAndCreateButton';
 import {
   getBySelector,
   getHrefByText,
-  selectOptionByIndex,
+  selectCustomOptionByClassName,
 } from '../../../../testUtils/customQuery';
 import { SQLE_BASE_URL } from '../../../../data/common';
 import { fireEvent } from '@testing-library/react';
@@ -43,7 +43,11 @@ describe('test FilterFormAndCreateButton.test', () => {
 
     await act(async () => jest.advanceTimersByTime(3000));
 
-    selectOptionByIndex('customRule.filterForm.databaseType', 'mysql');
+    selectCustomOptionByClassName(
+      'customRule.filterForm.databaseType',
+      'database-type-logo-wrapper',
+      1
+    );
     await act(async () => jest.advanceTimersByTime(0));
 
     expect(mockGetCustomRuleList).toBeCalledTimes(1);

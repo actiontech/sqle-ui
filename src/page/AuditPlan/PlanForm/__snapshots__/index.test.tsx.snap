@@ -1455,7 +1455,6 @@ exports[`PlanForm should reset apart of form when props includes default values 
                         src="/v1/static/instance_logo?instance_type=oracle"
                       />
                       <span
-                        class="ant-select-item-option-content"
                         title="oracle"
                       >
                         oracle
@@ -2651,7 +2650,6 @@ exports[`PlanForm should reset apart of form when props includes default values 
                         src="/v1/static/instance_logo?instance_type=oracle"
                       />
                       <span
-                        class="ant-select-item-option-content"
                         title="oracle"
                       >
                         oracle

@@ -248,7 +248,6 @@ exports[`hooks/useDatabaseType should get driver from request 3`] = `
                           src="/v1/static/instance_logo?instance_type=mysql"
                         />
                         <span
-                          class="ant-select-item-option-content"
                           title="mysql"
                         >
                           mysql

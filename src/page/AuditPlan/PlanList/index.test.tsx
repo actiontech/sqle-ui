@@ -6,6 +6,7 @@ import audit_plan from '../../../api/audit_plan';
 import {
   getBySelector,
   getHrefByText,
+  selectCustomOptionByClassName,
   selectOptionByIndex,
 } from '../../../testUtils/customQuery';
 import { renderWithRouter } from '../../../testUtils/customRender';
@@ -228,7 +229,11 @@ describe('PlanList', () => {
       0
     );
 
-    selectOptionByIndex('auditPlan.list.table.audit_plan_db_type', 'mysql', -1);
+    selectCustomOptionByClassName(
+      'auditPlan.list.table.audit_plan_db_type',
+      'database-type-logo-wrapper',
+      -1
+    );
 
     fireEvent.click(screen.getByText('common.search'));
 

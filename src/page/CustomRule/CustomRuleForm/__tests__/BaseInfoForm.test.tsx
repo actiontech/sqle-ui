@@ -6,7 +6,7 @@ import { ICustomRuleResV1 } from '../../../../api/common';
 import { mockDriver, mockUseRuleType } from '../../../../testUtils/mockRequest';
 import { customRules } from '../../__mockApi__/data';
 import { act } from 'react-dom/test-utils';
-import { selectOptionByIndex } from '../../../../testUtils/customQuery';
+import { selectCustomOptionByClassName } from '../../../../testUtils/customQuery';
 
 describe('test BaseInfoForm', () => {
   const mockSubmit = jest.fn();
@@ -46,7 +46,7 @@ describe('test BaseInfoForm', () => {
     expect(container).toMatchSnapshot();
     expect(
       screen.getByLabelText('customRule.baseInfoForm.ruleName')
-    ).toHaveValue(customRules[0].rule_name);
+    ).toHaveValue(customRules[0].desc);
 
     expect(getRuleTypesSpy).toBeCalledTimes(1);
     expect(getRuleTypesSpy).nthCalledWith(1, {
@@ -61,7 +61,11 @@ describe('test BaseInfoForm', () => {
     expect(getRuleTypesSpy).toBeCalledTimes(0);
     await act(async () => jest.advanceTimersByTime(3000));
 
-    selectOptionByIndex('customRule.baseInfoForm.dbType', 'mysql');
+    selectCustomOptionByClassName(
+      'customRule.baseInfoForm.dbType',
+      'database-type-logo-wrapper',
+      1
+    );
     await act(async () => jest.advanceTimersByTime(0));
 
     expect(getRuleTypesSpy).toBeCalledTimes(1);
@@ -89,7 +93,11 @@ describe('test BaseInfoForm', () => {
       }
     );
 
-    selectOptionByIndex('customRule.baseInfoForm.dbType', 'mysql');
+    selectCustomOptionByClassName(
+      'customRule.baseInfoForm.dbType',
+      'database-type-logo-wrapper',
+      1
+    );
     await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.mouseDown(

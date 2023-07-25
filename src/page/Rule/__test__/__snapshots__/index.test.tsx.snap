@@ -2836,7 +2836,6 @@ exports[`test Rule should match snapshot 1`] = `
                                       src="/v1/static/instance_logo?instance_type=oracle"
                                     />
                                     <span
-                                      class="ant-select-item-option-content"
                                       title="oracle"
                                     >
                                       oracle
@@ -3344,7 +3343,6 @@ exports[`test Rule should match snapshot 2`] = `
                                       src="/v1/static/instance_logo?instance_type=oracle"
                                     />
                                     <span
-                                      class="ant-select-item-option-content"
                                       title="oracle"
                                     >
                                       oracle

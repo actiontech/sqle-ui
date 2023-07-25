@@ -281,6 +281,10 @@ export const mockUseMember = () => {
   return spy;
 };
 
+/*
+ * 禁止修改该 mock 函数中返回数据的顺序, 否则会造成单元测试中模拟选择数据源类型下拉数据出现异常.
+ * 可以在数组尾部新增数据
+ */
 export const mockUseTaskSource = () => {
   const spy = jest.spyOn(sync_instance, 'GetSyncTaskSourceTips');
   spy.mockImplementation(() =>
