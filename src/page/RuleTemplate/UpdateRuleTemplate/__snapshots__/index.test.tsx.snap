@@ -5,60 +5,55 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
   data-testid="rule-list"
 >
   <div
-    class="ant-space ant-space-horizontal ant-space-align-start"
+    class="full-width-element flex-space-between"
   >
-    <div
-      class="ant-space-item"
-      style="margin-right: 30px;"
-    >
-      <div>
+    <div>
+      <div
+        class=""
+      >
         <div
-          class=""
+          class="ant-anchor-wrapper custom-anchor"
+          style="max-height: 100vh;"
         >
           <div
-            class="ant-anchor-wrapper custom-anchor"
-            style="max-height: 100vh;"
+            class="ant-anchor"
           >
             <div
-              class="ant-anchor"
+              class="ant-anchor-ink"
             >
-              <div
-                class="ant-anchor-ink"
+              <span
+                class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
+                style="top: -4.5px;"
+              />
+            </div>
+            <div
+              class="ant-anchor-link ant-anchor-link-active"
+            >
+              <a
+                class="ant-anchor-link-title ant-anchor-link-title-active"
+                href="#activeRuleTitle"
+                title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
               >
-                <span
-                  class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
-                  style="top: -4.5px;"
-                />
-              </div>
-              <div
-                class="ant-anchor-link ant-anchor-link-active"
+                ruleTemplate.ruleTemplateForm.activeAnchorTitle
+              </a>
+            </div>
+            <div
+              class="ant-anchor-link"
+            >
+              <a
+                class="ant-anchor-link-title"
+                href="#disableRuleTitle"
+                title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
               >
-                <a
-                  class="ant-anchor-link-title ant-anchor-link-title-active"
-                  href="#activeRuleTitle"
-                  title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
-                >
-                  ruleTemplate.ruleTemplateForm.activeAnchorTitle
-                </a>
-              </div>
-              <div
-                class="ant-anchor-link"
-              >
-                <a
-                  class="ant-anchor-link-title"
-                  href="#disableRuleTitle"
-                  title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
-                >
-                  ruleTemplate.ruleTemplateForm.disableAnchorTitle
-                </a>
-              </div>
+                ruleTemplate.ruleTemplateForm.disableAnchorTitle
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="ant-space-item"
+      style="width: calc(100% - 90px);"
     >
       <div
         class="ant-descriptions"
@@ -129,23 +124,6 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
               </div>
               <div
                 class="ant-tabs-tab"
-                data-node-key="DDL规范"
-              >
-                <div
-                  aria-controls="rc-tabs-test-panel-DDL规范"
-                  aria-selected="false"
-                  class="ant-tabs-tab-btn"
-                  id="rc-tabs-test-tab-DDL规范"
-                  role="tab"
-                  tabindex="0"
-                >
-                  DDL规范
-                   
-                  (4)
-                </div>
-              </div>
-              <div
-                class="ant-tabs-tab"
                 data-node-key="DML规范"
               >
                 <div
@@ -180,17 +158,34 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
               </div>
               <div
                 class="ant-tabs-tab"
-                data-node-key="全局配置"
+                data-node-key="DDL规范"
               >
                 <div
-                  aria-controls="rc-tabs-test-panel-全局配置"
+                  aria-controls="rc-tabs-test-panel-DDL规范"
                   aria-selected="false"
                   class="ant-tabs-tab-btn"
-                  id="rc-tabs-test-tab-全局配置"
+                  id="rc-tabs-test-tab-DDL规范"
                   role="tab"
                   tabindex="0"
                 >
-                  全局配置
+                  DDL规范
+                   
+                  (4)
+                </div>
+              </div>
+              <div
+                class="ant-tabs-tab"
+                data-node-key="索引规范"
+              >
+                <div
+                  aria-controls="rc-tabs-test-panel-索引规范"
+                  aria-selected="false"
+                  class="ant-tabs-tab-btn"
+                  id="rc-tabs-test-tab-索引规范"
+                  role="tab"
+                  tabindex="0"
+                >
+                  索引规范
                    
                   (0)
                 </div>
@@ -214,17 +209,17 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
               </div>
               <div
                 class="ant-tabs-tab"
-                data-node-key="索引规范"
+                data-node-key="全局配置"
               >
                 <div
-                  aria-controls="rc-tabs-test-panel-索引规范"
+                  aria-controls="rc-tabs-test-panel-全局配置"
                   aria-selected="false"
                   class="ant-tabs-tab-btn"
-                  id="rc-tabs-test-tab-索引规范"
+                  id="rc-tabs-test-tab-全局配置"
                   role="tab"
                   tabindex="0"
                 >
-                  索引规范
+                  全局配置
                    
                   (0)
                 </div>
@@ -996,23 +991,6 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
               </div>
               <div
                 class="ant-tabs-tab"
-                data-node-key="DDL规范"
-              >
-                <div
-                  aria-controls="rc-tabs-test-panel-DDL规范"
-                  aria-selected="false"
-                  class="ant-tabs-tab-btn"
-                  id="rc-tabs-test-tab-DDL规范"
-                  role="tab"
-                  tabindex="0"
-                >
-                  DDL规范
-                   
-                  (10)
-                </div>
-              </div>
-              <div
-                class="ant-tabs-tab"
                 data-node-key="DML规范"
               >
                 <div
@@ -1047,19 +1025,36 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
               </div>
               <div
                 class="ant-tabs-tab"
-                data-node-key="全局配置"
+                data-node-key="DDL规范"
               >
                 <div
-                  aria-controls="rc-tabs-test-panel-全局配置"
+                  aria-controls="rc-tabs-test-panel-DDL规范"
                   aria-selected="false"
                   class="ant-tabs-tab-btn"
-                  id="rc-tabs-test-tab-全局配置"
+                  id="rc-tabs-test-tab-DDL规范"
                   role="tab"
                   tabindex="0"
                 >
-                  全局配置
+                  DDL规范
                    
-                  (1)
+                  (10)
+                </div>
+              </div>
+              <div
+                class="ant-tabs-tab"
+                data-node-key="索引规范"
+              >
+                <div
+                  aria-controls="rc-tabs-test-panel-索引规范"
+                  aria-selected="false"
+                  class="ant-tabs-tab-btn"
+                  id="rc-tabs-test-tab-索引规范"
+                  role="tab"
+                  tabindex="0"
+                >
+                  索引规范
+                   
+                  (9)
                 </div>
               </div>
               <div
@@ -1081,19 +1076,19 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
               </div>
               <div
                 class="ant-tabs-tab"
-                data-node-key="索引规范"
+                data-node-key="全局配置"
               >
                 <div
-                  aria-controls="rc-tabs-test-panel-索引规范"
+                  aria-controls="rc-tabs-test-panel-全局配置"
                   aria-selected="false"
                   class="ant-tabs-tab-btn"
-                  id="rc-tabs-test-tab-索引规范"
+                  id="rc-tabs-test-tab-全局配置"
                   role="tab"
                   tabindex="0"
                 >
-                  索引规范
+                  全局配置
                    
-                  (9)
+                  (1)
                 </div>
               </div>
               <div
@@ -5978,60 +5973,55 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
   data-testid="rule-list"
 >
   <div
-    class="ant-space ant-space-horizontal ant-space-align-start"
+    class="full-width-element flex-space-between"
   >
-    <div
-      class="ant-space-item"
-      style="margin-right: 30px;"
-    >
-      <div>
+    <div>
+      <div
+        class=""
+      >
         <div
-          class=""
+          class="ant-anchor-wrapper custom-anchor"
+          style="max-height: 100vh;"
         >
           <div
-            class="ant-anchor-wrapper custom-anchor"
-            style="max-height: 100vh;"
+            class="ant-anchor"
           >
             <div
-              class="ant-anchor"
+              class="ant-anchor-ink"
             >
-              <div
-                class="ant-anchor-ink"
+              <span
+                class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
+                style="top: -4.5px;"
+              />
+            </div>
+            <div
+              class="ant-anchor-link ant-anchor-link-active"
+            >
+              <a
+                class="ant-anchor-link-title ant-anchor-link-title-active"
+                href="#activeRuleTitle"
+                title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
               >
-                <span
-                  class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
-                  style="top: -4.5px;"
-                />
-              </div>
-              <div
-                class="ant-anchor-link ant-anchor-link-active"
+                ruleTemplate.ruleTemplateForm.activeAnchorTitle
+              </a>
+            </div>
+            <div
+              class="ant-anchor-link"
+            >
+              <a
+                class="ant-anchor-link-title"
+                href="#disableRuleTitle"
+                title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
               >
-                <a
-                  class="ant-anchor-link-title ant-anchor-link-title-active"
-                  href="#activeRuleTitle"
-                  title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
-                >
-                  ruleTemplate.ruleTemplateForm.activeAnchorTitle
-                </a>
-              </div>
-              <div
-                class="ant-anchor-link"
-              >
-                <a
-                  class="ant-anchor-link-title"
-                  href="#disableRuleTitle"
-                  title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
-                >
-                  ruleTemplate.ruleTemplateForm.disableAnchorTitle
-                </a>
-              </div>
+                ruleTemplate.ruleTemplateForm.disableAnchorTitle
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="ant-space-item"
+      style="width: calc(100% - 90px);"
     >
       <div
         class="ant-descriptions"
@@ -6104,23 +6094,6 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
               </div>
               <div
                 class="ant-tabs-tab"
-                data-node-key="DDL规范"
-              >
-                <div
-                  aria-controls="rc-tabs-test-panel-DDL规范"
-                  aria-selected="false"
-                  class="ant-tabs-tab-btn"
-                  id="rc-tabs-test-tab-DDL规范"
-                  role="tab"
-                  tabindex="0"
-                >
-                  DDL规范
-                   
-                  (0)
-                </div>
-              </div>
-              <div
-                class="ant-tabs-tab"
                 data-node-key="DML规范"
               >
                 <div
@@ -6155,17 +6128,34 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
               </div>
               <div
                 class="ant-tabs-tab"
-                data-node-key="全局配置"
+                data-node-key="DDL规范"
               >
                 <div
-                  aria-controls="rc-tabs-test-panel-全局配置"
+                  aria-controls="rc-tabs-test-panel-DDL规范"
                   aria-selected="false"
                   class="ant-tabs-tab-btn"
-                  id="rc-tabs-test-tab-全局配置"
+                  id="rc-tabs-test-tab-DDL规范"
                   role="tab"
                   tabindex="0"
                 >
-                  全局配置
+                  DDL规范
+                   
+                  (0)
+                </div>
+              </div>
+              <div
+                class="ant-tabs-tab"
+                data-node-key="索引规范"
+              >
+                <div
+                  aria-controls="rc-tabs-test-panel-索引规范"
+                  aria-selected="false"
+                  class="ant-tabs-tab-btn"
+                  id="rc-tabs-test-tab-索引规范"
+                  role="tab"
+                  tabindex="0"
+                >
+                  索引规范
                    
                   (0)
                 </div>
@@ -6189,17 +6179,17 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
               </div>
               <div
                 class="ant-tabs-tab"
-                data-node-key="索引规范"
+                data-node-key="全局配置"
               >
                 <div
-                  aria-controls="rc-tabs-test-panel-索引规范"
+                  aria-controls="rc-tabs-test-panel-全局配置"
                   aria-selected="false"
                   class="ant-tabs-tab-btn"
-                  id="rc-tabs-test-tab-索引规范"
+                  id="rc-tabs-test-tab-全局配置"
                   role="tab"
                   tabindex="0"
                 >
-                  索引规范
+                  全局配置
                    
                   (0)
                 </div>
@@ -6354,23 +6344,6 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
               </div>
               <div
                 class="ant-tabs-tab"
-                data-node-key="DDL规范"
-              >
-                <div
-                  aria-controls="rc-tabs-test-panel-DDL规范"
-                  aria-selected="false"
-                  class="ant-tabs-tab-btn"
-                  id="rc-tabs-test-tab-DDL规范"
-                  role="tab"
-                  tabindex="0"
-                >
-                  DDL规范
-                   
-                  (14)
-                </div>
-              </div>
-              <div
-                class="ant-tabs-tab"
                 data-node-key="DML规范"
               >
                 <div
@@ -6405,19 +6378,36 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
               </div>
               <div
                 class="ant-tabs-tab"
-                data-node-key="全局配置"
+                data-node-key="DDL规范"
               >
                 <div
-                  aria-controls="rc-tabs-test-panel-全局配置"
+                  aria-controls="rc-tabs-test-panel-DDL规范"
                   aria-selected="false"
                   class="ant-tabs-tab-btn"
-                  id="rc-tabs-test-tab-全局配置"
+                  id="rc-tabs-test-tab-DDL规范"
                   role="tab"
                   tabindex="0"
                 >
-                  全局配置
+                  DDL规范
                    
-                  (1)
+                  (14)
+                </div>
+              </div>
+              <div
+                class="ant-tabs-tab"
+                data-node-key="索引规范"
+              >
+                <div
+                  aria-controls="rc-tabs-test-panel-索引规范"
+                  aria-selected="false"
+                  class="ant-tabs-tab-btn"
+                  id="rc-tabs-test-tab-索引规范"
+                  role="tab"
+                  tabindex="0"
+                >
+                  索引规范
+                   
+                  (9)
                 </div>
               </div>
               <div
@@ -6439,19 +6429,19 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
               </div>
               <div
                 class="ant-tabs-tab"
-                data-node-key="索引规范"
+                data-node-key="全局配置"
               >
                 <div
-                  aria-controls="rc-tabs-test-panel-索引规范"
+                  aria-controls="rc-tabs-test-panel-全局配置"
                   aria-selected="false"
                   class="ant-tabs-tab-btn"
-                  id="rc-tabs-test-tab-索引规范"
+                  id="rc-tabs-test-tab-全局配置"
                   role="tab"
                   tabindex="0"
                 >
-                  索引规范
+                  全局配置
                    
-                  (9)
+                  (1)
                 </div>
               </div>
               <div
@@ -11880,60 +11870,55 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
   data-testid="rule-list"
 >
   <div
-    class="ant-space ant-space-horizontal ant-space-align-start"
+    class="full-width-element flex-space-between"
   >
-    <div
-      class="ant-space-item"
-      style="margin-right: 30px;"
-    >
-      <div>
+    <div>
+      <div
+        class=""
+      >
         <div
-          class=""
+          class="ant-anchor-wrapper custom-anchor"
+          style="max-height: 100vh;"
         >
           <div
-            class="ant-anchor-wrapper custom-anchor"
-            style="max-height: 100vh;"
+            class="ant-anchor"
           >
             <div
-              class="ant-anchor"
+              class="ant-anchor-ink"
             >
-              <div
-                class="ant-anchor-ink"
+              <span
+                class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
+                style="top: -4.5px;"
+              />
+            </div>
+            <div
+              class="ant-anchor-link ant-anchor-link-active"
+            >
+              <a
+                class="ant-anchor-link-title ant-anchor-link-title-active"
+                href="#activeRuleTitle"
+                title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
               >
-                <span
-                  class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
-                  style="top: -4.5px;"
-                />
-              </div>
-              <div
-                class="ant-anchor-link ant-anchor-link-active"
+                ruleTemplate.ruleTemplateForm.activeAnchorTitle
+              </a>
+            </div>
+            <div
+              class="ant-anchor-link"
+            >
+              <a
+                class="ant-anchor-link-title"
+                href="#disableRuleTitle"
+                title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
               >
-                <a
-                  class="ant-anchor-link-title ant-anchor-link-title-active"
-                  href="#activeRuleTitle"
-                  title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
-                >
-                  ruleTemplate.ruleTemplateForm.activeAnchorTitle
-                </a>
-              </div>
-              <div
-                class="ant-anchor-link"
-              >
-                <a
-                  class="ant-anchor-link-title"
-                  href="#disableRuleTitle"
-                  title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
-                >
-                  ruleTemplate.ruleTemplateForm.disableAnchorTitle
-                </a>
-              </div>
+                ruleTemplate.ruleTemplateForm.disableAnchorTitle
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="ant-space-item"
+      style="width: calc(100% - 90px);"
     >
       <div
         class="ant-descriptions"
@@ -12005,23 +11990,6 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
               </div>
               <div
                 class="ant-tabs-tab"
-                data-node-key="DDL规范"
-              >
-                <div
-                  aria-controls="rc-tabs-test-panel-DDL规范"
-                  aria-selected="false"
-                  class="ant-tabs-tab-btn"
-                  id="rc-tabs-test-tab-DDL规范"
-                  role="tab"
-                  tabindex="0"
-                >
-                  DDL规范
-                   
-                  (14)
-                </div>
-              </div>
-              <div
-                class="ant-tabs-tab"
                 data-node-key="DML规范"
               >
                 <div
@@ -12056,19 +12024,36 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
               </div>
               <div
                 class="ant-tabs-tab"
-                data-node-key="全局配置"
+                data-node-key="DDL规范"
               >
                 <div
-                  aria-controls="rc-tabs-test-panel-全局配置"
+                  aria-controls="rc-tabs-test-panel-DDL规范"
                   aria-selected="false"
                   class="ant-tabs-tab-btn"
-                  id="rc-tabs-test-tab-全局配置"
+                  id="rc-tabs-test-tab-DDL规范"
                   role="tab"
                   tabindex="0"
                 >
-                  全局配置
+                  DDL规范
                    
-                  (1)
+                  (14)
+                </div>
+              </div>
+              <div
+                class="ant-tabs-tab"
+                data-node-key="索引规范"
+              >
+                <div
+                  aria-controls="rc-tabs-test-panel-索引规范"
+                  aria-selected="false"
+                  class="ant-tabs-tab-btn"
+                  id="rc-tabs-test-tab-索引规范"
+                  role="tab"
+                  tabindex="0"
+                >
+                  索引规范
+                   
+                  (9)
                 </div>
               </div>
               <div
@@ -12090,19 +12075,19 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
               </div>
               <div
                 class="ant-tabs-tab"
-                data-node-key="索引规范"
+                data-node-key="全局配置"
               >
                 <div
-                  aria-controls="rc-tabs-test-panel-索引规范"
+                  aria-controls="rc-tabs-test-panel-全局配置"
                   aria-selected="false"
                   class="ant-tabs-tab-btn"
-                  id="rc-tabs-test-tab-索引规范"
+                  id="rc-tabs-test-tab-全局配置"
                   role="tab"
                   tabindex="0"
                 >
-                  索引规范
+                  全局配置
                    
-                  (9)
+                  (1)
                 </div>
               </div>
               <div
@@ -18303,23 +18288,6 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
               </div>
               <div
                 class="ant-tabs-tab"
-                data-node-key="DDL规范"
-              >
-                <div
-                  aria-controls="rc-tabs-test-panel-DDL规范"
-                  aria-selected="false"
-                  class="ant-tabs-tab-btn"
-                  id="rc-tabs-test-tab-DDL规范"
-                  role="tab"
-                  tabindex="0"
-                >
-                  DDL规范
-                   
-                  (0)
-                </div>
-              </div>
-              <div
-                class="ant-tabs-tab"
                 data-node-key="DML规范"
               >
                 <div
@@ -18354,17 +18322,34 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
               </div>
               <div
                 class="ant-tabs-tab"
-                data-node-key="全局配置"
+                data-node-key="DDL规范"
               >
                 <div
-                  aria-controls="rc-tabs-test-panel-全局配置"
+                  aria-controls="rc-tabs-test-panel-DDL规范"
                   aria-selected="false"
                   class="ant-tabs-tab-btn"
-                  id="rc-tabs-test-tab-全局配置"
+                  id="rc-tabs-test-tab-DDL规范"
                   role="tab"
                   tabindex="0"
                 >
-                  全局配置
+                  DDL规范
+                   
+                  (0)
+                </div>
+              </div>
+              <div
+                class="ant-tabs-tab"
+                data-node-key="索引规范"
+              >
+                <div
+                  aria-controls="rc-tabs-test-panel-索引规范"
+                  aria-selected="false"
+                  class="ant-tabs-tab-btn"
+                  id="rc-tabs-test-tab-索引规范"
+                  role="tab"
+                  tabindex="0"
+                >
+                  索引规范
                    
                   (0)
                 </div>
@@ -18388,17 +18373,17 @@ exports[`UpdateRuleTemplate should jump to next step when user input all require
               </div>
               <div
                 class="ant-tabs-tab"
-                data-node-key="索引规范"
+                data-node-key="全局配置"
               >
                 <div
-                  aria-controls="rc-tabs-test-panel-索引规范"
+                  aria-controls="rc-tabs-test-panel-全局配置"
                   aria-selected="false"
                   class="ant-tabs-tab-btn"
-                  id="rc-tabs-test-tab-索引规范"
+                  id="rc-tabs-test-tab-全局配置"
                   role="tab"
                   tabindex="0"
                 >
-                  索引规范
+                  全局配置
                    
                   (0)
                 </div>
@@ -18922,60 +18907,55 @@ exports[`UpdateRuleTemplate should render base form at init 1`] = `
             hidden=""
           >
             <div
-              class="ant-space ant-space-horizontal ant-space-align-start"
+              class="full-width-element flex-space-between"
             >
-              <div
-                class="ant-space-item"
-                style="margin-right: 30px;"
-              >
-                <div>
+              <div>
+                <div
+                  class=""
+                >
                   <div
-                    class=""
+                    class="ant-anchor-wrapper custom-anchor"
+                    style="max-height: 100vh;"
                   >
                     <div
-                      class="ant-anchor-wrapper custom-anchor"
-                      style="max-height: 100vh;"
+                      class="ant-anchor"
                     >
                       <div
-                        class="ant-anchor"
+                        class="ant-anchor-ink"
                       >
-                        <div
-                          class="ant-anchor-ink"
+                        <span
+                          class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
+                          style="top: -4.5px;"
+                        />
+                      </div>
+                      <div
+                        class="ant-anchor-link ant-anchor-link-active"
+                      >
+                        <a
+                          class="ant-anchor-link-title ant-anchor-link-title-active"
+                          href="#activeRuleTitle"
+                          title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
                         >
-                          <span
-                            class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
-                            style="top: -4.5px;"
-                          />
-                        </div>
-                        <div
-                          class="ant-anchor-link ant-anchor-link-active"
+                          ruleTemplate.ruleTemplateForm.activeAnchorTitle
+                        </a>
+                      </div>
+                      <div
+                        class="ant-anchor-link"
+                      >
+                        <a
+                          class="ant-anchor-link-title"
+                          href="#disableRuleTitle"
+                          title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
                         >
-                          <a
-                            class="ant-anchor-link-title ant-anchor-link-title-active"
-                            href="#activeRuleTitle"
-                            title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
-                          >
-                            ruleTemplate.ruleTemplateForm.activeAnchorTitle
-                          </a>
-                        </div>
-                        <div
-                          class="ant-anchor-link"
-                        >
-                          <a
-                            class="ant-anchor-link-title"
-                            href="#disableRuleTitle"
-                            title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
-                          >
-                            ruleTemplate.ruleTemplateForm.disableAnchorTitle
-                          </a>
-                        </div>
+                          ruleTemplate.ruleTemplateForm.disableAnchorTitle
+                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div
-                class="ant-space-item"
+                style="width: calc(100% - 90px);"
               >
                 <div
                   class="ant-descriptions"
@@ -19834,60 +19814,55 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
             hidden=""
           >
             <div
-              class="ant-space ant-space-horizontal ant-space-align-start"
+              class="full-width-element flex-space-between"
             >
-              <div
-                class="ant-space-item"
-                style="margin-right: 30px;"
-              >
-                <div>
+              <div>
+                <div
+                  class=""
+                >
                   <div
-                    class=""
+                    class="ant-anchor-wrapper custom-anchor"
+                    style="max-height: 100vh;"
                   >
                     <div
-                      class="ant-anchor-wrapper custom-anchor"
-                      style="max-height: 100vh;"
+                      class="ant-anchor"
                     >
                       <div
-                        class="ant-anchor"
+                        class="ant-anchor-ink"
                       >
-                        <div
-                          class="ant-anchor-ink"
+                        <span
+                          class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
+                          style="top: -4.5px;"
+                        />
+                      </div>
+                      <div
+                        class="ant-anchor-link ant-anchor-link-active"
+                      >
+                        <a
+                          class="ant-anchor-link-title ant-anchor-link-title-active"
+                          href="#activeRuleTitle"
+                          title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
                         >
-                          <span
-                            class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
-                            style="top: -4.5px;"
-                          />
-                        </div>
-                        <div
-                          class="ant-anchor-link ant-anchor-link-active"
+                          ruleTemplate.ruleTemplateForm.activeAnchorTitle
+                        </a>
+                      </div>
+                      <div
+                        class="ant-anchor-link"
+                      >
+                        <a
+                          class="ant-anchor-link-title"
+                          href="#disableRuleTitle"
+                          title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
                         >
-                          <a
-                            class="ant-anchor-link-title ant-anchor-link-title-active"
-                            href="#activeRuleTitle"
-                            title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
-                          >
-                            ruleTemplate.ruleTemplateForm.activeAnchorTitle
-                          </a>
-                        </div>
-                        <div
-                          class="ant-anchor-link"
-                        >
-                          <a
-                            class="ant-anchor-link-title"
-                            href="#disableRuleTitle"
-                            title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
-                          >
-                            ruleTemplate.ruleTemplateForm.disableAnchorTitle
-                          </a>
-                        </div>
+                          ruleTemplate.ruleTemplateForm.disableAnchorTitle
+                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div
-                class="ant-space-item"
+                style="width: calc(100% - 90px);"
               >
                 <div
                   class="ant-descriptions"
@@ -19958,23 +19933,6 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                         </div>
                         <div
                           class="ant-tabs-tab"
-                          data-node-key="DDL规范"
-                        >
-                          <div
-                            aria-controls="rc-tabs-test-panel-DDL规范"
-                            aria-selected="false"
-                            class="ant-tabs-tab-btn"
-                            id="rc-tabs-test-tab-DDL规范"
-                            role="tab"
-                            tabindex="0"
-                          >
-                            DDL规范
-                             
-                            (4)
-                          </div>
-                        </div>
-                        <div
-                          class="ant-tabs-tab"
                           data-node-key="DML规范"
                         >
                           <div
@@ -20005,6 +19963,23 @@ exports[`UpdateRuleTemplate should render base form at init 2`] = `
                             使用建议
                              
                             (1)
+                          </div>
+                        </div>
+                        <div
+                          class="ant-tabs-tab"
+                          data-node-key="DDL规范"
+                        >
+                          <div
+                            aria-controls="rc-tabs-test-panel-DDL规范"
+                            aria-selected="false"
+                            class="ant-tabs-tab-btn"
+                            id="rc-tabs-test-tab-DDL规范"
+                            role="tab"
+                            tabindex="0"
+                          >
+                            DDL规范
+                             
+                            (4)
                           </div>
                         </div>
                         <div

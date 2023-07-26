@@ -5,60 +5,55 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
   data-testid="rule-list"
 >
   <div
-    class="ant-space ant-space-horizontal ant-space-align-start"
+    class="full-width-element flex-space-between"
   >
-    <div
-      class="ant-space-item"
-      style="margin-right: 30px;"
-    >
-      <div>
+    <div>
+      <div
+        class=""
+      >
         <div
-          class=""
+          class="ant-anchor-wrapper custom-anchor"
+          style="max-height: 100vh;"
         >
           <div
-            class="ant-anchor-wrapper custom-anchor"
-            style="max-height: 100vh;"
+            class="ant-anchor"
           >
             <div
-              class="ant-anchor"
+              class="ant-anchor-ink"
             >
-              <div
-                class="ant-anchor-ink"
+              <span
+                class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
+                style="top: -4.5px;"
+              />
+            </div>
+            <div
+              class="ant-anchor-link ant-anchor-link-active"
+            >
+              <a
+                class="ant-anchor-link-title ant-anchor-link-title-active"
+                href="#activeRuleTitle"
+                title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
               >
-                <span
-                  class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
-                  style="top: -4.5px;"
-                />
-              </div>
-              <div
-                class="ant-anchor-link ant-anchor-link-active"
+                ruleTemplate.ruleTemplateForm.activeAnchorTitle
+              </a>
+            </div>
+            <div
+              class="ant-anchor-link"
+            >
+              <a
+                class="ant-anchor-link-title"
+                href="#disableRuleTitle"
+                title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
               >
-                <a
-                  class="ant-anchor-link-title ant-anchor-link-title-active"
-                  href="#activeRuleTitle"
-                  title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
-                >
-                  ruleTemplate.ruleTemplateForm.activeAnchorTitle
-                </a>
-              </div>
-              <div
-                class="ant-anchor-link"
-              >
-                <a
-                  class="ant-anchor-link-title"
-                  href="#disableRuleTitle"
-                  title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
-                >
-                  ruleTemplate.ruleTemplateForm.disableAnchorTitle
-                </a>
-              </div>
+                ruleTemplate.ruleTemplateForm.disableAnchorTitle
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="ant-space-item"
+      style="width: calc(100% - 90px);"
     >
       <div
         class="ant-descriptions"
@@ -1105,60 +1100,55 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
   data-testid="rule-list"
 >
   <div
-    class="ant-space ant-space-horizontal ant-space-align-start"
+    class="full-width-element flex-space-between"
   >
-    <div
-      class="ant-space-item"
-      style="margin-right: 30px;"
-    >
-      <div>
+    <div>
+      <div
+        class=""
+      >
         <div
-          class=""
+          class="ant-anchor-wrapper custom-anchor"
+          style="max-height: 100vh;"
         >
           <div
-            class="ant-anchor-wrapper custom-anchor"
-            style="max-height: 100vh;"
+            class="ant-anchor"
           >
             <div
-              class="ant-anchor"
+              class="ant-anchor-ink"
             >
-              <div
-                class="ant-anchor-ink"
+              <span
+                class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
+                style="top: -4.5px;"
+              />
+            </div>
+            <div
+              class="ant-anchor-link ant-anchor-link-active"
+            >
+              <a
+                class="ant-anchor-link-title ant-anchor-link-title-active"
+                href="#activeRuleTitle"
+                title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
               >
-                <span
-                  class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
-                  style="top: -4.5px;"
-                />
-              </div>
-              <div
-                class="ant-anchor-link ant-anchor-link-active"
+                ruleTemplate.ruleTemplateForm.activeAnchorTitle
+              </a>
+            </div>
+            <div
+              class="ant-anchor-link"
+            >
+              <a
+                class="ant-anchor-link-title"
+                href="#disableRuleTitle"
+                title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
               >
-                <a
-                  class="ant-anchor-link-title ant-anchor-link-title-active"
-                  href="#activeRuleTitle"
-                  title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
-                >
-                  ruleTemplate.ruleTemplateForm.activeAnchorTitle
-                </a>
-              </div>
-              <div
-                class="ant-anchor-link"
-              >
-                <a
-                  class="ant-anchor-link-title"
-                  href="#disableRuleTitle"
-                  title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
-                >
-                  ruleTemplate.ruleTemplateForm.disableAnchorTitle
-                </a>
-              </div>
+                ruleTemplate.ruleTemplateForm.disableAnchorTitle
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="ant-space-item"
+      style="width: calc(100% - 90px);"
     >
       <div
         class="ant-descriptions"
@@ -2127,60 +2117,55 @@ exports[`RuleTemplate/CreateRuleTemplate should jump to next step when user inpu
   data-testid="rule-list"
 >
   <div
-    class="ant-space ant-space-horizontal ant-space-align-start"
+    class="full-width-element flex-space-between"
   >
-    <div
-      class="ant-space-item"
-      style="margin-right: 30px;"
-    >
-      <div>
+    <div>
+      <div
+        class=""
+      >
         <div
-          class=""
+          class="ant-anchor-wrapper custom-anchor"
+          style="max-height: 100vh;"
         >
           <div
-            class="ant-anchor-wrapper custom-anchor"
-            style="max-height: 100vh;"
+            class="ant-anchor"
           >
             <div
-              class="ant-anchor"
+              class="ant-anchor-ink"
             >
-              <div
-                class="ant-anchor-ink"
+              <span
+                class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
+                style="top: -4.5px;"
+              />
+            </div>
+            <div
+              class="ant-anchor-link ant-anchor-link-active"
+            >
+              <a
+                class="ant-anchor-link-title ant-anchor-link-title-active"
+                href="#activeRuleTitle"
+                title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
               >
-                <span
-                  class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
-                  style="top: -4.5px;"
-                />
-              </div>
-              <div
-                class="ant-anchor-link ant-anchor-link-active"
+                ruleTemplate.ruleTemplateForm.activeAnchorTitle
+              </a>
+            </div>
+            <div
+              class="ant-anchor-link"
+            >
+              <a
+                class="ant-anchor-link-title"
+                href="#disableRuleTitle"
+                title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
               >
-                <a
-                  class="ant-anchor-link-title ant-anchor-link-title-active"
-                  href="#activeRuleTitle"
-                  title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
-                >
-                  ruleTemplate.ruleTemplateForm.activeAnchorTitle
-                </a>
-              </div>
-              <div
-                class="ant-anchor-link"
-              >
-                <a
-                  class="ant-anchor-link-title"
-                  href="#disableRuleTitle"
-                  title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
-                >
-                  ruleTemplate.ruleTemplateForm.disableAnchorTitle
-                </a>
-              </div>
+                ruleTemplate.ruleTemplateForm.disableAnchorTitle
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="ant-space-item"
+      style="width: calc(100% - 90px);"
     >
       <div
         class="ant-descriptions"
@@ -3609,60 +3594,55 @@ exports[`RuleTemplate/CreateRuleTemplate should render base form at init 1`] = `
             hidden=""
           >
             <div
-              class="ant-space ant-space-horizontal ant-space-align-start"
+              class="full-width-element flex-space-between"
             >
-              <div
-                class="ant-space-item"
-                style="margin-right: 30px;"
-              >
-                <div>
+              <div>
+                <div
+                  class=""
+                >
                   <div
-                    class=""
+                    class="ant-anchor-wrapper custom-anchor"
+                    style="max-height: 100vh;"
                   >
                     <div
-                      class="ant-anchor-wrapper custom-anchor"
-                      style="max-height: 100vh;"
+                      class="ant-anchor"
                     >
                       <div
-                        class="ant-anchor"
+                        class="ant-anchor-ink"
                       >
-                        <div
-                          class="ant-anchor-ink"
+                        <span
+                          class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
+                          style="top: -4.5px;"
+                        />
+                      </div>
+                      <div
+                        class="ant-anchor-link ant-anchor-link-active"
+                      >
+                        <a
+                          class="ant-anchor-link-title ant-anchor-link-title-active"
+                          href="#activeRuleTitle"
+                          title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
                         >
-                          <span
-                            class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
-                            style="top: -4.5px;"
-                          />
-                        </div>
-                        <div
-                          class="ant-anchor-link ant-anchor-link-active"
+                          ruleTemplate.ruleTemplateForm.activeAnchorTitle
+                        </a>
+                      </div>
+                      <div
+                        class="ant-anchor-link"
+                      >
+                        <a
+                          class="ant-anchor-link-title"
+                          href="#disableRuleTitle"
+                          title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
                         >
-                          <a
-                            class="ant-anchor-link-title ant-anchor-link-title-active"
-                            href="#activeRuleTitle"
-                            title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
-                          >
-                            ruleTemplate.ruleTemplateForm.activeAnchorTitle
-                          </a>
-                        </div>
-                        <div
-                          class="ant-anchor-link"
-                        >
-                          <a
-                            class="ant-anchor-link-title"
-                            href="#disableRuleTitle"
-                            title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
-                          >
-                            ruleTemplate.ruleTemplateForm.disableAnchorTitle
-                          </a>
-                        </div>
+                          ruleTemplate.ruleTemplateForm.disableAnchorTitle
+                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div
-                class="ant-space-item"
+                style="width: calc(100% - 90px);"
               >
                 <div
                   class="ant-descriptions"
@@ -4508,60 +4488,55 @@ exports[`RuleTemplate/CreateRuleTemplate should render base form at init 2`] = `
             hidden=""
           >
             <div
-              class="ant-space ant-space-horizontal ant-space-align-start"
+              class="full-width-element flex-space-between"
             >
-              <div
-                class="ant-space-item"
-                style="margin-right: 30px;"
-              >
-                <div>
+              <div>
+                <div
+                  class=""
+                >
                   <div
-                    class=""
+                    class="ant-anchor-wrapper custom-anchor"
+                    style="max-height: 100vh;"
                   >
                     <div
-                      class="ant-anchor-wrapper custom-anchor"
-                      style="max-height: 100vh;"
+                      class="ant-anchor"
                     >
                       <div
-                        class="ant-anchor"
+                        class="ant-anchor-ink"
                       >
-                        <div
-                          class="ant-anchor-ink"
+                        <span
+                          class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
+                          style="top: -4.5px;"
+                        />
+                      </div>
+                      <div
+                        class="ant-anchor-link ant-anchor-link-active"
+                      >
+                        <a
+                          class="ant-anchor-link-title ant-anchor-link-title-active"
+                          href="#activeRuleTitle"
+                          title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
                         >
-                          <span
-                            class="ant-anchor-ink-ball-visible ant-anchor-ink-ball"
-                            style="top: -4.5px;"
-                          />
-                        </div>
-                        <div
-                          class="ant-anchor-link ant-anchor-link-active"
+                          ruleTemplate.ruleTemplateForm.activeAnchorTitle
+                        </a>
+                      </div>
+                      <div
+                        class="ant-anchor-link"
+                      >
+                        <a
+                          class="ant-anchor-link-title"
+                          href="#disableRuleTitle"
+                          title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
                         >
-                          <a
-                            class="ant-anchor-link-title ant-anchor-link-title-active"
-                            href="#activeRuleTitle"
-                            title="ruleTemplate.ruleTemplateForm.activeAnchorTitle"
-                          >
-                            ruleTemplate.ruleTemplateForm.activeAnchorTitle
-                          </a>
-                        </div>
-                        <div
-                          class="ant-anchor-link"
-                        >
-                          <a
-                            class="ant-anchor-link-title"
-                            href="#disableRuleTitle"
-                            title="ruleTemplate.ruleTemplateForm.disableAnchorTitle"
-                          >
-                            ruleTemplate.ruleTemplateForm.disableAnchorTitle
-                          </a>
-                        </div>
+                          ruleTemplate.ruleTemplateForm.disableAnchorTitle
+                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div
-                class="ant-space-item"
+                style="width: calc(100% - 90px);"
               >
                 <div
                   class="ant-descriptions"
