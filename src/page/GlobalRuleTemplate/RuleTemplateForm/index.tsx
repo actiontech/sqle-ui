@@ -48,7 +48,7 @@ const RuleTemplateForm: React.FC<RuleTemplateFormProps> = (props) => {
           />
         </div>
         <div hidden={props.step !== 1} data-testid="rule-list">
-          <Space align="start" size={30}>
+          <div className="full-width-element flex-space-between">
             <Anchor
               className="custom-anchor"
               targetOffset={240}
@@ -72,7 +72,7 @@ const RuleTemplateForm: React.FC<RuleTemplateFormProps> = (props) => {
               activeRule={props.activeRule}
               updateActiveRule={props.updateActiveRule}
             />
-          </Space>
+          </div>
 
           <Divider dashed />
           <FooterButtonWrapper insideProject={false}>

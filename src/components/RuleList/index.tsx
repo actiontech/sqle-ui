@@ -31,6 +31,7 @@ const RuleList: React.FC<RuleListProps> = (props) => {
         map.set(tab, { tabTitle: tab, rules: [], len: 0 });
       });
     }
+
     props.list.forEach((rule) => {
       if (!rule.type) {
         return;
@@ -53,17 +54,7 @@ const RuleList: React.FC<RuleListProps> = (props) => {
       }
     });
 
-    return Array.from(map.values()).sort((a, b) => {
-      //Fix RuleListDefaultTabKey in first place
-      if (a.tabTitle === RuleListDefaultTabKey) {
-        return -1;
-      }
-      if (b.tabTitle === RuleListDefaultTabKey) {
-        return 1;
-      }
-
-      return a.tabTitle > b.tabTitle ? 1 : -1;
-    });
+    return Array.from(map.values());
   }, [props.allRuleTabs, props.list]);
 
   const tabItems: TabsProps['items'] = tabRules.map((tab) => {
