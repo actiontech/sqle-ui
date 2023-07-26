@@ -89,6 +89,7 @@ describe('System/SMTPSetting', () => {
       'disabled'
     );
     await act(async () => jest.advanceTimersByTime(3000));
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.getByText('common.submit').parentNode).not.toHaveClass(
       'ant-btn-loading'
@@ -168,5 +169,27 @@ describe('System/SMTPSetting', () => {
       screen.queryByText('system.smtp.testSuccess')
     ).not.toBeInTheDocument();
     expect(screen.getByText('error message')).toBeInTheDocument();
+  });
+
+  test('should be disabled test button when config switch is off', async () => {
+    mockGetSMTPInfo().mockImplementation(() =>
+      resolveThreeSecond({
+        enable_smtp_notify: false,
+        is_skip_verify: false,
+        smtp_host: '10.10.10.1',
+        smtp_port: '3300',
+        smtp_username: 'currentUser@gamil.com',
+      })
+    );
+    render(<SMTPSetting />);
+
+    await act(async () => jest.advanceTimersByTime(3000));
+    expect(
+      screen.getByText('system.smtp.test').closest('button')
+    ).toBeDisabled();
+
+    fireEvent.click(screen.getByText('system.smtp.test'));
+
+    expect(screen.queryByText('system.smtp.receiver')).not.toBeInTheDocument();
   });
 });

@@ -106,20 +106,17 @@ describe('wechat', () => {
   });
 
   it('should send test request when user input receiver id and submit request', async () => {
-    const getConfigSpy = () => {
-      const spy = mockGetWechatConfig();
-      spy.mockImplementation(() =>
-        resolveThreeSecond({
-          enable_wechat_notify: true,
-          corp_id: '123123123',
-          agent_id: 12312312312122,
-          safe_enabled: false,
-          proxy_ip: '1.1.1.1',
-        })
-      );
-    };
+    const getConfigSpy = mockGetWechatConfig();
+    getConfigSpy.mockImplementation(() =>
+      resolveThreeSecond({
+        enable_wechat_notify: true,
+        corp_id: '123123123',
+        agent_id: 12312312312122,
+        safe_enabled: false,
+        proxy_ip: '1.1.1.1',
+      })
+    );
 
-    getConfigSpy();
     const testSpy = mockTestWechat();
     const { baseElement } = render(<Wechat />);
     await act(async () => jest.advanceTimersByTime(3000));
@@ -127,11 +124,13 @@ describe('wechat', () => {
     fireEvent.click(screen.getByText('system.wechat.test'));
     expect(baseElement).toMatchSnapshot();
 
-    fireEvent.input(screen.getByTestId('receivername'), {
+    fireEvent.input(screen.getByLabelText('system.wechat.receiveWechat'), {
       target: { value: 'test' },
     });
 
     fireEvent.click(screen.getByText('common.ok'));
+
+    await act(async () => jest.advanceTimersByTime(0));
 
     expect(testSpy).toBeCalledTimes(1);
     expect(testSpy).toBeCalledWith({ recipient_id: 'test' });
@@ -148,20 +147,17 @@ describe('wechat', () => {
   });
 
   it('should render error message when test wechat config is failed', async () => {
-    const getConfigSpy = () => {
-      const spy = mockGetWechatConfig();
-      spy.mockImplementation(() =>
-        resolveThreeSecond({
-          enable_wechat_notify: true,
-          corp_id: '123123123',
-          agent_id: 12312312312122,
-          safe_enabled: false,
-          proxy_ip: '1.1.1.1',
-        })
-      );
-    };
+    const getConfigSpy = mockGetWechatConfig();
+    getConfigSpy.mockImplementation(() =>
+      resolveThreeSecond({
+        enable_wechat_notify: true,
+        corp_id: '123123123',
+        agent_id: 12312312312122,
+        safe_enabled: false,
+        proxy_ip: '1.1.1.1',
+      })
+    );
 
-    getConfigSpy();
     const testSpy = mockTestWechat();
     testSpy.mockImplementation(() =>
       resolveThreeSecond({
@@ -174,11 +170,12 @@ describe('wechat', () => {
     await act(async () => jest.advanceTimersByTime(3000));
     fireEvent.click(screen.getByText('system.wechat.test'));
 
-    fireEvent.input(screen.getByTestId('receivername'), {
+    fireEvent.input(screen.getByLabelText('system.wechat.receiveWechat'), {
       target: { value: 'test' },
     });
-
     fireEvent.click(screen.getByText('common.ok'));
+
+    await act(async () => jest.advanceTimersByTime(0));
 
     await act(async () => jest.advanceTimersByTime(3000));
 
@@ -186,5 +183,22 @@ describe('wechat', () => {
     await act(async () => jest.advanceTimersByTime(3000));
 
     expect(screen.queryByText('error message')).not.toBeInTheDocument();
+  });
+
+  it('should be disabled test button when config switch is off', async () => {
+    mockGetWechatConfig();
+
+    render(<Wechat />);
+
+    await act(async () => jest.advanceTimersByTime(3000));
+    expect(
+      screen.getByText('system.wechat.test').closest('button')
+    ).toBeDisabled();
+
+    fireEvent.click(screen.getByText('system.wechat.test'));
+
+    expect(
+      screen.queryByText('system.wechat.receiveWechat')
+    ).not.toBeInTheDocument();
   });
 });

@@ -223,4 +223,25 @@ describe('test System/LarkSetting', () => {
 
     expect(screen.queryByText('error message')).not.toBeInTheDocument();
   });
+
+  test('should be disabled test button when config switch is off', async () => {
+    getLarkConfigSpy.mockImplementation(() =>
+      resolveThreeSecond({
+        app_id: 'app_id',
+        is_feishu_notification_enabled: false,
+      })
+    );
+    render(<LarkSetting />);
+
+    await act(async () => jest.advanceTimersByTime(3000));
+    expect(
+      screen.getByText('system.lark.test').closest('button')
+    ).toBeDisabled();
+
+    fireEvent.click(screen.getByText('system.lark.test'));
+
+    expect(
+      screen.queryByText('system.lark.receiveType')
+    ).not.toBeInTheDocument();
+  });
 });
