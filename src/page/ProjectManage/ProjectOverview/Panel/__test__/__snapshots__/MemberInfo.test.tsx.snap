@@ -55,6 +55,7 @@ exports[`test MemberInfo should match snapshot 1`] = `
         mincolumnwidth="10"
         theme="light"
         xfield="type"
+        yaxis="{\\"tickInterval\\":1}"
         yfield="value"
       />
     </div>
@@ -117,6 +118,7 @@ exports[`test MemberInfo should match snapshot 2`] = `
         mincolumnwidth="10"
         theme="light"
         xfield="type"
+        yaxis="{\\"tickInterval\\":1}"
         yfield="value"
       />
     </div>

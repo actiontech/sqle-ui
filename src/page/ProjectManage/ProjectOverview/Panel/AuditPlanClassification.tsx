@@ -23,6 +23,10 @@ const config: ColumnConfig = {
   legend: {
     position: 'bottom',
   },
+  yAxis: {
+    //纵轴刻度值间隔值
+    tickInterval: 1,
+  },
   tooltip: {
     shared: false,
   },

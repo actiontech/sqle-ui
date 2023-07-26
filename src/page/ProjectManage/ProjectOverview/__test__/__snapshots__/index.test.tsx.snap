@@ -293,6 +293,7 @@ exports[`test ProjectOverview should match snapshot 1`] = `
                 theme="light"
                 tooltip="{\\"shared\\":false}"
                 xfield="type"
+                yaxis="{\\"tickInterval\\":1}"
                 yfield="value"
               />
             </div>
@@ -358,6 +359,7 @@ exports[`test ProjectOverview should match snapshot 1`] = `
                 locale="zh-CN"
                 padding="auto"
                 radius="1"
+                statistic="{\\"content\\":{}}"
                 theme="light"
               />
             </div>
@@ -613,6 +615,7 @@ exports[`test ProjectOverview should match snapshot 1`] = `
                 theme="light"
                 tooltip="{\\"shared\\":false}"
                 xfield="type"
+                yaxis="{\\"tickInterval\\":1}"
                 yfield="value"
               />
             </div>
@@ -882,6 +885,7 @@ exports[`test ProjectOverview should match snapshot 1`] = `
                 mincolumnwidth="10"
                 theme="light"
                 xfield="type"
+                yaxis="{\\"tickInterval\\":1}"
                 yfield="value"
               />
             </div>

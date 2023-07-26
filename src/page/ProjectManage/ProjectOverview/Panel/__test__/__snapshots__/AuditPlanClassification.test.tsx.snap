@@ -57,6 +57,7 @@ exports[`test AuditPlanClassification should match snapshot 1`] = `
         theme="light"
         tooltip="{\\"shared\\":false}"
         xfield="type"
+        yaxis="{\\"tickInterval\\":1}"
         yfield="value"
       />
     </div>
@@ -121,6 +122,7 @@ exports[`test AuditPlanClassification should match snapshot 2`] = `
         theme="light"
         tooltip="{\\"shared\\":false}"
         xfield="type"
+        yaxis="{\\"tickInterval\\":1}"
         yfield="value"
       />
     </div>
