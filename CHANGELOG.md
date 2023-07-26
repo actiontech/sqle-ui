@@ -29,3 +29,6 @@
 * [ ] [fix]: 将 RuleList 中的 ALL Tab 固定在第一位. 优化自定义规则表单. 优化创建完自定义规则后的页面展示. 创建规则模板和修改规则模板新增参数: is_custom_rule. <https://github.com/actiontech/sqle-ui/pull/299>
 * [ ] [feature]: 页面增加数据库Logo 遗留问题: 1. selectOptionByIndex 方法改造, 支持自定义的 option. 2. 图片资源缓存问题 <https://github.com/actiontech/sqle-ui/pull/301>
 * [ ] [fix]: 补充系统配置的单元测试, 测试企业微信配置时添加字段校验 <https://github.com/actiontech/sqle-ui/pull/302>
+* [ ] [fix]: 规则列表分类进行排序, 优化编辑规则模板时的规则列表样式  <https://github.com/actiontech/sqle-ui/pull/304>
+* [ ] [chore]: 项目概览界面中数据源最小单位改成1，数据源tips提示文案修改, 没有任何工单时总计显示 0. <https://github.com/actiontech/sqle-ui/pull/305>
+* [ ] [fix]:修复在创建自定义规则时先修改了按钮状态然后才进行表单校验, 导致按钮状态未复原的问题 <https://github.com/actiontech/sqle-ui/pull/306>
