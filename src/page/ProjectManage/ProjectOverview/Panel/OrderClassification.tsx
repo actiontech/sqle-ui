@@ -9,6 +9,7 @@ import { useMemo, useState } from 'react';
 import { projectOverviewData } from '../index.data';
 import usePanelCommonRequest from './usePanelCommonRequest';
 import statistic from '../../../../api/statistic';
+import { IWorkflowStatusCountV1 } from '../../../../api/common';
 
 const config: PieConfig = {
   data: [],
@@ -34,7 +35,7 @@ const config: PieConfig = {
 };
 
 const orderStatusMap = () => {
-  return new Map<keyof any, string>([
+  return new Map<keyof IWorkflowStatusCountV1, string>([
     [
       'execution_success_count',
       t('reportStatistics.orderStatus.executionSuccess'),
@@ -78,15 +79,17 @@ const OrderClassification: React.FC<PanelCommonProps> = ({
   const [data, setData] = useState<PieConfig['data']>([
     { status: '', value: 0 },
   ]);
-  const formatData = (originData?: any): PieConfig['data'] => {
+  const formatData = (
+    originData?: IWorkflowStatusCountV1
+  ): PieConfig['data'] => {
     if (!originData) {
       return [];
     }
 
     return Object.keys(originData).map((key) => {
       return {
-        value: originData[key],
-        status: orderStatusMap().get(key),
+        value: originData[key as keyof IWorkflowStatusCountV1],
+        status: orderStatusMap().get(key as keyof IWorkflowStatusCountV1),
       };
     });
   };

@@ -55,6 +55,7 @@ exports[`test OrderClassification should match snapshot 1`] = `
         locale="zh-CN"
         padding="auto"
         radius="1"
+        statistic="{\\"content\\":{}}"
         theme="light"
       />
     </div>
@@ -117,6 +118,7 @@ exports[`test OrderClassification should match snapshot 2`] = `
         locale="zh-CN"
         padding="auto"
         radius="1"
+        statistic="{\\"content\\":{}}"
         theme="light"
       />
     </div>
