@@ -30,3 +30,4 @@
 * [ ] [fix]: 将 RuleList 中的 ALL Tab 固定在第一位. 优化自定义规则表单. 优化创建完自定义规则后的页面展示. 创建规则模板和修改规则模板新增参数: is_custom_rule. <https://github.com/actiontech/sqle-ui/pull/299>
 * [ ] [feature]: 页面增加数据库Logo 遗留问题: 1. selectOptionByIndex 方法改造, 支持自定义的 option. 2. 图片资源缓存问题 <https://github.com/actiontech/sqle-ui/pull/301>
 * [ ] [test]: 增加 selectCustomOptionByClassName 并修改部分单元测试 <https://github.com/actiontech/sqle-ui/pull/303>
+* [ ] [fix]: 补充系统配置的单元测试, 测试企业微信配置时添加字段校验 <https://github.com/actiontech/sqle-ui/pull/302>

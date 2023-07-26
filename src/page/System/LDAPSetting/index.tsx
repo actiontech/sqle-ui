@@ -145,43 +145,6 @@ const LDAPSetting = () => {
   return (
     <Card title={t('system.title.ldap')} loading={loading}>
       <section hidden={modifyFlag}>
-        {/* <Descriptions>
-          <Descriptions.Item label={t('system.ldap.enableLdap')} span={3}>
-            {ldapSetting?.enable_ldap ? t('common.open') : t('common.close')}
-          </Descriptions.Item>
-          <Descriptions.Item label={t('system.ldap.enableLdapSSL')} span={3}>
-            {ldapSetting?.enable_ssl ? t('common.open') : t('common.close')}
-          </Descriptions.Item>
-          <Descriptions.Item label={t('system.ldap.ldapServerHost')} span={3}>
-            {ldapSetting?.ldap_server_host ?? '--'}
-          </Descriptions.Item>
-          <Descriptions.Item label={t('system.ldap.ldapServerPort')} span={3}>
-            {ldapSetting?.ldap_server_port ?? '--'}
-          </Descriptions.Item>
-          <Descriptions.Item label={t('system.ldap.ldapConnectDn')} span={3}>
-            {ldapSetting?.ldap_connect_dn ?? '--'}
-          </Descriptions.Item>
-          <Descriptions.Item label={t('system.ldap.ldapSearchBaseDn')} span={3}>
-            {ldapSetting?.ldap_search_base_dn ?? '--'}
-          </Descriptions.Item>
-          <Descriptions.Item
-            label={t('system.ldap.ldapUserNameRdnKey')}
-            span={3}
-          >
-            {ldapSetting?.ldap_user_name_rdn_key ?? '--'}
-          </Descriptions.Item>
-          <Descriptions.Item
-            label={t('system.ldap.ldapUserEmailRdnKey')}
-            span={3}
-          >
-            {ldapSetting?.ldap_user_email_rdn_key ?? '--'}
-          </Descriptions.Item>
-          <Descriptions.Item span={3}>
-            <Button type="primary" onClick={startModify}>
-              {t('common.modify')}
-            </Button>
-          </Descriptions.Item>
-        </Descriptions> */}
         {renderReadOnlyModeConfig({
           data: ldapSetting ?? {},
           columns: readonlyColumnsConfig,
@@ -192,12 +155,6 @@ const LDAPSetting = () => {
           ),
         })}
       </section>
-      {/* <Form
-        {...PageFormLayout}
-        form={form}
-        hidden={!modifyFlag}
-        onFinish={handleSubmit}
-      ></Form> */}
       {renderEditingModeConfig({
         switchField: (
           <Form.Item

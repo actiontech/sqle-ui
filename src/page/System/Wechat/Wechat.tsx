@@ -32,6 +32,7 @@ type WechatFormFields = {
 
 const Wechat = () => {
   const { t } = useTranslation();
+  const [testForm] = Form.useForm<{ receiveId?: string }>();
 
   const {
     data: wechatConfig,
@@ -99,22 +100,23 @@ const Wechat = () => {
     startModify();
   };
 
-  const [receiveId, setReceiveId] = useState('');
   const [testPopoverVisible, toggleTestPopoverVisible] = useState(false);
   const testTing = useRef(false);
-  const test = () => {
+  const test = async () => {
     if (testTing.current) {
       return;
     }
+    const values = await testForm.validateFields();
+
     testTing.current = true;
     toggleTestPopoverVisible(false);
     const hide = message.loading(
-      t('system.wechat.testing', { id: receiveId }),
+      t('system.wechat.testing', { id: values.receiveId }),
       0
     );
     configuration
       .testWeChatConfigurationV1({
-        recipient_id: receiveId,
+        recipient_id: values.receiveId,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -128,6 +130,7 @@ const Wechat = () => {
       .finally(() => {
         hide();
         testTing.current = false;
+        testForm.resetFields();
       });
   };
 
@@ -180,25 +183,31 @@ const Wechat = () => {
                 trigger="click"
                 open={testPopoverVisible}
                 onOpenChange={(visible) => {
+                  if (!enabled) {
+                    return;
+                  }
                   if (!visible) {
-                    setReceiveId('');
+                    testForm.resetFields();
                   }
                   toggleTestPopoverVisible(visible);
                 }}
                 content={
                   <Space direction="vertical" className="full-width-element">
-                    <Row>
-                      <Col span={8} className="flex-all-center">
-                        {t('system.wechat.receiveWechat')}
-                      </Col>
-                      <Col span={16}>
-                        <Input
-                          data-testid="receivername"
-                          value={receiveId}
-                          onChange={(e) => setReceiveId(e.target.value)}
-                        />
-                      </Col>
-                    </Row>
+                    <Form form={testForm}>
+                      <Form.Item
+                        style={{ marginBottom: 0 }}
+                        name="receiveId"
+                        label={t('system.wechat.receiveWechat')}
+                        rules={[
+                          {
+                            required: true,
+                          },
+                        ]}
+                      >
+                        <Input />
+                      </Form.Item>
+                    </Form>
+
                     <Row>
                       <Col span={24} style={{ textAlign: 'right' }}>
                         <Button type="primary" size="small" onClick={test}>
