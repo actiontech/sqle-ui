@@ -43,10 +43,10 @@ const UpdateCustomRule: React.FC = () => {
   }, [step]);
 
   const submit = useCallback(async () => {
-    setLoading(true);
-
     const baseInfo = await form.validateFields();
     const values = await editScriptForm.validateFields();
+
+    setLoading(true);
 
     ruleTemplate
       .updateCustomRuleV1({

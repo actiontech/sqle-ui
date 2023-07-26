@@ -24,10 +24,10 @@ const CreateCustomRule: React.FC = () => {
   }, [step]);
 
   const submit = useCallback(async () => {
-    updateCreateLoading(true);
-
     const baseInfo = await form.validateFields();
     const values = await editScriptForm.validateFields();
+
+    updateCreateLoading(true);
 
     ruleTemplate
       .createCustomRuleV1({
@@ -79,7 +79,7 @@ const CreateCustomRule: React.FC = () => {
             </Link>
           </Button>
         </Row>
-        <Row justify="center">
+        <Row justify="center" style={{ paddingTop: 10 }}>
           <Typography.Text>
             {t('customRule.addCustomRule.successTips')}
           </Typography.Text>

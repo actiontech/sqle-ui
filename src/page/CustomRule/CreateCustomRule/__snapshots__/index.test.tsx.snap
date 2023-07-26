@@ -714,6 +714,7 @@ exports[`test CreateCustomRule should match snapshot 1`] = `
             </div>
             <div
               class="ant-row ant-row-center"
+              style="padding-top: 10px;"
             >
               <span
                 class="ant-typography"
