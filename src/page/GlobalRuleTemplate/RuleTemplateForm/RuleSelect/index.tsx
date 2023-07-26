@@ -78,7 +78,7 @@ const RuleSelect: React.FC<RuleSelectProps> = (props) => {
   );
 
   return (
-    <>
+    <div style={{ width: 'calc(100% - 90px)' }}>
       <Descriptions
         title={
           <span id="activeRuleTitle">
@@ -165,7 +165,7 @@ const RuleSelect: React.FC<RuleSelectProps> = (props) => {
         setVisibleFalse={setVisibleFalse}
         ruleData={ruleData}
       />
-    </>
+    </div>
   );
 };
 

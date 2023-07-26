@@ -99,14 +99,6 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
           {generateDriverSelectOptions()}
         </Select>
       </Form.Item>
-      {/* <Form.Item label=" " colon={false}>
-        <Space>
-          <Button onClick={reset}>{t('common.reset')}</Button>
-          <Button type="primary" onClick={props.submit}>
-            {t('common.nextStep')}
-          </Button>
-        </Space>
-      </Form.Item> */}
       <FooterButtonWrapper>
         <Button onClick={reset}>{t('common.reset')}</Button>
         <Button type="primary" onClick={props.submit}>

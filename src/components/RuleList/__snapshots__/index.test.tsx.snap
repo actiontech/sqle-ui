@@ -35,40 +35,6 @@ exports[`RuleList should be guaranteed that ALL is always at the first position 
           </div>
           <div
             class="ant-tabs-tab"
-            data-node-key="111"
-          >
-            <div
-              aria-controls="rc-tabs-test-panel-111"
-              aria-selected="false"
-              class="ant-tabs-tab-btn"
-              id="rc-tabs-test-tab-111"
-              role="tab"
-              tabindex="0"
-            >
-              111
-               
-              (1)
-            </div>
-          </div>
-          <div
-            class="ant-tabs-tab"
-            data-node-key="222"
-          >
-            <div
-              aria-controls="rc-tabs-test-panel-222"
-              aria-selected="false"
-              class="ant-tabs-tab-btn"
-              id="rc-tabs-test-tab-222"
-              role="tab"
-              tabindex="0"
-            >
-              222
-               
-              (1)
-            </div>
-          </div>
-          <div
-            class="ant-tabs-tab"
             data-node-key="type1"
           >
             <div
@@ -116,6 +82,40 @@ exports[`RuleList should be guaranteed that ALL is always at the first position 
               type3
                
               (2)
+            </div>
+          </div>
+          <div
+            class="ant-tabs-tab"
+            data-node-key="111"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-111"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-111"
+              role="tab"
+              tabindex="0"
+            >
+              111
+               
+              (1)
+            </div>
+          </div>
+          <div
+            class="ant-tabs-tab"
+            data-node-key="222"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-222"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-222"
+              role="tab"
+              tabindex="0"
+            >
+              222
+               
+              (1)
             </div>
           </div>
           <div
@@ -855,40 +855,6 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
           </div>
           <div
             class="ant-tabs-tab"
-            data-node-key="111"
-          >
-            <div
-              aria-controls="rc-tabs-test-panel-111"
-              aria-selected="false"
-              class="ant-tabs-tab-btn"
-              id="rc-tabs-test-tab-111"
-              role="tab"
-              tabindex="0"
-            >
-              111
-               
-              (1)
-            </div>
-          </div>
-          <div
-            class="ant-tabs-tab"
-            data-node-key="222"
-          >
-            <div
-              aria-controls="rc-tabs-test-panel-222"
-              aria-selected="false"
-              class="ant-tabs-tab-btn"
-              id="rc-tabs-test-tab-222"
-              role="tab"
-              tabindex="0"
-            >
-              222
-               
-              (1)
-            </div>
-          </div>
-          <div
-            class="ant-tabs-tab"
             data-node-key="type1"
           >
             <div
@@ -936,6 +902,40 @@ exports[`RuleList should render rule list when list is not empty array 1`] = `
               type3
                
               (2)
+            </div>
+          </div>
+          <div
+            class="ant-tabs-tab"
+            data-node-key="111"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-111"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-111"
+              role="tab"
+              tabindex="0"
+            >
+              111
+               
+              (1)
+            </div>
+          </div>
+          <div
+            class="ant-tabs-tab"
+            data-node-key="222"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-222"
+              aria-selected="false"
+              class="ant-tabs-tab-btn"
+              id="rc-tabs-test-tab-222"
+              role="tab"
+              tabindex="0"
+            >
+              222
+               
+              (1)
             </div>
           </div>
           <div
