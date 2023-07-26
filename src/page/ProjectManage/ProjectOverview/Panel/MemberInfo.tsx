@@ -22,6 +22,10 @@ const config: ColumnConfig = {
   minColumnWidth: 10,
   maxColumnWidth: 40,
   color: '#42a2ff',
+  yAxis: {
+    //纵轴刻度值间隔值
+    tickInterval: 1,
+  },
 };
 const { rowHeight, fourthLineSize } = projectOverviewData;
 
@@ -48,12 +52,14 @@ const MemberInfo: React.FC<PanelCommonProps> = ({
     () => statistic.getRoleUserCountV1({ project_name: projectName }),
     {
       onSuccess: (res) => {
-        setData(
-          (res.data.data ?? []).map((v) => ({
-            type: v.role ?? '',
-            value: v.count ?? 0,
-          }))
-        );
+        if (res.data.data?.length) {
+          setData(
+            (res.data.data ?? []).map((v) => ({
+              type: v.role ?? '',
+              value: v.count ?? 0,
+            }))
+          );
+        }
       },
     }
   );

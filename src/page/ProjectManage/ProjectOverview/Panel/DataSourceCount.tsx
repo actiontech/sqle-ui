@@ -57,6 +57,10 @@ const config: ColumnConfig = {
       formatter: legendFormatter,
     },
   },
+  yAxis: {
+    //纵轴刻度值间隔值
+    tickInterval: 1,
+  },
   tooltip: {
     shared: false,
     customContent: tooltipCustomContent,

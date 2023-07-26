@@ -21,6 +21,16 @@ const config: PieConfig = {
   radius: 1,
   innerRadius: 0.8,
   label: false,
+  statistic: {
+    content: {
+      formatter(_, data) {
+        if (data) {
+          return data.reduce((acc, cur) => acc + cur.value ?? 0, 0).toString();
+        }
+        return '0';
+      },
+    },
+  },
 };
 
 const orderStatusMap = () => {
