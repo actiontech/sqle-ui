@@ -1,3 +1,4 @@
+import { SQLE_BASE_URL } from '../../data/common';
 import './index.less';
 const DatabaseTypeLogo: React.FC<{ dbType: string; logoUrl?: string }> = ({
   dbType,
@@ -6,12 +7,13 @@ const DatabaseTypeLogo: React.FC<{ dbType: string; logoUrl?: string }> = ({
   return (
     <div className="database-type-logo-wrapper">
       <img
-        src={logoUrl || `/v1/static/instance_logo?instance_type=${dbType}`}
+        src={
+          logoUrl ||
+          `${SQLE_BASE_URL}v1/static/instance_logo?instance_type=${dbType}`
+        }
         alt=""
       />
-      <span title={dbType} className="ant-select-item-option-content">
-        {dbType}
-      </span>
+      <span title={dbType}>{dbType}</span>
     </div>
   );
 };

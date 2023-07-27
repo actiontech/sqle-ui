@@ -1,6 +1,9 @@
 import { act, fireEvent, screen } from '@testing-library/react';
 import Rule from '..';
-import { getBySelector } from '../../../testUtils/customQuery';
+import {
+  getAllBySelector,
+  getBySelector,
+} from '../../../testUtils/customQuery';
 import { renderWithTheme } from '../../../testUtils/customRender';
 import {
   mockDriver,
@@ -90,10 +93,11 @@ describe('test Rule', () => {
     );
     await act(async () => jest.advanceTimersByTime(0));
 
-    const allOptions = screen.getAllByText('mysql');
-    const option = allOptions[1];
-    expect(option).toHaveClass('ant-select-item-option-content');
+    const allOptions = getAllBySelector('.database-type-logo-wrapper');
+    const option = allOptions[2];
+    expect(option.parentNode).toHaveClass('ant-select-item-option-content');
     fireEvent.click(option);
+
     await act(async () => jest.advanceTimersByTime(3000));
 
     expect(getRuleListSpy).toBeCalledTimes(2);

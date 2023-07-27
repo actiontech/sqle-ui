@@ -278,7 +278,6 @@ exports[`test ProjectManage/ProjectDetailLayout should render active menu by rou
                       src="/v1/static/instance_logo?instance_type=MySQL"
                     />
                     <span
-                      class="ant-select-item-option-content"
                       title="MySQL"
                     >
                       MySQL
@@ -397,7 +396,6 @@ exports[`test ProjectManage/ProjectDetailLayout should render active menu by rou
                       src="/v1/static/instance_logo?instance_type=Oracle"
                     />
                     <span
-                      class="ant-select-item-option-content"
                       title="Oracle"
                     >
                       Oracle
@@ -444,7 +442,6 @@ exports[`test ProjectManage/ProjectDetailLayout should render active menu by rou
                       src="/v1/static/instance_logo?instance_type=TiDB"
                     />
                     <span
-                      class="ant-select-item-option-content"
                       title="TiDB"
                     >
                       TiDB

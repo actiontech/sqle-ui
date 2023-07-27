@@ -115,7 +115,6 @@ exports[`useTaskSource should generate dbTypes select options with source 1`] = 
                           src="/v1/static/instance_logo?instance_type=mysql"
                         />
                         <span
-                          class="ant-select-item-option-content"
                           title="mysql"
                         >
                           mysql
@@ -264,7 +263,6 @@ exports[`useTaskSource should generate dbTypes select options with source 2`] = 
                           src="/v1/static/instance_logo?instance_type=oracle"
                         />
                         <span
-                          class="ant-select-item-option-content"
                           title="oracle"
                         >
                           oracle

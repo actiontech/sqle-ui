@@ -398,7 +398,6 @@ exports[`UpdateAuditPlan should send update audit plan request when user input a
                             src="/v1/static/instance_logo?instance_type=oracle"
                           />
                           <span
-                            class="ant-select-item-option-content"
                             title="oracle"
                           >
                             oracle
@@ -1688,7 +1687,6 @@ exports[`UpdateAuditPlan should set form default value to specify instance 1`] =
                             src="/v1/static/instance_logo?instance_type=oracle"
                           />
                           <span
-                            class="ant-select-item-option-content"
                             title="oracle"
                           >
                             oracle

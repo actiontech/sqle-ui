@@ -7,6 +7,7 @@ import { resolveThreeSecond, mockDriver } from '../../../testUtils/mockRequest';
 import { allRulesWithType } from '../../Rule/__testData__';
 import { IRuleReqV1 } from '../../../api/common';
 import useNavigate from '../../../hooks/useNavigate';
+import { selectCustomOptionByClassName } from '../../../testUtils/customQuery';
 
 jest.mock('../../../hooks/useNavigate', () => jest.fn());
 
@@ -72,14 +73,12 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
         target: { value: 'rule template desc' },
       }
     );
-    fireEvent.mouseDown(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
-    );
-    await act(async () => jest.advanceTimersByTime(0));
 
-    const databaseTypeOption = screen.getAllByText('oracle')[1];
-    expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(databaseTypeOption);
+    selectCustomOptionByClassName(
+      'ruleTemplate.ruleTemplateForm.databaseType',
+      'database-type-logo-wrapper',
+      0
+    );
 
     fireEvent.click(screen.getByText('common.nextStep'));
 

@@ -126,7 +126,6 @@ exports[`useInstance should be group instance by database type 1`] = `
                         src="/v1/static/instance_logo?instance_type=mysql"
                       />
                       <span
-                        class="ant-select-item-option-content"
                         title="mysql"
                       >
                         mysql
@@ -178,7 +177,6 @@ exports[`useInstance should be group instance by database type 1`] = `
                         src="/v1/static/instance_logo?instance_type=oracle"
                       />
                       <span
-                        class="ant-select-item-option-content"
                         title="oracle"
                       >
                         oracle
@@ -213,7 +211,6 @@ exports[`useInstance should be group instance by database type 1`] = `
                         src="/v1/static/instance_logo?instance_type=sqlserver"
                       />
                       <span
-                        class="ant-select-item-option-content"
                         title="sqlserver"
                       >
                         sqlserver
@@ -507,7 +504,6 @@ exports[`useInstance should get instance data from request 3`] = `
                         src="/v1/static/instance_logo?instance_type=mysql"
                       />
                       <span
-                        class="ant-select-item-option-content"
                         title="mysql"
                       >
                         mysql
@@ -737,7 +733,6 @@ exports[`useInstance should show one database type which your choose 2`] = `
                         src="/v1/static/instance_logo?instance_type=oracle"
                       />
                       <span
-                        class="ant-select-item-option-content"
                         title="oracle"
                       >
                         oracle

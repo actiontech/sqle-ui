@@ -7,6 +7,7 @@ import { resolveThreeSecond, mockDriver } from '../../../testUtils/mockRequest';
 import { allRulesWithType } from '../../Rule/__testData__';
 import { IRuleReqV1 } from '../../../api/common';
 import { useParams } from 'react-router-dom';
+import { selectCustomOptionByClassName } from '../../../testUtils/customQuery';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -50,23 +51,6 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
     expect(container).toMatchSnapshot();
   });
 
-  // test('should jump to /project/default/rule/template when user click back btn', async () => {
-  //   const history = createMemoryHistory();
-  //   renderWithThemeAndServerRouter(<CreateRuleTemplate />, undefined, {
-  //     history,
-  //   });
-  //   await waitFor(() => {
-  //     jest.advanceTimersByTime(3000);
-  //   });
-  //   expect(history.location.pathname).toBe('/');
-  //   expect(screen.getByText('common.back')).toBeInTheDocument();
-  //   fireEvent.click(screen.getByText('common.back'));
-  //   await waitFor(() => {
-  //     jest.advanceTimersByTime(3000);
-  //   });
-  //   expect(history.location.pathname).toBe('/project/default/rule/template');
-  // });
-
   test('should jump to next step when user input all require fields', async () => {
     const createTemplateSpy = mockCreateTemplate();
     renderWithThemeAndRouter(<CreateRuleTemplate />);
@@ -85,14 +69,11 @@ describe('RuleTemplate/CreateRuleTemplate', () => {
         target: { value: 'rule template desc' },
       }
     );
-    fireEvent.mouseDown(
-      screen.getByLabelText('ruleTemplate.ruleTemplateForm.databaseType')
+    selectCustomOptionByClassName(
+      'ruleTemplate.ruleTemplateForm.databaseType',
+      'database-type-logo-wrapper',
+      0
     );
-    await act(async () => jest.advanceTimersByTime(0));
-
-    const databaseTypeOption = screen.getAllByText('oracle')[1];
-    expect(databaseTypeOption).toHaveClass('ant-select-item-option-content');
-    fireEvent.click(databaseTypeOption);
 
     fireEvent.click(screen.getByText('common.nextStep'));
 

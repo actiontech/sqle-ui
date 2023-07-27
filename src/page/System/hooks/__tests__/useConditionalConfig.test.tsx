@@ -5,7 +5,6 @@ import useConditionalConfig, {
 import { Button, Form, Input, Switch } from 'antd';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { ReactFragment } from 'react';
-import { FormInstance } from 'antd/es/form/Form';
 import { act } from 'react-dom/test-utils';
 
 describe('test useConditionalConfig', () => {

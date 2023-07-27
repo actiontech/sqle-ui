@@ -2,7 +2,10 @@ import { fireEvent, screen, act } from '@testing-library/react';
 import AddSyncTask from '.';
 import sync_instance from '../../../api/sync_instance';
 import EmitterKey from '../../../data/EmitterKey';
-import { selectOptionByIndex } from '../../../testUtils/customQuery';
+import {
+  selectCustomOptionByClassName,
+  selectOptionByIndex,
+} from '../../../testUtils/customQuery';
 import { renderWithRouter } from '../../../testUtils/customRender';
 import {
   mockDriver,
@@ -57,7 +60,11 @@ describe('test AddSyncTask', () => {
       target: { value: 'http://192.168.0.1:3000' },
     });
 
-    selectOptionByIndex('syncDataSource.syncTaskForm.instanceType', 'mysql');
+    selectCustomOptionByClassName(
+      'syncDataSource.syncTaskForm.instanceType',
+      'database-type-logo-wrapper',
+      0
+    );
     await act(async () => jest.advanceTimersByTime(0));
 
     selectOptionByIndex(

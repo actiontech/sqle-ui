@@ -552,7 +552,6 @@ exports[`test BaseInfoForm should reset form when clicked reset button 1`] = `
                           src="/v1/static/instance_logo?instance_type=mysql"
                         />
                         <span
-                          class="ant-select-item-option-content"
                           title="mysql"
                         >
                           mysql
@@ -1185,7 +1184,6 @@ exports[`test BaseInfoForm should reset form when clicked reset button 2`] = `
                           src="/v1/static/instance_logo?instance_type=mysql"
                         />
                         <span
-                          class="ant-select-item-option-content"
                           title="mysql"
                         >
                           mysql
