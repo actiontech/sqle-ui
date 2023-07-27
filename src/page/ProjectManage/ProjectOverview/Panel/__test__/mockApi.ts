@@ -62,6 +62,7 @@ export const mockStatisticWorkflowStatus = () => {
       executing_failed_count: 11,
       rejected_count: 33,
       closed_count: 10,
+      executing_count: 3,
     })
   );
   return spy;

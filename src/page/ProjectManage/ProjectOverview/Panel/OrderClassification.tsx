@@ -17,7 +17,15 @@ const config: PieConfig = {
   colorField: 'status',
   xAxis: false,
   yAxis: false,
-  color: ['#42a2ff', '#43cb77', '#fbd44d', '#f04864', '#9963e5', '#46cbcb'],
+  color: [
+    '#42a2ff',
+    '#43cb77',
+    '#fbd44d',
+    '#7767fa',
+    '#f04864',
+    '#9963e5',
+    '#46cbcb',
+  ],
   padding: 'auto',
   radius: 1,
   innerRadius: 0.8,
@@ -38,23 +46,35 @@ const orderStatusMap = () => {
   return new Map<keyof IWorkflowStatusCountV1, string>([
     [
       'execution_success_count',
-      t('reportStatistics.orderStatus.executionSuccess'),
+      t('projectManage.projectOverview.orderClassification.executionSuccess'),
     ],
     [
       'waiting_for_audit_count',
-      t('reportStatistics.orderStatus.waitingForAudit'),
+      t('projectManage.projectOverview.orderClassification.waitingForAudit'),
     ],
-    ['closed_count', t('reportStatistics.orderStatus.closed')],
+    [
+      'closed_count',
+      t('projectManage.projectOverview.orderClassification.closed'),
+    ],
 
-    ['rejected_count', t('reportStatistics.orderStatus.rejected')],
+    [
+      'rejected_count',
+      t('projectManage.projectOverview.orderClassification.rejected'),
+    ],
 
     [
       'waiting_for_execution_count',
-      t('reportStatistics.orderStatus.waitingForExecution'),
+      t(
+        'projectManage.projectOverview.orderClassification.waitingForExecution'
+      ),
     ],
     [
       'executing_failed_count',
-      t('reportStatistics.orderStatus.executionFailed'),
+      t('projectManage.projectOverview.orderClassification.executionFailed'),
+    ],
+    [
+      'executing_count',
+      t('projectManage.projectOverview.orderClassification.executing'),
     ],
   ]);
 };
@@ -106,6 +126,7 @@ const OrderClassification: React.FC<PanelCommonProps> = ({
               res.data.data?.waiting_for_execution_count ?? 0,
             execution_success_count:
               res.data.data?.execution_success_count ?? 0,
+            executing_count: res.data.data?.executing_count ?? 0,
             executing_failed_count: res.data.data?.executing_failed_count ?? 0,
             rejected_count: res.data.data?.rejected_count ?? 0,
             closed_count: res.data.data?.closed_count ?? 0,
