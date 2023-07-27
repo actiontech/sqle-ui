@@ -351,9 +351,9 @@ exports[`test ProjectOverview should match snapshot 1`] = `
             >
               <div
                 anglefield="value"
-                color="[\\"#42a2ff\\",\\"#43cb77\\",\\"#fbd44d\\",\\"#f04864\\",\\"#9963e5\\",\\"#46cbcb\\"]"
+                color="[\\"#42a2ff\\",\\"#43cb77\\",\\"#fbd44d\\",\\"#7767fa\\",\\"#f04864\\",\\"#9963e5\\",\\"#46cbcb\\"]"
                 colorfield="status"
-                data="[{\\"value\\":32,\\"status\\":\\"reportStatistics.orderStatus.waitingForAudit\\"},{\\"value\\":0,\\"status\\":\\"reportStatistics.orderStatus.waitingForExecution\\"},{\\"value\\":20,\\"status\\":\\"reportStatistics.orderStatus.executionSuccess\\"},{\\"value\\":11,\\"status\\":\\"reportStatistics.orderStatus.executionFailed\\"},{\\"value\\":33,\\"status\\":\\"reportStatistics.orderStatus.rejected\\"},{\\"value\\":10,\\"status\\":\\"reportStatistics.orderStatus.closed\\"}]"
+                data="[{\\"value\\":32,\\"status\\":\\"projectManage.projectOverview.orderClassification.waitingForAudit\\"},{\\"value\\":0,\\"status\\":\\"projectManage.projectOverview.orderClassification.waitingForExecution\\"},{\\"value\\":20,\\"status\\":\\"projectManage.projectOverview.orderClassification.executionSuccess\\"},{\\"value\\":3,\\"status\\":\\"projectManage.projectOverview.orderClassification.executing\\"},{\\"value\\":11,\\"status\\":\\"projectManage.projectOverview.orderClassification.executionFailed\\"},{\\"value\\":33,\\"status\\":\\"projectManage.projectOverview.orderClassification.rejected\\"},{\\"value\\":10,\\"status\\":\\"projectManage.projectOverview.orderClassification.closed\\"}]"
                 height="352"
                 innerradius="0.8"
                 locale="zh-CN"
