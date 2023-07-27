@@ -87,6 +87,13 @@ export default {
     },
     orderClassification: {
       title: '工单',
+      closed: '已关闭',
+      executing: '正在上线',
+      executionSuccess: '上线成功',
+      executionFailed: '上线失败',
+      rejected: '被驳回',
+      waitingForAudit: '待审核',
+      waitingForExecution: '待上线',
     },
     orderRisk: {
       title: '工单潜在风险',
