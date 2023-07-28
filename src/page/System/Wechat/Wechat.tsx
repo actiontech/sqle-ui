@@ -195,6 +195,7 @@ const Wechat = () => {
                   <Space direction="vertical" className="full-width-element">
                     <Form form={testForm}>
                       <Form.Item
+                        tooltip={t('system.wechat.receiveWechatTips')}
                         style={{ marginBottom: 0 }}
                         name="receiveId"
                         label={t('system.wechat.receiveWechat')}

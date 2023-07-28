@@ -35,3 +35,4 @@
 * [ ] [chore]: 项目概览界面中数据源最小单位改成1，数据源tips提示文案修改, 没有任何工单时总计显示 0. <https://github.com/actiontech/sqle-ui/pull/305>
 * [ ] [fix]:修复在创建自定义规则时先修改了按钮状态然后才进行表单校验, 导致按钮状态未复原的问题 <https://github.com/actiontech/sqle-ui/pull/306>
 * [ ] [feature]: 项目概览的工单状态报表添加 正在上线 状态 <https://github.com/actiontech/sqle-ui/pull/308>
+* [ ] [chore]: 测试企业微信配置时接收着UserId 添加 tips <https://github.com/actiontech/sqle-ui/pull/309>
