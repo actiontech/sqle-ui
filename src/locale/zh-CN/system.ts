@@ -133,6 +133,7 @@ export default {
 
     test: '测试',
     receiveWechat: '接收者UserID',
+    receiveWechatTips: '企业微信成员账号',
     testing: '正在向{{id}}发送测试消息...',
     testSuccess: '测试消息发送成功',
   },
