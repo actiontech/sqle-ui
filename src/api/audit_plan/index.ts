@@ -30,6 +30,7 @@ import {
   IGetAuditPlanReportsV1Return,
   IGetAuditPlanReportV1Params,
   IGetAuditPlanReportV1Return,
+  IExportAuditPlanReportV1Params,
   IGetAuditPlanReportsSQLsV1Params,
   IGetAuditPlanReportsSQLsV1Return,
   IGetTaskAnalysisDataParams,
@@ -243,6 +244,27 @@ class AuditPlanService extends ServiceBase {
 
     return this.get<IGetAuditPlanReportV1Return>(
       `/v1/projects/${project_name}/audit_plans/${audit_plan_name}/reports/${audit_plan_report_id}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public exportAuditPlanReportV1(
+    params: IExportAuditPlanReportV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    const audit_plan_name = paramsData.audit_plan_name;
+    delete paramsData.audit_plan_name;
+
+    const audit_plan_report_id = paramsData.audit_plan_report_id;
+    delete paramsData.audit_plan_report_id;
+
+    return this.get<any>(
+      `/v1/projects/${project_name}/audit_plans/${audit_plan_name}/reports/${audit_plan_report_id}/export`,
       paramsData,
       options
     );

@@ -88,6 +88,7 @@ describe('Order/List/OrderListFilterForm', () => {
       filter_create_user_name: undefined,
       filter_status: undefined,
       filter_task_instance_name: undefined,
+      fuzzy_search_workflow_desc: undefined,
     });
 
     const assigneeInput = getBySelector(
@@ -121,6 +122,9 @@ describe('Order/List/OrderListFilterForm', () => {
     fireEvent.input(screen.getByLabelText('order.order.id'), {
       target: { value: '1234' },
     });
+    fireEvent.input(screen.getByLabelText('order.order.desc'), {
+      target: { value: 'desc' },
+    });
     expect(result.current[0].getFieldsValue()).toEqual({
       filter_current_step_assignee_user_name: 'user_name1',
       filter_create_user_name: undefined,
@@ -131,6 +135,7 @@ describe('Order/List/OrderListFilterForm', () => {
       filter_order_createTime: undefined,
       filter_order_executeTime: undefined,
       filter_workflow_id: '1234',
+      fuzzy_search_workflow_desc: 'desc',
     });
 
     expect(screen.getByText('common.collapse')).toBeInTheDocument();
@@ -155,6 +160,7 @@ describe('Order/List/OrderListFilterForm', () => {
         filter_subject: undefined,
         filter_order_createTime: undefined,
         filter_order_executeTime: undefined,
+        fuzzy_search_workflow_desc: undefined,
       })
     ).toBeTruthy();
     expect(submitMock).toBeCalledTimes(1);

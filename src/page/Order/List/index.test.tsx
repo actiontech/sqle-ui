@@ -233,7 +233,11 @@ describe('Order/List', () => {
       screen.queryByText('order.exportOrder.exportSuccessTips')
     ).not.toBeInTheDocument();
 
+    fireEvent.change(screen.getByLabelText('order.order.desc'), {
+      target: { value: 'desc' },
+    });
     selectOptionByIndex('order.order.createUser', 'user_name1');
+
     await act(async () => jest.advanceTimersByTime(3000));
 
     fireEvent.click(screen.getByText('order.exportOrder.buttonText'));
@@ -242,6 +246,7 @@ describe('Order/List', () => {
       {
         project_name: projectName,
         filter_create_user_name: 'user_name1',
+        fuzzy_search_workflow_desc: 'desc',
       },
       {
         responseType: 'blob',
