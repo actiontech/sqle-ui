@@ -167,13 +167,13 @@ const DataSourceForm: React.FC<IDataSourceFormProps> = (props) => {
         name="name"
         validateFirst={true}
         rules={[
+          ...nameRule(119),
           {
             required: true,
             message: t('common.form.rule.require', {
               name: t('dataSource.dataSourceForm.name'),
             }),
           },
-          ...nameRule(),
         ]}
       >
         <Input

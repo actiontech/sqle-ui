@@ -19,7 +19,7 @@ const UserGroupForm: React.FC<UserGroupFormProps> = (props) => {
           {
             required: true,
           },
-          ...nameRule(),
+          ...nameRule(119),
         ]}
       >
         <Input

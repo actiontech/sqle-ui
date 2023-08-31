@@ -23,7 +23,7 @@ const UserForm: React.FC<IUserFormProps> = (props) => {
     if (props.isUpdate) {
       return baseRules;
     }
-    return [...baseRules, ...nameRule()];
+    return [...baseRules, ...nameRule(119)];
   };
 
   return (

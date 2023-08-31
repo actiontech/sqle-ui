@@ -2,13 +2,13 @@ import { Rule } from 'rc-field-form/lib/interface';
 import { t } from '../locale';
 import { FormValidatorRule } from '../types/common.type';
 
-export const nameRule = (): Rule[] => {
+export const nameRule = (max = 59): Rule[] => {
   return [
     {
       validator: nameRuleValidator(),
     },
     {
-      max: 59,
+      max,
     },
   ];
 };
