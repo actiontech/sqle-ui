@@ -225,6 +225,7 @@ const OrderList = () => {
       filter_status,
       filter_subject,
       filter_task_instance_name,
+      fuzzy_search_workflow_desc,
     } = filterForm.getFieldsValue();
 
     const params: IExportWorkflowV1Params = {
@@ -236,6 +237,7 @@ const OrderList = () => {
         | undefined,
       filter_subject,
       filter_task_instance_name,
+      fuzzy_search_workflow_desc,
       filter_create_time_from: translateTimeForRequest(
         filter_order_createTime?.[0]
       ),

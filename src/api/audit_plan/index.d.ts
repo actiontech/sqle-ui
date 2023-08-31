@@ -128,6 +128,14 @@ export interface IGetAuditPlanReportV1Params {
 
 export interface IGetAuditPlanReportV1Return extends IGetAuditPlanReportResV1 {}
 
+export interface IExportAuditPlanReportV1Params {
+  project_name: string;
+
+  audit_plan_name: string;
+
+  audit_plan_report_id: string;
+}
+
 export interface IGetAuditPlanReportsSQLsV1Params {
   project_name: string;
 

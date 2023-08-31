@@ -45,6 +45,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
         filter_order_createTime: undefined,
         filter_subject: undefined,
         filter_order_executeTime: undefined,
+        fuzzy_search_workflow_desc: undefined,
       });
       props.submit();
     }
@@ -140,6 +141,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
             />
           </Form.Item>
         </Col>
+
         <Col xs={24} xl={16} xxl={12} hidden={currentCollapse}>
           <Form.Item
             name="filter_order_createTime"
@@ -149,6 +151,19 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
             <DatePicker.RangePicker
               disabledDate={computeDisabledDate}
               showTime
+            />
+          </Form.Item>
+        </Col>
+
+        <Col {...FilterFormColLayout} hidden={currentCollapse}>
+          <Form.Item
+            name="fuzzy_search_workflow_desc"
+            label={t('order.order.desc')}
+          >
+            <Input
+              placeholder={t('common.form.placeholder.searchInput', {
+                name: t('order.order.desc'),
+              })}
             />
           </Form.Item>
         </Col>
@@ -170,7 +185,7 @@ const OrderListFilterForm: React.FC<OrderListFilterFormProps> = (props) => {
           {...filterFormButtonLayoutFactory(
             currentCollapse ? 12 : 12,
             currentCollapse ? 8 : 0,
-            currentCollapse ? 18 : 6
+            currentCollapse ? 18 : 0
           )}
           className="text-align-right"
         >

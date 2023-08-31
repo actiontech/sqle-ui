@@ -108,6 +108,14 @@ export enum CustomRuleResV1LevelEnum {
   'error' = 'error'
 }
 
+export enum DirectAuditFileReqV1SqlTypeEnum {
+  'sql' = 'sql',
+
+  'mybatis' = 'mybatis',
+
+  'UNKNOWN' = ''
+}
+
 export enum DirectAuditReqV1SqlTypeEnum {
   'sql' = 'sql',
 
