@@ -34,7 +34,7 @@ const BaseInfoForm: React.FC<RuleTemplateBaseInfoFormProps> = (props) => {
     ];
 
     if (!isUpdate) {
-      rule.push(...nameRule());
+      rule.push(...nameRule(119));
     }
     return rule;
   }, [isUpdate]);

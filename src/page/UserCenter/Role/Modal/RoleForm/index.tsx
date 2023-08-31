@@ -22,7 +22,7 @@ const RoleForm: React.FC<IRoleFormProps> = (props) => {
               name: t('role.roleForm.roleName'),
             }),
           },
-          ...nameRule(),
+          ...nameRule(119),
         ]}
       >
         <Input
