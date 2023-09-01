@@ -1,5 +1,5 @@
-import { useRequest } from 'ahooks';
-import { Card, Table, Typography } from 'antd';
+import { useBoolean, useRequest } from 'ahooks';
+import { Button, Card, Table, Typography, message } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import audit_plan from '../../../../../api/audit_plan';
@@ -8,6 +8,7 @@ import { formatTime } from '../../../../../utils/Common';
 import { useCurrentProjectName } from '../../../../ProjectManage/ProjectDetail';
 import { AuditPlanReportUrlParams } from './index.type';
 import { AuditPlanReportTableHeader } from './tableHeader';
+import { ResponseCode } from '../../../../../data/common';
 
 const AuditPlanReport: React.FC = () => {
   const { t } = useTranslation();
@@ -53,6 +54,33 @@ const AuditPlanReport: React.FC = () => {
     );
   };
 
+  const [
+    exportButtonDisabled,
+    { setFalse: finishExport, setTrue: startExport },
+  ] = useBoolean(false);
+  const exportReport = () => {
+    startExport();
+    const hideLoading = message.loading(t('auditPlan.report.export.exporting'));
+    audit_plan
+      .exportAuditPlanReportV1(
+        {
+          project_name: projectName,
+          audit_plan_name: urlParams.auditPlanName ?? '',
+          audit_plan_report_id: urlParams.reportId ?? '',
+        },
+        { responseType: 'blob' }
+      )
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          message.success(t('auditPlan.report.export.exportSuccessTips'));
+        }
+      })
+      .finally(() => {
+        hideLoading();
+        finishExport();
+      });
+  };
+
   return (
     <Card
       title={
@@ -71,6 +99,15 @@ const AuditPlanReport: React.FC = () => {
             })}
           </Typography.Text>
         </>
+      }
+      extra={
+        <Button
+          type="primary"
+          onClick={exportReport}
+          disabled={exportButtonDisabled}
+        >
+          {t('auditPlan.report.export.buttonText')}
+        </Button>
       }
     >
       <Table
