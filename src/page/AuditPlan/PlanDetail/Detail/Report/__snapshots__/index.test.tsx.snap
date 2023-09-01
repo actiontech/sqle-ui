@@ -24,6 +24,18 @@ exports[`AuditPlanReport should match snapshot 1`] = `
             auditPlan.report.passRage
           </span>
         </div>
+        <div
+          class="ant-card-extra"
+        >
+          <button
+            class="ant-btn ant-btn-primary"
+            type="button"
+          >
+            <span>
+              auditPlan.report.export.buttonText
+            </span>
+          </button>
+        </div>
       </div>
     </div>
     <div
@@ -196,6 +208,18 @@ exports[`AuditPlanReport should match snapshot 2`] = `
              
             auditPlan.report.passRage
           </span>
+        </div>
+        <div
+          class="ant-card-extra"
+        >
+          <button
+            class="ant-btn ant-btn-primary"
+            type="button"
+          >
+            <span>
+              auditPlan.report.export.buttonText
+            </span>
+          </button>
         </div>
       </div>
     </div>

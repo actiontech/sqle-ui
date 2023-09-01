@@ -106,6 +106,12 @@ export default {
       result: '审核结果',
       analyze: '分析',
     },
+
+    export: {
+      buttonText: '下载审核报告',
+      exporting: '正在下载审核报告',
+      exportSuccessTips: '审核报告下载成功',
+    },
   },
 
   subscribeNotice: {

@@ -10,6 +10,7 @@ import {
   CreateAuditWhitelistReqV1MatchTypeEnum,
   CreateCustomRuleReqV1LevelEnum,
   CustomRuleResV1LevelEnum,
+  DirectAuditFileReqV1SqlTypeEnum,
   DirectAuditReqV1SqlTypeEnum,
   GetWorkflowTasksItemV1StatusEnum,
   InstanceTaskResV1LastSyncStatusEnum,
@@ -37,7 +38,7 @@ import {
   WorkflowRecordResV2StatusEnum,
   WorkflowResV2ModeEnum,
   WorkflowStepResV2StateEnum,
-  WorkflowStepResV2TypeEnum,
+  WorkflowStepResV2TypeEnum
 } from './common.enum';
 
 export interface IBaseRes {
@@ -544,6 +545,20 @@ export interface IDingTalkConfigurationV1 {
   is_enable_ding_talk_notify?: boolean;
 }
 
+export interface IDirectAuditFileReqV1 {
+  file_contents?: string[];
+
+  instance_name?: string;
+
+  instance_type?: string;
+
+  project_name?: string;
+
+  schema_name?: string;
+
+  sql_type?: DirectAuditFileReqV1SqlTypeEnum;
+}
+
 export interface IDirectAuditReqV1 {
   instance_name?: string;
 
@@ -778,6 +793,14 @@ export interface IGetDriversResV1 {
   code?: number;
 
   data?: IDriversResV1;
+
+  message?: string;
+}
+
+export interface IGetFeishuAuditConfigurationResV1 {
+  code?: number;
+
+  data?: IFeishuConfigurationV1;
 
   message?: string;
 }

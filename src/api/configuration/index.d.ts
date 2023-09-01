@@ -8,6 +8,7 @@ import {
   IUpdateFeishuConfigurationReqV1,
   ITestFeishuConfigurationReqV1,
   ITestFeishuConfigResV1,
+  IGetFeishuAuditConfigurationResV1,
   IGetLDAPConfigurationResV1,
   ILDAPConfigurationReqV1,
   IGetLicenseResV1,
@@ -58,6 +59,17 @@ export interface ITestFeishuConfigV1Params
   extends ITestFeishuConfigurationReqV1 {}
 
 export interface ITestFeishuConfigV1Return extends ITestFeishuConfigResV1 {}
+
+export interface IGetFeishuAuditConfigurationV1Return
+  extends IGetFeishuAuditConfigurationResV1 {}
+
+export interface IUpdateFeishuAuditConfigurationV1Params
+  extends IUpdateFeishuConfigurationReqV1 {}
+
+export interface IUpdateFeishuAuditConfigurationV1Return extends IBaseRes {}
+
+export interface ITestFeishuAuditConfigV1Return
+  extends ITestFeishuConfigResV1 {}
 
 export interface IGetLDAPConfigurationV1Return
   extends IGetLDAPConfigurationResV1 {}

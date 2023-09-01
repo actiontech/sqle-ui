@@ -45,6 +45,12 @@ describe('AuditPlanReport', () => {
     return spy;
   };
 
+  const mockExportReport = () => {
+    const spy = jest.spyOn(audit_plan, 'exportAuditPlanReportV1');
+    spy.mockImplementation(() => resolveThreeSecond({}));
+    return spy;
+  };
+
   test('should match snapshot', async () => {
     const getReportSpy = mockGetReport();
     const getReportInfoSpy = mockGetReportInfo();
@@ -89,5 +95,43 @@ describe('AuditPlanReport', () => {
     render(<AuditPlanReport />);
     await act(async () => jest.advanceTimersByTime(3000));
     expect(getAllRulesSpy).toBeCalledTimes(AuditReport.length);
+  });
+
+  test('should download audit report when clicked export button', async () => {
+    mockGetReport();
+    mockGetReportInfo();
+    const exportSpy = mockExportReport();
+
+    render(<AuditPlanReport />);
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    expect(exportSpy).toBeCalledTimes(0);
+
+    fireEvent.click(screen.getByText('auditPlan.report.export.buttonText'));
+
+    expect(exportSpy).toBeCalledTimes(1);
+    expect(exportSpy).toBeCalledWith(
+      {
+        project_name: projectName,
+        audit_plan_name: 'auditPlanName1',
+        audit_plan_report_id: '32',
+      },
+      { responseType: 'blob' }
+    );
+
+    expect(
+      screen.getByText('auditPlan.report.export.buttonText').closest('button')
+    ).toBeDisabled();
+    expect(
+      screen.getByText('auditPlan.report.export.exporting')
+    ).toBeInTheDocument();
+
+    await act(async () => jest.advanceTimersByTime(3000));
+    expect(
+      screen.queryByText('auditPlan.report.export.exporting')
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByText('auditPlan.report.export.buttonText').closest('button')
+    ).not.toBeDisabled();
   });
 });

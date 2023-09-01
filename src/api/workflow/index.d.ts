@@ -47,6 +47,8 @@ export interface IGetWorkflowsV1Params {
 
   filter_workflow_id?: string;
 
+  fuzzy_search_workflow_desc?: string;
+
   filter_create_time_from?: string;
 
   filter_create_time_to?: string;
@@ -94,6 +96,8 @@ export interface IBatchCompleteWorkflowsV1Return extends IBaseRes {}
 
 export interface IExportWorkflowV1Params {
   filter_subject?: string;
+
+  fuzzy_search_workflow_desc?: string;
 
   filter_create_time_from?: string;
 
