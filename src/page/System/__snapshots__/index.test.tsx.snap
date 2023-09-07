@@ -29,7 +29,13 @@ exports[`System should match snapshot 1`] = `
               "label": "system.tabPaneTitle.pushNotification",
             },
             Object {
-              "children": <DingTalkSetting />,
+              "children": <Space
+                className="full-width-element"
+                direction="vertical"
+              >
+                <DingTalkSetting />
+                <LarkAuditSetting />
+              </Space>,
               "key": "processConnection",
               "label": "system.tabPaneTitle.processConnection",
             },

@@ -16,6 +16,7 @@ import DingTalkSetting from './DingTalkSetting';
 import LarkSetting from './LarkSetting';
 import PersonalizeSetting from './PersonalizeSetting';
 import WebHook from './WebhookSetting/Webhook';
+import LarkAuditSetting from './LarkAuditSetting';
 
 const System = () => {
   const { t } = useTranslation();
@@ -37,7 +38,12 @@ const System = () => {
     {
       label: t('system.tabPaneTitle.processConnection'),
       key: 'processConnection',
-      children: <DingTalkSetting />,
+      children: (
+        <Space direction="vertical" className="full-width-element">
+          <DingTalkSetting />
+          <LarkAuditSetting />
+        </Space>
+      ),
     },
     {
       label: t('system.tabPaneTitle.loginConnection'),
