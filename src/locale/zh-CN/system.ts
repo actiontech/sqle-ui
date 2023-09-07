@@ -23,6 +23,7 @@ export default {
     lark: '飞书配置',
     personalize: '个性化设置',
     webhook: 'Webhook配置',
+    larkAudit: '飞书审批',
   },
 
   personalize: {
@@ -185,5 +186,16 @@ export default {
 
     loginButtonText: '登录按钮文字',
     loginButtonTextTips: 'login页面oauth登录按钮文字',
+  },
+
+  larkAudit: {
+    enable: '启用飞书审批',
+    test: '测试',
+    titleTips: '审批信息将根据审核人的手机号发送到相应的飞书账号',
+    testSuccess: '已成功将审批消息推送至指定账号',
+    testing: '正在向飞书推送消息...',
+    receiveType: '接收方式',
+    email: '邮箱',
+    phone: '手机号',
   },
 };

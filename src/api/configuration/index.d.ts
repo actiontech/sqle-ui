@@ -68,6 +68,9 @@ export interface IUpdateFeishuAuditConfigurationV1Params
 
 export interface IUpdateFeishuAuditConfigurationV1Return extends IBaseRes {}
 
+export interface ITestFeishuAuditConfigV1Params
+  extends ITestFeishuConfigurationReqV1 {}
+
 export interface ITestFeishuAuditConfigV1Return
   extends ITestFeishuConfigResV1 {}
 
