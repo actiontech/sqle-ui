@@ -27,6 +27,7 @@ import { useMemo, useRef, useState } from 'react';
 import { TestFeishuConfigurationReqV1AccountTypeEnum } from '../../../api/common.enum';
 import EmptyBox from '../../../components/EmptyBox';
 import { phoneRule } from '../../../utils/FormRule';
+import EnterpriseFeatureDisplay from '../../../components/EnterpriseFeatureDisplay/EnterpriseFeatureDisplay';
 
 type FormFields = {
   enabled: boolean;
@@ -191,173 +192,188 @@ const LarkAuditSetting: React.FC = () => {
         </>
       }
     >
-      <section hidden={modifyFlag}>
-        {renderReadOnlyModeConfig({
-          data: larkAuditInfo ?? {},
-          columns: readonlyColumnsConfig,
-          extra: (
-            <Space>
-              <Popover
-                trigger="click"
-                open={testPopoverVisible}
-                onOpenChange={(visible) => {
-                  if (!enabled) {
-                    return;
-                  }
-                  if (!visible) {
-                    testForm.resetFields();
-                    setReceiveType(
-                      TestFeishuConfigurationReqV1AccountTypeEnum.email
-                    );
-                  }
-                  toggleTestPopoverVisible(visible);
-                }}
-                content={
-                  <Space direction="vertical" className="full-width-element">
-                    <Form form={testForm}>
-                      <Form.Item
-                        name="receiveType"
-                        label={t('system.larkAudit.receiveType')}
-                        initialValue={
+      <EnterpriseFeatureDisplay
+        clearCEWrapperPadding={true}
+        featureName={t('system.title.larkAudit')}
+        eeFeatureDescription={t('system.larkAudit.ceTips')}
+      >
+        <>
+          <section hidden={modifyFlag}>
+            {renderReadOnlyModeConfig({
+              data: larkAuditInfo ?? {},
+              columns: readonlyColumnsConfig,
+              extra: (
+                <Space>
+                  <Popover
+                    trigger="click"
+                    open={testPopoverVisible}
+                    onOpenChange={(visible) => {
+                      if (!enabled) {
+                        return;
+                      }
+                      if (!visible) {
+                        testForm.resetFields();
+                        setReceiveType(
                           TestFeishuConfigurationReqV1AccountTypeEnum.email
-                        }
-                        style={{ marginBottom: 6 }}
+                        );
+                      }
+                      toggleTestPopoverVisible(visible);
+                    }}
+                    content={
+                      <Space
+                        direction="vertical"
+                        className="full-width-element"
                       >
-                        <Radio.Group onChange={handleChangeReceiveType}>
-                          <Radio
-                            value={
+                        <Form form={testForm}>
+                          <Form.Item
+                            name="receiveType"
+                            label={t('system.larkAudit.receiveType')}
+                            initialValue={
                               TestFeishuConfigurationReqV1AccountTypeEnum.email
                             }
+                            style={{ marginBottom: 6 }}
                           >
-                            {t('system.larkAudit.email')}
-                          </Radio>
-                          <Radio
-                            value={
+                            <Radio.Group onChange={handleChangeReceiveType}>
+                              <Radio
+                                value={
+                                  TestFeishuConfigurationReqV1AccountTypeEnum.email
+                                }
+                              >
+                                {t('system.larkAudit.email')}
+                              </Radio>
+                              <Radio
+                                value={
+                                  TestFeishuConfigurationReqV1AccountTypeEnum.phone
+                                }
+                              >
+                                {t('system.larkAudit.phone')}
+                              </Radio>
+                            </Radio.Group>
+                          </Form.Item>
+                          <EmptyBox
+                            if={
+                              receiveType ===
                               TestFeishuConfigurationReqV1AccountTypeEnum.phone
                             }
+                            defaultNode={
+                              <Form.Item
+                                style={{ marginBottom: 0 }}
+                                name="receiveEmail"
+                                label={t('system.larkAudit.email')}
+                                rules={[
+                                  {
+                                    required: true,
+                                  },
+                                  {
+                                    type: 'email',
+                                  },
+                                ]}
+                              >
+                                <Input />
+                              </Form.Item>
+                            }
                           >
-                            {t('system.larkAudit.phone')}
-                          </Radio>
-                        </Radio.Group>
-                      </Form.Item>
-                      <EmptyBox
-                        if={
-                          receiveType ===
-                          TestFeishuConfigurationReqV1AccountTypeEnum.phone
-                        }
-                        defaultNode={
-                          <Form.Item
-                            style={{ marginBottom: 0 }}
-                            name="receiveEmail"
-                            label={t('system.larkAudit.email')}
-                            rules={[
-                              {
-                                required: true,
-                              },
-                              {
-                                type: 'email',
-                              },
-                            ]}
-                          >
-                            <Input />
-                          </Form.Item>
-                        }
-                      >
-                        <Form.Item
-                          style={{ marginBottom: 0 }}
-                          name="receivePhone"
-                          label={t('system.larkAudit.phone')}
-                          rules={[
-                            {
-                              required: true,
-                            },
-                            ...phoneRule(),
-                          ]}
-                        >
-                          <Input />
-                        </Form.Item>
-                      </EmptyBox>
-                    </Form>
-                    <Row>
-                      <Col span={24} style={{ textAlign: 'right' }}>
-                        <Button
-                          type="primary"
-                          size="small"
-                          onClick={testLarkAuditConfiguration}
-                        >
-                          {t('common.ok')}
-                        </Button>
-                      </Col>
-                    </Row>
-                  </Space>
-                }
+                            <Form.Item
+                              style={{ marginBottom: 0 }}
+                              name="receivePhone"
+                              label={t('system.larkAudit.phone')}
+                              rules={[
+                                {
+                                  required: true,
+                                },
+                                ...phoneRule(),
+                              ]}
+                            >
+                              <Input />
+                            </Form.Item>
+                          </EmptyBox>
+                        </Form>
+                        <Row>
+                          <Col span={24} style={{ textAlign: 'right' }}>
+                            <Button
+                              type="primary"
+                              size="small"
+                              onClick={testLarkAuditConfiguration}
+                            >
+                              {t('common.ok')}
+                            </Button>
+                          </Col>
+                        </Row>
+                      </Space>
+                    }
+                  >
+                    <Button
+                      htmlType="submit"
+                      type="primary"
+                      loading={submitLoading}
+                      disabled={!enabled}
+                    >
+                      {t('system.larkAudit.test')}
+                    </Button>
+                  </Popover>
+                  <Button type="primary" onClick={handelClickModify}>
+                    {t('common.modify')}
+                  </Button>
+                </Space>
+              ),
+            })}
+          </section>
+          {renderEditingModeConfig({
+            switchField: (
+              <Form.Item
+                label={t('system.larkAudit.enable')}
+                name="enabled"
+                valuePropName="checked"
               >
-                <Button
-                  htmlType="submit"
-                  type="primary"
-                  loading={submitLoading}
-                  disabled={!enabled}
+                <Switch />
+              </Form.Item>
+            ),
+            configField: (
+              <>
+                <Form.Item
+                  label="APP ID"
+                  name="appKey"
+                  rules={[{ required: true }]}
                 >
-                  {t('system.larkAudit.test')}
-                </Button>
-              </Popover>
-              <Button type="primary" onClick={handelClickModify}>
-                {t('common.modify')}
-              </Button>
-            </Space>
-          ),
-        })}
-      </section>
-      {renderEditingModeConfig({
-        switchField: (
-          <Form.Item
-            label={t('system.larkAudit.enable')}
-            name="enabled"
-            valuePropName="checked"
-          >
-            <Switch />
-          </Form.Item>
-        ),
-        configField: (
-          <>
-            <Form.Item
-              label="APP ID"
-              name="appKey"
-              rules={[{ required: true }]}
-            >
-              <Input
-                placeholder={t('common.form.placeholder.input', {
-                  name: 'AppKey',
-                })}
-              />
-            </Form.Item>
-            <Form.Item
-              label="App Secret"
-              name="appSecret"
-              rules={[{ required: true }]}
-            >
-              <Input.Password
-                placeholder={t('common.form.placeholder.input', {
-                  name: 'AppSecret',
-                })}
-              />
-            </Form.Item>
-          </>
-        ),
-        submitButtonField: (
-          <Form.Item label=" " colon={false}>
-            <Space>
-              <Button htmlType="submit" type="primary" loading={submitLoading}>
-                {t('common.submit')}
-              </Button>
-              <Button onClick={handelClickCancel} disabled={submitLoading}>
-                {t('common.cancel')}
-              </Button>
-            </Space>
-          </Form.Item>
-        ),
-        submit: submitLarkAuditConfig,
-      })}
+                  <Input
+                    placeholder={t('common.form.placeholder.input', {
+                      name: 'AppKey',
+                    })}
+                  />
+                </Form.Item>
+                <Form.Item
+                  label="App Secret"
+                  name="appSecret"
+                  rules={[{ required: true }]}
+                >
+                  <Input.Password
+                    placeholder={t('common.form.placeholder.input', {
+                      name: 'AppSecret',
+                    })}
+                  />
+                </Form.Item>
+              </>
+            ),
+            submitButtonField: (
+              <Form.Item label=" " colon={false}>
+                <Space>
+                  <Button
+                    htmlType="submit"
+                    type="primary"
+                    loading={submitLoading}
+                  >
+                    {t('common.submit')}
+                  </Button>
+                  <Button onClick={handelClickCancel} disabled={submitLoading}>
+                    {t('common.cancel')}
+                  </Button>
+                </Space>
+              </Form.Item>
+            ),
+            submit: submitLarkAuditConfig,
+          })}
+        </>
+      </EnterpriseFeatureDisplay>
     </Card>
   );
 };
