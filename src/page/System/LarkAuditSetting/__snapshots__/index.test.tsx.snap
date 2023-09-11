@@ -52,6 +52,113 @@ exports[`test System/LarkAuditSetting should disabled edit lark audit configurat
     <div
       class="ant-card-body"
     >
+      <section
+        class=""
+      >
+        <div
+          class="ant-card"
+        >
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-space ant-space-vertical"
+            >
+              <div
+                class="ant-space-item"
+                style="margin-bottom: 26px;"
+              >
+                <article>
+                  <h4
+                    class="ant-typography"
+                  >
+                    common.enterpriseFeatureDisplay.featureDescription
+                  </h4>
+                  <span
+                    class="ant-typography whitespace-pre-line"
+                  >
+                    system.larkAudit.ceTips
+                  </span>
+                </article>
+              </div>
+              <div
+                class="ant-space-item"
+              >
+                <article>
+                  <div
+                    class="ant-space ant-space-vertical"
+                  >
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <h4
+                        class="ant-typography"
+                      >
+                        common.enterpriseFeatureDisplay.additionalAttention
+                      </h4>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <span
+                        class="ant-typography"
+                      >
+                        common.enterpriseFeatureDisplay.businessLink
+                      </span>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <ul>
+                        <li>
+                          <a
+                            href="https://actiontech.github.io/sqle-docs/docs/support/commercial-support"
+                          >
+                            https://actiontech.github.io/sqle-docs/docs/support/commercial-support
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.actionsky.com/"
+                          >
+                            https://www.actionsky.com/
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <span
+                        class="ant-typography"
+                      >
+                        common.enterpriseFeatureDisplay.compareLink
+                      </span>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                    >
+                      <ul>
+                        <li>
+                          <a
+                            href="https://actiontech.github.io/sqle-docs/docs/support/compare"
+                          >
+                            https://actiontech.github.io/sqle-docs/docs/support/compare
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section>
         <div
           class="ant-descriptions"
@@ -308,6 +415,113 @@ exports[`test System/LarkAuditSetting should disabled edit lark audit configurat
     <div
       class="ant-card-body"
     >
+      <section
+        class=""
+      >
+        <div
+          class="ant-card"
+        >
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-space ant-space-vertical"
+            >
+              <div
+                class="ant-space-item"
+                style="margin-bottom: 26px;"
+              >
+                <article>
+                  <h4
+                    class="ant-typography"
+                  >
+                    common.enterpriseFeatureDisplay.featureDescription
+                  </h4>
+                  <span
+                    class="ant-typography whitespace-pre-line"
+                  >
+                    system.larkAudit.ceTips
+                  </span>
+                </article>
+              </div>
+              <div
+                class="ant-space-item"
+              >
+                <article>
+                  <div
+                    class="ant-space ant-space-vertical"
+                  >
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <h4
+                        class="ant-typography"
+                      >
+                        common.enterpriseFeatureDisplay.additionalAttention
+                      </h4>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <span
+                        class="ant-typography"
+                      >
+                        common.enterpriseFeatureDisplay.businessLink
+                      </span>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <ul>
+                        <li>
+                          <a
+                            href="https://actiontech.github.io/sqle-docs/docs/support/commercial-support"
+                          >
+                            https://actiontech.github.io/sqle-docs/docs/support/commercial-support
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.actionsky.com/"
+                          >
+                            https://www.actionsky.com/
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <span
+                        class="ant-typography"
+                      >
+                        common.enterpriseFeatureDisplay.compareLink
+                      </span>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                    >
+                      <ul>
+                        <li>
+                          <a
+                            href="https://actiontech.github.io/sqle-docs/docs/support/compare"
+                          >
+                            https://actiontech.github.io/sqle-docs/docs/support/compare
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section
         hidden=""
       >
@@ -566,6 +780,113 @@ exports[`test System/LarkAuditSetting should disabled edit lark audit configurat
     <div
       class="ant-card-body"
     >
+      <section
+        class=""
+      >
+        <div
+          class="ant-card"
+        >
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-space ant-space-vertical"
+            >
+              <div
+                class="ant-space-item"
+                style="margin-bottom: 26px;"
+              >
+                <article>
+                  <h4
+                    class="ant-typography"
+                  >
+                    common.enterpriseFeatureDisplay.featureDescription
+                  </h4>
+                  <span
+                    class="ant-typography whitespace-pre-line"
+                  >
+                    system.larkAudit.ceTips
+                  </span>
+                </article>
+              </div>
+              <div
+                class="ant-space-item"
+              >
+                <article>
+                  <div
+                    class="ant-space ant-space-vertical"
+                  >
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <h4
+                        class="ant-typography"
+                      >
+                        common.enterpriseFeatureDisplay.additionalAttention
+                      </h4>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <span
+                        class="ant-typography"
+                      >
+                        common.enterpriseFeatureDisplay.businessLink
+                      </span>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <ul>
+                        <li>
+                          <a
+                            href="https://actiontech.github.io/sqle-docs/docs/support/commercial-support"
+                          >
+                            https://actiontech.github.io/sqle-docs/docs/support/commercial-support
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.actionsky.com/"
+                          >
+                            https://www.actionsky.com/
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <span
+                        class="ant-typography"
+                      >
+                        common.enterpriseFeatureDisplay.compareLink
+                      </span>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                    >
+                      <ul>
+                        <li>
+                          <a
+                            href="https://actiontech.github.io/sqle-docs/docs/support/compare"
+                          >
+                            https://actiontech.github.io/sqle-docs/docs/support/compare
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section
         hidden=""
       >
@@ -926,6 +1247,113 @@ exports[`test System/LarkAuditSetting should match snapshot 1`] = `
     <div
       class="ant-card-body"
     >
+      <section
+        class=""
+      >
+        <div
+          class="ant-card"
+        >
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-space ant-space-vertical"
+            >
+              <div
+                class="ant-space-item"
+                style="margin-bottom: 26px;"
+              >
+                <article>
+                  <h4
+                    class="ant-typography"
+                  >
+                    common.enterpriseFeatureDisplay.featureDescription
+                  </h4>
+                  <span
+                    class="ant-typography whitespace-pre-line"
+                  >
+                    system.larkAudit.ceTips
+                  </span>
+                </article>
+              </div>
+              <div
+                class="ant-space-item"
+              >
+                <article>
+                  <div
+                    class="ant-space ant-space-vertical"
+                  >
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <h4
+                        class="ant-typography"
+                      >
+                        common.enterpriseFeatureDisplay.additionalAttention
+                      </h4>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <span
+                        class="ant-typography"
+                      >
+                        common.enterpriseFeatureDisplay.businessLink
+                      </span>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <ul>
+                        <li>
+                          <a
+                            href="https://actiontech.github.io/sqle-docs/docs/support/commercial-support"
+                          >
+                            https://actiontech.github.io/sqle-docs/docs/support/commercial-support
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.actionsky.com/"
+                          >
+                            https://www.actionsky.com/
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <span
+                        class="ant-typography"
+                      >
+                        common.enterpriseFeatureDisplay.compareLink
+                      </span>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                    >
+                      <ul>
+                        <li>
+                          <a
+                            href="https://actiontech.github.io/sqle-docs/docs/support/compare"
+                          >
+                            https://actiontech.github.io/sqle-docs/docs/support/compare
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section>
         <div
           class="ant-descriptions"
@@ -1182,6 +1610,113 @@ exports[`test System/LarkAuditSetting should match snapshot 2`] = `
     <div
       class="ant-card-body"
     >
+      <section
+        class=""
+      >
+        <div
+          class="ant-card"
+        >
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-space ant-space-vertical"
+            >
+              <div
+                class="ant-space-item"
+                style="margin-bottom: 26px;"
+              >
+                <article>
+                  <h4
+                    class="ant-typography"
+                  >
+                    common.enterpriseFeatureDisplay.featureDescription
+                  </h4>
+                  <span
+                    class="ant-typography whitespace-pre-line"
+                  >
+                    system.larkAudit.ceTips
+                  </span>
+                </article>
+              </div>
+              <div
+                class="ant-space-item"
+              >
+                <article>
+                  <div
+                    class="ant-space ant-space-vertical"
+                  >
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <h4
+                        class="ant-typography"
+                      >
+                        common.enterpriseFeatureDisplay.additionalAttention
+                      </h4>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <span
+                        class="ant-typography"
+                      >
+                        common.enterpriseFeatureDisplay.businessLink
+                      </span>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <ul>
+                        <li>
+                          <a
+                            href="https://actiontech.github.io/sqle-docs/docs/support/commercial-support"
+                          >
+                            https://actiontech.github.io/sqle-docs/docs/support/commercial-support
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.actionsky.com/"
+                          >
+                            https://www.actionsky.com/
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <span
+                        class="ant-typography"
+                      >
+                        common.enterpriseFeatureDisplay.compareLink
+                      </span>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                    >
+                      <ul>
+                        <li>
+                          <a
+                            href="https://actiontech.github.io/sqle-docs/docs/support/compare"
+                          >
+                            https://actiontech.github.io/sqle-docs/docs/support/compare
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section>
         <div
           class="ant-descriptions"
@@ -1567,6 +2102,113 @@ exports[`test System/LarkAuditSetting should match snapshot 3`] = `
     <div
       class="ant-card-body"
     >
+      <section
+        class=""
+      >
+        <div
+          class="ant-card"
+        >
+          <div
+            class="ant-card-body"
+          >
+            <div
+              class="ant-space ant-space-vertical"
+            >
+              <div
+                class="ant-space-item"
+                style="margin-bottom: 26px;"
+              >
+                <article>
+                  <h4
+                    class="ant-typography"
+                  >
+                    common.enterpriseFeatureDisplay.featureDescription
+                  </h4>
+                  <span
+                    class="ant-typography whitespace-pre-line"
+                  >
+                    system.larkAudit.ceTips
+                  </span>
+                </article>
+              </div>
+              <div
+                class="ant-space-item"
+              >
+                <article>
+                  <div
+                    class="ant-space ant-space-vertical"
+                  >
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <h4
+                        class="ant-typography"
+                      >
+                        common.enterpriseFeatureDisplay.additionalAttention
+                      </h4>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <span
+                        class="ant-typography"
+                      >
+                        common.enterpriseFeatureDisplay.businessLink
+                      </span>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <ul>
+                        <li>
+                          <a
+                            href="https://actiontech.github.io/sqle-docs/docs/support/commercial-support"
+                          >
+                            https://actiontech.github.io/sqle-docs/docs/support/commercial-support
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="https://www.actionsky.com/"
+                          >
+                            https://www.actionsky.com/
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                      style="margin-bottom: 8px;"
+                    >
+                      <span
+                        class="ant-typography"
+                      >
+                        common.enterpriseFeatureDisplay.compareLink
+                      </span>
+                    </div>
+                    <div
+                      class="ant-space-item"
+                    >
+                      <ul>
+                        <li>
+                          <a
+                            href="https://actiontech.github.io/sqle-docs/docs/support/compare"
+                          >
+                            https://actiontech.github.io/sqle-docs/docs/support/compare
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section
         hidden=""
       >
@@ -1959,6 +2601,113 @@ exports[`test System/LarkAuditSetting should send request when clicking test Din
       <div
         class="ant-card-body"
       >
+        <section
+          class=""
+        >
+          <div
+            class="ant-card"
+          >
+            <div
+              class="ant-card-body"
+            >
+              <div
+                class="ant-space ant-space-vertical"
+              >
+                <div
+                  class="ant-space-item"
+                  style="margin-bottom: 26px;"
+                >
+                  <article>
+                    <h4
+                      class="ant-typography"
+                    >
+                      common.enterpriseFeatureDisplay.featureDescription
+                    </h4>
+                    <span
+                      class="ant-typography whitespace-pre-line"
+                    >
+                      system.larkAudit.ceTips
+                    </span>
+                  </article>
+                </div>
+                <div
+                  class="ant-space-item"
+                >
+                  <article>
+                    <div
+                      class="ant-space ant-space-vertical"
+                    >
+                      <div
+                        class="ant-space-item"
+                        style="margin-bottom: 8px;"
+                      >
+                        <h4
+                          class="ant-typography"
+                        >
+                          common.enterpriseFeatureDisplay.additionalAttention
+                        </h4>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                        style="margin-bottom: 8px;"
+                      >
+                        <span
+                          class="ant-typography"
+                        >
+                          common.enterpriseFeatureDisplay.businessLink
+                        </span>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                        style="margin-bottom: 8px;"
+                      >
+                        <ul>
+                          <li>
+                            <a
+                              href="https://actiontech.github.io/sqle-docs/docs/support/commercial-support"
+                            >
+                              https://actiontech.github.io/sqle-docs/docs/support/commercial-support
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.actionsky.com/"
+                            >
+                              https://www.actionsky.com/
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                        style="margin-bottom: 8px;"
+                      >
+                        <span
+                          class="ant-typography"
+                        >
+                          common.enterpriseFeatureDisplay.compareLink
+                        </span>
+                      </div>
+                      <div
+                        class="ant-space-item"
+                      >
+                        <ul>
+                          <li>
+                            <a
+                              href="https://actiontech.github.io/sqle-docs/docs/support/compare"
+                            >
+                              https://actiontech.github.io/sqle-docs/docs/support/compare
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <section>
           <div
             class="ant-descriptions"
