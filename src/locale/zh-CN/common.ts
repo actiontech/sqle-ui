@@ -7,6 +7,7 @@ export default {
   unknownStatus: '未知状态...',
 
   copied: '复制成功',
+  download: '下载',
 
   true: '是',
   false: '否',
