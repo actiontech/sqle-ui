@@ -1,6 +1,6 @@
 import { useBoolean, useRequest } from 'ahooks';
 import { Button, Card, Space, Switch, Table, Typography } from 'antd';
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import task from '../../../api/task';
 import EmptyBox from '../../../components/EmptyBox';
@@ -8,12 +8,17 @@ import { ResponseCode } from '../../../data/common';
 import useTable from '../../../hooks/useTable';
 import { floatToPercent } from '../../../utils/Math';
 import AuditResultFilterForm from './AuditResultFilterForm';
-import { orderAuditResultColumn, expandedRowRender } from './column';
+import {
+  orderAuditResultColumn,
+  expandedRowRender,
+  AuditResultRecordColumn,
+} from './column';
 import { AuditResultProps, OrderAuditResultFilterFields } from './index.type';
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
 
 const AuditResult: React.FC<AuditResultProps> = (props) => {
   const { t } = useTranslation();
+  const { mode = 'order' } = props;
   const [duplicate, { toggle: toggleDuplicate }] = useBoolean();
   const {
     filterInfo,
@@ -57,19 +62,6 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
     }
   );
 
-  const downloadSql = () => {
-    task.downloadAuditTaskSQLFileV1({
-      task_id: `${props.taskId}`,
-    });
-  };
-
-  const downloadReport = () => {
-    task.downloadAuditTaskSQLReportV1({
-      task_id: `${props.taskId}`,
-      no_duplicate: duplicate,
-    });
-  };
-
   const updateSqlDescribeProtect = useRef(false);
   const updateSqlDescribe = (sqlNum: number, sqlDescribe: string) => {
     if (updateSqlDescribeProtect.current) {
@@ -98,6 +90,68 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
     );
   };
 
+  const cardProps = useMemo(() => {
+    const downloadSql = () => {
+      task.downloadAuditTaskSQLFileV1({
+        task_id: `${props.taskId}`,
+      });
+    };
+
+    const downloadReport = () => {
+      task.downloadAuditTaskSQLReportV1({
+        task_id: `${props.taskId}`,
+        no_duplicate: duplicate,
+      });
+    };
+
+    return mode === 'auditRecordDetail'
+      ? undefined
+      : {
+          title: (
+            <Space>
+              {t('audit.result')}
+              <Typography.Text type="secondary" className="font-size-small">
+                {t('audit.passRage')}
+                <EmptyBox if={props.passRate !== undefined}>
+                  {floatToPercent(props.passRate ?? 0)}%
+                </EmptyBox>
+              </Typography.Text>
+              <Typography.Text type="secondary" className="font-size-small">
+                {t('audit.source')}
+                <EmptyBox if={props.auditScore !== undefined}>
+                  {props.auditScore ?? 0}
+                </EmptyBox>
+              </Typography.Text>
+
+              <Typography.Text type="secondary" className="font-size-small">
+                <EmptyBox if={!!props.instanceSchema}>
+                  {props.instanceSchema}
+                </EmptyBox>
+              </Typography.Text>
+            </Space>
+          ),
+          extra: [
+            <Space key="duplicate">
+              <Button onClick={downloadReport}>
+                {t('audit.downloadReport')}
+              </Button>
+              <Button onClick={downloadSql}>{t('audit.downloadSql')}</Button>
+              {t('audit.duplicate')}
+              <Switch onChange={toggleDuplicate} />
+            </Space>,
+          ],
+        };
+  }, [
+    duplicate,
+    mode,
+    props.auditScore,
+    props.instanceSchema,
+    props.passRate,
+    props.taskId,
+    t,
+    toggleDuplicate,
+  ]);
+
   useEffect(() => {
     if (props.taskId !== undefined) {
       getAuditTaskSql();
@@ -105,43 +159,12 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
   }, [pagination, filterInfo, duplicate, props.taskId, getAuditTaskSql]);
 
   return (
-    <Card
-      title={
-        <Space>
-          {t('audit.result')}
-          <Typography.Text type="secondary" className="font-size-small">
-            {t('audit.passRage')}
-            <EmptyBox if={props.passRate !== undefined}>
-              {floatToPercent(props.passRate ?? 0)}%
-            </EmptyBox>
-          </Typography.Text>
-          <Typography.Text type="secondary" className="font-size-small">
-            {t('audit.source')}
-            <EmptyBox if={props.auditScore !== undefined}>
-              {props.auditScore ?? 0}
-            </EmptyBox>
-          </Typography.Text>
-
-          <Typography.Text type="secondary" className="font-size-small">
-            <EmptyBox if={!!props.instanceSchema}>
-              {props.instanceSchema}
-            </EmptyBox>
-          </Typography.Text>
-        </Space>
-      }
-      extra={[
-        <Space key="duplicate">
-          <Button onClick={downloadReport}>{t('audit.downloadReport')}</Button>
-          <Button onClick={downloadSql}>{t('audit.downloadSql')}</Button>
-          {t('audit.duplicate')}
-          <Switch onChange={toggleDuplicate} />
-        </Space>,
-      ]}
-    >
+    <Card {...cardProps}>
       <AuditResultFilterForm
         form={filterForm}
         submit={submitFilter}
         reset={resetFilter}
+        mode={mode}
       />
       <Table
         rowKey="number"
@@ -150,7 +173,11 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
           total: data?.total,
           showSizeChanger: true,
         }}
-        columns={orderAuditResultColumn(updateSqlDescribe, handleClickAnalyze)}
+        columns={
+          mode === 'order'
+            ? orderAuditResultColumn(updateSqlDescribe, handleClickAnalyze)
+            : AuditResultRecordColumn(updateSqlDescribe, handleClickAnalyze)
+        }
         dataSource={data?.list}
         onChange={tableChange}
         expandable={{

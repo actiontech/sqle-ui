@@ -267,6 +267,23 @@ const UpdateSyncTask = React.lazy(
     )
 );
 
+const SQLAuditList = React.lazy(
+  () =>
+    import(/* webpackChunkName: "SQLAuditList" */ '../page/SqlAuditRecord/List')
+);
+const SQLAuditDetail = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "SQLAuditDetail" */ '../page/SqlAuditRecord/Detail'
+    )
+);
+const SQLAuditCreate = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "SQLAuditCreate" */ '../page/SqlAuditRecord/Create'
+    )
+);
+
 export const unAuthRouter: RouteObject[] = [
   {
     path: '/login',
@@ -290,6 +307,30 @@ export const projectDetailRouterConfig: RouterConfigItem<ProjectDetailRouterItem
       icon: <ProjectOutlined />,
       path: 'overview',
       element: <ProjectOverview />,
+    },
+    {
+      label: 'menu.sqlAudit',
+      key: 'sqlAudit',
+      icon: <ConsoleSqlOutlined />,
+      hideChildrenInSliderMenu: true,
+      path: 'sqlAudit',
+      children: [
+        {
+          index: true,
+          element: <SQLAuditList />,
+          key: 'sqlAuditList',
+        },
+        {
+          path: 'create',
+          element: <SQLAuditCreate />,
+          key: 'sqlAuditCreate',
+        },
+        {
+          path: ':id/detail',
+          element: <SQLAuditDetail />,
+          key: 'sqlAuditDetail',
+        },
+      ] as RouterConfigItem<ProjectDetailRouterItemKeyLiteral>[],
     },
     {
       label: 'menu.order',

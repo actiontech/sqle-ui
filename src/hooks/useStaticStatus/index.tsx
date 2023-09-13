@@ -16,7 +16,9 @@ import {
   orderStatusDictionary,
   ruleLevelDictionary,
   auditLevelDictionary,
+  auditResultRecordFilterStatusEnum,
 } from './index.data';
+import { getSQLAuditRecordsV1FilterSqlAuditStatusEnum } from '../../api/sql_audit_record/index.enum';
 
 const useStaticStatus = () => {
   const { t } = useTranslation();
@@ -302,6 +304,33 @@ const useStaticStatus = () => {
     );
   }, [t]);
 
+  const getSQLAuditRecordStatusSelectOption = React.useCallback(() => {
+    return (
+      <>
+        <Select.Option
+          value={getSQLAuditRecordsV1FilterSqlAuditStatusEnum.auditing}
+          key={getSQLAuditRecordsV1FilterSqlAuditStatusEnum.auditing}
+        >
+          {t(
+            auditResultRecordFilterStatusEnum[
+              getSQLAuditRecordsV1FilterSqlAuditStatusEnum.auditing
+            ]
+          )}
+        </Select.Option>
+        <Select.Option
+          value={getSQLAuditRecordsV1FilterSqlAuditStatusEnum.successfully}
+          key={getSQLAuditRecordsV1FilterSqlAuditStatusEnum.successfully}
+        >
+          {t(
+            auditResultRecordFilterStatusEnum[
+              getSQLAuditRecordsV1FilterSqlAuditStatusEnum.successfully
+            ]
+          )}
+        </Select.Option>
+      </>
+    );
+  }, [t]);
+
   return {
     generateAuditStatusSelectOption,
     generateExecStatusSelectOption,
@@ -309,6 +338,7 @@ const useStaticStatus = () => {
     // generateSqlTaskStatusSelectOption,
     getRuleLevelStatusSelectOption,
     getAuditLevelStatusSelectOption,
+    getSQLAuditRecordStatusSelectOption,
   };
 };
 

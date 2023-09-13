@@ -3,28 +3,35 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   filterFormButtonLayoutFactory,
-  FilterFormColLayout,
   FilterFormLayout,
   FilterFormRowLayout,
 } from '../../../data/common';
 import useStaticStatus from '../../../hooks/useStaticStatus';
 import { FilterFormProps, OrderAuditResultFilterFields } from './index.type';
 
+const FilterFormColLayout = {
+  xs: 24,
+  sm: 12,
+  xl: 12,
+  xxl: 8,
+};
+
 const AuditResultFilterForm: React.FC<FilterFormProps> = (props) => {
   const { t } = useTranslation();
 
-  const {
-    generateExecStatusSelectOption,
-    getAuditLevelStatusSelectOption,
-  } = useStaticStatus();
+  const { generateExecStatusSelectOption, getAuditLevelStatusSelectOption } =
+    useStaticStatus();
 
   return (
     <Form<OrderAuditResultFilterFields> {...FilterFormLayout} form={props.form}>
       <Row {...FilterFormRowLayout}>
-        <Col {...FilterFormColLayout}>
+        <Col {...FilterFormColLayout} hidden={props.mode !== 'order'}>
           <Form.Item
             name="filter_exec_status"
             label={t('audit.table.execStatus')}
+            labelCol={{
+              xxl: 4,
+            }}
           >
             <Select
               showSearch
@@ -54,7 +61,11 @@ const AuditResultFilterForm: React.FC<FilterFormProps> = (props) => {
           </Form.Item>
         </Col>
         <Col
-          {...filterFormButtonLayoutFactory(12, 0, 6)}
+          {...filterFormButtonLayoutFactory(
+            props.mode === 'order' ? 12 : 0,
+            props.mode === 'order' ? 16 : 4,
+            props.mode === 'order' ? 2 : 10
+          )}
           className="text-align-right"
         >
           <Form.Item wrapperCol={{ span: 24 }}>

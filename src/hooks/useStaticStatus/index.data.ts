@@ -9,6 +9,7 @@ import {
   WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
   RuleResV1LevelEnum,
 } from '../../api/common.enum';
+import { getSQLAuditRecordsV1FilterSqlAuditStatusEnum } from '../../api/sql_audit_record/index.enum';
 
 export const execStatusDictionary: StaticEnumDictionary<getAuditTaskSQLsV2FilterExecStatusEnum> =
   {
@@ -79,4 +80,12 @@ export const auditLevelDictionary: StaticEnumDictionary<WorkflowTemplateDetailRe
       'workflowTemplate.auditLevel.warn',
     [WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum.error]:
       'workflowTemplate.auditLevel.error',
+  };
+
+export const auditResultRecordFilterStatusEnum: StaticEnumDictionary<getSQLAuditRecordsV1FilterSqlAuditStatusEnum> =
+  {
+    [getSQLAuditRecordsV1FilterSqlAuditStatusEnum.auditing]:
+      'sqlAudit.list.auditing',
+    [getSQLAuditRecordsV1FilterSqlAuditStatusEnum.successfully]:
+      'sqlAudit.list.successfully',
   };

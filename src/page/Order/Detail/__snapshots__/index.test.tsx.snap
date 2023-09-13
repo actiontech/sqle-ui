@@ -1113,7 +1113,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                 style="margin-left: -12px; margin-right: -12px;"
                               >
                                 <div
-                                  class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
+                                  class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-12 ant-col-xxl-8"
                                   style="padding-left: 12px; padding-right: 12px;"
                                 >
                                   <div
@@ -1123,7 +1123,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                       class="ant-row ant-form-item-row"
                                     >
                                       <div
-                                        class="ant-col ant-col-7 ant-form-item-label"
+                                        class="ant-col ant-form-item-label ant-col-xxl-4"
                                       >
                                         <label
                                           class=""
@@ -1205,7 +1205,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                   </div>
                                 </div>
                                 <div
-                                  class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
+                                  class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-12 ant-col-xxl-8"
                                   style="padding-left: 12px; padding-right: 12px;"
                                 >
                                   <div
@@ -1297,7 +1297,7 @@ exports[`Order/Detail should get new sql audit result when update audit sql 1`] 
                                   </div>
                                 </div>
                                 <div
-                                  class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-0 ant-col-xxl-6 ant-col-xxl-offset-6"
+                                  class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-2"
                                   style="padding-left: 12px; padding-right: 12px;"
                                 >
                                   <div
@@ -4068,7 +4068,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                 style="margin-left: -12px; margin-right: -12px;"
                               >
                                 <div
-                                  class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
+                                  class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-12 ant-col-xxl-8"
                                   style="padding-left: 12px; padding-right: 12px;"
                                 >
                                   <div
@@ -4078,7 +4078,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                       class="ant-row ant-form-item-row"
                                     >
                                       <div
-                                        class="ant-col ant-col-7 ant-form-item-label"
+                                        class="ant-col ant-form-item-label ant-col-xxl-4"
                                       >
                                         <label
                                           class=""
@@ -4160,7 +4160,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                   </div>
                                 </div>
                                 <div
-                                  class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
+                                  class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-12 ant-col-xxl-8"
                                   style="padding-left: 12px; padding-right: 12px;"
                                 >
                                   <div
@@ -4252,7 +4252,7 @@ exports[`Order/Detail should update order when click update order button 1`] = `
                                   </div>
                                 </div>
                                 <div
-                                  class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-0 ant-col-xxl-6 ant-col-xxl-offset-6"
+                                  class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-2"
                                   style="padding-left: 12px; padding-right: 12px;"
                                 >
                                   <div
