@@ -38,7 +38,7 @@ export interface ICreateSQLAuditRecordV1Params {
 
   db_type?: string;
 
-  sql?: string;
+  sqls?: string;
 
   input_sql_file?: any;
 

@@ -6,8 +6,8 @@ import {
   InputRef,
   Select,
   SelectProps,
-  Space,
   Tag,
+  message,
 } from 'antd';
 import { PageFormLayout } from '../../../data/common';
 import {
@@ -26,6 +26,7 @@ import {
   useState,
 } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
+import { nameRule } from '../../../utils/FormRule';
 
 const BaseInfoForm: React.ForwardRefRenderFunction<
   BaseInfoFormRef,
@@ -33,22 +34,28 @@ const BaseInfoForm: React.ForwardRefRenderFunction<
 > = ({ projectName, form }, ref) => {
   const { t } = useTranslation();
   const inputRef = useRef<InputRef>(null);
+  const [extraTagForm] = Form.useForm<{ extraTag: string }>();
 
   const { auditRecordTags, updateSQLAuditRecordTag } = useSQLAuditRecordTag();
-  const [extraTag, setExtraTag] = useState('');
-  const [extraTags, setExtraTags] = useState<string[]>([]);
+
   const [values, setValues] = useState<string[]>([]);
 
-  const addTag = (
+  const createTag = async (
     e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
   ) => {
     e.preventDefault();
-    if (!extraTag || auditRecordTags.includes(extraTag)) {
+    const { extraTag } = await extraTagForm.validateFields();
+    if (values.includes(extraTag)) {
+      message.error(t('sqlAudit.create.createTagErrorTips'));
       return;
     }
 
-    setExtraTags((v) => [...v, extraTag]);
-    setExtraTag('');
+    setValues([...values, extraTag]);
+    form.setFieldsValue({
+      tags: [...values, extraTag],
+    });
+
+    extraTagForm.resetFields();
     setTimeout(() => {
       inputRef.current?.focus();
     }, 0);
@@ -72,10 +79,9 @@ const BaseInfoForm: React.ForwardRefRenderFunction<
   };
 
   const reset = useCallback(() => {
-    setExtraTag('');
-    setExtraTags([]);
+    extraTagForm.resetFields();
     setValues([]);
-  }, []);
+  }, [extraTagForm]);
 
   useImperativeHandle(ref, () => ({ reset }), [reset]);
 
@@ -89,16 +95,7 @@ const BaseInfoForm: React.ForwardRefRenderFunction<
       {...PageFormLayout}
       scrollToFirstError
     >
-      <Form.Item
-        name="tags"
-        label={t('sqlAudit.create.baseInfo.businessTag')}
-        validateFirst={true}
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
+      <Form.Item name="tags" label={t('sqlAudit.create.baseInfo.businessTag')}>
         <Select
           placeholder={t('common.form.placeholder.searchSelect', {
             name: t('sqlAudit.create.baseInfo.businessTag'),
@@ -111,23 +108,30 @@ const BaseInfoForm: React.ForwardRefRenderFunction<
             <>
               {menu}
               <Divider style={{ margin: '8px 0' }} />
-              <Space style={{ padding: '0 8px 4px' }}>
-                <Input
-                  placeholder={t(
-                    'sqlAudit.create.baseInfo.addExtraTagPlaceholder'
-                  )}
-                  ref={inputRef}
-                  value={extraTag}
-                  onChange={(e) => setExtraTag(e.target.value)}
-                />
-                <Button icon={<PlusOutlined />} onClick={addTag}>
-                  {t('sqlAudit.create.baseInfo.addTag')}
-                </Button>
-              </Space>
+              <Form
+                form={extraTagForm}
+                layout="inline"
+                style={{ padding: '4px 0 8px 12px' }}
+              >
+                <Form.Item name="extraTag" rules={[...nameRule()]}>
+                  <Input
+                    placeholder={t(
+                      'sqlAudit.create.baseInfo.addExtraTagPlaceholder'
+                    )}
+                    ref={inputRef}
+                  />
+                </Form.Item>
+
+                <Form.Item>
+                  <Button icon={<PlusOutlined />} onClick={createTag}>
+                    {t('sqlAudit.create.baseInfo.addTag')}
+                  </Button>
+                </Form.Item>
+              </Form>
             </>
           )}
         >
-          {[...auditRecordTags, ...extraTags].map((v) => (
+          {auditRecordTags.map((v) => (
             <Select.Option key={v} value={v}>
               <Tag color="blue">{v}</Tag>
             </Select.Option>

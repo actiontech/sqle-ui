@@ -35,10 +35,10 @@ const SQLAuditCreate: React.FC = () => {
     const baseValues = await baseForm.validateFields();
     const params: ICreateSQLAuditRecordV1Params = {
       project_name: projectName,
-      sql: values.sql,
-      input_sql_file: values.sqlFile,
-      input_mybatis_xml_file: values.mybatisFile,
-      input_zip_file: values.zipFile,
+      sqls: values.sql,
+      input_sql_file: values.sqlFile?.[0],
+      input_mybatis_xml_file: values.mybatisFile?.[0],
+      input_zip_file: values.zipFile?.[0],
       instance_name: values.instanceName,
       instance_schema: values.instanceSchema,
       db_type: values.dbType,
@@ -58,7 +58,7 @@ const SQLAuditCreate: React.FC = () => {
     sql_audit_record
       .updateSQLAuditRecordV1({
         tags: values.tags,
-        sql_audit_record_id: `${record.task?.task_id}`,
+        sql_audit_record_id: record.sql_audit_record_id,
         project_name: projectName,
       })
       .then((res) => {

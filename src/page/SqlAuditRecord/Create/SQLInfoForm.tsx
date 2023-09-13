@@ -346,12 +346,17 @@ const SQLInfoForm: React.FC<SQLInfoFormProps> = ({
             onClick={internalSubmit}
             type="primary"
             loading={submitLoading}
+            disabled={submitLoading}
           >
             {t('sqlAudit.create.SQLInfo.auditButton')}
           </Button>
 
           <Space hidden={uploadType !== UploadTypeEnum.sql}>
-            <Button onClick={formatter} loading={submitLoading}>
+            <Button
+              onClick={formatter}
+              loading={submitLoading}
+              disabled={submitLoading}
+            >
               {t('sqlAudit.create.SQLInfo.formatterSQL')}
             </Button>
 

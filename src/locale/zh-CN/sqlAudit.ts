@@ -30,7 +30,7 @@ export default {
   create: {
     title: 'SQL审核',
     pageDesc: '您可以在这里获得快速审核SQL',
-
+    createTagErrorTips: '当前标签已存在',
     baseInfo: {
       title: '基本信息',
       businessTag: '业务标签',

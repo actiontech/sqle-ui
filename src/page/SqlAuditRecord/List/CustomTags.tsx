@@ -2,6 +2,7 @@ import {
   Button,
   Divider,
   Empty,
+  Form,
   Input,
   InputRef,
   Popover,
@@ -9,6 +10,7 @@ import {
   Spin,
   Tag,
   Typography,
+  message,
 } from 'antd';
 import { CustomTagsProps } from './index.type';
 import { PlusCircleOutlined, PlusOutlined } from '@ant-design/icons';
@@ -17,6 +19,7 @@ import useSQLAuditRecordTag from '../../../hooks/useSQLAuditRecordTag';
 import { useTranslation } from 'react-i18next';
 import useStyles from '../../../theme';
 import EmptyBox from '../../../components/EmptyBox';
+import { nameRule } from '../../../utils/FormRule';
 
 const CustomTags: React.FC<CustomTagsProps> = ({
   tags,
@@ -25,6 +28,9 @@ const CustomTags: React.FC<CustomTagsProps> = ({
 }) => {
   const styles = useStyles();
   const { t } = useTranslation();
+  const [extraTagForm] = Form.useForm<{ extraTag: string }>();
+  const extraTag = Form.useWatch('extraTag', extraTagForm);
+
   const removing = useRef(false);
   const removeTag = async (tag: string) => {
     if (removing.current) {
@@ -40,39 +46,42 @@ const CustomTags: React.FC<CustomTagsProps> = ({
   const { loading, updateSQLAuditRecordTag, auditRecordTags } =
     useSQLAuditRecordTag();
   const [open, setOpen] = useState(false);
-  const [extraTag, setExtraTag] = useState('');
-  const [extraTags, setExtraTags] = useState<string[]>([]);
   const handelClickAddTagsIcon = () => {
     setOpen(true);
     updateSQLAuditRecordTag(projectName);
   };
 
   const content = useMemo(() => {
-    const addTag = async (tag: string) => {
-      updateTags(tags.filter((v) => v !== tag));
-      setOpen(false);
-      setExtraTags((v) => []);
-      setExtraTag('');
-    };
-
-    const createTag = (
-      e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
+    const createTag = async (
+      e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+      tag?: string
     ) => {
       e.preventDefault();
-      if (!extraTag || auditRecordTags.includes(extraTag)) {
+      let realTag = '';
+      if (tag) {
+        realTag = tag;
+      } else {
+        const values = await extraTagForm.validateFields();
+        realTag = values.extraTag;
+      }
+      if (!realTag) {
         return;
       }
-      setExtraTags((v) => [...v, extraTag]);
-      setExtraTag('');
-      setTimeout(() => {
-        inputRef.current?.focus();
-      }, 0);
+      if (tags.includes(realTag)) {
+        message.error(t('sqlAudit.create.createTagErrorTips'));
+        return;
+      }
+      updateTags([...tags, realTag]);
+
+      extraTagForm.resetFields();
+
+      setOpen(false);
     };
     return (
       <Spin spinning={loading}>
         <div>
           <EmptyBox
-            if={[...extraTags, ...auditRecordTags].length > 0}
+            if={auditRecordTags.length > 0}
             defaultNode={
               <Empty
                 image={Empty.PRESENTED_IMAGE_DEFAULT}
@@ -84,11 +93,11 @@ const CustomTags: React.FC<CustomTagsProps> = ({
               />
             }
           >
-            {[...extraTags, ...auditRecordTags].map((v) => (
+            {auditRecordTags.map((v) => (
               <div
                 className={`${styles.optionsHover} custom-tag-item`}
                 key={v}
-                onClick={() => addTag(v)}
+                onClick={(e) => createTag(e, v)}
               >
                 <Tag color="blue">{v}</Tag>
               </div>
@@ -96,24 +105,33 @@ const CustomTags: React.FC<CustomTagsProps> = ({
           </EmptyBox>
 
           <Divider />
-          <Space className="add-tag-content">
-            <Input
-              placeholder={t('sqlAudit.create.baseInfo.addExtraTagPlaceholder')}
-              ref={inputRef}
-              value={extraTag}
-              onChange={(e) => setExtraTag(e.target.value)}
-            />
-            <Button icon={<PlusOutlined />} onClick={createTag}>
-              {t('sqlAudit.create.baseInfo.addTag')}
-            </Button>
-          </Space>
+          <Form
+            form={extraTagForm}
+            layout="inline"
+            style={{ padding: '4px 0 8px 12px' }}
+          >
+            <Form.Item name="extraTag" rules={[...nameRule()]}>
+              <Input
+                placeholder={t(
+                  'sqlAudit.create.baseInfo.addExtraTagPlaceholder'
+                )}
+                ref={inputRef}
+              />
+            </Form.Item>
+
+            <Form.Item>
+              <Button icon={<PlusOutlined />} onClick={createTag}>
+                {t('sqlAudit.create.baseInfo.addTag')}
+              </Button>
+            </Form.Item>
+          </Form>
         </div>
       </Spin>
     );
   }, [
     auditRecordTags,
     extraTag,
-    extraTags,
+    extraTagForm,
     loading,
     styles.optionsHover,
     t,

@@ -11,10 +11,7 @@ import CustomTags from './CustomTags';
 export const SQLAuditListColumn = (
   projectName: string,
   updateTags: (id: string, tags: string[]) => Promise<void>
-): TableColumn<
-  ISQLAuditRecord,
-  'instance_name' | 'pass_rate' | 'score' | 'audit_time'
-> => {
+): TableColumn<ISQLAuditRecord, 'instance_name' | 'pass_rate' | 'score'> => {
   return [
     {
       dataIndex: 'sql_audit_record_id',
@@ -38,7 +35,15 @@ export const SQLAuditListColumn = (
           return '-';
         }
 
-        return <Tooltip title={``}>{record.task?.instance_name}</Tooltip>;
+        return record.instance?.db_host && record.instance.db_port ? (
+          <Tooltip
+            title={`${record.instance?.db_host}:${record.instance?.db_port}`}
+          >
+            {record.task?.instance_name}
+          </Tooltip>
+        ) : (
+          record.task?.instance_name
+        );
       },
       width: 200,
     },
@@ -62,15 +67,13 @@ export const SQLAuditListColumn = (
       dataIndex: 'tags',
       title: () => t('sqlAudit.list.table.columns.businessTag'),
       render: (tags: string[], record) => {
-        if (!Array.isArray(tags)) {
-          return '-';
-        }
-
         return (
           <CustomTags
             projectName={projectName}
-            tags={tags}
-            updateTags={() => updateTags(`${record.sql_audit_record_id}`, tags)}
+            tags={tags ?? []}
+            updateTags={(realTags) =>
+              updateTags(record.sql_audit_record_id ?? '', realTags)
+            }
           />
         );
       },
@@ -98,10 +101,10 @@ export const SQLAuditListColumn = (
       title: () => t('sqlAudit.list.table.columns.createUser'),
     },
     {
-      dataIndex: 'audit_time',
+      dataIndex: 'created_at',
       title: () => t('sqlAudit.list.table.columns.auditTime'),
-      render(_, record) {
-        return formatTime(record.task?.exec_start_time, '-');
+      render(time: string) {
+        return formatTime(time, '-');
       },
       width: 200,
     },

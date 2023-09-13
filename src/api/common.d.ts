@@ -2136,11 +2136,13 @@ export interface ISMTPConfigurationResV1 {
 }
 
 export interface ISQLAuditRecord {
+  created_at?: string;
+
   creator?: string;
 
   instance?: ISQLAuditRecordInstance;
 
-  sql_audit_record_id?: number;
+  sql_audit_record_id?: string;
 
   sql_audit_status?: string;
 

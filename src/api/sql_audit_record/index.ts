@@ -16,7 +16,7 @@ import {
   IGetSQLAuditRecordV1Params,
   IGetSQLAuditRecordV1Return,
   IUpdateSQLAuditRecordV1Params,
-  IUpdateSQLAuditRecordV1Return
+  IUpdateSQLAuditRecordV1Return,
 } from './index.d';
 
 class SqlAuditRecordService extends ServiceBase {
@@ -29,7 +29,7 @@ class SqlAuditRecordService extends ServiceBase {
     delete paramsData.project_name;
 
     return this.get<IGetSQLAuditRecordsV1Return>(
-      `/v1/projects/${project_name}/sql_audit_record`,
+      `/v1/projects/${project_name}/sql_audit_records`,
       paramsData,
       options
     );
@@ -44,7 +44,7 @@ class SqlAuditRecordService extends ServiceBase {
     config.headers = {
       ...headers,
 
-      'Content-Type': 'multipart/form-data'
+      'Content-Type': 'multipart/form-data',
     };
 
     const paramsData = new FormData();
@@ -61,8 +61,8 @@ class SqlAuditRecordService extends ServiceBase {
       paramsData.append('db_type', params.db_type as any);
     }
 
-    if (params.sql != undefined) {
-      paramsData.append('sql', params.sql as any);
+    if (params.sqls != undefined) {
+      paramsData.append('sqls', params.sqls as any);
     }
 
     if (params.input_sql_file != undefined) {
@@ -83,7 +83,7 @@ class SqlAuditRecordService extends ServiceBase {
     const project_name = params.project_name;
 
     return this.post<ICreateSQLAuditRecordV1Return>(
-      `/v1/projects/${project_name}/sql_audit_record`,
+      `/v1/projects/${project_name}/sql_audit_records`,
       paramsData,
       config
     );
@@ -98,7 +98,7 @@ class SqlAuditRecordService extends ServiceBase {
     delete paramsData.project_name;
 
     return this.get<IGetSQLAuditRecordTagTipsV1Return>(
-      `/v1/projects/${project_name}/sql_audit_record/tag_tips`,
+      `/v1/projects/${project_name}/sql_audit_records/tag_tips`,
       paramsData,
       options
     );
@@ -116,7 +116,7 @@ class SqlAuditRecordService extends ServiceBase {
     delete paramsData.sql_audit_record_id;
 
     return this.get<IGetSQLAuditRecordV1Return>(
-      `/v1/projects/${project_name}/sql_audit_record/${sql_audit_record_id}`,
+      `/v1/projects/${project_name}/sql_audit_records/${sql_audit_record_id}/`,
       paramsData,
       options
     );
@@ -134,7 +134,7 @@ class SqlAuditRecordService extends ServiceBase {
     delete paramsData.sql_audit_record_id;
 
     return this.patch<IUpdateSQLAuditRecordV1Return>(
-      `/v1/projects/${project_name}/sql_audit_record/${sql_audit_record_id}`,
+      `/v1/projects/${project_name}/sql_audit_records/${sql_audit_record_id}/`,
       paramsData,
       options
     );

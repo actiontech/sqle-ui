@@ -68,7 +68,7 @@ const SQLAuditDetail: React.FC = () => {
                 }}
               >
                 <Row>
-                  <Col span={6}>
+                  <Col span={4}>
                     <Typography.Text>
                       {t('sqlAudit.detail.auditID')}
                     </Typography.Text>
@@ -91,7 +91,7 @@ const SQLAuditDetail: React.FC = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col span={6}>
+                  <Col span={4}>
                     <Typography.Text>
                       {t('sqlAudit.detail.auditPassRate')}
                     </Typography.Text>
@@ -102,7 +102,7 @@ const SQLAuditDetail: React.FC = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col span={6}>
+                  <Col span={4}>
                     <Typography.Text>
                       {t('sqlAudit.detail.auditRating')}
                     </Typography.Text>
