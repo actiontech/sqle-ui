@@ -453,6 +453,14 @@ export interface ICreateRuleTemplateReqV1 {
   rule_template_name?: string;
 }
 
+export interface ICreateSQLAuditRecordResV1 {
+  code?: number;
+
+  data?: ISQLAuditRecordResData;
+
+  message?: string;
+}
+
 export interface ICreateSyncInstanceTaskReqV1 {
   db_type: string;
 
@@ -1229,6 +1237,32 @@ export interface IGetSQLAnalysisDataResItemV1 {
   table_metas?: ITableMeta[];
 }
 
+export interface IGetSQLAuditRecordResV1 {
+  code?: number;
+
+  data?: ISQLAuditRecord;
+
+  message?: string;
+}
+
+export interface IGetSQLAuditRecordTagTipsResV1 {
+  code?: number;
+
+  data?: string[];
+
+  message?: string;
+}
+
+export interface IGetSQLAuditRecordsResV1 {
+  code?: number;
+
+  data?: ISQLAuditRecord[];
+
+  message?: string;
+
+  total_nums?: number;
+}
+
 export interface IGetSQLEInfoResDataV1 {
   logo_url?: string;
 
@@ -1273,6 +1307,16 @@ export interface IGetSqlExecutionFailPercentResV1 {
   data?: ISqlExecutionFailPercent[];
 
   message?: string;
+}
+
+export interface IGetSqlManageListResp {
+  code?: number;
+
+  data?: ISqlManage[];
+
+  message?: string;
+
+  total_nums?: number;
 }
 
 export interface IGetSyncInstanceTaskListResV1 {
@@ -2091,6 +2135,32 @@ export interface ISMTPConfigurationResV1 {
   smtp_username?: string;
 }
 
+export interface ISQLAuditRecord {
+  creator?: string;
+
+  instance?: ISQLAuditRecordInstance;
+
+  sql_audit_record_id?: number;
+
+  sql_audit_status?: string;
+
+  tags?: string[];
+
+  task?: IAuditTaskResV1;
+}
+
+export interface ISQLAuditRecordInstance {
+  db_host?: string;
+
+  db_port?: string;
+}
+
+export interface ISQLAuditRecordResData {
+  sql_audit_record_id?: string;
+
+  task?: IAuditTaskResV1;
+}
+
 export interface ISQLExplain {
   classic_result?: IExplainClassicResult;
 
@@ -2139,6 +2209,38 @@ export interface ISqlExecutionFailPercent {
   instance_name?: string;
 
   percent?: number;
+}
+
+export interface ISqlManage {
+  appear_num?: number;
+
+  assignee?: string;
+
+  audit_result?: string;
+
+  first_appear_time?: string;
+
+  id?: number;
+
+  instance?: string;
+
+  last_appear_time?: string;
+
+  remark?: string;
+
+  source?: string;
+
+  sql?: string;
+
+  sql_fingerprint?: string;
+
+  sql_manage_bad_num?: number;
+
+  sql_manage_optimized_num?: number;
+
+  sql_manage_total_num?: number;
+
+  status?: string;
 }
 
 export interface IStatisticAuditPlanResV1 {
@@ -2424,11 +2526,11 @@ export interface IUpdateDingTalkConfigurationReqV1 {
 }
 
 export interface IUpdateFeishuConfigurationReqV1 {
-  app_id?: string;
+  app_id: string;
 
-  app_secret?: string;
+  app_secret: string;
 
-  is_feishu_notification_enabled?: boolean;
+  is_feishu_notification_enabled: boolean;
 }
 
 export interface IUpdateInstanceReqV1 {
@@ -2505,6 +2607,12 @@ export interface IUpdateSMTPConfigurationReqV1 {
   smtp_port?: string;
 
   smtp_username?: string;
+}
+
+export interface IUpdateSQLAuditRecordReqV1 {
+  sql_audit_record_id?: string;
+
+  tags?: string[];
 }
 
 export interface IUpdateSyncInstanceTaskReqV1 {
