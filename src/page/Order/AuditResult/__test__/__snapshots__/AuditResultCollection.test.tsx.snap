@@ -248,7 +248,7 @@ exports[`test AuditResultCollection should be show overview tab when showOvervie
                       style="margin-left: -12px; margin-right: -12px;"
                     >
                       <div
-                        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
+                        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-12 ant-col-xxl-8"
                         style="padding-left: 12px; padding-right: 12px;"
                       >
                         <div
@@ -258,7 +258,7 @@ exports[`test AuditResultCollection should be show overview tab when showOvervie
                             class="ant-row ant-form-item-row"
                           >
                             <div
-                              class="ant-col ant-col-7 ant-form-item-label"
+                              class="ant-col ant-form-item-label ant-col-xxl-4"
                             >
                               <label
                                 class=""
@@ -340,7 +340,7 @@ exports[`test AuditResultCollection should be show overview tab when showOvervie
                         </div>
                       </div>
                       <div
-                        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
+                        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-12 ant-col-xxl-8"
                         style="padding-left: 12px; padding-right: 12px;"
                       >
                         <div
@@ -432,7 +432,7 @@ exports[`test AuditResultCollection should be show overview tab when showOvervie
                         </div>
                       </div>
                       <div
-                        class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-0 ant-col-xxl-6 ant-col-xxl-offset-6"
+                        class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-2"
                         style="padding-left: 12px; padding-right: 12px;"
                       >
                         <div
@@ -2629,7 +2629,7 @@ exports[`test AuditResultCollection should match snapshot when getSummaryOfInsta
                       style="margin-left: -12px; margin-right: -12px;"
                     >
                       <div
-                        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
+                        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-12 ant-col-xxl-8"
                         style="padding-left: 12px; padding-right: 12px;"
                       >
                         <div
@@ -2639,7 +2639,7 @@ exports[`test AuditResultCollection should match snapshot when getSummaryOfInsta
                             class="ant-row ant-form-item-row"
                           >
                             <div
-                              class="ant-col ant-col-7 ant-form-item-label"
+                              class="ant-col ant-form-item-label ant-col-xxl-4"
                             >
                               <label
                                 class=""
@@ -2721,7 +2721,7 @@ exports[`test AuditResultCollection should match snapshot when getSummaryOfInsta
                         </div>
                       </div>
                       <div
-                        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
+                        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-12 ant-col-xxl-8"
                         style="padding-left: 12px; padding-right: 12px;"
                       >
                         <div
@@ -2813,7 +2813,7 @@ exports[`test AuditResultCollection should match snapshot when getSummaryOfInsta
                         </div>
                       </div>
                       <div
-                        class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-0 ant-col-xxl-6 ant-col-xxl-offset-6"
+                        class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-2"
                         style="padding-left: 12px; padding-right: 12px;"
                       >
                         <div
@@ -4443,7 +4443,7 @@ exports[`test AuditResultCollection should match snapshot when showOverview is e
                       style="margin-left: -12px; margin-right: -12px;"
                     >
                       <div
-                        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
+                        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-12 ant-col-xxl-8"
                         style="padding-left: 12px; padding-right: 12px;"
                       >
                         <div
@@ -4453,7 +4453,7 @@ exports[`test AuditResultCollection should match snapshot when showOverview is e
                             class="ant-row ant-form-item-row"
                           >
                             <div
-                              class="ant-col ant-col-7 ant-form-item-label"
+                              class="ant-col ant-form-item-label ant-col-xxl-4"
                             >
                               <label
                                 class=""
@@ -4535,7 +4535,7 @@ exports[`test AuditResultCollection should match snapshot when showOverview is e
                         </div>
                       </div>
                       <div
-                        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-8 ant-col-xxl-6"
+                        class="ant-col ant-col-xs-24 ant-col-sm-12 ant-col-xl-12 ant-col-xxl-8"
                         style="padding-left: 12px; padding-right: 12px;"
                       >
                         <div
@@ -4627,7 +4627,7 @@ exports[`test AuditResultCollection should match snapshot when showOverview is e
                         </div>
                       </div>
                       <div
-                        class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-0 ant-col-xxl-6 ant-col-xxl-offset-6"
+                        class="ant-col text-align-right ant-col-xs-24 ant-col-sm-12 ant-col-sm-offset-12 ant-col-xl-8 ant-col-xl-offset-16 ant-col-xxl-6 ant-col-xxl-offset-2"
                         style="padding-left: 12px; padding-right: 12px;"
                       >
                         <div

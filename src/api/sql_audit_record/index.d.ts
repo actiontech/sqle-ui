@@ -6,7 +6,7 @@ import {
   IGetSQLAuditRecordTagTipsResV1,
   IGetSQLAuditRecordResV1,
   IUpdateSQLAuditRecordReqV1,
-  IBaseRes
+  IBaseRes,
 } from '../common.d';
 
 export interface IGetSQLAuditRecordsV1Params {
@@ -38,7 +38,7 @@ export interface ICreateSQLAuditRecordV1Params {
 
   db_type?: string;
 
-  sql?: string;
+  sqls?: string;
 
   input_sql_file?: any;
 

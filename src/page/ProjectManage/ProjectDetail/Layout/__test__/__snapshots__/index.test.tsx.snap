@@ -14,6 +14,16 @@ Array [
   },
   Object {
     "icon": <ForwardRef(ConsoleSqlOutlined) />,
+    "key": "sqlAudit",
+    "label": <CustomLink
+      to="project/test/sqlAudit"
+    >
+      menu.sqlAudit
+    </CustomLink>,
+    "title": "menu.sqlAudit",
+  },
+  Object {
+    "icon": <ForwardRef(ConsoleSqlOutlined) />,
     "key": "order",
     "label": <CustomLink
       to="project/test/order"
@@ -110,6 +120,16 @@ Array [
       menu.projectOverview
     </CustomLink>,
     "title": "menu.projectOverview",
+  },
+  Object {
+    "icon": <ForwardRef(ConsoleSqlOutlined) />,
+    "key": "sqlAudit",
+    "label": <CustomLink
+      to="project/test/sqlAudit"
+    >
+      menu.sqlAudit
+    </CustomLink>,
+    "title": "menu.sqlAudit",
   },
   Object {
     "icon": <ForwardRef(ConsoleSqlOutlined) />,

@@ -38,7 +38,7 @@ import {
   WorkflowRecordResV2StatusEnum,
   WorkflowResV2ModeEnum,
   WorkflowStepResV2StateEnum,
-  WorkflowStepResV2TypeEnum
+  WorkflowStepResV2TypeEnum,
 } from './common.enum';
 
 export interface IBaseRes {
@@ -2136,11 +2136,13 @@ export interface ISMTPConfigurationResV1 {
 }
 
 export interface ISQLAuditRecord {
+  created_at?: string;
+
   creator?: string;
 
   instance?: ISQLAuditRecordInstance;
 
-  sql_audit_record_id?: number;
+  sql_audit_record_id?: string;
 
   sql_audit_status?: string;
 

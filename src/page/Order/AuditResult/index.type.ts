@@ -18,6 +18,7 @@ export type AuditResultProps = {
   instanceSchema?: string;
   updateTaskRecordTotalNum?: (taskId: string, sqlNumber: number) => void;
   projectName: string;
+  mode?: 'order' | 'auditRecordCreate' | 'auditRecordDetail';
 };
 
 export interface AuditResultCollectionProps {
@@ -52,6 +53,7 @@ export type FilterFormProps = {
   form: FormInstance<OrderAuditResultFilterFields>;
   submit: () => void;
   reset: () => void;
+  mode: AuditResultProps['mode'];
 };
 
 export type OrderAuditResultFilterFields = Omit<

@@ -30,6 +30,73 @@ export const expandedRowRender = (record: IAuditTaskSQLResV2) => (
   <AuditResultErrorMessage auditResult={record?.audit_result ?? []} />
 );
 
+export const AuditResultRecordColumn = (
+  updateSqlDescribe: (sqlNum: number, sqlDescribe: string) => void,
+  clickAnalyze: (sqlNum: number) => void
+): Array<
+  | (ColumnGroupType<IAuditTaskSQLResV2> | ColumnType<IAuditTaskSQLResV2>) & {
+      dataIndex?: keyof IAuditTaskSQLResV2 | 'operator';
+    }
+> => {
+  return [
+    {
+      dataIndex: 'number',
+      title: () => t('sqlAudit.create.result.table.number'),
+      width: 60,
+    },
+    {
+      dataIndex: 'exec_sql',
+      title: () => t('sqlAudit.create.result.table.auditSql'),
+      width: 300,
+      render: (sql?: string) => {
+        return <RenderExecuteSql sql={sql} />;
+      },
+    },
+    {
+      dataIndex: 'audit_result',
+      title: () => t('sqlAudit.create.result.table.auditResult'),
+      width: 200,
+      render: (auditResult: IAuditResult[]) => {
+        return <AuditResultInfo auditResult={auditResult} />;
+      },
+    },
+    Table.EXPAND_COLUMN,
+    {
+      dataIndex: 'description',
+      title: () => t('sqlAudit.create.result.table.describe'),
+      width: '200px',
+      render: (description: string, record) => {
+        return (
+          <EditText
+            editable={{
+              autoSize: true,
+              onEnd: (val) => {
+                updateSqlDescribe(record.number ?? 0, val);
+              },
+            }}
+          >
+            {description}
+          </EditText>
+        );
+      },
+    },
+    /* IFTRUE_isEE */
+    {
+      dataIndex: 'operator',
+      title: () => t('common.operate'),
+      width: '70px',
+      render: (_, record) => {
+        return (
+          <Typography.Link onClick={() => clickAnalyze(record.number ?? 0)}>
+            {t('sqlAudit.create.result.table.analyze')}
+          </Typography.Link>
+        );
+      },
+    },
+    /* FITRUE_isEE */
+  ];
+};
+
 export const orderAuditResultColumn = (
   updateSqlDescribe: (sqlNum: number, sqlDescribe: string) => void,
   clickAnalyze: (sqlNum: number) => void
