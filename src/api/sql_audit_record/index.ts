@@ -16,7 +16,7 @@ import {
   IGetSQLAuditRecordV1Params,
   IGetSQLAuditRecordV1Return,
   IUpdateSQLAuditRecordV1Params,
-  IUpdateSQLAuditRecordV1Return,
+  IUpdateSQLAuditRecordV1Return
 } from './index.d';
 
 class SqlAuditRecordService extends ServiceBase {
@@ -44,7 +44,7 @@ class SqlAuditRecordService extends ServiceBase {
     config.headers = {
       ...headers,
 
-      'Content-Type': 'multipart/form-data',
+      'Content-Type': 'multipart/form-data'
     };
 
     const paramsData = new FormData();

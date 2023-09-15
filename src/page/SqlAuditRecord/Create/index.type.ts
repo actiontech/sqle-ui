@@ -13,6 +13,10 @@ export type BaseInfoFormRef = {
   reset: () => void;
 };
 
+export type SQLInfoFormRef = {
+  reset: () => void;
+};
+
 export type SQLInfoFormFields = {
   auditType: AuditTypeEnum;
   uploadType: UploadTypeEnum;
