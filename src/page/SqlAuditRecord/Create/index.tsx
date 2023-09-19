@@ -58,7 +58,7 @@ const SQLAuditCreate: React.FC = () => {
     sql_audit_record
       .updateSQLAuditRecordV1({
         tags: values.tags,
-        sql_audit_record_id: record.sql_audit_record_id,
+        sql_audit_record_id: record.sql_audit_record_id ?? '',
         project_name: projectName,
       })
       .then((res) => {

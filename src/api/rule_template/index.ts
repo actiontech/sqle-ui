@@ -34,6 +34,10 @@ import {
   ICloneProjectRuleTemplateV1Params,
   ICloneProjectRuleTemplateV1Return,
   IExportProjectRuleTemplateV1Params,
+  IGetRuleKnowledgeV1Params,
+  IGetRuleKnowledgeV1Return,
+  IUpdateRuleKnowledgeParams,
+  IUpdateRuleKnowledgeReturn,
   IGetRuleTemplateTipsV1Params,
   IGetRuleTemplateTipsV1Return,
   IGetRuleTemplateListV1Params,
@@ -270,6 +274,36 @@ class RuleTemplateService extends ServiceBase {
 
     return this.get<any>(
       `/v1/projects/${project_name}/rule_templates/${rule_template_name}/export`,
+      paramsData,
+      options
+    );
+  }
+
+  public getRuleKnowledgeV1(
+    params: IGetRuleKnowledgeV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const rule_name = paramsData.rule_name;
+    delete paramsData.rule_name;
+
+    return this.get<IGetRuleKnowledgeV1Return>(
+      `/v1/rule_knowledge/${rule_name}/`,
+      paramsData,
+      options
+    );
+  }
+
+  public updateRuleKnowledge(
+    params: IUpdateRuleKnowledgeParams,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const rule_name = paramsData.rule_name;
+    delete paramsData.rule_name;
+
+    return this.patch<IUpdateRuleKnowledgeReturn>(
+      `/v1/rule_knowledge/${rule_name}/`,
       paramsData,
       options
     );

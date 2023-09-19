@@ -19,6 +19,8 @@ import {
   RuleResV1LevelEnum,
   SQLQueryConfigReqV1AllowQueryWhenLessThanAuditLevelEnum,
   SQLQueryConfigResV1AllowQueryWhenLessThanAuditLevelEnum,
+  SourceTypeEnum,
+  SqlManageStatusEnum,
   TestFeishuConfigurationReqV1AccountTypeEnum,
   UpdateAuditPlanNotifyConfigReqV1NotifyLevelEnum,
   UpdateAuditWhitelistReqV1MatchTypeEnum,
@@ -38,7 +40,7 @@ import {
   WorkflowRecordResV2StatusEnum,
   WorkflowResV2ModeEnum,
   WorkflowStepResV2StateEnum,
-  WorkflowStepResV2TypeEnum,
+  WorkflowStepResV2TypeEnum
 } from './common.enum';
 
 export interface IBaseRes {
@@ -137,6 +139,14 @@ export interface IAuditPlanSQLReqV1 {
   audit_plan_sql_last_receive_timestamp?: string;
 
   audit_plan_sql_schema?: string;
+
+  db_user?: string;
+
+  first_query_at?: string;
+
+  query_time_avg?: number;
+
+  query_time_max?: number;
 }
 
 export interface IAuditPlanSQLResV1 {
@@ -163,6 +173,14 @@ export interface IAuditResDataV1 {
   score?: number;
 
   sql_results?: IAuditSQLResV1[];
+}
+
+export interface IAuditResult {
+  level?: string;
+
+  message?: string;
+
+  rule_name?: string;
 }
 
 export interface IAuditSQLResV1 {
@@ -1316,7 +1334,11 @@ export interface IGetSqlManageListResp {
 
   message?: string;
 
-  total_nums?: number;
+  sql_manage_bad_num?: number;
+
+  sql_manage_optimized_num?: number;
+
+  sql_manage_total_num?: number;
 }
 
 export interface IGetSyncInstanceTaskListResV1 {
@@ -2031,6 +2053,18 @@ export interface IRoleUserCount {
   role?: string;
 }
 
+export interface IRuleInfo {
+  annotation?: string;
+
+  desc?: string;
+}
+
+export interface IRuleKnowledgeResV1 {
+  knowledge_content?: string;
+
+  rule?: IRuleInfo;
+}
+
 export interface IRuleParamReqV1 {
   key?: string;
 
@@ -2191,6 +2225,14 @@ export interface ISQLQueryConfigResV1 {
   query_timeout_second?: number;
 }
 
+export interface ISource {
+  audit_plan_name?: string;
+
+  sql_audit_record_id?: string;
+
+  type?: SourceTypeEnum;
+}
+
 export interface ISqlAnalysisResDataV1 {
   sql_explain?: ISQLExplain;
 
@@ -2216,33 +2258,29 @@ export interface ISqlExecutionFailPercent {
 export interface ISqlManage {
   appear_num?: number;
 
-  assignee?: string;
+  assignees?: string[];
 
-  audit_result?: string;
+  audit_result?: IAuditResult[];
 
   first_appear_time?: string;
 
   id?: number;
 
-  instance?: string;
+  instance_name?: string;
 
   last_appear_time?: string;
 
   remark?: string;
 
-  source?: string;
+  schema_name?: string;
+
+  source?: ISource;
 
   sql?: string;
 
   sql_fingerprint?: string;
 
-  sql_manage_bad_num?: number;
-
-  sql_manage_optimized_num?: number;
-
-  sql_manage_total_num?: number;
-
-  status?: string;
+  status?: SqlManageStatusEnum;
 }
 
 export interface IStatisticAuditPlanResV1 {
@@ -2591,6 +2629,10 @@ export interface IUpdateRoleReqV1 {
   role_desc?: string;
 }
 
+export interface IUpdateRuleKnowledgeReq {
+  knowledge_content?: string;
+}
+
 export interface IUpdateRuleTemplateReqV1 {
   desc?: string;
 
@@ -2612,8 +2654,6 @@ export interface IUpdateSMTPConfigurationReqV1 {
 }
 
 export interface IUpdateSQLAuditRecordReqV1 {
-  sql_audit_record_id?: string;
-
   tags?: string[];
 }
 
@@ -3031,14 +3071,6 @@ export interface IAuditResDataV2 {
   score?: number;
 
   sql_results?: IAuditSQLResV2[];
-}
-
-export interface IAuditResult {
-  level?: string;
-
-  message?: string;
-
-  rule_name?: string;
 }
 
 export interface IAuditSQLResV2 {

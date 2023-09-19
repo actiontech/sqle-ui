@@ -1,4 +1,14 @@
-import { Button, Col, Form, Input, Row, Select, Space, Switch } from 'antd';
+import {
+  Button,
+  Col,
+  DatePicker,
+  Form,
+  Input,
+  Row,
+  Select,
+  Space,
+  Switch,
+} from 'antd';
 import {
   SQLPanelFilterFormFields,
   SQLPanelFilterFormProps,
@@ -11,7 +21,8 @@ import {
 } from '../../../data/common';
 import useInstance from '../../../hooks/useInstance';
 import { useEffect } from 'react';
-import useStaticStatus from '../../../hooks/useStaticStatus';
+import moment from 'moment';
+import useStaticStatus from './hooks/useStaticStatus';
 
 const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
   form,
@@ -21,24 +32,50 @@ const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
 }) => {
   const { t } = useTranslation();
   const { generateInstanceSelectOption, updateInstanceList } = useInstance();
-  const { getRuleLevelStatusSelectOption } = useStaticStatus();
-
+  const {
+    generateSourceSelectOptions,
+    generateAuditLevelSelectOptions,
+    generateStatusSelectOptions,
+  } = useStaticStatus();
+  const computeDisabledDate = (current: moment.Moment) => {
+    return current && current > moment().endOf('day');
+  };
   useEffect(() => {
     updateInstanceList({ project_name: projectName });
   }, [projectName, updateInstanceList]);
   return (
-    <Form<SQLPanelFilterFormFields> form={form}>
+    <Form<SQLPanelFilterFormFields> form={form} onFinish={submit}>
       <Row {...FilterFormRowLayout}>
         <Col {...FilterFormColLayout}>
-          <Form.Item label="" colon={false}>
-            <Input
-              placeholder={t('sqlManagement.filterForm.fuzzySearchPlaceholder')}
+          <Form.Item
+            label={t('sqlManagement.filterForm.source')}
+            name="filter_source"
+          >
+            <Select
+              placeholder={t('common.form.placeholder.searchSelect', {
+                name: t('sqlManagement.filterForm.source'),
+              })}
+              options={generateSourceSelectOptions}
             />
           </Form.Item>
         </Col>
-
         <Col {...FilterFormColLayout}>
-          <Form.Item label={t('sqlManagement.filterForm.instanceName')}>
+          <Form.Item
+            label={t('sqlManagement.filterForm.SQLFingerprint')}
+            name="fuzzy_search_sql_fingerprint"
+          >
+            <Input
+              placeholder={t('common.form.placeholder.input', {
+                name: t('sqlManagement.filterForm.SQLFingerprint'),
+              })}
+            />
+          </Form.Item>
+        </Col>
+        <Col {...FilterFormColLayout}>
+          <Form.Item
+            label={t('sqlManagement.filterForm.instanceName')}
+            name="filter_instance_name"
+          >
             <Select
               placeholder={t('common.form.placeholder.searchSelect', {
                 name: t('sqlManagement.filterForm.instanceName'),
@@ -49,48 +86,60 @@ const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
           </Form.Item>
         </Col>
         <Col {...FilterFormColLayout}>
-          <Form.Item label={t('sqlManagement.filterForm.source')}>
-            <Select
-              placeholder={t('common.form.placeholder.searchSelect', {
-                name: t('sqlManagement.filterForm.source'),
-              })}
-            ></Select>
-          </Form.Item>
-        </Col>
-        <Col {...FilterFormColLayout}>
-          <Form.Item label={t('sqlManagement.filterForm.highAuditLevel')}>
+          <Form.Item
+            label={t('sqlManagement.filterForm.highAuditLevel')}
+            name="filter_audit_level"
+          >
             <Select
               placeholder={t('common.form.placeholder.searchSelect', {
                 name: t('sqlManagement.filterForm.highAuditLevel'),
               })}
-            >
-              {getRuleLevelStatusSelectOption()}
-            </Select>
+              options={generateAuditLevelSelectOptions}
+            />
           </Form.Item>
         </Col>
         <Col {...FilterFormColLayout}>
-          <Form.Item label={t('sqlManagement.filterForm.status')}>
+          <Form.Item
+            label={t('sqlManagement.filterForm.status')}
+            name="filter_status"
+          >
             <Select
               placeholder={t('common.form.placeholder.searchSelect', {
                 name: t('sqlManagement.filterForm.status'),
               })}
-            ></Select>
+              options={generateStatusSelectOptions}
+            />
           </Form.Item>
         </Col>
         <Col {...FilterFormColLayout}>
-          <Form.Item label={t('sqlManagement.filterForm.relatedToMe')}>
+          <Form.Item
+            name="filter_last_audit_time"
+            label={t('sqlManagement.filterForm.time')}
+          >
+            <DatePicker.RangePicker
+              style={{ width: '100%' }}
+              disabledDate={computeDisabledDate}
+              showTime
+            />
+          </Form.Item>
+        </Col>
+        <Col {...FilterFormColLayout}>
+          <Form.Item
+            label={t('sqlManagement.filterForm.relatedToMe')}
+            name="filter_assignee"
+          >
             <Switch />
           </Form.Item>
         </Col>
 
         <Col
-          {...filterFormButtonLayoutFactory(12, 0, 6)}
+          {...filterFormButtonLayoutFactory(0, 8, 0)}
           className="text-align-right"
         >
           <Form.Item className="clear-margin-right" wrapperCol={{ span: 24 }}>
             <Space>
               <Button onClick={reset}>{t('common.reset')}</Button>
-              <Button type="primary" onClick={submit} htmlType="submit">
+              <Button type="primary" htmlType="submit">
                 {t('common.search')}
               </Button>
             </Space>

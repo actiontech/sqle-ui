@@ -6,7 +6,7 @@ import {
   IGetSQLAuditRecordTagTipsResV1,
   IGetSQLAuditRecordResV1,
   IUpdateSQLAuditRecordReqV1,
-  IBaseRes,
+  IBaseRes
 } from '../common.d';
 
 export interface IGetSQLAuditRecordsV1Params {
@@ -68,6 +68,8 @@ export interface IGetSQLAuditRecordV1Return extends IGetSQLAuditRecordResV1 {}
 export interface IUpdateSQLAuditRecordV1Params
   extends IUpdateSQLAuditRecordReqV1 {
   project_name: string;
+
+  sql_audit_record_id: string;
 }
 
 export interface IUpdateSQLAuditRecordV1Return extends IBaseRes {}

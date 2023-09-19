@@ -72,4 +72,5 @@ export type MaintenanceTimeInfoType = Array<{
 
 export type RenderExecuteSqlProps = {
   sql?: string;
+  rows?: number;
 };

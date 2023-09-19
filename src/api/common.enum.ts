@@ -190,6 +190,20 @@ export enum SQLQueryConfigResV1AllowQueryWhenLessThanAuditLevelEnum {
   'error' = 'error'
 }
 
+export enum SourceTypeEnum {
+  'audit_plan' = 'audit_plan',
+
+  'sql_audit_record' = 'sql_audit_record'
+}
+
+export enum SqlManageStatusEnum {
+  'unhandled' = 'unhandled',
+
+  'solved' = 'solved',
+
+  'ignored' = 'ignored'
+}
+
 export enum TestFeishuConfigurationReqV1AccountTypeEnum {
   'email' = 'email',
 

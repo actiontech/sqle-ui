@@ -1,5 +1,6 @@
 import { Card, Col, Row, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
+import { SQLStatisticsProps } from './index.type';
 
 const ColWrapperLayout = {
   xs: 24,
@@ -28,7 +29,11 @@ const ColContentValueLayout = {
   xxl: 14,
 };
 
-const SQLStatistics: React.FC = () => {
+const SQLStatistics: React.FC<SQLStatisticsProps> = ({
+  SQLTotalNum,
+  optimizedSQLNum,
+  problemSQlNum,
+}) => {
   const { t } = useTranslation();
   return (
     <Row gutter={30} className="sql-panel-statistics-wrapper">
@@ -49,7 +54,7 @@ const SQLStatistics: React.FC = () => {
               hoverable={false}
               className="text-align-center full-width-element"
             >
-              <Typography.Text>{287}</Typography.Text>
+              <Typography.Text>{SQLTotalNum}</Typography.Text>
             </Card.Grid>
           </Col>
         </Row>
@@ -72,7 +77,7 @@ const SQLStatistics: React.FC = () => {
               hoverable={false}
               className="text-align-center full-width-element"
             >
-              <Typography.Text>{287}</Typography.Text>
+              <Typography.Text>{problemSQlNum}</Typography.Text>
             </Card.Grid>
           </Col>
         </Row>
@@ -95,7 +100,7 @@ const SQLStatistics: React.FC = () => {
               hoverable={false}
               className="text-align-center full-width-element"
             >
-              <Typography.Text>{287}</Typography.Text>
+              <Typography.Text>{optimizedSQLNum}</Typography.Text>
             </Card.Grid>
           </Col>
         </Row>
