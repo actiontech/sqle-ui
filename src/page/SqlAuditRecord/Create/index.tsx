@@ -9,6 +9,7 @@ import {
   BaseInfoFormRef,
   SQLInfoFormFields,
   SQLInfoFormProps,
+  SQLInfoFormRef,
 } from './index.type';
 import SQLInfoForm from './SQLInfoForm';
 import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
@@ -30,6 +31,7 @@ const SQLAuditCreate: React.FC = () => {
   const { projectName } = useCurrentProjectName();
   const [task, setTask] = useState<IAuditTaskResV1>();
   const baseRef = useRef<BaseInfoFormRef>(null);
+  const sqlInfoRef = useRef<SQLInfoFormRef>(null);
 
   const auditSQL: SQLInfoFormProps['submit'] = async (values) => {
     const baseValues = await baseForm.validateFields();
@@ -71,8 +73,7 @@ const SQLAuditCreate: React.FC = () => {
 
   const resetForm = () => {
     baseRef.current?.reset();
-    baseForm.resetFields();
-    sqlInfoForm.resetFields();
+    sqlInfoRef.current?.reset();
   };
 
   return (
@@ -96,6 +97,7 @@ const SQLAuditCreate: React.FC = () => {
           </Card>
           <Card title={t('sqlAudit.create.SQLInfo.title')}>
             <SQLInfoForm
+              ref={sqlInfoRef}
               form={sqlInfoForm}
               submit={auditSQL}
               projectName={projectName}

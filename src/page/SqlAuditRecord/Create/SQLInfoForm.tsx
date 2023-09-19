@@ -11,16 +11,24 @@ import {
   Tooltip,
   Upload,
 } from 'antd';
-import { PageFormLayout } from '../../../data/common';
+import { PageFormLayout, ResponseCode } from '../../../data/common';
 import {
   AuditTypeEnum,
   SQLInfoFormFields,
   SQLInfoFormProps,
+  SQLInfoFormRef,
   UploadTypeEnum,
 } from './index.type';
 import { useTranslation } from 'react-i18next';
 import MonacoEditor, { MonacoEditorProps } from 'react-monaco-editor';
-import { ComponentType, useEffect } from 'react';
+import {
+  ComponentType,
+  forwardRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from 'react';
 import useStyles from '../../../theme';
 import useChangeTheme from '../../../hooks/useChangeTheme';
 import useMonacoEditor from '../../../hooks/useMonacoEditor';
@@ -34,15 +42,18 @@ import useInstance from '../../../hooks/useInstance';
 import useDatabaseType from '../../../hooks/useDatabaseType';
 import useInstanceSchema from '../../../hooks/useInstanceSchema';
 import { InfoCircleOutlined } from '@ant-design/icons';
+import instance from '../../../api/instance';
+import { IRuleTemplateV2 } from '../../../api/common';
+import { RuleUrlParamKey } from '../../Rule/useRuleFilterForm';
+import { Link } from 'react-router-dom';
 
 const MonacoEditorFunComponent =
   MonacoEditor as ComponentType<MonacoEditorProps>;
 
-const SQLInfoForm: React.FC<SQLInfoFormProps> = ({
-  form,
-  submit,
-  projectName,
-}) => {
+const SQLInfoForm: React.ForwardRefRenderFunction<
+  SQLInfoFormRef,
+  SQLInfoFormProps
+> = ({ form, submit, projectName }, ref) => {
   const { t } = useTranslation();
   const theme = useStyles();
   const { currentEditorTheme } = useChangeTheme();
@@ -201,9 +212,56 @@ const SQLInfoForm: React.FC<SQLInfoFormProps> = ({
     });
   };
 
-  const handleInstanceNameChange = () => {
+  const handleInstanceNameChange = (name: string) => {
     form.setFieldsValue({ instanceSchema: undefined });
+    updateRuleTemplateName(name);
   };
+
+  const [ruleTemplate, setRuleTemplate] = useState<IRuleTemplateV2>();
+
+  const updateRuleTemplateName = (name: string) => {
+    if (!name) {
+      setRuleTemplate(undefined);
+    }
+    instance
+      .getInstanceV2({ instance_name: name, project_name: projectName })
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          setRuleTemplate(res.data.data?.rule_template);
+        }
+      });
+  };
+
+  const ruleTemplateDisplay = useCallback(() => {
+    if (!ruleTemplate) {
+      return undefined;
+    }
+
+    if (ruleTemplate.is_global_rule_template) {
+      return (
+        <Link
+          to={`/rule?${RuleUrlParamKey.ruleTemplateName}=${ruleTemplate.name}`}
+        >
+          {t('rule.form.ruleTemplate')}: {ruleTemplate.name}
+        </Link>
+      );
+    }
+
+    return (
+      <Link
+        to={`/rule?${RuleUrlParamKey.ruleTemplateName}=${ruleTemplate.name}&${RuleUrlParamKey.projectName}=${projectName}`}
+      >
+        {t('rule.form.ruleTemplate')}: {ruleTemplate.name}
+      </Link>
+    );
+  }, [projectName, ruleTemplate, t]);
+
+  const reset = useCallback(() => {
+    setRuleTemplate(undefined);
+    form.resetFields();
+  }, [form]);
+
+  useImperativeHandle(ref, () => ({ reset }), [reset]);
 
   useEffect(() => {
     if (auditType === AuditTypeEnum.dynamic) {
@@ -309,6 +367,10 @@ const SQLInfoForm: React.FC<SQLInfoFormProps> = ({
               </Select>
             </Form.Item>
           </Col>
+
+          <Col span={4} style={{ marginTop: 4, marginLeft: 12 }}>
+            {ruleTemplateDisplay()}
+          </Col>
         </Row>
       </Form.Item>
 
@@ -374,4 +436,4 @@ const SQLInfoForm: React.FC<SQLInfoFormProps> = ({
   );
 };
 
-export default SQLInfoForm;
+export default forwardRef(SQLInfoForm);

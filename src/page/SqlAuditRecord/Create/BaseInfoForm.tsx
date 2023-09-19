@@ -45,6 +45,9 @@ const BaseInfoForm: React.ForwardRefRenderFunction<
   ) => {
     e.preventDefault();
     const { extraTag } = await extraTagForm.validateFields();
+    if (!extraTag) {
+      return;
+    }
     if (values.includes(extraTag)) {
       message.error(t('sqlAudit.create.createTagErrorTips'));
       return;
@@ -79,9 +82,10 @@ const BaseInfoForm: React.ForwardRefRenderFunction<
   };
 
   const reset = useCallback(() => {
+    form.resetFields();
     extraTagForm.resetFields();
     setValues([]);
-  }, [extraTagForm]);
+  }, [extraTagForm, form]);
 
   useImperativeHandle(ref, () => ({ reset }), [reset]);
 
