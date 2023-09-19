@@ -3,7 +3,7 @@
 export enum GetSqlManageListFilterSourceEnum {
   'audit_plan' = 'audit_plan',
 
-  'api_audit' = 'api_audit'
+  'sql_audit_record' = 'sql_audit_record'
 }
 
 export enum GetSqlManageListFilterAuditLevelEnum {

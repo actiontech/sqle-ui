@@ -267,6 +267,9 @@ const UpdateSyncTask = React.lazy(
     )
 );
 
+const SQLManagement = React.lazy(
+  () => import(/* webpackChunkName: "SQLManagement" */ '../page/SQLManagement')
+);
 const SQLAuditList = React.lazy(
   () =>
     import(/* webpackChunkName: "SQLAuditList" */ '../page/SqlAuditRecord/List')
@@ -307,6 +310,13 @@ export const projectDetailRouterConfig: RouterConfigItem<ProjectDetailRouterItem
       icon: <ProjectOutlined />,
       path: 'overview',
       element: <ProjectOverview />,
+    },
+    {
+      label: 'menu.sqlManagement',
+      key: 'SQLManagement',
+      icon: <ConsoleSqlOutlined />,
+      path: 'sqlManagement',
+      element: <SQLManagement />,
     },
     {
       label: 'menu.sqlAudit',

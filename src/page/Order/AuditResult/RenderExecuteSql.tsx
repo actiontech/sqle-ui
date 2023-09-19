@@ -3,7 +3,10 @@ import HighlightCode from '../../../utils/HighlightCode';
 import { RenderExecuteSqlProps } from './index.type';
 import CopyIcon from '../../../components/CopyIcon';
 
-const RenderExecuteSql: React.FC<RenderExecuteSqlProps> = ({ sql }) => {
+const RenderExecuteSql: React.FC<RenderExecuteSqlProps> = ({
+  sql,
+  rows = 10,
+}) => {
   if (!sql) {
     return null;
   }
@@ -17,10 +20,10 @@ const RenderExecuteSql: React.FC<RenderExecuteSqlProps> = ({ sql }) => {
             title: <pre className="pre-warp-break-all">{sql}</pre>,
             placement: 'topLeft',
             overlayInnerStyle: {
-              width: '30vw'
-            }
+              width: '30vw',
+            },
           },
-          rows: 10,
+          rows,
         }}
         className="margin-bottom-0"
       >

@@ -7,6 +7,8 @@ import {
 import { IGetSqlManageListResp } from '../common.d';
 
 export interface IGetSqlManageListParams {
+  project_name: string;
+
   fuzzy_search_sql_fingerprint?: string;
 
   filter_assignee?: string;
