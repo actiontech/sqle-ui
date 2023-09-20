@@ -5,12 +5,15 @@ import { AuditResultErrorMessageProps } from './index.type';
 import EmptyBox from '../EmptyBox';
 import { useRequest } from 'ahooks';
 import rule_template from '../../api/rule_template';
+import { Link } from '../Link';
 
 import './index.less';
+import { useTranslation } from 'react-i18next';
 
 const AuditResultErrorMessage: React.FC<AuditResultErrorMessageProps> = (
   props
 ) => {
+  const { t } = useTranslation();
   const filterRuleNames = useMemo(
     () =>
       (props.auditResult?.map((v) => v.rule_name ?? '') ?? []).filter(
@@ -43,14 +46,33 @@ const AuditResultErrorMessage: React.FC<AuditResultErrorMessageProps> = (
                 <RuleLevelIcon ruleLevel={v.level} />
               </Col>
               <Col flex={1} className="message">
-                <Tooltip
-                  title={
-                    ruleInfo?.find((rule) => rule.rule_name === v.rule_name)
-                      ?.annotation ?? ''
+                <EmptyBox
+                  if={
+                    !!ruleInfo?.find((rule) => rule.rule_name === v.rule_name)
                   }
+                  defaultNode={v.message}
                 >
-                  {v.message}
-                </Tooltip>
+                  <Tooltip
+                    title={
+                      <>
+                        <span>
+                          {ruleInfo?.find(
+                            (rule) => rule.rule_name === v.rule_name
+                          )?.annotation ?? ''}
+                        </span>
+
+                        {/* IFTRUE_isEE */}
+                        {'  '}
+                        <Link to={`rule/knowledge/${v.rule_name}`}>
+                          {t('common.showMore')}
+                        </Link>
+                        {/* FITRUE_isEE */}
+                      </>
+                    }
+                  >
+                    {v.message}
+                  </Tooltip>
+                </EmptyBox>
               </Col>
             </Row>
           );

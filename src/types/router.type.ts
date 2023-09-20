@@ -6,6 +6,7 @@ import { I18nKey } from './common.type';
 export type GlobalRouterItemKeyLiteral =
   | 'dashboard'
   | 'rule'
+  | 'ruleKnowledge'
   | 'sqlQuery'
   | 'reportStatistics'
   | 'account'

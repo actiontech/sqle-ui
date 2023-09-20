@@ -1316,7 +1316,11 @@ export interface IGetSqlManageListResp {
 
   message?: string;
 
-  total_nums?: number;
+  sql_manage_bad_num?: number;
+
+  sql_manage_optimized_num?: number;
+
+  sql_manage_total_num?: number;
 }
 
 export interface IGetSyncInstanceTaskListResV1 {
@@ -2031,6 +2035,18 @@ export interface IRoleUserCount {
   role?: string;
 }
 
+export interface IRuleInfo {
+  annotation?: string;
+
+  desc?: string;
+}
+
+export interface IRuleKnowledgeResV1 {
+  knowledge_content?: string;
+
+  rule?: IRuleInfo;
+}
+
 export interface IRuleParamReqV1 {
   key?: string;
 
@@ -2224,23 +2240,19 @@ export interface ISqlManage {
 
   id?: number;
 
-  instance?: string;
+  instance_name?: string;
 
   last_appear_time?: string;
 
   remark?: string;
+
+  schema_name?: string;
 
   source?: string;
 
   sql?: string;
 
   sql_fingerprint?: string;
-
-  sql_manage_bad_num?: number;
-
-  sql_manage_optimized_num?: number;
-
-  sql_manage_total_num?: number;
 
   status?: string;
 }
@@ -2591,6 +2603,10 @@ export interface IUpdateRoleReqV1 {
   role_desc?: string;
 }
 
+export interface IUpdateRuleKnowledgeReq {
+  knowledge_content?: string;
+}
+
 export interface IUpdateRuleTemplateReqV1 {
   desc?: string;
 
@@ -2612,8 +2628,6 @@ export interface IUpdateSMTPConfigurationReqV1 {
 }
 
 export interface IUpdateSQLAuditRecordReqV1 {
-  sql_audit_record_id?: string;
-
   tags?: string[];
 }
 
