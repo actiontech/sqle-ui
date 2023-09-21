@@ -26,6 +26,7 @@ import customRule from './customRule';
 import ruleManager from './ruleManager';
 import sqlManagement from './sqlManagement';
 import sqlAudit from './sqlAudit';
+import ruleKnowledge from './ruleKnowledge';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -58,5 +59,6 @@ export default {
     ruleManager,
     sqlManagement,
     sqlAudit,
+    ruleKnowledge,
   },
 };

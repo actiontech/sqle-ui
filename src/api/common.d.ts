@@ -1210,6 +1210,14 @@ export interface IGetRolesResV1 {
   total_nums?: number;
 }
 
+export interface IGetRuleKnowledgeResV1 {
+  code?: number;
+
+  data?: IRuleKnowledgeResV1;
+
+  message?: string;
+}
+
 export interface IGetRuleTemplateResV1 {
   code?: number;
 

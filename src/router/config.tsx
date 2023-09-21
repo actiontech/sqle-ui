@@ -38,6 +38,10 @@ const Rule = React.lazy(
   () => import(/* webpackChunkName: "Rule" */ '../page/Rule')
 );
 
+const RuleKnowledge = React.lazy(
+  () => import(/* webpackChunkName: "RuleKnowledge" */ '../page/RuleKnowledge')
+);
+
 const DataSource = React.lazy(
   () => import(/* webpackChunkName: "DataSource" */ '../page/DataSource')
 );
@@ -607,6 +611,14 @@ export const globalRouterConfig: RouterConfigItem<
     icon: <DesktopOutlined />,
     key: 'rule',
   },
+  /* IFTRUE_isEE */
+  {
+    path: 'rule/knowledge/:ruleName',
+    key: 'ruleKnowledge',
+    element: <RuleKnowledge />,
+    hideInSliderMenu: true,
+  },
+  /* FITRUE_isEE */
   {
     key: 'ruleManager',
     icon: <AuditOutlined />,

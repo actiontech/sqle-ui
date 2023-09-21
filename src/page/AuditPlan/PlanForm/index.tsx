@@ -113,7 +113,7 @@ const PlanForm: React.FC<PlanFormProps> = ({ form, ...props }) => {
           {
             required: true,
           },
-          ...nameRule(119),
+          ...nameRule(120),
         ]}
       >
         <Input
