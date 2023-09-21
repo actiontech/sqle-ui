@@ -61,6 +61,7 @@ const AuditResultErrorMessage: React.FC<AuditResultErrorMessageProps> = (
                         {/* 暂时不支持自定义规则 */}
                         <EmptyBox if={!rule?.is_custom_rule && !!rule?.db_type}>
                           <Link
+                            target="_blank"
                             to={`rule/knowledge/${v.rule_name}?db_type=${rule?.db_type}`}
                           >
                             {t('common.showMore')}

@@ -7,6 +7,7 @@ import rule_template from '../../api/rule_template';
 import RuleUnderstand from './RuleUnderstand';
 import { useEffect, useState } from 'react';
 import EmptyBox from '../../components/EmptyBox';
+import useCurrentUser from '../../hooks/useCurrentUser';
 
 const RuleKnowledge: React.FC = () => {
   const { t } = useTranslation();
@@ -14,6 +15,7 @@ const RuleKnowledge: React.FC = () => {
   const theme = useTheme();
   const { ruleName = '' } = useParams<{ ruleName: string }>();
   const [dbType, setDbType] = useState<string>();
+  const { isAdmin } = useCurrentUser();
 
   const {
     data: ruleKnowledgeInfo,
@@ -70,6 +72,7 @@ const RuleKnowledge: React.FC = () => {
               content={ruleKnowledgeInfo?.knowledge_content}
               refresh={refresh}
               dbType={dbType!}
+              isAdmin={isAdmin}
             />
           </EmptyBox>
         </Space>

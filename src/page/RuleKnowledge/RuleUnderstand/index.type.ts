@@ -6,6 +6,7 @@ export type RuleUnderstandProps = {
   refresh: () => void;
   dbType: string;
   loading: boolean;
+  isAdmin: boolean;
 };
 
 export type EditKnowledgeContentProps = {

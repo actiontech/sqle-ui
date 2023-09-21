@@ -17,6 +17,7 @@ const RuleUnderstand: React.FC<RuleUnderstandProps> = ({
   refresh,
   dbType,
   loading,
+  isAdmin,
 }) => {
   const { t } = useTranslation();
   const [modifyFlag, { setTrue: startModify, setFalse: modifyFinish }] =
@@ -76,7 +77,7 @@ const RuleUnderstand: React.FC<RuleUnderstandProps> = ({
         loading={loading}
         title={t('ruleKnowledge.ruleUnderstanding')}
         extra={
-          <EmptyBox if={!modifyFlag}>
+          <EmptyBox if={!modifyFlag && isAdmin}>
             <Button onClick={startModify} type="primary" disabled={loading}>
               {t('ruleKnowledge.edit')}
             </Button>

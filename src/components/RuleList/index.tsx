@@ -91,12 +91,12 @@ const RuleList: React.FC<RuleListProps> = (props) => {
                         {/* 暂时不支持自定义规则 */}
                         <EmptyBox if={!item?.is_custom_rule && !!item?.db_type}>
                           <Link
+                            target="_blank"
                             to={`rule/knowledge/${item.rule_name}?db_type=${item?.db_type}`}
                           >
                             {t('common.showMore')}
                           </Link>
                         </EmptyBox>
-
                         {/* FITRUE_isEE */}
                       </>
                     }
