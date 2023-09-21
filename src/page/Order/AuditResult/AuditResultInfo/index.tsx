@@ -59,7 +59,6 @@ const AuditResultInfo: React.FC<AuditResultColumnProps> = ({
       </div>
     );
   };
-
   const renderAuditColumn = () => {
     if (auditResultNum === 1)
       return <AuditResultErrorMessage auditResult={auditResult} />;

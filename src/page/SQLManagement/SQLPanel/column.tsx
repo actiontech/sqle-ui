@@ -1,4 +1,4 @@
-import { Table, Tag, TagProps } from 'antd';
+import { Space, Table, Tag, TagProps, Typography } from 'antd';
 import { GetSqlManageListFilterStatusEnum } from '../../../api/SqlManage/index.enum';
 import { IAuditResult, ISource, ISqlManage } from '../../../api/common';
 import { t } from '../../../locale';
@@ -6,16 +6,50 @@ import { formatTime } from '../../../utils/Common';
 import RenderExecuteSql from '../../Order/AuditResult/RenderExecuteSql';
 import { sourceDictionary, statusDictionary } from './hooks/useStaticStatus';
 import { Link } from '../../../components/Link';
-import { SourceTypeEnum, SqlManageStatusEnum } from '../../../api/common.enum';
+import {
+  BatchUpdateSqlManageReqStatusEnum,
+  SourceTypeEnum,
+  SqlManageStatusEnum,
+} from '../../../api/common.enum';
 import AuditResultInfo from '../../Order/AuditResult/AuditResultInfo';
 import { ColumnGroupType, ColumnType } from 'antd/lib/table';
+import EditText from '../../../components/EditText/EditText';
+import AssignMember from './AssignMember';
+import EmptyBox from '../../../components/EmptyBox';
+import UpdateSQLStatus from './UpdateSQLStatus';
 
-export const SQLPanelColumns: (params: { projectName: string }) => Array<
+export const SQLPanelColumns: (params: {
+  projectName: string;
+  updateRemark: (id: number, remark: string) => void;
+  signalActionsLoading: boolean;
+  signalAssignment: (
+    id: number,
+    members: string[]
+  ) => Promise<void> | undefined;
+  actionPermission: boolean;
+  username: string;
+  updateSQLStatus: (
+    id: number,
+    status: BatchUpdateSqlManageReqStatusEnum
+  ) => Promise<void> | undefined;
+}) => Array<
   | (ColumnGroupType<ISqlManage> | ColumnType<ISqlManage>) & {
-      dataIndex?: keyof ISqlManage;
+      dataIndex?: keyof ISqlManage | 'operator';
     }
-> = ({ projectName }) => {
-  return [
+> = ({
+  projectName,
+  updateRemark,
+  signalActionsLoading,
+  signalAssignment,
+  actionPermission,
+  username,
+  updateSQLStatus,
+}) => {
+  const columns: Array<
+    | (ColumnGroupType<ISqlManage> | ColumnType<ISqlManage>) & {
+        dataIndex?: keyof ISqlManage | 'operator';
+      }
+  > = [
     {
       dataIndex: 'sql_fingerprint',
       title: () => t('sqlManagement.table.SQLFingerprint'),
@@ -120,6 +154,56 @@ export const SQLPanelColumns: (params: { projectName: string }) => Array<
     {
       dataIndex: 'remark',
       title: () => t('sqlManagement.table.comment'),
+      render: (remark: string, record) => {
+        return (
+          <EditText
+            editable={{
+              autoSize: true,
+              onEnd: (val) => {
+                updateRemark(record.id ?? 0, val);
+              },
+            }}
+          >
+            {remark}
+          </EditText>
+        );
+      },
+    },
+    {
+      dataIndex: 'operator',
+      title: () => t('common.operate'),
+      render: (_, record) => {
+        return (
+          <Space>
+            <AssignMember
+              projectName={projectName}
+              disabled={signalActionsLoading}
+              onConfirm={(members: string[]) =>
+                signalAssignment(record.id ?? 0, members)
+              }
+            >
+              <Typography.Link>
+                {t('sqlManagement.table.assignMember.label')}
+              </Typography.Link>
+            </AssignMember>
+
+            <EmptyBox if={record.assignees?.includes(username)}>
+              <UpdateSQLStatus
+                disabled={signalActionsLoading}
+                onConfirm={(status) => updateSQLStatus(record.id ?? 0, status)}
+              >
+                <Typography.Link>
+                  {t('sqlManagement.table.updateStatus.triggerText')}
+                </Typography.Link>
+              </UpdateSQLStatus>
+            </EmptyBox>
+          </Space>
+        );
+      },
     },
   ];
+  if (!actionPermission) {
+    return columns.filter((v) => v.dataIndex !== 'operator');
+  }
+  return columns;
 };

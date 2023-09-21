@@ -82,6 +82,12 @@ export enum AuditTaskResV1StatusEnum {
   'manually_executed' = 'manually_executed'
 }
 
+export enum BatchUpdateSqlManageReqStatusEnum {
+  'solved' = 'solved',
+
+  'ignored' = 'ignored'
+}
+
 export enum CreateAuditWhitelistReqV1MatchTypeEnum {
   'exact_match' = 'exact_match',
 

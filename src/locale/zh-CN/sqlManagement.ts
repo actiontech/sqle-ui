@@ -50,8 +50,25 @@ export default {
 
     actions: {
       batchAssignment: '批量指派',
+      batchAssignmentSuccessTips: '批量指派负责人成功',
+      signalAssignmentSuccessTips: '指派负责人成功',
+      signalUpdateStatusSuccessTips: '更新SQL状态成功',
       batchSolve: '批量解决',
+      batchSolveTips: '是否确认将所选SQL设为已解决?',
+      batchSolveSuccessTips: '批量解决SQL成功',
       batchIgnore: '批量忽略',
+      batchIgnoreTips: '是否确认将所选SQL设为已忽略?',
+      batchIgnoreSuccessTips: '批量忽略SQL成功',
+    },
+
+    assignMember: {
+      label: '指派负责人',
+    },
+    updateStatus: {
+      triggerText: '变更状态',
+      label: '变更当前SQL状态为: ',
+      solve: '解决',
+      ignore: '忽略',
     },
   },
 };
