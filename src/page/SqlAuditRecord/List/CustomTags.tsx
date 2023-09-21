@@ -29,7 +29,6 @@ const CustomTags: React.FC<CustomTagsProps> = ({
   const styles = useStyles();
   const { t } = useTranslation();
   const [extraTagForm] = Form.useForm<{ extraTag: string }>();
-  const extraTag = Form.useWatch('extraTag', extraTagForm);
 
   const removing = useRef(false);
   const removeTag = async (tag: string) => {
