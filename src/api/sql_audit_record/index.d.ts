@@ -45,6 +45,12 @@ export interface ICreateSQLAuditRecordV1Params {
   input_mybatis_xml_file?: any;
 
   input_zip_file?: any;
+
+  git_http_url?: string;
+
+  git_user_name?: string;
+
+  git_user_password?: string;
 }
 
 export interface ICreateSQLAuditRecordV1Return

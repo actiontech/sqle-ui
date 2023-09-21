@@ -3,6 +3,7 @@ import {
   Col,
   Form,
   FormItemProps,
+  Input,
   Radio,
   RadioGroupProps,
   Row,
@@ -47,6 +48,7 @@ import { IRuleTemplateV2 } from '../../../api/common';
 import { RuleUrlParamKey } from '../../Rule/useRuleFilterForm';
 import { Link } from 'react-router-dom';
 import { getInstanceTipListV1FunctionalModuleEnum } from '../../../api/instance/index.enum';
+import EmptyBox from '../../../components/EmptyBox';
 
 const MonacoEditorFunComponent =
   MonacoEditor as ComponentType<MonacoEditorProps>;
@@ -104,11 +106,8 @@ const SQLInfoForm: React.ForwardRefRenderFunction<
           ...PageFormLayout.wrapperCol,
           className: theme.editor,
         },
-        rules: [
-          {
-            required: true,
-          },
-        ],
+        rules: [{ required: uploadType === UploadTypeEnum.sql }],
+
         children: (
           <MonacoEditorFunComponent
             theme={currentEditorTheme}
@@ -126,6 +125,7 @@ const SQLInfoForm: React.ForwardRefRenderFunction<
       return {
         name: 'sqlFile',
         label: t('sqlAudit.create.SQLInfo.uploadLabelEnum.sqlFile'),
+        rules: [{ required: uploadType === UploadTypeEnum.sqlFile }],
         children: (
           <Upload
             accept=".sql"
@@ -141,6 +141,7 @@ const SQLInfoForm: React.ForwardRefRenderFunction<
       return {
         name: 'mybatisFile',
         label: t('sqlAudit.create.SQLInfo.uploadLabelEnum.xmlFile'),
+        rules: [{ required: uploadType === UploadTypeEnum.xmlFile }],
         children: (
           <Upload
             accept=".xml"
@@ -156,6 +157,7 @@ const SQLInfoForm: React.ForwardRefRenderFunction<
       return {
         name: 'zipFile',
         label: t('sqlAudit.create.SQLInfo.uploadLabelEnum.zipFile'),
+        rules: [{ required: uploadType === UploadTypeEnum.zipFile }],
         children: (
           <Upload
             accept=".zip"
@@ -166,6 +168,20 @@ const SQLInfoForm: React.ForwardRefRenderFunction<
           </Upload>
         ),
         ...uploadCommonProps,
+      };
+    } else if (type === UploadTypeEnum.git) {
+      return {
+        name: 'git_http_url',
+        label: t('sqlAudit.create.SQLInfo.uploadLabelEnum.gitUrl'),
+        rules: [{ required: uploadType === UploadTypeEnum.git }],
+        tooltip: t('sqlAudit.create.SQLInfo.uploadLabelEnum.gitUrlTips'),
+        children: (
+          <Input
+            placeholder={t('common.form.placeholder.input', {
+              name: t('sqlAudit.create.SQLInfo.uploadLabelEnum.gitUrl'),
+            })}
+          />
+        ),
       };
     } else {
       return {};
@@ -402,10 +418,31 @@ const SQLInfoForm: React.ForwardRefRenderFunction<
           <Radio value={UploadTypeEnum.zipFile}>
             {t('sqlAudit.create.SQLInfo.uploadTypeEnum.zipFile')}
           </Radio>
+          <Radio value={UploadTypeEnum.git}>
+            {t('sqlAudit.create.SQLInfo.uploadTypeEnum.gitRepository')}
+          </Radio>
         </Radio.Group>
       </Form.Item>
 
       <Form.Item {...genUploadItem(uploadType)} />
+
+      <EmptyBox if={uploadType === UploadTypeEnum.git}>
+        <Form.Item label={t('common.username')} name="git_user_name">
+          <Input
+            placeholder={t('common.form.placeholder.input', {
+              name: t('common.username'),
+            })}
+          />
+        </Form.Item>
+
+        <Form.Item label={t('common.password')} name="git_user_password">
+          <Input.Password
+            placeholder={t('common.form.placeholder.input', {
+              name: t('common.password'),
+            })}
+          />
+        </Form.Item>
+      </EmptyBox>
 
       <Form.Item label=" " colon={false}>
         <Space size={16}>
