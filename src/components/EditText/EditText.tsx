@@ -11,6 +11,7 @@ const EditText: React.FC<EditTextProps> = (props) => {
 
   return (
     <Typography.Paragraph
+      className="clear-margin-bottom"
       {...otherProps}
       editable={{
         ...editable,
