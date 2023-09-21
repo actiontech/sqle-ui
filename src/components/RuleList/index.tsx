@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { RuleListDefaultTabKey } from '../../data/common';
 import { RuleListProps, TabRuleItem } from './index.type';
 import RuleLevelIcon from './RuleLevelIcon';
+import { Link } from '../Link';
+import EmptyBox from '../EmptyBox';
 
 const RuleList: React.FC<RuleListProps> = (props) => {
   const { t } = useTranslation();
@@ -80,7 +82,25 @@ const RuleList: React.FC<RuleListProps> = (props) => {
                 avatar={<RuleLevelIcon ruleLevel={item.level} />}
                 title={item.desc}
                 description={
-                  <Tooltip title={item.annotation}>
+                  <Tooltip
+                    title={
+                      <>
+                        {item.annotation}
+                        {/* IFTRUE_isEE */}
+                        {'  '}
+                        {/* 暂时不支持自定义规则 */}
+                        <EmptyBox if={!item?.is_custom_rule && !!item?.db_type}>
+                          <Link
+                            to={`rule/knowledge/${item.rule_name}?db_type=${item?.db_type}`}
+                          >
+                            {t('common.showMore')}
+                          </Link>
+                        </EmptyBox>
+
+                        {/* FITRUE_isEE */}
+                      </>
+                    }
+                  >
                     <Typography.Text
                       ellipsis={true}
                       type="secondary"

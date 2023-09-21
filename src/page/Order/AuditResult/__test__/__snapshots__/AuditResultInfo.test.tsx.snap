@@ -248,9 +248,7 @@ exports[`Order/AuditResult/AuditResultInfo should render single audit result det
           class="ant-col message"
           style="flex: 1 1 auto; min-width: 0;"
         >
-          <span>
-            schema 不存在
-          </span>
+          schema 不存在
         </div>
       </div>
     </div>

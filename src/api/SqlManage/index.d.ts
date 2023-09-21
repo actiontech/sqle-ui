@@ -4,9 +4,15 @@ import {
   GetSqlManageListFilterStatusEnum
 } from './index.enum';
 
-import { IGetSqlManageListResp } from '../common.d';
+import {
+  IGetSqlManageListResp,
+  IBatchUpdateSqlManageReq,
+  IBaseRes
+} from '../common.d';
 
 export interface IGetSqlManageListParams {
+  project_name: string;
+
   fuzzy_search_sql_fingerprint?: string;
 
   filter_assignee?: string;
@@ -29,3 +35,9 @@ export interface IGetSqlManageListParams {
 }
 
 export interface IGetSqlManageListReturn extends IGetSqlManageListResp {}
+
+export interface IBatchUpdateSqlManageParams extends IBatchUpdateSqlManageReq {
+  project_name: string;
+}
+
+export interface IBatchUpdateSqlManageReturn extends IBaseRes {}

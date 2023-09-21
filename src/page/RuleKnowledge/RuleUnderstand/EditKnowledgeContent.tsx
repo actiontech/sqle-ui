@@ -8,18 +8,17 @@ const EditKnowledgeContent: React.FC<EditKnowledgeContentProps> = ({
   setHasDirtyData,
 }) => {
   return (
-    <>
-      <MDEditor
-        previewOptions={{
-          rehypePlugins: [[rehypeSanitize]],
-        }}
-        value={value}
-        onChange={(v) => {
-          onChange?.(v);
-          setHasDirtyData(true);
-        }}
-      />
-    </>
+    <MDEditor
+      height={500}
+      previewOptions={{
+        rehypePlugins: [[rehypeSanitize]],
+      }}
+      value={value}
+      onChange={(v) => {
+        onChange?.(v);
+        setHasDirtyData(true);
+      }}
+    />
   );
 };
 

@@ -7,6 +7,7 @@ import {
   AuditTaskResV1AuditLevelEnum,
   AuditTaskResV1SqlSourceEnum,
   AuditTaskResV1StatusEnum,
+  BatchUpdateSqlManageReqStatusEnum,
   CreateAuditWhitelistReqV1MatchTypeEnum,
   CreateCustomRuleReqV1LevelEnum,
   CustomRuleResV1LevelEnum,
@@ -19,6 +20,8 @@ import {
   RuleResV1LevelEnum,
   SQLQueryConfigReqV1AllowQueryWhenLessThanAuditLevelEnum,
   SQLQueryConfigResV1AllowQueryWhenLessThanAuditLevelEnum,
+  SourceTypeEnum,
+  SqlManageStatusEnum,
   TestFeishuConfigurationReqV1AccountTypeEnum,
   UpdateAuditPlanNotifyConfigReqV1NotifyLevelEnum,
   UpdateAuditWhitelistReqV1MatchTypeEnum,
@@ -137,6 +140,14 @@ export interface IAuditPlanSQLReqV1 {
   audit_plan_sql_last_receive_timestamp?: string;
 
   audit_plan_sql_schema?: string;
+
+  db_user?: string;
+
+  first_query_at?: string;
+
+  query_time_avg?: number;
+
+  query_time_max?: number;
 }
 
 export interface IAuditPlanSQLResV1 {
@@ -163,6 +174,14 @@ export interface IAuditResDataV1 {
   score?: number;
 
   sql_results?: IAuditSQLResV1[];
+}
+
+export interface IAuditResult {
+  level?: string;
+
+  message?: string;
+
+  rule_name?: string;
 }
 
 export interface IAuditSQLResV1 {
@@ -275,6 +294,16 @@ export interface IBatchGetInstanceConnectionsResV1 {
   data?: IInstanceConnectionResV1[];
 
   message?: string;
+}
+
+export interface IBatchUpdateSqlManageReq {
+  assignees?: string[];
+
+  remark?: string;
+
+  sql_manage_id_list?: number[];
+
+  status?: BatchUpdateSqlManageReqStatusEnum;
 }
 
 export interface IBindOauth2UserReqV1 {
@@ -1179,6 +1208,14 @@ export interface IGetRolesResV1 {
   message?: string;
 
   total_nums?: number;
+}
+
+export interface IGetRuleKnowledgeResV1 {
+  code?: number;
+
+  data?: IRuleKnowledgeResV1;
+
+  message?: string;
 }
 
 export interface IGetRuleTemplateResV1 {
@@ -2207,6 +2244,14 @@ export interface ISQLQueryConfigResV1 {
   query_timeout_second?: number;
 }
 
+export interface ISource {
+  audit_plan_name?: string;
+
+  sql_audit_record_id?: string;
+
+  type?: SourceTypeEnum;
+}
+
 export interface ISqlAnalysisResDataV1 {
   sql_explain?: ISQLExplain;
 
@@ -2232,9 +2277,9 @@ export interface ISqlExecutionFailPercent {
 export interface ISqlManage {
   appear_num?: number;
 
-  assignee?: string;
+  assignees?: string[];
 
-  audit_result?: string;
+  audit_result?: IAuditResult[];
 
   first_appear_time?: string;
 
@@ -2248,13 +2293,13 @@ export interface ISqlManage {
 
   schema_name?: string;
 
-  source?: string;
+  source?: ISource;
 
   sql?: string;
 
   sql_fingerprint?: string;
 
-  status?: string;
+  status?: SqlManageStatusEnum;
 }
 
 export interface IStatisticAuditPlanResV1 {
@@ -3045,14 +3090,6 @@ export interface IAuditResDataV2 {
   score?: number;
 
   sql_results?: IAuditSQLResV2[];
-}
-
-export interface IAuditResult {
-  level?: string;
-
-  message?: string;
-
-  rule_name?: string;
 }
 
 export interface IAuditSQLResV2 {

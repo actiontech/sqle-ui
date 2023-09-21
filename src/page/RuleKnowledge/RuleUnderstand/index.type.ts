@@ -4,6 +4,8 @@ export type RuleUnderstandProps = {
   ruleName: string;
   content?: string;
   refresh: () => void;
+  dbType: string;
+  loading: boolean;
 };
 
 export type EditKnowledgeContentProps = {

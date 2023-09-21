@@ -6,9 +6,9 @@ import EmptyBox from '../EmptyBox';
 import { useRequest } from 'ahooks';
 import rule_template from '../../api/rule_template';
 import { Link } from '../Link';
+import { useTranslation } from 'react-i18next';
 
 import './index.less';
-import { useTranslation } from 'react-i18next';
 
 const AuditResultErrorMessage: React.FC<AuditResultErrorMessageProps> = (
   props
@@ -40,6 +40,7 @@ const AuditResultErrorMessage: React.FC<AuditResultErrorMessageProps> = (
         className="audit-result-error-message-wrapper"
       >
         {props.auditResult?.map((v) => {
+          const rule = ruleInfo?.find((rule) => rule.rule_name === v.rule_name);
           return (
             <Row wrap={false} key={v.message}>
               <Col flex="50px">
@@ -47,25 +48,25 @@ const AuditResultErrorMessage: React.FC<AuditResultErrorMessageProps> = (
               </Col>
               <Col flex={1} className="message">
                 <EmptyBox
-                  if={
-                    !!ruleInfo?.find((rule) => rule.rule_name === v.rule_name)
-                  }
+                  if={!!rule && !!rule.annotation}
                   defaultNode={v.message}
                 >
                   <Tooltip
                     title={
                       <>
-                        <span>
-                          {ruleInfo?.find(
-                            (rule) => rule.rule_name === v.rule_name
-                          )?.annotation ?? ''}
-                        </span>
+                        <span>{rule?.annotation}</span>
 
                         {/* IFTRUE_isEE */}
                         {'  '}
-                        <Link to={`rule/knowledge/${v.rule_name}`}>
-                          {t('common.showMore')}
-                        </Link>
+                        {/* 暂时不支持自定义规则 */}
+                        <EmptyBox if={!rule?.is_custom_rule && !!rule?.db_type}>
+                          <Link
+                            to={`rule/knowledge/${v.rule_name}?db_type=${rule?.db_type}`}
+                          >
+                            {t('common.showMore')}
+                          </Link>
+                        </EmptyBox>
+
                         {/* FITRUE_isEE */}
                       </>
                     }

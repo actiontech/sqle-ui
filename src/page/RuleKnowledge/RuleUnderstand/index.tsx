@@ -15,12 +15,13 @@ const RuleUnderstand: React.FC<RuleUnderstandProps> = ({
   content,
   ruleName,
   refresh,
+  dbType,
+  loading,
 }) => {
   const { t } = useTranslation();
   const [modifyFlag, { setTrue: startModify, setFalse: modifyFinish }] =
     useBoolean();
   const [hasDirtyData, setHasDirtyData] = useState(false);
-
   const [editValue, setEditValue] = useState<string>();
   const [submitLoading, { setFalse: submitFinish, setTrue: startSubmit }] =
     useBoolean();
@@ -47,6 +48,7 @@ const RuleUnderstand: React.FC<RuleUnderstandProps> = ({
       .updateRuleKnowledge({
         rule_name: ruleName,
         knowledge_content: editValue,
+        db_type: dbType,
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
@@ -71,10 +73,11 @@ const RuleUnderstand: React.FC<RuleUnderstandProps> = ({
   return (
     <>
       <Card
+        loading={loading}
         title={t('ruleKnowledge.ruleUnderstanding')}
         extra={
           <EmptyBox if={!modifyFlag}>
-            <Button onClick={startModify} type="primary">
+            <Button onClick={startModify} type="primary" disabled={loading}>
               {t('ruleKnowledge.edit')}
             </Button>
           </EmptyBox>
@@ -88,7 +91,7 @@ const RuleUnderstand: React.FC<RuleUnderstandProps> = ({
           />
         ) : (
           <EmptyBox
-            if={!content}
+            if={!!content}
             defaultNode={
               <Empty
                 image={Empty.PRESENTED_IMAGE_SIMPLE}
@@ -102,7 +105,6 @@ const RuleUnderstand: React.FC<RuleUnderstandProps> = ({
           >
             <MDEditor.Markdown
               source={content}
-              style={{ whiteSpace: 'pre-wrap' }}
               rehypePlugins={[rehypeSanitize]}
             />
           </EmptyBox>
