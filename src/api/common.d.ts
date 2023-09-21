@@ -7,6 +7,7 @@ import {
   AuditTaskResV1AuditLevelEnum,
   AuditTaskResV1SqlSourceEnum,
   AuditTaskResV1StatusEnum,
+  BatchUpdateSqlManageReqStatusEnum,
   CreateAuditWhitelistReqV1MatchTypeEnum,
   CreateCustomRuleReqV1LevelEnum,
   CustomRuleResV1LevelEnum,
@@ -40,7 +41,7 @@ import {
   WorkflowRecordResV2StatusEnum,
   WorkflowResV2ModeEnum,
   WorkflowStepResV2StateEnum,
-  WorkflowStepResV2TypeEnum,
+  WorkflowStepResV2TypeEnum
 } from './common.enum';
 
 export interface IBaseRes {
@@ -293,6 +294,16 @@ export interface IBatchGetInstanceConnectionsResV1 {
   data?: IInstanceConnectionResV1[];
 
   message?: string;
+}
+
+export interface IBatchUpdateSqlManageReq {
+  assignees?: string[];
+
+  remark?: string;
+
+  sql_manage_id_list?: number[];
+
+  status?: BatchUpdateSqlManageReqStatusEnum;
 }
 
 export interface IBindOauth2UserReqV1 {

@@ -80,6 +80,18 @@ class SqlAuditRecordService extends ServiceBase {
       paramsData.append('input_zip_file', params.input_zip_file as any);
     }
 
+    if (params.git_http_url != undefined) {
+      paramsData.append('git_http_url', params.git_http_url as any);
+    }
+
+    if (params.git_user_name != undefined) {
+      paramsData.append('git_user_name', params.git_user_name as any);
+    }
+
+    if (params.git_user_password != undefined) {
+      paramsData.append('git_user_password', params.git_user_password as any);
+    }
+
     const project_name = params.project_name;
 
     return this.post<ICreateSQLAuditRecordV1Return>(
