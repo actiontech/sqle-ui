@@ -59,6 +59,7 @@ export type ProjectDetailRouterItemKeyLiteral =
   | 'member'
   | 'projectOverview'
   | 'projectRedirect'
+  | 'SQLManagement'
   | 'sqlAudit'
   | 'sqlAuditList'
   | 'sqlAuditDetail'

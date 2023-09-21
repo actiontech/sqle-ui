@@ -60,6 +60,8 @@ export default {
         sqlFile: 'SQL文件',
         xmlFile: 'Mybatis的XML文件',
         zipFile: 'ZIP文件',
+        gitUrl: 'GIT地址',
+        gitUrlTips: '若为私有GIT仓库，则必须输入有读权限的账号密码',
       },
       auditButton: '审核',
       formatterSQL: 'SQL美化',

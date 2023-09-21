@@ -24,6 +24,7 @@ import syncDataSource from './syncDataSource';
 import operationRecord from './operationRecord';
 import customRule from './customRule';
 import ruleManager from './ruleManager';
+import sqlManagement from './sqlManagement';
 import sqlAudit from './sqlAudit';
 import ruleKnowledge from './ruleKnowledge';
 
@@ -56,6 +57,7 @@ export default {
     operationRecord,
     customRule,
     ruleManager,
+    sqlManagement,
     sqlAudit,
     ruleKnowledge,
   },

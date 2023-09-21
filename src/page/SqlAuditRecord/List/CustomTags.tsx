@@ -130,7 +130,6 @@ const CustomTags: React.FC<CustomTagsProps> = ({
     );
   }, [
     auditRecordTags,
-    extraTag,
     extraTagForm,
     loading,
     styles.optionsHover,
