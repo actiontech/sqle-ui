@@ -23,6 +23,7 @@ import useInstance from '../../../hooks/useInstance';
 import { useEffect } from 'react';
 import moment from 'moment';
 import useStaticStatus from './hooks/useStaticStatus';
+import { getInstanceTipListV1FunctionalModuleEnum } from '../../../api/instance/index.enum';
 
 const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
   form,
@@ -41,7 +42,10 @@ const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
     return current && current > moment().endOf('day');
   };
   useEffect(() => {
-    updateInstanceList({ project_name: projectName });
+    updateInstanceList({
+      project_name: projectName,
+      functional_module: getInstanceTipListV1FunctionalModuleEnum.sql_manage,
+    });
   }, [projectName, updateInstanceList]);
   return (
     <Form<SQLPanelFilterFormFields> form={form} onFinish={submit}>

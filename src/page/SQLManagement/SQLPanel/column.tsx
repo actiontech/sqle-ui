@@ -134,7 +134,7 @@ export const SQLPanelColumns: (params: {
       title: () => t('sqlManagement.table.status'),
       render: (status: SqlManageStatusEnum) => {
         if (!status) {
-          return '-';
+          return '--';
         }
         const colorDictionary: Record<
           GetSqlManageListFilterStatusEnum,
@@ -156,16 +156,18 @@ export const SQLPanelColumns: (params: {
       title: () => t('sqlManagement.table.comment'),
       render: (remark: string, record) => {
         return (
-          <EditText
-            editable={{
-              autoSize: true,
-              onEnd: (val) => {
-                updateRemark(record.id ?? 0, val);
-              },
-            }}
-          >
-            {remark}
-          </EditText>
+          <EmptyBox if={actionPermission} defaultNode={<>{remark ?? '--'}</>}>
+            <EditText
+              editable={{
+                autoSize: true,
+                onEnd: (val) => {
+                  updateRemark(record.id ?? 0, val);
+                },
+              }}
+            >
+              {remark}
+            </EditText>
+          </EmptyBox>
         );
       },
     },
@@ -187,16 +189,14 @@ export const SQLPanelColumns: (params: {
               </Typography.Link>
             </AssignMember>
 
-            <EmptyBox if={record.assignees?.includes(username)}>
-              <UpdateSQLStatus
-                disabled={signalActionsLoading}
-                onConfirm={(status) => updateSQLStatus(record.id ?? 0, status)}
-              >
-                <Typography.Link>
-                  {t('sqlManagement.table.updateStatus.triggerText')}
-                </Typography.Link>
-              </UpdateSQLStatus>
-            </EmptyBox>
+            <UpdateSQLStatus
+              disabled={signalActionsLoading}
+              onConfirm={(status) => updateSQLStatus(record.id ?? 0, status)}
+            >
+              <Typography.Link>
+                {t('sqlManagement.table.updateStatus.triggerText')}
+              </Typography.Link>
+            </UpdateSQLStatus>
           </Space>
         );
       },

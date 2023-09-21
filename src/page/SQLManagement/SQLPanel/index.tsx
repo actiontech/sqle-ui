@@ -170,7 +170,7 @@ const SQLPanel: React.FC = () => {
 
   const updateRemark = useCallback(
     (id: number, remark: string) => {
-      if (updateRemarkProtect.current) {
+      if (updateRemarkProtect.current || !actionPermission) {
         return;
       }
       updateRemarkProtect.current = true;
@@ -188,7 +188,7 @@ const SQLPanel: React.FC = () => {
           updateRemarkProtect.current = false;
         });
     },
-    [projectName, refresh]
+    [actionPermission, projectName, refresh]
   );
 
   const updateSQLStatus = useCallback(

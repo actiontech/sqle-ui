@@ -51,20 +51,20 @@ const UpdateSQLStatus: React.FC<{
             </Form.Item>
           </Form>
           <Row>
-            <Col span={12} style={{ textAlign: 'right' }}>
-              <Button
-                size="small"
-                onClick={() => {
-                  setOpen(false);
-                }}
-              >
-                {t('common.cancel')}
-              </Button>
-            </Col>
-            <Col span={12} style={{ textAlign: 'right' }}>
-              <Button type="primary" size="small" onClick={submit}>
-                {t('common.ok')}
-              </Button>
+            <Col span={24} style={{ textAlign: 'right' }}>
+              <Space>
+                <Button
+                  size="small"
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                >
+                  {t('common.cancel')}
+                </Button>
+                <Button type="primary" size="small" onClick={submit}>
+                  {t('common.ok')}
+                </Button>
+              </Space>
             </Col>
           </Row>
         </Space>

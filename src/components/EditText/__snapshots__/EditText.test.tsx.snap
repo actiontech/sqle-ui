@@ -3,7 +3,7 @@
 exports[`EditText should call onEnd with user input when user press enter key 1`] = `
 <div>
   <div
-    class="ant-typography"
+    class="ant-typography clear-margin-bottom"
   >
     test
     <div
@@ -40,7 +40,7 @@ exports[`EditText should call onEnd with user input when user press enter key 1`
 exports[`EditText should call onEnd with user input when user press enter key 2`] = `
 <div>
   <div
-    class="ant-typography ant-typography-edit-content ant-typography-div"
+    class="ant-typography ant-typography-edit-content clear-margin-bottom ant-typography-div"
   >
     <textarea
       class="ant-input"
@@ -75,7 +75,7 @@ exports[`EditText should call onEnd with user input when user press enter key 2`
 exports[`EditText should call onEnd with user input when user press enter key 3`] = `
 <div>
   <div
-    class="ant-typography"
+    class="ant-typography clear-margin-bottom"
   >
     test
     <div

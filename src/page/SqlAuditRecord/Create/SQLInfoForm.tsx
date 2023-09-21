@@ -46,6 +46,7 @@ import instance from '../../../api/instance';
 import { IRuleTemplateV2 } from '../../../api/common';
 import { RuleUrlParamKey } from '../../Rule/useRuleFilterForm';
 import { Link } from 'react-router-dom';
+import { getInstanceTipListV1FunctionalModuleEnum } from '../../../api/instance/index.enum';
 
 const MonacoEditorFunComponent =
   MonacoEditor as ComponentType<MonacoEditorProps>;
@@ -265,7 +266,11 @@ const SQLInfoForm: React.ForwardRefRenderFunction<
 
   useEffect(() => {
     if (auditType === AuditTypeEnum.dynamic) {
-      updateInstanceList({ project_name: projectName });
+      updateInstanceList({
+        project_name: projectName,
+        functional_module:
+          getInstanceTipListV1FunctionalModuleEnum.create_workflow,
+      });
       updateSchemaList();
     } else if (auditType === AuditTypeEnum.static) {
       updateDriverNameList();

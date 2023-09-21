@@ -1701,7 +1701,7 @@ use aaab;
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              class="ant-typography"
+                                              class="ant-typography clear-margin-bottom"
                                             >
                                               <div
                                                 aria-label="Edit"
@@ -1853,7 +1853,7 @@ use aaab;
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              class="ant-typography"
+                                              class="ant-typography clear-margin-bottom"
                                             >
                                               have a describe
                                               <div
@@ -2410,7 +2410,7 @@ use aaab;
                                             class="ant-table-cell"
                                           >
                                             <div
-                                              class="ant-typography"
+                                              class="ant-typography clear-margin-bottom"
                                             >
                                               this is a test
                                               <div
