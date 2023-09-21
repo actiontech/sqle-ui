@@ -873,9 +873,7 @@ use aaab;
                                               class="ant-col message"
                                               style="flex: 1 1 auto; min-width: 0;"
                                             >
-                                              <span>
-                                                禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql
-                                              </span>
+                                              禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql
                                             </div>
                                           </div>
                                         </div>
@@ -3254,9 +3252,7 @@ use aaab;
                                               class="ant-col message"
                                               style="flex: 1 1 auto; min-width: 0;"
                                             >
-                                              <span>
-                                                禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql
-                                              </span>
+                                              禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql
                                             </div>
                                           </div>
                                         </div>

@@ -284,11 +284,14 @@ class RuleTemplateService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const db_type = paramsData.db_type;
+    delete paramsData.db_type;
+
     const rule_name = paramsData.rule_name;
     delete paramsData.rule_name;
 
     return this.get<IGetRuleKnowledgeV1Return>(
-      `/v1/rule_knowledge/${rule_name}/`,
+      `/v1/rule_knowledge/db_types/${db_type}/rules/${rule_name}/`,
       paramsData,
       options
     );
@@ -299,11 +302,14 @@ class RuleTemplateService extends ServiceBase {
     options?: AxiosRequestConfig
   ) {
     const paramsData = this.cloneDeep(params);
+    const db_type = paramsData.db_type;
+    delete paramsData.db_type;
+
     const rule_name = paramsData.rule_name;
     delete paramsData.rule_name;
 
     return this.patch<IUpdateRuleKnowledgeReturn>(
-      `/v1/rule_knowledge/${rule_name}/`,
+      `/v1/rule_knowledge/db_types/${db_type}/rules/${rule_name}/`,
       paramsData,
       options
     );

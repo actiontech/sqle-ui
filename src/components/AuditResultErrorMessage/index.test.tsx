@@ -1,7 +1,8 @@
-import { fireEvent, render, screen, act } from '@testing-library/react';
+import { fireEvent, screen, act, cleanup } from '@testing-library/react';
 import AuditResultErrorMessage from '.';
 import { IAuditResult } from '../../api/common';
 import { mockGetAllRules } from '../../page/Rule/__test__/utils';
+import { renderWithRouter } from '../../testUtils/customRender';
 
 describe('AuditResultErrorMessage', () => {
   const auditResult: IAuditResult[] = [
@@ -33,18 +34,24 @@ describe('AuditResultErrorMessage', () => {
   });
 
   test('should call getRuleList when rule name is not empty', async () => {
-    const { rerender, baseElement } = render(<AuditResultErrorMessage />);
+    const { baseElement: baseElement1 } = renderWithRouter(
+      <AuditResultErrorMessage />
+    );
 
     await act(async () => jest.advanceTimersByTime(3000));
 
-    expect(baseElement).toMatchSnapshot();
+    expect(baseElement1).toMatchSnapshot();
     expect(getRulesSpy).toBeCalledTimes(0);
 
-    rerender(<AuditResultErrorMessage auditResult={auditResult} />);
+    cleanup();
+
+    const { baseElement: baseElement2 } = renderWithRouter(
+      <AuditResultErrorMessage auditResult={auditResult} />
+    );
 
     await act(async () => jest.advanceTimersByTime(3000));
 
-    expect(baseElement).toMatchSnapshot();
+    expect(baseElement2).toMatchSnapshot();
     expect(getRulesSpy).toBeCalledTimes(1);
     expect(getRulesSpy).nthCalledWith(1, {
       filter_rule_names: 'all_check_where_is_invalid,dml_check_select_limit',
@@ -66,7 +73,7 @@ describe('AuditResultErrorMessage', () => {
   });
 
   test('should render normal level when not match level', () => {
-    const { container } = render(
+    const { container } = renderWithRouter(
       <AuditResultErrorMessage
         auditResult={[
           {
