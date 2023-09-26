@@ -1,6 +1,7 @@
 import {
   nameRuleValidator,
   phoneRuleValidator,
+  tagNameRuleValidator,
   validatorPort,
 } from '../FormRule';
 
@@ -118,5 +119,66 @@ describe('utils/FormRule', () => {
       message = error;
     }
     expect(message).toBe('');
+  });
+
+  test('should check tag name', async () => {
+    const check = tagNameRuleValidator();
+    let message = '';
+
+    try {
+      await check({} as any, '1123456789', () => {});
+    } catch (error: any) {
+      message = error;
+    }
+    expect(message).toBe('');
+
+    try {
+      await check({} as any, '范德萨', () => {});
+    } catch (error: any) {
+      message = error;
+    }
+    expect(message).toBe('');
+
+    try {
+      await check({} as any, 'test', () => {});
+    } catch (error: any) {
+      message = error;
+    }
+    expect(message).toBe('');
+
+    try {
+      await check({} as any, '_', () => {});
+    } catch (error: any) {
+      message = error;
+    }
+    expect(message).toBe('');
+
+    try {
+      await check({} as any, '-', () => {});
+    } catch (error: any) {
+      message = error;
+    }
+    expect(message).toBe('');
+
+    try {
+      await check({} as any, '1ha哈_-', () => {});
+    } catch (error: any) {
+      message = error;
+    }
+    expect(message).toBe('');
+
+    try {
+      await check({} as any, '哈1ha-_-', () => {});
+    } catch (error: any) {
+      message = error;
+    }
+    expect(message).toBe('');
+
+    try {
+      await check({} as any, '1ha哈_-#', () => {});
+    } catch (error: any) {
+      message = error;
+    }
+    expect(message).toBe('common.form.rule.allowedCharacters');
   });
 });

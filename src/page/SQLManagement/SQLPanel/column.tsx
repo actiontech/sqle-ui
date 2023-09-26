@@ -143,6 +143,7 @@ export const SQLPanelColumns: (params: {
           [GetSqlManageListFilterStatusEnum.ignored]: 'gray',
           [GetSqlManageListFilterStatusEnum.solved]: 'green',
           [GetSqlManageListFilterStatusEnum.unhandled]: 'red',
+          [GetSqlManageListFilterStatusEnum.manual_audited]: 'blue',
         };
         return (
           <Tag color={colorDictionary[status]}>
@@ -174,6 +175,7 @@ export const SQLPanelColumns: (params: {
     {
       dataIndex: 'operator',
       title: () => t('common.operate'),
+      fixed: 'right',
       render: (_, record) => {
         return (
           <Space>

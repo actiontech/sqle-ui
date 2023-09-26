@@ -22,6 +22,11 @@ import EmptyBox from '../../../components/EmptyBox';
 import { BatchUpdateSqlManageReqStatusEnum } from '../../../api/common.enum';
 import { ResponseCode } from '../../../data/common';
 import AssignMember from './AssignMember';
+import { GetSqlManageListFilterStatusEnum } from '../../../api/SqlManage/index.enum';
+
+const defaultFilterInfo = {
+  filter_status: GetSqlManageListFilterStatusEnum.unhandled,
+};
 
 const SQLPanel: React.FC = () => {
   const { t } = useTranslation();
@@ -29,10 +34,12 @@ const SQLPanel: React.FC = () => {
     pagination,
     filterForm,
     filterInfo,
-    resetFilter,
     submitFilter,
     tableChange,
-  } = useTable<SQLPanelFilterFormFields>();
+    resetFilter,
+  } = useTable<SQLPanelFilterFormFields>({
+    defaultFilterInfo,
+  });
   const { projectName } = useCurrentProjectName();
   const { username, isAdmin, isProjectManager } = useCurrentUser();
   const [SQLNum, setSQLNum] = useState<SQLStatisticsProps>({

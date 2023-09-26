@@ -27,6 +27,16 @@ export const nameRuleValidator = (): FormValidatorRule => {
   };
 };
 
+export const tagNameRuleValidator = (): FormValidatorRule => {
+  return (_, value) => {
+    const reg = /^[\u4e00-\u9fa5_a-zA-Z0-9_-]*$/;
+    if (!reg.test(value)) {
+      return Promise.reject(t('common.form.rule.allowedCharacters'));
+    }
+    return Promise.resolve();
+  };
+};
+
 export const whiteSpaceSql = (): Rule[] => {
   return [
     {

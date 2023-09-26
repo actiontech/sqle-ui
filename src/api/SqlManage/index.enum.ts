@@ -21,5 +21,7 @@ export enum GetSqlManageListFilterStatusEnum {
 
   'solved' = 'solved',
 
-  'ignored' = 'ignored'
+  'ignored' = 'ignored',
+
+  'manual_audited' = 'manual_audited'
 }

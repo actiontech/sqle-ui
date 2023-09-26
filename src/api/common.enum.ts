@@ -85,7 +85,9 @@ export enum AuditTaskResV1StatusEnum {
 export enum BatchUpdateSqlManageReqStatusEnum {
   'solved' = 'solved',
 
-  'ignored' = 'ignored'
+  'ignored' = 'ignored',
+
+  'manual_audited' = 'manual_audited'
 }
 
 export enum CreateAuditWhitelistReqV1MatchTypeEnum {
@@ -207,7 +209,9 @@ export enum SqlManageStatusEnum {
 
   'solved' = 'solved',
 
-  'ignored' = 'ignored'
+  'ignored' = 'ignored',
+
+  'manual_audited' = 'manual_audited'
 }
 
 export enum TestFeishuConfigurationReqV1AccountTypeEnum {

@@ -47,6 +47,9 @@ const UpdateSQLStatus: React.FC<{
                 <Radio value={BatchUpdateSqlManageReqStatusEnum.ignored}>
                   {t('sqlManagement.table.updateStatus.ignore')}
                 </Radio>
+                <Radio value={BatchUpdateSqlManageReqStatusEnum.manual_audited}>
+                  {t('sqlManagement.table.updateStatus.manualAudit')}
+                </Radio>
               </Radio.Group>
             </Form.Item>
           </Form>
