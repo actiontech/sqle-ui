@@ -101,7 +101,7 @@ module.exports = {
         const res = {};
         for (let i = 0; i < 10; i++) {
           res[`/v${i}`] = {
-            target: 'http://192.168.22.81:10000',
+            target: 'http://10.186.62.87:10000/',
             secure: false,
             changeOrigin: true,
             ws: true,

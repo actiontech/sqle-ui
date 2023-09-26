@@ -36,6 +36,8 @@ export const statusDictionary: StaticEnumDictionary<GetSqlManageListFilterStatus
       'sqlManagement.selectDictionary.solved',
     [GetSqlManageListFilterStatusEnum.ignored]:
       'sqlManagement.selectDictionary.ignored',
+    [GetSqlManageListFilterStatusEnum.manual_audited]:
+      'sqlManagement.selectDictionary.manualAudited',
   };
 
 const useStaticStatus = () => {

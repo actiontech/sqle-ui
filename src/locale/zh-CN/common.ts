@@ -109,6 +109,7 @@ export default {
       onlyLetterAndNumber: '只能包含字母、数字、中划线和下划线',
       onlyNumber: '只能包含数字',
       portRange: '端口号范围为{{min}}-{{max}}',
+      allowedCharacters: '只能包含字母、数字、中文、中划线和下划线',
     },
   },
 

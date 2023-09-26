@@ -24,6 +24,7 @@ import { useEffect } from 'react';
 import moment from 'moment';
 import useStaticStatus from './hooks/useStaticStatus';
 import { getInstanceTipListV1FunctionalModuleEnum } from '../../../api/instance/index.enum';
+import { GetSqlManageListFilterStatusEnum } from '../../../api/SqlManage/index.enum';
 
 const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
   form,
@@ -42,11 +43,15 @@ const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
     return current && current > moment().endOf('day');
   };
   useEffect(() => {
+    form.setFieldValue(
+      'filter_status',
+      GetSqlManageListFilterStatusEnum.unhandled
+    );
     updateInstanceList({
       project_name: projectName,
       functional_module: getInstanceTipListV1FunctionalModuleEnum.sql_manage,
     });
-  }, [projectName, updateInstanceList]);
+  }, [form, projectName, updateInstanceList]);
   return (
     <Form<SQLPanelFilterFormFields> form={form} onFinish={submit}>
       <Row {...FilterFormRowLayout}>
@@ -91,12 +96,12 @@ const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
         </Col>
         <Col {...FilterFormColLayout}>
           <Form.Item
-            label={t('sqlManagement.filterForm.highAuditLevel')}
+            label={t('sqlManagement.filterForm.auditLevel')}
             name="filter_audit_level"
           >
             <Select
               placeholder={t('common.form.placeholder.searchSelect', {
-                name: t('sqlManagement.filterForm.highAuditLevel'),
+                name: t('sqlManagement.filterForm.auditLevel'),
               })}
               options={generateAuditLevelSelectOptions}
             />

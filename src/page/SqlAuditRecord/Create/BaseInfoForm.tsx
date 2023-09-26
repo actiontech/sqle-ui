@@ -26,7 +26,7 @@ import {
   useState,
 } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
-import { nameRule } from '../../../utils/FormRule';
+import { tagNameRuleValidator } from '../../../utils/FormRule';
 
 const BaseInfoForm: React.ForwardRefRenderFunction<
   BaseInfoFormRef,
@@ -117,7 +117,10 @@ const BaseInfoForm: React.ForwardRefRenderFunction<
                 layout="inline"
                 style={{ padding: '4px 0 8px 12px' }}
               >
-                <Form.Item name="extraTag" rules={[...nameRule()]}>
+                <Form.Item
+                  name="extraTag"
+                  rules={[{ validator: tagNameRuleValidator() }]}
+                >
                   <Input
                     placeholder={t(
                       'sqlAudit.create.baseInfo.addExtraTagPlaceholder'

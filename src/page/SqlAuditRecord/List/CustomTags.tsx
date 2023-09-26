@@ -19,7 +19,7 @@ import useSQLAuditRecordTag from '../../../hooks/useSQLAuditRecordTag';
 import { useTranslation } from 'react-i18next';
 import useStyles from '../../../theme';
 import EmptyBox from '../../../components/EmptyBox';
-import { nameRule } from '../../../utils/FormRule';
+import { tagNameRuleValidator } from '../../../utils/FormRule';
 
 const CustomTags: React.FC<CustomTagsProps> = ({
   tags,
@@ -109,7 +109,10 @@ const CustomTags: React.FC<CustomTagsProps> = ({
             layout="inline"
             style={{ padding: '4px 0 8px 12px' }}
           >
-            <Form.Item name="extraTag" rules={[...nameRule()]}>
+            <Form.Item
+              name="extraTag"
+              rules={[{ validator: tagNameRuleValidator() }]}
+            >
               <Input
                 placeholder={t(
                   'sqlAudit.create.baseInfo.addExtraTagPlaceholder'
