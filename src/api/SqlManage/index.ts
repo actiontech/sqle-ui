@@ -10,7 +10,8 @@ import {
   IGetSqlManageListParams,
   IGetSqlManageListReturn,
   IBatchUpdateSqlManageParams,
-  IBatchUpdateSqlManageReturn
+  IBatchUpdateSqlManageReturn,
+  IExportSqlManageV1Params
 } from './index.d';
 
 class SqlManageService extends ServiceBase {
@@ -39,6 +40,21 @@ class SqlManageService extends ServiceBase {
 
     return this.patch<IBatchUpdateSqlManageReturn>(
       `/v1/projects/${project_name}/sql_manages/batch`,
+      paramsData,
+      options
+    );
+  }
+
+  public exportSqlManageV1(
+    params: IExportSqlManageV1Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.get<any>(
+      `/v1/projects/${project_name}/sql_manages/exports`,
       paramsData,
       options
     );

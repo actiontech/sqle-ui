@@ -1,7 +1,10 @@
 import {
   GetSqlManageListFilterSourceEnum,
   GetSqlManageListFilterAuditLevelEnum,
-  GetSqlManageListFilterStatusEnum
+  GetSqlManageListFilterStatusEnum,
+  exportSqlManageV1FilterSourceEnum,
+  exportSqlManageV1FilterAuditLevelEnum,
+  exportSqlManageV1FilterStatusEnum
 } from './index.enum';
 
 import {
@@ -41,3 +44,23 @@ export interface IBatchUpdateSqlManageParams extends IBatchUpdateSqlManageReq {
 }
 
 export interface IBatchUpdateSqlManageReturn extends IBaseRes {}
+
+export interface IExportSqlManageV1Params {
+  project_name: string;
+
+  fuzzy_search_sql_fingerprint?: string;
+
+  filter_assignee?: string;
+
+  filter_instance_name?: string;
+
+  filter_source?: exportSqlManageV1FilterSourceEnum;
+
+  filter_audit_level?: exportSqlManageV1FilterAuditLevelEnum;
+
+  filter_last_audit_start_time_from?: string;
+
+  filter_last_audit_start_time_to?: string;
+
+  filter_status?: exportSqlManageV1FilterStatusEnum;
+}
