@@ -22,7 +22,13 @@ import EmptyBox from '../../../components/EmptyBox';
 import { BatchUpdateSqlManageReqStatusEnum } from '../../../api/common.enum';
 import { ResponseCode } from '../../../data/common';
 import AssignMember from './AssignMember';
-import { GetSqlManageListFilterStatusEnum } from '../../../api/SqlManage/index.enum';
+import {
+  GetSqlManageListFilterStatusEnum,
+  exportSqlManageV1FilterAuditLevelEnum,
+  exportSqlManageV1FilterSourceEnum,
+  exportSqlManageV1FilterStatusEnum,
+} from '../../../api/SqlManage/index.enum';
+import { IExportSqlManageV1Params } from '../../../api/SqlManage/index.d';
 
 const defaultFilterInfo = {
   filter_status: GetSqlManageListFilterStatusEnum.unhandled,
@@ -264,6 +270,56 @@ const SQLPanel: React.FC = () => {
     ]
   );
 
+  const [
+    exportButtonDisabled,
+    { setFalse: finishExport, setTrue: startExport },
+  ] = useBoolean(false);
+
+  const exportAction = () => {
+    if (!isAdmin) {
+      return;
+    }
+    startExport();
+    const hideLoading = message.loading(
+      t('sqlManagement.table.actions.exporting')
+    );
+
+    const filterValues = filterForm.getFieldsValue();
+
+    const params: IExportSqlManageV1Params = {
+      project_name: projectName,
+      fuzzy_search_sql_fingerprint: filterValues.fuzzy_search_sql_fingerprint,
+      filter_assignee: !!filterValues.filter_assignee ? username : undefined,
+      filter_instance_name: filterValues.filter_instance_name,
+      filter_source: filterValues.filter_source as
+        | exportSqlManageV1FilterSourceEnum
+        | undefined,
+      filter_audit_level: filterValues.filter_audit_level as
+        | exportSqlManageV1FilterAuditLevelEnum
+        | undefined,
+      filter_last_audit_start_time_from: translateTimeForRequest(
+        filterValues.filter_last_audit_time?.[0]
+      ),
+      filter_last_audit_start_time_to: translateTimeForRequest(
+        filterValues.filter_last_audit_time?.[1]
+      ),
+      filter_status: filterValues.filter_status as
+        | exportSqlManageV1FilterStatusEnum
+        | undefined,
+    };
+
+    SqlManage.exportSqlManageV1(params, { responseType: 'blob' })
+      .then((res) => {
+        if (res.data.code === ResponseCode.SUCCESS) {
+          message.success(t('sqlManagement.table.actions.exportSuccessTips'));
+        }
+      })
+      .finally(() => {
+        hideLoading();
+        finishExport();
+      });
+  };
+
   return (
     <section className="padding-content">
       <Card>
@@ -279,51 +335,67 @@ const SQLPanel: React.FC = () => {
 
           <Divider style={{ margin: 0 }} />
 
-          <EmptyBox if={actionPermission}>
-            <Space>
-              <AssignMember
-                disabled={selectedRowKeys.length === 0 || batchActionsLoading}
-                projectName={projectName}
-                onConfirm={batchAssignment}
-              >
-                <Button
+          <Space>
+            <EmptyBox if={actionPermission}>
+              <Space>
+                <AssignMember
                   disabled={selectedRowKeys.length === 0 || batchActionsLoading}
-                  type="primary"
+                  projectName={projectName}
+                  onConfirm={batchAssignment}
                 >
-                  {t('sqlManagement.table.actions.batchAssignment')}
-                </Button>
-              </AssignMember>
+                  <Button
+                    disabled={
+                      selectedRowKeys.length === 0 || batchActionsLoading
+                    }
+                    type="primary"
+                  >
+                    {t('sqlManagement.table.actions.batchAssignment')}
+                  </Button>
+                </AssignMember>
 
-              <Popconfirm
-                title={t('sqlManagement.table.actions.batchSolveTips')}
-                placement="topLeft"
-                okText={t('common.ok')}
-                disabled={selectedRowKeys.length === 0 || batchActionsLoading}
-                onConfirm={batchSolve}
-              >
-                <Button
+                <Popconfirm
+                  title={t('sqlManagement.table.actions.batchSolveTips')}
+                  placement="topLeft"
+                  okText={t('common.ok')}
                   disabled={selectedRowKeys.length === 0 || batchActionsLoading}
-                  type="primary"
+                  onConfirm={batchSolve}
                 >
-                  {t('sqlManagement.table.actions.batchSolve')}
-                </Button>
-              </Popconfirm>
-              <Popconfirm
-                title={t('sqlManagement.table.actions.batchIgnoreTips')}
-                placement="topLeft"
-                okText={t('common.ok')}
-                disabled={selectedRowKeys.length === 0 || batchActionsLoading}
-                onConfirm={batchIgnore}
-              >
-                <Button
+                  <Button
+                    disabled={
+                      selectedRowKeys.length === 0 || batchActionsLoading
+                    }
+                    type="primary"
+                  >
+                    {t('sqlManagement.table.actions.batchSolve')}
+                  </Button>
+                </Popconfirm>
+                <Popconfirm
+                  title={t('sqlManagement.table.actions.batchIgnoreTips')}
+                  placement="topLeft"
+                  okText={t('common.ok')}
                   disabled={selectedRowKeys.length === 0 || batchActionsLoading}
-                  type="primary"
+                  onConfirm={batchIgnore}
                 >
-                  {t('sqlManagement.table.actions.batchIgnore')}
-                </Button>
-              </Popconfirm>
-            </Space>
-          </EmptyBox>
+                  <Button
+                    disabled={
+                      selectedRowKeys.length === 0 || batchActionsLoading
+                    }
+                    type="primary"
+                  >
+                    {t('sqlManagement.table.actions.batchIgnore')}
+                  </Button>
+                </Popconfirm>
+              </Space>
+            </EmptyBox>
+
+            <Button
+              type="primary"
+              onClick={exportAction}
+              disabled={exportButtonDisabled}
+            >
+              {t('sqlManagement.table.actions.export')}
+            </Button>
+          </Space>
 
           <Table
             className="sql-management-table-namespace"

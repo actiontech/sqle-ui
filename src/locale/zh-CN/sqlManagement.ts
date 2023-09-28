@@ -60,6 +60,9 @@ export default {
       batchIgnore: '批量忽略',
       batchIgnoreTips: '是否确认将所选SQL设为已忽略?',
       batchIgnoreSuccessTips: '批量忽略SQL成功',
+      export: '导出',
+      exporting: '正在导出文件',
+      exportSuccessTips: '导出文件成功',
     },
 
     assignMember: {
