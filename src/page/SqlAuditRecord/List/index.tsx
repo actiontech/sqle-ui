@@ -12,15 +12,19 @@ import { useTheme } from '@mui/styles';
 import { SQLAuditListColumn } from './column';
 import sql_audit_record from '../../../api/sql_audit_record';
 import { translateTimeForRequest } from '../../../utils/Common';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { ResponseCode } from '../../../data/common';
 
 import './index.less';
+import { useLocation } from 'react-router-dom';
+import { SQLAuditRecordListUrlParamsKey } from './index.data';
 
 const SQLAuditList: React.FC = () => {
   const { t } = useTranslation();
   const { projectName } = useCurrentProjectName();
   const theme = useTheme<Theme>();
+  const location = useLocation();
+  const [resolveUrlParamFlag, setResolveUrlParamFlag] = useState(false);
 
   const {
     pagination,
@@ -29,6 +33,7 @@ const SQLAuditList: React.FC = () => {
     resetFilter,
     submitFilter,
     tableChange,
+    setFilterInfo,
   } = useTable<SQLAuditListFilterFormFields>();
 
   const { data, refresh, loading } = useRequest(
@@ -47,6 +52,7 @@ const SQLAuditList: React.FC = () => {
           filter_create_time_to: translateTimeForRequest(
             filterInfo.filter_create_time?.[1]
           ),
+          filter_sql_audit_record_ids: filterInfo.filter_sql_audit_record_ids,
         })
         .then((res) => {
           return {
@@ -55,6 +61,7 @@ const SQLAuditList: React.FC = () => {
           };
         }),
     {
+      ready: resolveUrlParamFlag,
       refreshDeps: [pagination, filterInfo, projectName],
     }
   );
@@ -76,6 +83,21 @@ const SQLAuditList: React.FC = () => {
     },
     [projectName, refresh, t]
   );
+
+  useEffect(() => {
+    const searchStr = new URLSearchParams(location.search);
+    const filter: SQLAuditListFilterFormFields = {};
+    if (searchStr.has(SQLAuditRecordListUrlParamsKey.SQLAuditRecordID)) {
+      filter.filter_sql_audit_record_ids = searchStr.get(
+        SQLAuditRecordListUrlParamsKey.SQLAuditRecordID
+      ) as string;
+    }
+    if (Object.keys(filter).length > 0) {
+      setFilterInfo(filter);
+    }
+    setResolveUrlParamFlag(true);
+  }, [filterForm, location.search, setFilterInfo]);
+
   return (
     <>
       <PageHeader
