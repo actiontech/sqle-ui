@@ -1,12 +1,15 @@
 import { FormInstance } from 'antd';
-import { getSQLAuditRecordsV1FilterSqlAuditStatusEnum } from '../../../api/sql_audit_record/index.enum';
+import { IGetSQLAuditRecordsV1Params } from '../../../api/sql_audit_record/index.d';
 
-//todo
-export type SQLAuditListFilterFormFields = {
-  fuzzy_search_tags: string;
-  filter_sql_audit_status: getSQLAuditRecordsV1FilterSqlAuditStatusEnum;
-  filter_instance_name: string;
-  filter_create_time: moment.Moment[];
+export type SQLAuditListFilterFormFields = Omit<
+  IGetSQLAuditRecordsV1Params,
+  | 'page_index'
+  | 'page_size'
+  | 'project_name'
+  | 'filter_create_time_to'
+  | 'filter_create_time_from'
+> & {
+  filter_create_time?: moment.Moment[];
 };
 
 export type SQLAuditListFilterFormProps = {

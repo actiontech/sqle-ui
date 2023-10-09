@@ -2247,7 +2247,7 @@ export interface ISQLQueryConfigResV1 {
 export interface ISource {
   audit_plan_name?: string;
 
-  sql_audit_record_id?: string;
+  sql_audit_record_ids?: string[];
 
   type?: SourceTypeEnum;
 }

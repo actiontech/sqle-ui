@@ -127,6 +127,24 @@ export interface IExportProjectRuleTemplateV1Params {
   rule_template_name: string;
 }
 
+export interface IGetCustomRuleKnowledgeV1Params {
+  rule_name: string;
+
+  db_type: string;
+}
+
+export interface IGetCustomRuleKnowledgeV1Return
+  extends IGetRuleKnowledgeResV1 {}
+
+export interface IUpdateCustomRuleKnowledgeParams
+  extends IUpdateRuleKnowledgeReq {
+  rule_name: string;
+
+  db_type: string;
+}
+
+export interface IUpdateCustomRuleKnowledgeReturn extends IBaseRes {}
+
 export interface IGetRuleKnowledgeV1Params {
   rule_name: string;
 

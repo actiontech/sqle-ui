@@ -20,6 +20,8 @@ export interface IGetSQLAuditRecordsV1Params {
 
   filter_create_time_to?: string;
 
+  filter_sql_audit_record_ids?: string;
+
   page_index: number;
 
   page_size: number;

@@ -17,6 +17,10 @@ import EditText from '../../../components/EditText/EditText';
 import AssignMember from './AssignMember';
 import EmptyBox from '../../../components/EmptyBox';
 import UpdateSQLStatus from './UpdateSQLStatus';
+import {
+  SQLAuditRecordIDValuesSplit,
+  SQLAuditRecordListUrlParamsKey,
+} from '../../SqlAuditRecord/List/index.data';
 
 export const SQLPanelColumns: (params: {
   projectName: string;
@@ -80,7 +84,13 @@ export const SQLPanelColumns: (params: {
         ) {
           return (
             <Link
-              to={`project/${projectName}/sqlAudit/${source.sql_audit_record_id}/detail`}
+              to={`project/${projectName}/sqlAudit?${
+                SQLAuditRecordListUrlParamsKey.SQLAuditRecordID
+              }=${
+                source.sql_audit_record_ids?.join(
+                  SQLAuditRecordIDValuesSplit
+                ) ?? ''
+              }`}
             >
               {t(sourceDictionary[source.type])}
             </Link>
