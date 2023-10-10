@@ -4,12 +4,15 @@ import { RuleResV1LevelEnum } from '../../../../api/common.enum';
 import './index.less';
 import RuleLevelIcon from '../../../../components/RuleList/RuleLevelIcon';
 import useStyles from '../../../../theme';
+import { useTranslation } from 'react-i18next';
 
 const AuditResultInfo: React.FC<AuditResultColumnProps> = ({
   auditResult = [],
+  auditStatus,
 }) => {
   const auditResultNum = auditResult?.length ?? 0;
   const styles = useStyles();
+  const { t } = useTranslation();
 
   const renderResultBox = (
     ruleLevel: RuleResV1LevelEnum | 'passed',
@@ -60,6 +63,18 @@ const AuditResultInfo: React.FC<AuditResultColumnProps> = ({
     );
   };
   const renderAuditColumn = () => {
+    if (!!auditStatus && auditStatus !== 'finished') {
+      return (
+        <AuditResultErrorMessage
+          auditResult={[
+            {
+              level: RuleResV1LevelEnum.normal,
+              message: t('sqlAudit.list.auditing'),
+            },
+          ]}
+        />
+      );
+    }
     if (auditResultNum === 1)
       return <AuditResultErrorMessage auditResult={auditResult} />;
 

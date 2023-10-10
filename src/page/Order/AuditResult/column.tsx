@@ -56,8 +56,13 @@ export const AuditResultRecordColumn = (
       dataIndex: 'audit_result',
       title: () => t('sqlAudit.create.result.table.auditResult'),
       width: 200,
-      render: (auditResult: IAuditResult[]) => {
-        return <AuditResultInfo auditResult={auditResult} />;
+      render: (auditResult: IAuditResult[], record) => {
+        return (
+          <AuditResultInfo
+            auditResult={auditResult}
+            auditStatus={record.audit_status}
+          />
+        );
       },
     },
     Table.EXPAND_COLUMN,
@@ -123,8 +128,13 @@ export const orderAuditResultColumn = (
       dataIndex: 'audit_result',
       title: () => t('audit.table.auditResult'),
       width: 200,
-      render: (auditResult: IAuditResult[]) => {
-        return <AuditResultInfo auditResult={auditResult} />;
+      render: (auditResult: IAuditResult[], record) => {
+        return (
+          <AuditResultInfo
+            auditResult={auditResult}
+            auditStatus={record.audit_status}
+          />
+        );
       },
     },
     Table.EXPAND_COLUMN,
