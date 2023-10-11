@@ -177,6 +177,8 @@ export interface IAuditResDataV1 {
 }
 
 export interface IAuditResult {
+  db_type?: string;
+
   level?: string;
 
   message?: string;

@@ -6,17 +6,24 @@ import { renderWithRouter } from '../../testUtils/customRender';
 
 describe('AuditResultErrorMessage', () => {
   const auditResult: IAuditResult[] = [
-    { level: 'error', message: 'schema 不存在', rule_name: '' },
+    {
+      level: 'error',
+      message: 'schema 不存在',
+      rule_name: '',
+      db_type: 'MySQL',
+    },
     {
       level: 'error',
       message:
         '禁止使用没有where条件的sql语句或者使用where 1=1等变相没有条件的sql',
       rule_name: 'all_check_where_is_invalid',
+      db_type: 'MySQL',
     },
     {
       level: 'warn',
       message: 'select 语句必须带limit,且限制数不得超过1000',
       rule_name: 'dml_check_select_limit',
+      db_type: 'MySQL',
     },
   ];
 
@@ -55,6 +62,7 @@ describe('AuditResultErrorMessage', () => {
     expect(getRulesSpy).toBeCalledTimes(1);
     expect(getRulesSpy).nthCalledWith(1, {
       filter_rule_names: 'all_check_where_is_invalid,dml_check_select_limit',
+      filter_db_type: 'MySQL',
     });
 
     fireEvent.mouseEnter(

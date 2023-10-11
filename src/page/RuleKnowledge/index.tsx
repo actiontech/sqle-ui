@@ -8,6 +8,7 @@ import RuleUnderstand from './RuleUnderstand';
 import { useEffect, useState } from 'react';
 import EmptyBox from '../../components/EmptyBox';
 import useCurrentUser from '../../hooks/useCurrentUser';
+import { ResponseCode } from '../../data/common';
 
 const RuleKnowledge: React.FC = () => {
   const { t } = useTranslation();
@@ -15,24 +16,56 @@ const RuleKnowledge: React.FC = () => {
   const theme = useTheme();
   const { ruleName = '' } = useParams<{ ruleName: string }>();
   const [dbType, setDbType] = useState<string>();
+  const [isCustomRule, setIsCustomRule] = useState(false);
   const { isAdmin } = useCurrentUser();
 
   const {
     data: ruleKnowledgeInfo,
     loading,
     refresh,
+    run: getRuleKnowledge,
   } = useRequest(
-    () =>
-      rule_template
-        .getRuleKnowledgeV1({ rule_name: ruleName, db_type: dbType! })
+    (isCustomType: boolean, dbType: string) => {
+      if (isCustomType) {
+        return rule_template
+          .getCustomRuleKnowledgeV1({ rule_name: ruleName, db_type: dbType })
+          .then((res) => {
+            return res.data.data;
+          });
+      }
+      return rule_template
+        .getRuleKnowledgeV1({ rule_name: ruleName, db_type: dbType })
         .then((res) => {
           return res.data.data;
-        }),
+        });
+    },
     {
-      ready: !!ruleName && !!dbType,
-      refreshDeps: [ruleName, dbType],
+      manual: true,
     }
   );
+
+  useEffect(() => {
+    if (!!ruleName && !!dbType) {
+      rule_template
+        .getRuleListV1({
+          filter_rule_names: ruleName,
+          filter_db_type: dbType,
+        })
+        .then((res) => {
+          if (
+            res.data.code === ResponseCode.SUCCESS &&
+            res.data.data?.length === 1
+          ) {
+            const ruleInfo = res.data.data[0];
+            if (!!ruleInfo.db_type) {
+              setIsCustomRule(!!ruleInfo.is_custom_rule);
+              getRuleKnowledge(!!ruleInfo.is_custom_rule, ruleInfo.db_type);
+            }
+          }
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dbType]);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -73,6 +106,7 @@ const RuleKnowledge: React.FC = () => {
               refresh={refresh}
               dbType={dbType!}
               isAdmin={isAdmin}
+              isCustomRule={isCustomRule}
             />
           </EmptyBox>
         </Space>

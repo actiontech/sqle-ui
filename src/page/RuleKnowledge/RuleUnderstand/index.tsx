@@ -18,6 +18,7 @@ const RuleUnderstand: React.FC<RuleUnderstandProps> = ({
   dbType,
   loading,
   isAdmin,
+  isCustomRule,
 }) => {
   const { t } = useTranslation();
   const [modifyFlag, { setTrue: startModify, setFalse: modifyFinish }] =
@@ -45,12 +46,19 @@ const RuleUnderstand: React.FC<RuleUnderstandProps> = ({
   };
   const submit = () => {
     startSubmit();
-    rule_template
-      .updateRuleKnowledge({
-        rule_name: ruleName,
-        knowledge_content: editValue,
-        db_type: dbType,
-      })
+    const request = isCustomRule
+      ? rule_template.updateCustomRuleKnowledge({
+          rule_name: ruleName,
+          knowledge_content: editValue,
+          db_type: dbType,
+        })
+      : rule_template.updateRuleKnowledge({
+          rule_name: ruleName,
+          knowledge_content: editValue,
+          db_type: dbType,
+        });
+
+    request
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           message.success(t('ruleKnowledge.successTips'));

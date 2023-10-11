@@ -225,6 +225,7 @@ describe('Order/Detail/AuditResult', () => {
     expect(getAllRulesSpy).toBeCalledTimes(1);
     expect(getAllRulesSpy).nthCalledWith(1, {
       filter_rule_names: 'all_check_where_is_invalid',
+      filter_db_type: 'MySQL',
     });
   });
 });
