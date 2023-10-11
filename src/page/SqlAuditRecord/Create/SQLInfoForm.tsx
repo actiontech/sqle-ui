@@ -171,7 +171,7 @@ const SQLInfoForm: React.ForwardRefRenderFunction<
       };
     } else if (type === UploadTypeEnum.git) {
       return {
-        name: 'git_http_url',
+        name: 'gitHttpUrl',
         label: t('sqlAudit.create.SQLInfo.uploadLabelEnum.gitUrl'),
         rules: [{ required: uploadType === UploadTypeEnum.git }],
         tooltip: t('sqlAudit.create.SQLInfo.uploadLabelEnum.gitUrlTips'),
@@ -193,7 +193,9 @@ const SQLInfoForm: React.ForwardRefRenderFunction<
       'sqlFile',
       'mybatisFile',
       'zipFile',
-      'gitRepository',
+      'gitHttpUrl',
+      'gitUserName',
+      'gitUserPassword',
     ]);
   };
 
@@ -427,7 +429,7 @@ const SQLInfoForm: React.ForwardRefRenderFunction<
       <Form.Item {...genUploadItem(uploadType)} />
 
       <EmptyBox if={uploadType === UploadTypeEnum.git}>
-        <Form.Item label={t('common.username')} name="git_user_name">
+        <Form.Item label={t('common.username')} name="gitUserName">
           <Input
             placeholder={t('common.form.placeholder.input', {
               name: t('common.username'),
@@ -435,7 +437,7 @@ const SQLInfoForm: React.ForwardRefRenderFunction<
           />
         </Form.Item>
 
-        <Form.Item label={t('common.password')} name="git_user_password">
+        <Form.Item label={t('common.password')} name="gitUserPassword">
           <Input.Password
             placeholder={t('common.form.placeholder.input', {
               name: t('common.password'),

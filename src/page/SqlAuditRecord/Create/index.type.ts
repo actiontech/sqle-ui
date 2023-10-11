@@ -27,9 +27,9 @@ export type SQLInfoFormFields = {
   instanceName: string;
   instanceSchema: string;
   dbType: string;
-  git_http_url: string;
-  git_user_name: string;
-  git_user_password: string;
+  gitHttpUrl: string;
+  gitUserName: string;
+  gitUserPassword: string;
 };
 
 export type SQLInfoFormProps = {

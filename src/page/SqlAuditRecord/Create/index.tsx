@@ -44,14 +44,19 @@ const SQLAuditCreate: React.FC = () => {
       instance_name: values.instanceName,
       instance_schema: values.instanceSchema,
       db_type: values.dbType,
-      git_http_url: values.git_http_url,
-      git_user_name: values.git_user_name,
-      git_user_password: values.git_user_password,
+      git_http_url: values.gitHttpUrl,
+      git_user_name: values.gitUserName,
+      git_user_password: values.gitUserPassword,
     };
 
-    sql_audit_record.CreateSQLAuditRecordV1(params).then((res) => {
-      if (res.data.code === ResponseCode.SUCCESS) {
-        res.data.data && updateTags(res.data.data, baseValues);
+    return sql_audit_record.CreateSQLAuditRecordV1(params).then((res) => {
+      if (res.data.code === ResponseCode.SUCCESS && res.data.data) {
+        if ((baseValues.tags?.length ?? 0) > 0) {
+          return updateTags(res.data.data, baseValues);
+        } else {
+          setTask(res.data.data.task);
+          message.success(t('sqlAudit.create.SQLInfo.successTips'));
+        }
       }
     });
   };
@@ -60,7 +65,7 @@ const SQLAuditCreate: React.FC = () => {
     record: ISQLAuditRecordResData,
     values: BaseInfoFormFields
   ) => {
-    sql_audit_record
+    return sql_audit_record
       .updateSQLAuditRecordV1({
         tags: values.tags,
         sql_audit_record_id: record.sql_audit_record_id ?? '',
