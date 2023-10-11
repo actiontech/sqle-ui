@@ -22,14 +22,22 @@ const AuditResultErrorMessage: React.FC<AuditResultErrorMessageProps> = (
     [props.auditResult]
   );
 
+  const filterDbType = useMemo(() => {
+    return props.auditResult?.find((v) => !!v.db_type)?.db_type;
+  }, [props.auditResult]);
+
   const { data: ruleInfo } = useRequest(
     () =>
       rule_template
         .getRuleListV1({
           filter_rule_names: filterRuleNames.join(','),
+          filter_db_type: filterDbType,
         })
         .then((res) => res.data.data),
-    { ready: !!filterRuleNames.length, refreshDeps: [filterRuleNames] }
+    {
+      ready: !!filterRuleNames.length,
+      refreshDeps: [filterRuleNames, filterDbType],
+    }
   );
 
   return (
@@ -58,8 +66,7 @@ const AuditResultErrorMessage: React.FC<AuditResultErrorMessageProps> = (
 
                         {/* IFTRUE_isEE */}
                         {'  '}
-                        {/* 暂时不支持自定义规则 */}
-                        <EmptyBox if={!rule?.is_custom_rule && !!rule?.db_type}>
+                        <EmptyBox if={!!rule?.db_type}>
                           <Link
                             target="_blank"
                             to={`rule/knowledge/${v.rule_name}?db_type=${rule?.db_type}`}

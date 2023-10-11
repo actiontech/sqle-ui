@@ -7,6 +7,7 @@ export type RuleUnderstandProps = {
   dbType: string;
   loading: boolean;
   isAdmin: boolean;
+  isCustomRule: boolean;
 };
 
 export type EditKnowledgeContentProps = {
