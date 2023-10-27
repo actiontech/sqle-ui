@@ -276,9 +276,6 @@ const SQLPanel: React.FC = () => {
   ] = useBoolean(false);
 
   const exportAction = () => {
-    if (!isAdmin) {
-      return;
-    }
     startExport();
     const hideLoading = message.loading(
       t('sqlManagement.table.actions.exporting')
