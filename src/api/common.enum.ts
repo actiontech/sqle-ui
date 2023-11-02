@@ -346,6 +346,14 @@ export enum AuditResDataV2AuditLevelEnum {
   'UNKNOWN' = ''
 }
 
+export enum DirectAuditFileReqV2SqlTypeEnum {
+  'sql' = 'sql',
+
+  'mybatis' = 'mybatis',
+
+  'UNKNOWN' = ''
+}
+
 export enum DirectAuditReqV2SqlTypeEnum {
   'sql' = 'sql',
 

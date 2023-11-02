@@ -19,6 +19,8 @@ export type SQLPanelFilterFormFields = {
   filter_last_audit_time?: moment.Moment[];
 
   filter_status?: GetSqlManageListFilterStatusEnum;
+
+  filter_rule?: string;
 };
 
 export type SQLPanelFilterFormProps = {

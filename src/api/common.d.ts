@@ -36,6 +36,7 @@ import {
   WorkflowStepResV1TypeEnum,
   WorkflowTemplateDetailResV1AllowSubmitWhenLessAuditLevelEnum,
   AuditResDataV2AuditLevelEnum,
+  DirectAuditFileReqV2SqlTypeEnum,
   DirectAuditReqV2SqlTypeEnum,
   GetWorkflowTasksItemV2StatusEnum,
   WorkflowRecordResV2StatusEnum,
@@ -1362,6 +1363,14 @@ export interface IGetSqlManageListResp {
   sql_manage_total_num?: number;
 }
 
+export interface IGetSqlManageRuleTipsResp {
+  code?: number;
+
+  data?: IRuleTips[];
+
+  message?: string;
+}
+
 export interface IGetSyncInstanceTaskListResV1 {
   code?: number;
 
@@ -2142,6 +2151,12 @@ export interface IRuleResV1 {
   type?: string;
 }
 
+export interface IRuleRespV1 {
+  desc?: string;
+
+  rule_name?: string;
+}
+
 export interface IRuleTemplateDetailResV1 {
   db_type?: string;
 
@@ -2168,6 +2183,12 @@ export interface IRuleTemplateTipResV1 {
   db_type?: string;
 
   rule_template_name?: string;
+}
+
+export interface IRuleTips {
+  db_type?: string;
+
+  rule?: IRuleRespV1[];
 }
 
 export interface IRuleTypeV1 {
@@ -3174,6 +3195,20 @@ export interface ICreateWorkflowResV2 {
 
 export interface ICreateWorkflowResV2Data {
   workflow_id?: string;
+}
+
+export interface IDirectAuditFileReqV2 {
+  file_contents?: string[];
+
+  instance_name?: string;
+
+  instance_type?: string;
+
+  project_name?: string;
+
+  schema_name?: string;
+
+  sql_type?: DirectAuditFileReqV2SqlTypeEnum;
 }
 
 export interface IDirectAuditReqV2 {

@@ -1,4 +1,5 @@
 import moment from 'moment';
+import React from 'react';
 
 export const emailValidate = (email: string): boolean => {
   if (!email || typeof email !== 'string') {
@@ -47,5 +48,24 @@ export const getCookie = (name: string): string => {
   if (match) {
     return match[2];
   }
+  return '';
+};
+
+export const extractTextFromReactNode = (node: React.ReactNode): string => {
+  if (typeof node === 'string') {
+    return node;
+  }
+
+  if (React.isValidElement(node)) {
+    const { children } = node.props;
+    if (children) {
+      if (Array.isArray(children)) {
+        return children.map(extractTextFromReactNode).join('');
+      } else {
+        return extractTextFromReactNode(children);
+      }
+    }
+  }
+
   return '';
 };

@@ -6,6 +6,7 @@ import {
   Input,
   Row,
   Select,
+  SelectProps,
   Space,
   Switch,
 } from 'antd';
@@ -14,17 +15,15 @@ import {
   SQLPanelFilterFormProps,
 } from './index.type';
 import { useTranslation } from 'react-i18next';
-import {
-  FilterFormColLayout,
-  FilterFormRowLayout,
-  filterFormButtonLayoutFactory,
-} from '../../../data/common';
+import { FilterFormColLayout, FilterFormRowLayout } from '../../../data/common';
 import useInstance from '../../../hooks/useInstance';
 import { useEffect } from 'react';
 import moment from 'moment';
 import useStaticStatus from './hooks/useStaticStatus';
 import { getInstanceTipListV1FunctionalModuleEnum } from '../../../api/instance/index.enum';
 import { GetSqlManageListFilterStatusEnum } from '../../../api/SqlManage/index.enum';
+import useRuleTips from './hooks/useRuleTips';
+import { extractTextFromReactNode } from '../../../utils/Common';
 
 const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
   form,
@@ -33,7 +32,16 @@ const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
   projectName,
 }) => {
   const { t } = useTranslation();
-  const { generateInstanceSelectOption, updateInstanceList } = useInstance();
+  const {
+    generateInstanceSelectOption,
+    updateInstanceList,
+    loading: getInstanceListLoading,
+  } = useInstance();
+  const {
+    generateRuleTipsSelectOptions,
+    updateRuleTips,
+    loading: getRuleTipsLoading,
+  } = useRuleTips();
   const {
     generateSourceSelectOptions,
     generateAuditLevelSelectOptions,
@@ -42,6 +50,15 @@ const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
   const computeDisabledDate = (current: moment.Moment) => {
     return current && current > moment().endOf('day');
   };
+
+  const ruleTipsFilterOptions: SelectProps['filterOption'] = (
+    inputValue,
+    option
+  ) => {
+    const label = extractTextFromReactNode(option?.label);
+    return label.toLowerCase().includes(inputValue.toLowerCase());
+  };
+
   useEffect(() => {
     form.setFieldValue(
       'filter_status',
@@ -51,7 +68,8 @@ const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
       project_name: projectName,
       functional_module: getInstanceTipListV1FunctionalModuleEnum.sql_manage,
     });
-  }, [form, projectName, updateInstanceList]);
+    updateRuleTips(projectName);
+  }, [form, projectName, updateInstanceList, updateRuleTips]);
   return (
     <Form<SQLPanelFilterFormFields> form={form} onFinish={submit}>
       <Row {...FilterFormRowLayout}>
@@ -86,6 +104,7 @@ const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
             name="filter_instance_name"
           >
             <Select
+              loading={getInstanceListLoading}
               placeholder={t('common.form.placeholder.searchSelect', {
                 name: t('sqlManagement.filterForm.instanceName'),
               })}
@@ -134,18 +153,47 @@ const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
         </Col>
         <Col {...FilterFormColLayout}>
           <Form.Item
-            label={t('sqlManagement.filterForm.relatedToMe')}
-            name="filter_assignee"
+            name="filter_rule"
+            label={t('sqlManagement.filterForm.rule')}
           >
-            <Switch />
+            <Select
+              filterOption={ruleTipsFilterOptions}
+              optionFilterProp="children"
+              loading={getRuleTipsLoading}
+              showSearch
+            >
+              {generateRuleTipsSelectOptions()}
+            </Select>
           </Form.Item>
         </Col>
 
         <Col
-          {...filterFormButtonLayoutFactory(0, 8, 0)}
-          className="text-align-right"
+          {...{
+            xs: 24,
+            sm: {
+              span: 12,
+              offset: 0,
+            },
+            xl: {
+              span: 16,
+              offset: 0,
+            },
+            xxl: {
+              span: 6,
+              offset: 0,
+            },
+          }}
+          className="flex-space-between"
         >
-          <Form.Item className="clear-margin-right" wrapperCol={{ span: 24 }}>
+          <Form.Item
+            label={t('sqlManagement.filterForm.relatedToMe')}
+            name="filter_assignee"
+            valuePropName="checked"
+          >
+            <Switch />
+          </Form.Item>
+
+          <Form.Item className="clear-margin-right" label=" " colon={false}>
             <Space>
               <Button onClick={reset}>{t('common.reset')}</Button>
               <Button type="primary" htmlType="submit">
