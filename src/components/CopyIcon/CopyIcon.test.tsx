@@ -9,7 +9,7 @@ describe('test CopyIcon', () => {
   beforeEach(() => {
     document.execCommand = jest.fn();
     jest.spyOn(document, 'execCommand');
-    copySpy = jest.spyOn(Copy, 'copyText');
+    copySpy = jest.spyOn(Copy, 'copyTextByTextarea');
     jest.useFakeTimers();
   });
   afterEach(() => {
