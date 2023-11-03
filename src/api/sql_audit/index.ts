@@ -11,6 +11,8 @@ import {
   IDirectAuditFilesV1Return,
   IDirectAuditV1Params,
   IDirectAuditV1Return,
+  IDirectAuditFilesV2Params,
+  IDirectAuditFilesV2Return,
   IDirectAuditV2Params,
   IDirectAuditV2Return
 } from './index.d';
@@ -35,6 +37,18 @@ class SqlAuditService extends ServiceBase {
     const paramsData = this.cloneDeep(params);
     return this.post<IDirectAuditV1Return>(
       '/v1/sql_audit',
+      paramsData,
+      options
+    );
+  }
+
+  public directAuditFilesV2(
+    params: IDirectAuditFilesV2Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    return this.post<IDirectAuditFilesV2Return>(
+      '/v2/audit_files',
       paramsData,
       options
     );

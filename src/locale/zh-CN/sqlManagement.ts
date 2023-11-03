@@ -35,6 +35,7 @@ export default {
     status: '状态',
     relatedToMe: '与我相关',
     time: '时间范围',
+    rule: '审核规则',
   },
 
   table: {

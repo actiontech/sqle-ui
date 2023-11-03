@@ -11,7 +11,9 @@ import {
   IGetSqlManageListReturn,
   IBatchUpdateSqlManageParams,
   IBatchUpdateSqlManageReturn,
-  IExportSqlManageV1Params
+  IExportSqlManageV1Params,
+  IGetSqlManageRuleTipsParams,
+  IGetSqlManageRuleTipsReturn
 } from './index.d';
 
 class SqlManageService extends ServiceBase {
@@ -55,6 +57,21 @@ class SqlManageService extends ServiceBase {
 
     return this.get<any>(
       `/v1/projects/${project_name}/sql_manages/exports`,
+      paramsData,
+      options
+    );
+  }
+
+  public GetSqlManageRuleTips(
+    params: IGetSqlManageRuleTipsParams,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    return this.get<IGetSqlManageRuleTipsReturn>(
+      `/v1/projects/${project_name}/sql_manages/rule_tips`,
       paramsData,
       options
     );

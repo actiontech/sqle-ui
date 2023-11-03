@@ -29,6 +29,7 @@ import {
   exportSqlManageV1FilterStatusEnum,
 } from '../../../api/SqlManage/index.enum';
 import { IExportSqlManageV1Params } from '../../../api/SqlManage/index.d';
+import { DB_TYPE_RULE_NAME_SEPARATOR } from './hooks/useRuleTips';
 
 const defaultFilterInfo = {
   filter_status: GetSqlManageListFilterStatusEnum.unhandled,
@@ -92,6 +93,12 @@ const SQLPanel: React.FC = () => {
         filter_status: filterInfo.filter_status,
         filter_source: filterInfo.filter_source,
         filter_audit_level: filterInfo.filter_audit_level,
+        filter_db_type: filterInfo.filter_rule?.split(
+          DB_TYPE_RULE_NAME_SEPARATOR
+        )?.[0],
+        filter_rule_name: filterInfo.filter_rule?.split(
+          DB_TYPE_RULE_NAME_SEPARATOR
+        )?.[1],
       }).then((res) => {
         setSQLNum({
           SQLTotalNum: res.data?.sql_manage_total_num ?? 0,
@@ -303,6 +310,12 @@ const SQLPanel: React.FC = () => {
       filter_status: filterValues.filter_status as
         | exportSqlManageV1FilterStatusEnum
         | undefined,
+      filter_db_type: filterInfo.filter_rule?.split(
+        DB_TYPE_RULE_NAME_SEPARATOR
+      )?.[0],
+      filter_rule_name: filterInfo.filter_rule?.split(
+        DB_TYPE_RULE_NAME_SEPARATOR
+      )?.[1],
     };
 
     SqlManage.exportSqlManageV1(params, { responseType: 'blob' })

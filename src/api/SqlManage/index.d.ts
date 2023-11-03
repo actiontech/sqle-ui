@@ -10,7 +10,8 @@ import {
 import {
   IGetSqlManageListResp,
   IBatchUpdateSqlManageReq,
-  IBaseRes
+  IBaseRes,
+  IGetSqlManageRuleTipsResp
 } from '../common.d';
 
 export interface IGetSqlManageListParams {
@@ -31,6 +32,10 @@ export interface IGetSqlManageListParams {
   filter_last_audit_start_time_to?: string;
 
   filter_status?: GetSqlManageListFilterStatusEnum;
+
+  filter_rule_name?: string;
+
+  filter_db_type?: string;
 
   page_index: number;
 
@@ -63,4 +68,15 @@ export interface IExportSqlManageV1Params {
   filter_last_audit_start_time_to?: string;
 
   filter_status?: exportSqlManageV1FilterStatusEnum;
+
+  filter_db_type?: string;
+
+  filter_rule_name?: string;
 }
+
+export interface IGetSqlManageRuleTipsParams {
+  project_name: string;
+}
+
+export interface IGetSqlManageRuleTipsReturn
+  extends IGetSqlManageRuleTipsResp {}
