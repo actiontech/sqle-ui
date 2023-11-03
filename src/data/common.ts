@@ -107,6 +107,11 @@ export enum ManagementPermissionsEnum {
   Create_Project = 1,
 }
 
+export enum CompanyNoticeDisplayStatusEnum {
+  Displayed = '1',
+  NotDisplayed = '0',
+}
+
 export const SQLE_INSTANCE_SOURCE_NAME = 'SQLE';
 
 export const SQLE_REDIRECT_KEY_PARAMS_NAME = 'target';
