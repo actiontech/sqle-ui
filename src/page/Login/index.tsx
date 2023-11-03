@@ -8,6 +8,7 @@ import { updateToken } from '../../store/user';
 import { useDispatch, useSelector } from 'react-redux';
 import user from '../../api/user';
 import {
+  CompanyNoticeDisplayStatusEnum,
   OPEN_CLOUD_BEAVER_URL_PARAM_NAME,
   ResponseCode,
   SQLE_COOKIE_TOKEN_KEY_NAME,
@@ -21,6 +22,11 @@ import { useLocation } from 'react-router-dom';
 import { getCookie } from '../../utils/Common';
 import { IReduxState } from '../../store';
 import useNavigate from '../../hooks/useNavigate';
+
+/* IFTRUE_isEE */
+import StorageKey from '../../data/StorageKey';
+import LocalStorageWrapper from '../../utils/LocalStorageWrapper';
+/* FITRUE_isEE */
 
 const Login = () => {
   const navigate = useNavigate();
@@ -60,6 +66,13 @@ const Login = () => {
           } else {
             navigate('home');
           }
+
+          /* IFTRUE_isEE */
+          LocalStorageWrapper.set(
+            StorageKey.SHOW_COMPANY_NOTICE,
+            CompanyNoticeDisplayStatusEnum.NotDisplayed
+          );
+          /* FITRUE_isEE */
         }
       });
   };

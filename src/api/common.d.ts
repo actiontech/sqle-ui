@@ -359,6 +359,10 @@ export interface ICloneRuleTemplateReqV1 {
   new_rule_template_name?: string;
 }
 
+export interface ICompanyNotice {
+  notice_str?: string;
+}
+
 export interface ICreateAuditPlanReqV1 {
   audit_plan_cron?: string;
 
@@ -787,6 +791,14 @@ export interface IGetAuditWhitelistResV1 {
   message?: string;
 
   total_nums?: number;
+}
+
+export interface IGetCompanyNoticeResp {
+  code?: number;
+
+  data?: ICompanyNotice;
+
+  message?: string;
 }
 
 export interface IGetCustomRuleResV1 {
@@ -2571,6 +2583,10 @@ export interface IUpdateAuditWhitelistReqV1 {
   match_type?: UpdateAuditWhitelistReqV1MatchTypeEnum;
 
   value?: string;
+}
+
+export interface IUpdateCompanyNoticeReq {
+  notice_str?: string;
 }
 
 export interface IUpdateCurrentUserPasswordReqV1 {

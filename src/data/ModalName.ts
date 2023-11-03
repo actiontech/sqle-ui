@@ -31,6 +31,7 @@ export enum ModalName {
 
   // header
   SHOW_VERSION = 'SHOW_VERSION',
+  Company_Notice = 'Company_Notice',
 
   //project manage
   Create_Project = 'Create_Project',

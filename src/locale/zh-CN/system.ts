@@ -108,6 +108,13 @@ export default {
       `,
   },
 
+  notification: {
+    title: '系统公告',
+    hasDirtyDataTips: '当前内容已经发生更改，是否确认取消修改？',
+    successMessage: '成功发布系统公告!',
+    notData: '暂无公告信息',
+  },
+
   license: {
     productName: 'SQL质量管理软件 V1.0',
     table: {
