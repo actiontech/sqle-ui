@@ -26,7 +26,7 @@ const CopyIcon: React.FC<CopyIconProps> = ({
     e?.preventDefault();
     e?.stopPropagation();
 
-    Copy.copyText(text || (children && String(children)) || '');
+    Copy.copyTextByTextarea(text || (children && String(children)) || '');
 
     setCopied(true);
 
