@@ -28,6 +28,7 @@ import {
 } from './testUtils/customRender';
 import { getBySelector } from './testUtils/customQuery';
 import configuration from './api/configuration';
+import companyNotice from './api/companyNotice';
 
 jest.mock('react-redux', () => {
   return {
@@ -54,11 +55,18 @@ describe('App test', () => {
     return spy;
   };
 
+  const mockGetCompanyNotice = () => {
+    const spy = jest.spyOn(companyNotice, 'getCompanyNotice');
+    spy.mockImplementation(() => resolveThreeSecond({ notice_str: '' }));
+    return spy;
+  };
+
   beforeEach(() => {
     getUserSpy = mockGetCurrentUser();
     getSqleInfoSpy = mockGetSqleInfo();
     mockGetOauth2Tips();
     mockUseAuditPlanTypes();
+    mockGetCompanyNotice();
     jest.useFakeTimers();
 
     (useSelector as jest.Mock).mockImplementation((e) =>
@@ -248,6 +256,7 @@ describe('App test', () => {
       payload: {
         modalStatus: {
           SHOW_VERSION: false,
+          Company_Notice: false,
         },
       },
       type: 'nav/initModalStatus',
