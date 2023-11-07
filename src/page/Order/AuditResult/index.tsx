@@ -159,7 +159,7 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
   }, [pagination, filterInfo, duplicate, props.taskId, getAuditTaskSql]);
 
   return (
-    <Card {...cardProps}>
+    <Card {...cardProps} id="audit-result-task-card">
       <AuditResultFilterForm
         form={filterForm}
         submit={submitFilter}

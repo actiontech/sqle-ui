@@ -125,6 +125,7 @@ exports[`test AuditResultCollection should be show overview tab when showOvervie
             >
               <div
                 class="ant-card ant-card-bordered"
+                id="audit-result-task-card"
               >
                 <div
                   class="ant-card-head"
@@ -2504,6 +2505,7 @@ exports[`test AuditResultCollection should match snapshot when getSummaryOfInsta
             >
               <div
                 class="ant-card ant-card-bordered"
+                id="audit-result-task-card"
               >
                 <div
                   class="ant-card-head"
@@ -4316,6 +4318,7 @@ exports[`test AuditResultCollection should match snapshot when showOverview is e
             >
               <div
                 class="ant-card ant-card-bordered"
+                id="audit-result-task-card"
               >
                 <div
                   class="ant-card-head"

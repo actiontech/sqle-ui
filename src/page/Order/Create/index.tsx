@@ -83,9 +83,13 @@ const CreateOrder = () => {
       currentTabKey: string
     ) => {
       if (values.isSameSqlOrder) {
-        auditOrderWithSameSql(values);
+        return auditOrderWithSameSql(values);
       } else {
-        auditOrderWthDifferenceSql(values, currentTabIndex, currentTabKey);
+        return auditOrderWthDifferenceSql(
+          values,
+          currentTabIndex,
+          currentTabKey
+        );
       }
     },
     [auditOrderWithSameSql, auditOrderWthDifferenceSql]

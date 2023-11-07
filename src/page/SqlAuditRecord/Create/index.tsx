@@ -33,6 +33,16 @@ const SQLAuditCreate: React.FC = () => {
   const baseRef = useRef<BaseInfoFormRef>(null);
   const sqlInfoRef = useRef<SQLInfoFormRef>(null);
 
+  const scrollToAuditResult = () => {
+    const auditResultCardElement = document.getElementById(
+      'audit-result-task-card'
+    );
+    auditResultCardElement?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+    });
+  };
+
   const auditSQL: SQLInfoFormProps['submit'] = async (values) => {
     const baseValues = await baseForm.validateFields();
     const params: ICreateSQLAuditRecordV1Params = {
@@ -56,6 +66,7 @@ const SQLAuditCreate: React.FC = () => {
         } else {
           setTask(res.data.data.task);
           message.success(t('sqlAudit.create.SQLInfo.successTips'));
+          scrollToAuditResult();
         }
       }
     });
@@ -75,6 +86,7 @@ const SQLAuditCreate: React.FC = () => {
         if (res.data.code === ResponseCode.SUCCESS) {
           setTask(record.task);
           message.success(t('sqlAudit.create.SQLInfo.successTips'));
+          scrollToAuditResult();
         }
       });
   };
@@ -82,6 +94,7 @@ const SQLAuditCreate: React.FC = () => {
   const resetForm = () => {
     baseRef.current?.reset();
     sqlInfoRef.current?.reset();
+    setTask(undefined);
   };
 
   return (
