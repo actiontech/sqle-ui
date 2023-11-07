@@ -352,6 +352,8 @@ describe('Order/Create', () => {
 
     await act(async () => jest.advanceTimersByTime(3000));
 
+    await act(async () => jest.advanceTimersByTime(3000));
+
     fireEvent.input(screen.getByLabelText('order.sqlInfo.sql'), {
       target: { value: 'select * from table3' },
     });
