@@ -84,6 +84,10 @@ class TaskService extends ServiceBase {
       );
     }
 
+    if (params.input_zip_file != undefined) {
+      paramsData.append('input_zip_file', params.input_zip_file as any);
+    }
+
     const project_name = params.project_name;
 
     return this.post<ICreateAndAuditTaskV1Return>(
@@ -124,6 +128,10 @@ class TaskService extends ServiceBase {
         'input_mybatis_xml_file',
         params.input_mybatis_xml_file as any
       );
+    }
+
+    if (params.input_zip_file != undefined) {
+      paramsData.append('input_zip_file', params.input_zip_file as any);
     }
 
     return this.post<IAuditTaskGroupIdV1Return>(

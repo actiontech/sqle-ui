@@ -84,9 +84,12 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
           </Radio>
           <EmptyBox if={!hideUpdateMybatisFile}>
             <Radio value={SQLInputType.uploadMybatisFile}>
-              {t('order.sqlInfo.updateMybatisFile')}
+              {t('order.sqlInfo.uploadMybatisFile')}
             </Radio>
           </EmptyBox>
+          <Radio value={SQLInputType.zipFile}>
+            {t('order.sqlInfo.uploadZipFile')}
+          </Radio>
         </Radio.Group>
       </Form.Item>
       <EmptyBox if={currentSQLInputType === SQLInputType.manualInput}>
@@ -153,6 +156,28 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
             accept=".xml"
             beforeUpload={() => false}
             onRemove={removeFile.bind(null, 'mybatisFile')}
+          >
+            <Button>{t('common.upload')}</Button>
+          </Upload>
+        </Form.Item>
+      </EmptyBox>
+
+      <EmptyBox if={currentSQLInputType === SQLInputType.zipFile}>
+        <Form.Item
+          label={t('order.sqlInfo.zipFile')}
+          valuePropName="fileList"
+          name={generateFieldName('zipFile')}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+          getValueFromEvent={getFileFromUploadChangeEvent}
+        >
+          <Upload
+            accept=".zip"
+            beforeUpload={() => false}
+            onRemove={removeFile.bind(null, 'zipFile')}
           >
             <Button>{t('common.upload')}</Button>
           </Upload>

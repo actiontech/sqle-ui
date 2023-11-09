@@ -156,6 +156,25 @@ exports[`Order/Detail/Modal/ModifySqlModal should send sql file when user upload
                                     order.sqlInfo.uploadFile
                                   </span>
                                 </label>
+                                <label
+                                  class="ant-radio-wrapper ant-radio-wrapper-in-form-item"
+                                >
+                                  <span
+                                    class="ant-radio"
+                                  >
+                                    <input
+                                      class="ant-radio-input"
+                                      type="radio"
+                                      value="3"
+                                    />
+                                    <span
+                                      class="ant-radio-inner"
+                                    />
+                                  </span>
+                                  <span>
+                                    order.sqlInfo.uploadZipFile
+                                  </span>
+                                </label>
                               </div>
                             </div>
                           </div>
