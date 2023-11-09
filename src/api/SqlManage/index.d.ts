@@ -2,9 +2,13 @@ import {
   GetSqlManageListFilterSourceEnum,
   GetSqlManageListFilterAuditLevelEnum,
   GetSqlManageListFilterStatusEnum,
+  GetSqlManageListSortFieldEnum,
+  GetSqlManageListSortOrderEnum,
   exportSqlManageV1FilterSourceEnum,
   exportSqlManageV1FilterAuditLevelEnum,
-  exportSqlManageV1FilterStatusEnum
+  exportSqlManageV1FilterStatusEnum,
+  exportSqlManageV1SortFieldEnum,
+  exportSqlManageV1SortOrderEnum
 } from './index.enum';
 
 import {
@@ -36,6 +40,10 @@ export interface IGetSqlManageListParams {
   filter_rule_name?: string;
 
   filter_db_type?: string;
+
+  sort_field?: GetSqlManageListSortFieldEnum;
+
+  sort_order?: GetSqlManageListSortOrderEnum;
 
   page_index: number;
 
@@ -72,6 +80,10 @@ export interface IExportSqlManageV1Params {
   filter_db_type?: string;
 
   filter_rule_name?: string;
+
+  sort_field?: exportSqlManageV1SortFieldEnum;
+
+  sort_order?: exportSqlManageV1SortOrderEnum;
 }
 
 export interface IGetSqlManageRuleTipsParams {

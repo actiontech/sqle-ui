@@ -24,6 +24,8 @@ import { ResponseCode } from '../../../data/common';
 import AssignMember from './AssignMember';
 import {
   GetSqlManageListFilterStatusEnum,
+  GetSqlManageListSortFieldEnum,
+  GetSqlManageListSortOrderEnum,
   exportSqlManageV1FilterAuditLevelEnum,
   exportSqlManageV1FilterSourceEnum,
   exportSqlManageV1FilterStatusEnum,
@@ -44,9 +46,11 @@ const SQLPanel: React.FC = () => {
     submitFilter,
     tableChange,
     resetFilter,
+    sorterInfo,
   } = useTable<SQLPanelFilterFormFields>({
     defaultFilterInfo,
   });
+
   const { projectName } = useCurrentProjectName();
   const { username, isAdmin, isProjectManager } = useCurrentUser();
   const [SQLNum, setSQLNum] = useState<SQLStatisticsProps>({
@@ -75,8 +79,36 @@ const SQLPanel: React.FC = () => {
   };
 
   const { data, loading, refresh } = useRequest(
-    () =>
-      SqlManage.GetSqlManageList({
+    () => {
+      const getSortField = () => {
+        if (Array.isArray(sorterInfo)) {
+          return undefined;
+        }
+
+        if (sorterInfo?.field === 'first_appear_time') {
+          return GetSqlManageListSortFieldEnum.first_appear_timestamp;
+        }
+        if (sorterInfo?.field === 'last_appear_time') {
+          return GetSqlManageListSortFieldEnum.last_receive_timestamp;
+        }
+        if (sorterInfo?.field === 'appear_num') {
+          return GetSqlManageListSortFieldEnum.fp_count;
+        }
+      };
+      const getSortOrder = () => {
+        if (Array.isArray(sorterInfo)) {
+          return undefined;
+        }
+
+        if (sorterInfo?.order === 'ascend') {
+          return GetSqlManageListSortOrderEnum.asc;
+        }
+
+        if (sorterInfo?.order === 'descend') {
+          return GetSqlManageListSortOrderEnum.desc;
+        }
+      };
+      return SqlManage.GetSqlManageList({
         project_name: projectName,
         page_index: pagination.pageIndex,
         page_size: pagination.pageSize,
@@ -99,6 +131,8 @@ const SQLPanel: React.FC = () => {
         filter_rule_name: filterInfo.filter_rule?.split(
           DB_TYPE_RULE_NAME_SEPARATOR
         )?.[1],
+        sort_field: getSortField(),
+        sort_order: getSortOrder(),
       }).then((res) => {
         setSQLNum({
           SQLTotalNum: res.data?.sql_manage_total_num ?? 0,
@@ -109,9 +143,10 @@ const SQLPanel: React.FC = () => {
           list: res.data?.data ?? [],
           total: res.data?.sql_manage_total_num ?? 0,
         };
-      }),
+      });
+    },
     {
-      refreshDeps: [pagination, filterInfo],
+      refreshDeps: [pagination, filterInfo, sorterInfo],
     }
   );
 

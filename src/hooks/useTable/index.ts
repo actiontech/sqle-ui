@@ -3,6 +3,7 @@ import { useForm } from 'antd/lib/form/Form';
 import React, { useState } from 'react';
 import { Dictionary } from '../../types/common.type';
 import { TablePagination, UseTableOption } from './index.type';
+import { SorterResult } from 'antd/lib/table/interface';
 
 const useTable = <T = Dictionary>(option?: UseTableOption) => {
   const {
@@ -14,6 +15,9 @@ const useTable = <T = Dictionary>(option?: UseTableOption) => {
 
   const [form] = useForm<T>();
   const [collapse, collapseChange] = useState(defaultFilterFormCollapse);
+  const [sorterInfo, setSorterInfo] = useState<
+    SorterResult<any> | SorterResult<any>[]
+  >();
 
   const submitFilter = React.useCallback(() => {
     const values = form.getFieldsValue();
@@ -38,7 +42,8 @@ const useTable = <T = Dictionary>(option?: UseTableOption) => {
   );
 
   const tableChange = React.useCallback<Required<TableProps<any>>['onChange']>(
-    (newPagination) => {
+    (newPagination, _, sorter) => {
+      setSorterInfo(sorter);
       if (
         newPagination.current !== pagination.pageIndex ||
         newPagination.pageSize !== pagination.pageSize
@@ -64,6 +69,7 @@ const useTable = <T = Dictionary>(option?: UseTableOption) => {
     submitFilter,
     resetFilter,
     tableChange,
+    sorterInfo,
   };
 };
 

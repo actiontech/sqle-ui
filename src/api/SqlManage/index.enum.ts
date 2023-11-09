@@ -26,6 +26,20 @@ export enum GetSqlManageListFilterStatusEnum {
   'manual_audited' = 'manual_audited'
 }
 
+export enum GetSqlManageListSortFieldEnum {
+  'first_appear_timestamp' = 'first_appear_timestamp',
+
+  'last_receive_timestamp' = 'last_receive_timestamp',
+
+  'fp_count' = 'fp_count'
+}
+
+export enum GetSqlManageListSortOrderEnum {
+  'asc' = 'asc',
+
+  'desc' = 'desc'
+}
+
 export enum exportSqlManageV1FilterSourceEnum {
   'audit_plan' = 'audit_plan',
 
@@ -50,4 +64,18 @@ export enum exportSqlManageV1FilterStatusEnum {
   'ignored' = 'ignored',
 
   'manual_audited' = 'manual_audited'
+}
+
+export enum exportSqlManageV1SortFieldEnum {
+  'first_appear_timestamp' = 'first_appear_timestamp',
+
+  'last_receive_timestamp' = 'last_receive_timestamp',
+
+  'fp_count' = 'fp_count'
+}
+
+export enum exportSqlManageV1SortOrderEnum {
+  'asc' = 'asc',
+
+  'desc' = 'desc'
 }
