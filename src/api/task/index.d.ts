@@ -40,6 +40,8 @@ export interface ICreateAndAuditTaskV1Params {
   input_sql_file?: any;
 
   input_mybatis_xml_file?: any;
+
+  input_zip_file?: any;
 }
 
 export interface ICreateAndAuditTaskV1Return extends IGetAuditTaskResV1 {}
@@ -52,6 +54,8 @@ export interface IAuditTaskGroupIdV1Params {
   input_sql_file?: any;
 
   input_mybatis_xml_file?: any;
+
+  input_zip_file?: any;
 }
 
 export interface IAuditTaskGroupIdV1Return extends IAuditTaskGroupResV1 {}

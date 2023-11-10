@@ -679,7 +679,26 @@ exports[`Order/Create should audit sql when user click audit button 1`] = `
                               />
                             </span>
                             <span>
-                              order.sqlInfo.updateMybatisFile
+                              order.sqlInfo.uploadMybatisFile
+                            </span>
+                          </label>
+                          <label
+                            class="ant-radio-wrapper ant-radio-wrapper-in-form-item"
+                          >
+                            <span
+                              class="ant-radio"
+                            >
+                              <input
+                                class="ant-radio-input"
+                                type="radio"
+                                value="3"
+                              />
+                              <span
+                                class="ant-radio-inner"
+                              />
+                            </span>
+                            <span>
+                              order.sqlInfo.uploadZipFile
                             </span>
                           </label>
                         </div>
@@ -3445,7 +3464,26 @@ exports[`Order/Create should audit sql when user click audit button 2`] = `
                                       />
                                     </span>
                                     <span>
-                                      order.sqlInfo.updateMybatisFile
+                                      order.sqlInfo.uploadMybatisFile
+                                    </span>
+                                  </label>
+                                  <label
+                                    class="ant-radio-wrapper ant-radio-wrapper-in-form-item"
+                                  >
+                                    <span
+                                      class="ant-radio"
+                                    >
+                                      <input
+                                        class="ant-radio-input"
+                                        type="radio"
+                                        value="3"
+                                      />
+                                      <span
+                                        class="ant-radio-inner"
+                                      />
+                                    </span>
+                                    <span>
+                                      order.sqlInfo.uploadZipFile
                                     </span>
                                   </label>
                                 </div>
@@ -5123,7 +5161,26 @@ exports[`Order/Create should render page header 1`] = `
                                 />
                               </span>
                               <span>
-                                order.sqlInfo.updateMybatisFile
+                                order.sqlInfo.uploadMybatisFile
+                              </span>
+                            </label>
+                            <label
+                              class="ant-radio-wrapper ant-radio-wrapper-in-form-item"
+                            >
+                              <span
+                                class="ant-radio"
+                              >
+                                <input
+                                  class="ant-radio-input"
+                                  type="radio"
+                                  value="3"
+                                />
+                                <span
+                                  class="ant-radio-inner"
+                                />
+                              </span>
+                              <span>
+                                order.sqlInfo.uploadZipFile
                               </span>
                             </label>
                           </div>
@@ -5994,7 +6051,26 @@ exports[`Order/Create should render result modal when created order 1`] = `
                               />
                             </span>
                             <span>
-                              order.sqlInfo.updateMybatisFile
+                              order.sqlInfo.uploadMybatisFile
+                            </span>
+                          </label>
+                          <label
+                            class="ant-radio-wrapper ant-radio-wrapper-in-form-item"
+                          >
+                            <span
+                              class="ant-radio"
+                            >
+                              <input
+                                class="ant-radio-input"
+                                type="radio"
+                                value="3"
+                              />
+                              <span
+                                class="ant-radio-inner"
+                              />
+                            </span>
+                            <span>
+                              order.sqlInfo.uploadZipFile
                             </span>
                           </label>
                         </div>

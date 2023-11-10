@@ -33,6 +33,7 @@ export enum SQLInputType {
   manualInput,
   uploadFile,
   uploadMybatisFile,
+  zipFile,
 }
 
 export type SqlStatementFields = {
@@ -40,4 +41,5 @@ export type SqlStatementFields = {
   sql: string;
   sqlFile: File[];
   mybatisFile: File[];
+  zipFile: File[];
 };

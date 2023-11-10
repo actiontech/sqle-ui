@@ -97,7 +97,7 @@ describe('test Order/SqlStatementForm', () => {
       screen.queryByLabelText('order.sqlInfo.mybatisFile')
     ).not.toBeInTheDocument();
 
-    fireEvent.click(screen.getByLabelText('order.sqlInfo.updateMybatisFile'));
+    fireEvent.click(screen.getByLabelText('order.sqlInfo.uploadMybatisFile'));
     expect(
       screen.queryByLabelText('order.sqlInfo.sql')
     ).not.toBeInTheDocument();
@@ -179,7 +179,7 @@ describe('test Order/SqlStatementForm', () => {
       </Form>
     );
     expect(
-      screen.queryByLabelText('order.sqlInfo.updateMybatisFile')
+      screen.queryByLabelText('order.sqlInfo.uploadMybatisFile')
     ).not.toBeInTheDocument();
   });
 
@@ -224,7 +224,7 @@ describe('test Order/SqlStatementForm', () => {
       '0_sqlFile'
     );
 
-    fireEvent.click(screen.getByLabelText('order.sqlInfo.updateMybatisFile'));
+    fireEvent.click(screen.getByLabelText('order.sqlInfo.uploadMybatisFile'));
     expect(screen.getByLabelText('order.sqlInfo.mybatisFile')).toHaveAttribute(
       'id',
       '0_mybatisFile'
@@ -258,7 +258,7 @@ describe('test Order/SqlStatementForm', () => {
       '1_sqlFile'
     );
 
-    fireEvent.click(screen.getByLabelText('order.sqlInfo.updateMybatisFile'));
+    fireEvent.click(screen.getByLabelText('order.sqlInfo.uploadMybatisFile'));
     expect(screen.getByLabelText('order.sqlInfo.mybatisFile')).toHaveAttribute(
       'id',
       '1_mybatisFile'

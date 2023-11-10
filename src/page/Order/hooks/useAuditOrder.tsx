@@ -100,6 +100,7 @@ const useAuditOrder = () => {
           sql: sqlStatementInfo.sql,
           input_sql_file: sqlStatementInfo.sqlFile?.[0],
           input_mybatis_xml_file: sqlStatementInfo.mybatisFile?.[0],
+          input_zip_file: sqlStatementInfo.zipFile?.[0],
         };
         const res = await task.auditTaskGroupIdV1(auditTaskPrams);
         if (res && res.data.code === ResponseCode.SUCCESS) {
@@ -142,6 +143,7 @@ const useAuditOrder = () => {
         sql: sqlStatementInfo.sql,
         input_sql_file: sqlStatementInfo.sqlFile?.[0],
         input_mybatis_xml_file: sqlStatementInfo.mybatisFile?.[0],
+        input_zip_file: sqlStatementInfo.zipFile?.[0],
       };
 
       const res = await task.createAndAuditTaskV1(params);

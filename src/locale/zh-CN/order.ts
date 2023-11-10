@@ -154,13 +154,15 @@ export default {
     sql: 'SQL语句',
     sqlFile: 'SQL文件',
     mybatisFile: 'Mybatis的XML文件',
+    zipFile: 'ZIP文件',
 
     addInstance: '添加数据源',
 
     uploadType: '选择审核SQL语句上传方式',
     manualInput: '输入SQL语句',
     uploadFile: '上传SQL文件',
-    updateMybatisFile: '上传Mybatis的XML文件',
+    uploadMybatisFile: '上传Mybatis的XML文件',
+    uploadZipFile: '上传ZIP文件',
 
     audit: '审核',
     format: 'SQL美化',

@@ -335,7 +335,7 @@ describe('order/create/sqlInfoForm', () => {
     fireEvent.click(instance);
     await act(async () => jest.advanceTimersByTime(3000));
 
-    fireEvent.click(screen.getByText('order.sqlInfo.updateMybatisFile'));
+    fireEvent.click(screen.getByText('order.sqlInfo.uploadMybatisFile'));
 
     const mybatisFile = new File(
       [
@@ -503,7 +503,7 @@ describe('order/create/sqlInfoForm', () => {
     fireEvent.click(screen.getByText('order.sqlInfo.format'));
     expect(mockSqlFormatter).toBeCalledTimes(2);
 
-    fireEvent.click(screen.getByText('order.sqlInfo.updateMybatisFile'));
+    fireEvent.click(screen.getByText('order.sqlInfo.uploadMybatisFile'));
     fireEvent.click(screen.getByText('order.sqlInfo.format'));
     expect(mockSqlFormatter).toBeCalledTimes(2);
 

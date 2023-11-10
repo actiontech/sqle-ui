@@ -204,7 +204,26 @@ exports[`test Order/SqlStatementFormTabs should match snapshot 1`] = `
                             />
                           </span>
                           <span>
-                            order.sqlInfo.updateMybatisFile
+                            order.sqlInfo.uploadMybatisFile
+                          </span>
+                        </label>
+                        <label
+                          class="ant-radio-wrapper ant-radio-wrapper-in-form-item"
+                        >
+                          <span
+                            class="ant-radio"
+                          >
+                            <input
+                              class="ant-radio-input"
+                              type="radio"
+                              value="3"
+                            />
+                            <span
+                              class="ant-radio-inner"
+                            />
+                          </span>
+                          <span>
+                            order.sqlInfo.uploadZipFile
                           </span>
                         </label>
                       </div>
@@ -348,7 +367,26 @@ exports[`test Order/SqlStatementFormTabs should match snapshot 1`] = `
                             />
                           </span>
                           <span>
-                            order.sqlInfo.updateMybatisFile
+                            order.sqlInfo.uploadMybatisFile
+                          </span>
+                        </label>
+                        <label
+                          class="ant-radio-wrapper ant-radio-wrapper-in-form-item"
+                        >
+                          <span
+                            class="ant-radio"
+                          >
+                            <input
+                              class="ant-radio-input"
+                              type="radio"
+                              value="3"
+                            />
+                            <span
+                              class="ant-radio-inner"
+                            />
+                          </span>
+                          <span>
+                            order.sqlInfo.uploadZipFile
                           </span>
                         </label>
                       </div>
