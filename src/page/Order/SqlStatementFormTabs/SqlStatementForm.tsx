@@ -9,6 +9,8 @@ import useChangeTheme from '../../../hooks/useChangeTheme';
 import useMonacoEditor from '../../../hooks/useMonacoEditor';
 import useStyles from '../../../theme';
 import { getFileFromUploadChangeEvent } from '../../../utils/Common';
+import EmitterKey from '../../../data/EmitterKey';
+import EventEmitter from '../../../utils/EventEmitter';
 
 const MonacoEditorFunComponent =
   MonacoEditor as ComponentType<MonacoEditorProps>;
@@ -54,11 +56,23 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
     return [fieldName ?? '0', name];
   };
 
+  const resetUploadTypeContent = () => {
+    setCurrentSQLInputTYpe(SQLInputType.manualInput);
+    if (isClearFormWhenChangeSqlType) {
+      form.resetFields([
+        generateFieldName('sql'),
+        generateFieldName('sqlFile'),
+        generateFieldName('mybatisFile'),
+      ]);
+    }
+  }
+
   const { editorDidMount } = useMonacoEditor(form, {
     formName: generateFieldName('sql'),
   });
 
   useEffect(() => {
+
     if (sqlStatement) {
       form.setFieldsValue({
         [fieldName ?? '0']: {
@@ -67,6 +81,21 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
       });
     }
   }, [fieldName, form, sqlStatement]);
+
+  useEffect(() => {
+    EventEmitter.subscribe(
+      EmitterKey.Reset_Sql_Statement_Form,
+      resetUploadTypeContent
+    );
+
+    return () => {
+      EventEmitter.unsubscribe(
+        EmitterKey.Reset_Sql_Statement_Form,
+        resetUploadTypeContent
+      );
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <>
