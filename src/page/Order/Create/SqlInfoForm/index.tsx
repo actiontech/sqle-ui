@@ -54,7 +54,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
     useBoolean();
   const [connectErrorMessage, setConnectErrorMessage] = useState<string[]>([]);
   const [changeSqlModeDisabled, setChangeSqlModeDisabled] = useState(false);
-
+  
   const instanceNameList = useMemo(() => {
     return Array.from(instanceNames).map(([_, name]) => name ?? '');
   }, [instanceNames]);
@@ -231,6 +231,7 @@ const SqlInfoForm: React.FC<SqlInfoFormProps> = (props) => {
       setInstanceNames(new Map([[0, '']]));
       setConnectInitHideTrue();
       setCurrentSqlMode(WorkflowResV2ModeEnum.same_sqls);
+      EventEmitter.emit(EmitterKey.Reset_Sql_Statement_Form);
     };
     EventEmitter.subscribe(
       EmitterKey.Reset_Create_Order_Form,

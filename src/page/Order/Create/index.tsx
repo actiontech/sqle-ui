@@ -163,7 +163,6 @@ const CreateOrder = () => {
     clearTaskInfos();
     toggleHasDirtyData(false);
     EventEmitter.emit(EmitterKey.Reset_Create_Order_Form);
-    EventEmitter.emit(EmitterKey.Reset_Sql_Statement_Form);
   }, [baseForm, clearTaskInfos, sqlInfoForm, toggleHasDirtyData]);
 
   const closeModalAndResetForm = useCallback(() => {

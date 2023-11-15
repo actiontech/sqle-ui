@@ -58,13 +58,6 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
 
   const resetUploadTypeContent = () => {
     setCurrentSQLInputTYpe(SQLInputType.manualInput);
-    if (isClearFormWhenChangeSqlType) {
-      form.resetFields([
-        generateFieldName('sql'),
-        generateFieldName('sqlFile'),
-        generateFieldName('mybatisFile'),
-      ]);
-    }
   }
 
   const { editorDidMount } = useMonacoEditor(form, {
@@ -95,6 +88,7 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
 
   return (
     <>
