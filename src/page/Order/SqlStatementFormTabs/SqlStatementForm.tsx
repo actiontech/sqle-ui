@@ -76,13 +76,13 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
 
   useEffect(() => {
     EventEmitter.subscribe(
-      EmitterKey.Reset_Sql_Statement_Form,
+      EmitterKey.Reset_Upload_Type_Content,
       resetUploadTypeContent
     );
 
     return () => {
       EventEmitter.unsubscribe(
-        EmitterKey.Reset_Sql_Statement_Form,
+        EmitterKey.Reset_Upload_Type_Content,
         resetUploadTypeContent
       );
     };

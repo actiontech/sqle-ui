@@ -306,7 +306,7 @@ describe('Order/Create', () => {
 
     expect(emitSpy).toBeCalledTimes(2);
     expect(emitSpy).toBeCalledWith(EmitterKey.Reset_Create_Order_Form);
-    expect(emitSpy).toBeCalledWith(EmitterKey.Reset_Sql_Statement_Form);
+    expect(emitSpy).toBeCalledWith(EmitterKey.Reset_Upload_Type_Content);
     expect(getBySelector('.ant-modal-wrap')).toHaveStyle('display: none');
     expect(screen.getByLabelText('order.baseInfo.name')).toHaveValue('');
   });
