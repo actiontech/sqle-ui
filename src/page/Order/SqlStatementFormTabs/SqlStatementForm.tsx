@@ -72,7 +72,6 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
   });
 
   useEffect(() => {
-
     if (sqlStatement) {
       form.setFieldsValue({
         [fieldName ?? '0']: {
