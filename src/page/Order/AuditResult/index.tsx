@@ -18,7 +18,7 @@ import { DownOutlined, UpOutlined } from '@ant-design/icons';
 
 const AuditResult: React.FC<AuditResultProps> = (props) => {
   const { t } = useTranslation();
-  const { mode = 'order' } = props;
+  const { mode = "order", getResultCallBack } = props;
   const [duplicate, { toggle: toggleDuplicate }] = useBoolean();
   const {
     filterInfo,
@@ -44,6 +44,7 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
           no_duplicate: duplicate,
         })
         .then((res) => {
+          getResultCallBack?.();
           return {
             list: res.data.data,
             total: res.data.total_nums,

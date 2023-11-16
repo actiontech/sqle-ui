@@ -30,6 +30,7 @@ const SQLAuditCreate: React.FC = () => {
   const [sqlInfoForm] = useForm<SQLInfoFormFields>();
   const { projectName } = useCurrentProjectName();
   const [task, setTask] = useState<IAuditTaskResV1>();
+  const [finishGetResult, setFinishGetResult] = useState(false);
   const baseRef = useRef<BaseInfoFormRef>(null);
   const sqlInfoRef = useRef<SQLInfoFormRef>(null);
 
@@ -45,6 +46,7 @@ const SQLAuditCreate: React.FC = () => {
 
   const auditSQL: SQLInfoFormProps['submit'] = async (values) => {
     const baseValues = await baseForm.validateFields();
+    setFinishGetResult(false);
     const params: ICreateSQLAuditRecordV1Params = {
       project_name: projectName,
       sqls: values.sql,
@@ -91,19 +93,22 @@ const SQLAuditCreate: React.FC = () => {
     baseRef.current?.reset();
     sqlInfoRef.current?.reset();
     setTask(undefined);
+    setFinishGetResult(false);
   };
 
   useEffect(() => {
-    if (typeof task?.task_id === 'number') {
+    if ((typeof task?.task_id === "number" && finishGetResult)) {
       message.success(t("sqlAudit.create.SQLInfo.successTips"));
-      scrollToAuditResult();
+      setTimeout(() => {
+        scrollToAuditResult();
+      }, 500);
     }
-  }, [task, t]);
+  }, [task, t, finishGetResult]);
 
   return (
     <>
-      <PageHeader title={t('sqlAudit.create.title')} ghost={false}>
-        {t('sqlAudit.create.pageDesc')}
+      <PageHeader title={t("sqlAudit.create.title")} ghost={false}>
+        {t("sqlAudit.create.pageDesc")}
       </PageHeader>
 
       <section className="padding-content">
@@ -112,14 +117,14 @@ const SQLAuditCreate: React.FC = () => {
           className="full-width-element"
           direction="vertical"
         >
-          <Card title={t('sqlAudit.create.baseInfo.title')}>
+          <Card title={t("sqlAudit.create.baseInfo.title")}>
             <BaseInfoForm
               ref={baseRef}
               form={baseForm}
               projectName={projectName}
             />
           </Card>
-          <Card title={t('sqlAudit.create.SQLInfo.title')}>
+          <Card title={t("sqlAudit.create.SQLInfo.title")}>
             <SQLInfoForm
               ref={sqlInfoRef}
               form={sqlInfoForm}
@@ -128,13 +133,16 @@ const SQLAuditCreate: React.FC = () => {
             />
           </Card>
 
-          <EmptyBox if={typeof task?.task_id === 'number'}>
+          <EmptyBox if={typeof task?.task_id === "number"}>
             <AuditResult
               mode="auditRecordCreate"
               projectName={projectName}
               taskId={task?.task_id}
               auditScore={task?.score}
               passRate={task?.pass_rate}
+              getResultCallBack={() => {
+                setFinishGetResult(true);
+              }}
             />
           </EmptyBox>
         </Space>
@@ -142,10 +150,10 @@ const SQLAuditCreate: React.FC = () => {
         <FooterButtonWrapper>
           <Space>
             <Link to={`project/${projectName}/sqlAudit`}>
-              <Button>{t('common.close')}</Button>
+              <Button>{t("common.close")}</Button>
             </Link>
             <Button type="primary" onClick={resetForm}>
-              {t('common.reset')}
+              {t("common.reset")}
             </Button>
           </Space>
         </FooterButtonWrapper>
