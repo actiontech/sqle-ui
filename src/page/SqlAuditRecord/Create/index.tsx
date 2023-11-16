@@ -16,7 +16,7 @@ import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import AuditResult from '../../Order/AuditResult';
 import sql_audit_record from '../../../api/sql_audit_record';
 import { ICreateSQLAuditRecordV1Params } from '../../../api/sql_audit_record/index.d';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from "react";
 import { IAuditTaskResV1, ISQLAuditRecordResData } from '../../../api/common';
 import { ResponseCode } from '../../../data/common';
 import EmptyBox from '../../../components/EmptyBox';
@@ -65,8 +65,6 @@ const SQLAuditCreate: React.FC = () => {
           return updateTags(res.data.data, baseValues);
         } else {
           setTask(res.data.data.task);
-          message.success(t('sqlAudit.create.SQLInfo.successTips'));
-          scrollToAuditResult();
         }
       }
     });
@@ -85,8 +83,6 @@ const SQLAuditCreate: React.FC = () => {
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
           setTask(record.task);
-          message.success(t('sqlAudit.create.SQLInfo.successTips'));
-          scrollToAuditResult();
         }
       });
   };
@@ -96,6 +92,13 @@ const SQLAuditCreate: React.FC = () => {
     sqlInfoRef.current?.reset();
     setTask(undefined);
   };
+
+  useEffect(() => {
+    if (typeof task?.task_id === 'number') {
+      message.success(t("sqlAudit.create.SQLInfo.successTips"));
+      scrollToAuditResult();
+    }
+  }, [task, t]);
 
   return (
     <>
