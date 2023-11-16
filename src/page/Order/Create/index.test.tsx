@@ -304,8 +304,9 @@ describe('Order/Create', () => {
     const emitSpy = jest.spyOn(EventEmitter, 'emit');
     fireEvent.click(screen.getByText('common.resetAndClose'));
 
-    expect(emitSpy).toBeCalledTimes(1);
+    expect(emitSpy).toBeCalledTimes(2);
     expect(emitSpy).toBeCalledWith(EmitterKey.Reset_Create_Order_Form);
+    expect(emitSpy).toBeCalledWith(EmitterKey.Reset_Upload_Type_Content);
     expect(getBySelector('.ant-modal-wrap')).toHaveStyle('display: none');
     expect(screen.getByLabelText('order.baseInfo.name')).toHaveValue('');
   });

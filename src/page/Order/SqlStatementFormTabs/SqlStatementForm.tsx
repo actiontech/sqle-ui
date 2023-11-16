@@ -9,6 +9,8 @@ import useChangeTheme from '../../../hooks/useChangeTheme';
 import useMonacoEditor from '../../../hooks/useMonacoEditor';
 import useStyles from '../../../theme';
 import { getFileFromUploadChangeEvent } from '../../../utils/Common';
+import EmitterKey from '../../../data/EmitterKey';
+import EventEmitter from '../../../utils/EventEmitter';
 
 const MonacoEditorFunComponent =
   MonacoEditor as ComponentType<MonacoEditorProps>;
@@ -54,6 +56,10 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
     return [fieldName ?? '0', name];
   };
 
+  const resetUploadTypeContent = () => {
+    setCurrentSQLInputTYpe(SQLInputType.manualInput);
+  }
+
   const { editorDidMount } = useMonacoEditor(form, {
     formName: generateFieldName('sql'),
   });
@@ -67,6 +73,22 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
       });
     }
   }, [fieldName, form, sqlStatement]);
+
+  useEffect(() => {
+    EventEmitter.subscribe(
+      EmitterKey.Reset_Upload_Type_Content,
+      resetUploadTypeContent
+    );
+
+    return () => {
+      EventEmitter.unsubscribe(
+        EmitterKey.Reset_Upload_Type_Content,
+        resetUploadTypeContent
+      );
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
 
   return (
     <>

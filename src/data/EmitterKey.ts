@@ -10,6 +10,8 @@ enum EmitterKey {
 
   Reset_Create_Order_Form = 'RESET_CREATE_ORDER_FORM',
 
+  Reset_Upload_Type_Content = 'RESET_UPLOAD_TYPE_CONTENT',
+
   Reset_Test_Data_Source_Connect = 'RESET_TEST_DATA_SOURCE_CONNECT',
 
   Reset_Workflow_Template_Form = 'RESET_WORKFLOW_TEMPLATE_FORM',
