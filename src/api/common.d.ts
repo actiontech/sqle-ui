@@ -144,6 +144,8 @@ export interface IAuditPlanSQLReqV1 {
 
   db_user?: string;
 
+  endpoint?: string;
+
   first_query_at?: string;
 
   query_time_avg?: number;
@@ -2315,6 +2317,8 @@ export interface ISqlManage {
   assignees?: string[];
 
   audit_result?: IAuditResult[];
+
+  endpoint?: string;
 
   first_appear_time?: string;
 

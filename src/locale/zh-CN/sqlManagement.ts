@@ -36,6 +36,8 @@ export default {
     relatedToMe: '与我相关',
     time: '时间范围',
     rule: '审核规则',
+    endpoint: '端点信息',
+    endpointSearchPlaceHolder: '请输入端点信息',
   },
 
   table: {
@@ -49,6 +51,7 @@ export default {
     personInCharge: '负责人',
     status: '状态',
     comment: '备注',
+    endpoint: '端点信息',
 
     actions: {
       batchAssignment: '批量指派',

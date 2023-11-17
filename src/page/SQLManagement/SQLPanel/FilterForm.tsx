@@ -166,20 +166,32 @@ const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
             </Select>
           </Form.Item>
         </Col>
+        <Col {...FilterFormColLayout}>
+          <Form.Item
+            label={t('sqlManagement.filterForm.endpoint')}
+            name="fuzzy_search_endpoint"
+          >
+            <Input
+              placeholder={t('common.form.placeholder.input', {
+                name: t('sqlManagement.filterForm.endpoint'),
+              })}
+            />
+          </Form.Item>
+        </Col>
 
         <Col
           {...{
             xs: 24,
             sm: {
-              span: 12,
+              span: 24,
               offset: 0,
             },
             xl: {
-              span: 16,
+              span: 8,
               offset: 0,
             },
             xxl: {
-              span: 6,
+              span: 24,
               offset: 0,
             },
           }}
