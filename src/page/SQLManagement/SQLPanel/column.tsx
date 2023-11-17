@@ -118,6 +118,8 @@ export const SQLPanelColumns: (params: {
         return formatTime(time, '--');
       },
       sorter: true,
+      sortDirections: ['descend', 'ascend']
+
     },
     {
       dataIndex: 'last_appear_time',
@@ -126,11 +128,13 @@ export const SQLPanelColumns: (params: {
         return formatTime(time, '--');
       },
       sorter: true,
+      sortDirections: ['descend', 'ascend']
     },
     {
       dataIndex: 'appear_num',
       title: () => t('sqlManagement.table.occurrenceCount'),
       sorter: true,
+      sortDirections: ['descend', 'ascend']
     },
 
     {
