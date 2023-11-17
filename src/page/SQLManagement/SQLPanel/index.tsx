@@ -346,13 +346,13 @@ const SQLPanel: React.FC = () => {
       filter_status: filterValues.filter_status as
         | exportSqlManageV1FilterStatusEnum
         | undefined,
-      filter_db_type: filterInfo.filter_rule?.split(
+      filter_db_type: filterValues.filter_rule?.split(
         DB_TYPE_RULE_NAME_SEPARATOR
       )?.[0],
-      filter_rule_name: filterInfo.filter_rule?.split(
+      filter_rule_name: filterValues.filter_rule?.split(
         DB_TYPE_RULE_NAME_SEPARATOR
       )?.[1],
-      fuzzy_search_endpoint: filterInfo.fuzzy_search_endpoint,
+      fuzzy_search_endpoint: filterValues.fuzzy_search_endpoint,
     };
 
     SqlManage.exportSqlManageV1(params, { responseType: 'blob' })
