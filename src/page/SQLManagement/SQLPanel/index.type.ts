@@ -21,6 +21,8 @@ export type SQLPanelFilterFormFields = {
   filter_status?: GetSqlManageListFilterStatusEnum;
 
   filter_rule?: string;
+
+  fuzzy_search_endpoint?: string;
 };
 
 export type SQLPanelFilterFormProps = {

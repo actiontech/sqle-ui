@@ -132,6 +132,7 @@ export const SQLPanelColumns: (params: {
       title: () => t('sqlManagement.table.occurrenceCount'),
       sorter: true,
     },
+
     {
       dataIndex: 'assignees',
       title: () => t('sqlManagement.table.personInCharge'),
@@ -141,6 +142,10 @@ export const SQLPanelColumns: (params: {
         }
         return assignees.map((v) => <Tag key={v}>{v}</Tag>);
       },
+    },
+        {
+      dataIndex: 'endpoint',
+      title: () => t('sqlManagement.table.endpoint'),
     },
     {
       dataIndex: 'status',
@@ -185,6 +190,7 @@ export const SQLPanelColumns: (params: {
         );
       },
     },
+
     {
       dataIndex: 'operator',
       title: () => t('common.operate'),

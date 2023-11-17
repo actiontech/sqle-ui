@@ -131,6 +131,7 @@ const SQLPanel: React.FC = () => {
         filter_rule_name: filterInfo.filter_rule?.split(
           DB_TYPE_RULE_NAME_SEPARATOR
         )?.[1],
+        fuzzy_search_endpoint: filterInfo.fuzzy_search_endpoint,
         sort_field: getSortField(),
         sort_order: getSortOrder(),
       }).then((res) => {
@@ -351,6 +352,7 @@ const SQLPanel: React.FC = () => {
       filter_rule_name: filterInfo.filter_rule?.split(
         DB_TYPE_RULE_NAME_SEPARATOR
       )?.[1],
+      fuzzy_search_endpoint: filterInfo.fuzzy_search_endpoint,
     };
 
     SqlManage.exportSqlManageV1(params, { responseType: 'blob' })
