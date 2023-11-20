@@ -16,7 +16,7 @@ import { useCurrentProjectName } from '../../ProjectManage/ProjectDetail';
 import AuditResult from '../../Order/AuditResult';
 import sql_audit_record from '../../../api/sql_audit_record';
 import { ICreateSQLAuditRecordV1Params } from '../../../api/sql_audit_record/index.d';
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { IAuditTaskResV1, ISQLAuditRecordResData } from '../../../api/common';
 import { ResponseCode } from '../../../data/common';
 import EmptyBox from '../../../components/EmptyBox';
@@ -64,6 +64,7 @@ const SQLAuditCreate: React.FC = () => {
         if ((baseValues.tags?.length ?? 0) > 0) {
           return updateTags(res.data.data, baseValues);
         } else {
+          message.success(t("sqlAudit.create.SQLInfo.successTips"));
           setTask(res.data.data.task);
         }
       }
@@ -82,6 +83,7 @@ const SQLAuditCreate: React.FC = () => {
       })
       .then((res) => {
         if (res.data.code === ResponseCode.SUCCESS) {
+          message.success(t("sqlAudit.create.SQLInfo.successTips"));
           setTask(record.task);
         }
       });
@@ -93,17 +95,10 @@ const SQLAuditCreate: React.FC = () => {
     setTask(undefined);
   };
 
-  useEffect(() => {
-    if (typeof task?.task_id === 'number') {
-      message.success(t("sqlAudit.create.SQLInfo.successTips"));
-      scrollToAuditResult();
-    }
-  }, [task, t]);
-
   return (
     <>
-      <PageHeader title={t('sqlAudit.create.title')} ghost={false}>
-        {t('sqlAudit.create.pageDesc')}
+      <PageHeader title={t("sqlAudit.create.title")} ghost={false}>
+        {t("sqlAudit.create.pageDesc")}
       </PageHeader>
 
       <section className="padding-content">
@@ -112,14 +107,14 @@ const SQLAuditCreate: React.FC = () => {
           className="full-width-element"
           direction="vertical"
         >
-          <Card title={t('sqlAudit.create.baseInfo.title')}>
+          <Card title={t("sqlAudit.create.baseInfo.title")}>
             <BaseInfoForm
               ref={baseRef}
               form={baseForm}
               projectName={projectName}
             />
           </Card>
-          <Card title={t('sqlAudit.create.SQLInfo.title')}>
+          <Card title={t("sqlAudit.create.SQLInfo.title")}>
             <SQLInfoForm
               ref={sqlInfoRef}
               form={sqlInfoForm}
@@ -128,13 +123,16 @@ const SQLAuditCreate: React.FC = () => {
             />
           </Card>
 
-          <EmptyBox if={typeof task?.task_id === 'number'}>
+          <EmptyBox if={typeof task?.task_id === "number"}>
             <AuditResult
               mode="auditRecordCreate"
               projectName={projectName}
               taskId={task?.task_id}
               auditScore={task?.score}
               passRate={task?.pass_rate}
+              getResultCallBack={() => {
+                scrollToAuditResult();
+              }}
             />
           </EmptyBox>
         </Space>
@@ -142,10 +140,10 @@ const SQLAuditCreate: React.FC = () => {
         <FooterButtonWrapper>
           <Space>
             <Link to={`project/${projectName}/sqlAudit`}>
-              <Button>{t('common.close')}</Button>
+              <Button>{t("common.close")}</Button>
             </Link>
             <Button type="primary" onClick={resetForm}>
-              {t('common.reset')}
+              {t("common.reset")}
             </Button>
           </Space>
         </FooterButtonWrapper>

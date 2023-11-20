@@ -19,6 +19,7 @@ export type AuditResultProps = {
   updateTaskRecordTotalNum?: (taskId: string, sqlNumber: number) => void;
   projectName: string;
   mode?: 'order' | 'auditRecordCreate' | 'auditRecordDetail';
+  getResultCallBack?: () => void
 };
 
 export interface AuditResultCollectionProps {
