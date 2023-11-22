@@ -22,6 +22,19 @@ import {
   SQLAuditRecordListUrlParamsKey,
 } from '../../SqlAuditRecord/List/index.data';
 
+const renderRemark = (remark: string) => (
+  <Typography.Paragraph
+    ellipsis={{
+      expandable: false,
+      tooltip: remark,
+      rows: 3,
+    }}
+    className="margin-bottom-0"
+  >
+    {remark}
+  </Typography.Paragraph>
+);
+
 export const SQLPanelColumns: (params: {
   projectName: string;
   updateRemark: (id: number, remark: string) => void;
@@ -118,8 +131,7 @@ export const SQLPanelColumns: (params: {
         return formatTime(time, '--');
       },
       sorter: true,
-      sortDirections: ['descend', 'ascend']
-
+      sortDirections: ['descend', 'ascend'],
     },
     {
       dataIndex: 'last_appear_time',
@@ -128,13 +140,13 @@ export const SQLPanelColumns: (params: {
         return formatTime(time, '--');
       },
       sorter: true,
-      sortDirections: ['descend', 'ascend']
+      sortDirections: ['descend', 'ascend'],
     },
     {
       dataIndex: 'appear_num',
       title: () => t('sqlManagement.table.occurrenceCount'),
       sorter: true,
-      sortDirections: ['descend', 'ascend']
+      sortDirections: ['descend', 'ascend'],
     },
 
     {
@@ -147,7 +159,7 @@ export const SQLPanelColumns: (params: {
         return assignees.map((v) => <Tag key={v}>{v}</Tag>);
       },
     },
-        {
+    {
       dataIndex: 'endpoint',
       title: () => t('sqlManagement.table.endpoint'),
     },
@@ -177,9 +189,10 @@ export const SQLPanelColumns: (params: {
     {
       dataIndex: 'remark',
       title: () => t('sqlManagement.table.comment'),
+      width: 200,
       render: (remark: string, record) => {
         return (
-          <EmptyBox if={actionPermission} defaultNode={<>{remark ?? '--'}</>}>
+          <EmptyBox if={actionPermission} defaultNode={<>{renderRemark(remark) ?? '--'}</>}>
             <EditText
               editable={{
                 autoSize: true,
