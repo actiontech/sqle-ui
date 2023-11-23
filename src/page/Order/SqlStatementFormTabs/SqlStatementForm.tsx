@@ -4,13 +4,14 @@ import { useTranslation } from 'react-i18next';
 import MonacoEditor, { MonacoEditorProps } from 'react-monaco-editor';
 import { SQLInputType, SqlStatementFields, SqlStatementFormProps } from '.';
 import EmptyBox from '../../../components/EmptyBox';
-import { PageFormLayout } from '../../../data/common';
+import { PageFormLayout, SqlFiledInitialValue } from '../../../data/common';
 import useChangeTheme from '../../../hooks/useChangeTheme';
 import useMonacoEditor from '../../../hooks/useMonacoEditor';
 import useStyles from '../../../theme';
 import { getFileFromUploadChangeEvent } from '../../../utils/Common';
 import EmitterKey from '../../../data/EmitterKey';
 import EventEmitter from '../../../utils/EventEmitter';
+import { whiteSpaceSql } from '../../../utils/FormRule';
 
 const MonacoEditorFunComponent =
   MonacoEditor as ComponentType<MonacoEditorProps>;
@@ -118,15 +119,16 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
         <Form.Item
           name={generateFieldName('sql')}
           label={t('order.sqlInfo.sql')}
-          initialValue="/* input your sql */"
+          initialValue={SqlFiledInitialValue}
           wrapperCol={{
             ...PageFormLayout.wrapperCol,
             className: theme.editor,
           }}
           rules={[
             {
-              required: true,
+              required: true
             },
+            ...whiteSpaceSql()
           ]}
         >
           <MonacoEditorFunComponent

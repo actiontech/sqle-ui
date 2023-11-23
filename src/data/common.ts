@@ -129,3 +129,5 @@ export const SQLE_DEFAULT_WEB_TITLE =
   ALL_SQLE_DEFAULT_WEB_TITLE[0] ?? ALL_SQLE_DEFAULT_WEB_TITLE[1];
 
 export const SQLE_BASE_URL = '/';
+
+export const SqlFiledInitialValue = '/* input your sql */';
