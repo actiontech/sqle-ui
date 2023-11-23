@@ -58,15 +58,22 @@ const useTable = <T = Dictionary>(option?: UseTableOption) => {
   const tableChange = React.useCallback<Required<TableProps<any>>["onChange"]>(
     (newPagination, _, sorter) => {
       setSorterInfo(sorter);
-      if (
-        newPagination.current !== pagination.pageIndex ||
-        newPagination.pageSize !== pagination.pageSize
-      ) {
-        setPagination({
-          pageIndex: newPagination.current ?? defaultPageIndex,
-          pageSize: newPagination.pageSize ?? defaultPageSize,
-        });
+      let paginationParams = {
+        pageIndex: defaultPageIndex,
+        pageSize: defaultPageSize,
+      };
+      if (newPagination.pageSize && newPagination.pageSize !== pagination.pageSize) {
+        paginationParams.pageSize = newPagination.pageSize;
+        setPagination(paginationParams);
+        return;
       }
+      if (
+        newPagination.current &&
+        newPagination.current !== pagination.pageIndex
+      ) {
+        paginationParams.pageIndex = newPagination.current;
+      }
+      setPagination(paginationParams);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [pagination.pageIndex, pagination.pageSize]
