@@ -173,9 +173,10 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
         pagination={{
           total: data?.total,
           showSizeChanger: true,
+          current: pagination.pageIndex,
         }}
         columns={
-          mode === 'order'
+          mode === "order"
             ? orderAuditResultColumn(updateSqlDescribe, handleClickAnalyze)
             : AuditResultRecordColumn(updateSqlDescribe, handleClickAnalyze)
         }
@@ -195,7 +196,7 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
             ) : null,
           columnWidth: 14,
         }}
-        scroll={{ x: 'max-content' }}
+        scroll={{ x: "max-content" }}
       />
     </Card>
   );

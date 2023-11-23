@@ -111,7 +111,7 @@ const DataSourceList = () => {
     <Card
       title={
         <Space>
-          {t('dataSource.databaseListTitle')}
+          {t("dataSource.databaseListTitle")}
           <Button onClick={refresh}>
             <SyncOutlined spin={loading} />
           </Button>
@@ -120,7 +120,7 @@ const DataSourceList = () => {
       extra={
         <EmptyBox if={actionPermission && !projectIsArchive}>
           <Link to={`project/${projectName}/data/create`}>
-            <Button type="primary">{t('dataSource.addDatabase')}</Button>
+            <Button type="primary">{t("dataSource.addDatabase")}</Button>
           </Link>
         </EmptyBox>
       }
@@ -142,6 +142,7 @@ const DataSourceList = () => {
         )}
         pagination={{
           total: data?.total,
+          current: pagination.pageIndex,
         }}
         onChange={tableChange}
       />

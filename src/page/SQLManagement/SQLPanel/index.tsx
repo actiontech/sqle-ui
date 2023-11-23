@@ -396,14 +396,14 @@ const SQLPanel: React.FC = () => {
                     }
                     type="primary"
                   >
-                    {t('sqlManagement.table.actions.batchAssignment')}
+                    {t("sqlManagement.table.actions.batchAssignment")}
                   </Button>
                 </AssignMember>
 
                 <Popconfirm
-                  title={t('sqlManagement.table.actions.batchSolveTips')}
+                  title={t("sqlManagement.table.actions.batchSolveTips")}
                   placement="topLeft"
-                  okText={t('common.ok')}
+                  okText={t("common.ok")}
                   disabled={selectedRowKeys.length === 0 || batchActionsLoading}
                   onConfirm={batchSolve}
                 >
@@ -413,13 +413,13 @@ const SQLPanel: React.FC = () => {
                     }
                     type="primary"
                   >
-                    {t('sqlManagement.table.actions.batchSolve')}
+                    {t("sqlManagement.table.actions.batchSolve")}
                   </Button>
                 </Popconfirm>
                 <Popconfirm
-                  title={t('sqlManagement.table.actions.batchIgnoreTips')}
+                  title={t("sqlManagement.table.actions.batchIgnoreTips")}
                   placement="topLeft"
-                  okText={t('common.ok')}
+                  okText={t("common.ok")}
                   disabled={selectedRowKeys.length === 0 || batchActionsLoading}
                   onConfirm={batchIgnore}
                 >
@@ -429,7 +429,7 @@ const SQLPanel: React.FC = () => {
                     }
                     type="primary"
                   >
-                    {t('sqlManagement.table.actions.batchIgnore')}
+                    {t("sqlManagement.table.actions.batchIgnore")}
                   </Button>
                 </Popconfirm>
               </Space>
@@ -440,7 +440,7 @@ const SQLPanel: React.FC = () => {
               onClick={exportAction}
               disabled={exportButtonDisabled}
             >
-              {t('sqlManagement.table.actions.export')}
+              {t("sqlManagement.table.actions.export")}
             </Button>
           </Space>
 
@@ -465,6 +465,7 @@ const SQLPanel: React.FC = () => {
             pagination={{
               showSizeChanger: true,
               total: data?.total ?? 0,
+              current: pagination.pageIndex,
             }}
             expandable={{
               expandedRowRender,
@@ -480,7 +481,7 @@ const SQLPanel: React.FC = () => {
                 ) : null,
               columnWidth: 14,
             }}
-            scroll={{ x: 'max-content' }}
+            scroll={{ x: "max-content" }}
           />
         </Space>
       </Card>

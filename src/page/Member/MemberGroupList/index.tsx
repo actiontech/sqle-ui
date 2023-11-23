@@ -121,7 +121,7 @@ const UserGroupList: React.FC = () => {
       style={{ marginTop: theme.common.padding }}
       title={
         <Space>
-          {t('member.memberGroupList.title')}
+          {t("member.memberGroupList.title")}
           <Button onClick={refresh}>
             <SyncOutlined spin={loading} />
           </Button>
@@ -133,7 +133,7 @@ const UserGroupList: React.FC = () => {
           key="create-user-group"
         >
           <Button type="primary" onClick={createAction}>
-            {t('member.memberGroupList.createAction')}
+            {t("member.memberGroupList.createAction")}
           </Button>
         </EmptyBox>,
       ]}
@@ -152,6 +152,7 @@ const UserGroupList: React.FC = () => {
         pagination={{
           total: data?.total,
           showSizeChanger: true,
+          current: pagination.pageIndex,
         }}
         onChange={tableChange}
       />

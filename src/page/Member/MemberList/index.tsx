@@ -114,7 +114,7 @@ const MemberList: React.FC = () => {
     <Card
       title={
         <Space>
-          {t('member.memberList.title')}
+          {t("member.memberList.title")}
           <Button onClick={refresh}>
             <SyncOutlined spin={loading} />
           </Button>
@@ -123,7 +123,7 @@ const MemberList: React.FC = () => {
       extra={[
         <EmptyBox if={actionPermission && !projectIsArchive} key="create-user">
           <Button type="primary" onClick={createAction}>
-            {t('member.memberList.createAction')}
+            {t("member.memberList.createAction")}
           </Button>
         </EmptyBox>,
       ]}
@@ -142,6 +142,7 @@ const MemberList: React.FC = () => {
         pagination={{
           total: data?.total,
           showSizeChanger: true,
+          current: pagination.pageIndex,
         }}
         onChange={tableChange}
       />
