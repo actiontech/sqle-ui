@@ -12,7 +12,7 @@ import {
   Tooltip,
   Upload,
 } from 'antd';
-import { PageFormLayout, ResponseCode } from '../../../data/common';
+import { PageFormLayout, ResponseCode, SqlFiledInitialValue } from '../../../data/common';
 import {
   AuditTypeEnum,
   SQLInfoFormFields,
@@ -49,6 +49,7 @@ import { RuleUrlParamKey } from '../../Rule/useRuleFilterForm';
 import { Link } from 'react-router-dom';
 import { getInstanceTipListV1FunctionalModuleEnum } from '../../../api/instance/index.enum';
 import EmptyBox from '../../../components/EmptyBox';
+import { whiteSpaceSql } from '../../../utils/FormRule';
 
 const MonacoEditorFunComponent =
   MonacoEditor as ComponentType<MonacoEditorProps>;
@@ -101,12 +102,12 @@ const SQLInfoForm: React.ForwardRefRenderFunction<
       return {
         name: 'sql',
         label: t('sqlAudit.create.SQLInfo.uploadLabelEnum.sql'),
-        initialValue: '/* input your sql */',
+        initialValue: SqlFiledInitialValue,
         wrapperCol: {
           ...PageFormLayout.wrapperCol,
           className: theme.editor,
         },
-        rules: [{ required: uploadType === UploadTypeEnum.sql }],
+        rules: [{ required: uploadType === UploadTypeEnum.sql }, ...whiteSpaceSql()],
 
         children: (
           <MonacoEditorFunComponent
