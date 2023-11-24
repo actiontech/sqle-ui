@@ -85,17 +85,17 @@ const AuditPlanReport: React.FC = () => {
     <Card
       title={
         <>
-          {t('auditPlan.report.time', {
-            time: formatTime(reportInfo?.audit_plan_report_timestamp, '--'),
+          {t("auditPlan.report.time", {
+            time: formatTime(reportInfo?.audit_plan_report_timestamp, "--"),
           })}
           &nbsp;
           <Typography.Text type="secondary" className="font-size-small">
-            {t('auditPlan.report.source', {
-              source: reportInfo?.score ?? '--',
+            {t("auditPlan.report.source", {
+              source: reportInfo?.score ?? "--",
             })}
             &nbsp;
-            {t('auditPlan.report.passRage', {
-              rage: reportInfo?.pass_rate ?? '--',
+            {t("auditPlan.report.passRage", {
+              rage: reportInfo?.pass_rate ?? "--",
             })}
           </Typography.Text>
         </>
@@ -106,7 +106,7 @@ const AuditPlanReport: React.FC = () => {
           onClick={exportReport}
           disabled={exportButtonDisabled}
         >
-          {t('auditPlan.report.export.buttonText')}
+          {t("auditPlan.report.export.buttonText")}
         </Button>
       }
     >
@@ -117,7 +117,7 @@ const AuditPlanReport: React.FC = () => {
         columns={AuditPlanReportTableHeader(handleClickAnalyze)}
         pagination={{
           showSizeChanger: true,
-          total: data?.total ?? 0,
+          total: data?.total ?? 0
         }}
         onChange={tableChange}
       />

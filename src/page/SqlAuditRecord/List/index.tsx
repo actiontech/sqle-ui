@@ -101,24 +101,24 @@ const SQLAuditList: React.FC = () => {
   return (
     <>
       <PageHeader
-        title={t('sqlAudit.list.title')}
+        title={t("sqlAudit.list.title")}
         ghost={false}
         extra={
           <Link to={`project/${projectName}/sqlAudit/create`}>
             <Button type="primary">
-              {t('sqlAudit.list.createButtonText')}
+              {t("sqlAudit.list.createButtonText")}
             </Button>
           </Link>
         }
       >
-        {t('sqlAudit.list.pageDesc')}
+        {t("sqlAudit.list.pageDesc")}
       </PageHeader>
 
       <section className="padding-content">
         <Card
           title={
             <Space>
-              {t('sqlAudit.list.table.title')}
+              {t("sqlAudit.list.table.title")}
               <Button onClick={refresh}>
                 <SyncOutlined spin={loading} />
               </Button>
@@ -144,9 +144,10 @@ const SQLAuditList: React.FC = () => {
               pagination={{
                 total: data?.total,
                 showSizeChanger: true,
+                current: pagination.pageIndex,
               }}
               scroll={{
-                x: 'max-content',
+                x: "max-content",
               }}
             />
           </Space>

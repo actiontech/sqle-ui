@@ -114,7 +114,7 @@ describe('useTable', () => {
         {} as any
       );
     });
-    expect(result.current.pagination).toEqual({ pageIndex: 11, pageSize: 20 });
+    expect(result.current.pagination).toEqual({ pageIndex: 11, pageSize: 10 });
 
     act(() => {
       result.current.tableChange(
@@ -125,7 +125,7 @@ describe('useTable', () => {
       );
     });
     expect(result.current.pagination).toEqual({
-      pageIndex: 111,
+      pageIndex: 1,
       pageSize: 200,
     });
   });

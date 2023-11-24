@@ -352,6 +352,7 @@ const OrderList = () => {
               pagination={{
                 total: orderList?.total,
                 showSizeChanger: true,
+                current: pagination.pageIndex,
               }}
               onChange={tableChange}
               onRow={(record) => ({

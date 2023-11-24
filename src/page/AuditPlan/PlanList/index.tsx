@@ -133,7 +133,7 @@ const PlanList = () => {
     <Card
       title={
         <Space>
-          {t('auditPlan.list.title')}
+          {t("auditPlan.list.title")}
           <Button onClick={refresh}>
             <SyncOutlined spin={loading} />
           </Button>
@@ -142,7 +142,7 @@ const PlanList = () => {
       extra={[
         <EmptyBox if={!projectIsArchive} key="create-audit-plan">
           <Link to={`project/${projectName}/auditPlan/create`}>
-            <Button type="primary">{t('auditPlan.action.create')}</Button>
+            <Button type="primary">{t("auditPlan.action.create")}</Button>
           </Link>
         </EmptyBox>,
       ]}
@@ -160,6 +160,7 @@ const PlanList = () => {
         pagination={{
           total: data?.total,
           showSizeChanger: true,
+          current: pagination.pageIndex,
         }}
         loading={loading}
         onChange={tableChange}

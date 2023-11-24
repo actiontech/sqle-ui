@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Dictionary } from '../../types/common.type';
 import { TablePagination, UseTableOption } from './index.type';
 import { SorterResult } from 'antd/lib/table/interface';
+import { isEqual } from 'lodash';
 
 const useTable = <T = Dictionary>(option?: UseTableOption) => {
   const {
@@ -19,10 +20,26 @@ const useTable = <T = Dictionary>(option?: UseTableOption) => {
     SorterResult<any> | SorterResult<any>[]
   >();
 
-  const submitFilter = React.useCallback(() => {
-    const values = form.getFieldsValue();
-    setFilterInfo(values);
-  }, [form]);
+  const [pagination, setPagination] = React.useState<TablePagination>({
+    pageIndex: defaultPageIndex,
+    pageSize: defaultPageSize,
+  });
+  const [filterInfo, updateFilterInfo] = React.useState<T>(
+    defaultFilterInfo as any
+  );
+
+  const setFilterInfo = React.useCallback((values: T) => {
+      if (!isEqual(values, filterInfo)) {
+        setPagination((prevPage) => {
+          return {
+            pageIndex: 1,
+            pageSize: prevPage.pageSize,
+          };
+        });
+      }
+      updateFilterInfo(values);
+    },
+    [filterInfo]);
 
   /**
    * TODO:
@@ -31,28 +48,32 @@ const useTable = <T = Dictionary>(option?: UseTableOption) => {
   const resetFilter = React.useCallback(() => {
     form.resetFields();
     setFilterInfo({} as any);
-  }, [form]);
+  }, [form, setFilterInfo]);
 
-  const [pagination, setPagination] = React.useState<TablePagination>({
-    pageIndex: defaultPageIndex,
-    pageSize: defaultPageSize,
-  });
-  const [filterInfo, setFilterInfo] = React.useState<T>(
-    defaultFilterInfo as any
-  );
+  const submitFilter = React.useCallback(() => {
+    const values = form.getFieldsValue();
+    setFilterInfo(values);
+  }, [form, setFilterInfo]);
 
-  const tableChange = React.useCallback<Required<TableProps<any>>['onChange']>(
+  const tableChange = React.useCallback<Required<TableProps<any>>["onChange"]>(
     (newPagination, _, sorter) => {
       setSorterInfo(sorter);
-      if (
-        newPagination.current !== pagination.pageIndex ||
-        newPagination.pageSize !== pagination.pageSize
-      ) {
-        setPagination({
-          pageIndex: newPagination.current ?? defaultPageIndex,
-          pageSize: newPagination.pageSize ?? defaultPageSize,
-        });
+      let paginationParams = {
+        pageIndex: defaultPageIndex,
+        pageSize: defaultPageSize,
+      };
+      if (newPagination.pageSize && newPagination.pageSize !== pagination.pageSize) {
+        paginationParams.pageSize = newPagination.pageSize;
+        setPagination(paginationParams);
+        return;
       }
+      if (
+        newPagination.current &&
+        newPagination.current !== pagination.pageIndex
+      ) {
+        paginationParams.pageIndex = newPagination.current;
+      }
+      setPagination(paginationParams);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [pagination.pageIndex, pagination.pageSize]

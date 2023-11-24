@@ -111,7 +111,7 @@ const UserGroupList = () => {
     <Card
       title={
         <Space>
-          {t('userGroup.userGroupList.title')}
+          {t("userGroup.userGroupList.title")}
           <Button onClick={refresh} data-testid="refresh-button">
             <SyncOutlined spin={loading} />
           </Button>
@@ -124,7 +124,7 @@ const UserGroupList = () => {
           icon={<PlusOutlined />}
           onClick={addUserGroup}
         >
-          {t('userGroup.createUserGroup.title')}
+          {t("userGroup.createUserGroup.title")}
         </Button>,
       ]}
     >
@@ -138,6 +138,7 @@ const UserGroupList = () => {
         pagination={{
           total: data?.total,
           showSizeChanger: true,
+          current: pagination.pageIndex,
         }}
       />
     </Card>

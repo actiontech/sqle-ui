@@ -80,7 +80,7 @@ const OperationRecordList: React.FC = () => {
     <Card
       title={
         <Space>
-          {t('operationRecord.list.title')}
+          {t("operationRecord.list.title")}
           <Button data-testid="refresh-table" onClick={refresh}>
             <SyncOutlined spin={false} />
           </Button>
@@ -93,7 +93,7 @@ const OperationRecordList: React.FC = () => {
           onClick={exportRecord}
           disabled={exportButtonEnableStatus}
         >
-          {t('operationRecord.list.exportButtonText')}
+          {t("operationRecord.list.exportButtonText")}
         </Button>,
       ]}
     >
@@ -105,6 +105,7 @@ const OperationRecordList: React.FC = () => {
         pagination={{
           total: data?.total,
           showSizeChanger: true,
+          current: pagination.pageIndex,
         }}
         loading={loading}
         onChange={tableChange}
