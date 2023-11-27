@@ -11,12 +11,13 @@ const SQLManagement: React.FC = () => {
         {t('sqlManagement.pageDesc')}
       </PageHeader>
 
-      <EnterpriseFeatureDisplay
+      <SQLPanel />
+      {/* <EnterpriseFeatureDisplay
         featureName={t('sqlManagement.pageTitle')}
         eeFeatureDescription={t('sqlManagement.eeFeatureDescription')}
       >
         <SQLPanel />
-      </EnterpriseFeatureDisplay>
+      </EnterpriseFeatureDisplay> */}
     </>
   );
 };

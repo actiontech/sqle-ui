@@ -139,6 +139,7 @@ const UserGroupList = () => {
           total: data?.total,
           showSizeChanger: true,
           current: pagination.pageIndex,
+          pageSize: pagination.pageSize
         }}
       />
     </Card>

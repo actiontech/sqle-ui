@@ -153,6 +153,7 @@ const UserGroupList: React.FC = () => {
           total: data?.total,
           showSizeChanger: true,
           current: pagination.pageIndex,
+          pageSize: pagination.pageSize,
         }}
         onChange={tableChange}
       />

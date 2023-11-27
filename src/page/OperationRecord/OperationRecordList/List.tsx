@@ -106,6 +106,7 @@ const OperationRecordList: React.FC = () => {
           total: data?.total,
           showSizeChanger: true,
           current: pagination.pageIndex,
+          pageSize: pagination.pageSize
         }}
         loading={loading}
         onChange={tableChange}

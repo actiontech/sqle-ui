@@ -48,7 +48,11 @@ const useTable = <T = Dictionary>(option?: UseTableOption) => {
   const resetFilter = React.useCallback(() => {
     form.resetFields();
     setFilterInfo({} as any);
-  }, [form, setFilterInfo]);
+    setPagination({
+      pageIndex: defaultPageIndex,
+      pageSize: pagination.pageSize,
+    });
+  }, [form, setFilterInfo, setPagination, defaultPageIndex, pagination]);
 
   const submitFilter = React.useCallback(() => {
     const values = form.getFieldsValue();
@@ -60,7 +64,7 @@ const useTable = <T = Dictionary>(option?: UseTableOption) => {
       setSorterInfo(sorter);
       let paginationParams = {
         pageIndex: defaultPageIndex,
-        pageSize: defaultPageSize,
+        pageSize: newPagination.pageSize ?? defaultPageSize,
       };
       if (newPagination.pageSize && newPagination.pageSize !== pagination.pageSize) {
         paginationParams.pageSize = newPagination.pageSize;
