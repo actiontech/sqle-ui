@@ -32,7 +32,8 @@ const AuditResultInfo: React.FC<AuditResultColumnProps> = ({
           onlyShowIcon={true}
         />
         <span className="result-box-level">{ruleLevel}</span>
-        {resultNum && <span>{resultNum}</span>}
+        {/* 修复passed情况下的宽度问题，提供空格占位 */}
+        {resultNum ? <span>{resultNum}</span> : <span>&nbsp;&nbsp;</span>}
       </div>
     );
   };
@@ -78,7 +79,8 @@ const AuditResultInfo: React.FC<AuditResultColumnProps> = ({
     if (auditResultNum === 1)
       return <AuditResultErrorMessage auditResult={auditResult} />;
 
-    if (auditResultNum === 0) return renderResultBox('passed');
+    if (auditResultNum === 0)
+      return <div className="flex-space-between" >{renderResultBox('passed')}</div>;
 
     return renderResultBoxList();
   };
