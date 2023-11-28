@@ -50,7 +50,7 @@ export const whiteSpaceSqlValidator = (): FormValidatorRule => {
     const placeholder = '/* input your sql */';
     if (values === placeholder) {
       return Promise.reject(
-        t('common.form.rule.require', {
+        t('common.form.placeholder.input', {
           name: t('whitelist.table.sql'),
         })
       );
