@@ -353,6 +353,7 @@ const OrderList = () => {
                 total: orderList?.total,
                 showSizeChanger: true,
                 current: pagination.pageIndex,
+                pageSize: pagination.pageSize
               }}
               onChange={tableChange}
               onRow={(record) => ({

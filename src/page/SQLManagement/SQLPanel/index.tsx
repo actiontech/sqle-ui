@@ -381,7 +381,6 @@ const SQLPanel: React.FC = () => {
           />
 
           <Divider style={{ margin: 0 }} />
-
           <Space>
             <EmptyBox if={actionPermission}>
               <Space>
@@ -466,6 +465,7 @@ const SQLPanel: React.FC = () => {
               showSizeChanger: true,
               total: data?.total ?? 0,
               current: pagination.pageIndex,
+              pageSize: pagination.pageSize
             }}
             expandable={{
               expandedRowRender,

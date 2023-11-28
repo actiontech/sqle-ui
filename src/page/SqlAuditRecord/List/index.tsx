@@ -145,6 +145,7 @@ const SQLAuditList: React.FC = () => {
                 total: data?.total,
                 showSizeChanger: true,
                 current: pagination.pageIndex,
+                pageSize: pagination.pageSize
               }}
               scroll={{
                 x: "max-content",

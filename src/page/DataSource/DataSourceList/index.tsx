@@ -143,6 +143,7 @@ const DataSourceList = () => {
         pagination={{
           total: data?.total,
           current: pagination.pageIndex,
+          pageSize: pagination.pageSize,
         }}
         onChange={tableChange}
       />
