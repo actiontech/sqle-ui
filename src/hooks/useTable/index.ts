@@ -6,6 +6,11 @@ import { TablePagination, UseTableOption } from './index.type';
 import { SorterResult } from 'antd/lib/table/interface';
 import { isEqual } from 'lodash';
 
+/**
+ * 注意：当使用当前hooks, 且 Table 有筛选条件信息，Table 的 current, pageSize 需要可控，对应的值为 pagination.pageIndex, pagination.pageSize
+    示例：src/page/DataSource/DataSourceList/index.tsx
+    如此是为了解决，筛选条件，表格排序，设置分页变换时，index, size 为期望的数据
+ */
 const useTable = <T = Dictionary>(option?: UseTableOption) => {
   const {
     defaultPageSize = 10,
