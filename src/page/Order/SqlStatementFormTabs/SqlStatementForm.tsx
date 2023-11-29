@@ -59,7 +59,7 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
 
   const resetUploadTypeContent = () => {
     setCurrentSQLInputTYpe(SQLInputType.manualInput);
-  }
+  };
 
   const { editorDidMount } = useMonacoEditor(form, {
     formName: generateFieldName('sql'),
@@ -88,8 +88,7 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
       );
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
+  }, []);
 
   return (
     <>
@@ -126,9 +125,9 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
           }}
           rules={[
             {
-              required: true
+              required: true,
             },
-            ...whiteSpaceSql()
+            ...whiteSpaceSql(),
           ]}
         >
           <MonacoEditorFunComponent
@@ -151,7 +150,9 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
           rules={[
             {
               required: true,
-              message: t('order.sqlInfo.validateSqlFileMsg')
+              message: t('common.form.placeholder.upload', {
+                name: t('order.sqlInfo.sqlFile'),
+              }),
             },
           ]}
           getValueFromEvent={getFileFromUploadChangeEvent}
@@ -173,7 +174,9 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
           rules={[
             {
               required: true,
-              message: t('order.sqlInfo.validateSqlFileMsg')
+              message: t('common.form.placeholder.upload', {
+                name: t('order.sqlInfo.mybatisFile'),
+              }),
             },
           ]}
           getValueFromEvent={getFileFromUploadChangeEvent}
@@ -196,7 +199,9 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
           rules={[
             {
               required: true,
-              message: t('order.sqlInfo.validateSqlFileMsg')
+              message: t('common.form.placeholder.upload', {
+                name: t('order.sqlInfo.zipFile'),
+              }),
             },
           ]}
           getValueFromEvent={getFileFromUploadChangeEvent}

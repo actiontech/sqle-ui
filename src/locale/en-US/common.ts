@@ -53,6 +53,7 @@ export default {
     placeholder: {
       input: 'Please input {{name}}',
       select: 'Please select {{name}}',
+      upload: 'Please upload {{name}}',
       searchInput: 'Input the {{name}} to search',
       searchSelect: 'Select the {{name}} to search',
     },

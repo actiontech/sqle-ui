@@ -12,7 +12,11 @@ import {
   Tooltip,
   Upload,
 } from 'antd';
-import { PageFormLayout, ResponseCode, SqlFiledInitialValue } from '../../../data/common';
+import {
+  PageFormLayout,
+  ResponseCode,
+  SqlFiledInitialValue,
+} from '../../../data/common';
 import {
   AuditTypeEnum,
   SQLInfoFormFields,
@@ -49,7 +53,7 @@ import { RuleUrlParamKey } from '../../Rule/useRuleFilterForm';
 import { Link } from 'react-router-dom';
 import { getInstanceTipListV1FunctionalModuleEnum } from '../../../api/instance/index.enum';
 import EmptyBox from '../../../components/EmptyBox';
-import { whiteSpaceSql } from '../../../utils/FormRule';
+import { whiteSpaceSql, nameRule } from '../../../utils/FormRule';
 
 const MonacoEditorFunComponent =
   MonacoEditor as ComponentType<MonacoEditorProps>;
@@ -95,7 +99,6 @@ const SQLInfoForm: React.ForwardRefRenderFunction<
       rules: [
         {
           required: true,
-          message: t('order.sqlInfo.validateSqlFileMsg')
         },
       ],
     };
@@ -108,7 +111,12 @@ const SQLInfoForm: React.ForwardRefRenderFunction<
           ...PageFormLayout.wrapperCol,
           className: theme.editor,
         },
-        rules: [{ required: uploadType === UploadTypeEnum.sql }, ...whiteSpaceSql()],
+        rules: [
+          {
+            required: uploadType === UploadTypeEnum.sql,
+          },
+          ...whiteSpaceSql(),
+        ],
 
         children: (
           <MonacoEditorFunComponent
@@ -127,7 +135,14 @@ const SQLInfoForm: React.ForwardRefRenderFunction<
       return {
         name: 'sqlFile',
         label: t('sqlAudit.create.SQLInfo.uploadLabelEnum.sqlFile'),
-        rules: [{ required: uploadType === UploadTypeEnum.sqlFile }],
+        rules: [
+          {
+            required: uploadType === UploadTypeEnum.sqlFile,
+            message: t('common.form.placeholder.upload', {
+              name: t('sqlAudit.create.SQLInfo.uploadLabelEnum.sqlFile'),
+            }),
+          },
+        ],
         children: (
           <Upload
             accept=".sql"
@@ -143,7 +158,14 @@ const SQLInfoForm: React.ForwardRefRenderFunction<
       return {
         name: 'mybatisFile',
         label: t('sqlAudit.create.SQLInfo.uploadLabelEnum.xmlFile'),
-        rules: [{ required: uploadType === UploadTypeEnum.xmlFile }],
+        rules: [
+          {
+            required: uploadType === UploadTypeEnum.xmlFile,
+            message: t('common.form.placeholder.upload', {
+              name: t('sqlAudit.create.SQLInfo.uploadLabelEnum.xmlFile'),
+            }),
+          },
+        ],
         children: (
           <Upload
             accept=".xml"
@@ -159,7 +181,14 @@ const SQLInfoForm: React.ForwardRefRenderFunction<
       return {
         name: 'zipFile',
         label: t('sqlAudit.create.SQLInfo.uploadLabelEnum.zipFile'),
-        rules: [{ required: uploadType === UploadTypeEnum.zipFile }],
+        rules: [
+          {
+            required: uploadType === UploadTypeEnum.zipFile,
+            message: t('common.form.placeholder.upload', {
+              name: t('sqlAudit.create.SQLInfo.uploadLabelEnum.zipFile'),
+            }),
+          },
+        ],
         children: (
           <Upload
             accept=".zip"
