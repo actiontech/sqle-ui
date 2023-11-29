@@ -95,6 +95,7 @@ export default {
     placeholder: {
       input: '请输入{{name}}',
       select: '请选择{{name}}',
+      upload: '请上传{{name}}',
       searchInput: '请输入要搜索的 {{name}}',
       searchSelect: '请选择要搜索的 {{name}}',
     },
