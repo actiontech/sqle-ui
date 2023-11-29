@@ -151,6 +151,7 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
           rules={[
             {
               required: true,
+              message: t('order.sqlInfo.validateSqlFileMsg')
             },
           ]}
           getValueFromEvent={getFileFromUploadChangeEvent}
@@ -172,6 +173,7 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
           rules={[
             {
               required: true,
+              message: t('order.sqlInfo.validateSqlFileMsg')
             },
           ]}
           getValueFromEvent={getFileFromUploadChangeEvent}
@@ -194,6 +196,7 @@ const SqlStatementForm: React.FC<SqlStatementFormProps> = ({
           rules={[
             {
               required: true,
+              message: t('order.sqlInfo.validateSqlFileMsg')
             },
           ]}
           getValueFromEvent={getFileFromUploadChangeEvent}

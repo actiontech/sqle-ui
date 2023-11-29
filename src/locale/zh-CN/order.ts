@@ -153,6 +153,7 @@ export default {
     instanceSchema: '数据库',
     sql: 'SQL语句',
     sqlFile: 'SQL文件',
+    validateSqlFileMsg: '请上传SQL文件',
     mybatisFile: 'Mybatis的XML文件',
     zipFile: 'ZIP文件',
 

@@ -95,6 +95,7 @@ const SQLInfoForm: React.ForwardRefRenderFunction<
       rules: [
         {
           required: true,
+          message: t('order.sqlInfo.validateSqlFileMsg')
         },
       ],
     };
