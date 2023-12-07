@@ -21,7 +21,7 @@ import { useEffect } from 'react';
 import moment from 'moment';
 import useStaticStatus from './hooks/useStaticStatus';
 import { getInstanceTipListV1FunctionalModuleEnum } from '../../../api/instance/index.enum';
-import { GetSqlManageListFilterStatusEnum } from '../../../api/SqlManage/index.enum';
+import { GetSqlManageListV2FilterStatusEnum } from '../../../api/SqlManage/index.enum';
 import useRuleTips from './hooks/useRuleTips';
 import { extractTextFromReactNode } from '../../../utils/Common';
 
@@ -62,7 +62,7 @@ const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
   useEffect(() => {
     form.setFieldValue(
       'filter_status',
-      GetSqlManageListFilterStatusEnum.unhandled
+      GetSqlManageListV2FilterStatusEnum.unhandled
     );
     updateInstanceList({
       project_name: projectName,

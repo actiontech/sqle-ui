@@ -79,3 +79,43 @@ export enum exportSqlManageV1SortOrderEnum {
 
   'desc' = 'desc'
 }
+
+export enum GetSqlManageListV2FilterSourceEnum {
+  'audit_plan' = 'audit_plan',
+
+  'sql_audit_record' = 'sql_audit_record'
+}
+
+export enum GetSqlManageListV2FilterAuditLevelEnum {
+  'normal' = 'normal',
+
+  'notice' = 'notice',
+
+  'warn' = 'warn',
+
+  'error' = 'error'
+}
+
+export enum GetSqlManageListV2FilterStatusEnum {
+  'unhandled' = 'unhandled',
+
+  'solved' = 'solved',
+
+  'ignored' = 'ignored',
+
+  'manual_audited' = 'manual_audited'
+}
+
+export enum GetSqlManageListV2SortFieldEnum {
+  'first_appear_timestamp' = 'first_appear_timestamp',
+
+  'last_receive_timestamp' = 'last_receive_timestamp',
+
+  'fp_count' = 'fp_count'
+}
+
+export enum GetSqlManageListV2SortOrderEnum {
+  'asc' = 'asc',
+
+  'desc' = 'desc'
+}
