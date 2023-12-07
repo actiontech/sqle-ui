@@ -8,7 +8,12 @@ import {
   exportSqlManageV1FilterAuditLevelEnum,
   exportSqlManageV1FilterStatusEnum,
   exportSqlManageV1SortFieldEnum,
-  exportSqlManageV1SortOrderEnum
+  exportSqlManageV1SortOrderEnum,
+  GetSqlManageListV2FilterSourceEnum,
+  GetSqlManageListV2FilterAuditLevelEnum,
+  GetSqlManageListV2FilterStatusEnum,
+  GetSqlManageListV2SortFieldEnum,
+  GetSqlManageListV2SortOrderEnum
 } from './index.enum';
 
 import {
@@ -96,3 +101,39 @@ export interface IGetSqlManageRuleTipsParams {
 
 export interface IGetSqlManageRuleTipsReturn
   extends IGetSqlManageRuleTipsResp {}
+
+export interface IGetSqlManageListV2Params {
+  project_name: string;
+
+  fuzzy_search_sql_fingerprint?: string;
+
+  filter_assignee?: string;
+
+  filter_instance_name?: string;
+
+  filter_source?: GetSqlManageListV2FilterSourceEnum;
+
+  filter_audit_level?: GetSqlManageListV2FilterAuditLevelEnum;
+
+  filter_last_audit_start_time_from?: string;
+
+  filter_last_audit_start_time_to?: string;
+
+  filter_status?: GetSqlManageListV2FilterStatusEnum;
+
+  filter_rule_name?: string;
+
+  filter_db_type?: string;
+
+  fuzzy_search_endpoint?: string;
+
+  sort_field?: GetSqlManageListV2SortFieldEnum;
+
+  sort_order?: GetSqlManageListV2SortOrderEnum;
+
+  page_index: number;
+
+  page_size: number;
+}
+
+export interface IGetSqlManageListV2Return extends IGetSqlManageListResp {}

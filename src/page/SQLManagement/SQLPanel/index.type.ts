@@ -1,8 +1,8 @@
 import { FormInstance } from 'antd';
 import {
-  GetSqlManageListFilterAuditLevelEnum,
-  GetSqlManageListFilterSourceEnum,
-  GetSqlManageListFilterStatusEnum,
+  GetSqlManageListV2FilterSourceEnum,
+  GetSqlManageListV2FilterAuditLevelEnum,
+  GetSqlManageListV2FilterStatusEnum,
 } from '../../../api/SqlManage/index.enum';
 
 export type SQLPanelFilterFormFields = {
@@ -12,13 +12,13 @@ export type SQLPanelFilterFormFields = {
 
   filter_instance_name?: string;
 
-  filter_source?: GetSqlManageListFilterSourceEnum;
+  filter_source?: GetSqlManageListV2FilterSourceEnum;
 
-  filter_audit_level?: GetSqlManageListFilterAuditLevelEnum;
+  filter_audit_level?: GetSqlManageListV2FilterAuditLevelEnum;
 
   filter_last_audit_time?: moment.Moment[];
 
-  filter_status?: GetSqlManageListFilterStatusEnum;
+  filter_status?: GetSqlManageListV2FilterStatusEnum;
 
   filter_rule?: string;
 

@@ -1,4 +1,4 @@
-import { Space, Table, Tag, TagProps, Typography } from 'antd';
+import { Space, Table, Tag, TagProps, Typography, Popover } from 'antd';
 import { GetSqlManageListFilterStatusEnum } from '../../../api/SqlManage/index.enum';
 import { IAuditResult, ISource, ISqlManage } from '../../../api/common';
 import { t } from '../../../locale';
@@ -125,7 +125,7 @@ export const SQLPanelColumns: (params: {
     },
     Table.EXPAND_COLUMN,
     {
-      dataIndex: 'first_appear_time',
+      dataIndex: 'first_appear_timestamp',
       title: () => t('sqlManagement.table.firstOccurrence'),
       render: (time: string) => {
         return formatTime(time, '--');
@@ -134,7 +134,7 @@ export const SQLPanelColumns: (params: {
       sortDirections: ['descend', 'ascend'],
     },
     {
-      dataIndex: 'last_appear_time',
+      dataIndex: 'last_receive_timestamp',
       title: () => t('sqlManagement.table.lastOccurrence'),
       render: (time: string) => {
         return formatTime(time, '--');
@@ -143,7 +143,7 @@ export const SQLPanelColumns: (params: {
       sortDirections: ['descend', 'ascend'],
     },
     {
-      dataIndex: 'appear_num',
+      dataIndex: 'fp_count',
       title: () => t('sqlManagement.table.occurrenceCount'),
       sorter: true,
       sortDirections: ['descend', 'ascend'],
@@ -160,8 +160,31 @@ export const SQLPanelColumns: (params: {
       },
     },
     {
-      dataIndex: 'endpoint',
+      dataIndex: 'endpoints',
       title: () => t('sqlManagement.table.endpoint'),
+      render: (endpoints: string[]) => {
+        if (!Array.isArray(endpoints) || endpoints.length === 0) {
+          return '--';
+        }
+        if (endpoints.length === 1) {
+          return <Tag>{endpoints[0]}</Tag>;
+          
+        }
+        return (
+          <Popover content={
+            <div style={{ maxWidth: '600px' }}>
+              <Space wrap>{
+                endpoints.map((v) => (
+                  <Tag key={v}>{v}</Tag>
+                ))
+              }</Space>
+            </div>
+          }>
+            <Tag>{endpoints[0]}</Tag>
+            {endpoints.length > 1 ? '...' : null}
+          </Popover >
+        )
+      }
     },
     {
       dataIndex: 'status',
