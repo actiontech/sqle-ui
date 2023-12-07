@@ -172,7 +172,7 @@ export const SQLPanelColumns: (params: {
         }
         return (
           <Popover content={
-            <div style={{ width: '600px' }}>
+            <div style={{ maxWidth: '600px' }}>
               <Space wrap>{
                 endpoints.map((v) => (
                   <Tag key={v}>{v}</Tag>
