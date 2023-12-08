@@ -85,15 +85,7 @@ const SQLPanel: React.FC = () => {
           return undefined;
         }
 
-        if (sorterInfo?.field === 'first_appear_time') {
-          return GetSqlManageListV2SortFieldEnum.first_appear_timestamp;
-        }
-        if (sorterInfo?.field === 'last_appear_time') {
-          return GetSqlManageListV2SortFieldEnum.last_receive_timestamp;
-        }
-        if (sorterInfo?.field === 'appear_num') {
-          return GetSqlManageListV2SortFieldEnum.fp_count;
-        }
+        return sorterInfo?.field as GetSqlManageListV2SortFieldEnum;
       };
       const getSortOrder = () => {
         if (Array.isArray(sorterInfo)) {
