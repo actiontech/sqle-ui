@@ -24,8 +24,8 @@ import { ResponseCode } from '../../../data/common';
 import AssignMember from './AssignMember';
 import {
   GetSqlManageListFilterStatusEnum,
-  GetSqlManageListSortFieldEnum,
-  GetSqlManageListSortOrderEnum,
+  GetSqlManageListV2SortFieldEnum,
+  GetSqlManageListV2SortOrderEnum,
   exportSqlManageV1FilterAuditLevelEnum,
   exportSqlManageV1FilterSourceEnum,
   exportSqlManageV1FilterStatusEnum,
@@ -85,15 +85,7 @@ const SQLPanel: React.FC = () => {
           return undefined;
         }
 
-        if (sorterInfo?.field === 'first_appear_time') {
-          return GetSqlManageListSortFieldEnum.first_appear_timestamp;
-        }
-        if (sorterInfo?.field === 'last_appear_time') {
-          return GetSqlManageListSortFieldEnum.last_receive_timestamp;
-        }
-        if (sorterInfo?.field === 'appear_num') {
-          return GetSqlManageListSortFieldEnum.fp_count;
-        }
+        return sorterInfo?.field as GetSqlManageListV2SortFieldEnum;
       };
       const getSortOrder = () => {
         if (Array.isArray(sorterInfo)) {
@@ -101,14 +93,14 @@ const SQLPanel: React.FC = () => {
         }
 
         if (sorterInfo?.order === 'ascend') {
-          return GetSqlManageListSortOrderEnum.asc;
+          return GetSqlManageListV2SortOrderEnum.asc;
         }
 
         if (sorterInfo?.order === 'descend') {
-          return GetSqlManageListSortOrderEnum.desc;
+          return GetSqlManageListV2SortOrderEnum.desc;
         }
       };
-      return SqlManage.GetSqlManageList({
+      return SqlManage.GetSqlManageListV2({
         project_name: projectName,
         page_index: pagination.pageIndex,
         page_size: pagination.pageSize,

@@ -2312,21 +2312,21 @@ export interface ISqlExecutionFailPercent {
 }
 
 export interface ISqlManage {
-  appear_num?: number;
-
   assignees?: string[];
 
   audit_result?: IAuditResult[];
 
-  endpoint?: string;
+  endpoints?: string[];
 
-  first_appear_time?: string;
+  first_appear_timestamp?: string;
+
+  fp_count?: number;
 
   id?: number;
 
   instance_name?: string;
 
-  last_appear_time?: string;
+  last_receive_timestamp?: string;
 
   remark?: string;
 
