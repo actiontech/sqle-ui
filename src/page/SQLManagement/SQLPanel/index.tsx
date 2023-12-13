@@ -114,6 +114,7 @@ const SQLPanel: React.FC = () => {
 
         fuzzy_search_sql_fingerprint: filterInfo.fuzzy_search_sql_fingerprint,
         filter_instance_name: filterInfo.filter_instance_name,
+        fuzzy_search_schema_name: filterInfo.fuzzy_search_schema_name,
         filter_status: filterInfo.filter_status,
         filter_source: filterInfo.filter_source,
         filter_audit_level: filterInfo.filter_audit_level,
@@ -323,6 +324,7 @@ const SQLPanel: React.FC = () => {
       fuzzy_search_sql_fingerprint: filterValues.fuzzy_search_sql_fingerprint,
       filter_assignee: !!filterValues.filter_assignee ? username : undefined,
       filter_instance_name: filterValues.filter_instance_name,
+      fuzzy_search_schema_name: filterValues.fuzzy_search_schema_name,
       filter_source: filterValues.filter_source as
         | exportSqlManageV1FilterSourceEnum
         | undefined,
@@ -387,14 +389,14 @@ const SQLPanel: React.FC = () => {
                     }
                     type="primary"
                   >
-                    {t("sqlManagement.table.actions.batchAssignment")}
+                    {t('sqlManagement.table.actions.batchAssignment')}
                   </Button>
                 </AssignMember>
 
                 <Popconfirm
-                  title={t("sqlManagement.table.actions.batchSolveTips")}
+                  title={t('sqlManagement.table.actions.batchSolveTips')}
                   placement="topLeft"
-                  okText={t("common.ok")}
+                  okText={t('common.ok')}
                   disabled={selectedRowKeys.length === 0 || batchActionsLoading}
                   onConfirm={batchSolve}
                 >
@@ -404,13 +406,13 @@ const SQLPanel: React.FC = () => {
                     }
                     type="primary"
                   >
-                    {t("sqlManagement.table.actions.batchSolve")}
+                    {t('sqlManagement.table.actions.batchSolve')}
                   </Button>
                 </Popconfirm>
                 <Popconfirm
-                  title={t("sqlManagement.table.actions.batchIgnoreTips")}
+                  title={t('sqlManagement.table.actions.batchIgnoreTips')}
                   placement="topLeft"
-                  okText={t("common.ok")}
+                  okText={t('common.ok')}
                   disabled={selectedRowKeys.length === 0 || batchActionsLoading}
                   onConfirm={batchIgnore}
                 >
@@ -420,7 +422,7 @@ const SQLPanel: React.FC = () => {
                     }
                     type="primary"
                   >
-                    {t("sqlManagement.table.actions.batchIgnore")}
+                    {t('sqlManagement.table.actions.batchIgnore')}
                   </Button>
                 </Popconfirm>
               </Space>
@@ -431,7 +433,7 @@ const SQLPanel: React.FC = () => {
               onClick={exportAction}
               disabled={exportButtonDisabled}
             >
-              {t("sqlManagement.table.actions.export")}
+              {t('sqlManagement.table.actions.export')}
             </Button>
           </Space>
 
@@ -457,7 +459,7 @@ const SQLPanel: React.FC = () => {
               showSizeChanger: true,
               total: data?.total ?? 0,
               current: pagination.pageIndex,
-              pageSize: pagination.pageSize
+              pageSize: pagination.pageSize,
             }}
             expandable={{
               expandedRowRender,
@@ -473,7 +475,7 @@ const SQLPanel: React.FC = () => {
                 ) : null,
               columnWidth: 14,
             }}
-            scroll={{ x: "max-content" }}
+            scroll={{ x: 'max-content' }}
           />
         </Space>
       </Card>

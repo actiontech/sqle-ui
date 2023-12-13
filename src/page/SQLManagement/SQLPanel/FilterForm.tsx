@@ -114,6 +114,15 @@ const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
           </Form.Item>
         </Col>
         <Col {...FilterFormColLayout}>
+          <Form.Item label="Schema" name="fuzzy_search_schema_name">
+            <Input
+              placeholder={t('common.form.placeholder.input', {
+                name: 'Schema',
+              })}
+            />
+          </Form.Item>
+        </Col>
+        <Col {...FilterFormColLayout}>
           <Form.Item
             label={t('sqlManagement.filterForm.auditLevel')}
             name="filter_audit_level"
@@ -183,15 +192,15 @@ const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
           {...{
             xs: 24,
             sm: {
-              span: 24,
+              span: 12,
               offset: 0,
             },
             xl: {
-              span: 8,
+              span: 24,
               offset: 0,
             },
             xxl: {
-              span: 24,
+              span: 18,
               offset: 0,
             },
           }}

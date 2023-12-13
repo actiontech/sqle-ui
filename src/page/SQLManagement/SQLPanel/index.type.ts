@@ -23,6 +23,8 @@ export type SQLPanelFilterFormFields = {
   filter_rule?: string;
 
   fuzzy_search_endpoint?: string;
+
+  fuzzy_search_schema_name?: string;
 };
 
 export type SQLPanelFilterFormProps = {
