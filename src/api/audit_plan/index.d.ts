@@ -19,7 +19,9 @@ import {
   ITriggerAuditPlanResV1,
   IGetAuditPlansResV2,
   IGetAuditPlanReportSQLsResV2,
-  IGetAuditPlanAnalysisDataResV2
+  IGetAuditPlanAnalysisDataResV2,
+  IFullSyncAuditPlanSQLsReqV2,
+  IPartialSyncAuditPlanSQLsReqV2
 } from '../common.d';
 
 export interface IGetAuditPlanMetasV1Params {
@@ -247,3 +249,21 @@ export interface IGetAuditPlantAnalysisDataV2Params {
 
 export interface IGetAuditPlantAnalysisDataV2Return
   extends IGetAuditPlanAnalysisDataResV2 {}
+
+export interface IFullSyncAuditPlanSQLsV2Params
+  extends IFullSyncAuditPlanSQLsReqV2 {
+  project_name: string;
+
+  audit_plan_name: string;
+}
+
+export interface IFullSyncAuditPlanSQLsV2Return extends IBaseRes {}
+
+export interface IPartialSyncAuditPlanSQLsV2Params
+  extends IPartialSyncAuditPlanSQLsReqV2 {
+  project_name: string;
+
+  audit_plan_name: string;
+}
+
+export interface IPartialSyncAuditPlanSQLsV2Return extends IBaseRes {}

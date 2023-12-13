@@ -3125,6 +3125,28 @@ export interface IAuditPlanResV2 {
   rule_template?: IRuleTemplateV2;
 }
 
+export interface IAuditPlanSQLReqV2 {
+  audit_plan_sql_counter?: string;
+
+  audit_plan_sql_fingerprint?: string;
+
+  audit_plan_sql_last_receive_text?: string;
+
+  audit_plan_sql_last_receive_timestamp?: string;
+
+  audit_plan_sql_schema?: string;
+
+  db_user?: string;
+
+  endpoints?: string[];
+
+  first_query_at?: string;
+
+  query_time_avg?: number;
+
+  query_time_max?: number;
+}
+
 export interface IAuditResDataV2 {
   audit_level?: AuditResDataV2AuditLevelEnum;
 
@@ -3253,6 +3275,10 @@ export interface IDriverMeta {
   driver_name?: string;
 
   logo_url?: string;
+}
+
+export interface IFullSyncAuditPlanSQLsReqV2 {
+  audit_plan_sql_list?: IAuditPlanSQLReqV2[];
 }
 
 export interface IGetAuditPlanAnalysisDataResV2 {
@@ -3389,6 +3415,10 @@ export interface IInstanceResV2 {
   source?: string;
 
   sql_query_config?: ISQLQueryConfigResV1;
+}
+
+export interface IPartialSyncAuditPlanSQLsReqV2 {
+  audit_plan_sql_list?: IAuditPlanSQLReqV2[];
 }
 
 export interface IPerformanceStatistics {

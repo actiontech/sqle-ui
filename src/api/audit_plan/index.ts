@@ -48,7 +48,11 @@ import {
   IGetAuditPlanReportsSQLsParams,
   IGetAuditPlanReportsSQLsReturn,
   IGetAuditPlantAnalysisDataV2Params,
-  IGetAuditPlantAnalysisDataV2Return
+  IGetAuditPlantAnalysisDataV2Return,
+  IFullSyncAuditPlanSQLsV2Params,
+  IFullSyncAuditPlanSQLsV2Return,
+  IPartialSyncAuditPlanSQLsV2Params,
+  IPartialSyncAuditPlanSQLsV2Return
 } from './index.d';
 
 class AuditPlanService extends ServiceBase {
@@ -442,6 +446,42 @@ class AuditPlanService extends ServiceBase {
 
     return this.get<IGetAuditPlantAnalysisDataV2Return>(
       `/v2/projects/${project_name}/audit_plans/${audit_plan_name}/reports/${audit_plan_report_id}/sqls/${number}/analysis`,
+      paramsData,
+      options
+    );
+  }
+
+  public fullSyncAuditPlanSQLsV2(
+    params: IFullSyncAuditPlanSQLsV2Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    const audit_plan_name = paramsData.audit_plan_name;
+    delete paramsData.audit_plan_name;
+
+    return this.post<IFullSyncAuditPlanSQLsV2Return>(
+      `/v2/projects/${project_name}/audit_plans/${audit_plan_name}/sqls/full`,
+      paramsData,
+      options
+    );
+  }
+
+  public partialSyncAuditPlanSQLsV2(
+    params: IPartialSyncAuditPlanSQLsV2Params,
+    options?: AxiosRequestConfig
+  ) {
+    const paramsData = this.cloneDeep(params);
+    const project_name = paramsData.project_name;
+    delete paramsData.project_name;
+
+    const audit_plan_name = paramsData.audit_plan_name;
+    delete paramsData.audit_plan_name;
+
+    return this.post<IPartialSyncAuditPlanSQLsV2Return>(
+      `/v2/projects/${project_name}/audit_plans/${audit_plan_name}/sqls/partial`,
       paramsData,
       options
     );
