@@ -15,7 +15,7 @@ import {
   IGetSqlManageRuleTipsParams,
   IGetSqlManageRuleTipsReturn,
   IGetSqlManageListV2Params,
-  IGetSqlManageListV2Return,
+  IGetSqlManageListV2Return
 } from './index.d';
 
 class SqlManageService extends ServiceBase {

@@ -115,6 +115,22 @@ export const SQLPanelColumns: (params: {
     {
       dataIndex: 'instance_name',
       title: () => t('sqlManagement.table.instanceName'),
+      render: (name) => {
+        if (!name) {
+          return '--';
+        }
+        return name;
+      },
+    },
+    {
+      dataIndex: 'schema_name',
+      title: () => 'Schema',
+      render: (schema) => {
+        if (!schema) {
+          return '--';
+        }
+        return schema;
+      },
     },
     {
       dataIndex: 'audit_result',
@@ -168,23 +184,24 @@ export const SQLPanelColumns: (params: {
         }
         if (endpoints.length === 1) {
           return <Tag>{endpoints[0]}</Tag>;
-          
         }
         return (
-          <Popover content={
-            <div style={{ maxWidth: '600px' }}>
-              <Space wrap>{
-                endpoints.map((v) => (
-                  <Tag key={v}>{v}</Tag>
-                ))
-              }</Space>
-            </div>
-          }>
+          <Popover
+            content={
+              <div style={{ maxWidth: '600px' }}>
+                <Space wrap>
+                  {endpoints.map((v) => (
+                    <Tag key={v}>{v}</Tag>
+                  ))}
+                </Space>
+              </div>
+            }
+          >
             <Tag>{endpoints[0]}</Tag>
             {endpoints.length > 1 ? '...' : null}
-          </Popover >
-        )
-      }
+          </Popover>
+        );
+      },
     },
     {
       dataIndex: 'status',
@@ -215,7 +232,10 @@ export const SQLPanelColumns: (params: {
       width: 200,
       render: (remark: string, record) => {
         return (
-          <EmptyBox if={actionPermission} defaultNode={<>{renderRemark(remark) ?? '--'}</>}>
+          <EmptyBox
+            if={actionPermission}
+            defaultNode={<>{renderRemark(remark) ?? '--'}</>}
+          >
             <EditText
               editable={{
                 autoSize: true,

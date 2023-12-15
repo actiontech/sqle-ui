@@ -48,6 +48,8 @@ export interface IGetSqlManageListParams {
 
   fuzzy_search_endpoint?: string;
 
+  fuzzy_search_schema_name?: string;
+
   sort_field?: GetSqlManageListSortFieldEnum;
 
   sort_order?: GetSqlManageListSortOrderEnum;
@@ -90,6 +92,8 @@ export interface IExportSqlManageV1Params {
 
   fuzzy_search_endpoint?: string;
 
+  fuzzy_search_schema_name?: string;
+
   sort_field?: exportSqlManageV1SortFieldEnum;
 
   sort_order?: exportSqlManageV1SortOrderEnum;
@@ -126,6 +130,8 @@ export interface IGetSqlManageListV2Params {
   filter_db_type?: string;
 
   fuzzy_search_endpoint?: string;
+
+  fuzzy_search_schema_name?: string;
 
   sort_field?: GetSqlManageListV2SortFieldEnum;
 
