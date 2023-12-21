@@ -306,6 +306,10 @@ const SQLPanel: React.FC = () => {
     ]
   );
 
+  const handleClickAnalyze = (sqlManageId: string) => {
+    window.open(`/project/${projectName}/sqlManagement/${sqlManageId}/analyze`);
+  };
+
   const [
     exportButtonDisabled,
     { setFalse: finishExport, setTrue: startExport },
@@ -454,6 +458,7 @@ const SQLPanel: React.FC = () => {
               actionPermission,
               username,
               updateSQLStatus,
+              handleClickAnalyze,
             })}
             pagination={{
               showSizeChanger: true,

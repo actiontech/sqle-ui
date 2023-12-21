@@ -51,6 +51,12 @@ export interface IBaseRes {
   message?: string;
 }
 
+export interface IAffectRows {
+  count?: number;
+
+  err_message?: string;
+}
+
 export interface IAuditPlanCount {
   audit_plan_count?: number;
 
@@ -1385,6 +1391,14 @@ export interface IGetSqlManageRuleTipsResp {
   message?: string;
 }
 
+export interface IGetSqlManageSqlAnalysisResp {
+  code?: number;
+
+  data?: ISqlAnalysis;
+
+  message?: string;
+}
+
 export interface IGetSyncInstanceTaskListResV1 {
   code?: number;
 
@@ -1997,6 +2011,10 @@ export interface IPatchUserGroupReqV1 {
   user_name_list?: string[];
 }
 
+export interface IPerformanceStatistics {
+  affect_rows?: IAffectRows;
+}
+
 export interface IPersonaliseReqV1 {
   title?: string;
 }
@@ -2289,6 +2307,14 @@ export interface ISource {
   type?: SourceTypeEnum;
 }
 
+export interface ISqlAnalysis {
+  performance_statistics?: IPerformanceStatistics;
+
+  sql_explain?: ISQLExplain;
+
+  table_metas?: ITableMetas;
+}
+
 export interface ISqlAnalysisResDataV1 {
   sql_explain?: ISQLExplain;
 
@@ -2425,6 +2451,12 @@ export interface ITableMetaItemHeadResV1 {
   desc?: string;
 
   field_name?: string;
+}
+
+export interface ITableMetas {
+  err_message?: string;
+
+  table_meta_items?: ITableMeta[];
 }
 
 export interface ITestAuditPlanNotifyConfigResDataV1 {
@@ -3093,12 +3125,6 @@ export interface IWorkflowTemplateDetailResV1 {
   workflow_template_name?: string;
 }
 
-export interface IAffectRows {
-  count?: number;
-
-  err_message?: string;
-}
-
 export interface IAuditPlanReportSQLResV2 {
   audit_plan_report_sql?: string;
 
@@ -3421,10 +3447,6 @@ export interface IPartialSyncAuditPlanSQLsReqV2 {
   audit_plan_sql_list?: IAuditPlanSQLReqV2[];
 }
 
-export interface IPerformanceStatistics {
-  affect_rows?: IAffectRows;
-}
-
 export interface IRejectWorkflowReqV2 {
   reason?: string;
 }
@@ -3433,12 +3455,6 @@ export interface IRuleTemplateV2 {
   is_global_rule_template?: boolean;
 
   name?: string;
-}
-
-export interface ITableMetas {
-  err_message?: string;
-
-  table_meta_items?: ITableMeta[];
 }
 
 export interface ITaskAnalysisDataV2 {
