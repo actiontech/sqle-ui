@@ -52,6 +52,7 @@ export default {
     status: '状态',
     comment: '备注',
     endpoint: '端点信息',
+    analyze: '分析',
 
     actions: {
       batchAssignment: '批量指派',

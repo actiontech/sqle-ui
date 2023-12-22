@@ -274,16 +274,26 @@ const UpdateSyncTask = React.lazy(
 const SQLManagement = React.lazy(
   () => import(/* webpackChunkName: "SQLManagement" */ '../page/SQLManagement')
 );
+
+const SQLManagementAnalyze = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "SQLManagementAnalyze" */ '../page/SqlAnalyze/SqlManage'
+    )
+);
+
 const SQLAuditList = React.lazy(
   () =>
     import(/* webpackChunkName: "SQLAuditList" */ '../page/SqlAuditRecord/List')
 );
+
 const SQLAuditDetail = React.lazy(
   () =>
     import(
       /* webpackChunkName: "SQLAuditDetail" */ '../page/SqlAuditRecord/Detail'
     )
 );
+
 const SQLAuditCreate = React.lazy(
   () =>
     import(
@@ -320,7 +330,22 @@ export const projectDetailRouterConfig: RouterConfigItem<ProjectDetailRouterItem
       key: 'SQLManagement',
       icon: <ConsoleSqlOutlined />,
       path: 'sqlManagement',
-      element: <SQLManagement />,
+      hideChildrenInSliderMenu: true,
+      children: [
+        {
+          index: true,
+          element: <SQLManagement />,
+          key: 'SQLManagement',
+        },
+        /* IFTRUE_isEE */
+        {
+          path: ':sqlManageId/analyze',
+          hideInSliderMenu: true,
+          element: <SQLManagementAnalyze />,
+          key: 'SQLManagementAnalyze',
+        },
+        /* FITRUE_isEE */
+      ] as RouterConfigItem<ProjectDetailRouterItemKeyLiteral>[],
     },
     {
       label: 'menu.sqlAudit',

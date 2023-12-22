@@ -49,6 +49,7 @@ export const SQLPanelColumns: (params: {
     id: number,
     status: BatchUpdateSqlManageReqStatusEnum
   ) => Promise<void> | undefined;
+  handleClickAnalyze: (sqlManageId: string) => void;
 }) => Array<
   | (ColumnGroupType<ISqlManage> | ColumnType<ISqlManage>) & {
       dataIndex?: keyof ISqlManage | 'operator';
@@ -61,6 +62,7 @@ export const SQLPanelColumns: (params: {
   actionPermission,
   username,
   updateSQLStatus,
+  handleClickAnalyze,
 }) => {
   const columns: Array<
     | (ColumnGroupType<ISqlManage> | ColumnType<ISqlManage>) & {
@@ -250,7 +252,6 @@ export const SQLPanelColumns: (params: {
         );
       },
     },
-
     {
       dataIndex: 'operator',
       title: () => t('common.operate'),
@@ -258,33 +259,46 @@ export const SQLPanelColumns: (params: {
       render: (_, record) => {
         return (
           <Space>
-            <AssignMember
-              projectName={projectName}
-              disabled={signalActionsLoading}
-              onConfirm={(members: string[]) =>
-                signalAssignment(record.id ?? 0, members)
-              }
-            >
-              <Typography.Link>
-                {t('sqlManagement.table.assignMember.label')}
-              </Typography.Link>
-            </AssignMember>
+            <EmptyBox if={actionPermission}>
+              <AssignMember
+                projectName={projectName}
+                disabled={signalActionsLoading}
+                onConfirm={(members: string[]) =>
+                  signalAssignment(record.id ?? 0, members)
+                }
+              >
+                <Typography.Link>
+                  {t('sqlManagement.table.assignMember.label')}
+                </Typography.Link>
+              </AssignMember>
+            </EmptyBox>
 
-            <UpdateSQLStatus
-              disabled={signalActionsLoading}
-              onConfirm={(status) => updateSQLStatus(record.id ?? 0, status)}
+            <EmptyBox if={actionPermission}>
+              <UpdateSQLStatus
+                disabled={signalActionsLoading}
+                onConfirm={(status) => updateSQLStatus(record.id ?? 0, status)}
+              >
+                <Typography.Link>
+                  {t('sqlManagement.table.updateStatus.triggerText')}
+                </Typography.Link>
+              </UpdateSQLStatus>
+            </EmptyBox>
+
+            <Typography.Link
+              disabled={
+                !record.sql || !record.schema_name || !record.instance_name
+              }
+              onClick={() => {
+                handleClickAnalyze(record.id?.toString() ?? '');
+              }}
             >
-              <Typography.Link>
-                {t('sqlManagement.table.updateStatus.triggerText')}
-              </Typography.Link>
-            </UpdateSQLStatus>
+              {t('sqlManagement.table.analyze')}
+            </Typography.Link>
           </Space>
         );
       },
     },
   ];
-  if (!actionPermission) {
-    return columns.filter((v) => v.dataIndex !== 'operator');
-  }
+
   return columns;
 };
