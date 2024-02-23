@@ -3211,6 +3211,8 @@ export interface IAuditTaskSQLResV2 {
   number?: number;
 
   rollback_sql?: string;
+
+  sql_source_file?: string;
 }
 
 export interface IBatchCancelWorkflowsReqV2 {

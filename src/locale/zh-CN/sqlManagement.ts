@@ -38,6 +38,7 @@ export default {
     rule: '审核规则',
     endpoint: '端点信息',
     endpointSearchPlaceHolder: '请输入端点信息',
+    auditPlanName: '智能扫描名',
   },
 
   table: {

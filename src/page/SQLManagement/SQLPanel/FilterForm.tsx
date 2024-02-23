@@ -187,6 +187,18 @@ const FilterForm: React.FC<SQLPanelFilterFormProps> = ({
             />
           </Form.Item>
         </Col>
+        <Col {...FilterFormColLayout}>
+          <Form.Item
+            label={t('sqlManagement.filterForm.auditPlanName')}
+            name="fuzzy_search_audit_plan_name"
+          >
+            <Input
+              placeholder={t('common.form.placeholder.input', {
+                name: t('sqlManagement.filterForm.auditPlanName'),
+              })}
+            />
+          </Form.Item>
+        </Col>
 
         <Col
           {...{
