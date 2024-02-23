@@ -84,14 +84,29 @@ export const SQLPanelColumns: (params: {
     {
       dataIndex: 'source',
       title: () => t('sqlManagement.table.source'),
+      className: 'table-column-source',
       render: (source: ISource) => {
         if (source.type && source.type === SourceTypeEnum.audit_plan) {
           return (
-            <Link
-              to={`project/${projectName}/auditPlan/detail/${source.audit_plan_name}`}
+            <Typography.Paragraph
+              ellipsis={{
+                expandable: false,
+                tooltip: (
+                  <div>
+                    {t(sourceDictionary[source.type])}:
+                    {source.audit_plan_name || '--'}
+                  </div>
+                ),
+              }}
+              className="margin-bottom-0"
             >
-              {t(sourceDictionary[source.type])}
-            </Link>
+              <Link
+                to={`project/${projectName}/auditPlan/detail/${source.audit_plan_name}`}
+              >
+                {t(sourceDictionary[source.type])}:
+                {source.audit_plan_name || '--'}
+              </Link>
+            </Typography.Paragraph>
           );
         } else if (
           source.type &&

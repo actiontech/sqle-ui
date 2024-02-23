@@ -73,6 +73,8 @@ export interface IExportSqlManageV1Params {
 
   fuzzy_search_sql_fingerprint?: string;
 
+  fuzzy_search_audit_plan_name?: string;
+
   filter_assignee?: string;
 
   filter_instance_name?: string;
@@ -126,6 +128,8 @@ export interface IGetSqlManageListV2Params {
   filter_instance_name?: string;
 
   filter_source?: GetSqlManageListV2FilterSourceEnum;
+
+  fuzzy_search_audit_plan_name?: string;
 
   filter_audit_level?: GetSqlManageListV2FilterAuditLevelEnum;
 
