@@ -25,6 +25,8 @@ export type SQLPanelFilterFormFields = {
   fuzzy_search_endpoint?: string;
 
   fuzzy_search_schema_name?: string;
+
+  fuzzy_search_audit_plan_name?: string;
 };
 
 export type SQLPanelFilterFormProps = {
