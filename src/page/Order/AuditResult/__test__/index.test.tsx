@@ -124,7 +124,10 @@ describe('Order/Detail/AuditResult', () => {
     fireEvent.click(screen.getByText('audit.downloadSql'));
 
     expect(download).toBeCalledTimes(1);
-    expect(download).toBeCalledWith({ task_id: '9999' });
+    expect(download).toBeCalledWith(
+      { task_id: '9999' },
+      { responseType: 'blob' }
+    );
   });
 
   test('should send download sql report request  when click download sql button', () => {
@@ -138,14 +141,20 @@ describe('Order/Detail/AuditResult', () => {
     fireEvent.click(screen.getByText('audit.downloadReport'));
 
     expect(download).toBeCalledTimes(1);
-    expect(download).toBeCalledWith({ task_id: '9999', no_duplicate: false });
+    expect(download).toBeCalledWith(
+      { task_id: '9999', no_duplicate: false },
+      { responseType: 'blob' }
+    );
 
     const switchElement = getBySelector('.ant-switch');
     fireEvent.click(switchElement);
     fireEvent.click(screen.getByText('audit.downloadReport'));
 
     expect(download).toBeCalledTimes(2);
-    expect(download).toBeCalledWith({ task_id: '9999', no_duplicate: true });
+    expect(download).toBeCalledWith(
+      { task_id: '9999', no_duplicate: true },
+      { responseType: 'blob' }
+    );
   });
 
   test('should send update sql describe request when user click update describe in table', async () => {

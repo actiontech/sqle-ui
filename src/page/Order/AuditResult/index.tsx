@@ -58,16 +58,22 @@ const AuditResult: React.FC<AuditResultProps> = (props) => {
   );
 
   const downloadSql = () => {
-    task.downloadAuditTaskSQLFileV1({
-      task_id: `${props.taskId}`,
-    });
+    task.downloadAuditTaskSQLFileV1(
+      {
+        task_id: `${props.taskId}`,
+      },
+      { responseType: 'blob' }
+    );
   };
 
   const downloadReport = () => {
-    task.downloadAuditTaskSQLReportV1({
-      task_id: `${props.taskId}`,
-      no_duplicate: duplicate,
-    });
+    task.downloadAuditTaskSQLReportV1(
+      {
+        task_id: `${props.taskId}`,
+        no_duplicate: duplicate,
+      },
+      { responseType: 'blob' }
+    );
   };
 
   const updateSqlDescribeProtect = useRef(false);
