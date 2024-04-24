@@ -46,7 +46,9 @@ export const Wrapper: React.FC<{ children: ReactNode }> = ({ children }) => {
 
 function App() {
   const dispatch = useDispatch();
+React.useEffect(() => {
   dispatch(updateToken({ token: getCookie(SQLE_COOKIE_TOKEN_KEY_NAME) }));
+}, [])
 
   const token = useSelector<IReduxState, string>((state) => state.user.token);
   const { antdLocale } = useLanguage();
