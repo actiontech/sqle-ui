@@ -15,6 +15,7 @@ import useUserInfo from './hooks/useUserInfo';
 import {
   SQLE_DEFAULT_WEB_TITLE,
   SQLE_REDIRECT_KEY_PARAMS_NAME,
+  SQLE_COOKIE_TOKEN_KEY_NAME,
 } from './data/common';
 import { useRequest } from 'ahooks';
 import global from './api/global';
@@ -22,6 +23,8 @@ import { updateWebTitleAndLog } from './store/system';
 import useNavigate from './hooks/useNavigate';
 import { ThemeProvider } from '@mui/system';
 import RouterAuth from './router/RouterAuth';
+import { getCookie } from './utils/Common';
+import { updateToken } from './store/user';
 
 //fix  https://github.com/actiontech/sqle/issues/1350
 export const Wrapper: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -43,10 +46,15 @@ export const Wrapper: React.FC<{ children: ReactNode }> = ({ children }) => {
 
 function App() {
   const dispatch = useDispatch();
+React.useEffect(() => {
+  dispatch(updateToken({ token: getCookie(SQLE_COOKIE_TOKEN_KEY_NAME) }));
+}, [])
+
   const token = useSelector<IReduxState, string>((state) => state.user.token);
   const { antdLocale } = useLanguage();
   const { currentThemeData } = useChangeTheme();
   const { getUserInfo, getUserInfoLoading } = useUserInfo();
+
   useRequest(() =>
     global.getSQLEInfoV1().then((res) => {
       const webTitle = res.data.data?.title ?? SQLE_DEFAULT_WEB_TITLE;
