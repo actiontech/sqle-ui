@@ -3990,9 +3990,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001449, caniuse-lite@^1.0.30001464:
-  version "1.0.30001611"
-  resolved "https://registry.npmmirror.com/caniuse-lite/-/caniuse-lite-1.0.30001611.tgz"
-  integrity sha512-19NuN1/3PjA3QI8Eki55N8my4LzfkMCRLgCVfrl/slbSAchQfV0+GwjPrK3rq37As4UCLlM/DHajbKkAqbv92Q==
+  version "1.0.30001613"
+  resolved "https://registry.npmmirror.com/caniuse-lite/-/caniuse-lite-1.0.30001613.tgz"
+  integrity sha512-BNjJULJfOONQERivfxte7alLfeLW4QnwHvNW4wEcLEbXfV6VSCYvr+REbf2Sojv8tC1THpjPXBxWgDbq4NtLWg==
 
 case-sensitive-paths-webpack-plugin@^2.4.0:
   version "2.4.0"
@@ -6199,9 +6199,14 @@ globals@^13.19.0:
   dependencies:
     type-fest "^0.20.2"
 
+globalthis-polyfill@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/globalthis-polyfill/-/globalthis-polyfill-1.0.0.tgz#af6bac08f922584c42a7f2f2506d50ad12b93d87"
+  integrity sha512-WLxVyH+xsuYeJ602mN0ASZhb6aQC+GQWC2XqI6W63gdg6jfyX9a9jh4qfpQNrVOATfCyo27Jy9ohhmq9vo0gIw==
+
 globalthis@^1.0.3:
   version "1.0.3"
-  resolved "https://registry.npmmirror.com/globalthis/-/globalthis-1.0.3.tgz#5852882a52b80dc301b0660273e1ed082f0b6ccf"
+  resolved "https://registry.npmjs.org/globalthis/-/globalthis-1.0.3.tgz#5852882a52b80dc301b0660273e1ed082f0b6ccf"
   integrity sha512-sFdI5LyBiNTHjRd7cGPWapiHWMOXKyuBNX/cWJ3NfzrZQVa8GI/8cofCl74AOVqq9W5kNmguTIzJ/1s2gyI9wA==
   dependencies:
     define-properties "^1.1.3"

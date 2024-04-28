@@ -15,6 +15,7 @@
     "ahooks": "^3.7.5",
     "antd": "^4.24.8",
     "axios": "^0.27.2",
+    "globalthis-polyfill": "^1.0.0",
     "highlight.js": "^11.0.1",
     "i18next": "^21.8.14",
     "lodash": "^4.17.21",
@@ -71,7 +72,8 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "Chrome >= 69"
     ],
     "development": [
       "last 1 chrome version",
