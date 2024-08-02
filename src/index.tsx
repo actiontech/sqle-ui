@@ -8,6 +8,9 @@ import './locale';
 
 import './utils/HighlightCode';
 import './index.less';
+import { EventEmitter } from 'events';
+
+EventEmitter.defaultMaxListeners = 100; // 或更高的数值
 
 ReactDOM.render(
   <React.StrictMode>

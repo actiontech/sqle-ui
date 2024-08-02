@@ -4,7 +4,6 @@ import GlobalSetting from './GlobalSetting';
 import LDAPSetting from './LDAPSetting';
 import SMTPSetting from './SMTPSetting';
 /* IFTRUE_isEE */
-import License from './License';
 import Wechat from './Wechat/Wechat';
 /* FITRUE_isEE */
 import { useEffect } from 'react';
@@ -42,9 +41,6 @@ const System = () => {
           {/* FITRUE_isEE */}
           <GlobalSetting />
           <LDAPSetting />
-          {/* IFTRUE_isEE */}
-          <License />
-          {/* FITRUE_isEE */}
           <Oauth />
         </Space>
       </section>

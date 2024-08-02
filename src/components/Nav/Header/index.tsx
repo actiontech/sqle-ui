@@ -10,7 +10,6 @@ import Icon, {
   UserOutlined,
   PoweroffOutlined,
   LoadingOutlined,
-  QuestionCircleOutlined,
 } from '@ant-design/icons';
 import LanguageSelect from '../../LanguageSelect';
 import { useTranslation } from 'react-i18next';
@@ -51,18 +50,6 @@ const Header = () => {
     dispatch(updateUser({ username: '', role: '' }));
     history.push('/');
   }, [dispatch, history]);
-
-  const openInfoDialog = useCallback(
-    (modalName: ModalName) => {
-      dispatch(
-        updateNavModalStatus({
-          modalName: modalName,
-          status: true,
-        })
-      );
-    },
-    [dispatch]
-  );
 
   return (
     <header>
@@ -109,21 +96,6 @@ const Header = () => {
             <UserOutlined />
             {username}
           </Space>
-        </Dropdown>
-
-        <Dropdown
-          overlay={
-            <Menu>
-              <Menu.Item
-                key="version"
-                onClick={() => openInfoDialog(ModalName.SHOW_VERSION)}
-              >
-                {t('system.log.version')}
-              </Menu.Item>
-            </Menu>
-          }
-        >
-          <QuestionCircleOutlined data-testid="system-icon" />
         </Dropdown>
       </Space>
 
