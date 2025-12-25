@@ -72,4 +72,19 @@ ApiBase.interceptors.response.use(
   }
 );
 
+const doNotAddAuthRequest = ['/login'];
+
+ApiBase.interceptors.request.use((config) => {
+  if (doNotAddAuthRequest.some((url) => config.url?.includes(url))) {
+    return config;
+  }
+  return {
+    ...config,
+    headers: {
+      ...config.headers,
+      Authorization: store.getState().user.token,
+    },
+  };
+});
+
 export default ApiBase;
