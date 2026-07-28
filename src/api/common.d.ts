@@ -2387,6 +2387,30 @@ export interface IUserLoginReqV1 {
   password?: string;
 
   username?: string;
+
+  encrypted_password?: string;
+
+  key_id?: string;
+}
+
+export interface ILoginEncryptionResDataV1 {
+  enable?: boolean;
+
+  algorithm?: string;
+
+  cipher_mode?: string;
+
+  public_key?: string;
+
+  key_id?: string;
+}
+
+export interface IGetLoginEncryptionResV1 {
+  code?: number;
+
+  message?: string;
+
+  data?: ILoginEncryptionResDataV1;
 }
 
 export interface IUserLoginResV1 {

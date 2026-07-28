@@ -17,6 +17,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import useNavigate from '../../hooks/useNavigate';
 import { getHrefByText } from '../../testUtils/customQuery';
+import * as loginEncryption from '../../utils/loginEncryption';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -48,6 +49,7 @@ describe('Login', () => {
       })
     );
     mockGetOauth2Tips();
+    mockGetLoginEncryption({ enable: false });
     jest.useFakeTimers();
     useLocationMock.mockReturnValue({
       pathname: '/login',
@@ -94,6 +96,16 @@ describe('Login', () => {
     return spy;
   };
 
+  const mockGetLoginEncryption = (data: {
+    enable?: boolean;
+    public_key?: string;
+    key_id?: string;
+  }) => {
+    const spy = jest.spyOn(user, 'getLoginEncryptionV1');
+    spy.mockImplementation(() => resolveThreeSecond(data));
+    return spy;
+  };
+
   test('should render login form', async () => {
     const { container } = renderWithTheme(<Login />);
     expect(container).toMatchSnapshot();
@@ -127,6 +139,7 @@ describe('Login', () => {
     fireEvent.click(screen.getByText('login.login'));
 
     await act(async () => jest.advanceTimersByTime(0));
+    await act(async () => jest.advanceTimersByTime(3000));
 
     expect(request).toBeCalledTimes(1);
     expect(request).toBeCalledWith({
@@ -146,6 +159,78 @@ describe('Login', () => {
     });
     expect(navigateSpy).toBeCalledTimes(1);
     expect(navigateSpy).toBeCalledWith('home');
+  });
+
+  test('should send encrypted password and never plaintext when encryption enabled', async () => {
+    const request = mockRequest();
+    mockGetLoginEncryption({
+      enable: true,
+      public_key: '04public',
+      key_id: 'kid-1',
+    });
+    const encryptSpy = jest
+      .spyOn(loginEncryption, 'encryptLoginPassword')
+      .mockReturnValue({
+        encrypted_password: 'cipher-text',
+        key_id: 'kid-1',
+      });
+
+    renderWithThemeAndRouter(<Login />);
+    fireEvent.input(screen.getByPlaceholderText('common.username'), {
+      target: { value: 'root' },
+    });
+    fireEvent.input(screen.getByPlaceholderText('common.password'), {
+      target: { value: '123456' },
+    });
+    fireEvent.click(screen.getByText('login.userAgreementTips'));
+    fireEvent.click(screen.getByText('login.login'));
+
+    await act(async () => jest.advanceTimersByTime(0));
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    expect(encryptSpy).toBeCalledWith('123456', {
+      enable: true,
+      public_key: '04public',
+      key_id: 'kid-1',
+    });
+    expect(request).toBeCalledTimes(1);
+    expect(request).toBeCalledWith({
+      username: 'root',
+      encrypted_password: 'cipher-text',
+      key_id: 'kid-1',
+    });
+    const payload = request.mock.calls[0][0];
+    expect(payload.password).toBeUndefined();
+  });
+
+  test('should not call login when encrypt failed', async () => {
+    const request = mockRequest();
+    mockGetLoginEncryption({
+      enable: true,
+      public_key: '04public',
+      key_id: 'kid-1',
+    });
+    jest.spyOn(loginEncryption, 'encryptLoginPassword').mockImplementation(() => {
+      throw new loginEncryption.LoginEncryptionError('encrypt password failed');
+    });
+
+    renderWithThemeAndRouter(<Login />);
+    fireEvent.input(screen.getByPlaceholderText('common.username'), {
+      target: { value: 'root' },
+    });
+    fireEvent.input(screen.getByPlaceholderText('common.password'), {
+      target: { value: '123456' },
+    });
+    fireEvent.click(screen.getByText('login.userAgreementTips'));
+    fireEvent.click(screen.getByText('login.login'));
+
+    await act(async () => jest.advanceTimersByTime(0));
+    await act(async () => jest.advanceTimersByTime(3000));
+
+    expect(request).not.toBeCalled();
+    expect(
+      screen.getByText('login.errorMessage.encryptFailed')
+    ).toBeInTheDocument();
   });
 
   test('click oauth login button will jump to `/v1/oauth2/link`', async () => {
@@ -188,7 +273,7 @@ describe('Login', () => {
 
     fireEvent.click(screen.getByText('login.login'));
     await act(async () => jest.advanceTimersByTime(0));
-
+    await act(async () => jest.advanceTimersByTime(3000));
     await act(async () => jest.advanceTimersByTime(3000));
 
     expect(navigateSpy).toBeCalledTimes(1);
@@ -227,7 +312,7 @@ describe('Login', () => {
     fireEvent.click(screen.getByText('login.login'));
 
     await act(async () => jest.advanceTimersByTime(0));
-
+    await act(async () => jest.advanceTimersByTime(3000));
     await act(async () => jest.advanceTimersByTime(3000));
 
     expect(navigateSpy).toBeCalledTimes(1);

@@ -14,7 +14,8 @@ import {
   IGetUsersResV1,
   ICreateUserReqV1,
   IUpdateUserReqV1,
-  IUpdateOtherUserPasswordReqV1
+  IUpdateOtherUserPasswordReqV1,
+  IGetLoginEncryptionResV1
 } from '../common.d';
 
 export interface ILoginV1Params extends IUserLoginReqV1 {}
@@ -132,3 +133,5 @@ export interface IUpdateOtherUserPasswordV1Return extends IBaseRes {}
 export interface ILoginV2Params extends IUserLoginReqV1 {}
 
 export interface ILoginV2Return extends IBaseRes {}
+
+export interface IGetLoginEncryptionV1Return extends IGetLoginEncryptionResV1 {}
