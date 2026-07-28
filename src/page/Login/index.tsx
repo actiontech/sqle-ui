@@ -21,6 +21,10 @@ import { useLocation } from 'react-router-dom';
 import { getCookie } from '../../utils/Common';
 import { IReduxState } from '../../store';
 import useNavigate from '../../hooks/useNavigate';
+import { IUserLoginReqV1 } from '../../api/common.d';
+import {
+  encryptLoginPassword,
+} from '../../utils/loginEncryption';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -28,7 +32,32 @@ const Login = () => {
   const { t } = useTranslation();
   const location = useLocation();
 
-  const login = (formData: {
+  const buildLoginPayload = async (
+    username: string,
+    password: string
+  ): Promise<IUserLoginReqV1 | null> => {
+    try {
+      const encRes = await user.getLoginEncryptionV1();
+      const encryption = encRes.data?.data ?? {};
+      if (!encryption.enable) {
+        return {
+          username,
+          password,
+        };
+      }
+      const encrypted = encryptLoginPassword(password, encryption);
+      return {
+        username,
+        encrypted_password: encrypted.encrypted_password,
+        key_id: encrypted.key_id,
+      };
+    } catch (error) {
+      message.error(t('login.errorMessage.encryptFailed'));
+      return null;
+    }
+  };
+
+  const login = async (formData: {
     username: string;
     password: string;
     userAgreement: boolean;
@@ -39,29 +68,29 @@ const Login = () => {
       return;
     }
     /* FITRUE_isEE */
-    user
-      .loginV2({
-        username: formData.username,
-        password: formData.password,
-      })
-      .then((res) => {
-        if (res.data.code === ResponseCode.SUCCESS) {
-          const params = new URLSearchParams(location.search);
-          dispatch(
-            updateToken({ token: getCookie(SQLE_COOKIE_TOKEN_KEY_NAME) })
-          );
-          const target = params.get(SQLE_REDIRECT_KEY_PARAMS_NAME);
-          if (target) {
-            if (target === '/sqlQuery') {
-              navigate(`sqlQuery?${OPEN_CLOUD_BEAVER_URL_PARAM_NAME}=true`);
-            } else {
-              navigate(target);
-            }
+    const payload = await buildLoginPayload(
+      formData.username,
+      formData.password
+    );
+    if (!payload) {
+      return;
+    }
+    user.loginV2(payload).then((res) => {
+      if (res.data.code === ResponseCode.SUCCESS) {
+        const params = new URLSearchParams(location.search);
+        dispatch(updateToken({ token: getCookie(SQLE_COOKIE_TOKEN_KEY_NAME) }));
+        const target = params.get(SQLE_REDIRECT_KEY_PARAMS_NAME);
+        if (target) {
+          if (target === '/sqlQuery') {
+            navigate(`sqlQuery?${OPEN_CLOUD_BEAVER_URL_PARAM_NAME}=true`);
           } else {
-            navigate('home');
+            navigate(target);
           }
+        } else {
+          navigate('home');
         }
-      });
+      }
+    });
   };
   const { run: getOauth2Tips, data: oauthConfig } = useRequest(
     () => configuration.getOauth2Tips().then((res) => res.data?.data ?? {}),

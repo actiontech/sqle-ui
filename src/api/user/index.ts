@@ -42,7 +42,8 @@ import {
   IUpdateOtherUserPasswordV1Params,
   IUpdateOtherUserPasswordV1Return,
   ILoginV2Params,
-  ILoginV2Return
+  ILoginV2Return,
+  IGetLoginEncryptionV1Return
 } from './index.d';
 
 class UserService extends ServiceBase {
@@ -264,6 +265,14 @@ class UserService extends ServiceBase {
   public loginV2(params: ILoginV2Params, options?: AxiosRequestConfig) {
     const paramsData = this.cloneDeep(params);
     return this.post<ILoginV2Return>('/v2/login', paramsData, options);
+  }
+
+  public getLoginEncryptionV1(options?: AxiosRequestConfig) {
+    return this.get<IGetLoginEncryptionV1Return>(
+      '/v1/login/encryption',
+      undefined,
+      options
+    );
   }
 }
 
