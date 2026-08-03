@@ -10,6 +10,7 @@ export default {
 
   errorMessage: {
     userAgreement: '请先阅读并同意用户协议',
+    encryption: '登录失败，请稍后重试',
   },
 
   oauth: {
