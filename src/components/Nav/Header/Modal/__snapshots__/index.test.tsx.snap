@@ -93,7 +93,7 @@ exports[`test Nav/Header/Modal should match snapshot 1`] = `
                     class="ant-typography"
                   >
                     UI Version: 
-                    feature/issue-110   72a0e52
+                    feat/yumchina-login-sm2-encryption   a855454
                   </h5>
                 </div>
                 <div

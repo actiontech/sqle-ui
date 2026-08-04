@@ -7,7 +7,10 @@ import {
 
 import { fireEvent, screen, act } from '@testing-library/react';
 import user from '../../api/user';
-import { resolveThreeSecond } from '../../testUtils/mockRequest';
+import {
+  resolveImmediately,
+  resolveThreeSecond,
+} from '../../testUtils/mockRequest';
 import configuration from '../../api/configuration';
 import { useLocation } from 'react-router-dom';
 import {
@@ -47,6 +50,7 @@ describe('Login', () => {
         system: { webTitle: SQLE_DEFAULT_WEB_TITLE, webLogoUrl: '' },
       })
     );
+    mockGetLoginEncryption();
     mockGetOauth2Tips();
     jest.useFakeTimers();
     useLocationMock.mockReturnValue({
@@ -83,6 +87,13 @@ describe('Login', () => {
   const mockRequest = () => {
     const spy = jest.spyOn(user, 'loginV2');
     spy.mockImplementation(() => resolveThreeSecond({}));
+    return spy;
+  };
+
+  // plaintext path: keep existing loginV2 assertions; encryption API is a mount dep
+  const mockGetLoginEncryption = () => {
+    const spy = jest.spyOn(user, 'getLoginEncryptionV1');
+    spy.mockImplementation(() => resolveImmediately({ enable: false }));
     return spy;
   };
 
