@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import './index.less';
 import { Button, Checkbox, Form, Input, message, Typography } from 'antd';
@@ -21,14 +21,69 @@ import { useLocation } from 'react-router-dom';
 import { getCookie } from '../../utils/Common';
 import { IReduxState } from '../../store';
 import useNavigate from '../../hooks/useNavigate';
+import { ILoginEncryptionResDataV1, IUserLoginReqV1 } from '../../api/common.d';
+import { sm2EncryptPassword } from '../../utils/sm2Encrypt';
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const location = useLocation();
+  const encryptionCacheRef = useRef<ILoginEncryptionResDataV1 | null>(null);
 
-  const login = (formData: {
+  const fetchLoginEncryption = async (): Promise<ILoginEncryptionResDataV1> => {
+    const res = await user.getLoginEncryptionV1();
+    if (res.data.code !== ResponseCode.SUCCESS || !res.data.data) {
+      throw new Error('get login encryption failed');
+    }
+    encryptionCacheRef.current = res.data.data;
+    return res.data.data;
+  };
+
+  const buildLoginBody = async (formData: {
+    username: string;
+    password: string;
+  }): Promise<IUserLoginReqV1> => {
+    let info = encryptionCacheRef.current;
+    if (!info) {
+      info = await fetchLoginEncryption();
+    }
+
+    if (info.enable === true) {
+      if (
+        info.algorithm !== 'SM2' ||
+        info.cipher_mode !== 'C1C3C2' ||
+        !info.public_key ||
+        !info.key_id
+      ) {
+        throw new Error('invalid login encryption params');
+      }
+      const encrypted_username = sm2EncryptPassword(
+        formData.username,
+        info.public_key
+      );
+      const encrypted_password = sm2EncryptPassword(
+        formData.password,
+        info.public_key
+      );
+      return {
+        encrypted_username,
+        encrypted_password,
+        key_id: info.key_id,
+      };
+    }
+
+    if (info.enable === false) {
+      return {
+        username: formData.username,
+        password: formData.password,
+      };
+    }
+
+    throw new Error('login encryption enable unknown');
+  };
+
+  const login = async (formData: {
     username: string;
     password: string;
     userAgreement: boolean;
@@ -39,29 +94,31 @@ const Login = () => {
       return;
     }
     /* FITRUE_isEE */
-    user
-      .loginV2({
-        username: formData.username,
-        password: formData.password,
-      })
-      .then((res) => {
-        if (res.data.code === ResponseCode.SUCCESS) {
-          const params = new URLSearchParams(location.search);
-          dispatch(
-            updateToken({ token: getCookie(SQLE_COOKIE_TOKEN_KEY_NAME) })
-          );
-          const target = params.get(SQLE_REDIRECT_KEY_PARAMS_NAME);
-          if (target) {
-            if (target === '/sqlQuery') {
-              navigate(`sqlQuery?${OPEN_CLOUD_BEAVER_URL_PARAM_NAME}=true`);
-            } else {
-              navigate(target);
-            }
+    let body: IUserLoginReqV1;
+    try {
+      body = await buildLoginBody(formData);
+    } catch {
+      message.error(t('login.errorMessage.encryption'));
+      return;
+    }
+    user.loginV2(body).then((res) => {
+      if (res.data.code === ResponseCode.SUCCESS) {
+        const params = new URLSearchParams(location.search);
+        dispatch(
+          updateToken({ token: getCookie(SQLE_COOKIE_TOKEN_KEY_NAME) })
+        );
+        const target = params.get(SQLE_REDIRECT_KEY_PARAMS_NAME);
+        if (target) {
+          if (target === '/sqlQuery') {
+            navigate(`sqlQuery?${OPEN_CLOUD_BEAVER_URL_PARAM_NAME}=true`);
           } else {
-            navigate('home');
+            navigate(target);
           }
+        } else {
+          navigate('home');
         }
-      });
+      }
+    });
   };
   const { run: getOauth2Tips, data: oauthConfig } = useRequest(
     () => configuration.getOauth2Tips().then((res) => res.data?.data ?? {}),
@@ -74,6 +131,13 @@ const Login = () => {
     webTitle: state.system.webTitle,
     webLogoUrl: state.system.webLogoUrl,
   }));
+
+  useEffect(() => {
+    fetchLoginEncryption().catch(() => {
+      encryptionCacheRef.current = null;
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /* IFTRUE_isEE */
   useEffect(() => {
